@@ -137,8 +137,8 @@
     UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
     [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
     [detailViewController setTitle:[scenario objectForKey:@"id"]];
+    UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
     
-    [self.navigationController pushViewController:detailViewController animated:YES];
-}
+    [self.splitViewController showDetailViewController:detailNavigationController sender:self];}
 
 @end
