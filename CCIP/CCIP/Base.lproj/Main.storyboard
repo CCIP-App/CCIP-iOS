@@ -23,7 +23,7 @@
             </objects>
             <point key="canvasLocation" x="194" y="-117"/>
         </scene>
-        <!--Root View Controller-->
+        <!--COSCUP 2016-->
         <scene sceneID="iJi-5Y-AKc">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="ede-VB-PNb" customClass="TableViewController" sceneMemberID="viewController">
@@ -46,7 +46,7 @@
                             <outlet property="delegate" destination="ede-VB-PNb" id="ZFP-UK-aVQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="iAh-VK-j4P"/>
+                    <navigationItem key="navigationItem" title="COSCUP 2016" id="iAh-VK-j4P"/>
                     <connections>
                         <outlet property="tableView" destination="UOx-Ac-fgj" id="sQi-Rc-6fV"/>
                     </connections>
