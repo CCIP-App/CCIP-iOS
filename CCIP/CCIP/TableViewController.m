@@ -65,6 +65,11 @@
     if ([[scenario allKeys] containsObject:@"disabled"]) {
         if ([[scenario objectForKey:@"disabled"] length] > 0) {
             [cell.scenarioLabel setText:[cell.scenarioLabel.text stringByAppendingString:@" (Disabled)"]];
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.userInteractionEnabled = NO;
+            cell.textLabel.enabled = NO;
+            cell.detailTextLabel.enabled = NO;
         }
     }
     return cell;
@@ -123,5 +128,16 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *scenario = [self.scenarios objectAtIndex:indexPath.row];
+    
+    UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+    [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
+    [detailViewController setTitle:[scenario objectForKey:@"id"]];
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
+}
 
 @end
