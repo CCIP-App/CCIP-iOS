@@ -14,8 +14,6 @@
 @interface AppDelegate ()
 
 @property (strong, nonatomic) OneSignal *oneSignal;
-@property (strong, nonatomic) UITabBarController *tabBarController;
-@property (strong, nonatomic) NSMutableArray *viewControllers;
 
 @end
 
@@ -27,32 +25,6 @@
     self.oneSignal = [[OneSignal alloc] initWithLaunchOptions:launchOptions
                                                         appId:ONE_SIGNAL_APP_TOKEN
                                            handleNotification:nil];
-    
-    //initialize the tab bar controller
-    self.tabBarController = [UITabBarController new];
-    
-    GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS(@"asdfasdf")];
-    [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
-        NSLog(@"%@", json);
-        //create an array of all view controllers that will represent the tab at the bottom
-        self.viewControllers = [NSMutableArray new];
-        for (NSDictionary *obj in [json objectForKey:@"scenario"]) {
-            UIViewController *theView = [[UIViewController alloc] initWithNibName:nil
-                                                                           bundle:nil];
-            [theView setTitle:[obj valueForKey:@"id"]];
-            UINavigationController *theNav = [[UINavigationController alloc] initWithRootViewController:theView];
-            [self.viewControllers addObject:theNav];
-        }
-        
-        [self.tabBarController setViewControllers:self.viewControllers];
-    }];
-    
-    [self.tabBarController setViewControllers:@[[UIViewController new]]];
-    
-    [self.window setBackgroundColor:[UIColor whiteColor]];
-    [self.window setRootViewController:self.tabBarController];
-    [self.window makeKeyAndVisible];
-    
     return YES;
 }
 
