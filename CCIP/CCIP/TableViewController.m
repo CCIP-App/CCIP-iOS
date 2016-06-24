@@ -33,7 +33,7 @@
     [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
         if (json != nil) {
             NSLog(@"%@", json);
-            self.scenarios = [json objectForKey:@"scenario"];
+            self.scenarios = [json objectForKey:@"scenarios"];
             [self.tableView reloadData];
         }
     }];
@@ -137,8 +137,12 @@
     UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
     [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
     [detailViewController setTitle:[scenario objectForKey:@"id"]];
+    [detailViewController.navigationItem setLeftBarButtonItem:self.splitViewController.displayModeButtonItem];
+    [detailViewController.navigationItem setLeftItemsSupplementBackButton:YES];
+        
     UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
     
-    [self.splitViewController showDetailViewController:detailNavigationController sender:self];}
+    [self.splitViewController showDetailViewController:detailNavigationController sender:self];
+}
 
 @end
