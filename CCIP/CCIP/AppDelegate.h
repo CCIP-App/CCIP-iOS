@@ -12,8 +12,6 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) OneSignal *oneSignal;
-@property (strong, nonatomic) UITabBarController *tabBarController;
 
 @end
 
