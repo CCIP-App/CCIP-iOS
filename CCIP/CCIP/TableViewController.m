@@ -6,6 +6,7 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "GatewayWebService/GatewayWebService.h"
 #import "TableViewController.h"
 #import "scenarioCell.h"
@@ -13,6 +14,7 @@
 @interface TableViewController ()
 
 @property (strong, nonatomic) NSArray *scenarios;
+@property (strong, nonatomic) AppDelegate *appDelegate;
 
 @end
 
@@ -26,7 +28,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS(@"asdfasdf")];
+    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS(self.appDelegate.accessToken)];
     [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
         if (json != nil) {
             NSLog(@"%@", json);
@@ -64,12 +67,10 @@
     [cell.scenarioLabel setText:[scenario objectForKey:@"id"]];
     if ([[scenario allKeys] containsObject:@"disabled"]) {
         if ([[scenario objectForKey:@"disabled"] length] > 0) {
-            [cell.scenarioLabel setText:[cell.scenarioLabel.text stringByAppendingString:@" (Disabled)"]];
-            
+            [cell.scenarioLabel setTextColor:[UIColor lightGrayColor]];
+            [cell setBackgroundColor:[UIColor colorWithWhite:0.8f alpha:0.5f]];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             [cell setUserInteractionEnabled:NO];
-            [cell.textLabel setEnabled:NO];
-            [cell.detailTextLabel setEnabled:NO];
         }
     }
     return cell;

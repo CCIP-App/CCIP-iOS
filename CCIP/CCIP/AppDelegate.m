@@ -15,6 +15,7 @@
 @interface AppDelegate ()
 
 @property (strong, nonatomic) OneSignal *oneSignal;
+@property (strong, readwrite, nonatomic) NSString *accessToken;
 
 @end
 
@@ -28,6 +29,7 @@
         if ([tokenHost isEqualToString:@"token"] && [token length] > 0) {
             [UICKeyChainStore setData:[token dataUsingEncoding:NSUTF8StringEncoding]
                                forKey:@"token"];
+            self.accessToken = token;
         }
     }
     return YES;
@@ -38,9 +40,9 @@
     self.oneSignal = [[OneSignal alloc] initWithLaunchOptions:launchOptions
                                                         appId:ONE_SIGNAL_APP_TOKEN
                                            handleNotification:nil];
-    NSString *token = [[NSString alloc] initWithData:[UICKeyChainStore dataForKey:@"token"]
+    self.accessToken = [[NSString alloc] initWithData:[UICKeyChainStore dataForKey:@"token"]
                                             encoding:NSUTF8StringEncoding];
-    NSLog(@"Token: <%@>", token);
+    NSLog(@"Token: <%@>", self.accessToken);
     return YES;
 }
 
