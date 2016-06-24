@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "GatewayWebService/GatewayWebService.h"
+#import <UICKeyChainStore/UICKeyChainStore.h>
 
 #define ONE_SIGNAL_APP_TOKEN (@"6d125392-be34-4ab9-8e3d-c537ae5d4dd5")
 
@@ -19,12 +20,27 @@
 
 @implementation AppDelegate
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation {
+    if (url != nil) {
+        NSLog(@"Calling from URL: %@", url);
+        NSString *tokenHost = [url host];
+        NSString *token = [url query];
+        if ([tokenHost isEqualToString:@"token"] && [token length] > 0) {
+            [UICKeyChainStore setData:[token dataUsingEncoding:NSUTF8StringEncoding]
+                               forKey:@"token"];
+        }
+    }
+    return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.oneSignal = [[OneSignal alloc] initWithLaunchOptions:launchOptions
                                                         appId:ONE_SIGNAL_APP_TOKEN
                                            handleNotification:nil];
+    NSString *token = [[NSString alloc] initWithData:[UICKeyChainStore dataForKey:@"token"]
+                                            encoding:NSUTF8StringEncoding];
+    NSLog(@"Token: <%@>", token);
     return YES;
 }
 
