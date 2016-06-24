@@ -66,10 +66,10 @@
         if ([[scenario objectForKey:@"disabled"] length] > 0) {
             [cell.scenarioLabel setText:[cell.scenarioLabel.text stringByAppendingString:@" (Disabled)"]];
             
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.userInteractionEnabled = NO;
-            cell.textLabel.enabled = NO;
-            cell.detailTextLabel.enabled = NO;
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            [cell setUserInteractionEnabled:NO];
+            [cell.textLabel setEnabled:NO];
+            [cell.detailTextLabel setEnabled:NO];
         }
     }
     return cell;
