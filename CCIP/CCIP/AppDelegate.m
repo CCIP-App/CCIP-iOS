@@ -17,6 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.oneSignal = [[OneSignal alloc] initWithLaunchOptions:launchOptions
+                                                        appId:@"6d125392-be34-4ab9-8e3d-c537ae5d4dd5"
+                                           handleNotification:nil];
+    
     return YES;
 }
 
