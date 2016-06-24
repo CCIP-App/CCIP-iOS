@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "GatewayWebService/GatewayWebService.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +22,10 @@
                                                         appId:@"6d125392-be34-4ab9-8e3d-c537ae5d4dd5"
                                            handleNotification:nil];
     
+    GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS(@"asdfasdf")];
+    [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
+        NSLog(@"%@", json);
+    }];
     return YES;
 }
 
