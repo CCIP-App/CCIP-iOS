@@ -22,10 +22,36 @@
                                                         appId:@"6d125392-be34-4ab9-8e3d-c537ae5d4dd5"
                                            handleNotification:nil];
     
+    //initialize the tab bar controller
+    _tabBarController = [[UITabBarController alloc] init];
+    
     GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS(@"asdfasdf")];
     [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
         NSLog(@"%@", json);
+        
+        //create an array of all view controllers that will represent the tab at the bottom
+        NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
+        
+        for (NSDictionary *obj in [json objectForKey:@"scenario"]) {
+            NSLog(@"%@", obj);
+            
+            UIViewController *theView = [[UIViewController alloc] initWithNibName:nil
+                                                                              bundle:NULL];
+            [theView setTitle:[obj valueForKey:@"id"]];
+            UINavigationController *theNav = [[UINavigationController alloc] initWithRootViewController:theView];
+            
+            [viewControllers addObject:theNav];
+        }
+        
+        [_tabBarController setViewControllers:viewControllers];
     }];
+    
+    [_tabBarController setViewControllers:[[NSArray alloc] initWithObjects:[[UIViewController alloc] init] , nil]];
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = _tabBarController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
