@@ -15,8 +15,8 @@
 @interface MasterViewController ()
 
 @property NSMutableArray *objects;
-@property (strong, nonatomic) NSArray *scenarios;
 @property (strong, nonatomic) AppDelegate *appDelegate;
+@property (strong, nonatomic) NSArray *scenarios;
 
 @end
 
@@ -93,7 +93,8 @@
     scenarioCell *cell = nil;
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        [tableView registerNib:[UINib nibWithNibName:@"scenarioCell" bundle:nil]
+        [tableView registerNib:[UINib nibWithNibName:@"scenarioCell"
+                                              bundle:nil]
         forCellReuseIdentifier:CellIdentifier];
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     }
@@ -108,6 +109,22 @@
         }
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *scenario = [self.scenarios objectAtIndex:indexPath.row];
+    
+    UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:nil
+                                                                                bundle:nil];
+    [detailViewController setTitle:[scenario objectForKey:@"id"]];
+    [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
+    [detailViewController.navigationItem setLeftBarButtonItem:self.splitViewController.displayModeButtonItem];
+    [detailViewController.navigationItem setLeftItemsSupplementBackButton:YES];
+    
+    UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+    
+    [self.splitViewController showDetailViewController:detailNavigationController
+                                                sender:self];
 }
 
 /*
@@ -163,20 +180,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSDictionary *scenario = [self.scenarios objectAtIndex:indexPath.row];
-    
-    UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-    [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
-    [detailViewController setTitle:[scenario objectForKey:@"id"]];
-    [detailViewController.navigationItem setLeftBarButtonItem:self.splitViewController.displayModeButtonItem];
-    [detailViewController.navigationItem setLeftItemsSupplementBackButton:YES];
-    
-    UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-    
-    [self.splitViewController showDetailViewController:detailNavigationController sender:self];
-}
 
 @end

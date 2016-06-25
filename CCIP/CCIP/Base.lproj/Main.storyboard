@@ -26,7 +26,7 @@
         <!--COSCUP 2016-->
         <scene sceneID="iJi-5Y-AKc">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="ede-VB-PNb" customClass="TableViewController" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="ede-VB-PNb" customClass="MasterViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UOx-Ac-fgj">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="1113" y="-766"/>
         </scene>
-        <!--Navigation View Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="i9g-aJ-e8m">
             <objects>
-                <navigationController id="SB0-2j-Uk8" customClass="NavigationViewController" sceneMemberID="viewController">
+                <navigationController id="SB0-2j-Uk8" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JMk-at-DcG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="194" y="-766"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Split View Controller-->
         <scene sceneID="oqU-A8-pFU">
             <objects>
-                <splitViewController id="EwW-7p-R7l" customClass="RootViewController" sceneMemberID="viewController">
+                <splitViewController id="EwW-7p-R7l" sceneMemberID="viewController">
                     <connections>
                         <segue destination="SB0-2j-Uk8" kind="relationship" relationship="masterViewController" id="YBe-do-hXD"/>
                         <segue destination="4bd-ZW-OKI" kind="relationship" relationship="detailViewController" id="eA6-nB-3R6"/>
