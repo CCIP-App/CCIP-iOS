@@ -309,7 +309,6 @@
 				6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */,
 				6BD8EF391D1D73510094BE95 /* Assets.xcassets */,
 				6BD8EF3E1D1D73510094BE95 /* Info.plist */,
-				6BD8EF2A1D1D73510094BE95 /* Supporting Files */,
 				6B7142AE1D1DB9820024EA45 /* MasterViewController.h */,
 				6B7142AF1D1DB9820024EA45 /* MasterViewController.m */,
 				285C4C551D1E00A50040E628 /* DetailViewController.h */,
@@ -317,6 +316,7 @@
 				6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */,
 				6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */,
 				6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */,
+				6BD8EF2A1D1D73510094BE95 /* Supporting Files */,
 			);
 			path = CCIP;
 			sourceTree = "<group>";
