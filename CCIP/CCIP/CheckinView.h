@@ -10,4 +10,10 @@
 
 @interface CheckinView : UIView
 
+@property (strong, nonatomic) NSDictionary *scenario;
+
+@property (weak, nonatomic) IBOutlet UIButton *checkinBtn;
+
+- (IBAction)checkinBtnEvent:(id)sender;
+
 @end

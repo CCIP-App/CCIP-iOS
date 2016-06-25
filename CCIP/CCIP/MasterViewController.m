@@ -120,14 +120,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *scenario = [self.scenarios objectAtIndex:indexPath.row];
-    NSArray *vcs = @[@"InvalidNetworkMessageViewController", @"CheckinViewController", @"StatusViewController"];
-    NSString *vcName = [vcs objectAtIndex:(rand() % [vcs count])];
+    NSString *vcName = @"";
+
+    if ([[scenario allKeys] containsObject:@"used"]) {
+        if ([scenario objectForKey:@"used"] > 0) {
+            vcName = @"StatusViewController";
+        }
+    }
+    else {
+        vcName = @"CheckinViewController";
+    }
+    
+    
     UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:vcName
                                                                                 bundle:nil];
+    [detailViewController.view performSelector:NSSelectorFromString(@"setScenario:")
+                                    withObject:scenario];
     [detailViewController setTitle:[scenario objectForKey:@"id"]];
     [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
     [detailViewController.navigationItem setLeftBarButtonItem:self.splitViewController.displayModeButtonItem];
     [detailViewController.navigationItem setLeftItemsSupplementBackButton:YES];
+    
     
     UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
     

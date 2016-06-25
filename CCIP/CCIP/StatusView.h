@@ -10,4 +10,6 @@
 
 @interface StatusView : UIView
 
+@property (strong, nonatomic) NSDictionary *scenario;
+
 @end
