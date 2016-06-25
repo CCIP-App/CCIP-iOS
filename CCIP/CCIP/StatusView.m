@@ -6,7 +6,14 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "StatusView.h"
+
+@interface StatusView()
+
+@property (strong, nonatomic) AppDelegate *appDelegate;
+
+@end
 
 @implementation StatusView
 
@@ -17,5 +24,14 @@
     // Drawing code
 }
 */
+
+- (void)gotoTop {
+    [((UINavigationController *)[self.appDelegate.splitViewController.viewControllers firstObject]) popToRootViewControllerAnimated:YES];
+}
+
+- (void)setScenario:(NSDictionary *)scenario {
+    _scenario = scenario;
+    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
 
 @end

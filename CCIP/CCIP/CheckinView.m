@@ -26,34 +26,32 @@
 }
 */
 
+- (void)gotoTop {
+    [((UINavigationController *)[self.appDelegate.splitViewController.viewControllers firstObject]) popToRootViewControllerAnimated:YES];
+}
+
 - (IBAction)checkinBtnEvent:(id)sender {
-    
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE(self.appDelegate.accessToken, [self.scenario objectForKey:@"id"])];
     [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
         if (json != nil) {
             NSLog(@"%@", json);
-
+            UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:@"StatusViewController"
+                                                                                        bundle:nil];
+            SEL setScenarioValue = NSSelectorFromString(@"setScenario:");
+            if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
+                [detailViewController.view performSelector:setScenarioValue
+                                                withObject:self.scenario];
+            }
+            [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
+            UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(gotoTop)];
+            [detailViewController.navigationItem setLeftBarButtonItem:backButton];
+            [detailViewController.navigationItem setLeftItemsSupplementBackButton:NO];
+            UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+            [self.appDelegate.splitViewController showDetailViewController:detailNavigationController
+                                                                    sender:self];
         }
     }];
-    
-    UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:@"StatusViewController"
-                                                                                bundle:nil];
-    [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
-    [detailViewController.navigationItem setLeftBarButtonItem:self.appDelegate.splitViewController.displayModeButtonItem];
-    [detailViewController.navigationItem setLeftItemsSupplementBackButton:YES];
-    
-    UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-    
-    [self.appDelegate.splitViewController showDetailViewController:detailNavigationController
-                                                sender:self];
-    // for hack to toggle the master view in split view on portrait iPad
-    UIBarButtonItem *barButtonItem = [self.appDelegate.splitViewController displayModeButtonItem];
-    [[UIApplication sharedApplication] sendAction:[barButtonItem action]
-                                               to:[barButtonItem target]
-                                             from:nil
-                                         forEvent:nil];
 }
 
 @end

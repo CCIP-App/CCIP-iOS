@@ -129,30 +129,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *scenario = [self.scenarios objectAtIndex:indexPath.row];
-    NSString *vcName = @"";
-
-    if ([[scenario allKeys] containsObject:@"used"]) {
-        if ([scenario objectForKey:@"used"] > 0) {
-            vcName = @"StatusViewController";
-        }
-    }
-    else {
-        vcName = @"CheckinViewController";
-    }
-    
-    
+    BOOL isUsed = [[scenario allKeys] containsObject:@"used"] ? [scenario objectForKey:@"used"] > 0 : NO;
+    NSString *vcName = isUsed ? @"StatusViewController" : @"CheckinViewController";
     UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:vcName
                                                                                 bundle:nil];
-    [detailViewController.view performSelector:NSSelectorFromString(@"setScenario:")
-                                    withObject:scenario];
+    SEL setScenarioValue = NSSelectorFromString(@"setScenario:");
+    if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
+        [detailViewController.view performSelector:setScenarioValue
+                                        withObject:scenario];
+    }
     [detailViewController setTitle:[scenario objectForKey:@"id"]];
     [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
-    [detailViewController.navigationItem setLeftBarButtonItem:self.splitViewController.displayModeButtonItem];
-    [detailViewController.navigationItem setLeftItemsSupplementBackButton:YES];
-    
-    
+    UIBarButtonItem *backButton = isUsed ? [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(gotoTop)] : self.splitViewController.displayModeButtonItem;
+    [detailViewController.navigationItem setLeftBarButtonItem:backButton];
+    [detailViewController.navigationItem setLeftItemsSupplementBackButton:!isUsed];
     UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-    
     [self.splitViewController showDetailViewController:detailNavigationController
                                                 sender:self];
     // for hack to toggle the master view in split view on portrait iPad
@@ -161,6 +152,10 @@
                                                to:[barButtonItem target]
                                              from:nil
                                          forEvent:nil];
+}
+
+- (void)gotoTop {
+    [((UINavigationController *)[self.appDelegate.splitViewController.viewControllers firstObject]) popToRootViewControllerAnimated:YES];
 }
 
 /*
