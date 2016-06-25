@@ -438,16 +438,6 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
-				TargetAttributes = {
-					A4AF1721838338D2C309D68446698CFE = {
-						DevelopmentTeam = H2LA3QW9Y2;
-						DevelopmentTeamName = "Koo Foundation Sun Yat-Sen Cancer Center";
-					};
-					A5FE26D49337338DA2031F46632234AB = {
-						DevelopmentTeam = H2LA3QW9Y2;
-						DevelopmentTeamName = "Koo Foundation Sun Yat-Sen Cancer Center";
-					};
-				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";

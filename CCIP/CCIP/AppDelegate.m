@@ -84,6 +84,7 @@
     NSLog(@"Token: <%@>", self.accessToken);
     
     // Configure Root View Controller
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     UISplitViewController *splitViewController = [UISplitViewController new];
     MasterViewController *masterView = [MasterViewController new];
     DetailViewController *detailView = [DetailViewController new];
