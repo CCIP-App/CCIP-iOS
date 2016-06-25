@@ -9,10 +9,12 @@
 #import "AppDelegate.h"
 #import "GatewayWebService/GatewayWebService.h"
 #import <UICKeyChainStore/UICKeyChainStore.h>
+#import "MasterViewController.h"
+#import "DetailViewController.h"
 
 #define ONE_SIGNAL_APP_TOKEN (@"6d125392-be34-4ab9-8e3d-c537ae5d4dd5")
 
-@interface AppDelegate ()
+@interface AppDelegate () <UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) OneSignal *oneSignal;
 @property (strong, readwrite, nonatomic) NSString *accessToken;
@@ -27,9 +29,16 @@
         NSString *tokenHost = [url host];
         NSString *token = [url query];
         if ([tokenHost isEqualToString:@"token"] && [token length] > 0) {
-            [UICKeyChainStore setData:[token dataUsingEncoding:NSUTF8StringEncoding]
+            NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+            for (NSString *param in [[url query] componentsSeparatedByString:@"&"]) {
+                NSArray *elts = [param componentsSeparatedByString:@"="];
+                if([elts count] < 2) continue;
+                [params setObject:[elts objectAtIndex:1] forKey:[elts objectAtIndex:0]];
+            }
+            
+            [UICKeyChainStore setData:[[params objectForKey:@"token"] dataUsingEncoding:NSUTF8StringEncoding]
                                forKey:@"token"];
-            self.accessToken = token;
+            self.accessToken = [params objectForKey:@"token"];
         }
     }
     return YES;
@@ -43,6 +52,24 @@
     self.accessToken = [[NSString alloc] initWithData:[UICKeyChainStore dataForKey:@"token"]
                                             encoding:NSUTF8StringEncoding];
     NSLog(@"Token: <%@>", self.accessToken);
+    
+    UISplitViewController *splitViewController = [[UISplitViewController alloc] init];
+    
+    MasterViewController *masterView = [[MasterViewController alloc] init];
+    DetailViewController *detailView = [[DetailViewController alloc] init];
+    [detailView.view setBackgroundColor:[UIColor whiteColor]];
+    [detailView.navigationItem setLeftBarButtonItem:splitViewController.displayModeButtonItem];
+    [detailView.navigationItem setLeftItemsSupplementBackButton:YES];
+    
+    UINavigationController *masterNav = [[UINavigationController alloc] initWithRootViewController:masterView];
+    UINavigationController *detailNav = [[UINavigationController alloc] initWithRootViewController:detailView];
+    
+    splitViewController.viewControllers = [NSArray arrayWithObjects:masterNav, detailNav, nil];
+    splitViewController.delegate = self;
+    
+    [self.window setRootViewController:splitViewController];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -66,6 +93,17 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Split view
+
+- (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
+    if ([secondaryViewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)secondaryViewController topViewController] isKindOfClass:[DetailViewController class]] && ([(DetailViewController *)[(UINavigationController *)secondaryViewController topViewController] detailItem] == nil)) {
+        // Return YES to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 @end

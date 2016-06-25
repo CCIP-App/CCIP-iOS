@@ -1,24 +1,26 @@
 //
-//  TableViewController.m
-//  CCIP
+//  MasterViewController.m
+//  textmv
 //
-//  Created by 腹黒い茶 on 2016/06/25.
-//  Copyright © 2016年 CPRTeam. All rights reserved.
+//  Created by FrankWu on 2016/6/25.
+//  Copyright © 2016年 FrankWu. All rights reserved.
 //
 
 #import "AppDelegate.h"
 #import "GatewayWebService/GatewayWebService.h"
-#import "TableViewController.h"
+#import "MasterViewController.h"
 #import "scenarioCell.h"
+#import "DetailViewController.h"
 
-@interface TableViewController ()
+@interface MasterViewController ()
 
+@property NSMutableArray *objects;
 @property (strong, nonatomic) NSArray *scenarios;
 @property (strong, nonatomic) AppDelegate *appDelegate;
 
 @end
 
-@implementation TableViewController
+@implementation MasterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,7 +30,18 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
+    
+    [self refreshData];
+}
+
+- (void)refreshData
+{
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS(self.appDelegate.accessToken)];
     [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
         if (json != nil) {
@@ -36,12 +49,33 @@
             self.scenarios = [json objectForKey:@"scenarios"];
             [self.tableView reloadData];
         }
+        
+        [self.refreshControl endRefreshing];
     }];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSDate *object = self.objects[indexPath.row];
+        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
+        [controller setDetailItem:object];
+        controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+        controller.navigationItem.leftItemsSupplementBackButton = YES;
+    }
 }
 
 #pragma mark - Table view data source
@@ -139,7 +173,7 @@
     [detailViewController setTitle:[scenario objectForKey:@"id"]];
     [detailViewController.navigationItem setLeftBarButtonItem:self.splitViewController.displayModeButtonItem];
     [detailViewController.navigationItem setLeftItemsSupplementBackButton:YES];
-        
+    
     UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
     
     [self.splitViewController showDetailViewController:detailNavigationController sender:self];

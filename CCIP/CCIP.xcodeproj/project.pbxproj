@@ -8,15 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0A3663B80BC1C0B6FA2E75C3 /* libPods-CCIP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E9B676939FF6E7CF0F9469 /* libPods-CCIP.a */; };
+		285C4C571D1E00A50040E628 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285C4C561D1E00A50040E628 /* DetailViewController.m */; };
 		6B1C6A151D1D843E003C4865 /* MYCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A0C1D1D8422003C4865 /* MYCrypto.framework */; };
 		6B1C6A161D1D843E003C4865 /* MYCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A0C1D1D8422003C4865 /* MYCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B1C6A191D1D843F003C4865 /* GatewayWebService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A001D1D8330003C4865 /* GatewayWebService.framework */; };
 		6B1C6A1A1D1D843F003C4865 /* GatewayWebService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A001D1D8330003C4865 /* GatewayWebService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B6ADB811D1D87230008AC84 /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6ADB721D1D87190008AC84 /* CommonCrypto.framework */; };
 		6B6ADB821D1D87230008AC84 /* CommonCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6ADB721D1D87190008AC84 /* CommonCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6B7142AA1D1DB8C90024EA45 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142A91D1DB8C90024EA45 /* RootViewController.m */; };
-		6B7142AD1D1DB9020024EA45 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142AC1D1DB9020024EA45 /* NavigationViewController.m */; };
-		6B7142B01D1DB9820024EA45 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142AF1D1DB9820024EA45 /* TableViewController.m */; };
+		6B7142B01D1DB9820024EA45 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142AF1D1DB9820024EA45 /* MasterViewController.m */; };
 		6B7142B61D1DBAFB0024EA45 /* scenarioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */; };
 		6B7142B71D1DBAFB0024EA45 /* scenarioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */; };
 		6BD8EF2C1D1D73510094BE95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2B1D1D73510094BE95 /* main.m */; };
@@ -187,15 +186,13 @@
 
 /* Begin PBXFileReference section */
 		1E39488D2E9378322A78E57B /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.release.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
+		285C4C551D1E00A50040E628 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		285C4C561D1E00A50040E628 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		6B1C69FA1D1D832F003C4865 /* GatewayWebService.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GatewayWebService.xcodeproj; path = ../GatewayWebService/GatewayWebService.xcodeproj; sourceTree = "<group>"; };
 		6B1C6A031D1D8422003C4865 /* MYCrypto.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MYCrypto.xcodeproj; path = ../MYCrypto/MYCrypto.xcodeproj; sourceTree = "<group>"; };
 		6B6ADB5D1D1D87190008AC84 /* Crypto.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Crypto.xcodeproj; path = ../Crypto/Crypto.xcodeproj; sourceTree = "<group>"; };
-		6B7142A81D1DB8C90024EA45 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		6B7142A91D1DB8C90024EA45 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		6B7142AB1D1DB9020024EA45 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
-		6B7142AC1D1DB9020024EA45 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
-		6B7142AE1D1DB9820024EA45 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		6B7142AF1D1DB9820024EA45 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		6B7142AE1D1DB9820024EA45 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		6B7142AF1D1DB9820024EA45 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scenarioCell.h; sourceTree = "<group>"; };
 		6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scenarioCell.m; sourceTree = "<group>"; };
 		6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = scenarioCell.xib; sourceTree = "<group>"; };
@@ -313,12 +310,10 @@
 				6BD8EF391D1D73510094BE95 /* Assets.xcassets */,
 				6BD8EF3E1D1D73510094BE95 /* Info.plist */,
 				6BD8EF2A1D1D73510094BE95 /* Supporting Files */,
-				6B7142A81D1DB8C90024EA45 /* RootViewController.h */,
-				6B7142A91D1DB8C90024EA45 /* RootViewController.m */,
-				6B7142AB1D1DB9020024EA45 /* NavigationViewController.h */,
-				6B7142AC1D1DB9020024EA45 /* NavigationViewController.m */,
-				6B7142AE1D1DB9820024EA45 /* TableViewController.h */,
-				6B7142AF1D1DB9820024EA45 /* TableViewController.m */,
+				6B7142AE1D1DB9820024EA45 /* MasterViewController.h */,
+				6B7142AF1D1DB9820024EA45 /* MasterViewController.m */,
+				285C4C551D1E00A50040E628 /* DetailViewController.h */,
+				285C4C561D1E00A50040E628 /* DetailViewController.m */,
 				6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */,
 				6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */,
 				6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */,
@@ -605,12 +600,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B7142AD1D1DB9020024EA45 /* NavigationViewController.m in Sources */,
 				6B7142B61D1DBAFB0024EA45 /* scenarioCell.m in Sources */,
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
 				6BD8EF2C1D1D73510094BE95 /* main.m in Sources */,
-				6B7142B01D1DB9820024EA45 /* TableViewController.m in Sources */,
-				6B7142AA1D1DB8C90024EA45 /* RootViewController.m in Sources */,
+				6B7142B01D1DB9820024EA45 /* MasterViewController.m in Sources */,
+				285C4C571D1E00A50040E628 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
