@@ -125,6 +125,12 @@
     
     [self.splitViewController showDetailViewController:detailNavigationController
                                                 sender:self];
+    // for hack to toggle the master view in split view on portrait iPad
+    UIBarButtonItem *barButtonItem = [self.splitViewController displayModeButtonItem];
+    [[UIApplication sharedApplication] sendAction:[barButtonItem action]
+                                               to:[barButtonItem target]
+                                             from:nil
+                                         forEvent:nil];
 }
 
 /*
