@@ -36,13 +36,17 @@
             NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
             for (NSString *param in [urlQuery componentsSeparatedByString:@"&"]) {
                 NSArray *elts = [param componentsSeparatedByString:@"="];
-                if([elts count] < 2) continue;
+                if ([elts count] < 2) continue;
                 [params setObject:[elts objectAtIndex:1] forKey:[elts objectAtIndex:0]];
             }
             
+            if ([self.accessToken length] > 0) {
+                [UICKeyChainStore removeItemForKey:@"token"];
+            }
             self.accessToken = [params objectForKey:@"token"];
-            [UICKeyChainStore setData:[self.accessToken dataUsingEncoding:NSUTF8StringEncoding]
-                               forKey:@"token"];
+            [UICKeyChainStore setString:self.accessToken
+                                 forKey:@"token"];
+            [self.masterView refreshData];
         }
     }
     return YES;
@@ -82,8 +86,7 @@
                           }
                       }];
     [self.oneSignal enableInAppAlertNotification:YES];
-    self.accessToken = [[NSString alloc] initWithData:[UICKeyChainStore dataForKey:@"token"]
-                                             encoding:NSUTF8StringEncoding];
+    self.accessToken = [UICKeyChainStore stringForKey:@"token"];
     NSLog(@"Token: <%@>", self.accessToken);
     
     // Configure Root View Controller

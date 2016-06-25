@@ -15,5 +15,7 @@
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
+- (void)refreshData;
+
 @end
 
