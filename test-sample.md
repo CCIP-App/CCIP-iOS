@@ -1,6 +1,7 @@
 # Sample List
 
 |token|name|food type|
+|-----|----|---------|
 |<a href="ccip://token?token=7679f08f7eaeef5e9a65a1738ae2840e">7679f08f7eaeef5e9a65a1738ae2840e</a>|中文|葷|
 |<a href="ccip://token?token=ee33c408df4ffad0c55eaf6ec2420717">ee33c408df4ffad0c55eaf6ec2420717</a>|PATRICIA|素|
 |<a href="ccip://token?token=fccfc8bfa07643a1ca8015cbe74f5f17">fccfc8bfa07643a1ca8015cbe74f5f17</a>|LINDA|葷|
