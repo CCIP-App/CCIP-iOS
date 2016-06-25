@@ -8,11 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import <OneSignal/OneSignal.h>
+#import "MasterViewController.h"
+#import "DetailViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, readonly, nonatomic) NSString *accessToken;
+@property (strong, readonly, nonatomic) UISplitViewController *splitViewController;
+@property (strong, readonly, nonatomic) MasterViewController *masterView;
+@property (strong, readonly, nonatomic) DetailViewController *detailView;
+@property (strong, readonly, nonatomic) UINavigationController *masterNav;
+@property (strong, readonly, nonatomic) UINavigationController *detailNav;
 
 @end
 

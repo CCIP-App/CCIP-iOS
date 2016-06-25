@@ -117,8 +117,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *scenario = [self.scenarios objectAtIndex:indexPath.row];
-    
-    UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:nil
+    NSArray *vcs = @[@"InvalidNetworkMessageViewController", @"CheckinViewController", @"StatusViewController"];
+    NSString *vcName = [vcs objectAtIndex:(rand() % [vcs count])];
+    UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:vcName
                                                                                 bundle:nil];
     [detailViewController setTitle:[scenario objectForKey:@"id"]];
     [detailViewController.view setBackgroundColor:[UIColor whiteColor]];

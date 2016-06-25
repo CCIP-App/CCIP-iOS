@@ -13,17 +13,17 @@
 		6B1C6A161D1D843E003C4865 /* MYCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A0C1D1D8422003C4865 /* MYCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B1C6A191D1D843F003C4865 /* GatewayWebService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A001D1D8330003C4865 /* GatewayWebService.framework */; };
 		6B1C6A1A1D1D843F003C4865 /* GatewayWebService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A001D1D8330003C4865 /* GatewayWebService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6B53C6451D1ED5BE00EA8012 /* CheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B53C6431D1ED5BE00EA8012 /* CheckinViewController.m */; };
 		6B53C6461D1ED5BE00EA8012 /* CheckinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B53C6441D1ED5BE00EA8012 /* CheckinViewController.xib */; };
-		6B53C65A1D1ED5CC00EA8012 /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B53C6581D1ED5CC00EA8012 /* StatusViewController.m */; };
 		6B53C65B1D1ED5CC00EA8012 /* StatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B53C6591D1ED5CC00EA8012 /* StatusViewController.xib */; };
-		6B53C65F1D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B53C65D1D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.m */; };
 		6B53C6601D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.xib */; };
 		6B6ADB811D1D87230008AC84 /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6ADB721D1D87190008AC84 /* CommonCrypto.framework */; };
 		6B6ADB821D1D87230008AC84 /* CommonCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6ADB721D1D87190008AC84 /* CommonCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B7142B01D1DB9820024EA45 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142AF1D1DB9820024EA45 /* MasterViewController.m */; };
 		6B7142B61D1DBAFB0024EA45 /* scenarioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */; };
 		6B7142B71D1DBAFB0024EA45 /* scenarioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */; };
+		6BA1A5221D1EFBDC00D5924C /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusView.m */; };
+		6BA1A5251D1EFBE700D5924C /* CheckinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5241D1EFBE700D5924C /* CheckinView.m */; };
+		6BA1A5281D1EFBF100D5924C /* InvalidNetworkMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */; };
 		6BD8EF2C1D1D73510094BE95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2B1D1D73510094BE95 /* main.m */; };
 		6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */; };
 		6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
@@ -198,14 +198,8 @@
 		6B1C69FA1D1D832F003C4865 /* GatewayWebService.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GatewayWebService.xcodeproj; path = ../GatewayWebService/GatewayWebService.xcodeproj; sourceTree = "<group>"; };
 		6B1C6A031D1D8422003C4865 /* MYCrypto.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MYCrypto.xcodeproj; path = ../MYCrypto/MYCrypto.xcodeproj; sourceTree = "<group>"; };
 		6B4637151D1E89BA001A44B2 /* CCIP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CCIP.entitlements; sourceTree = "<group>"; };
-		6B53C6421D1ED5BE00EA8012 /* CheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinViewController.h; sourceTree = "<group>"; };
-		6B53C6431D1ED5BE00EA8012 /* CheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinViewController.m; sourceTree = "<group>"; };
 		6B53C6441D1ED5BE00EA8012 /* CheckinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckinViewController.xib; sourceTree = "<group>"; };
-		6B53C6571D1ED5CC00EA8012 /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
-		6B53C6581D1ED5CC00EA8012 /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
 		6B53C6591D1ED5CC00EA8012 /* StatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusViewController.xib; sourceTree = "<group>"; };
-		6B53C65C1D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvalidNetworkMessageViewController.h; sourceTree = "<group>"; };
-		6B53C65D1D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvalidNetworkMessageViewController.m; sourceTree = "<group>"; };
 		6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvalidNetworkMessageViewController.xib; sourceTree = "<group>"; };
 		6B6ADB5D1D1D87190008AC84 /* Crypto.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Crypto.xcodeproj; path = ../Crypto/Crypto.xcodeproj; sourceTree = "<group>"; };
 		6B7142AE1D1DB9820024EA45 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
@@ -213,6 +207,13 @@
 		6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scenarioCell.h; sourceTree = "<group>"; };
 		6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scenarioCell.m; sourceTree = "<group>"; };
 		6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = scenarioCell.xib; sourceTree = "<group>"; };
+		6BA1A5151D1EEBAE00D5924C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6BA1A5201D1EFBDC00D5924C /* StatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusView.h; sourceTree = "<group>"; };
+		6BA1A5211D1EFBDC00D5924C /* StatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusView.m; sourceTree = "<group>"; };
+		6BA1A5231D1EFBE700D5924C /* CheckinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinView.h; sourceTree = "<group>"; };
+		6BA1A5241D1EFBE700D5924C /* CheckinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinView.m; sourceTree = "<group>"; };
+		6BA1A5261D1EFBF100D5924C /* InvalidNetworkMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvalidNetworkMessageView.h; sourceTree = "<group>"; };
+		6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvalidNetworkMessageView.m; sourceTree = "<group>"; };
 		6BD8EF271D1D73510094BE95 /* CCIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD8EF2B1D1D73510094BE95 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -329,14 +330,14 @@
 				6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */,
 				6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */,
 				6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */,
-				6B53C65C1D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.h */,
-				6B53C65D1D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.m */,
+				6BA1A5261D1EFBF100D5924C /* InvalidNetworkMessageView.h */,
+				6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */,
 				6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.xib */,
-				6B53C6421D1ED5BE00EA8012 /* CheckinViewController.h */,
-				6B53C6431D1ED5BE00EA8012 /* CheckinViewController.m */,
+				6BA1A5231D1EFBE700D5924C /* CheckinView.h */,
+				6BA1A5241D1EFBE700D5924C /* CheckinView.m */,
 				6B53C6441D1ED5BE00EA8012 /* CheckinViewController.xib */,
-				6B53C6571D1ED5CC00EA8012 /* StatusViewController.h */,
-				6B53C6581D1ED5CC00EA8012 /* StatusViewController.m */,
+				6BA1A5201D1EFBDC00D5924C /* StatusView.h */,
+				6BA1A5211D1EFBDC00D5924C /* StatusView.m */,
 				6B53C6591D1ED5CC00EA8012 /* StatusViewController.xib */,
 			);
 			path = CCIP;
@@ -349,6 +350,7 @@
 				6B4637151D1E89BA001A44B2 /* CCIP.entitlements */,
 				5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */,
 				6BD8EF3E1D1D73510094BE95 /* Info.plist */,
+				6BA1A5141D1EEBAE00D5924C /* Main.storyboard */,
 				6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */,
 				6BD8EF2B1D1D73510094BE95 /* main.m */,
 			);
@@ -635,14 +637,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BA1A5281D1EFBF100D5924C /* InvalidNetworkMessageView.m in Sources */,
 				6B7142B61D1DBAFB0024EA45 /* scenarioCell.m in Sources */,
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
 				6BD8EF2C1D1D73510094BE95 /* main.m in Sources */,
 				6B7142B01D1DB9820024EA45 /* MasterViewController.m in Sources */,
-				6B53C6451D1ED5BE00EA8012 /* CheckinViewController.m in Sources */,
-				6B53C65F1D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.m in Sources */,
+				6BA1A5221D1EFBDC00D5924C /* StatusView.m in Sources */,
 				285C4C571D1E00A50040E628 /* DetailViewController.m in Sources */,
-				6B53C65A1D1ED5CC00EA8012 /* StatusViewController.m in Sources */,
+				6BA1A5251D1EFBE700D5924C /* CheckinView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +664,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6BA1A5141D1EEBAE00D5924C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BA1A5151D1EEBAE00D5924C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

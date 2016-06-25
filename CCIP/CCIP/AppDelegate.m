@@ -10,8 +10,6 @@
 #import "GatewayWebService/GatewayWebService.h"
 #import <Google/Analytics.h>
 #import <UICKeyChainStore/UICKeyChainStore.h>
-#import "MasterViewController.h"
-#import "DetailViewController.h"
 
 #define ONE_SIGNAL_APP_TOKEN (@"aef99f72-9ee3-4dfa-ac5b-ddf79f16be7d")
 
@@ -19,6 +17,11 @@
 
 @property (strong, nonatomic) OneSignal *oneSignal;
 @property (strong, readwrite, nonatomic) NSString *accessToken;
+@property (strong, readwrite, nonatomic) UISplitViewController *splitViewController;
+@property (strong, readwrite, nonatomic) MasterViewController *masterView;
+@property (strong, readwrite, nonatomic) DetailViewController *detailView;
+@property (strong, readwrite, nonatomic) UINavigationController *masterNav;
+@property (strong, readwrite, nonatomic) UINavigationController *detailNav;
 
 @end
 
@@ -59,20 +62,20 @@
     NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
     // Optional: configure GAI options.
     GAI *gai = [GAI sharedInstance];
-    gai.trackUncaughtExceptions = YES;  // report uncaught exceptions
-    gai.logger.logLevel = kGAILogLevelVerbose;  // remove before app release
+    [gai setTrackUncaughtExceptions:YES];  // report uncaught exceptions
+    [gai.logger setLogLevel:kGAILogLevelVerbose];  // remove before app release
     
     // Configure OneSignal
     self.oneSignal = [[OneSignal alloc]
                       initWithLaunchOptions:launchOptions
                       appId:ONE_SIGNAL_APP_TOKEN
-                      handleNotification:^(NSString* message, NSDictionary* additionalData, BOOL isActive) {
+                      handleNotification:^(NSString *message, NSDictionary *additionalData, BOOL isActive) {
                           NSLog(@"OneSignal Notification opened:\nMessage: %@\nadditionalData: %@", message, additionalData);
                           if (additionalData) {
                               // Check for and read any custom values you added to the notification
                               // This done with the "Additonal Data" section the dashbaord.
                               // OR setting the 'data' field on our REST API.
-                              NSString* customKey = additionalData[@"customKey"];
+                              NSString *customKey = [additionalData objectForKey:@"customKey"];
                               if (customKey) {
                                   NSLog(@"customKey: %@", customKey);
                               }
@@ -80,23 +83,23 @@
                       }];
     [self.oneSignal enableInAppAlertNotification:YES];
     self.accessToken = [[NSString alloc] initWithData:[UICKeyChainStore dataForKey:@"token"]
-                                            encoding:NSUTF8StringEncoding];
+                                             encoding:NSUTF8StringEncoding];
     NSLog(@"Token: <%@>", self.accessToken);
     
     // Configure Root View Controller
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    UISplitViewController *splitViewController = [UISplitViewController new];
-    MasterViewController *masterView = [MasterViewController new];
-    DetailViewController *detailView = [DetailViewController new];
-    [masterView setTitle:@"COSCUP 2016"];
-    [detailView.view setBackgroundColor:[UIColor whiteColor]];
-    [detailView.navigationItem setLeftBarButtonItem:splitViewController.displayModeButtonItem];
-    [detailView.navigationItem setLeftItemsSupplementBackButton:YES];
-    UINavigationController *masterNav = [[UINavigationController alloc] initWithRootViewController:masterView];
-    UINavigationController *detailNav = [[UINavigationController alloc] initWithRootViewController:detailView];
-    [splitViewController setViewControllers:@[masterNav, detailNav]];
-    [splitViewController setDelegate:self];
-    [self.window setRootViewController:splitViewController];
+    self.splitViewController = [UISplitViewController new];
+    self.masterView = [MasterViewController new];
+    self.detailView = [DetailViewController new];
+    [self.masterView setTitle:@"COSCUP 2016"];
+    [self.detailView.view setBackgroundColor:[UIColor whiteColor]];
+    [self.detailView.navigationItem setLeftBarButtonItem:self.splitViewController.displayModeButtonItem];
+    [self.detailView.navigationItem setLeftItemsSupplementBackButton:YES];
+    self.masterNav = [[UINavigationController alloc] initWithRootViewController:self.masterView];
+    self.detailNav = [[UINavigationController alloc] initWithRootViewController:self.detailView];
+    [self.splitViewController setViewControllers:@[self.masterNav, self.detailNav]];
+    [self.splitViewController setDelegate:self];
+    [self.window setRootViewController:self.splitViewController];
     [self.window makeKeyAndVisible];
     
     return YES;
