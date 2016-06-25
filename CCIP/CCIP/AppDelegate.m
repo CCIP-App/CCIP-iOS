@@ -32,7 +32,7 @@
         NSLog(@"Calling from URL: %@", url);
         NSString *urlHost = [url host];
         NSString *urlQuery = [url query];
-        if ([urlHost isEqualToString:@"token"] && [urlQuery length] > 0) {
+        if ([urlHost isEqualToString:@"login"] && [urlQuery length] > 0) {
             NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
             for (NSString *param in [urlQuery componentsSeparatedByString:@"&"]) {
                 NSArray *elts = [param componentsSeparatedByString:@"="];
@@ -40,9 +40,9 @@
                 [params setObject:[elts objectAtIndex:1] forKey:[elts objectAtIndex:0]];
             }
             
-            [UICKeyChainStore setData:[[params objectForKey:@"token"] dataUsingEncoding:NSUTF8StringEncoding]
-                               forKey:@"token"];
             self.accessToken = [params objectForKey:@"token"];
+            [UICKeyChainStore setData:[self.accessToken dataUsingEncoding:NSUTF8StringEncoding]
+                               forKey:@"token"];
         }
     }
     return YES;

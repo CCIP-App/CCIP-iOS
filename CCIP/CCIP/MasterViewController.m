@@ -109,12 +109,19 @@
     NSDictionary *scenario = [self.scenarios objectAtIndex:indexPath.row];
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     [cell.scenarioLabel setText:[scenario objectForKey:@"id"]];
+    
     if ([[scenario allKeys] containsObject:@"disabled"]) {
         if ([[scenario objectForKey:@"disabled"] length] > 0) {
+            [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
             [cell.scenarioLabel setTextColor:[UIColor lightGrayColor]];
             [cell setBackgroundColor:[UIColor colorWithWhite:0.8f alpha:0.5f]];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             [cell setUserInteractionEnabled:NO];
+        }
+    }
+    else if ([[scenario allKeys] containsObject:@"used"]) {
+        if ([scenario objectForKey:@"used"] > 0) {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
         }
     }
     return cell;
