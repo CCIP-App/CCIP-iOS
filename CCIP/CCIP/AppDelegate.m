@@ -12,7 +12,7 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 
-#define ONE_SIGNAL_APP_TOKEN (@"6d125392-be34-4ab9-8e3d-c537ae5d4dd5")
+#define ONE_SIGNAL_APP_TOKEN (@"a429ff30-5c0e-4584-a32f-b866ba88c947")
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
