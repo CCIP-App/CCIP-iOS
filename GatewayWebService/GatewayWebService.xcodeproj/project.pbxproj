@@ -195,7 +195,7 @@
 				TargetAttributes = {
 					6B3F0D3C1B16B3E000E770D3 = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = H2LA3QW9Y2;
+						DevelopmentTeam = 293229L48V;
 						DevelopmentTeamName = "Koo Foundation Sun Yat-Sen Cancer Center";
 						LastSwiftMigration = 0800;
 					};
@@ -269,6 +269,8 @@
 		6B3F0D501B16B3E000E770D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -282,6 +284,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.KFSYSCC.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = GatewayWebService;
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 2.3;
 			};
@@ -290,6 +293,8 @@
 		6B3F0D511B16B3E000E770D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -301,6 +306,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.KFSYSCC.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = GatewayWebService;
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 2.3;
 			};
