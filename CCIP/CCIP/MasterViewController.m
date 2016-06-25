@@ -105,7 +105,9 @@
         forCellReuseIdentifier:CellIdentifier];
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     }
+    
     NSDictionary *scenario = [self.scenarios objectAtIndex:indexPath.row];
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     [cell.scenarioLabel setText:[scenario objectForKey:@"id"]];
     if ([[scenario allKeys] containsObject:@"disabled"]) {
         if ([[scenario objectForKey:@"disabled"] length] > 0) {
