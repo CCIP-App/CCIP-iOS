@@ -27,11 +27,11 @@
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation {
     if (url != nil) {
         NSLog(@"Calling from URL: %@", url);
-        NSString *tokenHost = [url host];
-        NSString *token = [url query];
-        if ([tokenHost isEqualToString:@"token"] && [token length] > 0) {
+        NSString *urlHost = [url host];
+        NSString *urlQuery = [url query];
+        if ([urlHost isEqualToString:@"token"] && [urlQuery length] > 0) {
             NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-            for (NSString *param in [[url query] componentsSeparatedByString:@"&"]) {
+            for (NSString *param in [urlQuery componentsSeparatedByString:@"&"]) {
                 NSArray *elts = [param componentsSeparatedByString:@"="];
                 if([elts count] < 2) continue;
                 [params setObject:[elts objectAtIndex:1] forKey:[elts objectAtIndex:0]];
