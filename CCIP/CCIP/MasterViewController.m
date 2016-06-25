@@ -31,15 +31,14 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refreshControl;
-    
-    [self refreshData];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self
+                            action:@selector(refreshData)
+                  forControlEvents:UIControlEventValueChanged];
 }
 
-- (void)refreshData
-{
+- (void)refreshData {
+    [self.refreshControl beginRefreshing];
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS(self.appDelegate.accessToken)];
@@ -49,19 +48,23 @@
             self.scenarios = [json objectForKey:@"scenarios"];
             [self.tableView reloadData];
         }
-        
         [self.refreshControl endRefreshing];
     }];
 }
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
+    [self setClearsSelectionOnViewWillAppear:[self.splitViewController isCollapsed]];
     [super viewWillAppear:animated];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"MasterView"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self refreshData];
 }
 
 - (void)didReceiveMemoryWarning {
