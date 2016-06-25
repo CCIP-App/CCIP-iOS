@@ -46,25 +46,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
     self.oneSignal = [[OneSignal alloc]
                       initWithLaunchOptions:launchOptions
                       appId:ONE_SIGNAL_APP_TOKEN
                       handleNotification:^(NSString* message, NSDictionary* additionalData, BOOL isActive) {
-                          NSLog(@"OneSignal Notification opened:\nMessage: %@", message);
-                          
+                          NSLog(@"OneSignal Notification opened:\nMessage: %@\nadditionalData: %@", message, additionalData);
                           if (additionalData) {
-                              NSLog(@"additionalData: %@", additionalData);
-                              
                               // Check for and read any custom values you added to the notification
                               // This done with the "Additonal Data" section the dashbaord.
                               // OR setting the 'data' field on our REST API.
                               NSString* customKey = additionalData[@"customKey"];
-                              if (customKey)
+                              if (customKey) {
                                   NSLog(@"customKey: %@", customKey);
+                              }
                           }
                       }];
-    
+    [self.oneSignal enableInAppAlertNotification:YES];
     self.accessToken = [[NSString alloc] initWithData:[UICKeyChainStore dataForKey:@"token"]
                                             encoding:NSUTF8StringEncoding];
     NSLog(@"Token: <%@>", self.accessToken);
@@ -122,11 +119,9 @@
     }
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
-    
-    NSLog(@"userInfo:%@",[userInfo description]);
-    NSLog(@"alert:%@",[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]);
-    NSLog(@"alert:%@",[[userInfo objectForKey:@"aps"] objectForKey:@"url"]);
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"Receieved remote system fetching request...\nuserInfo => %@", userInfo);
+    completionHandler(UIBackgroundFetchResultNewData);
 }
 
 @end
