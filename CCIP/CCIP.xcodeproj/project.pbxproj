@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A3663B80BC1C0B6FA2E75C3 /* libPods-CCIP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E9B676939FF6E7CF0F9469 /* libPods-CCIP.a */; };
 		285C4C571D1E00A50040E628 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285C4C561D1E00A50040E628 /* DetailViewController.m */; };
+		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
 		6B1C6A151D1D843E003C4865 /* MYCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A0C1D1D8422003C4865 /* MYCrypto.framework */; };
 		6B1C6A161D1D843E003C4865 /* MYCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A0C1D1D8422003C4865 /* MYCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B1C6A191D1D843F003C4865 /* GatewayWebService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A001D1D8330003C4865 /* GatewayWebService.framework */; };
@@ -188,6 +189,7 @@
 		1E39488D2E9378322A78E57B /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.release.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
 		285C4C551D1E00A50040E628 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		285C4C561D1E00A50040E628 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B1C69FA1D1D832F003C4865 /* GatewayWebService.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GatewayWebService.xcodeproj; path = ../GatewayWebService/GatewayWebService.xcodeproj; sourceTree = "<group>"; };
 		6B1C6A031D1D8422003C4865 /* MYCrypto.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MYCrypto.xcodeproj; path = ../MYCrypto/MYCrypto.xcodeproj; sourceTree = "<group>"; };
 		6B4637151D1E89BA001A44B2 /* CCIP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CCIP.entitlements; sourceTree = "<group>"; };
@@ -304,17 +306,18 @@
 		6BD8EF291D1D73510094BE95 /* CCIP */ = {
 			isa = PBXGroup;
 			children = (
-				6B4637151D1E89BA001A44B2 /* CCIP.entitlements */,
 				6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */,
 				6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */,
-				6BD8EF361D1D73510094BE95 /* Main.storyboard */,
-				6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */,
 				6BD8EF391D1D73510094BE95 /* Assets.xcassets */,
-				6BD8EF3E1D1D73510094BE95 /* Info.plist */,
-				6B7142AE1D1DB9820024EA45 /* MasterViewController.h */,
-				6B7142AF1D1DB9820024EA45 /* MasterViewController.m */,
+				6B4637151D1E89BA001A44B2 /* CCIP.entitlements */,
 				285C4C551D1E00A50040E628 /* DetailViewController.h */,
 				285C4C561D1E00A50040E628 /* DetailViewController.m */,
+				5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */,
+				6BD8EF3E1D1D73510094BE95 /* Info.plist */,
+				6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */,
+				6BD8EF361D1D73510094BE95 /* Main.storyboard */,
+				6B7142AE1D1DB9820024EA45 /* MasterViewController.h */,
+				6B7142AF1D1DB9820024EA45 /* MasterViewController.m */,
 				6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */,
 				6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */,
 				6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */,
@@ -547,6 +550,7 @@
 			files = (
 				6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */,
 				6B7142B71D1DBAFB0024EA45 /* scenarioCell.xib in Resources */,
+				5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */,
 				6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */,
 				6BD8EF381D1D73510094BE95 /* Main.storyboard in Resources */,
 			);

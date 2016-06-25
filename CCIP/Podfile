@@ -8,4 +8,5 @@ target 'CCIP' do
   # Pods for CCIP
   pod 'OneSignal'
   pod 'UICKeyChainStore'
+  pod 'Google/Analytics'
 end
