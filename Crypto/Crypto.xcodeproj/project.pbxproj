@@ -611,9 +611,10 @@
 					};
 					216CAE331AE6B273009A69EF = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = 293229L48V;
+						DevelopmentTeam = H2LA3QW9Y2;
 						DevelopmentTeamName = "Koo Foundation Sun Yat-Sen Cancer Center";
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					21FD8C5A1AE6B03F008DCDBA = {
 						CreatedOnToolsVersion = 6.3;

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A3663B80BC1C0B6FA2E75C3 /* libPods-CCIP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E9B676939FF6E7CF0F9469 /* libPods-CCIP.a */; };
 		285C4C571D1E00A50040E628 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285C4C561D1E00A50040E628 /* DetailViewController.m */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
 		6B1C6A151D1D843E003C4865 /* MYCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A0C1D1D8422003C4865 /* MYCrypto.framework */; };
@@ -25,11 +24,12 @@
 		6B7142B01D1DB9820024EA45 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142AF1D1DB9820024EA45 /* MasterViewController.m */; };
 		6B7142B61D1DBAFB0024EA45 /* scenarioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */; };
 		6B7142B71D1DBAFB0024EA45 /* scenarioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */; };
+		6BA1A5161D1EEBAE00D5924C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BA1A5141D1EEBAE00D5924C /* Main.storyboard */; };
 		6BD8EF2C1D1D73510094BE95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2B1D1D73510094BE95 /* main.m */; };
 		6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */; };
-		6BD8EF381D1D73510094BE95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF361D1D73510094BE95 /* Main.storyboard */; };
 		6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */; };
+		D5720777B8AA54B5CE34467A /* Pods_CCIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87CA176D8DB3A92497387928 /* Pods_CCIP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,16 +214,16 @@
 		6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scenarioCell.h; sourceTree = "<group>"; };
 		6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scenarioCell.m; sourceTree = "<group>"; };
 		6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = scenarioCell.xib; sourceTree = "<group>"; };
+		6BA1A5151D1EEBAE00D5924C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6BD8EF271D1D73510094BE95 /* CCIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD8EF2B1D1D73510094BE95 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6BD8EF371D1D73510094BE95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6BD8EF391D1D73510094BE95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6BD8EF3C1D1D73510094BE95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BD8EF3E1D1D73510094BE95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76097425B85D526316D2EF58 /* Pods-CCIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.debug.xcconfig"; sourceTree = "<group>"; };
-		D3E9B676939FF6E7CF0F9469 /* libPods-CCIP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CCIP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87CA176D8DB3A92497387928 /* Pods_CCIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,7 +234,7 @@
 				6B6ADB811D1D87230008AC84 /* CommonCrypto.framework in Frameworks */,
 				6B1C6A151D1D843E003C4865 /* MYCrypto.framework in Frameworks */,
 				6B1C6A191D1D843F003C4865 /* GatewayWebService.framework in Frameworks */,
-				0A3663B80BC1C0B6FA2E75C3 /* libPods-CCIP.a in Frameworks */,
+				D5720777B8AA54B5CE34467A /* Pods_CCIP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,7 +253,7 @@
 		267251DBF9C24B92F4EE80DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D3E9B676939FF6E7CF0F9469 /* libPods-CCIP.a */,
+				87CA176D8DB3A92497387928 /* Pods_CCIP.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -324,16 +324,10 @@
 			children = (
 				6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */,
 				6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */,
-				6BD8EF391D1D73510094BE95 /* Assets.xcassets */,
-				6B4637151D1E89BA001A44B2 /* CCIP.entitlements */,
-				285C4C551D1E00A50040E628 /* DetailViewController.h */,
-				285C4C561D1E00A50040E628 /* DetailViewController.m */,
-				5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */,
-				6BD8EF3E1D1D73510094BE95 /* Info.plist */,
-				6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */,
-				6BD8EF361D1D73510094BE95 /* Main.storyboard */,
 				6B7142AE1D1DB9820024EA45 /* MasterViewController.h */,
 				6B7142AF1D1DB9820024EA45 /* MasterViewController.m */,
+				285C4C551D1E00A50040E628 /* DetailViewController.h */,
+				285C4C561D1E00A50040E628 /* DetailViewController.m */,
 				6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */,
 				6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */,
 				6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */,
@@ -353,6 +347,12 @@
 		6BD8EF2A1D1D73510094BE95 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6BD8EF391D1D73510094BE95 /* Assets.xcassets */,
+				6B4637151D1E89BA001A44B2 /* CCIP.entitlements */,
+				5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */,
+				6BD8EF3E1D1D73510094BE95 /* Info.plist */,
+				6BA1A5141D1EEBAE00D5924C /* Main.storyboard */,
+				6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */,
 				6BD8EF2B1D1D73510094BE95 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -576,11 +576,11 @@
 				6B53C6461D1ED5BE00EA8012 /* CheckinViewController.xib in Resources */,
 				6B53C65B1D1ED5CC00EA8012 /* StatusViewController.xib in Resources */,
 				6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */,
+				6BA1A5161D1EEBAE00D5924C /* Main.storyboard in Resources */,
 				6B7142B71D1DBAFB0024EA45 /* scenarioCell.xib in Resources */,
 				5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */,
 				6B53C6601D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.xib in Resources */,
 				6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */,
-				6BD8EF381D1D73510094BE95 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,10 +666,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6BD8EF361D1D73510094BE95 /* Main.storyboard */ = {
+		6BA1A5141D1EEBAE00D5924C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6BD8EF371D1D73510094BE95 /* Base */,
+				6BA1A5151D1EEBAE00D5924C /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

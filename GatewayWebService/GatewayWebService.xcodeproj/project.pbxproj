@@ -195,7 +195,7 @@
 				TargetAttributes = {
 					6B3F0D3C1B16B3E000E770D3 = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = 293229L48V;
+						DevelopmentTeam = H2LA3QW9Y2;
 						DevelopmentTeamName = "Koo Foundation Sun Yat-Sen Cancer Center";
 						LastSwiftMigration = 0800;
 					};

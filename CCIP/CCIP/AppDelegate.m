@@ -45,18 +45,24 @@
     return YES;
 }
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"Receieved remote system fetching request...\nuserInfo => %@", userInfo);
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
     // Configure tracker from GoogleService-Info.plist.
     NSError *configureError;
     [[GGLContext sharedInstance] configureWithError:&configureError];
     NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
-    
     // Optional: configure GAI options.
     GAI *gai = [GAI sharedInstance];
     gai.trackUncaughtExceptions = YES;  // report uncaught exceptions
     gai.logger.logLevel = kGAILogLevelVerbose;  // remove before app release
     
+    // Configure OneSignal
     self.oneSignal = [[OneSignal alloc]
                       initWithLaunchOptions:launchOptions
                       appId:ONE_SIGNAL_APP_TOKEN
@@ -77,20 +83,18 @@
                                             encoding:NSUTF8StringEncoding];
     NSLog(@"Token: <%@>", self.accessToken);
     
-    UISplitViewController *splitViewController = [[UISplitViewController alloc] init];
-    
-    MasterViewController *masterView = [[MasterViewController alloc] init];
-    DetailViewController *detailView = [[DetailViewController alloc] init];
+    // Configure Root View Controller
+    UISplitViewController *splitViewController = [UISplitViewController new];
+    MasterViewController *masterView = [MasterViewController new];
+    DetailViewController *detailView = [DetailViewController new];
+    [masterView setTitle:@"COSCUP 2016"];
     [detailView.view setBackgroundColor:[UIColor whiteColor]];
     [detailView.navigationItem setLeftBarButtonItem:splitViewController.displayModeButtonItem];
     [detailView.navigationItem setLeftItemsSupplementBackButton:YES];
-    
     UINavigationController *masterNav = [[UINavigationController alloc] initWithRootViewController:masterView];
     UINavigationController *detailNav = [[UINavigationController alloc] initWithRootViewController:detailView];
-    
-    splitViewController.viewControllers = [NSArray arrayWithObjects:masterNav, detailNav, nil];
-    splitViewController.delegate = self;
-    
+    [splitViewController setViewControllers:@[masterNav, detailNav]];
+    [splitViewController setDelegate:self];
     [self.window setRootViewController:splitViewController];
     [self.window makeKeyAndVisible];
     
@@ -128,11 +132,6 @@
     } else {
         return NO;
     }
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    NSLog(@"Receieved remote system fetching request...\nuserInfo => %@", userInfo);
-    completionHandler(UIBackgroundFetchResultNewData);
 }
 
 @end

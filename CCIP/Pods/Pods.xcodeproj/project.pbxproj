@@ -7,85 +7,93 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B31801262850F3702730015A40EA3C9 /* UICKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = BBB8CFB08A769433C54E9F7CA4303976 /* UICKeyChainStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		16175B41E05DC58B032E2809326C0374 /* Pods-CCIP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 49ECF6ABCEBED570A13DEBB5A9882DA8 /* Pods-CCIP-dummy.m */; };
-		1DA29CB8CC9B1E49802EEA32C30EF81F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D692051EF32C02A74F6A5706D54B828B /* Foundation.framework */; };
-		6C1E014F4EF6065E60BEE332C6EF639A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D692051EF32C02A74F6A5706D54B828B /* Foundation.framework */; };
-		969BD253DE24D9E8A469A97A457B2072 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5081C742E23D3559C347113D5DF44E9A /* UICKeyChainStore.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		B46395D677D90F86EFDCFA9F542026B7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35EB645053A39B4E088C0BDA3A6C9F5D /* Security.framework */; };
-		F5300A6A9FAF2D7C2EB71B758F9A76DD /* UICKeyChainStore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F40A71921BD1D92308D3A4B947CC210D /* UICKeyChainStore-dummy.m */; };
+		07F5DF866D919ABCD39C9D0C7CE54AA2 /* UICKeyChainStore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 08CD9A9F124758664A37E8ACEF323020 /* UICKeyChainStore-dummy.m */; };
+		1AAFB1D41619A4BD9C1D2602F0D24064 /* Pods-CCIP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F844CDCD57D047D5F3814C59909E9D8 /* Pods-CCIP-dummy.m */; };
+		495A02318AC240D04BDB69EBADA164B8 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E9188FCA3CA7314B994B1F41F0730F /* UICKeyChainStore.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		80B8A0AA29FF10CA20A02707A7A3EDDA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35EB645053A39B4E088C0BDA3A6C9F5D /* Security.framework */; };
+		8AAF9ECA37AD2680207E9CC1B1675BEE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D692051EF32C02A74F6A5706D54B828B /* Foundation.framework */; };
+		AA3704FDBD788C135191450812A7ECF4 /* UICKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 08059AB91AB8F9F52FEA96905648C2DB /* UICKeyChainStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B570C8356DBE386C9DF6711A58D5ADD7 /* UICKeyChainStore-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F10D77AA2BF328BA516B89D073D22FD /* UICKeyChainStore-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D196CDBBFED3D23625F222E4D5BA54A3 /* Pods-CCIP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 407AB414BF003A508286D3A3B4C68680 /* Pods-CCIP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD361583587212AE2147C1A62417F1A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D692051EF32C02A74F6A5706D54B828B /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E46A249A912241476DFAC62A2DC2B219 /* PBXContainerItemProxy */ = {
+		DAB0214AFAB286EFC2C806631D2E2F09 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DAD2171A8B81113C78335C72C6858FF7;
+			remoteGlobalIDString = A4AF1721838338D2C309D68446698CFE;
 			remoteInfo = UICKeyChainStore;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		050CE41D2FD38F851249601F8A9DB4A1 /* Pods-CCIP-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CCIP-frameworks.sh"; sourceTree = "<group>"; };
+		08059AB91AB8F9F52FEA96905648C2DB /* UICKeyChainStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UICKeyChainStore.h; path = Lib/UICKeyChainStore/UICKeyChainStore.h; sourceTree = "<group>"; };
+		081923893D972983042C17B3EB5C2A0F /* Pods-CCIP-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CCIP-resources.sh"; sourceTree = "<group>"; };
+		08CD9A9F124758664A37E8ACEF323020 /* UICKeyChainStore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UICKeyChainStore-dummy.m"; sourceTree = "<group>"; };
 		189E4A2F6AC66E22799F83D1D5072AE1 /* Core-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Core-Module.h"; path = "Headers/ModuleHeaders/Core-Module.h"; sourceTree = "<group>"; };
-		1D9E4BE288273924465F8EBAB7C57C4F /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
+		234E2D763AC76FF82F488085C9EDB9A9 /* UICKeyChainStore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-prefix.pch"; sourceTree = "<group>"; };
 		2430942746B7FB94145B934CB30E8E90 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		2F10D77AA2BF328BA516B89D073D22FD /* UICKeyChainStore-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-umbrella.h"; sourceTree = "<group>"; };
 		3165921EC6956FD325BEC5F6CC02E7FF /* GAITrackedViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = Headers/Public/GAITrackedViewController.h; sourceTree = "<group>"; };
 		35EB645053A39B4E088C0BDA3A6C9F5D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		3C582A315AC885319AC495132B9CCBAB /* Analytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Analytics.h; path = Headers/Analytics.h; sourceTree = "<group>"; };
+		3F19743AF017525896C97467762462AA /* Pods-CCIP-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CCIP-acknowledgements.markdown"; sourceTree = "<group>"; };
+		407AB414BF003A508286D3A3B4C68680 /* Pods-CCIP-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CCIP-umbrella.h"; sourceTree = "<group>"; };
 		409B61EF42C6AE121FF8F76789BF8226 /* Analytics-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Analytics-Module.h"; path = "Headers/ModuleHeaders/Analytics-Module.h"; sourceTree = "<group>"; };
 		45EF9665EC93C4158161BD93A1A5059A /* GGLCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLCore.framework; path = Frameworks/GGLCore.framework; sourceTree = "<group>"; };
-		49ECF6ABCEBED570A13DEBB5A9882DA8 /* Pods-CCIP-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CCIP-dummy.m"; sourceTree = "<group>"; };
-		5081C742E23D3559C347113D5DF44E9A /* UICKeyChainStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UICKeyChainStore.m; path = Lib/UICKeyChainStore/UICKeyChainStore.m; sourceTree = "<group>"; };
-		5227311584EBA85B2FA676523DFBBF96 /* Pods-CCIP-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CCIP-resources.sh"; sourceTree = "<group>"; };
-		567EA036B72E1648A4F18259D962466A /* libUICKeyChainStore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUICKeyChainStore.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B27E1D1AD05059356E5A453997645A4 /* libPods-CCIP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CCIP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5297FE62856A93A1A62866A67FFEB58A /* UICKeyChainStore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = UICKeyChainStore.modulemap; sourceTree = "<group>"; };
+		5A00CE01FE4E06323021099A8DEA9DC7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6156A4220A95AB1931B9C9CE4D5968D4 /* Pods-CCIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CCIP.debug.xcconfig"; sourceTree = "<group>"; };
 		66F7CC06DA80F4415FB19EB6830ED976 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProductAction.h; path = Headers/Public/GAIEcommerceProductAction.h; sourceTree = "<group>"; };
 		721FE9171C97818D4D9635BEE73CA74F /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
 		731F144A6803BF2234FFA7A73CF4466E /* GAIEcommerceFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceFields.h; path = Headers/Public/GAIEcommerceFields.h; sourceTree = "<group>"; };
-		84B5E7735B20961384B95A9508E0348A /* UICKeyChainStore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-prefix.pch"; sourceTree = "<group>"; };
+		77538A48C8F270E07694CDB8DB3F8461 /* UICKeyChainStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UICKeyChainStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77E9188FCA3CA7314B994B1F41F0730F /* UICKeyChainStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UICKeyChainStore.m; path = Lib/UICKeyChainStore/UICKeyChainStore.m; sourceTree = "<group>"; };
 		8F04535C248CC32D6295134565B5AB95 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
+		8F844CDCD57D047D5F3814C59909E9D8 /* Pods-CCIP-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CCIP-dummy.m"; sourceTree = "<group>"; };
+		9160B80BE78072CE651E75EF51FE39F4 /* Pods-CCIP-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CCIP-frameworks.sh"; sourceTree = "<group>"; };
+		91B393BC902DF1C06666FE365F142B33 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9B397B2E91A15F81109D8A83A53975EB /* Core.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Core.h; path = Headers/Core.h; sourceTree = "<group>"; };
-		A060624143AC549D2956F96D6B10144C /* Pods-CCIP-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CCIP-acknowledgements.plist"; sourceTree = "<group>"; };
+		A062AEA39E6EB2FDEE4E6631B7A4C670 /* UICKeyChainStore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UICKeyChainStore.xcconfig; sourceTree = "<group>"; };
 		A09EC5FFAAB47DA1FD469D228DD0B7C5 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = Headers/Public/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
-		A281115F9FE4A3272B1D95E2B725EFF6 /* Pods-CCIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CCIP.debug.xcconfig"; sourceTree = "<group>"; };
 		A63D0FB3E6BE57711EC7ECC0850F35E4 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = Headers/Public/GAIEcommerceProduct.h; sourceTree = "<group>"; };
-		A671D67FBAA8B0B55F8A904E176C3C70 /* UICKeyChainStore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UICKeyChainStore.xcconfig; sourceTree = "<group>"; };
 		ABC6305295E671C614AA4E5ECD510680 /* GAI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = Headers/Public/GAI.h; sourceTree = "<group>"; };
 		AEBCF604FD41F6AC8DEDF1F1C4F8C415 /* GAILogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = Headers/Public/GAILogger.h; sourceTree = "<group>"; };
-		BBB8CFB08A769433C54E9F7CA4303976 /* UICKeyChainStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UICKeyChainStore.h; path = Lib/UICKeyChainStore/UICKeyChainStore.h; sourceTree = "<group>"; };
 		BBC4140E89FA32AE25F449C0AD01BA9E /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
 		C7959FEEE567F4482E11A410322E6564 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Libraries/libGoogleAnalytics.a; sourceTree = "<group>"; };
 		C7EB15FD55D4EECA0788A1355415424D /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommercePromotion.h; path = Headers/Public/GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		C92361B0E6E5A472B5604DAEFFA95C54 /* Pods-CCIP.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CCIP.modulemap"; sourceTree = "<group>"; };
 		CCCC450F932E461F35A8C0000E4CC776 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OneSignal.framework; path = iOS_SDK/Framework/OneSignal.framework; sourceTree = "<group>"; };
 		D692051EF32C02A74F6A5706D54B828B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		DA52727E7ECC04136B2AC1C1393F7CBC /* Pods-CCIP-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CCIP-acknowledgements.markdown"; sourceTree = "<group>"; };
 		DC02539A689D9069473068DCE327E00A /* SignIn-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SignIn-Module.h"; path = "Headers/ModuleHeaders/SignIn-Module.h"; sourceTree = "<group>"; };
+		E20A38E2E8C1F6BD640AD8B19A6C9498 /* Pods-CCIP-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CCIP-acknowledgements.plist"; sourceTree = "<group>"; };
 		E4CFFEE9FAEF7AFE9F49EC06F6FDBD05 /* GAIFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = Headers/Public/GAIFields.h; sourceTree = "<group>"; };
 		E62882FD582E51AF3A102290DF2637EF /* GAITracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = Headers/Public/GAITracker.h; sourceTree = "<group>"; };
 		E64DA5FD251BF97EA2AB5DCA8DA56F99 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		E70DAA250524DA47E10B2B58AD790076 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		F40A71921BD1D92308D3A4B947CC210D /* UICKeyChainStore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UICKeyChainStore-dummy.m"; sourceTree = "<group>"; };
 		F7029801022FB343C7CBE3640680D2B8 /* GGLAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLAnalytics.framework; path = Frameworks/GGLAnalytics.framework; sourceTree = "<group>"; };
+		F79B8222D9BA1041B9516DDFC0A685D4 /* Pods_CCIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FED333F71BA244C276B35C2271C36CFF /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		26808BD2A34EC2639BBBB7B4A85B332C /* Frameworks */ = {
+		6B5CE6A69934B35538059B1A49354ED0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DA29CB8CC9B1E49802EEA32C30EF81F /* Foundation.framework in Frameworks */,
+				FD361583587212AE2147C1A62417F1A0 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C6D629185F2F822CBCCFA9D63819BA7C /* Frameworks */ = {
+		74F73B19558C4CDE98A6A36EDB0A0E05 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C1E014F4EF6065E60BEE332C6EF639A /* Foundation.framework in Frameworks */,
-				B46395D677D90F86EFDCFA9F542026B7 /* Security.framework in Frameworks */,
+				8AAF9ECA37AD2680207E9CC1B1675BEE /* Foundation.framework in Frameworks */,
+				80B8A0AA29FF10CA20A02707A7A3EDDA /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,36 +109,30 @@
 			name = Analytics;
 			sourceTree = "<group>";
 		};
-		10EEC5B63A431DE5FCFF3C22DF1434C4 /* Pods-CCIP */ = {
-			isa = PBXGroup;
-			children = (
-				DA52727E7ECC04136B2AC1C1393F7CBC /* Pods-CCIP-acknowledgements.markdown */,
-				A060624143AC549D2956F96D6B10144C /* Pods-CCIP-acknowledgements.plist */,
-				49ECF6ABCEBED570A13DEBB5A9882DA8 /* Pods-CCIP-dummy.m */,
-				050CE41D2FD38F851249601F8A9DB4A1 /* Pods-CCIP-frameworks.sh */,
-				5227311584EBA85B2FA676523DFBBF96 /* Pods-CCIP-resources.sh */,
-				A281115F9FE4A3272B1D95E2B725EFF6 /* Pods-CCIP.debug.xcconfig */,
-				1D9E4BE288273924465F8EBAB7C57C4F /* Pods-CCIP.release.xcconfig */,
-			);
-			name = "Pods-CCIP";
-			path = "Target Support Files/Pods-CCIP";
-			sourceTree = "<group>";
-		};
-		111BBEF2C7250FE28929EBCBE2C2B8E9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5B27E1D1AD05059356E5A453997645A4 /* libPods-CCIP.a */,
-				567EA036B72E1648A4F18259D962466A /* libUICKeyChainStore.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		1B42C66C4B565CC6D6B528AA92651C00 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				E64DA5FD251BF97EA2AB5DCA8DA56F99 /* GoogleSymbolUtilities.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		224288662EB54F3A96ED81A260242040 /* Pods-CCIP */ = {
+			isa = PBXGroup;
+			children = (
+				5A00CE01FE4E06323021099A8DEA9DC7 /* Info.plist */,
+				C92361B0E6E5A472B5604DAEFFA95C54 /* Pods-CCIP.modulemap */,
+				3F19743AF017525896C97467762462AA /* Pods-CCIP-acknowledgements.markdown */,
+				E20A38E2E8C1F6BD640AD8B19A6C9498 /* Pods-CCIP-acknowledgements.plist */,
+				8F844CDCD57D047D5F3814C59909E9D8 /* Pods-CCIP-dummy.m */,
+				9160B80BE78072CE651E75EF51FE39F4 /* Pods-CCIP-frameworks.sh */,
+				081923893D972983042C17B3EB5C2A0F /* Pods-CCIP-resources.sh */,
+				407AB414BF003A508286D3A3B4C68680 /* Pods-CCIP-umbrella.h */,
+				6156A4220A95AB1931B9C9CE4D5968D4 /* Pods-CCIP.debug.xcconfig */,
+				FED333F71BA244C276B35C2271C36CFF /* Pods-CCIP.release.xcconfig */,
+			);
+			name = "Pods-CCIP";
+			path = "Target Support Files/Pods-CCIP";
 			sourceTree = "<group>";
 		};
 		26966CE0E152A3DB7C682A4BB78A0C1F /* GoogleInterchangeUtilities */ = {
@@ -166,15 +168,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4EC36C2FE8BE2C0C8EC91D294A643120 /* Support Files */ = {
+		4B8C921EBD4950EF50AD3046DB52F1B3 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A671D67FBAA8B0B55F8A904E176C3C70 /* UICKeyChainStore.xcconfig */,
-				F40A71921BD1D92308D3A4B947CC210D /* UICKeyChainStore-dummy.m */,
-				84B5E7735B20961384B95A9508E0348A /* UICKeyChainStore-prefix.pch */,
+				224288662EB54F3A96ED81A260242040 /* Pods-CCIP */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/UICKeyChainStore";
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		55C6A3BFBA9E496A0814D3791DF4CEA4 /* Pods */ = {
@@ -188,7 +187,7 @@
 				FF9713850CDD16697D7052FD7E45D529 /* GoogleSymbolUtilities */,
 				843918FFA59D6A827F5E39B82233052C /* GoogleUtilities */,
 				574612E049ADA4D525F1F835D939A68A /* OneSignal */,
-				E4D0046D71EBF39CA975A398B7B1884B /* UICKeyChainStore */,
+				65585B42C1B850FC9B84250C6F619E4C /* UICKeyChainStore */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -207,6 +206,16 @@
 				E70DAA250524DA47E10B2B58AD790076 /* FirebaseInstanceID.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		65585B42C1B850FC9B84250C6F619E4C /* UICKeyChainStore */ = {
+			isa = PBXGroup;
+			children = (
+				08059AB91AB8F9F52FEA96905648C2DB /* UICKeyChainStore.h */,
+				77E9188FCA3CA7314B994B1F41F0730F /* UICKeyChainStore.m */,
+				7E04D9B55C5CF7673D75EFE1A6F8EF80 /* Support Files */,
+			);
+			path = UICKeyChainStore;
 			sourceTree = "<group>";
 		};
 		6E5D8B4D22BCD9C6716A7A8E99FAAECC /* Core */ = {
@@ -235,9 +244,23 @@
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
 				55C6A3BFBA9E496A0814D3791DF4CEA4 /* Pods */,
-				111BBEF2C7250FE28929EBCBE2C2B8E9 /* Products */,
-				D204AEB48C2BAE2F529696F50FD6C3E2 /* Targets Support Files */,
+				C3F88366B2C475A47A5724E81A87B359 /* Products */,
+				4B8C921EBD4950EF50AD3046DB52F1B3 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		7E04D9B55C5CF7673D75EFE1A6F8EF80 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				91B393BC902DF1C06666FE365F142B33 /* Info.plist */,
+				5297FE62856A93A1A62866A67FFEB58A /* UICKeyChainStore.modulemap */,
+				A062AEA39E6EB2FDEE4E6631B7A4C670 /* UICKeyChainStore.xcconfig */,
+				08CD9A9F124758664A37E8ACEF323020 /* UICKeyChainStore-dummy.m */,
+				234E2D763AC76FF82F488085C9EDB9A9 /* UICKeyChainStore-prefix.pch */,
+				2F10D77AA2BF328BA516B89D073D22FD /* UICKeyChainStore-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/UICKeyChainStore";
 			sourceTree = "<group>";
 		};
 		7FFC9E8D8F5F878B5D1601CE45E3EBF2 /* Google */ = {
@@ -315,6 +338,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C3F88366B2C475A47A5724E81A87B359 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F79B8222D9BA1041B9516DDFC0A685D4 /* Pods_CCIP.framework */,
+				77538A48C8F270E07694CDB8DB3F8461 /* UICKeyChainStore.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D0372ECA40E44BC3ABFFA9F342FEAC14 /* FirebaseInstanceID */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,30 +356,12 @@
 			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
-		D204AEB48C2BAE2F529696F50FD6C3E2 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				10EEC5B63A431DE5FCFF3C22DF1434C4 /* Pods-CCIP */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
 		D4628FA5AB528F0BE1BC85D4076DCB37 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				2430942746B7FB94145B934CB30E8E90 /* FirebaseAnalytics.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E4D0046D71EBF39CA975A398B7B1884B /* UICKeyChainStore */ = {
-			isa = PBXGroup;
-			children = (
-				BBB8CFB08A769433C54E9F7CA4303976 /* UICKeyChainStore.h */,
-				5081C742E23D3559C347113D5DF44E9A /* UICKeyChainStore.m */,
-				4EC36C2FE8BE2C0C8EC91D294A643120 /* Support Files */,
-			);
-			path = UICKeyChainStore;
 			sourceTree = "<group>";
 		};
 		FF9713850CDD16697D7052FD7E45D529 /* GoogleSymbolUtilities */ = {
@@ -361,24 +375,33 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		FF08BB99C867881C046C1399BCE1B0AC /* Headers */ = {
+		13081B430A729DBA318C42C05D6035B2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B31801262850F3702730015A40EA3C9 /* UICKeyChainStore.h in Headers */,
+				D196CDBBFED3D23625F222E4D5BA54A3 /* Pods-CCIP-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85B3D50DD90A9053DBD189BD8552941A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B570C8356DBE386C9DF6711A58D5ADD7 /* UICKeyChainStore-umbrella.h in Headers */,
+				AA3704FDBD788C135191450812A7ECF4 /* UICKeyChainStore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		DAD2171A8B81113C78335C72C6858FF7 /* UICKeyChainStore */ = {
+		A4AF1721838338D2C309D68446698CFE /* UICKeyChainStore */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 43A80FEE07ACC18988E7A38162106963 /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */;
+			buildConfigurationList = 8A3891BAED454CE84D0EDF2CC495B55B /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */;
 			buildPhases = (
-				EE73A620018DFEBCA2A4D06BF2F547DD /* Sources */,
-				C6D629185F2F822CBCCFA9D63819BA7C /* Frameworks */,
-				FF08BB99C867881C046C1399BCE1B0AC /* Headers */,
+				49B5298313C50E64B9D96756FC5AAB9B /* Sources */,
+				74F73B19558C4CDE98A6A36EDB0A0E05 /* Frameworks */,
+				85B3D50DD90A9053DBD189BD8552941A /* Headers */,
 			);
 			buildRules = (
 			);
@@ -386,25 +409,26 @@
 			);
 			name = UICKeyChainStore;
 			productName = UICKeyChainStore;
-			productReference = 567EA036B72E1648A4F18259D962466A /* libUICKeyChainStore.a */;
-			productType = "com.apple.product-type.library.static";
+			productReference = 77538A48C8F270E07694CDB8DB3F8461 /* UICKeyChainStore.framework */;
+			productType = "com.apple.product-type.framework";
 		};
-		FC5AEF36C3B22CE633CB9A501FDA68C6 /* Pods-CCIP */ = {
+		A5FE26D49337338DA2031F46632234AB /* Pods-CCIP */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B6EAF719791D9B71BBF97041C2EE47AF /* Build configuration list for PBXNativeTarget "Pods-CCIP" */;
+			buildConfigurationList = 24DF65E61C43EC97009ACF233BA4BC99 /* Build configuration list for PBXNativeTarget "Pods-CCIP" */;
 			buildPhases = (
-				DB658F5FBEAC8257F97564EF9D6074AB /* Sources */,
-				26808BD2A34EC2639BBBB7B4A85B332C /* Frameworks */,
+				9711A5AEED072D72B32B3E85058CC360 /* Sources */,
+				6B5CE6A69934B35538059B1A49354ED0 /* Frameworks */,
+				13081B430A729DBA318C42C05D6035B2 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				63FB34EE9113F1B92EA9ED9A6563D378 /* PBXTargetDependency */,
+				0AA5E95C62B7240D167E5D69AE2E46BB /* PBXTargetDependency */,
 			);
 			name = "Pods-CCIP";
 			productName = "Pods-CCIP";
-			productReference = 5B27E1D1AD05059356E5A453997645A4 /* libPods-CCIP.a */;
-			productType = "com.apple.product-type.library.static";
+			productReference = F79B8222D9BA1041B9516DDFC0A685D4 /* Pods_CCIP.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -414,6 +438,16 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					A4AF1721838338D2C309D68446698CFE = {
+						DevelopmentTeam = H2LA3QW9Y2;
+						DevelopmentTeamName = "Koo Foundation Sun Yat-Sen Cancer Center";
+					};
+					A5FE26D49337338DA2031F46632234AB = {
+						DevelopmentTeam = H2LA3QW9Y2;
+						DevelopmentTeamName = "Koo Foundation Sun Yat-Sen Cancer Center";
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -423,46 +457,141 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 111BBEF2C7250FE28929EBCBE2C2B8E9 /* Products */;
+			productRefGroup = C3F88366B2C475A47A5724E81A87B359 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FC5AEF36C3B22CE633CB9A501FDA68C6 /* Pods-CCIP */,
-				DAD2171A8B81113C78335C72C6858FF7 /* UICKeyChainStore */,
+				A5FE26D49337338DA2031F46632234AB /* Pods-CCIP */,
+				A4AF1721838338D2C309D68446698CFE /* UICKeyChainStore */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		DB658F5FBEAC8257F97564EF9D6074AB /* Sources */ = {
+		49B5298313C50E64B9D96756FC5AAB9B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16175B41E05DC58B032E2809326C0374 /* Pods-CCIP-dummy.m in Sources */,
+				07F5DF866D919ABCD39C9D0C7CE54AA2 /* UICKeyChainStore-dummy.m in Sources */,
+				495A02318AC240D04BDB69EBADA164B8 /* UICKeyChainStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EE73A620018DFEBCA2A4D06BF2F547DD /* Sources */ = {
+		9711A5AEED072D72B32B3E85058CC360 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5300A6A9FAF2D7C2EB71B758F9A76DD /* UICKeyChainStore-dummy.m in Sources */,
-				969BD253DE24D9E8A469A97A457B2072 /* UICKeyChainStore.m in Sources */,
+				1AAFB1D41619A4BD9C1D2602F0D24064 /* Pods-CCIP-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		63FB34EE9113F1B92EA9ED9A6563D378 /* PBXTargetDependency */ = {
+		0AA5E95C62B7240D167E5D69AE2E46BB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = UICKeyChainStore;
-			target = DAD2171A8B81113C78335C72C6858FF7 /* UICKeyChainStore */;
-			targetProxy = E46A249A912241476DFAC62A2DC2B219 /* PBXContainerItemProxy */;
+			target = A4AF1721838338D2C309D68446698CFE /* UICKeyChainStore */;
+			targetProxy = DAB0214AFAB286EFC2C806631D2E2F09 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		1543D6A61FB102DB225F302211598CC5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A062AEA39E6EB2FDEE4E6631B7A4C670 /* UICKeyChainStore.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/UICKeyChainStore/UICKeyChainStore-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UICKeyChainStore/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/UICKeyChainStore/UICKeyChainStore.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = UICKeyChainStore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1FBE0A5C87BAF9F024CAF7D759E84E80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FED333F71BA244C276B35C2271C36CFF /* Pods-CCIP.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CCIP/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CCIP/Pods-CCIP.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CCIP;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3A374AAED417A8815521AE2449708082 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6156A4220A95AB1931B9C9CE4D5968D4 /* Pods-CCIP.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CCIP/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CCIP/Pods-CCIP.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CCIP;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		47BEF9D903506B003EA5C2B249729489 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -505,26 +634,34 @@
 			};
 			name = Debug;
 		};
-		79507B0E3F97F7703177A73540619DF6 /* Release */ = {
+		542D102484A9F2D99B9CA03D9471890A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A671D67FBAA8B0B55F8A904E176C3C70 /* UICKeyChainStore.xcconfig */;
+			baseConfigurationReference = A062AEA39E6EB2FDEE4E6631B7A4C670 /* UICKeyChainStore.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/UICKeyChainStore/UICKeyChainStore-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
+				INFOPLIST_FILE = "Target Support Files/UICKeyChainStore/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/UICKeyChainStore/UICKeyChainStore.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = UICKeyChainStore;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		AAF678CED40D3499169D10F63CA0719E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -564,72 +701,18 @@
 			};
 			name = Release;
 		};
-		D0A951887104262CE404AE7984E5F312 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A281115F9FE4A3272B1D95E2B725EFF6 /* Pods-CCIP.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		DF73B00B8FCD079C42BCB3A32C28CF31 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D9E4BE288273924465F8EBAB7C57C4F /* Pods-CCIP.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		EB33B36CEA5CC07822A7370CA164D1F9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A671D67FBAA8B0B55F8A904E176C3C70 /* UICKeyChainStore.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/UICKeyChainStore/UICKeyChainStore-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		24DF65E61C43EC97009ACF233BA4BC99 /* Build configuration list for PBXNativeTarget "Pods-CCIP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A374AAED417A8815521AE2449708082 /* Debug */,
+				1FBE0A5C87BAF9F024CAF7D759E84E80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -639,20 +722,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		43A80FEE07ACC18988E7A38162106963 /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */ = {
+		8A3891BAED454CE84D0EDF2CC495B55B /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EB33B36CEA5CC07822A7370CA164D1F9 /* Debug */,
-				79507B0E3F97F7703177A73540619DF6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B6EAF719791D9B71BBF97041C2EE47AF /* Build configuration list for PBXNativeTarget "Pods-CCIP" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D0A951887104262CE404AE7984E5F312 /* Debug */,
-				DF73B00B8FCD079C42BCB3A32C28CF31 /* Release */,
+				542D102484A9F2D99B9CA03D9471890A /* Debug */,
+				1543D6A61FB102DB225F302211598CC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
