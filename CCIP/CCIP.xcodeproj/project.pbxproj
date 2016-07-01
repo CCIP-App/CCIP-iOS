@@ -212,7 +212,7 @@
 		6BA1A5241D1EFBE700D5924C /* CheckinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinView.m; sourceTree = "<group>"; };
 		6BA1A5261D1EFBF100D5924C /* InvalidNetworkMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvalidNetworkMessageView.h; sourceTree = "<group>"; };
 		6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvalidNetworkMessageView.m; sourceTree = "<group>"; };
-		6BD8EF271D1D73510094BE95 /* CCIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BD8EF271D1D73510094BE95 /* COSCUP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COSCUP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD8EF2B1D1D73510094BE95 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -311,7 +311,7 @@
 		6BD8EF281D1D73510094BE95 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6BD8EF271D1D73510094BE95 /* CCIP.app */,
+				6BD8EF271D1D73510094BE95 /* COSCUP.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -377,7 +377,7 @@
 			);
 			name = CCIP;
 			productName = CCIP;
-			productReference = 6BD8EF271D1D73510094BE95 /* CCIP.app */;
+			productReference = 6BD8EF271D1D73510094BE95 /* COSCUP.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -766,7 +766,7 @@
 				INFOPLIST_FILE = CCIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = COSCUP;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -782,7 +782,7 @@
 				INFOPLIST_FILE = CCIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = COSCUP;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
