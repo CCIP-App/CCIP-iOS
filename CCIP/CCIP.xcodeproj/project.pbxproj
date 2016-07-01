@@ -197,7 +197,6 @@
 		5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B1C69FA1D1D832F003C4865 /* GatewayWebService.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GatewayWebService.xcodeproj; path = ../GatewayWebService/GatewayWebService.xcodeproj; sourceTree = "<group>"; };
 		6B1C6A031D1D8422003C4865 /* MYCrypto.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MYCrypto.xcodeproj; path = ../MYCrypto/MYCrypto.xcodeproj; sourceTree = "<group>"; };
-		6B4637151D1E89BA001A44B2 /* CCIP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CCIP.entitlements; sourceTree = "<group>"; };
 		6B53C6441D1ED5BE00EA8012 /* CheckinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckinViewController.xib; sourceTree = "<group>"; };
 		6B53C6591D1ED5CC00EA8012 /* StatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusViewController.xib; sourceTree = "<group>"; };
 		6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvalidNetworkMessageViewController.xib; sourceTree = "<group>"; };
@@ -346,7 +345,6 @@
 			isa = PBXGroup;
 			children = (
 				6BD8EF391D1D73510094BE95 /* Assets.xcassets */,
-				6B4637151D1E89BA001A44B2 /* CCIP.entitlements */,
 				5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */,
 				6BD8EF3E1D1D73510094BE95 /* Info.plist */,
 				6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */,
@@ -393,7 +391,7 @@
 				TargetAttributes = {
 					6BD8EF261D1D73510094BE95 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = H2LA3QW9Y2;
+						DevelopmentTeam = 293229L48V;
 						DevelopmentTeamName = "Koo Foundation Sun Yat-Sen Cancer Center";
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -762,12 +760,12 @@
 			baseConfigurationReference = 76097425B85D526316D2EF58 /* Pods-CCIP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = CCIP/CCIP.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CCIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -778,12 +776,12 @@
 			baseConfigurationReference = 1E39488D2E9378322A78E57B /* Pods-CCIP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = CCIP/CCIP.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = CCIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
