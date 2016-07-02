@@ -11,6 +11,7 @@
 #import "MasterViewController.h"
 #import "scenarioCell.h"
 #import "DetailViewController.h"
+#import "UIAlertController+additional.h"
 
 @interface MasterViewController ()
 
