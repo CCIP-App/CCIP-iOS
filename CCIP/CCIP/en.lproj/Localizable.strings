@@ -11,3 +11,9 @@
 "CheckinNotice" = "Notice!! Remaining will be deducted when click the \"Confirm use\" and disappeared in 1 minute.\n\nPlease double check it was instruct to click the \"Confirm use\" button by ours staff, thanks for your cooperation";
 "CheckinButton" = "Confirm use";
 "StatusNotice" = "It has been redeemed!!\n\nPlease stay in this screen view for ours staff to validate your ticket, thank you!";
+"NotAvailableTitle" = "Cannot click at now";
+"NotAvailableMessage" = "You will be G__G before we activate";
+"NotAvailableButtonOk" = "Okay";
+"ExpiredTitle" = "Already expired";
+"ExpiredMessage" = "T..o...o s..l.o..w .t..o cl..i.ck.. y..ou w.i..ll .cr..y";
+"ExpiredButtonOk" = "Crying";

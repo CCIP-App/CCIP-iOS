@@ -200,9 +200,9 @@
         // OUT TIME
         UIAlertController *ac = nil;
         if ([nowTime compare:availableTime] == NSOrderedAscending) {
-            ac = [UIAlertController alertOfTitle:@"現在不能按喔"
-                                     withMessage:@"提早太多按了你就會杯具了"
-                                cancelButtonText:@"好喔"
+            ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NotAvailableTitle", nil)
+                                     withMessage:NSLocalizedString(@"NotAvailableMessage", nil)
+                                cancelButtonText:NSLocalizedString(@"NotAvailableButtonOk", nil)
                                      cancelStyle:UIAlertActionStyleDestructive
                                     cancelAction:^(UIAlertAction *action) {
                                         [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO
@@ -210,9 +210,9 @@
                                     }];
         }
         if ([nowTime compare:expireTime] == NSOrderedDescending) {
-            ac = [UIAlertController alertOfTitle:@"早就不能按了"
-                                     withMessage:@"你太慢按了就只能哭哭了喔"
-                                cancelButtonText:@"哭哭"
+            ac = [UIAlertController alertOfTitle:NSLocalizedString(@"ExpiredTitle", nil)
+                                     withMessage:NSLocalizedString(@"ExpiredMessage", nil)
+                                cancelButtonText:NSLocalizedString(@"ExpiredButtonOk", nil)
                                      cancelStyle:UIAlertActionStyleDestructive
                                     cancelAction:^(UIAlertAction *action) {
                                         [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO
