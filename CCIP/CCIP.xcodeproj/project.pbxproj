@@ -14,6 +14,8 @@
 		6B1C6A191D1D843F003C4865 /* GatewayWebService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A001D1D8330003C4865 /* GatewayWebService.framework */; };
 		6B1C6A1A1D1D843F003C4865 /* GatewayWebService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A001D1D8330003C4865 /* GatewayWebService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B2CD5611D281D9400793194 /* UIAlertController+additional.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */; };
+		6B2CD5791D286E6F00793194 /* UIColor+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CD5781D286E6F00793194 /* UIColor+Transition.m */; };
+		6B2CD58B1D28780F00793194 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD58A1D28780F00793194 /* AudioToolbox.framework */; };
 		6B53C6461D1ED5BE00EA8012 /* CheckinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B53C6441D1ED5BE00EA8012 /* CheckinViewController.xib */; };
 		6B53C65B1D1ED5CC00EA8012 /* StatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B53C6591D1ED5CC00EA8012 /* StatusViewController.xib */; };
 		6B53C6601D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.xib */; };
@@ -200,6 +202,9 @@
 		6B1C6A031D1D8422003C4865 /* MYCrypto.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MYCrypto.xcodeproj; path = ../MYCrypto/MYCrypto.xcodeproj; sourceTree = "<group>"; };
 		6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+additional.m"; sourceTree = "<group>"; };
 		6B2CD5601D281D9400793194 /* UIAlertController+additional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+additional.h"; sourceTree = "<group>"; };
+		6B2CD5771D286E6F00793194 /* UIColor+Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Transition.h"; sourceTree = "<group>"; };
+		6B2CD5781D286E6F00793194 /* UIColor+Transition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Transition.m"; sourceTree = "<group>"; };
+		6B2CD58A1D28780F00793194 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6B53C6441D1ED5BE00EA8012 /* CheckinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckinViewController.xib; sourceTree = "<group>"; };
 		6B53C6591D1ED5CC00EA8012 /* StatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusViewController.xib; sourceTree = "<group>"; };
 		6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvalidNetworkMessageViewController.xib; sourceTree = "<group>"; };
@@ -231,6 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B2CD58B1D28780F00793194 /* AudioToolbox.framework in Frameworks */,
 				6B6ADB811D1D87230008AC84 /* CommonCrypto.framework in Frameworks */,
 				6B1C6A151D1D843E003C4865 /* MYCrypto.framework in Frameworks */,
 				6B1C6A191D1D843F003C4865 /* GatewayWebService.framework in Frameworks */,
@@ -253,6 +259,7 @@
 		267251DBF9C24B92F4EE80DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6B2CD58A1D28780F00793194 /* AudioToolbox.framework */,
 				87CA176D8DB3A92497387928 /* Pods_CCIP.framework */,
 			);
 			name = Frameworks;
@@ -324,6 +331,8 @@
 			children = (
 				6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */,
 				6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */,
+				6B2CD5771D286E6F00793194 /* UIColor+Transition.h */,
+				6B2CD5781D286E6F00793194 /* UIColor+Transition.m */,
 				6B2CD5601D281D9400793194 /* UIAlertController+additional.h */,
 				6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */,
 				6B7142AE1D1DB9820024EA45 /* MasterViewController.h */,
@@ -646,6 +655,7 @@
 				6BA1A5221D1EFBDC00D5924C /* StatusView.m in Sources */,
 				285C4C571D1E00A50040E628 /* DetailViewController.m in Sources */,
 				6BA1A5251D1EFBE700D5924C /* CheckinView.m in Sources */,
+				6B2CD5791D286E6F00793194 /* UIColor+Transition.m in Sources */,
 				6B2CD5611D281D9400793194 /* UIAlertController+additional.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

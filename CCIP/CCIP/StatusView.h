@@ -11,5 +11,8 @@
 @interface StatusView : UIView
 
 @property (strong, nonatomic) NSDictionary *scenario;
+@property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
+
+- (void)startCountDown;
 
 @end

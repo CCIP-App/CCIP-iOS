@@ -38,6 +38,12 @@
             NSLog(@"%@", json);
             UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:@"StatusViewController"
                                                                                         bundle:nil];
+            [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
+            UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                        target:self
+                                                                                        action:@selector(gotoTop)];
+            [detailViewController.navigationItem setLeftBarButtonItem:backButton];
+            [detailViewController.navigationItem setLeftItemsSupplementBackButton:NO];
             SEL setScenarioValue = NSSelectorFromString(@"setScenario:");
             if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
 #pragma clang diagnostic push
@@ -46,10 +52,6 @@
                                                 withObject:self.scenario];
 #pragma clang diagnostic pop
             }
-            [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
-            UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(gotoTop)];
-            [detailViewController.navigationItem setLeftBarButtonItem:backButton];
-            [detailViewController.navigationItem setLeftItemsSupplementBackButton:NO];
             UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
             [self.appDelegate.splitViewController showDetailViewController:detailNavigationController
                                                                     sender:self];

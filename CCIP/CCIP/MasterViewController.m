@@ -165,12 +165,18 @@
     NSString *vcName = isUsed ? @"StatusViewController" : @"CheckinViewController";
     UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:vcName
                                                                                 bundle:nil];
+    [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
+    UIBarButtonItem *backButton = isUsed ? [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                         target:self
+                                                                                         action:@selector(gotoTop)] : self.splitViewController.displayModeButtonItem;
+    [detailViewController.navigationItem setLeftBarButtonItem:backButton];
+    [detailViewController.navigationItem setLeftItemsSupplementBackButton:!isUsed];
     
     NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] integerValue]];
     NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] integerValue]];
     NSDate *nowTime = [NSDate new];
 
-    if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
+    if (YES || [nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
         // IN TIME
         SEL setScenarioValue = NSSelectorFromString(@"setScenario:");
         if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
@@ -181,10 +187,6 @@
 #pragma clang diagnostic pop
         }
         [detailViewController setTitle:[scenario objectForKey:@"id"]];
-        [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
-        UIBarButtonItem *backButton = isUsed ? [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(gotoTop)] : self.splitViewController.displayModeButtonItem;
-        [detailViewController.navigationItem setLeftBarButtonItem:backButton];
-        [detailViewController.navigationItem setLeftItemsSupplementBackButton:!isUsed];
         UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
         [self.splitViewController showDetailViewController:detailNavigationController
                                                     sender:self];

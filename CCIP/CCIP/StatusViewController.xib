@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16A201w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -15,18 +15,47 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatusView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oS9-zR-SVc">
-                    <rect key="frame" x="257" y="160" width="86" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oS9-zR-SVc">
+                    <rect key="frame" x="20" y="100" width="560" height="65"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="vHM-y8-5KT"/>
+                    </constraints>
+                    <string key="text">您已經使用成功！
+
+請停留在此畫面給工作人員確認，謝謝！</string>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60.000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nfd-GN-PZA">
+                    <rect key="frame" x="20" y="265" width="560" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="ifI-4f-xS1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="80"/>
+                    <color key="textColor" red="0.0" green="0.40000000000000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="oS9-zR-SVc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="0eI-P3-n90"/>
+                <constraint firstItem="Nfd-GN-PZA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="OPm-Pp-RAB"/>
+                <constraint firstAttribute="trailing" secondItem="oS9-zR-SVc" secondAttribute="trailing" constant="20" id="SUG-FS-E5W"/>
                 <constraint firstItem="oS9-zR-SVc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="WUK-nx-dUr"/>
                 <constraint firstItem="oS9-zR-SVc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="160" id="Z5v-YS-bk8"/>
+                <constraint firstItem="oS9-zR-SVc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="ZRk-E7-8be"/>
+                <constraint firstAttribute="trailing" secondItem="Nfd-GN-PZA" secondAttribute="trailing" constant="20" id="l5Y-2g-Ipv"/>
+                <constraint firstItem="Nfd-GN-PZA" firstAttribute="top" secondItem="oS9-zR-SVc" secondAttribute="bottom" constant="100" id="yID-pY-ZaC"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Z5v-YS-bk8"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="countdownLabel" destination="Nfd-GN-PZA" id="NfQ-Ik-As1"/>
+            </connections>
         </view>
     </objects>
 </document>
