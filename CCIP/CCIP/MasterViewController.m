@@ -120,13 +120,19 @@
     }
     
     NSDictionary *scenario = [self.scenarios objectAtIndex:indexPath.row];
-    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    [cell.scenarioLabel setText:[scenario objectForKey:@"id"]];
-    
     NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] integerValue]];
     NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] integerValue]];
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"MM/dd HH:mm"];
+    NSDate *nowTime = [NSDate new];
+    if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
+        // IN TIME
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    } else {
+        // OUT TIME
+        [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
+    }
+    [cell.scenarioLabel setText:[scenario objectForKey:@"id"]];
     [cell.timeRangeLabel setText:[NSString stringWithFormat:@"%@ ~ %@", [formatter stringFromDate:availableTime], [formatter stringFromDate:expireTime]]];
     
     NSString *usedTimeString = @"";
@@ -149,14 +155,6 @@
         }
     }
     [cell.usedTimeLabel setText:usedTimeString];
-    NSDate *nowTime = [NSDate new];
-    if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
-        // IN TIME
-    }
-    else {
-        // OUT TIME
-        [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
-    }
     
     return cell;
 }
@@ -198,9 +196,30 @@
                                              forEvent:nil];
     } else {
         // OUT TIME
-        // TODO: Alert
-        [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO
-                                                        animated:YES];
+        UIAlertController *ac = nil;
+        if ([nowTime compare:availableTime] == NSOrderedAscending) {
+            ac = [UIAlertController alertOfTitle:@"現在不能按喔"
+                                                        withMessage:@"提早太多按了你就會杯具了"
+                                                   cancelButtonText:@"好喔"
+                                                        cancelStyle:UIAlertActionStyleDestructive
+                                                       cancelAction:^(UIAlertAction *action) {
+                                                           [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO
+                                                                                                           animated:YES];
+            }];
+        }
+        if ([nowTime compare:expireTime] == NSOrderedDescending) {
+            ac = [UIAlertController alertOfTitle:@"早就不能按了"
+                                     withMessage:@"你太慢按了就只能哭哭了喔"
+                                cancelButtonText:@"哭哭"
+                                     cancelStyle:UIAlertActionStyleDestructive
+                                    cancelAction:^(UIAlertAction *action) {
+                                        [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO
+                                                                                        animated:YES];
+                                    }];
+        }
+        if (ac != nil) {
+            [ac showAlert:^{}];
+        }
     }
 }
 
