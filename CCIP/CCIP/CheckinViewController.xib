@@ -64,6 +64,7 @@
             </variation>
             <connections>
                 <outlet property="checkinBtn" destination="BJW-Ma-5gI" id="MGk-xs-Rkx"/>
+                <outlet property="checkinMessabeLabel" destination="0HX-zb-DL9" id="70m-ta-zkG"/>
             </connections>
         </view>
     </objects>

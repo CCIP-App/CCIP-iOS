@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSDictionary *scenario;
 
+@property (weak, nonatomic) IBOutlet UILabel *checkinMessabeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *checkinBtn;
 
 - (IBAction)checkinBtnEvent:(id)sender;

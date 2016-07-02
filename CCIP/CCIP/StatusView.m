@@ -36,6 +36,7 @@
 - (void)setScenario:(NSDictionary *)scenario {
     _scenario = scenario;
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [self.statusMessageLabel setText:NSLocalizedString(@"StatusNotice", nil)];
     [self.countdownLabel setHidden:YES];
     if ([[self.scenario objectForKey:@"countdown"] floatValue] > 0) {
         [self.countdownLabel setHidden:NO];

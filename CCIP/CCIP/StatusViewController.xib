@@ -15,25 +15,25 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oS9-zR-SVc">
-                    <rect key="frame" x="20" y="100" width="560" height="65"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60.000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nfd-GN-PZA">
+                    <rect key="frame" x="20" y="300" width="560" height="120"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="65" id="vHM-y8-5KT"/>
+                        <constraint firstAttribute="height" constant="120" id="ifI-4f-xS1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="80"/>
+                    <color key="textColor" red="0.0" green="0.40000000000000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oS9-zR-SVc">
+                    <rect key="frame" x="20" y="100" width="560" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="vHM-y8-5KT"/>
                     </constraints>
                     <string key="text">您已經使用成功！
 
 請停留在此畫面給工作人員確認，謝謝！</string>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60.000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nfd-GN-PZA">
-                    <rect key="frame" x="20" y="265" width="560" height="120"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="120" id="ifI-4f-xS1"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="80"/>
-                    <color key="textColor" red="0.0" green="0.40000000000000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -55,6 +55,7 @@
             </variation>
             <connections>
                 <outlet property="countdownLabel" destination="Nfd-GN-PZA" id="NfQ-Ik-As1"/>
+                <outlet property="statusMessageLabel" destination="oS9-zR-SVc" id="MOY-vn-AlK"/>
             </connections>
         </view>
     </objects>

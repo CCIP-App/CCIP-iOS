@@ -30,8 +30,15 @@
     [((UINavigationController *)[self.appDelegate.splitViewController.viewControllers firstObject]) popToRootViewControllerAnimated:YES];
 }
 
-- (IBAction)checkinBtnEvent:(id)sender {
+- (void)setScenario:(NSDictionary *)scenario {
+    _scenario = scenario;
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [self.checkinMessabeLabel setText:NSLocalizedString(@"CheckinNotice", nil)];
+    [self.checkinBtn setTitle:NSLocalizedString(@"CheckinButton", nil)
+                     forState:UIControlStateNormal];
+}
+
+- (IBAction)checkinBtnEvent:(id)sender {
     GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE(self.appDelegate.accessToken, [self.scenario objectForKey:@"id"])];
     [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
         if (json != nil) {

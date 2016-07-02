@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  CCIP
+
+  Created by 腹黒い茶 on 2016/07/03.
+  Copyright © 2016年 CPRTeam. All rights reserved.
+*/
+
+
+"Title" = "COSCUP 2016";
+"CheckinNotice" = "請注意，在點下『確認使用』之後將會將可用餘額扣除，並且在一分鐘之內消失。\n\n請確認大會工作人員已經指示您按下『確認使用』按鈕後再按下按鈕，謝謝！";
+"CheckinButton" = "確認使用";
+"StatusNotice" = "您已經使用成功！\n\n請停留在此畫面給工作人員確認，謝謝！";
