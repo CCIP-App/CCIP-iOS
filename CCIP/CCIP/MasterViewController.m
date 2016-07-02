@@ -130,7 +130,8 @@
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             [cell setUserInteractionEnabled:NO];
         }
-    } else if ([[scenario allKeys] containsObject:@"used"]) {
+    }
+    if ([[scenario allKeys] containsObject:@"used"]) {
         NSInteger usedTime = [[scenario objectForKey:@"used"] integerValue];
         if (usedTime > 0) {
             [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
@@ -140,6 +141,15 @@
         }
     }
     [cell.usedTimeLabel setText:usedTimeString];
+    NSDate *nowTime = [NSDate new];
+    if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
+        // IN TIME
+    }
+    else {
+        // OUT TIME
+        [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
+    }
+    
     return cell;
 }
 
@@ -149,28 +159,41 @@
     NSString *vcName = isUsed ? @"StatusViewController" : @"CheckinViewController";
     UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:vcName
                                                                                 bundle:nil];
-    SEL setScenarioValue = NSSelectorFromString(@"setScenario:");
-    if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
+    
+    NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] integerValue]];
+    NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] integerValue]];
+    NSDate *nowTime = [NSDate new];
+
+    if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
+        // IN TIME
+        SEL setScenarioValue = NSSelectorFromString(@"setScenario:");
+        if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [detailViewController.view performSelector:setScenarioValue
-                                        withObject:scenario];
+            [detailViewController.view performSelector:setScenarioValue
+                                            withObject:scenario];
 #pragma clang diagnostic pop
+        }
+        [detailViewController setTitle:[scenario objectForKey:@"id"]];
+        [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
+        UIBarButtonItem *backButton = isUsed ? [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(gotoTop)] : self.splitViewController.displayModeButtonItem;
+        [detailViewController.navigationItem setLeftBarButtonItem:backButton];
+        [detailViewController.navigationItem setLeftItemsSupplementBackButton:!isUsed];
+        UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+        [self.splitViewController showDetailViewController:detailNavigationController
+                                                    sender:self];
+        // for hack to toggle the master view in split view on portrait iPad
+        UIBarButtonItem *barButtonItem = [self.splitViewController displayModeButtonItem];
+        [[UIApplication sharedApplication] sendAction:[barButtonItem action]
+                                                   to:[barButtonItem target]
+                                                 from:nil
+                                             forEvent:nil];
+    } else {
+        // OUT TIME
+        // TODO: Alert
+        [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO
+                                                        animated:YES];
     }
-    [detailViewController setTitle:[scenario objectForKey:@"id"]];
-    [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
-    UIBarButtonItem *backButton = isUsed ? [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(gotoTop)] : self.splitViewController.displayModeButtonItem;
-    [detailViewController.navigationItem setLeftBarButtonItem:backButton];
-    [detailViewController.navigationItem setLeftItemsSupplementBackButton:!isUsed];
-    UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-    [self.splitViewController showDetailViewController:detailNavigationController
-                                                sender:self];
-    // for hack to toggle the master view in split view on portrait iPad
-    UIBarButtonItem *barButtonItem = [self.splitViewController displayModeButtonItem];
-    [[UIApplication sharedApplication] sendAction:[barButtonItem action]
-                                               to:[barButtonItem target]
-                                             from:nil
-                                         forEvent:nil];
 }
 
 - (void)gotoTop {
