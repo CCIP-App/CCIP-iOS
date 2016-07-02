@@ -144,8 +144,11 @@
                                                                                 bundle:nil];
     SEL setScenarioValue = NSSelectorFromString(@"setScenario:");
     if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         [detailViewController.view performSelector:setScenarioValue
                                         withObject:scenario];
+#pragma clang diagnostic pop
     }
     [detailViewController setTitle:[scenario objectForKey:@"id"]];
     [detailViewController.view setBackgroundColor:[UIColor whiteColor]];

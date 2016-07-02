@@ -40,8 +40,11 @@
                                                                                         bundle:nil];
             SEL setScenarioValue = NSSelectorFromString(@"setScenario:");
             if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
                 [detailViewController.view performSelector:setScenarioValue
                                                 withObject:self.scenario];
+#pragma clang diagnostic pop
             }
             [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
             UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(gotoTop)];
