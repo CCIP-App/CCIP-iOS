@@ -95,6 +95,10 @@
     return [self.scenarios count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 66.0f;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *CellIdentifier = @"scenario";
     scenarioCell *cell = nil;
@@ -110,6 +114,12 @@
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     [cell.scenarioLabel setText:[scenario objectForKey:@"id"]];
     
+    NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] integerValue]];
+    NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] integerValue]];
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [cell.timeRangeLabel setText:[NSString stringWithFormat:@"%@ ~ %@", [formatter stringFromDate:availableTime], [formatter stringFromDate:expireTime]]];
+    
     if ([[scenario allKeys] containsObject:@"disabled"]) {
         if ([[scenario objectForKey:@"disabled"] length] > 0) {
             [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
@@ -118,8 +128,7 @@
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             [cell setUserInteractionEnabled:NO];
         }
-    }
-    else if ([[scenario allKeys] containsObject:@"used"]) {
+    } else if ([[scenario allKeys] containsObject:@"used"]) {
         if ([scenario objectForKey:@"used"] > 0) {
             [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
         }

@@ -11,5 +11,6 @@
 @interface scenarioCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *scenarioLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeRangeLabel;
 
 @end
