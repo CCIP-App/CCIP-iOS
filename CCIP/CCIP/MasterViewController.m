@@ -17,6 +17,7 @@
 
 @property NSMutableArray *objects;
 @property (strong, nonatomic) AppDelegate *appDelegate;
+@property (strong, nonatomic) NSDictionary *userInfo;
 @property (strong, nonatomic) NSArray *scenarios;
 
 @end
@@ -46,6 +47,9 @@
     [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
         if (json != nil) {
             NSLog(@"%@", json);
+            NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
+            [userInfo removeObjectForKey:@"scenarios"];
+            self.userInfo = [NSDictionary dictionaryWithDictionary:userInfo];
             self.scenarios = [json objectForKey:@"scenarios"];
             [self.tableView reloadData];
         }
@@ -98,6 +102,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 66.0f;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return self.userInfo != nil ? [self.userInfo objectForKey:@"user_id"] : @"";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
