@@ -117,7 +117,7 @@
     NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] integerValue]];
     NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] integerValue]];
     NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [formatter setDateFormat:@"MM/dd HH:mm"];
     [cell.timeRangeLabel setText:[NSString stringWithFormat:@"%@ ~ %@", [formatter stringFromDate:availableTime], [formatter stringFromDate:expireTime]]];
     
     if ([[scenario allKeys] containsObject:@"disabled"]) {
