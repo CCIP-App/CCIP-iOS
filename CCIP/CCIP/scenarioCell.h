@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *scenarioLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeRangeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *usedTimeLabel;
 
 @end

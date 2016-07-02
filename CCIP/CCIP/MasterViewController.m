@@ -120,6 +120,7 @@
     [formatter setDateFormat:@"MM/dd HH:mm"];
     [cell.timeRangeLabel setText:[NSString stringWithFormat:@"%@ ~ %@", [formatter stringFromDate:availableTime], [formatter stringFromDate:expireTime]]];
     
+    NSString *usedTimeString = @"";
     if ([[scenario allKeys] containsObject:@"disabled"]) {
         if ([[scenario objectForKey:@"disabled"] length] > 0) {
             [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
@@ -129,10 +130,15 @@
             [cell setUserInteractionEnabled:NO];
         }
     } else if ([[scenario allKeys] containsObject:@"used"]) {
-        if ([scenario objectForKey:@"used"] > 0) {
+        NSInteger usedTime = [[scenario objectForKey:@"used"] integerValue];
+        if (usedTime > 0) {
             [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            [formatter setDateFormat:@"MM/dd HH:mm:ss"];
+            usedTimeString = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:usedTime]];
+            [formatter setDateFormat:@"MM/dd HH:mm"];
         }
     }
+    [cell.usedTimeLabel setText:usedTimeString];
     return cell;
 }
 
