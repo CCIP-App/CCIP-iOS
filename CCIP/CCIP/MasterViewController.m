@@ -199,13 +199,13 @@
         UIAlertController *ac = nil;
         if ([nowTime compare:availableTime] == NSOrderedAscending) {
             ac = [UIAlertController alertOfTitle:@"現在不能按喔"
-                                                        withMessage:@"提早太多按了你就會杯具了"
-                                                   cancelButtonText:@"好喔"
-                                                        cancelStyle:UIAlertActionStyleDestructive
-                                                       cancelAction:^(UIAlertAction *action) {
-                                                           [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO
-                                                                                                           animated:YES];
-            }];
+                                     withMessage:@"提早太多按了你就會杯具了"
+                                cancelButtonText:@"好喔"
+                                     cancelStyle:UIAlertActionStyleDestructive
+                                    cancelAction:^(UIAlertAction *action) {
+                                        [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO
+                                                                                        animated:YES];
+                                    }];
         }
         if ([nowTime compare:expireTime] == NSOrderedDescending) {
             ac = [UIAlertController alertOfTitle:@"早就不能按了"
