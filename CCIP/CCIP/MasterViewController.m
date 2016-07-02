@@ -176,7 +176,7 @@
     NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] integerValue]];
     NSDate *nowTime = [NSDate new];
 
-    if (YES || [nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
+    if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
         // IN TIME
         SEL setScenarioValue = NSSelectorFromString(@"setScenario:");
         if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
