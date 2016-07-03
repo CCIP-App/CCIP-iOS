@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## FirebaseAnalytics
 
-Copyright 2016 Google Inc.
+Copyright 2016 Google
 
 ## FirebaseInstanceID
 
