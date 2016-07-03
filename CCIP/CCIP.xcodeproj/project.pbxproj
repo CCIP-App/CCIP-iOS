@@ -11,6 +11,8 @@
 		28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */; };
 		28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
+		5FF2B11E1D28B19600665DD9 /* IRCView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2B11C1D28B19600665DD9 /* IRCView.m */; };
+		5FF2B11F1D28B19600665DD9 /* IRCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF2B11D1D28B19600665DD9 /* IRCViewController.xib */; };
 		6B1C6A151D1D843E003C4865 /* MYCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A0C1D1D8422003C4865 /* MYCrypto.framework */; };
 		6B1C6A161D1D843E003C4865 /* MYCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A0C1D1D8422003C4865 /* MYCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B1C6A191D1D843F003C4865 /* GatewayWebService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C6A001D1D8330003C4865 /* GatewayWebService.framework */; };
@@ -205,6 +207,9 @@
 		28AF9A8F1D28A6E9006B378E /* RoomProgramsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomProgramsTableViewController.h; sourceTree = "<group>"; };
 		28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomProgramsTableViewController.m; sourceTree = "<group>"; };
 		5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5FF2B11B1D28B19600665DD9 /* IRCView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRCView.h; sourceTree = "<group>"; };
+		5FF2B11C1D28B19600665DD9 /* IRCView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRCView.m; sourceTree = "<group>"; };
+		5FF2B11D1D28B19600665DD9 /* IRCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRCViewController.xib; sourceTree = "<group>"; };
 		6B1C69FA1D1D832F003C4865 /* GatewayWebService.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GatewayWebService.xcodeproj; path = ../GatewayWebService/GatewayWebService.xcodeproj; sourceTree = "<group>"; };
 		6B1C6A031D1D8422003C4865 /* MYCrypto.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MYCrypto.xcodeproj; path = ../MYCrypto/MYCrypto.xcodeproj; sourceTree = "<group>"; };
 		6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+additional.m"; sourceTree = "<group>"; };
@@ -362,6 +367,9 @@
 				6BA1A5201D1EFBDC00D5924C /* StatusView.h */,
 				6BA1A5211D1EFBDC00D5924C /* StatusView.m */,
 				6B53C6591D1ED5CC00EA8012 /* StatusViewController.xib */,
+				5FF2B11B1D28B19600665DD9 /* IRCView.h */,
+				5FF2B11C1D28B19600665DD9 /* IRCView.m */,
+				5FF2B11D1D28B19600665DD9 /* IRCViewController.xib */,
 				28AF9A7C1D28A40A006B378E /* RoomLocationViewController.h */,
 				28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */,
 				28AF9A8F1D28A6E9006B378E /* RoomProgramsTableViewController.h */,
@@ -606,6 +614,7 @@
 				5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */,
 				6B2CD59A1D2886C900793194 /* Localizable.strings in Resources */,
 				6B53C6601D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.xib in Resources */,
+				5FF2B11F1D28B19600665DD9 /* IRCViewController.xib in Resources */,
 				6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -668,6 +677,7 @@
 				6BA1A5281D1EFBF100D5924C /* InvalidNetworkMessageView.m in Sources */,
 				28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */,
 				28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */,
+				5FF2B11E1D28B19600665DD9 /* IRCView.m in Sources */,
 				6B7142B61D1DBAFB0024EA45 /* scenarioCell.m in Sources */,
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
 				6BD8EF2C1D1D73510094BE95 /* main.m in Sources */,

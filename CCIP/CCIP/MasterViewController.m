@@ -110,7 +110,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -119,6 +119,8 @@
             return 2;
         case 1:
             return [self.scenarios count];
+        case 2:
+            return 1;
         default:
             return 0;
     }
@@ -134,6 +136,8 @@
             return @"議程";
         case 1:
             return self.userInfo != nil ? [self.userInfo objectForKey:@"user_id"] : @"";
+        case 2:
+            return @"其他";
         default:
             return 0;
     }
@@ -214,6 +218,23 @@
         
         return cell;
         // section 1 End
+    } else if (indexPath.section == 2) {
+        // section 0 Start
+        
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NULL];
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        
+        switch (indexPath.row) {
+            case 0:
+                [cell.textLabel setText:@"IRC"];
+                break;
+            default:
+                [cell.textLabel setText:@"null"];
+                break;
+        }
+        
+        return cell;
+        // section 0 End
     } else {
         // default
         
@@ -340,7 +361,30 @@
             }
             // OUT TIME End
         }
-        // section 1 start
+        // section 1 End
+    } else if (indexPath.section == 2) {
+        // section 2 Start
+        NSString *vcName = @"IRCViewController";
+        UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:vcName bundle:nil];
+        
+        SEL setScenarioValue = NSSelectorFromString(@"setURL:");
+        if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [detailViewController.view performSelector:setScenarioValue withObject:@{@"url": @"https://logbot.g0v.tw/channel/coscup/today"}];
+#pragma clang diagnostic pop
+        }
+        [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
+        UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+        [self.splitViewController showDetailViewController:detailNavigationController
+                                                    sender:self];
+        // for hack to toggle the master view in split view on portrait iPad
+        UIBarButtonItem *barButtonItem = [self.splitViewController displayModeButtonItem];
+        [[UIApplication sharedApplication] sendAction:[barButtonItem action]
+                                                   to:[barButtonItem target]
+                                                 from:nil
+                                             forEvent:nil];
+        // section 2 End
     }
 }
 
