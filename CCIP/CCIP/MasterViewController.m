@@ -12,6 +12,7 @@
 #import "scenarioCell.h"
 #import "DetailViewController.h"
 #import "UIAlertController+additional.h"
+#import "RoomLocationViewController.h"
 
 @interface MasterViewController ()
 
@@ -224,6 +225,51 @@
     
     if (indexPath.section == 0) {
         // section 0 Start
+        RoomLocationViewController *roomLocationView = NULL;
+        roomLocationView = [RoomLocationViewController new];
+        [roomLocationView setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
+        
+        NSMutableArray *rooms = [NSMutableArray new];
+        NSString *roomKey = @"";
+        
+        switch (indexPath.row) {
+            case 0:
+                roomKey = @"R";
+                break;
+            case 1:
+                roomKey = @"H";
+                break;
+            default:
+                roomKey = @"";
+                break;
+        }
+        
+        for (NSDictionary *dict in self.roomsJsonArray) {
+            if ([[[dict objectForKey:@"room"] substringToIndex:1] isEqualToString:roomKey]) {
+                [rooms addObject:dict];
+            }
+        }
+        
+        SEL setRoomsValue = NSSelectorFromString(@"setRooms:");
+        if ([roomLocationView canPerformAction:setRoomsValue withSender:nil]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [roomLocationView performSelector:setRoomsValue
+                                   withObject:rooms];
+#pragma clang diagnostic pop
+        }
+        
+        SEL setProgramsValue = NSSelectorFromString(@"setRoomPrograms:");
+        if ([roomLocationView canPerformAction:setProgramsValue withSender:nil]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [roomLocationView performSelector:setProgramsValue
+                                   withObject:self.programsJsonArray];
+#pragma clang diagnostic pop
+        }
+        
+        [self.splitViewController showDetailViewController:roomLocationView
+                                                    sender:self];
         
         // section 0 End
     } else if (indexPath.section == 1) {
