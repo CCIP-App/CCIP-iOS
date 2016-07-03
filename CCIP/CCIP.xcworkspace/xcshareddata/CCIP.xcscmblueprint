@@ -6,12 +6,14 @@
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "FE7792BCFB57366E10DA8FB0642DAA260E80C659" : 0,
     "AA4CAF1D869884DBD33213C565110D07C26E9C24" : 0,
+    "F5203A135CBC59107F981B12C20EBB5794D3BC69" : 0,
     "EDD5A95C0B9BA456AC83DA491C4680B9358547CF" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "778A4492-A399-445F-8ADB-58CD28E8B753",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "FE7792BCFB57366E10DA8FB0642DAA260E80C659" : "CCIP-iOS\/MYCrypto\/",
     "AA4CAF1D869884DBD33213C565110D07C26E9C24" : "CCIP-iOS\/",
+    "F5203A135CBC59107F981B12C20EBB5794D3BC69" : "CCIP-iOS\/Crypto\/",
     "EDD5A95C0B9BA456AC83DA491C4680B9358547CF" : "CCIP-iOS\/MYUtilities\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "CCIP",
@@ -27,6 +29,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Haraguroicha\/MYUtilities.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EDD5A95C0B9BA456AC83DA491C4680B9358547CF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Haraguroicha\/Crypto.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F5203A135CBC59107F981B12C20EBB5794D3BC69"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Haraguroicha\/MYCrypto.git",
