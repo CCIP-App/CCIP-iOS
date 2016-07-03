@@ -76,9 +76,9 @@
 		6B2CD5961D2886B100793194 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		6B2CD5981D2886C900793194 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6B2CD5991D2886C900793194 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6B2CD5AD1D28C92B00793194 /* CommonCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = CommonCrypto.framework; path = "/Users/Haraguroicha/Library/Developer/Xcode/DerivedData/CCIP-eixdiobqdgvjeyatjrwqlphovuqj/Build/Products/Debug-iphoneos/CommonCrypto.framework"; sourceTree = "<absolute>"; };
-		6B2CD5B01D28C92B00793194 /* MYCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = MYCrypto.framework; path = "/Users/Haraguroicha/Library/Developer/Xcode/DerivedData/CCIP-eixdiobqdgvjeyatjrwqlphovuqj/Build/Products/Debug-iphoneos/MYCrypto.framework"; sourceTree = "<absolute>"; };
-		6B2CD5B31D28C92B00793194 /* GatewayWebService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = GatewayWebService.framework; path = "/Users/Haraguroicha/Library/Developer/Xcode/DerivedData/CCIP-eixdiobqdgvjeyatjrwqlphovuqj/Build/Products/Debug-iphoneos/GatewayWebService.framework"; sourceTree = "<absolute>"; };
+		6B2CD5AD1D28C92B00793194 /* CommonCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B2CD5B01D28C92B00793194 /* MYCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MYCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B2CD5B31D28C92B00793194 /* GatewayWebService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GatewayWebService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B53C6441D1ED5BE00EA8012 /* CheckinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckinViewController.xib; sourceTree = "<group>"; };
 		6B53C6591D1ED5CC00EA8012 /* StatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusViewController.xib; sourceTree = "<group>"; };
 		6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvalidNetworkMessageViewController.xib; sourceTree = "<group>"; };
@@ -135,8 +135,8 @@
 				6B2CD5B31D28C92B00793194 /* GatewayWebService.framework */,
 				6B2CD5B01D28C92B00793194 /* MYCrypto.framework */,
 				6B2CD5AD1D28C92B00793194 /* CommonCrypto.framework */,
-				6B2CD58A1D28780F00793194 /* AudioToolbox.framework */,
 				87CA176D8DB3A92497387928 /* Pods_CCIP.framework */,
+				6B2CD58A1D28780F00793194 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
