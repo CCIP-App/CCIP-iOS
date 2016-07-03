@@ -36,16 +36,28 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="27p-FB-RcI">
+                    <rect key="frame" x="20" y="470" width="560" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="mTm-L3-2zw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="50"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="oS9-zR-SVc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="0eI-P3-n90"/>
+                <constraint firstAttribute="trailing" secondItem="27p-FB-RcI" secondAttribute="trailing" constant="20" id="2dD-01-01S"/>
                 <constraint firstItem="Nfd-GN-PZA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="OPm-Pp-RAB"/>
                 <constraint firstAttribute="trailing" secondItem="oS9-zR-SVc" secondAttribute="trailing" constant="20" id="SUG-FS-E5W"/>
                 <constraint firstItem="oS9-zR-SVc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="WUK-nx-dUr"/>
                 <constraint firstItem="oS9-zR-SVc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="160" id="Z5v-YS-bk8"/>
                 <constraint firstItem="oS9-zR-SVc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="ZRk-E7-8be"/>
+                <constraint firstItem="27p-FB-RcI" firstAttribute="top" secondItem="Nfd-GN-PZA" secondAttribute="bottom" constant="50" id="h7g-it-Xm5"/>
                 <constraint firstAttribute="trailing" secondItem="Nfd-GN-PZA" secondAttribute="trailing" constant="20" id="l5Y-2g-Ipv"/>
+                <constraint firstItem="27p-FB-RcI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="wkc-2z-5te"/>
                 <constraint firstItem="Nfd-GN-PZA" firstAttribute="top" secondItem="oS9-zR-SVc" secondAttribute="bottom" constant="100" id="yID-pY-ZaC"/>
             </constraints>
             <variation key="default">
@@ -55,6 +67,7 @@
             </variation>
             <connections>
                 <outlet property="countdownLabel" destination="Nfd-GN-PZA" id="NfQ-Ik-As1"/>
+                <outlet property="nowTimeLabel" destination="27p-FB-RcI" id="xpE-Mi-lIg"/>
                 <outlet property="statusMessageLabel" destination="oS9-zR-SVc" id="MOY-vn-AlK"/>
             </connections>
         </view>

@@ -19,6 +19,8 @@
 @property (readwrite, nonatomic) float maxValue;
 @property (readwrite, nonatomic) float countDown;
 @property (readwrite, nonatomic) NSTimeInterval interval;
+@property (strong, nonatomic) NSDateFormatter *formatter;
+@property (readwrite, nonatomic) BOOL countDownEnd;
 
 @end
 
@@ -53,32 +55,49 @@
     self.interval = [[NSDate new] timeIntervalSinceDate:self.countTime];
     self.countDown = self.maxValue - self.interval;
     [self.countdownLabel setText:@""];
+    [self.nowTimeLabel setText:@""];
+    self.formatter = [NSDateFormatter new];
+    [self.formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+    self.countDownEnd = NO;
 }
 
 - (void)startCountDown {
     [self setCountTime:[NSDate new]];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.001f target:self selector:@selector(updateCountDown) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.001f
+                                                  target:self
+                                                selector:@selector(updateCountDown)
+                                                userInfo:nil
+                                                 repeats:YES];
 }
 
 - (void)updateCountDown {
     UIColor *color = self.tintColor;
-    self.interval = [[NSDate new] timeIntervalSinceDate:self.countTime];
+    NSDate *now = [NSDate new];
+    self.interval = [now timeIntervalSinceDate:self.countTime];
     self.countDown = self.maxValue - self.interval;
     if (self.countDown <= 0) {
         self.countDown = 0;
         color = [UIColor redColor];
-        [((UIViewController *)self.nextResponder).navigationItem.leftBarButtonItem setEnabled:YES];
-        [self.timer invalidate];
-        AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
+        if (self.countDownEnd == NO) {
+            [((UIViewController *)self.nextResponder).navigationItem.leftBarButtonItem setEnabled:YES];
+            [self.timer invalidate];
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:0.25f
+                                                          target:self
+                                                        selector:@selector(updateCountDown)
+                                                        userInfo:nil
+                                                         repeats:YES];
+            self.countDownEnd = YES;
             AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
                 AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
                     AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
                         AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
+                            AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
+                            });
                         });
                     });
                 });
             });
-        });
+        }
     } else if (self.countDown >= (self.maxValue / 2)) {
         color = [UIColor colorFrom:self.tintColor
                                 To:[UIColor purpleColor]
@@ -94,6 +113,7 @@
     }
     [self.countdownLabel setTextColor:color];
     [self.countdownLabel setText:[NSString stringWithFormat:@"%0.3f", self.countDown]];
+    [self.nowTimeLabel setText:[self.formatter stringFromDate:now]];
 }
 
 @end
