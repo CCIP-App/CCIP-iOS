@@ -5,6 +5,15 @@
       location = "group:CCIP.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:../Crypto/Crypto.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../MYCrypto/MYCrypto.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../GatewayWebService/GatewayWebService.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
