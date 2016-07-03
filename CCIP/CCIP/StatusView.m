@@ -16,6 +16,9 @@
 @property (strong, nonatomic) AppDelegate *appDelegate;
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) NSDate *countTime;
+@property (readwrite, nonatomic) float maxValue;
+@property (readwrite, nonatomic) float countDown;
+@property (readwrite, nonatomic) NSTimeInterval interval;
 
 @end
 
@@ -45,6 +48,11 @@
                    withObject:nil
                    afterDelay:0.5f];
     }
+    [self setCountTime:[NSDate new]];
+    self.maxValue = (float)([[self.scenario objectForKey:@"used"] intValue] + [[self.scenario objectForKey:@"countdown"] intValue] - [self.countTime timeIntervalSince1970]);
+    self.interval = [[NSDate new] timeIntervalSinceDate:self.countTime];
+    self.countDown = self.maxValue - self.interval;
+    [self.countdownLabel setText:@""];
 }
 
 - (void)startCountDown {
@@ -53,17 +61,11 @@
 }
 
 - (void)updateCountDown {
-    NSTimeInterval interval = [[NSDate new] timeIntervalSinceDate:self.countTime];
     UIColor *color = self.tintColor;
-    
-    int used = [[self.scenario objectForKey:@"used"] intValue];
-    int countdown = [[self.scenario objectForKey:@"countdown"] intValue];
-    int now = [[NSDate new] timeIntervalSince1970];
-    
-    float maxValue = [[NSNumber numberWithInt:(used + countdown - now)] floatValue];
-    float countDown = maxValue - interval;
-    if (countDown <= 0) {
-        countDown = 0;
+    self.interval = [[NSDate new] timeIntervalSinceDate:self.countTime];
+    self.countDown = self.maxValue - self.interval;
+    if (self.countDown <= 0) {
+        self.countDown = 0;
         color = [UIColor redColor];
         [((UIViewController *)self.nextResponder).navigationItem.leftBarButtonItem setEnabled:YES];
         [self.timer invalidate];
@@ -72,27 +74,26 @@
                 AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
                     AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
                         AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
-                            
                         });
                     });
                 });
             });
         });
-    } else if (countDown >= (maxValue / 2)) {
+    } else if (self.countDown >= (self.maxValue / 2)) {
         color = [UIColor colorFrom:self.tintColor
                                 To:[UIColor purpleColor]
-                                At:1 - ((countDown - (maxValue / 2)) / (maxValue - (maxValue / 2)))];
-    } else if (countDown >= (maxValue / 6)) {
+                                At:1 - ((self.countDown - (self.maxValue / 2)) / (self.maxValue - (self.maxValue / 2)))];
+    } else if (self.countDown >= (self.maxValue / 6)) {
         color = [UIColor colorFrom:[UIColor purpleColor]
                                 To:[UIColor orangeColor]
-                                At:1 - ((countDown - (maxValue / 6)) / (maxValue - ((maxValue / 2) + (maxValue / 6))))];
-    } else if (countDown > 0) {
+                                At:1 - ((self.countDown - (self.maxValue / 6)) / (self.maxValue - ((self.maxValue / 2) + (self.maxValue / 6))))];
+    } else if (self.countDown > 0) {
         color = [UIColor colorFrom:[UIColor orangeColor]
                                 To:[UIColor redColor]
-                                At:1 - ((countDown - 0) / (maxValue - (maxValue - (maxValue / 6))))];
+                                At:1 - ((self.countDown - 0) / (self.maxValue - (self.maxValue - (self.maxValue / 6))))];
     }
     [self.countdownLabel setTextColor:color];
-    [self.countdownLabel setText:[NSString stringWithFormat:@"%0.3f", countDown]];
+    [self.countdownLabel setText:[NSString stringWithFormat:@"%0.3f", self.countDown]];
 }
 
 @end
