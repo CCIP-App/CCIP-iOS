@@ -14,6 +14,8 @@
 @interface MasterViewController : UITableViewController
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
+@property (strong, nonatomic) NSArray *roomsJsonArray;
+@property (strong, nonatomic) NSArray *programsJsonArray;
 
 - (void)refreshData;
 

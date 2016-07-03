@@ -55,6 +55,22 @@
         }
         [self.refreshControl endRefreshing];
     }];
+    
+    GatewayWebService *roome_ws = [[GatewayWebService alloc] initWithURL:@"https://coscup.org/2016-assets/json/room.json"];
+    [roome_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+        if (json != nil) {
+            NSLog(@"%@", json);
+            self.roomsJsonArray = json;
+        }
+    }];
+    
+    GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:@"https://coscup.org/2016-assets/json/program.json"];
+    [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+        if (json != nil) {
+            NSLog(@"%@", json);
+            self.programsJsonArray = json;
+        }
+    }];
 }
 
 
@@ -93,11 +109,18 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.scenarios count];
+    switch (section) {
+        case 0:
+            return 2;
+        case 1:
+            return [self.scenarios count];
+        default:
+            return 0;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -105,123 +128,173 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return self.userInfo != nil ? [self.userInfo objectForKey:@"user_id"] : @"";
+    switch (section) {
+        case 0:
+            return @"議程";
+        case 1:
+            return self.userInfo != nil ? [self.userInfo objectForKey:@"user_id"] : @"";
+        default:
+            return 0;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *CellIdentifier = @"scenario";
-    scenarioCell *cell = nil;
-    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        [tableView registerNib:[UINib nibWithNibName:@"scenarioCell"
-                                              bundle:nil]
-        forCellReuseIdentifier:CellIdentifier];
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    }
     
-    NSDictionary *scenario = [self.scenarios objectAtIndex:indexPath.row];
-    NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] integerValue]];
-    NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] integerValue]];
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"MM/dd HH:mm"];
-    NSDate *nowTime = [NSDate new];
-    if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
-        // IN TIME
+    if (indexPath.section == 0) {
+        // section 0 Start
+        
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NULL];
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    } else {
-        // OUT TIME
-        [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
-    }
-    [cell.scenarioLabel setText:[scenario objectForKey:@"id"]];
-    [cell.timeRangeLabel setText:[NSString stringWithFormat:@"%@ ~ %@", [formatter stringFromDate:availableTime], [formatter stringFromDate:expireTime]]];
-    
-    NSString *usedTimeString = @"";
-    if ([[scenario allKeys] containsObject:@"disabled"]) {
-        if ([[scenario objectForKey:@"disabled"] length] > 0) {
+        
+        switch (indexPath.row) {
+            case 0:
+                [cell.textLabel setText:@"人文館"];
+                break;
+            case 1:
+                [cell.textLabel setText:@"活動中心"];
+                break;
+            default:
+                [cell.textLabel setText:@"null"];
+                break;
+        }
+        
+        return cell;
+        // section 0 End
+    } else if (indexPath.section == 1) {
+        // section 1 Start
+        
+        NSString *CellIdentifier = @"scenario";
+        scenarioCell *cell = nil;
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            [tableView registerNib:[UINib nibWithNibName:@"scenarioCell"
+                                                  bundle:nil]
+            forCellReuseIdentifier:CellIdentifier];
+            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        }
+        
+        NSDictionary *scenario = [self.scenarios objectAtIndex:indexPath.row];
+        NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] integerValue]];
+        NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] integerValue]];
+        NSDateFormatter *formatter = [NSDateFormatter new];
+        [formatter setDateFormat:@"MM/dd HH:mm"];
+        NSDate *nowTime = [NSDate new];
+        if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
+            // IN TIME
+            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        } else {
+            // OUT TIME
             [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
-            [cell.scenarioLabel setTextColor:[UIColor lightGrayColor]];
-            [cell setBackgroundColor:[UIColor colorWithWhite:0.8f alpha:0.5f]];
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            [cell setUserInteractionEnabled:NO];
         }
-    }
-    if ([[scenario allKeys] containsObject:@"used"]) {
-        NSInteger usedTime = [[scenario objectForKey:@"used"] integerValue];
-        if (usedTime > 0) {
-            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-            [formatter setDateFormat:@"MM/dd HH:mm:ss"];
-            usedTimeString = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:usedTime]];
-            [formatter setDateFormat:@"MM/dd HH:mm"];
+        [cell.scenarioLabel setText:[scenario objectForKey:@"id"]];
+        [cell.timeRangeLabel setText:[NSString stringWithFormat:@"%@ ~ %@", [formatter stringFromDate:availableTime], [formatter stringFromDate:expireTime]]];
+        
+        NSString *usedTimeString = @"";
+        if ([[scenario allKeys] containsObject:@"disabled"]) {
+            if ([[scenario objectForKey:@"disabled"] length] > 0) {
+                [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
+                [cell.scenarioLabel setTextColor:[UIColor lightGrayColor]];
+                [cell setBackgroundColor:[UIColor colorWithWhite:0.8f alpha:0.5f]];
+                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                [cell setUserInteractionEnabled:NO];
+            }
         }
+        if ([[scenario allKeys] containsObject:@"used"]) {
+            NSInteger usedTime = [[scenario objectForKey:@"used"] integerValue];
+            if (usedTime > 0) {
+                [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+                [formatter setDateFormat:@"MM/dd HH:mm:ss"];
+                usedTimeString = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:usedTime]];
+                [formatter setDateFormat:@"MM/dd HH:mm"];
+            }
+        }
+        [cell.usedTimeLabel setText:usedTimeString];
+        
+        return cell;
+        // section 1 End
+    } else {
+        // default
+        
+        return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NULL];
     }
-    [cell.usedTimeLabel setText:usedTimeString];
-    
-    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *scenario = [self.scenarios objectAtIndex:indexPath.row];
-    BOOL isUsed = [[scenario allKeys] containsObject:@"used"] ? [scenario objectForKey:@"used"] > 0 : NO;
-    NSString *vcName = isUsed ? @"StatusViewController" : @"CheckinViewController";
-    UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:vcName
-                                                                                bundle:nil];
-    [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
-    UIBarButtonItem *backButton = isUsed ? [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                         target:self
-                                                                                         action:@selector(gotoTop)] : self.splitViewController.displayModeButtonItem;
-    [detailViewController.navigationItem setLeftBarButtonItem:backButton];
-    [detailViewController.navigationItem setLeftItemsSupplementBackButton:!isUsed];
     
-    NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] integerValue]];
-    NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] integerValue]];
-    NSDate *nowTime = [NSDate new];
-
-    if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
-        // IN TIME
-        SEL setScenarioValue = NSSelectorFromString(@"setScenario:");
-        if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
+    if (indexPath.section == 0) {
+        // section 0 Start
+        
+        // section 0 End
+    } else if (indexPath.section == 1) {
+        // section 1 Start
+        
+        NSDictionary *scenario = [self.scenarios objectAtIndex:indexPath.row];
+        BOOL isUsed = [[scenario allKeys] containsObject:@"used"] ? [scenario objectForKey:@"used"] > 0 : NO;
+        NSString *vcName = isUsed ? @"StatusViewController" : @"CheckinViewController";
+        UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:vcName
+                                                                                    bundle:nil];
+        [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
+        UIBarButtonItem *backButton = isUsed ? [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                             target:self
+                                                                                             action:@selector(gotoTop)] : self.splitViewController.displayModeButtonItem;
+        [detailViewController.navigationItem setLeftBarButtonItem:backButton];
+        [detailViewController.navigationItem setLeftItemsSupplementBackButton:!isUsed];
+        
+        NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] integerValue]];
+        NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] integerValue]];
+        NSDate *nowTime = [NSDate new];
+        
+        if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
+            // IN TIME Start
+            SEL setScenarioValue = NSSelectorFromString(@"setScenario:");
+            if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            [detailViewController.view performSelector:setScenarioValue
-                                            withObject:scenario];
+                [detailViewController.view performSelector:setScenarioValue
+                                                withObject:scenario];
 #pragma clang diagnostic pop
+            }
+            [detailViewController setTitle:[scenario objectForKey:@"id"]];
+            UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+            [self.splitViewController showDetailViewController:detailNavigationController
+                                                        sender:self];
+            // for hack to toggle the master view in split view on portrait iPad
+            UIBarButtonItem *barButtonItem = [self.splitViewController displayModeButtonItem];
+            [[UIApplication sharedApplication] sendAction:[barButtonItem action]
+                                                       to:[barButtonItem target]
+                                                     from:nil
+                                                 forEvent:nil];
+            // IN TIME End
+        } else {
+            // OUT TIME Start
+            UIAlertController *ac = nil;
+            if ([nowTime compare:availableTime] == NSOrderedAscending) {
+                ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NotAvailableTitle", nil)
+                                         withMessage:NSLocalizedString(@"NotAvailableMessage", nil)
+                                    cancelButtonText:NSLocalizedString(@"NotAvailableButtonOk", nil)
+                                         cancelStyle:UIAlertActionStyleDestructive
+                                        cancelAction:^(UIAlertAction *action) {
+                                            [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO
+                                                                                            animated:YES];
+                                        }];
+            }
+            if ([nowTime compare:expireTime] == NSOrderedDescending) {
+                ac = [UIAlertController alertOfTitle:NSLocalizedString(@"ExpiredTitle", nil)
+                                         withMessage:NSLocalizedString(@"ExpiredMessage", nil)
+                                    cancelButtonText:NSLocalizedString(@"ExpiredButtonOk", nil)
+                                         cancelStyle:UIAlertActionStyleDestructive
+                                        cancelAction:^(UIAlertAction *action) {
+                                            [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO
+                                                                                            animated:YES];
+                                        }];
+            }
+            if (ac != nil) {
+                [ac showAlert:^{}];
+            }
+            // OUT TIME End
         }
-        [detailViewController setTitle:[scenario objectForKey:@"id"]];
-        UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-        [self.splitViewController showDetailViewController:detailNavigationController
-                                                    sender:self];
-        // for hack to toggle the master view in split view on portrait iPad
-        UIBarButtonItem *barButtonItem = [self.splitViewController displayModeButtonItem];
-        [[UIApplication sharedApplication] sendAction:[barButtonItem action]
-                                                   to:[barButtonItem target]
-                                                 from:nil
-                                             forEvent:nil];
-    } else {
-        // OUT TIME
-        UIAlertController *ac = nil;
-        if ([nowTime compare:availableTime] == NSOrderedAscending) {
-            ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NotAvailableTitle", nil)
-                                     withMessage:NSLocalizedString(@"NotAvailableMessage", nil)
-                                cancelButtonText:NSLocalizedString(@"NotAvailableButtonOk", nil)
-                                     cancelStyle:UIAlertActionStyleDestructive
-                                    cancelAction:^(UIAlertAction *action) {
-                                        [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO
-                                                                                        animated:YES];
-                                    }];
-        }
-        if ([nowTime compare:expireTime] == NSOrderedDescending) {
-            ac = [UIAlertController alertOfTitle:NSLocalizedString(@"ExpiredTitle", nil)
-                                     withMessage:NSLocalizedString(@"ExpiredMessage", nil)
-                                cancelButtonText:NSLocalizedString(@"ExpiredButtonOk", nil)
-                                     cancelStyle:UIAlertActionStyleDestructive
-                                    cancelAction:^(UIAlertAction *action) {
-                                        [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO
-                                                                                        animated:YES];
-                                    }];
-        }
-        if (ac != nil) {
-            [ac showAlert:^{}];
-        }
+        // section 1 start
     }
 }
 
