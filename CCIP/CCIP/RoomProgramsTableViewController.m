@@ -33,7 +33,7 @@
 - (void)refreshData {
     //[self.refreshControl beginRefreshing];
     
-    GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:@"https://coscup.org/2016-assets/json/program.json"];
+    GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
     [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
         if (json != nil) {
             NSLog(@"%@", json);

@@ -57,7 +57,7 @@
         [self.refreshControl endRefreshing];
     }];
     
-    GatewayWebService *roome_ws = [[GatewayWebService alloc] initWithURL:@"https://coscup.org/2016-assets/json/room.json"];
+    GatewayWebService *roome_ws = [[GatewayWebService alloc] initWithURL:ROOM_DATA_URL];
     [roome_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
         if (json != nil) {
             NSLog(@"%@", json);
@@ -65,7 +65,7 @@
         }
     }];
     
-    GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:@"https://coscup.org/2016-assets/json/program.json"];
+    GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
     [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
         if (json != nil) {
             NSLog(@"%@", json);
@@ -371,7 +371,7 @@
         if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            [detailViewController.view performSelector:setScenarioValue withObject:@{@"url": @"https://logbot.g0v.tw/channel/coscup/today"}];
+            [detailViewController.view performSelector:setScenarioValue withObject:@{@"url": LOG_BOT_URL}];
 #pragma clang diagnostic pop
         }
         [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
