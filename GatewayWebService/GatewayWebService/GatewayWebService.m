@@ -207,10 +207,13 @@ NSUInteger FailedCount = 0;
               WithOriginalData:@""];
         return;
     }
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[self.responseText dataUsingEncoding:NSUTF8StringEncoding]
-                                                         options:NSJSONReadingAllowFragments
-                                                           error:nil];
-    id d = [json objectForKey:@"d"];
+    id json = [NSJSONSerialization JSONObjectWithData:[self.responseText dataUsingEncoding:NSUTF8StringEncoding]
+                                               options:NSJSONReadingAllowFragments
+                                                 error:nil];
+    id d = nil;
+    if ([json class] == [NSDictionary class]) {
+        d = [json objectForKey:@"d"];
+    }
     if(d == nil || [d isKindOfClass:[NSNull class]]) {
         if (json != nil) {
             [self callbackResponse:json
