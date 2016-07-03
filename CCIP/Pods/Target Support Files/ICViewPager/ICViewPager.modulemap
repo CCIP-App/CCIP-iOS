@@ -1,0 +1,6 @@
+framework module ICViewPager {
+  umbrella header "ICViewPager-umbrella.h"
+
+  export *
+  module * { export * }
+}

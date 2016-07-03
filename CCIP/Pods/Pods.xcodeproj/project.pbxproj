@@ -7,114 +7,142 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07F5DF866D919ABCD39C9D0C7CE54AA2 /* UICKeyChainStore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 08CD9A9F124758664A37E8ACEF323020 /* UICKeyChainStore-dummy.m */; };
-		1AAFB1D41619A4BD9C1D2602F0D24064 /* Pods-CCIP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F844CDCD57D047D5F3814C59909E9D8 /* Pods-CCIP-dummy.m */; };
-		495A02318AC240D04BDB69EBADA164B8 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E9188FCA3CA7314B994B1F41F0730F /* UICKeyChainStore.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		80B8A0AA29FF10CA20A02707A7A3EDDA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35EB645053A39B4E088C0BDA3A6C9F5D /* Security.framework */; };
-		8AAF9ECA37AD2680207E9CC1B1675BEE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D692051EF32C02A74F6A5706D54B828B /* Foundation.framework */; };
-		AA3704FDBD788C135191450812A7ECF4 /* UICKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 08059AB91AB8F9F52FEA96905648C2DB /* UICKeyChainStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B570C8356DBE386C9DF6711A58D5ADD7 /* UICKeyChainStore-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F10D77AA2BF328BA516B89D073D22FD /* UICKeyChainStore-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D196CDBBFED3D23625F222E4D5BA54A3 /* Pods-CCIP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 407AB414BF003A508286D3A3B4C68680 /* Pods-CCIP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD361583587212AE2147C1A62417F1A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D692051EF32C02A74F6A5706D54B828B /* Foundation.framework */; };
+		2E70E4524A4BDF533A9C36A26E33F17E /* UICKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = B753F6D7D0565F45CB328C1A432C45A9 /* UICKeyChainStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B6027824C2E68D4C84922644CC42414 /* ICViewPager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 88486098EBCA32A061D10EAC84992AEA /* ICViewPager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75B5BE0901867ABF5F787D48F5871C7F /* UICKeyChainStore-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7280298429A89198E7753C60A90DFB44 /* UICKeyChainStore-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7A9814A5844AB022893E0164F11E7670 /* ICViewPager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6866BFE0A9AC996EE3C747B93318C6DC /* ICViewPager-dummy.m */; };
+		9557B018702206A8C31FCDB58FB3B508 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D692051EF32C02A74F6A5706D54B828B /* Foundation.framework */; };
+		95D0786B8F46DB15D20FB2AFA39ACEC9 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDD29DB36D6A607BB0C0EAC16C5A604 /* UICKeyChainStore.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		9AD998FC6E68A4E24D08F886AAE48DE2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35EB645053A39B4E088C0BDA3A6C9F5D /* Security.framework */; };
+		AB5303ECFA1CB7A341765472534A5E17 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D692051EF32C02A74F6A5706D54B828B /* Foundation.framework */; };
+		B902031427BC29F251067C60181E0E77 /* UICKeyChainStore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ED3D1E53663C6EC93B519A372C2928B /* UICKeyChainStore-dummy.m */; };
+		CAD24C293BDDF992D56C55F9B7762E26 /* Pods-CCIP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 407AB414BF003A508286D3A3B4C68680 /* Pods-CCIP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06DA35AE066A78AD4AA57AB3C75252 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D692051EF32C02A74F6A5706D54B828B /* Foundation.framework */; };
+		DBCF1109A5F976EBDC5195879EA43C17 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2370D534110A5F6E86E06F401ABD9DA /* ViewPagerController.m */; };
+		F8B282685BB4FB2F1C5F0D178517B1C2 /* ViewPagerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DACDE16205C02DB5408F4919EF9D73D /* ViewPagerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F9E4E16499B30F91B6AFF80F241F225A /* Pods-CCIP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F844CDCD57D047D5F3814C59909E9D8 /* Pods-CCIP-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DAB0214AFAB286EFC2C806631D2E2F09 /* PBXContainerItemProxy */ = {
+		127506C41C21F8F7F8D84E051EDCB456 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A4AF1721838338D2C309D68446698CFE;
+			remoteGlobalIDString = 9BC4BD8F53CB6A4FA609E9295669C5C4;
 			remoteInfo = UICKeyChainStore;
+		};
+		9FB43A0A67C48993702CF711855523A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C0408FA37E119C9FEAF3122DE2038EA;
+			remoteInfo = ICViewPager;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08059AB91AB8F9F52FEA96905648C2DB /* UICKeyChainStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UICKeyChainStore.h; path = Lib/UICKeyChainStore/UICKeyChainStore.h; sourceTree = "<group>"; };
 		081923893D972983042C17B3EB5C2A0F /* Pods-CCIP-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CCIP-resources.sh"; sourceTree = "<group>"; };
-		08CD9A9F124758664A37E8ACEF323020 /* UICKeyChainStore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UICKeyChainStore-dummy.m"; sourceTree = "<group>"; };
-		189E4A2F6AC66E22799F83D1D5072AE1 /* Core-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Core-Module.h"; path = "Headers/ModuleHeaders/Core-Module.h"; sourceTree = "<group>"; };
-		234E2D763AC76FF82F488085C9EDB9A9 /* UICKeyChainStore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-prefix.pch"; sourceTree = "<group>"; };
-		2430942746B7FB94145B934CB30E8E90 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		2F10D77AA2BF328BA516B89D073D22FD /* UICKeyChainStore-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-umbrella.h"; sourceTree = "<group>"; };
-		3165921EC6956FD325BEC5F6CC02E7FF /* GAITrackedViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = Headers/Public/GAITrackedViewController.h; sourceTree = "<group>"; };
+		0ABC0167BE4901532F88691BC7C206B9 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		0D4772AF13F11140644DB9CBA5719B16 /* GAIFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = Headers/Public/GAIFields.h; sourceTree = "<group>"; };
+		12D2A0365BCB261BC325478C5D1577CE /* Pods_CCIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1576AC7E29D8954BE183E4A90E891C24 /* ICViewPager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ICViewPager.modulemap; sourceTree = "<group>"; };
+		2A330E20E5957F7F290CCAF42969D3A6 /* GAITrackedViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = Headers/Public/GAITrackedViewController.h; sourceTree = "<group>"; };
 		35EB645053A39B4E088C0BDA3A6C9F5D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		3C582A315AC885319AC495132B9CCBAB /* Analytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Analytics.h; path = Headers/Analytics.h; sourceTree = "<group>"; };
+		3CD6741AE272CA6DD3B6D0382A6D09A0 /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		3E256429D06A801D36F80BA97AB5C2C1 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = Headers/Public/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
 		3F19743AF017525896C97467762462AA /* Pods-CCIP-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CCIP-acknowledgements.markdown"; sourceTree = "<group>"; };
 		407AB414BF003A508286D3A3B4C68680 /* Pods-CCIP-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CCIP-umbrella.h"; sourceTree = "<group>"; };
-		409B61EF42C6AE121FF8F76789BF8226 /* Analytics-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Analytics-Module.h"; path = "Headers/ModuleHeaders/Analytics-Module.h"; sourceTree = "<group>"; };
-		45EF9665EC93C4158161BD93A1A5059A /* GGLCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLCore.framework; path = Frameworks/GGLCore.framework; sourceTree = "<group>"; };
-		5297FE62856A93A1A62866A67FFEB58A /* UICKeyChainStore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = UICKeyChainStore.modulemap; sourceTree = "<group>"; };
+		446EC044F026D2D64BEF218B82BE91D8 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		48FD2EE839022DF0B847F503527F705E /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
+		4974A2AEE142FF7FC80B1B9425F2CA88 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OneSignal.framework; path = iOS_SDK/Framework/OneSignal.framework; sourceTree = "<group>"; };
+		55C1F7029A1A01CFA54DECA9DB001CA5 /* GAITracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = Headers/Public/GAITracker.h; sourceTree = "<group>"; };
+		5729B6582F3B486D9E2CABEC7FB0D008 /* UICKeyChainStore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-prefix.pch"; sourceTree = "<group>"; };
 		5A00CE01FE4E06323021099A8DEA9DC7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C99AAC7C0558FB335ED26C800899228 /* ICViewPager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ICViewPager-prefix.pch"; sourceTree = "<group>"; };
+		5ED2A85A2A40DDF136E91CD176B85DA4 /* UICKeyChainStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UICKeyChainStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6156A4220A95AB1931B9C9CE4D5968D4 /* Pods-CCIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CCIP.debug.xcconfig"; sourceTree = "<group>"; };
-		66F7CC06DA80F4415FB19EB6830ED976 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProductAction.h; path = Headers/Public/GAIEcommerceProductAction.h; sourceTree = "<group>"; };
-		721FE9171C97818D4D9635BEE73CA74F /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
-		731F144A6803BF2234FFA7A73CF4466E /* GAIEcommerceFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceFields.h; path = Headers/Public/GAIEcommerceFields.h; sourceTree = "<group>"; };
-		77538A48C8F270E07694CDB8DB3F8461 /* UICKeyChainStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UICKeyChainStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		77E9188FCA3CA7314B994B1F41F0730F /* UICKeyChainStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UICKeyChainStore.m; path = Lib/UICKeyChainStore/UICKeyChainStore.m; sourceTree = "<group>"; };
-		8F04535C248CC32D6295134565B5AB95 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
+		6586B59B413CB8D3AB85ECB9E828D83B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65D9FC203370D0C6496A2DDA30F55505 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Libraries/libGoogleAnalytics.a; sourceTree = "<group>"; };
+		6866BFE0A9AC996EE3C747B93318C6DC /* ICViewPager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ICViewPager-dummy.m"; sourceTree = "<group>"; };
+		6ED3D1E53663C6EC93B519A372C2928B /* UICKeyChainStore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UICKeyChainStore-dummy.m"; sourceTree = "<group>"; };
+		7280298429A89198E7753C60A90DFB44 /* UICKeyChainStore-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-umbrella.h"; sourceTree = "<group>"; };
+		75C248095AD51D79B5304B3FFF9EA10B /* Core.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Core.h; path = Headers/Core.h; sourceTree = "<group>"; };
+		7DACDE16205C02DB5408F4919EF9D73D /* ViewPagerController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ViewPagerController.h; path = ICViewPager/ICViewPager/ViewPagerController.h; sourceTree = "<group>"; };
+		88486098EBCA32A061D10EAC84992AEA /* ICViewPager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ICViewPager-umbrella.h"; sourceTree = "<group>"; };
+		89930AE8AC6DB116459120D75C57E446 /* GAILogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = Headers/Public/GAILogger.h; sourceTree = "<group>"; };
+		8DF0F8C9793E11BB894445F03D4C0BB0 /* SignIn-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SignIn-Module.h"; path = "Headers/ModuleHeaders/SignIn-Module.h"; sourceTree = "<group>"; };
+		8F3D283F91775334432557F2473808EB /* ICViewPager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ICViewPager.xcconfig; sourceTree = "<group>"; };
 		8F844CDCD57D047D5F3814C59909E9D8 /* Pods-CCIP-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CCIP-dummy.m"; sourceTree = "<group>"; };
+		906C7DA60D9562318C82E16F473BE810 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommercePromotion.h; path = Headers/Public/GAIEcommercePromotion.h; sourceTree = "<group>"; };
 		9160B80BE78072CE651E75EF51FE39F4 /* Pods-CCIP-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CCIP-frameworks.sh"; sourceTree = "<group>"; };
-		91B393BC902DF1C06666FE365F142B33 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9B397B2E91A15F81109D8A83A53975EB /* Core.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Core.h; path = Headers/Core.h; sourceTree = "<group>"; };
-		A062AEA39E6EB2FDEE4E6631B7A4C670 /* UICKeyChainStore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UICKeyChainStore.xcconfig; sourceTree = "<group>"; };
-		A09EC5FFAAB47DA1FD469D228DD0B7C5 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = Headers/Public/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
-		A63D0FB3E6BE57711EC7ECC0850F35E4 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = Headers/Public/GAIEcommerceProduct.h; sourceTree = "<group>"; };
-		ABC6305295E671C614AA4E5ECD510680 /* GAI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = Headers/Public/GAI.h; sourceTree = "<group>"; };
-		AEBCF604FD41F6AC8DEDF1F1C4F8C415 /* GAILogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = Headers/Public/GAILogger.h; sourceTree = "<group>"; };
-		BBC4140E89FA32AE25F449C0AD01BA9E /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
-		C7959FEEE567F4482E11A410322E6564 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Libraries/libGoogleAnalytics.a; sourceTree = "<group>"; };
-		C7EB15FD55D4EECA0788A1355415424D /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommercePromotion.h; path = Headers/Public/GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		A5EA6D9B085CC35934D17DB4F58CF490 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = Headers/Public/GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		AB36CB470AC171FA3F9CFD63598D8DA3 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
+		AEB7D8540B73F649A1D7A1468F618217 /* ICViewPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ICViewPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF46CB7EDC8429296EA874B14C3EC9C6 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		B753F6D7D0565F45CB328C1A432C45A9 /* UICKeyChainStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UICKeyChainStore.h; path = Lib/UICKeyChainStore/UICKeyChainStore.h; sourceTree = "<group>"; };
+		B94C9376695BC53E90DB6CCCDCC79F8B /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProductAction.h; path = Headers/Public/GAIEcommerceProductAction.h; sourceTree = "<group>"; };
 		C92361B0E6E5A472B5604DAEFFA95C54 /* Pods-CCIP.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CCIP.modulemap"; sourceTree = "<group>"; };
-		CCCC450F932E461F35A8C0000E4CC776 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OneSignal.framework; path = iOS_SDK/Framework/OneSignal.framework; sourceTree = "<group>"; };
+		CD85AA77CB1E27B494D42CC9BAB5D000 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEAB8F48D11F23B3C68774FB0187BB2A /* UICKeyChainStore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UICKeyChainStore.xcconfig; sourceTree = "<group>"; };
+		CEDD29DB36D6A607BB0C0EAC16C5A604 /* UICKeyChainStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UICKeyChainStore.m; path = Lib/UICKeyChainStore/UICKeyChainStore.m; sourceTree = "<group>"; };
+		D0A84BF7F582FFE119CF137F1E23D785 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceFields.h; path = Headers/Public/GAIEcommerceFields.h; sourceTree = "<group>"; };
 		D692051EF32C02A74F6A5706D54B828B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		DC02539A689D9069473068DCE327E00A /* SignIn-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SignIn-Module.h"; path = "Headers/ModuleHeaders/SignIn-Module.h"; sourceTree = "<group>"; };
+		D7125CA39CAB876871964CB15006CCA4 /* GAI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = Headers/Public/GAI.h; sourceTree = "<group>"; };
+		DB7330DD07729BCE0158051B04EFE331 /* GGLCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLCore.framework; path = Frameworks/GGLCore.framework; sourceTree = "<group>"; };
+		E0A4B160386A8300937500229BC882EE /* Analytics-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Analytics-Module.h"; path = "Headers/ModuleHeaders/Analytics-Module.h"; sourceTree = "<group>"; };
+		E1F43EFD4034E155176E67ECCB8E63A3 /* Analytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Analytics.h; path = Headers/Analytics.h; sourceTree = "<group>"; };
 		E20A38E2E8C1F6BD640AD8B19A6C9498 /* Pods-CCIP-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CCIP-acknowledgements.plist"; sourceTree = "<group>"; };
-		E4CFFEE9FAEF7AFE9F49EC06F6FDBD05 /* GAIFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = Headers/Public/GAIFields.h; sourceTree = "<group>"; };
-		E62882FD582E51AF3A102290DF2637EF /* GAITracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = Headers/Public/GAITracker.h; sourceTree = "<group>"; };
-		E64DA5FD251BF97EA2AB5DCA8DA56F99 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
-		E70DAA250524DA47E10B2B58AD790076 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		F7029801022FB343C7CBE3640680D2B8 /* GGLAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLAnalytics.framework; path = Frameworks/GGLAnalytics.framework; sourceTree = "<group>"; };
-		F79B8222D9BA1041B9516DDFC0A685D4 /* Pods_CCIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC273688DE1CB4C3DD8BE7C42852F8C2 /* GGLAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLAnalytics.framework; path = Frameworks/GGLAnalytics.framework; sourceTree = "<group>"; };
+		EDF6F9CC72CD7379E5B003991895CAFC /* UICKeyChainStore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = UICKeyChainStore.modulemap; sourceTree = "<group>"; };
+		F2370D534110A5F6E86E06F401ABD9DA /* ViewPagerController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ViewPagerController.m; path = ICViewPager/ICViewPager/ViewPagerController.m; sourceTree = "<group>"; };
+		F96B6DE4BD1E00108CE3DAF375B2210A /* Core-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Core-Module.h"; path = "Headers/ModuleHeaders/Core-Module.h"; sourceTree = "<group>"; };
 		FED333F71BA244C276B35C2271C36CFF /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6B5CE6A69934B35538059B1A49354ED0 /* Frameworks */ = {
+		0022800CC8804F6D2119328AA3A54C79 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD361583587212AE2147C1A62417F1A0 /* Foundation.framework in Frameworks */,
+				9557B018702206A8C31FCDB58FB3B508 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		74F73B19558C4CDE98A6A36EDB0A0E05 /* Frameworks */ = {
+		224B17E65CC65EEE2DC662C5C79E0E83 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AAF9ECA37AD2680207E9CC1B1675BEE /* Foundation.framework in Frameworks */,
-				80B8A0AA29FF10CA20A02707A7A3EDDA /* Security.framework in Frameworks */,
+				DB06DA35AE066A78AD4AA57AB3C75252 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F11B83BD332A46C53707BE4B6037E95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB5303ECFA1CB7A341765472534A5E17 /* Foundation.framework in Frameworks */,
+				9AD998FC6E68A4E24D08F886AAE48DE2 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		062E14FE10B2C6A6C5C19009FD9DA197 /* Analytics */ = {
+		166AFCF025051FE7A48BFC28F2E4CD5F /* GoogleInterchangeUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				3C582A315AC885319AC495132B9CCBAB /* Analytics.h */,
-				B118070E8F902F8F46A82D80E97FC8A3 /* Frameworks */,
+				D6CD1EE441E0C1E4D8950A14D089AF0D /* Frameworks */,
 			);
-			name = Analytics;
+			path = GoogleInterchangeUtilities;
 			sourceTree = "<group>";
 		};
-		1B42C66C4B565CC6D6B528AA92651C00 /* Frameworks */ = {
+		1836BEE2BD65C20F00D3FA6BB254B3DB /* GoogleSymbolUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				E64DA5FD251BF97EA2AB5DCA8DA56F99 /* GoogleSymbolUtilities.framework */,
+				A4652C420D0CCAE5B5397C7648D3DBA3 /* Frameworks */,
 			);
-			name = Frameworks;
+			path = GoogleSymbolUtilities;
 			sourceTree = "<group>";
 		};
 		224288662EB54F3A96ED81A260242040 /* Pods-CCIP */ = {
@@ -135,20 +163,18 @@
 			path = "Target Support Files/Pods-CCIP";
 			sourceTree = "<group>";
 		};
-		26966CE0E152A3DB7C682A4BB78A0C1F /* GoogleInterchangeUtilities */ = {
+		2AA9C551150081FE2F11F91C6C6AE21E /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				8C2E6DE6D12991CB67294963CD431979 /* Frameworks */,
+				CD85AA77CB1E27B494D42CC9BAB5D000 /* Info.plist */,
+				EDF6F9CC72CD7379E5B003991895CAFC /* UICKeyChainStore.modulemap */,
+				CEAB8F48D11F23B3C68774FB0187BB2A /* UICKeyChainStore.xcconfig */,
+				6ED3D1E53663C6EC93B519A372C2928B /* UICKeyChainStore-dummy.m */,
+				5729B6582F3B486D9E2CABEC7FB0D008 /* UICKeyChainStore-prefix.pch */,
+				7280298429A89198E7753C60A90DFB44 /* UICKeyChainStore-umbrella.h */,
 			);
-			path = GoogleInterchangeUtilities;
-			sourceTree = "<group>";
-		};
-		29C6A91F0401841B4B43D97B83947926 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				CCCC450F932E461F35A8C0000E4CC776 /* OneSignal.framework */,
-			);
-			name = Frameworks;
+			name = "Support Files";
+			path = "../Target Support Files/UICKeyChainStore";
 			sourceTree = "<group>";
 		};
 		3EF229062F5357F1028165A423A4C68A /* iOS */ = {
@@ -160,12 +186,37 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		3F33879E96CE26A930ACFF42FA84EE52 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC273688DE1CB4C3DD8BE7C42852F8C2 /* GGLAnalytics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				3EF229062F5357F1028165A423A4C68A /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45D34DF237795FB2CE161F0C2D0E4952 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9959A87CFA52D76D783C76FAD5B846B9 /* FirebaseAnalytics */,
+				5FF722150EE29011E657CCB3FD7CB515 /* FirebaseInstanceID */,
+				CFFE33E8CC614377E6A8D800D0137473 /* Google */,
+				D49E56AB52FEB160E6D4043B33D3A1F3 /* GoogleAnalytics */,
+				166AFCF025051FE7A48BFC28F2E4CD5F /* GoogleInterchangeUtilities */,
+				1836BEE2BD65C20F00D3FA6BB254B3DB /* GoogleSymbolUtilities */,
+				C22ECBC5234D8997084E9ADE103549A9 /* GoogleUtilities */,
+				7AC64A43091766160FF303E21DAAC8F1 /* ICViewPager */,
+				EE227A8D490217CAD8494AAE9D238AF1 /* OneSignal */,
+				88375817CA7C0F343712E2447A8889CC /* UICKeyChainStore */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		4B8C921EBD4950EF50AD3046DB52F1B3 /* Targets Support Files */ = {
@@ -176,66 +227,45 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		55C6A3BFBA9E496A0814D3791DF4CEA4 /* Pods */ = {
+		5168E25CAAD88B74CE9A70C212F28CC5 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				8CEA93F451845B511EF265731911F33C /* FirebaseAnalytics */,
-				D0372ECA40E44BC3ABFFA9F342FEAC14 /* FirebaseInstanceID */,
-				7FFC9E8D8F5F878B5D1601CE45E3EBF2 /* Google */,
-				B10BE57E411F482CB5FCD064672EF62C /* GoogleAnalytics */,
-				26966CE0E152A3DB7C682A4BB78A0C1F /* GoogleInterchangeUtilities */,
-				FF9713850CDD16697D7052FD7E45D529 /* GoogleSymbolUtilities */,
-				843918FFA59D6A827F5E39B82233052C /* GoogleUtilities */,
-				574612E049ADA4D525F1F835D939A68A /* OneSignal */,
-				65585B42C1B850FC9B84250C6F619E4C /* UICKeyChainStore */,
+				1576AC7E29D8954BE183E4A90E891C24 /* ICViewPager.modulemap */,
+				8F3D283F91775334432557F2473808EB /* ICViewPager.xcconfig */,
+				6866BFE0A9AC996EE3C747B93318C6DC /* ICViewPager-dummy.m */,
+				5C99AAC7C0558FB335ED26C800899228 /* ICViewPager-prefix.pch */,
+				88486098EBCA32A061D10EAC84992AEA /* ICViewPager-umbrella.h */,
+				6586B59B413CB8D3AB85ECB9E828D83B /* Info.plist */,
 			);
-			name = Pods;
+			name = "Support Files";
+			path = "../Target Support Files/ICViewPager";
 			sourceTree = "<group>";
 		};
-		574612E049ADA4D525F1F835D939A68A /* OneSignal */ = {
+		5FF722150EE29011E657CCB3FD7CB515 /* FirebaseInstanceID */ = {
 			isa = PBXGroup;
 			children = (
-				29C6A91F0401841B4B43D97B83947926 /* Frameworks */,
+				48FD2EE839022DF0B847F503527F705E /* FIRInstanceID.h */,
+				DE8070ED4F202D60C029309465B029EF /* Frameworks */,
 			);
-			path = OneSignal;
+			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
-		5ABBFA419F5C127BF5CFA55C0C99697E /* Frameworks */ = {
+		6079694AE420FE24F9D9DF871F9F2886 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E70DAA250524DA47E10B2B58AD790076 /* FirebaseInstanceID.framework */,
+				65D9FC203370D0C6496A2DDA30F55505 /* libGoogleAnalytics.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		65585B42C1B850FC9B84250C6F619E4C /* UICKeyChainStore */ = {
+		7AC64A43091766160FF303E21DAAC8F1 /* ICViewPager */ = {
 			isa = PBXGroup;
 			children = (
-				08059AB91AB8F9F52FEA96905648C2DB /* UICKeyChainStore.h */,
-				77E9188FCA3CA7314B994B1F41F0730F /* UICKeyChainStore.m */,
-				7E04D9B55C5CF7673D75EFE1A6F8EF80 /* Support Files */,
+				7DACDE16205C02DB5408F4919EF9D73D /* ViewPagerController.h */,
+				F2370D534110A5F6E86E06F401ABD9DA /* ViewPagerController.m */,
+				5168E25CAAD88B74CE9A70C212F28CC5 /* Support Files */,
 			);
-			path = UICKeyChainStore;
-			sourceTree = "<group>";
-		};
-		6E5D8B4D22BCD9C6716A7A8E99FAAECC /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				409B61EF42C6AE121FF8F76789BF8226 /* Analytics-Module.h */,
-				9B397B2E91A15F81109D8A83A53975EB /* Core.h */,
-				189E4A2F6AC66E22799F83D1D5072AE1 /* Core-Module.h */,
-				DC02539A689D9069473068DCE327E00A /* SignIn-Module.h */,
-				83481A3676C7FAE376B09D3575B814BF /* Frameworks */,
-			);
-			name = Core;
-			sourceTree = "<group>";
-		};
-		7874CA621C4D7D998C8232E7AB4AB949 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8F04535C248CC32D6295134565B5AB95 /* GoogleUtilities.framework */,
-			);
-			name = Frameworks;
+			path = ICViewPager;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -243,165 +273,216 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
-				55C6A3BFBA9E496A0814D3791DF4CEA4 /* Pods */,
-				C3F88366B2C475A47A5724E81A87B359 /* Products */,
+				45D34DF237795FB2CE161F0C2D0E4952 /* Pods */,
+				A737942964AE6C550B2773B0F4B1CB3C /* Products */,
 				4B8C921EBD4950EF50AD3046DB52F1B3 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		7E04D9B55C5CF7673D75EFE1A6F8EF80 /* Support Files */ = {
+		88375817CA7C0F343712E2447A8889CC /* UICKeyChainStore */ = {
 			isa = PBXGroup;
 			children = (
-				91B393BC902DF1C06666FE365F142B33 /* Info.plist */,
-				5297FE62856A93A1A62866A67FFEB58A /* UICKeyChainStore.modulemap */,
-				A062AEA39E6EB2FDEE4E6631B7A4C670 /* UICKeyChainStore.xcconfig */,
-				08CD9A9F124758664A37E8ACEF323020 /* UICKeyChainStore-dummy.m */,
-				234E2D763AC76FF82F488085C9EDB9A9 /* UICKeyChainStore-prefix.pch */,
-				2F10D77AA2BF328BA516B89D073D22FD /* UICKeyChainStore-umbrella.h */,
+				B753F6D7D0565F45CB328C1A432C45A9 /* UICKeyChainStore.h */,
+				CEDD29DB36D6A607BB0C0EAC16C5A604 /* UICKeyChainStore.m */,
+				2AA9C551150081FE2F11F91C6C6AE21E /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/UICKeyChainStore";
+			path = UICKeyChainStore;
 			sourceTree = "<group>";
 		};
-		7FFC9E8D8F5F878B5D1601CE45E3EBF2 /* Google */ = {
+		9959A87CFA52D76D783C76FAD5B846B9 /* FirebaseAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				062E14FE10B2C6A6C5C19009FD9DA197 /* Analytics */,
-				6E5D8B4D22BCD9C6716A7A8E99FAAECC /* Core */,
-			);
-			path = Google;
-			sourceTree = "<group>";
-		};
-		83481A3676C7FAE376B09D3575B814BF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				45EF9665EC93C4158161BD93A1A5059A /* GGLCore.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		843918FFA59D6A827F5E39B82233052C /* GoogleUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				7874CA621C4D7D998C8232E7AB4AB949 /* Frameworks */,
-			);
-			path = GoogleUtilities;
-			sourceTree = "<group>";
-		};
-		865997C19D5962E2842D3F0C1ACB6018 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C7959FEEE567F4482E11A410322E6564 /* libGoogleAnalytics.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8C2E6DE6D12991CB67294963CD431979 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				721FE9171C97818D4D9635BEE73CA74F /* GoogleInterchangeUtilities.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8CEA93F451845B511EF265731911F33C /* FirebaseAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				D4628FA5AB528F0BE1BC85D4076DCB37 /* Frameworks */,
+				C3EBF55F154A0038269740126868DD45 /* Frameworks */,
 			);
 			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
-		B10BE57E411F482CB5FCD064672EF62C /* GoogleAnalytics */ = {
+		A4652C420D0CCAE5B5397C7648D3DBA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ABC6305295E671C614AA4E5ECD510680 /* GAI.h */,
-				A09EC5FFAAB47DA1FD469D228DD0B7C5 /* GAIDictionaryBuilder.h */,
-				731F144A6803BF2234FFA7A73CF4466E /* GAIEcommerceFields.h */,
-				A63D0FB3E6BE57711EC7ECC0850F35E4 /* GAIEcommerceProduct.h */,
-				66F7CC06DA80F4415FB19EB6830ED976 /* GAIEcommerceProductAction.h */,
-				C7EB15FD55D4EECA0788A1355415424D /* GAIEcommercePromotion.h */,
-				E4CFFEE9FAEF7AFE9F49EC06F6FDBD05 /* GAIFields.h */,
-				AEBCF604FD41F6AC8DEDF1F1C4F8C415 /* GAILogger.h */,
-				3165921EC6956FD325BEC5F6CC02E7FF /* GAITrackedViewController.h */,
-				E62882FD582E51AF3A102290DF2637EF /* GAITracker.h */,
-				865997C19D5962E2842D3F0C1ACB6018 /* Frameworks */,
-			);
-			path = GoogleAnalytics;
-			sourceTree = "<group>";
-		};
-		B118070E8F902F8F46A82D80E97FC8A3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F7029801022FB343C7CBE3640680D2B8 /* GGLAnalytics.framework */,
+				AF46CB7EDC8429296EA874B14C3EC9C6 /* GoogleSymbolUtilities.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C3F88366B2C475A47A5724E81A87B359 /* Products */ = {
+		A4B139498248872F3D4B87335B9F364A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F79B8222D9BA1041B9516DDFC0A685D4 /* Pods_CCIP.framework */,
-				77538A48C8F270E07694CDB8DB3F8461 /* UICKeyChainStore.framework */,
+				DB7330DD07729BCE0158051B04EFE331 /* GGLCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A737942964AE6C550B2773B0F4B1CB3C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AEB7D8540B73F649A1D7A1468F618217 /* ICViewPager.framework */,
+				12D2A0365BCB261BC325478C5D1577CE /* Pods_CCIP.framework */,
+				5ED2A85A2A40DDF136E91CD176B85DA4 /* UICKeyChainStore.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D0372ECA40E44BC3ABFFA9F342FEAC14 /* FirebaseInstanceID */ = {
+		AF08009242410CBF27119F4DA1619684 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BBC4140E89FA32AE25F449C0AD01BA9E /* FIRInstanceID.h */,
-				5ABBFA419F5C127BF5CFA55C0C99697E /* Frameworks */,
-			);
-			path = FirebaseInstanceID;
-			sourceTree = "<group>";
-		};
-		D4628FA5AB528F0BE1BC85D4076DCB37 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2430942746B7FB94145B934CB30E8E90 /* FirebaseAnalytics.framework */,
+				AB36CB470AC171FA3F9CFD63598D8DA3 /* GoogleUtilities.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FF9713850CDD16697D7052FD7E45D529 /* GoogleSymbolUtilities */ = {
+		B1D44B7698B108373DA63EE3314D78DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1B42C66C4B565CC6D6B528AA92651C00 /* Frameworks */,
+				4974A2AEE142FF7FC80B1B9425F2CA88 /* OneSignal.framework */,
 			);
-			path = GoogleSymbolUtilities;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C22ECBC5234D8997084E9ADE103549A9 /* GoogleUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				AF08009242410CBF27119F4DA1619684 /* Frameworks */,
+			);
+			path = GoogleUtilities;
+			sourceTree = "<group>";
+		};
+		C3EBF55F154A0038269740126868DD45 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0ABC0167BE4901532F88691BC7C206B9 /* FirebaseAnalytics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CFFE33E8CC614377E6A8D800D0137473 /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				DA45F1C82163DFEB9EC1B14C6E6BD268 /* Analytics */,
+				E5322015D1F0E173AC12E4465B5C8B50 /* Core */,
+			);
+			path = Google;
+			sourceTree = "<group>";
+		};
+		D49E56AB52FEB160E6D4043B33D3A1F3 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				D7125CA39CAB876871964CB15006CCA4 /* GAI.h */,
+				3E256429D06A801D36F80BA97AB5C2C1 /* GAIDictionaryBuilder.h */,
+				D0A84BF7F582FFE119CF137F1E23D785 /* GAIEcommerceFields.h */,
+				A5EA6D9B085CC35934D17DB4F58CF490 /* GAIEcommerceProduct.h */,
+				B94C9376695BC53E90DB6CCCDCC79F8B /* GAIEcommerceProductAction.h */,
+				906C7DA60D9562318C82E16F473BE810 /* GAIEcommercePromotion.h */,
+				0D4772AF13F11140644DB9CBA5719B16 /* GAIFields.h */,
+				89930AE8AC6DB116459120D75C57E446 /* GAILogger.h */,
+				2A330E20E5957F7F290CCAF42969D3A6 /* GAITrackedViewController.h */,
+				55C1F7029A1A01CFA54DECA9DB001CA5 /* GAITracker.h */,
+				6079694AE420FE24F9D9DF871F9F2886 /* Frameworks */,
+			);
+			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		D6CD1EE441E0C1E4D8950A14D089AF0D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3CD6741AE272CA6DD3B6D0382A6D09A0 /* GoogleInterchangeUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA45F1C82163DFEB9EC1B14C6E6BD268 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				E1F43EFD4034E155176E67ECCB8E63A3 /* Analytics.h */,
+				3F33879E96CE26A930ACFF42FA84EE52 /* Frameworks */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		DE8070ED4F202D60C029309465B029EF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				446EC044F026D2D64BEF218B82BE91D8 /* FirebaseInstanceID.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E5322015D1F0E173AC12E4465B5C8B50 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E0A4B160386A8300937500229BC882EE /* Analytics-Module.h */,
+				75C248095AD51D79B5304B3FFF9EA10B /* Core.h */,
+				F96B6DE4BD1E00108CE3DAF375B2210A /* Core-Module.h */,
+				8DF0F8C9793E11BB894445F03D4C0BB0 /* SignIn-Module.h */,
+				A4B139498248872F3D4B87335B9F364A /* Frameworks */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		EE227A8D490217CAD8494AAE9D238AF1 /* OneSignal */ = {
+			isa = PBXGroup;
+			children = (
+				B1D44B7698B108373DA63EE3314D78DD /* Frameworks */,
+			);
+			path = OneSignal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		13081B430A729DBA318C42C05D6035B2 /* Headers */ = {
+		810E92C12B99EC6BF8441105EA021EA8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D196CDBBFED3D23625F222E4D5BA54A3 /* Pods-CCIP-umbrella.h in Headers */,
+				CAD24C293BDDF992D56C55F9B7762E26 /* Pods-CCIP-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		85B3D50DD90A9053DBD189BD8552941A /* Headers */ = {
+		9F6C8B62428A6235E5EDB093807894E4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B570C8356DBE386C9DF6711A58D5ADD7 /* UICKeyChainStore-umbrella.h in Headers */,
-				AA3704FDBD788C135191450812A7ECF4 /* UICKeyChainStore.h in Headers */,
+				75B5BE0901867ABF5F787D48F5871C7F /* UICKeyChainStore-umbrella.h in Headers */,
+				2E70E4524A4BDF533A9C36A26E33F17E /* UICKeyChainStore.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4D7CA4BED997B1C230616DA7130A403 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B6027824C2E68D4C84922644CC42414 /* ICViewPager-umbrella.h in Headers */,
+				F8B282685BB4FB2F1C5F0D178517B1C2 /* ViewPagerController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		A4AF1721838338D2C309D68446698CFE /* UICKeyChainStore */ = {
+		4C0408FA37E119C9FEAF3122DE2038EA /* ICViewPager */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A3891BAED454CE84D0EDF2CC495B55B /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */;
+			buildConfigurationList = BFCB0ABCD6A0975024081FBC27695088 /* Build configuration list for PBXNativeTarget "ICViewPager" */;
 			buildPhases = (
-				49B5298313C50E64B9D96756FC5AAB9B /* Sources */,
-				74F73B19558C4CDE98A6A36EDB0A0E05 /* Frameworks */,
-				85B3D50DD90A9053DBD189BD8552941A /* Headers */,
+				55C5EBB0111C98387E744740D699F608 /* Sources */,
+				0022800CC8804F6D2119328AA3A54C79 /* Frameworks */,
+				D4D7CA4BED997B1C230616DA7130A403 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ICViewPager;
+			productName = ICViewPager;
+			productReference = AEB7D8540B73F649A1D7A1468F618217 /* ICViewPager.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9BC4BD8F53CB6A4FA609E9295669C5C4 /* UICKeyChainStore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C4418E5EAE293390588EB6113623E48 /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */;
+			buildPhases = (
+				149100146D7F5FA834BB67DB25F005A1 /* Sources */,
+				9F11B83BD332A46C53707BE4B6037E95 /* Frameworks */,
+				9F6C8B62428A6235E5EDB093807894E4 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -409,25 +490,26 @@
 			);
 			name = UICKeyChainStore;
 			productName = UICKeyChainStore;
-			productReference = 77538A48C8F270E07694CDB8DB3F8461 /* UICKeyChainStore.framework */;
+			productReference = 5ED2A85A2A40DDF136E91CD176B85DA4 /* UICKeyChainStore.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A5FE26D49337338DA2031F46632234AB /* Pods-CCIP */ = {
+		ECA8E1BCF2515FF42BC0494645E5C84A /* Pods-CCIP */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 24DF65E61C43EC97009ACF233BA4BC99 /* Build configuration list for PBXNativeTarget "Pods-CCIP" */;
+			buildConfigurationList = 856EDEB0F6DE4AB674D0E82B5B0F4D80 /* Build configuration list for PBXNativeTarget "Pods-CCIP" */;
 			buildPhases = (
-				9711A5AEED072D72B32B3E85058CC360 /* Sources */,
-				6B5CE6A69934B35538059B1A49354ED0 /* Frameworks */,
-				13081B430A729DBA318C42C05D6035B2 /* Headers */,
+				AB74CC98AAF62EBCCF0CF7C8168CB214 /* Sources */,
+				224B17E65CC65EEE2DC662C5C79E0E83 /* Frameworks */,
+				810E92C12B99EC6BF8441105EA021EA8 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0AA5E95C62B7240D167E5D69AE2E46BB /* PBXTargetDependency */,
+				3D2481DE633F6D566DF8C932E2F3FA7D /* PBXTargetDependency */,
+				26A9EC25E039FA3F794A3248088260DA /* PBXTargetDependency */,
 			);
 			name = "Pods-CCIP";
 			productName = "Pods-CCIP";
-			productReference = F79B8222D9BA1041B9516DDFC0A685D4 /* Pods_CCIP.framework */;
+			productReference = 12D2A0365BCB261BC325478C5D1577CE /* Pods_CCIP.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -447,49 +529,65 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = C3F88366B2C475A47A5724E81A87B359 /* Products */;
+			productRefGroup = A737942964AE6C550B2773B0F4B1CB3C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A5FE26D49337338DA2031F46632234AB /* Pods-CCIP */,
-				A4AF1721838338D2C309D68446698CFE /* UICKeyChainStore */,
+				4C0408FA37E119C9FEAF3122DE2038EA /* ICViewPager */,
+				ECA8E1BCF2515FF42BC0494645E5C84A /* Pods-CCIP */,
+				9BC4BD8F53CB6A4FA609E9295669C5C4 /* UICKeyChainStore */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		49B5298313C50E64B9D96756FC5AAB9B /* Sources */ = {
+		149100146D7F5FA834BB67DB25F005A1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07F5DF866D919ABCD39C9D0C7CE54AA2 /* UICKeyChainStore-dummy.m in Sources */,
-				495A02318AC240D04BDB69EBADA164B8 /* UICKeyChainStore.m in Sources */,
+				B902031427BC29F251067C60181E0E77 /* UICKeyChainStore-dummy.m in Sources */,
+				95D0786B8F46DB15D20FB2AFA39ACEC9 /* UICKeyChainStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9711A5AEED072D72B32B3E85058CC360 /* Sources */ = {
+		55C5EBB0111C98387E744740D699F608 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AAFB1D41619A4BD9C1D2602F0D24064 /* Pods-CCIP-dummy.m in Sources */,
+				7A9814A5844AB022893E0164F11E7670 /* ICViewPager-dummy.m in Sources */,
+				DBCF1109A5F976EBDC5195879EA43C17 /* ViewPagerController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB74CC98AAF62EBCCF0CF7C8168CB214 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9E4E16499B30F91B6AFF80F241F225A /* Pods-CCIP-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0AA5E95C62B7240D167E5D69AE2E46BB /* PBXTargetDependency */ = {
+		26A9EC25E039FA3F794A3248088260DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = UICKeyChainStore;
-			target = A4AF1721838338D2C309D68446698CFE /* UICKeyChainStore */;
-			targetProxy = DAB0214AFAB286EFC2C806631D2E2F09 /* PBXContainerItemProxy */;
+			target = 9BC4BD8F53CB6A4FA609E9295669C5C4 /* UICKeyChainStore */;
+			targetProxy = 127506C41C21F8F7F8D84E051EDCB456 /* PBXContainerItemProxy */;
+		};
+		3D2481DE633F6D566DF8C932E2F3FA7D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ICViewPager;
+			target = 4C0408FA37E119C9FEAF3122DE2038EA /* ICViewPager */;
+			targetProxy = 9FB43A0A67C48993702CF711855523A4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1543D6A61FB102DB225F302211598CC5 /* Release */ = {
+		3B67099D6904DACE4747EB680DD2174C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A062AEA39E6EB2FDEE4E6631B7A4C670 /* UICKeyChainStore.xcconfig */;
+			baseConfigurationReference = CEAB8F48D11F23B3C68774FB0187BB2A /* UICKeyChainStore.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -515,72 +613,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		1FBE0A5C87BAF9F024CAF7D759E84E80 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FED333F71BA244C276B35C2271C36CFF /* Pods-CCIP.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CCIP/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CCIP/Pods-CCIP.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CCIP;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		3A374AAED417A8815521AE2449708082 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6156A4220A95AB1931B9C9CE4D5968D4 /* Pods-CCIP.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CCIP/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CCIP/Pods-CCIP.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CCIP;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		47BEF9D903506B003EA5C2B249729489 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -624,34 +656,67 @@
 			};
 			name = Debug;
 		};
-		542D102484A9F2D99B9CA03D9471890A /* Debug */ = {
+		6557DB4EAF589D7B3B25A105C07DFD33 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A062AEA39E6EB2FDEE4E6631B7A4C670 /* UICKeyChainStore.xcconfig */;
+			baseConfigurationReference = 8F3D283F91775334432557F2473808EB /* ICViewPager.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/UICKeyChainStore/UICKeyChainStore-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/UICKeyChainStore/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/ICViewPager/ICViewPager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ICViewPager/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/UICKeyChainStore/UICKeyChainStore.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = UICKeyChainStore;
+				MODULEMAP_FILE = "Target Support Files/ICViewPager/ICViewPager.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = ICViewPager;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
+		};
+		70BC3BFBD8722A3819F315ACD3C42686 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FED333F71BA244C276B35C2271C36CFF /* Pods-CCIP.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CCIP/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CCIP/Pods-CCIP.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CCIP;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		AAF678CED40D3499169D10F63CA0719E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -691,18 +756,100 @@
 			};
 			name = Release;
 		};
+		D6DFAC7FCA4CC551B556D71C27D9EE39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F3D283F91775334432557F2473808EB /* ICViewPager.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ICViewPager/ICViewPager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ICViewPager/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ICViewPager/ICViewPager.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = ICViewPager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F020C1A199599C609FE426F0DBFA32E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6156A4220A95AB1931B9C9CE4D5968D4 /* Pods-CCIP.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CCIP/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CCIP/Pods-CCIP.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CCIP;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FFDAE907C367A30C0D127FE7C41D3D41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEAB8F48D11F23B3C68774FB0187BB2A /* UICKeyChainStore.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/UICKeyChainStore/UICKeyChainStore-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UICKeyChainStore/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/UICKeyChainStore/UICKeyChainStore.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = UICKeyChainStore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		24DF65E61C43EC97009ACF233BA4BC99 /* Build configuration list for PBXNativeTarget "Pods-CCIP" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3A374AAED417A8815521AE2449708082 /* Debug */,
-				1FBE0A5C87BAF9F024CAF7D759E84E80 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -712,11 +859,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8A3891BAED454CE84D0EDF2CC495B55B /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */ = {
+		4C4418E5EAE293390588EB6113623E48 /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				542D102484A9F2D99B9CA03D9471890A /* Debug */,
-				1543D6A61FB102DB225F302211598CC5 /* Release */,
+				FFDAE907C367A30C0D127FE7C41D3D41 /* Debug */,
+				3B67099D6904DACE4747EB680DD2174C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		856EDEB0F6DE4AB674D0E82B5B0F4D80 /* Build configuration list for PBXNativeTarget "Pods-CCIP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F020C1A199599C609FE426F0DBFA32E0 /* Debug */,
+				70BC3BFBD8722A3819F315ACD3C42686 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFCB0ABCD6A0975024081FBC27695088 /* Build configuration list for PBXNativeTarget "ICViewPager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6DFAC7FCA4CC551B556D71C27D9EE39 /* Debug */,
+				6557DB4EAF589D7B3B25A105C07DFD33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

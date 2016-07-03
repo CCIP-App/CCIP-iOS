@@ -9,4 +9,5 @@ target 'CCIP' do
   pod 'OneSignal'
   pod 'UICKeyChainStore'
   pod 'Google/Analytics'
+  pod 'ICViewPager', :git => 'https://github.com/FrankWu100/ICViewPager'
 end
