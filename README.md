@@ -1,7 +1,10 @@
 # CCIP-iOS
 
-cd [project-folder]
+A Community Checkin with Interactivity Project for iOS app
 
-git submodule init --
+## Pre-Requirement
 
-git submodule update --init --recursive
+* Xcode 7 and above
+* CocoaPod
+* iOS 8 and above
+
