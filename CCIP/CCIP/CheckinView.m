@@ -43,6 +43,14 @@
     [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
         if (json != nil) {
             NSLog(@"%@", json);
+            
+            NSDictionary *theScenario = [NSDictionary new];
+            for (NSDictionary *dict in [json objectForKey:@"scenarios"]) {
+                if ([[dict objectForKey:@"id"] isEqualToString:[self.scenario objectForKey:@"id"]]) {
+                    theScenario = dict;
+                }
+            }
+            
             UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:@"StatusViewController"
                                                                                         bundle:nil];
             [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
@@ -56,7 +64,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
                 [detailViewController.view performSelector:setScenarioValue
-                                                withObject:self.scenario];
+                                                withObject:theScenario];
 #pragma clang diagnostic pop
             }
             UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];

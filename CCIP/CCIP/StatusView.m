@@ -40,7 +40,7 @@
     [self.countdownLabel setHidden:YES];
     if ([[self.scenario objectForKey:@"countdown"] floatValue] > 0) {
         [self.countdownLabel setHidden:NO];
-        [((UIViewController *)self.nextResponder).navigationItem.leftBarButtonItem setEnabled:NO];
+        //[((UIViewController *)self.nextResponder).navigationItem.leftBarButtonItem setEnabled:NO];
         [self performSelector:@selector(startCountDown)
                    withObject:nil
                    afterDelay:0.5f];
@@ -55,7 +55,12 @@
 - (void)updateCountDown {
     NSTimeInterval interval = [[NSDate new] timeIntervalSinceDate:self.countTime];
     UIColor *color = self.tintColor;
-    float maxValue = [[self.scenario objectForKey:@"countdown"] floatValue];
+    
+    int used = [[self.scenario objectForKey:@"used"] intValue];
+    int countdown = [[self.scenario objectForKey:@"countdown"] intValue];
+    int now = [[NSDate new] timeIntervalSince1970];
+    
+    float maxValue = [[NSNumber numberWithInt:(used + countdown - now)] floatValue];
     float countDown = maxValue - interval;
     if (countDown <= 0) {
         countDown = 0;
