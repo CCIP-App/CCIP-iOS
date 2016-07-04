@@ -15,7 +15,7 @@
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
-@property (strong, nonatomic) OneSignal *oneSignal;
+@property (strong, readwrite, nonatomic) OneSignal *oneSignal;
 @property (strong, readwrite, nonatomic) NSString *accessToken;
 @property (strong, readwrite, nonatomic) UISplitViewController *splitViewController;
 @property (strong, readwrite, nonatomic) MasterViewController *masterView;

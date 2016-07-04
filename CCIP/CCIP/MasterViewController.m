@@ -53,6 +53,7 @@
             self.userInfo = [NSDictionary dictionaryWithDictionary:userInfo];
             self.scenarios = [json objectForKey:@"scenarios"];
             [self.tableView reloadData];
+            [self.appDelegate.oneSignal sendTag:@"user_id" value:[json objectForKey:@"user_id"]];
         }
         [self.refreshControl endRefreshing];
     }];

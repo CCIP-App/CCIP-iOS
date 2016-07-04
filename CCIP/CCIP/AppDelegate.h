@@ -15,6 +15,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, readonly, nonatomic) OneSignal *oneSignal;
 @property (strong, readonly, nonatomic) NSString *accessToken;
 @property (strong, readonly, nonatomic) UISplitViewController *splitViewController;
 @property (strong, readonly, nonatomic) MasterViewController *masterView;
