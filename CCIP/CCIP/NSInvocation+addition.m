@@ -18,18 +18,18 @@
 
 + (void)InvokeObject:(id)target withSelectorString:(NSString *)selector withArguments:(NSArray *)args {
     SEL sel = NSSelectorFromString(selector);
-    if ([target respondsToSelector:sel]) {
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[target methodSignatureForSelector:sel]];
-        [invocation setTarget:target];
-        [invocation setSelector:sel];
-        int i = 0;
-        for (id arg in args) {
-            id a = arg;
-            [invocation setArgument:&a
-                            atIndex:2 + i++];
-        }
-        [invocation invoke];
+    NSString *assertMsg = [NSString stringWithFormat:@"I cannot found the target selector! Are sure calling [%@ %@] is correct as you want?", [[target class] description], selector];
+    NSAssert([target respondsToSelector:sel], assertMsg);
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[target methodSignatureForSelector:sel]];
+    [invocation setTarget:target];
+    [invocation setSelector:sel];
+    int i = 0;
+    for (id arg in args) {
+        id a = arg;
+        [invocation setArgument:&a
+                        atIndex:2 + i++];
     }
+    [invocation invoke];
 }
 
 @end
