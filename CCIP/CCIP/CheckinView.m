@@ -59,14 +59,9 @@
                                                                                         action:@selector(gotoTop)];
             [detailViewController.navigationItem setLeftBarButtonItem:backButton];
             [detailViewController.navigationItem setLeftItemsSupplementBackButton:NO];
-            SEL setScenarioValue = NSSelectorFromString(@"setScenario:");
-            if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                [detailViewController.view performSelector:setScenarioValue
-                                                withObject:theScenario];
-#pragma clang diagnostic pop
-            }
+            [NSInvocation InvokeObject:detailViewController.view
+                    withSelectorString:@"setScenario:"
+                         withArguments:@[ theScenario ]];
             UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
             [self.appDelegate.splitViewController showDetailViewController:detailNavigationController
                                                                     sender:self];

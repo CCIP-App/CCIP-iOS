@@ -10,6 +10,7 @@
 #import <OneSignal/OneSignal.h>
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "NSInvocation+addition.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

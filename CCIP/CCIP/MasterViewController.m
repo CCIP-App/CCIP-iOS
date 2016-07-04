@@ -271,23 +271,13 @@
             }
         }
         
-        SEL setRoomsValue = NSSelectorFromString(@"setRooms:");
-        if ([roomLocationView canPerformAction:setRoomsValue withSender:nil]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            [roomLocationView performSelector:setRoomsValue
-                                   withObject:rooms];
-#pragma clang diagnostic pop
-        }
+        [NSInvocation InvokeObject:roomLocationView
+                withSelectorString:@"setRooms:"
+                     withArguments:@[ rooms ]];
         
-        SEL setProgramsValue = NSSelectorFromString(@"setRoomPrograms:");
-        if ([roomLocationView canPerformAction:setProgramsValue withSender:nil]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            [roomLocationView performSelector:setProgramsValue
-                                   withObject:self.programsJsonArray];
-#pragma clang diagnostic pop
-        }
+        [NSInvocation InvokeObject:roomLocationView
+                withSelectorString:@"setRoomPrograms:"
+                     withArguments:@[ self.programsJsonArray ]];
         
         [self.splitViewController showDetailViewController:roomLocationView
                                                     sender:self];
@@ -314,14 +304,9 @@
         
         if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
             // IN TIME Start
-            SEL setScenarioValue = NSSelectorFromString(@"setScenario:");
-            if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                [detailViewController.view performSelector:setScenarioValue
-                                                withObject:scenario];
-#pragma clang diagnostic pop
-            }
+            [NSInvocation InvokeObject:detailViewController.view
+                    withSelectorString:@"setScenario:"
+                         withArguments:@[ scenario ]];
             [detailViewController setTitle:[scenario objectForKey:@"id"]];
             UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
             [self.splitViewController showDetailViewController:detailNavigationController
@@ -367,13 +352,10 @@
         NSString *vcName = @"IRCViewController";
         UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:vcName bundle:nil];
         
-        SEL setScenarioValue = NSSelectorFromString(@"setURL:");
-        if ([detailViewController.view canPerformAction:setScenarioValue withSender:nil]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            [detailViewController.view performSelector:setScenarioValue withObject:@{@"url": LOG_BOT_URL}];
-#pragma clang diagnostic pop
-        }
+        [NSInvocation InvokeObject:detailViewController.view
+                withSelectorString:@"setURL:"
+                     withArguments:@[ @{@"url": LOG_BOT_URL} ]];
+
         [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
         UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
         [self.splitViewController showDetailViewController:detailNavigationController

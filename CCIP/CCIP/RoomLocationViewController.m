@@ -8,6 +8,7 @@
 
 #import "RoomLocationViewController.h"
 #import "RoomProgramsTableViewController.h"
+#import "NSInvocation+addition.h"
 
 @interface RoomLocationViewController () <ViewPagerDataSource, ViewPagerDelegate>
 
@@ -66,31 +67,20 @@
 
     NSString *room = [[self.rooms objectAtIndex:index] objectForKey:@"room"];
     
-    SEL setRoomValue = NSSelectorFromString(@"setRoom:");
-    if ([roomProgramsTableView canPerformAction:setRoomValue withSender:nil]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [roomProgramsTableView performSelector:setRoomValue
-                                   withObject:room];
-#pragma clang diagnostic pop
-    }
+    [NSInvocation InvokeObject:roomProgramsTableView
+            withSelectorString:@"setRoom:"
+                 withArguments:@[ room ]];
     
-    
-    NSMutableArray *mutableArray  = [NSMutableArray new];
+    NSMutableArray *programsArray  = [NSMutableArray new];
     for (NSDictionary *dict in self.roomPrograms) {
         if ([[dict objectForKey:@"room"] isEqualToString:room]) {
-            [mutableArray addObject:dict];
+            [programsArray addObject:dict];
         }
     }
     
-    SEL setProgramsValue = NSSelectorFromString(@"setPrograms:");
-    if ([roomProgramsTableView canPerformAction:setProgramsValue withSender:nil]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [roomProgramsTableView performSelector:setProgramsValue
-                                   withObject:mutableArray];
-#pragma clang diagnostic pop
-    }
+    [NSInvocation InvokeObject:roomProgramsTableView
+            withSelectorString:@"setPrograms:"
+                 withArguments:@[ programsArray ]];
     
     return roomProgramsTableView;
 }
