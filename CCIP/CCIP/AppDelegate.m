@@ -46,6 +46,7 @@
             self.accessToken = [params objectForKey:@"token"];
             [UICKeyChainStore setString:self.accessToken
                                  forKey:@"token"];
+            [self.oneSignal sendTag:@"token" value:self.accessToken];
             [self.masterView refreshData];
         }
     }
@@ -88,6 +89,7 @@
     [self.oneSignal enableInAppAlertNotification:YES];
     self.accessToken = [UICKeyChainStore stringForKey:@"token"];
     NSLog(@"Token: <%@>", self.accessToken);
+    [self.oneSignal sendTag:@"token" value:self.accessToken];
     
     // Configure Root View Controller
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
