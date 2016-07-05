@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  CCIP
+
+  Created by 腹黒い茶 on 2016/07/05.
+  Copyright © 2016年 CPRTeam. All rights reserved.
+*/
+/* Localized versions of Info.plist keys */
+
+CFBundleDisplayName = "COSCUP Pass";
+CFBundleName = "COSCUP Pass";

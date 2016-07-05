@@ -13,6 +13,7 @@
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
 		5FF2B11E1D28B19600665DD9 /* IRCView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2B11C1D28B19600665DD9 /* IRCView.m */; };
 		5FF2B11F1D28B19600665DD9 /* IRCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF2B11D1D28B19600665DD9 /* IRCViewController.xib */; };
+		6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */; };
 		6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */; };
 		6B2CD5611D281D9400793194 /* UIAlertController+additional.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */; };
 		6B2CD5791D286E6F00793194 /* UIColor+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CD5781D286E6F00793194 /* UIColor+Transition.m */; };
@@ -68,6 +69,8 @@
 		5FF2B11B1D28B19600665DD9 /* IRCView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRCView.h; sourceTree = "<group>"; };
 		5FF2B11C1D28B19600665DD9 /* IRCView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRCView.m; sourceTree = "<group>"; };
 		5FF2B11D1D28B19600665DD9 /* IRCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRCViewController.xib; sourceTree = "<group>"; };
+		6B0B84D11D2B861000DE18B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6B0B84D21D2B862300DE18B0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+addition.h"; sourceTree = "<group>"; };
 		6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+addition.m"; sourceTree = "<group>"; };
 		6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+additional.m"; sourceTree = "<group>"; };
@@ -96,7 +99,7 @@
 		6BA1A5241D1EFBE700D5924C /* CheckinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinView.m; sourceTree = "<group>"; };
 		6BA1A5261D1EFBF100D5924C /* InvalidNetworkMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvalidNetworkMessageView.h; sourceTree = "<group>"; };
 		6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvalidNetworkMessageView.m; sourceTree = "<group>"; };
-		6BD8EF271D1D73510094BE95 /* COSCUP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COSCUP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BD8EF271D1D73510094BE95 /* CCIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD8EF2B1D1D73510094BE95 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -158,7 +161,7 @@
 		6BD8EF281D1D73510094BE95 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6BD8EF271D1D73510094BE95 /* COSCUP.app */,
+				6BD8EF271D1D73510094BE95 /* CCIP.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 		6BD8EF2A1D1D73510094BE95 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */,
 				6B2CD5971D2886C900793194 /* Localizable.strings */,
 				6BD8EF391D1D73510094BE95 /* Assets.xcassets */,
 				5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */,
@@ -236,7 +240,7 @@
 			);
 			name = CCIP;
 			productName = CCIP;
-			productReference = 6BD8EF271D1D73510094BE95 /* COSCUP.app */;
+			productReference = 6BD8EF271D1D73510094BE95 /* CCIP.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -294,6 +298,7 @@
 				6B53C6601D1ED5EB00EA8012 /* InvalidNetworkMessageViewController.xib in Resources */,
 				5FF2B11F1D28B19600665DD9 /* IRCViewController.xib in Resources */,
 				6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */,
+				6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +377,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B0B84D11D2B861000DE18B0 /* en */,
+				6B0B84D21D2B862300DE18B0 /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		6B2CD5971D2886C900793194 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -489,7 +503,7 @@
 				INFOPLIST_FILE = CCIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev";
-				PRODUCT_NAME = COSCUP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -505,7 +519,7 @@
 				INFOPLIST_FILE = CCIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev";
-				PRODUCT_NAME = COSCUP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
