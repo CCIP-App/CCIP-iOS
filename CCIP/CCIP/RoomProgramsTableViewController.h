@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RoomProgramsTableViewController : UITableViewController
+@interface RoomProgramsTableViewController : UITableViewController<UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) NSString *room;
 @property (strong, nonatomic) NSArray *programs;
