@@ -7,21 +7,16 @@
 //
 
 #import "AppDelegate.h"
-#import "GatewayWebService/GatewayWebService.h"
 #import <Google/Analytics.h>
 #import <UICKeyChainStore/UICKeyChainStore.h>
+#import "GatewayWebService/GatewayWebService.h"
+#import "GuideViewController.h"
 
 #define ONE_SIGNAL_APP_TOKEN (@"aef99f72-9ee3-4dfa-ac5b-ddf79f16be7d")
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
 @property (strong, readwrite, nonatomic) OneSignal *oneSignal;
-@property (strong, readwrite, nonatomic) NSString *accessToken;
-@property (strong, readwrite, nonatomic) UISplitViewController *splitViewController;
-@property (strong, readwrite, nonatomic) MasterViewController *masterView;
-@property (strong, readwrite, nonatomic) DetailViewController *detailView;
-@property (strong, readwrite, nonatomic) UINavigationController *masterNav;
-@property (strong, readwrite, nonatomic) UINavigationController *detailNav;
 
 @end
 
@@ -91,22 +86,6 @@
     NSLog(@"Token: <%@>", self.accessToken);
     [self.oneSignal sendTag:@"token" value:self.accessToken];
     
-    // Configure Root View Controller
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.splitViewController = [UISplitViewController new];
-    self.masterView = [MasterViewController new];
-    self.detailView = [DetailViewController new];
-    [self.masterView setTitle:@"COSCUP 2016"];
-    [self.detailView.view setBackgroundColor:[UIColor whiteColor]];
-    [self.detailView.navigationItem setLeftBarButtonItem:self.splitViewController.displayModeButtonItem];
-    [self.detailView.navigationItem setLeftItemsSupplementBackButton:YES];
-    self.masterNav = [[UINavigationController alloc] initWithRootViewController:self.masterView];
-    self.detailNav = [[UINavigationController alloc] initWithRootViewController:self.detailView];
-    [self.splitViewController setViewControllers:@[self.masterNav, self.detailNav]];
-    [self.splitViewController setDelegate:self];
-    [self.window setRootViewController:self.splitViewController];
-    [self.window makeKeyAndVisible];
-    
     return YES;
 }
 
@@ -130,17 +109,6 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-#pragma mark - Split view
-
-- (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
-    if ([secondaryViewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)secondaryViewController topViewController] isKindOfClass:[DetailViewController class]] && ([(DetailViewController *)[(UINavigationController *)secondaryViewController topViewController] detailItem] == nil)) {
-        // Return YES to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-        return YES;
-    } else {
-        return NO;
-    }
 }
 
 @end

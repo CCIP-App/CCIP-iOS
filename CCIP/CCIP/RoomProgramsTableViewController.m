@@ -24,6 +24,8 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    // MAGIC of disable topLayoutGuide
+    [self.navigationController.navigationBar setTranslucent:NO];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self
                             action:@selector(refreshData)
@@ -31,8 +33,7 @@
 }
 
 - (void)refreshData {
-    //[self.refreshControl beginRefreshing];
-    
+    [self.refreshControl beginRefreshing];
     GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
     [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
         if (json != nil) {
@@ -48,19 +49,18 @@
             
             [self.tableView reloadData];
         }
-        
         [self.refreshControl endRefreshing];
     }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.tableView reloadData];
+    // [self.tableView reloadData];
+    [self refreshData];
 }
 
 - (void)didReceiveMemoryWarning {

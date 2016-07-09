@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <OneSignal/OneSignal.h>
+#import "SplitViewController.h"
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "NSInvocation+addition.h"
@@ -16,12 +17,10 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, readonly, nonatomic) OneSignal *oneSignal;
-@property (strong, readonly, nonatomic) NSString *accessToken;
-@property (strong, readonly, nonatomic) UISplitViewController *splitViewController;
-@property (strong, readonly, nonatomic) MasterViewController *masterView;
-@property (strong, readonly, nonatomic) DetailViewController *detailView;
-@property (strong, readonly, nonatomic) UINavigationController *masterNav;
-@property (strong, readonly, nonatomic) UINavigationController *detailNav;
+@property (strong, nonatomic) NSString *accessToken;
+@property (strong, nonatomic) SplitViewController *splitViewController;
+@property (strong, nonatomic) MasterViewController *masterView;
+@property (strong, nonatomic) DetailViewController *detailView;
 
 @end
 

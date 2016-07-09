@@ -6,9 +6,12 @@
 //  Copyright © 2016年 FrankWu. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "DetailViewController.h"
 
 @interface DetailViewController ()
+
+@property (strong, nonatomic) AppDelegate *appDelegate;
 
 @end
 
@@ -36,6 +39,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.appDelegate.detailView = self;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [((UINavigationController *)[self.appDelegate.splitViewController.viewControllers firstObject]) popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

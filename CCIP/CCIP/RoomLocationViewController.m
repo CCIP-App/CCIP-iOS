@@ -46,7 +46,6 @@
 
 #pragma mark - ViewPagerDataSource
 - (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
-    
     UILabel *label = [UILabel new];
     label.backgroundColor = [UIColor clearColor];
     
@@ -62,8 +61,7 @@
 #pragma mark - ViewPagerDataSource
 - (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index {
 
-    RoomProgramsTableViewController *roomProgramsTableView = NULL;
-    roomProgramsTableView = [RoomProgramsTableViewController new];
+    RoomProgramsTableViewController *roomProgramsTableView = [RoomProgramsTableViewController new];
 
     NSString *room = [[self.rooms objectAtIndex:index] objectForKey:@"room"];
     
@@ -87,14 +85,11 @@
 
 #pragma mark - ViewPagerDelegate
 - (void)viewPager:(ViewPagerController *)viewPager didChangeTabToIndex:(NSUInteger)index {
-    
     // Do something useful
-
 }
 
 #pragma mark - ViewPagerDelegate
 - (CGFloat)viewPager:(ViewPagerController *)viewPager valueForOption:(ViewPagerOption)option withDefault:(CGFloat)value {
-    
     switch (option) {
         case ViewPagerOptionStartFromSecondTab:
             return 0.0;
@@ -118,7 +113,6 @@
 }
 
 - (UIColor *)viewPager:(ViewPagerController *)viewPager colorForComponent:(ViewPagerComponent)component withDefault:(UIColor *)color {
-    
     switch (component) {
         case ViewPagerIndicator:
             return [[UIColor redColor] colorWithAlphaComponent:0.64];

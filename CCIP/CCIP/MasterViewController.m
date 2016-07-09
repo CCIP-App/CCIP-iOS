@@ -33,8 +33,10 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.appDelegate.masterView = self;
+    [self setTitle:NSLocalizedString(@"Title", nil)];
+    self.refreshControl = [UIRefreshControl new];
     [self.refreshControl addTarget:self
                             action:@selector(refreshData)
                   forControlEvents:UIControlEventValueChanged];
@@ -42,7 +44,24 @@
 
 - (void)refreshData {
     [self.refreshControl beginRefreshing];
-    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    GatewayWebService *roome_ws = [[GatewayWebService alloc] initWithURL:ROOM_DATA_URL];
+    [roome_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+        if (json != nil) {
+            NSLog(@"%@", json);
+            self.roomsJsonArray = json;
+            [self.tableView reloadData];
+        }
+    }];
+    
+    GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
+    [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+        if (json != nil) {
+            NSLog(@"%@", json);
+            self.programsJsonArray = json;
+            [self.tableView reloadData];
+        }
+    }];
     
     GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS(self.appDelegate.accessToken)];
     [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
@@ -52,26 +71,10 @@
             [userInfo removeObjectForKey:@"scenarios"];
             self.userInfo = [NSDictionary dictionaryWithDictionary:userInfo];
             self.scenarios = [json objectForKey:@"scenarios"];
-            [self.tableView reloadData];
             [self.appDelegate.oneSignal sendTag:@"user_id" value:[json objectForKey:@"user_id"]];
+            [self.tableView reloadData];
         }
         [self.refreshControl endRefreshing];
-    }];
-    
-    GatewayWebService *roome_ws = [[GatewayWebService alloc] initWithURL:ROOM_DATA_URL];
-    [roome_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
-        if (json != nil) {
-            NSLog(@"%@", json);
-            self.roomsJsonArray = json;
-        }
-    }];
-    
-    GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
-    [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
-        if (json != nil) {
-            NSLog(@"%@", json);
-            self.programsJsonArray = json;
-        }
     }];
 }
 
@@ -83,10 +86,6 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"MasterView"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
     [self refreshData];
 }
 
@@ -117,7 +116,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return 2;
+            return (self.roomsJsonArray != nil && self.programsJsonArray != nil) ? 2 : 0;
         case 1:
             return [self.scenarios count];
         case 2:
@@ -247,8 +246,7 @@
     
     if (indexPath.section == 0) {
         // section 0 Start
-        RoomLocationViewController *roomLocationView = NULL;
-        roomLocationView = [RoomLocationViewController new];
+        RoomLocationViewController *roomLocationView = [RoomLocationViewController new];
         [roomLocationView setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
         
         NSMutableArray *rooms = [NSMutableArray new];
@@ -289,7 +287,7 @@
         
         NSDictionary *scenario = [self.scenarios objectAtIndex:indexPath.row];
         BOOL isUsed = [[scenario allKeys] containsObject:@"used"] ? [scenario objectForKey:@"used"] > 0 : NO;
-        NSString *vcName = isUsed ? @"StatusViewController" : @"CheckinViewController";
+        NSString *vcName = isUsed ? @"StatusView" : @"CheckinView";
         UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:vcName
                                                                                     bundle:nil];
         [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
@@ -356,7 +354,7 @@
         // section 1 End
     } else if (indexPath.section == 2) {
         // section 2 Start
-        NSString *vcName = @"IRCViewController";
+        NSString *vcName = @"IRCView";
         UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:vcName bundle:nil];
         
         [NSInvocation InvokeObject:detailViewController.view
