@@ -42,7 +42,6 @@
             [UICKeyChainStore setString:self.accessToken
                                  forKey:@"token"];
             [self.oneSignal sendTag:@"token" value:self.accessToken];
-            [self.masterView refreshData];
         }
     }
     return YES;
@@ -105,6 +104,20 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    BOOL hasToken = [self.accessToken length] > 0;
+    UIViewController *presentedView = [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentedViewController];
+    if (hasToken && [presentedView class] == [GuideViewController class]) {
+        GuideViewController *guideVC = (GuideViewController *)presentedView;
+        [guideVC.redeemCodeText setText:self.accessToken];
+        double delayInSeconds = 0.75f;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [guideVC dismissViewControllerAnimated:YES
+                                        completion:^{
+                                            [self.masterView refreshData];
+                                        }];
+        });
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
