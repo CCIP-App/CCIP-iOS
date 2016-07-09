@@ -23,6 +23,10 @@
     
     [self.activityIndicator startAnimating];
     self.activityIndicator.hidesWhenStopped = YES;
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"IRCView"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {

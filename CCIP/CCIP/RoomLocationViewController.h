@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Google/Analytics.h>
 #import <ICViewPager/ViewPagerController.h>
 
 @interface RoomLocationViewController : ViewPagerController
