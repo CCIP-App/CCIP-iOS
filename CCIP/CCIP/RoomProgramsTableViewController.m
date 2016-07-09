@@ -33,7 +33,6 @@
 }
 
 - (void)refreshData {
-    [self.refreshControl beginRefreshing];
     GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
     [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
         if (json != nil) {
@@ -59,8 +58,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    // [self.tableView reloadData];
-    [self refreshData];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
