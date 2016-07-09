@@ -127,7 +127,14 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 66.0f;
+    switch (indexPath.section) {
+        case 1:
+            return 66.0f;
+            break;
+        default:
+            return 44.0f;
+            break;
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
