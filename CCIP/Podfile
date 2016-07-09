@@ -7,7 +7,7 @@ target 'CCIP' do
 
   # Pods for CCIP
   pod 'OneSignal'
-  pod 'UICKeyChainStore'
+  pod 'UICKeyChainStore', '~> 2.1'
   pod 'Google/Analytics'
   pod 'ICViewPager', :git => 'https://github.com/FrankWu100/ICViewPager'
 end
