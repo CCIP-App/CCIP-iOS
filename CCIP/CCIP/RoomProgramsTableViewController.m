@@ -8,6 +8,8 @@
 
 #import "RoomProgramsTableViewController.h"
 #import "GatewayWebService/GatewayWebService.h"
+#import <STPopup/STPopup.h>
+#import "ProgramDetailViewController.h"
 
 @interface RoomProgramsTableViewController ()
 
@@ -117,6 +119,28 @@
     [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO
                                                     animated:YES];
     // TODO: display selected section detail informations
+    
+    ProgramDetailViewController *detailViewController = [ProgramDetailViewController new];
+    detailViewController.title = [[self.programs objectAtIndex:indexPath.row] objectForKey:@"subject"];
+    
+    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:detailViewController];
+    popupController.containerView.layer.cornerRadius = 4;
+    popupController.navigationBar.barTintColor = [UIColor colorWithRed:0.20 green:0.60 blue:0.86 alpha:1.0];
+    popupController.navigationBar.tintColor = [UIColor whiteColor];
+    popupController.navigationBar.barStyle = UIBarStyleDefault;
+//    [STPopupNavigationBar appearance].barTintColor = [UIColor colorWithRed:0.20 green:0.60 blue:0.86 alpha:1.0];
+//    [STPopupNavigationBar appearance].tintColor = [UIColor whiteColor];
+//    [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
+//    [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Cochin" size:18], NSForegroundColorAttributeName: [UIColor whiteColor] };
+    
+//    if (NSClassFromString(@"UIBlurEffect")) {
+//        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+//        popupController.backgroundView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+//    }
+    
+    [popupController.backgroundView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:detailViewController action:@selector(backgroundViewDidTap)]];
+    
+    [popupController presentInViewController:self];
 }
 
 /*

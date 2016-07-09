@@ -10,4 +10,5 @@ target 'CCIP' do
   pod 'UICKeyChainStore', '~> 2.1'
   pod 'Google/Analytics'
   pod 'ICViewPager', :git => 'https://github.com/FrankWu100/ICViewPager'
+  pod 'STPopup', '~> 1.7'
 end

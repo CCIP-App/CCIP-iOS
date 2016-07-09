@@ -18,13 +18,15 @@ PODS:
     - GoogleSymbolUtilities (~> 1.0)
   - ICViewPager (1.5.1)
   - OneSignal (1.13.3)
+  - STPopup (1.7.0)
   - UICKeyChainStore (2.1.0)
 
 DEPENDENCIES:
   - Google/Analytics
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
   - OneSignal
-  - UICKeyChainStore
+  - STPopup (~> 1.7)
+  - UICKeyChainStore (~> 2.1)
 
 EXTERNAL SOURCES:
   ICViewPager:
@@ -45,8 +47,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   ICViewPager: 74e83c8bebd572b3baebac5959875d0fb5e70000
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
+  STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: 943dd15ce1dc43d009284577206c8cc95cc87d4d
+PODFILE CHECKSUM: edb1f8abbdcaa722bc063c7560c88dd0e69503a6
 
 COCOAPODS: 1.0.1
