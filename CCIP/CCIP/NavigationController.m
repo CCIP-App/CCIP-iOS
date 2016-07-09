@@ -1,5 +1,5 @@
 //
-//  SplitViewController.m
+//  NavigationController.m
 //  CCIP
 //
 //  Created by 腹黒い茶 on 2016/07/09.
@@ -7,23 +7,21 @@
 //
 
 #import "AppDelegate.h"
-#import "SplitViewController.h"
+#import "NavigationController.h"
 #import "MasterViewController.h"
-#import "DetailViewController.h"
 
-@interface SplitViewController ()
+@interface NavigationController ()
 
 @property (strong, nonatomic) AppDelegate *appDelegate;
 
 @end
 
-@implementation SplitViewController
+@implementation NavigationController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.appDelegate.splitViewController = self;
     [self setDelegate:self];
 }
 
@@ -38,17 +36,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Split view
-
-- (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
-    if ([secondaryViewController isKindOfClass:[DetailViewController class]]) {
-        // Return YES to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-        return YES;
-    } else {
-        return NO;
-    }
 }
 
 /*

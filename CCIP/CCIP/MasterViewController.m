@@ -10,7 +10,6 @@
 #import "GatewayWebService/GatewayWebService.h"
 #import "MasterViewController.h"
 #import "scenarioCell.h"
-#import "DetailViewController.h"
 #import "UIAlertController+additional.h"
 #import "RoomLocationViewController.h"
 
@@ -34,6 +33,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.appDelegate.navigationView = (NavigationController *)self.navigationController;
     self.appDelegate.masterView = self;
     [self setTitle:NSLocalizedString(@"Title", nil)];
     self.refreshControl = [UIRefreshControl new];
@@ -92,19 +92,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Segues
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
-        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
-        [controller setDetailItem:object];
-        controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-        controller.navigationItem.leftItemsSupplementBackButton = YES;
-    }
 }
 
 #pragma mark - Table view data source
@@ -285,8 +272,9 @@
                 withSelectorString:@"setRoomPrograms:"
                      withArguments:@[ self.programsJsonArray ]];
         
-        [self.splitViewController showDetailViewController:roomLocationView
-                                                    sender:self];
+        
+        [self.navigationController pushViewController:roomLocationView
+                                             animated:YES];
         
         // section 0 End
     } else if (indexPath.section == 1) {
@@ -295,14 +283,10 @@
         NSDictionary *scenario = [self.scenarios objectAtIndex:indexPath.row];
         BOOL isUsed = [[scenario allKeys] containsObject:@"used"] ? [scenario objectForKey:@"used"] > 0 : NO;
         NSString *vcName = isUsed ? @"StatusView" : @"CheckinView";
+        vcName = @"CheckinView";
         UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:vcName
                                                                                     bundle:nil];
         [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
-        UIBarButtonItem *backButton = isUsed ? [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                             target:self
-                                                                                             action:@selector(gotoTop)] : self.splitViewController.displayModeButtonItem;
-        [detailViewController.navigationItem setLeftBarButtonItem:backButton];
-        [detailViewController.navigationItem setLeftItemsSupplementBackButton:!isUsed];
         
         NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] integerValue]];
         NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] integerValue]];
@@ -314,15 +298,8 @@
                     withSelectorString:@"setScenario:"
                          withArguments:@[ scenario ]];
             [detailViewController setTitle:[scenario objectForKey:@"id"]];
-            UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-            [self.splitViewController showDetailViewController:detailNavigationController
-                                                        sender:self];
-            // for hack to toggle the master view in split view on portrait iPad
-            UIBarButtonItem *barButtonItem = [self.splitViewController displayModeButtonItem];
-            [[UIApplication sharedApplication] sendAction:[barButtonItem action]
-                                                       to:[barButtonItem target]
-                                                     from:nil
-                                                 forEvent:nil];
+            [self.navigationController pushViewController:detailViewController
+                                                 animated:YES];
             // IN TIME End
         } else {
             // OUT TIME Start
@@ -369,21 +346,14 @@
                      withArguments:@[ @{@"url": LOG_BOT_URL} ]];
 
         [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
-        UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-        [self.splitViewController showDetailViewController:detailNavigationController
-                                                    sender:self];
-        // for hack to toggle the master view in split view on portrait iPad
-        UIBarButtonItem *barButtonItem = [self.splitViewController displayModeButtonItem];
-        [[UIApplication sharedApplication] sendAction:[barButtonItem action]
-                                                   to:[barButtonItem target]
-                                                 from:nil
-                                             forEvent:nil];
+        [self.navigationController pushViewController:detailViewController
+                                             animated:YES];
         // section 2 End
     }
 }
 
 - (void)gotoTop {
-    [((UINavigationController *)[self.appDelegate.splitViewController.viewControllers firstObject]) popToRootViewControllerAnimated:YES];
+    [self.appDelegate.navigationView popToRootViewControllerAnimated:YES];
 }
 
 /*

@@ -1,5 +1,5 @@
 //
-//  SplitViewController.h
+//  NavigationController.h
 //  CCIP
 //
 //  Created by 腹黒い茶 on 2016/07/09.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SplitViewController : UISplitViewController <UISplitViewControllerDelegate>
+@interface NavigationController : UINavigationController<UINavigationControllerDelegate>
 
 @end

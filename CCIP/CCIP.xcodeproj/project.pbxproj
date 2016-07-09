@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		285C4C571D1E00A50040E628 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285C4C561D1E00A50040E628 /* DetailViewController.m */; };
 		28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */; };
 		28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
@@ -31,7 +30,7 @@
 		6B7142B01D1DB9820024EA45 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142AF1D1DB9820024EA45 /* MasterViewController.m */; };
 		6B7142B61D1DBAFB0024EA45 /* scenarioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */; };
 		6B7142B71D1DBAFB0024EA45 /* scenarioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */; };
-		6B8F62261D314CA600B684BD /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F62251D314CA600B684BD /* SplitViewController.m */; };
+		6B8F62261D314CA600B684BD /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F62251D314CA600B684BD /* NavigationController.m */; };
 		6BA1A5221D1EFBDC00D5924C /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusView.m */; };
 		6BA1A5251D1EFBE700D5924C /* CheckinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5241D1EFBE700D5924C /* CheckinView.m */; };
 		6BA1A5281D1EFBF100D5924C /* InvalidNetworkMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */; };
@@ -62,8 +61,6 @@
 
 /* Begin PBXFileReference section */
 		1E39488D2E9378322A78E57B /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.release.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
-		285C4C551D1E00A50040E628 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		285C4C561D1E00A50040E628 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		28AF9A7C1D28A40A006B378E /* RoomLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomLocationViewController.h; sourceTree = "<group>"; };
 		28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomLocationViewController.m; sourceTree = "<group>"; };
 		28AF9A8F1D28A6E9006B378E /* RoomProgramsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomProgramsTableViewController.h; sourceTree = "<group>"; };
@@ -96,8 +93,8 @@
 		6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scenarioCell.h; sourceTree = "<group>"; };
 		6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scenarioCell.m; sourceTree = "<group>"; };
 		6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = scenarioCell.xib; sourceTree = "<group>"; };
-		6B8F62241D314CA600B684BD /* SplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewController.h; sourceTree = "<group>"; };
-		6B8F62251D314CA600B684BD /* SplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitViewController.m; sourceTree = "<group>"; };
+		6B8F62241D314CA600B684BD /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		6B8F62251D314CA600B684BD /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		6BA1A5201D1EFBDC00D5924C /* StatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusView.h; sourceTree = "<group>"; };
 		6BA1A5211D1EFBDC00D5924C /* StatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusView.m; sourceTree = "<group>"; };
 		6BA1A5231D1EFBE700D5924C /* CheckinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinView.h; sourceTree = "<group>"; };
@@ -185,12 +182,10 @@
 				6B2CD5781D286E6F00793194 /* UIColor+Transition.m */,
 				6B2CD5601D281D9400793194 /* UIAlertController+additional.h */,
 				6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */,
-				6B8F62241D314CA600B684BD /* SplitViewController.h */,
-				6B8F62251D314CA600B684BD /* SplitViewController.m */,
+				6B8F62241D314CA600B684BD /* NavigationController.h */,
+				6B8F62251D314CA600B684BD /* NavigationController.m */,
 				6B7142AE1D1DB9820024EA45 /* MasterViewController.h */,
 				6B7142AF1D1DB9820024EA45 /* MasterViewController.m */,
-				285C4C551D1E00A50040E628 /* DetailViewController.h */,
-				285C4C561D1E00A50040E628 /* DetailViewController.m */,
 				6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */,
 				6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */,
 				6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */,
@@ -381,8 +376,7 @@
 				6BD8EF2C1D1D73510094BE95 /* main.m in Sources */,
 				6B7142B01D1DB9820024EA45 /* MasterViewController.m in Sources */,
 				6BA1A5221D1EFBDC00D5924C /* StatusView.m in Sources */,
-				285C4C571D1E00A50040E628 /* DetailViewController.m in Sources */,
-				6B8F62261D314CA600B684BD /* SplitViewController.m in Sources */,
+				6B8F62261D314CA600B684BD /* NavigationController.m in Sources */,
 				6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */,
 				6BA1A5251D1EFBE700D5924C /* CheckinView.m in Sources */,
 				6B2CD5791D286E6F00793194 /* UIColor+Transition.m in Sources */,

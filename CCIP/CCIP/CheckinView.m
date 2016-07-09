@@ -27,7 +27,7 @@
 */
 
 - (void)gotoTop {
-    [((UINavigationController *)[self.appDelegate.splitViewController.viewControllers firstObject]) popToRootViewControllerAnimated:YES];
+    [self.appDelegate.navigationView popToRootViewControllerAnimated:YES];
 }
 
 - (void)setScenario:(NSDictionary *)scenario {
@@ -51,20 +51,15 @@
                 }
             }
             
-            UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:@"StatusViewController"
+            UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:@"StatusView"
                                                                                         bundle:nil];
             [detailViewController.view setBackgroundColor:[UIColor whiteColor]];
-            UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                        target:self
-                                                                                        action:@selector(gotoTop)];
-            [detailViewController.navigationItem setLeftBarButtonItem:backButton];
-            [detailViewController.navigationItem setLeftItemsSupplementBackButton:NO];
             [NSInvocation InvokeObject:detailViewController.view
                     withSelectorString:@"setScenario:"
                          withArguments:@[ theScenario ]];
-            UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-            [self.appDelegate.splitViewController showDetailViewController:detailNavigationController
-                                                                    sender:self];
+            [self.appDelegate.navigationView popViewControllerAnimated:NO];
+            [self.appDelegate.navigationView pushViewController:detailViewController
+                                                       animated:YES];
         }
     }];
 }

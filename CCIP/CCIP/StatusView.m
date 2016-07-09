@@ -35,7 +35,7 @@
 */
 
 - (void)gotoTop {
-    [((UINavigationController *)[self.appDelegate.splitViewController.viewControllers firstObject]) popToRootViewControllerAnimated:YES];
+    [self.appDelegate.navigationView popToRootViewControllerAnimated:YES];
 }
 
 - (void)setScenario:(NSDictionary *)scenario {
