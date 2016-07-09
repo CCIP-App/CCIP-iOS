@@ -321,6 +321,12 @@
             // IN TIME End
         } else {
             // OUT TIME Start
+            NSDate *countTime = [NSDate new];
+            float maxValue = (float)([[scenario objectForKey:@"used"] intValue] + [[scenario objectForKey:@"countdown"] intValue] - [countTime timeIntervalSince1970]);
+            float interval = [[NSDate new] timeIntervalSinceDate:countTime];
+            float countDown = maxValue - interval;
+            BOOL isUsed = [[scenario allKeys] containsObject:@"used"] && [[scenario objectForKey:@"used"] intValue] > 0 && countDown <= 0;
+            
             UIAlertController *ac = nil;
             if ([nowTime compare:availableTime] == NSOrderedAscending) {
                 ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NotAvailableTitle", nil)
@@ -332,7 +338,7 @@
                                                                                             animated:YES];
                                         }];
             }
-            if ([nowTime compare:expireTime] == NSOrderedDescending) {
+            if ([nowTime compare:expireTime] == NSOrderedDescending || isUsed) {
                 ac = [UIAlertController alertOfTitle:NSLocalizedString(@"ExpiredTitle", nil)
                                          withMessage:NSLocalizedString(@"ExpiredMessage", nil)
                                     cancelButtonText:NSLocalizedString(@"ExpiredButtonOk", nil)
