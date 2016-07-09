@@ -50,15 +50,15 @@
                    withObject:nil
                    afterDelay:0.5f];
     }
+    [self setCountDownEnd:NO];
     [self setCountTime:[NSDate new]];
-    self.maxValue = (float)([[self.scenario objectForKey:@"used"] intValue] + [[self.scenario objectForKey:@"countdown"] intValue] - [self.countTime timeIntervalSince1970]);
-    self.interval = [[NSDate new] timeIntervalSinceDate:self.countTime];
-    self.countDown = self.maxValue - self.interval;
+    [self setMaxValue:(float)([[self.scenario objectForKey:@"used"] intValue] + [[self.scenario objectForKey:@"countdown"] intValue] - [self.countTime timeIntervalSince1970])];
+    [self setInterval:[[NSDate new] timeIntervalSinceDate:self.countTime]];
+    [self setCountDown:(self.maxValue - self.interval)];
+    [self setFormatter:[NSDateFormatter new]];
+    [self.formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
     [self.countdownLabel setText:@""];
     [self.nowTimeLabel setText:@""];
-    self.formatter = [NSDateFormatter new];
-    [self.formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
-    self.countDownEnd = NO;
 }
 
 - (void)startCountDown {
@@ -73,10 +73,10 @@
 - (void)updateCountDown {
     UIColor *color = self.tintColor;
     NSDate *now = [NSDate new];
-    self.interval = [now timeIntervalSinceDate:self.countTime];
-    self.countDown = self.maxValue - self.interval;
+    [self setInterval:[now timeIntervalSinceDate:self.countTime]];
+    [self setCountDown:(self.maxValue - self.interval)];
     if (self.countDown <= 0) {
-        self.countDown = 0;
+        [self setCountDown:0];
         color = [UIColor redColor];
         if (self.countDownEnd == NO) {
             [((UIViewController *)self.nextResponder).navigationItem.leftBarButtonItem setEnabled:YES];
@@ -86,7 +86,7 @@
                                                         selector:@selector(updateCountDown)
                                                         userInfo:nil
                                                          repeats:YES];
-            self.countDownEnd = YES;
+            [self setCountDownEnd:YES];
             AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
                 AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
                     AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
