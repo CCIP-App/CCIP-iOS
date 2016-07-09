@@ -1,0 +1,101 @@
+iTunes 11 Style Color Art Detection for iOS.
+===
+
+Port of ColorArt code from OS X to iOS.
+
+![Screenshot](https://raw.github.com/fleitz/ColorArt/master/screenshot.png)
+
+Usage
+===
+
+```   objective-c
+    #include <ColorArt/UIImage+ColorArt.h>
+
+    image = [image scaledToSize:self.fadedImageView.frame.size];
+    SLColorArt *colorArt = [image colorArt];
+    self.fadedImageView.backgroundColor = colorArt.backgroundColor;
+    self.fadedImageView.image = image;
+    self.view.backgroundColor = colorArt.backgroundColor;
+    self.headline.textColor = colorArt.primaryColor;
+    self.subHeadline.textColor = colorArt.secondaryColor;
+    self.text.textColor = colorArt.detailColor;
+```
+
+
+
+
+About
+===
+
+(From the Panic blog: http://www.panic.com/blog/2012/12/itunes-11-and-colors/)
+
+iTunes 11 is a radical departure from previous versions and nothing illustrates this more than the new album display mode. The headlining feature of this display is the new view style that visually matches the track listing to the album’s cover art. The result is an attractive display of textual information that seamlessly integrates with the album’s artwork.
+
+After using iTunes for a day I wondered just how hard it would be to mimic this functionality — use a source image to create a themed image/text display.
+
+Once I started filtering black and white backgrounds my results started to get a bit closer to iTunes. After doing some more analysis I saw that iTunes also looks for borders around the artwork. So lets say you have a solid white border around the artwork picture, iTunes will remove the border and base its theming colors off the remaining interior content. I didn’t add this functionality as it was outside the scope of my simple demo application.
+
+After the background color was determined, the next step is to find contrasting text colors. Again, the first thing I tried was simple color counting, this provides surprisingly good results but iTunes does better. If we relied only on color frequency you’d get variants of the same color for the different types of text (EG: primary, secondary, detail). So the next thing I did to improve the results were to make sure the text colors were distinct enough from each other to be considered a separate color. At this point things were really starting to look good. But what other aspects would need to be considered to ensure the text always looked good on the chosen background color? To ensure colorful text I also added a bit of code to make sure the color used for the text had a minimum saturation level. This prevents washed out colors or very light pastel colors from being used that might not give the best appearance. Now that the text had unique colors that looked good with the background, the only remaining problem was that the resulting text colors could end up lacking enough contrast with the background to be readable. So the last thing I added was a check to make sure any text color would provide enough contrast with the background to be readable. Unfortunately this requirement does cause a rare “miss” when finding text colors which then cause the default black/white colors to be used.
+
+The end result looks something like this:
+
+![Screenshot](https://raw.github.com/aaronbrethorst/ColorArt/master/screenshot.png)
+
+Credits
+===
+
+* Wade Cosgrove - Creator, mastermind, genius.
+* Aaron Brethorst (http://www.cocoacontrols.com) - "I extracted all of the interesting code into a reusable class whose usage should be fairly self-explanatory."
+* Fred Leitz - Port to iOS
+* Nyx0uf - iOS Pixel Algorithms
+
+License
+===
+
+    Copyright (C) 2012 Panic Inc. Code by Wade Cosgrove. All rights reserved.
+
+    Redistribution and use, with or without modification, are permitted
+    provided that the following conditions are met:
+
+    - Redistributions must reproduce the above copyright notice, this list of
+      conditions and the following disclaimer in the documentation and/or
+      other materials provided with the distribution.
+
+    - Neither the name of Panic Inc nor the names of its contributors may be
+      used to endorse or promote works derived from this software without
+      specific prior written permission from Panic Inc.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+    IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+    THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+    PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL PANIC INC BE LIABLE FOR ANY
+    DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+    HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+    STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    POSSIBILITY OF SUCH DAMAGE.
+
+MIT License
+===============
+
+Portions copyright (c) 2012 Fred Leitz
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.

@@ -1,0 +1,6 @@
+framework module ColorArt {
+  umbrella header "ColorArt-umbrella.h"
+
+  export *
+  module * { export * }
+}

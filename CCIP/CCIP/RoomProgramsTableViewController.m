@@ -125,8 +125,8 @@
     
     STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:detailViewController];
     popupController.containerView.layer.cornerRadius = 4;
-    popupController.navigationBar.barTintColor = [UIColor colorWithRed:0.20 green:0.60 blue:0.86 alpha:1.0];
-    popupController.navigationBar.tintColor = [UIColor whiteColor];
+//    popupController.navigationBar.barTintColor = [UIColor colorWithRed:0.20 green:0.60 blue:0.86 alpha:1.0];
+//    popupController.navigationBar.tintColor = [UIColor whiteColor];
     popupController.navigationBar.barStyle = UIBarStyleDefault;
 //    [STPopupNavigationBar appearance].barTintColor = [UIColor colorWithRed:0.20 green:0.60 blue:0.86 alpha:1.0];
 //    [STPopupNavigationBar appearance].tintColor = [UIColor whiteColor];

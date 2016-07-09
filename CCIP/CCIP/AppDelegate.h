@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <OneSignal/OneSignal.h>
+#import <ColorArt/UIImage+ColorArt.h>
 #import "NavigationController.h"
 #import "MasterViewController.h"
 #import "NSInvocation+addition.h"
@@ -16,6 +17,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, readonly, nonatomic) OneSignal *oneSignal;
+@property (strong, readonly, nonatomic) SLColorArt *appArt;
 @property (strong, nonatomic) NSString *accessToken;
 @property (strong, nonatomic) NavigationController *navigationView;
 @property (strong, nonatomic) MasterViewController *masterView;

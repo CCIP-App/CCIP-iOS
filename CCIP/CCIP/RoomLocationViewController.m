@@ -6,11 +6,14 @@
 //  Copyright © 2016年 FrankWu. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "RoomLocationViewController.h"
 #import "RoomProgramsTableViewController.h"
 #import "NSInvocation+addition.h"
 
 @interface RoomLocationViewController () <ViewPagerDataSource, ViewPagerDelegate>
+
+@property (strong, nonatomic) AppDelegate *appDelegate;
 
 @end
 
@@ -19,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.dataSource = self;
     self.delegate = self;
@@ -114,14 +118,18 @@
 
 - (UIColor *)viewPager:(ViewPagerController *)viewPager colorForComponent:(ViewPagerComponent)component withDefault:(UIColor *)color {
     switch (component) {
-        case ViewPagerIndicator:
-            return [[UIColor redColor] colorWithAlphaComponent:0.64];
-        case ViewPagerTabsView:
+        case ViewPagerIndicator: {
+            return [self.appDelegate.appArt secondaryColor];//[[UIColor redColor] colorWithAlphaComponent:0.64];
+        }
+        case ViewPagerTabsView: {
             return [UIColor whiteColor];
-        case ViewPagerContent:
+        }
+        case ViewPagerContent: {
             return [UIColor whiteColor];
-        default:
+        }
+        default: {
             return color;
+        }
     }
 }
 

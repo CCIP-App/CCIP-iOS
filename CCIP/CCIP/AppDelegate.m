@@ -17,6 +17,7 @@
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
 @property (strong, readwrite, nonatomic) OneSignal *oneSignal;
+@property (strong, readwrite, nonatomic) SLColorArt *appArt;
 
 @end
 
@@ -85,6 +86,8 @@
     NSLog(@"Token: <%@>", self.accessToken);
     [self.oneSignal sendTag:@"token" value:self.accessToken];
     
+    [self registerAppIconArt];
+    
     return YES;
 }
 
@@ -122,6 +125,72 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)registerAppIconArt {
+    __block NSString *appIconName = @"";
+    // find the biggest icon for AppArt
+    ^{
+        // find biggest app icon file name
+        NSDictionary *bundleDictionary = [[NSBundle mainBundle] infoDictionary];
+        NSArray *bundleIcons = [bundleDictionary valueForKeyPath:@"CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles"];
+        NSArray *bundleFiles = [[[NSFileManager alloc] init] contentsOfDirectoryAtPath:[[NSBundle mainBundle] resourcePath]
+                                                                                 error:nil];
+        NSMutableArray *availIcon = [NSMutableArray new];
+        for (NSString *iconPrefix in bundleIcons) {
+            for (NSString *file in bundleFiles) {
+                if ([file rangeOfString:iconPrefix
+                                options:NSCaseInsensitiveSearch].location != NSNotFound) {
+                    [availIcon addObject:file];
+                }
+            }
+        }
+        // find the biggest image metrix
+        __block int sizeMetrix = 0;
+        __block NSString *fileName = nil;
+        for (NSString *iconName in availIcon) {
+            NSError *error = nil;
+            NSRegularExpressionOptions matchOptions = NSRegularExpressionCaseInsensitive;
+            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([\\d]+).([\\d]+)(@[\\d]+x)*"
+                                                                                   options:matchOptions
+                                                                                     error:&error];
+            [regex enumerateMatchesInString:iconName
+                                    options:NSMatchingReportCompletion
+                                      range:NSMakeRange(0, [iconName length])
+                                 usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop) {
+                                     int width = [[iconName substringWithRange:[match rangeAtIndex:1]] intValue];
+                                     int height = [[iconName substringWithRange:[match rangeAtIndex:2]] intValue];
+                                     int mutiple = 1;
+                                     NSRange mpRange = [match rangeAtIndex:3];
+                                     if (mpRange.location != NSNotFound) {
+                                         NSString *mp = [iconName substringWithRange:mpRange];
+                                         mutiple = [[mp stringByReplacingOccurrencesOfString:@"@" withString:@""] intValue];
+                                     }
+                                     int size = width * height * mutiple;
+                                     if (size > sizeMetrix) {
+                                         sizeMetrix = size;
+                                         fileName = iconName;
+                                     }
+                                 }];
+        }
+        appIconName = [fileName stringByDeletingPathExtension];
+    }();
+    [self setAppArt:[[UIImage imageNamed:appIconName] colorArt]];
+    [self setAppearance:self.appArt];
+}
+
+- (void)setAppearance:(SLColorArt *)appArt {
+    [[UINavigationBar appearance] setBarTintColor:[appArt backgroundColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName: [appArt detailColor] }];
+    [[UINavigationBar appearance] setTintColor:[appArt detailColor]];
+    [[UIToolbar appearance] setBarTintColor:[appArt backgroundColor]];
+    [[UIToolbar appearance] setTintColor:[appArt detailColor]];
+    [[UITabBar appearance] setTintColor:[appArt detailColor]];
+    [[UISegmentedControl appearance] setTintColor:[appArt detailColor]];
+    [[UIProgressView appearance] setTintColor:[appArt detailColor]];
+    [[UILabel appearance] setTintColor:[appArt detailColor]];
+    [[UIButton appearance] setTintColor:[appArt detailColor]];
+    [[UISearchBar appearance] setTintColor:[appArt detailColor]];
 }
 
 @end

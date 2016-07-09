@@ -1,4 +1,5 @@
 PODS:
+  - ColorArt (0.1.1)
   - FirebaseAnalytics (3.2.1):
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
@@ -22,6 +23,7 @@ PODS:
   - UICKeyChainStore (2.1.0)
 
 DEPENDENCIES:
+  - ColorArt (= 0.1.1)
   - Google/Analytics
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
   - OneSignal
@@ -38,6 +40,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/FrankWu100/ICViewPager
 
 SPEC CHECKSUMS:
+  ColorArt: de0ffb63da4acdde8e234ded62e200236ca3e7e4
   FirebaseAnalytics: 0fd6532cb2c3d03cd5cf26ad295ccb091efd3104
   FirebaseInstanceID: a9d923f3d0b6fbf9fac89310860357aaadc34be5
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
@@ -50,6 +53,6 @@ SPEC CHECKSUMS:
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: edb1f8abbdcaa722bc063c7560c88dd0e69503a6
+PODFILE CHECKSUM: 83d5b1d11793dbe769f8e58c5a626dbfb2aabdad
 
 COCOAPODS: 1.0.1

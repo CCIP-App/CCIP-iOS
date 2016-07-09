@@ -11,4 +11,5 @@ target 'CCIP' do
   pod 'Google/Analytics'
   pod 'ICViewPager', :git => 'https://github.com/FrankWu100/ICViewPager'
   pod 'STPopup', '~> 1.7'
+  pod 'ColorArt', '0.1.1'
 end
