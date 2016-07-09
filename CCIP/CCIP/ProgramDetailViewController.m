@@ -18,6 +18,7 @@
 - (instancetype)init
 {
     if (self = [super init]) {
+//        coscup.org/2016/schedules.html#R13
         self.title = @"View Controller";
 //        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(nextBtnDidTap)];
         self.contentSizeInPopup = CGSizeMake(300, 400);
@@ -42,20 +43,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setProgram:(NSMutableDictionary *)program {
+    _program = program;
+}
+
 - (void)backgroundViewDidTap
 {
     NSLog(@"backgroundViewDidTap");
     [self.popupController dismiss];
 }
 
-- (void) compartir:(id)sender{
+- (void)compartir:(id)sender{
     // TODO: Share Program's Link
     
     NSLog(@"shareButton pressed");
+
+    NSString *shareString =  [self.program objectForKey:@"subject"];
+    NSURL *shareURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://coscup.org/2016/schedules.html#%@", [self.program objectForKey:@"slot"]]];
     
-    NSString *stringtoshare= @"This is a string to share";
-    
-    NSArray *activityItems = @[stringtoshare];
+    NSArray *activityItems = @[ shareString, shareURL ];
     UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
 //    activityVC.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAirDrop, UIActivityTypeCopyToPasteboard, UIActivityTypeMessage, UIActivityTypePostToTwitter, UIActivityTypePostToFacebook];
     [self presentViewController:activityVC animated:TRUE completion:nil];

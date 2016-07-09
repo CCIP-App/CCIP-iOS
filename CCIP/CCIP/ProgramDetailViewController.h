@@ -10,6 +10,8 @@
 
 @interface ProgramDetailViewController : UIViewController
 
+@property (strong, nonatomic) NSDictionary *program;
+
 - (void)backgroundViewDidTap;
 
 @end
