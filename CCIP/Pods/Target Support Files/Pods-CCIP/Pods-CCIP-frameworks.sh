@@ -88,10 +88,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/ICViewPager/ICViewPager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/STPopup/STPopup.framework"
   install_framework "$BUILT_PRODUCTS_DIR/UICKeyChainStore/UICKeyChainStore.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/iRate/iRate.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/ColorArt/ColorArt.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ICViewPager/ICViewPager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/STPopup/STPopup.framework"
   install_framework "$BUILT_PRODUCTS_DIR/UICKeyChainStore/UICKeyChainStore.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/iRate/iRate.framework"
 fi

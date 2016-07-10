@@ -11,6 +11,7 @@
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import "GatewayWebService/GatewayWebService.h"
 #import "GuideViewController.h"
+#import <iRate/iRate.h>
 
 #define ONE_SIGNAL_APP_TOKEN (@"aef99f72-9ee3-4dfa-ac5b-ddf79f16be7d")
 
@@ -22,6 +23,15 @@
 @end
 
 @implementation AppDelegate
+
++ (void)initialize
+{
+    //configure iRate
+    [iRate sharedInstance].daysUntilPrompt = 3;
+    [iRate sharedInstance].usesUntilPrompt = 8;
+    //enable preview mode
+    [iRate sharedInstance].previewMode = YES;
+}
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation {
     if (url != nil) {
