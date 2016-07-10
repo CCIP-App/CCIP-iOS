@@ -11,6 +11,12 @@
 "Schedule" = "Schedule";
 "HSSBuilding" = "H.S.S. Building";
 "ActivityCenter" = "Activity Center";
+"Hi" = "Hi ";
+"day1checkin" = "Day 1 Checkin";
+"kit" = "Welcome Kit";
+"day1lunch" = "Day 1 Lunch";
+"day2checkin" = "Day 2 Checkin";
+"day2lunch" = "Day 2 Lunch";
 "Addition" = "Addition";
 "GuideViewMessage" = "Please reference your attendee detail information, and your will found your access token.\n\nPlease copy and paste the token into next text field or click the token link in the reference mail.";
 "GuideViewButton" = "Redeem";

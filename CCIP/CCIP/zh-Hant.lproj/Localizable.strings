@@ -11,6 +11,12 @@
 "Schedule" = "議程";
 "HSSBuilding" = "人文館";
 "ActivityCenter" = "活動中心";
+"Hi" = "嗨！";
+"day1checkin" = "第一天報到";
+"kit" = "迎賓袋領取";
+"day1lunch" = "第一天午餐領取";
+"day2checkin" = "第二天報到";
+"day2lunch" = "第二天午餐領取";
 "Addition" = "其他";
 "GuideViewMessage" = "請參考您的與會詳細資訊，您會在信中找到使用代碼。\n\n請複製貼上該代碼到下面的文字輸入方塊中，或者直接點擊信中的代碼連結即可。";
 "GuideViewButton" = "使用";

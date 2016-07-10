@@ -129,7 +129,7 @@
         case 0:
             return NSLocalizedString(@"Schedule", nil);
         case 1:
-            return self.userInfo != nil ? [self.userInfo objectForKey:@"user_id"] : @"";
+            return self.userInfo != nil ? [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"Hi", nil), [self.userInfo objectForKey:@"user_id"]] : @"";
         case 2:
             return NSLocalizedString(@"Addition", nil);
         default:
@@ -186,7 +186,7 @@
             // OUT TIME
             [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
         }
-        [cell.scenarioLabel setText:[scenario objectForKey:@"id"]];
+        [cell.scenarioLabel setText:NSLocalizedString([scenario objectForKey:@"id"], nil)];
         [cell.timeRangeLabel setText:[NSString stringWithFormat:@"%@ ~ %@", [formatter stringFromDate:availableTime], [formatter stringFromDate:expireTime]]];
         
         NSString *usedTimeString = @"";
