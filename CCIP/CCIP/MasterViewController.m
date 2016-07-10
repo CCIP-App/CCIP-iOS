@@ -220,7 +220,7 @@
         
         switch (indexPath.row) {
             case 0:
-                [cell.textLabel setText:@"IRC"];
+                [cell.textLabel setText:NSLocalizedString(@"IRC", nil)];
                 break;
             default:
                 [cell.textLabel setText:@"null"];
