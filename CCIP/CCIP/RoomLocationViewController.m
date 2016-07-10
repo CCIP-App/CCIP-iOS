@@ -45,7 +45,7 @@
 
 #pragma mark - ViewPagerDataSource
 - (NSUInteger)numberOfTabsForViewPager:(ViewPagerController *)viewPager {
-    return [self.rooms count];
+    return [self.rooms count] + 1;
 }
 
 #pragma mark - ViewPagerDataSource
@@ -53,13 +53,16 @@
     UILabel *label = [UILabel new];
     label.backgroundColor = [UIColor clearColor];
     
-    NSString *language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
-    if ([language isEqualToString:@"zh-Hant"]) {
-        label.text = [[self.rooms objectAtIndex:index] objectForKey:@"name"];
+    if (index == 0) {
+        label.text = @"全部";
     } else {
-        label.text = [[self.rooms objectAtIndex:index] objectForKey:@"room"];
+        NSString *language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
+        if ([language isEqualToString:@"zh-Hant"]) {
+            label.text = [[self.rooms objectAtIndex:index-1] objectForKey:@"name"];
+        } else {
+            label.text = [[self.rooms objectAtIndex:index-1] objectForKey:@"room"];
+        }
     }
-    
 
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor blackColor];
@@ -70,25 +73,34 @@
 
 #pragma mark - ViewPagerDataSource
 - (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index {
-
+    
     RoomProgramsTableViewController *roomProgramsTableView = [RoomProgramsTableViewController new];
-
-    NSString *room = [[self.rooms objectAtIndex:index] objectForKey:@"room"];
+    NSString *room = [NSString new];
+    NSArray *programs = [NSArray new];
+    
+    if (index == 0) {
+        room = @"all";
+        programs = self.roomPrograms;
+    } else {
+        room = [[self.rooms objectAtIndex:index-1] objectForKey:@"room"];
+        
+        NSMutableArray *programsArray  = [NSMutableArray new];
+        for (NSDictionary *dict in self.roomPrograms) {
+            if ([[dict objectForKey:@"room"] isEqualToString:room]) {
+                [programsArray addObject:dict];
+            }
+        }
+        
+        programs = programsArray;
+    }
     
     [NSInvocation InvokeObject:roomProgramsTableView
             withSelectorString:@"setRoom:"
                  withArguments:@[ room ]];
     
-    NSMutableArray *programsArray  = [NSMutableArray new];
-    for (NSDictionary *dict in self.roomPrograms) {
-        if ([[dict objectForKey:@"room"] isEqualToString:room]) {
-            [programsArray addObject:dict];
-        }
-    }
-    
     [NSInvocation InvokeObject:roomProgramsTableView
             withSelectorString:@"setPrograms:"
-                 withArguments:@[ programsArray ]];
+                 withArguments:@[ programs ]];
     
     return roomProgramsTableView;
 }
@@ -102,7 +114,7 @@
 - (CGFloat)viewPager:(ViewPagerController *)viewPager valueForOption:(ViewPagerOption)option withDefault:(CGFloat)value {
     switch (option) {
         case ViewPagerOptionStartFromSecondTab:
-            return 0.0;
+            return 1.0;
         case ViewPagerOptionCenterCurrentTab:
             return 1.0;
         case ViewPagerOptionTabLocation:

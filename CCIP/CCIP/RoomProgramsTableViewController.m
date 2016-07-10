@@ -43,14 +43,17 @@
         if (json != nil) {
             NSLog(@"%@", json);
             
-            NSMutableArray *mutableArray  = [NSMutableArray new];
-            for (NSDictionary *dict in json) {
-                if ([[dict objectForKey:@"room"] isEqualToString:self.room]) {
-                    [mutableArray addObject:dict];
+            if ([self.room isEqualToString:@"all"]) {
+                self.programs = json;
+            } else {
+                NSMutableArray *mutableArray  = [NSMutableArray new];
+                for (NSDictionary *dict in json) {
+                    if ([[dict objectForKey:@"room"] isEqualToString:self.room]) {
+                        [mutableArray addObject:dict];
+                    }
                 }
+                self.programs = [mutableArray copy];
             }
-            self.programs = [mutableArray copy];
-            
             [self.tableView reloadData];
         }
         [self.refreshControl endRefreshing];
@@ -99,11 +102,16 @@
     [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     
     NSDateFormatter *formatter_s = [[NSDateFormatter alloc] init];
-    [formatter_s setDateFormat:@"yyyy-MM-dd"];
     
     NSDate *time_full = [NSDate new];
     
     self.sections = [NSMutableDictionary new];
+    
+    if ([self.room isEqualToString:@"all"]) {
+        [formatter_s setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    } else {
+        [formatter_s setDateFormat:@"yyyy-MM-dd"];
+    }
     
     for (NSDictionary *program in self.programs) {
         time_full = [formatter_full dateFromString:[program objectForKey:@"starttime"]];
@@ -114,7 +122,7 @@
             rows = [NSMutableArray new];
         }
         [rows addObject:program];
-        [self.sections setObject:rows  forKey:time_s];
+        [self.sections setObject:rows forKey:time_s];
     }
 }
 
