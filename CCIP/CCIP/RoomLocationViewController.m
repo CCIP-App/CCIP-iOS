@@ -53,7 +53,13 @@
     UILabel *label = [UILabel new];
     label.backgroundColor = [UIColor clearColor];
     
-    label.text = [[self.rooms objectAtIndex:index] objectForKey:@"name"];
+    NSString *language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
+    if ([language isEqualToString:@"zh-Hant"]) {
+        label.text = [[self.rooms objectAtIndex:index] objectForKey:@"name"];
+    } else {
+        label.text = [[self.rooms objectAtIndex:index] objectForKey:@"room"];
+    }
+    
 
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor blackColor];
