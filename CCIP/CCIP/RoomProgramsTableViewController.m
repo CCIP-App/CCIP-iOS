@@ -14,6 +14,8 @@
 
 @interface RoomProgramsTableViewController ()
 
+@property NSMutableDictionary *sections;
+
 @end
 
 @implementation RoomProgramsTableViewController
@@ -92,16 +94,45 @@
 
 - (void)setPrograms:(NSMutableArray *)programs {
     _programs = programs;
+    
+    NSDateFormatter *formatter_full = [[NSDateFormatter alloc] init];
+    [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    
+    NSDateFormatter *formatter_s = [[NSDateFormatter alloc] init];
+    [formatter_s setDateFormat:@"yyyy-MM-dd"];
+    
+    NSDate *time_full = [NSDate new];
+    
+    self.sections = [NSMutableDictionary new];
+    
+    for (NSDictionary *program in self.programs) {
+        time_full = [formatter_full dateFromString:[program objectForKey:@"starttime"]];
+        NSString *time_s = [formatter_s stringFromDate:time_full];
+        
+        NSMutableArray *rows = [self.sections objectForKey:time_s];
+        if (rows == nil) {
+            rows = [NSMutableArray new];
+        }
+        [rows addObject:program];
+        [self.sections setObject:rows  forKey:time_s];
+    }
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return [self.sections count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.programs count];
+    NSArray *allKeys = [self.sections allKeys];
+    return [[self.sections objectForKey:[allKeys objectAtIndex:section]] count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSArray *allKeys = [self.sections allKeys];
+    NSString *dateString = [allKeys objectAtIndex:section];
+    return dateString;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -110,8 +141,10 @@
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NULL];
     [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
     
-    [cell.textLabel setText:[[self.programs objectAtIndex:indexPath.row] objectForKey:@"subject"]];
+    NSArray *allKeys = [self.sections allKeys];
+    NSDictionary *program = [[self.sections objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
+    [cell.textLabel setText:[program objectForKey:@"subject"]];
     
     return cell;
 }
