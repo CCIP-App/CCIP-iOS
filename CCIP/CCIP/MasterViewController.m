@@ -127,11 +127,11 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return @"議程";
+            return NSLocalizedString(@"Schedule", nil);
         case 1:
             return self.userInfo != nil ? [self.userInfo objectForKey:@"user_id"] : @"";
         case 2:
-            return @"其他";
+            return NSLocalizedString(@"Addition", nil);
         default:
             return 0;
     }
@@ -148,10 +148,10 @@
         
         switch (indexPath.row) {
             case 0:
-                [cell.textLabel setText:@"人文館"];
+                [cell.textLabel setText:NSLocalizedString(@"HSSBuilding", nil)];
                 break;
             case 1:
-                [cell.textLabel setText:@"活動中心"];
+                [cell.textLabel setText:NSLocalizedString(@"ActivityCenter", nil)];
                 break;
             default:
                 [cell.textLabel setText:@"null"];

@@ -8,6 +8,10 @@
 
 
 "Title" = "COSCUP 2016";
+"Schedule" = "Schedule";
+"HSSBuilding" = "H.S.S. Building";
+"ActivityCenter" = "Activity Center";
+"Addition" = "Addition";
 "GuideViewMessage" = "Please reference your attendee detail information, and your will found your access token.\n\nPlease copy and paste the token into next text field or click the token link in the reference mail.";
 "GuideViewButton" = "Redeem";
 "CheckinNotice" = "Notice!! Remaining will be deducted when click the \"Confirm use\" and disappeared in 1 minute.\n\nPlease double check it was instruct to click the \"Confirm use\" button by ours staff, thanks for your cooperation";
