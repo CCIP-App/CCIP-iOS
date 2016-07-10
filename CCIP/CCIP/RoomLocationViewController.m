@@ -55,7 +55,7 @@
     label.backgroundColor = [UIColor clearColor];
     
     if (index == 0) {
-        label.text = @"全部";
+        label.text = NSLocalizedString(@"All", nil);
     } else {
         NSString *language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
         if ([language isEqualToString:@"zh-Hant"]) {
