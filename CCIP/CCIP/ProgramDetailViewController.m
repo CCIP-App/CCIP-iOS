@@ -8,8 +8,14 @@
 
 #import "ProgramDetailViewController.h"
 #import <STPopup/STPopup.h>
+#import "ShareProgramTableViewController.h"
+#import "NSInvocation+addition.h"
+
 
 @interface ProgramDetailViewController ()
+
+
+@property BOOL enableBackgroundViewTap;
 
 @end
 
@@ -21,13 +27,13 @@
 //        coscup.org/2016/schedules.html#R13
         self.title = @"View Controller";
 //        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(nextBtnDidTap)];
-        self.contentSizeInPopup = CGSizeMake(300, 400);
+        self.contentSizeInPopup = CGSizeMake([[UIScreen mainScreen] bounds].size.width * 4/5, [[UIScreen mainScreen] bounds].size.height * 3/5);
 //        self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
         
         UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
                                         initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                         target:self
-                                        action:@selector(compartir:)];
+                                        action:@selector(shareAction:)];
         self.navigationItem.rightBarButtonItem = shareButton;
     }
     return self;
@@ -36,6 +42,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    _enableBackgroundViewTap = YES;
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    _enableBackgroundViewTap = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,21 +66,22 @@
 - (void)backgroundViewDidTap
 {
     NSLog(@"backgroundViewDidTap");
-    [self.popupController dismiss];
+    if (_enableBackgroundViewTap == YES)
+    {
+        [self.popupController dismiss];
+    }
 }
 
-- (void)compartir:(id)sender{
+- (void)shareAction:(id)sender{
     // TODO: Share Program's Link
     
-    NSLog(@"shareButton pressed");
-
-    NSString *shareString =  [self.program objectForKey:@"subject"];
-    NSURL *shareURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://coscup.org/2016/schedules.html#%@", [self.program objectForKey:@"slot"]]];
+    ShareProgramTableViewController *shareTableViewController = [ShareProgramTableViewController new];
     
-    NSArray *activityItems = @[ shareString, shareURL ];
-    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-//    activityVC.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAirDrop, UIActivityTypeCopyToPasteboard, UIActivityTypeMessage, UIActivityTypePostToTwitter, UIActivityTypePostToFacebook];
-    [self presentViewController:activityVC animated:TRUE completion:nil];
+    [NSInvocation InvokeObject:shareTableViewController
+            withSelectorString:@"setProgram:"
+                 withArguments:@[ self.program ]];
+    
+    [self.popupController pushViewController:shareTableViewController animated:YES];
 }
 
 /*
