@@ -10,18 +10,7 @@
 #import "RoomLocationViewController.h"
 #import "RoomProgramsTableViewController.h"
 #import "NSInvocation+addition.h"
-
-//RGB color macro
-#define UIColorFromRGB(rgbValue) [UIColor \
-colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
-green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
-blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
-
-//RGB color macro with alpha
-#define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \
-colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
-green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
-blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
+#import "UIColor+addition.h"
 
 @interface RoomLocationViewController () <ViewPagerDataSource, ViewPagerDelegate>
 
@@ -149,7 +138,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 - (UIColor *)viewPager:(ViewPagerController *)viewPager colorForComponent:(ViewPagerComponent)component withDefault:(UIColor *)color {
     switch (component) {
         case ViewPagerIndicator: {
-            return UIColorFromRGB(0x517862);//[self.appDelegate.appArt primaryColor];//[[UIColor redColor] colorWithAlphaComponent:0.64];
+            return [UIColor colorFromHtmlColor:@"#576"];//[self.appDelegate.appArt primaryColor];//[[UIColor redColor] colorWithAlphaComponent:0.64];
         }
         case ViewPagerTabsView: {
             return [UIColor whiteColor];

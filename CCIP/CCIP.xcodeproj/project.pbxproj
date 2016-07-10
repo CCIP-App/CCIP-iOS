@@ -17,7 +17,7 @@
 		6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */; };
 		6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */; };
 		6B2CD5611D281D9400793194 /* UIAlertController+additional.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */; };
-		6B2CD5791D286E6F00793194 /* UIColor+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CD5781D286E6F00793194 /* UIColor+Transition.m */; };
+		6B2CD5791D286E6F00793194 /* UIColor+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CD5781D286E6F00793194 /* UIColor+addition.m */; };
 		6B2CD58B1D28780F00793194 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD58A1D28780F00793194 /* AudioToolbox.framework */; };
 		6B2CD59A1D2886C900793194 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B2CD5971D2886C900793194 /* Localizable.strings */; };
 		6B2CD5AE1D28C92B00793194 /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD5AD1D28C92B00793194 /* CommonCrypto.framework */; };
@@ -81,8 +81,8 @@
 		6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+addition.m"; sourceTree = "<group>"; };
 		6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+additional.m"; sourceTree = "<group>"; };
 		6B2CD5601D281D9400793194 /* UIAlertController+additional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+additional.h"; sourceTree = "<group>"; };
-		6B2CD5771D286E6F00793194 /* UIColor+Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Transition.h"; sourceTree = "<group>"; };
-		6B2CD5781D286E6F00793194 /* UIColor+Transition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Transition.m"; sourceTree = "<group>"; };
+		6B2CD5771D286E6F00793194 /* UIColor+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+addition.h"; sourceTree = "<group>"; };
+		6B2CD5781D286E6F00793194 /* UIColor+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+addition.m"; sourceTree = "<group>"; };
 		6B2CD58A1D28780F00793194 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6B2CD5951D2886AB00793194 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		6B2CD5961D2886B100793194 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -184,8 +184,8 @@
 				6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */,
 				6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */,
 				6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */,
-				6B2CD5771D286E6F00793194 /* UIColor+Transition.h */,
-				6B2CD5781D286E6F00793194 /* UIColor+Transition.m */,
+				6B2CD5771D286E6F00793194 /* UIColor+addition.h */,
+				6B2CD5781D286E6F00793194 /* UIColor+addition.m */,
 				6B2CD5601D281D9400793194 /* UIAlertController+additional.h */,
 				6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */,
 				6B8F62241D314CA600B684BD /* NavigationController.h */,
@@ -391,7 +391,7 @@
 				6B8F62261D314CA600B684BD /* NavigationController.m in Sources */,
 				6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */,
 				6BA1A5251D1EFBE700D5924C /* CheckinView.m in Sources */,
-				6B2CD5791D286E6F00793194 /* UIColor+Transition.m in Sources */,
+				6B2CD5791D286E6F00793194 /* UIColor+addition.m in Sources */,
 				6B2CD5611D281D9400793194 /* UIAlertController+additional.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

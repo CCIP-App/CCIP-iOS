@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "StatusView.h"
-#import "UIColor+Transition.h"
+#import "UIColor+addition.h"
 @import AudioToolbox.AudioServices;
 
 @interface StatusView()
