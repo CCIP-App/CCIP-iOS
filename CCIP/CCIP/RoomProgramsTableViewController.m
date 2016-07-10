@@ -62,18 +62,18 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.tableView reloadData];
-    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        [self.navigationController.interactivePopGestureRecognizer setEnabled:NO];
-        [self.navigationController.interactivePopGestureRecognizer setDelegate:self];
-    }
+//    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+//        [self.navigationController.interactivePopGestureRecognizer setEnabled:NO];
+//        [self.navigationController.interactivePopGestureRecognizer setDelegate:self];
+//    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        [self.navigationController.interactivePopGestureRecognizer setEnabled:YES];
-        [self.navigationController.interactivePopGestureRecognizer setDelegate:nil];
-    }
+//    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+//        [self.navigationController.interactivePopGestureRecognizer setEnabled:YES];
+//        [self.navigationController.interactivePopGestureRecognizer setDelegate:nil];
+//    }
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
