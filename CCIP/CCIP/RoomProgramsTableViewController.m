@@ -141,8 +141,7 @@
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NULL];
     [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
     
-    NSArray *allKeys = [self.sections allKeys];
-    NSDictionary *program = [[self.sections objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+    NSDictionary *program = [[self.sections objectForKey:[[self.sections allKeys] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
     [cell.textLabel setText:[program objectForKey:@"subject"]];
     
@@ -153,7 +152,7 @@
     [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO
                                                     animated:YES];
     // TODO: display selected section detail informations
-    NSDictionary *program = [self.programs objectAtIndex:indexPath.row];
+    NSDictionary *program = [[self.sections objectForKey:[[self.sections allKeys] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
     ProgramDetailViewController *detailViewController = [ProgramDetailViewController new];
     detailViewController.title = [program objectForKey:@"subject"];
