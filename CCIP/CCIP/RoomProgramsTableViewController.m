@@ -100,6 +100,7 @@
     
     NSDateFormatter *formatter_full = [[NSDateFormatter alloc] init];
     [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     
     NSDateFormatter *formatter_s = [[NSDateFormatter alloc] init];
     
@@ -133,12 +134,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *allKeys = [self.sections allKeys];
+    NSArray *allKeys = [[self.sections allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     return [[self.sections objectForKey:[allKeys objectAtIndex:section]] count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSArray *allKeys = [self.sections allKeys];
+    NSArray *allKeys = [[self.sections allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     NSString *dateString = [allKeys objectAtIndex:section];
     return dateString;
 }
@@ -149,7 +150,8 @@
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NULL];
     [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
     
-    NSDictionary *program = [[self.sections objectForKey:[[self.sections allKeys] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+    NSArray *allKeys = [[self.sections allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    NSDictionary *program = [[self.sections objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
     [cell.textLabel setText:[program objectForKey:@"subject"]];
     
@@ -160,7 +162,8 @@
     [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO
                                                     animated:YES];
     // TODO: display selected section detail informations
-    NSDictionary *program = [[self.sections objectForKey:[[self.sections allKeys] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+    NSArray *allKeys = [[self.sections allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    NSDictionary *program = [[self.sections objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
     ProgramDetailViewController *detailViewController = [ProgramDetailViewController new];
     detailViewController.title = [program objectForKey:@"subject"];
