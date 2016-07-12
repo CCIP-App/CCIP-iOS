@@ -56,7 +56,16 @@
 }
 
 #pragma mark - UITableViewDelegate
-
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:nil];
+    
+    UIViewController *detailViewController;
+    NSString *vcName = @"StaffView";
+    detailViewController = [[UIViewController alloc] initWithNibName:vcName bundle:nil];
+    [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
+    
+    id rootVC = [[[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0] nextResponder];
+    [rootVC pushViewController:detailViewController animated:YES];
+}
 
 @end
