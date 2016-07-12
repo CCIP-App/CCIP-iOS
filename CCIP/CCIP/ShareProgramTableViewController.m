@@ -24,7 +24,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.contentSizeInPopup = CGSizeMake([[UIScreen mainScreen] bounds].size.width * 4/5, 88);
+    self.contentSizeInPopup = CGSizeMake(round([[UIScreen mainScreen] bounds].size.width * 4/5), 88);
     self.tableView.alwaysBounceVertical = NO;
 }
 

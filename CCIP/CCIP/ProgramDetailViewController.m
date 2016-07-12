@@ -27,7 +27,7 @@
 //        coscup.org/2016/schedules.html#R13
         self.title = @"View Controller";
 //        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(nextBtnDidTap)];
-        self.contentSizeInPopup = CGSizeMake([[UIScreen mainScreen] bounds].size.width * 4/5, [[UIScreen mainScreen] bounds].size.height * 3/5);
+        self.contentSizeInPopup = CGSizeMake(round([[UIScreen mainScreen] bounds].size.width * 4/5), round([[UIScreen mainScreen] bounds].size.height * 3/5));
 //        self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
         
         UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
