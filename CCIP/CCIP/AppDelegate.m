@@ -30,7 +30,7 @@
     [iRate sharedInstance].daysUntilPrompt = 3;
     [iRate sharedInstance].usesUntilPrompt = 8;
     //enable preview mode
-    [iRate sharedInstance].previewMode = YES;
+    [iRate sharedInstance].previewMode = NO;
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation {
