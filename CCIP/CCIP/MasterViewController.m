@@ -351,7 +351,7 @@
                     withSelectorString:@"setURL:"
                          withArguments:@[ @{@"url": LOG_BOT_URL} ]];
         } else if (indexPath.row == 1) {
-            NSString *vcName = @"StaffView";
+            NSString *vcName = @"StaffGroupView";
             detailViewController = [[UIViewController alloc] initWithNibName:vcName bundle:nil];
         }
 

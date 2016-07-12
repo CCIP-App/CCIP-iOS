@@ -16,6 +16,10 @@
 		5F91712A1D325B5E000D0F66 /* StaffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9171281D325B5E000D0F66 /* StaffView.xib */; };
 		5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91712C1D32990C000D0F66 /* StaffCell.m */; };
 		5F91712F1D32990C000D0F66 /* StaffCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F91712D1D32990C000D0F66 /* StaffCell.xib */; };
+		5FECE5AC1D352E8A00242DB4 /* StaffGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5AA1D352E8A00242DB4 /* StaffGroupView.m */; };
+		5FECE5AD1D352E8A00242DB4 /* StaffGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FECE5AB1D352E8A00242DB4 /* StaffGroupView.xib */; };
+		5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */; };
+		5FECE5F61D353C4900242DB4 /* StaffGroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FECE5F41D353C4900242DB4 /* StaffGroupTableViewCell.xib */; };
 		5FF2B11E1D28B19600665DD9 /* IRCView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2B11C1D28B19600665DD9 /* IRCView.m */; };
 		5FF2B11F1D28B19600665DD9 /* IRCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF2B11D1D28B19600665DD9 /* IRCView.xib */; };
 		6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */; };
@@ -83,6 +87,12 @@
 		5F91712B1D32990C000D0F66 /* StaffCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffCell.h; sourceTree = "<group>"; };
 		5F91712C1D32990C000D0F66 /* StaffCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffCell.m; sourceTree = "<group>"; };
 		5F91712D1D32990C000D0F66 /* StaffCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffCell.xib; sourceTree = "<group>"; };
+		5FECE5A91D352E8A00242DB4 /* StaffGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffGroupView.h; sourceTree = "<group>"; };
+		5FECE5AA1D352E8A00242DB4 /* StaffGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupView.m; sourceTree = "<group>"; };
+		5FECE5AB1D352E8A00242DB4 /* StaffGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffGroupView.xib; sourceTree = "<group>"; };
+		5FECE5F21D353C4900242DB4 /* StaffGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffGroupTableViewCell.h; sourceTree = "<group>"; };
+		5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupTableViewCell.m; sourceTree = "<group>"; };
+		5FECE5F41D353C4900242DB4 /* StaffGroupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffGroupTableViewCell.xib; sourceTree = "<group>"; };
 		5FF2B11B1D28B19600665DD9 /* IRCView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRCView.h; sourceTree = "<group>"; };
 		5FF2B11C1D28B19600665DD9 /* IRCView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRCView.m; sourceTree = "<group>"; };
 		5FF2B11D1D28B19600665DD9 /* IRCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRCView.xib; sourceTree = "<group>"; };
@@ -219,6 +229,12 @@
 				5FF2B11B1D28B19600665DD9 /* IRCView.h */,
 				5FF2B11C1D28B19600665DD9 /* IRCView.m */,
 				5FF2B11D1D28B19600665DD9 /* IRCView.xib */,
+				5FECE5A91D352E8A00242DB4 /* StaffGroupView.h */,
+				5FECE5AA1D352E8A00242DB4 /* StaffGroupView.m */,
+				5FECE5AB1D352E8A00242DB4 /* StaffGroupView.xib */,
+				5FECE5F21D353C4900242DB4 /* StaffGroupTableViewCell.h */,
+				5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */,
+				5FECE5F41D353C4900242DB4 /* StaffGroupTableViewCell.xib */,
 				5F9171261D325B5E000D0F66 /* StaffView.h */,
 				5F9171271D325B5E000D0F66 /* StaffView.m */,
 				5F9171281D325B5E000D0F66 /* StaffView.xib */,
@@ -326,6 +342,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FECE5F61D353C4900242DB4 /* StaffGroupTableViewCell.xib in Resources */,
+				5FECE5AD1D352E8A00242DB4 /* StaffGroupView.xib in Resources */,
 				6B53C6461D1ED5BE00EA8012 /* CheckinView.xib in Resources */,
 				6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */,
 				6B53C65B1D1ED5CC00EA8012 /* StatusView.xib in Resources */,
@@ -409,6 +427,8 @@
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
 				6BD8EF2C1D1D73510094BE95 /* main.m in Sources */,
 				28C22A541D3178A9004A6575 /* ProgramDetailViewController.m in Sources */,
+				5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */,
+				5FECE5AC1D352E8A00242DB4 /* StaffGroupView.m in Sources */,
 				6B7142B01D1DB9820024EA45 /* MasterViewController.m in Sources */,
 				6BA1A5221D1EFBDC00D5924C /* StatusView.m in Sources */,
 				6B8F62261D314CA600B684BD /* NavigationController.m in Sources */,
