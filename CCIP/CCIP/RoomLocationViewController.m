@@ -138,14 +138,18 @@
 - (UIColor *)viewPager:(ViewPagerController *)viewPager colorForComponent:(ViewPagerComponent)component withDefault:(UIColor *)color {
     switch (component) {
         case ViewPagerIndicator: {
-            return [UIColor colorFromHtmlColor:@"#576"];//[self.appDelegate.appArt primaryColor];//[[UIColor redColor] colorWithAlphaComponent:0.64];
+            //return [[UIColor redColor] colorWithAlphaComponent:0.64]; //default
+            //return [UIColor colorFromHtmlColor:@"#576"]; //Colore from Web Side
+            return [self.appDelegate.appArt secondaryColor];
         }
+        /*
         case ViewPagerTabsView: {
             return [UIColor whiteColor];
         }
         case ViewPagerContent: {
             return [UIColor whiteColor];
         }
+        */
         default: {
             return color;
         }
