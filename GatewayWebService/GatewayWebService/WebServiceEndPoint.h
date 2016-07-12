@@ -14,5 +14,6 @@
 
 #define ROOM_DATA_URL           (@"https://coscup.org/2016-assets/json/room.json")
 #define PROGRAM_DATA_URL        (@"https://coscup.org/2016-assets/json/program.json")
+#define STAFF_DATA_URL          (@"https://staff.coscup.org/api/staffgroups/?format=json")
 
 #define LOG_BOT_URL             (@"https://logbot.g0v.tw/channel/coscup/today")

@@ -107,7 +107,7 @@
         case 1:
             return [self.scenarios count];
         case 2:
-            return 1;
+            return 2;
         default:
             return 0;
     }
@@ -221,6 +221,9 @@
         switch (indexPath.row) {
             case 0:
                 [cell.textLabel setText:NSLocalizedString(@"IRC", nil)];
+                break;
+            case 1:
+                [cell.textLabel setText:NSLocalizedString(@"Staffs", nil)];
                 break;
             default:
                 [cell.textLabel setText:@"null"];
@@ -338,12 +341,19 @@
         // section 1 End
     } else if (indexPath.section == 2) {
         // section 2 Start
-        NSString *vcName = @"IRCView";
-        UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:vcName bundle:nil];
+        UIViewController *detailViewController;
         
-        [NSInvocation InvokeObject:detailViewController.view
-                withSelectorString:@"setURL:"
-                     withArguments:@[ @{@"url": LOG_BOT_URL} ]];
+        if (indexPath.row == 0) {
+            NSString *vcName = @"IRCView";
+            detailViewController = [[UIViewController alloc] initWithNibName:vcName bundle:nil];
+            
+            [NSInvocation InvokeObject:detailViewController.view
+                    withSelectorString:@"setURL:"
+                         withArguments:@[ @{@"url": LOG_BOT_URL} ]];
+        } else if (indexPath.row == 1) {
+            NSString *vcName = @"StaffView";
+            detailViewController = [[UIViewController alloc] initWithNibName:vcName bundle:nil];
+        }
 
         [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
         [self.navigationController pushViewController:detailViewController

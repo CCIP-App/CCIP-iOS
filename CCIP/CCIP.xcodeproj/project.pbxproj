@@ -12,6 +12,10 @@
 		28C22A541D3178A9004A6575 /* ProgramDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C22A531D3178A9004A6575 /* ProgramDetailViewController.m */; };
 		28ED8C7A1D31DC1F00BC47E0 /* ShareProgramTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED8C791D31DC1F00BC47E0 /* ShareProgramTableViewController.m */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
+		5F9171291D325B5E000D0F66 /* StaffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9171271D325B5E000D0F66 /* StaffView.m */; };
+		5F91712A1D325B5E000D0F66 /* StaffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9171281D325B5E000D0F66 /* StaffView.xib */; };
+		5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91712C1D32990C000D0F66 /* StaffCell.m */; };
+		5F91712F1D32990C000D0F66 /* StaffCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F91712D1D32990C000D0F66 /* StaffCell.xib */; };
 		5FF2B11E1D28B19600665DD9 /* IRCView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2B11C1D28B19600665DD9 /* IRCView.m */; };
 		5FF2B11F1D28B19600665DD9 /* IRCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF2B11D1D28B19600665DD9 /* IRCView.xib */; };
 		6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */; };
@@ -73,6 +77,12 @@
 		28ED8C781D31DC1F00BC47E0 /* ShareProgramTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareProgramTableViewController.h; sourceTree = "<group>"; };
 		28ED8C791D31DC1F00BC47E0 /* ShareProgramTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareProgramTableViewController.m; sourceTree = "<group>"; };
 		5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5F9171261D325B5E000D0F66 /* StaffView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffView.h; sourceTree = "<group>"; };
+		5F9171271D325B5E000D0F66 /* StaffView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffView.m; sourceTree = "<group>"; };
+		5F9171281D325B5E000D0F66 /* StaffView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffView.xib; sourceTree = "<group>"; };
+		5F91712B1D32990C000D0F66 /* StaffCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffCell.h; sourceTree = "<group>"; };
+		5F91712C1D32990C000D0F66 /* StaffCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffCell.m; sourceTree = "<group>"; };
+		5F91712D1D32990C000D0F66 /* StaffCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffCell.xib; sourceTree = "<group>"; };
 		5FF2B11B1D28B19600665DD9 /* IRCView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRCView.h; sourceTree = "<group>"; };
 		5FF2B11C1D28B19600665DD9 /* IRCView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRCView.m; sourceTree = "<group>"; };
 		5FF2B11D1D28B19600665DD9 /* IRCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRCView.xib; sourceTree = "<group>"; };
@@ -209,6 +219,12 @@
 				5FF2B11B1D28B19600665DD9 /* IRCView.h */,
 				5FF2B11C1D28B19600665DD9 /* IRCView.m */,
 				5FF2B11D1D28B19600665DD9 /* IRCView.xib */,
+				5F9171261D325B5E000D0F66 /* StaffView.h */,
+				5F9171271D325B5E000D0F66 /* StaffView.m */,
+				5F9171281D325B5E000D0F66 /* StaffView.xib */,
+				5F91712B1D32990C000D0F66 /* StaffCell.h */,
+				5F91712C1D32990C000D0F66 /* StaffCell.m */,
+				5F91712D1D32990C000D0F66 /* StaffCell.xib */,
 				28AF9A7C1D28A40A006B378E /* RoomLocationViewController.h */,
 				28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */,
 				28AF9A8F1D28A6E9006B378E /* RoomProgramsTableViewController.h */,
@@ -316,6 +332,8 @@
 				6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */,
 				6BE250271D314B5B005FB4B2 /* Main.storyboard in Resources */,
 				6B7142B71D1DBAFB0024EA45 /* scenarioCell.xib in Resources */,
+				5F91712A1D325B5E000D0F66 /* StaffView.xib in Resources */,
+				5F91712F1D32990C000D0F66 /* StaffCell.xib in Resources */,
 				5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */,
 				6B2CD59A1D2886C900793194 /* Localizable.strings in Resources */,
 				6B53C6601D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib in Resources */,
@@ -380,6 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */,
 				6BA1A5281D1EFBF100D5924C /* InvalidNetworkMessageView.m in Sources */,
 				28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */,
 				28ED8C7A1D31DC1F00BC47E0 /* ShareProgramTableViewController.m in Sources */,
@@ -395,6 +414,7 @@
 				6B8F62261D314CA600B684BD /* NavigationController.m in Sources */,
 				6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */,
 				6BA1A5251D1EFBE700D5924C /* CheckinView.m in Sources */,
+				5F9171291D325B5E000D0F66 /* StaffView.m in Sources */,
 				6B2CD5791D286E6F00793194 /* UIColor+addition.m in Sources */,
 				6B2CD5611D281D9400793194 /* UIAlertController+additional.m in Sources */,
 			);
