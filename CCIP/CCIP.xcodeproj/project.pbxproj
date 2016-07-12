@@ -29,6 +29,7 @@
 		6B53C6461D1ED5BE00EA8012 /* CheckinView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B53C6441D1ED5BE00EA8012 /* CheckinView.xib */; };
 		6B53C65B1D1ED5CC00EA8012 /* StatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B53C6591D1ED5CC00EA8012 /* StatusView.xib */; };
 		6B53C6601D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib */; };
+		6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
 		6B7142B01D1DB9820024EA45 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142AF1D1DB9820024EA45 /* MasterViewController.m */; };
 		6B7142B61D1DBAFB0024EA45 /* scenarioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */; };
 		6B7142B71D1DBAFB0024EA45 /* scenarioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */; };
@@ -94,6 +95,7 @@
 		6B53C6441D1ED5BE00EA8012 /* CheckinView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckinView.xib; sourceTree = "<group>"; };
 		6B53C6591D1ED5CC00EA8012 /* StatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusView.xib; sourceTree = "<group>"; };
 		6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvalidNetworkMessageView.xib; sourceTree = "<group>"; };
+		6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreenIcon@3x.png"; sourceTree = "<group>"; };
 		6B7142AE1D1DB9820024EA45 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		6B7142AF1D1DB9820024EA45 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scenarioCell.h; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			children = (
 				6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */,
 				6B2CD5971D2886C900793194 /* Localizable.strings */,
+				6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */,
 				6BD8EF391D1D73510094BE95 /* Assets.xcassets */,
 				5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */,
 				6BD8EF3E1D1D73510094BE95 /* Info.plist */,
@@ -308,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B53C6461D1ED5BE00EA8012 /* CheckinView.xib in Resources */,
+				6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */,
 				6B53C65B1D1ED5CC00EA8012 /* StatusView.xib in Resources */,
 				6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */,
 				6BE250271D314B5B005FB4B2 /* Main.storyboard in Resources */,
