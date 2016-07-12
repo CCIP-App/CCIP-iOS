@@ -27,7 +27,7 @@ DEPENDENCIES:
   - ColorArt (= 0.1.1)
   - Google/Analytics
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
-  - iRate (from `https://github.com/FrankWu100/iRate`)
+  - iRate (~> 1.11)
   - OneSignal
   - STPopup (~> 1.7)
   - UICKeyChainStore (~> 2.1)
@@ -35,16 +35,11 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   ICViewPager:
     :git: https://github.com/FrankWu100/ICViewPager
-  iRate:
-    :git: https://github.com/FrankWu100/iRate
 
 CHECKOUT OPTIONS:
   ICViewPager:
     :commit: 22806dd80993c1320b7880781a32468e7b9cb8a1
     :git: https://github.com/FrankWu100/ICViewPager
-  iRate:
-    :commit: 27bbdd43ab42f621f23d8d792544bec22af86984
-    :git: https://github.com/FrankWu100/iRate
 
 SPEC CHECKSUMS:
   ColorArt: de0ffb63da4acdde8e234ded62e200236ca3e7e4
@@ -61,6 +56,6 @@ SPEC CHECKSUMS:
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: a2a3c78404c53883ed0539e77787a895a3339c83
+PODFILE CHECKSUM: 337ae4fc4c1d22cc98b4a549038493bf41f016ae
 
 COCOAPODS: 1.0.1
