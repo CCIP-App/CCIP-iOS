@@ -16,6 +16,8 @@
 		5F91712A1D325B5E000D0F66 /* StaffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9171281D325B5E000D0F66 /* StaffView.xib */; };
 		5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91712C1D32990C000D0F66 /* StaffCell.m */; };
 		5F91712F1D32990C000D0F66 /* StaffCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F91712D1D32990C000D0F66 /* StaffCell.xib */; };
+		5FCA7BBB1D393F05002ECB6D /* StaffIconDefault@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCA7BB91D393F05002ECB6D /* StaffIconDefault@1x.png */; };
+		5FCA7BBC1D393F05002ECB6D /* StaffIconDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCA7BBA1D393F05002ECB6D /* StaffIconDefault@2x.png */; };
 		5FECE5AC1D352E8A00242DB4 /* StaffGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5AA1D352E8A00242DB4 /* StaffGroupView.m */; };
 		5FECE5AD1D352E8A00242DB4 /* StaffGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FECE5AB1D352E8A00242DB4 /* StaffGroupView.xib */; };
 		5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */; };
@@ -87,6 +89,8 @@
 		5F91712B1D32990C000D0F66 /* StaffCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffCell.h; sourceTree = "<group>"; };
 		5F91712C1D32990C000D0F66 /* StaffCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffCell.m; sourceTree = "<group>"; };
 		5F91712D1D32990C000D0F66 /* StaffCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffCell.xib; sourceTree = "<group>"; };
+		5FCA7BB91D393F05002ECB6D /* StaffIconDefault@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StaffIconDefault@1x.png"; sourceTree = "<group>"; };
+		5FCA7BBA1D393F05002ECB6D /* StaffIconDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StaffIconDefault@2x.png"; sourceTree = "<group>"; };
 		5FECE5A91D352E8A00242DB4 /* StaffGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffGroupView.h; sourceTree = "<group>"; };
 		5FECE5AA1D352E8A00242DB4 /* StaffGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupView.m; sourceTree = "<group>"; };
 		5FECE5AB1D352E8A00242DB4 /* StaffGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffGroupView.xib; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 		6BD8EF291D1D73510094BE95 /* CCIP */ = {
 			isa = PBXGroup;
 			children = (
+				5FCA7BB91D393F05002ECB6D /* StaffIconDefault@1x.png */,
+				5FCA7BBA1D393F05002ECB6D /* StaffIconDefault@2x.png */,
 				6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */,
 				6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */,
 				6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */,
@@ -348,11 +354,13 @@
 				6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */,
 				6B53C65B1D1ED5CC00EA8012 /* StatusView.xib in Resources */,
 				6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */,
+				5FCA7BBB1D393F05002ECB6D /* StaffIconDefault@1x.png in Resources */,
 				6BE250271D314B5B005FB4B2 /* Main.storyboard in Resources */,
 				6B7142B71D1DBAFB0024EA45 /* scenarioCell.xib in Resources */,
 				5F91712A1D325B5E000D0F66 /* StaffView.xib in Resources */,
 				5F91712F1D32990C000D0F66 /* StaffCell.xib in Resources */,
 				5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */,
+				5FCA7BBC1D393F05002ECB6D /* StaffIconDefault@2x.png in Resources */,
 				6B2CD59A1D2886C900793194 /* Localizable.strings in Resources */,
 				6B53C6601D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib in Resources */,
 				5FF2B11F1D28B19600665DD9 /* IRCView.xib in Resources */,

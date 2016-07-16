@@ -64,6 +64,8 @@
     detailViewController = [[UIViewController alloc] initWithNibName:vcName bundle:nil];
     [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
     
+    [NSInvocation InvokeObject:detailViewController.view withSelectorString:@"setGroup:" withArguments:@[ [[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"users"] ]];
+    
     id rootVC = [[[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0] nextResponder];
     [rootVC pushViewController:detailViewController animated:YES];
 }
