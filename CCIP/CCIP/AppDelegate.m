@@ -190,7 +190,7 @@
 }
 
 - (void)setAppearance:(SLColorArt *)appArt {
-    [[UINavigationBar appearance] setBarTintColor:[appArt backgroundColor]];
+    //[[UINavigationBar appearance] setBarTintColor:[appArt backgroundColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName: [appArt detailColor] }];
     [[UINavigationBar appearance] setTintColor:[appArt detailColor]];
     [[UIToolbar appearance] setBarTintColor:[appArt backgroundColor]];

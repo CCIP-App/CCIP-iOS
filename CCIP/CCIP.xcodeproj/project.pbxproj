@@ -49,6 +49,9 @@
 		5FB4D47E1D3A8DF6005BF382 /* icon_ios_bell_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4D4721D3A8DF6005BF382 /* icon_ios_bell_selected.png */; };
 		5FB4D47F1D3A8DF6005BF382 /* icon_ios_bell_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4D4731D3A8DF6005BF382 /* icon_ios_bell_selected@2x.png */; };
 		5FB4D4801D3A8DF6005BF382 /* icon_ios_bell_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4D4741D3A8DF6005BF382 /* icon_ios_bell_selected@3x.png */; };
+		5FB4D4841D3A998C005BF382 /* coscup-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4D4811D3A998C005BF382 /* coscup-logo.png */; };
+		5FB4D4851D3A998C005BF382 /* coscup-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4D4821D3A998C005BF382 /* coscup-logo@2x.png */; };
+		5FB4D4861D3A998C005BF382 /* coscup-logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4D4831D3A998C005BF382 /* coscup-logo@3x.png */; };
 		5FECE5AC1D352E8A00242DB4 /* StaffGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5AA1D352E8A00242DB4 /* StaffGroupView.m */; };
 		5FECE5AD1D352E8A00242DB4 /* StaffGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FECE5AB1D352E8A00242DB4 /* StaffGroupView.xib */; };
 		5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */; };
@@ -154,6 +157,9 @@
 		5FB4D4721D3A8DF6005BF382 /* icon_ios_bell_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_ios_bell_selected.png; path = Images/icon_ios_bell_selected.png; sourceTree = "<group>"; };
 		5FB4D4731D3A8DF6005BF382 /* icon_ios_bell_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_ios_bell_selected@2x.png"; path = "Images/icon_ios_bell_selected@2x.png"; sourceTree = "<group>"; };
 		5FB4D4741D3A8DF6005BF382 /* icon_ios_bell_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_ios_bell_selected@3x.png"; path = "Images/icon_ios_bell_selected@3x.png"; sourceTree = "<group>"; };
+		5FB4D4811D3A998C005BF382 /* coscup-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "coscup-logo.png"; path = "Images/coscup-logo.png"; sourceTree = "<group>"; };
+		5FB4D4821D3A998C005BF382 /* coscup-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "coscup-logo@2x.png"; path = "Images/coscup-logo@2x.png"; sourceTree = "<group>"; };
+		5FB4D4831D3A998C005BF382 /* coscup-logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "coscup-logo@3x.png"; path = "Images/coscup-logo@3x.png"; sourceTree = "<group>"; };
 		5FECE5A91D352E8A00242DB4 /* StaffGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffGroupView.h; sourceTree = "<group>"; };
 		5FECE5AA1D352E8A00242DB4 /* StaffGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupView.m; sourceTree = "<group>"; };
 		5FECE5AB1D352E8A00242DB4 /* StaffGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffGroupView.xib; sourceTree = "<group>"; };
@@ -250,6 +256,9 @@
 		5FB4D4401D3A8304005BF382 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5FB4D4811D3A998C005BF382 /* coscup-logo.png */,
+				5FB4D4821D3A998C005BF382 /* coscup-logo@2x.png */,
+				5FB4D4831D3A998C005BF382 /* coscup-logo@3x.png */,
 				5FB4D4721D3A8DF6005BF382 /* icon_ios_bell_selected.png */,
 				5FB4D4731D3A8DF6005BF382 /* icon_ios_bell_selected@2x.png */,
 				5FB4D4741D3A8DF6005BF382 /* icon_ios_bell_selected@3x.png */,
@@ -463,11 +472,14 @@
 				5FB4D4671D3A8706005BF382 /* icon_ios_chat@2x.png in Resources */,
 				5FB4D47E1D3A8DF6005BF382 /* icon_ios_bell_selected.png in Resources */,
 				5FB4D4791D3A8DF6005BF382 /* icon_ios_more@2x.png in Resources */,
+				5FB4D4861D3A998C005BF382 /* coscup-logo@3x.png in Resources */,
 				6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */,
 				5FB4D47C1D3A8DF6005BF382 /* icon_ios_bell@2x.png in Resources */,
 				5FB4D44E1D3A8547005BF382 /* icon_ios_pin_selected.png in Resources */,
 				5FB4D44F1D3A8547005BF382 /* icon_ios_pin_selected@2x.png in Resources */,
+				5FB4D4851D3A998C005BF382 /* coscup-logo@2x.png in Resources */,
 				5FB4D4651D3A8706005BF382 /* icon_ios_chat_selected@3x.png in Resources */,
+				5FB4D4841D3A998C005BF382 /* coscup-logo.png in Resources */,
 				5FB4D4491D3A8319005BF382 /* StaffIconDefault@1x.png in Resources */,
 				5FB4D4461D3A8319005BF382 /* icon_ios_pin.png in Resources */,
 				5FB4D4471D3A8319005BF382 /* icon_ios_pin@2x.png in Resources */,
