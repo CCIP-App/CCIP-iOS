@@ -8,7 +8,10 @@
 
 
 "Title" = "COSCUP 2016";
+"Checkin" = "Checkin";
 "Schedule" = "Schedule";
+"Announce" = "Announce";
+"More" = "More";
 "HSSBuilding" = "H.S.S. Building";
 "ActivityCenter" = "Activity Center";
 "All" = "All";

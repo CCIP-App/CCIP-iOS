@@ -8,7 +8,10 @@
 
 
 "Title" = "COSCUP 2016";
+"Checkin" = "報到";
 "Schedule" = "議程";
+"Announce" = "大會訊息";
+"More" = "更多";
 "HSSBuilding" = "人文館";
 "ActivityCenter" = "活動中心";
 "All" = "全部";
