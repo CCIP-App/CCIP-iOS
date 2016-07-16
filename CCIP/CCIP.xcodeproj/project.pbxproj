@@ -16,6 +16,7 @@
 		5F91712A1D325B5E000D0F66 /* StaffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9171281D325B5E000D0F66 /* StaffView.xib */; };
 		5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91712C1D32990C000D0F66 /* StaffCell.m */; };
 		5F91712F1D32990C000D0F66 /* StaffCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F91712D1D32990C000D0F66 /* StaffCell.xib */; };
+		5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D43D1D3A668B005BF382 /* MainTabBarViewController.m */; };
 		5FCA7BBB1D393F05002ECB6D /* StaffIconDefault@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCA7BB91D393F05002ECB6D /* StaffIconDefault@1x.png */; };
 		5FCA7BBC1D393F05002ECB6D /* StaffIconDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCA7BBA1D393F05002ECB6D /* StaffIconDefault@2x.png */; };
 		5FECE5AC1D352E8A00242DB4 /* StaffGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5AA1D352E8A00242DB4 /* StaffGroupView.m */; };
@@ -89,6 +90,8 @@
 		5F91712B1D32990C000D0F66 /* StaffCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffCell.h; sourceTree = "<group>"; };
 		5F91712C1D32990C000D0F66 /* StaffCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffCell.m; sourceTree = "<group>"; };
 		5F91712D1D32990C000D0F66 /* StaffCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffCell.xib; sourceTree = "<group>"; };
+		5FB4D43C1D3A668B005BF382 /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
+		5FB4D43D1D3A668B005BF382 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
 		5FCA7BB91D393F05002ECB6D /* StaffIconDefault@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StaffIconDefault@1x.png"; sourceTree = "<group>"; };
 		5FCA7BBA1D393F05002ECB6D /* StaffIconDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StaffIconDefault@2x.png"; sourceTree = "<group>"; };
 		5FECE5A91D352E8A00242DB4 /* StaffGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffGroupView.h; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 				6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */,
 				6B8F62241D314CA600B684BD /* NavigationController.h */,
 				6B8F62251D314CA600B684BD /* NavigationController.m */,
+				5FB4D43C1D3A668B005BF382 /* MainTabBarViewController.h */,
+				5FB4D43D1D3A668B005BF382 /* MainTabBarViewController.m */,
 				6B7142AE1D1DB9820024EA45 /* MasterViewController.h */,
 				6B7142AF1D1DB9820024EA45 /* MasterViewController.m */,
 				6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */,
@@ -425,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */,
+				5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */,
 				6BA1A5281D1EFBF100D5924C /* InvalidNetworkMessageView.m in Sources */,
 				28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */,
 				28ED8C7A1D31DC1F00BC47E0 /* ShareProgramTableViewController.m in Sources */,

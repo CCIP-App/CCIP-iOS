@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "RoomLocationViewController.h"
 #import "RoomProgramsTableViewController.h"
+#import "GatewayWebService/GatewayWebService.h"
 #import "NSInvocation+addition.h"
 #import "UIColor+addition.h"
 
@@ -22,26 +23,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.dataSource = self;
     self.delegate = self;
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    GatewayWebService *roome_ws = [[GatewayWebService alloc] initWithURL:ROOM_DATA_URL];
+    [roome_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+        if (json != nil) {
+            NSLog(@"%@", json);
+            self.rooms = json;
+        }
+    }];
+    
+    GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
+    [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+        if (json != nil) {
+            NSLog(@"%@", json);
+            self.roomPrograms = json;
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)setRooms:(NSArray *)rooms {
-    _rooms = rooms;
-}
-
-- (void)setRoomPrograms:(NSMutableArray *)roomPrograms {
-    _roomPrograms = roomPrograms;
 }
 
 #pragma mark - ViewPagerDataSource
