@@ -17,7 +17,7 @@
             <subviews>
                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gt5-fG-udK">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </webView>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Z7O-7r-P14">
                     <rect key="frame" x="290" y="70" width="20" height="20"/>
@@ -27,7 +27,7 @@
                     </constraints>
                 </activityIndicatorView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="Gt5-fG-udK" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="4Aj-a8-kNi"/>
                 <constraint firstItem="Z7O-7r-P14" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="5HA-CA-eHO"/>
