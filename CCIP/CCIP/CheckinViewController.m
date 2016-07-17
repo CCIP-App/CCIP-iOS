@@ -34,6 +34,27 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CheckinViewCell *cell = (CheckinViewCell  *)[collectionView dequeueReusableCellWithReuseIdentifier:@"reuse" forIndexPath:indexPath];
+    [cell.checkinBtn setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
+    
+    switch (indexPath.section) {
+        case 0:
+            cell.id = @"day1checkin";
+            cell.checkinTitle.text = NSLocalizedString(@"Checkin", nil);
+            [cell.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButton", nil) forState:UIControlStateNormal];
+            break;
+        case 1:
+            cell.id = @"kit";
+            cell.checkinTitle.text = NSLocalizedString(@"kit", nil);
+            [cell.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil) forState:UIControlStateNormal];
+            break;
+        case 2:
+            cell.id = @"day1lunch";
+            cell.checkinTitle.text = NSLocalizedString(@"lunch", nil);
+            [cell.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil) forState:UIControlStateNormal];
+            break;
+        default:
+            break;
+    }
     [self configureCell:cell withIndexPath:indexPath];
     return cell;
 }

@@ -18,7 +18,11 @@
 "Hi" = "嗨！";
 "day1checkin" = "第一天報到";
 "kit" = "迎賓袋領取";
-"day1lunch" = "第一天午餐領取";
+"lunch" = "午餐領取";
+"CheckinViewButton" = "報到";
+"CheckinViewButtonPressed" = "已報到";
+"UseButton" = "使用";
+"UseButtonPressed" = "已領取";
 "day2checkin" = "第二天報到";
 "day2lunch" = "第二天午餐領取";
 "Addition" = "其他";

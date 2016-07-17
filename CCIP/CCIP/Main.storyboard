@@ -240,6 +240,9 @@
                                         </variation>
                                         <connections>
                                             <outlet property="checkinBtn" destination="coH-dF-V3g" id="Z4g-Sy-5te"/>
+                                            <outlet property="checkinDate" destination="KuB-Uh-zQj" id="N0t-5v-y3c"/>
+                                            <outlet property="checkinText" destination="PjL-WA-yBM" id="hae-0d-DGT"/>
+                                            <outlet property="checkinTitle" destination="LX2-G2-ptg" id="Ehg-NM-hmL"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

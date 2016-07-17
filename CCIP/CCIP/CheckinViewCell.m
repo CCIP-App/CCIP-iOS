@@ -12,9 +12,19 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
-    [self.checkinBtn setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
+    
     self.checkinBtn.layer.cornerRadius = 10.0f;
+    [self.checkinBtn addTarget:self action:@selector(checkinBtnTouched) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)checkinBtnTouched {
+    if ([self.id isEqualToString:@"day1checkin"] || [self.id isEqualToString:@"day2checkin"]) {
+        [self.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil) forState:UIControlStateNormal];
+    } else {
+        [self.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil) forState:UIControlStateNormal];
+    }
+    
+    [self.checkinBtn setBackgroundColor:[UIColor colorWithRed:155/255.0 green:155/255.0 blue:155/255.0 alpha:1]];
 }
 
 @end

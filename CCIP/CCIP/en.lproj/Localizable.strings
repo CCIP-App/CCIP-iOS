@@ -18,7 +18,11 @@
 "Hi" = "Hi ";
 "day1checkin" = "Day 1 Checkin";
 "kit" = "Welcome Kit";
-"day1lunch" = "Day 1 Lunch";
+"lunch" = "Lunch";
+"CheckinViewButton" = "CHECK IN";
+"CheckinViewButtonPressed" = "FINISHED";
+"UseButton" = "USE";
+"UseButtonPressed" = "USED";
 "day2checkin" = "Day 2 Checkin";
 "day2lunch" = "Day 2 Lunch";
 "Addition" = "Addition";
