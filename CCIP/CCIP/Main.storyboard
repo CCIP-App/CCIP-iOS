@@ -141,7 +141,6 @@
         <!--Checkin View Controller-->
         <scene sceneID="s5H-mK-055">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M8l-mK-H7w" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CheckinViewController" id="6Xx-bx-CvE" customClass="CheckinViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dX4-Wl-0Qv"/>
@@ -152,7 +151,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f3a-eQ-zuL">
-                                <rect key="frame" x="4" y="0.0" width="592" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.0" green="0.65098039215686276" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PSj-is-CAn" customClass="RGCardViewLayout">
                                     <size key="itemSize" width="363" height="608"/>
@@ -162,7 +161,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reuse" id="MVU-7K-L2Y" customClass="CheckinViewCell">
-                                        <rect key="frame" x="114.5" y="0.0" width="363" height="608"/>
+                                        <rect key="frame" x="118.5" y="0.0" width="363" height="608"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="363" height="608"/>
@@ -254,12 +253,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="u6h-tC-buW" firstAttribute="top" secondItem="f3a-eQ-zuL" secondAttribute="bottom" id="DnL-8F-MG3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="f3a-eQ-zuL" secondAttribute="trailing" constant="-16" id="LPF-a9-MDM"/>
-                            <constraint firstItem="f3a-eQ-zuL" firstAttribute="leading" secondItem="kcU-VE-fa5" secondAttribute="leadingMargin" constant="-16" id="Pca-48-BZr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="f3a-eQ-zuL" secondAttribute="trailing" constant="-20" id="LPF-a9-MDM"/>
+                            <constraint firstItem="f3a-eQ-zuL" firstAttribute="leading" secondItem="kcU-VE-fa5" secondAttribute="leadingMargin" constant="-20" id="Pca-48-BZr"/>
                             <constraint firstItem="f3a-eQ-zuL" firstAttribute="top" secondItem="kcU-VE-fa5" secondAttribute="topMargin" id="qE5-Ae-l4H"/>
                         </constraints>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M8l-mK-H7w" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="301" y="1029"/>
         </scene>
