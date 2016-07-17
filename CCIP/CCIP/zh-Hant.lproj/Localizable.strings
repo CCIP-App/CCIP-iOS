@@ -21,6 +21,7 @@
 "lunch" = "午餐領取";
 "CheckinViewButton" = "報到";
 "CheckinViewButtonPressed" = "已報到";
+"CheckinText" = "「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。";
 "UseButton" = "使用";
 "UseButtonPressed" = "已領取";
 "day2checkin" = "第二天報到";
@@ -30,7 +31,7 @@
 "Staffs" = "籌備團隊";
 "GuideViewMessage" = "請參考您的與會詳細資訊，您會在信中找到使用代碼。\n\n請複製貼上該代碼到下面的文字輸入方塊中，或者直接點擊信中的代碼連結即可。";
 "GuideViewButton" = "使用";
-"CheckinNotice" = "請注意，在點下『確認使用』之後將會將可用餘額扣除，並且在一分鐘之內消失。\n\n請確認大會工作人員已經指示您按下『確認使用』按鈕後再按下按鈕，謝謝！";
+"CheckinNotice" = "請注意！在點下『確認使用』之後，將立即視為已領取。\n請確認大會工作人員已經指示您按下『確認使用』按鈕後再按下按鈕，謝謝！";
 "CheckinButton" = "確認使用";
 "StatusNotice" = "您已經使用成功！\n\n請停留在此畫面給工作人員確認，謝謝！";
 "NotAvailableTitle" = "現在不能按喔";

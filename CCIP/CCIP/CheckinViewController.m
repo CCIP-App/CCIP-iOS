@@ -40,16 +40,19 @@
         case 0:
             cell.id = @"day1checkin";
             cell.checkinTitle.text = NSLocalizedString(@"Checkin", nil);
+            cell.checkinText.text = NSLocalizedString(@"CheckinText", nil);
             [cell.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButton", nil) forState:UIControlStateNormal];
             break;
         case 1:
             cell.id = @"kit";
             cell.checkinTitle.text = NSLocalizedString(@"kit", nil);
+            cell.checkinText.text = NSLocalizedString(@"CheckinNotice", nil);;
             [cell.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil) forState:UIControlStateNormal];
             break;
         case 2:
             cell.id = @"day1lunch";
             cell.checkinTitle.text = NSLocalizedString(@"lunch", nil);
+            cell.checkinText.text = NSLocalizedString(@"CheckinNotice", nil);;
             [cell.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil) forState:UIControlStateNormal];
             break;
         default:
