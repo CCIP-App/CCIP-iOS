@@ -253,9 +253,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="u6h-tC-buW" firstAttribute="top" secondItem="f3a-eQ-zuL" secondAttribute="bottom" id="DnL-8F-MG3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="f3a-eQ-zuL" secondAttribute="trailing" constant="-20" id="LPF-a9-MDM"/>
-                            <constraint firstItem="f3a-eQ-zuL" firstAttribute="leading" secondItem="kcU-VE-fa5" secondAttribute="leadingMargin" constant="-20" id="Pca-48-BZr"/>
-                            <constraint firstItem="f3a-eQ-zuL" firstAttribute="top" secondItem="kcU-VE-fa5" secondAttribute="topMargin" id="qE5-Ae-l4H"/>
+                            <constraint firstAttribute="trailing" secondItem="f3a-eQ-zuL" secondAttribute="trailing" id="LPF-a9-MDM"/>
+                            <constraint firstItem="f3a-eQ-zuL" firstAttribute="leading" secondItem="kcU-VE-fa5" secondAttribute="leading" id="Pca-48-BZr"/>
+                            <constraint firstItem="f3a-eQ-zuL" firstAttribute="top" secondItem="kcU-VE-fa5" secondAttribute="top" id="qE5-Ae-l4H"/>
                         </constraints>
                     </view>
                 </viewController>
