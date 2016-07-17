@@ -9,6 +9,7 @@
 
 #import "CheckinViewController.h"
 #import "CheckinViewCell.h"
+#import <Google/Analytics.h>
 
 @interface CheckinViewController () <UICollectionViewDataSource>
 
@@ -19,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"CheckinViewController"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

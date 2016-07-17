@@ -66,6 +66,9 @@
     
     [NSInvocation InvokeObject:detailViewController.view withSelectorString:@"setGroup:" withArguments:@[ [[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"users"] ]];
     
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"StaffView" action:[[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"name"] label:nil value:nil] build]];
+    
     id rootVC = [[[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0] nextResponder];
     [rootVC pushViewController:detailViewController animated:YES];
 }

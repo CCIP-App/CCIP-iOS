@@ -25,6 +25,10 @@
     [self.guideMessageLabel setText:NSLocalizedString(@"GuideViewMessage", nil)];
     [self.redeemButton setTitle:NSLocalizedString(@"GuideViewButton", nil)
                        forState:UIControlStateNormal];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"GuideViewController"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 }
 
 - (void)didReceiveMemoryWarning {

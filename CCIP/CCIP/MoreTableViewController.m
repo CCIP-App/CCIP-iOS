@@ -7,6 +7,7 @@
 //
 
 #import "MoreTableViewController.h"
+#import <Google/Analytics.h>
 
 @interface MoreTableViewController ()
 
@@ -24,6 +25,10 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"MoreTableViewController"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,17 +97,22 @@
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIViewController *detailViewController;
+    NSString *nibName;
     
     switch (indexPath.row) {
         case 0:
-            detailViewController = [[UIViewController alloc] initWithNibName:@"StaffGroupView" bundle:nil];
+            nibName = @"StaffGroupView";
             break;
         default:
             break;
     }
     
+    detailViewController = [[UIViewController alloc] initWithNibName:nibName bundle:nil];
     [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
     [self.navigationController pushViewController:detailViewController animated:YES];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"MoreTableView" action:nibName label:nil value:nil] build]];
 }
 
 /*
