@@ -20,6 +20,7 @@ PODS:
   - ICViewPager (1.5.1)
   - iRate (1.11.4)
   - OneSignal (1.13.3)
+  - RGCardViewLayout (1.0)
   - STPopup (1.7.0)
   - UICKeyChainStore (2.1.0)
 
@@ -29,6 +30,7 @@ DEPENDENCIES:
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
   - iRate (from `https://github.com/FrankWu100/iRate`)
   - OneSignal
+  - RGCardViewLayout
   - STPopup (~> 1.7)
   - UICKeyChainStore (~> 2.1)
 
@@ -58,9 +60,10 @@ SPEC CHECKSUMS:
   ICViewPager: 74e83c8bebd572b3baebac5959875d0fb5e70000
   iRate: 599ed07c854e0695f3c605d1b2a64c67d912acb7
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
+  RGCardViewLayout: d8f4ecd6703b3f012f876008cff19dae711a9b07
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: a2a3c78404c53883ed0539e77787a895a3339c83
+PODFILE CHECKSUM: 7f26836eaa07d45a09c0565aed906c4671286f76
 
 COCOAPODS: 1.0.1

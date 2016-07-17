@@ -27,7 +27,8 @@
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: titleHighlightedColor, NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
     
     // Checkin
-    UIViewController *vc1 = [[UIViewController alloc] initWithNibName:@"CheckinView" bundle:[NSBundle mainBundle]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    UIViewController *vc1 = (UIViewController *) [storyboard instantiateViewControllerWithIdentifier:@"CheckinViewController"];
     vc1.tabBarItem.title = NSLocalizedString(@"Checkin", nil);
     vc1.tabBarItem.image = [[UIImage imageNamed:@"icon_ios_pin"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     vc1.tabBarItem.selectedImage = [[UIImage imageNamed:@"icon_ios_pin_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
