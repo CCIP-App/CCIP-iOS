@@ -10,6 +10,7 @@
 #import "GatewayWebService/GatewayWebService.h"
 #import "NSInvocation+addition.h"
 #import "RoomLocationViewController.h"
+#import "MoreTableViewController.h"
 
 @interface MainTabBarViewController ()
 
@@ -51,7 +52,7 @@
     vc4.tabBarItem.selectedImage = [[UIImage imageNamed:@"icon_ios_chat_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     // More
-    UIViewController *vc5 = [[UIViewController alloc] initWithNibName:@"CheckinView" bundle:[NSBundle mainBundle]];
+    MoreTableViewController *vc5 = [[MoreTableViewController alloc] initWithNibName:@"MoreTableViewController" bundle:[NSBundle mainBundle]];
     vc5.tabBarItem.title = NSLocalizedString(@"More", nil);
     vc5.tabBarItem.image = [[UIImage imageNamed:@"icon_ios_more"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     vc5.tabBarItem.selectedImage = [[UIImage imageNamed:@"icon_ios_more_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

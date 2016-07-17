@@ -52,6 +52,10 @@
 		5FB4D4841D3A998C005BF382 /* coscup-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4D4811D3A998C005BF382 /* coscup-logo.png */; };
 		5FB4D4851D3A998C005BF382 /* coscup-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4D4821D3A998C005BF382 /* coscup-logo@2x.png */; };
 		5FB4D4861D3A998C005BF382 /* coscup-logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4D4831D3A998C005BF382 /* coscup-logo@3x.png */; };
+		5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */; };
+		5FB4D48B1D3ABF9C005BF382 /* MoreTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4D4891D3ABF9C005BF382 /* MoreTableViewController.xib */; };
+		5FB4D48F1D3B242C005BF382 /* MoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D48D1D3B242C005BF382 /* MoreCell.m */; };
+		5FB4D4901D3B242C005BF382 /* MoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4D48E1D3B242C005BF382 /* MoreCell.xib */; };
 		5FECE5AC1D352E8A00242DB4 /* StaffGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5AA1D352E8A00242DB4 /* StaffGroupView.m */; };
 		5FECE5AD1D352E8A00242DB4 /* StaffGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FECE5AB1D352E8A00242DB4 /* StaffGroupView.xib */; };
 		5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */; };
@@ -160,6 +164,12 @@
 		5FB4D4811D3A998C005BF382 /* coscup-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "coscup-logo.png"; path = "Images/coscup-logo.png"; sourceTree = "<group>"; };
 		5FB4D4821D3A998C005BF382 /* coscup-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "coscup-logo@2x.png"; path = "Images/coscup-logo@2x.png"; sourceTree = "<group>"; };
 		5FB4D4831D3A998C005BF382 /* coscup-logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "coscup-logo@3x.png"; path = "Images/coscup-logo@3x.png"; sourceTree = "<group>"; };
+		5FB4D4871D3ABF9C005BF382 /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewController.h; sourceTree = "<group>"; };
+		5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewController.m; sourceTree = "<group>"; };
+		5FB4D4891D3ABF9C005BF382 /* MoreTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreTableViewController.xib; sourceTree = "<group>"; };
+		5FB4D48C1D3B242C005BF382 /* MoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCell.h; sourceTree = "<group>"; };
+		5FB4D48D1D3B242C005BF382 /* MoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCell.m; sourceTree = "<group>"; };
+		5FB4D48E1D3B242C005BF382 /* MoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreCell.xib; sourceTree = "<group>"; };
 		5FECE5A91D352E8A00242DB4 /* StaffGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffGroupView.h; sourceTree = "<group>"; };
 		5FECE5AA1D352E8A00242DB4 /* StaffGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupView.m; sourceTree = "<group>"; };
 		5FECE5AB1D352E8A00242DB4 /* StaffGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffGroupView.xib; sourceTree = "<group>"; };
@@ -358,6 +368,12 @@
 				5F91712B1D32990C000D0F66 /* StaffCell.h */,
 				5F91712C1D32990C000D0F66 /* StaffCell.m */,
 				5F91712D1D32990C000D0F66 /* StaffCell.xib */,
+				5FB4D4871D3ABF9C005BF382 /* MoreTableViewController.h */,
+				5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */,
+				5FB4D4891D3ABF9C005BF382 /* MoreTableViewController.xib */,
+				5FB4D48C1D3B242C005BF382 /* MoreCell.h */,
+				5FB4D48D1D3B242C005BF382 /* MoreCell.m */,
+				5FB4D48E1D3B242C005BF382 /* MoreCell.xib */,
 				28AF9A7C1D28A40A006B378E /* RoomLocationViewController.h */,
 				28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */,
 				28AF9A8F1D28A6E9006B378E /* RoomProgramsTableViewController.h */,
@@ -497,6 +513,7 @@
 				5FB4D4781D3A8DF6005BF382 /* icon_ios_more.png in Resources */,
 				5F91712F1D32990C000D0F66 /* StaffCell.xib in Resources */,
 				5FB4D4771D3A8DF6005BF382 /* icon_ios_more_selected@3x.png in Resources */,
+				5FB4D4901D3B242C005BF382 /* MoreCell.xib in Resources */,
 				5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */,
 				5FB4D4661D3A8706005BF382 /* icon_ios_chat.png in Resources */,
 				6B2CD59A1D2886C900793194 /* Localizable.strings in Resources */,
@@ -506,6 +523,7 @@
 				5FB4D4581D3A865A005BF382 /* icon_ios_topcharts_selected@2x.png in Resources */,
 				5FB4D4591D3A865A005BF382 /* icon_ios_topcharts_selected@3x.png in Resources */,
 				5FB4D4761D3A8DF6005BF382 /* icon_ios_more_selected@2x.png in Resources */,
+				5FB4D48B1D3ABF9C005BF382 /* MoreTableViewController.xib in Resources */,
 				6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */,
 				5FB4D47B1D3A8DF6005BF382 /* icon_ios_bell.png in Resources */,
 				6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */,
@@ -569,6 +587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FB4D48F1D3B242C005BF382 /* MoreCell.m in Sources */,
 				5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */,
 				5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */,
 				6BA1A5281D1EFBF100D5924C /* InvalidNetworkMessageView.m in Sources */,
@@ -589,6 +608,7 @@
 				6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */,
 				6BA1A5251D1EFBE700D5924C /* CheckinView.m in Sources */,
 				5F9171291D325B5E000D0F66 /* StaffView.m in Sources */,
+				5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */,
 				6B2CD5791D286E6F00793194 /* UIColor+addition.m in Sources */,
 				6B2CD5611D281D9400793194 /* UIAlertController+additional.m in Sources */,
 			);
