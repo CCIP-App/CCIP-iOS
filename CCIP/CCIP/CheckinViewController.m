@@ -26,39 +26,45 @@
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 1;
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 3;
 }
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CheckinViewCell *cell = (CheckinViewCell  *)[collectionView dequeueReusableCellWithReuseIdentifier:@"reuse" forIndexPath:indexPath];
     [cell.checkinBtn setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
     
     switch (indexPath.section) {
         case 0:
-            cell.id = @"day1checkin";
-            cell.checkinTitle.text = NSLocalizedString(@"Checkin", nil);
-            cell.checkinText.text = NSLocalizedString(@"CheckinText", nil);
-            [cell.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButton", nil) forState:UIControlStateNormal];
+            [cell setId:@"day1checkin"];
+            [cell.checkinTitle setText:NSLocalizedString(@"Checkin", nil)];
+            [cell.checkinText setText:NSLocalizedString(@"CheckinText", nil)];
+            [cell.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButton", nil)
+                             forState:UIControlStateNormal];
+            
+            // TODO: pre-load current used status into UI
             break;
         case 1:
-            cell.id = @"kit";
-            cell.checkinTitle.text = NSLocalizedString(@"kit", nil);
-            cell.checkinText.text = NSLocalizedString(@"CheckinNotice", nil);;
-            [cell.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil) forState:UIControlStateNormal];
+            [cell setId:@"kit"];
+            [cell.checkinTitle setText:NSLocalizedString(@"kit", nil)];
+            [cell.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
+            [cell.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil)
+                             forState:UIControlStateNormal];
+            
+            // TODO: pre-load current used status into UI
             break;
         case 2:
-            cell.id = @"day1lunch";
-            cell.checkinTitle.text = NSLocalizedString(@"lunch", nil);
-            cell.checkinText.text = NSLocalizedString(@"CheckinNotice", nil);;
-            [cell.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil) forState:UIControlStateNormal];
+            [cell setId:@"day1lunch"];
+            [cell.checkinTitle setText:NSLocalizedString(@"lunch", nil)];
+            [cell.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
+            [cell.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil)
+                             forState:UIControlStateNormal];
+            
+            // TODO: pre-load current used status into UI
             break;
         default:
             break;
@@ -67,8 +73,7 @@
     return cell;
 }
 
-- (void)configureCell:(CheckinViewCell *)cell withIndexPath:(NSIndexPath *)indexPath
-{
+- (void)configureCell:(CheckinViewCell *)cell withIndexPath:(NSIndexPath *)indexPath {
     UIView  *subview = [cell.contentView viewWithTag:TAG];
     [subview removeFromSuperview];
     

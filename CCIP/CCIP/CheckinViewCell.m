@@ -7,12 +7,21 @@
 //
 
 #import "CheckinViewCell.h"
+#import "AppDelegate.h"
+#import "UIAlertController+additional.h"
+#import "GatewayWebService/GatewayWebService.h"
+
+@interface CheckinViewCell()
+
+@property (strong, nonatomic) AppDelegate *appDelegate;
+
+@end
 
 @implementation CheckinViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.checkinBtn.layer.cornerRadius = 10.0f;
     [self.checkinBtn addTarget:self action:@selector(checkinBtnTouched) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -20,29 +29,44 @@
 - (void)checkinBtnTouched {
     if ([self.id isEqualToString:@"day1checkin"] || [self.id isEqualToString:@"day2checkin"]) {
         // TODO: Send API request
-        
-        [self.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil) forState:UIControlStateNormal];
-        [self.checkinBtn setBackgroundColor:[UIColor colorWithRed:155/255.0 green:155/255.0 blue:155/255.0 alpha:1]];
-    } else {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"UseButton", nil) message:NSLocalizedString(@"ConfirmAlertText", nil) preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"CONFIRM" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            // TODO: Send API request
-            
-            [self.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil) forState:UIControlStateNormal];
-            [self.checkinBtn setBackgroundColor:[UIColor colorWithRed:155/255.0 green:155/255.0 blue:155/255.0 alpha:1]];
+        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE(self.appDelegate.accessToken, self.id)];
+        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
+            if (json != nil) {
+                NSLog(@"%@", json);
+                if ([[json objectForKey:@"message"] isEqual:@"invalid token"]) {
+                    NSLog(@"%@", [json objectForKey:@"message"]);
+                    [self.checkinBtn setBackgroundColor:[UIColor redColor]];
+                } else {
+                    [self.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil) forState:UIControlStateNormal];
+                    [self.checkinBtn setBackgroundColor:[UIColor colorWithRed:155/255.0 green:155/255.0 blue:155/255.0 alpha:1]];
+                }
+            }
         }];
-        
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-        
-        [alertController addAction:confirmAction];
-        [alertController addAction:cancelAction];
-        
-        UIViewController *topVC = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-        while (topVC.presentedViewController) {
-            topVC = topVC.presentedViewController;
-        }
-        [topVC presentViewController:alertController animated:YES completion:nil];
+    } else {
+        UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"UseButton", nil)
+                                                    withMessage:NSLocalizedString(@"ConfirmAlertText", nil)
+                                               cancelButtonText:@"Cancel"
+                                                    cancelStyle:UIAlertActionStyleCancel
+                                                   cancelAction:nil];
+        [ac addActionButton:@"CONFIRM"
+                      style:UIAlertActionStyleDestructive
+                    handler:^(UIAlertAction * _Nonnull action) {
+                        // TODO: Send API request
+                        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE(self.appDelegate.accessToken, self.id)];
+                        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
+                            if (json != nil) {
+                                NSLog(@"%@", json);
+                                if ([[json objectForKey:@"message"] isEqual:@"invalid token"]) {
+                                    NSLog(@"%@", [json objectForKey:@"message"]);
+                                    [self.checkinBtn setBackgroundColor:[UIColor redColor]];
+                                } else {
+                                    [self.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil) forState:UIControlStateNormal];
+                                    [self.checkinBtn setBackgroundColor:[UIColor colorWithRed:155/255.0 green:155/255.0 blue:155/255.0 alpha:1]];
+                                }
+                            }
+                        }];
+                    }];
+        [ac showAlert:nil];
     }
 }
 

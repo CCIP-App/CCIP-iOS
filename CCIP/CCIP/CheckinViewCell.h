@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CheckinViewCell : UICollectionViewCell
+
 @property (strong, nonatomic) NSString *id;
 @property (weak, nonatomic) IBOutlet UILabel *checkinDate;
 @property (weak, nonatomic) IBOutlet UILabel *checkinTitle;
