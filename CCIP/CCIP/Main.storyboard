@@ -126,7 +126,7 @@
         <!--Main Tab Bar View Controller-->
         <scene sceneID="djy-Ka-IMA">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="vFY-Ie-dA7" customClass="MainTabBarViewController" sceneMemberID="viewController">
+                <tabBarController id="vFY-Ie-dA7" customClass="MainTabBarViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="klf-rp-hYS"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="WUv-Be-dcN">

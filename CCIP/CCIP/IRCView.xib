@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gt5-fG-udK">
-                    <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                 </webView>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Z7O-7r-P14">
@@ -34,7 +34,7 @@
                 <constraint firstAttribute="bottom" secondItem="Gt5-fG-udK" secondAttribute="bottom" constant="49" id="8zb-7U-DQs"/>
                 <constraint firstItem="Gt5-fG-udK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Csx-eZ-7Yv"/>
                 <constraint firstItem="Z7O-7r-P14" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="dyf-TJ-T1P"/>
-                <constraint firstItem="Gt5-fG-udK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="rCX-TX-G3C"/>
+                <constraint firstItem="Gt5-fG-udK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rCX-TX-G3C"/>
             </constraints>
             <connections>
                 <outlet property="activityIndicator" destination="Z7O-7r-P14" id="Q05-Sr-pjX"/>
