@@ -24,6 +24,8 @@
 "CheckinText" = "As well as continuing our long-standing spirit of \"sharing\", we hope to extend and expand this mission further and to a wider audience; so it grows into a force that makes for a better future.";
 "UseButton" = "USE";
 "UseButtonPressed" = "USED";
+"ConfirmAlertText" = "Ready to use with staff's instruction?";
+"CONFIRM" = "CONFIRM";
 "day2checkin" = "Day 2 Checkin";
 "day2lunch" = "Day 2 Lunch";
 "Addition" = "Addition";
@@ -31,7 +33,7 @@
 "Staffs" = "Staffs";
 "GuideViewMessage" = "Please reference your attendee detail information, and your will found your access token.\n\nPlease copy and paste the token into next text field or click the token link in the reference mail.";
 "GuideViewButton" = "Redeem";
-"CheckinNotice" = "Notice! It will be considered USED after click \"Confirm use\" button.\nPlease double check it is instruct to click the \"Confirm use\" button by our staff, thanks for your cooperation.";
+"CheckinNotice" = "Notice! It will be considered USED after click \"Confirm\" button.\nPlease double check that our staff has instructed you to click the \"Confirm\" button. Thanks for your cooperation.";
 "CheckinButton" = "Confirm use";
 "StatusNotice" = "It has been redeemed!!\n\nPlease stay in this screen view for ours staff to validate your ticket, thank you!";
 "NotAvailableTitle" = "Cannot click at now";
