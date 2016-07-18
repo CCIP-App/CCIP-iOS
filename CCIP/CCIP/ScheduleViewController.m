@@ -16,6 +16,7 @@
 @property (strong, nonatomic) UIToolbar *toolbar;
 @property (strong, nonatomic) UISegmentedControl *segmented;
 @property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -59,6 +60,7 @@
     [_toolbar.layer setShadowOpacity:0.25f];
     [self.view addSubview:_toolbar];
     
+    // ... setting up the Toolbar's Items here ...
     UIBarButtonItem *segmentedControlButtonItem = [[UIBarButtonItem alloc] initWithCustomView:(UIView *)_segmented];
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                    target:nil
@@ -69,12 +71,19 @@
     // ... setting up the TableView here ...
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, toolbarHight, self.view.bounds.size.width, self.view.bounds.size.height-bottomGuide-toolbarHight)];
     [_tableView setShowsHorizontalScrollIndicator:YES];
-    
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [self.view addSubview:_tableView];
     
     [self.view bringSubviewToFront:_toolbar];
+    
+    // ... setting up the RefreshControl here ...
+    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    tableViewController.tableView = self.tableView;
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
+    tableViewController.refreshControl = self.refreshControl;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,6 +94,13 @@
     [_segmented resetAllSegments:segItemsArray];
     [_segmented setSelectedSegmentIndex:0];
 }
+
+- (void)refreshData {
+    [self.refreshControl beginRefreshing];
+    
+    [self.refreshControl endRefreshing];
+}
+
 
 -(void)segmentedControlValueDidChange:(UISegmentedControl *)segment
 {
