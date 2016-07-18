@@ -8,6 +8,7 @@
 
 #import "ScheduleViewController.h"
 #import "UISegmentedControl+addition.h"
+#import "GatewayWebService/GatewayWebService.h"
 
 #define toolbarHight 44.0
 
@@ -17,6 +18,12 @@
 @property (strong, nonatomic) UISegmentedControl *segmented;
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+
+@property (strong, nonatomic) NSArray *rooms;
+@property (strong, nonatomic) NSArray *programs;
+@property (strong, nonatomic) NSArray *program_types;
+
+@property NSUInteger refreshingCountDown;
 
 @end
 
@@ -66,7 +73,7 @@
                                                                                    target:nil
                                                                                    action:nil];
     NSArray *barArray = [NSArray arrayWithObjects: flexibleSpace, segmentedControlButtonItem, flexibleSpace, nil];
-    [self.toolbar setItems:barArray];
+    [_toolbar setItems:barArray];
     
     // ... setting up the TableView here ...
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, toolbarHight, self.view.bounds.size.width, self.view.bounds.size.height-bottomGuide-toolbarHight)];
@@ -97,10 +104,43 @@
 
 - (void)refreshData {
     [self.refreshControl beginRefreshing];
+    self.refreshingCountDown = 3;
     
-    [self.refreshControl endRefreshing];
+    GatewayWebService *roome_ws = [[GatewayWebService alloc] initWithURL:ROOM_DATA_URL];
+    [roome_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+        if (json != nil) {
+            NSLog(@"%@", json);
+            self.rooms = json;
+        }
+        [self endRefreshingWithCountDown];
+    }];
+    
+    GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
+    [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+        if (json != nil) {
+            NSLog(@"%@", json);
+            self.programs = json;
+        }
+        [self endRefreshingWithCountDown];
+    }];
+    
+    GatewayWebService *program_type_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_TYPE_DATA_URL];
+    [program_type_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+        if (json != nil) {
+            NSLog(@"%@", json);
+            self.program_types = json;
+        }
+        [self endRefreshingWithCountDown];
+    }];
+    
 }
 
+-(void)endRefreshingWithCountDown{
+    self.refreshingCountDown -= 1;
+    if (self.refreshingCountDown == 0) {
+        [self.refreshControl endRefreshing];
+    }
+}
 
 -(void)segmentedControlValueDidChange:(UISegmentedControl *)segment
 {
