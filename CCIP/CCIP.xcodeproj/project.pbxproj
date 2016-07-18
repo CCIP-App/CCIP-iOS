@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28A2992D1D3B90C000145E76 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A2992B1D3B90C000145E76 /* ScheduleViewController.m */; };
 		28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */; };
 		28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */; };
 		28C22A541D3178A9004A6575 /* ProgramDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C22A531D3178A9004A6575 /* ProgramDetailViewController.m */; };
@@ -115,6 +116,8 @@
 
 /* Begin PBXFileReference section */
 		1E39488D2E9378322A78E57B /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.release.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
+		28A2992A1D3B90C000145E76 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
+		28A2992B1D3B90C000145E76 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		28AF9A7C1D28A40A006B378E /* RoomLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomLocationViewController.h; sourceTree = "<group>"; };
 		28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomLocationViewController.m; sourceTree = "<group>"; };
 		28AF9A8F1D28A6E9006B378E /* RoomProgramsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomProgramsTableViewController.h; sourceTree = "<group>"; };
@@ -387,6 +390,8 @@
 				5FB4D48C1D3B242C005BF382 /* MoreCell.h */,
 				5FB4D48D1D3B242C005BF382 /* MoreCell.m */,
 				5FB4D48E1D3B242C005BF382 /* MoreCell.xib */,
+				28A2992A1D3B90C000145E76 /* ScheduleViewController.h */,
+				28A2992B1D3B90C000145E76 /* ScheduleViewController.m */,
 				28AF9A7C1D28A40A006B378E /* RoomLocationViewController.h */,
 				28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */,
 				28AF9A8F1D28A6E9006B378E /* RoomProgramsTableViewController.h */,
@@ -608,6 +613,7 @@
 				28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */,
 				28ED8C7A1D31DC1F00BC47E0 /* ShareProgramTableViewController.m in Sources */,
 				6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */,
+				28A2992D1D3B90C000145E76 /* ScheduleViewController.m in Sources */,
 				5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */,
 				28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */,
 				5FF2B11E1D28B19600665DD9 /* IRCView.m in Sources */,

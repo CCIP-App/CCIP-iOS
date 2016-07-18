@@ -9,7 +9,7 @@
 #import "MainTabBarViewController.h"
 #import "GatewayWebService/GatewayWebService.h"
 #import "NSInvocation+addition.h"
-#import "RoomLocationViewController.h"
+#import "ScheduleViewController.h"
 #import "MoreTableViewController.h"
 
 @interface MainTabBarViewController ()
@@ -34,7 +34,7 @@
     vc1.tabBarItem.selectedImage = [[UIImage imageNamed:@"icon_ios_pin_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     // Schedule
-    RoomLocationViewController *vc2 = [RoomLocationViewController new];
+    ScheduleViewController *vc2 = [ScheduleViewController new];
     vc2.tabBarItem.title = NSLocalizedString(@"Schedule", nil);
     vc2.tabBarItem.image = [[UIImage imageNamed:@"icon_ios_topcharts"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     vc2.tabBarItem.selectedImage = [[UIImage imageNamed:@"icon_ios_topcharts_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
