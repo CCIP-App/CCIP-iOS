@@ -34,8 +34,8 @@
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    CGFloat topGuide;
-    CGFloat bottomGuide;
+    CGFloat topGuide = 0.0;
+    CGFloat bottomGuide = 0.0;
     
     if (self.navigationController.navigationBar.translucent) {
         if (self.prefersStatusBarHidden == NO) topGuide += 20;
