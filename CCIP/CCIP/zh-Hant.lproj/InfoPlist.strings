@@ -7,5 +7,5 @@
 */
 /* Localized versions of Info.plist keys */
 
-CFBundleDisplayName = "COSCUP通關";
-CFBundleName = "COSCUP通關";
+CFBundleDisplayName = "COSCUP 通關";
+CFBundleName = "COSCUP 通關";
