@@ -7,6 +7,7 @@
 //
 
 #import "ScheduleViewController.h"
+#import "UISegmentedControl+addition.h"
 
 #define toolbarHight 44.0
 
@@ -22,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"viewDidLoad");
     // Do any additional setup after loading the view.
     
     //    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
@@ -42,16 +44,14 @@
     if (self.tabBarController.tabBar.hidden == NO) bottomGuide += self.tabBarController.tabBar.bounds.size.height;
     
     // ... setting up the SegmentedControl here ...
-    NSArray *segItemsArray = [NSArray arrayWithObjects: @"One", @"Two", @"Three", nil];
-    _segmented = [[UISegmentedControl alloc] initWithItems:segItemsArray];
+    _segmented = [UISegmentedControl new] ;
     [_segmented setFrame:CGRectMake(0, 0, 200, 30)];
-    [_segmented setSelectedSegmentIndex:1];
     [_segmented addTarget:self
                    action:@selector(segmentedControlValueDidChange:)
          forControlEvents:UIControlEventValueChanged];
     
     // ... setting up the Toolbar here ...
-    _toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, topGuide, self.view.bounds.size.width, toolbarHight)];
+    _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, topGuide, self.view.bounds.size.width, toolbarHight)];
     [_toolbar setTranslucent:YES];
     [_toolbar.layer setShadowOffset:CGSizeMake(0, 1.0f/UIScreen.mainScreen.scale)];
     [_toolbar.layer setShadowRadius:0];
@@ -79,14 +79,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    NSLog(@"viewWillAppear");
     
-//    NSArray *segItemsArray2 = [NSArray arrayWithObjects: @"1", @"2", @"3", nil];
-//    
-//    [_segmented removeAllSegments];
-//    
-//    for (NSString *segment in segItemsArray2) {
-//        [_segmented insertSegmentWithTitle:segment atIndex:_segmented.numberOfSegments animated:NO];
-//    }
+    NSArray *segItemsArray = [NSArray arrayWithObjects: @"One", @"Two", @"Three", nil];
+    [_segmented resetAllSegments:segItemsArray];
+    [_segmented setSelectedSegmentIndex:0];
 }
 
 -(void)segmentedControlValueDidChange:(UISegmentedControl *)segment

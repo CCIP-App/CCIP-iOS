@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		28A2992D1D3B90C000145E76 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A2992B1D3B90C000145E76 /* ScheduleViewController.m */; };
+		28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */; };
 		28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */; };
 		28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */; };
 		28C22A541D3178A9004A6575 /* ProgramDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C22A531D3178A9004A6575 /* ProgramDetailViewController.m */; };
@@ -118,6 +119,8 @@
 		1E39488D2E9378322A78E57B /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.release.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
 		28A2992A1D3B90C000145E76 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
 		28A2992B1D3B90C000145E76 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
+		28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+addition.h"; sourceTree = "<group>"; };
+		28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+addition.m"; sourceTree = "<group>"; };
 		28AF9A7C1D28A40A006B378E /* RoomLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomLocationViewController.h; sourceTree = "<group>"; };
 		28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomLocationViewController.m; sourceTree = "<group>"; };
 		28AF9A8F1D28A6E9006B378E /* RoomProgramsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomProgramsTableViewController.h; sourceTree = "<group>"; };
@@ -346,6 +349,8 @@
 				6B2CD5781D286E6F00793194 /* UIColor+addition.m */,
 				6B2CD5601D281D9400793194 /* UIAlertController+additional.h */,
 				6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */,
+				28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */,
+				28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */,
 				6B8F62241D314CA600B684BD /* NavigationController.h */,
 				6B8F62251D314CA600B684BD /* NavigationController.m */,
 				5FB4D43C1D3A668B005BF382 /* MainTabBarViewController.h */,
@@ -630,6 +635,7 @@
 				6BA1A5251D1EFBE700D5924C /* CheckinView.m in Sources */,
 				5F9171291D325B5E000D0F66 /* StaffView.m in Sources */,
 				5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */,
+				28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */,
 				6B2CD5791D286E6F00793194 /* UIColor+addition.m in Sources */,
 				5FB4D4971D3B58C0005BF382 /* CheckinViewCell.m in Sources */,
 				6B2CD5611D281D9400793194 /* UIAlertController+additional.m in Sources */,
