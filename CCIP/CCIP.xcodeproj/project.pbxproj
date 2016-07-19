@@ -21,6 +21,7 @@
 		28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */; };
 		28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */; };
 		28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */; };
+		28B34BBF1D3EB22E002B959D /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B34BBE1D3EB22E002B959D /* CAPSPageMenu.m */; };
 		28C22A541D3178A9004A6575 /* ProgramDetailPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C22A531D3178A9004A6575 /* ProgramDetailPopViewController.m */; };
 		28ED8C7A1D31DC1F00BC47E0 /* ShareProgramTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED8C791D31DC1F00BC47E0 /* ShareProgramTableViewController.m */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
@@ -149,6 +150,8 @@
 		28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomLocationViewController.m; sourceTree = "<group>"; };
 		28AF9A8F1D28A6E9006B378E /* RoomProgramsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomProgramsTableViewController.h; sourceTree = "<group>"; };
 		28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomProgramsTableViewController.m; sourceTree = "<group>"; };
+		28B34BBD1D3EB22E002B959D /* CAPSPageMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPSPageMenu.h; sourceTree = "<group>"; };
+		28B34BBE1D3EB22E002B959D /* CAPSPageMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPSPageMenu.m; sourceTree = "<group>"; };
 		28C22A521D3178A9004A6575 /* ProgramDetailPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramDetailPopViewController.h; sourceTree = "<group>"; };
 		28C22A531D3178A9004A6575 /* ProgramDetailPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramDetailPopViewController.m; sourceTree = "<group>"; };
 		28ED8C781D31DC1F00BC47E0 /* ShareProgramTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareProgramTableViewController.h; sourceTree = "<group>"; };
@@ -424,6 +427,8 @@
 				5FB4D48E1D3B242C005BF382 /* MoreCell.xib */,
 				28A2992A1D3B90C000145E76 /* ScheduleViewController.h */,
 				28A2992B1D3B90C000145E76 /* ScheduleViewController.m */,
+				28B34BBD1D3EB22E002B959D /* CAPSPageMenu.h */,
+				28B34BBE1D3EB22E002B959D /* CAPSPageMenu.m */,
 				2821DA9A1D3DCA5500AFE139 /* ProgramDetailViewController.h */,
 				2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */,
 				2821DA9C1D3DCA5500AFE139 /* ProgramDetailViewController.xib */,
@@ -672,6 +677,7 @@
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
 				6BD8EF2C1D1D73510094BE95 /* main.m in Sources */,
 				28C22A541D3178A9004A6575 /* ProgramDetailPopViewController.m in Sources */,
+				28B34BBF1D3EB22E002B959D /* CAPSPageMenu.m in Sources */,
 				5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */,
 				5FECE5AC1D352E8A00242DB4 /* StaffGroupView.m in Sources */,
 				6B7142B01D1DB9820024EA45 /* MasterViewController.m in Sources */,
