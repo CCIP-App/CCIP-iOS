@@ -9,7 +9,7 @@
 #import "RoomProgramsTableViewController.h"
 #import "GatewayWebService/GatewayWebService.h"
 #import "NSInvocation+addition.h"
-#import "ProgramDetailViewController.h"
+#import "ProgramDetailPopViewController.h"
 #import <STPopup/STPopup.h>
 
 @interface RoomProgramsTableViewController ()
@@ -165,7 +165,7 @@
     NSArray *allKeys = [[self.sections allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     NSDictionary *program = [[self.sections objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
-    ProgramDetailViewController *detailViewController = [ProgramDetailViewController new];
+    ProgramDetailPopViewController *detailViewController = [ProgramDetailPopViewController new];
     detailViewController.title = [program objectForKey:@"subject"];
     [NSInvocation InvokeObject:detailViewController
             withSelectorString:@"setProgram:"

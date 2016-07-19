@@ -1,5 +1,5 @@
 //
-//  ProgramDetailViewController.h
+//  ProgramDetailPopViewController.h
 //  CCIP
 //
 //  Created by FrankWu on 2016/7/10.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProgramDetailViewController : UIViewController
+@interface ProgramDetailPopViewController : UIViewController
 
 @property (strong, nonatomic) NSDictionary *program;
 

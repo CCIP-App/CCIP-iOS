@@ -1,25 +1,25 @@
 //
-//  ProgramDetailViewController.m
+//  ProgramDetailPopViewController.m
 //  CCIP
 //
 //  Created by FrankWu on 2016/7/10.
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
-#import "ProgramDetailViewController.h"
+#import "ProgramDetailPopViewController.h"
 #import <STPopup/STPopup.h>
 #import "ShareProgramTableViewController.h"
 #import "NSInvocation+addition.h"
 
 
-@interface ProgramDetailViewController ()
+@interface ProgramDetailPopViewController ()
 
 
 @property BOOL enableBackgroundViewTap;
 
 @end
 
-@implementation ProgramDetailViewController
+@implementation ProgramDetailPopViewController
 
 - (instancetype)init
 {
