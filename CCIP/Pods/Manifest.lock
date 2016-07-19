@@ -42,7 +42,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ICViewPager:
-    :commit: 795528b65cdaec0720195828e428db29302933a3
+    :commit: 8c6f30faa4e76ed172bf2e053124ec100e33a521
     :git: https://github.com/FrankWu100/ICViewPager
   iRate:
     :commit: 27bbdd43ab42f621f23d8d792544bec22af86984
@@ -57,7 +57,7 @@ SPEC CHECKSUMS:
   GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
-  ICViewPager: 4706d577fe5feb272545a4bdf73959502709fcb6
+  ICViewPager: c1278b67eceac7252d48252829c3c703285dfb76
   iRate: 599ed07c854e0695f3c605d1b2a64c67d912acb7
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
   RGCardViewLayout: d8f4ecd6703b3f012f876008cff19dae711a9b07

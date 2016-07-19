@@ -17,7 +17,7 @@
   },
   "source": {
     "git": "https://github.com/monsieurje/ICViewPager.git",
-    "tag": "1.5.2"
+    "tag": "1.5.3"
   },
   "source_files": "ICViewPager/ICViewPager/*.{h,m}",
   "requires_arc": true
