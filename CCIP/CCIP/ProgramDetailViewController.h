@@ -15,6 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *subject;
 @property (weak, nonatomic) IBOutlet UIView *pagerview;
 
-@property (strong, nonatomic) NSDictionary *program;
+-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil Program:(NSDictionary *)program;
 
 @end

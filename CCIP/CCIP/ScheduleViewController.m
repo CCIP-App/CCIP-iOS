@@ -72,6 +72,7 @@
     [_toolbar.layer setShadowRadius:0];
     [_toolbar.layer setShadowColor:[UIColor blackColor].CGColor];
     [_toolbar.layer setShadowOpacity:0.25f];
+    [_toolbar setBarTintColor:[[UIToolbar new] barTintColor]];
     [self.view addSubview:_toolbar];
     
     // ... setting up the Toolbar's Items here ...
@@ -323,10 +324,15 @@
     NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     NSDictionary *program = [[self.program_date_section objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
 
-    ProgramDetailViewController *detailViewController = [[ProgramDetailViewController alloc] initWithNibName:@"ProgramDetailViewController" bundle:[NSBundle mainBundle]];
     
-    [NSInvocation InvokeObject:detailViewController withSelectorString:@"setProgram:" withArguments:@[ program ]];
-
+    
+//    ProgramDetailViewController *detailViewController = [[ProgramDetailViewController alloc] initWithNibName:@"ProgramDetailViewController"
+//                                                                                                      bundle:[NSBundle mainBundle]];
+//    [NSInvocation InvokeObject:detailViewController withSelectorString:@"setProgram:" withArguments:@[ program ]];
+    
+    ProgramDetailViewController *detailViewController = [[ProgramDetailViewController alloc] initWithNibName:@"ProgramDetailViewController"
+                                                                                                      bundle:[NSBundle mainBundle]
+                                                                                                     Program:program];
     [self.navigationController pushViewController:detailViewController animated:YES];
 
 }

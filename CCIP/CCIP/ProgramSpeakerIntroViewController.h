@@ -10,4 +10,10 @@
 
 @interface ProgramSpeakerIntroViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextView *SpeakerIntroInfo;
+
+@property (strong, nonatomic) NSDictionary *program;
+
+-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil Program:(NSDictionary *)program;
+
 @end

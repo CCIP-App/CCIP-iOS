@@ -7,12 +7,38 @@
 //
 
 #import "ProgramDetailViewPagerController.h"
+#import "ProgramAbstractViewController.h"
+#import "ProgramSpeakerIntroViewController.h"
+#import "NSInvocation+addition.h"
 
 @interface ProgramDetailViewPagerController () <ViewPagerDataSource, ViewPagerDelegate>
+
+@property (strong, nonatomic) ProgramAbstractViewController *abstractView;
+@property (strong, nonatomic) ProgramSpeakerIntroViewController *speakerIntroView;
 
 @end
 
 @implementation ProgramDetailViewPagerController
+
+-(instancetype)init {
+    self = [super init];
+    if (self) {
+        self.abstractView = [[ProgramAbstractViewController alloc] initWithNibName:@"ProgramAbstractViewController"
+                                                                            bundle:[NSBundle mainBundle]];
+        self.speakerIntroView = [[ProgramSpeakerIntroViewController alloc] initWithNibName:@"ProgramSpeakerIntroViewController"
+                                                                                    bundle:[NSBundle mainBundle]];
+    }
+    return self;
+}
+
+-(instancetype)initWithProgram:(NSDictionary *)program {
+    self = [self init];
+    if (self) {
+        // Custom initialization
+        [self setProgram:program];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,8 +56,10 @@
 
 - (void)setProgram:(NSMutableDictionary *)program {
     _program = program;
+    
+    [self.abstractView setProgram:_program];
+    [self.speakerIntroView setProgram:_program];
 }
-
 
 /*
 #pragma mark - Navigation
@@ -75,14 +103,14 @@
 
 #pragma mark - ViewPagerDataSource
 - (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index {
-    
-    UIViewController *vc = [UIViewController new];
-    if (index == 0) {
-        [vc.view setBackgroundColor:[UIColor redColor]];
-    } else {
-        [vc.view setBackgroundColor:[UIColor blueColor]];
+    switch (index) {
+        case 0:
+            return self.abstractView;
+        case 1:
+            return self.speakerIntroView;
+        default:
+            return [UIViewController new];
     }
-    return vc;
 }
 
 #pragma mark - ViewPagerDelegate
