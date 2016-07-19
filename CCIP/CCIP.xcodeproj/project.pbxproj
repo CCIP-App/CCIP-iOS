@@ -13,6 +13,10 @@
 		2821DAA31D3DCB2300AFE139 /* ScheduleDetailViewTopBG.png@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DAA01D3DCB2300AFE139 /* ScheduleDetailViewTopBG.png@3x.png */; };
 		2821DAA41D3DCB2300AFE139 /* ScheduleDetailViewTopBG.png@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DAA11D3DCB2300AFE139 /* ScheduleDetailViewTopBG.png@2x.png */; };
 		2821DAA71D3DD36500AFE139 /* ScheduleDetailViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821DAA61D3DD36500AFE139 /* ScheduleDetailViewPagerController.m */; };
+		2823E8E21D3E55F10039D72E /* ProgramAbstractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2823E8E01D3E55F10039D72E /* ProgramAbstractViewController.m */; };
+		2823E8E31D3E55F10039D72E /* ProgramAbstractViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2823E8E11D3E55F10039D72E /* ProgramAbstractViewController.xib */; };
+		2823E8E71D3E560C0039D72E /* ProgramSpeakerIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2823E8E51D3E560C0039D72E /* ProgramSpeakerIntroViewController.m */; };
+		2823E8E81D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2823E8E61D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib */; };
 		28A2992D1D3B90C000145E76 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A2992B1D3B90C000145E76 /* ScheduleViewController.m */; };
 		28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */; };
 		28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */; };
@@ -131,6 +135,12 @@
 		2821DAA11D3DCB2300AFE139 /* ScheduleDetailViewTopBG.png@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScheduleDetailViewTopBG.png@2x.png"; sourceTree = "<group>"; };
 		2821DAA51D3DD36500AFE139 /* ScheduleDetailViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleDetailViewPagerController.h; sourceTree = "<group>"; };
 		2821DAA61D3DD36500AFE139 /* ScheduleDetailViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleDetailViewPagerController.m; sourceTree = "<group>"; };
+		2823E8DF1D3E55F10039D72E /* ProgramAbstractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramAbstractViewController.h; sourceTree = "<group>"; };
+		2823E8E01D3E55F10039D72E /* ProgramAbstractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramAbstractViewController.m; sourceTree = "<group>"; };
+		2823E8E11D3E55F10039D72E /* ProgramAbstractViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgramAbstractViewController.xib; sourceTree = "<group>"; };
+		2823E8E41D3E560C0039D72E /* ProgramSpeakerIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramSpeakerIntroViewController.h; sourceTree = "<group>"; };
+		2823E8E51D3E560C0039D72E /* ProgramSpeakerIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramSpeakerIntroViewController.m; sourceTree = "<group>"; };
+		2823E8E61D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgramSpeakerIntroViewController.xib; sourceTree = "<group>"; };
 		28A2992A1D3B90C000145E76 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
 		28A2992B1D3B90C000145E76 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+addition.h"; sourceTree = "<group>"; };
@@ -419,6 +429,12 @@
 				2821DA9C1D3DCA5500AFE139 /* ScheduleDetailViewController.xib */,
 				2821DAA51D3DD36500AFE139 /* ScheduleDetailViewPagerController.h */,
 				2821DAA61D3DD36500AFE139 /* ScheduleDetailViewPagerController.m */,
+				2823E8DF1D3E55F10039D72E /* ProgramAbstractViewController.h */,
+				2823E8E01D3E55F10039D72E /* ProgramAbstractViewController.m */,
+				2823E8E11D3E55F10039D72E /* ProgramAbstractViewController.xib */,
+				2823E8E41D3E560C0039D72E /* ProgramSpeakerIntroViewController.h */,
+				2823E8E51D3E560C0039D72E /* ProgramSpeakerIntroViewController.m */,
+				2823E8E61D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib */,
 				28AF9A7C1D28A40A006B378E /* RoomLocationViewController.h */,
 				28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */,
 				28AF9A8F1D28A6E9006B378E /* RoomProgramsTableViewController.h */,
@@ -529,6 +545,7 @@
 				5FB4D4571D3A865A005BF382 /* icon_ios_topcharts_selected.png in Resources */,
 				5FECE5AD1D352E8A00242DB4 /* StaffGroupView.xib in Resources */,
 				6B53C6461D1ED5BE00EA8012 /* CheckinView.xib in Resources */,
+				2823E8E31D3E55F10039D72E /* ProgramAbstractViewController.xib in Resources */,
 				5FB4D4751D3A8DF6005BF382 /* icon_ios_more_selected.png in Resources */,
 				5FB4D4671D3A8706005BF382 /* icon_ios_chat@2x.png in Resources */,
 				5FB4D47E1D3A8DF6005BF382 /* icon_ios_bell_selected.png in Resources */,
@@ -548,6 +565,7 @@
 				2821DAA21D3DCB2300AFE139 /* ScheduleDetailViewTopBG.png in Resources */,
 				5FB4D4461D3A8319005BF382 /* icon_ios_pin.png in Resources */,
 				5FB4D4471D3A8319005BF382 /* icon_ios_pin@2x.png in Resources */,
+				2823E8E81D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib in Resources */,
 				6B53C65B1D1ED5CC00EA8012 /* StatusView.xib in Resources */,
 				5FB4D45B1D3A865A005BF382 /* icon_ios_topcharts@2x.png in Resources */,
 				5FB4D4501D3A8547005BF382 /* icon_ios_pin_selected@3x.png in Resources */,
@@ -649,6 +667,8 @@
 				28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */,
 				5FF2B11E1D28B19600665DD9 /* IRCView.m in Sources */,
 				6B7142B61D1DBAFB0024EA45 /* scenarioCell.m in Sources */,
+				2823E8E71D3E560C0039D72E /* ProgramSpeakerIntroViewController.m in Sources */,
+				2823E8E21D3E55F10039D72E /* ProgramAbstractViewController.m in Sources */,
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
 				6BD8EF2C1D1D73510094BE95 /* main.m in Sources */,
 				28C22A541D3178A9004A6575 /* ProgramDetailPopViewController.m in Sources */,
