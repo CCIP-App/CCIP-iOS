@@ -10,6 +10,7 @@
                 <outlet property="pagerview" destination="3IZ-h3-4NN" id="UHt-C8-eqn"/>
                 <outlet property="speakername" destination="XvY-lv-3dk" id="zL6-M1-pKH"/>
                 <outlet property="subject" destination="U9T-9o-BPS" id="LDN-ng-v7l"/>
+                <outlet property="topBG" destination="2zz-1u-asa" id="EFu-o0-Dxx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,8 +25,8 @@
                         <constraint firstAttribute="height" constant="156" id="J6p-27-0ta"/>
                     </constraints>
                 </imageView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3IZ-h3-4NN">
-                    <rect key="frame" x="0.0" y="269" width="375" height="398"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3IZ-h3-4NN">
+                    <rect key="frame" x="0.0" y="176" width="375" height="491"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9T-9o-BPS">
                     <rect key="frame" x="30" y="126" width="315" height="33"/>
@@ -58,7 +59,7 @@
                 <constraint firstItem="U9T-9o-BPS" firstAttribute="top" secondItem="2zz-1u-asa" secondAttribute="top" constant="62" id="ilF-tM-giS"/>
                 <constraint firstAttribute="bottom" secondItem="3IZ-h3-4NN" secondAttribute="bottom" id="jPe-L6-NTb"/>
                 <constraint firstItem="3IZ-h3-4NN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lSX-Iq-Age"/>
-                <constraint firstItem="3IZ-h3-4NN" firstAttribute="top" secondItem="2zz-1u-asa" secondAttribute="bottom" constant="49" id="nEQ-Or-fYz"/>
+                <constraint firstItem="3IZ-h3-4NN" firstAttribute="top" secondItem="2zz-1u-asa" secondAttribute="bottom" constant="-44" id="nEQ-Or-fYz"/>
                 <constraint firstItem="2zz-1u-asa" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="nSV-93-oAz"/>
                 <constraint firstItem="U9T-9o-BPS" firstAttribute="trailing" secondItem="2zz-1u-asa" secondAttribute="trailing" constant="-30" id="tuo-2c-8qF"/>
             </constraints>

@@ -10,6 +10,7 @@
 
 @interface ScheduleDetailViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *topBG;
 @property (weak, nonatomic) IBOutlet UILabel *speakername;
 @property (weak, nonatomic) IBOutlet UILabel *subject;
 @property (weak, nonatomic) IBOutlet UIView *pagerview;

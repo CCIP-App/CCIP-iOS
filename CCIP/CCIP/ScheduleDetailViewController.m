@@ -29,7 +29,7 @@
     ScheduleDetailViewPagerController *scheduleDetailViewPager = [ScheduleDetailViewPagerController new];
     
     [self addChildViewController:scheduleDetailViewPager];
-    scheduleDetailViewPager.view.frame = CGRectMake(0, 156-44, self.view.bounds.size.width, self.view.bounds.size.height-(156-44));
+    scheduleDetailViewPager.view.frame = CGRectMake(0, self.topBG.frame.size.height-44, self.view.bounds.size.width, self.view.bounds.size.height-(self.topBG.frame.size.height-44));
     [self.view addSubview:scheduleDetailViewPager.view];
     [scheduleDetailViewPager didMoveToParentViewController:self];
 }
