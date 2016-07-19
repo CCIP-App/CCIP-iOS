@@ -9,6 +9,8 @@
 #import "ScheduleViewController.h"
 #import "UISegmentedControl+addition.h"
 #import "GatewayWebService/GatewayWebService.h"
+#import "ScheduleDetailViewController.h"
+#import "NSInvocation+addition.h"
 
 #define toolbarHight 44.0
 
@@ -317,6 +319,15 @@
     [[self.tableView cellForRowAtIndexPath:indexPath] setSelected:NO
                                                     animated:YES];
     // TODO: display selected section detail informations
+    
+    NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    NSDictionary *program = [[self.program_date_section objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+
+    ScheduleDetailViewController *detailViewController = [[ScheduleDetailViewController alloc] initWithNibName:@"ScheduleDetailViewController" bundle:[NSBundle mainBundle]];
+    
+    [NSInvocation InvokeObject:detailViewController withSelectorString:@"setProgram:" withArguments:@[ program ]];
+
+    [self.navigationController pushViewController:detailViewController animated:YES];
 
 }
 
