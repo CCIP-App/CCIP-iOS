@@ -15,13 +15,15 @@
 @interface ScheduleViewController ()
 
 @property (strong, nonatomic) UIToolbar *toolbar;
-@property (strong, nonatomic) UISegmentedControl *segmented;
+@property (strong, nonatomic) UISegmentedControl *segmentedControl;
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @property (strong, nonatomic) NSArray *rooms;
 @property (strong, nonatomic) NSArray *programs;
 @property (strong, nonatomic) NSArray *program_types;
+
+@property (strong, nonatomic) NSArray *segments;
 
 @property NSUInteger refreshingCountDown;
 
@@ -31,7 +33,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"viewDidLoad");
     // Do any additional setup after loading the view.
     
     //    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
@@ -52,11 +53,12 @@
     if (self.tabBarController.tabBar.hidden == NO) bottomGuide += self.tabBarController.tabBar.bounds.size.height;
     
     // ... setting up the SegmentedControl here ...
-    _segmented = [UISegmentedControl new] ;
-    [_segmented setFrame:CGRectMake(0, 0, 200, 30)];
-    [_segmented addTarget:self
-                   action:@selector(segmentedControlValueDidChange:)
-         forControlEvents:UIControlEventValueChanged];
+    _segmentedControl = [UISegmentedControl new] ;
+    [_segmentedControl setFrame:CGRectMake(0, 0, 200, 30)];
+    [_segmentedControl addTarget:self
+                          action:@selector(segmentedControlValueDidChange:)
+                forControlEvents:UIControlEventValueChanged];
+    [_segmentedControl setTintColor:[UIColor colorWithRed:61.0f/255.0f green:152.0f/255.0f blue:60.0f/255.0f alpha:1.0f]];
     
     // ... setting up the Toolbar here ...
     _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, topGuide, self.view.bounds.size.width, toolbarHight)];
@@ -68,7 +70,7 @@
     [self.view addSubview:_toolbar];
     
     // ... setting up the Toolbar's Items here ...
-    UIBarButtonItem *segmentedControlButtonItem = [[UIBarButtonItem alloc] initWithCustomView:(UIView *)_segmented];
+    UIBarButtonItem *segmentedControlButtonItem = [[UIBarButtonItem alloc] initWithCustomView:(UIView *)_segmentedControl];
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                    target:nil
                                                                                    action:nil];
@@ -91,15 +93,11 @@
     [self.refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
     tableViewController.refreshControl = self.refreshControl;
     
+    [self refreshData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSLog(@"viewWillAppear");
-    
-    NSArray *segItemsArray = [NSArray arrayWithObjects: @"One", @"Two", @"Three", nil];
-    [_segmented resetAllSegments:segItemsArray];
-    [_segmented setSelectedSegmentIndex:0];
 }
 
 - (void)refreshData {
@@ -120,6 +118,8 @@
         if (json != nil) {
             NSLog(@"%@", json);
             self.programs = json;
+            
+            [self setProgramsDates];
         }
         [self endRefreshingWithCountDown];
     }];
@@ -139,8 +139,61 @@
     self.refreshingCountDown -= 1;
     if (self.refreshingCountDown == 0) {
         [self.refreshControl endRefreshing];
+        [self.tableView reloadData];
     }
 }
+
+-(void)setProgramsDates{
+
+    NSDateFormatter *formatter_full = [[NSDateFormatter alloc] init];
+    [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    
+    NSDateFormatter *formatter_s = [[NSDateFormatter alloc] init];
+    
+    NSDate *time_full = [NSDate new];
+    
+    NSMutableDictionary *dates = [NSMutableDictionary new];
+    
+    [formatter_s setDateFormat:@"MM/dd"];
+    
+    for (NSDictionary *program in self.programs) {
+        time_full = [formatter_full dateFromString:[program objectForKey:@"starttime"]];
+        NSString *time_s = [formatter_s stringFromDate:time_full];
+        
+        NSMutableArray *rows = [dates objectForKey:time_s];
+        if (rows == nil) {
+            rows = [NSMutableArray new];
+        }
+        [rows addObject:program];
+        [dates setObject:rows forKey:time_s];
+    }
+    
+    NSMutableArray *tempSegments = [NSMutableArray new];
+    for (NSString *date in [dates allKeys]) {
+        [tempSegments addObject:date];
+    }
+    
+    self.segments = tempSegments;
+    [self.segmentedControl resetAllSegments:self.segments];
+    
+    [self checkScheduleDate];
+}
+
+-(void)checkScheduleDate {
+    NSDateFormatter *formatter_s = [[NSDateFormatter alloc] init];
+    [formatter_s setDateFormat:@"MM/dd"];
+    
+    NSInteger segmentsIndex = 0;
+    for (int index = 0; index < [self.segments count]; ++index) {
+        if ([[formatter_s stringFromDate:[NSDate new]] isEqualToString:[self.segments objectAtIndex:index]]) {
+            segmentsIndex = index;
+        }
+    }
+    
+    [self.segmentedControl setSelectedSegmentIndex:segmentsIndex];
+}
+
 
 -(void)segmentedControlValueDidChange:(UISegmentedControl *)segment
 {
@@ -176,15 +229,33 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [NSString stringWithFormat:@"Section #%ld", self.segmented.selectedSegmentIndex];
+    return [NSString stringWithFormat:@"Section #%ld", self.segmentedControl.selectedSegmentIndex];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    NSString *titleString = [self tableView:tableView titleForHeaderInSection:section];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tableview_section_bg"]];
+    
+    UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, 28.0f)];
+    [sectionView setBackgroundColor:[UIColor colorWithRed:61.0f/255.0f green:152.0f/255.0f blue:60.0f/255.0f alpha:1.0f]];
+
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectInset(sectionView.frame, 20.0f, 4.0f)];
+    titleLabel.font = [UIFont systemFontOfSize:18.0f weight:UIFontWeightMedium];
+    titleLabel.textAlignment = NSTextAlignmentLeft;
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.text = titleString;
+    [sectionView addSubview:titleLabel];
+    
+    return sectionView;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -193,7 +264,7 @@
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NULL];
     [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
     
-    [cell.textLabel setText:[NSString stringWithFormat:@"Cell #%ld-%ld", self.segmented.selectedSegmentIndex, (long)indexPath.row]];
+    [cell.textLabel setText:[NSString stringWithFormat:@"Cell #%ld-%ld", self.segmentedControl.selectedSegmentIndex, (long)indexPath.row]];
     
     return cell;
 }
