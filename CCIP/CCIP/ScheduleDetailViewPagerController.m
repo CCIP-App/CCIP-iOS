@@ -95,6 +95,14 @@
             //    return 49.0;
             //case ViewPagerOptionTabOffset:
             //    return 36.0;
+        case ViewPagerOptionTabDisableTopLine:
+            return 1.0;
+        case ViewPagerOptionTabDisableBottomLine:
+            return 1.0;
+        case ViewPagerOptionTabNarmalLineWidth:
+            return 5.0;
+        case ViewPagerOptionTabSelectedLineWidth:
+            return 5.0;
         case ViewPagerOptionTabWidth:
             return UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? 240.0f : ([[UIScreen mainScreen] bounds].size.width/2);
         case ViewPagerOptionFixFormerTabsPositions:
