@@ -119,7 +119,7 @@
             NSLog(@"%@", json);
             self.programs = json;
             
-            [self setProgramsDates];
+            [self setScheduleDate];
         }
         [self endRefreshingWithCountDown];
     }];
@@ -143,38 +143,29 @@
     }
 }
 
--(void)setProgramsDates{
-
+-(void)setScheduleDate{
     NSDateFormatter *formatter_full = [[NSDateFormatter alloc] init];
     [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     
     NSDateFormatter *formatter_s = [[NSDateFormatter alloc] init];
-    
-    NSDate *time_full = [NSDate new];
-    
-    NSMutableDictionary *dates = [NSMutableDictionary new];
-    
     [formatter_s setDateFormat:@"MM/dd"];
     
+    NSDate *startTime;
+    NSString *time_s;
+    
+    NSMutableArray *dateArray = [NSMutableArray new];
+    
     for (NSDictionary *program in self.programs) {
-        time_full = [formatter_full dateFromString:[program objectForKey:@"starttime"]];
-        NSString *time_s = [formatter_s stringFromDate:time_full];
+        startTime = [formatter_full dateFromString:[program objectForKey:@"starttime"]];
+        time_s = [formatter_s stringFromDate:startTime];
         
-        NSMutableArray *rows = [dates objectForKey:time_s];
-        if (rows == nil) {
-            rows = [NSMutableArray new];
+        if (![dateArray containsObject:time_s]) {
+            [dateArray addObject:time_s];
         }
-        [rows addObject:program];
-        [dates setObject:rows forKey:time_s];
     }
     
-    NSMutableArray *tempSegments = [NSMutableArray new];
-    for (NSString *date in [dates allKeys]) {
-        [tempSegments addObject:date];
-    }
-    
-    self.segments = tempSegments;
+    self.segments = [dateArray sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     [self.segmentedControl resetAllSegments:self.segments];
     
     [self checkScheduleDate];
