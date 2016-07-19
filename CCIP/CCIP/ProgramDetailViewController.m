@@ -50,10 +50,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     [self.speakername setText:[self.program objectForKey:@"speakername"]];
     [self.subject setText:[self.program objectForKey:@"subject"]];
-    
     
     NSDictionary *parameters = @{
                                  CAPSPageMenuOptionSelectionIndicatorHeight: @(5.0),
@@ -63,15 +66,15 @@
                                  //CAPSPageMenuOptionBottomMenuHairlineColor:
                                  CAPSPageMenuOptionSelectionIndicatorColor: [UIColor colorWithRed:184.0f/255.0f green:233.0f/255.0f blue:134.0f/255.0f alpha:1.0f],
                                  //CAPSPageMenuOptionMenuItemSeparatorColor:
-                                 //CAPSPageMenuOptionMenuMargin:
+                                 CAPSPageMenuOptionMenuMargin: @(0.0),
                                  CAPSPageMenuOptionMenuHeight: @(44.0),
                                  CAPSPageMenuOptionSelectedMenuItemLabelColor: [UIColor whiteColor],
                                  CAPSPageMenuOptionUnselectedMenuItemLabelColor: [UIColor whiteColor],
-                                 CAPSPageMenuOptionUseMenuLikeSegmentedControl: @(YES),
+                                 //CAPSPageMenuOptionUseMenuLikeSegmentedControl: @(YES),   // some bug on 6+
                                  //CAPSPageMenuOptionMenuItemSeparatorRoundEdges:
                                  CAPSPageMenuOptionMenuItemFont: [UIFont systemFontOfSize:18.0f weight:UIFontWeightRegular],
                                  //CAPSPageMenuOptionMenuItemSeparatorPercentageHeight: @(0.1),
-                                 //CAPSPageMenuOptionMenuItemWidth:
+                                 CAPSPageMenuOptionMenuItemWidth: @( [[UIScreen mainScreen] bounds].size.width /2 )
                                  //CAPSPageMenuOptionEnableHorizontalBounce:
                                  //CAPSPageMenuOptionAddBottomMenuHairline:
                                  //CAPSPageMenuOptionMenuItemWidthBasedOnTitleTextWidth:
@@ -84,10 +87,6 @@
                                                         frame:CGRectMake(0.0, 0.0, self.pagerview.frame.size.width, self.pagerview.frame.size.height)
                                                       options:parameters];
     [self.pagerview addSubview:_pageMenu.view];
-}
-
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
