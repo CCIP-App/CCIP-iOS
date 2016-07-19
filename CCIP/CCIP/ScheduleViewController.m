@@ -19,13 +19,16 @@
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
+@property NSUInteger refreshingCountDown;
+
 @property (strong, nonatomic) NSArray *rooms;
 @property (strong, nonatomic) NSArray *programs;
 @property (strong, nonatomic) NSArray *program_types;
 
-@property (strong, nonatomic) NSArray *segments;
+@property (strong, nonatomic) NSArray *segmentsTextArray;
 
-@property NSUInteger refreshingCountDown;
+@property NSMutableDictionary *program_date;
+@property NSMutableDictionary *program_date_section;
 
 @end
 
@@ -148,27 +151,70 @@
     [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     
-    NSDateFormatter *formatter_s = [[NSDateFormatter alloc] init];
-    [formatter_s setDateFormat:@"MM/dd"];
+    NSDateFormatter *formatter_date = [[NSDateFormatter alloc] init];
+    [formatter_date setDateFormat:@"MM/dd"];
     
     NSDate *startTime;
-    NSString *time_s;
+    NSString *time_date;
     
-    NSMutableArray *dateArray = [NSMutableArray new];
-    
+    NSMutableDictionary *datesDict = [NSMutableDictionary new];
+
     for (NSDictionary *program in self.programs) {
         startTime = [formatter_full dateFromString:[program objectForKey:@"starttime"]];
-        time_s = [formatter_s stringFromDate:startTime];
+        time_date = [formatter_date stringFromDate:startTime];
         
-        if (![dateArray containsObject:time_s]) {
-            [dateArray addObject:time_s];
+        NSMutableArray *tempArray = [datesDict objectForKey:time_date];
+        if (tempArray == nil) {
+            tempArray = [NSMutableArray new];
         }
+        [tempArray addObject:program];
+        [datesDict setObject:tempArray forKey:time_date];
     }
     
-    self.segments = [dateArray sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-    [self.segmentedControl resetAllSegments:self.segments];
+    self.program_date = datesDict;
+    self.segmentsTextArray = [[self.program_date allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];;
+    [self.segmentedControl resetAllSegments:self.segmentsTextArray];
     
     [self checkScheduleDate];
+}
+
+-(void)setScheduleDateSection:(NSInteger)selectedSegmentIndex{
+    
+    NSDateFormatter *formatter_full = [[NSDateFormatter alloc] init];
+    [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    
+    NSDateFormatter *formatter_HHmm = [[NSDateFormatter alloc] init];
+    [formatter_HHmm setDateFormat:@"HH:mm"];
+    
+    NSDate *startTime;
+    NSDate *endTime;
+    NSString *startTime_str;
+    NSString *endTime_str;
+    NSString *timeKey;
+    
+    NSMutableDictionary *sectionDict = [NSMutableDictionary new];
+    
+    for (NSDictionary *program in [self.program_date objectForKey:[self.segmentsTextArray objectAtIndex:selectedSegmentIndex]]) {
+        startTime = [formatter_full dateFromString:[program objectForKey:@"starttime"]];
+        endTime = [formatter_full dateFromString:[program objectForKey:@"endtime"]];
+        startTime_str = [formatter_HHmm stringFromDate:startTime];
+        endTime_str = [formatter_HHmm stringFromDate:endTime];
+        timeKey = [NSString stringWithFormat:@"%@ ~ %@", startTime_str, endTime_str];
+        
+        NSMutableArray *tempArray = [sectionDict objectForKey:timeKey];
+        if (tempArray == nil) {
+            tempArray = [NSMutableArray new];
+        }
+        [tempArray addObject:program];
+        [sectionDict setObject:tempArray forKey:timeKey];
+    }
+    
+    self.program_date_section = sectionDict;
+    
+    
+    [self.tableView reloadData];
+
 }
 
 -(void)checkScheduleDate {
@@ -176,13 +222,14 @@
     [formatter_s setDateFormat:@"MM/dd"];
     
     NSInteger segmentsIndex = 0;
-    for (int index = 0; index < [self.segments count]; ++index) {
-        if ([[formatter_s stringFromDate:[NSDate new]] isEqualToString:[self.segments objectAtIndex:index]]) {
+    for (int index = 0; index < [self.segmentsTextArray count]; ++index) {
+        if ([[formatter_s stringFromDate:[NSDate new]] isEqualToString:[self.segmentsTextArray objectAtIndex:index]]) {
             segmentsIndex = index;
         }
     }
     
     [self.segmentedControl setSelectedSegmentIndex:segmentsIndex];
+    [self setScheduleDateSection:segmentsIndex];
 }
 
 
@@ -198,7 +245,7 @@
             break;
         }
     }
-    [self.tableView reloadData];
+    [self setScheduleDateSection:segment.selectedSegmentIndex];
 }
 
 
@@ -220,15 +267,17 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    return [self.program_date_section count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    return [[self.program_date_section objectForKey:[allKeys objectAtIndex:section]] count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [NSString stringWithFormat:@"Section #%ld", self.segmentedControl.selectedSegmentIndex];
+    NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    return [allKeys objectAtIndex:section];;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -252,10 +301,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // Configure the cell...
     
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NULL];
-    [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:NULL];
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
-    [cell.textLabel setText:[NSString stringWithFormat:@"Cell #%ld-%ld", self.segmentedControl.selectedSegmentIndex, (long)indexPath.row]];
+    NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    NSDictionary *program = [[self.program_date_section objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+    
+    [cell.textLabel setText:[program objectForKey:@"subject"]];
+    [cell.detailTextLabel setText:[program objectForKey:@"room"]];
     
     return cell;
 }
@@ -264,7 +317,7 @@
     [[self.tableView cellForRowAtIndexPath:indexPath] setSelected:NO
                                                     animated:YES];
     // TODO: display selected section detail informations
-    
+
 }
 
 /*
