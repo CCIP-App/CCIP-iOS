@@ -1,18 +1,18 @@
 //
-//  ScheduleDetailViewPagerController.m
+//  ProgramDetailViewPagerController.m
 //  CCIP
 //
 //  Created by FrankWu on 2016/7/19.
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
-#import "ScheduleDetailViewPagerController.h"
+#import "ProgramDetailViewPagerController.h"
 
-@interface ScheduleDetailViewPagerController () <ViewPagerDataSource, ViewPagerDelegate>
+@interface ProgramDetailViewPagerController () <ViewPagerDataSource, ViewPagerDelegate>
 
 @end
 
-@implementation ScheduleDetailViewPagerController
+@implementation ProgramDetailViewPagerController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,10 +52,18 @@
 - (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
     UILabel *label = [UILabel new];
     label.backgroundColor = [UIColor clearColor];
-    label.text = @"ABC";
-//    if (index == 0) {
-//        label.text = NSLocalizedString(@"All", nil);
-//    }
+    
+    switch (index) {
+        case 0:
+            label.text = @"簡介";
+            break;
+        case 1:
+            label.text = @"講者";
+            break;
+        default:
+            label.text = @"(NULL)";
+            break;
+    }
     
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor whiteColor];

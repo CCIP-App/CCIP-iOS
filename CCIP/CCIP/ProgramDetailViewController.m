@@ -1,21 +1,21 @@
 //
-//  ScheduleDetailViewController.m
+//  ProgramDetailViewController.m
 //  CCIP
 //
 //  Created by FrankWu on 2016/7/19.
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
-#import "ScheduleDetailViewController.h"
-#import "ScheduleDetailViewPagerController.h"
+#import "ProgramDetailViewController.h"
+#import "ProgramDetailViewPagerController.h"
 #import "RoomLocationViewController.h"
 #import "NSInvocation+addition.h"
 
-@interface ScheduleDetailViewController ()
+@interface ProgramDetailViewController ()
 
 @end
 
-@implementation ScheduleDetailViewController
+@implementation ProgramDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,12 +26,12 @@
     [self.speakername setText:[self.program objectForKey:@"speakername"]];
     [self.subject setText:[self.program objectForKey:@"subject"]];
     
-    ScheduleDetailViewPagerController *scheduleDetailViewPager = [ScheduleDetailViewPagerController new];
+    ProgramDetailViewPagerController *programDetailViewPager = [ProgramDetailViewPagerController new];
     
-    [self addChildViewController:scheduleDetailViewPager];
-    scheduleDetailViewPager.view.frame = CGRectMake(0, self.topBG.frame.size.height-44, self.view.bounds.size.width, self.view.bounds.size.height-(self.topBG.frame.size.height-44));
-    [self.view addSubview:scheduleDetailViewPager.view];
-    [scheduleDetailViewPager didMoveToParentViewController:self];
+    [self addChildViewController:programDetailViewPager];
+    programDetailViewPager.view.frame = CGRectMake(0, self.topBG.frame.size.height-44, self.view.bounds.size.width, self.view.bounds.size.height-(self.topBG.frame.size.height-44));
+    [self.view addSubview:programDetailViewPager.view];
+    [programDetailViewPager didMoveToParentViewController:self];
 }
 
 - (void)didReceiveMemoryWarning {

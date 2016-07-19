@@ -1,5 +1,5 @@
 //
-//  ScheduleDetailViewController.h
+//  ProgramDetailViewController
 //  CCIP
 //
 //  Created by FrankWu on 2016/7/19.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScheduleDetailViewController : UIViewController
+@interface ProgramDetailViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *topBG;
 @property (weak, nonatomic) IBOutlet UILabel *speakername;
