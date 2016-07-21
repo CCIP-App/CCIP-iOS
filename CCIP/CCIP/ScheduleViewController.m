@@ -40,12 +40,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
-    //    {
-    //        self.edgesForExtendedLayout = UIRectEdgeNone;
-    //        self.navigationController.navigationBar.translucent = NO;
-    //    }
-    
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     CGFloat topGuide = 0.0;
@@ -63,7 +57,10 @@
     [_segmentedControl addTarget:self
                           action:@selector(segmentedControlValueDidChange:)
                 forControlEvents:UIControlEventValueChanged];
-    [_segmentedControl setTintColor:[UIColor colorWithRed:61.0f/255.0f green:152.0f/255.0f blue:60.0f/255.0f alpha:1.0f]];
+    [_segmentedControl setTintColor:[UIColor colorWithRed:61.0f/255.0f
+                                                    green:152.0f/255.0f
+                                                     blue:60.0f/255.0f
+                                                    alpha:1.0f]];
     
     // ... setting up the Toolbar here ...
     _toolbar = [UIToolbar new];
@@ -95,12 +92,13 @@
     [self.view bringSubviewToFront:_toolbar];
     
     // ... setting up the RefreshControl here ...
-    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    UITableViewController *tableViewController = [UITableViewController new];
     tableViewController.tableView = self.tableView;
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl addTarget:self
+                            action:@selector(refreshData)
+                  forControlEvents:UIControlEventValueChanged];
     tableViewController.refreshControl = self.refreshControl;
-    
     
     [self refreshData];
 }
@@ -141,7 +139,6 @@
         }
         [self endRefreshingWithCountDown];
     }];
-    
 }
 
 -(void)endRefreshingWithCountDown{
@@ -153,11 +150,11 @@
 }
 
 -(void)setScheduleDate{
-    NSDateFormatter *formatter_full = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter_full = [NSDateFormatter new];
     [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     
-    NSDateFormatter *formatter_date = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter_date = [NSDateFormatter new];
     [formatter_date setDateFormat:@"MM/dd"];
     
     NSDate *startTime;
@@ -182,7 +179,6 @@
     [self.segmentedControl resetAllSegments:self.segmentsTextArray];
     
     [self checkScheduleDate];
-    
     
     // UIApplicationShortcutIcon
     // UIApplicationShortcutItem
@@ -241,11 +237,11 @@
 -(void)setSegmentedAndTableWithIndex:(NSInteger)selectedSegmentIndex{
     [self.segmentedControl setSelectedSegmentIndex:selectedSegmentIndex];
 
-    NSDateFormatter *formatter_full = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter_full = [NSDateFormatter new];
     [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     
-    NSDateFormatter *formatter_HHmm = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter_HHmm = [NSDateFormatter new];
     [formatter_HHmm setDateFormat:@"HH:mm"];
     
     NSDate *startTime;
@@ -277,7 +273,7 @@
 }
 
 -(void)checkScheduleDate {
-    NSDateFormatter *formatter_s = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter_s = [NSDateFormatter new];
     [formatter_s setDateFormat:@"MM/dd"];
     
     if ([self.segmentedControl selectedSegmentIndex] == -1) {
@@ -330,17 +326,21 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     NSString *titleString = [self tableView:tableView titleForHeaderInSection:section];
-//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tableview_section_bg"]];
     
     UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, 28.0f)];
-    [sectionView setBackgroundColor:[UIColor colorWithRed:61.0f/255.0f green:152.0f/255.0f blue:60.0f/255.0f alpha:1.0f]];
-
+    [sectionView setBackgroundColor:[UIColor colorWithRed:61.0f/255.0f
+                                                    green:152.0f/255.0f
+                                                     blue:60.0f/255.0f
+                                                    alpha:1.0f]];
+    
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectInset(sectionView.frame, 20.0f, 4.0f)];
-    titleLabel.font = [UIFont systemFontOfSize:18.0f weight:UIFontWeightMedium];
-    titleLabel.textAlignment = NSTextAlignmentLeft;
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.text = titleString;
+    [titleLabel setFont:[UIFont systemFontOfSize:18.0f
+                                          weight:UIFontWeightMedium]];
+    [titleLabel setTextAlignment:NSTextAlignmentLeft];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    [titleLabel setBackgroundColor:[UIColor clearColor]];
+    
+    [titleLabel setText:titleString];
     [sectionView addSubview:titleLabel];
     
     return sectionView;
@@ -368,18 +368,11 @@
     
     NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     NSDictionary *program = [[self.program_date_section objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
-
-    
-    
-//    ProgramDetailViewController *detailViewController = [[ProgramDetailViewController alloc] initWithNibName:@"ProgramDetailViewController"
-//                                                                                                      bundle:[NSBundle mainBundle]];
-//    [NSInvocation InvokeObject:detailViewController withSelectorString:@"setProgram:" withArguments:@[ program ]];
     
     ProgramDetailViewController *detailViewController = [[ProgramDetailViewController alloc] initWithNibName:@"ProgramDetailViewController"
                                                                                                       bundle:[NSBundle mainBundle]
                                                                                                      Program:program];
     [self.navigationController pushViewController:detailViewController animated:YES];
-
 }
 
 /*
