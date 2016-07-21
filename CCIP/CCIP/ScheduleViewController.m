@@ -21,6 +21,11 @@
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
+@property CGFloat topGuide;
+@property CGFloat bottomGuide;
+@property BOOL canScrollHide;
+@property CGFloat scrollHideSmoothLevel;
+
 @property NSUInteger refreshingCountDown;
 
 @property (strong, nonatomic) NSArray *rooms;
@@ -29,8 +34,8 @@
 
 @property (strong, nonatomic) NSArray *segmentsTextArray;
 
-@property NSMutableDictionary *program_date;
-@property NSMutableDictionary *program_date_section;
+@property (strong, nonatomic) NSMutableDictionary *program_date;
+@property (strong, nonatomic) NSMutableDictionary *program_date_section;
 
 @end
 
@@ -42,14 +47,16 @@
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    CGFloat topGuide = 0.0;
-    CGFloat bottomGuide = 0.0;
+    _canScrollHide = YES;
+    _scrollHideSmoothLevel = 5;
     
+    _topGuide = 0.0;
+    _bottomGuide = 0.0;
     if (self.navigationController.navigationBar.translucent) {
-        if (self.prefersStatusBarHidden == NO) topGuide += 20;
-        if (self.navigationController.navigationBarHidden == NO) topGuide += self.navigationController.navigationBar.bounds.size.height;
+        if (self.prefersStatusBarHidden == NO) _topGuide += 20;
+        if (self.navigationController.navigationBarHidden == NO) _topGuide += self.navigationController.navigationBar.bounds.size.height;
     }
-    if (self.tabBarController.tabBar.hidden == NO) bottomGuide += self.tabBarController.tabBar.bounds.size.height;
+    if (self.tabBarController.tabBar.hidden == NO) _bottomGuide += self.tabBarController.tabBar.bounds.size.height;
     
     // ... setting up the SegmentedControl here ...
     _segmentedControl = [UISegmentedControl new] ;
@@ -64,7 +71,7 @@
     
     // ... setting up the Toolbar here ...
     _toolbar = [UIToolbar new];
-    [_toolbar setFrame:CGRectMake(0, topGuide, self.view.bounds.size.width, toolbarHight)];
+    [_toolbar setFrame:CGRectMake(0, _topGuide, self.view.bounds.size.width, toolbarHight)];
     [_toolbar setTranslucent:YES];
     [_toolbar.layer setShadowOffset:CGSizeMake(0, 1.0f/UIScreen.mainScreen.scale)];
     [_toolbar.layer setShadowRadius:0];
@@ -83,7 +90,7 @@
     
     // ... setting up the TableView here ...
     _tableView = [UITableView new];
-    [_tableView setFrame:CGRectMake(0, toolbarHight, self.view.bounds.size.width, self.view.bounds.size.height-bottomGuide-toolbarHight)];
+    [_tableView setFrame:CGRectMake(0, toolbarHight, self.view.bounds.size.width, self.view.bounds.size.height-_bottomGuide-toolbarHight)];
     [_tableView setShowsHorizontalScrollIndicator:YES];
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
@@ -101,6 +108,10 @@
     tableViewController.refreshControl = self.refreshControl;
     
     [self refreshData];
+    
+    
+    self.tableView.delegate = self;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -307,6 +318,31 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+// Somewhere in your implementation file:
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.tableView.contentSize.height <= self.tableView.frame.size.height) {
+        _canScrollHide = NO;
+    }
+    if (_canScrollHide) {
+        CGFloat changeY = (self.tableView.contentOffset.y + _topGuide) / _scrollHideSmoothLevel;
+        CGRect viewRect = self.view.bounds;
+        if (changeY <= 0) {
+            _toolbar.frame = CGRectMake(0, _topGuide, viewRect.size.width, toolbarHight);
+            _tableView.frame = CGRectMake(0, toolbarHight, viewRect.size.width, viewRect.size.height-_bottomGuide-toolbarHight);
+            
+        }
+        else if (changeY > toolbarHight) {
+            _toolbar.frame = CGRectMake(0, _topGuide-toolbarHight, viewRect.size.width, toolbarHight);
+            _tableView.frame = CGRectMake(0, toolbarHight-toolbarHight, viewRect.size.width, viewRect.size.height-_bottomGuide);
+        }
+        else {
+            _toolbar.frame = CGRectMake(0, _topGuide-changeY, viewRect.size.width, toolbarHight);
+            _tableView.frame = CGRectMake(0, toolbarHight-changeY, viewRect.size.width, viewRect.size.height-_bottomGuide-changeY);
+        }
+    }
+}
 
 #pragma mark - Table view data source
 
