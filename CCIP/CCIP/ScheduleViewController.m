@@ -66,7 +66,8 @@
     [_segmentedControl setTintColor:[UIColor colorWithRed:61.0f/255.0f green:152.0f/255.0f blue:60.0f/255.0f alpha:1.0f]];
     
     // ... setting up the Toolbar here ...
-    _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, topGuide, self.view.bounds.size.width, toolbarHight)];
+    _toolbar = [UIToolbar new];
+    [_toolbar setFrame:CGRectMake(0, topGuide, self.view.bounds.size.width, toolbarHight)];
     [_toolbar setTranslucent:YES];
     [_toolbar.layer setShadowOffset:CGSizeMake(0, 1.0f/UIScreen.mainScreen.scale)];
     [_toolbar.layer setShadowRadius:0];
@@ -84,7 +85,8 @@
     [_toolbar setItems:barArray];
     
     // ... setting up the TableView here ...
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, toolbarHight, self.view.bounds.size.width, self.view.bounds.size.height-bottomGuide-toolbarHight)];
+    _tableView = [UITableView new];
+    [_tableView setFrame:CGRectMake(0, toolbarHight, self.view.bounds.size.width, self.view.bounds.size.height-bottomGuide-toolbarHight)];
     [_tableView setShowsHorizontalScrollIndicator:YES];
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
@@ -98,6 +100,7 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
     tableViewController.refreshControl = self.refreshControl;
+    
     
     [self refreshData];
 }
@@ -175,8 +178,11 @@
     }
     
     self.program_date = datesDict;
-    self.segmentsTextArray = [[self.program_date allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];;
+    self.segmentsTextArray = [[self.program_date allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     [self.segmentedControl resetAllSegments:self.segmentsTextArray];
+    
+    [self checkScheduleDate];
+    
     
     // UIApplicationShortcutIcon
     // UIApplicationShortcutItem
@@ -202,19 +208,39 @@
         UIApplicationShortcutItem * shortcutItem;
         shortcutItem =[[UIApplicationShortcutItem alloc] initWithType:@"Schedule"
                                                        localizedTitle:dateText
-                                                    localizedSubtitle:nil
+                                                    localizedSubtitle:@"議程"
                                                                  icon:[UIApplicationShortcutIcon iconWithType: UIApplicationShortcutIconTypeDate]
-                                                             userInfo:nil];
+                                                             userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                        self.segmentsTextArray, @"segmentsTextArray",
+                                                                        self.program_date, @"program_date",
+                                                                        nil]];
         [shortcutItems addObject:shortcutItem];
     }
     
     [UIApplication sharedApplication].shortcutItems = shortcutItems;
-    
-    [self checkScheduleDate];
 }
 
--(void)setScheduleDateSection:(NSInteger)selectedSegmentIndex{
+-(void)setSegmentedAndTableWithText:(NSString *)selectedSegmentText{
+    if ([self.segmentsTextArray count] == 0) {
+        NSObject *scheduleDataObj = [[NSUserDefaults standardUserDefaults] objectForKey:@"ScheduleData"];
+        if (scheduleDataObj) {
+            NSDictionary *scheduleDataDict = (NSDictionary*)scheduleDataObj;
+            self.segmentsTextArray = [scheduleDataDict objectForKey:@"segmentsTextArray"];
+            self.program_date = [scheduleDataDict objectForKey:@"program_date"];
+            
+            [self.segmentedControl resetAllSegments:self.segmentsTextArray];
+        }
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ScheduleData"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     
+    NSInteger segmentsIndex = [self.segmentsTextArray indexOfObject:selectedSegmentText];
+    [self setSegmentedAndTableWithIndex:segmentsIndex];
+}
+
+-(void)setSegmentedAndTableWithIndex:(NSInteger)selectedSegmentIndex{
+    [self.segmentedControl setSelectedSegmentIndex:selectedSegmentIndex];
+
     NSDateFormatter *formatter_full = [[NSDateFormatter alloc] init];
     [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
@@ -254,31 +280,20 @@
     NSDateFormatter *formatter_s = [[NSDateFormatter alloc] init];
     [formatter_s setDateFormat:@"MM/dd"];
     
-    NSInteger segmentsIndex = 0;
-    for (int index = 0; index < [self.segmentsTextArray count]; ++index) {
-        if ([[formatter_s stringFromDate:[NSDate new]] isEqualToString:[self.segmentsTextArray objectAtIndex:index]]) {
-            segmentsIndex = index;
+    if ([self.segmentedControl selectedSegmentIndex] == -1) {
+        NSInteger segmentsIndex = 0;
+        for (int index = 0; index < [self.segmentsTextArray count]; ++index) {
+            if ([[formatter_s stringFromDate:[NSDate new]] isEqualToString:[self.segmentsTextArray objectAtIndex:index]]) {
+                segmentsIndex = index;
+            }
         }
+        [self setSegmentedAndTableWithIndex:segmentsIndex];
     }
-    
-    [self.segmentedControl setSelectedSegmentIndex:segmentsIndex];
-    [self setScheduleDateSection:segmentsIndex];
 }
-
 
 -(void)segmentedControlValueDidChange:(UISegmentedControl *)segment
 {
-    switch (segment.selectedSegmentIndex) {
-        case 0:{
-            //action for the first button (Current)
-            break;
-        }
-        case 1:{
-            //action for the first button (Current)
-            break;
-        }
-    }
-    [self setScheduleDateSection:segment.selectedSegmentIndex];
+    [self setSegmentedAndTableWithIndex:segment.selectedSegmentIndex];
 }
 
 

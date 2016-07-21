@@ -23,9 +23,16 @@
     self.navigationController.view.backgroundColor = [UIColor whiteColor];
 
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor grayColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor], NSForegroundColorAttributeName, nil]
+                                             forState:UIControlStateNormal];
     UIColor *titleHighlightedColor = [UIColor colorWithRed:65/255.0 green:117/255.0 blue:5/255.0 alpha:1.0];
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: titleHighlightedColor, NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:titleHighlightedColor, NSForegroundColorAttributeName, nil]
+                                             forState:UIControlStateSelected];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appplicationIsActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
     
     // Checkin
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
@@ -49,7 +56,9 @@
     // IRC
     UIViewController *vc4 = [[UIViewController alloc] initWithNibName:@"IRCView" bundle:[NSBundle mainBundle]];
     vc4.tabBarItem.title = NSLocalizedString(@"IRC", nil);
-    [NSInvocation InvokeObject:vc4.view withSelectorString:@"setURL:" withArguments:@[ @{@"url": LOG_BOT_URL} ]];
+    [NSInvocation InvokeObject:vc4.view
+            withSelectorString:@"setURL:"
+                 withArguments:@[ @{@"url": LOG_BOT_URL} ]];
     vc4.tabBarItem.image = [[UIImage imageNamed:@"icon_ios_chat"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     vc4.tabBarItem.selectedImage = [[UIImage imageNamed:@"icon_ios_chat_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
@@ -63,13 +72,42 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    NSInteger index = [(NSNumber*)[[NSUserDefaults standardUserDefaults] objectForKey:@"MainTabBarViewIndex"] integerValue];
-    
-    if (index) {
+    [super viewWillAppear:animated];
+    [self handleShortcutItem];
+}
+
+- (void)appplicationIsActive:(NSNotification *)notification {
+    NSLog(@"Application Did Become Active");
+    [self handleShortcutItem];
+}
+
+- (void)handleShortcutItem {
+    NSObject *mainTabBarViewIndexObj = [[NSUserDefaults standardUserDefaults] objectForKey:@"MainTabBarViewIndex"];
+    if (mainTabBarViewIndexObj) {
+        NSInteger index = [(NSNumber*)mainTabBarViewIndexObj integerValue];
         [self setSelectedIndex:index];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"MainTabBarViewIndex"];
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"MainTabBarViewIndex"];
+    switch ([self selectedIndex]) {
+        case 1:
+        {
+            NSObject *scheduleIndexTextObj = [[NSUserDefaults standardUserDefaults] objectForKey:@"ScheduleIndexText"];
+            if (scheduleIndexTextObj) {
+                NSString *scheduleIndexText = (NSString*)scheduleIndexTextObj;
+                [NSInvocation InvokeObject:[[self viewControllers] objectAtIndex:1]
+                        withSelectorString:@"setSegmentedAndTableWithText:"
+                             withArguments:@[ scheduleIndexText ]];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ScheduleIndexText"];
+            }
+            break;
+        }
+        default:
+            break;
+    }
+    
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

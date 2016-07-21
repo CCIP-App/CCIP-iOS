@@ -12,13 +12,19 @@
 
 - (void)resetAllSegments:(NSArray *)segments
 {
+    NSInteger oldIndex = [self selectedSegmentIndex];
+    NSString *oldTitle = (oldIndex != -1) ? [self titleForSegmentAtIndex:oldIndex] : nil;
     [self removeAllSegments];
     
-    for (NSString *segment in segments) {
-        [self insertSegmentWithTitle:segment atIndex:self.numberOfSegments animated:NO];
+    for (int i = 0; i < [segments count]; ++i) {
+        NSString *title = [segments objectAtIndex:i];
+        [self insertSegmentWithTitle:title
+                             atIndex:self.numberOfSegments
+                            animated:NO];
+        if ([title isEqualToString:oldTitle])
+            [self setSelectedSegmentIndex:i];
     }
 }
-
 
 @end
 

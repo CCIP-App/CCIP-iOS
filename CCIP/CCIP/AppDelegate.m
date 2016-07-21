@@ -206,23 +206,24 @@
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
     
     // shortcutItem.type
-    // shortcutItem.type.title
+    // shortcutItem.localizedTitle
+    // shortcutItem.localizedSubtitle
     // shortcutItem.userInfo (NSDictionary*)
     
-    UIViewController* rootvc = [[self window] rootViewController];
-    if (rootvc && [NSStringFromClass([rootvc class]) isEqualToString:@"NavigationController"]) {
-        UIViewController *vc = [[rootvc childViewControllers] firstObject];
-        if (vc && [NSStringFromClass([vc class]) isEqualToString:@"MainTabBarViewController"]) {
-            [(UITabBarController *)vc setSelectedIndex:1];
-        }
-        if ([[rootvc childViewControllers] count] > 1) {
-            [(UINavigationController *)rootvc popToRootViewControllerAnimated:YES];
-        }
+    NSInteger mainTabBarViewIndex = 0;
+    if ([shortcutItem.type isEqualToString:@"Checkin"]) {
+        mainTabBarViewIndex = 0;
     }
-    else {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:1] forKey:@"MainTabBarViewIndex"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+    else if ([shortcutItem.type isEqualToString:@"Schedule"]) {
+        mainTabBarViewIndex = 1;
+        [[NSUserDefaults standardUserDefaults] setObject:shortcutItem.localizedTitle forKey:@"ScheduleIndexText"];
+        [[NSUserDefaults standardUserDefaults] setObject:shortcutItem.userInfo forKey:@"ScheduleData"];
     }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:mainTabBarViewIndex] forKey:@"MainTabBarViewIndex"];
+    
+    // Save UserDefaults
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end
