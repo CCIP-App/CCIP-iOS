@@ -322,7 +322,7 @@
 // Somewhere in your implementation file:
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (self.tableView.contentSize.height > self.tableView.frame.size.height && _canScrollHide) {
+    if ( (self.tableView.contentSize.height/2+toolbarHight*_scrollHideSmoothLevel) > self.tableView.frame.size.height && _canScrollHide) {
         CGFloat changeY = (self.tableView.contentOffset.y + _topGuide) / _scrollHideSmoothLevel;
         CGRect viewRect = self.view.bounds;
         if (changeY <= 0) {
