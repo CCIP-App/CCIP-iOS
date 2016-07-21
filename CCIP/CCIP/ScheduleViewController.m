@@ -23,8 +23,11 @@
 
 @property CGFloat topGuide;
 @property CGFloat bottomGuide;
+
 @property BOOL canScrollHide;
 @property CGFloat scrollHideSmoothLevel;
+@property CGFloat lastContentOffsetY;
+@property CGFloat changeY;
 
 @property NSUInteger refreshingCountDown;
 
@@ -49,6 +52,8 @@
     
     _canScrollHide = YES;
     _scrollHideSmoothLevel = 5;
+    _lastContentOffsetY = 0;
+    _changeY = 0;
     
     _topGuide = 0.0;
     _bottomGuide = 0.0;
@@ -322,24 +327,26 @@
 // Somewhere in your implementation file:
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    CGFloat contentOffsetY = self.tableView.contentOffset.y + _topGuide;
+
     if ( (self.tableView.contentSize.height/2+toolbarHight*_scrollHideSmoothLevel) > self.tableView.frame.size.height && _canScrollHide) {
-        CGFloat changeY = (self.tableView.contentOffset.y + _topGuide) / _scrollHideSmoothLevel;
+        if (contentOffsetY - _lastContentOffsetY > 0 && contentOffsetY > 0) {
+            //swipe up
+            _changeY += (contentOffsetY - _lastContentOffsetY) / _scrollHideSmoothLevel;
+            if (_changeY > toolbarHight) _changeY = toolbarHight;
+        }
+        else if (contentOffsetY - _lastContentOffsetY < 0 && self.tableView.contentOffset.y + self.tableView.frame.size.height < self.tableView.contentSize.height) {
+            //swipe down
+            _changeY += (contentOffsetY - _lastContentOffsetY)  / _scrollHideSmoothLevel;
+            if (_changeY <= 0) _changeY = 0;
+        }
+        
         CGRect viewRect = self.view.bounds;
-        if (changeY <= 0) {
-            _toolbar.frame = CGRectMake(0, _topGuide, viewRect.size.width, toolbarHight);
-            _tableView.frame = CGRectMake(0, toolbarHight, viewRect.size.width, viewRect.size.height-_bottomGuide-toolbarHight);
-            
-        }
-        else if (changeY > toolbarHight) {
-            _toolbar.frame = CGRectMake(0, _topGuide-toolbarHight, viewRect.size.width, toolbarHight);
-            _tableView.frame = CGRectMake(0, toolbarHight-toolbarHight, viewRect.size.width, viewRect.size.height-_bottomGuide);
-        }
-        else {
-            _toolbar.frame = CGRectMake(0, _topGuide-changeY, viewRect.size.width, toolbarHight);
-            _tableView.frame = CGRectMake(0, toolbarHight-changeY, viewRect.size.width, viewRect.size.height-_bottomGuide-changeY);
-            
-        }
+        _toolbar.frame = CGRectMake(0, _topGuide-_changeY, viewRect.size.width, toolbarHight);
+        _tableView.frame = CGRectMake(0, toolbarHight-_changeY, viewRect.size.width, viewRect.size.height-toolbarHight-_bottomGuide+_changeY);
     }
+    _lastContentOffsetY = contentOffsetY;
+
 }
 
 #pragma mark - Table view data source
