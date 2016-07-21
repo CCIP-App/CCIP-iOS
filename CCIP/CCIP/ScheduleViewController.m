@@ -178,6 +178,38 @@
     self.segmentsTextArray = [[self.program_date allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];;
     [self.segmentedControl resetAllSegments:self.segmentsTextArray];
     
+    // UIApplicationShortcutIcon
+    // UIApplicationShortcutItem
+    
+    NSMutableArray *shortcutItems = [NSMutableArray new];
+    
+    UIApplicationShortcutItem * shortcutItem;
+    shortcutItem =[[UIApplicationShortcutItem alloc] initWithType:@"Checkin"
+                                                   localizedTitle:@"day1 報到"
+                                                localizedSubtitle:nil
+                                                             icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeTaskCompleted]
+                                                         userInfo:nil];
+    [shortcutItems addObject:shortcutItem];
+    
+    shortcutItem =[[UIApplicationShortcutItem alloc] initWithType:@"Checkin"
+                                                   localizedTitle:@"day1 領便當"
+                                                localizedSubtitle:nil
+                                                             icon:[UIApplicationShortcutIcon iconWithType: UIApplicationShortcutIconTypeTask]
+                                                         userInfo:nil];
+    [shortcutItems addObject:shortcutItem];
+    
+    for (NSString *dateText in self.segmentsTextArray) {
+        UIApplicationShortcutItem * shortcutItem;
+        shortcutItem =[[UIApplicationShortcutItem alloc] initWithType:@"Schedule"
+                                                       localizedTitle:dateText
+                                                    localizedSubtitle:nil
+                                                                 icon:[UIApplicationShortcutIcon iconWithType: UIApplicationShortcutIconTypeDate]
+                                                             userInfo:nil];
+        [shortcutItems addObject:shortcutItem];
+    }
+    
+    [UIApplication sharedApplication].shortcutItems = shortcutItems;
+    
     [self checkScheduleDate];
 }
 
@@ -215,9 +247,7 @@
     
     self.program_date_section = sectionDict;
     
-    
     [self.tableView reloadData];
-
 }
 
 -(void)checkScheduleDate {

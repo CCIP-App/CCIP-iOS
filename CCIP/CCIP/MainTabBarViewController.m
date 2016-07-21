@@ -20,7 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationController.view.backgroundColor = [UIColor whiteColor];
+
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor grayColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     UIColor *titleHighlightedColor = [UIColor colorWithRed:65/255.0 green:117/255.0 blue:5/255.0 alpha:1.0];
@@ -59,6 +60,17 @@
     vc5.tabBarItem.selectedImage = [[UIImage imageNamed:@"icon_ios_more_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     [self setViewControllers:@[vc1, vc2, vc3, vc4, vc5]];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    NSInteger index = [(NSNumber*)[[NSUserDefaults standardUserDefaults] objectForKey:@"MainTabBarViewIndex"] integerValue];
+    
+    if (index) {
+        [self setSelectedIndex:index];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"MainTabBarViewIndex"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)didReceiveMemoryWarning {
