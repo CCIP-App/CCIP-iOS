@@ -12,7 +12,7 @@
 #import "ProgramDetailViewController.h"
 #import "NSInvocation+addition.h"
 
-#define toolbarHight 44.0
+#define TOOLBAR_HIGHT 44.0
 
 @interface ScheduleViewController ()
 
@@ -25,9 +25,14 @@
 @property CGFloat bottomGuide;
 
 @property BOOL canScrollHide;
-@property CGFloat scrollHideSmoothLevel;
+
+@property BOOL startScroll;
 @property CGFloat lastContentOffsetY;
-@property CGFloat changeY;
+@property CGFloat changeHight;
+@property NSInteger swipeDirection;
+#define SWIPE_UP    1
+#define SWIPE_DOWN  -1
+
 
 @property NSUInteger refreshingCountDown;
 
@@ -50,11 +55,6 @@
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    _canScrollHide = YES;
-    _scrollHideSmoothLevel = 5;
-    _lastContentOffsetY = 0;
-    _changeY = 0;
-    
     _topGuide = 0.0;
     _bottomGuide = 0.0;
     if (self.navigationController.navigationBar.translucent) {
@@ -62,6 +62,10 @@
         if (self.navigationController.navigationBarHidden == NO) _topGuide += self.navigationController.navigationBar.bounds.size.height;
     }
     if (self.tabBarController.tabBar.hidden == NO) _bottomGuide += self.tabBarController.tabBar.bounds.size.height;
+    
+    _canScrollHide = YES;
+    _lastContentOffsetY = _topGuide;
+    _changeHight = 0;
     
     // ... setting up the SegmentedControl here ...
     _segmentedControl = [UISegmentedControl new] ;
@@ -76,7 +80,7 @@
     
     // ... setting up the Toolbar here ...
     _toolbar = [UIToolbar new];
-    [_toolbar setFrame:CGRectMake(0, _topGuide, self.view.bounds.size.width, toolbarHight)];
+    [_toolbar setFrame:CGRectMake(0, _topGuide, self.view.bounds.size.width, TOOLBAR_HIGHT)];
     [_toolbar setTranslucent:YES];
     [_toolbar.layer setShadowOffset:CGSizeMake(0, 1.0f/UIScreen.mainScreen.scale)];
     [_toolbar.layer setShadowRadius:0];
@@ -95,7 +99,7 @@
     
     // ... setting up the TableView here ...
     _tableView = [UITableView new];
-    [_tableView setFrame:CGRectMake(0, toolbarHight, self.view.bounds.size.width, self.view.bounds.size.height-_bottomGuide-toolbarHight)];
+    [_tableView setFrame:CGRectMake(0, TOOLBAR_HIGHT, self.view.bounds.size.width, self.view.bounds.size.height-_bottomGuide-TOOLBAR_HIGHT)];
     [_tableView setShowsHorizontalScrollIndicator:YES];
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
@@ -115,7 +119,7 @@
     [self refreshData];
     
     
-    self.tableView.delegate = self;
+//    self.tableView.delegate = self;
 
 }
 
@@ -325,28 +329,116 @@
 */
 
 // Somewhere in your implementation file:
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CGFloat contentOffsetY = self.tableView.contentOffset.y + _topGuide;
 
-    if ( (self.tableView.contentSize.height/2+toolbarHight*_scrollHideSmoothLevel) > self.tableView.frame.size.height && _canScrollHide) {
-        if (contentOffsetY - _lastContentOffsetY > 0 && contentOffsetY > 0) {
-            //swipe up
-            _changeY += (contentOffsetY - _lastContentOffsetY) / _scrollHideSmoothLevel;
-            if (_changeY > toolbarHight) _changeY = toolbarHight;
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    _startScroll = YES;
+}
+
+
+-(void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+    [self scrollViewDidEndScrolling:scrollView];
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self scrollViewDidEndScrolling:scrollView];
+}
+
+- (void)scrollViewDidEndScrolling:(UIScrollView *)scrollView {
+    if (scrollView.contentSize.height > scrollView.frame.size.height) {
+        BOOL touchTopEdge = (scrollView.contentOffset.y <= -_topGuide) ? YES : NO;
+        BOOL touchBottomEdge = (scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height) ? YES : NO;
+        _startScroll = NO;
+        
+        if (touchTopEdge && _changeHight != 0) {
+            _startScroll = YES;
+            _changeHight = 0;
         }
-        else if (contentOffsetY - _lastContentOffsetY < 0 && self.tableView.contentOffset.y + self.tableView.frame.size.height < self.tableView.contentSize.height) {
-            //swipe down
-            _changeY += (contentOffsetY - _lastContentOffsetY)  / _scrollHideSmoothLevel;
-            if (_changeY <= 0) _changeY = 0;
+        else if (touchBottomEdge && _changeHight != TOOLBAR_HIGHT) {
+            _startScroll = YES;
+            _changeHight = TOOLBAR_HIGHT;
+        }
+        else if (_changeHight != 0 && _changeHight != TOOLBAR_HIGHT) {
+            switch (_swipeDirection) {
+                case SWIPE_UP:
+                    if (_changeHight >= 10) {
+                        //show
+                        _startScroll = YES;
+                        _changeHight = TOOLBAR_HIGHT;
+                    }
+                    else {
+                        //hide
+                        _startScroll = YES;
+                        _changeHight = 0;
+                    }
+                    break;
+                case SWIPE_DOWN:
+                    if (_changeHight <= TOOLBAR_HIGHT-5) {
+                        //show
+                        _startScroll = YES;
+                        _changeHight = 0;
+                    }
+                    else {
+                        //hide
+                        _startScroll = YES;
+                        _changeHight = TOOLBAR_HIGHT;
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
         
-        CGRect viewRect = self.view.bounds;
-        _toolbar.frame = CGRectMake(0, _topGuide-_changeY, viewRect.size.width, toolbarHight);
-        _tableView.frame = CGRectMake(0, toolbarHight-_changeY, viewRect.size.width, viewRect.size.height-toolbarHight-_bottomGuide+_changeY);
+        if (_startScroll) {
+            [UIView animateWithDuration:0.5f animations:^{
+                CGRect viewRect = self.view.bounds;
+                _toolbar.frame = CGRectMake(0, _topGuide-_changeHight, viewRect.size.width, TOOLBAR_HIGHT);
+                _tableView.frame = CGRectMake(0, TOOLBAR_HIGHT-_changeHight, viewRect.size.width, viewRect.size.height-TOOLBAR_HIGHT-_bottomGuide+_changeHight);
+                _lastContentOffsetY = scrollView.contentOffset.y;
+                _startScroll = NO;
+            }];
+        }
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat contentOffsetY = scrollView.contentOffset.y;
+
+    if (_startScroll && (scrollView.contentSize.height/2) > scrollView.frame.size.height && _canScrollHide) {
+        
+        BOOL touchTopEdge = (contentOffsetY <= -_topGuide) ? YES : NO;
+        BOOL touchBottomEdge = (scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height) ? YES : NO;
+        
+        CGFloat changY = (contentOffsetY - _lastContentOffsetY);
+        if (changY > 0 && !touchTopEdge && !touchBottomEdge) {
+            //swipe up
+            _swipeDirection = SWIPE_UP;
+            _changeHight += changY;
+            if (_changeHight >= TOOLBAR_HIGHT) {
+                _changeHight = TOOLBAR_HIGHT;
+            }
+            else {
+                scrollView.contentOffset = CGPointMake(0, _lastContentOffsetY);
+                contentOffsetY = scrollView.contentOffset.y;
+            }
+        }
+        else if (changY < 0 && !touchBottomEdge) {
+            //swipe down
+            _swipeDirection = SWIPE_DOWN;
+            _changeHight += changY;
+            if (_changeHight <= 0) {
+                _changeHight = 0;
+            }
+            else {
+                scrollView.contentOffset = CGPointMake(0, _lastContentOffsetY);
+                contentOffsetY = scrollView.contentOffset.y;
+            }
+        }
+        
+        CGRect viewRect = self.view.frame;
+        _toolbar.frame = CGRectMake(0, _topGuide-_changeHight, viewRect.size.width, TOOLBAR_HIGHT);
+        scrollView.frame = CGRectMake(0, TOOLBAR_HIGHT-_changeHight, viewRect.size.width, viewRect.size.height-TOOLBAR_HIGHT-_bottomGuide+_changeHight);
     }
     _lastContentOffsetY = contentOffsetY;
-
 }
 
 #pragma mark - Table view data source
