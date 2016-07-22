@@ -32,7 +32,8 @@
 @property NSInteger swipeDirection;
 #define SWIPE_UP    1
 #define SWIPE_DOWN  -1
-
+@property CGFloat deltaY;
+#define DELTAY_SIZE 44
 
 @property NSUInteger refreshingCountDown;
 
@@ -332,6 +333,7 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     _startScroll = YES;
+    _deltaY = 0;
 }
 
 
@@ -402,8 +404,10 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat contentOffsetY = scrollView.contentOffset.y;
-
-    if (_startScroll && (scrollView.contentSize.height/2) > scrollView.frame.size.height && _canScrollHide) {
+    CGFloat changY = (contentOffsetY - _lastContentOffsetY);
+    _deltaY += changY;
+    
+    if (_startScroll && fabs(_deltaY) > DELTAY_SIZE && (scrollView.contentSize.height/2) > scrollView.frame.size.height && _canScrollHide) {
         
         BOOL touchTopEdge = (contentOffsetY <= -_topGuide) ? YES : NO;
         BOOL touchBottomEdge = (scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height) ? YES : NO;
@@ -415,6 +419,7 @@
             _changeHight += changY;
             if (_changeHight >= TOOLBAR_HIGHT) {
                 _changeHight = TOOLBAR_HIGHT;
+                _deltaY = 0;
             }
             else {
                 scrollView.contentOffset = CGPointMake(0, _lastContentOffsetY);
@@ -427,6 +432,7 @@
             _changeHight += changY;
             if (_changeHight <= 0) {
                 _changeHight = 0;
+                _deltaY = 0;
             }
             else {
                 scrollView.contentOffset = CGPointMake(0, _lastContentOffsetY);
