@@ -32,6 +32,8 @@
 "Addition" = "Addition";
 "IRC" = "IRC Channel";
 "Staffs" = "Staffs";
+"Introduction" = "Introduction";
+"Speaker" = "Speaker";
 "GuideViewMessage" = "Please reference your attendee detail information, and your will found your access token.\n\nPlease copy and paste the token into next text field or click the token link in the reference mail.";
 "GuideViewButton" = "Redeem";
 "CheckinNotice" = "Notice! It will be considered USED after click \"Confirm\" button.\nPlease double check that our staff has instructed you to click the \"Confirm\" button. Thanks for your cooperation.";

@@ -30,10 +30,10 @@
         // Custom initialization
         self.abstractView = [[ProgramAbstractViewController alloc] initWithNibName:@"ProgramAbstractViewController"
                                                                             bundle:[NSBundle mainBundle]];
-        self.abstractView.title = @"簡介";
+        self.abstractView.title = NSLocalizedString(@"Introduction", nil);
         self.speakerIntroView = [[ProgramSpeakerIntroViewController alloc] initWithNibName:@"ProgramSpeakerIntroViewController"
                                                                                     bundle:[NSBundle mainBundle]];
-        self.speakerIntroView.title = @"講師";
+        self.speakerIntroView.title = NSLocalizedString(@"Speaker", nil);
     }
     return self;
 }
