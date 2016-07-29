@@ -480,6 +480,13 @@
     [titleLabel setTextColor:[UIColor whiteColor]];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     
+    // set font Monospaced
+    NSArray *monospacedSetting = @[@{UIFontFeatureTypeIdentifierKey: @(kNumberSpacingType),
+                                     UIFontFeatureSelectorIdentifierKey: @(kMonospacedNumbersSelector)}];
+    UIFontDescriptor *newDescriptor = [[titleLabel.font fontDescriptor] fontDescriptorByAddingAttributes:@{UIFontDescriptorFeatureSettingsAttribute: monospacedSetting}];
+    // Size 0 to use previously set font size
+    titleLabel.font = [UIFont fontWithDescriptor:newDescriptor size:0];
+    
     [titleLabel setText:titleString];
     [sectionView addSubview:titleLabel];
     
