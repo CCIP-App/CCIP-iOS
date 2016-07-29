@@ -26,6 +26,7 @@
 "UseButtonPressed" = "已領取";
 "ConfirmAlertText" = "確定已聽從工作人員的指示準備好要使用？";
 "CONFIRM" = "確認使用";
+"Cancel" = "取消";
 "day2checkin" = "第二天報到";
 "day2lunch" = "第二天午餐領取";
 "Addition" = "其他";

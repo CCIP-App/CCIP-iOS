@@ -45,10 +45,10 @@
     } else {
         UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"UseButton", nil)
                                                     withMessage:NSLocalizedString(@"ConfirmAlertText", nil)
-                                               cancelButtonText:@"Cancel"
+                                               cancelButtonText:NSLocalizedString(@"Cancel", nil)
                                                     cancelStyle:UIAlertActionStyleCancel
                                                    cancelAction:nil];
-        [ac addActionButton:@"CONFIRM"
+        [ac addActionButton:NSLocalizedString(@"CONFIRM", nil)
                       style:UIAlertActionStyleDestructive
                     handler:^(UIAlertAction * _Nonnull action) {
                         // TODO: Send API request

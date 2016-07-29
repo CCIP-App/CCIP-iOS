@@ -26,6 +26,7 @@
 "UseButtonPressed" = "USED";
 "ConfirmAlertText" = "Ready to use with staff's instruction?";
 "CONFIRM" = "CONFIRM";
+"Cancel" = "Cancel";
 "day2checkin" = "Day 2 Checkin";
 "day2lunch" = "Day 2 Lunch";
 "Addition" = "Addition";
