@@ -8,7 +8,7 @@
 
 #define __TIMEOUT_INTERVAL__    (15)
 
-#define __API_HOST__            (@"https://ccip.cprteam.org/")
+#define __API_HOST__            (@"https://coscup.cprteam.org/")
 #define CC_STATUS(token)        ([__API_HOST__ stringByAppendingFormat:@"status?token=%@", token])
 #define CC_USE(token, scenario) ([__API_HOST__ stringByAppendingFormat:@"use/%@?token=%@", scenario, token])
 
