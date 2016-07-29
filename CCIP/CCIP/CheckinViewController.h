@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CheckinViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UICollectionView *cards;
 
 @end

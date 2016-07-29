@@ -203,6 +203,15 @@
     [[UISearchBar appearance] setTintColor:[appArt detailColor]];
 }
 
+- (NSInteger)showWhichDay {
+    // If the time is before 2016/08/20 17:00:00 show day 1, otherwise show day 2
+    if ([[NSDate date] compare:[NSDate dateWithTimeIntervalSince1970:1471683600]] == NSOrderedAscending) {
+        return 1;
+    }
+    
+    return 2;
+}
+
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
     
     // shortcutItem.type

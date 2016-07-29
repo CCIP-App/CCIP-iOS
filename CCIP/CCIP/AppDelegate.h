@@ -22,5 +22,7 @@
 @property (strong, nonatomic) NavigationController *navigationView;
 @property (strong, nonatomic) MasterViewController *masterView;
 
+- (NSInteger)showWhichDay;
+
 @end
 
