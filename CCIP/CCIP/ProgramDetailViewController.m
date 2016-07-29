@@ -7,16 +7,11 @@
 //
 
 #import "ProgramDetailViewController.h"
-#import "CAPSPageMenu.h"
-#import "ProgramAbstractViewController.h"
-#import "ProgramSpeakerIntroViewController.h"
+#import "ProgramDetailViewPagerController.h"
 
 @interface ProgramDetailViewController ()
 
-@property (nonatomic) CAPSPageMenu *pageMenu;
-
-@property (strong, nonatomic) ProgramAbstractViewController *abstractView;
-@property (strong, nonatomic) ProgramSpeakerIntroViewController *speakerIntroView;
+@property (strong, nonatomic) ProgramDetailViewPagerController *detailViewPager;
 
 @property (strong, nonatomic) NSDictionary *program;
 
@@ -28,12 +23,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.abstractView = [[ProgramAbstractViewController alloc] initWithNibName:@"ProgramAbstractViewController"
-                                                                            bundle:[NSBundle mainBundle]];
-        self.abstractView.title = NSLocalizedString(@"Introduction", nil);
-        self.speakerIntroView = [[ProgramSpeakerIntroViewController alloc] initWithNibName:@"ProgramSpeakerIntroViewController"
-                                                                                    bundle:[NSBundle mainBundle]];
-        self.speakerIntroView.title = NSLocalizedString(@"Speaker", nil);
+        self.detailViewPager = [ProgramDetailViewPagerController new];
+        [self addChildViewController:self.detailViewPager];
+        [self.view addSubview:self.detailViewPager.view];
+        [self.detailViewPager didMoveToParentViewController:self];
     }
     return self;
 }
@@ -47,9 +40,14 @@
     return self;
 }
 
+-(void)setViewPager {
+    self.detailViewPager.view.frame = CGRectMake(0, self.topBG.frame.size.height-44, self.view.bounds.size.width, self.view.bounds.size.height-(self.topBG.frame.size.height-44));
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self setViewPager];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -62,36 +60,6 @@
     [self.subject setText:[self.program objectForKey:@"subject"]];
     [self.subject setAdjustsFontSizeToFitWidth:YES];
     [self.subject setMinimumScaleFactor:0.5];
-    
-    NSDictionary *parameters = @{
-                                 CAPSPageMenuOptionSelectionIndicatorHeight: @(5.0),
-                                 //CAPSPageMenuOptionMenuItemSeparatorWidth: @(4.3),
-                                 CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor clearColor],
-                                 CAPSPageMenuOptionViewBackgroundColor: [UIColor clearColor],
-                                 //CAPSPageMenuOptionBottomMenuHairlineColor:
-                                 CAPSPageMenuOptionSelectionIndicatorColor: [UIColor colorWithRed:184.0f/255.0f green:233.0f/255.0f blue:134.0f/255.0f alpha:1.0f],
-                                 //CAPSPageMenuOptionMenuItemSeparatorColor:
-                                 CAPSPageMenuOptionMenuMargin: @(0.0),
-                                 CAPSPageMenuOptionMenuHeight: @(44.0),
-                                 CAPSPageMenuOptionSelectedMenuItemLabelColor: [UIColor whiteColor],
-                                 CAPSPageMenuOptionUnselectedMenuItemLabelColor: [UIColor whiteColor],
-                                 //CAPSPageMenuOptionUseMenuLikeSegmentedControl: @(YES),   // some bug on 6+
-                                 //CAPSPageMenuOptionMenuItemSeparatorRoundEdges:
-                                 CAPSPageMenuOptionMenuItemFont: [UIFont systemFontOfSize:18.0f weight:UIFontWeightRegular],
-                                 //CAPSPageMenuOptionMenuItemSeparatorPercentageHeight: @(0.1),
-                                 CAPSPageMenuOptionMenuItemWidth: @( [[UIScreen mainScreen] bounds].size.width /2 )
-                                 //CAPSPageMenuOptionEnableHorizontalBounce:
-                                 //CAPSPageMenuOptionAddBottomMenuHairline:
-                                 //CAPSPageMenuOptionMenuItemWidthBasedOnTitleTextWidth:
-                                 //CAPSPageMenuOptionScrollAnimationDurationOnMenuItemTap:
-                                 //CAPSPageMenuOptionCenterMenuItems:
-                                 //CAPSPageMenuOptionHideTopMenuBar:
-                                 };
-    
-    _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:@[ self.abstractView, self.speakerIntroView]
-                                                        frame:CGRectMake(0.0, 0.0, self.pagerview.frame.size.width, self.pagerview.frame.size.height)
-                                                      options:parameters];
-    [self.pagerview addSubview:_pageMenu.view];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -102,8 +70,7 @@
 - (void)setProgram:(NSMutableDictionary *)program {
     _program = program;
     
-    [self.abstractView setProgram:_program];
-    [self.speakerIntroView setProgram:_program];
+    [self.detailViewPager setProgram:self.program];
 }
 
 /*

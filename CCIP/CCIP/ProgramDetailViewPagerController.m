@@ -83,10 +83,10 @@
     
     switch (index) {
         case 0:
-            label.text = @"簡介";
+            label.text = NSLocalizedString(@"Introduction", nil);
             break;
         case 1:
-            label.text = @"講者";
+            label.text = NSLocalizedString(@"Speaker", nil);
             break;
         default:
             label.text = @"(NULL)";
