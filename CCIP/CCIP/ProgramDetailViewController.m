@@ -56,7 +56,12 @@
     [super viewWillAppear:animated];
     
     [self.speakername setText:[self.program objectForKey:@"speakername"]];
+    [self.speakername setAdjustsFontSizeToFitWidth:YES];
+    [self.speakername setMinimumScaleFactor:0.5];
+    
     [self.subject setText:[self.program objectForKey:@"subject"]];
+    [self.subject setAdjustsFontSizeToFitWidth:YES];
+    [self.subject setMinimumScaleFactor:0.5];
     
     NSDictionary *parameters = @{
                                  CAPSPageMenuOptionSelectionIndicatorHeight: @(5.0),
