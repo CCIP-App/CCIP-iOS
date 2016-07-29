@@ -28,7 +28,6 @@
 
 - (void)checkinBtnTouched {
     if ([self.id isEqualToString:@"day1checkin"] || [self.id isEqualToString:@"day2checkin"]) {
-        // TODO: Send API request
         GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE(self.appDelegate.accessToken, self.id)];
         [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
             if (json != nil) {
@@ -51,7 +50,6 @@
         [ac addActionButton:NSLocalizedString(@"CONFIRM", nil)
                       style:UIAlertActionStyleDestructive
                     handler:^(UIAlertAction * _Nonnull action) {
-                        // TODO: Send API request
                         GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE(self.appDelegate.accessToken, self.id)];
                         [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
                             if (json != nil) {

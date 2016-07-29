@@ -60,17 +60,29 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CheckinViewCell *cell = (CheckinViewCell  *)[collectionView dequeueReusableCellWithReuseIdentifier:@"reuse" forIndexPath:indexPath];
-    [cell.checkinBtn setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
+    NSInteger idx = 1;
     
     // If the time is before 2016/08/20 17:00:00 show day 1, otherwise show day 2
     NSString *checkId, *lunchId;
     if ([self.appDelegate showWhichDay] == 1) {
         checkId = @"day1checkin";
         lunchId = @"day1lunch";
+        
+        if (indexPath.section == 0) {
+            idx = 0;
+        } else if (indexPath.section == 2) {
+            idx = 2;
+        }
     } else {
         checkId = @"day2checkin";
         lunchId = @"day2lunch";
         [cell.checkinDate setText:@"8/21"];
+        
+        if (indexPath.section == 0) {
+            idx = 3;
+        } else if (indexPath.section == 2) {
+            idx = 4;
+        }
     }
     
     switch (indexPath.section) {
@@ -78,10 +90,6 @@
             [cell setId:checkId];
             [cell.checkinTitle setText:NSLocalizedString(@"Checkin", nil)];
             [cell.checkinText setText:NSLocalizedString(@"CheckinText", nil)];
-            [cell.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButton", nil)
-                             forState:UIControlStateNormal];
-            
-            // TODO: pre-load current used status into UI
             break;
         case 1:
             [cell setId:@"kit"];
@@ -90,8 +98,6 @@
             [cell.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
             [cell.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil)
                              forState:UIControlStateNormal];
-            
-            // TODO: pre-load current used status into UI
             break;
         case 2:
             [cell setId:lunchId];
@@ -99,12 +105,21 @@
             [cell.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
             [cell.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil)
                              forState:UIControlStateNormal];
-            
-            // TODO: pre-load current used status into UI
             break;
         default:
             break;
     }
+    
+    if ([self.scenarios[idx] objectForKey:@"used"]) {
+        [cell.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil)
+                         forState:UIControlStateNormal];
+        [cell.checkinBtn setBackgroundColor:[UIColor grayColor]];
+    } else {
+        [cell.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButton", nil)
+                         forState:UIControlStateNormal];
+        [cell.checkinBtn setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
+    }
+    
     [self configureCell:cell withIndexPath:indexPath];
     return cell;
 }
