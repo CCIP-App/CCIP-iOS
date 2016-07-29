@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -28,17 +28,19 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3IZ-h3-4NN">
                     <rect key="frame" x="0.0" y="176" width="375" height="491"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9T-9o-BPS">
-                    <rect key="frame" x="30" y="126" width="315" height="33"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9T-9o-BPS">
+                    <rect key="frame" x="30" y="113" width="315" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="33" id="wvf-0Y-NcO"/>
+                        <constraint firstAttribute="height" constant="60" id="wvf-0Y-NcO"/>
                     </constraints>
+                    <string key="text">Label
+Label</string>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XvY-lv-3dk">
-                    <rect key="frame" x="30" y="96" width="315" height="25"/>
+                    <rect key="frame" x="30" y="80" width="315" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="iQX-Op-O7V"/>
                     </constraints>
@@ -53,10 +55,10 @@
                 <constraint firstItem="2zz-1u-asa" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="6oc-ld-76g"/>
                 <constraint firstItem="U9T-9o-BPS" firstAttribute="leading" secondItem="2zz-1u-asa" secondAttribute="leading" constant="30" id="8J6-Rb-GYG"/>
                 <constraint firstItem="2zz-1u-asa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Rph-tj-k5X"/>
+                <constraint firstItem="U9T-9o-BPS" firstAttribute="top" secondItem="XvY-lv-3dk" secondAttribute="bottom" constant="8" id="RwG-fh-rY5"/>
                 <constraint firstItem="3IZ-h3-4NN" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="TbH-aV-JQu"/>
                 <constraint firstItem="XvY-lv-3dk" firstAttribute="leading" secondItem="2zz-1u-asa" secondAttribute="leading" constant="30" id="W5F-Me-FD7"/>
-                <constraint firstItem="XvY-lv-3dk" firstAttribute="top" secondItem="2zz-1u-asa" secondAttribute="top" constant="32" id="arD-oQ-d6q"/>
-                <constraint firstItem="U9T-9o-BPS" firstAttribute="top" secondItem="2zz-1u-asa" secondAttribute="top" constant="62" id="ilF-tM-giS"/>
+                <constraint firstItem="XvY-lv-3dk" firstAttribute="top" secondItem="2zz-1u-asa" secondAttribute="top" constant="16" id="arD-oQ-d6q"/>
                 <constraint firstAttribute="bottom" secondItem="3IZ-h3-4NN" secondAttribute="bottom" id="jPe-L6-NTb"/>
                 <constraint firstItem="3IZ-h3-4NN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lSX-Iq-Age"/>
                 <constraint firstItem="3IZ-h3-4NN" firstAttribute="top" secondItem="2zz-1u-asa" secondAttribute="bottom" constant="-44" id="nEQ-Or-fYz"/>
