@@ -11,6 +11,7 @@
 #import "GatewayWebService/GatewayWebService.h"
 #import "ProgramDetailViewController.h"
 #import "NSInvocation+addition.h"
+#import <CoreText/CoreText.h>
 
 #define TOOLBAR_HIGHT 44.0
 
@@ -488,14 +489,35 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // Configure the cell...
     
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:NULL];
+    UITableViewCell *cell = [UITableViewCell new];
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    
+    CGFloat cellContantWidth = self.view.frame.size.width - 40;
+    CGFloat detailTextLabelWidth = 25;
+    
+    UILabel *textLabel = [UILabel new];
+    [textLabel setFrame:CGRectMake(20, 12, cellContantWidth - detailTextLabelWidth - 20 , 20.3333)];
+    
+    UILabel *detailTextLabel = [UILabel new];
+    [detailTextLabel setFrame:CGRectMake(cellContantWidth - detailTextLabelWidth, 12, 30, 20.3333)];
+    [detailTextLabel setTextAlignment:NSTextAlignmentRight];
+    [detailTextLabel setTextColor:[UIColor grayColor]];
+    
+    // set font Monospaced
+    NSArray *monospacedSetting = @[@{UIFontFeatureTypeIdentifierKey: @(kNumberSpacingType),
+                                     UIFontFeatureSelectorIdentifierKey: @(kMonospacedNumbersSelector)}];
+    UIFontDescriptor *newDescriptor = [[detailTextLabel.font fontDescriptor] fontDescriptorByAddingAttributes:@{UIFontDescriptorFeatureSettingsAttribute: monospacedSetting}];
+    // Size 0 to use previously set font size
+    detailTextLabel.font = [UIFont fontWithDescriptor:newDescriptor size:0];
+    
+    [cell addSubview:textLabel];
+    [cell addSubview:detailTextLabel];
     
     NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     NSDictionary *program = [[self.program_date_section objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
-    [cell.textLabel setText:[program objectForKey:@"subject"]];
-    [cell.detailTextLabel setText:[program objectForKey:@"room"]];
+    [textLabel setText:[program objectForKey:@"subject"]];
+    [detailTextLabel setText:[program objectForKey:@"room"]];
     
     return cell;
 }
