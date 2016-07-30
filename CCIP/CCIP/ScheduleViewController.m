@@ -328,6 +328,7 @@
 -(void)segmentedControlValueDidChange:(UISegmentedControl *)segment
 {
     [self setSegmentedAndTableWithIndex:segment.selectedSegmentIndex];
+    [self.tableView setContentOffset:CGPointMake(0,-_topGuide) animated:YES];
 }
 
 
@@ -359,7 +360,6 @@
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    NSLog(@"scrollViewDidEndDragging");
     if (decelerate == NO) {
         [self scrollViewDidEndScrolling:scrollView];
     }
@@ -367,7 +367,6 @@
 
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    NSLog(@"scrollViewDidEndDecelerating");
     [self scrollViewDidEndScrolling:scrollView];
 }
 
