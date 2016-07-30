@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iCarousel/iCarousel.h>
 
-@interface CheckinViewController : UIViewController<UICollectionViewDataSource>
+@interface CheckinViewController : UIViewController<iCarouselDataSource, iCarouselDelegate>
 
-@property (weak, nonatomic) IBOutlet UICollectionView *cards;
+@property (strong, nonatomic) IBOutlet iCarousel *cards;
 
 - (void)reloadCard;
 

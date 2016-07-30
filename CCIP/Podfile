@@ -13,6 +13,5 @@ target 'CCIP' do
   pod 'STPopup', '~> 1.7'
   pod 'ColorArt', '0.1.1'
   pod 'iRate', :git => 'https://github.com/FrankWu100/iRate'
-  pod 'RGCardViewLayout'
   pod 'iCarousel', '~> 1.8'
 end

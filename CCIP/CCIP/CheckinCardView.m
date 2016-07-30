@@ -1,32 +1,34 @@
 //
-//  CheckinViewCell.m
+//  CheckinCardView.m
 //  CCIP
 //
-//  Created by Sars on 7/17/16.
-//  Copyright © 2016 CPRTeam. All rights reserved.
+//  Created by 腹黒い茶 on 2016/07/31.
+//  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
-#import "CheckinViewCell.h"
+#import "CheckinCardView.h"
 #import "AppDelegate.h"
 #import "UIAlertController+additional.h"
 #import "GatewayWebService/GatewayWebService.h"
 
-@interface CheckinViewCell()
+@interface CheckinCardView()
 
 @property (strong, nonatomic) AppDelegate *appDelegate;
 
 @end
 
-@implementation CheckinViewCell
+@implementation CheckinCardView
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     self.checkinBtn.layer.cornerRadius = 10.0f;
-    [self.checkinBtn addTarget:self action:@selector(checkinBtnTouched) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)checkinBtnTouched {
+- (IBAction)checkinBtnTouched:(id)sender {
+    UIColor *disabledColor = [UIColor colorWithRed:155/255.0 green:155/255.0 blue:155/255.0 alpha:1];
     if ([self.id isEqualToString:@"day1checkin"] || [self.id isEqualToString:@"day2checkin"]) {
         GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE(self.appDelegate.accessToken, self.id)];
         [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
@@ -35,9 +37,23 @@
                 if ([[json objectForKey:@"message"] isEqual:@"invalid token"]) {
                     NSLog(@"%@", [json objectForKey:@"message"]);
                     [self.checkinBtn setBackgroundColor:[UIColor redColor]];
+                } else if ([[json objectForKey:@"message"] isEqual:@"has been used"]) {
+                    NSLog(@"%@", [json objectForKey:@"message"]);
+                    [UIView animateWithDuration:0.25f
+                                     animations:^{
+                                         [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
+                                     }
+                                     completion:^(BOOL finished) {
+                                         if (finished) {
+                                             [UIView animateWithDuration:1.75f
+                                                              animations:^{
+                                                                  [self.checkinBtn setBackgroundColor:disabledColor];
+                                                              }];
+                                         }
+                                     }];
                 } else {
                     [self.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil) forState:UIControlStateNormal];
-                    [self.checkinBtn setBackgroundColor:[UIColor colorWithRed:155/255.0 green:155/255.0 blue:155/255.0 alpha:1]];
+                    [self.checkinBtn setBackgroundColor:disabledColor];
                 }
             }
         }];
@@ -59,7 +75,7 @@
                                     [self.checkinBtn setBackgroundColor:[UIColor redColor]];
                                 } else {
                                     [self.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil) forState:UIControlStateNormal];
-                                    [self.checkinBtn setBackgroundColor:[UIColor colorWithRed:155/255.0 green:155/255.0 blue:155/255.0 alpha:1]];
+                                    [self.checkinBtn setBackgroundColor:disabledColor];
                                 }
                             }
                         }];
@@ -67,5 +83,13 @@
         [ac showAlert:nil];
     }
 }
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
 
 @end

@@ -10,8 +10,8 @@
 #import <Google/Analytics.h>
 #import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
+#import "CheckinCardViewController.h"
 #import "CheckinViewController.h"
-#import "CheckinViewCell.h"
 #import "GuideViewController.h"
 
 @interface CheckinViewController()
@@ -32,6 +32,11 @@
     
     [self.appDelegate setCheckinView:self];
     
+    //configure carousel
+    self.cards.type = iCarouselTypeLinear;
+    self.cards.pagingEnabled = YES;
+    self.cards.bounceDistance = 0.3f;
+    
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"CheckinViewController"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
@@ -40,12 +45,26 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    CGFloat topGuide = 0.0;
+    CGFloat bottomGuide = 0.0;
+    if (self.navigationController.navigationBar.translucent) {
+        if (self.prefersStatusBarHidden == NO) topGuide += 20;
+        if (self.navigationController.navigationBarHidden == NO) topGuide += self.navigationController.navigationBar.bounds.size.height;
+    }
+    if (self.tabBarController.tabBar.hidden == NO) bottomGuide += self.tabBarController.tabBar.bounds.size.height;
+    
+    self.view.frame = CGRectMake(0, topGuide, self.view.frame.size.width, self.view.frame.size.height - topGuide - bottomGuide);
+    
     [self reloadCard];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self hideGuideView];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -85,104 +104,152 @@
     }
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 1;
-}
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    if ([self.scenarios count] > 2) {
-        // Hard code...
-        return 3;
-    }
-    
-    return 0;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CheckinViewCell *cell = (CheckinViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"reuse" forIndexPath:indexPath];
-    NSInteger idx = 1;
-    
-    // If the time is before 2016/08/20 17:00:00 show day 1, otherwise show day 2
-    NSString *checkId, *lunchId;
-    if ([self.appDelegate showWhichDay] == 1) {
-        checkId = @"day1checkin";
-        lunchId = @"day1lunch";
-        
-        if (indexPath.section == 0) {
-            idx = 0;
-        } else if (indexPath.section == 2) {
-            idx = 2;
-        }
-    } else {
-        checkId = @"day2checkin";
-        lunchId = @"day2lunch";
-        [cell.checkinDate setText:@"8/21"];
-        
-        if (indexPath.section == 0) {
-            idx = 3;
-        } else if (indexPath.section == 2) {
-            idx = 4;
-        }
-    }
-    
-    switch (indexPath.section) {
-        case 0:
-            [cell setId:checkId];
-            [cell.checkinTitle setText:NSLocalizedString(@"Checkin", nil)];
-            [cell.checkinText setText:NSLocalizedString(@"CheckinText", nil)];
-            break;
-        case 1:
-            [cell setId:@"kit"];
-            [cell.checkinDate setText:@"COSCUP"];
-            [cell.checkinTitle setText:NSLocalizedString(@"kit", nil)];
-            [cell.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
-            [cell.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil)
-                             forState:UIControlStateNormal];
-            break;
-        case 2:
-            [cell setId:lunchId];
-            [cell.checkinTitle setText:NSLocalizedString(@"lunch", nil)];
-            [cell.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
-            [cell.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil)
-                             forState:UIControlStateNormal];
-            break;
-        default:
-            break;
-    }
-    
-    if ([self.scenarios[idx] objectForKey:@"used"]) {
-        [cell.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil)
-                         forState:UIControlStateNormal];
-        [cell.checkinBtn setBackgroundColor:[UIColor grayColor]];
-    } else {
-        [cell.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButton", nil)
-                         forState:UIControlStateNormal];
-        [cell.checkinBtn setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
-    }
-    
-    [self configureCell:cell withIndexPath:indexPath];
-    return cell;
-}
-
-- (void)configureCell:(CheckinViewCell *)cell withIndexPath:(NSIndexPath *)indexPath {
-    UIView *subview = [cell.contentView viewWithTag:TAG];
-    [subview removeFromSuperview];
-    
-    switch (indexPath.section) {
-        case 0:
-            break;
-        case 1:
-            break;
-        case 2:
-            break;
-        default:
-            break;
-    }
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark iCarousel methods
+
+- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
+    //return the total number of items in the carousel
+    if ([self.scenarios count] > 2 && [self.appDelegate showWhichDay] == 1) {
+        // Hard code...
+        return 3;
+    } else {
+        return [self.scenarios count];
+    }
+}
+
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
+    //    UILabel *label = nil;
+    
+    //create new view if no view is available for recycling
+    if (view == nil) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle:nil];
+        CheckinCardViewController *temp = (CheckinCardViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CheckinCardReuseView"];
+        
+        [temp.view setFrame:CGRectMake(0, 0, self.view.frame.size.width - 80, self.view.frame.size.height - 100)];
+        view = (UIView*)temp.view;
+        
+        NSInteger idx = 1;
+        
+        // If the time is before 2016/08/20 17:00:00 show day 1, otherwise show day 2
+        NSString *checkId, *lunchId, *dateId;
+        if ([self.appDelegate showWhichDay] == 1) {
+            checkId = @"day1checkin";
+            lunchId = @"day1lunch";
+            dateId = @"8/20";
+            
+            if (index == 0) {
+                idx = 0;
+            } else if (index == 2) {
+                idx = 2;
+            }
+        } else {
+            checkId = @"day2checkin";
+            lunchId = @"day2lunch";
+            dateId = @"8/21";
+            
+            if (index == 0) {
+                idx = 3;
+            } else if (index == 2) {
+                idx = 4;
+            }
+        }
+        bool isCheckin = NO;
+        switch (index) {
+            case 0:
+                isCheckin = YES;
+                [temp setId:checkId];
+                [temp.checkinDate setText:dateId];
+                [temp.checkinTitle setText:NSLocalizedString(@"Checkin", nil)];
+                [temp.checkinText setText:NSLocalizedString(@"CheckinText", nil)];
+                break;
+            case 1:
+                isCheckin = NO;
+                [temp setId:@"kit"];
+                [temp.checkinDate setText:@"COSCUP"];
+                [temp.checkinTitle setText:NSLocalizedString(@"kit", nil)];
+                [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
+                break;
+            case 2:
+                isCheckin = YES;
+                [temp setId:lunchId];
+                [temp.checkinDate setText:dateId];
+                [temp.checkinTitle setText:NSLocalizedString(@"lunch", nil)];
+                [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
+                break;
+            default:
+                break;
+        }
+        
+        if ([self.scenarios[idx] objectForKey:@"used"]) {
+            if (isCheckin) {
+                [temp.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil)
+                                 forState:UIControlStateNormal];
+            } else {
+                [temp.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil)
+                                 forState:UIControlStateNormal];
+            }
+            [temp.checkinBtn setBackgroundColor:[UIColor grayColor]];
+        } else {
+            if (isCheckin) {
+                [temp.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButton", nil)
+                                 forState:UIControlStateNormal];
+            } else {
+                [temp.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil)
+                                 forState:UIControlStateNormal];
+            }
+            [temp.checkinBtn setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
+        }
+    } else {
+        //get a reference to the label in the recycled view
+        //        label = (UILabel *)[view viewWithTag:1];
+    }
+    
+    //set item label
+    //remember to always set any properties of your carousel item
+    //views outside of the `if (view == nil) {...}` check otherwise
+    //you'll get weird issues with carousel item content appearing
+    //in the wrong place in the carousel
+    //    label.text = [_items[index] stringValue];
+    
+    return view;
+}
+
+- (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value {
+    switch (option) {
+        case iCarouselOptionWrap: {
+            //normally you would hard-code this to YES or NO
+            return NO;
+        }
+        case iCarouselOptionSpacing: {
+            //add a bit of spacing between the item views
+            return value * 1.08f;
+        }
+        case iCarouselOptionFadeMax: {
+            if (self.cards.type == iCarouselTypeCustom) {
+                //set opacity based on distance from camera
+                return 0.0f;
+            }
+            return value;
+        }
+        case iCarouselOptionShowBackfaces:
+        case iCarouselOptionRadius:
+        case iCarouselOptionAngle:
+        case iCarouselOptionArc:
+        case iCarouselOptionTilt:
+        case iCarouselOptionCount:
+        case iCarouselOptionFadeMin:
+        case iCarouselOptionFadeMinAlpha:
+        case iCarouselOptionFadeRange:
+        case iCarouselOptionOffsetMultiplier:
+        case iCarouselOptionVisibleItems: {
+            return value;
+        }
+    }
 }
 
 /*

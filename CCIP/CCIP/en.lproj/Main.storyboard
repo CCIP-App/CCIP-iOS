@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -115,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dnj-al-u0m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-519" y="1772"/>
+            <point key="canvasLocation" x="-1130" y="1778"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MuM-5j-UJl">
@@ -155,135 +156,124 @@
             </objects>
             <point key="canvasLocation" x="206" y="118"/>
         </scene>
-        <!--Checkin-->
+        <!--Data Source-->
         <scene sceneID="s5H-mK-055">
             <objects>
                 <viewController storyboardIdentifier="CheckinViewController" id="6Xx-bx-CvE" customClass="CheckinViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dX4-Wl-0Qv"/>
-                        <viewControllerLayoutGuide type="bottom" id="u6h-tC-buW"/>
+                        <viewControllerLayoutGuide type="top" id="OEt-o6-jio"/>
+                        <viewControllerLayoutGuide type="bottom" id="GAB-pE-9IY"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kcU-VE-fa5">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="11U-ZE-tyh" customClass="iCarousel">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f3a-eQ-zuL">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                                <color key="backgroundColor" red="0.0" green="0.65098039215686276" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PSj-is-CAn" customClass="RGCardViewLayout">
-                                    <size key="itemSize" width="363" height="608"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reuse" id="MVU-7K-L2Y" customClass="CheckinViewCell">
-                                        <rect key="frame" x="118.5" y="64" width="363" height="608"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="363" height="608"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8/20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KuB-Uh-zQj">
-                                                    <rect key="frame" x="7" y="152" width="347" height="80"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="L8Z-wf-LfC"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                                    <color key="textColor" red="0.25490196078431371" green="0.45882352941176469" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="報到" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LX2-G2-ptg">
-                                                    <rect key="frame" x="8" y="232" width="347" height="44"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="yOS-OL-xnN"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                    <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coH-dF-V3g">
-                                                    <rect key="frame" x="18" y="402" width="327" height="46"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="46" id="Jgr-5r-XMl"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <state key="normal" title="CHECK IN"/>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjL-WA-yBM">
-                                                    <rect key="frame" x="18" y="284" width="327" height="110"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="110" id="50w-lx-lpf"/>
-                                                        <constraint firstAttribute="height" constant="150" id="Ljr-qf-QoF"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="Ljr-qf-QoF"/>
-                                                        </mask>
-                                                    </variation>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="PjL-WA-yBM" firstAttribute="centerY" secondItem="MVU-7K-L2Y" secondAttribute="centerY" constant="35" id="FKj-pP-EZM"/>
-                                            <constraint firstItem="PjL-WA-yBM" firstAttribute="height" secondItem="MVU-7K-L2Y" secondAttribute="height" constant="-186" id="NyR-5b-ark"/>
-                                            <constraint firstItem="PjL-WA-yBM" firstAttribute="top" secondItem="LX2-G2-ptg" secondAttribute="bottom" constant="8" id="TJL-Fy-d9T"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="LX2-G2-ptg" secondAttribute="trailing" id="UgX-5P-Sgc"/>
-                                            <constraint firstItem="KuB-Uh-zQj" firstAttribute="leading" secondItem="MVU-7K-L2Y" secondAttribute="leadingMargin" constant="-0.5" id="bJp-hs-tan"/>
-                                            <constraint firstItem="coH-dF-V3g" firstAttribute="top" secondItem="PjL-WA-yBM" secondAttribute="bottom" constant="8" id="dyh-3p-5fc"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="coH-dF-V3g" secondAttribute="trailing" constant="10" id="hko-4P-Fkf"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="PjL-WA-yBM" secondAttribute="trailing" constant="10" id="jPp-Un-IEr"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="KuB-Uh-zQj" secondAttribute="trailing" constant="0.5" id="lnO-QU-DF2"/>
-                                            <constraint firstAttribute="leadingMargin" secondItem="LX2-G2-ptg" secondAttribute="leading" id="pLA-WU-Fb6"/>
-                                            <constraint firstItem="LX2-G2-ptg" firstAttribute="top" secondItem="KuB-Uh-zQj" secondAttribute="bottom" id="tDo-jZ-7pB"/>
-                                            <constraint firstItem="coH-dF-V3g" firstAttribute="leading" secondItem="MVU-7K-L2Y" secondAttribute="leadingMargin" constant="10" id="udN-kg-Noc"/>
-                                            <constraint firstAttribute="leadingMargin" secondItem="PjL-WA-yBM" secondAttribute="leading" constant="-10" id="w5r-MF-ehp"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="NyR-5b-ark"/>
-                                            </mask>
-                                        </variation>
-                                        <connections>
-                                            <outlet property="checkinBtn" destination="coH-dF-V3g" id="Z4g-Sy-5te"/>
-                                            <outlet property="checkinDate" destination="KuB-Uh-zQj" id="N0t-5v-y3c"/>
-                                            <outlet property="checkinText" destination="PjL-WA-yBM" id="hae-0d-DGT"/>
-                                            <outlet property="checkinTitle" destination="LX2-G2-ptg" id="Ehg-NM-hmL"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="6Xx-bx-CvE" id="qaM-Wf-fAk"/>
-                                </connections>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="u6h-tC-buW" firstAttribute="top" secondItem="f3a-eQ-zuL" secondAttribute="bottom" id="DnL-8F-MG3"/>
-                            <constraint firstAttribute="trailing" secondItem="f3a-eQ-zuL" secondAttribute="trailing" id="LPF-a9-MDM"/>
-                            <constraint firstItem="f3a-eQ-zuL" firstAttribute="leading" secondItem="kcU-VE-fa5" secondAttribute="leading" id="Pca-48-BZr"/>
-                            <constraint firstItem="f3a-eQ-zuL" firstAttribute="top" secondItem="kcU-VE-fa5" secondAttribute="top" id="qE5-Ae-l4H"/>
-                        </constraints>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.65098039220000004" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <outlet property="dataSource" destination="6Xx-bx-CvE" id="Cgr-qK-nYc"/>
+                            <outlet property="delegate" destination="6Xx-bx-CvE" id="AIi-IJ-ss4"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Checkin" image="icon_ios_pin.png" id="o22-2q-CLO"/>
                     <connections>
-                        <outlet property="cards" destination="f3a-eQ-zuL" id="fno-AA-J1V"/>
+                        <outlet property="cards" destination="11U-ZE-tyh" id="vdz-AW-RhI"/>
                         <segue destination="VKq-4v-Yvp" kind="custom" identifier="ShowGuide" customClass="EmbeddedTabBarControllerSegue" id="lBg-aP-1xi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M8l-mK-H7w" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-519" y="1006"/>
+        </scene>
+        <!--Checkin Card View Controller-->
+        <scene sceneID="SiN-EJ-8ci">
+            <objects>
+                <viewController storyboardIdentifier="CheckinCardReuseView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V6X-cZ-B0h" customClass="CheckinCardViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Had-X7-yAA"/>
+                        <viewControllerLayoutGuide type="bottom" id="jGP-3b-ZwZ"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="CVw-Vr-a5B" customClass="CheckinCardView">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="500"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8/20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q04-AM-eVF">
+                                <rect key="frame" x="0.0" y="106" width="400" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="6Gs-ez-7qc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="報到" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZY0-oM-P3F">
+                                <rect key="frame" x="0.0" y="186" width="400" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="i3t-Cg-x4H"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUP-DK-ov7">
+                                <rect key="frame" x="10" y="238" width="380" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="cK8-Qt-OHm"/>
+                                    <constraint firstAttribute="height" constant="150" id="zth-f1-7uE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="zth-f1-7uE"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPS-iQ-rbE">
+                                <rect key="frame" x="10" y="356" width="380" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="hjM-3v-dKt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="CHECK IN"/>
+                                <connections>
+                                    <action selector="checkinBtnTouched:" destination="CVw-Vr-a5B" eventType="touchUpInside" id="EaM-Bf-pif"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZY0-oM-P3F" firstAttribute="top" secondItem="q04-AM-eVF" secondAttribute="bottom" id="0O9-4Z-TNo"/>
+                            <constraint firstAttribute="trailing" secondItem="ZY0-oM-P3F" secondAttribute="trailing" id="1G4-59-iPk"/>
+                            <constraint firstItem="ZY0-oM-P3F" firstAttribute="bottom" secondItem="CVw-Vr-a5B" secondAttribute="centerY" constant="-20" id="4dM-yg-Lei"/>
+                            <constraint firstItem="KUP-DK-ov7" firstAttribute="top" secondItem="ZY0-oM-P3F" secondAttribute="bottom" constant="8" id="5sw-P8-9Ho"/>
+                            <constraint firstItem="q04-AM-eVF" firstAttribute="centerX" secondItem="ZY0-oM-P3F" secondAttribute="centerX" id="8hh-FU-Szq"/>
+                            <constraint firstItem="HPS-iQ-rbE" firstAttribute="top" secondItem="KUP-DK-ov7" secondAttribute="bottom" constant="8" id="CQb-mZ-P4k"/>
+                            <constraint firstItem="HPS-iQ-rbE" firstAttribute="centerX" secondItem="KUP-DK-ov7" secondAttribute="centerX" id="KdS-21-58h"/>
+                            <constraint firstItem="HPS-iQ-rbE" firstAttribute="width" secondItem="KUP-DK-ov7" secondAttribute="width" id="TTv-3S-VoH"/>
+                            <constraint firstItem="ZY0-oM-P3F" firstAttribute="width" secondItem="q04-AM-eVF" secondAttribute="width" id="aqE-b2-JQR"/>
+                            <constraint firstItem="ZY0-oM-P3F" firstAttribute="leading" secondItem="CVw-Vr-a5B" secondAttribute="leading" id="gRH-dg-FGj"/>
+                            <constraint firstItem="KUP-DK-ov7" firstAttribute="leading" secondItem="CVw-Vr-a5B" secondAttribute="leading" constant="10" id="k5g-lf-JW6"/>
+                            <constraint firstAttribute="trailing" secondItem="KUP-DK-ov7" secondAttribute="trailing" constant="10" id="ksw-mE-Pi8"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="checkinBtn" destination="HPS-iQ-rbE" id="mqI-VZ-lmI"/>
+                            <outlet property="checkinDate" destination="q04-AM-eVF" id="E1Q-UG-OJP"/>
+                            <outlet property="checkinText" destination="KUP-DK-ov7" id="bdo-oG-1NJ"/>
+                            <outlet property="checkinTitle" destination="ZY0-oM-P3F" id="2go-YS-EV4"/>
+                        </connections>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="500"/>
+                    <connections>
+                        <outlet property="checkinBtn" destination="HPS-iQ-rbE" id="4Ok-52-zST"/>
+                        <outlet property="checkinDate" destination="q04-AM-eVF" id="EpR-aA-hyN"/>
+                        <outlet property="checkinText" destination="KUP-DK-ov7" id="kus-4M-8Ov"/>
+                        <outlet property="checkinTitle" destination="ZY0-oM-P3F" id="ml4-uT-Rd2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yuv-Bk-NGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-519" y="1778"/>
         </scene>
         <!--Schedule-->
         <scene sceneID="Bg2-m7-A1k">
