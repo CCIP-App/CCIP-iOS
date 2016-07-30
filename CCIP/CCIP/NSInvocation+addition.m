@@ -18,7 +18,10 @@
 
 + (void)InvokeObject:(id)target withSelectorString:(NSString *)selector withArguments:(NSArray *)args {
     SEL sel = NSSelectorFromString(selector);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-variable"
     NSString *assertMsg = [NSString stringWithFormat:@"I cannot found the target selector! Are sure calling [%@ %@] is correct as you want?", [[target class] description], selector];
+#pragma clang diagnostic pop
     NSAssert([target respondsToSelector:sel], assertMsg);
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[target methodSignatureForSelector:sel]];
     [invocation setTarget:target];
