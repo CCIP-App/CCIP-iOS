@@ -337,7 +337,7 @@
                         <viewControllerLayoutGuide type="top" id="T6f-ik-3ze"/>
                         <viewControllerLayoutGuide type="bottom" id="8AP-OM-vdg"/>
                     </layoutGuides>
-                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="O9C-ij-kHs" customClass="CheckinView">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="O9C-ij-kHs" customClass="AnnounceView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
