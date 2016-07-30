@@ -432,6 +432,9 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat progress = (scrollView.contentOffset.y + scrollView.contentInset.top) / (self.myBar.maximumBarHeight - self.myBar.minimumBarHeight);
+    if (progress <= 0) {
+        progress = 0;
+    }
     if (progress > 1) {
         progress = 1;
     }
