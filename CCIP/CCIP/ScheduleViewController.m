@@ -172,15 +172,21 @@
 }
 
 -(void)setScheduleDate{
-    NSDateFormatter *formatter_full = [NSDateFormatter new];
-    [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
-    [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    static NSDateFormatter *formatter_full = nil;
+    if (formatter_full == nil) {
+        formatter_full = [NSDateFormatter new];
+        [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+        [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    }
     
-    NSDateFormatter *formatter_date = [NSDateFormatter new];
-    [formatter_date setDateFormat:@"MM/dd"];
+    static NSDateFormatter *formatter_date = nil;
+    if (formatter_date == nil) {
+        formatter_date = [NSDateFormatter new];
+        [formatter_date setDateFormat:@"MM/dd"];
+    }
     
-    NSDate *startTime;
-    NSString *time_date;
+    static NSDate *startTime;
+    static NSString *time_date;
     
     NSMutableDictionary *datesDict = [NSMutableDictionary new];
 
@@ -259,18 +265,24 @@
 -(void)setSegmentedAndTableWithIndex:(NSInteger)selectedSegmentIndex{
     [self.segmentedControl setSelectedSegmentIndex:selectedSegmentIndex];
 
-    NSDateFormatter *formatter_full = [NSDateFormatter new];
-    [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
-    [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    static NSDateFormatter *formatter_full = nil;
+    if (formatter_full == nil) {
+        formatter_full = [NSDateFormatter new];
+        [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+        [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    }
     
-    NSDateFormatter *formatter_HHmm = [NSDateFormatter new];
-    [formatter_HHmm setDateFormat:@"HH:mm"];
+    static NSDateFormatter *formatter_HHmm = nil;
+    if (formatter_HHmm == nil) {
+        formatter_HHmm = [NSDateFormatter new];
+        [formatter_HHmm setDateFormat:@"HH:mm"];
+    }
     
-    NSDate *startTime;
-    NSDate *endTime;
-    NSString *startTime_str;
-    NSString *endTime_str;
-    NSString *timeKey;
+    static NSDate *startTime;
+    static NSDate *endTime;
+    static NSString *startTime_str;
+    static NSString *endTime_str;
+    static NSString *timeKey;
     
     NSMutableDictionary *sectionDict = [NSMutableDictionary new];
     
@@ -295,8 +307,11 @@
 }
 
 -(void)checkScheduleDate {
-    NSDateFormatter *formatter_s = [NSDateFormatter new];
-    [formatter_s setDateFormat:@"MM/dd"];
+    static NSDateFormatter *formatter_s = nil;
+    if (formatter_s == nil) {
+        formatter_s = [NSDateFormatter new];
+        [formatter_s setDateFormat:@"MM/dd"];
+    }
     
     if ([self.segmentedControl selectedSegmentIndex] == -1) {
         NSInteger segmentsIndex = 0;
