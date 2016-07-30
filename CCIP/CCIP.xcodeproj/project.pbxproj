@@ -23,6 +23,10 @@
 		2839BF3A1D4C97AB0062F36D /* Star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF361D4C97AB0062F36D /* Star@2x.png */; };
 		2839BF3D1D4C97EE0062F36D /* Star-Filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF3B1D4C97EE0062F36D /* Star-Filled.png */; };
 		2839BF3E1D4C97EE0062F36D /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF3C1D4C97EE0062F36D /* Star.png */; };
+		2839BF441D4CD99C0062F36D /* iCarouselExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2839BF431D4CD99C0062F36D /* iCarouselExampleViewController.m */; };
+		2839BF461D4CDAB10062F36D /* iCarouselExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF451D4CDAB10062F36D /* iCarouselExampleViewController.xib */; };
+		2839BF4A1D4CDDAD0062F36D /* CheckinCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */; };
+		2839BF4B1D4CDDAD0062F36D /* CheckinCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF491D4CDDAD0062F36D /* CheckinCardViewController.xib */; };
 		28A2992D1D3B90C000145E76 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A2992B1D3B90C000145E76 /* ScheduleViewController.m */; };
 		28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */; };
 		28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */; };
@@ -139,6 +143,12 @@
 		2839BF361D4C97AB0062F36D /* Star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star@2x.png"; sourceTree = "<group>"; };
 		2839BF3B1D4C97EE0062F36D /* Star-Filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star-Filled.png"; sourceTree = "<group>"; };
 		2839BF3C1D4C97EE0062F36D /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
+		2839BF421D4CD99C0062F36D /* iCarouselExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarouselExampleViewController.h; sourceTree = "<group>"; };
+		2839BF431D4CD99C0062F36D /* iCarouselExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarouselExampleViewController.m; sourceTree = "<group>"; };
+		2839BF451D4CDAB10062F36D /* iCarouselExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iCarouselExampleViewController.xib; sourceTree = "<group>"; };
+		2839BF471D4CDDAD0062F36D /* CheckinCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinCardViewController.h; sourceTree = "<group>"; };
+		2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinCardViewController.m; sourceTree = "<group>"; };
+		2839BF491D4CDDAD0062F36D /* CheckinCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckinCardViewController.xib; sourceTree = "<group>"; };
 		28A2992A1D3B90C000145E76 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
 		28A2992B1D3B90C000145E76 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+addition.h"; sourceTree = "<group>"; };
@@ -373,6 +383,12 @@
 				6BA1A5261D1EFBF100D5924C /* InvalidNetworkMessageView.h */,
 				6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */,
 				6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib */,
+				2839BF421D4CD99C0062F36D /* iCarouselExampleViewController.h */,
+				2839BF431D4CD99C0062F36D /* iCarouselExampleViewController.m */,
+				2839BF451D4CDAB10062F36D /* iCarouselExampleViewController.xib */,
+				2839BF471D4CDDAD0062F36D /* CheckinCardViewController.h */,
+				2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */,
+				2839BF491D4CDDAD0062F36D /* CheckinCardViewController.xib */,
 				5FB4D4911D3B57FA005BF382 /* CheckinViewController.h */,
 				5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */,
 				6BA1A5231D1EFBE700D5924C /* CheckinView.h */,
@@ -562,6 +578,8 @@
 				6B53C6601D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib in Resources */,
 				5FB4D47A1D3A8DF6005BF382 /* icon_ios_more@3x.png in Resources */,
 				5FB4D48B1D3ABF9C005BF382 /* MoreTableViewController.xib in Resources */,
+				2839BF461D4CDAB10062F36D /* iCarouselExampleViewController.xib in Resources */,
+				2839BF4B1D4CDDAD0062F36D /* CheckinCardViewController.xib in Resources */,
 				6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */,
 				5FB4D47B1D3A8DF6005BF382 /* icon_ios_bell.png in Resources */,
 				6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */,
@@ -640,6 +658,7 @@
 				5FF2B11E1D28B19600665DD9 /* IRCView.m in Sources */,
 				6B7142B61D1DBAFB0024EA45 /* scenarioCell.m in Sources */,
 				2823E8E71D3E560C0039D72E /* ProgramSpeakerIntroViewController.m in Sources */,
+				2839BF4A1D4CDDAD0062F36D /* CheckinCardViewController.m in Sources */,
 				2823E8E21D3E55F10039D72E /* ProgramAbstractViewController.m in Sources */,
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
 				6BD8EF2C1D1D73510094BE95 /* main.m in Sources */,
@@ -659,6 +678,7 @@
 				5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */,
 				28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */,
 				6B2CD5791D286E6F00793194 /* UIColor+addition.m in Sources */,
+				2839BF441D4CD99C0062F36D /* iCarouselExampleViewController.m in Sources */,
 				5FB4D4971D3B58C0005BF382 /* CheckinViewCell.m in Sources */,
 				2821DAA71D3DD36500AFE139 /* ProgramDetailViewPagerController.m in Sources */,
 				6B2CD5611D281D9400793194 /* UIAlertController+additional.m in Sources */,

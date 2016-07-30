@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckinCardViewController">
+            <connections>
+                <outlet property="checkinBtn" destination="po8-sl-3hm" id="Xdn-fu-A6k"/>
+                <outlet property="checkinDate" destination="d4k-aQ-RGT" id="7Jo-qU-6Et"/>
+                <outlet property="checkinText" destination="t7T-hI-tYX" id="F9j-WH-GdS"/>
+                <outlet property="checkinTitle" destination="TMV-yu-2Mk" id="VJb-Ed-K85"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="ZcY-Fr-tDs"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="CheckinCardView">
+            <rect key="frame" x="0.0" y="0.0" width="348" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8/20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4k-aQ-RGT">
+                    <rect key="frame" x="0.0" y="156" width="348" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="L7B-S0-I0I"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                    <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="po8-sl-3hm">
+                    <rect key="frame" x="10" y="406" width="328" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="kdC-nI-f9o"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="CHECK IN"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7T-hI-tYX">
+                    <rect key="frame" x="10" y="288" width="328" height="110"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="9Q7-vY-KGF"/>
+                        <constraint firstAttribute="height" constant="110" id="J7G-gQ-4ct"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="9Q7-vY-KGF"/>
+                        </mask>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="報到" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMV-yu-2Mk">
+                    <rect key="frame" x="0.0" y="236" width="348" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="0f7-N7-a7I"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                    <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="TMV-yu-2Mk" firstAttribute="width" secondItem="d4k-aQ-RGT" secondAttribute="width" id="1nz-Ho-PEn"/>
+                <constraint firstAttribute="trailing" secondItem="t7T-hI-tYX" secondAttribute="trailing" constant="10" id="CYx-Ih-1Px"/>
+                <constraint firstAttribute="trailing" secondItem="TMV-yu-2Mk" secondAttribute="trailing" id="Fei-Yd-t3C"/>
+                <constraint firstItem="TMV-yu-2Mk" firstAttribute="top" secondItem="d4k-aQ-RGT" secondAttribute="bottom" id="HJm-K8-Q4s"/>
+                <constraint firstItem="t7T-hI-tYX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Jzb-y2-v5Y"/>
+                <constraint firstItem="po8-sl-3hm" firstAttribute="top" secondItem="t7T-hI-tYX" secondAttribute="bottom" constant="8" id="WoS-i4-3WF"/>
+                <constraint firstItem="d4k-aQ-RGT" firstAttribute="centerX" secondItem="TMV-yu-2Mk" secondAttribute="centerX" id="b8W-wX-3lj"/>
+                <constraint firstItem="TMV-yu-2Mk" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-20" id="cVx-R6-O2W"/>
+                <constraint firstItem="po8-sl-3hm" firstAttribute="centerX" secondItem="t7T-hI-tYX" secondAttribute="centerX" id="ffF-xz-SEH"/>
+                <constraint firstItem="t7T-hI-tYX" firstAttribute="top" secondItem="TMV-yu-2Mk" secondAttribute="bottom" constant="8" id="jzF-GM-hdR"/>
+                <constraint firstItem="po8-sl-3hm" firstAttribute="width" secondItem="t7T-hI-tYX" secondAttribute="width" id="qCX-5G-fs3"/>
+                <constraint firstItem="TMV-yu-2Mk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="y5r-ft-WPy"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>
