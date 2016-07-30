@@ -65,7 +65,8 @@
     }
     if (self.tabBarController.tabBar.hidden == NO) _bottomGuide += self.tabBarController.tabBar.bounds.size.height;
     
-    _canScrollHide = YES;
+    // setting for ScrollHide
+    _canScrollHide = NO;
     _lastContentOffsetY = _topGuide;
     _changeHight = 0;
     
@@ -371,7 +372,7 @@
 }
 
 - (void)scrollViewDidEndScrolling:(UIScrollView *)scrollView {
-    if (scrollView.contentSize.height > scrollView.frame.size.height) {
+    if (_changeHight && scrollView.contentSize.height > scrollView.frame.size.height) {
         BOOL touchTopEdge = (scrollView.contentOffset.y <= -_topGuide) ? YES : NO;
         BOOL touchBottomEdge = (scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height) ? YES : NO;
         _startScroll = NO;
