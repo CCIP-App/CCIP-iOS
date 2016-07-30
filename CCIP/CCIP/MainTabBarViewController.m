@@ -38,7 +38,6 @@
                                                object:nil];
     // setting selected image color from original image with replace custom color filter
     for(UITabBarItem *item in self.tabBar.items) {
-        NSLog(@"%@", item.title);
         UIImage *image = [item.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         image = [image imageWithColor:titleHighlightedColor];
         [item setSelectedImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
