@@ -83,6 +83,7 @@
 		6B2CD5B41D28C92B00793194 /* GatewayWebService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD5B31D28C92B00793194 /* GatewayWebService.framework */; };
 		6B2CD5B51D28C92B00793194 /* GatewayWebService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD5B31D28C92B00793194 /* GatewayWebService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F9E441D4D142700047F38 /* CheckinCardView.m */; };
+		6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
 		6B53C65B1D1ED5CC00EA8012 /* StatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B53C6591D1ED5CC00EA8012 /* StatusView.xib */; };
 		6B53C6601D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib */; };
 		6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
@@ -223,6 +224,7 @@
 		6B2CD5B31D28C92B00793194 /* GatewayWebService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GatewayWebService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2F9E431D4D142700047F38 /* CheckinCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinCardView.h; sourceTree = "<group>"; };
 		6B2F9E441D4D142700047F38 /* CheckinCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinCardView.m; sourceTree = "<group>"; };
+		6B2F9E461D4D18F100047F38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6B53C6591D1ED5CC00EA8012 /* StatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusView.xib; sourceTree = "<group>"; };
 		6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvalidNetworkMessageView.xib; sourceTree = "<group>"; };
 		6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreenIcon@3x.png"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */,
 				6B2CD58B1D28780F00793194 /* AudioToolbox.framework in Frameworks */,
 				6B2CD5B11D28C92B00793194 /* MYCrypto.framework in Frameworks */,
 				6B2CD5B41D28C92B00793194 /* GatewayWebService.framework in Frameworks */,
@@ -278,6 +281,7 @@
 		267251DBF9C24B92F4EE80DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6B2F9E461D4D18F100047F38 /* QuartzCore.framework */,
 				6B2CD5B31D28C92B00793194 /* GatewayWebService.framework */,
 				6B2CD5B01D28C92B00793194 /* MYCrypto.framework */,
 				6B2CD5AD1D28C92B00793194 /* CommonCrypto.framework */,

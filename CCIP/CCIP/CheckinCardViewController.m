@@ -14,8 +14,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    self.view.layer.cornerRadius = 15.0f; // set cornerRadius as you want.
 }
 
 - (void)didReceiveMemoryWarning {
