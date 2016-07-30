@@ -1,4 +1,5 @@
 PODS:
+  - BLKFlexibleHeightBar (1.0.2)
   - ColorArt (0.1.1)
   - FirebaseAnalytics (3.2.1):
     - FirebaseInstanceID (~> 1.0)
@@ -21,18 +22,17 @@ PODS:
   - ICViewPager (1.5.1)
   - iRate (1.11.4)
   - OneSignal (1.13.3)
-  - RGCardViewLayout (1.0)
   - STPopup (1.7.0)
   - UICKeyChainStore (2.1.0)
 
 DEPENDENCIES:
+  - BLKFlexibleHeightBar
   - ColorArt (= 0.1.1)
   - Google/Analytics
   - iCarousel (~> 1.8)
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
   - iRate (from `https://github.com/FrankWu100/iRate`)
   - OneSignal
-  - RGCardViewLayout
   - STPopup (~> 1.7)
   - UICKeyChainStore (~> 2.1)
 
@@ -51,6 +51,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/FrankWu100/iRate
 
 SPEC CHECKSUMS:
+  BLKFlexibleHeightBar: b27572a69633d8e33f1f2bbc486b04d8e86f742d
   ColorArt: de0ffb63da4acdde8e234ded62e200236ca3e7e4
   FirebaseAnalytics: 0fd6532cb2c3d03cd5cf26ad295ccb091efd3104
   FirebaseInstanceID: a9d923f3d0b6fbf9fac89310860357aaadc34be5
@@ -63,10 +64,9 @@ SPEC CHECKSUMS:
   ICViewPager: c1278b67eceac7252d48252829c3c703285dfb76
   iRate: 599ed07c854e0695f3c605d1b2a64c67d912acb7
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
-  RGCardViewLayout: d8f4ecd6703b3f012f876008cff19dae711a9b07
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: 3f820da0a946a5ef52ac907d5c4f02f9b9784936
+PODFILE CHECKSUM: 2ff3421c1c94f35f4fd77e23feda6bd749b83117
 
 COCOAPODS: 1.0.1

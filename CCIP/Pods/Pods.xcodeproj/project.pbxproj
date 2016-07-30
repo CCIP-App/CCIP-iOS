@@ -7,239 +7,261 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E6CA9A94EB0A426B105AB6B7E370520 /* UIImage+Scale.h in Headers */ = {isa = PBXBuildFile; fileRef = 073A01182FA7D4C23390B3DB40AA2DB0 /* UIImage+Scale.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		10C86995D04A48756AE4797CFFEDD69A /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAFE3E0820B9F1E7534D835760FB24 /* iCarousel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		11F1A6C835418BA704AF5988A71288F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
-		14F130E3340EDD498CC7CBFB00005A53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
-		17B7936CD6D347543F6FA3E584B6A213 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
-		1CBCC11AFEC39AE34CF22778C05A0C30 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 24A8D7E8F20D119A1DA25BA041B8768A /* iRate.bundle */; };
-		24B8CC0AC38B2214ABF1AD88B5F81917 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6098EE5902D5CB4F3A155DD3A8FCF7 /* UIImage+Scale.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		29B1047CD552807A65F7253B18B32A35 /* STPopup-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B32FCC6299C26B9919648BBEC68AC36 /* STPopup-dummy.m */; };
-		2F7170B17E105936278A1F69DEBD8D32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
-		3484D1F87912024F4623F0E5BD094290 /* Pods-CCIP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 407AB414BF003A508286D3A3B4C68680 /* Pods-CCIP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		390A8863AE159A26A5744AFD4D272C1B /* iRate-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D3D72C02DE77BAE61D1C8684B46BB8 /* iRate-dummy.m */; };
-		3B0BC087FEF77A4ACC7ABA82BE33FD1A /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3809E4512618EB732E5B8D1756494F71 /* iRate.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		3B6027824C2E68D4C84922644CC42414 /* ICViewPager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C21BF3FAA836070F4EA1EB49A0176768 /* ICViewPager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3DD0DA9E171EB6BFE2500C4947FE88DE /* UIResponder+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1F75421B4C287B7009B3816E3AC6F8 /* UIResponder+STPopup.m */; };
+		009F7BCC7C48C28429E45F0A76BE098D /* STPopupLeftBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AF0E905F86A1DB133AE492424E6A75BC /* STPopupLeftBarItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A927F5EA61B6C07404397C96F1B7DFB /* FacebookStyleBarBehaviorDefiner.h in Headers */ = {isa = PBXBuildFile; fileRef = 20CC204B30A895E7D021AE795E731177 /* FacebookStyleBarBehaviorDefiner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E6CA9A94EB0A426B105AB6B7E370520 /* UIImage+Scale.h in Headers */ = {isa = PBXBuildFile; fileRef = DDD98889264A91C4F4451C4BF1D9443C /* UIImage+Scale.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		10C86995D04A48756AE4797CFFEDD69A /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF72DABEE3AB7EFF2D9B5B2F063D742 /* iCarousel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		136CDF804C6DB1F93B6D97E9476DED81 /* BLKFlexibleHeightBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DFD0F943571019B14ED49CEB96DEBD8 /* BLKFlexibleHeightBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		183E20A67C4407B12C9D8C7EA98F4C61 /* BLKFlexibleHeightBarSubviewLayoutAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 9ACFD530F25CD45F16E186C496BF4BF5 /* BLKFlexibleHeightBarSubviewLayoutAttributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1CBCC11AFEC39AE34CF22778C05A0C30 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 376D08327C4E2F792EB8C2292F80DBFF /* iRate.bundle */; };
+		2046E920D630872D9635C76652C6B79C /* STPopupController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F00D717F5A34AB2535C199C1B8A6D0 /* STPopupController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		23AFA54C246EF4AC477D1319B5AEFD02 /* BLKFlexibleHeightBar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F9228EB0145AF4DEC0991A477CB1C4A6 /* BLKFlexibleHeightBar-dummy.m */; };
+		24B8CC0AC38B2214ABF1AD88B5F81917 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = A5400CD97E540D76DA0E820441F50560 /* UIImage+Scale.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		26387A42867F6FF34E133F0C031B1753 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
+		390A8863AE159A26A5744AFD4D272C1B /* iRate-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCEF68232FA8D44CDDBC232B3FD65AC /* iRate-dummy.m */; };
+		3B0BC087FEF77A4ACC7ABA82BE33FD1A /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452474C727694D6E6F3ECE51AD84697 /* iRate.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3B47E78A8B3E70B635A9CFF3B617BD50 /* UICKeyChainStore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B209DC75A97ECAEC7235EE2EA715B4B9 /* UICKeyChainStore-dummy.m */; };
+		3B6027824C2E68D4C84922644CC42414 /* ICViewPager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0BC2C236F1387E4585A63FAAF515B76 /* ICViewPager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FC5DA791056A6E7063057BC3895623B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C09AF322B17830E0563F40DBD0F518 /* QuartzCore.framework */; };
-		42D52FD11C172750DA2A7183DAB3762E /* iRate-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0923ABBF7C7EE54908AA3E1B0C1149CF /* iRate-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		49727A99741CE11516CBF045D9BB1D3B /* RGCardViewLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6DA6B562597AEA467EBF1FAB2AC485 /* RGCardViewLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4121C3C8ED8E4C322EE96541B2A7AF2A /* SquareCashStyleBehaviorDefiner.h in Headers */ = {isa = PBXBuildFile; fileRef = BDD8155FEAF0A8D18A94498D717F075C /* SquareCashStyleBehaviorDefiner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42D52FD11C172750DA2A7183DAB3762E /* iRate-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C4BE7381525B4EDCF5466ADD02040ED /* iRate-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		441C82950730A3EA2456B0BEDF5126AD /* STPopupLeftBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3823FEA8179179EF3492F88186364C3C /* STPopupLeftBarItem.m */; };
+		4457EB05A947BD1E6FF721B0C7DAB284 /* STPopup-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 57ABF4001412BD740E68E19E72BB1532 /* STPopup-dummy.m */; };
+		4F052A14BAB9EA4D53A62E86907084B0 /* UIViewController+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = F86BA0FA933F4FEFFD7FE1D01003D21B /* UIViewController+STPopup.m */; };
+		539DD27CF823E156E6A1E42B5E48578C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
 		53CCFA2F9EC5459D8E1E2441D828B99A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 259BBE9798F8ED637F673132C7CE66AC /* CoreGraphics.framework */; };
-		543099849C6D90BB99220EDE31B24C12 /* UIImage+ColorArt.h in Headers */ = {isa = PBXBuildFile; fileRef = 1536F9767C3938CB78C941D909679A1D /* UIImage+ColorArt.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		65403F61D9EA283F811EE7BF96772CC3 /* STPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = D901C4D27463CA29FC421BA01DE59F94 /* STPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		543099849C6D90BB99220EDE31B24C12 /* UIImage+ColorArt.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C57E8EC1ED701FFD4F7DD4D8D5C9C57 /* UIImage+ColorArt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5CF892FE7CFECE7B47D5E262ADDB1D17 /* STPopupNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 502BD24E68D80C1E0A05AFC41C0992ED /* STPopupNavigationBar.m */; };
+		64D286EE2F5C895E2A85092F1B05F7F9 /* STPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E3BEAAED8FA45E71F64169BB8F28FA /* STPopupController.m */; };
+		658AE8E7414CD9F9217DA73D095A0FA4 /* UIView+BLKFlexibleHeightBarSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF3B013E424E71647A34CA02534EE11 /* UIView+BLKFlexibleHeightBarSubview.m */; };
 		69F2A9AE55A17A41EE78A30908F19976 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E68327F96807A113A9D3CD97011B76 /* UIKit.framework */; };
-		6EE4E7BA4E6A5981B3F9507CFCACA30C /* RGCardViewLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D239D7B663250912E035C53A40F895 /* RGCardViewLayout-dummy.m */; };
-		7A43A138409862EC4CCDB34C717CA9B8 /* UIViewController+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 702D180366645F2DEF0620D4347ACAFC /* UIViewController+STPopup.m */; };
-		7A9814A5844AB022893E0164F11E7670 /* ICViewPager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB31EF79E4633DDE3028ED89E6698C4B /* ICViewPager-dummy.m */; };
+		7A9814A5844AB022893E0164F11E7670 /* ICViewPager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37305792A7515815151CA4D45E58D595 /* ICViewPager-dummy.m */; };
 		7FE80F14393BD8EFC6090D82DCDC4091 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C09AF322B17830E0563F40DBD0F518 /* QuartzCore.framework */; };
-		87829C81786591085908983D8C7276B8 /* UIImage+ColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 738C77B7B05959B67CA5E487B5280EAA /* UIImage+ColorArt.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		881345E0C0DE3ED4EC7676FE19064DAC /* STPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEBF77F7530370B7C28C9BBEC0BD11EC /* STPopupController.m */; };
-		88D2980E7DDCE7BECD28FF1E9074D2AE /* iCarousel.h in Headers */ = {isa = PBXBuildFile; fileRef = A755C48DB17621842733301FB6A63A40 /* iCarousel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8C0B88CAF71733CE4C25F98F19595502 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E68327F96807A113A9D3CD97011B76 /* UIKit.framework */; };
+		87829C81786591085908983D8C7276B8 /* UIImage+ColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B629EA29E52E864B5F9F4FBDFF030A /* UIImage+ColorArt.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		88D2980E7DDCE7BECD28FF1E9074D2AE /* iCarousel.h in Headers */ = {isa = PBXBuildFile; fileRef = FD3E2C4BE88B9BDACA667C2FA42C4102 /* iCarousel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C0DA32F0F092BB8AE159742898FFB86 /* UIResponder+STPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C39CA4814832580DBCF01C83BCEBADB /* UIResponder+STPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90D9E156AF5D9F8F149D3A30F15AF014 /* BLKFlexibleHeightBar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 80F8E812D71FE38B19C900C49F18A2AB /* BLKFlexibleHeightBar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9557B018702206A8C31FCDB58FB3B508 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
-		99D9AAF3E9F90ADC0293509EDA7B47E0 /* STPopupNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2E80F59F6DA6B3091F8A680589E60F /* STPopupNavigationBar.m */; };
-		9B4B4B09DDA102C5F4593BFCB2C8C871 /* STPopupLeftBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CDA0034772344F55A0FBEBFD59EBB66 /* STPopupLeftBarItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9D41F3AA42176A7E0BC25A8678EBA1A9 /* SLColorArt.h in Headers */ = {isa = PBXBuildFile; fileRef = 9521C1FB4B36BE5C91F4B95FF0313C5D /* SLColorArt.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9E4B43479D3D22DD0EA174945CCCB555 /* UICKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = DA0789CA7D3EFA9A5DB9B4238E39EA55 /* UICKeyChainStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A28E9608B6249D142E4440854225D0D1 /* STPopupLeftBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6248F927165406F365F01AF268DEA57B /* STPopupLeftBarItem.m */; };
-		A9C310D7697F1B01D89E0D5E503A4954 /* RGCardViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 01BDFB5FA7978C3A6910844435C4C795 /* RGCardViewLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AB5D831B8EE5AC5A78FC5CD704360C67 /* UICKeyChainStore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E878B856997B46141F5CAD7FDAC8F6B /* UICKeyChainStore-dummy.m */; };
-		B2EBFDF820E2EEAD76303EDBEB1985C0 /* ColorArt-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FCCE9349568F90E480734868D0844B33 /* ColorArt-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B7AF67178526B325A19D4F76D91E3A7E /* STPopup-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A1E5B2960986E453E58B90B2AC0F85A9 /* STPopup-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B88CB3F0A0A2615A3602D406A41DF4A4 /* RGCardViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 87DF7067AE674A83C96A0A2AAEBD1194 /* RGCardViewLayout.m */; };
-		BA55E83A7EBD07DBEA1BE2CF0E2E8135 /* STPopupController.h in Headers */ = {isa = PBXBuildFile; fileRef = 136BB88495D3C06C7DA91AB302415219 /* STPopupController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BDFAB222CE5AEC9EB69D0F6EFF62D212 /* iRate.h in Headers */ = {isa = PBXBuildFile; fileRef = 934815A60C8189807A3D2745F522D8DB /* iRate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C28337DD2E94B98F7AEE739EF3674F02 /* iCarousel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DC80E93C30411D574DBD7025021BFA67 /* iCarousel-dummy.m */; };
-		C2F6232EFD76925D4634E56DA651E230 /* UIViewController+STPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = F0A407ACD83130909EFAF2D7F76858F1 /* UIViewController+STPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CA871BE71028233BD75FE64CBA0211DD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAC3EA1B30A5FC26F5A3B9AC3CB6A76 /* Security.framework */; };
-		CC7C08DB640343C608B922843C49DB56 /* Pods-CCIP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F844CDCD57D047D5F3814C59909E9D8 /* Pods-CCIP-dummy.m */; };
-		CFCF83E9B5E9E6766E9EE9A6967B7942 /* UICKeyChainStore-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DC373ACC4BB5D92C9E0A8C99BCFB45AD /* UICKeyChainStore-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9D41F3AA42176A7E0BC25A8678EBA1A9 /* SLColorArt.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DFB04745BA3CB23EC4A859C6651A13D /* SLColorArt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9D962273029901E3911BB6A6B71CEC8B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAC3EA1B30A5FC26F5A3B9AC3CB6A76 /* Security.framework */; };
+		9EA6B707658F73F48A164401C6854159 /* BLKFlexibleHeightBarSubviewLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFC1DFCEFD82DB861A9C4C6CBE2BAC6 /* BLKFlexibleHeightBarSubviewLayoutAttributes.m */; };
+		9FD3A8D76E9CFB7B87BFF6CC38818355 /* BLKFlexibleHeightBarBehaviorDefiner.h in Headers */ = {isa = PBXBuildFile; fileRef = E63C255D3E5075026745311D81955806 /* BLKFlexibleHeightBarBehaviorDefiner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A02814CA6C93B58F5DF0E77F0B7E1DDB /* SquareCashStyleBehaviorDefiner.m in Sources */ = {isa = PBXBuildFile; fileRef = A15E4229F26E02EBCC84EC291B54260F /* SquareCashStyleBehaviorDefiner.m */; };
+		B2EBFDF820E2EEAD76303EDBEB1985C0 /* ColorArt-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 31A2EFA8B008D4C90B8216C8AC9D7E62 /* ColorArt-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BBB0D7D8A7F735A495CB6D1AF84DC405 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
+		BDFAB222CE5AEC9EB69D0F6EFF62D212 /* iRate.h in Headers */ = {isa = PBXBuildFile; fileRef = 00EF8D49538FBB30F5584387C1C89497 /* iRate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C28337DD2E94B98F7AEE739EF3674F02 /* iCarousel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DE97056EE5BC0E5718A54A98EF3558FD /* iCarousel-dummy.m */; };
+		C351AAED65C08058A47640D53375FA40 /* UIView+BLKFlexibleHeightBarSubview.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D17A568664501DEBDD34EBCAEE5F8CC /* UIView+BLKFlexibleHeightBarSubview.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C606727E1D94372F34479983CF36C5FC /* STPopupNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 289B034075C78049875B288026F64853 /* STPopupNavigationBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C863E3027DAEBE4819A83EA3FC5CDA6C /* Pods-CCIP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 407AB414BF003A508286D3A3B4C68680 /* Pods-CCIP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC206997EED453E0EEBA757ED975CEFA /* BLKFlexibleHeightBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 11674166838BDB7F2CBA67F2B8DA7C61 /* BLKFlexibleHeightBar.m */; };
+		CF5C422E5C591F100805AFABB461D26D /* BLKFlexibleHeightBarBehaviorDefiner.m in Sources */ = {isa = PBXBuildFile; fileRef = C140FEB791A7400F56A2A77075AD6C17 /* BLKFlexibleHeightBarBehaviorDefiner.m */; };
+		CF75C9D058ED100B0A7F4C3CC8ED9B80 /* BLKDelegateSplitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4816D86B9CAFF1FBF195FC5D43E0AFF9 /* BLKDelegateSplitter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D09BA74C541668C2C10AFACABF15F13D /* BLKDelegateSplitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F524F9733BD6F30DFDC2C894FD74810 /* BLKDelegateSplitter.m */; };
+		D19AEEDFE33575C9AA259DE89D389BAF /* UIResponder+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0448A92DE9A4AB007ADA47359C2F6 /* UIResponder+STPopup.m */; };
+		D4338675C06ADF78F593A5AD0C72C697 /* FacebookStyleBarBehaviorDefiner.m in Sources */ = {isa = PBXBuildFile; fileRef = 114C7AA18832FCCC771B76B94697E991 /* FacebookStyleBarBehaviorDefiner.m */; };
+		D4E6E48EB5A86595421216EA6AF8AC82 /* UICKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D59B54E9728568F2FF99448811A7AF /* UICKeyChainStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D5068AC17A2942CCF790C75B274835BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
-		D93B672B2BC7C166F8AAE0A404648D75 /* STPopupNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = D3F0560AF263FCE879E3DB701EBCAD5E /* STPopupNavigationBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB0EB56AD46F5FE05CE53F9ED1429913 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 259BBE9798F8ED637F673132C7CE66AC /* CoreGraphics.framework */; };
-		DBCF1109A5F976EBDC5195879EA43C17 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D19381A9D20C02DA3E68D770D49287F /* ViewPagerController.m */; };
-		DD9C3D4C2A3DC097E503676F0C5CD6DE /* UIResponder+STPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = CF20B14B2BA3F198DB384CDEF7715CA8 /* UIResponder+STPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E0441108C3BF47A614059895CB2CAB25 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E86AADB0E330F3BB288A057851C211A7 /* UICKeyChainStore.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D5B342C953CE21A12EE105E370CB1C19 /* Pods-CCIP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F844CDCD57D047D5F3814C59909E9D8 /* Pods-CCIP-dummy.m */; };
+		D68BDA0EDD1BE4CD7F1381F98B9CDEEE /* STPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = 8426F339801EF2D61A63C932AA52E6EE /* STPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBCF1109A5F976EBDC5195879EA43C17 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8CAABB1432A96067A9F4E188DFF934C /* ViewPagerController.m */; };
 		E1EBCED81B647B2F2BD3E733186CDF97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
-		E892FE28DC5695BBA1EB16C0AFC9CE81 /* ColorArt-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A771FB90FA6E6734FD3524D7ED61A7BE /* ColorArt-dummy.m */; };
-		ED8C407B0D52C05F3B7F645EC3AAEA51 /* SLColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 495AC98680FB044F998730D0B0D3DB0F /* SLColorArt.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		F0A4075E8EC62F3C9C05E6CB951D5AF9 /* iCarousel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1102B1F4AD97ED06BFFA64FCE25E884B /* iCarousel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E892FE28DC5695BBA1EB16C0AFC9CE81 /* ColorArt-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DADC16DAC2E17EBDDA6D03FC474562CB /* ColorArt-dummy.m */; };
+		EC1AC56656DF4BBBFE237AEB68302764 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F32366EA13337DF3A004BE7E117B5 /* UICKeyChainStore.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		EC876785FB6435BFD7361917A2DC4958 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
+		ED8C407B0D52C05F3B7F645EC3AAEA51 /* SLColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 6884F73095DEA1CE868E7E8A0BD03349 /* SLColorArt.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F0A4075E8EC62F3C9C05E6CB951D5AF9 /* iCarousel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ECE8A0C99F082A4A82A534436616CA32 /* iCarousel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F37BC8F54BF8A0B498A0867D4AE90903 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
-		F8B282685BB4FB2F1C5F0D178517B1C2 /* ViewPagerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CB8D7B2DFFC3EE26629E57D3F7D04CD /* ViewPagerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F7E442AA763CFE93CB4EE7E11A55C3B8 /* STPopup-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DC998B021F714A80C0B807750A09C18B /* STPopup-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F8B282685BB4FB2F1C5F0D178517B1C2 /* ViewPagerController.h in Headers */ = {isa = PBXBuildFile; fileRef = A644BFB4F17AA07660AD77DA58C14640 /* ViewPagerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FCC63F4CFC075067A50303FB67750C01 /* UICKeyChainStore-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 547419AA5A10E15E1E8135F79AD1EC9D /* UICKeyChainStore-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFD3FDF57334605DA9F5CD26AFAF7315 /* UIViewController+STPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C2CA2A80CC1622E051472D7C42984F1 /* UIViewController+STPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		001F642CE76496666B6AFB63A816B476 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DDDF9388C64BC9A538E854A916F69BA9;
-			remoteInfo = ColorArt;
-		};
-		2B923938ADA2FBAB81E719B22C1BED1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 00E74CED770597EF76DEE6FE824D1B7A;
-			remoteInfo = iRate;
-		};
-		78A91135BC92CABA70DF96F06BBACAE5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BCAD814DAF9B21F3574797CA327D3E41;
-			remoteInfo = UICKeyChainStore;
-		};
-		81879326FC9E9E1899581F0A9F8BF206 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4C0408FA37E119C9FEAF3122DE2038EA;
-			remoteInfo = ICViewPager;
-		};
-		A1253FEEE840B3731F355C72B4C55B00 /* PBXContainerItemProxy */ = {
+		050D7BC095D733B7F36F6D737459B36D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3634ABA74A6F41DB3C7516A583373EE8;
 			remoteInfo = iCarousel;
 		};
-		B52E466A349AF5E125D0A2AAFA370A39 /* PBXContainerItemProxy */ = {
+		2A0EE7612B6A9F3E7BE79BD75097875E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = EE0129FD73981079192DAEC8274E77DD;
+			remoteGlobalIDString = 4042AB44F67C5507A84E81DD789E0BF4;
 			remoteInfo = STPopup;
 		};
-		E6AFB26388D00C6AA652C6EBD1CF65E4 /* PBXContainerItemProxy */ = {
+		3E33E1EF891922AA1ADA48D0D7C0CE89 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C2DDBF45A512E99EB46F22045228735E;
-			remoteInfo = RGCardViewLayout;
+			remoteGlobalIDString = 7AAA83A0B19E9AB585A6FFE3AAF1D304;
+			remoteInfo = BLKFlexibleHeightBar;
+		};
+		832CC0A1986288337D32910A123BF1D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DDDF9388C64BC9A538E854A916F69BA9;
+			remoteInfo = ColorArt;
+		};
+		8E1641A657234B2ED9BFD8A783342207 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4BA9A47E118B37B8C1D5180C8EA38FE3;
+			remoteInfo = UICKeyChainStore;
+		};
+		D691DC07965B533B60CE217860FBB366 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C0408FA37E119C9FEAF3122DE2038EA;
+			remoteInfo = ICViewPager;
+		};
+		E656DA3EE00A617A7D6E9AE623DB4017 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00E74CED770597EF76DEE6FE824D1B7A;
+			remoteInfo = iRate;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		001DCD414B8CBDA4F792B99D368E1552 /* ColorArt.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ColorArt.modulemap; sourceTree = "<group>"; };
-		00A94DD150C65C340C14271FF7779BDE /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommercePromotion.h; path = Headers/Public/GAIEcommercePromotion.h; sourceTree = "<group>"; };
-		01BDFB5FA7978C3A6910844435C4C795 /* RGCardViewLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RGCardViewLayout.h; sourceTree = "<group>"; };
-		01E92C8199727DCEFB419C7D3ED9B00B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		073A01182FA7D4C23390B3DB40AA2DB0 /* UIImage+Scale.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Scale.h"; path = "ColorArt/Classes/UIImage+Scale.h"; sourceTree = "<group>"; };
-		07EB875730EFFD5FCD41E859D3C075FF /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
+		00D59B54E9728568F2FF99448811A7AF /* UICKeyChainStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UICKeyChainStore.h; path = Lib/UICKeyChainStore/UICKeyChainStore.h; sourceTree = "<group>"; };
+		00EF8D49538FBB30F5584387C1C89497 /* iRate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = iRate.h; path = iRate/iRate.h; sourceTree = "<group>"; };
+		0361869B3A7ACA916F51FED931285E5D /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		03689CFEED64E1FCE36BE3634A0D9A4A /* ColorArt.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ColorArt.xcconfig; sourceTree = "<group>"; };
+		0681E4A111DC1644ABF8D7433F25B444 /* BLKFlexibleHeightBar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BLKFlexibleHeightBar-prefix.pch"; sourceTree = "<group>"; };
+		079055670110E70E28848EA00B28C3B1 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
 		081923893D972983042C17B3EB5C2A0F /* Pods-CCIP-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CCIP-resources.sh"; sourceTree = "<group>"; };
-		0923ABBF7C7EE54908AA3E1B0C1149CF /* iRate-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iRate-umbrella.h"; sourceTree = "<group>"; };
-		0E878B856997B46141F5CAD7FDAC8F6B /* UICKeyChainStore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UICKeyChainStore-dummy.m"; sourceTree = "<group>"; };
-		0F1F75421B4C287B7009B3816E3AC6F8 /* UIResponder+STPopup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIResponder+STPopup.m"; path = "STPopup/UIResponder+STPopup.m"; sourceTree = "<group>"; };
-		1102B1F4AD97ED06BFFA64FCE25E884B /* iCarousel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iCarousel-umbrella.h"; sourceTree = "<group>"; };
-		110573BBBD6213E601614084432F9DD0 /* STPopup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = STPopup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		11D7483206B2FA96DC3DEEC6C0ECBBDF /* iRate.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iRate.xcconfig; sourceTree = "<group>"; };
-		1239CBF847182E211A570000A3C82256 /* Pods_CCIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		136BB88495D3C06C7DA91AB302415219 /* STPopupController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopupController.h; path = STPopup/STPopupController.h; sourceTree = "<group>"; };
-		1536F9767C3938CB78C941D909679A1D /* UIImage+ColorArt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+ColorArt.h"; path = "ColorArt/Classes/UIImage+ColorArt.h"; sourceTree = "<group>"; };
-		18783F5E5336D6C4B50A6F21A43775F2 /* ColorArt.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ColorArt.xcconfig; sourceTree = "<group>"; };
-		1F4A1AF0F732F6CA813D984E28A28C78 /* RGCardViewLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RGCardViewLayout-prefix.pch"; sourceTree = "<group>"; };
-		202C2B6EB5B83AE61D7CDE6949E86FB9 /* RGCardViewLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RGCardViewLayout.xcconfig; sourceTree = "<group>"; };
-		23DAFE3E0820B9F1E7534D835760FB24 /* iCarousel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
-		24A8D7E8F20D119A1DA25BA041B8768A /* iRate.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = iRate.bundle; path = iRate/iRate.bundle; sourceTree = "<group>"; };
-		2571D62C451FDB5F764DD1A12C51D845 /* STPopup.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = STPopup.modulemap; sourceTree = "<group>"; };
+		0AD7207BAA6C0217B638DEE9D69D4BAA /* iCarousel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = iCarousel.modulemap; sourceTree = "<group>"; };
+		114C7AA18832FCCC771B76B94697E991 /* FacebookStyleBarBehaviorDefiner.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FacebookStyleBarBehaviorDefiner.m; path = BLKFlexibleHeightBar/FacebookStyleBarBehaviorDefiner.m; sourceTree = "<group>"; };
+		11674166838BDB7F2CBA67F2B8DA7C61 /* BLKFlexibleHeightBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BLKFlexibleHeightBar.m; path = BLKFlexibleHeightBar/BLKFlexibleHeightBar.m; sourceTree = "<group>"; };
+		1175068A5792F25DA7EBC2CA141339C7 /* STPopup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = STPopup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		186F6886A86627C64A61A1044B14F066 /* Analytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Analytics.h; path = Headers/Analytics.h; sourceTree = "<group>"; };
+		1982BC947AB2455E089BB8FD49C1EDB8 /* ColorArt.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ColorArt.modulemap; sourceTree = "<group>"; };
+		1C4BE7381525B4EDCF5466ADD02040ED /* iRate-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iRate-umbrella.h"; sourceTree = "<group>"; };
+		1C57E8EC1ED701FFD4F7DD4D8D5C9C57 /* UIImage+ColorArt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+ColorArt.h"; path = "ColorArt/Classes/UIImage+ColorArt.h"; sourceTree = "<group>"; };
+		1C87480DDC8718B3520AC14CAB67C88C /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
+		20CC204B30A895E7D021AE795E731177 /* FacebookStyleBarBehaviorDefiner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FacebookStyleBarBehaviorDefiner.h; path = BLKFlexibleHeightBar/FacebookStyleBarBehaviorDefiner.h; sourceTree = "<group>"; };
+		21E3BEAAED8FA45E71F64169BB8F28FA /* STPopupController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPopupController.m; path = STPopup/STPopupController.m; sourceTree = "<group>"; };
+		2381E1C8CC0A53A4B0360BFA2573856F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		259BBE9798F8ED637F673132C7CE66AC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		2B32FCC6299C26B9919648BBEC68AC36 /* STPopup-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "STPopup-dummy.m"; sourceTree = "<group>"; };
-		2CFB04D4B6E235414A397FC7C9B80384 /* ICViewPager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ICViewPager.modulemap; sourceTree = "<group>"; };
-		3104730D74F2C051BDD55B5B9F441B97 /* iCarousel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = iCarousel.modulemap; sourceTree = "<group>"; };
-		35B25889715C2F29C34F07F07506B5C8 /* iCarousel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iCarousel.xcconfig; sourceTree = "<group>"; };
-		3809E4512618EB732E5B8D1756494F71 /* iRate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = iRate.m; path = iRate/iRate.m; sourceTree = "<group>"; };
-		3A4155890415EAB0CE2F347F9A70B002 /* RGCardViewLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RGCardViewLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B23E74B61D87361AD9AF3963332FF93 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Libraries/libGoogleAnalytics.a; sourceTree = "<group>"; };
-		3BB9F927B9215BFD3CAB3E3CDA38BF20 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProductAction.h; path = Headers/Public/GAIEcommerceProductAction.h; sourceTree = "<group>"; };
-		3F0B62B5EAF199BD341E95E8173BDA31 /* iCarousel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iCarousel-prefix.pch"; sourceTree = "<group>"; };
+		2651488E9AACA9097B50FEAD8381A383 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OneSignal.framework; path = iOS_SDK/Framework/OneSignal.framework; sourceTree = "<group>"; };
+		2778055403A91C73C6B8464986D3B3EA /* BLKFlexibleHeightBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BLKFlexibleHeightBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		289B034075C78049875B288026F64853 /* STPopupNavigationBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopupNavigationBar.h; path = STPopup/STPopupNavigationBar.h; sourceTree = "<group>"; };
+		296F9CE8C0021A413CE160A0837CBC49 /* iCarousel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iCarousel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CFC1DFCEFD82DB861A9C4C6CBE2BAC6 /* BLKFlexibleHeightBarSubviewLayoutAttributes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BLKFlexibleHeightBarSubviewLayoutAttributes.m; path = BLKFlexibleHeightBar/BLKFlexibleHeightBarSubviewLayoutAttributes.m; sourceTree = "<group>"; };
+		2D17A568664501DEBDD34EBCAEE5F8CC /* UIView+BLKFlexibleHeightBarSubview.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+BLKFlexibleHeightBarSubview.h"; path = "BLKFlexibleHeightBar/UIView+BLKFlexibleHeightBarSubview.h"; sourceTree = "<group>"; };
+		2E1EA41B9559B4860BF0BE833D8D7617 /* GAITracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = Headers/Public/GAITracker.h; sourceTree = "<group>"; };
+		2FF72DABEE3AB7EFF2D9B5B2F063D742 /* iCarousel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
+		30F00D717F5A34AB2535C199C1B8A6D0 /* STPopupController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopupController.h; path = STPopup/STPopupController.h; sourceTree = "<group>"; };
+		31A2EFA8B008D4C90B8216C8AC9D7E62 /* ColorArt-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ColorArt-umbrella.h"; sourceTree = "<group>"; };
+		36557CC5097BF5A8ACBBADF1412052C0 /* GGLAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLAnalytics.framework; path = Frameworks/GGLAnalytics.framework; sourceTree = "<group>"; };
+		37305792A7515815151CA4D45E58D595 /* ICViewPager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ICViewPager-dummy.m"; sourceTree = "<group>"; };
+		376D08327C4E2F792EB8C2292F80DBFF /* iRate.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = iRate.bundle; path = iRate/iRate.bundle; sourceTree = "<group>"; };
+		3823FEA8179179EF3492F88186364C3C /* STPopupLeftBarItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPopupLeftBarItem.m; path = STPopup/STPopupLeftBarItem.m; sourceTree = "<group>"; };
+		3D693BAC49AD3D45361E8DE3E6C3D82D /* Core-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Core-Module.h"; path = "Headers/ModuleHeaders/Core-Module.h"; sourceTree = "<group>"; };
+		3E10B4A6180B3FC0B1AEC00B944EEA24 /* iCarousel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iCarousel-prefix.pch"; sourceTree = "<group>"; };
 		3F19743AF017525896C97467762462AA /* Pods-CCIP-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CCIP-acknowledgements.markdown"; sourceTree = "<group>"; };
 		407AB414BF003A508286D3A3B4C68680 /* Pods-CCIP-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CCIP-umbrella.h"; sourceTree = "<group>"; };
-		4119BEC22B06CAB0075C84D9BCD030C7 /* ICViewPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ICViewPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		41F68222F4C4221DB07EFBA12FA78CB0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46A2A709443DE8B42CBC9CD28BEF3C79 /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
-		495AC98680FB044F998730D0B0D3DB0F /* SLColorArt.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SLColorArt.m; path = ColorArt/Classes/SLColorArt.m; sourceTree = "<group>"; };
-		4977BC98EC35D3A6721427904E1AAAC2 /* GAILogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = Headers/Public/GAILogger.h; sourceTree = "<group>"; };
-		4AB634C6B85DDD261C47062805300B7F /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
-		4D19381A9D20C02DA3E68D770D49287F /* ViewPagerController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ViewPagerController.m; path = ICViewPager/ICViewPager/ViewPagerController.m; sourceTree = "<group>"; };
+		4344F833CD3DF14BA676F8C569C3F8CE /* libGoogleAnalytics.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Libraries/libGoogleAnalytics.a; sourceTree = "<group>"; };
+		479C62F47C0E5D343033AC37CD66757F /* Core.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Core.h; path = Headers/Core.h; sourceTree = "<group>"; };
+		47B629EA29E52E864B5F9F4FBDFF030A /* UIImage+ColorArt.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ColorArt.m"; path = "ColorArt/Classes/UIImage+ColorArt.m"; sourceTree = "<group>"; };
+		47CC81F2D67691B0724A84323C10CF5E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4816D86B9CAFF1FBF195FC5D43E0AFF9 /* BLKDelegateSplitter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BLKDelegateSplitter.h; path = BLKFlexibleHeightBar/BLKDelegateSplitter.h; sourceTree = "<group>"; };
+		4D7F32366EA13337DF3A004BE7E117B5 /* UICKeyChainStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UICKeyChainStore.m; path = Lib/UICKeyChainStore/UICKeyChainStore.m; sourceTree = "<group>"; };
+		4EF4A9D51C4CC8232256E3900188BB18 /* ICViewPager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ICViewPager.modulemap; sourceTree = "<group>"; };
+		502BD24E68D80C1E0A05AFC41C0992ED /* STPopupNavigationBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPopupNavigationBar.m; path = STPopup/STPopupNavigationBar.m; sourceTree = "<group>"; };
 		54496E6279A185AF13967EB4B704F54F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		547419AA5A10E15E1E8135F79AD1EC9D /* UICKeyChainStore-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-umbrella.h"; sourceTree = "<group>"; };
+		57ABF4001412BD740E68E19E72BB1532 /* STPopup-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "STPopup-dummy.m"; sourceTree = "<group>"; };
 		5A00CE01FE4E06323021099A8DEA9DC7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5B91B53D9E5487D948C6834BE9374B3C /* iCarousel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iCarousel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5CDA0034772344F55A0FBEBFD59EBB66 /* STPopupLeftBarItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopupLeftBarItem.h; path = STPopup/STPopupLeftBarItem.h; sourceTree = "<group>"; };
-		60C50E8BA998099E4D930D6CEE067C2D /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		5BD8A68B9774562DBFBD25378363D489 /* iRate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iRate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C39CA4814832580DBCF01C83BCEBADB /* UIResponder+STPopup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIResponder+STPopup.h"; path = "STPopup/UIResponder+STPopup.h"; sourceTree = "<group>"; };
+		5E102F1F96B2700D489DD646F1E1D799 /* UICKeyChainStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UICKeyChainStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FAD096FB6DF48D90A508364AD33364A /* GAILogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = Headers/Public/GAILogger.h; sourceTree = "<group>"; };
+		6156449771514F5A59B295EEF3B6EFB2 /* ICViewPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ICViewPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6156A4220A95AB1931B9C9CE4D5968D4 /* Pods-CCIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CCIP.debug.xcconfig"; sourceTree = "<group>"; };
-		6248F927165406F365F01AF268DEA57B /* STPopupLeftBarItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPopupLeftBarItem.m; path = STPopup/STPopupLeftBarItem.m; sourceTree = "<group>"; };
-		68741A69895438C71706019FA3E30732 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OneSignal.framework; path = iOS_SDK/Framework/OneSignal.framework; sourceTree = "<group>"; };
-		6CB8D7B2DFFC3EE26629E57D3F7D04CD /* ViewPagerController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ViewPagerController.h; path = ICViewPager/ICViewPager/ViewPagerController.h; sourceTree = "<group>"; };
-		6E30E4DEB60B0EDFFF99C44E86E2A261 /* STPopup-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "STPopup-prefix.pch"; sourceTree = "<group>"; };
-		6EA17AB459684124D525C2D9A62F4278 /* ColorArt-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ColorArt-prefix.pch"; sourceTree = "<group>"; };
-		702D180366645F2DEF0620D4347ACAFC /* UIViewController+STPopup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+STPopup.m"; path = "STPopup/UIViewController+STPopup.m"; sourceTree = "<group>"; };
-		7064AD2008B81FE577B17D48AE61C2A1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		738C77B7B05959B67CA5E487B5280EAA /* UIImage+ColorArt.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ColorArt.m"; path = "ColorArt/Classes/UIImage+ColorArt.m"; sourceTree = "<group>"; };
-		79D4354CB5EBF3416B762A54789A4813 /* iRate-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iRate-prefix.pch"; sourceTree = "<group>"; };
-		7CC459D768CDDFD80C1F031251C03A16 /* UICKeyChainStore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = UICKeyChainStore.modulemap; sourceTree = "<group>"; };
-		811557E368587B3A35B99079C938AD86 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = Headers/Public/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
-		81D0BA68651E1BE0FC1174871A3A63C1 /* GAIFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = Headers/Public/GAIFields.h; sourceTree = "<group>"; };
-		8759D013893FC772A8B61C937D7A128F /* GAIEcommerceFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceFields.h; path = Headers/Public/GAIEcommerceFields.h; sourceTree = "<group>"; };
-		87ABF8618FEF5F0441D8A521345165C0 /* STPopup.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = STPopup.xcconfig; sourceTree = "<group>"; };
-		87DF7067AE674A83C96A0A2AAEBD1194 /* RGCardViewLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RGCardViewLayout.m; sourceTree = "<group>"; };
-		89925A908713905C5810AE662DD67A1F /* GAITrackedViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = Headers/Public/GAITrackedViewController.h; sourceTree = "<group>"; };
-		8D79BE0FF51E5265EF9265EB80B8ADD1 /* Analytics-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Analytics-Module.h"; path = "Headers/ModuleHeaders/Analytics-Module.h"; sourceTree = "<group>"; };
+		63FDBEE01A4F1416C0D297D5DDF61DFE /* ICViewPager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ICViewPager.xcconfig; sourceTree = "<group>"; };
+		6884F73095DEA1CE868E7E8A0BD03349 /* SLColorArt.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SLColorArt.m; path = ColorArt/Classes/SLColorArt.m; sourceTree = "<group>"; };
+		71D141A27C3D431F29F9BDA44FD7D3D9 /* UICKeyChainStore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-prefix.pch"; sourceTree = "<group>"; };
+		7836FD47BAC25117D89BC51135A6CC5F /* GAIFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = Headers/Public/GAIFields.h; sourceTree = "<group>"; };
+		7877B892BF4BB1B4A1AE26FE26466EE8 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = Headers/Public/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		7C561ACABAE98874D092B516EBAA2720 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CAA0498F724C45F55B9910582B4D2BF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DFD0F943571019B14ED49CEB96DEBD8 /* BLKFlexibleHeightBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BLKFlexibleHeightBar.h; path = BLKFlexibleHeightBar/BLKFlexibleHeightBar.h; sourceTree = "<group>"; };
+		7F71395F3BC9D19063074417DF054FF1 /* Pods_CCIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80F8E812D71FE38B19C900C49F18A2AB /* BLKFlexibleHeightBar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BLKFlexibleHeightBar-umbrella.h"; sourceTree = "<group>"; };
+		8426F339801EF2D61A63C932AA52E6EE /* STPopup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopup.h; path = STPopup/STPopup.h; sourceTree = "<group>"; };
+		8452474C727694D6E6F3ECE51AD84697 /* iRate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = iRate.m; path = iRate/iRate.m; sourceTree = "<group>"; };
+		8693595E44D51DA76FAAD0C1CD2BE34D /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProductAction.h; path = Headers/Public/GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		870393144C99F404C434CC2A9C4E0432 /* BLKFlexibleHeightBar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BLKFlexibleHeightBar.modulemap; sourceTree = "<group>"; };
 		8F844CDCD57D047D5F3814C59909E9D8 /* Pods-CCIP-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CCIP-dummy.m"; sourceTree = "<group>"; };
-		90151FE5777555F5ACC8316F2600C57A /* GAI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = Headers/Public/GAI.h; sourceTree = "<group>"; };
 		9160B80BE78072CE651E75EF51FE39F4 /* Pods-CCIP-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CCIP-frameworks.sh"; sourceTree = "<group>"; };
 		91C09AF322B17830E0563F40DBD0F518 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		924583DDFC03F1542F5C570830E2716A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		934815A60C8189807A3D2745F522D8DB /* iRate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = iRate.h; path = iRate/iRate.h; sourceTree = "<group>"; };
+		9255C838221AFA4987DE7476DE1F30F7 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		93D3D72C02DE77BAE61D1C8684B46BB8 /* iRate-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iRate-dummy.m"; sourceTree = "<group>"; };
-		9521C1FB4B36BE5C91F4B95FF0313C5D /* SLColorArt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SLColorArt.h; path = ColorArt/Classes/SLColorArt.h; sourceTree = "<group>"; };
-		A1E5B2960986E453E58B90B2AC0F85A9 /* STPopup-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "STPopup-umbrella.h"; sourceTree = "<group>"; };
-		A39B868629F1AB3E058394A0970FD9C1 /* UICKeyChainStore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-prefix.pch"; sourceTree = "<group>"; };
-		A61C8969AB8A4E277CE5BE5A30C765AC /* Core-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Core-Module.h"; path = "Headers/ModuleHeaders/Core-Module.h"; sourceTree = "<group>"; };
-		A755C48DB17621842733301FB6A63A40 /* iCarousel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = iCarousel/iCarousel.h; sourceTree = "<group>"; };
-		A771FB90FA6E6734FD3524D7ED61A7BE /* ColorArt-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ColorArt-dummy.m"; sourceTree = "<group>"; };
-		AB31EF79E4633DDE3028ED89E6698C4B /* ICViewPager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ICViewPager-dummy.m"; sourceTree = "<group>"; };
-		AD2E80F59F6DA6B3091F8A680589E60F /* STPopupNavigationBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPopupNavigationBar.m; path = STPopup/STPopupNavigationBar.m; sourceTree = "<group>"; };
-		B097EE9C3655655C141375106C430EAD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B4344A8A2B5CE3D0C6CBA90FC6670F86 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		BA4E5F08CC82C87407C562B0A2F10E7E /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		BCE5A657C270347E849D0557FB705B06 /* ICViewPager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ICViewPager.xcconfig; sourceTree = "<group>"; };
+		96D2C95D740AF05EFBEDA8570DEAD584 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9ACFD530F25CD45F16E186C496BF4BF5 /* BLKFlexibleHeightBarSubviewLayoutAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BLKFlexibleHeightBarSubviewLayoutAttributes.h; path = BLKFlexibleHeightBar/BLKFlexibleHeightBarSubviewLayoutAttributes.h; sourceTree = "<group>"; };
+		9C2CA2A80CC1622E051472D7C42984F1 /* UIViewController+STPopup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+STPopup.h"; path = "STPopup/UIViewController+STPopup.h"; sourceTree = "<group>"; };
+		9CB0448A92DE9A4AB007ADA47359C2F6 /* UIResponder+STPopup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIResponder+STPopup.m"; path = "STPopup/UIResponder+STPopup.m"; sourceTree = "<group>"; };
+		9DFB04745BA3CB23EC4A859C6651A13D /* SLColorArt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SLColorArt.h; path = ColorArt/Classes/SLColorArt.h; sourceTree = "<group>"; };
+		9E6ED3EE6692A01DD18F8972BE43C3B2 /* ColorArt-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ColorArt-prefix.pch"; sourceTree = "<group>"; };
+		9F524F9733BD6F30DFDC2C894FD74810 /* BLKDelegateSplitter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BLKDelegateSplitter.m; path = BLKFlexibleHeightBar/BLKDelegateSplitter.m; sourceTree = "<group>"; };
+		A0263DB1E718B2A9201A009B01FA01EA /* iCarousel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iCarousel.xcconfig; sourceTree = "<group>"; };
+		A05F0E51E9D4BF926C13C29BA1DC865E /* STPopup.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = STPopup.modulemap; sourceTree = "<group>"; };
+		A15E4229F26E02EBCC84EC291B54260F /* SquareCashStyleBehaviorDefiner.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SquareCashStyleBehaviorDefiner.m; path = BLKFlexibleHeightBar/SquareCashStyleBehaviorDefiner.m; sourceTree = "<group>"; };
+		A330DCA06A999747EA456F4B24F84EDE /* iRate.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iRate.xcconfig; sourceTree = "<group>"; };
+		A5400CD97E540D76DA0E820441F50560 /* UIImage+Scale.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Scale.m"; path = "ColorArt/Classes/UIImage+Scale.m"; sourceTree = "<group>"; };
+		A644BFB4F17AA07660AD77DA58C14640 /* ViewPagerController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ViewPagerController.h; path = ICViewPager/ICViewPager/ViewPagerController.h; sourceTree = "<group>"; };
+		A718A38EF4D248CB20F6618084A3C0A8 /* GAI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = Headers/Public/GAI.h; sourceTree = "<group>"; };
+		AA8E3BA2B4C5290F2A4FF71F40450186 /* STPopup.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = STPopup.xcconfig; sourceTree = "<group>"; };
+		AE7D7C68AB5EE597DC073FD075EDDFA5 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		AF0E905F86A1DB133AE492424E6A75BC /* STPopupLeftBarItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopupLeftBarItem.h; path = STPopup/STPopupLeftBarItem.h; sourceTree = "<group>"; };
+		B08DBAF06216EF1C38C417B0929A4070 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceFields.h; path = Headers/Public/GAIEcommerceFields.h; sourceTree = "<group>"; };
+		B209DC75A97ECAEC7235EE2EA715B4B9 /* UICKeyChainStore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UICKeyChainStore-dummy.m"; sourceTree = "<group>"; };
+		B26692E8BE84A1F5986960D154212C04 /* BLKFlexibleHeightBar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BLKFlexibleHeightBar.xcconfig; sourceTree = "<group>"; };
+		BD20750D5F59F3711E072C0B819E3C1E /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = Headers/Public/GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		BDD8155FEAF0A8D18A94498D717F075C /* SquareCashStyleBehaviorDefiner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SquareCashStyleBehaviorDefiner.h; path = BLKFlexibleHeightBar/SquareCashStyleBehaviorDefiner.h; sourceTree = "<group>"; };
+		BEF3B013E424E71647A34CA02534EE11 /* UIView+BLKFlexibleHeightBarSubview.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+BLKFlexibleHeightBarSubview.m"; path = "BLKFlexibleHeightBar/UIView+BLKFlexibleHeightBarSubview.m"; sourceTree = "<group>"; };
 		BFAC3EA1B30A5FC26F5A3B9AC3CB6A76 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		C000B9E875B1BAB5F44178897D04DE0E /* UICKeyChainStore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UICKeyChainStore.xcconfig; sourceTree = "<group>"; };
-		C06A9C838B5820435A9264541EF7A9BF /* RGCardViewLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RGCardViewLayout.modulemap; sourceTree = "<group>"; };
-		C0B19E97BDC7B2A9B9FAC565522C12FC /* iRate.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = iRate.modulemap; sourceTree = "<group>"; };
-		C21BF3FAA836070F4EA1EB49A0176768 /* ICViewPager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ICViewPager-umbrella.h"; sourceTree = "<group>"; };
-		C2D239D7B663250912E035C53A40F895 /* RGCardViewLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RGCardViewLayout-dummy.m"; sourceTree = "<group>"; };
+		C0BC2C236F1387E4585A63FAAF515B76 /* ICViewPager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ICViewPager-umbrella.h"; sourceTree = "<group>"; };
+		C140FEB791A7400F56A2A77075AD6C17 /* BLKFlexibleHeightBarBehaviorDefiner.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BLKFlexibleHeightBarBehaviorDefiner.m; path = BLKFlexibleHeightBar/BLKFlexibleHeightBarBehaviorDefiner.m; sourceTree = "<group>"; };
+		C91F0F2974FE44AD8E0B2FE7F3629B7A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C92361B0E6E5A472B5604DAEFFA95C54 /* Pods-CCIP.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CCIP.modulemap"; sourceTree = "<group>"; };
-		C93A1DB55BC490DD89699134100E362B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9BBDDF14E9841B40E031169CE4DC29D /* Core.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Core.h; path = Headers/Core.h; sourceTree = "<group>"; };
-		CEA0637DBBBC3C2BBE38FB4AD714DDDC /* ColorArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ColorArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF20B14B2BA3F198DB384CDEF7715CA8 /* UIResponder+STPopup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIResponder+STPopup.h"; path = "STPopup/UIResponder+STPopup.h"; sourceTree = "<group>"; };
-		CF6DA6B562597AEA467EBF1FAB2AC485 /* RGCardViewLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RGCardViewLayout-umbrella.h"; sourceTree = "<group>"; };
-		D3C06C005877DA960E635E793A186C09 /* iRate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iRate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3F0560AF263FCE879E3DB701EBCAD5E /* STPopupNavigationBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopupNavigationBar.h; path = STPopup/STPopupNavigationBar.h; sourceTree = "<group>"; };
-		D8E1B24CA7E106AC272D3D5138EE65BB /* ICViewPager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ICViewPager-prefix.pch"; sourceTree = "<group>"; };
-		D901C4D27463CA29FC421BA01DE59F94 /* STPopup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopup.h; path = STPopup/STPopup.h; sourceTree = "<group>"; };
-		DA0789CA7D3EFA9A5DB9B4238E39EA55 /* UICKeyChainStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UICKeyChainStore.h; path = Lib/UICKeyChainStore/UICKeyChainStore.h; sourceTree = "<group>"; };
-		DC373ACC4BB5D92C9E0A8C99BCFB45AD /* UICKeyChainStore-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-umbrella.h"; sourceTree = "<group>"; };
-		DC80E93C30411D574DBD7025021BFA67 /* iCarousel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iCarousel-dummy.m"; sourceTree = "<group>"; };
-		E0A8453A7A2C68E95EC6C6E9143077B2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E0E7333DB873D04411FFC8E177F09D88 /* GGLCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLCore.framework; path = Frameworks/GGLCore.framework; sourceTree = "<group>"; };
+		CA4D79D63884E8DBF5359F0D92E3D68A /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		CFB69C823440D69EC41FA839DCC6D161 /* SignIn-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SignIn-Module.h"; path = "Headers/ModuleHeaders/SignIn-Module.h"; sourceTree = "<group>"; };
+		D73CF23DB56EA7820A1317C05ADE5D93 /* GGLCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLCore.framework; path = Frameworks/GGLCore.framework; sourceTree = "<group>"; };
+		DADC16DAC2E17EBDDA6D03FC474562CB /* ColorArt-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ColorArt-dummy.m"; sourceTree = "<group>"; };
+		DBA408DCBAE5EE7A0A91B4CA14024DE7 /* STPopup-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "STPopup-prefix.pch"; sourceTree = "<group>"; };
+		DC998B021F714A80C0B807750A09C18B /* STPopup-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "STPopup-umbrella.h"; sourceTree = "<group>"; };
+		DD79DF9DF765B94E47F626A79DFE71A0 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommercePromotion.h; path = Headers/Public/GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		DDD98889264A91C4F4451C4BF1D9443C /* UIImage+Scale.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Scale.h"; path = "ColorArt/Classes/UIImage+Scale.h"; sourceTree = "<group>"; };
+		DE97056EE5BC0E5718A54A98EF3558FD /* iCarousel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iCarousel-dummy.m"; sourceTree = "<group>"; };
 		E20A38E2E8C1F6BD640AD8B19A6C9498 /* Pods-CCIP-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CCIP-acknowledgements.plist"; sourceTree = "<group>"; };
-		E59095B001C44C21A17240E7190A6EC9 /* GAITracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = Headers/Public/GAITracker.h; sourceTree = "<group>"; };
-		E86AADB0E330F3BB288A057851C211A7 /* UICKeyChainStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UICKeyChainStore.m; path = Lib/UICKeyChainStore/UICKeyChainStore.m; sourceTree = "<group>"; };
-		EBDBA531E55C7297A4040921760CE644 /* GGLAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLAnalytics.framework; path = Frameworks/GGLAnalytics.framework; sourceTree = "<group>"; };
-		EE6098EE5902D5CB4F3A155DD3A8FCF7 /* UIImage+Scale.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Scale.m"; path = "ColorArt/Classes/UIImage+Scale.m"; sourceTree = "<group>"; };
-		EEBF77F7530370B7C28C9BBEC0BD11EC /* STPopupController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPopupController.m; path = STPopup/STPopupController.m; sourceTree = "<group>"; };
-		F0A407ACD83130909EFAF2D7F76858F1 /* UIViewController+STPopup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+STPopup.h"; path = "STPopup/UIViewController+STPopup.h"; sourceTree = "<group>"; };
-		F30B4BF112B94A1A22B92CE35BAD6B59 /* SignIn-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SignIn-Module.h"; path = "Headers/ModuleHeaders/SignIn-Module.h"; sourceTree = "<group>"; };
-		F387D13E463CC4FBFCA56171D8CEE081 /* Analytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Analytics.h; path = Headers/Analytics.h; sourceTree = "<group>"; };
+		E5885123C6F1340AF46FA4403876AB62 /* iRate.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = iRate.modulemap; sourceTree = "<group>"; };
+		E63C255D3E5075026745311D81955806 /* BLKFlexibleHeightBarBehaviorDefiner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BLKFlexibleHeightBarBehaviorDefiner.h; path = BLKFlexibleHeightBar/BLKFlexibleHeightBarBehaviorDefiner.h; sourceTree = "<group>"; };
+		E8CAABB1432A96067A9F4E188DFF934C /* ViewPagerController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ViewPagerController.m; path = ICViewPager/ICViewPager/ViewPagerController.m; sourceTree = "<group>"; };
+		EBCEF68232FA8D44CDDBC232B3FD65AC /* iRate-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iRate-dummy.m"; sourceTree = "<group>"; };
+		EBD86E4355EE1800DBC7E5FC5C224F30 /* GAITrackedViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = Headers/Public/GAITrackedViewController.h; sourceTree = "<group>"; };
+		EC77825D7AC869A401DAD63710203479 /* ICViewPager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ICViewPager-prefix.pch"; sourceTree = "<group>"; };
+		ECE8A0C99F082A4A82A534436616CA32 /* iCarousel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iCarousel-umbrella.h"; sourceTree = "<group>"; };
+		EDD69B6DB26ADB81A699CB495612C1AD /* iRate-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iRate-prefix.pch"; sourceTree = "<group>"; };
+		F192E79CD52401EACC44DB90E0569076 /* UICKeyChainStore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UICKeyChainStore.xcconfig; sourceTree = "<group>"; };
+		F1A9D03FE6E0EF0B36889DB1AB829F54 /* UICKeyChainStore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = UICKeyChainStore.modulemap; sourceTree = "<group>"; };
+		F2A22752699D0464D46D248F200D70C1 /* Analytics-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Analytics-Module.h"; path = "Headers/ModuleHeaders/Analytics-Module.h"; sourceTree = "<group>"; };
 		F7E68327F96807A113A9D3CD97011B76 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		FCCE9349568F90E480734868D0844B33 /* ColorArt-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ColorArt-umbrella.h"; sourceTree = "<group>"; };
+		F86BA0FA933F4FEFFD7FE1D01003D21B /* UIViewController+STPopup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+STPopup.m"; path = "STPopup/UIViewController+STPopup.m"; sourceTree = "<group>"; };
+		F893C740EE172D711A245DC6BB889F34 /* ColorArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ColorArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9228EB0145AF4DEC0991A477CB1C4A6 /* BLKFlexibleHeightBar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BLKFlexibleHeightBar-dummy.m"; sourceTree = "<group>"; };
+		FD3E2C4BE88B9BDACA667C2FA42C4102 /* iCarousel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = iCarousel/iCarousel.h; sourceTree = "<group>"; };
 		FED333F71BA244C276B35C2271C36CFF /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
-		FF67716EFB612731F80982D8129B8830 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = Headers/Public/GAIEcommerceProduct.h; sourceTree = "<group>"; };
-		FFF266BC42ED4C793F1E4A12E25D7360 /* UICKeyChainStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UICKeyChainStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEF8EA966CCB2C8C7F005ED06F4712A7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,30 +273,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		185ED791D4670D8FA29B87453F311F42 /* Frameworks */ = {
+		3B515F35429A1654A3F074562DC5D626 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F7170B17E105936278A1F69DEBD8D32 /* Foundation.framework in Frameworks */,
+				BBB0D7D8A7F735A495CB6D1AF84DC405 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5D401787FD5542FBDBB8CD0477A7C571 /* Frameworks */ = {
+		4903353B3C71CFF638C6CDB32DDE85E7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB0EB56AD46F5FE05CE53F9ED1429913 /* CoreGraphics.framework in Frameworks */,
-				17B7936CD6D347543F6FA3E584B6A213 /* Foundation.framework in Frameworks */,
-				8C0B88CAF71733CE4C25F98F19595502 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6D0DE6CB61DA472F946BB51D1D7A405 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				11F1A6C835418BA704AF5988A71288F7 /* Foundation.framework in Frameworks */,
-				CA871BE71028233BD75FE64CBA0211DD /* Security.framework in Frameworks */,
+				26387A42867F6FF34E133F0C031B1753 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,11 +309,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DC0D54400CEBA3D2AFD04004F26EDA5F /* Frameworks */ = {
+		C939DF1225C78A94BCE3038A520E26FE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14F130E3340EDD498CC7CBFB00005A53 /* Foundation.framework in Frameworks */,
+				EC876785FB6435BFD7361917A2DC4958 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E50E9CA2A30E38BD0086456025B1141E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				539DD27CF823E156E6A1E42B5E48578C /* Foundation.framework in Frameworks */,
+				9D962273029901E3911BB6A6B71CEC8B /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,18 +337,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		090CE936F023DDC84C28D4CB5FBFABE1 /* Support Files */ = {
+		147871138E2A96214F4C3E3EAAE91447 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				001DCD414B8CBDA4F792B99D368E1552 /* ColorArt.modulemap */,
-				18783F5E5336D6C4B50A6F21A43775F2 /* ColorArt.xcconfig */,
-				A771FB90FA6E6734FD3524D7ED61A7BE /* ColorArt-dummy.m */,
-				6EA17AB459684124D525C2D9A62F4278 /* ColorArt-prefix.pch */,
-				FCCE9349568F90E480734868D0844B33 /* ColorArt-umbrella.h */,
-				41F68222F4C4221DB07EFBA12FA78CB0 /* Info.plist */,
+				2381E1C8CC0A53A4B0360BFA2573856F /* Info.plist */,
+				E5885123C6F1340AF46FA4403876AB62 /* iRate.modulemap */,
+				A330DCA06A999747EA456F4B24F84EDE /* iRate.xcconfig */,
+				EBCEF68232FA8D44CDDBC232B3FD65AC /* iRate-dummy.m */,
+				EDD69B6DB26ADB81A699CB495612C1AD /* iRate-prefix.pch */,
+				1C4BE7381525B4EDCF5466ADD02040ED /* iRate-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/ColorArt";
+			path = "../Target Support Files/iRate";
+			sourceTree = "<group>";
+		};
+		18557B1DE75814499DB7D84E69B71464 /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				829A2725EAAF5BC531BC6633A3451EF7 /* Analytics */,
+				63916C1A889EB7523C41FF9A63E68D62 /* Core */,
+			);
+			path = Google;
+			sourceTree = "<group>";
+		};
+		1D49592C9EEF330B0818584107EDF3AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				079055670110E70E28848EA00B28C3B1 /* GoogleUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1EF40E6F775B20582B8D074AE52EAAAB /* FirebaseAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				4292957C17CE6E2084A88B3966802C82 /* Frameworks */,
+			);
+			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
 		20B56609144CE204DFA8221F742B2D76 /* Frameworks */ = {
@@ -357,55 +402,90 @@
 			path = "Target Support Files/Pods-CCIP";
 			sourceTree = "<group>";
 		};
-		2BC053527F52952C8E7692CFCFD50A35 /* Resources */ = {
+		23EEB78722E450315D66FD3011151EB5 /* ColorArt */ = {
 			isa = PBXGroup;
 			children = (
-				24A8D7E8F20D119A1DA25BA041B8768A /* iRate.bundle */,
+				9DFB04745BA3CB23EC4A859C6651A13D /* SLColorArt.h */,
+				6884F73095DEA1CE868E7E8A0BD03349 /* SLColorArt.m */,
+				1C57E8EC1ED701FFD4F7DD4D8D5C9C57 /* UIImage+ColorArt.h */,
+				47B629EA29E52E864B5F9F4FBDFF030A /* UIImage+ColorArt.m */,
+				DDD98889264A91C4F4451C4BF1D9443C /* UIImage+Scale.h */,
+				A5400CD97E540D76DA0E820441F50560 /* UIImage+Scale.m */,
+				C52E04CC093CB6EDE371764080ED1B4F /* Support Files */,
 			);
-			name = Resources;
+			path = ColorArt;
 			sourceTree = "<group>";
 		};
-		31BCB9FE7A82568441058F42ABD90BB1 /* Frameworks */ = {
+		26F339A81F5D4E0923E4B45CADA37DB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BA4E5F08CC82C87407C562B0A2F10E7E /* FirebaseInstanceID.framework */,
+				9255C838221AFA4987DE7476DE1F30F7 /* FirebaseInstanceID.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		367EDE0AC4EB8056C49ED6A58AC6BDDF /* GoogleUtilities */ = {
+		31771FACFA0685FAA1F5E7478A271A54 /* FirebaseInstanceID */ = {
 			isa = PBXGroup;
 			children = (
-				6AF780D7E6525E3DAE229EE04D50A105 /* Frameworks */,
+				1C87480DDC8718B3520AC14CAB67C88C /* FIRInstanceID.h */,
+				26F339A81F5D4E0923E4B45CADA37DB1 /* Frameworks */,
 			);
-			path = GoogleUtilities;
+			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
-		3FD2DBB9D786FFF9A8EC4CA4287D3CD7 /* Frameworks */ = {
+		375F2114EB942748FAF5F5CFEC59C28F /* GoogleAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				60C50E8BA998099E4D930D6CEE067C2D /* GoogleSymbolUtilities.framework */,
+				A718A38EF4D248CB20F6618084A3C0A8 /* GAI.h */,
+				7877B892BF4BB1B4A1AE26FE26466EE8 /* GAIDictionaryBuilder.h */,
+				B08DBAF06216EF1C38C417B0929A4070 /* GAIEcommerceFields.h */,
+				BD20750D5F59F3711E072C0B819E3C1E /* GAIEcommerceProduct.h */,
+				8693595E44D51DA76FAAD0C1CD2BE34D /* GAIEcommerceProductAction.h */,
+				DD79DF9DF765B94E47F626A79DFE71A0 /* GAIEcommercePromotion.h */,
+				7836FD47BAC25117D89BC51135A6CC5F /* GAIFields.h */,
+				5FAD096FB6DF48D90A508364AD33364A /* GAILogger.h */,
+				EBD86E4355EE1800DBC7E5FC5C224F30 /* GAITrackedViewController.h */,
+				2E1EA41B9559B4860BF0BE833D8D7617 /* GAITracker.h */,
+				F56686A88C29D4C0E891097C7F606C5B /* Frameworks */,
+			);
+			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		4292957C17CE6E2084A88B3966802C82 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA4D79D63884E8DBF5359F0D92E3D68A /* FirebaseAnalytics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		435247C3EA41D12DB9F1E62A32F0B10F /* Frameworks */ = {
+		4530A8199BA4482BA00AB5C887DC2DD8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EBDBA531E55C7297A4040921760CE644 /* GGLAnalytics.framework */,
+				2778055403A91C73C6B8464986D3B3EA /* BLKFlexibleHeightBar.framework */,
+				F893C740EE172D711A245DC6BB889F34 /* ColorArt.framework */,
+				296F9CE8C0021A413CE160A0837CBC49 /* iCarousel.framework */,
+				6156449771514F5A59B295EEF3B6EFB2 /* ICViewPager.framework */,
+				5BD8A68B9774562DBFBD25378363D489 /* iRate.framework */,
+				7F71395F3BC9D19063074417DF054FF1 /* Pods_CCIP.framework */,
+				1175068A5792F25DA7EBC2CA141339C7 /* STPopup.framework */,
+				5E102F1F96B2700D489DD646F1E1D799 /* UICKeyChainStore.framework */,
 			);
-			name = Frameworks;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		4B12C15E5CAC3F0CD34A687330F0E479 /* iRate */ = {
+		48CFE32E12E99FA38301D255A9724C7A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				934815A60C8189807A3D2745F522D8DB /* iRate.h */,
-				3809E4512618EB732E5B8D1756494F71 /* iRate.m */,
-				2BC053527F52952C8E7692CFCFD50A35 /* Resources */,
-				EFF81C7394CD9458E428169E0623BBA9 /* Support Files */,
+				7C561ACABAE98874D092B516EBAA2720 /* Info.plist */,
+				F1A9D03FE6E0EF0B36889DB1AB829F54 /* UICKeyChainStore.modulemap */,
+				F192E79CD52401EACC44DB90E0569076 /* UICKeyChainStore.xcconfig */,
+				B209DC75A97ECAEC7235EE2EA715B4B9 /* UICKeyChainStore-dummy.m */,
+				71D141A27C3D431F29F9BDA44FD7D3D9 /* UICKeyChainStore-prefix.pch */,
+				547419AA5A10E15E1E8135F79AD1EC9D /* UICKeyChainStore-umbrella.h */,
 			);
-			path = iRate;
+			name = "Support Files";
+			path = "../Target Support Files/UICKeyChainStore";
 			sourceTree = "<group>";
 		};
 		4B8C921EBD4950EF50AD3046DB52F1B3 /* Targets Support Files */ = {
@@ -416,65 +496,31 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		4DFEC248116F1704052C453726D720C0 /* Google */ = {
+		4FCFA427B8A25A7A3000C1633A23D3BD /* iRate */ = {
 			isa = PBXGroup;
 			children = (
-				F9B333593A4A4EE641BFD9FE25EBEA87 /* Analytics */,
-				EA9CEB2B43C30AABAAD4CA09F9F1E4A9 /* Core */,
+				00EF8D49538FBB30F5584387C1C89497 /* iRate.h */,
+				8452474C727694D6E6F3ECE51AD84697 /* iRate.m */,
+				7F84218C29A3D0BCCCA622558C6C50B5 /* Resources */,
+				147871138E2A96214F4C3E3EAAE91447 /* Support Files */,
 			);
-			path = Google;
+			path = iRate;
 			sourceTree = "<group>";
 		};
-		517B008C37F455DA697083DA640513DC /* Products */ = {
+		4FEA0EF9B366CD95A9CA8ED90C003590 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CEA0637DBBBC3C2BBE38FB4AD714DDDC /* ColorArt.framework */,
-				5B91B53D9E5487D948C6834BE9374B3C /* iCarousel.framework */,
-				4119BEC22B06CAB0075C84D9BCD030C7 /* ICViewPager.framework */,
-				D3C06C005877DA960E635E793A186C09 /* iRate.framework */,
-				1239CBF847182E211A570000A3C82256 /* Pods_CCIP.framework */,
-				3A4155890415EAB0CE2F347F9A70B002 /* RGCardViewLayout.framework */,
-				110573BBBD6213E601614084432F9DD0 /* STPopup.framework */,
-				FFF266BC42ED4C793F1E4A12E25D7360 /* UICKeyChainStore.framework */,
+				0361869B3A7ACA916F51FED931285E5D /* GoogleInterchangeUtilities.framework */,
 			);
-			name = Products;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		529647AE145AC1657564C885D86CF592 /* STPopup */ = {
+		54380EEA558E3E429942AEAAE426DD31 /* GoogleUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				D901C4D27463CA29FC421BA01DE59F94 /* STPopup.h */,
-				136BB88495D3C06C7DA91AB302415219 /* STPopupController.h */,
-				EEBF77F7530370B7C28C9BBEC0BD11EC /* STPopupController.m */,
-				5CDA0034772344F55A0FBEBFD59EBB66 /* STPopupLeftBarItem.h */,
-				6248F927165406F365F01AF268DEA57B /* STPopupLeftBarItem.m */,
-				D3F0560AF263FCE879E3DB701EBCAD5E /* STPopupNavigationBar.h */,
-				AD2E80F59F6DA6B3091F8A680589E60F /* STPopupNavigationBar.m */,
-				CF20B14B2BA3F198DB384CDEF7715CA8 /* UIResponder+STPopup.h */,
-				0F1F75421B4C287B7009B3816E3AC6F8 /* UIResponder+STPopup.m */,
-				F0A407ACD83130909EFAF2D7F76858F1 /* UIViewController+STPopup.h */,
-				702D180366645F2DEF0620D4347ACAFC /* UIViewController+STPopup.m */,
-				E7F1E8CA3164DF4F6AE2CFA4770112B5 /* Support Files */,
+				1D49592C9EEF330B0818584107EDF3AA /* Frameworks */,
 			);
-			path = STPopup;
-			sourceTree = "<group>";
-		};
-		562CD0ABA40DBFFEA7FE2D439341607C /* ICViewPager */ = {
-			isa = PBXGroup;
-			children = (
-				6CB8D7B2DFFC3EE26629E57D3F7D04CD /* ViewPagerController.h */,
-				4D19381A9D20C02DA3E68D770D49287F /* ViewPagerController.m */,
-				88B9BAC9B5E0ED7AEB90A9317DE9A81F /* Support Files */,
-			);
-			path = ICViewPager;
-			sourceTree = "<group>";
-		};
-		573F5997320FB8FE2CCEC6C79D362CC1 /* GoogleSymbolUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				3FD2DBB9D786FFF9A8EC4CA4287D3CD7 /* Frameworks */,
-			);
-			path = GoogleSymbolUtilities;
+			path = GoogleUtilities;
 			sourceTree = "<group>";
 		};
 		5779C89AA3DB3553FFA7CB994827B180 /* iOS */ = {
@@ -489,64 +535,16 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		57B8759855A145C08C974A83B34111A6 /* RGCardViewLayout */ = {
+		63916C1A889EB7523C41FF9A63E68D62 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				01BDFB5FA7978C3A6910844435C4C795 /* RGCardViewLayout.h */,
-				87DF7067AE674A83C96A0A2AAEBD1194 /* RGCardViewLayout.m */,
-				D79C7D3E4E1F538481F254C147724CC3 /* Support Files */,
+				F2A22752699D0464D46D248F200D70C1 /* Analytics-Module.h */,
+				479C62F47C0E5D343033AC37CD66757F /* Core.h */,
+				3D693BAC49AD3D45361E8DE3E6C3D82D /* Core-Module.h */,
+				CFB69C823440D69EC41FA839DCC6D161 /* SignIn-Module.h */,
+				F674453AE1559B6E7D910BB752D048B6 /* Frameworks */,
 			);
-			path = RGCardViewLayout;
-			sourceTree = "<group>";
-		};
-		5E8A7ABBACE83879DFE9981267060CD6 /* GoogleInterchangeUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				9DE026E112E209E42C8908EF4074A5AE /* Frameworks */,
-			);
-			path = GoogleInterchangeUtilities;
-			sourceTree = "<group>";
-		};
-		63E725F97E7D53EE207DD1F54C10B8A0 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				3104730D74F2C051BDD55B5B9F441B97 /* iCarousel.modulemap */,
-				35B25889715C2F29C34F07F07506B5C8 /* iCarousel.xcconfig */,
-				DC80E93C30411D574DBD7025021BFA67 /* iCarousel-dummy.m */,
-				3F0B62B5EAF199BD341E95E8173BDA31 /* iCarousel-prefix.pch */,
-				1102B1F4AD97ED06BFFA64FCE25E884B /* iCarousel-umbrella.h */,
-				B097EE9C3655655C141375106C430EAD /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/iCarousel";
-			sourceTree = "<group>";
-		};
-		6409D19A5F275304346199328E2BD722 /* UICKeyChainStore */ = {
-			isa = PBXGroup;
-			children = (
-				DA0789CA7D3EFA9A5DB9B4238E39EA55 /* UICKeyChainStore.h */,
-				E86AADB0E330F3BB288A057851C211A7 /* UICKeyChainStore.m */,
-				807E8A5338D57546786A023DA6618468 /* Support Files */,
-			);
-			path = UICKeyChainStore;
-			sourceTree = "<group>";
-		};
-		6AF780D7E6525E3DAE229EE04D50A105 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				07EB875730EFFD5FCD41E859D3C075FF /* GoogleUtilities.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		75CDA8D74565137DBF3786F3AA337F78 /* iCarousel */ = {
-			isa = PBXGroup;
-			children = (
-				A755C48DB17621842733301FB6A63A40 /* iCarousel.h */,
-				23DAFE3E0820B9F1E7534D835760FB24 /* iCarousel.m */,
-				63E725F97E7D53EE207DD1F54C10B8A0 /* Support Files */,
-			);
-			path = iCarousel;
+			name = Core;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -554,234 +552,259 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				20B56609144CE204DFA8221F742B2D76 /* Frameworks */,
-				AAD2340957814BECD1B84C9F76C9B73C /* Pods */,
-				517B008C37F455DA697083DA640513DC /* Products */,
+				8C9DBD053166F4885FC230C67CFD2A01 /* Pods */,
+				4530A8199BA4482BA00AB5C887DC2DD8 /* Products */,
 				4B8C921EBD4950EF50AD3046DB52F1B3 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		807E8A5338D57546786A023DA6618468 /* Support Files */ = {
+		7F84218C29A3D0BCCCA622558C6C50B5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				924583DDFC03F1542F5C570830E2716A /* Info.plist */,
-				7CC459D768CDDFD80C1F031251C03A16 /* UICKeyChainStore.modulemap */,
-				C000B9E875B1BAB5F44178897D04DE0E /* UICKeyChainStore.xcconfig */,
-				0E878B856997B46141F5CAD7FDAC8F6B /* UICKeyChainStore-dummy.m */,
-				A39B868629F1AB3E058394A0970FD9C1 /* UICKeyChainStore-prefix.pch */,
-				DC373ACC4BB5D92C9E0A8C99BCFB45AD /* UICKeyChainStore-umbrella.h */,
+				376D08327C4E2F792EB8C2292F80DBFF /* iRate.bundle */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/UICKeyChainStore";
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		88B9BAC9B5E0ED7AEB90A9317DE9A81F /* Support Files */ = {
+		829A2725EAAF5BC531BC6633A3451EF7 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
-				2CFB04D4B6E235414A397FC7C9B80384 /* ICViewPager.modulemap */,
-				BCE5A657C270347E849D0557FB705B06 /* ICViewPager.xcconfig */,
-				AB31EF79E4633DDE3028ED89E6698C4B /* ICViewPager-dummy.m */,
-				D8E1B24CA7E106AC272D3D5138EE65BB /* ICViewPager-prefix.pch */,
-				C21BF3FAA836070F4EA1EB49A0176768 /* ICViewPager-umbrella.h */,
-				7064AD2008B81FE577B17D48AE61C2A1 /* Info.plist */,
+				186F6886A86627C64A61A1044B14F066 /* Analytics.h */,
+				E191D4B2799E97F3AD122BFFAB4ABB64 /* Frameworks */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		881B74CD72726C53665BC10073AC4AB0 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4EF4A9D51C4CC8232256E3900188BB18 /* ICViewPager.modulemap */,
+				63FDBEE01A4F1416C0D297D5DDF61DFE /* ICViewPager.xcconfig */,
+				37305792A7515815151CA4D45E58D595 /* ICViewPager-dummy.m */,
+				EC77825D7AC869A401DAD63710203479 /* ICViewPager-prefix.pch */,
+				C0BC2C236F1387E4585A63FAAF515B76 /* ICViewPager-umbrella.h */,
+				47CC81F2D67691B0724A84323C10CF5E /* Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/ICViewPager";
 			sourceTree = "<group>";
 		};
-		95610549A37D894ED8465743944FC8EA /* FirebaseAnalytics */ = {
+		8C9DBD053166F4885FC230C67CFD2A01 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DEBEDC93103ECC87D089BD7271FA1357 /* Frameworks */,
-			);
-			path = FirebaseAnalytics;
-			sourceTree = "<group>";
-		};
-		9DE026E112E209E42C8908EF4074A5AE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4AB634C6B85DDD261C47062805300B7F /* GoogleInterchangeUtilities.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AAD2340957814BECD1B84C9F76C9B73C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				FEBB6C35C997AA50377AB55ADF419162 /* ColorArt */,
-				95610549A37D894ED8465743944FC8EA /* FirebaseAnalytics */,
-				D6616A22873515E369C7AD021033E6D1 /* FirebaseInstanceID */,
-				4DFEC248116F1704052C453726D720C0 /* Google */,
-				B87E8365DD61B45B9A94AAE135E7D001 /* GoogleAnalytics */,
-				5E8A7ABBACE83879DFE9981267060CD6 /* GoogleInterchangeUtilities */,
-				573F5997320FB8FE2CCEC6C79D362CC1 /* GoogleSymbolUtilities */,
-				367EDE0AC4EB8056C49ED6A58AC6BDDF /* GoogleUtilities */,
-				75CDA8D74565137DBF3786F3AA337F78 /* iCarousel */,
-				562CD0ABA40DBFFEA7FE2D439341607C /* ICViewPager */,
-				4B12C15E5CAC3F0CD34A687330F0E479 /* iRate */,
-				FA97ADC9E79A7C548C9C8357BC2574DD /* OneSignal */,
-				57B8759855A145C08C974A83B34111A6 /* RGCardViewLayout */,
-				529647AE145AC1657564C885D86CF592 /* STPopup */,
-				6409D19A5F275304346199328E2BD722 /* UICKeyChainStore */,
+				96AAFE2A7FA6E21D79A67ACCA9B9CA52 /* BLKFlexibleHeightBar */,
+				23EEB78722E450315D66FD3011151EB5 /* ColorArt */,
+				1EF40E6F775B20582B8D074AE52EAAAB /* FirebaseAnalytics */,
+				31771FACFA0685FAA1F5E7478A271A54 /* FirebaseInstanceID */,
+				18557B1DE75814499DB7D84E69B71464 /* Google */,
+				375F2114EB942748FAF5F5CFEC59C28F /* GoogleAnalytics */,
+				A78AE8529E556C5A5E3CCC5B1F5C3370 /* GoogleInterchangeUtilities */,
+				F129DA00DCE0D954E693107059B3EDD2 /* GoogleSymbolUtilities */,
+				54380EEA558E3E429942AEAAE426DD31 /* GoogleUtilities */,
+				D736687FA325A72A64DCE5E4E69F6C7A /* iCarousel */,
+				DDA02B2BC1E3B7E042C3BEC3D8ADD423 /* ICViewPager */,
+				4FCFA427B8A25A7A3000C1633A23D3BD /* iRate */,
+				B5D693C37DFAD531F3C530F72FD6DCE0 /* OneSignal */,
+				B3C50893B18B532F4A95DD306B05035C /* STPopup */,
+				ABA1DCA1A9B87C0097DE7B469A4C5C26 /* UICKeyChainStore */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B87E8365DD61B45B9A94AAE135E7D001 /* GoogleAnalytics */ = {
+		96AAFE2A7FA6E21D79A67ACCA9B9CA52 /* BLKFlexibleHeightBar */ = {
 			isa = PBXGroup;
 			children = (
-				90151FE5777555F5ACC8316F2600C57A /* GAI.h */,
-				811557E368587B3A35B99079C938AD86 /* GAIDictionaryBuilder.h */,
-				8759D013893FC772A8B61C937D7A128F /* GAIEcommerceFields.h */,
-				FF67716EFB612731F80982D8129B8830 /* GAIEcommerceProduct.h */,
-				3BB9F927B9215BFD3CAB3E3CDA38BF20 /* GAIEcommerceProductAction.h */,
-				00A94DD150C65C340C14271FF7779BDE /* GAIEcommercePromotion.h */,
-				81D0BA68651E1BE0FC1174871A3A63C1 /* GAIFields.h */,
-				4977BC98EC35D3A6721427904E1AAAC2 /* GAILogger.h */,
-				89925A908713905C5810AE662DD67A1F /* GAITrackedViewController.h */,
-				E59095B001C44C21A17240E7190A6EC9 /* GAITracker.h */,
-				EDE8DD20F068426F26273C6EAD5C7B74 /* Frameworks */,
+				4816D86B9CAFF1FBF195FC5D43E0AFF9 /* BLKDelegateSplitter.h */,
+				9F524F9733BD6F30DFDC2C894FD74810 /* BLKDelegateSplitter.m */,
+				7DFD0F943571019B14ED49CEB96DEBD8 /* BLKFlexibleHeightBar.h */,
+				11674166838BDB7F2CBA67F2B8DA7C61 /* BLKFlexibleHeightBar.m */,
+				E63C255D3E5075026745311D81955806 /* BLKFlexibleHeightBarBehaviorDefiner.h */,
+				C140FEB791A7400F56A2A77075AD6C17 /* BLKFlexibleHeightBarBehaviorDefiner.m */,
+				9ACFD530F25CD45F16E186C496BF4BF5 /* BLKFlexibleHeightBarSubviewLayoutAttributes.h */,
+				2CFC1DFCEFD82DB861A9C4C6CBE2BAC6 /* BLKFlexibleHeightBarSubviewLayoutAttributes.m */,
+				20CC204B30A895E7D021AE795E731177 /* FacebookStyleBarBehaviorDefiner.h */,
+				114C7AA18832FCCC771B76B94697E991 /* FacebookStyleBarBehaviorDefiner.m */,
+				BDD8155FEAF0A8D18A94498D717F075C /* SquareCashStyleBehaviorDefiner.h */,
+				A15E4229F26E02EBCC84EC291B54260F /* SquareCashStyleBehaviorDefiner.m */,
+				2D17A568664501DEBDD34EBCAEE5F8CC /* UIView+BLKFlexibleHeightBarSubview.h */,
+				BEF3B013E424E71647A34CA02534EE11 /* UIView+BLKFlexibleHeightBarSubview.m */,
+				9BB9AE4705A2C6A437D185E62AEDED31 /* Support Files */,
 			);
-			path = GoogleAnalytics;
+			path = BLKFlexibleHeightBar;
 			sourceTree = "<group>";
 		};
-		D6616A22873515E369C7AD021033E6D1 /* FirebaseInstanceID */ = {
+		9BB9AE4705A2C6A437D185E62AEDED31 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				46A2A709443DE8B42CBC9CD28BEF3C79 /* FIRInstanceID.h */,
-				31BCB9FE7A82568441058F42ABD90BB1 /* Frameworks */,
-			);
-			path = FirebaseInstanceID;
-			sourceTree = "<group>";
-		};
-		D79C7D3E4E1F538481F254C147724CC3 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				C93A1DB55BC490DD89699134100E362B /* Info.plist */,
-				C06A9C838B5820435A9264541EF7A9BF /* RGCardViewLayout.modulemap */,
-				202C2B6EB5B83AE61D7CDE6949E86FB9 /* RGCardViewLayout.xcconfig */,
-				C2D239D7B663250912E035C53A40F895 /* RGCardViewLayout-dummy.m */,
-				1F4A1AF0F732F6CA813D984E28A28C78 /* RGCardViewLayout-prefix.pch */,
-				CF6DA6B562597AEA467EBF1FAB2AC485 /* RGCardViewLayout-umbrella.h */,
+				870393144C99F404C434CC2A9C4E0432 /* BLKFlexibleHeightBar.modulemap */,
+				B26692E8BE84A1F5986960D154212C04 /* BLKFlexibleHeightBar.xcconfig */,
+				F9228EB0145AF4DEC0991A477CB1C4A6 /* BLKFlexibleHeightBar-dummy.m */,
+				0681E4A111DC1644ABF8D7433F25B444 /* BLKFlexibleHeightBar-prefix.pch */,
+				80F8E812D71FE38B19C900C49F18A2AB /* BLKFlexibleHeightBar-umbrella.h */,
+				C91F0F2974FE44AD8E0B2FE7F3629B7A /* Info.plist */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/RGCardViewLayout";
+			path = "../Target Support Files/BLKFlexibleHeightBar";
 			sourceTree = "<group>";
 		};
-		DEBEDC93103ECC87D089BD7271FA1357 /* Frameworks */ = {
+		A78AE8529E556C5A5E3CCC5B1F5C3370 /* GoogleInterchangeUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				B4344A8A2B5CE3D0C6CBA90FC6670F86 /* FirebaseAnalytics.framework */,
+				4FEA0EF9B366CD95A9CA8ED90C003590 /* Frameworks */,
+			);
+			path = GoogleInterchangeUtilities;
+			sourceTree = "<group>";
+		};
+		ABA1DCA1A9B87C0097DE7B469A4C5C26 /* UICKeyChainStore */ = {
+			isa = PBXGroup;
+			children = (
+				00D59B54E9728568F2FF99448811A7AF /* UICKeyChainStore.h */,
+				4D7F32366EA13337DF3A004BE7E117B5 /* UICKeyChainStore.m */,
+				48CFE32E12E99FA38301D255A9724C7A /* Support Files */,
+			);
+			path = UICKeyChainStore;
+			sourceTree = "<group>";
+		};
+		ADBC353C7D2A7BC791298403F240D0E6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE7D7C68AB5EE597DC073FD075EDDFA5 /* GoogleSymbolUtilities.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E7F1E8CA3164DF4F6AE2CFA4770112B5 /* Support Files */ = {
+		AEA714FC5A1054645D3EC5B61660D38A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				01E92C8199727DCEFB419C7D3ED9B00B /* Info.plist */,
-				2571D62C451FDB5F764DD1A12C51D845 /* STPopup.modulemap */,
-				87ABF8618FEF5F0441D8A521345165C0 /* STPopup.xcconfig */,
-				2B32FCC6299C26B9919648BBEC68AC36 /* STPopup-dummy.m */,
-				6E30E4DEB60B0EDFFF99C44E86E2A261 /* STPopup-prefix.pch */,
-				A1E5B2960986E453E58B90B2AC0F85A9 /* STPopup-umbrella.h */,
+				0AD7207BAA6C0217B638DEE9D69D4BAA /* iCarousel.modulemap */,
+				A0263DB1E718B2A9201A009B01FA01EA /* iCarousel.xcconfig */,
+				DE97056EE5BC0E5718A54A98EF3558FD /* iCarousel-dummy.m */,
+				3E10B4A6180B3FC0B1AEC00B944EEA24 /* iCarousel-prefix.pch */,
+				ECE8A0C99F082A4A82A534436616CA32 /* iCarousel-umbrella.h */,
+				96D2C95D740AF05EFBEDA8570DEAD584 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/iCarousel";
+			sourceTree = "<group>";
+		};
+		B3C50893B18B532F4A95DD306B05035C /* STPopup */ = {
+			isa = PBXGroup;
+			children = (
+				8426F339801EF2D61A63C932AA52E6EE /* STPopup.h */,
+				30F00D717F5A34AB2535C199C1B8A6D0 /* STPopupController.h */,
+				21E3BEAAED8FA45E71F64169BB8F28FA /* STPopupController.m */,
+				AF0E905F86A1DB133AE492424E6A75BC /* STPopupLeftBarItem.h */,
+				3823FEA8179179EF3492F88186364C3C /* STPopupLeftBarItem.m */,
+				289B034075C78049875B288026F64853 /* STPopupNavigationBar.h */,
+				502BD24E68D80C1E0A05AFC41C0992ED /* STPopupNavigationBar.m */,
+				5C39CA4814832580DBCF01C83BCEBADB /* UIResponder+STPopup.h */,
+				9CB0448A92DE9A4AB007ADA47359C2F6 /* UIResponder+STPopup.m */,
+				9C2CA2A80CC1622E051472D7C42984F1 /* UIViewController+STPopup.h */,
+				F86BA0FA933F4FEFFD7FE1D01003D21B /* UIViewController+STPopup.m */,
+				D7A043CDE011E0883AB7A069D4C9E1E6 /* Support Files */,
+			);
+			path = STPopup;
+			sourceTree = "<group>";
+		};
+		B5D693C37DFAD531F3C530F72FD6DCE0 /* OneSignal */ = {
+			isa = PBXGroup;
+			children = (
+				F949116E0B45CCB29AAF4A7E13411ADD /* Frameworks */,
+			);
+			path = OneSignal;
+			sourceTree = "<group>";
+		};
+		C52E04CC093CB6EDE371764080ED1B4F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1982BC947AB2455E089BB8FD49C1EDB8 /* ColorArt.modulemap */,
+				03689CFEED64E1FCE36BE3634A0D9A4A /* ColorArt.xcconfig */,
+				DADC16DAC2E17EBDDA6D03FC474562CB /* ColorArt-dummy.m */,
+				9E6ED3EE6692A01DD18F8972BE43C3B2 /* ColorArt-prefix.pch */,
+				31A2EFA8B008D4C90B8216C8AC9D7E62 /* ColorArt-umbrella.h */,
+				FEF8EA966CCB2C8C7F005ED06F4712A7 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ColorArt";
+			sourceTree = "<group>";
+		};
+		D736687FA325A72A64DCE5E4E69F6C7A /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				FD3E2C4BE88B9BDACA667C2FA42C4102 /* iCarousel.h */,
+				2FF72DABEE3AB7EFF2D9B5B2F063D742 /* iCarousel.m */,
+				AEA714FC5A1054645D3EC5B61660D38A /* Support Files */,
+			);
+			path = iCarousel;
+			sourceTree = "<group>";
+		};
+		D7A043CDE011E0883AB7A069D4C9E1E6 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7CAA0498F724C45F55B9910582B4D2BF /* Info.plist */,
+				A05F0E51E9D4BF926C13C29BA1DC865E /* STPopup.modulemap */,
+				AA8E3BA2B4C5290F2A4FF71F40450186 /* STPopup.xcconfig */,
+				57ABF4001412BD740E68E19E72BB1532 /* STPopup-dummy.m */,
+				DBA408DCBAE5EE7A0A91B4CA14024DE7 /* STPopup-prefix.pch */,
+				DC998B021F714A80C0B807750A09C18B /* STPopup-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/STPopup";
 			sourceTree = "<group>";
 		};
-		EA9CEB2B43C30AABAAD4CA09F9F1E4A9 /* Core */ = {
+		DDA02B2BC1E3B7E042C3BEC3D8ADD423 /* ICViewPager */ = {
 			isa = PBXGroup;
 			children = (
-				8D79BE0FF51E5265EF9265EB80B8ADD1 /* Analytics-Module.h */,
-				C9BBDDF14E9841B40E031169CE4DC29D /* Core.h */,
-				A61C8969AB8A4E277CE5BE5A30C765AC /* Core-Module.h */,
-				F30B4BF112B94A1A22B92CE35BAD6B59 /* SignIn-Module.h */,
-				FC58D9C149C71F1FF053AFF6EB70D296 /* Frameworks */,
+				A644BFB4F17AA07660AD77DA58C14640 /* ViewPagerController.h */,
+				E8CAABB1432A96067A9F4E188DFF934C /* ViewPagerController.m */,
+				881B74CD72726C53665BC10073AC4AB0 /* Support Files */,
 			);
-			name = Core;
+			path = ICViewPager;
 			sourceTree = "<group>";
 		};
-		EDE8DD20F068426F26273C6EAD5C7B74 /* Frameworks */ = {
+		E191D4B2799E97F3AD122BFFAB4ABB64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3B23E74B61D87361AD9AF3963332FF93 /* libGoogleAnalytics.a */,
+				36557CC5097BF5A8ACBBADF1412052C0 /* GGLAnalytics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EFF81C7394CD9458E428169E0623BBA9 /* Support Files */ = {
+		F129DA00DCE0D954E693107059B3EDD2 /* GoogleSymbolUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				E0A8453A7A2C68E95EC6C6E9143077B2 /* Info.plist */,
-				C0B19E97BDC7B2A9B9FAC565522C12FC /* iRate.modulemap */,
-				11D7483206B2FA96DC3DEEC6C0ECBBDF /* iRate.xcconfig */,
-				93D3D72C02DE77BAE61D1C8684B46BB8 /* iRate-dummy.m */,
-				79D4354CB5EBF3416B762A54789A4813 /* iRate-prefix.pch */,
-				0923ABBF7C7EE54908AA3E1B0C1149CF /* iRate-umbrella.h */,
+				ADBC353C7D2A7BC791298403F240D0E6 /* Frameworks */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/iRate";
+			path = GoogleSymbolUtilities;
 			sourceTree = "<group>";
 		};
-		F9B333593A4A4EE641BFD9FE25EBEA87 /* Analytics */ = {
+		F56686A88C29D4C0E891097C7F606C5B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F387D13E463CC4FBFCA56171D8CEE081 /* Analytics.h */,
-				435247C3EA41D12DB9F1E62A32F0B10F /* Frameworks */,
-			);
-			name = Analytics;
-			sourceTree = "<group>";
-		};
-		FA97ADC9E79A7C548C9C8357BC2574DD /* OneSignal */ = {
-			isa = PBXGroup;
-			children = (
-				FBAEB95A837114B9BC06160A6AC4C3A7 /* Frameworks */,
-			);
-			path = OneSignal;
-			sourceTree = "<group>";
-		};
-		FBAEB95A837114B9BC06160A6AC4C3A7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				68741A69895438C71706019FA3E30732 /* OneSignal.framework */,
+				4344F833CD3DF14BA676F8C569C3F8CE /* libGoogleAnalytics.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FC58D9C149C71F1FF053AFF6EB70D296 /* Frameworks */ = {
+		F674453AE1559B6E7D910BB752D048B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E0E7333DB873D04411FFC8E177F09D88 /* GGLCore.framework */,
+				D73CF23DB56EA7820A1317C05ADE5D93 /* GGLCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FEBB6C35C997AA50377AB55ADF419162 /* ColorArt */ = {
+		F949116E0B45CCB29AAF4A7E13411ADD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9521C1FB4B36BE5C91F4B95FF0313C5D /* SLColorArt.h */,
-				495AC98680FB044F998730D0B0D3DB0F /* SLColorArt.m */,
-				1536F9767C3938CB78C941D909679A1D /* UIImage+ColorArt.h */,
-				738C77B7B05959B67CA5E487B5280EAA /* UIImage+ColorArt.m */,
-				073A01182FA7D4C23390B3DB40AA2DB0 /* UIImage+Scale.h */,
-				EE6098EE5902D5CB4F3A155DD3A8FCF7 /* UIImage+Scale.m */,
-				090CE936F023DDC84C28D4CB5FBFABE1 /* Support Files */,
+				2651488E9AACA9097B50FEAD8381A383 /* OneSignal.framework */,
 			);
-			path = ColorArt;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		40E0EE99506F442B8E7427B97153CD4F /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CFCF83E9B5E9E6766E9EE9A6967B7942 /* UICKeyChainStore-umbrella.h in Headers */,
-				9E4B43479D3D22DD0EA174945CCCB555 /* UICKeyChainStore.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		40EEEBC304853684165654A97A671DEC /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -791,34 +814,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		517FC0998FFA9AEE5573B0D67FDEE191 /* Headers */ = {
+		4B0C896081CAF0CBF2873BA4629738FF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3484D1F87912024F4623F0E5BD094290 /* Pods-CCIP-umbrella.h in Headers */,
+				FCC63F4CFC075067A50303FB67750C01 /* UICKeyChainStore-umbrella.h in Headers */,
+				D4E6E48EB5A86595421216EA6AF8AC82 /* UICKeyChainStore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		823A28B127C9EDB2FDEA262B59171195 /* Headers */ = {
+		8A1FE9414F885639C4B51293B72FBB02 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7AF67178526B325A19D4F76D91E3A7E /* STPopup-umbrella.h in Headers */,
-				65403F61D9EA283F811EE7BF96772CC3 /* STPopup.h in Headers */,
-				BA55E83A7EBD07DBEA1BE2CF0E2E8135 /* STPopupController.h in Headers */,
-				9B4B4B09DDA102C5F4593BFCB2C8C871 /* STPopupLeftBarItem.h in Headers */,
-				D93B672B2BC7C166F8AAE0A404648D75 /* STPopupNavigationBar.h in Headers */,
-				DD9C3D4C2A3DC097E503676F0C5CD6DE /* UIResponder+STPopup.h in Headers */,
-				C2F6232EFD76925D4634E56DA651E230 /* UIViewController+STPopup.h in Headers */,
+				F7E442AA763CFE93CB4EE7E11A55C3B8 /* STPopup-umbrella.h in Headers */,
+				D68BDA0EDD1BE4CD7F1381F98B9CDEEE /* STPopup.h in Headers */,
+				2046E920D630872D9635C76652C6B79C /* STPopupController.h in Headers */,
+				009F7BCC7C48C28429E45F0A76BE098D /* STPopupLeftBarItem.h in Headers */,
+				C606727E1D94372F34479983CF36C5FC /* STPopupNavigationBar.h in Headers */,
+				8C0DA32F0F092BB8AE159742898FFB86 /* UIResponder+STPopup.h in Headers */,
+				FFD3FDF57334605DA9F5CD26AFAF7315 /* UIViewController+STPopup.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		93EE512AFCB8333BD39F2658AEF906A1 /* Headers */ = {
+		A63F594012BEA7B95826318ACB9578C2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49727A99741CE11516CBF045D9BB1D3B /* RGCardViewLayout-umbrella.h in Headers */,
-				A9C310D7697F1B01D89E0D5E503A4954 /* RGCardViewLayout.h in Headers */,
+				C863E3027DAEBE4819A83EA3FC5CDA6C /* Pods-CCIP-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -851,6 +874,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DAAE6855DE85C44EF14593D60F1ADA15 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF75C9D058ED100B0A7F4C3CC8ED9B80 /* BLKDelegateSplitter.h in Headers */,
+				90D9E156AF5D9F8F149D3A30F15AF014 /* BLKFlexibleHeightBar-umbrella.h in Headers */,
+				136CDF804C6DB1F93B6D97E9476DED81 /* BLKFlexibleHeightBar.h in Headers */,
+				9FD3A8D76E9CFB7B87BFF6CC38818355 /* BLKFlexibleHeightBarBehaviorDefiner.h in Headers */,
+				183E20A67C4407B12C9D8C7EA98F4C61 /* BLKFlexibleHeightBarSubviewLayoutAttributes.h in Headers */,
+				0A927F5EA61B6C07404397C96F1B7DFB /* FacebookStyleBarBehaviorDefiner.h in Headers */,
+				4121C3C8ED8E4C322EE96541B2A7AF2A /* SquareCashStyleBehaviorDefiner.h in Headers */,
+				C351AAED65C08058A47640D53375FA40 /* UIView+BLKFlexibleHeightBarSubview.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -869,7 +907,31 @@
 			);
 			name = iRate;
 			productName = iRate;
-			productReference = D3C06C005877DA960E635E793A186C09 /* iRate.framework */;
+			productReference = 5BD8A68B9774562DBFBD25378363D489 /* iRate.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0B5CD6614ADBE4B30986F5DF115E0E35 /* Pods-CCIP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74339A6A6B708378FFDAA101B368DBAB /* Build configuration list for PBXNativeTarget "Pods-CCIP" */;
+			buildPhases = (
+				FDD114A7743F5D6BE71A94B32886C876 /* Sources */,
+				4903353B3C71CFF638C6CDB32DDE85E7 /* Frameworks */,
+				A63F594012BEA7B95826318ACB9578C2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E1B83CEB99F47F3C60C9347273C12A2D /* PBXTargetDependency */,
+				FF22F22B356C235CEC990BC3C6C69244 /* PBXTargetDependency */,
+				B72E98C5373E36A25074A4783368D72B /* PBXTargetDependency */,
+				6E45717F4A79B9D1E437F8A6426515CD /* PBXTargetDependency */,
+				4D431AEDA4FFF1B201C06CD30C8D02C2 /* PBXTargetDependency */,
+				169BB043189A131C89E3DEE1FCA9704F /* PBXTargetDependency */,
+				8C73A46B1A55FC3AB2DB3A28BA095122 /* PBXTargetDependency */,
+			);
+			name = "Pods-CCIP";
+			productName = "Pods-CCIP";
+			productReference = 7F71395F3BC9D19063074417DF054FF1 /* Pods_CCIP.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		3634ABA74A6F41DB3C7516A583373EE8 /* iCarousel */ = {
@@ -886,7 +948,41 @@
 			);
 			name = iCarousel;
 			productName = iCarousel;
-			productReference = 5B91B53D9E5487D948C6834BE9374B3C /* iCarousel.framework */;
+			productReference = 296F9CE8C0021A413CE160A0837CBC49 /* iCarousel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4042AB44F67C5507A84E81DD789E0BF4 /* STPopup */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C908D918A2CBEAB94C1A62198462B63 /* Build configuration list for PBXNativeTarget "STPopup" */;
+			buildPhases = (
+				854E7462382E3BB3081578327508405D /* Sources */,
+				C939DF1225C78A94BCE3038A520E26FE /* Frameworks */,
+				8A1FE9414F885639C4B51293B72FBB02 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = STPopup;
+			productName = STPopup;
+			productReference = 1175068A5792F25DA7EBC2CA141339C7 /* STPopup.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4BA9A47E118B37B8C1D5180C8EA38FE3 /* UICKeyChainStore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 367C67CD6D2CF9F1A53A37D1E2C532E8 /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */;
+			buildPhases = (
+				9FB5CC59167DD2E01795120DF2087EFE /* Sources */,
+				E50E9CA2A30E38BD0086456025B1141E /* Frameworks */,
+				4B0C896081CAF0CBF2873BA4629738FF /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UICKeyChainStore;
+			productName = UICKeyChainStore;
+			productReference = 5E102F1F96B2700D489DD646F1E1D799 /* UICKeyChainStore.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		4C0408FA37E119C9FEAF3122DE2038EA /* ICViewPager */ = {
@@ -903,65 +999,24 @@
 			);
 			name = ICViewPager;
 			productName = ICViewPager;
-			productReference = 4119BEC22B06CAB0075C84D9BCD030C7 /* ICViewPager.framework */;
+			productReference = 6156449771514F5A59B295EEF3B6EFB2 /* ICViewPager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		69D153CC6CA5082A2D0BAFCDB71A968C /* Pods-CCIP */ = {
+		7AAA83A0B19E9AB585A6FFE3AAF1D304 /* BLKFlexibleHeightBar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 62CA1A3E9BEC38CE63B1F901E62F3C4F /* Build configuration list for PBXNativeTarget "Pods-CCIP" */;
+			buildConfigurationList = DD10D22F914F310C572A932FCCD1365D /* Build configuration list for PBXNativeTarget "BLKFlexibleHeightBar" */;
 			buildPhases = (
-				1A9AAA686DE544B13F2F3A1C228692B2 /* Sources */,
-				DC0D54400CEBA3D2AFD04004F26EDA5F /* Frameworks */,
-				517FC0998FFA9AEE5573B0D67FDEE191 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				85532F7F08C964D9AC44D8D8A342DFE0 /* PBXTargetDependency */,
-				B10755290D358093AE8ECCE455ED6D65 /* PBXTargetDependency */,
-				8956E7B7F75CE858141E8F98E30564F9 /* PBXTargetDependency */,
-				692137C59964A91E06D7C568531B346A /* PBXTargetDependency */,
-				03BA45353115AD01AED6B38C51BF42ED /* PBXTargetDependency */,
-				84839D2606C1BF737BB02C3CD8A206EA /* PBXTargetDependency */,
-				32B4C13AA0D17E2658D8C5DE38878AF3 /* PBXTargetDependency */,
-			);
-			name = "Pods-CCIP";
-			productName = "Pods-CCIP";
-			productReference = 1239CBF847182E211A570000A3C82256 /* Pods_CCIP.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		BCAD814DAF9B21F3574797CA327D3E41 /* UICKeyChainStore */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7FCDC4F7BFAFA6342986A042C21FFF91 /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */;
-			buildPhases = (
-				42671B3B10F829290A7A0DCB8C09E88D /* Sources */,
-				A6D0DE6CB61DA472F946BB51D1D7A405 /* Frameworks */,
-				40E0EE99506F442B8E7427B97153CD4F /* Headers */,
+				E73CF6F142DC1028D517807586D9B5E0 /* Sources */,
+				3B515F35429A1654A3F074562DC5D626 /* Frameworks */,
+				DAAE6855DE85C44EF14593D60F1ADA15 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = UICKeyChainStore;
-			productName = UICKeyChainStore;
-			productReference = FFF266BC42ED4C793F1E4A12E25D7360 /* UICKeyChainStore.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C2DDBF45A512E99EB46F22045228735E /* RGCardViewLayout */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 668F96BCDD81DFF5412CE61668E6FD5D /* Build configuration list for PBXNativeTarget "RGCardViewLayout" */;
-			buildPhases = (
-				D0D7F185A60E49E984BD62A2F42175FD /* Sources */,
-				5D401787FD5542FBDBB8CD0477A7C571 /* Frameworks */,
-				93EE512AFCB8333BD39F2658AEF906A1 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = RGCardViewLayout;
-			productName = RGCardViewLayout;
-			productReference = 3A4155890415EAB0CE2F347F9A70B002 /* RGCardViewLayout.framework */;
+			name = BLKFlexibleHeightBar;
+			productName = BLKFlexibleHeightBar;
+			productReference = 2778055403A91C73C6B8464986D3B3EA /* BLKFlexibleHeightBar.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DDDF9388C64BC9A538E854A916F69BA9 /* ColorArt */ = {
@@ -978,24 +1033,7 @@
 			);
 			name = ColorArt;
 			productName = ColorArt;
-			productReference = CEA0637DBBBC3C2BBE38FB4AD714DDDC /* ColorArt.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		EE0129FD73981079192DAEC8274E77DD /* STPopup */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6340D527667536FF56C2E99861595E37 /* Build configuration list for PBXNativeTarget "STPopup" */;
-			buildPhases = (
-				CD2BB3DB33E5F9D1BC01299C4F86CBB6 /* Sources */,
-				185ED791D4670D8FA29B87453F311F42 /* Frameworks */,
-				823A28B127C9EDB2FDEA262B59171195 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = STPopup;
-			productName = STPopup;
-			productReference = 110573BBBD6213E601614084432F9DD0 /* STPopup.framework */;
+			productReference = F893C740EE172D711A245DC6BB889F34 /* ColorArt.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1015,18 +1053,18 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 517B008C37F455DA697083DA640513DC /* Products */;
+			productRefGroup = 4530A8199BA4482BA00AB5C887DC2DD8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				7AAA83A0B19E9AB585A6FFE3AAF1D304 /* BLKFlexibleHeightBar */,
 				DDDF9388C64BC9A538E854A916F69BA9 /* ColorArt */,
 				3634ABA74A6F41DB3C7516A583373EE8 /* iCarousel */,
 				4C0408FA37E119C9FEAF3122DE2038EA /* ICViewPager */,
 				00E74CED770597EF76DEE6FE824D1B7A /* iRate */,
-				69D153CC6CA5082A2D0BAFCDB71A968C /* Pods-CCIP */,
-				C2DDBF45A512E99EB46F22045228735E /* RGCardViewLayout */,
-				EE0129FD73981079192DAEC8274E77DD /* STPopup */,
-				BCAD814DAF9B21F3574797CA327D3E41 /* UICKeyChainStore */,
+				0B5CD6614ADBE4B30986F5DF115E0E35 /* Pods-CCIP */,
+				4042AB44F67C5507A84E81DD789E0BF4 /* STPopup */,
+				4BA9A47E118B37B8C1D5180C8EA38FE3 /* UICKeyChainStore */,
 			);
 		};
 /* End PBXProject section */
@@ -1043,29 +1081,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1A9AAA686DE544B13F2F3A1C228692B2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CC7C08DB640343C608B922843C49DB56 /* Pods-CCIP-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3E004260E1C87BD14AA67E957083957B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				390A8863AE159A26A5744AFD4D272C1B /* iRate-dummy.m in Sources */,
 				3B0BC087FEF77A4ACC7ABA82BE33FD1A /* iRate.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		42671B3B10F829290A7A0DCB8C09E88D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AB5D831B8EE5AC5A78FC5CD704360C67 /* UICKeyChainStore-dummy.m in Sources */,
-				E0441108C3BF47A614059895CB2CAB25 /* UICKeyChainStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1089,6 +1110,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		854E7462382E3BB3081578327508405D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4457EB05A947BD1E6FF721B0C7DAB284 /* STPopup-dummy.m in Sources */,
+				64D286EE2F5C895E2A85092F1B05F7F9 /* STPopupController.m in Sources */,
+				441C82950730A3EA2456B0BEDF5126AD /* STPopupLeftBarItem.m in Sources */,
+				5CF892FE7CFECE7B47D5E262ADDB1D17 /* STPopupNavigationBar.m in Sources */,
+				D19AEEDFE33575C9AA259DE89D389BAF /* UIResponder+STPopup.m in Sources */,
+				4F052A14BAB9EA4D53A62E86907084B0 /* UIViewController+STPopup.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FB5CC59167DD2E01795120DF2087EFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B47E78A8B3E70B635A9CFF3B617BD50 /* UICKeyChainStore-dummy.m in Sources */,
+				EC1AC56656DF4BBBFE237AEB68302764 /* UICKeyChainStore.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5A1DBA438165C92401162C362D91E3E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1098,79 +1141,109 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD2BB3DB33E5F9D1BC01299C4F86CBB6 /* Sources */ = {
+		E73CF6F142DC1028D517807586D9B5E0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29B1047CD552807A65F7253B18B32A35 /* STPopup-dummy.m in Sources */,
-				881345E0C0DE3ED4EC7676FE19064DAC /* STPopupController.m in Sources */,
-				A28E9608B6249D142E4440854225D0D1 /* STPopupLeftBarItem.m in Sources */,
-				99D9AAF3E9F90ADC0293509EDA7B47E0 /* STPopupNavigationBar.m in Sources */,
-				3DD0DA9E171EB6BFE2500C4947FE88DE /* UIResponder+STPopup.m in Sources */,
-				7A43A138409862EC4CCDB34C717CA9B8 /* UIViewController+STPopup.m in Sources */,
+				D09BA74C541668C2C10AFACABF15F13D /* BLKDelegateSplitter.m in Sources */,
+				23AFA54C246EF4AC477D1319B5AEFD02 /* BLKFlexibleHeightBar-dummy.m in Sources */,
+				CC206997EED453E0EEBA757ED975CEFA /* BLKFlexibleHeightBar.m in Sources */,
+				CF5C422E5C591F100805AFABB461D26D /* BLKFlexibleHeightBarBehaviorDefiner.m in Sources */,
+				9EA6B707658F73F48A164401C6854159 /* BLKFlexibleHeightBarSubviewLayoutAttributes.m in Sources */,
+				D4338675C06ADF78F593A5AD0C72C697 /* FacebookStyleBarBehaviorDefiner.m in Sources */,
+				A02814CA6C93B58F5DF0E77F0B7E1DDB /* SquareCashStyleBehaviorDefiner.m in Sources */,
+				658AE8E7414CD9F9217DA73D095A0FA4 /* UIView+BLKFlexibleHeightBarSubview.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D0D7F185A60E49E984BD62A2F42175FD /* Sources */ = {
+		FDD114A7743F5D6BE71A94B32886C876 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EE4E7BA4E6A5981B3F9507CFCACA30C /* RGCardViewLayout-dummy.m in Sources */,
-				B88CB3F0A0A2615A3602D406A41DF4A4 /* RGCardViewLayout.m in Sources */,
+				D5B342C953CE21A12EE105E370CB1C19 /* Pods-CCIP-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		03BA45353115AD01AED6B38C51BF42ED /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = UICKeyChainStore;
-			target = BCAD814DAF9B21F3574797CA327D3E41 /* UICKeyChainStore */;
-			targetProxy = 78A91135BC92CABA70DF96F06BBACAE5 /* PBXContainerItemProxy */;
-		};
-		32B4C13AA0D17E2658D8C5DE38878AF3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = iRate;
-			target = 00E74CED770597EF76DEE6FE824D1B7A /* iRate */;
-			targetProxy = 2B923938ADA2FBAB81E719B22C1BED1B /* PBXContainerItemProxy */;
-		};
-		692137C59964A91E06D7C568531B346A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = STPopup;
-			target = EE0129FD73981079192DAEC8274E77DD /* STPopup */;
-			targetProxy = B52E466A349AF5E125D0A2AAFA370A39 /* PBXContainerItemProxy */;
-		};
-		84839D2606C1BF737BB02C3CD8A206EA /* PBXTargetDependency */ = {
+		169BB043189A131C89E3DEE1FCA9704F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = iCarousel;
 			target = 3634ABA74A6F41DB3C7516A583373EE8 /* iCarousel */;
-			targetProxy = A1253FEEE840B3731F355C72B4C55B00 /* PBXContainerItemProxy */;
+			targetProxy = 050D7BC095D733B7F36F6D737459B36D /* PBXContainerItemProxy */;
 		};
-		85532F7F08C964D9AC44D8D8A342DFE0 /* PBXTargetDependency */ = {
+		4D431AEDA4FFF1B201C06CD30C8D02C2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = ColorArt;
-			target = DDDF9388C64BC9A538E854A916F69BA9 /* ColorArt */;
-			targetProxy = 001F642CE76496666B6AFB63A816B476 /* PBXContainerItemProxy */;
+			name = UICKeyChainStore;
+			target = 4BA9A47E118B37B8C1D5180C8EA38FE3 /* UICKeyChainStore */;
+			targetProxy = 8E1641A657234B2ED9BFD8A783342207 /* PBXContainerItemProxy */;
 		};
-		8956E7B7F75CE858141E8F98E30564F9 /* PBXTargetDependency */ = {
+		6E45717F4A79B9D1E437F8A6426515CD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = RGCardViewLayout;
-			target = C2DDBF45A512E99EB46F22045228735E /* RGCardViewLayout */;
-			targetProxy = E6AFB26388D00C6AA652C6EBD1CF65E4 /* PBXContainerItemProxy */;
+			name = STPopup;
+			target = 4042AB44F67C5507A84E81DD789E0BF4 /* STPopup */;
+			targetProxy = 2A0EE7612B6A9F3E7BE79BD75097875E /* PBXContainerItemProxy */;
 		};
-		B10755290D358093AE8ECCE455ED6D65 /* PBXTargetDependency */ = {
+		8C73A46B1A55FC3AB2DB3A28BA095122 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iRate;
+			target = 00E74CED770597EF76DEE6FE824D1B7A /* iRate */;
+			targetProxy = E656DA3EE00A617A7D6E9AE623DB4017 /* PBXContainerItemProxy */;
+		};
+		B72E98C5373E36A25074A4783368D72B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ICViewPager;
 			target = 4C0408FA37E119C9FEAF3122DE2038EA /* ICViewPager */;
-			targetProxy = 81879326FC9E9E1899581F0A9F8BF206 /* PBXContainerItemProxy */;
+			targetProxy = D691DC07965B533B60CE217860FBB366 /* PBXContainerItemProxy */;
+		};
+		E1B83CEB99F47F3C60C9347273C12A2D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BLKFlexibleHeightBar;
+			target = 7AAA83A0B19E9AB585A6FFE3AAF1D304 /* BLKFlexibleHeightBar */;
+			targetProxy = 3E33E1EF891922AA1ADA48D0D7C0CE89 /* PBXContainerItemProxy */;
+		};
+		FF22F22B356C235CEC990BC3C6C69244 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ColorArt;
+			target = DDDF9388C64BC9A538E854A916F69BA9 /* ColorArt */;
+			targetProxy = 832CC0A1986288337D32910A123BF1D3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		03CD7968F2C0A5317CA81BCDD2EAC4CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA8E3BA2B4C5290F2A4FF71F40450186 /* STPopup.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/STPopup/STPopup-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/STPopup/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/STPopup/STPopup.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = STPopup;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		1AA522C50DD4721B9FF363AF4E888FEA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18783F5E5336D6C4B50A6F21A43775F2 /* ColorArt.xcconfig */;
+			baseConfigurationReference = 03689CFEED64E1FCE36BE3634A0D9A4A /* ColorArt.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1197,9 +1270,9 @@
 			};
 			name = Release;
 		};
-		1F277CF7A9B9938CAA77FCDB55CB9748 /* Release */ = {
+		328CFAC18ECE4DDD7DB0F3B9E90A60BC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FED333F71BA244C276B35C2271C36CFF /* Pods-CCIP.release.xcconfig */;
+			baseConfigurationReference = B26692E8BE84A1F5986960D154212C04 /* BLKFlexibleHeightBar.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1210,18 +1283,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CCIP/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/BLKFlexibleHeightBar/BLKFlexibleHeightBar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BLKFlexibleHeightBar/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CCIP/Pods-CCIP.modulemap";
+				MODULEMAP_FILE = "Target Support Files/BLKFlexibleHeightBar/BLKFlexibleHeightBar.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CCIP;
+				PRODUCT_NAME = BLKFlexibleHeightBar;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1230,42 +1299,9 @@
 			};
 			name = Release;
 		};
-		33E820BCA8F1AAFE9E84D32BBFD2AB1C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6156A4220A95AB1931B9C9CE4D5968D4 /* Pods-CCIP.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CCIP/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CCIP/Pods-CCIP.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CCIP;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		35F53431360D1DDE44C71FD46A3AC827 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35B25889715C2F29C34F07F07506B5C8 /* iCarousel.xcconfig */;
+			baseConfigurationReference = A0263DB1E718B2A9201A009B01FA01EA /* iCarousel.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1292,9 +1328,38 @@
 			};
 			name = Release;
 		};
+		387063CD11E12521BC2BB866110F0D4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B26692E8BE84A1F5986960D154212C04 /* BLKFlexibleHeightBar.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/BLKFlexibleHeightBar/BLKFlexibleHeightBar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BLKFlexibleHeightBar/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BLKFlexibleHeightBar/BLKFlexibleHeightBar.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = BLKFlexibleHeightBar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		3B25D01B7EC48A87CCB5EB99147EFDD4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11D7483206B2FA96DC3DEEC6C0ECBBDF /* iRate.xcconfig */;
+			baseConfigurationReference = A330DCA06A999747EA456F4B24F84EDE /* iRate.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1321,9 +1386,38 @@
 			};
 			name = Release;
 		};
+		3FAD7D43BB9A2F4E7F141CC44B2429FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA8E3BA2B4C5290F2A4FF71F40450186 /* STPopup.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/STPopup/STPopup-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/STPopup/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/STPopup/STPopup.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = STPopup;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		4746A469E864EA7F185B485004962A85 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35B25889715C2F29C34F07F07506B5C8 /* iCarousel.xcconfig */;
+			baseConfigurationReference = A0263DB1E718B2A9201A009B01FA01EA /* iCarousel.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1392,38 +1486,42 @@
 			};
 			name = Debug;
 		};
-		56EA6E660FBD0FC7B11AE6B91D8DD854 /* Release */ = {
+		5BAA1FA86697308A6E04303ADDEC63C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87ABF8618FEF5F0441D8A521345165C0 /* STPopup.xcconfig */;
+			baseConfigurationReference = 6156A4220A95AB1931B9C9CE4D5968D4 /* Pods-CCIP.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/STPopup/STPopup-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/STPopup/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-CCIP/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/STPopup/STPopup.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = STPopup;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CCIP/Pods-CCIP.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CCIP;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		6557DB4EAF589D7B3B25A105C07DFD33 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCE5A657C270347E849D0557FB705B06 /* ICViewPager.xcconfig */;
+			baseConfigurationReference = 63FDBEE01A4F1416C0D297D5DDF61DFE /* ICViewPager.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1450,34 +1548,38 @@
 			};
 			name = Release;
 		};
-		72AC30C5111986F6EBFEFBC9ABEE469B /* Debug */ = {
+		8EAAF87A3B1D18E8F713352442972BDA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 202C2B6EB5B83AE61D7CDE6949E86FB9 /* RGCardViewLayout.xcconfig */;
+			baseConfigurationReference = FED333F71BA244C276B35C2271C36CFF /* Pods-CCIP.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RGCardViewLayout/RGCardViewLayout-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RGCardViewLayout/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-CCIP/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RGCardViewLayout/RGCardViewLayout.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = RGCardViewLayout;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CCIP/Pods-CCIP.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CCIP;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		AAF678CED40D3499169D10F63CA0719E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1519,7 +1621,7 @@
 		};
 		B71516F4791B3646897C651C99BC48E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11D7483206B2FA96DC3DEEC6C0ECBBDF /* iRate.xcconfig */;
+			baseConfigurationReference = A330DCA06A999747EA456F4B24F84EDE /* iRate.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1546,38 +1648,9 @@
 			};
 			name = Debug;
 		};
-		C5640E58F722E9B74F96D6F116C7B43D /* Release */ = {
+		B87258AD85A56E48E818F0E4C2EECE8E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C000B9E875B1BAB5F44178897D04DE0E /* UICKeyChainStore.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/UICKeyChainStore/UICKeyChainStore-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/UICKeyChainStore/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/UICKeyChainStore/UICKeyChainStore.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = UICKeyChainStore;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CA183D8F6F17913BE81C3B9485CD4A19 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C000B9E875B1BAB5F44178897D04DE0E /* UICKeyChainStore.xcconfig */;
+			baseConfigurationReference = F192E79CD52401EACC44DB90E0569076 /* UICKeyChainStore.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1604,9 +1677,38 @@
 			};
 			name = Debug;
 		};
+		C9D5F1E44C640ADB173D4C2BA1FA1210 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F192E79CD52401EACC44DB90E0569076 /* UICKeyChainStore.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/UICKeyChainStore/UICKeyChainStore-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UICKeyChainStore/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/UICKeyChainStore/UICKeyChainStore.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = UICKeyChainStore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		D6DFAC7FCA4CC551B556D71C27D9EE39 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCE5A657C270347E849D0557FB705B06 /* ICViewPager.xcconfig */;
+			baseConfigurationReference = 63FDBEE01A4F1416C0D297D5DDF61DFE /* ICViewPager.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1633,67 +1735,9 @@
 			};
 			name = Debug;
 		};
-		EA2F17FF6D31B992F672DC4AE5AD2195 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 202C2B6EB5B83AE61D7CDE6949E86FB9 /* RGCardViewLayout.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RGCardViewLayout/RGCardViewLayout-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RGCardViewLayout/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RGCardViewLayout/RGCardViewLayout.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = RGCardViewLayout;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		ED0F9104B0A6665C2111E3EB2C87C0BE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87ABF8618FEF5F0441D8A521345165C0 /* STPopup.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/STPopup/STPopup-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/STPopup/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/STPopup/STPopup.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = STPopup;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		FCF5D99C5D6580E6C1E7CC4B6CF44839 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18783F5E5336D6C4B50A6F21A43775F2 /* ColorArt.xcconfig */;
+			baseConfigurationReference = 03689CFEED64E1FCE36BE3634A0D9A4A /* ColorArt.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1732,6 +1776,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		367C67CD6D2CF9F1A53A37D1E2C532E8 /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B87258AD85A56E48E818F0E4C2EECE8E /* Debug */,
+				C9D5F1E44C640ADB173D4C2BA1FA1210 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C908D918A2CBEAB94C1A62198462B63 /* Build configuration list for PBXNativeTarget "STPopup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FAD7D43BB9A2F4E7F141CC44B2429FB /* Debug */,
+				03CD7968F2C0A5317CA81BCDD2EAC4CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5FD84838098E65920773FE786596F03E /* Build configuration list for PBXNativeTarget "iCarousel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1741,29 +1803,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		62CA1A3E9BEC38CE63B1F901E62F3C4F /* Build configuration list for PBXNativeTarget "Pods-CCIP" */ = {
+		74339A6A6B708378FFDAA101B368DBAB /* Build configuration list for PBXNativeTarget "Pods-CCIP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				33E820BCA8F1AAFE9E84D32BBFD2AB1C /* Debug */,
-				1F277CF7A9B9938CAA77FCDB55CB9748 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6340D527667536FF56C2E99861595E37 /* Build configuration list for PBXNativeTarget "STPopup" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ED0F9104B0A6665C2111E3EB2C87C0BE /* Debug */,
-				56EA6E660FBD0FC7B11AE6B91D8DD854 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		668F96BCDD81DFF5412CE61668E6FD5D /* Build configuration list for PBXNativeTarget "RGCardViewLayout" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				72AC30C5111986F6EBFEFBC9ABEE469B /* Debug */,
-				EA2F17FF6D31B992F672DC4AE5AD2195 /* Release */,
+				5BAA1FA86697308A6E04303ADDEC63C5 /* Debug */,
+				8EAAF87A3B1D18E8F713352442972BDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1773,15 +1817,6 @@
 			buildConfigurations = (
 				FCF5D99C5D6580E6C1E7CC4B6CF44839 /* Debug */,
 				1AA522C50DD4721B9FF363AF4E888FEA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7FCDC4F7BFAFA6342986A042C21FFF91 /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CA183D8F6F17913BE81C3B9485CD4A19 /* Debug */,
-				C5640E58F722E9B74F96D6F116C7B43D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1800,6 +1835,15 @@
 			buildConfigurations = (
 				B71516F4791B3646897C651C99BC48E9 /* Debug */,
 				3B25D01B7EC48A87CCB5EB99147EFDD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD10D22F914F310C572A932FCCD1365D /* Build configuration list for PBXNativeTarget "BLKFlexibleHeightBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				387063CD11E12521BC2BB866110F0D4A /* Debug */,
+				328CFAC18ECE4DDD7DB0F3B9E90A60BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

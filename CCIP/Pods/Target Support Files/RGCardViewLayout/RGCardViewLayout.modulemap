@@ -1,6 +1,0 @@
-framework module RGCardViewLayout {
-  umbrella header "RGCardViewLayout-umbrella.h"
-
-  export *
-  module * { export * }
-}
