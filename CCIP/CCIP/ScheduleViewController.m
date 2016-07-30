@@ -34,7 +34,7 @@
 #define SWIPE_UP    1
 #define SWIPE_DOWN  -1
 @property CGFloat deltaY;
-#define DELTAY_SIZE 44
+#define DELTAY_SIZE 22
 
 @property NSUInteger refreshingCountDown;
 
@@ -358,6 +358,15 @@
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    NSLog(@"scrollViewDidEndDragging");
+    if (decelerate == NO) {
+        [self scrollViewDidEndScrolling:scrollView];
+    }
+}
+
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    NSLog(@"scrollViewDidEndDecelerating");
     [self scrollViewDidEndScrolling:scrollView];
 }
 
@@ -423,7 +432,7 @@
     CGFloat changY = (contentOffsetY - _lastContentOffsetY);
     _deltaY += changY;
     
-    if (_startScroll && fabs(_deltaY) > DELTAY_SIZE && (scrollView.contentSize.height/2) > scrollView.frame.size.height && _canScrollHide) {
+    if (_startScroll && (fabs(_deltaY) >= DELTAY_SIZE || contentOffsetY <= -_topGuide) && (scrollView.contentSize.height/2) > scrollView.frame.size.height && _canScrollHide) {
         
         BOOL touchTopEdge = (contentOffsetY <= -_topGuide) ? YES : NO;
         BOOL touchBottomEdge = (scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height) ? YES : NO;
