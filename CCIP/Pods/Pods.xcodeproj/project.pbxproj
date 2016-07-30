@@ -7,217 +7,239 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		011E39D2903A2C39624FED656761827C /* RGCardViewLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 93815ABE9DAC95FA6A24E03F216E5B10 /* RGCardViewLayout-dummy.m */; };
-		0E6CA9A94EB0A426B105AB6B7E370520 /* UIImage+Scale.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FB23C7F7C719FC22338C3425E63D900 /* UIImage+Scale.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		19B3CF54CC6725EA548A3CFF2876E43D /* STPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = EE8655EDD91DD2344EC3627032C264A3 /* STPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1CBCC11AFEC39AE34CF22778C05A0C30 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6FC2D954156E4AF667649ACDBA4277A4 /* iRate.bundle */; };
-		2193BDD4BF9309CCEE611775E90AFBE6 /* STPopupLeftBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9089A0EE89901616AB1B1D19724383 /* STPopupLeftBarItem.m */; };
-		24B8CC0AC38B2214ABF1AD88B5F81917 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B68DE9DC294A29356503AEEE803A6A /* UIImage+Scale.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		255BCDE140D5060940E11575ECAA17A6 /* STPopup-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E8BC9C7E48CE495E708C1D38693EAB1 /* STPopup-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26B3DE718EB01897D3DFC3EBD75BE656 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 259BBE9798F8ED637F673132C7CE66AC /* CoreGraphics.framework */; };
-		37A7D5467F3B01993F13D4B3C1F4050E /* STPopupNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 36F032788263435092002F4FED81BABF /* STPopupNavigationBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		388BF973029ECEDD7BECFFD21CA78E6D /* STPopup-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB207D1CB0518E20D42D595E29C0D01 /* STPopup-dummy.m */; };
-		390A8863AE159A26A5744AFD4D272C1B /* iRate-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCABB0535789695F786CFECC257BA59 /* iRate-dummy.m */; };
-		3B0BC087FEF77A4ACC7ABA82BE33FD1A /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = B742F2526139F6D5AABA6741F15D006A /* iRate.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		3B6027824C2E68D4C84922644CC42414 /* ICViewPager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A59D9BEF1A15AE41D8AEF7D060841A2 /* ICViewPager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3BD03D5FE257A488E5A2B16AF503F7EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E68327F96807A113A9D3CD97011B76 /* UIKit.framework */; };
-		40FF22793DBCEECEC96E704B342A38C1 /* UIResponder+STPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BEED538C52417A8157FDC24A72E2AB3 /* UIResponder+STPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		42D52FD11C172750DA2A7183DAB3762E /* iRate-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4214D79B404F0E6C20FFDCF3AD0D89BF /* iRate-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4AB15BEE9E556F33F86C3D8B219F6451 /* UICKeyChainStore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE1831565873A231328B1654FE8DC6A /* UICKeyChainStore-dummy.m */; };
+		0E6CA9A94EB0A426B105AB6B7E370520 /* UIImage+Scale.h in Headers */ = {isa = PBXBuildFile; fileRef = 073A01182FA7D4C23390B3DB40AA2DB0 /* UIImage+Scale.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		10C86995D04A48756AE4797CFFEDD69A /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAFE3E0820B9F1E7534D835760FB24 /* iCarousel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		11F1A6C835418BA704AF5988A71288F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
+		14F130E3340EDD498CC7CBFB00005A53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
+		17B7936CD6D347543F6FA3E584B6A213 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
+		1CBCC11AFEC39AE34CF22778C05A0C30 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 24A8D7E8F20D119A1DA25BA041B8768A /* iRate.bundle */; };
+		24B8CC0AC38B2214ABF1AD88B5F81917 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6098EE5902D5CB4F3A155DD3A8FCF7 /* UIImage+Scale.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		29B1047CD552807A65F7253B18B32A35 /* STPopup-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B32FCC6299C26B9919648BBEC68AC36 /* STPopup-dummy.m */; };
+		2F7170B17E105936278A1F69DEBD8D32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
+		3484D1F87912024F4623F0E5BD094290 /* Pods-CCIP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 407AB414BF003A508286D3A3B4C68680 /* Pods-CCIP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		390A8863AE159A26A5744AFD4D272C1B /* iRate-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D3D72C02DE77BAE61D1C8684B46BB8 /* iRate-dummy.m */; };
+		3B0BC087FEF77A4ACC7ABA82BE33FD1A /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3809E4512618EB732E5B8D1756494F71 /* iRate.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3B6027824C2E68D4C84922644CC42414 /* ICViewPager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C21BF3FAA836070F4EA1EB49A0176768 /* ICViewPager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3DD0DA9E171EB6BFE2500C4947FE88DE /* UIResponder+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1F75421B4C287B7009B3816E3AC6F8 /* UIResponder+STPopup.m */; };
+		3FC5DA791056A6E7063057BC3895623B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C09AF322B17830E0563F40DBD0F518 /* QuartzCore.framework */; };
+		42D52FD11C172750DA2A7183DAB3762E /* iRate-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0923ABBF7C7EE54908AA3E1B0C1149CF /* iRate-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49727A99741CE11516CBF045D9BB1D3B /* RGCardViewLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6DA6B562597AEA467EBF1FAB2AC485 /* RGCardViewLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		53CCFA2F9EC5459D8E1E2441D828B99A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 259BBE9798F8ED637F673132C7CE66AC /* CoreGraphics.framework */; };
-		543099849C6D90BB99220EDE31B24C12 /* UIImage+ColorArt.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CA04D4857B28DB0C5E117BD5E94FDB9 /* UIImage+ColorArt.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5597C9B49659810501DC735E0A25039D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
-		56B9958DB9CB2D3E399DA8920AEDF1AA /* STPopupLeftBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E77099FC5B6C181245D03C8839FE8C0 /* STPopupLeftBarItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		62133CB4100DD46DFFB45A038172E32C /* Pods-CCIP-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 407AB414BF003A508286D3A3B4C68680 /* Pods-CCIP-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		543099849C6D90BB99220EDE31B24C12 /* UIImage+ColorArt.h in Headers */ = {isa = PBXBuildFile; fileRef = 1536F9767C3938CB78C941D909679A1D /* UIImage+ColorArt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65403F61D9EA283F811EE7BF96772CC3 /* STPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = D901C4D27463CA29FC421BA01DE59F94 /* STPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		69F2A9AE55A17A41EE78A30908F19976 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E68327F96807A113A9D3CD97011B76 /* UIKit.framework */; };
-		72B91B0A612BAFDCEEB4301FFEF449E4 /* UIResponder+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 88ACE894EBBF5EADB9660F2BC6AF20E6 /* UIResponder+STPopup.m */; };
-		790107C2B39B4E1BA2317102FA332157 /* STPopupController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BDF6085CAC766FBFF3C6556D0B30698 /* STPopupController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7A9814A5844AB022893E0164F11E7670 /* ICViewPager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E4DCD390656BF7A9AE54A539CCD818 /* ICViewPager-dummy.m */; };
-		7D016009E9B39C857C8896E24E79078B /* UIViewController+STPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C03766C55A3C0870A746CE29EAB1221 /* UIViewController+STPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E27F666F0C642E2BE6062A549F22FF9 /* STPopupNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E56ACEC84E115BB8EE486FD1BEE2C021 /* STPopupNavigationBar.m */; };
+		6EE4E7BA4E6A5981B3F9507CFCACA30C /* RGCardViewLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D239D7B663250912E035C53A40F895 /* RGCardViewLayout-dummy.m */; };
+		7A43A138409862EC4CCDB34C717CA9B8 /* UIViewController+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 702D180366645F2DEF0620D4347ACAFC /* UIViewController+STPopup.m */; };
+		7A9814A5844AB022893E0164F11E7670 /* ICViewPager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB31EF79E4633DDE3028ED89E6698C4B /* ICViewPager-dummy.m */; };
 		7FE80F14393BD8EFC6090D82DCDC4091 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C09AF322B17830E0563F40DBD0F518 /* QuartzCore.framework */; };
-		87829C81786591085908983D8C7276B8 /* UIImage+ColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 5261B5B0EAF98FAD91F15E38BDC4CCD9 /* UIImage+ColorArt.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		8D5BF01321A4951C80202B867C3320DD /* RGCardViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E899C4810D7A9306789E0751654B98AF /* RGCardViewLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8F62E708F0133ED5C8570DD412FF41B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
+		87829C81786591085908983D8C7276B8 /* UIImage+ColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 738C77B7B05959B67CA5E487B5280EAA /* UIImage+ColorArt.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		881345E0C0DE3ED4EC7676FE19064DAC /* STPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEBF77F7530370B7C28C9BBEC0BD11EC /* STPopupController.m */; };
+		88D2980E7DDCE7BECD28FF1E9074D2AE /* iCarousel.h in Headers */ = {isa = PBXBuildFile; fileRef = A755C48DB17621842733301FB6A63A40 /* iCarousel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C0B88CAF71733CE4C25F98F19595502 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E68327F96807A113A9D3CD97011B76 /* UIKit.framework */; };
 		9557B018702206A8C31FCDB58FB3B508 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
-		96F13CA1BE2CDCAD78369EE5AC06B6AB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAC3EA1B30A5FC26F5A3B9AC3CB6A76 /* Security.framework */; };
-		9BD7EDFFE3727CC7F7406D08C4AD0CF6 /* RGCardViewLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D4A0E5E72816AA0004DF69878B4CFFD1 /* RGCardViewLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9D41F3AA42176A7E0BC25A8678EBA1A9 /* SLColorArt.h in Headers */ = {isa = PBXBuildFile; fileRef = CE88D19EC402178D52B34DB165013C05 /* SLColorArt.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A6D1F872C731F3501C17E76FFF81C52C /* RGCardViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 41062BAEE8B2EE1EF5DB64EE3D970F27 /* RGCardViewLayout.m */; };
-		AAB972C6D36809DBFE69872E6D84FD39 /* Pods-CCIP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F844CDCD57D047D5F3814C59909E9D8 /* Pods-CCIP-dummy.m */; };
-		B2EBFDF820E2EEAD76303EDBEB1985C0 /* ColorArt-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 418F9183304BAD84D6108F8AFF7CB1E8 /* ColorArt-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BDFAB222CE5AEC9EB69D0F6EFF62D212 /* iRate.h in Headers */ = {isa = PBXBuildFile; fileRef = E29296DEEF776446946055AE9213B665 /* iRate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C0BF773B21387652F2901D3BC6F847FD /* UIViewController+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ABD1E4AEB8CDCB1C7D16F1D450D9CF /* UIViewController+STPopup.m */; };
-		CEEBFFDADE1D6A1AA5291777E68E3144 /* STPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD502574FDC6630D09CF668A643F48B9 /* STPopupController.m */; };
-		D0F79ABACB9FCBD1931DECF604053DD8 /* UICKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 12C92CD51C050B2979B77F25CE18946F /* UICKeyChainStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DBCF1109A5F976EBDC5195879EA43C17 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EAAD27C7B14EFE415FB089A8CF2BBE /* ViewPagerController.m */; };
-		DE2D6610FE82105189AD36F212150BB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
-		E12A7803813BBF999E84F9A87B736167 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAB7C30C397E4F79B6E52A67F1DA905 /* UICKeyChainStore.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		99D9AAF3E9F90ADC0293509EDA7B47E0 /* STPopupNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2E80F59F6DA6B3091F8A680589E60F /* STPopupNavigationBar.m */; };
+		9B4B4B09DDA102C5F4593BFCB2C8C871 /* STPopupLeftBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CDA0034772344F55A0FBEBFD59EBB66 /* STPopupLeftBarItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9D41F3AA42176A7E0BC25A8678EBA1A9 /* SLColorArt.h in Headers */ = {isa = PBXBuildFile; fileRef = 9521C1FB4B36BE5C91F4B95FF0313C5D /* SLColorArt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E4B43479D3D22DD0EA174945CCCB555 /* UICKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = DA0789CA7D3EFA9A5DB9B4238E39EA55 /* UICKeyChainStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A28E9608B6249D142E4440854225D0D1 /* STPopupLeftBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6248F927165406F365F01AF268DEA57B /* STPopupLeftBarItem.m */; };
+		A9C310D7697F1B01D89E0D5E503A4954 /* RGCardViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 01BDFB5FA7978C3A6910844435C4C795 /* RGCardViewLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB5D831B8EE5AC5A78FC5CD704360C67 /* UICKeyChainStore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E878B856997B46141F5CAD7FDAC8F6B /* UICKeyChainStore-dummy.m */; };
+		B2EBFDF820E2EEAD76303EDBEB1985C0 /* ColorArt-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FCCE9349568F90E480734868D0844B33 /* ColorArt-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7AF67178526B325A19D4F76D91E3A7E /* STPopup-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A1E5B2960986E453E58B90B2AC0F85A9 /* STPopup-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B88CB3F0A0A2615A3602D406A41DF4A4 /* RGCardViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 87DF7067AE674A83C96A0A2AAEBD1194 /* RGCardViewLayout.m */; };
+		BA55E83A7EBD07DBEA1BE2CF0E2E8135 /* STPopupController.h in Headers */ = {isa = PBXBuildFile; fileRef = 136BB88495D3C06C7DA91AB302415219 /* STPopupController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BDFAB222CE5AEC9EB69D0F6EFF62D212 /* iRate.h in Headers */ = {isa = PBXBuildFile; fileRef = 934815A60C8189807A3D2745F522D8DB /* iRate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C28337DD2E94B98F7AEE739EF3674F02 /* iCarousel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DC80E93C30411D574DBD7025021BFA67 /* iCarousel-dummy.m */; };
+		C2F6232EFD76925D4634E56DA651E230 /* UIViewController+STPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = F0A407ACD83130909EFAF2D7F76858F1 /* UIViewController+STPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA871BE71028233BD75FE64CBA0211DD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAC3EA1B30A5FC26F5A3B9AC3CB6A76 /* Security.framework */; };
+		CC7C08DB640343C608B922843C49DB56 /* Pods-CCIP-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F844CDCD57D047D5F3814C59909E9D8 /* Pods-CCIP-dummy.m */; };
+		CFCF83E9B5E9E6766E9EE9A6967B7942 /* UICKeyChainStore-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DC373ACC4BB5D92C9E0A8C99BCFB45AD /* UICKeyChainStore-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D5068AC17A2942CCF790C75B274835BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
+		D93B672B2BC7C166F8AAE0A404648D75 /* STPopupNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = D3F0560AF263FCE879E3DB701EBCAD5E /* STPopupNavigationBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB0EB56AD46F5FE05CE53F9ED1429913 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 259BBE9798F8ED637F673132C7CE66AC /* CoreGraphics.framework */; };
+		DBCF1109A5F976EBDC5195879EA43C17 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D19381A9D20C02DA3E68D770D49287F /* ViewPagerController.m */; };
+		DD9C3D4C2A3DC097E503676F0C5CD6DE /* UIResponder+STPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = CF20B14B2BA3F198DB384CDEF7715CA8 /* UIResponder+STPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0441108C3BF47A614059895CB2CAB25 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E86AADB0E330F3BB288A057851C211A7 /* UICKeyChainStore.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		E1EBCED81B647B2F2BD3E733186CDF97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
-		E7A022C08E54EFB56829DBF3D0C35FB6 /* UICKeyChainStore-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 12AAF232E96FFBE5639FC926FF62C15F /* UICKeyChainStore-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E892FE28DC5695BBA1EB16C0AFC9CE81 /* ColorArt-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 058C13258D58A7EDB91B6BD6E8990998 /* ColorArt-dummy.m */; };
-		ED8C407B0D52C05F3B7F645EC3AAEA51 /* SLColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 6411784BD5EA9A6D135746F973F82808 /* SLColorArt.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		EDC09FE6EF3F8C8698629E769D1E11EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
+		E892FE28DC5695BBA1EB16C0AFC9CE81 /* ColorArt-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A771FB90FA6E6734FD3524D7ED61A7BE /* ColorArt-dummy.m */; };
+		ED8C407B0D52C05F3B7F645EC3AAEA51 /* SLColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 495AC98680FB044F998730D0B0D3DB0F /* SLColorArt.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F0A4075E8EC62F3C9C05E6CB951D5AF9 /* iCarousel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1102B1F4AD97ED06BFFA64FCE25E884B /* iCarousel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F37BC8F54BF8A0B498A0867D4AE90903 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54496E6279A185AF13967EB4B704F54F /* Foundation.framework */; };
-		F8B282685BB4FB2F1C5F0D178517B1C2 /* ViewPagerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DF5F36D93F256AADE5B5EE3C24BE5B5 /* ViewPagerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F8B282685BB4FB2F1C5F0D178517B1C2 /* ViewPagerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CB8D7B2DFFC3EE26629E57D3F7D04CD /* ViewPagerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3E40AE33DCBFF2D4F5B5E8B52B5A9AEA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 00E74CED770597EF76DEE6FE824D1B7A;
-			remoteInfo = iRate;
-		};
-		64926DF418FE8915CF9A184A9B13B276 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2057C29AAB9155A20AA388C1442C9AD7;
-			remoteInfo = UICKeyChainStore;
-		};
-		6DAA4FC7D926471D823BE24087DEC749 /* PBXContainerItemProxy */ = {
+		001F642CE76496666B6AFB63A816B476 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = DDDF9388C64BC9A538E854A916F69BA9;
 			remoteInfo = ColorArt;
 		};
-		A51A530DAE1593AF040E4B0744140B78 /* PBXContainerItemProxy */ = {
+		2B923938ADA2FBAB81E719B22C1BED1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00E74CED770597EF76DEE6FE824D1B7A;
+			remoteInfo = iRate;
+		};
+		78A91135BC92CABA70DF96F06BBACAE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCAD814DAF9B21F3574797CA327D3E41;
+			remoteInfo = UICKeyChainStore;
+		};
+		81879326FC9E9E1899581F0A9F8BF206 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4C0408FA37E119C9FEAF3122DE2038EA;
 			remoteInfo = ICViewPager;
 		};
-		DE68669E5857AE02FCC683383948BBEF /* PBXContainerItemProxy */ = {
+		A1253FEEE840B3731F355C72B4C55B00 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4F9DFC505F36D90DB0F028D94023A6A1;
-			remoteInfo = RGCardViewLayout;
+			remoteGlobalIDString = 3634ABA74A6F41DB3C7516A583373EE8;
+			remoteInfo = iCarousel;
 		};
-		FE7122502F40B7FF836FFD3C72308526 /* PBXContainerItemProxy */ = {
+		B52E466A349AF5E125D0A2AAFA370A39 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6339B2ECCC68838F8AE28662EF825744;
+			remoteGlobalIDString = EE0129FD73981079192DAEC8274E77DD;
 			remoteInfo = STPopup;
+		};
+		E6AFB26388D00C6AA652C6EBD1CF65E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2DDBF45A512E99EB46F22045228735E;
+			remoteInfo = RGCardViewLayout;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01EAAD27C7B14EFE415FB089A8CF2BBE /* ViewPagerController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ViewPagerController.m; path = ICViewPager/ICViewPager/ViewPagerController.m; sourceTree = "<group>"; };
-		030654F2614D320B8201F45DF4D0B55B /* GAIEcommerceFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceFields.h; path = Headers/Public/GAIEcommerceFields.h; sourceTree = "<group>"; };
-		038607D20B8F58F59100693CB05B5E66 /* UICKeyChainStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UICKeyChainStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		058C13258D58A7EDB91B6BD6E8990998 /* ColorArt-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ColorArt-dummy.m"; sourceTree = "<group>"; };
-		06BBCEAA38F191207AA3B0CD93656546 /* ICViewPager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ICViewPager-prefix.pch"; sourceTree = "<group>"; };
-		0710DD2B95A1318342B201DA8FF882EF /* UICKeyChainStore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-prefix.pch"; sourceTree = "<group>"; };
+		001DCD414B8CBDA4F792B99D368E1552 /* ColorArt.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ColorArt.modulemap; sourceTree = "<group>"; };
+		00A94DD150C65C340C14271FF7779BDE /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommercePromotion.h; path = Headers/Public/GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		01BDFB5FA7978C3A6910844435C4C795 /* RGCardViewLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RGCardViewLayout.h; sourceTree = "<group>"; };
+		01E92C8199727DCEFB419C7D3ED9B00B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		073A01182FA7D4C23390B3DB40AA2DB0 /* UIImage+Scale.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Scale.h"; path = "ColorArt/Classes/UIImage+Scale.h"; sourceTree = "<group>"; };
+		07EB875730EFFD5FCD41E859D3C075FF /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
 		081923893D972983042C17B3EB5C2A0F /* Pods-CCIP-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CCIP-resources.sh"; sourceTree = "<group>"; };
-		0A9089A0EE89901616AB1B1D19724383 /* STPopupLeftBarItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPopupLeftBarItem.m; path = STPopup/STPopupLeftBarItem.m; sourceTree = "<group>"; };
-		0D569A690A5061A3A85ADBF24B10CFB4 /* SignIn-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SignIn-Module.h"; path = "Headers/ModuleHeaders/SignIn-Module.h"; sourceTree = "<group>"; };
-		10C96BBA1647167BA1E0BDCD8118E74D /* GAITracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = Headers/Public/GAITracker.h; sourceTree = "<group>"; };
-		12AAF232E96FFBE5639FC926FF62C15F /* UICKeyChainStore-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-umbrella.h"; sourceTree = "<group>"; };
-		12C92CD51C050B2979B77F25CE18946F /* UICKeyChainStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UICKeyChainStore.h; path = Lib/UICKeyChainStore/UICKeyChainStore.h; sourceTree = "<group>"; };
-		1908002A45DA15242153B162D5E7B3BE /* STPopup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = STPopup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		19FD001820CC450F96EA4CFABF5DCCDA /* RGCardViewLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RGCardViewLayout-prefix.pch"; sourceTree = "<group>"; };
-		22ABD1E4AEB8CDCB1C7D16F1D450D9CF /* UIViewController+STPopup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+STPopup.m"; path = "STPopup/UIViewController+STPopup.m"; sourceTree = "<group>"; };
-		246A4E16C44EE4A16ECA6AFD377AF59A /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProductAction.h; path = Headers/Public/GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		0923ABBF7C7EE54908AA3E1B0C1149CF /* iRate-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iRate-umbrella.h"; sourceTree = "<group>"; };
+		0E878B856997B46141F5CAD7FDAC8F6B /* UICKeyChainStore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UICKeyChainStore-dummy.m"; sourceTree = "<group>"; };
+		0F1F75421B4C287B7009B3816E3AC6F8 /* UIResponder+STPopup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIResponder+STPopup.m"; path = "STPopup/UIResponder+STPopup.m"; sourceTree = "<group>"; };
+		1102B1F4AD97ED06BFFA64FCE25E884B /* iCarousel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iCarousel-umbrella.h"; sourceTree = "<group>"; };
+		110573BBBD6213E601614084432F9DD0 /* STPopup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = STPopup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		11D7483206B2FA96DC3DEEC6C0ECBBDF /* iRate.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iRate.xcconfig; sourceTree = "<group>"; };
+		1239CBF847182E211A570000A3C82256 /* Pods_CCIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		136BB88495D3C06C7DA91AB302415219 /* STPopupController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopupController.h; path = STPopup/STPopupController.h; sourceTree = "<group>"; };
+		1536F9767C3938CB78C941D909679A1D /* UIImage+ColorArt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+ColorArt.h"; path = "ColorArt/Classes/UIImage+ColorArt.h"; sourceTree = "<group>"; };
+		18783F5E5336D6C4B50A6F21A43775F2 /* ColorArt.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ColorArt.xcconfig; sourceTree = "<group>"; };
+		1F4A1AF0F732F6CA813D984E28A28C78 /* RGCardViewLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RGCardViewLayout-prefix.pch"; sourceTree = "<group>"; };
+		202C2B6EB5B83AE61D7CDE6949E86FB9 /* RGCardViewLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RGCardViewLayout.xcconfig; sourceTree = "<group>"; };
+		23DAFE3E0820B9F1E7534D835760FB24 /* iCarousel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
+		24A8D7E8F20D119A1DA25BA041B8768A /* iRate.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = iRate.bundle; path = iRate/iRate.bundle; sourceTree = "<group>"; };
+		2571D62C451FDB5F764DD1A12C51D845 /* STPopup.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = STPopup.modulemap; sourceTree = "<group>"; };
 		259BBE9798F8ED637F673132C7CE66AC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		276DBF3B07BCF02F11A74EB43E6D36BF /* GAILogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = Headers/Public/GAILogger.h; sourceTree = "<group>"; };
-		2A1CFE8E01327DBB60287F008F0801A2 /* Core-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Core-Module.h"; path = "Headers/ModuleHeaders/Core-Module.h"; sourceTree = "<group>"; };
-		2A544E57190CC7F1F1B44406D4FC367E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2A59D9BEF1A15AE41D8AEF7D060841A2 /* ICViewPager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ICViewPager-umbrella.h"; sourceTree = "<group>"; };
-		313299BB40DDE3665BEAFDC5E83E4F9B /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = Headers/Public/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
-		36F032788263435092002F4FED81BABF /* STPopupNavigationBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopupNavigationBar.h; path = STPopup/STPopupNavigationBar.h; sourceTree = "<group>"; };
-		38D7C8442467FBDF37641A46B151A48A /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
-		3A76D81F1025083608DC8B6C490A242B /* Pods_CCIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E370CCCC309693D779C7E7F9CA33CFB /* ICViewPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ICViewPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E8BC9C7E48CE495E708C1D38693EAB1 /* STPopup-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "STPopup-umbrella.h"; sourceTree = "<group>"; };
+		2B32FCC6299C26B9919648BBEC68AC36 /* STPopup-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "STPopup-dummy.m"; sourceTree = "<group>"; };
+		2CFB04D4B6E235414A397FC7C9B80384 /* ICViewPager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ICViewPager.modulemap; sourceTree = "<group>"; };
+		3104730D74F2C051BDD55B5B9F441B97 /* iCarousel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = iCarousel.modulemap; sourceTree = "<group>"; };
+		35B25889715C2F29C34F07F07506B5C8 /* iCarousel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iCarousel.xcconfig; sourceTree = "<group>"; };
+		3809E4512618EB732E5B8D1756494F71 /* iRate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = iRate.m; path = iRate/iRate.m; sourceTree = "<group>"; };
+		3A4155890415EAB0CE2F347F9A70B002 /* RGCardViewLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RGCardViewLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B23E74B61D87361AD9AF3963332FF93 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Libraries/libGoogleAnalytics.a; sourceTree = "<group>"; };
+		3BB9F927B9215BFD3CAB3E3CDA38BF20 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProductAction.h; path = Headers/Public/GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		3F0B62B5EAF199BD341E95E8173BDA31 /* iCarousel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iCarousel-prefix.pch"; sourceTree = "<group>"; };
 		3F19743AF017525896C97467762462AA /* Pods-CCIP-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CCIP-acknowledgements.markdown"; sourceTree = "<group>"; };
-		400B123659B940515875655DA96B74DC /* iRate-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iRate-prefix.pch"; sourceTree = "<group>"; };
 		407AB414BF003A508286D3A3B4C68680 /* Pods-CCIP-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CCIP-umbrella.h"; sourceTree = "<group>"; };
-		41062BAEE8B2EE1EF5DB64EE3D970F27 /* RGCardViewLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RGCardViewLayout.m; sourceTree = "<group>"; };
-		418F9183304BAD84D6108F8AFF7CB1E8 /* ColorArt-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ColorArt-umbrella.h"; sourceTree = "<group>"; };
-		4203542DDDB762ECD140E88809E9466C /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		4214D79B404F0E6C20FFDCF3AD0D89BF /* iRate-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iRate-umbrella.h"; sourceTree = "<group>"; };
-		48A6B5FCB2C661DADB540A72807A8427 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		4E4BECDD5818B865C9EA85136BEC1F50 /* GAITrackedViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = Headers/Public/GAITrackedViewController.h; sourceTree = "<group>"; };
-		4E5316FA7090F141C53BF2AD10005396 /* ICViewPager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ICViewPager.xcconfig; sourceTree = "<group>"; };
-		4FB23C7F7C719FC22338C3425E63D900 /* UIImage+Scale.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Scale.h"; path = "ColorArt/Classes/UIImage+Scale.h"; sourceTree = "<group>"; };
-		5261B5B0EAF98FAD91F15E38BDC4CCD9 /* UIImage+ColorArt.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ColorArt.m"; path = "ColorArt/Classes/UIImage+ColorArt.m"; sourceTree = "<group>"; };
+		4119BEC22B06CAB0075C84D9BCD030C7 /* ICViewPager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ICViewPager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41F68222F4C4221DB07EFBA12FA78CB0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46A2A709443DE8B42CBC9CD28BEF3C79 /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
+		495AC98680FB044F998730D0B0D3DB0F /* SLColorArt.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SLColorArt.m; path = ColorArt/Classes/SLColorArt.m; sourceTree = "<group>"; };
+		4977BC98EC35D3A6721427904E1AAAC2 /* GAILogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = Headers/Public/GAILogger.h; sourceTree = "<group>"; };
+		4AB634C6B85DDD261C47062805300B7F /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		4D19381A9D20C02DA3E68D770D49287F /* ViewPagerController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ViewPagerController.m; path = ICViewPager/ICViewPager/ViewPagerController.m; sourceTree = "<group>"; };
 		54496E6279A185AF13967EB4B704F54F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		545B9278DD26FA478616366BA04636FE /* libGoogleAnalytics.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Libraries/libGoogleAnalytics.a; sourceTree = "<group>"; };
-		54CEC68AEB4ED0EA4836EE01B84EF4EB /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
-		58E8DA45F4FDA84D3487CB38734A60AA /* RGCardViewLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RGCardViewLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A00CE01FE4E06323021099A8DEA9DC7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C03766C55A3C0870A746CE29EAB1221 /* UIViewController+STPopup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+STPopup.h"; path = "STPopup/UIViewController+STPopup.h"; sourceTree = "<group>"; };
-		5EBE5D2D89923F789D293C38B90BCE24 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B91B53D9E5487D948C6834BE9374B3C /* iCarousel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iCarousel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CDA0034772344F55A0FBEBFD59EBB66 /* STPopupLeftBarItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopupLeftBarItem.h; path = STPopup/STPopupLeftBarItem.h; sourceTree = "<group>"; };
+		60C50E8BA998099E4D930D6CEE067C2D /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		6156A4220A95AB1931B9C9CE4D5968D4 /* Pods-CCIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CCIP.debug.xcconfig"; sourceTree = "<group>"; };
-		6411784BD5EA9A6D135746F973F82808 /* SLColorArt.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SLColorArt.m; path = ColorArt/Classes/SLColorArt.m; sourceTree = "<group>"; };
-		6C01308DA19A83F143D1DDAA87FE2D80 /* ColorArt.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ColorArt.modulemap; sourceTree = "<group>"; };
-		6CA8103D65B8CA2F1429790AA4F96714 /* STPopup.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = STPopup.modulemap; sourceTree = "<group>"; };
-		6D1B3F944AF14AAB6D426192E9EFC618 /* ColorArt-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ColorArt-prefix.pch"; sourceTree = "<group>"; };
-		6FC2D954156E4AF667649ACDBA4277A4 /* iRate.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = iRate.bundle; path = iRate/iRate.bundle; sourceTree = "<group>"; };
-		70B68DE9DC294A29356503AEEE803A6A /* UIImage+Scale.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Scale.m"; path = "ColorArt/Classes/UIImage+Scale.m"; sourceTree = "<group>"; };
-		716CA19F39ECCDE9ABADE8FE73000A15 /* GAI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = Headers/Public/GAI.h; sourceTree = "<group>"; };
-		76EEA6F7166D449F03E9F60C72500E9E /* STPopup.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = STPopup.xcconfig; sourceTree = "<group>"; };
-		77B4D1F2D0AA6583C6FE8DF0C84AFDDC /* UICKeyChainStore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UICKeyChainStore.xcconfig; sourceTree = "<group>"; };
-		7DB207D1CB0518E20D42D595E29C0D01 /* STPopup-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "STPopup-dummy.m"; sourceTree = "<group>"; };
-		7DF5F36D93F256AADE5B5EE3C24BE5B5 /* ViewPagerController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ViewPagerController.h; path = ICViewPager/ICViewPager/ViewPagerController.h; sourceTree = "<group>"; };
-		7F5A56D064C527626A57428F07B57253 /* ColorArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ColorArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8519A8A4DF3CA9CD9FD20A2FA1BEF192 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8602F120D607D17847332B3E830DBF13 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = Headers/Public/GAIEcommerceProduct.h; sourceTree = "<group>"; };
-		8710D267E99A062AEA575027F2C4B642 /* UICKeyChainStore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = UICKeyChainStore.modulemap; sourceTree = "<group>"; };
-		88ACE894EBBF5EADB9660F2BC6AF20E6 /* UIResponder+STPopup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIResponder+STPopup.m"; path = "STPopup/UIResponder+STPopup.m"; sourceTree = "<group>"; };
-		88BF4A3DB417A7C7BDFE75C1BE6C2F20 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
-		89E4DCD390656BF7A9AE54A539CCD818 /* ICViewPager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ICViewPager-dummy.m"; sourceTree = "<group>"; };
-		8E77099FC5B6C181245D03C8839FE8C0 /* STPopupLeftBarItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopupLeftBarItem.h; path = STPopup/STPopupLeftBarItem.h; sourceTree = "<group>"; };
+		6248F927165406F365F01AF268DEA57B /* STPopupLeftBarItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPopupLeftBarItem.m; path = STPopup/STPopupLeftBarItem.m; sourceTree = "<group>"; };
+		68741A69895438C71706019FA3E30732 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OneSignal.framework; path = iOS_SDK/Framework/OneSignal.framework; sourceTree = "<group>"; };
+		6CB8D7B2DFFC3EE26629E57D3F7D04CD /* ViewPagerController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ViewPagerController.h; path = ICViewPager/ICViewPager/ViewPagerController.h; sourceTree = "<group>"; };
+		6E30E4DEB60B0EDFFF99C44E86E2A261 /* STPopup-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "STPopup-prefix.pch"; sourceTree = "<group>"; };
+		6EA17AB459684124D525C2D9A62F4278 /* ColorArt-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ColorArt-prefix.pch"; sourceTree = "<group>"; };
+		702D180366645F2DEF0620D4347ACAFC /* UIViewController+STPopup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+STPopup.m"; path = "STPopup/UIViewController+STPopup.m"; sourceTree = "<group>"; };
+		7064AD2008B81FE577B17D48AE61C2A1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		738C77B7B05959B67CA5E487B5280EAA /* UIImage+ColorArt.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ColorArt.m"; path = "ColorArt/Classes/UIImage+ColorArt.m"; sourceTree = "<group>"; };
+		79D4354CB5EBF3416B762A54789A4813 /* iRate-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iRate-prefix.pch"; sourceTree = "<group>"; };
+		7CC459D768CDDFD80C1F031251C03A16 /* UICKeyChainStore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = UICKeyChainStore.modulemap; sourceTree = "<group>"; };
+		811557E368587B3A35B99079C938AD86 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = Headers/Public/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		81D0BA68651E1BE0FC1174871A3A63C1 /* GAIFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = Headers/Public/GAIFields.h; sourceTree = "<group>"; };
+		8759D013893FC772A8B61C937D7A128F /* GAIEcommerceFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceFields.h; path = Headers/Public/GAIEcommerceFields.h; sourceTree = "<group>"; };
+		87ABF8618FEF5F0441D8A521345165C0 /* STPopup.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = STPopup.xcconfig; sourceTree = "<group>"; };
+		87DF7067AE674A83C96A0A2AAEBD1194 /* RGCardViewLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RGCardViewLayout.m; sourceTree = "<group>"; };
+		89925A908713905C5810AE662DD67A1F /* GAITrackedViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = Headers/Public/GAITrackedViewController.h; sourceTree = "<group>"; };
+		8D79BE0FF51E5265EF9265EB80B8ADD1 /* Analytics-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Analytics-Module.h"; path = "Headers/ModuleHeaders/Analytics-Module.h"; sourceTree = "<group>"; };
 		8F844CDCD57D047D5F3814C59909E9D8 /* Pods-CCIP-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CCIP-dummy.m"; sourceTree = "<group>"; };
+		90151FE5777555F5ACC8316F2600C57A /* GAI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = Headers/Public/GAI.h; sourceTree = "<group>"; };
 		9160B80BE78072CE651E75EF51FE39F4 /* Pods-CCIP-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CCIP-frameworks.sh"; sourceTree = "<group>"; };
 		91C09AF322B17830E0563F40DBD0F518 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		921E6405F533BBCCD08A0C51BD92F0BF /* Analytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Analytics.h; path = Headers/Analytics.h; sourceTree = "<group>"; };
-		93815ABE9DAC95FA6A24E03F216E5B10 /* RGCardViewLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RGCardViewLayout-dummy.m"; sourceTree = "<group>"; };
+		924583DDFC03F1542F5C570830E2716A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		934815A60C8189807A3D2745F522D8DB /* iRate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = iRate.h; path = iRate/iRate.h; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9BDF6085CAC766FBFF3C6556D0B30698 /* STPopupController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopupController.h; path = STPopup/STPopupController.h; sourceTree = "<group>"; };
-		9BEED538C52417A8157FDC24A72E2AB3 /* UIResponder+STPopup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIResponder+STPopup.h"; path = "STPopup/UIResponder+STPopup.h"; sourceTree = "<group>"; };
-		9CA04D4857B28DB0C5E117BD5E94FDB9 /* UIImage+ColorArt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+ColorArt.h"; path = "ColorArt/Classes/UIImage+ColorArt.h"; sourceTree = "<group>"; };
-		A2B4C9F8C5924F9F36A624DDA92DD702 /* STPopup-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "STPopup-prefix.pch"; sourceTree = "<group>"; };
-		A493E123C2DE166F27367042181AA53E /* ColorArt.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ColorArt.xcconfig; sourceTree = "<group>"; };
-		ABCABB0535789695F786CFECC257BA59 /* iRate-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iRate-dummy.m"; sourceTree = "<group>"; };
-		ABD69214E64197DD8292B84B3B398D94 /* GAIFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = Headers/Public/GAIFields.h; sourceTree = "<group>"; };
-		B4E165A01B22EDC51DE57D7BFA29769A /* GGLCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLCore.framework; path = Frameworks/GGLCore.framework; sourceTree = "<group>"; };
-		B742F2526139F6D5AABA6741F15D006A /* iRate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = iRate.m; path = iRate/iRate.m; sourceTree = "<group>"; };
-		BA26ABA064523EA1D5F1DF903D279246 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD502574FDC6630D09CF668A643F48B9 /* STPopupController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPopupController.m; path = STPopup/STPopupController.m; sourceTree = "<group>"; };
-		BD5A8D1C67270B794BD5F89238F7F6BF /* RGCardViewLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RGCardViewLayout.modulemap; sourceTree = "<group>"; };
-		BF7A987D6281F0CF62A5D6CA7CD8EF56 /* iRate.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iRate.xcconfig; sourceTree = "<group>"; };
+		93D3D72C02DE77BAE61D1C8684B46BB8 /* iRate-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iRate-dummy.m"; sourceTree = "<group>"; };
+		9521C1FB4B36BE5C91F4B95FF0313C5D /* SLColorArt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SLColorArt.h; path = ColorArt/Classes/SLColorArt.h; sourceTree = "<group>"; };
+		A1E5B2960986E453E58B90B2AC0F85A9 /* STPopup-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "STPopup-umbrella.h"; sourceTree = "<group>"; };
+		A39B868629F1AB3E058394A0970FD9C1 /* UICKeyChainStore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-prefix.pch"; sourceTree = "<group>"; };
+		A61C8969AB8A4E277CE5BE5A30C765AC /* Core-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Core-Module.h"; path = "Headers/ModuleHeaders/Core-Module.h"; sourceTree = "<group>"; };
+		A755C48DB17621842733301FB6A63A40 /* iCarousel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = iCarousel/iCarousel.h; sourceTree = "<group>"; };
+		A771FB90FA6E6734FD3524D7ED61A7BE /* ColorArt-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ColorArt-dummy.m"; sourceTree = "<group>"; };
+		AB31EF79E4633DDE3028ED89E6698C4B /* ICViewPager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ICViewPager-dummy.m"; sourceTree = "<group>"; };
+		AD2E80F59F6DA6B3091F8A680589E60F /* STPopupNavigationBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPopupNavigationBar.m; path = STPopup/STPopupNavigationBar.m; sourceTree = "<group>"; };
+		B097EE9C3655655C141375106C430EAD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4344A8A2B5CE3D0C6CBA90FC6670F86 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		BA4E5F08CC82C87407C562B0A2F10E7E /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		BCE5A657C270347E849D0557FB705B06 /* ICViewPager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ICViewPager.xcconfig; sourceTree = "<group>"; };
 		BFAC3EA1B30A5FC26F5A3B9AC3CB6A76 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		C0184D3AE8B81D7E9066164310D32B29 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OneSignal.framework; path = iOS_SDK/Framework/OneSignal.framework; sourceTree = "<group>"; };
-		C3F2829FB9B6D7D12D816F32578DCBC0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C000B9E875B1BAB5F44178897D04DE0E /* UICKeyChainStore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UICKeyChainStore.xcconfig; sourceTree = "<group>"; };
+		C06A9C838B5820435A9264541EF7A9BF /* RGCardViewLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RGCardViewLayout.modulemap; sourceTree = "<group>"; };
+		C0B19E97BDC7B2A9B9FAC565522C12FC /* iRate.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = iRate.modulemap; sourceTree = "<group>"; };
+		C21BF3FAA836070F4EA1EB49A0176768 /* ICViewPager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ICViewPager-umbrella.h"; sourceTree = "<group>"; };
+		C2D239D7B663250912E035C53A40F895 /* RGCardViewLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RGCardViewLayout-dummy.m"; sourceTree = "<group>"; };
 		C92361B0E6E5A472B5604DAEFFA95C54 /* Pods-CCIP.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CCIP.modulemap"; sourceTree = "<group>"; };
-		CE88D19EC402178D52B34DB165013C05 /* SLColorArt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SLColorArt.h; path = ColorArt/Classes/SLColorArt.h; sourceTree = "<group>"; };
-		CECD3D0FA020F32C72B1B1D44BC9A99B /* iRate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iRate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFAB7C30C397E4F79B6E52A67F1DA905 /* UICKeyChainStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UICKeyChainStore.m; path = Lib/UICKeyChainStore/UICKeyChainStore.m; sourceTree = "<group>"; };
-		D4A0E5E72816AA0004DF69878B4CFFD1 /* RGCardViewLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RGCardViewLayout-umbrella.h"; sourceTree = "<group>"; };
-		D4FE7716E52FE69599527C2F5AE0C4DA /* ICViewPager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ICViewPager.modulemap; sourceTree = "<group>"; };
-		DD3C4FCA69114DD1C50899B075169764 /* Analytics-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Analytics-Module.h"; path = "Headers/ModuleHeaders/Analytics-Module.h"; sourceTree = "<group>"; };
+		C93A1DB55BC490DD89699134100E362B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9BBDDF14E9841B40E031169CE4DC29D /* Core.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Core.h; path = Headers/Core.h; sourceTree = "<group>"; };
+		CEA0637DBBBC3C2BBE38FB4AD714DDDC /* ColorArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ColorArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF20B14B2BA3F198DB384CDEF7715CA8 /* UIResponder+STPopup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIResponder+STPopup.h"; path = "STPopup/UIResponder+STPopup.h"; sourceTree = "<group>"; };
+		CF6DA6B562597AEA467EBF1FAB2AC485 /* RGCardViewLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RGCardViewLayout-umbrella.h"; sourceTree = "<group>"; };
+		D3C06C005877DA960E635E793A186C09 /* iRate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iRate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3F0560AF263FCE879E3DB701EBCAD5E /* STPopupNavigationBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopupNavigationBar.h; path = STPopup/STPopupNavigationBar.h; sourceTree = "<group>"; };
+		D8E1B24CA7E106AC272D3D5138EE65BB /* ICViewPager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ICViewPager-prefix.pch"; sourceTree = "<group>"; };
+		D901C4D27463CA29FC421BA01DE59F94 /* STPopup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopup.h; path = STPopup/STPopup.h; sourceTree = "<group>"; };
+		DA0789CA7D3EFA9A5DB9B4238E39EA55 /* UICKeyChainStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UICKeyChainStore.h; path = Lib/UICKeyChainStore/UICKeyChainStore.h; sourceTree = "<group>"; };
+		DC373ACC4BB5D92C9E0A8C99BCFB45AD /* UICKeyChainStore-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore-umbrella.h"; sourceTree = "<group>"; };
+		DC80E93C30411D574DBD7025021BFA67 /* iCarousel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iCarousel-dummy.m"; sourceTree = "<group>"; };
+		E0A8453A7A2C68E95EC6C6E9143077B2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0E7333DB873D04411FFC8E177F09D88 /* GGLCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLCore.framework; path = Frameworks/GGLCore.framework; sourceTree = "<group>"; };
 		E20A38E2E8C1F6BD640AD8B19A6C9498 /* Pods-CCIP-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CCIP-acknowledgements.plist"; sourceTree = "<group>"; };
-		E29296DEEF776446946055AE9213B665 /* iRate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = iRate.h; path = iRate/iRate.h; sourceTree = "<group>"; };
-		E2B728A40255F286072C475EF9EF5DDF /* Core.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Core.h; path = Headers/Core.h; sourceTree = "<group>"; };
-		E56ACEC84E115BB8EE486FD1BEE2C021 /* STPopupNavigationBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPopupNavigationBar.m; path = STPopup/STPopupNavigationBar.m; sourceTree = "<group>"; };
-		E899C4810D7A9306789E0751654B98AF /* RGCardViewLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RGCardViewLayout.h; sourceTree = "<group>"; };
-		E9C1801407D5B760C4BAFE06E7D1D92C /* GGLAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLAnalytics.framework; path = Frameworks/GGLAnalytics.framework; sourceTree = "<group>"; };
-		E9E517ACCA88781F40C32BAB01BFADAA /* RGCardViewLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RGCardViewLayout.xcconfig; sourceTree = "<group>"; };
-		ECE1831565873A231328B1654FE8DC6A /* UICKeyChainStore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UICKeyChainStore-dummy.m"; sourceTree = "<group>"; };
-		EDD7D0C166A104248DBFFE99023CC580 /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
-		EDF399314EB5F0AB563866C55F46DA9E /* iRate.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = iRate.modulemap; sourceTree = "<group>"; };
-		EE8655EDD91DD2344EC3627032C264A3 /* STPopup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPopup.h; path = STPopup/STPopup.h; sourceTree = "<group>"; };
+		E59095B001C44C21A17240E7190A6EC9 /* GAITracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = Headers/Public/GAITracker.h; sourceTree = "<group>"; };
+		E86AADB0E330F3BB288A057851C211A7 /* UICKeyChainStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UICKeyChainStore.m; path = Lib/UICKeyChainStore/UICKeyChainStore.m; sourceTree = "<group>"; };
+		EBDBA531E55C7297A4040921760CE644 /* GGLAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GGLAnalytics.framework; path = Frameworks/GGLAnalytics.framework; sourceTree = "<group>"; };
+		EE6098EE5902D5CB4F3A155DD3A8FCF7 /* UIImage+Scale.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Scale.m"; path = "ColorArt/Classes/UIImage+Scale.m"; sourceTree = "<group>"; };
+		EEBF77F7530370B7C28C9BBEC0BD11EC /* STPopupController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPopupController.m; path = STPopup/STPopupController.m; sourceTree = "<group>"; };
+		F0A407ACD83130909EFAF2D7F76858F1 /* UIViewController+STPopup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+STPopup.h"; path = "STPopup/UIViewController+STPopup.h"; sourceTree = "<group>"; };
+		F30B4BF112B94A1A22B92CE35BAD6B59 /* SignIn-Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SignIn-Module.h"; path = "Headers/ModuleHeaders/SignIn-Module.h"; sourceTree = "<group>"; };
+		F387D13E463CC4FBFCA56171D8CEE081 /* Analytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Analytics.h; path = Headers/Analytics.h; sourceTree = "<group>"; };
 		F7E68327F96807A113A9D3CD97011B76 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		FB7D6EA82C097535243FB8494AE918A9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC5E1FFD17B9D5FB0EC59188151D0808 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommercePromotion.h; path = Headers/Public/GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		FCCE9349568F90E480734868D0844B33 /* ColorArt-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ColorArt-umbrella.h"; sourceTree = "<group>"; };
 		FED333F71BA244C276B35C2271C36CFF /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
+		FF67716EFB612731F80982D8129B8830 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = Headers/Public/GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		FFF266BC42ED4C793F1E4A12E25D7360 /* UICKeyChainStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UICKeyChainStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,20 +251,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		67C7AB364D9115184D9A3A8C92DACE34 /* Frameworks */ = {
+		185ED791D4670D8FA29B87453F311F42 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDC09FE6EF3F8C8698629E769D1E11EC /* Foundation.framework in Frameworks */,
-				96F13CA1BE2CDCAD78369EE5AC06B6AB /* Security.framework in Frameworks */,
+				2F7170B17E105936278A1F69DEBD8D32 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7B8E3F95DFAA5EBF92FADA8E7DF12843 /* Frameworks */ = {
+		5D401787FD5542FBDBB8CD0477A7C571 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5597C9B49659810501DC735E0A25039D /* Foundation.framework in Frameworks */,
+				DB0EB56AD46F5FE05CE53F9ED1429913 /* CoreGraphics.framework in Frameworks */,
+				17B7936CD6D347543F6FA3E584B6A213 /* Foundation.framework in Frameworks */,
+				8C0B88CAF71733CE4C25F98F19595502 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6D0DE6CB61DA472F946BB51D1D7A405 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11F1A6C835418BA704AF5988A71288F7 /* Foundation.framework in Frameworks */,
+				CA871BE71028233BD75FE64CBA0211DD /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +289,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C2D32DD2168137C9C50ECCB9FE24BE94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5068AC17A2942CCF790C75B274835BF /* Foundation.framework in Frameworks */,
+				3FC5DA791056A6E7063057BC3895623B /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC0D54400CEBA3D2AFD04004F26EDA5F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14F130E3340EDD498CC7CBFB00005A53 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E536086B06D5186C814CE2FBB07E6FC4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -265,98 +314,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F452046A6720E9FB6589CF99E64D8D87 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DE2D6610FE82105189AD36F212150BB9 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FC3BBACD4B90296DAFFCC985DA2B34C4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				26B3DE718EB01897D3DFC3EBD75BE656 /* CoreGraphics.framework in Frameworks */,
-				8F62E708F0133ED5C8570DD412FF41B4 /* Foundation.framework in Frameworks */,
-				3BD03D5FE257A488E5A2B16AF503F7EE /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		06739B0C599EFDB2A5F3C389ADEE21AC /* Support Files */ = {
+		090CE936F023DDC84C28D4CB5FBFABE1 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				BA26ABA064523EA1D5F1DF903D279246 /* Info.plist */,
-				EDF399314EB5F0AB563866C55F46DA9E /* iRate.modulemap */,
-				BF7A987D6281F0CF62A5D6CA7CD8EF56 /* iRate.xcconfig */,
-				ABCABB0535789695F786CFECC257BA59 /* iRate-dummy.m */,
-				400B123659B940515875655DA96B74DC /* iRate-prefix.pch */,
-				4214D79B404F0E6C20FFDCF3AD0D89BF /* iRate-umbrella.h */,
+				001DCD414B8CBDA4F792B99D368E1552 /* ColorArt.modulemap */,
+				18783F5E5336D6C4B50A6F21A43775F2 /* ColorArt.xcconfig */,
+				A771FB90FA6E6734FD3524D7ED61A7BE /* ColorArt-dummy.m */,
+				6EA17AB459684124D525C2D9A62F4278 /* ColorArt-prefix.pch */,
+				FCCE9349568F90E480734868D0844B33 /* ColorArt-umbrella.h */,
+				41F68222F4C4221DB07EFBA12FA78CB0 /* Info.plist */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/iRate";
-			sourceTree = "<group>";
-		};
-		0DF164B19D5B15DF15B35D1BC7F06761 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				D4FE7716E52FE69599527C2F5AE0C4DA /* ICViewPager.modulemap */,
-				4E5316FA7090F141C53BF2AD10005396 /* ICViewPager.xcconfig */,
-				89E4DCD390656BF7A9AE54A539CCD818 /* ICViewPager-dummy.m */,
-				06BBCEAA38F191207AA3B0CD93656546 /* ICViewPager-prefix.pch */,
-				2A59D9BEF1A15AE41D8AEF7D060841A2 /* ICViewPager-umbrella.h */,
-				C3F2829FB9B6D7D12D816F32578DCBC0 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/ICViewPager";
-			sourceTree = "<group>";
-		};
-		124851AA9AEA48C0091BFD210712A83A /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				DD3C4FCA69114DD1C50899B075169764 /* Analytics-Module.h */,
-				E2B728A40255F286072C475EF9EF5DDF /* Core.h */,
-				2A1CFE8E01327DBB60287F008F0801A2 /* Core-Module.h */,
-				0D569A690A5061A3A85ADBF24B10CFB4 /* SignIn-Module.h */,
-				F415993FCF5770FC549BEFAE69723075 /* Frameworks */,
-			);
-			name = Core;
-			sourceTree = "<group>";
-		};
-		12C484615D3F66BB2B6FF70255150407 /* STPopup */ = {
-			isa = PBXGroup;
-			children = (
-				EE8655EDD91DD2344EC3627032C264A3 /* STPopup.h */,
-				9BDF6085CAC766FBFF3C6556D0B30698 /* STPopupController.h */,
-				BD502574FDC6630D09CF668A643F48B9 /* STPopupController.m */,
-				8E77099FC5B6C181245D03C8839FE8C0 /* STPopupLeftBarItem.h */,
-				0A9089A0EE89901616AB1B1D19724383 /* STPopupLeftBarItem.m */,
-				36F032788263435092002F4FED81BABF /* STPopupNavigationBar.h */,
-				E56ACEC84E115BB8EE486FD1BEE2C021 /* STPopupNavigationBar.m */,
-				9BEED538C52417A8157FDC24A72E2AB3 /* UIResponder+STPopup.h */,
-				88ACE894EBBF5EADB9660F2BC6AF20E6 /* UIResponder+STPopup.m */,
-				5C03766C55A3C0870A746CE29EAB1221 /* UIViewController+STPopup.h */,
-				22ABD1E4AEB8CDCB1C7D16F1D450D9CF /* UIViewController+STPopup.m */,
-				BD71E1FF17B79AC63DFAEAECE317B14C /* Support Files */,
-			);
-			path = STPopup;
-			sourceTree = "<group>";
-		};
-		1B63DE1B7C17FB5659FC9F1BC8014E7E /* ColorArt */ = {
-			isa = PBXGroup;
-			children = (
-				CE88D19EC402178D52B34DB165013C05 /* SLColorArt.h */,
-				6411784BD5EA9A6D135746F973F82808 /* SLColorArt.m */,
-				9CA04D4857B28DB0C5E117BD5E94FDB9 /* UIImage+ColorArt.h */,
-				5261B5B0EAF98FAD91F15E38BDC4CCD9 /* UIImage+ColorArt.m */,
-				4FB23C7F7C719FC22338C3425E63D900 /* UIImage+Scale.h */,
-				70B68DE9DC294A29356503AEEE803A6A /* UIImage+Scale.m */,
-				F77E3ACAFC750965F4DFCF5811D44182 /* Support Files */,
-			);
-			path = ColorArt;
+			path = "../Target Support Files/ColorArt";
 			sourceTree = "<group>";
 		};
 		20B56609144CE204DFA8221F742B2D76 /* Frameworks */ = {
@@ -365,24 +337,6 @@
 				5779C89AA3DB3553FFA7CB994827B180 /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		20D1EB4F854AB469D4773F24EB67E2AD /* ICViewPager */ = {
-			isa = PBXGroup;
-			children = (
-				7DF5F36D93F256AADE5B5EE3C24BE5B5 /* ViewPagerController.h */,
-				01EAAD27C7B14EFE415FB089A8CF2BBE /* ViewPagerController.m */,
-				0DF164B19D5B15DF15B35D1BC7F06761 /* Support Files */,
-			);
-			path = ICViewPager;
-			sourceTree = "<group>";
-		};
-		2171A06B8D6F4C2B5448D5AACDD00A42 /* GoogleSymbolUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				CFCDD5509F69DFAA3B27DC0AF418080B /* Frameworks */,
-			);
-			path = GoogleSymbolUtilities;
 			sourceTree = "<group>";
 		};
 		224288662EB54F3A96ED81A260242040 /* Pods-CCIP */ = {
@@ -403,31 +357,55 @@
 			path = "Target Support Files/Pods-CCIP";
 			sourceTree = "<group>";
 		};
-		327C353D1DB7EE55D6BA8D72A8D3E3C5 /* Google */ = {
+		2BC053527F52952C8E7692CFCFD50A35 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8C9A1532D5AC3DD49D80731E1DBD6AE0 /* Analytics */,
-				124851AA9AEA48C0091BFD210712A83A /* Core */,
+				24A8D7E8F20D119A1DA25BA041B8768A /* iRate.bundle */,
 			);
-			path = Google;
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		37A67A26D4665A08E00676995C317649 /* RGCardViewLayout */ = {
+		31BCB9FE7A82568441058F42ABD90BB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E899C4810D7A9306789E0751654B98AF /* RGCardViewLayout.h */,
-				41062BAEE8B2EE1EF5DB64EE3D970F27 /* RGCardViewLayout.m */,
-				B4D28DDF1485F9AF19902A7AAC31C62C /* Support Files */,
+				BA4E5F08CC82C87407C562B0A2F10E7E /* FirebaseInstanceID.framework */,
 			);
-			path = RGCardViewLayout;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		457DBEA38D7D0EF38CB21B866D5532D9 /* FirebaseAnalytics */ = {
+		367EDE0AC4EB8056C49ED6A58AC6BDDF /* GoogleUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				B463D0B9336616A5FCD50BD17C1F27CA /* Frameworks */,
+				6AF780D7E6525E3DAE229EE04D50A105 /* Frameworks */,
 			);
-			path = FirebaseAnalytics;
+			path = GoogleUtilities;
+			sourceTree = "<group>";
+		};
+		3FD2DBB9D786FFF9A8EC4CA4287D3CD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				60C50E8BA998099E4D930D6CEE067C2D /* GoogleSymbolUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		435247C3EA41D12DB9F1E62A32F0B10F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EBDBA531E55C7297A4040921760CE644 /* GGLAnalytics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4B12C15E5CAC3F0CD34A687330F0E479 /* iRate */ = {
+			isa = PBXGroup;
+			children = (
+				934815A60C8189807A3D2745F522D8DB /* iRate.h */,
+				3809E4512618EB732E5B8D1756494F71 /* iRate.m */,
+				2BC053527F52952C8E7692CFCFD50A35 /* Resources */,
+				EFF81C7394CD9458E428169E0623BBA9 /* Support Files */,
+			);
+			path = iRate;
 			sourceTree = "<group>";
 		};
 		4B8C921EBD4950EF50AD3046DB52F1B3 /* Targets Support Files */ = {
@@ -438,51 +416,65 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		4C2C488A5C8B1C6543715739ED59F286 /* GoogleAnalytics */ = {
+		4DFEC248116F1704052C453726D720C0 /* Google */ = {
 			isa = PBXGroup;
 			children = (
-				716CA19F39ECCDE9ABADE8FE73000A15 /* GAI.h */,
-				313299BB40DDE3665BEAFDC5E83E4F9B /* GAIDictionaryBuilder.h */,
-				030654F2614D320B8201F45DF4D0B55B /* GAIEcommerceFields.h */,
-				8602F120D607D17847332B3E830DBF13 /* GAIEcommerceProduct.h */,
-				246A4E16C44EE4A16ECA6AFD377AF59A /* GAIEcommerceProductAction.h */,
-				FC5E1FFD17B9D5FB0EC59188151D0808 /* GAIEcommercePromotion.h */,
-				ABD69214E64197DD8292B84B3B398D94 /* GAIFields.h */,
-				276DBF3B07BCF02F11A74EB43E6D36BF /* GAILogger.h */,
-				4E4BECDD5818B865C9EA85136BEC1F50 /* GAITrackedViewController.h */,
-				10C96BBA1647167BA1E0BDCD8118E74D /* GAITracker.h */,
-				4F4F7384E48A27FA34FEDD1C3CF1B65D /* Frameworks */,
+				F9B333593A4A4EE641BFD9FE25EBEA87 /* Analytics */,
+				EA9CEB2B43C30AABAAD4CA09F9F1E4A9 /* Core */,
 			);
-			path = GoogleAnalytics;
+			path = Google;
 			sourceTree = "<group>";
 		};
-		4F4F7384E48A27FA34FEDD1C3CF1B65D /* Frameworks */ = {
+		517B008C37F455DA697083DA640513DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				545B9278DD26FA478616366BA04636FE /* libGoogleAnalytics.a */,
+				CEA0637DBBBC3C2BBE38FB4AD714DDDC /* ColorArt.framework */,
+				5B91B53D9E5487D948C6834BE9374B3C /* iCarousel.framework */,
+				4119BEC22B06CAB0075C84D9BCD030C7 /* ICViewPager.framework */,
+				D3C06C005877DA960E635E793A186C09 /* iRate.framework */,
+				1239CBF847182E211A570000A3C82256 /* Pods_CCIP.framework */,
+				3A4155890415EAB0CE2F347F9A70B002 /* RGCardViewLayout.framework */,
+				110573BBBD6213E601614084432F9DD0 /* STPopup.framework */,
+				FFF266BC42ED4C793F1E4A12E25D7360 /* UICKeyChainStore.framework */,
 			);
-			name = Frameworks;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		51264128638BAD213C1D979786AE51C8 /* Pods */ = {
+		529647AE145AC1657564C885D86CF592 /* STPopup */ = {
 			isa = PBXGroup;
 			children = (
-				1B63DE1B7C17FB5659FC9F1BC8014E7E /* ColorArt */,
-				457DBEA38D7D0EF38CB21B866D5532D9 /* FirebaseAnalytics */,
-				C5B3F67FD5FC80CFD5CED4D40BB6DA36 /* FirebaseInstanceID */,
-				327C353D1DB7EE55D6BA8D72A8D3E3C5 /* Google */,
-				4C2C488A5C8B1C6543715739ED59F286 /* GoogleAnalytics */,
-				DBBC52E63B33CCE9617949CF05752987 /* GoogleInterchangeUtilities */,
-				2171A06B8D6F4C2B5448D5AACDD00A42 /* GoogleSymbolUtilities */,
-				BE6335AF441D98F9B8A5D6B0785ACC75 /* GoogleUtilities */,
-				20D1EB4F854AB469D4773F24EB67E2AD /* ICViewPager */,
-				F6F74F08DBF04CD8C7B76556C5173810 /* iRate */,
-				6EEB7DB9E945426221FFF99AACCB194D /* OneSignal */,
-				37A67A26D4665A08E00676995C317649 /* RGCardViewLayout */,
-				12C484615D3F66BB2B6FF70255150407 /* STPopup */,
-				C4C01D72046301AC0EE7990DC29CE642 /* UICKeyChainStore */,
+				D901C4D27463CA29FC421BA01DE59F94 /* STPopup.h */,
+				136BB88495D3C06C7DA91AB302415219 /* STPopupController.h */,
+				EEBF77F7530370B7C28C9BBEC0BD11EC /* STPopupController.m */,
+				5CDA0034772344F55A0FBEBFD59EBB66 /* STPopupLeftBarItem.h */,
+				6248F927165406F365F01AF268DEA57B /* STPopupLeftBarItem.m */,
+				D3F0560AF263FCE879E3DB701EBCAD5E /* STPopupNavigationBar.h */,
+				AD2E80F59F6DA6B3091F8A680589E60F /* STPopupNavigationBar.m */,
+				CF20B14B2BA3F198DB384CDEF7715CA8 /* UIResponder+STPopup.h */,
+				0F1F75421B4C287B7009B3816E3AC6F8 /* UIResponder+STPopup.m */,
+				F0A407ACD83130909EFAF2D7F76858F1 /* UIViewController+STPopup.h */,
+				702D180366645F2DEF0620D4347ACAFC /* UIViewController+STPopup.m */,
+				E7F1E8CA3164DF4F6AE2CFA4770112B5 /* Support Files */,
 			);
-			name = Pods;
+			path = STPopup;
+			sourceTree = "<group>";
+		};
+		562CD0ABA40DBFFEA7FE2D439341607C /* ICViewPager */ = {
+			isa = PBXGroup;
+			children = (
+				6CB8D7B2DFFC3EE26629E57D3F7D04CD /* ViewPagerController.h */,
+				4D19381A9D20C02DA3E68D770D49287F /* ViewPagerController.m */,
+				88B9BAC9B5E0ED7AEB90A9317DE9A81F /* Support Files */,
+			);
+			path = ICViewPager;
+			sourceTree = "<group>";
+		};
+		573F5997320FB8FE2CCEC6C79D362CC1 /* GoogleSymbolUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				3FD2DBB9D786FFF9A8EC4CA4287D3CD7 /* Frameworks */,
+			);
+			path = GoogleSymbolUtilities;
 			sourceTree = "<group>";
 		};
 		5779C89AA3DB3553FFA7CB994827B180 /* iOS */ = {
@@ -497,36 +489,64 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		590DF15420408B19CBD1C8C7272CF6DD /* Frameworks */ = {
+		57B8759855A145C08C974A83B34111A6 /* RGCardViewLayout */ = {
 			isa = PBXGroup;
 			children = (
-				4203542DDDB762ECD140E88809E9466C /* FirebaseInstanceID.framework */,
+				01BDFB5FA7978C3A6910844435C4C795 /* RGCardViewLayout.h */,
+				87DF7067AE674A83C96A0A2AAEBD1194 /* RGCardViewLayout.m */,
+				D79C7D3E4E1F538481F254C147724CC3 /* Support Files */,
+			);
+			path = RGCardViewLayout;
+			sourceTree = "<group>";
+		};
+		5E8A7ABBACE83879DFE9981267060CD6 /* GoogleInterchangeUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				9DE026E112E209E42C8908EF4074A5AE /* Frameworks */,
+			);
+			path = GoogleInterchangeUtilities;
+			sourceTree = "<group>";
+		};
+		63E725F97E7D53EE207DD1F54C10B8A0 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3104730D74F2C051BDD55B5B9F441B97 /* iCarousel.modulemap */,
+				35B25889715C2F29C34F07F07506B5C8 /* iCarousel.xcconfig */,
+				DC80E93C30411D574DBD7025021BFA67 /* iCarousel-dummy.m */,
+				3F0B62B5EAF199BD341E95E8173BDA31 /* iCarousel-prefix.pch */,
+				1102B1F4AD97ED06BFFA64FCE25E884B /* iCarousel-umbrella.h */,
+				B097EE9C3655655C141375106C430EAD /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/iCarousel";
+			sourceTree = "<group>";
+		};
+		6409D19A5F275304346199328E2BD722 /* UICKeyChainStore */ = {
+			isa = PBXGroup;
+			children = (
+				DA0789CA7D3EFA9A5DB9B4238E39EA55 /* UICKeyChainStore.h */,
+				E86AADB0E330F3BB288A057851C211A7 /* UICKeyChainStore.m */,
+				807E8A5338D57546786A023DA6618468 /* Support Files */,
+			);
+			path = UICKeyChainStore;
+			sourceTree = "<group>";
+		};
+		6AF780D7E6525E3DAE229EE04D50A105 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07EB875730EFFD5FCD41E859D3C075FF /* GoogleUtilities.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5A5E36BC7C39912EFCC31F9464B7D306 /* Frameworks */ = {
+		75CDA8D74565137DBF3786F3AA337F78 /* iCarousel */ = {
 			isa = PBXGroup;
 			children = (
-				E9C1801407D5B760C4BAFE06E7D1D92C /* GGLAnalytics.framework */,
+				A755C48DB17621842733301FB6A63A40 /* iCarousel.h */,
+				23DAFE3E0820B9F1E7534D835760FB24 /* iCarousel.m */,
+				63E725F97E7D53EE207DD1F54C10B8A0 /* Support Files */,
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6EEB7DB9E945426221FFF99AACCB194D /* OneSignal */ = {
-			isa = PBXGroup;
-			children = (
-				DA24A25099D43EA9708CABCE995DB578 /* Frameworks */,
-			);
-			path = OneSignal;
-			sourceTree = "<group>";
-		};
-		7806FE95D2F882849FD6F70D70ADDEB3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				88BF4A3DB417A7C7BDFE75C1BE6C2F20 /* GoogleUtilities.framework */,
-			);
-			name = Frameworks;
+			path = iCarousel;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -534,225 +554,271 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				20B56609144CE204DFA8221F742B2D76 /* Frameworks */,
-				51264128638BAD213C1D979786AE51C8 /* Pods */,
-				DC46063238854972E10030E1BB3B6494 /* Products */,
+				AAD2340957814BECD1B84C9F76C9B73C /* Pods */,
+				517B008C37F455DA697083DA640513DC /* Products */,
 				4B8C921EBD4950EF50AD3046DB52F1B3 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8C9A1532D5AC3DD49D80731E1DBD6AE0 /* Analytics */ = {
+		807E8A5338D57546786A023DA6618468 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				921E6405F533BBCCD08A0C51BD92F0BF /* Analytics.h */,
-				5A5E36BC7C39912EFCC31F9464B7D306 /* Frameworks */,
-			);
-			name = Analytics;
-			sourceTree = "<group>";
-		};
-		9A1C26DF17B32676A12DDE4686172A67 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				5EBE5D2D89923F789D293C38B90BCE24 /* Info.plist */,
-				8710D267E99A062AEA575027F2C4B642 /* UICKeyChainStore.modulemap */,
-				77B4D1F2D0AA6583C6FE8DF0C84AFDDC /* UICKeyChainStore.xcconfig */,
-				ECE1831565873A231328B1654FE8DC6A /* UICKeyChainStore-dummy.m */,
-				0710DD2B95A1318342B201DA8FF882EF /* UICKeyChainStore-prefix.pch */,
-				12AAF232E96FFBE5639FC926FF62C15F /* UICKeyChainStore-umbrella.h */,
+				924583DDFC03F1542F5C570830E2716A /* Info.plist */,
+				7CC459D768CDDFD80C1F031251C03A16 /* UICKeyChainStore.modulemap */,
+				C000B9E875B1BAB5F44178897D04DE0E /* UICKeyChainStore.xcconfig */,
+				0E878B856997B46141F5CAD7FDAC8F6B /* UICKeyChainStore-dummy.m */,
+				A39B868629F1AB3E058394A0970FD9C1 /* UICKeyChainStore-prefix.pch */,
+				DC373ACC4BB5D92C9E0A8C99BCFB45AD /* UICKeyChainStore-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/UICKeyChainStore";
 			sourceTree = "<group>";
 		};
-		B463D0B9336616A5FCD50BD17C1F27CA /* Frameworks */ = {
+		88B9BAC9B5E0ED7AEB90A9317DE9A81F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				48A6B5FCB2C661DADB540A72807A8427 /* FirebaseAnalytics.framework */,
+				2CFB04D4B6E235414A397FC7C9B80384 /* ICViewPager.modulemap */,
+				BCE5A657C270347E849D0557FB705B06 /* ICViewPager.xcconfig */,
+				AB31EF79E4633DDE3028ED89E6698C4B /* ICViewPager-dummy.m */,
+				D8E1B24CA7E106AC272D3D5138EE65BB /* ICViewPager-prefix.pch */,
+				C21BF3FAA836070F4EA1EB49A0176768 /* ICViewPager-umbrella.h */,
+				7064AD2008B81FE577B17D48AE61C2A1 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ICViewPager";
+			sourceTree = "<group>";
+		};
+		95610549A37D894ED8465743944FC8EA /* FirebaseAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				DEBEDC93103ECC87D089BD7271FA1357 /* Frameworks */,
+			);
+			path = FirebaseAnalytics;
+			sourceTree = "<group>";
+		};
+		9DE026E112E209E42C8908EF4074A5AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4AB634C6B85DDD261C47062805300B7F /* GoogleInterchangeUtilities.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B4D28DDF1485F9AF19902A7AAC31C62C /* Support Files */ = {
+		AAD2340957814BECD1B84C9F76C9B73C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FB7D6EA82C097535243FB8494AE918A9 /* Info.plist */,
-				BD5A8D1C67270B794BD5F89238F7F6BF /* RGCardViewLayout.modulemap */,
-				E9E517ACCA88781F40C32BAB01BFADAA /* RGCardViewLayout.xcconfig */,
-				93815ABE9DAC95FA6A24E03F216E5B10 /* RGCardViewLayout-dummy.m */,
-				19FD001820CC450F96EA4CFABF5DCCDA /* RGCardViewLayout-prefix.pch */,
-				D4A0E5E72816AA0004DF69878B4CFFD1 /* RGCardViewLayout-umbrella.h */,
+				FEBB6C35C997AA50377AB55ADF419162 /* ColorArt */,
+				95610549A37D894ED8465743944FC8EA /* FirebaseAnalytics */,
+				D6616A22873515E369C7AD021033E6D1 /* FirebaseInstanceID */,
+				4DFEC248116F1704052C453726D720C0 /* Google */,
+				B87E8365DD61B45B9A94AAE135E7D001 /* GoogleAnalytics */,
+				5E8A7ABBACE83879DFE9981267060CD6 /* GoogleInterchangeUtilities */,
+				573F5997320FB8FE2CCEC6C79D362CC1 /* GoogleSymbolUtilities */,
+				367EDE0AC4EB8056C49ED6A58AC6BDDF /* GoogleUtilities */,
+				75CDA8D74565137DBF3786F3AA337F78 /* iCarousel */,
+				562CD0ABA40DBFFEA7FE2D439341607C /* ICViewPager */,
+				4B12C15E5CAC3F0CD34A687330F0E479 /* iRate */,
+				FA97ADC9E79A7C548C9C8357BC2574DD /* OneSignal */,
+				57B8759855A145C08C974A83B34111A6 /* RGCardViewLayout */,
+				529647AE145AC1657564C885D86CF592 /* STPopup */,
+				6409D19A5F275304346199328E2BD722 /* UICKeyChainStore */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B87E8365DD61B45B9A94AAE135E7D001 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				90151FE5777555F5ACC8316F2600C57A /* GAI.h */,
+				811557E368587B3A35B99079C938AD86 /* GAIDictionaryBuilder.h */,
+				8759D013893FC772A8B61C937D7A128F /* GAIEcommerceFields.h */,
+				FF67716EFB612731F80982D8129B8830 /* GAIEcommerceProduct.h */,
+				3BB9F927B9215BFD3CAB3E3CDA38BF20 /* GAIEcommerceProductAction.h */,
+				00A94DD150C65C340C14271FF7779BDE /* GAIEcommercePromotion.h */,
+				81D0BA68651E1BE0FC1174871A3A63C1 /* GAIFields.h */,
+				4977BC98EC35D3A6721427904E1AAAC2 /* GAILogger.h */,
+				89925A908713905C5810AE662DD67A1F /* GAITrackedViewController.h */,
+				E59095B001C44C21A17240E7190A6EC9 /* GAITracker.h */,
+				EDE8DD20F068426F26273C6EAD5C7B74 /* Frameworks */,
+			);
+			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		D6616A22873515E369C7AD021033E6D1 /* FirebaseInstanceID */ = {
+			isa = PBXGroup;
+			children = (
+				46A2A709443DE8B42CBC9CD28BEF3C79 /* FIRInstanceID.h */,
+				31BCB9FE7A82568441058F42ABD90BB1 /* Frameworks */,
+			);
+			path = FirebaseInstanceID;
+			sourceTree = "<group>";
+		};
+		D79C7D3E4E1F538481F254C147724CC3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C93A1DB55BC490DD89699134100E362B /* Info.plist */,
+				C06A9C838B5820435A9264541EF7A9BF /* RGCardViewLayout.modulemap */,
+				202C2B6EB5B83AE61D7CDE6949E86FB9 /* RGCardViewLayout.xcconfig */,
+				C2D239D7B663250912E035C53A40F895 /* RGCardViewLayout-dummy.m */,
+				1F4A1AF0F732F6CA813D984E28A28C78 /* RGCardViewLayout-prefix.pch */,
+				CF6DA6B562597AEA467EBF1FAB2AC485 /* RGCardViewLayout-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/RGCardViewLayout";
 			sourceTree = "<group>";
 		};
-		BD71E1FF17B79AC63DFAEAECE317B14C /* Support Files */ = {
+		DEBEDC93103ECC87D089BD7271FA1357 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8519A8A4DF3CA9CD9FD20A2FA1BEF192 /* Info.plist */,
-				6CA8103D65B8CA2F1429790AA4F96714 /* STPopup.modulemap */,
-				76EEA6F7166D449F03E9F60C72500E9E /* STPopup.xcconfig */,
-				7DB207D1CB0518E20D42D595E29C0D01 /* STPopup-dummy.m */,
-				A2B4C9F8C5924F9F36A624DDA92DD702 /* STPopup-prefix.pch */,
-				3E8BC9C7E48CE495E708C1D38693EAB1 /* STPopup-umbrella.h */,
+				B4344A8A2B5CE3D0C6CBA90FC6670F86 /* FirebaseAnalytics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E7F1E8CA3164DF4F6AE2CFA4770112B5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				01E92C8199727DCEFB419C7D3ED9B00B /* Info.plist */,
+				2571D62C451FDB5F764DD1A12C51D845 /* STPopup.modulemap */,
+				87ABF8618FEF5F0441D8A521345165C0 /* STPopup.xcconfig */,
+				2B32FCC6299C26B9919648BBEC68AC36 /* STPopup-dummy.m */,
+				6E30E4DEB60B0EDFFF99C44E86E2A261 /* STPopup-prefix.pch */,
+				A1E5B2960986E453E58B90B2AC0F85A9 /* STPopup-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/STPopup";
 			sourceTree = "<group>";
 		};
-		BE6335AF441D98F9B8A5D6B0785ACC75 /* GoogleUtilities */ = {
+		EA9CEB2B43C30AABAAD4CA09F9F1E4A9 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				7806FE95D2F882849FD6F70D70ADDEB3 /* Frameworks */,
+				8D79BE0FF51E5265EF9265EB80B8ADD1 /* Analytics-Module.h */,
+				C9BBDDF14E9841B40E031169CE4DC29D /* Core.h */,
+				A61C8969AB8A4E277CE5BE5A30C765AC /* Core-Module.h */,
+				F30B4BF112B94A1A22B92CE35BAD6B59 /* SignIn-Module.h */,
+				FC58D9C149C71F1FF053AFF6EB70D296 /* Frameworks */,
 			);
-			path = GoogleUtilities;
+			name = Core;
 			sourceTree = "<group>";
 		};
-		C4C01D72046301AC0EE7990DC29CE642 /* UICKeyChainStore */ = {
+		EDE8DD20F068426F26273C6EAD5C7B74 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				12C92CD51C050B2979B77F25CE18946F /* UICKeyChainStore.h */,
-				CFAB7C30C397E4F79B6E52A67F1DA905 /* UICKeyChainStore.m */,
-				9A1C26DF17B32676A12DDE4686172A67 /* Support Files */,
-			);
-			path = UICKeyChainStore;
-			sourceTree = "<group>";
-		};
-		C5B3F67FD5FC80CFD5CED4D40BB6DA36 /* FirebaseInstanceID */ = {
-			isa = PBXGroup;
-			children = (
-				54CEC68AEB4ED0EA4836EE01B84EF4EB /* FIRInstanceID.h */,
-				590DF15420408B19CBD1C8C7272CF6DD /* Frameworks */,
-			);
-			path = FirebaseInstanceID;
-			sourceTree = "<group>";
-		};
-		CFCDD5509F69DFAA3B27DC0AF418080B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				38D7C8442467FBDF37641A46B151A48A /* GoogleSymbolUtilities.framework */,
+				3B23E74B61D87361AD9AF3963332FF93 /* libGoogleAnalytics.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D516A9094EC9C5B767A72D8140F109D1 /* Resources */ = {
+		EFF81C7394CD9458E428169E0623BBA9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				6FC2D954156E4AF667649ACDBA4277A4 /* iRate.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		DA24A25099D43EA9708CABCE995DB578 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C0184D3AE8B81D7E9066164310D32B29 /* OneSignal.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DBBC52E63B33CCE9617949CF05752987 /* GoogleInterchangeUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				EC994EBF98C77BE5802C4D45745DC9D7 /* Frameworks */,
-			);
-			path = GoogleInterchangeUtilities;
-			sourceTree = "<group>";
-		};
-		DC46063238854972E10030E1BB3B6494 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7F5A56D064C527626A57428F07B57253 /* ColorArt.framework */,
-				3E370CCCC309693D779C7E7F9CA33CFB /* ICViewPager.framework */,
-				CECD3D0FA020F32C72B1B1D44BC9A99B /* iRate.framework */,
-				3A76D81F1025083608DC8B6C490A242B /* Pods_CCIP.framework */,
-				58E8DA45F4FDA84D3487CB38734A60AA /* RGCardViewLayout.framework */,
-				1908002A45DA15242153B162D5E7B3BE /* STPopup.framework */,
-				038607D20B8F58F59100693CB05B5E66 /* UICKeyChainStore.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		EC994EBF98C77BE5802C4D45745DC9D7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				EDD7D0C166A104248DBFFE99023CC580 /* GoogleInterchangeUtilities.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F415993FCF5770FC549BEFAE69723075 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B4E165A01B22EDC51DE57D7BFA29769A /* GGLCore.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F6F74F08DBF04CD8C7B76556C5173810 /* iRate */ = {
-			isa = PBXGroup;
-			children = (
-				E29296DEEF776446946055AE9213B665 /* iRate.h */,
-				B742F2526139F6D5AABA6741F15D006A /* iRate.m */,
-				D516A9094EC9C5B767A72D8140F109D1 /* Resources */,
-				06739B0C599EFDB2A5F3C389ADEE21AC /* Support Files */,
-			);
-			path = iRate;
-			sourceTree = "<group>";
-		};
-		F77E3ACAFC750965F4DFCF5811D44182 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				6C01308DA19A83F143D1DDAA87FE2D80 /* ColorArt.modulemap */,
-				A493E123C2DE166F27367042181AA53E /* ColorArt.xcconfig */,
-				058C13258D58A7EDB91B6BD6E8990998 /* ColorArt-dummy.m */,
-				6D1B3F944AF14AAB6D426192E9EFC618 /* ColorArt-prefix.pch */,
-				418F9183304BAD84D6108F8AFF7CB1E8 /* ColorArt-umbrella.h */,
-				2A544E57190CC7F1F1B44406D4FC367E /* Info.plist */,
+				E0A8453A7A2C68E95EC6C6E9143077B2 /* Info.plist */,
+				C0B19E97BDC7B2A9B9FAC565522C12FC /* iRate.modulemap */,
+				11D7483206B2FA96DC3DEEC6C0ECBBDF /* iRate.xcconfig */,
+				93D3D72C02DE77BAE61D1C8684B46BB8 /* iRate-dummy.m */,
+				79D4354CB5EBF3416B762A54789A4813 /* iRate-prefix.pch */,
+				0923ABBF7C7EE54908AA3E1B0C1149CF /* iRate-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/ColorArt";
+			path = "../Target Support Files/iRate";
+			sourceTree = "<group>";
+		};
+		F9B333593A4A4EE641BFD9FE25EBEA87 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				F387D13E463CC4FBFCA56171D8CEE081 /* Analytics.h */,
+				435247C3EA41D12DB9F1E62A32F0B10F /* Frameworks */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		FA97ADC9E79A7C548C9C8357BC2574DD /* OneSignal */ = {
+			isa = PBXGroup;
+			children = (
+				FBAEB95A837114B9BC06160A6AC4C3A7 /* Frameworks */,
+			);
+			path = OneSignal;
+			sourceTree = "<group>";
+		};
+		FBAEB95A837114B9BC06160A6AC4C3A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68741A69895438C71706019FA3E30732 /* OneSignal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC58D9C149C71F1FF053AFF6EB70D296 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E0E7333DB873D04411FFC8E177F09D88 /* GGLCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FEBB6C35C997AA50377AB55ADF419162 /* ColorArt */ = {
+			isa = PBXGroup;
+			children = (
+				9521C1FB4B36BE5C91F4B95FF0313C5D /* SLColorArt.h */,
+				495AC98680FB044F998730D0B0D3DB0F /* SLColorArt.m */,
+				1536F9767C3938CB78C941D909679A1D /* UIImage+ColorArt.h */,
+				738C77B7B05959B67CA5E487B5280EAA /* UIImage+ColorArt.m */,
+				073A01182FA7D4C23390B3DB40AA2DB0 /* UIImage+Scale.h */,
+				EE6098EE5902D5CB4F3A155DD3A8FCF7 /* UIImage+Scale.m */,
+				090CE936F023DDC84C28D4CB5FBFABE1 /* Support Files */,
+			);
+			path = ColorArt;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1BC90D771A6057233AC70D01A16CAFD1 /* Headers */ = {
+		40E0EE99506F442B8E7427B97153CD4F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7A022C08E54EFB56829DBF3D0C35FB6 /* UICKeyChainStore-umbrella.h in Headers */,
-				D0F79ABACB9FCBD1931DECF604053DD8 /* UICKeyChainStore.h in Headers */,
+				CFCF83E9B5E9E6766E9EE9A6967B7942 /* UICKeyChainStore-umbrella.h in Headers */,
+				9E4B43479D3D22DD0EA174945CCCB555 /* UICKeyChainStore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		41448718CAFB4B18D3086C0D804C29EA /* Headers */ = {
+		40EEEBC304853684165654A97A671DEC /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62133CB4100DD46DFFB45A038172E32C /* Pods-CCIP-umbrella.h in Headers */,
+				F0A4075E8EC62F3C9C05E6CB951D5AF9 /* iCarousel-umbrella.h in Headers */,
+				88D2980E7DDCE7BECD28FF1E9074D2AE /* iCarousel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		76CD247B98814AC2E2A0AD3FD2E4EC45 /* Headers */ = {
+		517FC0998FFA9AEE5573B0D67FDEE191 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				255BCDE140D5060940E11575ECAA17A6 /* STPopup-umbrella.h in Headers */,
-				19B3CF54CC6725EA548A3CFF2876E43D /* STPopup.h in Headers */,
-				790107C2B39B4E1BA2317102FA332157 /* STPopupController.h in Headers */,
-				56B9958DB9CB2D3E399DA8920AEDF1AA /* STPopupLeftBarItem.h in Headers */,
-				37A7D5467F3B01993F13D4B3C1F4050E /* STPopupNavigationBar.h in Headers */,
-				40FF22793DBCEECEC96E704B342A38C1 /* UIResponder+STPopup.h in Headers */,
-				7D016009E9B39C857C8896E24E79078B /* UIViewController+STPopup.h in Headers */,
+				3484D1F87912024F4623F0E5BD094290 /* Pods-CCIP-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		82E9A11A9166B6FCF18482E7B4DEAEA4 /* Headers */ = {
+		823A28B127C9EDB2FDEA262B59171195 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BD7EDFFE3727CC7F7406D08C4AD0CF6 /* RGCardViewLayout-umbrella.h in Headers */,
-				8D5BF01321A4951C80202B867C3320DD /* RGCardViewLayout.h in Headers */,
+				B7AF67178526B325A19D4F76D91E3A7E /* STPopup-umbrella.h in Headers */,
+				65403F61D9EA283F811EE7BF96772CC3 /* STPopup.h in Headers */,
+				BA55E83A7EBD07DBEA1BE2CF0E2E8135 /* STPopupController.h in Headers */,
+				9B4B4B09DDA102C5F4593BFCB2C8C871 /* STPopupLeftBarItem.h in Headers */,
+				D93B672B2BC7C166F8AAE0A404648D75 /* STPopupNavigationBar.h in Headers */,
+				DD9C3D4C2A3DC097E503676F0C5CD6DE /* UIResponder+STPopup.h in Headers */,
+				C2F6232EFD76925D4634E56DA651E230 /* UIViewController+STPopup.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93EE512AFCB8333BD39F2658AEF906A1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49727A99741CE11516CBF045D9BB1D3B /* RGCardViewLayout-umbrella.h in Headers */,
+				A9C310D7697F1B01D89E0D5E503A4954 /* RGCardViewLayout.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,47 +869,24 @@
 			);
 			name = iRate;
 			productName = iRate;
-			productReference = CECD3D0FA020F32C72B1B1D44BC9A99B /* iRate.framework */;
+			productReference = D3C06C005877DA960E635E793A186C09 /* iRate.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		2057C29AAB9155A20AA388C1442C9AD7 /* UICKeyChainStore */ = {
+		3634ABA74A6F41DB3C7516A583373EE8 /* iCarousel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8641F4CE1383A9E82710DD5E76FE962A /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */;
+			buildConfigurationList = 5FD84838098E65920773FE786596F03E /* Build configuration list for PBXNativeTarget "iCarousel" */;
 			buildPhases = (
-				029A07BA2A2AEAA475AC9E1AAE0036A6 /* Sources */,
-				67C7AB364D9115184D9A3A8C92DACE34 /* Frameworks */,
-				1BC90D771A6057233AC70D01A16CAFD1 /* Headers */,
+				B5A1DBA438165C92401162C362D91E3E /* Sources */,
+				C2D32DD2168137C9C50ECCB9FE24BE94 /* Frameworks */,
+				40EEEBC304853684165654A97A671DEC /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = UICKeyChainStore;
-			productName = UICKeyChainStore;
-			productReference = 038607D20B8F58F59100693CB05B5E66 /* UICKeyChainStore.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		2F720576CF797DC0363BA45617A3C46E /* Pods-CCIP */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C31B46F4526FEF37968DAFB4581064B1 /* Build configuration list for PBXNativeTarget "Pods-CCIP" */;
-			buildPhases = (
-				BB2531C735779E0F7CE629162CEF1A17 /* Sources */,
-				F452046A6720E9FB6589CF99E64D8D87 /* Frameworks */,
-				41448718CAFB4B18D3086C0D804C29EA /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				07949689ADEC2528545E07FE31A88490 /* PBXTargetDependency */,
-				2E67FEC0C37F5F32AA3001A7DB95C477 /* PBXTargetDependency */,
-				B39A4E01F92C8811F19BEF6CB67CC7CB /* PBXTargetDependency */,
-				A3F89F7BCBC139D75CA1703333FAB4AE /* PBXTargetDependency */,
-				8F9050BE0646B3F3B6098C69804AA128 /* PBXTargetDependency */,
-				064C063D5DBA2A72DE834B0528935080 /* PBXTargetDependency */,
-			);
-			name = "Pods-CCIP";
-			productName = "Pods-CCIP";
-			productReference = 3A76D81F1025083608DC8B6C490A242B /* Pods_CCIP.framework */;
+			name = iCarousel;
+			productName = iCarousel;
+			productReference = 5B91B53D9E5487D948C6834BE9374B3C /* iCarousel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		4C0408FA37E119C9FEAF3122DE2038EA /* ICViewPager */ = {
@@ -860,16 +903,57 @@
 			);
 			name = ICViewPager;
 			productName = ICViewPager;
-			productReference = 3E370CCCC309693D779C7E7F9CA33CFB /* ICViewPager.framework */;
+			productReference = 4119BEC22B06CAB0075C84D9BCD030C7 /* ICViewPager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		4F9DFC505F36D90DB0F028D94023A6A1 /* RGCardViewLayout */ = {
+		69D153CC6CA5082A2D0BAFCDB71A968C /* Pods-CCIP */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56B6E5678D4EC54A6237F4E7EBD708C4 /* Build configuration list for PBXNativeTarget "RGCardViewLayout" */;
+			buildConfigurationList = 62CA1A3E9BEC38CE63B1F901E62F3C4F /* Build configuration list for PBXNativeTarget "Pods-CCIP" */;
 			buildPhases = (
-				FB0FEBE90E260FDF7B65D703A07C6208 /* Sources */,
-				FC3BBACD4B90296DAFFCC985DA2B34C4 /* Frameworks */,
-				82E9A11A9166B6FCF18482E7B4DEAEA4 /* Headers */,
+				1A9AAA686DE544B13F2F3A1C228692B2 /* Sources */,
+				DC0D54400CEBA3D2AFD04004F26EDA5F /* Frameworks */,
+				517FC0998FFA9AEE5573B0D67FDEE191 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				85532F7F08C964D9AC44D8D8A342DFE0 /* PBXTargetDependency */,
+				B10755290D358093AE8ECCE455ED6D65 /* PBXTargetDependency */,
+				8956E7B7F75CE858141E8F98E30564F9 /* PBXTargetDependency */,
+				692137C59964A91E06D7C568531B346A /* PBXTargetDependency */,
+				03BA45353115AD01AED6B38C51BF42ED /* PBXTargetDependency */,
+				84839D2606C1BF737BB02C3CD8A206EA /* PBXTargetDependency */,
+				32B4C13AA0D17E2658D8C5DE38878AF3 /* PBXTargetDependency */,
+			);
+			name = "Pods-CCIP";
+			productName = "Pods-CCIP";
+			productReference = 1239CBF847182E211A570000A3C82256 /* Pods_CCIP.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BCAD814DAF9B21F3574797CA327D3E41 /* UICKeyChainStore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FCDC4F7BFAFA6342986A042C21FFF91 /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */;
+			buildPhases = (
+				42671B3B10F829290A7A0DCB8C09E88D /* Sources */,
+				A6D0DE6CB61DA472F946BB51D1D7A405 /* Frameworks */,
+				40E0EE99506F442B8E7427B97153CD4F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UICKeyChainStore;
+			productName = UICKeyChainStore;
+			productReference = FFF266BC42ED4C793F1E4A12E25D7360 /* UICKeyChainStore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C2DDBF45A512E99EB46F22045228735E /* RGCardViewLayout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 668F96BCDD81DFF5412CE61668E6FD5D /* Build configuration list for PBXNativeTarget "RGCardViewLayout" */;
+			buildPhases = (
+				D0D7F185A60E49E984BD62A2F42175FD /* Sources */,
+				5D401787FD5542FBDBB8CD0477A7C571 /* Frameworks */,
+				93EE512AFCB8333BD39F2658AEF906A1 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -877,24 +961,7 @@
 			);
 			name = RGCardViewLayout;
 			productName = RGCardViewLayout;
-			productReference = 58E8DA45F4FDA84D3487CB38734A60AA /* RGCardViewLayout.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		6339B2ECCC68838F8AE28662EF825744 /* STPopup */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DFB3D8F9EA0BC5F78E2A12DB68AF4141 /* Build configuration list for PBXNativeTarget "STPopup" */;
-			buildPhases = (
-				202CDA75098EF29FA4F75D428AD6AA67 /* Sources */,
-				7B8E3F95DFAA5EBF92FADA8E7DF12843 /* Frameworks */,
-				76CD247B98814AC2E2A0AD3FD2E4EC45 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = STPopup;
-			productName = STPopup;
-			productReference = 1908002A45DA15242153B162D5E7B3BE /* STPopup.framework */;
+			productReference = 3A4155890415EAB0CE2F347F9A70B002 /* RGCardViewLayout.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DDDF9388C64BC9A538E854A916F69BA9 /* ColorArt */ = {
@@ -911,7 +978,24 @@
 			);
 			name = ColorArt;
 			productName = ColorArt;
-			productReference = 7F5A56D064C527626A57428F07B57253 /* ColorArt.framework */;
+			productReference = CEA0637DBBBC3C2BBE38FB4AD714DDDC /* ColorArt.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EE0129FD73981079192DAEC8274E77DD /* STPopup */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6340D527667536FF56C2E99861595E37 /* Build configuration list for PBXNativeTarget "STPopup" */;
+			buildPhases = (
+				CD2BB3DB33E5F9D1BC01299C4F86CBB6 /* Sources */,
+				185ED791D4670D8FA29B87453F311F42 /* Frameworks */,
+				823A28B127C9EDB2FDEA262B59171195 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = STPopup;
+			productName = STPopup;
+			productReference = 110573BBBD6213E601614084432F9DD0 /* STPopup.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -931,17 +1015,18 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = DC46063238854972E10030E1BB3B6494 /* Products */;
+			productRefGroup = 517B008C37F455DA697083DA640513DC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				DDDF9388C64BC9A538E854A916F69BA9 /* ColorArt */,
+				3634ABA74A6F41DB3C7516A583373EE8 /* iCarousel */,
 				4C0408FA37E119C9FEAF3122DE2038EA /* ICViewPager */,
 				00E74CED770597EF76DEE6FE824D1B7A /* iRate */,
-				2F720576CF797DC0363BA45617A3C46E /* Pods-CCIP */,
-				4F9DFC505F36D90DB0F028D94023A6A1 /* RGCardViewLayout */,
-				6339B2ECCC68838F8AE28662EF825744 /* STPopup */,
-				2057C29AAB9155A20AA388C1442C9AD7 /* UICKeyChainStore */,
+				69D153CC6CA5082A2D0BAFCDB71A968C /* Pods-CCIP */,
+				C2DDBF45A512E99EB46F22045228735E /* RGCardViewLayout */,
+				EE0129FD73981079192DAEC8274E77DD /* STPopup */,
+				BCAD814DAF9B21F3574797CA327D3E41 /* UICKeyChainStore */,
 			);
 		};
 /* End PBXProject section */
@@ -958,25 +1043,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		029A07BA2A2AEAA475AC9E1AAE0036A6 /* Sources */ = {
+		1A9AAA686DE544B13F2F3A1C228692B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AB15BEE9E556F33F86C3D8B219F6451 /* UICKeyChainStore-dummy.m in Sources */,
-				E12A7803813BBF999E84F9A87B736167 /* UICKeyChainStore.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		202CDA75098EF29FA4F75D428AD6AA67 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				388BF973029ECEDD7BECFFD21CA78E6D /* STPopup-dummy.m in Sources */,
-				CEEBFFDADE1D6A1AA5291777E68E3144 /* STPopupController.m in Sources */,
-				2193BDD4BF9309CCEE611775E90AFBE6 /* STPopupLeftBarItem.m in Sources */,
-				7E27F666F0C642E2BE6062A549F22FF9 /* STPopupNavigationBar.m in Sources */,
-				72B91B0A612BAFDCEEB4301FFEF449E4 /* UIResponder+STPopup.m in Sources */,
-				C0BF773B21387652F2901D3BC6F847FD /* UIViewController+STPopup.m in Sources */,
+				CC7C08DB640343C608B922843C49DB56 /* Pods-CCIP-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -986,6 +1057,15 @@
 			files = (
 				390A8863AE159A26A5744AFD4D272C1B /* iRate-dummy.m in Sources */,
 				3B0BC087FEF77A4ACC7ABA82BE33FD1A /* iRate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42671B3B10F829290A7A0DCB8C09E88D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB5D831B8EE5AC5A78FC5CD704360C67 /* UICKeyChainStore-dummy.m in Sources */,
+				E0441108C3BF47A614059895CB2CAB25 /* UICKeyChainStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,97 +1089,88 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BB2531C735779E0F7CE629162CEF1A17 /* Sources */ = {
+		B5A1DBA438165C92401162C362D91E3E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAB972C6D36809DBFE69872E6D84FD39 /* Pods-CCIP-dummy.m in Sources */,
+				C28337DD2E94B98F7AEE739EF3674F02 /* iCarousel-dummy.m in Sources */,
+				10C86995D04A48756AE4797CFFEDD69A /* iCarousel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FB0FEBE90E260FDF7B65D703A07C6208 /* Sources */ = {
+		CD2BB3DB33E5F9D1BC01299C4F86CBB6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				011E39D2903A2C39624FED656761827C /* RGCardViewLayout-dummy.m in Sources */,
-				A6D1F872C731F3501C17E76FFF81C52C /* RGCardViewLayout.m in Sources */,
+				29B1047CD552807A65F7253B18B32A35 /* STPopup-dummy.m in Sources */,
+				881345E0C0DE3ED4EC7676FE19064DAC /* STPopupController.m in Sources */,
+				A28E9608B6249D142E4440854225D0D1 /* STPopupLeftBarItem.m in Sources */,
+				99D9AAF3E9F90ADC0293509EDA7B47E0 /* STPopupNavigationBar.m in Sources */,
+				3DD0DA9E171EB6BFE2500C4947FE88DE /* UIResponder+STPopup.m in Sources */,
+				7A43A138409862EC4CCDB34C717CA9B8 /* UIViewController+STPopup.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0D7F185A60E49E984BD62A2F42175FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EE4E7BA4E6A5981B3F9507CFCACA30C /* RGCardViewLayout-dummy.m in Sources */,
+				B88CB3F0A0A2615A3602D406A41DF4A4 /* RGCardViewLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		064C063D5DBA2A72DE834B0528935080 /* PBXTargetDependency */ = {
+		03BA45353115AD01AED6B38C51BF42ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = UICKeyChainStore;
+			target = BCAD814DAF9B21F3574797CA327D3E41 /* UICKeyChainStore */;
+			targetProxy = 78A91135BC92CABA70DF96F06BBACAE5 /* PBXContainerItemProxy */;
+		};
+		32B4C13AA0D17E2658D8C5DE38878AF3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = iRate;
 			target = 00E74CED770597EF76DEE6FE824D1B7A /* iRate */;
-			targetProxy = 3E40AE33DCBFF2D4F5B5E8B52B5A9AEA /* PBXContainerItemProxy */;
+			targetProxy = 2B923938ADA2FBAB81E719B22C1BED1B /* PBXContainerItemProxy */;
 		};
-		07949689ADEC2528545E07FE31A88490 /* PBXTargetDependency */ = {
+		692137C59964A91E06D7C568531B346A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = STPopup;
+			target = EE0129FD73981079192DAEC8274E77DD /* STPopup */;
+			targetProxy = B52E466A349AF5E125D0A2AAFA370A39 /* PBXContainerItemProxy */;
+		};
+		84839D2606C1BF737BB02C3CD8A206EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iCarousel;
+			target = 3634ABA74A6F41DB3C7516A583373EE8 /* iCarousel */;
+			targetProxy = A1253FEEE840B3731F355C72B4C55B00 /* PBXContainerItemProxy */;
+		};
+		85532F7F08C964D9AC44D8D8A342DFE0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ColorArt;
 			target = DDDF9388C64BC9A538E854A916F69BA9 /* ColorArt */;
-			targetProxy = 6DAA4FC7D926471D823BE24087DEC749 /* PBXContainerItemProxy */;
+			targetProxy = 001F642CE76496666B6AFB63A816B476 /* PBXContainerItemProxy */;
 		};
-		2E67FEC0C37F5F32AA3001A7DB95C477 /* PBXTargetDependency */ = {
+		8956E7B7F75CE858141E8F98E30564F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RGCardViewLayout;
+			target = C2DDBF45A512E99EB46F22045228735E /* RGCardViewLayout */;
+			targetProxy = E6AFB26388D00C6AA652C6EBD1CF65E4 /* PBXContainerItemProxy */;
+		};
+		B10755290D358093AE8ECCE455ED6D65 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ICViewPager;
 			target = 4C0408FA37E119C9FEAF3122DE2038EA /* ICViewPager */;
-			targetProxy = A51A530DAE1593AF040E4B0744140B78 /* PBXContainerItemProxy */;
-		};
-		8F9050BE0646B3F3B6098C69804AA128 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = UICKeyChainStore;
-			target = 2057C29AAB9155A20AA388C1442C9AD7 /* UICKeyChainStore */;
-			targetProxy = 64926DF418FE8915CF9A184A9B13B276 /* PBXContainerItemProxy */;
-		};
-		A3F89F7BCBC139D75CA1703333FAB4AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = STPopup;
-			target = 6339B2ECCC68838F8AE28662EF825744 /* STPopup */;
-			targetProxy = FE7122502F40B7FF836FFD3C72308526 /* PBXContainerItemProxy */;
-		};
-		B39A4E01F92C8811F19BEF6CB67CC7CB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = RGCardViewLayout;
-			target = 4F9DFC505F36D90DB0F028D94023A6A1 /* RGCardViewLayout */;
-			targetProxy = DE68669E5857AE02FCC683383948BBEF /* PBXContainerItemProxy */;
+			targetProxy = 81879326FC9E9E1899581F0A9F8BF206 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0C52831DE11189F14C842939D2CEDB5C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E9E517ACCA88781F40C32BAB01BFADAA /* RGCardViewLayout.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RGCardViewLayout/RGCardViewLayout-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RGCardViewLayout/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RGCardViewLayout/RGCardViewLayout.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = RGCardViewLayout;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		1AA522C50DD4721B9FF363AF4E888FEA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A493E123C2DE166F27367042181AA53E /* ColorArt.xcconfig */;
+			baseConfigurationReference = 18783F5E5336D6C4B50A6F21A43775F2 /* ColorArt.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1126,9 +1197,9 @@
 			};
 			name = Release;
 		};
-		255E0CBDD64360385FD5DC2FC6D01088 /* Release */ = {
+		1F277CF7A9B9938CAA77FCDB55CB9748 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77B4D1F2D0AA6583C6FE8DF0C84AFDDC /* UICKeyChainStore.xcconfig */;
+			baseConfigurationReference = FED333F71BA244C276B35C2271C36CFF /* Pods-CCIP.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1139,14 +1210,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/UICKeyChainStore/UICKeyChainStore-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/UICKeyChainStore/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-CCIP/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/UICKeyChainStore/UICKeyChainStore.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CCIP/Pods-CCIP.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = UICKeyChainStore;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CCIP;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1155,38 +1230,9 @@
 			};
 			name = Release;
 		};
-		2653D962260C800D19B950EE0E0E66EC /* Release */ = {
+		33E820BCA8F1AAFE9E84D32BBFD2AB1C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 76EEA6F7166D449F03E9F60C72500E9E /* STPopup.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/STPopup/STPopup-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/STPopup/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/STPopup/STPopup.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = STPopup;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		3064B0591393177F98403ADB2C25C85F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E9E517ACCA88781F40C32BAB01BFADAA /* RGCardViewLayout.xcconfig */;
+			baseConfigurationReference = 6156A4220A95AB1931B9C9CE4D5968D4 /* Pods-CCIP.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1197,14 +1243,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RGCardViewLayout/RGCardViewLayout-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RGCardViewLayout/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-CCIP/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RGCardViewLayout/RGCardViewLayout.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CCIP/Pods-CCIP.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = RGCardViewLayout;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CCIP;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1213,9 +1263,38 @@
 			};
 			name = Debug;
 		};
+		35F53431360D1DDE44C71FD46A3AC827 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35B25889715C2F29C34F07F07506B5C8 /* iCarousel.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/iCarousel/iCarousel-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/iCarousel/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/iCarousel/iCarousel.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = iCarousel;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		3B25D01B7EC48A87CCB5EB99147EFDD4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF7A987D6281F0CF62A5D6CA7CD8EF56 /* iRate.xcconfig */;
+			baseConfigurationReference = 11D7483206B2FA96DC3DEEC6C0ECBBDF /* iRate.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1242,9 +1321,9 @@
 			};
 			name = Release;
 		};
-		3D4EBBB615045D52A77D29B92ED01734 /* Debug */ = {
+		4746A469E864EA7F185B485004962A85 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77B4D1F2D0AA6583C6FE8DF0C84AFDDC /* UICKeyChainStore.xcconfig */;
+			baseConfigurationReference = 35B25889715C2F29C34F07F07506B5C8 /* iCarousel.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1255,14 +1334,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/UICKeyChainStore/UICKeyChainStore-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/UICKeyChainStore/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/iCarousel/iCarousel-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/iCarousel/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/UICKeyChainStore/UICKeyChainStore.modulemap";
+				MODULEMAP_FILE = "Target Support Files/iCarousel/iCarousel.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = UICKeyChainStore;
+				PRODUCT_NAME = iCarousel;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1313,42 +1392,38 @@
 			};
 			name = Debug;
 		};
-		4EDCED4DA7C647AFD463B058BA9A8A33 /* Debug */ = {
+		56EA6E660FBD0FC7B11AE6B91D8DD854 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6156A4220A95AB1931B9C9CE4D5968D4 /* Pods-CCIP.debug.xcconfig */;
+			baseConfigurationReference = 87ABF8618FEF5F0441D8A521345165C0 /* STPopup.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CCIP/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/STPopup/STPopup-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/STPopup/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CCIP/Pods-CCIP.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CCIP;
+				MODULEMAP_FILE = "Target Support Files/STPopup/STPopup.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = STPopup;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		6557DB4EAF589D7B3B25A105C07DFD33 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E5316FA7090F141C53BF2AD10005396 /* ICViewPager.xcconfig */;
+			baseConfigurationReference = BCE5A657C270347E849D0557FB705B06 /* ICViewPager.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1374,6 +1449,35 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		72AC30C5111986F6EBFEFBC9ABEE469B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 202C2B6EB5B83AE61D7CDE6949E86FB9 /* RGCardViewLayout.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RGCardViewLayout/RGCardViewLayout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RGCardViewLayout/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RGCardViewLayout/RGCardViewLayout.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = RGCardViewLayout;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		AAF678CED40D3499169D10F63CA0719E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1415,7 +1519,7 @@
 		};
 		B71516F4791B3646897C651C99BC48E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF7A987D6281F0CF62A5D6CA7CD8EF56 /* iRate.xcconfig */;
+			baseConfigurationReference = 11D7483206B2FA96DC3DEEC6C0ECBBDF /* iRate.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1442,9 +1546,67 @@
 			};
 			name = Debug;
 		};
+		C5640E58F722E9B74F96D6F116C7B43D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C000B9E875B1BAB5F44178897D04DE0E /* UICKeyChainStore.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/UICKeyChainStore/UICKeyChainStore-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UICKeyChainStore/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/UICKeyChainStore/UICKeyChainStore.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = UICKeyChainStore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CA183D8F6F17913BE81C3B9485CD4A19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C000B9E875B1BAB5F44178897D04DE0E /* UICKeyChainStore.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/UICKeyChainStore/UICKeyChainStore-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UICKeyChainStore/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/UICKeyChainStore/UICKeyChainStore.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = UICKeyChainStore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		D6DFAC7FCA4CC551B556D71C27D9EE39 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E5316FA7090F141C53BF2AD10005396 /* ICViewPager.xcconfig */;
+			baseConfigurationReference = BCE5A657C270347E849D0557FB705B06 /* ICViewPager.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1471,9 +1633,38 @@
 			};
 			name = Debug;
 		};
-		E06A2123BAE8E3435805623F5171E8DD /* Debug */ = {
+		EA2F17FF6D31B992F672DC4AE5AD2195 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 76EEA6F7166D449F03E9F60C72500E9E /* STPopup.xcconfig */;
+			baseConfigurationReference = 202C2B6EB5B83AE61D7CDE6949E86FB9 /* RGCardViewLayout.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RGCardViewLayout/RGCardViewLayout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RGCardViewLayout/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RGCardViewLayout/RGCardViewLayout.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = RGCardViewLayout;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ED0F9104B0A6665C2111E3EB2C87C0BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87ABF8618FEF5F0441D8A521345165C0 /* STPopup.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1500,42 +1691,9 @@
 			};
 			name = Debug;
 		};
-		F7AEF7283CC8B3838B401AE3E0DF5A39 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FED333F71BA244C276B35C2271C36CFF /* Pods-CCIP.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CCIP/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CCIP/Pods-CCIP.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CCIP;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		FCF5D99C5D6580E6C1E7CC4B6CF44839 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A493E123C2DE166F27367042181AA53E /* ColorArt.xcconfig */;
+			baseConfigurationReference = 18783F5E5336D6C4B50A6F21A43775F2 /* ColorArt.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1574,11 +1732,38 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56B6E5678D4EC54A6237F4E7EBD708C4 /* Build configuration list for PBXNativeTarget "RGCardViewLayout" */ = {
+		5FD84838098E65920773FE786596F03E /* Build configuration list for PBXNativeTarget "iCarousel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3064B0591393177F98403ADB2C25C85F /* Debug */,
-				0C52831DE11189F14C842939D2CEDB5C /* Release */,
+				4746A469E864EA7F185B485004962A85 /* Debug */,
+				35F53431360D1DDE44C71FD46A3AC827 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62CA1A3E9BEC38CE63B1F901E62F3C4F /* Build configuration list for PBXNativeTarget "Pods-CCIP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				33E820BCA8F1AAFE9E84D32BBFD2AB1C /* Debug */,
+				1F277CF7A9B9938CAA77FCDB55CB9748 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6340D527667536FF56C2E99861595E37 /* Build configuration list for PBXNativeTarget "STPopup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED0F9104B0A6665C2111E3EB2C87C0BE /* Debug */,
+				56EA6E660FBD0FC7B11AE6B91D8DD854 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		668F96BCDD81DFF5412CE61668E6FD5D /* Build configuration list for PBXNativeTarget "RGCardViewLayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72AC30C5111986F6EBFEFBC9ABEE469B /* Debug */,
+				EA2F17FF6D31B992F672DC4AE5AD2195 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1592,11 +1777,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8641F4CE1383A9E82710DD5E76FE962A /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */ = {
+		7FCDC4F7BFAFA6342986A042C21FFF91 /* Build configuration list for PBXNativeTarget "UICKeyChainStore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3D4EBBB615045D52A77D29B92ED01734 /* Debug */,
-				255E0CBDD64360385FD5DC2FC6D01088 /* Release */,
+				CA183D8F6F17913BE81C3B9485CD4A19 /* Debug */,
+				C5640E58F722E9B74F96D6F116C7B43D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1610,29 +1795,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C31B46F4526FEF37968DAFB4581064B1 /* Build configuration list for PBXNativeTarget "Pods-CCIP" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4EDCED4DA7C647AFD463B058BA9A8A33 /* Debug */,
-				F7AEF7283CC8B3838B401AE3E0DF5A39 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		CE1D76D8FDEF2F3B0A024152D1829A0F /* Build configuration list for PBXNativeTarget "iRate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B71516F4791B3646897C651C99BC48E9 /* Debug */,
 				3B25D01B7EC48A87CCB5EB99147EFDD4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DFB3D8F9EA0BC5F78E2A12DB68AF4141 /* Build configuration list for PBXNativeTarget "STPopup" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E06A2123BAE8E3435805623F5171E8DD /* Debug */,
-				2653D962260C800D19B950EE0E0E66EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
