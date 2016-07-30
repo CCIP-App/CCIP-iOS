@@ -10,6 +10,4 @@
 
 @interface EmbeddedTabBarControllerSegue : UIStoryboardSegue
 
-- (void)setSender:(id)sender;
-
 @end
