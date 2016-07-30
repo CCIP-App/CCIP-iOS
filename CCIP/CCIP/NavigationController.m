@@ -26,11 +26,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    BOOL hasToken = [self.appDelegate.accessToken length] > 0;
-    if (!hasToken) {
-        [self performSegueWithIdentifier:@"ShowGuide"
-                                  sender:nil];
-    }
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -9,6 +9,7 @@
 #import "MainTabBarViewController.h"
 #import "GatewayWebService/GatewayWebService.h"
 #import "NSInvocation+addition.h"
+#import "UIImage+addition.h"
 #import "ScheduleViewController.h"
 #import "MoreTableViewController.h"
 
@@ -20,12 +21,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIColor *titleHighlightedColor = [UIColor colorWithRed:65/255.0 green:117/255.0 blue:5/255.0 alpha:1.0];
+    
     self.navigationController.view.backgroundColor = [UIColor whiteColor];
-
+    
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor], NSForegroundColorAttributeName, nil]
                                              forState:UIControlStateNormal];
-    UIColor *titleHighlightedColor = [UIColor colorWithRed:65/255.0 green:117/255.0 blue:5/255.0 alpha:1.0];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:titleHighlightedColor, NSForegroundColorAttributeName, nil]
                                              forState:UIControlStateSelected];
     
@@ -33,42 +36,18 @@
                                              selector:@selector(appplicationIsActive:)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
-    
-    // Checkin
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-    UIViewController *vc1 = (UIViewController *) [storyboard instantiateViewControllerWithIdentifier:@"CheckinViewController"];
-    vc1.tabBarItem.title = NSLocalizedString(@"Checkin", nil);
-    vc1.tabBarItem.image = [[UIImage imageNamed:@"icon_ios_pin"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    vc1.tabBarItem.selectedImage = [[UIImage imageNamed:@"icon_ios_pin_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    // Schedule
-    ScheduleViewController *vc2 = [ScheduleViewController new];
-    vc2.tabBarItem.title = NSLocalizedString(@"Schedule", nil);
-    vc2.tabBarItem.image = [[UIImage imageNamed:@"icon_ios_topcharts"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    vc2.tabBarItem.selectedImage = [[UIImage imageNamed:@"icon_ios_topcharts_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    // Announce
-    UIViewController *vc3 = [[UIViewController alloc] initWithNibName:@"CheckinView" bundle:[NSBundle mainBundle]];
-    vc3.tabBarItem.title = NSLocalizedString(@"Announce", nil);
-    vc3.tabBarItem.image = [[UIImage imageNamed:@"icon_ios_bell"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    vc3.tabBarItem.selectedImage = [[UIImage imageNamed:@"icon_ios_bell_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    // IRC
-    UIViewController *vc4 = [[UIViewController alloc] initWithNibName:@"IRCView" bundle:[NSBundle mainBundle]];
-    vc4.tabBarItem.title = NSLocalizedString(@"IRC", nil);
-    [NSInvocation InvokeObject:vc4.view
-            withSelectorString:@"setURL:"
-                 withArguments:@[ @{@"url": LOG_BOT_URL} ]];
-    vc4.tabBarItem.image = [[UIImage imageNamed:@"icon_ios_chat"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    vc4.tabBarItem.selectedImage = [[UIImage imageNamed:@"icon_ios_chat_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    // More
-    MoreTableViewController *vc5 = [[MoreTableViewController alloc] initWithNibName:@"MoreTableViewController" bundle:[NSBundle mainBundle]];
-    vc5.tabBarItem.title = NSLocalizedString(@"More", nil);
-    vc5.tabBarItem.image = [[UIImage imageNamed:@"icon_ios_more"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    vc5.tabBarItem.selectedImage = [[UIImage imageNamed:@"icon_ios_more_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    [self setViewControllers:@[vc1, vc2, vc3, vc4, vc5]];
+    // setting selected image color from original image with replace custom color filter
+    for(UITabBarItem *item in self.tabBar.items) {
+        NSLog(@"%@", item.title);
+        UIImage *image = [item.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        image = [image imageWithColor:titleHighlightedColor];
+        [item setSelectedImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self handleShortcutItem];
 }
 
 -(void)viewWillAppear:(BOOL)animated {

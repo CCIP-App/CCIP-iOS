@@ -53,6 +53,10 @@
             [UICKeyChainStore setString:self.accessToken
                                  forKey:@"token"];
             [self.oneSignal sendTag:@"token" value:self.accessToken];
+            
+            if (self.checkinView != nil) {
+                [self.checkinView reloadCard];
+            }
         }
     }
     return YES;

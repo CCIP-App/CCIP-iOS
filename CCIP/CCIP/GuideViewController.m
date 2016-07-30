@@ -35,6 +35,10 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"GuideViewController"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    [self.view setAutoresizingMask:UIViewAutoresizingNone];
+    CGRect frame = self.view.frame;
+    frame.size.height -= 100;
+    self.view.frame = frame;
 }
 
 - (void)keyboardDidShow:(NSNotification *)note {

@@ -11,7 +11,6 @@
 
 @interface IRCView : UIView <UIWebViewDelegate>
 
-@property (strong, nonatomic) NSDictionary *scenario;
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 

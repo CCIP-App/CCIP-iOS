@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <OneSignal/OneSignal.h>
 #import <ColorArt/UIImage+ColorArt.h>
+#import "NSInvocation+addition.h"
 #import "NavigationController.h"
 #import "MasterViewController.h"
-#import "NSInvocation+addition.h"
+#import "CheckinViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) NSString *accessToken;
 @property (strong, nonatomic) NavigationController *navigationView;
 @property (strong, nonatomic) MasterViewController *masterView;
+@property (strong, nonatomic) CheckinViewController *checkinView;
 
 - (NSInteger)showWhichDay;
 

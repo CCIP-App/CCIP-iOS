@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CheckinViewController : UIViewController
+@interface CheckinViewController : UIViewController<UICollectionViewDataSource>
+
 @property (weak, nonatomic) IBOutlet UICollectionView *cards;
+
+- (void)reloadCard;
 
 @end

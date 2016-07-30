@@ -6,6 +6,7 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
+#import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import "IRCView.h"
 
@@ -16,7 +17,7 @@
 @implementation IRCView
 
 - (void)drawRect:(CGRect)rect {
-    NSURL *nsurl = [NSURL URLWithString:[self.scenario objectForKey:@"url"]];
+    NSURL *nsurl = [NSURL URLWithString:LOG_BOT_URL];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
     [self.webview setDelegate:self];
     [self.webview loadRequest:requestObj];
@@ -31,10 +32,6 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self.activityIndicator stopAnimating];
-}
-
-- (void)setURL:(NSDictionary *)scenario {
-    self.scenario = scenario;
 }
 
 @end
