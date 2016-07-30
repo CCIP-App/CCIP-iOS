@@ -101,27 +101,20 @@
     [_myBar.layer setShadowRadius:0];
     [_myBar.layer setShadowColor:[UIColor blackColor].CGColor];
     [_myBar.layer setShadowOpacity:0.25f];
-    [_myBar.layer setBackgroundColor:[[[self.navigationController view] backgroundColor] CGColor]];
     self.delegateSplitter = [[BLKDelegateSplitter alloc] initWithFirstDelegate:_myBar.behaviorDefiner secondDelegate:self];
     
     // ... setting up the Toolbar here ...
     _toolbar = [UIToolbar new];
     [_toolbar setFrame:CGRectMake(0, 0, self.view.bounds.size.width, TOOLBAR_HEIGHT)];
     [_toolbar setTranslucent:YES];
-    [_toolbar setBackgroundColor:[UIColor clearColor]];
-    [_toolbar setBackgroundImage:[UIImage new]
-              forToolbarPosition:UIToolbarPositionAny
-                      barMetrics:UIBarMetricsDefault];
+    [_toolbar setBarTintColor:[[UIToolbar new] barTintColor]];
     [_myBar addSubview:_toolbar];
     
     // ... setting up the label toolbar here ...
     _labelToolbar = [UIToolbar new];
     [_labelToolbar setFrame:CGRectMake(0, 0, self.view.bounds.size.width, TOOLBAR_MIN_HEIGHT)];
     [_labelToolbar setTranslucent:YES];
-    [_labelToolbar setBackgroundColor:[UIColor clearColor]];
-    [_labelToolbar setBackgroundImage:[UIImage new]
-                   forToolbarPosition:UIToolbarPositionAny
-                           barMetrics:UIBarMetricsDefault];
+    [_labelToolbar setBarTintColor:[[UIToolbar new] barTintColor]];
     [_myBar addSubview:_labelToolbar];
     
     //// toolbar attributes
