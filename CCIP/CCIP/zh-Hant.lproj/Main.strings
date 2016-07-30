@@ -8,26 +8,23 @@
 /* Class = "UITabBarItem"; title = "More"; ObjectID = "AVK-vx-aDO"; */
 "AVK-vx-aDO.title" = "更多";
 
-/* Class = "UILabel"; text = "8/20"; ObjectID = "KuB-Uh-zQj"; */
-"KuB-Uh-zQj.text" = "8/20";
+/* Class = "UIButton"; normalTitle = "CHECK IN"; ObjectID = "HPS-iQ-rbE"; */
+"HPS-iQ-rbE.normalTitle" = "報到";
 
-/* Class = "UILabel"; text = "報到"; ObjectID = "LX2-G2-ptg"; */
-"LX2-G2-ptg.text" = "報到";
-
-/* Class = "UILabel"; text = "「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。"; ObjectID = "PjL-WA-yBM"; */
-"PjL-WA-yBM.text" = "「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。";
+/* Class = "UILabel"; text = "「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。"; ObjectID = "KUP-DK-ov7"; */
+"KUP-DK-ov7.text" = "「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。";
 
 /* Class = "UITabBarItem"; title = "IRC Channel"; ObjectID = "Wcm-jz-uW7"; */
 "Wcm-jz-uW7.title" = "IRC 頻道";
+
+/* Class = "UILabel"; text = "報到"; ObjectID = "ZY0-oM-P3F"; */
+"ZY0-oM-P3F.text" = "報到";
 
 /* Class = "UIButton"; normalTitle = "確認使用"; ObjectID = "b0f-NH-c1U"; */
 "b0f-NH-c1U.normalTitle" = "確認使用";
 
 /* Class = "UITabBarItem"; title = "Announce"; ObjectID = "bfa-yy-GWY"; */
 "bfa-yy-GWY.title" = "大會訊息";
-
-/* Class = "UIButton"; normalTitle = "CHECK IN"; ObjectID = "coH-dF-V3g"; */
-"coH-dF-V3g.normalTitle" = "CHECK IN";
 
 /* Class = "UITabBarItem"; title = "Schedule"; ObjectID = "fpK-Dn-uGS"; */
 "fpK-Dn-uGS.title" = "議程";
@@ -37,3 +34,6 @@
 
 /* Class = "UITabBarItem"; title = "Checkin"; ObjectID = "o22-2q-CLO"; */
 "o22-2q-CLO.title" = "報到";
+
+/* Class = "UILabel"; text = "8/20"; ObjectID = "q04-AM-eVF"; */
+"q04-AM-eVF.text" = "8/20";
