@@ -45,12 +45,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if (self.guideViewController != nil) {
-        [self.guideViewController dismissViewControllerAnimated:YES
-                                                     completion:^{
-                                                         self.guideViewController = nil;
-                                                     }];
-    }
+    [self hideGuideView];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -60,12 +55,22 @@
     }
 }
 
+- (void)hideGuideView {
+    if (self.guideViewController != nil) {
+        [self.guideViewController dismissViewControllerAnimated:YES
+                                                     completion:^{
+                                                         self.guideViewController = nil;
+                                                     }];
+    }
+}
+
 - (void)reloadCard {
     BOOL hasToken = [self.appDelegate.accessToken length] > 0;
     if (!hasToken) {
         [self performSegueWithIdentifier:@"ShowGuide"
                                   sender:self.cards];
     } else {
+        [self hideGuideView];
         GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS(self.appDelegate.accessToken)];
         [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
             if (json != nil) {
