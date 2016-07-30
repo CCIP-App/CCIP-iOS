@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) ProgramAbstractViewController *abstractView;
 @property (strong, nonatomic) ProgramSpeakerIntroViewController *speakerIntroView;
+@property (strong, nonatomic) UIViewController *currentContentViewController;
 
 @end
 
@@ -46,7 +47,24 @@
     
     self.dataSource = self;
     self.delegate = self;
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.currentContentViewController != nil) {
+        if ([self.currentContentViewController canPerformAction:@selector(viewWillAppear:) withSender:@(animated)]) {
+            [self.currentContentViewController viewWillAppear:animated];
+        }
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (self.currentContentViewController != nil) {
+        if ([self.currentContentViewController canPerformAction:@selector(viewDidAppear:) withSender:@(animated)]) {
+            [self.currentContentViewController viewDidAppear:animated];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,12 +123,16 @@
 - (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index {
     switch (index) {
         case 0:
-            return self.abstractView;
+            self.currentContentViewController = self.abstractView;
+            break;
         case 1:
-            return self.speakerIntroView;
+            self.currentContentViewController = self.speakerIntroView;
+            break;
         default:
-            return [UIViewController new];
+            self.currentContentViewController = [UIViewController new];
+            break;
     }
+    return self.currentContentViewController;
 }
 
 #pragma mark - ViewPagerDelegate
