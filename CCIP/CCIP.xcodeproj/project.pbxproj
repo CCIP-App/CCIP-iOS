@@ -17,6 +17,12 @@
 		2823E8E31D3E55F10039D72E /* ProgramAbstractViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2823E8E11D3E55F10039D72E /* ProgramAbstractViewController.xib */; };
 		2823E8E71D3E560C0039D72E /* ProgramSpeakerIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2823E8E51D3E560C0039D72E /* ProgramSpeakerIntroViewController.m */; };
 		2823E8E81D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2823E8E61D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib */; };
+		2839BF371D4C97AB0062F36D /* Star_Filled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF331D4C97AB0062F36D /* Star_Filled@3x.png */; };
+		2839BF381D4C97AB0062F36D /* Star@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF341D4C97AB0062F36D /* Star@3x.png */; };
+		2839BF391D4C97AB0062F36D /* Star_Filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF351D4C97AB0062F36D /* Star_Filled@2x.png */; };
+		2839BF3A1D4C97AB0062F36D /* Star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF361D4C97AB0062F36D /* Star@2x.png */; };
+		2839BF3D1D4C97EE0062F36D /* Star-Filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF3B1D4C97EE0062F36D /* Star-Filled.png */; };
+		2839BF3E1D4C97EE0062F36D /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF3C1D4C97EE0062F36D /* Star.png */; };
 		28A2992D1D3B90C000145E76 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A2992B1D3B90C000145E76 /* ScheduleViewController.m */; };
 		28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */; };
 		28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */; };
@@ -142,6 +148,12 @@
 		2823E8E41D3E560C0039D72E /* ProgramSpeakerIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramSpeakerIntroViewController.h; sourceTree = "<group>"; };
 		2823E8E51D3E560C0039D72E /* ProgramSpeakerIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramSpeakerIntroViewController.m; sourceTree = "<group>"; };
 		2823E8E61D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgramSpeakerIntroViewController.xib; sourceTree = "<group>"; };
+		2839BF331D4C97AB0062F36D /* Star_Filled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star_Filled@3x.png"; sourceTree = "<group>"; };
+		2839BF341D4C97AB0062F36D /* Star@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star@3x.png"; sourceTree = "<group>"; };
+		2839BF351D4C97AB0062F36D /* Star_Filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star_Filled@2x.png"; sourceTree = "<group>"; };
+		2839BF361D4C97AB0062F36D /* Star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star@2x.png"; sourceTree = "<group>"; };
+		2839BF3B1D4C97EE0062F36D /* Star-Filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star-Filled.png"; sourceTree = "<group>"; };
+		2839BF3C1D4C97EE0062F36D /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
 		28A2992A1D3B90C000145E76 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
 		28A2992B1D3B90C000145E76 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+addition.h"; sourceTree = "<group>"; };
@@ -345,6 +357,12 @@
 				2821DAA01D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@3x.png */,
 				5FB4D4441D3A8319005BF382 /* StaffIconDefault@1x.png */,
 				5FB4D4451D3A8319005BF382 /* StaffIconDefault@2x.png */,
+				2839BF3C1D4C97EE0062F36D /* Star.png */,
+				2839BF361D4C97AB0062F36D /* Star@2x.png */,
+				2839BF341D4C97AB0062F36D /* Star@3x.png */,
+				2839BF3B1D4C97EE0062F36D /* Star-Filled.png */,
+				2839BF351D4C97AB0062F36D /* Star_Filled@2x.png */,
+				2839BF331D4C97AB0062F36D /* Star_Filled@3x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -544,6 +562,7 @@
 			files = (
 				5FB4D4481D3A8319005BF382 /* icon_ios_pin@3x.png in Resources */,
 				5FECE5F61D353C4900242DB4 /* StaffGroupTableViewCell.xib in Resources */,
+				2839BF3A1D4C97AB0062F36D /* Star@2x.png in Resources */,
 				5FB4D4631D3A8706005BF382 /* icon_ios_chat_selected.png in Resources */,
 				5FB4D47F1D3A8DF6005BF382 /* icon_ios_bell_selected@2x.png in Resources */,
 				5FB4D4801D3A8DF6005BF382 /* icon_ios_bell_selected@3x.png in Resources */,
@@ -572,7 +591,9 @@
 				5FB4D4471D3A8319005BF382 /* icon_ios_pin@2x.png in Resources */,
 				2823E8E81D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib in Resources */,
 				6B53C65B1D1ED5CC00EA8012 /* StatusView.xib in Resources */,
+				2839BF3D1D4C97EE0062F36D /* Star-Filled.png in Resources */,
 				5FB4D45B1D3A865A005BF382 /* icon_ios_topcharts@2x.png in Resources */,
+				2839BF3E1D4C97EE0062F36D /* Star.png in Resources */,
 				5FB4D4501D3A8547005BF382 /* icon_ios_pin_selected@3x.png in Resources */,
 				6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */,
 				5FB4D44A1D3A8319005BF382 /* StaffIconDefault@2x.png in Resources */,
@@ -582,9 +603,11 @@
 				6B7142B71D1DBAFB0024EA45 /* scenarioCell.xib in Resources */,
 				5F91712A1D325B5E000D0F66 /* StaffView.xib in Resources */,
 				5FB4D4641D3A8706005BF382 /* icon_ios_chat_selected@2x.png in Resources */,
+				2839BF391D4C97AB0062F36D /* Star_Filled@2x.png in Resources */,
 				5FB4D4781D3A8DF6005BF382 /* icon_ios_more.png in Resources */,
 				5F91712F1D32990C000D0F66 /* StaffCell.xib in Resources */,
 				5FB4D4771D3A8DF6005BF382 /* icon_ios_more_selected@3x.png in Resources */,
+				2839BF371D4C97AB0062F36D /* Star_Filled@3x.png in Resources */,
 				5FB4D4901D3B242C005BF382 /* MoreCell.xib in Resources */,
 				5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */,
 				5FB4D4661D3A8706005BF382 /* icon_ios_chat.png in Resources */,
@@ -600,6 +623,7 @@
 				5FB4D47B1D3A8DF6005BF382 /* icon_ios_bell.png in Resources */,
 				6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */,
 				5FB4D45A1D3A865A005BF382 /* icon_ios_topcharts.png in Resources */,
+				2839BF381D4C97AB0062F36D /* Star@3x.png in Resources */,
 				2821DA9E1D3DCA5500AFE139 /* ProgramDetailViewController.xib in Resources */,
 				5FB4D45C1D3A865A005BF382 /* icon_ios_topcharts@3x.png in Resources */,
 			);

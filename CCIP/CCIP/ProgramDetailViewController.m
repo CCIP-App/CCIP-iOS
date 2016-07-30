@@ -9,6 +9,8 @@
 #import "ProgramDetailViewController.h"
 #import "ProgramDetailViewPagerController.h"
 
+#define NotificationID_Key @"NotificationID"
+
 @interface ProgramDetailViewController ()
 
 @property (strong, nonatomic) ProgramDetailViewPagerController *detailViewPager;
@@ -48,6 +50,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setViewPager];
+    
+    UIBarButtonItem *followButton = [[UIBarButtonItem alloc] initWithImage:[self haveRegistedLocalNotificationAction] ? [UIImage imageNamed:@"Star_Filled.png"] : [UIImage imageNamed:@"Star.png"]
+                                                       landscapeImagePhone:nil
+                                                                     style:UIBarButtonItemStylePlain
+                                                                    target:self
+                                                                    action:@selector(followAction:)];
+    self.navigationItem.rightBarButtonItem = followButton;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -71,6 +80,61 @@
     _program = program;
     
     [self.detailViewPager setProgram:self.program];
+}
+
+- (void)followAction:(id)sender {
+    if ([self haveRegistedLocalNotificationAction]) {
+        [self cancelLocalNotificationAction];
+    }
+    else {
+        [self registerLocalNotificationAction];
+    }
+}
+
+- (BOOL)haveRegistedLocalNotificationAction {
+    for (UILocalNotification *notification in [[[UIApplication sharedApplication] scheduledLocalNotifications] copy]){
+        NSDictionary *userInfo = notification.userInfo;
+        if ([[self.program objectForKey:@"slot"] isEqualToString:[userInfo objectForKey:NotificationID_Key]]){
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (void)registerLocalNotificationAction {
+    UILocalNotification* notification = [UILocalNotification new];
+    
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:[self.program objectForKey:@"slot"] forKey:NotificationID_Key];
+    notification.userInfo = userInfo;
+    
+    notification.alertTitle = @"COSCUP 議程提醒";
+    notification.alertBody = [NSString stringWithFormat:@"您所關注的「%@」將於 10 分鐘後在 %@ 開始", [self.program objectForKey:@"subject"], [self.program objectForKey:@"room"]];
+    
+    NSDateFormatter *formatter_full = [[NSDateFormatter alloc] init];
+    [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    
+    NSDate *startDateTime = [formatter_full dateFromString:[self.program objectForKey:@"starttime"]];
+    notification.timeZone = [NSTimeZone defaultTimeZone];
+    notification.fireDate = [startDateTime dateByAddingTimeInterval:-(10*60)];
+
+    // demo test, after 10 secound
+    //notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
+
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"Star_Filled.png"]];
+}
+
+- (void)cancelLocalNotificationAction {
+    for (UILocalNotification *notification in [[[UIApplication sharedApplication] scheduledLocalNotifications] copy]){
+        NSDictionary *userInfo = notification.userInfo;
+        if ([[self.program objectForKey:@"slot"] isEqualToString:[userInfo objectForKey:NotificationID_Key]]){
+            [[UIApplication sharedApplication] cancelLocalNotification:notification];
+            [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"Star.png"]];
+        }
+    }
 }
 
 /*
