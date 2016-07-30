@@ -42,21 +42,10 @@
     return self;
 }
 
--(void)setViewPager {
-    self.detailViewPager.view.frame = CGRectMake(0, self.topBG.frame.size.height-44, self.view.bounds.size.width, self.view.bounds.size.height-(self.topBG.frame.size.height-44));
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setViewPager];
     
-    UIBarButtonItem *followButton = [[UIBarButtonItem alloc] initWithImage:[self haveRegistedLocalNotificationAction] ? [UIImage imageNamed:@"Star_Filled.png"] : [UIImage imageNamed:@"Star.png"]
-                                                       landscapeImagePhone:nil
-                                                                     style:UIBarButtonItemStylePlain
-                                                                    target:self
-                                                                    action:@selector(followAction:)];
-    self.navigationItem.rightBarButtonItem = followButton;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -69,6 +58,15 @@
     [self.subject setText:[self.program objectForKey:@"subject"]];
     [self.subject setAdjustsFontSizeToFitWidth:YES];
     [self.subject setMinimumScaleFactor:0.5];
+    
+    self.detailViewPager.view.frame = CGRectMake(0, self.topBG.frame.size.height-44, self.view.bounds.size.width, self.view.bounds.size.height-(self.topBG.frame.size.height-44));
+    
+    UIBarButtonItem *followButton = [[UIBarButtonItem alloc] initWithImage:[self haveRegistedLocalNotificationAction] ? [UIImage imageNamed:@"Star_Filled.png"] : [UIImage imageNamed:@"Star.png"]
+                                                       landscapeImagePhone:nil
+                                                                     style:UIBarButtonItemStylePlain
+                                                                    target:self
+                                                                    action:@selector(followAction:)];
+    self.navigationItem.rightBarButtonItem = followButton;
 }
 
 - (void)didReceiveMemoryWarning {
