@@ -197,13 +197,15 @@
     //[[UINavigationBar appearance] setBarTintColor:[appArt backgroundColor]];
     //[[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName: [appArt detailColor] }];
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
-    [[UIToolbar appearance] setBarTintColor:[appArt backgroundColor]];
-    [[UIToolbar appearance] setTintColor:[appArt detailColor]];
+    [[UIButton appearanceWhenContainedIn:[UINavigationController class], nil] setTintColor:[appArt detailColor]];
+    [[UIToolbar appearanceWhenContainedIn:[UINavigationController class], nil] setBarTintColor:[appArt backgroundColor]];
+    
+//    [[UIToolbar appearance] setTintColor:[appArt detailColor]];
     [[UITabBar appearance] setTintColor:[appArt detailColor]];
     [[UISegmentedControl appearance] setTintColor:[appArt detailColor]];
     [[UIProgressView appearance] setTintColor:[appArt detailColor]];
     [[UILabel appearance] setTintColor:[appArt detailColor]];
-    [[UIButton appearance] setTintColor:[appArt detailColor]];
+//    [[UIButton appearance] setTintColor:[appArt detailColor]];
     [[UISearchBar appearance] setTintColor:[appArt detailColor]];
 }
 
