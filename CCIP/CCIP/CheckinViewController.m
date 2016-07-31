@@ -33,7 +33,7 @@
     [self.appDelegate setCheckinView:self];
     
     //configure carousel
-    self.cards.type = iCarouselTypeLinear;
+    self.cards.type = iCarouselTypeRotary;
     self.cards.pagingEnabled = YES;
     self.cards.bounceDistance = 0.3f;
     
@@ -225,10 +225,14 @@
             }
             return value;
         }
+        case iCarouselOptionArc: {
+            return value * (carousel.numberOfItems/48.0f);
+        }
+        case iCarouselOptionRadius: {
+            return value * 1.0f;
+        }
         case iCarouselOptionShowBackfaces:
-        case iCarouselOptionRadius:
         case iCarouselOptionAngle:
-        case iCarouselOptionArc:
         case iCarouselOptionTilt:
         case iCarouselOptionCount:
         case iCarouselOptionFadeMin:
