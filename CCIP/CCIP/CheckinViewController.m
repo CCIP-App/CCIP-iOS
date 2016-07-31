@@ -43,18 +43,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    CGFloat topGuide = 0.0;
-    CGFloat bottomGuide = 0.0;
-    if (self.navigationController.navigationBar.translucent) {
-        if (self.prefersStatusBarHidden == NO) topGuide += 20;
-        if (self.navigationController.navigationBarHidden == NO) topGuide += self.navigationController.navigationBar.bounds.size.height;
-    }
-    if (self.tabBarController.tabBar.hidden == NO) bottomGuide += self.tabBarController.tabBar.bounds.size.height;
-    
-    self.view.frame = CGRectMake(0, topGuide, self.view.frame.size.width, self.view.frame.size.height - topGuide - bottomGuide);
-    
+    [super viewDidAppear:animated];    
     [self reloadCard];
 }
 
@@ -130,7 +119,7 @@
                                                              bundle:nil];
         CheckinCardViewController *temp = (CheckinCardViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CheckinCardReuseView"];
         
-        [temp.view setFrame:CGRectMake(0, 0, self.view.frame.size.width - 80, self.view.frame.size.height - 100)];
+        [temp.view setFrame:CGRectMake(0, 0, self.cards.frame.size.width - 80, self.cards.frame.size.height - 100)];
         view = (UIView*)temp.view;
         
         NSInteger idx = 1;
