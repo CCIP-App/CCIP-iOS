@@ -20,9 +20,8 @@
 
 - (void)drawRect:(CGRect)rect {
     [self.webview setDelegate:self];
-    [self.webview.scrollView setScrollEnabled:NO];
     
-    [self.activityIndicator setHidden:YES];
+    [self.webview.scrollView setScrollEnabled:NO];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"IRCView"];
@@ -57,6 +56,57 @@
         [self.webview.scrollView setScrollEnabled:YES];
     }
     [self.refreshControl endRefreshing];
+}
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    [self.refreshControl endRefreshing];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    if (navigationType == UIWebViewNavigationTypeLinkClicked){
+        NSURL *url = request.URL;
+        
+        if ([url.host isEqualToString:[NSURL URLWithString:LOG_BOT_URL].host]) {
+            return YES;
+        }
+        else {
+            if ([SFSafariViewController class] != nil) {
+                // Open in SFSafariViewController
+                SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
+                [safariViewController setDelegate:self];
+                
+                // SFSafariViewController Toolbar TintColor
+                // [safariViewController.view setTintColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
+                // or http://stackoverflow.com/a/35524808/1751900
+                
+                // ProgressBar Color Not Found
+                // ...
+                
+                UIViewController *currentTopVC = [self currentTopViewController];
+                [currentTopVC presentViewController:safariViewController animated:YES completion:nil];
+            } else {
+                // Open in Mobile Safari
+                if (![[UIApplication sharedApplication] openURL:url]) {
+                    NSLog(@"%@%@",@"Failed to open url:",[url description]);
+                }
+            }
+            return NO;
+        }
+        
+    }
+    return YES;
+}
+
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+    // Called when the user taps the Done button to dismiss the Safari view.
+}
+
+- (UIViewController *)currentTopViewController {
+    UIViewController *topVC = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    while (topVC.presentedViewController) {
+        topVC = topVC.presentedViewController;
+    }
+    return topVC;
 }
 
 @end

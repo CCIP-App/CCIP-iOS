@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <Google/Analytics.h>
+#import <SafariServices/SFSafariViewController.h>
 
-@interface IRCView : UIView <UIWebViewDelegate>
+@interface IRCView : UIView <UIWebViewDelegate, SFSafariViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
