@@ -23,15 +23,15 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
-@property (strong, readonly, nonatomic) OneSignal *oneSignal;
-@property (strong, readonly, nonatomic) SLColorArt *appArt;
-@property (strong, nonatomic) NSString *accessToken;
-@property (strong, nonatomic) NavigationController *navigationView;
-@property (strong, nonatomic) MasterViewController *masterView;
-@property (strong, nonatomic) CheckinViewController *checkinView;
+@property (strong, nonatomic)  UIWindow * _Null_unspecified window;
+@property (strong, readonly, nonatomic) OneSignal * _Null_unspecified oneSignal;
+@property (strong, readonly, nonatomic) SLColorArt * _Null_unspecified appArt;
+@property (strong, nonatomic) NSString * _Null_unspecified accessToken;
+@property (strong, nonatomic) NavigationController * _Null_unspecified navigationView;
+@property (strong, nonatomic) MasterViewController * _Null_unspecified masterView;
+@property (strong, nonatomic) CheckinViewController * _Null_unspecified checkinView;
 
-+ (void)sendGAI:(NSDictionary *)_gai WithName:(NSString *)_name Func:(const char *)_func File:(const char *)_file Line:(int)_line;
++ (void)sendGAI:( NSDictionary * _Nonnull )_gai WithName:( NSString * _Nullable )_name Func:( const char * _Nonnull )_func File:( const char * _Nonnull )_file Line:(int)_line;
 - (NSInteger)showWhichDay;
 
 @end
