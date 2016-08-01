@@ -13,7 +13,6 @@
 
 @interface StatusView()
 
-@property (strong, nonatomic) AppDelegate *appDelegate;
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) NSDate *countTime;
 @property (readwrite, nonatomic) float maxValue;
@@ -35,12 +34,11 @@
 */
 
 - (void)gotoTop {
-    [self.appDelegate.navigationView popToRootViewControllerAnimated:YES];
+//    [[AppDelegate appDelegate].navigationView popToRootViewControllerAnimated:YES];
 }
 
 - (void)setScenario:(NSDictionary *)scenario {
     _scenario = scenario;
-    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self.statusMessageLabel setText:NSLocalizedString(@"StatusNotice", nil)];
     [self.countdownLabel setHidden:YES];
     if ([[self.scenario objectForKey:@"countdown"] floatValue] > 0) {

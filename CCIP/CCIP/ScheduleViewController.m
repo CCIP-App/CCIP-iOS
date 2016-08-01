@@ -6,12 +6,13 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
-#import "ScheduleViewController.h"
-#import "UISegmentedControl+addition.h"
-#import "GatewayWebService/GatewayWebService.h"
-#import "ProgramDetailViewController.h"
-#import "NSInvocation+addition.h"
 #import <CoreText/CoreText.h>
+#import "UISegmentedControl+addition.h"
+#import "NSInvocation+addition.h"
+#import "GatewayWebService/GatewayWebService.h"
+#import "AppDelegate.h"
+#import "ScheduleViewController.h"
+#import "ProgramDetailViewController.h"
 #import "BLKFlexibleHeightBar.h"
 #import "BLKDelegateSplitter.h"
 #import "SquareCashStyleBehaviorDefiner.h"
@@ -37,9 +38,6 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @property NSUInteger refreshingCountDown;
-
-@property (nonatomic) CGFloat topGuide;
-@property (nonatomic) CGFloat bottomGuide;
 
 @property (strong, nonatomic) NSArray *rooms;
 @property (strong, nonatomic) NSArray *programs;
@@ -96,10 +94,10 @@
     // ... setting up the TableView here ...
     [_tableView setFrame:MAX_TABLE_VIEW];
     UIEdgeInsets tableViewInset = [_tableView contentInset];
-    tableViewInset.bottom += self.bottomGuide;
+    tableViewInset.bottom += self.bottomGuideHeight;
     [_tableView setContentInset:tableViewInset];
     UIEdgeInsets tableViewScrollInset = [_tableView scrollIndicatorInsets];
-    tableViewScrollInset.bottom += self.bottomGuide;
+    tableViewScrollInset.bottom += self.bottomGuideHeight;
     [_tableView setScrollIndicatorInsets:tableViewScrollInset];
     [_tableView setDelegate:(id<UITableViewDelegate>)self.delegateSplitter];
     
@@ -122,21 +120,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self scrollViewDidScroll:self.tableView];
-}
-
-- (CGFloat)topGuide {
-    _topGuide = 0.0;
-    if (self.navigationController.navigationBar.translucent) {
-        if (self.prefersStatusBarHidden == NO) _topGuide += 20;
-        if (self.navigationController.navigationBarHidden == NO) _topGuide += self.navigationController.navigationBar.bounds.size.height;
-    }
-    return _topGuide;
-}
-
-- (CGFloat)bottomGuide {
-    _bottomGuide = 0.0;
-    if (self.tabBarController.tabBar.hidden == NO) _bottomGuide += self.tabBarController.tabBar.bounds.size.height;
-    return _bottomGuide;
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {

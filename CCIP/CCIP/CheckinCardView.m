@@ -14,16 +14,12 @@
 
 @interface CheckinCardView()
 
-@property (strong, nonatomic) AppDelegate *appDelegate;
-
 @end
 
 @implementation CheckinCardView
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     [self.layer setCornerRadius:15.0f]; // set cornerRadius as you want.
     [self.layer setMasksToBounds:NO];
@@ -37,7 +33,7 @@
 - (IBAction)checkinBtnTouched:(id)sender {
     UIColor *disabledColor = [UIColor colorWithRed:155/255.0 green:155/255.0 blue:155/255.0 alpha:1];
     if ([self.id isEqualToString:@"day1checkin"] || [self.id isEqualToString:@"day2checkin"]) {
-        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE(self.appDelegate.accessToken, self.id)];
+        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE([AppDelegate appDelegate].accessToken, self.id)];
         [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
             if (json != nil) {
                 NSLog(@"%@", json);
@@ -73,7 +69,7 @@
         [ac addActionButton:NSLocalizedString(@"CONFIRM", nil)
                       style:UIAlertActionStyleDestructive
                     handler:^(UIAlertAction * _Nonnull action) {
-                        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE(self.appDelegate.accessToken, self.id)];
+                        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE([AppDelegate appDelegate].accessToken, self.id)];
                         [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
                             if (json != nil) {
                                 NSLog(@"%@", json);

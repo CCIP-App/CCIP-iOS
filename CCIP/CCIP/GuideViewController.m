@@ -6,13 +6,11 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
+#import <UICKeyChainStore/UICKeyChainStore.h>
 #import "AppDelegate.h"
 #import "GuideViewController.h"
-#import <UICKeyChainStore/UICKeyChainStore.h>
 
 @interface GuideViewController ()
-
-@property (strong, nonatomic) AppDelegate *appDelegate;
 
 @end
 
@@ -21,7 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self.guideMessageLabel setText:NSLocalizedString(@"GuideViewMessage", nil)];
     [self.redeemButton setTitle:NSLocalizedString(@"GuideViewButton", nil)
                        forState:UIControlStateNormal];
@@ -60,13 +57,13 @@
 - (IBAction)redeemCode:(id)sender {
     NSString *code = [self.redeemCodeText text];
     if ([code length] > 0) {
-        if ([self.appDelegate.accessToken length] > 0) {
+        if ([[AppDelegate appDelegate].accessToken length] > 0) {
             [UICKeyChainStore removeItemForKey:@"token"];
         }
-        self.appDelegate.accessToken = code;
-        [UICKeyChainStore setString:self.appDelegate.accessToken
+        [AppDelegate appDelegate].accessToken = code;
+        [UICKeyChainStore setString:[AppDelegate appDelegate].accessToken
                              forKey:@"token"];
-        [self.appDelegate.oneSignal sendTag:@"token" value:self.appDelegate.accessToken];
+        [[AppDelegate appDelegate].oneSignal sendTag:@"token" value:[AppDelegate appDelegate].accessToken];
     }
     [self dismissViewControllerAnimated:YES
                              completion:^{

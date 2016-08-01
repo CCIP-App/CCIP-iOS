@@ -6,12 +6,11 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
-#import "AppDelegate.h"
-#import <Google/Analytics.h>
 #import <UICKeyChainStore/UICKeyChainStore.h>
-#import "GatewayWebService/GatewayWebService.h"
-#import "GuideViewController.h"
 #import <iRate/iRate.h>
+#import "GatewayWebService/GatewayWebService.h"
+#import "AppDelegate.h"
+#import "GuideViewController.h"
 
 #define ONE_SIGNAL_APP_TOKEN (@"aef99f72-9ee3-4dfa-ac5b-ddf79f16be7d")
 
@@ -23,6 +22,10 @@
 @end
 
 @implementation AppDelegate
+
++ (AppDelegate *)appDelegate {
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
 
 + (void)sendGAI:(NSDictionary *)_gai WithName:(NSString *)_name Func:(const char *)_func File:(const char *)_file Line:(int)_line {
     NSString *__file = [[NSString stringWithUTF8String:_file] stringByReplacingOccurrencesOfString:SOURCE_ROOT
@@ -253,6 +256,22 @@
     
     // Save UserDefaults
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+@end
+
+@implementation UIView (AppDelegate)
+
++ (AppDelegate *)appDelegate {
+    return [AppDelegate appDelegate];
+}
+
+@end
+
+@implementation UIViewController (AppDelegate)
+
++ (AppDelegate *)appDelegate {
+    return [AppDelegate appDelegate];
 }
 
 @end

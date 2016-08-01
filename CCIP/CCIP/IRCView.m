@@ -8,12 +8,10 @@
 
 #import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
-#import "UIApplication+addition.h"
 #import "IRCView.h"
 
 @interface IRCView()
 
-@property (strong, nonatomic) AppDelegate *appDelegate;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
@@ -22,8 +20,6 @@
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-    
-    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     if (self.webview.delegate == nil) {
         [self.webview setDelegate:self];

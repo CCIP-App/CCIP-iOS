@@ -97,6 +97,7 @@
 		6BA1A5221D1EFBDC00D5924C /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusView.m */; };
 		6BA1A5281D1EFBF100D5924C /* InvalidNetworkMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */; };
 		6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */; };
+		6BCBC3B51D4F393700B5AF35 /* UIViewController+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */; };
 		6BD8EF2C1D1D73510094BE95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2B1D1D73510094BE95 /* main.m */; };
 		6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */; };
 		6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
@@ -248,6 +249,8 @@
 		6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvalidNetworkMessageView.m; sourceTree = "<group>"; };
 		6BAB42371D4ED39D0029B8A5 /* UIApplication+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+addition.h"; sourceTree = "<group>"; };
 		6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+addition.m"; sourceTree = "<group>"; };
+		6BCBC3B31D4F393700B5AF35 /* UIViewController+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+addition.h"; sourceTree = "<group>"; };
+		6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+addition.m"; sourceTree = "<group>"; };
 		6BD8EF271D1D73510094BE95 /* CCIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD8EF2B1D1D73510094BE95 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -315,6 +318,8 @@
 				6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */,
 				28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */,
 				28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */,
+				6BCBC3B31D4F393700B5AF35 /* UIViewController+addition.h */,
+				6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */,
 				6BAB42371D4ED39D0029B8A5 /* UIApplication+addition.h */,
 				6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */,
 			);
@@ -773,6 +778,7 @@
 				6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */,
 				6B11BE891D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m in Sources */,
 				2821DA9D1D3DCA5500AFE139 /* ProgramDetailViewController.m in Sources */,
+				6BCBC3B51D4F393700B5AF35 /* UIViewController+addition.m in Sources */,
 				5F9171291D325B5E000D0F66 /* StaffView.m in Sources */,
 				5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */,
 				6B9117081D4EFC2600537ABE /* ScheduleViewCell.m in Sources */,

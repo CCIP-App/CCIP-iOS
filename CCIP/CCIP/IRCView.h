@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Google/Analytics.h>
 #import <SafariServices/SFSafariViewController.h>
 
 @interface IRCView : UIView <UIWebViewDelegate, SFSafariViewControllerDelegate>

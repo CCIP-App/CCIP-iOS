@@ -15,16 +15,12 @@
 
 @interface RoomLocationViewController () <ViewPagerDataSource, ViewPagerDelegate>
 
-@property (strong, nonatomic) AppDelegate *appDelegate;
-
 @end
 
 @implementation RoomLocationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.dataSource = self;
     self.delegate = self;
@@ -149,7 +145,7 @@
         case ViewPagerIndicator: {
             //return [[UIColor redColor] colorWithAlphaComponent:0.64]; //default
             //return [UIColor colorFromHtmlColor:@"#576"]; //Colore from Web Side
-            return [self.appDelegate.appArt secondaryColor];
+            return [[AppDelegate appDelegate].appArt secondaryColor];
         }
         /*
         case ViewPagerTabsView: {

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <OneSignal/OneSignal.h>
 #import <ColorArt/UIImage+ColorArt.h>
+#import <Google/Analytics.h>
+#import "UIApplication+addition.h"
+#import "UIViewController+addition.h"
 #import "NSInvocation+addition.h"
 #import "NavigationController.h"
 #import "MasterViewController.h"
@@ -31,8 +34,20 @@
 @property (strong, nonatomic) MasterViewController * _Null_unspecified masterView;
 @property (strong, nonatomic) CheckinViewController * _Null_unspecified checkinView;
 
++ (AppDelegate * _Nonnull)appDelegate;
 + (void)sendGAI:( NSDictionary * _Nonnull )_gai WithName:( NSString * _Nullable )_name Func:( const char * _Nonnull )_func File:( const char * _Nonnull )_file Line:(int)_line;
 - (NSInteger)showWhichDay;
 
 @end
 
+@interface UIView (AppDelegate)
+
++ (AppDelegate * _Nonnull)appDelegate;
+
+@end
+
+@interface UIViewController (AppDelegate)
+
++ (AppDelegate * _Nonnull)appDelegate;
+
+@end

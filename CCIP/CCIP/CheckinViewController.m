@@ -7,7 +7,6 @@
 //
 #define TAG 99
 
-#import <Google/Analytics.h>
 #import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import "CheckinCardViewController.h"
@@ -16,7 +15,6 @@
 
 @interface CheckinViewController()
 
-@property (strong, nonatomic) AppDelegate *appDelegate;
 @property (strong, nonatomic) NSDictionary *userInfo;
 @property (strong, nonatomic) NSArray *scenarios;
 @property (strong, nonatomic) GuideViewController *guideViewController;
@@ -28,9 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    [self.appDelegate setCheckinView:self];
+    [[AppDelegate appDelegate] setCheckinView:self];
     
     //configure carousel
     self.cards.type = iCarouselTypeRotary;
@@ -71,20 +67,20 @@
 }
 
 - (void)reloadCard {
-    BOOL hasToken = [self.appDelegate.accessToken length] > 0;
+    BOOL hasToken = [[AppDelegate appDelegate].accessToken length] > 0;
     if (!hasToken) {
         [self performSegueWithIdentifier:@"ShowGuide"
                                   sender:self.cards];
     } else {
         [self hideGuideView];
-        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS(self.appDelegate.accessToken)];
+        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS([AppDelegate appDelegate].accessToken)];
         [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
             if (json != nil) {
                 NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
                 [userInfo removeObjectForKey:@"scenarios"];
                 self.userInfo = [NSDictionary dictionaryWithDictionary:userInfo];
                 self.scenarios = [json objectForKey:@"scenarios"];
-                [self.appDelegate.oneSignal sendTag:@"user_id" value:[json objectForKey:@"user_id"]];
+                [[AppDelegate appDelegate].oneSignal sendTag:@"user_id" value:[json objectForKey:@"user_id"]];
                 [self.cards reloadData];
             }
         }];
@@ -100,7 +96,7 @@
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
     //return the total number of items in the carousel
-    if ([self.scenarios count] > 2 && [self.appDelegate showWhichDay] == 1) {
+    if ([self.scenarios count] > 2 && [[AppDelegate appDelegate] showWhichDay] == 1) {
         // Hard code...
         return 3;
     } else {
@@ -124,7 +120,7 @@
         
         // If the time is before 2016/08/20 17:00:00 show day 1, otherwise show day 2
         NSString *checkId, *lunchId, *dateId;
-        if ([self.appDelegate showWhichDay] == 1) {
+        if ([[AppDelegate appDelegate] showWhichDay] == 1) {
             checkId = @"day1checkin";
             lunchId = @"day1lunch";
             dateId = @"8/20";

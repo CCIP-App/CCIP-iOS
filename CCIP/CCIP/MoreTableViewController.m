@@ -6,7 +6,6 @@
 //  Copyright © 2016 CPRTeam. All rights reserved.
 //
 
-#import <Google/Analytics.h>
 #import "AppDelegate.h"
 #import "MoreTableViewController.h"
 
