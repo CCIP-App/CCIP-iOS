@@ -121,9 +121,8 @@
     [super viewDidAppear:animated];
     if (self.rooms == nil || self.programs == nil || self.program_types == nil) {
         [self refreshData];
-    } else {
-        [self scrollViewDidScroll:self.tableView];
     }
+    [self scrollViewDidScroll:self.tableView];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
@@ -227,11 +226,17 @@
                              [self.tableView reloadData];
                          } completion:^(BOOL finished) {
                              if (finished) {
-                                 [self scrollViewDidScroll:self.tableView];
-                                 [self.refreshControl endRefreshing];
+                                 [self performSelector:@selector(loaded)
+                                            withObject:nil
+                                            afterDelay:0.25f];
                              }
                          }];
     }
+}
+
+- (void)loaded {
+    [self scrollViewDidScroll:self.tableView];
+    [self.refreshControl endRefreshing];
 }
 
 - (void)setScheduleDate {
