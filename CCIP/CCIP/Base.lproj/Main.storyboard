@@ -396,13 +396,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zNX-Qf-BUg">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="zNX-Qf-BUg" secondAttribute="bottom" constant="49" id="3Ti-Lk-nQ5"/>
+                            <constraint firstAttribute="bottom" secondItem="zNX-Qf-BUg" secondAttribute="bottom" id="3Ti-Lk-nQ5"/>
                             <constraint firstItem="zNX-Qf-BUg" firstAttribute="top" secondItem="Bze-6z-kJu" secondAttribute="top" id="WgJ-5Y-1dl"/>
                             <constraint firstItem="zNX-Qf-BUg" firstAttribute="width" secondItem="Bze-6z-kJu" secondAttribute="width" id="Y1R-wR-izP"/>
                             <constraint firstItem="zNX-Qf-BUg" firstAttribute="centerX" secondItem="Bze-6z-kJu" secondAttribute="centerX" id="xAx-4y-2l0"/>

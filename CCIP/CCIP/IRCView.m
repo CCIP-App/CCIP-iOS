@@ -23,6 +23,12 @@
     
     if (self.webview.delegate == nil) {
         [self.webview setDelegate:self];
+        UIEdgeInsets contentInset = [self.webview.scrollView contentInset];
+        UIEdgeInsets scrollInset = [self.webview.scrollView scrollIndicatorInsets];
+        contentInset.bottom += self.bottomGuideHeight;
+        scrollInset.bottom += self.bottomGuideHeight;
+        [self.webview.scrollView setContentInset:contentInset];
+        [self.webview.scrollView setScrollIndicatorInsets:scrollInset];
     }
     
     SEND_GAI(@"IRCView");
