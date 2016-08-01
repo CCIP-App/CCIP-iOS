@@ -67,7 +67,7 @@
     }
     [self dismissViewControllerAnimated:YES
                              completion:^{
-                                 [self.appDelegate.masterView refreshData];
+                                 //TODO: refresh card data
                              }];
 }
 

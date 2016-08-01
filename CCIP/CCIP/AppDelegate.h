@@ -13,8 +13,6 @@
 #import "UIApplication+addition.h"
 #import "UIViewController+addition.h"
 #import "NSInvocation+addition.h"
-#import "NavigationController.h"
-#import "MasterViewController.h"
 #import "CheckinViewController.h"
 
 #define STRINGIZE(x)                    #x
@@ -30,8 +28,6 @@
 @property (strong, readonly, nonatomic) OneSignal * _Null_unspecified oneSignal;
 @property (strong, readonly, nonatomic) SLColorArt * _Null_unspecified appArt;
 @property (strong, nonatomic) NSString * _Null_unspecified accessToken;
-@property (strong, nonatomic) NavigationController * _Null_unspecified navigationView;
-@property (strong, nonatomic) MasterViewController * _Null_unspecified masterView;
 @property (strong, nonatomic) CheckinViewController * _Null_unspecified checkinView;
 
 + (AppDelegate * _Nonnull)appDelegate;
