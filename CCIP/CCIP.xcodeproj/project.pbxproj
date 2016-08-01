@@ -302,6 +302,169 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		288164E11D4F1C52005C68EA /* Class+addition */ = {
+			isa = PBXGroup;
+			children = (
+				6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */,
+				6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */,
+				6B11BE7F1D4CBA5800B87EA9 /* UIImage+addition.h */,
+				6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */,
+				6B2CD5771D286E6F00793194 /* UIColor+addition.h */,
+				6B2CD5781D286E6F00793194 /* UIColor+addition.m */,
+				6B2CD5601D281D9400793194 /* UIAlertController+additional.h */,
+				6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */,
+				28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */,
+				28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */,
+				6BAB42371D4ED39D0029B8A5 /* UIApplication+addition.h */,
+				6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */,
+			);
+			name = "Class+addition";
+			sourceTree = "<group>";
+		};
+		288164E21D4F2F03005C68EA /* CheckinTab */ = {
+			isa = PBXGroup;
+			children = (
+				5FB4D4911D3B57FA005BF382 /* CheckinViewController.h */,
+				5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */,
+				2839BF471D4CDDAD0062F36D /* CheckinCardViewController.h */,
+				2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */,
+				6B2F9E431D4D142700047F38 /* CheckinCardView.h */,
+				6B2F9E441D4D142700047F38 /* CheckinCardView.m */,
+				6BA1A5201D1EFBDC00D5924C /* StatusView.h */,
+				6BA1A5211D1EFBDC00D5924C /* StatusView.m */,
+				6B53C6591D1ED5CC00EA8012 /* StatusView.xib */,
+			);
+			name = CheckinTab;
+			sourceTree = "<group>";
+		};
+		288164E31D4F2F24005C68EA /* IRCTab */ = {
+			isa = PBXGroup;
+			children = (
+				5FF2B11B1D28B19600665DD9 /* IRCView.h */,
+				5FF2B11C1D28B19600665DD9 /* IRCView.m */,
+			);
+			name = IRCTab;
+			sourceTree = "<group>";
+		};
+		288164E41D4F2F32005C68EA /* StaffView */ = {
+			isa = PBXGroup;
+			children = (
+				5FECE5A91D352E8A00242DB4 /* StaffGroupView.h */,
+				5FECE5AA1D352E8A00242DB4 /* StaffGroupView.m */,
+				5FECE5AB1D352E8A00242DB4 /* StaffGroupView.xib */,
+				5FECE5F21D353C4900242DB4 /* StaffGroupTableViewCell.h */,
+				5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */,
+				5FECE5F41D353C4900242DB4 /* StaffGroupTableViewCell.xib */,
+				5F9171261D325B5E000D0F66 /* StaffView.h */,
+				5F9171271D325B5E000D0F66 /* StaffView.m */,
+				5F9171281D325B5E000D0F66 /* StaffView.xib */,
+				5F91712B1D32990C000D0F66 /* StaffCell.h */,
+				5F91712C1D32990C000D0F66 /* StaffCell.m */,
+				5F91712D1D32990C000D0F66 /* StaffCell.xib */,
+			);
+			name = StaffView;
+			sourceTree = "<group>";
+		};
+		288164E51D4F2F47005C68EA /* MoreTab */ = {
+			isa = PBXGroup;
+			children = (
+				5FB4D4871D3ABF9C005BF382 /* MoreTableViewController.h */,
+				5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */,
+				5FB4D4891D3ABF9C005BF382 /* MoreTableViewController.xib */,
+				5FB4D48C1D3B242C005BF382 /* MoreCell.h */,
+				5FB4D48D1D3B242C005BF382 /* MoreCell.m */,
+				5FB4D48E1D3B242C005BF382 /* MoreCell.xib */,
+				288164E41D4F2F32005C68EA /* StaffView */,
+			);
+			name = MoreTab;
+			sourceTree = "<group>";
+		};
+		288164E61D4F2F68005C68EA /* ScheduleTab */ = {
+			isa = PBXGroup;
+			children = (
+				28A2992A1D3B90C000145E76 /* ScheduleViewController.h */,
+				28A2992B1D3B90C000145E76 /* ScheduleViewController.m */,
+				6B9117051D4EFC2600537ABE /* ScheduleViewCell.h */,
+				6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */,
+				6B9117071D4EFC2600537ABE /* ScheduleViewCell.xib */,
+				288164E91D4F3004005C68EA /* ProgramDetailView */,
+				288164E81D4F2FDD005C68EA /* OldCode */,
+			);
+			name = ScheduleTab;
+			sourceTree = "<group>";
+		};
+		288164E71D4F2FA3005C68EA /* AnnounceTab */ = {
+			isa = PBXGroup;
+			children = (
+				6B2595A61D4D1AB60077AA5F /* AnnounceView.h */,
+				6B2595A71D4D1AB60077AA5F /* AnnounceView.m */,
+			);
+			name = AnnounceTab;
+			sourceTree = "<group>";
+		};
+		288164E81D4F2FDD005C68EA /* OldCode */ = {
+			isa = PBXGroup;
+			children = (
+				28B34BBD1D3EB22E002B959D /* CAPSPageMenu.h */,
+				28B34BBE1D3EB22E002B959D /* CAPSPageMenu.m */,
+				28AF9A7C1D28A40A006B378E /* RoomLocationViewController.h */,
+				28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */,
+				28AF9A8F1D28A6E9006B378E /* RoomProgramsTableViewController.h */,
+				28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */,
+				28C22A521D3178A9004A6575 /* ProgramDetailPopViewController.h */,
+				28C22A531D3178A9004A6575 /* ProgramDetailPopViewController.m */,
+				28ED8C781D31DC1F00BC47E0 /* ShareProgramTableViewController.h */,
+				28ED8C791D31DC1F00BC47E0 /* ShareProgramTableViewController.m */,
+			);
+			name = OldCode;
+			sourceTree = "<group>";
+		};
+		288164E91D4F3004005C68EA /* ProgramDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				2821DA9A1D3DCA5500AFE139 /* ProgramDetailViewController.h */,
+				2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */,
+				2821DA9C1D3DCA5500AFE139 /* ProgramDetailViewController.xib */,
+				2821DAA51D3DD36500AFE139 /* ProgramDetailViewPagerController.h */,
+				2821DAA61D3DD36500AFE139 /* ProgramDetailViewPagerController.m */,
+				288164EA1D4F301A005C68EA /* AbstractView */,
+				288164EB1D4F3022005C68EA /* SpeakerIntroView */,
+			);
+			name = ProgramDetailView;
+			sourceTree = "<group>";
+		};
+		288164EA1D4F301A005C68EA /* AbstractView */ = {
+			isa = PBXGroup;
+			children = (
+				2823E8DF1D3E55F10039D72E /* ProgramAbstractViewController.h */,
+				2823E8E01D3E55F10039D72E /* ProgramAbstractViewController.m */,
+				2823E8E11D3E55F10039D72E /* ProgramAbstractViewController.xib */,
+			);
+			name = AbstractView;
+			sourceTree = "<group>";
+		};
+		288164EB1D4F3022005C68EA /* SpeakerIntroView */ = {
+			isa = PBXGroup;
+			children = (
+				2823E8E41D3E560C0039D72E /* ProgramSpeakerIntroViewController.h */,
+				2823E8E51D3E560C0039D72E /* ProgramSpeakerIntroViewController.m */,
+				2823E8E61D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib */,
+			);
+			name = SpeakerIntroView;
+			sourceTree = "<group>";
+		};
+		288164EC1D4F3083005C68EA /* OldCode */ = {
+			isa = PBXGroup;
+			children = (
+				6B7142AE1D1DB9820024EA45 /* MasterViewController.h */,
+				6B7142AF1D1DB9820024EA45 /* MasterViewController.m */,
+				6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */,
+				6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */,
+				6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */,
+			);
+			name = OldCode;
+			sourceTree = "<group>";
+		};
 		5FB4D4401D3A8304005BF382 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,91 +523,24 @@
 		6BD8EF291D1D73510094BE95 /* CCIP */ = {
 			isa = PBXGroup;
 			children = (
+				288164E11D4F1C52005C68EA /* Class+addition */,
 				6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */,
 				6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */,
-				6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */,
-				6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */,
-				6B11BE7F1D4CBA5800B87EA9 /* UIImage+addition.h */,
-				6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */,
-				6B2CD5771D286E6F00793194 /* UIColor+addition.h */,
-				6B2CD5781D286E6F00793194 /* UIColor+addition.m */,
-				6B2CD5601D281D9400793194 /* UIAlertController+additional.h */,
-				6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */,
-				28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */,
-				28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */,
-				6BAB42371D4ED39D0029B8A5 /* UIApplication+addition.h */,
-				6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */,
 				6B11BE871D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.h */,
 				6B11BE881D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m */,
 				6B8F62241D314CA600B684BD /* NavigationController.h */,
 				6B8F62251D314CA600B684BD /* NavigationController.m */,
 				5FB4D43C1D3A668B005BF382 /* MainTabBarViewController.h */,
 				5FB4D43D1D3A668B005BF382 /* MainTabBarViewController.m */,
-				6B7142AE1D1DB9820024EA45 /* MasterViewController.h */,
-				6B7142AF1D1DB9820024EA45 /* MasterViewController.m */,
-				6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */,
-				6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */,
-				6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */,
+				288164EC1D4F3083005C68EA /* OldCode */,
 				6BA1A5261D1EFBF100D5924C /* InvalidNetworkMessageView.h */,
 				6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */,
 				6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib */,
-				5FB4D4911D3B57FA005BF382 /* CheckinViewController.h */,
-				5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */,
-				2839BF471D4CDDAD0062F36D /* CheckinCardViewController.h */,
-				2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */,
-				6B2F9E431D4D142700047F38 /* CheckinCardView.h */,
-				6B2F9E441D4D142700047F38 /* CheckinCardView.m */,
-				6BA1A5201D1EFBDC00D5924C /* StatusView.h */,
-				6BA1A5211D1EFBDC00D5924C /* StatusView.m */,
-				6B53C6591D1ED5CC00EA8012 /* StatusView.xib */,
-				6B2595A61D4D1AB60077AA5F /* AnnounceView.h */,
-				6B2595A71D4D1AB60077AA5F /* AnnounceView.m */,
-				5FF2B11B1D28B19600665DD9 /* IRCView.h */,
-				5FF2B11C1D28B19600665DD9 /* IRCView.m */,
-				5FECE5A91D352E8A00242DB4 /* StaffGroupView.h */,
-				5FECE5AA1D352E8A00242DB4 /* StaffGroupView.m */,
-				5FECE5AB1D352E8A00242DB4 /* StaffGroupView.xib */,
-				5FECE5F21D353C4900242DB4 /* StaffGroupTableViewCell.h */,
-				5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */,
-				5FECE5F41D353C4900242DB4 /* StaffGroupTableViewCell.xib */,
-				5F9171261D325B5E000D0F66 /* StaffView.h */,
-				5F9171271D325B5E000D0F66 /* StaffView.m */,
-				5F9171281D325B5E000D0F66 /* StaffView.xib */,
-				5F91712B1D32990C000D0F66 /* StaffCell.h */,
-				5F91712C1D32990C000D0F66 /* StaffCell.m */,
-				5F91712D1D32990C000D0F66 /* StaffCell.xib */,
-				5FB4D4871D3ABF9C005BF382 /* MoreTableViewController.h */,
-				5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */,
-				5FB4D4891D3ABF9C005BF382 /* MoreTableViewController.xib */,
-				5FB4D48C1D3B242C005BF382 /* MoreCell.h */,
-				5FB4D48D1D3B242C005BF382 /* MoreCell.m */,
-				5FB4D48E1D3B242C005BF382 /* MoreCell.xib */,
-				6B9117051D4EFC2600537ABE /* ScheduleViewCell.h */,
-				6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */,
-				6B9117071D4EFC2600537ABE /* ScheduleViewCell.xib */,
-				28A2992A1D3B90C000145E76 /* ScheduleViewController.h */,
-				28A2992B1D3B90C000145E76 /* ScheduleViewController.m */,
-				28B34BBD1D3EB22E002B959D /* CAPSPageMenu.h */,
-				28B34BBE1D3EB22E002B959D /* CAPSPageMenu.m */,
-				2821DA9A1D3DCA5500AFE139 /* ProgramDetailViewController.h */,
-				2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */,
-				2821DA9C1D3DCA5500AFE139 /* ProgramDetailViewController.xib */,
-				2821DAA51D3DD36500AFE139 /* ProgramDetailViewPagerController.h */,
-				2821DAA61D3DD36500AFE139 /* ProgramDetailViewPagerController.m */,
-				2823E8DF1D3E55F10039D72E /* ProgramAbstractViewController.h */,
-				2823E8E01D3E55F10039D72E /* ProgramAbstractViewController.m */,
-				2823E8E11D3E55F10039D72E /* ProgramAbstractViewController.xib */,
-				2823E8E41D3E560C0039D72E /* ProgramSpeakerIntroViewController.h */,
-				2823E8E51D3E560C0039D72E /* ProgramSpeakerIntroViewController.m */,
-				2823E8E61D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib */,
-				28AF9A7C1D28A40A006B378E /* RoomLocationViewController.h */,
-				28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */,
-				28AF9A8F1D28A6E9006B378E /* RoomProgramsTableViewController.h */,
-				28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */,
-				28C22A521D3178A9004A6575 /* ProgramDetailPopViewController.h */,
-				28C22A531D3178A9004A6575 /* ProgramDetailPopViewController.m */,
-				28ED8C781D31DC1F00BC47E0 /* ShareProgramTableViewController.h */,
-				28ED8C791D31DC1F00BC47E0 /* ShareProgramTableViewController.m */,
+				288164E21D4F2F03005C68EA /* CheckinTab */,
+				288164E61D4F2F68005C68EA /* ScheduleTab */,
+				288164E71D4F2FA3005C68EA /* AnnounceTab */,
+				288164E31D4F2F24005C68EA /* IRCTab */,
+				288164E51D4F2F47005C68EA /* MoreTab */,
 				6BE250201D3133FC005FB4B2 /* GuideViewController.h */,
 				6BE250211D3133FC005FB4B2 /* GuideViewController.m */,
 			);
