@@ -6,8 +6,9 @@
 //  Copyright © 2016 CPRTeam. All rights reserved.
 //
 
-#import "MoreTableViewController.h"
 #import <Google/Analytics.h>
+#import "AppDelegate.h"
+#import "MoreTableViewController.h"
 
 @interface MoreTableViewController ()
 
@@ -26,9 +27,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:@"MoreTableViewController"];
-    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    SEND_GAI(@"MoreTableViewController");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -111,8 +110,7 @@
     [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
     [self.navigationController pushViewController:detailViewController animated:YES];
     
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"MoreTableView" action:nibName label:nil value:nil] build]];
+    SEND_GAI_EVENT(@"MoreTableView", nibName);
 }
 
 /*

@@ -24,8 +24,19 @@
 
 @implementation AppDelegate
 
-+ (void)initialize
-{
++ (void)sendGAI:(NSDictionary *)_gai WithName:(NSString *)_name Func:(const char *)_func File:(const char *)_file Line:(int)_line {
+    NSString *__file = [[NSString stringWithUTF8String:_file] stringByReplacingOccurrencesOfString:SOURCE_ROOT
+                                                                                        withString:@""];
+    NSLog(@"Send GAI: %@ @ %s\t%@:%d", _name, _func, __file, _line);
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    if (_name != nil) {
+        [tracker set:kGAIScreenName
+               value:_name];
+    }
+    [tracker send:_gai];
+}
+
++ (void)initialize {
     //configure iRate
     [iRate sharedInstance].daysUntilPrompt = 3;
     [iRate sharedInstance].usesUntilPrompt = 8;
@@ -77,7 +88,10 @@
     // Optional: configure GAI options.
     GAI *gai = [GAI sharedInstance];
     [gai setTrackUncaughtExceptions:YES];  // report uncaught exceptions
+
+#ifdef DEBUG
     [gai.logger setLogLevel:kGAILogLevelVerbose];  // remove before app release
+#endif
     
     // Configure OneSignal
     self.oneSignal = [[OneSignal alloc]

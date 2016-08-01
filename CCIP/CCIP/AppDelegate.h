@@ -14,6 +14,13 @@
 #import "MasterViewController.h"
 #import "CheckinViewController.h"
 
+#define STRINGIZE(x)                    #x
+#define STRINGIZE2(x)                   STRINGIZE(x)
+#define SOURCE_ROOT                     @ STRINGIZE2(SRC_ROOT)
+#define __GAI(gai, name)                ([AppDelegate sendGAI:gai WithName:name Func:__func__ File:__FILE__ Line:__LINE__])
+#define SEND_GAI(name)                  (__GAI( [[GAIDictionaryBuilder createScreenView] build], name ))
+#define SEND_GAI_EVENT(name, nibName)   (__GAI( [[GAIDictionaryBuilder createEventWithCategory:name action:nibName label:nil value:nil] build], nil ))
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
@@ -24,6 +31,7 @@
 @property (strong, nonatomic) MasterViewController *masterView;
 @property (strong, nonatomic) CheckinViewController *checkinView;
 
++ (void)sendGAI:(NSDictionary *)_gai WithName:(NSString *)_name Func:(const char *)_func File:(const char *)_file Line:(int)_line;
 - (NSInteger)showWhichDay;
 
 @end

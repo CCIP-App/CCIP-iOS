@@ -32,9 +32,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     self.originalCenter = CGPointMake(self.view.center.x, self.view.center.y);
     
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:@"GuideViewController"];
-    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    SEND_GAI(@"GuideViewController");
+    
     [self.view setAutoresizingMask:UIViewAutoresizingNone];
     CGRect frame = self.view.frame;
     frame.size.height -= 100;

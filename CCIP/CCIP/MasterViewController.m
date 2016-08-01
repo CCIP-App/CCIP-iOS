@@ -83,9 +83,8 @@
     [self setClearsSelectionOnViewWillAppear:[self.splitViewController isCollapsed]];
     [super viewWillAppear:animated];
     
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:@"MasterView"];
-    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    SEND_GAI(@"MasterView");
+    
     [self refreshData];
 }
 

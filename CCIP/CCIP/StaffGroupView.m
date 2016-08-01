@@ -32,9 +32,7 @@
         }
     }];
     
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:@"StaffGroupView"];
-    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    SEND_GAI(@"StaffGroupView");
 }
 
 #pragma mark - Table view data source
@@ -66,8 +64,7 @@
     
     [NSInvocation InvokeObject:detailViewController.view withSelectorString:@"setGroup:" withArguments:@[ [[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"users"] ]];
     
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"StaffView" action:[[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"name"] label:nil value:nil] build]];
+    SEND_GAI_EVENT(@"StaffView", [[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"name"]);
     
     id rootVC = [[[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0] nextResponder];
     [rootVC pushViewController:detailViewController animated:YES];

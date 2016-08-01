@@ -25,9 +25,7 @@
     self.staffCollectionView.delegate = self;
     self.staffCollectionView.dataSource = self;
     
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:@"StaffView"];
-    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    SEND_GAI(@"StaffView");
 }
 
 - (void)setGroup:(NSArray *)scenario {

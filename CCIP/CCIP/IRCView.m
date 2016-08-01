@@ -26,9 +26,7 @@
     [self.webview setDelegate:self];
     [self.webview.scrollView setScrollEnabled:NO];
     
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:@"IRCView"];
-    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    SEND_GAI(@"IRCView");
     
     if (self.refreshControl == nil) {
         self.refreshControl = [[UIRefreshControl alloc] init];

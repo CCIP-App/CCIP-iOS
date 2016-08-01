@@ -37,9 +37,7 @@
     self.cards.pagingEnabled = YES;
     self.cards.bounceDistance = 0.3f;
     
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:@"CheckinViewController"];
-    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    SEND_GAI(@"CheckinViewController");
 }
 
 - (void)viewDidAppear:(BOOL)animated {
