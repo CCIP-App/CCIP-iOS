@@ -319,6 +319,7 @@
                                             <barButtonItem title="Item" id="pCR-oJ-1nt"/>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="sCq-Zo-kt4"/>
                                         </items>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </toolbar>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBI-oj-GSC">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="22"/>
@@ -330,9 +331,9 @@
                                             <barButtonItem title="Item" id="uMV-FU-NQy"/>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="wF0-EW-EoK"/>
                                         </items>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </toolbar>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Q2e-tI-xRm" firstAttribute="top" secondItem="aX4-XN-Yb6" secondAttribute="top" id="AEM-Jt-hBY"/>
                                     <constraint firstAttribute="bottom" secondItem="bBI-oj-GSC" secondAttribute="bottom" id="KcT-LO-fXd"/>
@@ -360,8 +361,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aX4-XN-Yb6" firstAttribute="top" secondItem="IHA-3f-0u0" secondAttribute="bottom" id="1sQ-MW-2FV"/>
-                            <constraint firstItem="IdS-ec-iYA" firstAttribute="leading" secondItem="Aca-zw-Tww" secondAttribute="leadingMargin" constant="-20" id="DnM-I2-JBn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="IdS-ec-iYA" secondAttribute="trailing" constant="-20" id="EA3-Py-0Gq"/>
+                            <constraint firstItem="IdS-ec-iYA" firstAttribute="leading" secondItem="Aca-zw-Tww" secondAttribute="leading" id="DnM-I2-JBn"/>
+                            <constraint firstAttribute="trailing" secondItem="IdS-ec-iYA" secondAttribute="trailing" id="EA3-Py-0Gq"/>
                             <constraint firstItem="IdS-ec-iYA" firstAttribute="top" secondItem="aX4-XN-Yb6" secondAttribute="bottom" id="Fzz-hp-wYA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aX4-XN-Yb6" secondAttribute="trailing" constant="-20" id="Sdd-2d-k6E"/>
                             <constraint firstItem="MH8-nS-NaQ" firstAttribute="top" secondItem="IdS-ec-iYA" secondAttribute="bottom" id="UmB-3E-voI"/>
