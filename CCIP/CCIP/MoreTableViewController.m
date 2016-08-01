@@ -18,7 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"MoreCell" bundle:nil] forCellReuseIdentifier:@"MoreCell"];
+    UIEdgeInsets contentInset = [self.moreTableView contentInset];
+    UIEdgeInsets scrollInset = [self.moreTableView scrollIndicatorInsets];
+    contentInset.bottom += self.bottomGuideHeight;
+    scrollInset.bottom += self.bottomGuideHeight;
+    [self.moreTableView setContentInset:contentInset];
+    [self.moreTableView setScrollIndicatorInsets:scrollInset];
+    
+    [self.moreTableView registerNib:[UINib nibWithNibName:@"MoreCell" bundle:nil] forCellReuseIdentifier:@"MoreCell"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -44,12 +51,21 @@
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 22.0f;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    return [self.appDelegate ]
+    return @"";
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreCell" forIndexPath:indexPath];
     
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.text = NSLocalizedString(@"Staffs", nil);
+            [cell.textLabel setText:NSLocalizedString(@"Staffs", nil)];
             break;
         default:
             break;

@@ -491,7 +491,35 @@
         <scene sceneID="02H-op-VcU">
             <objects>
                 <viewController id="nut-2v-3J8" userLabel="More" customClass="MoreTableViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jaG-xC-23l"/>
+                        <viewControllerLayoutGuide type="bottom" id="rdS-TK-RWD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ni5-vi-8U5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1EN-X2-lLK">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nut-2v-3J8" id="wPa-M9-ge6"/>
+                                    <outlet property="delegate" destination="nut-2v-3J8" id="nxK-Vf-UlM"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1EN-X2-lLK" firstAttribute="top" secondItem="Ni5-vi-8U5" secondAttribute="topMargin" id="02n-Oy-5FE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1EN-X2-lLK" secondAttribute="trailing" constant="-20" id="hr6-ww-U9u"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="1EN-X2-lLK" secondAttribute="bottom" id="qBH-d2-5V0"/>
+                            <constraint firstItem="1EN-X2-lLK" firstAttribute="leading" secondItem="Ni5-vi-8U5" secondAttribute="leadingMargin" constant="-20" id="vZk-AJ-WmS"/>
+                        </constraints>
+                    </view>
                     <tabBarItem key="tabBarItem" title="More" image="icon_ios_more.png" id="AVK-vx-aDO"/>
+                    <connections>
+                        <outlet property="moreTableView" destination="1EN-X2-lLK" id="JkY-Oa-Fib"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2m-U7-b7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
