@@ -15,6 +15,7 @@
 #import "BLKFlexibleHeightBar.h"
 #import "BLKDelegateSplitter.h"
 #import "SquareCashStyleBehaviorDefiner.h"
+#import "ScheduleViewCell.h"
 
 #define TOOLBAR_MIN_HEIGHT  (22.0f)
 #define TOOLBAR_HEIGHT      (44.0f)
@@ -482,36 +483,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // Configure the cell...
+    NSString *scheduleCellName = @"ScheduleCell";
     
-    UITableViewCell *cell = [UITableViewCell new];
-    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    ScheduleViewCell *cell = (ScheduleViewCell *)[tableView dequeueReusableCellWithIdentifier:scheduleCellName];
     
-    CGFloat cellContantWidth = self.view.frame.size.width - 40;
-    CGFloat detailTextLabelWidth = 25;
-    
-    UILabel *textLabel = [UILabel new];
-    [textLabel setFrame:CGRectMake(20, 12, cellContantWidth - detailTextLabelWidth - 20 , 20.3333)];
-    
-    UILabel *detailTextLabel = [UILabel new];
-    [detailTextLabel setFrame:CGRectMake(cellContantWidth - detailTextLabelWidth, 12, 30, 20.3333)];
-    [detailTextLabel setTextAlignment:NSTextAlignmentRight];
-    [detailTextLabel setTextColor:[UIColor grayColor]];
+    if (cell == nil) {
+        [tableView registerNib:[UINib nibWithNibName:@"ScheduleViewCell"
+                                              bundle:nil]
+        forCellReuseIdentifier:scheduleCellName];
+        cell = (ScheduleViewCell *)[tableView dequeueReusableCellWithIdentifier:scheduleCellName];
+    }
     
     // set font Monospaced
     NSArray *monospacedSetting = @[@{UIFontFeatureTypeIdentifierKey: @(kNumberSpacingType),
                                      UIFontFeatureSelectorIdentifierKey: @(kMonospacedNumbersSelector)}];
-    UIFontDescriptor *newDescriptor = [[detailTextLabel.font fontDescriptor] fontDescriptorByAddingAttributes:@{UIFontDescriptorFeatureSettingsAttribute: monospacedSetting}];
+    UIFontDescriptor *newDescriptor = [[cell.RoomLocationLabel.font fontDescriptor] fontDescriptorByAddingAttributes:@{UIFontDescriptorFeatureSettingsAttribute: monospacedSetting}];
     // Size 0 to use previously set font size
-    detailTextLabel.font = [UIFont fontWithDescriptor:newDescriptor size:0];
-    
-    [cell addSubview:textLabel];
-    [cell addSubview:detailTextLabel];
+    [cell.RoomLocationLabel setFont:[UIFont fontWithDescriptor:newDescriptor size:0]];
     
     NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     NSDictionary *program = [[self.program_date_section objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
-    [textLabel setText:[program objectForKey:@"subject"]];
-    [detailTextLabel setText:[program objectForKey:@"room"]];
+    [cell.ScheduleTitleLabel setText:[program objectForKey:@"subject"]];
+    [cell.RoomLocationLabel setText:[program objectForKey:@"room"]];
     
     return cell;
 }

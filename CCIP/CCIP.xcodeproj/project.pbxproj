@@ -92,6 +92,8 @@
 		6B7142B61D1DBAFB0024EA45 /* scenarioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */; };
 		6B7142B71D1DBAFB0024EA45 /* scenarioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */; };
 		6B8F62261D314CA600B684BD /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F62251D314CA600B684BD /* NavigationController.m */; };
+		6B9117081D4EFC2600537ABE /* ScheduleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */; };
+		6B9117091D4EFC2600537ABE /* ScheduleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9117071D4EFC2600537ABE /* ScheduleViewCell.xib */; };
 		6BA1A5221D1EFBDC00D5924C /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusView.m */; };
 		6BA1A5281D1EFBF100D5924C /* InvalidNetworkMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */; };
 		6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */; };
@@ -237,6 +239,9 @@
 		6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = scenarioCell.xib; sourceTree = "<group>"; };
 		6B8F62241D314CA600B684BD /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		6B8F62251D314CA600B684BD /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
+		6B9117051D4EFC2600537ABE /* ScheduleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewCell.h; sourceTree = "<group>"; };
+		6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewCell.m; sourceTree = "<group>"; };
+		6B9117071D4EFC2600537ABE /* ScheduleViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleViewCell.xib; sourceTree = "<group>"; };
 		6BA1A5201D1EFBDC00D5924C /* StatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusView.h; sourceTree = "<group>"; };
 		6BA1A5211D1EFBDC00D5924C /* StatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusView.m; sourceTree = "<group>"; };
 		6BA1A5261D1EFBF100D5924C /* InvalidNetworkMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvalidNetworkMessageView.h; sourceTree = "<group>"; };
@@ -414,6 +419,9 @@
 				5FB4D48C1D3B242C005BF382 /* MoreCell.h */,
 				5FB4D48D1D3B242C005BF382 /* MoreCell.m */,
 				5FB4D48E1D3B242C005BF382 /* MoreCell.xib */,
+				6B9117051D4EFC2600537ABE /* ScheduleViewCell.h */,
+				6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */,
+				6B9117071D4EFC2600537ABE /* ScheduleViewCell.xib */,
 				28A2992A1D3B90C000145E76 /* ScheduleViewController.h */,
 				28A2992B1D3B90C000145E76 /* ScheduleViewController.m */,
 				28B34BBD1D3EB22E002B959D /* CAPSPageMenu.h */,
@@ -575,6 +583,7 @@
 				6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */,
 				5FB4D47B1D3A8DF6005BF382 /* icon_ios_bell.png in Resources */,
 				6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */,
+				6B9117091D4EFC2600537ABE /* ScheduleViewCell.xib in Resources */,
 				5FB4D45A1D3A865A005BF382 /* icon_ios_topcharts.png in Resources */,
 				2839BF381D4C97AB0062F36D /* Star@3x.png in Resources */,
 				2821DA9E1D3DCA5500AFE139 /* ProgramDetailViewController.xib in Resources */,
@@ -670,6 +679,7 @@
 				2821DA9D1D3DCA5500AFE139 /* ProgramDetailViewController.m in Sources */,
 				5F9171291D325B5E000D0F66 /* StaffView.m in Sources */,
 				5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */,
+				6B9117081D4EFC2600537ABE /* ScheduleViewCell.m in Sources */,
 				28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */,
 				6B2CD5791D286E6F00793194 /* UIColor+addition.m in Sources */,
 				2821DAA71D3DD36500AFE139 /* ProgramDetailViewPagerController.m in Sources */,
