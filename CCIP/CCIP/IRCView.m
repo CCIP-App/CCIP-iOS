@@ -21,10 +21,13 @@
 @implementation IRCView
 
 - (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    [self.webview setDelegate:self];
-    [self.webview.scrollView setScrollEnabled:NO];
+    if (self.webview.delegate == nil) {
+        [self.webview setDelegate:self];
+    }
     
     SEND_GAI(@"IRCView");
     
@@ -35,19 +38,19 @@
                       forControlEvents:UIControlEventValueChanged];
         [self.webview.scrollView addSubview:self.refreshControl];
         
+        [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+        
         [self refresh];
-        [self.webview.scrollView setContentOffset:CGPointMake(0,-128)
+        [self.refreshControl beginRefreshing];
+        [self.webview.scrollView setContentOffset:CGPointMake(0, self.webview.scrollView.contentOffset.y - 60)
                                          animated:NO];
-    } else {
-        [self refresh];
     }
+    
 }
 
 - (void)refresh {
-    [self.refreshControl beginRefreshing];
-
     NSURL *nsurl = self.webview.request.URL;
-    if (nsurl == nil) {
+    if (nsurl == nil || [nsurl.absoluteString isEqualToString:@"about:blank"]) {
         nsurl = [NSURL URLWithString:LOG_BOT_URL];
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
         [self.webview loadRequest:requestObj];
@@ -58,10 +61,10 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    if (self.webview.scrollView.scrollEnabled == NO) {
-        [self.webview.scrollView setScrollEnabled:YES];
+    NSURL *nsurl = self.webview.request.URL;
+    if (![nsurl.absoluteString isEqualToString:@"about:blank"]) {
+        [self.refreshControl endRefreshing];
     }
-    [self.refreshControl endRefreshing];
 }
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
