@@ -119,7 +119,11 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self scrollViewDidScroll:self.tableView];
+    if (self.rooms == nil || self.programs == nil || self.program_types == nil) {
+        [self refreshData];
+    } else {
+        [self scrollViewDidScroll:self.tableView];
+    }
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
@@ -424,17 +428,19 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.program_date_section count];
+    return [nilCoalesceDefault(self.program_date_section, @{}) count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-    return [[self.program_date_section objectForKey:[allKeys objectAtIndex:section]] count];
+    NSArray *allKeys = [[nilCoalesceDefault(self.program_date_section, @{}) allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    NSString *key = [allKeys count] > section ? [allKeys objectAtIndex:section] : nil;
+    return key != nil ? [[nilCoalesceDefault(self.program_date_section, @{}) objectForKey:key] count] : 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-    return [allKeys objectAtIndex:section];
+    NSArray *allKeys = [[nilCoalesceDefault(self.program_date_section, @{}) allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    NSString *key = [allKeys count] > section ? [allKeys objectAtIndex:section] : nil;
+    return nilCoalesce(key);
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
