@@ -20,8 +20,8 @@
 #define TOOLBAR_MIN_HEIGHT  (22.0f)
 #define TOOLBAR_HEIGHT      (44.0f)
 
-#define MAX_TABLE_VIEW      (CGRectMake(0, TOOLBAR_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - self.bottomGuide - TOOLBAR_HEIGHT))
-#define MIN_TABLE_VIEW      (CGRectMake(0, TOOLBAR_MIN_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - self.bottomGuide - TOOLBAR_MIN_HEIGHT))
+#define MAX_TABLE_VIEW      (CGRectMake(0, TOOLBAR_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - TOOLBAR_HEIGHT))
+#define MIN_TABLE_VIEW      (CGRectMake(0, TOOLBAR_MIN_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - TOOLBAR_MIN_HEIGHT))
 
 @interface ScheduleViewController ()
 
@@ -95,6 +95,12 @@
     
     // ... setting up the TableView here ...
     [_tableView setFrame:MAX_TABLE_VIEW];
+    UIEdgeInsets tableViewInset = [_tableView contentInset];
+    tableViewInset.bottom += self.bottomGuide;
+    [_tableView setContentInset:tableViewInset];
+    UIEdgeInsets tableViewScrollInset = [_tableView scrollIndicatorInsets];
+    tableViewScrollInset.bottom += self.bottomGuide;
+    [_tableView setScrollIndicatorInsets:tableViewScrollInset];
     [_tableView setDelegate:(id<UITableViewDelegate>)self.delegateSplitter];
     
     // ... setting up the RefreshControl here ...

@@ -42,7 +42,6 @@
         image = [image imageWithColor:titleHighlightedColor];
         [item setSelectedImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     }
-    [self.tabBar setBarTintColor:[UIColor whiteColor]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
