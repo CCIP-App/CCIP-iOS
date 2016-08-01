@@ -20,8 +20,8 @@
 #define TOOLBAR_MIN_HEIGHT  (22.0f)
 #define TOOLBAR_HEIGHT      (44.0f)
 
-#define MAX_TABLE_VIEW      (CGRectMake(0, TOOLBAR_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - TOOLBAR_HEIGHT))
-#define MIN_TABLE_VIEW      (CGRectMake(0, TOOLBAR_MIN_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - TOOLBAR_MIN_HEIGHT))
+#define MAX_TABLE_VIEW      (CGRectMake(0, TOOLBAR_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - self.bottomGuide - TOOLBAR_HEIGHT))
+#define MIN_TABLE_VIEW      (CGRectMake(0, TOOLBAR_MIN_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - self.bottomGuide - TOOLBAR_MIN_HEIGHT))
 
 @interface ScheduleViewController ()
 
@@ -37,6 +37,9 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @property NSUInteger refreshingCountDown;
+
+@property (nonatomic) CGFloat topGuide;
+@property (nonatomic) CGFloat bottomGuide;
 
 @property (strong, nonatomic) NSArray *rooms;
 @property (strong, nonatomic) NSArray *programs;
@@ -108,6 +111,21 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+}
+
+- (CGFloat)topGuide {
+    _topGuide = 0.0;
+    if (self.navigationController.navigationBar.translucent) {
+        if (self.prefersStatusBarHidden == NO) _topGuide += 20;
+        if (self.navigationController.navigationBarHidden == NO) _topGuide += self.navigationController.navigationBar.bounds.size.height;
+    }
+    return _topGuide;
+}
+
+- (CGFloat)bottomGuide {
+    _bottomGuide = 0.0;
+    if (self.tabBarController.tabBar.hidden == NO) _bottomGuide += self.tabBarController.tabBar.bounds.size.height;
+    return _bottomGuide;
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
