@@ -15,4 +15,5 @@ target 'CCIP' do
   pod 'iRate', '~> 1.11'
   pod 'iCarousel', '~> 1.8'
   pod 'BLKFlexibleHeightBar'
+  pod 'SDWebImage', '~>3.8'
 end
