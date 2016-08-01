@@ -20,7 +20,7 @@ PODS:
     - GoogleSymbolUtilities (~> 1.0)
   - iCarousel (1.8.2)
   - ICViewPager (1.5.1)
-  - iRate (1.11.4)
+  - iRate (1.11.5)
   - OneSignal (1.13.3)
   - STPopup (1.7.0)
   - UICKeyChainStore (2.1.0)
@@ -31,7 +31,7 @@ DEPENDENCIES:
   - Google/Analytics
   - iCarousel (~> 1.8)
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
-  - iRate (from `https://github.com/FrankWu100/iRate`)
+  - iRate (~> 1.11)
   - OneSignal
   - STPopup (~> 1.7)
   - UICKeyChainStore (~> 2.1)
@@ -39,16 +39,11 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   ICViewPager:
     :git: https://github.com/FrankWu100/ICViewPager
-  iRate:
-    :git: https://github.com/FrankWu100/iRate
 
 CHECKOUT OPTIONS:
   ICViewPager:
     :commit: 8c6f30faa4e76ed172bf2e053124ec100e33a521
     :git: https://github.com/FrankWu100/ICViewPager
-  iRate:
-    :commit: 27bbdd43ab42f621f23d8d792544bec22af86984
-    :git: https://github.com/FrankWu100/iRate
 
 SPEC CHECKSUMS:
   BLKFlexibleHeightBar: b27572a69633d8e33f1f2bbc486b04d8e86f742d
@@ -62,11 +57,11 @@ SPEC CHECKSUMS:
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   iCarousel: 67c8a43da5a46795b56aadfc96cd36a16f6149b2
   ICViewPager: c1278b67eceac7252d48252829c3c703285dfb76
-  iRate: 599ed07c854e0695f3c605d1b2a64c67d912acb7
+  iRate: 1546f8ae5ed1565e688bd529f7484780734757e9
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: 2ff3421c1c94f35f4fd77e23feda6bd749b83117
+PODFILE CHECKSUM: a977a572df02f30fd3754df154909935eca8af2a
 
 COCOAPODS: 1.0.1
