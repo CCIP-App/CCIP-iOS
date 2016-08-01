@@ -218,8 +218,15 @@
 - (void)endRefreshingWithCountDown {
     self.refreshingCountDown -= 1;
     if (self.refreshingCountDown == 0) {
-        [self.refreshControl endRefreshing];
-        [self.tableView reloadData];
+        [UIView animateWithDuration:0
+                         animations:^{
+                             [self.tableView reloadData];
+                         } completion:^(BOOL finished) {
+                             if (finished) {
+                                 [self scrollViewDidScroll:self.tableView];
+                                 [self.refreshControl endRefreshing];
+                             }
+                         }];
     }
 }
 
@@ -427,7 +434,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-    return [allKeys objectAtIndex:section];;
+    return [allKeys objectAtIndex:section];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
