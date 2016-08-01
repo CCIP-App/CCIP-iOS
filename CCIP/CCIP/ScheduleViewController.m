@@ -119,6 +119,11 @@
     [super viewWillAppear:animated];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self scrollViewDidScroll:self.tableView];
+}
+
 - (CGFloat)topGuide {
     _topGuide = 0.0;
     if (self.navigationController.navigationBar.translucent) {
