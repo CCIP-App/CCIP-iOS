@@ -495,6 +495,15 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		6BCBC3B61D4F3BB600B5AF35 /* CustomSegue */ = {
+			isa = PBXGroup;
+			children = (
+				6B11BE871D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.h */,
+				6B11BE881D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m */,
+			);
+			name = CustomSegue;
+			sourceTree = "<group>";
+		};
 		6BD8EF1E1D1D73510094BE95 = {
 			isa = PBXGroup;
 			children = (
@@ -518,23 +527,22 @@
 			isa = PBXGroup;
 			children = (
 				288164E11D4F1C52005C68EA /* Class+addition */,
+				6BCBC3B61D4F3BB600B5AF35 /* CustomSegue */,
 				6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */,
 				6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */,
-				6B11BE871D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.h */,
-				6B11BE881D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m */,
 				5FB4D43C1D3A668B005BF382 /* MainTabBarViewController.h */,
 				5FB4D43D1D3A668B005BF382 /* MainTabBarViewController.m */,
-				288164EC1D4F3083005C68EA /* OldCode */,
-				6BA1A5261D1EFBF100D5924C /* InvalidNetworkMessageView.h */,
-				6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */,
-				6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib */,
 				288164E21D4F2F03005C68EA /* CheckinTab */,
 				288164E61D4F2F68005C68EA /* ScheduleTab */,
 				288164E71D4F2FA3005C68EA /* AnnounceTab */,
 				288164E31D4F2F24005C68EA /* IRCTab */,
 				288164E51D4F2F47005C68EA /* MoreTab */,
+				6BA1A5261D1EFBF100D5924C /* InvalidNetworkMessageView.h */,
+				6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */,
+				6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib */,
 				6BE250201D3133FC005FB4B2 /* GuideViewController.h */,
 				6BE250211D3133FC005FB4B2 /* GuideViewController.m */,
+				288164EC1D4F3083005C68EA /* OldCode */,
 			);
 			path = CCIP;
 			sourceTree = "<group>";
