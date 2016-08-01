@@ -149,10 +149,10 @@
             return 0.0;
         case ViewPagerOptionTabLocation:
             return 1.0;
-            //case ViewPagerOptionTabHeight:
-            //    return 49.0;
-            //case ViewPagerOptionTabOffset:
-            //    return 36.0;
+        //case ViewPagerOptionTabHeight:
+        //    return 49.0;
+        //case ViewPagerOptionTabOffset:
+        //    return 36.0;
         case ViewPagerOptionTabDisableTopLine:
             return 1.0;
         case ViewPagerOptionTabDisableBottomLine:
@@ -162,7 +162,7 @@
         case ViewPagerOptionTabSelectedLineWidth:
             return 5.0;
         case ViewPagerOptionTabWidth:
-            return UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? 240.0f : ([[UIScreen mainScreen] bounds].size.width/2);
+            return [[UIScreen mainScreen] bounds].size.width/2;
         case ViewPagerOptionFixFormerTabsPositions:
             return 0.0;
         case ViewPagerOptionFixLatterTabsPositions:
@@ -183,11 +183,15 @@
         case ViewPagerContent: {
             return [UIColor clearColor];
         }
-            
         default: {
             return color;
         }
     }
 }
 
+#pragma mark - Interface Orientation Changes
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    // Update changes after screen rotates
+    [self performSelector:@selector(setNeedsReloadOptions) withObject:nil afterDelay:duration];
+}
 @end
