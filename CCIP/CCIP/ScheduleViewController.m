@@ -494,13 +494,6 @@
         cell = (ScheduleViewCell *)[tableView dequeueReusableCellWithIdentifier:scheduleCellName];
     }
     
-    // set font Monospaced
-    NSArray *monospacedSetting = @[@{UIFontFeatureTypeIdentifierKey: @(kNumberSpacingType),
-                                     UIFontFeatureSelectorIdentifierKey: @(kMonospacedNumbersSelector)}];
-    UIFontDescriptor *newDescriptor = [[cell.RoomLocationLabel.font fontDescriptor] fontDescriptorByAddingAttributes:@{UIFontDescriptorFeatureSettingsAttribute: monospacedSetting}];
-    // Size 0 to use previously set font size
-    [cell.RoomLocationLabel setFont:[UIFont fontWithDescriptor:newDescriptor size:0]];
-    
     NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     NSDictionary *program = [[self.program_date_section objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
