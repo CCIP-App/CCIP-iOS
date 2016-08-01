@@ -11,6 +11,8 @@
 
 @interface MoreTableViewController ()
 
+@property (strong, nonatomic) NSDictionary *userInfo;
+
 @end
 
 @implementation MoreTableViewController
@@ -26,6 +28,8 @@
     [self.moreTableView setScrollIndicatorInsets:scrollInset];
     
     [self.moreTableView registerNib:[UINib nibWithNibName:@"MoreCell" bundle:nil] forCellReuseIdentifier:@"MoreCell"];
+    
+    self.userInfo = [[AppDelegate appDelegate] userInfo];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -56,8 +60,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    return [self.appDelegate ]
-    return @"";
+    return self.userInfo != nil && [[self.userInfo allKeys] containsObject:@"user_id"] ? [NSString stringWithFormat:NSLocalizedString(@"Hi", nil), [self.userInfo objectForKey:@"user_id"]] : nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

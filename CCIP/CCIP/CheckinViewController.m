@@ -23,6 +23,11 @@
 
 @implementation CheckinViewController
 
+- (void)setUserInfo:(NSDictionary *)userInfo {
+    _userInfo = userInfo;
+    [[AppDelegate appDelegate] setUserInfo:userInfo];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

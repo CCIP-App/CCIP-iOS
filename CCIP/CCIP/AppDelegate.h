@@ -28,6 +28,7 @@
 @property (strong, readonly, nonatomic) OneSignal * _Null_unspecified oneSignal;
 @property (strong, readonly, nonatomic) SLColorArt * _Null_unspecified appArt;
 @property (strong, nonatomic) NSString * _Null_unspecified accessToken;
+@property (strong, nonatomic) NSDictionary * _Null_unspecified userInfo;
 @property (strong, nonatomic) CheckinViewController * _Null_unspecified checkinView;
 
 + (AppDelegate * _Nonnull)appDelegate;

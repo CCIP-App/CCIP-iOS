@@ -16,7 +16,7 @@
 "HSSBuilding" = "H.S.S. Building";
 "ActivityCenter" = "Activity Center";
 "All" = "All";
-"Hi" = "Hi ";
+"Hi" = "Hi %@ !";
 "day1checkin" = "Day 1 Checkin";
 "kit" = "Welcome Kit";
 "lunch" = "Lunch";
