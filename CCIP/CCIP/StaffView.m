@@ -10,6 +10,7 @@
 #import "StaffView.h"
 #import "GatewayWebService/GatewayWebService.h"
 #import "StaffCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface StaffView()
 
@@ -46,14 +47,24 @@
     if (![avatar containsString:@"http"]) {
         avatar = [[NSString alloc] initWithFormat:@"https://staff.coscup.org%@", avatar];
     }
+    else {
+        avatar = [avatar stringByAppendingString:@"&s=200"];
+    }
     
+    // not work
     cell.staffImg.image = [UIImage imageNamed:@"StaffIconDefault"];
-    UIImageFromURL( [NSURL URLWithString:avatar], ^( UIImage * image )
-    {
-        cell.staffImg.image = image;
-    }, ^(void){
-        NSLog(@"%@",@"Load staff image error!");
-    });
+    
+//    UIImageFromURL( [NSURL URLWithString:avatar], ^( UIImage * image )
+//    {
+//        cell.staffImg.image = image;
+//    }, ^(void){
+//        NSLog(@"%@",@"Load staff image error!");
+//    });
+    
+    // Here we use the new provided sd_setImageWithURL: method to load the web image
+    [cell.staffImg sd_setImageWithURL:[NSURL URLWithString:avatar]
+                     placeholderImage:[UIImage imageNamed:[NSString stringWithFormat:@"avatar_pk_%@.png", [[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"pk"]]]
+                              options:indexPath.row == 0 ? SDWebImageRefreshCached : 0];
     
     cell.staffTitle.text = [[[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"profile"] objectForKey:@"title"];
     cell.staffName.text = [[[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"profile"] objectForKey:@"display_name"];
