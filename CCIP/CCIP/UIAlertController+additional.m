@@ -7,17 +7,7 @@
 //
 
 #import "UIAlertController+additional.h"
-
-@implementation UIApplication (additional)
-
-+ (UIViewController *)getMostTopPresentedViewController {
-    UIViewController *vc = [[[UIApplication sharedApplication] keyWindow] rootViewController];
-    while ([vc presentedViewController])
-        vc = [vc presentedViewController];
-    return vc;
-}
-
-@end
+#import "UIApplication+addition.h"
 
 @implementation UIAlertController (additional)
 @dynamic titleLabel;

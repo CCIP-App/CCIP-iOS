@@ -8,10 +8,12 @@
 
 #import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
+#import "UIApplication+addition.h"
 #import "IRCView.h"
 
 @interface IRCView()
 
+@property (strong, nonatomic) AppDelegate *appDelegate;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
@@ -19,22 +21,28 @@
 @implementation IRCView
 
 - (void)drawRect:(CGRect)rect {
-    [self.webview setDelegate:self];
+    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    [self.webview setDelegate:self];
     [self.webview.scrollView setScrollEnabled:NO];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"IRCView"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
     
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self
-                            action:@selector(refresh)
-                  forControlEvents:UIControlEventValueChanged];
-    [self.webview.scrollView addSubview:self.refreshControl];
-    
-    [self refresh];
-    [self.webview.scrollView setContentOffset:CGPointMake(0,-128) animated:NO];
+    if (self.refreshControl == nil) {
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        [self.refreshControl addTarget:self
+                                action:@selector(refresh)
+                      forControlEvents:UIControlEventValueChanged];
+        [self.webview.scrollView addSubview:self.refreshControl];
+        
+        [self refresh];
+        [self.webview.scrollView setContentOffset:CGPointMake(0,-128)
+                                         animated:NO];
+    } else {
+        [self refresh];
+    }
 }
 
 - (void)refresh {
@@ -63,13 +71,12 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    if (navigationType == UIWebViewNavigationTypeLinkClicked){
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
         NSURL *url = request.URL;
         
         if ([url.host isEqualToString:[NSURL URLWithString:LOG_BOT_URL].host]) {
             return YES;
-        }
-        else {
+        } else {
             if ([SFSafariViewController class] != nil) {
                 // Open in SFSafariViewController
                 SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
@@ -82,31 +89,23 @@
                 // ProgressBar Color Not Found
                 // ...
                 
-                UIViewController *currentTopVC = [self currentTopViewController];
-                [currentTopVC presentViewController:safariViewController animated:YES completion:nil];
+                [[UIApplication getMostTopPresentedViewController] presentViewController:safariViewController
+                                                                                animated:YES
+                                                                              completion:nil];
             } else {
                 // Open in Mobile Safari
                 if (![[UIApplication sharedApplication] openURL:url]) {
-                    NSLog(@"%@%@",@"Failed to open url:",[url description]);
+                    NSLog(@"%@%@",@"Failed to open url:", [url description]);
                 }
             }
             return NO;
         }
-        
     }
     return YES;
 }
 
 - (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
     // Called when the user taps the Done button to dismiss the Safari view.
-}
-
-- (UIViewController *)currentTopViewController {
-    UIViewController *topVC = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-    while (topVC.presentedViewController) {
-        topVC = topVC.presentedViewController;
-    }
-    return topVC;
 }
 
 @end

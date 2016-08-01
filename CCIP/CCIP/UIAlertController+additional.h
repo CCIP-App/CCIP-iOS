@@ -9,12 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface UIApplication (additional)
-
-+ (UIViewController *)getMostTopPresentedViewController;
-
-@end
-
 @interface UIAlertController (additional)
 
 @property (nonatomic, strong) UILabel *titleLabel, *messageLabel;
