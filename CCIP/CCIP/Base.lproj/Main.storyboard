@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="450"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ane-io-2fB">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ane-io-2fB">
                                 <rect key="frame" x="0.0" y="20" width="400" height="430"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pBJ-Cx-2mH">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="430"/>
