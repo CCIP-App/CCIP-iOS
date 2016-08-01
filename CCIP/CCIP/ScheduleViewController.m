@@ -20,33 +20,21 @@
 #define TOOLBAR_MIN_HEIGHT  (22.0f)
 #define TOOLBAR_HEIGHT      (44.0f)
 
-#define MAX_TABLE_VIEW      (CGRectMake(0, TOOLBAR_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - _bottomGuide - TOOLBAR_HEIGHT))
-#define MIN_TABLE_VIEW      (CGRectMake(0, TOOLBAR_MIN_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - _bottomGuide - TOOLBAR_MIN_HEIGHT))
+#define MAX_TABLE_VIEW      (CGRectMake(0, TOOLBAR_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - TOOLBAR_HEIGHT))
+#define MIN_TABLE_VIEW      (CGRectMake(0, TOOLBAR_MIN_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - TOOLBAR_MIN_HEIGHT))
 
 @interface ScheduleViewController ()
 
-@property (strong, nonatomic) BLKFlexibleHeightBar *myBar;
+@property (strong, nonatomic) IBOutlet BLKFlexibleHeightBar *myBar;
 @property (strong, nonatomic) BLKDelegateSplitter *delegateSplitter;
-@property (strong, nonatomic) UIToolbar *toolbar;
-@property (strong, nonatomic) UIToolbar *labelToolbar;
+@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (strong, nonatomic) IBOutlet UIToolbar *labelToolbar;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *toolbarItem;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *labelToolbarItem;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UILabel *segmentedLabel;
 @property (strong, nonatomic) UISegmentedControl *segmentedControl;
-@property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
-
-@property CGFloat topGuide;
-@property CGFloat bottomGuide;
-
-@property BOOL canScrollHide;
-
-@property BOOL startScroll;
-@property CGFloat lastContentOffsetY;
-@property CGFloat changeHeight;
-@property NSInteger swipeDirection;
-#define SWIPE_UP    1
-#define SWIPE_DOWN  -1
-@property CGFloat deltaY;
-#define DELTAY_SIZE 22
 
 @property NSUInteger refreshingCountDown;
 
@@ -59,7 +47,6 @@
 @property (strong, nonatomic) NSMutableDictionary *program_date;
 @property (strong, nonatomic) NSMutableDictionary *program_date_section;
 
-
 @end
 
 @implementation ScheduleViewController
@@ -70,21 +57,8 @@
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    _topGuide = 0.0;
-    _bottomGuide = 0.0;
-    if (self.navigationController.navigationBar.translucent) {
-        if (self.prefersStatusBarHidden == NO) _topGuide += 20;
-        if (self.navigationController.navigationBarHidden == NO) _topGuide += self.navigationController.navigationBar.bounds.size.height;
-    }
-    if (self.tabBarController.tabBar.hidden == NO) _bottomGuide += self.tabBarController.tabBar.bounds.size.height;
-    
-    // setting for ScrollHide
-    _canScrollHide = NO;
-    _lastContentOffsetY = _topGuide;
-    _changeHeight = 0;
-    
     // ... setting up the SegmentedControl here ...
-    _segmentedControl = [UISegmentedControl new] ;
+    _segmentedControl = [UISegmentedControl new];
     [_segmentedControl setFrame:CGRectMake(0, 0, 200, 30)];
     [_segmentedControl addTarget:self
                           action:@selector(segmentedControlValueDidChange:)
@@ -94,9 +68,19 @@
                                                      blue:60.0f/255.0f
                                                     alpha:1.0f]];
     
-    _myBar = [[BLKFlexibleHeightBar alloc] initWithFrame:CGRectMake(0, _topGuide, self.view.frame.size.width, TOOLBAR_HEIGHT)];
-    _myBar.maximumBarHeight = TOOLBAR_HEIGHT;
-    _myBar.minimumBarHeight = TOOLBAR_MIN_HEIGHT;
+    // ... setting up label here ...
+    _segmentedLabel = [UILabel new];
+    [_segmentedLabel setFrame:CGRectMake(0, 0, 300, TOOLBAR_MIN_HEIGHT)];
+    [_segmentedLabel setTextAlignment:NSTextAlignmentCenter];
+    [_segmentedLabel setFont:[UIFont systemFontOfSize:12.0f weight:2.0f]];
+    
+    // ... setting up the Toolbar's Items here ...
+    [self.toolbarItem setCustomView:_segmentedControl];
+    [self.labelToolbarItem setCustomView:_segmentedLabel];
+    UIColor *barTintColor = [[UIToolbar new] barTintColor];
+    [self.toolbar setBarTintColor:barTintColor];
+    [self.labelToolbar setBarTintColor:barTintColor];
+    
     _myBar.behaviorDefiner = [SquareCashStyleBehaviorDefiner new];
     [_myBar.layer setShadowOffset:CGSizeMake(0, 1.0f/UIScreen.mainScreen.scale)];
     [_myBar.layer setShadowRadius:0];
@@ -104,78 +88,11 @@
     [_myBar.layer setShadowOpacity:0.25f];
     self.delegateSplitter = [[BLKDelegateSplitter alloc] initWithFirstDelegate:_myBar.behaviorDefiner secondDelegate:self];
     
-    // ... setting up the Toolbar here ...
-    _toolbar = [UIToolbar new];
-    [_toolbar setFrame:CGRectMake(0, 0, self.view.bounds.size.width, TOOLBAR_HEIGHT)];
-    [_toolbar setTranslucent:YES];
-    [_toolbar setBarTintColor:[[UIToolbar new] barTintColor]];
-    [_myBar addSubview:_toolbar];
-    
-    // ... setting up the label toolbar here ...
-    _labelToolbar = [UIToolbar new];
-    [_labelToolbar setFrame:CGRectMake(0, 0, self.view.bounds.size.width, TOOLBAR_MIN_HEIGHT)];
-    [_labelToolbar setTranslucent:YES];
-    [_labelToolbar setBarTintColor:[[UIToolbar new] barTintColor]];
-    [_myBar addSubview:_labelToolbar];
-    
-    //// toolbar attributes
-    BLKFlexibleHeightBarSubviewLayoutAttributes *toolbarInitialLayoutAttributes = [BLKFlexibleHeightBarSubviewLayoutAttributes new];
-    toolbarInitialLayoutAttributes.size = _toolbar.frame.size;
-    toolbarInitialLayoutAttributes.center = CGPointMake(CGRectGetMidX(_toolbar.bounds), CGRectGetMidY(_toolbar.bounds));
-    // This is what we want the bar to look like at its maximum height (progress == 0.0)
-    [_toolbar addLayoutAttributes:toolbarInitialLayoutAttributes forProgress:0.0];
-    
-    // Create a final set of layout attributes based on the same values as the initial layout attributes
-    BLKFlexibleHeightBarSubviewLayoutAttributes *toolbarFinalLayoutAttributes = [[BLKFlexibleHeightBarSubviewLayoutAttributes alloc] initWithExistingLayoutAttributes:toolbarInitialLayoutAttributes];
-    toolbarFinalLayoutAttributes.alpha = 0.0;
-    toolbarFinalLayoutAttributes.size = _labelToolbar.frame.size;
-    toolbarFinalLayoutAttributes.center = CGPointMake(CGRectGetMidX(_labelToolbar.bounds), CGRectGetMidY(_labelToolbar.bounds));
-    // This is what we want the bar to look like at its minimum height (progress == 1.0)
-    [_toolbar addLayoutAttributes:toolbarFinalLayoutAttributes forProgress:1.0];
-    
-    //// label toolbar attributes
-    BLKFlexibleHeightBarSubviewLayoutAttributes *lableToolbarInitialLayoutAttributes = [BLKFlexibleHeightBarSubviewLayoutAttributes new];
-    lableToolbarInitialLayoutAttributes.size = _toolbar.frame.size;
-    lableToolbarInitialLayoutAttributes.center = CGPointMake(CGRectGetMidX(_toolbar.bounds), CGRectGetMidY(_toolbar.bounds));
-    lableToolbarInitialLayoutAttributes.alpha = 0.0;
-    // This is what we want the bar to look like at its maximum height (progress == 0.0)
-    [_labelToolbar addLayoutAttributes:lableToolbarInitialLayoutAttributes forProgress:0.0];
-    
-    // Create a final set of layout attributes based on the same values as the initial layout attributes
-    BLKFlexibleHeightBarSubviewLayoutAttributes *labelToolbarFinalLayoutAttributes = [[BLKFlexibleHeightBarSubviewLayoutAttributes alloc] initWithExistingLayoutAttributes:lableToolbarInitialLayoutAttributes];
-    labelToolbarFinalLayoutAttributes.size = _labelToolbar.frame.size;
-    labelToolbarFinalLayoutAttributes.center = CGPointMake(CGRectGetMidX(_labelToolbar.bounds), CGRectGetMidY(_labelToolbar.bounds));
-    labelToolbarFinalLayoutAttributes.alpha = 1.0;
-    // This is what we want the bar to look like at its minimum height (progress == 1.0)
-    [_labelToolbar addLayoutAttributes:labelToolbarFinalLayoutAttributes forProgress:1.0];
-    
-    
-    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                                   target:nil
-                                                                                   action:nil];
-    // ... setting up label here ...
-    _segmentedLabel = [UILabel new];
-    [_segmentedLabel setFrame:CGRectMake(0, 0, self.view.bounds.size.width, TOOLBAR_MIN_HEIGHT)];
-    [_segmentedLabel setTextAlignment:NSTextAlignmentCenter];
-    [_segmentedLabel setFont:[UIFont systemFontOfSize:12.0f weight:2.0f]];
-    UIBarButtonItem *segmentedLabelItem = [[UIBarButtonItem alloc] initWithCustomView:(UIView *)_segmentedLabel];
-    NSArray *labelBarArray = @[flexibleSpace, segmentedLabelItem, flexibleSpace];
-    [_labelToolbar setItems:labelBarArray];
-    
-    // ... setting up the Toolbar's Items here ...
-    UIBarButtonItem *segmentedControlButtonItem = [[UIBarButtonItem alloc] initWithCustomView:(UIView *)_segmentedControl];
-    NSArray *barArray = @[flexibleSpace, segmentedControlButtonItem, flexibleSpace];
-    [_toolbar setItems:barArray];
+    [self settingFlexibleLayoutAttributes:self.view.frame.size.width];
     
     // ... setting up the TableView here ...
-    _tableView = [UITableView new];
     [_tableView setFrame:MAX_TABLE_VIEW];
-    [_tableView setShowsHorizontalScrollIndicator:YES];
     [_tableView setDelegate:(id<UITableViewDelegate>)self.delegateSplitter];
-    [_tableView setDataSource:self];
-    [self.view addSubview:_tableView];
-    
-    [self.view bringSubviewToFront:_myBar];
     
     // ... setting up the RefreshControl here ...
     UITableViewController *tableViewController = [UITableViewController new];
@@ -187,18 +104,69 @@
     tableViewController.refreshControl = self.refreshControl;
     
     [self refreshData];
-    
-    
-    
-    [self.view addSubview:_myBar];
-    
-    
-//    self.tableView.delegate = self;
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    // best call super just in case
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    // will execute before rotation
+    [coordinator animateAlongsideTransition:^(id  _Nonnull context) {
+        // will execute during rotation
+        [self settingFlexibleLayoutAttributes:size.width];
+        [self.myBar layoutSubviews];
+        [self scrollViewDidScroll:self.tableView];
+    } completion:^(id  _Nonnull context) {
+        // will execute after rotation
+        [self settingFlexibleLayoutAttributes:size.width];
+        [self.myBar layoutSubviews];
+        [self scrollViewDidScroll:self.tableView];
+    }];
+}
+
+- (void)settingFlexibleLayoutAttributes:(float)width {
+    CGPoint zeroPoint = CGPointMake(0, 0);
+    CGRect maxRect = { zeroPoint, CGSizeMake(width, TOOLBAR_HEIGHT) };
+    CGRect minRect = { zeroPoint, CGSizeMake(width, TOOLBAR_MIN_HEIGHT) };
+    
+    //// toolbar attributes
+    BLKFlexibleHeightBarSubviewLayoutAttributes *toolbarInitialLayoutAttributes = [BLKFlexibleHeightBarSubviewLayoutAttributes new];
+    toolbarInitialLayoutAttributes.size = maxRect.size;
+    toolbarInitialLayoutAttributes.center = CGPointMake(CGRectGetMidX(maxRect), CGRectGetMidY(maxRect));
+    // This is what we want the bar to look like at its maximum height (progress == 0.0)
+    [_toolbar removeLayoutAttributesForProgress:0.0];
+    [_toolbar addLayoutAttributes:toolbarInitialLayoutAttributes forProgress:0.0];
+    
+    // Create a final set of layout attributes based on the same values as the initial layout attributes
+    BLKFlexibleHeightBarSubviewLayoutAttributes *toolbarFinalLayoutAttributes = [[BLKFlexibleHeightBarSubviewLayoutAttributes alloc] initWithExistingLayoutAttributes:toolbarInitialLayoutAttributes];
+    toolbarFinalLayoutAttributes.alpha = 0.0;
+    toolbarFinalLayoutAttributes.size = minRect.size;
+    toolbarFinalLayoutAttributes.center = CGPointMake(CGRectGetMidX(minRect), CGRectGetMidY(minRect));
+    // This is what we want the bar to look like at its minimum height (progress == 1.0)
+    [_toolbar removeLayoutAttributesForProgress:1.0];
+    [_toolbar addLayoutAttributes:toolbarFinalLayoutAttributes forProgress:1.0];
+    
+    //// label toolbar attributes
+    BLKFlexibleHeightBarSubviewLayoutAttributes *lableToolbarInitialLayoutAttributes = [BLKFlexibleHeightBarSubviewLayoutAttributes new];
+    lableToolbarInitialLayoutAttributes.size = maxRect.size;
+    lableToolbarInitialLayoutAttributes.center = CGPointMake(CGRectGetMidX(maxRect), CGRectGetMidY(maxRect));
+    lableToolbarInitialLayoutAttributes.alpha = 0.0;
+    // This is what we want the bar to look like at its maximum height (progress == 0.0)
+    [_labelToolbar removeLayoutAttributesForProgress:0.0];
+    [_labelToolbar addLayoutAttributes:lableToolbarInitialLayoutAttributes forProgress:0.0];
+    
+    // Create a final set of layout attributes based on the same values as the initial layout attributes
+    BLKFlexibleHeightBarSubviewLayoutAttributes *labelToolbarFinalLayoutAttributes = [[BLKFlexibleHeightBarSubviewLayoutAttributes alloc] initWithExistingLayoutAttributes:lableToolbarInitialLayoutAttributes];
+    labelToolbarFinalLayoutAttributes.size = minRect.size;
+    labelToolbarFinalLayoutAttributes.center = CGPointMake(CGRectGetMidX(minRect), CGRectGetMidY(minRect));
+    labelToolbarFinalLayoutAttributes.alpha = 1.0;
+    // This is what we want the bar to look like at its minimum height (progress == 1.0)
+    [_labelToolbar removeLayoutAttributesForProgress:1.0];
+    [_labelToolbar addLayoutAttributes:labelToolbarFinalLayoutAttributes forProgress:1.0];
 }
 
 - (void)refreshData {
@@ -235,7 +203,7 @@
     }];
 }
 
--(void)endRefreshingWithCountDown{
+- (void)endRefreshingWithCountDown {
     self.refreshingCountDown -= 1;
     if (self.refreshingCountDown == 0) {
         [self.refreshControl endRefreshing];
@@ -243,7 +211,7 @@
     }
 }
 
--(void)setScheduleDate{
+- (void)setScheduleDate {
     static NSDateFormatter *formatter_full = nil;
     if (formatter_full == nil) {
         formatter_full = [NSDateFormatter new];
@@ -261,7 +229,7 @@
     static NSString *time_date;
     
     NSMutableDictionary *datesDict = [NSMutableDictionary new];
-
+    
     for (NSDictionary *program in self.programs) {
         startTime = [formatter_full dateFromString:[program objectForKey:@"starttime"]];
         time_date = [formatter_date stringFromDate:startTime];
@@ -286,18 +254,18 @@
     NSMutableArray *shortcutItems = [NSMutableArray new];
     
     UIApplicationShortcutItem * shortcutItem;
-    shortcutItem =[[UIApplicationShortcutItem alloc] initWithType:@"Checkin"
-                                                   localizedTitle:@"day1 報到"
-                                                localizedSubtitle:nil
-                                                             icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeTaskCompleted]
-                                                         userInfo:nil];
+    shortcutItem = [[UIApplicationShortcutItem alloc] initWithType:@"Checkin"
+                                                    localizedTitle:@"day1 報到"
+                                                 localizedSubtitle:nil
+                                                              icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeTaskCompleted]
+                                                          userInfo:nil];
     [shortcutItems addObject:shortcutItem];
     
-    shortcutItem =[[UIApplicationShortcutItem alloc] initWithType:@"Checkin"
-                                                   localizedTitle:@"day1 領便當"
-                                                localizedSubtitle:nil
-                                                             icon:[UIApplicationShortcutIcon iconWithType: UIApplicationShortcutIconTypeTask]
-                                                         userInfo:nil];
+    shortcutItem = [[UIApplicationShortcutItem alloc] initWithType:@"Checkin"
+                                                    localizedTitle:@"day1 領便當"
+                                                 localizedSubtitle:nil
+                                                              icon:[UIApplicationShortcutIcon iconWithType: UIApplicationShortcutIconTypeTask]
+                                                          userInfo:nil];
     [shortcutItems addObject:shortcutItem];
     
     for (NSString *dateText in self.segmentsTextArray) {
@@ -307,16 +275,16 @@
                                                     localizedSubtitle:@"議程"
                                                                  icon:[UIApplicationShortcutIcon iconWithType: UIApplicationShortcutIconTypeDate]
                                                              userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                        self.segmentsTextArray, @"segmentsTextArray",
-                                                                        self.program_date, @"program_date",
-                                                                        nil]];
+                                                                       self.segmentsTextArray, @"segmentsTextArray",
+                                                                       self.program_date, @"program_date",
+                                                                       nil]];
         [shortcutItems addObject:shortcutItem];
     }
     
     [UIApplication sharedApplication].shortcutItems = shortcutItems;
 }
 
--(void)setSegmentedAndTableWithText:(NSString *)selectedSegmentText{
+- (void)setSegmentedAndTableWithText:(NSString *)selectedSegmentText {
     if ([self.segmentsTextArray count] == 0) {
         NSObject *scheduleDataObj = [[NSUserDefaults standardUserDefaults] objectForKey:@"ScheduleData"];
         if (scheduleDataObj) {
@@ -334,11 +302,11 @@
     [self setSegmentedAndTableWithIndex:segmentsIndex];
 }
 
--(void)setSegmentedAndTableWithIndex:(NSInteger)selectedSegmentIndex{
+- (void)setSegmentedAndTableWithIndex:(NSInteger)selectedSegmentIndex {
     [self.segmentedControl setSelectedSegmentIndex:selectedSegmentIndex];
     NSString *selectedDate = [self.segmentsTextArray objectAtIndex:selectedSegmentIndex];
     [self.segmentedLabel setText:[NSString stringWithFormat:NSLocalizedString(@"ScheduleOfDate", nil), selectedDate]];
-
+    
     static NSDateFormatter *formatter_full = nil;
     if (formatter_full == nil) {
         formatter_full = [NSDateFormatter new];
@@ -380,7 +348,7 @@
     [self.tableView reloadData];
 }
 
--(void)checkScheduleDate {
+- (void)checkScheduleDate {
     static NSDateFormatter *formatter_s = nil;
     if (formatter_s == nil) {
         formatter_s = [NSDateFormatter new];
@@ -398,10 +366,8 @@
     }
 }
 
--(void)segmentedControlValueDidChange:(UISegmentedControl *)segment
-{
+- (void)segmentedControlValueDidChange:(UISegmentedControl *)segment {
     [self setSegmentedAndTableWithIndex:segment.selectedSegmentIndex];
-//    [self.tableView setContentOffset:CGPointMake(0,-_topGuide) animated:YES];
 }
 
 
@@ -411,14 +377,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 // Somewhere in your implementation file:
 
@@ -435,7 +401,7 @@
     CGRect max_frame = MAX_TABLE_VIEW;
     CGRect min_frame = MIN_TABLE_VIEW;
     CGRect frame = CGRectMake(max_frame.origin.x + (min_frame.origin.x - max_frame.origin.x) * progress, max_frame.origin.y + (min_frame.origin.y - max_frame.origin.y) * progress, max_frame.size.width + (min_frame.size.width - max_frame.size.width) * progress, max_frame.size.height + (min_frame.size.height - max_frame.size.height) * progress);
-    [self.tableView setFrame:frame];
+    [scrollView setFrame:frame];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -505,7 +471,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [[self.tableView cellForRowAtIndexPath:indexPath] setSelected:NO
-                                                    animated:YES];
+                                                         animated:YES];
     // TODO: display selected section detail informations
     
     NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
