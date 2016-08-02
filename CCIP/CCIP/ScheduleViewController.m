@@ -21,6 +21,8 @@
 #define TOOLBAR_MIN_HEIGHT  (22.0f)
 #define TOOLBAR_HEIGHT      (44.0f)
 
+#define TABLE_VIEW      (CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+
 #define MAX_TABLE_VIEW      (CGRectMake(0, TOOLBAR_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - TOOLBAR_HEIGHT))
 #define MIN_TABLE_VIEW      (CGRectMake(0, TOOLBAR_MIN_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - TOOLBAR_MIN_HEIGHT))
 
@@ -38,6 +40,7 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @property NSUInteger refreshingCountDown;
+@property (nonatomic) CGFloat previousProgress;
 
 @property (strong, nonatomic) NSArray *rooms;
 @property (strong, nonatomic) NSArray *programs;
@@ -87,18 +90,18 @@
     [_myBar.layer setShadowRadius:0];
     [_myBar.layer setShadowColor:[UIColor blackColor].CGColor];
     [_myBar.layer setShadowOpacity:0.25f];
+    
+    _myBar.maximumBarHeight = TOOLBAR_HEIGHT;
+    _myBar.minimumBarHeight = TOOLBAR_MIN_HEIGHT;
+    [self.view bringSubviewToFront:_myBar];
+
     self.delegateSplitter = [[BLKDelegateSplitter alloc] initWithFirstDelegate:_myBar.behaviorDefiner secondDelegate:self];
     
     [self settingFlexibleLayoutAttributes:self.view.frame.size.width];
     
     // ... setting up the TableView here ...
-    [_tableView setFrame:MAX_TABLE_VIEW];
-    UIEdgeInsets tableViewInset = [_tableView contentInset];
-    tableViewInset.bottom += self.bottomGuideHeight;
-    [_tableView setContentInset:tableViewInset];
-    UIEdgeInsets tableViewScrollInset = [_tableView scrollIndicatorInsets];
-    tableViewScrollInset.bottom += self.bottomGuideHeight;
-    [_tableView setScrollIndicatorInsets:tableViewScrollInset];
+    // [_tableView setFrame:TABLE_VIEW];
+    [self setTableViewInset:self.tableView isInit:YES];
     [_tableView setDelegate:(id<UITableViewDelegate>)self.delegateSplitter];
     
     // ... setting up the RefreshControl here ...
@@ -115,14 +118,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self setTableViewInset:self.tableView isInit:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if (self.rooms == nil || self.programs == nil || self.program_types == nil) {
-        [self refreshData];
-    }
-    [self scrollViewDidScroll:self.tableView];
+//    if (self.rooms == nil || self.programs == nil || self.program_types == nil) {
+//        [self refreshData];
+//    }
+    [self setTableViewInset:self.tableView isInit:YES];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
@@ -134,12 +138,12 @@
         // will execute during rotation
         [self settingFlexibleLayoutAttributes:size.width];
         [self.myBar layoutSubviews];
-        [self scrollViewDidScroll:self.tableView];
+        [self setTableViewInset:self.tableView isInit:YES];
     } completion:^(id  _Nonnull context) {
         // will execute after rotation
         [self settingFlexibleLayoutAttributes:size.width];
         [self.myBar layoutSubviews];
-        [self scrollViewDidScroll:self.tableView];
+        [self setTableViewInset:self.tableView isInit:YES];
     }];
 }
 
@@ -184,6 +188,46 @@
     [_labelToolbar addLayoutAttributes:labelToolbarFinalLayoutAttributes forProgress:1.0];
 }
 
+- (void)setTableViewInset:(UIScrollView *)scrollView isInit:(BOOL)init{
+    
+    CGFloat progress = (scrollView.contentOffset.y + scrollView.contentInset.top) / (self.myBar.maximumBarHeight - self.myBar.minimumBarHeight);
+    if (progress <= 0) {
+        progress = 0;
+    } else if (progress > 1) {
+        progress = 1;
+    }
+    
+    UIEdgeInsets tableViewInset = [scrollView contentInset];
+    UIEdgeInsets tableViewScrollInset = [scrollView scrollIndicatorInsets];
+    
+    CGFloat refreshControlHeight = 0.0;
+    if (self.refreshControl.refreshing) {
+        refreshControlHeight = self.refreshControl.frame.size.height;
+    }
+    
+    if (init) {
+        [self.tableView setFrame:TABLE_VIEW];
+        
+        tableViewInset.bottom = self.bottomGuideHeight;
+        tableViewInset.top = self.topGuideHeight + self.myBar.frame.size.height + refreshControlHeight;
+        
+        tableViewScrollInset.bottom = self.bottomGuideHeight;
+        tableViewScrollInset.top = self.topGuideHeight + self.myBar.frame.size.height;
+    } else if(_previousProgress != progress) {
+        
+        tableViewInset.bottom = self.bottomGuideHeight;
+        tableViewInset.top = self.topGuideHeight + refreshControlHeight + TOOLBAR_HEIGHT + (TOOLBAR_MIN_HEIGHT - TOOLBAR_HEIGHT) * progress;
+        
+        tableViewScrollInset.bottom = self.bottomGuideHeight;
+        tableViewScrollInset.top = self.topGuideHeight + TOOLBAR_HEIGHT + (TOOLBAR_MIN_HEIGHT - TOOLBAR_HEIGHT) * progress;
+        
+        _previousProgress = progress;
+    }
+    
+    [scrollView setContentInset:tableViewInset];
+    [scrollView setScrollIndicatorInsets:tableViewScrollInset];
+}
+
 - (void)refreshData {
     [self.refreshControl beginRefreshing];
     self.refreshingCountDown = 3;
@@ -191,7 +235,7 @@
     GatewayWebService *roome_ws = [[GatewayWebService alloc] initWithURL:ROOM_DATA_URL];
     [roome_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
         if (json != nil) {
-            NSLog(@"%@", json);
+//            NSLog(@"%@", json);
             self.rooms = json;
         }
         [self endRefreshingWithCountDown];
@@ -200,7 +244,7 @@
     GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
     [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
         if (json != nil) {
-            NSLog(@"%@", json);
+//            NSLog(@"%@", json);
             self.programs = json;
             
             [self setScheduleDate];
@@ -211,7 +255,7 @@
     GatewayWebService *program_type_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_TYPE_DATA_URL];
     [program_type_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
         if (json != nil) {
-            NSLog(@"%@", json);
+//            NSLog(@"%@", json);
             self.program_types = json;
         }
         [self endRefreshingWithCountDown];
@@ -223,6 +267,7 @@
     if (self.refreshingCountDown == 0) {
         [UIView animateWithDuration:0
                          animations:^{
+                             [self.refreshControl endRefreshing];
                              [self.tableView reloadData];
                          } completion:^(BOOL finished) {
                              if (finished) {
@@ -235,7 +280,7 @@
 }
 
 - (void)loaded {
-    [self scrollViewDidScroll:self.tableView];
+    [self setTableViewInset:self.tableView isInit:YES];
     [self.refreshControl endRefreshing];
 }
 
@@ -419,17 +464,8 @@
 #pragma mark - Table view data source
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat progress = (scrollView.contentOffset.y + scrollView.contentInset.top) / (self.myBar.maximumBarHeight - self.myBar.minimumBarHeight);
-    if (progress <= 0) {
-        progress = 0;
-    }
-    if (progress > 1) {
-        progress = 1;
-    }
-    CGRect max_frame = MAX_TABLE_VIEW;
-    CGRect min_frame = MIN_TABLE_VIEW;
-    CGRect frame = CGRectMake(max_frame.origin.x + (min_frame.origin.x - max_frame.origin.x) * progress, max_frame.origin.y + (min_frame.origin.y - max_frame.origin.y) * progress, max_frame.size.width + (min_frame.size.width - max_frame.size.width) * progress, max_frame.size.height + (min_frame.size.height - max_frame.size.height) * progress);
-    [scrollView setFrame:frame];
+    
+    [self setTableViewInset:scrollView isInit:NO];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

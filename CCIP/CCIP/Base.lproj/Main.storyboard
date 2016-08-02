@@ -299,8 +299,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IdS-ec-iYA">
-                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IdS-ec-iYA">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="tQi-9N-xiF" id="RjO-tD-xPf"/>
@@ -365,9 +365,15 @@
                             <constraint firstAttribute="trailing" secondItem="IdS-ec-iYA" secondAttribute="trailing" id="EA3-Py-0Gq"/>
                             <constraint firstItem="IdS-ec-iYA" firstAttribute="top" secondItem="aX4-XN-Yb6" secondAttribute="bottom" id="Fzz-hp-wYA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aX4-XN-Yb6" secondAttribute="trailing" constant="-20" id="Sdd-2d-k6E"/>
-                            <constraint firstItem="MH8-nS-NaQ" firstAttribute="top" secondItem="IdS-ec-iYA" secondAttribute="bottom" id="UmB-3E-voI"/>
+                            <constraint firstItem="MH8-nS-NaQ" firstAttribute="top" secondItem="IdS-ec-iYA" secondAttribute="bottom" constant="-49" id="UmB-3E-voI"/>
                             <constraint firstItem="aX4-XN-Yb6" firstAttribute="leading" secondItem="Aca-zw-Tww" secondAttribute="leadingMargin" constant="-20" id="adu-QO-vMn"/>
+                            <constraint firstItem="IdS-ec-iYA" firstAttribute="top" secondItem="IHA-3f-0u0" secondAttribute="bottom" constant="-64" id="nNK-uq-Hb1"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Fzz-hp-wYA"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Schedule" image="icon_ios_topcharts.png" id="fpK-Dn-uGS"/>
                     <connections>
