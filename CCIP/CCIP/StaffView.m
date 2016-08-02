@@ -6,11 +6,11 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import "StaffView.h"
-#import "GatewayWebService/GatewayWebService.h"
 #import "StaffCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface StaffView()
 
@@ -40,27 +40,27 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    id staff = [self.staffJsonArray objectAtIndex:indexPath.row];
     NSString *identifier = @"StaffCell";
-    StaffCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    StaffCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier
+                                                                        forIndexPath:indexPath];
     
-    NSString *avatar = [[[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"profile"] objectForKey:@"avatar"];
+    NSString *avatar = [[staff objectForKey:@"profile"] objectForKey:@"avatar"];
     if (![avatar containsString:@"http"]) {
         avatar = [[NSString alloc] initWithFormat:@"https://staff.coscup.org%@", avatar];
     } else {
         avatar = [avatar stringByAppendingString:@"&s=200"];
     }
     
-    // not work
-    cell.staffImg.image = [UIImage imageNamed:@"StaffIconDefault"];
-    
+    [cell.staffTitle setText:[[staff objectForKey:@"profile"] objectForKey:@"title"]];
+    [cell.staffName setText:[[staff objectForKey:@"profile"] objectForKey:@"display_name"]];
+    [cell.staffImg setImage:[UIImage imageNamed:@"StaffIconDefault"]];
     
     // Here we use the new provided sd_setImageWithURL: method to load the web image
     [cell.staffImg sd_setImageWithURL:[NSURL URLWithString:avatar]
-                     placeholderImage:[UIImage imageNamed:[NSString stringWithFormat:@"avatar_pk_%@.png", [[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"pk"]]]
+                     placeholderImage:[UIImage imageNamed:@"StaffIconDefault"]
                               options:indexPath.row == 0 ? SDWebImageRefreshCached : 0];
     
-    cell.staffTitle.text = [[[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"profile"] objectForKey:@"title"];
-    cell.staffName.text = [[[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"profile"] objectForKey:@"display_name"];
     return cell;
 }
 
