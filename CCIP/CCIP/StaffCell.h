@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface StaffCell : UICollectionViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *staffImg;
 @property (weak, nonatomic) IBOutlet UILabel *staffTitle;
 @property (weak, nonatomic) IBOutlet UILabel *staffName;

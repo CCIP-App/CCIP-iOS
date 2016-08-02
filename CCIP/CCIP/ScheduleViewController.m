@@ -187,7 +187,6 @@
 }
 
 - (void)setTableViewInset:(UIScrollView *)scrollView isInit:(BOOL)init{
-    
     CGFloat progress = (scrollView.contentOffset.y + scrollView.contentInset.top) / (self.myBar.maximumBarHeight - self.myBar.minimumBarHeight);
     if (progress <= 0) {
         progress = 0;
@@ -204,14 +203,12 @@
     }
     
     if (init) {
-        
         tableViewInset.bottom = self.bottomGuideHeight;
         tableViewInset.top = self.topGuideHeight + self.myBar.frame.size.height + refreshControlHeight;
         
         tableViewScrollInset.bottom = self.bottomGuideHeight;
         tableViewScrollInset.top = self.topGuideHeight + self.myBar.frame.size.height;
     } else if(_previousProgress != progress) {
-        
         tableViewInset.bottom = self.bottomGuideHeight;
         tableViewInset.top = self.topGuideHeight + refreshControlHeight + TOOLBAR_HEIGHT + (TOOLBAR_MIN_HEIGHT - TOOLBAR_HEIGHT) * progress;
         
@@ -232,7 +229,6 @@
     GatewayWebService *roome_ws = [[GatewayWebService alloc] initWithURL:ROOM_DATA_URL];
     [roome_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
         if (json != nil) {
-//            NSLog(@"%@", json);
             self.rooms = json;
         }
         [self endRefreshingWithCountDown];
@@ -241,7 +237,6 @@
     GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
     [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
         if (json != nil) {
-//            NSLog(@"%@", json);
             self.programs = json;
             
             [self setScheduleDate];
@@ -252,7 +247,6 @@
     GatewayWebService *program_type_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_TYPE_DATA_URL];
     [program_type_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
         if (json != nil) {
-//            NSLog(@"%@", json);
             self.program_types = json;
         }
         [self endRefreshingWithCountDown];
@@ -461,7 +455,6 @@
 #pragma mark - Table view data source
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
     [self setTableViewInset:scrollView isInit:NO];
 }
 

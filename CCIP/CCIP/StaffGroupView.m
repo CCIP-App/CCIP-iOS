@@ -16,7 +16,7 @@
 
 @implementation StaffGroupView
 
--(void)awakeFromNib {
+- (void)awakeFromNib {
     [super awakeFromNib];
     
     [self.staffGroupTableView registerNib:[UINib nibWithNibName:@"StaffGroupTableViewCell" bundle:nil] forCellReuseIdentifier:@"StaffGroupViewCell"];
