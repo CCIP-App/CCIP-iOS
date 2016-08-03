@@ -218,11 +218,13 @@
             return value * 1.08f;
         }
         case iCarouselOptionFadeMax: {
-            if (self.cards.type == iCarouselTypeCustom) {
-                //set opacity based on distance from camera
-                return 0.0f;
-            }
-            return value;
+            return 0.0;
+        }
+        case iCarouselOptionFadeMin: {
+            return 0.0;
+        }
+        case iCarouselOptionFadeMinAlpha: {
+            return 0.9;
         }
         case iCarouselOptionArc: {
             return value * (carousel.numberOfItems/48.0f);
@@ -234,8 +236,6 @@
         case iCarouselOptionAngle:
         case iCarouselOptionTilt:
         case iCarouselOptionCount:
-        case iCarouselOptionFadeMin:
-        case iCarouselOptionFadeMinAlpha:
         case iCarouselOptionFadeRange:
         case iCarouselOptionOffsetMultiplier:
         case iCarouselOptionVisibleItems: {
