@@ -170,7 +170,16 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CbY-uR-bp6" customClass="iCarousel">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="47c-BE-lsa">
+                                        <rect key="frame" x="281" y="450" width="39" height="37"/>
+                                    </pageControl>
+                                </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.65098039220000004" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="47c-BE-lsa" firstAttribute="centerX" secondItem="CbY-uR-bp6" secondAttribute="centerX" id="GWv-hy-ijb"/>
+                                    <constraint firstAttribute="bottom" secondItem="47c-BE-lsa" secondAttribute="bottom" id="gwi-gd-qSu"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="6Xx-bx-CvE" id="sbk-hj-VTL"/>
                                     <outlet property="delegate" destination="6Xx-bx-CvE" id="Sub-2J-lwi"/>
@@ -188,6 +197,7 @@
                     <tabBarItem key="tabBarItem" title="Checkin" image="icon_ios_pin.png" id="o22-2q-CLO"/>
                     <connections>
                         <outlet property="cards" destination="CbY-uR-bp6" id="dwE-kE-NwC"/>
+                        <outlet property="pageControl" destination="47c-BE-lsa" id="vn7-dR-BUd"/>
                         <segue destination="VKq-4v-Yvp" kind="custom" identifier="ShowGuide" customClass="EmbeddedTabBarControllerSegue" id="lBg-aP-1xi"/>
                     </connections>
                 </viewController>

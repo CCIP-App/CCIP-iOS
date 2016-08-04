@@ -98,13 +98,18 @@
 }
 
 #pragma mark iCarousel methods
+-(void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel {
+    [self.pageControl setCurrentPage:carousel.currentItemIndex];
+}
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
     //return the total number of items in the carousel
     if ([self.scenarios count] > 2 && [[AppDelegate appDelegate] showWhichDay] == 1) {
         // Hard code...
+        [self.pageControl setNumberOfPages:3];
         return 3;
     } else {
+        [self.pageControl setNumberOfPages:[self.scenarios count]];
         return [self.scenarios count];
     }
 }
