@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) IBOutlet iCarousel *cards;
 
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+
 - (void)reloadCard;
 
 @end
