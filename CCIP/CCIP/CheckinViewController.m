@@ -168,7 +168,7 @@
                 [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
                 break;
             case 2:
-                isCheckin = YES;
+                isCheckin = NO;
                 [temp setId:lunchId];
                 [temp.checkinDate setText:dateId];
                 [temp.checkinTitle setText:NSLocalizedString(@"lunch", nil)];
