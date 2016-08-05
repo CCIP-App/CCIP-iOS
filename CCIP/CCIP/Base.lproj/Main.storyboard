@@ -36,16 +36,16 @@
                                             </vibrancyEffect>
                                         </visualEffectView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nug-PN-SE0">
-                                            <rect key="frame" x="40" y="40" width="320" height="250"/>
+                                            <rect key="frame" x="40" y="20" width="320" height="230"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="250" id="zgb-fn-Qwr"/>
+                                                <constraint firstAttribute="height" constant="230" id="zgb-fn-Qwr"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N3c-1x-If0">
-                                            <rect key="frame" x="50" y="330" width="300" height="30"/>
+                                            <rect key="frame" x="50" y="266" width="300" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="33T-P4-oX9"/>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="6FO-ei-bwB"/>
@@ -54,7 +54,7 @@
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="join"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8w3-iH-STq">
-                                            <rect key="frame" x="100" y="380" width="200" height="30"/>
+                                            <rect key="frame" x="100" y="316" width="200" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="200" id="PpU-2O-g6i"/>
                                                 <constraint firstAttribute="height" constant="30" id="ig4-GZ-UB1"/>
@@ -67,10 +67,10 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="8w3-iH-STq" firstAttribute="top" secondItem="N3c-1x-If0" secondAttribute="bottom" constant="20" id="1ST-bC-tbv"/>
-                                        <constraint firstItem="N3c-1x-If0" firstAttribute="top" secondItem="nug-PN-SE0" secondAttribute="bottom" constant="40" id="6Ur-bh-nT5"/>
+                                        <constraint firstItem="N3c-1x-If0" firstAttribute="top" secondItem="nug-PN-SE0" secondAttribute="bottom" constant="16" id="6Ur-bh-nT5"/>
                                         <constraint firstItem="N3c-1x-If0" firstAttribute="centerX" secondItem="pBJ-Cx-2mH" secondAttribute="centerX" id="B98-oo-IZQ"/>
                                         <constraint firstItem="hQW-Em-vct" firstAttribute="leading" secondItem="pBJ-Cx-2mH" secondAttribute="leading" id="BKT-oD-QqG"/>
-                                        <constraint firstItem="nug-PN-SE0" firstAttribute="top" secondItem="pBJ-Cx-2mH" secondAttribute="top" constant="40" id="Dry-Vy-PIw"/>
+                                        <constraint firstItem="nug-PN-SE0" firstAttribute="top" secondItem="pBJ-Cx-2mH" secondAttribute="top" constant="20" id="Dry-Vy-PIw"/>
                                         <constraint firstItem="nug-PN-SE0" firstAttribute="leading" secondItem="pBJ-Cx-2mH" secondAttribute="leading" constant="40" id="MRm-l5-p4K"/>
                                         <constraint firstAttribute="bottom" secondItem="hQW-Em-vct" secondAttribute="bottom" id="SqT-Mh-MNP"/>
                                         <constraint firstItem="hQW-Em-vct" firstAttribute="top" secondItem="pBJ-Cx-2mH" secondAttribute="top" id="cX9-HQ-4Eh"/>
