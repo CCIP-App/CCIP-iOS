@@ -25,7 +25,7 @@
 "CheckinText" = "「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。";
 "UseButton" = "使用";
 "UseButtonPressed" = "已領取";
-"ConfirmAlertText" = "確定已聽從工作人員的指示準備好要使用？";
+"ConfirmAlertText" = "是否已聽從工作人員的指示？";
 "CONFIRM" = "確認使用";
 "Cancel" = "取消";
 "day2checkin" = "第二天報到";
