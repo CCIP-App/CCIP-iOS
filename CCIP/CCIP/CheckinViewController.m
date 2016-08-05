@@ -123,7 +123,7 @@
                                                              bundle:nil];
         CheckinCardViewController *temp = (CheckinCardViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CheckinCardReuseView"];
         
-        [temp.view setFrame:CGRectMake(0, 0, self.cards.frame.size.width - 80, self.cards.frame.size.height - 100)];
+        [temp.view setFrame:CGRectMake(0, 0, self.cards.frame.size.width - 80, self.cards.frame.size.height - 60)];
         view = (UIView*)temp.view;
         
         NSInteger idx = 1;

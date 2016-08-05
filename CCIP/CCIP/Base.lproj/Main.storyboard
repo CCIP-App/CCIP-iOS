@@ -218,17 +218,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8/20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q04-AM-eVF">
-                                <rect key="frame" x="0.0" y="106" width="400" height="80"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8/20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="q04-AM-eVF">
+                                <rect key="frame" x="8" y="94" width="384" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="6Gs-ez-7qc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="68"/>
                                 <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="報到" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZY0-oM-P3F">
-                                <rect key="frame" x="0.0" y="186" width="400" height="44"/>
+                                <rect key="frame" x="8" y="174" width="384" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="i3t-Cg-x4H"/>
                                 </constraints>
@@ -237,9 +237,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUP-DK-ov7">
-                                <rect key="frame" x="10" y="238" width="380" height="110"/>
+                                <rect key="frame" x="16" y="226" width="368" height="118"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="110" id="cK8-Qt-OHm"/>
+                                    <constraint firstAttribute="height" constant="118" id="cK8-Qt-OHm"/>
                                     <constraint firstAttribute="height" constant="150" id="zth-f1-7uE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -252,7 +252,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPS-iQ-rbE">
-                                <rect key="frame" x="10" y="356" width="380" height="46"/>
+                                <rect key="frame" x="16" y="352" width="368" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="hjM-3v-dKt"/>
                                 </constraints>
@@ -266,17 +266,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZY0-oM-P3F" firstAttribute="top" secondItem="q04-AM-eVF" secondAttribute="bottom" id="0O9-4Z-TNo"/>
-                            <constraint firstAttribute="trailing" secondItem="ZY0-oM-P3F" secondAttribute="trailing" id="1G4-59-iPk"/>
-                            <constraint firstItem="ZY0-oM-P3F" firstAttribute="bottom" secondItem="CVw-Vr-a5B" secondAttribute="centerY" constant="-20" id="4dM-yg-Lei"/>
+                            <constraint firstAttribute="trailing" secondItem="ZY0-oM-P3F" secondAttribute="trailing" constant="8" id="1G4-59-iPk"/>
+                            <constraint firstItem="ZY0-oM-P3F" firstAttribute="bottom" secondItem="CVw-Vr-a5B" secondAttribute="centerY" constant="-32" id="4dM-yg-Lei"/>
                             <constraint firstItem="KUP-DK-ov7" firstAttribute="top" secondItem="ZY0-oM-P3F" secondAttribute="bottom" constant="8" id="5sw-P8-9Ho"/>
                             <constraint firstItem="q04-AM-eVF" firstAttribute="centerX" secondItem="ZY0-oM-P3F" secondAttribute="centerX" id="8hh-FU-Szq"/>
                             <constraint firstItem="HPS-iQ-rbE" firstAttribute="top" secondItem="KUP-DK-ov7" secondAttribute="bottom" constant="8" id="CQb-mZ-P4k"/>
                             <constraint firstItem="HPS-iQ-rbE" firstAttribute="centerX" secondItem="KUP-DK-ov7" secondAttribute="centerX" id="KdS-21-58h"/>
                             <constraint firstItem="HPS-iQ-rbE" firstAttribute="width" secondItem="KUP-DK-ov7" secondAttribute="width" id="TTv-3S-VoH"/>
                             <constraint firstItem="ZY0-oM-P3F" firstAttribute="width" secondItem="q04-AM-eVF" secondAttribute="width" id="aqE-b2-JQR"/>
-                            <constraint firstItem="ZY0-oM-P3F" firstAttribute="leading" secondItem="CVw-Vr-a5B" secondAttribute="leading" id="gRH-dg-FGj"/>
-                            <constraint firstItem="KUP-DK-ov7" firstAttribute="leading" secondItem="CVw-Vr-a5B" secondAttribute="leading" constant="10" id="k5g-lf-JW6"/>
-                            <constraint firstAttribute="trailing" secondItem="KUP-DK-ov7" secondAttribute="trailing" constant="10" id="ksw-mE-Pi8"/>
+                            <constraint firstItem="ZY0-oM-P3F" firstAttribute="leading" secondItem="CVw-Vr-a5B" secondAttribute="leading" constant="8" id="gRH-dg-FGj"/>
+                            <constraint firstItem="KUP-DK-ov7" firstAttribute="leading" secondItem="CVw-Vr-a5B" secondAttribute="leading" constant="16" id="k5g-lf-JW6"/>
+                            <constraint firstAttribute="trailing" secondItem="KUP-DK-ov7" secondAttribute="trailing" constant="16" id="ksw-mE-Pi8"/>
                         </constraints>
                         <connections>
                             <outlet property="checkinBtn" destination="HPS-iQ-rbE" id="mqI-VZ-lmI"/>
