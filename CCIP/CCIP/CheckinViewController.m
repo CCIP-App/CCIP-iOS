@@ -37,6 +37,7 @@
     self.cards.type = iCarouselTypeRotary;
     self.cards.pagingEnabled = YES;
     self.cards.bounceDistance = 0.3f;
+    self.cards.contentOffset = CGSizeMake(0, -5.0f);
     
     SEND_GAI(@"CheckinViewController");
 }
@@ -123,7 +124,10 @@
                                                              bundle:nil];
         CheckinCardViewController *temp = (CheckinCardViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CheckinCardReuseView"];
         
-        [temp.view setFrame:CGRectMake(0, 0, self.cards.frame.size.width - 80, self.cards.frame.size.height - 60)];
+        [temp.view setFrame:CGRectMake(0, 0, self.cards.frame.size.width - 30*2, self.cards.frame.size.height - 40 - 50)];
+        // x 0, y 0, left 30, up 40, right 30, bottom 50
+        // self.cards.contentOffset = CGSizeMake(0, -5.0f); // set in viewDidLoad
+        
         view = (UIView*)temp.view;
         
         NSInteger idx = 1;
