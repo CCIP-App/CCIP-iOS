@@ -131,6 +131,12 @@
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSString *url = [[[self.sponsorArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:@"logolink"];
+    if (![url containsString:@"http://"] || ![url containsString:@"https://"]) {
+        url = [@"http://" stringByAppendingString:url];
+    }
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
     // Navigation logic may go here, for example:
     // Create the next view controller.
     //<#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
