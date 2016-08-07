@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "GatewayWebService/GatewayWebService.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SafariServices/SafariServices.h>
 
 @interface SponsorTableView ()
 
@@ -136,7 +137,19 @@
     if (![url hasPrefix:@"http://"] && ![url hasPrefix:@"https://"]) {
         url = [@"http://" stringByAppendingString:url];
     }
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    
+    if ([SFSafariViewController class] != nil) {
+        // Open in SFSafariViewController
+        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:url]];        
+        [[UIApplication getMostTopPresentedViewController] presentViewController:safariViewController
+                                                                        animated:YES
+                                                                      completion:nil];
+    } else {
+        // Open in Mobile Safari
+        if (![[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]]) {
+            NSLog(@"%@%@",@"Failed to open url:", [[NSURL URLWithString:url] description]);
+        }
+    }
     // Navigation logic may go here, for example:
     // Create the next view controller.
     //<#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
