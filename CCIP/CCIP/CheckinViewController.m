@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSDictionary *userInfo;
 @property (strong, nonatomic) NSArray *scenarios;
 @property (strong, nonatomic) GuideViewController *guideViewController;
+@property (strong, nonatomic) UIPageControl *pageControl;
 
 @end
 
@@ -52,17 +53,35 @@
     //   Add gradient to view
     [self.cards.layer insertSublayer:theViewGradient atIndex:0];
     
+    // Init configure pageControl
+    self.pageControl = [UIPageControl new];
+    self.pageControl.pageIndicatorTintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.37f];
+    self.pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+    // NOTE: remember add [self customizePageControlWithBorder]; aftrer self.pageControl.numberOfPages change
+
+    self.pageControl.numberOfPages = 0;
+    [self.cards addSubview:self.pageControl];
+    
     SEND_GAI(@"CheckinViewController");
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];    
+    [super viewDidAppear:animated];
     [self reloadCard];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self hideGuideView];
+}
+
+- (void)customizePageControlWithBorder {
+    for (int i = 0; i < _pageControl.numberOfPages; i++) {
+        UIView* dot = [_pageControl.subviews objectAtIndex:i];
+        dot.layer.cornerRadius = dot.frame.size.height / 2;
+        dot.layer.borderColor = [UIColor whiteColor].CGColor;
+        dot.layer.borderWidth = 1;
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -121,9 +140,11 @@
     if ([self.scenarios count] > 2 && [[AppDelegate appDelegate] showWhichDay] == 1) {
         // Hard code...
         [self.pageControl setNumberOfPages:3];
+        [self customizePageControlWithBorder];
         return 3;
     } else {
         [self.pageControl setNumberOfPages:[self.scenarios count]];
+        [self customizePageControlWithBorder];
         return [self.scenarios count];
     }
 }
@@ -131,15 +152,28 @@
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
     //    UILabel *label = nil;
     
+    static CGRect cardRect;
+    if (CGRectIsEmpty(cardRect)) {
+        // Init cardRect
+        // x 0, y 0, left 30, up 40, right 30, bottom 50
+        // self.cards.contentOffset = CGSizeMake(0, -5.0f); // set in viewDidLoad
+        cardRect = CGRectMake(0, 0, self.cards.bounds.size.width - 30*2, self.cards.bounds.size.height - 40 - 50);
+        
+        // Init configure pageControl
+        CGRect pageControlFrame = self.pageControl.frame;
+        self.pageControl.frame = CGRectMake(self.view.frame.size.width / 2 ,
+                                            (self.cards.frame.size.height + (self.cards.frame.size.height - 50)) / 2,
+                                            pageControlFrame.size.width,
+                                            pageControlFrame.size.height);
+    }
+
     //create new view if no view is available for recycling
     if (view == nil) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
                                                              bundle:nil];
         CheckinCardViewController *temp = (CheckinCardViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CheckinCardReuseView"];
         
-        [temp.view setFrame:CGRectMake(0, 0, self.cards.frame.size.width - 30*2, self.cards.frame.size.height - 40 - 50)];
-        // x 0, y 0, left 30, up 40, right 30, bottom 50
-        // self.cards.contentOffset = CGSizeMake(0, -5.0f); // set in viewDidLoad
+        [temp.view setFrame:cardRect];
         
         view = (UIView*)temp.view;
         
