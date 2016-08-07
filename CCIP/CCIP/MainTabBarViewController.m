@@ -42,6 +42,8 @@
         image = [image imageWithColor:titleHighlightedColor];
         [item setSelectedImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     }
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

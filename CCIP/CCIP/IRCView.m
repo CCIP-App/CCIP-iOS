@@ -46,6 +46,18 @@
         [self.refreshControl beginRefreshing];
         [self.webview.scrollView setContentOffset:CGPointMake(0, self.webview.scrollView.contentOffset.y - 60)
                                          animated:NO];
+        
+        UIEdgeInsets viewInset = [self.webview.scrollView contentInset];
+        UIEdgeInsets viewScrollInset = [self.webview.scrollView scrollIndicatorInsets];
+
+        viewInset.bottom = self.bottomGuideHeight;
+        viewInset.top = self.topGuideHeight + 60;
+        
+        viewScrollInset.bottom = self.bottomGuideHeight;
+        viewScrollInset.top = self.topGuideHeight;
+        
+        [self.webview.scrollView setContentInset:viewInset];
+        [self.webview.scrollView setScrollIndicatorInsets:viewScrollInset];
     }
     
 }

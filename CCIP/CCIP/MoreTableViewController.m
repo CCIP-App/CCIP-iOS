@@ -38,6 +38,18 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     SEND_GAI(@"MoreTableViewController");
+    
+    UIEdgeInsets viewInset = [self.moreTableView contentInset];
+    UIEdgeInsets viewScrollInset = [self.moreTableView scrollIndicatorInsets];
+    
+    viewInset.bottom = self.bottomGuideHeight;
+    viewInset.top = self.topGuideHeight;
+    
+    viewScrollInset.bottom = self.bottomGuideHeight;
+    viewScrollInset.top = self.topGuideHeight;
+    
+    [self.moreTableView setContentInset:viewInset];
+    [self.moreTableView setScrollIndicatorInsets:viewScrollInset];
 }
 
 - (void)didReceiveMemoryWarning {
