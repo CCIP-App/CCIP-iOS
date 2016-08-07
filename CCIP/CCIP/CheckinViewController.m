@@ -55,9 +55,6 @@
     
     // Init configure pageControl
     self.pageControl = [UIPageControl new];
-    self.pageControl.pageIndicatorTintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.37f];
-    self.pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-    // NOTE: remember add [self customizePageControlWithBorder]; aftrer self.pageControl.numberOfPages change
 
     self.pageControl.numberOfPages = 0;
     [self.cards addSubview:self.pageControl];
@@ -73,15 +70,6 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self hideGuideView];
-}
-
-- (void)customizePageControlWithBorder {
-    for (int i = 0; i < _pageControl.numberOfPages; i++) {
-        UIView* dot = [_pageControl.subviews objectAtIndex:i];
-        dot.layer.cornerRadius = dot.frame.size.height / 2;
-        dot.layer.borderColor = [UIColor whiteColor].CGColor;
-        dot.layer.borderWidth = 1;
-    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -140,11 +128,9 @@
     if ([self.scenarios count] > 2 && [[AppDelegate appDelegate] showWhichDay] == 1) {
         // Hard code...
         [self.pageControl setNumberOfPages:3];
-        [self customizePageControlWithBorder];
         return 3;
     } else {
         [self.pageControl setNumberOfPages:[self.scenarios count]];
-        [self customizePageControlWithBorder];
         return [self.scenarios count];
     }
 }
