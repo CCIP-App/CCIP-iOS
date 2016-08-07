@@ -133,7 +133,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSString *url = [[[self.sponsorArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:@"logolink"];
-    if (![url containsString:@"http://"] || ![url containsString:@"https://"]) {
+    if (![url containsString:@"http://"] && ![url containsString:@"https://"]) {
         url = [@"http://" stringByAppendingString:url];
     }
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
