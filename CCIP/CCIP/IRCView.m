@@ -23,12 +23,18 @@
     
     if (self.webview.delegate == nil) {
         [self.webview setDelegate:self];
-        UIEdgeInsets contentInset = [self.webview.scrollView contentInset];
-        UIEdgeInsets scrollInset = [self.webview.scrollView scrollIndicatorInsets];
-        contentInset.bottom += self.bottomGuideHeight;
-        scrollInset.bottom += self.bottomGuideHeight;
-        [self.webview.scrollView setContentInset:contentInset];
-        [self.webview.scrollView setScrollIndicatorInsets:scrollInset];
+        
+        UIEdgeInsets viewInset = [self.webview.scrollView contentInset];
+        viewInset.top = self.topGuideHeight;
+        viewInset.bottom = self.bottomGuideHeight;
+        [self.webview.scrollView setContentInset:viewInset];
+
+        UIEdgeInsets viewScrollInset = [self.webview.scrollView scrollIndicatorInsets];
+        viewScrollInset.top = self.topGuideHeight;
+        viewScrollInset.bottom = self.bottomGuideHeight;
+        [self.webview.scrollView setScrollIndicatorInsets:viewScrollInset];
+        
+        [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
     }
     
     SEND_GAI(@"IRCView");
@@ -40,24 +46,10 @@
                       forControlEvents:UIControlEventValueChanged];
         [self.webview.scrollView addSubview:self.refreshControl];
         
-        [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-        
         [self refresh];
         [self.refreshControl beginRefreshing];
         [self.webview.scrollView setContentOffset:CGPointMake(0, self.webview.scrollView.contentOffset.y - 60)
                                          animated:NO];
-        
-        UIEdgeInsets viewInset = [self.webview.scrollView contentInset];
-        UIEdgeInsets viewScrollInset = [self.webview.scrollView scrollIndicatorInsets];
-
-        viewInset.bottom = self.bottomGuideHeight;
-        viewInset.top = self.topGuideHeight + 60;
-        
-        viewScrollInset.bottom = self.bottomGuideHeight;
-        viewScrollInset.top = self.topGuideHeight;
-        
-        [self.webview.scrollView setContentInset:viewInset];
-        [self.webview.scrollView setScrollIndicatorInsets:viewScrollInset];
     }
     
 }
