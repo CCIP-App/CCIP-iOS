@@ -138,7 +138,6 @@
         <scene sceneID="djy-Ka-IMA">
             <objects>
                 <tabBarController id="vFY-Ie-dA7" customClass="MainTabBarViewController" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="klf-rp-hYS"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="WUv-Be-dcN">

@@ -205,16 +205,16 @@
         
         if (init) {
             tableViewInset.bottom = self.bottomGuideHeight;
-            tableViewInset.top = self.myBar.frame.size.height + refreshControlHeight;
+            tableViewInset.top = self.topGuideHeight + self.myBar.frame.size.height + refreshControlHeight;
             
             tableViewScrollInset.bottom = self.bottomGuideHeight;
-            tableViewScrollInset.top = self.myBar.frame.size.height;
+            tableViewScrollInset.top = self.topGuideHeight + self.myBar.frame.size.height;
         } else if(_previousProgress != progress) {
             tableViewInset.bottom = self.bottomGuideHeight;
-            tableViewInset.top = refreshControlHeight + TOOLBAR_HEIGHT + (TOOLBAR_MIN_HEIGHT - TOOLBAR_HEIGHT) * progress;
+            tableViewInset.top = self.topGuideHeight + refreshControlHeight + TOOLBAR_HEIGHT + (TOOLBAR_MIN_HEIGHT - TOOLBAR_HEIGHT) * progress;
             
             tableViewScrollInset.bottom = self.bottomGuideHeight;
-            tableViewScrollInset.top = TOOLBAR_HEIGHT + (TOOLBAR_MIN_HEIGHT - TOOLBAR_HEIGHT) * progress;
+            tableViewScrollInset.top = self.topGuideHeight + TOOLBAR_HEIGHT + (TOOLBAR_MIN_HEIGHT - TOOLBAR_HEIGHT) * progress;
             
             _previousProgress = progress;
         }
