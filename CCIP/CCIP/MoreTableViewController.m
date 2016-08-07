@@ -52,7 +52,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -69,6 +69,9 @@
     switch (indexPath.row) {
         case 0:
             [cell.textLabel setText:NSLocalizedString(@"Staffs", nil)];
+            break;
+        case 1:
+            [cell.textLabel setText:NSLocalizedString(@"Sponsors", nil)];
             break;
         default:
             break;
@@ -113,12 +116,17 @@
 
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     UIViewController *detailViewController;
     NSString *nibName;
     
     switch (indexPath.row) {
         case 0:
             nibName = @"StaffGroupView";
+            break;
+        case 1:
+            nibName = @"SponsorTableView";
             break;
         default:
             break;

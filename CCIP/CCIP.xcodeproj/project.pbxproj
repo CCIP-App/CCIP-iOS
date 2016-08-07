@@ -31,7 +31,11 @@
 		28B34BBF1D3EB22E002B959D /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B34BBE1D3EB22E002B959D /* CAPSPageMenu.m */; };
 		28C22A541D3178A9004A6575 /* ProgramDetailPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C22A531D3178A9004A6575 /* ProgramDetailPopViewController.m */; };
 		28ED8C7A1D31DC1F00BC47E0 /* ShareProgramTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED8C791D31DC1F00BC47E0 /* ShareProgramTableViewController.m */; };
+		5F0E55D01D574F7F004664FB /* SponsorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0E55CE1D574F7F004664FB /* SponsorTableViewCell.m */; };
+		5F0E55D11D574F7F004664FB /* SponsorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F0E55CF1D574F7F004664FB /* SponsorTableViewCell.xib */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
+		5F8B2D2A1D55E02200A68C7D /* SponsorTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B2D281D55E02200A68C7D /* SponsorTableView.m */; };
+		5F8B2D2B1D55E02200A68C7D /* SponsorTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F8B2D291D55E02200A68C7D /* SponsorTableView.xib */; };
 		5F9171291D325B5E000D0F66 /* StaffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9171271D325B5E000D0F66 /* StaffView.m */; };
 		5F91712A1D325B5E000D0F66 /* StaffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9171281D325B5E000D0F66 /* StaffView.xib */; };
 		5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91712C1D32990C000D0F66 /* StaffCell.m */; };
@@ -157,7 +161,13 @@
 		28C22A531D3178A9004A6575 /* ProgramDetailPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramDetailPopViewController.m; sourceTree = "<group>"; };
 		28ED8C781D31DC1F00BC47E0 /* ShareProgramTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareProgramTableViewController.h; sourceTree = "<group>"; };
 		28ED8C791D31DC1F00BC47E0 /* ShareProgramTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareProgramTableViewController.m; sourceTree = "<group>"; };
+		5F0E55CD1D574F7F004664FB /* SponsorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorTableViewCell.h; sourceTree = "<group>"; };
+		5F0E55CE1D574F7F004664FB /* SponsorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorTableViewCell.m; sourceTree = "<group>"; };
+		5F0E55CF1D574F7F004664FB /* SponsorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorTableViewCell.xib; sourceTree = "<group>"; };
 		5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5F8B2D271D55E02200A68C7D /* SponsorTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorTableView.h; sourceTree = "<group>"; };
+		5F8B2D281D55E02200A68C7D /* SponsorTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorTableView.m; sourceTree = "<group>"; };
+		5F8B2D291D55E02200A68C7D /* SponsorTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorTableView.xib; sourceTree = "<group>"; };
 		5F9171261D325B5E000D0F66 /* StaffView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffView.h; sourceTree = "<group>"; };
 		5F9171271D325B5E000D0F66 /* StaffView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffView.m; sourceTree = "<group>"; };
 		5F9171281D325B5E000D0F66 /* StaffView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffView.xib; sourceTree = "<group>"; };
@@ -371,6 +381,7 @@
 				5FB4D48D1D3B242C005BF382 /* MoreCell.m */,
 				5FB4D48E1D3B242C005BF382 /* MoreCell.xib */,
 				288164E41D4F2F32005C68EA /* StaffView */,
+				5F8B2D261D55DAC900A68C7D /* SponsorView */,
 			);
 			name = MoreTab;
 			sourceTree = "<group>";
@@ -457,6 +468,19 @@
 				6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */,
 			);
 			name = OldCode;
+			sourceTree = "<group>";
+		};
+		5F8B2D261D55DAC900A68C7D /* SponsorView */ = {
+			isa = PBXGroup;
+			children = (
+				5F8B2D271D55E02200A68C7D /* SponsorTableView.h */,
+				5F8B2D281D55E02200A68C7D /* SponsorTableView.m */,
+				5F8B2D291D55E02200A68C7D /* SponsorTableView.xib */,
+				5F0E55CD1D574F7F004664FB /* SponsorTableViewCell.h */,
+				5F0E55CE1D574F7F004664FB /* SponsorTableViewCell.m */,
+				5F0E55CF1D574F7F004664FB /* SponsorTableViewCell.xib */,
+			);
+			name = SponsorView;
 			sourceTree = "<group>";
 		};
 		5FB4D4401D3A8304005BF382 /* Images */ = {
@@ -636,6 +660,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FB4D4481D3A8319005BF382 /* icon_ios_pin@3x.png in Resources */,
+				5F8B2D2B1D55E02200A68C7D /* SponsorTableView.xib in Resources */,
 				5FECE5F61D353C4900242DB4 /* StaffGroupTableViewCell.xib in Resources */,
 				2839BF3A1D4C97AB0062F36D /* Star@2x.png in Resources */,
 				5FECE5AD1D352E8A00242DB4 /* StaffGroupView.xib in Resources */,
@@ -678,6 +703,7 @@
 				6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */,
 				5FB4D47B1D3A8DF6005BF382 /* icon_ios_bell.png in Resources */,
 				6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */,
+				5F0E55D11D574F7F004664FB /* SponsorTableViewCell.xib in Resources */,
 				6B9117091D4EFC2600537ABE /* ScheduleViewCell.xib in Resources */,
 				5FB4D45A1D3A865A005BF382 /* icon_ios_topcharts.png in Resources */,
 				2839BF381D4C97AB0062F36D /* Star@3x.png in Resources */,
@@ -765,8 +791,10 @@
 				28B34BBF1D3EB22E002B959D /* CAPSPageMenu.m in Sources */,
 				5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */,
 				5FECE5AC1D352E8A00242DB4 /* StaffGroupView.m in Sources */,
+				5F8B2D2A1D55E02200A68C7D /* SponsorTableView.m in Sources */,
 				6B11BE811D4CBA5800B87EA9 /* UIImage+addition.m in Sources */,
 				6BA1A5221D1EFBDC00D5924C /* StatusView.m in Sources */,
+				5F0E55D01D574F7F004664FB /* SponsorTableViewCell.m in Sources */,
 				6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */,
 				6B11BE891D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m in Sources */,
 				2821DA9D1D3DCA5500AFE139 /* ProgramDetailViewController.m in Sources */,

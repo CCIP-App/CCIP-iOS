@@ -12,9 +12,12 @@
 #define CC_STATUS(token)        ([__API_HOST__ stringByAppendingFormat:@"status?token=%@", token])
 #define CC_USE(token, scenario) ([__API_HOST__ stringByAppendingFormat:@"use/%@?token=%@", scenario, token])
 
+#define COSCUP_WEB_URL          (@"https://coscup.org")
 #define ROOM_DATA_URL           (@"https://coscup.org/2016-assets/json/room.json")
 #define PROGRAM_DATA_URL        (@"https://coscup.org/2016-assets/json/program.json")
 #define PROGRAM_TYPE_DATA_URL   (@"https://coscup.org/2016-assets/json/type.json")
+#define SPONSOR_LEVEL_URL       (@"https://coscup.org/2016-assets/json/level.json")
+#define SPONSOR_LIST_URL        (@"https://coscup.org/2016-assets/json/sponsor.json")
 
 #define STAFF_DATA_URL          (@"https://staff.coscup.org/api/staffgroups/?format=json")
 
