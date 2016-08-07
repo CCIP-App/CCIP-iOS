@@ -187,39 +187,41 @@
 }
 
 - (void)setTableViewInset:(UIScrollView *)scrollView isInit:(BOOL)init{
-    CGFloat progress = (scrollView.contentOffset.y + scrollView.contentInset.top) / (self.myBar.maximumBarHeight - self.myBar.minimumBarHeight);
-    if (progress <= 0) {
-        progress = 0;
-    } else if (progress > 1) {
-        progress = 1;
-    }
-    
-    UIEdgeInsets tableViewInset = [scrollView contentInset];
-    UIEdgeInsets tableViewScrollInset = [scrollView scrollIndicatorInsets];
-    
-    CGFloat refreshControlHeight = 0.0;
-    if (self.refreshControl.refreshing) {
-        refreshControlHeight = self.refreshControl.frame.size.height;
-    }
-    
-    if (init) {
-        tableViewInset.bottom = self.bottomGuideHeight;
-        tableViewInset.top = self.myBar.frame.size.height + refreshControlHeight;
+    if (scrollView.contentSize.height > scrollView.frame.size.height || init) {
+        CGFloat progress = (scrollView.contentOffset.y + scrollView.contentInset.top) / (self.myBar.maximumBarHeight - self.myBar.minimumBarHeight);
+        if (progress <= 0) {
+            progress = 0;
+        } else if (progress > 1) {
+            progress = 1;
+        }
         
-        tableViewScrollInset.bottom = self.bottomGuideHeight;
-        tableViewScrollInset.top = self.myBar.frame.size.height;
-    } else if(_previousProgress != progress) {
-        tableViewInset.bottom = self.bottomGuideHeight;
-        tableViewInset.top = refreshControlHeight + TOOLBAR_HEIGHT + (TOOLBAR_MIN_HEIGHT - TOOLBAR_HEIGHT) * progress;
+        UIEdgeInsets tableViewInset = [scrollView contentInset];
+        UIEdgeInsets tableViewScrollInset = [scrollView scrollIndicatorInsets];
         
-        tableViewScrollInset.bottom = self.bottomGuideHeight;
-        tableViewScrollInset.top = TOOLBAR_HEIGHT + (TOOLBAR_MIN_HEIGHT - TOOLBAR_HEIGHT) * progress;
+        CGFloat refreshControlHeight = 0.0;
+        if (self.refreshControl.refreshing) {
+            refreshControlHeight = self.refreshControl.frame.size.height;
+        }
         
-        _previousProgress = progress;
+        if (init) {
+            tableViewInset.bottom = self.bottomGuideHeight;
+            tableViewInset.top = self.myBar.frame.size.height + refreshControlHeight;
+            
+            tableViewScrollInset.bottom = self.bottomGuideHeight;
+            tableViewScrollInset.top = self.myBar.frame.size.height;
+        } else if(_previousProgress != progress) {
+            tableViewInset.bottom = self.bottomGuideHeight;
+            tableViewInset.top = refreshControlHeight + TOOLBAR_HEIGHT + (TOOLBAR_MIN_HEIGHT - TOOLBAR_HEIGHT) * progress;
+            
+            tableViewScrollInset.bottom = self.bottomGuideHeight;
+            tableViewScrollInset.top = TOOLBAR_HEIGHT + (TOOLBAR_MIN_HEIGHT - TOOLBAR_HEIGHT) * progress;
+            
+            _previousProgress = progress;
+        }
+        
+        [scrollView setContentInset:tableViewInset];
+        [scrollView setScrollIndicatorInsets:tableViewScrollInset];
     }
-    
-    [scrollView setContentInset:tableViewInset];
-    [scrollView setScrollIndicatorInsets:tableViewScrollInset];
 }
 
 - (void)refreshData {
