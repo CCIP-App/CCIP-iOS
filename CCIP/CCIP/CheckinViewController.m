@@ -33,11 +33,24 @@
     
     [[AppDelegate appDelegate] setCheckinView:self];
     
-    //configure carousel
+    // Init configure carousel
     self.cards.type = iCarouselTypeRotary;
     self.cards.pagingEnabled = YES;
     self.cards.bounceDistance = 0.3f;
     self.cards.contentOffset = CGSizeMake(0, -5.0f);
+    
+    // Set carousel background linear diagonal gradient
+    //   Create the colors
+    UIColor *topColor = [UIColor colorWithRed:0.0/255.0 green:166.0/255.0 blue:99.0/255.0 alpha:1.0];
+    UIColor *bottomColor = [UIColor colorWithRed:48.0/255.0 green:65.0/255.0 blue:73.0/255.0 alpha:1.0];
+    //   Create the gradient
+    CAGradientLayer *theViewGradient = [CAGradientLayer layer];
+    theViewGradient.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
+    theViewGradient.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.topGuideHeight - self.bottomGuideHeight);
+    theViewGradient.startPoint = CGPointMake(0.2, 0);
+    theViewGradient.endPoint = CGPointMake(0.8, 1);
+    //   Add gradient to view
+    [self.cards.layer insertSublayer:theViewGradient atIndex:0];
     
     SEND_GAI(@"CheckinViewController");
 }
@@ -233,7 +246,7 @@
             return 0.0;
         }
         case iCarouselOptionFadeMinAlpha: {
-            return 0.9;
+            return 0.85;
         }
         case iCarouselOptionArc: {
             return value * (carousel.numberOfItems/48.0f);
