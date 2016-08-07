@@ -61,12 +61,15 @@
     
     self.detailViewPager.view.frame = CGRectMake(0, self.topBG.frame.size.height-44, self.view.bounds.size.width, self.view.bounds.size.height-(self.topBG.frame.size.height-44));
     
+    // remove followButton, use line bot to provide
+    /*
     UIBarButtonItem *followButton = [[UIBarButtonItem alloc] initWithImage:[self haveRegistedLocalNotificationAction] ? [UIImage imageNamed:@"Star_Filled.png"] : [UIImage imageNamed:@"Star.png"]
                                                        landscapeImagePhone:nil
                                                                      style:UIBarButtonItemStylePlain
                                                                     target:self
                                                                     action:@selector(followAction:)];
     self.navigationItem.rightBarButtonItem = followButton;
+    */
 }
 
 - (void)didReceiveMemoryWarning {
