@@ -28,6 +28,7 @@
 "ConfirmAlertText" = "是否已聽從工作人員的指示？";
 "CONFIRM" = "確認使用";
 "Cancel" = "取消";
+"GotIt" = "明白了";
 "day2checkin" = "第二天報到";
 "day2lunch" = "第二天午餐領取";
 "Addition" = "其他";
@@ -41,6 +42,8 @@
 "CheckinNotice" = "請注意！在點下『確認使用』之後，將立即視為已領取。\n請確認大會工作人員已經指示您按下『確認使用』按鈕後再按下按鈕，謝謝！";
 "CheckinButton" = "確認使用";
 "StatusNotice" = "您已經使用成功！\n\n請停留在此畫面給工作人員確認，謝謝！";
+"NetworkAlert" = "請連至會場網路";
+"NetworkAlertDesc" = "只有在連線到會場網路時，才可使用報到功能";
 "NotAvailableTitle" = "現在不能按喔";
 "NotAvailableMessage" = "提早太多按了你就會杯具了";
 "NotAvailableButtonOk" = "好喔";

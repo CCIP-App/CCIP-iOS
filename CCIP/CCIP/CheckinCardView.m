@@ -58,9 +58,15 @@
                     [self.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil) forState:UIControlStateNormal];
                     [self.checkinBtn setBackgroundColor:disabledColor];
                 }
+            } else {
+                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
+                [ac showAlert:nil];
             }
         }];
     } else {
+        if (self.used) {
+            return;
+        }
         UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"UseButton", nil)
                                                     withMessage:NSLocalizedString(@"ConfirmAlertText", nil)
                                                cancelButtonText:NSLocalizedString(@"Cancel", nil)

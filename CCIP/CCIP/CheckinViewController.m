@@ -216,6 +216,7 @@
         }
         
         if ([self.scenarios[idx] objectForKey:@"used"]) {
+            [temp setUsed:[NSNumber numberWithBool:YES]];
             if (isCheckin) {
                 [temp.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil)
                                  forState:UIControlStateNormal];
@@ -225,6 +226,7 @@
             }
             [temp.checkinBtn setBackgroundColor:[UIColor grayColor]];
         } else {
+            [temp setUsed:[NSNumber numberWithBool:NO]];
             if (isCheckin) {
                 [temp.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButton", nil)
                                  forState:UIControlStateNormal];

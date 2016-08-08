@@ -26,6 +26,10 @@
     [((CheckinCardView *)self.view) setId:id];
 }
 
+- (void)setUsed:(NSNumber *)used {
+    [((CheckinCardView *)self.view) setUsed:used];
+}
+
 /*
 #pragma mark - Navigation
 

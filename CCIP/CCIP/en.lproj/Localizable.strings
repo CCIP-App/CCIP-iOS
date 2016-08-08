@@ -28,6 +28,7 @@
 "ConfirmAlertText" = "Ready to use with staff's instruction?";
 "CONFIRM" = "CONFIRM";
 "Cancel" = "Cancel";
+"GotIt" = "Got it";
 "day2checkin" = "Day 2 Checkin";
 "day2lunch" = "Day 2 Lunch";
 "Addition" = "Addition";
@@ -41,6 +42,8 @@
 "CheckinNotice" = "Notice! It will be considered USED after click \"Confirm\" button.\nPlease double check that our staff has instructed you to click the \"Confirm\" button. Thanks for your cooperation.";
 "CheckinButton" = "Confirm use";
 "StatusNotice" = "It has been redeemed!!\n\nPlease stay in this screen view for ours staff to validate your ticket, thank you!";
+"NetworkAlert" = "Please connect to the network of chamber";
+"NetworkAlertDesc" = "Perform check in when connecting to the network of chamber only";
 "NotAvailableTitle" = "Cannot click at now";
 "NotAvailableMessage" = "You will be G__G before we activate";
 "NotAvailableButtonOk" = "Okay";

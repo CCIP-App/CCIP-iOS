@@ -11,6 +11,7 @@
 @interface CheckinCardViewController : UIViewController
 
 @property (strong, nonatomic) NSString *id;
+@property (strong, nonatomic) NSNumber *used;
 @property (weak, nonatomic) IBOutlet UILabel *checkinDate;
 @property (weak, nonatomic) IBOutlet UILabel *checkinTitle;
 @property (weak, nonatomic) IBOutlet UILabel *checkinText;
