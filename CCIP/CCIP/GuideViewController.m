@@ -39,18 +39,14 @@
 
 - (void)keyboardDidShow:(NSNotification *)note {
     if (self.view.frame.size.height <= 480) {
-        self.view.center = CGPointMake(self.view.center.x, self.originalCenter.y - 130);
+        self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y - 130);
     } else if (self.view.frame.size.height <= 568) {
-        self.view.center = CGPointMake(self.view.center.x, self.originalCenter.y - 30);
+        self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y - 30);
     }
 }
 
 - (void)keyboardWillHide:(NSNotification *)note {
-    if (self.view.frame.size.height <= 480) {
-        self.view.center = CGPointMake(self.view.center.x, self.originalCenter.y + 23);
-    } else if (self.view.frame.size.height <= 568) {
-        self.view.center = CGPointMake(self.view.center.x, self.originalCenter.y + 60);
-    }
+    self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y);
 }
 
 - (void)didReceiveMemoryWarning {

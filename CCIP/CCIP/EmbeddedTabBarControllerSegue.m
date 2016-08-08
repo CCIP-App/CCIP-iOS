@@ -14,8 +14,7 @@
     __block UIView *sourceView = self.sourceViewController.view;
     __block UIView *destinationView = self.destinationViewController.view;
     CGRect frame = sourceView.frame;
-    //frame.size.height -= [self.sourceViewController.bottomLayoutGuide length];
-    frame.size.height += 15;
+    frame.size.height -= [self.sourceViewController.bottomLayoutGuide length];
     [self.sourceViewController presentViewController:self.destinationViewController
                                             animated:YES
                                           completion:^{
