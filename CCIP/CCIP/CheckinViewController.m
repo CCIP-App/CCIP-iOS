@@ -7,6 +7,7 @@
 //
 #define TAG 99
 
+#import <UICKeyChainStore/UICKeyChainStore.h>
 #import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import "CheckinCardViewController.h"
@@ -133,12 +134,22 @@
 }
 
 - (void)barcodePicker:(SBSBarcodePicker *)picker didScan:(SBSScanSession *)session {
+    [session stopScanning];
+    
     NSArray *recognized = session.newlyRecognizedCodes;
     SBSCode *code = [recognized firstObject];
     // Add your own code to handle the barcode result e.g.
     NSLog(@"scanned %@ barcode: %@", code.symbologyName, code.data);
     
-    [session stopScanning];
+    if ([[AppDelegate appDelegate].accessToken length] > 0) {
+        [UICKeyChainStore removeItemForKey:@"token"];
+    }
+    [AppDelegate appDelegate].accessToken = code.data;
+    [UICKeyChainStore setString:[AppDelegate appDelegate].accessToken
+                         forKey:@"token"];
+    [[AppDelegate appDelegate].oneSignal sendTag:@"token" value:[AppDelegate appDelegate].accessToken];
+    
+    [self reloadCard];
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         //Do UI stuff here
