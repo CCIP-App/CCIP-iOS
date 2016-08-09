@@ -24,6 +24,10 @@
 		2839BF3D1D4C97EE0062F36D /* Star-Filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF3B1D4C97EE0062F36D /* Star-Filled.png */; };
 		2839BF3E1D4C97EE0062F36D /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF3C1D4C97EE0062F36D /* Star.png */; };
 		2839BF4A1D4CDDAD0062F36D /* CheckinCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */; };
+		288D3A771D599A1200E4E3A6 /* CHANGELOG.txt in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A741D599A1200E4E3A6 /* CHANGELOG.txt */; };
+		288D3A781D599A1200E4E3A6 /* LICENSE-2.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A751D599A1200E4E3A6 /* LICENSE-2.0.txt */; };
+		288D3A791D599A1200E4E3A6 /* ScanditBarcodeScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A761D599A1200E4E3A6 /* ScanditBarcodeScanner.framework */; };
+		288D3A7B1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A7A1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle */; };
 		28A2992D1D3B90C000145E76 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A2992B1D3B90C000145E76 /* ScheduleViewController.m */; };
 		28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */; };
 		28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */; };
@@ -147,6 +151,10 @@
 		2839BF3C1D4C97EE0062F36D /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
 		2839BF471D4CDDAD0062F36D /* CheckinCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinCardViewController.h; sourceTree = "<group>"; };
 		2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinCardViewController.m; sourceTree = "<group>"; };
+		288D3A741D599A1200E4E3A6 /* CHANGELOG.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.txt; sourceTree = "<group>"; };
+		288D3A751D599A1200E4E3A6 /* LICENSE-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-2.0.txt"; sourceTree = "<group>"; };
+		288D3A761D599A1200E4E3A6 /* ScanditBarcodeScanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ScanditBarcodeScanner.framework; sourceTree = "<group>"; };
+		288D3A7A1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanditBarcodeScanner.bundle; path = ScanditBarcodeScanner.framework/Resources/ScanditBarcodeScanner.bundle; sourceTree = "<group>"; };
 		28A2992A1D3B90C000145E76 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
 		28A2992B1D3B90C000145E76 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+addition.h"; sourceTree = "<group>"; };
@@ -276,6 +284,7 @@
 				6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */,
 				6B2CD58B1D28780F00793194 /* AudioToolbox.framework in Frameworks */,
 				6B2CD5B11D28C92B00793194 /* MYCrypto.framework in Frameworks */,
+				288D3A791D599A1200E4E3A6 /* ScanditBarcodeScanner.framework in Frameworks */,
 				6B2CD5B41D28C92B00793194 /* GatewayWebService.framework in Frameworks */,
 				6B2CD5AE1D28C92B00793194 /* CommonCrypto.framework in Frameworks */,
 				D5720777B8AA54B5CE34467A /* Pods_CCIP.framework in Frameworks */,
@@ -470,6 +479,17 @@
 			name = OldCode;
 			sourceTree = "<group>";
 		};
+		288D3A731D599A1200E4E3A6 /* ScanditSDK */ = {
+			isa = PBXGroup;
+			children = (
+				288D3A761D599A1200E4E3A6 /* ScanditBarcodeScanner.framework */,
+				288D3A7A1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle */,
+				288D3A741D599A1200E4E3A6 /* CHANGELOG.txt */,
+				288D3A751D599A1200E4E3A6 /* LICENSE-2.0.txt */,
+			);
+			path = ScanditSDK;
+			sourceTree = "<group>";
+		};
 		5F8B2D261D55DAC900A68C7D /* SponsorView */ = {
 			isa = PBXGroup;
 			children = (
@@ -550,6 +570,7 @@
 		6BD8EF291D1D73510094BE95 /* CCIP */ = {
 			isa = PBXGroup;
 			children = (
+				288D3A731D599A1200E4E3A6 /* ScanditSDK */,
 				288164E11D4F1C52005C68EA /* Class+addition */,
 				6BCBC3B61D4F3BB600B5AF35 /* CustomSegue */,
 				6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */,
@@ -660,6 +681,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FB4D4481D3A8319005BF382 /* icon_ios_pin@3x.png in Resources */,
+				288D3A781D599A1200E4E3A6 /* LICENSE-2.0.txt in Resources */,
 				5F8B2D2B1D55E02200A68C7D /* SponsorTableView.xib in Resources */,
 				5FECE5F61D353C4900242DB4 /* StaffGroupTableViewCell.xib in Resources */,
 				2839BF3A1D4C97AB0062F36D /* Star@2x.png in Resources */,
@@ -680,6 +702,7 @@
 				5FB4D4471D3A8319005BF382 /* icon_ios_pin@2x.png in Resources */,
 				2823E8E81D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib in Resources */,
 				6B53C65B1D1ED5CC00EA8012 /* StatusView.xib in Resources */,
+				288D3A7B1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle in Resources */,
 				2839BF3D1D4C97EE0062F36D /* Star-Filled.png in Resources */,
 				5FB4D45B1D3A865A005BF382 /* icon_ios_topcharts@2x.png in Resources */,
 				2839BF3E1D4C97EE0062F36D /* Star.png in Resources */,
@@ -699,6 +722,7 @@
 				5FB4D4661D3A8706005BF382 /* icon_ios_chat.png in Resources */,
 				6B2CD59A1D2886C900793194 /* Localizable.strings in Resources */,
 				6B53C6601D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib in Resources */,
+				288D3A771D599A1200E4E3A6 /* CHANGELOG.txt in Resources */,
 				5FB4D47A1D3A8DF6005BF382 /* icon_ios_more@3x.png in Resources */,
 				6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */,
 				5FB4D47B1D3A8DF6005BF382 /* icon_ios_bell.png in Resources */,
@@ -951,6 +975,10 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CCIP/ScanditSDK",
+				);
 				INFOPLIST_FILE = CCIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev";
@@ -968,6 +996,10 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CCIP/ScanditSDK",
+				);
 				INFOPLIST_FILE = CCIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev";
