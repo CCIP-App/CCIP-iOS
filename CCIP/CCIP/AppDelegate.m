@@ -117,6 +117,9 @@
     NSLog(@"Token: <%@>", self.accessToken);
     [self.oneSignal sendTag:@"token" value:self.accessToken];
     
+    // Provide the app key for your scandit license.
+    [SBSLicense setAppKey:@"2BXy4CfQi9QFc12JnjId7mHH58SdYzNC90Uo07luUUY"];
+    
     [self registerAppIconArt];
     
     return YES;

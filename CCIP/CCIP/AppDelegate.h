@@ -10,6 +10,7 @@
 #import <OneSignal/OneSignal.h>
 #import <ColorArt/UIImage+ColorArt.h>
 #import <Google/Analytics.h>
+#import <ScanditBarcodeScanner/ScanditBarcodeScanner.h>
 #import "UIApplication+addition.h"
 #import "UIViewController+addition.h"
 #import "NSInvocation+addition.h"
