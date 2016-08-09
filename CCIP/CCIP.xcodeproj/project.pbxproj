@@ -42,6 +42,12 @@
 		288D3A931D599BCB00E4E3A6 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A921D599BCB00E4E3A6 /* CoreMedia.framework */; };
 		288D3A951D599BD600E4E3A6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A941D599BD600E4E3A6 /* SystemConfiguration.framework */; };
 		288D3A971D599BDC00E4E3A6 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A961D599BDC00E4E3A6 /* MediaPlayer.framework */; };
+		288D3A9E1D59AB4800E4E3A6 /* QR_Code@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A981D59AB4700E4E3A6 /* QR_Code@3x.png */; };
+		288D3A9F1D59AB4800E4E3A6 /* QR_Code@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A991D59AB4700E4E3A6 /* QR_Code@2x.png */; };
+		288D3AA01D59AB4800E4E3A6 /* QR_Code.png in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A9A1D59AB4700E4E3A6 /* QR_Code.png */; };
+		288D3AA11D59AB4800E4E3A6 /* QR_Code_Filled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A9B1D59AB4700E4E3A6 /* QR_Code_Filled@3x.png */; };
+		288D3AA21D59AB4800E4E3A6 /* QR_Code_Filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A9C1D59AB4700E4E3A6 /* QR_Code_Filled.png */; };
+		288D3AA31D59AB4800E4E3A6 /* QR_Code_Filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A9D1D59AB4700E4E3A6 /* QR_Code_Filled@2x.png */; };
 		28A2992D1D3B90C000145E76 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A2992B1D3B90C000145E76 /* ScheduleViewController.m */; };
 		28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */; };
 		28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */; };
@@ -183,6 +189,12 @@
 		288D3A921D599BCB00E4E3A6 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		288D3A941D599BD600E4E3A6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		288D3A961D599BDC00E4E3A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		288D3A981D59AB4700E4E3A6 /* QR_Code@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QR_Code@3x.png"; sourceTree = "<group>"; };
+		288D3A991D59AB4700E4E3A6 /* QR_Code@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QR_Code@2x.png"; sourceTree = "<group>"; };
+		288D3A9A1D59AB4700E4E3A6 /* QR_Code.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QR_Code.png; sourceTree = "<group>"; };
+		288D3A9B1D59AB4700E4E3A6 /* QR_Code_Filled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QR_Code_Filled@3x.png"; sourceTree = "<group>"; };
+		288D3A9C1D59AB4700E4E3A6 /* QR_Code_Filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QR_Code_Filled.png; sourceTree = "<group>"; };
+		288D3A9D1D59AB4700E4E3A6 /* QR_Code_Filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QR_Code_Filled@2x.png"; sourceTree = "<group>"; };
 		28A2992A1D3B90C000145E76 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
 		28A2992B1D3B90C000145E76 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+addition.h"; sourceTree = "<group>"; };
@@ -591,6 +603,12 @@
 				2839BF3B1D4C97EE0062F36D /* Star-Filled.png */,
 				2839BF351D4C97AB0062F36D /* Star_Filled@2x.png */,
 				2839BF331D4C97AB0062F36D /* Star_Filled@3x.png */,
+				288D3A9A1D59AB4700E4E3A6 /* QR_Code.png */,
+				288D3A991D59AB4700E4E3A6 /* QR_Code@2x.png */,
+				288D3A981D59AB4700E4E3A6 /* QR_Code@3x.png */,
+				288D3A9C1D59AB4700E4E3A6 /* QR_Code_Filled.png */,
+				288D3A9D1D59AB4700E4E3A6 /* QR_Code_Filled@2x.png */,
+				288D3A9B1D59AB4700E4E3A6 /* QR_Code_Filled@3x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -737,6 +755,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FB4D4481D3A8319005BF382 /* icon_ios_pin@3x.png in Resources */,
+				288D3AA11D59AB4800E4E3A6 /* QR_Code_Filled@3x.png in Resources */,
 				288D3A781D599A1200E4E3A6 /* LICENSE-2.0.txt in Resources */,
 				5F8B2D2B1D55E02200A68C7D /* SponsorTableView.xib in Resources */,
 				5FECE5F61D353C4900242DB4 /* StaffGroupTableViewCell.xib in Resources */,
@@ -746,14 +765,17 @@
 				5FB4D4671D3A8706005BF382 /* icon_ios_chat@2x.png in Resources */,
 				5FB4D4791D3A8DF6005BF382 /* icon_ios_more@2x.png in Resources */,
 				5FB4D4861D3A998C005BF382 /* coscup-logo@3x.png in Resources */,
+				288D3A9F1D59AB4800E4E3A6 /* QR_Code@2x.png in Resources */,
 				6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */,
 				5FB4D47C1D3A8DF6005BF382 /* icon_ios_bell@2x.png in Resources */,
 				5FB4D4851D3A998C005BF382 /* coscup-logo@2x.png in Resources */,
 				2821DAA31D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@3x.png in Resources */,
 				5FB4D4841D3A998C005BF382 /* coscup-logo.png in Resources */,
 				5FB4D4491D3A8319005BF382 /* StaffIconDefault@1x.png in Resources */,
+				288D3AA01D59AB4800E4E3A6 /* QR_Code.png in Resources */,
 				2821DAA41D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@2x.png in Resources */,
 				2821DAA21D3DCB2300AFE139 /* ProgramDetailViewTopBG.png in Resources */,
+				288D3AA31D59AB4800E4E3A6 /* QR_Code_Filled@2x.png in Resources */,
 				5FB4D4461D3A8319005BF382 /* icon_ios_pin.png in Resources */,
 				5FB4D4471D3A8319005BF382 /* icon_ios_pin@2x.png in Resources */,
 				2823E8E81D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib in Resources */,
@@ -770,7 +792,9 @@
 				6B7142B71D1DBAFB0024EA45 /* scenarioCell.xib in Resources */,
 				5F91712A1D325B5E000D0F66 /* StaffView.xib in Resources */,
 				2839BF391D4C97AB0062F36D /* Star_Filled@2x.png in Resources */,
+				288D3AA21D59AB4800E4E3A6 /* QR_Code_Filled.png in Resources */,
 				5FB4D4781D3A8DF6005BF382 /* icon_ios_more.png in Resources */,
+				288D3A9E1D59AB4800E4E3A6 /* QR_Code@3x.png in Resources */,
 				5F91712F1D32990C000D0F66 /* StaffCell.xib in Resources */,
 				2839BF371D4C97AB0062F36D /* Star_Filled@3x.png in Resources */,
 				5FB4D4901D3B242C005BF382 /* MoreCell.xib in Resources */,

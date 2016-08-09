@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <iCarousel/iCarousel.h>
+#import <ScanditBarcodeScanner/ScanditBarcodeScanner.h>
 
-@interface CheckinViewController : UIViewController<iCarouselDataSource, iCarouselDelegate>
+@interface CheckinViewController : UIViewController<iCarouselDataSource, iCarouselDelegate, SBSScanDelegate>
 
 @property (strong, nonatomic) IBOutlet iCarousel *cards;
 

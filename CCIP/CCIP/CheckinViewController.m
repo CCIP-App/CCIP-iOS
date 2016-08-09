@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSArray *scenarios;
 @property (strong, nonatomic) GuideViewController *guideViewController;
 @property (strong, nonatomic) UIPageControl *pageControl;
+@property (strong, nonatomic) SBSBarcodePicker *scanditBarcodePicker;
+@property (strong, nonatomic) UIBarButtonItem *qrButton;
 
 @end
 
@@ -62,6 +64,17 @@
     SEND_GAI(@"CheckinViewController");
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    if (self.qrButton == nil) {
+        self.qrButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"QR_Code.png"]
+                                           landscapeImagePhone:nil
+                                                         style:UIBarButtonItemStylePlain
+                                                        target:self
+                                                        action:@selector(showBarcodePickerOverlay)];
+    }
+    self.tabBarController.navigationItem.rightBarButtonItem = self.qrButton;
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self reloadCard];
@@ -70,6 +83,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self hideGuideView];
+    self.tabBarController.navigationItem.rightBarButtonItem = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -116,6 +130,96 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)barcodePicker:(SBSBarcodePicker *)picker didScan:(SBSScanSession *)session {
+    NSArray *recognized = session.newlyRecognizedCodes;
+    SBSCode *code = [recognized firstObject];
+    // Add your own code to handle the barcode result e.g.
+    NSLog(@"scanned %@ barcode: %@", code.symbologyName, code.data);
+    
+    [session stopScanning];
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        //Do UI stuff here
+        [self closeBarcodePickerOverlay];
+    }];
+}
+
+//! [SBSBarcodePicker overlayed as a view]
+
+/**
+ * A simple example of how the barcode picker can be used in a simple view of various dimensions
+ * and how it can be added to any o ther view. This example scales the view instead of cropping it.
+ */
+
+- (void)closeBarcodePickerOverlay {
+    if (self.scanditBarcodePicker != nil) {
+        [self.qrButton setImage:[UIImage imageNamed:@"QR_Code.png"]];
+        
+        [self.scanditBarcodePicker removeFromParentViewController];
+        [self.scanditBarcodePicker.view removeFromSuperview];
+        [self.scanditBarcodePicker didMoveToParentViewController:nil];
+        self.scanditBarcodePicker = nil;
+    }
+}
+     
+- (void)showBarcodePickerOverlay {
+    if (self.scanditBarcodePicker != nil) {
+        [self closeBarcodePickerOverlay];
+    } else {
+        [self.qrButton setImage:[UIImage imageNamed:@"QR_Code_Filled.png"]];
+        
+        self.scanditBarcodePicker = [[SBSBarcodePicker alloc]
+                                     initWithSettings:[SBSScanSettings pre47DefaultSettings]];
+        
+        /* Set the delegate to receive callbacks.
+         * This is commented out here in the demo app since the result view with the scan results
+         * is not suitable for this overlay view */
+        self.scanditBarcodePicker.scanDelegate = self;
+        
+        // Add a button behind the subview to close it.
+        // self.backgroundButton.hidden = NO;
+        
+        [self addChildViewController:self.scanditBarcodePicker];
+        [self.view addSubview:self.scanditBarcodePicker.view];
+        [self.scanditBarcodePicker didMoveToParentViewController:self];
+        
+        [self.scanditBarcodePicker.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+        
+        // Add constraints to scale the view and place it in the center of the controller.
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scanditBarcodePicker.view
+                                                              attribute:NSLayoutAttributeCenterX
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.view
+                                                              attribute:NSLayoutAttributeCenterX
+                                                             multiplier:1.0
+                                                               constant:0.0]];
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scanditBarcodePicker.view
+                                                              attribute:NSLayoutAttributeTop
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.view
+                                                              attribute:NSLayoutAttributeTop
+                                                             multiplier:1.0
+                                                               constant:self.view.topGuideHeight]];
+        // Add constraints to set the width to 200 and height to 400. Since this is not the aspect ratio
+        // of the camera preview some of the camera preview will be cut away on the left and right.
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scanditBarcodePicker.view
+                                                              attribute:NSLayoutAttributeWidth
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.view
+                                                              attribute:NSLayoutAttributeWidth
+                                                             multiplier:1.0
+                                                               constant:0.0]];
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scanditBarcodePicker.view
+                                                              attribute:NSLayoutAttributeHeight
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.cards
+                                                              attribute:NSLayoutAttributeHeight
+                                                             multiplier:1.0
+                                                               constant:0.0]];
+        [self.scanditBarcodePicker startScanning];
+    }
 }
 
 #pragma mark iCarousel methods
