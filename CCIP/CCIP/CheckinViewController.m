@@ -149,10 +149,10 @@
                          forKey:@"token"];
     [[AppDelegate appDelegate].oneSignal sendTag:@"token" value:[AppDelegate appDelegate].accessToken];
     
-    [self reloadCard];
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         //Do UI stuff here
+        [self reloadCard];
         [self closeBarcodePickerOverlay];
     }];
 }
