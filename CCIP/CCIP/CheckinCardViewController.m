@@ -33,6 +33,10 @@
     [((CheckinCardView *)self.view) setUsed:used];
 }
 
+- (void)setDisabled:(NSNumber *)disabled {
+    [((CheckinCardView *)self.view) setDisabled:disabled];
+}
+
 - (void)setDelegate:(CheckinViewController *)delegate {
     [((CheckinCardView *)self.view) setDelegate:delegate];
 }

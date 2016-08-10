@@ -82,6 +82,8 @@
                     [self showCountdown];
                     [self.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil) forState:UIControlStateNormal];
                     [self.checkinBtn setBackgroundColor:disabledColor];
+                    
+                    [[AppDelegate appDelegate].checkinView reloadCard];
                 }
             } else {
                 UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
@@ -122,8 +124,11 @@
                 }
             }];
         };
+        
         if ([self.used boolValue]) {
             use();
+        } else if ([self.disabled boolValue]) {
+            SEND_GAI_EVENT(@"CheckinCardView", @"click_disabled");
         } else {
             UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString([@"UseButton_" stringByAppendingString:self.id], nil)
                                                         withMessage:NSLocalizedString(@"ConfirmAlertText", nil)

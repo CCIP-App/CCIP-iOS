@@ -352,7 +352,11 @@
                 break;
         }
         
-        if ([self.scenarios[idx] objectForKey:@"used"]) {
+        if ([self.scenarios[idx] objectForKey:@"disabled"]) {
+            [temp setDisabled:[NSNumber numberWithBool:YES]];
+            [temp.checkinBtn setTitle:[self.scenarios[idx] objectForKey:@"disabled"] forState:UIControlStateNormal];
+            [temp.checkinBtn setBackgroundColor:[UIColor grayColor]];
+        } else if ([self.scenarios[idx] objectForKey:@"used"]) {
             [temp setUsed:[NSNumber numberWithBool:YES]];
             if (isCheckin) {
                 [temp.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil)
