@@ -36,17 +36,16 @@
                                             </vibrancyEffect>
                                         </visualEffectView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qB-gZ-oMt">
-                                            <rect key="frame" x="100" y="70" width="220" height="100"/>
+                                            <rect key="frame" x="50" y="70" width="320" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="1XS-RC-GPm"/>
                                                 <constraint firstAttribute="height" constant="100" id="EQO-n2-qwA"/>
                                                 <constraint firstAttribute="height" constant="100" id="TV2-cl-Vb1"/>
                                                 <constraint firstAttribute="height" constant="100" id="odj-9m-shC"/>
                                             </constraints>
-                                            <string key="text">您已經使用成功！
-
-請停留在此畫面給工作人員確認，謝謝！</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <string key="text">請停留在此畫面
+給工作人員確認，謝謝！</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
@@ -58,73 +57,52 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60.000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Naq-yu-67a">
-                                            <rect key="frame" x="20" y="220" width="380" height="120"/>
+                                            <rect key="frame" x="20" y="230" width="380" height="120"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="120" id="cXF-z2-6AX"/>
                                                 <constraint firstAttribute="height" constant="120" id="yKR-iB-grm"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="80"/>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="80"/>
                                             <color key="textColor" red="0.0" green="0.40000000000000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="cXF-z2-6AX"/>
-                                                </mask>
-                                            </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qy3-VV-KVG">
-                                            <rect key="frame" x="50" y="390" width="320" height="50"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qy3-VV-KVG">
+                                            <rect key="frame" x="50" y="452" width="320" height="70"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="17h-i3-QWc"/>
+                                                <constraint firstAttribute="height" constant="70" id="17h-i3-QWc"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dyo-cm-nZt">
-                                            <rect key="frame" x="0.0" y="490" width="420" height="80"/>
+                                            <rect key="frame" x="16" y="530" width="388" height="40"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="100" id="A3y-RI-dQb"/>
-                                                <constraint firstAttribute="height" constant="80" id="bkC-do-qaS"/>
+                                                <constraint firstAttribute="height" constant="40" id="bkC-do-qaS"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="40"/>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="40"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="A3y-RI-dQb"/>
-                                                </mask>
-                                            </variation>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Dyo-cm-nZt" secondAttribute="trailing" id="112-n5-uth"/>
+                                        <constraint firstAttribute="trailing" secondItem="Dyo-cm-nZt" secondAttribute="trailing" constant="16" id="112-n5-uth"/>
                                         <constraint firstAttribute="trailing" secondItem="Naq-yu-67a" secondAttribute="trailing" constant="20" id="97F-tg-UfL"/>
                                         <constraint firstAttribute="bottom" secondItem="KGG-rl-Nfe" secondAttribute="bottom" id="9Hz-ac-GuE"/>
                                         <constraint firstItem="4qB-gZ-oMt" firstAttribute="top" secondItem="htO-bs-S6f" secondAttribute="top" constant="70" id="Apq-Ln-OwZ"/>
-                                        <constraint firstItem="Dyo-cm-nZt" firstAttribute="top" secondItem="Naq-yu-67a" secondAttribute="bottom" constant="50" id="BeD-SQ-Jar"/>
                                         <constraint firstAttribute="trailing" secondItem="KGG-rl-Nfe" secondAttribute="trailing" id="Djv-Rg-UPm"/>
-                                        <constraint firstAttribute="trailing" secondItem="4qB-gZ-oMt" secondAttribute="trailing" constant="100" id="TOT-Em-LGM"/>
-                                        <constraint firstItem="Dyo-cm-nZt" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" id="UCY-YB-r5o"/>
-                                        <constraint firstItem="Naq-yu-67a" firstAttribute="top" secondItem="4qB-gZ-oMt" secondAttribute="bottom" constant="50" id="VxD-80-kBr"/>
+                                        <constraint firstItem="Dyo-cm-nZt" firstAttribute="top" secondItem="qy3-VV-KVG" secondAttribute="bottom" constant="8" id="Qwo-u0-gZd"/>
+                                        <constraint firstAttribute="trailing" secondItem="4qB-gZ-oMt" secondAttribute="trailing" constant="50" id="TOT-Em-LGM"/>
+                                        <constraint firstItem="Dyo-cm-nZt" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="16" id="UCY-YB-r5o"/>
                                         <constraint firstItem="KGG-rl-Nfe" firstAttribute="top" secondItem="htO-bs-S6f" secondAttribute="top" id="W00-Ek-aPZ"/>
                                         <constraint firstItem="KGG-rl-Nfe" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" id="XZf-01-JAk"/>
                                         <constraint firstAttribute="trailing" secondItem="qy3-VV-KVG" secondAttribute="trailing" constant="50" id="atw-pY-Cu6"/>
-                                        <constraint firstItem="4qB-gZ-oMt" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="100" id="dWh-r8-o1b"/>
-                                        <constraint firstItem="Dyo-cm-nZt" firstAttribute="top" secondItem="qy3-VV-KVG" secondAttribute="bottom" constant="50" id="iKE-o6-Bd1"/>
+                                        <constraint firstAttribute="bottom" secondItem="Dyo-cm-nZt" secondAttribute="bottom" constant="10" id="coH-JR-MI3"/>
+                                        <constraint firstItem="4qB-gZ-oMt" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="50" id="dWh-r8-o1b"/>
                                         <constraint firstItem="Naq-yu-67a" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="20" id="j3b-9x-aB7"/>
-                                        <constraint firstItem="4qB-gZ-oMt" firstAttribute="top" secondItem="KGG-rl-Nfe" secondAttribute="bottom" constant="20" id="leD-X1-CyE"/>
-                                        <constraint firstItem="Dyo-cm-nZt" firstAttribute="top" secondItem="Naq-yu-67a" secondAttribute="bottom" constant="50" id="mCH-bK-Vok"/>
-                                        <constraint firstItem="qy3-VV-KVG" firstAttribute="top" secondItem="Naq-yu-67a" secondAttribute="bottom" constant="50" id="mWN-dS-QEG"/>
+                                        <constraint firstItem="Naq-yu-67a" firstAttribute="centerX" secondItem="htO-bs-S6f" secondAttribute="centerX" id="ms4-oL-b2y"/>
+                                        <constraint firstItem="Naq-yu-67a" firstAttribute="centerY" secondItem="htO-bs-S6f" secondAttribute="centerY" id="nNi-JU-tCS"/>
                                         <constraint firstItem="qy3-VV-KVG" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="50" id="vGR-SO-1EF"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="leD-X1-CyE"/>
-                                            <exclude reference="BeD-SQ-Jar"/>
-                                            <exclude reference="mCH-bK-Vok"/>
-                                        </mask>
-                                    </variation>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
@@ -134,14 +112,8 @@
                             <constraint firstItem="FSi-f7-fuv" firstAttribute="top" secondItem="Wy3-Yj-6am" secondAttribute="bottom" id="LV8-IC-wRo"/>
                             <constraint firstItem="Wy3-Yj-6am" firstAttribute="leading" secondItem="uR2-9G-ppt" secondAttribute="leadingMargin" constant="-20" id="Mhg-t5-7nh"/>
                             <constraint firstItem="Wy3-Yj-6am" firstAttribute="top" secondItem="FC9-t3-NvV" secondAttribute="bottom" id="ZYq-wN-Ju8"/>
-                            <constraint firstItem="Wy3-Yj-6am" firstAttribute="top" secondItem="uR2-9G-ppt" secondAttribute="topMargin" id="nhe-rv-8x6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wy3-Yj-6am" secondAttribute="trailing" constant="-20" id="wBm-SK-GiW"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="nhe-rv-8x6"/>
-                            </mask>
-                        </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="420" height="600"/>

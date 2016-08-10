@@ -25,7 +25,7 @@
 "CheckinViewButtonPressed" = "已報到";
 "CheckinText" = "「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。";
 "CheckinTextVipKit" = "謝謝所有參與 COSCUP 2016 個人贊助方案的贊助者，因為有你們，促成了活動的舉行，感謝各位！";
-"UseNoticeText" = "從封閉到開源，從個人到社群，我們曾走過很長一段路。";
+"UseNoticeText" = "從封閉到開源\n從個人到社群\n我們曾走過很長一段路";
 "meatLunch" = "葷食";
 "vegetarianLunch" = "素食";
 "UseButton_kit" = "確定要領取迎賓袋嗎？";
@@ -52,7 +52,7 @@
 "GuideViewTokenErrorDesc" = "請參考您的與會詳細資訊，您會在信中找到使用代碼，或直接點擊信中的代碼連結即可。";
 "CheckinNotice" = "請注意！在點下『確認使用』之後，將立即視為已領取。\n請確認大會工作人員已經指示您按下『確認使用』按鈕後再按下按鈕，謝謝！";
 "CheckinButton" = "確認使用";
-"StatusNotice" = "您已經使用成功！\n\n請停留在此畫面給工作人員確認，謝謝！";
+"StatusNotice" = "請停留在此畫面\n給工作人員確認，謝謝！";
 "NetworkAlert" = "請連至會場網路";
 "NetworkAlertDesc" = "只有在連線到會場網路時，才可使用報到功能";
 "NotAvailableTitle" = "現在不能按喔";

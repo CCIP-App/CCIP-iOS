@@ -30,13 +30,13 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    BOOL isKit = [[self.scenario objectForKey:@"id"] isEqualToString:@"kit"];
+    BOOL isKit = [[self.scenario objectForKey:@"id"] isEqualToString:@"kit"] || [[self.scenario objectForKey:@"id"] isEqualToString:@"vipkit"];
     NSString *dietType = [[self.scenario objectForKey:@"attr"] objectForKey:@"diet"];
     [self.statusMessageLabel setText:isKit ? NSLocalizedString(@"StatusNotice", nil) : NSLocalizedString([dietType stringByAppendingString:@"Lunch"], nil)];
     [self.noticeTextLabel setText:@""];
     if (!isKit) {
         [self.noticeTextLabel setText:NSLocalizedString(@"UseNoticeText", nil)];
-        [self.statusMessageLabel setFont:[UIFont systemFontOfSize:60.0f]];
+        [self.statusMessageLabel setFont:[UIFont systemFontOfSize:48.0f]];
         if ([dietType isEqualToString:@"meat"]) {
             [self.statusMessageLabel setTextColor:[UIColor colorFromHtmlColor:@"#f8e71c"]];
             [self.visualEffectView setEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
