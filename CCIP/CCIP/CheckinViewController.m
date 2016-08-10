@@ -386,7 +386,7 @@
         }
         
         [temp setDelegate:self];
-        [temp setScenario:[self.scenarios objectAtIndex:index]];
+        [temp setScenario:[self.scenarios objectAtIndex:idx]];
     } else {
         //get a reference to the label in the recycled view
         //        label = (UILabel *)[view viewWithTag:1];
