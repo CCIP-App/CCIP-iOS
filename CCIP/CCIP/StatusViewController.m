@@ -27,7 +27,6 @@
 @implementation StatusViewController
 
 - (void)viewDidLoad {
-    //NSLog(@"loaded");
 }
 
 - (void)viewWillAppear:(BOOL)animated {
