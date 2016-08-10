@@ -77,7 +77,7 @@
         
         [self dismissViewControllerAnimated:YES
                                  completion:^{
-                                     //TODO: refresh card data
+                                     [[AppDelegate appDelegate].checkinView reloadCard];
                                  }];
     } else {
         UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil) withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
