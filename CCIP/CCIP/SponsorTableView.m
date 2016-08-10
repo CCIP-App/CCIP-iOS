@@ -47,6 +47,26 @@
                         [[sponsorListArray objectAtIndex:level] addObject:sponsor];
                     }
                     
+                    for (NSDictionary *sponsorLevel in self.sponsorLevelJsonArray) {
+                        NSInteger index = [self.sponsorLevelJsonArray indexOfObject:sponsorLevel];
+                        NSMutableArray *oldSponsorListArray = [sponsorListArray objectAtIndex:index];
+                        NSDictionary *temp;
+                        for (int i = 0; i < [oldSponsorListArray count]; i++)
+                        {
+                            for (int j = 0; j < [oldSponsorListArray count] - 1 - i; j++) {
+                                NSInteger thisPlace = [[[oldSponsorListArray objectAtIndex:j] valueForKey:@"place"] integerValue];
+                                NSInteger nextPlace = [[[oldSponsorListArray objectAtIndex:j + 1] valueForKey:@"place"] integerValue];
+                                if (thisPlace > nextPlace)
+                                {
+                                    temp = [oldSponsorListArray objectAtIndex:j];
+                                    [oldSponsorListArray replaceObjectAtIndex:j withObject:[oldSponsorListArray objectAtIndex:j+1]];
+                                    [oldSponsorListArray replaceObjectAtIndex:j + 1 withObject:temp];
+                                }
+                            }
+                            [sponsorListArray replaceObjectAtIndex:index withObject:oldSponsorListArray];
+                        }
+                    }
+                    
                     self.sponsorArray = sponsorListArray;
                     [self reloadData];
                 }
