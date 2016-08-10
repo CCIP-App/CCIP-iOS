@@ -121,7 +121,7 @@
         if ([self.used boolValue]) {
             use();
         } else {
-            UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"UseButton", nil)
+            UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString([@"UseButton_" stringByAppendingString:self.id], nil)
                                                         withMessage:NSLocalizedString(@"ConfirmAlertText", nil)
                                                    cancelButtonText:NSLocalizedString(@"Cancel", nil)
                                                         cancelStyle:UIAlertActionStyleCancel

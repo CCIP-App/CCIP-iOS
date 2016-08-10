@@ -23,6 +23,9 @@
 "CheckinViewButton" = "CHECK IN";
 "CheckinViewButtonPressed" = "FINISHED";
 "CheckinText" = "As well as continuing our long-standing spirit of \"sharing\", we hope to extend and expand this mission further and to a wider audience; so it grows into a force that makes for a better future.";
+"UseButton_kit" = "Confirm to get the KIT bag?";
+"UseButton_day1lunch" = "Confirm to get day 1 lunch?";
+"UseButton_day2lunch" = "Confirm to get day 2 lunch?";
 "UseButton" = "USE";
 "UseButtonPressed" = "USED";
 "ConfirmAlertText" = "Ready to use with staff's instruction?";
