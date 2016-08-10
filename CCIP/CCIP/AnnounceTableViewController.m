@@ -10,6 +10,7 @@
 #import "GatewayWebService/GatewayWebService.h"
 #import "AnnounceTableViewController.h"
 #import "AnnounceTableViewCell.h"
+#import <SafariServices/SafariServices.h>
 
 @interface AnnounceTableViewController ()
 
@@ -89,6 +90,27 @@
     
     CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return size.height + 1;
+}
+
+#pragma mark - Table view delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSDictionary *announce = [self.announceJsonArray objectAtIndex:indexPath.row];
+    NSString *uri = [announce objectForKey:@"uri"];
+    
+    if (!uri || [uri isEqualToString:@""]) return;
+    
+    if ([SFSafariViewController class] != nil) {
+        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:uri]];
+        [[UIApplication getMostTopPresentedViewController] presentViewController:safariViewController animated:YES completion:nil];
+    } else {
+        if (![[UIApplication sharedApplication] openURL:[NSURL URLWithString:uri]]) {
+            NSLog(@"%@%@",@"Failed to open url:", [[NSURL URLWithString:uri] description]);
+        }
+    }
+    
+    SEND_GAI_EVENT(@"AnnounceTableView", uri);
 }
 
 /*
