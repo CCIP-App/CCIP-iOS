@@ -23,6 +23,9 @@
 "CheckinViewButton" = "報到";
 "CheckinViewButtonPressed" = "已報到";
 "CheckinText" = "「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。";
+"UseNoticeText" = "從封閉到開源，從個人到社群，我們曾走過很長一段路。";
+"meatLunch" = "葷食";
+"vegetarianLunch" = "素食";
 "UseButton_kit" = "確定要領取資料袋嗎？";
 "UseButton_day1lunch" = "確定要領取第一天的午餐嗎？";
 "UseButton_day2lunch" = "確定要領取第二天的午餐嗎？";

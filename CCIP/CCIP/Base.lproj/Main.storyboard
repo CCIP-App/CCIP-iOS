@@ -16,15 +16,25 @@
                         <viewControllerLayoutGuide type="bottom" id="FSi-f7-fuv"/>
                     </layoutGuides>
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="uR2-9G-ppt">
-                        <rect key="frame" x="0.0" y="0.0" width="420" height="520"/>
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wy3-Yj-6am">
-                                <rect key="frame" x="0.0" y="20" width="420" height="500"/>
+                                <rect key="frame" x="0.0" y="20" width="420" height="580"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="htO-bs-S6f">
-                                    <rect key="frame" x="0.0" y="0.0" width="420" height="500"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGG-rl-Nfe">
+                                            <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cX3-Np-rYk">
+                                                <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="light"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qB-gZ-oMt">
                                             <rect key="frame" x="100" y="70" width="220" height="100"/>
                                             <constraints>
@@ -62,13 +72,22 @@
                                                 </mask>
                                             </variation>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qy3-VV-KVG">
+                                            <rect key="frame" x="50" y="390" width="320" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="17h-i3-QWc"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dyo-cm-nZt">
-                                            <rect key="frame" x="0.0" y="390" width="420" height="100"/>
+                                            <rect key="frame" x="0.0" y="490" width="420" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="A3y-RI-dQb"/>
-                                                <constraint firstAttribute="height" constant="100" id="bkC-do-qaS"/>
+                                                <constraint firstAttribute="height" constant="80" id="bkC-do-qaS"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="50"/>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="40"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
@@ -77,16 +96,6 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGG-rl-Nfe">
-                                            <rect key="frame" x="0.0" y="0.0" width="420" height="500"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cX3-Np-rYk">
-                                                <rect key="frame" x="0.0" y="0.0" width="420" height="500"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </view>
-                                            <vibrancyEffect>
-                                                <blurEffect style="light"/>
-                                            </vibrancyEffect>
-                                        </visualEffectView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="Dyo-cm-nZt" secondAttribute="trailing" id="112-n5-uth"/>
@@ -100,14 +109,20 @@
                                         <constraint firstItem="Naq-yu-67a" firstAttribute="top" secondItem="4qB-gZ-oMt" secondAttribute="bottom" constant="50" id="VxD-80-kBr"/>
                                         <constraint firstItem="KGG-rl-Nfe" firstAttribute="top" secondItem="htO-bs-S6f" secondAttribute="top" id="W00-Ek-aPZ"/>
                                         <constraint firstItem="KGG-rl-Nfe" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" id="XZf-01-JAk"/>
+                                        <constraint firstAttribute="trailing" secondItem="qy3-VV-KVG" secondAttribute="trailing" constant="50" id="atw-pY-Cu6"/>
                                         <constraint firstItem="4qB-gZ-oMt" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="100" id="dWh-r8-o1b"/>
+                                        <constraint firstItem="Dyo-cm-nZt" firstAttribute="top" secondItem="qy3-VV-KVG" secondAttribute="bottom" constant="50" id="iKE-o6-Bd1"/>
                                         <constraint firstItem="Naq-yu-67a" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="20" id="j3b-9x-aB7"/>
                                         <constraint firstItem="4qB-gZ-oMt" firstAttribute="top" secondItem="KGG-rl-Nfe" secondAttribute="bottom" constant="20" id="leD-X1-CyE"/>
                                         <constraint firstItem="Dyo-cm-nZt" firstAttribute="top" secondItem="Naq-yu-67a" secondAttribute="bottom" constant="50" id="mCH-bK-Vok"/>
+                                        <constraint firstItem="qy3-VV-KVG" firstAttribute="top" secondItem="Naq-yu-67a" secondAttribute="bottom" constant="50" id="mWN-dS-QEG"/>
+                                        <constraint firstItem="qy3-VV-KVG" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="50" id="vGR-SO-1EF"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="leD-X1-CyE"/>
+                                            <exclude reference="BeD-SQ-Jar"/>
+                                            <exclude reference="mCH-bK-Vok"/>
                                         </mask>
                                     </variation>
                                 </view>
@@ -129,16 +144,18 @@
                         </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="420" height="520"/>
+                    <size key="freeformSize" width="420" height="600"/>
                     <connections>
                         <outlet property="countdownLabel" destination="Naq-yu-67a" id="kHY-QK-sHX"/>
+                        <outlet property="noticeTextLabel" destination="qy3-VV-KVG" id="7ct-c7-tm3"/>
                         <outlet property="nowTimeLabel" destination="Dyo-cm-nZt" id="2kX-ML-D66"/>
                         <outlet property="statusMessageLabel" destination="4qB-gZ-oMt" id="L6R-DH-oyX"/>
+                        <outlet property="visualEffectView" destination="KGG-rl-Nfe" id="zti-nd-2Dh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mlj-3I-tOq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1673" y="1778"/>
+            <point key="canvasLocation" x="-1429" y="1893"/>
         </scene>
         <!--Guide View Controller-->
         <scene sceneID="lMV-v9-8VF">
@@ -149,19 +166,19 @@
                         <viewControllerLayoutGuide type="bottom" id="xtm-Ba-L2Z"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="7ZP-Wx-GSU">
-                        <rect key="frame" x="0.0" y="0.0" width="420" height="520"/>
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ane-io-2fB">
-                                <rect key="frame" x="0.0" y="20" width="420" height="500"/>
+                                <rect key="frame" x="0.0" y="20" width="420" height="580"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pBJ-Cx-2mH">
-                                    <rect key="frame" x="0.0" y="0.0" width="420" height="500"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQW-Em-vct">
-                                            <rect key="frame" x="0.0" y="0.0" width="420" height="500"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bQu-aE-znz">
-                                                <rect key="frame" x="0.0" y="0.0" width="420" height="500"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                             <vibrancyEffect>
@@ -237,7 +254,7 @@
                         </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="420" height="520"/>
+                    <size key="freeformSize" width="420" height="600"/>
                     <connections>
                         <outlet property="guideMessageLabel" destination="nug-PN-SE0" id="MYa-ZJ-KL1"/>
                         <outlet property="redeemButton" destination="8w3-iH-STq" id="MiW-B2-g4O"/>
@@ -246,7 +263,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dnj-al-u0m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1130" y="1778"/>
+            <point key="canvasLocation" x="-977" y="1893"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MuM-5j-UJl">
@@ -335,11 +352,11 @@
                         <viewControllerLayoutGuide type="bottom" id="jGP-3b-ZwZ"/>
                     </layoutGuides>
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="CVw-Vr-a5B" customClass="CheckinCardView">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8/20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="q04-AM-eVF">
-                                <rect key="frame" x="8" y="94" width="384" height="80"/>
+                                <rect key="frame" x="8" y="144" width="404" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="6Gs-ez-7qc"/>
                                 </constraints>
@@ -348,7 +365,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="報到" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZY0-oM-P3F">
-                                <rect key="frame" x="8" y="174" width="384" height="44"/>
+                                <rect key="frame" x="8" y="224" width="404" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="i3t-Cg-x4H"/>
                                 </constraints>
@@ -357,7 +374,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUP-DK-ov7">
-                                <rect key="frame" x="16" y="226" width="368" height="118"/>
+                                <rect key="frame" x="16" y="276" width="388" height="118"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="118" id="cK8-Qt-OHm"/>
                                     <constraint firstAttribute="height" constant="150" id="zth-f1-7uE"/>
@@ -372,7 +389,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPS-iQ-rbE">
-                                <rect key="frame" x="16" y="352" width="368" height="46"/>
+                                <rect key="frame" x="16" y="402" width="388" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="hjM-3v-dKt"/>
                                 </constraints>
@@ -406,7 +423,7 @@
                         </connections>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="500"/>
+                    <size key="freeformSize" width="420" height="600"/>
                     <connections>
                         <outlet property="checkinBtn" destination="HPS-iQ-rbE" id="4Ok-52-zST"/>
                         <outlet property="checkinDate" destination="q04-AM-eVF" id="EpR-aA-hyN"/>
@@ -416,7 +433,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yuv-Bk-NGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-519" y="1778"/>
+            <point key="canvasLocation" x="-519" y="1893"/>
         </scene>
         <!--Schedule-->
         <scene sceneID="Bg2-m7-A1k">

@@ -11,8 +11,10 @@
 @interface StatusViewController : UIViewController
 
 @property (strong, nonatomic) NSDictionary *scenario;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *visualEffectView;
 @property (weak, nonatomic) IBOutlet UILabel *statusMessageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noticeTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nowTimeLabel;
 
 - (void)startCountDown;

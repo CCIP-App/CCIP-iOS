@@ -31,7 +31,26 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.statusMessageLabel setText:NSLocalizedString(@"StatusNotice", nil)];
+    BOOL isKit = [[self.scenario objectForKey:@"id"] isEqualToString:@"kit"];
+    NSString *dietType = [[self.scenario objectForKey:@"attr"] objectForKey:@"diet"];
+    [self.statusMessageLabel setText:isKit ? NSLocalizedString(@"StatusNotice", nil) : NSLocalizedString([dietType stringByAppendingString:@"Lunch"], nil)];
+    [self.noticeTextLabel setText:@""];
+    if (!isKit) {
+        [self.noticeTextLabel setText:NSLocalizedString(@"UseNoticeText", nil)];
+        [self.statusMessageLabel setFont:[UIFont systemFontOfSize:60.0f]];
+        if ([dietType isEqualToString:@"meat"]) {
+            [self.statusMessageLabel setTextColor:[UIColor colorFromHtmlColor:@"#f8e71c"]];
+            [self.visualEffectView setEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
+            [self.noticeTextLabel setTextColor:[UIColor whiteColor]];
+            [self.nowTimeLabel setTextColor:[UIColor whiteColor]];
+        }
+        if ([dietType isEqualToString:@"vegetarian"]) {
+            [self.statusMessageLabel setTextColor:[UIColor colorFromHtmlColor:@"#4a90e2"]];
+            [self.visualEffectView setEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+            [self.noticeTextLabel setTextColor:[UIColor blackColor]];
+            [self.nowTimeLabel setTextColor:[UIColor blackColor]];
+        }
+    }
     [self setNeedCountdown:([[self.scenario objectForKey:@"countdown"] floatValue] > 0)];
     [self.countdownLabel setHidden:!self.needCountdown];
     [self setCountDownEnd:NO];
