@@ -18,8 +18,8 @@
 "All" = "全部";
 "Hi" = "嗨！%@ 您好！";
 "day1checkin" = "第一天報到";
-"kit" = "迎賓袋領取";
-"lunch" = "午餐領取";
+"kit" = "迎賓袋";
+"lunch" = "午餐";
 "vipkit" = "獨家紀念品";
 "CheckinViewButton" = "報到";
 "CheckinViewButtonPressed" = "已報到";
