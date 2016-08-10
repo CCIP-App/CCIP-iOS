@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CheckinViewController.h"
 
 @interface CheckinCardView : UIView
 
+@property (strong, nonatomic) CheckinViewController *delegate;
+@property (strong, nonatomic) NSDictionary *scenario;
 @property (strong, nonatomic) NSString *id;
 @property (strong, nonatomic) NSNumber *used;
 @property (weak, nonatomic) IBOutlet UILabel *checkinDate;

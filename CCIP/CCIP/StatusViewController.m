@@ -1,5 +1,5 @@
 //
-//  StatusView.m
+//  StatusViewController.m
 //  CCIP
 //
 //  Created by 腹黒い茶 on 2016/06/26.
@@ -7,11 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "StatusView.h"
+#import "StatusViewController.h"
 #import "UIColor+addition.h"
 @import AudioToolbox.AudioServices;
 
-@interface StatusView()
+@interface StatusViewController()
 
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) NSDate *countTime;
@@ -20,34 +20,20 @@
 @property (readwrite, nonatomic) NSTimeInterval interval;
 @property (strong, nonatomic) NSDateFormatter *formatter;
 @property (readwrite, nonatomic) BOOL countDownEnd;
+@property (readwrite, nonatomic) BOOL needCountdown;
 
 @end
 
-@implementation StatusView
+@implementation StatusViewController
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
-- (void)gotoTop {
-//    [[AppDelegate appDelegate].navigationView popToRootViewControllerAnimated:YES];
+- (void)viewDidLoad {
+    //NSLog(@"loaded");
 }
 
-- (void)setScenario:(NSDictionary *)scenario {
-    _scenario = scenario;
+- (void)viewWillAppear:(BOOL)animated {
     [self.statusMessageLabel setText:NSLocalizedString(@"StatusNotice", nil)];
-    [self.countdownLabel setHidden:YES];
-    if ([[self.scenario objectForKey:@"countdown"] floatValue] > 0) {
-        [self.countdownLabel setHidden:NO];
-        //[((UIViewController *)self.nextResponder).navigationItem.leftBarButtonItem setEnabled:NO];
-        [self performSelector:@selector(startCountDown)
-                   withObject:nil
-                   afterDelay:0.5f];
-    }
+    [self setNeedCountdown:([[self.scenario objectForKey:@"countdown"] floatValue] > 0)];
+    [self.countdownLabel setHidden:!self.needCountdown];
     [self setCountDownEnd:NO];
     [self setCountTime:[NSDate new]];
     [self setMaxValue:(float)([[self.scenario objectForKey:@"used"] intValue] + [[self.scenario objectForKey:@"countdown"] intValue] - [self.countTime timeIntervalSince1970])];
@@ -57,6 +43,15 @@
     [self.formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
     [self.countdownLabel setText:@""];
     [self.nowTimeLabel setText:@""];
+    [self.view setHidden:!self.needCountdown];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self startCountDown];
+}
+
+- (void)setScenario:(NSDictionary *)scenario {
+    _scenario = scenario;
 }
 
 - (void)startCountDown {
@@ -69,7 +64,7 @@
 }
 
 - (void)updateCountDown {
-    UIColor *color = self.tintColor;
+    UIColor *color = self.view.tintColor;
     NSDate *now = [NSDate new];
     [self setInterval:[now timeIntervalSinceDate:self.countTime]];
     [self setCountDown:(self.maxValue - self.interval)];
@@ -85,19 +80,27 @@
                                                         userInfo:nil
                                                          repeats:YES];
             [self setCountDownEnd:YES];
-            AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
+            
+            if (self.needCountdown) {
                 AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
                     AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
                         AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
                             AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
+                                AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
+                                    [self dismissViewControllerAnimated:YES
+                                                             completion:nil];
+                                });
                             });
                         });
                     });
                 });
-            });
+            } else {
+                [self dismissViewControllerAnimated:YES
+                                         completion:nil];
+            }
         }
     } else if (self.countDown >= (self.maxValue / 2)) {
-        color = [UIColor colorFrom:self.tintColor
+        color = [UIColor colorFrom:self.view.tintColor
                                 To:[UIColor purpleColor]
                                 At:1 - ((self.countDown - (self.maxValue / 2)) / (self.maxValue - (self.maxValue / 2)))];
     } else if (self.countDown >= (self.maxValue / 6)) {

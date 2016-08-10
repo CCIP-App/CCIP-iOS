@@ -13,12 +13,14 @@
 #import "CheckinCardViewController.h"
 #import "CheckinViewController.h"
 #import "GuideViewController.h"
+#import "StatusViewController.h"
 
 @interface CheckinViewController()
 
 @property (strong, nonatomic) NSDictionary *userInfo;
 @property (strong, nonatomic) NSArray *scenarios;
 @property (strong, nonatomic) GuideViewController *guideViewController;
+@property (strong, nonatomic) StatusViewController *statusViewController;
 @property (strong, nonatomic) UIPageControl *pageControl;
 @property (strong, nonatomic) SBSBarcodePicker *scanditBarcodePicker;
 @property (strong, nonatomic) UIBarButtonItem *qrButton;
@@ -84,6 +86,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self hideGuideView];
+    [self hideStatusView];
     self.tabBarController.navigationItem.rightBarButtonItem = nil;
 }
 
@@ -96,6 +99,10 @@
     if ([destination isMemberOfClass:[GuideViewController class]]) {
         self.guideViewController = (GuideViewController *)destination;
     }
+    if ([destination isMemberOfClass:[StatusViewController class]]) {
+        self.statusViewController = (StatusViewController *)destination;
+        [self.statusViewController setScenario:sender];
+    }
 }
 
 - (void)hideGuideView {
@@ -104,6 +111,15 @@
                                                      completion:^{
                                                          self.guideViewController = nil;
                                                      }];
+    }
+}
+
+- (void)hideStatusView {
+    if (self.statusViewController != nil) {
+        [self.statusViewController dismissViewControllerAnimated:YES
+                                                      completion:^{
+                                                          self.statusViewController = nil;
+                                                      }];
     }
 }
 
@@ -126,6 +142,12 @@
             }
         }];
     }
+}
+
+- (void)showCountdown:(NSDictionary *)json {
+    NSLog(@"%@", json);
+    [self performSegueWithIdentifier:@"ShowCountdown"
+                              sender:json];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -234,7 +256,7 @@
 }
 
 #pragma mark iCarousel methods
--(void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel {
+- (void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel {
     [self.pageControl setCurrentPage:carousel.currentItemIndex];
 }
 
@@ -351,6 +373,9 @@
             }
             [temp.checkinBtn setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
         }
+        
+        [temp setDelegate:self];
+        [temp setScenario:[self.scenarios objectAtIndex:index]];
     } else {
         //get a reference to the label in the recycled view
         //        label = (UILabel *)[view viewWithTag:1];

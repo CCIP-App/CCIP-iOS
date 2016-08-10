@@ -21,13 +21,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setScenario:(NSDictionary *)scenario {
+    [((CheckinCardView *)self.view) setScenario:scenario];
+}
+
 - (void)setId:(NSString *)id {
-    _id = id;
     [((CheckinCardView *)self.view) setId:id];
 }
 
 - (void)setUsed:(NSNumber *)used {
     [((CheckinCardView *)self.view) setUsed:used];
+}
+
+- (void)setDelegate:(CheckinViewController *)delegate {
+    [((CheckinCardView *)self.view) setDelegate:delegate];
 }
 
 /*

@@ -1,5 +1,5 @@
 //
-//  StatusView.h
+//  StatusViewController.h
 //  CCIP
 //
 //  Created by 腹黒い茶 on 2016/06/26.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StatusView : UIView
+@interface StatusViewController : UIViewController
 
 @property (strong, nonatomic) NSDictionary *scenario;
 @property (weak, nonatomic) IBOutlet UILabel *statusMessageLabel;

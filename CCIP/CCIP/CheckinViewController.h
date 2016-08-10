@@ -15,5 +15,6 @@
 @property (strong, nonatomic) IBOutlet iCarousel *cards;
 
 - (void)reloadCard;
+- (void)showCountdown:(NSDictionary *)json;
 
 @end

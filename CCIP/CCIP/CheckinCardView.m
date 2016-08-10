@@ -30,6 +30,23 @@
     [self.checkinBtn.layer setCornerRadius:10.0f];
 }
 
+- (void)showCountdown {
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[self.scenario objectForKey:@"used"] longValue]];
+    NSLog(@"%@", date);
+    [self.delegate showCountdown:self.scenario];
+}
+
+- (NSDictionary *)updateScenario:(NSArray *)scenarios {
+    for (NSDictionary *scenario in scenarios) {
+        NSString *id = [scenario objectForKey:@"id"];
+        if ([id isEqualToString:self.id]) {
+            self.scenario = scenario;
+            break;
+        }
+    }
+    return self.scenario;
+}
+
 - (IBAction)checkinBtnTouched:(id)sender {
     UIColor *disabledColor = [UIColor colorWithRed:155/255.0 green:155/255.0 blue:155/255.0 alpha:1];
     if ([self.id isEqualToString:@"day1checkin"] || [self.id isEqualToString:@"day2checkin"]) {
@@ -37,10 +54,12 @@
         [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
             if (json != nil) {
                 NSLog(@"%@", json);
+                [self setUsed:[NSNumber numberWithBool:YES]];
                 if ([[json objectForKey:@"message"] isEqual:@"invalid token"]) {
                     NSLog(@"%@", [json objectForKey:@"message"]);
                     [self.checkinBtn setBackgroundColor:[UIColor redColor]];
                 } else if ([[json objectForKey:@"message"] isEqual:@"has been used"]) {
+                    [self showCountdown];
                     NSLog(@"%@", [json objectForKey:@"message"]);
                     [UIView animateWithDuration:0.25f
                                      animations:^{
@@ -55,6 +74,8 @@
                                          }
                                      }];
                 } else {
+                    [self updateScenario:[json objectForKey:@"scenarios"]];
+                    [self showCountdown];
                     [self.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil) forState:UIControlStateNormal];
                     [self.checkinBtn setBackgroundColor:disabledColor];
                 }
@@ -64,32 +85,54 @@
             }
         }];
     } else {
-        if (self.used) {
-            return;
-        }
-        UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"UseButton", nil)
-                                                    withMessage:NSLocalizedString(@"ConfirmAlertText", nil)
-                                               cancelButtonText:NSLocalizedString(@"Cancel", nil)
-                                                    cancelStyle:UIAlertActionStyleCancel
-                                                   cancelAction:nil];
-        [ac addActionButton:NSLocalizedString(@"CONFIRM", nil)
-                      style:UIAlertActionStyleDestructive
-                    handler:^(UIAlertAction * _Nonnull action) {
-                        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE([AppDelegate appDelegate].accessToken, self.id)];
-                        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
-                            if (json != nil) {
-                                NSLog(@"%@", json);
-                                if ([[json objectForKey:@"message"] isEqual:@"invalid token"]) {
-                                    NSLog(@"%@", [json objectForKey:@"message"]);
-                                    [self.checkinBtn setBackgroundColor:[UIColor redColor]];
-                                } else {
-                                    [self.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil) forState:UIControlStateNormal];
-                                    [self.checkinBtn setBackgroundColor:disabledColor];
-                                }
-                            }
+        void (^use)(void) = ^{
+            GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE([AppDelegate appDelegate].accessToken, self.id)];
+            [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
+                if (json != nil) {
+                    NSLog(@"%@", json);
+                    [self setUsed:[NSNumber numberWithBool:YES]];
+                    if ([[json objectForKey:@"message"] isEqual:@"invalid token"]) {
+                        NSLog(@"%@", [json objectForKey:@"message"]);
+                        [self.checkinBtn setBackgroundColor:[UIColor redColor]];
+                    } else if ([[json objectForKey:@"message"] isEqual:@"has been used"]) {
+                        [self showCountdown];
+                        NSLog(@"%@", [json objectForKey:@"message"]);
+                        [UIView animateWithDuration:0.25f
+                                         animations:^{
+                                             [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
+                                         }
+                                         completion:^(BOOL finished) {
+                                             if (finished) {
+                                                 [UIView animateWithDuration:1.75f
+                                                                  animations:^{
+                                                                      [self.checkinBtn setBackgroundColor:disabledColor];
+                                                                  }];
+                                             }
+                                         }];
+                    } else {
+                        [self updateScenario:[json objectForKey:@"scenarios"]];
+                        [self showCountdown];
+                        [self.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil) forState:UIControlStateNormal];
+                        [self.checkinBtn setBackgroundColor:disabledColor];
+                    }
+                }
+            }];
+        };
+        if ([self.used boolValue]) {
+            use();
+        } else {
+            UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"UseButton", nil)
+                                                        withMessage:NSLocalizedString(@"ConfirmAlertText", nil)
+                                                   cancelButtonText:NSLocalizedString(@"Cancel", nil)
+                                                        cancelStyle:UIAlertActionStyleCancel
+                                                       cancelAction:nil];
+            [ac addActionButton:NSLocalizedString(@"CONFIRM", nil)
+                          style:UIAlertActionStyleDestructive
+                        handler:^(UIAlertAction * _Nonnull action) {
+                            use();
                         }];
-                    }];
-        [ac showAlert:nil];
+            [ac showAlert:nil];
+        }
     }
 }
 
