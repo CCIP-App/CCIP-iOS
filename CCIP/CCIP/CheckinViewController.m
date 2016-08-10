@@ -262,14 +262,12 @@
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
     //return the total number of items in the carousel
-    if ([self.scenarios count] > 2 && [[AppDelegate appDelegate] showWhichDay] == 1) {
-        // Hard code...
-        [self.pageControl setNumberOfPages:3];
-        return 3;
-    } else {
-        [self.pageControl setNumberOfPages:[self.scenarios count]];
-        return [self.scenarios count];
+    if ([self.scenarios count] > 3) {
+        [self.pageControl setNumberOfPages:4];
+        return 4;
     }
+
+    return 0;
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
@@ -300,6 +298,7 @@
         
         view = (UIView*)temp.view;
         
+        // index in scenario array
         NSInteger idx = 1;
         
         // If the time is before 2016/08/20 17:00:00 show day 1, otherwise show day 2
@@ -325,6 +324,11 @@
                 idx = 4;
             }
         }
+        
+        if (index == 3) {
+            idx = 5;
+        }
+        
         bool isCheckin = NO;
         switch (index) {
             case 0:
@@ -335,19 +339,22 @@
                 [temp.checkinText setText:NSLocalizedString(@"CheckinText", nil)];
                 break;
             case 1:
-                isCheckin = NO;
                 [temp setId:@"kit"];
                 [temp.checkinDate setText:@"COSCUP"];
                 [temp.checkinTitle setText:NSLocalizedString(@"kit", nil)];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
                 break;
             case 2:
-                isCheckin = NO;
                 [temp setId:lunchId];
                 [temp.checkinDate setText:dateId];
                 [temp.checkinTitle setText:NSLocalizedString(@"lunch", nil)];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
                 break;
+            case 3:
+                [temp setId:@"vipkit"];
+                [temp.checkinDate setText:@"COSCUP"];
+                [temp.checkinTitle setText:NSLocalizedString(@"vipkit", nil)];
+                [temp.checkinText setText:NSLocalizedString(@"CheckinTextVipKit", nil)];
             default:
                 break;
         }

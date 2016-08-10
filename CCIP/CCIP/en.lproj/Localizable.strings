@@ -20,13 +20,16 @@
 "day1checkin" = "Day 1 Checkin";
 "kit" = "Welcome Kit";
 "lunch" = "Lunch";
+"vipkit" = "VIP Kit";
 "CheckinViewButton" = "CHECK IN";
 "CheckinViewButtonPressed" = "FINISHED";
 "CheckinText" = "As well as continuing our long-standing spirit of \"sharing\", we hope to extend and expand this mission further and to a wider audience; so it grows into a force that makes for a better future.";
+"CheckinTextVipKit" = "We appreciate your support! Because of you, COSCUP is doing better.";
 "UseNoticeText" = "從封閉到開源，從個人到社群，我們曾走過很長一段路。";
 "meatLunch" = "葷食";
 "vegetarianLunch" = "素食";
 "UseButton_kit" = "Confirm to get the KIT bag?";
+"UseButton_vipkit" = "Confirm to get the VIP KIT bag?";
 "UseButton_day1lunch" = "Confirm to get day 1 lunch?";
 "UseButton_day2lunch" = "Confirm to get day 2 lunch?";
 "UseButton" = "USE";

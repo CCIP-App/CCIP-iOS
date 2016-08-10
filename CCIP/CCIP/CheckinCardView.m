@@ -100,7 +100,7 @@
                     if ([[json objectForKey:@"message"] isEqual:@"invalid token"]) {
                         NSLog(@"%@", [json objectForKey:@"message"]);
                         [self.checkinBtn setBackgroundColor:[UIColor redColor]];
-                    } else if ([[json objectForKey:@"message"] isEqual:@"has been used"]) {
+                    } else if ([[json objectForKey:@"message"] isEqual:@"has been used"] || [[json objectForKey:@"message"] isEqual:@"disabled scenario"]) {
                         [self showCountdown];
                         NSLog(@"%@", [json objectForKey:@"message"]);
                         [UIView animateWithDuration:0.25f
@@ -128,6 +128,18 @@
         if ([self.used boolValue]) {
             use();
         } else if ([self.disabled boolValue]) {
+            [UIView animateWithDuration:0.25f
+                             animations:^{
+                                 [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
+                             }
+                             completion:^(BOOL finished) {
+                                 if (finished) {
+                                     [UIView animateWithDuration:1.75f animations:^{
+                                         [self.checkinBtn setBackgroundColor:disabledColor];
+                                     }];
+                                 }
+                             }];
+            
             SEND_GAI_EVENT(@"CheckinCardView", @"click_disabled");
         } else {
             UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString([@"UseButton_" stringByAppendingString:self.id], nil)
