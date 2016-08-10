@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GuideViewController : UIViewController
+@interface GuideViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *guideMessageLabel;
 @property (weak, nonatomic) IBOutlet UITextField *redeemCodeText;

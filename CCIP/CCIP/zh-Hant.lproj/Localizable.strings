@@ -37,8 +37,10 @@
 "Sponsors" = "贊助";
 "Introduction" = "簡介";
 "Speaker" = "講師";
-"GuideViewMessage" = "請參考您的與會詳細資訊，您會在信中找到使用代碼。\n\n請複製貼上該代碼到下面的文字輸入方塊中，或者直接點擊信中的代碼連結即可。";
+"GuideViewMessage" = "請參考您的與會詳細資訊，您會在信中找到使用代碼。\n\n請複製貼上該代碼到下面的文字輸入方塊中，或直接點擊信中的代碼連結即可。";
 "GuideViewButton" = "使用";
+"GuideViewTokenErrorTitle" = "錯誤的驗證碼";
+"GuideViewTokenErrorDesc" = "請參考您的與會詳細資訊，您會在信中找到使用代碼，或直接點擊信中的代碼連結即可。";
 "CheckinNotice" = "請注意！在點下『確認使用』之後，將立即視為已領取。\n請確認大會工作人員已經指示您按下『確認使用』按鈕後再按下按鈕，謝謝！";
 "CheckinButton" = "確認使用";
 "StatusNotice" = "您已經使用成功！\n\n請停留在此畫面給工作人員確認，謝謝！";

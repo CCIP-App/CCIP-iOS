@@ -9,6 +9,7 @@
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import "AppDelegate.h"
 #import "GuideViewController.h"
+#import "UIAlertController+additional.h"
 
 @interface GuideViewController ()
 
@@ -37,6 +38,12 @@
     self.view.frame = frame;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    [self redeemCode:nil];
+    return YES;
+}
+
 - (void)keyboardDidShow:(NSNotification *)note {
     if (self.view.frame.size.height <= 480) {
         self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y - 130);
@@ -60,15 +67,22 @@
         if ([[AppDelegate appDelegate].accessToken length] > 0) {
             [UICKeyChainStore removeItemForKey:@"token"];
         }
+        
+        //TODO: Check token with server
+        
         [AppDelegate appDelegate].accessToken = code;
         [UICKeyChainStore setString:[AppDelegate appDelegate].accessToken
                              forKey:@"token"];
         [[AppDelegate appDelegate].oneSignal sendTag:@"token" value:[AppDelegate appDelegate].accessToken];
+        
+        [self dismissViewControllerAnimated:YES
+                                 completion:^{
+                                     //TODO: refresh card data
+                                 }];
+    } else {
+        UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil) withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
+        [ac showAlert:nil];
     }
-    [self dismissViewControllerAnimated:YES
-                             completion:^{
-                                 //TODO: refresh card data
-                             }];
 }
 
 /*
