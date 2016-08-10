@@ -100,7 +100,7 @@
                     if ([[json objectForKey:@"message"] isEqual:@"invalid token"]) {
                         NSLog(@"%@", [json objectForKey:@"message"]);
                         [self.checkinBtn setBackgroundColor:[UIColor redColor]];
-                    } else if ([[json objectForKey:@"message"] isEqual:@"has been used"] || [[json objectForKey:@"message"] isEqual:@"disabled scenario"]) {
+                    } else if ([[json objectForKey:@"message"] isEqual:@"has been used"]) {
                         [self showCountdown];
                         NSLog(@"%@", [json objectForKey:@"message"]);
                         [UIView animateWithDuration:0.25f
