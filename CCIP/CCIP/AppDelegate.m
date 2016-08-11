@@ -54,6 +54,16 @@
     [iRate sharedInstance].previewMode = NO;
 }
 
+- (void)setAccessToken:(NSString *)inAccessToken {
+    _accessToken = inAccessToken;
+    
+    [UICKeyChainStore removeItemForKey:@"token"];
+    [UICKeyChainStore setString:_accessToken
+                         forKey:@"token"];
+    
+    [self.oneSignal sendTag:@"token" value:_accessToken];
+}
+
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation {
     if (url != nil) {
         NSLog(@"Calling from URL: %@", url);
@@ -66,14 +76,8 @@
                 if ([elts count] < 2) continue;
                 [params setObject:[elts objectAtIndex:1] forKey:[elts objectAtIndex:0]];
             }
-            
-            if ([self.accessToken length] > 0) {
-                [UICKeyChainStore removeItemForKey:@"token"];
-            }
+
             self.accessToken = [params objectForKey:@"token"];
-            [UICKeyChainStore setString:self.accessToken
-                                 forKey:@"token"];
-            [self.oneSignal sendTag:@"token" value:self.accessToken];
             
             if (self.checkinView != nil) {
                 [self.checkinView reloadCard];
@@ -120,9 +124,9 @@
                           }
                       }];
     [self.oneSignal enableInAppAlertNotification:YES];
+
     self.accessToken = [UICKeyChainStore stringForKey:@"token"];
     NSLog(@"Token: <%@>", self.accessToken);
-    [self.oneSignal sendTag:@"token" value:self.accessToken];
     
     // Provide the app key for your scandit license.
     [SBSLicense setAppKey:@"2BXy4CfQi9QFc12JnjId7mHH58SdYzNC90Uo07luUUY"];

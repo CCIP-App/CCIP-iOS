@@ -182,9 +182,6 @@
         [UICKeyChainStore removeItemForKey:@"token"];
     }
     [AppDelegate appDelegate].accessToken = code.data;
-    [UICKeyChainStore setString:[AppDelegate appDelegate].accessToken
-                         forKey:@"token"];
-    [[AppDelegate appDelegate].oneSignal sendTag:@"token" value:[AppDelegate appDelegate].accessToken];
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         //Do UI stuff here

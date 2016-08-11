@@ -81,13 +81,7 @@
                         NSLog(@"--  Success tap 10 times  --");
                         NSLog(@"-- Try to clean token --");
                         
-                        if ([[AppDelegate appDelegate].accessToken length] > 0) {
-                            [UICKeyChainStore removeItemForKey:@"token"];
-                        }
                         [AppDelegate appDelegate].accessToken = @"";
-                        [UICKeyChainStore setString:[AppDelegate appDelegate].accessToken
-                                             forKey:@"token"];
-                        [[AppDelegate appDelegate].oneSignal sendTag:@"token" value:[AppDelegate appDelegate].accessToken];
                     }
                 }
                 else {

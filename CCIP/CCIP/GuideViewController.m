@@ -71,9 +71,6 @@
         //TODO: Check token with server
         
         [AppDelegate appDelegate].accessToken = code;
-        [UICKeyChainStore setString:[AppDelegate appDelegate].accessToken
-                             forKey:@"token"];
-        [[AppDelegate appDelegate].oneSignal sendTag:@"token" value:[AppDelegate appDelegate].accessToken];
         
         [self dismissViewControllerAnimated:YES
                                  completion:^{
