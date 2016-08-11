@@ -68,14 +68,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    if (self.qrButton == nil) {
-        self.qrButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"QR_Code.png"]
-                                           landscapeImagePhone:nil
-                                                         style:UIBarButtonItemStylePlain
-                                                        target:self
-                                                        action:@selector(callBarcodePickerOverlay)];
-    }
-    self.tabBarController.navigationItem.rightBarButtonItem = self.qrButton;
+    [self showQRButton];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -156,6 +149,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)showQRButton {
+    if (self.qrButton == nil) {
+        self.qrButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"QR_Code.png"]
+                                           landscapeImagePhone:nil
+                                                         style:UIBarButtonItemStylePlain
+                                                        target:self
+                                                        action:@selector(callBarcodePickerOverlay)];
+    }
+    BOOL hasToken = [[AppDelegate appDelegate].accessToken length] > 0;
+    if (!hasToken){
+        self.tabBarController.navigationItem.rightBarButtonItem = self.qrButton;
+    }
+}
+
+- (void)hideQRButton {
+    self.tabBarController.navigationItem.rightBarButtonItem = nil;
+}
 - (void)barcodePicker:(SBSBarcodePicker *)picker didScan:(SBSScanSession *)session {
     [session stopScanning];
     
@@ -171,7 +181,6 @@
     [UICKeyChainStore setString:[AppDelegate appDelegate].accessToken
                          forKey:@"token"];
     [[AppDelegate appDelegate].oneSignal sendTag:@"token" value:[AppDelegate appDelegate].accessToken];
-    
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         //Do UI stuff here
@@ -199,6 +208,8 @@
         BOOL hasToken = [[AppDelegate appDelegate].accessToken length] > 0;
         if (!hasToken) {
             [self performSegueWithIdentifier:@"ShowGuide" sender:NULL];
+        } else {
+            [self hideQRButton];
         }
     }
 }
