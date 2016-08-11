@@ -55,6 +55,8 @@
     } else {
         [cell.msg setText:[announce objectForKey:@"msg_en"]];
     }
+    NSString *uri = [announce objectForKey:@"uri"];
+    [cell setAccessoryType:(!uri || [uri isEqualToString:@""]) ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
