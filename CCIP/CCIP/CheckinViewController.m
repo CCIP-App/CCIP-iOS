@@ -87,6 +87,7 @@
     [super viewWillDisappear:animated];
     [self hideGuideView];
     [self hideStatusView];
+    [self closeBarcodePickerOverlay];
     self.tabBarController.navigationItem.rightBarButtonItem = nil;
 }
 
@@ -196,7 +197,7 @@
         self.scanditBarcodePicker = nil;
     }
 }
-     
+
 - (void)callBarcodePickerOverlay {
     if (self.guideViewController != nil) {
         [self.guideViewController dismissViewControllerAnimated:YES
