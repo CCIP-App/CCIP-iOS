@@ -68,7 +68,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self showQRButton];
+    [self handleQRButton];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -118,6 +118,8 @@
 }
 
 - (void)reloadCard {
+    [self handleQRButton];
+
     BOOL hasToken = [[AppDelegate appDelegate].accessToken length] > 0;
     if (!hasToken) {
         [self performSegueWithIdentifier:@"ShowGuide"
@@ -155,7 +157,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)showQRButton {
+- (void)handleQRButton {
     if (self.qrButton == nil) {
         self.qrButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"QR_Code.png"]
                                            landscapeImagePhone:nil
@@ -167,6 +169,8 @@
     BOOL hasToken = [[AppDelegate appDelegate].accessToken length] > 0;
     if (isDevMode || !hasToken){
         self.tabBarController.navigationItem.rightBarButtonItem = self.qrButton;
+    } else {
+        self.tabBarController.navigationItem.rightBarButtonItem = nil;
     }
 }
 
