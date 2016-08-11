@@ -175,8 +175,8 @@
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         //Do UI stuff here
-        [self reloadCard];
-        [self closeBarcodePickerOverlay];
+        [self performSelector:@selector(reloadCard) withObject:nil afterDelay:0.5];
+        [self performSelector:@selector(closeBarcodePickerOverlay) withObject:nil afterDelay:0.5];
     }];
 }
 
@@ -276,7 +276,11 @@
                                                               attribute:NSLayoutAttributeHeight
                                                              multiplier:1.0
                                                                constant:0.0]];
-        [self.scanditBarcodePicker startScanning];
+        
+        [self.scanditBarcodePicker startScanningInPausedState:YES completionHandler:^{
+            [self.scanditBarcodePicker performSelector:@selector(startScanning) withObject:nil afterDelay:0.5];
+        }];
+        
     }
 }
 
