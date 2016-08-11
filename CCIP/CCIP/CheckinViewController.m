@@ -221,8 +221,15 @@
     } else {
         [self.qrButton setImage:[UIImage imageNamed:@"QR_Code_Filled.png"]];
         
-        self.scanditBarcodePicker = [[SBSBarcodePicker alloc]
-                                     initWithSettings:[SBSScanSettings pre47DefaultSettings]];
+        // Configure the barcode picker through a scan settings instance by defining which
+        // symbologies should be enabled.
+        SBSScanSettings *scanSettings = [SBSScanSettings defaultSettings];
+        // prefer backward facing camera over front-facing cameras.
+        scanSettings.cameraFacingPreference = SBSCameraFacingDirectionBack;
+        // Enable symbologies that you want to scan
+        [scanSettings setSymbology:SBSSymbologyQR enabled:YES];
+        
+        self.scanditBarcodePicker = [[SBSBarcodePicker alloc] initWithSettings:scanSettings];
         
         /* Set the delegate to receive callbacks.
          * This is commented out here in the demo app since the result view with the scan results
