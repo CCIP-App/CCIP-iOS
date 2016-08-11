@@ -53,7 +53,7 @@
 
 - (void)navSingleTap
 {
-    NSLog(@"navSingleTap");
+    //NSLog(@"navSingleTap");
     [self handleNavTapTimes];
 }
 
@@ -69,14 +69,17 @@
     
     switch (self.selectedIndex) {
         case 4: {
-            NSLog(@"navSingleTap from MoreTab");
+            //NSLog(@"navSingleTap from MoreTab");
             if ([newTapTime timeIntervalSinceDate: oldTapTime] <= 0.25f) {
                 tapTimes++;
                 if (tapTimes == 10) {
-                    NSLog(@"-- Success tap 10 times --");
+                    NSLog(@"--  Success tap 10 times  --");
+                    NSLog(@"-- Try to enable DEV_MODE --");
                 }
             }
             else {
+                NSLog(@"--  Failed, just tap %2d times  --", tapTimes);
+                NSLog(@"-- Not trigger enable DEV_MODE --");
                 tapTimes = 1;
             }
             oldTapTime = newTapTime;
