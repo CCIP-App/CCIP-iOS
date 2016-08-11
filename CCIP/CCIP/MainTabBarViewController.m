@@ -12,6 +12,8 @@
 #import "UIImage+addition.h"
 #import "ScheduleViewController.h"
 #import "MoreTableViewController.h"
+#import "AppDelegate.h"
+#import <UICKeyChainStore/UICKeyChainStore.h>
 
 @interface MainTabBarViewController ()
 
@@ -67,7 +69,36 @@
         oldTapTime = newTapTime;
     }
     
+    BOOL isDevMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"DEV_MODE"];
+    
     switch (self.selectedIndex) {
+        case 0: {
+            if (isDevMode) {
+                //NSLog(@"navSingleTap from MoreTab");
+                if ([newTapTime timeIntervalSinceDate: oldTapTime] <= 0.25f) {
+                    tapTimes++;
+                    if (tapTimes == 10) {
+                        NSLog(@"--  Success tap 10 times  --");
+                        NSLog(@"-- Try to clean token --");
+                        
+                        if ([[AppDelegate appDelegate].accessToken length] > 0) {
+                            [UICKeyChainStore removeItemForKey:@"token"];
+                        }
+                        [AppDelegate appDelegate].accessToken = @"";
+                        [UICKeyChainStore setString:[AppDelegate appDelegate].accessToken
+                                             forKey:@"token"];
+                        [[AppDelegate appDelegate].oneSignal sendTag:@"token" value:[AppDelegate appDelegate].accessToken];
+                    }
+                }
+                else {
+                    NSLog(@"--  Failed, just tap %2d times  --", tapTimes);
+                    NSLog(@"-- Not trigger clean token --");
+                    tapTimes = 1;
+                }
+                oldTapTime = newTapTime;
+            }
+            break;
+        }
         case 4: {
             //NSLog(@"navSingleTap from MoreTab");
             if ([newTapTime timeIntervalSinceDate: oldTapTime] <= 0.25f) {
