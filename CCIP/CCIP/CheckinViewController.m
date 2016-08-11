@@ -219,7 +219,7 @@
 }
 
 - (void)callBarcodePickerOverlay {
-    if (self.guideViewController != nil) {
+    if (self.guideViewController.isVisible) {
         [self.guideViewController dismissViewControllerAnimated:YES
                                                      completion:^{
                                                          self.guideViewController = nil;
