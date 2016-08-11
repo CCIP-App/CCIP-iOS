@@ -82,6 +82,7 @@
                         NSLog(@"-- Try to clean token --");
                         
                         [AppDelegate appDelegate].accessToken = @"";
+                        [[AppDelegate appDelegate].checkinView reloadCard];
                     }
                 }
                 else {

@@ -122,6 +122,11 @@
     if (!hasToken) {
         [self performSegueWithIdentifier:@"ShowGuide"
                                   sender:self.cards];
+        self.userInfo = [NSDictionary new];
+        self.scenarios = [NSArray new];
+        [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
+                                               value:@""];
+        [self.cards reloadData];
     } else {
         [self hideGuideView];
         GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS([AppDelegate appDelegate].accessToken)];
@@ -131,7 +136,8 @@
                 [userInfo removeObjectForKey:@"scenarios"];
                 self.userInfo = [NSDictionary dictionaryWithDictionary:userInfo];
                 self.scenarios = [json objectForKey:@"scenarios"];
-                [[AppDelegate appDelegate].oneSignal sendTag:@"user_id" value:[json objectForKey:@"user_id"]];
+                [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
+                                                       value:[json objectForKey:@"user_id"]];
                 [self.cards reloadData];
             }
         }];
