@@ -307,7 +307,7 @@
         [self.pageControl setNumberOfPages:4];
         return 4;
     }
-
+    [self.pageControl setNumberOfPages:0];
     return 0;
 }
 
