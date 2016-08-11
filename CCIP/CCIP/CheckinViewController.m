@@ -157,14 +157,18 @@
                                                         target:self
                                                         action:@selector(callBarcodePickerOverlay)];
     }
+    BOOL isDevMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"DEV_MODE"];
     BOOL hasToken = [[AppDelegate appDelegate].accessToken length] > 0;
-    if (!hasToken){
+    if (isDevMode || !hasToken){
         self.tabBarController.navigationItem.rightBarButtonItem = self.qrButton;
     }
 }
 
 - (void)hideQRButton {
-    self.tabBarController.navigationItem.rightBarButtonItem = nil;
+    BOOL isDevMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"DEV_MODE"];
+    if (!isDevMode) {
+        self.tabBarController.navigationItem.rightBarButtonItem = nil;
+    }
 }
 - (void)barcodePicker:(SBSBarcodePicker *)picker didScan:(SBSScanSession *)session {
     [session stopScanning];

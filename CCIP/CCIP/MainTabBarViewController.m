@@ -75,6 +75,9 @@
                 if (tapTimes == 10) {
                     NSLog(@"--  Success tap 10 times  --");
                     NSLog(@"-- Try to enable DEV_MODE --");
+                    
+                    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"DEV_MODE"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
                 }
             }
             else {
