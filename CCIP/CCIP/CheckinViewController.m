@@ -195,6 +195,11 @@
         [self.scanditBarcodePicker.view removeFromSuperview];
         [self.scanditBarcodePicker didMoveToParentViewController:nil];
         self.scanditBarcodePicker = nil;
+        
+        BOOL hasToken = [[AppDelegate appDelegate].accessToken length] > 0;
+        if (!hasToken) {
+            [self performSegueWithIdentifier:@"ShowGuide" sender:NULL];
+        }
     }
 }
 
