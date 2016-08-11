@@ -73,7 +73,7 @@
                                            landscapeImagePhone:nil
                                                          style:UIBarButtonItemStylePlain
                                                         target:self
-                                                        action:@selector(showBarcodePickerOverlay)];
+                                                        action:@selector(callBarcodePickerOverlay)];
     }
     self.tabBarController.navigationItem.rightBarButtonItem = self.qrButton;
 }
@@ -197,6 +197,18 @@
     }
 }
      
+- (void)callBarcodePickerOverlay {
+    if (self.guideViewController != nil) {
+        [self.guideViewController dismissViewControllerAnimated:YES
+                                                     completion:^{
+                                                         self.guideViewController = nil;
+                                                         [self showBarcodePickerOverlay];
+                                                     }];
+    } else {
+        [self showBarcodePickerOverlay];
+    }
+}
+
 - (void)showBarcodePickerOverlay {
     if (self.scanditBarcodePicker != nil) {
         [self closeBarcodePickerOverlay];
