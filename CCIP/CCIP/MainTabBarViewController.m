@@ -44,6 +44,47 @@
     }
     
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.navigationItem.titleView.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(navSingleTap)];
+    [self.navigationItem.titleView addGestureRecognizer:tapGesture];
+}
+
+- (void)navSingleTap
+{
+    NSLog(@"navSingleTap");
+    [self handleNavTapTimes];
+}
+
+- (void)handleNavTapTimes {
+    static int tapTimes = 0;
+    static NSDate *oldTapTime;
+    static NSDate *newTapTime;
+    
+    newTapTime = [NSDate date];
+    if (oldTapTime == nil) {
+        oldTapTime = newTapTime;
+    }
+    
+    switch (self.selectedIndex) {
+        case 4: {
+            NSLog(@"navSingleTap from MoreTab");
+            if ([newTapTime timeIntervalSinceDate: oldTapTime] <= 0.25f) {
+                tapTimes++;
+                if (tapTimes == 10) {
+                    NSLog(@"-- Success tap 10 times --");
+                }
+            }
+            else {
+                tapTimes = 1;
+            }
+            oldTapTime = newTapTime;
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
