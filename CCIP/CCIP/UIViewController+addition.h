@@ -20,4 +20,6 @@
 - (CGFloat)topGuideHeight;
 - (CGFloat)bottomGuideHeight;
 
+- (BOOL)isVisible;
+
 @end
