@@ -8,21 +8,21 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StaffCell" id="gJj-kL-uIn" customClass="StaffCell">
-            <rect key="frame" x="0.0" y="0.0" width="150" height="180"/>
+            <rect key="frame" x="0.0" y="0.0" width="138" height="180"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="150" height="180"/>
+                <rect key="frame" x="0.0" y="0.0" width="138" height="180"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StaffIconDefault.png" translatesAutoresizingMaskIntoConstraints="NO" id="F3y-GP-5oQ">
-                        <rect key="frame" x="43" y="8" width="64" height="64"/>
+                        <rect key="frame" x="37" y="8" width="64" height="64"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="64" id="UOY-9z-ZXg"/>
                             <constraint firstAttribute="width" constant="64" id="b3j-FI-SsG"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSp-Vx-Idi">
-                        <rect key="frame" x="8" y="74" width="134" height="53"/>
+                        <rect key="frame" x="2" y="74" width="134" height="53"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="54" id="h9Y-sh-kOJ"/>
                             <constraint firstAttribute="width" constant="134" id="oQr-IX-3fF"/>
@@ -32,7 +32,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="行政組員兼場務組攤位組員" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtx-ch-J8c">
-                        <rect key="frame" x="8" y="129" width="134" height="42"/>
+                        <rect key="frame" x="2" y="129" width="134" height="42"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="134" id="dmZ-JN-de6"/>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="42" id="jG0-Iz-5de"/>
