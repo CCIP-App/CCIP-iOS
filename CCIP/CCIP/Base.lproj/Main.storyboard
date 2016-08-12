@@ -36,7 +36,7 @@
                                             </vibrancyEffect>
                                         </visualEffectView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qB-gZ-oMt">
-                                            <rect key="frame" x="50" y="70" width="320" height="100"/>
+                                            <rect key="frame" x="50" y="40" width="320" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="1XS-RC-GPm"/>
                                                 <constraint firstAttribute="height" constant="100" id="EQO-n2-qwA"/>
@@ -74,6 +74,15 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Kit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBO-2l-oxB">
+                                            <rect key="frame" x="8" y="420" width="404" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="WU2-Ce-ckf"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dyo-cm-nZt">
                                             <rect key="frame" x="16" y="530" width="388" height="40"/>
                                             <constraints>
@@ -85,19 +94,22 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="tBO-2l-oxB" secondAttribute="trailing" constant="8" id="0qY-vK-imM"/>
                                         <constraint firstAttribute="trailing" secondItem="Dyo-cm-nZt" secondAttribute="trailing" constant="16" id="112-n5-uth"/>
                                         <constraint firstAttribute="trailing" secondItem="Naq-yu-67a" secondAttribute="trailing" constant="20" id="97F-tg-UfL"/>
                                         <constraint firstAttribute="bottom" secondItem="KGG-rl-Nfe" secondAttribute="bottom" id="9Hz-ac-GuE"/>
-                                        <constraint firstItem="4qB-gZ-oMt" firstAttribute="top" secondItem="htO-bs-S6f" secondAttribute="top" constant="70" id="Apq-Ln-OwZ"/>
+                                        <constraint firstItem="4qB-gZ-oMt" firstAttribute="top" secondItem="htO-bs-S6f" secondAttribute="top" constant="40" id="Apq-Ln-OwZ"/>
                                         <constraint firstAttribute="trailing" secondItem="KGG-rl-Nfe" secondAttribute="trailing" id="Djv-Rg-UPm"/>
                                         <constraint firstItem="Dyo-cm-nZt" firstAttribute="top" secondItem="qy3-VV-KVG" secondAttribute="bottom" constant="8" id="Qwo-u0-gZd"/>
                                         <constraint firstAttribute="trailing" secondItem="4qB-gZ-oMt" secondAttribute="trailing" constant="50" id="TOT-Em-LGM"/>
                                         <constraint firstItem="Dyo-cm-nZt" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="16" id="UCY-YB-r5o"/>
                                         <constraint firstItem="KGG-rl-Nfe" firstAttribute="top" secondItem="htO-bs-S6f" secondAttribute="top" id="W00-Ek-aPZ"/>
                                         <constraint firstItem="KGG-rl-Nfe" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" id="XZf-01-JAk"/>
+                                        <constraint firstItem="tBO-2l-oxB" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="8" id="Ypn-Sb-qmi"/>
                                         <constraint firstAttribute="trailing" secondItem="qy3-VV-KVG" secondAttribute="trailing" constant="50" id="atw-pY-Cu6"/>
                                         <constraint firstAttribute="bottom" secondItem="Dyo-cm-nZt" secondAttribute="bottom" constant="10" id="coH-JR-MI3"/>
                                         <constraint firstItem="4qB-gZ-oMt" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="50" id="dWh-r8-o1b"/>
+                                        <constraint firstItem="Dyo-cm-nZt" firstAttribute="top" secondItem="tBO-2l-oxB" secondAttribute="bottom" constant="50" id="ecU-XG-V4t"/>
                                         <constraint firstItem="Naq-yu-67a" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="20" id="j3b-9x-aB7"/>
                                         <constraint firstItem="Naq-yu-67a" firstAttribute="centerX" secondItem="htO-bs-S6f" secondAttribute="centerX" id="ms4-oL-b2y"/>
                                         <constraint firstItem="Naq-yu-67a" firstAttribute="centerY" secondItem="htO-bs-S6f" secondAttribute="centerY" id="nNi-JU-tCS"/>
@@ -119,6 +131,7 @@
                     <size key="freeformSize" width="420" height="600"/>
                     <connections>
                         <outlet property="countdownLabel" destination="Naq-yu-67a" id="kHY-QK-sHX"/>
+                        <outlet property="kitTitle" destination="tBO-2l-oxB" id="dWL-wC-5lE"/>
                         <outlet property="noticeTextLabel" destination="qy3-VV-KVG" id="7ct-c7-tm3"/>
                         <outlet property="nowTimeLabel" destination="Dyo-cm-nZt" id="2kX-ML-D66"/>
                         <outlet property="statusMessageLabel" destination="4qB-gZ-oMt" id="L6R-DH-oyX"/>

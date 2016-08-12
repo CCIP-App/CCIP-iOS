@@ -37,6 +37,7 @@
     if (!isKit) {
         [self.noticeTextLabel setText:NSLocalizedString(@"UseNoticeText", nil)];
         [self.statusMessageLabel setFont:[UIFont systemFontOfSize:48.0f]];
+        [self.kitTitle setText:@""];
         if ([dietType isEqualToString:@"meat"]) {
             [self.statusMessageLabel setTextColor:[UIColor colorFromHtmlColor:@"#f8e71c"]];
             [self.visualEffectView setEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
@@ -49,6 +50,8 @@
             [self.noticeTextLabel setTextColor:[UIColor blackColor]];
             [self.nowTimeLabel setTextColor:[UIColor blackColor]];
         }
+    } else {
+        [self.kitTitle setText:NSLocalizedString([self.scenario objectForKey:@"id"], nil)];
     }
     [self setNeedCountdown:([[self.scenario objectForKey:@"countdown"] floatValue] > 0)];
     [self.countdownLabel setHidden:!self.needCountdown];
