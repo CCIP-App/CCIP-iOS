@@ -54,24 +54,30 @@
     [iRate sharedInstance].previewMode = NO;
 }
 
-- (void)setAccessToken:(NSString *)inAccessToken {
-    _accessToken = inAccessToken;
-    
++ (void)setAccessToken:(NSString *)accessToken {
     [UICKeyChainStore removeItemForKey:@"token"];
-    [UICKeyChainStore setString:_accessToken
+    [UICKeyChainStore setString:accessToken
                          forKey:@"token"];
     
-    [self.oneSignal sendTag:@"token" value:_accessToken];
+    [[AppDelegate appDelegate].oneSignal sendTag:@"token" value:accessToken];
 }
 
++ (NSString *)accessToken;
+{
+    return [UICKeyChainStore stringForKey:@"token"];
+}
 
-- (void)setIsDevMode:(BOOL)isDevMode {
++ (void)setIsDevMode:(BOOL)isDevMode {
     [[NSUserDefaults standardUserDefaults] setBool:isDevMode forKey:@"DEV_MODE"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (BOOL)isDevMode {
++ (BOOL)isDevMode {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"DEV_MODE"];
+}
+
++ (BOOL)haveAccessToken {
+    return ([[AppDelegate accessToken] length] > 0) ? YES : NO;
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation {
@@ -87,7 +93,7 @@
                 [params setObject:[elts objectAtIndex:1] forKey:[elts objectAtIndex:0]];
             }
 
-            self.accessToken = [params objectForKey:@"token"];
+            [AppDelegate setAccessToken:[params objectForKey:@"token"]];
             
             if (self.checkinView != nil) {
                 [self.checkinView reloadCard];
@@ -135,8 +141,8 @@
                       }];
     [self.oneSignal enableInAppAlertNotification:YES];
 
-    self.accessToken = [UICKeyChainStore stringForKey:@"token"];
-    NSLog(@"Token: <%@>", self.accessToken);
+    [AppDelegate setAccessToken:[UICKeyChainStore stringForKey:@"token"]];
+    NSLog(@"Token: <%@>", [AppDelegate accessToken]);
     
     // Provide the app key for your scandit license.
     [SBSLicense setAppKey:@"2BXy4CfQi9QFc12JnjId7mHH58SdYzNC90Uo07luUUY"];
@@ -162,11 +168,10 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    BOOL hasToken = [self.accessToken length] > 0;
     UIViewController *presentedView = [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentedViewController];
-    if (hasToken && [presentedView class] == [GuideViewController class]) {
+    if ([AppDelegate haveAccessToken] && [presentedView class] == [GuideViewController class]) {
         GuideViewController *guideVC = (GuideViewController *)presentedView;
-        [guideVC.redeemCodeText setText:self.accessToken];
+        [guideVC.redeemCodeText setText:[AppDelegate accessToken]];
         double delayInSeconds = 0.75f;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){

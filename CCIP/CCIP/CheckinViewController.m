@@ -120,8 +120,7 @@
 - (void)reloadCard {
     [self handleQRButton];
 
-    BOOL hasToken = [[AppDelegate appDelegate].accessToken length] > 0;
-    if (!hasToken) {
+    if (![AppDelegate haveAccessToken]) {
         [self performSegueWithIdentifier:@"ShowGuide"
                                   sender:self.cards];
         self.userInfo = [NSDictionary new];
@@ -131,7 +130,7 @@
         [self.cards reloadData];
     } else {
         [self hideGuideView];
-        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS([AppDelegate appDelegate].accessToken)];
+        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS([AppDelegate accessToken])];
         [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
             if (json != nil) {
                 NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
@@ -166,8 +165,7 @@
                                                         action:@selector(callBarcodePickerOverlay)];
     }
     
-    BOOL hasToken = [[AppDelegate appDelegate].accessToken length] > 0;
-    if ([AppDelegate appDelegate].isDevMode || !hasToken){
+    if ([AppDelegate isDevMode] || ![AppDelegate haveAccessToken]){
         self.tabBarController.navigationItem.rightBarButtonItem = self.qrButton;
     } else {
         self.tabBarController.navigationItem.rightBarButtonItem = nil;
@@ -175,7 +173,7 @@
 }
 
 - (void)hideQRButton {
-    if (![AppDelegate appDelegate].isDevMode) {
+    if (![AppDelegate isDevMode]) {
         self.tabBarController.navigationItem.rightBarButtonItem = nil;
     }
 }
@@ -187,10 +185,10 @@
     // Add your own code to handle the barcode result e.g.
     NSLog(@"scanned %@ barcode: %@", code.symbologyName, code.data);
     
-    if ([[AppDelegate appDelegate].accessToken length] > 0) {
+    if ([AppDelegate haveAccessToken]) {
         [UICKeyChainStore removeItemForKey:@"token"];
     }
-    [AppDelegate appDelegate].accessToken = code.data;
+    [AppDelegate setAccessToken:code.data];
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         //Do UI stuff here
@@ -215,8 +213,7 @@
         [self.scanditBarcodePicker didMoveToParentViewController:nil];
         self.scanditBarcodePicker = nil;
         
-        BOOL hasToken = [[AppDelegate appDelegate].accessToken length] > 0;
-        if (!hasToken) {
+        if (![AppDelegate haveAccessToken]) {
             [self performSegueWithIdentifier:@"ShowGuide" sender:NULL];
         } else {
             [self hideQRButton];

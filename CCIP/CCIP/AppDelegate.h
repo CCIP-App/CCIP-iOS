@@ -28,7 +28,6 @@
 @property (strong, nonatomic) UIWindow * _Null_unspecified window;
 @property (strong, readonly, nonatomic) OneSignal * _Null_unspecified oneSignal;
 @property (strong, readonly, nonatomic) SLColorArt * _Null_unspecified appArt;
-@property (strong, nonatomic) NSString * _Null_unspecified accessToken;
 @property (strong, nonatomic) NSDictionary * _Null_unspecified userInfo;
 @property (strong, nonatomic) CheckinViewController * _Null_unspecified checkinView;
 
@@ -36,8 +35,12 @@
 + (void)sendGAI:( NSDictionary * _Nonnull )_gai WithName:( NSString * _Nullable )_name Func:( const char * _Nonnull )_func File:( const char * _Nonnull )_file Line:(int)_line;
 - (NSInteger)showWhichDay;
 
-- (void)setIsDevMode:(BOOL)isDevMode;
-- (BOOL)isDevMode;
++ (void)setIsDevMode:(BOOL)isDevMode;
++ (BOOL)isDevMode;
+
++ (BOOL)haveAccessToken;
++ (void)setAccessToken:(NSString * _Null_unspecified)accessToken;
++ (NSString * _Null_unspecified)accessToken;
 
 @end
 

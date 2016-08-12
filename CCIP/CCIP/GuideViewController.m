@@ -64,13 +64,9 @@
 - (IBAction)redeemCode:(id)sender {
     NSString *code = [self.redeemCodeText text];
     if ([code length] > 0) {
-        if ([[AppDelegate appDelegate].accessToken length] > 0) {
-            [UICKeyChainStore removeItemForKey:@"token"];
-        }
-        
         //TODO: Check token with server
         
-        [AppDelegate appDelegate].accessToken = code;
+        [AppDelegate setAccessToken:code];
         
         [self dismissViewControllerAnimated:YES
                                  completion:^{

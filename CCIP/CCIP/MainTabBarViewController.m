@@ -35,7 +35,7 @@
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
     self.shimmeringLogoView.contentView = logoView;
     
-    self.shimmeringLogoView.shimmering = [AppDelegate appDelegate].isDevMode;
+    self.shimmeringLogoView.shimmering = [AppDelegate isDevMode];
     
     self.navigationItem.titleView = self.shimmeringLogoView;
     
@@ -81,16 +81,16 @@
     
     switch (self.selectedIndex) {
         case 0: {
-            if ([AppDelegate appDelegate].isDevMode) {
+            if ([AppDelegate isDevMode]) {
                 //NSLog(@"navSingleTap from MoreTab");
                 if ([newTapTime timeIntervalSinceDate: oldTapTime] <= 0.25f) {
                     tapTimes++;
                     if (tapTimes == 10) {
                         NSLog(@"--  Success tap 10 times  --");
-                        if ([[AppDelegate appDelegate].accessToken length] > 0) {
+                        if ([AppDelegate haveAccessToken]) {
                             NSLog(@"-- Clearing the Token --");
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-                            [AppDelegate appDelegate].accessToken = @"";
+                            [AppDelegate setAccessToken:@""];
                             [[AppDelegate appDelegate].checkinView reloadCard];
                         } else {
                             NSLog(@"-- Token is already clear --");
@@ -114,13 +114,13 @@
                     NSLog(@"--  Success tap 10 times  --");
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                     
-                    if (![AppDelegate appDelegate].isDevMode) {
+                    if (![AppDelegate isDevMode]) {
                         NSLog(@"-- Enable DEV_MODE --");
-                        [AppDelegate appDelegate].isDevMode = YES;
+                        [AppDelegate setIsDevMode: YES];
                         self.shimmeringLogoView.shimmering = YES;
                     } else {
                         NSLog(@"-- Disable DEV_MODE --");
-                        [AppDelegate appDelegate].isDevMode = NO;
+                        [AppDelegate setIsDevMode:NO];
                         self.shimmeringLogoView.shimmering = NO;
                     }
                 }
