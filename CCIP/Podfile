@@ -16,4 +16,5 @@ target 'CCIP' do
   pod 'iCarousel', '~> 1.8'
   pod 'BLKFlexibleHeightBar'
   pod 'SDWebImage', '~>3.8'
+  pod 'Shimmer', '~>1.0'
 end

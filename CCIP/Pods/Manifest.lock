@@ -25,6 +25,7 @@ PODS:
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
+  - Shimmer (1.0.2)
   - STPopup (1.7.0)
   - UICKeyChainStore (2.1.0)
 
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - iRate (~> 1.11)
   - OneSignal
   - SDWebImage (~> 3.8)
+  - Shimmer (~> 1.0)
   - STPopup (~> 1.7)
   - UICKeyChainStore (~> 2.1)
 
@@ -64,9 +66,10 @@ SPEC CHECKSUMS:
   iRate: 1546f8ae5ed1565e688bd529f7484780734757e9
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: 3f04b1e7640d6a30ff5ca3bf09d61921e07d24e1
+PODFILE CHECKSUM: e6540f9557fc9ff1ae811c73d580eb06291a2574
 
 COCOAPODS: 1.0.1
