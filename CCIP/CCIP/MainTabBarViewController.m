@@ -14,8 +14,11 @@
 #import "MoreTableViewController.h"
 #import "AppDelegate.h"
 #import <UICKeyChainStore/UICKeyChainStore.h>
+#import <Shimmer/FBShimmeringView.h>
 
 @interface MainTabBarViewController ()
+
+@property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
 
 @end
 
@@ -28,7 +31,15 @@
     
     self.navigationController.view.backgroundColor = [UIColor whiteColor];
     
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
+    UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
+    self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
+    self.shimmeringLogoView.contentView = logoView;
+    
+    BOOL isDevMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"DEV_MODE"];
+    self.shimmeringLogoView.shimmering = isDevMode;
+    
+    self.navigationItem.titleView = self.shimmeringLogoView;
+    
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor], NSForegroundColorAttributeName, nil]
                                              forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:titleHighlightedColor, NSForegroundColorAttributeName, nil]
@@ -106,9 +117,11 @@
                     if (!isDevMode) {
                         NSLog(@"-- Enable DEV_MODE --");
                         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"DEV_MODE"];
+                        self.shimmeringLogoView.shimmering = YES;
                     } else {
                         NSLog(@"-- Disable DEV_MODE --");
                         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"DEV_MODE"];
+                        self.shimmeringLogoView.shimmering = NO;
                     }
                     [[NSUserDefaults standardUserDefaults] synchronize];
                 }
