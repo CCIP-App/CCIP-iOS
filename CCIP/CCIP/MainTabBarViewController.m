@@ -69,7 +69,8 @@
         oldTapTime = newTapTime;
     }
     
-    BOOL isDevMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"DEV_MODE"];
+    static BOOL isDevMode;
+    isDevMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"DEV_MODE"];
     
     switch (self.selectedIndex) {
         case 0: {
@@ -80,7 +81,7 @@
                     if (tapTimes == 10) {
                         NSLog(@"--  Success tap 10 times  --");
                         NSLog(@"-- Try to clean token --");
-                        
+                        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                         [AppDelegate appDelegate].accessToken = @"";
                         [[AppDelegate appDelegate].checkinView reloadCard];
                     }
@@ -100,15 +101,21 @@
                 tapTimes++;
                 if (tapTimes == 10) {
                     NSLog(@"--  Success tap 10 times  --");
-                    NSLog(@"-- Try to enable DEV_MODE --");
+                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                     
-                    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"DEV_MODE"];
+                    if (!isDevMode) {
+                        NSLog(@"-- Enable DEV_MODE --");
+                        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"DEV_MODE"];
+                    } else {
+                        NSLog(@"-- Disable DEV_MODE --");
+                        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"DEV_MODE"];
+                    }
                     [[NSUserDefaults standardUserDefaults] synchronize];
                 }
             }
             else {
                 NSLog(@"--  Failed, just tap %2d times  --", tapTimes);
-                NSLog(@"-- Not trigger enable DEV_MODE --");
+                NSLog(@"-- Failed to trigger DEV_MODE --");
                 tapTimes = 1;
             }
             oldTapTime = newTapTime;
