@@ -73,6 +73,8 @@
     // disable UITextView's text padding
     [self.abstractInfo setTextContainerInset:UIEdgeInsetsZero];
     [self.abstractInfo.textContainer setLineFragmentPadding:0.0f];
+    [self.abstractInfo setFont:[UIFont systemFontOfSize:15]];
+    [self.abstractInfo setTextAlignment:NSTextAlignmentJustified];
 }
 
 - (void)viewDidLoad {
