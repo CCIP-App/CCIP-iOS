@@ -14,6 +14,8 @@
 
 @interface AnnounceTableViewController ()
 
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation AnnounceTableViewController
@@ -21,15 +23,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if (self.refreshControl == nil) {
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        [self.refreshControl addTarget:self
+                                action:@selector(refresh)
+                      forControlEvents:UIControlEventValueChanged];
+        [self.announceTableView addSubview:self.refreshControl];
+        
+        [self refresh];
+        [self.refreshControl beginRefreshing];
+    }
+    
+    SEND_GAI(@"AnnounceTableViewController");
+}
+
+- (void)refresh {
     GatewayWebService *annoounce_ws = [[GatewayWebService alloc] initWithURL:CC_ANNOUNCEMENT];
     [annoounce_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
         if (json != nil) {
             self.announceJsonArray = json;
             [self.announceTableView reloadData];
+            [self.refreshControl endRefreshing];
         }
     }];
-    
-    SEND_GAI(@"AnnounceTableViewController");
 }
 
 - (void)didReceiveMemoryWarning {
