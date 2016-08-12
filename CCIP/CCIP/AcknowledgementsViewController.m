@@ -28,12 +28,12 @@
     
     CPDContribution *sars = [[CPDContribution alloc] initWithName:@"Sars"
                                                    websiteAddress:@"https://github.com/SarsTW"
-                                                             role:@"所以呢?"];
+                                                             role:@"Hello, this is Sars speaking."];
     sars.avatarAddress = @"https://www.gravatar.com/avatar/035d1b5992f40a177cdd93fa743fb606?&r=x&s=86";
     
     CPDContribution *tigerHuang = [[CPDContribution alloc] initWithName:@"TigerHuang"
                                                          websiteAddress:@"https://github.com/TigerHuang"
-                                                                   role:@"Only do Initial commit"];
+                                                                   role:@"Only do initial commit"];
     tigerHuang.avatarAddress = @"https://www.gravatar.com/avatar/1db909a088e514c278884a4f72332807?&r=x&s=86";
     
     NSArray *contributors = @[frankwu, haraguroicha, sars, tigerHuang];

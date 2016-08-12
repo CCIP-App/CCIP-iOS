@@ -83,7 +83,7 @@
             [cell.textLabel setText:NSLocalizedString(@"Sponsors", nil)];
             break;
         case 2:
-            [cell.textLabel setText:@"Acknowledgements"];
+            [cell.textLabel setText:NSLocalizedString(@"Acknowledgements", nil)];
             break;
         default:
             break;
@@ -143,6 +143,7 @@
             detailViewController = [[UIViewController alloc] initWithNibName:nibName bundle:nil];
             break;
         case 2: {
+            nibName = @"AcknowledgementsView";
             detailViewController = [AcknowledgementsViewController new];
         }
         default:

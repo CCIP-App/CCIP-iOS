@@ -44,6 +44,9 @@
 "IRC" = "IRC Channel";
 "Staffs" = "Staffs";
 "Sponsors" = "Sponsors";
+"Acknowledgements" = "Acknowledgements";
+"Contributions" = "Contributors";
+"Libraries" = "Open Source Libraries";
 "Introduction" = "Introduction";
 "Speaker" = "Speaker";
 "GuideViewMessage" = "Please reference your attendee detail information, and your will found your access token.\n\nPlease copy and paste the token into next text field or click the token link in the reference mail.";
