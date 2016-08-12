@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "GuideViewController.h"
 #import "UIAlertController+additional.h"
+#import "GatewayWebService/GatewayWebService.h"
 
 @interface GuideViewController ()
 
@@ -64,18 +65,28 @@
 - (IBAction)redeemCode:(id)sender {
     NSString *code = [self.redeemCodeText text];
     if ([code length] > 0) {
-        //TODO: Check token with server
-        
-        [AppDelegate setAccessToken:code];
-        
-        [self dismissViewControllerAnimated:YES
-                                 completion:^{
-                                     [[AppDelegate appDelegate].checkinView reloadCard];
-                                 }];
+        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_LANDING(code)];
+        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
+            if (json != nil) {
+                NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
+                
+                if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
+                    [AppDelegate setAccessToken:code];
+                    [[AppDelegate appDelegate].checkinView reloadCard];
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                } else if ([userInfo objectForKey:@"message"] && [[userInfo objectForKey:@"message"] isEqualToString:@"invalid token"]) {
+                    [self showAlert];
+                }
+            }
+        }];
     } else {
-        UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil) withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
-        [ac showAlert:nil];
+        [self showAlert];
     }
+}
+
+- (void)showAlert {
+    UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil) withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
+    [ac showAlert:nil];
 }
 
 /*
