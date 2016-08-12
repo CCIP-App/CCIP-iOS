@@ -62,7 +62,7 @@
     detailViewController = [[UIViewController alloc] initWithNibName:vcName bundle:nil];
     [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
     
-    [NSInvocation InvokeObject:detailViewController.view withSelectorString:@"setGroup:" withArguments:@[ [[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"users"] ]];
+    [NSInvocation InvokeObject:detailViewController.view withSelectorString:@"setStaffArray:" withArguments:@[ [[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"users"] ]];
     
     SEND_GAI_EVENT(@"StaffView", [[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"name"]);
     

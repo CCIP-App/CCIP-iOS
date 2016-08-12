@@ -29,8 +29,27 @@
     SEND_GAI(@"StaffView");
 }
 
-- (void)setGroup:(NSArray *)scenario {
-    self.staffJsonArray = scenario;
+- (void)setStaffArray:(NSMutableArray *)staffArray {
+    
+    staffArray = [NSMutableArray arrayWithArray:staffArray];
+    NSDictionary *temp;
+    
+    // sorting
+    for (int i = 0; i < [staffArray count]; i++)
+    {
+        for (int j = 0; j < [staffArray count] - 1 - i; j++) {
+            NSInteger thisPlace = [[[staffArray objectAtIndex:j] valueForKey:@"pk"] integerValue];
+            NSInteger nextPlace = [[[staffArray objectAtIndex:j + 1] valueForKey:@"pk"] integerValue];
+            if (thisPlace > nextPlace)
+            {
+                temp = [staffArray objectAtIndex:j];
+                [staffArray replaceObjectAtIndex:j withObject:[staffArray objectAtIndex:j+1]];
+                [staffArray replaceObjectAtIndex:j + 1 withObject:temp];
+            }
+        }
+    }
+    
+    self.staffJsonArray = staffArray;
 }
 
 #pragma mark - UICollectionView DataSource
