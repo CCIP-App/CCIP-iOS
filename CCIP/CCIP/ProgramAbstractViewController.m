@@ -7,6 +7,7 @@
 //
 
 #import "ProgramAbstractViewController.h"
+#import <MMMarkdown/MMMarkdown.h>
 
 @interface ProgramAbstractViewController ()
 
@@ -55,7 +56,19 @@
     timeInfoStr = [NSString stringWithFormat:@"%@ ~ %@", startTime_str, endTime_str];
     
     [self.timeInfo setText:timeInfoStr];
-    [self.abstractInfo setText:[_program objectForKey:@"abstract"]];
+    
+    NSString *abstractMarkdownHtml = [MMMarkdown HTMLStringWithMarkdown:[_program objectForKey:@"abstract"]
+                                                             extensions:MMMarkdownExtensionsGitHubFlavored
+                                                                  error:nil];
+    NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
+    NSAttributedString *abstractMarkdownAttributedString = [[NSAttributedString alloc] initWithData:[abstractMarkdownHtml
+                                                                                                     dataUsingEncoding:NSUnicodeStringEncoding]
+                                                                                            options:options
+                                                                                 documentAttributes:nil
+                                                                                              error:nil];
+    
+    [self.abstractInfo setAttributedText:abstractMarkdownAttributedString];
+    //[self.abstractInfo setText:[_program objectForKey:@"abstract"]];
     
     // disable UITextView's text padding
     [self.abstractInfo setTextContainerInset:UIEdgeInsetsZero];
