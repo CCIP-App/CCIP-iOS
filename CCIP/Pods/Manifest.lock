@@ -21,6 +21,7 @@ PODS:
   - iCarousel (1.8.2)
   - ICViewPager (1.5.1)
   - iRate (1.11.5)
+  - MMMarkdown (0.5.5)
   - OneSignal (1.13.3)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - iCarousel (~> 1.8)
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
   - iRate (~> 1.11)
+  - MMMarkdown (~> 0.5)
   - OneSignal
   - SDWebImage (~> 3.8)
   - Shimmer (~> 1.0)
@@ -64,12 +66,13 @@ SPEC CHECKSUMS:
   iCarousel: 67c8a43da5a46795b56aadfc96cd36a16f6149b2
   ICViewPager: c1278b67eceac7252d48252829c3c703285dfb76
   iRate: 1546f8ae5ed1565e688bd529f7484780734757e9
+  MMMarkdown: 1af97166ce0f6d6e0cb05695665492195d27c3f1
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: e6540f9557fc9ff1ae811c73d580eb06291a2574
+PODFILE CHECKSUM: 82e5e0a9ec798b269f2ecb69531128ee8dbdf970
 
 COCOAPODS: 1.0.1
