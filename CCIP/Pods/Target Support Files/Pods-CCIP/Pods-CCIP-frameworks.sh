@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/BLKFlexibleHeightBar/BLKFlexibleHeightBar.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/CPDAcknowledgements/CPDAcknowledgements.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ColorArt/ColorArt.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ICViewPager/ICViewPager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MMMarkdown/MMMarkdown.framework"
@@ -97,6 +98,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/BLKFlexibleHeightBar/BLKFlexibleHeightBar.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/CPDAcknowledgements/CPDAcknowledgements.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ColorArt/ColorArt.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ICViewPager/ICViewPager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MMMarkdown/MMMarkdown.framework"

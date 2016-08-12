@@ -1,3 +1,5 @@
+plugin 'cocoapods-acknowledgements'
+
 # Uncomment this line to define a global platform for your project
 platform :ios, '8.0'
 
@@ -18,4 +20,5 @@ target 'CCIP' do
   pod 'SDWebImage', '~>3.8'
   pod 'Shimmer', '~>1.0'
   pod 'MMMarkdown', '~> 0.5'
+  pod 'CPDAcknowledgements', '~> 1.0'
 end

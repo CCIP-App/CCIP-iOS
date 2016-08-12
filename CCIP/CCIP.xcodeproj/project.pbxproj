@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		141D4150DB8FC2366FDFDF75 /* Pods-CCIP-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = A729E7D04006FECCCCCFAEEC /* Pods-CCIP-metadata.plist */; };
 		2821DA9D1D3DCA5500AFE139 /* ProgramDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */; };
 		2821DA9E1D3DCA5500AFE139 /* ProgramDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2821DA9C1D3DCA5500AFE139 /* ProgramDetailViewController.xib */; };
 		2821DAA21D3DCB2300AFE139 /* ProgramDetailViewTopBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DA9F1D3DCB2300AFE139 /* ProgramDetailViewTopBG.png */; };
@@ -315,6 +316,7 @@
 		6BF641161D4D42C000243B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		76097425B85D526316D2EF58 /* Pods-CCIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.debug.xcconfig"; sourceTree = "<group>"; };
 		87CA176D8DB3A92497387928 /* Pods_CCIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A729E7D04006FECCCCCFAEEC /* Pods-CCIP-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-CCIP-metadata.plist"; path = "Pods/Pods-CCIP-metadata.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +356,7 @@
 			children = (
 				76097425B85D526316D2EF58 /* Pods-CCIP.debug.xcconfig */,
 				1E39488D2E9378322A78E57B /* Pods-CCIP.release.xcconfig */,
+				A729E7D04006FECCCCCFAEEC /* Pods-CCIP-metadata.plist */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -814,6 +817,7 @@
 				2839BF381D4C97AB0062F36D /* Star@3x.png in Resources */,
 				2821DA9E1D3DCA5500AFE139 /* ProgramDetailViewController.xib in Resources */,
 				5FB4D45C1D3A865A005BF382 /* icon_ios_topcharts@3x.png in Resources */,
+				141D4150DB8FC2366FDFDF75 /* Pods-CCIP-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

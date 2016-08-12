@@ -2,18 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>PreferenceSpecifiers</key>
+	<key>specs</key>
 	<array>
 		<dict>
-			<key>FooterText</key>
-			<string>This application makes use of the following third party libraries:</string>
-			<key>Title</key>
-			<string>Acknowledgements</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Bryan Keller</key>
+				<string>kellerbryan19@gmail.com</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/bryankeller/BLKFlexibleHeightBar/</string>
+			<key>licenseText</key>
 			<string>Copyright (c) 2015 Bryan Keller
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -22,13 +23,31 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
 			<string>BLKFlexibleHeightBar</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string>https://twitter.com/BKyourway19</string>
+			<key>summary</key>
+			<string>A library for creating condensing header bars like those seen in the Facebook, Square Cash, and Safari iOS apps.</string>
+			<key>version</key>
+			<string>1.0.2</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Fabio Pelosin</key>
+				<string>fabiopelosin@gmail.com</string>
+				<key>Orta Therox</key>
+				<string>orta.therox@gmail.com</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Show your CocoaPods library and contributors in-app with smart defaults, and customisable view controllers.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/CocoaPods/CPDAcknowledgements</string>
+			<key>licenseText</key>
 			<string>Copyright (c) 2014 Orta Therox &lt;orta.therox@gmail.com&gt;
 				   Fabio Pelosin &lt;fabio.pelosin@gmail.com&gt;
 
@@ -50,13 +69,32 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
 			<string>CPDAcknowledgements</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string>https://twitter.com/CocoaPods</string>
+			<key>summary</key>
+			<string>Show your CocoaPods dependencies in-app.</string>
+			<key>version</key>
+			<string>1.0.0</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Aaron Brethorst</key>
+				<string></string>
+				<key>Fred Leitz</key>
+				<string>fred.leitz@gmail.com</string>
+				<key>Wade Cosgrove</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/fleitz/ColorArt</string>
+			<key>licenseText</key>
 			<string>Copyright (C) 2012 Panic Inc. Code by Wade Cosgrove. All rights reserved.
 
 Redistribution and use, with or without modification, are permitted
@@ -103,69 +141,221 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 DEALINGS IN THE SOFTWARE.
 </string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>CUSTOM</string>
+			<key>name</key>
 			<string>ColorArt</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>iTunes 11-style color matching code.</string>
+			<key>version</key>
+			<string>0.1.1</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Google, Inc.</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Firebase Analytics is a free, out-of-the-box analytics solution that inspires actionable insights based on app usage and user engagement.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://www.developers.google.com/ios</string>
+			<key>licenseText</key>
 			<string>Copyright 2016 Google</string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>Copyright</string>
+			<key>name</key>
 			<string>FirebaseAnalytics</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Firebase Analytics for iOS</string>
+			<key>version</key>
+			<string>3.2.1</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Google Inc.</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Instance ID provides a unique ID per instance of your iOS apps, with support for Android as well. In addition to providing unique IDs for authentication, Instance ID can generate security tokens for use with other services.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://firebase.google.com</string>
+			<key>licenseText</key>
 			<string>Copyright 2016 Google Inc.</string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>Copyright</string>
+			<key>name</key>
 			<string>FirebaseInstanceID</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Firebase InstanceID for iOS</string>
+			<key>version</key>
+			<string>1.0.7</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Google Inc.</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Simplify your iOS development, grow your user base, and monetize more effectively with Google services.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://developers.google.com/ios</string>
+			<key>licenseText</key>
 			<string>Copyright 2016 Google Inc.</string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>Copyright</string>
+			<key>name</key>
 			<string>Google</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Google APIs for iOS</string>
+			<key>version</key>
+			<string>3.0.3</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Google, Inc.</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Google Analytics lets you track application events you care about and gain insights from discovery and installation to conversion and engagement&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://www.google.com/analytics</string>
+			<key>licenseText</key>
 			<string>Copyright 2015 Google Inc.</string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>Copyright</string>
+			<key>name</key>
 			<string>GoogleAnalytics</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Google Analytics - measure your app performance</string>
+			<key>version</key>
+			<string>3.14.0</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Google Inc.</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Application utility methods that are shared between Google libraries. This pod does not expose any headers and isn&amp;#39;t intended for direct use, but rather as a dependency of some Google libraries.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://developers.google.com/</string>
+			<key>licenseText</key>
 			<string>Copyright 2015 Google Inc.</string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>Copyright</string>
+			<key>name</key>
 			<string>GoogleInterchangeUtilities</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Shared interchange utility methods for Google libraries. Not intended for direct use.</string>
+			<key>version</key>
+			<string>1.2.1</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Google Inc.</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Common dependency of Google libraries that use renamed symbols to avoid duplicate symbol error. Not intended to be used directly, but rather as a transitive dependency of some Google libaries.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://developers.google.com/</string>
+			<key>licenseText</key>
 			<string>Copyright 2015 Google Inc.</string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>Copyright</string>
+			<key>name</key>
 			<string>GoogleSymbolUtilities</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Shared Google library for renamed symbols to avoid duplicate symbol errors. Not intended for direct use.</string>
+			<key>version</key>
+			<string>1.1.1</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Google Inc.</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Utility methods that are shared between Google libraries. This pod does not expose any headers and isn&amp;#39;t intended for direct use, but rather as a dependency of some Google libraries.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://developers.google.com/</string>
+			<key>licenseText</key>
 			<string>Copyright 2015 Google Inc.</string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>Copyright</string>
+			<key>name</key>
 			<string>GoogleUtilities</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Shared utility methods for Google libraries. Not intended for direct use.</string>
+			<key>version</key>
+			<string>1.3.1</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Ilter Cengiz</key>
+				<string>me@iltercengiz.info</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Slide through the contents or select from tabs or slide through tabs and select!&lt;/p&gt;
+
+&lt;h2&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;Just copy ViewPagerController.m and ViewPagerController.h files to your project.
+Or you can use CocoaPods (as this is the recommended way).
+&lt;code&gt;pod &amp;#39;ICViewPager&amp;#39;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2&gt;Usage&lt;/h2&gt;
+
+&lt;p&gt;Subclass ViewPagerController (as it&amp;#39;s a &lt;code&gt;UIViewController&lt;/code&gt; subclass) and implement dataSource and delegate methods in the subclass.&lt;/p&gt;
+
+&lt;h2&gt;Requirements&lt;/h2&gt;
+
+&lt;p&gt;ViewPager supports minimum iOS 6 and uses ARC.
+Supports both iPhone and iPad.&lt;/p&gt;
+
+&lt;h2&gt;Contact&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href="mailto:me@iltercengiz.info"&gt;Ilter Cengiz&lt;/a&gt;
+&lt;a href="https://twitter.com/monsieurje"&gt;@monsieurje&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;Licence&lt;/h2&gt;
+
+&lt;p&gt;ICViewPager is MIT licensed. See the LICENSE file for more info.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/monsieurje/ICViewPager</string>
+			<key>licenseText</key>
 			<string>The MIT License (MIT)
 
 Copyright (c) 2013 Ilter Cengiz
@@ -187,13 +377,28 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
 			<string>ICViewPager</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>You can create sliding tabs with ViewPager.</string>
+			<key>version</key>
+			<string>1.5.1</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Matt Diephouse</key>
+				<string>matt@diephouse.com</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/mdiep/MMMarkdown</string>
+			<key>licenseText</key>
 			<string>	        Copyright (C) 2012-2013 Matt Diephouse.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -214,13 +419,28 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
 			<string>MMMarkdown</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>An Objective-C static library for converting Markdown to HTML.</string>
+			<key>version</key>
+			<string>0.5.5</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Josh Kasten</key>
+				<string>josh@onesignal.com</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://onesignal.com</string>
+			<key>licenseText</key>
 			<string>Modified MIT License
 
 Copyright 2015 OneSignal
@@ -296,13 +516,29 @@ Includes portions from BSMobileProvision:
     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
 			<string>OneSignal</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>OneSignal push notification library for mobile apps.</string>
+			<key>version</key>
+			<string>1.13.3</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Olivier Poitrey</key>
+				<string>rs@dailymotion.com</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;This library provides a category for UIImageView with support for remote images coming from the web. It provides an UIImageView category adding web image and cache management to the Cocoa Touch framework, an asynchronous image downloader, an asynchronous memory + disk image caching with automatic cache expiration handling, a guarantee that the same URL won&amp;#39;t be downloaded several times, a guarantee that bogus URLs won&amp;#39;t be retried again and again, and performances!&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/rs/SDWebImage</string>
+			<key>licenseText</key>
 			<string>Copyright (c) 2016 Olivier Poitrey rs@dailymotion.com
  
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -324,13 +560,38 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 </string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
 			<string>SDWebImage</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Asynchronous image downloader with cache support with an UIImageView category.</string>
+			<key>version</key>
+			<string>3.8.1</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Kevin Lin</key>
+				<string>kevin_lyn@outlook.com</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;ul&gt;
+&lt;li&gt;Extend your view controller from UIViewController, build it in your familiar way.&lt;/li&gt;
+&lt;li&gt;Push/Pop view controller in to/out of popup view stack, and set navigation items by using self.navigationItem.leftBarButtonItem and rightBarButtonItem, just like you are using UINavigationController.&lt;/li&gt;
+&lt;li&gt;Support both &amp;quot;Form Sheet&amp;quot; and &amp;quot;Bottom Sheet&amp;quot; style.&lt;/li&gt;
+&lt;li&gt;Work well with storyboard(including segue).&lt;/li&gt;
+&lt;li&gt;Customize UI by using UIAppearance.&lt;/li&gt;
+&lt;li&gt;Auto-reposition of popup view when keyboard is showing up, make sure your UITextField/UITextView won&amp;#39;t be covered by the keyboard.&lt;/li&gt;
+&lt;li&gt;Drag navigation bar to dismiss popup view.&lt;/li&gt;
+&lt;li&gt;Support both portrait and landscape orientation, and both iPhone and iPad.&lt;/li&gt;
+&lt;/ul&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/kevin0571/STPopup</string>
+			<key>licenseText</key>
 			<string>The MIT License (MIT)
 
 Copyright (c) 2015 Kevin
@@ -354,13 +615,30 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 </string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
 			<string>STPopup</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>STPopup provides STPopupController, which works just like UINavigationController in form sheet/bottom sheet style, for both iPhone and iPad.</string>
+			<key>version</key>
+			<string>1.7.0</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Grant Paul</key>
+				<string>shimmer@grantpaul.com</string>
+				<key>Kimon Tsinteris</key>
+				<string>kimon@mac.com</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/facebook/Shimmer</string>
+			<key>licenseText</key>
 			<string>BSD License
 
 For Shimmer software
@@ -392,13 +670,38 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>BSD</string>
+			<key>name</key>
 			<string>Shimmer</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Simple shimmering effect.</string>
+			<key>version</key>
+			<string>1.0.2</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>kishikawa katsumi</key>
+				<string>kishikawakatsumi@mac.com</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;UICKeyChainStore is a simple wrapper for Keychain that works on iOS and OS X.
+Makes using Keychain APIs as easy as NSUserDefaults.&lt;/p&gt;
+
+&lt;p&gt;Features
+  - Simple interface
+  - Support access group
+  - &lt;a href="#accessibility"&gt;Support accessibility&lt;/a&gt;
+  - &lt;a href="#icloud_sharing"&gt;Support iCloud sharing&lt;/a&gt;
+  - &lt;strong&gt;&lt;a href="#touch_id_integration"&gt;Support TouchID and Keychain integration (iOS 8+)&lt;/a&gt;&lt;/strong&gt;
+  - Works on both iOS &amp;amp; OS X&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/kishikawakatsumi/UICKeyChainStore</string>
+			<key>licenseText</key>
 			<string>The MIT License
 
 Copyright (c) 2011 kishikawa katsumi
@@ -408,13 +711,28 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
 			<string>UICKeyChainStore</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string>https://twitter.com/k_katsumi</string>
+			<key>summary</key>
+			<string>UICKeyChainStore is a simple wrapper for Keychain that works on iOS and OS X. Makes using Keychain APIs as easy as NSUserDefaults.</string>
+			<key>version</key>
+			<string>2.1.0</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Nick Lockwood</key>
+				<string>support@charcoaldesign.co.uk</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/nicklockwood/iCarousel</string>
+			<key>licenseText</key>
 			<string>iCarousel
 
 Version 1.8.2, August 10th, 2015
@@ -438,13 +756,28 @@ freely, subject to the following restrictions:
    misrepresented as being the original software.
    
 3. This notice may not be removed or altered from any source distribution.</string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>zlib</string>
+			<key>name</key>
 			<string>iCarousel</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>A class designed to simplify the implementation of various types of carousel.</string>
+			<key>version</key>
+			<string>1.8.2</string>
 		</dict>
 		<dict>
-			<key>FooterText</key>
+			<key>authors</key>
+			<dict>
+				<key>Nick Lockwood</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/nicklockwood/iRate</string>
+			<key>licenseText</key>
 			<string>iRate
 
 Version 1.11.5, July 31st, 2016
@@ -468,23 +801,17 @@ freely, subject to the following restrictions:
    misrepresented as being the original software.
    
 3. This notice may not be removed or altered from any source distribution.</string>
-			<key>Title</key>
+			<key>licenseType</key>
+			<string>zlib</string>
+			<key>name</key>
 			<string>iRate</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
-			<string>Generated by CocoaPods - https://cocoapods.org</string>
-			<key>Title</key>
+			<key>socialMediaURL</key>
 			<string></string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<key>summary</key>
+			<string>A handy class that prompts users of your iPhone or Mac App Store app to rate your application after using it for a while.</string>
+			<key>version</key>
+			<string>1.11.5</string>
 		</dict>
 	</array>
-	<key>StringsTable</key>
-	<string>Acknowledgements</string>
-	<key>Title</key>
-	<string>Acknowledgements</string>
 </dict>
 </plist>
