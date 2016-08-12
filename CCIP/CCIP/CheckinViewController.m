@@ -101,7 +101,7 @@
 }
 
 - (void)hideGuideView {
-    if (self.guideViewController != nil) {
+    if (self.guideViewController.isVisible) {
         [self.guideViewController dismissViewControllerAnimated:YES
                                                      completion:^{
                                                          self.guideViewController = nil;
@@ -110,7 +110,7 @@
 }
 
 - (void)hideStatusView {
-    if (self.statusViewController != nil) {
+    if (self.statusViewController.isVisible) {
         [self.statusViewController dismissViewControllerAnimated:YES
                                                       completion:^{
                                                           self.statusViewController = nil;
@@ -223,12 +223,6 @@
         [self.scanditBarcodePicker.view removeFromSuperview];
         [self.scanditBarcodePicker didMoveToParentViewController:nil];
         self.scanditBarcodePicker = nil;
-        
-        if (![AppDelegate haveAccessToken]) {
-            [self performSegueWithIdentifier:@"ShowGuide" sender:NULL];
-        } else {
-            [self hideQRButton];
-        }
     }
 }
 
@@ -247,6 +241,12 @@
 - (void)showBarcodePickerOverlay {
     if (self.scanditBarcodePicker != nil) {
         [self closeBarcodePickerOverlay];
+        
+        if (![AppDelegate haveAccessToken]) {
+            [self performSegueWithIdentifier:@"ShowGuide" sender:NULL];
+        } else {
+            [self hideQRButton];
+        }
     } else {
         [self.qrButton setImage:[UIImage imageNamed:@"QR_Code_Filled.png"]];
         
