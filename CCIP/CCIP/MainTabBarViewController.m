@@ -35,8 +35,7 @@
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
     self.shimmeringLogoView.contentView = logoView;
     
-    BOOL isDevMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"DEV_MODE"];
-    self.shimmeringLogoView.shimmering = isDevMode;
+    self.shimmeringLogoView.shimmering = [AppDelegate appDelegate].isDevMode;
     
     self.navigationItem.titleView = self.shimmeringLogoView;
     
@@ -80,12 +79,9 @@
         oldTapTime = newTapTime;
     }
     
-    static BOOL isDevMode;
-    isDevMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"DEV_MODE"];
-    
     switch (self.selectedIndex) {
         case 0: {
-            if (isDevMode) {
+            if ([AppDelegate appDelegate].isDevMode) {
                 //NSLog(@"navSingleTap from MoreTab");
                 if ([newTapTime timeIntervalSinceDate: oldTapTime] <= 0.25f) {
                     tapTimes++;
@@ -118,16 +114,15 @@
                     NSLog(@"--  Success tap 10 times  --");
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                     
-                    if (!isDevMode) {
+                    if (![AppDelegate appDelegate].isDevMode) {
                         NSLog(@"-- Enable DEV_MODE --");
-                        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"DEV_MODE"];
+                        [AppDelegate appDelegate].isDevMode = YES;
                         self.shimmeringLogoView.shimmering = YES;
                     } else {
                         NSLog(@"-- Disable DEV_MODE --");
-                        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"DEV_MODE"];
+                        [AppDelegate appDelegate].isDevMode = NO;
                         self.shimmeringLogoView.shimmering = NO;
                     }
-                    [[NSUserDefaults standardUserDefaults] synchronize];
                 }
             }
             else {

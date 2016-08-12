@@ -25,7 +25,7 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic)  UIWindow * _Null_unspecified window;
+@property (strong, nonatomic) UIWindow * _Null_unspecified window;
 @property (strong, readonly, nonatomic) OneSignal * _Null_unspecified oneSignal;
 @property (strong, readonly, nonatomic) SLColorArt * _Null_unspecified appArt;
 @property (strong, nonatomic) NSString * _Null_unspecified accessToken;
@@ -35,6 +35,9 @@
 + (AppDelegate * _Nonnull)appDelegate;
 + (void)sendGAI:( NSDictionary * _Nonnull )_gai WithName:( NSString * _Nullable )_name Func:( const char * _Nonnull )_func File:( const char * _Nonnull )_file Line:(int)_line;
 - (NSInteger)showWhichDay;
+
+- (void)setIsDevMode:(BOOL)isDevMode;
+- (BOOL)isDevMode;
 
 @end
 

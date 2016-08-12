@@ -165,9 +165,9 @@
                                                         target:self
                                                         action:@selector(callBarcodePickerOverlay)];
     }
-    BOOL isDevMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"DEV_MODE"];
+    
     BOOL hasToken = [[AppDelegate appDelegate].accessToken length] > 0;
-    if (isDevMode || !hasToken){
+    if ([AppDelegate appDelegate].isDevMode || !hasToken){
         self.tabBarController.navigationItem.rightBarButtonItem = self.qrButton;
     } else {
         self.tabBarController.navigationItem.rightBarButtonItem = nil;
@@ -175,8 +175,7 @@
 }
 
 - (void)hideQRButton {
-    BOOL isDevMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"DEV_MODE"];
-    if (!isDevMode) {
+    if (![AppDelegate appDelegate].isDevMode) {
         self.tabBarController.navigationItem.rightBarButtonItem = nil;
     }
 }

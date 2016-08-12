@@ -64,6 +64,16 @@
     [self.oneSignal sendTag:@"token" value:_accessToken];
 }
 
+
+- (void)setIsDevMode:(BOOL)isDevMode {
+    [[NSUserDefaults standardUserDefaults] setBool:isDevMode forKey:@"DEV_MODE"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL)isDevMode {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"DEV_MODE"];
+}
+
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation {
     if (url != nil) {
         NSLog(@"Calling from URL: %@", url);
