@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MoreTableViewController.h"
+#import "AcknowledgementsViewController.h"
 
 @interface MoreTableViewController ()
 
@@ -64,7 +65,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -80,6 +81,9 @@
             break;
         case 1:
             [cell.textLabel setText:NSLocalizedString(@"Sponsors", nil)];
+            break;
+        case 2:
+            [cell.textLabel setText:@"Acknowledgements"];
             break;
         default:
             break;
@@ -132,15 +136,19 @@
     switch (indexPath.row) {
         case 0:
             nibName = @"StaffGroupView";
+            detailViewController = [[UIViewController alloc] initWithNibName:nibName bundle:nil];
             break;
         case 1:
             nibName = @"SponsorTableView";
+            detailViewController = [[UIViewController alloc] initWithNibName:nibName bundle:nil];
             break;
+        case 2: {
+            detailViewController = [AcknowledgementsViewController new];
+        }
         default:
             break;
     }
     
-    detailViewController = [[UIViewController alloc] initWithNibName:nibName bundle:nil];
     [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
     [self.navigationController pushViewController:detailViewController animated:YES];
     

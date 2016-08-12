@@ -53,6 +53,7 @@
 		28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */; };
 		28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */; };
 		28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */; };
+		28AFCF141D5DD9CA00413927 /* AcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AFCF131D5DD9CA00413927 /* AcknowledgementsViewController.m */; };
 		28B34BBF1D3EB22E002B959D /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B34BBE1D3EB22E002B959D /* CAPSPageMenu.m */; };
 		28C22A541D3178A9004A6575 /* ProgramDetailPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C22A531D3178A9004A6575 /* ProgramDetailPopViewController.m */; };
 		28ED8C7A1D31DC1F00BC47E0 /* ShareProgramTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED8C791D31DC1F00BC47E0 /* ShareProgramTableViewController.m */; };
@@ -204,6 +205,8 @@
 		28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomLocationViewController.m; sourceTree = "<group>"; };
 		28AF9A8F1D28A6E9006B378E /* RoomProgramsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomProgramsTableViewController.h; sourceTree = "<group>"; };
 		28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomProgramsTableViewController.m; sourceTree = "<group>"; };
+		28AFCF121D5DD9CA00413927 /* AcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgementsViewController.h; sourceTree = "<group>"; };
+		28AFCF131D5DD9CA00413927 /* AcknowledgementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcknowledgementsViewController.m; sourceTree = "<group>"; };
 		28B34BBD1D3EB22E002B959D /* CAPSPageMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPSPageMenu.h; sourceTree = "<group>"; };
 		28B34BBE1D3EB22E002B959D /* CAPSPageMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPSPageMenu.m; sourceTree = "<group>"; };
 		28C22A521D3178A9004A6575 /* ProgramDetailPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramDetailPopViewController.h; sourceTree = "<group>"; };
@@ -462,6 +465,7 @@
 				5FB4D48E1D3B242C005BF382 /* MoreCell.xib */,
 				288164E41D4F2F32005C68EA /* StaffView */,
 				5F8B2D261D55DAC900A68C7D /* SponsorView */,
+				28AFCF191D5DDCD400413927 /* AcknowledgementsView */,
 			);
 			name = MoreTab;
 			sourceTree = "<group>";
@@ -561,6 +565,15 @@
 				288D3A751D599A1200E4E3A6 /* LICENSE-2.0.txt */,
 			);
 			path = ScanditSDK;
+			sourceTree = "<group>";
+		};
+		28AFCF191D5DDCD400413927 /* AcknowledgementsView */ = {
+			isa = PBXGroup;
+			children = (
+				28AFCF121D5DD9CA00413927 /* AcknowledgementsViewController.h */,
+				28AFCF131D5DD9CA00413927 /* AcknowledgementsViewController.m */,
+			);
+			name = AcknowledgementsView;
 			sourceTree = "<group>";
 		};
 		5F8B2D261D55DAC900A68C7D /* SponsorView */ = {
@@ -913,6 +926,7 @@
 				5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */,
 				6B9117081D4EFC2600537ABE /* ScheduleViewCell.m in Sources */,
 				28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */,
+				28AFCF141D5DD9CA00413927 /* AcknowledgementsViewController.m in Sources */,
 				6B2CD5791D286E6F00793194 /* UIColor+addition.m in Sources */,
 				2821DAA71D3DD36500AFE139 /* ProgramDetailViewPagerController.m in Sources */,
 				6B2CD5611D281D9400793194 /* UIAlertController+additional.m in Sources */,
