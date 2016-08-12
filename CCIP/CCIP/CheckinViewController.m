@@ -14,6 +14,7 @@
 #import "CheckinViewController.h"
 #import "GuideViewController.h"
 #import "StatusViewController.h"
+#import "UIAlertController+additional.h"
 
 @interface CheckinViewController()
 
@@ -178,22 +179,32 @@
     }
 }
 - (void)barcodePicker:(SBSBarcodePicker *)picker didScan:(SBSScanSession *)session {
-    [session stopScanning];
+    [session pauseScanning];
     
     NSArray *recognized = session.newlyRecognizedCodes;
     SBSCode *code = [recognized firstObject];
     // Add your own code to handle the barcode result e.g.
     NSLog(@"scanned %@ barcode: %@", code.symbologyName, code.data);
     
-    if ([AppDelegate haveAccessToken]) {
-        [UICKeyChainStore removeItemForKey:@"token"];
-    }
-    [AppDelegate setAccessToken:code.data];
-    
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        //Do UI stuff here
-        [self performSelector:@selector(reloadCard) withObject:nil afterDelay:0.5];
-        [self performSelector:@selector(closeBarcodePickerOverlay) withObject:nil afterDelay:0.5];
+        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_LANDING(code.data)];
+        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
+            if (json != nil) {
+                NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
+                
+                if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
+                    [AppDelegate setAccessToken:code.data];
+                        [self performSelector:@selector(reloadCard) withObject:nil afterDelay:0.5];
+                        [self performSelector:@selector(closeBarcodePickerOverlay) withObject:nil afterDelay:0.5];
+                } else if ([userInfo objectForKey:@"message"] && [[userInfo objectForKey:@"message"] isEqualToString:@"invalid token"]) {
+                    UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil) withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:^(UIAlertAction *action) {
+                        [self.scanditBarcodePicker resumeScanning];
+                    }];
+                    
+                    [ac showAlert:nil];
+                }
+            }
+        }];
     }];
 }
 
