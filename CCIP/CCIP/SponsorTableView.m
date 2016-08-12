@@ -68,7 +68,24 @@
                     }
                     
                     self.sponsorArray = sponsorListArray;
-                    [self reloadData];
+                    
+                    [self beginUpdates];
+                    
+                    [self insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.sponsorLevelJsonArray count])]
+                        withRowAnimation:UITableViewRowAnimationFade];
+                    
+                    NSMutableArray *indexPaths = [NSMutableArray new];
+                    for (int sectionNum = 0; sectionNum < [self.sponsorLevelJsonArray count]; sectionNum++) {
+                        for (int rowNum = 0; rowNum < [[self.sponsorArray objectAtIndex:sectionNum] count]; rowNum++) {
+                            [indexPaths addObject:[NSIndexPath indexPathForRow:rowNum
+                                                                     inSection:sectionNum]];
+                        }
+                    }
+                    [self insertRowsAtIndexPaths:indexPaths
+                                withRowAnimation:UITableViewRowAnimationFade];
+                    
+                    [self endUpdates];
+                    //[self reloadData];
                 }
             }];
         }
