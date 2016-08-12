@@ -91,10 +91,14 @@
                     tapTimes++;
                     if (tapTimes == 10) {
                         NSLog(@"--  Success tap 10 times  --");
-                        NSLog(@"-- Try to clean token --");
-                        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-                        [AppDelegate appDelegate].accessToken = @"";
-                        [[AppDelegate appDelegate].checkinView reloadCard];
+                        if ([[AppDelegate appDelegate].accessToken length] > 0) {
+                            NSLog(@"-- Clearing the Token --");
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                            [AppDelegate appDelegate].accessToken = @"";
+                            [[AppDelegate appDelegate].checkinView reloadCard];
+                        } else {
+                            NSLog(@"-- Token is already clear --");
+                        }
                     }
                 }
                 else {
