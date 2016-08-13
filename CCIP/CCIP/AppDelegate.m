@@ -46,8 +46,8 @@
 
 + (void)initialize {
     //configure iRate
-    [iRate sharedInstance].daysUntilPrompt = 3;
-    [iRate sharedInstance].usesUntilPrompt = 8;
+    [iRate sharedInstance].daysUntilPrompt = 1;
+    [iRate sharedInstance].usesUntilPrompt = 5;
     //enable preview mode
     [iRate sharedInstance].previewMode = NO;
 }
