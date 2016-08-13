@@ -918,6 +918,7 @@
 				5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */,
 				6BA1A5281D1EFBF100D5924C /* InvalidNetworkMessageView.m in Sources */,
 				28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */,
+				28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */,
 				28ED8C7A1D31DC1F00BC47E0 /* ShareProgramTableViewController.m in Sources */,
 				6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */,
 				6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */,
