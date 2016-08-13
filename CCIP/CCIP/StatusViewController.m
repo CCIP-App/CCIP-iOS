@@ -103,11 +103,17 @@
             [self setCountDownEnd:YES];
             
             if (self.needCountdown) {
-                AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
-                    AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
-                        AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
-                            AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
-                                AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{
+                int delaySec = 0.5;
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delaySec * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delaySec * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delaySec * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delaySec * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delaySec * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                                     [self dismissViewControllerAnimated:YES
                                                              completion:nil];
                                 });
