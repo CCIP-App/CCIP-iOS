@@ -30,37 +30,7 @@
 }
 
 - (void)setGroupData:(NSDictionary *)groupData {
-    NSString *groupName = [groupData objectForKey:@"name"];
-    NSMutableArray *staffArray = [NSMutableArray arrayWithArray:[groupData objectForKey:@"users"]];
-    
-    
-    // sorting
-    NSDictionary *temp;
-    for (int i = 0; i < [staffArray count]; i++)
-    {
-        for (int j = 0; j < [staffArray count] - 1 - i; j++) {
-            NSInteger thisPlace = [[[staffArray objectAtIndex:j] valueForKey:@"pk"] integerValue];
-            NSInteger nextPlace = [[[staffArray objectAtIndex:j + 1] valueForKey:@"pk"] integerValue];
-            if (thisPlace > nextPlace)
-            {
-                temp = [staffArray objectAtIndex:j];
-                [staffArray replaceObjectAtIndex:j withObject:[staffArray objectAtIndex:j+1]];
-                [staffArray replaceObjectAtIndex:j + 1 withObject:temp];
-            }
-        }
-    }
-    
-    //handle cross grops's staff move to bottom
-    for (int i = 0; i < [staffArray count]; i++)
-    {
-        NSString *title = [[[staffArray objectAtIndex:i] valueForKey:@"profile"] valueForKey:@"title"];
-        if (![title hasPrefix:[groupName substringToIndex:2]])
-        {
-            [staffArray addObject:[staffArray objectAtIndex:i]];
-            [staffArray removeObjectAtIndex:i];
-        }
-    }
-    
+    NSMutableArray *staffArray = [NSMutableArray arrayWithArray:[groupData objectForKey:@"users"]];    
     self.staffJsonArray = staffArray;
 }
 
