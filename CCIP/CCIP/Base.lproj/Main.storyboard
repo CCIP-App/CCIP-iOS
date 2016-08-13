@@ -551,18 +551,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NRX-bU-SPn" userLabel="Announce Table View">
-                                <rect key="frame" x="20" y="64" width="560" height="487"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AnnounceCell" id="Hmk-Qi-7k1" customClass="AnnounceTableViewCell">
-                                        <rect key="frame" x="0.0" y="92" width="560" height="80"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hmk-Qi-7k1" id="w2s-YF-NQD">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000-00-00 00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxe-Os-o2e">
-                                                    <rect key="frame" x="8" y="12" width="231" height="21"/>
+                                                    <rect key="frame" x="20" y="12" width="231" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="T1T-wp-kWQ"/>
                                                         <constraint firstAttribute="width" constant="231" id="x6U-Gh-vad"/>
@@ -572,7 +572,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="272" translatesAutoresizingMaskIntoConstraints="NO" id="WLc-nf-nhY">
-                                                    <rect key="frame" x="8" y="36" width="69" height="32"/>
+                                                    <rect key="frame" x="20" y="36" width="540" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -580,12 +580,21 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Kxe-Os-o2e" firstAttribute="top" secondItem="w2s-YF-NQD" secondAttribute="topMargin" constant="4" id="ASS-NC-wJ0"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="Kxe-Os-o2e" secondAttribute="leading" id="EGv-x4-zl8"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="WLc-nf-nhY" secondAttribute="leading" id="WJl-xG-cm8"/>
+                                                <constraint firstItem="Kxe-Os-o2e" firstAttribute="leading" secondItem="w2s-YF-NQD" secondAttribute="leading" constant="20" id="EGv-x4-zl8"/>
+                                                <constraint firstItem="WLc-nf-nhY" firstAttribute="leading" secondItem="w2s-YF-NQD" secondAttribute="leading" constant="20" id="WJl-xG-cm8"/>
                                                 <constraint firstItem="WLc-nf-nhY" firstAttribute="top" secondItem="w2s-YF-NQD" secondAttribute="topMargin" constant="28" id="ckV-cn-2Uy"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="WLc-nf-nhY" secondAttribute="bottom" constant="3.5" id="d55-9I-qjc"/>
+                                                <constraint firstAttribute="trailing" secondItem="WLc-nf-nhY" secondAttribute="trailing" constant="40" id="rPM-Aj-nnX"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="WLc-nf-nhY" secondAttribute="trailing" constant="15" id="sI1-Qa-gz7"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="sI1-Qa-gz7"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <outlet property="msg" destination="WLc-nf-nhY" id="rxA-df-5Hn"/>
                                             <outlet property="msgTime" destination="Kxe-Os-o2e" id="87c-73-EoS"/>
@@ -600,10 +609,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="NRX-bU-SPn" firstAttribute="leading" secondItem="O9C-ij-kHs" secondAttribute="leadingMargin" id="9x8-Fa-63Z"/>
+                            <constraint firstItem="NRX-bU-SPn" firstAttribute="leading" secondItem="O9C-ij-kHs" secondAttribute="leading" id="9x8-Fa-63Z"/>
                             <constraint firstItem="8AP-OM-vdg" firstAttribute="top" secondItem="NRX-bU-SPn" secondAttribute="bottom" id="K7x-ys-4bW"/>
                             <constraint firstItem="NRX-bU-SPn" firstAttribute="top" secondItem="T6f-ik-3ze" secondAttribute="bottom" id="RdS-cr-VAn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="NRX-bU-SPn" secondAttribute="trailing" id="Zkk-I0-kD9"/>
+                            <constraint firstAttribute="trailing" secondItem="NRX-bU-SPn" secondAttribute="trailing" id="Zkk-I0-kD9"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Announce" image="icon_ios_bell.png" id="bfa-yy-GWY"/>

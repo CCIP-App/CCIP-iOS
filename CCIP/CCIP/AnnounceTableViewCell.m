@@ -13,7 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     float width = [UIScreen mainScreen].applicationFrame.size.width;
-    self.msg.preferredMaxLayoutWidth = width - 72;
+//    self.msg.preferredMaxLayoutWidth = width - 60;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
