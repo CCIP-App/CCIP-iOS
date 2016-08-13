@@ -1,0 +1,111 @@
+{
+	"self": {
+		"project_name": "CCIP-iOS",
+		"github_repo": "CPRTeam/CCIP-iOS",
+		"site": "",
+		"contributors": [1, 2, 3, 4]
+	},
+	"others": [
+		{
+			"project_name": "CCIP-Android",
+			"github_repo": "CPRTeam/CCIP-Android",
+			"site": "",
+			"contributors": [0]
+		},
+		{
+			"project_name": "CCIP-Server",
+			"github_repo": "CPRTeam/CCIP-Server",
+			"site": "",
+			"contributors": [1, 2, 3, 4]
+		},
+		{
+			"project_name": "CCIP-Landing",
+			"github_repo": "CPRTeam/CCIP-Landing",
+			"site": "",
+			"contributors": [1, 2]
+		},
+		{
+			"project_name": "CCIP-Administration",
+			"github_repo": "",
+			"site": "",
+			"contributors": [1, 2, 4]
+		}
+	],
+	"contributors" : [
+		{
+			"index": 0,
+			"name": "Hello Word",
+			"nick_name": "HelloWord",
+			"email": "",
+			"role": "I'm example",
+			"github": {
+				"login": "",
+				"id": "",
+				"email": ""
+			},
+			"avatar_link": "",
+			"gravatar_email": "",
+			"website": ""
+		},
+		{
+			"index": 1,
+			"name": "Frank Wu",
+			"nick_name": "FrankWu",
+			"email": "frankwu100@gmail.com",
+			"role": "iOS Developer",
+			"github": {
+				"login": "FrankWu100",
+				"id": "3677704",
+				"email": "frankwu100@gmail.com"
+			},
+			"avatar_link": "https://www.gravatar.com/avatar/240e508e56aa36c32fcffadeff0a9ee3?r=pg",
+			"gravatar_email": "frankwu100@gmail.com",
+			"website": ""
+		},
+		{
+			"index": 2,
+			"name": "Haraguroicha",
+			"nick_name": "腹黒い茶",
+			"email": "m50gbmb@gmail.com",
+			"role": "iOS Developer",
+			"github": {
+				"login": "Haraguroicha",
+				"id": "1715541",
+				"email": "haraguroicha@tipsy.coffee"
+			},
+			"avatar_link": "",
+			"gravatar_email": "haraguroicha@tipsy.coffee",
+			"website": ""
+		},
+		{
+			"index": 3,
+			"name": "Sars",
+			"nick_name": "SarsTW",
+			"email": "",
+			"role": "iOS Developer",
+			"github": {
+				"login": "SarsTW",
+				"id": "",
+				"email": ""
+			},
+			"avatar_link": "",
+			"gravatar_email": "",
+			"website": ""
+		},
+		{
+			"index": 4,
+			"name": "TigerHuang",
+			"nick_name": "TigerHuang",
+			"email": "tiger0319@gmail.com",
+			"role": "Project Manager",
+			"github": {
+				"login": "TigerHuang",
+				"id": "",
+				"email": "git@mow.tw"
+			},
+			"avatar_link": "",
+			"gravatar_email": "tiger0319@gmail.com",
+			"website": ""
+		}
+	]
+}

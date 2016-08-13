@@ -7,6 +7,8 @@
 //
 
 #import "AcknowledgementsViewController.h"
+#import "GatewayWebService/GatewayWebService.h"
+#import "NSData+CommonCrypto.h"
 
 @interface AcknowledgementsViewController ()
 
@@ -15,34 +17,81 @@
 @implementation AcknowledgementsViewController
 
 - (instancetype)init {
+    NSMutableArray *contributors = [NSMutableArray new];
     
-    CPDContribution *frankwu = [[CPDContribution alloc] initWithName:@"Frank Wu"
-                                                      websiteAddress:@"https://github.com/FrankWu100"
-                                                                role:@"安安"];
-    frankwu.avatarAddress = @"https://www.gravatar.com/avatar/240e508e56aa36c32fcffadeff0a9ee3?r=x&s=86";
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Project_Info_and_Contributors" ofType:@"json"];
+    NSString *projectInfoJSON = [[NSString alloc] initWithContentsOfFile:filePath
+                                                                encoding:NSUTF8StringEncoding
+                                                                   error:NULL];
+    NSError *error =  nil;
+    NSDictionary *projectInfoData = [NSJSONSerialization JSONObjectWithData:[projectInfoJSON dataUsingEncoding:NSUTF8StringEncoding]
+                                                                    options:NSJSONReadingMutableContainers
+                                                                      error:&error];
+
+    NSArray *selfContributorIndexList = [[projectInfoData objectForKey:@"self"] objectForKey:@"contributors"];
+    NSArray *allContributorArray = [projectInfoData objectForKey:@"contributors"];
     
-    CPDContribution *haraguroicha = [[CPDContribution alloc] initWithName:@"腹黒い茶"
-                                                           websiteAddress:@"https://github.com/Haraguroicha"
-                                                                     role:@"好喔"];
-    haraguroicha.avatarAddress = @"https://www.gravatar.com/avatar/c256c1007ebd2c86d146d2d58444c9a8?&r=x&s=86";
-    
-    CPDContribution *sars = [[CPDContribution alloc] initWithName:@"Sars"
-                                                   websiteAddress:@"https://github.com/SarsTW"
-                                                             role:@"Hello, this is Sars speaking."];
-    sars.avatarAddress = @"https://www.gravatar.com/avatar/035d1b5992f40a177cdd93fa743fb606?&r=x&s=86";
-    
-    CPDContribution *tigerHuang = [[CPDContribution alloc] initWithName:@"TigerHuang"
-                                                         websiteAddress:@"https://github.com/TigerHuang"
-                                                                   role:@"Only do initial commit"];
-    tigerHuang.avatarAddress = @"https://www.gravatar.com/avatar/1db909a088e514c278884a4f72332807?&r=x&s=86";
-    
-    NSArray *contributors = @[frankwu, haraguroicha, sars, tigerHuang];
+    if (!error) {
+        for (NSNumber *contributorIndex in selfContributorIndexList) {
+            for (NSDictionary *contributorDict in allContributorArray) {
+                if ([contributorDict objectForKey:@"index"] == contributorIndex) {
+                    CPDContribution *contributor = [[CPDContribution alloc] initWithName:[contributorDict objectForKey:@"nick_name"]
+                                                                          websiteAddress:[self getWebsiteAddress:contributorDict]
+                                                                                    role:[contributorDict objectForKey:@"role"]];
+                    contributor.avatarAddress = [self getAvatarAddress:contributorDict];
+                    [contributors addObject:contributor];
+                    break;
+                }
+            }
+        }
+    }
     
     CPDAcknowledgementsViewController *acknowledgementsViewController = [[CPDAcknowledgementsViewController alloc] initWithStyle:nil acknowledgements:nil contributions:contributors];
     
     self = (AcknowledgementsViewController*)acknowledgementsViewController;
     
     return self;
+}
+
+- (NSString *)getWebsiteAddress:(NSDictionary *)contributor {
+    // website > github_site(github.login) > nil
+    NSString *website = [contributor objectForKey:@"website"];
+    NSString *githubLogin = [[contributor objectForKey:@"github"] objectForKey:@"login"];
+    
+    if ([website length] > 0) {
+        return website;
+    }
+    else
+        if ([githubLogin length] > 0) {
+        return [NSString stringWithFormat:@"https://github.com/%@", githubLogin];
+    }
+    else {
+        return nil;
+    }
+}
+
+- (NSString *)getAvatarAddress:(NSDictionary *)contributor {
+    // avatar_link > gravatar_email > github_avatar (github.id > github.login) > default
+    NSString *avatarLink = [contributor objectForKey:@"avatar_link"];
+    NSString *gravatarEmail = [contributor objectForKey:@"gravatar_email"];
+    NSString *githubId = [[contributor objectForKey:@"github"] objectForKey:@"id"];
+    NSString *githubLogin = [[contributor objectForKey:@"github"] objectForKey:@"login"];
+    
+    if ([avatarLink length] > 0) {
+        return avatarLink;
+    }
+    else if ([gravatarEmail length] > 0) {
+        return [NSString stringWithFormat:@"https://www.gravatar.com/avatar/%@?&r=x&s=86", [[[[gravatarEmail dataUsingEncoding:NSUTF8StringEncoding] MD5Sum] hexString] lowercaseString]];
+    }
+    else if ([githubId length] > 0) {
+        return [NSString stringWithFormat:@"https://avatars.githubusercontent.com/u/%@?v=3&s=86", githubId];
+    }
+    else if ([githubLogin length] > 0) {
+        return [NSString stringWithFormat:@"https://avatars.githubusercontent.com/%@?v=3&s=86", githubLogin];
+    }
+    else {
+        return @"https://www.gravatar.com/avatar/?f=y&d=mm&s=86";
+    }
 }
 
 - (void)viewDidLoad {
