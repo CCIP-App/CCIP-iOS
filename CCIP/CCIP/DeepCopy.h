@@ -1,6 +1,8 @@
 //
 //  DeepCopy.h
 //
+//  Created by FrankWu
+//  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

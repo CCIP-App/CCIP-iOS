@@ -9,6 +9,7 @@
 #import "AcknowledgementsViewController.h"
 #import "GatewayWebService/GatewayWebService.h"
 #import "NSData+CommonCrypto.h"
+#import "NSData+PMUtils.h"
 
 #import <CPDAcknowledgements/CPDAcknowledgementsViewController.h>
 #import <CPDAcknowledgements/CPDContribution.h>

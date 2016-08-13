@@ -49,8 +49,6 @@ extern NSString * const kCommonCryptoErrorDomain;
 
 @interface NSData (CommonDigest)
 
-- (NSString *) hexString;
-
 - (NSData *) MD2Sum;
 - (NSData *) MD4Sum;
 - (NSData *) MD5Sum;

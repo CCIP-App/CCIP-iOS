@@ -54,6 +54,7 @@
 		28A7C55F1D5EE0C30079BB12 /* Project_Info_and_Contributors.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */; };
 		28A7C5621D5F1AD90079BB12 /* DeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5611D5F1AD90079BB12 /* DeepCopy.m */; };
 		28A7C5641D5F7D2D0079BB12 /* Project_3rd_Lib_License.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */; };
+		28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */; };
 		28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */; };
 		28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */; };
 		28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */; };
@@ -209,6 +210,8 @@
 		28A7C5601D5F1AD90079BB12 /* DeepCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeepCopy.h; sourceTree = "<group>"; };
 		28A7C5611D5F1AD90079BB12 /* DeepCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeepCopy.m; sourceTree = "<group>"; };
 		28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Project_3rd_Lib_License.json; sourceTree = "<group>"; };
+		28A7C5651D5F84FB0079BB12 /* NSData+PMUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+PMUtils.h"; sourceTree = "<group>"; };
+		28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+PMUtils.m"; sourceTree = "<group>"; };
 		28ACA99F1D5E92AD002A6419 /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
 		28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
 		28AF9A7C1D28A40A006B378E /* RoomLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomLocationViewController.h; sourceTree = "<group>"; };
@@ -422,6 +425,8 @@
 				6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */,
 				28ACA99F1D5E92AD002A6419 /* NSData+CommonCrypto.h */,
 				28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */,
+				28A7C5651D5F84FB0079BB12 /* NSData+PMUtils.h */,
+				28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */,
 			);
 			name = "Class+addition";
 			sourceTree = "<group>";
