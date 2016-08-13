@@ -3,14 +3,14 @@
 		"project_name": "CCIP-iOS",
 		"github_repo": "CPRTeam/CCIP-iOS",
 		"site": "",
-		"contributors": [1, 2, 3, 4]
+		"contributors": [1, 2, 3, 4, 5]
 	},
 	"others": [
 		{
 			"project_name": "CCIP-Android",
 			"github_repo": "CPRTeam/CCIP-Android",
 			"site": "",
-			"contributors": [0]
+			"contributors": [0, 5]
 		},
 		{
 			"project_name": "CCIP-Server",
@@ -110,6 +110,22 @@
 			"avatar_link": "",
 			"gravatar_hash": "",
 			"gravatar_email": "tiger0319@gmail.com",
+			"website": ""
+		},
+		{
+			"index": 5,
+			"name": "曉晰",
+			"nick_name": "Estelle Chen",
+			"email": "tiger0319@gmail.com",
+			"role": "Interface Design",
+			"github": {
+				"login": "moomyiting",
+				"id": "3964081",
+				"email": "moomyiting@gmail.com"
+			},
+			"avatar_link": "",
+			"gravatar_hash": "",
+			"gravatar_email": "",
 			"website": ""
 		}
 	]
