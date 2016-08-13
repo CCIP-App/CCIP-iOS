@@ -44,6 +44,7 @@
 				"email": ""
 			},
 			"avatar_link": "",
+			"gravatar_hash": "",
 			"gravatar_email": "",
 			"website": ""
 		},
@@ -58,7 +59,8 @@
 				"id": "3677704",
 				"email": "frankwu100@gmail.com"
 			},
-			"avatar_link": "https://www.gravatar.com/avatar/240e508e56aa36c32fcffadeff0a9ee3?r=pg",
+			"avatar_link": "",
+			"gravatar_hash": "",
 			"gravatar_email": "frankwu100@gmail.com",
 			"website": ""
 		},
@@ -74,6 +76,7 @@
 				"email": "haraguroicha@tipsy.coffee"
 			},
 			"avatar_link": "",
+			"gravatar_hash": "",
 			"gravatar_email": "haraguroicha@tipsy.coffee",
 			"website": ""
 		},
@@ -89,6 +92,7 @@
 				"email": ""
 			},
 			"avatar_link": "",
+			"gravatar_hash": "035d1b5992f40a177cdd93fa743fb606",
 			"gravatar_email": "",
 			"website": ""
 		},
@@ -104,6 +108,7 @@
 				"email": "git@mow.tw"
 			},
 			"avatar_link": "",
+			"gravatar_hash": "",
 			"gravatar_email": "tiger0319@gmail.com",
 			"website": ""
 		}

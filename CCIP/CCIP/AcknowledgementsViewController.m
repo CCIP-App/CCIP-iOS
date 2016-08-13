@@ -73,12 +73,16 @@
 - (NSString *)getAvatarAddress:(NSDictionary *)contributor {
     // avatar_link > gravatar_email > github_avatar (github.id > github.login) > default
     NSString *avatarLink = [contributor objectForKey:@"avatar_link"];
+    NSString *gravatarHash = [contributor objectForKey:@"gravatar_hash"];
     NSString *gravatarEmail = [contributor objectForKey:@"gravatar_email"];
     NSString *githubId = [[contributor objectForKey:@"github"] objectForKey:@"id"];
     NSString *githubLogin = [[contributor objectForKey:@"github"] objectForKey:@"login"];
     
     if ([avatarLink length] > 0) {
         return avatarLink;
+    }
+    else if ([gravatarHash length] > 0) {
+        return [NSString stringWithFormat:@"https://www.gravatar.com/avatar/%@?&r=x&s=86", gravatarHash];
     }
     else if ([gravatarEmail length] > 0) {
         return [NSString stringWithFormat:@"https://www.gravatar.com/avatar/%@?&r=x&s=86", [[[[gravatarEmail dataUsingEncoding:NSUTF8StringEncoding] MD5Sum] hexString] lowercaseString]];
