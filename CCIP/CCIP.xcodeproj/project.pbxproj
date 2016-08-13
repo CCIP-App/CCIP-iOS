@@ -52,6 +52,7 @@
 		28A2992D1D3B90C000145E76 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A2992B1D3B90C000145E76 /* ScheduleViewController.m */; };
 		28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */; };
 		28A7C55F1D5EE0C30079BB12 /* Project_Info_and_Contributors.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */; };
+		28A7C5621D5F1AD90079BB12 /* DeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5611D5F1AD90079BB12 /* DeepCopy.m */; };
 		28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */; };
 		28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */; };
 		28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */; };
@@ -204,6 +205,8 @@
 		28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+addition.h"; sourceTree = "<group>"; };
 		28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+addition.m"; sourceTree = "<group>"; };
 		28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Project_Info_and_Contributors.json; sourceTree = "<group>"; };
+		28A7C5601D5F1AD90079BB12 /* DeepCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeepCopy.h; sourceTree = "<group>"; };
+		28A7C5611D5F1AD90079BB12 /* DeepCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeepCopy.m; sourceTree = "<group>"; };
 		28ACA99F1D5E92AD002A6419 /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
 		28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
 		28AF9A7C1D28A40A006B378E /* RoomLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomLocationViewController.h; sourceTree = "<group>"; };
@@ -399,6 +402,8 @@
 		288164E11D4F1C52005C68EA /* Class+addition */ = {
 			isa = PBXGroup;
 			children = (
+				28A7C5601D5F1AD90079BB12 /* DeepCopy.h */,
+				28A7C5611D5F1AD90079BB12 /* DeepCopy.m */,
 				6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */,
 				6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */,
 				6B11BE7F1D4CBA5800B87EA9 /* UIImage+addition.h */,
@@ -898,6 +903,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28A7C5621D5F1AD90079BB12 /* DeepCopy.m in Sources */,
 				5FB4D48F1D3B242C005BF382 /* MoreCell.m in Sources */,
 				5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */,
 				5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */,
@@ -918,6 +924,7 @@
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
 				6BD8EF2C1D1D73510094BE95 /* main.m in Sources */,
 				6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */,
+				28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */,
 				28C22A541D3178A9004A6575 /* ProgramDetailPopViewController.m in Sources */,
 				28B34BBF1D3EB22E002B959D /* CAPSPageMenu.m in Sources */,
 				5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */,
