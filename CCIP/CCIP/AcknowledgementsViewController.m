@@ -10,6 +10,11 @@
 #import "GatewayWebService/GatewayWebService.h"
 #import "NSData+CommonCrypto.h"
 
+#import <CPDAcknowledgements/CPDAcknowledgementsViewController.h>
+#import <CPDAcknowledgements/CPDContribution.h>
+#import <CPDAcknowledgements/CPDCocoaPodsLibrariesLoader.h>
+#import <CPDAcknowledgements/CPDLibrary.h>
+
 @interface AcknowledgementsViewController ()
 
 @end
@@ -46,8 +51,26 @@
         }
     }
     
-    CPDAcknowledgementsViewController *acknowledgementsViewController = [[CPDAcknowledgementsViewController alloc] initWithStyle:nil acknowledgements:nil contributions:contributors];
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSMutableArray *acknowledgements = [NSMutableArray arrayWithArray:[CPDCocoaPodsLibrariesLoader loadAcknowledgementsWithBundle:bundle]];
     
+    
+    NSString *customAckJSONPath = [[NSBundle mainBundle] pathForResource:@"Project_3rd_Lib_License" ofType:@"json"];
+    NSString *customAckJSON = [[NSString alloc] initWithContentsOfFile:customAckJSONPath
+                                                              encoding:NSUTF8StringEncoding
+                                                                 error:NULL];
+    NSArray *customAckArray = [NSJSONSerialization JSONObjectWithData:[customAckJSON dataUsingEncoding:NSUTF8StringEncoding]
+                                                              options:NSJSONReadingAllowFragments
+                                                                error:&error];
+
+    for (NSDictionary *acknowledgementDict in customAckArray) {
+        [acknowledgements addObject:[[CPDLibrary alloc] initWithCocoaPodsMetadataPlistDictionary:acknowledgementDict]];
+    }
+    
+    CPDAcknowledgementsViewController *acknowledgementsViewController;
+    acknowledgementsViewController = [[CPDAcknowledgementsViewController alloc] initWithStyle:nil
+                                                                             acknowledgements:acknowledgements
+                                                                                contributions:contributors];
     self = (AcknowledgementsViewController*)acknowledgementsViewController;
     
     return self;

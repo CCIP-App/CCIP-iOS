@@ -7,9 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CPDAcknowledgements/CPDAcknowledgementsViewController.h>
-#import <CPDAcknowledgements/CPDContribution.h>
-
-@interface AcknowledgementsViewController : CPDAcknowledgementsViewController
+@interface AcknowledgementsViewController : UIViewController
 
 @end
