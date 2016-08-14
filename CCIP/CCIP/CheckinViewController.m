@@ -61,7 +61,7 @@
     //   Create the gradient
     CAGradientLayer *theViewGradient = [CAGradientLayer layer];
     theViewGradient.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
-    theViewGradient.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.topGuideHeight - self.bottomGuideHeight);
+    theViewGradient.frame = CGRectMake(0, -self.topGuideHeight, self.view.frame.size.width, self.view.frame.size.height);
     theViewGradient.startPoint = CGPointMake(0.2, 0);
     theViewGradient.endPoint = CGPointMake(0.8, 1);
     //   Add gradient to view

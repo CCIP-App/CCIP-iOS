@@ -75,9 +75,14 @@
     
     if (self.isRelayout != true) {
         self.view.frame = CGRectMake(0.0,
-                                    64.0,
-                                    self.view.frame.size.width,
-                                    self.view.frame.size.height - 64 - 49);
+                                     0.0,
+                                     self.view.frame.size.width,
+                                     self.view.frame.size.height - 64 - 49);
+        
+        self.view.superview.frame = CGRectMake(0.0,
+                                               64.0,
+                                               self.view.frame.size.width,
+                                               self.view.frame.size.height);
         self.isRelayout = true;
     }
 }

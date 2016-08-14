@@ -292,14 +292,44 @@
                                     <outlet property="delegate" destination="6Xx-bx-CvE" id="Sub-2J-lwi"/>
                                 </connections>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QsP-yd-6v9" userLabel="TopCover">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="ZhN-s8-qNm"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AvZ-Qm-ma6" userLabel="BottomCover">
+                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="JrO-NZ-9H1"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="CbY-uR-bp6" secondAttribute="trailing" id="2mJ-1w-g6I"/>
+                            <constraint firstAttribute="trailing" secondItem="QsP-yd-6v9" secondAttribute="trailing" id="79a-j6-D2n"/>
+                            <constraint firstItem="QsP-yd-6v9" firstAttribute="leading" secondItem="bgm-CO-9gf" secondAttribute="leading" id="7hS-rR-QQn"/>
+                            <constraint firstItem="QsP-yd-6v9" firstAttribute="top" secondItem="bgm-CO-9gf" secondAttribute="top" id="Beq-94-PZG"/>
                             <constraint firstItem="CbY-uR-bp6" firstAttribute="top" secondItem="5Ha-Am-1I7" secondAttribute="bottom" id="LSs-JV-vmE"/>
+                            <constraint firstItem="AvZ-Qm-ma6" firstAttribute="bottom" secondItem="bgm-CO-9gf" secondAttribute="bottom" id="ORy-Fr-5D8"/>
+                            <constraint firstItem="QsP-yd-6v9" firstAttribute="bottom" secondItem="5Ha-Am-1I7" secondAttribute="bottom" id="Ppj-kI-MvU"/>
+                            <constraint firstItem="QsP-yd-6v9" firstAttribute="top" secondItem="bgm-CO-9gf" secondAttribute="top" id="Txm-hh-gr4"/>
+                            <constraint firstItem="CbY-uR-bp6" firstAttribute="top" secondItem="QsP-yd-6v9" secondAttribute="bottom" id="Y4j-yh-MjO"/>
+                            <constraint firstItem="AvZ-Qm-ma6" firstAttribute="leading" secondItem="bgm-CO-9gf" secondAttribute="leading" id="c8V-me-bKT"/>
                             <constraint firstItem="CbY-uR-bp6" firstAttribute="leading" secondItem="bgm-CO-9gf" secondAttribute="leading" id="gMq-to-53r"/>
                             <constraint firstItem="y7L-AH-63W" firstAttribute="top" secondItem="CbY-uR-bp6" secondAttribute="bottom" id="k4G-uU-dAY"/>
+                            <constraint firstAttribute="trailing" secondItem="AvZ-Qm-ma6" secondAttribute="trailing" id="zeH-a0-3t8"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ppj-kI-MvU"/>
+                                <exclude reference="Txm-hh-gr4"/>
+                                <exclude reference="LSs-JV-vmE"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Xuv-x4-yRI"/>
                     <connections>
@@ -414,7 +444,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="6Xx-bx-CvE" kind="relationship" relationship="rootViewController" id="Ub6-UO-5iA"/>
+                        <segue destination="6Xx-bx-CvE" kind="relationship" relationship="rootViewController" id="XyU-3u-9oY"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GBP-fP-riU" userLabel="First Responder" sceneMemberID="firstResponder"/>
