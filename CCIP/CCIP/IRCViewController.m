@@ -6,52 +6,48 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
+#import "IRCViewController.h"
 #import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
-#import "IRCView.h"
 
-@interface IRCView()
+@interface IRCViewController()
+
+@property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
 
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
-@implementation IRCView
+@implementation IRCViewController
 
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
-    if (self.webview.delegate == nil) {
-        [self.webview setDelegate:self];
-        
-        UIEdgeInsets viewInset = [self.webview.scrollView contentInset];
-        viewInset.top = self.topGuideHeight;
-        viewInset.bottom = self.bottomGuideHeight;
-        [self.webview.scrollView setContentInset:viewInset];
-
-        UIEdgeInsets viewScrollInset = [self.webview.scrollView scrollIndicatorInsets];
-        viewScrollInset.top = self.topGuideHeight;
-        viewScrollInset.bottom = self.bottomGuideHeight;
-        [self.webview.scrollView setScrollIndicatorInsets:viewScrollInset];
-        
-        [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-    }
+    // set logo on nav title
+    UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
+    self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
+    self.shimmeringLogoView.contentView = logoView;
+    self.navigationItem.titleView = logoView;
     
     SEND_GAI(@"IRCView");
     
-    if (self.refreshControl == nil) {
-        self.refreshControl = [[UIRefreshControl alloc] init];
-        [self.refreshControl addTarget:self
-                                action:@selector(refresh)
-                      forControlEvents:UIControlEventValueChanged];
-        [self.webview.scrollView addSubview:self.refreshControl];
-        
-        [self refresh];
-        [self.refreshControl beginRefreshing];
-        [self.webview.scrollView setContentOffset:CGPointMake(0, self.webview.scrollView.contentOffset.y - 60)
-                                         animated:NO];
-    }
+    [self.webview setDelegate:self];
+    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self
+                            action:@selector(refresh)
+                  forControlEvents:UIControlEventValueChanged];
+    [self.webview.scrollView addSubview:self.refreshControl];
+    
+    [self refresh];
+    [self.refreshControl beginRefreshing];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.shimmeringLogoView setShimmering:[AppDelegate isDevMode]];
+
 }
 
 - (void)refresh {

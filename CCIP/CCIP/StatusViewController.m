@@ -67,8 +67,23 @@
     [self.view setHidden:!self.needCountdown];
 }
 
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    
+    self.view.superview.bounds = CGRectMake(0.0,
+                                            -(64-49)/2,
+                                            self.view.frame.size.width,
+                                            self.view.frame.size.height - 64 - 49);
+}
+
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self startCountDown];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)setScenario:(NSDictionary *)scenario {

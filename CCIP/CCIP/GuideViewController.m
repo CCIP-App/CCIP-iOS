@@ -34,9 +34,20 @@
     SEND_GAI(@"GuideViewController");
     
     [self.view setAutoresizingMask:UIViewAutoresizingNone];
-    CGRect frame = self.view.frame;
-    frame.size.height -= 100;
-    self.view.frame = frame;
+}
+
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    
+    self.view.superview.bounds = CGRectMake(0.0,
+                                            -(64-49)/2,
+                                            self.view.frame.size.width,
+                                            self.view.frame.size.height - 64 - 49);
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

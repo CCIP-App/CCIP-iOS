@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H3I-Lu-9Fb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vFY-Ie-dA7">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -250,22 +250,6 @@
             </objects>
             <point key="canvasLocation" x="-977" y="1893"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="MuM-5j-UJl">
-            <objects>
-                <navigationController id="H3I-Lu-9Fb" customClass="NavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Q07-Ta-dt2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="vFY-Ie-dA7" kind="relationship" relationship="rootViewController" id="Vb8-w8-My3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="j42-uO-2D8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-519" y="118"/>
-        </scene>
         <!--Main Tab Bar View Controller-->
         <scene sceneID="djy-Ka-IMA">
             <objects>
@@ -277,16 +261,16 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="6Xx-bx-CvE" kind="relationship" relationship="viewControllers" id="hUX-q5-0Kq"/>
-                        <segue destination="tQi-9N-xiF" kind="relationship" relationship="viewControllers" id="ZCz-fK-dYp"/>
-                        <segue destination="ba1-3I-FgV" kind="relationship" relationship="viewControllers" id="jz2-Fp-bPj"/>
-                        <segue destination="Oqq-Rn-AVL" kind="relationship" relationship="viewControllers" id="zj1-ah-J07"/>
-                        <segue destination="nut-2v-3J8" kind="relationship" relationship="viewControllers" id="wQx-ZG-XxL"/>
+                        <segue destination="PgR-sB-d7G" kind="relationship" relationship="viewControllers" id="ync-Dd-Ovi"/>
+                        <segue destination="2iG-px-jKh" kind="relationship" relationship="viewControllers" id="D70-W3-Kh3"/>
+                        <segue destination="f3M-Kk-0Fr" kind="relationship" relationship="viewControllers" id="S6i-id-x9p"/>
+                        <segue destination="7DG-ad-dxc" kind="relationship" relationship="viewControllers" id="pqf-cR-3pG"/>
+                        <segue destination="PXh-Tj-uNR" kind="relationship" relationship="viewControllers" id="cpx-rY-iTS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JwH-hU-OD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="206" y="118"/>
+            <point key="canvasLocation" x="766" y="-718"/>
         </scene>
         <!--Data Source-->
         <scene sceneID="s5H-mK-055">
@@ -317,11 +301,11 @@
                             <constraint firstItem="y7L-AH-63W" firstAttribute="top" secondItem="CbY-uR-bp6" secondAttribute="bottom" id="k4G-uU-dAY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Checkin" image="icon_ios_pin.png" id="o22-2q-CLO"/>
+                    <navigationItem key="navigationItem" id="Xuv-x4-yRI"/>
                     <connections>
                         <outlet property="cards" destination="CbY-uR-bp6" id="dwE-kE-NwC"/>
-                        <segue destination="VKq-4v-Yvp" kind="custom" identifier="ShowGuide" customClass="EmbeddedTabBarControllerSegue" id="lBg-aP-1xi"/>
-                        <segue destination="GJw-lM-l3I" kind="custom" identifier="ShowCountdown" customClass="EmbeddedTabBarControllerSegue" id="bIa-hc-QfB"/>
+                        <segue destination="VKq-4v-Yvp" kind="custom" identifier="ShowGuide" customClass="EmbeddedNavigationControllerSegue" id="lBg-aP-1xi"/>
+                        <segue destination="GJw-lM-l3I" kind="custom" identifier="ShowCountdown" customClass="EmbeddedNavigationControllerSegue" id="bIa-hc-QfB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M8l-mK-H7w" sceneMemberID="firstResponder"/>
@@ -420,6 +404,23 @@
             </objects>
             <point key="canvasLocation" x="-519" y="1893"/>
         </scene>
+        <!--Checkin-->
+        <scene sceneID="cs7-eR-RBx">
+            <objects>
+                <navigationController id="PgR-sB-d7G" customClass="MainNavViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Checkin" image="icon_ios_pin.png" id="0RH-c0-HTe"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Ap-Be-8PP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6Xx-bx-CvE" kind="relationship" relationship="rootViewController" id="Ub6-UO-5iA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GBP-fP-riU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-519" y="165"/>
+        </scene>
         <!--Schedule-->
         <scene sceneID="Bg2-m7-A1k">
             <objects>
@@ -490,7 +491,7 @@
                             <constraint firstItem="IdS-ec-iYA" firstAttribute="centerY" secondItem="Aca-zw-Tww" secondAttribute="centerY" id="W2G-6w-45n"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Schedule" image="icon_ios_topcharts.png" id="fpK-Dn-uGS"/>
+                    <navigationItem key="navigationItem" id="JCi-0a-6nT"/>
                     <connections>
                         <outlet property="labelToolbar" destination="bBI-oj-GSC" id="btA-0I-XPS"/>
                         <outlet property="labelToolbarItem" destination="uMV-FU-NQy" id="MwU-fr-maT"/>
@@ -504,15 +505,15 @@
             </objects>
             <point key="canvasLocation" x="119" y="1006"/>
         </scene>
-        <!--IRC Channel-->
+        <!--View Controller-->
         <scene sceneID="Jxo-LT-w56">
             <objects>
-                <viewController id="Oqq-Rn-AVL" sceneMemberID="viewController">
+                <viewController id="Oqq-Rn-AVL" customClass="IRCViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xC4-6q-UFk"/>
                         <viewControllerLayoutGuide type="bottom" id="2xw-DB-VVt"/>
                     </layoutGuides>
-                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Bze-6z-kJu" customClass="IRCView">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Bze-6z-kJu">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -528,11 +529,11 @@
                             <constraint firstItem="zNX-Qf-BUg" firstAttribute="width" secondItem="Bze-6z-kJu" secondAttribute="width" id="Y1R-wR-izP"/>
                             <constraint firstItem="zNX-Qf-BUg" firstAttribute="centerX" secondItem="Bze-6z-kJu" secondAttribute="centerX" id="xAx-4y-2l0"/>
                         </constraints>
-                        <connections>
-                            <outlet property="webview" destination="zNX-Qf-BUg" id="RLz-Ph-tQs"/>
-                        </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="IRC Channel" image="icon_ios_chat.png" id="Wcm-jz-uW7"/>
+                    <navigationItem key="navigationItem" id="e0c-cS-PdU"/>
+                    <connections>
+                        <outlet property="webview" destination="zNX-Qf-BUg" id="5NM-Ng-b7l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozE-dg-HTW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -551,7 +552,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NRX-bU-SPn" userLabel="Announce Table View">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AnnounceCell" id="Hmk-Qi-7k1" customClass="AnnounceTableViewCell">
@@ -610,12 +611,20 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="NRX-bU-SPn" firstAttribute="leading" secondItem="O9C-ij-kHs" secondAttribute="leading" id="9x8-Fa-63Z"/>
+                            <constraint firstItem="NRX-bU-SPn" firstAttribute="top" secondItem="O9C-ij-kHs" secondAttribute="top" id="DaX-CM-ieY"/>
                             <constraint firstItem="8AP-OM-vdg" firstAttribute="top" secondItem="NRX-bU-SPn" secondAttribute="bottom" id="K7x-ys-4bW"/>
+                            <constraint firstItem="NRX-bU-SPn" firstAttribute="bottom" secondItem="O9C-ij-kHs" secondAttribute="bottom" id="Kph-ld-qyG"/>
                             <constraint firstItem="NRX-bU-SPn" firstAttribute="top" secondItem="T6f-ik-3ze" secondAttribute="bottom" id="RdS-cr-VAn"/>
                             <constraint firstAttribute="trailing" secondItem="NRX-bU-SPn" secondAttribute="trailing" id="Zkk-I0-kD9"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="RdS-cr-VAn"/>
+                                <exclude reference="K7x-ys-4bW"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Announce" image="icon_ios_bell.png" id="bfa-yy-GWY"/>
+                    <navigationItem key="navigationItem" id="rLp-PG-A3C"/>
                     <connections>
                         <outlet property="announceTableView" destination="NRX-bU-SPn" id="U3j-TF-0aO"/>
                     </connections>
@@ -632,7 +641,7 @@
                         <viewControllerLayoutGuide type="top" id="jaG-xC-23l"/>
                         <viewControllerLayoutGuide type="bottom" id="rdS-TK-RWD"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ni5-vi-8U5">
+                    <view key="view" contentMode="scaleToFill" id="Ni5-vi-8U5" customClass="More">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -640,27 +649,99 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="nut-2v-3J8" id="wPa-M9-ge6"/>
-                                    <outlet property="delegate" destination="nut-2v-3J8" id="nxK-Vf-UlM"/>
+                                    <outlet property="dataSource" destination="nut-2v-3J8" id="0Kp-WS-Jhl"/>
+                                    <outlet property="delegate" destination="nut-2v-3J8" id="e23-HF-vJ2"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1EN-X2-lLK" firstAttribute="top" secondItem="Ni5-vi-8U5" secondAttribute="topMargin" id="02n-Oy-5FE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="1EN-X2-lLK" secondAttribute="trailing" constant="-20" id="hr6-ww-U9u"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="1EN-X2-lLK" secondAttribute="bottom" id="qBH-d2-5V0"/>
-                            <constraint firstItem="1EN-X2-lLK" firstAttribute="leading" secondItem="Ni5-vi-8U5" secondAttribute="leadingMargin" constant="-20" id="vZk-AJ-WmS"/>
+                            <constraint firstItem="1EN-X2-lLK" firstAttribute="top" secondItem="Ni5-vi-8U5" secondAttribute="top" id="02n-Oy-5FE"/>
+                            <constraint firstAttribute="trailing" secondItem="1EN-X2-lLK" secondAttribute="trailing" id="hr6-ww-U9u"/>
+                            <constraint firstAttribute="bottom" secondItem="1EN-X2-lLK" secondAttribute="bottom" id="qBH-d2-5V0"/>
+                            <constraint firstItem="1EN-X2-lLK" firstAttribute="leading" secondItem="Ni5-vi-8U5" secondAttribute="leading" id="vZk-AJ-WmS"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="More" image="icon_ios_more.png" id="AVK-vx-aDO"/>
+                    <navigationItem key="navigationItem" id="OGe-Bn-WzT"/>
                     <connections>
-                        <outlet property="moreTableView" destination="1EN-X2-lLK" id="JkY-Oa-Fib"/>
+                        <outlet property="moreTableView" destination="1EN-X2-lLK" id="s6U-7B-dK8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2m-U7-b7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2081" y="1006"/>
+        </scene>
+        <!--Schedule-->
+        <scene sceneID="w4n-xs-pWJ">
+            <objects>
+                <navigationController id="2iG-px-jKh" customClass="MainNavViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Schedule" image="icon_ios_topcharts.png" id="s9e-mH-WEn"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="geD-Aj-Nie">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tQi-9N-xiF" kind="relationship" relationship="rootViewController" id="Ji4-g5-3Bg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TPa-gL-exI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="119" y="165"/>
+        </scene>
+        <!--More-->
+        <scene sceneID="0Dy-uW-8fb">
+            <objects>
+                <navigationController id="PXh-Tj-uNR" customClass="MainNavViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="More" image="icon_ios_more.png" id="X9A-yE-P7Z"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VT9-lH-fKX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nut-2v-3J8" kind="relationship" relationship="rootViewController" id="1ut-4B-n1X"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Ck-7p-1cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2081" y="165"/>
+        </scene>
+        <!--Announce-->
+        <scene sceneID="wiL-UG-e7W">
+            <objects>
+                <navigationController id="f3M-Kk-0Fr" customClass="MainNavViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Announce" image="icon_ios_bell.png" id="fAF-SI-dED"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="31P-wZ-JcS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ljK-W6-vXa">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="ba1-3I-FgV" kind="relationship" relationship="rootViewController" id="jR1-JH-KHP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="082-iz-ICZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="766" y="165"/>
+        </scene>
+        <!--IRC-->
+        <scene sceneID="ruP-wo-OxI">
+            <objects>
+                <navigationController id="7DG-ad-dxc" customClass="MainNavViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="IRC" image="icon_ios_chat.png" id="qtD-2E-7uu"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0av-oL-WCV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Oqq-Rn-AVL" kind="relationship" relationship="rootViewController" id="2Ue-ch-XTY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RVN-MH-gSE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1419" y="165"/>
         </scene>
     </scenes>
     <resources>

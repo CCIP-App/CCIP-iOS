@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "StaffGroupView.h"
+#import "StaffGroupTableViewController.h"
 #import "GatewayWebService/GatewayWebService.h"
 
 @interface StaffGroupView()
@@ -16,24 +16,30 @@
 
 @implementation StaffGroupView
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
-    [self.staffGroupTableView registerNib:[UINib nibWithNibName:@"StaffGroupTableViewCell" bundle:nil] forCellReuseIdentifier:@"StaffGroupViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"StaffGroupTableViewCell" bundle:nil] forCellReuseIdentifier:@"StaffGroupViewCell"];
     
-    self.staffGroupTableView.delegate = self;
-    self.staffGroupTableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
     GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:STAFF_DATA_URL];
     [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
         if (json != nil) {
             self.staffJsonArray = json;
-            [self.staffGroupTableView reloadData];
+            [self.tableView reloadData];
         }
     }];
     
     SEND_GAI(@"StaffGroupView");
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 #pragma mark - Table view data source
 
@@ -66,8 +72,7 @@
     
     SEND_GAI_EVENT(@"StaffView", [[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"name"]);
     
-    id rootVC = [[[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0] nextResponder];
-    [rootVC pushViewController:detailViewController animated:YES];
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 @end

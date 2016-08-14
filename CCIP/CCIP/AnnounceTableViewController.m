@@ -14,6 +14,8 @@
 
 @interface AnnounceTableViewController ()
 
+@property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
+
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
@@ -22,6 +24,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // set logo on nav title
+    UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
+    self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
+    self.shimmeringLogoView.contentView = logoView;
+    self.navigationItem.titleView = logoView;
     
     if (self.refreshControl == nil) {
         self.refreshControl = [[UIRefreshControl alloc] init];
@@ -35,6 +43,11 @@
     }
     
     SEND_GAI(@"AnnounceTableViewController");
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.shimmeringLogoView setShimmering:[AppDelegate isDevMode]];
 }
 
 - (void)refresh {

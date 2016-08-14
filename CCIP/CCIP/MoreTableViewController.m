@@ -8,9 +8,12 @@
 
 #import "AppDelegate.h"
 #import "MoreTableViewController.h"
+#import "StaffGroupTableViewController.h"
 #import "AcknowledgementsViewController.h"
 
 @interface MoreTableViewController ()
+
+@property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
 
 @property (strong, nonatomic) NSDictionary *userInfo;
 
@@ -21,41 +24,72 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIEdgeInsets contentInset = [self.moreTableView contentInset];
-    UIEdgeInsets scrollInset = [self.moreTableView scrollIndicatorInsets];
-    contentInset.bottom += self.bottomGuideHeight;
-    scrollInset.bottom += self.bottomGuideHeight;
-    [self.moreTableView setContentInset:contentInset];
-    [self.moreTableView setScrollIndicatorInsets:scrollInset];
+    // set logo on nav title
+    UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
+    self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
+    self.shimmeringLogoView.contentView = logoView;
+    self.navigationItem.titleView = logoView;
     
     [self.moreTableView registerNib:[UINib nibWithNibName:@"MoreCell" bundle:nil] forCellReuseIdentifier:@"MoreCell"];
     
     self.userInfo = [[AppDelegate appDelegate] userInfo];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     SEND_GAI(@"MoreTableViewController");
     
-    UIEdgeInsets viewInset = [self.moreTableView contentInset];
-    UIEdgeInsets viewScrollInset = [self.moreTableView scrollIndicatorInsets];
-    
-    viewInset.bottom = self.bottomGuideHeight;
-    viewInset.top = self.topGuideHeight;
-    
-    viewScrollInset.bottom = self.bottomGuideHeight;
-    viewScrollInset.top = self.topGuideHeight;
-    
-    [self.moreTableView setContentInset:viewInset];
-    [self.moreTableView setScrollIndicatorInsets:viewScrollInset];
+    self.navigationItem.titleView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(navSingleTap)];
+    tapGesture.numberOfTapsRequired = 1;
+    [self.navigationItem.titleView addGestureRecognizer:tapGesture];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.shimmeringLogoView setShimmering:[AppDelegate isDevMode]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)navSingleTap {
+    //NSLog(@"navSingleTap");
+    [self handleNavTapTimes];
+}
+
+- (void)handleNavTapTimes {
+    static int tapTimes = 0;
+    static NSDate *oldTapTime;
+    static NSDate *newTapTime;
+    
+    newTapTime = [NSDate date];
+    if (oldTapTime == nil) {
+        oldTapTime = newTapTime;
+    }
+    
+    if ([newTapTime timeIntervalSinceDate: oldTapTime] <= 0.25f) {
+        tapTimes++;
+        if (tapTimes == 10) {
+            NSLog(@"--  Success tap 10 times  --");
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+            
+            if (![AppDelegate isDevMode]) {
+                NSLog(@"-- Enable DEV_MODE --");
+                [AppDelegate setIsDevMode: YES];
+                [self.shimmeringLogoView setShimmering:YES];
+            } else {
+                NSLog(@"-- Disable DEV_MODE --");
+                [AppDelegate setIsDevMode:NO];
+                [self.shimmeringLogoView setShimmering:NO];
+            }
+        }
+    }
+    else {
+        NSLog(@"--  Failed, just tap %2d times  --", tapTimes);
+        NSLog(@"-- Failed to trigger DEV_MODE --");
+        tapTimes = 1;
+    }
+    oldTapTime = newTapTime;
 }
 
 #pragma mark - Table view data source
@@ -135,8 +169,7 @@
     
     switch (indexPath.row) {
         case 0:
-            nibName = @"StaffGroupView";
-            detailViewController = [[UIViewController alloc] initWithNibName:nibName bundle:nil];
+            detailViewController = [StaffGroupView new];
             break;
         case 1:
             nibName = @"SponsorTableView";

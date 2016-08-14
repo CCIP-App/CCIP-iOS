@@ -29,16 +29,6 @@
     
     UIColor *titleHighlightedColor = [UIColor colorWithRed:65/255.0 green:117/255.0 blue:5/255.0 alpha:1.0];
     
-    self.navigationController.view.backgroundColor = [UIColor whiteColor];
-    
-    UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
-    self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
-    self.shimmeringLogoView.contentView = logoView;
-    
-    self.shimmeringLogoView.shimmering = [AppDelegate isDevMode];
-    
-    self.navigationItem.titleView = self.shimmeringLogoView;
-    
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor], NSForegroundColorAttributeName, nil]
                                              forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:titleHighlightedColor, NSForegroundColorAttributeName, nil]
@@ -56,86 +46,6 @@
     }
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    self.navigationItem.titleView.userInteractionEnabled = YES;
-    
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(navSingleTap)];
-    [self.navigationItem.titleView addGestureRecognizer:tapGesture];
-}
-
-- (void)navSingleTap
-{
-    //NSLog(@"navSingleTap");
-    [self handleNavTapTimes];
-}
-
-- (void)handleNavTapTimes {
-    static int tapTimes = 0;
-    static NSDate *oldTapTime;
-    static NSDate *newTapTime;
-    
-    newTapTime = [NSDate date];
-    if (oldTapTime == nil) {
-        oldTapTime = newTapTime;
-    }
-    
-    switch (self.selectedIndex) {
-        case 0: {
-            if ([AppDelegate isDevMode]) {
-                //NSLog(@"navSingleTap from MoreTab");
-                if ([newTapTime timeIntervalSinceDate: oldTapTime] <= 0.25f) {
-                    tapTimes++;
-                    if (tapTimes == 10) {
-                        NSLog(@"--  Success tap 10 times  --");
-                        if ([AppDelegate haveAccessToken]) {
-                            NSLog(@"-- Clearing the Token --");
-                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-                            [AppDelegate setAccessToken:@""];
-                            [[AppDelegate appDelegate].checkinView reloadCard];
-                        } else {
-                            NSLog(@"-- Token is already clear --");
-                        }
-                    }
-                }
-                else {
-                    NSLog(@"--  Failed, just tap %2d times  --", tapTimes);
-                    NSLog(@"-- Not trigger clean token --");
-                    tapTimes = 1;
-                }
-                oldTapTime = newTapTime;
-            }
-            break;
-        }
-        case 4: {
-            //NSLog(@"navSingleTap from MoreTab");
-            if ([newTapTime timeIntervalSinceDate: oldTapTime] <= 0.25f) {
-                tapTimes++;
-                if (tapTimes == 10) {
-                    NSLog(@"--  Success tap 10 times  --");
-                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-                    
-                    if (![AppDelegate isDevMode]) {
-                        NSLog(@"-- Enable DEV_MODE --");
-                        [AppDelegate setIsDevMode: YES];
-                        self.shimmeringLogoView.shimmering = YES;
-                    } else {
-                        NSLog(@"-- Disable DEV_MODE --");
-                        [AppDelegate setIsDevMode:NO];
-                        self.shimmeringLogoView.shimmering = NO;
-                    }
-                }
-            }
-            else {
-                NSLog(@"--  Failed, just tap %2d times  --", tapTimes);
-                NSLog(@"-- Failed to trigger DEV_MODE --");
-                tapTimes = 1;
-            }
-            oldTapTime = newTapTime;
-            break;
-        }
-        default:
-            break;
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -162,24 +72,6 @@
         
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
-    
-    switch ([self selectedIndex]) {
-        case 1:
-        {
-            NSObject *scheduleIndexTextObj = [[NSUserDefaults standardUserDefaults] objectForKey:@"ScheduleIndexText"];
-            if (scheduleIndexTextObj) {
-                NSString *scheduleIndexText = (NSString*)scheduleIndexTextObj;
-                [NSInvocation InvokeObject:[[self viewControllers] objectAtIndex:1]
-                        withSelectorString:@"setSegmentedAndTableWithText:"
-                             withArguments:@[ scheduleIndexText ]];
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ScheduleIndexText"];
-            }
-            break;
-        }
-        default:
-            break;
-    }
-    
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

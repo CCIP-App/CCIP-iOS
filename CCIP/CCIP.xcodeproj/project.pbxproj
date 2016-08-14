@@ -55,6 +55,8 @@
 		28A7C5621D5F1AD90079BB12 /* DeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5611D5F1AD90079BB12 /* DeepCopy.m */; };
 		28A7C5641D5F7D2D0079BB12 /* Project_3rd_Lib_License.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */; };
 		28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */; };
+		28A7C56D1D6032680079BB12 /* MainNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C56C1D6032680079BB12 /* MainNavViewController.m */; };
+		28A7C5761D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5751D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m */; };
 		28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */; };
 		28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */; };
 		28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */; };
@@ -98,11 +100,10 @@
 		5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */; };
 		5FD049891D5AFB9D00E7CEAD /* AnnounceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD049881D5AFB9D00E7CEAD /* AnnounceTableViewController.m */; };
 		5FD0498C1D5B041800E7CEAD /* AnnounceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0498B1D5B041800E7CEAD /* AnnounceTableViewCell.m */; };
-		5FECE5AC1D352E8A00242DB4 /* StaffGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5AA1D352E8A00242DB4 /* StaffGroupView.m */; };
-		5FECE5AD1D352E8A00242DB4 /* StaffGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FECE5AB1D352E8A00242DB4 /* StaffGroupView.xib */; };
+		5FECE5AC1D352E8A00242DB4 /* StaffGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5AA1D352E8A00242DB4 /* StaffGroupTableViewController.m */; };
 		5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */; };
 		5FECE5F61D353C4900242DB4 /* StaffGroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FECE5F41D353C4900242DB4 /* StaffGroupTableViewCell.xib */; };
-		5FF2B11E1D28B19600665DD9 /* IRCView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2B11C1D28B19600665DD9 /* IRCView.m */; };
+		5FF2B11E1D28B19600665DD9 /* IRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2B11C1D28B19600665DD9 /* IRCViewController.m */; };
 		6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */; };
 		6B11BE811D4CBA5800B87EA9 /* UIImage+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */; };
 		6B11BE821D4CBC9300B87EA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B11BE841D4CBC9300B87EA9 /* Main.storyboard */; };
@@ -212,6 +213,10 @@
 		28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Project_3rd_Lib_License.json; sourceTree = "<group>"; };
 		28A7C5651D5F84FB0079BB12 /* NSData+PMUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+PMUtils.h"; sourceTree = "<group>"; };
 		28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+PMUtils.m"; sourceTree = "<group>"; };
+		28A7C56B1D6032680079BB12 /* MainNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavViewController.h; sourceTree = "<group>"; };
+		28A7C56C1D6032680079BB12 /* MainNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavViewController.m; sourceTree = "<group>"; };
+		28A7C5741D6053F00079BB12 /* EmbeddedNavigationControllerSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbeddedNavigationControllerSegue.h; sourceTree = "<group>"; };
+		28A7C5751D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmbeddedNavigationControllerSegue.m; sourceTree = "<group>"; };
 		28ACA99F1D5E92AD002A6419 /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
 		28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
 		28AF9A7C1D28A40A006B378E /* RoomLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomLocationViewController.h; sourceTree = "<group>"; };
@@ -272,14 +277,13 @@
 		5FD049881D5AFB9D00E7CEAD /* AnnounceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnounceTableViewController.m; sourceTree = "<group>"; };
 		5FD0498A1D5B041800E7CEAD /* AnnounceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnounceTableViewCell.h; sourceTree = "<group>"; };
 		5FD0498B1D5B041800E7CEAD /* AnnounceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnounceTableViewCell.m; sourceTree = "<group>"; };
-		5FECE5A91D352E8A00242DB4 /* StaffGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffGroupView.h; sourceTree = "<group>"; };
-		5FECE5AA1D352E8A00242DB4 /* StaffGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupView.m; sourceTree = "<group>"; };
-		5FECE5AB1D352E8A00242DB4 /* StaffGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffGroupView.xib; sourceTree = "<group>"; };
+		5FECE5A91D352E8A00242DB4 /* StaffGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffGroupTableViewController.h; sourceTree = "<group>"; };
+		5FECE5AA1D352E8A00242DB4 /* StaffGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupTableViewController.m; sourceTree = "<group>"; };
 		5FECE5F21D353C4900242DB4 /* StaffGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffGroupTableViewCell.h; sourceTree = "<group>"; };
 		5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupTableViewCell.m; sourceTree = "<group>"; };
 		5FECE5F41D353C4900242DB4 /* StaffGroupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffGroupTableViewCell.xib; sourceTree = "<group>"; };
-		5FF2B11B1D28B19600665DD9 /* IRCView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRCView.h; sourceTree = "<group>"; };
-		5FF2B11C1D28B19600665DD9 /* IRCView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRCView.m; sourceTree = "<group>"; };
+		5FF2B11B1D28B19600665DD9 /* IRCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRCViewController.h; sourceTree = "<group>"; };
+		5FF2B11C1D28B19600665DD9 /* IRCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRCViewController.m; sourceTree = "<group>"; };
 		6B0B84D11D2B861000DE18B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B0B84D21D2B862300DE18B0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		6B11BE7F1D4CBA5800B87EA9 /* UIImage+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+addition.h"; sourceTree = "<group>"; };
@@ -449,8 +453,8 @@
 		288164E31D4F2F24005C68EA /* IRCTab */ = {
 			isa = PBXGroup;
 			children = (
-				5FF2B11B1D28B19600665DD9 /* IRCView.h */,
-				5FF2B11C1D28B19600665DD9 /* IRCView.m */,
+				5FF2B11B1D28B19600665DD9 /* IRCViewController.h */,
+				5FF2B11C1D28B19600665DD9 /* IRCViewController.m */,
 			);
 			name = IRCTab;
 			sourceTree = "<group>";
@@ -458,9 +462,8 @@
 		288164E41D4F2F32005C68EA /* StaffView */ = {
 			isa = PBXGroup;
 			children = (
-				5FECE5A91D352E8A00242DB4 /* StaffGroupView.h */,
-				5FECE5AA1D352E8A00242DB4 /* StaffGroupView.m */,
-				5FECE5AB1D352E8A00242DB4 /* StaffGroupView.xib */,
+				5FECE5A91D352E8A00242DB4 /* StaffGroupTableViewController.h */,
+				5FECE5AA1D352E8A00242DB4 /* StaffGroupTableViewController.m */,
 				5FECE5F21D353C4900242DB4 /* StaffGroupTableViewCell.h */,
 				5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */,
 				5FECE5F41D353C4900242DB4 /* StaffGroupTableViewCell.xib */,
@@ -657,6 +660,8 @@
 			children = (
 				6B11BE871D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.h */,
 				6B11BE881D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m */,
+				28A7C5741D6053F00079BB12 /* EmbeddedNavigationControllerSegue.h */,
+				28A7C5751D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m */,
 			);
 			name = CustomSegue;
 			sourceTree = "<group>";
@@ -690,6 +695,8 @@
 				6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */,
 				5FB4D43C1D3A668B005BF382 /* MainTabBarViewController.h */,
 				5FB4D43D1D3A668B005BF382 /* MainTabBarViewController.m */,
+				28A7C56B1D6032680079BB12 /* MainNavViewController.h */,
+				28A7C56C1D6032680079BB12 /* MainNavViewController.m */,
 				288164E21D4F2F03005C68EA /* CheckinTab */,
 				288164E61D4F2F68005C68EA /* ScheduleTab */,
 				288164E71D4F2FA3005C68EA /* AnnounceTab */,
@@ -800,7 +807,6 @@
 				5F8B2D2B1D55E02200A68C7D /* SponsorTableView.xib in Resources */,
 				5FECE5F61D353C4900242DB4 /* StaffGroupTableViewCell.xib in Resources */,
 				2839BF3A1D4C97AB0062F36D /* Star@2x.png in Resources */,
-				5FECE5AD1D352E8A00242DB4 /* StaffGroupView.xib in Resources */,
 				2823E8E31D3E55F10039D72E /* ProgramAbstractViewController.xib in Resources */,
 				28A7C55F1D5EE0C30079BB12 /* Project_Info_and_Contributors.json in Resources */,
 				5FB4D4671D3A8706005BF382 /* icon_ios_chat@2x.png in Resources */,
@@ -925,10 +931,11 @@
 				28A2992D1D3B90C000145E76 /* ScheduleViewController.m in Sources */,
 				5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */,
 				28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */,
-				5FF2B11E1D28B19600665DD9 /* IRCView.m in Sources */,
+				5FF2B11E1D28B19600665DD9 /* IRCViewController.m in Sources */,
 				6B7142B61D1DBAFB0024EA45 /* scenarioCell.m in Sources */,
 				2823E8E71D3E560C0039D72E /* ProgramSpeakerIntroViewController.m in Sources */,
 				5FD049891D5AFB9D00E7CEAD /* AnnounceTableViewController.m in Sources */,
+				28A7C5761D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m in Sources */,
 				2839BF4A1D4CDDAD0062F36D /* CheckinCardViewController.m in Sources */,
 				2823E8E21D3E55F10039D72E /* ProgramAbstractViewController.m in Sources */,
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
@@ -936,9 +943,10 @@
 				6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */,
 				28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */,
 				28C22A541D3178A9004A6575 /* ProgramDetailPopViewController.m in Sources */,
+				28A7C56D1D6032680079BB12 /* MainNavViewController.m in Sources */,
 				28B34BBF1D3EB22E002B959D /* CAPSPageMenu.m in Sources */,
 				5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */,
-				5FECE5AC1D352E8A00242DB4 /* StaffGroupView.m in Sources */,
+				5FECE5AC1D352E8A00242DB4 /* StaffGroupTableViewController.m in Sources */,
 				5F8B2D2A1D55E02200A68C7D /* SponsorTableView.m in Sources */,
 				6B11BE811D4CBA5800B87EA9 /* UIImage+addition.m in Sources */,
 				6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */,

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <SafariServices/SFSafariViewController.h>
 
-@interface IRCView : UIView <UIWebViewDelegate, SFSafariViewControllerDelegate>
+@interface IRCViewController : UIViewController <UIWebViewDelegate, SFSafariViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
 

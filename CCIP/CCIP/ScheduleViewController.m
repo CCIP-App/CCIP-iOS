@@ -26,6 +26,8 @@
 
 @interface ScheduleViewController ()
 
+@property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
+
 @property (strong, nonatomic) IBOutlet BLKFlexibleHeightBar *myBar;
 @property (strong, nonatomic) BLKDelegateSplitter *delegateSplitter;
 @property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
@@ -56,6 +58,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // set logo on nav title
+    UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
+    self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
+    self.shimmeringLogoView.contentView = logoView;
+    self.navigationItem.titleView = logoView;
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
@@ -116,7 +124,17 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.shimmeringLogoView setShimmering:[AppDelegate isDevMode]];
+
     [self setTableViewInset:self.tableView isInit:YES];
+    
+    NSObject *scheduleIndexTextObj = [[NSUserDefaults standardUserDefaults] objectForKey:@"ScheduleIndexText"];
+    if (scheduleIndexTextObj) {
+        NSString *scheduleIndexText = (NSString*)scheduleIndexTextObj;
+        [self setSegmentedAndTableWithText:scheduleIndexText];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ScheduleIndexText"];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StaffGroupView : UIView <UITableViewDelegate, UITableViewDataSource>
+@interface StaffGroupView : UITableViewController// <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, retain) IBOutlet UITableView *staffGroupTableView;
+//@property (nonatomic, retain) IBOutlet UITableView *staffGroupTableView;
 @property (strong, nonatomic) NSArray *staffJsonArray;
 
 @end

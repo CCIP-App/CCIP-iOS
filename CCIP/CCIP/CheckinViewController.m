@@ -18,6 +18,8 @@
 
 @interface CheckinViewController()
 
+@property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
+
 @property (strong, nonatomic) NSDictionary *userInfo;
 @property (strong, nonatomic) NSArray *scenarios;
 @property (strong, nonatomic) GuideViewController *guideViewController;
@@ -39,6 +41,12 @@
     [super viewDidLoad];
     
     [[AppDelegate appDelegate] setCheckinView:self];
+    
+    // set logo on nav title
+    UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
+    self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
+    self.shimmeringLogoView.contentView = logoView;
+    self.navigationItem.titleView = logoView;
     
     // Init configure carousel
     self.cards.type = iCarouselTypeRotary;
@@ -66,9 +74,16 @@
     [self.cards addSubview:self.pageControl];
     
     SEND_GAI(@"CheckinViewController");
+    
+    self.navigationItem.titleView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(navSingleTap)];
+    [self.navigationItem.titleView addGestureRecognizer:tapGesture];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.shimmeringLogoView setShimmering:[AppDelegate isDevMode]];
+
     [self handleQRButton];
 }
 
@@ -82,7 +97,47 @@
     [self hideGuideView];
     [self hideStatusView];
     [self closeBarcodePickerOverlay];
-    self.tabBarController.navigationItem.rightBarButtonItem = nil;
+}
+
+- (void)navSingleTap
+{
+    //NSLog(@"navSingleTap");
+    [self handleNavTapTimes];
+}
+
+- (void)handleNavTapTimes {
+    static int tapTimes = 0;
+    static NSDate *oldTapTime;
+    static NSDate *newTapTime;
+    
+    newTapTime = [NSDate date];
+    if (oldTapTime == nil) {
+        oldTapTime = newTapTime;
+    }
+    
+    if ([AppDelegate isDevMode]) {
+        //NSLog(@"navSingleTap from MoreTab");
+        if ([newTapTime timeIntervalSinceDate: oldTapTime] <= 0.25f) {
+            tapTimes++;
+            if (tapTimes == 10) {
+                NSLog(@"--  Success tap 10 times  --");
+                if ([AppDelegate haveAccessToken]) {
+                    NSLog(@"-- Clearing the Token --");
+                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                    [AppDelegate setAccessToken:@""];
+                    [[AppDelegate appDelegate].checkinView reloadCard];
+                } else {
+                    NSLog(@"-- Token is already clear --");
+                }
+            }
+        }
+        else {
+            NSLog(@"--  Failed, just tap %2d times  --", tapTimes);
+            NSLog(@"-- Not trigger clean token --");
+            tapTimes = 1;
+        }
+        oldTapTime = newTapTime;
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -167,15 +222,15 @@
     }
     
     if ([AppDelegate isDevMode] || ![AppDelegate haveAccessToken]){
-        self.tabBarController.navigationItem.rightBarButtonItem = self.qrButton;
+        self.navigationItem.rightBarButtonItem = self.qrButton;
     } else {
-        self.tabBarController.navigationItem.rightBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItem = nil;
     }
 }
 
 - (void)hideQRButton {
     if (![AppDelegate isDevMode]) {
-        self.tabBarController.navigationItem.rightBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItem = nil;
     }
 }
 - (void)barcodePicker:(SBSBarcodePicker *)picker didScan:(SBSScanSession *)session {
