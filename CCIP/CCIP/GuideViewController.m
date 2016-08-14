@@ -14,6 +14,8 @@
 
 @interface GuideViewController ()
 
+@property (readwrite, nonatomic) BOOL isRelayout;
+
 @end
 
 @implementation GuideViewController
@@ -39,10 +41,13 @@
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     
-    self.view.superview.bounds = CGRectMake(0.0,
-                                            -(64-49)/2,
-                                            self.view.frame.size.width,
-                                            self.view.frame.size.height - 64 - 49);
+    if (self.isRelayout != true) {
+        self.view.frame = CGRectMake(0.0,
+                                     64.0,
+                                     self.view.frame.size.width,
+                                     self.view.frame.size.height - 64 - 49);
+        self.isRelayout = true;
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

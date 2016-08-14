@@ -13,6 +13,8 @@
 
 @interface StatusViewController()
 
+@property (readwrite, nonatomic) BOOL isRelayout;
+
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) NSDate *countTime;
 @property (readwrite, nonatomic) float maxValue;
@@ -70,15 +72,19 @@
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     
-    self.view.superview.bounds = CGRectMake(0.0,
-                                            -(64-49)/2,
-                                            self.view.frame.size.width,
-                                            self.view.frame.size.height - 64 - 49);
+    if (self.isRelayout != true) {
+        self.view.frame = CGRectMake(0.0,
+                                    64.0,
+                                    self.view.frame.size.width,
+                                    self.view.frame.size.height - 64 - 49);
+        self.isRelayout = true;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self startCountDown];
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
