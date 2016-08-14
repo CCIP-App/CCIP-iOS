@@ -758,7 +758,7 @@
 				TargetAttributes = {
 					6BD8EF261D1D73510094BE95 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = H2LA3QW9Y2;
+						DevelopmentTeam = 293229L48V;
 						DevelopmentTeamName = "Koo Foundation Sun Yat-Sen Cancer Center";
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1107,7 +1107,7 @@
 				);
 				INFOPLIST_FILE = CCIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1128,7 +1128,7 @@
 				);
 				INFOPLIST_FILE = CCIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

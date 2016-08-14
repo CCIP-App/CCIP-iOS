@@ -12,12 +12,7 @@
 #import "AppDelegate.h"
 #import "GuideViewController.h"
 
-#define BUNDLE_ID                   @ STRINGIZE2(PRODUCT_BUNDLE_IDENTIFIER)
-#define APP_BUNDLE_ID_IS_DEV        ([BUNDLE_ID isEqualToString:@"org.coscup.CCIP-iOS-Dev"])
-#define APP_BUNDLE_ID_IS_APPSTORE   ([BUNDLE_ID isEqualToString:@"org.coscup.CCIP-iOS"])
-#define ONE_SIGNAL_RELEASE_TOKEN    (@"a429ff30-5c0e-4584-a32f-b866ba88c947")
-#define ONE_SIGNAL_DEBUG_TOKEN      (@"aef99f72-9ee3-4dfa-ac5b-ddf79f16be7d")
-#define ONE_SIGNAL_APP_TOKEN        ((APP_BUNDLE_ID_IS_APPSTORE == YES ? ONE_SIGNAL_RELEASE_TOKEN : ONE_SIGNAL_DEBUG_TOKEN))
+#define ONE_SIGNAL_APP_TOKEN        (@"a429ff30-5c0e-4584-a32f-b866ba88c947")
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
