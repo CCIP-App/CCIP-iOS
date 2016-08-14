@@ -30,7 +30,20 @@
 }
 
 - (void)setGroupData:(NSDictionary *)groupData {
-    NSMutableArray *staffArray = [NSMutableArray arrayWithArray:[groupData objectForKey:@"users"]];    
+    NSMutableArray *staffArray = [NSMutableArray arrayWithArray:[groupData objectForKey:@"users"]];
+    NSString *groupName = [groupData objectForKey:@"name"];
+
+    //handle cross grops's staff move to bottom
+    for (int i = 0; i < [staffArray count]; i++)
+    {
+        NSString *title = [[[staffArray objectAtIndex:i] valueForKey:@"profile"] valueForKey:@"title"];
+        if (![title hasPrefix:[groupName substringToIndex:2]])
+        {
+            [staffArray addObject:[staffArray objectAtIndex:i]];
+            [staffArray removeObjectAtIndex:i];
+        }
+    }
+    
     self.staffJsonArray = staffArray;
 }
 
