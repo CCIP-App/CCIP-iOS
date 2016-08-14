@@ -13,6 +13,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *guideMessageLabel;
 @property (weak, nonatomic) IBOutlet UITextField *redeemCodeText;
 @property (weak, nonatomic) IBOutlet UIButton *redeemButton;
-@property(nonatomic) CGPoint originalCenter;
 
 @end

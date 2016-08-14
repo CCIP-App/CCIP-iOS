@@ -15,6 +15,7 @@
 @interface GuideViewController ()
 
 @property (readwrite, nonatomic) BOOL isRelayout;
+@property (nonatomic) CGPoint changePoint;
 
 @end
 
@@ -29,9 +30,8 @@
     [self.redeemButton setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
     self.redeemButton.layer.cornerRadius = 8.0f;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    self.originalCenter = CGPointMake(self.view.center.x, self.view.center.y);
     
     SEND_GAI(@"GuideViewController");
     
@@ -61,16 +61,55 @@
     return YES;
 }
 
-- (void)keyboardDidShow:(NSNotification *)note {
+- (void)keyboardWillShow:(NSNotification *)note {
     if (self.view.frame.size.height <= 480) {
-        self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y - 130);
+        self.changePoint = CGPointMake(0, -130);
+        
+        CGRect guideMessageLabelFrame = self.guideMessageLabel.frame;
+        guideMessageLabelFrame.origin.y += self.changePoint.y;
+        self.guideMessageLabel.frame = guideMessageLabelFrame;
+        
+        CGRect redeemCodeTextFrame = self.redeemCodeText.frame;
+        redeemCodeTextFrame.origin.y += self.changePoint.y;
+        self.redeemCodeText.frame = redeemCodeTextFrame;
+        
+        CGRect redeemButtonFrame = self.redeemButton.frame;
+        redeemButtonFrame.origin.y += self.changePoint.y;
+        self.redeemButton.frame = redeemButtonFrame;
+        
     } else if (self.view.frame.size.height <= 568) {
-        self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y - 30);
+        self.changePoint = CGPointMake(0, -30);
+        
+        CGRect guideMessageLabelFrame = self.guideMessageLabel.frame;
+        guideMessageLabelFrame.origin.y += self.changePoint.y;
+        self.guideMessageLabel.frame = guideMessageLabelFrame;
+        
+        CGRect redeemCodeTextFrame = self.redeemCodeText.frame;
+        redeemCodeTextFrame.origin.y += self.changePoint.y;
+        self.redeemCodeText.frame = redeemCodeTextFrame;
+        
+        CGRect redeemButtonFrame = self.redeemButton.frame;
+        redeemButtonFrame.origin.y += self.changePoint.y;
+        self.redeemButton.frame = redeemButtonFrame;
     }
 }
 
 - (void)keyboardWillHide:(NSNotification *)note {
-    self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y);
+    CGFloat deltaH = self.changePoint.y * -1;
+    
+    CGRect guideMessageLabelFrame = self.guideMessageLabel.frame;
+    guideMessageLabelFrame.origin.y += deltaH;
+    self.guideMessageLabel.frame = guideMessageLabelFrame;
+    
+    CGRect redeemCodeTextFrame = self.redeemCodeText.frame;
+    redeemCodeTextFrame.origin.y += deltaH;
+    self.redeemCodeText.frame = redeemCodeTextFrame;
+    
+    CGRect redeemButtonFrame = self.redeemButton.frame;
+    redeemButtonFrame.origin.y += deltaH;
+    self.redeemButton.frame = redeemButtonFrame;
+    
+    self.changePoint = CGPointMake(0, 0);
 }
 
 - (void)didReceiveMemoryWarning {
