@@ -14,19 +14,25 @@
 #import "CheckinViewController.h"
 #import "GuideViewController.h"
 #import "StatusViewController.h"
+#import "InvalidNetworkMessageViewController.h"
 #import "UIAlertController+additional.h"
 
 @interface CheckinViewController()
 
 @property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
 
+@property (strong, nonatomic) IBOutlet iCarousel *cards;
+@property (strong, nonatomic) UIPageControl *pageControl;
+
 @property (strong, nonatomic) NSDictionary *userInfo;
 @property (strong, nonatomic) NSArray *scenarios;
-@property (strong, nonatomic) GuideViewController *guideViewController;
-@property (strong, nonatomic) StatusViewController *statusViewController;
-@property (strong, nonatomic) UIPageControl *pageControl;
+
 @property (strong, nonatomic) SBSBarcodePicker *scanditBarcodePicker;
 @property (strong, nonatomic) UIBarButtonItem *qrButton;
+
+@property (strong, nonatomic) GuideViewController *guideViewController;
+@property (strong, nonatomic) StatusViewController *statusViewController;
+@property (strong, nonatomic) InvalidNetworkMessageViewController *invalidNetworkMsgViewController;
 
 @end
 
@@ -96,6 +102,7 @@
     [super viewWillDisappear:animated];
     [self hideGuideView];
     [self hideStatusView];
+    [self hideInvalidNetworkMsgViewController];
     [self closeBarcodePickerOverlay];
 }
 
@@ -173,6 +180,15 @@
     }
 }
 
+- (void)hideInvalidNetworkMsgViewController {
+    if (self.invalidNetworkMsgViewController.isVisible) {
+        [self.invalidNetworkMsgViewController dismissViewControllerAnimated:YES
+                                                                 completion:^{
+                                                                     self.invalidNetworkMsgViewController = nil;
+                                                                 }];
+    }
+}
+
 - (void)reloadCard {
     [self handleQRButton];
 
@@ -196,6 +212,11 @@
                 [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
                                                        value:[json objectForKey:@"user_id"]];
                 [self.cards reloadData];
+            } else {
+                // Invalid Network
+                [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg" sender:nil];
+//                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
+//                [ac showAlert:nil];
             }
         }];
     }
@@ -205,6 +226,11 @@
     NSLog(@"%@", json);
     [self performSegueWithIdentifier:@"ShowCountdown"
                               sender:json];
+}
+
+- (void)showInvalidNetworkMsg {
+    [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg"
+                              sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {

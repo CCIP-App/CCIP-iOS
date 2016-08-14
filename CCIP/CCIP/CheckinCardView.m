@@ -86,8 +86,10 @@
                     [[AppDelegate appDelegate].checkinView reloadCard];
                 }
             } else {
-                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
-                [ac showAlert:nil];
+                // Invalid Network
+                [self.delegate showInvalidNetworkMsg];
+//                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
+//                [ac showAlert:nil];
             }
         }];
     } else {
@@ -121,6 +123,11 @@
                         [self.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil) forState:UIControlStateNormal];
                         [self.checkinBtn setBackgroundColor:disabledColor];
                     }
+                } else {
+                    // Invalid Network
+                    [self.delegate showInvalidNetworkMsg];
+//                    UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
+//                    [ac showAlert:nil];
                 }
             }];
         };

@@ -25,6 +25,7 @@
 		2839BF3D1D4C97EE0062F36D /* Star-Filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF3B1D4C97EE0062F36D /* Star-Filled.png */; };
 		2839BF3E1D4C97EE0062F36D /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF3C1D4C97EE0062F36D /* Star.png */; };
 		2839BF4A1D4CDDAD0062F36D /* CheckinCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */; };
+		286E28A51D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */; };
 		288D3A771D599A1200E4E3A6 /* CHANGELOG.txt in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A741D599A1200E4E3A6 /* CHANGELOG.txt */; };
 		288D3A781D599A1200E4E3A6 /* LICENSE-2.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A751D599A1200E4E3A6 /* LICENSE-2.0.txt */; };
 		288D3A791D599A1200E4E3A6 /* ScanditBarcodeScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A761D599A1200E4E3A6 /* ScanditBarcodeScanner.framework */; };
@@ -121,14 +122,12 @@
 		6B2CD5B51D28C92B00793194 /* GatewayWebService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD5B31D28C92B00793194 /* GatewayWebService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F9E441D4D142700047F38 /* CheckinCardView.m */; };
 		6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
-		6B53C6601D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib */; };
 		6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
 		6B7142B61D1DBAFB0024EA45 /* scenarioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */; };
 		6B7142B71D1DBAFB0024EA45 /* scenarioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */; };
 		6B9117081D4EFC2600537ABE /* ScheduleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */; };
 		6B9117091D4EFC2600537ABE /* ScheduleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9117071D4EFC2600537ABE /* ScheduleViewCell.xib */; };
 		6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */; };
-		6BA1A5281D1EFBF100D5924C /* InvalidNetworkMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */; };
 		6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */; };
 		6BCBC3B51D4F393700B5AF35 /* UIViewController+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */; };
 		6BD8EF2C1D1D73510094BE95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2B1D1D73510094BE95 /* main.m */; };
@@ -179,6 +178,8 @@
 		2839BF3C1D4C97EE0062F36D /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
 		2839BF471D4CDDAD0062F36D /* CheckinCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinCardViewController.h; sourceTree = "<group>"; };
 		2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinCardViewController.m; sourceTree = "<group>"; };
+		286E28A31D60D35B00C5CB94 /* InvalidNetworkMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvalidNetworkMessageViewController.h; sourceTree = "<group>"; };
+		286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvalidNetworkMessageViewController.m; sourceTree = "<group>"; };
 		288D3A741D599A1200E4E3A6 /* CHANGELOG.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.txt; sourceTree = "<group>"; };
 		288D3A751D599A1200E4E3A6 /* LICENSE-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-2.0.txt"; sourceTree = "<group>"; };
 		288D3A761D599A1200E4E3A6 /* ScanditBarcodeScanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ScanditBarcodeScanner.framework; sourceTree = "<group>"; };
@@ -307,7 +308,6 @@
 		6B2F9E431D4D142700047F38 /* CheckinCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinCardView.h; sourceTree = "<group>"; };
 		6B2F9E441D4D142700047F38 /* CheckinCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinCardView.m; sourceTree = "<group>"; };
 		6B2F9E461D4D18F100047F38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvalidNetworkMessageView.xib; sourceTree = "<group>"; };
 		6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreenIcon@3x.png"; sourceTree = "<group>"; };
 		6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scenarioCell.h; sourceTree = "<group>"; };
 		6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scenarioCell.m; sourceTree = "<group>"; };
@@ -317,8 +317,6 @@
 		6B9117071D4EFC2600537ABE /* ScheduleViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleViewCell.xib; sourceTree = "<group>"; };
 		6BA1A5201D1EFBDC00D5924C /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
 		6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
-		6BA1A5261D1EFBF100D5924C /* InvalidNetworkMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvalidNetworkMessageView.h; sourceTree = "<group>"; };
-		6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvalidNetworkMessageView.m; sourceTree = "<group>"; };
 		6BAB42371D4ED39D0029B8A5 /* UIApplication+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+addition.h"; sourceTree = "<group>"; };
 		6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+addition.m"; sourceTree = "<group>"; };
 		6BCBC3B31D4F393700B5AF35 /* UIViewController+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+addition.h"; sourceTree = "<group>"; };
@@ -702,9 +700,8 @@
 				288164E71D4F2FA3005C68EA /* AnnounceTab */,
 				288164E31D4F2F24005C68EA /* IRCTab */,
 				288164E51D4F2F47005C68EA /* MoreTab */,
-				6BA1A5261D1EFBF100D5924C /* InvalidNetworkMessageView.h */,
-				6BA1A5271D1EFBF100D5924C /* InvalidNetworkMessageView.m */,
-				6B53C65E1D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib */,
+				286E28A31D60D35B00C5CB94 /* InvalidNetworkMessageViewController.h */,
+				286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */,
 				6BE250201D3133FC005FB4B2 /* GuideViewController.h */,
 				6BE250211D3133FC005FB4B2 /* GuideViewController.m */,
 				288164EC1D4F3083005C68EA /* OldCode */,
@@ -765,7 +762,7 @@
 				TargetAttributes = {
 					6BD8EF261D1D73510094BE95 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 293229L48V;
+						DevelopmentTeam = H2LA3QW9Y2;
 						DevelopmentTeamName = "Koo Foundation Sun Yat-Sen Cancer Center";
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -847,7 +844,6 @@
 				5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */,
 				5FB4D4661D3A8706005BF382 /* icon_ios_chat.png in Resources */,
 				6B2CD59A1D2886C900793194 /* Localizable.strings in Resources */,
-				6B53C6601D1ED5EB00EA8012 /* InvalidNetworkMessageView.xib in Resources */,
 				288D3A771D599A1200E4E3A6 /* CHANGELOG.txt in Resources */,
 				5FB4D47A1D3A8DF6005BF382 /* icon_ios_more@3x.png in Resources */,
 				6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */,
@@ -922,7 +918,6 @@
 				5FB4D48F1D3B242C005BF382 /* MoreCell.m in Sources */,
 				5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */,
 				5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */,
-				6BA1A5281D1EFBF100D5924C /* InvalidNetworkMessageView.m in Sources */,
 				28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */,
 				28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */,
 				28ED8C7A1D31DC1F00BC47E0 /* ShareProgramTableViewController.m in Sources */,
@@ -949,6 +944,7 @@
 				5FECE5AC1D352E8A00242DB4 /* StaffGroupTableViewController.m in Sources */,
 				5F8B2D2A1D55E02200A68C7D /* SponsorTableView.m in Sources */,
 				6B11BE811D4CBA5800B87EA9 /* UIImage+addition.m in Sources */,
+				286E28A51D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m in Sources */,
 				6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */,
 				5F0E55D01D574F7F004664FB /* SponsorTableViewCell.m in Sources */,
 				5FD0498C1D5B041800E7CEAD /* AnnounceTableViewCell.m in Sources */,
@@ -1115,7 +1111,7 @@
 				);
 				INFOPLIST_FILE = CCIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1136,7 +1132,7 @@
 				);
 				INFOPLIST_FILE = CCIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

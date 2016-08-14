@@ -12,9 +12,8 @@
 
 @interface CheckinViewController : UIViewController<iCarouselDataSource, iCarouselDelegate, SBSScanDelegate>
 
-@property (strong, nonatomic) IBOutlet iCarousel *cards;
-
 - (void)reloadCard;
 - (void)showCountdown:(NSDictionary *)json;
+- (void)showInvalidNetworkMsg;
 
 @end
