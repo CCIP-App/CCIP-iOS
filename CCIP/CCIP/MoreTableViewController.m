@@ -169,6 +169,7 @@
     
     switch (indexPath.row) {
         case 0:
+            nibName = @"StaffGroupView";
             detailViewController = [StaffGroupView new];
             break;
         case 1:

@@ -187,6 +187,8 @@
             NSLog(@"%@%@",@"Failed to open url:", [[NSURL URLWithString:url] description]);
         }
     }
+    
+    SEND_GAI_EVENT(@"SponsorTableView", url);
     // Navigation logic may go here, for example:
     // Create the next view controller.
     //<#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];

@@ -120,6 +120,8 @@
     tableViewController.refreshControl = self.refreshControl;
     
     [self refreshData];
+    
+    SEND_GAI(@"ScheduleViewController");
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -559,6 +561,8 @@
                                                                                                       bundle:[NSBundle mainBundle]
                                                                                                      Program:program];
     [self.navigationController pushViewController:detailViewController animated:YES];
+    
+    SEND_GAI_EVENT(@"ScheduleViewController", [program objectForKey:@"slot"]);
 }
 
 /*
