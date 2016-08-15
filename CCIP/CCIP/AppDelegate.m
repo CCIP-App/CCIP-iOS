@@ -287,6 +287,8 @@
     
     // Save UserDefaults
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    SEND_GAI_EVENT(@"performActionForShortcutItem", shortcutItem.localizedTitle);
 }
 
 - (void)setDefaultShortcutItems {
