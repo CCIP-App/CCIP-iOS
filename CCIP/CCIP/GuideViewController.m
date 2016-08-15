@@ -68,7 +68,7 @@
 
 - (void)keyboardWillShow:(NSNotification *)note {
     if (self.view.frame.size.height <= 480) {
-        self.changePoint = CGPointMake(0, -130);
+        self.changePoint = CGPointMake(0, -165);
         
         CGRect guideMessageLabelFrame = self.guideMessageLabel.frame;
         guideMessageLabelFrame.origin.y += self.changePoint.y;
