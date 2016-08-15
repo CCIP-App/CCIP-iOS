@@ -52,12 +52,11 @@
     [UICKeyChainStore removeItemForKey:@"token"];
     [UICKeyChainStore setString:accessToken
                          forKey:@"token"];
-    
     [[AppDelegate appDelegate].oneSignal sendTag:@"token" value:accessToken];
+    [[AppDelegate appDelegate] setDefaultShortcutItems];
 }
 
-+ (NSString *)accessToken;
-{
++ (NSString *)accessToken {
     return [UICKeyChainStore stringForKey:@"token"];
 }
 
@@ -98,6 +97,7 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    [self setDefaultShortcutItems];
     NSLog(@"Receieved remote system fetching request...\nuserInfo => %@", userInfo);
     completionHandler(UIBackgroundFetchResultNewData);
 }
@@ -142,6 +142,7 @@
     [SBSLicense setAppKey:SCANDIT_APP_KEY];
     
     [self registerAppIconArt];
+    [self setDefaultShortcutItems];
     
     return YES;
 }
@@ -158,6 +159,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [self setDefaultShortcutItems];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -269,17 +271,107 @@
     if ([shortcutItem.type isEqualToString:@"Checkin"]) {
         mainTabBarViewIndex = 0;
         // TODO: switch to currect card
+        [[NSUserDefaults standardUserDefaults] setObject:shortcutItem.userInfo
+                                                  forKey:@"CheckinCard"];
     }
     else if ([shortcutItem.type isEqualToString:@"Schedule"]) {
         mainTabBarViewIndex = 1;
-        [[NSUserDefaults standardUserDefaults] setObject:shortcutItem.localizedTitle forKey:@"ScheduleIndexText"];
-        [[NSUserDefaults standardUserDefaults] setObject:shortcutItem.userInfo forKey:@"ScheduleData"];
+        [[NSUserDefaults standardUserDefaults] setObject:shortcutItem.localizedTitle
+                                                  forKey:@"ScheduleIndexText"];
+        [[NSUserDefaults standardUserDefaults] setObject:shortcutItem.userInfo
+                                                  forKey:@"ScheduleData"];
     }
     
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:mainTabBarViewIndex] forKey:@"MainTabBarViewIndex"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:mainTabBarViewIndex]
+                                              forKey:@"MainTabBarViewIndex"];
     
     // Save UserDefaults
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setDefaultShortcutItems {
+    static NSDateFormatter *formatter_full = nil;
+    if (formatter_full == nil) {
+        formatter_full = [NSDateFormatter new];
+        [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+        [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    }
+    
+    static NSDateFormatter *formatter_date = nil;
+    if (formatter_date == nil) {
+        formatter_date = [NSDateFormatter new];
+        [formatter_date setDateFormat:@"MM/dd"];
+    }
+    static NSDate *startTime;
+    static NSString *time_date;
+
+    GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS([AppDelegate accessToken])];
+    [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
+        if (json != nil) {
+            NSDictionary *scenarios = [json objectForKey:@"scenarios"];
+            GatewayWebService *program = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
+            [program sendRequest:^(NSArray *json, NSString *jsonStr) {
+                if (json != nil) {
+                    NSArray *programs = json;
+                    
+                    NSMutableDictionary *datesDict = [NSMutableDictionary new];
+                    for (NSDictionary *program in programs) {
+                        startTime = [formatter_full dateFromString:[program objectForKey:@"starttime"]];
+                        time_date = [formatter_date stringFromDate:startTime];
+                        
+                        NSMutableArray *tempArray = [datesDict objectForKey:time_date];
+                        if (tempArray == nil) {
+                            tempArray = [NSMutableArray new];
+                        }
+                        [tempArray addObject:program];
+                        [datesDict setObject:tempArray forKey:time_date];
+                    }
+                    
+                    NSMutableDictionary *program_date = datesDict;
+                    NSArray *segmentsTextArray = [[program_date allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+                    // UIApplicationShortcutIcon
+                    // UIApplicationShortcutItem
+                    if(NSClassFromString(@"UIApplicationShortcutItem")) {
+                        NSMutableArray *shortcutItems = [NSMutableArray new];
+                        
+                        for (NSDictionary *scenario in scenarios) {
+                            NSString *id = [scenario objectForKey:@"id"];
+                            if ([id rangeOfString:@"day" options:NSCaseInsensitiveSearch].length > 0) {
+                                NSTimeInterval available = [[NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] doubleValue]] timeIntervalSince1970];
+                                NSTimeInterval expire = [[NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] doubleValue]] timeIntervalSince1970];
+                                NSTimeInterval now = [[NSDate new] timeIntervalSince1970];
+                                if (([id rangeOfString:@"day1" options:NSCaseInsensitiveSearch].length > 0 && now <= expire) || (now >= available && now <= expire)) {
+                                    UIApplicationShortcutIconType iconType = [scenario objectForKey:@"used"] != nil
+                                        ? UIApplicationShortcutIconTypeTaskCompleted
+                                        : UIApplicationShortcutIconTypeTask;
+                                    [shortcutItems addObject:[[UIApplicationShortcutItem alloc] initWithType:@"Checkin"
+                                                                                              localizedTitle:NSLocalizedString(id, nil)
+                                                                                           localizedSubtitle:nil
+                                                                                                        icon:[UIApplicationShortcutIcon iconWithType:iconType]
+                                                                                                    userInfo:@{
+                                                                                                               @"key": id
+                                                                                                               }]];
+                                }
+                            }
+                        }
+                        
+                        for (NSString *dateText in segmentsTextArray) {
+                            [shortcutItems addObject:[[UIApplicationShortcutItem alloc] initWithType:@"Schedule"
+                                                                                      localizedTitle:dateText
+                                                                                   localizedSubtitle:@"議程"
+                                                                                                icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeDate]
+                                                                                            userInfo:@{
+                                                                                                       @"segmentsTextArray": segmentsTextArray,
+                                                                                                       @"program_date": program_date
+                                                                                                       }]];
+                        }
+                        
+                        [[UIApplication sharedApplication] setShortcutItems:shortcutItems];
+                    }
+                }
+            }];
+        }
+    }];
 }
 
 @end

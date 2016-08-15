@@ -122,6 +122,25 @@
     [self refreshData];
     
     SEND_GAI(@"ScheduleViewController");
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appplicationIsActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
+}
+
+- (void)goToSchedule {
+    __nullable id scheduleIndexTextObj = [[NSUserDefaults standardUserDefaults] objectForKey:@"ScheduleIndexText"];
+    if (scheduleIndexTextObj) {
+        NSString *scheduleIndexText = (NSString*)scheduleIndexTextObj;
+        [self setSegmentedAndTableWithText:scheduleIndexText];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ScheduleIndexText"];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)appplicationIsActive:(NSNotification *)notification {
+    [self goToSchedule];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -130,13 +149,7 @@
 
     [self setTableViewInset:self.tableView isInit:YES];
     
-    NSObject *scheduleIndexTextObj = [[NSUserDefaults standardUserDefaults] objectForKey:@"ScheduleIndexText"];
-    if (scheduleIndexTextObj) {
-        NSString *scheduleIndexText = (NSString*)scheduleIndexTextObj;
-        [self setSegmentedAndTableWithText:scheduleIndexText];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ScheduleIndexText"];
-    }
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self goToSchedule];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -333,43 +346,6 @@
     [self.segmentedControl resetAllSegments:self.segmentsTextArray];
     
     [self checkScheduleDate];
-    
-    // UIApplicationShortcutIcon
-    // UIApplicationShortcutItem
-    
-    if(NSClassFromString(@"UIApplicationShortcutItem")) {
-        NSMutableArray *shortcutItems = [NSMutableArray new];
-        
-        UIApplicationShortcutItem * shortcutItem;
-        shortcutItem = [[UIApplicationShortcutItem alloc] initWithType:@"Checkin"
-                                                        localizedTitle:@"day1 報到"
-                                                     localizedSubtitle:nil
-                                                                  icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeTaskCompleted]
-                                                              userInfo:nil];
-        [shortcutItems addObject:shortcutItem];
-        
-        shortcutItem = [[UIApplicationShortcutItem alloc] initWithType:@"Checkin"
-                                                        localizedTitle:@"day1 領便當"
-                                                     localizedSubtitle:nil
-                                                                  icon:[UIApplicationShortcutIcon iconWithType: UIApplicationShortcutIconTypeTask]
-                                                              userInfo:nil];
-        [shortcutItems addObject:shortcutItem];
-        
-        for (NSString *dateText in self.segmentsTextArray) {
-            UIApplicationShortcutItem * shortcutItem;
-            shortcutItem =[[UIApplicationShortcutItem alloc] initWithType:@"Schedule"
-                                                           localizedTitle:dateText
-                                                        localizedSubtitle:@"議程"
-                                                                     icon:[UIApplicationShortcutIcon iconWithType: UIApplicationShortcutIconTypeDate]
-                                                                 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                           self.segmentsTextArray, @"segmentsTextArray",
-                                                                           self.program_date, @"program_date",
-                                                                           nil]];
-            [shortcutItems addObject:shortcutItem];
-        }
-        
-        [UIApplication sharedApplication].shortcutItems = shortcutItems;
-    }
 }
 
 - (void)setSegmentedAndTableWithText:(NSString *)selectedSegmentText {

@@ -84,6 +84,7 @@
                     [self.checkinBtn setBackgroundColor:disabledColor];
                     
                     [[AppDelegate appDelegate].checkinView reloadCard];
+                    [[AppDelegate appDelegate] setDefaultShortcutItems];
                 }
             } else {
                 // Invalid Network
@@ -118,6 +119,7 @@
                                              }
                                          }];
                     } else {
+                        [[AppDelegate appDelegate] setDefaultShortcutItems];
                         [self updateScenario:[json objectForKey:@"scenarios"]];
                         [self showCountdown];
                         [self.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil) forState:UIControlStateNormal];

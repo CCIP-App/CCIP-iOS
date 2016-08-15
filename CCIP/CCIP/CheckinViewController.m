@@ -84,6 +84,11 @@
     self.navigationItem.titleView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(navSingleTap)];
     [self.navigationItem.titleView addGestureRecognizer:tapGesture];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appplicationIsActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -106,8 +111,11 @@
     [self closeBarcodePickerOverlay];
 }
 
-- (void)navSingleTap
-{
+- (void)appplicationIsActive:(NSNotification *)notification {
+    [self goToCard];
+}
+
+- (void)navSingleTap {
     //NSLog(@"navSingleTap");
     [self handleNavTapTimes];
 }
@@ -189,6 +197,31 @@
     }
 }
 
+- (void)goToCard {
+    if ([AppDelegate haveAccessToken]) {
+        __nullable id checkinCard = [[NSUserDefaults standardUserDefaults] objectForKey:@"CheckinCard"];
+        if (checkinCard) {
+            NSString *key = [checkinCard objectForKey:@"key"];
+            for (NSDictionary *item in self.scenarios) {
+                NSString *id = [item objectForKey:@"id"];
+                if ([id isEqualToString:key]) {
+                    unsigned long index = (unsigned long)[self.scenarios indexOfObject:item];
+                    NSLog(@"%lu", index);
+                    [self.cards scrollToItemAtIndex:index
+                                           animated:YES];
+                }
+            }
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"CheckinCard"];
+        }
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
+- (void)reloadAndGoToCard {
+    [self.cards reloadData];
+    [self goToCard];
+}
+
 - (void)reloadCard {
     [self handleQRButton];
 
@@ -199,7 +232,7 @@
         self.scenarios = [NSArray new];
         [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
                                                value:@""];
-        [self.cards reloadData];
+        [self reloadAndGoToCard];
     } else {
         [self hideGuideView];
         GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS([AppDelegate accessToken])];
@@ -211,7 +244,7 @@
                 self.scenarios = [json objectForKey:@"scenarios"];
                 [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
                                                        value:[json objectForKey:@"user_id"]];
-                [self.cards reloadData];
+                [self reloadAndGoToCard];
             } else {
                 // Invalid Network
                 [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg" sender:nil];

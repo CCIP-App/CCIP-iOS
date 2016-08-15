@@ -17,7 +17,6 @@
 "ActivityCenter" = "活動中心";
 "All" = "全部";
 "Hi" = "嗨！%@ 您好！";
-"day1checkin" = "第一天報到";
 "kit" = "迎賓袋";
 "lunch" = "午餐";
 "vipkit" = "獨家紀念品";
@@ -38,7 +37,9 @@
 "CONFIRM" = "確認使用";
 "Cancel" = "取消";
 "GotIt" = "明白了";
+"day1checkin" = "第一天報到";
 "day2checkin" = "第二天報到";
+"day1lunch" = "第一天午餐領取";
 "day2lunch" = "第二天午餐領取";
 "Addition" = "其他";
 "IRC" = "IRC 頻道";

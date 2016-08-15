@@ -17,7 +17,6 @@
 "ActivityCenter" = "Activity Center";
 "All" = "All";
 "Hi" = "Hi %@ !";
-"day1checkin" = "Day 1 Checkin";
 "kit" = "Welcome Kit";
 "lunch" = "Lunch";
 "vipkit" = "VIP Kit";
@@ -38,7 +37,9 @@
 "CONFIRM" = "CONFIRM";
 "Cancel" = "Cancel";
 "GotIt" = "Got it";
+"day1checkin" = "Day 1 Checkin";
 "day2checkin" = "Day 2 Checkin";
+"day1lunch" = "Day 1 Lunch";
 "day2lunch" = "Day 2 Lunch";
 "Addition" = "Addition";
 "IRC" = "IRC Channel";
