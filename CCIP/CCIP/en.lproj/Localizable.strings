@@ -65,3 +65,5 @@
 "ExpiredTitle" = "Already expired";
 "ExpiredMessage" = "T..o...o s..l.o..w .t..o cl..i.ck.. y..ou w.i..ll .cr..y";
 "ExpiredButtonOk" = "Crying";
+"Networking_Broken" = "Error while networking issues";
+"Networking_WrongWiFi" = "Please connect to the wifi provided by COSCUP";

@@ -39,7 +39,7 @@
 
 - (void)refreshData {
     GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
-    [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+    [program_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
         if (json != nil) {
             NSLog(@"%@", json);
             

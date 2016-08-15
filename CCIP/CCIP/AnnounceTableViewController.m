@@ -52,7 +52,7 @@
 
 - (void)refresh {
     GatewayWebService *annoounce_ws = [[GatewayWebService alloc] initWithURL:CC_ANNOUNCEMENT];
-    [annoounce_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+    [annoounce_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
         if (json != nil) {
             self.announceJsonArray = json;
             [self.announceTableView reloadData];

@@ -20,7 +20,7 @@ FOUNDATION_EXPORT const unsigned char GatewayWebServiceVersionString[];
 
 @interface GatewayWebService : NSObject<NSURLConnectionDataDelegate>
 
-typedef void(^ResponseDelegate)(id, NSString *);
+typedef void(^ResponseDelegate)(id, NSString *, NSURLResponse *);
 
 @property (strong, nonatomic) NSString *requestURL;
 

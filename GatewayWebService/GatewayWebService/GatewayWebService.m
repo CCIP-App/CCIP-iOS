@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSURLConnection *connection;
 @property (strong, nonatomic) NSData *requestData;
 @property (strong, nonatomic) ResponseDelegate response;
+@property (strong, nonatomic) NSURLResponse *responsed;
 @property (strong, nonatomic) NSMutableData *responseData;
 @property (strong, nonatomic) NSString *responseText;
 @property (strong, nonatomic) NSString *methodName;
@@ -194,6 +195,7 @@ NSUInteger FailedCount = 0;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    self.responsed = response;
     self.responseTimeStamp = [NSDate date];
     [self.responseData setLength:0];
 }
@@ -266,7 +268,7 @@ NSUInteger FailedCount = 0;
     }
     self.callbackTimeStamp = [NSDate date];
     [self.currentQueue addOperationWithBlock:^{
-        self.response(jsonData, jsonString);
+        self.response(jsonData, jsonString, self.responsed);
     }];
 }
 

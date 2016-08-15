@@ -306,11 +306,11 @@
     static NSString *time_date;
 
     GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS([AppDelegate accessToken])];
-    [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
+    [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
         if (json != nil) {
             NSDictionary *scenarios = [json objectForKey:@"scenarios"];
             GatewayWebService *program = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
-            [program sendRequest:^(NSArray *json, NSString *jsonStr) {
+            [program sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
                 if (json != nil) {
                     NSArray *programs = json;
                     

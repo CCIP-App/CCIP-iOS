@@ -28,7 +28,7 @@
     self.dataSource = self;
     
     GatewayWebService *sponsor_level_ws = [[GatewayWebService alloc] initWithURL:SPONSOR_LEVEL_URL];
-    [sponsor_level_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+    [sponsor_level_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
         if (json != nil) {
             self.sponsorLevelJsonArray = json;
             NSMutableArray *sponsorListArray = [[NSMutableArray alloc] init];
@@ -38,7 +38,7 @@
             }
             
             GatewayWebService *sponsor_list_ws = [[GatewayWebService alloc] initWithURL:SPONSOR_LIST_URL];
-            [sponsor_list_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+            [sponsor_list_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
                 if (json != nil) {
                     for (NSDictionary *sponsor in json) {
                         NSString *levelStr = [sponsor objectForKey:@"level"];

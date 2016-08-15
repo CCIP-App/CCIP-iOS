@@ -10,6 +10,9 @@
 
 @interface InvalidNetworkMessageViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
+
+- (void)setMessage:(NSString *)message;
 
 @end

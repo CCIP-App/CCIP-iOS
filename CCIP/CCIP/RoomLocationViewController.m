@@ -28,7 +28,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     GatewayWebService *roome_ws = [[GatewayWebService alloc] initWithURL:ROOM_DATA_URL];
-    [roome_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+    [roome_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
         if (json != nil) {
             NSLog(@"%@", json);
             self.rooms = json;
@@ -36,7 +36,7 @@
     }];
     
     GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
-    [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+    [program_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
         if (json != nil) {
             NSLog(@"%@", json);
             self.roomPrograms = json;

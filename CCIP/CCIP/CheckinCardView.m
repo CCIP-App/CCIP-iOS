@@ -55,7 +55,7 @@
     UIColor *disabledColor = [UIColor colorWithRed:155/255.0 green:155/255.0 blue:155/255.0 alpha:1];
     if ([self.id isEqualToString:@"day1checkin"] || [self.id isEqualToString:@"day2checkin"]) {
         GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE([AppDelegate accessToken], self.id)];
-        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
+        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
             if (json != nil) {
                 NSLog(@"%@", json);
                 [self setUsed:[NSNumber numberWithBool:YES]];
@@ -96,7 +96,7 @@
     } else {
         void (^use)(void) = ^{
             GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE([AppDelegate accessToken], self.id)];
-            [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
+            [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
                 if (json != nil) {
                     NSLog(@"%@", json);
                     [self setUsed:[NSNumber numberWithBool:YES]];

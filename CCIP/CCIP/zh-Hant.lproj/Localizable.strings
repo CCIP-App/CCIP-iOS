@@ -65,3 +65,5 @@
 "ExpiredTitle" = "早就不能按了";
 "ExpiredMessage" = "你太慢按了就只能哭哭了喔";
 "ExpiredButtonOk" = "哭哭";
+"Networking_Broken" = "網路連線異常";
+"Networking_WrongWiFi" = "請使用 COSCUP 提供的無線網路";

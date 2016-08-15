@@ -798,18 +798,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V4I-va-kvf">
-                                                        <rect key="frame" x="110" y="320" width="200" height="30"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="B3Q-cJ-8m1"/>
-                                                            <constraint firstAttribute="width" constant="200" id="NUg-LQ-bsV"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Hide"/>
-                                                        <connections>
-                                                            <action selector="clossView:" destination="tZ3-Ep-FUt" eventType="touchUpInside" id="hdo-SA-qui"/>
-                                                        </connections>
-                                                    </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="網路連線異常" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIm-YR-Ngz">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIm-YR-Ngz">
                                                         <rect key="frame" x="50" y="130" width="320" height="100"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="eJm-Mp-zrN"/>
@@ -829,6 +818,17 @@
                                                             </mask>
                                                         </variation>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V4I-va-kvf">
+                                                        <rect key="frame" x="110" y="320" width="200" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="B3Q-cJ-8m1"/>
+                                                            <constraint firstAttribute="width" constant="200" id="NUg-LQ-bsV"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Hide"/>
+                                                        <connections>
+                                                            <action selector="clossView:" destination="tZ3-Ep-FUt" eventType="touchUpInside" id="hdo-SA-qui"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="centerY" secondItem="XIm-YR-Ngz" secondAttribute="bottom" constant="60" id="98F-Jk-NVm"/>
@@ -870,6 +870,7 @@
                     <size key="freeformSize" width="420" height="600"/>
                     <connections>
                         <outlet property="closeButton" destination="V4I-va-kvf" id="nwf-gT-dRe"/>
+                        <outlet property="messageLabel" destination="XIm-YR-Ngz" id="Xzq-W4-IiW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RuT-hy-wjH" userLabel="First Responder" sceneMemberID="firstResponder"/>

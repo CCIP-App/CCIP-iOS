@@ -11,15 +11,20 @@
 @interface InvalidNetworkMessageViewController ()
 
 @property (readwrite, nonatomic) BOOL isRelayout;
+@property (strong, nonatomic) NSString *message;
 
 @end
 
 @implementation InvalidNetworkMessageViewController
 
+- (void)setMessage:(NSString *)message {
+    _message = message;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self.messageLabel setText:self.message];
     [self.view setAutoresizingMask:UIViewAutoresizingNone];
 }
 

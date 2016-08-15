@@ -126,7 +126,7 @@
     NSString *code = [self.redeemCodeText text];
     if ([code length] > 0) {
         GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_LANDING(code)];
-        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
+        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
             if (json != nil) {
                 NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
                 

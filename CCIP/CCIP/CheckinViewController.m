@@ -168,6 +168,9 @@
         self.statusViewController = (StatusViewController *)destination;
         [self.statusViewController setScenario:sender];
     }
+    if ([destination isMemberOfClass:[InvalidNetworkMessageViewController class]]) {
+        [((InvalidNetworkMessageViewController *)destination) setMessage:sender];
+    }
 }
 
 - (void)hideGuideView {
@@ -236,20 +239,36 @@
     } else {
         [self hideGuideView];
         GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS([AppDelegate accessToken])];
-        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
-            if (json != nil) {
-                NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
-                [userInfo removeObjectForKey:@"scenarios"];
-                self.userInfo = [NSDictionary dictionaryWithDictionary:userInfo];
-                self.scenarios = [json objectForKey:@"scenarios"];
-                [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
-                                                       value:[json objectForKey:@"user_id"]];
-                [self reloadAndGoToCard];
+        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
+            long statusCode = (long)[(NSHTTPURLResponse *)response statusCode];
+            if (statusCode >= 200) {
+                switch (statusCode) {
+                    case 200: {
+                        if (json != nil) {
+                            NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
+                            [userInfo removeObjectForKey:@"scenarios"];
+                            self.userInfo = [NSDictionary dictionaryWithDictionary:userInfo];
+                            self.scenarios = [json objectForKey:@"scenarios"];
+                            [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
+                                                                   value:[json objectForKey:@"user_id"]];
+                            [self reloadAndGoToCard];
+                        }
+                        break;
+                    }
+                    case 403: {
+                        [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg"
+                                                  sender:NSLocalizedString(@"Networking_WrongWiFi", nil)];
+                        break;
+                    }
+                    default:
+                        break;
+                }
             } else {
                 // Invalid Network
-                [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg" sender:nil];
-//                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
-//                [ac showAlert:nil];
+                [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg"
+                                          sender:NSLocalizedString(@"Networking_Broken", nil)];
+                //                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
+                //                [ac showAlert:nil];
             }
         }];
     }
@@ -302,7 +321,7 @@
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_LANDING(code.data)];
-        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr) {
+        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
             if (json != nil) {
                 NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
                 

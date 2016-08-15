@@ -25,7 +25,7 @@
     self.tableView.dataSource = self;
     
     GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:STAFF_DATA_URL];
-    [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+    [program_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
         if (json != nil) {
             self.staffJsonArray = json;
             [self.tableView reloadData];

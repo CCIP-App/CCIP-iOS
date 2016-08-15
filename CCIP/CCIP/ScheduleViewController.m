@@ -262,7 +262,7 @@
     self.refreshingCountDown = 3;
     
     GatewayWebService *roome_ws = [[GatewayWebService alloc] initWithURL:ROOM_DATA_URL];
-    [roome_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+    [roome_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
         if (json != nil) {
             self.rooms = json;
         }
@@ -270,7 +270,7 @@
     }];
     
     GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
-    [program_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+    [program_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
         if (json != nil) {
             self.programs = json;
             
@@ -280,7 +280,7 @@
     }];
     
     GatewayWebService *program_type_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_TYPE_DATA_URL];
-    [program_type_ws sendRequest:^(NSArray *json, NSString *jsonStr) {
+    [program_type_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
         if (json != nil) {
             self.program_types = json;
         }
