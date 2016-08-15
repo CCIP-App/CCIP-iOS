@@ -38,7 +38,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.shimmeringLogoView setShimmering:[AppDelegate isDevMode]];
+    [AppDelegate setDevLogo:self.shimmeringLogoView];
     
     NSURL *nsurl = self.webview.request.URL;
     if (nsurl == nil || [self.webview.request.URL.absoluteString isEqualToString:@""]) {

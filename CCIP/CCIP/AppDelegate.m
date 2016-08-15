@@ -72,6 +72,11 @@
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"DEV_MODE"];
 }
 
++ (void)setDevLogo:(FBShimmeringView *)sView {
+    [sView setShimmeringSpeed:115];
+    [sView setShimmering:[AppDelegate isDevMode]];
+}
+
 + (BOOL)haveAccessToken {
     return ([[AppDelegate accessToken] length] > 0) ? YES : NO;
 }

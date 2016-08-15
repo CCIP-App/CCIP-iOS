@@ -46,6 +46,8 @@
 
 - (void)displayGreetingsForLogin;
 
++ (void)setDevLogo:(FBShimmeringView *)sView;
+
 @end
 
 @interface UIView (AppDelegate)

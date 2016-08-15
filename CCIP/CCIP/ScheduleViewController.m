@@ -145,7 +145,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.shimmeringLogoView setShimmering:[AppDelegate isDevMode]];
+    [AppDelegate setDevLogo:self.shimmeringLogoView];
 
     [self setTableViewInset:self.tableView isInit:YES];
     
