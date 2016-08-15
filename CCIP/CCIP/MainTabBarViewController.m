@@ -14,11 +14,8 @@
 #import "MoreTableViewController.h"
 #import "AppDelegate.h"
 #import <UICKeyChainStore/UICKeyChainStore.h>
-#import <Shimmer/FBShimmeringView.h>
 
 @interface MainTabBarViewController ()
-
-@property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
 
 @end
 

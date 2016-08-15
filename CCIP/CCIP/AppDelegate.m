@@ -7,6 +7,7 @@
 //
 
 #import <UICKeyChainStore/UICKeyChainStore.h>
+#import <ScanditBarcodeScanner/ScanditBarcodeScanner.h>
 #import <iRate/iRate.h>
 #import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
