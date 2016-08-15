@@ -23,4 +23,4 @@
 
 #define STAFF_DATA_URL          (@"https://staff.coscup.org/api/staffgroups/?format=json")
 
-#define LOG_BOT_URL             (@"https://logbot.g0v.tw/channel/coscup/today")
+#define LOG_BOT_URL             (@"https://ysitd.licson.net/channel/coscup/today")

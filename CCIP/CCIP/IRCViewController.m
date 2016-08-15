@@ -14,8 +14,6 @@
 
 @property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
 
-@property (strong, nonatomic) UIRefreshControl *refreshControl;
-
 @end
 
 @implementation IRCViewController
@@ -32,27 +30,27 @@
     SEND_GAI(@"IRCView");
     
     [self.webview setDelegate:self];
-    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
     
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self
-                            action:@selector(refresh)
-                  forControlEvents:UIControlEventValueChanged];
-    [self.webview.scrollView addSubview:self.refreshControl];
-    
-    [self refresh];
-    [self.refreshControl beginRefreshing];
+    self.goBackButton.enabled = NO;
+    self.goForwardButton.enabled = NO;
+    self.goReloadButton.enabled = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.shimmeringLogoView setShimmering:[AppDelegate isDevMode]];
-
+    
+    NSURL *nsurl = self.webview.request.URL;
+    if (nsurl == nil || [self.webview.request.URL.absoluteString isEqualToString:@""]) {
+        nsurl = [NSURL URLWithString:LOG_BOT_URL];
+        NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
+        [self.webview loadRequest:requestObj];
+    }
 }
 
-- (void)refresh {
+- (IBAction)reload:(id)sender {
     NSURL *nsurl = self.webview.request.URL;
-    if (nsurl == nil || [nsurl.absoluteString isEqualToString:@"about:blank"]) {
+    if (nsurl == nil || [self.webview.request.URL.absoluteString isEqualToString:@""]) {
         nsurl = [NSURL URLWithString:LOG_BOT_URL];
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
         [self.webview loadRequest:requestObj];
@@ -62,18 +60,25 @@
     }
 }
 
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    [self checkButtonStatus];
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSURL *nsurl = self.webview.request.URL;
-    if (![nsurl.absoluteString isEqualToString:@"about:blank"]) {
-        [self.refreshControl endRefreshing];
-    }
+    [self checkButtonStatus];
 }
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    [self.refreshControl endRefreshing];
+    [self checkButtonStatus];
 }
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+- (void)checkButtonStatus {
+    self.goReloadButton.enabled = self.webview.isLoading ? NO : YES;
+    self.goForwardButton.enabled = self.webview.canGoForward ? YES : NO;
+    self.goBackButton.enabled = self.webview.canGoBack ? YES : NO;
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     if (navigationType == UIWebViewNavigationTypeLinkClicked) {
         NSURL *url = request.URL;
         

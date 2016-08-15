@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Status View Controller-->
@@ -561,8 +562,29 @@
                             <constraint firstItem="zNX-Qf-BUg" firstAttribute="centerX" secondItem="Bze-6z-kJu" secondAttribute="centerX" id="xAx-4y-2l0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="e0c-cS-PdU"/>
+                    <navigationItem key="navigationItem" id="e0c-cS-PdU">
+                        <leftBarButtonItems>
+                            <barButtonItem image="BarButton-Back.png" id="LYt-uw-n29">
+                                <connections>
+                                    <action selector="goBack" destination="zNX-Qf-BUg" id="hNA-BG-Gch"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="BarButton-Forward.png" id="RKl-Kp-YRu">
+                                <connections>
+                                    <action selector="goForward" destination="zNX-Qf-BUg" id="rx5-Au-qpx"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="zI6-me-UXE">
+                            <connections>
+                                <action selector="reload:" destination="Oqq-Rn-AVL" id="vts-de-isR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="goBackButton" destination="LYt-uw-n29" id="y8K-Ic-Dsx"/>
+                        <outlet property="goForwardButton" destination="RKl-Kp-YRu" id="9ph-cj-Lo8"/>
+                        <outlet property="goReloadButton" destination="zI6-me-UXE" id="f8s-nI-Qns"/>
                         <outlet property="webview" destination="zNX-Qf-BUg" id="5NM-Ng-b7l"/>
                     </connections>
                 </viewController>
@@ -879,6 +901,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BarButton-Back.png" width="22" height="22"/>
+        <image name="BarButton-Forward.png" width="22" height="22"/>
         <image name="icon_ios_bell.png" width="25" height="25"/>
         <image name="icon_ios_chat.png" width="25" height="25"/>
         <image name="icon_ios_more.png" width="25" height="25"/>

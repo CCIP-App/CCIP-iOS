@@ -12,5 +12,10 @@
 @interface IRCViewController : UIViewController <UIWebViewDelegate, SFSafariViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *goBackButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *goForwardButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *goReloadButton;
+
+- (IBAction)reload:(id)sender;
 
 @end
