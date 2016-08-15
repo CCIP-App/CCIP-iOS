@@ -12,13 +12,12 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    float width = [UIScreen mainScreen].applicationFrame.size.width;
+//    float width = [UIScreen mainScreen].applicationFrame.size.width;
 //    self.msg.preferredMaxLayoutWidth = width - 60;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
