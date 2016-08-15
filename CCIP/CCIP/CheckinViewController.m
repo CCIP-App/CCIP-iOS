@@ -112,7 +112,7 @@
 }
 
 - (void)appplicationIsActive:(NSNotification *)notification {
-    [self goToCard];
+    [self reloadCard];
 }
 
 - (void)navSingleTap {
