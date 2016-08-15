@@ -59,12 +59,7 @@
 		28A7C56D1D6032680079BB12 /* MainNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C56C1D6032680079BB12 /* MainNavViewController.m */; };
 		28A7C5761D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5751D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m */; };
 		28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */; };
-		28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */; };
-		28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */; };
 		28AFCF141D5DD9CA00413927 /* AcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AFCF131D5DD9CA00413927 /* AcknowledgementsViewController.m */; };
-		28B34BBF1D3EB22E002B959D /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B34BBE1D3EB22E002B959D /* CAPSPageMenu.m */; };
-		28C22A541D3178A9004A6575 /* ProgramDetailPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C22A531D3178A9004A6575 /* ProgramDetailPopViewController.m */; };
-		28ED8C7A1D31DC1F00BC47E0 /* ShareProgramTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED8C791D31DC1F00BC47E0 /* ShareProgramTableViewController.m */; };
 		5F0E55D01D574F7F004664FB /* SponsorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0E55CE1D574F7F004664FB /* SponsorTableViewCell.m */; };
 		5F0E55D11D574F7F004664FB /* SponsorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F0E55CF1D574F7F004664FB /* SponsorTableViewCell.xib */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
@@ -123,8 +118,6 @@
 		6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F9E441D4D142700047F38 /* CheckinCardView.m */; };
 		6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
 		6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
-		6B7142B61D1DBAFB0024EA45 /* scenarioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */; };
-		6B7142B71D1DBAFB0024EA45 /* scenarioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */; };
 		6B9117081D4EFC2600537ABE /* ScheduleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */; };
 		6B9117091D4EFC2600537ABE /* ScheduleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9117071D4EFC2600537ABE /* ScheduleViewCell.xib */; };
 		6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */; };
@@ -220,18 +213,8 @@
 		28A7C5751D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmbeddedNavigationControllerSegue.m; sourceTree = "<group>"; };
 		28ACA99F1D5E92AD002A6419 /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
 		28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
-		28AF9A7C1D28A40A006B378E /* RoomLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomLocationViewController.h; sourceTree = "<group>"; };
-		28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomLocationViewController.m; sourceTree = "<group>"; };
-		28AF9A8F1D28A6E9006B378E /* RoomProgramsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomProgramsTableViewController.h; sourceTree = "<group>"; };
-		28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomProgramsTableViewController.m; sourceTree = "<group>"; };
 		28AFCF121D5DD9CA00413927 /* AcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgementsViewController.h; sourceTree = "<group>"; };
 		28AFCF131D5DD9CA00413927 /* AcknowledgementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcknowledgementsViewController.m; sourceTree = "<group>"; };
-		28B34BBD1D3EB22E002B959D /* CAPSPageMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPSPageMenu.h; sourceTree = "<group>"; };
-		28B34BBE1D3EB22E002B959D /* CAPSPageMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPSPageMenu.m; sourceTree = "<group>"; };
-		28C22A521D3178A9004A6575 /* ProgramDetailPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramDetailPopViewController.h; sourceTree = "<group>"; };
-		28C22A531D3178A9004A6575 /* ProgramDetailPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramDetailPopViewController.m; sourceTree = "<group>"; };
-		28ED8C781D31DC1F00BC47E0 /* ShareProgramTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareProgramTableViewController.h; sourceTree = "<group>"; };
-		28ED8C791D31DC1F00BC47E0 /* ShareProgramTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareProgramTableViewController.m; sourceTree = "<group>"; };
 		5F0E55CD1D574F7F004664FB /* SponsorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorTableViewCell.h; sourceTree = "<group>"; };
 		5F0E55CE1D574F7F004664FB /* SponsorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorTableViewCell.m; sourceTree = "<group>"; };
 		5F0E55CF1D574F7F004664FB /* SponsorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorTableViewCell.xib; sourceTree = "<group>"; };
@@ -309,9 +292,6 @@
 		6B2F9E441D4D142700047F38 /* CheckinCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinCardView.m; sourceTree = "<group>"; };
 		6B2F9E461D4D18F100047F38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreenIcon@3x.png"; sourceTree = "<group>"; };
-		6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scenarioCell.h; sourceTree = "<group>"; };
-		6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scenarioCell.m; sourceTree = "<group>"; };
-		6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = scenarioCell.xib; sourceTree = "<group>"; };
 		6B9117051D4EFC2600537ABE /* ScheduleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewCell.h; sourceTree = "<group>"; };
 		6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewCell.m; sourceTree = "<group>"; };
 		6B9117071D4EFC2600537ABE /* ScheduleViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleViewCell.xib; sourceTree = "<group>"; };
@@ -499,7 +479,6 @@
 				6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */,
 				6B9117071D4EFC2600537ABE /* ScheduleViewCell.xib */,
 				288164E91D4F3004005C68EA /* ProgramDetailView */,
-				288164E81D4F2FDD005C68EA /* OldCode */,
 			);
 			name = ScheduleTab;
 			sourceTree = "<group>";
@@ -513,23 +492,6 @@
 				5FD0498B1D5B041800E7CEAD /* AnnounceTableViewCell.m */,
 			);
 			name = AnnounceTab;
-			sourceTree = "<group>";
-		};
-		288164E81D4F2FDD005C68EA /* OldCode */ = {
-			isa = PBXGroup;
-			children = (
-				28B34BBD1D3EB22E002B959D /* CAPSPageMenu.h */,
-				28B34BBE1D3EB22E002B959D /* CAPSPageMenu.m */,
-				28AF9A7C1D28A40A006B378E /* RoomLocationViewController.h */,
-				28AF9A7D1D28A40A006B378E /* RoomLocationViewController.m */,
-				28AF9A8F1D28A6E9006B378E /* RoomProgramsTableViewController.h */,
-				28AF9A901D28A6E9006B378E /* RoomProgramsTableViewController.m */,
-				28C22A521D3178A9004A6575 /* ProgramDetailPopViewController.h */,
-				28C22A531D3178A9004A6575 /* ProgramDetailPopViewController.m */,
-				28ED8C781D31DC1F00BC47E0 /* ShareProgramTableViewController.h */,
-				28ED8C791D31DC1F00BC47E0 /* ShareProgramTableViewController.m */,
-			);
-			name = OldCode;
 			sourceTree = "<group>";
 		};
 		288164E91D4F3004005C68EA /* ProgramDetailView */ = {
@@ -564,16 +526,6 @@
 				2823E8E61D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib */,
 			);
 			name = SpeakerIntroView;
-			sourceTree = "<group>";
-		};
-		288164EC1D4F3083005C68EA /* OldCode */ = {
-			isa = PBXGroup;
-			children = (
-				6B7142B31D1DBAFB0024EA45 /* scenarioCell.h */,
-				6B7142B41D1DBAFB0024EA45 /* scenarioCell.m */,
-				6B7142B51D1DBAFB0024EA45 /* scenarioCell.xib */,
-			);
-			name = OldCode;
 			sourceTree = "<group>";
 		};
 		288D3A731D599A1200E4E3A6 /* ScanditSDK */ = {
@@ -704,7 +656,6 @@
 				286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */,
 				6BE250201D3133FC005FB4B2 /* GuideViewController.h */,
 				6BE250211D3133FC005FB4B2 /* GuideViewController.m */,
-				288164EC1D4F3083005C68EA /* OldCode */,
 			);
 			path = CCIP;
 			sourceTree = "<group>";
@@ -832,7 +783,6 @@
 				5FB4D47D1D3A8DF6005BF382 /* icon_ios_bell@3x.png in Resources */,
 				6B11BE821D4CBC9300B87EA9 /* Main.storyboard in Resources */,
 				5FB4D4681D3A8706005BF382 /* icon_ios_chat@3x.png in Resources */,
-				6B7142B71D1DBAFB0024EA45 /* scenarioCell.xib in Resources */,
 				5F91712A1D325B5E000D0F66 /* StaffView.xib in Resources */,
 				2839BF391D4C97AB0062F36D /* Star_Filled@2x.png in Resources */,
 				288D3AA21D59AB4800E4E3A6 /* QR_Code_Filled.png in Resources */,
@@ -918,16 +868,12 @@
 				5FB4D48F1D3B242C005BF382 /* MoreCell.m in Sources */,
 				5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */,
 				5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */,
-				28AF9A911D28A6E9006B378E /* RoomProgramsTableViewController.m in Sources */,
 				28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */,
-				28ED8C7A1D31DC1F00BC47E0 /* ShareProgramTableViewController.m in Sources */,
 				6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */,
 				6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */,
 				28A2992D1D3B90C000145E76 /* ScheduleViewController.m in Sources */,
 				5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */,
-				28AF9A7E1D28A40A006B378E /* RoomLocationViewController.m in Sources */,
 				5FF2B11E1D28B19600665DD9 /* IRCViewController.m in Sources */,
-				6B7142B61D1DBAFB0024EA45 /* scenarioCell.m in Sources */,
 				2823E8E71D3E560C0039D72E /* ProgramSpeakerIntroViewController.m in Sources */,
 				5FD049891D5AFB9D00E7CEAD /* AnnounceTableViewController.m in Sources */,
 				28A7C5761D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m in Sources */,
@@ -937,9 +883,7 @@
 				6BD8EF2C1D1D73510094BE95 /* main.m in Sources */,
 				6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */,
 				28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */,
-				28C22A541D3178A9004A6575 /* ProgramDetailPopViewController.m in Sources */,
 				28A7C56D1D6032680079BB12 /* MainNavViewController.m in Sources */,
-				28B34BBF1D3EB22E002B959D /* CAPSPageMenu.m in Sources */,
 				5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */,
 				5FECE5AC1D352E8A00242DB4 /* StaffGroupTableViewController.m in Sources */,
 				5F8B2D2A1D55E02200A68C7D /* SponsorTableView.m in Sources */,
