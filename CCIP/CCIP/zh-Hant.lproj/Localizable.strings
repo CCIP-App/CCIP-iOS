@@ -67,5 +67,6 @@
 "ExpiredTitle" = "錯誤訊息";
 "ExpiredMessage" = "已超過使用的期限";
 "ExpiredButtonOk" = "知道了";
+"ExpiredOrNotAvailable" = "已過期或尚未開放使用";
 "Networking_Broken" = "網路連線異常";
 "Networking_WrongWiFi" = "請連上 COSCUP 提供的無線網路，才能使用";

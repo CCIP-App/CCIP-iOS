@@ -19,6 +19,8 @@
 
 @interface CheckinViewController()
 
+@property (readwrite, nonatomic) BOOL firstLoad;
+
 @property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
 
 @property (strong, nonatomic) IBOutlet iCarousel *cards;
@@ -47,6 +49,7 @@
     [super viewDidLoad];
     
     [[AppDelegate appDelegate] setCheckinView:self];
+    self.firstLoad = YES;
     
     // set logo on nav title
     UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
@@ -215,6 +218,13 @@
                 }
             }
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"CheckinCard"];
+        } else {
+            // force scroll to first selected item at first load
+            if ([self.cards numberOfItems] > 0 && self.firstLoad) {
+                self.firstLoad = NO;
+                [self.cards scrollToItemAtIndex:0
+                                       animated:YES];
+            }
         }
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
