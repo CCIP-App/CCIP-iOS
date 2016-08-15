@@ -255,6 +255,21 @@
                         }
                         break;
                     }
+                    case 400: {
+                        if (json != nil) {
+                            if ([[json objectForKey:@"message"] isEqual:@"invalid token"]) {
+                                NSLog(@"%@", [json objectForKey:@"message"]);
+                                
+                                [AppDelegate setAccessToken:@""];
+                                
+                                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"InvalidTokenAlert", nil) withMessage:NSLocalizedString(@"InvalidTokenAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:^(UIAlertAction *action) {
+                                    [self reloadCard];
+                                }];
+                                [ac showAlert:nil];
+                            }
+                        }
+                        break;
+                    }
                     case 403: {
                         [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg"
                                                   sender:NSLocalizedString(@"Networking_WrongWiFi", nil)];

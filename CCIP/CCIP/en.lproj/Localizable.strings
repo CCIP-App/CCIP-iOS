@@ -59,6 +59,8 @@
 "StatusNotice" = "Please stay in this screen for staffs to validate your ticket, thank you!";
 "NetworkAlert" = "Please connect to the network of chamber";
 "NetworkAlertDesc" = "Perform check in when connecting to the network of chamber only";
+"InvalidTokenAlert" = "InvalidTokenAlert";
+"InvalidTokenTokenDesc" = "InvalidTokenTokenDesc";
 "NotAvailableTitle" = "Cannot click at now";
 "NotAvailableMessage" = "You will be G__G before we activate";
 "NotAvailableButtonOk" = "Okay";

@@ -59,6 +59,8 @@
 "StatusNotice" = "請停留在此畫面\n給工作人員確認，謝謝！";
 "NetworkAlert" = "請連至會場網路";
 "NetworkAlertDesc" = "只有在連線到會場網路時，才可使用報到功能";
+"InvalidTokenAlert" = "InvalidTokenAlert";
+"InvalidTokenTokenDesc" = "InvalidTokenTokenDesc";
 "NotAvailableTitle" = "現在不能按喔";
 "NotAvailableMessage" = "提早太多按了你就會杯具了";
 "NotAvailableButtonOk" = "好喔";
