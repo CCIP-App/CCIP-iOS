@@ -247,7 +247,6 @@
                                                value:@""];
         [self reloadAndGoToCard];
     } else {
-        [self hideGuideView];
         GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS([AppDelegate accessToken])];
         [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
             long statusCode = (long)[(NSHTTPURLResponse *)response statusCode];
@@ -255,6 +254,7 @@
                 switch (statusCode) {
                     case 200: {
                         if (json != nil) {
+                            [self hideGuideView];
                             NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
                             [userInfo removeObjectForKey:@"scenarios"];
                             self.userInfo = [NSDictionary dictionaryWithDictionary:userInfo];

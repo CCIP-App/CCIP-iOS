@@ -50,7 +50,7 @@
     [self handleShortcutItem];
 }
 
--(void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self handleShortcutItem];
 }
