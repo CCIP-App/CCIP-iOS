@@ -76,11 +76,11 @@
             if (![AppDelegate isDevMode]) {
                 NSLog(@"-- Enable DEV_MODE --");
                 [AppDelegate setIsDevMode: YES];
-                [self.shimmeringLogoView setShimmering:YES];
+                [AppDelegate setDevLogo:self.shimmeringLogoView];
             } else {
                 NSLog(@"-- Disable DEV_MODE --");
                 [AppDelegate setIsDevMode:NO];
-                [self.shimmeringLogoView setShimmering:NO];
+                [AppDelegate setDevLogo:self.shimmeringLogoView];
             }
         }
     }

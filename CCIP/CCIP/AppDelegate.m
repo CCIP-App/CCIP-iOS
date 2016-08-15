@@ -10,6 +10,8 @@
 #import <ScanditBarcodeScanner/ScanditBarcodeScanner.h>
 #import <iRate/iRate.h>
 #import "UIAlertController+additional.h"
+#import "UIImage+addition.h"
+#import "UIColor+addition.h"
 #import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import "GuideViewController.h"
@@ -73,8 +75,15 @@
 }
 
 + (void)setDevLogo:(FBShimmeringView *)sView {
+    BOOL isDevMode = [AppDelegate isDevMode];
+    if (isDevMode) {
+        UIImage *image = [(UIImageView *)[sView contentView] image];
+        [((UIImageView *)[sView contentView]) setImage:[image imageWithColor:[UIColor colorFromHtmlColor:@"#f2a900"]]];
+    } else {
+        [((UIImageView *)[sView contentView]) setImage:[UIImage imageNamed:@"coscup-logo"]];
+    }
     [sView setShimmeringSpeed:115];
-    [sView setShimmering:[AppDelegate isDevMode]];
+    [sView setShimmering:isDevMode];
 }
 
 + (BOOL)haveAccessToken {
