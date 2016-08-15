@@ -13,6 +13,7 @@
 #import "GuideViewController.h"
 
 #define ONE_SIGNAL_APP_TOKEN        (@"a429ff30-5c0e-4584-a32f-b866ba88c947")
+#define SCANDIT_APP_KEY             (@"2BXy4CfQi9QFc12JnjId7mHH58SdYzNC90Uo07luUUY")
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
@@ -135,10 +136,10 @@
     [self.oneSignal enableInAppAlertNotification:YES];
 
     [AppDelegate setAccessToken:[UICKeyChainStore stringForKey:@"token"]];
-    NSLog(@"Token: <%@>", [AppDelegate accessToken]);
+    NSLog(@"User Token: <%@>", [AppDelegate accessToken]);
     
     // Provide the app key for your scandit license.
-    [SBSLicense setAppKey:@"2BXy4CfQi9QFc12JnjId7mHH58SdYzNC90Uo07luUUY"];
+    [SBSLicense setAppKey:SCANDIT_APP_KEY];
     
     [self registerAppIconArt];
     
@@ -267,6 +268,7 @@
     NSInteger mainTabBarViewIndex = 0;
     if ([shortcutItem.type isEqualToString:@"Checkin"]) {
         mainTabBarViewIndex = 0;
+        // TODO: switch to currect card
     }
     else if ([shortcutItem.type isEqualToString:@"Schedule"]) {
         mainTabBarViewIndex = 1;
