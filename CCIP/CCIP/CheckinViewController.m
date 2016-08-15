@@ -261,6 +261,9 @@
                             self.scenarios = [json objectForKey:@"scenarios"];
                             [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
                                                                    value:[json objectForKey:@"user_id"]];
+                            if ([AppDelegate appDelegate].isLoginSession) {
+                                [[AppDelegate appDelegate] displayGreetingsForLogin];
+                            }
                             [self reloadAndGoToCard];
                         }
                         break;

@@ -34,6 +34,7 @@
 "UseButton" = "USE";
 "UseButtonPressed" = "USED";
 "ConfirmAlertText" = "Ready to use with staff's instruction?";
+"Okay" = "Okay";
 "CONFIRM" = "CONFIRM";
 "Cancel" = "Cancel";
 "GotIt" = "Got it";
@@ -70,3 +71,4 @@
 "ExpiredOrNotAvailable" = "Expired or not available";
 "Networking_Broken" = "Error while networking issues";
 "Networking_WrongWiFi" = "Please connect to the wifi provided by COSCUP";
+"LoginGreeting" = "Hi %@, You have been successfully logged in COSCUP Pass!";

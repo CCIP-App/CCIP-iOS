@@ -34,6 +34,7 @@
 "UseButton" = "使用";
 "UseButtonPressed" = "已領取";
 "ConfirmAlertText" = "是否已聽從工作人員的指示？";
+"Okay" = "確定";
 "CONFIRM" = "確認使用";
 "Cancel" = "取消";
 "GotIt" = "明白了";
@@ -70,3 +71,4 @@
 "ExpiredOrNotAvailable" = "已過期或尚未開放使用";
 "Networking_Broken" = "網路連線異常";
 "Networking_WrongWiFi" = "請連上 COSCUP 提供的無線網路，才能使用";
+"LoginGreeting" = "嗨 %@, 您已成功登入 COSCUP Pass！";

@@ -9,6 +9,7 @@
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import <ScanditBarcodeScanner/ScanditBarcodeScanner.h>
 #import <iRate/iRate.h>
+#import "UIAlertController+additional.h"
 #import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import "GuideViewController.h"
@@ -18,6 +19,7 @@
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
+@property (readwrite, nonatomic) BOOL isLoginSession;
 @property (strong, readwrite, nonatomic) OneSignal *oneSignal;
 @property (strong, readwrite, nonatomic) SLColorArt *appArt;
 
@@ -74,6 +76,16 @@
     return ([[AppDelegate accessToken] length] > 0) ? YES : NO;
 }
 
+- (void)displayGreetingsForLogin {
+    [self setIsLoginSession:NO];
+    UIAlertController *ac = [UIAlertController alertOfTitle:@""
+                                                withMessage:[NSString stringWithFormat:NSLocalizedString(@"LoginGreeting", nil), [self.userInfo objectForKey:@"user_id"]]
+                                           cancelButtonText:NSLocalizedString(@"Okay", nil)
+                                                cancelStyle:UIAlertActionStyleDestructive
+                                               cancelAction:nil];
+    [ac showAlert:nil];
+}
+
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation {
     if (url != nil) {
         NSLog(@"Calling from URL: %@", url);
@@ -86,7 +98,7 @@
                 if ([elts count] < 2) continue;
                 [params setObject:[elts objectAtIndex:1] forKey:[elts objectAtIndex:0]];
             }
-
+            [[AppDelegate appDelegate] setIsLoginSession:YES];
             [AppDelegate setAccessToken:[params objectForKey:@"token"]];
             
             if (self.checkinView != nil) {
@@ -105,7 +117,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    [self setIsLoginSession:NO];
     // Configure tracker from GoogleService-Info.plist.
     NSError *configureError;
     [[GGLContext sharedInstance] configureWithError:&configureError];

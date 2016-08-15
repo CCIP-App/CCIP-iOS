@@ -29,6 +29,7 @@
 @property (strong, readonly, nonatomic) OneSignal * _Null_unspecified oneSignal;
 @property (strong, readonly, nonatomic) SLColorArt * _Null_unspecified appArt;
 @property (strong, nonatomic) NSDictionary * _Null_unspecified userInfo;
+@property (readonly, nonatomic) BOOL isLoginSession;
 @property (strong, nonatomic) CheckinViewController * _Null_unspecified checkinView;
 
 + (AppDelegate * _Nonnull)appDelegate;
@@ -42,6 +43,8 @@
 + (BOOL)haveAccessToken;
 + (void)setAccessToken:(NSString * _Null_unspecified)accessToken;
 + (NSString * _Null_unspecified)accessToken;
+
+- (void)displayGreetingsForLogin;
 
 @end
 
