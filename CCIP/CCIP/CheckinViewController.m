@@ -469,12 +469,13 @@
         // Init cardRect
         // x 0, y 0, left 30, up 40, right 30, bottom 50
         // self.cards.contentOffset = CGSizeMake(0, -5.0f); // set in viewDidLoad
-        cardRect = CGRectMake(0, 0, self.cards.bounds.size.width - 30*2, self.cards.bounds.size.height - 40 - 50);
+        // 414 736
+        cardRect = CGRectMake(0, 0, self.cards.bounds.size.width / 14 * (14-2), self.cards.bounds.size.height / 15.5 * (15.5-2) - 10);
         
         // Init configure pageControl
         CGRect pageControlFrame = self.pageControl.frame;
         self.pageControl.frame = CGRectMake(self.view.frame.size.width / 2 ,
-                                            (self.cards.frame.size.height + (self.cards.frame.size.height - 50)) / 2,
+                                            (self.cards.frame.size.height + (self.cards.bounds.size.height / 15.5 * (15.5-1) - 10)) / 2,
                                             pageControlFrame.size.width,
                                             pageControlFrame.size.height);
     }
