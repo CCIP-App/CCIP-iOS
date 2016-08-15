@@ -58,93 +58,93 @@
     NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[self.scenario objectForKey:@"available_time"] integerValue]];
     NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[self.scenario objectForKey:@"expire_time"] integerValue]];
     NSDate *nowTime = [NSDate new];
-    if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
-        // IN TIME
-        BOOL isCheckin = [self.id isEqualToString:@"day1checkin"] || [self.id isEqualToString:@"day2checkin"];
-        __block GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE([AppDelegate accessToken], self.id)];
-        void (^use)(void) = ^{
-            [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
-                if (json != nil) {
-                    NSLog(@"%@", json);
-                    [self setUsed:[NSNumber numberWithBool:YES]];
-                    if ([[json objectForKey:@"message"] isEqual:@"invalid token"]) {
-                        NSLog(@"%@", [json objectForKey:@"message"]);
-                        [self.checkinBtn setBackgroundColor:[UIColor redColor]];
-                    } else if ([[json objectForKey:@"message"] isEqual:@"has been used"]) {
-                        [self showCountdown];
-                        NSLog(@"%@", [json objectForKey:@"message"]);
-                        [UIView animateWithDuration:.25f
-                                         animations:^{
-                                             [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
+    BOOL isCheckin = [self.id isEqualToString:@"day1checkin"] || [self.id isEqualToString:@"day2checkin"];
+    __block GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE([AppDelegate accessToken], self.id)];
+    void (^use)(void) = ^{
+        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
+            if (json != nil) {
+                NSLog(@"%@", json);
+                [self setUsed:[NSNumber numberWithBool:YES]];
+                if ([[json objectForKey:@"message"] isEqual:@"invalid token"]) {
+                    NSLog(@"%@", [json objectForKey:@"message"]);
+                    [self.checkinBtn setBackgroundColor:[UIColor redColor]];
+                } else if ([[json objectForKey:@"message"] isEqual:@"has been used"]) {
+                    [self showCountdown];
+                    NSLog(@"%@", [json objectForKey:@"message"]);
+                    [UIView animateWithDuration:.25f
+                                     animations:^{
+                                         [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
+                                     }
+                                     completion:^(BOOL finished) {
+                                         if (finished) {
+                                             [UIView animateWithDuration:1.75f
+                                                              animations:^{
+                                                                  [self.checkinBtn setBackgroundColor:disabledColor];
+                                                              }];
                                          }
-                                         completion:^(BOOL finished) {
-                                             if (finished) {
-                                                 [UIView animateWithDuration:1.75f
-                                                                  animations:^{
-                                                                      [self.checkinBtn setBackgroundColor:disabledColor];
-                                                                  }];
-                                             }
-                                         }];
-                    } else if ([[json objectForKey:@"message"] isEqual:@"link expired/not available now"]) {
-                        NSLog(@"%@", [json objectForKey:@"message"]);
-                        [UIView animateWithDuration:.25f
-                                         animations:^{
-                                             [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
-                                             [self.checkinBtn setTitle:NSLocalizedString(@"ExpiredOrNotAvailable", nil)
-                                                              forState:UIControlStateNormal];
-                                         }
-                                         completion:^(BOOL finished) {
-                                             if (finished) {
-                                                 [UIView animateWithDuration:1.75f
-                                                                  animations:^{
-                                                                      [self.checkinBtn setBackgroundColor:defaultColor];
-                                                                  }
-                                                                  completion:^(BOOL finished) {
-                                                                      if (finished) {
-                                                                          [UIView animateWithDuration:.25f
-                                                                                           animations:^{
-                                                                                               [self.checkinBtn setTitle:NSLocalizedString(isCheckin ? @"CheckinViewButton" : @"UseButton", nil)
-                                                                                                                forState:UIControlStateNormal];
-                                                                                           }];
-                                                                      }
-                                                                  }];
-                                             }
-                                         }];
-                    } else {
-                        [self updateScenario:[json objectForKey:@"scenarios"]];
-                        [self showCountdown];
-                        [self.checkinBtn setBackgroundColor:disabledColor];
-                        if (isCheckin) {
-                            [self.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil) forState:UIControlStateNormal];
-                        } else {
-                            [self.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil) forState:UIControlStateNormal];
-                            [[AppDelegate appDelegate].checkinView reloadCard];
-                        }
-                        [[AppDelegate appDelegate] setDefaultShortcutItems];
-                    }
-                } else {
-                    // Invalid Network
-                    [self.delegate showInvalidNetworkMsg];
-//                    UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
-//                    [ac showAlert:nil];
-                }
-            }];
-        };
-        
-        if ([self.disabled boolValue]) {
-            [UIView animateWithDuration:.25f
-                             animations:^{
-                                 [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
-                             }
-                             completion:^(BOOL finished) {
-                                 if (finished) {
-                                     [UIView animateWithDuration:1.75f animations:^{
-                                         [self.checkinBtn setBackgroundColor:disabledColor];
                                      }];
-                                 }
-                             }];
-            SEND_GAI_EVENT(@"CheckinCardView", @"click_disabled");
-        } else {
+                } else if ([[json objectForKey:@"message"] isEqual:@"link expired/not available now"]) {
+                    NSLog(@"%@", [json objectForKey:@"message"]);
+                    [UIView animateWithDuration:.25f
+                                     animations:^{
+                                         [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
+                                         [self.checkinBtn setTitle:NSLocalizedString(@"ExpiredOrNotAvailable", nil)
+                                                          forState:UIControlStateNormal];
+                                     }
+                                     completion:^(BOOL finished) {
+                                         if (finished) {
+                                             [UIView animateWithDuration:1.75f
+                                                              animations:^{
+                                                                  [self.checkinBtn setBackgroundColor:defaultColor];
+                                                              }
+                                                              completion:^(BOOL finished) {
+                                                                  if (finished) {
+                                                                      [UIView animateWithDuration:.25f
+                                                                                       animations:^{
+                                                                                           [self.checkinBtn setTitle:NSLocalizedString(isCheckin ? @"CheckinViewButton" : @"UseButton", nil)
+                                                                                                            forState:UIControlStateNormal];
+                                                                                       }];
+                                                                  }
+                                                              }];
+                                         }
+                                     }];
+                } else {
+                    [self updateScenario:[json objectForKey:@"scenarios"]];
+                    [self showCountdown];
+                    [self.checkinBtn setBackgroundColor:disabledColor];
+                    if (isCheckin) {
+                        [self.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil) forState:UIControlStateNormal];
+                    } else {
+                        [self.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil) forState:UIControlStateNormal];
+                        [[AppDelegate appDelegate].checkinView reloadCard];
+                    }
+                    [[AppDelegate appDelegate] setDefaultShortcutItems];
+                }
+            } else {
+                // Invalid Network
+                [self.delegate showInvalidNetworkMsg];
+                //                    UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
+                //                    [ac showAlert:nil];
+            }
+        }];
+    };
+    
+    if ([self.disabled boolValue]) {
+        [UIView animateWithDuration:.25f
+                         animations:^{
+                             [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
+                         }
+                         completion:^(BOOL finished) {
+                             if (finished) {
+                                 [UIView animateWithDuration:1.75f animations:^{
+                                     [self.checkinBtn setBackgroundColor:disabledColor];
+                                 }];
+                             }
+                         }];
+        SEND_GAI_EVENT(@"CheckinCardView", @"click_disabled");
+    } else {
+        if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
+            // IN TIME
             if (isCheckin) {
                 use();
             } else {
@@ -159,24 +159,24 @@
                                 use();
                             }];
             }
-        }
-    } else {
-        // OUT TIME
-        if ([nowTime compare:availableTime] == NSOrderedAscending) {
-            ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NotAvailableTitle", nil)
-                                     withMessage:NSLocalizedString(@"NotAvailableMessage", nil)
-                                cancelButtonText:NSLocalizedString(@"NotAvailableButtonOk", nil)
-                                     cancelStyle:UIAlertActionStyleDestructive
-                                    cancelAction:^(UIAlertAction *action) {
-                                    }];
-        }
-        if ([nowTime compare:expireTime] == NSOrderedDescending || [self.used boolValue]) {
-            ac = [UIAlertController alertOfTitle:NSLocalizedString(@"ExpiredTitle", nil)
-                                     withMessage:NSLocalizedString(@"ExpiredMessage", nil)
-                                cancelButtonText:NSLocalizedString(@"ExpiredButtonOk", nil)
-                                     cancelStyle:UIAlertActionStyleDestructive
-                                    cancelAction:^(UIAlertAction *action) {
-                                    }];
+        } else {
+            // OUT TIME
+            if ([nowTime compare:availableTime] == NSOrderedAscending) {
+                ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NotAvailableTitle", nil)
+                                         withMessage:NSLocalizedString(@"NotAvailableMessage", nil)
+                                    cancelButtonText:NSLocalizedString(@"NotAvailableButtonOk", nil)
+                                         cancelStyle:UIAlertActionStyleDestructive
+                                        cancelAction:^(UIAlertAction *action) {
+                                        }];
+            }
+            if ([nowTime compare:expireTime] == NSOrderedDescending || [self.used boolValue]) {
+                ac = [UIAlertController alertOfTitle:NSLocalizedString(@"ExpiredTitle", nil)
+                                         withMessage:NSLocalizedString(@"ExpiredMessage", nil)
+                                    cancelButtonText:NSLocalizedString(@"ExpiredButtonOk", nil)
+                                         cancelStyle:UIAlertActionStyleDestructive
+                                        cancelAction:^(UIAlertAction *action) {
+                                        }];
+            }
         }
     }
     // only out time or need confirm will display alert controller
