@@ -52,7 +52,7 @@
     UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
     self.shimmeringLogoView.contentView = logoView;
-    self.navigationItem.titleView = logoView;
+    self.navigationItem.titleView = self.shimmeringLogoView;
     
     // Init configure carousel
     self.cards.type = iCarouselTypeRotary;
