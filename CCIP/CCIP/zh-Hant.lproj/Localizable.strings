@@ -71,4 +71,4 @@
 "ExpiredOrNotAvailable" = "已過期或尚未開放使用";
 "Networking_Broken" = "網路連線異常";
 "Networking_WrongWiFi" = "請連上 COSCUP 提供的無線網路，才能使用";
-"LoginGreeting" = "嗨 %@, 歡迎您加入 COSCUP 2016 這場盛夏饗宴！";
+"LoginGreeting" = "嗨 %@，歡迎您加入 COSCUP 2016，盡情享受這場盛夏饗宴吧！";
