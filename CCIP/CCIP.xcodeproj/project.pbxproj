@@ -22,7 +22,7 @@
 		2839BF381D4C97AB0062F36D /* Star@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF341D4C97AB0062F36D /* Star@3x.png */; };
 		2839BF391D4C97AB0062F36D /* Star_Filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF351D4C97AB0062F36D /* Star_Filled@2x.png */; };
 		2839BF3A1D4C97AB0062F36D /* Star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF361D4C97AB0062F36D /* Star@2x.png */; };
-		2839BF3D1D4C97EE0062F36D /* Star-Filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF3B1D4C97EE0062F36D /* Star-Filled.png */; };
+		2839BF3D1D4C97EE0062F36D /* Star_Filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF3B1D4C97EE0062F36D /* Star_Filled.png */; };
 		2839BF3E1D4C97EE0062F36D /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF3C1D4C97EE0062F36D /* Star.png */; };
 		2839BF4A1D4CDDAD0062F36D /* CheckinCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */; };
 		286E28A51D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */; };
@@ -173,7 +173,7 @@
 		2839BF341D4C97AB0062F36D /* Star@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star@3x.png"; sourceTree = "<group>"; };
 		2839BF351D4C97AB0062F36D /* Star_Filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star_Filled@2x.png"; sourceTree = "<group>"; };
 		2839BF361D4C97AB0062F36D /* Star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star@2x.png"; sourceTree = "<group>"; };
-		2839BF3B1D4C97EE0062F36D /* Star-Filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star-Filled.png"; sourceTree = "<group>"; };
+		2839BF3B1D4C97EE0062F36D /* Star_Filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star_Filled.png; sourceTree = "<group>"; };
 		2839BF3C1D4C97EE0062F36D /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
 		2839BF471D4CDDAD0062F36D /* CheckinCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinCardViewController.h; sourceTree = "<group>"; };
 		2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinCardViewController.m; sourceTree = "<group>"; };
@@ -434,8 +434,8 @@
 				2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */,
 				6B2F9E431D4D142700047F38 /* CheckinCardView.h */,
 				6B2F9E441D4D142700047F38 /* CheckinCardView.m */,
-				6BA1A5201D1EFBDC00D5924C /* StatusViewController.h */,
 				6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */,
+				6BA1A5201D1EFBDC00D5924C /* StatusViewController.h */,
 			);
 			name = CheckinTab;
 			sourceTree = "<group>";
@@ -618,7 +618,7 @@
 				2839BF3C1D4C97EE0062F36D /* Star.png */,
 				2839BF361D4C97AB0062F36D /* Star@2x.png */,
 				2839BF341D4C97AB0062F36D /* Star@3x.png */,
-				2839BF3B1D4C97EE0062F36D /* Star-Filled.png */,
+				2839BF3B1D4C97EE0062F36D /* Star_Filled.png */,
 				2839BF351D4C97AB0062F36D /* Star_Filled@2x.png */,
 				2839BF331D4C97AB0062F36D /* Star_Filled@3x.png */,
 				288D3A9A1D59AB4700E4E3A6 /* QR_Code.png */,
@@ -805,7 +805,7 @@
 				5FB4D4471D3A8319005BF382 /* icon_ios_pin@2x.png in Resources */,
 				2823E8E81D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib in Resources */,
 				288D3A7B1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle in Resources */,
-				2839BF3D1D4C97EE0062F36D /* Star-Filled.png in Resources */,
+				2839BF3D1D4C97EE0062F36D /* Star_Filled.png in Resources */,
 				5FB4D45B1D3A865A005BF382 /* icon_ios_topcharts@2x.png in Resources */,
 				2839BF3E1D4C97EE0062F36D /* Star.png in Resources */,
 				6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */,
