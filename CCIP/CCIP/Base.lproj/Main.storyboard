@@ -575,7 +575,7 @@
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="zI6-me-UXE">
+                        <barButtonItem key="rightBarButtonItem" image="BarButton-Reload.png" id="zI6-me-UXE">
                             <connections>
                                 <action selector="reload:" destination="Oqq-Rn-AVL" id="vts-de-isR"/>
                             </connections>
@@ -903,6 +903,7 @@
     <resources>
         <image name="BarButton-Back.png" width="22" height="22"/>
         <image name="BarButton-Forward.png" width="22" height="22"/>
+        <image name="BarButton-Reload.png" width="22" height="22"/>
         <image name="icon_ios_bell.png" width="25" height="25"/>
         <image name="icon_ios_chat.png" width="25" height="25"/>
         <image name="icon_ios_more.png" width="25" height="25"/>
