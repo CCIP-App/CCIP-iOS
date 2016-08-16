@@ -115,11 +115,12 @@ NSUInteger FailedCount = 0;
 
 - (void)setURL:(NSString *)URL {
     [self checkInstance:NO];
+    URL = [URL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     self.currentQueue = [NSOperationQueue currentQueue];
     self.queue = [[NSOperationQueue alloc] init];
     [self.queue setName:@"org.coscup.GatewayWebService.InvokeInstance"];
     self.methodName = URL;
-    self.wsURL = [NSURL URLWithString:URL];
+    self.wsURL = [NSURL URLWithString:[URL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     self.requestURL = [self.wsURL absoluteString];
     self.request = [[NSMutableURLRequest alloc] initWithURL:self.wsURL
                                                 cachePolicy:NSURLRequestReloadIgnoringCacheData
