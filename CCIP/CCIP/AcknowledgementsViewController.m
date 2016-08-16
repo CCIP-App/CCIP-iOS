@@ -10,6 +10,7 @@
 #import "GatewayWebService/GatewayWebService.h"
 #import "NSData+CommonCrypto.h"
 #import "NSData+PMUtils.h"
+#import <SafariServices/SFSafariViewController.h>
 
 #import <CPDAcknowledgements/CPDAcknowledgementsViewController.h>
 #import <CPDAcknowledgements/CPDContribution.h>
@@ -17,6 +18,8 @@
 #import <CPDAcknowledgements/CPDLibrary.h>
 
 @interface AcknowledgementsViewController ()
+
+@property (strong, nonatomic) NSString *githubRepoLink;
 
 @end
 
@@ -50,6 +53,11 @@
                 }
             }
         }
+    }
+    
+    NSString *githubRepo = [[projectInfoData objectForKey:@"self"] objectForKey:@"github_repo"];
+    if (githubRepo && ![githubRepo isEqualToString:@""]) {
+        self.githubRepoLink = [NSString stringWithFormat:@"https://github.com/%@", githubRepo];
     }
     
     NSBundle *bundle = [NSBundle mainBundle];
@@ -125,9 +133,33 @@
     }
 }
 
+- (void)openGithubRepo {
+    NSURL *url = [NSURL URLWithString:self.githubRepoLink];
+    
+    if ([SFSafariViewController class] != nil) {
+        // Open in SFSafariViewController
+        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
+        [self presentViewController:safariViewController
+                           animated:YES
+                         completion:nil];
+    } else {
+        // Open in Mobile Safari
+        if (![[UIApplication sharedApplication] openURL:url]) {
+            NSLog(@"%@%@",@"Failed to open url:", [url description]);
+        }
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (self.githubRepoLink != nil) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolButton-GitHub_Filled.png"]
+                                                                    landscapeImagePhone:nil
+                                                                                  style:UIBarButtonItemStylePlain
+                                                                                 target:self
+                                                                                 action:@selector(openGithubRepo)];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

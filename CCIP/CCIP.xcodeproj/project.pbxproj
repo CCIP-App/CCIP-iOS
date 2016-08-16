@@ -58,6 +58,9 @@
 		28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */; };
 		28A7C56D1D6032680079BB12 /* MainNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C56C1D6032680079BB12 /* MainNavViewController.m */; };
 		28A7C5761D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5751D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m */; };
+		28A9362B1D62CED800CBCA54 /* ToolButton-GitHub_Filled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28A936281D62CED800CBCA54 /* ToolButton-GitHub_Filled@3x.png */; };
+		28A9362C1D62CED800CBCA54 /* ToolButton-GitHub_Filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28A936291D62CED800CBCA54 /* ToolButton-GitHub_Filled@2x.png */; };
+		28A9362D1D62CED800CBCA54 /* ToolButton-GitHub_Filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 28A9362A1D62CED800CBCA54 /* ToolButton-GitHub_Filled.png */; };
 		28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */; };
 		28AFCF141D5DD9CA00413927 /* AcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AFCF131D5DD9CA00413927 /* AcknowledgementsViewController.m */; };
 		28B4322E1D6227D400590846 /* BarButton-Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B432251D6227D400590846 /* BarButton-Back.png */; };
@@ -220,6 +223,9 @@
 		28A7C56C1D6032680079BB12 /* MainNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavViewController.m; sourceTree = "<group>"; };
 		28A7C5741D6053F00079BB12 /* EmbeddedNavigationControllerSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbeddedNavigationControllerSegue.h; sourceTree = "<group>"; };
 		28A7C5751D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmbeddedNavigationControllerSegue.m; sourceTree = "<group>"; };
+		28A936281D62CED800CBCA54 /* ToolButton-GitHub_Filled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolButton-GitHub_Filled@3x.png"; sourceTree = "<group>"; };
+		28A936291D62CED800CBCA54 /* ToolButton-GitHub_Filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolButton-GitHub_Filled@2x.png"; sourceTree = "<group>"; };
+		28A9362A1D62CED800CBCA54 /* ToolButton-GitHub_Filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolButton-GitHub_Filled.png"; sourceTree = "<group>"; };
 		28ACA99F1D5E92AD002A6419 /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
 		28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
 		28AFCF121D5DD9CA00413927 /* AcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgementsViewController.h; sourceTree = "<group>"; };
@@ -561,6 +567,9 @@
 		28AFCF191D5DDCD400413927 /* AcknowledgementsView */ = {
 			isa = PBXGroup;
 			children = (
+				28A9362A1D62CED800CBCA54 /* ToolButton-GitHub_Filled.png */,
+				28A936291D62CED800CBCA54 /* ToolButton-GitHub_Filled@2x.png */,
+				28A936281D62CED800CBCA54 /* ToolButton-GitHub_Filled@3x.png */,
 				28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */,
 				28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */,
 				28AFCF121D5DD9CA00413927 /* AcknowledgementsViewController.h */,
@@ -797,6 +806,7 @@
 				5FB4D4791D3A8DF6005BF382 /* icon_ios_more@2x.png in Resources */,
 				5FB4D4861D3A998C005BF382 /* coscup-logo@3x.png in Resources */,
 				288D3A9F1D59AB4800E4E3A6 /* QR_Code@2x.png in Resources */,
+				28A9362D1D62CED800CBCA54 /* ToolButton-GitHub_Filled.png in Resources */,
 				6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */,
 				5FB4D47C1D3A8DF6005BF382 /* icon_ios_bell@2x.png in Resources */,
 				5FB4D4851D3A998C005BF382 /* coscup-logo@2x.png in Resources */,
@@ -812,6 +822,7 @@
 				5FB4D4471D3A8319005BF382 /* icon_ios_pin@2x.png in Resources */,
 				2823E8E81D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib in Resources */,
 				288D3A7B1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle in Resources */,
+				28A9362C1D62CED800CBCA54 /* ToolButton-GitHub_Filled@2x.png in Resources */,
 				2839BF3D1D4C97EE0062F36D /* Star_Filled.png in Resources */,
 				5FB4D45B1D3A865A005BF382 /* icon_ios_topcharts@2x.png in Resources */,
 				2839BF3E1D4C97EE0062F36D /* Star.png in Resources */,
@@ -850,6 +861,7 @@
 				5FB4D45C1D3A865A005BF382 /* icon_ios_topcharts@3x.png in Resources */,
 				141D4150DB8FC2366FDFDF75 /* Pods-CCIP-metadata.plist in Resources */,
 				28B4323D1D6228AF00590846 /* BarButton-Forward.png in Resources */,
+				28A9362B1D62CED800CBCA54 /* ToolButton-GitHub_Filled@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
