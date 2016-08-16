@@ -72,7 +72,10 @@
     acknowledgementsViewController = [[CPDAcknowledgementsViewController alloc] initWithStyle:nil
                                                                              acknowledgements:acknowledgements
                                                                                 contributions:contributors];
-    self = (AcknowledgementsViewController*)acknowledgementsViewController;
+    [self addChildViewController:acknowledgementsViewController];
+    acknowledgementsViewController.view.frame = self.view.frame;
+    [self.view addSubview:acknowledgementsViewController.view];
+    [acknowledgementsViewController didMoveToParentViewController:self];
     
     return self;
 }
