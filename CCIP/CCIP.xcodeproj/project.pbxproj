@@ -446,8 +446,8 @@
 				2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */,
 				6B2F9E431D4D142700047F38 /* CheckinCardView.h */,
 				6B2F9E441D4D142700047F38 /* CheckinCardView.m */,
-				6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */,
 				6BA1A5201D1EFBDC00D5924C /* StatusViewController.h */,
+				6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */,
 			);
 			name = CheckinTab;
 			sourceTree = "<group>";

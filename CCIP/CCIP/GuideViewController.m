@@ -124,7 +124,10 @@
 
 - (IBAction)redeemCode:(id)sender {
     NSString *code = [self.redeemCodeText text];
-    if ([code length] > 0) {
+    code = [code stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    NSCharacterSet *allowedCharacters = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    if ([code length] > 0 && [code rangeOfCharacterFromSet:allowedCharacters].location == NSNotFound) {
         GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_LANDING(code)];
         [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
             if (json != nil) {
