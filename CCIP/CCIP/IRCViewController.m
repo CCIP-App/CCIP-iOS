@@ -9,10 +9,14 @@
 #import "IRCViewController.h"
 #import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
+#import <NJKWebViewProgress/NJKWebViewProgressView.h>
 
 @interface IRCViewController()
 
 @property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
+
+@property (strong, nonatomic) NJKWebViewProgressView *progressView;
+@property (strong, nonatomic) NJKWebViewProgress *progressProxy;
 
 @end
 
@@ -34,6 +38,21 @@
     self.goBackButton.enabled = NO;
     self.goForwardButton.enabled = NO;
     self.goReloadButton.enabled = NO;
+    
+    _progressProxy = [[NJKWebViewProgress alloc] init]; // instance variable
+    self.webview.delegate = _progressProxy;
+    _progressProxy.webViewProxyDelegate = self;
+    _progressProxy.progressDelegate = self;
+    
+    CGFloat progressBarHeight = 2.f;
+    CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
+    CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
+    _progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
+    _progressView.progressBarView.backgroundColor = [UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1.0];
+    _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    
+    [self.navigationController.navigationBar addSubview:_progressView];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -110,6 +129,11 @@
         }
     }
     return YES;
+}
+
+-(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
+{
+    [self.progressView setProgress:progress animated:YES];
 }
 
 - (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {

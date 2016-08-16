@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <SafariServices/SFSafariViewController.h>
+#import <NJKWebViewProgress/NJKWebViewProgress.h>
 
-@interface IRCViewController : UIViewController <UIWebViewDelegate, SFSafariViewControllerDelegate>
+@interface IRCViewController : UIViewController <UIWebViewDelegate, NJKWebViewProgressDelegate, SFSafariViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *goBackButton;
