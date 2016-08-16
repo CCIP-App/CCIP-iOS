@@ -23,6 +23,11 @@ PODS:
   - ICViewPager (1.5.1)
   - iRate (1.11.5)
   - MMMarkdown (0.5.5)
+  - NJKWebViewProgress (0.2.3):
+    - NJKWebViewProgress/Core (= 0.2.3)
+    - NJKWebViewProgress/ProgressView (= 0.2.3)
+  - NJKWebViewProgress/Core (0.2.3)
+  - NJKWebViewProgress/ProgressView (0.2.3)
   - OneSignal (1.13.3)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
@@ -40,6 +45,7 @@ DEPENDENCIES:
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
   - iRate (~> 1.11)
   - MMMarkdown (~> 0.5)
+  - NJKWebViewProgress (~> 0.2)
   - OneSignal
   - SDWebImage (~> 3.8)
   - Shimmer (~> 1.0)
@@ -70,12 +76,13 @@ SPEC CHECKSUMS:
   ICViewPager: c1278b67eceac7252d48252829c3c703285dfb76
   iRate: 1546f8ae5ed1565e688bd529f7484780734757e9
   MMMarkdown: 1af97166ce0f6d6e0cb05695665492195d27c3f1
+  NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: 7ba5678ad73eaafd46451748b6171c8e1e0894b7
+PODFILE CHECKSUM: 522f7658e38a7b9dfdd0d190c114948e2203f045
 
 COCOAPODS: 1.0.1
