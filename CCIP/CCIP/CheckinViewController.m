@@ -8,6 +8,7 @@
 #define TAG 99
 
 #import <UICKeyChainStore/UICKeyChainStore.h>
+#import "UIColor+addition.h"
 #import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import "CheckinCardViewController.h"
@@ -65,8 +66,8 @@
     
     // Set carousel background linear diagonal gradient
     //   Create the colors
-    UIColor *topColor = [UIColor colorWithRed:0.0/255.0 green:166.0/255.0 blue:99.0/255.0 alpha:1.0];
-    UIColor *bottomColor = [UIColor colorWithRed:48.0/255.0 green:65.0/255.0 blue:73.0/255.0 alpha:1.0];
+    UIColor *topColor = [UIColor colorFromHtmlColor:@"#00a663"];
+    UIColor *bottomColor = [UIColor colorFromHtmlColor:@"#304149"];
     //   Create the gradient
     CAGradientLayer *theViewGradient = [CAGradientLayer layer];
     theViewGradient.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
