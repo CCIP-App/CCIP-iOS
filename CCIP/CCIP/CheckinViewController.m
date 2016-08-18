@@ -399,15 +399,8 @@
 }
 
 - (void)callBarcodePickerOverlay {
-    if (self.guideViewController.isVisible) {
-        [self.guideViewController dismissViewControllerAnimated:YES
-                                                     completion:^{
-                                                         self.guideViewController = nil;
-                                                         [self showBarcodePickerOverlay];
-                                                     }];
-    } else {
-        [self showBarcodePickerOverlay];
-    }
+    [self hideGuideView];
+    [self showBarcodePickerOverlay];
 }
 
 - (void)showBarcodePickerOverlay {
