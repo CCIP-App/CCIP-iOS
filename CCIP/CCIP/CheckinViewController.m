@@ -475,6 +475,17 @@
                                                              multiplier:1.0
                                                                constant:0.0]];
         
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [button setFrame:CGRectMake(65, 15, 60, 40)];
+        [button setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.35f]];
+        [button.layer setMasksToBounds:YES];
+        [button.layer setCornerRadius:20.0f];
+        
+        [button setTitle:@"Files" forState:UIControlStateNormal];
+        [button setTintColor:[UIColor blackColor]];
+        
+        [self.scanditBarcodePicker.view addSubview:button];
+        
         [self.scanditBarcodePicker startScanningInPausedState:YES completionHandler:^{
             [self.scanditBarcodePicker performSelector:@selector(startScanning)
                                             withObject:nil
