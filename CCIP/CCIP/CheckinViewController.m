@@ -41,10 +41,14 @@
 
 @implementation CheckinViewController
 
+#pragma mark private method
+
 - (void)setUserInfo:(NSDictionary *)userInfo {
     _userInfo = userInfo;
     [[AppDelegate appDelegate] setUserInfo:userInfo];
 }
+
+#pragma mark View Events
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -122,6 +126,31 @@
     [self reloadCard];
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UIViewController *destination = segue.destinationViewController;
+    if ([destination isMemberOfClass:[GuideViewController class]]) {
+        self.guideViewController = (GuideViewController *)destination;
+    }
+    if ([destination isMemberOfClass:[StatusViewController class]]) {
+        self.statusViewController = (StatusViewController *)destination;
+        [self.statusViewController setScenario:sender];
+    }
+    if ([destination isMemberOfClass:[InvalidNetworkMessageViewController class]]) {
+        [((InvalidNetworkMessageViewController *)destination) setMessage:sender];
+    }
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark Dev Mode
+
 - (void)navSingleTap {
     //NSLog(@"navSingleTap");
     [self handleNavTapTimes];
@@ -162,23 +191,7 @@
     }
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UIViewController *destination = segue.destinationViewController;
-    if ([destination isMemberOfClass:[GuideViewController class]]) {
-        self.guideViewController = (GuideViewController *)destination;
-    }
-    if ([destination isMemberOfClass:[StatusViewController class]]) {
-        self.statusViewController = (StatusViewController *)destination;
-        [self.statusViewController setScenario:sender];
-    }
-    if ([destination isMemberOfClass:[InvalidNetworkMessageViewController class]]) {
-        [((InvalidNetworkMessageViewController *)destination) setMessage:sender];
-    }
-}
+#pragma mark hide custom view controller method
 
 - (void)hideGuideView {
     if (self.guideViewController.isVisible) {
@@ -206,6 +219,8 @@
                                                                  }];
     }
 }
+
+#pragma mark cards methods
 
 - (void)goToCard {
     if ([AppDelegate haveAccessToken]) {
@@ -308,6 +323,8 @@
     }
 }
 
+#pragma mark display messages
+
 - (void)showCountdown:(NSDictionary *)json {
     NSLog(@"%@", json);
     [self performSegueWithIdentifier:@"ShowCountdown"
@@ -319,10 +336,7 @@
                               sender:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma makr QR Code Scanner
 
 - (void)handleQRButton {
     if (self.qrButton == nil) {
@@ -345,9 +359,16 @@
         self.navigationItem.rightBarButtonItem = nil;
     }
 }
+
+- (void)barcodePicker:(nonnull SBSBarcodePicker *)barcodePicker
+      didProcessFrame:(nonnull CMSampleBufferRef)frame
+              session:(nonnull SBSScanSession *)session {
+    //
+}
+
 - (void)barcodePicker:(SBSBarcodePicker *)picker didScan:(SBSScanSession *)session {
     [session pauseScanning];
-    
+
     NSArray *recognized = session.newlyRecognizedCodes;
     SBSCode *code = [recognized firstObject];
     // Add your own code to handle the barcode result e.g.
@@ -433,6 +454,7 @@
          * This is commented out here in the demo app since the result view with the scan results
          * is not suitable for this overlay view */
         self.scanditBarcodePicker.scanDelegate = self;
+        self.scanditBarcodePicker.processFrameDelegate = self;
         
         // Add a button behind the subview to close it.
         // self.backgroundButton.hidden = NO;
@@ -496,18 +518,18 @@
     }
 }
 
+#pragma mark QR Code from Camera Roll Library
+
 - (void)getImageFromLibrary {
-    
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    imagePicker.delegate = self;
-    
-    imagePicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    
-    [self presentViewController:imagePicker animated:YES completion:nil];
+    UIImagePickerController *imagePicker = [UIImagePickerController new];
+    [imagePicker setDelegate:self];
+    [imagePicker setSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
+    [self presentViewController:imagePicker
+                       animated:YES
+                     completion:nil];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
     
     if ([mediaType isEqualToString:@"public.image"]) {

@@ -10,7 +10,7 @@
 #import <iCarousel/iCarousel.h>
 #import <ScanditBarcodeScanner/ScanditBarcodeScanner.h>
 
-@interface CheckinViewController : UIViewController<iCarouselDataSource, iCarouselDelegate, SBSScanDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CheckinViewController : UIViewController<iCarouselDataSource, iCarouselDelegate, SBSScanDelegate, SBSProcessFrameDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 - (void)goToCard;
 - (void)reloadCard;
