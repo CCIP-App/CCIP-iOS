@@ -74,3 +74,5 @@
 "Networking_Broken" = "Error while networking issues";
 "Networking_WrongWiFi" = "Please connect to the wifi provided by COSCUP";
 "LoginGreeting" = "Hi %@, welcome to COSCUP 2016, enjoy this summer festival of fun!";
+"AfterEventMessage" = "After the Event, we need you in-form a questionnaire for us, thanks.";
+"AfterEventActionTitle" = "Open questionnaire";

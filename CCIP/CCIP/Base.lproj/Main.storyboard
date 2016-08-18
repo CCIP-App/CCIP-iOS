@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vFY-Ie-dA7">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A270f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vFY-Ie-dA7">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -46,7 +46,7 @@
                                             </constraints>
                                             <string key="text">請停留在此畫面
 給工作人員確認，謝謝！</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
@@ -80,7 +80,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="WU2-Ce-ckf"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="50"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -141,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mlj-3I-tOq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1429" y="1893"/>
+            <point key="canvasLocation" x="-1802" y="1965"/>
         </scene>
         <!--Guide View Controller-->
         <scene sceneID="lMV-v9-8VF">
@@ -176,7 +176,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="250" id="zgb-fn-Qwr"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -186,7 +186,7 @@
                                                 <constraint firstAttribute="height" constant="30" id="33T-P4-oX9"/>
                                                 <constraint firstAttribute="width" constant="300" id="6FO-ei-bwB"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="join"/>
                                             <connections>
                                                 <outlet property="delegate" destination="VKq-4v-Yvp" id="k2G-pz-ly6"/>
@@ -198,6 +198,7 @@
                                                 <constraint firstAttribute="width" constant="200" id="PpU-2O-g6i"/>
                                                 <constraint firstAttribute="height" constant="30" id="ig4-GZ-UB1"/>
                                             </constraints>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                                             <state key="normal" title="Button"/>
                                             <connections>
                                                 <action selector="redeemCode:" destination="VKq-4v-Yvp" eventType="touchUpInside" id="IGS-yS-peD"/>
@@ -249,7 +250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dnj-al-u0m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-977" y="1893"/>
+            <point key="canvasLocation" x="-1350" y="1965"/>
         </scene>
         <!--Main Tab Bar View Controller-->
         <scene sceneID="djy-Ka-IMA">
@@ -352,7 +353,7 @@
                         <viewControllerLayoutGuide type="top" id="Had-X7-yAA"/>
                         <viewControllerLayoutGuide type="bottom" id="jGP-3b-ZwZ"/>
                     </layoutGuides>
-                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="CVw-Vr-a5B" customClass="CheckinCardView">
+                    <view key="view" contentMode="scaleToFill" id="CVw-Vr-a5B" customClass="CheckinCardView">
                         <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -361,7 +362,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="6Gs-ez-7qc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="68"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="68"/>
                                 <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -370,7 +371,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="i3t-Cg-x4H"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="40"/>
                                 <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -380,7 +381,7 @@
                                     <constraint firstAttribute="height" constant="118" id="cK8-Qt-OHm"/>
                                     <constraint firstAttribute="height" constant="150" id="zth-f1-7uE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -394,7 +395,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="hjM-3v-dKt"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                 <state key="normal" title="CHECK IN"/>
                                 <connections>
                                     <action selector="checkinBtnTouched:" destination="CVw-Vr-a5B" eventType="touchUpInside" id="EaM-Bf-pif"/>
@@ -434,7 +435,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yuv-Bk-NGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-519" y="1893"/>
+            <point key="canvasLocation" x="-891" y="1965"/>
         </scene>
         <!--Checkin-->
         <scene sceneID="cs7-eR-RBx">
@@ -796,6 +797,74 @@
             </objects>
             <point key="canvasLocation" x="1419" y="165"/>
         </scene>
+        <!--After Event View Controller-->
+        <scene sceneID="LI5-wg-ip3">
+            <objects>
+                <viewController storyboardIdentifier="AfterEventCardReuseView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7AL-5u-WK3" customClass="AfterEventViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VOT-o2-dcN"/>
+                        <viewControllerLayoutGuide type="bottom" id="gDT-dk-kpU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3AQ-Po-aq1">
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AfterEventMessage" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRP-0O-khJ">
+                                <rect key="frame" x="20" y="40" width="380" height="404"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="BT6-g0-Jp2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="25"/>
+                                <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BT6-g0-Jp2"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SoU-jq-pBh">
+                                <rect key="frame" x="30" y="494" width="360" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="wTr-dy-DcN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="afterEventAction:" destination="7AL-5u-WK3" eventType="touchUpInside" id="1Gk-us-bZu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KRP-0O-khJ" firstAttribute="top" secondItem="VOT-o2-dcN" secondAttribute="bottom" constant="20" id="B7c-M1-JPW"/>
+                            <constraint firstItem="SoU-jq-pBh" firstAttribute="top" secondItem="KRP-0O-khJ" secondAttribute="bottom" constant="50" id="HN2-sz-UV6"/>
+                            <constraint firstItem="KRP-0O-khJ" firstAttribute="leading" secondItem="3AQ-Po-aq1" secondAttribute="leadingMargin" id="PVz-wx-Okf"/>
+                            <constraint firstItem="gDT-dk-kpU" firstAttribute="top" secondItem="SoU-jq-pBh" secondAttribute="bottom" constant="60" id="RHN-v4-22t"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SoU-jq-pBh" secondAttribute="trailing" constant="10" id="TL9-P1-fva"/>
+                            <constraint firstItem="KRP-0O-khJ" firstAttribute="top" secondItem="3AQ-Po-aq1" secondAttribute="topMargin" constant="40" id="Wuj-2q-98E"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="SoU-jq-pBh" secondAttribute="bottom" constant="60" id="i41-Un-iLk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KRP-0O-khJ" secondAttribute="trailing" id="oGI-7q-3u9"/>
+                            <constraint firstItem="SoU-jq-pBh" firstAttribute="leading" secondItem="3AQ-Po-aq1" secondAttribute="leadingMargin" constant="10" id="vqH-Mv-imQ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="B7c-M1-JPW"/>
+                                <exclude reference="RHN-v4-22t"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="420" height="600"/>
+                    <connections>
+                        <outlet property="afterEventButton" destination="SoU-jq-pBh" id="dGQ-g6-xlC"/>
+                        <outlet property="afterEventMessageLabel" destination="KRP-0O-khJ" id="JVN-wr-S8W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ykb-vw-l2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-429" y="1965"/>
+        </scene>
         <!--Invalid Network Message View Controller-->
         <scene sceneID="DDK-sN-jQD">
             <objects>
@@ -829,7 +898,7 @@
                                                             <constraint firstAttribute="width" constant="320" id="pjp-CY-KPU"/>
                                                             <constraint firstAttribute="height" constant="100" id="vlk-Qg-xmS"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="default">
@@ -846,6 +915,7 @@
                                                             <constraint firstAttribute="height" constant="30" id="B3Q-cJ-8m1"/>
                                                             <constraint firstAttribute="width" constant="200" id="NUg-LQ-bsV"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                                                         <state key="normal" title="Hide"/>
                                                         <connections>
                                                             <action selector="clossView:" destination="tZ3-Ep-FUt" eventType="touchUpInside" id="hdo-SA-qui"/>
@@ -897,7 +967,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RuT-hy-wjH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1885" y="1893"/>
+            <point key="canvasLocation" x="-2258" y="1965"/>
         </scene>
     </scenes>
     <resources>

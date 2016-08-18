@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "CheckinCardViewController.h"
 #import "CheckinViewController.h"
+#import "AfterEventViewController.h"
 #import "GuideViewController.h"
 #import "StatusViewController.h"
 #import "InvalidNetworkMessageViewController.h"
@@ -267,6 +268,10 @@
 
 - (void)reloadCard {
     [self handleQRButton];
+    static NSDate *previousDate;
+    if (previousDate == nil) {
+        previousDate = [AppDelegate firstAvailableDate];
+    }
 
     if (![AppDelegate haveAccessToken]) {
         if (self.scanditBarcodePicker == nil) {
@@ -297,6 +302,10 @@
                                 [[AppDelegate appDelegate] displayGreetingsForLogin];
                             }
                             [AppDelegate parseAvailableDays:self.scenarios];
+                            if ([AppDelegate firstAvailableDate] != previousDate) {
+                                previousDate = [AppDelegate firstAvailableDate];
+                                self.firstLoad = YES;
+                            }
                             [self reloadAndGoToCard];
                         }
                         break;
@@ -600,14 +609,17 @@
 
 #pragma mark iCarousel methods
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel {
-    [self.pageControl setCurrentPage:carousel.currentItemIndex];
+    if ([[[AppDelegate appDelegate] availableScenarios] count] > 0) {
+        [self.pageControl setCurrentPage:carousel.currentItemIndex];
+    }
 }
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
     //return the total number of items in the carousel
+    NSArray *days = [[AppDelegate appDelegate] availableDays];
     NSInteger count = [[[AppDelegate appDelegate] availableScenarios] count];
     [self.pageControl setNumberOfPages:count];
-    return count;
+    return count > 0 ? count : ([days count] == 0 ? 0 : 1);
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
@@ -636,74 +648,81 @@
     }
 
     //create new view if no view is available for recycling
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
+                                                         bundle:nil];
+    BOOL haveScenario = [[[AppDelegate appDelegate] availableScenarios] count] > 0;
     if (view == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
-                                                             bundle:nil];
-        CheckinCardViewController *temp = (CheckinCardViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CheckinCardReuseView"];
-        
-        [temp.view setFrame:cardRect];
-        
-        view = (UIView*)temp.view;
-        
-        NSDictionary *scenario = [[[AppDelegate appDelegate] availableScenarios] objectAtIndex:index];
-        
-        NSString *id = [scenario objectForKey:@"id"];
-        BOOL isCheckin = [id rangeOfString:@"checkin" options:NSCaseInsensitiveSearch].length > 0;
-        BOOL isLunch = [id rangeOfString:@"lunch" options:NSCaseInsensitiveSearch].length > 0;
-        BOOL isKit = [[id lowercaseString] isEqualToString:@"kit"];
-        BOOL isVipKit = [[id lowercaseString] isEqualToString:@"vipkit"];
-        NSString *dateId = [formatter stringFromDate:[AppDelegate firstAvailableDate]];
-        [temp setId:id];
-        
-        if (isCheckin) {
-            [temp.checkinDate setText:dateId];
-            [temp.checkinTitle setText:NSLocalizedString(@"Checkin", nil)];
-            [temp.checkinText setText:NSLocalizedString(@"CheckinText", nil)];
-        }
-        if (isLunch) {
-            [temp.checkinDate setText:dateId];
-            [temp.checkinTitle setText:NSLocalizedString(@"lunch", nil)];
-            [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
-        }
-        if (isKit) {
-            [temp.checkinDate setText:@"COSCUP"];
-            [temp.checkinTitle setText:NSLocalizedString(@"kit", nil)];
-            [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
-        }
-        if (isVipKit) {
-            [temp.checkinDate setText:@"COSCUP"];
-            [temp.checkinTitle setText:NSLocalizedString(@"vipkit", nil)];
-            [temp.checkinText setText:NSLocalizedString(@"CheckinTextVipKit", nil)];
-        }
-        
-        if ([scenario objectForKey:@"disabled"]) {
-            [temp setDisabled:[NSNumber numberWithBool:YES]];
-            [temp.checkinBtn setTitle:[scenario objectForKey:@"disabled"] forState:UIControlStateNormal];
-            [temp.checkinBtn setBackgroundColor:[UIColor grayColor]];
-        } else if ([scenario objectForKey:@"used"]) {
-            [temp setUsed:[NSNumber numberWithBool:YES]];
+        if (haveScenario) {
+            CheckinCardViewController *temp = (CheckinCardViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CheckinCardReuseView"];
+            
+            [temp.view setFrame:cardRect];
+            view = temp.view;
+            
+            NSDictionary *scenario = [[[AppDelegate appDelegate] availableScenarios] objectAtIndex:index];
+            
+            NSString *id = [scenario objectForKey:@"id"];
+            BOOL isCheckin = [id rangeOfString:@"checkin" options:NSCaseInsensitiveSearch].length > 0;
+            BOOL isLunch = [id rangeOfString:@"lunch" options:NSCaseInsensitiveSearch].length > 0;
+            BOOL isKit = [[id lowercaseString] isEqualToString:@"kit"];
+            BOOL isVipKit = [[id lowercaseString] isEqualToString:@"vipkit"];
+            NSString *dateId = [formatter stringFromDate:[AppDelegate firstAvailableDate]];
+            [temp setId:id];
+            
             if (isCheckin) {
-                [temp.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil)
-                                 forState:UIControlStateNormal];
-            } else {
-                [temp.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil)
-                                 forState:UIControlStateNormal];
+                [temp.checkinDate setText:dateId];
+                [temp.checkinTitle setText:NSLocalizedString(@"Checkin", nil)];
+                [temp.checkinText setText:NSLocalizedString(@"CheckinText", nil)];
             }
-            [temp.checkinBtn setBackgroundColor:[UIColor grayColor]];
-        } else {
-            [temp setUsed:[NSNumber numberWithBool:NO]];
-            if (isCheckin) {
-                [temp.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButton", nil)
-                                 forState:UIControlStateNormal];
-            } else {
-                [temp.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil)
-                                 forState:UIControlStateNormal];
+            if (isLunch) {
+                [temp.checkinDate setText:dateId];
+                [temp.checkinTitle setText:NSLocalizedString(@"lunch", nil)];
+                [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
             }
-            [temp.checkinBtn setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
+            if (isKit) {
+                [temp.checkinDate setText:@"COSCUP"];
+                [temp.checkinTitle setText:NSLocalizedString(@"kit", nil)];
+                [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
+            }
+            if (isVipKit) {
+                [temp.checkinDate setText:@"COSCUP"];
+                [temp.checkinTitle setText:NSLocalizedString(@"vipkit", nil)];
+                [temp.checkinText setText:NSLocalizedString(@"CheckinTextVipKit", nil)];
+            }
+            
+            if ([scenario objectForKey:@"disabled"]) {
+                [temp setDisabled:[NSNumber numberWithBool:YES]];
+                [temp.checkinBtn setTitle:[scenario objectForKey:@"disabled"] forState:UIControlStateNormal];
+                [temp.checkinBtn setBackgroundColor:[UIColor grayColor]];
+            } else if ([scenario objectForKey:@"used"]) {
+                [temp setUsed:[NSNumber numberWithBool:YES]];
+                if (isCheckin) {
+                    [temp.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil)
+                                     forState:UIControlStateNormal];
+                } else {
+                    [temp.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil)
+                                     forState:UIControlStateNormal];
+                }
+                [temp.checkinBtn setBackgroundColor:[UIColor grayColor]];
+            } else {
+                [temp setUsed:[NSNumber numberWithBool:NO]];
+                if (isCheckin) {
+                    [temp.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButton", nil)
+                                     forState:UIControlStateNormal];
+                } else {
+                    [temp.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil)
+                                     forState:UIControlStateNormal];
+                }
+                [temp.checkinBtn setBackgroundColor:[UIColor colorFromHtmlColor:@"#3d983c"]];
+            }
+            
+            [temp setDelegate:self];
+            [temp setScenario:scenario];
+        } else if ([[[AppDelegate appDelegate] availableDays] count] > 0 && [AppDelegate isAfterEvent]) {
+            AfterEventViewController *temp = (AfterEventViewController *)[storyboard instantiateViewControllerWithIdentifier:@"AfterEventCardReuseView"];
+            
+            [temp.view setFrame:cardRect];
+            view = temp.view;
         }
-        
-        [temp setDelegate:self];
-        [temp setScenario:scenario];
     } else {
         //get a reference to the label in the recycled view
         //        label = (UILabel *)[view viewWithTag:1];

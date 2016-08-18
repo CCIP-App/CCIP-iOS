@@ -134,6 +134,7 @@
 		6B9117091D4EFC2600537ABE /* ScheduleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9117071D4EFC2600537ABE /* ScheduleViewCell.xib */; };
 		6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */; };
 		6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */; };
+		6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
 		6BCBC3B51D4F393700B5AF35 /* UIViewController+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */; };
 		6BD8EF2C1D1D73510094BE95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2B1D1D73510094BE95 /* main.m */; };
 		6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */; };
@@ -323,6 +324,8 @@
 		6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
 		6BAB42371D4ED39D0029B8A5 /* UIApplication+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+addition.h"; sourceTree = "<group>"; };
 		6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+addition.m"; sourceTree = "<group>"; };
+		6BB50FB11D665393002CAD0B /* AfterEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AfterEventViewController.h; sourceTree = "<group>"; };
+		6BB50FB21D665393002CAD0B /* AfterEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AfterEventViewController.m; sourceTree = "<group>"; };
 		6BCBC3B31D4F393700B5AF35 /* UIViewController+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+addition.h"; sourceTree = "<group>"; };
 		6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+addition.m"; sourceTree = "<group>"; };
 		6BD8EF271D1D73510094BE95 /* CCIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -657,6 +660,8 @@
 				286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */,
 				6BE250201D3133FC005FB4B2 /* GuideViewController.h */,
 				6BE250211D3133FC005FB4B2 /* GuideViewController.m */,
+				6BB50FB11D665393002CAD0B /* AfterEventViewController.h */,
+				6BB50FB21D665393002CAD0B /* AfterEventViewController.m */,
 			);
 			name = CheckinOverlay;
 			sourceTree = "<group>";
@@ -928,6 +933,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */,
 				28A7C5621D5F1AD90079BB12 /* DeepCopy.m in Sources */,
 				5FB4D48F1D3B242C005BF382 /* MoreCell.m in Sources */,
 				5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */,
