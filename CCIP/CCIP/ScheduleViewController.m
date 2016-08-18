@@ -124,7 +124,7 @@
     SEND_GAI(@"ScheduleViewController");
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(appplicationIsActive:)
+                                             selector:@selector(appplicationDidBecomeActive:)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
 }
@@ -139,7 +139,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)appplicationIsActive:(NSNotification *)notification {
+- (void)appplicationDidBecomeActive:(NSNotification *)notification {
     [self goToSchedule];
 }
 

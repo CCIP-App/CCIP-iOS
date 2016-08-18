@@ -32,7 +32,7 @@
                                              forState:UIControlStateSelected];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(appplicationIsActive:)
+                                             selector:@selector(appplicationDidBecomeActive:)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
     // setting selected image color from original image with replace custom color filter
@@ -55,7 +55,7 @@
     [self handleShortcutItem];
 }
 
-- (void)appplicationIsActive:(NSNotification *)notification {
+- (void)appplicationDidBecomeActive:(NSNotification *)notification {
     NSLog(@"Application Did Become Active");
     [self handleShortcutItem];
 }

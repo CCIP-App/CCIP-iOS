@@ -92,7 +92,7 @@
     [self.navigationItem.titleView addGestureRecognizer:tapGesture];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(appplicationIsActive:)
+                                             selector:@selector(appplicationDidBecomeActive:)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
     
@@ -118,7 +118,7 @@
     [self closeBarcodePickerOverlay];
 }
 
-- (void)appplicationIsActive:(NSNotification *)notification {
+- (void)appplicationDidBecomeActive:(NSNotification *)notification {
     [self reloadCard];
 }
 
