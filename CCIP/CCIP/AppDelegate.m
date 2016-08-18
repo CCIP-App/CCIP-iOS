@@ -9,6 +9,7 @@
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import <ScanditBarcodeScanner/ScanditBarcodeScanner.h>
 #import <iRate/iRate.h>
+#import <iVersion/iVersion.h>
 #import "UIAlertController+additional.h"
 #import "UIImage+addition.h"
 #import "UIColor+addition.h"
@@ -51,6 +52,12 @@
     [iRate sharedInstance].usesUntilPrompt = 5;
     //enable preview mode
     [iRate sharedInstance].previewMode = NO;
+    
+    //configure iVersion
+    //set custom BundleID
+    [iVersion sharedInstance].applicationBundleID = @"org.coscup.CCIP-iOS";
+    //enable preview mode
+    [iVersion sharedInstance].previewMode = NO;
 }
 
 + (void)setAccessToken:(NSString *)accessToken {
