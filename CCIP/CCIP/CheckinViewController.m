@@ -506,7 +506,6 @@
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
-
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
@@ -523,30 +522,28 @@
         NSString *result = feature.messageString;
         NSLog(@"QR: %@", result);
         
-        [picker dismissViewControllerAnimated:YES completion:^{
-            GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_LANDING(result)];
-            [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
-                if (json != nil) {
-                    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
-                    
-                    if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
-                        [AppDelegate setLoginSession:YES];
-                        [AppDelegate setAccessToken:result];
-                        [self performSelector:@selector(reloadCard)
-                                   withObject:nil
-                                   afterDelay:0.5f];
-                    } else if ([userInfo objectForKey:@"message"] && [[userInfo objectForKey:@"message"] isEqualToString:@"invalid token"]) {
-                        UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
-                                                                    withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
-                                                               cancelButtonText:NSLocalizedString(@"GotIt", nil)
-                                                                    cancelStyle:UIAlertActionStyleCancel
-                                                                   cancelAction:^(UIAlertAction *action) {
-                                                                       //[self callBarcodePickerOverlay];
-                                                                   }];
+        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_LANDING(result)];
+        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
+            if (json != nil) {
+                NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
+                
+                if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
+                    [AppDelegate setLoginSession:YES];
+                    [AppDelegate setAccessToken:result];
+                    [picker dismissViewControllerAnimated:YES completion:^{
+                        [self reloadCard];
+                    }];
+                } else if ([userInfo objectForKey:@"message"] && [[userInfo objectForKey:@"message"] isEqualToString:@"invalid token"]) {
+                    UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
+                                                                withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
+                                                           cancelButtonText:NSLocalizedString(@"GotIt", nil)
+                                                                cancelStyle:UIAlertActionStyleCancel
+                                                               cancelAction:nil];
+                    [picker dismissViewControllerAnimated:YES completion:^{
                         [ac showAlert:nil];
-                    }
+                    }];
                 }
-            }];
+            }
         }];
     }
 }
