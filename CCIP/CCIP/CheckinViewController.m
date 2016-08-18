@@ -514,6 +514,14 @@
     if ([mediaType isEqualToString:@"public.image"]) {
         UIImage *srcImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         
+        CIContext *context = [CIContext contextWithOptions:nil];
+        CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:context options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
+        CIImage *image = [CIImage imageWithCGImage:srcImage.CGImage];
+        NSArray *features = [detector featuresInImage:image];
+        CIQRCodeFeature *feature = [features firstObject];
+        
+        NSString *result = feature.messageString;
+        NSLog(@"QR: %@", result);
     }
     
     [picker dismissViewControllerAnimated:YES completion:nil];
