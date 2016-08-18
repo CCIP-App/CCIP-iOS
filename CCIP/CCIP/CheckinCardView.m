@@ -7,10 +7,11 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import "UIAlertController+additional.h"
+#import "UIColor+addition.h"
+#import "GatewayWebService/GatewayWebService.h"
 #import "CheckinCardView.h"
 #import "AppDelegate.h"
-#import "UIAlertController+additional.h"
-#import "GatewayWebService/GatewayWebService.h"
 
 @interface CheckinCardView()
 
@@ -46,8 +47,8 @@
 
 - (IBAction)checkinBtnTouched:(id)sender {
     UIAlertController *ac = nil;
-    UIColor *defaultColor = [UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1];
-    UIColor *disabledColor = [UIColor colorWithRed:155/255.0 green:155/255.0 blue:155/255.0 alpha:1];
+    UIColor *defaultColor = [UIColor colorFromHtmlColor:@"#3d983c"];
+    UIColor *disabledColor = [UIColor colorFromHtmlColor:@"#9b9b9b"];
     NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[self.scenario objectForKey:@"available_time"] integerValue]];
     NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[self.scenario objectForKey:@"expire_time"] integerValue]];
     NSDate *nowTime = [NSDate new];
