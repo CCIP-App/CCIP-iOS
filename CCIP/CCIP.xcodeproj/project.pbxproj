@@ -440,6 +440,7 @@
 		288164E21D4F2F03005C68EA /* CheckinTab */ = {
 			isa = PBXGroup;
 			children = (
+				6B19ADF01D65E5D600CDE80D /* CheckinOverlay */,
 				5FB4D4911D3B57FA005BF382 /* CheckinViewController.h */,
 				5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */,
 				2839BF471D4CDDAD0062F36D /* CheckinCardViewController.h */,
@@ -649,6 +650,17 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		6B19ADF01D65E5D600CDE80D /* CheckinOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				286E28A31D60D35B00C5CB94 /* InvalidNetworkMessageViewController.h */,
+				286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */,
+				6BE250201D3133FC005FB4B2 /* GuideViewController.h */,
+				6BE250211D3133FC005FB4B2 /* GuideViewController.m */,
+			);
+			name = CheckinOverlay;
+			sourceTree = "<group>";
+		};
 		6BCBC3B61D4F3BB600B5AF35 /* CustomSegue */ = {
 			isa = PBXGroup;
 			children = (
@@ -696,10 +708,6 @@
 				288164E71D4F2FA3005C68EA /* AnnounceTab */,
 				288164E31D4F2F24005C68EA /* IRCTab */,
 				288164E51D4F2F47005C68EA /* MoreTab */,
-				286E28A31D60D35B00C5CB94 /* InvalidNetworkMessageViewController.h */,
-				286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */,
-				6BE250201D3133FC005FB4B2 /* GuideViewController.h */,
-				6BE250211D3133FC005FB4B2 /* GuideViewController.m */,
 			);
 			path = CCIP;
 			sourceTree = "<group>";
