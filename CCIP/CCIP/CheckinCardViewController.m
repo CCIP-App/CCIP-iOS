@@ -6,6 +6,9 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
+#include <QuartzCore/QuartzCore.h>
+#import "UIColor+addition.h"
+#import "GatewayWebService/GatewayWebService.h"
 #import "CheckinCardViewController.h"
 #import "CheckinCardView.h"
 
@@ -36,6 +39,20 @@
 
 - (void)setScenario:(NSDictionary *)scenario {
     [self.cardView setScenario:scenario];
+    
+    if ([nilCoalesce([scenario objectForKey:@"id"]) isEqualToString:@"vipkit"] && [scenario objectForKey:@"disabled"] == nil) {
+        [self.cardView.layer setShadowColor:[[UIColor colorFromHtmlColor:@"#cff1"] CGColor]];
+        [self.cardView.layer setShadowRadius:20.0f];
+        CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"shadowOpacity"];
+        animation.fromValue = @(0.3f);
+        animation.toValue = @(0.5f);
+        animation.repeatCount = HUGE_VAL;
+        animation.duration = 1.0;
+        animation.autoreverses = YES;
+        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        [self.cardView.layer addAnimation:animation forKey:@"pulse"];
+    }
 }
 
 - (void)setId:(NSString *)id {
