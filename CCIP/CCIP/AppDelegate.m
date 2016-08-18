@@ -93,6 +93,10 @@
     [sView setShimmering:isDevMode];
 }
 
++ (void)setLoginSession:(BOOL)isLogin {
+    [[AppDelegate appDelegate] setIsLoginSession:isLogin];
+}
+
 + (BOOL)haveAccessToken {
     return ([[AppDelegate accessToken] length] > 0) ? YES : NO;
 }

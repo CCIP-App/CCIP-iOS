@@ -358,13 +358,14 @@
                 NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
                 
                 if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
+                    [AppDelegate setLoginSession:YES];
                     [AppDelegate setAccessToken:code.data];
                         [self performSelector:@selector(reloadCard)
                                    withObject:nil
-                                   afterDelay:0.5];
+                                   afterDelay:0.5f];
                         [self performSelector:@selector(closeBarcodePickerOverlay)
                                    withObject:nil
-                                   afterDelay:0.5];
+                                   afterDelay:0.5f];
                 } else if ([userInfo objectForKey:@"message"] && [[userInfo objectForKey:@"message"] isEqualToString:@"invalid token"]) {
                     UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
                                                                 withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)

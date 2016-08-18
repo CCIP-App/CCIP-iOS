@@ -148,9 +148,11 @@
                 NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
                 
                 if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
+                    [AppDelegate setLoginSession:YES];
                     [AppDelegate setAccessToken:code];
                     [[AppDelegate appDelegate].checkinView reloadCard];
-                    [self dismissViewControllerAnimated:YES completion:nil];
+                    [self dismissViewControllerAnimated:YES
+                                             completion:nil];
                 } else if ([userInfo objectForKey:@"message"] && [[userInfo objectForKey:@"message"] isEqualToString:@"invalid token"]) {
                     [self showAlert];
                 }
