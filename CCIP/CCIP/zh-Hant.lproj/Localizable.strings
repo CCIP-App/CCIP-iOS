@@ -61,7 +61,7 @@
 "NetworkAlert" = "請連至會場網路";
 "NetworkAlertDesc" = "只有在連線到會場網路時，才可使用報到功能";
 "InvalidTokenAlert" = "無效的驗證碼";
-"InvalidTokenTokenDesc" = "您使用的驗證碼無效，請確認後再使用！";
+"InvalidTokenDesc" = "您使用的驗證碼無效，請確認後再使用！";
 "NotAvailableTitle" = "錯誤訊息";
 "NotAvailableMessage" = "目前尚未開放使用";
 "NotAvailableButtonOk" = "知道了";
