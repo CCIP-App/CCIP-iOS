@@ -20,13 +20,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    [self.layer setCornerRadius:15.0f]; // set cornerRadius as you want.
-    [self.layer setMasksToBounds:NO];
-    [self.layer setShadowOffset:CGSizeMake(10, 15)];
-    [self.layer setShadowRadius:5.0f];
-    [self.layer setShadowOpacity:0.3f];
-    
     [self.checkinBtn.layer setCornerRadius:10.0f];
 }
 

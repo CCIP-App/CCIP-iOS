@@ -9,11 +9,24 @@
 #import "CheckinCardViewController.h"
 #import "CheckinCardView.h"
 
+@interface CheckinCardViewController()
+
+@property (strong, nonatomic) CheckinCardView *cardView;
+
+@end
+
 @implementation CheckinCardViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.cardView = (CheckinCardView *)self.view;;
+    
+    [self.cardView.layer setCornerRadius:15.0f]; // set cornerRadius as you want.
+    [self.cardView.layer setMasksToBounds:YES];
+    [self.cardView.layer setShadowOffset:CGSizeMake(10, 15)];
+    [self.cardView.layer setShadowRadius:5.0f];
+    [self.cardView.layer setShadowOpacity:0.3f];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -22,23 +35,23 @@
 }
 
 - (void)setScenario:(NSDictionary *)scenario {
-    [((CheckinCardView *)self.view) setScenario:scenario];
+    [self.cardView setScenario:scenario];
 }
 
 - (void)setId:(NSString *)id {
-    [((CheckinCardView *)self.view) setId:id];
+    [self.cardView setId:id];
 }
 
 - (void)setUsed:(NSNumber *)used {
-    [((CheckinCardView *)self.view) setUsed:used];
+    [self.cardView setUsed:used];
 }
 
 - (void)setDisabled:(NSNumber *)disabled {
-    [((CheckinCardView *)self.view) setDisabled:disabled];
+    [self.cardView setDisabled:disabled];
 }
 
 - (void)setDelegate:(CheckinViewController *)delegate {
-    [((CheckinCardView *)self.view) setDelegate:delegate];
+    [self.cardView setDelegate:delegate];
 }
 
 /*
