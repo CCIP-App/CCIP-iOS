@@ -27,69 +27,68 @@
     self.delegate = self;
     self.dataSource = self;
     
+    NSMutableArray *sponsorListArray = [NSMutableArray new];
+    
+    dispatch_semaphore_t semaLevel = dispatch_semaphore_create(0);
+    
     GatewayWebService *sponsor_level_ws = [[GatewayWebService alloc] initWithURL:SPONSOR_LEVEL_URL];
     [sponsor_level_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
         if (json != nil) {
             self.sponsorLevelJsonArray = json;
-            NSMutableArray *sponsorListArray = [[NSMutableArray alloc] init];
-            
-            for (NSInteger i=0; i<[self.sponsorLevelJsonArray count]; ++i) {
-                [sponsorListArray addObject:[[NSMutableArray alloc] init]];
-            }
-            
-            GatewayWebService *sponsor_list_ws = [[GatewayWebService alloc] initWithURL:SPONSOR_LIST_URL];
-            [sponsor_list_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
-                if (json != nil) {
-                    for (NSDictionary *sponsor in json) {
-                        NSString *levelStr = [sponsor objectForKey:@"level"];
-                        NSNumber *number = [NSNumber numberWithLongLong: levelStr.longLongValue];
-                        NSUInteger level = number.unsignedIntegerValue - 1;
-                        [[sponsorListArray objectAtIndex:level] addObject:sponsor];
-                    }
-                    
-                    for (NSDictionary *sponsorLevel in self.sponsorLevelJsonArray) {
-                        NSInteger index = [self.sponsorLevelJsonArray indexOfObject:sponsorLevel];
-                        NSMutableArray *oldSponsorListArray = [sponsorListArray objectAtIndex:index];
-                        NSDictionary *temp;
-                        for (int i = 0; i < [oldSponsorListArray count]; i++)
-                        {
-                            for (int j = 0; j < [oldSponsorListArray count] - 1 - i; j++) {
-                                NSInteger thisPlace = [[[oldSponsorListArray objectAtIndex:j] valueForKey:@"place"] integerValue];
-                                NSInteger nextPlace = [[[oldSponsorListArray objectAtIndex:j + 1] valueForKey:@"place"] integerValue];
-                                if (thisPlace > nextPlace)
-                                {
-                                    temp = [oldSponsorListArray objectAtIndex:j];
-                                    [oldSponsorListArray replaceObjectAtIndex:j withObject:[oldSponsorListArray objectAtIndex:j+1]];
-                                    [oldSponsorListArray replaceObjectAtIndex:j + 1 withObject:temp];
-                                }
-                            }
-                            [sponsorListArray replaceObjectAtIndex:index withObject:oldSponsorListArray];
-                        }
-                    }
-                    
-                    self.sponsorArray = sponsorListArray;
-                    
-                    [self beginUpdates];
-                    
-                    [self insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.sponsorLevelJsonArray count])]
-                        withRowAnimation:UITableViewRowAnimationFade];
-                    
-                    NSMutableArray *indexPaths = [NSMutableArray new];
-                    for (int sectionNum = 0; sectionNum < [self.sponsorLevelJsonArray count]; sectionNum++) {
-                        for (int rowNum = 0; rowNum < [[self.sponsorArray objectAtIndex:sectionNum] count]; rowNum++) {
-                            [indexPaths addObject:[NSIndexPath indexPathForRow:rowNum
-                                                                     inSection:sectionNum]];
-                        }
-                    }
-                    [self insertRowsAtIndexPaths:indexPaths
-                                withRowAnimation:UITableViewRowAnimationFade];
-                    
-                    [self endUpdates];
-                    //[self reloadData];
-                }
-            }];
         }
+        dispatch_semaphore_signal(semaLevel);
     }];
+    
+    while (dispatch_semaphore_wait(semaLevel, DISPATCH_TIME_NOW)) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+    }
+    
+    for (id item in self.sponsorLevelJsonArray) {
+        NSLog(@"Level: %@", item);
+        [sponsorListArray addObject:[NSMutableArray new]];
+    }
+    
+    dispatch_semaphore_t semaList = dispatch_semaphore_create(0);
+    
+    GatewayWebService *sponsor_list_ws = [[GatewayWebService alloc] initWithURL:SPONSOR_LIST_URL];
+    [sponsor_list_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
+        if (json != nil) {
+            for (NSDictionary *sponsor in json) {
+                NSUInteger index = [[sponsor objectForKey:@"level"] unsignedIntegerValue] - 1;
+                [[sponsorListArray objectAtIndex:index] addObject:sponsor];
+            }
+        }
+        dispatch_semaphore_signal(semaList);
+    }];
+    
+    while (dispatch_semaphore_wait(semaList, DISPATCH_TIME_NOW)) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+    }
+    
+    NSSortDescriptor *level_sorter = [[NSSortDescriptor alloc] initWithKey:@"@max.level"
+                                                                 ascending:YES];
+    NSSortDescriptor *place_sorter = [[NSSortDescriptor alloc] initWithKey:@"@max.place"
+                                                                 ascending:YES];
+    self.sponsorArray = [sponsorListArray sortedArrayUsingDescriptors:@[ level_sorter, place_sorter ]];
+    
+    [self beginUpdates];
+    
+    [self insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.sponsorLevelJsonArray count])]
+        withRowAnimation:UITableViewRowAnimationFade];
+    
+    NSMutableArray *indexPaths = [NSMutableArray new];
+    for (int sectionNum = 0; sectionNum < [self.sponsorLevelJsonArray count]; sectionNum++) {
+        for (int rowNum = 0; rowNum < [[self.sponsorArray objectAtIndex:sectionNum] count]; rowNum++) {
+            [indexPaths addObject:[NSIndexPath indexPathForRow:rowNum
+                                                     inSection:sectionNum]];
+        }
+    }
+    [self insertRowsAtIndexPaths:indexPaths
+                withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self endUpdates];
     
     SEND_GAI(@"SponsorTableView");
 }
@@ -101,12 +100,15 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[self.sponsorArray objectAtIndex:section] count];
+    NSPredicate *secs = [NSPredicate predicateWithFormat:@"ANY level = %ld", section + 1];
+    NSArray *filteredArray = [[self.sponsorArray filteredArrayUsingPredicate:secs] firstObject];
+    return filteredArray != nil ? [filteredArray count] : 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSDictionary *level = [self.sponsorLevelJsonArray objectAtIndex:section];
-    NSString* language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
+    NSPredicate *secs = [NSPredicate predicateWithFormat:@"level = %ld", section + 1];
+    NSDictionary *level = [[self.sponsorLevelJsonArray filteredArrayUsingPredicate:secs] firstObject];
+    NSString *language = NSLocalizedString(@"CurrentLang", nil);
     if ([language containsString:@"zh"]) {
         return [level objectForKey:@"namezh"];
     } else {
@@ -115,17 +117,25 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString* language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
     SponsorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SponsorCell" forIndexPath:indexPath];
     
-    if ([language containsString:@"zh"]) {
-        cell.sponsorTitle.text = [[[self.sponsorArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:@"namezh"];
+    NSString *language = NSLocalizedString(@"CurrentLang", nil);
+    
+    NSPredicate *secs = [NSPredicate predicateWithFormat:@"ANY level = %ld", indexPath.section + 1];
+    NSPredicate *rows = [NSPredicate predicateWithFormat:@"place = %ld", indexPath.row + 1];
+    NSArray *filteredSec = [[self.sponsorArray filteredArrayUsingPredicate:secs] firstObject];
+    NSDictionary *filteredRow = [[filteredSec filteredArrayUsingPredicate:rows] firstObject];
+    
+    if ([language containsString:@"en"]) {
+        cell.sponsorTitle.text = [filteredRow objectForKey:@"nameen"];
     } else {
-        cell.sponsorTitle.text = [[[self.sponsorArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:@"nameen"];
+        cell.sponsorTitle.text = [filteredRow objectForKey:@"namezh"];
     }
     
-    NSString *logo = [NSString stringWithFormat:@"%@%@", COSCUP_BASE_URL, [[[self.sponsorArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:@"logourl"]];
-    [cell.sponsorImg sd_setImageWithURL:[NSURL URLWithString:logo] placeholderImage:nil options:SDWebImageRetryFailed];
+    NSString *logo = [NSString stringWithFormat:@"%@%@", COSCUP_BASE_URL, [filteredRow objectForKey:@"logourl"]];
+    [cell.sponsorImg sd_setImageWithURL:[NSURL URLWithString:logo]
+                       placeholderImage:nil
+                                options:SDWebImageRetryFailed];
     
     return cell;
 }
