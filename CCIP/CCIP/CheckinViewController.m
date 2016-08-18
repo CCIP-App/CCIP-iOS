@@ -243,13 +243,15 @@
     [self handleQRButton];
 
     if (![AppDelegate haveAccessToken]) {
-        [self performSegueWithIdentifier:@"ShowGuide"
-                                  sender:self.cards];
-        self.userInfo = [NSDictionary new];
-        self.scenarios = [NSArray new];
-        [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
-                                               value:@""];
-        [self reloadAndGoToCard];
+        if (self.scanditBarcodePicker == nil) {
+            [self performSegueWithIdentifier:@"ShowGuide"
+                                      sender:self.cards];
+            self.userInfo = [NSDictionary new];
+            self.scenarios = [NSArray new];
+            [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
+                                                   value:@""];
+            [self reloadAndGoToCard];
+        }
     } else {
         GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS([AppDelegate accessToken])];
         [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
