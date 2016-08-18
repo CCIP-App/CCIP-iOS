@@ -33,7 +33,7 @@
 "UseButton_day2lunch" = "Confirm to get day 2 lunch?";
 "UseButton" = "USE";
 "UseButtonPressed" = "USED";
-"ConfirmAlertText" = "Ready to use with staff's instruction?";
+"ConfirmAlertText" = "Have you followed the staffs instructions?";
 "Okay" = "Okay";
 "CONFIRM" = "CONFIRM";
 "Cancel" = "Cancel";
@@ -51,7 +51,7 @@
 "Libraries" = "Open Source Libraries";
 "Introduction" = "Introduction";
 "Speaker" = "Speaker";
-"GuideViewMessage" = "Please reference your attendee detail information, and your will found your access token.\n\nPlease copy and paste the token into next text field or click the token link in the reference mail.";
+"GuideViewMessage" = "Please reference your attendee detail information, and you will find your access token.\n\nPlease copy and paste the token into next text field or click the token link in the reference mail.";
 "GuideViewButton" = "Redeem";
 "GuideViewTokenErrorTitle" = "Wrong Redeem Token";
 "GuideViewTokenErrorDesc" = "Please reference the pre-notification, and your will found the redeem code from the mail, or you can click that redeem code link directly. ";
@@ -66,7 +66,7 @@
 "NotAvailableMessage" = "Not unavailable at this time.";
 "NotAvailableButtonOk" = "Okay";
 "ExpiredTitle" = "Error Message";
-"ExpiredMessage" = "Can not use at this time, because it has been expired.";
+"ExpiredMessage" = "Could not use at this time, because it has been expired.";
 "ExpiredButtonOk" = "Okay";
 "ExpiredOrNotAvailable" = "Expired or not available";
 "Networking_Broken" = "Error while networking issues";
