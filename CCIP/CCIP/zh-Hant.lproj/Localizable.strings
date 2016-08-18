@@ -69,6 +69,8 @@
 "ExpiredMessage" = "已超過使用的期限";
 "ExpiredButtonOk" = "知道了";
 "ExpiredOrNotAvailable" = "已過期或尚未開放使用";
+"QRFileNotAvailableTitle" = "擷取錯誤！";
+"QRFileNotAvailableDesc" = "該圖檔無法擷取出 QR Code，請重試";
 "Networking_Broken" = "網路連線異常";
 "Networking_WrongWiFi" = "請連上 COSCUP 提供的無線網路，才能使用";
 "LoginGreeting" = "嗨 %@，歡迎您加入 COSCUP 2016，盡情享受這場盛夏饗宴吧！";

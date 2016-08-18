@@ -69,6 +69,8 @@
 "ExpiredMessage" = "Could not use at this time, because it has been expired.";
 "ExpiredButtonOk" = "Okay";
 "ExpiredOrNotAvailable" = "Expired or not available";
+"QRFileNotAvailableTitle" = "Extract Error!!";
+"QRFileNotAvailableDesc" = "Can not extract QR Code from the image";
 "Networking_Broken" = "Error while networking issues";
 "Networking_WrongWiFi" = "Please connect to the wifi provided by COSCUP";
 "LoginGreeting" = "Hi %@, welcome to COSCUP 2016, enjoy this summer festival of fun!";

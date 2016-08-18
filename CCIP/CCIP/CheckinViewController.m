@@ -513,38 +513,54 @@
     if ([mediaType isEqualToString:@"public.image"]) {
         UIImage *srcImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         
-        CIContext *context = [CIContext contextWithOptions:nil];
-        CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:context options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
+        CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:nil options:@{ CIDetectorAccuracy: CIDetectorAccuracyHigh }];
         CIImage *image = [CIImage imageWithCGImage:srcImage.CGImage];
         NSArray *features = [detector featuresInImage:image];
+        for (CIQRCodeFeature *feature in features) {
+            NSLog(@"%@", feature.messageString);
+        }
         CIQRCodeFeature *feature = [features firstObject];
         
         NSString *result = feature.messageString;
         NSLog(@"QR: %@", result);
         
-        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_LANDING(result)];
-        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
-            if (json != nil) {
-                NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
-                
-                if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
-                    [AppDelegate setLoginSession:YES];
-                    [AppDelegate setAccessToken:result];
-                    [picker dismissViewControllerAnimated:YES completion:^{
-                        [self reloadCard];
-                    }];
-                } else if ([userInfo objectForKey:@"message"] && [[userInfo objectForKey:@"message"] isEqualToString:@"invalid token"]) {
-                    UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
-                                                                withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
-                                                           cancelButtonText:NSLocalizedString(@"GotIt", nil)
-                                                                cancelStyle:UIAlertActionStyleCancel
-                                                               cancelAction:nil];
-                    [picker dismissViewControllerAnimated:YES completion:^{
-                        [ac showAlert:nil];
-                    }];
+        __block UIAlertController *ac;
+        if (result != nil) {
+            GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_LANDING(result)];
+            [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
+                if (json != nil) {
+                    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
+                    
+                    if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
+                        [AppDelegate setLoginSession:YES];
+                        [AppDelegate setAccessToken:result];
+                        [picker dismissViewControllerAnimated:YES completion:^{
+                            [self reloadCard];
+                        }];
+                    } else if ([userInfo objectForKey:@"message"] && [[userInfo objectForKey:@"message"] isEqualToString:@"invalid token"]) {
+                        ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
+                                                 withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
+                                            cancelButtonText:NSLocalizedString(@"GotIt", nil)
+                                                 cancelStyle:UIAlertActionStyleCancel
+                                                cancelAction:nil];
+                        [picker dismissViewControllerAnimated:YES
+                                                   completion:^{
+                                                       [ac showAlert:nil];
+                                                   }];
+                    }
                 }
-            }
-        }];
+            }];
+        } else {
+            ac = [UIAlertController alertOfTitle:NSLocalizedString(@"QRFileNotAvailableTitle", nil)
+                                     withMessage:NSLocalizedString(@"QRFileNotAvailableDesc", nil)
+                                cancelButtonText:NSLocalizedString(@"GotIt", nil)
+                                     cancelStyle:UIAlertActionStyleCancel
+                                    cancelAction:nil];
+            [picker dismissViewControllerAnimated:YES
+                                       completion:^{
+                                           [ac showAlert:nil];
+                                       }];
+        }
     }
 }
 
