@@ -1,0 +1,6 @@
+framework module iVersion {
+  umbrella header "iVersion-umbrella.h"
+
+  export *
+  module * { export * }
+}

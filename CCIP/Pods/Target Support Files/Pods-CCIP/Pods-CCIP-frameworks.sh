@@ -96,6 +96,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/UICKeyChainStore/UICKeyChainStore.framework"
   install_framework "$BUILT_PRODUCTS_DIR/iCarousel/iCarousel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/iRate/iRate.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/iVersion/iVersion.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/BLKFlexibleHeightBar/BLKFlexibleHeightBar.framework"
@@ -110,4 +111,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/UICKeyChainStore/UICKeyChainStore.framework"
   install_framework "$BUILT_PRODUCTS_DIR/iCarousel/iCarousel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/iRate/iRate.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/iVersion/iVersion.framework"
 fi

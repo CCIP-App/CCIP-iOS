@@ -22,6 +22,7 @@ PODS:
   - iCarousel (1.8.2)
   - ICViewPager (1.5.1)
   - iRate (1.11.5)
+  - iVersion (1.11.4)
   - MMMarkdown (0.5.5)
   - NJKWebViewProgress (0.2.3):
     - NJKWebViewProgress/Core (= 0.2.3)
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - iCarousel (~> 1.8)
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
   - iRate (~> 1.11)
+  - iVersion (from `https://github.com/FrankWu100/iVersion`)
   - MMMarkdown (~> 0.5)
   - NJKWebViewProgress (~> 0.2)
   - OneSignal
@@ -55,11 +57,16 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   ICViewPager:
     :git: https://github.com/FrankWu100/ICViewPager
+  iVersion:
+    :git: https://github.com/FrankWu100/iVersion
 
 CHECKOUT OPTIONS:
   ICViewPager:
     :commit: 8c6f30faa4e76ed172bf2e053124ec100e33a521
     :git: https://github.com/FrankWu100/ICViewPager
+  iVersion:
+    :commit: 8de31c2756ce2cfdc1fe5463783fa12da57fbf62
+    :git: https://github.com/FrankWu100/iVersion
 
 SPEC CHECKSUMS:
   BLKFlexibleHeightBar: b27572a69633d8e33f1f2bbc486b04d8e86f742d
@@ -75,6 +82,7 @@ SPEC CHECKSUMS:
   iCarousel: 67c8a43da5a46795b56aadfc96cd36a16f6149b2
   ICViewPager: c1278b67eceac7252d48252829c3c703285dfb76
   iRate: 1546f8ae5ed1565e688bd529f7484780734757e9
+  iVersion: 2b6ffe708672cb494ba3cab150a94800c2892e81
   MMMarkdown: 1af97166ce0f6d6e0cb05695665492195d27c3f1
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
@@ -83,6 +91,6 @@ SPEC CHECKSUMS:
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: 522f7658e38a7b9dfdd0d190c114948e2203f045
+PODFILE CHECKSUM: 2dffb2d825bacab0f8bf03ee7ea9d23162783ac3
 
 COCOAPODS: 1.0.1
