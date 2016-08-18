@@ -14,12 +14,13 @@
 #define CC_ANNOUNCEMENT         ([__API_HOST__ stringByAppendingFormat:@"announcement"])
 #define CC_LANDING(token)       ([__API_HOST__ stringByAppendingFormat:@"landing?token=%@", token])
 
-#define COSCUP_WEB_URL          (@"https://coscup.org")
-#define ROOM_DATA_URL           (@"https://coscup.org/2016-assets/json/room.json")
-#define PROGRAM_DATA_URL        (@"https://coscup.org/2016-assets/json/program.json")
-#define PROGRAM_TYPE_DATA_URL   (@"https://coscup.org/2016-assets/json/type.json")
-#define SPONSOR_LEVEL_URL       (@"https://coscup.org/2016-assets/json/level.json")
-#define SPONSOR_LIST_URL        (@"https://coscup.org/2016-assets/json/sponsor.json")
+#define COSCUP_BASE_URL         (@"https://coscup.org")
+#define COSCUP_JSON_DATA(asset) ([COSCUP_BASE_URL stringByAppendingFormat:@"/2016-assets/json/%@.json", asset])
+#define ROOM_DATA_URL           (COSCUP_JSON_DATA(@"room"))
+#define PROGRAM_DATA_URL        (COSCUP_JSON_DATA(@"program"))
+#define PROGRAM_TYPE_DATA_URL   (COSCUP_JSON_DATA(@"type"))
+#define SPONSOR_LEVEL_URL       (COSCUP_JSON_DATA(@"level"))
+#define SPONSOR_LIST_URL        (COSCUP_JSON_DATA(@"sponsor"))
 
 #define STAFF_DATA_URL          (@"https://staff.coscup.org/api/staffgroups/?format=json")
 

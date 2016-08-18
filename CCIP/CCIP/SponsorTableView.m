@@ -124,7 +124,7 @@
         cell.sponsorTitle.text = [[[self.sponsorArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:@"nameen"];
     }
     
-    NSString *logo = [NSString stringWithFormat:@"%@%@", COSCUP_WEB_URL, [[[self.sponsorArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:@"logourl"]];
+    NSString *logo = [NSString stringWithFormat:@"%@%@", COSCUP_BASE_URL, [[[self.sponsorArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:@"logourl"]];
     [cell.sponsorImg sd_setImageWithURL:[NSURL URLWithString:logo] placeholderImage:nil options:SDWebImageRetryFailed];
     
     return cell;
