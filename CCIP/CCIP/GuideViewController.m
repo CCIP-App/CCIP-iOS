@@ -36,6 +36,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appplicationDidEnterBackground:)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];
     
     SEND_GAI(@"GuideViewController");
     
@@ -57,6 +61,11 @@
                                                self.view.frame.size.height);
         self.isRelayout = true;
     }
+}
+
+- (void)appplicationDidEnterBackground:(NSNotification *)notification {
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

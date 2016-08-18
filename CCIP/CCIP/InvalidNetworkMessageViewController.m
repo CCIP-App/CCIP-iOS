@@ -26,6 +26,10 @@
     // Do any additional setup after loading the view.
     [self.messageLabel setText:self.message];
     [self.view setAutoresizingMask:UIViewAutoresizingNone];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appplicationDidEnterBackground:)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
 }
 
 - (void)viewWillLayoutSubviews{
@@ -50,6 +54,10 @@
                              completion:nil];
 }
 
+- (void)appplicationDidEnterBackground:(NSNotification *)notification {
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
+}
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
