@@ -484,6 +484,8 @@
         [button setTitle:@"Files" forState:UIControlStateNormal];
         [button setTintColor:[UIColor blackColor]];
         
+        [button addTarget:self action:@selector(getImageFromLibrary) forControlEvents:UIControlEventTouchUpInside];
+
         [self.scanditBarcodePicker.view addSubview:button];
         
         [self.scanditBarcodePicker startScanningInPausedState:YES completionHandler:^{
@@ -491,8 +493,30 @@
                                             withObject:nil
                                             afterDelay:0.5];
         }];
+    }
+}
+
+- (void)getImageFromLibrary {
+    
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.delegate = self;
+    
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    
+    if ([mediaType isEqualToString:@"public.image"]) {
+        UIImage *srcImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         
     }
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark iCarousel methods
