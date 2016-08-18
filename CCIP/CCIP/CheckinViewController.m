@@ -75,7 +75,8 @@
     theViewGradient.startPoint = CGPointMake(0.2, 0);
     theViewGradient.endPoint = CGPointMake(0.8, 1);
     //   Add gradient to view
-    [self.cards.layer insertSublayer:theViewGradient atIndex:0];
+    [self.cards.layer insertSublayer:theViewGradient
+                             atIndex:0];
     
     // Init configure pageControl
     self.pageControl = [UIPageControl new];
@@ -86,13 +87,15 @@
     SEND_GAI(@"CheckinViewController");
     
     self.navigationItem.titleView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(navSingleTap)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                 action:@selector(navSingleTap)];
     [self.navigationItem.titleView addGestureRecognizer:tapGesture];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(appplicationIsActive:)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -356,13 +359,20 @@
                 
                 if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
                     [AppDelegate setAccessToken:code.data];
-                        [self performSelector:@selector(reloadCard) withObject:nil afterDelay:0.5];
-                        [self performSelector:@selector(closeBarcodePickerOverlay) withObject:nil afterDelay:0.5];
+                        [self performSelector:@selector(reloadCard)
+                                   withObject:nil
+                                   afterDelay:0.5];
+                        [self performSelector:@selector(closeBarcodePickerOverlay)
+                                   withObject:nil
+                                   afterDelay:0.5];
                 } else if ([userInfo objectForKey:@"message"] && [[userInfo objectForKey:@"message"] isEqualToString:@"invalid token"]) {
-                    UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil) withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:^(UIAlertAction *action) {
-                        [self.scanditBarcodePicker resumeScanning];
-                    }];
-                    
+                    UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
+                                                                withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
+                                                           cancelButtonText:NSLocalizedString(@"GotIt", nil)
+                                                                cancelStyle:UIAlertActionStyleCancel
+                                                               cancelAction:^(UIAlertAction *action) {
+                                                                   [self.scanditBarcodePicker resumeScanning];
+                                                               }];
                     [ac showAlert:nil];
                 }
             }
@@ -418,7 +428,8 @@
         // prefer backward facing camera over front-facing cameras.
         scanSettings.cameraFacingPreference = SBSCameraFacingDirectionBack;
         // Enable symbologies that you want to scan
-        [scanSettings setSymbology:SBSSymbologyQR enabled:YES];
+        [scanSettings setSymbology:SBSSymbologyQR
+                           enabled:YES];
         
         self.scanditBarcodePicker = [[SBSBarcodePicker alloc] initWithSettings:scanSettings];
         
@@ -469,7 +480,9 @@
                                                                constant:0.0]];
         
         [self.scanditBarcodePicker startScanningInPausedState:YES completionHandler:^{
-            [self.scanditBarcodePicker performSelector:@selector(startScanning) withObject:nil afterDelay:0.5];
+            [self.scanditBarcodePicker performSelector:@selector(startScanning)
+                                            withObject:nil
+                                            afterDelay:0.5];
         }];
         
     }
