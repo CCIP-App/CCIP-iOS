@@ -23,7 +23,7 @@
     self.cardView = (CheckinCardView *)self.view;;
     
     [self.cardView.layer setCornerRadius:15.0f]; // set cornerRadius as you want.
-    [self.cardView.layer setMasksToBounds:YES];
+    [self.cardView.layer setMasksToBounds:NO];
     [self.cardView.layer setShadowOffset:CGSizeMake(10, 15)];
     [self.cardView.layer setShadowRadius:5.0f];
     [self.cardView.layer setShadowOpacity:0.3f];
