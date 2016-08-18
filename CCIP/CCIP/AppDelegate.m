@@ -22,6 +22,8 @@
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
+@property (readwrite, nonatomic) NSArray *availableDays;
+@property (readwrite, nonatomic) NSArray *availableScenarios;
 @property (readwrite, nonatomic) BOOL isLoginSession;
 @property (strong, readwrite, nonatomic) OneSignal *oneSignal;
 @property (strong, readwrite, nonatomic) SLColorArt *appArt;
@@ -97,6 +99,80 @@
     [[AppDelegate appDelegate] setIsLoginSession:isLogin];
 }
 
++ (BOOL)isBeforeEvent {
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy/MM/dd"];
+    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
+    NSDate *nowDate = [formatter dateFromString:[formatter stringFromDate:[NSDate new]]];
+    NSDate *firstDate = [formatter dateFromString:[[AppDelegate appDelegate].availableDays firstObject]];
+    return [nowDate timeIntervalSince1970] <= [firstDate timeIntervalSince1970];
+}
+
++ (BOOL)isAfterEvent {
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy/MM/dd"];
+    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
+    NSDate *nowDate = [formatter dateFromString:[formatter stringFromDate:[NSDate new]]];
+    NSDate *lastDate = [formatter dateFromString:[[AppDelegate appDelegate].availableDays lastObject]];
+    return [nowDate timeIntervalSince1970] > [lastDate timeIntervalSince1970];
+}
+
++ (NSDate *)firstAvailableDate {
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy/MM/dd"];
+    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
+    if ([AppDelegate isBeforeEvent]) {
+        return [formatter dateFromString:[[AppDelegate appDelegate].availableDays firstObject]];
+    } else if ([AppDelegate isAfterEvent]) {
+        return nil;
+    } else {
+        return [formatter dateFromString:[formatter stringFromDate:[NSDate new]]];
+    }
+}
+
++ (NSArray *)parseDateRange:(NSDictionary *)scenario {
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy/MM/dd"];
+    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
+    NSDate *availDate = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] longValue]];
+    NSDate *expireDate = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] longValue]];
+    NSString *availString = [formatter stringFromDate:availDate];
+    NSString *expireString = [formatter stringFromDate:expireDate];
+    return @[ availString, expireString ];
+}
+
++ (void)parseAvailableDays:(NSArray *)scenarios {
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy/MM/dd"];
+    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
+    NSDate *nowDate = [formatter dateFromString:[formatter stringFromDate:[NSDate new]]];
+    NSMutableArray *aD = [NSMutableArray arrayWithArray:[AppDelegate appDelegate].availableDays];
+    for (NSDictionary *scenario in scenarios) {
+        [aD addObjectsFromArray:[self parseDateRange:scenario]];
+    }
+    [[AppDelegate appDelegate] setAvailableDays:[[NSOrderedSet orderedSetWithArray:[aD valueForKeyPath:@"@distinctUnionOfObjects.self"]] array]];
+    
+    NSMutableArray *newScenarios = [NSMutableArray new];
+    if ([self isBeforeEvent]) {
+        // always add first day data before first comes
+        for (NSDictionary *scenario in scenarios) {
+            NSArray *dates = [AppDelegate parseDateRange:scenario];
+            if ([dates containsObject:[[AppDelegate appDelegate].availableDays firstObject]]) {
+                [newScenarios addObject:scenario];
+            }
+        }
+    } else {
+        // always add now day data
+        for (NSDictionary *scenario in scenarios) {
+            NSArray *dates = [AppDelegate parseDateRange:scenario];
+            if ([dates containsObject:[formatter stringFromDate:nowDate]]) {
+                [newScenarios addObject:scenario];
+            }
+        }
+    }
+    [[AppDelegate appDelegate] setAvailableScenarios:[NSArray arrayWithArray:newScenarios]];
+}
+
 + (BOOL)haveAccessToken {
     return ([[AppDelegate accessToken] length] > 0) ? YES : NO;
 }
@@ -143,6 +219,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self setIsLoginSession:NO];
+    [self setAvailableDays:[NSMutableArray new]];
     // Configure tracker from GoogleService-Info.plist.
     NSError *configureError;
     [[GGLContext sharedInstance] configureWithError:&configureError];
@@ -287,15 +364,6 @@
     [[UILabel appearance] setTintColor:[appArt detailColor]];
 //    [[UIButton appearance] setTintColor:[appArt detailColor]];
     [[UISearchBar appearance] setTintColor:[appArt detailColor]];
-}
-
-- (NSInteger)showWhichDay {
-    // If the time is before 2016/08/20 17:00:00 show day 1, otherwise show day 2
-    if ([[NSDate date] compare:[NSDate dateWithTimeIntervalSince1970:1471683600]] == NSOrderedAscending) {
-        return 1;
-    }
-    
-    return 2;
 }
 
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {

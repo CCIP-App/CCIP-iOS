@@ -31,10 +31,11 @@
 @property (strong, nonatomic) NSDictionary * _Null_unspecified userInfo;
 @property (readonly, nonatomic) BOOL isLoginSession;
 @property (strong, nonatomic) CheckinViewController * _Null_unspecified checkinView;
+@property (readonly, nonatomic) NSArray * _Null_unspecified availableDays;
+@property (readonly, nonatomic) NSArray * _Null_unspecified availableScenarios;
 
 + (AppDelegate * _Nonnull)appDelegate;
 + (void)sendGAI:( NSDictionary * _Nonnull )_gai WithName:( NSString * _Nullable )_name Func:( const char * _Nonnull )_func File:( const char * _Nonnull )_file Line:(int)_line;
-- (NSInteger)showWhichDay;
 - (void)setDefaultShortcutItems;
 
 + (void)setIsDevMode:(BOOL)isDevMode;
@@ -48,6 +49,10 @@
 
 + (void)setDevLogo:(FBShimmeringView * _Null_unspecified)sView;
 + (void)setLoginSession:(BOOL)isLogin;
++ (BOOL)isBeforeEvent;
++ (BOOL)isAfterEvent;
++ (NSDate * _Nullable)firstAvailableDate;
++ (void)parseAvailableDays:(NSArray * _Null_unspecified)scenarios;
 
 @end
 
