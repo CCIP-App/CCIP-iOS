@@ -16,10 +16,13 @@
 
 @implementation StaffGroupView
 
+static NSString *identifier = @"StaffGroupTableViewCell";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"StaffGroupTableViewCell" bundle:nil] forCellReuseIdentifier:@"StaffGroupViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:identifier bundle:nil]
+         forCellReuseIdentifier:identifier];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -52,7 +55,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StaffGroupViewCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     cell.textLabel.text = [[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"name"];
     
@@ -60,19 +63,24 @@
 }
 
 #pragma mark - UITableViewDelegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath
+                             animated:YES];
     
-    UIViewController *detailViewController;
-    NSString *vcName = @"StaffView";
-    detailViewController = [[UIViewController alloc] initWithNibName:vcName bundle:nil];
+    UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:@"StaffView"
+                                                                                bundle:nil];
     [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
     
-    [NSInvocation InvokeObject:detailViewController.view withSelectorString:@"setGroupData:" withArguments:@[ [self.staffJsonArray objectAtIndex:indexPath.row]]];
+    id groupData = [self.staffJsonArray objectAtIndex:indexPath.row];
+    [NSInvocation InvokeObject:detailViewController.view
+            withSelectorString:@"setGroupData:"
+                 withArguments:@[ groupData ]];
     
-    SEND_GAI_EVENT(@"StaffView", [[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"name"]);
+    SEND_GAI_EVENT(@"StaffView", [groupData objectForKey:@"name"]);
     
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    [self.navigationController pushViewController:detailViewController
+                                         animated:YES];
 }
 
 @end

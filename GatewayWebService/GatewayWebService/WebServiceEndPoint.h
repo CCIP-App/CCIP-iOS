@@ -22,6 +22,8 @@
 #define SPONSOR_LEVEL_URL       (COSCUP_JSON_DATA(@"level"))
 #define SPONSOR_LIST_URL        (COSCUP_JSON_DATA(@"sponsor"))
 
-#define STAFF_DATA_URL          (@"https://staff.coscup.org/api/staffgroups/?format=json")
+#define STAFF_BASE_URL          (@"https://staff.coscup.org")
+#define STAFF_DATA_URL          ([STAFF_BASE_URL stringByAppendingString:@"/api/staffgroups/?format=json"])
+#define STAFF_AVATAR(avatar)    ([avatar containsString:@"http"] ? [NSString stringWithFormat:@"%@&s=200", avatar] : [STAFF_BASE_URL stringByAppendingString:avatar])
 
 #define LOG_BOT_URL             (@"https://ysitd.licson.net/channel/coscup/today")

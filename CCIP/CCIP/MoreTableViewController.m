@@ -17,9 +17,13 @@
 
 @property (strong, nonatomic) NSDictionary *userInfo;
 
+@property (strong, nonatomic) NSArray *moreItems;
+
 @end
 
 @implementation MoreTableViewController
+
+static NSString *identifier = @"MoreCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,16 +34,38 @@
     self.shimmeringLogoView.contentView = logoView;
     self.navigationItem.titleView = self.shimmeringLogoView;
     
-    [self.moreTableView registerNib:[UINib nibWithNibName:@"MoreCell" bundle:nil] forCellReuseIdentifier:@"MoreCell"];
+    [self.moreTableView registerNib:[UINib nibWithNibName:identifier
+                                                   bundle:nil]
+             forCellReuseIdentifier:identifier];
     
     self.userInfo = [[AppDelegate appDelegate] userInfo];
     
     SEND_GAI(@"MoreTableViewController");
     
     self.navigationItem.titleView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(navSingleTap)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                 action:@selector(navSingleTap)];
     tapGesture.numberOfTapsRequired = 1;
     [self.navigationItem.titleView addGestureRecognizer:tapGesture];
+    
+    self.moreItems = @[
+                       @{
+                           @"LocalizedString": NSLocalizedString(@"Staffs", nil),
+                           @"NibName": @"StaffGroupView",
+                           @"detailViewController": ^(NSString *nibName) { return [StaffGroupView new]; }
+                           },
+                       @{
+                           @"LocalizedString": NSLocalizedString(@"Sponsors", nil),
+                           @"NibName": @"SponsorTableView",
+                           @"detailViewController": ^(NSString *nibName) { return [[UIViewController alloc] initWithNibName:nibName
+                                                                                                                     bundle:nil]; }
+                           },
+                       @{
+                           @"LocalizedString": NSLocalizedString(@"Acknowledgements", nil),
+                           @"NibName": @"AcknowledgementsView",
+                           @"detailViewController": ^(NSString *nibName) { return [AcknowledgementsViewController new]; }
+                           }
+                       ];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -99,7 +125,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return [self.moreItems count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -107,22 +133,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreCell" forIndexPath:indexPath];
-    
-    switch (indexPath.row) {
-        case 0:
-            [cell.textLabel setText:NSLocalizedString(@"Staffs", nil)];
-            break;
-        case 1:
-            [cell.textLabel setText:NSLocalizedString(@"Sponsors", nil)];
-            break;
-        case 2:
-            [cell.textLabel setText:NSLocalizedString(@"Acknowledgements", nil)];
-            break;
-        default:
-            break;
-    }
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier
+                                                            forIndexPath:indexPath];
+    [cell.textLabel setText:[[self.moreItems objectAtIndex:indexPath.row] objectForKey:@"LocalizedString"]];
     return cell;
 }
 
@@ -162,30 +175,16 @@
 
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath
+                             animated:YES];
     
-    UIViewController *detailViewController;
-    NSString *nibName;
-    
-    switch (indexPath.row) {
-        case 0:
-            nibName = @"StaffGroupView";
-            detailViewController = [StaffGroupView new];
-            break;
-        case 1:
-            nibName = @"SponsorTableView";
-            detailViewController = [[UIViewController alloc] initWithNibName:nibName bundle:nil];
-            break;
-        case 2: {
-            nibName = @"AcknowledgementsView";
-            detailViewController = [AcknowledgementsViewController new];
-        }
-        default:
-            break;
-    }
+    NSDictionary *item = [self.moreItems objectAtIndex:indexPath.row];
+    NSString *nibName = [item objectForKey:@"NibName"];
+    UIViewController *detailViewController = ((UIViewController *(^)(NSString *))[item objectForKey:@"detailViewController"])(nibName);
     
     [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    [self.navigationController pushViewController:detailViewController
+                                         animated:YES];
     
     SEND_GAI_EVENT(@"MoreTableView", nibName);
 }

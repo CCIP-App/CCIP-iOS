@@ -18,10 +18,13 @@
 
 @implementation StaffView
 
+static NSString *identifier = @"StaffCell";
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self.staffCollectionView registerNib:[UINib nibWithNibName:@"StaffCell" bundle:nil] forCellWithReuseIdentifier:@"StaffCell"];
+    [self.staffCollectionView registerNib:[UINib nibWithNibName:identifier bundle:nil]
+               forCellWithReuseIdentifier:identifier];
     
     self.staffCollectionView.delegate = self;
     self.staffCollectionView.dataSource = self;
@@ -34,12 +37,11 @@
     NSString *groupName = [groupData objectForKey:@"name"];
 
     //handle cross grops's staff move to bottom
-    for (int i = 0; i < [staffArray count]; i++)
-    {
-        NSString *title = [[[staffArray objectAtIndex:i] valueForKey:@"profile"] valueForKey:@"title"];
-        if (![title hasPrefix:[groupName substringToIndex:2]])
-        {
-            [staffArray addObject:[staffArray objectAtIndex:i]];
+    for (int i = 0; i < [staffArray count]; i++) {
+        id staff = [staffArray objectAtIndex:i];
+        NSString *title = [[staff valueForKey:@"profile"] valueForKey:@"title"];
+        if (![title hasPrefix:[groupName substringToIndex:2]]) {
+            [staffArray addObject:staff];
             [staffArray removeObjectAtIndex:i];
         }
     }
@@ -55,24 +57,19 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     id staff = [self.staffJsonArray objectAtIndex:indexPath.row];
-    NSString *identifier = @"StaffCell";
     StaffCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier
-                                                                        forIndexPath:indexPath];
+                                                                forIndexPath:indexPath];
+    NSDictionary *profile = [staff objectForKey:@"profile"];
+    NSString *avatar = STAFF_AVATAR([profile objectForKey:@"avatar"]);
+    UIImage *defaultIcon = [UIImage imageNamed:@"StaffIconDefault"];
     
-    NSString *avatar = [[staff objectForKey:@"profile"] objectForKey:@"avatar"];
-    if (![avatar containsString:@"http"]) {
-        avatar = [[NSString alloc] initWithFormat:@"https://staff.coscup.org%@", avatar];
-    } else {
-        avatar = [avatar stringByAppendingString:@"&s=200"];
-    }
-    
-    [cell.staffTitle setText:[[staff objectForKey:@"profile"] objectForKey:@"title"]];
-    [cell.staffName setText:[[staff objectForKey:@"profile"] objectForKey:@"display_name"]];
-    [cell.staffImg setImage:[UIImage imageNamed:@"StaffIconDefault"]];
+    [cell.staffTitle setText:[profile objectForKey:@"title"]];
+    [cell.staffName setText:[profile objectForKey:@"display_name"]];
+    [cell.staffImg setImage:defaultIcon];
     
     // Here we use the new provided sd_setImageWithURL: method to load the web image
     [cell.staffImg sd_setImageWithURL:[NSURL URLWithString:avatar]
-                     placeholderImage:[UIImage imageNamed:@"StaffIconDefault"]
+                     placeholderImage:defaultIcon
                               options:indexPath.row == 0 ? SDWebImageRefreshCached : 0];
     
     return cell;
