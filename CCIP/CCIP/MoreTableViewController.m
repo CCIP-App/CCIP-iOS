@@ -6,6 +6,7 @@
 //  Copyright © 2016 CPRTeam. All rights reserved.
 //
 
+#import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import "MoreTableViewController.h"
 #import "StaffGroupTableViewController.h"
@@ -20,15 +21,41 @@
 
 @property (strong, nonatomic) NSArray *moreItems;
 
+@property (strong, nonatomic) NSArray *staffs;
+
 @end
 
 @implementation MoreTableViewController
+
+- (void)prefetchStaffs {
+    GatewayWebService *staff_ws = [[GatewayWebService alloc] initWithURL:STAFF_DATA_URL];
+    [staff_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
+        if (json != nil) {
+            self.staffs = json;
+        }
+    }];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UIViewController *destination = segue.destinationViewController;
     NSString *title = [sender text];
     SEND_GAI_EVENT(@"MoreTableView", title);
     [destination setTitle:title];
+    if ([destination isMemberOfClass:[StaffGroupTableViewController class]]) {
+        StaffGroupTableViewController *sgt = (StaffGroupTableViewController *)destination;
+        dispatch_semaphore_t semaStaff = dispatch_semaphore_create(0);
+        if (self.staffs == nil) {
+            [self prefetchStaffs];
+        }
+        while (dispatch_semaphore_wait(semaStaff, DISPATCH_TIME_NOW)) {
+            if (self.staffs != nil) {
+                dispatch_semaphore_signal(semaStaff);
+            }
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                     beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+        }
+        [sgt setStaffJsonArray:self.staffs];
+    }
     [((UITableViewCell *)sender) setSelected:NO
                                     animated:YES];
 }
@@ -57,6 +84,7 @@
                        @"Sponsors",
                        @"Acknowledgements",
                        ];
+    [self prefetchStaffs];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

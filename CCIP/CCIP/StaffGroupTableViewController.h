@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StaffGroupViewController : UITableViewController
+@interface StaffGroupTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray *staffJsonArray;
 

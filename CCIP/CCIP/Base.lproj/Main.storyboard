@@ -1048,10 +1048,10 @@ Label</string>
             </objects>
             <point key="canvasLocation" x="2081" y="1006"/>
         </scene>
-        <!--Staff Group View Controller-->
+        <!--Staff Group Table View Controller-->
         <scene sceneID="1eD-Iw-gVm">
             <objects>
-                <tableViewController modalPresentationStyle="overCurrentContext" id="MJ9-14-5hP" customClass="StaffGroupViewController" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="overCurrentContext" id="MJ9-14-5hP" customClass="StaffGroupTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jf8-Ho-9Ui">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
