@@ -7,6 +7,7 @@
 //
 
 #import "InvalidNetworkMessageViewController.h"
+#import "AppDelegate.h"
 
 @interface InvalidNetworkMessageViewController ()
 
@@ -24,6 +25,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.closeButton setTitle:NSLocalizedString(@"InvalidNetworkButtonRetry", nil)
+                      forState:UIControlStateNormal];
+    [self.closeButton setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
+    self.closeButton.layer.cornerRadius = 8.0f;
+    
     [self.messageLabel setText:self.message];
     [self.view setAutoresizingMask:UIViewAutoresizingNone];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -51,7 +57,9 @@
 
 - (IBAction)clossView:(id)sender {
     [self dismissViewControllerAnimated:YES
-                             completion:nil];
+                             completion:^{
+                                 [[AppDelegate appDelegate].checkinView reloadCard];
+                             }];
 }
 
 - (void)appplicationDidEnterBackground:(NSNotification *)notification {

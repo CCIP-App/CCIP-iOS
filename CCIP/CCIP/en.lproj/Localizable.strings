@@ -61,6 +61,7 @@
 "StatusNotice" = "Please stay in this screen for staffs to validate your ticket, thank you!";
 "NetworkAlert" = "Please connect to the network of chamber";
 "NetworkAlertDesc" = "Perform check in when connecting to the network of chamber only";
+"InvalidNetworkButtonRetry" = "Retry";
 "InvalidTokenAlert" = "Invalid Token";
 "InvalidTokenDesc" = "This token is invalid, please check again.";
 "NotAvailableTitle" = "Error Message";
