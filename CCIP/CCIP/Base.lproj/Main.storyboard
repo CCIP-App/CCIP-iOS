@@ -602,7 +602,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9P-XQ-YR6">
-                                <rect key="frame" x="0.0" y="176" width="600" height="424"/>
+                                <rect key="frame" x="0.0" y="176" width="600" height="375"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSO-K1-shl">
                                 <rect key="frame" x="30" y="80" width="540" height="25"/>
@@ -628,18 +628,18 @@ Label</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="K9P-XQ-YR6" firstAttribute="centerX" secondItem="mW0-8h-Rsq" secondAttribute="centerX" id="ARX-CR-aM7"/>
+                            <constraint firstItem="Ddy-yB-gmL" firstAttribute="top" secondItem="K9P-XQ-YR6" secondAttribute="bottom" id="DeY-WU-joN"/>
                             <constraint firstItem="tTK-uh-x4q" firstAttribute="width" secondItem="mW0-8h-Rsq" secondAttribute="width" id="HVS-FW-I52"/>
-                            <constraint firstItem="uSO-K1-shl" firstAttribute="trailing" secondItem="tTK-uh-x4q" secondAttribute="trailing" constant="-30" id="Iic-t3-gm4"/>
+                            <constraint firstItem="tTK-uh-x4q" firstAttribute="trailing" secondItem="uSO-K1-shl" secondAttribute="trailing" constant="30" id="Iic-t3-gm4"/>
                             <constraint firstItem="K9P-XQ-YR6" firstAttribute="top" secondItem="tTK-uh-x4q" secondAttribute="bottom" constant="-44" id="Jja-RH-6Xq"/>
                             <constraint firstItem="F2g-0m-bel" firstAttribute="top" secondItem="uSO-K1-shl" secondAttribute="bottom" constant="8" id="KOc-sS-5kv"/>
                             <constraint firstItem="K9P-XQ-YR6" firstAttribute="width" secondItem="mW0-8h-Rsq" secondAttribute="width" id="TP8-dE-rgO"/>
                             <constraint firstItem="uSO-K1-shl" firstAttribute="top" secondItem="tTK-uh-x4q" secondAttribute="top" constant="16" id="U9s-0b-hsT"/>
                             <constraint firstItem="tTK-uh-x4q" firstAttribute="centerX" secondItem="mW0-8h-Rsq" secondAttribute="centerX" id="cQe-dh-Wr4"/>
-                            <constraint firstItem="tTK-uh-x4q" firstAttribute="top" secondItem="mW0-8h-Rsq" secondAttribute="top" constant="64" id="gwr-99-ntw"/>
+                            <constraint firstItem="tTK-uh-x4q" firstAttribute="top" secondItem="5ih-Rh-7jR" secondAttribute="bottom" id="mhC-Zv-zP6"/>
                             <constraint firstItem="uSO-K1-shl" firstAttribute="leading" secondItem="tTK-uh-x4q" secondAttribute="leading" constant="30" id="rGN-xK-vHM"/>
-                            <constraint firstAttribute="bottom" secondItem="K9P-XQ-YR6" secondAttribute="bottom" id="rVj-52-2Ar"/>
                             <constraint firstItem="F2g-0m-bel" firstAttribute="leading" secondItem="tTK-uh-x4q" secondAttribute="leading" constant="30" id="rWa-u5-MJt"/>
-                            <constraint firstItem="F2g-0m-bel" firstAttribute="trailing" secondItem="tTK-uh-x4q" secondAttribute="trailing" constant="-30" id="sWK-1H-MDP"/>
+                            <constraint firstItem="tTK-uh-x4q" firstAttribute="trailing" secondItem="F2g-0m-bel" secondAttribute="trailing" constant="30" id="sWK-1H-MDP"/>
                         </constraints>
                     </view>
                     <connections>
