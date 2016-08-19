@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StaffViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface StaffViewController : UIViewController<UIViewControllerPreviewingDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, retain) IBOutlet UICollectionView *staffCollectionView;
 @property (strong, nonatomic) NSArray *staffJsonArray;

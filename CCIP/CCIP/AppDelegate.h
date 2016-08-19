@@ -59,11 +59,14 @@
 @interface UIView (AppDelegate)
 
 + (AppDelegate * _Nonnull)appDelegate;
+- (void)registerForceTouch;
 
 @end
 
 @interface UIViewController (AppDelegate)
 
 + (AppDelegate * _Nonnull)appDelegate;
+- (void)registerForceTouch;
+- (NSArray<id<UIPreviewActionItem>> * _Null_unspecified)previewActions;
 
 @end

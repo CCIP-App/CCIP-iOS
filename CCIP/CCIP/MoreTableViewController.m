@@ -43,17 +43,6 @@
     [destination setTitle:title];
     if ([destination isMemberOfClass:[StaffGroupTableViewController class]]) {
         StaffGroupTableViewController *sgt = (StaffGroupTableViewController *)destination;
-        dispatch_semaphore_t semaStaff = dispatch_semaphore_create(0);
-        if (self.staffs == nil) {
-            [self prefetchStaffs];
-        }
-        while (dispatch_semaphore_wait(semaStaff, DISPATCH_TIME_NOW)) {
-            if (self.staffs != nil) {
-                dispatch_semaphore_signal(semaStaff);
-            }
-            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                     beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
-        }
         [sgt setStaffJsonArray:self.staffs];
     }
     [((UITableViewCell *)sender) setSelected:NO
@@ -84,7 +73,17 @@
                        @"Sponsors",
                        @"Acknowledgements",
                        ];
-    [self prefetchStaffs];
+    dispatch_semaphore_t semaStaff = dispatch_semaphore_create(0);
+    if (self.staffs == nil) {
+        [self prefetchStaffs];
+    }
+    while (dispatch_semaphore_wait(semaStaff, DISPATCH_TIME_NOW)) {
+        if (self.staffs != nil) {
+            dispatch_semaphore_signal(semaStaff);
+        }
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

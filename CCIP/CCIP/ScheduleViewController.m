@@ -55,10 +55,14 @@
 
 @implementation ScheduleViewController
 
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
+    return [self previewActions];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self registerForceTouch];
     // set logo on nav title
     UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];

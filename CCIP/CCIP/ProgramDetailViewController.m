@@ -6,6 +6,7 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "ProgramDetailViewController.h"
 #import "ProgramDetailViewPagerController.h"
 
@@ -20,7 +21,6 @@
 @end
 
 @implementation ProgramDetailViewController
-
 
 - (void)configuration {
     // Custom initialization
@@ -52,10 +52,15 @@
     return self;
 }
 
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
+    return [self previewActions];
+}
+
 - (void)viewDidLoad {
     [self configuration];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self registerForceTouch];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

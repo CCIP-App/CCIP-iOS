@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StaffGroupTableViewController : UITableViewController
+@interface StaffGroupTableViewController : UITableViewController<UIViewControllerPreviewingDelegate>
 
 @property (strong, nonatomic) NSArray *staffJsonArray;
 

@@ -19,8 +19,13 @@
 
 @implementation SponsorTableViewController
 
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
+    return [self previewActions];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self registerForceTouch];
     
     NSMutableArray *sponsorListArray = [NSMutableArray new];
     

@@ -490,12 +490,39 @@
     return [AppDelegate appDelegate];
 }
 
+- (void)registerForceTouch {
+    [((UIViewController *)[self nextResponder]) registerForceTouch];
+}
+
 @end
 
 @implementation UIViewController (AppDelegate)
 
 + (AppDelegate *)appDelegate {
     return [AppDelegate appDelegate];
+}
+
+- (void)registerForceTouch {
+    if ([self.traitCollection respondsToSelector:@selector(forceTouchCapability)] && (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable)) {
+        [self registerForPreviewingWithDelegate:(id<UIViewControllerPreviewingDelegate>)self sourceView:self.view];
+    }
+}
+
+- (NSArray<id<UIPreviewActionItem>> *)previewActions {
+    static NSArray<id<UIPreviewActionItem>> *previewActions;
+    if (previewActions == nil) {
+//        UIPreviewAction *printAction = [UIPreviewAction
+//                                        actionWithTitle:@"Print"
+//                                        style:UIPreviewActionStyleDefault
+//                                        handler:^(UIPreviewAction * _Nonnull action,
+//                                                  UIViewController * _Nonnull previewViewController) {
+//                                            // ... code to handle action here
+//                                        }];
+//        previewActions = @[ printAction ];
+        previewActions = @[];
+        
+    }
+    return previewActions;
 }
 
 @end

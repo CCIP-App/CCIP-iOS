@@ -17,9 +17,13 @@
 
 @implementation StaffGroupTableViewController
 
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
+    return [self previewActions];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self registerForceTouch];
     SEND_GAI(@"StaffGroupView");
 }
 

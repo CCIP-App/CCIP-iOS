@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProgramDetailViewController : UIViewController
+@interface ProgramDetailViewController : UIViewController<UIViewControllerPreviewingDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *topBG;
 @property (weak, nonatomic) IBOutlet UIView *pagerview;

@@ -26,6 +26,15 @@ static NSString *identifier = @"StaffCell";
     SEND_GAI(@"StaffView");
 }
 
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
+    return [self previewActions];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self registerForceTouch];
+}
+
 - (void)setGroupData:(NSDictionary *)groupData {
     NSMutableArray *staffArray = [NSMutableArray arrayWithArray:[groupData objectForKey:@"users"]];
     NSString *groupName = [groupData objectForKey:@"name"];
