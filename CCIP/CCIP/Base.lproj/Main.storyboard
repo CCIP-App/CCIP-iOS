@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A270f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vFY-Ie-dA7">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vFY-Ie-dA7">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -830,31 +830,18 @@ Label</string>
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Bze-6z-kJu">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zNX-Qf-BUg">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="zNX-Qf-BUg" secondAttribute="bottom" id="3Ti-Lk-nQ5"/>
-                            <constraint firstItem="zNX-Qf-BUg" firstAttribute="top" secondItem="Bze-6z-kJu" secondAttribute="top" id="WgJ-5Y-1dl"/>
-                            <constraint firstItem="zNX-Qf-BUg" firstAttribute="width" secondItem="Bze-6z-kJu" secondAttribute="width" id="Y1R-wR-izP"/>
-                            <constraint firstItem="zNX-Qf-BUg" firstAttribute="centerX" secondItem="Bze-6z-kJu" secondAttribute="centerX" id="xAx-4y-2l0"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e0c-cS-PdU">
                         <leftBarButtonItems>
                             <barButtonItem image="BarButton-Back.png" id="LYt-uw-n29">
                                 <connections>
-                                    <action selector="goBack" destination="zNX-Qf-BUg" id="hNA-BG-Gch"/>
+                                    <action selector="goBack:" destination="Oqq-Rn-AVL" id="uAo-bG-4gV"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="BarButton-Forward.png" id="RKl-Kp-YRu">
                                 <connections>
-                                    <action selector="goForward" destination="zNX-Qf-BUg" id="rx5-Au-qpx"/>
+                                    <action selector="goForward:" destination="Oqq-Rn-AVL" id="1om-nw-Ukx"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
@@ -868,7 +855,6 @@ Label</string>
                         <outlet property="goBackButton" destination="LYt-uw-n29" id="y8K-Ic-Dsx"/>
                         <outlet property="goForwardButton" destination="RKl-Kp-YRu" id="9ph-cj-Lo8"/>
                         <outlet property="goReloadButton" destination="zI6-me-UXE" id="f8s-nI-Qns"/>
-                        <outlet property="webview" destination="zNX-Qf-BUg" id="5NM-Ng-b7l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozE-dg-HTW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1193,7 +1179,7 @@ Label</string>
                                                 <constraint firstAttribute="height" constant="48" id="rM0-5h-apL"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
