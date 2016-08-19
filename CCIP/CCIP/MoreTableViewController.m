@@ -23,8 +23,6 @@
 
 @implementation MoreTableViewController
 
-static NSString *identifier = @"MoreCell";
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -33,10 +31,6 @@ static NSString *identifier = @"MoreCell";
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
     self.shimmeringLogoView.contentView = logoView;
     self.navigationItem.titleView = self.shimmeringLogoView;
-    
-    [self.moreTableView registerNib:[UINib nibWithNibName:identifier
-                                                   bundle:nil]
-             forCellReuseIdentifier:identifier];
     
     self.userInfo = [[AppDelegate appDelegate] userInfo];
     
@@ -133,7 +127,7 @@ static NSString *identifier = @"MoreCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreCell"
                                                             forIndexPath:indexPath];
     [cell.textLabel setText:[[self.moreItems objectAtIndex:indexPath.row] objectForKey:@"LocalizedString"]];
     return cell;

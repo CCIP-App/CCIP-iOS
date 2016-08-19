@@ -104,7 +104,6 @@
 		5FB4D4861D3A998C005BF382 /* coscup-logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4D4831D3A998C005BF382 /* coscup-logo@3x.png */; };
 		5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */; };
 		5FB4D48F1D3B242C005BF382 /* MoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D48D1D3B242C005BF382 /* MoreCell.m */; };
-		5FB4D4901D3B242C005BF382 /* MoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4D48E1D3B242C005BF382 /* MoreCell.xib */; };
 		5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */; };
 		5FD049891D5AFB9D00E7CEAD /* AnnounceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD049881D5AFB9D00E7CEAD /* AnnounceTableViewController.m */; };
 		5FD0498C1D5B041800E7CEAD /* AnnounceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0498B1D5B041800E7CEAD /* AnnounceTableViewCell.m */; };
@@ -279,7 +278,6 @@
 		5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewController.m; sourceTree = "<group>"; };
 		5FB4D48C1D3B242C005BF382 /* MoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCell.h; sourceTree = "<group>"; };
 		5FB4D48D1D3B242C005BF382 /* MoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCell.m; sourceTree = "<group>"; };
-		5FB4D48E1D3B242C005BF382 /* MoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreCell.xib; sourceTree = "<group>"; };
 		5FB4D4911D3B57FA005BF382 /* CheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinViewController.h; sourceTree = "<group>"; };
 		5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinViewController.m; sourceTree = "<group>"; };
 		5FD049871D5AFB9D00E7CEAD /* AnnounceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnounceTableViewController.h; sourceTree = "<group>"; };
@@ -491,7 +489,6 @@
 				5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */,
 				5FB4D48C1D3B242C005BF382 /* MoreCell.h */,
 				5FB4D48D1D3B242C005BF382 /* MoreCell.m */,
-				5FB4D48E1D3B242C005BF382 /* MoreCell.xib */,
 				288164E41D4F2F32005C68EA /* StaffView */,
 				5F8B2D261D55DAC900A68C7D /* SponsorView */,
 				28AFCF191D5DDCD400413927 /* AcknowledgementsView */,
@@ -854,7 +851,6 @@
 				288D3A9E1D59AB4800E4E3A6 /* QR_Code@3x.png in Resources */,
 				5F91712F1D32990C000D0F66 /* StaffCell.xib in Resources */,
 				2839BF371D4C97AB0062F36D /* Star_Filled@3x.png in Resources */,
-				5FB4D4901D3B242C005BF382 /* MoreCell.xib in Resources */,
 				5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */,
 				5FB4D4661D3A8706005BF382 /* icon_ios_chat.png in Resources */,
 				6B2CD59A1D2886C900793194 /* Localizable.strings in Resources */,
