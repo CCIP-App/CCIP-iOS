@@ -8,7 +8,7 @@
 
 #import <ICViewPager/ViewPagerController.h>
 
-@interface ProgramDetailViewPagerController : ViewPagerController
+@interface ProgramDetailViewPagerController : ViewPagerController<ViewPagerDataSource, ViewPagerDelegate>
 
 @property (strong, nonatomic) NSDictionary *program;
 

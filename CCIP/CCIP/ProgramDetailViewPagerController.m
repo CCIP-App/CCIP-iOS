@@ -11,7 +11,7 @@
 #import "ProgramSpeakerIntroViewController.h"
 #import "NSInvocation+addition.h"
 
-@interface ProgramDetailViewPagerController () <ViewPagerDataSource, ViewPagerDelegate>
+@interface ProgramDetailViewPagerController()
 
 @property (strong, nonatomic) ProgramAbstractViewController *abstractView;
 @property (strong, nonatomic) ProgramSpeakerIntroViewController *speakerIntroView;
@@ -21,18 +21,18 @@
 
 @implementation ProgramDetailViewPagerController
 
--(instancetype)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
-        self.abstractView = [[ProgramAbstractViewController alloc] initWithNibName:@"ProgramAbstractViewController"
-                                                                            bundle:[NSBundle mainBundle]];
-        self.speakerIntroView = [[ProgramSpeakerIntroViewController alloc] initWithNibName:@"ProgramSpeakerIntroViewController"
-                                                                                    bundle:[NSBundle mainBundle]];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle:nil];
+        self.abstractView = (ProgramAbstractViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ProgramAbstractViewController"];
+        self.speakerIntroView = (ProgramSpeakerIntroViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ProgramSpeakerIntroViewController"];
     }
     return self;
 }
 
--(instancetype)initWithProgram:(NSDictionary *)program {
+- (instancetype)initWithProgram:(NSDictionary *)program {
     self = [self init];
     if (self) {
         // Custom initialization

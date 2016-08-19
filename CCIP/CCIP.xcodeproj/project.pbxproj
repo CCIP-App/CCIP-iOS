@@ -14,9 +14,7 @@
 		2821DAA41D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DAA11D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@2x.png */; };
 		2821DAA71D3DD36500AFE139 /* ProgramDetailViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821DAA61D3DD36500AFE139 /* ProgramDetailViewPagerController.m */; };
 		2823E8E21D3E55F10039D72E /* ProgramAbstractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2823E8E01D3E55F10039D72E /* ProgramAbstractViewController.m */; };
-		2823E8E31D3E55F10039D72E /* ProgramAbstractViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2823E8E11D3E55F10039D72E /* ProgramAbstractViewController.xib */; };
 		2823E8E71D3E560C0039D72E /* ProgramSpeakerIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2823E8E51D3E560C0039D72E /* ProgramSpeakerIntroViewController.m */; };
-		2823E8E81D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2823E8E61D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib */; };
 		2839BF371D4C97AB0062F36D /* Star_Filled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF331D4C97AB0062F36D /* Star_Filled@3x.png */; };
 		2839BF381D4C97AB0062F36D /* Star@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF341D4C97AB0062F36D /* Star@3x.png */; };
 		2839BF391D4C97AB0062F36D /* Star_Filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF351D4C97AB0062F36D /* Star_Filled@2x.png */; };
@@ -163,10 +161,8 @@
 		2821DAA61D3DD36500AFE139 /* ProgramDetailViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramDetailViewPagerController.m; sourceTree = "<group>"; };
 		2823E8DF1D3E55F10039D72E /* ProgramAbstractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramAbstractViewController.h; sourceTree = "<group>"; };
 		2823E8E01D3E55F10039D72E /* ProgramAbstractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramAbstractViewController.m; sourceTree = "<group>"; };
-		2823E8E11D3E55F10039D72E /* ProgramAbstractViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgramAbstractViewController.xib; sourceTree = "<group>"; };
 		2823E8E41D3E560C0039D72E /* ProgramSpeakerIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramSpeakerIntroViewController.h; sourceTree = "<group>"; };
 		2823E8E51D3E560C0039D72E /* ProgramSpeakerIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramSpeakerIntroViewController.m; sourceTree = "<group>"; };
-		2823E8E61D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgramSpeakerIntroViewController.xib; sourceTree = "<group>"; };
 		2839BF331D4C97AB0062F36D /* Star_Filled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star_Filled@3x.png"; sourceTree = "<group>"; };
 		2839BF341D4C97AB0062F36D /* Star@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star@3x.png"; sourceTree = "<group>"; };
 		2839BF351D4C97AB0062F36D /* Star_Filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star_Filled@2x.png"; sourceTree = "<group>"; };
@@ -520,7 +516,6 @@
 			children = (
 				2823E8DF1D3E55F10039D72E /* ProgramAbstractViewController.h */,
 				2823E8E01D3E55F10039D72E /* ProgramAbstractViewController.m */,
-				2823E8E11D3E55F10039D72E /* ProgramAbstractViewController.xib */,
 			);
 			name = AbstractView;
 			sourceTree = "<group>";
@@ -530,7 +525,6 @@
 			children = (
 				2823E8E41D3E560C0039D72E /* ProgramSpeakerIntroViewController.h */,
 				2823E8E51D3E560C0039D72E /* ProgramSpeakerIntroViewController.m */,
-				2823E8E61D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib */,
 			);
 			name = SpeakerIntroView;
 			sourceTree = "<group>";
@@ -787,7 +781,6 @@
 				288D3A781D599A1200E4E3A6 /* LICENSE-2.0.txt in Resources */,
 				28B432411D6228AF00590846 /* BarButton-Reload@2x.png in Resources */,
 				2839BF3A1D4C97AB0062F36D /* Star@2x.png in Resources */,
-				2823E8E31D3E55F10039D72E /* ProgramAbstractViewController.xib in Resources */,
 				28A7C55F1D5EE0C30079BB12 /* Project_Info_and_Contributors.json in Resources */,
 				5FB4D4671D3A8706005BF382 /* icon_ios_chat@2x.png in Resources */,
 				5FB4D4791D3A8DF6005BF382 /* icon_ios_more@2x.png in Resources */,
@@ -807,7 +800,6 @@
 				288D3AA31D59AB4800E4E3A6 /* QR_Code_Filled@2x.png in Resources */,
 				5FB4D4461D3A8319005BF382 /* icon_ios_pin.png in Resources */,
 				5FB4D4471D3A8319005BF382 /* icon_ios_pin@2x.png in Resources */,
-				2823E8E81D3E560C0039D72E /* ProgramSpeakerIntroViewController.xib in Resources */,
 				288D3A7B1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle in Resources */,
 				28A9362C1D62CED800CBCA54 /* ToolButton-GitHub_Filled@2x.png in Resources */,
 				2839BF3D1D4C97EE0062F36D /* Star_Filled.png in Resources */,
