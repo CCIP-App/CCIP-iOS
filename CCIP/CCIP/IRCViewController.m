@@ -140,7 +140,7 @@
 //}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqualToString:NSStringFromSelector(@selector(estimatedProgress))] && object == self.webView) {
+    if ([keyPath isEqualToString:@"estimatedProgress"] && object == self.webView) {
         NSLog(@"%f", self.webView.estimatedProgress);
         // estimatedProgress is a value from 0.0 to 1.0
         // Update your UI here accordingly

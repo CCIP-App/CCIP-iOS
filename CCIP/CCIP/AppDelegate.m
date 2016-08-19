@@ -361,7 +361,7 @@
     [[UITabBar appearance] setTintColor:[appArt detailColor]];
     [[UISegmentedControl appearance] setTintColor:[appArt detailColor]];
     [[UIProgressView appearance] setTintColor:[appArt detailColor]];
-    [[UILabel appearance] setTintColor:[appArt detailColor]];
+    [[UILabel appearance] setTintColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
 //    [[UIButton appearance] setTintColor:[appArt detailColor]];
     [[UISearchBar appearance] setTintColor:[appArt detailColor]];
 }
