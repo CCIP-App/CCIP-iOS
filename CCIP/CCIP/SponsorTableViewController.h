@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SponsorTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
+@interface SponsorTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSArray *sponsorLevelJsonArray;
 @property (strong, nonatomic) NSArray *sponsorArray;

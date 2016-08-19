@@ -6,26 +6,21 @@
 //  Copyright © 2016 CPRTeam. All rights reserved.
 //
 
-#import "SponsorTableView.h"
+#import "SponsorTableViewController.h"
 #import "SponsorTableViewCell.h"
 #import "AppDelegate.h"
 #import "GatewayWebService/GatewayWebService.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SafariServices/SafariServices.h>
 
-@interface SponsorTableView ()
+@interface SponsorTableViewController()
 
 @end
 
-@implementation SponsorTableView
+@implementation SponsorTableViewController
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    [self registerNib:[UINib nibWithNibName:@"SponsorTableViewCell" bundle:nil] forCellReuseIdentifier:@"SponsorCell"];
-    
-    self.delegate = self;
-    self.dataSource = self;
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
     NSMutableArray *sponsorListArray = [NSMutableArray new];
     
@@ -73,10 +68,10 @@
                                                                  ascending:YES];
     self.sponsorArray = [sponsorListArray sortedArrayUsingDescriptors:@[ level_sorter, place_sorter ]];
     
-    [self beginUpdates];
+    [self.tableView beginUpdates];
     
-    [self insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.sponsorLevelJsonArray count])]
-        withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.sponsorLevelJsonArray count])]
+                  withRowAnimation:UITableViewRowAnimationFade];
     
     NSMutableArray *indexPaths = [NSMutableArray new];
     for (int sectionNum = 0; sectionNum < [self.sponsorLevelJsonArray count]; sectionNum++) {
@@ -85,10 +80,10 @@
                                                      inSection:sectionNum]];
         }
     }
-    [self insertRowsAtIndexPaths:indexPaths
-                withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView insertRowsAtIndexPaths:indexPaths
+                          withRowAnimation:UITableViewRowAnimationFade];
     
-    [self endUpdates];
+    [self.tableView endUpdates];
     
     SEND_GAI(@"SponsorTableView");
 }
@@ -187,7 +182,7 @@
     
     if ([SFSafariViewController class] != nil) {
         // Open in SFSafariViewController
-        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:url]];        
+        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:url]];
         [[UIApplication getMostTopPresentedViewController] presentViewController:safariViewController
                                                                         animated:YES
                                                                       completion:nil];

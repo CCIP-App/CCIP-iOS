@@ -1,5 +1,5 @@
 //
-//  StaffGroupView.h
+//  StaffGroupViewController.h
 //  CCIP
 //
 //  Created by Sars on 2016/07/10.
@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StaffGroupView : UITableViewController// <UITableViewDelegate, UITableViewDataSource>
+@interface StaffGroupViewController : UITableViewController
 
-//@property (nonatomic, retain) IBOutlet UITableView *staffGroupTableView;
 @property (strong, nonatomic) NSArray *staffJsonArray;
 
 @end

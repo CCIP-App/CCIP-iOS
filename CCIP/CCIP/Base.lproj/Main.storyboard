@@ -6,6 +6,7 @@
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
     <scenes>
         <!--Status View Controller-->
@@ -703,13 +704,47 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoreCell" id="d4Y-ir-8JL" customClass="MoreCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Staffs" id="d4Y-ir-8JL" customClass="MoreCell">
                                         <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d4Y-ir-8JL" id="thw-zu-u47">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="MJ9-14-5hP" kind="show" identifier="" id="m5s-g0-cve">
+                                                <segue key="commit" inheritsFrom="parent" id="b43-jh-F6D"/>
+                                                <segue key="preview" inheritsFrom="commit" id="4i7-YT-ZjI"/>
+                                            </segue>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Sponsors" id="xxD-AS-Iim" customClass="MoreCell">
+                                        <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xxD-AS-Iim" id="Txy-4M-e6y">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="KLz-bD-vSw" kind="show" id="ewg-q8-EfJ">
+                                                <segue key="commit" inheritsFrom="parent" id="EBx-nC-Ao4"/>
+                                                <segue key="preview" inheritsFrom="commit" id="QYz-Kj-wgm"/>
+                                            </segue>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Acknowledgements" id="yMP-WL-Edu" customClass="MoreCell">
+                                        <rect key="frame" x="0.0" y="180" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yMP-WL-Edu" id="IPq-E0-gs7">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="NbQ-cI-f1V" kind="show" id="1yQ-dJ-gyn">
+                                                <segue key="commit" inheritsFrom="parent" id="PdM-cB-4Mu"/>
+                                                <segue key="preview" inheritsFrom="commit" id="8QP-h7-WGZ"/>
+                                            </segue>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -734,6 +769,109 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2m-U7-b7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2081" y="1006"/>
+        </scene>
+        <!--Staff Group View Controller-->
+        <scene sceneID="1eD-Iw-gVm">
+            <objects>
+                <tableViewController modalPresentationStyle="overCurrentContext" id="MJ9-14-5hP" customClass="StaffGroupViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jf8-Ho-9Ui">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StaffGroupTableViewCell" id="2Z3-2j-yUM" customClass="StaffGroupTableViewCell">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Z3-2j-yUM" id="CDm-dn-X9R">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="MJ9-14-5hP" id="hKp-6Z-UJb"/>
+                            <outlet property="delegate" destination="MJ9-14-5hP" id="fCO-gH-t2s"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tWc-L3-SiQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2081" y="1965"/>
+        </scene>
+        <!--Sponsor Table View Controller-->
+        <scene sceneID="p8R-9B-eD5">
+            <objects>
+                <tableViewController id="KLz-bD-vSw" customClass="SponsorTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="260" sectionHeaderHeight="30" sectionFooterHeight="22" id="rUA-V7-Fgw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SponsorCell" rowHeight="260" id="fea-ru-5qy" customClass="SponsorTableViewCell">
+                                <rect key="frame" x="0.0" y="94" width="600" height="260"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fea-ru-5qy" id="c3w-XN-suW">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="259.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PIN-Ta-Ztr">
+                                            <rect key="frame" x="156" y="16" width="288" height="180"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="288" id="LDH-m7-HW1"/>
+                                                <constraint firstAttribute="height" constant="180" id="aSi-2U-XVb"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sponsor Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMG-sW-JNf">
+                                            <rect key="frame" x="8" y="204" width="584" height="48"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="48" id="rM0-5h-apL"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="YMG-sW-JNf" secondAttribute="trailing" id="762-3y-ilx"/>
+                                        <constraint firstAttribute="topMargin" secondItem="PIN-Ta-Ztr" secondAttribute="top" constant="-8" id="Ymn-J8-RA3"/>
+                                        <constraint firstItem="YMG-sW-JNf" firstAttribute="top" secondItem="PIN-Ta-Ztr" secondAttribute="bottom" constant="8" id="bh3-DC-RAx"/>
+                                        <constraint firstItem="PIN-Ta-Ztr" firstAttribute="centerX" secondItem="c3w-XN-suW" secondAttribute="centerX" id="mY8-dj-UgG"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="YMG-sW-JNf" secondAttribute="leading" id="ypq-xf-fGU"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="sponsorImg" destination="PIN-Ta-Ztr" id="N9i-fl-BW2"/>
+                                    <outlet property="sponsorTitle" destination="YMG-sW-JNf" id="r8u-Er-oUQ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="KLz-bD-vSw" id="W6H-me-3dr"/>
+                            <outlet property="delegate" destination="KLz-bD-vSw" id="W9M-1R-a5Z"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8rh-Zz-s6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2726" y="1965"/>
+        </scene>
+        <!--Acknowledgements View Controller-->
+        <scene sceneID="6ye-bt-2uY">
+            <objects>
+                <viewController id="NbQ-cI-f1V" customClass="AcknowledgementsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="18a-nU-9jz"/>
+                        <viewControllerLayoutGuide type="bottom" id="4qA-bI-gTa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GOq-0B-EXK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YH3-0s-RsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3377" y="1965"/>
         </scene>
         <!--Schedule-->
         <scene sceneID="w4n-xs-pWJ">
@@ -990,4 +1128,9 @@
         <image name="icon_ios_pin.png" width="25" height="25"/>
         <image name="icon_ios_topcharts.png" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ewg-q8-EfJ"/>
+        <segue reference="1yQ-dJ-gyn"/>
+        <segue reference="m5s-g0-cve"/>
+    </inferredMetricsTieBreakers>
 </document>

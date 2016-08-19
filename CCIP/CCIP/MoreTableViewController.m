@@ -10,6 +10,7 @@
 #import "MoreTableViewController.h"
 #import "StaffGroupTableViewController.h"
 #import "AcknowledgementsViewController.h"
+#import "MoreCell.h"
 
 @interface MoreTableViewController ()
 
@@ -22,6 +23,15 @@
 @end
 
 @implementation MoreTableViewController
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UIViewController *destination = segue.destinationViewController;
+    NSString *title = [sender text];
+    SEND_GAI_EVENT(@"MoreTableView", title);
+    [destination setTitle:title];
+    [((UITableViewCell *)sender) setSelected:NO
+                                    animated:YES];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,22 +53,9 @@
     [self.navigationItem.titleView addGestureRecognizer:tapGesture];
     
     self.moreItems = @[
-                       @{
-                           @"LocalizedString": NSLocalizedString(@"Staffs", nil),
-                           @"NibName": @"StaffGroupView",
-                           @"detailViewController": ^(NSString *nibName) { return [StaffGroupView new]; }
-                           },
-                       @{
-                           @"LocalizedString": NSLocalizedString(@"Sponsors", nil),
-                           @"NibName": @"SponsorTableView",
-                           @"detailViewController": ^(NSString *nibName) { return [[UIViewController alloc] initWithNibName:nibName
-                                                                                                                     bundle:nil]; }
-                           },
-                       @{
-                           @"LocalizedString": NSLocalizedString(@"Acknowledgements", nil),
-                           @"NibName": @"AcknowledgementsView",
-                           @"detailViewController": ^(NSString *nibName) { return [AcknowledgementsViewController new]; }
-                           }
+                       @"Staffs",
+                       @"Sponsors",
+                       @"Acknowledgements",
                        ];
 }
 
@@ -127,9 +124,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreCell"
-                                                            forIndexPath:indexPath];
-    [cell.textLabel setText:[[self.moreItems objectAtIndex:indexPath.row] objectForKey:@"LocalizedString"]];
+    NSString *cellId = [self.moreItems objectAtIndex:indexPath.row];
+    MoreCell *cell = (MoreCell *)[tableView dequeueReusableCellWithIdentifier:cellId
+                                                                 forIndexPath:indexPath];
+    [cell.textLabel setText:NSLocalizedString(cellId, nil)];
     return cell;
 }
 
@@ -167,21 +165,15 @@
 }
 */
 
-#pragma mark - Table view delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath
-                             animated:YES];
-    
-    NSDictionary *item = [self.moreItems objectAtIndex:indexPath.row];
-    NSString *nibName = [item objectForKey:@"NibName"];
-    UIViewController *detailViewController = ((UIViewController *(^)(NSString *))[item objectForKey:@"detailViewController"])(nibName);
-    
-    [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
-    [self.navigationController pushViewController:detailViewController
-                                         animated:YES];
-    
-    SEND_GAI_EVENT(@"MoreTableView", nibName);
-}
+//#pragma mark - Table view delegate
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    [tableView deselectRowAtIndexPath:indexPath
+//                             animated:YES];
+//    NSDictionary *item = [self.moreItems objectAtIndex:indexPath.row];
+//    NSString *title = [[[tableView cellForRowAtIndexPath:indexPath] textLabel] text];
+//    ((void(^)(NSString *))[item objectForKey:@"detailViewController"])(title);
+//    SEND_GAI_EVENT(@"MoreTableView", title);
+//}
 
 /*
 #pragma mark - Navigation

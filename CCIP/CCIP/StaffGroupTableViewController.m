@@ -1,5 +1,5 @@
 //
-//  StaffGroupView.m
+//  StaffGroupViewController.m
 //  CCIP
 //
 //  Created by Sars on 2016/07/10.
@@ -10,22 +10,14 @@
 #import "StaffGroupTableViewController.h"
 #import "GatewayWebService/GatewayWebService.h"
 
-@interface StaffGroupView()
+@interface StaffGroupViewController()
 
 @end
 
-@implementation StaffGroupView
-
-static NSString *identifier = @"StaffGroupTableViewCell";
+@implementation StaffGroupViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.tableView registerNib:[UINib nibWithNibName:identifier bundle:nil]
-         forCellReuseIdentifier:identifier];
-    
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
     
     GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:STAFF_DATA_URL];
     [program_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
@@ -55,7 +47,8 @@ static NSString *identifier = @"StaffGroupTableViewCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StaffGroupTableViewCell"
+                                                            forIndexPath:indexPath];
     
     cell.textLabel.text = [[self.staffJsonArray objectAtIndex:indexPath.row] objectForKey:@"name"];
     

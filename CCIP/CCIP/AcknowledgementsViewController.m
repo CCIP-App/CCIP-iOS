@@ -25,18 +25,18 @@
 
 @implementation AcknowledgementsViewController
 
-- (instancetype)init {
+- (void)configuration {
     NSMutableArray *contributors = [NSMutableArray new];
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Project_Info_and_Contributors" ofType:@"json"];
     NSString *projectInfoJSON = [[NSString alloc] initWithContentsOfFile:filePath
                                                                 encoding:NSUTF8StringEncoding
-                                                                   error:NULL];
+                                                                   error:nil];
     NSError *error =  nil;
     NSDictionary *projectInfoData = [NSJSONSerialization JSONObjectWithData:[projectInfoJSON dataUsingEncoding:NSUTF8StringEncoding]
                                                                     options:NSJSONReadingMutableContainers
                                                                       error:&error];
-
+    
     NSArray *selfContributorIndexList = [[projectInfoData objectForKey:@"self"] objectForKey:@"contributors"];
     NSArray *allContributorArray = [projectInfoData objectForKey:@"contributors"];
     
@@ -67,11 +67,11 @@
     NSString *customAckJSONPath = [[NSBundle mainBundle] pathForResource:@"Project_3rd_Lib_License" ofType:@"json"];
     NSString *customAckJSON = [[NSString alloc] initWithContentsOfFile:customAckJSONPath
                                                               encoding:NSUTF8StringEncoding
-                                                                 error:NULL];
+                                                                 error:nil];
     NSArray *customAckArray = [NSJSONSerialization JSONObjectWithData:[customAckJSON dataUsingEncoding:NSUTF8StringEncoding]
                                                               options:NSJSONReadingAllowFragments
                                                                 error:&error];
-
+    
     for (NSDictionary *acknowledgementDict in customAckArray) {
         [acknowledgements addObject:[[CPDLibrary alloc] initWithCocoaPodsMetadataPlistDictionary:acknowledgementDict]];
     }
@@ -84,7 +84,26 @@
     acknowledgementsViewController.view.frame = self.view.frame;
     [self.view addSubview:acknowledgementsViewController.view];
     [acknowledgementsViewController didMoveToParentViewController:self];
-    
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+    }
+    return self;
+}
+
+- (instancetype)initWithNibName:(NSString *)nibName bundle:(NSBundle *)bundle {
+    self = [super initWithNibName:nibName bundle:bundle];
+    if (self) {
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+    }
     return self;
 }
 
@@ -95,13 +114,12 @@
     
     if ([website length] > 0) {
         return website;
-    }
-    else
+    } else {
         if ([githubLogin length] > 0) {
-        return [NSString stringWithFormat:@"https://github.com/%@", githubLogin];
-    }
-    else {
-        return nil;
+            return [NSString stringWithFormat:@"https://github.com/%@", githubLogin];
+        } else {
+            return nil;
+        }
     }
 }
 
@@ -115,20 +133,15 @@
     
     if ([avatarLink length] > 0) {
         return avatarLink;
-    }
-    else if ([gravatarHash length] > 0) {
+    } else if ([gravatarHash length] > 0) {
         return [NSString stringWithFormat:@"https://www.gravatar.com/avatar/%@?&r=x&s=86", gravatarHash];
-    }
-    else if ([gravatarEmail length] > 0) {
+    } else if ([gravatarEmail length] > 0) {
         return [NSString stringWithFormat:@"https://www.gravatar.com/avatar/%@?&r=x&s=86", [[[[gravatarEmail dataUsingEncoding:NSUTF8StringEncoding] MD5Sum] hexString] lowercaseString]];
-    }
-    else if ([githubId length] > 0) {
+    } else if ([githubId length] > 0) {
         return [NSString stringWithFormat:@"https://avatars.githubusercontent.com/u/%@?v=3&s=86", githubId];
-    }
-    else if ([githubLogin length] > 0) {
+    } else if ([githubLogin length] > 0) {
         return [NSString stringWithFormat:@"https://avatars.githubusercontent.com/%@?v=3&s=86", githubLogin];
-    }
-    else {
+    } else {
         return @"https://www.gravatar.com/avatar/?f=y&d=mm&s=86";
     }
 }
@@ -151,6 +164,7 @@
 }
 
 - (void)viewDidLoad {
+    [self configuration];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     if (self.githubRepoLink != nil) {

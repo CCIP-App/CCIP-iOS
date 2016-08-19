@@ -73,10 +73,8 @@
 		28B432411D6228AF00590846 /* BarButton-Reload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B4323B1D6228AF00590846 /* BarButton-Reload@2x.png */; };
 		28B432421D6228AF00590846 /* BarButton-Reload@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B4323C1D6228AF00590846 /* BarButton-Reload@3x.png */; };
 		5F0E55D01D574F7F004664FB /* SponsorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0E55CE1D574F7F004664FB /* SponsorTableViewCell.m */; };
-		5F0E55D11D574F7F004664FB /* SponsorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F0E55CF1D574F7F004664FB /* SponsorTableViewCell.xib */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
-		5F8B2D2A1D55E02200A68C7D /* SponsorTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B2D281D55E02200A68C7D /* SponsorTableView.m */; };
-		5F8B2D2B1D55E02200A68C7D /* SponsorTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F8B2D291D55E02200A68C7D /* SponsorTableView.xib */; };
+		5F8B2D2A1D55E02200A68C7D /* SponsorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B2D281D55E02200A68C7D /* SponsorTableViewController.m */; };
 		5F9171291D325B5E000D0F66 /* StaffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9171271D325B5E000D0F66 /* StaffView.m */; };
 		5F91712A1D325B5E000D0F66 /* StaffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9171281D325B5E000D0F66 /* StaffView.xib */; };
 		5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91712C1D32990C000D0F66 /* StaffCell.m */; };
@@ -109,7 +107,6 @@
 		5FD0498C1D5B041800E7CEAD /* AnnounceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0498B1D5B041800E7CEAD /* AnnounceTableViewCell.m */; };
 		5FECE5AC1D352E8A00242DB4 /* StaffGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5AA1D352E8A00242DB4 /* StaffGroupTableViewController.m */; };
 		5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */; };
-		5FECE5F61D353C4900242DB4 /* StaffGroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FECE5F41D353C4900242DB4 /* StaffGroupTableViewCell.xib */; };
 		5FF2B11E1D28B19600665DD9 /* IRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2B11C1D28B19600665DD9 /* IRCViewController.m */; };
 		6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */; };
 		6B11BE811D4CBA5800B87EA9 /* UIImage+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */; };
@@ -241,11 +238,9 @@
 		28B4323C1D6228AF00590846 /* BarButton-Reload@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BarButton-Reload@3x.png"; sourceTree = "<group>"; };
 		5F0E55CD1D574F7F004664FB /* SponsorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorTableViewCell.h; sourceTree = "<group>"; };
 		5F0E55CE1D574F7F004664FB /* SponsorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorTableViewCell.m; sourceTree = "<group>"; };
-		5F0E55CF1D574F7F004664FB /* SponsorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorTableViewCell.xib; sourceTree = "<group>"; };
 		5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		5F8B2D271D55E02200A68C7D /* SponsorTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorTableView.h; sourceTree = "<group>"; };
-		5F8B2D281D55E02200A68C7D /* SponsorTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorTableView.m; sourceTree = "<group>"; };
-		5F8B2D291D55E02200A68C7D /* SponsorTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorTableView.xib; sourceTree = "<group>"; };
+		5F8B2D271D55E02200A68C7D /* SponsorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorTableViewController.h; sourceTree = "<group>"; };
+		5F8B2D281D55E02200A68C7D /* SponsorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorTableViewController.m; sourceTree = "<group>"; };
 		5F9171261D325B5E000D0F66 /* StaffView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffView.h; sourceTree = "<group>"; };
 		5F9171271D325B5E000D0F66 /* StaffView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffView.m; sourceTree = "<group>"; };
 		5F9171281D325B5E000D0F66 /* StaffView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffView.xib; sourceTree = "<group>"; };
@@ -288,7 +283,6 @@
 		5FECE5AA1D352E8A00242DB4 /* StaffGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupTableViewController.m; sourceTree = "<group>"; };
 		5FECE5F21D353C4900242DB4 /* StaffGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffGroupTableViewCell.h; sourceTree = "<group>"; };
 		5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupTableViewCell.m; sourceTree = "<group>"; };
-		5FECE5F41D353C4900242DB4 /* StaffGroupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffGroupTableViewCell.xib; sourceTree = "<group>"; };
 		5FF2B11B1D28B19600665DD9 /* IRCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRCViewController.h; sourceTree = "<group>"; };
 		5FF2B11C1D28B19600665DD9 /* IRCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRCViewController.m; sourceTree = "<group>"; };
 		6B0B84D11D2B861000DE18B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -471,7 +465,6 @@
 				5FECE5AA1D352E8A00242DB4 /* StaffGroupTableViewController.m */,
 				5FECE5F21D353C4900242DB4 /* StaffGroupTableViewCell.h */,
 				5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */,
-				5FECE5F41D353C4900242DB4 /* StaffGroupTableViewCell.xib */,
 				5F9171261D325B5E000D0F66 /* StaffView.h */,
 				5F9171271D325B5E000D0F66 /* StaffView.m */,
 				5F9171281D325B5E000D0F66 /* StaffView.xib */,
@@ -598,12 +591,10 @@
 		5F8B2D261D55DAC900A68C7D /* SponsorView */ = {
 			isa = PBXGroup;
 			children = (
-				5F8B2D271D55E02200A68C7D /* SponsorTableView.h */,
-				5F8B2D281D55E02200A68C7D /* SponsorTableView.m */,
-				5F8B2D291D55E02200A68C7D /* SponsorTableView.xib */,
+				5F8B2D271D55E02200A68C7D /* SponsorTableViewController.h */,
+				5F8B2D281D55E02200A68C7D /* SponsorTableViewController.m */,
 				5F0E55CD1D574F7F004664FB /* SponsorTableViewCell.h */,
 				5F0E55CE1D574F7F004664FB /* SponsorTableViewCell.m */,
-				5F0E55CF1D574F7F004664FB /* SponsorTableViewCell.xib */,
 			);
 			name = SponsorView;
 			sourceTree = "<group>";
@@ -806,8 +797,6 @@
 				28A7C5641D5F7D2D0079BB12 /* Project_3rd_Lib_License.json in Resources */,
 				288D3AA11D59AB4800E4E3A6 /* QR_Code_Filled@3x.png in Resources */,
 				288D3A781D599A1200E4E3A6 /* LICENSE-2.0.txt in Resources */,
-				5F8B2D2B1D55E02200A68C7D /* SponsorTableView.xib in Resources */,
-				5FECE5F61D353C4900242DB4 /* StaffGroupTableViewCell.xib in Resources */,
 				28B432411D6228AF00590846 /* BarButton-Reload@2x.png in Resources */,
 				2839BF3A1D4C97AB0062F36D /* Star@2x.png in Resources */,
 				2823E8E31D3E55F10039D72E /* ProgramAbstractViewController.xib in Resources */,
@@ -862,7 +851,6 @@
 				28B432401D6228AF00590846 /* BarButton-Reload.png in Resources */,
 				28B4323F1D6228AF00590846 /* BarButton-Forward@3x.png in Resources */,
 				6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */,
-				5F0E55D11D574F7F004664FB /* SponsorTableViewCell.xib in Resources */,
 				6B9117091D4EFC2600537ABE /* ScheduleViewCell.xib in Resources */,
 				5FB4D45A1D3A865A005BF382 /* icon_ios_topcharts.png in Resources */,
 				2839BF381D4C97AB0062F36D /* Star@3x.png in Resources */,
@@ -952,7 +940,7 @@
 				28A7C56D1D6032680079BB12 /* MainNavViewController.m in Sources */,
 				5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */,
 				5FECE5AC1D352E8A00242DB4 /* StaffGroupTableViewController.m in Sources */,
-				5F8B2D2A1D55E02200A68C7D /* SponsorTableView.m in Sources */,
+				5F8B2D2A1D55E02200A68C7D /* SponsorTableViewController.m in Sources */,
 				6B11BE811D4CBA5800B87EA9 /* UIImage+addition.m in Sources */,
 				286E28A51D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m in Sources */,
 				6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */,
