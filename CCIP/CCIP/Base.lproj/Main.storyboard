@@ -1091,14 +1091,14 @@ Label</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StaffIconDefault.png" translatesAutoresizingMaskIntoConstraints="NO" id="foB-ud-1gE">
-                                            <rect key="frame" x="48" y="10" width="64" height="64"/>
+                                            <rect key="frame" x="48" y="20" width="64" height="64"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="64" id="GUf-UY-J2q"/>
                                                 <constraint firstAttribute="height" constant="64" id="yFU-56-wbu"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRk-LH-eCY">
-                                            <rect key="frame" x="13" y="76" width="134" height="28"/>
+                                            <rect key="frame" x="13" y="86" width="134" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="134" id="BLy-vR-wiE"/>
                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="zxS-te-8J1"/>
@@ -1108,7 +1108,7 @@ Label</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="行政組員兼場務組攤位組員" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8o-59-Qev">
-                                            <rect key="frame" x="13" y="106" width="134" height="50.5"/>
+                                            <rect key="frame" x="13" y="116" width="134" height="50.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="54" id="Cqf-NA-T6g"/>
                                                 <constraint firstAttribute="width" constant="134" id="qfI-3c-pDg"/>
@@ -1124,7 +1124,7 @@ Label</string>
                                     <constraint firstItem="qRk-LH-eCY" firstAttribute="top" secondItem="foB-ud-1gE" secondAttribute="bottom" constant="2" id="2dj-vM-UFP"/>
                                     <constraint firstItem="q8o-59-Qev" firstAttribute="top" secondItem="qRk-LH-eCY" secondAttribute="bottom" constant="2" id="8Kt-6W-Drh"/>
                                     <constraint firstItem="q8o-59-Qev" firstAttribute="top" secondItem="qRk-LH-eCY" secondAttribute="bottom" constant="2" id="QAb-Hf-3xJ"/>
-                                    <constraint firstItem="foB-ud-1gE" firstAttribute="top" secondItem="ysH-Kj-XD0" secondAttribute="top" constant="10" id="RCx-hH-FnC"/>
+                                    <constraint firstItem="foB-ud-1gE" firstAttribute="top" secondItem="ysH-Kj-XD0" secondAttribute="top" constant="20" id="RCx-hH-FnC"/>
                                     <constraint firstItem="qRk-LH-eCY" firstAttribute="centerX" secondItem="ysH-Kj-XD0" secondAttribute="centerX" id="T7z-Qt-jzx"/>
                                     <constraint firstItem="foB-ud-1gE" firstAttribute="centerX" secondItem="ysH-Kj-XD0" secondAttribute="centerX" id="i9x-sq-4zs"/>
                                     <constraint firstItem="q8o-59-Qev" firstAttribute="centerX" secondItem="ysH-Kj-XD0" secondAttribute="centerX" id="wQY-ap-7P2"/>
