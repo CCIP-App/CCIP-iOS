@@ -509,6 +509,46 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IdS-ec-iYA">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ScheduleCell" id="Q5r-pp-C94" customClass="ScheduleViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q5r-pp-C94" id="oBy-bm-iDT">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNJ-mx-lHL">
+                                                    <rect key="frame" x="20" y="8" width="227" height="27.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HH" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vaD-WX-ytp">
+                                                    <rect key="frame" x="257" y="8" width="30" height="27.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="Nlx-mg-m41"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SNJ-mx-lHL" firstAttribute="leading" secondItem="oBy-bm-iDT" secondAttribute="leading" constant="20" id="0m3-YC-pRz"/>
+                                                <constraint firstItem="SNJ-mx-lHL" firstAttribute="top" secondItem="oBy-bm-iDT" secondAttribute="topMargin" id="5Pk-a8-cN8"/>
+                                                <constraint firstAttribute="trailing" secondItem="vaD-WX-ytp" secondAttribute="trailing" id="7G4-AQ-WnO"/>
+                                                <constraint firstItem="vaD-WX-ytp" firstAttribute="leading" secondItem="SNJ-mx-lHL" secondAttribute="trailing" constant="10" id="AUQ-bI-tMq"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="SNJ-mx-lHL" secondAttribute="bottom" id="F8D-2L-GXG"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="vaD-WX-ytp" secondAttribute="bottom" id="Rnr-r6-zuT"/>
+                                                <constraint firstItem="vaD-WX-ytp" firstAttribute="top" secondItem="oBy-bm-iDT" secondAttribute="topMargin" id="y4s-TS-Er5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="RoomLocationLabel" destination="vaD-WX-ytp" id="Pe8-km-yWS"/>
+                                            <outlet property="ScheduleTitleLabel" destination="SNJ-mx-lHL" id="wbK-a1-sHT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="tQi-9N-xiF" id="RjO-tD-xPf"/>
                                 </connections>
@@ -740,10 +780,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="NbQ-cI-f1V" kind="show" id="1yQ-dJ-gyn">
-                                                <segue key="commit" inheritsFrom="parent" id="PdM-cB-4Mu"/>
-                                                <segue key="preview" inheritsFrom="commit" id="8QP-h7-WGZ"/>
-                                            </segue>
+                                            <segue destination="NbQ-cI-f1V" kind="show" id="1yQ-dJ-gyn"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1221,6 +1258,5 @@
         <segue reference="gRH-x7-Jfd"/>
         <segue reference="m5s-g0-cve"/>
         <segue reference="ewg-q8-EfJ"/>
-        <segue reference="1yQ-dJ-gyn"/>
     </inferredMetricsTieBreakers>
 </document>

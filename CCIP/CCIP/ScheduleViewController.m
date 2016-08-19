@@ -509,13 +509,6 @@
     
     ScheduleViewCell *cell = (ScheduleViewCell *)[tableView dequeueReusableCellWithIdentifier:scheduleCellName];
     
-    if (cell == nil) {
-        [tableView registerNib:[UINib nibWithNibName:@"ScheduleViewCell"
-                                              bundle:nil]
-        forCellReuseIdentifier:scheduleCellName];
-        cell = (ScheduleViewCell *)[tableView dequeueReusableCellWithIdentifier:scheduleCellName];
-    }
-    
     NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     NSDictionary *program = [[self.program_date_section objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
