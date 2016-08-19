@@ -440,6 +440,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UIViewController *destination = segue.destinationViewController;
+//    NSString *title = [sender text];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    if ([destination isMemberOfClass:[ProgramDetailViewController class]]) {
+        ProgramDetailViewController *pdvc = (ProgramDetailViewController *)destination;
+        NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+        NSDictionary *program = [[self.program_date_section objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+        [pdvc setProgram:program];
+        SEND_GAI_EVENT(@"ScheduleViewController", [program objectForKey:@"slot"]);
+    }
+}
+
 /*
  #pragma mark - Navigation
  
@@ -518,21 +531,21 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [[self.tableView cellForRowAtIndexPath:indexPath] setSelected:NO
-                                                         animated:YES];
-    // TODO: display selected section detail informations
-    
-    NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-    NSDictionary *program = [[self.program_date_section objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
-    
-    ProgramDetailViewController *detailViewController = [[ProgramDetailViewController alloc] initWithNibName:@"ProgramDetailViewController"
-                                                                                                      bundle:[NSBundle mainBundle]
-                                                                                                     Program:program];
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    
-    SEND_GAI_EVENT(@"ScheduleViewController", [program objectForKey:@"slot"]);
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    [[self.tableView cellForRowAtIndexPath:indexPath] setSelected:NO
+//                                                         animated:YES];
+//    // TODO: display selected section detail informations
+//    
+//    NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+//    NSDictionary *program = [[self.program_date_section objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+//    
+//    ProgramDetailViewController *detailViewController = [[ProgramDetailViewController alloc] initWithNibName:@"ProgramDetailViewController"
+//                                                                                                      bundle:[NSBundle mainBundle]
+//                                                                                                     Program:program];
+//    [self.navigationController pushViewController:detailViewController animated:YES];
+//    
+//    SEND_GAI_EVENT(@"ScheduleViewController", [program objectForKey:@"slot"]);
+//}
 
 /*
  // Override to support conditional editing of the table view.

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		141D4150DB8FC2366FDFDF75 /* Pods-CCIP-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = A729E7D04006FECCCCCFAEEC /* Pods-CCIP-metadata.plist */; };
 		2821DA9D1D3DCA5500AFE139 /* ProgramDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */; };
-		2821DA9E1D3DCA5500AFE139 /* ProgramDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2821DA9C1D3DCA5500AFE139 /* ProgramDetailViewController.xib */; };
 		2821DAA21D3DCB2300AFE139 /* ProgramDetailViewTopBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DA9F1D3DCB2300AFE139 /* ProgramDetailViewTopBG.png */; };
 		2821DAA31D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DAA01D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@3x.png */; };
 		2821DAA41D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DAA11D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@2x.png */; };
@@ -157,7 +156,6 @@
 		1E39488D2E9378322A78E57B /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.release.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
 		2821DA9A1D3DCA5500AFE139 /* ProgramDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramDetailViewController.h; sourceTree = "<group>"; };
 		2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramDetailViewController.m; sourceTree = "<group>"; };
-		2821DA9C1D3DCA5500AFE139 /* ProgramDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgramDetailViewController.xib; sourceTree = "<group>"; };
 		2821DA9F1D3DCB2300AFE139 /* ProgramDetailViewTopBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProgramDetailViewTopBG.png; sourceTree = "<group>"; };
 		2821DAA01D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProgramDetailViewTopBG.png@3x.png"; sourceTree = "<group>"; };
 		2821DAA11D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProgramDetailViewTopBG.png@2x.png"; sourceTree = "<group>"; };
@@ -509,7 +507,6 @@
 			children = (
 				2821DA9A1D3DCA5500AFE139 /* ProgramDetailViewController.h */,
 				2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */,
-				2821DA9C1D3DCA5500AFE139 /* ProgramDetailViewController.xib */,
 				2821DAA51D3DD36500AFE139 /* ProgramDetailViewPagerController.h */,
 				2821DAA61D3DD36500AFE139 /* ProgramDetailViewPagerController.m */,
 				288164EA1D4F301A005C68EA /* AbstractView */,
@@ -842,7 +839,6 @@
 				6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */,
 				5FB4D45A1D3A865A005BF382 /* icon_ios_topcharts.png in Resources */,
 				2839BF381D4C97AB0062F36D /* Star@3x.png in Resources */,
-				2821DA9E1D3DCA5500AFE139 /* ProgramDetailViewController.xib in Resources */,
 				5FB4D45C1D3A865A005BF382 /* icon_ios_topcharts@3x.png in Resources */,
 				141D4150DB8FC2366FDFDF75 /* Pods-CCIP-metadata.plist in Resources */,
 				28B4323D1D6228AF00590846 /* BarButton-Forward.png in Resources */,

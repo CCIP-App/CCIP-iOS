@@ -546,6 +546,10 @@
                                         <connections>
                                             <outlet property="RoomLocationLabel" destination="vaD-WX-ytp" id="Pe8-km-yWS"/>
                                             <outlet property="ScheduleTitleLabel" destination="SNJ-mx-lHL" id="wbK-a1-sHT"/>
+                                            <segue destination="kE9-2Q-Df0" kind="show" id="sWP-4D-9cu">
+                                                <segue key="commit" inheritsFrom="parent" id="F9c-y6-0bN"/>
+                                                <segue key="preview" inheritsFrom="commit" id="SKF-ws-K2u"/>
+                                            </segue>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -578,6 +582,76 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wG-Gg-XNc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="119" y="1006"/>
+        </scene>
+        <!--Program Detail View Controller-->
+        <scene sceneID="HE5-QI-bdo">
+            <objects>
+                <viewController id="kE9-2Q-Df0" customClass="ProgramDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5ih-Rh-7jR"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ddy-yB-gmL"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="mW0-8h-Rsq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProgramDetailViewTopBG.png" translatesAutoresizingMaskIntoConstraints="NO" id="tTK-uh-x4q">
+                                <rect key="frame" x="0.0" y="64" width="600" height="156"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="156" id="QU3-xf-BzJ"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9P-XQ-YR6">
+                                <rect key="frame" x="0.0" y="176" width="600" height="424"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSO-K1-shl">
+                                <rect key="frame" x="30" y="80" width="540" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="BNI-9C-dK9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2g-0m-bel">
+                                <rect key="frame" x="30" y="113" width="540" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Goe-rS-Flj"/>
+                                </constraints>
+                                <string key="text">Label
+Label</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="K9P-XQ-YR6" firstAttribute="centerX" secondItem="mW0-8h-Rsq" secondAttribute="centerX" id="ARX-CR-aM7"/>
+                            <constraint firstItem="tTK-uh-x4q" firstAttribute="width" secondItem="mW0-8h-Rsq" secondAttribute="width" id="HVS-FW-I52"/>
+                            <constraint firstItem="uSO-K1-shl" firstAttribute="trailing" secondItem="tTK-uh-x4q" secondAttribute="trailing" constant="-30" id="Iic-t3-gm4"/>
+                            <constraint firstItem="K9P-XQ-YR6" firstAttribute="top" secondItem="tTK-uh-x4q" secondAttribute="bottom" constant="-44" id="Jja-RH-6Xq"/>
+                            <constraint firstItem="F2g-0m-bel" firstAttribute="top" secondItem="uSO-K1-shl" secondAttribute="bottom" constant="8" id="KOc-sS-5kv"/>
+                            <constraint firstItem="K9P-XQ-YR6" firstAttribute="width" secondItem="mW0-8h-Rsq" secondAttribute="width" id="TP8-dE-rgO"/>
+                            <constraint firstItem="uSO-K1-shl" firstAttribute="top" secondItem="tTK-uh-x4q" secondAttribute="top" constant="16" id="U9s-0b-hsT"/>
+                            <constraint firstItem="tTK-uh-x4q" firstAttribute="centerX" secondItem="mW0-8h-Rsq" secondAttribute="centerX" id="cQe-dh-Wr4"/>
+                            <constraint firstItem="tTK-uh-x4q" firstAttribute="top" secondItem="mW0-8h-Rsq" secondAttribute="top" constant="64" id="gwr-99-ntw"/>
+                            <constraint firstItem="uSO-K1-shl" firstAttribute="leading" secondItem="tTK-uh-x4q" secondAttribute="leading" constant="30" id="rGN-xK-vHM"/>
+                            <constraint firstAttribute="bottom" secondItem="K9P-XQ-YR6" secondAttribute="bottom" id="rVj-52-2Ar"/>
+                            <constraint firstItem="F2g-0m-bel" firstAttribute="leading" secondItem="tTK-uh-x4q" secondAttribute="leading" constant="30" id="rWa-u5-MJt"/>
+                            <constraint firstItem="F2g-0m-bel" firstAttribute="trailing" secondItem="tTK-uh-x4q" secondAttribute="trailing" constant="-30" id="sWK-1H-MDP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pagerview" destination="K9P-XQ-YR6" id="4o9-KP-ppH"/>
+                        <outlet property="speakername" destination="uSO-K1-shl" id="0cM-Pr-qbL"/>
+                        <outlet property="subject" destination="F2g-0m-bel" id="Mk3-wc-N9j"/>
+                        <outlet property="topBG" destination="tTK-uh-x4q" id="QVz-Uo-c5a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eus-fa-dPK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="119" y="1965"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Jxo-LT-w56">
@@ -1247,6 +1321,7 @@
         <image name="BarButton-Back.png" width="22" height="22"/>
         <image name="BarButton-Forward.png" width="22" height="22"/>
         <image name="BarButton-Reload.png" width="22" height="22"/>
+        <image name="ProgramDetailViewTopBG.png" width="375" height="156"/>
         <image name="StaffIconDefault.png" width="40" height="40"/>
         <image name="icon_ios_bell.png" width="25" height="25"/>
         <image name="icon_ios_chat.png" width="25" height="25"/>
@@ -1257,6 +1332,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="gRH-x7-Jfd"/>
         <segue reference="m5s-g0-cve"/>
+        <segue reference="sWP-4D-9cu"/>
         <segue reference="ewg-q8-EfJ"/>
     </inferredMetricsTieBreakers>
 </document>

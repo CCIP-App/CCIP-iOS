@@ -11,10 +11,10 @@
 @interface ProgramDetailViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *topBG;
+@property (weak, nonatomic) IBOutlet UIView *pagerview;
 @property (weak, nonatomic) IBOutlet UILabel *speakername;
 @property (weak, nonatomic) IBOutlet UILabel *subject;
-@property (weak, nonatomic) IBOutlet UIView *pagerview;
 
--(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil Program:(NSDictionary *)program;
+- (void)setProgram:(NSDictionary *)program;
 
 @end

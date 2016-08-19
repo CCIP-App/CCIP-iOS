@@ -21,34 +21,44 @@
 
 @implementation ProgramDetailViewController
 
--(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+
+- (void)configuration {
+    // Custom initialization
+    self.detailViewPager = [ProgramDetailViewPagerController new];
+    [self addChildViewController:self.detailViewPager];
+    [self.view addSubview:self.detailViewPager.view];
+    [self.detailViewPager didMoveToParentViewController:self];
+    [self.detailViewPager setProgram:self.program];
+}
+
+- (instancetype)init {
+    self = [super init];
     if (self) {
-        // Custom initialization
-        self.detailViewPager = [ProgramDetailViewPagerController new];
-        [self addChildViewController:self.detailViewPager];
-        [self.view addSubview:self.detailViewPager.view];
-        [self.detailViewPager didMoveToParentViewController:self];
     }
     return self;
 }
 
--(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil Program:(NSDictionary *)program {
-    self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (instancetype)initWithNibName:(NSString *)nibName bundle:(NSBundle *)bundle {
+    self = [super initWithNibName:nibName bundle:bundle];
     if (self) {
-        // Custom initialization
-        [self setProgram:program];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
     }
     return self;
 }
 
 - (void)viewDidLoad {
+    [self configuration];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
 }
 
--(void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     [self.speakername setText:[self.program objectForKey:@"speakername"]];
@@ -79,8 +89,6 @@
 
 - (void)setProgram:(NSMutableDictionary *)program {
     _program = program;
-    
-    [self.detailViewPager setProgram:self.program];
 }
 
 - (void)followAction:(id)sender {
