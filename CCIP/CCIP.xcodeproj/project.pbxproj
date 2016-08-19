@@ -75,10 +75,8 @@
 		5F0E55D01D574F7F004664FB /* SponsorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0E55CE1D574F7F004664FB /* SponsorTableViewCell.m */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
 		5F8B2D2A1D55E02200A68C7D /* SponsorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B2D281D55E02200A68C7D /* SponsorTableViewController.m */; };
-		5F9171291D325B5E000D0F66 /* StaffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9171271D325B5E000D0F66 /* StaffView.m */; };
-		5F91712A1D325B5E000D0F66 /* StaffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9171281D325B5E000D0F66 /* StaffView.xib */; };
+		5F9171291D325B5E000D0F66 /* StaffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9171271D325B5E000D0F66 /* StaffViewController.m */; };
 		5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91712C1D32990C000D0F66 /* StaffCell.m */; };
-		5F91712F1D32990C000D0F66 /* StaffCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F91712D1D32990C000D0F66 /* StaffCell.xib */; };
 		5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D43D1D3A668B005BF382 /* MainTabBarViewController.m */; };
 		5FB4D4461D3A8319005BF382 /* icon_ios_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4D4411D3A8319005BF382 /* icon_ios_pin.png */; };
 		5FB4D4471D3A8319005BF382 /* icon_ios_pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FB4D4421D3A8319005BF382 /* icon_ios_pin@2x.png */; };
@@ -241,12 +239,10 @@
 		5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F8B2D271D55E02200A68C7D /* SponsorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorTableViewController.h; sourceTree = "<group>"; };
 		5F8B2D281D55E02200A68C7D /* SponsorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorTableViewController.m; sourceTree = "<group>"; };
-		5F9171261D325B5E000D0F66 /* StaffView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffView.h; sourceTree = "<group>"; };
-		5F9171271D325B5E000D0F66 /* StaffView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffView.m; sourceTree = "<group>"; };
-		5F9171281D325B5E000D0F66 /* StaffView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffView.xib; sourceTree = "<group>"; };
+		5F9171261D325B5E000D0F66 /* StaffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffViewController.h; sourceTree = "<group>"; };
+		5F9171271D325B5E000D0F66 /* StaffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffViewController.m; sourceTree = "<group>"; };
 		5F91712B1D32990C000D0F66 /* StaffCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffCell.h; sourceTree = "<group>"; };
 		5F91712C1D32990C000D0F66 /* StaffCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffCell.m; sourceTree = "<group>"; };
-		5F91712D1D32990C000D0F66 /* StaffCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffCell.xib; sourceTree = "<group>"; };
 		5FB4D43C1D3A668B005BF382 /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		5FB4D43D1D3A668B005BF382 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
 		5FB4D4411D3A8319005BF382 /* icon_ios_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_ios_pin.png; path = Images/icon_ios_pin.png; sourceTree = "<group>"; };
@@ -465,12 +461,10 @@
 				5FECE5AA1D352E8A00242DB4 /* StaffGroupTableViewController.m */,
 				5FECE5F21D353C4900242DB4 /* StaffGroupTableViewCell.h */,
 				5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */,
-				5F9171261D325B5E000D0F66 /* StaffView.h */,
-				5F9171271D325B5E000D0F66 /* StaffView.m */,
-				5F9171281D325B5E000D0F66 /* StaffView.xib */,
+				5F9171261D325B5E000D0F66 /* StaffViewController.h */,
+				5F9171271D325B5E000D0F66 /* StaffViewController.m */,
 				5F91712B1D32990C000D0F66 /* StaffCell.h */,
 				5F91712C1D32990C000D0F66 /* StaffCell.m */,
-				5F91712D1D32990C000D0F66 /* StaffCell.xib */,
 			);
 			name = StaffView;
 			sourceTree = "<group>";
@@ -832,13 +826,11 @@
 				28B4322E1D6227D400590846 /* BarButton-Back.png in Resources */,
 				5FB4D4681D3A8706005BF382 /* icon_ios_chat@3x.png in Resources */,
 				28B432301D6227D400590846 /* BarButton-Back@3x.png in Resources */,
-				5F91712A1D325B5E000D0F66 /* StaffView.xib in Resources */,
 				2839BF391D4C97AB0062F36D /* Star_Filled@2x.png in Resources */,
 				288D3AA21D59AB4800E4E3A6 /* QR_Code_Filled.png in Resources */,
 				5FB4D4781D3A8DF6005BF382 /* icon_ios_more.png in Resources */,
 				28B4322F1D6227D400590846 /* BarButton-Back@2x.png in Resources */,
 				288D3A9E1D59AB4800E4E3A6 /* QR_Code@3x.png in Resources */,
-				5F91712F1D32990C000D0F66 /* StaffCell.xib in Resources */,
 				2839BF371D4C97AB0062F36D /* Star_Filled@3x.png in Resources */,
 				5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */,
 				5FB4D4661D3A8706005BF382 /* icon_ios_chat.png in Resources */,
@@ -950,7 +942,7 @@
 				6B11BE891D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m in Sources */,
 				2821DA9D1D3DCA5500AFE139 /* ProgramDetailViewController.m in Sources */,
 				6BCBC3B51D4F393700B5AF35 /* UIViewController+addition.m in Sources */,
-				5F9171291D325B5E000D0F66 /* StaffView.m in Sources */,
+				5F9171291D325B5E000D0F66 /* StaffViewController.m in Sources */,
 				5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */,
 				6B9117081D4EFC2600537ABE /* ScheduleViewCell.m in Sources */,
 				28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */,

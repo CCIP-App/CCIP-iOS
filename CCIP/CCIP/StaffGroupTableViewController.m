@@ -6,9 +6,10 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
+#import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import "StaffGroupTableViewController.h"
-#import "GatewayWebService/GatewayWebService.h"
+#import "StaffViewController.h"
 
 @interface StaffGroupViewController()
 
@@ -35,6 +36,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UIViewController *destination = segue.destinationViewController;
+    NSString *title = [sender text];
+    [destination setTitle:title];
+    if ([destination isMemberOfClass:[StaffViewController class]]) {
+        StaffViewController *sgv = (StaffViewController *)destination;
+        NSDictionary *groupData = [self.staffJsonArray objectAtIndex:[self.tableView indexPathForCell:sender].row];
+        [sgv setGroupData:groupData];
+        SEND_GAI_EVENT(@"StaffView", [groupData objectForKey:@"name"]);
+    }
+}
 
 #pragma mark - Table view data source
 
@@ -57,23 +69,23 @@
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath
-                             animated:YES];
-    
-    UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:@"StaffView"
-                                                                                bundle:nil];
-    [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
-    
-    id groupData = [self.staffJsonArray objectAtIndex:indexPath.row];
-    [NSInvocation InvokeObject:detailViewController.view
-            withSelectorString:@"setGroupData:"
-                 withArguments:@[ groupData ]];
-    
-    SEND_GAI_EVENT(@"StaffView", [groupData objectForKey:@"name"]);
-    
-    [self.navigationController pushViewController:detailViewController
-                                         animated:YES];
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    [tableView deselectRowAtIndexPath:indexPath
+//                             animated:YES];
+//    
+//    UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:@"StaffViewController"
+//                                                                                bundle:nil];
+//    [detailViewController setTitle:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
+//    
+//    id groupData = [self.staffJsonArray objectAtIndex:indexPath.row];
+//    [NSInvocation InvokeObject:detailViewController.view
+//            withSelectorString:@"setGroupData:"
+//                 withArguments:@[ groupData ]];
+//    
+//    SEND_GAI_EVENT(@"StaffView", [groupData objectForKey:@"name"]);
+//    
+//    [self.navigationController pushViewController:detailViewController
+//                                         animated:YES];
+//}
 
 @end

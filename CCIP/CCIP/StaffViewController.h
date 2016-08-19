@@ -1,5 +1,5 @@
 //
-//  StaffView.h
+//  StaffViewController.h
 //  CCIP
 //
 //  Created by Sars on 2016/07/10.
@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StaffView : UIView <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface StaffViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, retain) IBOutlet UICollectionView *staffCollectionView;
 @property (strong, nonatomic) NSArray *staffJsonArray;
+
+- (void)setGroupData:(NSDictionary *)groupData;
 
 @end

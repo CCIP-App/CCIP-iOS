@@ -786,6 +786,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Du6-oE-R9e" kind="show" id="gRH-x7-Jfd">
+                                        <segue key="commit" inheritsFrom="parent" id="7YC-kW-QJi"/>
+                                        <segue key="preview" inheritsFrom="commit" id="fkN-o1-95S"/>
+                                    </segue>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -797,6 +803,88 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tWc-L3-SiQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2081" y="1965"/>
+        </scene>
+        <!--Staff View Controller-->
+        <scene sceneID="4VM-uK-3io">
+            <objects>
+                <collectionViewController modalPresentationStyle="overCurrentContext" id="Du6-oE-R9e" customClass="StaffViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="iVn-bX-KcF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="ZyF-ya-MPN">
+                            <size key="itemSize" width="160" height="180"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="30" minY="30" maxX="30" maxY="30"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StaffCell" id="ysH-Kj-XD0" customClass="StaffCell">
+                                <rect key="frame" x="30" y="94" width="160" height="180"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="180"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StaffIconDefault.png" translatesAutoresizingMaskIntoConstraints="NO" id="foB-ud-1gE">
+                                            <rect key="frame" x="48" y="10" width="64" height="64"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="64" id="GUf-UY-J2q"/>
+                                                <constraint firstAttribute="height" constant="64" id="yFU-56-wbu"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRk-LH-eCY">
+                                            <rect key="frame" x="13" y="76" width="134" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="134" id="BLy-vR-wiE"/>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="zxS-te-8J1"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="行政組員兼場務組攤位組員" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8o-59-Qev">
+                                            <rect key="frame" x="13" y="106" width="134" height="50.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="54" id="Cqf-NA-T6g"/>
+                                                <constraint firstAttribute="width" constant="134" id="qfI-3c-pDg"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="qRk-LH-eCY" firstAttribute="top" secondItem="foB-ud-1gE" secondAttribute="bottom" constant="2" id="2dj-vM-UFP"/>
+                                    <constraint firstItem="q8o-59-Qev" firstAttribute="top" secondItem="qRk-LH-eCY" secondAttribute="bottom" constant="2" id="8Kt-6W-Drh"/>
+                                    <constraint firstItem="q8o-59-Qev" firstAttribute="top" secondItem="qRk-LH-eCY" secondAttribute="bottom" constant="2" id="QAb-Hf-3xJ"/>
+                                    <constraint firstItem="foB-ud-1gE" firstAttribute="top" secondItem="ysH-Kj-XD0" secondAttribute="top" constant="10" id="RCx-hH-FnC"/>
+                                    <constraint firstItem="qRk-LH-eCY" firstAttribute="centerX" secondItem="ysH-Kj-XD0" secondAttribute="centerX" id="T7z-Qt-jzx"/>
+                                    <constraint firstItem="foB-ud-1gE" firstAttribute="centerX" secondItem="ysH-Kj-XD0" secondAttribute="centerX" id="i9x-sq-4zs"/>
+                                    <constraint firstItem="q8o-59-Qev" firstAttribute="centerX" secondItem="ysH-Kj-XD0" secondAttribute="centerX" id="wQY-ap-7P2"/>
+                                </constraints>
+                                <size key="customSize" width="160" height="180"/>
+                                <connections>
+                                    <outlet property="staffImg" destination="foB-ud-1gE" id="mn2-XB-aqs"/>
+                                    <outlet property="staffName" destination="qRk-LH-eCY" id="SaT-3e-xy9"/>
+                                    <outlet property="staffTitle" destination="q8o-59-Qev" id="JwS-Lp-vVX"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Du6-oE-R9e" id="SZ1-vo-4wQ"/>
+                            <outlet property="delegate" destination="Du6-oE-R9e" id="t4e-k6-sVG"/>
+                        </connections>
+                    </collectionView>
+                    <connections>
+                        <outlet property="staffCollectionView" destination="iVn-bX-KcF" id="YQu-Vy-GkB"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JzY-Sh-wBC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2081" y="2795"/>
         </scene>
         <!--Sponsor Table View Controller-->
         <scene sceneID="p8R-9B-eD5">
@@ -1122,6 +1210,7 @@
         <image name="BarButton-Back.png" width="22" height="22"/>
         <image name="BarButton-Forward.png" width="22" height="22"/>
         <image name="BarButton-Reload.png" width="22" height="22"/>
+        <image name="StaffIconDefault.png" width="40" height="40"/>
         <image name="icon_ios_bell.png" width="25" height="25"/>
         <image name="icon_ios_chat.png" width="25" height="25"/>
         <image name="icon_ios_more.png" width="25" height="25"/>
@@ -1129,8 +1218,9 @@
         <image name="icon_ios_topcharts.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="gRH-x7-Jfd"/>
+        <segue reference="m5s-g0-cve"/>
         <segue reference="ewg-q8-EfJ"/>
         <segue reference="1yQ-dJ-gyn"/>
-        <segue reference="m5s-g0-cve"/>
     </inferredMetricsTieBreakers>
 </document>

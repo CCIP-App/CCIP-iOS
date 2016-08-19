@@ -1,5 +1,5 @@
 //
-//  StaffView.m
+//  StaffViewController.m
 //  CCIP
 //
 //  Created by Sars on 2016/07/10.
@@ -9,25 +9,19 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
-#import "StaffView.h"
+#import "StaffViewController.h"
 #import "StaffCell.h"
 
-@interface StaffView()
+@interface StaffViewController()
 
 @end
 
-@implementation StaffView
+@implementation StaffViewController
 
 static NSString *identifier = @"StaffCell";
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    [self.staffCollectionView registerNib:[UINib nibWithNibName:identifier bundle:nil]
-               forCellWithReuseIdentifier:identifier];
-    
-    self.staffCollectionView.delegate = self;
-    self.staffCollectionView.dataSource = self;
     
     SEND_GAI(@"StaffView");
 }
