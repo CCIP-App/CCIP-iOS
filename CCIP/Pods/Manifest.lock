@@ -38,17 +38,17 @@ PODS:
   - UICKeyChainStore (2.1.0)
 
 DEPENDENCIES:
-  - BLKFlexibleHeightBar
+  - BLKFlexibleHeightBar (~> 1.0)
   - ColorArt (= 0.1.1)
   - CPDAcknowledgements (~> 1.0)
-  - Google/Analytics
+  - Google/Analytics (~> 3.0)
   - iCarousel (~> 1.8)
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
   - iRate (~> 1.11)
   - iVersion (from `https://github.com/FrankWu100/iVersion`)
   - MMMarkdown (~> 0.5)
   - NJKWebViewProgress (~> 0.2)
-  - OneSignal
+  - OneSignal (~> 1.13)
   - SDWebImage (~> 3.8)
   - Shimmer (~> 1.0)
   - STPopup (~> 1.7)
@@ -91,6 +91,6 @@ SPEC CHECKSUMS:
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: 2dffb2d825bacab0f8bf03ee7ea9d23162783ac3
+PODFILE CHECKSUM: 6b116258dcae3ec39835d41401849d06c051ab90
 
 COCOAPODS: 1.0.1
