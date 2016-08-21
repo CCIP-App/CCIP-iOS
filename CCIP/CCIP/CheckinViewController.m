@@ -317,7 +317,7 @@
                                 
                                 [AppDelegate setAccessToken:@""];
                                 
-                                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"InvalidTokenAlert", nil) withMessage:NSLocalizedString(@"InvalidTokenAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:^(UIAlertAction *action) {
+                                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"InvalidTokenAlert", nil) withMessage:NSLocalizedString(@"InvalidTokenDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:^(UIAlertAction *action) {
                                     [self reloadCard];
                                 }];
                                 [ac showAlert:nil];

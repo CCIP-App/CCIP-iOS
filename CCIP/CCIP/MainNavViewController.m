@@ -7,7 +7,6 @@
 //
 
 #import "MainNavViewController.h"
-#import "AppDelegate.h"
 
 @interface MainNavViewController ()
 
