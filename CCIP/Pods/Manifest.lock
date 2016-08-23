@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - BLKFlexibleHeightBar (1.0.2)
   - ColorArt (0.1.1)
   - CPDAcknowledgements (1.0.0)
@@ -38,6 +53,7 @@ PODS:
   - UICKeyChainStore (2.1.0)
 
 DEPENDENCIES:
+  - AFNetworking (~> 3.1)
   - BLKFlexibleHeightBar (~> 1.0)
   - ColorArt (= 0.1.1)
   - CPDAcknowledgements (~> 1.0)
@@ -69,6 +85,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/FrankWu100/iVersion
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BLKFlexibleHeightBar: b27572a69633d8e33f1f2bbc486b04d8e86f742d
   ColorArt: de0ffb63da4acdde8e234ded62e200236ca3e7e4
   CPDAcknowledgements: 6e15e71849ba4ad5e8a17a0bb9d20938ad23bac8
@@ -91,6 +108,6 @@ SPEC CHECKSUMS:
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: 6b116258dcae3ec39835d41401849d06c051ab90
+PODFILE CHECKSUM: face469e0111c21fb280d50b1aeff975a39c9576
 
 COCOAPODS: 1.0.1

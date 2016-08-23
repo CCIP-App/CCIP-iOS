@@ -84,6 +84,7 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
   install_framework "$BUILT_PRODUCTS_DIR/BLKFlexibleHeightBar/BLKFlexibleHeightBar.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CPDAcknowledgements/CPDAcknowledgements.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ColorArt/ColorArt.framework"
@@ -99,6 +100,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/iVersion/iVersion.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
   install_framework "$BUILT_PRODUCTS_DIR/BLKFlexibleHeightBar/BLKFlexibleHeightBar.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CPDAcknowledgements/CPDAcknowledgements.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ColorArt/ColorArt.framework"
