@@ -7,10 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "GatewayWebService/GatewayWebService.h"
 #import "AnnounceTableViewController.h"
 #import "AnnounceTableViewCell.h"
 #import <SafariServices/SafariServices.h>
+#import <AFNetworking/AFNetworking.h>
+#import "WebServiceEndPoint.h"
 
 @interface AnnounceTableViewController ()
 
@@ -51,13 +52,16 @@
 }
 
 - (void)refresh {
-    GatewayWebService *annoounce_ws = [[GatewayWebService alloc] initWithURL:CC_ANNOUNCEMENT];
-    [annoounce_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
-        if (json != nil) {
-            self.announceJsonArray = json;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:CC_ANNOUNCEMENT parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        if (responseObject != nil) {
+            self.announceJsonArray = responseObject;
             [self.announceTableView reloadData];
             [self.refreshControl endRefreshing];
         }
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
     }];
 }
 
