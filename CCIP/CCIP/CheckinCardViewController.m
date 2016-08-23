@@ -8,9 +8,9 @@
 
 #include <QuartzCore/QuartzCore.h>
 #import "UIColor+addition.h"
-#import "GatewayWebService/GatewayWebService.h"
 #import "CheckinCardViewController.h"
 #import "CheckinCardView.h"
+#import "headers.h"
 
 @interface CheckinCardViewController()
 

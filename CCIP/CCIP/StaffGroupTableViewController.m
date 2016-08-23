@@ -6,7 +6,6 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
-#import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import "StaffGroupTableViewController.h"
 #import "StaffViewController.h"

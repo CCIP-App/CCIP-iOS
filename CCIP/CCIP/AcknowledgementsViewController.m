@@ -7,7 +7,6 @@
 //
 
 #import "AcknowledgementsViewController.h"
-#import "GatewayWebService/GatewayWebService.h"
 #import "NSData+CommonCrypto.h"
 #import "NSData+PMUtils.h"
 #import <SafariServices/SFSafariViewController.h>

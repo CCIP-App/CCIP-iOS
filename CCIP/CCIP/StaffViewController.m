@@ -7,10 +7,10 @@
 //
 
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import "StaffViewController.h"
 #import "StaffCell.h"
+#import "WebServiceEndPoint.h"
 
 @interface StaffViewController()
 
