@@ -9,7 +9,6 @@
 
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import "UIColor+addition.h"
-#import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import "CheckinCardViewController.h"
 #import "CheckinViewController.h"
@@ -18,6 +17,8 @@
 #import "StatusViewController.h"
 #import "InvalidNetworkMessageViewController.h"
 #import "UIAlertController+additional.h"
+#import <AFNetworking/AFNetworking.h>
+#import "WebServiceEndPoint.h"
 
 @interface CheckinViewController()
 
@@ -284,36 +285,41 @@
             [self reloadAndGoToCard];
         }
     } else {
-        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS([AppDelegate accessToken])];
-        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
-            long statusCode = (long)[(NSHTTPURLResponse *)response statusCode];
-            if (statusCode >= 200) {
-                switch (statusCode) {
-                    case 200: {
-                        if (json != nil) {
-                            [self hideGuideView];
-                            NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
-                            [userInfo removeObjectForKey:@"scenarios"];
-                            self.userInfo = [NSDictionary dictionaryWithDictionary:userInfo];
-                            self.scenarios = [json objectForKey:@"scenarios"];
-                            [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
-                                                                   value:[json objectForKey:@"user_id"]];
-                            if ([AppDelegate appDelegate].isLoginSession) {
-                                [[AppDelegate appDelegate] displayGreetingsForLogin];
-                            }
-                            [AppDelegate parseAvailableDays:self.scenarios];
-                            if ([AppDelegate firstAvailableDate] != previousDate) {
-                                previousDate = [AppDelegate firstAvailableDate];
-                                self.firstLoad = YES;
-                            }
-                            [self reloadAndGoToCard];
-                        }
-                        break;
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        NSURL *URL = [NSURL URLWithString:CC_STATUS([AppDelegate accessToken])];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+            NSLog(@"Response: %@", response);
+            if (!error) {
+                NSLog(@"Json: %@", responseObject);
+                if (responseObject != nil) {
+                    [self hideGuideView];
+                    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:responseObject];
+                    [userInfo removeObjectForKey:@"scenarios"];
+                    self.userInfo = [NSDictionary dictionaryWithDictionary:userInfo];
+                    self.scenarios = [responseObject objectForKey:@"scenarios"];
+                    [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
+                                                           value:[responseObject objectForKey:@"user_id"]];
+                    if ([AppDelegate appDelegate].isLoginSession) {
+                        [[AppDelegate appDelegate] displayGreetingsForLogin];
                     }
+                    [AppDelegate parseAvailableDays:self.scenarios];
+                    if ([AppDelegate firstAvailableDate] != previousDate) {
+                        previousDate = [AppDelegate firstAvailableDate];
+                        self.firstLoad = YES;
+                    }
+                    [self reloadAndGoToCard];
+                }
+            } else {
+                NSLog(@"Error: %@", error);
+                long statusCode = [(NSHTTPURLResponse *)response statusCode];
+                switch (statusCode) {
                     case 400: {
-                        if (json != nil) {
-                            if ([[json objectForKey:@"message"] isEqual:@"invalid token"]) {
-                                NSLog(@"%@", [json objectForKey:@"message"]);
+                        if (responseObject != nil) {
+                            if ([[responseObject objectForKey:@"message"] isEqual:@"invalid token"]) {
+                                NSLog(@"%@", [responseObject objectForKey:@"message"]);
                                 
                                 [AppDelegate setAccessToken:@""];
                                 
@@ -330,17 +336,18 @@
                                                   sender:NSLocalizedString(@"Networking_WrongWiFi", nil)];
                         break;
                     }
-                    default:
+                    default: {
+                        // Invalid Network
+                        [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg"
+                                                  sender:NSLocalizedString(@"Networking_Broken", nil)];
+                        // UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
+                        // [ac showAlert:nil];
                         break;
+                    }
                 }
-            } else {
-                // Invalid Network
-                [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg"
-                                          sender:NSLocalizedString(@"Networking_Broken", nil)];
-                //                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
-                //                [ac showAlert:nil];
             }
         }];
+        [dataTask resume];
     }
 }
 
@@ -396,32 +403,54 @@
     NSLog(@"scanned %@ barcode: %@", code.symbologyName, code.data);
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_LANDING(code.data)];
-        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
-            if (json != nil) {
-                NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
-                
-                if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
-                    [AppDelegate setLoginSession:YES];
-                    [AppDelegate setAccessToken:code.data];
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        NSURL *URL = [NSURL URLWithString:CC_LANDING(code.data)];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+            NSLog(@"Response: %@", response);
+            if (!error) {
+                NSLog(@"Json: %@", responseObject);
+                if (responseObject != nil) {
+                    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:responseObject];
+                    
+                    if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
+                        [AppDelegate setLoginSession:YES];
+                        [AppDelegate setAccessToken:code.data];
                         [self performSelector:@selector(reloadCard)
                                    withObject:nil
                                    afterDelay:0.5f];
                         [self performSelector:@selector(closeBarcodePickerOverlay)
                                    withObject:nil
                                    afterDelay:0.5f];
-                } else if ([userInfo objectForKey:@"message"] && [[userInfo objectForKey:@"message"] isEqualToString:@"invalid token"]) {
-                    UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
-                                                                withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
-                                                           cancelButtonText:NSLocalizedString(@"GotIt", nil)
-                                                                cancelStyle:UIAlertActionStyleCancel
-                                                               cancelAction:^(UIAlertAction *action) {
-                                                                   [self.scanditBarcodePicker resumeScanning];
-                                                               }];
-                    [ac showAlert:nil];
+                    }
+                }
+            } else {
+                NSLog(@"Error: %@", error);
+                long statusCode = [(NSHTTPURLResponse *)response statusCode];
+                switch (statusCode) {
+                    case 400: {
+                        if (responseObject != nil) {
+                            if ([responseObject objectForKey:@"message"] && [[responseObject objectForKey:@"message"] isEqualToString:@"invalid token"]) {
+                                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
+                                                                            withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
+                                                                       cancelButtonText:NSLocalizedString(@"GotIt", nil)
+                                                                            cancelStyle:UIAlertActionStyleCancel
+                                                                           cancelAction:^(UIAlertAction *action) {
+                                                                               [self.scanditBarcodePicker resumeScanning];
+                                                                           }];
+                                [ac showAlert:nil];
+                            }
+                        }
+                        break;
+                    }
+                    default:
+                        break;
                 }
             }
         }];
+        [dataTask resume];
     }];
 }
 
@@ -569,30 +598,52 @@
         
         __block UIAlertController *ac;
         if (result != nil) {
-            GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_LANDING(result)];
-            [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
-                if (json != nil) {
-                    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
-                    
-                    if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
-                        [AppDelegate setLoginSession:YES];
-                        [AppDelegate setAccessToken:result];
-                        [picker dismissViewControllerAnimated:YES completion:^{
-                            [self reloadCard];
-                        }];
-                    } else if ([userInfo objectForKey:@"message"] && [[userInfo objectForKey:@"message"] isEqualToString:@"invalid token"]) {
-                        ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
-                                                 withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
-                                            cancelButtonText:NSLocalizedString(@"GotIt", nil)
-                                                 cancelStyle:UIAlertActionStyleCancel
-                                                cancelAction:nil];
-                        [picker dismissViewControllerAnimated:YES
-                                                   completion:^{
-                                                       [ac showAlert:nil];
-                                                   }];
+            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+            
+            NSURL *URL = [NSURL URLWithString:CC_LANDING(result)];
+            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+            
+            NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+                NSLog(@"Response: %@", response);
+                if (!error) {
+                    NSLog(@"Json: %@", responseObject);
+                    if (responseObject != nil) {
+                        NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:responseObject];
+                        
+                        if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
+                            [AppDelegate setLoginSession:YES];
+                            [AppDelegate setAccessToken:result];
+                            [picker dismissViewControllerAnimated:YES completion:^{
+                                [self reloadCard];
+                            }];
+                        }
+                    }
+                } else {
+                    NSLog(@"Error: %@", error);
+                    long statusCode = [(NSHTTPURLResponse *)response statusCode];
+                    switch (statusCode) {
+                        case 400: {
+                            if (responseObject != nil) {
+                                    if ([responseObject objectForKey:@"message"] && [[responseObject objectForKey:@"message"] isEqualToString:@"invalid token"]) {
+                                    ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
+                                                             withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
+                                                        cancelButtonText:NSLocalizedString(@"GotIt", nil)
+                                                             cancelStyle:UIAlertActionStyleCancel
+                                                            cancelAction:nil];
+                                    [picker dismissViewControllerAnimated:YES
+                                                               completion:^{
+                                                                   [ac showAlert:nil];
+                                                               }];
+                                }
+                            }
+                            break;
+                        }
+                        default:
+                            break;
                     }
                 }
             }];
+            [dataTask resume];
         } else {
             ac = [UIAlertController alertOfTitle:NSLocalizedString(@"QRFileNotAvailableTitle", nil)
                                      withMessage:NSLocalizedString(@"QRFileNotAvailableDesc", nil)
