@@ -9,7 +9,6 @@
 #import <CoreText/CoreText.h>
 #import "UISegmentedControl+addition.h"
 #import "NSInvocation+addition.h"
-#import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import "ScheduleViewController.h"
 #import "ProgramDetailViewController.h"
@@ -17,6 +16,9 @@
 #import "BLKDelegateSplitter.h"
 #import "SquareCashStyleBehaviorDefiner.h"
 #import "ScheduleViewCell.h"
+#import <AFNetworking/AFNetworking.h>
+#import "WebServiceEndPoint.h"
+#import "headers.h"
 
 #define TOOLBAR_MIN_HEIGHT  (22.0f)
 #define TOOLBAR_HEIGHT      (44.0f)
@@ -265,29 +267,39 @@
     [self.refreshControl beginRefreshing];
     self.refreshingCountDown = 3;
     
-    GatewayWebService *roome_ws = [[GatewayWebService alloc] initWithURL:ROOM_DATA_URL];
-    [roome_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
-        if (json != nil) {
-            self.rooms = json;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:CC_ANNOUNCEMENT parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        if (responseObject != nil) {
+            self.rooms = responseObject;
         }
+        [self endRefreshingWithCountDown];
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
         [self endRefreshingWithCountDown];
     }];
     
-    GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
-    [program_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
-        if (json != nil) {
-            self.programs = json;
-            
+    [manager GET:PROGRAM_DATA_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        if (responseObject != nil) {
+            self.programs = responseObject;
             [self setScheduleDate];
         }
         [self endRefreshingWithCountDown];
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        [self endRefreshingWithCountDown];
     }];
     
-    GatewayWebService *program_type_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_TYPE_DATA_URL];
-    [program_type_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
-        if (json != nil) {
-            self.program_types = json;
+    [manager GET:PROGRAM_TYPE_DATA_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        if (responseObject != nil) {
+            self.program_types = responseObject;
+            [self setScheduleDate];
         }
+        [self endRefreshingWithCountDown];
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
         [self endRefreshingWithCountDown];
     }];
 }
