@@ -6,12 +6,13 @@
 //  Copyright © 2016 CPRTeam. All rights reserved.
 //
 
-#import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import "MoreTableViewController.h"
 #import "StaffGroupTableViewController.h"
 #import "AcknowledgementsViewController.h"
 #import "MoreCell.h"
+#import <AFNetworking/AFNetworking.h>
+#import "WebServiceEndPoint.h"
 
 @interface MoreTableViewController ()
 
@@ -28,11 +29,14 @@
 @implementation MoreTableViewController
 
 - (void)prefetchStaffs {
-    GatewayWebService *staff_ws = [[GatewayWebService alloc] initWithURL:STAFF_DATA_URL];
-    [staff_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
-        if (json != nil) {
-            self.staffs = json;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:STAFF_DATA_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        if (responseObject != nil) {
+            self.staffs = responseObject;
         }
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
     }];
 }
 
