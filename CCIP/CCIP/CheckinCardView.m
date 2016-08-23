@@ -9,9 +9,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIAlertController+additional.h"
 #import "UIColor+addition.h"
-#import "GatewayWebService/GatewayWebService.h"
 #import "CheckinCardView.h"
 #import "AppDelegate.h"
+#import <AFNetworking/AFNetworking.h>
+#import "WebServiceEndPoint.h"
 
 @interface CheckinCardView()
 
@@ -53,18 +54,19 @@
     NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[self.scenario objectForKey:@"expire_time"] integerValue]];
     NSDate *nowTime = [NSDate new];
     BOOL isCheckin = [self.id isEqualToString:@"day1checkin"] || [self.id isEqualToString:@"day2checkin"];
-    __block GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_USE([AppDelegate accessToken], self.id)];
+    
+    __block AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     void (^use)(void) = ^{
-        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
-            if (json != nil) {
-                NSLog(@"%@", json);
+        [manager GET:CC_USE([AppDelegate accessToken], self.id) parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            NSLog(@"JSON: %@", responseObject);
+            if (responseObject != nil) {
                 [self setUsed:[NSNumber numberWithBool:YES]];
-                if ([[json objectForKey:@"message"] isEqual:@"invalid token"]) {
-                    NSLog(@"%@", [json objectForKey:@"message"]);
+                if ([[responseObject objectForKey:@"message"] isEqual:@"invalid token"]) {
+                    NSLog(@"%@", [responseObject objectForKey:@"message"]);
                     [self.checkinBtn setBackgroundColor:[UIColor redColor]];
-                } else if ([[json objectForKey:@"message"] isEqual:@"has been used"]) {
+                } else if ([[responseObject objectForKey:@"message"] isEqual:@"has been used"]) {
                     [self showCountdown];
-                    NSLog(@"%@", [json objectForKey:@"message"]);
+                    NSLog(@"%@", [responseObject objectForKey:@"message"]);
                     [UIView animateWithDuration:.25f
                                      animations:^{
                                          [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
@@ -77,8 +79,8 @@
                                                               }];
                                          }
                                      }];
-                } else if ([[json objectForKey:@"message"] isEqual:@"link expired/not available now"]) {
-                    NSLog(@"%@", [json objectForKey:@"message"]);
+                } else if ([[responseObject objectForKey:@"message"] isEqual:@"link expired/not available now"]) {
+                    NSLog(@"%@", [responseObject objectForKey:@"message"]);
                     [UIView animateWithDuration:.25f
                                      animations:^{
                                          [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
@@ -103,7 +105,7 @@
                                          }
                                      }];
                 } else {
-                    [self updateScenario:[json objectForKey:@"scenarios"]];
+                    [self updateScenario:[responseObject objectForKey:@"scenarios"]];
                     [self showCountdown];
                     [self.checkinBtn setBackgroundColor:disabledColor];
                     if (isCheckin) {
@@ -114,12 +116,13 @@
                     }
                     [[AppDelegate appDelegate] setDefaultShortcutItems];
                 }
-            } else {
-                // Invalid Network
-                [self.delegate showInvalidNetworkMsg];
-                //                    UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
-                //                    [ac showAlert:nil];
             }
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+            // Invalid Network
+            [self.delegate showInvalidNetworkMsg];
+            // UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
+            // [ac showAlert:nil];
         }];
     };
     
