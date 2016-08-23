@@ -9,9 +9,10 @@
 #import "SponsorTableViewController.h"
 #import "SponsorTableViewCell.h"
 #import "AppDelegate.h"
-#import "GatewayWebService/GatewayWebService.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SafariServices/SafariServices.h>
+#import <AFNetworking/AFNetworking.h>
+#import "WebServiceEndPoint.h"
 
 @interface SponsorTableViewController()
 
@@ -31,12 +32,15 @@
     
     dispatch_semaphore_t semaLevel = dispatch_semaphore_create(0);
     
-    GatewayWebService *sponsor_level_ws = [[GatewayWebService alloc] initWithURL:SPONSOR_LEVEL_URL];
-    [sponsor_level_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
-        if (json != nil) {
-            self.sponsorLevelJsonArray = json;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:SPONSOR_LEVEL_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        if (responseObject != nil) {
+            self.sponsorLevelJsonArray = responseObject;
         }
         dispatch_semaphore_signal(semaLevel);
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
     }];
     
     while (dispatch_semaphore_wait(semaLevel, DISPATCH_TIME_NOW)) {
@@ -51,15 +55,17 @@
     
     dispatch_semaphore_t semaList = dispatch_semaphore_create(0);
     
-    GatewayWebService *sponsor_list_ws = [[GatewayWebService alloc] initWithURL:SPONSOR_LIST_URL];
-    [sponsor_list_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
-        if (json != nil) {
-            for (NSDictionary *sponsor in json) {
+    [manager GET:SPONSOR_LIST_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        if (responseObject != nil) {
+            for (NSDictionary *sponsor in responseObject) {
                 NSUInteger index = [[sponsor objectForKey:@"level"] unsignedIntegerValue] - 1;
                 [[sponsorListArray objectAtIndex:index] addObject:sponsor];
             }
         }
         dispatch_semaphore_signal(semaList);
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
     }];
     
     while (dispatch_semaphore_wait(semaList, DISPATCH_TIME_NOW)) {
