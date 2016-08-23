@@ -10,7 +10,8 @@
 #import "AppDelegate.h"
 #import "GuideViewController.h"
 #import "UIAlertController+additional.h"
-#import "GatewayWebService/GatewayWebService.h"
+#import <AFNetworking/AFNetworking.h>
+#import "WebServiceEndPoint.h"
 
 @interface GuideViewController ()
 
@@ -142,22 +143,41 @@
     
     NSCharacterSet *allowedCharacters = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
     if ([code length] > 0 && [code rangeOfCharacterFromSet:allowedCharacters].location == NSNotFound) {
-        GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_LANDING(code)];
-        [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
-            if (json != nil) {
-                NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:json];
-                
-                if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
-                    [AppDelegate setLoginSession:YES];
-                    [AppDelegate setAccessToken:code];
-                    [[AppDelegate appDelegate].checkinView reloadCard];
-                    [self dismissViewControllerAnimated:YES
-                                             completion:nil];
-                } else if ([userInfo objectForKey:@"message"] && [[userInfo objectForKey:@"message"] isEqualToString:@"invalid token"]) {
-                    [self showAlert];
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        NSURL *URL = [NSURL URLWithString:CC_LANDING(code)];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+            NSLog(@"Response: %@", response);
+            if (!error) {
+                NSLog(@"Json: %@", responseObject);
+                if (responseObject != nil) {
+                    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:responseObject];
+                    
+                    if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
+                        [AppDelegate setLoginSession:YES];
+                        [AppDelegate setAccessToken:code];
+                        [[AppDelegate appDelegate].checkinView reloadCard];
+                        [self dismissViewControllerAnimated:YES
+                                                 completion:nil];
+                    }
+                }
+            } else {
+                NSLog(@"Error: %@", error);
+                long statusCode = [(NSHTTPURLResponse *)response statusCode];
+                switch (statusCode) {
+                    case 400:
+                        if ([responseObject objectForKey:@"message"] && [[responseObject objectForKey:@"message"] isEqualToString:@"invalid token"]) {
+                            [self showAlert];
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
         }];
+        [dataTask resume];
     } else {
         [self showAlert];
     }
