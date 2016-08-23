@@ -13,9 +13,10 @@
 #import "UIAlertController+additional.h"
 #import "UIImage+addition.h"
 #import "UIColor+addition.h"
-#import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import "GuideViewController.h"
+#import <AFNetworking/AFNetworking.h>
+#import "WebServiceEndPoint.h"
 
 #define ONE_SIGNAL_APP_TOKEN        (@"a429ff30-5c0e-4584-a32f-b866ba88c947")
 #define SCANDIT_APP_KEY             (@"2BXy4CfQi9QFc12JnjId7mHH58SdYzNC90Uo07luUUY")
@@ -60,6 +61,8 @@
     [iVersion sharedInstance].applicationBundleID = @"org.coscup.CCIP-iOS";
     //enable preview mode
     [iVersion sharedInstance].previewMode = NO;
+    
+    NSLog(@"%@", [iVersion sharedInstance].appStoreCountry);
 }
 
 + (void)setAccessToken:(NSString *)accessToken {
@@ -413,14 +416,15 @@
     static NSDate *startTime;
     static NSString *time_date;
 
-    GatewayWebService *ws = [[GatewayWebService alloc] initWithURL:CC_STATUS([AppDelegate accessToken])];
-    [ws sendRequest:^(NSDictionary *json, NSString *jsonStr, NSURLResponse *response) {
-        if (json != nil) {
-            NSDictionary *scenarios = [json objectForKey:@"scenarios"];
-            GatewayWebService *program = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
-            [program sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
-                if (json != nil) {
-                    NSArray *programs = json;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:CC_STATUS([AppDelegate accessToken]) parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        if (responseObject != nil) {
+            NSDictionary *scenarios = [responseObject objectForKey:@"scenarios"];
+            [manager GET:PROGRAM_DATA_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+                NSLog(@"JSON: %@", responseObject);
+                if (responseObject != nil) {
+                    NSArray *programs = responseObject;
                     
                     NSMutableDictionary *datesDict = [NSMutableDictionary new];
                     for (NSDictionary *program in programs) {
@@ -450,8 +454,8 @@
                                 NSTimeInterval now = [[NSDate new] timeIntervalSince1970];
                                 if (([id rangeOfString:@"day1" options:NSCaseInsensitiveSearch].length > 0 && now <= expire) || (now >= available && now <= expire)) {
                                     UIApplicationShortcutIconType iconType = [scenario objectForKey:@"used"] != nil
-                                        ? UIApplicationShortcutIconTypeTaskCompleted
-                                        : UIApplicationShortcutIconTypeTask;
+                                    ? UIApplicationShortcutIconTypeTaskCompleted
+                                    : UIApplicationShortcutIconTypeTask;
                                     [shortcutItems addObject:[[UIApplicationShortcutItem alloc] initWithType:@"Checkin"
                                                                                               localizedTitle:NSLocalizedString(id, nil)
                                                                                            localizedSubtitle:nil
@@ -477,8 +481,12 @@
                         [[UIApplication sharedApplication] setShortcutItems:shortcutItems];
                     }
                 }
+            } failure:^(NSURLSessionTask *operation, NSError *error) {
+                NSLog(@"Error: %@", error);
             }];
         }
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
     }];
 }
 
