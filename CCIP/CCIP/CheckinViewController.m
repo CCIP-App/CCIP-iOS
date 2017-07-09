@@ -72,14 +72,14 @@
     
     // Set carousel background linear diagonal gradient
     //   Create the colors
-    UIColor *topColor = [UIColor colorFromHtmlColor:@"#00a663"];
-    UIColor *bottomColor = [UIColor colorFromHtmlColor:@"#304149"];
+    UIColor *topColor = [UIColor colorFromHtmlColor:@"#2CE4D4"];
+    UIColor *bottomColor = [UIColor colorFromHtmlColor:@"#B0F5B6"];
     //   Create the gradient
     CAGradientLayer *theViewGradient = [CAGradientLayer layer];
     theViewGradient.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
     theViewGradient.frame = CGRectMake(0, -self.topGuideHeight, self.view.frame.size.width, self.view.frame.size.height);
-    theViewGradient.startPoint = CGPointMake(0.2, 0);
-    theViewGradient.endPoint = CGPointMake(0.8, 1);
+    theViewGradient.startPoint = CGPointMake(0, 0.1);
+    theViewGradient.endPoint = CGPointMake(0.3, 1);
     //   Add gradient to view
     [self.cards.layer insertSublayer:theViewGradient
                              atIndex:0];
