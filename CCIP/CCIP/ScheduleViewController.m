@@ -295,7 +295,6 @@
         NSLog(@"JSON: %@", responseObject);
         if (responseObject != nil) {
             self.program_types = responseObject;
-            [self setScheduleDate];
         }
         [self endRefreshingWithCountDown];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
