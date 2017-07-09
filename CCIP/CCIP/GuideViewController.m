@@ -12,6 +12,7 @@
 #import "UIAlertController+additional.h"
 #import <AFNetworking/AFNetworking.h>
 #import "WebServiceEndPoint.h"
+#import "UIColor+addition.h"
 
 @interface GuideViewController ()
 
@@ -26,10 +27,27 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.guideMessageLabel setText:NSLocalizedString(@"GuideViewMessage", nil)];
+    
     [self.redeemButton setTitle:NSLocalizedString(@"GuideViewButton", nil)
                        forState:UIControlStateNormal];
     [self.redeemButton setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
-    self.redeemButton.layer.cornerRadius = 8.0f;
+    self.redeemButton.layer.cornerRadius = 7.0f;
+    
+    // Set carousel background linear diagonal gradient
+    //   Create the colors
+    UIColor *topColor = [UIColor colorFromHtmlColor:@"#20E2D7"];
+    UIColor *bottomColor = [UIColor colorFromHtmlColor:@"#ABF4B7"];
+    //   Create the gradient
+    CAGradientLayer *theViewGradient = [CAGradientLayer layer];
+    theViewGradient.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
+    theViewGradient.frame = CGRectMake(0, 0, self.redeemButton.frame.size.width, self.redeemButton.frame.size.height);
+    theViewGradient.startPoint = CGPointMake(1, 0.5);
+    theViewGradient.endPoint = CGPointMake(0, 0.2);
+    theViewGradient.cornerRadius = 7.0f;
+    //   Add gradient to view
+    [self.redeemButton.layer insertSublayer:theViewGradient
+                             atIndex:0];
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
