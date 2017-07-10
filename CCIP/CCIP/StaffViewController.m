@@ -43,7 +43,7 @@ static NSString *identifier = @"StaffCell";
     for (int i = 0; i < [staffArray count]; i++) {
         id staff = [staffArray objectAtIndex:i];
         NSString *title = [[staff valueForKey:@"profile"] valueForKey:@"title"];
-        if (![title hasPrefix:[groupName substringToIndex:2]]) {
+        if (![title isKindOfClass:[NSNull class]] && ![title hasPrefix:[groupName substringToIndex:2]]) {
             [staffArray addObject:staff];
             [staffArray removeObjectAtIndex:i];
         }
@@ -65,8 +65,11 @@ static NSString *identifier = @"StaffCell";
     NSDictionary *profile = [staff objectForKey:@"profile"];
     NSString *avatar = STAFF_AVATAR([profile objectForKey:@"avatar"]);
     UIImage *defaultIcon = [UIImage imageNamed:@"StaffIconDefault"];
-    
-    [cell.staffTitle setText:[profile objectForKey:@"title"]];
+    NSString *title = [profile objectForKey:@"title"];
+    if ([title isKindOfClass:[NSNull class]]) {
+        title = @"";
+    }
+    [cell.staffTitle setText:title];
     [cell.staffName setText:[profile objectForKey:@"display_name"]];
     [cell.staffImg setImage:defaultIcon];
     
