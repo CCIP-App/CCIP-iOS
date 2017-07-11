@@ -104,7 +104,7 @@
 
 + (BOOL)isBeforeEvent {
     NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyy/MM/dd"];
+    [formatter setDateFormat:@"yyyyMMdd"];
     [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
     NSDate *nowDate = [formatter dateFromString:[formatter stringFromDate:[NSDate new]]];
     NSDate *firstDate = [formatter dateFromString:[[AppDelegate appDelegate].availableDays firstObject]];
@@ -113,7 +113,7 @@
 
 + (BOOL)isAfterEvent {
     NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyy/MM/dd"];
+    [formatter setDateFormat:@"yyyyMMdd"];
     [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
     NSDate *nowDate = [formatter dateFromString:[formatter stringFromDate:[NSDate new]]];
     NSDate *lastDate = [formatter dateFromString:[[AppDelegate appDelegate].availableDays lastObject]];
@@ -122,7 +122,7 @@
 
 + (NSDate *)firstAvailableDate {
     NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyy/MM/dd"];
+    [formatter setDateFormat:@"yyyyMMdd"];
     [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
     if ([AppDelegate isBeforeEvent]) {
         return [formatter dateFromString:[[AppDelegate appDelegate].availableDays firstObject]];
@@ -135,7 +135,7 @@
 
 + (NSArray *)parseDateRange:(NSDictionary *)scenario {
     NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyy/MM/dd"];
+    [formatter setDateFormat:@"yyyyMMdd"];
     [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
     NSDate *availDate = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] longValue]];
     NSDate *expireDate = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] longValue]];
@@ -146,14 +146,17 @@
 
 + (void)parseAvailableDays:(NSArray *)scenarios {
     NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyy/MM/dd"];
+    [formatter setDateFormat:@"yyyyMMdd"];
     [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
     NSDate *nowDate = [formatter dateFromString:[formatter stringFromDate:[NSDate new]]];
     NSMutableArray *aD = [NSMutableArray arrayWithArray:[AppDelegate appDelegate].availableDays];
     for (NSDictionary *scenario in scenarios) {
         [aD addObjectsFromArray:[self parseDateRange:scenario]];
     }
-    [[AppDelegate appDelegate] setAvailableDays:[[NSOrderedSet orderedSetWithArray:[aD valueForKeyPath:@"@distinctUnionOfObjects.self"]] array]];
+    aD = [NSMutableArray arrayWithArray:[[NSOrderedSet orderedSetWithArray:[aD valueForKeyPath:@"@distinctUnionOfObjects.self"]] array]];
+    
+    NSLog(@"Available date with: %@", aD);
+    [[AppDelegate appDelegate] setAvailableDays:aD];
     
     NSMutableArray *newScenarios = [NSMutableArray new];
     if ([self isBeforeEvent]) {

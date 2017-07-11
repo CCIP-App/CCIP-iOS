@@ -694,7 +694,7 @@
     static NSDateFormatter *formatter;
     if (formatter == nil) {
         formatter = [NSDateFormatter new];
-        [formatter setDateFormat:@"MM/dd"];
+        [formatter setDateFormat:@"yyyy/M/d"];
         [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
     }
 
