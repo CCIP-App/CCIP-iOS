@@ -12,6 +12,15 @@
         <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Menlo.ttc">
+            <string>Menlo-Regular</string>
+        </array>
+        <array key="PingFang.ttc">
+            <string>PingFangTC-Regular</string>
+            <string>PingFangTC-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Status View Controller-->
         <scene sceneID="LAc-Pg-mp6">
@@ -146,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mlj-3I-tOq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1802" y="1965"/>
+            <point key="canvasLocation" x="-2459" y="1965"/>
         </scene>
         <!--Guide View Controller-->
         <scene sceneID="lMV-v9-8VF">
@@ -277,7 +286,7 @@ Please copy and paste the token into next field or click the token link in the r
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dnj-al-u0m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1350.7246376811595" y="1964.6739130434785"/>
+            <point key="canvasLocation" x="-1820" y="1965"/>
         </scene>
         <!--Main Tab Bar View Controller-->
         <scene sceneID="djy-Ka-IMA">
@@ -463,7 +472,7 @@ Please copy and paste the token into next field or click the token link in the r
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yuv-Bk-NGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-891" y="1965"/>
+            <point key="canvasLocation" x="-1172" y="1965"/>
         </scene>
         <!--Checkin-->
         <scene sceneID="cs7-eR-RBx">
@@ -1390,7 +1399,7 @@ Label</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ykb-vw-l2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-429" y="1965"/>
+            <point key="canvasLocation" x="-525" y="1965"/>
         </scene>
         <!--Invalid Network Message View Controller-->
         <scene sceneID="DDK-sN-jQD">
@@ -1494,7 +1503,7 @@ Label</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RuT-hy-wjH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2258" y="1965"/>
+            <point key="canvasLocation" x="-3101" y="1965"/>
         </scene>
     </scenes>
     <resources>
