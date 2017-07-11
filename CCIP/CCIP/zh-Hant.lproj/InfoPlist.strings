@@ -9,3 +9,4 @@
 
 CFBundleDisplayName = "COSCUP 通關";
 CFBundleName = "COSCUP 通關";
+NSCameraUsageDescription = "使用您的相機掃描 QR Code";

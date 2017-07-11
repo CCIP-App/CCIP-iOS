@@ -9,3 +9,4 @@
 
 CFBundleDisplayName = "COSCUP Pass";
 CFBundleName = "COSCUP Pass";
+NSCameraUsageDescription = "Use your Camera to scan QR Code";
