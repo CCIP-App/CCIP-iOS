@@ -10,6 +10,7 @@
 #import "WebServiceEndPoint.h"
 #import "UIColor+addition.h"
 #import <AFNetworking/AFNetworking.h>
+#import "ScheduleTableViewController.h"
 
 @interface ScheduleViewPagerController ()
 
@@ -140,7 +141,8 @@
 #pragma mark - ViewPagerDataSource
 - (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index {
     
-    UITableViewController *vc = [UITableViewController new];
+    ScheduleTableViewController *vc = [ScheduleTableViewController new];
+    vc.programs = [self.program_date objectForKey:[self.segmentsTextArray objectAtIndex:index]];
     return vc;
 }
 //Returns the view controller that will be shown as content. Create a UIViewController object (or any UIViewController subclass object) and give it to ViewPager and it will use the view property of the view controller as content view.

@@ -10,6 +10,9 @@
 		141D4150DB8FC2366FDFDF75 /* Pods-CCIP-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = A729E7D04006FECCCCCFAEEC /* Pods-CCIP-metadata.plist */; };
 		280774BF1F1A736800A5B994 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774BE1F1A736800A5B994 /* ScheduleViewController.m */; };
 		280774C21F1A7B0100A5B994 /* ScheduleViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774C11F1A7B0100A5B994 /* ScheduleViewPagerController.m */; };
+		280774C51F1AD2F400A5B994 /* ScheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774C41F1AD2F400A5B994 /* ScheduleTableViewController.m */; };
+		280774D11F1AD8D300A5B994 /* ScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774CF1F1AD8D300A5B994 /* ScheduleTableViewCell.m */; };
+		280774D21F1AD8D300A5B994 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280774D01F1AD8D300A5B994 /* ScheduleTableViewCell.xib */; };
 		2821DAA21D3DCB2300AFE139 /* ProgramDetailViewTopBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DA9F1D3DCB2300AFE139 /* ProgramDetailViewTopBG.png */; };
 		2821DAA31D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DAA01D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@3x.png */; };
 		2821DAA41D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DAA11D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@2x.png */; };
@@ -205,6 +208,11 @@
 		280774BE1F1A736800A5B994 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		280774C01F1A7B0100A5B994 /* ScheduleViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewPagerController.h; sourceTree = "<group>"; };
 		280774C11F1A7B0100A5B994 /* ScheduleViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewPagerController.m; sourceTree = "<group>"; };
+		280774C31F1AD2F400A5B994 /* ScheduleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTableViewController.h; sourceTree = "<group>"; };
+		280774C41F1AD2F400A5B994 /* ScheduleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTableViewController.m; sourceTree = "<group>"; };
+		280774CE1F1AD8D300A5B994 /* ScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTableViewCell.h; sourceTree = "<group>"; };
+		280774CF1F1AD8D300A5B994 /* ScheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTableViewCell.m; sourceTree = "<group>"; };
+		280774D01F1AD8D300A5B994 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		2821DA9A1D3DCA5500AFE139 /* ProgramDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramDetailViewController.h; sourceTree = "<group>"; };
 		2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramDetailViewController.m; sourceTree = "<group>"; };
 		2821DA9F1D3DCB2300AFE139 /* ProgramDetailViewTopBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProgramDetailViewTopBG.png; sourceTree = "<group>"; };
@@ -485,6 +493,11 @@
 				280774BE1F1A736800A5B994 /* ScheduleViewController.m */,
 				280774C01F1A7B0100A5B994 /* ScheduleViewPagerController.h */,
 				280774C11F1A7B0100A5B994 /* ScheduleViewPagerController.m */,
+				280774C31F1AD2F400A5B994 /* ScheduleTableViewController.h */,
+				280774C41F1AD2F400A5B994 /* ScheduleTableViewController.m */,
+				280774CE1F1AD8D300A5B994 /* ScheduleTableViewCell.h */,
+				280774CF1F1AD8D300A5B994 /* ScheduleTableViewCell.m */,
+				280774D01F1AD8D300A5B994 /* ScheduleTableViewCell.xib */,
 			);
 			name = ScheduleTab;
 			sourceTree = "<group>";
@@ -1025,6 +1038,7 @@
 				2821DAA41D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@2x.png in Resources */,
 				2821DAA21D3DCB2300AFE139 /* ProgramDetailViewTopBG.png in Resources */,
 				288D3AA31D59AB4800E4E3A6 /* QR_Code_Filled@2x.png in Resources */,
+				280774D21F1AD8D300A5B994 /* ScheduleTableViewCell.xib in Resources */,
 				5FB4D4461D3A8319005BF382 /* icon_ios_pin.png in Resources */,
 				6B9F62681F1A5D160084E09C /* Rectangle@2x.png in Resources */,
 				5FB4D4471D3A8319005BF382 /* icon_ios_pin@2x.png in Resources */,
@@ -1155,6 +1169,7 @@
 				28A7C56D1D6032680079BB12 /* MainNavViewController.m in Sources */,
 				5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */,
 				5FECE5AC1D352E8A00242DB4 /* StaffGroupTableViewController.m in Sources */,
+				280774C51F1AD2F400A5B994 /* ScheduleTableViewController.m in Sources */,
 				5F8B2D2A1D55E02200A68C7D /* SponsorTableViewController.m in Sources */,
 				6B11BE811D4CBA5800B87EA9 /* UIImage+addition.m in Sources */,
 				286E28A51D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m in Sources */,
@@ -1166,6 +1181,7 @@
 				6BCBC3B51D4F393700B5AF35 /* UIViewController+addition.m in Sources */,
 				5F9171291D325B5E000D0F66 /* StaffViewController.m in Sources */,
 				5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */,
+				280774D11F1AD8D300A5B994 /* ScheduleTableViewCell.m in Sources */,
 				28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */,
 				28AFCF141D5DD9CA00413927 /* AcknowledgementsViewController.m in Sources */,
 				6B2CD5791D286E6F00793194 /* UIColor+addition.m in Sources */,
