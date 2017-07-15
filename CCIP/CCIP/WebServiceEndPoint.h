@@ -15,7 +15,7 @@
 #define CC_LANDING(token)       ([__API_HOST__ stringByAppendingFormat:@"landing?token=%@", token])
 
 #define COSCUP_BASE_URL         (@"https://coscup.org")
-#define COSCUP_JSON_DATA(asset) ([COSCUP_BASE_URL stringByAppendingFormat:@"/2016-assets/json/%@.json", asset])
+#define COSCUP_JSON_DATA(asset) ([COSCUP_BASE_URL stringByAppendingFormat:@"/2017-assets/json/%@.json", asset])
 #define SCHEDULES_DATA_URL      (COSCUP_JSON_DATA(@"submissions"))
 #define SPONSOR_LIST_URL        (COSCUP_JSON_DATA(@"sponsor"))
 
