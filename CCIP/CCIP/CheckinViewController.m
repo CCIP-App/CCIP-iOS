@@ -70,20 +70,6 @@
     self.cards.bounceDistance = 0.3f;
     self.cards.contentOffset = CGSizeMake(0, -5.0f);
     
-    // Set carousel background linear diagonal gradient
-    //   Create the colors
-    UIColor *topColor = [UIColor colorFromHtmlColor:@"#2CE4D4"];
-    UIColor *bottomColor = [UIColor colorFromHtmlColor:@"#B0F5B6"];
-    //   Create the gradient
-    CAGradientLayer *theViewGradient = [CAGradientLayer layer];
-    theViewGradient.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
-    theViewGradient.frame = CGRectMake(0, -self.topGuideHeight, self.view.frame.size.width, self.view.frame.size.height);
-    theViewGradient.startPoint = CGPointMake(0, 0.1);
-    theViewGradient.endPoint = CGPointMake(0.3, 1);
-    //   Add gradient to view
-    [self.cards.layer insertSublayer:theViewGradient
-                             atIndex:0];
-    
     // Init configure pageControl
     self.pageControl = [UIPageControl new];
 
@@ -797,7 +783,7 @@
         }
         case iCarouselOptionSpacing: {
             //add a bit of spacing between the item views
-            return value * 1.08f;
+            return value * (1.08f - 0.18f);
         }
         case iCarouselOptionFadeMax: {
             return 0.0;
@@ -806,7 +792,7 @@
             return 0.0;
         }
         case iCarouselOptionFadeMinAlpha: {
-            return 0.85;
+            return 0.85 - 0.2;
         }
         case iCarouselOptionArc: {
             return value * (carousel.numberOfItems/48.0f);

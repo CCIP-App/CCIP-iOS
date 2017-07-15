@@ -22,7 +22,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self.checkinBtn.layer setCornerRadius:10.0f];
 }
 
 - (void)showCountdown {

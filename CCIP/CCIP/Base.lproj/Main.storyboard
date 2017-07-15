@@ -323,9 +323,15 @@ Please copy and paste the token into next field or click the token link in the r
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Jb-pl-Dgp">
+                                <rect key="frame" x="0.0" y="64" width="414" height="239"/>
+                                <color key="backgroundColor" red="1" green="0.3999023438" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="239" id="3ad-Fb-ps7"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CbY-uR-bp6" customClass="iCarousel">
                                 <rect key="frame" x="0.0" y="64" width="414" height="623"/>
-                                <color key="backgroundColor" red="0.0" green="0.65098039220000004" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="6Xx-bx-CvE" id="sbk-hj-VTL"/>
                                     <outlet property="delegate" destination="6Xx-bx-CvE" id="Sub-2J-lwi"/>
@@ -352,14 +358,17 @@ Please copy and paste the token into next field or click the token link in the r
                             <constraint firstAttribute="trailing" secondItem="QsP-yd-6v9" secondAttribute="trailing" id="79a-j6-D2n"/>
                             <constraint firstItem="QsP-yd-6v9" firstAttribute="leading" secondItem="bgm-CO-9gf" secondAttribute="leading" id="7hS-rR-QQn"/>
                             <constraint firstItem="QsP-yd-6v9" firstAttribute="top" secondItem="bgm-CO-9gf" secondAttribute="top" id="Beq-94-PZG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Jb-pl-Dgp" secondAttribute="trailing" constant="-20" id="Ce6-5t-Mfl"/>
                             <constraint firstItem="CbY-uR-bp6" firstAttribute="top" secondItem="5Ha-Am-1I7" secondAttribute="bottom" id="LSs-JV-vmE"/>
                             <constraint firstItem="AvZ-Qm-ma6" firstAttribute="bottom" secondItem="bgm-CO-9gf" secondAttribute="bottom" id="ORy-Fr-5D8"/>
+                            <constraint firstItem="7Jb-pl-Dgp" firstAttribute="leading" secondItem="bgm-CO-9gf" secondAttribute="leadingMargin" constant="-20" id="Ox9-vS-YVg"/>
                             <constraint firstItem="QsP-yd-6v9" firstAttribute="bottom" secondItem="5Ha-Am-1I7" secondAttribute="bottom" id="Ppj-kI-MvU"/>
                             <constraint firstItem="QsP-yd-6v9" firstAttribute="top" secondItem="bgm-CO-9gf" secondAttribute="top" id="Txm-hh-gr4"/>
                             <constraint firstItem="CbY-uR-bp6" firstAttribute="top" secondItem="QsP-yd-6v9" secondAttribute="bottom" id="Y4j-yh-MjO"/>
                             <constraint firstItem="AvZ-Qm-ma6" firstAttribute="leading" secondItem="bgm-CO-9gf" secondAttribute="leading" id="c8V-me-bKT"/>
                             <constraint firstItem="CbY-uR-bp6" firstAttribute="leading" secondItem="bgm-CO-9gf" secondAttribute="leading" id="gMq-to-53r"/>
                             <constraint firstItem="y7L-AH-63W" firstAttribute="top" secondItem="CbY-uR-bp6" secondAttribute="bottom" id="k4G-uU-dAY"/>
+                            <constraint firstItem="7Jb-pl-Dgp" firstAttribute="top" secondItem="QsP-yd-6v9" secondAttribute="bottom" id="mau-W2-dJt"/>
                             <constraint firstAttribute="trailing" secondItem="AvZ-Qm-ma6" secondAttribute="trailing" id="zeH-a0-3t8"/>
                         </constraints>
                         <variation key="default">
@@ -397,8 +406,8 @@ Please copy and paste the token into next field or click the token link in the r
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uyl-BJ-dF0">
                                 <rect key="frame" x="35" y="120" width="350" height="160"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8/20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="q04-AM-eVF">
-                                        <rect key="frame" x="15" y="26" width="182" height="44"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8/20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="q04-AM-eVF">
+                                        <rect key="frame" x="25" y="26" width="172" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="6Gs-ez-7qc"/>
                                         </constraints>
@@ -406,8 +415,8 @@ Please copy and paste the token into next field or click the token link in the r
                                         <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="報到" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZY0-oM-P3F">
-                                        <rect key="frame" x="15" y="90" width="182" height="44"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="報到" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZY0-oM-P3F">
+                                        <rect key="frame" x="25" y="90" width="172" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="i3t-Cg-x4H"/>
                                         </constraints>
@@ -426,23 +435,23 @@ Please copy and paste the token into next field or click the token link in the r
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="q04-AM-eVF" firstAttribute="centerY" secondItem="Uyl-BJ-dF0" secondAttribute="centerY" constant="-32" id="3fY-pu-49D"/>
-                                    <constraint firstItem="ZY0-oM-P3F" firstAttribute="leading" secondItem="Uyl-BJ-dF0" secondAttribute="leading" constant="15" id="7gw-c8-WxB"/>
+                                    <constraint firstItem="ZY0-oM-P3F" firstAttribute="leading" secondItem="Uyl-BJ-dF0" secondAttribute="leading" constant="25" id="7gw-c8-WxB"/>
                                     <constraint firstItem="ZY0-oM-P3F" firstAttribute="width" secondItem="q04-AM-eVF" secondAttribute="width" id="DuD-qD-xdw"/>
                                     <constraint firstItem="ZY0-oM-P3F" firstAttribute="centerY" secondItem="Uyl-BJ-dF0" secondAttribute="centerY" constant="32" id="OAE-px-dja"/>
                                     <constraint firstItem="FYl-bu-ujn" firstAttribute="leading" secondItem="q04-AM-eVF" secondAttribute="trailing" constant="15" id="SI5-at-yY4"/>
                                     <constraint firstAttribute="height" constant="160" id="kWb-do-G8g"/>
                                     <constraint firstItem="FYl-bu-ujn" firstAttribute="centerY" secondItem="Uyl-BJ-dF0" secondAttribute="centerY" id="sC9-bO-f5c"/>
                                     <constraint firstAttribute="trailing" secondItem="FYl-bu-ujn" secondAttribute="trailing" constant="10" id="uXJ-Ey-BrL"/>
-                                    <constraint firstItem="q04-AM-eVF" firstAttribute="leading" secondItem="Uyl-BJ-dF0" secondAttribute="leading" constant="15" id="vG4-Th-GHu"/>
+                                    <constraint firstItem="q04-AM-eVF" firstAttribute="leading" secondItem="Uyl-BJ-dF0" secondAttribute="leading" constant="25" id="vG4-Th-GHu"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUP-DK-ov7">
-                                <rect key="frame" x="20" y="330" width="380" height="175"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KUP-DK-ov7">
+                                <rect key="frame" x="60" y="310" width="300" height="175"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="175" id="cK8-Qt-OHm"/>
                                     <constraint firstAttribute="height" constant="150" id="zth-f1-7uE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="19"/>
                                 <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -452,7 +461,7 @@ Please copy and paste the token into next field or click the token link in the r
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPS-iQ-rbE">
-                                <rect key="frame" x="20" y="513" width="380" height="46"/>
+                                <rect key="frame" x="60" y="523" width="300" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="hjM-3v-dKt"/>
                                 </constraints>
@@ -465,14 +474,14 @@ Please copy and paste the token into next field or click the token link in the r
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Uyl-BJ-dF0" secondAttribute="trailing" constant="15" id="4XE-Wm-053"/>
-                            <constraint firstItem="KUP-DK-ov7" firstAttribute="top" secondItem="Uyl-BJ-dF0" secondAttribute="bottom" constant="50" id="A2W-Uz-Fvu"/>
-                            <constraint firstItem="HPS-iQ-rbE" firstAttribute="top" secondItem="KUP-DK-ov7" secondAttribute="bottom" constant="8" id="CQb-mZ-P4k"/>
+                            <constraint firstItem="KUP-DK-ov7" firstAttribute="top" secondItem="Uyl-BJ-dF0" secondAttribute="bottom" constant="30" id="A2W-Uz-Fvu"/>
+                            <constraint firstItem="HPS-iQ-rbE" firstAttribute="top" secondItem="KUP-DK-ov7" secondAttribute="bottom" constant="38" id="CQb-mZ-P4k"/>
                             <constraint firstItem="HPS-iQ-rbE" firstAttribute="centerX" secondItem="KUP-DK-ov7" secondAttribute="centerX" id="KdS-21-58h"/>
                             <constraint firstItem="Uyl-BJ-dF0" firstAttribute="centerY" secondItem="CVw-Vr-a5B" secondAttribute="centerY" constant="-100" id="PFq-Fb-fuF"/>
                             <constraint firstItem="HPS-iQ-rbE" firstAttribute="width" secondItem="KUP-DK-ov7" secondAttribute="width" id="TTv-3S-VoH"/>
                             <constraint firstItem="Uyl-BJ-dF0" firstAttribute="leading" secondItem="CVw-Vr-a5B" secondAttribute="leadingMargin" constant="15" id="eBF-2I-yn5"/>
-                            <constraint firstItem="KUP-DK-ov7" firstAttribute="leading" secondItem="CVw-Vr-a5B" secondAttribute="leading" constant="20" id="k5g-lf-JW6"/>
-                            <constraint firstAttribute="trailing" secondItem="KUP-DK-ov7" secondAttribute="trailing" constant="20" id="ksw-mE-Pi8"/>
+                            <constraint firstItem="KUP-DK-ov7" firstAttribute="leading" secondItem="CVw-Vr-a5B" secondAttribute="leading" constant="60" id="k5g-lf-JW6"/>
+                            <constraint firstAttribute="trailing" secondItem="KUP-DK-ov7" secondAttribute="trailing" constant="60" id="ksw-mE-Pi8"/>
                         </constraints>
                         <connections>
                             <outlet property="checkinBtn" destination="HPS-iQ-rbE" id="mqI-VZ-lmI"/>
@@ -1538,6 +1547,7 @@ Label</string>
         <image name="BarButton-Forward.png" width="22" height="22"/>
         <image name="BarButton-Reload.png" width="22" height="22"/>
         <image name="ProgramDetailViewTopBG.png" width="375" height="156"/>
+        <image name="Rectangle.png" width="375" height="239"/>
         <image name="StaffIconDefault.png" width="40" height="40"/>
         <image name="icon_ios_bell.png" width="25" height="25"/>
         <image name="icon_ios_chat.png" width="25" height="25"/>
