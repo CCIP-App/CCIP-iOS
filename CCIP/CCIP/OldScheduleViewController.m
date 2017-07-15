@@ -10,7 +10,7 @@
 #import "UISegmentedControl+addition.h"
 #import "NSInvocation+addition.h"
 #import "AppDelegate.h"
-#import "ScheduleViewController.h"
+#import "OldScheduleViewController.h"
 #import "ProgramDetailViewController.h"
 #import "BLKFlexibleHeightBar.h"
 #import "BLKDelegateSplitter.h"
@@ -26,7 +26,7 @@
 #define MAX_TABLE_VIEW      (CGRectMake(0, TOOLBAR_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - TOOLBAR_HEIGHT))
 #define MIN_TABLE_VIEW      (CGRectMake(0, TOOLBAR_MIN_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - TOOLBAR_MIN_HEIGHT))
 
-@interface ScheduleViewController ()
+@interface OldScheduleViewController ()
 
 @property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
 
@@ -55,7 +55,7 @@
 
 @end
 
-@implementation ScheduleViewController
+@implementation OldScheduleViewController
 
 - (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
     return [self previewActions];

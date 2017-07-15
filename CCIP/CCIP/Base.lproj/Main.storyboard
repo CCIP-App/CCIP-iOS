@@ -527,7 +527,7 @@ Please copy and paste the token into next field or click the token link in the r
         <!--Schedule-->
         <scene sceneID="Bg2-m7-A1k">
             <objects>
-                <viewController id="tQi-9N-xiF" userLabel="Schedule" customClass="ScheduleViewController" sceneMemberID="viewController">
+                <viewController id="tQi-9N-xiF" userLabel="Schedule" customClass="OldScheduleViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IHA-3f-0u0"/>
                         <viewControllerLayoutGuide type="bottom" id="MH8-nS-NaQ"/>

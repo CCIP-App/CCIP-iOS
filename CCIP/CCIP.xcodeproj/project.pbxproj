@@ -50,7 +50,7 @@
 		288D3AA11D59AB4800E4E3A6 /* QR_Code_Filled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A9B1D59AB4700E4E3A6 /* QR_Code_Filled@3x.png */; };
 		288D3AA21D59AB4800E4E3A6 /* QR_Code_Filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A9C1D59AB4700E4E3A6 /* QR_Code_Filled.png */; };
 		288D3AA31D59AB4800E4E3A6 /* QR_Code_Filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A9D1D59AB4700E4E3A6 /* QR_Code_Filled@2x.png */; };
-		28A2992D1D3B90C000145E76 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A2992B1D3B90C000145E76 /* ScheduleViewController.m */; };
+		28A2992D1D3B90C000145E76 /* OldScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A2992B1D3B90C000145E76 /* OldScheduleViewController.m */; };
 		28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */; };
 		28A7C55F1D5EE0C30079BB12 /* Project_Info_and_Contributors.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */; };
 		28A7C5621D5F1AD90079BB12 /* DeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5611D5F1AD90079BB12 /* DeepCopy.m */; };
@@ -208,8 +208,8 @@
 		288D3A9B1D59AB4700E4E3A6 /* QR_Code_Filled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QR_Code_Filled@3x.png"; sourceTree = "<group>"; };
 		288D3A9C1D59AB4700E4E3A6 /* QR_Code_Filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QR_Code_Filled.png; sourceTree = "<group>"; };
 		288D3A9D1D59AB4700E4E3A6 /* QR_Code_Filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QR_Code_Filled@2x.png"; sourceTree = "<group>"; };
-		28A2992A1D3B90C000145E76 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
-		28A2992B1D3B90C000145E76 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
+		28A2992A1D3B90C000145E76 /* OldScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldScheduleViewController.h; sourceTree = "<group>"; };
+		28A2992B1D3B90C000145E76 /* OldScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldScheduleViewController.m; sourceTree = "<group>"; };
 		28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+addition.h"; sourceTree = "<group>"; };
 		28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+addition.m"; sourceTree = "<group>"; };
 		28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Project_Info_and_Contributors.json; sourceTree = "<group>"; };
@@ -489,16 +489,16 @@
 			name = MoreTab;
 			sourceTree = "<group>";
 		};
-		288164E61D4F2F68005C68EA /* ScheduleTab */ = {
+		288164E61D4F2F68005C68EA /* OldScheduleTab */ = {
 			isa = PBXGroup;
 			children = (
-				28A2992A1D3B90C000145E76 /* ScheduleViewController.h */,
-				28A2992B1D3B90C000145E76 /* ScheduleViewController.m */,
+				28A2992A1D3B90C000145E76 /* OldScheduleViewController.h */,
+				28A2992B1D3B90C000145E76 /* OldScheduleViewController.m */,
 				6B9117051D4EFC2600537ABE /* ScheduleViewCell.h */,
 				6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */,
 				288164E91D4F3004005C68EA /* ProgramDetailView */,
 			);
-			name = ScheduleTab;
+			name = OldScheduleTab;
 			sourceTree = "<group>";
 		};
 		288164E71D4F2FA3005C68EA /* AnnounceTab */ = {
@@ -698,7 +698,7 @@
 				286D5FC51D6BD8EC005B6619 /* headers.h */,
 				286D5FC41D6BD6C5005B6619 /* WebServiceEndPoint.h */,
 				288164E21D4F2F03005C68EA /* CheckinTab */,
-				288164E61D4F2F68005C68EA /* ScheduleTab */,
+				288164E61D4F2F68005C68EA /* OldScheduleTab */,
 				288164E71D4F2FA3005C68EA /* AnnounceTab */,
 				288164E31D4F2F24005C68EA /* IRCTab */,
 				288164E51D4F2F47005C68EA /* MoreTab */,
@@ -929,7 +929,7 @@
 				28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */,
 				6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */,
 				6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */,
-				28A2992D1D3B90C000145E76 /* ScheduleViewController.m in Sources */,
+				28A2992D1D3B90C000145E76 /* OldScheduleViewController.m in Sources */,
 				5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */,
 				5FF2B11E1D28B19600665DD9 /* IRCViewController.m in Sources */,
 				2823E8E71D3E560C0039D72E /* ProgramSpeakerIntroViewController.m in Sources */,
