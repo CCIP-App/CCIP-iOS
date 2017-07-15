@@ -3,34 +3,8 @@
 		"project_name": "CCIP-iOS",
 		"github_repo": "CPRTeam/CCIP-iOS",
 		"site": "",
-		"contributors": [1, 2, 3, 4, 5]
+		"contributors": [1, 2, 5]
 	},
-	"others": [
-		{
-			"project_name": "CCIP-Android",
-			"github_repo": "CPRTeam/CCIP-Android",
-			"site": "",
-			"contributors": [0, 5]
-		},
-		{
-			"project_name": "CCIP-Server",
-			"github_repo": "CPRTeam/CCIP-Server",
-			"site": "",
-			"contributors": [1, 2, 3, 4]
-		},
-		{
-			"project_name": "CCIP-Landing",
-			"github_repo": "CPRTeam/CCIP-Landing",
-			"site": "",
-			"contributors": [1, 2]
-		},
-		{
-			"project_name": "CCIP-Administration",
-			"github_repo": "",
-			"site": "",
-			"contributors": [1, 2, 4]
-		}
-	],
 	"contributors" : [
 		{
 			"index": 0,
