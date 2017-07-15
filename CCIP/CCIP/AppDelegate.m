@@ -153,7 +153,9 @@
     for (NSDictionary *scenario in scenarios) {
         [aD addObjectsFromArray:[self parseDateRange:scenario]];
     }
-    aD = [NSMutableArray arrayWithArray:[[NSOrderedSet orderedSetWithArray:[aD valueForKeyPath:@"@distinctUnionOfObjects.self"]] array]];
+    aD = [NSMutableArray arrayWithArray:[[[NSOrderedSet orderedSetWithArray:[aD valueForKeyPath:@"@distinctUnionOfObjects.self"]] array] sortedArrayUsingComparator:^NSComparisonResult(id o1, id o2) {
+        return [(NSString *)o1 compare:(NSString *)o2 options:NSNumericSearch];
+    }]];
     
     NSLog(@"Available date with: %@", aD);
     [[AppDelegate appDelegate] setAvailableDays:aD];
