@@ -28,40 +28,14 @@
     [super viewDidLoad];
     [self registerForceTouch];
     
-    NSMutableArray *sponsorListArray = [NSMutableArray new];
-    
-    dispatch_semaphore_t semaLevel = dispatch_semaphore_create(0);
-    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:SPONSOR_LEVEL_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-        if (responseObject != nil) {
-            self.sponsorLevelJsonArray = responseObject;
-        }
-        dispatch_semaphore_signal(semaLevel);
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-    
-    while (dispatch_semaphore_wait(semaLevel, DISPATCH_TIME_NOW)) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
-    }
-    
-    for (id item in self.sponsorLevelJsonArray) {
-        NSLog(@"Level: %@", item);
-        [sponsorListArray addObject:[NSMutableArray new]];
-    }
-    
     dispatch_semaphore_t semaList = dispatch_semaphore_create(0);
     
+    [self.tableView beginUpdates];
     [manager GET:SPONSOR_LIST_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         if (responseObject != nil) {
-            for (NSDictionary *sponsor in responseObject) {
-                NSUInteger index = [[sponsor objectForKey:@"level"] unsignedIntegerValue] - 1;
-                [[sponsorListArray objectAtIndex:index] addObject:sponsor];
-            }
+            self.sponsorArray = responseObject;
         }
         dispatch_semaphore_signal(semaList);
     } failure:^(NSURLSessionTask *operation, NSError *error) {
@@ -73,20 +47,12 @@
                                  beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
     }
     
-    NSSortDescriptor *level_sorter = [[NSSortDescriptor alloc] initWithKey:@"@max.level"
-                                                                 ascending:YES];
-    NSSortDescriptor *place_sorter = [[NSSortDescriptor alloc] initWithKey:@"@max.place"
-                                                                 ascending:YES];
-    self.sponsorArray = [sponsorListArray sortedArrayUsingDescriptors:@[ level_sorter, place_sorter ]];
-    
-    [self.tableView beginUpdates];
-    
-    [self.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.sponsorLevelJsonArray count])]
+    [self.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.sponsorArray count])]
                   withRowAnimation:UITableViewRowAnimationFade];
     
     NSMutableArray *indexPaths = [NSMutableArray new];
-    for (int sectionNum = 0; sectionNum < [self.sponsorLevelJsonArray count]; sectionNum++) {
-        for (int rowNum = 0; rowNum < [[self.sponsorArray objectAtIndex:sectionNum] count]; rowNum++) {
+    for (int sectionNum = 0; sectionNum < [self.sponsorArray count]; sectionNum++) {
+        for (int rowNum = 0; rowNum < [[[self.sponsorArray objectAtIndex:sectionNum] objectForKey:@"data"] count]; rowNum++) {
             [indexPaths addObject:[NSIndexPath indexPathForRow:rowNum
                                                      inSection:sectionNum]];
         }
@@ -102,23 +68,21 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.sponsorLevelJsonArray count];
+    return [self.sponsorArray count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSPredicate *secs = [NSPredicate predicateWithFormat:@"ANY level = %ld", section + 1];
-    NSArray *filteredArray = [[self.sponsorArray filteredArrayUsingPredicate:secs] firstObject];
+    NSArray *filteredArray = [[self.sponsorArray objectAtIndex:section] objectForKey:@"data"];
     return filteredArray != nil ? [filteredArray count] : 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSPredicate *secs = [NSPredicate predicateWithFormat:@"level = %ld", section + 1];
-    NSDictionary *level = [[self.sponsorLevelJsonArray filteredArrayUsingPredicate:secs] firstObject];
+    NSDictionary *level = [[self.sponsorArray objectAtIndex:section] objectForKey:@"name"];
     NSString *language = NSLocalizedString(@"CurrentLang", nil);
     if ([language containsString:@"zh"]) {
-        return [level objectForKey:@"namezh"];
+        return [level objectForKey:@"zh"];
     } else {
-        return [level objectForKey:@"nameen"];
+        return [level objectForKey:@"en"];
     }
 }
 
@@ -127,19 +91,17 @@
     
     NSString *language = NSLocalizedString(@"CurrentLang", nil);
     
-    NSPredicate *secs = [NSPredicate predicateWithFormat:@"ANY level = %ld", indexPath.section + 1];
-    NSPredicate *rows = [NSPredicate predicateWithFormat:@"place = %ld", indexPath.row + 1];
-    NSArray *filteredSec = [[self.sponsorArray filteredArrayUsingPredicate:secs] firstObject];
-    NSDictionary *filteredRow = [[filteredSec filteredArrayUsingPredicate:rows] firstObject];
+    NSArray *filteredSec = [[self.sponsorArray objectAtIndex:indexPath.section] objectForKey:@"data"];
+    NSDictionary *filteredRow = [filteredSec objectAtIndex:indexPath.row];
+    NSDictionary *title = [filteredRow objectForKey:@"name"];
     
-    if ([language containsString:@"en"]) {
-        cell.sponsorTitle.text = [filteredRow objectForKey:@"nameen"];
+    if ([language containsString:@"zh"]) {
+        cell.sponsorTitle.text = [title objectForKey:@"zh"];
     } else {
-        cell.sponsorTitle.text = [filteredRow objectForKey:@"namezh"];
+        cell.sponsorTitle.text = [title objectForKey:@"en"];
     }
     
-    NSString *logo = [NSString stringWithFormat:@"%@%@", COSCUP_BASE_URL, [filteredRow objectForKey:@"logourl"]];
-    [cell.sponsorImg sd_setImageWithURL:[NSURL URLWithString:logo]
+    [cell.sponsorImg sd_setImageWithURL:[NSURL URLWithString:[filteredRow objectForKey:@"logourl"]]
                        placeholderImage:nil
                                 options:SDWebImageRetryFailed];
     
@@ -186,7 +148,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *url = [[[self.sponsorArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:@"logolink"];
+    NSString *url = [[[[self.sponsorArray objectAtIndex:indexPath.section] objectForKey:@"data"] objectAtIndex:indexPath.row] objectForKey:@"logolink"];
     if (![url hasPrefix:@"http://"] && ![url hasPrefix:@"https://"]) {
         url = [@"http://" stringByAppendingString:url];
     }
@@ -200,7 +162,7 @@
     } else {
         // Open in Mobile Safari
         if (![[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]]) {
-            NSLog(@"%@%@",@"Failed to open url:", [[NSURL URLWithString:url] description]);
+            NSLog(@"%@%@", @"Failed to open url:", [[NSURL URLWithString:url] description]);
         }
     }
     

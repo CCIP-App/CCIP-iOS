@@ -10,7 +10,6 @@
 
 @interface SponsorTableViewController : UITableViewController<UIViewControllerPreviewingDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) NSArray *sponsorLevelJsonArray;
 @property (strong, nonatomic) NSArray *sponsorArray;
 
 @end
