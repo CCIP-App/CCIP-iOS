@@ -27,6 +27,13 @@
     self.shimmeringLogoView.contentView = logoView;
     self.navigationItem.titleView = self.shimmeringLogoView;
     
+    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, 239);
+    UIImage *recImg = [UIImage imageNamed:@"Rectangle.png"];
+    UIImageView *iv = [UIImageView new];
+    iv.frame = frame;
+    iv.image = recImg;
+    [self.view addSubview:iv];
+    [self.view sendSubviewToBack:iv];
 }
 
 - (void)didReceiveMemoryWarning {

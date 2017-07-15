@@ -21,6 +21,7 @@
     
     self.dataSource = self;
     self.delegate = self;
+    [self.view setBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)didReceiveMemoryWarning {
