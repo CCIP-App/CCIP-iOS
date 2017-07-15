@@ -406,93 +406,93 @@
 }
 
 - (void)setDefaultShortcutItems {
-    static NSDateFormatter *formatter_full = nil;
-    if (formatter_full == nil) {
-        formatter_full = [NSDateFormatter new];
-        [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
-        [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-    }
-    
-    static NSDateFormatter *formatter_date = nil;
-    if (formatter_date == nil) {
-        formatter_date = [NSDateFormatter new];
-        [formatter_date setDateFormat:@"MM/dd"];
-    }
-    static NSDate *startTime;
-    static NSString *time_date;
-
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:CC_STATUS([AppDelegate accessToken]) parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-        if (responseObject != nil) {
-            NSDictionary *scenarios = [responseObject objectForKey:@"scenarios"];
-            [manager GET:PROGRAM_DATA_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-                NSLog(@"JSON: %@", responseObject);
-                if (responseObject != nil) {
-                    NSArray *programs = responseObject;
-                    
-                    NSMutableDictionary *datesDict = [NSMutableDictionary new];
-                    for (NSDictionary *program in programs) {
-                        startTime = [formatter_full dateFromString:[program objectForKey:@"starttime"]];
-                        time_date = [formatter_date stringFromDate:startTime];
-                        
-                        NSMutableArray *tempArray = [datesDict objectForKey:time_date];
-                        if (tempArray == nil) {
-                            tempArray = [NSMutableArray new];
-                        }
-                        [tempArray addObject:program];
-                        [datesDict setObject:tempArray forKey:time_date];
-                    }
-                    
-                    NSMutableDictionary *program_date = datesDict;
-                    NSArray *segmentsTextArray = [[program_date allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-                    // UIApplicationShortcutIcon
-                    // UIApplicationShortcutItem
-                    if(NSClassFromString(@"UIApplicationShortcutItem")) {
-                        NSMutableArray *shortcutItems = [NSMutableArray new];
-                        
-                        for (NSDictionary *scenario in scenarios) {
-                            NSString *id = [scenario objectForKey:@"id"];
-                            if ([id rangeOfString:@"day" options:NSCaseInsensitiveSearch].length > 0) {
-                                NSTimeInterval available = [[NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] doubleValue]] timeIntervalSince1970];
-                                NSTimeInterval expire = [[NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] doubleValue]] timeIntervalSince1970];
-                                NSTimeInterval now = [[NSDate new] timeIntervalSince1970];
-                                if (([id rangeOfString:@"day1" options:NSCaseInsensitiveSearch].length > 0 && now <= expire) || (now >= available && now <= expire)) {
-                                    UIApplicationShortcutIconType iconType = [scenario objectForKey:@"used"] != nil
-                                    ? UIApplicationShortcutIconTypeTaskCompleted
-                                    : UIApplicationShortcutIconTypeTask;
-                                    [shortcutItems addObject:[[UIApplicationShortcutItem alloc] initWithType:@"Checkin"
-                                                                                              localizedTitle:NSLocalizedString(id, nil)
-                                                                                           localizedSubtitle:nil
-                                                                                                        icon:[UIApplicationShortcutIcon iconWithType:iconType]
-                                                                                                    userInfo:@{
-                                                                                                               @"key": id
-                                                                                                               }]];
-                                }
-                            }
-                        }
-                        
-                        for (NSString *dateText in segmentsTextArray) {
-                            [shortcutItems addObject:[[UIApplicationShortcutItem alloc] initWithType:@"Schedule"
-                                                                                      localizedTitle:dateText
-                                                                                   localizedSubtitle:@"議程"
-                                                                                                icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeDate]
-                                                                                            userInfo:@{
-                                                                                                       @"segmentsTextArray": segmentsTextArray,
-                                                                                                       @"program_date": program_date
-                                                                                                       }]];
-                        }
-                        
-                        [[UIApplication sharedApplication] setShortcutItems:shortcutItems];
-                    }
-                }
-            } failure:^(NSURLSessionTask *operation, NSError *error) {
-                NSLog(@"Error: %@", error);
-            }];
-        }
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
+//    static NSDateFormatter *formatter_full = nil;
+//    if (formatter_full == nil) {
+//        formatter_full = [NSDateFormatter new];
+//        [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+//        [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+//    }
+//
+//    static NSDateFormatter *formatter_date = nil;
+//    if (formatter_date == nil) {
+//        formatter_date = [NSDateFormatter new];
+//        [formatter_date setDateFormat:@"MM/dd"];
+//    }
+//    static NSDate *startTime;
+//    static NSString *time_date;
+//
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    [manager GET:CC_STATUS([AppDelegate accessToken]) parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+//        NSLog(@"JSON: %@", responseObject);
+//        if (responseObject != nil) {
+//            NSDictionary *scenarios = [responseObject objectForKey:@"scenarios"];
+//            [manager GET:PROGRAM_DATA_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+//                NSLog(@"JSON: %@", responseObject);
+//                if (responseObject != nil) {
+//                    NSArray *programs = responseObject;
+//
+//                    NSMutableDictionary *datesDict = [NSMutableDictionary new];
+//                    for (NSDictionary *program in programs) {
+//                        startTime = [formatter_full dateFromString:[program objectForKey:@"starttime"]];
+//                        time_date = [formatter_date stringFromDate:startTime];
+//
+//                        NSMutableArray *tempArray = [datesDict objectForKey:time_date];
+//                        if (tempArray == nil) {
+//                            tempArray = [NSMutableArray new];
+//                        }
+//                        [tempArray addObject:program];
+//                        [datesDict setObject:tempArray forKey:time_date];
+//                    }
+//
+//                    NSMutableDictionary *program_date = datesDict;
+//                    NSArray *segmentsTextArray = [[program_date allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+//                    // UIApplicationShortcutIcon
+//                    // UIApplicationShortcutItem
+//                    if(NSClassFromString(@"UIApplicationShortcutItem")) {
+//                        NSMutableArray *shortcutItems = [NSMutableArray new];
+//
+//                        for (NSDictionary *scenario in scenarios) {
+//                            NSString *id = [scenario objectForKey:@"id"];
+//                            if ([id rangeOfString:@"day" options:NSCaseInsensitiveSearch].length > 0) {
+//                                NSTimeInterval available = [[NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] doubleValue]] timeIntervalSince1970];
+//                                NSTimeInterval expire = [[NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] doubleValue]] timeIntervalSince1970];
+//                                NSTimeInterval now = [[NSDate new] timeIntervalSince1970];
+//                                if (([id rangeOfString:@"day1" options:NSCaseInsensitiveSearch].length > 0 && now <= expire) || (now >= available && now <= expire)) {
+//                                    UIApplicationShortcutIconType iconType = [scenario objectForKey:@"used"] != nil
+//                                    ? UIApplicationShortcutIconTypeTaskCompleted
+//                                    : UIApplicationShortcutIconTypeTask;
+//                                    [shortcutItems addObject:[[UIApplicationShortcutItem alloc] initWithType:@"Checkin"
+//                                                                                              localizedTitle:NSLocalizedString(id, nil)
+//                                                                                           localizedSubtitle:nil
+//                                                                                                        icon:[UIApplicationShortcutIcon iconWithType:iconType]
+//                                                                                                    userInfo:@{
+//                                                                                                               @"key": id
+//                                                                                                               }]];
+//                                }
+//                            }
+//                        }
+//
+//                        for (NSString *dateText in segmentsTextArray) {
+//                            [shortcutItems addObject:[[UIApplicationShortcutItem alloc] initWithType:@"Schedule"
+//                                                                                      localizedTitle:dateText
+//                                                                                   localizedSubtitle:@"議程"
+//                                                                                                icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeDate]
+//                                                                                            userInfo:@{
+//                                                                                                       @"segmentsTextArray": segmentsTextArray,
+//                                                                                                       @"program_date": program_date
+//                                                                                                       }]];
+//                        }
+//
+//                        [[UIApplication sharedApplication] setShortcutItems:shortcutItems];
+//                    }
+//                }
+//            } failure:^(NSURLSessionTask *operation, NSError *error) {
+//                NSLog(@"Error: %@", error);
+//            }];
+//        }
+//    } failure:^(NSURLSessionTask *operation, NSError *error) {
+//        NSLog(@"Error: %@", error);
+//    }];
 }
 
 @end
