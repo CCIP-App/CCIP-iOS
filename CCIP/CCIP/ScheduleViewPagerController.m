@@ -7,6 +7,7 @@
 //
 
 #import "ScheduleViewPagerController.h"
+#import "WebServiceEndPoint.h"
 #import "UIColor+addition.h"
 #import <AFNetworking/AFNetworking.h>
 
@@ -52,7 +53,7 @@
 - (void)refreshData {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:@"https://coscup.org/2017-assets/json/submissions.json" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [manager GET:SCHEDULES_DATA_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         if (responseObject != nil) {
             self.programs = responseObject;
