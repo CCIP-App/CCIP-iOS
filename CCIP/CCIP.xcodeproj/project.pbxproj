@@ -133,6 +133,14 @@
 		6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */; };
 		6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */; };
 		6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
+		6BCAC01F1F1A8FC100032096 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BCAC01D1F1A8FC100032096 /* Interface.storyboard */; };
+		6BCAC0211F1A8FC100032096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BCAC0201F1A8FC100032096 /* Assets.xcassets */; };
+		6BCAC0281F1A8FC100032096 /* CCIP-Watch-Dev Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* CCIP-Watch-Dev Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6BCAC0301F1A8FC100032096 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCAC02F1F1A8FC100032096 /* InterfaceController.m */; };
+		6BCAC0331F1A8FC100032096 /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCAC0321F1A8FC100032096 /* ExtensionDelegate.m */; };
+		6BCAC0361F1A8FC100032096 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCAC0351F1A8FC100032096 /* NotificationController.m */; };
+		6BCAC0381F1A8FC100032096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BCAC0371F1A8FC100032096 /* Assets.xcassets */; };
+		6BCAC03C1F1A8FC100032096 /* CCIP-Watch-Dev.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6BCAC01B1F1A8FC100032096 /* CCIP-Watch-Dev.app */; };
 		6BCBC3B51D4F393700B5AF35 /* UIViewController+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */; };
 		6BD8EF2C1D1D73510094BE95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2B1D1D73510094BE95 /* main.m */; };
 		6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */; };
@@ -141,6 +149,23 @@
 		6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE250211D3133FC005FB4B2 /* GuideViewController.m */; };
 		D5720777B8AA54B5CE34467A /* Pods_CCIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87CA176D8DB3A92497387928 /* Pods_CCIP.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6BCAC0291F1A8FC100032096 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6BD8EF1F1D1D73510094BE95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BCAC0261F1A8FC100032096;
+			remoteInfo = "CCIP-Watch-Dev Extension";
+		};
+		6BCAC03A1F1A8FC100032096 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6BD8EF1F1D1D73510094BE95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BCAC01A1F1A8FC100032096;
+			remoteInfo = "CCIP-Watch-Dev";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		6B1C6A1D1D1D843F003C4865 /* Embed Frameworks */ = {
@@ -154,6 +179,28 @@
 				6B2CD5B51D28C92B00793194 /* GatewayWebService.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BB0B6411F1A8E2300AEB437 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				6BCAC03C1F1A8FC100032096 /* CCIP-Watch-Dev.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BCAC0421F1A8FC100032096 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6BCAC0281F1A8FC100032096 /* CCIP-Watch-Dev Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -324,8 +371,25 @@
 		6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
 		6BAB42371D4ED39D0029B8A5 /* UIApplication+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+addition.h"; sourceTree = "<group>"; };
 		6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+addition.m"; sourceTree = "<group>"; };
+		6BB0B6091F1A74DF00AEB437 /* CCIP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CCIP.entitlements; sourceTree = "<group>"; };
 		6BB50FB11D665393002CAD0B /* AfterEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AfterEventViewController.h; sourceTree = "<group>"; };
 		6BB50FB21D665393002CAD0B /* AfterEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AfterEventViewController.m; sourceTree = "<group>"; };
+		6BCAC01B1F1A8FC100032096 /* CCIP-Watch-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCIP-Watch-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BCAC01E1F1A8FC100032096 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		6BCAC0201F1A8FC100032096 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6BCAC0221F1A8FC100032096 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BCAC0271F1A8FC100032096 /* CCIP-Watch-Dev Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CCIP-Watch-Dev Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BCAC02D1F1A8FC100032096 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		6BCAC02E1F1A8FC100032096 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		6BCAC02F1F1A8FC100032096 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		6BCAC0311F1A8FC100032096 /* ExtensionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionDelegate.h; sourceTree = "<group>"; };
+		6BCAC0321F1A8FC100032096 /* ExtensionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
+		6BCAC0341F1A8FC100032096 /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
+		6BCAC0351F1A8FC100032096 /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
+		6BCAC0371F1A8FC100032096 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6BCAC0391F1A8FC100032096 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BCAC0441F1A8FCF00032096 /* CCIP-Watch-Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CCIP-Watch-Dev.entitlements"; sourceTree = "<group>"; };
+		6BCAC0451F1A8FD200032096 /* CCIP-Watch-Dev Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CCIP-Watch-Dev Extension.entitlements"; sourceTree = "<group>"; };
 		6BCBC3B31D4F393700B5AF35 /* UIViewController+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+addition.h"; sourceTree = "<group>"; };
 		6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+addition.m"; sourceTree = "<group>"; };
 		6BD8EF271D1D73510094BE95 /* CCIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -345,6 +409,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6BCAC0241F1A8FC100032096 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6BD8EF241D1D73510094BE95 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -670,6 +741,42 @@
 			name = CheckinOverlay;
 			sourceTree = "<group>";
 		};
+		6BCAC01C1F1A8FC100032096 /* CCIP-Watch-Dev */ = {
+			isa = PBXGroup;
+			children = (
+				6BCAC0441F1A8FCF00032096 /* CCIP-Watch-Dev.entitlements */,
+				6BCAC01D1F1A8FC100032096 /* Interface.storyboard */,
+				6BCAC0201F1A8FC100032096 /* Assets.xcassets */,
+				6BCAC0221F1A8FC100032096 /* Info.plist */,
+			);
+			path = "CCIP-Watch-Dev";
+			sourceTree = "<group>";
+		};
+		6BCAC02B1F1A8FC100032096 /* CCIP-Watch-Dev Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6BCAC0451F1A8FD200032096 /* CCIP-Watch-Dev Extension.entitlements */,
+				6BCAC02E1F1A8FC100032096 /* InterfaceController.h */,
+				6BCAC02F1F1A8FC100032096 /* InterfaceController.m */,
+				6BCAC0311F1A8FC100032096 /* ExtensionDelegate.h */,
+				6BCAC0321F1A8FC100032096 /* ExtensionDelegate.m */,
+				6BCAC0341F1A8FC100032096 /* NotificationController.h */,
+				6BCAC0351F1A8FC100032096 /* NotificationController.m */,
+				6BCAC0371F1A8FC100032096 /* Assets.xcassets */,
+				6BCAC0391F1A8FC100032096 /* Info.plist */,
+				6BCAC02C1F1A8FC100032096 /* Supporting Files */,
+			);
+			path = "CCIP-Watch-Dev Extension";
+			sourceTree = "<group>";
+		};
+		6BCAC02C1F1A8FC100032096 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6BCAC02D1F1A8FC100032096 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		6BCBC3B61D4F3BB600B5AF35 /* CustomSegue */ = {
 			isa = PBXGroup;
 			children = (
@@ -686,6 +793,8 @@
 			children = (
 				6BD8EF291D1D73510094BE95 /* CCIP */,
 				6BD8EF2A1D1D73510094BE95 /* Supporting Files */,
+				6BCAC01C1F1A8FC100032096 /* CCIP-Watch-Dev */,
+				6BCAC02B1F1A8FC100032096 /* CCIP-Watch-Dev Extension */,
 				6BD8EF281D1D73510094BE95 /* Products */,
 				017A0FB6BC91053E5BA17E51 /* Pods */,
 				267251DBF9C24B92F4EE80DC /* Frameworks */,
@@ -696,6 +805,8 @@
 			isa = PBXGroup;
 			children = (
 				6BD8EF271D1D73510094BE95 /* CCIP.app */,
+				6BCAC01B1F1A8FC100032096 /* CCIP-Watch-Dev.app */,
+				6BCAC0271F1A8FC100032096 /* CCIP-Watch-Dev Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -703,6 +814,7 @@
 		6BD8EF291D1D73510094BE95 /* CCIP */ = {
 			isa = PBXGroup;
 			children = (
+				6BB0B6091F1A74DF00AEB437 /* CCIP.entitlements */,
 				288D3A731D599A1200E4E3A6 /* ScanditSDK */,
 				288164E11D4F1C52005C68EA /* Class+addition */,
 				6BCBC3B61D4F3BB600B5AF35 /* CustomSegue */,
@@ -748,6 +860,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6BCAC01A1F1A8FC100032096 /* CCIP-Watch-Dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BCAC0431F1A8FC100032096 /* Build configuration list for PBXNativeTarget "CCIP-Watch-Dev" */;
+			buildPhases = (
+				6BCAC0191F1A8FC100032096 /* Resources */,
+				6BCAC0421F1A8FC100032096 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6BCAC02A1F1A8FC100032096 /* PBXTargetDependency */,
+			);
+			name = "CCIP-Watch-Dev";
+			productName = "CCIP-Watch-Dev";
+			productReference = 6BCAC01B1F1A8FC100032096 /* CCIP-Watch-Dev.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		6BCAC0261F1A8FC100032096 /* CCIP-Watch-Dev Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BCAC0411F1A8FC100032096 /* Build configuration list for PBXNativeTarget "CCIP-Watch-Dev Extension" */;
+			buildPhases = (
+				6BCAC0231F1A8FC100032096 /* Sources */,
+				6BCAC0241F1A8FC100032096 /* Frameworks */,
+				6BCAC0251F1A8FC100032096 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CCIP-Watch-Dev Extension";
+			productName = "CCIP-Watch-Dev Extension";
+			productReference = 6BCAC0271F1A8FC100032096 /* CCIP-Watch-Dev Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		6BD8EF261D1D73510094BE95 /* CCIP */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BD8EF411D1D73510094BE95 /* Build configuration list for PBXNativeTarget "CCIP" */;
@@ -759,10 +905,12 @@
 				D87513F49D444A0840CAF6A2 /* [CP] Embed Pods Frameworks */,
 				75BF4F97DFA01FBB90E2B98A /* [CP] Copy Pods Resources */,
 				6B1C6A1D1D1D843F003C4865 /* Embed Frameworks */,
+				6BB0B6411F1A8E2300AEB437 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6BCAC03B1F1A8FC100032096 /* PBXTargetDependency */,
 			);
 			name = CCIP;
 			productName = CCIP;
@@ -778,12 +926,35 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = CPRTeam;
 				TargetAttributes = {
+					6BCAC01A1F1A8FC100032096 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = H2LA3QW9Y2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					6BCAC0261F1A8FC100032096 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = H2LA3QW9Y2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					6BD8EF261D1D73510094BE95 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = H2LA3QW9Y2;
 						DevelopmentTeamName = "Koo Foundation Sun Yat-Sen Cancer Center";
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -806,11 +977,30 @@
 			projectRoot = "";
 			targets = (
 				6BD8EF261D1D73510094BE95 /* CCIP */,
+				6BCAC01A1F1A8FC100032096 /* CCIP-Watch-Dev */,
+				6BCAC0261F1A8FC100032096 /* CCIP-Watch-Dev Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6BCAC0191F1A8FC100032096 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BCAC0211F1A8FC100032096 /* Assets.xcassets in Resources */,
+				6BCAC01F1F1A8FC100032096 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BCAC0251F1A8FC100032096 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BCAC0381F1A8FC100032096 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6BD8EF251D1D73510094BE95 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -935,6 +1125,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6BCAC0231F1A8FC100032096 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BCAC0331F1A8FC100032096 /* ExtensionDelegate.m in Sources */,
+				6BCAC0301F1A8FC100032096 /* InterfaceController.m in Sources */,
+				6BCAC0361F1A8FC100032096 /* NotificationController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6BD8EF231D1D73510094BE95 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -987,6 +1187,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		6BCAC02A1F1A8FC100032096 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6BCAC0261F1A8FC100032096 /* CCIP-Watch-Dev Extension */;
+			targetProxy = 6BCAC0291F1A8FC100032096 /* PBXContainerItemProxy */;
+		};
+		6BCAC03B1F1A8FC100032096 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6BCAC01A1F1A8FC100032096 /* CCIP-Watch-Dev */;
+			targetProxy = 6BCAC03A1F1A8FC100032096 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -1015,6 +1228,14 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		6BCAC01D1F1A8FC100032096 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BCAC01E1F1A8FC100032096 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1028,6 +1249,102 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6BCAC03D1F1A8FC100032096 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_ENTITLEMENTS = "CCIP-Watch-Dev/CCIP-Watch-Dev.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = H2LA3QW9Y2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = CCIP_Watch_Dev_Extension;
+				INFOPLIST_FILE = "CCIP-Watch-Dev/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Debug;
+		};
+		6BCAC03E1F1A8FC100032096 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_ENTITLEMENTS = "CCIP-Watch-Dev/CCIP-Watch-Dev.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = H2LA3QW9Y2;
+				IBSC_MODULE = CCIP_Watch_Dev_Extension;
+				INFOPLIST_FILE = "CCIP-Watch-Dev/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Release;
+		};
+		6BCAC03F1F1A8FC100032096 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_ENTITLEMENTS = "CCIP-Watch-Dev Extension/CCIP-Watch-Dev Extension.entitlements";
+				DEVELOPMENT_TEAM = H2LA3QW9Y2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CCIP-Watch-Dev Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Debug;
+		};
+		6BCAC0401F1A8FC100032096 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_ENTITLEMENTS = "CCIP-Watch-Dev Extension/CCIP-Watch-Dev Extension.entitlements";
+				DEVELOPMENT_TEAM = H2LA3QW9Y2;
+				INFOPLIST_FILE = "CCIP-Watch-Dev Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Release;
+		};
 		6BD8EF3F1D1D73510094BE95 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1124,7 +1441,7 @@
 			baseConfigurationReference = 76097425B85D526316D2EF58 /* Pods-CCIP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev";
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = CCIP/CCIP.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1145,7 +1462,7 @@
 			baseConfigurationReference = 1E39488D2E9378322A78E57B /* Pods-CCIP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = CCIP/CCIP.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1164,6 +1481,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6BCAC0411F1A8FC100032096 /* Build configuration list for PBXNativeTarget "CCIP-Watch-Dev Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BCAC03F1F1A8FC100032096 /* Debug */,
+				6BCAC0401F1A8FC100032096 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6BCAC0431F1A8FC100032096 /* Build configuration list for PBXNativeTarget "CCIP-Watch-Dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BCAC03D1F1A8FC100032096 /* Debug */,
+				6BCAC03E1F1A8FC100032096 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		6BD8EF221D1D73510094BE95 /* Build configuration list for PBXProject "CCIP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
