@@ -10,13 +10,9 @@
 		141D4150DB8FC2366FDFDF75 /* Pods-CCIP-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = A729E7D04006FECCCCCFAEEC /* Pods-CCIP-metadata.plist */; };
 		280774BF1F1A736800A5B994 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774BE1F1A736800A5B994 /* ScheduleViewController.m */; };
 		280774C21F1A7B0100A5B994 /* ScheduleViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774C11F1A7B0100A5B994 /* ScheduleViewPagerController.m */; };
-		2821DA9D1D3DCA5500AFE139 /* ProgramDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */; };
 		2821DAA21D3DCB2300AFE139 /* ProgramDetailViewTopBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DA9F1D3DCB2300AFE139 /* ProgramDetailViewTopBG.png */; };
 		2821DAA31D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DAA01D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@3x.png */; };
 		2821DAA41D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DAA11D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@2x.png */; };
-		2821DAA71D3DD36500AFE139 /* ProgramDetailViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821DAA61D3DD36500AFE139 /* ProgramDetailViewPagerController.m */; };
-		2823E8E21D3E55F10039D72E /* ProgramAbstractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2823E8E01D3E55F10039D72E /* ProgramAbstractViewController.m */; };
-		2823E8E71D3E560C0039D72E /* ProgramSpeakerIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2823E8E51D3E560C0039D72E /* ProgramSpeakerIntroViewController.m */; };
 		2839BF371D4C97AB0062F36D /* Star_Filled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF331D4C97AB0062F36D /* Star_Filled@3x.png */; };
 		2839BF381D4C97AB0062F36D /* Star@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF341D4C97AB0062F36D /* Star@3x.png */; };
 		2839BF391D4C97AB0062F36D /* Star_Filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2839BF351D4C97AB0062F36D /* Star_Filled@2x.png */; };
@@ -52,7 +48,6 @@
 		288D3AA11D59AB4800E4E3A6 /* QR_Code_Filled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A9B1D59AB4700E4E3A6 /* QR_Code_Filled@3x.png */; };
 		288D3AA21D59AB4800E4E3A6 /* QR_Code_Filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A9C1D59AB4700E4E3A6 /* QR_Code_Filled.png */; };
 		288D3AA31D59AB4800E4E3A6 /* QR_Code_Filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A9D1D59AB4700E4E3A6 /* QR_Code_Filled@2x.png */; };
-		28A2992D1D3B90C000145E76 /* OldScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A2992B1D3B90C000145E76 /* OldScheduleViewController.m */; };
 		28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */; };
 		28A7C55F1D5EE0C30079BB12 /* Project_Info_and_Contributors.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */; };
 		28A7C5621D5F1AD90079BB12 /* DeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5611D5F1AD90079BB12 /* DeepCopy.m */; };
@@ -126,7 +121,6 @@
 		6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F9E441D4D142700047F38 /* CheckinCardView.m */; };
 		6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
 		6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
-		6B9117081D4EFC2600537ABE /* ScheduleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */; };
 		6B9F62671F1A5D160084E09C /* Rectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6B149A1F1A593400538E32 /* Rectangle.png */; };
 		6B9F62681F1A5D160084E09C /* Rectangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6B14981F1A593300538E32 /* Rectangle@2x.png */; };
 		6B9F62691F1A5D160084E09C /* Rectangle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6B14991F1A593300538E32 /* Rectangle@3x.png */; };
@@ -1147,16 +1141,13 @@
 				28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */,
 				6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */,
 				6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */,
-				28A2992D1D3B90C000145E76 /* OldScheduleViewController.m in Sources */,
 				5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */,
 				5FF2B11E1D28B19600665DD9 /* IRCViewController.m in Sources */,
 				280774C21F1A7B0100A5B994 /* ScheduleViewPagerController.m in Sources */,
-				2823E8E71D3E560C0039D72E /* ProgramSpeakerIntroViewController.m in Sources */,
 				5FD049891D5AFB9D00E7CEAD /* AnnounceTableViewController.m in Sources */,
 				28A7C5761D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m in Sources */,
 				280774BF1F1A736800A5B994 /* ScheduleViewController.m in Sources */,
 				2839BF4A1D4CDDAD0062F36D /* CheckinCardViewController.m in Sources */,
-				2823E8E21D3E55F10039D72E /* ProgramAbstractViewController.m in Sources */,
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
 				6BD8EF2C1D1D73510094BE95 /* main.m in Sources */,
 				6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */,
@@ -1172,15 +1163,12 @@
 				5FD0498C1D5B041800E7CEAD /* AnnounceTableViewCell.m in Sources */,
 				6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */,
 				6B11BE891D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m in Sources */,
-				2821DA9D1D3DCA5500AFE139 /* ProgramDetailViewController.m in Sources */,
 				6BCBC3B51D4F393700B5AF35 /* UIViewController+addition.m in Sources */,
 				5F9171291D325B5E000D0F66 /* StaffViewController.m in Sources */,
 				5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */,
-				6B9117081D4EFC2600537ABE /* ScheduleViewCell.m in Sources */,
 				28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */,
 				28AFCF141D5DD9CA00413927 /* AcknowledgementsViewController.m in Sources */,
 				6B2CD5791D286E6F00793194 /* UIColor+addition.m in Sources */,
-				2821DAA71D3DD36500AFE139 /* ProgramDetailViewPagerController.m in Sources */,
 				6B2CD5611D281D9400793194 /* UIAlertController+additional.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1488,6 +1476,7 @@
 				6BCAC0401F1A8FC100032096 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6BCAC0431F1A8FC100032096 /* Build configuration list for PBXNativeTarget "CCIP-Watch-Dev" */ = {
 			isa = XCConfigurationList;
@@ -1496,6 +1485,7 @@
 				6BCAC03E1F1A8FC100032096 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6BD8EF221D1D73510094BE95 /* Build configuration list for PBXProject "CCIP" */ = {
 			isa = XCConfigurationList;
