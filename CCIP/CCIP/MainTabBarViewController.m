@@ -10,7 +10,7 @@
 #import "GatewayWebService/GatewayWebService.h"
 #import "NSInvocation+addition.h"
 #import "UIImage+addition.h"
-#import "OldScheduleViewController.h"
+#import "ScheduleViewController.h"
 #import "MoreTableViewController.h"
 #import "AppDelegate.h"
 #import <UICKeyChainStore/UICKeyChainStore.h>

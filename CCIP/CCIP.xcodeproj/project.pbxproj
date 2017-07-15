@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		141D4150DB8FC2366FDFDF75 /* Pods-CCIP-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = A729E7D04006FECCCCCFAEEC /* Pods-CCIP-metadata.plist */; };
+		280774BF1F1A736800A5B994 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774BE1F1A736800A5B994 /* ScheduleViewController.m */; };
+		280774C21F1A7B0100A5B994 /* ScheduleViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774C11F1A7B0100A5B994 /* ScheduleViewPagerController.m */; };
 		2821DA9D1D3DCA5500AFE139 /* ProgramDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */; };
 		2821DAA21D3DCB2300AFE139 /* ProgramDetailViewTopBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DA9F1D3DCB2300AFE139 /* ProgramDetailViewTopBG.png */; };
 		2821DAA31D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DAA01D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@3x.png */; };
@@ -158,6 +160,10 @@
 
 /* Begin PBXFileReference section */
 		1E39488D2E9378322A78E57B /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.release.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
+		280774BD1F1A736800A5B994 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
+		280774BE1F1A736800A5B994 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
+		280774C01F1A7B0100A5B994 /* ScheduleViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewPagerController.h; sourceTree = "<group>"; };
+		280774C11F1A7B0100A5B994 /* ScheduleViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewPagerController.m; sourceTree = "<group>"; };
 		2821DA9A1D3DCA5500AFE139 /* ProgramDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramDetailViewController.h; sourceTree = "<group>"; };
 		2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramDetailViewController.m; sourceTree = "<group>"; };
 		2821DA9F1D3DCB2300AFE139 /* ProgramDetailViewTopBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProgramDetailViewTopBG.png; sourceTree = "<group>"; };
@@ -405,6 +411,17 @@
 				6B2CD58A1D28780F00793194 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		280774BC1F1A725E00A5B994 /* ScheduleTab */ = {
+			isa = PBXGroup;
+			children = (
+				280774BD1F1A736800A5B994 /* ScheduleViewController.h */,
+				280774BE1F1A736800A5B994 /* ScheduleViewController.m */,
+				280774C01F1A7B0100A5B994 /* ScheduleViewPagerController.h */,
+				280774C11F1A7B0100A5B994 /* ScheduleViewPagerController.m */,
+			);
+			name = ScheduleTab;
 			sourceTree = "<group>";
 		};
 		288164E11D4F1C52005C68EA /* Class+addition */ = {
@@ -698,6 +715,7 @@
 				286D5FC51D6BD8EC005B6619 /* headers.h */,
 				286D5FC41D6BD6C5005B6619 /* WebServiceEndPoint.h */,
 				288164E21D4F2F03005C68EA /* CheckinTab */,
+				280774BC1F1A725E00A5B994 /* ScheduleTab */,
 				288164E61D4F2F68005C68EA /* OldScheduleTab */,
 				288164E71D4F2FA3005C68EA /* AnnounceTab */,
 				288164E31D4F2F24005C68EA /* IRCTab */,
@@ -932,9 +950,11 @@
 				28A2992D1D3B90C000145E76 /* OldScheduleViewController.m in Sources */,
 				5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */,
 				5FF2B11E1D28B19600665DD9 /* IRCViewController.m in Sources */,
+				280774C21F1A7B0100A5B994 /* ScheduleViewPagerController.m in Sources */,
 				2823E8E71D3E560C0039D72E /* ProgramSpeakerIntroViewController.m in Sources */,
 				5FD049891D5AFB9D00E7CEAD /* AnnounceTableViewController.m in Sources */,
 				28A7C5761D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m in Sources */,
+				280774BF1F1A736800A5B994 /* ScheduleViewController.m in Sources */,
 				2839BF4A1D4CDDAD0062F36D /* CheckinCardViewController.m in Sources */,
 				2823E8E21D3E55F10039D72E /* ProgramAbstractViewController.m in Sources */,
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
