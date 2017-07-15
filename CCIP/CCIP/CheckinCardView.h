@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *checkinTitle;
 @property (weak, nonatomic) IBOutlet UILabel *checkinText;
 @property (weak, nonatomic) IBOutlet UIButton *checkinBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *checkinIcon;
 
 - (IBAction)checkinBtnTouched:(id)sender;
 
