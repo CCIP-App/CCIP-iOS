@@ -47,9 +47,8 @@
 
 #pragma mark - ViewPagerDataSource
 - (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
-    
     UILabel *label = [UILabel new];
-    label.text = [NSString stringWithFormat:@"DAY %lu", (unsigned long)index];
+    label.text = [NSString stringWithFormat:@"%@ (DAY %lu)", @"MM/dd", (unsigned long)index + 1];
     label.textColor = [UIColor colorFromHtmlColor:@"#009A79"];
     label.font = [UIFont fontWithName:@"PingFangTC-Medium" size:14];
     [label sizeToFit];
