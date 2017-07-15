@@ -682,18 +682,14 @@
         [self.pageControl setHidden:YES];  // set page control to hidden
         CGRect pageControlFrame = self.pageControl.frame;
         self.pageControl.frame = CGRectMake(self.view.frame.size.width / 2 ,
-                                            (self.cards.frame.size.height + self.cards.bounds.size.height * .95f - (self.pageControl.hidden ? 0 : 10)) / 2,
+                                            (self.cards.frame.size.height + self.cards.bounds.size.height - (self.pageControl.hidden ? 0 : 10)) / 2,
                                             pageControlFrame.size.width,
                                             pageControlFrame.size.height);
         // Init cardRect
         // x 0, y 0, left 30, up 40, right 30, bottom 50
         // self.cards.contentOffset = CGSizeMake(0, -5.0f); // set in viewDidLoad
         // 414 736
-        cardRect = CGRectMake(0, 0, self.cards.bounds.size.width * (320.0f / 375.0f), self.cards.bounds.size.height * .3f - (self.pageControl.hidden ? 0 : 10));
-        CGSize vo = carousel.viewpointOffset;
-        vo.height += self.cards.bounds.size.width / 3.5f;
-        carousel.viewpointOffset = vo;
-        view.userInteractionEnabled = YES;
+        cardRect = CGRectMake(0, 0, self.cards.bounds.size.width, self.cards.bounds.size.height - (self.pageControl.hidden ? 0 : 10));
     }
     static NSDateFormatter *formatter;
     if (formatter == nil) {

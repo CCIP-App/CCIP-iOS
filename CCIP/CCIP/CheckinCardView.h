@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSString *id;
 @property (strong, nonatomic) NSNumber *used;
 @property (strong, nonatomic) NSNumber *disabled;
+@property (weak, nonatomic) IBOutlet UIView *checkinSmallCard;
 @property (weak, nonatomic) IBOutlet UILabel *checkinDate;
 @property (weak, nonatomic) IBOutlet UILabel *checkinTitle;
 @property (weak, nonatomic) IBOutlet UILabel *checkinText;

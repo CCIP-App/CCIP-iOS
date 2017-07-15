@@ -25,11 +25,11 @@
     // Do any additional setup after loading the view from its nib.
     self.cardView = (CheckinCardView *)self.view;;
     
-    [self.cardView.layer setCornerRadius:15.0f]; // set cornerRadius as you want.
-    [self.cardView.layer setMasksToBounds:NO];
-    [self.cardView.layer setShadowOffset:CGSizeMake(10, 15)];
-    [self.cardView.layer setShadowRadius:5.0f];
-    [self.cardView.layer setShadowOpacity:0.3f];
+    [self.cardView.checkinSmallCard.layer setCornerRadius:15.0f]; // set cornerRadius as you want.
+    [self.cardView.checkinSmallCard.layer setMasksToBounds:NO];
+    [self.cardView.checkinSmallCard.layer setShadowOffset:CGSizeMake(10, 15)];
+    [self.cardView.checkinSmallCard.layer setShadowRadius:5.0f];
+    [self.cardView.checkinSmallCard.layer setShadowOpacity:0.3f];
 }
 
 - (void)didReceiveMemoryWarning {
