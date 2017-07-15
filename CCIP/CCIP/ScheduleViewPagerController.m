@@ -8,8 +8,14 @@
 
 #import "ScheduleViewPagerController.h"
 #import "UIColor+addition.h"
+#import <AFNetworking/AFNetworking.h>
 
 @interface ScheduleViewPagerController ()
+
+@property (strong, nonatomic) NSArray *programs;
+@property (strong, nonatomic) NSArray *segmentsTextArray;
+@property (strong, nonatomic) NSMutableDictionary *program_date;
+@property (strong, nonatomic) NSMutableDictionary *program_date_section;
 
 @end
 
@@ -21,7 +27,10 @@
     
     self.dataSource = self;
     self.delegate = self;
+
     [self.view setBackgroundColor:[UIColor clearColor]];
+
+    [self refreshData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,16 +48,86 @@
 }
 */
 
+
+- (void)refreshData {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:@"https://coscup.org/2017-assets/json/submissions.json" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        if (responseObject != nil) {
+            self.programs = responseObject;
+            [self setScheduleDate];
+        }
+//        [self endRefreshingWithCountDown];
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+//        [self endRefreshingWithCountDown];
+    }];
+}
+
+//- (void)endRefreshingWithCountDown {
+//}
+
+- (void)setScheduleDate {
+    static NSDateFormatter *formatter_full = nil;
+    if (formatter_full == nil) {
+        formatter_full = [NSDateFormatter new];
+        [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+        [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    }
+    
+    static NSDateFormatter *formatter_date = nil;
+    if (formatter_date == nil) {
+        formatter_date = [NSDateFormatter new];
+        [formatter_date setDateFormat:@"M/d"];
+    }
+    
+    static NSDate *startTime;
+    static NSString *time_date;
+    
+    NSMutableDictionary *datesDict = [NSMutableDictionary new];
+    
+    for (NSDictionary *program in self.programs) {
+        startTime = [formatter_full dateFromString:[program objectForKey:@"start"]];
+        time_date = [formatter_date stringFromDate:startTime];
+        
+        NSMutableArray *tempArray = [datesDict objectForKey:time_date];
+        if (tempArray == nil) {
+            tempArray = [NSMutableArray new];
+        }
+        [tempArray addObject:program];
+        [datesDict setObject:tempArray forKey:time_date];
+    }
+    
+    self.program_date = datesDict;
+    self.segmentsTextArray = [[self.program_date allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    
+    [self reloadData];
+
+    [self checkScheduleDate];
+}
+
+- (void)checkScheduleDate {
+    static NSDateFormatter *formatter_s = nil;
+    if (formatter_s == nil) {
+        formatter_s = [NSDateFormatter new];
+        [formatter_s setDateFormat:@"M/d"];
+    }
+    // To Do
+}
+
+
+#pragma mark - Pager
 #pragma mark - ViewPagerDataSource
 - (NSUInteger)numberOfTabsForViewPager:(ViewPagerController *)viewPager {
-    return 2;
+    return [self.segmentsTextArray count];
 }
 //Returns the number of tabs that will be present in ViewPager.
 
 #pragma mark - ViewPagerDataSource
 - (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
     UILabel *label = [UILabel new];
-    label.text = [NSString stringWithFormat:@"%@ (DAY %lu)", @"MM/dd", (unsigned long)index + 1];
+    label.text = [NSString stringWithFormat:@"DAY %@", [self.segmentsTextArray objectAtIndex:index]];
     label.textColor = [UIColor colorFromHtmlColor:@"#009A79"];
     label.font = [UIFont fontWithName:@"PingFangTC-Medium" size:14];
     [label sizeToFit];
