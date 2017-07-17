@@ -31,18 +31,26 @@
 }
 
 #pragma mark - Table view data source
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80.0f;
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
     return [self.programs count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSDateFormatter *formatter_full = nil;
+    if (formatter_full == nil) {
+        formatter_full = [NSDateFormatter new];
+        [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+    }
+
     NSString *scheduleCellName = @"ScheduleCell";
     
     ScheduleTableViewCell *cell = (ScheduleTableViewCell *)[tableView dequeueReusableCellWithIdentifier:scheduleCellName];
@@ -52,9 +60,12 @@
     }
     
     NSDictionary *program = [self.programs objectAtIndex:indexPath.row];
-
+    NSDate *startTime = [formatter_full dateFromString:[program objectForKey:@"start"]];
+    NSDate *endTime = [formatter_full dateFromString:[program objectForKey:@"end"]];
+    long mins = [[NSNumber numberWithDouble:([endTime timeIntervalSinceDate:startTime] / 60)] longValue];
     [cell.ScheduleTitleLabel setText:[program objectForKey:@"subject"]];
-    [cell.RoomLocationLabel setText:[program objectForKey:@"room"]];
+    [cell.RoomLocationLabel setText:[NSString stringWithFormat:@"Room %@ - %ld mins", [program objectForKey:@"room"], mins]];
+    [cell.LabelLabel setText:@"Label"];
     
     return cell;
 }

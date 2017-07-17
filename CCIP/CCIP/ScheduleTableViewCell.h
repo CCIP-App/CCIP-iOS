@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *ScheduleTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *RoomLocationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *LabelLabel;
 
 @end

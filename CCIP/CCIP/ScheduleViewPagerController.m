@@ -118,7 +118,6 @@
     // To Do
 }
 
-
 #pragma mark - Pager
 #pragma mark - ViewPagerDataSource
 - (NSUInteger)numberOfTabsForViewPager:(ViewPagerController *)viewPager {
