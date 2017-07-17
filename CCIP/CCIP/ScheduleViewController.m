@@ -22,16 +22,17 @@
     // Do any additional setup after loading the view.
     
     // set logo on nav title
-    UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
-    self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
-    self.shimmeringLogoView.contentView = logoView;
-    self.navigationItem.titleView = self.shimmeringLogoView;
+//    UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
+//    self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
+//    self.shimmeringLogoView.contentView = logoView;
+//    self.navigationItem.titleView = self.shimmeringLogoView;
+    self.navigationItem.title = @"SCHEDULE";
     
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, 239);
     UIImage *recImg = [UIImage imageNamed:@"Rectangle.png"];
     UIImageView *iv = [UIImageView new];
-    iv.frame = frame;
-    iv.image = recImg;
+    [iv setFrame:frame];
+    [iv setImage:recImg];
     [self.view addSubview:iv];
     [self.view sendSubviewToBack:iv];
 }

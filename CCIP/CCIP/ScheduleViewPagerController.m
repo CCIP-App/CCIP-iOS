@@ -179,7 +179,7 @@
             case ViewPagerOptionTabSelectedLineWidth:
             return 5.0;
             case ViewPagerOptionTabWidth:
-            return [[UIScreen mainScreen] bounds].size.width/2;
+            return [[UIScreen mainScreen] bounds].size.width / [self.segmentsTextArray count];
             case ViewPagerOptionFixFormerTabsPositions:
             return 0.0;
             case ViewPagerOptionFixLatterTabsPositions:
@@ -200,7 +200,7 @@
                 return [UIColor clearColor];
             }
             case ViewPagerContent: {
-                return [UIColor clearColor];
+                return [UIColor whiteColor];
             }
         default: {
             return color;
