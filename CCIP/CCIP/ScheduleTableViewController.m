@@ -35,6 +35,10 @@
     return 80.0f;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath
+                             animated:YES];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -65,7 +69,10 @@
     long mins = [[NSNumber numberWithDouble:([endTime timeIntervalSinceDate:startTime] / 60)] longValue];
     [cell.ScheduleTitleLabel setText:[program objectForKey:@"subject"]];
     [cell.RoomLocationLabel setText:[NSString stringWithFormat:@"Room %@ - %ld mins", [program objectForKey:@"room"], mins]];
-    [cell.LabelLabel setText:@"Label"];
+    [cell.LabelLabel setText:[NSString stringWithFormat:@"   %@   ", [program objectForKey:@"lang"]]];
+    [cell.LabelLabel.layer setCornerRadius:cell.LabelLabel.frame.size.height / 2];
+    [cell.LabelLabel sizeToFit];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleDefault];
     
     return cell;
 }
