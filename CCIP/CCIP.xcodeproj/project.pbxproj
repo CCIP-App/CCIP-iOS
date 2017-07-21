@@ -933,7 +933,7 @@
 				TargetAttributes = {
 					6BCAC01A1F1A8FC100032096 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = H2LA3QW9Y2;
+						DevelopmentTeam = 5MC99ARC2Z;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -943,7 +943,7 @@
 					};
 					6BCAC0261F1A8FC100032096 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = H2LA3QW9Y2;
+						DevelopmentTeam = 5MC99ARC2Z;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -953,7 +953,7 @@
 					};
 					6BD8EF261D1D73510094BE95 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = H2LA3QW9Y2;
+						DevelopmentTeam = 5MC99ARC2Z;
 						DevelopmentTeamName = "Koo Foundation Sun Yat-Sen Cancer Center";
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1262,7 +1262,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CCIP-Watch-Dev/CCIP-Watch-Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = H2LA3QW9Y2;
+				DEVELOPMENT_TEAM = 5MC99ARC2Z;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1289,7 +1289,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CCIP-Watch-Dev/CCIP-Watch-Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = H2LA3QW9Y2;
+				DEVELOPMENT_TEAM = 5MC99ARC2Z;
 				IBSC_MODULE = CCIP_Watch_Dev_Extension;
 				INFOPLIST_FILE = "CCIP-Watch-Dev/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev.watchkitapp";
@@ -1310,7 +1310,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CODE_SIGN_ENTITLEMENTS = "CCIP-Watch-Dev Extension/CCIP-Watch-Dev Extension.entitlements";
-				DEVELOPMENT_TEAM = H2LA3QW9Y2;
+				DEVELOPMENT_TEAM = 5MC99ARC2Z;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1335,7 +1335,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CODE_SIGN_ENTITLEMENTS = "CCIP-Watch-Dev Extension/CCIP-Watch-Dev Extension.entitlements";
-				DEVELOPMENT_TEAM = H2LA3QW9Y2;
+				DEVELOPMENT_TEAM = 5MC99ARC2Z;
 				INFOPLIST_FILE = "CCIP-Watch-Dev Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.coscup.CCIP-iOS-Dev.watchkitapp.watchkitextension";
@@ -1446,6 +1446,7 @@
 				CODE_SIGN_ENTITLEMENTS = CCIP/CCIP.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5MC99ARC2Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CCIP/ScanditSDK",
@@ -1467,6 +1468,7 @@
 				CODE_SIGN_ENTITLEMENTS = CCIP/CCIP.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5MC99ARC2Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CCIP/ScanditSDK",
