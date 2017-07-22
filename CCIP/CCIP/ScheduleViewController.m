@@ -20,7 +20,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"SCHEDULE"];
+    UILabel *lbTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+    [lbTitle setTextAlignment:NSTextAlignmentCenter];
+    [lbTitle setTextColor:[UIColor whiteColor]];
+    [lbTitle setText:NSLocalizedString(@"ScheduleTitle", nil)];
+    [self.navigationItem setTitleView:lbTitle];
+    [self.navigationItem setTitle:@""];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];

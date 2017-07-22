@@ -13,6 +13,7 @@
 "Schedule" = "議程";
 "Announce" = "大會訊息";
 "More" = "更多";
+"ScheduleTitle" = "議程";
 "AnnouncementTitle" = "大會公告";
 "NoAnnouncementText" = "目前無任何公告哦！";
 "ScheduleOfDate" = "%@ 當日議程";
