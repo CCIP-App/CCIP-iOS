@@ -8,9 +8,14 @@
 
 #import "ScheduleDetailTableViewController.h"
 #import "UITableView+FDTemplateLayoutCell.h"
-#import "ScheduleDetailTableViewCell.h"
+#import "ScheduleDetailViewController.h"
+#import "ScheduleAbstractViewCell.h"
+#import "ScheduleSpeakerInfoViewCell.h"
 
 @interface ScheduleDetailTableViewController ()
+
+@property (strong, nonatomic) NSArray *identifiers;
+@property (strong, nonatomic) NSDictionary *schedule;
 
 @end
 
@@ -18,12 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.identifiers = @[ @"ScheduleAbstract", @"ScheduleSpeakerInfo" ];
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.schedule = [((ScheduleDetailViewController *)self.parentViewController) getDetailData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,36 +39,45 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return [self.identifiers count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ScheduleDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ScheduleDetailCell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[self.identifiers objectAtIndex:indexPath.section]];
     [self configureCell:cell atIndexPath:indexPath];
-    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [tableView fd_heightForCellWithIdentifier:@"ScheduleDetailCell" configuration:^(id cell) {
+    return [tableView fd_heightForCellWithIdentifier:[self.identifiers objectAtIndex:indexPath.section] configuration:^(id cell) {
         [self configureCell:cell atIndexPath:indexPath];
     }];
 }
 
-- (void)configureCell:(ScheduleDetailTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     cell.fd_enforceFrameLayout = NO; // Enable to use "-sizeThatFits:"
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     switch (indexPath.section) {
-        case 0:
-            cell.text.text = @"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        case 0: {
+            ScheduleAbstractViewCell *abstractCell = (ScheduleAbstractViewCell *)cell;
+            NSString *summary = [NSString stringWithFormat:@"%@\n", [self.schedule objectForKey:@"summary"]];
+            NSLog(@"Set summary: %@", summary);
+            [abstractCell.lbAbstractContent setText:summary];
+            [abstractCell.lbAbstractContent sizeToFit];
             break;
-        case 1:
-            cell.text.text = @"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
+        }
+        case 1: {
+            ScheduleSpeakerInfoViewCell *speakerInfoCell = (ScheduleSpeakerInfoViewCell *)cell;
+            NSString *bio = [NSString stringWithFormat:@"%@\n", [[self.schedule objectForKey:@"speaker"] objectForKey:@"bio"]];
+            NSLog(@"Set bio: %@", bio);
+            [speakerInfoCell.lbSpeakerInfoContent setText:bio];
+            [speakerInfoCell.lbSpeakerInfoContent sizeToFit];
             break;
+        }
         default:
             break;
     }

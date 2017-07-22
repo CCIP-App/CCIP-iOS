@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScheduleAbstractViewController : UIViewController
+@interface ScheduleAbstractViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *lbAbstractText;
-@property (weak, nonatomic) IBOutlet UITextView *txAbstractContent;
+@property (weak, nonatomic) IBOutlet UILabel *lbAbstractContent;
 
 @end

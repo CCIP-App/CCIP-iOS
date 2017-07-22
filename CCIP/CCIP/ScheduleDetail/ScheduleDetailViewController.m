@@ -70,6 +70,10 @@
     _detailData = data;
 }
 
+- (NSDictionary *)getDetailData {
+    return _detailData;
+}
+
 /*
 #pragma mark - Navigation
 

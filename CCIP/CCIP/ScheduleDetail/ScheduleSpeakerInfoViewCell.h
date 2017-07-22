@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScheduleSpeakerInfoViewController : UIViewController
+@interface ScheduleSpeakerInfoViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *lbSpeakerInfoTitle;
-@property (weak, nonatomic) IBOutlet UITextView *txSpeakerInfoContent;
+@property (weak, nonatomic) IBOutlet UILabel *lbSpeakerInfoContent;
 
 @end
