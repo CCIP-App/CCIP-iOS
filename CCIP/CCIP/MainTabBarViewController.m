@@ -14,6 +14,7 @@
 #import "MoreTableViewController.h"
 #import "AppDelegate.h"
 #import <UICKeyChainStore/UICKeyChainStore.h>
+#import "UIColor+addition.h"
 
 @interface MainTabBarViewController ()
 
@@ -24,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIColor *titleHighlightedColor = [UIColor colorWithRed:65/255.0 green:117/255.0 blue:5/255.0 alpha:1.0];
+    UIColor *titleHighlightedColor = [UIColor colorFromHtmlColor:@"#009A79"];
     
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor], NSForegroundColorAttributeName, nil]
                                              forState:UIControlStateNormal];
