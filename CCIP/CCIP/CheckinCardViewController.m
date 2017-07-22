@@ -33,26 +33,13 @@
 }
 
 - (void)viewDidLayoutSubviews {
+    [self.cardView.checkinBtn setGradientColor:[UIColor colorFromHtmlColor:@"#B0F5B6"]
+                                            To:[UIColor colorFromHtmlColor:@"#2CE4D4"]
+                                    StartPoint:CGPointMake(.2, .8)
+                                       ToPoint:CGPointMake(1, .5)];
+    CALayer *layer = [self.cardView.checkinBtn.layer.sublayers firstObject];
+    [layer setCornerRadius:self.cardView.checkinBtn.frame.size.height / 2];
     [self.cardView.checkinBtn.layer setCornerRadius:self.cardView.checkinBtn.frame.size.height / 2];
-    // Set checkin button background linear diagonal gradient
-    //   Create the colors
-    UIColor *topColor = [UIColor colorFromHtmlColor:@"#2CE4D4"];
-    UIColor *bottomColor = [UIColor colorFromHtmlColor:@"#B0F5B6"];
-    //   Create the gradient
-    CAGradientLayer *theViewGradient = [CAGradientLayer layer];
-    theViewGradient.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
-    theViewGradient.frame = CGRectMake(0, 0, self.cardView.checkinBtn.frame.size.width, self.cardView.checkinBtn.frame.size.height);
-    theViewGradient.startPoint = CGPointMake(1, .5);
-    theViewGradient.endPoint = CGPointMake(.2, .8);
-    theViewGradient.cornerRadius = self.cardView.checkinBtn.frame.size.height / 2;
-    //   Add gradient to view
-    if (self.cardView.checkinBtn.layer.sublayers != nil) {
-        [self.cardView.checkinBtn.layer replaceSublayer:[self.cardView.checkinBtn.layer.sublayers firstObject]
-                                                   with:theViewGradient];
-    } else {
-        [self.cardView.checkinBtn.layer insertSublayer:theViewGradient
-                                               atIndex:0];
-    }
 }
 
 - (void)didReceiveMemoryWarning {
