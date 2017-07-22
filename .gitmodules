@@ -7,3 +7,6 @@
 [submodule "Crypto"]
 	path = Crypto
 	url = https://github.com/Haraguroicha/Crypto.git
+[submodule "FortAwesome"]
+	path = FortAwesome
+	url = https://github.com/FortAwesome/Font-Awesome.git

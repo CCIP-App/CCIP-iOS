@@ -20,6 +20,9 @@
             <string>PingFangTC-Regular</string>
             <string>PingFangTC-Semibold</string>
         </array>
+        <array key="fontawesome-webfont.ttf">
+            <string>FontAwesome</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Status View Controller-->
@@ -990,12 +993,12 @@ Please copy and paste the token into next field or click the token link in the r
                                                                             </constraints>
                                                                         </view>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNU-eU-Q7I">
-                                                                            <rect key="frame" x="25" y="23" width="30" height="30"/>
+                                                                            <rect key="frame" x="25" y="26" width="30" height="30"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="G4q-tH-hTP"/>
                                                                                 <constraint firstAttribute="width" constant="30" id="OcL-Gh-dzK"/>
                                                                             </constraints>
-                                                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
+                                                                            <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="30"/>
                                                                             <color key="textColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -1014,7 +1017,7 @@ Label2</string>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="trailing" secondItem="h6R-CC-0vL" secondAttribute="trailing" id="0e4-di-kz4"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="SNU-eU-Q7I" secondAttribute="bottom" constant="21" id="2sq-fS-2w3"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="SNU-eU-Q7I" secondAttribute="bottom" constant="18" id="2sq-fS-2w3"/>
                                                                         <constraint firstItem="h6R-CC-0vL" firstAttribute="leading" secondItem="CRG-R0-5sb" secondAttribute="leading" id="2wC-VE-Ydh"/>
                                                                         <constraint firstItem="Rr4-Vd-sfs" firstAttribute="top" secondItem="h6R-CC-0vL" secondAttribute="bottom" constant="16" id="M2H-dE-kjI"/>
                                                                         <constraint firstAttribute="trailing" secondItem="Rr4-Vd-sfs" secondAttribute="trailing" constant="13" id="SuN-Mr-uWE"/>
@@ -1023,7 +1026,7 @@ Label2</string>
                                                                         <constraint firstAttribute="bottom" secondItem="Rr4-Vd-sfs" secondAttribute="bottom" constant="16" id="roo-7O-RQg"/>
                                                                         <constraint firstItem="h6R-CC-0vL" firstAttribute="top" secondItem="CRG-R0-5sb" secondAttribute="top" id="v1H-a9-Ngd"/>
                                                                         <constraint firstItem="SNU-eU-Q7I" firstAttribute="leading" secondItem="CRG-R0-5sb" secondAttribute="leading" constant="25" id="v9P-mK-Rf0"/>
-                                                                        <constraint firstItem="SNU-eU-Q7I" firstAttribute="top" secondItem="h6R-CC-0vL" secondAttribute="bottom" constant="21" id="xZC-GZ-KgN"/>
+                                                                        <constraint firstItem="SNU-eU-Q7I" firstAttribute="top" secondItem="h6R-CC-0vL" secondAttribute="bottom" constant="24" id="xZC-GZ-KgN"/>
                                                                     </constraints>
                                                                     <connections>
                                                                         <outletCollection property="fd_collapsibleConstraints" destination="EPp-Ia-L9I" id="Cwa-HI-nb3"/>

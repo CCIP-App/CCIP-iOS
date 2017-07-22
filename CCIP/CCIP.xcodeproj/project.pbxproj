@@ -115,6 +115,7 @@
 		6B11BE821D4CBC9300B87EA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B11BE841D4CBC9300B87EA9 /* Main.storyboard */; };
 		6B11BE891D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B11BE881D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m */; };
 		6B26D9101F23E57A003D9CA1 /* UIView+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B26D90F1F23E57A003D9CA1 /* UIView+addition.m */; };
+		6B26D9131F23EE28003D9CA1 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */; };
 		6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */; };
 		6B2CD5611D281D9400793194 /* UIAlertController+additional.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */; };
 		6B2CD5791D286E6F00793194 /* UIColor+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CD5781D286E6F00793194 /* UIColor+addition.m */; };
@@ -373,6 +374,7 @@
 		6B11BE881D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmbeddedTabBarControllerSegue.m; sourceTree = "<group>"; };
 		6B26D90E1F23E57A003D9CA1 /* UIView+addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+addition.h"; sourceTree = "<group>"; };
 		6B26D90F1F23E57A003D9CA1 /* UIView+addition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+addition.m"; sourceTree = "<group>"; };
+		6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fontawesome-webfont.ttf"; path = "../../../FortAwesome/fonts/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+addition.h"; sourceTree = "<group>"; };
 		6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+addition.m"; sourceTree = "<group>"; };
 		6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+additional.m"; sourceTree = "<group>"; };
@@ -823,6 +825,14 @@
 			name = CheckinOverlay;
 			sourceTree = "<group>";
 		};
+		6B26D9111F23EDC3003D9CA1 /* FontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+				6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */,
+			);
+			path = FontAwesome;
+			sourceTree = "<group>";
+		};
 		6BCAC01C1F1A8FC100032096 /* CCIP-Watch-Dev */ = {
 			isa = PBXGroup;
 			children = (
@@ -920,6 +930,7 @@
 		6BD8EF2A1D1D73510094BE95 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6B26D9111F23EDC3003D9CA1 /* FontAwesome */,
 				5FB4D4401D3A8304005BF382 /* Images */,
 				6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */,
 				6B2CD5971D2886C900793194 /* Localizable.strings */,
@@ -1164,6 +1175,7 @@
 				2839BF381D4C97AB0062F36D /* Star@3x.png in Resources */,
 				5FB4D45C1D3A865A005BF382 /* icon_ios_topcharts@3x.png in Resources */,
 				141D4150DB8FC2366FDFDF75 /* Pods-CCIP-metadata.plist in Resources */,
+				6B26D9131F23EE28003D9CA1 /* fontawesome-webfont.ttf in Resources */,
 				28B4323D1D6228AF00590846 /* BarButton-Forward.png in Resources */,
 				28A9362B1D62CED800CBCA54 /* ToolButton-GitHub_Filled@3x.png in Resources */,
 			);
