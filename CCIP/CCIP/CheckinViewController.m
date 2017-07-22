@@ -67,7 +67,9 @@
     self.cards.bounceDistance = 0.3f;
     self.cards.contentOffset = CGSizeMake(0, -5.0f);
     
+    [self.ivUserPhoto setImage:[UIImage imageNamed:@"StaffIconDefault"]];
     [self.ivUserPhoto.layer setCornerRadius:self.ivUserPhoto.frame.size.height / 2];
+    [self.lbUserName setText:@""];
     
     // Init configure pageControl
     self.pageControl = [UIPageControl new];
