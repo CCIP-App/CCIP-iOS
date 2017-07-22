@@ -77,10 +77,10 @@
     
     SEND_GAI(@"CheckinViewController");
     
-    self.navigationItem.titleView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(navSingleTap)];
-    [self.navigationItem.titleView addGestureRecognizer:tapGesture];
+    self.ivUserPhoto.userInteractionEnabled = YES;
+    [self.ivUserPhoto addGestureRecognizer:tapGesture];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(appplicationDidBecomeActive:)
