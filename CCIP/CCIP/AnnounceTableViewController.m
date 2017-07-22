@@ -20,6 +20,8 @@
 
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
+@property (readwrite, nonatomic) BOOL loaded;
+
 @end
 
 @implementation AnnounceTableViewController
@@ -36,6 +38,7 @@
         [self refresh];
         [self.refreshControl beginRefreshing];
     }
+    self.loaded = NO;
     
     [self.navigationItem setTitle:NSLocalizedString(@"AnnouncementTitle", nil)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
@@ -70,6 +73,7 @@
 }
 
 - (void)refresh {
+    self.loaded = NO;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:CC_ANNOUNCEMENT parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
@@ -77,6 +81,7 @@
             self.announceJsonArray = responseObject;
             [self.announceTableView reloadData];
             [self.refreshControl endRefreshing];
+            self.loaded = YES;
         }
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
@@ -95,10 +100,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger count = [self.announceJsonArray count];
-    BOOL NoAnnouncement = count == 0;
-    [self.announceTableView setSeparatorColor:NoAnnouncement ? [UIColor clearColor] : [UIColor lightGrayColor]];
-    [self.ivNoAnnouncement setHidden:!NoAnnouncement];
-    [self.lbNoAnnouncement setHidden:!NoAnnouncement];
+    if (self.loaded) {
+        BOOL NoAnnouncement = count == 0;
+        [self.announceTableView setSeparatorColor:NoAnnouncement ? [UIColor clearColor] : [UIColor lightGrayColor]];
+        [self.ivNoAnnouncement setHidden:!NoAnnouncement];
+        [self.lbNoAnnouncement setHidden:!NoAnnouncement];
+    } else {
+        [self.announceTableView setSeparatorColor:[UIColor clearColor]];
+        [self.ivNoAnnouncement setHidden:YES];
+        [self.lbNoAnnouncement setHidden:YES];
+    }
     return count;
 }
 
