@@ -699,26 +699,32 @@
             BOOL isVipKit = [[id lowercaseString] isEqualToString:@"vipkit"];
             NSString *dateId = [formatter stringFromDate:[AppDelegate firstAvailableDate]];
             [temp setId:id];
+            NSString *did = [id stringByReplacingOccurrencesOfString:@"checkin"
+                                                          withString:@""];
             
             if (isCheckin) {
                 [temp.checkinDate setText:dateId];
                 [temp.checkinTitle setText:NSLocalizedString(@"Checkin", nil)];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinText", nil)];
+                [temp.checkinIcon setImage:[UIImage imageNamed:[did capitalizedString]]];
             }
             if (isLunch) {
                 [temp.checkinDate setText:dateId];
                 [temp.checkinTitle setText:NSLocalizedString(@"lunch", nil)];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
+                [temp.checkinIcon setImage:[UIImage imageNamed:@"Kit"]];
             }
             if (isKit) {
                 [temp.checkinDate setText:@"COSCUP"];
                 [temp.checkinTitle setText:NSLocalizedString(@"kit", nil)];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
+                [temp.checkinIcon setImage:[UIImage imageNamed:@"Kit"]];
             }
             if (isVipKit) {
                 [temp.checkinDate setText:@"COSCUP"];
                 [temp.checkinTitle setText:NSLocalizedString(@"vipkit", nil)];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinTextVipKit", nil)];
+                [temp.checkinIcon setImage:[UIImage imageNamed:@"Gift"]];
             }
             
             if ([scenario objectForKey:@"disabled"]) {

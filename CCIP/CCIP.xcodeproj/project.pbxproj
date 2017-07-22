@@ -135,6 +135,14 @@
 		6BAADFC11F233BE10054F870 /* NoAnnouncement@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BAADFBF1F233BC80054F870 /* NoAnnouncement@2x.png */; };
 		6BAADFC41F23417B0054F870 /* ConnectWiFiToCOSCUP.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BAADFC21F2341720054F870 /* ConnectWiFiToCOSCUP.png */; };
 		6BAADFC51F23417B0054F870 /* ConnectWiFiToCOSCUP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BAADFC31F2341720054F870 /* ConnectWiFiToCOSCUP@2x.png */; };
+		6BAADFCE1F235C6D0054F870 /* Day1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BAADFC71F235C600054F870 /* Day1.png */; };
+		6BAADFCF1F235C6D0054F870 /* Day1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BAADFCA1F235C610054F870 /* Day1@2x.png */; };
+		6BAADFD01F235C6D0054F870 /* Day2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BAADFCD1F235C610054F870 /* Day2.png */; };
+		6BAADFD11F235C6D0054F870 /* Day2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BAADFC91F235C610054F870 /* Day2@2x.png */; };
+		6BAADFD21F235C6D0054F870 /* Gift.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BAADFCC1F235C610054F870 /* Gift.png */; };
+		6BAADFD31F235C6D0054F870 /* Gift@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BAADFC61F235C600054F870 /* Gift@2x.png */; };
+		6BAADFD41F235C6D0054F870 /* Kit.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BAADFC81F235C610054F870 /* Kit.png */; };
+		6BAADFD51F235C6D0054F870 /* Kit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BAADFCB1F235C610054F870 /* Kit@2x.png */; };
 		6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */; };
 		6BB1C4391F1AD4BB00AB072F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
@@ -388,6 +396,14 @@
 		6BAADFBF1F233BC80054F870 /* NoAnnouncement@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NoAnnouncement@2x.png"; path = "Images/NoAnnouncement@2x.png"; sourceTree = "<group>"; };
 		6BAADFC21F2341720054F870 /* ConnectWiFiToCOSCUP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ConnectWiFiToCOSCUP.png; path = Images/ConnectWiFiToCOSCUP.png; sourceTree = "<group>"; };
 		6BAADFC31F2341720054F870 /* ConnectWiFiToCOSCUP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ConnectWiFiToCOSCUP@2x.png"; path = "Images/ConnectWiFiToCOSCUP@2x.png"; sourceTree = "<group>"; };
+		6BAADFC61F235C600054F870 /* Gift@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gift@2x.png"; path = "Images/Gift@2x.png"; sourceTree = "<group>"; };
+		6BAADFC71F235C600054F870 /* Day1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Day1.png; path = Images/Day1.png; sourceTree = "<group>"; };
+		6BAADFC81F235C610054F870 /* Kit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Kit.png; path = Images/Kit.png; sourceTree = "<group>"; };
+		6BAADFC91F235C610054F870 /* Day2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Day2@2x.png"; path = "Images/Day2@2x.png"; sourceTree = "<group>"; };
+		6BAADFCA1F235C610054F870 /* Day1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Day1@2x.png"; path = "Images/Day1@2x.png"; sourceTree = "<group>"; };
+		6BAADFCB1F235C610054F870 /* Kit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Kit@2x.png"; path = "Images/Kit@2x.png"; sourceTree = "<group>"; };
+		6BAADFCC1F235C610054F870 /* Gift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Gift.png; path = Images/Gift.png; sourceTree = "<group>"; };
+		6BAADFCD1F235C610054F870 /* Day2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Day2.png; path = Images/Day2.png; sourceTree = "<group>"; };
 		6BAB42371D4ED39D0029B8A5 /* UIApplication+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+addition.h"; sourceTree = "<group>"; };
 		6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+addition.m"; sourceTree = "<group>"; };
 		6BB0B6091F1A74DF00AEB437 /* CCIP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CCIP.entitlements; sourceTree = "<group>"; };
@@ -710,6 +726,14 @@
 		5FB4D4401D3A8304005BF382 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6BAADFC71F235C600054F870 /* Day1.png */,
+				6BAADFCA1F235C610054F870 /* Day1@2x.png */,
+				6BAADFCD1F235C610054F870 /* Day2.png */,
+				6BAADFC91F235C610054F870 /* Day2@2x.png */,
+				6BAADFCC1F235C610054F870 /* Gift.png */,
+				6BAADFC61F235C600054F870 /* Gift@2x.png */,
+				6BAADFC81F235C610054F870 /* Kit.png */,
+				6BAADFCB1F235C610054F870 /* Kit@2x.png */,
 				6BAADFC21F2341720054F870 /* ConnectWiFiToCOSCUP.png */,
 				6BAADFC31F2341720054F870 /* ConnectWiFiToCOSCUP@2x.png */,
 				6BAADFBE1F233BC80054F870 /* NoAnnouncement.png */,
@@ -1055,14 +1079,18 @@
 				28A7C55F1D5EE0C30079BB12 /* Project_Info_and_Contributors.json in Resources */,
 				5FB4D4671D3A8706005BF382 /* icon_ios_chat@2x.png in Resources */,
 				5FB4D4791D3A8DF6005BF382 /* icon_ios_more@2x.png in Resources */,
+				6BAADFD11F235C6D0054F870 /* Day2@2x.png in Resources */,
 				5FB4D4861D3A998C005BF382 /* coscup-logo@3x.png in Resources */,
 				288D3A9F1D59AB4800E4E3A6 /* QR_Code@2x.png in Resources */,
+				6BAADFD31F235C6D0054F870 /* Gift@2x.png in Resources */,
 				28A9362D1D62CED800CBCA54 /* ToolButton-GitHub_Filled.png in Resources */,
 				6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */,
 				5FB4D47C1D3A8DF6005BF382 /* icon_ios_bell@2x.png in Resources */,
 				5FB4D4851D3A998C005BF382 /* coscup-logo@2x.png in Resources */,
+				6BAADFD41F235C6D0054F870 /* Kit.png in Resources */,
 				28B432421D6228AF00590846 /* BarButton-Reload@3x.png in Resources */,
 				2821DAA31D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@3x.png in Resources */,
+				6BAADFCE1F235C6D0054F870 /* Day1.png in Resources */,
 				284602E11F121BBB00F512A3 /* LaunchScreen@2x.png in Resources */,
 				5FB4D4841D3A998C005BF382 /* coscup-logo.png in Resources */,
 				5FB4D4491D3A8319005BF382 /* StaffIconDefault@1x.png in Resources */,
@@ -1072,6 +1100,7 @@
 				2821DAA41D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@2x.png in Resources */,
 				2821DAA21D3DCB2300AFE139 /* ProgramDetailViewTopBG.png in Resources */,
 				288D3AA31D59AB4800E4E3A6 /* QR_Code_Filled@2x.png in Resources */,
+				6BAADFD21F235C6D0054F870 /* Gift.png in Resources */,
 				280774D21F1AD8D300A5B994 /* ScheduleTableViewCell.xib in Resources */,
 				5FB4D4461D3A8319005BF382 /* icon_ios_pin.png in Resources */,
 				6B9F62681F1A5D160084E09C /* Rectangle@2x.png in Resources */,
@@ -1079,6 +1108,7 @@
 				288D3A7B1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle in Resources */,
 				28A9362C1D62CED800CBCA54 /* ToolButton-GitHub_Filled@2x.png in Resources */,
 				2839BF3D1D4C97EE0062F36D /* Star_Filled.png in Resources */,
+				6BAADFD01F235C6D0054F870 /* Day2.png in Resources */,
 				5FB4D45B1D3A865A005BF382 /* icon_ios_topcharts@2x.png in Resources */,
 				2839BF3E1D4C97EE0062F36D /* Star.png in Resources */,
 				6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */,
@@ -1090,6 +1120,7 @@
 				28B4322E1D6227D400590846 /* BarButton-Back.png in Resources */,
 				5FB4D4681D3A8706005BF382 /* icon_ios_chat@3x.png in Resources */,
 				284602E21F121BBB00F512A3 /* LaunchScreen@3x.png in Resources */,
+				6BAADFD51F235C6D0054F870 /* Kit@2x.png in Resources */,
 				6BAADFC51F23417B0054F870 /* ConnectWiFiToCOSCUP@2x.png in Resources */,
 				28B432301D6227D400590846 /* BarButton-Back@3x.png in Resources */,
 				2839BF391D4C97AB0062F36D /* Star_Filled@2x.png in Resources */,
@@ -1109,6 +1140,7 @@
 				5FB4D47B1D3A8DF6005BF382 /* icon_ios_bell.png in Resources */,
 				28B432401D6228AF00590846 /* BarButton-Reload.png in Resources */,
 				28B4323F1D6228AF00590846 /* BarButton-Forward@3x.png in Resources */,
+				6BAADFCF1F235C6D0054F870 /* Day1@2x.png in Resources */,
 				6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */,
 				5FB4D45A1D3A865A005BF382 /* icon_ios_topcharts.png in Resources */,
 				2839BF381D4C97AB0062F36D /* Star@3x.png in Resources */,
