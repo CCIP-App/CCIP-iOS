@@ -64,20 +64,21 @@
     self.shimmeringLogoView.contentView = logoView;
     self.navigationItem.titleView = self.shimmeringLogoView;
     
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
-    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
-    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, 239);
-    UIView *headView = [UIView new];
-    [headView setFrame:frame];
+    [self.navigationController.navigationBar setTranslucent:NO];
+    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height);
+    UIView *headView = [[UIView alloc] initWithFrame:frame];
     [headView setGradientColor:[UIColor colorFromHtmlColor:@"#F9FEA5"]
                             To:[UIColor colorFromHtmlColor:@"#20E2D7"]
                     StartPoint:CGPointMake(-.4f, .5f)
                        ToPoint:CGPointMake(1, .5f)];
-    [self.view addSubview:headView];
-    [self.view sendSubviewToBack:headView];
+    UIImage *naviBackImg = [[headView.layer.sublayers lastObject] toImage];
+    [self.navigationController.navigationBar setBackgroundImage:naviBackImg forBarMetrics:UIBarMetricsDefault];
+//    [self.view addSubview:headView];
+//    [self.view sendSubviewToBack:headView];
     
     self.userInfo = [[AppDelegate appDelegate] userInfo];
     

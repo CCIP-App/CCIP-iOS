@@ -26,3 +26,27 @@
 }
 
 @end
+
+@implementation UIView (to_UIImage)
+
+- (UIImage *)toImage {
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, 0.0f);
+    [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return snapshotImage;
+}
+
+@end
+
+@implementation CALayer (to_UIImage)
+
+- (UIImage *)toImage {
+    UIGraphicsBeginImageContext(self.bounds.size);
+    [self renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return snapshotImage;
+}
+
+@end

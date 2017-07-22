@@ -13,3 +13,15 @@
 - (UIImage *)imageWithColor:(UIColor *)color1;
 
 @end
+
+@interface UIView (to_UIImage)
+
+- (UIImage *)toImage;
+
+@end
+
+@interface CALayer (to_UIImage)
+
+- (UIImage *)toImage;
+
+@end
