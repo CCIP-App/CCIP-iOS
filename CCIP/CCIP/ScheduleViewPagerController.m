@@ -7,10 +7,11 @@
 //
 
 #import "ScheduleViewPagerController.h"
+#import "ScheduleTableViewController.h"
+#import "ScheduleDetailViewController.h"
 #import "WebServiceEndPoint.h"
 #import "UIColor+addition.h"
 #import <AFNetworking/AFNetworking.h>
-#import "ScheduleTableViewController.h"
 
 @interface ScheduleViewPagerController ()
 
@@ -142,6 +143,7 @@
     
     ScheduleTableViewController *vc = [ScheduleTableViewController new];
     vc.programs = [self.program_date objectForKey:[self.segmentsTextArray objectAtIndex:index]];
+    vc.pagerController = self;
     return vc;
 }
 //Returns the view controller that will be shown as content. Create a UIViewController object (or any UIViewController subclass object) and give it to ViewPager and it will use the view property of the view controller as content view.
@@ -204,6 +206,18 @@
         default: {
             return color;
         }
+    }
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:SCHEDULE_DETAIL_VIEW_STORYBOARD_ID]) {
+        ScheduleDetailViewController *detailView = (ScheduleDetailViewController *)segue.destinationViewController;
+        [detailView setDetailData:sender];
     }
 }
 

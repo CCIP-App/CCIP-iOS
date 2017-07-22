@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScheduleViewPagerController.h"
 
 @interface ScheduleTableViewController : UITableViewController
 
+@property (strong, nonatomic) ScheduleViewPagerController *pagerController;
 @property (strong, nonatomic) NSArray *programs;
 
 @end

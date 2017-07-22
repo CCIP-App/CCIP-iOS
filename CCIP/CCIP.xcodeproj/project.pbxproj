@@ -106,6 +106,9 @@
 		5FECE5AC1D352E8A00242DB4 /* StaffGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5AA1D352E8A00242DB4 /* StaffGroupTableViewController.m */; };
 		5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */; };
 		5FF2B11E1D28B19600665DD9 /* IRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2B11C1D28B19600665DD9 /* IRCViewController.m */; };
+		6B02FD931F220326002AC0D3 /* ScheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */; };
+		6B02FD961F220371002AC0D3 /* ScheduleAbstractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD951F220371002AC0D3 /* ScheduleAbstractViewController.m */; };
+		6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD981F22039B002AC0D3 /* ScheduleSpeakerInfoViewController.m */; };
 		6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */; };
 		6B11BE811D4CBA5800B87EA9 /* UIImage+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */; };
 		6B11BE821D4CBC9300B87EA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B11BE841D4CBC9300B87EA9 /* Main.storyboard */; };
@@ -340,6 +343,12 @@
 		5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupTableViewCell.m; sourceTree = "<group>"; };
 		5FF2B11B1D28B19600665DD9 /* IRCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRCViewController.h; sourceTree = "<group>"; };
 		5FF2B11C1D28B19600665DD9 /* IRCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRCViewController.m; sourceTree = "<group>"; };
+		6B02FD911F220326002AC0D3 /* ScheduleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleDetailViewController.h; sourceTree = "<group>"; };
+		6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleDetailViewController.m; sourceTree = "<group>"; };
+		6B02FD941F220371002AC0D3 /* ScheduleAbstractViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleAbstractViewController.h; sourceTree = "<group>"; };
+		6B02FD951F220371002AC0D3 /* ScheduleAbstractViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleAbstractViewController.m; sourceTree = "<group>"; };
+		6B02FD971F22039B002AC0D3 /* ScheduleSpeakerInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleSpeakerInfoViewController.h; sourceTree = "<group>"; };
+		6B02FD981F22039B002AC0D3 /* ScheduleSpeakerInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleSpeakerInfoViewController.m; sourceTree = "<group>"; };
 		6B0B84D11D2B861000DE18B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B0B84D21D2B862300DE18B0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		6B11BE7F1D4CBA5800B87EA9 /* UIImage+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+addition.h"; sourceTree = "<group>"; };
@@ -497,6 +506,7 @@
 				280774CE1F1AD8D300A5B994 /* ScheduleTableViewCell.h */,
 				280774CF1F1AD8D300A5B994 /* ScheduleTableViewCell.m */,
 				280774D01F1AD8D300A5B994 /* ScheduleTableViewCell.xib */,
+				6B02FD901F2202BF002AC0D3 /* ScheduleDetail */,
 			);
 			name = ScheduleTab;
 			sourceTree = "<group>";
@@ -732,6 +742,19 @@
 				288D3A9B1D59AB4700E4E3A6 /* QR_Code_Filled@3x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		6B02FD901F2202BF002AC0D3 /* ScheduleDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6B02FD911F220326002AC0D3 /* ScheduleDetailViewController.h */,
+				6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */,
+				6B02FD941F220371002AC0D3 /* ScheduleAbstractViewController.h */,
+				6B02FD951F220371002AC0D3 /* ScheduleAbstractViewController.m */,
+				6B02FD971F22039B002AC0D3 /* ScheduleSpeakerInfoViewController.h */,
+				6B02FD981F22039B002AC0D3 /* ScheduleSpeakerInfoViewController.m */,
+			);
+			path = ScheduleDetail;
 			sourceTree = "<group>";
 		};
 		6B19ADF01D65E5D600CDE80D /* CheckinOverlay */ = {
@@ -1148,8 +1171,10 @@
 				6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */,
 				28A7C5621D5F1AD90079BB12 /* DeepCopy.m in Sources */,
 				5FB4D48F1D3B242C005BF382 /* MoreCell.m in Sources */,
+				6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewController.m in Sources */,
 				5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */,
 				5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */,
+				6B02FD961F220371002AC0D3 /* ScheduleAbstractViewController.m in Sources */,
 				28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */,
 				6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */,
 				6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */,
@@ -1169,6 +1194,7 @@
 				5FECE5AC1D352E8A00242DB4 /* StaffGroupTableViewController.m in Sources */,
 				280774C51F1AD2F400A5B994 /* ScheduleTableViewController.m in Sources */,
 				5F8B2D2A1D55E02200A68C7D /* SponsorTableViewController.m in Sources */,
+				6B02FD931F220326002AC0D3 /* ScheduleDetailViewController.m in Sources */,
 				6B11BE811D4CBA5800B87EA9 /* UIImage+addition.m in Sources */,
 				286E28A51D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m in Sources */,
 				6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */,
