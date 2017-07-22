@@ -86,13 +86,12 @@
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"DEV_MODE"];
 }
 
-+ (void)setDevLogo:(FBShimmeringView *)sView {
++ (void)setDevLogo:(FBShimmeringView *)sView WithLogo:(UIImage *)logo {
     BOOL isDevMode = [AppDelegate isDevMode];
     if (isDevMode) {
-        UIImage *image = [(UIImageView *)[sView contentView] image];
-        [((UIImageView *)[sView contentView]) setImage:[image imageWithColor:[UIColor colorFromHtmlColor:@"#f2a900"]]];
+        [((UIImageView *)[sView contentView]) setImage:[logo imageWithColor:[UIColor colorFromHtmlColor:@"#f2a900"]]];
     } else {
-        [((UIImageView *)[sView contentView]) setImage:[UIImage imageNamed:@"coscup-logo"]];
+        [((UIImageView *)[sView contentView]) setImage:logo];
     }
     [sView setShimmeringSpeed:115];
     [sView setShimmering:isDevMode];

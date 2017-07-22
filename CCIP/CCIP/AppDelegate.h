@@ -47,7 +47,7 @@
 
 - (void)displayGreetingsForLogin;
 
-+ (void)setDevLogo:(FBShimmeringView * _Null_unspecified)sView;
++ (void)setDevLogo:(FBShimmeringView * _Null_unspecified)sView WithLogo:(UIImage * _Null_unspecified)logo;
 + (void)setLoginSession:(BOOL)isLogin;
 + (BOOL)isBeforeEvent;
 + (BOOL)isAfterEvent;

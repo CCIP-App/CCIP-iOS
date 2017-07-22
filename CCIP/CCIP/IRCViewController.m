@@ -56,7 +56,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [AppDelegate setDevLogo:self.shimmeringLogoView];
+    [AppDelegate setDevLogo:self.shimmeringLogoView WithLogo:[UIImage imageNamed:@"coscup-logo"]];
     
     NSURL *nsurl = self.webView.URL;
     if (nsurl == nil || [self.webView.URL.absoluteString isEqualToString:@""]) {

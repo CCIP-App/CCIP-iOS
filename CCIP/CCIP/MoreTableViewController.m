@@ -92,7 +92,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [AppDelegate setDevLogo:self.shimmeringLogoView];
+    [AppDelegate setDevLogo:self.shimmeringLogoView WithLogo:[[UIImage imageNamed:@"coscup-logo"] imageWithColor:[UIColor colorFromHtmlColor:@"#ffffff"]]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -124,11 +124,11 @@
             if (![AppDelegate isDevMode]) {
                 NSLog(@"-- Enable DEV_MODE --");
                 [AppDelegate setIsDevMode: YES];
-                [AppDelegate setDevLogo:self.shimmeringLogoView];
+                [AppDelegate setDevLogo:self.shimmeringLogoView WithLogo:[UIImage imageNamed:@"coscup-logo"]];
             } else {
                 NSLog(@"-- Disable DEV_MODE --");
                 [AppDelegate setIsDevMode:NO];
-                [AppDelegate setDevLogo:self.shimmeringLogoView];
+                [AppDelegate setDevLogo:self.shimmeringLogoView WithLogo:[UIImage imageNamed:@"coscup-logo"]];
             }
         }
     }
