@@ -51,13 +51,14 @@ PODS:
   - Shimmer (1.0.2)
   - STPopup (1.7.0)
   - UICKeyChainStore (2.1.0)
+  - UITableView+FDTemplateLayoutCell (1.6)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1)
   - BLKFlexibleHeightBar (~> 1.0)
   - ColorArt (= 0.1.1)
   - CPDAcknowledgements (~> 1.0)
-  - Google/Analytics (~> 3.0)
+  - Google/Analytics (~> 3.0.3)
   - iCarousel (~> 1.8)
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
   - iRate (~> 1.11)
@@ -69,6 +70,7 @@ DEPENDENCIES:
   - Shimmer (~> 1.0)
   - STPopup (~> 1.7)
   - UICKeyChainStore (~> 2.1)
+  - UITableView+FDTemplateLayoutCell (~> 1.6)
 
 EXTERNAL SOURCES:
   ICViewPager:
@@ -91,7 +93,7 @@ SPEC CHECKSUMS:
   CPDAcknowledgements: 6e15e71849ba4ad5e8a17a0bb9d20938ad23bac8
   FirebaseAnalytics: 0fd6532cb2c3d03cd5cf26ad295ccb091efd3104
   FirebaseInstanceID: a9d923f3d0b6fbf9fac89310860357aaadc34be5
-  Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
+  Google: cd92fab98f800f509da88c1e0c570275713bc9d5
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
   GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
@@ -107,7 +109,8 @@ SPEC CHECKSUMS:
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
+  UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
 
-PODFILE CHECKSUM: face469e0111c21fb280d50b1aeff975a39c9576
+PODFILE CHECKSUM: cabb3afdae4e86f2a8ac5a274888bf8126e7f08b
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.1
