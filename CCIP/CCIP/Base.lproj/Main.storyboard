@@ -323,21 +323,21 @@ Please copy and paste the token into next field or click the token link in the r
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Jb-pl-Dgp">
-                                <rect key="frame" x="0.0" y="64" width="414" height="239"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Rectangle.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Jb-pl-Dgp">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="239"/>
                                 <color key="backgroundColor" red="1" green="0.3999023438" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="239" id="3ad-Fb-ps7"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CbY-uR-bp6" customClass="iCarousel">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                                 <connections>
                                     <outlet property="dataSource" destination="6Xx-bx-CvE" id="sbk-hj-VTL"/>
                                     <outlet property="delegate" destination="6Xx-bx-CvE" id="Sub-2J-lwi"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QsP-yd-6v9" userLabel="TopCover">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QsP-yd-6v9" userLabel="TopCover">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -357,18 +357,17 @@ Please copy and paste the token into next field or click the token link in the r
                             <constraint firstAttribute="trailing" secondItem="CbY-uR-bp6" secondAttribute="trailing" id="2mJ-1w-g6I"/>
                             <constraint firstAttribute="trailing" secondItem="QsP-yd-6v9" secondAttribute="trailing" id="79a-j6-D2n"/>
                             <constraint firstItem="QsP-yd-6v9" firstAttribute="leading" secondItem="bgm-CO-9gf" secondAttribute="leading" id="7hS-rR-QQn"/>
+                            <constraint firstItem="CbY-uR-bp6" firstAttribute="top" secondItem="7Jb-pl-Dgp" secondAttribute="top" id="AUB-7I-Pve"/>
                             <constraint firstItem="QsP-yd-6v9" firstAttribute="top" secondItem="bgm-CO-9gf" secondAttribute="top" id="Beq-94-PZG"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7Jb-pl-Dgp" secondAttribute="trailing" constant="-20" id="Ce6-5t-Mfl"/>
+                            <constraint firstItem="CbY-uR-bp6" firstAttribute="top" secondItem="bgm-CO-9gf" secondAttribute="top" id="Hw6-Tl-RXM"/>
                             <constraint firstItem="CbY-uR-bp6" firstAttribute="top" secondItem="5Ha-Am-1I7" secondAttribute="bottom" id="LSs-JV-vmE"/>
                             <constraint firstItem="AvZ-Qm-ma6" firstAttribute="bottom" secondItem="bgm-CO-9gf" secondAttribute="bottom" id="ORy-Fr-5D8"/>
-                            <constraint firstItem="7Jb-pl-Dgp" firstAttribute="leading" secondItem="bgm-CO-9gf" secondAttribute="leadingMargin" constant="-20" id="Ox9-vS-YVg"/>
                             <constraint firstItem="QsP-yd-6v9" firstAttribute="bottom" secondItem="5Ha-Am-1I7" secondAttribute="bottom" id="Ppj-kI-MvU"/>
                             <constraint firstItem="QsP-yd-6v9" firstAttribute="top" secondItem="bgm-CO-9gf" secondAttribute="top" id="Txm-hh-gr4"/>
-                            <constraint firstItem="CbY-uR-bp6" firstAttribute="top" secondItem="QsP-yd-6v9" secondAttribute="bottom" id="Y4j-yh-MjO"/>
+                            <constraint firstItem="7Jb-pl-Dgp" firstAttribute="width" secondItem="bgm-CO-9gf" secondAttribute="width" id="Z12-KC-jvI"/>
                             <constraint firstItem="AvZ-Qm-ma6" firstAttribute="leading" secondItem="bgm-CO-9gf" secondAttribute="leading" id="c8V-me-bKT"/>
                             <constraint firstItem="CbY-uR-bp6" firstAttribute="leading" secondItem="bgm-CO-9gf" secondAttribute="leading" id="gMq-to-53r"/>
                             <constraint firstItem="y7L-AH-63W" firstAttribute="top" secondItem="CbY-uR-bp6" secondAttribute="bottom" id="k4G-uU-dAY"/>
-                            <constraint firstItem="7Jb-pl-Dgp" firstAttribute="top" secondItem="QsP-yd-6v9" secondAttribute="bottom" id="mau-W2-dJt"/>
                             <constraint firstAttribute="trailing" secondItem="AvZ-Qm-ma6" secondAttribute="trailing" id="zeH-a0-3t8"/>
                         </constraints>
                         <variation key="default">
