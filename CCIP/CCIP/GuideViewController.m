@@ -30,8 +30,9 @@
     
     [self.redeemButton setTitle:NSLocalizedString(@"GuideViewButton", nil)
                        forState:UIControlStateNormal];
+    [self.redeemButton setTintColor:[UIColor whiteColor]];
     [self.redeemButton setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
-    self.redeemButton.layer.cornerRadius = 7.0f;
+    [self.redeemButton.layer setCornerRadius:7.0f];
     
     // Set carousel background linear diagonal gradient
     //   Create the colors

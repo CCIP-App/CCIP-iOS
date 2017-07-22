@@ -28,6 +28,7 @@
     [self.afterEventMessageLabel setText:NSLocalizedString(@"AfterEventMessage", nil)];
     [self.afterEventButton setTitle:NSLocalizedString(@"AfterEventActionTitle", nil)
                            forState:UIControlStateNormal];
+    [self.afterEventButton setTintColor:[UIColor whiteColor]];
     [self.afterEventButton setBackgroundColor:[UIColor colorFromHtmlColor:@"#3d983c"]];
     [self.afterEventButton.layer setCornerRadius:10.0f];
 }

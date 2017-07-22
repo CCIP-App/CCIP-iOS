@@ -28,6 +28,7 @@
     // Do any additional setup after loading the view.
     [self.closeButton setTitle:NSLocalizedString(@"InvalidNetworkButtonRetry", nil)
                       forState:UIControlStateNormal];
+    [self.closeButton setTintColor:[UIColor whiteColor]];
     [self.closeButton setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
     [self.closeButton setGradientColor:[UIColor colorFromHtmlColor:@"#F9FEA5"]
                                     To:[UIColor colorFromHtmlColor:@"#20E2D7"]

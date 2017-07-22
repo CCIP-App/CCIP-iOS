@@ -757,6 +757,7 @@
                 }
                 [temp.checkinBtn setBackgroundColor:[UIColor colorFromHtmlColor:@"#3d983c"]];
             }
+            [temp.checkinBtn setTintColor:[UIColor whiteColor]];
             
             [temp setDelegate:self];
             [temp setScenario:scenario];
