@@ -49,7 +49,7 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
-    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height + navigationBarBounds.size.height + progressBarHeight);
+    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height + navigationBarBounds.size.height);
     UIView *headView = [UIView new];
     [headView setFrame:frame];
     [headView setGradientColor:[UIColor colorFromHtmlColor:@"#F9FEA5"]
