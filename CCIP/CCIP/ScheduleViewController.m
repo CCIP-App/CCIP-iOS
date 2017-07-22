@@ -35,12 +35,14 @@
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, 239);
-    UIImage *recImg = [UIImage imageNamed:@"Rectangle.png"];
-    UIImageView *iv = [UIImageView new];
-    [iv setFrame:frame];
-    [iv setImage:recImg];
-    [self.view addSubview:iv];
-    [self.view sendSubviewToBack:iv];
+    UIView *headView = [UIView new];
+    [headView setFrame:frame];
+    [headView setGradientColor:[UIColor colorFromHtmlColor:@"#F9FEA5"]
+                            To:[UIColor colorFromHtmlColor:@"#20E2D7"]
+                    StartPoint:CGPointMake(-.4f, .5f)
+                       ToPoint:CGPointMake(1, .5f)];
+    [self.view addSubview:headView];
+    [self.view sendSubviewToBack:headView];
 }
 
 - (void)didReceiveMemoryWarning {
