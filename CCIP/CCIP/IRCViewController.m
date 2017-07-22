@@ -10,6 +10,8 @@
 #import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import <NJKWebViewProgress/NJKWebViewProgressView.h>
+#import "UIColor+addition.h"
+#import "UIImage+addition.h"
 
 @interface IRCViewController()
 
@@ -27,15 +29,39 @@
     [super viewDidLoad];
     
     // set logo on nav title
-    UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
+    UIView *logoView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"coscup-logo"] imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
     self.shimmeringLogoView.contentView = logoView;
     self.navigationItem.titleView = self.shimmeringLogoView;
     
     SEND_GAI(@"IRCView");
+        
+    CGFloat progressBarHeight = 2.f;
+    CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
+    CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
+    _progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
+    _progressView.progressBarView.backgroundColor = [UIColor colorFromHtmlColor:@"#009A79"];
+    _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    [self.navigationController.navigationBar addSubview:_progressView];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
+    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height + navigationBarBounds.size.height + progressBarHeight);
+    UIView *headView = [UIView new];
+    [headView setFrame:frame];
+    [headView setGradientColor:[UIColor colorFromHtmlColor:@"#F9FEA5"]
+                            To:[UIColor colorFromHtmlColor:@"#20E2D7"]
+                    StartPoint:CGPointMake(-.4f, .5f)
+                       ToPoint:CGPointMake(1, .5f)];
+    [self.view addSubview:headView];
+    [self.view sendSubviewToBack:headView];
+    
     self.webView = [[WKWebView alloc] initWithFrame:self.view.frame];
     [self.webView setNavigationDelegate:self];
-
+    
     [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
     
     [self.view insertSubview:self.webView atIndex:0];
@@ -43,20 +69,11 @@
     self.goBackButton.enabled = NO;
     self.goForwardButton.enabled = NO;
     self.goReloadButton.enabled = NO;
-        
-    CGFloat progressBarHeight = 2.f;
-    CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
-    CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
-    _progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
-    _progressView.progressBarView.backgroundColor = [UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1.0];
-    _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-
-    [self.navigationController.navigationBar addSubview:_progressView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [AppDelegate setDevLogo:self.shimmeringLogoView WithLogo:[UIImage imageNamed:@"coscup-logo"]];
+    [AppDelegate setDevLogo:self.shimmeringLogoView WithLogo:[[UIImage imageNamed:@"coscup-logo"] imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
     
     NSURL *nsurl = self.webView.URL;
     if (nsurl == nil || [self.webView.URL.absoluteString isEqualToString:@""]) {
