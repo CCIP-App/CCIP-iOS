@@ -1471,13 +1471,20 @@ Label</string>
                                                 <blurEffect style="light"/>
                                             </vibrancyEffect>
                                         </visualEffectView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ConnectWiFiToCOSCUP.png" translatesAutoresizingMaskIntoConstraints="NO" id="RHU-yy-6oy">
+                                            <rect key="frame" x="119" y="47.666666666666686" width="182" height="176"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="182" id="DCU-Kc-Mur"/>
+                                                <constraint firstAttribute="height" constant="176" id="Rdx-oq-Kmv"/>
+                                            </constraints>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpJ-Z6-78r">
-                                            <rect key="frame" x="50" y="83.666666666666657" width="320" height="100"/>
+                                            <rect key="frame" x="50" y="243.66666666666669" width="320" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="J5c-Zv-ix7"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="RcR-gv-3Hk"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="RcR-gv-3Hk"/>
                                                 <constraint firstAttribute="height" constant="100" id="dLY-aZ-h9s"/>
-                                                <constraint firstAttribute="height" constant="100" id="gzk-43-Anx"/>
+                                                <constraint firstAttribute="height" constant="50" id="gzk-43-Anx"/>
                                                 <constraint firstAttribute="width" constant="320" id="iuT-EH-J7f"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="jUP-5k-yRn"/>
                                                 <constraint firstAttribute="height" constant="100" id="m3R-JL-hvO"/>
@@ -1494,10 +1501,10 @@ Label</string>
                                             </variation>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhq-sl-Sa9">
-                                            <rect key="frame" x="170" y="303.66666666666669" width="80" height="30"/>
+                                            <rect key="frame" x="75" y="363.66666666666669" width="270" height="45"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="dgr-Hp-rAE"/>
-                                                <constraint firstAttribute="height" constant="30" id="kNK-Mo-jtr"/>
+                                                <constraint firstAttribute="width" constant="270" id="dgr-Hp-rAE"/>
+                                                <constraint firstAttribute="height" constant="45" id="kNK-Mo-jtr"/>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="pMi-wV-gBa"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="ziD-BX-wJ5"/>
                                             </constraints>
@@ -1515,14 +1522,16 @@ Label</string>
                                         </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="RHU-yy-6oy" firstAttribute="centerX" secondItem="Hw6-0q-Vyq" secondAttribute="centerX" id="6uQ-5a-0VO"/>
                                         <constraint firstAttribute="bottom" secondItem="BF7-fa-dz9" secondAttribute="bottom" id="AAX-Rg-eES"/>
                                         <constraint firstItem="BF7-fa-dz9" firstAttribute="leading" secondItem="Hw6-0q-Vyq" secondAttribute="leading" id="H4Z-Us-zCw"/>
+                                        <constraint firstItem="fpJ-Z6-78r" firstAttribute="top" secondItem="RHU-yy-6oy" secondAttribute="bottom" constant="20" id="Owj-96-QeA"/>
                                         <constraint firstItem="BF7-fa-dz9" firstAttribute="top" secondItem="Hw6-0q-Vyq" secondAttribute="top" id="PM8-jA-CWA"/>
                                         <constraint firstAttribute="trailing" secondItem="BF7-fa-dz9" secondAttribute="trailing" id="Q9e-Ks-aHO"/>
                                         <constraint firstItem="uhq-sl-Sa9" firstAttribute="centerX" secondItem="Hw6-0q-Vyq" secondAttribute="centerX" id="ZE7-Tb-pi8"/>
                                         <constraint firstItem="fpJ-Z6-78r" firstAttribute="centerX" secondItem="Hw6-0q-Vyq" secondAttribute="centerX" id="d80-p0-nin"/>
-                                        <constraint firstAttribute="centerY" secondItem="fpJ-Z6-78r" secondAttribute="bottom" constant="60" id="iyJ-0M-mD4"/>
-                                        <constraint firstItem="uhq-sl-Sa9" firstAttribute="top" secondItem="Hw6-0q-Vyq" secondAttribute="centerY" constant="60" id="jqN-Y5-uaw"/>
+                                        <constraint firstAttribute="centerY" secondItem="fpJ-Z6-78r" secondAttribute="bottom" constant="-50" id="iyJ-0M-mD4"/>
+                                        <constraint firstItem="uhq-sl-Sa9" firstAttribute="top" secondItem="Hw6-0q-Vyq" secondAttribute="centerY" constant="120" id="jqN-Y5-uaw"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="light"/>
@@ -1574,6 +1583,7 @@ Label</string>
         <image name="BarButton-Back.png" width="22" height="22"/>
         <image name="BarButton-Forward.png" width="22" height="22"/>
         <image name="BarButton-Reload.png" width="22" height="22"/>
+        <image name="ConnectWiFiToCOSCUP.png" width="182" height="176"/>
         <image name="NoAnnouncement.png" width="197" height="159"/>
         <image name="Rectangle.png" width="375" height="239"/>
         <image name="StaffIconDefault.png" width="40" height="40"/>

@@ -8,6 +8,7 @@
 
 #import "InvalidNetworkMessageViewController.h"
 #import "AppDelegate.h"
+#import "UIColor+addition.h"
 
 @interface InvalidNetworkMessageViewController ()
 
@@ -28,7 +29,13 @@
     [self.closeButton setTitle:NSLocalizedString(@"InvalidNetworkButtonRetry", nil)
                       forState:UIControlStateNormal];
     [self.closeButton setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
-    self.closeButton.layer.cornerRadius = 8.0f;
+    [self.closeButton setGradientColor:[UIColor colorFromHtmlColor:@"#F9FEA5"]
+                                    To:[UIColor colorFromHtmlColor:@"#20E2D7"]
+                            StartPoint:CGPointMake(-.4f, .5f)
+                               ToPoint:CGPointMake(1, .5f)];
+    CALayer *layer = [self.closeButton.layer.sublayers firstObject];
+    [layer setCornerRadius:self.closeButton.frame.size.height / 2];
+    [self.closeButton.layer setCornerRadius:self.closeButton.frame.size.height / 2];
     
     [self.messageLabel setText:self.message];
     [self.view setAutoresizingMask:UIViewAutoresizingNone];
