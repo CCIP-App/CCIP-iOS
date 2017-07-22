@@ -131,6 +131,8 @@
 		6B9F62681F1A5D160084E09C /* Rectangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6B14981F1A593300538E32 /* Rectangle@2x.png */; };
 		6B9F62691F1A5D160084E09C /* Rectangle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6B14991F1A593300538E32 /* Rectangle@3x.png */; };
 		6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */; };
+		6BAADFC01F233BE10054F870 /* NoAnnouncement.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BAADFBE1F233BC80054F870 /* NoAnnouncement.png */; };
+		6BAADFC11F233BE10054F870 /* NoAnnouncement@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BAADFBF1F233BC80054F870 /* NoAnnouncement@2x.png */; };
 		6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */; };
 		6BB1C4391F1AD4BB00AB072F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
@@ -380,6 +382,8 @@
 		6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewCell.m; sourceTree = "<group>"; };
 		6BA1A5201D1EFBDC00D5924C /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
 		6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
+		6BAADFBE1F233BC80054F870 /* NoAnnouncement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NoAnnouncement.png; path = Images/NoAnnouncement.png; sourceTree = "<group>"; };
+		6BAADFBF1F233BC80054F870 /* NoAnnouncement@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NoAnnouncement@2x.png"; path = "Images/NoAnnouncement@2x.png"; sourceTree = "<group>"; };
 		6BAB42371D4ED39D0029B8A5 /* UIApplication+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+addition.h"; sourceTree = "<group>"; };
 		6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+addition.m"; sourceTree = "<group>"; };
 		6BB0B6091F1A74DF00AEB437 /* CCIP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CCIP.entitlements; sourceTree = "<group>"; };
@@ -702,6 +706,8 @@
 		5FB4D4401D3A8304005BF382 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6BAADFBE1F233BC80054F870 /* NoAnnouncement.png */,
+				6BAADFBF1F233BC80054F870 /* NoAnnouncement@2x.png */,
 				6B6B149A1F1A593400538E32 /* Rectangle.png */,
 				6B6B14981F1A593300538E32 /* Rectangle@2x.png */,
 				6B6B14991F1A593300538E32 /* Rectangle@3x.png */,
@@ -1038,6 +1044,7 @@
 				288D3AA11D59AB4800E4E3A6 /* QR_Code_Filled@3x.png in Resources */,
 				288D3A781D599A1200E4E3A6 /* LICENSE-2.0.txt in Resources */,
 				28B432411D6228AF00590846 /* BarButton-Reload@2x.png in Resources */,
+				6BAADFC01F233BE10054F870 /* NoAnnouncement.png in Resources */,
 				2839BF3A1D4C97AB0062F36D /* Star@2x.png in Resources */,
 				28A7C55F1D5EE0C30079BB12 /* Project_Info_and_Contributors.json in Resources */,
 				5FB4D4671D3A8706005BF382 /* icon_ios_chat@2x.png in Resources */,
@@ -1082,6 +1089,7 @@
 				5FB4D4781D3A8DF6005BF382 /* icon_ios_more.png in Resources */,
 				28B4322F1D6227D400590846 /* BarButton-Back@2x.png in Resources */,
 				288D3A9E1D59AB4800E4E3A6 /* QR_Code@3x.png in Resources */,
+				6BAADFC11F233BE10054F870 /* NoAnnouncement@2x.png in Resources */,
 				2839BF371D4C97AB0062F36D /* Star_Filled@3x.png in Resources */,
 				5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */,
 				5FB4D4661D3A8706005BF382 /* icon_ios_chat.png in Resources */,

@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *announceTableView;
 @property (strong, nonatomic) NSArray *announceJsonArray;
+@property (weak, nonatomic) IBOutlet UIImageView *ivNoAnnouncement;
+@property (weak, nonatomic) IBOutlet UILabel *lbNoAnnouncement;
 
 @end

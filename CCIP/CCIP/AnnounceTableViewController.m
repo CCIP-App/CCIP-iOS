@@ -53,6 +53,14 @@
     [self.view addSubview:headView];
     [self.view sendSubviewToBack:headView];
     
+    NSString *noAnnouncementText = NSLocalizedString(@"NoAnnouncementText", nil);
+    NSMutableAttributedString *attributedNoAnnouncementText = [[NSMutableAttributedString alloc] initWithString:noAnnouncementText];
+    float spacing = 5.0f;
+    [attributedNoAnnouncementText addAttribute:NSKernAttributeName
+                             value:@(spacing)
+                             range:NSMakeRange(0, [noAnnouncementText length])];
+    [self.lbNoAnnouncement setAttributedText:attributedNoAnnouncementText];
+    
     SEND_GAI(@"AnnounceTableViewController");
 }
 
@@ -86,7 +94,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.announceJsonArray count];
+    NSInteger count = [self.announceJsonArray count];
+    BOOL NoAnnouncement = count == 0;
+    [self.announceTableView setSeparatorColor:NoAnnouncement ? [UIColor clearColor] : [UIColor lightGrayColor]];
+    [self.ivNoAnnouncement setHidden:!NoAnnouncement];
+    [self.lbNoAnnouncement setHidden:!NoAnnouncement];
+    return count;
 }
 
 - (void)setCell:(AnnounceTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {

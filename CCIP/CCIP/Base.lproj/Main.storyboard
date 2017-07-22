@@ -985,15 +985,36 @@ Label</string>
                                     <outlet property="delegate" destination="ba1-3I-FgV" id="Wht-GU-Ad3"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoAnnouncement.png" translatesAutoresizingMaskIntoConstraints="NO" id="V2s-Db-5hD">
+                                <rect key="frame" x="128.66666666666669" y="248.66666666666669" width="197.00000000000006" height="159.00000000000006"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="197" id="08r-X5-kgl"/>
+                                    <constraint firstAttribute="height" constant="159" id="GLX-eQ-5vy"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Announcement !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQ9-nd-7Ld">
+                                <rect key="frame" x="0.0" y="431.66666666666669" width="414" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="ads-9L-X6j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
+                                <color key="textColor" red="0.73333333333333328" green="0.81176470588235294" blue="0.79607843137254897" alpha="0.60999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="NRX-bU-SPn" firstAttribute="leading" secondItem="O9C-ij-kHs" secondAttribute="leading" id="9x8-Fa-63Z"/>
+                            <constraint firstItem="XQ9-nd-7Ld" firstAttribute="centerX" secondItem="O9C-ij-kHs" secondAttribute="centerX" id="D2B-dk-LyK"/>
                             <constraint firstItem="NRX-bU-SPn" firstAttribute="top" secondItem="T6f-ik-3ze" secondAttribute="bottom" id="J37-Vf-Afx"/>
                             <constraint firstItem="8AP-OM-vdg" firstAttribute="top" secondItem="NRX-bU-SPn" secondAttribute="bottom" id="K7x-ys-4bW"/>
                             <constraint firstItem="NRX-bU-SPn" firstAttribute="bottom" secondItem="O9C-ij-kHs" secondAttribute="bottom" id="Kph-ld-qyG"/>
                             <constraint firstItem="NRX-bU-SPn" firstAttribute="top" secondItem="T6f-ik-3ze" secondAttribute="bottom" id="RdS-cr-VAn"/>
+                            <constraint firstItem="XQ9-nd-7Ld" firstAttribute="width" secondItem="O9C-ij-kHs" secondAttribute="width" id="Wcg-aQ-JxC"/>
                             <constraint firstAttribute="trailing" secondItem="NRX-bU-SPn" secondAttribute="trailing" id="Zkk-I0-kD9"/>
+                            <constraint firstItem="V2s-Db-5hD" firstAttribute="centerX" secondItem="O9C-ij-kHs" secondAttribute="centerX" constant="20" id="ke7-zC-8Lf"/>
+                            <constraint firstItem="XQ9-nd-7Ld" firstAttribute="top" secondItem="V2s-Db-5hD" secondAttribute="bottom" constant="24" id="s7i-kA-aEE"/>
+                            <constraint firstItem="V2s-Db-5hD" firstAttribute="centerY" secondItem="O9C-ij-kHs" secondAttribute="centerY" constant="-40" id="zgL-ae-wKP"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -1005,6 +1026,8 @@ Label</string>
                     <navigationItem key="navigationItem" id="rLp-PG-A3C"/>
                     <connections>
                         <outlet property="announceTableView" destination="NRX-bU-SPn" id="U3j-TF-0aO"/>
+                        <outlet property="ivNoAnnouncement" destination="V2s-Db-5hD" id="Rya-rd-Li8"/>
+                        <outlet property="lbNoAnnouncement" destination="XQ9-nd-7Ld" id="jVx-Iw-8SY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pl2-Za-Jmf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1551,6 +1574,7 @@ Label</string>
         <image name="BarButton-Back.png" width="22" height="22"/>
         <image name="BarButton-Forward.png" width="22" height="22"/>
         <image name="BarButton-Reload.png" width="22" height="22"/>
+        <image name="NoAnnouncement.png" width="197" height="159"/>
         <image name="Rectangle.png" width="375" height="239"/>
         <image name="StaffIconDefault.png" width="40" height="40"/>
         <image name="icon_ios_bell.png" width="25" height="25"/>

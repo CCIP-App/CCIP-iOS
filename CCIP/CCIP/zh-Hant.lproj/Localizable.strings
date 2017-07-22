@@ -14,6 +14,7 @@
 "Announce" = "大會訊息";
 "More" = "更多";
 "AnnouncementTitle" = "大會公告";
+"NoAnnouncementText" = "目前無任何公告哦！";
 "ScheduleOfDate" = "%@ 當日議程";
 "HSSBuilding" = "人文館";
 "ActivityCenter" = "活動中心";
