@@ -20,15 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    // set logo on nav title
-//    UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
-//    self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
-//    self.shimmeringLogoView.contentView = logoView;
-//    self.navigationItem.titleView = self.shimmeringLogoView;
-    self.navigationItem.title = @"SCHEDULE";
-    
+    [self.navigationItem setTitle:@"SCHEDULE"];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
     [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
