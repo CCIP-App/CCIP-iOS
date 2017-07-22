@@ -77,8 +77,6 @@
                        ToPoint:CGPointMake(1, .5f)];
     UIImage *naviBackImg = [[headView.layer.sublayers lastObject] toImage];
     [self.navigationController.navigationBar setBackgroundImage:naviBackImg forBarMetrics:UIBarMetricsDefault];
-//    [self.view addSubview:headView];
-//    [self.view sendSubviewToBack:headView];
     
     self.userInfo = [[AppDelegate appDelegate] userInfo];
     
