@@ -31,8 +31,9 @@
     
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
     [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Rectangle.png"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, 239);
     UIImage *recImg = [UIImage imageNamed:@"Rectangle.png"];
     UIImageView *iv = [UIImageView new];
