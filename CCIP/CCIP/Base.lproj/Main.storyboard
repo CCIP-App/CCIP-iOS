@@ -35,15 +35,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wy3-Yj-6am">
-                                <rect key="frame" x="0.0" y="64" width="420" height="487"/>
+                                <rect key="frame" x="0.0" y="20" width="420" height="580"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="htO-bs-S6f">
-                                    <rect key="frame" x="0.0" y="0.0" width="420" height="487"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGG-rl-Nfe">
-                                            <rect key="frame" x="0.0" y="0.0" width="420" height="487"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cX3-Np-rYk">
-                                                <rect key="frame" x="0.0" y="0.0" width="420" height="487"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                             <vibrancyEffect>
@@ -72,7 +72,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60.000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="Naq-yu-67a">
-                                            <rect key="frame" x="20" y="183.66666666666669" width="380" height="120.00000000000006"/>
+                                            <rect key="frame" x="20" y="230.33333333333331" width="380" height="119.99999999999994"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="120" id="yKR-iB-grm"/>
                                             </constraints>
@@ -81,7 +81,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qy3-VV-KVG">
-                                            <rect key="frame" x="50" y="359" width="320" height="70"/>
+                                            <rect key="frame" x="50" y="452" width="320" height="70"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="70" id="17h-i3-QWc"/>
                                             </constraints>
@@ -90,7 +90,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Kit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBO-2l-oxB">
-                                            <rect key="frame" x="8" y="327" width="404" height="60"/>
+                                            <rect key="frame" x="8" y="420" width="404" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="WU2-Ce-ckf"/>
                                             </constraints>
@@ -99,7 +99,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dyo-cm-nZt">
-                                            <rect key="frame" x="16" y="437" width="388" height="40"/>
+                                            <rect key="frame" x="16" y="530" width="388" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="bkC-do-qaS"/>
                                             </constraints>
@@ -170,15 +170,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ane-io-2fB">
-                                <rect key="frame" x="0.0" y="64" width="420" height="487"/>
+                                <rect key="frame" x="0.0" y="20" width="420" height="580"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pBJ-Cx-2mH">
-                                    <rect key="frame" x="0.0" y="0.0" width="420" height="487"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQW-Em-vct">
-                                            <rect key="frame" x="0.0" y="0.0" width="420" height="487"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bQu-aE-znz">
-                                                <rect key="frame" x="0.0" y="0.0" width="420" height="487"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                             <vibrancyEffect>
@@ -192,7 +192,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mye-a9-7BF">
-                                            <rect key="frame" x="75" y="308" width="270" height="1"/>
+                                            <rect key="frame" x="75" y="401" width="270" height="1"/>
                                             <color key="backgroundColor" red="0.0" green="0.60713750123977661" blue="0.47257083654403687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="270" id="k21-6W-iBl"/>
@@ -213,7 +213,7 @@ Please copy and paste the token into next field or click the token link in the r
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Here ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N3c-1x-If0">
-                                            <rect key="frame" x="75" y="276" width="270" height="30"/>
+                                            <rect key="frame" x="75" y="369" width="270" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="Kgw-cW-3Gf"/>
                                                 <constraint firstAttribute="width" constant="270" id="dnP-Fr-JuI"/>
@@ -226,7 +226,7 @@ Please copy and paste the token into next field or click the token link in the r
                                             </connections>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8w3-iH-STq">
-                                            <rect key="frame" x="75.333333333333314" y="340" width="270" height="45"/>
+                                            <rect key="frame" x="75.333333333333314" y="433" width="270" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="270" id="8hu-v4-MyY"/>
                                                 <constraint firstAttribute="height" constant="45" id="FSR-OA-U65"/>
@@ -587,14 +587,14 @@ Please copy and paste the token into next field or click the token link in the r
                         <viewControllerLayoutGuide type="bottom" id="Ddy-yB-gmL"/>
                     </layoutGuides>
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="mW0-8h-Rsq">
-                        <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P00-CS-cor">
-                                <rect key="frame" x="0.0" y="0.0" width="420" height="220"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P00-CS-cor">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MzI-LD-fFd">
-                                        <rect key="frame" x="350" y="30" width="60" height="60"/>
+                                        <rect key="frame" x="344" y="30" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="MIk-M9-29U"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Q5t-aH-39e"/>
@@ -603,7 +603,7 @@ Please copy and paste the token into next field or click the token link in the r
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CP-bQ-x2n">
-                                        <rect key="frame" x="10" y="35" width="330" height="22"/>
+                                        <rect key="frame" x="10" y="35" width="324" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="sWm-Nt-zrN"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="zJh-WQ-xLT"/>
@@ -613,7 +613,7 @@ Please copy and paste the token into next field or click the token link in the r
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSO-K1-shl">
-                                        <rect key="frame" x="10" y="62" width="330" height="25"/>
+                                        <rect key="frame" x="10" y="62" width="324" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="BNI-9C-dK9"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="Ln6-Mx-qRw"/>
@@ -623,7 +623,7 @@ Please copy and paste the token into next field or click the token link in the r
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F2g-0m-bel">
-                                        <rect key="frame" x="20" y="100" width="380" height="60"/>
+                                        <rect key="frame" x="20" y="100" width="374" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Goe-rS-Flj"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="i3i-Ph-6ja"/>
@@ -632,8 +632,8 @@ Please copy and paste the token into next field or click the token link in the r
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3gh-d3-AGe">
-                                        <rect key="frame" x="0.0" y="164" width="420" height="56"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gh-d3-AGe">
+                                        <rect key="frame" x="0.0" y="164" width="414" height="56"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEV-Th-Vkm">
                                                 <rect key="frame" x="25" y="5" width="100" height="21"/>
@@ -656,7 +656,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vV8-PE-rYC">
-                                                <rect key="frame" x="235" y="5" width="160" height="21"/>
+                                                <rect key="frame" x="235" y="5" width="154" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="pE1-U5-9xP"/>
                                                 </constraints>
@@ -677,7 +677,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00-00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBM-f0-osl">
-                                                <rect key="frame" x="235" y="31" width="160" height="21"/>
+                                                <rect key="frame" x="235" y="31" width="154" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -724,58 +724,26 @@ Please copy and paste the token into next field or click the token link in the r
                                     <constraint firstItem="3gh-d3-AGe" firstAttribute="width" secondItem="P00-CS-cor" secondAttribute="width" id="nxs-7W-6k6"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wvg-lM-0S7">
-                                <rect key="frame" x="0.0" y="220" width="420" height="380"/>
-                                <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pD-pY-bJu">
-                                        <rect key="frame" x="30" y="208" width="360" height="128"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="Ub5-46-j3d"/>
-                                        </constraints>
-                                        <connections>
-                                            <segue destination="e2s-7X-93J" kind="embed" id="JfC-qR-dxW"/>
-                                        </connections>
-                                    </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFb-dx-kuk">
-                                        <rect key="frame" x="30" y="30" width="360" height="128"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="PYr-RH-gg0"/>
-                                        </constraints>
-                                        <connections>
-                                            <segue destination="Zfm-Ht-EUx" kind="embed" id="i7K-Cg-CRf"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="DFb-dx-kuk" firstAttribute="top" secondItem="wvg-lM-0S7" secondAttribute="top" constant="30" id="08m-et-FCS"/>
-                                    <constraint firstItem="2pD-pY-bJu" firstAttribute="leading" secondItem="wvg-lM-0S7" secondAttribute="leading" constant="30" id="93F-ct-kA2"/>
-                                    <constraint firstItem="2pD-pY-bJu" firstAttribute="top" secondItem="DFb-dx-kuk" secondAttribute="bottom" constant="50" id="JBV-sJ-eMD"/>
-                                    <constraint firstAttribute="bottom" secondItem="2pD-pY-bJu" secondAttribute="bottom" constant="38" id="a0m-gG-6Ag"/>
-                                    <constraint firstItem="2pD-pY-bJu" firstAttribute="centerX" secondItem="wvg-lM-0S7" secondAttribute="centerX" id="a9T-Ew-wLk"/>
-                                    <constraint firstItem="DFb-dx-kuk" firstAttribute="centerX" secondItem="wvg-lM-0S7" secondAttribute="centerX" id="cIs-05-Nrb"/>
-                                    <constraint firstItem="DFb-dx-kuk" firstAttribute="leading" secondItem="wvg-lM-0S7" secondAttribute="leading" constant="30" id="fIP-Hm-SBo"/>
-                                    <constraint firstAttribute="trailing" secondItem="DFb-dx-kuk" secondAttribute="trailing" constant="30" id="leg-Gm-MLn"/>
-                                    <constraint firstAttribute="trailing" secondItem="2pD-pY-bJu" secondAttribute="trailing" constant="30" id="zEw-RD-7a8"/>
-                                </constraints>
-                            </scrollView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="For-Ei-4ou">
+                                <rect key="frame" x="0.0" y="220" width="414" height="516"/>
+                                <connections>
+                                    <segue destination="yg2-HO-O67" kind="embed" id="fj9-Ao-gGx"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="P00-CS-cor" firstAttribute="centerX" secondItem="mW0-8h-Rsq" secondAttribute="centerX" id="CyZ-zq-Jyh"/>
-                            <constraint firstItem="wvg-lM-0S7" firstAttribute="centerX" secondItem="mW0-8h-Rsq" secondAttribute="centerX" id="VhQ-wK-Mzt"/>
+                            <constraint firstItem="For-Ei-4ou" firstAttribute="top" secondItem="P00-CS-cor" secondAttribute="bottom" id="Kcq-Ze-YRa"/>
+                            <constraint firstItem="For-Ei-4ou" firstAttribute="width" secondItem="mW0-8h-Rsq" secondAttribute="width" id="ade-6E-2oS"/>
                             <constraint firstItem="P00-CS-cor" firstAttribute="width" secondItem="mW0-8h-Rsq" secondAttribute="width" id="dll-s7-3DB"/>
-                            <constraint firstItem="wvg-lM-0S7" firstAttribute="width" secondItem="mW0-8h-Rsq" secondAttribute="width" id="ffZ-aD-mWx"/>
-                            <constraint firstItem="Ddy-yB-gmL" firstAttribute="top" secondItem="wvg-lM-0S7" secondAttribute="bottom" id="ry0-lu-qu1"/>
-                            <constraint firstItem="wvg-lM-0S7" firstAttribute="top" secondItem="P00-CS-cor" secondAttribute="bottom" id="tbY-Zr-dQk"/>
-                            <constraint firstItem="wvg-lM-0S7" firstAttribute="centerX" secondItem="mW0-8h-Rsq" secondAttribute="centerX" id="uW5-BM-fsT"/>
+                            <constraint firstItem="For-Ei-4ou" firstAttribute="centerX" secondItem="mW0-8h-Rsq" secondAttribute="centerX" id="fIY-N7-GCC"/>
                             <constraint firstItem="P00-CS-cor" firstAttribute="top" secondItem="mW0-8h-Rsq" secondAttribute="top" id="vus-pI-IDb"/>
+                            <constraint firstItem="Ddy-yB-gmL" firstAttribute="top" secondItem="For-Ei-4ou" secondAttribute="bottom" id="znD-lr-2h6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aq1-sw-zr3"/>
-                    <size key="freeformSize" width="420" height="600"/>
                     <connections>
-                        <outlet property="cvAbstract" destination="DFb-dx-kuk" id="kCH-8F-daE"/>
-                        <outlet property="cvSpeakerInfo" destination="2pD-pY-bJu" id="Ryl-u4-tgY"/>
                         <outlet property="ivSpeakerPhoto" destination="MzI-LD-fFd" id="gOg-Jy-CVJ"/>
                         <outlet property="lbLang" destination="ven-KA-rEN" id="u4b-pI-Osi"/>
                         <outlet property="lbLangText" destination="eDW-eh-9J7" id="W3D-x3-E36"/>
@@ -786,7 +754,6 @@ Please copy and paste the token into next field or click the token link in the r
                         <outlet property="lbTime" destination="vV8-PE-rYC" id="KKX-sp-LH7"/>
                         <outlet property="lbTimeText" destination="SBM-f0-osl" id="uZG-3U-LfA"/>
                         <outlet property="lbTitle" destination="F2g-0m-bel" id="kA9-kF-P6x"/>
-                        <outlet property="svContent" destination="wvg-lM-0S7" id="YYX-Hq-ass"/>
                         <outlet property="vwHeader" destination="P00-CS-cor" id="GcD-To-bac"/>
                         <outlet property="vwMeta" destination="3gh-d3-AGe" id="vIV-oX-2DK"/>
                     </connections>
@@ -794,6 +761,34 @@ Please copy and paste the token into next field or click the token link in the r
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eus-fa-dPK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="119" y="2739"/>
+        </scene>
+        <!--Schedule Detail Table View Controller-->
+        <scene sceneID="mDA-DH-VZf">
+            <objects>
+                <tableViewController id="yg2-HO-O67" customClass="ScheduleDetailTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="sbK-kg-F5k">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="516"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Fu6-Br-txp">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fu6-Br-txp" id="gnT-1d-Gea">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yg2-HO-O67" id="SCf-MR-C5p"/>
+                            <outlet property="delegate" destination="yg2-HO-O67" id="XQT-1j-Z7d"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xau-0F-hKx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="909" y="2828"/>
         </scene>
         <!--Schedule Abstract View Controller-->
         <scene sceneID="3Uw-NR-Uaa">
@@ -804,11 +799,11 @@ Please copy and paste the token into next field or click the token link in the r
                         <viewControllerLayoutGuide type="bottom" id="jiH-Qd-Gjy"/>
                     </layoutGuides>
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="dsn-rZ-pee">
-                        <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abstract" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzS-4O-3sw">
-                                <rect key="frame" x="25" y="25" width="370" height="21"/>
+                                <rect key="frame" x="25" y="25" width="364" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="fTV-SU-74s"/>
                                 </constraints>
@@ -817,7 +812,7 @@ Please copy and paste the token into next field or click the token link in the r
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="j02-ye-gMH">
-                                <rect key="frame" x="25" y="54" width="370" height="521"/>
+                                <rect key="frame" x="25" y="54" width="364" height="657"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
@@ -836,7 +831,6 @@ Please copy and paste the token into next field or click the token link in the r
                             <constraint firstAttribute="bottom" secondItem="j02-ye-gMH" secondAttribute="bottom" constant="25" id="qsO-Zp-dfb"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="420" height="600"/>
                     <connections>
                         <outlet property="lbAbstractText" destination="hzS-4O-3sw" id="lMU-um-d9C"/>
                         <outlet property="txAbstractContent" destination="j02-ye-gMH" id="8IK-pc-KqD"/>
@@ -855,11 +849,11 @@ Please copy and paste the token into next field or click the token link in the r
                         <viewControllerLayoutGuide type="bottom" id="WkI-nr-NLs"/>
                     </layoutGuides>
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="6EI-cK-ZJn">
-                        <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xd9-on-aZd">
-                                <rect key="frame" x="25" y="25" width="370" height="21"/>
+                                <rect key="frame" x="25" y="25" width="364" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="594-KW-oaw"/>
                                 </constraints>
@@ -868,7 +862,7 @@ Please copy and paste the token into next field or click the token link in the r
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="LA3-Oi-TMo">
-                                <rect key="frame" x="25" y="56" width="370" height="519"/>
+                                <rect key="frame" x="25" y="56" width="364" height="655"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
@@ -886,7 +880,6 @@ Please copy and paste the token into next field or click the token link in the r
                             <constraint firstAttribute="trailing" secondItem="xd9-on-aZd" secondAttribute="trailing" constant="25" id="lhP-ZF-tPy"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="420" height="600"/>
                     <connections>
                         <outlet property="lbSpeakerInfoTitle" destination="xd9-on-aZd" id="LW5-f9-XuL"/>
                         <outlet property="txSpeakerInfoContent" destination="LA3-Oi-TMo" id="1XN-ZY-lqU"/>
@@ -958,7 +951,7 @@ Please copy and paste the token into next field or click the token link in the r
                                         <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hmk-Qi-7k1" id="w2s-YF-NQD">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000-00-00 00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxe-Os-o2e">
@@ -1075,7 +1068,7 @@ Please copy and paste the token into next field or click the token link in the r
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d4Y-ir-8JL" id="thw-zu-u47">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1089,7 +1082,7 @@ Please copy and paste the token into next field or click the token link in the r
                                         <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xxD-AS-Iim" id="Txy-4M-e6y">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1103,7 +1096,7 @@ Please copy and paste the token into next field or click the token link in the r
                                         <rect key="frame" x="0.0" y="116" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yMP-WL-Edu" id="IPq-E0-gs7">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1147,7 +1140,7 @@ Please copy and paste the token into next field or click the token link in the r
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Z3-2j-yUM" id="CDm-dn-X9R">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -1262,7 +1255,7 @@ Please copy and paste the token into next field or click the token link in the r
                                 <rect key="frame" x="0.0" y="30" width="414" height="260"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fea-ru-5qy" id="c3w-XN-suW">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="259.66666666666669"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="259.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PIN-Ta-Ztr">
@@ -1477,15 +1470,15 @@ Please copy and paste the token into next field or click the token link in the r
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcC-n8-tou">
-                                <rect key="frame" x="0.0" y="64" width="420" height="487"/>
+                                <rect key="frame" x="0.0" y="20" width="420" height="580"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Hw6-0q-Vyq">
-                                    <rect key="frame" x="0.0" y="0.0" width="420" height="487"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BF7-fa-dz9">
-                                            <rect key="frame" x="0.0" y="0.0" width="420" height="487"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mzi-hr-0E0">
-                                                <rect key="frame" x="0.0" y="0.0" width="420" height="487"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                             <vibrancyEffect>
@@ -1493,14 +1486,14 @@ Please copy and paste the token into next field or click the token link in the r
                                             </vibrancyEffect>
                                         </visualEffectView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ConnectWiFiToCOSCUP.png" translatesAutoresizingMaskIntoConstraints="NO" id="RHU-yy-6oy">
-                                            <rect key="frame" x="119" y="47.666666666666686" width="182" height="176"/>
+                                            <rect key="frame" x="119" y="94.333333333333314" width="182" height="176"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="182" id="DCU-Kc-Mur"/>
                                                 <constraint firstAttribute="height" constant="176" id="Rdx-oq-Kmv"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpJ-Z6-78r">
-                                            <rect key="frame" x="50" y="243.66666666666669" width="320" height="50"/>
+                                            <rect key="frame" x="50" y="290.33333333333331" width="320" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="J5c-Zv-ix7"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="RcR-gv-3Hk"/>
@@ -1522,7 +1515,7 @@ Please copy and paste the token into next field or click the token link in the r
                                             </variation>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhq-sl-Sa9">
-                                            <rect key="frame" x="75" y="363.66666666666669" width="270" height="45"/>
+                                            <rect key="frame" x="75" y="410.33333333333331" width="270" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="270" id="dgr-Hp-rAE"/>
                                                 <constraint firstAttribute="height" constant="45" id="kNK-Mo-jtr"/>
@@ -1586,11 +1579,10 @@ Please copy and paste the token into next field or click the token link in the r
                         <viewControllerLayoutGuide type="bottom" id="ig4-g7-0js"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wWE-pu-nzB">
-                        <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <size key="freeformSize" width="420" height="600"/>
                     <connections>
                         <segue destination="kE9-2Q-Df0" kind="push" identifier="ShowScheduleDetail" id="mZ3-si-dph"/>
                     </connections>
