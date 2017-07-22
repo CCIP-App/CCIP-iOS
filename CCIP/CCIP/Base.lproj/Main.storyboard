@@ -330,6 +330,20 @@ Please copy and paste the token into next field or click the token link in the r
                                     <constraint firstAttribute="height" constant="239" id="3ad-Fb-ps7"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="01s-25-wxe">
+                                <rect key="frame" x="182" y="40" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6l9-RK-rb5"/>
+                                    <constraint firstAttribute="width" constant="50" id="DtG-wx-D7X"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJH-ug-pK0">
+                                <rect key="frame" x="0.0" y="110" width="414" height="19.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CbY-uR-bp6" customClass="iCarousel">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                                 <connections>
@@ -360,27 +374,34 @@ Please copy and paste the token into next field or click the token link in the r
                             <constraint firstItem="CbY-uR-bp6" firstAttribute="top" secondItem="7Jb-pl-Dgp" secondAttribute="top" id="AUB-7I-Pve"/>
                             <constraint firstItem="QsP-yd-6v9" firstAttribute="top" secondItem="bgm-CO-9gf" secondAttribute="top" id="Beq-94-PZG"/>
                             <constraint firstItem="CbY-uR-bp6" firstAttribute="top" secondItem="bgm-CO-9gf" secondAttribute="top" id="Hw6-Tl-RXM"/>
+                            <constraint firstItem="01s-25-wxe" firstAttribute="centerX" secondItem="bgm-CO-9gf" secondAttribute="centerX" id="Kd8-ms-AQb"/>
                             <constraint firstItem="CbY-uR-bp6" firstAttribute="top" secondItem="5Ha-Am-1I7" secondAttribute="bottom" id="LSs-JV-vmE"/>
+                            <constraint firstItem="vJH-ug-pK0" firstAttribute="width" secondItem="bgm-CO-9gf" secondAttribute="width" id="MyN-5e-Lkd"/>
                             <constraint firstItem="AvZ-Qm-ma6" firstAttribute="bottom" secondItem="bgm-CO-9gf" secondAttribute="bottom" id="ORy-Fr-5D8"/>
                             <constraint firstItem="QsP-yd-6v9" firstAttribute="bottom" secondItem="5Ha-Am-1I7" secondAttribute="bottom" id="Ppj-kI-MvU"/>
                             <constraint firstItem="QsP-yd-6v9" firstAttribute="top" secondItem="bgm-CO-9gf" secondAttribute="top" id="Txm-hh-gr4"/>
+                            <constraint firstItem="vJH-ug-pK0" firstAttribute="centerX" secondItem="bgm-CO-9gf" secondAttribute="centerX" id="XWY-NH-Vyb"/>
                             <constraint firstItem="7Jb-pl-Dgp" firstAttribute="width" secondItem="bgm-CO-9gf" secondAttribute="width" id="Z12-KC-jvI"/>
                             <constraint firstItem="AvZ-Qm-ma6" firstAttribute="leading" secondItem="bgm-CO-9gf" secondAttribute="leading" id="c8V-me-bKT"/>
                             <constraint firstItem="CbY-uR-bp6" firstAttribute="leading" secondItem="bgm-CO-9gf" secondAttribute="leading" id="gMq-to-53r"/>
                             <constraint firstItem="y7L-AH-63W" firstAttribute="top" secondItem="CbY-uR-bp6" secondAttribute="bottom" id="k4G-uU-dAY"/>
+                            <constraint firstItem="vJH-ug-pK0" firstAttribute="top" secondItem="01s-25-wxe" secondAttribute="bottom" constant="20" id="mhq-y0-Qq7"/>
+                            <constraint firstItem="01s-25-wxe" firstAttribute="top" secondItem="7Jb-pl-Dgp" secondAttribute="top" constant="40" id="rjl-f5-pJl"/>
                             <constraint firstAttribute="trailing" secondItem="AvZ-Qm-ma6" secondAttribute="trailing" id="zeH-a0-3t8"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="LSs-JV-vmE"/>
                                 <exclude reference="Ppj-kI-MvU"/>
                                 <exclude reference="Txm-hh-gr4"/>
-                                <exclude reference="LSs-JV-vmE"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Xuv-x4-yRI"/>
                     <connections>
                         <outlet property="cards" destination="CbY-uR-bp6" id="dwE-kE-NwC"/>
+                        <outlet property="ivUserPhoto" destination="01s-25-wxe" id="rr3-07-Jkv"/>
+                        <outlet property="lbUserName" destination="vJH-ug-pK0" id="se2-C1-fIo"/>
                         <segue destination="VKq-4v-Yvp" kind="custom" identifier="ShowGuide" customClass="EmbeddedNavigationControllerSegue" id="lBg-aP-1xi"/>
                         <segue destination="GJw-lM-l3I" kind="custom" identifier="ShowCountdown" customClass="EmbeddedNavigationControllerSegue" id="bIa-hc-QfB"/>
                         <segue destination="tZ3-Ep-FUt" kind="custom" identifier="ShowInvalidNetworkMsg" customClass="EmbeddedNavigationControllerSegue" id="LZQ-Xr-3kl"/>

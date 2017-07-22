@@ -27,6 +27,8 @@
 @property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
 
 @property (strong, nonatomic) IBOutlet iCarousel *cards;
+@property (weak, nonatomic) IBOutlet UIImageView *ivUserPhoto;
+@property (weak, nonatomic) IBOutlet UILabel *lbUserName;
 @property (strong, nonatomic) UIPageControl *pageControl;
 
 @property (strong, nonatomic) NSDictionary *userInfo;
@@ -64,6 +66,8 @@
     self.cards.pagingEnabled = YES;
     self.cards.bounceDistance = 0.3f;
     self.cards.contentOffset = CGSizeMake(0, -5.0f);
+    
+    [self.ivUserPhoto.layer setCornerRadius:self.ivUserPhoto.frame.size.height / 2];
     
     // Init configure pageControl
     self.pageControl = [UIPageControl new];
@@ -279,6 +283,7 @@
                     [self hideGuideView];
                     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:responseObject];
                     [userInfo removeObjectForKey:@"scenarios"];
+                    [self.lbUserName setText:[responseObject objectForKey:@"user_id"]];
                     self.userInfo = [NSDictionary dictionaryWithDictionary:userInfo];
                     self.scenarios = [responseObject objectForKey:@"scenarios"];
                     [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
