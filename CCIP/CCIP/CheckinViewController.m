@@ -69,6 +69,7 @@
     
     [self.ivUserPhoto setImage:[UIImage imageNamed:@"StaffIconDefault"]];
     [self.ivUserPhoto.layer setCornerRadius:self.ivUserPhoto.frame.size.height / 2];
+    [self.ivUserPhoto.layer setMasksToBounds:YES];
     [self.lbUserName setText:@""];
     
     // Init configure pageControl
