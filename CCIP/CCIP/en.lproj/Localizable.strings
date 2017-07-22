@@ -13,6 +13,7 @@
 "Schedule" = "Schedule";
 "Announce" = "Announce";
 "More" = "More";
+"AnnouncementTitle" = "Announcement";
 "ScheduleOfDate" = "Schedule Of %@";
 "HSSBuilding" = "H.S.S. Building";
 "ActivityCenter" = "Activity Center";
