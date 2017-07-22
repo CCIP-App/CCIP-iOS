@@ -59,7 +59,7 @@
     [super viewDidLoad];
     
     // set logo on nav title
-    UIImageView *logoView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"coscup-logo"] imageWithColor:[UIColor colorFromHtmlColor:@"#bbbbbb"]]];
+    UIImageView *logoView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"coscup-logo"] imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
     self.shimmeringLogoView.contentView = logoView;
     self.navigationItem.titleView = self.shimmeringLogoView;
