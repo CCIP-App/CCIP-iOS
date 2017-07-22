@@ -10,6 +10,7 @@
 
 @interface ScheduleSpeakerInfoViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIView *vwContent;
 @property (weak, nonatomic) IBOutlet UILabel *lbSpeakerInfoTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lbSpeakerInfoContent;
 
