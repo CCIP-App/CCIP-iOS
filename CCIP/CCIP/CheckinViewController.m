@@ -5,7 +5,6 @@
 //  Created by Sars on 7/17/16.
 //  Copyright © 2016 CPRTeam. All rights reserved.
 //
-#define TAG 99
 
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import "UIColor+addition.h"

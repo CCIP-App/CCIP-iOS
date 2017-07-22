@@ -427,7 +427,7 @@ Please copy and paste the token into next field or click the token link in the r
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uyl-BJ-dF0">
-                                <rect key="frame" x="35" y="10" width="350" height="160"/>
+                                <rect key="frame" x="35" y="15" width="350" height="160"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8/20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="q04-AM-eVF">
                                         <rect key="frame" x="25" y="26" width="172" height="44"/>
@@ -459,9 +459,9 @@ Please copy and paste the token into next field or click the token link in the r
                                 <constraints>
                                     <constraint firstItem="q04-AM-eVF" firstAttribute="centerY" secondItem="Uyl-BJ-dF0" secondAttribute="centerY" constant="-32" id="3fY-pu-49D"/>
                                     <constraint firstItem="ZY0-oM-P3F" firstAttribute="leading" secondItem="Uyl-BJ-dF0" secondAttribute="leading" constant="25" id="7gw-c8-WxB"/>
-                                    <constraint firstItem="ZY0-oM-P3F" firstAttribute="width" secondItem="q04-AM-eVF" secondAttribute="width" id="DuD-qD-xdw"/>
                                     <constraint firstItem="ZY0-oM-P3F" firstAttribute="centerY" secondItem="Uyl-BJ-dF0" secondAttribute="centerY" constant="32" id="OAE-px-dja"/>
                                     <constraint firstItem="FYl-bu-ujn" firstAttribute="leading" secondItem="q04-AM-eVF" secondAttribute="trailing" constant="15" id="SI5-at-yY4"/>
+                                    <constraint firstItem="FYl-bu-ujn" firstAttribute="leading" secondItem="ZY0-oM-P3F" secondAttribute="trailing" constant="15" id="fAB-HJ-iIw"/>
                                     <constraint firstAttribute="height" constant="160" id="kWb-do-G8g"/>
                                     <constraint firstItem="FYl-bu-ujn" firstAttribute="centerY" secondItem="Uyl-BJ-dF0" secondAttribute="centerY" id="sC9-bO-f5c"/>
                                     <constraint firstAttribute="trailing" secondItem="FYl-bu-ujn" secondAttribute="trailing" constant="10" id="uXJ-Ey-BrL"/>
@@ -469,22 +469,13 @@ Please copy and paste the token into next field or click the token link in the r
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KUP-DK-ov7">
-                                <rect key="frame" x="60" y="200" width="300" height="175"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="175" id="cK8-Qt-OHm"/>
-                                    <constraint firstAttribute="height" constant="150" id="zth-f1-7uE"/>
-                                </constraints>
+                                <rect key="frame" x="60" y="225" width="300" height="279"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="19"/>
                                 <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="zth-f1-7uE"/>
-                                    </mask>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPS-iQ-rbE">
-                                <rect key="frame" x="60" y="413" width="300" height="46"/>
+                                <rect key="frame" x="80" y="509" width="260.33333333333331" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="hjM-3v-dKt"/>
                                 </constraints>
@@ -496,13 +487,14 @@ Please copy and paste the token into next field or click the token link in the r
                             </button>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="HPS-iQ-rbE" secondAttribute="bottom" constant="45" id="3C5-6M-RX3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Uyl-BJ-dF0" secondAttribute="trailing" constant="15" id="4XE-Wm-053"/>
-                            <constraint firstItem="KUP-DK-ov7" firstAttribute="top" secondItem="Uyl-BJ-dF0" secondAttribute="bottom" constant="30" id="A2W-Uz-Fvu"/>
-                            <constraint firstItem="HPS-iQ-rbE" firstAttribute="top" secondItem="KUP-DK-ov7" secondAttribute="bottom" constant="38" id="CQb-mZ-P4k"/>
-                            <constraint firstItem="HPS-iQ-rbE" firstAttribute="centerX" secondItem="KUP-DK-ov7" secondAttribute="centerX" id="KdS-21-58h"/>
-                            <constraint firstItem="HPS-iQ-rbE" firstAttribute="width" secondItem="KUP-DK-ov7" secondAttribute="width" id="TTv-3S-VoH"/>
-                            <constraint firstItem="Uyl-BJ-dF0" firstAttribute="top" secondItem="CVw-Vr-a5B" secondAttribute="topMargin" constant="10" id="azT-LE-Qnv"/>
+                            <constraint firstItem="KUP-DK-ov7" firstAttribute="top" secondItem="Uyl-BJ-dF0" secondAttribute="bottom" constant="50" id="A2W-Uz-Fvu"/>
+                            <constraint firstItem="HPS-iQ-rbE" firstAttribute="top" secondItem="KUP-DK-ov7" secondAttribute="bottom" constant="5" id="CQb-mZ-P4k"/>
+                            <constraint firstItem="Uyl-BJ-dF0" firstAttribute="top" secondItem="CVw-Vr-a5B" secondAttribute="topMargin" constant="15" id="azT-LE-Qnv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HPS-iQ-rbE" secondAttribute="trailing" constant="60" id="dgw-Eb-Sj8"/>
                             <constraint firstItem="Uyl-BJ-dF0" firstAttribute="leading" secondItem="CVw-Vr-a5B" secondAttribute="leadingMargin" constant="15" id="eBF-2I-yn5"/>
+                            <constraint firstItem="HPS-iQ-rbE" firstAttribute="leading" secondItem="CVw-Vr-a5B" secondAttribute="leadingMargin" constant="60" id="iGe-cZ-0DT"/>
                             <constraint firstItem="KUP-DK-ov7" firstAttribute="leading" secondItem="CVw-Vr-a5B" secondAttribute="leading" constant="60" id="k5g-lf-JW6"/>
                             <constraint firstAttribute="trailing" secondItem="KUP-DK-ov7" secondAttribute="trailing" constant="60" id="ksw-mE-Pi8"/>
                         </constraints>
