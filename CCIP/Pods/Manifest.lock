@@ -52,6 +52,7 @@ PODS:
   - STPopup (1.7.0)
   - UICKeyChainStore (2.1.0)
   - UITableView+FDTemplateLayoutCell (1.6)
+  - UIView+FDCollapsibleConstraints (1.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1)
@@ -71,6 +72,7 @@ DEPENDENCIES:
   - STPopup (~> 1.7)
   - UICKeyChainStore (~> 2.1)
   - UITableView+FDTemplateLayoutCell (from `https://github.com/Haraguroicha/UITableView-FDTemplateLayoutCell`, tag `1.6.1`)
+  - UIView+FDCollapsibleConstraints (~> 1.1)
 
 EXTERNAL SOURCES:
   ICViewPager:
@@ -116,7 +118,8 @@ SPEC CHECKSUMS:
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  UIView+FDCollapsibleConstraints: 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: 83cfc4719a5deca443f395303f51cb7e1c58d9ad
+PODFILE CHECKSUM: cda877ab8e3eb1491e60275b2c3d3f4e81ca832a
 
 COCOAPODS: 1.2.1
