@@ -13,6 +13,9 @@
 #import <AFNetworking/AFNetworking.h>
 #import "WebServiceEndPoint.h"
 #import "UIColor+addition.h"
+#import "UITableView+FDTemplateLayoutCell.h"
+#import "UIView+FDCollapsibleConstraints.h"
+#import "UIView+addition.h"
 
 @interface AnnounceTableViewController ()
 
@@ -28,6 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.announceTableView setSeparatorColor:[UIColor clearColor]];
+    self.announceJsonArray = @[];
     if (self.refreshControl == nil) {
         self.refreshControl = [[UIRefreshControl alloc] init];
         [self.refreshControl addTarget:self
@@ -38,7 +43,6 @@
         [self refresh];
         [self.refreshControl beginRefreshing];
     }
-    self.loaded = NO;
     
     [self.navigationItem setTitle:NSLocalizedString(@"AnnouncementTitle", nil)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
@@ -78,10 +82,10 @@
     [manager GET:CC_ANNOUNCEMENT parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         if (responseObject != nil) {
+            self.loaded = YES;
             self.announceJsonArray = responseObject;
             [self.announceTableView reloadData];
             [self.refreshControl endRefreshing];
-            self.loaded = YES;
         }
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
@@ -102,63 +106,74 @@
     NSInteger count = [self.announceJsonArray count];
     if (self.loaded) {
         BOOL NoAnnouncement = count == 0;
-        [self.announceTableView setSeparatorColor:NoAnnouncement ? [UIColor clearColor] : [UIColor lightGrayColor]];
         [self.ivNoAnnouncement setHidden:!NoAnnouncement];
         [self.lbNoAnnouncement setHidden:!NoAnnouncement];
     } else {
-        [self.announceTableView setSeparatorColor:[UIColor clearColor]];
         [self.ivNoAnnouncement setHidden:YES];
         [self.lbNoAnnouncement setHidden:YES];
     }
     return count;
 }
 
-- (void)setCell:(AnnounceTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    AnnounceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AnnounceCell" forIndexPath:indexPath];
+    
+    [self configureCell:cell atIndexPath:indexPath];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [tableView fd_heightForCellWithIdentifier:@"AnnounceCell" configuration:^(id cell) {
+        [self configureCell:cell atIndexPath:indexPath];
+    }];
+}
+
+- (void)configureCell:(AnnounceTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    [cell setFd_enforceFrameLayout:NO]; // Enable to use "-sizeThatFits:"
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setClipsToBounds:NO];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    [cell.layer setZPosition:indexPath.row];
+    UIView *vwContent = [cell performSelector:@selector(vwContent)];
+    [vwContent.layer setCornerRadius:5.0f];
+    [vwContent.layer setMasksToBounds:YES];
+    
+    UIView *vwShadowContent = [cell performSelector:@selector(vwShadowContent)];
+    [vwShadowContent.layer setCornerRadius:5.0f];
+    [vwShadowContent.layer setMasksToBounds:NO];
+    [vwShadowContent.layer setShadowRadius:50.0f];
+    [vwShadowContent.layer setShadowOffset:CGSizeMake(0, 50)];
+    [vwShadowContent.layer setShadowColor:[[UIColor blackColor] CGColor]];
+    [vwShadowContent.layer setShadowOpacity:0.1f];
+    
     NSDictionary *announce = [self.announceJsonArray objectAtIndex:indexPath.row];
     NSString* language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
     
     if ([language containsString:@"zh"]) {
-        [cell.msg setText:[announce objectForKey:@"msg_zh"]];
+        [cell.lbMessage setText:[announce objectForKey:@"msg_zh"]];
     } else {
-        [cell.msg setText:[announce objectForKey:@"msg_en"]];
+        [cell.lbMessage setText:[announce objectForKey:@"msg_en"]];
     }
     NSString *uri = [announce objectForKey:@"uri"];
-    [cell setAccessoryType:(!uri || [uri isEqualToString:@""]) ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator];
+    BOOL hasURL = !(!uri || [uri isEqualToString:@""]);
+    //    [cell setAccessoryType:hasURL ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     NSNumber *datetime = [announce objectForKey:@"datetime"];
     NSString *strDate = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[datetime doubleValue]]];
     
-    [cell.msgTime setText:strDate];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    AnnounceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AnnounceCell" forIndexPath:indexPath];
+    [cell.lbMessageTime setText:strDate];
     
-    [self setCell:cell atIndexPath:indexPath];
+    if (hasURL) {
+        [cell.lbURL setText:uri];
+    } else {
+        [cell.lbURL setText:@""];
+    }
+    [cell.vwDashedLine addDashedLine:[UIColor colorFromHtmlColor:@"#E9E9E9"]];
     
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static AnnounceTableViewCell *cell = nil;
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^{
-        cell = [tableView dequeueReusableCellWithIdentifier:@"AnnounceCell"];
-    });
-    
-    [self setCell:cell atIndexPath:indexPath];
-    
-    return [self calculateHeightForConfiguredSizingCell:cell];
-}
-
-- (CGFloat)calculateHeightForConfiguredSizingCell:(AnnounceTableViewCell *)sizingCell {
-    [sizingCell layoutIfNeeded];
-    
-    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    return size.height + 1;
+    [cell.vwURL setFd_collapsed:!hasURL];
 }
 
 #pragma mark - Table view delegate

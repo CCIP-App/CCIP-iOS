@@ -114,6 +114,7 @@
 		6B11BE811D4CBA5800B87EA9 /* UIImage+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */; };
 		6B11BE821D4CBC9300B87EA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B11BE841D4CBC9300B87EA9 /* Main.storyboard */; };
 		6B11BE891D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B11BE881D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m */; };
+		6B26D9101F23E57A003D9CA1 /* UIView+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B26D90F1F23E57A003D9CA1 /* UIView+addition.m */; };
 		6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */; };
 		6B2CD5611D281D9400793194 /* UIAlertController+additional.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */; };
 		6B2CD5791D286E6F00793194 /* UIColor+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CD5781D286E6F00793194 /* UIColor+addition.m */; };
@@ -370,6 +371,8 @@
 		6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+addition.m"; sourceTree = "<group>"; };
 		6B11BE871D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbeddedTabBarControllerSegue.h; sourceTree = "<group>"; };
 		6B11BE881D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmbeddedTabBarControllerSegue.m; sourceTree = "<group>"; };
+		6B26D90E1F23E57A003D9CA1 /* UIView+addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+addition.h"; sourceTree = "<group>"; };
+		6B26D90F1F23E57A003D9CA1 /* UIView+addition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+addition.m"; sourceTree = "<group>"; };
 		6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+addition.h"; sourceTree = "<group>"; };
 		6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+addition.m"; sourceTree = "<group>"; };
 		6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+additional.m"; sourceTree = "<group>"; };
@@ -560,6 +563,8 @@
 				6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */,
 				28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */,
 				28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */,
+				6B26D90E1F23E57A003D9CA1 /* UIView+addition.h */,
+				6B26D90F1F23E57A003D9CA1 /* UIView+addition.m */,
 				6BCBC3B31D4F393700B5AF35 /* UIViewController+addition.h */,
 				6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */,
 				6BAB42371D4ED39D0029B8A5 /* UIApplication+addition.h */,
@@ -1252,6 +1257,7 @@
 				28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */,
 				28A7C56D1D6032680079BB12 /* MainNavViewController.m in Sources */,
 				5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */,
+				6B26D9101F23E57A003D9CA1 /* UIView+addition.m in Sources */,
 				5FECE5AC1D352E8A00242DB4 /* StaffGroupTableViewController.m in Sources */,
 				280774C51F1AD2F400A5B994 /* ScheduleTableViewController.m in Sources */,
 				5F8B2D2A1D55E02200A68C7D /* SponsorTableViewController.m in Sources */,
