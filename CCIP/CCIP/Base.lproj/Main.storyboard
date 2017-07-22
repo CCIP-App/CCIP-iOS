@@ -771,13 +771,30 @@ Please copy and paste the token into next field or click the token link in the r
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Fu6-Br-txp">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleDetailCell" id="Fu6-Br-txp" customClass="ScheduleDetailTableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fu6-Br-txp" id="gnT-1d-Gea">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="9FR-26-hpW">
+                                            <rect key="frame" x="25" y="7" width="364" height="29.666666666666664"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="9FR-26-hpW" firstAttribute="leading" secondItem="gnT-1d-Gea" secondAttribute="leading" constant="25" id="GEE-zq-zUM"/>
+                                        <constraint firstAttribute="trailing" secondItem="9FR-26-hpW" secondAttribute="trailing" constant="25" id="dMn-5T-UcP"/>
+                                        <constraint firstAttribute="bottom" secondItem="9FR-26-hpW" secondAttribute="bottom" constant="7" id="gth-MT-SIN"/>
+                                        <constraint firstItem="9FR-26-hpW" firstAttribute="top" secondItem="gnT-1d-Gea" secondAttribute="top" constant="7" id="ncA-rY-8RX"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="text" destination="9FR-26-hpW" id="5bt-4r-yGx"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
