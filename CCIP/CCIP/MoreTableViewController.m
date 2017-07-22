@@ -13,6 +13,8 @@
 #import "MoreCell.h"
 #import <AFNetworking/AFNetworking.h>
 #import "WebServiceEndPoint.h"
+#import "UIColor+addition.h"
+#import "UIImage+addition.h"
 
 @interface MoreTableViewController ()
 
@@ -57,10 +59,25 @@
     [super viewDidLoad];
     
     // set logo on nav title
-    UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
+    UIImageView *logoView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"coscup-logo"] imageWithColor:[UIColor colorFromHtmlColor:@"#bbbbbb"]]];
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
     self.shimmeringLogoView.contentView = logoView;
     self.navigationItem.titleView = self.shimmeringLogoView;
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
+    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, 239);
+    UIView *headView = [UIView new];
+    [headView setFrame:frame];
+    [headView setGradientColor:[UIColor colorFromHtmlColor:@"#F9FEA5"]
+                            To:[UIColor colorFromHtmlColor:@"#20E2D7"]
+                    StartPoint:CGPointMake(-.4f, .5f)
+                       ToPoint:CGPointMake(1, .5f)];
+    [self.view addSubview:headView];
+    [self.view sendSubviewToBack:headView];
     
     self.userInfo = [[AppDelegate appDelegate] userInfo];
     

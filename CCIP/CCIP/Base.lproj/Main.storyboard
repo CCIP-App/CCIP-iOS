@@ -1024,7 +1024,7 @@ Label</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1EN-X2-lLK">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Staffs" id="d4Y-ir-8JL" customClass="MoreCell">
@@ -1075,7 +1075,7 @@ Label</string>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1EN-X2-lLK" firstAttribute="top" secondItem="Ni5-vi-8U5" secondAttribute="top" id="02n-Oy-5FE"/>
+                            <constraint firstItem="1EN-X2-lLK" firstAttribute="top" secondItem="jaG-xC-23l" secondAttribute="bottom" id="OeJ-z5-yzR"/>
                             <constraint firstAttribute="trailing" secondItem="1EN-X2-lLK" secondAttribute="trailing" id="hr6-ww-U9u"/>
                             <constraint firstAttribute="bottom" secondItem="1EN-X2-lLK" secondAttribute="bottom" id="qBH-d2-5V0"/>
                             <constraint firstItem="1EN-X2-lLK" firstAttribute="leading" secondItem="Ni5-vi-8U5" secondAttribute="leading" id="vZk-AJ-WmS"/>
