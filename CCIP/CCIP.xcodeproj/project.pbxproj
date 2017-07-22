@@ -374,7 +374,7 @@
 		6B11BE881D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmbeddedTabBarControllerSegue.m; sourceTree = "<group>"; };
 		6B26D90E1F23E57A003D9CA1 /* UIView+addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+addition.h"; sourceTree = "<group>"; };
 		6B26D90F1F23E57A003D9CA1 /* UIView+addition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+addition.m"; sourceTree = "<group>"; };
-		6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fontawesome-webfont.ttf"; path = "../../../FortAwesome/fonts/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fontawesome-webfont.ttf"; path = "../../../FontAwesome/fonts/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+addition.h"; sourceTree = "<group>"; };
 		6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+addition.m"; sourceTree = "<group>"; };
 		6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+additional.m"; sourceTree = "<group>"; };
