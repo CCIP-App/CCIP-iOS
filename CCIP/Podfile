@@ -24,6 +24,6 @@ target 'CCIP' do
   pod 'NJKWebViewProgress', '~> 0.2'
   pod 'iVersion', :git => 'https://github.com/FrankWu100/iVersion'
   pod 'AFNetworking', '~> 3.1'
-  pod 'UITableView+FDTemplateLayoutCell', '~> 1.6'
+  pod 'UITableView+FDTemplateLayoutCell', :git => 'https://github.com/Haraguroicha/UITableView-FDTemplateLayoutCell', :tag => '1.6.1'
 
 end

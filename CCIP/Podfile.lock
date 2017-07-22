@@ -70,13 +70,16 @@ DEPENDENCIES:
   - Shimmer (~> 1.0)
   - STPopup (~> 1.7)
   - UICKeyChainStore (~> 2.1)
-  - UITableView+FDTemplateLayoutCell (~> 1.6)
+  - UITableView+FDTemplateLayoutCell (from `https://github.com/Haraguroicha/UITableView-FDTemplateLayoutCell`, tag `1.6.1`)
 
 EXTERNAL SOURCES:
   ICViewPager:
     :git: https://github.com/FrankWu100/ICViewPager
   iVersion:
     :git: https://github.com/FrankWu100/iVersion
+  UITableView+FDTemplateLayoutCell:
+    :git: https://github.com/Haraguroicha/UITableView-FDTemplateLayoutCell
+    :tag: 1.6.1
 
 CHECKOUT OPTIONS:
   ICViewPager:
@@ -85,6 +88,9 @@ CHECKOUT OPTIONS:
   iVersion:
     :commit: 8de31c2756ce2cfdc1fe5463783fa12da57fbf62
     :git: https://github.com/FrankWu100/iVersion
+  UITableView+FDTemplateLayoutCell:
+    :git: https://github.com/Haraguroicha/UITableView-FDTemplateLayoutCell
+    :tag: 1.6.1
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -111,6 +117,6 @@ SPEC CHECKSUMS:
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
 
-PODFILE CHECKSUM: cabb3afdae4e86f2a8ac5a274888bf8126e7f08b
+PODFILE CHECKSUM: 83cfc4719a5deca443f395303f51cb7e1c58d9ad
 
 COCOAPODS: 1.2.1

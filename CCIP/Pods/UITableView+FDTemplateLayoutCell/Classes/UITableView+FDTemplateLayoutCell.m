@@ -68,7 +68,7 @@
         NSArray<NSLayoutConstraint *> *edgeConstraints;
         if (isSystemVersionEqualOrGreaterThen10_2) {
             // To avoid confilicts, make width constraint softer than required (1000)
-            widthFenceConstraint.priority = UILayoutPriorityRequired - 1;
+            widthFenceConstraint.priority = UILayoutPriorityDefaultHigh - 1;
             
             // Build edge constraints
             NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:cell.contentView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:cell attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
