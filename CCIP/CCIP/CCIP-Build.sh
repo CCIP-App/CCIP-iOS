@@ -60,15 +60,16 @@ SETTINGS_FILE=Settings.bundle/Root.plist
 APP_FLAGS_FILE=Settings.bundle/AppFlags.plist
 
 # /usr/libexec/PlistBuddy -c "set CFBundleVersion $version" "$INFOPLIST_FILE"
-# settingBundle "version_preference" "$version $ARCHS";
-# settingBundle "build_timestamp" "$timeStamp";
 
-# settingFlagsBundle $flags;
 cd "$PROJECT_NAME"
+settingBundle "version_preference" "$version $ARCHS";
+settingBundle "build_timestamp" "$timeStamp";
+settingFlagsBundle $flags;
+
 cat CCIP.xcconfig > CCIP.debug.xcconfig
 cat CCIP.xcconfig > CCIP.release.xcconfig
-echo -e "`cat CCIP.debug.xcconfig   | sed -E 's/#Dev#/-Dev/g'`"                                     > CCIP.debug.xcconfig
-echo -e "`cat CCIP.release.xcconfig | sed -E 's/#Dev#//g'`"                                         > CCIP.release.xcconfig
+echo -e "`cat CCIP.debug.xcconfig   | sed -E 's/#Dev#/-Dev/g'`"                                    > CCIP.debug.xcconfig
+echo -e "`cat CCIP.release.xcconfig | sed -E 's/#Dev#//g'`"                                        > CCIP.release.xcconfig
 echo -e "`cat CCIP.debug.xcconfig   | sed -E 's/#BUILD_VERSION#/'"$version"'/g'`"                  > CCIP.debug.xcconfig
 echo -e "`cat CCIP.release.xcconfig | sed -E 's/#BUILD_VERSION#/'"$version"'/g'`"                  > CCIP.release.xcconfig
 echo -e "`cat CCIP.debug.xcconfig   | sed -E 's/#BUILD_SHORT_VERSION#/'"$productVersion"'/g'`"     > CCIP.debug.xcconfig

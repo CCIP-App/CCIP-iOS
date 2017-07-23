@@ -110,6 +110,7 @@
 		6B02FD931F220326002AC0D3 /* ScheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */; };
 		6B02FD961F220371002AC0D3 /* ScheduleAbstractViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD951F220371002AC0D3 /* ScheduleAbstractViewCell.m */; };
 		6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD981F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m */; };
+		6B036B901F24371700D5E5A5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B036B8F1F24371600D5E5A5 /* Settings.bundle */; };
 		6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */; };
 		6B11BE811D4CBA5800B87EA9 /* UIImage+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */; };
 		6B11BE821D4CBC9300B87EA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B11BE841D4CBC9300B87EA9 /* Main.storyboard */; };
@@ -366,6 +367,7 @@
 		6B02FD951F220371002AC0D3 /* ScheduleAbstractViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleAbstractViewCell.m; sourceTree = "<group>"; };
 		6B02FD971F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleSpeakerInfoViewCell.h; sourceTree = "<group>"; };
 		6B02FD981F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleSpeakerInfoViewCell.m; sourceTree = "<group>"; };
+		6B036B8F1F24371600D5E5A5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		6B0B84D11D2B861000DE18B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B0B84D21D2B862300DE18B0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		6B11BE7F1D4CBA5800B87EA9 /* UIImage+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+addition.h"; sourceTree = "<group>"; };
@@ -942,6 +944,7 @@
 				6BD8EF391D1D73510094BE95 /* Assets.xcassets */,
 				5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */,
 				6BD8EF3E1D1D73510094BE95 /* Info.plist */,
+				6B036B8F1F24371600D5E5A5 /* Settings.bundle */,
 				6BB55CAB1F242EC7007BC840 /* CCIP-Build.sh */,
 				6B9348AE1F2428A300F77757 /* CCIP.xcconfig */,
 				6B2AEB7C1F23FF6F00C65868 /* CCIP.debug.xcconfig */,
@@ -1153,6 +1156,7 @@
 				5FB4D44A1D3A8319005BF382 /* StaffIconDefault@2x.png in Resources */,
 				5FB4D47D1D3A8DF6005BF382 /* icon_ios_bell@3x.png in Resources */,
 				6B11BE821D4CBC9300B87EA9 /* Main.storyboard in Resources */,
+				6B036B901F24371700D5E5A5 /* Settings.bundle in Resources */,
 				284602E01F121BBB00F512A3 /* LaunchScreen@1x.png in Resources */,
 				6BAADFC41F23417B0054F870 /* ConnectWiFiToCOSCUP.png in Resources */,
 				28B4322E1D6227D400590846 /* BarButton-Back.png in Resources */,
@@ -1514,7 +1518,6 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
-					"SRC_ROOT=${SRCROOT}",
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1566,10 +1569,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"SRC_ROOT=${SRCROOT}",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
