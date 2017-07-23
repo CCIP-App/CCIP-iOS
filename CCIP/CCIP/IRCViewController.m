@@ -59,7 +59,9 @@
     [self.view addSubview:headView];
     [self.view sendSubviewToBack:headView];
     
-    self.webView = [[WKWebView alloc] initWithFrame:self.view.frame];
+//    self.webView = [[WKWebView alloc] initWithFrame:self.view.frame];
+    self.webView = [[WKWebView alloc] init];
+    [self.webView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.webView setNavigationDelegate:self];
     
     [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
@@ -73,6 +75,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self setWebViewConstraints];
     [AppDelegate setDevLogo:self.shimmeringLogoView WithLogo:[[UIImage imageNamed:@"coscup-logo"] imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
     
     NSURL *nsurl = self.webView.URL;
@@ -81,6 +84,13 @@
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
         [self.webView loadRequest:requestObj];
     }
+}
+
+-(void)setWebViewConstraints {
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.webView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.webView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.webView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.webView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0]];
 }
 
 - (IBAction)reload:(id)sender {
