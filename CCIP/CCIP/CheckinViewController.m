@@ -34,7 +34,7 @@
 @property (strong, nonatomic) NSArray *scenarios;
 
 @property (strong, nonatomic) SBSBarcodePicker *scanditBarcodePicker;
-@property (strong, nonatomic) UIBarButtonItem *qrButton;
+@property (strong, nonatomic) UIBarButtonItem *qrButtonItem;
 
 @property (strong, nonatomic) GuideViewController *guideViewController;
 @property (strong, nonatomic) StatusViewController *statusViewController;
@@ -58,10 +58,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.controllerTopStart = 50.0f;
-    [self.navigationController.navigationBar setHidden:YES];
+//    [self.navigationController.navigationBar setHidden:YES];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
     
     [[AppDelegate appDelegate] setCheckinView:self];
     self.firstLoad = YES;
+    
+    // set logo on nav title
+    UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
+    self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
+    self.shimmeringLogoView.contentView = logoView;
+//    self.navigationItem.titleView = self.shimmeringLogoView;
     
     // Init configure carousel
     self.cards.type = iCarouselTypeRotary;
@@ -91,7 +102,6 @@
                                              selector:@selector(appplicationDidBecomeActive:)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -107,9 +117,9 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self hideGuideView];
-    [self hideStatusView];
-    [self hideInvalidNetworkMsgViewController];
+    [self hideGuideView:nil];
+    [self hideStatusView:nil];
+    [self hideInvalidNetworkMsgViewController:nil];
     [self closeBarcodePickerOverlay];
 }
 
@@ -184,30 +194,54 @@
 
 #pragma mark hide custom view controller method
 
-- (void)hideGuideView {
-    if (self.guideViewController.isVisible) {
+- (void)hideGuideView:(void(^)(void))completion {
+    BOOL isVisible = [self.guideViewController isVisible];
+    if (isVisible) {
         [self.guideViewController dismissViewControllerAnimated:YES
                                                      completion:^{
                                                          self.guideViewController = nil;
+                                                         if (completion != nil) {
+                                                             completion();
+                                                         }
                                                      }];
+    } else {
+        if (completion != nil) {
+            completion();
+        }
     }
 }
 
-- (void)hideStatusView {
-    if (self.statusViewController.isVisible) {
+- (void)hideStatusView:(void(^)(void))completion {
+    BOOL isVisible = [self.statusViewController isVisible];
+    if (isVisible) {
         [self.statusViewController dismissViewControllerAnimated:YES
                                                       completion:^{
                                                           self.statusViewController = nil;
+                                                          if (completion != nil) {
+                                                              completion();
+                                                          }
                                                       }];
+    } else {
+        if (completion != nil) {
+            completion();
+        }
     }
 }
 
-- (void)hideInvalidNetworkMsgViewController {
-    if (self.invalidNetworkMsgViewController.isVisible) {
+- (void)hideInvalidNetworkMsgViewController:(void(^)(void))completion {
+    BOOL isVisible = [self.invalidNetworkMsgViewController isVisible];
+    if (isVisible) {
         [self.invalidNetworkMsgViewController dismissViewControllerAnimated:YES
                                                                  completion:^{
                                                                      self.invalidNetworkMsgViewController = nil;
+                                                                     if (completion != nil) {
+                                                                         completion();
+                                                                     }
                                                                  }];
+    } else {
+        if (completion != nil) {
+            completion();
+        }
     }
 }
 
@@ -284,7 +318,7 @@
             if (!error) {
                 NSLog(@"Json: %@", responseObject);
                 if (responseObject != nil) {
-                    [self hideGuideView];
+                    [self hideGuideView:nil];
                     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:responseObject];
                     [userInfo removeObjectForKey:@"scenarios"];
                     [self.lbUserName setText:[responseObject objectForKey:@"user_id"]];
@@ -357,16 +391,16 @@
 #pragma makr QR Code Scanner
 
 - (void)handleQRButton {
-    if (self.qrButton == nil) {
-        self.qrButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"QR_Code.png"]
-                                           landscapeImagePhone:nil
-                                                         style:UIBarButtonItemStylePlain
-                                                        target:self
-                                                        action:@selector(callBarcodePickerOverlay)];
+    if (self.qrButtonItem == nil) {
+        self.qrButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"QR_Code.png"]
+                                               landscapeImagePhone:nil
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(callBarcodePickerOverlay)];
     }
     
     if ([AppDelegate isDevMode] || ![AppDelegate haveAccessToken]){
-        self.navigationItem.rightBarButtonItem = self.qrButton;
+        self.navigationItem.rightBarButtonItem = self.qrButtonItem;
     } else {
         self.navigationItem.rightBarButtonItem = nil;
     }
@@ -453,7 +487,7 @@
 
 - (void)closeBarcodePickerOverlay {
     if (self.scanditBarcodePicker != nil) {
-        [self.qrButton setImage:[UIImage imageNamed:@"QR_Code.png"]];
+        [self.qrButtonItem setImage:[UIImage imageNamed:@"QR_Code.png"]];
         
         [self.scanditBarcodePicker removeFromParentViewController];
         [self.scanditBarcodePicker.view removeFromSuperview];
@@ -463,8 +497,9 @@
 }
 
 - (void)callBarcodePickerOverlay {
-    [self hideGuideView];
-    [self showBarcodePickerOverlay];
+    [self hideGuideView:^{
+        [self showBarcodePickerOverlay];
+    }];
 }
 
 - (void)showBarcodePickerOverlay {
@@ -472,12 +507,13 @@
         [self closeBarcodePickerOverlay];
         
         if (![AppDelegate haveAccessToken]) {
-            [self performSegueWithIdentifier:@"ShowGuide" sender:NULL];
+            [self performSegueWithIdentifier:@"ShowGuide"
+                                      sender:nil];
         } else {
             [self hideQRButton];
         }
     } else {
-        [self.qrButton setImage:[UIImage imageNamed:@"QR_Code_Filled.png"]];
+        [self.qrButtonItem setImage:[UIImage imageNamed:@"QR_Code_Filled.png"]];
         
         // Configure the barcode picker through a scan settings instance by defining which
         // symbologies should be enabled.
@@ -516,10 +552,10 @@
         [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scanditBarcodePicker.view
                                                               attribute:NSLayoutAttributeTop
                                                               relatedBy:NSLayoutRelationEqual
-                                                                 toItem:self.view
+                                                                 toItem:self.lbUserName
                                                               attribute:NSLayoutAttributeTop
                                                              multiplier:1.0
-                                                               constant:self.view.topGuideHeight]];
+                                                               constant:0.0]];
         // Add constraints to set the width to 200 and height to 400. Since this is not the aspect ratio
         // of the camera preview some of the camera preview will be cut away on the left and right.
         [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scanditBarcodePicker.view
@@ -530,10 +566,10 @@
                                                              multiplier:1.0
                                                                constant:0.0]];
         [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scanditBarcodePicker.view
-                                                              attribute:NSLayoutAttributeHeight
+                                                              attribute:NSLayoutAttributeBottom
                                                               relatedBy:NSLayoutRelationEqual
                                                                  toItem:self.cards
-                                                              attribute:NSLayoutAttributeHeight
+                                                              attribute:NSLayoutAttributeBottom
                                                              multiplier:1.0
                                                                constant:0.0]];
         
