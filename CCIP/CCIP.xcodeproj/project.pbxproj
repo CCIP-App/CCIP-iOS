@@ -116,8 +116,6 @@
 		6B11BE891D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B11BE881D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m */; };
 		6B26D9101F23E57A003D9CA1 /* UIView+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B26D90F1F23E57A003D9CA1 /* UIView+addition.m */; };
 		6B26D9131F23EE28003D9CA1 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */; };
-		6B2AEB7D1F23FF6F00C65868 /* CCIP.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6B2AEB7B1F23FF6F00C65868 /* CCIP.release.xcconfig */; };
-		6B2AEB7E1F23FF6F00C65868 /* CCIP.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6B2AEB7C1F23FF6F00C65868 /* CCIP.debug.xcconfig */; };
 		6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */; };
 		6B2CD5611D281D9400793194 /* UIAlertController+additional.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */; };
 		6B2CD5791D286E6F00793194 /* UIColor+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CD5781D286E6F00793194 /* UIColor+addition.m */; };
@@ -1022,7 +1020,7 @@
 		6BD8EF1F1D1D73510094BE95 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = CPRTeam;
 				TargetAttributes = {
 					6BCAC01A1F1A8FC100032096 = {
@@ -1126,7 +1124,6 @@
 				28B432421D6228AF00590846 /* BarButton-Reload@3x.png in Resources */,
 				2821DAA31D3DCB2300AFE139 /* ProgramDetailViewTopBG.png@3x.png in Resources */,
 				6BAADFCE1F235C6D0054F870 /* Day1.png in Resources */,
-				6B2AEB7E1F23FF6F00C65868 /* CCIP.debug.xcconfig in Resources */,
 				284602E11F121BBB00F512A3 /* LaunchScreen@2x.png in Resources */,
 				5FB4D4841D3A998C005BF382 /* coscup-logo.png in Resources */,
 				5FB4D4491D3A8319005BF382 /* StaffIconDefault@1x.png in Resources */,
@@ -1144,7 +1141,6 @@
 				288D3A7B1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle in Resources */,
 				28A9362C1D62CED800CBCA54 /* ToolButton-GitHub_Filled@2x.png in Resources */,
 				2839BF3D1D4C97EE0062F36D /* Star_Filled.png in Resources */,
-				6B2AEB7D1F23FF6F00C65868 /* CCIP.release.xcconfig in Resources */,
 				6BAADFD01F235C6D0054F870 /* Day2.png in Resources */,
 				5FB4D45B1D3A865A005BF382 /* icon_ios_topcharts@2x.png in Resources */,
 				2839BF3E1D4C97EE0062F36D /* Star.png in Resources */,
@@ -1472,13 +1468,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1520,13 +1524,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
