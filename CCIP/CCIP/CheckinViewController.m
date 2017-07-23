@@ -57,7 +57,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.controllerTopStart = 50.0f;
 //    [self.navigationController.navigationBar setHidden:YES];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
@@ -71,32 +70,30 @@
     // set logo on nav title
     UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
-    self.shimmeringLogoView.contentView = logoView;
-//    self.navigationItem.titleView = self.shimmeringLogoView;
-    
-    // Init configure carousel
-    self.cards.type = iCarouselTypeRotary;
-    self.cards.pagingEnabled = YES;
-    self.cards.bounceDistance = 0.3f;
-    self.cards.contentOffset = CGSizeMake(0, -5.0f);
-    
-    [self.ivUserPhoto setImage:[UIImage imageNamed:@"StaffIconDefault"]];
-    [self.ivUserPhoto.layer setCornerRadius:self.ivUserPhoto.frame.size.height / 2];
-    [self.ivUserPhoto.layer setMasksToBounds:YES];
-    [self.lbUserName setText:@""];
+    [self.shimmeringLogoView setContentView:logoView];
+//    [self.navigationItem setTitleView:self.shimmeringLogoView];
     
     // Init configure pageControl
     self.pageControl = [UIPageControl new];
-
-    self.pageControl.numberOfPages = 0;
+    [self.pageControl setNumberOfPages:0];
+    // Init configure carousel
     [self.cards addSubview:self.pageControl];
+    [self.cards setType:iCarouselTypeRotary];
+    [self.cards setPagingEnabled:YES];
+    [self.cards setBounceDistance:0.3f];
+    [self.cards setContentOffset:CGSizeMake(0, -5.0f)];
+    [self.lbUserName setText:@""];
     
     SEND_GAI(@"CheckinViewController");
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(navSingleTap)];
-    self.ivUserPhoto.userInteractionEnabled = YES;
+    [self.ivUserPhoto setUserInteractionEnabled:YES];
     [self.ivUserPhoto addGestureRecognizer:tapGesture];
+    [self.ivUserPhoto setImage:[UIImage imageNamed:@"StaffIconDefault"]];
+    [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
+    [self.ivUserPhoto.layer setCornerRadius:self.ivUserPhoto.frame.size.height / 2];
+    [self.ivUserPhoto.layer setMasksToBounds:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(appplicationDidBecomeActive:)
@@ -106,13 +103,17 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [AppDelegate setDevLogo:self.shimmeringLogoView WithLogo:[UIImage imageNamed:@"coscup-logo"]];
-    [self handleQRButton];
+    self.controllerTopStart = self.navigationController.navigationBar.frame.size.height;
+    [AppDelegate setDevLogo:self.shimmeringLogoView
+                   WithLogo:[UIImage imageNamed:@"coscup-logo"]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self reloadCard];
+    [self performSelector:@selector(reloadCard)
+               withObject:nil
+               afterDelay:.5f];
+    [self handleQRButton];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -297,6 +298,8 @@
         previousDate = [AppDelegate firstAvailableDate];
     }
 
+    [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
+    [self.lbUserName setText:@""];
     if (![AppDelegate haveAccessToken]) {
         if (self.scanditBarcodePicker == nil) {
             [self performSegueWithIdentifier:@"ShowGuide"
@@ -305,6 +308,7 @@
             self.scenarios = [NSArray new];
             [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
                                                    value:@""];
+            [AppDelegate parseAvailableDays:self.scenarios];
             [self reloadAndGoToCard];
         }
     } else {
@@ -321,9 +325,10 @@
                     [self hideGuideView:nil];
                     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:responseObject];
                     [userInfo removeObjectForKey:@"scenarios"];
-                    [self.lbUserName setText:[responseObject objectForKey:@"user_id"]];
                     self.userInfo = [NSDictionary dictionaryWithDictionary:userInfo];
                     self.scenarios = [responseObject objectForKey:@"scenarios"];
+                    [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
+                    [self.lbUserName setText:[responseObject objectForKey:@"user_id"]];
                     [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
                                                            value:[responseObject objectForKey:@"user_id"]];
                     if ([AppDelegate appDelegate].isLoginSession) {
@@ -399,10 +404,9 @@
                                                             action:@selector(callBarcodePickerOverlay)];
     }
     
-    if ([AppDelegate isDevMode] || ![AppDelegate haveAccessToken]){
+    self.navigationItem.rightBarButtonItem = nil;
+    if ([AppDelegate isDevMode] || ![AppDelegate haveAccessToken]) {
         self.navigationItem.rightBarButtonItem = self.qrButtonItem;
-    } else {
-        self.navigationItem.rightBarButtonItem = nil;
     }
 }
 
@@ -552,10 +556,10 @@
         [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scanditBarcodePicker.view
                                                               attribute:NSLayoutAttributeTop
                                                               relatedBy:NSLayoutRelationEqual
-                                                                 toItem:self.lbUserName
+                                                                 toItem:self.view
                                                               attribute:NSLayoutAttributeTop
                                                              multiplier:1.0
-                                                               constant:0.0]];
+                                                               constant:self.controllerTopStart + 22.0f]];
         // Add constraints to set the width to 200 and height to 400. Since this is not the aspect ratio
         // of the camera preview some of the camera preview will be cut away on the left and right.
         [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scanditBarcodePicker.view
@@ -568,7 +572,7 @@
         [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scanditBarcodePicker.view
                                                               attribute:NSLayoutAttributeBottom
                                                               relatedBy:NSLayoutRelationEqual
-                                                                 toItem:self.cards
+                                                                 toItem:self.view
                                                               attribute:NSLayoutAttributeBottom
                                                              multiplier:1.0
                                                                constant:0.0]];

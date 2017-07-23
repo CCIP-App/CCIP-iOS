@@ -195,7 +195,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mye-a9-7BF">
-                                            <rect key="frame" x="75" y="308" width="270" height="1"/>
+                                            <rect key="frame" x="75" y="260" width="270" height="1"/>
                                             <color key="backgroundColor" red="0.0" green="0.60713750123977661" blue="0.47257083654403687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="270" id="k21-6W-iBl"/>
@@ -216,7 +216,7 @@ Please copy and paste the token into next field or click the token link in the r
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Here ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N3c-1x-If0">
-                                            <rect key="frame" x="75" y="276" width="270" height="30"/>
+                                            <rect key="frame" x="75" y="228" width="270" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="Kgw-cW-3Gf"/>
                                                 <constraint firstAttribute="width" constant="270" id="dnP-Fr-JuI"/>
@@ -229,7 +229,7 @@ Please copy and paste the token into next field or click the token link in the r
                                             </connections>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8w3-iH-STq">
-                                            <rect key="frame" x="75.333333333333314" y="340" width="270" height="45"/>
+                                            <rect key="frame" x="75.333333333333314" y="292" width="270" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="270" id="8hu-v4-MyY"/>
                                                 <constraint firstAttribute="height" constant="45" id="FSR-OA-U65"/>
@@ -254,7 +254,7 @@ Please copy and paste the token into next field or click the token link in the r
                                         <constraint firstAttribute="trailing" secondItem="hQW-Em-vct" secondAttribute="trailing" id="jlZ-SY-L3H"/>
                                         <constraint firstItem="Mye-a9-7BF" firstAttribute="top" secondItem="N3c-1x-If0" secondAttribute="bottom" constant="2" id="pW0-Ea-1Us"/>
                                         <constraint firstItem="8w3-iH-STq" firstAttribute="centerX" secondItem="nug-PN-SE0" secondAttribute="centerX" id="q3W-NT-1Ha"/>
-                                        <constraint firstAttribute="bottom" secondItem="8w3-iH-STq" secondAttribute="bottom" constant="102" id="rvs-zj-7S6"/>
+                                        <constraint firstAttribute="bottom" secondItem="8w3-iH-STq" secondAttribute="bottom" constant="150" id="rvs-zj-7S6"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="extraLight"/>

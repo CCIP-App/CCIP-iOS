@@ -73,7 +73,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [AppDelegate setDevLogo:self.shimmeringLogoView WithLogo:[UIImage imageNamed:@"coscup-logo"]];
+    [AppDelegate setDevLogo:self.shimmeringLogoView
+                   WithLogo:[UIImage imageNamed:@"coscup-logo"]];
 }
 
 - (void)refresh {
