@@ -40,6 +40,8 @@
 @property (strong, nonatomic) StatusViewController *statusViewController;
 @property (strong, nonatomic) InvalidNetworkMessageViewController *invalidNetworkMsgViewController;
 
+@property (readwrite, nonatomic) CGFloat controllerTopStart;
+
 @end
 
 @implementation CheckinViewController
@@ -55,6 +57,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.controllerTopStart = 50.0f;
     [self.navigationController.navigationBar setHidden:YES];
     
     [[AppDelegate appDelegate] setCheckinView:self];
@@ -94,7 +97,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [AppDelegate setDevLogo:self.shimmeringLogoView WithLogo:[UIImage imageNamed:@"coscup-logo"]];
-
     [self handleQRButton];
 }
 

@@ -12,6 +12,8 @@
 
 @interface CheckinViewController : UIViewController<iCarouselDataSource, iCarouselDelegate, SBSScanDelegate, SBSProcessFrameDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (readonly, nonatomic) CGFloat controllerTopStart;
+
 - (void)goToCard;
 - (void)reloadCard;
 - (void)showCountdown:(NSDictionary *)json;

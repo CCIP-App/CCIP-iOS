@@ -9,6 +9,7 @@
 #import "InvalidNetworkMessageViewController.h"
 #import "AppDelegate.h"
 #import "UIColor+addition.h"
+#import "MainNavViewController.h"
 
 @interface InvalidNetworkMessageViewController ()
 
@@ -46,17 +47,19 @@
                                                object:nil];
 }
 
-- (void)viewWillLayoutSubviews{
+- (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-    
     if (self.isRelayout != true) {
+        MainNavViewController *mnvc = (MainNavViewController *)self.presentingViewController;
+        CheckinViewController *cvc = (CheckinViewController *)[[mnvc childViewControllers] firstObject];
+        CGFloat topStart = [cvc controllerTopStart];
         self.view.frame = CGRectMake(0.0,
-                                     0.0,
+                                     0.0 + topStart,
                                      self.view.frame.size.width,
-                                     self.view.frame.size.height - 49);
+                                     self.view.frame.size.height - topStart - 49);
         
         self.view.superview.frame = CGRectMake(0.0,
-                                               0.0,
+                                               0.0 + topStart,
                                                self.view.frame.size.width,
                                                self.view.frame.size.height);
         self.isRelayout = true;
