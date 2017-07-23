@@ -91,7 +91,7 @@
       }
       };
     @try {
-        void(^block)() = [cells objectForKey:[self.identifiers objectAtIndex:indexPath.row]];
+        void(^block)(void) = [cells objectForKey:[self.identifiers objectAtIndex:indexPath.row]];
         block();
     } @catch (NSException *exception) {
         
