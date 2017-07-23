@@ -130,6 +130,7 @@
 		6B2CD5B51D28C92B00793194 /* GatewayWebService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD5B31D28C92B00793194 /* GatewayWebService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F9E441D4D142700047F38 /* CheckinCardView.m */; };
 		6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
+		6B49F1411F2548C600686C27 /* CCIP-Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* CCIP-Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
 		6B9F62671F1A5D160084E09C /* Rectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6B149A1F1A593400538E32 /* Rectangle.png */; };
 		6B9F62681F1A5D160084E09C /* Rectangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6B14981F1A593300538E32 /* Rectangle@2x.png */; };
@@ -151,12 +152,10 @@
 		6BB1C4391F1AD4BB00AB072F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
 		6BCAC01F1F1A8FC100032096 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BCAC01D1F1A8FC100032096 /* Interface.storyboard */; };
-		6BCAC0281F1A8FC100032096 /* CCIP-Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* CCIP-Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6BCAC0301F1A8FC100032096 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCAC02F1F1A8FC100032096 /* InterfaceController.m */; };
 		6BCAC0331F1A8FC100032096 /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCAC0321F1A8FC100032096 /* ExtensionDelegate.m */; };
 		6BCAC0361F1A8FC100032096 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCAC0351F1A8FC100032096 /* NotificationController.m */; };
 		6BCAC0381F1A8FC100032096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BCAC0371F1A8FC100032096 /* Assets.xcassets */; };
-		6BCAC03C1F1A8FC100032096 /* CCIP-Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6BCAC01B1F1A8FC100032096 /* CCIP-Watch.app */; };
 		6BCBC3B51D4F393700B5AF35 /* UIViewController+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */; };
 		6BD8EF2C1D1D73510094BE95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2B1D1D73510094BE95 /* main.m */; };
 		6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */; };
@@ -167,19 +166,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6BCAC0291F1A8FC100032096 /* PBXContainerItemProxy */ = {
+		6B49F1421F2548CA00686C27 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6BD8EF1F1D1D73510094BE95 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6BCAC0261F1A8FC100032096;
-			remoteInfo = "CCIP-Watch-Dev Extension";
-		};
-		6BCAC03A1F1A8FC100032096 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6BD8EF1F1D1D73510094BE95 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6BCAC01A1F1A8FC100032096;
-			remoteInfo = "CCIP-Watch-Dev";
+			remoteInfo = "CCIP-Watch Extension";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -203,7 +195,6 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				6BCAC03C1F1A8FC100032096 /* CCIP-Watch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,7 +205,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				6BCAC0281F1A8FC100032096 /* CCIP-Watch Extension.appex in Embed App Extensions */,
+				6B49F1411F2548C600686C27 /* CCIP-Watch Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -974,7 +965,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				6BCAC02A1F1A8FC100032096 /* PBXTargetDependency */,
+				6B49F1431F2548CA00686C27 /* PBXTargetDependency */,
 			);
 			name = "CCIP-Watch";
 			productName = "CCIP-Watch-Dev";
@@ -1015,7 +1006,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				6BCAC03B1F1A8FC100032096 /* PBXTargetDependency */,
 			);
 			name = CCIP;
 			productName = CCIP;
@@ -1322,15 +1312,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6BCAC02A1F1A8FC100032096 /* PBXTargetDependency */ = {
+		6B49F1431F2548CA00686C27 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6BCAC0261F1A8FC100032096 /* CCIP-Watch Extension */;
-			targetProxy = 6BCAC0291F1A8FC100032096 /* PBXContainerItemProxy */;
-		};
-		6BCAC03B1F1A8FC100032096 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6BCAC01A1F1A8FC100032096 /* CCIP-Watch */;
-			targetProxy = 6BCAC03A1F1A8FC100032096 /* PBXContainerItemProxy */;
+			targetProxy = 6B49F1421F2548CA00686C27 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
