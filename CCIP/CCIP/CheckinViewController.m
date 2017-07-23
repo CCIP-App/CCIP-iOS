@@ -106,14 +106,12 @@
     self.controllerTopStart = self.navigationController.navigationBar.frame.size.height;
     [AppDelegate setDevLogo:self.shimmeringLogoView
                    WithLogo:[UIImage imageNamed:@"coscup-logo"]];
+    [self handleQRButton];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self performSelector:@selector(reloadCard)
-               withObject:nil
-               afterDelay:.5f];
-    [self handleQRButton];
+    [self reloadCard];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -302,8 +300,10 @@
     [self.lbUserName setText:@""];
     if (![AppDelegate haveAccessToken]) {
         if (self.scanditBarcodePicker == nil) {
-            [self performSegueWithIdentifier:@"ShowGuide"
-                                      sender:self.cards];
+            if (self.guideViewController == nil) {
+                [self performSegueWithIdentifier:@"ShowGuide"
+                                          sender:self.cards];
+            }
             self.userInfo = [NSDictionary new];
             self.scenarios = [NSArray new];
             [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
