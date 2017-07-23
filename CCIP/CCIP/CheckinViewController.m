@@ -300,7 +300,7 @@
     [self.lbUserName setText:@""];
     if (![AppDelegate haveAccessToken]) {
         if (self.scanditBarcodePicker == nil) {
-            if (self.guideViewController == nil) {
+            if (![self.presentedViewController isKindOfClass:[GuideViewController class]]) {
                 [self performSegueWithIdentifier:@"ShowGuide"
                                           sender:self.cards];
             }
