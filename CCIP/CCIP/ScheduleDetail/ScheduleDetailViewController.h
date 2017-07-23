@@ -10,7 +10,8 @@
 #import "ScheduleAbstractViewCell.h"
 #import "ScheduleSpeakerInfoViewCell.h"
 
-#define SCHEDULE_DETAIL_VIEW_STORYBOARD_ID  (@"ShowScheduleDetail")
+#define INIT_SCHEDULE_DETAIL_VIEW_STORYBOARD_ID (@"ScheduleDetail")
+#define SCHEDULE_DETAIL_VIEW_STORYBOARD_ID      (@"ShowScheduleDetail")
 
 @interface ScheduleDetailViewController : UIViewController
 

@@ -8,6 +8,6 @@
 
 #import <ICViewPager/ViewPagerController.h>
 
-@interface ScheduleViewPagerController : ViewPagerController<ViewPagerDataSource, ViewPagerDelegate, UIViewControllerPreviewingDelegate>
+@interface ScheduleViewPagerController : ViewPagerController<ViewPagerDataSource, ViewPagerDelegate>
 
 @end

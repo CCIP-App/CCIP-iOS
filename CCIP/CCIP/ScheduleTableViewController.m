@@ -10,6 +10,7 @@
 #import "ScheduleTableViewCell.h"
 #import "ScheduleDetailViewController.h"
 #import "UIColor+addition.h"
+#import "AppDelegate.h"
 
 @interface ScheduleTableViewController ()
 
@@ -25,6 +26,7 @@ static NSDateFormatter *formatter_date = nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self registerForceTouch];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -62,6 +64,33 @@ static NSDateFormatter *formatter_date = nil;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
+    return [self previewActions];
+}
+
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
+    UITableView *tableView = (UITableView *)[previewingContext sourceView];
+    NSIndexPath *indexPath = [((NSArray *)[tableView valueForKey:@"_highlightedIndexPaths"]) firstObject];
+    if (indexPath != nil) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle:nil];
+        ScheduleDetailViewController *detailView = [storyboard instantiateViewControllerWithIdentifier:INIT_SCHEDULE_DETAIL_VIEW_STORYBOARD_ID];
+        NSDate *time = [self.programTimes objectAtIndex:indexPath.section];
+        NSString *timeString = [formatter_date stringFromDate:time];
+        NSDictionary *program = [[self.programSections objectForKey:timeString] objectAtIndex:indexPath.row];
+        [detailView setDetailData:program];
+        UITableViewCell *tableCell = [tableView cellForRowAtIndexPath:indexPath];
+        [previewingContext setSourceRect:[self.view convertRect:tableCell.frame fromView:tableView]];
+        return detailView;
+    } else {
+        return self;
+    }
+}
+
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
+    [self.navigationController showViewController:viewControllerToCommit sender:nil];
 }
 
 #pragma mark - Table view data source

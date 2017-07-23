@@ -24,6 +24,14 @@
     return [self previewActions];
 }
 
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
+    return self;
+}
+
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
+    //
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self registerForceTouch];
