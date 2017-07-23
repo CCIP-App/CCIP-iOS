@@ -82,7 +82,7 @@
     [self.cards setPagingEnabled:YES];
     [self.cards setBounceDistance:0.3f];
     [self.cards setContentOffset:CGSizeMake(0, -5.0f)];
-    [self.lbUserName setText:@""];
+    [self.lbUserName setText:@" "];
     
     SEND_GAI(@"CheckinViewController");
     
@@ -297,7 +297,7 @@
     }
 
     [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
-    [self.lbUserName setText:@""];
+    [self.lbUserName setText:@" "];
     if (![AppDelegate haveAccessToken]) {
         if (self.scanditBarcodePicker == nil) {
             if (![self.presentedViewController isKindOfClass:[GuideViewController class]]) {
