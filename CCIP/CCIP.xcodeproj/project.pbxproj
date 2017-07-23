@@ -400,6 +400,7 @@
 		6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreenIcon@3x.png"; sourceTree = "<group>"; };
 		6B9117051D4EFC2600537ABE /* ScheduleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewCell.h; sourceTree = "<group>"; };
 		6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewCell.m; sourceTree = "<group>"; };
+		6B9348AE1F2428A300F77757 /* CCIP.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CCIP.xcconfig; sourceTree = "<group>"; };
 		6BA1A5201D1EFBDC00D5924C /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
 		6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
 		6BAADFBE1F233BC80054F870 /* NoAnnouncement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NoAnnouncement.png; path = Images/NoAnnouncement.png; sourceTree = "<group>"; };
@@ -419,6 +420,7 @@
 		6BB0B6091F1A74DF00AEB437 /* CCIP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CCIP.entitlements; sourceTree = "<group>"; };
 		6BB50FB11D665393002CAD0B /* AfterEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AfterEventViewController.h; sourceTree = "<group>"; };
 		6BB50FB21D665393002CAD0B /* AfterEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AfterEventViewController.m; sourceTree = "<group>"; };
+		6BB55CAB1F242EC7007BC840 /* CCIP-Build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "CCIP-Build.sh"; sourceTree = "<group>"; };
 		6BCAC01B1F1A8FC100032096 /* CCIP-Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCIP-Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCAC01E1F1A8FC100032096 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		6BCAC0221F1A8FC100032096 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -940,6 +942,8 @@
 				6BD8EF391D1D73510094BE95 /* Assets.xcassets */,
 				5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */,
 				6BD8EF3E1D1D73510094BE95 /* Info.plist */,
+				6BB55CAB1F242EC7007BC840 /* CCIP-Build.sh */,
+				6B9348AE1F2428A300F77757 /* CCIP.xcconfig */,
 				6B2AEB7C1F23FF6F00C65868 /* CCIP.debug.xcconfig */,
 				6B2AEB7B1F23FF6F00C65868 /* CCIP.release.xcconfig */,
 				284602DD1F121BBB00F512A3 /* LaunchScreen@1x.png */,
@@ -995,6 +999,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BD8EF411D1D73510094BE95 /* Build configuration list for PBXNativeTarget "CCIP" */;
 			buildPhases = (
+				6B73A26F1F24253A00DE8C78 /* ShellScript */,
 				6DC9628D542EE187EC109AD3 /* [CP] Check Pods Manifest.lock */,
 				6BD8EF231D1D73510094BE95 /* Sources */,
 				6BD8EF241D1D73510094BE95 /* Frameworks */,
@@ -1188,6 +1193,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6B73A26F1F24253A00DE8C78 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "$PROJECT_DIR/$PROJECT_NAME/CCIP-Build.sh";
+		};
 		6DC9628D542EE187EC109AD3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1574,6 +1592,7 @@
 				CODE_SIGN_ENTITLEMENTS = CCIP/CCIP.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 5MC99ARC2Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1596,6 +1615,7 @@
 				CODE_SIGN_ENTITLEMENTS = CCIP/CCIP.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 5MC99ARC2Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
