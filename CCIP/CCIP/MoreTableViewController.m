@@ -143,12 +143,12 @@
                 NSLog(@"-- Enable DEV_MODE --");
                 [AppDelegate setIsDevMode: YES];
                 [AppDelegate setDevLogo:self.shimmeringLogoView
-                               WithLogo:[UIImage imageNamed:@"coscup-logo"]];
+                               WithLogo:[[UIImage imageNamed:@"coscup-logo"] imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
             } else {
                 NSLog(@"-- Disable DEV_MODE --");
                 [AppDelegate setIsDevMode:NO];
                 [AppDelegate setDevLogo:self.shimmeringLogoView
-                               WithLogo:[UIImage imageNamed:@"coscup-logo"]];
+                               WithLogo:[[UIImage imageNamed:@"coscup-logo"] imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
             }
         }
     }
