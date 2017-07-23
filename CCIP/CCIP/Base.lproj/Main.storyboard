@@ -1659,12 +1659,13 @@ Label2</string>
                         <viewControllerLayoutGuide type="bottom" id="ig4-g7-0js"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wWE-pu-nzB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <size key="freeformSize" width="420" height="600"/>
                     <connections>
-                        <segue destination="kE9-2Q-Df0" kind="push" identifier="ShowScheduleDetail" id="mZ3-si-dph"/>
+                        <segue destination="kE9-2Q-Df0" kind="show" identifier="ShowScheduleDetail" id="mZ3-si-dph"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ioE-gD-0hv" userLabel="First Responder" sceneMemberID="firstResponder"/>
