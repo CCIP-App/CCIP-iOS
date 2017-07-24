@@ -81,7 +81,7 @@
     [AppDelegate setDevLogo:self.shimmeringLogoView WithLogo:[[UIImage imageNamed:@"coscup-logo"] imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
     
     NSURL *nsurl = self.webView.URL;
-    if (nsurl == nil || [self.webView.URL.absoluteString isEqualToString:@""]) {
+    if (nsurl == nil || [nsurl.absoluteString isEqualToString:@""]) {
         nsurl = [NSURL URLWithString:LOG_BOT_URL];
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
         [self.webView loadRequest:requestObj];
