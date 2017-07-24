@@ -11,9 +11,6 @@
       location = "group:../MYCrypto/MYCrypto.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../GatewayWebService/GatewayWebService.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
