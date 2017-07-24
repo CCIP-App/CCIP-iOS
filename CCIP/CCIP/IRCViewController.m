@@ -7,11 +7,11 @@
 //
 
 #import "IRCViewController.h"
-#import "GatewayWebService/GatewayWebService.h"
 #import "AppDelegate.h"
 #import <NJKWebViewProgress/NJKWebViewProgressView.h>
 #import "UIColor+addition.h"
 #import "UIImage+addition.h"
+#import "WebServiceEndPoint.h"
 
 @interface IRCViewController()
 
@@ -70,9 +70,9 @@
     
     [self.view insertSubview:self.webView atIndex:0];
     
+    self.goReloadButton.enabled = NO;
     self.goBackButton.enabled = NO;
     self.goForwardButton.enabled = NO;
-    self.goReloadButton.enabled = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,7 +88,7 @@
     }
 }
 
--(void)setWebViewConstraints {
+- (void)setWebViewConstraints {
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
                                                           attribute:NSLayoutAttributeBottom
                                                           relatedBy:NSLayoutRelationEqual
@@ -121,7 +121,7 @@
 
 - (IBAction)reload:(id)sender {
     NSURL *nsurl = self.webView.URL;
-    if (nsurl == nil || [self.webView.URL.absoluteString isEqualToString:@""]) {
+    if (nsurl == nil || [nsurl.absoluteString isEqualToString:@""]) {
         nsurl = [NSURL URLWithString:LOG_BOT_URL];
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
         [self.webView loadRequest:requestObj];

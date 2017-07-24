@@ -13,9 +13,9 @@
 
 @interface IRCViewController : UIViewController <WKNavigationDelegate, WKUIDelegate, SFSafariViewControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *goReloadButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *goBackButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *goForwardButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *goReloadButton;
 
 - (IBAction)reload:(id)sender;
 - (IBAction)goBack:(id)sender;

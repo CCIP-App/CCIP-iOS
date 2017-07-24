@@ -7,7 +7,6 @@
 //
 
 #import "MainTabBarViewController.h"
-#import "GatewayWebService/GatewayWebService.h"
 #import "NSInvocation+addition.h"
 #import "UIImage+addition.h"
 #import "ScheduleViewController.h"
