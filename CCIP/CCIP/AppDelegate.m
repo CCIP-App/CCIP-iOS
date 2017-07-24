@@ -370,8 +370,9 @@
 
 - (void)setAppearance:(SLColorArt *)appArt {
     //[[UINavigationBar appearance] setBarTintColor:[appArt backgroundColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1] }];
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor whiteColor] }];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
     [[UIButton appearanceWhenContainedIn:[UINavigationController class], nil] setTintColor:[appArt detailColor]];
     [[UIToolbar appearanceWhenContainedIn:[UINavigationController class], nil] setBarTintColor:[appArt backgroundColor]];
     
