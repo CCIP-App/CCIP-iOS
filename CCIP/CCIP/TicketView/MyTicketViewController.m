@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.lbNotice setText:NSLocalizedString(@"TicketNotice", nil)];
     CGImageRef QRImage = [TicketQRCodeImage generate:[AppDelegate accessToken]
                                                 size:self.ivQRCode.frame.size
                                      backgroundColor:[CIColor colorWithCGColor:[[UIColor whiteColor] CGColor]]

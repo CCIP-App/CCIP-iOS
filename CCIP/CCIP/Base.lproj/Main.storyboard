@@ -1343,6 +1343,12 @@ Label2</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notice" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Z6-qe-NGN">
+                                <rect key="frame" x="40" y="114" width="334" height="28"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.60392156860000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2fx-YY-cpu">
                                 <rect key="frame" x="57" y="268" width="300" height="300"/>
                                 <constraints>
@@ -1353,12 +1359,17 @@ Label2</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="5Z6-qe-NGN" secondAttribute="trailing" constant="20" id="CdK-h9-RTz"/>
+                            <constraint firstItem="5Z6-qe-NGN" firstAttribute="centerX" secondItem="xsM-mw-hCm" secondAttribute="centerX" id="KxR-Oy-z0D"/>
+                            <constraint firstItem="5Z6-qe-NGN" firstAttribute="leading" secondItem="xsM-mw-hCm" secondAttribute="leadingMargin" constant="20" id="Md6-pY-Wuf"/>
                             <constraint firstItem="2fx-YY-cpu" firstAttribute="centerY" secondItem="xsM-mw-hCm" secondAttribute="centerY" constant="50" id="dRg-w6-8Ns"/>
                             <constraint firstItem="2fx-YY-cpu" firstAttribute="centerX" secondItem="xsM-mw-hCm" secondAttribute="centerX" id="pXl-xb-zWL"/>
+                            <constraint firstItem="5Z6-qe-NGN" firstAttribute="top" secondItem="cwW-fC-Vjt" secondAttribute="bottom" constant="50" id="zUI-T7-byO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="ivQRCode" destination="2fx-YY-cpu" id="yX6-9P-f9z"/>
+                        <outlet property="lbNotice" destination="5Z6-qe-NGN" id="ZjG-rc-7Db"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCQ-6Q-dR4" userLabel="First Responder" sceneMemberID="firstResponder"/>

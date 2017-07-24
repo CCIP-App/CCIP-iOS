@@ -10,6 +10,7 @@
 
 @interface MyTicketViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *lbNotice;
 @property (weak, nonatomic) IBOutlet UIImageView *ivQRCode;
 
 @end
