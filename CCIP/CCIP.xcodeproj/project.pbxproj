@@ -161,6 +161,7 @@
 		6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */; };
 		6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE250211D3133FC005FB4B2 /* GuideViewController.m */; };
 		6BEB31031F26051E0050759D /* PuzzleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31011F2601620050759D /* PuzzleViewController.m */; };
+		6BEB31061F26099F0050759D /* TelegramController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31051F26097D0050759D /* TelegramController.m */; };
 		D5720777B8AA54B5CE34467A /* Pods_CCIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87CA176D8DB3A92497387928 /* Pods_CCIP.framework */; };
 /* End PBXBuildFile section */
 
@@ -444,6 +445,8 @@
 		6BE250211D3133FC005FB4B2 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		6BEB31011F2601620050759D /* PuzzleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PuzzleViewController.m; sourceTree = "<group>"; };
 		6BEB31021F2601620050759D /* PuzzleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PuzzleViewController.h; sourceTree = "<group>"; };
+		6BEB31041F26097D0050759D /* TelegramController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TelegramController.h; sourceTree = "<group>"; };
+		6BEB31051F26097D0050759D /* TelegramController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TelegramController.m; sourceTree = "<group>"; };
 		6BF641151D4D421400243B0D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		6BF641161D4D42C000243B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		76097425B85D526316D2EF58 /* Pods-CCIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.debug.xcconfig"; sourceTree = "<group>"; };
@@ -858,6 +861,8 @@
 		6B7F713E1F25F797004E43CA /* TelegramView */ = {
 			isa = PBXGroup;
 			children = (
+				6BEB31041F26097D0050759D /* TelegramController.h */,
+				6BEB31051F26097D0050759D /* TelegramController.m */,
 			);
 			path = TelegramView;
 			sourceTree = "<group>";
@@ -1313,6 +1318,7 @@
 				28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */,
 				6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */,
 				6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */,
+				6BEB31061F26099F0050759D /* TelegramController.m in Sources */,
 				5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */,
 				5FF2B11E1D28B19600665DD9 /* IRCViewController.m in Sources */,
 				280774C21F1A7B0100A5B994 /* ScheduleViewPagerController.m in Sources */,

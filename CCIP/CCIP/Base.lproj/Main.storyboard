@@ -1303,10 +1303,10 @@ Label2</string>
             </objects>
             <point key="canvasLocation" x="2735" y="1965"/>
         </scene>
-        <!--View Controller-->
+        <!--Telegram Controller-->
         <scene sceneID="LS4-DU-qoz">
             <objects>
-                <viewController id="ELW-GG-N5v" sceneMemberID="viewController">
+                <viewController id="ELW-GG-N5v" customClass="TelegramController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1FU-KF-yeO"/>
                         <viewControllerLayoutGuide type="bottom" id="s2i-Up-IQI"/>
@@ -1316,6 +1316,16 @@ Label2</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <navigationItem key="navigationItem" id="82K-Ot-5l1">
+                        <barButtonItem key="rightBarButtonItem" image="BarButton-Reload.png" id="mwi-Es-B0k">
+                            <connections>
+                                <action selector="reload:" destination="ELW-GG-N5v" id="jyP-6a-JR9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="goReloadButton" destination="mwi-Es-B0k" id="cMG-Zc-6oJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaR-Ck-58c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
