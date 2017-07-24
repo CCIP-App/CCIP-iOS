@@ -1045,8 +1045,6 @@ freely, subject to the following restrictions:
 			<key>licenseText</key>
 			<string>iVersion
 
-Version 1.11.4, October 24th, 2014
-
 Copyright (C) 2011 Charcoal Design
 
 This software is provided 'as-is', without any express or implied
@@ -1075,7 +1073,7 @@ freely, subject to the following restrictions:
 			<key>summary</key>
 			<string>Library for checking for updates to Mac/iPhone App Store apps from within the application and notifying users about the new release.</string>
 			<key>version</key>
-			<string>1.11.4</string>
+			<string>1.11.5</string>
 		</dict>
 	</array>
 </dict>

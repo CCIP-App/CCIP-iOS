@@ -38,7 +38,7 @@ PODS:
   - iCarousel (1.8.2)
   - ICViewPager (1.5.1)
   - iRate (1.11.5)
-  - iVersion (1.11.4)
+  - iVersion (1.11.5)
   - MMMarkdown (0.5.5)
   - NJKWebViewProgress (0.2.3):
     - NJKWebViewProgress/Core (= 0.2.3)
@@ -65,7 +65,7 @@ DEPENDENCIES:
   - iCarousel (~> 1.8)
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
   - iRate (~> 1.11)
-  - iVersion (from `https://github.com/FrankWu100/iVersion`)
+  - iVersion (~> 1.11)
   - MMMarkdown (~> 0.5)
   - NJKWebViewProgress (~> 0.2)
   - OneSignal (~> 1.13)
@@ -82,8 +82,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/Haraguroicha/EFQRCode
   ICViewPager:
     :git: https://github.com/FrankWu100/ICViewPager
-  iVersion:
-    :git: https://github.com/FrankWu100/iVersion
   UITableView+FDTemplateLayoutCell:
     :git: https://github.com/Haraguroicha/UITableView-FDTemplateLayoutCell
     :tag: 1.6.1
@@ -95,9 +93,6 @@ CHECKOUT OPTIONS:
   ICViewPager:
     :commit: bdafff5f2090df73ae911a4ccfdec42062716405
     :git: https://github.com/FrankWu100/ICViewPager
-  iVersion:
-    :commit: 8de31c2756ce2cfdc1fe5463783fa12da57fbf62
-    :git: https://github.com/FrankWu100/iVersion
   UITableView+FDTemplateLayoutCell:
     :git: https://github.com/Haraguroicha/UITableView-FDTemplateLayoutCell
     :tag: 1.6.1
@@ -118,17 +113,17 @@ SPEC CHECKSUMS:
   iCarousel: 67c8a43da5a46795b56aadfc96cd36a16f6149b2
   ICViewPager: c1278b67eceac7252d48252829c3c703285dfb76
   iRate: 1546f8ae5ed1565e688bd529f7484780734757e9
-  iVersion: 2b6ffe708672cb494ba3cab150a94800c2892e81
+  iVersion: 3a93a89259eb3b52b0a8ba52c46a0027fa6b4d30
   MMMarkdown: 1af97166ce0f6d6e0cb05695665492195d27c3f1
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
-  SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
   UIView+FDCollapsibleConstraints: 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: 69bd83f075aaa26a70988f7926737699dec7bf5e
+PODFILE CHECKSUM: c63dba58d6cf1ebf8d9f9f96df1f653770b4997b
 
 COCOAPODS: 1.2.1

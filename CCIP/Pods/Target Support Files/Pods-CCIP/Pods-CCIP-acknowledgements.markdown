@@ -512,8 +512,6 @@ freely, subject to the following restrictions:
 
 iVersion
 
-Version 1.11.4, October 24th, 2014
-
 Copyright (C) 2011 Charcoal Design
 
 This software is provided 'as-is', without any express or implied
