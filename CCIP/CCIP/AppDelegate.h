@@ -45,6 +45,7 @@
 + (BOOL)haveAccessToken;
 + (void)setAccessToken:(NSString * _Null_unspecified)accessToken;
 + (NSString * _Null_unspecified)accessToken;
++ (NSString * _Null_unspecified)accessTokenSHA1;
 
 - (void)displayGreetingsForLogin;
 

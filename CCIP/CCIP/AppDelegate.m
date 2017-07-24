@@ -17,6 +17,7 @@
 #import "GuideViewController.h"
 #import <AFNetworking/AFNetworking.h>
 #import "WebServiceEndPoint.h"
+#import "NSData+PMUtils.h"
 
 #define ONE_SIGNAL_APP_TOKEN        (@"a429ff30-5c0e-4584-a32f-b866ba88c947")
 #define SCANDIT_APP_KEY             (@"2BXy4CfQi9QFc12JnjId7mHH58SdYzNC90Uo07luUUY")
@@ -75,6 +76,14 @@
 
 + (NSString *)accessToken {
     return [UICKeyChainStore stringForKey:@"token"];
+}
+
++ (NSString *)accessTokenSHA1 {
+    NSString *token = [self accessToken];
+    NSData *tokenData = [token dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *tokenDataSHA1 = [tokenData sha1Hash];
+    NSString *tokenSHA1 = [[tokenDataSHA1 hexString] lowercaseString];
+    return tokenSHA1;
 }
 
 + (void)setIsDevMode:(BOOL)isDevMode {
