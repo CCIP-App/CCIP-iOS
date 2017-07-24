@@ -134,15 +134,8 @@ static NSDateFormatter *formatter_date = nil;
     NSDate *time = [self.programTimes objectAtIndex:indexPath.section];
     NSString *timeString = [formatter_date stringFromDate:time];
     NSDictionary *program = [[self.programSections objectForKey:timeString] objectAtIndex:indexPath.row];
-    NSDate *startTime = [formatter_full dateFromString:[program objectForKey:@"start"]];
-    NSDate *endTime = [formatter_full dateFromString:[program objectForKey:@"end"]];
-    long mins = [[NSNumber numberWithDouble:([endTime timeIntervalSinceDate:startTime] / 60)] longValue];
-    [cell.ScheduleTitleLabel setText:[program objectForKey:@"subject"]];
-    [cell.RoomLocationLabel setText:[NSString stringWithFormat:@"Room %@ - %ld mins", [program objectForKey:@"room"], mins]];
-    [cell.LabelLabel setText:[NSString stringWithFormat:@"   %@   ", [program objectForKey:@"lang"]]];
-    [cell.LabelLabel.layer setCornerRadius:cell.LabelLabel.frame.size.height / 2];
-    [cell.LabelLabel sizeToFit];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleDefault];
+    [cell setDelegate:self];
+    [cell setSchedule:program];
     
     return cell;
 }
@@ -155,6 +148,48 @@ static NSDateFormatter *formatter_date = nil;
     NSDictionary *program = [[self.programSections objectForKey:timeString] objectAtIndex:indexPath.row];
     [self.pagerController performSegueWithIdentifier:SCHEDULE_DETAIL_VIEW_STORYBOARD_ID
                                               sender:program];
+}
+
+- (NSString *)getID:(NSDictionary *)program {
+    return [NSString stringWithFormat:@"%@-%@-%@", [program objectForKey:@"room"], [program objectForKey:@"start"], [program objectForKey:@"end"]];
+}
+
+- (void)actionFavorite:(NSString *)scheduleId {
+    NSDictionary *favProgram;
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *favorites = [NSMutableArray arrayWithArray:[userDefault arrayForKey:FAV_KEY]];
+    for (NSDate *time in self.programTimes) {
+        NSString *timeString = [formatter_date stringFromDate:time];
+        for (NSDictionary *program in [self.programSections objectForKey:timeString]) {
+            if ([[self getID:program] isEqualToString:scheduleId]) {
+                favProgram = program;
+                break;
+            }
+        }
+        if (favProgram) {
+            break;
+        }
+    }
+    BOOL hasFavorite = [self hasFavorite:scheduleId];
+    if (!hasFavorite) {
+        [favorites addObject:favProgram];
+    } else {
+        [favorites removeObject:favProgram];
+    }
+    [userDefault setValue:favorites
+                   forKey:FAV_KEY];
+    [userDefault synchronize];
+}
+
+- (BOOL)hasFavorite:(NSString *)scheduleId {
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSArray *favorites = [userDefault valueForKey:FAV_KEY];
+    for (NSDictionary *program in favorites) {
+        if ([[self getID:program] isEqualToString:scheduleId]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 @end

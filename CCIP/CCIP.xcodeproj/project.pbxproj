@@ -366,6 +366,7 @@
 		6B036B8F1F24371600D5E5A5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		6B0B84D11D2B861000DE18B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B0B84D21D2B862300DE18B0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		6B0DD9BF1F26AF0500AF32C5 /* ScheduleFavoriteDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFavoriteDelegate.h; sourceTree = "<group>"; };
 		6B11BE7F1D4CBA5800B87EA9 /* UIImage+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+addition.h"; sourceTree = "<group>"; };
 		6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+addition.m"; sourceTree = "<group>"; };
 		6B11BE871D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbeddedTabBarControllerSegue.h; sourceTree = "<group>"; };
@@ -558,6 +559,7 @@
 				280774CE1F1AD8D300A5B994 /* ScheduleTableViewCell.h */,
 				280774CF1F1AD8D300A5B994 /* ScheduleTableViewCell.m */,
 				280774D01F1AD8D300A5B994 /* ScheduleTableViewCell.xib */,
+				6B0DD9BF1F26AF0500AF32C5 /* ScheduleFavoriteDelegate.h */,
 				6B02FD901F2202BF002AC0D3 /* ScheduleDetail */,
 			);
 			name = ScheduleTab;

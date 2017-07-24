@@ -34,6 +34,11 @@
     [self.view setBackgroundColor:[UIColor clearColor]];
 
     [self refreshData];
+    
+    NSDictionary *defaults = @{ FAV_KEY: @[] };
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault registerDefaults:defaults];
+    [userDefault synchronize];
 }
 
 - (void)didReceiveMemoryWarning {

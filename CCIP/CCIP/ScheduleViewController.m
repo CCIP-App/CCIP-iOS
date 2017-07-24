@@ -29,6 +29,19 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+    
+    UIButton *favButton = [UIButton new];
+    [favButton setTitle:@""
+               forState:UIControlStateNormal];
+    [favButton addTarget:self
+                  action:@selector(showFavorites)
+        forControlEvents:UIControlEventTouchUpInside];
+    [favButton.titleLabel setFont:[UIFont fontWithName:@"FontAwesome"
+                                                  size:20.0f]];
+    [favButton sizeToFit];
+    UIBarButtonItem *favoritesButton = [[UIBarButtonItem alloc] initWithCustomView:favButton];
+    [self.navigationItem setRightBarButtonItem:favoritesButton];
+    
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, 239);
     UIView *headView = [UIView new];
     [headView setFrame:frame];
@@ -49,6 +62,10 @@
     [super viewWillAppear:animated];
     [AppDelegate setDevLogo:self.shimmeringLogoView
                    WithLogo:[UIImage imageNamed:@"coscup-logo"]];
+}
+
+- (void)showFavorites {
+    
 }
 
 /*
