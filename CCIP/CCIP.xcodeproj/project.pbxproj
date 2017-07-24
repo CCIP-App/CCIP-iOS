@@ -164,6 +164,8 @@
 		6BEB31061F26099F0050759D /* TelegramController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31051F26097D0050759D /* TelegramController.m */; };
 		6BEB31091F26276D0050759D /* MyTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31081F26276D0050759D /* MyTicketViewController.m */; };
 		6BEB310D1F262EF30050759D /* TicketQRCodeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */; };
+		6BEB31131F26653D0050759D /* MapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31121F26653D0050759D /* MapsViewController.m */; };
+		6BEB31151F26656B0050759D /* Maps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BEB31141F26656B0050759D /* Maps.bundle */; };
 		D5720777B8AA54B5CE34467A /* Pods_CCIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87CA176D8DB3A92497387928 /* Pods_CCIP.framework */; };
 /* End PBXBuildFile section */
 
@@ -392,10 +394,6 @@
 		6B6B14991F1A593300538E32 /* Rectangle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Rectangle@3x.png"; path = "Images/Rectangle@3x.png"; sourceTree = "<group>"; };
 		6B6B149A1F1A593400538E32 /* Rectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Rectangle.png; path = Images/Rectangle.png; sourceTree = "<group>"; };
 		6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreenIcon@3x.png"; sourceTree = "<group>"; };
-		6B7F71391F25F755004E43CA /* 3F-COSCUP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3F-COSCUP.png"; sourceTree = "<group>"; };
-		6B7F713A1F25F755004E43CA /* 4F-COSCUP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4F-COSCUP.png"; sourceTree = "<group>"; };
-		6B7F713B1F25F755004E43CA /* 1F-COSCUP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1F-COSCUP.png"; sourceTree = "<group>"; };
-		6B7F713C1F25F755004E43CA /* 2F-COSCUP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2F-COSCUP.png"; sourceTree = "<group>"; };
 		6B9117051D4EFC2600537ABE /* ScheduleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewCell.h; sourceTree = "<group>"; };
 		6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewCell.m; sourceTree = "<group>"; };
 		6B9348AE1F2428A300F77757 /* CCIP.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CCIP.xcconfig; sourceTree = "<group>"; };
@@ -454,6 +452,9 @@
 		6BEB310B1F262EF30050759D /* CCIP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCIP-Bridging-Header.h"; sourceTree = "<group>"; };
 		6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketQRCodeImage.swift; sourceTree = "<group>"; };
 		6BEB310E1F2630820050759D /* CCIP-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCIP-Swift.h"; sourceTree = "<group>"; };
+		6BEB31111F26653D0050759D /* MapsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapsViewController.h; sourceTree = "<group>"; };
+		6BEB31121F26653D0050759D /* MapsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapsViewController.m; sourceTree = "<group>"; };
+		6BEB31141F26656B0050759D /* Maps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Maps.bundle; sourceTree = "<group>"; };
 		6BF641151D4D421400243B0D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		6BF641161D4D42C000243B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		76097425B85D526316D2EF58 /* Pods-CCIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.debug.xcconfig"; sourceTree = "<group>"; };
@@ -850,10 +851,9 @@
 		6B7F71381F25F755004E43CA /* MapsView */ = {
 			isa = PBXGroup;
 			children = (
-				6B7F713B1F25F755004E43CA /* 1F-COSCUP.png */,
-				6B7F713C1F25F755004E43CA /* 2F-COSCUP.png */,
-				6B7F71391F25F755004E43CA /* 3F-COSCUP.png */,
-				6B7F713A1F25F755004E43CA /* 4F-COSCUP.png */,
+				6BEB31111F26653D0050759D /* MapsViewController.h */,
+				6BEB31121F26653D0050759D /* MapsViewController.m */,
+				6BEB31141F26656B0050759D /* Maps.bundle */,
 			);
 			path = MapsView;
 			sourceTree = "<group>";
@@ -1203,6 +1203,7 @@
 				2839BF3E1D4C97EE0062F36D /* Star.png in Resources */,
 				6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */,
 				5FB4D44A1D3A8319005BF382 /* StaffIconDefault@2x.png in Resources */,
+				6BEB31151F26656B0050759D /* Maps.bundle in Resources */,
 				5FB4D47D1D3A8DF6005BF382 /* icon_ios_bell@3x.png in Resources */,
 				6B11BE821D4CBC9300B87EA9 /* Main.storyboard in Resources */,
 				6B036B901F24371700D5E5A5 /* Settings.bundle in Resources */,
@@ -1346,6 +1347,7 @@
 				28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */,
 				28A7C56D1D6032680079BB12 /* MainNavViewController.m in Sources */,
 				5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */,
+				6BEB31131F26653D0050759D /* MapsViewController.m in Sources */,
 				6B26D9101F23E57A003D9CA1 /* UIView+addition.m in Sources */,
 				5FECE5AC1D352E8A00242DB4 /* StaffGroupTableViewController.m in Sources */,
 				280774C51F1AD2F400A5B994 /* ScheduleTableViewController.m in Sources */,

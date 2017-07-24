@@ -1285,10 +1285,10 @@ Label2</string>
             </objects>
             <point key="canvasLocation" x="2081" y="1965"/>
         </scene>
-        <!--View Controller-->
+        <!--Maps View Controller-->
         <scene sceneID="DV1-Ef-pTS">
             <objects>
-                <viewController id="qU2-4l-l4a" sceneMemberID="viewController">
+                <viewController id="qU2-4l-l4a" customClass="MapsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4eG-zC-4fc"/>
                         <viewControllerLayoutGuide type="bottom" id="NqN-cn-imb"/>
