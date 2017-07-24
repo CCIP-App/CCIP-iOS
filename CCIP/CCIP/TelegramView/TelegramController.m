@@ -27,7 +27,11 @@
     [super viewDidLoad];
     
     SEND_GAI(@"TelegramView");
-        
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     CGFloat progressBarHeight = 2.f;
     CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
     CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
@@ -39,21 +43,17 @@
     self.webView = [[WKWebView alloc] init];
     [self.webView setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.automaticallyAdjustsScrollViewInsets = NO;
-
+    
     [self.webView setNavigationDelegate:self];
-    
-    [self.view insertSubview:self.webView atIndex:0];
-    
-    self.goReloadButton.enabled = NO;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     
     [self.webView addObserver:self
                    forKeyPath:@"estimatedProgress"
                       options:NSKeyValueObservingOptionNew
                       context:nil];
+    
+    [self.view insertSubview:self.webView atIndex:0];
+    
+    self.goReloadButton.enabled = NO;
     
     [self setWebViewConstraints];
     
@@ -74,6 +74,8 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [self.webView removeObserver:self
                       forKeyPath:@"estimatedProgress"];
+    [self.webView removeFromSuperview];
+    [_progressView removeFromSuperview];
 }
 
 - (void)setWebViewConstraints {
