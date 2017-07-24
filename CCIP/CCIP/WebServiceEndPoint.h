@@ -11,6 +11,7 @@
 #define __API_HOST__            (@"https://ccip.coscup.org/")
 #define COSCUP_BASE_URL         (@"https://coscup.org/")
 #define STAFF_BASE_URL          (@"https://staff.coscup.org/")
+#define PUZZLE_GAME_BASE_URL    (@"https://play.coscup.org/")
 
 #define CC_STATUS(token)        ([__API_HOST__ stringByAppendingFormat:@"status?token=%@", token])
 #define CC_USE(token, scenario) ([__API_HOST__ stringByAppendingFormat:@"use/%@?token=%@", scenario, token])
@@ -23,5 +24,7 @@
 
 #define STAFF_DATA_URL          ([STAFF_BASE_URL stringByAppendingString:@"api/staffgroups/?format=json"])
 #define STAFF_AVATAR(avatar)    ([avatar containsString:@"http"] ? [NSString stringWithFormat:@"%@&s=200", avatar] : [STAFF_BASE_URL stringByAppendingString:avatar])
+
+#define PUZZLE_GAME_URL(token)  ([PUZZLE_GAME_BASE_URL stringByAppendingFormat:@"?token=%@", token])
 
 #define LOG_BOT_URL             (@"https://ysitd.licson.net/channel/coscup/today")

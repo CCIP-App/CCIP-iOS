@@ -1152,7 +1152,7 @@ Label2</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="CsC-vK-vve" kind="show" id="Lpi-1p-yVm"/>
+                                            <segue destination="Kgm-MP-Ivo" kind="show" id="XzZ-wC-OaO"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ticket" id="j0s-QU-Kh4" customClass="MoreCell">
@@ -1338,24 +1338,6 @@ Label2</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCQ-6Q-dR4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4099" y="1965"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="DEz-b7-HcR">
-            <objects>
-                <viewController id="CsC-vK-vve" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="DYU-Pm-6Tg"/>
-                        <viewControllerLayoutGuide type="bottom" id="SWH-dl-aj4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="FQY-5B-nTr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NsT-fS-2bm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4794" y="1965"/>
         </scene>
         <!--Staff View Controller-->
         <scene sceneID="4VM-uK-3io">
@@ -1786,6 +1768,34 @@ Label2</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ioE-gD-0hv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="119" y="1965"/>
+        </scene>
+        <!--Puzzle View Controller-->
+        <scene sceneID="qYE-8C-ekc">
+            <objects>
+                <viewController id="Kgm-MP-Ivo" customClass="PuzzleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="isX-vG-PK6"/>
+                        <viewControllerLayoutGuide type="bottom" id="g2G-47-ZFW"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="sBQ-jg-dFN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="v6d-LF-wRg">
+                        <barButtonItem key="rightBarButtonItem" image="BarButton-Reload.png" id="NHl-NL-aAg">
+                            <connections>
+                                <action selector="reload:" destination="Kgm-MP-Ivo" id="7lh-rA-L83"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="goReloadButton" destination="NHl-NL-aAg" id="W7M-nS-ego"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yHF-fU-Quw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4772" y="1965"/>
         </scene>
     </scenes>
     <resources>
