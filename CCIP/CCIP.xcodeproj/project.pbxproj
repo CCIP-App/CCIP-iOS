@@ -162,6 +162,8 @@
 		6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE250211D3133FC005FB4B2 /* GuideViewController.m */; };
 		6BEB31031F26051E0050759D /* PuzzleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31011F2601620050759D /* PuzzleViewController.m */; };
 		6BEB31061F26099F0050759D /* TelegramController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31051F26097D0050759D /* TelegramController.m */; };
+		6BEB31091F26276D0050759D /* MyTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31081F26276D0050759D /* MyTicketViewController.m */; };
+		6BEB310D1F262EF30050759D /* TicketQRCodeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */; };
 		D5720777B8AA54B5CE34467A /* Pods_CCIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87CA176D8DB3A92497387928 /* Pods_CCIP.framework */; };
 /* End PBXBuildFile section */
 
@@ -447,6 +449,11 @@
 		6BEB31021F2601620050759D /* PuzzleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PuzzleViewController.h; sourceTree = "<group>"; };
 		6BEB31041F26097D0050759D /* TelegramController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TelegramController.h; sourceTree = "<group>"; };
 		6BEB31051F26097D0050759D /* TelegramController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TelegramController.m; sourceTree = "<group>"; };
+		6BEB31071F26276D0050759D /* MyTicketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTicketViewController.h; sourceTree = "<group>"; };
+		6BEB31081F26276D0050759D /* MyTicketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTicketViewController.m; sourceTree = "<group>"; };
+		6BEB310B1F262EF30050759D /* CCIP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCIP-Bridging-Header.h"; sourceTree = "<group>"; };
+		6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketQRCodeImage.swift; sourceTree = "<group>"; };
+		6BEB310E1F2630820050759D /* CCIP-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCIP-Swift.h"; sourceTree = "<group>"; };
 		6BF641151D4D421400243B0D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		6BF641161D4D42C000243B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		76097425B85D526316D2EF58 /* Pods-CCIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.debug.xcconfig"; sourceTree = "<group>"; };
@@ -854,6 +861,9 @@
 		6B7F713D1F25F797004E43CA /* TicketView */ = {
 			isa = PBXGroup;
 			children = (
+				6BEB31071F26276D0050759D /* MyTicketViewController.h */,
+				6BEB31081F26276D0050759D /* MyTicketViewController.m */,
+				6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */,
 			);
 			path = TicketView;
 			sourceTree = "<group>";
@@ -991,6 +1001,8 @@
 				284602DF1F121BBB00F512A3 /* LaunchScreen@3x.png */,
 				6B11BE841D4CBC9300B87EA9 /* Main.storyboard */,
 				6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */,
+				6BEB310B1F262EF30050759D /* CCIP-Bridging-Header.h */,
+				6BEB310E1F2630820050759D /* CCIP-Swift.h */,
 				6BD8EF2B1D1D73510094BE95 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1039,8 +1051,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BD8EF411D1D73510094BE95 /* Build configuration list for PBXNativeTarget "CCIP" */;
 			buildPhases = (
-				6B73A26F1F24253A00DE8C78 /* ShellScript */,
 				6DC9628D542EE187EC109AD3 /* [CP] Check Pods Manifest.lock */,
+				6B73A26F1F24253A00DE8C78 /* ShellScript */,
 				6BD8EF231D1D73510094BE95 /* Sources */,
 				6BD8EF241D1D73510094BE95 /* Frameworks */,
 				6BD8EF251D1D73510094BE95 /* Resources */,
@@ -1091,6 +1103,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 5MC99ARC2Z;
 						DevelopmentTeamName = "Koo Foundation Sun Yat-Sen Cancer Center";
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1314,6 +1327,7 @@
 				6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m in Sources */,
 				5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */,
 				5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */,
+				6BEB31091F26276D0050759D /* MyTicketViewController.m in Sources */,
 				6B02FD961F220371002AC0D3 /* ScheduleAbstractViewCell.m in Sources */,
 				28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */,
 				6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */,
@@ -1346,6 +1360,7 @@
 				6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */,
 				6B11BE891D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m in Sources */,
 				6BCBC3B51D4F393700B5AF35 /* UIViewController+addition.m in Sources */,
+				6BEB310D1F262EF30050759D /* TicketQRCodeImage.swift in Sources */,
 				2817E9FA1F23853700CAB39B /* ScheduleDetailTableViewController.m in Sources */,
 				5F9171291D325B5E000D0F66 /* StaffViewController.m in Sources */,
 				5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */,
@@ -1622,6 +1637,7 @@
 			baseConfigurationReference = 76097425B85D526316D2EF58 /* Pods-CCIP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CCIP/CCIP.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1636,6 +1652,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1645,6 +1665,7 @@
 			baseConfigurationReference = 1E39488D2E9378322A78E57B /* Pods-CCIP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CCIP/CCIP.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1659,6 +1680,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

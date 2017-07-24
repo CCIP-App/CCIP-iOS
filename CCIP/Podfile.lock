@@ -17,6 +17,7 @@ PODS:
   - BLKFlexibleHeightBar (1.0.2)
   - ColorArt (0.1.1)
   - CPDAcknowledgements (1.0.0)
+  - EFQRCode (1.2.5)
   - FirebaseAnalytics (3.2.1):
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
@@ -45,9 +46,9 @@ PODS:
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
   - OneSignal (1.13.3)
-  - SDWebImage (3.8.1):
-    - SDWebImage/Core (= 3.8.1)
-  - SDWebImage/Core (3.8.1)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - Shimmer (1.0.2)
   - STPopup (1.7.0)
   - UICKeyChainStore (2.1.0)
@@ -59,6 +60,7 @@ DEPENDENCIES:
   - BLKFlexibleHeightBar (~> 1.0)
   - ColorArt (= 0.1.1)
   - CPDAcknowledgements (~> 1.0)
+  - EFQRCode (from `https://github.com/Haraguroicha/EFQRCode`, commit `edaaeaf`)
   - Google/Analytics (~> 3.0.3)
   - iCarousel (~> 1.8)
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
@@ -75,6 +77,9 @@ DEPENDENCIES:
   - UIView+FDCollapsibleConstraints (~> 1.1)
 
 EXTERNAL SOURCES:
+  EFQRCode:
+    :commit: edaaeaf
+    :git: https://github.com/Haraguroicha/EFQRCode
   ICViewPager:
     :git: https://github.com/FrankWu100/ICViewPager
   iVersion:
@@ -84,6 +89,9 @@ EXTERNAL SOURCES:
     :tag: 1.6.1
 
 CHECKOUT OPTIONS:
+  EFQRCode:
+    :commit: edaaeaf
+    :git: https://github.com/Haraguroicha/EFQRCode
   ICViewPager:
     :commit: bdafff5f2090df73ae911a4ccfdec42062716405
     :git: https://github.com/FrankWu100/ICViewPager
@@ -99,6 +107,7 @@ SPEC CHECKSUMS:
   BLKFlexibleHeightBar: b27572a69633d8e33f1f2bbc486b04d8e86f742d
   ColorArt: de0ffb63da4acdde8e234ded62e200236ca3e7e4
   CPDAcknowledgements: 6e15e71849ba4ad5e8a17a0bb9d20938ad23bac8
+  EFQRCode: 3d817441ff27a7061c70b89eb14ab655f24a08cf
   FirebaseAnalytics: 0fd6532cb2c3d03cd5cf26ad295ccb091efd3104
   FirebaseInstanceID: a9d923f3d0b6fbf9fac89310860357aaadc34be5
   Google: cd92fab98f800f509da88c1e0c570275713bc9d5
@@ -113,13 +122,13 @@ SPEC CHECKSUMS:
   MMMarkdown: 1af97166ce0f6d6e0cb05695665492195d27c3f1
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
-  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
   UIView+FDCollapsibleConstraints: 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: cda877ab8e3eb1491e60275b2c3d3f4e81ca832a
+PODFILE CHECKSUM: 69bd83f075aaa26a70988f7926737699dec7bf5e
 
 COCOAPODS: 1.2.1

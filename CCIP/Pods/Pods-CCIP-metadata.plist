@@ -197,6 +197,49 @@ DEALINGS IN THE SOFTWARE.
 		<dict>
 			<key>authors</key>
 			<dict>
+				<key>EyreFree</key>
+				<string>eyrefree@eyrefree.org</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;EFQRCode is a lightweight, pure-Swift library for generating pretty QRCode image with input watermark or icon and recognizing QRCode from image, it is based on CoreImage. It provides you a better way to operate QRCode in your app.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/EyreFree/EFQRCode</string>
+			<key>licenseText</key>
+			<string>Copyright (c) 2017 EyreFree &lt;eyrefree@eyrefree.org&gt;
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>EFQRCode</string>
+			<key>socialMediaURL</key>
+			<string>https://twitter.com/EyreFree777</string>
+			<key>summary</key>
+			<string>A better way to operate quick response code in Swift.</string>
+			<key>version</key>
+			<string>1.2.5</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
 				<key>Google, Inc.</key>
 				<string></string>
 			</dict>
@@ -654,7 +697,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Asynchronous image downloader with cache support with an UIImageView category.</string>
 			<key>version</key>
-			<string>3.8.1</string>
+			<string>3.8.2</string>
 		</dict>
 		<dict>
 			<key>authors</key>

@@ -1331,10 +1331,10 @@ Label2</string>
             </objects>
             <point key="canvasLocation" x="3417" y="1965"/>
         </scene>
-        <!--View Controller-->
+        <!--My Ticket View Controller-->
         <scene sceneID="BPq-cB-LmU">
             <objects>
-                <viewController id="Cud-Yb-0Jf" sceneMemberID="viewController">
+                <viewController id="Cud-Yb-0Jf" customClass="MyTicketViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cwW-fC-Vjt"/>
                         <viewControllerLayoutGuide type="bottom" id="wQV-ys-1PX"/>
@@ -1342,8 +1342,24 @@ Label2</string>
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="xsM-mw-hCm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2fx-YY-cpu">
+                                <rect key="frame" x="57" y="268" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="pgM-Zw-ZgW"/>
+                                    <constraint firstAttribute="height" constant="300" id="wyG-1W-UGu"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2fx-YY-cpu" firstAttribute="centerY" secondItem="xsM-mw-hCm" secondAttribute="centerY" constant="50" id="dRg-w6-8Ns"/>
+                            <constraint firstItem="2fx-YY-cpu" firstAttribute="centerX" secondItem="xsM-mw-hCm" secondAttribute="centerX" id="pXl-xb-zWL"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ivQRCode" destination="2fx-YY-cpu" id="yX6-9P-f9z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCQ-6Q-dR4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
