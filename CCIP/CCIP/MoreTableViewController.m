@@ -98,10 +98,14 @@
                        @"Sponsors",
                        @"Acknowledgements",
                        ];
-    dispatch_semaphore_t semaStaff = dispatch_semaphore_create(0);
     if (self.staffs == nil) {
         [self prefetchStaffs];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    dispatch_semaphore_t semaStaff = dispatch_semaphore_create(0);
     while (dispatch_semaphore_wait(semaStaff, DISPATCH_TIME_NOW)) {
         if (self.staffs != nil) {
             dispatch_semaphore_signal(semaStaff);
