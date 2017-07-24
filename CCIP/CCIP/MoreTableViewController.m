@@ -90,6 +90,10 @@
     [self.navigationItem.titleView addGestureRecognizer:tapGesture];
     
     self.moreItems = @[
+                       @"Puzzle",
+                       @"Ticket",
+                       @"Telegram",
+                       @"Maps",
                        @"Staffs",
                        @"Sponsors",
                        @"Acknowledgements",

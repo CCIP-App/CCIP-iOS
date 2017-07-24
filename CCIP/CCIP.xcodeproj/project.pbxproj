@@ -388,6 +388,10 @@
 		6B6B14991F1A593300538E32 /* Rectangle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Rectangle@3x.png"; path = "Images/Rectangle@3x.png"; sourceTree = "<group>"; };
 		6B6B149A1F1A593400538E32 /* Rectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Rectangle.png; path = Images/Rectangle.png; sourceTree = "<group>"; };
 		6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreenIcon@3x.png"; sourceTree = "<group>"; };
+		6B7F71391F25F755004E43CA /* 3F-COSCUP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3F-COSCUP.png"; sourceTree = "<group>"; };
+		6B7F713A1F25F755004E43CA /* 4F-COSCUP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4F-COSCUP.png"; sourceTree = "<group>"; };
+		6B7F713B1F25F755004E43CA /* 1F-COSCUP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1F-COSCUP.png"; sourceTree = "<group>"; };
+		6B7F713C1F25F755004E43CA /* 2F-COSCUP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2F-COSCUP.png"; sourceTree = "<group>"; };
 		6B9117051D4EFC2600537ABE /* ScheduleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewCell.h; sourceTree = "<group>"; };
 		6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewCell.m; sourceTree = "<group>"; };
 		6B9348AE1F2428A300F77757 /* CCIP.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CCIP.xcconfig; sourceTree = "<group>"; };
@@ -620,6 +624,10 @@
 				5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */,
 				5FB4D48C1D3B242C005BF382 /* MoreCell.h */,
 				5FB4D48D1D3B242C005BF382 /* MoreCell.m */,
+				6B7F713F1F25F797004E43CA /* PuzzleView */,
+				6B7F713D1F25F797004E43CA /* TicketView */,
+				6B7F713E1F25F797004E43CA /* TelegramView */,
+				6B7F71381F25F755004E43CA /* MapsView */,
 				288164E41D4F2F32005C68EA /* StaffView */,
 				5F8B2D261D55DAC900A68C7D /* SponsorView */,
 				28AFCF191D5DDCD400413927 /* AcknowledgementsView */,
@@ -824,6 +832,38 @@
 				6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */,
 			);
 			name = FontAwesome;
+			sourceTree = "<group>";
+		};
+		6B7F71381F25F755004E43CA /* MapsView */ = {
+			isa = PBXGroup;
+			children = (
+				6B7F713B1F25F755004E43CA /* 1F-COSCUP.png */,
+				6B7F713C1F25F755004E43CA /* 2F-COSCUP.png */,
+				6B7F71391F25F755004E43CA /* 3F-COSCUP.png */,
+				6B7F713A1F25F755004E43CA /* 4F-COSCUP.png */,
+			);
+			path = MapsView;
+			sourceTree = "<group>";
+		};
+		6B7F713D1F25F797004E43CA /* TicketView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TicketView;
+			sourceTree = "<group>";
+		};
+		6B7F713E1F25F797004E43CA /* TelegramView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TelegramView;
+			sourceTree = "<group>";
+		};
+		6B7F713F1F25F797004E43CA /* PuzzleView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PuzzleView;
 			sourceTree = "<group>";
 		};
 		6BCAC01C1F1A8FC100032096 /* CCIP-Watch */ = {
