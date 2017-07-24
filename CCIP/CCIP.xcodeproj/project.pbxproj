@@ -128,6 +128,7 @@
 		6B2CD5B21D28C92B00793194 /* MYCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD5B01D28C92B00793194 /* MYCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F9E441D4D142700047F38 /* CheckinCardView.m */; };
 		6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
+		6B4977801F2682D300427A7B /* Pods_CCIP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 87CA176D8DB3A92497387928 /* Pods_CCIP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B49F1411F2548C600686C27 /* CCIP-Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* CCIP-Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
 		6B9F62671F1A5D160084E09C /* Rectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6B149A1F1A593400538E32 /* Rectangle.png */; };
@@ -187,6 +188,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				6B2CD5AF1D28C92B00793194 /* CommonCrypto.framework in Embed Frameworks */,
+				6B4977801F2682D300427A7B /* Pods_CCIP.framework in Embed Frameworks */,
 				6B2CD5B21D28C92B00793194 /* MYCrypto.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";

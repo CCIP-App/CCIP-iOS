@@ -10,6 +10,6 @@
 
 @import MWPhotoBrowser;
 
-@interface MapsViewController : MWPhotoBrowser<MWPhotoBrowserDelegate>
+@interface MapsViewController : UIViewController<MWPhotoBrowserDelegate>
 
 @end
