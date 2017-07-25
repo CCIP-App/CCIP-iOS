@@ -53,7 +53,8 @@ gitVersion=`git rev-parse --short HEAD`
 buildVersion=`agvtool vers -terse`
 cd "$PROJECT_DIR"
 productVersion=`/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "$INFOPLIST_FILE"`
-version="$productVersion.$buildVersion #$gitVersion"
+mainVersion="$productVersion.$buildVersion"
+version="$mainVersion #$gitVersion"
 flags=$GCC_PREPROCESSOR_DEFINITIONS
 timeStamp=`date +"%Y-%m-%d %H:%M:%S GMT+8"`
 SETTINGS_FILE=Settings.bundle/Root.plist
@@ -70,7 +71,7 @@ cat CCIP.xcconfig > CCIP.debug.xcconfig
 cat CCIP.xcconfig > CCIP.release.xcconfig
 echo -e "`cat CCIP.debug.xcconfig   | sed -E 's/#Dev#/-Dev/g'`"                                    > CCIP.debug.xcconfig
 echo -e "`cat CCIP.release.xcconfig | sed -E 's/#Dev#//g'`"                                        > CCIP.release.xcconfig
-echo -e "`cat CCIP.debug.xcconfig   | sed -E 's/#BUILD_VERSION#/'"$version"'/g'`"                  > CCIP.debug.xcconfig
-echo -e "`cat CCIP.release.xcconfig | sed -E 's/#BUILD_VERSION#/'"$version"'/g'`"                  > CCIP.release.xcconfig
+echo -e "`cat CCIP.debug.xcconfig   | sed -E 's/#BUILD_VERSION#/'"$mainVersion"'/g'`"              > CCIP.debug.xcconfig
+echo -e "`cat CCIP.release.xcconfig | sed -E 's/#BUILD_VERSION#/'"$mainVersion"'/g'`"              > CCIP.release.xcconfig
 echo -e "`cat CCIP.debug.xcconfig   | sed -E 's/#BUILD_SHORT_VERSION#/'"$productVersion"'/g'`"     > CCIP.debug.xcconfig
 echo -e "`cat CCIP.release.xcconfig | sed -E 's/#BUILD_SHORT_VERSION#/'"$productVersion"'/g'`"     > CCIP.release.xcconfig
