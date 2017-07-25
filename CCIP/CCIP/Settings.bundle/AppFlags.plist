@@ -14,16 +14,6 @@
 			<key>DefaultValue</key>
 			<string>1</string>
 			<key>Key</key>
-			<string>DEBUG</string>
-			<key>Title</key>
-			<string>DEBUG</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>1</string>
-			<key>Key</key>
 			<string>COCOAPODS</string>
 			<key>Title</key>
 			<string>COCOAPODS</string>
