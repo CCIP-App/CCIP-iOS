@@ -90,7 +90,7 @@ static NSDateFormatter *formatter_date = nil;
 
 - (void)setFavorite:(BOOL)favorite {
     _favorite = favorite;
-    [self.FavoriteButton setTitle:_favorite ? @"" : @""
+    [self.FavoriteButton setTitle:_favorite ? FAVORITE_LIKE : FAVORITE_DISLIKE
                          forState:UIControlStateNormal];
 }
 

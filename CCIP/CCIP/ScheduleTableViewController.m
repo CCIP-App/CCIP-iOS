@@ -61,6 +61,11 @@ static NSDateFormatter *formatter_date = nil;
     [self.programTimes sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -179,6 +184,7 @@ static NSDateFormatter *formatter_date = nil;
     [userDefault setValue:favorites
                    forKey:FAV_KEY];
     [userDefault synchronize];
+    [self.tableView reloadData];
 }
 
 - (BOOL)hasFavorite:(NSString *)scheduleId {

@@ -158,7 +158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mlj-3I-tOq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2459" y="1965"/>
+            <point key="canvasLocation" x="-3135" y="1965"/>
         </scene>
         <!--Guide View Controller-->
         <scene sceneID="lMV-v9-8VF">
@@ -289,7 +289,7 @@ Please copy and paste the token into next field or click the token link in the r
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dnj-al-u0m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1820" y="1965"/>
+            <point key="canvasLocation" x="-2496" y="1965"/>
         </scene>
         <!--Main Tab Bar View Controller-->
         <scene sceneID="djy-Ka-IMA">
@@ -520,7 +520,7 @@ Please copy and paste the token into next field or click the token link in the r
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yuv-Bk-NGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1170" y="1965"/>
+            <point key="canvasLocation" x="-1846" y="1965"/>
         </scene>
         <!--Checkin-->
         <scene sceneID="cs7-eR-RBx">
@@ -567,6 +567,9 @@ Please copy and paste the token into next field or click the token link in the r
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JCi-0a-6nT"/>
+                    <connections>
+                        <segue destination="wQA-eT-Lt2" kind="show" identifier="ShowFavorites" id="fIj-8w-fx9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wG-Gg-XNc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -719,7 +722,7 @@ Please copy and paste the token into next field or click the token link in the r
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="For-Ei-4ou">
-                                <rect key="frame" x="0.0" y="220" width="414" height="516"/>
+                                <rect key="frame" x="0.0" y="220" width="414" height="467"/>
                                 <connections>
                                     <segue destination="yg2-HO-O67" kind="embed" id="fj9-Ao-gGx"/>
                                 </connections>
@@ -761,7 +764,7 @@ Please copy and paste the token into next field or click the token link in the r
             <objects>
                 <tableViewController id="yg2-HO-O67" customClass="ScheduleDetailTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="sbK-kg-F5k">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="516"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="467"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1670,7 +1673,7 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ykb-vw-l2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-525" y="1965"/>
+            <point key="canvasLocation" x="-1201" y="1965"/>
         </scene>
         <!--Invalid Network Message View Controller-->
         <scene sceneID="DDK-sN-jQD">
@@ -1783,7 +1786,7 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RuT-hy-wjH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3101" y="1965"/>
+            <point key="canvasLocation" x="-3778" y="1965"/>
         </scene>
         <!--Schedule View Pager Controller-->
         <scene sceneID="dK2-0C-8mW">
@@ -1834,6 +1837,27 @@ Label2</string>
             </objects>
             <point key="canvasLocation" x="4772" y="1965"/>
         </scene>
+        <!--Schedule Favorite Table View Controller-->
+        <scene sceneID="RPj-yB-Iwi">
+            <objects>
+                <tableViewController id="wQA-eT-Lt2" customClass="ScheduleFavoriteTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8ji-4N-2a8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="wQA-eT-Lt2" id="N6S-t5-N8m"/>
+                            <outlet property="delegate" destination="wQA-eT-Lt2" id="ADH-9g-VpL"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="kE9-2Q-Df0" kind="show" identifier="ShowScheduleDetail" id="reK-KQ-Y1b"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mkz-rX-YKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-520" y="1965"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BarButton-Back.png" width="22" height="22"/>
@@ -1850,8 +1874,9 @@ Label2</string>
         <image name="icon_ios_topcharts.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ewg-q8-EfJ"/>
+        <segue reference="reK-KQ-Y1b"/>
         <segue reference="m5s-g0-cve"/>
+        <segue reference="ewg-q8-EfJ"/>
         <segue reference="gRH-x7-Jfd"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,6 +9,7 @@
 #import "ScheduleViewController.h"
 #import "AppDelegate.h"
 #import "UIColor+addition.h"
+#import "ScheduleTableViewCell.h"
 
 @interface ScheduleViewController ()
 
@@ -31,7 +32,7 @@
     [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
     
     UIButton *favButton = [UIButton new];
-    [favButton setTitle:@""
+    [favButton setTitle:FAVORITE_LIKE
                forState:UIControlStateNormal];
     [favButton addTarget:self
                   action:@selector(showFavorites)
@@ -41,6 +42,17 @@
     [favButton sizeToFit];
     UIBarButtonItem *favoritesButton = [[UIBarButtonItem alloc] initWithCustomView:favButton];
     [self.navigationItem setRightBarButtonItem:favoritesButton];
+    
+    UIButton *favButtonFake = [UIButton new];
+    [favButtonFake setTitle:FAVORITE_LIKE
+                   forState:UIControlStateNormal];
+    [favButtonFake.titleLabel setFont:[UIFont fontWithName:@"FontAwesome"
+                                                      size:20.0f]];
+    [favButtonFake setTitleColor:[UIColor clearColor]
+                        forState:UIControlStateNormal];
+    [favButtonFake sizeToFit];
+    UIBarButtonItem *favoritesButtonFake = [[UIBarButtonItem alloc] initWithCustomView:favButtonFake];
+    [self.navigationItem setLeftBarButtonItem:favoritesButtonFake];
     
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, 239);
     UIView *headView = [UIView new];
@@ -65,7 +77,8 @@
 }
 
 - (void)showFavorites {
-    
+    [self performSegueWithIdentifier:@"ShowFavorites"
+                              sender:nil];    
 }
 
 /*
