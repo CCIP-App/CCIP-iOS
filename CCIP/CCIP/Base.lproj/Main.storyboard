@@ -75,7 +75,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60.000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="Naq-yu-67a">
-                                            <rect key="frame" x="20" y="231" width="380" height="120"/>
+                                            <rect key="frame" x="20" y="230" width="380" height="120"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="120" id="yKR-iB-grm"/>
                                             </constraints>
@@ -1125,6 +1125,7 @@ Label2</string>
                         <outlet property="announceTableView" destination="NRX-bU-SPn" id="U3j-TF-0aO"/>
                         <outlet property="ivNoAnnouncement" destination="V2s-Db-5hD" id="Rya-rd-Li8"/>
                         <outlet property="lbNoAnnouncement" destination="XQ9-nd-7Ld" id="jVx-Iw-8SY"/>
+                        <segue destination="tZ3-Ep-FUt" kind="custom" identifier="ShowInvalidNetworkMsg" customClass="EmbeddedNavigationControllerSegue" id="351-Fd-ZV7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pl2-Za-Jmf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1704,14 +1705,14 @@ Label2</string>
                                             </vibrancyEffect>
                                         </visualEffectView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PassAssets.bundle/ConnectWiFiToCOSCUP.png" translatesAutoresizingMaskIntoConstraints="NO" id="RHU-yy-6oy">
-                                            <rect key="frame" x="119" y="95" width="182" height="176"/>
+                                            <rect key="frame" x="119" y="94" width="182" height="176"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="182" id="DCU-Kc-Mur"/>
                                                 <constraint firstAttribute="height" constant="176" id="Rdx-oq-Kmv"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpJ-Z6-78r">
-                                            <rect key="frame" x="50" y="291" width="320" height="50"/>
+                                            <rect key="frame" x="50" y="290" width="320" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="J5c-Zv-ix7"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="RcR-gv-3Hk"/>
@@ -1733,7 +1734,7 @@ Label2</string>
                                             </variation>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhq-sl-Sa9">
-                                            <rect key="frame" x="75" y="411" width="270" height="45"/>
+                                            <rect key="frame" x="75" y="410" width="270" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="270" id="dgr-Hp-rAE"/>
                                                 <constraint firstAttribute="height" constant="45" id="kNK-Mo-jtr"/>
@@ -1874,9 +1875,10 @@ Label2</string>
         <image name="WebViewAssets.bundle/BarButton-Reload.png" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="reK-KQ-Y1b"/>
-        <segue reference="m5s-g0-cve"/>
-        <segue reference="ewg-q8-EfJ"/>
         <segue reference="gRH-x7-Jfd"/>
+        <segue reference="m5s-g0-cve"/>
+        <segue reference="LZQ-Xr-3kl"/>
+        <segue reference="reK-KQ-Y1b"/>
+        <segue reference="ewg-q8-EfJ"/>
     </inferredMetricsTieBreakers>
 </document>

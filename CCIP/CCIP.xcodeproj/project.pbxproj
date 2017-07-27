@@ -652,8 +652,6 @@
 		6B19ADF01D65E5D600CDE80D /* CheckinOverlay */ = {
 			isa = PBXGroup;
 			children = (
-				286E28A31D60D35B00C5CB94 /* InvalidNetworkMessageViewController.h */,
-				286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */,
 				6BE250201D3133FC005FB4B2 /* GuideViewController.h */,
 				6BE250211D3133FC005FB4B2 /* GuideViewController.m */,
 				6BB50FB11D665393002CAD0B /* AfterEventViewController.h */,
@@ -792,6 +790,8 @@
 				28A7C56C1D6032680079BB12 /* MainNavViewController.m */,
 				286D5FC51D6BD8EC005B6619 /* headers.h */,
 				286D5FC41D6BD6C5005B6619 /* WebServiceEndPoint.h */,
+				286E28A31D60D35B00C5CB94 /* InvalidNetworkMessageViewController.h */,
+				286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */,
 				288164E21D4F2F03005C68EA /* CheckinTab */,
 				280774BC1F1A725E00A5B994 /* ScheduleTab */,
 				288164E61D4F2F68005C68EA /* OldScheduleTab */,

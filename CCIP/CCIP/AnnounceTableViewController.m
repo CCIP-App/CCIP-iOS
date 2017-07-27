@@ -25,6 +25,8 @@
 
 @property (readwrite, nonatomic) BOOL loaded;
 
+@property (readwrite, nonatomic) CGFloat controllerTopStart;
+
 @end
 
 @implementation AnnounceTableViewController
@@ -39,9 +41,6 @@
                                 action:@selector(refresh)
                       forControlEvents:UIControlEventValueChanged];
         [self.announceTableView addSubview:self.refreshControl];
-        
-        [self refresh];
-        [self.refreshControl beginRefreshing];
     }
     
     [self.navigationItem setTitle:NSLocalizedString(@"AnnouncementTitle", nil)];
@@ -71,12 +70,19 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.controllerTopStart = self.navigationController.navigationBar.frame.size.height;
     [AppDelegate setDevLogo:self.shimmeringLogoView
                    WithLogo:ASSETS_IMAGE(@"AssetsUI", @"coscup-logo")];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self refresh];
+}
+
 - (void)refresh {
     self.loaded = NO;
+    [self.refreshControl beginRefreshing];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:CC_ANNOUNCEMENT parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
@@ -88,7 +94,25 @@
         }
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
+        if ([error code] == -1009) {
+            [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg"
+                                      sender:NSLocalizedString(@"Networking_Broken", nil)];
+        } else {
+            self.loaded = YES;
+            self.announceJsonArray = @[];
+            [self.announceTableView reloadData];
+        }
+        [self.refreshControl endRefreshing];
     }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UIViewController *destination = segue.destinationViewController;
+    if ([destination isMemberOfClass:[InvalidNetworkMessageViewController class]]) {
+        InvalidNetworkMessageViewController *inmvc = (InvalidNetworkMessageViewController *)destination;
+        [inmvc setMessage:sender];
+        [inmvc setDelegate:self];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

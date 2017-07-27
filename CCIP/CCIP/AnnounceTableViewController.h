@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InvalidNetworkMessageViewController.h"
 
-@interface AnnounceTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface AnnounceTableViewController : UIViewController <InvalidNetworkRetryDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *announceTableView;
 @property (strong, nonatomic) NSArray *announceJsonArray;

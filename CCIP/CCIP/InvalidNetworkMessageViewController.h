@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol InvalidNetworkRetryDelegate <NSObject>
+
+- (void)refresh;
+
+@end
+
 @interface InvalidNetworkMessageViewController : UIViewController
 
+@property (weak, nonatomic) id<InvalidNetworkRetryDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 

@@ -14,7 +14,6 @@
 #import "AfterEventViewController.h"
 #import "GuideViewController.h"
 #import "StatusViewController.h"
-#import "InvalidNetworkMessageViewController.h"
 #import "UIAlertController+additional.h"
 #import <AFNetworking/AFNetworking.h>
 #import "WebServiceEndPoint.h"
@@ -138,13 +137,19 @@
         [self.statusViewController setScenario:sender];
     }
     if ([destination isMemberOfClass:[InvalidNetworkMessageViewController class]]) {
-        [((InvalidNetworkMessageViewController *)destination) setMessage:sender];
+        InvalidNetworkMessageViewController *inmvc = (InvalidNetworkMessageViewController *)destination;
+        [inmvc setMessage:sender];
+        [inmvc setDelegate:self];
     }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)refresh {
+    [self reloadCard];
 }
 
 #pragma mark Dev Mode

@@ -53,6 +53,7 @@
         MainNavViewController *mnvc = (MainNavViewController *)self.presentingViewController;
         CheckinViewController *cvc = (CheckinViewController *)[[mnvc childViewControllers] firstObject];
         CGFloat topStart = [cvc controllerTopStart];
+        topStart = 0;
         self.view.frame = CGRectMake(0.0f,
                                      -44.0f + topStart,
                                      self.view.frame.size.width,
@@ -68,7 +69,9 @@
 - (IBAction)clossView:(id)sender {
     [self dismissViewControllerAnimated:YES
                              completion:^{
-                                 [[AppDelegate appDelegate].checkinView reloadCard];
+                                 if (self.delegate && [self.delegate respondsToSelector:@selector(refresh)]) {
+                                     [self.delegate refresh];
+                                 }
                              }];
 }
 

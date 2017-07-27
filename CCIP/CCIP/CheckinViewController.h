@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <iCarousel/iCarousel.h>
 #import <ScanditBarcodeScanner/ScanditBarcodeScanner.h>
+#import "InvalidNetworkMessageViewController.h"
 
-@interface CheckinViewController : UIViewController<iCarouselDataSource, iCarouselDelegate, SBSScanDelegate, SBSProcessFrameDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CheckinViewController : UIViewController<InvalidNetworkRetryDelegate, iCarouselDataSource, iCarouselDelegate, SBSScanDelegate, SBSProcessFrameDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (readonly, nonatomic) CGFloat controllerTopStart;
 
