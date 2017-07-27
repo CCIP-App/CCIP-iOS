@@ -58,7 +58,7 @@
     [self setWebViewConstraints];
     
     NSURL *nsurl = self.webView.URL;
-    if (nsurl == nil || [nsurl.absoluteString isEqualToString:@""]) {
+    if ([AppDelegate haveAccessToken] && (nsurl == nil || [nsurl.absoluteString isEqualToString:@""])) {
         nsurl = [NSURL URLWithString:PUZZLE_GAME_URL([AppDelegate accessTokenSHA1])];
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
         [self.webView loadRequest:requestObj];
@@ -106,7 +106,7 @@
 - (IBAction)reload:(id)sender {
     NSString *sha1Token = [AppDelegate accessTokenSHA1];
     NSURL *nsurl = self.webView.URL;
-    if (nsurl == nil || [nsurl.absoluteString isEqualToString:@""] || ![nsurl.absoluteString containsString:sha1Token]) {
+    if ([AppDelegate haveAccessToken] && (nsurl == nil || [nsurl.absoluteString isEqualToString:@""] || ![nsurl.absoluteString containsString:sha1Token])) {
         nsurl = [NSURL URLWithString:PUZZLE_GAME_URL(sha1Token)];
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
         [self.webView loadRequest:requestObj];

@@ -79,11 +79,15 @@
 }
 
 + (NSString *)accessTokenSHA1 {
-    NSString *token = [self accessToken];
-    NSData *tokenData = [token dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *tokenDataSHA1 = [tokenData sha1Hash];
-    NSString *tokenSHA1 = [[tokenDataSHA1 hexString] lowercaseString];
-    return tokenSHA1;
+    if ([self haveAccessToken]) {
+        NSString *token = [self accessToken];
+        NSData *tokenData = [token dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *tokenDataSHA1 = [tokenData sha1Hash];
+        NSString *tokenSHA1 = [[tokenDataSHA1 hexString] lowercaseString];
+        return tokenSHA1;
+    } else {
+        return @"";
+    }
 }
 
 + (void)setIsDevMode:(BOOL)isDevMode {

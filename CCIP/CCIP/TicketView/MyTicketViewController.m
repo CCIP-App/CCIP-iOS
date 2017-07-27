@@ -19,14 +19,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.lbNotice setText:NSLocalizedString(@"TicketNotice", nil)];
-    CGImageRef QRImage = [TicketQRCodeImage generate:[AppDelegate accessToken]
-                                                size:self.ivQRCode.frame.size
-                                     backgroundColor:[CIColor colorWithCGColor:[[UIColor whiteColor] CGColor]]
-                                     foregroundColor:[CIColor colorWithCGColor:[[UIColor blackColor] CGColor]]
-                                           watermark:nil];
-    UIImage *qrImage = [UIImage imageWithCGImage:QRImage];
-    [self.ivQRCode setImage:qrImage];
+    NSString *noticeText;
+    if ([AppDelegate haveAccessToken]) {
+        CGImageRef QRImage = [TicketQRCodeImage generate:[AppDelegate accessToken]
+                                                    size:self.ivQRCode.frame.size
+                                         backgroundColor:[CIColor colorWithCGColor:[[UIColor whiteColor] CGColor]]
+                                         foregroundColor:[CIColor colorWithCGColor:[[UIColor blackColor] CGColor]]
+                                               watermark:nil];
+        UIImage *qrImage = [UIImage imageWithCGImage:QRImage];
+        [self.ivQRCode setImage:qrImage];
+        noticeText = NSLocalizedString(@"TicketNotice", nil);
+    } else {
+        noticeText = NSLocalizedString(@"TicketNonExistNotice", nil);
+    }
+    [self.lbNotice setText:noticeText];
 }
 
 - (void)didReceiveMemoryWarning {

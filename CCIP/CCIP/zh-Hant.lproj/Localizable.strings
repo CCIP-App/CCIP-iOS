@@ -51,6 +51,7 @@
 "Puzzle" = "大地遊戲";
 "Ticket" = "我的票卷";
 "TicketNotice" = "請妥善保管您的票卷，僅提供此票卷給我們的工作人員或您參與攤位活動的工作人員使用";
+"TicketNonExistNotice" = "您的票卷尚未登陸進 COSCUP Pass，請登陸後再使用此功能！";
 "Telegram" = "Telegram 群組";
 "Maps" = "場內地圖";
 "Staffs" = "籌備團隊";
