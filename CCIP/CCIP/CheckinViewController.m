@@ -7,6 +7,8 @@
 //
 
 #import <UICKeyChainStore/UICKeyChainStore.h>
+#import <AFNetworking/AFNetworking.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 #import "UIColor+addition.h"
 #import "AppDelegate.h"
 #import "CheckinCardViewController.h"
@@ -15,7 +17,6 @@
 #import "GuideViewController.h"
 #import "StatusViewController.h"
 #import "UIAlertController+additional.h"
-#import <AFNetworking/AFNetworking.h>
 #import "WebServiceEndPoint.h"
 
 @interface CheckinViewController()
@@ -40,6 +41,8 @@
 @property (strong, nonatomic) InvalidNetworkMessageViewController *invalidNetworkMsgViewController;
 
 @property (readwrite, nonatomic) CGFloat controllerTopStart;
+
+@property (weak, nonatomic) MBProgressHUD *progress;
 
 @end
 
@@ -91,6 +94,11 @@
     [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
     [self.ivUserPhoto.layer setCornerRadius:self.ivUserPhoto.frame.size.height / 2];
     [self.ivUserPhoto.layer setMasksToBounds:YES];
+    
+    self.progress = [MBProgressHUD showHUDAddedTo:self.view
+                                         animated:NO];
+    [self.progress setRemoveFromSuperViewOnHide:NO];
+    [self.progress setMode:MBProgressHUDModeIndeterminate];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(appplicationDidBecomeActive:)
@@ -285,6 +293,7 @@
         }
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    [self.progress hide:YES];
 }
 
 - (void)reloadAndGoToCard {
@@ -293,6 +302,7 @@
 }
 
 - (void)reloadCard {
+    [self.progress show:YES];
     [self handleQRButton];
     static NSDate *previousDate;
     if (previousDate == nil) {

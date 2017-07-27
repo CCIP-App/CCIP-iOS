@@ -72,6 +72,7 @@ DEPENDENCIES:
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
   - iRate (~> 1.11)
   - iVersion (~> 1.11)
+  - MBProgressHUD (~> 0.9.2)
   - MMMarkdown (~> 0.5)
   - MWPhotoBrowser (~> 2.1.2)
   - NJKWebViewProgress (~> 0.2)
@@ -134,6 +135,6 @@ SPEC CHECKSUMS:
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
   UIView+FDCollapsibleConstraints: 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: '08f9e5fc981e824a9bd84eedddac3ddc33ef991f'
+PODFILE CHECKSUM: b62b978fe9636b7d20965d46f175032915488bc8
 
 COCOAPODS: 1.2.1
