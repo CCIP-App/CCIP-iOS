@@ -60,9 +60,11 @@
     NSURL *nsurl = self.webView.URL;
     if ([AppDelegate haveAccessToken] && (nsurl == nil || [nsurl.absoluteString isEqualToString:@""])) {
         nsurl = [NSURL URLWithString:PUZZLE_GAME_URL([AppDelegate accessTokenSHA1])];
-        NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
-        [self.webView loadRequest:requestObj];
+    } else {
+        nsurl = [NSURL URLWithString:PUZZLE_GAME_URL(@"")];
     }
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
+    [self.webView loadRequest:requestObj];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
