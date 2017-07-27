@@ -110,8 +110,7 @@
         nsurl = [NSURL URLWithString:PUZZLE_GAME_URL(sha1Token)];
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
         [self.webView loadRequest:requestObj];
-    }
-    else {
+    } else {
         [self.webView reload];
     }
     [self checkButtonStatus];
