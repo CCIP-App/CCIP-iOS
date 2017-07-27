@@ -59,7 +59,7 @@
     [super viewDidLoad];
     
     // set logo on nav title
-    UIImageView *logoView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"coscup-logo"] imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
+    UIImageView *logoView = [[UIImageView alloc] initWithImage:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
     self.shimmeringLogoView.contentView = logoView;
     self.navigationItem.titleView = self.shimmeringLogoView;
@@ -116,7 +116,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [AppDelegate setDevLogo:self.shimmeringLogoView
-                   WithLogo:[[UIImage imageNamed:@"coscup-logo"] imageWithColor:[UIColor colorFromHtmlColor:@"#ffffff"]]];
+                   WithLogo:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor colorFromHtmlColor:@"#ffffff"]]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -149,12 +149,12 @@
                 NSLog(@"-- Enable DEV_MODE --");
                 [AppDelegate setIsDevMode: YES];
                 [AppDelegate setDevLogo:self.shimmeringLogoView
-                               WithLogo:[[UIImage imageNamed:@"coscup-logo"] imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
+                               WithLogo:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
             } else {
                 NSLog(@"-- Disable DEV_MODE --");
                 [AppDelegate setIsDevMode:NO];
                 [AppDelegate setDevLogo:self.shimmeringLogoView
-                               WithLogo:[[UIImage imageNamed:@"coscup-logo"] imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
+                               WithLogo:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
             }
         }
     }

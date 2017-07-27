@@ -169,7 +169,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     if (self.githubRepoLink != nil) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ToolButton-GitHub_Filled.png"]
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:ASSETS_IMAGE(@"AssetsUI", @"ToolButton-GitHub_Filled")
                                                                     landscapeImagePhone:nil
                                                                                   style:UIBarButtonItemStylePlain
                                                                                  target:self

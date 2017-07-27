@@ -33,6 +33,12 @@
 
 #define LOG_BOT_URL             (@"https://ysitd.licson.net/channel/coscup/today")
 
+// Assets
+
+#define ASSETS_IMAGE(b, i)      ([UIImage imageNamed:i \
+                                            inBundle:[NSBundle bundleWithPath:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.bundle", b]]] \
+                       compatibleWithTraitCollection:nil])
+
 // Non API
 
 #define GITHUB_REPO(repo)       ([NSString stringWithFormat:@"https://github.com/%@", repo])

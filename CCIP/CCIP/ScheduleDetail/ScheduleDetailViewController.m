@@ -10,6 +10,7 @@
 #import "ScheduleDetailViewController.h"
 #import "UIColor+addition.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "WebServiceEndPoint.h"
 
 @interface ScheduleDetailViewController ()
 
@@ -44,7 +45,7 @@
     NSString *startTimeString = [formatter_date stringFromDate:startTime];
     NSString *endTimeString = [formatter_date stringFromDate:endTime];
     NSString *timeRange = [NSString stringWithFormat:@"%@ - %@", startTimeString, endTimeString];
-    UIImage *defaultIcon = [UIImage imageNamed:@"StaffIconDefault"];
+    UIImage *defaultIcon = ASSETS_IMAGE(@"PassAssets", @"StaffIconDefault");
     [self.lbTitle setText:[data objectForKey:@"subject"]];
     [self.lbSpeakerName setText:[[data objectForKey:@"speaker"] objectForKey:@"name"]];
     [self.ivSpeakerPhoto setImage:defaultIcon];

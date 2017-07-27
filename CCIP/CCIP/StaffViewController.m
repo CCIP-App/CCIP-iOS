@@ -72,7 +72,7 @@ static NSString *identifier = @"StaffCell";
                                                                 forIndexPath:indexPath];
     NSDictionary *profile = [staff objectForKey:@"profile"];
     NSString *avatar = STAFF_AVATAR([profile objectForKey:@"avatar"]);
-    UIImage *defaultIcon = [UIImage imageNamed:@"StaffIconDefault"];
+    UIImage *defaultIcon = ASSETS_IMAGE(@"PassAssets", @"StaffIconDefault");
     NSString *title = [profile objectForKey:@"title"];
     if ([title isKindOfClass:[NSNull class]]) {
         title = @"";

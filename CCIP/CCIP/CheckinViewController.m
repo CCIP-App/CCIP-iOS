@@ -66,7 +66,7 @@
     self.firstLoad = YES;
     
     // set logo on nav title
-    UIView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coscup-logo"]];
+    UIView *logoView = [[UIImageView alloc] initWithImage:ASSETS_IMAGE(@"AssetsUI", @"coscup-logo")];
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
     [self.shimmeringLogoView setContentView:logoView];
 //    [self.navigationItem setTitleView:self.shimmeringLogoView];
@@ -88,7 +88,7 @@
                                                                                  action:@selector(navSingleTap)];
     [self.ivUserPhoto setUserInteractionEnabled:YES];
     [self.ivUserPhoto addGestureRecognizer:tapGesture];
-    [self.ivUserPhoto setImage:[UIImage imageNamed:@"StaffIconDefault"]];
+    [self.ivUserPhoto setImage:ASSETS_IMAGE(@"PassAssets", @"StaffIconDefault")];
     [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
     [self.ivUserPhoto.layer setCornerRadius:self.ivUserPhoto.frame.size.height / 2];
     [self.ivUserPhoto.layer setMasksToBounds:YES];
@@ -103,7 +103,7 @@
     [super viewWillAppear:animated];
     self.controllerTopStart = self.navigationController.navigationBar.frame.size.height;
     [AppDelegate setDevLogo:self.shimmeringLogoView
-                   WithLogo:[UIImage imageNamed:@"coscup-logo"]];
+                   WithLogo:ASSETS_IMAGE(@"AssetsUI", @"coscup-logo")];
     [self handleQRButton];
 }
 
@@ -395,7 +395,7 @@
 
 - (void)handleQRButton {
     if (self.qrButtonItem == nil) {
-        self.qrButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"QR_Code.png"]
+        self.qrButtonItem = [[UIBarButtonItem alloc] initWithImage:ASSETS_IMAGE(@"AssetsUI", @"QR_Code")
                                                landscapeImagePhone:nil
                                                              style:UIBarButtonItemStylePlain
                                                             target:self
@@ -489,7 +489,7 @@
 
 - (void)closeBarcodePickerOverlay {
     if (self.scanditBarcodePicker != nil) {
-        [self.qrButtonItem setImage:[UIImage imageNamed:@"QR_Code.png"]];
+        [self.qrButtonItem setImage:ASSETS_IMAGE(@"AssetsUI", @"QR_Code")];
         
         [self.scanditBarcodePicker removeFromParentViewController];
         [self.scanditBarcodePicker.view removeFromSuperview];
@@ -515,7 +515,7 @@
             [self hideQRButton];
         }
     } else {
-        [self.qrButtonItem setImage:[UIImage imageNamed:@"QR_Code_Filled.png"]];
+        [self.qrButtonItem setImage:ASSETS_IMAGE(@"AssetsUI", @"QR_Code_Filled")];
         
         // Configure the barcode picker through a scan settings instance by defining which
         // symbologies should be enabled.
@@ -753,25 +753,25 @@
                 [temp.checkinDate setText:dateId];
                 [temp.checkinTitle setText:NSLocalizedString(@"Checkin", nil)];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinText", nil)];
-                [temp.checkinIcon setImage:[UIImage imageNamed:[did capitalizedString]]];
+                [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", [did capitalizedString])];
             }
             if (isLunch) {
                 [temp.checkinDate setText:dateId];
                 [temp.checkinTitle setText:NSLocalizedString(@"lunch", nil)];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
-                [temp.checkinIcon setImage:[UIImage imageNamed:@"Kit"]];
+                [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", @"Kit")];
             }
             if (isKit) {
                 [temp.checkinDate setText:@"COSCUP"];
                 [temp.checkinTitle setText:NSLocalizedString(@"kit", nil)];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
-                [temp.checkinIcon setImage:[UIImage imageNamed:@"Kit"]];
+                [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", @"Kit")];
             }
             if (isVipKit) {
                 [temp.checkinDate setText:@"COSCUP"];
                 [temp.checkinTitle setText:NSLocalizedString(@"vipkit", nil)];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinTextVipKit", nil)];
-                [temp.checkinIcon setImage:[UIImage imageNamed:@"Gift"]];
+                [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", @"Gift")];
             }
             
             if ([scenario objectForKey:@"disabled"]) {
