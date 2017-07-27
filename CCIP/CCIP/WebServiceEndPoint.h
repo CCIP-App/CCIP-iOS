@@ -32,3 +32,9 @@
 #define TELEGRAM_GROUP_URI      ([@"tg://resolve?domain=" stringByAppendingString:TELEGRAM_URL])
 
 #define LOG_BOT_URL             (@"https://ysitd.licson.net/channel/coscup/today")
+
+// Non API
+
+#define GITHUB_REPO(repo)       ([NSString stringWithFormat:@"https://github.com/%@", repo])
+#define GITHUB_AVATAR(user)     ([NSString stringWithFormat:@"https://avatars.githubusercontent.com/%@?s=86&v=3", user])
+#define GRAVATAR_AVATAR(hash)   ([NSString stringWithFormat:@"https://www.gravatar.com/avatar/%@?s=86%@", hash, [hash length] > 0 ? @"&r=x" : @"&f=y&d=mm"])

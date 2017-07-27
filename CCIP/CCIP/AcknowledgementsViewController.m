@@ -16,6 +16,8 @@
 #import <CPDAcknowledgements/CPDCocoaPodsLibrariesLoader.h>
 #import <CPDAcknowledgements/CPDLibrary.h>
 
+#import "WebServiceEndPoint.h"
+
 @interface AcknowledgementsViewController ()
 
 @property (strong, nonatomic) NSString *githubRepoLink;
@@ -56,7 +58,7 @@
     
     NSString *githubRepo = [[projectInfoData objectForKey:@"self"] objectForKey:@"github_repo"];
     if (githubRepo && ![githubRepo isEqualToString:@""]) {
-        self.githubRepoLink = [NSString stringWithFormat:@"https://github.com/%@", githubRepo];
+        self.githubRepoLink = GITHUB_REPO(githubRepo);
     }
     
     NSBundle *bundle = [NSBundle mainBundle];
@@ -115,7 +117,7 @@
         return website;
     } else {
         if ([githubLogin length] > 0) {
-            return [NSString stringWithFormat:@"https://github.com/%@", githubLogin];
+            return GITHUB_REPO(githubLogin);
         } else {
             return nil;
         }
@@ -133,15 +135,15 @@
     if ([avatarLink length] > 0) {
         return avatarLink;
     } else if ([gravatarHash length] > 0) {
-        return [NSString stringWithFormat:@"https://www.gravatar.com/avatar/%@?&r=x&s=86", gravatarHash];
+        return GRAVATAR_AVATAR(gravatarHash);
     } else if ([gravatarEmail length] > 0) {
-        return [NSString stringWithFormat:@"https://www.gravatar.com/avatar/%@?&r=x&s=86", [[[[gravatarEmail dataUsingEncoding:NSUTF8StringEncoding] MD5Sum] hexString] lowercaseString]];
+        return GRAVATAR_AVATAR([[[[gravatarEmail dataUsingEncoding:NSUTF8StringEncoding] MD5Sum] hexString] lowercaseString]);
     } else if ([githubId length] > 0) {
-        return [NSString stringWithFormat:@"https://avatars.githubusercontent.com/u/%@?v=3&s=86", githubId];
+        return GITHUB_AVATAR([@"u/" stringByAppendingString:githubId]);
     } else if ([githubLogin length] > 0) {
-        return [NSString stringWithFormat:@"https://avatars.githubusercontent.com/%@?v=3&s=86", githubLogin];
+        return GITHUB_AVATAR(githubLogin);
     } else {
-        return @"https://www.gravatar.com/avatar/?f=y&d=mm&s=86";
+        return GRAVATAR_AVATAR(@"");
     }
 }
 
