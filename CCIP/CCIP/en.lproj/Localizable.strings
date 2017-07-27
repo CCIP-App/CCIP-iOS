@@ -8,7 +8,7 @@
 
 
 "CurrentLang" = "en";
-"Title" = "COSCUP 2016";
+"Title" = "COSCUP 2017";
 "Checkin" = "Checkin";
 "Schedule" = "Schedule";
 "Announce" = "Announce";
@@ -84,6 +84,6 @@
 "QRFileNotAvailableDesc" = "Can not extract QR Code from the image";
 "Networking_Broken" = "Error while networking issues";
 "Networking_WrongWiFi" = "Please connect to the wifi provided by COSCUP";
-"LoginGreeting" = "Hi %@, welcome to COSCUP 2016, enjoy this summer festival of fun!";
+"LoginGreeting" = "Hi %@, welcome to COSCUP, enjoy this summer festival of fun!";
 "AfterEventMessage" = "After the Event, we need you in-form a questionnaire for us, thanks.";
 "AfterEventActionTitle" = "Open questionnaire";

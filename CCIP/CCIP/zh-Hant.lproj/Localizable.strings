@@ -8,7 +8,7 @@
 
 
 "CurrentLang" = "zh-Hant";
-"Title" = "COSCUP 2016";
+"Title" = "COSCUP 2017";
 "Checkin" = "報到";
 "Schedule" = "議程";
 "Announce" = "大會訊息";
@@ -27,7 +27,7 @@
 "CheckinViewButton" = "報到";
 "CheckinViewButtonPressed" = "已報到";
 "CheckinText" = "「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。";
-"CheckinTextVipKit" = "謝謝所有參與 COSCUP 2016 個人贊助方案的贊助者，因為有你們，促成了活動的舉行，感謝各位！";
+"CheckinTextVipKit" = "謝謝所有參與 COSCUP 個人贊助方案的贊助者，因為有你們，促成了活動的舉行，感謝各位！";
 "UseNoticeText" = "從封閉到開源\n從個人到社群\n我們曾走過很長一段路";
 "meatLunch" = "葷食";
 "vegetarianLunch" = "素食";
@@ -84,6 +84,6 @@
 "QRFileNotAvailableDesc" = "該圖檔無法擷取出 QR Code，請重試";
 "Networking_Broken" = "網路連線異常";
 "Networking_WrongWiFi" = "請連上 COSCUP 提供的無線網路，才能使用";
-"LoginGreeting" = "嗨 %@，歡迎您加入 COSCUP 2016，盡情享受這場盛夏饗宴吧！";
+"LoginGreeting" = "嗨 %@，歡迎您加入 COSCUP，盡情享受這場盛夏饗宴吧！";
 "AfterEventMessage" = "在大會結束之後，我們需要您填寫一份問卷，感謝您！";
 "AfterEventActionTitle" = "開啟會後問卷";
