@@ -13,8 +13,9 @@
 #define INIT_SCHEDULE_DETAIL_VIEW_STORYBOARD_ID (@"ScheduleDetail")
 #define SCHEDULE_DETAIL_VIEW_STORYBOARD_ID      (@"ShowScheduleDetail")
 
-@interface ScheduleDetailViewController : UIViewController
+@interface ScheduleDetailViewController : UIViewController<UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITableView *tvContent;
 @property (weak, nonatomic) IBOutlet UIView *vwHeader;
 @property (weak, nonatomic) IBOutlet UIView *vwMeta;
 @property (weak, nonatomic) IBOutlet UIImageView *ivSpeakerPhoto;
@@ -29,6 +30,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbTimeText;
 
 - (void)setDetailData:(NSDictionary *)data;
-- (NSDictionary *)getDetailData;
 
 @end

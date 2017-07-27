@@ -6,14 +6,21 @@
 //  Copyright © 2017年 CPRTeam. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "UITableView+FDTemplateLayoutCell.h"
 #import "AppDelegate.h"
 #import "ScheduleDetailViewController.h"
 #import "UIColor+addition.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "WebServiceEndPoint.h"
+#import "ScheduleAbstractViewCell.h"
+#import "ScheduleSpeakerInfoViewCell.h"
+
+#define ABSTRACT_CELL       (@"ScheduleAbstract")
+#define SPEAKERINFO_CELL    (@"ScheduleSpeakerInfo")
 
 @interface ScheduleDetailViewController ()
 
+@property (strong, nonatomic) NSArray *identifiers;
 @property (strong, nonatomic) NSDictionary *detailData;
 
 @end
@@ -24,6 +31,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     SEND_GAI(@"ScheduleDetailViewController");
+    
+    self.identifiers = @[ ABSTRACT_CELL, SPEAKERINFO_CELL ];
+    [self.tvContent setSeparatorColor:[UIColor clearColor]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,19 +70,71 @@
                                  To:[UIColor colorFromHtmlColor:@"#F9FEA5"]
                          StartPoint:CGPointMake(1, .5)
                             ToPoint:CGPointMake(-.4, .5)];
-//    [self.view.layer setCornerRadius:15.0f];
-//    [self.view.layer setMasksToBounds:NO];
-//    [self.view.layer setShadowOffset:CGSizeMake(0, 50)];
-//    [self.view.layer setShadowRadius:50.0f];
-//    [self.view.layer setShadowOpacity:0.1f];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.identifiers count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[self.identifiers objectAtIndex:indexPath.row]];
+    [self configureCell:cell atIndexPath:indexPath];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [tableView fd_heightForCellWithIdentifier:[self.identifiers objectAtIndex:indexPath.row] configuration:^(id cell) {
+        [self configureCell:cell atIndexPath:indexPath];
+    }];
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    [cell setFd_enforceFrameLayout:NO]; // Enable to use "-sizeThatFits:"
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setClipsToBounds:NO];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    [cell.layer setZPosition:indexPath.row];
+    UIView *vwContent = [cell performSelector:@selector(vwContent)];
+    [vwContent.layer setCornerRadius:5.0f];
+    [vwContent.layer setShadowRadius:50.0f];
+    [vwContent.layer setShadowOffset:CGSizeMake(0, 50)];
+    [vwContent.layer setShadowColor:[[UIColor blackColor] CGColor]];
+    [vwContent.layer setShadowOpacity:0.1f];
+    [vwContent.layer setMasksToBounds:NO];
+    NSDictionary *cells = @{
+                            ABSTRACT_CELL: ^{
+                                ScheduleAbstractViewCell *abstractCell = (ScheduleAbstractViewCell *)cell;
+                                NSString *summary = [NSString stringWithFormat:@"%@\n", [self.detailData objectForKey:@"summary"]];
+                                NSLog(@"Set summary: %@", summary);
+                                [abstractCell.lbAbstractContent setText:summary];
+                                [abstractCell.lbAbstractContent sizeToFit];
+                            },
+                            SPEAKERINFO_CELL: ^{
+                                ScheduleSpeakerInfoViewCell *speakerInfoCell = (ScheduleSpeakerInfoViewCell *)cell;
+                                NSString *bio = [NSString stringWithFormat:@"%@\n", [[self.detailData objectForKey:@"speaker"] objectForKey:@"bio"]];
+                                NSLog(@"Set bio: %@", bio);
+                                [speakerInfoCell.lbSpeakerInfoContent setText:bio];
+                                [speakerInfoCell.lbSpeakerInfoContent sizeToFit];
+                            }
+                            };
+    @try {
+        void(^block)(void) = [cells objectForKey:[self.identifiers objectAtIndex:indexPath.row]];
+        block();
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
+    }
 }
 
 - (void)setDetailData:(NSDictionary *)data {
     _detailData = data;
-}
-
-- (NSDictionary *)getDetailData {
-    return _detailData;
 }
 
 /*

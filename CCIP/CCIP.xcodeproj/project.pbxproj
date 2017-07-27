@@ -13,7 +13,6 @@
 		280774C51F1AD2F400A5B994 /* ScheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774C41F1AD2F400A5B994 /* ScheduleTableViewController.m */; };
 		280774D11F1AD8D300A5B994 /* ScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774CF1F1AD8D300A5B994 /* ScheduleTableViewCell.m */; };
 		280774D21F1AD8D300A5B994 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280774D01F1AD8D300A5B994 /* ScheduleTableViewCell.xib */; };
-		2817E9FA1F23853700CAB39B /* ScheduleDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2817E9F91F23853700CAB39B /* ScheduleDetailTableViewController.m */; };
 		2839BF4A1D4CDDAD0062F36D /* CheckinCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */; };
 		284602E01F121BBB00F512A3 /* LaunchScreen@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284602DD1F121BBB00F512A3 /* LaunchScreen@1x.png */; };
 		284602E11F121BBB00F512A3 /* LaunchScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284602DE1F121BBB00F512A3 /* LaunchScreen@2x.png */; };
@@ -168,8 +167,6 @@
 		280774CE1F1AD8D300A5B994 /* ScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTableViewCell.h; sourceTree = "<group>"; };
 		280774CF1F1AD8D300A5B994 /* ScheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTableViewCell.m; sourceTree = "<group>"; };
 		280774D01F1AD8D300A5B994 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
-		2817E9F81F23853700CAB39B /* ScheduleDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleDetailTableViewController.h; sourceTree = "<group>"; };
-		2817E9F91F23853700CAB39B /* ScheduleDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleDetailTableViewController.m; sourceTree = "<group>"; };
 		2821DA9A1D3DCA5500AFE139 /* ProgramDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramDetailViewController.h; sourceTree = "<group>"; };
 		2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramDetailViewController.m; sourceTree = "<group>"; };
 		2821DAA51D3DD36500AFE139 /* ProgramDetailViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramDetailViewPagerController.h; sourceTree = "<group>"; };
@@ -639,8 +636,6 @@
 			children = (
 				6B02FD911F220326002AC0D3 /* ScheduleDetailViewController.h */,
 				6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */,
-				2817E9F81F23853700CAB39B /* ScheduleDetailTableViewController.h */,
-				2817E9F91F23853700CAB39B /* ScheduleDetailTableViewController.m */,
 				6B02FD941F220371002AC0D3 /* ScheduleAbstractViewCell.h */,
 				6B02FD951F220371002AC0D3 /* ScheduleAbstractViewCell.m */,
 				6B02FD971F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.h */,
@@ -1127,7 +1122,6 @@
 				6B11BE891D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m in Sources */,
 				6BCBC3B51D4F393700B5AF35 /* UIViewController+addition.m in Sources */,
 				6BEB310D1F262EF30050759D /* TicketQRCodeImage.swift in Sources */,
-				2817E9FA1F23853700CAB39B /* ScheduleDetailTableViewController.m in Sources */,
 				5F9171291D325B5E000D0F66 /* StaffViewController.m in Sources */,
 				5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */,
 				280774D11F1AD8D300A5B994 /* ScheduleTableViewCell.m in Sources */,
