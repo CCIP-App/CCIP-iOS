@@ -59,8 +59,11 @@
     
     NSURL *telegramURL = [NSURL URLWithString:TELEGRAM_GROUP_URI];
     if ([[UIApplication sharedApplication] canOpenURL:telegramURL]) {
-        [self.navigationController popViewControllerAnimated:YES];
-        [[UIApplication sharedApplication] openURL:telegramURL options:@{} completionHandler:nil];
+        [[UIApplication sharedApplication] openURL:telegramURL
+                                           options:@{}
+                                 completionHandler:^(BOOL success) {
+                                     [self.navigationController popViewControllerAnimated:YES];
+                                 }];
     } else {
         NSURL *nsurl = self.webView.URL;
         if (nsurl == nil || [nsurl.absoluteString isEqualToString:@""]) {
