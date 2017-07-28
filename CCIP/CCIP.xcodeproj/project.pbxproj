@@ -85,6 +85,7 @@
 		6B49F1411F2548C600686C27 /* CCIP-Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* CCIP-Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
 		6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */; };
+		6B9650C91F2B270500F43B39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC12A961F2B1B8000B14039 /* main.m */; };
 		6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */; };
 		6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */; };
 		6BB1C4391F1AD4BB00AB072F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
@@ -95,7 +96,6 @@
 		6BCAC0361F1A8FC100032096 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCAC0351F1A8FC100032096 /* NotificationController.m */; };
 		6BCAC0381F1A8FC100032096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BCAC0371F1A8FC100032096 /* Assets.xcassets */; };
 		6BCBC3B51D4F393700B5AF35 /* UIViewController+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */; };
-		6BD8EF2C1D1D73510094BE95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2B1D1D73510094BE95 /* main.m */; };
 		6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */; };
 		6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */; };
@@ -202,8 +202,8 @@
 		288D3A921D599BCB00E4E3A6 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		288D3A941D599BD600E4E3A6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		288D3A961D599BDC00E4E3A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		28A2992A1D3B90C000145E76 /* OldScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldScheduleViewController.h; sourceTree = "<group>"; };
-		28A2992B1D3B90C000145E76 /* OldScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldScheduleViewController.m; sourceTree = "<group>"; };
+		28A2992A1D3B90C000145E76 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
+		28A2992B1D3B90C000145E76 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+addition.h"; sourceTree = "<group>"; };
 		28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+addition.m"; sourceTree = "<group>"; };
 		28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Project_Info_and_Contributors.json; sourceTree = "<group>"; };
@@ -257,7 +257,7 @@
 		6B0B84D11D2B861000DE18B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B0B84D21D2B862300DE18B0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		6B0DD9BF1F26AF0500AF32C5 /* ScheduleFavoriteDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFavoriteDelegate.h; sourceTree = "<group>"; };
-		6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = WebViewAssets.bundle; path = Images/WebViewAssets.bundle; sourceTree = "<group>"; };
+		6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WebViewAssets.bundle; sourceTree = "<group>"; };
 		6B11BE7F1D4CBA5800B87EA9 /* UIImage+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+addition.h"; sourceTree = "<group>"; };
 		6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+addition.m"; sourceTree = "<group>"; };
 		6B11BE871D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbeddedTabBarControllerSegue.h; sourceTree = "<group>"; };
@@ -274,8 +274,6 @@
 		6B2CD5771D286E6F00793194 /* UIColor+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+addition.h"; sourceTree = "<group>"; };
 		6B2CD5781D286E6F00793194 /* UIColor+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+addition.m"; sourceTree = "<group>"; };
 		6B2CD58A1D28780F00793194 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		6B2CD5951D2886AB00793194 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		6B2CD5961D2886B100793194 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		6B2CD5981D2886C900793194 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6B2CD5991D2886C900793194 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6B2CD5AD1D28C92B00793194 /* CommonCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -298,6 +296,9 @@
 		6BB50FB11D665393002CAD0B /* AfterEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AfterEventViewController.h; sourceTree = "<group>"; };
 		6BB50FB21D665393002CAD0B /* AfterEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AfterEventViewController.m; sourceTree = "<group>"; };
 		6BB55CAB1F242EC7007BC840 /* CCIP-Build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "CCIP-Build.sh"; sourceTree = "<group>"; };
+		6BC12A941F2B1B8000B14039 /* CCIP-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCIP-Swift.h"; sourceTree = "<group>"; };
+		6BC12A951F2B1B8000B14039 /* CCIP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCIP-Bridging-Header.h"; sourceTree = "<group>"; };
+		6BC12A961F2B1B8000B14039 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BCAC01B1F1A8FC100032096 /* CCIP-Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCIP-Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCAC01E1F1A8FC100032096 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		6BCAC0221F1A8FC100032096 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -316,7 +317,6 @@
 		6BCBC3B31D4F393700B5AF35 /* UIViewController+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+addition.h"; sourceTree = "<group>"; };
 		6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+addition.m"; sourceTree = "<group>"; };
 		6BD8EF271D1D73510094BE95 /* CCIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BD8EF2B1D1D73510094BE95 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6BD8EF391D1D73510094BE95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -330,15 +330,12 @@
 		6BEB31051F26097D0050759D /* TelegramController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TelegramController.m; sourceTree = "<group>"; };
 		6BEB31071F26276D0050759D /* MyTicketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTicketViewController.h; sourceTree = "<group>"; };
 		6BEB31081F26276D0050759D /* MyTicketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTicketViewController.m; sourceTree = "<group>"; };
-		6BEB310B1F262EF30050759D /* CCIP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCIP-Bridging-Header.h"; sourceTree = "<group>"; };
 		6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketQRCodeImage.swift; sourceTree = "<group>"; };
-		6BEB310E1F2630820050759D /* CCIP-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCIP-Swift.h"; sourceTree = "<group>"; };
 		6BEB31111F26653D0050759D /* MapsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapsViewController.h; sourceTree = "<group>"; };
 		6BEB31121F26653D0050759D /* MapsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapsViewController.m; sourceTree = "<group>"; };
 		6BEB31141F26656B0050759D /* Maps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Maps.bundle; sourceTree = "<group>"; };
-		6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PassAssets.bundle; path = Images/PassAssets.bundle; sourceTree = "<group>"; };
-		6BF331511F299207004BEEA6 /* AssetsUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AssetsUI.bundle; path = Images/AssetsUI.bundle; sourceTree = "<group>"; };
-		6BF641151D4D421400243B0D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PassAssets.bundle; sourceTree = "<group>"; };
+		6BF331511F299207004BEEA6 /* AssetsUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AssetsUI.bundle; sourceTree = "<group>"; };
 		6BF641161D4D42C000243B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		76097425B85D526316D2EF58 /* Pods-CCIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.debug.xcconfig"; sourceTree = "<group>"; };
 		87CA176D8DB3A92497387928 /* Pods_CCIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -427,167 +424,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		280774BC1F1A725E00A5B994 /* ScheduleTab */ = {
-			isa = PBXGroup;
-			children = (
-				280774BD1F1A736800A5B994 /* ScheduleViewController.h */,
-				280774BE1F1A736800A5B994 /* ScheduleViewController.m */,
-				280774C01F1A7B0100A5B994 /* ScheduleViewPagerController.h */,
-				280774C11F1A7B0100A5B994 /* ScheduleViewPagerController.m */,
-				280774C31F1AD2F400A5B994 /* ScheduleTableViewController.h */,
-				280774C41F1AD2F400A5B994 /* ScheduleTableViewController.m */,
-				280774CE1F1AD8D300A5B994 /* ScheduleTableViewCell.h */,
-				280774CF1F1AD8D300A5B994 /* ScheduleTableViewCell.m */,
-				280774D01F1AD8D300A5B994 /* ScheduleTableViewCell.xib */,
-				6B0DD9BF1F26AF0500AF32C5 /* ScheduleFavoriteDelegate.h */,
-				6B7299AE1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.h */,
-				6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */,
-				6B02FD901F2202BF002AC0D3 /* ScheduleDetail */,
-			);
-			name = ScheduleTab;
-			sourceTree = "<group>";
-		};
-		288164E11D4F1C52005C68EA /* Class+addition */ = {
-			isa = PBXGroup;
-			children = (
-				28A7C5601D5F1AD90079BB12 /* DeepCopy.h */,
-				28A7C5611D5F1AD90079BB12 /* DeepCopy.m */,
-				6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */,
-				6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */,
-				6B11BE7F1D4CBA5800B87EA9 /* UIImage+addition.h */,
-				6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */,
-				6B2CD5771D286E6F00793194 /* UIColor+addition.h */,
-				6B2CD5781D286E6F00793194 /* UIColor+addition.m */,
-				6B2CD5601D281D9400793194 /* UIAlertController+additional.h */,
-				6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */,
-				28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */,
-				28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */,
-				6B26D90E1F23E57A003D9CA1 /* UIView+addition.h */,
-				6B26D90F1F23E57A003D9CA1 /* UIView+addition.m */,
-				6BCBC3B31D4F393700B5AF35 /* UIViewController+addition.h */,
-				6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */,
-				6BAB42371D4ED39D0029B8A5 /* UIApplication+addition.h */,
-				6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */,
-				28ACA99F1D5E92AD002A6419 /* NSData+CommonCrypto.h */,
-				28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */,
-				28A7C5651D5F84FB0079BB12 /* NSData+PMUtils.h */,
-				28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */,
-			);
-			name = "Class+addition";
-			sourceTree = "<group>";
-		};
-		288164E21D4F2F03005C68EA /* CheckinTab */ = {
-			isa = PBXGroup;
-			children = (
-				6B19ADF01D65E5D600CDE80D /* CheckinOverlay */,
-				5FB4D4911D3B57FA005BF382 /* CheckinViewController.h */,
-				5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */,
-				2839BF471D4CDDAD0062F36D /* CheckinCardViewController.h */,
-				2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */,
-				6B2F9E431D4D142700047F38 /* CheckinCardView.h */,
-				6B2F9E441D4D142700047F38 /* CheckinCardView.m */,
-				6BA1A5201D1EFBDC00D5924C /* StatusViewController.h */,
-				6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */,
-			);
-			name = CheckinTab;
-			sourceTree = "<group>";
-		};
-		288164E31D4F2F24005C68EA /* IRCTab */ = {
-			isa = PBXGroup;
-			children = (
-				5FF2B11B1D28B19600665DD9 /* IRCViewController.h */,
-				5FF2B11C1D28B19600665DD9 /* IRCViewController.m */,
-			);
-			name = IRCTab;
-			sourceTree = "<group>";
-		};
-		288164E41D4F2F32005C68EA /* StaffView */ = {
-			isa = PBXGroup;
-			children = (
-				5FECE5A91D352E8A00242DB4 /* StaffGroupTableViewController.h */,
-				5FECE5AA1D352E8A00242DB4 /* StaffGroupTableViewController.m */,
-				5FECE5F21D353C4900242DB4 /* StaffGroupTableViewCell.h */,
-				5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */,
-				5F9171261D325B5E000D0F66 /* StaffViewController.h */,
-				5F9171271D325B5E000D0F66 /* StaffViewController.m */,
-				5F91712B1D32990C000D0F66 /* StaffCell.h */,
-				5F91712C1D32990C000D0F66 /* StaffCell.m */,
-			);
-			name = StaffView;
-			sourceTree = "<group>";
-		};
-		288164E51D4F2F47005C68EA /* MoreTab */ = {
-			isa = PBXGroup;
-			children = (
-				5FB4D4871D3ABF9C005BF382 /* MoreTableViewController.h */,
-				5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */,
-				5FB4D48C1D3B242C005BF382 /* MoreCell.h */,
-				5FB4D48D1D3B242C005BF382 /* MoreCell.m */,
-				6B7F713F1F25F797004E43CA /* PuzzleView */,
-				6B7F713D1F25F797004E43CA /* TicketView */,
-				6B7F713E1F25F797004E43CA /* TelegramView */,
-				6B7F71381F25F755004E43CA /* MapsView */,
-				288164E41D4F2F32005C68EA /* StaffView */,
-				5F8B2D261D55DAC900A68C7D /* SponsorView */,
-				28AFCF191D5DDCD400413927 /* AcknowledgementsView */,
-			);
-			name = MoreTab;
-			sourceTree = "<group>";
-		};
-		288164E61D4F2F68005C68EA /* OldScheduleTab */ = {
-			isa = PBXGroup;
-			children = (
-				28A2992A1D3B90C000145E76 /* OldScheduleViewController.h */,
-				28A2992B1D3B90C000145E76 /* OldScheduleViewController.m */,
-				6B9117051D4EFC2600537ABE /* ScheduleViewCell.h */,
-				6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */,
-				288164E91D4F3004005C68EA /* ProgramDetailView */,
-			);
-			name = OldScheduleTab;
-			sourceTree = "<group>";
-		};
-		288164E71D4F2FA3005C68EA /* AnnounceTab */ = {
-			isa = PBXGroup;
-			children = (
-				5FD049871D5AFB9D00E7CEAD /* AnnounceTableViewController.h */,
-				5FD049881D5AFB9D00E7CEAD /* AnnounceTableViewController.m */,
-				5FD0498A1D5B041800E7CEAD /* AnnounceTableViewCell.h */,
-				5FD0498B1D5B041800E7CEAD /* AnnounceTableViewCell.m */,
-			);
-			name = AnnounceTab;
-			sourceTree = "<group>";
-		};
-		288164E91D4F3004005C68EA /* ProgramDetailView */ = {
-			isa = PBXGroup;
-			children = (
-				2821DA9A1D3DCA5500AFE139 /* ProgramDetailViewController.h */,
-				2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */,
-				2821DAA51D3DD36500AFE139 /* ProgramDetailViewPagerController.h */,
-				2821DAA61D3DD36500AFE139 /* ProgramDetailViewPagerController.m */,
-				288164EA1D4F301A005C68EA /* AbstractView */,
-				288164EB1D4F3022005C68EA /* SpeakerIntroView */,
-			);
-			name = ProgramDetailView;
-			sourceTree = "<group>";
-		};
-		288164EA1D4F301A005C68EA /* AbstractView */ = {
-			isa = PBXGroup;
-			children = (
-				2823E8DF1D3E55F10039D72E /* ProgramAbstractViewController.h */,
-				2823E8E01D3E55F10039D72E /* ProgramAbstractViewController.m */,
-			);
-			name = AbstractView;
-			sourceTree = "<group>";
-		};
-		288164EB1D4F3022005C68EA /* SpeakerIntroView */ = {
-			isa = PBXGroup;
-			children = (
-				2823E8E41D3E560C0039D72E /* ProgramSpeakerIntroViewController.h */,
-				2823E8E51D3E560C0039D72E /* ProgramSpeakerIntroViewController.m */,
-			);
-			name = SpeakerIntroView;
-			sourceTree = "<group>";
-		};
 		288D3A731D599A1200E4E3A6 /* ScanditSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -597,38 +433,6 @@
 				288D3A751D599A1200E4E3A6 /* LICENSE-2.0.txt */,
 			);
 			path = ScanditSDK;
-			sourceTree = "<group>";
-		};
-		28AFCF191D5DDCD400413927 /* AcknowledgementsView */ = {
-			isa = PBXGroup;
-			children = (
-				28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */,
-				28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */,
-				28AFCF121D5DD9CA00413927 /* AcknowledgementsViewController.h */,
-				28AFCF131D5DD9CA00413927 /* AcknowledgementsViewController.m */,
-			);
-			name = AcknowledgementsView;
-			sourceTree = "<group>";
-		};
-		5F8B2D261D55DAC900A68C7D /* SponsorView */ = {
-			isa = PBXGroup;
-			children = (
-				5F8B2D271D55E02200A68C7D /* SponsorTableViewController.h */,
-				5F8B2D281D55E02200A68C7D /* SponsorTableViewController.m */,
-				5F0E55CD1D574F7F004664FB /* SponsorTableViewCell.h */,
-				5F0E55CE1D574F7F004664FB /* SponsorTableViewCell.m */,
-			);
-			name = SponsorView;
-			sourceTree = "<group>";
-		};
-		5FB4D4401D3A8304005BF382 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */,
-				6BF331511F299207004BEEA6 /* AssetsUI.bundle */,
-				6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */,
-			);
-			name = Images;
 			sourceTree = "<group>";
 		};
 		6B02FD901F2202BF002AC0D3 /* ScheduleDetail */ = {
@@ -644,23 +448,19 @@
 			path = ScheduleDetail;
 			sourceTree = "<group>";
 		};
-		6B19ADF01D65E5D600CDE80D /* CheckinOverlay */ = {
+		6B6F256F1F2B17CD00A6BD2C /* StaffView */ = {
 			isa = PBXGroup;
 			children = (
-				6BE250201D3133FC005FB4B2 /* GuideViewController.h */,
-				6BE250211D3133FC005FB4B2 /* GuideViewController.m */,
-				6BB50FB11D665393002CAD0B /* AfterEventViewController.h */,
-				6BB50FB21D665393002CAD0B /* AfterEventViewController.m */,
+				5FECE5A91D352E8A00242DB4 /* StaffGroupTableViewController.h */,
+				5FECE5AA1D352E8A00242DB4 /* StaffGroupTableViewController.m */,
+				5FECE5F21D353C4900242DB4 /* StaffGroupTableViewCell.h */,
+				5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */,
+				5F9171261D325B5E000D0F66 /* StaffViewController.h */,
+				5F9171271D325B5E000D0F66 /* StaffViewController.m */,
+				5F91712B1D32990C000D0F66 /* StaffCell.h */,
+				5F91712C1D32990C000D0F66 /* StaffCell.m */,
 			);
-			name = CheckinOverlay;
-			sourceTree = "<group>";
-		};
-		6B26D9111F23EDC3003D9CA1 /* FontAwesome */ = {
-			isa = PBXGroup;
-			children = (
-				6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */,
-			);
-			name = FontAwesome;
+			path = StaffView;
 			sourceTree = "<group>";
 		};
 		6B7F71381F25F755004E43CA /* MapsView */ = {
@@ -701,6 +501,17 @@
 			path = PuzzleView;
 			sourceTree = "<group>";
 		};
+		6B848D081F2B1812008CE3DC /* SponsorView */ = {
+			isa = PBXGroup;
+			children = (
+				5F8B2D271D55E02200A68C7D /* SponsorTableViewController.h */,
+				5F8B2D281D55E02200A68C7D /* SponsorTableViewController.m */,
+				5F0E55CD1D574F7F004664FB /* SponsorTableViewCell.h */,
+				5F0E55CE1D574F7F004664FB /* SponsorTableViewCell.m */,
+			);
+			path = SponsorView;
+			sourceTree = "<group>";
+		};
 		6BCAC01C1F1A8FC100032096 /* CCIP-Watch */ = {
 			isa = PBXGroup;
 			children = (
@@ -736,22 +547,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6BCBC3B61D4F3BB600B5AF35 /* CustomSegue */ = {
-			isa = PBXGroup;
-			children = (
-				6B11BE871D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.h */,
-				6B11BE881D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m */,
-				28A7C5741D6053F00079BB12 /* EmbeddedNavigationControllerSegue.h */,
-				28A7C5751D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m */,
-			);
-			name = CustomSegue;
-			sourceTree = "<group>";
-		};
 		6BD8EF1E1D1D73510094BE95 = {
 			isa = PBXGroup;
 			children = (
 				6BD8EF291D1D73510094BE95 /* CCIP */,
-				6BD8EF2A1D1D73510094BE95 /* Supporting Files */,
+				6BFB83261F2B19C9005DCF00 /* Supporting Files */,
 				6BCAC01C1F1A8FC100032096 /* CCIP-Watch */,
 				6BCAC02B1F1A8FC100032096 /* CCIP-Watch Extension */,
 				6BD8EF281D1D73510094BE95 /* Products */,
@@ -773,10 +573,14 @@
 		6BD8EF291D1D73510094BE95 /* CCIP */ = {
 			isa = PBXGroup;
 			children = (
-				6BB0B6091F1A74DF00AEB437 /* CCIP.entitlements */,
+				6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */,
+				6B11BE841D4CBC9300B87EA9 /* Main.storyboard */,
+				6BC12A961F2B1B8000B14039 /* main.m */,
+				6BC12A941F2B1B8000B14039 /* CCIP-Swift.h */,
+				6BC12A951F2B1B8000B14039 /* CCIP-Bridging-Header.h */,
 				288D3A731D599A1200E4E3A6 /* ScanditSDK */,
-				288164E11D4F1C52005C68EA /* Class+addition */,
-				6BCBC3B61D4F3BB600B5AF35 /* CustomSegue */,
+				6BFB831D1F2B188A005DCF00 /* Class+addition */,
+				6BFB831E1F2B18A4005DCF00 /* CustomSegue */,
 				6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */,
 				6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */,
 				5FB4D43C1D3A668B005BF382 /* MainTabBarViewController.h */,
@@ -787,43 +591,235 @@
 				286D5FC41D6BD6C5005B6619 /* WebServiceEndPoint.h */,
 				286E28A31D60D35B00C5CB94 /* InvalidNetworkMessageViewController.h */,
 				286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */,
-				288164E21D4F2F03005C68EA /* CheckinTab */,
-				280774BC1F1A725E00A5B994 /* ScheduleTab */,
-				288164E61D4F2F68005C68EA /* OldScheduleTab */,
-				288164E71D4F2FA3005C68EA /* AnnounceTab */,
-				288164E31D4F2F24005C68EA /* IRCTab */,
-				288164E51D4F2F47005C68EA /* MoreTab */,
+				6BFB831F1F2B18D0005DCF00 /* Tabs */,
 			);
 			path = CCIP;
 			sourceTree = "<group>";
 		};
-		6BD8EF2A1D1D73510094BE95 /* Supporting Files */ = {
+		6BF692881F2B2EA500E6040E /* Old */ = {
 			isa = PBXGroup;
 			children = (
-				6B26D9111F23EDC3003D9CA1 /* FontAwesome */,
-				5FB4D4401D3A8304005BF382 /* Images */,
+				28A2992A1D3B90C000145E76 /* ScheduleViewController.h */,
+				28A2992B1D3B90C000145E76 /* ScheduleViewController.m */,
+				6B9117051D4EFC2600537ABE /* ScheduleViewCell.h */,
+				6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */,
+				6BF692891F2B2ED600E6040E /* ProgramDetailView */,
+			);
+			path = Old;
+			sourceTree = "<group>";
+		};
+		6BF692891F2B2ED600E6040E /* ProgramDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				2821DAA51D3DD36500AFE139 /* ProgramDetailViewPagerController.h */,
+				2821DAA61D3DD36500AFE139 /* ProgramDetailViewPagerController.m */,
+				2821DA9A1D3DCA5500AFE139 /* ProgramDetailViewController.h */,
+				2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */,
+				6BF6928A1F2B2EF000E6040E /* AbstractView */,
+				6BF6928B1F2B2EF500E6040E /* SpeakerIntroView */,
+			);
+			path = ProgramDetailView;
+			sourceTree = "<group>";
+		};
+		6BF6928A1F2B2EF000E6040E /* AbstractView */ = {
+			isa = PBXGroup;
+			children = (
+				2823E8DF1D3E55F10039D72E /* ProgramAbstractViewController.h */,
+				2823E8E01D3E55F10039D72E /* ProgramAbstractViewController.m */,
+			);
+			path = AbstractView;
+			sourceTree = "<group>";
+		};
+		6BF6928B1F2B2EF500E6040E /* SpeakerIntroView */ = {
+			isa = PBXGroup;
+			children = (
+				2823E8E41D3E560C0039D72E /* ProgramSpeakerIntroViewController.h */,
+				2823E8E51D3E560C0039D72E /* ProgramSpeakerIntroViewController.m */,
+			);
+			path = SpeakerIntroView;
+			sourceTree = "<group>";
+		};
+		6BFB831A1F2B1835005DCF00 /* AcknowledgementsView */ = {
+			isa = PBXGroup;
+			children = (
+				28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */,
+				28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */,
+				28AFCF121D5DD9CA00413927 /* AcknowledgementsViewController.h */,
+				28AFCF131D5DD9CA00413927 /* AcknowledgementsViewController.m */,
+			);
+			path = AcknowledgementsView;
+			sourceTree = "<group>";
+		};
+		6BFB831D1F2B188A005DCF00 /* Class+addition */ = {
+			isa = PBXGroup;
+			children = (
+				28A7C5601D5F1AD90079BB12 /* DeepCopy.h */,
+				28A7C5611D5F1AD90079BB12 /* DeepCopy.m */,
+				6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */,
+				6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */,
+				6B11BE7F1D4CBA5800B87EA9 /* UIImage+addition.h */,
+				6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */,
+				6B2CD5771D286E6F00793194 /* UIColor+addition.h */,
+				6B2CD5781D286E6F00793194 /* UIColor+addition.m */,
+				6B2CD5601D281D9400793194 /* UIAlertController+additional.h */,
+				6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */,
+				28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */,
+				28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */,
+				6B26D90E1F23E57A003D9CA1 /* UIView+addition.h */,
+				6B26D90F1F23E57A003D9CA1 /* UIView+addition.m */,
+				6BCBC3B31D4F393700B5AF35 /* UIViewController+addition.h */,
+				6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */,
+				6BAB42371D4ED39D0029B8A5 /* UIApplication+addition.h */,
+				6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */,
+				28ACA99F1D5E92AD002A6419 /* NSData+CommonCrypto.h */,
+				28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */,
+				28A7C5651D5F84FB0079BB12 /* NSData+PMUtils.h */,
+				28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */,
+			);
+			path = "Class+addition";
+			sourceTree = "<group>";
+		};
+		6BFB831E1F2B18A4005DCF00 /* CustomSegue */ = {
+			isa = PBXGroup;
+			children = (
+				6B11BE871D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.h */,
+				6B11BE881D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m */,
+				28A7C5741D6053F00079BB12 /* EmbeddedNavigationControllerSegue.h */,
+				28A7C5751D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m */,
+			);
+			path = CustomSegue;
+			sourceTree = "<group>";
+		};
+		6BFB831F1F2B18D0005DCF00 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				6BFB83201F2B18DD005DCF00 /* CheckinTab */,
+				6BFB83211F2B18E3005DCF00 /* ScheduleTab */,
+				6BFB83221F2B18EB005DCF00 /* AnnounceTab */,
+				6BFB83231F2B18FE005DCF00 /* IRCTab */,
+				6BFB83241F2B1904005DCF00 /* MoreTab */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		6BFB83201F2B18DD005DCF00 /* CheckinTab */ = {
+			isa = PBXGroup;
+			children = (
+				5FB4D4911D3B57FA005BF382 /* CheckinViewController.h */,
+				5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */,
+				2839BF471D4CDDAD0062F36D /* CheckinCardViewController.h */,
+				2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */,
+				6B2F9E431D4D142700047F38 /* CheckinCardView.h */,
+				6B2F9E441D4D142700047F38 /* CheckinCardView.m */,
+				6BA1A5201D1EFBDC00D5924C /* StatusViewController.h */,
+				6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */,
+				6BFB83251F2B194D005DCF00 /* CheckinOverlay */,
+			);
+			path = CheckinTab;
+			sourceTree = "<group>";
+		};
+		6BFB83211F2B18E3005DCF00 /* ScheduleTab */ = {
+			isa = PBXGroup;
+			children = (
+				280774BD1F1A736800A5B994 /* ScheduleViewController.h */,
+				280774BE1F1A736800A5B994 /* ScheduleViewController.m */,
+				280774C01F1A7B0100A5B994 /* ScheduleViewPagerController.h */,
+				280774C11F1A7B0100A5B994 /* ScheduleViewPagerController.m */,
+				280774C31F1AD2F400A5B994 /* ScheduleTableViewController.h */,
+				280774C41F1AD2F400A5B994 /* ScheduleTableViewController.m */,
+				280774CE1F1AD8D300A5B994 /* ScheduleTableViewCell.h */,
+				280774CF1F1AD8D300A5B994 /* ScheduleTableViewCell.m */,
+				280774D01F1AD8D300A5B994 /* ScheduleTableViewCell.xib */,
+				6B0DD9BF1F26AF0500AF32C5 /* ScheduleFavoriteDelegate.h */,
+				6B7299AE1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.h */,
+				6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */,
+				6B02FD901F2202BF002AC0D3 /* ScheduleDetail */,
+				6BF692881F2B2EA500E6040E /* Old */,
+			);
+			path = ScheduleTab;
+			sourceTree = "<group>";
+		};
+		6BFB83221F2B18EB005DCF00 /* AnnounceTab */ = {
+			isa = PBXGroup;
+			children = (
+				5FD049871D5AFB9D00E7CEAD /* AnnounceTableViewController.h */,
+				5FD049881D5AFB9D00E7CEAD /* AnnounceTableViewController.m */,
+				5FD0498A1D5B041800E7CEAD /* AnnounceTableViewCell.h */,
+				5FD0498B1D5B041800E7CEAD /* AnnounceTableViewCell.m */,
+			);
+			path = AnnounceTab;
+			sourceTree = "<group>";
+		};
+		6BFB83231F2B18FE005DCF00 /* IRCTab */ = {
+			isa = PBXGroup;
+			children = (
+				5FF2B11B1D28B19600665DD9 /* IRCViewController.h */,
+				5FF2B11C1D28B19600665DD9 /* IRCViewController.m */,
+			);
+			path = IRCTab;
+			sourceTree = "<group>";
+		};
+		6BFB83241F2B1904005DCF00 /* MoreTab */ = {
+			isa = PBXGroup;
+			children = (
+				5FB4D4871D3ABF9C005BF382 /* MoreTableViewController.h */,
+				5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */,
+				5FB4D48C1D3B242C005BF382 /* MoreCell.h */,
+				5FB4D48D1D3B242C005BF382 /* MoreCell.m */,
+				6B7F713F1F25F797004E43CA /* PuzzleView */,
+				6B7F713D1F25F797004E43CA /* TicketView */,
+				6B7F713E1F25F797004E43CA /* TelegramView */,
+				6B7F71381F25F755004E43CA /* MapsView */,
+				6B6F256F1F2B17CD00A6BD2C /* StaffView */,
+				6B848D081F2B1812008CE3DC /* SponsorView */,
+				6BFB831A1F2B1835005DCF00 /* AcknowledgementsView */,
+			);
+			path = MoreTab;
+			sourceTree = "<group>";
+		};
+		6BFB83251F2B194D005DCF00 /* CheckinOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				6BE250201D3133FC005FB4B2 /* GuideViewController.h */,
+				6BE250211D3133FC005FB4B2 /* GuideViewController.m */,
+				6BB50FB11D665393002CAD0B /* AfterEventViewController.h */,
+				6BB50FB21D665393002CAD0B /* AfterEventViewController.m */,
+			);
+			path = CheckinOverlay;
+			sourceTree = "<group>";
+		};
+		6BFB83261F2B19C9005DCF00 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6BFB83271F2B19EB005DCF00 /* Images */,
 				6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */,
 				6B2CD5971D2886C900793194 /* Localizable.strings */,
-				6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */,
 				6BD8EF391D1D73510094BE95 /* Assets.xcassets */,
-				5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */,
-				6BD8EF3E1D1D73510094BE95 /* Info.plist */,
 				6B036B8F1F24371600D5E5A5 /* Settings.bundle */,
+				6BB0B6091F1A74DF00AEB437 /* CCIP.entitlements */,
+				6BD8EF3E1D1D73510094BE95 /* Info.plist */,
+				5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */,
 				6BB55CAB1F242EC7007BC840 /* CCIP-Build.sh */,
 				6B9348AE1F2428A300F77757 /* CCIP.xcconfig */,
 				6B2AEB7C1F23FF6F00C65868 /* CCIP.debug.xcconfig */,
 				6B2AEB7B1F23FF6F00C65868 /* CCIP.release.xcconfig */,
+				6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6BFB83271F2B19EB005DCF00 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */,
+				6BF331511F299207004BEEA6 /* AssetsUI.bundle */,
+				6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */,
 				284602DD1F121BBB00F512A3 /* LaunchScreen@1x.png */,
 				284602DE1F121BBB00F512A3 /* LaunchScreen@2x.png */,
 				284602DF1F121BBB00F512A3 /* LaunchScreen@3x.png */,
-				6B11BE841D4CBC9300B87EA9 /* Main.storyboard */,
-				6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */,
-				6BEB310B1F262EF30050759D /* CCIP-Bridging-Header.h */,
-				6BEB310E1F2630820050759D /* CCIP-Swift.h */,
-				6BD8EF2B1D1D73510094BE95 /* main.m */,
+				6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */,
 			);
-			name = "Supporting Files";
-			path = CCIP;
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -893,7 +889,7 @@
 		6BD8EF1F1D1D73510094BE95 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = CPRTeam;
 				TargetAttributes = {
 					6BCAC01A1F1A8FC100032096 = {
@@ -1016,7 +1012,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "$PROJECT_DIR/$PROJECT_NAME/CCIP-Build.sh";
+			shellScript = "\"$PROJECT_DIR/Supporting Files/CCIP-Build.sh\"";
 		};
 		6DC9628D542EE187EC109AD3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1085,6 +1081,7 @@
 				5FB4D48F1D3B242C005BF382 /* MoreCell.m in Sources */,
 				6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m in Sources */,
 				5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */,
+				6B9650C91F2B270500F43B39 /* main.m in Sources */,
 				5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */,
 				6BEB31091F26276D0050759D /* MyTicketViewController.m in Sources */,
 				6B02FD961F220371002AC0D3 /* ScheduleAbstractViewCell.m in Sources */,
@@ -1101,7 +1098,6 @@
 				280774BF1F1A736800A5B994 /* ScheduleViewController.m in Sources */,
 				2839BF4A1D4CDDAD0062F36D /* CheckinCardViewController.m in Sources */,
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
-				6BD8EF2C1D1D73510094BE95 /* main.m in Sources */,
 				6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */,
 				28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */,
 				28A7C56D1D6032680079BB12 /* MainNavViewController.m in Sources */,
@@ -1155,7 +1151,6 @@
 		6B11BE841D4CBC9300B87EA9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6BF641151D4D421400243B0D /* zh-Hant */,
 				6BF641161D4D42C000243B0D /* Base */,
 			);
 			name = Main.storyboard;
@@ -1182,8 +1177,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				6BD8EF3C1D1D73510094BE95 /* Base */,
-				6B2CD5951D2886AB00793194 /* en */,
-				6B2CD5961D2886B100793194 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1387,6 +1380,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1399,7 +1393,7 @@
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = CCIP/CCIP.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Supporting Files/CCIP.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 50;
@@ -1408,11 +1402,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/CCIP/ScanditSDK",
 				);
-				INFOPLIST_FILE = CCIP/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1429,7 +1422,7 @@
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = CCIP/CCIP.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Supporting Files/CCIP.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 50;
@@ -1438,11 +1431,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/CCIP/ScanditSDK",
 				);
-				INFOPLIST_FILE = CCIP/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_VERSION = 3.0;

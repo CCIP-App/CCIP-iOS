@@ -62,7 +62,7 @@ APP_FLAGS_FILE=Settings.bundle/AppFlags.plist
 
 # /usr/libexec/PlistBuddy -c "set CFBundleVersion $version" "$INFOPLIST_FILE"
 
-cd "$PROJECT_NAME"
+cd "Supporting Files"
 settingBundle "version_preference" "$version $ARCHS";
 settingBundle "build_timestamp" "$timeStamp";
 settingFlagsBundle $flags;
