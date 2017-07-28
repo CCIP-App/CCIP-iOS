@@ -88,8 +88,8 @@
     dispatch_once(&onceToken, ^{
         Class selfClass = [self class];
         
-        SEL oriSEL = @selector(setNavBarAppearance:);
-        SEL cusSEL = @selector(setNewNavBarAppearance:);
+        SEL oriSEL = NSSelectorFromString(@"setNavBarAppearance:");
+        SEL cusSEL = NSSelectorFromString(@"setNewNavBarAppearance:");
         
         Method ori_Method =  class_getInstanceMethod(selfClass, oriSEL);
         Method my_Method = class_getInstanceMethod(selfClass, cusSEL);
