@@ -63,11 +63,13 @@ static NSDateFormatter *formatter_date = nil;
     NSDate *startTime = [formatter_full dateFromString:[_schedule objectForKey:@"start"]];
     NSDate *endTime = [formatter_full dateFromString:[_schedule objectForKey:@"end"]];
     long mins = [[NSNumber numberWithDouble:([endTime timeIntervalSinceDate:startTime] / 60)] longValue];
+    NSString *lang = [_schedule objectForKey:@"lang"];
     [self.ScheduleTitleLabel setText:[_schedule objectForKey:@"subject"]];
     [self.RoomLocationLabel setText:[NSString stringWithFormat:@"Room %@ - %ld mins", [_schedule objectForKey:@"room"], mins]];
-    [self.LabelLabel setText:[NSString stringWithFormat:@"   %@   ", [_schedule objectForKey:@"lang"]]];
+    [self.LabelLabel setText:[NSString stringWithFormat:@"   %@   ", lang]];
     [self.LabelLabel.layer setCornerRadius:self.LabelLabel.frame.size.height / 2];
     [self.LabelLabel sizeToFit];
+    [self.LabelLabel setHidden:[lang length] == 0];
     [self setFavorite:NO];
     if (self.delegate) {
         if ([self.delegate respondsToSelector:@selector(hasFavorite:)]) {
