@@ -148,6 +148,7 @@ static NSDateFormatter *formatter_date = nil;
     
     [cell setDelegate:self];
     [cell setSchedule:program];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     
     return cell;
 }

@@ -10,4 +10,7 @@
 
 @interface ScheduleViewPagerController : ViewPagerController<ViewPagerDataSource, ViewPagerDelegate>
 
+@property (strong, nonatomic) NSDate *selected_section;
+@property (strong, readonly, nonatomic) NSDate *today;
+
 @end

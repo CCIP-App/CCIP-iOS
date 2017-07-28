@@ -141,6 +141,7 @@ static NSDateFormatter *formatter_date = nil;
     NSDictionary *program = [[self.programSections objectForKey:timeString] objectAtIndex:indexPath.row];
     [cell setDelegate:self];
     [cell setSchedule:program];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     
     return cell;
 }

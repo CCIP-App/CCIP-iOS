@@ -12,38 +12,54 @@
 #import "WebServiceEndPoint.h"
 #import "UIColor+addition.h"
 #import <AFNetworking/AFNetworking.h>
+#import "headers.h"
 
 @interface ScheduleViewPagerController ()
 
 @property (strong, nonatomic) NSArray *programs;
 @property (strong, nonatomic) NSArray *segmentsTextArray;
 @property (strong, nonatomic) NSMutableDictionary *program_date;
-@property (strong, nonatomic) NSMutableDictionary *program_date_section;
+@property (strong, readwrite, nonatomic) NSDate *today;
 
 @end
 
 @implementation ScheduleViewPagerController
 
+static NSDateFormatter *formatter_full = nil;
+static NSDateFormatter *formatter_date = nil;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.dataSource = self;
-    self.delegate = self;
-
-    [self.view setBackgroundColor:[UIColor clearColor]];
-
-    [self refreshData];
     
     NSDictionary *defaults = @{ FAV_KEY: @[] };
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault registerDefaults:defaults];
     [userDefault synchronize];
+    
+    if (formatter_full == nil) {
+        formatter_full = [NSDateFormatter new];
+        [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+        [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    }
+    if (formatter_date == nil) {
+        formatter_date = [NSDateFormatter new];
+        [formatter_date setDateFormat:@"M/d"];
+    }
+    
+    self.dataSource = self;
+    self.delegate = self;
+
+    [self.view setBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self refreshData];
 }
 
 /*
@@ -58,7 +74,6 @@
 
 
 - (void)refreshData {
-    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:SCHEDULES_DATA_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
@@ -66,62 +81,39 @@
             self.programs = responseObject;
             [self setScheduleDate];
         }
-//        [self endRefreshingWithCountDown];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
-//        [self endRefreshingWithCountDown];
     }];
 }
 
-//- (void)endRefreshingWithCountDown {
-//}
-
-- (void)setScheduleDate {
-    static NSDateFormatter *formatter_full = nil;
-    if (formatter_full == nil) {
-        formatter_full = [NSDateFormatter new];
-        [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
-        [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-    }
-    
-    static NSDateFormatter *formatter_date = nil;
-    if (formatter_date == nil) {
-        formatter_date = [NSDateFormatter new];
-        [formatter_date setDateFormat:@"M/d"];
-    }
-    
-    static NSDate *startTime;
-    static NSString *time_date;
-    
-    NSMutableDictionary *datesDict = [NSMutableDictionary new];
-    
+- (void)setScheduleDate {    
+    self.program_date = [NSMutableDictionary new];
+    self.selected_section = [NSDate dateWithTimeIntervalSince1970:0];
+    self.today = [NSDate new];
+    NSTimeInterval preferredDateInterval = CGFLOAT_MAX;
     for (NSDictionary *program in self.programs) {
-        startTime = [formatter_full dateFromString:[program objectForKey:@"start"]];
-        time_date = [formatter_date stringFromDate:startTime];
-        
-        NSMutableArray *tempArray = [datesDict objectForKey:time_date];
+        NSDate *startTime = [formatter_full dateFromString:[program objectForKey:@"start"]];
+        NSDate *endTime = [formatter_full dateFromString:[program objectForKey:@"end"]];
+        NSString *time_date = [formatter_date stringFromDate:startTime];
+        NSMutableArray *tempArray = [self.program_date objectForKey:time_date];
         if (tempArray == nil) {
             tempArray = [NSMutableArray new];
         }
         [tempArray addObject:program];
-        [datesDict setObject:tempArray forKey:time_date];
+        [self.program_date setObject:tempArray
+                              forKey:time_date];
+        NSTimeInterval sinceNow = [startTime timeIntervalSinceDate:self.today];
+        NSTimeInterval sinceEnd = [self.today timeIntervalSinceDate:endTime];
+        if (sinceEnd >= 0) {
+            preferredDateInterval = NEAR_ZERO(sinceNow, preferredDateInterval);
+        }
     }
-    
-    self.program_date = datesDict;
     self.segmentsTextArray = [[self.program_date allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-    
     [self reloadData];
-
-    [self checkScheduleDate];
-}
-
-- (void)checkScheduleDate {
-    static NSDateFormatter *formatter_s = nil;
-    if (formatter_s == nil) {
-        formatter_s = [NSDateFormatter new];
-        [formatter_s setDateFormat:@"M/d"];
-    }
-    // To Do
+    self.selected_section = [NSDate dateWithTimeInterval:preferredDateInterval
+                                               sinceDate:self.today];
+    NSUInteger selected_index = [self.segmentsTextArray indexOfObject:[formatter_date stringFromDate:self.selected_section]];
+    [self selectTabAtIndex:selected_index];
 }
 
 #pragma mark - Pager
@@ -138,14 +130,12 @@
     label.textColor = [UIColor colorFromHtmlColor:@"#009A79"];
     label.font = [UIFont fontWithName:@"PingFangTC-Medium" size:14];
     [label sizeToFit];
-    
     return label;
 }
 //Returns the view that will be shown as tab. Create a UIView object (or any UIView subclass object) and give it to ViewPager and it will use it as tab view.
 
 #pragma mark - ViewPagerDataSource
 - (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index {
-    
     ScheduleTableViewController *vc = [ScheduleTableViewController new];
     vc.programs = [self.program_date objectForKey:[self.segmentsTextArray objectAtIndex:index]];
     vc.pagerController = self;
@@ -158,7 +148,6 @@
 
 #pragma mark - ViewPagerDelegate
 - (void)viewPager:(ViewPagerController *)viewPager didChangeTabToIndex:(NSUInteger)index {
-    
     // Do something useful
 }
 //ViewPager will alert your delegate object via - viewPager:didChangeTabToIndex: method, so that you can do something useful.
@@ -166,32 +155,45 @@
 #pragma mark - ViewPagerDelegate
 - (CGFloat)viewPager:(ViewPagerController *)viewPager valueForOption:(ViewPagerOption)option withDefault:(CGFloat)value {
     switch (option) {
-            case ViewPagerOptionStartFromSecondTab:
-            return 0.0;
-            case ViewPagerOptionCenterCurrentTab:
-            return 0.0;
-            case ViewPagerOptionTabLocation:
-            return 1.0;
-            //case ViewPagerOptionTabHeight:
-            //    return 49.0;
-            //case ViewPagerOptionTabOffset:
-            //    return 36.0;
-            case ViewPagerOptionTabDisableTopLine:
-            return 1.0;
-            case ViewPagerOptionTabDisableBottomLine:
-            return 1.0;
-            case ViewPagerOptionTabNarmalLineWidth:
-            return 5.0;
-            case ViewPagerOptionTabSelectedLineWidth:
-            return 5.0;
-            case ViewPagerOptionTabWidth:
-            return [[UIScreen mainScreen] bounds].size.width / [self.segmentsTextArray count];
-            case ViewPagerOptionFixFormerTabsPositions:
-            return 0.0;
-            case ViewPagerOptionFixLatterTabsPositions:
-            return 0.0;
-        default:
+            case ViewPagerOptionStartFromSecondTab: {
+                return 0.0;
+            }
+            case ViewPagerOptionCenterCurrentTab: {
+                return 0.0;
+            }
+            case ViewPagerOptionTabLocation: {
+                return 1.0;
+            }
+//            case ViewPagerOptionTabHeight: {
+//                return 49.0;
+//            }
+//            case ViewPagerOptionTabOffset: {
+//                return 36.0;
+//            }
+            case ViewPagerOptionTabDisableTopLine: {
+                return 1.0;
+            }
+            case ViewPagerOptionTabDisableBottomLine: {
+                return 1.0;
+            }
+            case ViewPagerOptionTabNarmalLineWidth: {
+                return 5.0;
+            }
+            case ViewPagerOptionTabSelectedLineWidth: {
+                return 5.0;
+            }
+            case ViewPagerOptionTabWidth: {
+                return [[UIScreen mainScreen] bounds].size.width / [self.segmentsTextArray count];
+            }
+            case ViewPagerOptionFixFormerTabsPositions: {
+                return 0.0;
+            }
+            case ViewPagerOptionFixLatterTabsPositions: {
+                return 0.0;
+            }
+        default: {
             return value;
+        }
     }
 }
 //You can change ViewPager's options via viewPager:valueForOption:withDefault: delegate method. Just return the desired value for the given option. You don't have to return a value for every option. Only return values for the interested options and ViewPager will use the default values for the rest. Available options are defined in the ViewPagerController.h file and described below.
