@@ -40,6 +40,7 @@
         UIImage *image = [item.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         image = [image imageWithColor:titleHighlightedColor];
         [item setSelectedImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        [item setTitle:NSLocalizedString(item.title, nil)];
     }
     
     self.automaticallyAdjustsScrollViewInsets = NO;
