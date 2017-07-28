@@ -26,7 +26,7 @@
 #define STAFF_DATA_URL          ([STAFF_BASE_URL stringByAppendingString:@"api/staffgroups/?format=json"])
 #define STAFF_AVATAR(avatar)    ([avatar containsString:@"http"] ? [NSString stringWithFormat:@"%@&s=200", avatar] : [STAFF_BASE_URL stringByAppendingString:avatar])
 
-#define PUZZLE_GAME_URL(token)  ([PUZZLE_GAME_BASE_URL stringByAppendingFormat:@"?token=%@", token])
+#define PUZZLE_GAME_URL(token)  ([PUZZLE_GAME_BASE_URL stringByAppendingFormat:@"?mode=app&token=%@", token])
 
 #define TELEGRAM_GROUP_URL      ([@"https://t.me/" stringByAppendingString:TELEGRAM_URL])
 #define TELEGRAM_GROUP_URI      ([@"tg://resolve?domain=" stringByAppendingString:TELEGRAM_URL])
