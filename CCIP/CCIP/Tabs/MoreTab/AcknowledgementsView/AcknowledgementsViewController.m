@@ -158,9 +158,11 @@
                          completion:nil];
     } else {
         // Open in Mobile Safari
-        if (![[UIApplication sharedApplication] openURL:url]) {
-            NSLog(@"%@%@",@"Failed to open url:", [url description]);
-        }
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+            if (!success) {
+                NSLog(@"%@%@",@"Failed to open url:", [url description]);
+            }
+        }];
     }
 }
 

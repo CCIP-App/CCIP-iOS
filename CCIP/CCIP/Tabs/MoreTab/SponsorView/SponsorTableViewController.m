@@ -156,25 +156,28 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *url = [[[[self.sponsorArray objectAtIndex:indexPath.section] objectForKey:@"data"] objectAtIndex:indexPath.row] objectForKey:@"logolink"];
-    if (![url hasPrefix:@"http://"] && ![url hasPrefix:@"https://"]) {
-        url = [@"http://" stringByAppendingString:url];
+    NSString *urlString = [[[[self.sponsorArray objectAtIndex:indexPath.section] objectForKey:@"data"] objectAtIndex:indexPath.row] objectForKey:@"logolink"];
+    if (![urlString hasPrefix:@"http://"] && ![urlString hasPrefix:@"https://"]) {
+        urlString = [@"http://" stringByAppendingString:urlString];
     }
+    NSURL *url = [NSURL URLWithString:urlString];
     
     if ([SFSafariViewController class] != nil) {
         // Open in SFSafariViewController
-        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:url]];
+        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
         [[UIApplication getMostTopPresentedViewController] presentViewController:safariViewController
                                                                         animated:YES
                                                                       completion:nil];
     } else {
         // Open in Mobile Safari
-        if (![[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]]) {
-            NSLog(@"%@%@", @"Failed to open url:", [[NSURL URLWithString:url] description]);
-        }
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+            if (!success) {
+                NSLog(@"%@%@",@"Failed to open url:", [url description]);
+            }
+        }];
     }
     
-    SEND_GAI_EVENT(@"SponsorTableView", url);
+    SEND_GAI_EVENT(@"SponsorTableView", urlString);
     // Navigation logic may go here, for example:
     // Create the next view controller.
     //<#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];

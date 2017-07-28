@@ -208,13 +208,17 @@
     
     if (!uri || [uri isEqualToString:@""]) return;
     
+    NSURL *url = [NSURL URLWithString:uri];
+    
     if ([SFSafariViewController class] != nil) {
-        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:uri]];
+        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
         [[UIApplication getMostTopPresentedViewController] presentViewController:safariViewController animated:YES completion:nil];
     } else {
-        if (![[UIApplication sharedApplication] openURL:[NSURL URLWithString:uri]]) {
-            NSLog(@"%@%@",@"Failed to open url:", [[NSURL URLWithString:uri] description]);
-        }
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+            if (!success) {
+                NSLog(@"%@%@",@"Failed to open url:", [url description]);
+            }
+        }];
     }
     
     SEND_GAI_EVENT(@"AnnounceTableView", uri);
