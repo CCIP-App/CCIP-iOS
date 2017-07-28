@@ -13,6 +13,7 @@
 
 @property (readwrite, nonatomic) BOOL favorite;
 @property (strong, nonatomic) NSDictionary *schedule;
+@property (readwrite, nonatomic) BOOL disabled;
 
 @end
 
@@ -96,6 +97,15 @@ static NSDateFormatter *formatter_date = nil;
 
 - (BOOL)getFavorite {
     return _favorite;
+}
+
+- (void)setDisabled:(BOOL)disabled {
+    _disabled = disabled;
+    [self.ScheduleTitleLabel setAlpha:_disabled ? .2f : 1];
+}
+
+- (BOOL)getDisabled {
+    return _disabled;
 }
 
 @end

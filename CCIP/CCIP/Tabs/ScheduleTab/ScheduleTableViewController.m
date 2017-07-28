@@ -143,6 +143,10 @@ static NSDateFormatter *formatter_date = nil;
     [cell setSchedule:program];
     [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     
+    NSDate *endTime = [formatter_full dateFromString:[program objectForKey:@"end"]];
+    NSTimeInterval sinceEnd = [endTime timeIntervalSinceDate:self.pagerController.today];
+    [cell setDisabled:(sinceEnd < 0)];
+    
     return cell;
 }
 

@@ -22,6 +22,7 @@
 
 @implementation ScheduleFavoriteTableViewController
 
+static NSDate *today = nil;
 static NSDateFormatter *formatter_full = nil;
 static NSDateFormatter *formatter_date = nil;
 
@@ -35,6 +36,9 @@ static NSDateFormatter *formatter_date = nil;
         formatter_date = [NSDateFormatter new];
         [formatter_date setDateFormat:@"MM/dd HH:mm"];
         [formatter_date setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Taipei"]];
+    }
+    if (today == nil) {
+        today = [NSDate new];
     }
     
     [self parseFavorites];
@@ -149,6 +153,10 @@ static NSDateFormatter *formatter_date = nil;
     [cell setDelegate:self];
     [cell setSchedule:program];
     [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
+    
+    NSDate *endTime = [formatter_full dateFromString:[program objectForKey:@"end"]];
+    NSTimeInterval sinceEnd = [endTime timeIntervalSinceDate:today];
+    [cell setDisabled:(sinceEnd < 0)];
     
     return cell;
 }

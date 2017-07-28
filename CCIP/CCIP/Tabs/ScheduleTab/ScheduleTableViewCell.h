@@ -25,5 +25,7 @@
 - (void)setFavorite:(BOOL)favorite;
 - (BOOL)getFavorite;
 - (IBAction)favoriteAction:(id)sender;
+- (void)setDisabled:(BOOL)disabled;
+- (BOOL)getDisabled;
 
 @end
