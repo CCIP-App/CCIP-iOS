@@ -279,8 +279,6 @@
     [self registerAppIconArt];
     [self setDefaultShortcutItems];
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
     return YES;
 }
 

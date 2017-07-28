@@ -31,12 +31,16 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(MAIN_BUILD_VERSION)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>tg</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string></string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string></string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
@@ -53,6 +57,8 @@
 	<array>
 		<string>arm64</string>
 	</array>
+	<key>UIStatusBarHidden</key>
+	<true/>
 	<key>UIStatusBarTintParameters</key>
 	<dict>
 		<key>UINavigationBar</key>
@@ -75,10 +81,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>tg</string>
-    </array>
+	<true/>
 </dict>
 </plist>
