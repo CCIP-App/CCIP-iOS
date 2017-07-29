@@ -6,6 +6,8 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
+@import NetworkExtension;
+
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import <ScanditBarcodeScanner/ScanditBarcodeScanner.h>
 #import <iRate/iRate.h>

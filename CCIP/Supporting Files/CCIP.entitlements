@@ -4,9 +4,20 @@
 <dict>
 	<key>aps-environment</key>
 	<string>development</string>
+	<key>com.apple.developer.networking.HotspotConfiguration</key>
+	<true/>
+    <key>com.apple.developer.networking.HotspotHelper</key>
+    <true/>
+    <key>com.apple.external-accessory.wireless-configuration</key>
+    <true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
 		<string>group.org.coscup.ccip</string>
+	</array>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)org.coscup.CCIP-iOS-Dev</string>
+		<string>$(AppIdentifierPrefix)org.coscup.CCIP-iOS</string>
 	</array>
 </dict>
 </plist>
