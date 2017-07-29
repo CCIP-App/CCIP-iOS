@@ -21,9 +21,6 @@
 "ActivityCenter" = "Activity Center";
 "All" = "All";
 "Hi" = "Hi %@ !";
-"kit" = "Welcome Kit";
-"lunch" = "Lunch";
-"vipkit" = "VIP Kit";
 "CheckinViewButton" = "CHECK IN";
 "CheckinViewButtonPressed" = "FINISHED";
 "CheckinText" = "As well as continuing our long-standing spirit of \"sharing\", we hope to extend and expand this mission further and to a wider audience; so it grows into a force that makes for a better future.";
@@ -66,6 +63,8 @@
 "GuideViewTokenErrorTitle" = "Wrong Redeem Token";
 "GuideViewTokenErrorDesc" = "Please reference the pre-notification, and your will found the redeem code from the mail, or you can click that redeem code link directly. ";
 "CheckinNotice" = "Notice! It will be considered USED after click \"Confirm\" button.\nPlease double check that our staff has instructed you to click the \"Confirm\" button. Thanks for your cooperation.";
+"CheckinStaffShirtNotice" = "Notice! It will be considered USED after click \"Confirm\" button.\nPlease double check that related staff for distribute 'Staff Shirt' has instructed you to click the \"Confirm\" button. Thanks for your cooperation.";
+"CheckinStaffRadioNotice" = "Notice! It will be considered USED after click \"Confirm\" button.\nPlease double check that related staff for distribute 'Walkie Talkie' has instructed you to click the \"Confirm\" button, and please return back the device at end of today event, if you have any problem with the device, please contact with related staffs who distribute you the device. Thanks for your cooperation.";
 "CheckinButton" = "Confirm use";
 "StatusNotice" = "Please stay in this screen for staffs to validate your ticket, thank you!";
 "NetworkAlert" = "Please connect to the network of chamber";

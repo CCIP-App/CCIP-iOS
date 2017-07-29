@@ -759,34 +759,52 @@
             BOOL isLunch = [id rangeOfString:@"lunch" options:NSCaseInsensitiveSearch].length > 0;
             BOOL isKit = [[id lowercaseString] isEqualToString:@"kit"];
             BOOL isVipKit = [[id lowercaseString] isEqualToString:@"vipkit"];
-            NSString *dateId = [formatter stringFromDate:[AppDelegate firstAvailableDate]];
+            BOOL isShirt = [[id lowercaseString] isEqualToString:@"shirt"];
+            BOOL isRadio = [id rangeOfString:@"radio" options:NSCaseInsensitiveSearch].length > 0;
             [temp setId:id];
-            NSString *did = [id stringByReplacingOccurrencesOfString:@"checkin"
-                                                          withString:@""];
-            
+            NSString *id_pattern = @"^(day(\\d+))?(\\w+)$";
+            NSError *error = nil;
+            NSRegularExpression *id_regex = [NSRegularExpression regularExpressionWithPattern:id_pattern
+                                                                                      options:NSRegularExpressionCaseInsensitive
+                                                                                        error:&error];
+            NSArray *id_matches = [id_regex matchesInString:id
+                                                    options:NSMatchingWithTransparentBounds
+                                                      range:NSMakeRange(0, id.length)];
+            NSRange did_range = [[id_matches firstObject] rangeAtIndex:2];
+            NSString *did = @"";
+            NSString *dateId = @"";
+            if (did_range.location != NSNotFound) {
+                did =  [id substringWithRange:did_range];
+                dateId = [formatter stringFromDate:[[AppDelegate firstAvailableDate] dateByAddingTimeInterval:([did intValue] - 1) * 86400]];
+            }
+            NSRange scenarioRange = [[id_matches firstObject] rangeAtIndex:3];
+            NSString *scenarioType = [id substringWithRange:scenarioRange];
+            NSDictionary *displayText = [scenario objectForKey:@"display_text"];
+            NSString *lang = [AppDelegate longLangUI];
+            [temp.checkinTitle setText:[displayText objectForKey:lang]];
+            [temp.checkinDate setText:NSLocalizedString(@"Title", nil)];
+            [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", scenarioType)];
+            [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
             if (isCheckin) {
                 [temp.checkinDate setText:dateId];
-                [temp.checkinTitle setText:NSLocalizedString(@"Checkin", nil)];
+                [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", [[@"day" stringByAppendingString:did] capitalizedString])];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinText", nil)];
-                [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", [did capitalizedString])];
             }
             if (isLunch) {
                 [temp.checkinDate setText:dateId];
-                [temp.checkinTitle setText:NSLocalizedString(@"lunch", nil)];
-                [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
-                [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", @"Kit")];
             }
             if (isKit) {
-                [temp.checkinDate setText:@"COSCUP"];
-                [temp.checkinTitle setText:NSLocalizedString(@"kit", nil)];
-                [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
-                [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", @"Kit")];
+                // nothing to do
             }
             if (isVipKit) {
-                [temp.checkinDate setText:@"COSCUP"];
-                [temp.checkinTitle setText:NSLocalizedString(@"vipkit", nil)];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinTextVipKit", nil)];
-                [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", @"Gift")];
+            }
+            if (isShirt) {
+                [temp.checkinText setText:NSLocalizedString(@"CheckinStaffShirtNotice", nil)];
+            }
+            if (isRadio) {
+                [temp.checkinDate setText:dateId];
+                [temp.checkinText setText:NSLocalizedString(@"CheckinStaffRadioNotice", nil)];
             }
             
             if ([scenario objectForKey:@"disabled"]) {

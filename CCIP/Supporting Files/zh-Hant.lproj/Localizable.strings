@@ -21,9 +21,6 @@
 "ActivityCenter" = "活動中心";
 "All" = "全部";
 "Hi" = "嗨！%@ 您好！";
-"kit" = "迎賓袋";
-"lunch" = "午餐";
-"vipkit" = "獨家紀念品";
 "CheckinViewButton" = "報到";
 "CheckinViewButtonPressed" = "已報到";
 "CheckinText" = "「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。";
@@ -66,6 +63,8 @@
 "GuideViewTokenErrorTitle" = "錯誤的驗證碼";
 "GuideViewTokenErrorDesc" = "請透過行前通知內的連結開啟此應用程式，您也可以點擊右上角打開相機掃描 KKTIX 提供的 QR Code";
 "CheckinNotice" = "請注意！在點下『確認使用』之後，將立即視為已領取。\n請確認大會工作人員已經指示您按下『確認使用』按鈕後再按下按鈕，謝謝！";
+"CheckinStaffShirtNotice" = "請注意！在點下『確認使用』之後，將立即視為已領取。\n請確認發放「大會工人服」的工作人員已經指示您按下『確認使用』按鈕後再按下按鈕，謝謝！";
+"CheckinStaffRadioNotice" = "請注意！在點下『確認使用』之後，將立即視為已領取。\n請確認發放「對講機」的工作人員已經指示您按下『確認使用』按鈕後再按下按鈕，並請於當日歸還設備，若對設備有任何疑慮，請洽詢發放相關人員，謝謝！";
 "CheckinButton" = "確認使用";
 "StatusNotice" = "請停留在此畫面\n給工作人員確認，謝謝！";
 "NetworkAlert" = "請連至會場網路";

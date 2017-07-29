@@ -56,6 +56,10 @@
 + (NSDate * _Nullable)firstAvailableDate;
 + (void)parseAvailableDays:(NSArray * _Null_unspecified)scenarios;
 
++ (NSString *)currentLangUI;
++ (NSString *)shortLangUI;
++ (NSString *)longLangUI;
+
 @end
 
 @interface UIView (AppDelegate)

@@ -209,6 +209,32 @@
     [ac showAlert:nil];
 }
 
++ (NSString *)currentLangUI {
+    return NSLocalizedString(@"CurrentLang", nil);
+}
+
++ (NSString *)shortLangUI {
+    NSString *lang = [AppDelegate currentLangUI];
+    NSString *pattern = @"^(?<major>[\\w]{2})(-(?<minor>[\\w]{2,4}))?$";
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    NSArray *matches = [regex matchesInString:lang
+                                      options:NSMatchingWithTransparentBounds
+                                        range:NSMakeRange(0, lang.length)];
+    return [lang substringWithRange:[[matches firstObject] rangeAtIndex:1]];
+}
+
++ (NSString *)longLangUI {
+    NSString *shortLang = [AppDelegate shortLangUI];
+    NSDictionary *langMap = @{
+                              @"en": @"en-US",
+                              @"zh": @"zh-TW"
+                              };
+    return [langMap objectForKey:shortLang];
+}
+
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation {
     if (url != nil) {
         NSLog(@"Calling from URL: %@", url);
