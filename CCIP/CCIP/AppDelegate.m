@@ -192,7 +192,8 @@
             }
         }
     }
-    [[AppDelegate appDelegate] setAvailableScenarios:[NSArray arrayWithArray:newScenarios]];
+    [[AppDelegate appDelegate] setAvailableScenarios:scenarios];
+//    [[AppDelegate appDelegate] setAvailableScenarios:[NSArray arrayWithArray:newScenarios]];
 }
 
 + (BOOL)haveAccessToken {
