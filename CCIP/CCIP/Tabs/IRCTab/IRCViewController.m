@@ -160,7 +160,7 @@
     if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
         NSURL *url = navigationAction.request.URL;
         
-        if ([url.host isEqualToString:[NSURL URLWithString:TELEGRAM_GROUP_URL].host]) {
+        if ([url.host isEqualToString:[NSURL URLWithString:LOG_BOT_URL].host]) {
             decisionHandler(WKNavigationActionPolicyAllow);
             return;
         } else {
