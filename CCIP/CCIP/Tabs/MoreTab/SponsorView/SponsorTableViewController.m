@@ -157,24 +157,26 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSString *urlString = [[[[self.sponsorArray objectAtIndex:indexPath.section] objectForKey:@"data"] objectAtIndex:indexPath.row] objectForKey:@"logolink"];
-    if (![urlString hasPrefix:@"http://"] && ![urlString hasPrefix:@"https://"]) {
-        urlString = [@"http://" stringByAppendingString:urlString];
-    }
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    if ([SFSafariViewController class] != nil) {
-        // Open in SFSafariViewController
-        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
-        [[UIApplication getMostTopPresentedViewController] presentViewController:safariViewController
-                                                                        animated:YES
-                                                                      completion:nil];
-    } else {
-        // Open in Mobile Safari
-        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
-            if (!success) {
-                NSLog(@"%@%@",@"Failed to open url:", [url description]);
-            }
-        }];
+    if ([urlString length] > 0) {
+        if (![urlString hasPrefix:@"http://"] && ![urlString hasPrefix:@"https://"]) {
+            urlString = [@"http://" stringByAppendingString:urlString];
+        }
+        NSURL *url = [NSURL URLWithString:urlString];
+        
+        if ([SFSafariViewController class] != nil) {
+            // Open in SFSafariViewController
+            SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
+            [[UIApplication getMostTopPresentedViewController] presentViewController:safariViewController
+                                                                            animated:YES
+                                                                          completion:nil];
+        } else {
+            // Open in Mobile Safari
+            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+                if (!success) {
+                    NSLog(@"%@%@",@"Failed to open url:", [url description]);
+                }
+            }];
+        }
     }
     
     SEND_GAI_EVENT(@"SponsorTableView", urlString);
