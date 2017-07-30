@@ -156,14 +156,15 @@
     self.goBackButton.enabled = self.webView.canGoBack ? YES : NO;
 }
 
--(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
         NSURL *url = navigationAction.request.URL;
         
-        if ([url.host isEqualToString:[NSURL URLWithString:LOG_BOT_URL].host]) {
+        if ([url.host isEqualToString:[NSURL URLWithString:TELEGRAM_GROUP_URL].host]) {
             decisionHandler(WKNavigationActionPolicyAllow);
+            return;
         } else {
-            if ([SFSafariViewController class] != nil) {
+            if ([SFSafariViewController class] != nil && [url.scheme containsString:@"http"]) {
                 // Open in SFSafariViewController
                 SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
                 [safariViewController setDelegate:self];
@@ -185,6 +186,7 @@
                 }
             }
             decisionHandler(WKNavigationActionPolicyCancel);
+            return;
         }
     }
     decisionHandler(WKNavigationActionPolicyAllow);

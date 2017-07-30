@@ -130,6 +130,42 @@
     [self checkButtonStatus];
 }
 
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
+        NSURL *url = navigationAction.request.URL;
+        
+        if ([url.host isEqualToString:[NSURL URLWithString:PUZZLE_GAME_BASE_URL].host]) {
+            decisionHandler(WKNavigationActionPolicyAllow);
+            return;
+        } else {
+            if ([SFSafariViewController class] != nil && [url.scheme containsString:@"http"]) {
+                // Open in SFSafariViewController
+                SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
+                [safariViewController setDelegate:self];
+                
+                // SFSafariViewController Toolbar TintColor
+                // [safariViewController.view setTintColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
+                // or http://stackoverflow.com/a/35524808/1751900
+                
+                // ProgressBar Color Not Found
+                // ...
+                
+                [[UIApplication getMostTopPresentedViewController] presentViewController:safariViewController
+                                                                                animated:YES
+                                                                              completion:nil];
+            } else {
+                // Open in Mobile Safari
+                if (![[UIApplication sharedApplication] openURL:url]) {
+                    NSLog(@"%@%@",@"Failed to open url:", [url description]);
+                }
+            }
+            decisionHandler(WKNavigationActionPolicyCancel);
+            return;
+        }
+    }
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
 - (void)checkButtonStatus {
     self.goReloadButton.enabled = self.webView.isLoading ? NO : YES;
 }

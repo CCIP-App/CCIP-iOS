@@ -57,20 +57,11 @@
     
     [self setWebViewConstraints];
     
-    NSURL *telegramURL = [NSURL URLWithString:TELEGRAM_GROUP_URI];
-    if ([[UIApplication sharedApplication] canOpenURL:telegramURL]) {
-        [[UIApplication sharedApplication] openURL:telegramURL
-                                           options:@{}
-                                 completionHandler:^(BOOL success) {
-                                     [self.navigationController popViewControllerAnimated:YES];
-                                 }];
-    } else {
-        NSURL *nsurl = self.webView.URL;
-        if (nsurl == nil || [nsurl.absoluteString isEqualToString:@""]) {
-            nsurl = [NSURL URLWithString:TELEGRAM_GROUP_URL];
-            NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
-            [self.webView loadRequest:requestObj];
-        }
+    NSURL *nsurl = self.webView.URL;
+    if (nsurl == nil || [nsurl.absoluteString isEqualToString:@""]) {
+        nsurl = [NSURL URLWithString:TELEGRAM_GROUP_URL];
+        NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
+        [self.webView loadRequest:requestObj];
     }
 }
 
@@ -135,6 +126,42 @@
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(nonnull NSError *)error {
     [self checkButtonStatus];
+}
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
+        NSURL *url = navigationAction.request.URL;
+        
+        if ([url.host isEqualToString:[NSURL URLWithString:TELEGRAM_GROUP_URL].host]) {
+            decisionHandler(WKNavigationActionPolicyAllow);
+            return;
+        } else {
+            if ([SFSafariViewController class] != nil && [url.scheme containsString:@"http"]) {
+                // Open in SFSafariViewController
+                SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
+                [safariViewController setDelegate:self];
+                
+                // SFSafariViewController Toolbar TintColor
+                // [safariViewController.view setTintColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
+                // or http://stackoverflow.com/a/35524808/1751900
+                
+                // ProgressBar Color Not Found
+                // ...
+                
+                [[UIApplication getMostTopPresentedViewController] presentViewController:safariViewController
+                                                                                animated:YES
+                                                                              completion:nil];
+            } else {
+                // Open in Mobile Safari
+                if (![[UIApplication sharedApplication] openURL:url]) {
+                    NSLog(@"%@%@",@"Failed to open url:", [url description]);
+                }
+            }
+            decisionHandler(WKNavigationActionPolicyCancel);
+            return;
+        }
+    }
+    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
 - (void)checkButtonStatus {
