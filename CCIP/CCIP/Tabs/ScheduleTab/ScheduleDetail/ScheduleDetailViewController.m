@@ -62,6 +62,8 @@
     [self.ivSpeakerPhoto sd_setImageWithURL:[NSURL URLWithString:[[data objectForKey:@"speaker"] objectForKey:@"avatar"]]
                            placeholderImage:defaultIcon
                                     options:SDWebImageRefreshCached];
+    [self.ivSpeakerPhoto.layer setCornerRadius:self.ivSpeakerPhoto.frame.size.height / 2];
+    [self.ivSpeakerPhoto.layer setMasksToBounds:YES];
     [self.lbRoomText setText:[data objectForKey:@"room"]];
     [self.lbLangText setText:[data objectForKey:@"lang"]];
     [self.lbTimeText setText:timeRange];
