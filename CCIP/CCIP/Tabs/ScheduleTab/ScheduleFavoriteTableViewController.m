@@ -55,19 +55,17 @@ static NSDateFormatter *formatter_date = nil;
     [self.navigationItem setTitle:@""];
     
     CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
-    CGRect frame = CGRectMake(0, (self.navigationController.navigationBar.frame.origin.y + navigationBarBounds.size.height) * -1,
+    CGRect frame = CGRectMake(0, 0,
                               self.view.frame.size.width, self.navigationController.navigationBar.frame.origin.y + navigationBarBounds.size.height);
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
-    [self.navigationController.navigationBar setTranslucent:NO];
-    UIView *headView = [[UIView alloc] initWithFrame:frame];
+    UIView *headView = [UIView new];
+    [headView setFrame:frame];
     [headView setGradientColor:[UIColor colorFromHtmlColor:@"#F9FEA5"]
                             To:[UIColor colorFromHtmlColor:@"#20E2D7"]
                     StartPoint:CGPointMake(-.4f, .5f)
                        ToPoint:CGPointMake(1, .5f)];
-    UIImage *naviBackImg = [[headView.layer.sublayers lastObject] toImage];
-    [self.navigationController.navigationBar setBackgroundImage:naviBackImg forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar.superview addSubview:headView];
+    [self.navigationController.navigationBar.superview bringSubviewToFront:headView];
+    [self.navigationController.navigationBar.superview bringSubviewToFront:self.navigationController.navigationBar];
     
     UIButton *favButtonFake = [UIButton new];
     [favButtonFake setTitle:FAVORITE_LIKE
