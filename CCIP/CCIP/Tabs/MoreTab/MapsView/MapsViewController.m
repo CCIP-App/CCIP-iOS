@@ -37,6 +37,7 @@
     [self.browser setStartOnGrid:YES];
     [self.browser setDisplayNavArrows:YES];
     [self.browser setDisplayActionButton:NO];
+    [self.browser setAlwaysShowControls:YES];    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
