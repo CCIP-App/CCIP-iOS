@@ -90,7 +90,7 @@ static NSDateFormatter *formatter_date = nil;
         [previewingContext setSourceRect:[self.view convertRect:tableCell.frame fromView:tableView]];
         return detailView;
     } else {
-        return self;
+        return nil;
     }
 }
 
