@@ -83,8 +83,6 @@
 		6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F9E441D4D142700047F38 /* CheckinCardView.m */; };
 		6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
 		6B49F1411F2548C600686C27 /* CCIP-Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* CCIP-Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		6B638C0B1F2C06F500F7AE6F /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B638C0A1F2C06F500F7AE6F /* GameKit.framework */; };
-		6B638C171F2C08EC00F7AE6F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B638C161F2C08EC00F7AE6F /* NetworkExtension.framework */; };
 		6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
 		6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */; };
 		6B9650C91F2B270500F43B39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC12A961F2B1B8000B14039 /* main.m */; };
@@ -284,8 +282,6 @@
 		6B2F9E431D4D142700047F38 /* CheckinCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinCardView.h; sourceTree = "<group>"; };
 		6B2F9E441D4D142700047F38 /* CheckinCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinCardView.m; sourceTree = "<group>"; };
 		6B2F9E461D4D18F100047F38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		6B638C0A1F2C06F500F7AE6F /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		6B638C161F2C08EC00F7AE6F /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreenIcon@3x.png"; sourceTree = "<group>"; };
 		6B7299AE1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFavoriteTableViewController.h; sourceTree = "<group>"; };
 		6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleFavoriteTableViewController.m; sourceTree = "<group>"; };
@@ -365,10 +361,8 @@
 				288D3A911D599BC400E4E3A6 /* AVFoundation.framework in Frameworks */,
 				6B2CD58B1D28780F00793194 /* AudioToolbox.framework in Frameworks */,
 				288D3A8F1D599BB600E4E3A6 /* CoreGraphics.framework in Frameworks */,
-				6B638C171F2C08EC00F7AE6F /* NetworkExtension.framework in Frameworks */,
 				288D3A8D1D599BB000E4E3A6 /* Foundation.framework in Frameworks */,
 				288D3A8B1D599BA700E4E3A6 /* UIKit.framework in Frameworks */,
-				6B638C0B1F2C06F500F7AE6F /* GameKit.framework in Frameworks */,
 				288D3A891D599B9F00E4E3A6 /* CoreVideo.framework in Frameworks */,
 				288D3A871D599B9800E4E3A6 /* MessageUI.framework in Frameworks */,
 				288D3A851D599B8D00E4E3A6 /* OpenGLES.framework in Frameworks */,
@@ -406,8 +400,6 @@
 		267251DBF9C24B92F4EE80DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6B638C161F2C08EC00F7AE6F /* NetworkExtension.framework */,
-				6B638C0A1F2C06F500F7AE6F /* GameKit.framework */,
 				288D3A961D599BDC00E4E3A6 /* MediaPlayer.framework */,
 				288D3A941D599BD600E4E3A6 /* SystemConfiguration.framework */,
 				288D3A921D599BCB00E4E3A6 /* CoreMedia.framework */,
@@ -931,10 +923,10 @@
 								enabled = 1;
 							};
 							com.apple.GameCenter = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.HotspotConfiguration = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -946,7 +938,7 @@
 								enabled = 0;
 							};
 							com.apple.NetworkExtensions.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;
