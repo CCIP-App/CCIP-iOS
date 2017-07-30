@@ -447,6 +447,7 @@
 }
 
 - (void)setDefaultShortcutItems {
+    [[UIApplication sharedApplication] setShortcutItems:@[]];
 //    static NSDateFormatter *formatter_full = nil;
 //    if (formatter_full == nil) {
 //        formatter_full = [NSDateFormatter new];
