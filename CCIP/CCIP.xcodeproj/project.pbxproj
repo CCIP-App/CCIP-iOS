@@ -946,7 +946,7 @@
 								enabled = 0;
 							};
 							com.apple.NetworkExtensions.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -1443,7 +1443,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = arm64;
+				VALID_ARCHS = "$(ARCHS)";
 			};
 			name = Debug;
 		};
@@ -1471,7 +1471,7 @@
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = arm64;
+				VALID_ARCHS = "$(ARCHS)";
 			};
 			name = Release;
 		};
