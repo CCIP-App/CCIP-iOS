@@ -22,6 +22,7 @@
 
 @implementation ScheduleFavoriteTableViewController
 
+static UIView *headView;
 static NSDate *today = nil;
 static NSDateFormatter *formatter_full = nil;
 static NSDateFormatter *formatter_date = nil;
@@ -57,7 +58,7 @@ static NSDateFormatter *formatter_date = nil;
     CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
     CGRect frame = CGRectMake(0, 0,
                               self.view.frame.size.width, self.navigationController.navigationBar.frame.origin.y + navigationBarBounds.size.height);
-    UIView *headView = [UIView new];
+    headView = [UIView new];
     [headView setFrame:frame];
     [headView setGradientColor:[UIColor colorFromHtmlColor:@"#F9FEA5"]
                             To:[UIColor colorFromHtmlColor:@"#20E2D7"]
@@ -77,6 +78,23 @@ static NSDateFormatter *formatter_date = nil;
     [favButtonFake sizeToFit];
     UIBarButtonItem *favoritesButtonFake = [[UIBarButtonItem alloc] initWithCustomView:favButtonFake];
     [self.navigationItem setRightBarButtonItem:favoritesButtonFake];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [headView setAlpha:0];
+    [headView setHidden:NO];
+    [UIView animateWithDuration:.5f
+                     animations:^{
+                         [headView setAlpha:1];
+                     } completion:^(BOOL finished) {
+                         [headView setAlpha:1];
+                     }];
+}
+
+- (void)willMoveToParentViewController:(UIViewController *)parent {
+    if (parent == nil) {
+        [headView removeFromSuperview];
+    }
 }
 
 - (void)parseFavorites {
@@ -107,6 +125,18 @@ static NSDateFormatter *formatter_date = nil;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)showViewController:(UIViewController *)vc sender:(id)sender {
+    [UIView animateWithDuration:.5f
+                     animations:^{
+                         [headView setAlpha:0];
+                     } completion:^(BOOL finished) {
+                         [headView setHidden:YES];
+                         [headView setAlpha:1];
+                     }];
+    [self.navigationController pushViewController:vc
+                                         animated:YES];
 }
 
 #pragma mark - Table view data source
