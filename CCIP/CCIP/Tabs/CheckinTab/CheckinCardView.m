@@ -56,7 +56,9 @@
     
     __block AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     void (^use)(void) = ^{
-        [manager GET:CC_USE([AppDelegate accessToken], self.id) parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSURL *url = [NSURL URLWithString:CC_USE([AppDelegate accessToken], self.id)];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
             NSLog(@"JSON: %@", responseObject);
             if (responseObject != nil) {
                 [self setUsed:[NSNumber numberWithBool:YES]];
@@ -115,14 +117,14 @@
                     }
                     [[AppDelegate appDelegate] setDefaultShortcutItems];
                 }
+            } else {
+                // Invalid Network
+                [self.delegate showInvalidNetworkMsg];
+                // UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
+                // [ac showAlert:nil];
             }
-        } failure:^(NSURLSessionTask *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
-            // Invalid Network
-            [self.delegate showInvalidNetworkMsg];
-            // UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
-            // [ac showAlert:nil];
         }];
+        [dataTask resume];
     };
     
     if ([self.disabled boolValue]) {

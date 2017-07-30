@@ -27,6 +27,7 @@
 
 @property (strong, nonatomic) IBOutlet iCarousel *cards;
 @property (weak, nonatomic) IBOutlet UIImageView *ivUserPhoto;
+@property (weak, nonatomic) IBOutlet UILabel *lbHi;
 @property (weak, nonatomic) IBOutlet UILabel *lbUserName;
 @property (strong, nonatomic) UIPageControl *pageControl;
 
@@ -88,17 +89,15 @@
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(navSingleTap)];
-    [self.ivUserPhoto setUserInteractionEnabled:YES];
-    [self.ivUserPhoto addGestureRecognizer:tapGesture];
+    [self.lbHi setUserInteractionEnabled:YES];
+    [self.lbHi addGestureRecognizer:tapGesture];
+    [self.lbHi setHidden:![AppDelegate haveAccessToken]];
+//    [self.ivUserPhoto setUserInteractionEnabled:YES];
+//    [self.ivUserPhoto addGestureRecognizer:tapGesture];
     [self.ivUserPhoto setImage:ASSETS_IMAGE(@"PassAssets", @"StaffIconDefault")];
     [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
     [self.ivUserPhoto.layer setCornerRadius:self.ivUserPhoto.frame.size.height / 2];
     [self.ivUserPhoto.layer setMasksToBounds:YES];
-    
-    self.progress = [MBProgressHUD showHUDAddedTo:self.view
-                                         animated:NO];
-    [self.progress setRemoveFromSuperViewOnHide:NO];
-    [self.progress setMode:MBProgressHUDModeIndeterminate];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(appplicationDidBecomeActive:)
@@ -164,10 +163,6 @@
 
 - (void)navSingleTap {
     //NSLog(@"navSingleTap");
-    [self handleNavTapTimes];
-}
-
-- (void)handleNavTapTimes {
     static int tapTimes = 0;
     static NSDate *oldTapTime;
     static NSDate *newTapTime;
@@ -302,13 +297,16 @@
 }
 
 - (void)reloadCard {
-    [self.progress show:YES];
+    self.progress = [MBProgressHUD showHUDAddedTo:self.view
+                                         animated:YES];
+    [self.progress setMode:MBProgressHUDModeIndeterminate];
     [self handleQRButton];
     static NSDate *previousDate;
     if (previousDate == nil) {
         previousDate = [AppDelegate firstAvailableDate];
     }
 
+    [self.lbHi setHidden:![AppDelegate haveAccessToken]];
     [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
     [self.lbUserName setText:@" "];
     if (![AppDelegate haveAccessToken]) {
@@ -340,6 +338,7 @@
                     [userInfo removeObjectForKey:@"scenarios"];
                     self.userInfo = [NSDictionary dictionaryWithDictionary:userInfo];
                     self.scenarios = [responseObject objectForKey:@"scenarios"];
+                    [self.lbHi setHidden:![AppDelegate haveAccessToken]];
                     [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
                     [self.lbUserName setText:[responseObject objectForKey:@"user_id"]];
                     [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"

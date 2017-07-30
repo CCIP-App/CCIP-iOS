@@ -54,7 +54,21 @@
             [self.nowTimeLabel setTextColor:[UIColor blackColor]];
         }
     } else {
-        [self.kitTitle setText:NSLocalizedString([self.scenario objectForKey:@"id"], nil)];
+        NSDictionary *displayText = [self.scenario objectForKey:@"display_text"];
+        NSString *lang = [AppDelegate longLangUI];
+        [self.kitTitle setText:[displayText objectForKey:lang]];
+    }
+    NSDictionary *attr = [self.scenario objectForKey:@"attr"];
+    if ([[attr allKeys] count] > 0) {
+        NSError *error;
+        NSData *attrData = [NSJSONSerialization dataWithJSONObject:attr
+                                                           options:NSJSONWritingPrettyPrinted
+                                                             error:&error];
+        NSString *attrText = [[NSString alloc] initWithData:attrData
+                                                   encoding:NSUTF8StringEncoding];
+        [self.attributesLabel setText:attrText];
+    } else {
+        [self.attributesLabel setText:@""];
     }
     [self setNeedCountdown:([[self.scenario objectForKey:@"countdown"] floatValue] > 0)];
     [self.countdownLabel setHidden:!self.needCountdown];
@@ -75,9 +89,9 @@
     
     if (self.isRelayout != true) {
         self.view.frame = CGRectMake(0.0,
-                                     64.0,
+                                     0.0,
                                      self.view.frame.size.width,
-                                     self.view.frame.size.height - 64 - 49);
+                                     self.view.frame.size.height - 49);
         self.isRelayout = true;
     }
 }
