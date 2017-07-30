@@ -33,10 +33,6 @@
 }
 
 - (void)viewDidLayoutSubviews {
-    [self.cardView.checkinBtn setGradientColor:[UIColor colorFromHtmlColor:@"#B0F5B6"]
-                                            To:[UIColor colorFromHtmlColor:@"#2CE4D4"]
-                                    StartPoint:CGPointMake(.2, .8)
-                                       ToPoint:CGPointMake(1, .5)];
     CALayer *layer = [self.cardView.checkinBtn.layer.sublayers firstObject];
     [layer setCornerRadius:self.cardView.checkinBtn.frame.size.height / 2];
     [self.cardView.checkinBtn.layer setCornerRadius:self.cardView.checkinBtn.frame.size.height / 2];

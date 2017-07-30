@@ -64,19 +64,31 @@
                 [self setUsed:[NSNumber numberWithBool:YES]];
                 if ([[responseObject objectForKey:@"message"] isEqual:@"invalid token"]) {
                     NSLog(@"%@", [responseObject objectForKey:@"message"]);
-                    [self.checkinBtn setBackgroundColor:[UIColor redColor]];
+//                    [self.checkinBtn setBackgroundColor:[UIColor redColor]];
+                    [self.checkinBtn setGradientColor:[UIColor redColor]
+                                                   To:[UIColor colorFromHtmlColor:@"#2CE4D4"]
+                                           StartPoint:CGPointMake(.2, .8)
+                                              ToPoint:CGPointMake(1, .5)];
                 } else if ([[responseObject objectForKey:@"message"] isEqual:@"has been used"]) {
                     [self showCountdown];
                     NSLog(@"%@", [responseObject objectForKey:@"message"]);
                     [UIView animateWithDuration:.25f
                                      animations:^{
-                                         [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
+//                                         [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
+                                         [self.checkinBtn setGradientColor:[UIColor orangeColor]
+                                                                        To:[UIColor colorFromHtmlColor:@"#2CE4D4"]
+                                                                StartPoint:CGPointMake(.2, .8)
+                                                                   ToPoint:CGPointMake(1, .5)];
                                      }
                                      completion:^(BOOL finished) {
                                          if (finished) {
                                              [UIView animateWithDuration:1.75f
                                                               animations:^{
-                                                                  [self.checkinBtn setBackgroundColor:disabledColor];
+//                                                                  [self.checkinBtn setBackgroundColor:disabledColor];
+                                                                  [self.checkinBtn setGradientColor:disabledColor
+                                                                                                 To:[UIColor colorFromHtmlColor:@"#2CE4D4"]
+                                                                                         StartPoint:CGPointMake(.2, .8)
+                                                                                            ToPoint:CGPointMake(1, .5)];
                                                               }];
                                          }
                                      }];
@@ -84,7 +96,11 @@
                     NSLog(@"%@", [responseObject objectForKey:@"message"]);
                     [UIView animateWithDuration:.25f
                                      animations:^{
-                                         [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
+//                                         [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
+                                         [self.checkinBtn setGradientColor:[UIColor orangeColor]
+                                                                        To:[UIColor colorFromHtmlColor:@"#2CE4D4"]
+                                                                StartPoint:CGPointMake(.2, .8)
+                                                                   ToPoint:CGPointMake(1, .5)];
                                          [self.checkinBtn setTitle:NSLocalizedString(@"ExpiredOrNotAvailable", nil)
                                                           forState:UIControlStateNormal];
                                      }
@@ -92,7 +108,11 @@
                                          if (finished) {
                                              [UIView animateWithDuration:1.75f
                                                               animations:^{
-                                                                  [self.checkinBtn setBackgroundColor:defaultColor];
+//                                                                  [self.checkinBtn setBackgroundColor:defaultColor];
+                                                                  [self.checkinBtn setGradientColor:defaultColor
+                                                                                                 To:[UIColor colorFromHtmlColor:@"#2CE4D4"]
+                                                                                         StartPoint:CGPointMake(.2, .8)
+                                                                                            ToPoint:CGPointMake(1, .5)];
                                                               }
                                                               completion:^(BOOL finished) {
                                                                   if (finished) {
@@ -108,7 +128,11 @@
                 } else {
                     [self updateScenario:[responseObject objectForKey:@"scenarios"]];
                     [self showCountdown];
-                    [self.checkinBtn setBackgroundColor:disabledColor];
+//                    [self.checkinBtn setBackgroundColor:disabledColor];
+                    [self.checkinBtn setGradientColor:disabledColor
+                                                   To:[UIColor colorFromHtmlColor:@"#2CE4D4"]
+                                           StartPoint:CGPointMake(.2, .8)
+                                              ToPoint:CGPointMake(1, .5)];
                     if (isCheckin) {
                         [self.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil) forState:UIControlStateNormal];
                         [[AppDelegate appDelegate].checkinView reloadCard];
@@ -130,12 +154,20 @@
     if ([self.disabled boolValue]) {
         [UIView animateWithDuration:.25f
                          animations:^{
-                             [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
+//                             [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
+                             [self.checkinBtn setGradientColor:[UIColor orangeColor]
+                                                            To:[UIColor colorFromHtmlColor:@"#2CE4D4"]
+                                                    StartPoint:CGPointMake(.2, .8)
+                                                       ToPoint:CGPointMake(1, .5)];
                          }
                          completion:^(BOOL finished) {
                              if (finished) {
                                  [UIView animateWithDuration:1.75f animations:^{
-                                     [self.checkinBtn setBackgroundColor:disabledColor];
+//                                     [self.checkinBtn setBackgroundColor:disabledColor];
+                                     [self.checkinBtn setGradientColor:disabledColor
+                                                                    To:[UIColor colorFromHtmlColor:@"#2CE4D4"]
+                                                            StartPoint:CGPointMake(.2, .8)
+                                                               ToPoint:CGPointMake(1, .5)];
                                  }];
                              }
                          }];
