@@ -156,39 +156,39 @@
     self.goBackButton.enabled = self.webView.canGoBack ? YES : NO;
 }
 
-//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-//    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
-//        NSURL *url = request.URL;
-//        
-//        if ([url.host isEqualToString:[NSURL URLWithString:LOG_BOT_URL].host]) {
-//            return YES;
-//        } else {
-//            if ([SFSafariViewController class] != nil) {
-//                // Open in SFSafariViewController
-//                SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
-//                [safariViewController setDelegate:self];
-//                
-//                // SFSafariViewController Toolbar TintColor
-//                // [safariViewController.view setTintColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
-//                // or http://stackoverflow.com/a/35524808/1751900
-//                
-//                // ProgressBar Color Not Found
-//                // ...
-//                
-//                [[UIApplication getMostTopPresentedViewController] presentViewController:safariViewController
-//                                                                                animated:YES
-//                                                                              completion:nil];
-//            } else {
-//                // Open in Mobile Safari
-//                if (![[UIApplication sharedApplication] openURL:url]) {
-//                    NSLog(@"%@%@",@"Failed to open url:", [url description]);
-//                }
-//            }
-//            return NO;
-//        }
-//    }
-//    return YES;
-//}
+-(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
+        NSURL *url = navigationAction.request.URL;
+        
+        if ([url.host isEqualToString:[NSURL URLWithString:LOG_BOT_URL].host]) {
+            decisionHandler(WKNavigationActionPolicyAllow);
+        } else {
+            if ([SFSafariViewController class] != nil) {
+                // Open in SFSafariViewController
+                SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
+                [safariViewController setDelegate:self];
+                
+                // SFSafariViewController Toolbar TintColor
+                // [safariViewController.view setTintColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
+                // or http://stackoverflow.com/a/35524808/1751900
+                
+                // ProgressBar Color Not Found
+                // ...
+                
+                [[UIApplication getMostTopPresentedViewController] presentViewController:safariViewController
+                                                                                animated:YES
+                                                                              completion:nil];
+            } else {
+                // Open in Mobile Safari
+                if (![[UIApplication sharedApplication] openURL:url]) {
+                    NSLog(@"%@%@",@"Failed to open url:", [url description]);
+                }
+            }
+            decisionHandler(WKNavigationActionPolicyCancel);
+        }
+    }
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"estimatedProgress"] && object == self.webView) {
