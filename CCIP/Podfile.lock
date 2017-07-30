@@ -18,7 +18,7 @@ PODS:
   - ColorArt (0.1.1)
   - CPDAcknowledgements (1.0.0)
   - DACircularProgress (2.3.1)
-  - EFQRCode (1.2.5)
+  - EFQRCode (1.2.7)
   - FirebaseAnalytics (3.2.1):
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
@@ -66,7 +66,7 @@ DEPENDENCIES:
   - BLKFlexibleHeightBar (~> 1.0)
   - ColorArt (= 0.1.1)
   - CPDAcknowledgements (~> 1.0)
-  - EFQRCode (from `https://github.com/Haraguroicha/EFQRCode`, commit `edaaeaf`)
+  - EFQRCode (~> 1.2.7)
   - Google/Analytics (~> 3.0.3)
   - iCarousel (~> 1.8)
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
@@ -85,9 +85,6 @@ DEPENDENCIES:
   - UIView+FDCollapsibleConstraints (~> 1.1)
 
 EXTERNAL SOURCES:
-  EFQRCode:
-    :commit: edaaeaf
-    :git: https://github.com/Haraguroicha/EFQRCode
   ICViewPager:
     :git: https://github.com/FrankWu100/ICViewPager
   UITableView+FDTemplateLayoutCell:
@@ -95,9 +92,6 @@ EXTERNAL SOURCES:
     :tag: 1.6.1
 
 CHECKOUT OPTIONS:
-  EFQRCode:
-    :commit: edaaeaf
-    :git: https://github.com/Haraguroicha/EFQRCode
   ICViewPager:
     :commit: bdafff5f2090df73ae911a4ccfdec42062716405
     :git: https://github.com/FrankWu100/ICViewPager
@@ -111,7 +105,7 @@ SPEC CHECKSUMS:
   ColorArt: de0ffb63da4acdde8e234ded62e200236ca3e7e4
   CPDAcknowledgements: 6e15e71849ba4ad5e8a17a0bb9d20938ad23bac8
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
-  EFQRCode: 3d817441ff27a7061c70b89eb14ab655f24a08cf
+  EFQRCode: f283d7ce75a7780756a5e2a9c39077292d6e7596
   FirebaseAnalytics: 0fd6532cb2c3d03cd5cf26ad295ccb091efd3104
   FirebaseInstanceID: a9d923f3d0b6fbf9fac89310860357aaadc34be5
   Google: cd92fab98f800f509da88c1e0c570275713bc9d5
@@ -135,6 +129,6 @@ SPEC CHECKSUMS:
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
   UIView+FDCollapsibleConstraints: 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: cb5de7b1e4cf5c67e5d7e1dd9e3495f64ab0c3f3
+PODFILE CHECKSUM: 177f641ff779e6194e474acb8c9a49fddfd087f9
 
 COCOAPODS: 1.2.1
