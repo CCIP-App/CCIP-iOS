@@ -101,7 +101,7 @@
 - (void)setNewNavBarAppearance:(BOOL)animated {
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
-    [self.navigationController.navigationBar setTranslucent:NO];
+    [self.navigationController.navigationBar setTranslucent:YES];
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height);
     UIView *headView = [[UIView alloc] initWithFrame:frame];
     [headView setGradientColor:[UIColor colorFromHtmlColor:@"#F9FEA5"]
