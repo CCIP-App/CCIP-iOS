@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSArray *segmentsTextArray;
 @property (strong, nonatomic) NSMutableDictionary *program_date;
 @property (strong, readwrite, nonatomic) NSDate *today;
+@property (readwrite, nonatomic) BOOL firstLoad;
 
 @end
 
@@ -49,17 +50,17 @@ static NSDateFormatter *formatter_date = nil;
     
     self.dataSource = self;
     self.delegate = self;
+    
+    self.firstLoad = YES;
 
     [self.view setBackgroundColor:[UIColor clearColor]];
+    
+    [self refreshData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [self refreshData];
 }
 
 /*
@@ -110,10 +111,13 @@ static NSDateFormatter *formatter_date = nil;
     }
     self.segmentsTextArray = [[self.program_date allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     [self reloadData];
-    self.selected_section = [NSDate dateWithTimeInterval:preferredDateInterval
-                                               sinceDate:self.today];
-    NSUInteger selected_index = [self.segmentsTextArray indexOfObject:[formatter_date stringFromDate:self.selected_section]];
-    [self selectTabAtIndex:selected_index];
+    if (self.firstLoad == YES) {
+        self.selected_section = [NSDate dateWithTimeInterval:preferredDateInterval
+                                                   sinceDate:self.today];
+        NSUInteger selected_index = [self.segmentsTextArray indexOfObject:[formatter_date stringFromDate:self.selected_section]];
+        [self selectTabAtIndex:selected_index];
+        self.firstLoad = NO;
+    }
 }
 
 #pragma mark - Pager

@@ -599,11 +599,11 @@ Please copy and paste the token into next field or click the token link in the r
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSO-K1-shl">
-                                        <rect key="frame" x="10" y="62" width="330" height="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uSO-K1-shl">
+                                        <rect key="frame" x="10" y="62" width="330" height="45"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="BNI-9C-dK9"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="Ln6-Mx-qRw"/>
+                                            <constraint firstAttribute="height" constant="45" id="BNI-9C-dK9"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="Ln6-Mx-qRw"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1852,10 +1852,10 @@ Label2</string>
         <image name="WebViewAssets.bundle/BarButton-Reload.png" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gRH-x7-Jfd"/>
-        <segue reference="m5s-g0-cve"/>
-        <segue reference="LZQ-Xr-3kl"/>
         <segue reference="reK-KQ-Y1b"/>
+        <segue reference="LZQ-Xr-3kl"/>
         <segue reference="ewg-q8-EfJ"/>
+        <segue reference="m5s-g0-cve"/>
+        <segue reference="gRH-x7-Jfd"/>
     </inferredMetricsTieBreakers>
 </document>
