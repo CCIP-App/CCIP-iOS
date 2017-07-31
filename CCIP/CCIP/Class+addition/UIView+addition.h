@@ -18,6 +18,7 @@
 
 @interface UIView (linear_diagonal_gradient)
 
-- (void)setGradientColor:(UIColor *)from To:(UIColor *)to StartPoint:(CGPoint)fromPoint ToPoint:(CGPoint)toPoint;
+- (void)sizeGradientToFit;
+- (void)setGradientColor:(UIColor * _Nullable)from To:(UIColor * _Nullable)to StartPoint:(CGPoint)fromPoint ToPoint:(CGPoint)toPoint;
 
 @end

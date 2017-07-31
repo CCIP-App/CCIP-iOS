@@ -25,6 +25,10 @@
     [super awakeFromNib];
 }
 
+- (void)layoutSubviews {
+    [self.checkinBtn sizeGradientToFit];
+}
+
 - (void)showCountdown {
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[self.scenario objectForKey:@"used"] longValue]];
     NSDate *stopDate = [date dateByAddingTimeInterval:[[self.scenario objectForKey:@"countdown"] longValue]];

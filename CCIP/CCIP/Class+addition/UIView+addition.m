@@ -41,7 +41,14 @@
 
 @implementation UIView (linear_diagonal_gradient)
 
-- (void)setGradientColor:(UIColor *)from To:(UIColor *)to StartPoint:(CGPoint)fromPoint ToPoint:(CGPoint)toPoint {
+- (void)sizeGradientToFit {
+    [self setGradientColor:nil
+                        To:nil
+                StartPoint:CGPointZero
+                   ToPoint:CGPointZero];
+}
+
+- (void)setGradientColor:(UIColor * _Nullable)from To:(UIColor * _Nullable)to StartPoint:(CGPoint)fromPoint ToPoint:(CGPoint)toPoint {
     NSString *name = @"GradientBackground";
     // Set view background linear diagonal gradient
     //   Create the gradient
@@ -58,9 +65,13 @@
         theViewGradient.name = name;
         theViewGradient.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     }
-    theViewGradient.colors = [NSArray arrayWithObjects: (id)from.CGColor, (id)to.CGColor, nil];
-    theViewGradient.startPoint = fromPoint;
-    theViewGradient.endPoint = toPoint;
+    if (from != nil && to != nil && !CGPointEqualToPoint(CGPointZero, fromPoint) && !CGPointEqualToPoint(CGPointZero, toPoint)) {
+        theViewGradient.colors = [NSArray arrayWithObjects: (id)from.CGColor, (id)to.CGColor, nil];
+        theViewGradient.startPoint = fromPoint;
+        theViewGradient.endPoint = toPoint;
+    } else {
+        theViewGradient.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    }
     [self.layer insertSublayer:theViewGradient
                        atIndex:0];
 }

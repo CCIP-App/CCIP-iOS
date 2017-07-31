@@ -8,6 +8,7 @@
 
 #include <QuartzCore/QuartzCore.h>
 #import "UIColor+addition.h"
+#import "UIView+addition.h"
 #import "CheckinCardViewController.h"
 #import "CheckinCardView.h"
 #import "headers.h"
