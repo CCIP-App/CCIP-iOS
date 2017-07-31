@@ -21,16 +21,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="roj-JR-9r3">
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="roj-JR-9r3">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="roj-JR-9r3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="BGa-5d-YY7"/>
-                            <constraint firstItem="roj-JR-9r3" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="QoW-hb-54a"/>
-                            <constraint firstItem="roj-JR-9r3" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="pec-xW-fYa"/>
-                            <constraint firstAttribute="trailing" secondItem="roj-JR-9r3" secondAttribute="trailing" id="u52-1r-eRm"/>
+                            <constraint firstItem="roj-JR-9r3" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="GJZ-Nn-vUt"/>
+                            <constraint firstItem="roj-JR-9r3" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="HM1-R0-gDf"/>
+                            <constraint firstItem="roj-JR-9r3" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="IJ3-C8-g28"/>
+                            <constraint firstItem="roj-JR-9r3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wJK-mc-VrW"/>
                         </constraints>
                     </view>
                 </viewController>

@@ -545,7 +545,7 @@ Please copy and paste the token into next field or click the token link in the r
             <objects>
                 <navigationController id="PgR-sB-d7G" customClass="MainNavViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Checkin" image="AssetsUI.bundle/icon_ios_pin.png" id="0RH-c0-HTe"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5Ap-Be-8PP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Ap-Be-8PP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1386,7 +1386,7 @@ Label2</string>
         <scene sceneID="4VM-uK-3io">
             <objects>
                 <collectionViewController modalPresentationStyle="overCurrentContext" id="Du6-oE-R9e" customClass="StaffViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="iVn-bX-KcF">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="iVn-bX-KcF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1543,7 +1543,7 @@ Label2</string>
             <objects>
                 <navigationController id="2iG-px-jKh" customClass="MainNavViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Schedule" image="AssetsUI.bundle/icon_ios_topcharts.png" id="s9e-mH-WEn"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="geD-Aj-Nie">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="geD-Aj-Nie">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1560,7 +1560,7 @@ Label2</string>
             <objects>
                 <navigationController id="PXh-Tj-uNR" customClass="MainNavViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="More" image="AssetsUI.bundle/icon_ios_more.png" id="X9A-yE-P7Z"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VT9-lH-fKX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VT9-lH-fKX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1577,7 +1577,7 @@ Label2</string>
             <objects>
                 <navigationController id="f3M-Kk-0Fr" customClass="MainNavViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Announce" image="AssetsUI.bundle/icon_ios_bell.png" id="fAF-SI-dED"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="31P-wZ-JcS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="31P-wZ-JcS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1598,7 +1598,7 @@ Label2</string>
             <objects>
                 <navigationController id="7DG-ad-dxc" customClass="MainNavViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="IRC" image="AssetsUI.bundle/icon_ios_chat.png" id="qtD-2E-7uu"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0av-oL-WCV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0av-oL-WCV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
