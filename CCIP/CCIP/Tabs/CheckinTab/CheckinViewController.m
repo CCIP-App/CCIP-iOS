@@ -298,6 +298,9 @@
 }
 
 - (void)reloadCard {
+    if (self.progress != nil) {
+        [self.progress hide:YES];
+    }
     self.progress = [MBProgressHUD showHUDAddedTo:self.view
                                          animated:YES];
     [self.progress setMode:MBProgressHUDModeIndeterminate];
