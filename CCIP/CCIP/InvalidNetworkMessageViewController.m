@@ -9,6 +9,7 @@
 #import "InvalidNetworkMessageViewController.h"
 #import "AppDelegate.h"
 #import "UIColor+addition.h"
+#import "UIView+addition.h"
 #import "MainNavViewController.h"
 
 @interface InvalidNetworkMessageViewController ()

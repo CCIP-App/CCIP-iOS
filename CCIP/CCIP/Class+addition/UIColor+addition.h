@@ -14,9 +14,3 @@
 + (UIColor *)colorFromHtmlColor:(NSString *)htmlColorString;
 
 @end
-
-@interface UIView (linear_diagonal_gradient)
-
-- (void)setGradientColor:(UIColor *)from To:(UIColor *)to StartPoint:(CGPoint)fromPoint ToPoint:(CGPoint)toPoint;
-
-@end

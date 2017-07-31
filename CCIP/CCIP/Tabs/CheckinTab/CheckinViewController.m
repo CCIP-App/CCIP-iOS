@@ -10,6 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "UIColor+addition.h"
+#import "UIView+addition.h"
 #import "AppDelegate.h"
 #import "CheckinCardViewController.h"
 #import "CheckinViewController.h"

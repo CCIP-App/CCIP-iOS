@@ -10,6 +10,7 @@
 #import "MapsViewController.h"
 #import "UIColor+addition.h"
 #import "UIImage+addition.h"
+#import "UIView+addition.h"
 #import "AppDelegate.h"
 #import <objc/runtime.h>
 

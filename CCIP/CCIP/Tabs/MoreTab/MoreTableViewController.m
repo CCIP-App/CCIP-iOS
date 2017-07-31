@@ -15,6 +15,7 @@
 #import "WebServiceEndPoint.h"
 #import "UIColor+addition.h"
 #import "UIImage+addition.h"
+#import "UIView+addition.h"
 
 @interface MoreTableViewController ()
 

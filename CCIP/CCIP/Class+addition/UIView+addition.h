@@ -15,3 +15,9 @@
 - (void)addDashedLine:(UIColor *)color;
 
 @end
+
+@interface UIView (linear_diagonal_gradient)
+
+- (void)setGradientColor:(UIColor *)from To:(UIColor *)to StartPoint:(CGPoint)fromPoint ToPoint:(CGPoint)toPoint;
+
+@end

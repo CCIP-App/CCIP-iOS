@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "ScheduleDetailViewController.h"
 #import "UIColor+addition.h"
+#import "UIView+addition.h"
 #import "WebServiceEndPoint.h"
 #import "ScheduleAbstractViewCell.h"
 #import "ScheduleSpeakerInfoViewCell.h"

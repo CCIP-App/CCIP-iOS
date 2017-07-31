@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.cardView = (CheckinCardView *)self.view;;
+    self.cardView = (CheckinCardView *)self.view;
     
     [self.cardView.checkinSmallCard.layer setCornerRadius:5.0f]; // set cornerRadius as you want.
     [self.cardView.checkinSmallCard.layer setMasksToBounds:NO];

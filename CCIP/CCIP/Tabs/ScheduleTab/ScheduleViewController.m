@@ -9,6 +9,7 @@
 #import "ScheduleViewController.h"
 #import "AppDelegate.h"
 #import "UIColor+addition.h"
+#import "UIView+addition.h"
 #import "ScheduleTableViewCell.h"
 #import "WebServiceEndPoint.h"
 

@@ -11,6 +11,7 @@
 #import <NJKWebViewProgress/NJKWebViewProgressView.h>
 #import "UIColor+addition.h"
 #import "UIImage+addition.h"
+#import "UIView+addition.h"
 #import "WebServiceEndPoint.h"
 
 @interface IRCViewController()
