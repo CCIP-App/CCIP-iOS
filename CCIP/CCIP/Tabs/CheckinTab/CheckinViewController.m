@@ -513,6 +513,8 @@
         [self.scanditBarcodePicker.view removeFromSuperview];
         [self.scanditBarcodePicker didMoveToParentViewController:nil];
         self.scanditBarcodePicker = nil;
+        [self.lbHi setHidden:NO];
+        [self.ivUserPhoto setHidden:NO];
     }
 }
 
@@ -533,6 +535,8 @@
             [self hideQRButton];
         }
     } else {
+        [self.lbHi setHidden:YES];
+        [self.ivUserPhoto setHidden:YES];
         [self.qrButtonItem setImage:ASSETS_IMAGE(@"AssetsUI", @"QR_Code_Filled")];
         
         // Configure the barcode picker through a scan settings instance by defining which
