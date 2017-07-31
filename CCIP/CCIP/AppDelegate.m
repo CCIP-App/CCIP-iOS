@@ -233,7 +233,7 @@
                               @"en": @"en-US",
                               @"zh": @"zh-TW"
                               };
-    return [langMap objectForKey:shortLang];
+    return [[langMap allKeys] containsObject:shortLang] ? [langMap objectForKey:shortLang] : nil;
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation {

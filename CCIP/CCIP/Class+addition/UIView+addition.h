@@ -12,7 +12,7 @@
 
 @interface UIView (DashedLine)
 
-- (void)addDashedLine:(UIColor *)color;
+- (void)addDashedLine:(UIColor *_Nonnull)color;
 
 @end
 
