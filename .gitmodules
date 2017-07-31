@@ -1,9 +1,9 @@
 [submodule "MYCrypto"]
 	path = MYCrypto
-	url = git@github.com:Haraguroicha/MYCrypto.git
+	url = https://github.com/Haraguroicha/MYCrypto.git
 [submodule "MYUtilities"]
 	path = MYUtilities
-	url = git@github.com:Haraguroicha/MYUtilities.git
+	url = https://github.com/Haraguroicha/MYUtilities.git
 [submodule "Crypto"]
 	path = Crypto
 	url = https://github.com/Haraguroicha/Crypto.git
