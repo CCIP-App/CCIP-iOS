@@ -21,7 +21,7 @@
 #define CC_ANNOUNCEMENT         ([__API_HOST__ stringByAppendingFormat:@"announcement"])
 #define CC_LANDING(token)       ([__API_HOST__ stringByAppendingFormat:@"landing?token=%@", token])
 
-#define CONF_JSON_DATA(asset)   ([CONF_BASE_URL stringByAppendingFormat:@"2018-assets/json/%@.json", asset])
+#define CONF_JSON_DATA(asset)   ([CONF_BASE_URL stringByAppendingFormat:@"2018/static/json/%@.json", asset])
 #define SCHEDULES_DATA_URL      (CONF_JSON_DATA(@"submissions"))
 #define SPONSOR_LIST_URL        (CONF_JSON_DATA(@"sponsor"))
 

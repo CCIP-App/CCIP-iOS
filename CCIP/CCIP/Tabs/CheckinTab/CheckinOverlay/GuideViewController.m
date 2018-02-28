@@ -37,8 +37,8 @@
     
     // Set carousel background linear diagonal gradient
     //   Create the colors
-    UIColor *topColor = [UIColor colorFromHtmlColor:@"#20E2D7"];
-    UIColor *bottomColor = [UIColor colorFromHtmlColor:@"#ABF4B7"];
+    UIColor *topColor = [UIColor colorFromHtmlColor:COLOR_GRADIENT2];
+    UIColor *bottomColor = [UIColor colorFromHtmlColor:COLOR_GRADIENT3];
     //   Create the gradient
     CAGradientLayer *theViewGradient = [CAGradientLayer layer];
     theViewGradient.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];

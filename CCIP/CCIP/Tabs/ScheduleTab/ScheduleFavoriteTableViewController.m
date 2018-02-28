@@ -61,8 +61,8 @@ static NSDateFormatter *formatter_date = nil;
                               self.view.frame.size.width, self.navigationController.navigationBar.frame.origin.y + navigationBarBounds.size.height);
     headView = [UIView new];
     [headView setFrame:frame];
-    [headView setGradientColor:[UIColor colorFromHtmlColor:@"#F9FEA5"]
-                            To:[UIColor colorFromHtmlColor:@"#20E2D7"]
+    [headView setGradientColor:[UIColor colorFromHtmlColor:COLOR_GRADIENT1]
+                            To:[UIColor colorFromHtmlColor:COLOR_GRADIENT2]
                     StartPoint:CGPointMake(-.4f, .5f)
                        ToPoint:CGPointMake(1, .5f)];
     [self.navigationController.navigationBar.superview addSubview:headView];
@@ -166,7 +166,7 @@ static NSDateFormatter *formatter_date = nil;
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    [header.textLabel setTextColor:[UIColor colorFromHtmlColor:@"#009A79"]];
+    [header.textLabel setTextColor:[UIColor colorFromHtmlColor:COLOR_TITLE_HIGHLIGHTED]];
     [view setTintColor:[UIColor colorFromHtmlColor:@"#ECF5F4"]];
 }
 

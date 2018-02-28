@@ -106,7 +106,7 @@
 + (void)setDevLogo:(FBShimmeringView *)sView WithLogo:(UIImage *)logo {
     BOOL isDevMode = [AppDelegate isDevMode];
     if (isDevMode) {
-        [((UIImageView *)[sView contentView]) setImage:[logo imageWithColor:[UIColor colorFromHtmlColor:@"#f2a900"]]];
+        [((UIImageView *)[sView contentView]) setImage:[logo imageWithColor:[UIColor colorFromHtmlColor:COLOR_DEV]]];
     } else {
         [((UIImageView *)[sView contentView]) setImage:logo];
     }

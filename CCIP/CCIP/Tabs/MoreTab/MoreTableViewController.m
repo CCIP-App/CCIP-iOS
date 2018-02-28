@@ -60,7 +60,7 @@
     [super viewDidLoad];
     
     // set logo on nav title
-    UIImageView *logoView = [[UIImageView alloc] initWithImage:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
+    UIImageView *logoView = [[UIImageView alloc] initWithImage:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor whiteColor]]];
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
     self.shimmeringLogoView.contentView = logoView;
     self.navigationItem.titleView = self.shimmeringLogoView;
@@ -71,8 +71,8 @@
     [self.navigationController.navigationBar setTranslucent:NO];
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height);
     UIView *headView = [[UIView alloc] initWithFrame:frame];
-    [headView setGradientColor:[UIColor colorFromHtmlColor:@"#F9FEA5"]
-                            To:[UIColor colorFromHtmlColor:@"#20E2D7"]
+    [headView setGradientColor:[UIColor colorFromHtmlColor:COLOR_GRADIENT1]
+                            To:[UIColor colorFromHtmlColor:COLOR_GRADIENT2]
                     StartPoint:CGPointMake(-.4f, .5f)
                        ToPoint:CGPointMake(1, .5f)];
     UIImage *naviBackImg = [[headView.layer.sublayers lastObject] toImage];
@@ -117,7 +117,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [AppDelegate setDevLogo:self.shimmeringLogoView
-                   WithLogo:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor colorFromHtmlColor:@"#ffffff"]]];
+                   WithLogo:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor whiteColor]]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -150,12 +150,12 @@
                 NSLog(@"-- Enable DEV_MODE --");
                 [AppDelegate setIsDevMode: YES];
                 [AppDelegate setDevLogo:self.shimmeringLogoView
-                               WithLogo:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
+                               WithLogo:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor whiteColor]]];
             } else {
                 NSLog(@"-- Disable DEV_MODE --");
                 [AppDelegate setIsDevMode:NO];
                 [AppDelegate setDevLogo:self.shimmeringLogoView
-                               WithLogo:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
+                               WithLogo:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor whiteColor]]];
             }
         }
     }

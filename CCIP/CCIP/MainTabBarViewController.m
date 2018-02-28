@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIColor *titleHighlightedColor = [UIColor colorFromHtmlColor:@"#009A79"];
+    UIColor *titleHighlightedColor = [UIColor colorFromHtmlColor:COLOR_TITLE_HIGHLIGHTED];
     
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor], NSForegroundColorAttributeName, nil]
                                              forState:UIControlStateNormal];

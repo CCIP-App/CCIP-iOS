@@ -36,7 +36,7 @@
     CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
     CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
     _progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
-    _progressView.progressBarView.backgroundColor = [UIColor colorFromHtmlColor:@"#009A79"];
+    _progressView.progressBarView.backgroundColor = [UIColor colorFromHtmlColor:COLOR_TITLE_HIGHLIGHTED];
     _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     [self.navigationController.navigationBar addSubview:_progressView];
     

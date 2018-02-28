@@ -30,7 +30,7 @@
     [super viewDidLoad];
     
     // set logo on nav title
-    UIView *logoView = [[UIImageView alloc] initWithImage:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
+    UIView *logoView = [[UIImageView alloc] initWithImage:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor whiteColor]]];
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
     self.shimmeringLogoView.contentView = logoView;
     self.navigationItem.titleView = self.shimmeringLogoView;
@@ -41,7 +41,7 @@
     CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
     CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
     _progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
-    _progressView.progressBarView.backgroundColor = [UIColor colorFromHtmlColor:@"#009A79"];
+    _progressView.progressBarView.backgroundColor = [UIColor colorFromHtmlColor:COLOR_TITLE_HIGHLIGHTED];
     _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     [self.navigationController.navigationBar addSubview:_progressView];
     
@@ -51,8 +51,8 @@
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.navigationController.navigationBar.frame.origin.y + navigationBarBounds.size.height);
     UIView *headView = [UIView new];
     [headView setFrame:frame];
-    [headView setGradientColor:[UIColor colorFromHtmlColor:@"#F9FEA5"]
-                            To:[UIColor colorFromHtmlColor:@"#20E2D7"]
+    [headView setGradientColor:[UIColor colorFromHtmlColor:COLOR_GRADIENT1]
+                            To:[UIColor colorFromHtmlColor:COLOR_GRADIENT2]
                     StartPoint:CGPointMake(-.4f, .5f)
                        ToPoint:CGPointMake(1, .5f)];
     [self.view addSubview:headView];
@@ -77,7 +77,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setWebViewConstraints];
-    [AppDelegate setDevLogo:self.shimmeringLogoView WithLogo:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor colorFromHtmlColor:@"#FFFFFF"]]];
+    [AppDelegate setDevLogo:self.shimmeringLogoView WithLogo:[ASSETS_IMAGE(@"AssetsUI", @"coscup-logo") imageWithColor:[UIColor whiteColor]]];
     
     NSURL *nsurl = self.webView.URL;
     if (nsurl == nil || [nsurl.absoluteString isEqualToString:@""]) {

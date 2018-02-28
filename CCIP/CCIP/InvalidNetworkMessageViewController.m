@@ -32,8 +32,8 @@
                       forState:UIControlStateNormal];
     [self.closeButton setTintColor:[UIColor whiteColor]];
     [self.closeButton setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
-    [self.closeButton setGradientColor:[UIColor colorFromHtmlColor:@"#F9FEA5"]
-                                    To:[UIColor colorFromHtmlColor:@"#20E2D7"]
+    [self.closeButton setGradientColor:[UIColor colorFromHtmlColor:COLOR_GRADIENT1]
+                                    To:[UIColor colorFromHtmlColor:COLOR_GRADIENT2]
                             StartPoint:CGPointMake(-.4f, .5f)
                                ToPoint:CGPointMake(1, .5f)];
     CALayer *layer = [self.closeButton.layer.sublayers firstObject];

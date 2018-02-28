@@ -11,7 +11,7 @@ settingBundle() {
     for idx in `seq 0 $(($_cnt - 1))`; do
         # echo "the index is: $idx."
         val=`/usr/libexec/PlistBuddy -c "Print PreferenceSpecifiers:$idx:Key" "$SETTINGS_FILE"`
-        val=trim "$val";
+        val=`trim "$val"`;
         # echo "the value of PreferenceSpecifiers:${idx}:Key: is ${val}."
 
         if [ "$val" == "$keyValue" ]; then
@@ -70,38 +70,59 @@ settingFlagsBundle $flags;
 cat CCIP.xcconfig > CCIP.debug.xcconfig
 cat CCIP.xcconfig > CCIP.release.xcconfig
 
+export color_dev="#f2a900"
+export color_title_highlighted="#009a79"
+export color_dash_line="#e9e9e9"
+export color_button_disabled="#9b9b9b"
 case "`echo $TARGET_NAME | awk '{ print tolower($0) }'`" in
     "coscup")
     export domain="org.coscup"
     export mainDomain="coscup.org"
+    export mainPuzzleDomain="play.$mainDomain"
     export channel=coscup
     export tg_chat=coscupchat
     export one_signal_token="a429ff30-5c0e-4584-a32f-b866ba88c947"
+    export color_gradient1="#f9fea5"
+    export color_gradient2="#20e2d7"
+    export color_gradient3="#ABF4B7"
+    export color_button_to="#2ce4d4"
+    export color_button_default="#3d983c"
     ;;
     "sitcon")
     export domain="org.sitcon"
     export mainDomain="sitcon.org"
+    export mainPuzzleDomain="king.$mainDomain"
     export channel=sitcon
     export tg_chat=SITCONgeneral
     export one_signal_token="9b74779c-bcd8-471e-a64b-e033acf0ebbd"
+    export color_gradient1="#64757d"
+    export color_gradient2="#64757d"
+    export color_gradient3="#64757d"
+    export color_button_to="#64757d"
+    export color_button_default="#64757d"
     ;;
 esac
 
-sed -i '' -E 's/#define#/'"$PREDEFINITIONS"'/g'                CCIP.debug.xcconfig
-sed -i '' -E 's/#define#/'"$PREDEFINITIONS"'/g'                CCIP.release.xcconfig
-sed -i '' -E 's/#domain#/'"$domain"'/g'                        CCIP.debug.xcconfig
-sed -i '' -E 's/#domain#/'"$domain"'/g'                        CCIP.release.xcconfig
-sed -i '' -E 's/#mainDomain#/'"$mainDomain"'/g'                CCIP.debug.xcconfig
-sed -i '' -E 's/#mainDomain#/'"$mainDomain"'/g'                CCIP.release.xcconfig
-sed -i '' -E 's/#channel#/'"$channel"'/g'                      CCIP.debug.xcconfig
-sed -i '' -E 's/#channel#/'"$channel"'/g'                      CCIP.release.xcconfig
-sed -i '' -E 's/#tg_chat#/'"$tg_chat"'/g'                      CCIP.debug.xcconfig
-sed -i '' -E 's/#tg_chat#/'"$tg_chat"'/g'                      CCIP.release.xcconfig
-sed -i '' -E 's/#one_signal_token#/'"$one_signal_token"'/g'    CCIP.debug.xcconfig
-sed -i '' -E 's/#one_signal_token#/'"$one_signal_token"'/g'    CCIP.release.xcconfig
-sed -i '' -E 's/#Dev#/-Dev/g'                                  CCIP.debug.xcconfig
-sed -i '' -E 's/#Dev#//g'                                      CCIP.release.xcconfig
-sed -i '' -E 's/#BUILD_VERSION#/'"$mainVersion"'/g'            CCIP.debug.xcconfig
-sed -i '' -E 's/#BUILD_VERSION#/'"$mainVersion"'/g'            CCIP.release.xcconfig
-sed -i '' -E 's/#BUILD_SHORT_VERSION#/'"$productVersion"'/g'   CCIP.debug.xcconfig
-sed -i '' -E 's/#BUILD_SHORT_VERSION#/'"$productVersion"'/g'   CCIP.release.xcconfig
+function xcc_replace() {
+    sed -i '' -E 's/'"$2"'/'"$3"'/g' CCIP.debug.xcconfig
+    [[ "$1" -eq "0" ]] && sed -i '' -E 's/'"$2"'/'"$3"'/g' CCIP.release.xcconfig
+}
+
+xcc_replace 1 "#Dev#"                       "-Dev"
+xcc_replace 0 "#BUILD_VERSION#"             "$mainVersion"
+xcc_replace 0 "#BUILD_SHORT_VERSION#"       "$productVersion"
+xcc_replace 0 "#define#"                    "$PREDEFINITIONS"
+xcc_replace 0 "#domain#"                    "$domain"
+xcc_replace 0 "#mainDomain#"                "$mainDomain"
+xcc_replace 0 "#channel#"                   "$channel"
+xcc_replace 0 "#tg_chat#"                   "$tg_chat"
+xcc_replace 0 "#one_signal_token#"          "$one_signal_token"
+xcc_replace 0 "#color_dev#"                 "$color_dev"
+xcc_replace 0 "#color_title_highlighted#"   "$color_title_highlighted"
+xcc_replace 0 "#color_gradient1#"           "$color_gradient1"
+xcc_replace 0 "#color_gradient2#"           "$color_gradient2"
+xcc_replace 0 "#color_gradient3#"           "$color_gradient3"
+xcc_replace 0 "#color_dash_line#"           "$color_dash_line"
+xcc_replace 0 "#color_button_to#"           "$color_button_to"
+xcc_replace 0 "#color_button_default#"      "$color_button_default"
+xcc_replace 0 "#color_button_disabled#"     "$color_button_disabled"

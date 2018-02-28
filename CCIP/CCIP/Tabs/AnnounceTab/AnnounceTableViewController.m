@@ -50,8 +50,8 @@
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, 239);
     UIView *headView = [UIView new];
     [headView setFrame:frame];
-    [headView setGradientColor:[UIColor colorFromHtmlColor:@"#F9FEA5"]
-                            To:[UIColor colorFromHtmlColor:@"#20E2D7"]
+    [headView setGradientColor:[UIColor colorFromHtmlColor:COLOR_GRADIENT1]
+                            To:[UIColor colorFromHtmlColor:COLOR_GRADIENT2]
                     StartPoint:CGPointMake(-.4f, .5f)
                        ToPoint:CGPointMake(1, .5f)];
     [self.view addSubview:headView];
@@ -210,7 +210,7 @@
     } else {
         [cell.lbURL setText:@""];
     }
-    [cell.vwDashedLine addDashedLine:[UIColor colorFromHtmlColor:@"#E9E9E9"]];
+    [cell.vwDashedLine addDashedLine:[UIColor colorFromHtmlColor:COLOR_DASHED_LINE]];
     
     [cell.vwURL setFd_collapsed:!hasURL];
 }

@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>DefaultValue</key>
-			<string>2.0.70 #6ee1f0a x86_64</string>
+			<string>2.0.70 #088e028 x86_64</string>
 			<key>Key</key>
 			<string>version_preference</string>
 			<key>Title</key>
@@ -24,7 +24,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>2018-03-01 02:03:22 GMT+8</string>
+			<string>2018-03-01 03:23:31 GMT+8</string>
 			<key>Key</key>
 			<string>build_timestamp</string>
 			<key>Title</key>

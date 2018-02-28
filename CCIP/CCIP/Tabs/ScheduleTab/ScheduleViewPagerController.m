@@ -131,7 +131,7 @@ static NSDateFormatter *formatter_date = nil;
 - (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
     UILabel *label = [UILabel new];
     label.text = [NSString stringWithFormat:@"DAY %@", [self.segmentsTextArray objectAtIndex:index]];
-    label.textColor = [UIColor colorFromHtmlColor:@"#009A79"];
+    label.textColor = [UIColor colorFromHtmlColor:COLOR_TITLE_HIGHLIGHTED];
     label.font = [UIFont fontWithName:@"PingFangTC-Medium" size:14];
     [label sizeToFit];
     return label;
@@ -206,7 +206,7 @@ static NSDateFormatter *formatter_date = nil;
 - (UIColor *)viewPager:(ViewPagerController *)viewPager colorForComponent:(ViewPagerComponent)component withDefault:(UIColor *)color {
     switch (component) {
             case ViewPagerIndicator: {
-                return [UIColor colorFromHtmlColor:@"#009A79"];
+                return [UIColor colorFromHtmlColor:COLOR_TITLE_HIGHLIGHTED];
             }
             case ViewPagerTabsView: {
                 return [UIColor clearColor];

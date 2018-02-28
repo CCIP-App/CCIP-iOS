@@ -69,8 +69,8 @@
     [self.lbLangText setText:[data objectForKey:@"lang"]];
     [self.lbTimeText setText:timeRange];
     
-    [self.vwHeader setGradientColor:[UIColor colorFromHtmlColor:@"#20E2D7"]
-                                 To:[UIColor colorFromHtmlColor:@"#F9FEA5"]
+    [self.vwHeader setGradientColor:[UIColor colorFromHtmlColor:COLOR_GRADIENT2]
+                                 To:[UIColor colorFromHtmlColor:COLOR_GRADIENT1]
                          StartPoint:CGPointMake(1, .5)
                             ToPoint:CGPointMake(-.4, .5)];
 }
