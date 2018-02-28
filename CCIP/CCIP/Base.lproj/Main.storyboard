@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17A315i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vFY-Ie-dA7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vFY-Ie-dA7">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -446,7 +446,7 @@ Please copy and paste the token into next field or click the token link in the r
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uyl-BJ-dF0">
-                                <rect key="frame" x="35" y="15" width="350" height="160"/>
+                                <rect key="frame" x="35" y="35" width="350" height="160"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8/20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="q04-AM-eVF">
                                         <rect key="frame" x="20" y="38" width="195" height="44"/>
@@ -488,7 +488,7 @@ Please copy and paste the token into next field or click the token link in the r
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KUP-DK-ov7">
-                                <rect key="frame" x="60" y="225" width="300" height="279"/>
+                                <rect key="frame" x="60" y="245" width="300" height="259"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="19"/>
                                 <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -547,7 +547,7 @@ Please copy and paste the token into next field or click the token link in the r
                 <navigationController id="PgR-sB-d7G" customClass="MainNavViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Checkin" image="AssetsUI.bundle/icon_ios_pin.png" id="0RH-c0-HTe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5Ap-Be-8PP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -607,7 +607,7 @@ Please copy and paste the token into next field or click the token link in the r
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P00-CS-cor">
-                                <rect key="frame" x="0.0" y="0.0" width="420" height="220"/>
+                                <rect key="frame" x="0.0" y="64" width="420" height="220"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MzI-LD-fFd">
                                         <rect key="frame" x="350" y="30" width="60" height="60"/>
@@ -741,7 +741,7 @@ Please copy and paste the token into next field or click the token link in the r
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4T1-hE-S3X">
-                                <rect key="frame" x="0.0" y="220" width="420" height="451"/>
+                                <rect key="frame" x="0.0" y="284" width="420" height="387"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleAbstract" rowHeight="250" id="qgL-2l-vLc" customClass="ScheduleAbstractViewCell">
@@ -752,10 +752,10 @@ Please copy and paste the token into next field or click the token link in the r
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RMM-hf-aQ8">
-                                                    <rect key="frame" x="31" y="18" width="358" height="213"/>
+                                                    <rect key="frame" x="38" y="21" width="344" height="208"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abstract" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="js4-QC-0N1">
-                                                            <rect key="frame" x="22" y="28" width="314" height="21"/>
+                                                            <rect key="frame" x="22" y="28" width="300" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="82g-Nd-Jny"/>
                                                             </constraints>
@@ -764,7 +764,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8G0-OA-Hz1">
-                                                            <rect key="frame" x="22" y="60" width="314" height="125"/>
+                                                            <rect key="frame" x="22" y="60" width="300" height="120"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -803,10 +803,10 @@ Please copy and paste the token into next field or click the token link in the r
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCd-th-Z6D">
-                                                    <rect key="frame" x="31" y="18" width="358" height="213"/>
+                                                    <rect key="frame" x="38" y="21" width="344" height="208"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6h-vx-Zyl">
-                                                            <rect key="frame" x="22" y="28" width="314" height="21"/>
+                                                            <rect key="frame" x="22" y="28" width="300" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="BAb-IW-Lpy"/>
                                                             </constraints>
@@ -815,7 +815,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ei5-NI-34T">
-                                                            <rect key="frame" x="22" y="60" width="314" height="125"/>
+                                                            <rect key="frame" x="22" y="60" width="300" height="120"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -953,22 +953,22 @@ Please copy and paste the token into next field or click the token link in the r
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p62-4l-CHO">
-                                                    <rect key="frame" x="18" y="12" width="378" height="225.66666666666666"/>
+                                                    <rect key="frame" x="25" y="15" width="364" height="220"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iBr-Sr-bSh">
-                                                            <rect key="frame" x="0.0" y="0.0" width="378" height="225.66666666666666"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="364" height="220"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="272" translatesAutoresizingMaskIntoConstraints="NO" id="WLc-nf-nhY">
-                                                                    <rect key="frame" x="15" y="44" width="350" height="104.66666666666666"/>
+                                                                    <rect key="frame" x="15" y="44" width="336" height="99"/>
                                                                     <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                                                     <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sM4-Gr-Gtv">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="378" height="29"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="364" height="29"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000-00-00 00:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxe-Os-o2e">
-                                                                            <rect key="frame" x="18" y="5" width="342" height="17"/>
+                                                                            <rect key="frame" x="18" y="5" width="328" height="17"/>
                                                                             <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
                                                                             <color key="textColor" red="0.0" green="0.60392156862745094" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -984,10 +984,10 @@ Please copy and paste the token into next field or click the token link in the r
                                                                     </constraints>
                                                                 </view>
                                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRG-R0-5sb">
-                                                                    <rect key="frame" x="0.0" y="161.66666666666666" width="378" height="64"/>
+                                                                    <rect key="frame" x="0.0" y="156" width="364" height="64"/>
                                                                     <subviews>
                                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h6R-CC-0vL">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="378" height="2"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="364" height="2"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="2" id="J82-hB-vmj"/>
@@ -1004,7 +1004,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rr4-Vd-sfs">
-                                                                            <rect key="frame" x="69" y="13" width="296" height="40"/>
+                                                                            <rect key="frame" x="69" y="13" width="282" height="40"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="fLl-QM-Prf"/>
                                                                             </constraints>
@@ -1401,7 +1401,7 @@ Label2</string>
         <scene sceneID="4VM-uK-3io">
             <objects>
                 <collectionViewController modalPresentationStyle="overCurrentContext" id="Du6-oE-R9e" customClass="StaffViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="iVn-bX-KcF">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="iVn-bX-KcF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1437,7 +1437,7 @@ Label2</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="行政組員兼場務組攤位組員" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8o-59-Qev">
-                                            <rect key="frame" x="13" y="115.99999999999999" width="134" height="50.666666666666643"/>
+                                            <rect key="frame" x="13" y="116.00000000000001" width="134" height="50.666666666666671"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="54" id="Cqf-NA-T6g"/>
                                                 <constraint firstAttribute="width" constant="134" id="qfI-3c-pDg"/>
@@ -1495,14 +1495,14 @@ Label2</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PIN-Ta-Ztr">
-                                            <rect key="frame" x="63" y="16" width="288" height="180"/>
+                                            <rect key="frame" x="63" y="19" width="288" height="180"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="288" id="LDH-m7-HW1"/>
                                                 <constraint firstAttribute="height" constant="180" id="aSi-2U-XVb"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sponsor Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMG-sW-JNf">
-                                            <rect key="frame" x="8" y="204" width="398" height="48"/>
+                                            <rect key="frame" x="20" y="207" width="374" height="48"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="48" id="rM0-5h-apL"/>
                                             </constraints>
@@ -1559,7 +1559,7 @@ Label2</string>
                 <navigationController id="2iG-px-jKh" customClass="MainNavViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Schedule" image="AssetsUI.bundle/icon_ios_topcharts.png" id="s9e-mH-WEn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="geD-Aj-Nie">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1576,7 +1576,7 @@ Label2</string>
                 <navigationController id="PXh-Tj-uNR" customClass="MainNavViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="More" image="AssetsUI.bundle/icon_ios_more.png" id="X9A-yE-P7Z"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VT9-lH-fKX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1593,11 +1593,10 @@ Label2</string>
                 <navigationController id="f3M-Kk-0Fr" customClass="MainNavViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Announce" image="AssetsUI.bundle/icon_ios_bell.png" id="fAF-SI-dED"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="31P-wZ-JcS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ljK-W6-vXa">
-                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
@@ -1614,7 +1613,7 @@ Label2</string>
                 <navigationController id="7DG-ad-dxc" customClass="MainNavViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="IRC" image="AssetsUI.bundle/icon_ios_chat.png" id="qtD-2E-7uu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0av-oL-WCV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1638,7 +1637,7 @@ Label2</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AfterEventMessage" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRP-0O-khJ">
-                                <rect key="frame" x="20" y="40" width="380" height="404"/>
+                                <rect key="frame" x="20" y="60" width="380" height="384"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="BT6-g0-Jp2"/>
                                 </constraints>
@@ -1892,10 +1891,10 @@ Label2</string>
         <image name="WebViewAssets.bundle/BarButton-Reload.png" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="m5s-g0-cve"/>
+        <segue reference="351-Fd-ZV7"/>
         <segue reference="ewg-q8-EfJ"/>
         <segue reference="gRH-x7-Jfd"/>
+        <segue reference="m5s-g0-cve"/>
         <segue reference="reK-KQ-Y1b"/>
-        <segue reference="LZQ-Xr-3kl"/>
     </inferredMetricsTieBreakers>
 </document>
