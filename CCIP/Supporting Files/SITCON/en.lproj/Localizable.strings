@@ -1,0 +1,88 @@
+/* 
+  Localizable.strings
+  CCIP
+
+  Created by 腹黒い茶 on 2016/07/03.
+  Copyright © 2016年 CPRTeam. All rights reserved.
+*/
+
+
+"CurrentLang" = "en";
+"Title" = "SITCON 2018";
+"Checkin" = "Checkin";
+"Schedule" = "Schedule";
+"Announce" = "Announce";
+"More" = "More";
+"ScheduleTitle" = "SCHEDULE";
+"AnnouncementTitle" = "ANNOUNCEMENT";
+"NoAnnouncementText" = "No Announcement !";
+"ScheduleOfDate" = "Schedule Of %@";
+"HSSBuilding" = "H.S.S. Building";
+"ActivityCenter" = "Activity Center";
+"All" = "All";
+"Hi" = "Hi %@ !";
+"CheckinViewButton" = "CHECK IN";
+"CheckinViewButtonPressed" = "FINISHED";
+"CheckinText" = "";
+"CheckinTextVipKit" = "";
+"UseNoticeText" = "From close source to open source\nIndividual to Community\nWe've come a long way...";
+"meatLunch" = "Meal";
+"vegetarianLunch" = "Vegan";
+"UseButton_kit" = "Confirm to get the KIT bag?";
+"UseButton_vipkit" = "Confirm to get the VIP KIT bag?";
+"UseButton_day1lunch" = "Confirm to get day 1 lunch?";
+"UseButton_day2lunch" = "Confirm to get day 2 lunch?";
+"UseButton" = "USE";
+"UseButtonPressed" = "USED";
+"ConfirmAlertText" = "Have you followed the staffs instructions?";
+"Okay" = "Okay";
+"CONFIRM" = "CONFIRM";
+"Cancel" = "Cancel";
+"GotIt" = "Got it";
+"day1checkin" = "Day 1 Checkin";
+"day2checkin" = "Day 2 Checkin";
+"day1lunch" = "Day 1 Lunch";
+"day2lunch" = "Day 2 Lunch";
+"Addition" = "Addition";
+"IRC" = "IRC Channel";
+"Puzzle" = "Booth Reward Activity";
+"Ticket" = "My Ticket";
+"TicketNotice" = "Please keep your ticket secretly and carefully, only shows for our staff or in booth event";
+"TicketNonExistNotice" = "Your Ticket not import into SITCON Pass, please try again after import !";
+"Telegram" = "Telegram Groups";
+"Maps" = "Maps";
+"Staffs" = "Staffs";
+"Sponsors" = "Sponsors";
+"Acknowledgements" = "Developers";
+"Contributions" = "Contributors";
+"Libraries" = "Open Source Libraries";
+"Introduction" = "Introduction";
+"Speaker" = "Speaker";
+"GuideViewMessage" = "Please reference your attendee detail information, and you will find your access token.\n\nPlease copy and paste the token into next text field or click the token link in the reference mail.";
+"GuideViewButton" = "REDEEM";
+"GuideViewTokenErrorTitle" = "Wrong Redeem Token";
+"GuideViewTokenErrorDesc" = "Please reference the pre-notification, and your will found the redeem code from the mail, or you can click that redeem code link directly. ";
+"CheckinNotice" = "Notice! It will be considered USED after click \"Confirm\" button.\nPlease double check that our staff has instructed you to click the \"Confirm\" button. Thanks for your cooperation.";
+"CheckinStaffShirtNotice" = "Notice! It will be considered USED after click \"Confirm\" button.\nPlease double check that related staff for distribute 'Staff Shirt' has instructed you to click the \"Confirm\" button. Thanks for your cooperation.";
+"CheckinStaffRadioNotice" = "Notice! It will be considered USED after click \"Confirm\" button.\nPlease double check that related staff for distribute 'Walkie Talkie' has instructed you to click the \"Confirm\" button, and please return back the device at end of today event, if you have any problem with the device, please contact with related staffs who distribute you the device. Thanks for your cooperation.";
+"CheckinButton" = "Confirm use";
+"StatusNotice" = "Please stay in this screen for staffs to validate your ticket, thank you!";
+"NetworkAlert" = "Please connect to the network of chamber";
+"NetworkAlertDesc" = "Perform check in when connecting to the network of chamber only";
+"InvalidNetworkButtonRetry" = "Retry";
+"InvalidTokenAlert" = "Invalid Token";
+"InvalidTokenDesc" = "This token is invalid, please check again.";
+"NotAvailableTitle" = "Error Message";
+"NotAvailableMessage" = "Not unavailable at this time.";
+"NotAvailableButtonOk" = "Okay";
+"ExpiredTitle" = "Error Message";
+"ExpiredMessage" = "Could not use at this time, because it has been expired.";
+"ExpiredButtonOk" = "Okay";
+"ExpiredOrNotAvailable" = "Expired or not available";
+"QRFileNotAvailableTitle" = "Extract Error!!";
+"QRFileNotAvailableDesc" = "Can not extract QR Code from the image";
+"Networking_Broken" = "Error while networking issues";
+"Networking_WrongWiFi" = "Please connect to the wifi provided by SITCON";
+"LoginGreeting" = "Hi %@, welcome to SITCON, enjoy this summer festival of fun!";
+"AfterEventMessage" = "After the Event, we need you in-form a questionnaire for us, thanks.";
+"AfterEventActionTitle" = "Open questionnaire";

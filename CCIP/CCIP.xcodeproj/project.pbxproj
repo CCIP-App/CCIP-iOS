@@ -60,6 +60,102 @@
 		5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */; };
 		5FF2B11E1D28B19600665DD9 /* IRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2B11C1D28B19600665DD9 /* IRCViewController.m */; };
 		669F85147E622DDFF454A36A /* Pods_CCIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87CA176D8DB3A92497387928 /* Pods_CCIP.framework */; };
+		6B023A132046EEE500F474F3 /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
+		6B023A142046EEE500F474F3 /* DeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5611D5F1AD90079BB12 /* DeepCopy.m */; };
+		6B023A152046EEE500F474F3 /* MoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D48D1D3B242C005BF382 /* MoreCell.m */; };
+		6B023A162046EEE500F474F3 /* ScheduleSpeakerInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD981F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m */; };
+		6B023A172046EEE500F474F3 /* StaffCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91712C1D32990C000D0F66 /* StaffCell.m */; };
+		6B023A182046EEE500F474F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC12A961F2B1B8000B14039 /* main.m */; };
+		6B023A192046EEE500F474F3 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D43D1D3A668B005BF382 /* MainTabBarViewController.m */; };
+		6B023A1A2046EEE500F474F3 /* MyTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31081F26276D0050759D /* MyTicketViewController.m */; };
+		6B023A1B2046EEE500F474F3 /* ScheduleAbstractViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD951F220371002AC0D3 /* ScheduleAbstractViewCell.m */; };
+		6B023A1C2046EEE500F474F3 /* NSData+PMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */; };
+		6B023A1D2046EEE500F474F3 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE250211D3133FC005FB4B2 /* GuideViewController.m */; };
+		6B023A1E2046EEE500F474F3 /* CheckinCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F9E441D4D142700047F38 /* CheckinCardView.m */; };
+		6B023A1F2046EEE500F474F3 /* TelegramController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31051F26097D0050759D /* TelegramController.m */; };
+		6B023A202046EEE500F474F3 /* ScheduleFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */; };
+		6B023A212046EEE500F474F3 /* CheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */; };
+		6B023A222046EEE500F474F3 /* IRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2B11C1D28B19600665DD9 /* IRCViewController.m */; };
+		6B023A232046EEE500F474F3 /* ScheduleViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774C11F1A7B0100A5B994 /* ScheduleViewPagerController.m */; };
+		6B023A242046EEE500F474F3 /* AnnounceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD049881D5AFB9D00E7CEAD /* AnnounceTableViewController.m */; };
+		6B023A252046EEE500F474F3 /* EmbeddedNavigationControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5751D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m */; };
+		6B023A262046EEE500F474F3 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774BE1F1A736800A5B994 /* ScheduleViewController.m */; };
+		6B023A272046EEE500F474F3 /* CheckinCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */; };
+		6B023A282046EEE500F474F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */; };
+		6B023A292046EEE500F474F3 /* UIApplication+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */; };
+		6B023A2A2046EEE500F474F3 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */; };
+		6B023A2B2046EEE500F474F3 /* MainNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C56C1D6032680079BB12 /* MainNavViewController.m */; };
+		6B023A2C2046EEE500F474F3 /* StaffGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */; };
+		6B023A2D2046EEE500F474F3 /* MapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31121F26653D0050759D /* MapsViewController.m */; };
+		6B023A2E2046EEE500F474F3 /* UIView+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B26D90F1F23E57A003D9CA1 /* UIView+addition.m */; };
+		6B023A2F2046EEE500F474F3 /* StaffGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5AA1D352E8A00242DB4 /* StaffGroupTableViewController.m */; };
+		6B023A302046EEE500F474F3 /* ScheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774C41F1AD2F400A5B994 /* ScheduleTableViewController.m */; };
+		6B023A312046EEE500F474F3 /* SponsorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B2D281D55E02200A68C7D /* SponsorTableViewController.m */; };
+		6B023A322046EEE500F474F3 /* ScheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */; };
+		6B023A332046EEE500F474F3 /* UIImage+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */; };
+		6B023A342046EEE500F474F3 /* PuzzleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31011F2601620050759D /* PuzzleViewController.m */; };
+		6B023A352046EEE500F474F3 /* InvalidNetworkMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */; };
+		6B023A362046EEE500F474F3 /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */; };
+		6B023A372046EEE500F474F3 /* SponsorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0E55CE1D574F7F004664FB /* SponsorTableViewCell.m */; };
+		6B023A382046EEE500F474F3 /* AnnounceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0498B1D5B041800E7CEAD /* AnnounceTableViewCell.m */; };
+		6B023A392046EEE500F474F3 /* NSInvocation+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */; };
+		6B023A3A2046EEE500F474F3 /* EmbeddedTabBarControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B11BE881D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m */; };
+		6B023A3B2046EEE500F474F3 /* UIViewController+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */; };
+		6B023A3C2046EEE500F474F3 /* TicketQRCodeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */; };
+		6B023A3D2046EEE500F474F3 /* StaffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9171271D325B5E000D0F66 /* StaffViewController.m */; };
+		6B023A3E2046EEE500F474F3 /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */; };
+		6B023A3F2046EEE500F474F3 /* ScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774CF1F1AD8D300A5B994 /* ScheduleTableViewCell.m */; };
+		6B023A402046EEE500F474F3 /* UISegmentedControl+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */; };
+		6B023A412046EEE500F474F3 /* AcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AFCF131D5DD9CA00413927 /* AcknowledgementsViewController.m */; };
+		6B023A422046EEE500F474F3 /* UIColor+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CD5781D286E6F00793194 /* UIColor+addition.m */; };
+		6B023A432046EEE500F474F3 /* UIAlertController+additional.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CD55F1D281D9400793194 /* UIAlertController+additional.m */; };
+		6B023A452046EEE500F474F3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A961D599BDC00E4E3A6 /* MediaPlayer.framework */; };
+		6B023A462046EEE500F474F3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A941D599BD600E4E3A6 /* SystemConfiguration.framework */; };
+		6B023A472046EEE500F474F3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
+		6B023A482046EEE500F474F3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A921D599BCB00E4E3A6 /* CoreMedia.framework */; };
+		6B023A492046EEE500F474F3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A901D599BC400E4E3A6 /* AVFoundation.framework */; };
+		6B023A4A2046EEE500F474F3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD58A1D28780F00793194 /* AudioToolbox.framework */; };
+		6B023A4B2046EEE500F474F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A8E1D599BB600E4E3A6 /* CoreGraphics.framework */; };
+		6B023A4C2046EEE500F474F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A8C1D599BB000E4E3A6 /* Foundation.framework */; };
+		6B023A4D2046EEE500F474F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A8A1D599BA700E4E3A6 /* UIKit.framework */; };
+		6B023A4E2046EEE500F474F3 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A881D599B9F00E4E3A6 /* CoreVideo.framework */; };
+		6B023A4F2046EEE500F474F3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A861D599B9800E4E3A6 /* MessageUI.framework */; };
+		6B023A502046EEE500F474F3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A841D599B8D00E4E3A6 /* OpenGLES.framework */; };
+		6B023A512046EEE500F474F3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A821D599B8500E4E3A6 /* CoreText.framework */; };
+		6B023A522046EEE500F474F3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A801D599B7A00E4E3A6 /* libz.tbd */; };
+		6B023A532046EEE500F474F3 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A7E1D599B7200E4E3A6 /* libiconv.tbd */; };
+		6B023A542046EEE500F474F3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A7C1D599B6700E4E3A6 /* libc++.tbd */; };
+		6B023A552046EEE500F474F3 /* MYCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD5B01D28C92B00793194 /* MYCrypto.framework */; };
+		6B023A562046EEE500F474F3 /* ScanditBarcodeScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A761D599A1200E4E3A6 /* ScanditBarcodeScanner.framework */; };
+		6B023A572046EEE500F474F3 /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD5AD1D28C92B00793194 /* CommonCrypto.framework */; };
+		6B023A5A2046EEE500F474F3 /* Project_3rd_Lib_License.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */; };
+		6B023A5B2046EEE500F474F3 /* LICENSE-2.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A751D599A1200E4E3A6 /* LICENSE-2.0.txt */; };
+		6B023A5C2046EEE500F474F3 /* Project_Info_and_Contributors.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */; };
+		6B023A5D2046EEE500F474F3 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
+		6B023A5E2046EEE500F474F3 /* LaunchScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284602DE1F121BBB00F512A3 /* LaunchScreen@2x.png */; };
+		6B023A5F2046EEE500F474F3 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280774D01F1AD8D300A5B994 /* ScheduleTableViewCell.xib */; };
+		6B023A602046EEE500F474F3 /* ScanditBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A7A1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle */; };
+		6B023A612046EEE500F474F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */; };
+		6B023A622046EEE500F474F3 /* Maps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BEB31141F26656B0050759D /* Maps.bundle */; };
+		6B023A632046EEE500F474F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B11BE841D4CBC9300B87EA9 /* Main.storyboard */; };
+		6B023A642046EEE500F474F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B036B8F1F24371600D5E5A5 /* Settings.bundle */; };
+		6B023A652046EEE500F474F3 /* LaunchScreen@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284602DD1F121BBB00F512A3 /* LaunchScreen@1x.png */; };
+		6B023A662046EEE500F474F3 /* LaunchScreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284602DF1F121BBB00F512A3 /* LaunchScreen@3x.png */; };
+		6B023A692046EEE500F474F3 /* CHANGELOG.txt in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A741D599A1200E4E3A6 /* CHANGELOG.txt */; };
+		6B023A6B2046EEE500F474F3 /* AssetsUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF331511F299207004BEEA6 /* AssetsUI.bundle */; };
+		6B023A6D2046EEE500F474F3 /* Pods-CCIP-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = A729E7D04006FECCCCCFAEEC /* Pods-CCIP-metadata.plist */; };
+		6B023A6E2046EEE500F474F3 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */; };
+		6B023A6F2046EEE500F474F3 /* WebViewAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */; };
+		6B023A702046EEE500F474F3 /* PassAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */; };
+		6B023A742046EEE500F474F3 /* CommonCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD5AD1D28C92B00793194 /* CommonCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6B023A752046EEE500F474F3 /* MYCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD5B01D28C92B00793194 /* MYCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6B023A7C2046F84E00F474F3 /* Pods_CCIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B023A7D2046F84E00F474F3 /* Pods_CCIP.framework */; };
+		6B023A882046FAAD00F474F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B023A872046FAA000F474F3 /* Assets.xcassets */; };
+		6B023A892046FAAF00F474F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B023A802046FA9E00F474F3 /* InfoPlist.strings */; };
+		6B023A8A2046FAB300F474F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B023A862046FA9F00F474F3 /* GoogleService-Info.plist */; };
+		6B023A8B2046FAB600F474F3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B023A832046FA9E00F474F3 /* Localizable.strings */; };
+		6B023A9B204718AC00F474F3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B023A9A20470F4B00F474F3 /* Info.plist */; };
+		6B023A9C204718AD00F474F3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B023A9A20470F4B00F474F3 /* Info.plist */; };
 		6B02FD931F220326002AC0D3 /* ScheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */; };
 		6B02FD961F220371002AC0D3 /* ScheduleAbstractViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD951F220371002AC0D3 /* ScheduleAbstractViewCell.m */; };
 		6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD981F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m */; };
@@ -82,7 +178,7 @@
 		6B2CD5B21D28C92B00793194 /* MYCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD5B01D28C92B00793194 /* MYCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F9E441D4D142700047F38 /* CheckinCardView.m */; };
 		6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
-		6B49F1411F2548C600686C27 /* CCIP-Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* CCIP-Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6B49F1411F2548C600686C27 /* COSCUP-Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* COSCUP-Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
 		6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */; };
 		6B9650C91F2B270500F43B39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC12A961F2B1B8000B14039 /* main.m */; };
@@ -121,6 +217,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		6B023A732046EEE500F474F3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6B023A742046EEE500F474F3 /* CommonCrypto.framework in Embed Frameworks */,
+				6B023A752046EEE500F474F3 /* MYCrypto.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B023A762046EEE500F474F3 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6B1C6A1D1D1D843F003C4865 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,7 +267,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				6B49F1411F2548C600686C27 /* CCIP-Watch Extension.appex in Embed App Extensions */,
+				6B49F1411F2548C600686C27 /* COSCUP-Watch Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,7 +275,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1E39488D2E9378322A78E57B /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.release.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
+		1109AC0BA8D34C2FCF7F399F /* Pods-CCIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.debug.xcconfig"; sourceTree = "<group>"; };
 		280774BD1F1A736800A5B994 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
 		280774BE1F1A736800A5B994 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		280774C01F1A7B0100A5B994 /* ScheduleViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewPagerController.h; sourceTree = "<group>"; };
@@ -247,6 +365,16 @@
 		5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupTableViewCell.m; sourceTree = "<group>"; };
 		5FF2B11B1D28B19600665DD9 /* IRCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRCViewController.h; sourceTree = "<group>"; };
 		5FF2B11C1D28B19600665DD9 /* IRCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRCViewController.m; sourceTree = "<group>"; };
+		6B023A7A2046EEE500F474F3 /* SITCON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SITCON.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B023A7D2046F84E00F474F3 /* Pods_CCIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CCIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B023A812046FA9E00F474F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6B023A822046FA9E00F474F3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		6B023A842046FA9E00F474F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6B023A852046FA9E00F474F3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		6B023A862046FA9F00F474F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6B023A872046FAA000F474F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6B023A922047064A00F474F3 /* SITCON-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SITCON-Swift.h"; sourceTree = "<group>"; };
+		6B023A9A20470F4B00F474F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B02FD911F220326002AC0D3 /* ScheduleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleDetailViewController.h; sourceTree = "<group>"; };
 		6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleDetailViewController.m; sourceTree = "<group>"; };
 		6B02FD941F220371002AC0D3 /* ScheduleAbstractViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleAbstractViewCell.h; sourceTree = "<group>"; };
@@ -296,13 +424,13 @@
 		6BB50FB11D665393002CAD0B /* AfterEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AfterEventViewController.h; sourceTree = "<group>"; };
 		6BB50FB21D665393002CAD0B /* AfterEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AfterEventViewController.m; sourceTree = "<group>"; };
 		6BB55CAB1F242EC7007BC840 /* CCIP-Build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "CCIP-Build.sh"; sourceTree = "<group>"; };
-		6BC12A941F2B1B8000B14039 /* CCIP-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCIP-Swift.h"; sourceTree = "<group>"; };
+		6BC12A941F2B1B8000B14039 /* COSCUP-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "COSCUP-Swift.h"; sourceTree = "<group>"; };
 		6BC12A951F2B1B8000B14039 /* CCIP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCIP-Bridging-Header.h"; sourceTree = "<group>"; };
 		6BC12A961F2B1B8000B14039 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6BCAC01B1F1A8FC100032096 /* CCIP-Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCIP-Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BCAC01B1F1A8FC100032096 /* COSCUP-Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COSCUP-Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCAC01E1F1A8FC100032096 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		6BCAC0221F1A8FC100032096 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6BCAC0271F1A8FC100032096 /* CCIP-Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CCIP-Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BCAC0271F1A8FC100032096 /* COSCUP-Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "COSCUP-Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCAC02D1F1A8FC100032096 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		6BCAC02E1F1A8FC100032096 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
 		6BCAC02F1F1A8FC100032096 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
@@ -316,12 +444,11 @@
 		6BCAC0451F1A8FD200032096 /* CCIP-Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CCIP-Watch Extension.entitlements"; sourceTree = "<group>"; };
 		6BCBC3B31D4F393700B5AF35 /* UIViewController+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+addition.h"; sourceTree = "<group>"; };
 		6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+addition.m"; sourceTree = "<group>"; };
-		6BD8EF271D1D73510094BE95 /* CCIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BD8EF271D1D73510094BE95 /* COSCUP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COSCUP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6BD8EF391D1D73510094BE95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6BD8EF3C1D1D73510094BE95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6BD8EF3E1D1D73510094BE95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BE250201D3133FC005FB4B2 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		6BE250211D3133FC005FB4B2 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		6BEB31011F2601620050759D /* PuzzleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PuzzleViewController.m; sourceTree = "<group>"; };
@@ -337,12 +464,39 @@
 		6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PassAssets.bundle; sourceTree = "<group>"; };
 		6BF331511F299207004BEEA6 /* AssetsUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AssetsUI.bundle; sourceTree = "<group>"; };
 		6BF641161D4D42C000243B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		76097425B85D526316D2EF58 /* Pods-CCIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.debug.xcconfig"; sourceTree = "<group>"; };
+		73C89BC569D02A15C926A59D /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.release.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
 		87CA176D8DB3A92497387928 /* Pods_CCIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A729E7D04006FECCCCCFAEEC /* Pods-CCIP-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-CCIP-metadata.plist"; path = "Pods/Pods-CCIP-metadata.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6B023A442046EEE500F474F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B023A7C2046F84E00F474F3 /* Pods_CCIP.framework in Frameworks */,
+				6B023A572046EEE500F474F3 /* CommonCrypto.framework in Frameworks */,
+				6B023A552046EEE500F474F3 /* MYCrypto.framework in Frameworks */,
+				6B023A452046EEE500F474F3 /* MediaPlayer.framework in Frameworks */,
+				6B023A462046EEE500F474F3 /* SystemConfiguration.framework in Frameworks */,
+				6B023A472046EEE500F474F3 /* QuartzCore.framework in Frameworks */,
+				6B023A482046EEE500F474F3 /* CoreMedia.framework in Frameworks */,
+				6B023A492046EEE500F474F3 /* AVFoundation.framework in Frameworks */,
+				6B023A4A2046EEE500F474F3 /* AudioToolbox.framework in Frameworks */,
+				6B023A4B2046EEE500F474F3 /* CoreGraphics.framework in Frameworks */,
+				6B023A4C2046EEE500F474F3 /* Foundation.framework in Frameworks */,
+				6B023A4D2046EEE500F474F3 /* UIKit.framework in Frameworks */,
+				6B023A4E2046EEE500F474F3 /* CoreVideo.framework in Frameworks */,
+				6B023A4F2046EEE500F474F3 /* MessageUI.framework in Frameworks */,
+				6B023A502046EEE500F474F3 /* OpenGLES.framework in Frameworks */,
+				6B023A512046EEE500F474F3 /* CoreText.framework in Frameworks */,
+				6B023A522046EEE500F474F3 /* libz.tbd in Frameworks */,
+				6B023A532046EEE500F474F3 /* libiconv.tbd in Frameworks */,
+				6B023A542046EEE500F474F3 /* libc++.tbd in Frameworks */,
+				6B023A562046EEE500F474F3 /* ScanditBarcodeScanner.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6BCAC0241F1A8FC100032096 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,6 +508,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				669F85147E622DDFF454A36A /* Pods_CCIP.framework in Frameworks */,
+				6B2CD5AE1D28C92B00793194 /* CommonCrypto.framework in Frameworks */,
+				6B2CD5B11D28C92B00793194 /* MYCrypto.framework in Frameworks */,
 				288D3A971D599BDC00E4E3A6 /* MediaPlayer.framework in Frameworks */,
 				288D3A951D599BD600E4E3A6 /* SystemConfiguration.framework in Frameworks */,
 				6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */,
@@ -370,10 +527,7 @@
 				288D3A811D599B7A00E4E3A6 /* libz.tbd in Frameworks */,
 				288D3A7F1D599B7200E4E3A6 /* libiconv.tbd in Frameworks */,
 				288D3A7D1D599B6700E4E3A6 /* libc++.tbd in Frameworks */,
-				6B2CD5B11D28C92B00793194 /* MYCrypto.framework in Frameworks */,
 				288D3A791D599A1200E4E3A6 /* ScanditBarcodeScanner.framework in Frameworks */,
-				6B2CD5AE1D28C92B00793194 /* CommonCrypto.framework in Frameworks */,
-				669F85147E622DDFF454A36A /* Pods_CCIP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,9 +544,9 @@
 		017A0FB6BC91053E5BA17E51 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				76097425B85D526316D2EF58 /* Pods-CCIP.debug.xcconfig */,
-				1E39488D2E9378322A78E57B /* Pods-CCIP.release.xcconfig */,
 				A729E7D04006FECCCCCFAEEC /* Pods-CCIP-metadata.plist */,
+				1109AC0BA8D34C2FCF7F399F /* Pods-CCIP.debug.xcconfig */,
+				73C89BC569D02A15C926A59D /* Pods-CCIP.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -400,6 +554,7 @@
 		267251DBF9C24B92F4EE80DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6B023A7D2046F84E00F474F3 /* Pods_CCIP.framework */,
 				288D3A961D599BDC00E4E3A6 /* MediaPlayer.framework */,
 				288D3A941D599BD600E4E3A6 /* SystemConfiguration.framework */,
 				288D3A921D599BCB00E4E3A6 /* CoreMedia.framework */,
@@ -433,6 +588,28 @@
 				288D3A751D599A1200E4E3A6 /* LICENSE-2.0.txt */,
 			);
 			path = ScanditSDK;
+			sourceTree = "<group>";
+		};
+		6B023A7E2046FA4400F474F3 /* COSCUP */ = {
+			isa = PBXGroup;
+			children = (
+				6BD8EF391D1D73510094BE95 /* Assets.xcassets */,
+				6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */,
+				6B2CD5971D2886C900793194 /* Localizable.strings */,
+				5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */,
+			);
+			path = COSCUP;
+			sourceTree = "<group>";
+		};
+		6B023A7F2046FA5F00F474F3 /* SITCON */ = {
+			isa = PBXGroup;
+			children = (
+				6B023A872046FAA000F474F3 /* Assets.xcassets */,
+				6B023A802046FA9E00F474F3 /* InfoPlist.strings */,
+				6B023A832046FA9E00F474F3 /* Localizable.strings */,
+				6B023A862046FA9F00F474F3 /* GoogleService-Info.plist */,
+			);
+			path = SITCON;
 			sourceTree = "<group>";
 		};
 		6B02FD901F2202BF002AC0D3 /* ScheduleDetail */ = {
@@ -563,9 +740,10 @@
 		6BD8EF281D1D73510094BE95 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6BD8EF271D1D73510094BE95 /* CCIP.app */,
-				6BCAC01B1F1A8FC100032096 /* CCIP-Watch.app */,
-				6BCAC0271F1A8FC100032096 /* CCIP-Watch Extension.appex */,
+				6BD8EF271D1D73510094BE95 /* COSCUP.app */,
+				6BCAC01B1F1A8FC100032096 /* COSCUP-Watch.app */,
+				6BCAC0271F1A8FC100032096 /* COSCUP-Watch Extension.appex */,
+				6B023A7A2046EEE500F474F3 /* SITCON.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -576,8 +754,10 @@
 				6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */,
 				6B11BE841D4CBC9300B87EA9 /* Main.storyboard */,
 				6BC12A961F2B1B8000B14039 /* main.m */,
-				6BC12A941F2B1B8000B14039 /* CCIP-Swift.h */,
+				6BC12A941F2B1B8000B14039 /* COSCUP-Swift.h */,
+				6B023A922047064A00F474F3 /* SITCON-Swift.h */,
 				6BC12A951F2B1B8000B14039 /* CCIP-Bridging-Header.h */,
+				286D5FC51D6BD8EC005B6619 /* headers.h */,
 				288D3A731D599A1200E4E3A6 /* ScanditSDK */,
 				6BFB831D1F2B188A005DCF00 /* Class+addition */,
 				6BFB831E1F2B18A4005DCF00 /* CustomSegue */,
@@ -587,7 +767,6 @@
 				5FB4D43D1D3A668B005BF382 /* MainTabBarViewController.m */,
 				28A7C56B1D6032680079BB12 /* MainNavViewController.h */,
 				28A7C56C1D6032680079BB12 /* MainNavViewController.m */,
-				286D5FC51D6BD8EC005B6619 /* headers.h */,
 				286D5FC41D6BD6C5005B6619 /* WebServiceEndPoint.h */,
 				286E28A31D60D35B00C5CB94 /* InvalidNetworkMessageViewController.h */,
 				286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */,
@@ -792,13 +971,11 @@
 			isa = PBXGroup;
 			children = (
 				6BFB83271F2B19EB005DCF00 /* Images */,
-				6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */,
-				6B2CD5971D2886C900793194 /* Localizable.strings */,
-				6BD8EF391D1D73510094BE95 /* Assets.xcassets */,
+				6B023A7E2046FA4400F474F3 /* COSCUP */,
+				6B023A7F2046FA5F00F474F3 /* SITCON */,
 				6B036B8F1F24371600D5E5A5 /* Settings.bundle */,
+				6B023A9A20470F4B00F474F3 /* Info.plist */,
 				6BB0B6091F1A74DF00AEB437 /* CCIP.entitlements */,
-				6BD8EF3E1D1D73510094BE95 /* Info.plist */,
-				5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */,
 				6BB55CAB1F242EC7007BC840 /* CCIP-Build.sh */,
 				6B9348AE1F2428A300F77757 /* CCIP.xcconfig */,
 				6B2AEB7C1F23FF6F00C65868 /* CCIP.debug.xcconfig */,
@@ -825,9 +1002,32 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6BCAC01A1F1A8FC100032096 /* CCIP-Watch */ = {
+		6B023A0F2046EEE500F474F3 /* SITCON */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6BCAC0431F1A8FC100032096 /* Build configuration list for PBXNativeTarget "CCIP-Watch" */;
+			buildConfigurationList = 6B023A772046EEE500F474F3 /* Build configuration list for PBXNativeTarget "SITCON" */;
+			buildPhases = (
+				6DC9628D542EE187EC109AD3 /* [CP] Check Pods Manifest.lock */,
+				6B023A112046EEE500F474F3 /* ShellScript */,
+				6B023A122046EEE500F474F3 /* Sources */,
+				6B023A442046EEE500F474F3 /* Frameworks */,
+				6B023A592046EEE500F474F3 /* Resources */,
+				D87513F49D444A0840CAF6A2 /* [CP] Embed Pods Frameworks */,
+				75BF4F97DFA01FBB90E2B98A /* [CP] Copy Pods Resources */,
+				6B023A732046EEE500F474F3 /* Embed Frameworks */,
+				6B023A762046EEE500F474F3 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SITCON;
+			productName = CCIP;
+			productReference = 6B023A7A2046EEE500F474F3 /* SITCON.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6BCAC01A1F1A8FC100032096 /* COSCUP-Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BCAC0431F1A8FC100032096 /* Build configuration list for PBXNativeTarget "COSCUP-Watch" */;
 			buildPhases = (
 				6BCAC0191F1A8FC100032096 /* Resources */,
 				6BCAC0421F1A8FC100032096 /* Embed App Extensions */,
@@ -838,14 +1038,14 @@
 			dependencies = (
 				6B49F1431F2548CA00686C27 /* PBXTargetDependency */,
 			);
-			name = "CCIP-Watch";
+			name = "COSCUP-Watch";
 			productName = "CCIP-Watch-Dev";
-			productReference = 6BCAC01B1F1A8FC100032096 /* CCIP-Watch.app */;
+			productReference = 6BCAC01B1F1A8FC100032096 /* COSCUP-Watch.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
-		6BCAC0261F1A8FC100032096 /* CCIP-Watch Extension */ = {
+		6BCAC0261F1A8FC100032096 /* COSCUP-Watch Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6BCAC0411F1A8FC100032096 /* Build configuration list for PBXNativeTarget "CCIP-Watch Extension" */;
+			buildConfigurationList = 6BCAC0411F1A8FC100032096 /* Build configuration list for PBXNativeTarget "COSCUP-Watch Extension" */;
 			buildPhases = (
 				6BCAC0231F1A8FC100032096 /* Sources */,
 				6BCAC0241F1A8FC100032096 /* Frameworks */,
@@ -855,17 +1055,17 @@
 			);
 			dependencies = (
 			);
-			name = "CCIP-Watch Extension";
+			name = "COSCUP-Watch Extension";
 			productName = "CCIP-Watch-Dev Extension";
-			productReference = 6BCAC0271F1A8FC100032096 /* CCIP-Watch Extension.appex */;
+			productReference = 6BCAC0271F1A8FC100032096 /* COSCUP-Watch Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
-		6BD8EF261D1D73510094BE95 /* CCIP */ = {
+		6BD8EF261D1D73510094BE95 /* COSCUP */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6BD8EF411D1D73510094BE95 /* Build configuration list for PBXNativeTarget "CCIP" */;
+			buildConfigurationList = 6BD8EF411D1D73510094BE95 /* Build configuration list for PBXNativeTarget "COSCUP" */;
 			buildPhases = (
 				6DC9628D542EE187EC109AD3 /* [CP] Check Pods Manifest.lock */,
-				6B73A26F1F24253A00DE8C78 /* ShellScript */,
+				6B023A112046EEE500F474F3 /* ShellScript */,
 				6BD8EF231D1D73510094BE95 /* Sources */,
 				6BD8EF241D1D73510094BE95 /* Frameworks */,
 				6BD8EF251D1D73510094BE95 /* Resources */,
@@ -878,9 +1078,9 @@
 			);
 			dependencies = (
 			);
-			name = CCIP;
+			name = COSCUP;
 			productName = CCIP;
-			productReference = 6BD8EF271D1D73510094BE95 /* CCIP.app */;
+			productReference = 6BD8EF271D1D73510094BE95 /* COSCUP.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -892,6 +1092,9 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = CPRTeam;
 				TargetAttributes = {
+					6B023A0F2046EEE500F474F3 = {
+						DevelopmentTeam = 5MC99ARC2Z;
+					};
 					6BCAC01A1F1A8FC100032096 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 5MC99ARC2Z;
@@ -967,14 +1170,46 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6BD8EF261D1D73510094BE95 /* CCIP */,
-				6BCAC01A1F1A8FC100032096 /* CCIP-Watch */,
-				6BCAC0261F1A8FC100032096 /* CCIP-Watch Extension */,
+				6BD8EF261D1D73510094BE95 /* COSCUP */,
+				6BCAC01A1F1A8FC100032096 /* COSCUP-Watch */,
+				6BCAC0261F1A8FC100032096 /* COSCUP-Watch Extension */,
+				6B023A0F2046EEE500F474F3 /* SITCON */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6B023A592046EEE500F474F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B023A5A2046EEE500F474F3 /* Project_3rd_Lib_License.json in Resources */,
+				6B023A5B2046EEE500F474F3 /* LICENSE-2.0.txt in Resources */,
+				6B023A5C2046EEE500F474F3 /* Project_Info_and_Contributors.json in Resources */,
+				6B023A5D2046EEE500F474F3 /* LaunchScreenIcon@3x.png in Resources */,
+				6B023A882046FAAD00F474F3 /* Assets.xcassets in Resources */,
+				6B023A5E2046EEE500F474F3 /* LaunchScreen@2x.png in Resources */,
+				6B023A5F2046EEE500F474F3 /* ScheduleTableViewCell.xib in Resources */,
+				6B023A602046EEE500F474F3 /* ScanditBarcodeScanner.bundle in Resources */,
+				6B023A9C204718AD00F474F3 /* Info.plist in Resources */,
+				6B023A612046EEE500F474F3 /* LaunchScreen.storyboard in Resources */,
+				6B023A622046EEE500F474F3 /* Maps.bundle in Resources */,
+				6B023A632046EEE500F474F3 /* Main.storyboard in Resources */,
+				6B023A642046EEE500F474F3 /* Settings.bundle in Resources */,
+				6B023A892046FAAF00F474F3 /* InfoPlist.strings in Resources */,
+				6B023A8B2046FAB600F474F3 /* Localizable.strings in Resources */,
+				6B023A652046EEE500F474F3 /* LaunchScreen@1x.png in Resources */,
+				6B023A662046EEE500F474F3 /* LaunchScreen@3x.png in Resources */,
+				6B023A692046EEE500F474F3 /* CHANGELOG.txt in Resources */,
+				6B023A6B2046EEE500F474F3 /* AssetsUI.bundle in Resources */,
+				6B023A6D2046EEE500F474F3 /* Pods-CCIP-metadata.plist in Resources */,
+				6B023A8A2046FAB300F474F3 /* GoogleService-Info.plist in Resources */,
+				6B023A6E2046EEE500F474F3 /* fontawesome-webfont.ttf in Resources */,
+				6B023A6F2046EEE500F474F3 /* WebViewAssets.bundle in Resources */,
+				6B023A702046EEE500F474F3 /* PassAssets.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6BCAC0191F1A8FC100032096 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1004,6 +1239,7 @@
 				280774D21F1AD8D300A5B994 /* ScheduleTableViewCell.xib in Resources */,
 				288D3A7B1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle in Resources */,
 				6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */,
+				6B023A9B204718AC00F474F3 /* Info.plist in Resources */,
 				6BEB31151F26656B0050759D /* Maps.bundle in Resources */,
 				6B11BE821D4CBC9300B87EA9 /* Main.storyboard in Resources */,
 				6B036B901F24371700D5E5A5 /* Settings.bundle in Resources */,
@@ -1025,7 +1261,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6B73A26F1F24253A00DE8C78 /* ShellScript */ = {
+		6B023A112046EEE500F474F3 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1044,13 +1280,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CCIP-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		75BF4F97DFA01FBB90E2B98A /* [CP] Copy Pods Resources */ = {
@@ -1074,9 +1313,50 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CCIP/Pods-CCIP-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/BLKFlexibleHeightBar/BLKFlexibleHeightBar.framework",
+				"${BUILT_PRODUCTS_DIR}/CPDAcknowledgements/CPDAcknowledgements.framework",
+				"${BUILT_PRODUCTS_DIR}/ColorArt/ColorArt.framework",
+				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/EFQRCode/EFQRCode.framework",
+				"${BUILT_PRODUCTS_DIR}/ICViewPager/ICViewPager.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MMMarkdown/MMMarkdown.framework",
+				"${BUILT_PRODUCTS_DIR}/MWPhotoBrowser/MWPhotoBrowser.framework",
+				"${BUILT_PRODUCTS_DIR}/NJKWebViewProgress/NJKWebViewProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework",
+				"${BUILT_PRODUCTS_DIR}/Shimmer/Shimmer.framework",
+				"${BUILT_PRODUCTS_DIR}/UICKeyChainStore/UICKeyChainStore.framework",
+				"${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework",
+				"${BUILT_PRODUCTS_DIR}/UIView+FDCollapsibleConstraints/UIView_FDCollapsibleConstraints.framework",
+				"${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework",
+				"${BUILT_PRODUCTS_DIR}/iRate/iRate.framework",
+				"${BUILT_PRODUCTS_DIR}/iVersion/iVersion.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BLKFlexibleHeightBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CPDAcknowledgements.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ColorArt.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EFQRCode.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ICViewPager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMMarkdown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MWPhotoBrowser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NJKWebViewProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STPopup.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Shimmer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICKeyChainStore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITableView_FDTemplateLayoutCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIView_FDCollapsibleConstraints.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iCarousel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iRate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iVersion.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1086,6 +1366,62 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6B023A122046EEE500F474F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B023A132046EEE500F474F3 /* AfterEventViewController.m in Sources */,
+				6B023A142046EEE500F474F3 /* DeepCopy.m in Sources */,
+				6B023A152046EEE500F474F3 /* MoreCell.m in Sources */,
+				6B023A162046EEE500F474F3 /* ScheduleSpeakerInfoViewCell.m in Sources */,
+				6B023A172046EEE500F474F3 /* StaffCell.m in Sources */,
+				6B023A182046EEE500F474F3 /* main.m in Sources */,
+				6B023A192046EEE500F474F3 /* MainTabBarViewController.m in Sources */,
+				6B023A1A2046EEE500F474F3 /* MyTicketViewController.m in Sources */,
+				6B023A1B2046EEE500F474F3 /* ScheduleAbstractViewCell.m in Sources */,
+				6B023A1C2046EEE500F474F3 /* NSData+PMUtils.m in Sources */,
+				6B023A1D2046EEE500F474F3 /* GuideViewController.m in Sources */,
+				6B023A1E2046EEE500F474F3 /* CheckinCardView.m in Sources */,
+				6B023A1F2046EEE500F474F3 /* TelegramController.m in Sources */,
+				6B023A202046EEE500F474F3 /* ScheduleFavoriteTableViewController.m in Sources */,
+				6B023A212046EEE500F474F3 /* CheckinViewController.m in Sources */,
+				6B023A222046EEE500F474F3 /* IRCViewController.m in Sources */,
+				6B023A232046EEE500F474F3 /* ScheduleViewPagerController.m in Sources */,
+				6B023A242046EEE500F474F3 /* AnnounceTableViewController.m in Sources */,
+				6B023A252046EEE500F474F3 /* EmbeddedNavigationControllerSegue.m in Sources */,
+				6B023A262046EEE500F474F3 /* ScheduleViewController.m in Sources */,
+				6B023A272046EEE500F474F3 /* CheckinCardViewController.m in Sources */,
+				6B023A282046EEE500F474F3 /* AppDelegate.m in Sources */,
+				6B023A292046EEE500F474F3 /* UIApplication+addition.m in Sources */,
+				6B023A2A2046EEE500F474F3 /* NSData+CommonCrypto.m in Sources */,
+				6B023A2B2046EEE500F474F3 /* MainNavViewController.m in Sources */,
+				6B023A2C2046EEE500F474F3 /* StaffGroupTableViewCell.m in Sources */,
+				6B023A2D2046EEE500F474F3 /* MapsViewController.m in Sources */,
+				6B023A2E2046EEE500F474F3 /* UIView+addition.m in Sources */,
+				6B023A2F2046EEE500F474F3 /* StaffGroupTableViewController.m in Sources */,
+				6B023A302046EEE500F474F3 /* ScheduleTableViewController.m in Sources */,
+				6B023A312046EEE500F474F3 /* SponsorTableViewController.m in Sources */,
+				6B023A322046EEE500F474F3 /* ScheduleDetailViewController.m in Sources */,
+				6B023A332046EEE500F474F3 /* UIImage+addition.m in Sources */,
+				6B023A342046EEE500F474F3 /* PuzzleViewController.m in Sources */,
+				6B023A352046EEE500F474F3 /* InvalidNetworkMessageViewController.m in Sources */,
+				6B023A362046EEE500F474F3 /* StatusViewController.m in Sources */,
+				6B023A372046EEE500F474F3 /* SponsorTableViewCell.m in Sources */,
+				6B023A382046EEE500F474F3 /* AnnounceTableViewCell.m in Sources */,
+				6B023A392046EEE500F474F3 /* NSInvocation+addition.m in Sources */,
+				6B023A3A2046EEE500F474F3 /* EmbeddedTabBarControllerSegue.m in Sources */,
+				6B023A3B2046EEE500F474F3 /* UIViewController+addition.m in Sources */,
+				6B023A3C2046EEE500F474F3 /* TicketQRCodeImage.swift in Sources */,
+				6B023A3D2046EEE500F474F3 /* StaffViewController.m in Sources */,
+				6B023A3E2046EEE500F474F3 /* MoreTableViewController.m in Sources */,
+				6B023A3F2046EEE500F474F3 /* ScheduleTableViewCell.m in Sources */,
+				6B023A402046EEE500F474F3 /* UISegmentedControl+addition.m in Sources */,
+				6B023A412046EEE500F474F3 /* AcknowledgementsViewController.m in Sources */,
+				6B023A422046EEE500F474F3 /* UIColor+addition.m in Sources */,
+				6B023A432046EEE500F474F3 /* UIAlertController+additional.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6BCAC0231F1A8FC100032096 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1157,12 +1493,30 @@
 /* Begin PBXTargetDependency section */
 		6B49F1431F2548CA00686C27 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6BCAC0261F1A8FC100032096 /* CCIP-Watch Extension */;
+			target = 6BCAC0261F1A8FC100032096 /* COSCUP-Watch Extension */;
 			targetProxy = 6B49F1421F2548CA00686C27 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6B023A802046FA9E00F474F3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B023A812046FA9E00F474F3 /* en */,
+				6B023A822046FA9E00F474F3 /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6B023A832046FA9E00F474F3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B023A842046FA9E00F474F3 /* en */,
+				6B023A852046FA9E00F474F3 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1208,6 +1562,71 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6B023A782046EEE500F474F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1109AC0BA8D34C2FCF7F399F /* Pods-CCIP.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = arm64;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Supporting Files/CCIP.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 70;
+				DEVELOPMENT_TEAM = 5MC99ARC2Z;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CCIP/ScanditSDK",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"SITCON=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_PRODUCT_BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "$(ARCHS)";
+			};
+			name = Debug;
+		};
+		6B023A792046EEE500F474F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73C89BC569D02A15C926A59D /* Pods-CCIP.release.xcconfig */;
+			buildSettings = {
+				ARCHS = arm64;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Supporting Files/CCIP.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 70;
+				DEVELOPMENT_TEAM = 5MC99ARC2Z;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CCIP/ScanditSDK",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"SITCON=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_PRODUCT_BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "$(ARCHS)";
+			};
+			name = Release;
+		};
 		6BCAC03D1F1A8FC100032096 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1220,10 +1639,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5MC99ARC2Z;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				IBSC_MODULE = CCIP_Watch_Extension;
 				INFOPLIST_FILE = "CCIP-Watch/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(WATCH_PRODUCT_BUNDLE_IDENTIFIER)";
@@ -1268,10 +1684,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CODE_SIGN_ENTITLEMENTS = "CCIP-Watch Extension/CCIP-Watch Extension.entitlements";
 				DEVELOPMENT_TEAM = 5MC99ARC2Z;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "CCIP-Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(WATCH_EXTENSION_PRODUCT_BUNDLE_IDENTIFIER)";
@@ -1343,7 +1756,14 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
-					"$(inherited)",
+					"APP_GROUP_ID=$(APP_GROUP_ID)",
+					"ONE_SIGNAL_APP_TOKEN=$(ONE_SIGNAL_APP_TOKEN)",
+					"__API_HOST_DOMAIN__=$(__API_HOST_DOMAIN__)",
+					"CONF_BASE_DOMAIN=$(CONF_BASE_DOMAIN)",
+					"STAFF_BASE_DOMAIN=$(STAFF_BASE_DOMAIN)",
+					"PUZZLE_GAME_BASE_DOMAIN=$(PUZZLE_GAME_BASE_DOMAIN)",
+					"LOG_CHANNEL=$(LOG_CHANNEL)",
+					"TELEGRAM_URL=$(TELEGRAM_URL)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1355,6 +1775,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1394,7 +1815,16 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"APP_GROUP_ID=$(APP_GROUP_ID)",
+					"ONE_SIGNAL_APP_TOKEN=$(ONE_SIGNAL_APP_TOKEN)",
+					"__API_HOST_DOMAIN__=$(__API_HOST_DOMAIN__)",
+					"CONF_BASE_DOMAIN=$(CONF_BASE_DOMAIN)",
+					"STAFF_BASE_DOMAIN=$(STAFF_BASE_DOMAIN)",
+					"PUZZLE_GAME_BASE_DOMAIN=$(PUZZLE_GAME_BASE_DOMAIN)",
+					"LOG_CHANNEL=$(LOG_CHANNEL)",
+					"TELEGRAM_URL=$(TELEGRAM_URL)",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1404,6 +1834,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1412,7 +1843,7 @@
 		};
 		6BD8EF421D1D73510094BE95 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 76097425B85D526316D2EF58 /* Pods-CCIP.debug.xcconfig */;
+			baseConfigurationReference = 1109AC0BA8D34C2FCF7F399F /* Pods-CCIP.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev";
@@ -1425,6 +1856,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CCIP/ScanditSDK",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"COSCUP=1",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1441,7 +1876,7 @@
 		};
 		6BD8EF431D1D73510094BE95 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E39488D2E9378322A78E57B /* Pods-CCIP.release.xcconfig */;
+			baseConfigurationReference = 73C89BC569D02A15C926A59D /* Pods-CCIP.release.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1454,6 +1889,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CCIP/ScanditSDK",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"COSCUP=1",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1470,7 +1909,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6BCAC0411F1A8FC100032096 /* Build configuration list for PBXNativeTarget "CCIP-Watch Extension" */ = {
+		6B023A772046EEE500F474F3 /* Build configuration list for PBXNativeTarget "SITCON" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B023A782046EEE500F474F3 /* Debug */,
+				6B023A792046EEE500F474F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6BCAC0411F1A8FC100032096 /* Build configuration list for PBXNativeTarget "COSCUP-Watch Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6BCAC03F1F1A8FC100032096 /* Debug */,
@@ -1479,7 +1927,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6BCAC0431F1A8FC100032096 /* Build configuration list for PBXNativeTarget "CCIP-Watch" */ = {
+		6BCAC0431F1A8FC100032096 /* Build configuration list for PBXNativeTarget "COSCUP-Watch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6BCAC03D1F1A8FC100032096 /* Debug */,
@@ -1497,7 +1945,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6BD8EF411D1D73510094BE95 /* Build configuration list for PBXNativeTarget "CCIP" */ = {
+		6BD8EF411D1D73510094BE95 /* Build configuration list for PBXNativeTarget "COSCUP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6BD8EF421D1D73510094BE95 /* Debug */,

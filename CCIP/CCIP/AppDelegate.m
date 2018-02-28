@@ -21,7 +21,9 @@
 #import "WebServiceEndPoint.h"
 #import "NSData+PMUtils.h"
 
+/* moved to .xcconfig
 #define ONE_SIGNAL_APP_TOKEN        (@"a429ff30-5c0e-4584-a32f-b866ba88c947")
+*/
 #define SCANDIT_APP_KEY             (@"2BXy4CfQi9QFc12JnjId7mHH58SdYzNC90Uo07luUUY")
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
@@ -61,7 +63,7 @@
     
     //configure iVersion
     //set custom BundleID
-    [iVersion sharedInstance].applicationBundleID = @"org.coscup.CCIP-iOS";
+    [iVersion sharedInstance].applicationBundleID = [[NSBundle mainBundle] bundleIdentifier];
     //enable preview mode
     [iVersion sharedInstance].previewMode = NO;
     

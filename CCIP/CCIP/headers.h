@@ -6,7 +6,12 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
-#define APP_GROUP_ID                    (@"group.org.coscup.ccip")
+#ifdef COSCUP
+#import <COSCUP-Swift.h>
+#endif
+#ifdef SITCON
+#import <SITCON-Swift.h>
+#endif
 
 #define nilCoalesce(v)              ((v != nil && ![v isKindOfClass:[NSNull class]] ? v : @""))
 #define nilCoalesceDefault(v,d)     ((v != nil && ![v isKindOfClass:[NSNull class]] ? v : d))

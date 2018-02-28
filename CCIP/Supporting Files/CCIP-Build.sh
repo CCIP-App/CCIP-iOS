@@ -69,9 +69,39 @@ settingFlagsBundle $flags;
 
 cat CCIP.xcconfig > CCIP.debug.xcconfig
 cat CCIP.xcconfig > CCIP.release.xcconfig
-echo -e "`cat CCIP.debug.xcconfig   | sed -E 's/#Dev#/-Dev/g'`"                                    > CCIP.debug.xcconfig
-echo -e "`cat CCIP.release.xcconfig | sed -E 's/#Dev#//g'`"                                        > CCIP.release.xcconfig
-echo -e "`cat CCIP.debug.xcconfig   | sed -E 's/#BUILD_VERSION#/'"$mainVersion"'/g'`"              > CCIP.debug.xcconfig
-echo -e "`cat CCIP.release.xcconfig | sed -E 's/#BUILD_VERSION#/'"$mainVersion"'/g'`"              > CCIP.release.xcconfig
-echo -e "`cat CCIP.debug.xcconfig   | sed -E 's/#BUILD_SHORT_VERSION#/'"$productVersion"'/g'`"     > CCIP.debug.xcconfig
-echo -e "`cat CCIP.release.xcconfig | sed -E 's/#BUILD_SHORT_VERSION#/'"$productVersion"'/g'`"     > CCIP.release.xcconfig
+
+case "`echo $TARGET_NAME | awk '{ print tolower($0) }'`" in
+    "coscup")
+    export domain="org.coscup"
+    export mainDomain="coscup.org"
+    export channel=coscup
+    export tg_chat=coscupchat
+    export one_signal_token="a429ff30-5c0e-4584-a32f-b866ba88c947"
+    ;;
+    "sitcon")
+    export domain="org.sitcon"
+    export mainDomain="sitcon.org"
+    export channel=sitcon
+    export tg_chat=SITCONgeneral
+    export one_signal_token="9b74779c-bcd8-471e-a64b-e033acf0ebbd"
+    ;;
+esac
+
+sed -i '' -E 's/#define#/'"$PREDEFINITIONS"'/g'                CCIP.debug.xcconfig
+sed -i '' -E 's/#define#/'"$PREDEFINITIONS"'/g'                CCIP.release.xcconfig
+sed -i '' -E 's/#domain#/'"$domain"'/g'                        CCIP.debug.xcconfig
+sed -i '' -E 's/#domain#/'"$domain"'/g'                        CCIP.release.xcconfig
+sed -i '' -E 's/#mainDomain#/'"$mainDomain"'/g'                CCIP.debug.xcconfig
+sed -i '' -E 's/#mainDomain#/'"$mainDomain"'/g'                CCIP.release.xcconfig
+sed -i '' -E 's/#channel#/'"$channel"'/g'                      CCIP.debug.xcconfig
+sed -i '' -E 's/#channel#/'"$channel"'/g'                      CCIP.release.xcconfig
+sed -i '' -E 's/#tg_chat#/'"$tg_chat"'/g'                      CCIP.debug.xcconfig
+sed -i '' -E 's/#tg_chat#/'"$tg_chat"'/g'                      CCIP.release.xcconfig
+sed -i '' -E 's/#one_signal_token#/'"$one_signal_token"'/g'    CCIP.debug.xcconfig
+sed -i '' -E 's/#one_signal_token#/'"$one_signal_token"'/g'    CCIP.release.xcconfig
+sed -i '' -E 's/#Dev#/-Dev/g'                                  CCIP.debug.xcconfig
+sed -i '' -E 's/#Dev#//g'                                      CCIP.release.xcconfig
+sed -i '' -E 's/#BUILD_VERSION#/'"$mainVersion"'/g'            CCIP.debug.xcconfig
+sed -i '' -E 's/#BUILD_VERSION#/'"$mainVersion"'/g'            CCIP.release.xcconfig
+sed -i '' -E 's/#BUILD_SHORT_VERSION#/'"$productVersion"'/g'   CCIP.debug.xcconfig
+sed -i '' -E 's/#BUILD_SHORT_VERSION#/'"$productVersion"'/g'   CCIP.release.xcconfig

@@ -7,7 +7,6 @@
 //
 
 #import "MyTicketViewController.h"
-#import <CCIP-Swift.h>
 #import "AppDelegate.h"
 
 @interface MyTicketViewController ()
