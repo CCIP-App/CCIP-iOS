@@ -45,7 +45,6 @@
 		28A7C5761D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5751D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m */; };
 		28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */; };
 		28AFCF141D5DD9CA00413927 /* AcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AFCF131D5DD9CA00413927 /* AcknowledgementsViewController.m */; };
-		4D83F0713D43049D277AF149 /* Pods_SITCON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E04406208BA964FCDC0A4867 /* Pods_SITCON.framework */; };
 		5F0E55D01D574F7F004664FB /* SponsorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0E55CE1D574F7F004664FB /* SponsorTableViewCell.m */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
 		5F8B2D2A1D55E02200A68C7D /* SponsorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B2D281D55E02200A68C7D /* SponsorTableViewController.m */; };
@@ -61,7 +60,6 @@
 		5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */; };
 		5FF2B11E1D28B19600665DD9 /* IRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2B11C1D28B19600665DD9 /* IRCViewController.m */; };
 		617DBFB37E08D623D92989E0 /* Pods-SITCON-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28C25F6B308A902FA1C3714B /* Pods-SITCON-metadata.plist */; };
-		669F85147E622DDFF454A36A /* Pods_CCIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87CA176D8DB3A92497387928 /* Pods_CCIP.framework */; };
 		6B023A132046EEE500F474F3 /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
 		6B023A142046EEE500F474F3 /* DeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5611D5F1AD90079BB12 /* DeepCopy.m */; };
 		6B023A152046EEE500F474F3 /* MoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D48D1D3B242C005BF382 /* MoreCell.m */; };
@@ -143,10 +141,8 @@
 		6B023A6D2046EEE500F474F3 /* Pods-CCIP-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = A729E7D04006FECCCCCFAEEC /* Pods-CCIP-metadata.plist */; };
 		6B023A6E2046EEE500F474F3 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */; };
 		6B023A6F2046EEE500F474F3 /* WebViewAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */; };
-		6B023A702046EEE500F474F3 /* PassAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */; };
 		6B023A742046EEE500F474F3 /* CommonCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD5AD1D28C92B00793194 /* CommonCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B023A752046EEE500F474F3 /* MYCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD5B01D28C92B00793194 /* MYCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6B023A7C2046F84E00F474F3 /* Pods_CCIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B023A7D2046F84E00F474F3 /* Pods_CCIP.framework */; };
 		6B023A882046FAAD00F474F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B023A872046FAA000F474F3 /* Assets.xcassets */; };
 		6B023A892046FAAF00F474F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B023A802046FA9E00F474F3 /* InfoPlist.strings */; };
 		6B023A8A2046FAB300F474F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B023A862046FA9F00F474F3 /* GoogleService-Info.plist */; };
@@ -179,6 +175,8 @@
 		6B4DF9E6204C087200B127FE /* LaunchScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B4DF9E3204C087200B127FE /* LaunchScreen@2x.png */; };
 		6B4DF9E7204C087200B127FE /* LaunchScreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B4DF9E4204C087200B127FE /* LaunchScreen@3x.png */; };
 		6B4DF9E8204C087200B127FE /* LaunchScreen@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B4DF9E5204C087200B127FE /* LaunchScreen@1x.png */; };
+		6B4DF9EB204C1B3E00B127FE /* AssetsUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B4DF9E9204C088200B127FE /* AssetsUI.bundle */; };
+		6B4DF9EC204C1B4200B127FE /* PassAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B4DF9EA204C0AFF00B127FE /* PassAssets.bundle */; };
 		6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
 		6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */; };
 		6B9650C91F2B270500F43B39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC12A961F2B1B8000B14039 /* main.m */; };
@@ -204,8 +202,9 @@
 		6BEB31151F26656B0050759D /* Maps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BEB31141F26656B0050759D /* Maps.bundle */; };
 		6BF331501F2991C4004BEEA6 /* PassAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */; };
 		6BF331521F299207004BEEA6 /* AssetsUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF331511F299207004BEEA6 /* AssetsUI.bundle */; };
+		6E0E7ED3B9A30500F9AEC191 /* Pods_SITCON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E04406208BA964FCDC0A4867 /* Pods_SITCON.framework */; };
 		A0BA0226DE6C6C1DD98B5601 /* Pods-COSCUP-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FCD10B2B34F1239B7B42203 /* Pods-COSCUP-metadata.plist */; };
-		D42F56F6C6A739018E509726 /* Pods_COSCUP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4828F57826BDD862B797572E /* Pods_COSCUP.framework */; };
+		AD4EA41D5910205082AAF1D2 /* Pods_COSCUP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4828F57826BDD862B797572E /* Pods_COSCUP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -489,7 +488,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B023A7C2046F84E00F474F3 /* Pods_CCIP.framework in Frameworks */,
 				6B023A572046EEE500F474F3 /* CommonCrypto.framework in Frameworks */,
 				6B023A552046EEE500F474F3 /* MYCrypto.framework in Frameworks */,
 				6B023A452046EEE500F474F3 /* MediaPlayer.framework in Frameworks */,
@@ -509,7 +507,7 @@
 				6B023A532046EEE500F474F3 /* libiconv.tbd in Frameworks */,
 				6B023A542046EEE500F474F3 /* libc++.tbd in Frameworks */,
 				6B023A562046EEE500F474F3 /* ScanditBarcodeScanner.framework in Frameworks */,
-				4D83F0713D43049D277AF149 /* Pods_SITCON.framework in Frameworks */,
+				6E0E7ED3B9A30500F9AEC191 /* Pods_SITCON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,7 +522,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				669F85147E622DDFF454A36A /* Pods_CCIP.framework in Frameworks */,
 				6B2CD5AE1D28C92B00793194 /* CommonCrypto.framework in Frameworks */,
 				6B2CD5B11D28C92B00793194 /* MYCrypto.framework in Frameworks */,
 				288D3A971D599BDC00E4E3A6 /* MediaPlayer.framework in Frameworks */,
@@ -544,7 +541,7 @@
 				288D3A7F1D599B7200E4E3A6 /* libiconv.tbd in Frameworks */,
 				288D3A7D1D599B6700E4E3A6 /* libc++.tbd in Frameworks */,
 				288D3A791D599A1200E4E3A6 /* ScanditBarcodeScanner.framework in Frameworks */,
-				D42F56F6C6A739018E509726 /* Pods_COSCUP.framework in Frameworks */,
+				AD4EA41D5910205082AAF1D2 /* Pods_COSCUP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1236,9 +1233,11 @@
 				6B023A5F2046EEE500F474F3 /* ScheduleTableViewCell.xib in Resources */,
 				6B023A602046EEE500F474F3 /* ScanditBarcodeScanner.bundle in Resources */,
 				6B4DF9E8204C087200B127FE /* LaunchScreen@1x.png in Resources */,
+				6B4DF9EB204C1B3E00B127FE /* AssetsUI.bundle in Resources */,
 				6B023A9C204718AD00F474F3 /* Info.plist in Resources */,
 				6B023A612046EEE500F474F3 /* LaunchScreen.storyboard in Resources */,
 				6B4DF9E6204C087200B127FE /* LaunchScreen@2x.png in Resources */,
+				6B4DF9EC204C1B4200B127FE /* PassAssets.bundle in Resources */,
 				6B023A622046EEE500F474F3 /* Maps.bundle in Resources */,
 				6B023A632046EEE500F474F3 /* Main.storyboard in Resources */,
 				6B023A642046EEE500F474F3 /* Settings.bundle in Resources */,
@@ -1249,7 +1248,6 @@
 				6B023A8A2046FAB300F474F3 /* GoogleService-Info.plist in Resources */,
 				6B023A6E2046EEE500F474F3 /* fontawesome-webfont.ttf in Resources */,
 				6B023A6F2046EEE500F474F3 /* WebViewAssets.bundle in Resources */,
-				6B023A702046EEE500F474F3 /* PassAssets.bundle in Resources */,
 				6B4DF9E7204C087200B127FE /* LaunchScreen@3x.png in Resources */,
 				617DBFB37E08D623D92989E0 /* Pods-SITCON-metadata.plist in Resources */,
 			);
