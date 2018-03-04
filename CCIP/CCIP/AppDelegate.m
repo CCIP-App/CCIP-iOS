@@ -42,6 +42,29 @@
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
++ (void)createNEHC {
+    if(@available(iOS 11.0, *)) {
+        NSDictionary *nehDict = [NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"WiFiConfiguration"
+                                                                                                  withExtension:@"plist"]];
+        NSString *nehSSID = [nehDict objectForKey:@"SSID"];
+        NSString *nehPass = [nehDict objectForKey:@"Pass"];
+        if ([nehSSID length] > 0) {
+            NEHotspotConfiguration *NEHConfig = ([nehPass length] > 0) ? [[NEHotspotConfiguration alloc] initWithSSID:nehSSID
+                                                                                                           passphrase:nehPass
+                                                                                                                isWEP:NO] : [[NEHotspotConfiguration alloc] initWithSSID:nehSSID];
+        [NEHConfig setJoinOnce:YES];
+        [NEHConfig setLifeTimeInDays:[NSNumber numberWithUnsignedInteger:3]];
+        NEHotspotConfigurationManager *manager = [NEHotspotConfigurationManager sharedManager];
+        [manager applyConfiguration:NEHConfig
+                  completionHandler:^(NSError * _Nullable error) {
+                      NSLog(@"%@", error);
+        }];
+        }
+    } else {
+        // no-op
+    }
+}
+
 + (void)sendGAI:(NSDictionary *)_gai WithName:(NSString *)_name Func:(const char *)_func File:(const char *)_file Line:(int)_line {
     NSString *__file = [[NSString stringWithUTF8String:_file] stringByReplacingOccurrencesOfString:SOURCE_ROOT
                                                                                         withString:@""];

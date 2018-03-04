@@ -179,6 +179,8 @@
 		6B70EF3F204C621200C63E63 /* StaffWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B70EF3A204C5C2E00C63E63 /* StaffWebViewController.m */; };
 		6B70EF40204C621700C63E63 /* SponsorWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B70EF3D204C5C3200C63E63 /* SponsorWebViewController.m */; };
 		6B70EF41204C621800C63E63 /* SponsorWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B70EF3D204C5C3200C63E63 /* SponsorWebViewController.m */; };
+		6B70EF45204C981700C63E63 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B70EF44204C981700C63E63 /* NetworkExtension.framework */; };
+		6B70EF46204C982B00C63E63 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B70EF44204C981700C63E63 /* NetworkExtension.framework */; };
 		6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */; };
 		6B787C3F204C2DC7002B620A /* Maps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B787C3E204C2DC1002B620A /* Maps.bundle */; };
 		6B9650C91F2B270500F43B39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC12A961F2B1B8000B14039 /* main.m */; };
@@ -425,6 +427,7 @@
 		6B70EF3B204C5C2E00C63E63 /* StaffWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StaffWebViewController.h; sourceTree = "<group>"; };
 		6B70EF3C204C5C3200C63E63 /* SponsorWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SponsorWebViewController.h; sourceTree = "<group>"; };
 		6B70EF3D204C5C3200C63E63 /* SponsorWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SponsorWebViewController.m; sourceTree = "<group>"; };
+		6B70EF44204C981700C63E63 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6B7299AE1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFavoriteTableViewController.h; sourceTree = "<group>"; };
 		6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleFavoriteTableViewController.m; sourceTree = "<group>"; };
 		6B787C3E204C2DC1002B620A /* Maps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Maps.bundle; sourceTree = "<group>"; };
@@ -508,6 +511,7 @@
 				6B023A4D2046EEE500F474F3 /* UIKit.framework in Frameworks */,
 				6B023A4E2046EEE500F474F3 /* CoreVideo.framework in Frameworks */,
 				6B023A4F2046EEE500F474F3 /* MessageUI.framework in Frameworks */,
+				6B70EF46204C982B00C63E63 /* NetworkExtension.framework in Frameworks */,
 				6B023A502046EEE500F474F3 /* OpenGLES.framework in Frameworks */,
 				6B023A512046EEE500F474F3 /* CoreText.framework in Frameworks */,
 				6B023A522046EEE500F474F3 /* libz.tbd in Frameworks */,
@@ -542,6 +546,7 @@
 				288D3A8B1D599BA700E4E3A6 /* UIKit.framework in Frameworks */,
 				288D3A891D599B9F00E4E3A6 /* CoreVideo.framework in Frameworks */,
 				288D3A871D599B9800E4E3A6 /* MessageUI.framework in Frameworks */,
+				6B70EF45204C981700C63E63 /* NetworkExtension.framework in Frameworks */,
 				288D3A851D599B8D00E4E3A6 /* OpenGLES.framework in Frameworks */,
 				288D3A831D599B8500E4E3A6 /* CoreText.framework in Frameworks */,
 				288D3A811D599B7A00E4E3A6 /* libz.tbd in Frameworks */,
@@ -581,6 +586,7 @@
 		267251DBF9C24B92F4EE80DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6B70EF44204C981700C63E63 /* NetworkExtension.framework */,
 				6B023A7D2046F84E00F474F3 /* Pods_CCIP.framework */,
 				288D3A961D599BDC00E4E3A6 /* MediaPlayer.framework */,
 				288D3A941D599BD600E4E3A6 /* SystemConfiguration.framework */,
@@ -1176,7 +1182,7 @@
 								enabled = 0;
 							};
 							com.apple.HotspotConfiguration = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -1188,7 +1194,7 @@
 								enabled = 0;
 							};
 							com.apple.NetworkExtensions.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -1839,7 +1845,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1919,7 +1925,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";

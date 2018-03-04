@@ -49,6 +49,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self handleShortcutItem];
+    
+    [AppDelegate createNEHC];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

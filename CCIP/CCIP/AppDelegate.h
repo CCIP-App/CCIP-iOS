@@ -37,6 +37,7 @@
 @property (readonly, nonatomic) NSArray * _Null_unspecified availableScenarios;
 
 + (AppDelegate * _Nonnull)appDelegate;
++ (void)createNEHC;
 + (void)sendGAI:( NSDictionary * _Nonnull )_gai WithName:( NSString * _Nullable )_name Func:( const char * _Nonnull )_func File:( const char * _Nonnull )_file Line:(int)_line;
 - (void)setDefaultShortcutItems;
 
