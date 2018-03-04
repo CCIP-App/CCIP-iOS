@@ -23,6 +23,7 @@
 #define __GAI(gai, name)                ([AppDelegate sendGAI:gai WithName:name Func:__func__ File:__FILE__ Line:__LINE__])
 #define SEND_GAI(name)                  (__GAI( [[GAIDictionaryBuilder createScreenView] build], name ))
 #define SEND_GAI_EVENT(name, nibName)   (__GAI( [[GAIDictionaryBuilder createEventWithCategory:name action:nibName label:nil value:nil] build], nil ))
+#define X_TOP                           ([[UIScreen mainScreen] bounds].size.height == 812.0f ? 0.0f : 22.0f)
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
