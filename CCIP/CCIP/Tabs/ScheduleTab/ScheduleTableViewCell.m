@@ -36,7 +36,7 @@ static NSDateFormatter *formatter_date = nil;
     }
     [self.LabelLabel setTextColor:[UIColor colorFromHtmlColor:@"#9B9B9B"]];
     [self.LabelLabel setBackgroundColor:[UIColor colorFromHtmlColor:@"#D8D8D8"]];
-    [self.FavoriteButton setTintColor:[UIColor colorFromHtmlColor:@"#50E3C2"]];
+    [self.FavoriteButton setTintColor:[UIColor colorFromHtmlColor:COLOR_FAVORITE_BUTTON]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

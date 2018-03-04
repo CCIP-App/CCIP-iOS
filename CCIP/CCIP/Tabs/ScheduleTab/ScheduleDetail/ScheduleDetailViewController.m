@@ -117,6 +117,7 @@
                                 NSLog(@"Set summary: %@", summary);
                                 [abstractCell.lbAbstractContent setText:summary];
                                 [abstractCell.lbAbstractContent sizeToFit];
+                                [abstractCell.lbAbstractText setTextColor:[UIColor colorFromHtmlColor:COLOR_CARD_TEXT]];
                             },
                             SPEAKERINFO_CELL: ^{
                                 ScheduleSpeakerInfoViewCell *speakerInfoCell = (ScheduleSpeakerInfoViewCell *)cell;
@@ -124,6 +125,7 @@
                                 NSLog(@"Set bio: %@", bio);
                                 [speakerInfoCell.lbSpeakerInfoContent setText:bio];
                                 [speakerInfoCell.lbSpeakerInfoContent sizeToFit];
+                                [speakerInfoCell.lbSpeakerInfoTitle setTextColor:[UIColor colorFromHtmlColor:COLOR_CARD_TEXT]];
                             }
                             };
     @try {

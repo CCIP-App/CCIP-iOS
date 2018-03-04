@@ -89,6 +89,7 @@ case "`echo $TARGET_NAME | awk '{ print tolower($0) }'`" in
     export color_button_default="#3d983c"
     export color_card_text="#009a79"
     export color_label_text="#3d983c"
+    export color_favorite_button="#50e3c2"
     ;;
     "sitcon")
     export domain="org.sitcon"
@@ -105,6 +106,7 @@ case "`echo $TARGET_NAME | awk '{ print tolower($0) }'`" in
     export color_button_default="#64757d"
     export color_card_text="#64757d"
     export color_label_text="#64757d"
+    export color_favorite_button="#64757d"
     ;;
 esac
 
@@ -132,3 +134,5 @@ xcc_replace 0 "#color_button_to#"           "$color_button_to"
 xcc_replace 0 "#color_button_default#"      "$color_button_default"
 xcc_replace 0 "#color_button_disabled#"     "$color_button_disabled"
 xcc_replace 0 "#color_card_text#"           "$color_card_text"
+xcc_replace 0 "#color_label_text#"          "$color_label_text"
+xcc_replace 0 "#color_favorite_button#"     "$color_favorite_button"
