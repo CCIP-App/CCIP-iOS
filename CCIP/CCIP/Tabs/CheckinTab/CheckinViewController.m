@@ -344,9 +344,11 @@
                     self.scenarios = [responseObject objectForKey:@"scenarios"];
                     [self.lbHi setHidden:![AppDelegate haveAccessToken]];
                     [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
-                    [self.lbUserName setText:[responseObject objectForKey:@"user_id"]];
+                    [self.lbUserName setText:[self.userInfo objectForKey:@"user_id"]];
                     [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
-                                                           value:[responseObject objectForKey:@"user_id"]];
+                                                           value:[self.userInfo objectForKey:@"user_id"]];
+                    [[AppDelegate appDelegate].oneSignal sendTag:@"type"
+                                                           value:[self.userInfo objectForKey:@"type"]];
                     if ([AppDelegate appDelegate].isLoginSession) {
                         [[AppDelegate appDelegate] displayGreetingsForLogin];
                     }
