@@ -788,10 +788,13 @@
             NSString *scenarioType = [id substringWithRange:scenarioRange];
             NSDictionary *displayText = [scenario objectForKey:@"display_text"];
             NSString *lang = [AppDelegate longLangUI];
+            [temp.checkinTitle setTextColor:[UIColor colorFromHtmlColor:COLOR_CARD_TEXT]];
+            [temp.checkinDate setTextColor:[UIColor colorFromHtmlColor:COLOR_CARD_TEXT]];
+            [temp.checkinText setTextColor:[UIColor colorFromHtmlColor:COLOR_CARD_TEXT]];
             [temp.checkinTitle setText:[displayText objectForKey:lang]];
             [temp.checkinDate setText:NSLocalizedString(@"Title", nil)];
-            [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", scenarioType)];
             [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
+            [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", scenarioType)];
             if (isCheckin) {
                 [temp.checkinDate setText:dateId];
                 [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", [[@"day" stringByAppendingString:did] capitalizedString])];

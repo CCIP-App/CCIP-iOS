@@ -406,16 +406,14 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor whiteColor] }];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
-    [[UIButton appearanceWhenContainedInInstancesOfClasses:@[ [UINavigationController class] ]] setTintColor:[appArt detailColor]];
+    [[UIButton appearanceWhenContainedInInstancesOfClasses:@[ [UINavigationController class] ]] setTintColor:[UIColor colorFromHtmlColor:COLOR_LABEL_TEXT]];
     [[UIToolbar appearanceWhenContainedInInstancesOfClasses:@[ [UINavigationController class] ]] setBarTintColor:[appArt backgroundColor]];
     
-//    [[UIToolbar appearance] setTintColor:[appArt detailColor]];
-    [[UITabBar appearance] setTintColor:[appArt detailColor]];
-    [[UISegmentedControl appearance] setTintColor:[appArt detailColor]];
-    [[UIProgressView appearance] setTintColor:[appArt detailColor]];
-    [[UILabel appearance] setTintColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
-//    [[UIButton appearance] setTintColor:[appArt detailColor]];
-    [[UISearchBar appearance] setTintColor:[appArt detailColor]];
+    [[UITabBar appearance] setTintColor:[UIColor colorFromHtmlColor:COLOR_LABEL_TEXT]];
+    [[UISegmentedControl appearance] setTintColor:[UIColor colorFromHtmlColor:COLOR_LABEL_TEXT]];
+    [[UIProgressView appearance] setTintColor:[UIColor colorFromHtmlColor:COLOR_LABEL_TEXT]];
+    [[UILabel appearance] setTintColor:[UIColor colorFromHtmlColor:COLOR_LABEL_TEXT]];
+    [[UISearchBar appearance] setTintColor:[UIColor colorFromHtmlColor:COLOR_LABEL_TEXT]];
 }
 
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {

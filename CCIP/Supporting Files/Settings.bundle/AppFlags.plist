@@ -202,6 +202,26 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
+			<string>@#64757d</string>
+			<key>Key</key>
+			<string>COLOR_CARD_TEXT</string>
+			<key>Title</key>
+			<string>COLOR_CARD_TEXT</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>@#color_label_text#</string>
+			<key>Key</key>
+			<string>COLOR_LABEL_TEXT</string>
+			<key>Title</key>
+			<string>COLOR_LABEL_TEXT</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
 			<string>1</string>
 			<key>Key</key>
 			<string>COCOAPODS</string>

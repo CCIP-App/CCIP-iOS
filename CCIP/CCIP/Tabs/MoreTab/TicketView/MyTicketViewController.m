@@ -6,6 +6,7 @@
 //  Copyright © 2017年 CPRTeam. All rights reserved.
 //
 
+#import "UIColor+addition.h"
 #import "MyTicketViewController.h"
 #import "AppDelegate.h"
 
@@ -32,6 +33,7 @@
         noticeText = NSLocalizedString(@"TicketNonExistNotice", nil);
     }
     [self.lbNotice setText:noticeText];
+    [self.lbNotice setTextColor:[UIColor colorFromHtmlColor:COLOR_CARD_TEXT]];
 }
 
 - (void)didReceiveMemoryWarning {

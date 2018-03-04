@@ -26,6 +26,7 @@
     [self.view.layer setShadowOpacity:0.3f];
     
     [self.afterEventMessageLabel setText:NSLocalizedString(@"AfterEventMessage", nil)];
+    [self.afterEventMessageLabel setTextColor:[UIColor colorFromHtmlColor:COLOR_CARD_TEXT]];
     [self.afterEventButton setTitle:NSLocalizedString(@"AfterEventActionTitle", nil)
                            forState:UIControlStateNormal];
     [self.afterEventButton setTintColor:[UIColor whiteColor]];
