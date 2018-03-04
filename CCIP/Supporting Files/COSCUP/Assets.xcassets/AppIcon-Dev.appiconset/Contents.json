@@ -163,8 +163,9 @@
       "subtype" : "42mm"
     },
     {
-      "idiom" : "watch-marketing",
       "size" : "1024x1024",
+      "idiom" : "watch-marketing",
+      "filename" : "watchOS Dev-marketing.png",
       "scale" : "1x"
     }
   ],
