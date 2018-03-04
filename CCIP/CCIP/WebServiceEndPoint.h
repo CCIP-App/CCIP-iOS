@@ -24,8 +24,12 @@
 #define CONF_JSON_DATA(asset)   ([CONF_BASE_URL stringByAppendingFormat:@"2018/static/json/%@.json", asset])
 #define SCHEDULES_DATA_URL      (CONF_JSON_DATA(@"submissions"))
 #define SPONSOR_LIST_URL        (CONF_JSON_DATA(@"sponsor"))
+#define STAFF_DATA_URL          (CONF_JSON_DATA(@"staff"))
 
-#define STAFF_DATA_URL          ([STAFF_BASE_URL stringByAppendingString:@"api/staffgroups/?format=json"])
+#define STAFF_WEB_URL(token)    ([NSString stringWithFormat:@"https://%@", [STAFF_WEB_PATH stringByAppendingFormat:@"?mode=app&token=%@", token]])
+#define SPONSOR_WEB_URL(token)  ([NSString stringWithFormat:@"https://%@", [SPONSOR_WEB_PATH stringByAppendingFormat:@"?mode=app&token=%@", token]])
+
+//#define STAFF_DATA_URL          ([STAFF_BASE_URL stringByAppendingString:@"api/staffgroups/?format=json"])
 #define STAFF_AVATAR(avatar)    ([avatar containsString:@"http"] ? [NSString stringWithFormat:@"%@&s=200", avatar] : [STAFF_BASE_URL stringByAppendingString:avatar])
 
 #define PUZZLE_GAME_URL(token)  ([PUZZLE_GAME_BASE_URL stringByAppendingFormat:@"?mode=app&token=%@", token])

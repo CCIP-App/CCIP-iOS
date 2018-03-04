@@ -51,7 +51,9 @@
 "TicketNonExistNotice" = "您的票卷尚未登陸進 COSCUP Pass，請登陸後再使用此功能！";
 "Telegram" = "Telegram 群組";
 "Maps" = "場內地圖";
+"StaffsWeb" = "籌備團隊";
 "Staffs" = "籌備團隊";
+"SponsorsWeb" = "贊助";
 "Sponsors" = "贊助";
 "Acknowledgements" = "開發者";
 "Contributions" = "貢獻者";

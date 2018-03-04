@@ -42,7 +42,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@9b74779c-bcd8-471e-a64b-e033acf0ebbd</string>
+			<string>(@9b74779c-bcd8-471e-a64b-e033acf0ebbd)</string>
 			<key>Key</key>
 			<string>ONE_SIGNAL_APP_TOKEN</string>
 			<key>Title</key>
@@ -52,7 +52,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@ccip.sitcon.org</string>
+			<string>(@ccip.sitcon.org)</string>
 			<key>Key</key>
 			<string>__API_HOST_DOMAIN__</string>
 			<key>Title</key>
@@ -62,7 +62,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@sitcon.org</string>
+			<string>(@sitcon.org)</string>
 			<key>Key</key>
 			<string>CONF_BASE_DOMAIN</string>
 			<key>Title</key>
@@ -72,7 +72,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@staff.sitcon.org</string>
+			<string>(@sitcon.org/2018/static/img/staffs)</string>
 			<key>Key</key>
 			<string>STAFF_BASE_DOMAIN</string>
 			<key>Title</key>
@@ -82,7 +82,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@#mainPuzzleDomain#</string>
+			<string>(@king.sitcon.party)</string>
 			<key>Key</key>
 			<string>PUZZLE_GAME_BASE_DOMAIN</string>
 			<key>Title</key>
@@ -92,7 +92,67 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@sitcon</string>
+			<string>(@sitcon.org/2018/#/sponsor)</string>
+			<key>Key</key>
+			<string>SPONSOR_WEB_BASE_URL</string>
+			<key>Title</key>
+			<string>SPONSOR_WEB_BASE_URL</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@sitcon.org/2018/#/sponsor)</string>
+			<key>Key</key>
+			<string>SPONSOR_WEB_PATH</string>
+			<key>Title</key>
+			<string>SPONSOR_WEB_PATH</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>1</string>
+			<key>Key</key>
+			<string>SPONSOR_USE_WEB</string>
+			<key>Title</key>
+			<string>SPONSOR_USE_WEB</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@sitcon.org/2018/#/staff)</string>
+			<key>Key</key>
+			<string>STAFF_WEB_BASE_URL</string>
+			<key>Title</key>
+			<string>STAFF_WEB_BASE_URL</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@sitcon.org/2018/#/staff)</string>
+			<key>Key</key>
+			<string>STAFF_WEB_PATH</string>
+			<key>Title</key>
+			<string>STAFF_WEB_PATH</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>1</string>
+			<key>Key</key>
+			<string>STAFF_USE_WEB</string>
+			<key>Title</key>
+			<string>STAFF_USE_WEB</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@sitcon)</string>
 			<key>Key</key>
 			<string>LOG_CHANNEL</string>
 			<key>Title</key>
@@ -102,7 +162,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@SITCONgeneral</string>
+			<string>(@SITCONgeneral)</string>
 			<key>Key</key>
 			<string>TELEGRAM_URL</string>
 			<key>Title</key>
@@ -112,7 +172,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@#f2a900</string>
+			<string>(@#f2a900)</string>
 			<key>Key</key>
 			<string>COLOR_DEV</string>
 			<key>Title</key>
@@ -122,7 +182,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@#444f54</string>
+			<string>(@#444f54)</string>
 			<key>Key</key>
 			<string>COLOR_TITLE_HIGHLIGHTED</string>
 			<key>Title</key>
@@ -132,7 +192,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@#64757d</string>
+			<string>(@#64757d)</string>
 			<key>Key</key>
 			<string>COLOR_GRADIENT1</string>
 			<key>Title</key>
@@ -142,7 +202,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@#64757d</string>
+			<string>(@#64757d)</string>
 			<key>Key</key>
 			<string>COLOR_GRADIENT2</string>
 			<key>Title</key>
@@ -152,7 +212,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@#64757d</string>
+			<string>(@#64757d)</string>
 			<key>Key</key>
 			<string>COLOR_GRADIENT3</string>
 			<key>Title</key>
@@ -162,7 +222,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@#e9e9e9</string>
+			<string>(@#e9e9e9)</string>
 			<key>Key</key>
 			<string>COLOR_DASHED_LINE</string>
 			<key>Title</key>
@@ -172,7 +232,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@#64757d</string>
+			<string>(@#64757d)</string>
 			<key>Key</key>
 			<string>COLOR_BUTTON_TO</string>
 			<key>Title</key>
@@ -182,7 +242,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@#9b9b9b</string>
+			<string>(@#9b9b9b)</string>
 			<key>Key</key>
 			<string>COLOR_BUTTON_DISABLED</string>
 			<key>Title</key>
@@ -192,7 +252,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@#64757d</string>
+			<string>(@#64757d)</string>
 			<key>Key</key>
 			<string>COLOR_BUTTON_DEFAULT</string>
 			<key>Title</key>
@@ -202,7 +262,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@#64757d</string>
+			<string>(@#64757d)</string>
 			<key>Key</key>
 			<string>COLOR_CARD_TEXT</string>
 			<key>Title</key>
@@ -212,7 +272,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@#64757d</string>
+			<string>(@#64757d)</string>
 			<key>Key</key>
 			<string>COLOR_LABEL_TEXT</string>
 			<key>Title</key>
@@ -222,7 +282,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@#fdfdfd</string>
+			<string>(@#fdfdfd)</string>
 			<key>Key</key>
 			<string>COLOR_NAVIGATION_BAR_ITEM</string>
 			<key>Title</key>
@@ -232,7 +292,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>@#64757d</string>
+			<string>(@#64757d)</string>
 			<key>Key</key>
 			<string>COLOR_FAVORITE_BUTTON</string>
 			<key>Title</key>

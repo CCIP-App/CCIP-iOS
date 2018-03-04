@@ -175,6 +175,10 @@
 		6B4DF9EB204C1B3E00B127FE /* AssetsUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B4DF9E9204C088200B127FE /* AssetsUI.bundle */; };
 		6B4DF9EC204C1B4200B127FE /* PassAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B4DF9EA204C0AFF00B127FE /* PassAssets.bundle */; };
 		6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
+		6B70EF3E204C621200C63E63 /* StaffWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B70EF3A204C5C2E00C63E63 /* StaffWebViewController.m */; };
+		6B70EF3F204C621200C63E63 /* StaffWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B70EF3A204C5C2E00C63E63 /* StaffWebViewController.m */; };
+		6B70EF40204C621700C63E63 /* SponsorWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B70EF3D204C5C3200C63E63 /* SponsorWebViewController.m */; };
+		6B70EF41204C621800C63E63 /* SponsorWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B70EF3D204C5C3200C63E63 /* SponsorWebViewController.m */; };
 		6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */; };
 		6B787C3F204C2DC7002B620A /* Maps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B787C3E204C2DC1002B620A /* Maps.bundle */; };
 		6B9650C91F2B270500F43B39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC12A961F2B1B8000B14039 /* main.m */; };
@@ -417,6 +421,10 @@
 		6B4DF9E9204C088200B127FE /* AssetsUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AssetsUI.bundle; sourceTree = "<group>"; };
 		6B4DF9EA204C0AFF00B127FE /* PassAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PassAssets.bundle; sourceTree = "<group>"; };
 		6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreenIcon@3x.png"; sourceTree = "<group>"; };
+		6B70EF3A204C5C2E00C63E63 /* StaffWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StaffWebViewController.m; sourceTree = "<group>"; };
+		6B70EF3B204C5C2E00C63E63 /* StaffWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StaffWebViewController.h; sourceTree = "<group>"; };
+		6B70EF3C204C5C3200C63E63 /* SponsorWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SponsorWebViewController.h; sourceTree = "<group>"; };
+		6B70EF3D204C5C3200C63E63 /* SponsorWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SponsorWebViewController.m; sourceTree = "<group>"; };
 		6B7299AE1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFavoriteTableViewController.h; sourceTree = "<group>"; };
 		6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleFavoriteTableViewController.m; sourceTree = "<group>"; };
 		6B787C3E204C2DC1002B620A /* Maps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Maps.bundle; sourceTree = "<group>"; };
@@ -672,6 +680,24 @@
 				5F91712C1D32990C000D0F66 /* StaffCell.m */,
 			);
 			path = StaffView;
+			sourceTree = "<group>";
+		};
+		6B70EF38204C5B9C00C63E63 /* StaffWebView */ = {
+			isa = PBXGroup;
+			children = (
+				6B70EF3B204C5C2E00C63E63 /* StaffWebViewController.h */,
+				6B70EF3A204C5C2E00C63E63 /* StaffWebViewController.m */,
+			);
+			path = StaffWebView;
+			sourceTree = "<group>";
+		};
+		6B70EF39204C5BAD00C63E63 /* SponsorWebView */ = {
+			isa = PBXGroup;
+			children = (
+				6B70EF3C204C5C3200C63E63 /* SponsorWebViewController.h */,
+				6B70EF3D204C5C3200C63E63 /* SponsorWebViewController.m */,
+			);
+			path = SponsorWebView;
 			sourceTree = "<group>";
 		};
 		6B7F71381F25F755004E43CA /* MapsView */ = {
@@ -982,7 +1008,9 @@
 				6B7F713D1F25F797004E43CA /* TicketView */,
 				6B7F713E1F25F797004E43CA /* TelegramView */,
 				6B7F71381F25F755004E43CA /* MapsView */,
+				6B70EF38204C5B9C00C63E63 /* StaffWebView */,
 				6B6F256F1F2B17CD00A6BD2C /* StaffView */,
+				6B70EF39204C5BAD00C63E63 /* SponsorWebView */,
 				6B848D081F2B1812008CE3DC /* SponsorView */,
 				6BFB831A1F2B1835005DCF00 /* AcknowledgementsView */,
 			);
@@ -1397,6 +1425,7 @@
 				6B023A192046EEE500F474F3 /* MainTabBarViewController.m in Sources */,
 				6B023A1A2046EEE500F474F3 /* MyTicketViewController.m in Sources */,
 				6B023A1B2046EEE500F474F3 /* ScheduleAbstractViewCell.m in Sources */,
+				6B70EF40204C621700C63E63 /* SponsorWebViewController.m in Sources */,
 				6B023A1C2046EEE500F474F3 /* NSData+PMUtils.m in Sources */,
 				6B023A1D2046EEE500F474F3 /* GuideViewController.m in Sources */,
 				6B023A1E2046EEE500F474F3 /* CheckinCardView.m in Sources */,
@@ -1434,6 +1463,7 @@
 				6B023A3E2046EEE500F474F3 /* MoreTableViewController.m in Sources */,
 				6B023A3F2046EEE500F474F3 /* ScheduleTableViewCell.m in Sources */,
 				6B023A402046EEE500F474F3 /* UISegmentedControl+addition.m in Sources */,
+				6B70EF3E204C621200C63E63 /* StaffWebViewController.m in Sources */,
 				6B023A412046EEE500F474F3 /* AcknowledgementsViewController.m in Sources */,
 				6B023A422046EEE500F474F3 /* UIColor+addition.m in Sources */,
 				6B023A432046EEE500F474F3 /* UIAlertController+additional.m in Sources */,
@@ -1463,6 +1493,7 @@
 				5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */,
 				6BEB31091F26276D0050759D /* MyTicketViewController.m in Sources */,
 				6B02FD961F220371002AC0D3 /* ScheduleAbstractViewCell.m in Sources */,
+				6B70EF41204C621800C63E63 /* SponsorWebViewController.m in Sources */,
 				28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */,
 				6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */,
 				6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */,
@@ -1500,6 +1531,7 @@
 				5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */,
 				280774D11F1AD8D300A5B994 /* ScheduleTableViewCell.m in Sources */,
 				28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */,
+				6B70EF3F204C621200C63E63 /* StaffWebViewController.m in Sources */,
 				28AFCF141D5DD9CA00413927 /* AcknowledgementsViewController.m in Sources */,
 				6B2CD5791D286E6F00793194 /* UIColor+addition.m in Sources */,
 				6B2CD5611D281D9400793194 /* UIAlertController+additional.m in Sources */,
@@ -1780,6 +1812,12 @@
 					"CONF_BASE_DOMAIN=$(CONF_BASE_DOMAIN)",
 					"STAFF_BASE_DOMAIN=$(STAFF_BASE_DOMAIN)",
 					"PUZZLE_GAME_BASE_DOMAIN=$(PUZZLE_GAME_BASE_DOMAIN)",
+					"SPONSOR_WEB_BASE_URL=$(SPONSOR_WEB_BASE_URL)",
+					"SPONSOR_WEB_PATH=$(SPONSOR_WEB_PATH)",
+					"SPONSOR_USE_WEB=$(SPONSOR_USE_WEB)",
+					"STAFF_WEB_BASE_URL=$(STAFF_WEB_BASE_URL)",
+					"STAFF_WEB_PATH=$(STAFF_WEB_PATH)",
+					"STAFF_USE_WEB=$(STAFF_USE_WEB)",
 					"LOG_CHANNEL=$(LOG_CHANNEL)",
 					"TELEGRAM_URL=$(TELEGRAM_URL)",
 					"COLOR_DEV=$(COLOR_DEV)",
@@ -1853,6 +1891,12 @@
 					"CONF_BASE_DOMAIN=$(CONF_BASE_DOMAIN)",
 					"STAFF_BASE_DOMAIN=$(STAFF_BASE_DOMAIN)",
 					"PUZZLE_GAME_BASE_DOMAIN=$(PUZZLE_GAME_BASE_DOMAIN)",
+					"SPONSOR_WEB_BASE_URL=$(SPONSOR_WEB_BASE_URL)",
+					"SPONSOR_WEB_PATH=$(SPONSOR_WEB_PATH)",
+					"SPONSOR_USE_WEB=$(SPONSOR_USE_WEB)",
+					"STAFF_WEB_BASE_URL=$(STAFF_WEB_BASE_URL)",
+					"STAFF_WEB_PATH=$(STAFF_WEB_PATH)",
+					"STAFF_USE_WEB=$(STAFF_USE_WEB)",
 					"LOG_CHANNEL=$(LOG_CHANNEL)",
 					"TELEGRAM_URL=$(TELEGRAM_URL)",
 					"COLOR_DEV=$(COLOR_DEV)",

@@ -93,8 +93,16 @@
                        @"Ticket",
                        @"Telegram",
                        @"Maps",
+#ifdef STAFF_USE_WEB
+                       @"StaffsWeb",
+#else
                        @"Staffs",
+#endif
+#ifdef SPONSOR_USE_WEB
+                       @"SponsorsWeb",
+#else
                        @"Sponsors",
+#endif
                        @"Acknowledgements",
                        ];
     if (self.staffs == nil) {

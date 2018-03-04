@@ -45,13 +45,15 @@
 "day2lunch" = "Day 2 Lunch";
 "Addition" = "Addition";
 "IRC" = "IRC Channel";
-"Puzzle" = "Booth Reward Activity";
+"Puzzle" = "Knowledge King";
 "Ticket" = "My Ticket";
 "TicketNotice" = "Please keep your ticket secretly and carefully, only shows for our staff or in booth event";
 "TicketNonExistNotice" = "Your Ticket not import into SITCON Pass, please try again after import !";
 "Telegram" = "Telegram Groups";
 "Maps" = "Maps";
+"StaffsWeb" = "Staffs";
 "Staffs" = "Staffs";
+"SponsorsWeb" = "Sponsors";
 "Sponsors" = "Sponsors";
 "Acknowledgements" = "Developers";
 "Contributions" = "Contributors";

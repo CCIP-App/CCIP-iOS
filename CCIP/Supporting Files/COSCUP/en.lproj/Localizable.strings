@@ -51,7 +51,9 @@
 "TicketNonExistNotice" = "Your Ticket not import into COSCUP Pass, please try again after import !";
 "Telegram" = "Telegram Groups";
 "Maps" = "Maps";
+"StaffsWeb" = "Staffs";
 "Staffs" = "Staffs";
+"SponsorsWeb" = "Sponsors";
 "Sponsors" = "Sponsors";
 "Acknowledgements" = "Developers";
 "Contributions" = "Contributors";
