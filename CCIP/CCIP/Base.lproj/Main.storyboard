@@ -1087,7 +1087,7 @@ Label2</string>
                                     <outlet property="delegate" destination="ba1-3I-FgV" id="Wht-GU-Ad3"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PassAssets.bundle/NoAnnouncement.png" translatesAutoresizingMaskIntoConstraints="NO" id="V2s-Db-5hD">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PassAssets.bundle/NoAnnouncement.png" translatesAutoresizingMaskIntoConstraints="NO" id="V2s-Db-5hD">
                                 <rect key="frame" x="129" y="249" width="197" height="159"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="197" id="08r-X5-kgl"/>
@@ -1720,20 +1720,20 @@ Label2</string>
                                                 <blurEffect style="light"/>
                                             </vibrancyEffect>
                                         </visualEffectView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PassAssets.bundle/ConnectWiFiToConf.png" translatesAutoresizingMaskIntoConstraints="NO" id="RHU-yy-6oy">
-                                            <rect key="frame" x="119" y="94.666666666666686" width="182" height="176"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PassAssets.bundle/ConnectWiFiToConf.png" translatesAutoresizingMaskIntoConstraints="NO" id="RHU-yy-6oy">
+                                            <rect key="frame" x="119" y="94" width="182" height="176"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="182" id="DCU-Kc-Mur"/>
                                                 <constraint firstAttribute="height" constant="176" id="Rdx-oq-Kmv"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpJ-Z6-78r">
-                                            <rect key="frame" x="50" y="290.66666666666669" width="320" height="50"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fpJ-Z6-78r">
+                                            <rect key="frame" x="50" y="290" width="320" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="J5c-Zv-ix7"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="RcR-gv-3Hk"/>
                                                 <constraint firstAttribute="height" constant="100" id="dLY-aZ-h9s"/>
-                                                <constraint firstAttribute="height" constant="50" id="gzk-43-Anx"/>
+                                                <constraint firstAttribute="height" constant="60" id="gzk-43-Anx"/>
                                                 <constraint firstAttribute="width" constant="320" id="iuT-EH-J7f"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="jUP-5k-yRn"/>
                                                 <constraint firstAttribute="height" constant="100" id="m3R-JL-hvO"/>
@@ -1779,7 +1779,7 @@ Label2</string>
                                         <constraint firstAttribute="trailing" secondItem="BF7-fa-dz9" secondAttribute="trailing" id="Q9e-Ks-aHO"/>
                                         <constraint firstItem="uhq-sl-Sa9" firstAttribute="centerX" secondItem="Hw6-0q-Vyq" secondAttribute="centerX" id="ZE7-Tb-pi8"/>
                                         <constraint firstItem="fpJ-Z6-78r" firstAttribute="centerX" secondItem="Hw6-0q-Vyq" secondAttribute="centerX" id="d80-p0-nin"/>
-                                        <constraint firstAttribute="centerY" secondItem="fpJ-Z6-78r" secondAttribute="bottom" constant="-50" id="iyJ-0M-mD4"/>
+                                        <constraint firstAttribute="centerY" secondItem="fpJ-Z6-78r" secondAttribute="bottom" constant="-60" id="iyJ-0M-mD4"/>
                                         <constraint firstItem="uhq-sl-Sa9" firstAttribute="top" secondItem="Hw6-0q-Vyq" secondAttribute="centerY" constant="120" id="jqN-Y5-uaw"/>
                                     </constraints>
                                 </view>
@@ -1891,7 +1891,7 @@ Label2</string>
         <image name="WebViewAssets.bundle/BarButton-Reload.png" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="351-Fd-ZV7"/>
+        <segue reference="LZQ-Xr-3kl"/>
         <segue reference="ewg-q8-EfJ"/>
         <segue reference="gRH-x7-Jfd"/>
         <segue reference="m5s-g0-cve"/>
