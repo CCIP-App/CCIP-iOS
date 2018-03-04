@@ -222,6 +222,16 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
+			<string>@#fdfdfd</string>
+			<key>Key</key>
+			<string>COLOR_NAVIGATION_BAR_ITEM</string>
+			<key>Title</key>
+			<string>COLOR_NAVIGATION_BAR_ITEM</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
 			<string>@#64757d</string>
 			<key>Key</key>
 			<string>COLOR_FAVORITE_BUTTON</string>
