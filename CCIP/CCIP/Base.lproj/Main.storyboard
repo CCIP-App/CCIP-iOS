@@ -1720,7 +1720,7 @@ Label2</string>
                                                 <blurEffect style="light"/>
                                             </vibrancyEffect>
                                         </visualEffectView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PassAssets.bundle/ConnectWiFiToCOSCUP.png" translatesAutoresizingMaskIntoConstraints="NO" id="RHU-yy-6oy">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PassAssets.bundle/ConnectWiFiToConf.png" translatesAutoresizingMaskIntoConstraints="NO" id="RHU-yy-6oy">
                                             <rect key="frame" x="119" y="94.666666666666686" width="182" height="176"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="182" id="DCU-Kc-Mur"/>
@@ -1882,7 +1882,7 @@ Label2</string>
         <image name="AssetsUI.bundle/icon_ios_more.png" width="16" height="16"/>
         <image name="AssetsUI.bundle/icon_ios_pin.png" width="16" height="16"/>
         <image name="AssetsUI.bundle/icon_ios_topcharts.png" width="16" height="16"/>
-        <image name="PassAssets.bundle/ConnectWiFiToCOSCUP.png" width="16" height="16"/>
+        <image name="PassAssets.bundle/ConnectWiFiToConf.png" width="16" height="16"/>
         <image name="PassAssets.bundle/NoAnnouncement.png" width="16" height="16"/>
         <image name="PassAssets.bundle/Rectangle.png" width="16" height="16"/>
         <image name="PassAssets.bundle/StaffIconDefault.png" width="16" height="16"/>

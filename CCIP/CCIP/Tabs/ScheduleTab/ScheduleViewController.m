@@ -75,7 +75,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [AppDelegate setDevLogo:self.shimmeringLogoView
-                   WithLogo:ASSETS_IMAGE(@"AssetsUI", @"coscup-logo")];
+                   WithLogo:ASSETS_IMAGE(@"AssetsUI", @"conf-logo")];
 }
 
 - (void)showFavorites {

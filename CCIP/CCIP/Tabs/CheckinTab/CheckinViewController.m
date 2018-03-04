@@ -70,7 +70,7 @@
     self.firstLoad = YES;
     
     // set logo on nav title
-    UIView *logoView = [[UIImageView alloc] initWithImage:ASSETS_IMAGE(@"AssetsUI", @"coscup-logo")];
+    UIView *logoView = [[UIImageView alloc] initWithImage:ASSETS_IMAGE(@"AssetsUI", @"conf-logo")];
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
     [self.shimmeringLogoView setContentView:logoView];
 //    [self.navigationItem setTitleView:self.shimmeringLogoView];
@@ -110,7 +110,7 @@
     [super viewWillAppear:animated];
     self.controllerTopStart = self.navigationController.navigationBar.frame.size.height;
     [AppDelegate setDevLogo:self.shimmeringLogoView
-                   WithLogo:ASSETS_IMAGE(@"AssetsUI", @"coscup-logo")];
+                   WithLogo:ASSETS_IMAGE(@"AssetsUI", @"conf-logo")];
     [self handleQRButton];
 }
 

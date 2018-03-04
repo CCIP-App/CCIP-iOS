@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_CCIPVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_CCIPVersionString[];
+FOUNDATION_EXPORT double Pods_SITCONVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_SITCONVersionString[];
 

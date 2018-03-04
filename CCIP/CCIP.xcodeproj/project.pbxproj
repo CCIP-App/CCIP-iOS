@@ -45,6 +45,7 @@
 		28A7C5761D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5751D6053F00079BB12 /* EmbeddedNavigationControllerSegue.m */; };
 		28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */; };
 		28AFCF141D5DD9CA00413927 /* AcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AFCF131D5DD9CA00413927 /* AcknowledgementsViewController.m */; };
+		4D83F0713D43049D277AF149 /* Pods_SITCON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E04406208BA964FCDC0A4867 /* Pods_SITCON.framework */; };
 		5F0E55D01D574F7F004664FB /* SponsorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0E55CE1D574F7F004664FB /* SponsorTableViewCell.m */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
 		5F8B2D2A1D55E02200A68C7D /* SponsorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B2D281D55E02200A68C7D /* SponsorTableViewController.m */; };
@@ -59,6 +60,7 @@
 		5FECE5AC1D352E8A00242DB4 /* StaffGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5AA1D352E8A00242DB4 /* StaffGroupTableViewController.m */; };
 		5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */; };
 		5FF2B11E1D28B19600665DD9 /* IRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2B11C1D28B19600665DD9 /* IRCViewController.m */; };
+		617DBFB37E08D623D92989E0 /* Pods-SITCON-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28C25F6B308A902FA1C3714B /* Pods-SITCON-metadata.plist */; };
 		669F85147E622DDFF454A36A /* Pods_CCIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87CA176D8DB3A92497387928 /* Pods_CCIP.framework */; };
 		6B023A132046EEE500F474F3 /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
 		6B023A142046EEE500F474F3 /* DeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5611D5F1AD90079BB12 /* DeepCopy.m */; };
@@ -131,18 +133,13 @@
 		6B023A5A2046EEE500F474F3 /* Project_3rd_Lib_License.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */; };
 		6B023A5B2046EEE500F474F3 /* LICENSE-2.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A751D599A1200E4E3A6 /* LICENSE-2.0.txt */; };
 		6B023A5C2046EEE500F474F3 /* Project_Info_and_Contributors.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */; };
-		6B023A5D2046EEE500F474F3 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
-		6B023A5E2046EEE500F474F3 /* LaunchScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284602DE1F121BBB00F512A3 /* LaunchScreen@2x.png */; };
 		6B023A5F2046EEE500F474F3 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280774D01F1AD8D300A5B994 /* ScheduleTableViewCell.xib */; };
 		6B023A602046EEE500F474F3 /* ScanditBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A7A1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle */; };
 		6B023A612046EEE500F474F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */; };
 		6B023A622046EEE500F474F3 /* Maps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BEB31141F26656B0050759D /* Maps.bundle */; };
 		6B023A632046EEE500F474F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B11BE841D4CBC9300B87EA9 /* Main.storyboard */; };
 		6B023A642046EEE500F474F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B036B8F1F24371600D5E5A5 /* Settings.bundle */; };
-		6B023A652046EEE500F474F3 /* LaunchScreen@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284602DD1F121BBB00F512A3 /* LaunchScreen@1x.png */; };
-		6B023A662046EEE500F474F3 /* LaunchScreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284602DF1F121BBB00F512A3 /* LaunchScreen@3x.png */; };
 		6B023A692046EEE500F474F3 /* CHANGELOG.txt in Resources */ = {isa = PBXBuildFile; fileRef = 288D3A741D599A1200E4E3A6 /* CHANGELOG.txt */; };
-		6B023A6B2046EEE500F474F3 /* AssetsUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF331511F299207004BEEA6 /* AssetsUI.bundle */; };
 		6B023A6D2046EEE500F474F3 /* Pods-CCIP-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = A729E7D04006FECCCCCFAEEC /* Pods-CCIP-metadata.plist */; };
 		6B023A6E2046EEE500F474F3 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */; };
 		6B023A6F2046EEE500F474F3 /* WebViewAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */; };
@@ -179,6 +176,9 @@
 		6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F9E441D4D142700047F38 /* CheckinCardView.m */; };
 		6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
 		6B49F1411F2548C600686C27 /* COSCUP-Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* COSCUP-Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6B4DF9E6204C087200B127FE /* LaunchScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B4DF9E3204C087200B127FE /* LaunchScreen@2x.png */; };
+		6B4DF9E7204C087200B127FE /* LaunchScreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B4DF9E4204C087200B127FE /* LaunchScreen@3x.png */; };
+		6B4DF9E8204C087200B127FE /* LaunchScreen@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B4DF9E5204C087200B127FE /* LaunchScreen@1x.png */; };
 		6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
 		6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */; };
 		6B9650C91F2B270500F43B39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC12A961F2B1B8000B14039 /* main.m */; };
@@ -204,6 +204,8 @@
 		6BEB31151F26656B0050759D /* Maps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BEB31141F26656B0050759D /* Maps.bundle */; };
 		6BF331501F2991C4004BEEA6 /* PassAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */; };
 		6BF331521F299207004BEEA6 /* AssetsUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF331511F299207004BEEA6 /* AssetsUI.bundle */; };
+		A0BA0226DE6C6C1DD98B5601 /* Pods-COSCUP-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FCD10B2B34F1239B7B42203 /* Pods-COSCUP-metadata.plist */; };
+		D42F56F6C6A739018E509726 /* Pods_COSCUP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4828F57826BDD862B797572E /* Pods_COSCUP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -338,6 +340,8 @@
 		28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
 		28AFCF121D5DD9CA00413927 /* AcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgementsViewController.h; sourceTree = "<group>"; };
 		28AFCF131D5DD9CA00413927 /* AcknowledgementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcknowledgementsViewController.m; sourceTree = "<group>"; };
+		28C25F6B308A902FA1C3714B /* Pods-SITCON-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-SITCON-metadata.plist"; path = "Pods/Pods-SITCON-metadata.plist"; sourceTree = "<group>"; };
+		4828F57826BDD862B797572E /* Pods_COSCUP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COSCUP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F0E55CD1D574F7F004664FB /* SponsorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SponsorTableViewCell.h; sourceTree = "<group>"; };
 		5F0E55CE1D574F7F004664FB /* SponsorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SponsorTableViewCell.m; sourceTree = "<group>"; };
 		5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -410,6 +414,11 @@
 		6B2F9E431D4D142700047F38 /* CheckinCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinCardView.h; sourceTree = "<group>"; };
 		6B2F9E441D4D142700047F38 /* CheckinCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinCardView.m; sourceTree = "<group>"; };
 		6B2F9E461D4D18F100047F38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6B4DF9E3204C087200B127FE /* LaunchScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@2x.png"; sourceTree = "<group>"; };
+		6B4DF9E4204C087200B127FE /* LaunchScreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@3x.png"; sourceTree = "<group>"; };
+		6B4DF9E5204C087200B127FE /* LaunchScreen@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@1x.png"; sourceTree = "<group>"; };
+		6B4DF9E9204C088200B127FE /* AssetsUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AssetsUI.bundle; sourceTree = "<group>"; };
+		6B4DF9EA204C0AFF00B127FE /* PassAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PassAssets.bundle; sourceTree = "<group>"; };
 		6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreenIcon@3x.png"; sourceTree = "<group>"; };
 		6B7299AE1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFavoriteTableViewController.h; sourceTree = "<group>"; };
 		6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleFavoriteTableViewController.m; sourceTree = "<group>"; };
@@ -464,9 +473,15 @@
 		6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PassAssets.bundle; sourceTree = "<group>"; };
 		6BF331511F299207004BEEA6 /* AssetsUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AssetsUI.bundle; sourceTree = "<group>"; };
 		6BF641161D4D42C000243B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6FCD10B2B34F1239B7B42203 /* Pods-COSCUP-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-COSCUP-metadata.plist"; path = "Pods/Pods-COSCUP-metadata.plist"; sourceTree = "<group>"; };
 		73C89BC569D02A15C926A59D /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.release.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
+		852675E2E1DF751B5F81D3B8 /* Pods-SITCON.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SITCON.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SITCON/Pods-SITCON.debug.xcconfig"; sourceTree = "<group>"; };
 		87CA176D8DB3A92497387928 /* Pods_CCIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CCIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		97274C8E33451E110A0DAF2F /* Pods-COSCUP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COSCUP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-COSCUP/Pods-COSCUP.debug.xcconfig"; sourceTree = "<group>"; };
 		A729E7D04006FECCCCCFAEEC /* Pods-CCIP-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-CCIP-metadata.plist"; path = "Pods/Pods-CCIP-metadata.plist"; sourceTree = "<group>"; };
+		A827286EA33314608B7F296A /* Pods-SITCON.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SITCON.release.xcconfig"; path = "Pods/Target Support Files/Pods-SITCON/Pods-SITCON.release.xcconfig"; sourceTree = "<group>"; };
+		E04406208BA964FCDC0A4867 /* Pods_SITCON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SITCON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1696B1AA438A2D223B78F79 /* Pods-COSCUP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COSCUP.release.xcconfig"; path = "Pods/Target Support Files/Pods-COSCUP/Pods-COSCUP.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -494,6 +509,7 @@
 				6B023A532046EEE500F474F3 /* libiconv.tbd in Frameworks */,
 				6B023A542046EEE500F474F3 /* libc++.tbd in Frameworks */,
 				6B023A562046EEE500F474F3 /* ScanditBarcodeScanner.framework in Frameworks */,
+				4D83F0713D43049D277AF149 /* Pods_SITCON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +544,7 @@
 				288D3A7F1D599B7200E4E3A6 /* libiconv.tbd in Frameworks */,
 				288D3A7D1D599B6700E4E3A6 /* libc++.tbd in Frameworks */,
 				288D3A791D599A1200E4E3A6 /* ScanditBarcodeScanner.framework in Frameworks */,
+				D42F56F6C6A739018E509726 /* Pods_COSCUP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +564,12 @@
 				A729E7D04006FECCCCCFAEEC /* Pods-CCIP-metadata.plist */,
 				1109AC0BA8D34C2FCF7F399F /* Pods-CCIP.debug.xcconfig */,
 				73C89BC569D02A15C926A59D /* Pods-CCIP.release.xcconfig */,
+				97274C8E33451E110A0DAF2F /* Pods-COSCUP.debug.xcconfig */,
+				E1696B1AA438A2D223B78F79 /* Pods-COSCUP.release.xcconfig */,
+				852675E2E1DF751B5F81D3B8 /* Pods-SITCON.debug.xcconfig */,
+				A827286EA33314608B7F296A /* Pods-SITCON.release.xcconfig */,
+				6FCD10B2B34F1239B7B42203 /* Pods-COSCUP-metadata.plist */,
+				28C25F6B308A902FA1C3714B /* Pods-SITCON-metadata.plist */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -575,6 +598,8 @@
 				6B2CD5AD1D28C92B00793194 /* CommonCrypto.framework */,
 				87CA176D8DB3A92497387928 /* Pods_CCIP.framework */,
 				6B2CD58A1D28780F00793194 /* AudioToolbox.framework */,
+				4828F57826BDD862B797572E /* Pods_COSCUP.framework */,
+				E04406208BA964FCDC0A4867 /* Pods_SITCON.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -623,6 +648,31 @@
 				6B02FD981F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m */,
 			);
 			path = ScheduleDetail;
+			sourceTree = "<group>";
+		};
+		6B4DF9E1204A482100B127FE /* COSCUP */ = {
+			isa = PBXGroup;
+			children = (
+				6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */,
+				6BF331511F299207004BEEA6 /* AssetsUI.bundle */,
+				284602DD1F121BBB00F512A3 /* LaunchScreen@1x.png */,
+				284602DE1F121BBB00F512A3 /* LaunchScreen@2x.png */,
+				284602DF1F121BBB00F512A3 /* LaunchScreen@3x.png */,
+				6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */,
+			);
+			path = COSCUP;
+			sourceTree = "<group>";
+		};
+		6B4DF9E2204A482700B127FE /* SITCON */ = {
+			isa = PBXGroup;
+			children = (
+				6B4DF9EA204C0AFF00B127FE /* PassAssets.bundle */,
+				6B4DF9E9204C088200B127FE /* AssetsUI.bundle */,
+				6B4DF9E5204C087200B127FE /* LaunchScreen@1x.png */,
+				6B4DF9E3204C087200B127FE /* LaunchScreen@2x.png */,
+				6B4DF9E4204C087200B127FE /* LaunchScreen@3x.png */,
+			);
+			path = SITCON;
 			sourceTree = "<group>";
 		};
 		6B6F256F1F2B17CD00A6BD2C /* StaffView */ = {
@@ -988,13 +1038,9 @@
 		6BFB83271F2B19EB005DCF00 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */,
-				6BF331511F299207004BEEA6 /* AssetsUI.bundle */,
+				6B4DF9E2204A482700B127FE /* SITCON */,
+				6B4DF9E1204A482100B127FE /* COSCUP */,
 				6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */,
-				284602DD1F121BBB00F512A3 /* LaunchScreen@1x.png */,
-				284602DE1F121BBB00F512A3 /* LaunchScreen@2x.png */,
-				284602DF1F121BBB00F512A3 /* LaunchScreen@3x.png */,
-				6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1186,27 +1232,26 @@
 				6B023A5A2046EEE500F474F3 /* Project_3rd_Lib_License.json in Resources */,
 				6B023A5B2046EEE500F474F3 /* LICENSE-2.0.txt in Resources */,
 				6B023A5C2046EEE500F474F3 /* Project_Info_and_Contributors.json in Resources */,
-				6B023A5D2046EEE500F474F3 /* LaunchScreenIcon@3x.png in Resources */,
 				6B023A882046FAAD00F474F3 /* Assets.xcassets in Resources */,
-				6B023A5E2046EEE500F474F3 /* LaunchScreen@2x.png in Resources */,
 				6B023A5F2046EEE500F474F3 /* ScheduleTableViewCell.xib in Resources */,
 				6B023A602046EEE500F474F3 /* ScanditBarcodeScanner.bundle in Resources */,
+				6B4DF9E8204C087200B127FE /* LaunchScreen@1x.png in Resources */,
 				6B023A9C204718AD00F474F3 /* Info.plist in Resources */,
 				6B023A612046EEE500F474F3 /* LaunchScreen.storyboard in Resources */,
+				6B4DF9E6204C087200B127FE /* LaunchScreen@2x.png in Resources */,
 				6B023A622046EEE500F474F3 /* Maps.bundle in Resources */,
 				6B023A632046EEE500F474F3 /* Main.storyboard in Resources */,
 				6B023A642046EEE500F474F3 /* Settings.bundle in Resources */,
 				6B023A892046FAAF00F474F3 /* InfoPlist.strings in Resources */,
 				6B023A8B2046FAB600F474F3 /* Localizable.strings in Resources */,
-				6B023A652046EEE500F474F3 /* LaunchScreen@1x.png in Resources */,
-				6B023A662046EEE500F474F3 /* LaunchScreen@3x.png in Resources */,
 				6B023A692046EEE500F474F3 /* CHANGELOG.txt in Resources */,
-				6B023A6B2046EEE500F474F3 /* AssetsUI.bundle in Resources */,
 				6B023A6D2046EEE500F474F3 /* Pods-CCIP-metadata.plist in Resources */,
 				6B023A8A2046FAB300F474F3 /* GoogleService-Info.plist in Resources */,
 				6B023A6E2046EEE500F474F3 /* fontawesome-webfont.ttf in Resources */,
 				6B023A6F2046EEE500F474F3 /* WebViewAssets.bundle in Resources */,
 				6B023A702046EEE500F474F3 /* PassAssets.bundle in Resources */,
+				6B4DF9E7204C087200B127FE /* LaunchScreen@3x.png in Resources */,
+				617DBFB37E08D623D92989E0 /* Pods-SITCON-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1255,6 +1300,7 @@
 				6B26D9131F23EE28003D9CA1 /* fontawesome-webfont.ttf in Resources */,
 				6B10CE8E1F29988100EB98F2 /* WebViewAssets.bundle in Resources */,
 				6BF331501F2991C4004BEEA6 /* PassAssets.bundle in Resources */,
+				A0BA0226DE6C6C1DD98B5601 /* Pods-COSCUP-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1285,7 +1331,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CCIP-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SITCON-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1304,7 +1350,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CCIP/Pods-CCIP-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SITCON/Pods-SITCON-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D87513F49D444A0840CAF6A2 /* [CP] Embed Pods Frameworks */ = {
@@ -1313,7 +1359,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CCIP/Pods-CCIP-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-SITCON/Pods-SITCON-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/BLKFlexibleHeightBar/BLKFlexibleHeightBar.framework",
 				"${BUILT_PRODUCTS_DIR}/CPDAcknowledgements/CPDAcknowledgements.framework",
@@ -1360,7 +1406,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CCIP/Pods-CCIP-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SITCON/Pods-SITCON-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1564,7 +1610,7 @@
 /* Begin XCBuildConfiguration section */
 		6B023A782046EEE500F474F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1109AC0BA8D34C2FCF7F399F /* Pods-CCIP.debug.xcconfig */;
+			baseConfigurationReference = 852675E2E1DF751B5F81D3B8 /* Pods-SITCON.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev";
@@ -1597,7 +1643,7 @@
 		};
 		6B023A792046EEE500F474F3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73C89BC569D02A15C926A59D /* Pods-CCIP.release.xcconfig */;
+			baseConfigurationReference = A827286EA33314608B7F296A /* Pods-SITCON.release.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1861,7 +1907,7 @@
 		};
 		6BD8EF421D1D73510094BE95 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1109AC0BA8D34C2FCF7F399F /* Pods-CCIP.debug.xcconfig */;
+			baseConfigurationReference = 97274C8E33451E110A0DAF2F /* Pods-COSCUP.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev";
@@ -1894,7 +1940,7 @@
 		};
 		6BD8EF431D1D73510094BE95 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73C89BC569D02A15C926A59D /* Pods-CCIP.release.xcconfig */;
+			baseConfigurationReference = E1696B1AA438A2D223B78F79 /* Pods-COSCUP.release.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
