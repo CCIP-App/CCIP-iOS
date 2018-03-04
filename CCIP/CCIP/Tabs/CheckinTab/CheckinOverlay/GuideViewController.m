@@ -78,9 +78,9 @@
                                      self.view.frame.size.width,
                                      self.view.frame.size.height - topStart - 49.0f + 22.0f);
         self.view.superview.frame = CGRectMake(0.0f,
-                                               X_TOP + topStart,
+                                               22.0f + X_TOP(5.5f, 0.0f) + topStart,
                                                self.view.frame.size.width,
-                                               self.view.frame.size.height + X_TOP);
+                                               self.view.frame.size.height + X_TOP(0.0f, 22.0f));
         self.isRelayout = true;
     }
 }

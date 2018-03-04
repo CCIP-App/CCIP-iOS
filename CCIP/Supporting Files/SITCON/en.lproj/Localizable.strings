@@ -25,7 +25,7 @@
 "CheckinViewButtonPressed" = "FINISHED";
 "CheckinText" = "";
 "CheckinTextVipKit" = "";
-"UseNoticeText" = "From close source to open source\nIndividual to Community\nWe've come a long way...";
+"UseNoticeText" = "";
 "meatLunch" = "Meal";
 "vegetarianLunch" = "Vegan";
 "UseButton_kit" = "Confirm to get the KIT bag?";

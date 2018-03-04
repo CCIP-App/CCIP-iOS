@@ -579,7 +579,7 @@
                                                                  toItem:self.view
                                                               attribute:NSLayoutAttributeTop
                                                              multiplier:1.0
-                                                               constant:self.controllerTopStart + X_TOP]];
+                                                               constant:self.controllerTopStart + X_TOP(0.0f, 22.0f)]];
         // Add constraints to set the width to 200 and height to 400. Since this is not the aspect ratio
         // of the camera preview some of the camera preview will be cut away on the left and right.
         [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scanditBarcodePicker.view
