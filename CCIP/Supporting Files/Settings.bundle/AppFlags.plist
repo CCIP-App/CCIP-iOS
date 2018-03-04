@@ -22,16 +22,6 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>1</string>
-			<key>Key</key>
-			<string>DEBUG</string>
-			<key>Title</key>
-			<string>DEBUG</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
 			<string>group.org.sitcon.ccip</string>
 			<key>Key</key>
 			<string>APP_GROUP_ID</string>
@@ -242,21 +232,21 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@#9b9b9b)</string>
-			<key>Key</key>
-			<string>COLOR_BUTTON_DISABLED</string>
-			<key>Title</key>
-			<string>COLOR_BUTTON_DISABLED</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
 			<string>(@#64757d)</string>
 			<key>Key</key>
 			<string>COLOR_BUTTON_DEFAULT</string>
 			<key>Title</key>
 			<string>COLOR_BUTTON_DEFAULT</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@#9b9b9b)</string>
+			<key>Key</key>
+			<string>COLOR_BUTTON_DISABLED</string>
+			<key>Title</key>
+			<string>COLOR_BUTTON_DISABLED</string>
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 		</dict>
