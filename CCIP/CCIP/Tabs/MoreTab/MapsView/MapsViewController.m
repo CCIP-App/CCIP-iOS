@@ -17,6 +17,7 @@
 @interface MapsViewController ()
 
 @property (strong, nonatomic) NSArray *maps;
+@property (readwrite, nonatomic) CGRect mapThumbnailsCropArea;
 @property (strong, nonatomic) MWPhotoBrowser *browser;
 @property (strong, nonatomic) UINavigationController *ncBrowser;
 
@@ -33,6 +34,14 @@
                                              subdirectory:nil];
     self.maps = [self.maps sortedArrayUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"lastPathComponent"
                                                                                         ascending:YES] ]];
+    NSDictionary *tarea = [NSDictionary dictionaryWithContentsOfURL:[mapsBundle URLForResource:@"thumbnails"
+                                                                                 withExtension:@"plist"]];
+    self.mapThumbnailsCropArea = CGRectMake(
+                                            [[tarea objectForKey:@"X"] floatValue],
+                                            [[tarea objectForKey:@"Y"] floatValue],
+                                            [[tarea objectForKey:@"Width"] floatValue],
+                                            [[tarea objectForKey:@"Height"] floatValue]
+                                            );
     self.browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
     [self.browser setEnableGrid:YES];
     [self.browser setStartOnGrid:YES];
@@ -74,9 +83,8 @@
 
 - (id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index {
     NSURL *url = [self.maps objectAtIndex:index];
-    CGRect cropRegion = CGRectMake(140, 230, 180, 180);
     UIImage *thumb = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-    CGImageRef subImage = CGImageCreateWithImageInRect(thumb.CGImage, cropRegion);
+    CGImageRef subImage = CGImageCreateWithImageInRect(thumb.CGImage, self.mapThumbnailsCropArea);
     UIImage *cropThumb = [UIImage imageWithCGImage:subImage];
     return [MWPhoto photoWithImage:cropThumb];
 }
