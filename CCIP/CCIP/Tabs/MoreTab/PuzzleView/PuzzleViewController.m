@@ -59,7 +59,7 @@
     
     NSURL *nsurl = self.webView.URL;
     if ([AppDelegate haveAccessToken] && (nsurl == nil || [nsurl.absoluteString isEqualToString:@""])) {
-        nsurl = [NSURL URLWithString:PUZZLE_GAME_URL([AppDelegate accessTokenSHA1])];
+        nsurl = [NSURL URLWithString:PUZZLE_GAME_URL([AppDelegate accessToken])];
     } else {
         nsurl = [NSURL URLWithString:PUZZLE_GAME_URL(@"")];
     }
@@ -106,10 +106,10 @@
 }
 
 - (IBAction)reload:(id)sender {
-    NSString *sha1Token = [AppDelegate accessTokenSHA1];
+    NSString *token = [AppDelegate accessTokenSHA1];
     NSURL *nsurl = self.webView.URL;
-    if ([AppDelegate haveAccessToken] && (nsurl == nil || [nsurl.absoluteString isEqualToString:@""] || ![nsurl.absoluteString containsString:sha1Token])) {
-        nsurl = [NSURL URLWithString:PUZZLE_GAME_URL(sha1Token)];
+    if ([AppDelegate haveAccessToken] && (nsurl == nil || [nsurl.absoluteString isEqualToString:@""] || ![nsurl.absoluteString containsString:token])) {
+        nsurl = [NSURL URLWithString:PUZZLE_GAME_URL(token)];
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
         [self.webView loadRequest:requestObj];
     } else {
