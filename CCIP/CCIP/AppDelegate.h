@@ -55,6 +55,7 @@
 + (BOOL)isBeforeEvent;
 + (BOOL)isAfterEvent;
 + (NSDate * _Nullable)firstAvailableDate;
++ (NSDictionary * _Null_unspecified)parseScenarioType:(NSString * _Nonnull)id;
 + (void)parseAvailableDays:(NSArray * _Null_unspecified)scenarios;
 
 + (NSString * _Nonnull)currentLangUI;

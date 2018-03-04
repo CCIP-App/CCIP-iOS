@@ -57,7 +57,7 @@
     NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[self.scenario objectForKey:@"available_time"] integerValue]];
     NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[self.scenario objectForKey:@"expire_time"] integerValue]];
     NSDate *nowTime = [NSDate new];
-    BOOL isCheckin = [self.id isEqualToString:@"day1checkin"] || [self.id isEqualToString:@"day2checkin"];
+    BOOL isCheckin = [[[AppDelegate parseScenarioType:self.id] objectForKey:@"scenarioType"] isEqual:@"checkin"];
     
     __block AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     void (^use)(void) = ^{

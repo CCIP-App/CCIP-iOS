@@ -743,12 +743,6 @@
         // 414 736
         cardRect = CGRectMake(0, 0, self.cards.bounds.size.width, self.cards.bounds.size.height - (self.pageControl.hidden ? 0 : 10));
     }
-    static NSDateFormatter *formatter;
-    if (formatter == nil) {
-        formatter = [NSDateFormatter new];
-        [formatter setDateFormat:@"yyyy/M/d"];
-        [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
-    }
 
     //create new view if no view is available for recycling
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
@@ -771,23 +765,10 @@
             BOOL isShirt = [[id lowercaseString] isEqualToString:@"shirt"];
             BOOL isRadio = [id rangeOfString:@"radio" options:NSCaseInsensitiveSearch].length > 0;
             [temp setId:id];
-            NSString *id_pattern = @"^(day(\\d+))?(\\w+)$";
-            NSError *error = nil;
-            NSRegularExpression *id_regex = [NSRegularExpression regularExpressionWithPattern:id_pattern
-                                                                                      options:NSRegularExpressionCaseInsensitive
-                                                                                        error:&error];
-            NSArray *id_matches = [id_regex matchesInString:id
-                                                    options:NSMatchingWithTransparentBounds
-                                                      range:NSMakeRange(0, id.length)];
-            NSRange did_range = [[id_matches firstObject] rangeAtIndex:2];
-            NSString *did = @"";
-            NSString *dateId = @"";
-            if (did_range.location != NSNotFound) {
-                did =  [id substringWithRange:did_range];
-                dateId = [formatter stringFromDate:[[AppDelegate firstAvailableDate] dateByAddingTimeInterval:([did intValue] - 1) * 86400]];
-            }
-            NSRange scenarioRange = [[id_matches firstObject] rangeAtIndex:3];
-            NSString *scenarioType = [id substringWithRange:scenarioRange];
+            NSDictionary *dd = [AppDelegate parseScenarioType:id];
+            NSString *did = [dd objectForKey:@"did"];
+            NSString *dateId = [dd objectForKey:@"dateId"];
+            NSString *scenarioType = [dd objectForKey:@"scenarioType"];
             NSDictionary *displayText = [scenario objectForKey:@"display_text"];
             NSString *lang = [AppDelegate longLangUI];
             [temp.checkinTitle setTextColor:[UIColor colorFromHtmlColor:COLOR_CARD_TEXT]];
