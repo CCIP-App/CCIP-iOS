@@ -71,7 +71,6 @@ cat CCIP.xcconfig > CCIP.debug.xcconfig
 cat CCIP.xcconfig > CCIP.release.xcconfig
 
 export color_dev="#f2a900"
-export color_title_highlighted="#009a79"
 export color_dash_line="#e9e9e9"
 export color_button_disabled="#9b9b9b"
 case "`echo $TARGET_NAME | awk '{ print tolower($0) }'`" in
@@ -82,6 +81,7 @@ case "`echo $TARGET_NAME | awk '{ print tolower($0) }'`" in
     export channel=coscup
     export tg_chat=coscupchat
     export one_signal_token="a429ff30-5c0e-4584-a32f-b866ba88c947"
+    export color_title_highlighted="#009a79"
     export color_gradient1="#f9fea5"
     export color_gradient2="#20e2d7"
     export color_gradient3="#ABF4B7"
@@ -95,6 +95,7 @@ case "`echo $TARGET_NAME | awk '{ print tolower($0) }'`" in
     export channel=sitcon
     export tg_chat=SITCONgeneral
     export one_signal_token="9b74779c-bcd8-471e-a64b-e033acf0ebbd"
+    export color_title_highlighted="#444f54"
     export color_gradient1="#64757d"
     export color_gradient2="#64757d"
     export color_gradient3="#64757d"
