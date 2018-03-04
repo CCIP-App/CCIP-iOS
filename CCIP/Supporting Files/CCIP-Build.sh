@@ -112,7 +112,7 @@ esac
 
 function xcc_replace() {
     sed -i '' -E 's/'"$2"'/'"$3"'/g' CCIP.debug.xcconfig
-    [[ "$1" -eq "0" ]] && sed -i '' -E 's/'"$2"'/'"$3"'/g' CCIP.release.xcconfig
+    [[ "$1" -eq "0" ]] && sed -i '' -E 's/'"$2"'/'"$3"'/g' CCIP.release.xcconfig || sed -i '' -E 's/'"$2"'//g' CCIP.release.xcconfig
 }
 
 xcc_replace 1 "#Dev#"                       "-Dev"

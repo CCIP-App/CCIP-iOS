@@ -73,6 +73,15 @@
                                  To:[UIColor colorFromHtmlColor:COLOR_GRADIENT1]
                          StartPoint:CGPointMake(1, .5)
                             ToPoint:CGPointMake(-.4, .5)];
+    
+    // following constraint for fix the storyboard autolayout broken the navigation bar alignment
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.vwHeader
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeTop
+                                                         multiplier:1.0
+                                                           constant:0]];
 }
 
 #pragma mark - Table view data source

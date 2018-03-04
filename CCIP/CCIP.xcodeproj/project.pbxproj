@@ -146,8 +146,6 @@
 		6B023A892046FAAF00F474F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B023A802046FA9E00F474F3 /* InfoPlist.strings */; };
 		6B023A8A2046FAB300F474F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B023A862046FA9F00F474F3 /* GoogleService-Info.plist */; };
 		6B023A8B2046FAB600F474F3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B023A832046FA9E00F474F3 /* Localizable.strings */; };
-		6B023A9B204718AC00F474F3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B023A9A20470F4B00F474F3 /* Info.plist */; };
-		6B023A9C204718AD00F474F3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B023A9A20470F4B00F474F3 /* Info.plist */; };
 		6B02FD931F220326002AC0D3 /* ScheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */; };
 		6B02FD961F220371002AC0D3 /* ScheduleAbstractViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD951F220371002AC0D3 /* ScheduleAbstractViewCell.m */; };
 		6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD981F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m */; };
@@ -1213,7 +1211,6 @@
 				6B023A602046EEE500F474F3 /* ScanditBarcodeScanner.bundle in Resources */,
 				6B4DF9E8204C087200B127FE /* LaunchScreen@1x.png in Resources */,
 				6B4DF9EB204C1B3E00B127FE /* AssetsUI.bundle in Resources */,
-				6B023A9C204718AD00F474F3 /* Info.plist in Resources */,
 				6B023A612046EEE500F474F3 /* LaunchScreen.storyboard in Resources */,
 				6B4DF9E6204C087200B127FE /* LaunchScreen@2x.png in Resources */,
 				6B4DF9EC204C1B4200B127FE /* PassAssets.bundle in Resources */,
@@ -1260,7 +1257,6 @@
 				280774D21F1AD8D300A5B994 /* ScheduleTableViewCell.xib in Resources */,
 				288D3A7B1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle in Resources */,
 				6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */,
-				6B023A9B204718AC00F474F3 /* Info.plist in Resources */,
 				6BEB31151F26656B0050759D /* Maps.bundle in Resources */,
 				6B11BE821D4CBC9300B87EA9 /* Main.storyboard in Resources */,
 				6B036B901F24371700D5E5A5 /* Settings.bundle in Resources */,

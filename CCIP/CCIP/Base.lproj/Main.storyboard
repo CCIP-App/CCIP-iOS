@@ -865,6 +865,8 @@ Please copy and paste the token into next field or click the token link in the r
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aq1-sw-zr3"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="420" height="720"/>
                     <connections>
@@ -1895,6 +1897,6 @@ Label2</string>
         <segue reference="ewg-q8-EfJ"/>
         <segue reference="gRH-x7-Jfd"/>
         <segue reference="m5s-g0-cve"/>
-        <segue reference="reK-KQ-Y1b"/>
+        <segue reference="mZ3-si-dph"/>
     </inferredMetricsTieBreakers>
 </document>
