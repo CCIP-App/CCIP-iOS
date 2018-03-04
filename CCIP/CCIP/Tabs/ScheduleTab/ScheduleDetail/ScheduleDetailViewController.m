@@ -60,7 +60,8 @@
     [self.lbTitle setText:[data objectForKey:@"subject"]];
     [self.lbSpeakerName setText:[[data objectForKey:@"speaker"] objectForKey:@"name"]];
     [self.ivSpeakerPhoto setImage:defaultIcon];
-    [self.ivSpeakerPhoto sd_setImageWithURL:[NSURL URLWithString:[[data objectForKey:@"speaker"] objectForKey:@"avatar"]]
+    [self.ivSpeakerPhoto sd_setImageWithURL:[NSURL URLWithString:[[[data objectForKey:@"speaker"] objectForKey:@"avatar"] stringByReplacingOccurrencesOfString:@"http:"
+                                                                                                                                                    withString:@"https:"]]
                            placeholderImage:defaultIcon
                                     options:SDWebImageRefreshCached];
     [self.ivSpeakerPhoto.layer setCornerRadius:self.ivSpeakerPhoto.frame.size.height / 2];
