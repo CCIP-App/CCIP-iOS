@@ -162,8 +162,10 @@
     NSString *code = [self.redeemCodeText text];
     code = [code stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
-    NSCharacterSet *allowedCharacters = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
-    if ([code length] > 0 && [code rangeOfCharacterFromSet:allowedCharacters].location == NSNotFound) {
+    NSMutableCharacterSet *allowedCharacters = [NSMutableCharacterSet characterSetWithCharactersInString:@"-_"];
+    [allowedCharacters formUnionWithCharacterSet:[NSCharacterSet alphanumericCharacterSet]];
+    NSCharacterSet *nonAllowedCharacters = [allowedCharacters invertedSet];
+    if ([code length] > 0 && [code rangeOfCharacterFromSet:nonAllowedCharacters].location == NSNotFound) {
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         
         NSURL *URL = [NSURL URLWithString:CC_LANDING(code)];
