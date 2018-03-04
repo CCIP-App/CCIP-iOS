@@ -44,6 +44,7 @@
 
 + (void)createNEHC {
     if(@available(iOS 11.0, *)) {
+#ifndef TARGET_IPHONE_SIMULATOR
         NSDictionary *nehDict = [NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"WiFiConfiguration"
                                                                                                   withExtension:@"plist"]];
         NSString *nehSSID = [nehDict objectForKey:@"SSID"];
@@ -60,6 +61,7 @@
                       NSLog(@"%@", error);
         }];
         }
+#endif
     } else {
         // no-op
     }
