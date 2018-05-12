@@ -85,6 +85,6 @@
 "QRFileNotAvailableDesc" = "Can not extract QR Code from the image";
 "Networking_Broken" = "Error while networking issues";
 "Networking_WrongWiFi" = "Please connect to the wifi provided by SITCON";
-"LoginGreeting" = "Hi %@, welcome to SITCON, enjoy this summer festival of fun!";
+"LoginGreeting" = "Hi %@, welcome to SITCON, enjoy this festival of fun!";
 "AfterEventMessage" = "After the Event, we need you in-form a questionnaire for us, thanks.";
 "AfterEventActionTitle" = "Open questionnaire";

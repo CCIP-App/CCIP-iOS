@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    SEND_GAI(@"ScheduleDetailViewController");
+    SEND_FIB(@"ScheduleDetailViewController");
     
     self.identifiers = @[ ABSTRACT_CELL, SPEAKERINFO_CELL ];
     [self.tvContent setSeparatorColor:[UIColor clearColor]];

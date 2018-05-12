@@ -176,7 +176,7 @@
                                  }];
                              }
                          }];
-        SEND_GAI_EVENT(@"CheckinCardView", @"click_disabled");
+        SEND_FIB_EVENT(@"CheckinCardView", @"click_disabled");
     } else {
         if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
             // IN TIME

@@ -2,7 +2,7 @@
 
 Instance ID provides a unique ID per instance of your apps and also provides a
 mechanism to authenticate and authorize actions, like sending messages via
-Google Cloud Messaging (GCM).
+Firebase Cloud Messaging (FCM).
 
 
 Please visit [our developer

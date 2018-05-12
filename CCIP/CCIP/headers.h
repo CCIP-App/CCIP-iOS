@@ -12,6 +12,9 @@
 #ifdef SITCON
 #import <SITCON-Swift.h>
 #endif
+#ifdef PYCON
+#import <PYCON-Swift.h>
+#endif
 
 #define nilCoalesce(v)              ((v != nil && ![v isKindOfClass:[NSNull class]] ? v : @""))
 #define nilCoalesceDefault(v,d)     ((v != nil && ![v isKindOfClass:[NSNull class]] ? v : d))

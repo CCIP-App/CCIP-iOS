@@ -46,7 +46,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UIViewController *destination = segue.destinationViewController;
     NSString *title = [sender text];
-    SEND_GAI_EVENT(@"MoreTableView", title);
+    SEND_FIB_EVENT(@"MoreTableView", title);
     [destination setTitle:title];
     if ([destination isMemberOfClass:[StaffGroupTableViewController class]]) {
         StaffGroupTableViewController *sgt = (StaffGroupTableViewController *)destination;
@@ -80,7 +80,7 @@
     
     self.userInfo = [[AppDelegate appDelegate] userInfo];
     
-    SEND_GAI(@"MoreTableViewController");
+    SEND_FIB(@"MoreTableViewController");
     
     self.navigationItem.titleView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -238,7 +238,7 @@
 //    NSDictionary *item = [self.moreItems objectAtIndex:indexPath.row];
 //    NSString *title = [[[tableView cellForRowAtIndexPath:indexPath] textLabel] text];
 //    ((void(^)(NSString *))[item objectForKey:@"detailViewController"])(title);
-//    SEND_GAI_EVENT(@"MoreTableView", title);
+//    SEND_FIB_EVENT(@"MoreTableView", title);
 //}
 
 /*

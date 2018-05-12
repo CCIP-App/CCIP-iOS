@@ -85,6 +85,6 @@
 "QRFileNotAvailableDesc" = "該圖檔無法擷取出 QR Code，請重試";
 "Networking_Broken" = "網路連線異常";
 "Networking_WrongWiFi" = "請連上 SITCON 提供的無線網路，才能使用";
-"LoginGreeting" = "嗨 %@，歡迎您加入 SITCON，盡情享受這場盛夏饗宴吧！";
+"LoginGreeting" = "嗨 %@，歡迎您加入 SITCON，盡情享受這場饗宴吧！";
 "AfterEventMessage" = "在大會結束之後，我們需要您填寫一份問卷，感謝您！";
 "AfterEventActionTitle" = "開啟會後問卷";

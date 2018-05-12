@@ -29,7 +29,7 @@
 @implementation StatusViewController
 
 - (void)viewDidLoad {
-    SEND_GAI(@"StatusViewController");
+    SEND_FIB(@"StatusViewController");
 }
 
 - (void)viewWillAppear:(BOOL)animated {

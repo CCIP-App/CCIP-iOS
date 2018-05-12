@@ -35,7 +35,7 @@
     self.shimmeringLogoView.contentView = logoView;
     self.navigationItem.titleView = self.shimmeringLogoView;
     
-    SEND_GAI(@"IRCView");
+    SEND_FIB(@"IRCView");
         
     CGFloat progressBarHeight = 2.f;
     CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;

@@ -70,7 +70,7 @@
     
     [self.tableView endUpdates];
     
-    SEND_GAI(@"SponsorTableView");
+    SEND_FIB(@"SponsorTableView");
 }
 
 #pragma mark - Table view data source
@@ -179,7 +179,7 @@
         }
     }
     
-    SEND_GAI_EVENT(@"SponsorTableView", urlString);
+    SEND_FIB_EVENT(@"SponsorTableView", urlString);
     // Navigation logic may go here, for example:
     // Create the next view controller.
     //<#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];

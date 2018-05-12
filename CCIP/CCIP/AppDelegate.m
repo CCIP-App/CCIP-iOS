@@ -67,16 +67,23 @@
     }
 }
 
-+ (void)sendGAI:(NSDictionary *)_gai WithName:(NSString *)_name Func:(const char *)_func File:(const char *)_file Line:(int)_line {
++ (void)sendFIB:(NSString *)_name WithEvents:(NSDictionary *)_events Func:(const char *)_func File:(const char *)_file Line:(int)_line {
     NSString *__file = [[NSString stringWithUTF8String:_file] stringByReplacingOccurrencesOfString:SOURCE_ROOT
                                                                                         withString:@""];
-    NSLog(@"Send GAI: %@ @ %s\t%@:%d", _name, _func, __file, _line);
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    if (_name != nil) {
-        [tracker set:kGAIScreenName
-               value:_name];
+    NSLog(@"Send FIB: %@(%@) @ %s\t%@:%d", _name, _events, _func, __file, _line);
+    
+//    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    if (_name != nil && _events == nil) {
+//        [tracker set:kGAIScreenName
+//               value:_name];
+        [FIRAnalytics setScreenName:_name
+                        screenClass:[NSString stringWithUTF8String:_func]];
     }
-    [tracker send:_gai];
+    if (_events != nil) {
+        [FIRAnalytics logEventWithName:_name
+                            parameters:_events];
+    }
+//    [tracker send:_gai];
 }
 
 + (void)initialize {
@@ -329,15 +336,16 @@
     [self setIsLoginSession:NO];
     [self setAvailableDays:[NSMutableArray new]];
     // Configure tracker from GoogleService-Info.plist.
-    NSError *configureError;
-    [[GGLContext sharedInstance] configureWithError:&configureError];
-    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+    [FIRApp configure];
+//    NSError *configureError;
+//    [[GGLContext sharedInstance] configureWithError:&configureError];
+//    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
     // Optional: configure GAI options.
-    GAI *gai = [GAI sharedInstance];
-    [gai setTrackUncaughtExceptions:YES];  // report uncaught exceptions
+//    GAI *gai = [GAI sharedInstance];
+//    [gai setTrackUncaughtExceptions:YES];  // report uncaught exceptions
 
 #ifdef DEBUG
-    [gai.logger setLogLevel:kGAILogLevelVerbose];  // remove before app release
+//    [gai.logger setLogLevel:kGAILogLevelVerbose];  // remove before app release
 #endif
     
     // Configure OneSignal
@@ -501,7 +509,7 @@
     // Save UserDefaults
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    SEND_GAI_EVENT(@"performActionForShortcutItem", shortcutItem.localizedTitle);
+    SEND_FIB_EVENT(@"performActionForShortcutItem", shortcutItem.localizedTitle);
 }
 
 - (void)setDefaultShortcutItems {

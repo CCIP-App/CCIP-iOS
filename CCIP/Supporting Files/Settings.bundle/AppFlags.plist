@@ -14,15 +14,25 @@
 			<key>DefaultValue</key>
 			<string>1</string>
 			<key>Key</key>
-			<string>SITCON</string>
+			<string>PYCON</string>
 			<key>Title</key>
-			<string>SITCON</string>
+			<string>PYCON</string>
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>group.org.sitcon.ccip</string>
+			<string>1</string>
+			<key>Key</key>
+			<string>DEBUG</string>
+			<key>Title</key>
+			<string>DEBUG</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>group.org.pycon.ccip</string>
 			<key>Key</key>
 			<string>APP_GROUP_ID</string>
 			<key>Title</key>
@@ -32,7 +42,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@9b74779c-bcd8-471e-a64b-e033acf0ebbd)</string>
+			<string>(@9506c2db-f054-46b3-9396-744807736fb8)</string>
 			<key>Key</key>
 			<string>ONE_SIGNAL_APP_TOKEN</string>
 			<key>Title</key>
@@ -42,7 +52,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@ccip.sitcon.org)</string>
+			<string>(@ccip.pycon.org)</string>
 			<key>Key</key>
 			<string>__API_HOST_DOMAIN__</string>
 			<key>Title</key>
@@ -52,7 +62,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@sitcon.org)</string>
+			<string>(@tw.pycon.org)</string>
 			<key>Key</key>
 			<string>CONF_BASE_DOMAIN</string>
 			<key>Title</key>
@@ -62,7 +72,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@sitcon.org/2018/static/img/staffs)</string>
+			<string>(@tw.pycon.org/2018/static/img/staffs)</string>
 			<key>Key</key>
 			<string>STAFF_BASE_DOMAIN</string>
 			<key>Title</key>
@@ -72,7 +82,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@king.sitcon.party)</string>
+			<string>(@game.pycon.tw)</string>
 			<key>Key</key>
 			<string>PUZZLE_GAME_BASE_DOMAIN</string>
 			<key>Title</key>
@@ -82,7 +92,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@sitcon.org/2018/#/sponsor)</string>
+			<string>(@tw.pycon.org/2018/#/sponsor)</string>
 			<key>Key</key>
 			<string>SPONSOR_WEB_BASE_URL</string>
 			<key>Title</key>
@@ -92,7 +102,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@sitcon.org/2018/#/sponsor)</string>
+			<string>(@tw.pycon.org/2018/#/sponsor)</string>
 			<key>Key</key>
 			<string>SPONSOR_WEB_PATH</string>
 			<key>Title</key>
@@ -112,7 +122,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@sitcon.org/2018/#/staff)</string>
+			<string>(@tw.pycon.org/2018/#/staff)</string>
 			<key>Key</key>
 			<string>STAFF_WEB_BASE_URL</string>
 			<key>Title</key>
@@ -122,7 +132,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@sitcon.org/2018/#/staff)</string>
+			<string>(@tw.pycon.org/2018/#/staff)</string>
 			<key>Key</key>
 			<string>STAFF_WEB_PATH</string>
 			<key>Title</key>
@@ -142,7 +152,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@sitcon)</string>
+			<string>(@)</string>
 			<key>Key</key>
 			<string>LOG_CHANNEL</string>
 			<key>Title</key>
@@ -152,7 +162,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@SITCONgeneral)</string>
+			<string>(@)</string>
 			<key>Key</key>
 			<string>TELEGRAM_URL</string>
 			<key>Title</key>
@@ -172,7 +182,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@#444f54)</string>
+			<string>(@#333333)</string>
 			<key>Key</key>
 			<string>COLOR_TITLE_HIGHLIGHTED</string>
 			<key>Title</key>
@@ -182,7 +192,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@#64757d)</string>
+			<string>(@#e57b5c)</string>
 			<key>Key</key>
 			<string>COLOR_GRADIENT1</string>
 			<key>Title</key>
@@ -192,7 +202,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@#64757d)</string>
+			<string>(@#eec850)</string>
 			<key>Key</key>
 			<string>COLOR_GRADIENT2</string>
 			<key>Title</key>
@@ -202,7 +212,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@#64757d)</string>
+			<string>(@#e57b5c)</string>
 			<key>Key</key>
 			<string>COLOR_GRADIENT3</string>
 			<key>Title</key>
@@ -222,21 +232,11 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@#64757d)</string>
+			<string>(@#3000d1)</string>
 			<key>Key</key>
 			<string>COLOR_BUTTON_TO</string>
 			<key>Title</key>
 			<string>COLOR_BUTTON_TO</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@#64757d)</string>
-			<key>Key</key>
-			<string>COLOR_BUTTON_DEFAULT</string>
-			<key>Title</key>
-			<string>COLOR_BUTTON_DEFAULT</string>
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 		</dict>
@@ -252,7 +252,17 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@#64757d)</string>
+			<string>(@#3b097b)</string>
+			<key>Key</key>
+			<string>COLOR_BUTTON_DEFAULT</string>
+			<key>Title</key>
+			<string>COLOR_BUTTON_DEFAULT</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@#333333)</string>
 			<key>Key</key>
 			<string>COLOR_CARD_TEXT</string>
 			<key>Title</key>
@@ -262,7 +272,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@#64757d)</string>
+			<string>(@#333333)</string>
 			<key>Key</key>
 			<string>COLOR_LABEL_TEXT</string>
 			<key>Title</key>
@@ -272,7 +282,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@#fdfdfd)</string>
+			<string>(@#3b097b)</string>
 			<key>Key</key>
 			<string>COLOR_NAVIGATION_BAR_ITEM</string>
 			<key>Title</key>
@@ -282,7 +292,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@#64757d)</string>
+			<string>(@#9d50ff)</string>
 			<key>Key</key>
 			<string>COLOR_FAVORITE_BUTTON</string>
 			<key>Title</key>
@@ -297,6 +307,306 @@
 			<string>COCOAPODS</string>
 			<key>Title</key>
 			<string>COCOAPODS</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>1</string>
+			<key>Key</key>
+			<string>DEBUG</string>
+			<key>Title</key>
+			<string>DEBUG</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>group.org.pycon.ccip</string>
+			<key>Key</key>
+			<string>APP_GROUP_ID</string>
+			<key>Title</key>
+			<string>APP_GROUP_ID</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@9506c2db-f054-46b3-9396-744807736fb8)</string>
+			<key>Key</key>
+			<string>ONE_SIGNAL_APP_TOKEN</string>
+			<key>Title</key>
+			<string>ONE_SIGNAL_APP_TOKEN</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@ccip.pycon.org)</string>
+			<key>Key</key>
+			<string>__API_HOST_DOMAIN__</string>
+			<key>Title</key>
+			<string>__API_HOST_DOMAIN__</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@tw.pycon.org)</string>
+			<key>Key</key>
+			<string>CONF_BASE_DOMAIN</string>
+			<key>Title</key>
+			<string>CONF_BASE_DOMAIN</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@tw.pycon.org/2018/static/img/staffs)</string>
+			<key>Key</key>
+			<string>STAFF_BASE_DOMAIN</string>
+			<key>Title</key>
+			<string>STAFF_BASE_DOMAIN</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@game.pycon.tw)</string>
+			<key>Key</key>
+			<string>PUZZLE_GAME_BASE_DOMAIN</string>
+			<key>Title</key>
+			<string>PUZZLE_GAME_BASE_DOMAIN</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@tw.pycon.org/2018/#/sponsor)</string>
+			<key>Key</key>
+			<string>SPONSOR_WEB_BASE_URL</string>
+			<key>Title</key>
+			<string>SPONSOR_WEB_BASE_URL</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@tw.pycon.org/2018/#/sponsor)</string>
+			<key>Key</key>
+			<string>SPONSOR_WEB_PATH</string>
+			<key>Title</key>
+			<string>SPONSOR_WEB_PATH</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>1</string>
+			<key>Key</key>
+			<string>SPONSOR_USE_WEB</string>
+			<key>Title</key>
+			<string>SPONSOR_USE_WEB</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@tw.pycon.org/2018/#/staff)</string>
+			<key>Key</key>
+			<string>STAFF_WEB_BASE_URL</string>
+			<key>Title</key>
+			<string>STAFF_WEB_BASE_URL</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@tw.pycon.org/2018/#/staff)</string>
+			<key>Key</key>
+			<string>STAFF_WEB_PATH</string>
+			<key>Title</key>
+			<string>STAFF_WEB_PATH</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>1</string>
+			<key>Key</key>
+			<string>STAFF_USE_WEB</string>
+			<key>Title</key>
+			<string>STAFF_USE_WEB</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@)</string>
+			<key>Key</key>
+			<string>LOG_CHANNEL</string>
+			<key>Title</key>
+			<string>LOG_CHANNEL</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@)</string>
+			<key>Key</key>
+			<string>TELEGRAM_URL</string>
+			<key>Title</key>
+			<string>TELEGRAM_URL</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@#f2a900)</string>
+			<key>Key</key>
+			<string>COLOR_DEV</string>
+			<key>Title</key>
+			<string>COLOR_DEV</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@#333333)</string>
+			<key>Key</key>
+			<string>COLOR_TITLE_HIGHLIGHTED</string>
+			<key>Title</key>
+			<string>COLOR_TITLE_HIGHLIGHTED</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@#e57b5c)</string>
+			<key>Key</key>
+			<string>COLOR_GRADIENT1</string>
+			<key>Title</key>
+			<string>COLOR_GRADIENT1</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@#eec850)</string>
+			<key>Key</key>
+			<string>COLOR_GRADIENT2</string>
+			<key>Title</key>
+			<string>COLOR_GRADIENT2</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@#e57b5c)</string>
+			<key>Key</key>
+			<string>COLOR_GRADIENT3</string>
+			<key>Title</key>
+			<string>COLOR_GRADIENT3</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@#e9e9e9)</string>
+			<key>Key</key>
+			<string>COLOR_DASHED_LINE</string>
+			<key>Title</key>
+			<string>COLOR_DASHED_LINE</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@#3000d1)</string>
+			<key>Key</key>
+			<string>COLOR_BUTTON_TO</string>
+			<key>Title</key>
+			<string>COLOR_BUTTON_TO</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@#9b9b9b)</string>
+			<key>Key</key>
+			<string>COLOR_BUTTON_DISABLED</string>
+			<key>Title</key>
+			<string>COLOR_BUTTON_DISABLED</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@#3b097b)</string>
+			<key>Key</key>
+			<string>COLOR_BUTTON_DEFAULT</string>
+			<key>Title</key>
+			<string>COLOR_BUTTON_DEFAULT</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@#333333)</string>
+			<key>Key</key>
+			<string>COLOR_CARD_TEXT</string>
+			<key>Title</key>
+			<string>COLOR_CARD_TEXT</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@#333333)</string>
+			<key>Key</key>
+			<string>COLOR_LABEL_TEXT</string>
+			<key>Title</key>
+			<string>COLOR_LABEL_TEXT</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@#3b097b)</string>
+			<key>Key</key>
+			<string>COLOR_NAVIGATION_BAR_ITEM</string>
+			<key>Title</key>
+			<string>COLOR_NAVIGATION_BAR_ITEM</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@#9d50ff)</string>
+			<key>Key</key>
+			<string>COLOR_FAVORITE_BUTTON</string>
+			<key>Title</key>
+			<string>COLOR_FAVORITE_BUTTON</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>1</string>
+			<key>Key</key>
+			<string>PB_FIELD_32BIT</string>
+			<key>Title</key>
+			<string>PB_FIELD_32BIT</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>1</string>
+			<key>Key</key>
+			<string>PB_NO_PACKED_STRUCTS</string>
+			<key>Title</key>
+			<string>PB_NO_PACKED_STRUCTS</string>
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 		</dict>

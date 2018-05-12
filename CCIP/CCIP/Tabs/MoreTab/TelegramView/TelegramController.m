@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    SEND_GAI(@"TelegramView");
+    SEND_FIB(@"TelegramView");
 }
 
 - (void)viewWillAppear:(BOOL)animated {

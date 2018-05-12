@@ -86,7 +86,7 @@
     [self.cards setContentOffset:CGSizeMake(0, -5.0f)];
     [self.lbUserName setText:@" "];
     
-    SEND_GAI(@"CheckinViewController");
+    SEND_FIB(@"CheckinViewController");
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(navSingleTap)];

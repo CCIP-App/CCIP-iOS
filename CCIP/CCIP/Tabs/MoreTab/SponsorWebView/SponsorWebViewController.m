@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    SEND_GAI(@"PuzzleView");
+    SEND_FIB(@"PuzzleView");
 }
 
 - (void)viewWillAppear:(BOOL)animated {

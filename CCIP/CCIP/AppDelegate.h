@@ -6,10 +6,11 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
+@import Firebase;
+
 #import <UIKit/UIKit.h>
 #import <OneSignal/OneSignal.h>
 #import <ColorArt/UIImage+ColorArt.h>
-#import <Google/Analytics.h>
 #import <Shimmer/FBShimmeringView.h>
 #import "UIApplication+addition.h"
 #import "UIViewController+addition.h"
@@ -20,9 +21,9 @@
 #define STRINGIZE(x)                    #x
 #define STRINGIZE2(x)                   STRINGIZE(x)
 #define SOURCE_ROOT                     @ STRINGIZE2(SRC_ROOT)
-#define __GAI(gai, name)                ([AppDelegate sendGAI:gai WithName:name Func:__func__ File:__FILE__ Line:__LINE__])
-#define SEND_GAI(name)                  (__GAI( [[GAIDictionaryBuilder createScreenView] build], name ))
-#define SEND_GAI_EVENT(name, nibName)   (__GAI( [[GAIDictionaryBuilder createEventWithCategory:name action:nibName label:nil value:nil] build], nil ))
+#define __FIB(name, events)             ([AppDelegate sendFIB:name WithEvents:events Func:__func__ File:__FILE__ Line:__LINE__])
+#define SEND_FIB(name)                  (__FIB( name, nil ))
+#define SEND_FIB_EVENT(nibName, events) (__FIB( nibName, events ))
 #define X_TOP(X, NX)                    ([[UIScreen mainScreen] bounds].size.height == 812.0f ? X : NX)
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -38,7 +39,7 @@
 
 + (AppDelegate * _Nonnull)appDelegate;
 + (void)createNEHC;
-+ (void)sendGAI:( NSDictionary * _Nonnull )_gai WithName:( NSString * _Nullable )_name Func:( const char * _Nonnull )_func File:( const char * _Nonnull )_file Line:(int)_line;
++ (void)sendFIB:( NSString * _Nonnull )_name WithEvents:( NSDictionary * _Nullable )_events Func:( const char * _Nonnull )_func File:( const char * _Nonnull )_file Line:(int)_line;
 - (void)setDefaultShortcutItems;
 
 + (void)setIsDevMode:(BOOL)isDevMode;

@@ -65,7 +65,7 @@
                              range:NSMakeRange(0, [noAnnouncementText length])];
     [self.lbNoAnnouncement setAttributedText:attributedNoAnnouncementText];
     
-    SEND_GAI(@"AnnounceTableViewController");
+    SEND_FIB(@"AnnounceTableViewController");
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -237,7 +237,7 @@
         }];
     }
     
-    SEND_GAI_EVENT(@"AnnounceTableView", uri);
+    SEND_FIB_EVENT(@"AnnounceTableView", uri);
 }
 
 /*

@@ -127,7 +127,7 @@
     
     [self refreshData];
     
-    SEND_GAI(@"ScheduleViewController");
+    SEND_FIB(@"ScheduleViewController");
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(appplicationDidBecomeActive:)
@@ -464,7 +464,7 @@
         NSArray *allKeys = [[self.program_date_section allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
         NSDictionary *program = [[self.program_date_section objectForKey:[allKeys objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
         [pdvc setProgram:program];
-        SEND_GAI_EVENT(@"ScheduleViewController", [program objectForKey:@"slot"]);
+        SEND_FIB_EVENT(@"ScheduleViewController", [program objectForKey:@"slot"]);
     }
 }
 
@@ -559,7 +559,7 @@
 //                                                                                                     Program:program];
 //    [self.navigationController pushViewController:detailViewController animated:YES];
 //    
-//    SEND_GAI_EVENT(@"ScheduleViewController", [program objectForKey:@"slot"]);
+//    SEND_FIB_EVENT(@"ScheduleViewController", [program objectForKey:@"slot"]);
 //}
 
 /*

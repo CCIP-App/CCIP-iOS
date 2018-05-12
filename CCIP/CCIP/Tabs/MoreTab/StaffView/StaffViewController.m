@@ -23,7 +23,7 @@ static NSString *identifier = @"StaffCell";
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    SEND_GAI(@"StaffView");
+    SEND_FIB(@"StaffView");
 }
 
 - (NSArray<id<UIPreviewActionItem>> *)previewActionItems {

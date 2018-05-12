@@ -73,11 +73,14 @@ cat CCIP.xcconfig > CCIP.release.xcconfig
 export color_dev="#f2a900"
 export color_dash_line="#e9e9e9"
 export color_button_disabled="#9b9b9b"
-case "`echo $TARGET_NAME | awk '{ print tolower($0) }'`" in
+export CONF_NAME="`echo $TARGET_NAME | awk '{ print tolower($0) }'`"
+export domain="org.$CONF_NAME"
+#export apiDomain="$CONF_NAME.ccip.app" # pre-defined for feture use
+export apiDomain="ccip.$CONF_NAME.org" # current used
+case $CONF_NAME in
     "coscup")
-    export domain="org.coscup"
     export mainDomain="coscup.org"
-    export mainPuzzleDomain="play.$mainDomain"
+    export mainPuzzleDomain="play.coscup.org"
     export mainStaffDomain="staff.$mainDomain"
     export sponsorWebUrlBase=""
     export sponsorWebUrl=""
@@ -91,7 +94,7 @@ case "`echo $TARGET_NAME | awk '{ print tolower($0) }'`" in
     export color_title_highlighted="#009a79"
     export color_gradient1="#f9fea5"
     export color_gradient2="#20e2d7"
-    export color_gradient3="#ABF4B7"
+    export color_gradient3="#abf4b7"
     export color_button_to="#2ce4d4"
     export color_button_default="#3d983c"
     export color_card_text="#009a79"
@@ -100,7 +103,6 @@ case "`echo $TARGET_NAME | awk '{ print tolower($0) }'`" in
     export color_favorite_button="#50e3c2"
     ;;
     "sitcon")
-    export domain="org.sitcon"
     export mainDomain="sitcon.org"
     export mainPuzzleDomain="king.sitcon.party"
     export mainStaffDomain="$mainDomain/2018/static/img/staffs"
@@ -124,6 +126,30 @@ case "`echo $TARGET_NAME | awk '{ print tolower($0) }'`" in
     export color_navigation_bar_item="#fdfdfd"
     export color_favorite_button="#64757d"
     ;;
+    "pycon")
+    export mainDomain="tw.pycon.org"
+    export mainPuzzleDomain="game.pycon.tw"
+    export mainStaffDomain="$mainDomain/2018/static/img/staffs"
+    export sponsorWebUrlBase="$mainDomain/2018/#/sponsor"
+    export sponsorWebUrl="$sponsorWebUrlBase"
+    export sponsorUseWeb=1
+    export staffWebUrlBase="$mainDomain/2018/#/staff"
+    export staffWebUrl="$staffWebUrlBase"
+    export staffUseWeb=1
+    export channel=
+    export tg_chat=
+    export one_signal_token="9506c2db-f054-46b3-9396-744807736fb8"
+    export color_title_highlighted="#333333"
+    export color_gradient1="#e57b5c"
+    export color_gradient2="#eec850" # QR right to left
+    export color_gradient3="#e57b5c" # QR left to right
+    export color_button_to="#3000d1"
+    export color_button_default="#3b097b"
+    export color_card_text="#333333"
+    export color_label_text="#333333"
+    export color_navigation_bar_item="#3b097b"
+    export color_favorite_button="#9d50ff"
+    ;;
 esac
 
 function replace_slash() {
@@ -142,6 +168,7 @@ xcc_replace 0 "#BUILD_VERSION#"             "$mainVersion"
 xcc_replace 0 "#BUILD_SHORT_VERSION#"       "$productVersion"
 xcc_replace 0 "#define#"                    "$PREDEFINITIONS"
 xcc_replace 0 "#domain#"                    "$domain"
+xcc_replace 0 "#apiDomain#"                 "$apiDomain"
 xcc_replace 0 "#mainDomain#"                "$mainDomain"
 xcc_replace 0 "#mainPuzzleDomain#"          "$mainPuzzleDomain"
 xcc_replace 0 "#mainStaffDomain#"           "$mainStaffDomain"

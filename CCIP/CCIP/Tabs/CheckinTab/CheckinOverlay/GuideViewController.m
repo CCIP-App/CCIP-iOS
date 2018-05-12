@@ -62,7 +62,7 @@
                                                  name:UIApplicationWillResignActiveNotification
                                                object:nil];
     
-    SEND_GAI(@"GuideViewController");
+    SEND_FIB(@"GuideViewController");
     
     [self.view setAutoresizingMask:UIViewAutoresizingNone];
 }

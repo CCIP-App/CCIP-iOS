@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self registerForceTouch];
-    SEND_GAI(@"StaffGroupView");
+    SEND_FIB(@"StaffGroupView");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,7 +47,7 @@
         StaffViewController *sgv = (StaffViewController *)destination;
         NSDictionary *groupData = [self.staffJsonArray objectAtIndex:[self.tableView indexPathForCell:sender].row];
         [sgv setGroupData:groupData];
-        SEND_GAI_EVENT(@"StaffView", [groupData objectForKey:@"name"]);
+        SEND_FIB_EVENT(@"StaffView", [groupData objectForKey:@"name"]);
     }
 }
 
@@ -85,7 +85,7 @@
 //            withSelectorString:@"setGroupData:"
 //                 withArguments:@[ groupData ]];
 //    
-//    SEND_GAI_EVENT(@"StaffView", [groupData objectForKey:@"name"]);
+//    SEND_FIB_EVENT(@"StaffView", [groupData objectForKey:@"name"]);
 //    
 //    [self.navigationController pushViewController:detailViewController
 //                                         animated:YES];

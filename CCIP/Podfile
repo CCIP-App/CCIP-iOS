@@ -10,7 +10,7 @@ def ccip_pods
     # Pods for CCIP
     pod 'OneSignal', '~> 1.13'
     pod 'UICKeyChainStore', '~> 2.1'
-    pod 'Google/Analytics', '~> 3.0.3'
+    pod 'Firebase/Core'
     pod 'ICViewPager', :git => 'https://github.com/FrankWu100/ICViewPager'
     pod 'STPopup', '~> 1.7'
     pod 'ColorArt', '0.1.1'
@@ -36,5 +36,9 @@ target 'COSCUP' do
 end
 
 target 'SITCON' do
+    ccip_pods
+end
+
+target 'PYCON' do
     ccip_pods
 end
