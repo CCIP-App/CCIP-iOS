@@ -80,7 +80,6 @@ export apiDomain="ccip.$CONF_NAME.org" # current used
 case $CONF_NAME in
     "coscup")
     export mainDomain="coscup.org"
-    export mainPuzzleDomain="play.coscup.org"
     export mainStaffDomain="staff.$mainDomain"
     export sponsorWebUrlBase=""
     export sponsorWebUrl=""
@@ -88,9 +87,6 @@ case $CONF_NAME in
     export staffWebUrlBase=""
     export staffWebUrl=""
     export staffUseWeb=0
-    export channel=coscup
-    export tg_chat=coscupchat
-    export one_signal_token="a429ff30-5c0e-4584-a32f-b866ba88c947"
     export color_title_highlighted="#009a79"
     export color_gradient1="#f9fea5"
     export color_gradient2="#20e2d7"
@@ -104,7 +100,6 @@ case $CONF_NAME in
     ;;
     "sitcon")
     export mainDomain="sitcon.org"
-    export mainPuzzleDomain="king.sitcon.party"
     export mainStaffDomain="$mainDomain/2018/static/img/staffs"
     export sponsorWebUrlBase="$mainDomain/2018/#/sponsor"
     export sponsorWebUrl="$sponsorWebUrlBase"
@@ -112,9 +107,6 @@ case $CONF_NAME in
     export staffWebUrlBase="$mainDomain/2018/#/staff"
     export staffWebUrl="$staffWebUrlBase"
     export staffUseWeb=1
-    export channel=sitcon
-    export tg_chat=SITCONgeneral
-    export one_signal_token="9b74779c-bcd8-471e-a64b-e033acf0ebbd"
     export color_title_highlighted="#444f54"
     export color_gradient1="#64757d"
     export color_gradient2="#64757d"
@@ -128,17 +120,6 @@ case $CONF_NAME in
     ;;
     "pycon")
     export mainDomain="tw.pycon.org"
-    export mainPuzzleDomain="game.pycon.tw"
-    export mainStaffDomain="$mainDomain/2018/static/img/staffs"
-    export sponsorWebUrlBase="$mainDomain/2018/#/sponsor"
-    export sponsorWebUrl="$sponsorWebUrlBase"
-    export sponsorUseWeb=1
-    export staffWebUrlBase="$mainDomain/2018/#/staff"
-    export staffWebUrl="$staffWebUrlBase"
-    export staffUseWeb=1
-    export channel=
-    export tg_chat=
-    export one_signal_token="9506c2db-f054-46b3-9396-744807736fb8"
     export color_title_highlighted="#333333"
     export color_gradient1="#e57b5c"
     export color_gradient2="#eec850" # QR right to left
@@ -166,21 +147,11 @@ function xcc_replace() {
 xcc_replace 1 "#Dev#"                       "-Dev"
 xcc_replace 0 "#BUILD_VERSION#"             "$mainVersion"
 xcc_replace 0 "#BUILD_SHORT_VERSION#"       "$productVersion"
+xcc_replace 0 "#APP_NAME#"                  "$TARGET_NAME"
 xcc_replace 0 "#define#"                    "$PREDEFINITIONS"
 xcc_replace 0 "#domain#"                    "$domain"
 xcc_replace 0 "#apiDomain#"                 "$apiDomain"
 xcc_replace 0 "#mainDomain#"                "$mainDomain"
-xcc_replace 0 "#mainPuzzleDomain#"          "$mainPuzzleDomain"
-xcc_replace 0 "#mainStaffDomain#"           "$mainStaffDomain"
-xcc_replace 0 "#sponsorWebUrlBase#"         "$sponsorWebUrlBase"
-xcc_replace 0 "#sponsorWebUrl#"             "$sponsorWebUrl"
-xcc_replace 0 "#sponsorUseWeb#"             "$sponsorUseWeb"
-xcc_replace 0 "#staffWebUrlBase#"           "$staffWebUrlBase"
-xcc_replace 0 "#staffWebUrl#"               "$staffWebUrl"
-xcc_replace 0 "#staffUseWeb#"               "$staffUseWeb"
-xcc_replace 0 "#channel#"                   "$channel"
-xcc_replace 0 "#tg_chat#"                   "$tg_chat"
-xcc_replace 0 "#one_signal_token#"          "$one_signal_token"
 xcc_replace 0 "#color_dev#"                 "$color_dev"
 xcc_replace 0 "#color_title_highlighted#"   "$color_title_highlighted"
 xcc_replace 0 "#color_gradient1#"           "$color_gradient1"

@@ -190,6 +190,9 @@
 		6B70EF45204C981700C63E63 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B70EF44204C981700C63E63 /* NetworkExtension.framework */; };
 		6B70EF46204C982B00C63E63 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B70EF44204C981700C63E63 /* NetworkExtension.framework */; };
 		6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */; };
+		6B76DF6420B019B200EBEF06 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B76DF6320B019B200EBEF06 /* config.plist */; };
+		6B76DF6520B019B200EBEF06 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B76DF6320B019B200EBEF06 /* config.plist */; };
+		6B76DF6620B019B200EBEF06 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B76DF6320B019B200EBEF06 /* config.plist */; };
 		6B787C3F204C2DC7002B620A /* Maps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B787C3E204C2DC1002B620A /* Maps.bundle */; };
 		6B88DE2220A6F7620038FB0A /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
 		6B88DE2320A6F7620038FB0A /* DeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5611D5F1AD90079BB12 /* DeepCopy.m */; };
@@ -548,6 +551,7 @@
 		6B70EF44204C981700C63E63 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6B7299AE1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFavoriteTableViewController.h; sourceTree = "<group>"; };
 		6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleFavoriteTableViewController.m; sourceTree = "<group>"; };
+		6B76DF6320B019B200EBEF06 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		6B787C3E204C2DC1002B620A /* Maps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Maps.bundle; sourceTree = "<group>"; };
 		6B88DE1020A6F5E50038FB0A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B88DE1120A6F5E50038FB0A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -1231,6 +1235,7 @@
 				6B2AEB7C1F23FF6F00C65868 /* CCIP.debug.xcconfig */,
 				6B2AEB7B1F23FF6F00C65868 /* CCIP.release.xcconfig */,
 				6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */,
+				6B76DF6320B019B200EBEF06 /* config.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -1466,6 +1471,7 @@
 				6B023A8A2046FAB300F474F3 /* GoogleService-Info.plist in Resources */,
 				6B023A6E2046EEE500F474F3 /* fontawesome-webfont.ttf in Resources */,
 				6B023A6F2046EEE500F474F3 /* WebViewAssets.bundle in Resources */,
+				6B76DF6520B019B200EBEF06 /* config.plist in Resources */,
 				6B4DF9E7204C087200B127FE /* LaunchScreen@3x.png in Resources */,
 				617DBFB37E08D623D92989E0 /* Pods-SITCON-metadata.plist in Resources */,
 			);
@@ -1486,6 +1492,7 @@
 				6B27A54320A6F97C00CD514B /* PassAssets.bundle in Resources */,
 				6B88DE7220A6F7620038FB0A /* ScanditBarcodeScanner.bundle in Resources */,
 				6B27A54720A6F98200CD514B /* InfoPlist.strings in Resources */,
+				6B76DF6620B019B200EBEF06 /* config.plist in Resources */,
 				6B88DE7520A6F7620038FB0A /* LaunchScreen.storyboard in Resources */,
 				6B88DE7820A6F7620038FB0A /* Main.storyboard in Resources */,
 				6B88DE7920A6F7620038FB0A /* Settings.bundle in Resources */,
@@ -1533,6 +1540,7 @@
 				6BEB31151F26656B0050759D /* Maps.bundle in Resources */,
 				6B11BE821D4CBC9300B87EA9 /* Main.storyboard in Resources */,
 				6B036B901F24371700D5E5A5 /* Settings.bundle in Resources */,
+				6B76DF6420B019B200EBEF06 /* config.plist in Resources */,
 				284602E01F121BBB00F512A3 /* LaunchScreen@1x.png in Resources */,
 				284602E21F121BBB00F512A3 /* LaunchScreen@3x.png in Resources */,
 				5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */,
@@ -2298,20 +2306,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
+					"APP_NAME=$(APP_NAME)",
 					"APP_GROUP_ID=$(APP_GROUP_ID)",
-					"ONE_SIGNAL_APP_TOKEN=$(ONE_SIGNAL_APP_TOKEN)",
 					"__API_HOST_DOMAIN__=$(__API_HOST_DOMAIN__)",
 					"CONF_BASE_DOMAIN=$(CONF_BASE_DOMAIN)",
-					"STAFF_BASE_DOMAIN=$(STAFF_BASE_DOMAIN)",
-					"PUZZLE_GAME_BASE_DOMAIN=$(PUZZLE_GAME_BASE_DOMAIN)",
-					"SPONSOR_WEB_BASE_URL=$(SPONSOR_WEB_BASE_URL)",
-					"SPONSOR_WEB_PATH=$(SPONSOR_WEB_PATH)",
-					"SPONSOR_USE_WEB=$(SPONSOR_USE_WEB)",
-					"STAFF_WEB_BASE_URL=$(STAFF_WEB_BASE_URL)",
-					"STAFF_WEB_PATH=$(STAFF_WEB_PATH)",
-					"STAFF_USE_WEB=$(STAFF_USE_WEB)",
-					"LOG_CHANNEL=$(LOG_CHANNEL)",
-					"TELEGRAM_URL=$(TELEGRAM_URL)",
 					"COLOR_DEV=$(COLOR_DEV)",
 					"COLOR_TITLE_HIGHLIGHTED=$(COLOR_TITLE_HIGHLIGHTED)",
 					"COLOR_GRADIENT1=$(COLOR_GRADIENT1)",
@@ -2378,20 +2376,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					"APP_NAME=$(APP_NAME)",
 					"APP_GROUP_ID=$(APP_GROUP_ID)",
-					"ONE_SIGNAL_APP_TOKEN=$(ONE_SIGNAL_APP_TOKEN)",
 					"__API_HOST_DOMAIN__=$(__API_HOST_DOMAIN__)",
 					"CONF_BASE_DOMAIN=$(CONF_BASE_DOMAIN)",
-					"STAFF_BASE_DOMAIN=$(STAFF_BASE_DOMAIN)",
-					"PUZZLE_GAME_BASE_DOMAIN=$(PUZZLE_GAME_BASE_DOMAIN)",
-					"SPONSOR_WEB_BASE_URL=$(SPONSOR_WEB_BASE_URL)",
-					"SPONSOR_WEB_PATH=$(SPONSOR_WEB_PATH)",
-					"SPONSOR_USE_WEB=$(SPONSOR_USE_WEB)",
-					"STAFF_WEB_BASE_URL=$(STAFF_WEB_BASE_URL)",
-					"STAFF_WEB_PATH=$(STAFF_WEB_PATH)",
-					"STAFF_USE_WEB=$(STAFF_USE_WEB)",
-					"LOG_CHANNEL=$(LOG_CHANNEL)",
-					"TELEGRAM_URL=$(TELEGRAM_URL)",
 					"COLOR_DEV=$(COLOR_DEV)",
 					"COLOR_TITLE_HIGHLIGHTED=$(COLOR_TITLE_HIGHLIGHTED)",
 					"COLOR_GRADIENT1=$(COLOR_GRADIENT1)",

@@ -32,21 +32,21 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>group.org.pycon.ccip</string>
+			<string>(@PyCon)</string>
 			<key>Key</key>
-			<string>APP_GROUP_ID</string>
+			<string>APP_NAME</string>
 			<key>Title</key>
-			<string>APP_GROUP_ID</string>
+			<string>APP_NAME</string>
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@9506c2db-f054-46b3-9396-744807736fb8)</string>
+			<string>group.org.pycon.ccip</string>
 			<key>Key</key>
-			<string>ONE_SIGNAL_APP_TOKEN</string>
+			<string>APP_GROUP_ID</string>
 			<key>Title</key>
-			<string>ONE_SIGNAL_APP_TOKEN</string>
+			<string>APP_GROUP_ID</string>
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 		</dict>
@@ -67,106 +67,6 @@
 			<string>CONF_BASE_DOMAIN</string>
 			<key>Title</key>
 			<string>CONF_BASE_DOMAIN</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@tw.pycon.org/2018/static/img/staffs)</string>
-			<key>Key</key>
-			<string>STAFF_BASE_DOMAIN</string>
-			<key>Title</key>
-			<string>STAFF_BASE_DOMAIN</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@game.pycon.tw)</string>
-			<key>Key</key>
-			<string>PUZZLE_GAME_BASE_DOMAIN</string>
-			<key>Title</key>
-			<string>PUZZLE_GAME_BASE_DOMAIN</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@tw.pycon.org/2018/#/sponsor)</string>
-			<key>Key</key>
-			<string>SPONSOR_WEB_BASE_URL</string>
-			<key>Title</key>
-			<string>SPONSOR_WEB_BASE_URL</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@tw.pycon.org/2018/#/sponsor)</string>
-			<key>Key</key>
-			<string>SPONSOR_WEB_PATH</string>
-			<key>Title</key>
-			<string>SPONSOR_WEB_PATH</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>1</string>
-			<key>Key</key>
-			<string>SPONSOR_USE_WEB</string>
-			<key>Title</key>
-			<string>SPONSOR_USE_WEB</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@tw.pycon.org/2018/#/staff)</string>
-			<key>Key</key>
-			<string>STAFF_WEB_BASE_URL</string>
-			<key>Title</key>
-			<string>STAFF_WEB_BASE_URL</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@tw.pycon.org/2018/#/staff)</string>
-			<key>Key</key>
-			<string>STAFF_WEB_PATH</string>
-			<key>Title</key>
-			<string>STAFF_WEB_PATH</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>1</string>
-			<key>Key</key>
-			<string>STAFF_USE_WEB</string>
-			<key>Title</key>
-			<string>STAFF_USE_WEB</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@)</string>
-			<key>Key</key>
-			<string>LOG_CHANNEL</string>
-			<key>Title</key>
-			<string>LOG_CHANNEL</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@)</string>
-			<key>Key</key>
-			<string>TELEGRAM_URL</string>
-			<key>Title</key>
-			<string>TELEGRAM_URL</string>
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 		</dict>
@@ -322,21 +222,21 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>group.org.pycon.ccip</string>
+			<string>(@PyCon)</string>
 			<key>Key</key>
-			<string>APP_GROUP_ID</string>
+			<string>APP_NAME</string>
 			<key>Title</key>
-			<string>APP_GROUP_ID</string>
+			<string>APP_NAME</string>
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@9506c2db-f054-46b3-9396-744807736fb8)</string>
+			<string>group.org.pycon.ccip</string>
 			<key>Key</key>
-			<string>ONE_SIGNAL_APP_TOKEN</string>
+			<string>APP_GROUP_ID</string>
 			<key>Title</key>
-			<string>ONE_SIGNAL_APP_TOKEN</string>
+			<string>APP_GROUP_ID</string>
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 		</dict>
@@ -357,106 +257,6 @@
 			<string>CONF_BASE_DOMAIN</string>
 			<key>Title</key>
 			<string>CONF_BASE_DOMAIN</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@tw.pycon.org/2018/static/img/staffs)</string>
-			<key>Key</key>
-			<string>STAFF_BASE_DOMAIN</string>
-			<key>Title</key>
-			<string>STAFF_BASE_DOMAIN</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@game.pycon.tw)</string>
-			<key>Key</key>
-			<string>PUZZLE_GAME_BASE_DOMAIN</string>
-			<key>Title</key>
-			<string>PUZZLE_GAME_BASE_DOMAIN</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@tw.pycon.org/2018/#/sponsor)</string>
-			<key>Key</key>
-			<string>SPONSOR_WEB_BASE_URL</string>
-			<key>Title</key>
-			<string>SPONSOR_WEB_BASE_URL</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@tw.pycon.org/2018/#/sponsor)</string>
-			<key>Key</key>
-			<string>SPONSOR_WEB_PATH</string>
-			<key>Title</key>
-			<string>SPONSOR_WEB_PATH</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>1</string>
-			<key>Key</key>
-			<string>SPONSOR_USE_WEB</string>
-			<key>Title</key>
-			<string>SPONSOR_USE_WEB</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@tw.pycon.org/2018/#/staff)</string>
-			<key>Key</key>
-			<string>STAFF_WEB_BASE_URL</string>
-			<key>Title</key>
-			<string>STAFF_WEB_BASE_URL</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@tw.pycon.org/2018/#/staff)</string>
-			<key>Key</key>
-			<string>STAFF_WEB_PATH</string>
-			<key>Title</key>
-			<string>STAFF_WEB_PATH</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>1</string>
-			<key>Key</key>
-			<string>STAFF_USE_WEB</string>
-			<key>Title</key>
-			<string>STAFF_USE_WEB</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@)</string>
-			<key>Key</key>
-			<string>LOG_CHANNEL</string>
-			<key>Title</key>
-			<string>LOG_CHANNEL</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@)</string>
-			<key>Key</key>
-			<string>TELEGRAM_URL</string>
-			<key>Title</key>
-			<string>TELEGRAM_URL</string>
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 		</dict>

@@ -42,6 +42,14 @@
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
++ (id)AppConfig:(NSString *)path {
+    NSDictionary *config = [NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"config"
+                                                                                             withExtension:@"plist"]];
+    config = [config valueForKeyPath:APP_NAME];
+    id value = [config valueForKeyPath:path];
+    return value;
+}
+
 + (void)createNEHC {
     if(@available(iOS 11.0, *)) {
 #ifndef TARGET_IPHONE_SIMULATOR

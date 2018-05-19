@@ -7,10 +7,15 @@
 //
 
 #define __TIMEOUT_INTERVAL__    (15)
-/* moved to .xcconfig
-#define LOG_CHANNEL             (@"coscup")
-#define TELEGRAM_URL            (@"coscupchat")
-*/
+#define ONE_SIGNAL_APP_TOKEN    ([[AppDelegate AppConfig:@"ogToken"] stringValue])
+
+#define STAFF_WEB_PATH          ([[AppDelegate AppConfig:@"URL.StaffWebPath"] stringValue])
+#define STAFF_WEB_BASE_URL      ([[AppDelegate AppConfig:@"URL.StaffWebPath"] stringValue])
+#define STAFF_BASE_DOMAIN       ([[AppDelegate AppConfig:@"URL.StaffBaseDomain"] stringValue])
+#define SPONSOR_WEB_PATH        ([[AppDelegate AppConfig:@"URL.SponsorWebPath"] stringValue])
+#define SPONSOR_WEB_BASE_URL    ([[AppDelegate AppConfig:@"URL.SponsorWebPath"] stringValue])
+#define PUZZLE_GAME_BASE_DOMAIN ([[AppDelegate AppConfig:@"URL.GameDomain"] stringValue])
+
 #define __API_HOST__            ([NSString stringWithFormat:@"https://%@/", __API_HOST_DOMAIN__])
 #define CONF_BASE_URL           ([NSString stringWithFormat:@"https://%@/", CONF_BASE_DOMAIN])
 #define STAFF_BASE_URL          ([NSString stringWithFormat:@"https://%@/", STAFF_BASE_DOMAIN])
@@ -34,9 +39,11 @@
 
 #define PUZZLE_GAME_URL(token)  ([PUZZLE_GAME_BASE_URL stringByAppendingFormat:@"?mode=app&token=%@", token])
 
+#define TELEGRAM_URL            ([[AppDelegate AppConfig:@"URL.tg_Chat"] stringValue])
 #define TELEGRAM_GROUP_URL      ([@"https://t.me/" stringByAppendingString:TELEGRAM_URL])
 #define TELEGRAM_GROUP_URI      ([@"tg://resolve?domain=" stringByAppendingString:TELEGRAM_URL])
 
+#define LOG_CHANNEL             ([[AppDelegate AppConfig:@"URL.IRC_Chnnel"] stringValue])
 #define LOG_BOT_URL             ([NSString stringWithFormat:@"https://ysitd.licson.net/channel/%@/today", LOG_CHANNEL])
 
 // Assets
