@@ -560,8 +560,8 @@
 		6B88DE1A20A6F5E80038FB0A /* LaunchScreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@3x.png"; sourceTree = "<group>"; };
 		6B88DE1B20A6F5E90038FB0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B88DE1C20A6F5E90038FB0A /* LaunchScreen@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@1x.png"; sourceTree = "<group>"; };
-		6B88DE8C20A6F7620038FB0A /* PYCON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PYCON.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B88DE8E20A6F8670038FB0A /* PYCON-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PYCON-Swift.h"; sourceTree = "<group>"; };
+		6B88DE8C20A6F7620038FB0A /* PyCon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PyCon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B88DE8E20A6F8670038FB0A /* PyCon-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PyCon-Swift.h"; sourceTree = "<group>"; };
 		6B9117051D4EFC2600537ABE /* ScheduleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewCell.h; sourceTree = "<group>"; };
 		6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewCell.m; sourceTree = "<group>"; };
 		6B9348AE1F2428A300F77757 /* CCIP.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CCIP.xcconfig; sourceTree = "<group>"; };
@@ -917,7 +917,7 @@
 			path = SponsorView;
 			sourceTree = "<group>";
 		};
-		6B88DE0E20A6F5D10038FB0A /* PYCON */ = {
+		6B88DE0E20A6F5D10038FB0A /* PyCon */ = {
 			isa = PBXGroup;
 			children = (
 				6B88DE1B20A6F5E90038FB0A /* Assets.xcassets */,
@@ -931,7 +931,7 @@
 				6B88DE1820A6F5E80038FB0A /* LaunchScreen@2x.png */,
 				6B88DE1A20A6F5E80038FB0A /* LaunchScreen@3x.png */,
 			);
-			path = PYCON;
+			path = PyCon;
 			sourceTree = "<group>";
 		};
 		6BCAC01C1F1A8FC100032096 /* CCIP-Watch */ = {
@@ -989,7 +989,7 @@
 				6BCAC01B1F1A8FC100032096 /* COSCUP-Watch.app */,
 				6BCAC0271F1A8FC100032096 /* COSCUP-Watch Extension.appex */,
 				6B023A7A2046EEE500F474F3 /* SITCON.app */,
-				6B88DE8C20A6F7620038FB0A /* PYCON.app */,
+				6B88DE8C20A6F7620038FB0A /* PyCon.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1002,7 +1002,7 @@
 				6BC12A961F2B1B8000B14039 /* main.m */,
 				6BC12A941F2B1B8000B14039 /* COSCUP-Swift.h */,
 				6B023A922047064A00F474F3 /* SITCON-Swift.h */,
-				6B88DE8E20A6F8670038FB0A /* PYCON-Swift.h */,
+				6B88DE8E20A6F8670038FB0A /* PyCon-Swift.h */,
 				6BC12A951F2B1B8000B14039 /* CCIP-Bridging-Header.h */,
 				286D5FC51D6BD8EC005B6619 /* headers.h */,
 				288D3A731D599A1200E4E3A6 /* ScanditSDK */,
@@ -1219,7 +1219,7 @@
 		6BFB83261F2B19C9005DCF00 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6B88DE0E20A6F5D10038FB0A /* PYCON */,
+				6B88DE0E20A6F5D10038FB0A /* PyCon */,
 				6B023A7E2046FA4400F474F3 /* COSCUP */,
 				6B023A7F2046FA5F00F474F3 /* SITCON */,
 				6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */,
@@ -1261,9 +1261,9 @@
 			productReference = 6B023A7A2046EEE500F474F3 /* SITCON.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6B88DE1E20A6F7620038FB0A /* PYCON */ = {
+		6B88DE1E20A6F7620038FB0A /* PyCon */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B88DE8920A6F7620038FB0A /* Build configuration list for PBXNativeTarget "PYCON" */;
+			buildConfigurationList = 6B88DE8920A6F7620038FB0A /* Build configuration list for PBXNativeTarget "PyCon" */;
 			buildPhases = (
 				6B88DE1F20A6F7620038FB0A /* [CP] Check Pods Manifest.lock */,
 				6B88DE2020A6F7620038FB0A /* ShellScript */,
@@ -1279,9 +1279,9 @@
 			);
 			dependencies = (
 			);
-			name = PYCON;
+			name = PyCon;
 			productName = CCIP;
-			productReference = 6B88DE8C20A6F7620038FB0A /* PYCON.app */;
+			productReference = 6B88DE8C20A6F7620038FB0A /* PyCon.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6BCAC01A1F1A8FC100032096 /* COSCUP-Watch */ = {
@@ -1436,7 +1436,7 @@
 				6BCAC01A1F1A8FC100032096 /* COSCUP-Watch */,
 				6BCAC0261F1A8FC100032096 /* COSCUP-Watch Extension */,
 				6B023A0F2046EEE500F474F3 /* SITCON */,
-				6B88DE1E20A6F7620038FB0A /* PYCON */,
+				6B88DE1E20A6F7620038FB0A /* PyCon */,
 			);
 		};
 /* End PBXProject section */
@@ -2497,7 +2497,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B88DE8920A6F7620038FB0A /* Build configuration list for PBXNativeTarget "PYCON" */ = {
+		6B88DE8920A6F7620038FB0A /* Build configuration list for PBXNativeTarget "PyCon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6B88DE8A20A6F7620038FB0A /* Debug */,
