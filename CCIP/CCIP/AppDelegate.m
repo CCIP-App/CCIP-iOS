@@ -50,6 +50,17 @@
     return value;
 }
 
++ (UIColor *)AppConfigColor:(NSString *)path {
+    NSString *colorString = [[self AppConfig:[NSString stringWithFormat:@"Themes.%@", path]] stringValue];
+    UIColor *color = [UIColor colorFromHtmlColor:colorString];
+    return color;
+}
+
++ (NSString *)AppConfigURL:(NSString *)path {
+    NSString *urlString = [[self AppConfig:[NSString stringWithFormat:@"URL.%@", path]] stringValue];
+    return urlString;
+}
+
 + (void)createNEHC {
     if(@available(iOS 11.0, *)) {
 #ifndef TARGET_IPHONE_SIMULATOR
@@ -146,7 +157,7 @@
 + (void)setDevLogo:(FBShimmeringView *)sView WithLogo:(UIImage *)logo {
     BOOL isDevMode = [AppDelegate isDevMode];
     if (isDevMode) {
-        [((UIImageView *)[sView contentView]) setImage:[logo imageWithColor:[UIColor colorFromHtmlColor:COLOR_DEV]]];
+        [((UIImageView *)[sView contentView]) setImage:[logo imageWithColor:[self AppConfigColor:@"DevelopingLogoMaskColor"]]];
     } else {
         [((UIImageView *)[sView contentView]) setImage:logo];
     }

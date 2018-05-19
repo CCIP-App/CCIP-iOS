@@ -72,16 +72,6 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@#f2a900)</string>
-			<key>Key</key>
-			<string>COLOR_DEV</string>
-			<key>Title</key>
-			<string>COLOR_DEV</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
 			<string>(@#333333)</string>
 			<key>Key</key>
 			<string>COLOR_TITLE_HIGHLIGHTED</string>
@@ -117,16 +107,6 @@
 			<string>COLOR_GRADIENT3</string>
 			<key>Title</key>
 			<string>COLOR_GRADIENT3</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@#e9e9e9)</string>
-			<key>Key</key>
-			<string>COLOR_DASHED_LINE</string>
-			<key>Title</key>
-			<string>COLOR_DASHED_LINE</string>
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 		</dict>
@@ -262,16 +242,6 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@#f2a900)</string>
-			<key>Key</key>
-			<string>COLOR_DEV</string>
-			<key>Title</key>
-			<string>COLOR_DEV</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
 			<string>(@#333333)</string>
 			<key>Key</key>
 			<string>COLOR_TITLE_HIGHLIGHTED</string>
@@ -307,16 +277,6 @@
 			<string>COLOR_GRADIENT3</string>
 			<key>Title</key>
 			<string>COLOR_GRADIENT3</string>
-			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<string>(@#e9e9e9)</string>
-			<key>Key</key>
-			<string>COLOR_DASHED_LINE</string>
-			<key>Title</key>
-			<string>COLOR_DASHED_LINE</string>
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 		</dict>

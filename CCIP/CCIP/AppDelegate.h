@@ -38,7 +38,9 @@
 @property (readonly, nonatomic) NSArray * _Null_unspecified availableScenarios;
 
 + (AppDelegate * _Nonnull)appDelegate;
-+ (id)AppConfig:( NSString * _Nonnull )path;
++ (id _Nonnull)AppConfig:( NSString * _Nonnull )path;
++ (UIColor * _Nonnull)AppConfigColor:( NSString * _Nonnull )path;
++ (NSString * _Nonnull)AppConfigURL:( NSString * _Nonnull )path;
 + (void)createNEHC;
 + (void)sendFIB:( NSString * _Nonnull )_name WithEvents:( NSDictionary * _Nullable )_events Func:( const char * _Nonnull )_func File:( const char * _Nonnull )_file Line:(int)_line;
 - (void)setDefaultShortcutItems;

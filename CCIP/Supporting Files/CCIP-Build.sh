@@ -70,8 +70,6 @@ settingFlagsBundle $flags;
 cat CCIP.xcconfig > CCIP.debug.xcconfig
 cat CCIP.xcconfig > CCIP.release.xcconfig
 
-export color_dev="#f2a900"
-export color_dash_line="#e9e9e9"
 export color_button_disabled="#9b9b9b"
 export CONF_NAME="`echo $TARGET_NAME | awk '{ print tolower($0) }'`"
 export domain="org.$CONF_NAME"
@@ -152,12 +150,10 @@ xcc_replace 0 "#define#"                    "$PREDEFINITIONS"
 xcc_replace 0 "#domain#"                    "$domain"
 xcc_replace 0 "#apiDomain#"                 "$apiDomain"
 xcc_replace 0 "#mainDomain#"                "$mainDomain"
-xcc_replace 0 "#color_dev#"                 "$color_dev"
 xcc_replace 0 "#color_title_highlighted#"   "$color_title_highlighted"
 xcc_replace 0 "#color_gradient1#"           "$color_gradient1"
 xcc_replace 0 "#color_gradient2#"           "$color_gradient2"
 xcc_replace 0 "#color_gradient3#"           "$color_gradient3"
-xcc_replace 0 "#color_dash_line#"           "$color_dash_line"
 xcc_replace 0 "#color_button_to#"           "$color_button_to"
 xcc_replace 0 "#color_button_default#"      "$color_button_default"
 xcc_replace 0 "#color_button_disabled#"     "$color_button_disabled"

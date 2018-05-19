@@ -210,7 +210,7 @@
     } else {
         [cell.lbURL setText:@""];
     }
-    [cell.vwDashedLine addDashedLine:[UIColor colorFromHtmlColor:COLOR_DASHED_LINE]];
+    [cell.vwDashedLine addDashedLine:[AppDelegate AppConfigColor:@"AnnouncementDashedLineColor"]];
     
     [cell.vwURL setFd_collapsed:!hasURL];
 }

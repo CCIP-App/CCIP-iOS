@@ -7,7 +7,12 @@
 		<key>ogToken</key>
 		<string>a429ff30-5c0e-4584-a32f-b866ba88c947</string>
 		<key>Themes</key>
-		<dict/>
+		<dict>
+			<key>DevelopingLogoMaskColor</key>
+			<string>#f2a900</string>
+			<key>AnnouncementDashedLineColor</key>
+			<string>#e9e9e9</string>
+		</dict>
 		<key>URL</key>
 		<dict>
 			<key>IRC_Channel</key>
@@ -31,7 +36,12 @@
 		<key>ogToken</key>
 		<string>9b74779c-bcd8-471e-a64b-e033acf0ebbd</string>
 		<key>Themes</key>
-		<dict/>
+		<dict>
+			<key>DevelopingLogoMaskColor</key>
+			<string>#f2a900</string>
+			<key>AnnouncementDashedLineColor</key>
+			<string>#e9e9e9</string>
+		</dict>
 		<key>URL</key>
 		<dict>
 			<key>IRC_Channel</key>
@@ -55,7 +65,12 @@
 		<key>ogToken</key>
 		<string>9506c2db-f054-46b3-9396-744807736fb8</string>
 		<key>Themes</key>
-		<dict/>
+		<dict>
+			<key>DevelopingLogoMaskColor</key>
+			<string>#f2a900</string>
+			<key>AnnouncementDashedLineColor</key>
+			<string>#e9e9e9</string>
+		</dict>
 		<key>URL</key>
 		<dict>
 			<key>IRC_Channel</key>
