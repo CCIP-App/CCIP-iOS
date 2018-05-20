@@ -50,6 +50,7 @@
 "TicketNotice" = "Please keep your ticket secretly and carefully, only shows for our staff or in booth event";
 "TicketNonExistNotice" = "Your Ticket not import into COSCUP Pass, please try again after import !";
 "Telegram" = "Telegram Groups";
+"MapsWeb" = "Maps";
 "Maps" = "Maps";
 "StaffsWeb" = "Staffs";
 "Staffs" = "Staffs";
