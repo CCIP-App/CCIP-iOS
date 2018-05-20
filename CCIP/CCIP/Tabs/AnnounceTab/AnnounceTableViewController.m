@@ -50,8 +50,8 @@
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, 239);
     UIView *headView = [UIView new];
     [headView setFrame:frame];
-    [headView setGradientColor:[UIColor colorFromHtmlColor:COLOR_GRADIENT1]
-                            To:[UIColor colorFromHtmlColor:COLOR_GRADIENT2]
+    [headView setGradientColor:[AppDelegate AppConfigColor:@"AnnouncementTitleLeftColor"]
+                            To:[AppDelegate AppConfigColor:@"AnnouncementTitleRightColor"]
                     StartPoint:CGPointMake(-.4f, .5f)
                        ToPoint:CGPointMake(1, .5f)];
     [self.view addSubview:headView];

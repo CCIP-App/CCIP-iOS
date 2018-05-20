@@ -70,8 +70,8 @@
     [self.lbLangText setText:[data objectForKey:@"lang"]];
     [self.lbTimeText setText:timeRange];
     
-    [self.vwHeader setGradientColor:[UIColor colorFromHtmlColor:COLOR_GRADIENT2]
-                                 To:[UIColor colorFromHtmlColor:COLOR_GRADIENT1]
+    [self.vwHeader setGradientColor:[AppDelegate AppConfigColor:@"ScheduleTitleLeftColor"]
+                                 To:[AppDelegate AppConfigColor:@"ScheduleTitleRightColor"]
                          StartPoint:CGPointMake(1, .5)
                             ToPoint:CGPointMake(-.4, .5)];
     
@@ -83,6 +83,21 @@
                                                           attribute:NSLayoutAttributeTop
                                                          multiplier:1.0
                                                            constant:0]];
+
+    NSArray *lbs = @[
+                     self.lbSpeaker,
+                     self.lbSpeakerName,
+                     self.lbTitle,
+                     self.lbRoom,
+                     self.lbRoomText,
+                     self.lbLang,
+                     self.lbLangText,
+                     self.lbTime,
+                     self.lbTimeText
+                     ];
+    for (UILabel *lb in lbs) {
+        [lb setTextColor:[AppDelegate AppConfigColor:@"ScheduleTitleTextColor"]];
+    }
 }
 
 #pragma mark - Table view data source

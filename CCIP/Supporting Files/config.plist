@@ -10,8 +10,44 @@
 		<dict>
 			<key>DevelopingLogoMaskColor</key>
 			<string>#f2a900</string>
+			<key>NavigationIndicatorColor</key>
+			<string></string>
+			<key>ScheduleTitleLeftColor</key>
+			<string>#f9fea5</string>
+			<key>ScheduleTitleRightColor</key>
+			<string>#20e2d7</string>
+			<key>ScheduleTitleTextColor</key>
+			<string></string>
+			<key>ScheduleSectionTitleBackgroundColor</key>
+			<string>#ecf5f4</string>
+			<key>ScheduleSectionTitleTextColor</key>
+			<string>#333333</string>
+			<key>AnnouncementTitleLeftColor</key>
+			<string></string>
+			<key>AnnouncementTitleRightColor</key>
+			<string></string>
+			<key>AnnouncementTitleTextColor</key>
+			<string></string>
 			<key>AnnouncementDashedLineColor</key>
 			<string>#e9e9e9</string>
+			<key>IRCTitleLeftColor</key>
+			<string></string>
+			<key>IRCTitleRightColor</key>
+			<string></string>
+			<key>IRCTitleTextColor</key>
+			<string></string>
+			<key>MoreTitleLeftColor</key>
+			<string></string>
+			<key>MoreTitleRightColor</key>
+			<string></string>
+			<key>MoreTitleTextColor</key>
+			<string></string>
+			<key>MapTitleLeftColor</key>
+			<string></string>
+			<key>MapTitleRightColor</key>
+			<string></string>
+			<key>MapTitleTextColor</key>
+			<string></string>
 		</dict>
 		<key>URL</key>
 		<dict>
@@ -21,13 +57,17 @@
 			<string>coscupchat</string>
 			<key>MainDomain</key>
 			<string>coscup.org</string>
-			<key>GameDomain</key>
-			<string>play.coscup.org</string>
-			<key>StaffWebPath</key>
+			<key>GamePath</key>
+			<string>https://play.coscup.org/?mode=app&amp;token=%@</string>
+			<key>StaffUseWeb</key>
+			<true/>
+			<key>StaffPath</key>
 			<string></string>
-			<key>StaffBaseDomain</key>
+			<key>SponsorUseWeb</key>
+			<true/>
+			<key>SponsorPath</key>
 			<string></string>
-			<key>SponsorWebPath</key>
+			<key>ScheduleContentPath</key>
 			<string></string>
 		</dict>
 	</dict>
@@ -39,8 +79,40 @@
 		<dict>
 			<key>DevelopingLogoMaskColor</key>
 			<string>#f2a900</string>
+			<key>NavigationIndicatorColor</key>
+			<string></string>
+			<key>ScheduleTitleLeftColor</key>
+			<string>#64757d</string>
+			<key>ScheduleTitleRightColor</key>
+			<string>#64757d</string>
+			<key>ScheduleTitleTextColor</key>
+			<string></string>
+			<key>AnnouncementTitleLeftColor</key>
+			<string></string>
+			<key>AnnouncementTitleRightColor</key>
+			<string></string>
+			<key>AnnouncementTitleTextColor</key>
+			<string></string>
 			<key>AnnouncementDashedLineColor</key>
 			<string>#e9e9e9</string>
+			<key>IRCTitleLeftColor</key>
+			<string></string>
+			<key>IRCTitleRightColor</key>
+			<string></string>
+			<key>IRCTitleTextColor</key>
+			<string></string>
+			<key>MoreTitleLeftColor</key>
+			<string></string>
+			<key>MoreTitleRightColor</key>
+			<string></string>
+			<key>MoreTitleTextColor</key>
+			<string></string>
+			<key>MapTitleLeftColor</key>
+			<string></string>
+			<key>MapTitleRightColor</key>
+			<string></string>
+			<key>MapTitleTextColor</key>
+			<string></string>
 		</dict>
 		<key>URL</key>
 		<dict>
@@ -50,14 +122,18 @@
 			<string>SITCONgeneral</string>
 			<key>MainDomain</key>
 			<string>sitcon.org</string>
-			<key>GameDomain</key>
-			<string>king.sitcon.party</string>
-			<key>StaffWebPath</key>
+			<key>GamePath</key>
+			<string>https://king.sitcon.party/?mode=app&amp;token=%@</string>
+			<key>StaffUseWeb</key>
+			<true/>
+			<key>StaffPath</key>
 			<string></string>
-			<key>StaffBaseDomain</key>
+			<key>SponsorUseWeb</key>
+			<true/>
+			<key>SponsorPath</key>
 			<string></string>
-			<key>SponsorWebPath</key>
-			<string></string>
+			<key>ScheduleContentPath</key>
+			<string>https://tw.pycon.org/2018/ccip/</string>
 		</dict>
 	</dict>
 	<key>PyCon</key>
@@ -68,25 +144,65 @@
 		<dict>
 			<key>DevelopingLogoMaskColor</key>
 			<string>#f2a900</string>
+			<key>NavigationIndicatorColor</key>
+			<string>#f7f5fa</string>
+			<key>ScheduleTitleLeftColor</key>
+			<string>#3b097b</string>
+			<key>ScheduleTitleRightColor</key>
+			<string>#3b097b</string>
+			<key>ScheduleTitleTextColor</key>
+			<string>#f7f5fa</string>
+			<key>AnnouncementTitleLeftColor</key>
+			<string>#3b097b</string>
+			<key>AnnouncementTitleRightColor</key>
+			<string>#3b097b</string>
+			<key>AnnouncementTitleTextColor</key>
+			<string>#f7f5fa</string>
+			<key>ScheduleSectionTitleBackgroundColor</key>
+			<string>#efefef</string>
+			<key>ScheduleSectionTitleTextColor</key>
+			<string>#333333</string>
 			<key>AnnouncementDashedLineColor</key>
 			<string>#e9e9e9</string>
+			<key>IRCTitleLeftColor</key>
+			<string>#3b097b</string>
+			<key>IRCTitleRightColor</key>
+			<string>#3b097b</string>
+			<key>IRCTitleTextColor</key>
+			<string>#f7f5fa</string>
+			<key>MoreTitleLeftColor</key>
+			<string>#3b097b</string>
+			<key>MoreTitleRightColor</key>
+			<string>#3b097b</string>
+			<key>MoreTitleTextColor</key>
+			<string>#f7f5fa</string>
+			<key>MapTitleLeftColor</key>
+			<string>#3b097b</string>
+			<key>MapTitleRightColor</key>
+			<string>#3b097b</string>
+			<key>MapTitleTextColor</key>
+			<string>#f7f5fa</string>
 		</dict>
 		<key>URL</key>
 		<dict>
 			<key>IRC_Channel</key>
 			<string></string>
 			<key>tg_Chat</key>
-			<string></string>
+			<string>pycontw2018</string>
 			<key>MainDomain</key>
 			<string>tw.pycon.org</string>
-			<key>GameDomain</key>
-			<string>game.pycon.tw</string>
-			<key>StaffWebPath</key>
-			<string></string>
-			<key>StaffBaseDomain</key>
-			<string></string>
-			<key>SponsorWebPath</key>
-			<string></string>
+			<key>GamePath</key>
+			<string>https://game.pycon.tw/?mode=app&amp;token=%@</string>
+			<key>StaffUseWeb</key>
+			<true/>
+			<key>StaffPath</key>
+			<string>https://tw.pycon.org/2018/ccip/staff/</string>
+			<key>SponsorUseWeb</key>
+			<true/>
+			<key>SponsorPath</key>
+			<string>https://tw.pycon.org/2018/ccip/sponsors/</string>
+			<key>ScheduleContentPath</key>
+			<string>https://tw.pycon.org/2018/ccip/</string>
 		</dict>
 	</dict>
 </dict>

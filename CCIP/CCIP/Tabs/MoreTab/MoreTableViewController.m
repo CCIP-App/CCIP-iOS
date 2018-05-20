@@ -32,21 +32,26 @@
 @implementation MoreTableViewController
 
 - (void)prefetchStaffs {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:STAFF_DATA_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-        if (responseObject != nil) {
-            self.staffs = responseObject;
-        }
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
+    if ([[AppDelegate AppConfig:@"URL.StaffUseWeb"] boolValue] == NO) {
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        [manager GET:[AppDelegate AppConfigURL:@"StaffPath"]
+          parameters:nil
+            progress:nil
+             success:^(NSURLSessionTask *task, id responseObject) {
+            NSLog(@"JSON: %@", responseObject);
+            if (responseObject != nil) {
+                self.staffs = responseObject;
+            }
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UIViewController *destination = segue.destinationViewController;
     NSString *title = [sender text];
-    SEND_FIB_EVENT(@"MoreTableView", title);
+    SEND_FIB_EVENT(@"MoreTableView", @{ @"MoreTitle": title });
     [destination setTitle:title];
     if ([destination isMemberOfClass:[StaffGroupTableViewController class]]) {
         StaffGroupTableViewController *sgt = (StaffGroupTableViewController *)destination;
@@ -71,8 +76,8 @@
     [self.navigationController.navigationBar setTranslucent:NO];
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height);
     UIView *headView = [[UIView alloc] initWithFrame:frame];
-    [headView setGradientColor:[UIColor colorFromHtmlColor:COLOR_GRADIENT1]
-                            To:[UIColor colorFromHtmlColor:COLOR_GRADIENT2]
+    [headView setGradientColor:[AppDelegate AppConfigColor:@"MoreTitleLeftColor"]
+                            To:[AppDelegate AppConfigColor:@"MoreTitleRightColor"]
                     StartPoint:CGPointMake(-.4f, .5f)
                        ToPoint:CGPointMake(1, .5f)];
     UIImage *naviBackImg = [[headView.layer.sublayers lastObject] toImage];
@@ -93,16 +98,8 @@
                        @"Ticket",
                        @"Telegram",
                        @"Maps",
-#ifdef STAFF_USE_WEB
-                       @"StaffsWeb",
-#else
-                       @"Staffs",
-#endif
-#ifdef SPONSOR_USE_WEB
-                       @"SponsorsWeb",
-#else
-                       @"Sponsors",
-#endif
+                       [NSString stringWithFormat:@"Staffs%@", [[AppDelegate AppConfig:@"URL.StaffUseWeb"] boolValue] ? @"Web" : @""],
+                       [NSString stringWithFormat:@"Sponsors%@", [[AppDelegate AppConfig:@"URL.SponsorUseWeb"] boolValue] ? @"Web" : @""],
                        @"Acknowledgements",
                        ];
     if (self.staffs == nil) {
@@ -112,13 +109,15 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    dispatch_semaphore_t semaStaff = dispatch_semaphore_create(0);
-    while (dispatch_semaphore_wait(semaStaff, DISPATCH_TIME_NOW)) {
-        if (self.staffs != nil) {
-            dispatch_semaphore_signal(semaStaff);
+    if ([[AppDelegate AppConfig:@"URL.StaffUseWeb"] boolValue] == NO) {
+        dispatch_semaphore_t semaStaff = dispatch_semaphore_create(0);
+        while (dispatch_semaphore_wait(semaStaff, DISPATCH_TIME_NOW)) {
+            if (self.staffs != nil) {
+                dispatch_semaphore_signal(semaStaff);
+            }
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                     beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
         }
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1f]];
     }
 }
 

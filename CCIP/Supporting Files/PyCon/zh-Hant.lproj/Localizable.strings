@@ -8,7 +8,7 @@
 
 
 "CurrentLang" = "zh-Hant";
-"Title" = "PYCON 2018";
+"Title" = "PyCon 2018";
 "Checkin" = "報到";
 "Schedule" = "議程";
 "Announce" = "大會訊息";
@@ -45,10 +45,10 @@
 "day2lunch" = "第二天午餐領取";
 "Addition" = "其他";
 "IRC" = "IRC 頻道";
-"Puzzle" = "開源巔峰挑戰賽";
+"Puzzle" = "集點抽書";
 "Ticket" = "我的票卷";
 "TicketNotice" = "請妥善保管您的票卷，僅提供此票卷給我們的工作人員或您參與攤位活動的工作人員使用";
-"TicketNonExistNotice" = "您的票卷尚未登陸進 PYCON Pass，請登陸後再使用此功能！";
+"TicketNonExistNotice" = "您的票卷尚未登陸進 PyCon Pass，請登陸後再使用此功能！";
 "Telegram" = "Telegram 群組";
 "Maps" = "場內地圖";
 "StaffsWeb" = "籌備團隊";
@@ -84,7 +84,7 @@
 "QRFileNotAvailableTitle" = "擷取錯誤！";
 "QRFileNotAvailableDesc" = "該圖檔無法擷取出 QR Code，請重試";
 "Networking_Broken" = "網路連線異常";
-"Networking_WrongWiFi" = "請連上 PYCON 提供的無線網路，才能使用";
-"LoginGreeting" = "嗨 %@，歡迎您加入 PYCON，盡情享受這場饗宴吧！";
+"Networking_WrongWiFi" = "請連上 PyCon 提供的無線網路，才能使用";
+"LoginGreeting" = "嗨 %@，歡迎您加入 PyCon，盡情享受這場饗宴吧！";
 "AfterEventMessage" = "在大會結束之後，我們需要您填寫一份問卷，感謝您！";
 "AfterEventActionTitle" = "開啟會後問卷";

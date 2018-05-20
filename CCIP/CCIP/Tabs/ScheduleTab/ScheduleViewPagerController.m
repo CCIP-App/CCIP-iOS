@@ -6,6 +6,7 @@
 //  Copyright © 2017年 CPRTeam. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "ScheduleViewPagerController.h"
 #import "ScheduleTableViewController.h"
 #import "ScheduleDetailViewController.h"
@@ -76,7 +77,10 @@ static NSDateFormatter *formatter_date = nil;
 
 - (void)refreshData {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:SCHEDULES_DATA_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [manager GET:[AppDelegate AppConfigURL:@"ScheduleContentPath"]
+      parameters:nil
+        progress:nil
+         success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         if (responseObject != nil) {
             self.programs = responseObject;
@@ -131,7 +135,7 @@ static NSDateFormatter *formatter_date = nil;
 - (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
     UILabel *label = [UILabel new];
     label.text = [NSString stringWithFormat:@"DAY %@", [self.segmentsTextArray objectAtIndex:index]];
-    label.textColor = [UIColor colorFromHtmlColor:COLOR_TITLE_HIGHLIGHTED];
+    label.textColor = [AppDelegate AppConfigColor:@"ScheduleTitleTextColor"];
     label.font = [UIFont fontWithName:@"PingFangTC-Medium" size:14];
     [label sizeToFit];
     return label;
@@ -206,7 +210,7 @@ static NSDateFormatter *formatter_date = nil;
 - (UIColor *)viewPager:(ViewPagerController *)viewPager colorForComponent:(ViewPagerComponent)component withDefault:(UIColor *)color {
     switch (component) {
             case ViewPagerIndicator: {
-                return [UIColor colorFromHtmlColor:COLOR_TITLE_HIGHLIGHTED];
+                return [AppDelegate AppConfigColor:@"ScheduleTitleTextColor"];
             }
             case ViewPagerTabsView: {
                 return [UIColor clearColor];

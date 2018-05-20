@@ -113,8 +113,8 @@
     [self.navigationController.navigationBar setTranslucent:YES];
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height);
     UIView *headView = [[UIView alloc] initWithFrame:frame];
-    [headView setGradientColor:[UIColor colorFromHtmlColor:COLOR_GRADIENT1]
-                            To:[UIColor colorFromHtmlColor:COLOR_GRADIENT2]
+    [headView setGradientColor:[AppDelegate AppConfigColor:@"MapTitleLeftColor"]
+                            To:[AppDelegate AppConfigColor:@"MapTitleRightColor"]
                     StartPoint:CGPointMake(-.4f, .5f)
                        ToPoint:CGPointMake(1, .5f)];
     UIImage *naviBackImg = [[headView.layer.sublayers lastObject] toImage];

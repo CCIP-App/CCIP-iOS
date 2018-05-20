@@ -6,6 +6,7 @@
 //  Copyright © 2017年 CPRTeam. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "ScheduleFavoriteTableViewController.h"
 #import "ScheduleTableViewController.h"
 #import "ScheduleTableViewCell.h"
@@ -61,8 +62,8 @@ static NSDateFormatter *formatter_date = nil;
                               self.view.frame.size.width, self.navigationController.navigationBar.frame.origin.y + navigationBarBounds.size.height);
     headView = [UIView new];
     [headView setFrame:frame];
-    [headView setGradientColor:[UIColor colorFromHtmlColor:COLOR_GRADIENT1]
-                            To:[UIColor colorFromHtmlColor:COLOR_GRADIENT2]
+    [headView setGradientColor:[AppDelegate AppConfigColor:@"ScheduleTitleLeftColor"]
+                            To:[AppDelegate AppConfigColor:@"ScheduleTitleRightColor"]
                     StartPoint:CGPointMake(-.4f, .5f)
                        ToPoint:CGPointMake(1, .5f)];
     [self.navigationController.navigationBar.superview addSubview:headView];

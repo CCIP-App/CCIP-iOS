@@ -57,12 +57,7 @@
     
     [self setWebViewConstraints];
     
-    NSURL *nsurl = self.webView.URL;
-    if ([AppDelegate haveAccessToken] && (nsurl == nil || [nsurl.absoluteString isEqualToString:@""])) {
-        nsurl = [NSURL URLWithString:PUZZLE_GAME_URL([AppDelegate accessToken])];
-    } else {
-        nsurl = [NSURL URLWithString:PUZZLE_GAME_URL(@"")];
-    }
+    NSURL *nsurl = [NSURL URLWithString:WEB_TOKEN([AppDelegate AppConfigURL:@"GamePath"], [AppDelegate accessToken])];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
     [self.webView loadRequest:requestObj];
 }
@@ -109,7 +104,7 @@
     NSString *token = [AppDelegate accessTokenSHA1];
     NSURL *nsurl = self.webView.URL;
     if ([AppDelegate haveAccessToken] && (nsurl == nil || [nsurl.absoluteString isEqualToString:@""] || ![nsurl.absoluteString containsString:token])) {
-        nsurl = [NSURL URLWithString:PUZZLE_GAME_URL(token)];
+        nsurl = [NSURL URLWithString:WEB_TOKEN([AppDelegate AppConfigURL:@"GamePath"], token)];
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
         [self.webView loadRequest:requestObj];
     } else {
@@ -134,7 +129,7 @@
     if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
         NSURL *url = navigationAction.request.URL;
         
-        if ([url.host isEqualToString:[NSURL URLWithString:PUZZLE_GAME_BASE_URL].host]) {
+        if ([url.host isEqualToString:[NSURL URLWithString:WEB_TOKEN([AppDelegate AppConfigURL:@"GamePath"], [AppDelegate accessToken])].host]) {
             decisionHandler(WKNavigationActionPolicyAllow);
             return;
         } else {

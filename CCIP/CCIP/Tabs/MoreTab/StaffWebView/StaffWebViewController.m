@@ -57,12 +57,7 @@
     
     [self setWebViewConstraints];
     
-    NSURL *nsurl = self.webView.URL;
-    if ([AppDelegate haveAccessToken] && (nsurl == nil || [nsurl.absoluteString isEqualToString:@""])) {
-        nsurl = [NSURL URLWithString:STAFF_WEB_URL([AppDelegate accessTokenSHA1])];
-    } else {
-        nsurl = [NSURL URLWithString:STAFF_WEB_URL(@"")];
-    }
+    NSURL *nsurl = [NSURL URLWithString:[AppDelegate AppConfigURL:@"StaffPath"]];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
     [self.webView loadRequest:requestObj];
 }
@@ -109,7 +104,7 @@
     NSString *sha1Token = [AppDelegate accessTokenSHA1];
     NSURL *nsurl = self.webView.URL;
     if ([AppDelegate haveAccessToken] && (nsurl == nil || [nsurl.absoluteString isEqualToString:@""] || ![nsurl.absoluteString containsString:sha1Token])) {
-        nsurl = [NSURL URLWithString:STAFF_WEB_URL(sha1Token)];
+        nsurl = [NSURL URLWithString:[AppDelegate AppConfigURL:@"StaffPath"]];
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
         [self.webView loadRequest:requestObj];
     } else {
@@ -134,7 +129,7 @@
     if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
         NSURL *url = navigationAction.request.URL;
         
-        if ([url.host isEqualToString:[NSURL URLWithString:STAFF_WEB_BASE_URL].host]) {
+        if ([url.host isEqualToString:[NSURL URLWithString:[AppDelegate AppConfigURL:@"StaffPath"]].host]) {
             decisionHandler(WKNavigationActionPolicyAllow);
             return;
         } else {

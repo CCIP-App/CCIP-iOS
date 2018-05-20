@@ -490,7 +490,7 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor whiteColor] }];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
-    [[UIButton appearanceWhenContainedInInstancesOfClasses:@[ [UINavigationController class] ]] setTintColor:[UIColor colorFromHtmlColor:COLOR_NAVIGATION_BAR_ITEM]];
+    [[UIButton appearanceWhenContainedInInstancesOfClasses:@[ [UINavigationController class] ]] setTintColor:[AppDelegate AppConfigColor:@"NavigationIndicatorColor"]];
     [[UIToolbar appearanceWhenContainedInInstancesOfClasses:@[ [UINavigationController class] ]] setBarTintColor:[appArt backgroundColor]];
     
     [[UITabBar appearance] setTintColor:[UIColor colorFromHtmlColor:COLOR_LABEL_TEXT]];
