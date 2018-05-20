@@ -101,7 +101,7 @@
 }
 
 - (IBAction)reload:(id)sender {
-    NSString *token = [AppDelegate accessTokenSHA1];
+    NSString *token = [AppDelegate accessToken];
     NSURL *nsurl = self.webView.URL;
     if ([AppDelegate haveAccessToken] && (nsurl == nil || [nsurl.absoluteString isEqualToString:@""] || ![nsurl.absoluteString containsString:token])) {
         nsurl = [NSURL URLWithString:WEB_TOKEN([AppDelegate AppConfigURL:@"GamePath"], token)];
