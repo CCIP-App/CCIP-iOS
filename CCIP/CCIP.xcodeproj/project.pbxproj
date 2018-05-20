@@ -286,6 +286,7 @@
 		6BAD226620B1F33100155F3F /* MapsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAD226520B1F2E100155F3F /* MapsWebViewController.m */; };
 		6BAD226720B1F33200155F3F /* MapsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAD226520B1F2E100155F3F /* MapsWebViewController.m */; };
 		6BAD226820B1F33200155F3F /* MapsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAD226520B1F2E100155F3F /* MapsWebViewController.m */; };
+		6BAD226C20B1F75000155F3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BAD226B20B1F75000155F3F /* GoogleService-Info.plist */; };
 		6BB1C4391F1AD4BB00AB072F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
 		6BCAC01F1F1A8FC100032096 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BCAC01D1F1A8FC100032096 /* Interface.storyboard */; };
@@ -306,7 +307,6 @@
 		6BEB31151F26656B0050759D /* Maps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BEB31141F26656B0050759D /* Maps.bundle */; };
 		6BF331501F2991C4004BEEA6 /* PassAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */; };
 		6BF331521F299207004BEEA6 /* AssetsUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF331511F299207004BEEA6 /* AssetsUI.bundle */; };
-		6BFA8F2020A757CD00607A6B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BFA8F1F20A757CC00607A6B /* GoogleService-Info.plist */; };
 		6E0E7ED3B9A30500F9AEC191 /* Pods_SITCON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E04406208BA964FCDC0A4867 /* Pods_SITCON.framework */; };
 		A0BA0226DE6C6C1DD98B5601 /* Pods-COSCUP-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FCD10B2B34F1239B7B42203 /* Pods-COSCUP-metadata.plist */; };
 		AD4EA41D5910205082AAF1D2 /* Pods_COSCUP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4828F57826BDD862B797572E /* Pods_COSCUP.framework */; };
@@ -578,6 +578,7 @@
 		6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+addition.m"; sourceTree = "<group>"; };
 		6BAD226420B1F2E100155F3F /* MapsWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapsWebViewController.h; sourceTree = "<group>"; };
 		6BAD226520B1F2E100155F3F /* MapsWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapsWebViewController.m; sourceTree = "<group>"; };
+		6BAD226B20B1F75000155F3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6BB0B6091F1A74DF00AEB437 /* CCIP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CCIP.entitlements; sourceTree = "<group>"; };
 		6BB50FB11D665393002CAD0B /* AfterEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AfterEventViewController.h; sourceTree = "<group>"; };
 		6BB50FB21D665393002CAD0B /* AfterEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AfterEventViewController.m; sourceTree = "<group>"; };
@@ -622,7 +623,6 @@
 		6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PassAssets.bundle; sourceTree = "<group>"; };
 		6BF331511F299207004BEEA6 /* AssetsUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AssetsUI.bundle; sourceTree = "<group>"; };
 		6BF641161D4D42C000243B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6BFA8F1F20A757CC00607A6B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6F46DD3FFD9C57AD79333A08 /* Pods-PYCON-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-PYCON-metadata.plist"; path = "Pods/Pods-PYCON-metadata.plist"; sourceTree = "<group>"; };
 		6FCD10B2B34F1239B7B42203 /* Pods-COSCUP-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-COSCUP-metadata.plist"; path = "Pods/Pods-COSCUP-metadata.plist"; sourceTree = "<group>"; };
 		852675E2E1DF751B5F81D3B8 /* Pods-SITCON.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SITCON.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SITCON/Pods-SITCON.debug.xcconfig"; sourceTree = "<group>"; };
@@ -932,7 +932,7 @@
 				6B88DE1B20A6F5E90038FB0A /* Assets.xcassets */,
 				6B88DE0F20A6F5E50038FB0A /* InfoPlist.strings */,
 				6B88DE1220A6F5E50038FB0A /* Localizable.strings */,
-				6BFA8F1F20A757CC00607A6B /* GoogleService-Info.plist */,
+				6BAD226B20B1F75000155F3F /* GoogleService-Info.plist */,
 				6B88DE1720A6F5E70038FB0A /* PassAssets.bundle */,
 				6B88DE1520A6F5E60038FB0A /* AssetsUI.bundle */,
 				6B88DE1920A6F5E80038FB0A /* Maps.bundle */,
@@ -1513,7 +1513,7 @@
 				6B88DE7920A6F7620038FB0A /* Settings.bundle in Resources */,
 				6B88DE7C20A6F7620038FB0A /* CHANGELOG.txt in Resources */,
 				6B27A54120A6F97900CD514B /* LaunchScreen@2x.png in Resources */,
-				6BFA8F2020A757CD00607A6B /* GoogleService-Info.plist in Resources */,
+				6BAD226C20B1F75000155F3F /* GoogleService-Info.plist in Resources */,
 				6B88DE7F20A6F7620038FB0A /* fontawesome-webfont.ttf in Resources */,
 				6B88DE8020A6F7620038FB0A /* WebViewAssets.bundle in Resources */,
 				6B27A53F20A6F93500CD514B /* Assets.xcassets in Resources */,
