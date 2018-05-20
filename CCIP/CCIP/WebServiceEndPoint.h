@@ -11,7 +11,7 @@
 
 #define PUZZLE_GAME_BASE_DOMAIN ([AppDelegate AppConfigURL:@"GameDomain"])
 
-#define __API_HOST__            ([NSString stringWithFormat:@"https://%@/", __API_HOST_DOMAIN__])
+#define __API_HOST__            ([NSString stringWithFormat:@"https://%@/", [AppDelegate AppConfigURL:@"CCIP_API"]])
 #define CONF_BASE_URL           ([NSString stringWithFormat:@"https://%@/", CONF_BASE_DOMAIN])
 #define STAFF_BASE_URL          ([NSString stringWithFormat:@"https://%@/", STAFF_BASE_DOMAIN])
 #define PUZZLE_GAME_BASE_URL    ([NSString stringWithFormat:@"https://%@/", PUZZLE_GAME_BASE_DOMAIN])

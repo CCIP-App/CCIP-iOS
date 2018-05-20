@@ -735,7 +735,7 @@ Please copy and paste the token into next field or click the token link in the r
                                 <rect key="frame" x="0.0" y="284" width="420" height="387"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleAbstract" rowHeight="250" id="qgL-2l-vLc" customClass="ScheduleAbstractViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleAbstract" rowHeight="250" id="qgL-2l-vLc" customClass="ScheduleAbstractViewCell">
                                         <rect key="frame" x="0.0" y="28" width="420" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qgL-2l-vLc" id="70q-mM-EDD">
@@ -743,10 +743,10 @@ Please copy and paste the token into next field or click the token link in the r
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RMM-hf-aQ8">
-                                                    <rect key="frame" x="43" y="21" width="340" height="208"/>
+                                                    <rect key="frame" x="43" y="21" width="334" height="208"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abstract" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="js4-QC-0N1">
-                                                            <rect key="frame" x="22" y="28" width="296" height="21"/>
+                                                            <rect key="frame" x="22" y="28" width="290" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="82g-Nd-Jny"/>
                                                             </constraints>
@@ -755,7 +755,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8G0-OA-Hz1">
-                                                            <rect key="frame" x="22" y="60" width="296" height="120"/>
+                                                            <rect key="frame" x="22" y="60" width="290" height="120"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -786,7 +786,7 @@ Please copy and paste the token into next field or click the token link in the r
                                             <outlet property="vwContent" destination="RMM-hf-aQ8" id="t6J-L7-WfB"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleSpeakerInfo" rowHeight="250" id="WuO-8O-IR6" customClass="ScheduleSpeakerInfoViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleSpeakerInfo" rowHeight="250" id="WuO-8O-IR6" customClass="ScheduleSpeakerInfoViewCell">
                                         <rect key="frame" x="0.0" y="278" width="420" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WuO-8O-IR6" id="MR5-7W-rvW">
@@ -794,10 +794,10 @@ Please copy and paste the token into next field or click the token link in the r
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCd-th-Z6D">
-                                                    <rect key="frame" x="43" y="21" width="340" height="208"/>
+                                                    <rect key="frame" x="43" y="21" width="334" height="208"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6h-vx-Zyl">
-                                                            <rect key="frame" x="22" y="28" width="296" height="21"/>
+                                                            <rect key="frame" x="22" y="28" width="290" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="BAb-IW-Lpy"/>
                                                             </constraints>
@@ -806,7 +806,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ei5-NI-34T">
-                                                            <rect key="frame" x="22" y="60" width="296" height="120"/>
+                                                            <rect key="frame" x="22" y="60" width="290" height="120"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1081,7 +1081,7 @@ Label2</string>
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PassAssets.bundle/NoAnnouncement.png" translatesAutoresizingMaskIntoConstraints="NO" id="V2s-Db-5hD">
-                                <rect key="frame" x="129" y="249" width="197" height="159"/>
+                                <rect key="frame" x="108.66666666666669" y="249" width="197" height="159"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="197" id="08r-X5-kgl"/>
                                     <constraint firstAttribute="height" constant="159" id="GLX-eQ-5vy"/>
@@ -1106,7 +1106,7 @@ Label2</string>
                             <constraint firstItem="NRX-bU-SPn" firstAttribute="bottom" secondItem="O9C-ij-kHs" secondAttribute="bottom" id="Kph-ld-qyG"/>
                             <constraint firstItem="XQ9-nd-7Ld" firstAttribute="width" secondItem="O9C-ij-kHs" secondAttribute="width" id="Wcg-aQ-JxC"/>
                             <constraint firstAttribute="trailing" secondItem="NRX-bU-SPn" secondAttribute="trailing" id="Zkk-I0-kD9"/>
-                            <constraint firstItem="V2s-Db-5hD" firstAttribute="centerX" secondItem="O9C-ij-kHs" secondAttribute="centerX" constant="20" id="ke7-zC-8Lf"/>
+                            <constraint firstItem="V2s-Db-5hD" firstAttribute="centerX" secondItem="O9C-ij-kHs" secondAttribute="centerX" id="ke7-zC-8Lf"/>
                             <constraint firstItem="XQ9-nd-7Ld" firstAttribute="top" secondItem="V2s-Db-5hD" secondAttribute="bottom" constant="24" id="s7i-kA-aEE"/>
                             <constraint firstItem="V2s-Db-5hD" firstAttribute="centerY" secondItem="O9C-ij-kHs" secondAttribute="centerY" constant="-40" id="zgL-ae-wKP"/>
                         </constraints>
@@ -1177,7 +1177,7 @@ Label2</string>
                                             <segue destination="ELW-GG-N5v" kind="show" id="lNH-PV-GWN"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Maps" id="3ui-ih-bjE" customClass="MoreCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapsWeb" id="3ui-ih-bjE" customClass="MoreCell">
                                         <rect key="frame" x="0.0" y="160" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3ui-ih-bjE" id="gQM-Vg-v6W">
@@ -1185,11 +1185,22 @@ Label2</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="qU2-4l-l4a" kind="show" id="Elp-2p-LMs"/>
+                                            <segue destination="3L9-S1-KDc" kind="show" id="qJV-03-dFJ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Maps" id="KLA-Ib-iA8" customClass="MoreCell">
+                                        <rect key="frame" x="0.0" y="204" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KLA-Ib-iA8" id="Q8l-OG-76U">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="qU2-4l-l4a" kind="show" id="3N4-IZ-UA6"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StaffsWeb" id="mJ9-yH-NdM" customClass="MoreCell">
-                                        <rect key="frame" x="0.0" y="204" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="248" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mJ9-yH-NdM" id="34I-cJ-hic">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -1203,7 +1214,7 @@ Label2</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Staffs" id="d4Y-ir-8JL" customClass="MoreCell">
-                                        <rect key="frame" x="0.0" y="248" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="292" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d4Y-ir-8JL" id="thw-zu-u47">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -1217,7 +1228,7 @@ Label2</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SponsorsWeb" id="nFF-Qj-5an" customClass="MoreCell">
-                                        <rect key="frame" x="0.0" y="292" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="336" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nFF-Qj-5an" id="9mk-hP-iv4">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -1231,7 +1242,7 @@ Label2</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Sponsors" id="xxD-AS-Iim" customClass="MoreCell">
-                                        <rect key="frame" x="0.0" y="336" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="380" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xxD-AS-Iim" id="Txy-4M-e6y">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -1245,7 +1256,7 @@ Label2</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Acknowledgements" id="yMP-WL-Edu" customClass="MoreCell">
-                                        <rect key="frame" x="0.0" y="380" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="424" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yMP-WL-Edu" id="IPq-E0-gs7">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -1385,7 +1396,7 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaR-Ck-58c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4733" y="1965"/>
+            <point key="canvasLocation" x="5403" y="1965"/>
         </scene>
         <!--My Ticket View Controller-->
         <scene sceneID="BPq-cB-LmU">
@@ -1444,7 +1455,7 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCQ-6Q-dR4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5417" y="1965"/>
+            <point key="canvasLocation" x="6088" y="1965"/>
         </scene>
         <!--Staff View Controller-->
         <scene sceneID="4VM-uK-3io">
@@ -1901,7 +1912,7 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yHF-fU-Quw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6088" y="1965"/>
+            <point key="canvasLocation" x="6758" y="1965"/>
         </scene>
         <!--Sponsor Web View Controller-->
         <scene sceneID="R77-1g-fh1">
@@ -1952,6 +1963,34 @@ Label2</string>
             </objects>
             <point key="canvasLocation" x="-520" y="1965"/>
         </scene>
+        <!--Maps Web View Controller-->
+        <scene sceneID="Plf-YM-IWy">
+            <objects>
+                <viewController id="3L9-S1-KDc" customClass="MapsWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Arl-AG-Jd5"/>
+                        <viewControllerLayoutGuide type="bottom" id="UrO-PS-x7I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IFv-J9-Byi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gtR-Qa-lEB">
+                        <barButtonItem key="rightBarButtonItem" image="WebViewAssets.bundle/BarButton-Reload.png" id="aHv-CA-aDH">
+                            <connections>
+                                <action selector="reload:" destination="3L9-S1-KDc" id="XBN-bY-UNm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="goReloadButton" destination="aHv-CA-aDH" id="aoi-LX-ayS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bNe-Mc-Cf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4725" y="1965"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AssetsUI.bundle/icon_ios_bell.png" width="16" height="16"/>
@@ -1969,7 +2008,7 @@ Label2</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cBG-i4-7bv"/>
-        <segue reference="LZQ-Xr-3kl"/>
+        <segue reference="351-Fd-ZV7"/>
         <segue reference="ewg-q8-EfJ"/>
         <segue reference="gRH-x7-Jfd"/>
         <segue reference="Vsx-u2-DYP"/>

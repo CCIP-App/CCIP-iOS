@@ -204,6 +204,8 @@
     NSString *strDate = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[datetime doubleValue]]];
     
     [cell.lbMessageTime setText:strDate];
+    [cell.lbMessageTime setTextColor:[AppDelegate AppConfigColor:@"AnnouncementSectionTitleTextColor"]];
+    [cell.vwMessageTime setBackgroundColor:[AppDelegate AppConfigColor:@"AnnouncementSectionTitleBackgroundColor"]];
     
     if (hasURL) {
         [cell.lbURL setText:uri];

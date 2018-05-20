@@ -283,6 +283,9 @@
 		6B9650C91F2B270500F43B39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC12A961F2B1B8000B14039 /* main.m */; };
 		6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */; };
 		6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */; };
+		6BAD226620B1F33100155F3F /* MapsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAD226520B1F2E100155F3F /* MapsWebViewController.m */; };
+		6BAD226720B1F33200155F3F /* MapsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAD226520B1F2E100155F3F /* MapsWebViewController.m */; };
+		6BAD226820B1F33200155F3F /* MapsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAD226520B1F2E100155F3F /* MapsWebViewController.m */; };
 		6BB1C4391F1AD4BB00AB072F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
 		6BCAC01F1F1A8FC100032096 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BCAC01D1F1A8FC100032096 /* Interface.storyboard */; };
@@ -573,6 +576,8 @@
 		6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
 		6BAB42371D4ED39D0029B8A5 /* UIApplication+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+addition.h"; sourceTree = "<group>"; };
 		6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+addition.m"; sourceTree = "<group>"; };
+		6BAD226420B1F2E100155F3F /* MapsWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapsWebViewController.h; sourceTree = "<group>"; };
+		6BAD226520B1F2E100155F3F /* MapsWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapsWebViewController.m; sourceTree = "<group>"; };
 		6BB0B6091F1A74DF00AEB437 /* CCIP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CCIP.entitlements; sourceTree = "<group>"; };
 		6BB50FB11D665393002CAD0B /* AfterEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AfterEventViewController.h; sourceTree = "<group>"; };
 		6BB50FB21D665393002CAD0B /* AfterEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AfterEventViewController.m; sourceTree = "<group>"; };
@@ -938,6 +943,15 @@
 			path = PyCon;
 			sourceTree = "<group>";
 		};
+		6BAD226320B1F2C900155F3F /* MapsWebView */ = {
+			isa = PBXGroup;
+			children = (
+				6BAD226420B1F2E100155F3F /* MapsWebViewController.h */,
+				6BAD226520B1F2E100155F3F /* MapsWebViewController.m */,
+			);
+			path = MapsWebView;
+			sourceTree = "<group>";
+		};
 		6BCAC01C1F1A8FC100032096 /* CCIP-Watch */ = {
 			isa = PBXGroup;
 			children = (
@@ -1199,6 +1213,7 @@
 				6B7F713F1F25F797004E43CA /* PuzzleView */,
 				6B7F713D1F25F797004E43CA /* TicketView */,
 				6B7F713E1F25F797004E43CA /* TelegramView */,
+				6BAD226320B1F2C900155F3F /* MapsWebView */,
 				6B7F71381F25F755004E43CA /* MapsView */,
 				6B70EF38204C5B9C00C63E63 /* StaffWebView */,
 				6B6F256F1F2B17CD00A6BD2C /* StaffView */,
@@ -1822,6 +1837,7 @@
 				6B023A3B2046EEE500F474F3 /* UIViewController+addition.m in Sources */,
 				6B023A3C2046EEE500F474F3 /* TicketQRCodeImage.swift in Sources */,
 				6B023A3D2046EEE500F474F3 /* StaffViewController.m in Sources */,
+				6BAD226720B1F33200155F3F /* MapsWebViewController.m in Sources */,
 				6B023A3E2046EEE500F474F3 /* MoreTableViewController.m in Sources */,
 				6B023A3F2046EEE500F474F3 /* ScheduleTableViewCell.m in Sources */,
 				6B023A402046EEE500F474F3 /* UISegmentedControl+addition.m in Sources */,
@@ -1880,6 +1896,7 @@
 				6B88DE4B20A6F7620038FB0A /* UIViewController+addition.m in Sources */,
 				6B88DE4C20A6F7620038FB0A /* TicketQRCodeImage.swift in Sources */,
 				6B88DE4D20A6F7620038FB0A /* StaffViewController.m in Sources */,
+				6BAD226820B1F33200155F3F /* MapsWebViewController.m in Sources */,
 				6B88DE4E20A6F7620038FB0A /* MoreTableViewController.m in Sources */,
 				6B88DE4F20A6F7620038FB0A /* ScheduleTableViewCell.m in Sources */,
 				6B88DE5020A6F7620038FB0A /* UISegmentedControl+addition.m in Sources */,
@@ -1948,6 +1965,7 @@
 				6BCBC3B51D4F393700B5AF35 /* UIViewController+addition.m in Sources */,
 				6BEB310D1F262EF30050759D /* TicketQRCodeImage.swift in Sources */,
 				5F9171291D325B5E000D0F66 /* StaffViewController.m in Sources */,
+				6BAD226620B1F33100155F3F /* MapsWebViewController.m in Sources */,
 				5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */,
 				280774D11F1AD8D300A5B994 /* ScheduleTableViewCell.m in Sources */,
 				28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */,

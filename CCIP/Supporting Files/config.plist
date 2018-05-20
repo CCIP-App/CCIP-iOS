@@ -19,15 +19,19 @@
 			<key>ScheduleTitleTextColor</key>
 			<string></string>
 			<key>ScheduleSectionTitleBackgroundColor</key>
-			<string>#ecf5f4</string>
+			<string></string>
 			<key>ScheduleSectionTitleTextColor</key>
-			<string>#333333</string>
+			<string></string>
 			<key>AnnouncementTitleLeftColor</key>
 			<string></string>
 			<key>AnnouncementTitleRightColor</key>
 			<string></string>
 			<key>AnnouncementTitleTextColor</key>
 			<string></string>
+			<key>AnnouncementSectionTitleBackgroundColor</key>
+			<string>#efefef</string>
+			<key>AnnouncementSectionTitleTextColor</key>
+			<string>#333333</string>
 			<key>AnnouncementDashedLineColor</key>
 			<string>#e9e9e9</string>
 			<key>IRCTitleLeftColor</key>
@@ -51,6 +55,8 @@
 		</dict>
 		<key>URL</key>
 		<dict>
+			<key>CCIP_API</key>
+			<string>ccip.coscup.org</string>
 			<key>IRC_Channel</key>
 			<string>coscup</string>
 			<key>tg_Chat</key>
@@ -87,11 +93,19 @@
 			<string>#64757d</string>
 			<key>ScheduleTitleTextColor</key>
 			<string></string>
+			<key>ScheduleSectionTitleBackgroundColor</key>
+			<string></string>
+			<key>ScheduleSectionTitleTextColor</key>
+			<string></string>
 			<key>AnnouncementTitleLeftColor</key>
 			<string></string>
 			<key>AnnouncementTitleRightColor</key>
 			<string></string>
 			<key>AnnouncementTitleTextColor</key>
+			<string></string>
+			<key>AnnouncementSectionTitleBackgroundColor</key>
+			<string></string>
+			<key>AnnouncementSectionTitleTextColor</key>
 			<string></string>
 			<key>AnnouncementDashedLineColor</key>
 			<string>#e9e9e9</string>
@@ -116,6 +130,8 @@
 		</dict>
 		<key>URL</key>
 		<dict>
+			<key>CCIP_API</key>
+			<string>ccip.sitcon.org</string>
 			<key>IRC_Channel</key>
 			<string>sitcon</string>
 			<key>tg_Chat</key>
@@ -152,15 +168,19 @@
 			<string>#3b097b</string>
 			<key>ScheduleTitleTextColor</key>
 			<string>#f7f5fa</string>
+			<key>ScheduleSectionTitleBackgroundColor</key>
+			<string>#efefef</string>
+			<key>ScheduleSectionTitleTextColor</key>
+			<string>#333333</string>
 			<key>AnnouncementTitleLeftColor</key>
 			<string>#3b097b</string>
 			<key>AnnouncementTitleRightColor</key>
 			<string>#3b097b</string>
 			<key>AnnouncementTitleTextColor</key>
 			<string>#f7f5fa</string>
-			<key>ScheduleSectionTitleBackgroundColor</key>
+			<key>AnnouncementSectionTitleBackgroundColor</key>
 			<string>#efefef</string>
-			<key>ScheduleSectionTitleTextColor</key>
+			<key>AnnouncementSectionTitleTextColor</key>
 			<string>#333333</string>
 			<key>AnnouncementDashedLineColor</key>
 			<string>#e9e9e9</string>
@@ -185,6 +205,8 @@
 		</dict>
 		<key>URL</key>
 		<dict>
+			<key>CCIP_API</key>
+			<string>ccip.pycon.tw</string>
 			<key>IRC_Channel</key>
 			<string></string>
 			<key>tg_Chat</key>
@@ -193,6 +215,10 @@
 			<string>tw.pycon.org</string>
 			<key>GamePath</key>
 			<string>https://game.pycon.tw/?mode=app&amp;token=%@</string>
+			<key>MapsUseWeb</key>
+			<true/>
+			<key>MapsPath</key>
+			<string>https://tw.pycon.org/2018/static/pycontw-2018/assets/venue-map.svg</string>
 			<key>StaffUseWeb</key>
 			<true/>
 			<key>StaffPath</key>

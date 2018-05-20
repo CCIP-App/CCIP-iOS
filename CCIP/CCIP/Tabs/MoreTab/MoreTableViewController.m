@@ -97,7 +97,7 @@
                        @"Puzzle",
                        @"Ticket",
                        @"Telegram",
-                       @"Maps",
+                       [NSString stringWithFormat:@"Maps%@", [[AppDelegate AppConfig:@"URL.MapsUseWeb"] boolValue] ? @"Web" : @""],
                        [NSString stringWithFormat:@"Staffs%@", [[AppDelegate AppConfig:@"URL.StaffUseWeb"] boolValue] ? @"Web" : @""],
                        [NSString stringWithFormat:@"Sponsors%@", [[AppDelegate AppConfig:@"URL.SponsorUseWeb"] boolValue] ? @"Web" : @""],
                        @"Acknowledgements",
