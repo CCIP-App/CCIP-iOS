@@ -7,7 +7,7 @@
 //
 
 #define __TIMEOUT_INTERVAL__    (15)
-#define ONE_SIGNAL_APP_TOKEN    ([[AppDelegate AppConfig:@"ogToken"] stringValue])
+#define ONE_SIGNAL_APP_TOKEN    ([NSString stringWithString:[AppDelegate AppConfig:@"ogToken"]])
 
 #define PUZZLE_GAME_BASE_DOMAIN ([AppDelegate AppConfigURL:@"GameDomain"])
 

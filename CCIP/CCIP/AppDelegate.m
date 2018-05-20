@@ -51,13 +51,13 @@
 }
 
 + (UIColor *)AppConfigColor:(NSString *)path {
-    NSString *colorString = [[self AppConfig:[NSString stringWithFormat:@"Themes.%@", path]] stringValue];
+    NSString *colorString = [NSString stringWithString:[self AppConfig:[NSString stringWithFormat:@"Themes.%@", path]]];
     UIColor *color = [UIColor colorFromHtmlColor:colorString];
     return color;
 }
 
 + (NSString *)AppConfigURL:(NSString *)path {
-    NSString *urlString = [[self AppConfig:[NSString stringWithFormat:@"URL.%@", path]] stringValue];
+    NSString *urlString = [NSString stringWithString:[self AppConfig:[NSString stringWithFormat:@"URL.%@", path]]];
     return urlString;
 }
 
