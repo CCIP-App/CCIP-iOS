@@ -10,6 +10,12 @@
 		<dict>
 			<key>DevelopingLogoMaskColor</key>
 			<string>#f2a900</string>
+			<key>RedeemButtonLeftColor</key>
+			<string>#e57b5c</string>
+			<key>RedeemButtonRightColor</key>
+			<string>#eec850</string>
+			<key>RedeemCodeTextColor</key>
+			<string></string>
 			<key>NavigationIndicatorColor</key>
 			<string></string>
 			<key>ScheduleTitleLeftColor</key>
@@ -85,6 +91,12 @@
 		<dict>
 			<key>DevelopingLogoMaskColor</key>
 			<string>#f2a900</string>
+			<key>RedeemButtonLeftColor</key>
+			<string>#e57b5c</string>
+			<key>RedeemButtonRightColor</key>
+			<string>#eec850</string>
+			<key>RedeemCodeTextColor</key>
+			<string></string>
 			<key>NavigationIndicatorColor</key>
 			<string></string>
 			<key>ScheduleTitleLeftColor</key>
@@ -160,6 +172,12 @@
 		<dict>
 			<key>DevelopingLogoMaskColor</key>
 			<string>#f2a900</string>
+			<key>RedeemButtonLeftColor</key>
+			<string>#e57b5c</string>
+			<key>RedeemButtonRightColor</key>
+			<string>#eec850</string>
+			<key>RedeemCodeTextColor</key>
+			<string>#333333</string>
 			<key>NavigationIndicatorColor</key>
 			<string>#f7f5fa</string>
 			<key>ScheduleTitleLeftColor</key>

@@ -29,6 +29,8 @@
     // Do any additional setup after loading the view.
     [self.guideMessageLabel setText:NSLocalizedString(@"GuideViewMessage", nil)];
     
+    [self.redeemCodeText setTextColor:[AppDelegate AppConfigColor:@"RedeemCodeTextColor"]];
+
     [self.redeemButton setTitle:NSLocalizedString(@"GuideViewButton", nil)
                        forState:UIControlStateNormal];
     [self.redeemButton setTintColor:[UIColor whiteColor]];
@@ -37,8 +39,8 @@
     
     // Set carousel background linear diagonal gradient
     //   Create the colors
-    UIColor *topColor = [UIColor colorFromHtmlColor:COLOR_GRADIENT2];
-    UIColor *bottomColor = [UIColor colorFromHtmlColor:COLOR_GRADIENT3];
+    UIColor *topColor = [AppDelegate AppConfigColor:@"RedeemButtonLeftColor"];
+    UIColor *bottomColor = [AppDelegate AppConfigColor:@"RedeemButtonRightColor"];
     //   Create the gradient
     CAGradientLayer *theViewGradient = [CAGradientLayer layer];
     theViewGradient.colors = [NSArray arrayWithObjects: (id)topColor.CGColor, (id)bottomColor.CGColor, nil];
