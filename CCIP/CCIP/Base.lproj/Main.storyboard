@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vFY-Ie-dA7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14112" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vFY-Ie-dA7">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -15,13 +14,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Menlo.ttc">
-            <string>Menlo-Regular</string>
-        </array>
-        <array key="PingFang.ttc">
-            <string>PingFangTC-Regular</string>
-            <string>PingFangTC-Semibold</string>
-        </array>
         <array key="fontawesome-webfont.ttf">
             <string>FontAwesome</string>
         </array>
@@ -309,7 +301,6 @@ Please copy and paste the token into next field or click the token link in the r
                         <segue destination="PgR-sB-d7G" kind="relationship" relationship="viewControllers" id="ync-Dd-Ovi"/>
                         <segue destination="2iG-px-jKh" kind="relationship" relationship="viewControllers" id="D70-W3-Kh3"/>
                         <segue destination="f3M-Kk-0Fr" kind="relationship" relationship="viewControllers" id="S6i-id-x9p"/>
-                        <segue destination="7DG-ad-dxc" kind="relationship" relationship="viewControllers" id="pqf-cR-3pG"/>
                         <segue destination="PXh-Tj-uNR" kind="relationship" relationship="viewControllers" id="cpx-rY-iTS"/>
                     </connections>
                 </tabBarController>
@@ -744,7 +735,7 @@ Please copy and paste the token into next field or click the token link in the r
                                 <rect key="frame" x="0.0" y="284" width="420" height="387"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleAbstract" rowHeight="250" id="qgL-2l-vLc" customClass="ScheduleAbstractViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleAbstract" rowHeight="250" id="qgL-2l-vLc" customClass="ScheduleAbstractViewCell">
                                         <rect key="frame" x="0.0" y="28" width="420" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qgL-2l-vLc" id="70q-mM-EDD">
@@ -752,10 +743,10 @@ Please copy and paste the token into next field or click the token link in the r
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RMM-hf-aQ8">
-                                                    <rect key="frame" x="38" y="21" width="344" height="208"/>
+                                                    <rect key="frame" x="43" y="21" width="340" height="208"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abstract" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="js4-QC-0N1">
-                                                            <rect key="frame" x="22" y="28" width="300" height="21"/>
+                                                            <rect key="frame" x="22" y="28" width="296" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="82g-Nd-Jny"/>
                                                             </constraints>
@@ -764,7 +755,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8G0-OA-Hz1">
-                                                            <rect key="frame" x="22" y="60" width="300" height="120"/>
+                                                            <rect key="frame" x="22" y="60" width="296" height="120"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -795,7 +786,7 @@ Please copy and paste the token into next field or click the token link in the r
                                             <outlet property="vwContent" destination="RMM-hf-aQ8" id="t6J-L7-WfB"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleSpeakerInfo" rowHeight="250" id="WuO-8O-IR6" customClass="ScheduleSpeakerInfoViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleSpeakerInfo" rowHeight="250" id="WuO-8O-IR6" customClass="ScheduleSpeakerInfoViewCell">
                                         <rect key="frame" x="0.0" y="278" width="420" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WuO-8O-IR6" id="MR5-7W-rvW">
@@ -803,10 +794,10 @@ Please copy and paste the token into next field or click the token link in the r
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCd-th-Z6D">
-                                                    <rect key="frame" x="38" y="21" width="344" height="208"/>
+                                                    <rect key="frame" x="43" y="21" width="340" height="208"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6h-vx-Zyl">
-                                                            <rect key="frame" x="22" y="28" width="300" height="21"/>
+                                                            <rect key="frame" x="22" y="28" width="296" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="BAb-IW-Lpy"/>
                                                             </constraints>
@@ -815,7 +806,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ei5-NI-34T">
-                                                            <rect key="frame" x="22" y="60" width="300" height="120"/>
+                                                            <rect key="frame" x="22" y="60" width="296" height="120"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -955,22 +946,22 @@ Please copy and paste the token into next field or click the token link in the r
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p62-4l-CHO">
-                                                    <rect key="frame" x="25" y="15" width="364" height="220"/>
+                                                    <rect key="frame" x="30" y="15" width="354" height="220"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iBr-Sr-bSh">
-                                                            <rect key="frame" x="0.0" y="0.0" width="364" height="220"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="354" height="220"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="272" translatesAutoresizingMaskIntoConstraints="NO" id="WLc-nf-nhY">
-                                                                    <rect key="frame" x="15" y="44" width="336" height="99"/>
+                                                                    <rect key="frame" x="15" y="44" width="326" height="99"/>
                                                                     <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                                                     <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sM4-Gr-Gtv">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="364" height="29"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="354" height="29"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000-00-00 00:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxe-Os-o2e">
-                                                                            <rect key="frame" x="18" y="5" width="328" height="17"/>
+                                                                            <rect key="frame" x="18" y="5" width="318" height="17"/>
                                                                             <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
                                                                             <color key="textColor" red="0.0" green="0.60392156862745094" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -986,10 +977,10 @@ Please copy and paste the token into next field or click the token link in the r
                                                                     </constraints>
                                                                 </view>
                                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRG-R0-5sb">
-                                                                    <rect key="frame" x="0.0" y="156" width="364" height="64"/>
+                                                                    <rect key="frame" x="0.0" y="156" width="354" height="64"/>
                                                                     <subviews>
                                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h6R-CC-0vL">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="364" height="2"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="354" height="2"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="2" id="J82-hB-vmj"/>
@@ -1006,7 +997,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rr4-Vd-sfs">
-                                                                            <rect key="frame" x="69" y="13" width="282" height="40"/>
+                                                                            <rect key="frame" x="69" y="13" width="272" height="40"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="fLl-QM-Prf"/>
                                                                             </constraints>
