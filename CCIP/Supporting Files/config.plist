@@ -16,7 +16,35 @@
 			<string>#eec850</string>
 			<key>RedeemCodeTextColor</key>
 			<string></string>
+			<key>CheckinButtonLeftColor</key>
+			<string></string>
+			<key>CheckinButtonRightColor</key>
+			<string></string>
+			<key>DisabledButtonLeftColor</key>
+			<string></string>
+			<key>DisabledButtonRightColor</key>
+			<string></string>
+			<key>UsedButtonLeftColor</key>
+			<string></string>
+			<key>UsedButtonRightColor</key>
+			<string></string>
+			<key>MessageButtonLeftColor</key>
+			<string></string>
+			<key>MessageButtonRightColor</key>
+			<string></string>
 			<key>NavigationIndicatorColor</key>
+			<string></string>
+			<key>ProgressBarColor</key>
+			<string></string>
+			<key>HighlightedColor</key>
+			<string></string>
+			<key>LabelTextColor</key>
+			<string></string>
+			<key>CardTextColor</key>
+			<string></string>
+			<key>CardBackgroundColor</key>
+			<string>#3d983c</string>
+			<key>FavoriteButtonColor</key>
 			<string></string>
 			<key>ScheduleTitleLeftColor</key>
 			<string>#f9fea5</string>
@@ -97,7 +125,35 @@
 			<string>#eec850</string>
 			<key>RedeemCodeTextColor</key>
 			<string></string>
+			<key>CheckinButtonLeftColor</key>
+			<string></string>
+			<key>CheckinButtonRightColor</key>
+			<string></string>
+			<key>DisabledButtonLeftColor</key>
+			<string></string>
+			<key>DisabledButtonRightColor</key>
+			<string></string>
+			<key>UsedButtonLeftColor</key>
+			<string></string>
+			<key>UsedButtonRightColor</key>
+			<string></string>
+			<key>MessageButtonLeftColor</key>
+			<string></string>
+			<key>MessageButtonRightColor</key>
+			<string></string>
 			<key>NavigationIndicatorColor</key>
+			<string></string>
+			<key>ProgressBarColor</key>
+			<string></string>
+			<key>HighlightedColor</key>
+			<string></string>
+			<key>LabelTextColor</key>
+			<string></string>
+			<key>CardTextColor</key>
+			<string></string>
+			<key>CardBackgroundColor</key>
+			<string>#3d983c</string>
+			<key>FavoriteButtonColor</key>
 			<string></string>
 			<key>ScheduleTitleLeftColor</key>
 			<string>#64757d</string>
@@ -178,8 +234,36 @@
 			<string>#eec850</string>
 			<key>RedeemCodeTextColor</key>
 			<string>#333333</string>
+			<key>CheckinButtonLeftColor</key>
+			<string>#2bb1f7</string>
+			<key>CheckinButtonRightColor</key>
+			<string>#3000d1</string>
+			<key>DisabledButtonLeftColor</key>
+			<string>#808080</string>
+			<key>DisabledButtonRightColor</key>
+			<string>#3000d1</string>
+			<key>UsedButtonLeftColor</key>
+			<string>#808080</string>
+			<key>UsedButtonRightColor</key>
+			<string>#3000d1</string>
+			<key>MessageButtonLeftColor</key>
+			<string>#2bb1f7</string>
+			<key>MessageButtonRightColor</key>
+			<string>#3000d1</string>
 			<key>NavigationIndicatorColor</key>
 			<string>#f7f5fa</string>
+			<key>ProgressBarColor</key>
+			<string>#efefef</string>
+			<key>HighlightedColor</key>
+			<string>#333333</string>
+			<key>LabelTextColor</key>
+			<string>#333333</string>
+			<key>CardTextColor</key>
+			<string>#333333</string>
+			<key>CardBackgroundColor</key>
+			<string>#3d983c</string>
+			<key>FavoriteButtonColor</key>
+			<string>#9d50ff</string>
 			<key>ScheduleTitleLeftColor</key>
 			<string>#3b097b</string>
 			<key>ScheduleTitleRightColor</key>

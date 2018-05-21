@@ -33,7 +33,7 @@
         noticeText = NSLocalizedString(@"TicketNonExistNotice", nil);
     }
     [self.lbNotice setText:noticeText];
-    [self.lbNotice setTextColor:[UIColor colorFromHtmlColor:COLOR_CARD_TEXT]];
+    [self.lbNotice setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -493,11 +493,11 @@
     [[UIButton appearanceWhenContainedInInstancesOfClasses:@[ [UINavigationController class] ]] setTintColor:[AppDelegate AppConfigColor:@"NavigationIndicatorColor"]];
     [[UIToolbar appearanceWhenContainedInInstancesOfClasses:@[ [UINavigationController class] ]] setBarTintColor:[appArt backgroundColor]];
     
-    [[UITabBar appearance] setTintColor:[UIColor colorFromHtmlColor:COLOR_LABEL_TEXT]];
-    [[UISegmentedControl appearance] setTintColor:[UIColor colorFromHtmlColor:COLOR_LABEL_TEXT]];
-    [[UIProgressView appearance] setTintColor:[UIColor colorFromHtmlColor:COLOR_LABEL_TEXT]];
-    [[UILabel appearance] setTintColor:[UIColor colorFromHtmlColor:COLOR_LABEL_TEXT]];
-    [[UISearchBar appearance] setTintColor:[UIColor colorFromHtmlColor:COLOR_LABEL_TEXT]];
+    [[UITabBar appearance] setTintColor:[AppDelegate AppConfigColor:@"LabelTextColor"]];
+    [[UISegmentedControl appearance] setTintColor:[AppDelegate AppConfigColor:@"LabelTextColor"]];
+    [[UIProgressView appearance] setTintColor:[AppDelegate AppConfigColor:@"LabelTextColor"]];
+    [[UILabel appearance] setTintColor:[AppDelegate AppConfigColor:@"LabelTextColor"]];
+    [[UISearchBar appearance] setTintColor:[AppDelegate AppConfigColor:@"LabelTextColor"]];
 }
 
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {

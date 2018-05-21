@@ -167,7 +167,7 @@ static NSDateFormatter *formatter_date = nil;
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    [header.textLabel setTextColor:[UIColor colorFromHtmlColor:COLOR_TITLE_HIGHLIGHTED]];
+    [header.textLabel setTextColor:[AppDelegate AppConfigColor:@"HighlightedColor"]];
     [view setTintColor:[UIColor colorFromHtmlColor:@"#ECF5F4"]];
 }
 

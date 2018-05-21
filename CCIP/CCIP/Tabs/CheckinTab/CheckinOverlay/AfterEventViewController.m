@@ -6,6 +6,7 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "UIColor+addition.h"
 #import "AfterEventViewController.h"
 
@@ -26,11 +27,11 @@
     [self.view.layer setShadowOpacity:0.3f];
     
     [self.afterEventMessageLabel setText:NSLocalizedString(@"AfterEventMessage", nil)];
-    [self.afterEventMessageLabel setTextColor:[UIColor colorFromHtmlColor:COLOR_CARD_TEXT]];
+    [self.afterEventMessageLabel setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
     [self.afterEventButton setTitle:NSLocalizedString(@"AfterEventActionTitle", nil)
                            forState:UIControlStateNormal];
     [self.afterEventButton setTintColor:[UIColor whiteColor]];
-    [self.afterEventButton setBackgroundColor:[UIColor colorFromHtmlColor:@"#3d983c"]];
+    [self.afterEventButton setBackgroundColor:[AppDelegate AppConfigColor:@"CardBackgroundColor"]];
     [self.afterEventButton.layer setCornerRadius:10.0f];
 }
 

@@ -40,7 +40,10 @@
     dispatch_semaphore_t semaList = dispatch_semaphore_create(0);
     
     [self.tableView beginUpdates];
-    [manager GET:SPONSOR_LIST_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [manager GET:[AppDelegate AppConfigURL:@"SponsorPath"]
+      parameters:nil
+        progress:nil
+         success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         if (responseObject != nil) {
             self.sponsorArray = responseObject;
@@ -179,7 +182,7 @@
         }
     }
     
-    SEND_FIB_EVENT(@"SponsorTableView", urlString);
+    SEND_FIB_EVENT(@"SponsorTableView", @{ @"URL": urlString });
     // Navigation logic may go here, for example:
     // Create the next view controller.
     //<#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];

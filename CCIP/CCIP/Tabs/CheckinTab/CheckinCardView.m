@@ -52,8 +52,8 @@
 
 - (IBAction)checkinBtnTouched:(id)sender {
     UIAlertController *ac = nil;
-    UIColor *defaultColor = [UIColor colorFromHtmlColor:COLOR_BUTTON_DEFAULT];
-    UIColor *disabledColor = [UIColor colorFromHtmlColor:COLOR_BUTTON_DISABLED];
+    UIColor *defaultColor = [AppDelegate AppConfigColor:@"CheckinButtonLeftColor"];
+    UIColor *disabledColor = [AppDelegate AppConfigColor:@"DisabledButtonLeftColor"];
     NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[self.scenario objectForKey:@"available_time"] integerValue]];
     NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[self.scenario objectForKey:@"expire_time"] integerValue]];
     NSDate *nowTime = [NSDate new];
@@ -71,7 +71,7 @@
                     NSLog(@"%@", [responseObject objectForKey:@"message"]);
 //                    [self.checkinBtn setBackgroundColor:[UIColor redColor]];
                     [self.checkinBtn setGradientColor:[UIColor redColor]
-                                                   To:[UIColor colorFromHtmlColor:COLOR_BUTTON_TO]
+                                                   To:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
                                            StartPoint:CGPointMake(.2, .8)
                                               ToPoint:CGPointMake(1, .5)];
                 } else if ([[responseObject objectForKey:@"message"] isEqual:@"has been used"]) {
@@ -81,7 +81,7 @@
                                      animations:^{
 //                                         [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
                                          [self.checkinBtn setGradientColor:[UIColor orangeColor]
-                                                                        To:[UIColor colorFromHtmlColor:COLOR_BUTTON_TO]
+                                                                        To:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
                                                                 StartPoint:CGPointMake(.2, .8)
                                                                    ToPoint:CGPointMake(1, .5)];
                                      }
@@ -91,7 +91,7 @@
                                                               animations:^{
 //                                                                  [self.checkinBtn setBackgroundColor:disabledColor];
                                                                   [self.checkinBtn setGradientColor:disabledColor
-                                                                                                 To:[UIColor colorFromHtmlColor:COLOR_BUTTON_TO]
+                                                                                                 To:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
                                                                                          StartPoint:CGPointMake(.2, .8)
                                                                                             ToPoint:CGPointMake(1, .5)];
                                                               }];
@@ -103,7 +103,7 @@
                                      animations:^{
 //                                         [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
                                          [self.checkinBtn setGradientColor:[UIColor orangeColor]
-                                                                        To:[UIColor colorFromHtmlColor:COLOR_BUTTON_TO]
+                                                                        To:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
                                                                 StartPoint:CGPointMake(.2, .8)
                                                                    ToPoint:CGPointMake(1, .5)];
                                          [self.checkinBtn setTitle:NSLocalizedString(@"ExpiredOrNotAvailable", nil)
@@ -115,7 +115,7 @@
                                                               animations:^{
 //                                                                  [self.checkinBtn setBackgroundColor:defaultColor];
                                                                   [self.checkinBtn setGradientColor:defaultColor
-                                                                                                 To:[UIColor colorFromHtmlColor:COLOR_BUTTON_TO]
+                                                                                                 To:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
                                                                                          StartPoint:CGPointMake(.2, .8)
                                                                                             ToPoint:CGPointMake(1, .5)];
                                                               }
@@ -135,7 +135,7 @@
                     [self showCountdown];
 //                    [self.checkinBtn setBackgroundColor:disabledColor];
                     [self.checkinBtn setGradientColor:disabledColor
-                                                   To:[UIColor colorFromHtmlColor:COLOR_BUTTON_TO]
+                                                   To:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
                                            StartPoint:CGPointMake(.2, .8)
                                               ToPoint:CGPointMake(1, .5)];
                     if (isCheckin) {
@@ -161,7 +161,7 @@
                          animations:^{
 //                             [self.checkinBtn setBackgroundColor:[UIColor orangeColor]];
                              [self.checkinBtn setGradientColor:[UIColor orangeColor]
-                                                            To:[UIColor colorFromHtmlColor:COLOR_BUTTON_TO]
+                                                            To:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
                                                     StartPoint:CGPointMake(.2, .8)
                                                        ToPoint:CGPointMake(1, .5)];
                          }
@@ -170,13 +170,13 @@
                                  [UIView animateWithDuration:1.75f animations:^{
 //                                     [self.checkinBtn setBackgroundColor:disabledColor];
                                      [self.checkinBtn setGradientColor:disabledColor
-                                                                    To:[UIColor colorFromHtmlColor:COLOR_BUTTON_TO]
+                                                                    To:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
                                                             StartPoint:CGPointMake(.2, .8)
                                                                ToPoint:CGPointMake(1, .5)];
                                  }];
                              }
                          }];
-        SEND_FIB_EVENT(@"CheckinCardView", @"click_disabled");
+        SEND_FIB_EVENT(@"CheckinCardView", @{ @"Click": @"click_disabled" });
     } else {
         if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
             // IN TIME

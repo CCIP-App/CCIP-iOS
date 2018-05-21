@@ -70,11 +70,8 @@ settingFlagsBundle $flags;
 cat CCIP.xcconfig > CCIP.debug.xcconfig
 cat CCIP.xcconfig > CCIP.release.xcconfig
 
-export color_button_disabled="#9b9b9b"
 export CONF_NAME="`echo $TARGET_NAME | awk '{ print tolower($0) }'`"
 export domain="org.$CONF_NAME"
-#export apiDomain="$CONF_NAME.ccip.app" # pre-defined for feture use
-export apiDomain="ccip.$CONF_NAME.org" # current used
 case $CONF_NAME in
     "coscup")
     export mainDomain="coscup.org"
@@ -116,19 +113,6 @@ case $CONF_NAME in
     export color_navigation_bar_item="#fdfdfd"
     export color_favorite_button="#64757d"
     ;;
-    "pycon")
-    export mainDomain="tw.pycon.org"
-    export color_title_highlighted="#333333"
-    export color_gradient1="#e57b5c"
-    export color_gradient2="#eec850" # QR right to left
-    export color_gradient3="#e57b5c" # QR left to right
-    export color_button_to="#3000d1"
-    export color_button_default="#3b097b"
-    export color_card_text="#333333"
-    export color_label_text="#333333"
-    export color_navigation_bar_item="#3b097b"
-    export color_favorite_button="#9d50ff"
-    ;;
 esac
 
 function replace_slash() {
@@ -148,16 +132,3 @@ xcc_replace 0 "#BUILD_SHORT_VERSION#"       "$productVersion"
 xcc_replace 0 "#APP_NAME#"                  "$TARGET_NAME"
 xcc_replace 0 "#define#"                    "$PREDEFINITIONS"
 xcc_replace 0 "#domain#"                    "$domain"
-xcc_replace 0 "#apiDomain#"                 "$apiDomain"
-xcc_replace 0 "#mainDomain#"                "$mainDomain"
-xcc_replace 0 "#color_title_highlighted#"   "$color_title_highlighted"
-xcc_replace 0 "#color_gradient1#"           "$color_gradient1"
-xcc_replace 0 "#color_gradient2#"           "$color_gradient2"
-xcc_replace 0 "#color_gradient3#"           "$color_gradient3"
-xcc_replace 0 "#color_button_to#"           "$color_button_to"
-xcc_replace 0 "#color_button_default#"      "$color_button_default"
-xcc_replace 0 "#color_button_disabled#"     "$color_button_disabled"
-xcc_replace 0 "#color_card_text#"           "$color_card_text"
-xcc_replace 0 "#color_label_text#"          "$color_label_text"
-xcc_replace 0 "#color_navigation_bar_item#" "$color_navigation_bar_item"
-xcc_replace 0 "#color_favorite_button#"     "$color_favorite_button"

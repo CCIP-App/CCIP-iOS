@@ -771,9 +771,9 @@
             NSString *scenarioType = [dd objectForKey:@"scenarioType"];
             NSDictionary *displayText = [scenario objectForKey:@"display_text"];
             NSString *lang = [AppDelegate longLangUI];
-            [temp.checkinTitle setTextColor:[UIColor colorFromHtmlColor:COLOR_CARD_TEXT]];
-            [temp.checkinDate setTextColor:[UIColor colorFromHtmlColor:COLOR_CARD_TEXT]];
-            [temp.checkinText setTextColor:[UIColor colorFromHtmlColor:COLOR_CARD_TEXT]];
+            [temp.checkinTitle setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
+            [temp.checkinDate setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
+            [temp.checkinText setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
             [temp.checkinTitle setText:[displayText objectForKey:lang]];
             [temp.checkinDate setText:NSLocalizedString(@"Title", nil)];
             [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
@@ -803,8 +803,8 @@
             if ([scenario objectForKey:@"disabled"]) {
                 [temp setDisabled:[NSNumber numberWithBool:YES]];
                 [temp.checkinBtn setTitle:[scenario objectForKey:@"disabled"] forState:UIControlStateNormal];
-                [temp.checkinBtn setGradientColor:[UIColor grayColor]
-                                               To:[UIColor colorFromHtmlColor:COLOR_BUTTON_TO]
+                [temp.checkinBtn setGradientColor:[AppDelegate AppConfigColor:@"DisabledButtonLeftColor"]
+                                               To:[AppDelegate AppConfigColor:@"DisabledButtonRightColor"]
                                        StartPoint:CGPointMake(.2, .8)
                                           ToPoint:CGPointMake(1, .5)];
             } else if ([scenario objectForKey:@"used"]) {
@@ -816,8 +816,8 @@
                     [temp.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil)
                                      forState:UIControlStateNormal];
                 }
-                [temp.checkinBtn setGradientColor:[UIColor grayColor]
-                                               To:[UIColor colorFromHtmlColor:COLOR_BUTTON_TO]
+                [temp.checkinBtn setGradientColor:[AppDelegate AppConfigColor:@"UsedButtonLeftColor"]
+                                               To:[AppDelegate AppConfigColor:@"UsedButtonRightColor"]
                                        StartPoint:CGPointMake(.2, .8)
                                           ToPoint:CGPointMake(1, .5)];
             } else {
@@ -829,8 +829,8 @@
                     [temp.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil)
                                      forState:UIControlStateNormal];
                 }
-                [temp.checkinBtn setGradientColor:[UIColor colorFromHtmlColor:COLOR_BUTTON_DEFAULT]
-                                               To:[UIColor colorFromHtmlColor:COLOR_BUTTON_TO]
+                [temp.checkinBtn setGradientColor:[AppDelegate AppConfigColor:@"CheckinButtonLeftColor"]
+                                               To:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
                                        StartPoint:CGPointMake(.2, .8)
                                           ToPoint:CGPointMake(1, .5)];
             }
