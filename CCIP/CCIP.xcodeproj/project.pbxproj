@@ -1376,6 +1376,14 @@
 					};
 					6B88DE1E20A6F7620038FB0A = {
 						DevelopmentTeam = 5MC99ARC2Z;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 					6BCAC01A1F1A8FC100032096 = {
 						CreatedOnToolsVersion = 8.3.3;

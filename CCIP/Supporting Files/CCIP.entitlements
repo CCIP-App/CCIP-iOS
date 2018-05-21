@@ -4,6 +4,8 @@
 <dict>
 	<key>aps-environment</key>
 	<string>development</string>
+	<key>com.apple.developer.associated-domains</key>
+	<array/>
 	<key>com.apple.developer.networking.HotspotConfiguration</key>
 	<true/>
 	<key>com.apple.developer.networking.networkextension</key>
@@ -12,7 +14,7 @@
 	<array>
 		<string>group.org.coscup.ccip</string>
 		<string>group.org.sitcon.ccip</string>
-		<string>group.org.pycon.ccip</string>
+		<string>group.org.pycontw.ccip</string>
 	</array>
 	<key>keychain-access-groups</key>
 	<array>
@@ -20,8 +22,8 @@
 		<string>$(AppIdentifierPrefix)org.coscup.CCIP-iOS</string>
 		<string>$(AppIdentifierPrefix)org.sitcon.CCIP-iOS-Dev</string>
 		<string>$(AppIdentifierPrefix)org.sitcon.CCIP-iOS</string>
-		<string>$(AppIdentifierPrefix)org.pycon.CCIP-iOS-Dev</string>
-		<string>$(AppIdentifierPrefix)org.pycon.CCIP-iOS</string>
+		<string>$(AppIdentifierPrefix)org.pycontw.CCIP-iOS-Dev</string>
+		<string>$(AppIdentifierPrefix)org.pycontw.CCIP-iOS</string>
 	</array>
 </dict>
 </plist>
