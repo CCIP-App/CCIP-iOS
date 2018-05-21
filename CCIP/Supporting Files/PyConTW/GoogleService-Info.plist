@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>282941702201-i16msn8ov7q903r5q51e7jrob98oaaqo.apps.googleusercontent.com</string>
+	<string>282941702201-8n8npb9j4384sf2tgkpb7n4l31p0jtbn.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.282941702201-i16msn8ov7q903r5q51e7jrob98oaaqo</string>
+	<string>com.googleusercontent.apps.282941702201-8n8npb9j4384sf2tgkpb7n4l31p0jtbn</string>
 	<key>API_KEY</key>
 	<string>AIzaSyA6uj2eHPVtyiK7a7jKUoVPSC2wFuaKFwo</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.pycon.CCIP-iOS</string>
+	<string>org.pycontw.CCIP-iOS</string>
 	<key>PROJECT_ID</key>
 	<string>ccip-pycontw</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:282941702201:ios:2583fac94b851f51</string>
+	<string>1:282941702201:ios:e8929230c17e1707</string>
 	<key>DATABASE_URL</key>
 	<string>https://ccip-pycontw.firebaseio.com</string>
 </dict>

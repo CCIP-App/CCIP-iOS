@@ -154,6 +154,7 @@
 		6B11BE811D4CBA5800B87EA9 /* UIImage+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */; };
 		6B11BE821D4CBC9300B87EA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B11BE841D4CBC9300B87EA9 /* Main.storyboard */; };
 		6B11BE891D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B11BE881D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m */; };
+		6B189E4720B339D400EB7954 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B189E4620B339D400EB7954 /* GoogleService-Info.plist */; };
 		6B26D9101F23E57A003D9CA1 /* UIView+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B26D90F1F23E57A003D9CA1 /* UIView+addition.m */; };
 		6B26D9131F23EE28003D9CA1 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */; };
 		6B27A53F20A6F93500CD514B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B88DE1B20A6F5E90038FB0A /* Assets.xcassets */; };
@@ -286,7 +287,6 @@
 		6BAD226620B1F33100155F3F /* MapsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAD226520B1F2E100155F3F /* MapsWebViewController.m */; };
 		6BAD226720B1F33200155F3F /* MapsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAD226520B1F2E100155F3F /* MapsWebViewController.m */; };
 		6BAD226820B1F33200155F3F /* MapsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAD226520B1F2E100155F3F /* MapsWebViewController.m */; };
-		6BAD226C20B1F75000155F3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BAD226B20B1F75000155F3F /* GoogleService-Info.plist */; };
 		6BB1C4391F1AD4BB00AB072F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
 		6BCAC01F1F1A8FC100032096 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BCAC01D1F1A8FC100032096 /* Interface.storyboard */; };
@@ -521,6 +521,7 @@
 		6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+addition.m"; sourceTree = "<group>"; };
 		6B11BE871D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbeddedTabBarControllerSegue.h; sourceTree = "<group>"; };
 		6B11BE881D4CCCF300B87EA9 /* EmbeddedTabBarControllerSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmbeddedTabBarControllerSegue.m; sourceTree = "<group>"; };
+		6B189E4620B339D400EB7954 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B26D90E1F23E57A003D9CA1 /* UIView+addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+addition.h"; sourceTree = "<group>"; };
 		6B26D90F1F23E57A003D9CA1 /* UIView+addition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+addition.m"; sourceTree = "<group>"; };
 		6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fontawesome-webfont.ttf"; path = "../../FontAwesome/fonts/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
@@ -578,7 +579,6 @@
 		6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+addition.m"; sourceTree = "<group>"; };
 		6BAD226420B1F2E100155F3F /* MapsWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapsWebViewController.h; sourceTree = "<group>"; };
 		6BAD226520B1F2E100155F3F /* MapsWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapsWebViewController.m; sourceTree = "<group>"; };
-		6BAD226B20B1F75000155F3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6BB0B6091F1A74DF00AEB437 /* CCIP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CCIP.entitlements; sourceTree = "<group>"; };
 		6BB50FB11D665393002CAD0B /* AfterEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AfterEventViewController.h; sourceTree = "<group>"; };
 		6BB50FB21D665393002CAD0B /* AfterEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AfterEventViewController.m; sourceTree = "<group>"; };
@@ -932,7 +932,7 @@
 				6B88DE1B20A6F5E90038FB0A /* Assets.xcassets */,
 				6B88DE0F20A6F5E50038FB0A /* InfoPlist.strings */,
 				6B88DE1220A6F5E50038FB0A /* Localizable.strings */,
-				6BAD226B20B1F75000155F3F /* GoogleService-Info.plist */,
+				6B189E4620B339D400EB7954 /* GoogleService-Info.plist */,
 				6B88DE1720A6F5E70038FB0A /* PassAssets.bundle */,
 				6B88DE1520A6F5E60038FB0A /* AssetsUI.bundle */,
 				6B88DE1920A6F5E80038FB0A /* Maps.bundle */,
@@ -1521,7 +1521,7 @@
 				6B88DE7920A6F7620038FB0A /* Settings.bundle in Resources */,
 				6B88DE7C20A6F7620038FB0A /* CHANGELOG.txt in Resources */,
 				6B27A54120A6F97900CD514B /* LaunchScreen@2x.png in Resources */,
-				6BAD226C20B1F75000155F3F /* GoogleService-Info.plist in Resources */,
+				6B189E4720B339D400EB7954 /* GoogleService-Info.plist in Resources */,
 				6B88DE7F20A6F7620038FB0A /* fontawesome-webfont.ttf in Resources */,
 				6B88DE8020A6F7620038FB0A /* WebViewAssets.bundle in Resources */,
 				6B27A53F20A6F93500CD514B /* Assets.xcassets in Resources */,
