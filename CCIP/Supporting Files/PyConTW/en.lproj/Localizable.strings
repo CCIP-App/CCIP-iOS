@@ -8,7 +8,7 @@
 
 
 "CurrentLang" = "en";
-"Title" = "PyCon 2018";
+"Title" = "PyConTW 2018";
 "Checkin" = "Checkin";
 "Schedule" = "Schedule";
 "Announce" = "Announce";
@@ -48,7 +48,7 @@
 "Puzzle" = "Booth Checkin";
 "Ticket" = "My Ticket";
 "TicketNotice" = "Please keep your ticket secretly and carefully, only shows for our staff or in booth event";
-"TicketNonExistNotice" = "Your Ticket not import into PyCon Pass, please try again after import !";
+"TicketNonExistNotice" = "Your Ticket not import into PyConTW Pass, please try again after import !";
 "Telegram" = "Telegram Groups";
 "MapsWeb" = "Maps";
 "Maps" = "Maps";
@@ -85,7 +85,7 @@
 "QRFileNotAvailableTitle" = "Extract Error!!";
 "QRFileNotAvailableDesc" = "Can not extract QR Code from the image";
 "Networking_Broken" = "Error while networking issues";
-"Networking_WrongWiFi" = "Please connect to the wifi provided by PyCon";
-"LoginGreeting" = "Hi %@, welcome to PyCon, enjoy this festival of fun!";
+"Networking_WrongWiFi" = "Please connect to the wifi provided by PyConTW";
+"LoginGreeting" = "Hi %@, welcome to PyConTW, enjoy this festival of fun!";
 "AfterEventMessage" = "After the Event, we need you in-form a questionnaire for us, thanks.";
 "AfterEventActionTitle" = "Open questionnaire";

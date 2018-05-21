@@ -7,7 +7,7 @@
 */
 /* Localized versions of Info.plist keys */
 
-CFBundleDisplayName = "PYCON 通關";
-CFBundleName = "PYCON 通關";
+CFBundleDisplayName = "PyConTW 通關";
+CFBundleName = "PyConTW 通關";
 NSCameraUsageDescription = "使用您的相機掃描 QR Code";
 NSPhotoLibraryUsageDescription = "從您的相簿讀取 QR Code 圖檔";
