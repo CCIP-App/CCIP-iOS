@@ -74,7 +74,7 @@
             NEHotspotConfiguration *NEHConfig = ([nehPass length] > 0) ? [[NEHotspotConfiguration alloc] initWithSSID:nehSSID
                                                                                                            passphrase:nehPass
                                                                                                                 isWEP:NO] : [[NEHotspotConfiguration alloc] initWithSSID:nehSSID];
-        [NEHConfig setJoinOnce:YES];
+        [NEHConfig setJoinOnce:NO];
         [NEHConfig setLifeTimeInDays:[NSNumber numberWithUnsignedInteger:3]];
         NEHotspotConfigurationManager *manager = [NEHotspotConfigurationManager sharedManager];
         [manager applyConfiguration:NEHConfig
