@@ -63,8 +63,10 @@
 
 + (void)createNEHC {
     if(@available(iOS 11.0, *)) {
-#ifndef TARGET_IPHONE_SIMULATOR
-        NSDictionary *nehDict = [NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"WiFiConfiguration"
+#if TARGET_OS_SIMULATOR
+        NSLog(@"In Simulator, NEHotspot not working");
+#else
+        NSDictionary *nehDict = [NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"PassAssets.bundle/WiFiConfiguration"
                                                                                                   withExtension:@"plist"]];
         NSString *nehSSID = [nehDict objectForKey:@"SSID"];
         NSString *nehPass = [nehDict objectForKey:@"Pass"];
