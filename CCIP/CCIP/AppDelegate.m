@@ -368,9 +368,10 @@
 #endif
     
     // Configure OneSignal
+    NSString *oneSignalToken = [NSString stringWithString:[AppDelegate AppConfig:@"ogToken"]];
     self.oneSignal = [[OneSignal alloc]
                       initWithLaunchOptions:launchOptions
-                      appId:ONE_SIGNAL_APP_TOKEN
+                      appId:oneSignalToken
                       handleNotification:^(NSString *message, NSDictionary *additionalData, BOOL isActive) {
                           NSLog(@"OneSignal Notification opened:\nMessage: %@\nadditionalData: %@", message, additionalData);
                           if (additionalData) {

@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>SSID</key>
-	<string>COSCUP 2018</string>
+	<string>PyCon2018</string>
 	<key>Pass</key>
-	<string></string>
+	<string>12345678</string>
 </dict>
 </plist>

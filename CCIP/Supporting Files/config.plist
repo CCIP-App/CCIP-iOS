@@ -220,7 +220,7 @@
 			<string>https://tw.pycon.org/2018/ccip/</string>
 		</dict>
 	</dict>
-	<key>PyCon</key>
+	<key>PyConTW</key>
 	<dict>
 		<key>ogToken</key>
 		<string>9506c2db-f054-46b3-9396-744807736fb8</string>
