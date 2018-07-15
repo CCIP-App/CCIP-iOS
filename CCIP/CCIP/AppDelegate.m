@@ -332,11 +332,15 @@
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation {
-    if (url != nil) {
-        [self parseUniversalLinkAndURL:YES
-                              WithLink:url];
+    FIRDynamicLink *dynamicLink = [[FIRDynamicLinks dynamicLinks] dynamicLinkFromCustomSchemeURL:url];
+    if (dynamicLink) {
+        if (dynamicLink.url) {
+            [self parseUniversalLinkAndURL:YES
+                                  WithLink:url];
+        }
+        return YES;
     }
-    return YES;
+    return NO;
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
