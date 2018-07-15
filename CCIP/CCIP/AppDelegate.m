@@ -71,6 +71,7 @@
         NSString *nehSSID = [nehDict objectForKey:@"SSID"];
         NSString *nehPass = [nehDict objectForKey:@"Pass"];
         if ([nehSSID length] > 0) {
+            NSLog(@"NEHotspot association with SSID `%@`.", nehSSID);
             NEHotspotConfiguration *NEHConfig = ([nehPass length] > 0) ? [[NEHotspotConfiguration alloc] initWithSSID:nehSSID
                                                                                                            passphrase:nehPass
                                                                                                                 isWEP:NO] : [[NEHotspotConfiguration alloc] initWithSSID:nehSSID];
@@ -81,6 +82,8 @@
                       completionHandler:^(NSError * _Nullable error) {
                           NSLog(@"%@", error);
             }];
+        } else {
+            NSLog(@"No SSID was set, bypass for NEHotspot association.");
         }
 #endif
     } else {
