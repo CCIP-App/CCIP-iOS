@@ -2,25 +2,39 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>TRACKING_ID</key>
-	<string>UA-79893624-1</string>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>981935318625-eo2fei25s8imbptkgl1e46tqqu503dvh.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.981935318625-eo2fei25s8imbptkgl1e46tqqu503dvh</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBJKJYCtAP8CfI6L7srE-yIXU_qvFNw92Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>981935318625</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>org.coscup.CCIP-iOS</string>
 	<key>PROJECT_ID</key>
-	<string>coscup-ios</string>
+	<string>ccip-9a548</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ccip-9a548.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<true/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_GCM_ENABLED</key>
-	<false/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<false/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1018422464193:ios:55a6ff68378322ca</string>
+	<string>1:981935318625:ios:55a6ff68378322ca</string>
+	<key>DATABASE_URL</key>
+	<string>https://ccip-9a548.firebaseio.com</string>
 </dict>
 </plist>

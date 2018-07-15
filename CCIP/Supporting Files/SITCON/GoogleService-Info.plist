@@ -2,25 +2,41 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>TRACKING_ID</key>
-	<string>UA-34467841-11</string>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>982607297926-su5ju39ieb8oicsque4njcgi0e2gne5q.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.982607297926-su5ju39ieb8oicsque4njcgi0e2gne5q</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>982607297926-v7dmuoag9d1i55l6c7n2hk342q95kg3v.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDetIowA4_mha_jSi_IAKc-hevoJRaazgM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>982607297926</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>org.sitcon.CCIP-iOS</string>
 	<key>PROJECT_ID</key>
-	<string>sitcon-ios</string>
+	<string>ccip-sitcon</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ccip-sitcon.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<true/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<false/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<false/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1018422464193:ios:55a6ff68378322ca</string>
+	<string>1:982607297926:ios:18e378f599a199d8</string>
+	<key>DATABASE_URL</key>
+	<string>https://ccip-sitcon.firebaseio.com</string>
 </dict>
 </plist>
