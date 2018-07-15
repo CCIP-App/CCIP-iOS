@@ -1,7 +1,8 @@
-MAIN_PRODUCT_BUNDLE_IDENTIFIER              = org.pycontw.CCIP-iOS-Dev
+MAIN_PRODUCT_BUNDLE_IDENTIFIER              = org.coscup.CCIP-iOS-Dev
 WATCH_PRODUCT_BUNDLE_IDENTIFIER             = $(MAIN_PRODUCT_BUNDLE_IDENTIFIER).watchkitapp
 WATCH_EXTENSION_PRODUCT_BUNDLE_IDENTIFIER   = $(WATCH_PRODUCT_BUNDLE_IDENTIFIER).watchkitextension
 MAIN_BUILD_VERSION                          = 2.2.111
 MAIN_BUILD_SHORT_VERSION                    = 2.2
-APP_NAME                                    = '(@"PyConTW")'
-APP_GROUP_ID                                = group.org.pycontw.ccip
+APP_NAME                                    = '(@"COSCUP")'
+APP_GROUP_ID                                = group.org.coscup.ccip
+APP_SCHEME                                  = ccip-coscup

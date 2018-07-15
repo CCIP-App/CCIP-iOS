@@ -334,7 +334,7 @@
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation {
     FIRDynamicLink *dynamicLink = [[FIRDynamicLinks dynamicLinks] dynamicLinkFromCustomSchemeURL:url];
     if (dynamicLink) {
-        if (dynamicLink.url) {
+        if (url != nil) {
             [self parseUniversalLinkAndURL:YES
                                   WithLink:url];
         }
