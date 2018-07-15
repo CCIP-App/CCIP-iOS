@@ -6,8 +6,10 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:s6bhm.app.goo.gl</string>
+        <string>applinks:ccip.coscup.org</string>
+        <string>applinks:ccip.sitcon.org</string>
 		<string>applinks:ccip.pycon.tw</string>
+        <string>applinks:s6bhm.app.goo.gl</string>
 	</array>
 	<key>com.apple.developer.networking.HotspotConfiguration</key>
 	<true/>
