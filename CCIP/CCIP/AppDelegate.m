@@ -74,13 +74,13 @@
             NEHotspotConfiguration *NEHConfig = ([nehPass length] > 0) ? [[NEHotspotConfiguration alloc] initWithSSID:nehSSID
                                                                                                            passphrase:nehPass
                                                                                                                 isWEP:NO] : [[NEHotspotConfiguration alloc] initWithSSID:nehSSID];
-        [NEHConfig setJoinOnce:NO];
-        [NEHConfig setLifeTimeInDays:[NSNumber numberWithUnsignedInteger:3]];
-        NEHotspotConfigurationManager *manager = [NEHotspotConfigurationManager sharedManager];
-        [manager applyConfiguration:NEHConfig
-                  completionHandler:^(NSError * _Nullable error) {
-                      NSLog(@"%@", error);
-        }];
+            [NEHConfig setJoinOnce:NO];
+            [NEHConfig setLifeTimeInDays:[NSNumber numberWithUnsignedInteger:3]];
+            NEHotspotConfigurationManager *manager = [NEHotspotConfigurationManager sharedManager];
+            [manager applyConfiguration:NEHConfig
+                      completionHandler:^(NSError * _Nullable error) {
+                          NSLog(@"%@", error);
+            }];
         }
 #endif
     } else {
