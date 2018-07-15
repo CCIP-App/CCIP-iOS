@@ -52,7 +52,12 @@
 
 + (UIColor *)AppConfigColor:(NSString *)path {
     NSString *colorString = [NSString stringWithString:[self AppConfig:[NSString stringWithFormat:@"Themes.%@", path]]];
-    UIColor *color = [UIColor colorFromHtmlColor:colorString];
+    UIColor *color = [UIColor clearColor];
+    if (colorString == nil || [colorString length] == 0) {
+        NSLog(@"[WARN] Config Color `%@` is empty", path);
+    } else {
+        color = [UIColor colorFromHtmlColor:colorString];
+    }
     return color;
 }
 
@@ -199,7 +204,7 @@
     if ([AppDelegate isBeforeEvent]) {
         return [formatter dateFromString:[[AppDelegate appDelegate].availableDays firstObject]];
     } else if ([AppDelegate isAfterEvent]) {
-        return nil;
+        return [formatter dateFromString:[[AppDelegate appDelegate].availableDays firstObject]]; // fix nil
     } else {
         return [formatter dateFromString:[formatter stringFromDate:[NSDate new]]];
     }
