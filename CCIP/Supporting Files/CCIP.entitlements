@@ -5,7 +5,10 @@
 	<key>aps-environment</key>
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
-	<array/>
+	<array>
+		<string>applinks:s6bhm.app.goo.gl</string>
+		<string>applinks:ccip.pycon.tw</string>
+	</array>
 	<key>com.apple.developer.networking.HotspotConfiguration</key>
 	<true/>
 	<key>com.apple.developer.networking.networkextension</key>

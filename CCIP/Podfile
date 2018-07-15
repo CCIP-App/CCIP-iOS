@@ -11,6 +11,7 @@ def ccip_pods
     pod 'OneSignal', '~> 1.13'
     pod 'UICKeyChainStore', '~> 2.1'
     pod 'Firebase/Core'
+    pod 'Firebase/DynamicLinks'
     pod 'ICViewPager', :git => 'https://github.com/FrankWu100/ICViewPager'
     pod 'STPopup', '~> 1.7'
     pod 'ColorArt', '0.1.1'
@@ -39,6 +40,6 @@ target 'SITCON' do
     ccip_pods
 end
 
-target 'PYCON' do
+target 'PyConTW' do
     ccip_pods
 end

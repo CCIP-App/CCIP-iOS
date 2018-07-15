@@ -1,9 +1,21 @@
-# Acknowledgements
-This application makes use of the following third party libraries:
-
-## AFNetworking
-
-Copyright (c) 2011–2016 Alamofire Software Foundation (http://alamofire.org/)
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>specs</key>
+	<array>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Mattt Thompson</key>
+				<string>m@mattt.me</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/AFNetworking/AFNetworking</string>
+			<key>licenseText</key>
+			<string>Copyright (c) 2011–2016 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,23 +34,64 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-
-## BLKFlexibleHeightBar
-
-Copyright (c) 2015 Bryan Keller
+</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>AFNetworking</string>
+			<key>socialMediaURL</key>
+			<string>https://twitter.com/AFNetworking</string>
+			<key>summary</key>
+			<string>A delightful iOS and OS X networking framework.</string>
+			<key>version</key>
+			<string>3.1.0</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Bryan Keller</key>
+				<string>kellerbryan19@gmail.com</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/bryankeller/BLKFlexibleHeightBar/</string>
+			<key>licenseText</key>
+			<string>Copyright (c) 2015 Bryan Keller
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-## CPDAcknowledgements
-
-Copyright (c) 2014 Orta Therox <orta.therox@gmail.com>
-				   Fabio Pelosin <fabio.pelosin@gmail.com>
+</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>BLKFlexibleHeightBar</string>
+			<key>socialMediaURL</key>
+			<string>https://twitter.com/BKyourway19</string>
+			<key>summary</key>
+			<string>A library for creating condensing header bars like those seen in the Facebook, Square Cash, and Safari iOS apps.</string>
+			<key>version</key>
+			<string>1.0.2</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Fabio Pelosin</key>
+				<string>fabiopelosin@gmail.com</string>
+				<key>Orta Therox</key>
+				<string>orta.therox@gmail.com</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Show your CocoaPods library and contributors in-app with smart defaults, and customisable view controllers.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/CocoaPods/CPDAcknowledgements</string>
+			<key>licenseText</key>
+			<string>Copyright (c) 2014 Orta Therox &lt;orta.therox@gmail.com&gt;
+				   Fabio Pelosin &lt;fabio.pelosin@gmail.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -57,11 +110,34 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-
-## ColorArt
-
-Copyright (C) 2012 Panic Inc. Code by Wade Cosgrove. All rights reserved.
+</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>CPDAcknowledgements</string>
+			<key>socialMediaURL</key>
+			<string>https://twitter.com/CocoaPods</string>
+			<key>summary</key>
+			<string>Show your CocoaPods dependencies in-app.</string>
+			<key>version</key>
+			<string>1.0.0</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Aaron Brethorst</key>
+				<string></string>
+				<key>Fred Leitz</key>
+				<string>fred.leitz@gmail.com</string>
+				<key>Wade Cosgrove</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/fleitz/ColorArt</string>
+			<key>licenseText</key>
+			<string>Copyright (C) 2012 Panic Inc. Code by Wade Cosgrove. All rights reserved.
 
 Redistribution and use, with or without modification, are permitted
 provided that the following conditions are met:
@@ -106,11 +182,32 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 DEALINGS IN THE SOFTWARE.
-
-
-## DACircularProgress
-
-# License
+</string>
+			<key>licenseType</key>
+			<string>CUSTOM</string>
+			<key>name</key>
+			<string>ColorArt</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>iTunes 11-style color matching code.</string>
+			<key>version</key>
+			<string>0.1.1</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Daniel Amitay</key>
+				<string>hello@danielamitay.com</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;DACircularProgress is a UIView subclass with circular UIProgressView properties.
+It was built to be an imitation of Facebook&amp;#39;s photo progress indicator.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/danielamitay/DACircularProgress</string>
+			<key>licenseText</key>
+			<string># License
 
 ## MIT License
 
@@ -132,11 +229,31 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-## EFQRCode
-
-Copyright (c) 2017 EyreFree <eyrefree@eyrefree.org>
+THE SOFTWARE.</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>DACircularProgress</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>DACircularProgress is a UIView subclass with circular UIProgressView properties.</string>
+			<key>version</key>
+			<string>2.3.1</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>EyreFree</key>
+				<string>eyrefree@eyrefree.org</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;EFQRCode is a lightweight, pure-Swift library for generating pretty QRCode image with input watermark or icon and recognizing QRCode from image, it is based on CoreImage. It provides you a better way to operate QRCode in your app.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/EyreFree/EFQRCode</string>
+			<key>licenseText</key>
+			<string>Copyright (c) 2017 EyreFree &lt;eyrefree@eyrefree.org&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -155,27 +272,152 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-
-## Firebase
-
-Copyright 2017 Google
-
-## FirebaseAnalytics
-
-Copyright 2017 Google
-
-## FirebaseCore
-
-Copyright 2017 Google
-
-## FirebaseInstanceID
-
-Copyright 2017 Google
-
-## GoogleToolboxForMac
-
-
+</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>EFQRCode</string>
+			<key>socialMediaURL</key>
+			<string>https://twitter.com/EyreFree777</string>
+			<key>summary</key>
+			<string>A better way to operate quick response code in Swift.</string>
+			<key>version</key>
+			<string>1.2.7</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Google, Inc.</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Simplify your iOS development, grow your user base, and monetize more effectively with Firebase.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://firebase.google.com</string>
+			<key>licenseText</key>
+			<string>Copyright 2017 Google</string>
+			<key>licenseType</key>
+			<string>Copyright</string>
+			<key>name</key>
+			<string>Firebase</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Firebase for iOS</string>
+			<key>version</key>
+			<string>4.3.0</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Google, Inc.</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Firebase Analytics is a free, out-of-the-box analytics solution that inspires actionable insights based on app usage and user engagement.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://firebase.google.com/features/analytics/</string>
+			<key>licenseText</key>
+			<string>Copyright 2017 Google</string>
+			<key>licenseType</key>
+			<string>Copyright</string>
+			<key>name</key>
+			<string>FirebaseAnalytics</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Firebase Analytics for iOS</string>
+			<key>version</key>
+			<string>4.0.4</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Google, Inc.</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Firebase Core includes FIRApp and FIROptions which provide central configuration for other Firebase services.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://firebase.google.com</string>
+			<key>licenseText</key>
+			<string>Copyright 2017 Google</string>
+			<key>licenseType</key>
+			<string>Copyright</string>
+			<key>name</key>
+			<string>FirebaseCore</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Firebase Core for iOS</string>
+			<key>version</key>
+			<string>4.0.8</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Google, Inc.</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Firebase Dynamic Links are deep links that enhance user experience and increase engagement by retaining context post-install, across platforms.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://firebase.google.com/docs/dynamic-links/</string>
+			<key>licenseText</key>
+			<string>Copyright 2017 Google</string>
+			<key>licenseType</key>
+			<string>Copyright</string>
+			<key>name</key>
+			<string>FirebaseDynamicLinks</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Firebase Dynamic Links for iOS</string>
+			<key>version</key>
+			<string>2.1.0</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Google, Inc.</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Instance ID provides a unique ID per instance of your iOS apps. In addition to providing unique IDs for authentication, Instance ID can generate security tokens for use with other services.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://firebase.google.com/docs/reference/ios/firebaseinstanceid/api/reference/Classes</string>
+			<key>licenseText</key>
+			<string>Copyright 2017 Google</string>
+			<key>licenseType</key>
+			<string>Copyright</string>
+			<key>name</key>
+			<string>FirebaseInstanceID</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Firebase Instance ID for iOS.</string>
+			<key>version</key>
+			<string>2.0.4</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Google Inc.</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;A collection of source from different Google projects that may be of use
+to developers working on iOS or OS X projects.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/google/google-toolbox-for-mac</string>
+			<key>licenseText</key>
+			<string>
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -377,11 +619,55 @@ Copyright 2017 Google
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+</string>
+			<key>licenseType</key>
+			<string>Apache</string>
+			<key>name</key>
+			<string>GoogleToolboxForMac</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Google utilities for iOS and OSX development.</string>
+			<key>version</key>
+			<string>2.1.3</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Ilter Cengiz</key>
+				<string>me@iltercengiz.info</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Slide through the contents or select from tabs or slide through tabs and select!&lt;/p&gt;
 
+&lt;h2&gt;Installation&lt;/h2&gt;
 
-## ICViewPager
+&lt;p&gt;Just copy ViewPagerController.m and ViewPagerController.h files to your project.
+Or you can use CocoaPods (as this is the recommended way).
+&lt;code&gt;pod &amp;#39;ICViewPager&amp;#39;&lt;/code&gt;&lt;/p&gt;
 
-The MIT License (MIT)
+&lt;h2&gt;Usage&lt;/h2&gt;
+
+&lt;p&gt;Subclass ViewPagerController (as it&amp;#39;s a &lt;code&gt;UIViewController&lt;/code&gt; subclass) and implement dataSource and delegate methods in the subclass.&lt;/p&gt;
+
+&lt;h2&gt;Requirements&lt;/h2&gt;
+
+&lt;p&gt;ViewPager supports minimum iOS 6 and uses ARC.
+Supports both iPhone and iPad.&lt;/p&gt;
+
+&lt;h2&gt;Contact&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href="mailto:me@iltercengiz.info"&gt;Ilter Cengiz&lt;/a&gt;
+&lt;a href="https://twitter.com/monsieurje"&gt;@monsieurje&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;Licence&lt;/h2&gt;
+
+&lt;p&gt;ICViewPager is MIT licensed. See the LICENSE file for more info.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/monsieurje/ICViewPager</string>
+			<key>licenseText</key>
+			<string>The MIT License (MIT)
 
 Copyright (c) 2013 Ilter Cengiz
 
@@ -401,11 +687,34 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-## MBProgressHUD
-
-Copyright (c) 2009-2015 Matej Bukovinski
+</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>ICViewPager</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>You can create sliding tabs with ViewPager.</string>
+			<key>version</key>
+			<string>1.5.1</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Matej Bukovinski</key>
+				<string>matej@bukovinski.com</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;MBProgressHUD is an iOS drop-in class that displays a translucent HUD 
+with an indicator and/or labels while work is being done in a background thread. 
+The HUD is meant as a replacement for the undocumented, private UIKit UIProgressHUD 
+with some additional features.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>http://www.bukovinski.com</string>
+			<key>licenseText</key>
+			<string>Copyright (c) 2009-2015 Matej Bukovinski
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -423,11 +732,30 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-## MMMarkdown
-
-	        Copyright (C) 2012-2013 Matt Diephouse.
+THE SOFTWARE.</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>MBProgressHUD</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>An iOS activity indicator view.</string>
+			<key>version</key>
+			<string>0.9.2</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Matt Diephouse</key>
+				<string>matt@diephouse.com</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/mdiep/MMMarkdown</string>
+			<key>licenseText</key>
+			<string>	        Copyright (C) 2012-2013 Matt Diephouse.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -446,11 +774,34 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-
-## MWPhotoBrowser
-
-Copyright (c) 2010 Michael Waterfall <michaelwaterfall@gmail.com>
+</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>MMMarkdown</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>An Objective-C static library for converting Markdown to HTML.</string>
+			<key>version</key>
+			<string>0.5.5</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Michael Waterfall</key>
+				<string>michaelwaterfall@gmail.com</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;MWPhotoBrowser can display one or more images or videos by providing either UIImage
+objects, PHAsset objects, or URLs to library assets, web images/videos or local files.
+The photo browser handles the downloading and caching of photos from the web seamlessly.
+Photos can be zoomed and panned, and optional (customisable) captions can be displayed.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/mwaterfall/MWPhotoBrowser</string>
+			<key>licenseText</key>
+			<string>Copyright (c) 2010 Michael Waterfall &lt;michaelwaterfall@gmail.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -469,11 +820,30 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-
-## NJKWebViewProgress
-
-The MIT License (MIT)
+</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>MWPhotoBrowser</string>
+			<key>socialMediaURL</key>
+			<string>https://twitter.com/mwaterfall</string>
+			<key>summary</key>
+			<string>A simple iOS photo and video browser with optional grid view, captions and selections.</string>
+			<key>version</key>
+			<string>2.1.2</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>ninjinkun</key>
+				<string>ninjin@mac.com</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/ninjinkun/NJKWebViewProgress</string>
+			<key>licenseText</key>
+			<string>The MIT License (MIT)
 
 Copyright (c) 2013 Satoshi Asano
 
@@ -493,11 +863,30 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-## OneSignal
-
-Modified MIT License
+THE SOFTWARE.</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>NJKWebViewProgress</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>UIWebView progress interface.</string>
+			<key>version</key>
+			<string>0.2.3</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Josh Kasten</key>
+				<string>josh@onesignal.com</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://onesignal.com</string>
+			<key>licenseText</key>
+			<string>Modified MIT License
 
 Copyright 2015 OneSignal
 
@@ -571,11 +960,31 @@ Includes portions from BSMobileProvision:
     Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
     Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-
-## SDWebImage
-
-Copyright (c) 2016 Olivier Poitrey rs@dailymotion.com
+</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>OneSignal</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>OneSignal push notification library for mobile apps.</string>
+			<key>version</key>
+			<string>1.13.3</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Olivier Poitrey</key>
+				<string>rs@dailymotion.com</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;This library provides a category for UIImageView with support for remote images coming from the web. It provides an UIImageView category adding web image and cache management to the Cocoa Touch framework, an asynchronous image downloader, an asynchronous memory + disk image caching with automatic cache expiration handling, a guarantee that the same URL won&amp;#39;t be downloaded several times, a guarantee that bogus URLs won&amp;#39;t be retried again and again, and performances!&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/rs/SDWebImage</string>
+			<key>licenseText</key>
+			<string>Copyright (c) 2016 Olivier Poitrey rs@dailymotion.com
  
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -595,11 +1004,40 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
-
-## STPopup
-
-The MIT License (MIT)
+</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>SDWebImage</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Asynchronous image downloader with cache support with an UIImageView category.</string>
+			<key>version</key>
+			<string>3.8.2</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Kevin Lin</key>
+				<string>kevin_lyn@outlook.com</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;ul&gt;
+&lt;li&gt;Extend your view controller from UIViewController, build it in your familiar way.&lt;/li&gt;
+&lt;li&gt;Push/Pop view controller in to/out of popup view stack, and set navigation items by using self.navigationItem.leftBarButtonItem and rightBarButtonItem, just like you are using UINavigationController.&lt;/li&gt;
+&lt;li&gt;Support both &amp;quot;Form Sheet&amp;quot; and &amp;quot;Bottom Sheet&amp;quot; style.&lt;/li&gt;
+&lt;li&gt;Work well with storyboard(including segue).&lt;/li&gt;
+&lt;li&gt;Customize UI by using UIAppearance.&lt;/li&gt;
+&lt;li&gt;Auto-reposition of popup view when keyboard is showing up, make sure your UITextField/UITextView won&amp;#39;t be covered by the keyboard.&lt;/li&gt;
+&lt;li&gt;Drag navigation bar to dismiss popup view.&lt;/li&gt;
+&lt;li&gt;Support both portrait and landscape orientation, and both iPhone and iPad.&lt;/li&gt;
+&lt;/ul&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/kevin0571/STPopup</string>
+			<key>licenseText</key>
+			<string>The MIT License (MIT)
 
 Copyright (c) 2015 Kevin
 
@@ -621,11 +1059,32 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
-
-## Shimmer
-
-BSD License
+</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>STPopup</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>STPopup provides STPopupController, which works just like UINavigationController in form sheet/bottom sheet style, for both iPhone and iPad.</string>
+			<key>version</key>
+			<string>1.7.0</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Grant Paul</key>
+				<string>shimmer@grantpaul.com</string>
+				<key>Kimon Tsinteris</key>
+				<string>kimon@mac.com</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/facebook/Shimmer</string>
+			<key>licenseText</key>
+			<string>BSD License
 
 For Shimmer software
 
@@ -655,11 +1114,40 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
 ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</string>
+			<key>licenseType</key>
+			<string>BSD</string>
+			<key>name</key>
+			<string>Shimmer</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Simple shimmering effect.</string>
+			<key>version</key>
+			<string>1.0.2</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>kishikawa katsumi</key>
+				<string>kishikawakatsumi@mac.com</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;UICKeyChainStore is a simple wrapper for Keychain that works on iOS and OS X.
+Makes using Keychain APIs as easy as NSUserDefaults.&lt;/p&gt;
 
-
-## UICKeyChainStore
-
-The MIT License
+&lt;p&gt;Features
+  - Simple interface
+  - Support access group
+  - &lt;a href="#accessibility"&gt;Support accessibility&lt;/a&gt;
+  - &lt;a href="#icloud_sharing"&gt;Support iCloud sharing&lt;/a&gt;
+  - &lt;strong&gt;&lt;a href="#touch_id_integration"&gt;Support TouchID and Keychain integration (iOS 8+)&lt;/a&gt;&lt;/strong&gt;
+  - Works on both iOS &amp;amp; OS X&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/kishikawakatsumi/UICKeyChainStore</string>
+			<key>licenseText</key>
+			<string>The MIT License
 
 Copyright (c) 2011 kishikawa katsumi
 
@@ -667,11 +1155,31 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-## UITableView+FDTemplateLayoutCell
-
-The MIT License (MIT)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>UICKeyChainStore</string>
+			<key>socialMediaURL</key>
+			<string>https://twitter.com/k_katsumi</string>
+			<key>summary</key>
+			<string>UICKeyChainStore is a simple wrapper for Keychain that works on iOS and OS X. Makes using Keychain APIs as easy as NSUserDefaults.</string>
+			<key>version</key>
+			<string>2.1.0</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>forkingdog group</key>
+				<string>https://github.com/forkingdog</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Template auto layout cell for automatically UITableViewCell height calculate, cache and precache. Requires a &lt;code&gt;self-satisfied&lt;/code&gt; UITableViewCell, using system&amp;#39;s &lt;code&gt;- systemLayoutSizeFittingSize:&lt;/code&gt;, provides heights caching.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/forkingdog/UITableView-FDTemplateLayoutCell</string>
+			<key>licenseText</key>
+			<string>The MIT License (MIT)
 
 Copyright (c) 2015 
 
@@ -693,11 +1201,31 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
-
-## UIView+FDCollapsibleConstraints
-
-The MIT License (MIT)
+</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>UITableView+FDTemplateLayoutCell</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Template auto layout cell for automatically UITableViewCell height calculate, cache and precache</string>
+			<key>version</key>
+			<string>1.6</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>forkingdog group</key>
+				<string>https://github.com/forkingdog</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Collapse a view with its selected auto layout constraints in interface builder.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/forkingdog/UIView-FDCollapsibleConstraints</string>
+			<key>licenseText</key>
+			<string>The MIT License (MIT)
 
 Copyright (c) 2015 forkingdog
 
@@ -719,11 +1247,30 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
-
-## iCarousel
-
-iCarousel
+</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>UIView+FDCollapsibleConstraints</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Collapsible auto layout constraints.</string>
+			<key>version</key>
+			<string>1.1</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Nick Lockwood</key>
+				<string>support@charcoaldesign.co.uk</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/nicklockwood/iCarousel</string>
+			<key>licenseText</key>
+			<string>iCarousel
 
 Version 1.8.2, August 10th, 2015
 
@@ -745,11 +1292,30 @@ freely, subject to the following restrictions:
 2. Altered source versions must be plainly marked as such, and must not be
    misrepresented as being the original software.
    
-3. This notice may not be removed or altered from any source distribution.
-
-## iRate
-
-iRate
+3. This notice may not be removed or altered from any source distribution.</string>
+			<key>licenseType</key>
+			<string>zlib</string>
+			<key>name</key>
+			<string>iCarousel</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>A class designed to simplify the implementation of various types of carousel.</string>
+			<key>version</key>
+			<string>1.8.2</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Nick Lockwood</key>
+				<string></string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/nicklockwood/iRate</string>
+			<key>licenseText</key>
+			<string>iRate
 
 Version 1.11.5, July 31st, 2016
 
@@ -771,11 +1337,30 @@ freely, subject to the following restrictions:
 2. Altered source versions must be plainly marked as such, and must not be
    misrepresented as being the original software.
    
-3. This notice may not be removed or altered from any source distribution.
-
-## iVersion
-
-iVersion
+3. This notice may not be removed or altered from any source distribution.</string>
+			<key>licenseType</key>
+			<string>zlib</string>
+			<key>name</key>
+			<string>iRate</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>A handy class that prompts users of your iPhone or Mac App Store app to rate your application after using it for a while.</string>
+			<key>version</key>
+			<string>1.11.5</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Nick Lockwood</key>
+				<string>support@charcoaldesign.co.uk</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/nicklockwood/iVersion</string>
+			<key>licenseText</key>
+			<string>iVersion
 
 Copyright (C) 2011 Charcoal Design
 
@@ -795,11 +1380,35 @@ freely, subject to the following restrictions:
 2. Altered source versions must be plainly marked as such, and must not be
    misrepresented as being the original software.
    
-3. This notice may not be removed or altered from any source distribution.
-
-## nanopb
-
-Copyright (c) 2011 Petteri Aimonen <jpa at nanopb.mail.kapsi.fi>
+3. This notice may not be removed or altered from any source distribution.</string>
+			<key>licenseType</key>
+			<string>zlib</string>
+			<key>name</key>
+			<string>iVersion</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Library for checking for updates to Mac/iPhone App Store apps from within the application and notifying users about the new release.</string>
+			<key>version</key>
+			<string>1.11.5</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Petteri Aimonen</key>
+				<string>jpa@nanopb.mail.kapsi.fi</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Nanopb is a plain-C implementation of Google&amp;#39;s
+&lt;a href="https://developers.google.com/protocol-buffers/"&gt;Protocol Buffers&lt;/a&gt; data format. It is targeted at
+32 bit microcontrollers, but is also fit for
+other embedded systems with tight (2-10 kB ROM,
+&amp;lt;1 kB RAM) memory constraints.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/nanopb/nanopb</string>
+			<key>licenseText</key>
+			<string>Copyright (c) 2011 Petteri Aimonen &lt;jpa at nanopb.mail.kapsi.fi&gt;
 
 This software is provided 'as-is', without any express or 
 implied warranty. In no event will the authors be held liable 
@@ -819,5 +1428,18 @@ redistribute it freely, subject to the following restrictions:
 
 3. This notice may not be removed or altered from any source 
    distribution.
-
-Generated by CocoaPods - https://cocoapods.org
+</string>
+			<key>licenseType</key>
+			<string>zlib</string>
+			<key>name</key>
+			<string>nanopb</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Protocol buffers with small code size.</string>
+			<key>version</key>
+			<string>0.3.8</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -22,17 +22,22 @@ PODS:
   - Firebase/Core (4.3.0):
     - FirebaseAnalytics (= 4.0.4)
     - FirebaseCore (= 4.0.8)
+  - Firebase/DynamicLinks (4.3.0):
+    - Firebase/Core
+    - FirebaseDynamicLinks (= 2.1.0)
   - FirebaseAnalytics (4.0.4):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
   - FirebaseCore (4.0.8):
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
+  - FirebaseDynamicLinks (2.1.0):
+    - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.4)
   - GoogleToolboxForMac/Defines (2.1.3)
-  - GoogleToolboxForMac/NSData+zlib (2.1.3):
+  - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
     - GoogleToolboxForMac/Defines (= 2.1.3)
   - iCarousel (1.8.2)
   - ICViewPager (1.5.1)
@@ -43,7 +48,7 @@ PODS:
   - MWPhotoBrowser (2.1.2):
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
-    - SDWebImage (!= 3.7.2, ~> 3.7)
+    - "SDWebImage (!= 3.7.2, ~> 3.7)"
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -61,8 +66,8 @@ PODS:
   - Shimmer (1.0.2)
   - STPopup (1.7.0)
   - UICKeyChainStore (2.1.0)
-  - UITableView+FDTemplateLayoutCell (1.6)
-  - UIView+FDCollapsibleConstraints (1.1)
+  - "UITableView+FDTemplateLayoutCell (1.6)"
+  - "UIView+FDCollapsibleConstraints (1.1)"
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1)
@@ -71,6 +76,7 @@ DEPENDENCIES:
   - CPDAcknowledgements (~> 1.0)
   - EFQRCode (~> 1.2.7)
   - Firebase/Core
+  - Firebase/DynamicLinks
   - iCarousel (~> 1.8)
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
   - iRate (~> 1.11)
@@ -84,13 +90,42 @@ DEPENDENCIES:
   - Shimmer (~> 1.0)
   - STPopup (~> 1.7)
   - UICKeyChainStore (~> 2.1)
-  - UITableView+FDTemplateLayoutCell (from `https://github.com/Haraguroicha/UITableView-FDTemplateLayoutCell`, tag `1.6.1`)
-  - UIView+FDCollapsibleConstraints (~> 1.1)
+  - "UITableView+FDTemplateLayoutCell (from `https://github.com/Haraguroicha/UITableView-FDTemplateLayoutCell`, tag `1.6.1`)"
+  - "UIView+FDCollapsibleConstraints (~> 1.1)"
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - BLKFlexibleHeightBar
+    - ColorArt
+    - CPDAcknowledgements
+    - DACircularProgress
+    - EFQRCode
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseDynamicLinks
+    - FirebaseInstanceID
+    - GoogleToolboxForMac
+    - iCarousel
+    - iRate
+    - iVersion
+    - MBProgressHUD
+    - MMMarkdown
+    - MWPhotoBrowser
+    - nanopb
+    - NJKWebViewProgress
+    - OneSignal
+    - SDWebImage
+    - Shimmer
+    - STPopup
+    - UICKeyChainStore
+    - "UIView+FDCollapsibleConstraints"
 
 EXTERNAL SOURCES:
   ICViewPager:
     :git: https://github.com/FrankWu100/ICViewPager
-  UITableView+FDTemplateLayoutCell:
+  "UITableView+FDTemplateLayoutCell":
     :git: https://github.com/Haraguroicha/UITableView-FDTemplateLayoutCell
     :tag: 1.6.1
 
@@ -98,7 +133,7 @@ CHECKOUT OPTIONS:
   ICViewPager:
     :commit: bdafff5f2090df73ae911a4ccfdec42062716405
     :git: https://github.com/FrankWu100/ICViewPager
-  UITableView+FDTemplateLayoutCell:
+  "UITableView+FDTemplateLayoutCell":
     :git: https://github.com/Haraguroicha/UITableView-FDTemplateLayoutCell
     :tag: 1.6.1
 
@@ -112,6 +147,7 @@ SPEC CHECKSUMS:
   Firebase: 83283761a1ef6dc9846e03d08059f51421afbd65
   FirebaseAnalytics: 722b53c7b32bfc7806b06e0093a2f5180d4f2c5a
   FirebaseCore: 69b1a5ac5f857ba6d5fd9d5fe794f4786dd5e579
+  FirebaseDynamicLinks: ed4cb6c42705aaa5e841ed2d76e3a4bddbec10c1
   FirebaseInstanceID: 70c2b877e9338971b2429ea5a4293df6961aa44e
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   iCarousel: 67c8a43da5a46795b56aadfc96cd36a16f6149b2
@@ -128,9 +164,9 @@ SPEC CHECKSUMS:
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
-  UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
-  UIView+FDCollapsibleConstraints: 9357eaf03b4e088263ab74a3b86a382a64ce38dd
+  "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: 682cf976fad47d7fa93afe86fa908efd0de0eb79
+PODFILE CHECKSUM: 5d3e62502f2f0821b1f947cdca96fcadde51454e
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

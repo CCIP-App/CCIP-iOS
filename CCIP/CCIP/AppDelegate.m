@@ -325,23 +325,8 @@
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation {
     if (url != nil) {
-        NSLog(@"Calling from URL: %@", url);
-        NSString *urlHost = [url host];
-        NSString *urlQuery = [url query];
-        if ([urlHost isEqualToString:@"login"] && [urlQuery length] > 0) {
-            NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-            for (NSString *param in [urlQuery componentsSeparatedByString:@"&"]) {
-                NSArray *elts = [param componentsSeparatedByString:@"="];
-                if ([elts count] < 2) continue;
-                [params setObject:[elts objectAtIndex:1] forKey:[elts objectAtIndex:0]];
-            }
-            [[AppDelegate appDelegate] setIsLoginSession:YES];
-            [AppDelegate setAccessToken:[params objectForKey:@"token"]];
-            
-            if (self.checkinView != nil) {
-                [self.checkinView reloadCard];
-            }
-        }
+        [self parseUniversalLinkAndURL:YES
+                              WithLink:url];
     }
     return YES;
 }
@@ -357,6 +342,7 @@
     [self setIsLoginSession:NO];
     [self setAvailableDays:[NSMutableArray new]];
     // Configure tracker from GoogleService-Info.plist.
+    [FIROptions defaultOptions].deepLinkURLScheme = [[[NSBundle mainBundle] infoDictionary] valueForKeyPathWithIndexes:@"CFBundleURLTypes[0].CFBundleURLSchemes[0]"];
     [FIRApp configure];
 //    NSError *configureError;
 //    [[GGLContext sharedInstance] configureWithError:&configureError];
@@ -398,6 +384,62 @@
     [self setDefaultShortcutItems];
     
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> *))restorationHandler {
+    BOOL handled = [[FIRDynamicLinks dynamicLinks] handleUniversalLink:userActivity.webpageURL
+                                                            completion:^(FIRDynamicLink * _Nullable dynamicLink, NSError * _Nullable error) {
+                                                                [self parseUniversalLinkAndURL:NO
+                                                                                      WithLink:[dynamicLink url]];
+                                                            }];
+    return handled;
+}
+
+- (NSDictionary *)parseQuery:(NSString *)query {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    for (NSString *param in [query componentsSeparatedByString:@"&"]) {
+        NSArray *elts = [param componentsSeparatedByString:@"="];
+        if ([elts count] < 2) continue;
+        [params setObject:[elts objectAtIndex:1] forKey:[elts objectAtIndex:0]];
+    }
+    return [NSDictionary dictionaryWithDictionary:params];
+}
+
+- (void)parseUniversalLinkAndURL:(bool)isOldScheme WithLink:(id)link {
+    NSURL *url;
+    if ([link isKindOfClass:[NSString class]]) {
+        url = [NSURL URLWithString:link];
+    } else if ([link isKindOfClass:[NSURL class]]) {
+        url = link;
+    } else {
+        NSLog(@"Failling from: %@", url);
+        return;
+    }
+    NSLog(@"Calling from: %@", url);
+    NSString *urlHost = [url host];
+    NSString *urlQuery = [url query];
+    NSDictionary *params = [urlQuery length] > 0 ? [self parseQuery:urlQuery] : @{};
+    if (isOldScheme) {
+        // from old scheme
+        if ([urlHost isEqualToString:@"login"] && [params objectForKey:@"token"] != nil) {
+            [[AppDelegate appDelegate] setIsLoginSession:YES];
+            [AppDelegate setAccessToken:[params objectForKey:@"token"]];
+            
+            if (self.checkinView != nil) {
+                [self.checkinView reloadCard];
+            }
+        }
+    } else {
+        // from Universal Link
+        if ([params objectForKey:@"token"] != nil) {
+            [[AppDelegate appDelegate] setIsLoginSession:YES];
+            [AppDelegate setAccessToken:[params objectForKey:@"token"]];
+            
+            if (self.checkinView != nil) {
+                [self.checkinView reloadCard];
+            }
+        }
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -363,6 +363,30 @@ THE SOFTWARE.
 				<string></string>
 			</dict>
 			<key>description</key>
+			<string>&lt;p&gt;Firebase Dynamic Links are deep links that enhance user experience and increase engagement by retaining context post-install, across platforms.&lt;/p&gt;
+</string>
+			<key>homepage</key>
+			<string>https://firebase.google.com/docs/dynamic-links/</string>
+			<key>licenseText</key>
+			<string>Copyright 2017 Google</string>
+			<key>licenseType</key>
+			<string>Copyright</string>
+			<key>name</key>
+			<string>FirebaseDynamicLinks</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Firebase Dynamic Links for iOS</string>
+			<key>version</key>
+			<string>2.1.0</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Google, Inc.</key>
+				<string></string>
+			</dict>
+			<key>description</key>
 			<string>&lt;p&gt;Instance ID provides a unique ID per instance of your iOS apps. In addition to providing unique IDs for authentication, Instance ID can generate security tokens for use with other services.&lt;/p&gt;
 </string>
 			<key>homepage</key>

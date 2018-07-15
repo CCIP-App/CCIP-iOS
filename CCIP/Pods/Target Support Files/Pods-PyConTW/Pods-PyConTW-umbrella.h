@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_PYCONVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_PYCONVersionString[];
+FOUNDATION_EXPORT double Pods_PyConTWVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_PyConTWVersionString[];
 
