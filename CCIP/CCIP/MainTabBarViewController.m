@@ -61,8 +61,6 @@
 - (void)appplicationDidBecomeActive:(NSNotification *)notification {
     NSLog(@"Application Did Become Active");
     [self handleShortcutItem];
-
-    [AppDelegate createNEHC];
 }
 
 - (void)handleShortcutItem {
