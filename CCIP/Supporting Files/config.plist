@@ -15,41 +15,41 @@
 			<key>RedeemButtonRightColor</key>
 			<string>#eec850</string>
 			<key>RedeemCodeTextColor</key>
-			<string></string>
+			<string>#425d4f</string>
 			<key>CheckinButtonLeftColor</key>
-			<string></string>
+			<string>#509d34</string>
 			<key>CheckinButtonRightColor</key>
-			<string></string>
+			<string>#70b12d</string>
 			<key>DisabledButtonLeftColor</key>
-			<string></string>
+			<string>#808080</string>
 			<key>DisabledButtonRightColor</key>
-			<string></string>
+			<string>#70b12d</string>
 			<key>UsedButtonLeftColor</key>
-			<string></string>
+			<string>#808080</string>
 			<key>UsedButtonRightColor</key>
-			<string></string>
+			<string>#70b12d</string>
 			<key>MessageButtonLeftColor</key>
-			<string></string>
+			<string>#509d34</string>
 			<key>MessageButtonRightColor</key>
-			<string></string>
+			<string>#70b12d</string>
 			<key>NavigationIndicatorColor</key>
-			<string></string>
+			<string>#ffffff</string>
 			<key>ProgressBarColor</key>
-			<string></string>
+			<string>#efefef</string>
 			<key>HighlightedColor</key>
-			<string></string>
+			<string>#009a79</string>
 			<key>LabelTextColor</key>
 			<string></string>
 			<key>CardTextColor</key>
-			<string></string>
+			<string>#425d4f</string>
 			<key>CardBackgroundColor</key>
 			<string>#3d983c</string>
 			<key>FavoriteButtonColor</key>
-			<string></string>
+			<string>#ffffff</string>
 			<key>ScheduleTitleLeftColor</key>
-			<string>#f9fea5</string>
+			<string>#425d4f</string>
 			<key>ScheduleTitleRightColor</key>
-			<string>#20e2d7</string>
+			<string>#429537</string>
 			<key>ScheduleTitleTextColor</key>
 			<string></string>
 			<key>ScheduleSectionTitleBackgroundColor</key>
@@ -57,9 +57,9 @@
 			<key>ScheduleSectionTitleTextColor</key>
 			<string></string>
 			<key>AnnouncementTitleLeftColor</key>
-			<string></string>
+			<string>#425d4f</string>
 			<key>AnnouncementTitleRightColor</key>
-			<string></string>
+			<string>#429537</string>
 			<key>AnnouncementTitleTextColor</key>
 			<string></string>
 			<key>AnnouncementSectionTitleBackgroundColor</key>
@@ -75,15 +75,15 @@
 			<key>IRCTitleTextColor</key>
 			<string></string>
 			<key>MoreTitleLeftColor</key>
-			<string></string>
+			<string>#425d4f</string>
 			<key>MoreTitleRightColor</key>
-			<string></string>
+			<string>#429537</string>
 			<key>MoreTitleTextColor</key>
 			<string></string>
 			<key>MapTitleLeftColor</key>
-			<string></string>
+			<string>#425d4f</string>
 			<key>MapTitleRightColor</key>
-			<string></string>
+			<string>#429537</string>
 			<key>MapTitleTextColor</key>
 			<string></string>
 		</dict>
@@ -102,11 +102,11 @@
 			<key>StaffUseWeb</key>
 			<true/>
 			<key>StaffPath</key>
-			<string></string>
+			<string>https://2018.coscup.org/staffs</string>
 			<key>SponsorUseWeb</key>
 			<true/>
 			<key>SponsorPath</key>
-			<string></string>
+			<string>https://2018.coscup.org/sponsors</string>
 			<key>ScheduleContentPath</key>
 			<string></string>
 		</dict>
