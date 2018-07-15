@@ -57,7 +57,7 @@
     
     [self setWebViewConstraints];
     
-    NSURL *nsurl = [NSURL URLWithString:WEB_TOKEN([AppDelegate AppConfigURL:@"GamePath"], [AppDelegate accessToken])];
+    NSURL *nsurl = [NSURL URLWithString:WEB_TOKEN([AppDelegate AppConfigURL:@"GamePath"], [AppDelegate accessTokenSHA1])];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsurl];
     [self.webView loadRequest:requestObj];
 }
@@ -101,7 +101,7 @@
 }
 
 - (IBAction)reload:(id)sender {
-    NSString *token = [AppDelegate accessToken];
+    NSString *token = [AppDelegate accessTokenSHA1];
     NSURL *nsurl = self.webView.URL;
     if ([AppDelegate haveAccessToken] && (nsurl == nil || [nsurl.absoluteString isEqualToString:@""] || ![nsurl.absoluteString containsString:token])) {
         nsurl = [NSURL URLWithString:WEB_TOKEN([AppDelegate AppConfigURL:@"GamePath"], token)];
@@ -129,7 +129,7 @@
     if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
         NSURL *url = navigationAction.request.URL;
         
-        if ([url.host isEqualToString:[NSURL URLWithString:WEB_TOKEN([AppDelegate AppConfigURL:@"GamePath"], [AppDelegate accessToken])].host]) {
+        if ([url.host isEqualToString:[NSURL URLWithString:WEB_TOKEN([AppDelegate AppConfigURL:@"GamePath"], [AppDelegate accessTokenSHA1])].host]) {
             decisionHandler(WKNavigationActionPolicyAllow);
             return;
         } else {
