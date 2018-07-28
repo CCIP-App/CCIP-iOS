@@ -296,6 +296,7 @@ Please copy and paste the token into next field or click the token link in the r
                         <segue destination="PgR-sB-d7G" kind="relationship" relationship="viewControllers" id="ync-Dd-Ovi"/>
                         <segue destination="2iG-px-jKh" kind="relationship" relationship="viewControllers" id="D70-W3-Kh3"/>
                         <segue destination="f3M-Kk-0Fr" kind="relationship" relationship="viewControllers" id="S6i-id-x9p"/>
+                        <segue destination="7DG-ad-dxc" kind="relationship" relationship="viewControllers" id="MHY-AU-7Ns"/>
                         <segue destination="PXh-Tj-uNR" kind="relationship" relationship="viewControllers" id="cpx-rY-iTS"/>
                     </connections>
                 </tabBarController>
