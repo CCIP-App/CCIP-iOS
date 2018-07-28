@@ -7,9 +7,11 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>981935318625-eo2fei25s8imbptkgl1e46tqqu503dvh.apps.googleusercontent.com</string>
+	<string>981935318625-m77acgkajcifc8kkv5n38cojb8j76fam.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.981935318625-eo2fei25s8imbptkgl1e46tqqu503dvh</string>
+	<string>com.googleusercontent.apps.981935318625-m77acgkajcifc8kkv5n38cojb8j76fam</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>981935318625-2u0k7s400asi9656hi8ucddvdsi5krgi.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBJKJYCtAP8CfI6L7srE-yIXU_qvFNw92Q</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +19,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.coscup.CCIP-iOS</string>
+	<string>tw.ocf.COSCUP-CCIP</string>
 	<key>PROJECT_ID</key>
 	<string>ccip-9a548</string>
 	<key>STORAGE_BUCKET</key>
@@ -27,13 +29,13 @@
 	<key>IS_ANALYTICS_ENABLED</key>
 	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
 	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:981935318625:ios:55a6ff68378322ca</string>
+	<string>1:981935318625:ios:bdc020d07a24acdf</string>
 	<key>DATABASE_URL</key>
 	<string>https://ccip-9a548.firebaseio.com</string>
 </dict>

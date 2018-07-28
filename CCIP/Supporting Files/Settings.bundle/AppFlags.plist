@@ -14,15 +14,25 @@
 			<key>DefaultValue</key>
 			<string>1</string>
 			<key>Key</key>
-			<string>PyConTW</string>
+			<string>COSCUP</string>
 			<key>Title</key>
-			<string>PyConTW</string>
+			<string>COSCUP</string>
 			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@PyConTW)</string>
+			<string>1</string>
+			<key>Key</key>
+			<string>DEBUG</string>
+			<key>Title</key>
+			<string>DEBUG</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@COSCUP)</string>
 			<key>Key</key>
 			<string>APP_NAME</string>
 			<key>Title</key>
@@ -32,7 +42,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>group.org.pycontw.ccip</string>
+			<string>group.tw.ocf.ccip.coscup</string>
 			<key>Key</key>
 			<string>APP_GROUP_ID</string>
 			<key>Title</key>
@@ -52,7 +62,17 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>(@PyConTW)</string>
+			<string>1</string>
+			<key>Key</key>
+			<string>DEBUG</string>
+			<key>Title</key>
+			<string>DEBUG</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>(@COSCUP)</string>
 			<key>Key</key>
 			<string>APP_NAME</string>
 			<key>Title</key>
@@ -62,7 +82,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>group.org.pycontw.ccip</string>
+			<string>group.tw.ocf.ccip.coscup</string>
 			<key>Key</key>
 			<string>APP_GROUP_ID</string>
 			<key>Title</key>

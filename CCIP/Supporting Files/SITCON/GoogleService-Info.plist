@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>982607297926-su5ju39ieb8oicsque4njcgi0e2gne5q.apps.googleusercontent.com</string>
+	<string>982607297926-5hd2tea7kvg8q7d3ertuavjqu114va7s.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.982607297926-su5ju39ieb8oicsque4njcgi0e2gne5q</string>
+	<string>com.googleusercontent.apps.982607297926-5hd2tea7kvg8q7d3ertuavjqu114va7s</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>982607297926-v7dmuoag9d1i55l6c7n2hk342q95kg3v.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -19,7 +19,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.sitcon.CCIP-iOS</string>
+	<string>tw.ocf.SITCON-CCIP</string>
 	<key>PROJECT_ID</key>
 	<string>ccip-sitcon</string>
 	<key>STORAGE_BUCKET</key>
@@ -35,7 +35,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:982607297926:ios:18e378f599a199d8</string>
+	<string>1:982607297926:ios:37063535b43c9fcf</string>
 	<key>DATABASE_URL</key>
 	<string>https://ccip-sitcon.firebaseio.com</string>
 </dict>

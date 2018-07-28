@@ -71,7 +71,7 @@ cat CCIP.xcconfig > CCIP.debug.xcconfig
 cat CCIP.xcconfig > CCIP.release.xcconfig
 
 export CONF_NAME="`echo $TARGET_NAME | awk '{ print tolower($0) }'`"
-export domain="org.$CONF_NAME"
+export domain="$TARGET_NAME"
 case $CONF_NAME in
     "coscup")
     export mainDomain="coscup.org"
@@ -126,7 +126,8 @@ function xcc_replace() {
     [[ "$1" -eq "0" ]] && sed -i '' -E 's/'"$f"'/'"$r"'/g' CCIP.release.xcconfig || sed -i '' -E 's/'"$f"'//g' CCIP.release.xcconfig
 }
 
-xcc_replace 1 "#Dev#"                       "-Dev"
+#xcc_replace 1 "#Dev#"                       "-Dev"
+xcc_replace 1 "#Dev#"                       ""
 xcc_replace 0 "#BUILD_VERSION#"             "$mainVersion"
 xcc_replace 0 "#BUILD_SHORT_VERSION#"       "$productVersion"
 xcc_replace 0 "#APP_NAME#"                  "$TARGET_NAME"

@@ -1,8 +1,8 @@
-MAIN_PRODUCT_BUNDLE_IDENTIFIER              = #domain#.CCIP-iOS#Dev#
+MAIN_PRODUCT_BUNDLE_IDENTIFIER              = tw.ocf.#domain#-CCIP#Dev#
 WATCH_PRODUCT_BUNDLE_IDENTIFIER             = $(MAIN_PRODUCT_BUNDLE_IDENTIFIER).watchkitapp
 WATCH_EXTENSION_PRODUCT_BUNDLE_IDENTIFIER   = $(WATCH_PRODUCT_BUNDLE_IDENTIFIER).watchkitextension
 MAIN_BUILD_VERSION                          = #BUILD_VERSION#
 MAIN_BUILD_SHORT_VERSION                    = #BUILD_SHORT_VERSION#
 APP_NAME                                    = '(@"#APP_NAME#")'
-APP_GROUP_ID                                = group.#domain#.ccip
+APP_GROUP_ID                                = group.tw.ocf.ccip.#CONF_NAME#
 APP_SCHEME                                  = ccip-#CONF_NAME#

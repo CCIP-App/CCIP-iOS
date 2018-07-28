@@ -1375,7 +1375,7 @@
 					};
 					6BD8EF261D1D73510094BE95 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 5MC99ARC2Z;
+						DevelopmentTeam = 9UZ879Y8DL;
 						DevelopmentTeamName = "Koo Foundation Sun Yat-Sen Cancer Center";
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
@@ -2357,7 +2357,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Supporting Files/CCIP.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5MC99ARC2Z;
+				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CCIP/ScanditSDK",
@@ -2389,7 +2389,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Supporting Files/CCIP.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5MC99ARC2Z;
+				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CCIP/ScanditSDK",
