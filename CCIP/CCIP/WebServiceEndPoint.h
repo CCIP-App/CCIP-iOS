@@ -34,7 +34,7 @@
 #define TELEGRAM_GROUP_URL      ([@"https://t.me/" stringByAppendingString:TELEGRAM_URL])
 #define TELEGRAM_GROUP_URI      ([@"tg://resolve?domain=" stringByAppendingString:TELEGRAM_URL])
 
-#define LOG_CHANNEL             ([AppDelegate AppConfigURL:@"IRC_Chnnel"])
+#define LOG_CHANNEL             ([AppDelegate AppConfigURL:@"IRC_Channel"])
 #define LOG_BOT_URL             ([NSString stringWithFormat:@"https://ysitd.licson.net/channel/%@/today", LOG_CHANNEL])
 
 // Assets
