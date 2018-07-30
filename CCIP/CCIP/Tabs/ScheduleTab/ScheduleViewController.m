@@ -37,8 +37,14 @@
     [favButton setTitle:FAVORITE_LIKE
                forState:UIControlStateNormal];
     [favButton addTarget:self
-                  action:@selector(showFavorites)
+                  action:@selector(showFavoritesTouchDown)
+        forControlEvents:UIControlEventTouchDown];
+    [favButton addTarget:self
+                  action:@selector(showFavoritesTouchUpInside)
         forControlEvents:UIControlEventTouchUpInside];
+    [favButton addTarget:self
+                  action:@selector(showFavoritesTouchUpOutside)
+        forControlEvents:UIControlEventTouchUpOutside];
     [favButton.titleLabel setFont:[UIFont fontWithName:@"FontAwesome"
                                                   size:20.0f]];
     [favButton sizeToFit];
@@ -78,9 +84,18 @@
                    WithLogo:ASSETS_IMAGE(@"AssetsUI", @"conf-logo")];
 }
 
-- (void)showFavorites {
+- (void)showFavoritesTouchDown {
+    [AppDelegate triggerFeedback:ImpactFeedbackMedium];
+}
+
+- (void)showFavoritesTouchUpInside {
     [self performSegueWithIdentifier:@"ShowFavorites"
-                              sender:nil];    
+                              sender:nil];
+    [AppDelegate triggerFeedback:ImpactFeedbackLight];
+}
+
+- (void)showFavoritesTouchUpOutside {
+    [AppDelegate triggerFeedback:ImpactFeedbackLight];
 }
 
 /*
