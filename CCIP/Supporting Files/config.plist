@@ -105,6 +105,10 @@
 			<string>coscup.org</string>
 			<key>GamePath</key>
 			<string>https://play.coscup.org/?mode=app&amp;token=%@</string>
+			<key>MapsUseWeb</key>
+			<false/>
+			<key>MapsPath</key>
+			<string></string>
 			<key>StaffUseWeb</key>
 			<true/>
 			<key>StaffPath</key>
@@ -220,6 +224,10 @@
 			<string>sitcon.org</string>
 			<key>GamePath</key>
 			<string>https://king.sitcon.party/?mode=app&amp;token=%@</string>
+			<key>MapsUseWeb</key>
+			<false/>
+			<key>MapsPath</key>
+			<string></string>
 			<key>StaffUseWeb</key>
 			<true/>
 			<key>StaffPath</key>
