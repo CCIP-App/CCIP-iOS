@@ -331,6 +331,54 @@
     return [[langMap allKeys] containsObject:shortLang] ? [langMap objectForKey:shortLang] : nil;
 }
 
++ (void)triggerFeedback:(FeedbackType)feedbackType {
+    UIFeedbackGenerator *generator;
+    if (feedbackType < 0x00001000) {
+        // ImpactFeedback
+        UIImpactFeedbackStyle impactFeedbackStyle;
+        switch (feedbackType) {
+            case ImpactFeedbackHeavy:
+                impactFeedbackStyle = UIImpactFeedbackStyleHeavy;
+                break;
+            case ImpactFeedbackMedium:
+                impactFeedbackStyle = UIImpactFeedbackStyleMedium;
+                break;
+            case ImpactFeedbackLight:
+                impactFeedbackStyle = UIImpactFeedbackStyleLight;
+                break;
+            default:
+                return;
+        }
+        generator = [[UIImpactFeedbackGenerator alloc] initWithStyle:impactFeedbackStyle];
+        [generator prepare];
+        [((UIImpactFeedbackGenerator *)generator) impactOccurred];
+    } else if (feedbackType > 0x00000100 && feedbackType < 0x01000000) {
+        // NotificationFeedback
+        UINotificationFeedbackType notificationFeedbackType;
+        switch (feedbackType) {
+            case NotificationFeedbackSuccess:
+                notificationFeedbackType = UINotificationFeedbackTypeSuccess;
+                break;
+            case NotificationFeedbackWarning:
+                notificationFeedbackType = UINotificationFeedbackTypeWarning;
+                break;
+            case NotificationFeedbackError:
+                notificationFeedbackType = UINotificationFeedbackTypeError;
+                break;
+            default:
+                return;
+        }
+        generator = [UINotificationFeedbackGenerator new];
+        [generator prepare];
+        [((UINotificationFeedbackGenerator *)generator) notificationOccurred:notificationFeedbackType];
+    } else {
+        // SelectionFeedback
+        generator = [UISelectionFeedbackGenerator new];
+        [generator prepare];
+        [((UISelectionFeedbackGenerator *)generator) selectionChanged];
+    }
+}
+
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation {
     FIRDynamicLink *dynamicLink = [[FIRDynamicLinks dynamicLinks] dynamicLinkFromCustomSchemeURL:url];
     if (dynamicLink) {

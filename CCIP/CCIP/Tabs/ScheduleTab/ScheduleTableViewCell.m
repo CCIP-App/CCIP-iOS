@@ -83,13 +83,22 @@ static NSDateFormatter *formatter_date = nil;
     return _schedule;
 }
 
-- (IBAction)favoriteAction:(id)sender {
+- (IBAction)favoriteTouchDownAction:(id)sender {
+    [AppDelegate triggerFeedback:ImpactFeedbackMedium];
+}
+
+- (IBAction)favoriteTouchUpInsideAction:(id)sender {
     self.favorite = !self.favorite;
     if (self.delegate) {
         if ([self.delegate respondsToSelector:@selector(actionFavorite:)]) {
             [self.delegate actionFavorite:[self getID]];
         }
     }
+    [AppDelegate triggerFeedback:ImpactFeedbackLight];
+}
+
+- (IBAction)favoriteTouchUpOutsideAction:(id)sender {
+    [AppDelegate triggerFeedback:ImpactFeedbackLight];
 }
 
 - (void)setFavorite:(BOOL)favorite {

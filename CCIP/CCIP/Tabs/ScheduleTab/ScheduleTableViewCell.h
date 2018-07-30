@@ -24,7 +24,9 @@
 - (NSDictionary *)getSchedule;
 - (void)setFavorite:(BOOL)favorite;
 - (BOOL)getFavorite;
-- (IBAction)favoriteAction:(id)sender;
+- (IBAction)favoriteTouchDownAction:(id)sender;
+- (IBAction)favoriteTouchUpInsideAction:(id)sender;
+- (IBAction)favoriteTouchUpOutsideAction:(id)sender;
 - (void)setDisabled:(BOOL)disabled;
 - (BOOL)getDisabled;
 

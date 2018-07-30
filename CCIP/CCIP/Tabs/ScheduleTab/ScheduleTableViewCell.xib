@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TdY-Ng-p1O">
-                        <rect key="frame" x="20" y="8" width="350" height="35"/>
+                        <rect key="frame" x="32" y="11" width="326" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="8Ty-3Y-mqM"/>
                         </constraints>
@@ -34,7 +34,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HH" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R4H-1T-Ebg">
-                        <rect key="frame" x="20" y="36.5" width="150" height="35"/>
+                        <rect key="frame" x="20" y="34" width="150" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="hkV-D8-Dpt"/>
                             <constraint firstAttribute="width" constant="150" id="m57-H3-wA8"/>
@@ -44,7 +44,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wce-ZU-hQC">
-                        <rect key="frame" x="180" y="44.5" width="37.5" height="20"/>
+                        <rect key="frame" x="180" y="41.5" width="37.5" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Gsg-RD-xUh"/>
                         </constraints>
@@ -53,14 +53,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7p-MF-tNF">
-                        <rect key="frame" x="375" y="23" width="22" height="32"/>
+                        <rect key="frame" x="363" y="24" width="22" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="22" id="pXX-Ng-x1P"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="20"/>
                         <state key="normal" title=""/>
                         <connections>
-                            <action selector="favoriteAction:" destination="l9Y-7J-4kA" eventType="touchUpInside" id="8hH-5P-eBT"/>
+                            <action selector="favoriteTouchDownAction:" destination="l9Y-7J-4kA" eventType="touchDown" id="5QI-IL-lEo"/>
+                            <action selector="favoriteTouchUpInsideAction:" destination="l9Y-7J-4kA" eventType="touchUpInside" id="hFG-tV-VkR"/>
+                            <action selector="favoriteTouchUpOutsideAction:" destination="l9Y-7J-4kA" eventType="touchUpOutside" id="sfT-eA-Oyr"/>
                         </connections>
                     </button>
                 </subviews>

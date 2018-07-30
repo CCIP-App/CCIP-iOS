@@ -538,6 +538,7 @@
 		6B70EF44204C981700C63E63 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6B7299AE1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFavoriteTableViewController.h; sourceTree = "<group>"; };
 		6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleFavoriteTableViewController.m; sourceTree = "<group>"; };
+		6B75F4F0210F85460019ECD2 /* FeedbackType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackType.h; sourceTree = "<group>"; };
 		6B76DF6320B019B200EBEF06 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		6B787C3E204C2DC1002B620A /* Maps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Maps.bundle; sourceTree = "<group>"; };
 		6B88DE1020A6F5E50038FB0A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -992,6 +993,7 @@
 				6B88DE8E20A6F8670038FB0A /* PyConTW-Swift.h */,
 				6BC12A951F2B1B8000B14039 /* CCIP-Bridging-Header.h */,
 				286D5FC51D6BD8EC005B6619 /* headers.h */,
+				6B75F4F0210F85460019ECD2 /* FeedbackType.h */,
 				288D3A731D599A1200E4E3A6 /* ScanditSDK */,
 				6BFB831D1F2B188A005DCF00 /* Class+addition */,
 				6BFB831E1F2B18A4005DCF00 /* CustomSegue */,
