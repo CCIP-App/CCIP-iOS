@@ -90,8 +90,8 @@
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(navSingleTap)];
-    [self.lbHi setUserInteractionEnabled:YES];
-    [self.lbHi addGestureRecognizer:tapGesture];
+    [self.lbUserName setUserInteractionEnabled:YES];
+    [self.lbUserName addGestureRecognizer:tapGesture];
     [self.lbHi setHidden:![AppDelegate haveAccessToken]];
 //    [self.ivUserPhoto setUserInteractionEnabled:YES];
 //    [self.ivUserPhoto addGestureRecognizer:tapGesture];
