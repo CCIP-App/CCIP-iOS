@@ -106,9 +106,9 @@
 			<key>GamePath</key>
 			<string>https://play.coscup.org/?mode=app&amp;token=%@</string>
 			<key>MapsUseWeb</key>
-			<false/>
+			<true/>
 			<key>MapsPath</key>
-			<string></string>
+			<string>https://coscup.org/2018-assets/img/venue.svg</string>
 			<key>StaffUseWeb</key>
 			<true/>
 			<key>StaffPath</key>
