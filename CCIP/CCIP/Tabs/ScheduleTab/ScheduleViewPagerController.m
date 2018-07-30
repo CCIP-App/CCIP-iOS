@@ -135,7 +135,7 @@ static NSDateFormatter *formatter_date = nil;
 - (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
     UILabel *label = [UILabel new];
     label.text = [NSString stringWithFormat:@"DAY %@", [self.segmentsTextArray objectAtIndex:index]];
-    label.textColor = [AppDelegate AppConfigColor:@"ScheduleTitleTextColor"];
+    label.textColor = [AppDelegate AppConfigColor:@"ScheduleDateTitleTextColor"];
     label.font = [UIFont fontWithName:@"PingFangTC-Medium" size:14];
     [label sizeToFit];
     return label;

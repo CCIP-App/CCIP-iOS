@@ -84,19 +84,24 @@
                                                          multiplier:1.0
                                                            constant:0]];
 
-    NSArray *lbs = @[
-                     self.lbSpeaker,
-                     self.lbSpeakerName,
-                     self.lbTitle,
-                     self.lbRoom,
-                     self.lbRoomText,
-                     self.lbLang,
-                     self.lbLangText,
-                     self.lbTime,
-                     self.lbTimeText
-                     ];
-    for (UILabel *lb in lbs) {
-        [lb setTextColor:[AppDelegate AppConfigColor:@"ScheduleTitleTextColor"]];
+    NSArray *lbsHeader = @[
+                           self.lbSpeaker,
+                           self.lbSpeakerName,
+                           self.lbTitle
+                           ];
+    NSArray *lbsMeta = @[
+                         self.lbRoom,
+                         self.lbRoomText,
+                         self.lbLang,
+                         self.lbLangText,
+                         self.lbTime,
+                         self.lbTimeText
+                         ];
+    for (UILabel *lb in lbsHeader) {
+        [lb setTextColor:[AppDelegate AppConfigColor:@"ScheduleDetailHeaderTextColor"]];
+    }
+    for (UILabel *lb in lbsMeta) {
+        [lb setTextColor:[AppDelegate AppConfigColor:@"ScheduleMetaHeaderTextColor"]];
     }
 }
 
@@ -121,6 +126,26 @@
         [self configureCell:cell atIndexPath:indexPath];
     }];
 }
+    
+- (void)setTextFit:(UILabel *)label WithContent:(NSString *)content {
+    [label setText:content];
+//    NSMutableString *fakeContent = [NSMutableString stringWithString:content];
+//    [fakeContent replaceOccurrencesOfString:@"[ ]"
+//                                 withString:@"　"
+//                                    options:(NSCaseInsensitiveSearch | NSRegularExpressionSearch)
+//                                      range:NSMakeRange(0, [fakeContent length])];
+//    [fakeContent replaceOccurrencesOfString:@"[\n]"
+//                                 withString:@"　？　？　？　？　？　？　？　？　？　？　？　？　？　？　？　？　？　？　？　？"
+//                                    options:(NSCaseInsensitiveSearch | NSRegularExpressionSearch)
+//                                      range:NSMakeRange(0, [fakeContent length])];
+//    [label setNumberOfLines:0];
+//    [label setLineBreakMode:NSLineBreakByWordWrapping];
+//    [label setText:[NSString stringWithString:fakeContent]];
+    [label sizeToFit];
+//    [label setNeedsDisplay];
+//    [label layoutIfNeeded];
+//    [label setText:content];
+}
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     [cell setFd_enforceFrameLayout:NO]; // Enable to use "-sizeThatFits:"
@@ -140,16 +165,16 @@
                                 ScheduleAbstractViewCell *abstractCell = (ScheduleAbstractViewCell *)cell;
                                 NSString *summary = [NSString stringWithFormat:@"%@\n", [self.detailData objectForKey:@"summary"]];
                                 NSLog(@"Set summary: %@", summary);
-                                [abstractCell.lbAbstractContent setText:summary];
-                                [abstractCell.lbAbstractContent sizeToFit];
+                                [self setTextFit:abstractCell.lbAbstractContent
+                                     WithContent:summary];
                                 [abstractCell.lbAbstractText setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
                             },
                             SPEAKERINFO_CELL: ^{
                                 ScheduleSpeakerInfoViewCell *speakerInfoCell = (ScheduleSpeakerInfoViewCell *)cell;
                                 NSString *bio = [NSString stringWithFormat:@"%@\n", [[self.detailData objectForKey:@"speaker"] objectForKey:@"bio"]];
                                 NSLog(@"Set bio: %@", bio);
-                                [speakerInfoCell.lbSpeakerInfoContent setText:bio];
-                                [speakerInfoCell.lbSpeakerInfoContent sizeToFit];
+                                [self setTextFit:speakerInfoCell.lbSpeakerInfoContent
+                                     WithContent:bio];
                                 [speakerInfoCell.lbSpeakerInfoTitle setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
                             }
                             };

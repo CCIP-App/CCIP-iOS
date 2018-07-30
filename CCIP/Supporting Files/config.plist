@@ -39,29 +39,35 @@
 			<key>HighlightedColor</key>
 			<string>#009a79</string>
 			<key>LabelTextColor</key>
-			<string></string>
+			<string>#425d4f</string>
 			<key>CardTextColor</key>
 			<string>#425d4f</string>
 			<key>CardBackgroundColor</key>
 			<string>#3d983c</string>
 			<key>FavoriteButtonColor</key>
-			<string>#ffffff</string>
+			<string>#425d4f</string>
 			<key>ScheduleTitleLeftColor</key>
 			<string>#425d4f</string>
 			<key>ScheduleTitleRightColor</key>
 			<string>#429537</string>
 			<key>ScheduleTitleTextColor</key>
-			<string></string>
+			<string>#425d4f</string>
+			<key>ScheduleDateTitleTextColor</key>
+			<string>#ffffff</string>
+			<key>ScheduleDetailHeaderTextColor</key>
+			<string>#ffffff</string>
+			<key>ScheduleMetaHeaderTextColor</key>
+			<string>#000000</string>
 			<key>ScheduleSectionTitleBackgroundColor</key>
-			<string></string>
+			<string>#ecf5f4</string>
 			<key>ScheduleSectionTitleTextColor</key>
-			<string></string>
+			<string>#425d4f</string>
 			<key>AnnouncementTitleLeftColor</key>
 			<string>#425d4f</string>
 			<key>AnnouncementTitleRightColor</key>
 			<string>#429537</string>
 			<key>AnnouncementTitleTextColor</key>
-			<string></string>
+			<string>#425d4f</string>
 			<key>AnnouncementSectionTitleBackgroundColor</key>
 			<string>#efefef</string>
 			<key>AnnouncementSectionTitleTextColor</key>
@@ -73,19 +79,19 @@
 			<key>IRCTitleRightColor</key>
 			<string>#429537</string>
 			<key>IRCTitleTextColor</key>
-			<string></string>
+			<string>#425d4f</string>
 			<key>MoreTitleLeftColor</key>
 			<string>#425d4f</string>
 			<key>MoreTitleRightColor</key>
 			<string>#429537</string>
 			<key>MoreTitleTextColor</key>
-			<string></string>
+			<string>#425d4f</string>
 			<key>MapTitleLeftColor</key>
 			<string>#425d4f</string>
 			<key>MapTitleRightColor</key>
 			<string>#429537</string>
 			<key>MapTitleTextColor</key>
-			<string></string>
+			<string>#425d4f</string>
 		</dict>
 		<key>URL</key>
 		<dict>
@@ -108,7 +114,7 @@
 			<key>SponsorPath</key>
 			<string>https://2018.coscup.org/sponsors</string>
 			<key>ScheduleContentPath</key>
-			<string></string>
+			<string>https://coscup.org/2018-assets/json/submissions.json</string>
 		</dict>
 	</dict>
 	<key>SITCON</key>
@@ -161,6 +167,12 @@
 			<string>#64757d</string>
 			<key>ScheduleTitleTextColor</key>
 			<string></string>
+			<key>ScheduleDateTitleTextColor</key>
+			<string>#ffffff</string>
+			<key>ScheduleDetailHeaderTextColor</key>
+			<string>#ffffff</string>
+			<key>ScheduleMetaHeaderTextColor</key>
+			<string>#000000</string>
 			<key>ScheduleSectionTitleBackgroundColor</key>
 			<string></string>
 			<key>ScheduleSectionTitleTextColor</key>
@@ -270,6 +282,12 @@
 			<string>#3b097b</string>
 			<key>ScheduleTitleTextColor</key>
 			<string>#f7f5fa</string>
+			<key>ScheduleDateTitleTextColor</key>
+			<string>#ffffff</string>
+			<key>ScheduleDetailHeaderTextColor</key>
+			<string>#ffffff</string>
+			<key>ScheduleMetaHeaderTextColor</key>
+			<string>#000000</string>
 			<key>ScheduleSectionTitleBackgroundColor</key>
 			<string>#efefef</string>
 			<key>ScheduleSectionTitleTextColor</key>
