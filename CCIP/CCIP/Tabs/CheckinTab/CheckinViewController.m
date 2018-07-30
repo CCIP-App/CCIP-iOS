@@ -92,6 +92,7 @@
                                                                                  action:@selector(navSingleTap)];
     [self.lbUserName setUserInteractionEnabled:YES];
     [self.lbUserName addGestureRecognizer:tapGesture];
+    [self.lbUserName setHidden:![AppDelegate haveAccessToken]];
     [self.lbHi setHidden:![AppDelegate haveAccessToken]];
 //    [self.ivUserPhoto setUserInteractionEnabled:YES];
 //    [self.ivUserPhoto addGestureRecognizer:tapGesture];
@@ -311,6 +312,7 @@
     }
 
     [self.lbHi setHidden:![AppDelegate haveAccessToken]];
+    [self.lbUserName setHidden:![AppDelegate haveAccessToken]];
     [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
     [self.lbUserName setText:@" "];
     if (![AppDelegate haveAccessToken]) {
@@ -344,6 +346,7 @@
                     self.scenarios = [responseObject objectForKey:@"scenarios"];
                     [self.lbHi setHidden:![AppDelegate haveAccessToken]];
                     [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
+                    [self.lbUserName setHidden:![AppDelegate haveAccessToken]];
                     [self.lbUserName setText:[self.userInfo objectForKey:@"user_id"]];
                     [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
                                                            value:[self.userInfo objectForKey:@"user_id"]];
@@ -517,8 +520,9 @@
         [self.scanditBarcodePicker.view removeFromSuperview];
         [self.scanditBarcodePicker didMoveToParentViewController:nil];
         self.scanditBarcodePicker = nil;
-        [self.lbHi setHidden:NO];
-        [self.ivUserPhoto setHidden:NO];
+        [self.lbHi setHidden:![AppDelegate haveAccessToken]];
+        [self.lbUserName setHidden:![AppDelegate haveAccessToken]];
+        [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
     }
 }
 
