@@ -373,10 +373,16 @@
                                 
                                 [AppDelegate setAccessToken:@""];
                                 
-                                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"InvalidTokenAlert", nil) withMessage:NSLocalizedString(@"InvalidTokenDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:^(UIAlertAction *action) {
-                                    [self reloadCard];
+                                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"InvalidTokenAlert", nil)
+                                                                            withMessage:NSLocalizedString(@"InvalidTokenDesc", nil)
+                                                                       cancelButtonText:NSLocalizedString(@"GotIt", nil)
+                                                                            cancelStyle:UIAlertActionStyleCancel
+                                                                           cancelAction:^(UIAlertAction *action) {
+                                                                               [self reloadCard];
+                                                                           }];
+                                [ac showAlert:^{
+                                    [AppDelegate triggerFeedback:NotificationFeedbackError];
                                 }];
-                                [ac showAlert:nil];
                             }
                         }
                         break;
@@ -390,8 +396,14 @@
                         // Invalid Network
                         [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg"
                                                   sender:NSLocalizedString(@"Networking_Broken", nil)];
-                        // UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
-                        // [ac showAlert:nil];
+//                        UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil)
+//                                                                    withMessage:NSLocalizedString(@"NetworkAlertDesc", nil)
+//                                                               cancelButtonText:NSLocalizedString(@"GotIt", nil)
+//                                                                    cancelStyle:UIAlertActionStyleCancel
+//                                                                   cancelAction:nil];
+//                        [ac showAlert:^{
+//                            [AppDelegate triggerFeedback:NotificationFeedbackError];
+//                        }];
                         break;
                     }
                 }

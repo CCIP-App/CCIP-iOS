@@ -302,7 +302,9 @@
                                            cancelButtonText:NSLocalizedString(@"Okay", nil)
                                                 cancelStyle:UIAlertActionStyleDestructive
                                                cancelAction:nil];
-    [ac showAlert:nil];
+    [ac showAlert:^{
+        [AppDelegate triggerFeedback:NotificationFeedbackSuccess];
+    }];
 }
 
 + (NSString *)currentLangUI {
