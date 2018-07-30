@@ -209,8 +209,14 @@
 }
 
 - (void)showAlert {
-    UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil) withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
-    [ac showAlert:nil];
+    UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
+                                                withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
+                                           cancelButtonText:NSLocalizedString(@"GotIt", nil)
+                                                cancelStyle:UIAlertActionStyleCancel
+                                               cancelAction:nil];
+    [ac showAlert:^{
+        [AppDelegate triggerFeedback:NotificationFeedbackError];
+    }];
 }
 
 /*

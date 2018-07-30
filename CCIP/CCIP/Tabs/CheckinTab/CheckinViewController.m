@@ -486,7 +486,9 @@
                                                                            cancelAction:^(UIAlertAction *action) {
                                                                                [self.scanditBarcodePicker resumeScanning];
                                                                            }];
-                                [ac showAlert:nil];
+                                [ac showAlert:^{
+                                    [AppDelegate triggerFeedback:NotificationFeedbackError];
+                                }];
                             }
                         }
                         break;
@@ -676,7 +678,7 @@
                     switch (statusCode) {
                         case 400: {
                             if (responseObject != nil) {
-                                    if ([responseObject objectForKey:@"message"] && [[responseObject objectForKey:@"message"] isEqualToString:@"invalid token"]) {
+                                if ([responseObject objectForKey:@"message"] && [[responseObject objectForKey:@"message"] isEqualToString:@"invalid token"]) {
                                     ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
                                                              withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
                                                         cancelButtonText:NSLocalizedString(@"GotIt", nil)
@@ -684,7 +686,9 @@
                                                             cancelAction:nil];
                                     [picker dismissViewControllerAnimated:YES
                                                                completion:^{
-                                                                   [ac showAlert:nil];
+                                                                   [ac showAlert:^{
+                                                                       [AppDelegate triggerFeedback:NotificationFeedbackError];
+                                                                   }];
                                                                }];
                                 }
                             }
@@ -704,7 +708,9 @@
                                     cancelAction:nil];
             [picker dismissViewControllerAnimated:YES
                                        completion:^{
-                                           [ac showAlert:nil];
+                                           [ac showAlert:^{
+                                               [AppDelegate triggerFeedback:NotificationFeedbackError];
+                                           }];
                                        }];
         }
     }

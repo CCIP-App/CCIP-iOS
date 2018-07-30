@@ -52,6 +52,7 @@
 
 - (IBAction)checkinBtnTouched:(id)sender {
     UIAlertController *ac = nil;
+    FeedbackType feedbackType = 0;
     UIColor *defaultColor = [AppDelegate AppConfigColor:@"CheckinButtonLeftColor"];
     UIColor *disabledColor = [AppDelegate AppConfigColor:@"DisabledButtonLeftColor"];
     NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[self.scenario objectForKey:@"available_time"] integerValue]];
@@ -177,6 +178,7 @@
                              }
                          }];
         SEND_FIB_EVENT(@"CheckinCardView", @{ @"Click": @"click_disabled" });
+        feedbackType = NotificationFeedbackWarning;
     } else {
         if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
             // IN TIME
@@ -203,6 +205,7 @@
                                          cancelStyle:UIAlertActionStyleDestructive
                                         cancelAction:^(UIAlertAction *action) {
                                         }];
+                feedbackType = NotificationFeedbackError;
             }
             if ([nowTime compare:expireTime] == NSOrderedDescending || [self.used boolValue]) {
                 ac = [UIAlertController alertOfTitle:NSLocalizedString(@"ExpiredTitle", nil)
@@ -211,12 +214,21 @@
                                          cancelStyle:UIAlertActionStyleDestructive
                                         cancelAction:^(UIAlertAction *action) {
                                         }];
+                feedbackType = NotificationFeedbackError;
             }
         }
     }
     // only out time or need confirm will display alert controller
     if (ac != nil) {
-        [ac showAlert:nil];
+        [ac showAlert:^{
+            if (feedbackType != 0) {
+                [AppDelegate triggerFeedback:feedbackType];
+            }
+        }];
+    } else {
+        if (feedbackType != 0) {
+            [AppDelegate triggerFeedback:feedbackType];
+        }
     }
 }
 
