@@ -6,13 +6,13 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-        <string>applinks:ccip.coscup.org</string>
-        <string>applinks:ccip.sitcon.org</string>
+		<string>applinks:ccip.coscup.org</string>
+		<string>applinks:ccip.sitcon.org</string>
 		<string>applinks:ccip.pycon.tw</string>
-        <string>applinks:gb8p5.app.goo.gl</string>
-        <string>applinks:coscup.page.link</string>
-        <string>applinks:tyk55.app.goo.gl</string>
-        <string>applinks:s6bhm.app.goo.gl</string>
+		<string>applinks:gb8p5.app.goo.gl</string>
+		<string>applinks:coscup.page.link</string>
+		<string>applinks:tyk55.app.goo.gl</string>
+		<string>applinks:s6bhm.app.goo.gl</string>
 	</array>
 	<key>com.apple.developer.networking.HotspotConfiguration</key>
 	<true/>
@@ -26,11 +26,8 @@
 	</array>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)tw.ocf.COSCUP-CCIP-Dev</string>
 		<string>$(AppIdentifierPrefix)tw.ocf.COSCUP-CCIP</string>
-		<string>$(AppIdentifierPrefix)tw.ocf.SITCON-CCIP-Dev</string>
 		<string>$(AppIdentifierPrefix)tw.ocf.SITCON-CCIP</string>
-		<string>$(AppIdentifierPrefix)tw.ocf.PyConTW-CCIP-Dev</string>
 		<string>$(AppIdentifierPrefix)tw.ocf.PyConTW-CCIP</string>
 	</array>
 </dict>
