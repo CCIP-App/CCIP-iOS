@@ -126,26 +126,6 @@
         [self configureCell:cell atIndexPath:indexPath];
     }];
 }
-    
-- (void)setTextFit:(UILabel *)label WithContent:(NSString *)content {
-    [label setText:content];
-//    NSMutableString *fakeContent = [NSMutableString stringWithString:content];
-//    [fakeContent replaceOccurrencesOfString:@"[ ]"
-//                                 withString:@"　"
-//                                    options:(NSCaseInsensitiveSearch | NSRegularExpressionSearch)
-//                                      range:NSMakeRange(0, [fakeContent length])];
-//    [fakeContent replaceOccurrencesOfString:@"[\n]"
-//                                 withString:@"　？　？　？　？　？　？　？　？　？　？　？　？　？　？　？　？　？　？　？　？"
-//                                    options:(NSCaseInsensitiveSearch | NSRegularExpressionSearch)
-//                                      range:NSMakeRange(0, [fakeContent length])];
-//    [label setNumberOfLines:0];
-//    [label setLineBreakMode:NSLineBreakByWordWrapping];
-//    [label setText:[NSString stringWithString:fakeContent]];
-    [label sizeToFit];
-//    [label setNeedsDisplay];
-//    [label layoutIfNeeded];
-//    [label setText:content];
-}
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     [cell setFd_enforceFrameLayout:NO]; // Enable to use "-sizeThatFits:"
@@ -165,16 +145,16 @@
                                 ScheduleAbstractViewCell *abstractCell = (ScheduleAbstractViewCell *)cell;
                                 NSString *summary = [NSString stringWithFormat:@"%@\n", [self.detailData objectForKey:@"summary"]];
                                 NSLog(@"Set summary: %@", summary);
-                                [self setTextFit:abstractCell.lbAbstractContent
-                                     WithContent:summary];
+                                [abstractCell.lbAbstractContent setText:summary];
+                                [abstractCell.lbAbstractContent sizeToFit];
                                 [abstractCell.lbAbstractText setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
                             },
                             SPEAKERINFO_CELL: ^{
                                 ScheduleSpeakerInfoViewCell *speakerInfoCell = (ScheduleSpeakerInfoViewCell *)cell;
                                 NSString *bio = [NSString stringWithFormat:@"%@\n", [[self.detailData objectForKey:@"speaker"] objectForKey:@"bio"]];
                                 NSLog(@"Set bio: %@", bio);
-                                [self setTextFit:speakerInfoCell.lbSpeakerInfoContent
-                                     WithContent:bio];
+                                [speakerInfoCell.lbSpeakerInfoContent setText:bio];
+                                [speakerInfoCell.lbSpeakerInfoContent sizeToFit];
                                 [speakerInfoCell.lbSpeakerInfoTitle setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
                             }
                             };
