@@ -158,6 +158,7 @@
                                 NSLog(@"Set summary: %@", summary);
                                 [self setTextFit:abstractCell.lbAbstractContent
                                      WithContent:summary];
+                                [abstractCell setFd_enforceFrameLayout: YES]; // enable (CGSize)sizeThatFits:(CGSize)size
                                 [abstractCell.lbAbstractText setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
                             },
                             SPEAKERINFO_CELL: ^{
