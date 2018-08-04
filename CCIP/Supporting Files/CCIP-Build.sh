@@ -1,3 +1,5 @@
+export MAIN_VERSION=2.3
+
 trim() {
     local var=$@
     var="${var#"${var%%[![:space:]]*}"}"   # remove leading whitespace characters
@@ -53,6 +55,7 @@ gitVersion=`git rev-parse --short HEAD`
 buildVersion=`agvtool vers -terse`
 cd "$PROJECT_DIR"
 productVersion=`/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "$INFOPLIST_FILE"`
+productVersion="$MAIN_VERSION"
 mainVersion="$productVersion.$buildVersion"
 version="$mainVersion #$gitVersion"
 flags=$GCC_PREPROCESSOR_DEFINITIONS
