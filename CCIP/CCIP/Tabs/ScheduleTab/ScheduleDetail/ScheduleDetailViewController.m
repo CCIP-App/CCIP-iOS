@@ -57,11 +57,15 @@
     NSString *endTimeString = [formatter_date stringFromDate:endTime];
     NSString *timeRange = [NSString stringWithFormat:@"%@ - %@", startTimeString, endTimeString];
     UIImage *defaultIcon = ASSETS_IMAGE(@"PassAssets", @"StaffIconDefault");
+    NSString *avatar = [[data objectForKey:@"speaker"] objectForKey:@"avatar"];
+    NSString *speakerPhoto = [avatar stringByReplacingOccurrencesOfString:@"http:"
+                                                               withString:@"https:"];
+    NSURL *speakerPhotoURL = [NSURL URLWithString:speakerPhoto];
+    NSLog(@"Loading Speaker Photo -> %@ (Parsed as %@)", speakerPhoto, speakerPhotoURL);
     [self.lbTitle setText:[data objectForKey:@"subject"]];
     [self.lbSpeakerName setText:[[data objectForKey:@"speaker"] objectForKey:@"name"]];
     [self.ivSpeakerPhoto setImage:defaultIcon];
-    [self.ivSpeakerPhoto sd_setImageWithURL:[NSURL URLWithString:[[[data objectForKey:@"speaker"] objectForKey:@"avatar"] stringByReplacingOccurrencesOfString:@"http:"
-                                                                                                                                                    withString:@"https:"]]
+    [self.ivSpeakerPhoto sd_setImageWithURL:speakerPhotoURL
                            placeholderImage:defaultIcon
                                     options:SDWebImageRefreshCached];
     [self.ivSpeakerPhoto.layer setCornerRadius:self.ivSpeakerPhoto.frame.size.height / 2];
