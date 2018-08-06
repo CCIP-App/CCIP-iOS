@@ -108,17 +108,17 @@
 			<key>MapsUseWeb</key>
 			<true/>
 			<key>MapsPath</key>
-			<string>https://coscup.org/2018-assets/img/venue.svg</string>
+			<string>https://coscup.org/2018-assets/img/venue.svg?__ccip=##random##</string>
 			<key>StaffUseWeb</key>
 			<true/>
 			<key>StaffPath</key>
-			<string>https://2018.coscup.org/staffs</string>
+			<string>https://2018.coscup.org/staffs/?__ccip=##random##</string>
 			<key>SponsorUseWeb</key>
 			<true/>
 			<key>SponsorPath</key>
-			<string>https://2018.coscup.org/sponsors</string>
+			<string>https://2018.coscup.org/sponsors/?__ccip=##random##</string>
 			<key>ScheduleContentPath</key>
-			<string>https://coscup.org/2018-assets/json/submissions.json</string>
+			<string>https://coscup.org/2018-assets/json/submissions.json?__ccip=##random##</string>
 		</dict>
 	</dict>
 	<key>SITCON</key>
