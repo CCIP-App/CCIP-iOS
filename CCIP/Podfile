@@ -30,6 +30,7 @@ def ccip_pods
     pod 'EFQRCode', '~> 1.2.7'
     pod 'MWPhotoBrowser', '~> 2.1.2'
     pod 'MBProgressHUD', '~> 0.9.2'
+    pod 'FSPagerView'
 end
 
 target 'OPass' do

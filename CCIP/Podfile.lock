@@ -36,6 +36,7 @@ PODS:
   - FirebaseDynamicLinks (2.1.0):
     - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.4)
+  - FSPagerView (0.7.1)
   - GoogleToolboxForMac/Defines (2.1.3)
   - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
     - GoogleToolboxForMac/Defines (= 2.1.3)
@@ -77,6 +78,7 @@ DEPENDENCIES:
   - EFQRCode (~> 1.2.7)
   - Firebase/Core
   - Firebase/DynamicLinks
+  - FSPagerView
   - iCarousel (~> 1.8)
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
   - iRate (~> 1.11)
@@ -106,6 +108,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseDynamicLinks
     - FirebaseInstanceID
+    - FSPagerView
     - GoogleToolboxForMac
     - iCarousel
     - iRate
@@ -149,6 +152,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 69b1a5ac5f857ba6d5fd9d5fe794f4786dd5e579
   FirebaseDynamicLinks: ed4cb6c42705aaa5e841ed2d76e3a4bddbec10c1
   FirebaseInstanceID: 70c2b877e9338971b2429ea5a4293df6961aa44e
+  FSPagerView: 958aba39684e1573755ddcfcc29f7eebb8413cee
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   iCarousel: 67c8a43da5a46795b56aadfc96cd36a16f6149b2
   ICViewPager: c1278b67eceac7252d48252829c3c703285dfb76
@@ -167,6 +171,6 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: f83fcd33f85b796839bcab481b0ed51d4db15306
+PODFILE CHECKSUM: 2683c7947e0f6419323a8d208deecb24c6ba5b5e
 
 COCOAPODS: 1.5.3
