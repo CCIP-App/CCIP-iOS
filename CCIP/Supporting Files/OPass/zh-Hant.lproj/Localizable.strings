@@ -8,7 +8,7 @@
 
 
 "CurrentLang" = "zh-Hant";
-"Title" = "COSCUP 2018";
+"Title" = "OPass 通關";
 "Checkin" = "報到";
 "Schedule" = "議程";
 "Announce" = "大會訊息";
@@ -23,8 +23,8 @@
 "Hi" = "嗨！%@ 您好！";
 "CheckinViewButton" = "報到";
 "CheckinViewButtonPressed" = "已報到";
-"CheckinText" = "「分享」一直以來都是 COSCUP 的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。";
-"CheckinTextVipKit" = "謝謝所有參與 COSCUP 個人贊助方案的贊助者，因為有你們，促成了活動的舉行，感謝各位！";
+"CheckinText" = "「分享」一直以來都是我們的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。";
+"CheckinTextVipKit" = "謝謝所有參與此大會個人贊助方案的贊助者，因為有你們，促成了活動的舉行，感謝各位！";
 "UseNoticeText" = "從封閉到開源\n從個人到社群\n我們曾走過很長一段路";
 "meatLunch" = "葷食";
 "vegetarianLunch" = "素食";
@@ -41,14 +41,16 @@
 "GotIt" = "明白了";
 "day1checkin" = "第一天報到";
 "day2checkin" = "第二天報到";
+"day3checkin" = "第三天報到";
 "day1lunch" = "第一天午餐領取";
 "day2lunch" = "第二天午餐領取";
+"day3lunch" = "第三天午餐領取";
 "Addition" = "其他";
 "IRC" = "IRC 頻道";
 "Puzzle" = "開源巔峰挑戰賽";
 "Ticket" = "我的票卷";
 "TicketNotice" = "請妥善保管您的票卷，僅提供此票卷給我們的工作人員或您參與攤位活動的工作人員使用";
-"TicketNonExistNotice" = "您的票卷尚未登陸進 COSCUP Pass，請登陸後再使用此功能！";
+"TicketNonExistNotice" = "您的票卷尚未登錄進 OPass，請登陸後再使用此功能！";
 "Telegram" = "Telegram 群組";
 "MapsWeb" = "場內地圖";
 "Maps" = "場內地圖";
@@ -85,7 +87,7 @@
 "QRFileNotAvailableTitle" = "擷取錯誤！";
 "QRFileNotAvailableDesc" = "該圖檔無法擷取出 QR Code，請重試";
 "Networking_Broken" = "網路連線異常";
-"Networking_WrongWiFi" = "請連上 COSCUP 提供的無線網路，才能使用";
-"LoginGreeting" = "嗨 %@，歡迎您加入 COSCUP，盡情享受這場盛夏饗宴吧！";
+"Networking_WrongWiFi" = "請連上大會提供的無線網路，才能使用";
+"LoginGreeting" = "嗨 %@，歡迎您加入大會，盡情享受這場饗宴吧！";
 "AfterEventMessage" = "在大會結束之後，我們需要您填寫一份問卷，感謝您！";
 "AfterEventActionTitle" = "開啟會後問卷";

@@ -8,7 +8,7 @@
 
 
 "CurrentLang" = "en";
-"Title" = "COSCUP 2018";
+"Title" = "OPass";
 "Checkin" = "Checkin";
 "Schedule" = "Schedule";
 "Announce" = "Announce";
@@ -24,7 +24,7 @@
 "CheckinViewButton" = "CHECK IN";
 "CheckinViewButtonPressed" = "FINISHED";
 "CheckinText" = "As well as continuing our long-standing spirit of \"sharing\", we hope to extend and expand this mission further and to a wider audience; so it grows into a force that makes for a better future.";
-"CheckinTextVipKit" = "We appreciate your support! Because of you, COSCUP is doing better.";
+"CheckinTextVipKit" = "We appreciate your support! Because of you, we're doing better.";
 "UseNoticeText" = "From close source to open source\nIndividual to Community\nWe've come a long way...";
 "meatLunch" = "Meal";
 "vegetarianLunch" = "Vegan";
@@ -41,14 +41,16 @@
 "GotIt" = "Got it";
 "day1checkin" = "Day 1 Checkin";
 "day2checkin" = "Day 2 Checkin";
+"day3checkin" = "Day 3 Checkin";
 "day1lunch" = "Day 1 Lunch";
 "day2lunch" = "Day 2 Lunch";
+"day3lunch" = "Day 3 Lunch";
 "Addition" = "Addition";
 "IRC" = "IRC Channel";
 "Puzzle" = "Booth Reward Activity";
 "Ticket" = "My Ticket";
 "TicketNotice" = "Please keep your ticket secretly and carefully, only shows for our staff or in booth event";
-"TicketNonExistNotice" = "Your Ticket not import into COSCUP Pass, please try again after import !";
+"TicketNonExistNotice" = "Your Ticket not import into OPass, please try again after import !";
 "Telegram" = "Telegram Groups";
 "MapsWeb" = "Maps";
 "Maps" = "Maps";
@@ -85,7 +87,7 @@
 "QRFileNotAvailableTitle" = "Extract Error!!";
 "QRFileNotAvailableDesc" = "Can not extract QR Code from the image";
 "Networking_Broken" = "Error while networking issues";
-"Networking_WrongWiFi" = "Please connect to the wifi provided by COSCUP";
-"LoginGreeting" = "Hi %@, welcome to COSCUP, enjoy this summer festival of fun!";
+"Networking_WrongWiFi" = "Please connect to the wifi which we provided";
+"LoginGreeting" = "Hi %@, welcome and enjoy!";
 "AfterEventMessage" = "After the Event, we need you in-form a questionnaire for us, thanks.";
 "AfterEventActionTitle" = "Open questionnaire";

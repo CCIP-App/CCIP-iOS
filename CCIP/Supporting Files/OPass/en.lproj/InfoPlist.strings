@@ -7,7 +7,7 @@
 */
 /* Localized versions of Info.plist keys */
 
-CFBundleDisplayName = "COSCUP Pass";
-CFBundleName = "COSCUP Pass";
+CFBundleDisplayName = "OPass";
+CFBundleName = "OPass";
 NSCameraUsageDescription = "Use your Camera to scan QR Code";
 NSPhotoLibraryUsageDescription = "Read QR Code image from yout Photo Library";
