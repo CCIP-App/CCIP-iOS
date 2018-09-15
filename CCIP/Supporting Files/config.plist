@@ -6,6 +6,12 @@
 	<dict>
 		<key>ogToken</key>
 		<string>a429ff30-5c0e-4584-a32f-b866ba88c947</string>
+		<key>DateTimeFormat</key>
+		<string>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSSZ</string>
+		<key>DisplayDateFormat</key>
+		<string>M/d</string>
+		<key>DisplayTimeFormat</key>
+		<string>HH:mm</string>
 		<key>Themes</key>
 		<dict>
 			<key>DevelopingLogoMaskColor</key>
@@ -118,7 +124,7 @@
 			<key>SponsorPath</key>
 			<string>https://2018.coscup.org/sponsors/?__ccip=##random##</string>
 			<key>ScheduleContentPath</key>
-			<string>https://coscup.org/2018-assets/json/submissions.json?__ccip=##random##</string>
+			<string>https://summit.g0v.tw/2018/static/ccip.json?__ccip=##random##</string>
 		</dict>
 	</dict>
 </dict>

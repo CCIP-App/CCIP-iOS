@@ -33,11 +33,11 @@ static NSDateFormatter *formatter_date = nil;
     [super viewDidLoad];
     if (formatter_full == nil) {
         formatter_full = [NSDateFormatter new];
-        [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+        [formatter_full setDateFormat:[AppDelegate AppConfig:@"DateTimeFormat"]];
     }
     if (formatter_date == nil) {
         formatter_date = [NSDateFormatter new];
-        [formatter_date setDateFormat:@"MM/dd HH:mm"];
+        [formatter_date setDateFormat:[NSString stringWithFormat:@"%@ %@", [AppDelegate AppConfig:@"DisplayDateFormat"], [AppDelegate AppConfig:@"DisplayTimeFormat"]]];
         [formatter_date setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Taipei"]];
     }
     if (today == nil) {

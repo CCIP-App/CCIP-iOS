@@ -41,12 +41,12 @@ static NSDateFormatter *formatter_date = nil;
     
     if (formatter_full == nil) {
         formatter_full = [NSDateFormatter new];
-        [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+        [formatter_full setDateFormat:[AppDelegate AppConfig:@"DateTimeFormat"]];
         [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     }
     if (formatter_date == nil) {
         formatter_date = [NSDateFormatter new];
-        [formatter_date setDateFormat:@"M/d"];
+        [formatter_date setDateFormat:[AppDelegate AppConfig:@"DisplayDateFormat"]];
     }
     
     self.dataSource = self;

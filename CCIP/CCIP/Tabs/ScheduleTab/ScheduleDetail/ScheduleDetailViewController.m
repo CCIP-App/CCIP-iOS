@@ -46,10 +46,10 @@
     NSDictionary *data = self.detailData;
     NSDateFormatter *formatter_full = nil;
     formatter_full = [NSDateFormatter new];
-    [formatter_full setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+    [formatter_full setDateFormat:[AppDelegate AppConfig:@"DateTimeFormat"]];
     NSDateFormatter *formatter_date = nil;
     formatter_date = [NSDateFormatter new];
-    [formatter_date setDateFormat:@"HH:mm"];
+    [formatter_date setDateFormat:[AppDelegate AppConfig:@"DisplayTimeFormat"]];
     [formatter_date setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Taipei"]];
     NSDate *startTime = [formatter_full dateFromString:[data objectForKey:@"start"]];
     NSDate *endTime = [formatter_full dateFromString:[data objectForKey:@"end"]];
