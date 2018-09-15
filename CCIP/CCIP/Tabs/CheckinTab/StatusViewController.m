@@ -104,7 +104,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self startCountDown];
-
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
