@@ -7,23 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>981935318625-m77acgkajcifc8kkv5n38cojb8j76fam.apps.googleusercontent.com</string>
+	<string>1003222886889-svv7okquqmq3q80g0tudijmda0tbgvq0.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.981935318625-m77acgkajcifc8kkv5n38cojb8j76fam</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>981935318625-2u0k7s400asi9656hi8ucddvdsi5krgi.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.1003222886889-svv7okquqmq3q80g0tudijmda0tbgvq0</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBJKJYCtAP8CfI6L7srE-yIXU_qvFNw92Q</string>
+	<string>AIzaSyBNCQQ4IV_1e9kGXQ2D73-itb9MXTm_84g</string>
 	<key>GCM_SENDER_ID</key>
-	<string>981935318625</string>
+	<string>1003222886889</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>tw.ocf.COSCUP-CCIP</string>
+	<string>app.ccip.opass</string>
 	<key>PROJECT_ID</key>
-	<string>ccip-9a548</string>
+	<string>opass-8b7db</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ccip-9a548.appspot.com</string>
+	<string>opass-8b7db.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -35,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:981935318625:ios:bdc020d07a24acdf</string>
+	<string>1:1003222886889:ios:0de259113258c8f4</string>
 	<key>DATABASE_URL</key>
-	<string>https://ccip-9a548.firebaseio.com</string>
+	<string>https://opass-8b7db.firebaseio.com</string>
 </dict>
 </plist>
