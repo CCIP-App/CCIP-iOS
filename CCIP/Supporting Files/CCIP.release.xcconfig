@@ -1,8 +1,8 @@
-MAIN_PRODUCT_BUNDLE_IDENTIFIER              = org.coscup.CCIP-iOS
+MAIN_PRODUCT_BUNDLE_IDENTIFIER              = app.ccip.opass
 WATCH_PRODUCT_BUNDLE_IDENTIFIER             = $(MAIN_PRODUCT_BUNDLE_IDENTIFIER).watchkitapp
 WATCH_EXTENSION_PRODUCT_BUNDLE_IDENTIFIER   = $(WATCH_PRODUCT_BUNDLE_IDENTIFIER).watchkitextension
 MAIN_BUILD_VERSION                          = 2.3.135
 MAIN_BUILD_SHORT_VERSION                    = 2.3.135
-APP_NAME                                    = '(@"COSCUP")'
-APP_GROUP_ID                                = group.tw.ocf.ccip.coscup
-APP_SCHEME                                  = ccip-coscup
+APP_NAME                                    = '(@"OPass")'
+APP_GROUP_ID                                = group.app.ccip.opass
+APP_SCHEME                                  = opass

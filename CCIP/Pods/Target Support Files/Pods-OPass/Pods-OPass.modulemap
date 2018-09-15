@@ -1,0 +1,6 @@
+framework module Pods_OPass {
+  umbrella header "Pods-OPass-umbrella.h"
+
+  export *
+  module * { export * }
+}

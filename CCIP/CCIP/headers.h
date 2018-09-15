@@ -6,15 +6,7 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
-#ifdef COSCUP
-#import <COSCUP-Swift.h>
-#endif
-#ifdef SITCON
-#import <SITCON-Swift.h>
-#endif
-#ifdef PyConTW
-#import <PyConTW-Swift.h>
-#endif
+#import <OPass-Swift.h>
 
 #import "NSObject+ValueForKeyPathWithIndexes.h"
 

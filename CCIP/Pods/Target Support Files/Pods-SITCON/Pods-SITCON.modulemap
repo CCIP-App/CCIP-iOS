@@ -1,6 +1,0 @@
-framework module Pods_SITCON {
-  umbrella header "Pods-SITCON-umbrella.h"
-
-  export *
-  module * { export * }
-}
