@@ -108,7 +108,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissStatus];
 }
 
 - (void)setScenario:(NSDictionary *)scenario {
@@ -154,16 +154,14 @@
                             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delaySec * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delaySec * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                                    [self dismissViewControllerAnimated:YES
-                                                             completion:nil];
+                                    [self dismissStatus];
                                 });
                             });
                         });
                     });
                 });
             } else {
-                [self dismissViewControllerAnimated:YES
-                                         completion:nil];
+                [self dismissStatus];
             }
         }
     } else if (self.countDown >= (self.maxValue / 2)) {
@@ -182,6 +180,18 @@
     [self.countdownLabel setTextColor:color];
     [self.countdownLabel setText:[NSString stringWithFormat:@"%0.3f", self.countDown]];
     [self.nowTimeLabel setText:[self.formatter stringFromDate:now]];
+}
+
+- (void)dismissStatus {
+    if (self.needCountdown) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [self dismissViewControllerAnimated:YES
+                                     completion:nil];
+        });
+    } else {
+        [self dismissViewControllerAnimated:NO
+                                 completion:nil];
+    }
 }
 
 @end

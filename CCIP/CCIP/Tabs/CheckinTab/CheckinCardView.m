@@ -34,9 +34,9 @@
     NSDate *stopDate = [date dateByAddingTimeInterval:[[self.scenario objectForKey:@"countdown"] longValue]];
     NSDate *now = [NSDate new];
     NSLog(@"%@ ~ %@ == %@", date, stopDate, now);
-    if ([now timeIntervalSince1970] - [stopDate timeIntervalSince1970] < 0) {
-        [self.delegate showCountdown:self.scenario];
-    }
+//    if ([now timeIntervalSince1970] - [stopDate timeIntervalSince1970] < 0) {
+    [self.delegate showCountdown:self.scenario];
+//    }
 }
 
 - (NSDictionary *)updateScenario:(NSArray *)scenarios {
