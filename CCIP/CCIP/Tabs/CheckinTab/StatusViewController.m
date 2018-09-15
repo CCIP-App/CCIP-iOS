@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "StatusViewController.h"
 #import "UIColor+addition.h"
+#import "MainNavViewController.h"
 @import AudioToolbox.AudioServices;
 
 @interface StatusViewController()
@@ -30,6 +31,7 @@
 
 - (void)viewDidLoad {
     SEND_FIB(@"StatusViewController");
+    [self.view setAutoresizingMask:UIViewAutoresizingNone];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,10 +90,13 @@
     [super viewWillLayoutSubviews];
     
     if (self.isRelayout != true) {
-        self.view.frame = CGRectMake(0.0,
-                                     0.0,
+        MainNavViewController *mnvc = (MainNavViewController *)self.presentingViewController;
+        CheckinViewController *cvc = (CheckinViewController *)[[mnvc childViewControllers] firstObject];
+        CGFloat topStart = [cvc controllerTopStart];
+        self.view.frame = CGRectMake(0.0f,
+                                     -1.0f * topStart,
                                      self.view.frame.size.width,
-                                     self.view.frame.size.height - 49);
+                                     self.view.frame.size.height + topStart);
         self.isRelayout = true;
     }
 }

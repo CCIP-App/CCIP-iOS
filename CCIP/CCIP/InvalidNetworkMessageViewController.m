@@ -54,15 +54,14 @@
         MainNavViewController *mnvc = (MainNavViewController *)self.presentingViewController;
         CheckinViewController *cvc = (CheckinViewController *)[[mnvc childViewControllers] firstObject];
         CGFloat topStart = [cvc controllerTopStart];
-        topStart = 0;
         self.view.frame = CGRectMake(0.0f,
-                                     -44.0f + topStart,
+                                     -1.0f * topStart,
                                      self.view.frame.size.width,
-                                     self.view.frame.size.height - topStart - 49.0f + X_TOP(0.0f, 22.0f));
-        self.view.superview.frame = CGRectMake(0.0f,
-                                               topStart,
-                                               self.view.frame.size.width,
-                                               self.view.frame.size.height + X_TOP(0.0f, 22.0f));
+                                     self.view.frame.size.height + topStart);
+//        self.view.superview.frame = CGRectMake(0.0f,
+//                                               topStart,
+//                                               self.view.frame.size.width,
+//                                               self.view.frame.size.height + X_TOP(0.0f, 22.0f));
         self.isRelayout = true;
     }
 }
