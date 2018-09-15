@@ -6,12 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
-        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -599,20 +593,11 @@ Please copy and paste the token into next field or click the token link in the r
                         <rect key="frame" x="0.0" y="0.0" width="420" height="720"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P00-CS-cor">
-                                <rect key="frame" x="0.0" y="64" width="420" height="220"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P00-CS-cor" customClass="FSPagerView" customModule="FSPagerView">
+                                <rect key="frame" x="0.0" y="64" width="420" height="300"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MzI-LD-fFd">
-                                        <rect key="frame" x="350" y="30" width="60" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="MIk-M9-29U"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Q5t-aH-39e"/>
-                                            <constraint firstAttribute="width" constant="60" id="dU7-n0-fdb"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="wJu-eQ-TvN"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CP-bQ-x2n">
-                                        <rect key="frame" x="10" y="35" width="330" height="22"/>
+                                        <rect key="frame" x="10" y="35" width="400" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="sWm-Nt-zrN"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="zJh-WQ-xLT"/>
@@ -622,17 +607,17 @@ Please copy and paste the token into next field or click the token link in the r
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uSO-K1-shl">
-                                        <rect key="frame" x="10" y="62" width="330" height="45"/>
+                                        <rect key="frame" x="10" y="62" width="400" height="28"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="BNI-9C-dK9"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="Ln6-Mx-qRw"/>
+                                            <constraint firstAttribute="height" constant="28" id="BNI-9C-dK9"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="Ln6-Mx-qRw"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F2g-0m-bel">
-                                        <rect key="frame" x="20" y="100" width="380" height="60"/>
+                                        <rect key="frame" x="20" y="174" width="380" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Goe-rS-Flj"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="i3i-Ph-6ja"/>
@@ -642,7 +627,7 @@ Please copy and paste the token into next field or click the token link in the r
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gh-d3-AGe">
-                                        <rect key="frame" x="0.0" y="164" width="420" height="56"/>
+                                        <rect key="frame" x="0.0" y="244" width="420" height="56"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEV-Th-Vkm">
                                                 <rect key="frame" x="25" y="5" width="100" height="21"/>
@@ -721,20 +706,18 @@ Please copy and paste the token into next field or click the token link in the r
                                     <constraint firstItem="uSO-K1-shl" firstAttribute="top" secondItem="5CP-bQ-x2n" secondAttribute="bottom" constant="5" id="9cg-3V-WV8"/>
                                     <constraint firstAttribute="bottom" secondItem="3gh-d3-AGe" secondAttribute="bottom" id="AAi-dm-2t4"/>
                                     <constraint firstItem="3gh-d3-AGe" firstAttribute="centerX" secondItem="P00-CS-cor" secondAttribute="centerX" id="AUm-8c-bTz"/>
+                                    <constraint firstItem="3gh-d3-AGe" firstAttribute="top" secondItem="F2g-0m-bel" secondAttribute="bottom" constant="10" id="Hcm-er-jh4"/>
                                     <constraint firstAttribute="trailing" secondItem="F2g-0m-bel" secondAttribute="trailing" constant="20" id="JWu-Bi-aa2"/>
-                                    <constraint firstItem="MzI-LD-fFd" firstAttribute="leading" secondItem="5CP-bQ-x2n" secondAttribute="trailing" constant="10" id="Pur-iC-J4Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="5CP-bQ-x2n" secondAttribute="trailing" constant="10" id="QOp-XD-BWG"/>
                                     <constraint firstItem="5CP-bQ-x2n" firstAttribute="top" secondItem="P00-CS-cor" secondAttribute="top" constant="35" id="SRV-rG-JH5"/>
-                                    <constraint firstItem="F2g-0m-bel" firstAttribute="top" secondItem="MzI-LD-fFd" secondAttribute="bottom" constant="10" id="V4d-wj-RuV"/>
-                                    <constraint firstItem="MzI-LD-fFd" firstAttribute="leading" secondItem="uSO-K1-shl" secondAttribute="trailing" constant="10" id="Zi4-Qd-u9D"/>
-                                    <constraint firstAttribute="trailing" secondItem="MzI-LD-fFd" secondAttribute="trailing" constant="10" id="eTl-ck-Gwg"/>
-                                    <constraint firstItem="MzI-LD-fFd" firstAttribute="top" secondItem="P00-CS-cor" secondAttribute="top" constant="30" id="hvr-sN-g3W"/>
                                     <constraint firstItem="F2g-0m-bel" firstAttribute="leading" secondItem="P00-CS-cor" secondAttribute="leading" constant="20" id="joH-cz-hax"/>
-                                    <constraint firstAttribute="height" constant="220" id="kk2-eK-3cI"/>
+                                    <constraint firstAttribute="height" constant="300" id="kk2-eK-3cI"/>
+                                    <constraint firstAttribute="trailing" secondItem="uSO-K1-shl" secondAttribute="trailing" constant="10" id="mMm-fH-fPB"/>
                                     <constraint firstItem="3gh-d3-AGe" firstAttribute="width" secondItem="P00-CS-cor" secondAttribute="width" id="nxs-7W-6k6"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4T1-hE-S3X">
-                                <rect key="frame" x="0.0" y="284" width="420" height="387"/>
+                                <rect key="frame" x="0.0" y="364" width="420" height="307"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleAbstract" rowHeight="250" id="qgL-2l-vLc" customClass="ScheduleAbstractViewCell">
@@ -863,7 +846,6 @@ Please copy and paste the token into next field or click the token link in the r
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="420" height="720"/>
                     <connections>
-                        <outlet property="ivSpeakerPhoto" destination="MzI-LD-fFd" id="gOg-Jy-CVJ"/>
                         <outlet property="lbLang" destination="ven-KA-rEN" id="u4b-pI-Osi"/>
                         <outlet property="lbLangText" destination="eDW-eh-9J7" id="W3D-x3-E36"/>
                         <outlet property="lbRoom" destination="uEV-Th-Vkm" id="oNb-wd-CAO"/>
@@ -880,7 +862,7 @@ Please copy and paste the token into next field or click the token link in the r
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eus-fa-dPK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-207" y="2788"/>
+            <point key="canvasLocation" x="-207.24637681159422" y="2787.2282608695655"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Jxo-LT-w56">

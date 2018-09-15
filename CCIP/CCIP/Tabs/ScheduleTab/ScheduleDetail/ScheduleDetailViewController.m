@@ -23,6 +23,7 @@
 
 @property (strong, nonatomic) NSMutableArray *identifiers;
 @property (strong, nonatomic) NSDictionary *detailData;
+@property (strong, nonatomic) NSArray *speakers;
 
 @end
 
@@ -35,6 +36,7 @@
     
     self.identifiers = [NSMutableArray new];
     [self.tvContent setSeparatorColor:[UIColor clearColor]];
+    self.speakers = @[];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,14 +46,24 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     NSDictionary *data = self.detailData;
-    
+    ////
     [self.identifiers addObject:ABSTRACT_CELL];
     
-    for (int i = 0; i < [[data objectForKey:@"speakers"] count]; i++)
-    {
+    for (int i = 0; i < [[data objectForKey:@"speakers"] count]; i++) {
         [self.identifiers addObject:SPEAKERINFO_CELL];
     }
-    
+    ////
+    self.speakers = [data objectForKey:@"speakers"];
+    [self.vwHeader registerClass:[FSPagerViewCell class] forCellWithReuseIdentifier:@"cell"];
+    [self.vwHeader setDelegate:self];
+    [self.vwHeader setDataSource:self];
+    [self.vwHeader setIsInfinite:YES];
+    if ([self.speakers count] > 1) {
+        [self.vwHeader setAutomaticSlidingInterval:3.0];
+    }
+    UIView *fspager = [self.vwHeader.subviews lastObject];
+    [self.vwHeader sendSubviewToBack:fspager];
+    [fspager setUserInteractionEnabled:NO];
     NSDateFormatter *formatter_full = nil;
     formatter_full = [NSDateFormatter new];
     [formatter_full setDateFormat:[AppDelegate AppConfig:@"DateTimeFormat"]];
@@ -64,21 +76,9 @@
     NSString *startTimeString = [formatter_date stringFromDate:startTime];
     NSString *endTimeString = [formatter_date stringFromDate:endTime];
     NSString *timeRange = [NSString stringWithFormat:@"%@ - %@", startTimeString, endTimeString];
-    UIImage *defaultIcon = ASSETS_IMAGE(@"PassAssets", @"StaffIconDefault");
     NSDictionary *currentLangObject = [data objectForKey:[AppDelegate shortLangUI]];
-    NSString *avatar = [[data objectForKey:@"speaker"] objectForKey:@"avatar"];
-    NSString *speakerPhoto = [avatar stringByReplacingOccurrencesOfString:@"http:"
-                                                               withString:@"https:"];
-    NSURL *speakerPhotoURL = [NSURL URLWithString:speakerPhoto];
-    NSLog(@"Loading Speaker Photo -> %@ (Parsed as %@)", speakerPhoto, speakerPhotoURL);
     [self.lbTitle setText:[currentLangObject objectForKey:@"subject"]];
     [self.lbSpeakerName setText:[[data objectForKey:@"speaker"] objectForKey:@"name"]];
-    [self.ivSpeakerPhoto setImage:defaultIcon];
-    [self.ivSpeakerPhoto sd_setImageWithURL:speakerPhotoURL
-                           placeholderImage:defaultIcon
-                                    options:SDWebImageRefreshCached];
-    [self.ivSpeakerPhoto.layer setCornerRadius:self.ivSpeakerPhoto.frame.size.height / 2];
-    [self.ivSpeakerPhoto.layer setMasksToBounds:YES];
     [self.lbRoomText setText:[data objectForKey:@"room"]];
     [self.lbLangText setText:[data objectForKey:@"lang"]];
     [self.lbTimeText setText:timeRange];
@@ -112,10 +112,44 @@
                          ];
     for (UILabel *lb in lbsHeader) {
         [lb setTextColor:[AppDelegate AppConfigColor:@"ScheduleDetailHeaderTextColor"]];
+        [lb.layer setShadowColor:[[UIColor grayColor] CGColor]];
+        [lb.layer setShadowRadius:3.0f];
+        [lb.layer setShadowOpacity:.8f];
+        [lb.layer setShadowOffset:CGSizeZero];
+        [lb.layer setMasksToBounds:NO];
     }
     for (UILabel *lb in lbsMeta) {
         [lb setTextColor:[AppDelegate AppConfigColor:@"ScheduleMetaHeaderTextColor"]];
+        [lb.layer setShadowColor:[[UIColor grayColor] CGColor]];
+        [lb.layer setShadowRadius:3.0f];
+        [lb.layer setShadowOpacity:.8f];
+        [lb.layer setShadowOffset:CGSizeZero];
+        [lb.layer setMasksToBounds:NO];
     }
+}
+
+#pragma mark - FSPagerView
+
+- (NSInteger)numberOfItemsInPagerView:(FSPagerView *)pagerView {
+    return [self.speakers count];
+}
+
+- (FSPagerViewCell *)pagerView:(FSPagerView *)pagerView cellForItemAtIndex:(NSInteger)index {
+    UIImage *defaultIcon = ASSETS_IMAGE(@"PassAssets", @"StaffIconDefault");
+    NSDictionary *speaker = [self.speakers objectAtIndex:index];
+    NSString *avatar = [speaker objectForKey:@"avatar"];
+    NSString *speakerPhoto = [avatar stringByReplacingOccurrencesOfString:@"http:"
+                                                               withString:@"https:"];
+    NSURL *speakerPhotoURL = [NSURL URLWithString:speakerPhoto];
+    NSLog(@"Loading Speaker Photo -> %@ (Parsed as %@)", speakerPhoto, speakerPhotoURL);
+    FSPagerViewCell *cell = [pagerView dequeueReusableCellWithReuseIdentifier:@"cell" atIndex:index];
+    [cell.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[speaker objectForKey:@"avatar"]]
+                      placeholderImage:defaultIcon
+                               options:SDWebImageRefreshCached];
+//    [cell.textLabel setText:[[speaker objectForKey:[AppDelegate shortLangUI]] objectForKey:@"name"]];
+    [self.lbSpeakerName setText:[[speaker objectForKey:[AppDelegate shortLangUI]] objectForKey:@"name"]];
+    return cell;
 }
 
 #pragma mark - Table view data source
@@ -139,7 +173,7 @@
         [self configureCell:cell atIndexPath:indexPath];
     }];
 }
-    
+
 - (void)setTextFit:(UILabel *)label WithContent:(NSString *)content {
     NSMutableString *fakeContent = [NSMutableString stringWithString:content];
     [fakeContent appendString:@"\n　\n　\n　\n"];
@@ -207,13 +241,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

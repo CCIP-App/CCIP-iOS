@@ -6,6 +6,8 @@
 //  Copyright © 2017年 CPRTeam. All rights reserved.
 //
 
+@import FSPagerView;
+
 #import <UIKit/UIKit.h>
 #import "ScheduleAbstractViewCell.h"
 #import "ScheduleSpeakerInfoViewCell.h"
@@ -13,12 +15,11 @@
 #define INIT_SCHEDULE_DETAIL_VIEW_STORYBOARD_ID (@"ScheduleDetail")
 #define SCHEDULE_DETAIL_VIEW_STORYBOARD_ID      (@"ShowScheduleDetail")
 
-@interface ScheduleDetailViewController : UIViewController<UITableViewDelegate>
+@interface ScheduleDetailViewController : UIViewController<UITableViewDelegate,FSPagerViewDelegate,FSPagerViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tvContent;
-@property (weak, nonatomic) IBOutlet UIView *vwHeader;
+@property (weak, nonatomic) IBOutlet FSPagerView *vwHeader;
 @property (weak, nonatomic) IBOutlet UIView *vwMeta;
-@property (weak, nonatomic) IBOutlet UIImageView *ivSpeakerPhoto;
 @property (weak, nonatomic) IBOutlet UILabel *lbSpeaker;
 @property (weak, nonatomic) IBOutlet UILabel *lbSpeakerName;
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;

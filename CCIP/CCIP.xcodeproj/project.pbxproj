@@ -110,7 +110,6 @@
 		6BF331501F2991C4004BEEA6 /* PassAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */; };
 		6BF331521F299207004BEEA6 /* AssetsUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF331511F299207004BEEA6 /* AssetsUI.bundle */; };
 		6F1E7A1A5C60140E807B118F /* Pods_OPass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0EA2CF879AB2AB4CA09023 /* Pods_OPass.framework */; };
-		FCD3CEA95E90366DC33F85A9 /* Pods_COSCUP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 653BE1EC57F9C2E230CAFC52 /* Pods_COSCUP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -382,7 +381,6 @@
 				288D3A7F1D599B7200E4E3A6 /* libiconv.tbd in Frameworks */,
 				288D3A7D1D599B6700E4E3A6 /* libc++.tbd in Frameworks */,
 				288D3A791D599A1200E4E3A6 /* ScanditBarcodeScanner.framework in Frameworks */,
-				FCD3CEA95E90366DC33F85A9 /* Pods_COSCUP.framework in Frameworks */,
 				6F1E7A1A5C60140E807B118F /* Pods_OPass.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
