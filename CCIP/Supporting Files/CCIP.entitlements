@@ -14,11 +14,11 @@
 	<array/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.app.ccip.opass</string>
+		<string>group.app.opass.ccip</string>
 	</array>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)app.ccip.opass</string>
+		<string>$(AppIdentifierPrefix)app.opass.ccip</string>
 	</array>
 </dict>
 </plist>
