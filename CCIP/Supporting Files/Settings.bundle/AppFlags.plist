@@ -42,7 +42,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>group.app.ccip.opass</string>
+			<string>group.app.opass.ccip</string>
 			<key>Key</key>
 			<string>APP_GROUP_ID</string>
 			<key>Title</key>
@@ -82,7 +82,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>group.app.ccip.opass</string>
+			<string>group.app.opass.ccip</string>
 			<key>Key</key>
 			<string>APP_GROUP_ID</string>
 			<key>Title</key>

@@ -102,7 +102,7 @@
 		<key>URL</key>
 		<dict>
 			<key>CCIP_API</key>
-			<string>ccip.coscup.org</string>
+			<string>ccip.opass.app</string>
 			<key>IRC_Channel</key>
 			<string>coscup</string>
 			<key>tg_Chat</key>
