@@ -11,7 +11,7 @@
 @interface ScheduleAbstractViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIView *vwContent;
-@property (weak, nonatomic) IBOutlet UILabel *lbAbstractText;
+@property (weak, nonatomic) IBOutlet UILabel *lbAbstractTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lbAbstractContent;
 
 @end

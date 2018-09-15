@@ -767,7 +767,7 @@ Please copy and paste the token into next field or click the token link in the r
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="lbAbstractContent" destination="8G0-OA-Hz1" id="x8m-oO-HcL"/>
-                                            <outlet property="lbAbstractText" destination="js4-QC-0N1" id="OyW-gG-ATq"/>
+                                            <outlet property="lbAbstractTitle" destination="js4-QC-0N1" id="xLH-OY-c10"/>
                                             <outlet property="vwContent" destination="RMM-hf-aQ8" id="t6J-L7-WfB"/>
                                         </connections>
                                     </tableViewCell>

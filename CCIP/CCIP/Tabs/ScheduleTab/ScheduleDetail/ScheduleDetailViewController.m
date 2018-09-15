@@ -46,13 +46,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     NSDictionary *data = self.detailData;
-    ////
-    [self.identifiers addObject:ABSTRACT_CELL];
-    
-    for (int i = 0; i < [[data objectForKey:@"speakers"] count]; i++) {
-        [self.identifiers addObject:SPEAKERINFO_CELL];
-    }
-    ////
     self.speakers = [data objectForKey:@"speakers"];
     [self.vwHeader registerClass:[FSPagerViewCell class] forCellWithReuseIdentifier:@"cell"];
     [self.vwHeader setDelegate:self];
@@ -64,6 +57,12 @@
     UIView *fspager = [self.vwHeader.subviews lastObject];
     [self.vwHeader sendSubviewToBack:fspager];
     [fspager setUserInteractionEnabled:NO];
+
+    [self.identifiers addObject:ABSTRACT_CELL];
+    for (int i = 0; i < [self.speakers count]; i++) {
+        [self.identifiers addObject:SPEAKERINFO_CELL];
+    }
+
     NSDateFormatter *formatter_full = nil;
     formatter_full = [NSDateFormatter new];
     [formatter_full setDateFormat:[AppDelegate AppConfig:@"DateTimeFormat"]];
@@ -205,22 +204,20 @@
         NSDictionary *currentLangObject = [self.detailData objectForKey:[AppDelegate shortLangUI]];
         NSString *summary = [NSString stringWithFormat:@"%@\n", [currentLangObject objectForKey:@"summary"]];
         NSLog(@"Set summary: %@", summary);
+        [abstractCell setFd_enforceFrameLayout: YES]; // enable (CGSize)sizeThatFits:(CGSize)size
+        [abstractCell.lbAbstractTitle setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
         [self setTextFit:abstractCell.lbAbstractContent
              WithContent:summary];
-        [abstractCell setFd_enforceFrameLayout: YES]; // enable (CGSize)sizeThatFits:(CGSize)size
-        [abstractCell.lbAbstractText setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
     }];
     
-    for (NSDictionary *speaker in [self.detailData objectForKey:@"speakers"]) {
+    for (NSDictionary *speaker in self.speakers) {
         [cells addObject:^{
             ScheduleSpeakerInfoViewCell *speakerInfoCell = (ScheduleSpeakerInfoViewCell *)cell;
-            
-            [self setTextFit:speakerInfoCell.lbSpeakerInfoTitle
-                 WithContent:[[speaker objectForKey:[AppDelegate shortLangUI]] objectForKey:@"name"]];
-            [speakerInfoCell.lbSpeakerInfoTitle setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
-            
+            NSString *speakerName = [[speaker objectForKey:[AppDelegate shortLangUI]] objectForKey:@"name"];
             NSString *bio = [NSString stringWithFormat:@"%@\n", [[speaker objectForKey:[AppDelegate shortLangUI]] objectForKey:@"bio"]];
             NSLog(@"Set bio: %@", bio);
+            [speakerInfoCell.lbSpeakerInfoTitle setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
+            [speakerInfoCell.lbSpeakerInfoTitle setText:speakerName];
             [self setTextFit:speakerInfoCell.lbSpeakerInfoContent
                  WithContent:bio];
         }];
