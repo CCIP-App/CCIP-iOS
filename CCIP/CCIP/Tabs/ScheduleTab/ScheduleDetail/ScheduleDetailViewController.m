@@ -57,12 +57,13 @@
     NSString *endTimeString = [formatter_date stringFromDate:endTime];
     NSString *timeRange = [NSString stringWithFormat:@"%@ - %@", startTimeString, endTimeString];
     UIImage *defaultIcon = ASSETS_IMAGE(@"PassAssets", @"StaffIconDefault");
+    NSDictionary *currentLangObject = [data objectForKey:[AppDelegate shortLangUI]];
     NSString *avatar = [[data objectForKey:@"speaker"] objectForKey:@"avatar"];
     NSString *speakerPhoto = [avatar stringByReplacingOccurrencesOfString:@"http:"
                                                                withString:@"https:"];
     NSURL *speakerPhotoURL = [NSURL URLWithString:speakerPhoto];
     NSLog(@"Loading Speaker Photo -> %@ (Parsed as %@)", speakerPhoto, speakerPhotoURL);
-    [self.lbTitle setText:[data objectForKey:@"subject"]];
+    [self.lbTitle setText:[currentLangObject objectForKey:@"subject"]];
     [self.lbSpeakerName setText:[[data objectForKey:@"speaker"] objectForKey:@"name"]];
     [self.ivSpeakerPhoto setImage:defaultIcon];
     [self.ivSpeakerPhoto sd_setImageWithURL:speakerPhotoURL
@@ -158,7 +159,8 @@
     NSDictionary *cells = @{
                             ABSTRACT_CELL: ^{
                                 ScheduleAbstractViewCell *abstractCell = (ScheduleAbstractViewCell *)cell;
-                                NSString *summary = [NSString stringWithFormat:@"%@\n", [self.detailData objectForKey:@"summary"]];
+                                NSDictionary *currentLangObject = [self.detailData objectForKey:[AppDelegate shortLangUI]];
+                                NSString *summary = [NSString stringWithFormat:@"%@\n", [currentLangObject objectForKey:@"summary"]];
                                 NSLog(@"Set summary: %@", summary);
                                 [self setTextFit:abstractCell.lbAbstractContent
                                      WithContent:summary];
