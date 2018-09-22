@@ -772,7 +772,7 @@ Please copy and paste the token into next field or click the token link in the r
                                             <outlet property="vwContent" destination="RMM-hf-aQ8" id="t6J-L7-WfB"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleSpeakerInfo" rowHeight="250" id="WuO-8O-IR6" customClass="ScheduleSpeakerInfoViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleSpeakerInfo" rowHeight="250" id="WuO-8O-IR6" customClass="ScheduleSpeakerInfoViewCell">
                                         <rect key="frame" x="0.0" y="278" width="420" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WuO-8O-IR6" id="MR5-7W-rvW">
@@ -780,10 +780,10 @@ Please copy and paste the token into next field or click the token link in the r
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCd-th-Z6D">
-                                                    <rect key="frame" x="43" y="21" width="340" height="208"/>
+                                                    <rect key="frame" x="31" y="18" width="358" height="213.66666666666666"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6h-vx-Zyl">
-                                                            <rect key="frame" x="22" y="28" width="296" height="21"/>
+                                                            <rect key="frame" x="22" y="28" width="314" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="BAb-IW-Lpy"/>
                                                             </constraints>
@@ -792,6 +792,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ei5-NI-34T">
+                                                            <rect key="frame" x="22" y="60.000000000000007" width="314" height="125.66666666666669"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1065,13 +1066,13 @@ Label2</string>
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PassAssets.bundle/NoAnnouncement.png" translatesAutoresizingMaskIntoConstraints="NO" id="V2s-Db-5hD">
-                                <rect key="frame" x="0.0" y="141" width="414" height="414"/>
+                                <rect key="frame" x="80" y="226" width="244" height="244"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="V2s-Db-5hD" secondAttribute="height" multiplier="1:1" id="uuC-ai-wDm"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Announcement !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQ9-nd-7Ld">
-                                <rect key="frame" x="0.0" y="579" width="414" height="24"/>
+                                <rect key="frame" x="0.0" y="494" width="414" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="ads-9L-X6j"/>
                                 </constraints>
@@ -1082,15 +1083,15 @@ Label2</string>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="V2s-Db-5hD" firstAttribute="leading" secondItem="O9C-ij-kHs" secondAttribute="leading" constant="80" id="2aw-eO-7ZU"/>
                             <constraint firstItem="NRX-bU-SPn" firstAttribute="leading" secondItem="O9C-ij-kHs" secondAttribute="leading" id="9x8-Fa-63Z"/>
                             <constraint firstItem="XQ9-nd-7Ld" firstAttribute="centerX" secondItem="O9C-ij-kHs" secondAttribute="centerX" id="D2B-dk-LyK"/>
                             <constraint firstItem="NRX-bU-SPn" firstAttribute="top" secondItem="T6f-ik-3ze" secondAttribute="bottom" id="J37-Vf-Afx"/>
                             <constraint firstItem="8AP-OM-vdg" firstAttribute="top" secondItem="NRX-bU-SPn" secondAttribute="bottom" id="K7x-ys-4bW"/>
                             <constraint firstItem="NRX-bU-SPn" firstAttribute="bottom" secondItem="O9C-ij-kHs" secondAttribute="bottom" id="Kph-ld-qyG"/>
+                            <constraint firstAttribute="trailing" secondItem="V2s-Db-5hD" secondAttribute="trailing" constant="90" id="KyH-7g-NZC"/>
                             <constraint firstItem="XQ9-nd-7Ld" firstAttribute="width" secondItem="O9C-ij-kHs" secondAttribute="width" id="Wcg-aQ-JxC"/>
                             <constraint firstAttribute="trailing" secondItem="NRX-bU-SPn" secondAttribute="trailing" id="Zkk-I0-kD9"/>
-                            <constraint firstItem="V2s-Db-5hD" firstAttribute="width" secondItem="O9C-ij-kHs" secondAttribute="width" id="gnU-Qj-3bK"/>
-                            <constraint firstItem="V2s-Db-5hD" firstAttribute="centerX" secondItem="O9C-ij-kHs" secondAttribute="centerX" id="ke7-zC-8Lf"/>
                             <constraint firstItem="XQ9-nd-7Ld" firstAttribute="top" secondItem="V2s-Db-5hD" secondAttribute="bottom" constant="24" id="s7i-kA-aEE"/>
                             <constraint firstItem="V2s-Db-5hD" firstAttribute="centerY" secondItem="O9C-ij-kHs" secondAttribute="centerY" constant="-20" id="zgL-ae-wKP"/>
                         </constraints>
@@ -1991,7 +1992,7 @@ Label2</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cBG-i4-7bv"/>
-        <segue reference="LZQ-Xr-3kl"/>
+        <segue reference="351-Fd-ZV7"/>
         <segue reference="ewg-q8-EfJ"/>
         <segue reference="gRH-x7-Jfd"/>
         <segue reference="Vsx-u2-DYP"/>
