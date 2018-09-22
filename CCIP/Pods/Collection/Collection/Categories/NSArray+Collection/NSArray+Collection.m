@@ -485,6 +485,16 @@
     return [setA array];
 }
 
+- (NSArray*)minusExactOcurrences:(NSArray*)b{
+    NSMutableArray* result = self.mutableCopy;
+    [b each:^(id object) {
+        NSUInteger index = [result indexOfObject:object];
+        if(index == NSNotFound) return;
+        [result removeObjectAtIndex:index];
+    }];
+    return result;
+}
+
 -(NSArray*)diff:(NSArray*)b{
     return [self minus:b];
 }
@@ -517,6 +527,19 @@
         [result addObject:@(i)];
     }
     return result;
+}
+
++ (NSArray *)times:(int)times value:(id)value{
+    return [[self.class range:times-1] map:^id(id obj, NSUInteger idx) {
+        return value;
+    }];
+}
+
++ (NSArray *)times_:(int)times callback:(id (^)(int number))callback{
+    return [[self.class range:times-1] map:^id(NSNumber *number, NSUInteger idx) {
+        return callback(number.intValue);
+    }];
+    
 }
 
 -(NSArray*)crossJoin:(NSArray*)list{

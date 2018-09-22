@@ -85,11 +85,15 @@ Copy the category files to your project or just
 `join:other`
 `diff:other`
 `minus:other`
+`minusExactOcurrences:other`
 `distinct`
-`distinct:keypath
+`distinct:keypath`
 
 `range:to`
 `range:from:to`
+
+`times:times:value`
+`times:times:callback`
 
 `crossJoin:list`
 `cartesianProduct:arrays`

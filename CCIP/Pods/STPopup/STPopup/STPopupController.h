@@ -9,6 +9,42 @@
 #import <UIKit/UIKit.h>
 #import <STPopup/STPopupNavigationBar.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
+typedef NS_ENUM(NSUInteger, STPopupControllerTransitioningAction) {
+    STPopupControllerTransitioningActionPresent,
+    STPopupControllerTransitioningActionDismiss
+};
+
+@interface STPopupControllerTransitioningContext : NSObject
+
+/**
+ Indicating the transitioning is a "present" or "dismiss" action.
+ */
+@property (nonatomic, assign, readonly) STPopupControllerTransitioningAction action;
+
+/**
+ Container view of popup controller.
+ */
+@property (nonatomic, strong, readonly) UIView *containerView;
+
+@end
+
+@protocol STPopupControllerTransitioning <NSObject>
+
+/**
+ Return duration of transitioning, it will be used to animate transitioning of background view.
+ */
+- (NSTimeInterval)popupControllerTransitionDuration:(STPopupControllerTransitioningContext *)context;
+
+/**
+ Animate transitioning the container view of popup controller. "completion" need to be called after transitioning is finished.
+ Initially "containerView" will be placed at the final position with transform = CGAffineTransformIdentity if it's presenting.
+ */
+- (void)popupControllerAnimateTransition:(STPopupControllerTransitioningContext *)context completion:(void(^)())completion;
+
+@end
+
 typedef NS_ENUM(NSUInteger, STPopupStyle) {
     /**
      Popup will be vertically and horizontally centered.
@@ -28,7 +64,11 @@ typedef NS_ENUM(NSUInteger, STPopupTransitionStyle) {
     /**
      Fade-in in center from transparent to opaque.
      */
-    STPopupTransitionStyleFade
+    STPopupTransitionStyleFade,
+    /**
+     Custom transitioning by providing an implementation of STPopupControllerTransitioning protocol
+     */
+    STPopupTransitionStyleCustom
 };
 
 @interface STPopupController : NSObject
@@ -44,6 +84,11 @@ typedef NS_ENUM(NSUInteger, STPopupTransitionStyle) {
  @see STPopupTransitionStyle
  */
 @property (nonatomic, assign) STPopupTransitionStyle transitionStyle;
+
+/**
+ Custom defined transitioning, it will be used if "transitionStyle" is set to STPopupTransitionStyleCustom
+ */
+@property (nullable, nonatomic, weak) id<STPopupControllerTransitioning> transitioning;
 
 /**
  Corner radius of the container view.
@@ -70,7 +115,7 @@ typedef NS_ENUM(NSUInteger, STPopupTransitionStyle) {
  Background view which is between popup and the view presenting popup.
  By default it's a UIView with background color [UIColor colorWithWhite:0 alpha:0.5].
  */
-@property (nonatomic, strong) UIView *backgroundView;
+@property (nullable, nonatomic, strong) UIView *backgroundView;
 
 /**
  Container view which is containing the navigation bar and content of top most view controller.
@@ -81,7 +126,7 @@ typedef NS_ENUM(NSUInteger, STPopupTransitionStyle) {
 /**
  *  The top view controller in the popup's controller stack.
  */
-@property (nonatomic, strong, readonly) UIViewController *topViewController;
+@property (nullable, nonatomic, strong, readonly) UIViewController *topViewController;
 
 /**
  Indicates if the popup is current presented.
@@ -104,7 +149,7 @@ typedef NS_ENUM(NSUInteger, STPopupTransitionStyle) {
  Completion block will be called after the presenting transition is finished.
  @see transitionStyle
  */
-- (void)presentInViewController:(UIViewController *)viewController completion:(void (^)(void))completion;
+- (void)presentInViewController:(UIViewController *)viewController completion:(nullable void (^)(void))completion;
 
 /**
  Dismiss the popup with transition style.
@@ -117,7 +162,7 @@ typedef NS_ENUM(NSUInteger, STPopupTransitionStyle) {
  Completion block will be called after dismissing transition is finished.
  @see transitionStyle
  */
-- (void)dismissWithCompletion:(void (^)(void))completion;
+- (void)dismissWithCompletion:(nullable void (^)(void))completion;
 
 /**
  Push a view controller into view controllers stack with animated flag.
@@ -129,6 +174,14 @@ typedef NS_ENUM(NSUInteger, STPopupTransitionStyle) {
  */
 - (void)popViewControllerAnimated:(BOOL)animated;
 
+
+/**
+ Pops all view controllers from the stack until it reaches the root view controller
+
+ @param animated YES if animated
+ */
+- (void)popToRootViewControllerAnimated:(BOOL)animated;
+
 /**
  Set hidden status of navigation bar with animated flag.
  @see navigationBarHidden
@@ -136,3 +189,5 @@ typedef NS_ENUM(NSUInteger, STPopupTransitionStyle) {
 - (void)setNavigationBarHidden:(BOOL)navigationBarHidden animated:(BOOL)animated;
 
 @end
+
+NS_ASSUME_NONNULL_END

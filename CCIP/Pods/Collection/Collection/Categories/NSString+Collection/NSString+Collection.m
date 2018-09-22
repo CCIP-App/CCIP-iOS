@@ -248,7 +248,8 @@
 }
 
 +(NSString*)fromBase64:(NSString*)base64{
-    return base64; //TODO
+    NSData *nsdataFromBase64String = [[NSData alloc] initWithBase64EncodedString:base64 options:0];
+    return [[NSString alloc] initWithData:nsdataFromBase64String encoding:NSUTF8StringEncoding];
 }
 
 + (NSString *) fromHex:(NSString *)str

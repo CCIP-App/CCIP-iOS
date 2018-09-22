@@ -72,7 +72,7 @@
 - (NSString*) urlDecode;
 - (NSString*) md5;
 - (NSString*) toBase64;
-//+ (NSString*) fromBase64;
++ (NSString*) fromBase64:(NSString*)base64;
 + (NSString*) fromHex:(NSString *)str;
 - (NSString*) toHex;
 

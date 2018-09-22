@@ -339,6 +339,7 @@
 - (NSArray*)minus:(NSArray*)b;
 - (NSArray*)distinct;
 - (NSArray*)distinct:(NSString*)keypath;
+- (NSArray*)minusExactOcurrences:(NSArray*)b;
 
 + (NSArray *)range:(int)to;
 
@@ -356,6 +357,20 @@
  * @return an array [@from, ...., @to]
  */
 + (NSArray *)range:(int)from to:(int)to step:(int)step;
+
+/**
+ * Creates a new array with times value
+ * @param times the value should be added
+ * @param value the value to be added
+ */
++ (NSArray *)times:(int)times value:(id)value;
+
+/**
+ * Creates a new array with times value
+ * @param times the value should be added
+ * @param callback the callback the result will be added
+ */
++ (NSArray *)times_:(int)times callback:(id (^)(int number))callback;
 
 /**
  * Returns all the combinations with all array items

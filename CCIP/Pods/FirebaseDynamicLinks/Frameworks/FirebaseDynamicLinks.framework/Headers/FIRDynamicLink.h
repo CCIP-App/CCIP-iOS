@@ -1,7 +1,5 @@
 #import <Foundation/Foundation.h>
 
-#import "FIRDynamicLinksSwiftNameSupport.h"
-
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -10,26 +8,35 @@ NS_ASSUME_NONNULL_BEGIN
  */
 
 /**
- * @abstract The confidence level of the matched Dynamic Link.
+ * @abstract The match type of the Dynamic Link.
  */
-typedef NS_ENUM(NSUInteger, FIRDynamicLinkMatchConfidence) {
+typedef NS_ENUM(NSUInteger, FIRDLMatchType) {
+  /**
+   * The match has not been achieved.
+   */
+  FIRDLMatchTypeNone,
   /**
    * The match between the Dynamic Link and this device may not be perfect, hence you should not
    *    reveal any personal information related to the Dynamic Link.
    */
-  FIRDynamicLinkMatchConfidenceWeak,
+  FIRDLMatchTypeWeak,
+  /**
+   * The match between the Dynamic Link and this device has high confidence but small possibility of
+   *    error still exist.
+   */
+  FIRDLMatchTypeDefault,
   /**
    * The match between the Dynamic Link and this device is exact, hence you may reveal personal
    *     information related to the Dynamic Link.
    */
-  FIRDynamicLinkMatchConfidenceStrong
-} FIR_SWIFT_NAME(DynamicLinkMatchConfidence);
+  FIRDLMatchTypeUnique,
+} NS_SWIFT_NAME(DLMatchType);
 
 /**
  * @class FIRDynamicLink
  * @abstract A received Dynamic Link.
  */
-FIR_SWIFT_NAME(DynamicLink)
+NS_SWIFT_NAME(DynamicLink)
 @interface FIRDynamicLink : NSObject
 
 /**
@@ -39,17 +46,17 @@ FIR_SWIFT_NAME(DynamicLink)
 @property(nonatomic, copy, readonly, nullable) NSURL *url;
 
 /**
- * @property matchConfidence
- * @abstract The match confidence of the received Dynamic Link.
+ * @property matchType
+ * @abstract The match type of the received Dynamic Link.
  */
-@property(nonatomic, assign, readonly) FIRDynamicLinkMatchConfidence matchConfidence;
+@property(nonatomic, assign, readonly) FIRDLMatchType matchType;
 
 /**
  * @property minimumAppVersion
  * @abstract The minimum iOS application version that supports the Dynamic Link. This is retrieved
  *     from the imv= parameter of the Dynamic Link URL. Note: This is not the minimum iOS system
  *     version, but the minimum app version. If app version of the opening app is less than the
- *     value of this property, than app expected to open AppStore to allow user to download most
+ *     value of this property, then app expected to open AppStore to allow user to download most
  *     recent version. App can notify or ask user before opening AppStore.
  */
 @property(nonatomic, copy, readonly, nullable) NSString *minimumAppVersion;
