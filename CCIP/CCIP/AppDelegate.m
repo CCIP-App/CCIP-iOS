@@ -158,6 +158,11 @@
     }
 }
 
++ (UIImage *)confLogo {
+    UIImage *logo = ASSETS_IMAGE(@"AssetsUI", @"conf-logo");
+    return [[self AppConfig:@"Themes.LogoUseMask"] boolValue] ? [logo imageWithColor:[UIColor whiteColor]] : logo;
+}
+
 + (void)setIsDevMode:(BOOL)isDevMode {
     [[NSUserDefaults standardUserDefaults] setBool:isDevMode forKey:@"DEV_MODE"];
     [[NSUserDefaults standardUserDefaults] synchronize];

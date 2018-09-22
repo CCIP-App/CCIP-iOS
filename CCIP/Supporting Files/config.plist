@@ -14,6 +14,8 @@
 		<string>HH:mm</string>
 		<key>Themes</key>
 		<dict>
+			<key>LogoUseMask</key>
+			<false/>
 			<key>DevelopingLogoMaskColor</key>
 			<string>#f2a900</string>
 			<key>RedeemButtonLeftColor</key>

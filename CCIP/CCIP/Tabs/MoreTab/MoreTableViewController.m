@@ -65,7 +65,7 @@
     [super viewDidLoad];
     
     // set logo on nav title
-    UIImageView *logoView = [[UIImageView alloc] initWithImage:[ASSETS_IMAGE(@"AssetsUI", @"conf-logo") imageWithColor:[UIColor whiteColor]]];
+    UIImageView *logoView = [[UIImageView alloc] initWithImage:[AppDelegate confLogo]];
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
     self.shimmeringLogoView.contentView = logoView;
     self.navigationItem.titleView = self.shimmeringLogoView;
@@ -136,7 +136,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [AppDelegate setDevLogo:self.shimmeringLogoView
-                   WithLogo:[ASSETS_IMAGE(@"AssetsUI", @"conf-logo") imageWithColor:[UIColor whiteColor]]];
+                   WithLogo:[AppDelegate confLogo]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -169,12 +169,12 @@
                 NSLog(@"-- Enable DEV_MODE --");
                 [AppDelegate setIsDevMode: YES];
                 [AppDelegate setDevLogo:self.shimmeringLogoView
-                               WithLogo:[ASSETS_IMAGE(@"AssetsUI", @"conf-logo") imageWithColor:[UIColor whiteColor]]];
+                               WithLogo:[[AppDelegate confLogo] imageWithColor:[UIColor whiteColor]]];
             } else {
                 NSLog(@"-- Disable DEV_MODE --");
                 [AppDelegate setIsDevMode:NO];
                 [AppDelegate setDevLogo:self.shimmeringLogoView
-                               WithLogo:[ASSETS_IMAGE(@"AssetsUI", @"conf-logo") imageWithColor:[UIColor whiteColor]]];
+                               WithLogo:[AppDelegate confLogo]];
             }
         }
     }

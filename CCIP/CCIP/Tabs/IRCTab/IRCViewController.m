@@ -30,7 +30,7 @@
     [super viewDidLoad];
     
     // set logo on nav title
-    UIView *logoView = [[UIImageView alloc] initWithImage:[ASSETS_IMAGE(@"AssetsUI", @"conf-logo") imageWithColor:[UIColor whiteColor]]];
+    UIView *logoView = [[UIImageView alloc] initWithImage:[AppDelegate confLogo]];
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
     self.shimmeringLogoView.contentView = logoView;
     self.navigationItem.titleView = self.shimmeringLogoView;
@@ -77,7 +77,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setWebViewConstraints];
-    [AppDelegate setDevLogo:self.shimmeringLogoView WithLogo:[ASSETS_IMAGE(@"AssetsUI", @"conf-logo") imageWithColor:[UIColor whiteColor]]];
+    [AppDelegate setDevLogo:self.shimmeringLogoView WithLogo:[AppDelegate confLogo]];
     
     NSURL *nsurl = self.webView.URL;
     if (nsurl == nil || [nsurl.absoluteString isEqualToString:@""]) {
