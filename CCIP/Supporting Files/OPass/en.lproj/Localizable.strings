@@ -23,9 +23,9 @@
 "Hi" = "Hi %@ !";
 "CheckinViewButton" = "CHECK IN";
 "CheckinViewButtonPressed" = "FINISHED";
-"CheckinText" = "As well as continuing our long-standing spirit of \"sharing\", we hope to extend and expand this mission further and to a wider audience; so it grows into a force that makes for a better future.";
+"CheckinText" = "Welcome, you can click the button of \"CHECK IN\" to complete the self-checking process.";
 "CheckinTextVipKit" = "We appreciate your support! Because of you, we're doing better.";
-"UseNoticeText" = "From close source to open source\nIndividual to Community\nWe've come a long way...";
+"UseNoticeText" = "";
 "meatLunch" = "Meal";
 "vegetarianLunch" = "Vegan";
 "UseButton_kit" = "Confirm to get the KIT bag?";

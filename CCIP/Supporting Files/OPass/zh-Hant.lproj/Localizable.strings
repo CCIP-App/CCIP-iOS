@@ -23,9 +23,9 @@
 "Hi" = "嗨！%@ 您好！";
 "CheckinViewButton" = "報到";
 "CheckinViewButtonPressed" = "已報到";
-"CheckinText" = "「分享」一直以來都是我們的主軸，我們相信，唯有透過分享、討論與眾人的再創造，才能真正落實 open source 的精神與信念，帶給這個世界更多的可能。";
+"CheckinText" = "歡迎您參與此大會，您可以點選下方的『報到』來完成自助報到的手續。";
 "CheckinTextVipKit" = "謝謝所有參與此大會個人贊助方案的贊助者，因為有你們，促成了活動的舉行，感謝各位！";
-"UseNoticeText" = "從封閉到開源\n從個人到社群\n我們曾走過很長一段路";
+"UseNoticeText" = "";
 "meatLunch" = "葷食";
 "vegetarianLunch" = "素食";
 "UseButton_kit" = "確定要領取迎賓袋嗎？";
