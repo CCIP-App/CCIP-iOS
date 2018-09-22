@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSMutableArray *identifiers;
 @property (strong, nonatomic) NSDictionary *detailData;
 @property (strong, nonatomic) NSArray *speakers;
+@property (strong, nonatomic) FSPagerView *fspager;
 @property (strong, nonatomic) MarkdownView *downView;
 
 @end
@@ -82,9 +83,11 @@
     if ([self.speakers count] > 1) {
         [self.vwHeader setAutomaticSlidingInterval:3.0];
     }
-    UIView *fspager = [self.vwHeader.subviews lastObject];
-    [self.vwHeader sendSubviewToBack:fspager];
-    [fspager setUserInteractionEnabled:NO];
+    if (self.fspager == nil) {
+        self.fspager = [self.vwHeader.subviews lastObject];
+        [self.vwHeader sendSubviewToBack:self.fspager];
+        [self.fspager setUserInteractionEnabled:NO];
+    }
 
     [self.identifiers addObject:ABSTRACT_CELL];
     for (int i = 0; i < [self.speakers count]; i++) {
