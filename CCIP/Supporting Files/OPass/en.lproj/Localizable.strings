@@ -91,4 +91,4 @@
 "LoginGreeting" = "Hi %@, welcome and enjoy!";
 "AfterEventMessage" = "After the Event, we need you in-form a questionnaire for us, thanks.";
 "AfterEventActionTitle" = "Open questionnaire";
-"EmptyScheduleDetailContent" = "Oops, there is nothing?";
+"EmptyScheduleDetailContent" = "";
