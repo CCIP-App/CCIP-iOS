@@ -532,6 +532,17 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault registerDefaults:@{ SCHEDULE_CACHE_CLEAR: @(NO), SCHEDULE_CACHE_KEY: @{} }];
+    [userDefault synchronize];
+    if ([[userDefault objectForKey:SCHEDULE_CACHE_CLEAR] boolValue]) {
+        [userDefault setObject:@(NO)
+                        forKey:SCHEDULE_CACHE_CLEAR];
+        [userDefault setObject:@{}
+                        forKey:SCHEDULE_CACHE_KEY];
+        [userDefault synchronize];
+    }
+    
     UIViewController *presentedView = [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentedViewController];
     if ([AppDelegate haveAccessToken] && [presentedView class] == [GuideViewController class]) {
         GuideViewController *guideVC = (GuideViewController *)presentedView;

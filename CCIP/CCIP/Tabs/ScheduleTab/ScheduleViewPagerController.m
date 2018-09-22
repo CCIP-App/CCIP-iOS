@@ -34,7 +34,7 @@ static NSDateFormatter *formatter_date = nil;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSDictionary *defaults = @{ FAV_KEY: @[] };
+    NSDictionary *defaults = @{ FAV_KEY: @[], SCHEDULE_CACHE_KEY: @{} };
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault registerDefaults:defaults];
     [userDefault synchronize];
@@ -56,6 +56,11 @@ static NSDateFormatter *formatter_date = nil;
 
     [self.view setBackgroundColor:[UIColor clearColor]];
     
+    self.programs = [userDefault objectForKey:SCHEDULE_CACHE_KEY];
+    if (self.programs != nil) {
+        [self setScheduleDate];
+    }
+    
     [self refreshData];
 }
 
@@ -76,6 +81,7 @@ static NSDateFormatter *formatter_date = nil;
 
 
 - (void)refreshData {
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:[AppDelegate AppConfigURL:@"ScheduleContentPath"]
       parameters:nil
@@ -85,9 +91,16 @@ static NSDateFormatter *formatter_date = nil;
         if (responseObject != nil) {
             self.programs = responseObject;
             [self setScheduleDate];
+            [userDefault setObject:responseObject
+                            forKey:SCHEDULE_CACHE_KEY];
+            [userDefault synchronize];
         }
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
+        self.programs = [userDefault objectForKey:SCHEDULE_CACHE_KEY];
+        if (self.programs != nil) {
+            [self setScheduleDate];
+        }
     }];
 }
 

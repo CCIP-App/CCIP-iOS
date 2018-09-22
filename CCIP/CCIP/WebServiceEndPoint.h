@@ -48,3 +48,8 @@
 #define GITHUB_REPO(repo)       ([NSString stringWithFormat:@"https://github.com/%@", repo])
 #define GITHUB_AVATAR(user)     ([NSString stringWithFormat:@"https://avatars.githubusercontent.com/%@?s=86&v=3", user])
 #define GRAVATAR_AVATAR(hash)   ([NSString stringWithFormat:@"https://www.gravatar.com/avatar/%@?s=86%@", hash, [hash length] > 0 ? @"&r=x" : @"&f=y&d=mm"])
+
+// Cache
+
+#define SCHEDULE_CACHE_CLEAR    (@"ClearScheduleContentCache")
+#define SCHEDULE_CACHE_KEY      (@"ScheduleContentCache")
