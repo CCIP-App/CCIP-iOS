@@ -20,7 +20,6 @@ def ccip_pods
     pod 'BLKFlexibleHeightBar', '~> 1.0'
     pod 'SDWebImage', '~>3.8'
     pod 'Shimmer', '~>1.0'
-    pod 'MMMarkdown', '~> 0.5'
     pod 'CPDAcknowledgements', '~> 1.0'
     pod 'NJKWebViewProgress', '~> 0.2'
     pod 'iVersion', '~> 1.11'
@@ -32,6 +31,7 @@ def ccip_pods
     pod 'MBProgressHUD', '~> 0.9.2'
     pod 'FSPagerView'
     pod 'Collection'
+    pod 'Down'
 end
 
 target 'OPass' do
