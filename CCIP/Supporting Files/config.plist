@@ -124,17 +124,17 @@
 			<key>MapsUseWeb</key>
 			<true/>
 			<key>MapsPath</key>
-			<string></string>
+			<string>https://summit.g0v.tw/2018/agenda/?mode=app&amp;__ccip=##random###maps</string>
 			<key>StaffUseWeb</key>
 			<true/>
 			<key>StaffPath</key>
-			<string>https://summit.g0v.tw/2018/staff/?__ccip=##random##</string>
+			<string>https://summit.g0v.tw/2018/staff/?mode=app&amp;__ccip=##random##</string>
 			<key>SponsorUseWeb</key>
 			<true/>
 			<key>SponsorPath</key>
-			<string>https://summit.g0v.tw/2018/sponsors/?__ccip=##random##</string>
+			<string>https://summit.g0v.tw/2018/sponsors/?mode=app&amp;__ccip=##random##</string>
 			<key>ScheduleContentPath</key>
-			<string>https://summit.g0v.tw/2018/static/ccip.json?__ccip=##random##</string>
+			<string>https://summit.g0v.tw/2018/static/ccip.json?mode=app&amp;__ccip=##random##</string>
 		</dict>
 	</dict>
 </dict>
