@@ -64,6 +64,8 @@
 			<string>#425d4f</string>
 			<key>ScheduleDateTitleTextColor</key>
 			<string>#ffffff</string>
+			<key>ScheduleDateIndicatorColor</key>
+			<string>#ffffff</string>
 			<key>ScheduleDetailHeaderTextColor</key>
 			<string>#ffffff</string>
 			<key>ScheduleMetaHeaderTextColor</key>

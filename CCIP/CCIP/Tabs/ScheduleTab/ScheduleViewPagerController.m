@@ -210,7 +210,7 @@ static NSDateFormatter *formatter_date = nil;
 - (UIColor *)viewPager:(ViewPagerController *)viewPager colorForComponent:(ViewPagerComponent)component withDefault:(UIColor *)color {
     switch (component) {
             case ViewPagerIndicator: {
-                return [AppDelegate AppConfigColor:@"ScheduleTitleTextColor"];
+                return [AppDelegate AppConfigColor:@"ScheduleDateIndicatorColor"];
             }
             case ViewPagerTabsView: {
                 return [UIColor clearColor];
