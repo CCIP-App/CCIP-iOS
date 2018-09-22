@@ -80,6 +80,8 @@
 			<string>#67328c</string>
 			<key>AnnouncementTitleTextColor</key>
 			<string>#425d4f</string>
+			<key>AnnouncementNoContentTextColor</key>
+			<string>#425d4f</string>
 			<key>AnnouncementSectionTitleBackgroundColor</key>
 			<string>#efefef</string>
 			<key>AnnouncementSectionTitleTextColor</key>

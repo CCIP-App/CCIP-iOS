@@ -1077,7 +1077,7 @@ Label2</string>
                                     <constraint firstAttribute="height" constant="24" id="ads-9L-X6j"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
-                                <color key="textColor" red="0.73333333333333328" green="0.81176470588235294" blue="0.79607843137254897" alpha="0.60999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

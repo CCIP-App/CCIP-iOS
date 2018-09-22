@@ -64,6 +64,7 @@
                              value:@(spacing)
                              range:NSMakeRange(0, [noAnnouncementText length])];
     [self.lbNoAnnouncement setAttributedText:attributedNoAnnouncementText];
+    [self.lbNoAnnouncement setTextColor:[AppDelegate AppConfigColor:@"AnnouncementNoContentTextColor"]];
     
     SEND_FIB(@"AnnounceTableViewController");
 }
