@@ -91,3 +91,4 @@
 "LoginGreeting" = "嗨 %@，歡迎您加入大會，盡情享受這場饗宴吧！";
 "AfterEventMessage" = "在大會結束之後，我們需要您填寫一份問卷，感謝您！";
 "AfterEventActionTitle" = "開啟會後問卷";
+"EmptyScheduleDetailContent" = "噢不，這裡什麼都沒有？";

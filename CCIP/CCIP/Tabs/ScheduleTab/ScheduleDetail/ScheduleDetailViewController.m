@@ -54,7 +54,10 @@
     NSDictionary *currentLangObject = [self.detailData objectForKey:shortLangUI];
     NSString *summary = [NSString stringWithFormat:@"%@\n", [currentLangObject objectForKey:@"summary"]];
     NSLog(@"Set summary: %@", summary);
-    [self.downView append:[NSString stringWithFormat:@"# Abstract\n%@\n", summary]];
+    BOOL isEmptyAbstract = [summary trimWithNewLine] == nil || [[summary trimWithNewLine] isEqual:@""] || [[summary trimWithNewLine] length] == 0;
+    if (!isEmptyAbstract) {
+        [self.downView append:[NSString stringWithFormat:@"# Abstract\n%@\n", summary]];
+    }
     
     for (NSDictionary *speaker in self.speakers) {
         NSString *speakerName = [[speaker objectForKey:shortLangUI] objectForKey:@"name"];
@@ -62,6 +65,10 @@
         NSLog(@"Set bio for %@: %@", speakerName, bio);
         NSString *speakerInfo = [NSString stringWithFormat:@"---\n## %@\n%@\n", speakerName, bio];
         [self.downView append:speakerInfo];
+    }
+    
+    if (isEmptyAbstract && [self.speakers count] == 0) {
+        [self.downView append:[NSString stringWithFormat:@"## %@", NSLocalizedString(@"EmptyScheduleDetailContent", nil)]];
     }
 }
 
@@ -101,6 +108,7 @@
     NSString *startTimeString = [formatter_date stringFromDate:startTime];
     NSString *endTimeString = [formatter_date stringFromDate:endTime];
     NSString *timeRange = [NSString stringWithFormat:@"%@ - %@", startTimeString, endTimeString];
+    [self.lbSpeaker setHidden:[self.speakers count] == 0];
     [self.lbTitle setText:[currentLangObject objectForKey:@"subject"]];
     [self.lbSpeakerName setText:[[data objectForKey:@"speaker"] objectForKey:@"name"]];
     [self.lbRoomText setText:[data objectForKey:@"room"]];
