@@ -79,7 +79,6 @@
 		6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F9E441D4D142700047F38 /* CheckinCardView.m */; };
 		6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
 		6B49F1411F2548C600686C27 /* OPass-Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* OPass-Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */; };
 		6B70EF3F204C621200C63E63 /* StaffWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B70EF3A204C5C2E00C63E63 /* StaffWebViewController.m */; };
 		6B70EF41204C621800C63E63 /* SponsorWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B70EF3D204C5C3200C63E63 /* SponsorWebViewController.m */; };
 		6B70EF45204C981700C63E63 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B70EF44204C981700C63E63 /* NetworkExtension.framework */; };
@@ -282,7 +281,6 @@
 		6B2F9E431D4D142700047F38 /* CheckinCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinCardView.h; sourceTree = "<group>"; };
 		6B2F9E441D4D142700047F38 /* CheckinCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinCardView.m; sourceTree = "<group>"; };
 		6B2F9E461D4D18F100047F38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreenIcon@3x.png"; sourceTree = "<group>"; };
 		6B70EF3A204C5C2E00C63E63 /* StaffWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StaffWebViewController.m; sourceTree = "<group>"; };
 		6B70EF3B204C5C2E00C63E63 /* StaffWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StaffWebViewController.h; sourceTree = "<group>"; };
 		6B70EF3C204C5C3200C63E63 /* SponsorWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SponsorWebViewController.h; sourceTree = "<group>"; };
@@ -455,7 +453,6 @@
 				284602DD1F121BBB00F512A3 /* LaunchScreen@1x.png */,
 				284602DE1F121BBB00F512A3 /* LaunchScreen@2x.png */,
 				284602DF1F121BBB00F512A3 /* LaunchScreen@3x.png */,
-				6B6F7D461D34E3570015ECB2 /* LaunchScreenIcon@3x.png */,
 			);
 			path = OPass;
 			sourceTree = "<group>";
@@ -1003,7 +1000,6 @@
 				28A7C5641D5F7D2D0079BB12 /* Project_3rd_Lib_License.json in Resources */,
 				288D3A781D599A1200E4E3A6 /* LICENSE-2.0.txt in Resources */,
 				28A7C55F1D5EE0C30079BB12 /* Project_Info_and_Contributors.json in Resources */,
-				6B6F7D471D34E3570015ECB2 /* LaunchScreenIcon@3x.png in Resources */,
 				284602E11F121BBB00F512A3 /* LaunchScreen@2x.png in Resources */,
 				280774D21F1AD8D300A5B994 /* ScheduleTableViewCell.xib in Resources */,
 				288D3A7B1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle in Resources */,
