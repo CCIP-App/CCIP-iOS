@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - BLKFlexibleHeightBar (1.0.2)
+  - Collection (1.9.9)
   - ColorArt (0.1.1)
   - CPDAcknowledgements (1.0.0)
   - DACircularProgress (2.3.1)
@@ -73,6 +74,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.1)
   - BLKFlexibleHeightBar (~> 1.0)
+  - Collection
   - ColorArt (= 0.1.1)
   - CPDAcknowledgements (~> 1.0)
   - EFQRCode (~> 1.2.7)
@@ -99,6 +101,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - BLKFlexibleHeightBar
+    - Collection
     - ColorArt
     - CPDAcknowledgements
     - DACircularProgress
@@ -143,6 +146,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BLKFlexibleHeightBar: b27572a69633d8e33f1f2bbc486b04d8e86f742d
+  Collection: 2eebd54e821976e4c3ac38758febcee7ea9a46fb
   ColorArt: de0ffb63da4acdde8e234ded62e200236ca3e7e4
   CPDAcknowledgements: 6e15e71849ba4ad5e8a17a0bb9d20938ad23bac8
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
@@ -171,6 +175,6 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: 2683c7947e0f6419323a8d208deecb24c6ba5b5e
+PODFILE CHECKSUM: 9076ade15394162b3e528b231b6d40533f7fd694
 
 COCOAPODS: 1.5.3

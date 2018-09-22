@@ -104,25 +104,25 @@
 			<key>CCIP_API</key>
 			<string>ccip.opass.app</string>
 			<key>IRC_Channel</key>
-			<string>coscup</string>
+			<string>g0v.tw</string>
 			<key>tg_Chat</key>
-			<string>coscupchat</string>
+			<string></string>
 			<key>MainDomain</key>
-			<string>coscup.org</string>
+			<string>summit.g0v.tw</string>
 			<key>GamePath</key>
-			<string>https://play.coscup.org/?mode=app&amp;token=%@</string>
+			<string></string>
 			<key>MapsUseWeb</key>
 			<true/>
 			<key>MapsPath</key>
-			<string>https://coscup.org/2018-assets/img/venue.svg?__ccip=##random##</string>
+			<string></string>
 			<key>StaffUseWeb</key>
 			<true/>
 			<key>StaffPath</key>
-			<string>https://2018.coscup.org/staffs/?__ccip=##random##</string>
+			<string>https://summit.g0v.tw/2018/staff/?__ccip=##random##</string>
 			<key>SponsorUseWeb</key>
 			<true/>
 			<key>SponsorPath</key>
-			<string>https://2018.coscup.org/sponsors/?__ccip=##random##</string>
+			<string>https://summit.g0v.tw/2018/sponsors/?__ccip=##random##</string>
 			<key>ScheduleContentPath</key>
 			<string>https://summit.g0v.tw/2018/static/ccip.json?__ccip=##random##</string>
 		</dict>

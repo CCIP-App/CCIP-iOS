@@ -93,15 +93,27 @@
     tapGesture.numberOfTapsRequired = 1;
     [self.navigationItem.titleView addGestureRecognizer:tapGesture];
     
-    self.moreItems = @[
-                       @"Puzzle",
-                       @"Ticket",
-                       @"Telegram",
-                       [NSString stringWithFormat:@"Maps%@", [[AppDelegate AppConfig:@"URL.MapsUseWeb"] boolValue] ? @"Web" : @""],
-                       [NSString stringWithFormat:@"Staffs%@", [[AppDelegate AppConfig:@"URL.StaffUseWeb"] boolValue] ? @"Web" : @""],
-                       [NSString stringWithFormat:@"Sponsors%@", [[AppDelegate AppConfig:@"URL.SponsorUseWeb"] boolValue] ? @"Web" : @""],
-                       @"Acknowledgements",
-                       ];
+    self.moreItems = [@[
+                        [[AppDelegate AppConfig:@"URL.GamePath"] length] > 0
+                            ? @"Puzzle"
+                            : @"",
+                        @"Ticket",
+                        [[AppDelegate AppConfig:@"URL.tg_Chat"] length] > 0
+                            ? @"Telegram"
+                            : @"",
+                        [[AppDelegate AppConfig:@"URL.MapsPath"] length] > 0
+                            ? [NSString stringWithFormat:@"Maps%@", [[AppDelegate AppConfig:@"URL.MapsUseWeb"] boolValue] ? @"Web" : @""]
+                            : @"",
+                        [[AppDelegate AppConfig:@"URL.StaffPath"] length] > 0
+                            ? [NSString stringWithFormat:@"Staffs%@", [[AppDelegate AppConfig:@"URL.StaffUseWeb"] boolValue] ? @"Web" : @""]
+                            : @"",
+                        [[AppDelegate AppConfig:@"URL.SponsorPath"] length] > 0
+                            ? [NSString stringWithFormat:@"Sponsors%@", [[AppDelegate AppConfig:@"URL.SponsorUseWeb"] boolValue] ? @"Web" : @""]
+                            : @"",
+                        @"Acknowledgements",
+                        ] filter:^BOOL(id object) {
+                            return [object length] > 0;
+                        }];
     if (self.staffs == nil) {
         [self prefetchStaffs];
     }
