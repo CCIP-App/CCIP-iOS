@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSMutableArray *identifiers;
 @property (strong, nonatomic) NSDictionary *detailData;
 @property (strong, nonatomic) NSArray *speakers;
+@property (strong, nonatomic) MarkdownView *downView;
 
 @end
 
@@ -44,6 +45,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    self.downView = [[MarkdownView alloc] init:CGRectMake(0, 0, self.view.frame.size.width, self.tvContent.bounds.size.height)
+                                  withMarkdown:[NSString stringWithFormat:@"<style>h1, h2 {color: %@} h3, h4, h5, h6, h7, span, div, p {color: %@;}</style>\n\n", [AppDelegate AppConfig:@"Themes.CardTextColor"], @"black"]
+                                        toView:self.tvContent];
+    
+    NSString *shortLangUI = [AppDelegate shortLangUI];
+    NSDictionary *currentLangObject = [self.detailData objectForKey:shortLangUI];
+    NSString *summary = [NSString stringWithFormat:@"%@\n", [currentLangObject objectForKey:@"summary"]];
+    NSLog(@"Set summary: %@", summary);
+    [self.downView append:[NSString stringWithFormat:@"# Abstract\n%@\n", summary]];
+    
+    for (NSDictionary *speaker in self.speakers) {
+        NSString *speakerName = [[speaker objectForKey:shortLangUI] objectForKey:@"name"];
+        NSString *bio = [NSString stringWithFormat:@"%@\n", [[speaker objectForKey:shortLangUI] objectForKey:@"bio"]];
+        NSLog(@"Set bio for %@: %@", speakerName, bio);
+        NSString *speakerInfo = [NSString stringWithFormat:@"---\n## %@\n%@\n", speakerName, bio];
+        [self.downView append:speakerInfo];
+    }
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     NSDictionary *data = self.detailData;
     self.speakers = [data objectForKey:@"speakers"];
@@ -62,6 +83,11 @@
     for (int i = 0; i < [self.speakers count]; i++) {
         [self.identifiers addObject:SPEAKERINFO_CELL];
     }
+    // force to use Down Markdown view
+    self.identifiers = [NSMutableArray arrayWithArray:@[]];
+    
+    NSString *shortLangUI = [AppDelegate shortLangUI];
+    NSDictionary *currentLangObject = [self.detailData objectForKey:shortLangUI];
 
     NSDateFormatter *formatter_full = nil;
     formatter_full = [NSDateFormatter new];
@@ -75,7 +101,6 @@
     NSString *startTimeString = [formatter_date stringFromDate:startTime];
     NSString *endTimeString = [formatter_date stringFromDate:endTime];
     NSString *timeRange = [NSString stringWithFormat:@"%@ - %@", startTimeString, endTimeString];
-    NSDictionary *currentLangObject = [data objectForKey:[AppDelegate shortLangUI]];
     [self.lbTitle setText:[currentLangObject objectForKey:@"subject"]];
     [self.lbSpeakerName setText:[[data objectForKey:@"speaker"] objectForKey:@"name"]];
     [self.lbRoomText setText:[data objectForKey:@"room"]];

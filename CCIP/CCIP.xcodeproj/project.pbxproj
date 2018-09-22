@@ -79,6 +79,7 @@
 		6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F9E441D4D142700047F38 /* CheckinCardView.m */; };
 		6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
 		6B49F1411F2548C600686C27 /* OPass-Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* OPass-Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6B670CCD2156E00A0089C9B5 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */; };
 		6B70EF3F204C621200C63E63 /* StaffWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B70EF3A204C5C2E00C63E63 /* StaffWebViewController.m */; };
 		6B70EF41204C621800C63E63 /* SponsorWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B70EF3D204C5C3200C63E63 /* SponsorWebViewController.m */; };
 		6B70EF45204C981700C63E63 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B70EF44204C981700C63E63 /* NetworkExtension.framework */; };
@@ -281,6 +282,7 @@
 		6B2F9E431D4D142700047F38 /* CheckinCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinCardView.h; sourceTree = "<group>"; };
 		6B2F9E441D4D142700047F38 /* CheckinCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinCardView.m; sourceTree = "<group>"; };
 		6B2F9E461D4D18F100047F38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
 		6B70EF3A204C5C2E00C63E63 /* StaffWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StaffWebViewController.m; sourceTree = "<group>"; };
 		6B70EF3B204C5C2E00C63E63 /* StaffWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StaffWebViewController.h; sourceTree = "<group>"; };
 		6B70EF3C204C5C3200C63E63 /* SponsorWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SponsorWebViewController.h; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 			children = (
 				6B02FD911F220326002AC0D3 /* ScheduleDetailViewController.h */,
 				6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */,
+				6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */,
 				6B02FD941F220371002AC0D3 /* ScheduleAbstractViewCell.h */,
 				6B02FD951F220371002AC0D3 /* ScheduleAbstractViewCell.m */,
 				6B02FD971F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.h */,
@@ -1186,6 +1189,7 @@
 				6BCBC3B51D4F393700B5AF35 /* UIViewController+addition.m in Sources */,
 				6BEB310D1F262EF30050759D /* TicketQRCodeImage.swift in Sources */,
 				5F9171291D325B5E000D0F66 /* StaffViewController.m in Sources */,
+				6B670CCD2156E00A0089C9B5 /* MarkdownView.swift in Sources */,
 				6BAD226620B1F33100155F3F /* MapsWebViewController.m in Sources */,
 				5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */,
 				280774D11F1AD8D300A5B994 /* ScheduleTableViewCell.m in Sources */,
