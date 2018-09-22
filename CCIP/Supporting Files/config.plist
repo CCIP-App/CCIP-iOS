@@ -17,27 +17,27 @@
 			<key>DevelopingLogoMaskColor</key>
 			<string>#f2a900</string>
 			<key>RedeemButtonLeftColor</key>
-			<string>#67328c</string>
-			<key>RedeemButtonRightColor</key>
 			<string>#170a31</string>
+			<key>RedeemButtonRightColor</key>
+			<string>#532875</string>
 			<key>RedeemCodeTextColor</key>
 			<string>#425d4f</string>
 			<key>CheckinButtonLeftColor</key>
-			<string>#67328c</string>
-			<key>CheckinButtonRightColor</key>
 			<string>#170a31</string>
+			<key>CheckinButtonRightColor</key>
+			<string>#532875</string>
 			<key>DisabledButtonLeftColor</key>
-			<string>#808080</string>
+			<string>#c5c2cb</string>
 			<key>DisabledButtonRightColor</key>
-			<string>#70b12d</string>
+			<string>#c5c2cb</string>
 			<key>UsedButtonLeftColor</key>
-			<string>#808080</string>
+			<string>#887397</string>
 			<key>UsedButtonRightColor</key>
-			<string>#70b12d</string>
+			<string>#cfc0d9</string>
 			<key>MessageButtonLeftColor</key>
 			<string>#509d34</string>
 			<key>MessageButtonRightColor</key>
-			<string>#70b12d</string>
+			<string>#532875</string>
 			<key>NavigationIndicatorColor</key>
 			<string>#ffffff</string>
 			<key>ProgressBarColor</key>
