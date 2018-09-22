@@ -27,6 +27,7 @@
 @property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
 
 @property (strong, nonatomic) IBOutlet iCarousel *cards;
+@property (weak, nonatomic) IBOutlet UIImageView *ivRectangle;
 @property (weak, nonatomic) IBOutlet UIImageView *ivUserPhoto;
 @property (weak, nonatomic) IBOutlet UILabel *lbHi;
 @property (weak, nonatomic) IBOutlet UILabel *lbUserName;
@@ -100,6 +101,11 @@
     [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
     [self.ivUserPhoto.layer setCornerRadius:self.ivUserPhoto.frame.size.height / 2];
     [self.ivUserPhoto.layer setMasksToBounds:YES];
+    
+    [self.ivRectangle setGradientColor:[AppDelegate AppConfigColor:@"CheckinRectangleLeftColor"]
+                                    To:[AppDelegate AppConfigColor:@"CheckinRectangleRightColor"]
+                            StartPoint:CGPointMake(-.4f, .5f)
+                               ToPoint:CGPointMake(1, .5f)];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(appplicationDidBecomeActive:)

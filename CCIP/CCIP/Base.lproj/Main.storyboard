@@ -323,7 +323,7 @@ Please copy and paste the token into next field or click the token link in the r
                                     <constraint firstAttribute="width" constant="50" id="DtG-wx-D7X"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PassAssets.bundle/Rectangle.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Jb-pl-Dgp">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Jb-pl-Dgp">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="239"/>
                                 <color key="backgroundColor" red="1" green="0.3999023438" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -408,6 +408,7 @@ Please copy and paste the token into next field or click the token link in the r
                     <navigationItem key="navigationItem" id="Xuv-x4-yRI"/>
                     <connections>
                         <outlet property="cards" destination="CbY-uR-bp6" id="dwE-kE-NwC"/>
+                        <outlet property="ivRectangle" destination="7Jb-pl-Dgp" id="mFM-xR-qV5"/>
                         <outlet property="ivUserPhoto" destination="01s-25-wxe" id="rr3-07-Jkv"/>
                         <outlet property="lbHi" destination="L3Y-MS-x0I" id="uJH-0a-vrQ"/>
                         <outlet property="lbUserName" destination="vJH-ug-pK0" id="se2-C1-fIo"/>
@@ -791,7 +792,6 @@ Please copy and paste the token into next field or click the token link in the r
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ei5-NI-34T">
-                                                            <rect key="frame" x="22" y="60" width="296" height="120"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1984,7 +1984,6 @@ Label2</string>
         <image name="AssetsUI.bundle/icon_ios_topcharts.png" width="16" height="16"/>
         <image name="PassAssets.bundle/ConnectWiFiToConf.png" width="16" height="16"/>
         <image name="PassAssets.bundle/NoAnnouncement.png" width="16" height="16"/>
-        <image name="PassAssets.bundle/Rectangle.png" width="16" height="16"/>
         <image name="PassAssets.bundle/StaffIconDefault.png" width="16" height="16"/>
         <image name="WebViewAssets.bundle/BarButton-Back.png" width="16" height="16"/>
         <image name="WebViewAssets.bundle/BarButton-Forward.png" width="16" height="16"/>
@@ -1992,7 +1991,7 @@ Label2</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cBG-i4-7bv"/>
-        <segue reference="351-Fd-ZV7"/>
+        <segue reference="LZQ-Xr-3kl"/>
         <segue reference="ewg-q8-EfJ"/>
         <segue reference="gRH-x7-Jfd"/>
         <segue reference="Vsx-u2-DYP"/>

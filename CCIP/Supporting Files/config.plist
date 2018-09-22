@@ -52,6 +52,10 @@
 			<string>#3d983c</string>
 			<key>FavoriteButtonColor</key>
 			<string>#425d4f</string>
+			<key>CheckinRectangleLeftColor</key>
+			<string>#170a31</string>
+			<key>CheckinRectangleRightColor</key>
+			<string>#67328c</string>
 			<key>ScheduleTitleLeftColor</key>
 			<string>#425d4f</string>
 			<key>ScheduleTitleRightColor</key>
