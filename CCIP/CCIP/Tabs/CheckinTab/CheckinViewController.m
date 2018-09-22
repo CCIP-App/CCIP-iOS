@@ -808,7 +808,7 @@
             [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", scenarioType)];
             if (isCheckin) {
                 [temp.checkinDate setText:dateId];
-                [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", [[@"day" stringByAppendingString:did] capitalizedString])];
+                [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", [@"day" stringByAppendingString:did])];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinText", nil)];
             }
             if (isLunch) {
