@@ -17,15 +17,15 @@
 			<key>DevelopingLogoMaskColor</key>
 			<string>#f2a900</string>
 			<key>RedeemButtonLeftColor</key>
-			<string>#e57b5c</string>
+			<string>#67328c</string>
 			<key>RedeemButtonRightColor</key>
-			<string>#eec850</string>
+			<string>#170a31</string>
 			<key>RedeemCodeTextColor</key>
 			<string>#425d4f</string>
 			<key>CheckinButtonLeftColor</key>
-			<string>#509d34</string>
+			<string>#67328c</string>
 			<key>CheckinButtonRightColor</key>
-			<string>#70b12d</string>
+			<string>#170a31</string>
 			<key>DisabledButtonLeftColor</key>
 			<string>#808080</string>
 			<key>DisabledButtonRightColor</key>
@@ -41,25 +41,25 @@
 			<key>NavigationIndicatorColor</key>
 			<string>#ffffff</string>
 			<key>ProgressBarColor</key>
-			<string>#efefef</string>
+			<string>#ffffff</string>
 			<key>HighlightedColor</key>
-			<string>#009a79</string>
+			<string>#4d256f</string>
 			<key>LabelTextColor</key>
-			<string>#425d4f</string>
+			<string>#4d256f</string>
 			<key>CardTextColor</key>
-			<string>#425d4f</string>
+			<string>#4d256f</string>
 			<key>CardBackgroundColor</key>
 			<string>#3d983c</string>
 			<key>FavoriteButtonColor</key>
-			<string>#425d4f</string>
+			<string>#67328c</string>
 			<key>CheckinRectangleLeftColor</key>
 			<string>#170a31</string>
 			<key>CheckinRectangleRightColor</key>
 			<string>#67328c</string>
 			<key>ScheduleTitleLeftColor</key>
-			<string>#425d4f</string>
+			<string>#170a31</string>
 			<key>ScheduleTitleRightColor</key>
-			<string>#429537</string>
+			<string>#67328c</string>
 			<key>ScheduleTitleTextColor</key>
 			<string>#425d4f</string>
 			<key>ScheduleDateTitleTextColor</key>
@@ -71,13 +71,13 @@
 			<key>ScheduleMetaHeaderTextColor</key>
 			<string>#000000</string>
 			<key>ScheduleSectionTitleBackgroundColor</key>
-			<string>#ecf5f4</string>
+			<string>#fbf6ff</string>
 			<key>ScheduleSectionTitleTextColor</key>
-			<string>#425d4f</string>
+			<string>#4d256f</string>
 			<key>AnnouncementTitleLeftColor</key>
-			<string>#425d4f</string>
+			<string>#170a31</string>
 			<key>AnnouncementTitleRightColor</key>
-			<string>#429537</string>
+			<string>#67328c</string>
 			<key>AnnouncementTitleTextColor</key>
 			<string>#425d4f</string>
 			<key>AnnouncementSectionTitleBackgroundColor</key>
@@ -87,21 +87,21 @@
 			<key>AnnouncementDashedLineColor</key>
 			<string>#e9e9e9</string>
 			<key>IRCTitleLeftColor</key>
-			<string>#425d4f</string>
+			<string>#170a31</string>
 			<key>IRCTitleRightColor</key>
-			<string>#429537</string>
+			<string>#67328c</string>
 			<key>IRCTitleTextColor</key>
 			<string>#425d4f</string>
 			<key>MoreTitleLeftColor</key>
-			<string>#425d4f</string>
+			<string>#170a31</string>
 			<key>MoreTitleRightColor</key>
-			<string>#429537</string>
+			<string>#67328c</string>
 			<key>MoreTitleTextColor</key>
 			<string>#425d4f</string>
 			<key>MapTitleLeftColor</key>
-			<string>#425d4f</string>
+			<string>#170a31</string>
 			<key>MapTitleRightColor</key>
-			<string>#429537</string>
+			<string>#67328c</string>
 			<key>MapTitleTextColor</key>
 			<string>#425d4f</string>
 		</dict>
