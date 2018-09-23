@@ -329,8 +329,8 @@
             }
             self.userInfo = [NSDictionary new];
             self.scenarios = [NSArray new];
-            [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
-                                                   value:@""];
+            [AppDelegate sendTag:@"user_id"
+                           value:@""];
             [AppDelegate parseAvailableDays:self.scenarios];
             [self reloadAndGoToCard];
         }
@@ -354,10 +354,13 @@
                     [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
                     [self.lbUserName setHidden:![AppDelegate haveAccessToken]];
                     [self.lbUserName setText:[self.userInfo objectForKey:@"user_id"]];
-                    [[AppDelegate appDelegate].oneSignal sendTag:@"user_id"
-                                                           value:[self.userInfo objectForKey:@"user_id"]];
-                    [[AppDelegate appDelegate].oneSignal sendTag:@"type"
-                                                           value:[self.userInfo objectForKey:@"type"]];
+                    NSMutableDictionary *userTags = [NSMutableDictionary dictionaryWithDictionary:self.userInfo];
+                    [userTags removeObjectsForKeys:@[
+                                                     @"_id",
+                                                     @"first_use",
+                                                     @"attr" // wait for cleanup
+                                                     ]];
+                    [AppDelegate sendTags:[NSDictionary dictionaryWithDictionary:userTags]];
                     if ([AppDelegate appDelegate].isLoginSession) {
                         [[AppDelegate appDelegate] displayGreetingsForLogin];
                     }

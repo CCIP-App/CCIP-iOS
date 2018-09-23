@@ -69,6 +69,19 @@
     return ccipPattern;
 }
 
++ (void)sendTag:(NSString *)tag value:(NSString *)value {
+    [[[AppDelegate appDelegate] oneSignal] sendTag:tag
+                                             value:value];
+}
+
++ (void)sendTags:(NSDictionary *)keyValuePair {
+    [[[AppDelegate appDelegate] oneSignal] sendTags:keyValuePair];
+}
+
++ (void)sendTagsWithJsonString:(NSString *)jsonString {
+    [[[AppDelegate appDelegate] oneSignal] sendTagsWithJsonString:jsonString];
+}
+
 + (void)createNEHC {
     if(@available(iOS 11.0, *)) {
 #if TARGET_OS_SIMULATOR

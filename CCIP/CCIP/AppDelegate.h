@@ -30,7 +30,6 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow * _Null_unspecified window;
-@property (strong, readonly, nonatomic) OneSignal * _Null_unspecified oneSignal;
 @property (strong, readonly, nonatomic) SLColorArt * _Null_unspecified appArt;
 @property (strong, nonatomic) NSDictionary * _Null_unspecified userInfo;
 @property (readonly, nonatomic) BOOL isLoginSession;
@@ -42,6 +41,9 @@
 + (id _Nonnull)AppConfig:( NSString * _Nonnull )path;
 + (UIColor * _Nonnull)AppConfigColor:( NSString * _Nonnull )path;
 + (NSString * _Nonnull)AppConfigURL:( NSString * _Nonnull )path;
++ (void)sendTag:( NSString * _Nonnull )tag value:( NSString * _Nonnull )value;
++ (void)sendTags:( NSDictionary * _Nonnull )keyValuePair;
++ (void)sendTagsWithJsonString:( NSString * _Nonnull )jsonString;
 + (void)createNEHC;
 + (void)sendFIB:( NSString * _Nonnull )_name WithEvents:( NSDictionary * _Nullable )_events Func:( const char * _Nonnull )_func File:( const char * _Nonnull )_file Line:(int)_line;
 - (void)setDefaultShortcutItems;
