@@ -802,13 +802,15 @@
             NSString *scenarioType = [dd objectForKey:@"scenarioType"];
             NSDictionary *displayText = [scenario objectForKey:@"display_text"];
             NSString *lang = [AppDelegate longLangUI];
+            UIImage *defaultIcon = ASSETS_IMAGE(@"PassAssets", @"doc");
+            UIImage *scenarioIcon = nilCoalesceDefault(ASSETS_IMAGE(@"PassAssets", scenarioType), defaultIcon);
             [temp.checkinTitle setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
             [temp.checkinDate setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
             [temp.checkinText setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
             [temp.checkinTitle setText:[displayText objectForKey:lang]];
             [temp.checkinDate setText:NSLocalizedString(@"Title", nil)];
             [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
-            [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", scenarioType)];
+            [temp.checkinIcon setImage:scenarioIcon];
             if (isCheckin) {
                 [temp.checkinDate setText:dateId];
                 [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", [@"day" stringByAppendingString:did])];
