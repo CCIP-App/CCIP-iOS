@@ -34,6 +34,7 @@
     NSDate *stopDate = [date dateByAddingTimeInterval:[[self.scenario objectForKey:@"countdown"] longValue]];
     NSDate *now = [NSDate new];
     NSLog(@"%@ ~ %@ == %@", date, stopDate, now);
+//    always display countdown for t-shirt view
 //    if ([now timeIntervalSince1970] - [stopDate timeIntervalSince1970] < 0) {
     [self.delegate showCountdown:self.scenario];
 //    }
