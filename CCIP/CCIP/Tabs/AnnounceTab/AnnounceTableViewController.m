@@ -240,7 +240,7 @@
         }];
     }
     
-    SEND_FIB_EVENT(@"AnnounceTableView", uri);
+    SEND_FIB_EVENT(@"AnnounceTableView", @{@"URL": uri});
 }
 
 /*
