@@ -332,8 +332,8 @@
         [((UISelectionFeedbackGenerator *)generator) selectionChanged];
     }
 }
-
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation {
+    
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     FIRDynamicLink *dynamicLink = [[FIRDynamicLinks dynamicLinks] dynamicLinkFromCustomSchemeURL:url];
     if (dynamicLink) {
         if (url != nil) {
@@ -399,7 +399,7 @@
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *))restorationHandler {
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> *))restorationHandler {
     NSLog(@"Receieved Activity URL -> %@", userActivity.webpageURL);
     BOOL handled = [[FIRDynamicLinks dynamicLinks] handleUniversalLink:userActivity.webpageURL
                                                             completion:^(FIRDynamicLink * _Nullable dynamicLink, NSError * _Nullable error) {
@@ -600,7 +600,7 @@
     // Save UserDefaults
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    SEND_FIB_EVENT(@"performActionForShortcutItem", shortcutItem.localizedTitle);
+    SEND_FIB_EVENT(@"performActionForShortcutItem", @{@"Title": shortcutItem.localizedTitle});
 }
 
 - (void)setDefaultShortcutItems {

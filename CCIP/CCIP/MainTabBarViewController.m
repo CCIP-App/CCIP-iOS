@@ -43,7 +43,7 @@
         [item setTitle:NSLocalizedString(item.title, nil)];
     }
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -52,7 +52,7 @@
 + (void)setIsDevMode:(BOOL)isDevMode;
 + (BOOL)isDevMode;
 
-+ (NSArray *)parseRange:(NSDictionary * _Nonnull)scenario;
++ (NSArray * _Null_unspecified)parseRange:(NSDictionary * _Nonnull)scenario;
 + (BOOL)haveAccessToken;
 + (void)setAccessToken:(NSString * _Null_unspecified)accessToken;
 + (NSString * _Null_unspecified)accessToken;
