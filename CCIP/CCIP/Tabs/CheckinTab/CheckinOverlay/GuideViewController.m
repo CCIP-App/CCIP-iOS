@@ -173,7 +173,7 @@
         NSURL *URL = [NSURL URLWithString:CC_LANDING(code)];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
         
-        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
             NSLog(@"Response: %@", response);
             if (!error) {
                 NSLog(@"Json: %@", responseObject);

@@ -63,7 +63,7 @@
     void (^use)(void) = ^{
         NSURL *url = [NSURL URLWithString:CC_USE([AppDelegate accessToken], self.id)];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
             NSLog(@"JSON: %@", responseObject);
             if (responseObject != nil) {
                 [self setUsed:[NSNumber numberWithBool:YES]];

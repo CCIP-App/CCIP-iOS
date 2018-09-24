@@ -327,8 +327,7 @@
         
         NSURL *URL = [NSURL URLWithString:CC_STATUS([AppDelegate accessToken])];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-        
-        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
             NSLog(@"Response: %@", response);
             if (!error) {
                 NSLog(@"Json: %@", responseObject);
@@ -462,7 +461,7 @@
         NSURL *URL = [NSURL URLWithString:CC_LANDING(code.data)];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
         
-        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
             NSLog(@"Response: %@", response);
             if (!error) {
                 NSLog(@"Json: %@", responseObject);
@@ -666,7 +665,7 @@
             NSURL *URL = [NSURL URLWithString:CC_LANDING(result)];
             NSURLRequest *request = [NSURLRequest requestWithURL:URL];
             
-            NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+            NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
                 NSLog(@"Response: %@", response);
                 if (!error) {
                     NSLog(@"Json: %@", responseObject);
