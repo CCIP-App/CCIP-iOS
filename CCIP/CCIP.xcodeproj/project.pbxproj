@@ -1036,7 +1036,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-OPass/Pods-OPass-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-OPass/Pods-OPass-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/BLKFlexibleHeightBar/BLKFlexibleHeightBar.framework",
 				"${BUILT_PRODUCTS_DIR}/CPDAcknowledgements/CPDAcknowledgements.framework",
@@ -1093,7 +1093,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OPass/Pods-OPass-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OPass/Pods-OPass-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6BB11CED214D0B43005CE4A0 /* ShellScript */ = {
