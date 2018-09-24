@@ -28,7 +28,6 @@
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
-@property (readwrite, nonatomic) NSArray *availableDays;
 @property (readwrite, nonatomic) NSArray *availableScenarios;
 @property (readwrite, nonatomic) BOOL isLoginSession;
 @property (strong, readwrite, nonatomic) OneSignal *oneSignal;
@@ -200,37 +199,6 @@
     [[AppDelegate appDelegate] setIsLoginSession:isLogin];
 }
 
-+ (BOOL)isBeforeEvent {
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyyMMdd"];
-    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
-    NSDate *nowDate = [formatter dateFromString:[formatter stringFromDate:[NSDate new]]];
-    NSDate *firstDate = [formatter dateFromString:[[AppDelegate appDelegate].availableDays firstObject]];
-    return [nowDate timeIntervalSince1970] <= [firstDate timeIntervalSince1970];
-}
-
-+ (BOOL)isAfterEvent {
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyyMMdd"];
-    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
-    NSDate *nowDate = [formatter dateFromString:[formatter stringFromDate:[NSDate new]]];
-    NSDate *lastDate = [formatter dateFromString:[[AppDelegate appDelegate].availableDays lastObject]];
-    return [nowDate timeIntervalSince1970] > [lastDate timeIntervalSince1970];
-}
-
-+ (NSDate *)firstAvailableDate {
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyyMMdd"];
-    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
-    if ([AppDelegate isBeforeEvent]) {
-        return [formatter dateFromString:[[AppDelegate appDelegate].availableDays firstObject]];
-    } else if ([AppDelegate isAfterEvent]) {
-        return [formatter dateFromString:[[AppDelegate appDelegate].availableDays firstObject]]; // fix nil
-    } else {
-        return [formatter dateFromString:[formatter stringFromDate:[NSDate new]]];
-    }
-}
-
 + (NSDictionary *)parseScenarioType:(NSString *)id {
     static NSDateFormatter *formatter;
     if (formatter == nil) {
@@ -249,67 +217,26 @@
                                               range:NSMakeRange(0, id.length)];
     NSRange did_range = [[id_matches firstObject] rangeAtIndex:2];
     NSString *did = @"";
-    NSString *dateId = @"";
     if (did_range.location != NSNotFound) {
         did =  [id substringWithRange:did_range];
-        dateId = [formatter stringFromDate:[[AppDelegate firstAvailableDate] dateByAddingTimeInterval:([did intValue] - 1) * 86400]];
     }
     NSRange scenarioRange = [[id_matches firstObject] rangeAtIndex:3];
     NSString *scenarioType = [id substringWithRange:scenarioRange];
     return @{
              @"scenarioType": scenarioType,
-             @"did": did,
-             @"dateId": dateId
+             @"did": did
              };
 }
 
-+ (NSArray *)parseDateRange:(NSDictionary *)scenario {
++ (NSArray *)parseRange:(NSDictionary *)scenario {
     NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyyMMdd"];
+    [formatter setDateFormat:[self AppConfig:@"DisplayDateTimeFormat"]];
     [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
     NSDate *availDate = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] longValue]];
     NSDate *expireDate = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] longValue]];
     NSString *availString = [formatter stringFromDate:availDate];
     NSString *expireString = [formatter stringFromDate:expireDate];
     return @[ availString, expireString ];
-}
-
-+ (void)parseAvailableDays:(NSArray *)scenarios {
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyyMMdd"];
-    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
-    NSDate *nowDate = [formatter dateFromString:[formatter stringFromDate:[NSDate new]]];
-    NSMutableArray *aD = [NSMutableArray arrayWithArray:[AppDelegate appDelegate].availableDays];
-    for (NSDictionary *scenario in scenarios) {
-        [aD addObjectsFromArray:[self parseDateRange:scenario]];
-    }
-    aD = [NSMutableArray arrayWithArray:[[[NSOrderedSet orderedSetWithArray:[aD valueForKeyPath:@"@distinctUnionOfObjects.self"]] array] sortedArrayUsingComparator:^NSComparisonResult(id o1, id o2) {
-        return [(NSString *)o1 compare:(NSString *)o2 options:NSNumericSearch];
-    }]];
-    
-    NSLog(@"Available date with: %@", aD);
-    [[AppDelegate appDelegate] setAvailableDays:aD];
-    
-    NSMutableArray *newScenarios = [NSMutableArray new];
-    if ([self isBeforeEvent]) {
-        // always add first day data before first comes
-        for (NSDictionary *scenario in scenarios) {
-            NSArray *dates = [AppDelegate parseDateRange:scenario];
-            if ([dates containsObject:[[AppDelegate appDelegate].availableDays firstObject]]) {
-                [newScenarios addObject:scenario];
-            }
-        }
-    } else {
-        // always add now day data
-        for (NSDictionary *scenario in scenarios) {
-            NSArray *dates = [AppDelegate parseDateRange:scenario];
-            if ([dates containsObject:[formatter stringFromDate:nowDate]]) {
-                [newScenarios addObject:scenario];
-            }
-        }
-    }
-    [[AppDelegate appDelegate] setAvailableScenarios:scenarios];
-//    [[AppDelegate appDelegate] setAvailableScenarios:[NSArray arrayWithArray:newScenarios]];
 }
 
 + (BOOL)haveAccessToken {
@@ -326,6 +253,10 @@
     [ac showAlert:^{
         [AppDelegate triggerFeedback:NotificationFeedbackSuccess];
     }];
+}
+
+- (void)setScenarios:(NSArray *)scenarios {
+    self.availableScenarios = scenarios;
 }
 
 + (NSString *)currentLangUI {
@@ -423,7 +354,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self setIsLoginSession:NO];
-    [self setAvailableDays:[NSMutableArray new]];
     // Configure tracker from GoogleService-Info.plist.
     [FIROptions defaultOptions].deepLinkURLScheme = [[[NSBundle mainBundle] infoDictionary] valueForKeyPathWithIndexes:@"CFBundleURLTypes[0].CFBundleURLSchemes[0]"];
     [FIRApp configure];

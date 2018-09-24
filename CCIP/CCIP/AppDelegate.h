@@ -34,7 +34,6 @@
 @property (strong, nonatomic) NSDictionary * _Null_unspecified userInfo;
 @property (readonly, nonatomic) BOOL isLoginSession;
 @property (strong, nonatomic) CheckinViewController * _Null_unspecified checkinView;
-@property (readonly, nonatomic) NSArray * _Null_unspecified availableDays;
 @property (readonly, nonatomic) NSArray * _Null_unspecified availableScenarios;
 
 + (AppDelegate * _Nonnull)appDelegate;
@@ -53,20 +52,18 @@
 + (void)setIsDevMode:(BOOL)isDevMode;
 + (BOOL)isDevMode;
 
++ (NSArray *)parseRange:(NSDictionary * _Nonnull)scenario;
 + (BOOL)haveAccessToken;
 + (void)setAccessToken:(NSString * _Null_unspecified)accessToken;
 + (NSString * _Null_unspecified)accessToken;
 + (NSString * _Null_unspecified)accessTokenSHA1;
 
 - (void)displayGreetingsForLogin;
+- (void)setScenarios:( NSArray * _Nonnull )scenarios;
 
 + (void)setDevLogo:(FBShimmeringView * _Null_unspecified)sView WithLogo:(UIImage * _Null_unspecified)logo;
 + (void)setLoginSession:(BOOL)isLogin;
-+ (BOOL)isBeforeEvent;
-+ (BOOL)isAfterEvent;
-+ (NSDate * _Nullable)firstAvailableDate;
 + (NSDictionary * _Null_unspecified)parseScenarioType:(NSString * _Nonnull)id;
-+ (void)parseAvailableDays:(NSArray * _Null_unspecified)scenarios;
 
 + (NSString * _Nonnull)currentLangUI;
 + (NSString * _Nonnull)shortLangUI;

@@ -436,11 +436,13 @@ Please copy and paste the token into next field or click the token link in the r
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uyl-BJ-dF0">
                                 <rect key="frame" x="35" y="35" width="350" height="160"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8/20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="q04-AM-eVF">
-                                        <rect key="frame" x="20" y="38" width="195" height="44"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q04-AM-eVF">
+                                        <rect key="frame" x="20" y="33" width="195" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="6Gs-ez-7qc"/>
                                         </constraints>
+                                        <string key="text">08/20
+08/21</string>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                         <color key="textColor" red="0.0" green="0.60392156862745094" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -464,7 +466,7 @@ Please copy and paste the token into next field or click the token link in the r
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="q04-AM-eVF" firstAttribute="centerY" secondItem="Uyl-BJ-dF0" secondAttribute="centerY" constant="-20" id="3fY-pu-49D"/>
+                                    <constraint firstItem="q04-AM-eVF" firstAttribute="centerY" secondItem="Uyl-BJ-dF0" secondAttribute="centerY" constant="-25" id="3fY-pu-49D"/>
                                     <constraint firstItem="ZY0-oM-P3F" firstAttribute="leading" secondItem="Uyl-BJ-dF0" secondAttribute="leading" constant="20" id="7gw-c8-WxB"/>
                                     <constraint firstItem="ZY0-oM-P3F" firstAttribute="centerY" secondItem="Uyl-BJ-dF0" secondAttribute="centerY" constant="20" id="OAE-px-dja"/>
                                     <constraint firstItem="FYl-bu-ujn" firstAttribute="leading" secondItem="q04-AM-eVF" secondAttribute="trailing" constant="15" id="SI5-at-yY4"/>
@@ -721,7 +723,7 @@ Please copy and paste the token into next field or click the token link in the r
                                 <rect key="frame" x="0.0" y="364" width="420" height="307"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleAbstract" rowHeight="250" id="qgL-2l-vLc" customClass="ScheduleAbstractViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleAbstract" rowHeight="250" id="qgL-2l-vLc" customClass="ScheduleAbstractViewCell">
                                         <rect key="frame" x="0.0" y="28" width="420" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qgL-2l-vLc" id="70q-mM-EDD">
@@ -729,10 +731,10 @@ Please copy and paste the token into next field or click the token link in the r
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RMM-hf-aQ8">
-                                                    <rect key="frame" x="43" y="21" width="334" height="208"/>
+                                                    <rect key="frame" x="43" y="21" width="340" height="208"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abstract" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="js4-QC-0N1">
-                                                            <rect key="frame" x="22" y="28" width="290" height="21"/>
+                                                            <rect key="frame" x="22" y="28" width="296" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="82g-Nd-Jny"/>
                                                             </constraints>
@@ -741,7 +743,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8G0-OA-Hz1">
-                                                            <rect key="frame" x="22" y="60" width="290" height="120"/>
+                                                            <rect key="frame" x="22" y="60" width="296" height="120"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>

@@ -22,8 +22,6 @@
 
 @interface CheckinViewController()
 
-@property (readwrite, nonatomic) BOOL firstLoad;
-
 @property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
 
 @property (strong, nonatomic) IBOutlet iCarousel *cards;
@@ -68,7 +66,6 @@
     [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
     
     [[AppDelegate appDelegate] setCheckinView:self];
-    self.firstLoad = YES;
     
     // set logo on nav title
     UIView *logoView = [[UIImageView alloc] initWithImage:ASSETS_IMAGE(@"AssetsUI", @"conf-logo")];
@@ -277,10 +274,9 @@
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"CheckinCard"];
         } else {
             // force scroll to first selected item at first load
-            if ([self.cards numberOfItems] > 0 && self.firstLoad) {
-                self.firstLoad = NO;
-                [self.cards scrollToItemAtIndex:0
-                                       animated:YES];
+            if ([self.cards numberOfItems] > 0) {
+//                [self.cards scrollToItemAtIndex:0
+//                                       animated:YES];
                 // auto scroll to first unused and available item
                 NSArray *scenarios = [[AppDelegate appDelegate] availableScenarios];
                 for (NSDictionary *scenario in scenarios) {
@@ -312,10 +308,6 @@
                                          animated:YES];
     [self.progress setMode:MBProgressHUDModeIndeterminate];
     [self handleQRButton];
-    static NSDate *previousDate;
-    if (previousDate == nil) {
-        previousDate = [AppDelegate firstAvailableDate];
-    }
 
     [self.lbHi setHidden:![AppDelegate haveAccessToken]];
     [self.lbUserName setHidden:![AppDelegate haveAccessToken]];
@@ -331,7 +323,7 @@
             self.scenarios = [NSArray new];
             [AppDelegate sendTag:@"user_id"
                            value:@""];
-            [AppDelegate parseAvailableDays:self.scenarios];
+            [[AppDelegate appDelegate] setScenarios:self.scenarios];
             [self reloadAndGoToCard];
         }
     } else {
@@ -364,11 +356,7 @@
                     if ([AppDelegate appDelegate].isLoginSession) {
                         [[AppDelegate appDelegate] displayGreetingsForLogin];
                     }
-                    [AppDelegate parseAvailableDays:self.scenarios];
-                    if ([AppDelegate firstAvailableDate] != previousDate) {
-                        previousDate = [AppDelegate firstAvailableDate];
-                        self.firstLoad = YES;
-                    }
+                    [[AppDelegate appDelegate] setScenarios:self.scenarios];
                     [self reloadAndGoToCard];
                 }
             } else {
@@ -750,10 +738,9 @@
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
     //return the total number of items in the carousel
-    NSArray *days = [[AppDelegate appDelegate] availableDays];
     NSInteger count = [[[AppDelegate appDelegate] availableScenarios] count];
     [self.pageControl setNumberOfPages:count];
-    return count > 0 ? count : ([days count] == 0 ? 0 : 1);
+    return count;
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
@@ -796,9 +783,10 @@
             BOOL isShirt = [[id lowercaseString] isEqualToString:@"shirt"];
             BOOL isRadio = [id rangeOfString:@"radio" options:NSCaseInsensitiveSearch].length > 0;
             [temp setId:id];
+            NSArray *dateRange = [AppDelegate parseRange:scenario];
+            NSString *availableRange = [NSString stringWithFormat:@"%@\n%@", [dateRange firstObject], [dateRange lastObject]];
             NSDictionary *dd = [AppDelegate parseScenarioType:id];
             NSString *did = [dd objectForKey:@"did"];
-            NSString *dateId = [dd objectForKey:@"dateId"];
             NSString *scenarioType = [dd objectForKey:@"scenarioType"];
             NSDictionary *displayText = [scenario objectForKey:@"display_text"];
             NSString *lang = [AppDelegate longLangUI];
@@ -808,16 +796,16 @@
             [temp.checkinDate setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
             [temp.checkinText setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
             [temp.checkinTitle setText:[displayText objectForKey:lang]];
-            [temp.checkinDate setText:NSLocalizedString(@"Title", nil)];
+//            [temp.checkinDate setText:NSLocalizedString(@"Title", nil)];
+            [temp.checkinDate setText:availableRange];
             [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
             [temp.checkinIcon setImage:scenarioIcon];
             if (isCheckin) {
-                [temp.checkinDate setText:dateId];
                 [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", [@"day" stringByAppendingString:did])];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinText", nil)];
             }
             if (isLunch) {
-                [temp.checkinDate setText:dateId];
+                // nothing to do
             }
             if (isKit) {
                 // nothing to do
@@ -829,7 +817,6 @@
                 [temp.checkinText setText:NSLocalizedString(@"CheckinStaffShirtNotice", nil)];
             }
             if (isRadio) {
-                [temp.checkinDate setText:dateId];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinStaffRadioNotice", nil)];
             }
             
@@ -871,11 +858,11 @@
             
             [temp setDelegate:self];
             [temp setScenario:scenario];
-        } else if ([[[AppDelegate appDelegate] availableDays] count] > 0 && [AppDelegate isAfterEvent]) {
-            AfterEventViewController *temp = (AfterEventViewController *)[storyboard instantiateViewControllerWithIdentifier:@"AfterEventCardReuseView"];
-            
-            [temp.view setFrame:cardRect];
-            view = temp.view;
+//        } else if ([[[AppDelegate appDelegate] availableDays] count] > 0 && [AppDelegate isAfterEvent]) {
+//            AfterEventViewController *temp = (AfterEventViewController *)[storyboard instantiateViewControllerWithIdentifier:@"AfterEventCardReuseView"];
+//
+//            [temp.view setFrame:cardRect];
+//            view = temp.view;
         }
     } else {
         //get a reference to the label in the recycled view
