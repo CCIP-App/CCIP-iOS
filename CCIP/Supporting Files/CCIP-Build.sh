@@ -1,4 +1,4 @@
-export MAIN_VERSION=2.3
+export MAIN_VERSION=3.0
 
 trim() {
     local var=$@
