@@ -395,6 +395,7 @@
     
     [self registerAppIconArt];
     [self setDefaultShortcutItems];
+    [AppDelegate createNEHC];
     
     return YES;
 }
