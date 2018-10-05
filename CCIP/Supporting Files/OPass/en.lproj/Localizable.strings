@@ -28,10 +28,13 @@
 "UseNoticeText" = "";
 "meatLunch" = "Meal";
 "vegetarianLunch" = "Vegan";
+"UseButton_shirt" = "Confirm to get the T-Shirt?";
 "UseButton_kit" = "Confirm to get the KIT bag?";
 "UseButton_vipkit" = "Confirm to get the VIP KIT bag?";
 "UseButton_day1lunch" = "Confirm to get day 1 lunch?";
 "UseButton_day2lunch" = "Confirm to get day 2 lunch?";
+"UseButton_day3lunch" = "Confirm to get day 3 lunch?";
+"UseButton_day4lunch" = "Confirm to get day 4 lunch?";
 "UseButton" = "USE";
 "UseButtonPressed" = "USED";
 "ConfirmAlertText" = "Have you followed the staffs instructions?";

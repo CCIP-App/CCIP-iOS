@@ -28,10 +28,13 @@
 "UseNoticeText" = "";
 "meatLunch" = "葷食";
 "vegetarianLunch" = "素食";
+"UseButton_shirt" = "確定要領取衣服嗎？";
 "UseButton_kit" = "確定要領取迎賓袋嗎？";
 "UseButton_vipkit" = "確定要領取獨家紀念品嗎？";
 "UseButton_day1lunch" = "確定要領取第一天的午餐嗎？";
 "UseButton_day2lunch" = "確定要領取第二天的午餐嗎？";
+"UseButton_day3lunch" = "確定要領取第三天的午餐嗎？";
+"UseButton_day4lunch" = "確定要領取第四天的午餐嗎？";
 "UseButton" = "使用";
 "UseButtonPressed" = "已領取";
 "ConfirmAlertText" = "是否已聽從工作人員的指示？";
