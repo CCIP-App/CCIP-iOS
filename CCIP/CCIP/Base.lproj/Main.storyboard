@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vFY-Ie-dA7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.15" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vFY-Ie-dA7">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.9"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -412,9 +412,9 @@ Please copy and paste the token into next field or click the token link in the r
                         <outlet property="ivUserPhoto" destination="01s-25-wxe" id="rr3-07-Jkv"/>
                         <outlet property="lbHi" destination="L3Y-MS-x0I" id="uJH-0a-vrQ"/>
                         <outlet property="lbUserName" destination="vJH-ug-pK0" id="se2-C1-fIo"/>
-                        <segue destination="VKq-4v-Yvp" kind="custom" identifier="ShowGuide" customClass="EmbeddedNavigationControllerSegue" id="lBg-aP-1xi"/>
-                        <segue destination="GJw-lM-l3I" kind="custom" identifier="ShowCountdown" customClass="EmbeddedNavigationControllerSegue" id="bIa-hc-QfB"/>
-                        <segue destination="tZ3-Ep-FUt" kind="custom" identifier="ShowInvalidNetworkMsg" customClass="EmbeddedNavigationControllerSegue" id="LZQ-Xr-3kl"/>
+                        <segue destination="VKq-4v-Yvp" kind="custom" identifier="ShowGuide" customClass="EmbeddedNavigationControllerSegue" customModule="OPass" customModuleProvider="target" id="lBg-aP-1xi"/>
+                        <segue destination="GJw-lM-l3I" kind="custom" identifier="ShowCountdown" customClass="EmbeddedNavigationControllerSegue" customModule="OPass" customModuleProvider="target" id="bIa-hc-QfB"/>
+                        <segue destination="tZ3-Ep-FUt" kind="custom" identifier="ShowInvalidNetworkMsg" customClass="EmbeddedNavigationControllerSegue" customModule="OPass" customModuleProvider="target" id="LZQ-Xr-3kl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M8l-mK-H7w" sceneMemberID="firstResponder"/>
@@ -1108,7 +1108,7 @@ Label2</string>
                         <outlet property="announceTableView" destination="NRX-bU-SPn" id="U3j-TF-0aO"/>
                         <outlet property="ivNoAnnouncement" destination="V2s-Db-5hD" id="Rya-rd-Li8"/>
                         <outlet property="lbNoAnnouncement" destination="XQ9-nd-7Ld" id="jVx-Iw-8SY"/>
-                        <segue destination="tZ3-Ep-FUt" kind="custom" identifier="ShowInvalidNetworkMsg" customClass="EmbeddedNavigationControllerSegue" id="351-Fd-ZV7"/>
+                        <segue destination="tZ3-Ep-FUt" kind="custom" identifier="ShowInvalidNetworkMsg" customClass="EmbeddedNavigationControllerSegue" customModule="OPass" customModuleProvider="target" id="351-Fd-ZV7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pl2-Za-Jmf" userLabel="First Responder" sceneMemberID="firstResponder"/>

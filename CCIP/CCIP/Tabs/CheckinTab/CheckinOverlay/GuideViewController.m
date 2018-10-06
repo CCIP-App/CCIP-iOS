@@ -9,7 +9,6 @@
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import "AppDelegate.h"
 #import "GuideViewController.h"
-#import "UIAlertController+additional.h"
 #import <AFNetworking/AFNetworking.h>
 #import "WebServiceEndPoint.h"
 #import "UIColor+addition.h"

@@ -12,7 +12,6 @@
 #import <ScanditBarcodeScanner/ScanditBarcodeScanner.h>
 #import <iRate/iRate.h>
 #import <iVersion/iVersion.h>
-#import "UIAlertController+additional.h"
 #import "UIImage+addition.h"
 #import "UIColor+addition.h"
 #import "AppDelegate.h"

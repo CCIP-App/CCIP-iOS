@@ -7,7 +7,6 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "UIAlertController+additional.h"
 #import "UIColor+addition.h"
 #import "UIView+addition.h"
 #import "CheckinCardView.h"

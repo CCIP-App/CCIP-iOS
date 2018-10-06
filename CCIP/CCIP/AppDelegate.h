@@ -8,6 +8,7 @@
 
 @import Firebase;
 
+#import <OPass-Swift.h>
 #import <UIKit/UIKit.h>
 #import <OneSignal/OneSignal.h>
 #import <ColorArt/UIImage+ColorArt.h>
@@ -18,6 +19,7 @@
 #import "CheckinViewController.h"
 #import "headers.h"
 #import "FeedbackType.h"
+#import "RVCollection.h"
 
 #define STRINGIZE(x)                    #x
 #define STRINGIZE2(x)                   STRINGIZE(x)

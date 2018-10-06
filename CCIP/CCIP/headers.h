@@ -6,8 +6,6 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
-#import <OPass-Swift.h>
-#import "RVCollection.h"
 #import "NSObject+ValueForKeyPathWithIndexes.h"
 
 #define nilCoalesce(v)              ((v != nil && ![v isKindOfClass:[NSNull class]] ? v : @""))
