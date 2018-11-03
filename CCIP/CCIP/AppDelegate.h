@@ -13,7 +13,6 @@
 #import <OneSignal/OneSignal.h>
 #import <ColorArt/UIImage+ColorArt.h>
 #import <Shimmer/FBShimmeringView.h>
-#import "UIApplication+addition.h"
 #import "UIViewController+addition.h"
 #import "NSInvocation+addition.h"
 #import "CheckinViewController.h"

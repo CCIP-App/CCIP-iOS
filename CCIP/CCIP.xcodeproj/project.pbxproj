@@ -76,6 +76,7 @@
 		6B49F1411F2548C600686C27 /* OPass-Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* OPass-Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6B4FCB02218E30B10005469F /* NSObject+DeepCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */; };
 		6B4FCB04218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */; };
+		6B4FCB06218E521C0005469F /* UIApplication+addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB05218E521C0005469F /* UIApplication+addition.swift */; };
 		6B50EA2C216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2B216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift */; };
 		6B50EA2E21692210000CC757 /* EmbeddedNavigationControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */; };
 		6B50EA322169377E000CC757 /* UIAlertController+additional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA312169377E000CC757 /* UIAlertController+additional.swift */; };
@@ -87,7 +88,6 @@
 		6B76DF6420B019B200EBEF06 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B76DF6320B019B200EBEF06 /* config.plist */; };
 		6B9650C91F2B270500F43B39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC12A961F2B1B8000B14039 /* main.m */; };
 		6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */; };
-		6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */; };
 		6BAD226620B1F33100155F3F /* MapsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAD226520B1F2E100155F3F /* MapsWebViewController.m */; };
 		6BB1C4391F1AD4BB00AB072F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
@@ -274,6 +274,7 @@
 		6B2F9E461D4D18F100047F38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+DeepCopy.swift"; sourceTree = "<group>"; };
 		6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ValueForKeyPathWithIndexes.swift"; sourceTree = "<group>"; };
+		6B4FCB05218E521C0005469F /* UIApplication+addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+addition.swift"; sourceTree = "<group>"; };
 		6B50EA2B216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedTabBarControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedNavigationControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA312169377E000CC757 /* UIAlertController+additional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+additional.swift"; sourceTree = "<group>"; };
@@ -292,8 +293,6 @@
 		6B9348AE1F2428A300F77757 /* CCIP.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CCIP.xcconfig; sourceTree = "<group>"; };
 		6BA1A5201D1EFBDC00D5924C /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
 		6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
-		6BAB42371D4ED39D0029B8A5 /* UIApplication+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+addition.h"; sourceTree = "<group>"; };
-		6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+addition.m"; sourceTree = "<group>"; };
 		6BAD226420B1F2E100155F3F /* MapsWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapsWebViewController.h; sourceTree = "<group>"; };
 		6BAD226520B1F2E100155F3F /* MapsWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapsWebViewController.m; sourceTree = "<group>"; };
 		6BB0B6091F1A74DF00AEB437 /* CCIP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CCIP.entitlements; sourceTree = "<group>"; };
@@ -715,8 +714,7 @@
 				6B26D90F1F23E57A003D9CA1 /* UIView+addition.m */,
 				6BCBC3B31D4F393700B5AF35 /* UIViewController+addition.h */,
 				6BCBC3B41D4F393700B5AF35 /* UIViewController+addition.m */,
-				6BAB42371D4ED39D0029B8A5 /* UIApplication+addition.h */,
-				6BAB42381D4ED39D0029B8A5 /* UIApplication+addition.m */,
+				6B4FCB05218E521C0005469F /* UIApplication+addition.swift */,
 				28ACA99F1D5E92AD002A6419 /* NSData+CommonCrypto.h */,
 				28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */,
 				28A7C5651D5F84FB0079BB12 /* NSData+PMUtils.h */,
@@ -1157,7 +1155,6 @@
 				280774BF1F1A736800A5B994 /* ScheduleViewController.m in Sources */,
 				2839BF4A1D4CDDAD0062F36D /* CheckinCardViewController.m in Sources */,
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
-				6BAB42391D4ED39D0029B8A5 /* UIApplication+addition.m in Sources */,
 				28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */,
 				6B50EA2C216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift in Sources */,
 				28A7C56D1D6032680079BB12 /* MainNavViewController.m in Sources */,
@@ -1186,6 +1183,7 @@
 				280774D11F1AD8D300A5B994 /* ScheduleTableViewCell.m in Sources */,
 				28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */,
 				6B70EF3F204C621200C63E63 /* StaffWebViewController.m in Sources */,
+				6B4FCB06218E521C0005469F /* UIApplication+addition.swift in Sources */,
 				28AFCF141D5DD9CA00413927 /* AcknowledgementsViewController.m in Sources */,
 				6B2CD5791D286E6F00793194 /* UIColor+addition.m in Sources */,
 			);
