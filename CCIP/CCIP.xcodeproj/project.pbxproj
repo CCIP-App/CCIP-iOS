@@ -50,7 +50,6 @@
 		5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91712C1D32990C000D0F66 /* StaffCell.m */; };
 		5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D43D1D3A668B005BF382 /* MainTabBarViewController.m */; };
 		5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */; };
-		5FB4D48F1D3B242C005BF382 /* MoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D48D1D3B242C005BF382 /* MoreCell.m */; };
 		5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */; };
 		5FD049891D5AFB9D00E7CEAD /* AnnounceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD049881D5AFB9D00E7CEAD /* AnnounceTableViewController.m */; };
 		5FD0498C1D5B041800E7CEAD /* AnnounceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0498B1D5B041800E7CEAD /* AnnounceTableViewCell.m */; };
@@ -77,6 +76,7 @@
 		6B4FCB02218E30B10005469F /* NSObject+DeepCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */; };
 		6B4FCB04218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */; };
 		6B4FCB06218E521C0005469F /* UIApplication+addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB05218E521C0005469F /* UIApplication+addition.swift */; };
+		6B4FCB0A218E5A0F0005469F /* MoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB09218E5A0F0005469F /* MoreCell.swift */; };
 		6B50EA2C216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2B216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift */; };
 		6B50EA2E21692210000CC757 /* EmbeddedNavigationControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */; };
 		6B50EA322169377E000CC757 /* UIAlertController+additional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA312169377E000CC757 /* UIAlertController+additional.swift */; };
@@ -218,8 +218,6 @@
 		5FB4D43D1D3A668B005BF382 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
 		5FB4D4871D3ABF9C005BF382 /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewController.h; sourceTree = "<group>"; };
 		5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewController.m; sourceTree = "<group>"; };
-		5FB4D48C1D3B242C005BF382 /* MoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCell.h; sourceTree = "<group>"; };
-		5FB4D48D1D3B242C005BF382 /* MoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCell.m; sourceTree = "<group>"; };
 		5FB4D4911D3B57FA005BF382 /* CheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinViewController.h; sourceTree = "<group>"; };
 		5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinViewController.m; sourceTree = "<group>"; };
 		5FD049871D5AFB9D00E7CEAD /* AnnounceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnounceTableViewController.h; sourceTree = "<group>"; };
@@ -265,6 +263,7 @@
 		6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+DeepCopy.swift"; sourceTree = "<group>"; };
 		6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ValueForKeyPathWithIndexes.swift"; sourceTree = "<group>"; };
 		6B4FCB05218E521C0005469F /* UIApplication+addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+addition.swift"; sourceTree = "<group>"; };
+		6B4FCB09218E5A0F0005469F /* MoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreCell.swift; sourceTree = "<group>"; };
 		6B50EA2B216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedTabBarControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedNavigationControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA312169377E000CC757 /* UIAlertController+additional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+additional.swift"; sourceTree = "<group>"; };
@@ -750,8 +749,7 @@
 			children = (
 				5FB4D4871D3ABF9C005BF382 /* MoreTableViewController.h */,
 				5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */,
-				5FB4D48C1D3B242C005BF382 /* MoreCell.h */,
-				5FB4D48D1D3B242C005BF382 /* MoreCell.m */,
+				6B4FCB09218E5A0F0005469F /* MoreCell.swift */,
 				6B7F713F1F25F797004E43CA /* PuzzleView */,
 				6B7F713D1F25F797004E43CA /* TicketView */,
 				6B7F713E1F25F797004E43CA /* TelegramView */,
@@ -1077,7 +1075,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */,
-				5FB4D48F1D3B242C005BF382 /* MoreCell.m in Sources */,
 				6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m in Sources */,
 				5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */,
 				6B9650C91F2B270500F43B39 /* main.m in Sources */,
@@ -1103,6 +1100,7 @@
 				6B50EA2C216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift in Sources */,
 				28A7C56D1D6032680079BB12 /* MainNavViewController.m in Sources */,
 				5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */,
+				6B4FCB0A218E5A0F0005469F /* MoreCell.swift in Sources */,
 				6BEB31131F26653D0050759D /* MapsViewController.m in Sources */,
 				6B26D9101F23E57A003D9CA1 /* UIView+addition.m in Sources */,
 				5FECE5AC1D352E8A00242DB4 /* StaffGroupTableViewController.m in Sources */,
