@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "StatusViewController.h"
 #import "UIColor+addition.h"
-#import "MainNavViewController.h"
 @import AudioToolbox.AudioServices;
 
 @interface StatusViewController()

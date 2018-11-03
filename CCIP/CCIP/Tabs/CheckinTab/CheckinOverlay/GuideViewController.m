@@ -12,7 +12,6 @@
 #import <AFNetworking/AFNetworking.h>
 #import "WebServiceEndPoint.h"
 #import "UIColor+addition.h"
-#import "MainNavViewController.h"
 
 @interface GuideViewController ()
 
