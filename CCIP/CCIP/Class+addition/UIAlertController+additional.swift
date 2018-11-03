@@ -63,7 +63,7 @@ import UIKit
         withMessage: String,
         cancelButtonText: String,
         cancelStyle: UIAlertAction.Style,
-        cancelAction: @escaping (UIAlertAction) -> Void
+        cancelAction: ((UIAlertAction) -> Void)?
         ) -> UIAlertController {
         let ac : UIAlertController = self.init(title: title, message: withMessage, preferredStyle: UIAlertController.Style.alert)
         ac.modalPresentationStyle = UIModalPresentationStyle.popover
@@ -73,12 +73,12 @@ import UIKit
     func showAlert(
         _ completion: @escaping () -> Void
         ) {
-        UIApplication.getMostTopPresentedViewController()!.present(self, animated: true, completion: completion)
+        UIApplication.getMostTopPresentedViewController()?.present(self, animated: true, completion: completion)
     }
     func addActionButton(
         _ title: String,
         style: UIAlertAction.Style,
-        handler: @escaping (UIAlertAction) -> Void
+        handler: ((UIAlertAction) -> Void)?
         ) {
         let action : UIAlertAction = UIAlertAction.init(title: title, style: style, handler: handler)
         self.addAction(action)
