@@ -6,8 +6,6 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
-#import "NSObject+ValueForKeyPathWithIndexes.h"
-
 #define nilCoalesce(v)              ((v != nil && ![v isKindOfClass:[NSNull class]] ? v : @""))
 #define nilCoalesceDefault(v,d)     ((v != nil && ![v isKindOfClass:[NSNull class]] ? v : d))
 #define stringCoalesceDefault(v,d)  ((v != nil && ![v isKindOfClass:[NSNull class]] && [v isKindOfClass:[NSString class]] && [v length] > 0 ? v : d))
