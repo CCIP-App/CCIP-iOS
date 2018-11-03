@@ -37,7 +37,6 @@
 		288D3A971D599BDC00E4E3A6 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A961D599BDC00E4E3A6 /* MediaPlayer.framework */; };
 		28A299351D3D835D00145E76 /* UISegmentedControl+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */; };
 		28A7C55F1D5EE0C30079BB12 /* Project_Info_and_Contributors.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */; };
-		28A7C5621D5F1AD90079BB12 /* DeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5611D5F1AD90079BB12 /* DeepCopy.m */; };
 		28A7C5641D5F7D2D0079BB12 /* Project_3rd_Lib_License.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */; };
 		28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */; };
 		28A7C56D1D6032680079BB12 /* MainNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C56C1D6032680079BB12 /* MainNavViewController.m */; };
@@ -76,6 +75,7 @@
 		6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F9E441D4D142700047F38 /* CheckinCardView.m */; };
 		6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
 		6B49F1411F2548C600686C27 /* OPass-Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* OPass-Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6B4FCB02218E30B10005469F /* NSObject+DeepCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */; };
 		6B50EA2C216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2B216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift */; };
 		6B50EA2E21692210000CC757 /* EmbeddedNavigationControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */; };
 		6B50EA322169377E000CC757 /* UIAlertController+additional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA312169377E000CC757 /* UIAlertController+additional.swift */; };
@@ -206,8 +206,6 @@
 		28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+addition.h"; sourceTree = "<group>"; };
 		28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+addition.m"; sourceTree = "<group>"; };
 		28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Project_Info_and_Contributors.json; sourceTree = "<group>"; };
-		28A7C5601D5F1AD90079BB12 /* DeepCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeepCopy.h; sourceTree = "<group>"; };
-		28A7C5611D5F1AD90079BB12 /* DeepCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeepCopy.m; sourceTree = "<group>"; };
 		28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Project_3rd_Lib_License.json; sourceTree = "<group>"; };
 		28A7C5651D5F84FB0079BB12 /* NSData+PMUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+PMUtils.h"; sourceTree = "<group>"; };
 		28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+PMUtils.m"; sourceTree = "<group>"; };
@@ -276,6 +274,7 @@
 		6B2F9E431D4D142700047F38 /* CheckinCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinCardView.h; sourceTree = "<group>"; };
 		6B2F9E441D4D142700047F38 /* CheckinCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinCardView.m; sourceTree = "<group>"; };
 		6B2F9E461D4D18F100047F38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+DeepCopy.swift"; sourceTree = "<group>"; };
 		6B50EA2B216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedTabBarControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedNavigationControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA312169377E000CC757 /* UIAlertController+additional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+additional.swift"; sourceTree = "<group>"; };
@@ -705,8 +704,7 @@
 				6B50EA312169377E000CC757 /* UIAlertController+additional.swift */,
 				6B173C5220FB34AC0065AFCD /* NSObject+ValueForKeyPathWithIndexes.h */,
 				6B173C5320FB34AC0065AFCD /* NSObject+ValueForKeyPathWithIndexes.m */,
-				28A7C5601D5F1AD90079BB12 /* DeepCopy.h */,
-				28A7C5611D5F1AD90079BB12 /* DeepCopy.m */,
+				6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */,
 				6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */,
 				6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */,
 				6B11BE7F1D4CBA5800B87EA9 /* UIImage+addition.h */,
@@ -1139,7 +1137,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */,
-				28A7C5621D5F1AD90079BB12 /* DeepCopy.m in Sources */,
 				5FB4D48F1D3B242C005BF382 /* MoreCell.m in Sources */,
 				6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m in Sources */,
 				5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */,
@@ -1148,6 +1145,7 @@
 				6BEB31091F26276D0050759D /* MyTicketViewController.m in Sources */,
 				6B02FD961F220371002AC0D3 /* ScheduleAbstractViewCell.m in Sources */,
 				6B70EF41204C621800C63E63 /* SponsorWebViewController.m in Sources */,
+				6B4FCB02218E30B10005469F /* NSObject+DeepCopy.swift in Sources */,
 				28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */,
 				6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */,
 				6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */,
