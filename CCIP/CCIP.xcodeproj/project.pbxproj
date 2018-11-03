@@ -166,14 +166,6 @@
 		280774CE1F1AD8D300A5B994 /* ScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTableViewCell.h; sourceTree = "<group>"; };
 		280774CF1F1AD8D300A5B994 /* ScheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTableViewCell.m; sourceTree = "<group>"; };
 		280774D01F1AD8D300A5B994 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
-		2821DA9A1D3DCA5500AFE139 /* ProgramDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramDetailViewController.h; sourceTree = "<group>"; };
-		2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramDetailViewController.m; sourceTree = "<group>"; };
-		2821DAA51D3DD36500AFE139 /* ProgramDetailViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramDetailViewPagerController.h; sourceTree = "<group>"; };
-		2821DAA61D3DD36500AFE139 /* ProgramDetailViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramDetailViewPagerController.m; sourceTree = "<group>"; };
-		2823E8DF1D3E55F10039D72E /* ProgramAbstractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramAbstractViewController.h; sourceTree = "<group>"; };
-		2823E8E01D3E55F10039D72E /* ProgramAbstractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramAbstractViewController.m; sourceTree = "<group>"; };
-		2823E8E41D3E560C0039D72E /* ProgramSpeakerIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramSpeakerIntroViewController.h; sourceTree = "<group>"; };
-		2823E8E51D3E560C0039D72E /* ProgramSpeakerIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramSpeakerIntroViewController.m; sourceTree = "<group>"; };
 		2839BF471D4CDDAD0062F36D /* CheckinCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinCardViewController.h; sourceTree = "<group>"; };
 		2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinCardViewController.m; sourceTree = "<group>"; };
 		284602DD1F121BBB00F512A3 /* LaunchScreen@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@1x.png"; sourceTree = "<group>"; };
@@ -201,8 +193,6 @@
 		288D3A921D599BCB00E4E3A6 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		288D3A941D599BD600E4E3A6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		288D3A961D599BDC00E4E3A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		28A2992A1D3B90C000145E76 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
-		28A2992B1D3B90C000145E76 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+addition.h"; sourceTree = "<group>"; };
 		28A299341D3D835D00145E76 /* UISegmentedControl+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+addition.m"; sourceTree = "<group>"; };
 		28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Project_Info_and_Contributors.json; sourceTree = "<group>"; };
@@ -288,8 +278,6 @@
 		6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleFavoriteTableViewController.m; sourceTree = "<group>"; };
 		6B75F4F0210F85460019ECD2 /* FeedbackType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackType.h; sourceTree = "<group>"; };
 		6B76DF6320B019B200EBEF06 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
-		6B9117051D4EFC2600537ABE /* ScheduleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewCell.h; sourceTree = "<group>"; };
-		6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewCell.m; sourceTree = "<group>"; };
 		6B9348AE1F2428A300F77757 /* CCIP.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CCIP.xcconfig; sourceTree = "<group>"; };
 		6BA1A5201D1EFBDC00D5924C /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
 		6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
@@ -642,49 +630,6 @@
 			path = CCIP;
 			sourceTree = "<group>";
 		};
-		6BF692881F2B2EA500E6040E /* Old */ = {
-			isa = PBXGroup;
-			children = (
-				28A2992A1D3B90C000145E76 /* ScheduleViewController.h */,
-				28A2992B1D3B90C000145E76 /* ScheduleViewController.m */,
-				6B9117051D4EFC2600537ABE /* ScheduleViewCell.h */,
-				6B9117061D4EFC2600537ABE /* ScheduleViewCell.m */,
-				6BF692891F2B2ED600E6040E /* ProgramDetailView */,
-			);
-			path = Old;
-			sourceTree = "<group>";
-		};
-		6BF692891F2B2ED600E6040E /* ProgramDetailView */ = {
-			isa = PBXGroup;
-			children = (
-				2821DAA51D3DD36500AFE139 /* ProgramDetailViewPagerController.h */,
-				2821DAA61D3DD36500AFE139 /* ProgramDetailViewPagerController.m */,
-				2821DA9A1D3DCA5500AFE139 /* ProgramDetailViewController.h */,
-				2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */,
-				6BF6928A1F2B2EF000E6040E /* AbstractView */,
-				6BF6928B1F2B2EF500E6040E /* SpeakerIntroView */,
-			);
-			path = ProgramDetailView;
-			sourceTree = "<group>";
-		};
-		6BF6928A1F2B2EF000E6040E /* AbstractView */ = {
-			isa = PBXGroup;
-			children = (
-				2823E8DF1D3E55F10039D72E /* ProgramAbstractViewController.h */,
-				2823E8E01D3E55F10039D72E /* ProgramAbstractViewController.m */,
-			);
-			path = AbstractView;
-			sourceTree = "<group>";
-		};
-		6BF6928B1F2B2EF500E6040E /* SpeakerIntroView */ = {
-			isa = PBXGroup;
-			children = (
-				2823E8E41D3E560C0039D72E /* ProgramSpeakerIntroViewController.h */,
-				2823E8E51D3E560C0039D72E /* ProgramSpeakerIntroViewController.m */,
-			);
-			path = SpeakerIntroView;
-			sourceTree = "<group>";
-		};
 		6BFB831A1F2B1835005DCF00 /* AcknowledgementsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -776,7 +721,6 @@
 				6B7299AE1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.h */,
 				6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */,
 				6B02FD901F2202BF002AC0D3 /* ScheduleDetail */,
-				6BF692881F2B2EA500E6040E /* Old */,
 			);
 			path = ScheduleTab;
 			sourceTree = "<group>";
