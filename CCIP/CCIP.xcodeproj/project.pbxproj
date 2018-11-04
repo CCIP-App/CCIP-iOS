@@ -61,7 +61,6 @@
 		6B036B901F24371700D5E5A5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B036B8F1F24371600D5E5A5 /* Settings.bundle */; };
 		6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */; };
 		6B10CE8E1F29988100EB98F2 /* WebViewAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */; };
-		6B11BE811D4CBA5800B87EA9 /* UIImage+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */; };
 		6B11BE821D4CBC9300B87EA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B11BE841D4CBC9300B87EA9 /* Main.storyboard */; };
 		6B26D9101F23E57A003D9CA1 /* UIView+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B26D90F1F23E57A003D9CA1 /* UIView+addition.m */; };
 		6B26D9131F23EE28003D9CA1 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */; };
@@ -77,6 +76,7 @@
 		6B4FCB06218E521C0005469F /* UIApplication+addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB05218E521C0005469F /* UIApplication+addition.swift */; };
 		6B4FCB0A218E5A0F0005469F /* MoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB09218E5A0F0005469F /* MoreCell.swift */; };
 		6B4FCB0C218E5AA80005469F /* MainNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB0B218E5AA80005469F /* MainNavViewController.swift */; };
+		6B4FCB11218EC2380005469F /* UIImage+addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB10218EC2380005469F /* UIImage+addition.swift */; };
 		6B50EA2C216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2B216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift */; };
 		6B50EA2E21692210000CC757 /* EmbeddedNavigationControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */; };
 		6B50EA322169377E000CC757 /* UIAlertController+additional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA312169377E000CC757 /* UIAlertController+additional.swift */; };
@@ -241,8 +241,6 @@
 		6B0B84D21D2B862300DE18B0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		6B0DD9BF1F26AF0500AF32C5 /* ScheduleFavoriteDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFavoriteDelegate.h; sourceTree = "<group>"; };
 		6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WebViewAssets.bundle; sourceTree = "<group>"; };
-		6B11BE7F1D4CBA5800B87EA9 /* UIImage+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+addition.h"; sourceTree = "<group>"; };
-		6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+addition.m"; sourceTree = "<group>"; };
 		6B26D90E1F23E57A003D9CA1 /* UIView+addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+addition.h"; sourceTree = "<group>"; };
 		6B26D90F1F23E57A003D9CA1 /* UIView+addition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+addition.m"; sourceTree = "<group>"; };
 		6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fontawesome-webfont.ttf"; path = "../../FontAwesome/fonts/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
@@ -263,6 +261,7 @@
 		6B4FCB05218E521C0005469F /* UIApplication+addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+addition.swift"; sourceTree = "<group>"; };
 		6B4FCB09218E5A0F0005469F /* MoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreCell.swift; sourceTree = "<group>"; };
 		6B4FCB0B218E5AA80005469F /* MainNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavViewController.swift; sourceTree = "<group>"; };
+		6B4FCB10218EC2380005469F /* UIImage+addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+addition.swift"; sourceTree = "<group>"; };
 		6B50EA2B216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedTabBarControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedNavigationControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA312169377E000CC757 /* UIAlertController+additional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+additional.swift"; sourceTree = "<group>"; };
@@ -654,8 +653,7 @@
 				6B50EA312169377E000CC757 /* UIAlertController+additional.swift */,
 				6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */,
 				6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */,
-				6B11BE7F1D4CBA5800B87EA9 /* UIImage+addition.h */,
-				6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */,
+				6B4FCB10218EC2380005469F /* UIImage+addition.swift */,
 				6B2CD5771D286E6F00793194 /* UIColor+addition.h */,
 				6B2CD5781D286E6F00793194 /* UIColor+addition.m */,
 				28A299331D3D835D00145E76 /* UISegmentedControl+addition.h */,
@@ -1084,6 +1082,7 @@
 				6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m in Sources */,
 				5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */,
 				6B9650C91F2B270500F43B39 /* main.m in Sources */,
+				6B4FCB11218EC2380005469F /* UIImage+addition.swift in Sources */,
 				5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */,
 				6BEB31091F26276D0050759D /* MyTicketViewController.m in Sources */,
 				6B4FCB04218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift in Sources */,
@@ -1112,7 +1111,6 @@
 				280774C51F1AD2F400A5B994 /* ScheduleTableViewController.m in Sources */,
 				5F8B2D2A1D55E02200A68C7D /* SponsorTableViewController.m in Sources */,
 				6B02FD931F220326002AC0D3 /* ScheduleDetailViewController.m in Sources */,
-				6B11BE811D4CBA5800B87EA9 /* UIImage+addition.m in Sources */,
 				6BEB31031F26051E0050759D /* PuzzleViewController.m in Sources */,
 				6B4FCB0C218E5AA80005469F /* MainNavViewController.swift in Sources */,
 				286E28A51D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m in Sources */,
