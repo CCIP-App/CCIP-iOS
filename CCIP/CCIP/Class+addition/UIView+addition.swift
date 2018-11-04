@@ -11,7 +11,7 @@ import UIKit
 
 @objc extension UIView { // DashedLine and linear diagonal gradient
     func addDashedLine(_ color : UIColor) {
-        for layer in self.layer.sublayers! {
+        for layer in self.layer.sublayers ?? [] {
             if (layer.name == Constants.dashlineViewId()) {
                 layer.removeFromSuperlayer();
             }
@@ -42,7 +42,7 @@ import UIKit
         // Set view background linear diagonal gradient
         //   Create the gradient
         var theViewGradient : CAGradientLayer? = nil;
-        for layer in self.layer.sublayers! {
+        for layer in self.layer.sublayers ?? [] {
             if (layer.name == name) {
                 theViewGradient = layer as? CAGradientLayer;
                 layer.removeFromSuperlayer();

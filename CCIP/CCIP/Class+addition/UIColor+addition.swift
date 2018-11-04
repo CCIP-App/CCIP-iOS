@@ -9,6 +9,13 @@
 import Foundation
 import UIKit
 
+@objc public enum UIColorByteMark: Int {
+    case Alpha = 0
+    case Red = 1
+    case Green = 2
+    case Blue = 3
+}
+
 @objc extension UIColor {
     static func colorFrom(_ from: UIColor, to: UIColor, at:Double) -> UIColor {
         let f : CIColor = CIColor.init(cgColor: from.cgColor);
@@ -17,27 +24,33 @@ import UIKit
         let resultGreen = f.green + CGFloat(at) * (t.green - f.green);
         let resultBlue = f.blue + CGFloat(at) * (t.blue - f.blue);
         let resultAlpha = f.alpha + CGFloat(at) * (t.alpha - f.alpha);
-        return UIColor.init(red: resultRed,
-                            green: resultGreen,
-                            blue: resultBlue,
-                            alpha: resultAlpha
-        );
+        return UIColor.init(red: resultRed, green: resultGreen, blue: resultBlue, alpha: resultAlpha);
     }
 
-    static func colorFromHtmlColor(_ htmlColorString: String) -> UIColor {
+    static func getColorByteFromHtmlColor(_ htmlColorString: String, forByte: UIColorByteMark) -> CGFloat {
         assert(htmlColorString.hasPrefix("#"), "Must prefix begin with '#'");
         let length = htmlColorString.count;
         let hasAlpha = length == 9 || length == 5;
-        let singleByteColor = hasAlpha ? length == 5 : length == 4;
-        let r = String(htmlColorString[String.Index(encodedOffset: 1 + ((singleByteColor ? 1 : 2) * (hasAlpha ? 1 : 0)))..<String.Index(encodedOffset: singleByteColor ? 1 : 2)]);
-        let g = String(htmlColorString[String.Index(encodedOffset: 1 + ((singleByteColor ? 1 : 2) * (hasAlpha ? 1 : 0)) + (singleByteColor ? 1 : 2))..<String.Index(encodedOffset: singleByteColor ? 1 : 2)]);
-        let b = String(htmlColorString[String.Index(encodedOffset: 1 + ((singleByteColor ? 1 : 2) * (hasAlpha ? 1 : 0)) + (singleByteColor ? 2 : 4))..<String.Index(encodedOffset: singleByteColor ? 1 : 2)]);
-        let a = hasAlpha ? String(htmlColorString[String.Index(encodedOffset: 1)..<String.Index(encodedOffset: singleByteColor ? 1 : 2)]) : (singleByteColor ? "f" : "ff");
-        return UIColor.init(red: CGFloat(self.hexToIntColor(r, isSingleByteOnly: singleByteColor)),
-                            green: CGFloat(self.hexToIntColor(g, isSingleByteOnly: singleByteColor)),
-                            blue: CGFloat(self.hexToIntColor(b, isSingleByteOnly: singleByteColor)),
-                            alpha: CGFloat(self.hexToIntColor(a, isSingleByteOnly: singleByteColor))
-        );
+        let isSingleByte = hasAlpha ? length == 5 : length == 4;
+
+        let byteLength = isSingleByte ? 1 : 2;
+        let startOffset = 1 + forByte.rawValue * byteLength - (hasAlpha ? 0 : forByte != .Alpha ? byteLength : 0);
+        let endOffset = startOffset + byteLength;
+        let startRange = String.Index(encodedOffset: startOffset);
+        let endRange = String.Index(encodedOffset: endOffset)
+        let byteString = String(htmlColorString[startRange..<endRange]);
+        if (!hasAlpha && forByte == .Alpha) {
+            return CGFloat(self.hexToIntColor(String(repeating: "f", count: byteLength), isSingleByteOnly: isSingleByte));
+        }
+        return CGFloat(self.hexToIntColor(byteString, isSingleByteOnly: isSingleByte));
+    }
+
+    static func colorFromHtmlColor(_ htmlColorString: String) -> UIColor {
+        let r = self.getColorByteFromHtmlColor(htmlColorString, forByte: .Red);
+        let g = self.getColorByteFromHtmlColor(htmlColorString, forByte: .Green);
+        let b = self.getColorByteFromHtmlColor(htmlColorString, forByte: .Blue);
+        let a = self.getColorByteFromHtmlColor(htmlColorString, forByte: .Alpha);
+        return UIColor.init(red: r, green: g, blue: b, alpha: a);
     }
 
     static func hexToIntColor(_ hex : String, isSingleByteOnly:Bool) -> Float {
