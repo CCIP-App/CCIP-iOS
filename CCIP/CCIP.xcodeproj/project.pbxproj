@@ -453,6 +453,15 @@
 			path = ScheduleDetail;
 			sourceTree = "<group>";
 		};
+		6B4FCB0F218EC1B30005469F /* legacy */ = {
+			isa = PBXGroup;
+			children = (
+				6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */,
+				6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */,
+			);
+			path = legacy;
+			sourceTree = "<group>";
+		};
 		6B6F256F1F2B17CD00A6BD2C /* StaffView */ = {
 			isa = PBXGroup;
 			children = (
@@ -641,11 +650,10 @@
 		6BFB831D1F2B188A005DCF00 /* Class+addition */ = {
 			isa = PBXGroup;
 			children = (
+				6B4FCB0F218EC1B30005469F /* legacy */,
 				6B50EA312169377E000CC757 /* UIAlertController+additional.swift */,
 				6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */,
 				6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */,
-				6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */,
-				6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */,
 				6B11BE7F1D4CBA5800B87EA9 /* UIImage+addition.h */,
 				6B11BE801D4CBA5800B87EA9 /* UIImage+addition.m */,
 				6B2CD5771D286E6F00793194 /* UIColor+addition.h */,
