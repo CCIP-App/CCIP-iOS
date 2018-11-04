@@ -72,10 +72,10 @@
     [self.navigationController.navigationBar setTranslucent:NO];
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height);
     UIView *headView = [[UIView alloc] initWithFrame:frame];
-    [headView setGradientColor:[AppDelegate AppConfigColor:@"MoreTitleLeftColor"]
-                            to:[AppDelegate AppConfigColor:@"MoreTitleRightColor"]
-                    startPoint:CGPointMake(-.4f, .5f)
-                       toPoint:CGPointMake(1, .5f)];
+    [headView setGradientColorFrom:[AppDelegate AppConfigColor:@"MoreTitleLeftColor"]
+                                to:[AppDelegate AppConfigColor:@"MoreTitleRightColor"]
+                        startPoint:CGPointMake(-.4f, .5f)
+                           toPoint:CGPointMake(1, .5f)];
     UIImage *naviBackImg = [[headView.layer.sublayers lastObject] toImage];
     [self.navigationController.navigationBar setBackgroundImage:naviBackImg forBarMetrics:UIBarMetricsDefault];
     

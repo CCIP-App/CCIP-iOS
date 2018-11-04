@@ -37,7 +37,7 @@ import UIKit
         self.layer.addSublayer(shapeLayer);
     }
 
-    func setGradientColor(_ from: UIColor?, to: UIColor?, startPoint: CGPoint = CGPoint.zero, toPoint: CGPoint = CGPoint.zero) {
+    func setGradientColor(from: UIColor?, to: UIColor?, startPoint: CGPoint = CGPoint.zero, toPoint: CGPoint = CGPoint.zero) {
         let name : String = "GradientBackground";
         // Set view background linear diagonal gradient
         //   Create the gradient
@@ -65,6 +65,6 @@ import UIKit
     }
 
     func sizeGradientToFit() {
-        self.setGradientColor(nil, to: nil, startPoint: CGPoint.zero, toPoint: CGPoint.zero);
+        self.setGradientColor(from: nil, to: nil, startPoint: CGPoint.zero, toPoint: CGPoint.zero);
     }
 }

@@ -116,10 +116,10 @@
     [self.lbLangText setText:[data objectForKey:@"lang"]];
     [self.lbTimeText setText:timeRange];
     
-    [self.vwHeader setGradientColor:[AppDelegate AppConfigColor:@"ScheduleTitleLeftColor"]
-                                 to:[AppDelegate AppConfigColor:@"ScheduleTitleRightColor"]
-                         startPoint:CGPointMake(1, .5)
-                            toPoint:CGPointMake(-.4, .5)];
+    [self.vwHeader setGradientColorFrom:[AppDelegate AppConfigColor:@"ScheduleTitleLeftColor"]
+                                     to:[AppDelegate AppConfigColor:@"ScheduleTitleRightColor"]
+                             startPoint:CGPointMake(1, .5)
+                                toPoint:CGPointMake(-.4, .5)];
     
     // following constraint for fix the storyboard autolayout broken the navigation bar alignment
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.vwHeader

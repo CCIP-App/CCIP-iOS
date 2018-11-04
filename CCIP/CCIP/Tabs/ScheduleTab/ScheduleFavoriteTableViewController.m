@@ -59,10 +59,10 @@ static NSDateFormatter *formatter_date = nil;
                               self.view.frame.size.width, self.navigationController.navigationBar.frame.origin.y + navigationBarBounds.size.height);
     headView = [UIView new];
     [headView setFrame:frame];
-    [headView setGradientColor:[AppDelegate AppConfigColor:@"ScheduleTitleLeftColor"]
-                            to:[AppDelegate AppConfigColor:@"ScheduleTitleRightColor"]
-                    startPoint:CGPointMake(-.4f, .5f)
-                       toPoint:CGPointMake(1, .5f)];
+    [headView setGradientColorFrom:[AppDelegate AppConfigColor:@"ScheduleTitleLeftColor"]
+                                to:[AppDelegate AppConfigColor:@"ScheduleTitleRightColor"]
+                        startPoint:CGPointMake(-.4f, .5f)
+                           toPoint:CGPointMake(1, .5f)];
     [self.navigationController.navigationBar.superview addSubview:headView];
     [self.navigationController.navigationBar.superview bringSubviewToFront:headView];
     [self.navigationController.navigationBar.superview bringSubviewToFront:self.navigationController.navigationBar];

@@ -63,10 +63,10 @@
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, 239);
     UIView *headView = [UIView new];
     [headView setFrame:frame];
-    [headView setGradientColor:[AppDelegate AppConfigColor:@"ScheduleTitleLeftColor"]
-                            to:[AppDelegate AppConfigColor:@"ScheduleTitleRightColor"]
-                    startPoint:CGPointMake(-.4f, .5f)
-                       toPoint:CGPointMake(1, .5f)];
+    [headView setGradientColorFrom:[AppDelegate AppConfigColor:@"ScheduleTitleLeftColor"]
+                                to:[AppDelegate AppConfigColor:@"ScheduleTitleRightColor"]
+                        startPoint:CGPointMake(-.4f, .5f)
+                           toPoint:CGPointMake(1, .5f)];
     [self.view addSubview:headView];
     [self.view sendSubviewToBack:headView];
 }

@@ -96,10 +96,10 @@
     [self.ivUserPhoto.layer setCornerRadius:self.ivUserPhoto.frame.size.height / 2];
     [self.ivUserPhoto.layer setMasksToBounds:YES];
     
-    [self.ivRectangle setGradientColor:[AppDelegate AppConfigColor:@"CheckinRectangleLeftColor"]
-                                    to:[AppDelegate AppConfigColor:@"CheckinRectangleRightColor"]
-                            startPoint:CGPointMake(-.4f, .5f)
-                               toPoint:CGPointMake(1, .5f)];
+    [self.ivRectangle setGradientColorFrom:[AppDelegate AppConfigColor:@"CheckinRectangleLeftColor"]
+                                        to:[AppDelegate AppConfigColor:@"CheckinRectangleRightColor"]
+                                startPoint:CGPointMake(-.4f, .5f)
+                                   toPoint:CGPointMake(1, .5f)];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(appplicationDidBecomeActive:)
@@ -815,10 +815,10 @@
             if ([scenario objectForKey:@"disabled"]) {
                 [temp setDisabled:[NSNumber numberWithBool:YES]];
                 [temp.checkinBtn setTitle:[scenario objectForKey:@"disabled"] forState:UIControlStateNormal];
-                [temp.checkinBtn setGradientColor:[AppDelegate AppConfigColor:@"DisabledButtonLeftColor"]
-                                               to:[AppDelegate AppConfigColor:@"DisabledButtonRightColor"]
-                                       startPoint:CGPointMake(.2, .8)
-                                          toPoint:CGPointMake(1, .5)];
+                [temp.checkinBtn setGradientColorFrom:[AppDelegate AppConfigColor:@"DisabledButtonLeftColor"]
+                                                   to:[AppDelegate AppConfigColor:@"DisabledButtonRightColor"]
+                                           startPoint:CGPointMake(.2, .8)
+                                              toPoint:CGPointMake(1, .5)];
             } else if ([scenario objectForKey:@"used"]) {
                 [temp setUsed:[NSNumber numberWithBool:YES]];
                 if (isCheckin) {
@@ -828,10 +828,10 @@
                     [temp.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil)
                                      forState:UIControlStateNormal];
                 }
-                [temp.checkinBtn setGradientColor:[AppDelegate AppConfigColor:@"UsedButtonLeftColor"]
-                                               to:[AppDelegate AppConfigColor:@"UsedButtonRightColor"]
-                                       startPoint:CGPointMake(.2, .8)
-                                          toPoint:CGPointMake(1, .5)];
+                [temp.checkinBtn setGradientColorFrom:[AppDelegate AppConfigColor:@"UsedButtonLeftColor"]
+                                                   to:[AppDelegate AppConfigColor:@"UsedButtonRightColor"]
+                                           startPoint:CGPointMake(.2, .8)
+                                              toPoint:CGPointMake(1, .5)];
             } else {
                 [temp setUsed:[NSNumber numberWithBool:NO]];
                 if (isCheckin) {
@@ -841,10 +841,10 @@
                     [temp.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil)
                                      forState:UIControlStateNormal];
                 }
-                [temp.checkinBtn setGradientColor:[AppDelegate AppConfigColor:@"CheckinButtonLeftColor"]
-                                               to:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
-                                       startPoint:CGPointMake(.2, .8)
-                                          toPoint:CGPointMake(1, .5)];
+                [temp.checkinBtn setGradientColorFrom:[AppDelegate AppConfigColor:@"CheckinButtonLeftColor"]
+                                                   to:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
+                                           startPoint:CGPointMake(.2, .8)
+                                              toPoint:CGPointMake(1, .5)];
             }
             [temp.checkinBtn setTintColor:[UIColor whiteColor]];
             
