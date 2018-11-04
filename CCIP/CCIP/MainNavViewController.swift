@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@objc class MainNavViewController : UINavigationController {
+@objcMembers class MainNavViewController : UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad();
         // Do any additional setup after loading the view.

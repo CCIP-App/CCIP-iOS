@@ -534,7 +534,7 @@ Please copy and paste the token into next field or click the token link in the r
         <!--Checkin-->
         <scene sceneID="cs7-eR-RBx">
             <objects>
-                <navigationController id="PgR-sB-d7G" customClass="MainNavViewController" sceneMemberID="viewController">
+                <navigationController id="PgR-sB-d7G" customClass="MainNavViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Checkin" image="AssetsUI.bundle/icon_ios_pin.png" id="0RH-c0-HTe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5Ap-Be-8PP">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
