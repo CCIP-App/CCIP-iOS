@@ -1,5 +1,5 @@
 //
-//  UIView+addition.swift
+//  UIImage+addition.swift
 //  OPass
 //
 //  Created by 腹黒い茶 on 2018/11/4.
