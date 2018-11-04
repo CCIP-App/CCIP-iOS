@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "StatusViewController.h"
-#import "UIColor+addition.h"
 @import AudioToolbox.AudioServices;
 
 @interface StatusViewController()
@@ -165,16 +164,16 @@
         }
     } else if (self.countDown >= (self.maxValue / 2)) {
         color = [UIColor colorFrom:self.view.tintColor
-                                To:[UIColor purpleColor]
-                                At:1 - ((self.countDown - (self.maxValue / 2)) / (self.maxValue - (self.maxValue / 2)))];
+                                to:[UIColor purpleColor]
+                                at:1 - ((self.countDown - (self.maxValue / 2)) / (self.maxValue - (self.maxValue / 2)))];
     } else if (self.countDown >= (self.maxValue / 6)) {
         color = [UIColor colorFrom:[UIColor purpleColor]
-                                To:[UIColor orangeColor]
-                                At:1 - ((self.countDown - (self.maxValue / 6)) / (self.maxValue - ((self.maxValue / 2) + (self.maxValue / 6))))];
+                                to:[UIColor orangeColor]
+                                at:1 - ((self.countDown - (self.maxValue / 6)) / (self.maxValue - ((self.maxValue / 2) + (self.maxValue / 6))))];
     } else if (self.countDown > 0) {
         color = [UIColor colorFrom:[UIColor orangeColor]
-                                To:[UIColor redColor]
-                                At:1 - ((self.countDown - 0) / (self.maxValue - (self.maxValue - (self.maxValue / 6))))];
+                                to:[UIColor redColor]
+                                at:1 - ((self.countDown - 0) / (self.maxValue - (self.maxValue - (self.maxValue / 6))))];
     }
     [self.countdownLabel setTextColor:color];
     [self.countdownLabel setText:[NSString stringWithFormat:@"%0.3f", self.countDown]];

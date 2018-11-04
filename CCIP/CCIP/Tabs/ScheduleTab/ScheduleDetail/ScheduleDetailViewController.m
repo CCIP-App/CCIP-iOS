@@ -10,8 +10,6 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "AppDelegate.h"
 #import "ScheduleDetailViewController.h"
-#import "UIColor+addition.h"
-#import "UIView+addition.h"
 #import "WebServiceEndPoint.h"
 #import "ScheduleAbstractViewCell.h"
 #import "ScheduleSpeakerInfoViewCell.h"
@@ -119,9 +117,9 @@
     [self.lbTimeText setText:timeRange];
     
     [self.vwHeader setGradientColor:[AppDelegate AppConfigColor:@"ScheduleTitleLeftColor"]
-                                 To:[AppDelegate AppConfigColor:@"ScheduleTitleRightColor"]
-                         StartPoint:CGPointMake(1, .5)
-                            ToPoint:CGPointMake(-.4, .5)];
+                                 to:[AppDelegate AppConfigColor:@"ScheduleTitleRightColor"]
+                         startPoint:CGPointMake(1, .5)
+                            toPoint:CGPointMake(-.4, .5)];
     
     // following constraint for fix the storyboard autolayout broken the navigation bar alignment
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.vwHeader

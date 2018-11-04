@@ -7,8 +7,6 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "UIColor+addition.h"
-#import "UIView+addition.h"
 #import "CheckinCardView.h"
 #import "AppDelegate.h"
 #import <AFNetworking/AFNetworking.h>
@@ -69,27 +67,27 @@
                 if ([[responseObject objectForKey:@"message"] isEqual:@"invalid token"]) {
                     NSLog(@"%@", [responseObject objectForKey:@"message"]);
                     [self.checkinBtn setGradientColor:[UIColor redColor]
-                                                   To:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
-                                           StartPoint:CGPointMake(.2, .8)
-                                              ToPoint:CGPointMake(1, .5)];
+                                                   to:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
+                                           startPoint:CGPointMake(.2, .8)
+                                              toPoint:CGPointMake(1, .5)];
                 } else if ([[responseObject objectForKey:@"message"] isEqual:@"has been used"]) {
                     [self showCountdown];
                     NSLog(@"%@", [responseObject objectForKey:@"message"]);
                     [UIView animateWithDuration:.25f
                                      animations:^{
                                          [self.checkinBtn setGradientColor:[UIColor orangeColor]
-                                                                        To:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
-                                                                StartPoint:CGPointMake(.2, .8)
-                                                                   ToPoint:CGPointMake(1, .5)];
+                                                                        to:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
+                                                                startPoint:CGPointMake(.2, .8)
+                                                                   toPoint:CGPointMake(1, .5)];
                                      }
                                      completion:^(BOOL finished) {
                                          if (finished) {
                                              [UIView animateWithDuration:1.75f
                                                               animations:^{
                                                                   [self.checkinBtn setGradientColor:[AppDelegate AppConfigColor:@"UsedButtonLeftColor"]
-                                                                                                 To:[AppDelegate AppConfigColor:@"UsedButtonRightColor"]
-                                                                                         StartPoint:CGPointMake(.2, .8)
-                                                                                            ToPoint:CGPointMake(1, .5)];
+                                                                                                 to:[AppDelegate AppConfigColor:@"UsedButtonRightColor"]
+                                                                                         startPoint:CGPointMake(.2, .8)
+                                                                                            toPoint:CGPointMake(1, .5)];
                                                               }];
                                          }
                                      }];
@@ -98,9 +96,9 @@
                     [UIView animateWithDuration:.25f
                                      animations:^{
                                          [self.checkinBtn setGradientColor:[UIColor orangeColor]
-                                                                        To:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
-                                                                StartPoint:CGPointMake(.2, .8)
-                                                                   ToPoint:CGPointMake(1, .5)];
+                                                                        to:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
+                                                                startPoint:CGPointMake(.2, .8)
+                                                                   toPoint:CGPointMake(1, .5)];
                                          [self.checkinBtn setTitle:NSLocalizedString(@"ExpiredOrNotAvailable", nil)
                                                           forState:UIControlStateNormal];
                                      }
@@ -109,9 +107,9 @@
                                              [UIView animateWithDuration:1.75f
                                                               animations:^{
                                                                   [self.checkinBtn setGradientColor:[AppDelegate AppConfigColor:@"CheckinButtonLeftColor"]
-                                                                                                 To:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
-                                                                                         StartPoint:CGPointMake(.2, .8)
-                                                                                            ToPoint:CGPointMake(1, .5)];
+                                                                                                 to:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
+                                                                                         startPoint:CGPointMake(.2, .8)
+                                                                                            toPoint:CGPointMake(1, .5)];
                                                               }
                                                               completion:^(BOOL finished) {
                                                                   if (finished) {
@@ -128,9 +126,9 @@
                     [self updateScenario:[responseObject objectForKey:@"scenarios"]];
                     [self showCountdown];
                     [self.checkinBtn setGradientColor:[AppDelegate AppConfigColor:@"DisabledButtonLeftColor"]
-                                                   To:[AppDelegate AppConfigColor:@"DisabledButtonRightColor"]
-                                           StartPoint:CGPointMake(.2, .8)
-                                              ToPoint:CGPointMake(1, .5)];
+                                                   to:[AppDelegate AppConfigColor:@"DisabledButtonRightColor"]
+                                           startPoint:CGPointMake(.2, .8)
+                                              toPoint:CGPointMake(1, .5)];
                     if (isCheckin) {
                         [self.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil) forState:UIControlStateNormal];
                         [[AppDelegate appDelegate].checkinView reloadCard];
@@ -153,17 +151,17 @@
         [UIView animateWithDuration:.25f
                          animations:^{
                              [self.checkinBtn setGradientColor:[UIColor orangeColor]
-                                                            To:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
-                                                    StartPoint:CGPointMake(.2, .8)
-                                                       ToPoint:CGPointMake(1, .5)];
+                                                            to:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
+                                                    startPoint:CGPointMake(.2, .8)
+                                                       toPoint:CGPointMake(1, .5)];
                          }
                          completion:^(BOOL finished) {
                              if (finished) {
                                  [UIView animateWithDuration:1.75f animations:^{
                                      [self.checkinBtn setGradientColor:[AppDelegate AppConfigColor:@"DisabledButtonLeftColor"]
-                                                                    To:[AppDelegate AppConfigColor:@"DisabledButtonRightColor"]
-                                                            StartPoint:CGPointMake(.2, .8)
-                                                               ToPoint:CGPointMake(1, .5)];
+                                                                    to:[AppDelegate AppConfigColor:@"DisabledButtonRightColor"]
+                                                            startPoint:CGPointMake(.2, .8)
+                                                               toPoint:CGPointMake(1, .5)];
                                  }];
                              }
                          }];

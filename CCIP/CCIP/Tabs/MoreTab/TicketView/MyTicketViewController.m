@@ -6,7 +6,6 @@
 //  Copyright © 2017年 CPRTeam. All rights reserved.
 //
 
-#import "UIColor+addition.h"
 #import "MyTicketViewController.h"
 #import "AppDelegate.h"
 

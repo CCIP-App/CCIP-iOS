@@ -8,8 +8,6 @@
 
 #import "ScheduleViewController.h"
 #import "AppDelegate.h"
-#import "UIColor+addition.h"
-#import "UIView+addition.h"
 #import "ScheduleTableViewCell.h"
 #import "WebServiceEndPoint.h"
 
@@ -66,9 +64,9 @@
     UIView *headView = [UIView new];
     [headView setFrame:frame];
     [headView setGradientColor:[AppDelegate AppConfigColor:@"ScheduleTitleLeftColor"]
-                            To:[AppDelegate AppConfigColor:@"ScheduleTitleRightColor"]
-                    StartPoint:CGPointMake(-.4f, .5f)
-                       ToPoint:CGPointMake(1, .5f)];
+                            to:[AppDelegate AppConfigColor:@"ScheduleTitleRightColor"]
+                    startPoint:CGPointMake(-.4f, .5f)
+                       toPoint:CGPointMake(1, .5f)];
     [self.view addSubview:headView];
     [self.view sendSubviewToBack:headView];
 }

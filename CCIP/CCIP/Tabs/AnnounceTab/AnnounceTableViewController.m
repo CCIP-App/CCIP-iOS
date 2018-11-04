@@ -12,10 +12,8 @@
 #import <SafariServices/SafariServices.h>
 #import <AFNetworking/AFNetworking.h>
 #import "WebServiceEndPoint.h"
-#import "UIColor+addition.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "UIView+FDCollapsibleConstraints.h"
-#import "UIView+addition.h"
 
 @interface AnnounceTableViewController ()
 
@@ -51,9 +49,9 @@
     UIView *headView = [UIView new];
     [headView setFrame:frame];
     [headView setGradientColor:[AppDelegate AppConfigColor:@"AnnouncementTitleLeftColor"]
-                            To:[AppDelegate AppConfigColor:@"AnnouncementTitleRightColor"]
-                    StartPoint:CGPointMake(-.4f, .5f)
-                       ToPoint:CGPointMake(1, .5f)];
+                            to:[AppDelegate AppConfigColor:@"AnnouncementTitleRightColor"]
+                    startPoint:CGPointMake(-.4f, .5f)
+                       toPoint:CGPointMake(1, .5f)];
     [self.view addSubview:headView];
     [self.view sendSubviewToBack:headView];
     

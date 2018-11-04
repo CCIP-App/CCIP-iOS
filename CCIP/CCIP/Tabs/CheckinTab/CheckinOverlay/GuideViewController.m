@@ -11,7 +11,6 @@
 #import "GuideViewController.h"
 #import <AFNetworking/AFNetworking.h>
 #import "WebServiceEndPoint.h"
-#import "UIColor+addition.h"
 
 @interface GuideViewController ()
 

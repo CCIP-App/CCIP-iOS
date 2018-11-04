@@ -9,8 +9,6 @@
 #import "TelegramController.h"
 #import "AppDelegate.h"
 #import <NJKWebViewProgress/NJKWebViewProgressView.h>
-#import "UIColor+addition.h"
-#import "UIImage+addition.h"
 #import "WebServiceEndPoint.h"
 
 @interface TelegramController()

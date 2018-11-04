@@ -9,7 +9,6 @@
 #import "ScheduleTableViewController.h"
 #import "ScheduleTableViewCell.h"
 #import "ScheduleDetailViewController.h"
-#import "UIColor+addition.h"
 #import "AppDelegate.h"
 
 @interface ScheduleTableViewController ()

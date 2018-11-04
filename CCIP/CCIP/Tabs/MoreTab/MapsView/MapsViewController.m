@@ -8,9 +8,6 @@
 
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "MapsViewController.h"
-#import "UIColor+addition.h"
-#import "UIImage+addition.h"
-#import "UIView+addition.h"
 #import "AppDelegate.h"
 #import <objc/runtime.h>
 
@@ -114,9 +111,9 @@
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height);
     UIView *headView = [[UIView alloc] initWithFrame:frame];
     [headView setGradientColor:[AppDelegate AppConfigColor:@"MapTitleLeftColor"]
-                            To:[AppDelegate AppConfigColor:@"MapTitleRightColor"]
-                    StartPoint:CGPointMake(-.4f, .5f)
-                       ToPoint:CGPointMake(1, .5f)];
+                            to:[AppDelegate AppConfigColor:@"MapTitleRightColor"]
+                    startPoint:CGPointMake(-.4f, .5f)
+                       toPoint:CGPointMake(1, .5f)];
     UIImage *naviBackImg = [[headView.layer.sublayers lastObject] toImage];
     [self.navigationController.navigationBar setBackgroundImage:naviBackImg
                                                   forBarMetrics:UIBarMetricsDefault];

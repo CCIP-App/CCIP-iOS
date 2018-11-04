@@ -12,14 +12,14 @@ import UIKit
 @objc extension UIView { // DashedLine and linear diagonal gradient
     func addDashedLine(_ color : UIColor) {
         for layer in self.layer.sublayers! {
-            if (layer.name == Constants.DashlineViewId) {
+            if (layer.name == Constants.dashlineViewId()) {
                 layer.removeFromSuperlayer();
             }
         }
         self.backgroundColor = UIColor.clear;
 
         let shapeLayer : CAShapeLayer = CAShapeLayer.init();
-        shapeLayer.name = Constants.DashlineViewId;
+        shapeLayer.name = Constants.dashlineViewId();
         shapeLayer.bounds = self.bounds;
         shapeLayer.position = CGPoint.init(x: self.frame.size.width / 2, y: self.frame.size.height / 2);
         shapeLayer.fillColor = UIColor.clear.cgColor;
@@ -29,39 +29,39 @@ import UIKit
         shapeLayer.lineDashPattern = [ 5, 5 ];
 
         let transform : CGAffineTransform = self.transform;
-        let path : CGMutablePathRef = CGPathCreateMutable();
-        CGPathMoveToPoint(path, &transform, 0, 0);
-        CGPathAddLineToPoint(path, &transform, self.frame.size.width, 0);
+        let path : CGMutablePath = CGMutablePath();
+        path.move(to: CGPoint(x: 0, y: 0), transform: transform)
+        path.addLine(to: CGPoint(x: self.frame.size.width, y: 0), transform: transform);
         shapeLayer.path = path;
 
         self.layer.addSublayer(shapeLayer);
     }
 
-    func setGradientColor(_ from : UIColor, to: UIColor, startPoint:CGPoint, toPoint:CGPoint) {
-        var name : String = "GradientBackground";
+    func setGradientColor(_ from: UIColor?, to: UIColor?, startPoint: CGPoint = CGPoint.zero, toPoint: CGPoint = CGPoint.zero) {
+        let name : String = "GradientBackground";
         // Set view background linear diagonal gradient
         //   Create the gradient
-        let theViewGradient : CAGradientLayer? = nil;
+        var theViewGradient : CAGradientLayer? = nil;
         for layer in self.layer.sublayers! {
             if (layer.name == name) {
-                theViewGradient = layer as CAGradientLayer;
+                theViewGradient = layer as? CAGradientLayer;
                 layer.removeFromSuperlayer();
                 break;
             }
         }
         if (theViewGradient == nil) {
-            theViewGradient = CAGradientLayer.layer;
-            theViewGradient.name = name;
-            theViewGradient.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height);
+            theViewGradient = CAGradientLayer.init();
+            theViewGradient!.name = name;
+            theViewGradient!.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height);
         }
-        if (from != nil && to != nil && CGPointZero != startPoint && CGPointZero != toPoint) {
-            theViewGradient.colors = [ from.CGColor, to.CGColor ];
-            theViewGradient.startPoint = startPoint;
-            theViewGradient.endPoint = toPoint;
+        if (from != nil && to != nil && CGPoint.zero != startPoint && CGPoint.zero != toPoint) {
+            theViewGradient!.colors = [ from!.cgColor, to!.cgColor ];
+            theViewGradient!.startPoint = startPoint;
+            theViewGradient!.endPoint = toPoint;
         } else {
-            theViewGradient.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height);
+            theViewGradient!.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height);
         }
-        self.layer.insertSublayer(theViewGradient, at: 0);
+        self.layer.insertSublayer(theViewGradient!, at: 0);
     }
 
     func sizeGradientToFit() {

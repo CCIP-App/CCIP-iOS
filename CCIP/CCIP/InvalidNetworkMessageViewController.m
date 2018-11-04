@@ -8,8 +8,6 @@
 
 #import "InvalidNetworkMessageViewController.h"
 #import "AppDelegate.h"
-#import "UIColor+addition.h"
-#import "UIView+addition.h"
 
 @interface InvalidNetworkMessageViewController ()
 
@@ -32,9 +30,9 @@
     [self.closeButton setTintColor:[UIColor whiteColor]];
     [self.closeButton setBackgroundColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
     [self.closeButton setGradientColor:[AppDelegate AppConfigColor:@"MessageButtonLeftColor"]
-                                    To:[AppDelegate AppConfigColor:@"MessageButtonRightColor"]
-                            StartPoint:CGPointMake(-.4f, .5f)
-                               ToPoint:CGPointMake(1, .5f)];
+                                    to:[AppDelegate AppConfigColor:@"MessageButtonRightColor"]
+                            startPoint:CGPointMake(-.4f, .5f)
+                               toPoint:CGPointMake(1, .5f)];
     CALayer *layer = [self.closeButton.layer.sublayers firstObject];
     [layer setCornerRadius:self.closeButton.frame.size.height / 2];
     [self.closeButton.layer setCornerRadius:self.closeButton.frame.size.height / 2];

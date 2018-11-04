@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "UIColor+addition.h"
 #import "AfterEventViewController.h"
 
 @interface AfterEventViewController ()

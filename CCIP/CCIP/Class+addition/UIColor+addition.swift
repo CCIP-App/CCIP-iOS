@@ -33,14 +33,14 @@ import UIKit
         let g = String(htmlColorString[String.Index(encodedOffset: 1 + ((singleByteColor ? 1 : 2) * (hasAlpha ? 1 : 0)) + (singleByteColor ? 1 : 2))..<String.Index(encodedOffset: singleByteColor ? 1 : 2)]);
         let b = String(htmlColorString[String.Index(encodedOffset: 1 + ((singleByteColor ? 1 : 2) * (hasAlpha ? 1 : 0)) + (singleByteColor ? 2 : 4))..<String.Index(encodedOffset: singleByteColor ? 1 : 2)]);
         let a = hasAlpha ? String(htmlColorString[String.Index(encodedOffset: 1)..<String.Index(encodedOffset: singleByteColor ? 1 : 2)]) : (singleByteColor ? "f" : "ff");
-        return UIColor.init(red: CGFloat(self.HexToIntColor(r, isSingleByteOnly: singleByteColor)),
-                            green: CGFloat(self.HexToIntColor(g, isSingleByteOnly: singleByteColor)),
-                            blue: CGFloat(self.HexToIntColor(b, isSingleByteOnly: singleByteColor)),
-                            alpha: CGFloat(self.HexToIntColor(a, isSingleByteOnly: singleByteColor))
+        return UIColor.init(red: CGFloat(self.hexToIntColor(r, isSingleByteOnly: singleByteColor)),
+                            green: CGFloat(self.hexToIntColor(g, isSingleByteOnly: singleByteColor)),
+                            blue: CGFloat(self.hexToIntColor(b, isSingleByteOnly: singleByteColor)),
+                            alpha: CGFloat(self.hexToIntColor(a, isSingleByteOnly: singleByteColor))
         );
     }
 
-    static func HexToIntColor(_ hex : String, isSingleByteOnly:Bool) -> Float {
+    static func hexToIntColor(_ hex : String, isSingleByteOnly:Bool) -> Float {
         var h : String = hex;
         if (isSingleByteOnly) {
             h = h.appending(hex);

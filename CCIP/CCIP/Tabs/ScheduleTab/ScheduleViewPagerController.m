@@ -11,7 +11,6 @@
 #import "ScheduleTableViewController.h"
 #import "ScheduleDetailViewController.h"
 #import "WebServiceEndPoint.h"
-#import "UIColor+addition.h"
 #import <AFNetworking/AFNetworking.h>
 #import "headers.h"
 

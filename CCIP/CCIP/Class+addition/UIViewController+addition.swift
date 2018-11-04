@@ -22,12 +22,12 @@ import UIKit
 @objc extension UIViewController {
     func topGuideHeight() -> CGFloat {
         var guide : CGFloat = 0.0;
-        if (self.navigationController.navigationBar.translucent) {
+        if (self.navigationController!.navigationBar.isTranslucent) {
             if (self.prefersStatusBarHidden == false) {
                 guide += 20;
             }
-            if (self.navigationController.navigationBarHidden == false) {
-                guide += self.navigationController.navigationBar.bounds.size.height;
+            if (self.navigationController!.isNavigationBarHidden == false) {
+                guide += self.navigationController!.navigationBar.bounds.size.height;
             }
         }
         return guide;
@@ -35,13 +35,13 @@ import UIKit
 
     func bottomGuideHeight() -> CGFloat {
         var guide : CGFloat = 0.0;
-        if (self.tabBarController.tabBar.hidden == false) {
-            guide += self.tabBarController.tabBar.bounds.size.height;
+        if (self.tabBarController!.tabBar.isHidden == false) {
+            guide += self.tabBarController!.tabBar.bounds.size.height;
         }
         return guide;
     }
 
     func isVisible() -> Bool {
-        return self.isViewLoaded && self.view.window;
+        return self.isViewLoaded && (self.view!.window != nil);
     }
 }

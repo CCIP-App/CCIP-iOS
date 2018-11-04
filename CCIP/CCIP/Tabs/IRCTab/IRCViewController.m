@@ -9,9 +9,6 @@
 #import "IRCViewController.h"
 #import "AppDelegate.h"
 #import <NJKWebViewProgress/NJKWebViewProgressView.h>
-#import "UIColor+addition.h"
-#import "UIImage+addition.h"
-#import "UIView+addition.h"
 #import "WebServiceEndPoint.h"
 
 @interface IRCViewController()
@@ -52,9 +49,9 @@
     UIView *headView = [UIView new];
     [headView setFrame:frame];
     [headView setGradientColor:[AppDelegate AppConfigColor:@"IRCTitleLeftColor"]
-                            To:[AppDelegate AppConfigColor:@"IRCTitleRightColor"]
-                    StartPoint:CGPointMake(-.4f, .5f)
-                       ToPoint:CGPointMake(1, .5f)];
+                            to:[AppDelegate AppConfigColor:@"IRCTitleRightColor"]
+                    startPoint:CGPointMake(-.4f, .5f)
+                       toPoint:CGPointMake(1, .5f)];
     [self.view addSubview:headView];
     [self.view sendSubviewToBack:headView];
     

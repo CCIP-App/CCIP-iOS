@@ -11,9 +11,6 @@
 #import "ScheduleTableViewController.h"
 #import "ScheduleTableViewCell.h"
 #import "ScheduleDetailViewController.h"
-#import "UIColor+addition.h"
-#import "UIImage+addition.h"
-#import "UIView+addition.h"
 
 @interface ScheduleFavoriteTableViewController ()
 
@@ -63,9 +60,9 @@ static NSDateFormatter *formatter_date = nil;
     headView = [UIView new];
     [headView setFrame:frame];
     [headView setGradientColor:[AppDelegate AppConfigColor:@"ScheduleTitleLeftColor"]
-                            To:[AppDelegate AppConfigColor:@"ScheduleTitleRightColor"]
-                    StartPoint:CGPointMake(-.4f, .5f)
-                       ToPoint:CGPointMake(1, .5f)];
+                            to:[AppDelegate AppConfigColor:@"ScheduleTitleRightColor"]
+                    startPoint:CGPointMake(-.4f, .5f)
+                       toPoint:CGPointMake(1, .5f)];
     [self.navigationController.navigationBar.superview addSubview:headView];
     [self.navigationController.navigationBar.superview bringSubviewToFront:headView];
     [self.navigationController.navigationBar.superview bringSubviewToFront:self.navigationController.navigationBar];

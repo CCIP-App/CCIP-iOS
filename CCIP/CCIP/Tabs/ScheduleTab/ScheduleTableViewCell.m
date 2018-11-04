@@ -7,7 +7,6 @@
 //
 
 #import "ScheduleTableViewCell.h"
-#import "UIColor+addition.h"
 #import "AppDelegate.h"
 
 @interface ScheduleTableViewCell()
