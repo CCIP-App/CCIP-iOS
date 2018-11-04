@@ -36,7 +36,7 @@ import Foundation
             if (obj.responds(to: #selector(mutableDeepCopy))) {
                 // Try to do a deep mutable copy, if this object supports it
                 cArray[Int(i)] = obj.perform(#selector(mutableDeepCopy));
-            } else if (obj.responds(to: #selector(mutableCopy))) {
+            } else if (obj.responds(to: NSSelectorFromString("mutableCopyWithZone:"))) {
                 // Then try a shallow mutable copy, if the object supports that
                 cArray[Int(i)] = obj.perform(#selector(mutableCopy));
             } else if (obj.responds(to: #selector(deepCopy))) {
