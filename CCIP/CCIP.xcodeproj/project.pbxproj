@@ -53,7 +53,6 @@
 		5FD0498C1D5B041800E7CEAD /* AnnounceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0498B1D5B041800E7CEAD /* AnnounceTableViewCell.m */; };
 		5FECE5AC1D352E8A00242DB4 /* StaffGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5AA1D352E8A00242DB4 /* StaffGroupTableViewController.m */; };
 		5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */; };
-		5FF2B11E1D28B19600665DD9 /* IRCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2B11C1D28B19600665DD9 /* IRCViewController.m */; };
 		6B02FD931F220326002AC0D3 /* ScheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */; };
 		6B02FD961F220371002AC0D3 /* ScheduleAbstractViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD951F220371002AC0D3 /* ScheduleAbstractViewCell.m */; };
 		6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD981F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m */; };
@@ -79,18 +78,24 @@
 		6B4FCB17218ECC230005469F /* UIViewController+addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB16218ECC230005469F /* UIViewController+addition.swift */; };
 		6B4FCB1A218ECE070005469F /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB19218ECE070005469F /* Constants.m */; };
 		6B4FCB1C218ECE9A0005469F /* UIView+addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB1B218ECE9A0005469F /* UIView+addition.swift */; };
+		6B4FCB1E218F5D630005469F /* UIViewController+WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB1D218F5D630005469F /* UIViewController+WebView.swift */; };
+		6B4FCB20218F65D30005469F /* NSObject+className.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB1F218F65D30005469F /* NSObject+className.swift */; };
+		6B4FCB22218F774D0005469F /* IRCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB21218F774D0005469F /* IRCViewController.swift */; };
+		6B4FCB24218F79CB0005469F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB23218F79CB0005469F /* Constants.swift */; };
+		6B4FCB26218F84640005469F /* MapsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB25218F84640005469F /* MapsWebViewController.swift */; };
+		6B4FCB28218F97B60005469F /* TelegramController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB27218F97B60005469F /* TelegramController.swift */; };
+		6B4FCB2A218F98740005469F /* StaffWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB29218F98740005469F /* StaffWebViewController.swift */; };
+		6B4FCB2C218F98840005469F /* SponsorWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB2B218F98840005469F /* SponsorWebViewController.swift */; };
+		6B4FCB2E218F99260005469F /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB2D218F99260005469F /* PuzzleViewController.swift */; };
 		6B50EA2C216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2B216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift */; };
 		6B50EA2E21692210000CC757 /* EmbeddedNavigationControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */; };
 		6B50EA322169377E000CC757 /* UIAlertController+additional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA312169377E000CC757 /* UIAlertController+additional.swift */; };
 		6B670CCD2156E00A0089C9B5 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */; };
-		6B70EF3F204C621200C63E63 /* StaffWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B70EF3A204C5C2E00C63E63 /* StaffWebViewController.m */; };
-		6B70EF41204C621800C63E63 /* SponsorWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B70EF3D204C5C3200C63E63 /* SponsorWebViewController.m */; };
 		6B70EF45204C981700C63E63 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B70EF44204C981700C63E63 /* NetworkExtension.framework */; };
 		6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */; };
 		6B76DF6420B019B200EBEF06 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B76DF6320B019B200EBEF06 /* config.plist */; };
 		6B9650C91F2B270500F43B39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC12A961F2B1B8000B14039 /* main.m */; };
 		6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */; };
-		6BAD226620B1F33100155F3F /* MapsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAD226520B1F2E100155F3F /* MapsWebViewController.m */; };
 		6BB1C4391F1AD4BB00AB072F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
 		6BCAC01F1F1A8FC100032096 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BCAC01D1F1A8FC100032096 /* Interface.storyboard */; };
@@ -102,8 +107,6 @@
 		6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */; };
 		6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE250211D3133FC005FB4B2 /* GuideViewController.m */; };
-		6BEB31031F26051E0050759D /* PuzzleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31011F2601620050759D /* PuzzleViewController.m */; };
-		6BEB31061F26099F0050759D /* TelegramController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31051F26097D0050759D /* TelegramController.m */; };
 		6BEB31091F26276D0050759D /* MyTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31081F26276D0050759D /* MyTicketViewController.m */; };
 		6BEB310D1F262EF30050759D /* TicketQRCodeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */; };
 		6BEB31131F26653D0050759D /* MapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31121F26653D0050759D /* MapsViewController.m */; };
@@ -225,8 +228,6 @@
 		5FECE5AA1D352E8A00242DB4 /* StaffGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupTableViewController.m; sourceTree = "<group>"; };
 		5FECE5F21D353C4900242DB4 /* StaffGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffGroupTableViewCell.h; sourceTree = "<group>"; };
 		5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupTableViewCell.m; sourceTree = "<group>"; };
-		5FF2B11B1D28B19600665DD9 /* IRCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRCViewController.h; sourceTree = "<group>"; };
-		5FF2B11C1D28B19600665DD9 /* IRCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRCViewController.m; sourceTree = "<group>"; };
 		653BE1EC57F9C2E230CAFC52 /* Pods_COSCUP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COSCUP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B023A9A20470F4B00F474F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B02FD911F220326002AC0D3 /* ScheduleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleDetailViewController.h; sourceTree = "<group>"; };
@@ -263,14 +264,19 @@
 		6B4FCB18218ECE070005469F /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		6B4FCB19218ECE070005469F /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		6B4FCB1B218ECE9A0005469F /* UIView+addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addition.swift"; sourceTree = "<group>"; };
+		6B4FCB1D218F5D630005469F /* UIViewController+WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+WebView.swift"; sourceTree = "<group>"; };
+		6B4FCB1F218F65D30005469F /* NSObject+className.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+className.swift"; sourceTree = "<group>"; };
+		6B4FCB21218F774D0005469F /* IRCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRCViewController.swift; sourceTree = "<group>"; };
+		6B4FCB23218F79CB0005469F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6B4FCB25218F84640005469F /* MapsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsWebViewController.swift; sourceTree = "<group>"; };
+		6B4FCB27218F97B60005469F /* TelegramController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramController.swift; sourceTree = "<group>"; };
+		6B4FCB29218F98740005469F /* StaffWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffWebViewController.swift; sourceTree = "<group>"; };
+		6B4FCB2B218F98840005469F /* SponsorWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorWebViewController.swift; sourceTree = "<group>"; };
+		6B4FCB2D218F99260005469F /* PuzzleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewController.swift; sourceTree = "<group>"; };
 		6B50EA2B216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedTabBarControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedNavigationControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA312169377E000CC757 /* UIAlertController+additional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+additional.swift"; sourceTree = "<group>"; };
 		6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
-		6B70EF3A204C5C2E00C63E63 /* StaffWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StaffWebViewController.m; sourceTree = "<group>"; };
-		6B70EF3B204C5C2E00C63E63 /* StaffWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StaffWebViewController.h; sourceTree = "<group>"; };
-		6B70EF3C204C5C3200C63E63 /* SponsorWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SponsorWebViewController.h; sourceTree = "<group>"; };
-		6B70EF3D204C5C3200C63E63 /* SponsorWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SponsorWebViewController.m; sourceTree = "<group>"; };
 		6B70EF44204C981700C63E63 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6B7299AE1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFavoriteTableViewController.h; sourceTree = "<group>"; };
 		6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleFavoriteTableViewController.m; sourceTree = "<group>"; };
@@ -279,8 +285,6 @@
 		6B9348AE1F2428A300F77757 /* CCIP.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CCIP.xcconfig; sourceTree = "<group>"; };
 		6BA1A5201D1EFBDC00D5924C /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
 		6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
-		6BAD226420B1F2E100155F3F /* MapsWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapsWebViewController.h; sourceTree = "<group>"; };
-		6BAD226520B1F2E100155F3F /* MapsWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapsWebViewController.m; sourceTree = "<group>"; };
 		6BB0B6091F1A74DF00AEB437 /* CCIP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CCIP.entitlements; sourceTree = "<group>"; };
 		6BB50FB11D665393002CAD0B /* AfterEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AfterEventViewController.h; sourceTree = "<group>"; };
 		6BB50FB21D665393002CAD0B /* AfterEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AfterEventViewController.m; sourceTree = "<group>"; };
@@ -310,10 +314,6 @@
 		6BD8EF3C1D1D73510094BE95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BE250201D3133FC005FB4B2 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		6BE250211D3133FC005FB4B2 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
-		6BEB31011F2601620050759D /* PuzzleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PuzzleViewController.m; sourceTree = "<group>"; };
-		6BEB31021F2601620050759D /* PuzzleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PuzzleViewController.h; sourceTree = "<group>"; };
-		6BEB31041F26097D0050759D /* TelegramController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TelegramController.h; sourceTree = "<group>"; };
-		6BEB31051F26097D0050759D /* TelegramController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TelegramController.m; sourceTree = "<group>"; };
 		6BEB31071F26276D0050759D /* MyTicketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTicketViewController.h; sourceTree = "<group>"; };
 		6BEB31081F26276D0050759D /* MyTicketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTicketViewController.m; sourceTree = "<group>"; };
 		6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketQRCodeImage.swift; sourceTree = "<group>"; };
@@ -454,6 +454,7 @@
 		6B4FCB0F218EC1B30005469F /* legacy */ = {
 			isa = PBXGroup;
 			children = (
+				6B4FCB23218F79CB0005469F /* Constants.swift */,
 				6B4FCB18218ECE070005469F /* Constants.h */,
 				6B4FCB19218ECE070005469F /* Constants.m */,
 				6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */,
@@ -484,8 +485,7 @@
 		6B70EF38204C5B9C00C63E63 /* StaffWebView */ = {
 			isa = PBXGroup;
 			children = (
-				6B70EF3B204C5C2E00C63E63 /* StaffWebViewController.h */,
-				6B70EF3A204C5C2E00C63E63 /* StaffWebViewController.m */,
+				6B4FCB29218F98740005469F /* StaffWebViewController.swift */,
 			);
 			path = StaffWebView;
 			sourceTree = "<group>";
@@ -493,8 +493,7 @@
 		6B70EF39204C5BAD00C63E63 /* SponsorWebView */ = {
 			isa = PBXGroup;
 			children = (
-				6B70EF3C204C5C3200C63E63 /* SponsorWebViewController.h */,
-				6B70EF3D204C5C3200C63E63 /* SponsorWebViewController.m */,
+				6B4FCB2B218F98840005469F /* SponsorWebViewController.swift */,
 			);
 			path = SponsorWebView;
 			sourceTree = "<group>";
@@ -521,8 +520,7 @@
 		6B7F713E1F25F797004E43CA /* TelegramView */ = {
 			isa = PBXGroup;
 			children = (
-				6BEB31041F26097D0050759D /* TelegramController.h */,
-				6BEB31051F26097D0050759D /* TelegramController.m */,
+				6B4FCB27218F97B60005469F /* TelegramController.swift */,
 			);
 			path = TelegramView;
 			sourceTree = "<group>";
@@ -530,8 +528,7 @@
 		6B7F713F1F25F797004E43CA /* PuzzleView */ = {
 			isa = PBXGroup;
 			children = (
-				6BEB31021F2601620050759D /* PuzzleViewController.h */,
-				6BEB31011F2601620050759D /* PuzzleViewController.m */,
+				6B4FCB2D218F99260005469F /* PuzzleViewController.swift */,
 			);
 			path = PuzzleView;
 			sourceTree = "<group>";
@@ -550,8 +547,7 @@
 		6BAD226320B1F2C900155F3F /* MapsWebView */ = {
 			isa = PBXGroup;
 			children = (
-				6BAD226420B1F2E100155F3F /* MapsWebViewController.h */,
-				6BAD226520B1F2E100155F3F /* MapsWebViewController.m */,
+				6B4FCB25218F84640005469F /* MapsWebViewController.swift */,
 			);
 			path = MapsWebView;
 			sourceTree = "<group>";
@@ -656,6 +652,7 @@
 			children = (
 				6B4FCB0F218EC1B30005469F /* legacy */,
 				6B50EA312169377E000CC757 /* UIAlertController+additional.swift */,
+				6B4FCB1F218F65D30005469F /* NSObject+className.swift */,
 				6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */,
 				6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */,
 				6B4FCB10218EC2380005469F /* UIImage+addition.swift */,
@@ -664,6 +661,7 @@
 				6B4FCB1B218ECE9A0005469F /* UIView+addition.swift */,
 				6B4FCB16218ECC230005469F /* UIViewController+addition.swift */,
 				6B4FCB05218E521C0005469F /* UIApplication+addition.swift */,
+				6B4FCB1D218F5D630005469F /* UIViewController+WebView.swift */,
 			);
 			path = "Class+addition";
 			sourceTree = "<group>";
@@ -739,8 +737,7 @@
 		6BFB83231F2B18FE005DCF00 /* IRCTab */ = {
 			isa = PBXGroup;
 			children = (
-				5FF2B11B1D28B19600665DD9 /* IRCViewController.h */,
-				5FF2B11C1D28B19600665DD9 /* IRCViewController.m */,
+				6B4FCB21218F774D0005469F /* IRCViewController.swift */,
 			);
 			path = IRCTab;
 			sourceTree = "<group>";
@@ -1078,24 +1075,25 @@
 				6B4FCB17218ECC230005469F /* UIViewController+addition.swift in Sources */,
 				6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */,
 				6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m in Sources */,
+				6B4FCB28218F97B60005469F /* TelegramController.swift in Sources */,
+				6B4FCB22218F774D0005469F /* IRCViewController.swift in Sources */,
 				5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */,
+				6B4FCB24218F79CB0005469F /* Constants.swift in Sources */,
 				6B9650C91F2B270500F43B39 /* main.m in Sources */,
 				6B4FCB11218EC2380005469F /* UIImage+addition.swift in Sources */,
 				5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */,
+				6B4FCB20218F65D30005469F /* NSObject+className.swift in Sources */,
 				6BEB31091F26276D0050759D /* MyTicketViewController.m in Sources */,
 				6B4FCB1A218ECE070005469F /* Constants.m in Sources */,
 				6B4FCB04218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift in Sources */,
 				6B02FD961F220371002AC0D3 /* ScheduleAbstractViewCell.m in Sources */,
-				6B70EF41204C621800C63E63 /* SponsorWebViewController.m in Sources */,
 				6B4FCB02218E30B10005469F /* NSObject+DeepCopy.swift in Sources */,
 				28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */,
 				6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */,
 				6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */,
-				6BEB31061F26099F0050759D /* TelegramController.m in Sources */,
 				6B4FCB15218ECACD0005469F /* UISegmentedControl+addition.swift in Sources */,
 				6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */,
 				5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */,
-				5FF2B11E1D28B19600665DD9 /* IRCViewController.m in Sources */,
 				280774C21F1A7B0100A5B994 /* ScheduleViewPagerController.m in Sources */,
 				5FD049891D5AFB9D00E7CEAD /* AnnounceTableViewController.m in Sources */,
 				280774BF1F1A736800A5B994 /* ScheduleViewController.m in Sources */,
@@ -1103,15 +1101,18 @@
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
 				28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */,
 				6B50EA2C216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift in Sources */,
+				6B4FCB2C218F98840005469F /* SponsorWebViewController.swift in Sources */,
 				5FECE5F51D353C4900242DB4 /* StaffGroupTableViewCell.m in Sources */,
 				6B4FCB0A218E5A0F0005469F /* MoreCell.swift in Sources */,
 				6BEB31131F26653D0050759D /* MapsViewController.m in Sources */,
 				5FECE5AC1D352E8A00242DB4 /* StaffGroupTableViewController.m in Sources */,
+				6B4FCB26218F84640005469F /* MapsWebViewController.swift in Sources */,
+				6B4FCB2E218F99260005469F /* PuzzleViewController.swift in Sources */,
 				280774C51F1AD2F400A5B994 /* ScheduleTableViewController.m in Sources */,
 				5F8B2D2A1D55E02200A68C7D /* SponsorTableViewController.m in Sources */,
 				6B4FCB13218EC5330005469F /* UIColor+addition.swift in Sources */,
 				6B02FD931F220326002AC0D3 /* ScheduleDetailViewController.m in Sources */,
-				6BEB31031F26051E0050759D /* PuzzleViewController.m in Sources */,
+				6B4FCB1E218F5D630005469F /* UIViewController+WebView.swift in Sources */,
 				6B4FCB0C218E5AA80005469F /* MainNavViewController.swift in Sources */,
 				286E28A51D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m in Sources */,
 				6B4FCB1C218ECE9A0005469F /* UIView+addition.swift in Sources */,
@@ -1120,14 +1121,13 @@
 				5FD0498C1D5B041800E7CEAD /* AnnounceTableViewCell.m in Sources */,
 				6B50EA2E21692210000CC757 /* EmbeddedNavigationControllerSegue.swift in Sources */,
 				6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */,
+				6B4FCB2A218F98740005469F /* StaffWebViewController.swift in Sources */,
 				6BEB310D1F262EF30050759D /* TicketQRCodeImage.swift in Sources */,
 				5F9171291D325B5E000D0F66 /* StaffViewController.m in Sources */,
 				6B50EA322169377E000CC757 /* UIAlertController+additional.swift in Sources */,
 				6B670CCD2156E00A0089C9B5 /* MarkdownView.swift in Sources */,
-				6BAD226620B1F33100155F3F /* MapsWebViewController.m in Sources */,
 				5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */,
 				280774D11F1AD8D300A5B994 /* ScheduleTableViewCell.m in Sources */,
-				6B70EF3F204C621200C63E63 /* StaffWebViewController.m in Sources */,
 				6B4FCB06218E521C0005469F /* UIApplication+addition.swift in Sources */,
 				28AFCF141D5DD9CA00413927 /* AcknowledgementsViewController.m in Sources */,
 			);
@@ -1422,7 +1422,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "$(ARCHS)";
@@ -1453,7 +1453,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "$(ARCHS)";

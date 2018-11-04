@@ -856,7 +856,7 @@ Please copy and paste the token into next field or click the token link in the r
         <!--View Controller-->
         <scene sceneID="Jxo-LT-w56">
             <objects>
-                <viewController id="Oqq-Rn-AVL" customClass="IRCViewController" sceneMemberID="viewController">
+                <viewController id="Oqq-Rn-AVL" customClass="IRCViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Bze-6z-kJu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1291,7 +1291,7 @@ Label2</string>
         <!--Staff Web View Controller-->
         <scene sceneID="PaY-Wv-gkE">
             <objects>
-                <viewController id="K3D-KG-wwf" customClass="StaffWebViewController" sceneMemberID="viewController">
+                <viewController id="K3D-KG-wwf" customClass="StaffWebViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Oq8-ml-qNK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1331,7 +1331,7 @@ Label2</string>
         <!--Telegram Controller-->
         <scene sceneID="LS4-DU-qoz">
             <objects>
-                <viewController id="ELW-GG-N5v" customClass="TelegramController" sceneMemberID="viewController">
+                <viewController id="ELW-GG-N5v" customClass="TelegramController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n8A-bI-NTZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1566,7 +1566,7 @@ Label2</string>
         <!--Schedule-->
         <scene sceneID="w4n-xs-pWJ">
             <objects>
-                <navigationController id="2iG-px-jKh" customClass="MainNavViewController" sceneMemberID="viewController">
+                <navigationController id="2iG-px-jKh" customClass="MainNavViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Schedule" image="AssetsUI.bundle/icon_ios_topcharts.png" id="s9e-mH-WEn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="geD-Aj-Nie">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -1583,7 +1583,7 @@ Label2</string>
         <!--More-->
         <scene sceneID="0Dy-uW-8fb">
             <objects>
-                <navigationController id="PXh-Tj-uNR" customClass="MainNavViewController" sceneMemberID="viewController">
+                <navigationController id="PXh-Tj-uNR" customClass="MainNavViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="More" image="AssetsUI.bundle/icon_ios_more.png" id="X9A-yE-P7Z"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VT9-lH-fKX">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -1600,7 +1600,7 @@ Label2</string>
         <!--Announce-->
         <scene sceneID="wiL-UG-e7W">
             <objects>
-                <navigationController id="f3M-Kk-0Fr" customClass="MainNavViewController" sceneMemberID="viewController">
+                <navigationController id="f3M-Kk-0Fr" customClass="MainNavViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Announce" image="AssetsUI.bundle/icon_ios_bell.png" id="fAF-SI-dED"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="31P-wZ-JcS">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -1620,7 +1620,7 @@ Label2</string>
         <!--IRC-->
         <scene sceneID="ruP-wo-OxI">
             <objects>
-                <navigationController id="7DG-ad-dxc" customClass="MainNavViewController" sceneMemberID="viewController">
+                <navigationController id="7DG-ad-dxc" customClass="MainNavViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="IRC" image="AssetsUI.bundle/icon_ios_chat.png" id="qtD-2E-7uu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0av-oL-WCV">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -1830,7 +1830,7 @@ Label2</string>
         <!--Puzzle View Controller-->
         <scene sceneID="qYE-8C-ekc">
             <objects>
-                <viewController id="Kgm-MP-Ivo" customClass="PuzzleViewController" sceneMemberID="viewController">
+                <viewController id="Kgm-MP-Ivo" customClass="PuzzleViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="sBQ-jg-dFN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1855,7 +1855,7 @@ Label2</string>
         <!--Sponsor Web View Controller-->
         <scene sceneID="R77-1g-fh1">
             <objects>
-                <viewController id="Tct-oj-JdF" customClass="SponsorWebViewController" sceneMemberID="viewController">
+                <viewController id="Tct-oj-JdF" customClass="SponsorWebViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Xac-yI-uSI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1901,7 +1901,7 @@ Label2</string>
         <!--Maps Web View Controller-->
         <scene sceneID="Plf-YM-IWy">
             <objects>
-                <viewController id="3L9-S1-KDc" customClass="MapsWebViewController" sceneMemberID="viewController">
+                <viewController id="3L9-S1-KDc" customClass="MapsWebViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IFv-J9-Byi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
