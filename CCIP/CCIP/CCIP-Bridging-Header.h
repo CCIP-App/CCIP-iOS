@@ -6,3 +6,4 @@
 #import "CheckinViewController.h"
 #import "headers.h"
 #import "FeedbackType.h"
+#import "AppDelegate.h"

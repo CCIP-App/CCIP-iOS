@@ -90,6 +90,7 @@
 		6B50EA2C216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2B216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift */; };
 		6B50EA2E21692210000CC757 /* EmbeddedNavigationControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */; };
 		6B50EA322169377E000CC757 /* UIAlertController+additional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA312169377E000CC757 /* UIAlertController+additional.swift */; };
+		6B5AABC5220CB02400C01C54 /* MyTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5AABC4220CB02400C01C54 /* MyTicketViewController.swift */; };
 		6B670CCD2156E00A0089C9B5 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */; };
 		6B70EF45204C981700C63E63 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B70EF44204C981700C63E63 /* NetworkExtension.framework */; };
 		6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */; };
@@ -107,7 +108,6 @@
 		6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */; };
 		6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE250211D3133FC005FB4B2 /* GuideViewController.m */; };
-		6BEB31091F26276D0050759D /* MyTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31081F26276D0050759D /* MyTicketViewController.m */; };
 		6BEB310D1F262EF30050759D /* TicketQRCodeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */; };
 		6BEB31131F26653D0050759D /* MapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB31121F26653D0050759D /* MapsViewController.m */; };
 		6BEB31151F26656B0050759D /* Maps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BEB31141F26656B0050759D /* Maps.bundle */; };
@@ -275,6 +275,7 @@
 		6B50EA2B216921EB000CC757 /* EmbeddedTabBarControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedTabBarControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedNavigationControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA312169377E000CC757 /* UIAlertController+additional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+additional.swift"; sourceTree = "<group>"; };
+		6B5AABC4220CB02400C01C54 /* MyTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTicketViewController.swift; sourceTree = "<group>"; };
 		6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
 		6B70EF44204C981700C63E63 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6B7299AE1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFavoriteTableViewController.h; sourceTree = "<group>"; };
@@ -313,8 +314,6 @@
 		6BD8EF3C1D1D73510094BE95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BE250201D3133FC005FB4B2 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		6BE250211D3133FC005FB4B2 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
-		6BEB31071F26276D0050759D /* MyTicketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTicketViewController.h; sourceTree = "<group>"; };
-		6BEB31081F26276D0050759D /* MyTicketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTicketViewController.m; sourceTree = "<group>"; };
 		6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketQRCodeImage.swift; sourceTree = "<group>"; };
 		6BEB31111F26653D0050759D /* MapsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapsViewController.h; sourceTree = "<group>"; };
 		6BEB31121F26653D0050759D /* MapsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapsViewController.m; sourceTree = "<group>"; };
@@ -508,8 +507,7 @@
 		6B7F713D1F25F797004E43CA /* TicketView */ = {
 			isa = PBXGroup;
 			children = (
-				6BEB31071F26276D0050759D /* MyTicketViewController.h */,
-				6BEB31081F26276D0050759D /* MyTicketViewController.m */,
+				6B5AABC4220CB02400C01C54 /* MyTicketViewController.swift */,
 				6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */,
 			);
 			path = TicketView;
@@ -1083,7 +1081,6 @@
 				6B4FCB11218EC2380005469F /* UIImage+addition.swift in Sources */,
 				5FB4D43E1D3A668B005BF382 /* MainTabBarViewController.m in Sources */,
 				6B4FCB20218F65D30005469F /* NSObject+className.swift in Sources */,
-				6BEB31091F26276D0050759D /* MyTicketViewController.m in Sources */,
 				6B4FCB1A218ECE070005469F /* Constants.m in Sources */,
 				6B4FCB04218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift in Sources */,
 				6B02FD961F220371002AC0D3 /* ScheduleAbstractViewCell.m in Sources */,
@@ -1120,6 +1117,7 @@
 				5F0E55D01D574F7F004664FB /* SponsorTableViewCell.m in Sources */,
 				5FD0498C1D5B041800E7CEAD /* AnnounceTableViewCell.m in Sources */,
 				6B50EA2E21692210000CC757 /* EmbeddedNavigationControllerSegue.swift in Sources */,
+				6B5AABC5220CB02400C01C54 /* MyTicketViewController.swift in Sources */,
 				6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */,
 				6B4FCB2A218F98740005469F /* StaffWebViewController.swift in Sources */,
 				6BEB310D1F262EF30050759D /* TicketQRCodeImage.swift in Sources */,
