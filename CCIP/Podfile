@@ -8,7 +8,7 @@ def ccip_pods
     use_frameworks!
     
     # Pods for CCIP
-    pod 'OneSignal', '~> 1.13'
+    pod 'OneSignal', '~> 2.9'
     pod 'UICKeyChainStore', '~> 2.1'
     pod 'Firebase/Core'
     pod 'Firebase/DynamicLinks'

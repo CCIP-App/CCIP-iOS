@@ -87,7 +87,7 @@ PODS:
     - NJKWebViewProgress/ProgressView (= 0.2.3)
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
-  - OneSignal (1.13.3)
+  - OneSignal (2.9.5)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -116,7 +116,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.9.2)
   - MWPhotoBrowser (~> 2.1.2)
   - NJKWebViewProgress (~> 0.2)
-  - OneSignal (~> 1.13)
+  - OneSignal (~> 2.9)
   - SDWebImage (~> 3.8)
   - Shimmer (~> 1.0)
   - STPopup (~> 1.7)
@@ -198,7 +198,7 @@ SPEC CHECKSUMS:
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
-  OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
+  OneSignal: ccdeb961882f8668305e5b694e2cb7cb325fc907
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STPopup: da1167250a01584af7bcccb898653185f223ec46
@@ -207,6 +207,6 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: 8e3248bcd3e5564dcaec162f8755f877fa511ccb
+PODFILE CHECKSUM: a64a65af978973bdea7eb2a6cefc693aec8eddf8
 
-COCOAPODS: 1.6.0.beta.1
+COCOAPODS: 1.6.0

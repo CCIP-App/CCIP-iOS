@@ -1376,6 +1376,10 @@ THE SOFTWARE.</string>
 		<dict>
 			<key>authors</key>
 			<dict>
+				<key>Brad Hesse</key>
+				<string>brad@onesignal.com</string>
+				<key>Joseph Kalash</key>
+				<string>joseph@onesignal.com</string>
 				<key>Josh Kasten</key>
 				<string>josh@onesignal.com</string>
 			</dict>
@@ -1386,7 +1390,7 @@ THE SOFTWARE.</string>
 			<key>licenseText</key>
 			<string>Modified MIT License
 
-Copyright 2015 OneSignal
+Copyright 2017 OneSignal
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -1408,23 +1412,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-
-
-Includes Portions Copyright 2014 StackMob:
-    Copyright 2014 StackMob
-    
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-    
-    http://www.apache.org/licenses/LICENSE-2.0
-    
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
 
 
 Includes portions from DTTJailbreakDetection:
@@ -1468,7 +1455,7 @@ Includes portions from BSMobileProvision:
 			<key>summary</key>
 			<string>OneSignal push notification library for mobile apps.</string>
 			<key>version</key>
-			<string>1.13.3</string>
+			<string>2.9.5</string>
 		</dict>
 		<dict>
 			<key>authors</key>

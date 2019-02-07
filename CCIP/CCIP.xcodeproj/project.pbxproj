@@ -228,7 +228,6 @@
 		5FECE5AA1D352E8A00242DB4 /* StaffGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupTableViewController.m; sourceTree = "<group>"; };
 		5FECE5F21D353C4900242DB4 /* StaffGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffGroupTableViewCell.h; sourceTree = "<group>"; };
 		5FECE5F31D353C4900242DB4 /* StaffGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffGroupTableViewCell.m; sourceTree = "<group>"; };
-		653BE1EC57F9C2E230CAFC52 /* Pods_COSCUP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COSCUP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B023A9A20470F4B00F474F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B02FD911F220326002AC0D3 /* ScheduleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleDetailViewController.h; sourceTree = "<group>"; };
 		6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleDetailViewController.m; sourceTree = "<group>"; };
@@ -403,7 +402,6 @@
 				288D3A7C1D599B6700E4E3A6 /* libc++.tbd */,
 				6B2F9E461D4D18F100047F38 /* QuartzCore.framework */,
 				6B2CD58A1D28780F00793194 /* AudioToolbox.framework */,
-				653BE1EC57F9C2E230CAFC52 /* Pods_COSCUP.framework */,
 				6F0EA2CF879AB2AB4CA09023 /* Pods_OPass.framework */,
 			);
 			name = Frameworks;

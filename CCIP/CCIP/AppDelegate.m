@@ -27,7 +27,6 @@
 
 @property (readwrite, nonatomic) NSArray *availableScenarios;
 @property (readwrite, nonatomic) BOOL isLoginSession;
-@property (strong, readwrite, nonatomic) OneSignal *oneSignal;
 @property (strong, readwrite, nonatomic) SLColorArt *appArt;
 
 @end
@@ -66,16 +65,16 @@
 }
 
 + (void)sendTag:(NSString *)tag value:(NSString *)value {
-    [[[AppDelegate appDelegate] oneSignal] sendTag:tag
-                                             value:value];
+    [OneSignal sendTag:tag
+                 value:value];
 }
 
 + (void)sendTags:(NSDictionary *)keyValuePair {
-    [[[AppDelegate appDelegate] oneSignal] sendTags:keyValuePair];
+    [OneSignal sendTags:keyValuePair];
 }
 
 + (void)sendTagsWithJsonString:(NSString *)jsonString {
-    [[[AppDelegate appDelegate] oneSignal] sendTagsWithJsonString:jsonString];
+    [OneSignal sendTagsWithJsonString:jsonString];
 }
 
 + (void)createNEHC {
@@ -147,7 +146,8 @@
     [UICKeyChainStore removeItemForKey:@"token"];
     [UICKeyChainStore setString:accessToken
                          forKey:@"token"];
-    [[AppDelegate appDelegate].oneSignal sendTag:@"token" value:accessToken];
+    [OneSignal sendTag:@"token"
+                 value:accessToken];
     [[AppDelegate appDelegate] setDefaultShortcutItems];
 }
 
@@ -367,22 +367,42 @@
     
     // Configure OneSignal
     NSString *oneSignalToken = [NSString stringWithString:[AppDelegate AppConfig:@"ogToken"]];
-    self.oneSignal = [[OneSignal alloc]
-                      initWithLaunchOptions:launchOptions
-                      appId:oneSignalToken
-                      handleNotification:^(NSString *message, NSDictionary *additionalData, BOOL isActive) {
-                          NSLog(@"OneSignal Notification opened:\nMessage: %@\nadditionalData: %@", message, additionalData);
-                          if (additionalData) {
-                              // Check for and read any custom values you added to the notification
-                              // This done with the "Additonal Data" section the dashbaord.
-                              // OR setting the 'data' field on our REST API.
-                              NSString *customKey = [additionalData objectForKey:@"customKey"];
-                              if (customKey) {
-                                  NSLog(@"customKey: %@", customKey);
-                              }
-                          }
-                      }];
-    [self.oneSignal enableInAppAlertNotification:YES];
+    
+    id notificationReceiverBlock = ^(OSNotification *notification) {
+        NSLog(@"Received Notification - %@", notification.payload.notificationID);
+    };
+    id notificationOpenedBlock = ^(OSNotificationOpenedResult *result) {
+        // This block gets called when the user reacts to a notification received
+        OSNotificationPayload* payload = result.notification.payload;
+        
+        NSString* messageTitle = @"OneSignal Message";
+        NSString* fullMessage = [payload.body copy];
+        
+        if (payload.additionalData) {
+            
+            if(payload.title)
+                messageTitle = payload.title;
+            
+            NSDictionary* additionalData = payload.additionalData;
+            
+            if (additionalData[@"actionSelected"])
+                fullMessage = [fullMessage stringByAppendingString:[NSString stringWithFormat:@"\nPressed ButtonId:%@", additionalData[@"actionSelected"]]];
+        }
+        
+//        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:messageTitle
+//                                                            message:fullMessage
+//                                                           delegate:self
+//                                                  cancelButtonTitle:@"Close"
+//                                                  otherButtonTitles:nil, nil];
+//        [alertView show];
+        
+    };
+    id onesignalInitSettings = @{kOSSettingsKeyAutoPrompt : @YES};
+    [OneSignal initWithLaunchOptions:launchOptions
+                               appId:oneSignalToken
+          handleNotificationReceived:notificationReceiverBlock
+            handleNotificationAction:notificationOpenedBlock
+                            settings:onesignalInitSettings];
 
     [AppDelegate setAccessToken:[UICKeyChainStore stringForKey:@"token"]];
     NSLog(@"User Token: <%@>", [AppDelegate accessToken]);
