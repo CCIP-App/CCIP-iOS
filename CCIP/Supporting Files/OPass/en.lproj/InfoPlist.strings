@@ -9,5 +9,8 @@
 
 CFBundleDisplayName = "OPass";
 CFBundleName = "OPass";
+NSLocationAlwaysUsageDescription = "Use your location service for check your pass is in validated range to use";
+NSLocationWhenInUseUsageDescription = "Use your location service for check your pass is in validated range to use";
+NSLocationAlwaysAndWhenInUseUsageDescription = "Use your location service for check your pass is in validated range to use";
 NSCameraUsageDescription = "Use your Camera to scan QR Code";
 NSPhotoLibraryUsageDescription = "Read QR Code image from yout Photo Library";

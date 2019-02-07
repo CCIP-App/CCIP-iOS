@@ -91,6 +91,7 @@
 		6B50EA2E21692210000CC757 /* EmbeddedNavigationControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */; };
 		6B50EA322169377E000CC757 /* UIAlertController+additional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA312169377E000CC757 /* UIAlertController+additional.swift */; };
 		6B5AABC5220CB02400C01C54 /* MyTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5AABC4220CB02400C01C54 /* MyTicketViewController.swift */; };
+		6B5AABC7220CBB6700C01C54 /* iBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5AABC6220CBB6700C01C54 /* iBeacon.swift */; };
 		6B670CCD2156E00A0089C9B5 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */; };
 		6B70EF45204C981700C63E63 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B70EF44204C981700C63E63 /* NetworkExtension.framework */; };
 		6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */; };
@@ -276,6 +277,7 @@
 		6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedNavigationControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA312169377E000CC757 /* UIAlertController+additional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+additional.swift"; sourceTree = "<group>"; };
 		6B5AABC4220CB02400C01C54 /* MyTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTicketViewController.swift; sourceTree = "<group>"; };
+		6B5AABC6220CBB6700C01C54 /* iBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeacon.swift; sourceTree = "<group>"; };
 		6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
 		6B70EF44204C981700C63E63 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6B7299AE1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFavoriteTableViewController.h; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 			isa = PBXGroup;
 			children = (
 				6B4FCB0F218EC1B30005469F /* legacy */,
+				6B5AABC6220CBB6700C01C54 /* iBeacon.swift */,
 				6B50EA312169377E000CC757 /* UIAlertController+additional.swift */,
 				6B4FCB1F218F65D30005469F /* NSObject+className.swift */,
 				6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */,
@@ -1075,6 +1078,7 @@
 				6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m in Sources */,
 				6B4FCB28218F97B60005469F /* TelegramController.swift in Sources */,
 				6B4FCB22218F774D0005469F /* IRCViewController.swift in Sources */,
+				6B5AABC7220CBB6700C01C54 /* iBeacon.swift in Sources */,
 				5F91712E1D32990C000D0F66 /* StaffCell.m in Sources */,
 				6B4FCB24218F79CB0005469F /* Constants.swift in Sources */,
 				6B9650C91F2B270500F43B39 /* main.m in Sources */,

@@ -13,6 +13,13 @@
 @implementation Constants
 
 #pragma mark - DEFINE
++ (NSString *)beaconUUID {
+    return BEACON_UUID;
+}
++ (NSString *)beaconID {
+    return BEACON_ID;
+}
+
 + (void)SendFIB:(id)fib {
     SEND_FIB(fib);
 }

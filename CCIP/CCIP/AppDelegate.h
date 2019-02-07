@@ -7,8 +7,9 @@
 //
 
 @import Firebase;
-
+#ifndef IN_BRIDGING_HEADER
 #import <OPass-Swift.h>
+#endif
 #import <UIKit/UIKit.h>
 #import <OneSignal/OneSignal.h>
 #import <ColorArt/UIImage+ColorArt.h>
@@ -30,6 +31,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow * _Null_unspecified window;
+@property (strong, nonatomic) id _Null_unspecified beacon;
 @property (strong, readonly, nonatomic) SLColorArt * _Null_unspecified appArt;
 @property (strong, nonatomic) NSDictionary * _Null_unspecified userInfo;
 @property (readonly, nonatomic) BOOL isLoginSession;

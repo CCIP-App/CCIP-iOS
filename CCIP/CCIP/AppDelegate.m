@@ -414,6 +414,8 @@
     [self setDefaultShortcutItems];
     [AppDelegate createNEHC];
     
+    [self setBeacon:[iBeacon new]];
+
     return YES;
 }
 

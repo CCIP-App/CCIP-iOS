@@ -105,6 +105,11 @@
                                              selector:@selector(appplicationDidBecomeActive:)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
+
+    [[[AppDelegate appDelegate] beacon] checkAvailableAndRequestAuthorization];
+    [[[AppDelegate appDelegate] beacon] registerBeaconRegionWithUUIDWithUuidString:BEACON_UUID
+                                                                        identifier:BEACON_ID
+                                                                         isMonitor:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

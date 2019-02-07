@@ -10,11 +10,17 @@
 
 #define DASHLINE_VIEW_ID    (@"DashedLine")
 
+#define BEACON_UUID         (@"014567cf-d0ef-4b74-8161-47ce52f3df64")
+#define BEACON_ID           (@"OPass-Beacon")
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Constants : NSObject
 
 #pragma mark - DEFINE
++ (NSString *)beaconUUID;
++ (NSString *)beaconID;
+
 + (void)SendFIB:(id)fib;
 
 + (NSString *)WebToken:(id)patten useToken:(id)token;
