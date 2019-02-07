@@ -87,6 +87,11 @@
     return [self whereAny:@[keypath] is:value];
 }
 
+- (NSArray*)where:(NSString*)keypath isNot:(id)value{
+    NSPredicate* predicate      = [NSPredicate predicateWithFormat:@"%K <> %@",keypath, value];
+    return [self filteredArrayUsingPredicate:predicate];
+}
+
 - (NSArray*)whereAny:(NSArray*)keyPaths is:(id)value{
     NSMutableArray* predicates = [NSMutableArray new];
     

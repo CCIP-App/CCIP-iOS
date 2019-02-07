@@ -1,3 +1,15 @@
+# 2019-01-22 -- v3.4.0
+- Move all keychain write operations off the main thread. (#1399)
+- Make keychain operations asynchronous where possible (given the current APIs)
+- Avoid redundant keychain operations when it's been queried and cached before.
+
+# 2018-10-25 -- v3.3.0
+- Fixed a crash caused by keychain operation when accessing default access group. (#1399, #1393)
+- Remove internal APIs that are no longer used.
+
+# 2018-09-25 -- v3.2.2
+- Fixed a crash caused by NSUserDefaults being called on background thread.
+
 # 2018-08-14 -- v3.2.1
 - Fixed an issue that checkin is not cached properly when app first started. (#1561)
 

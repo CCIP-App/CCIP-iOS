@@ -1,6 +1,6 @@
 //
 //  EFQRCodeRecognizer.swift
-//  EyreFree
+//  EFQRCode
 //
 //  Created by EyreFree on 2017/3/28.
 //
@@ -24,8 +24,10 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+#if os(iOS) || os(macOS) || os(tvOS)
 import CoreImage
 
+@objcMembers
 public class EFQRCodeRecognizer: NSObject {
 
     private var image: CGImage? {
@@ -52,13 +54,16 @@ public class EFQRCodeRecognizer: NSObject {
 
     // Get QRCodes from image
     private func getQRString() -> [String]? {
-        guard let finalImage = self.image else {
+        guard let finalImage = image else {
             return nil
         }
-        let result = finalImage.toCIImage().recognizeQRCode(options: [CIDetectorAccuracy : CIDetectorAccuracyHigh])
+        let result = finalImage.toCIImage().recognizeQRCode(options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
         if result.count <= 0 {
-            return finalImage.grayscale()?.toCIImage().recognizeQRCode(options: [CIDetectorAccuracy : CIDetectorAccuracyLow])
+            return finalImage.grayscale()?.toCIImage().recognizeQRCode(
+                options: [CIDetectorAccuracy: CIDetectorAccuracyLow]
+            )
         }
         return result
     }
 }
+#endif

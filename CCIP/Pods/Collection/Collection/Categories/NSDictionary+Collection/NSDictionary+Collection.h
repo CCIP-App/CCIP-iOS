@@ -5,6 +5,7 @@
 + (NSDictionary*)fromData:(NSData*)data;
 + (NSDictionary*)fromString:(NSString*)string;
 - (NSString*)toString;
+- (NSString*)toJson;
 - (NSDictionary*)except:(NSArray*)exceptKeys;
 - (NSDictionary*)only:(NSArray*)keysToKeep;
 - (NSDictionary*)merge:(NSDictionary*)toMerge;

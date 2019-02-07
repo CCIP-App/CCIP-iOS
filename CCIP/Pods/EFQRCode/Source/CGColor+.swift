@@ -1,6 +1,6 @@
 //
 //  CGColor+.swift
-//  EyreFree
+//  EFQRCode
 //
 //  Created by EyreFree on 2017/4/9.
 //
@@ -25,19 +25,28 @@
 //  THE SOFTWARE.
 
 import CoreGraphics
+
+#if os(iOS) || os(tvOS) || os(macOS)
 import CoreImage
+#endif
 
 public extension CGColor {
-
-    public static func EFWhite() -> CGColor {
-        return CIColor.EFWhite().toCGColor()!
+    
+    public static func EFWhite() -> CGColor! {
+        return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
+    }
+    
+    public static func EFBlack() -> CGColor! {
+        return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.0, 0.0, 0.0, 1.0])
     }
 
-    public static func EFBlack() -> CGColor {
-        return CIColor.EFBlack().toCGColor()!
+    public static func fromRGB(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> CGColor? {
+        return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [red, green, blue, alpha])
     }
 
+    #if os(iOS) || os(tvOS) || os(macOS)
     public func toCIColor() -> CIColor {
         return CIColor(cgColor: self)
     }
+    #endif
 }

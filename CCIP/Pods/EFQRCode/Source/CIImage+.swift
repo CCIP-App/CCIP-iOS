@@ -1,6 +1,6 @@
 //
 //  CIImage+.swift
-//  EyreFree
+//  EFQRCode
 //
 //  Created by EyreFree on 2017/3/29.
 //
@@ -24,21 +24,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+#if os(iOS) || os(tvOS) || os(macOS)
 import CoreImage
 
 public extension CIImage {
-
+    
     // Convert CIImage To CGImage
     // http://wiki.hawkguide.com/wiki/Swift:_Convert_between_CGImage,_CIImage_and_UIImage
     public func toCGImage() -> CGImage? {
-        return CIContext().createCGImage(self, from: self.extent)
+        return CIContext().createCGImage(self, from: extent)
     }
-
+    
     // Size
     func size() -> CGSize {
         return self.extent.size
     }
-
+    
     // Get QRCode from image
     func recognizeQRCode(options: [String : Any]? = nil) -> [String] {
         var result = [String]()
@@ -53,7 +54,7 @@ public extension CIImage {
         }
         return result
     }
-
+    
     // Create QR CIImage
     static func generateQRCode(string: String, inputCorrectionLevel: EFInputCorrectionLevel = .m) -> CIImage? {
         let stringData = string.data(using: String.Encoding.utf8)
@@ -65,3 +66,4 @@ public extension CIImage {
         return nil
     }
 }
+#endif

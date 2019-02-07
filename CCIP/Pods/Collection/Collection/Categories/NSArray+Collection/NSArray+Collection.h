@@ -71,6 +71,11 @@
 - (NSArray*)where:(NSString*)keypath is:(id)value;
 
 /**
+ * @return NSArray elements where the keypath is not equal to the value
+ */
+- (NSArray*)where:(NSString*)keypath isNot:(id)value;
+
+/**
  * @return NSArray elements where any of the keypaths is equal to the value
  */
 - (NSArray*)whereAny:(NSArray*)keyPaths is:(id)value;

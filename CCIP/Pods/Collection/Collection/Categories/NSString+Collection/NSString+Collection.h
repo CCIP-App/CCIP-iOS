@@ -14,6 +14,7 @@
 + (BOOL)isEmptyString:(NSString*)string;
 
 - (NSArray*)  explode:(NSString*)delimiter;
+- (NSArray *) explodeWithSet:(NSCharacterSet *)characterSet;
 - (NSString*) initials;
 - (NSNumber*) toNumber;
 - (NSString*) append:(NSString*)append;
@@ -21,8 +22,12 @@
 - (NSString*) substr:(int)from;
 - (NSString*) substr:(int)from length:(int)length;
 
+-(NSString*)limit:(int)length;
+-(NSString*)limit:(int)length ending:(NSString*)ending;
+
 - (NSString*)replace:(NSString*)character with:(NSString*)replace;
 - (NSString*)replaceRegexp:(NSString*)regexp with:(NSString*)replace;
+- (NSString *)replaceCharacterSet:(NSCharacterSet *)characterSet with:(NSString *)replace;
 
 - (NSArray*) split;
 - (NSArray*) split:(int)splitLength;
@@ -40,6 +45,11 @@
 
 - (NSString*) trimLeft;
 - (NSString*) trimRight;
+
+/**
+ Trims using character set
+ */
+- (NSString*) trimWithSet:(NSCharacterSet *) characterSet;
 
 /**
  * Converts @"this text" to @"thisText" or @"a_text" to @"aText"

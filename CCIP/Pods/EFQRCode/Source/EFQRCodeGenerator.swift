@@ -1,6 +1,6 @@
 //
 //  EFQRCodeGenerator.swift
-//  EyreFree
+//  EFQRCode
 //
 //  Created by EyreFree on 17/1/24.
 //
@@ -24,12 +24,18 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+#if os(watchOS)
+import CoreGraphics
+import swift_qrcodejs
+#else
 import CoreImage
+#endif
 
 // EFQRCode+Create
+@objcMembers
 public class EFQRCodeGenerator: NSObject {
 
-    // MARK:- Parameters
+    // MARK: - Parameters
 
     // Content of QR Code
     private var content: String? {
@@ -89,18 +95,25 @@ public class EFQRCodeGenerator: NSObject {
     }
 
     // backgroundColor
-    private var backgroundColor: CIColor = CIColor.EFWhite() {
+    private var backgroundColor: CGColor = CGColor.EFWhite() {
         didSet {
             imageQRCode = nil
         }
     }
     // foregroundColor
-    private var foregroundColor: CIColor = CIColor.EFBlack() {
+    private var foregroundColor: CGColor = CGColor.EFBlack() {
         didSet {
             imageQRCode = nil
         }
     }
-    public func setColors(backgroundColor: CIColor, foregroundColor: CIColor) {
+    #if os(iOS) || os(tvOS) || os(macOS)
+    @nonobjc public func setColors(backgroundColor: CIColor, foregroundColor: CIColor) {
+        self.backgroundColor = backgroundColor.toCGColor() ?? .EFWhite()
+        self.foregroundColor = foregroundColor.toCGColor() ?? .EFBlack()
+    }
+    #endif
+
+    public func setColors(backgroundColor: CGColor, foregroundColor: CGColor) {
         self.backgroundColor = backgroundColor
         self.foregroundColor = foregroundColor
     }
@@ -129,14 +142,17 @@ public class EFQRCodeGenerator: NSObject {
         }
     }
     // Mode of watermark
-    private var watermarkMode: EFWatermarkMode = .scaleToFill {
+    private var watermarkMode: EFWatermarkMode = .scaleAspectFill {
         didSet {
             imageQRCode = nil
         }
     }
-    public func setWatermark(watermark: CGImage?, mode: EFWatermarkMode = .scaleAspectFill) {
+    public func setWatermark(watermark: CGImage?, mode: EFWatermarkMode? = nil) {
         self.watermark = watermark
-        self.watermarkMode = mode
+
+        if let mode = mode {
+            self.watermarkMode = mode
+        }
     }
 
     // Offset of foreground point
@@ -170,7 +186,7 @@ public class EFQRCodeGenerator: NSObject {
     }
 
     // Threshold for binarization (Only for mode binarization).
-    private var binarizationThreshold : CGFloat = 0.5 {
+    private var binarizationThreshold: CGFloat = 0.5 {
         didSet {
             imageQRCode = nil
         }
@@ -184,7 +200,7 @@ public class EFQRCodeGenerator: NSObject {
     private var imageQRCode: CGImage?
     private var minSuitableSize: EFIntSize!
 
-    // MARK:- Init
+    // MARK: - Init
     public init(
         content: String,
         size: EFIntSize = EFIntSize(width: 256, height: 256)
@@ -201,7 +217,7 @@ public class EFQRCodeGenerator: NSObject {
         return imageQRCode
     }
 
-    // MARK:- Draw
+    // MARK: - Draw
     private func createImageQRCode() -> CGImage? {
         var finalSize = self.size
         let finalBackgroundColor = getBackgroundColor()
@@ -218,7 +234,9 @@ public class EFQRCodeGenerator: NSObject {
 
         // If magnification is not nil, reset finalSize
         if let tryMagnification = magnification {
-            finalSize = EFIntSize(width: tryMagnification.width * codes.count, height: tryMagnification.height * codes.count)
+            finalSize = EFIntSize(
+                width: tryMagnification.width * codes.count, height: tryMagnification.height * codes.count
+            )
         }
 
         var result: CGImage?
@@ -242,19 +260,25 @@ public class EFQRCodeGenerator: NSObject {
                 )
                 // Draw QR Code
                 if let tryFrontImage = createQRCodeImageTransparent(
-                    codes: codes, colorBack: finalBackgroundColor, colorFront: finalForegroundColor, size: minSuitableSize
+                    codes: codes,
+                    colorBack: finalBackgroundColor,
+                    colorFront: finalForegroundColor,
+                    size: minSuitableSize
                     ) {
                     context.draw(tryFrontImage, in: CGRect(origin: .zero, size: finalSize.toCGSize()))
                 }
             } else {
                 // Draw background without watermark
-                if let colorCGBack = finalBackgroundColor.toCGColor() {
-                    context.setFillColor(colorCGBack)
-                    context.fill(CGRect(origin: .zero, size: finalSize.toCGSize()))
-                }
+                let colorCGBack = finalBackgroundColor
+                context.setFillColor(colorCGBack)
+                context.fill(CGRect(origin: .zero, size: finalSize.toCGSize()))
+
                 // Draw QR Code
                 if let tryImage = createQRCodeImage(
-                    codes: codes, colorBack: finalBackgroundColor, colorFront: finalForegroundColor, size: minSuitableSize
+                    codes: codes,
+                    colorBack: finalBackgroundColor,
+                    colorFront: finalForegroundColor,
+                    size: minSuitableSize
                     ) {
                     context.draw(tryImage, in: CGRect(origin: .zero, size: finalSize.toCGSize()))
                 }
@@ -294,16 +318,14 @@ public class EFQRCodeGenerator: NSObject {
             if let tryModeImage = result?.grayscale() {
                 result = tryModeImage
             }
-            break
         case .binarization:
             if let tryModeImage = result?.binarization(
                 value: binarizationThreshold,
-                foregroundColor: self.foregroundColor.toCGColor() ?? CGColor.EFBlack(),
-                backgroundColor: self.backgroundColor.toCGColor() ?? CGColor.EFWhite()
+                foregroundColor: foregroundColor,
+                backgroundColor: backgroundColor
                 ) {
                 result = tryModeImage
             }
-            break
         default:
             break
         }
@@ -311,22 +333,40 @@ public class EFQRCodeGenerator: NSObject {
         return result
     }
 
-    private func getForegroundColor() -> CIColor {
+    private func getForegroundColor() -> CGColor {
         if mode == .binarization {
-            return CIColor.EFBlack()
+            return CGColor.EFBlack()
         }
-        return self.foregroundColor
+        return foregroundColor
     }
 
-    private func getBackgroundColor() -> CIColor {
+    private func getBackgroundColor() -> CGColor {
         if mode == .binarization {
-            return CIColor.EFWhite()
+            return CGColor.EFWhite()
         }
-        return self.backgroundColor
+        return backgroundColor
     }
 
     // Create Colorful QR Image
-    private func createQRCodeImage(codes: [[Bool]], colorBack: CIColor, colorFront: CIColor, size: EFIntSize) -> CGImage? {
+    #if os(iOS) || os(tvOS) || os(macOS)
+    private func createQRCodeImage(
+        codes: [[Bool]],
+        colorBack: CIColor,
+        colorFront: CIColor,
+        size: EFIntSize) -> CGImage? {
+        guard let colorCGFront = colorFront.toCGColor() else {
+            return nil
+        }
+        return createQRCodeImage(codes: codes, colorFront: colorCGFront, size: size)
+    }
+    #endif
+
+    private func createQRCodeImage(
+        codes: [[Bool]],
+        colorBack colorCGBack: CGColor? = nil,
+        colorFront colorCGFront: CGColor,
+        size: EFIntSize) -> CGImage? {
+        
         let scaleX = CGFloat(size.width) / CGFloat(codes.count)
         let scaleY = CGFloat(size.height) / CGFloat(codes.count)
         if scaleX < 1.0 || scaleY < 1.0 {
@@ -334,31 +374,45 @@ public class EFQRCodeGenerator: NSObject {
         }
 
         let codeSize = codes.count
-        guard let colorCGFront = colorFront.toCGColor() else {
-            return nil
+        
+        var points = [CGPoint]()
+        if let locations = getAlignmentPatternLocations(version: getVersion(size: codeSize - 2)) {
+            for indexX in locations {
+                for indexY in locations {
+                    let finalX = indexX + 1
+                    let finalY = indexY + 1
+                    if !((finalX == 7 && finalY == 7)
+                        || (finalX == 7 && finalY == (codeSize - 8))
+                        || (finalX == (codeSize - 8) && finalY == 7)) {
+                        points.append(CGPoint(x: finalX, y: finalY))
+                    }
+                }
+            }
         }
+
 
         var result: CGImage?
         if let context = createContext(size: size) {
             // Point
             context.setFillColor(colorCGFront)
             for indexY in 0 ..< codeSize {
-                for indexX in 0 ..< codeSize {
-                    if true == codes[indexX][indexY] {
-                        // CTM-90
-                        let indexXCTM = indexY
-                        let indexYCTM = codeSize - indexX - 1
+                for indexX in 0 ..< codeSize where true == codes[indexX][indexY] {
+                    // CTM-90
+                    let indexXCTM = indexY
+                    let indexYCTM = codeSize - indexX - 1
+                    
+                    let isStaticPoint = isStatic(x: indexX, y: indexY, size: codeSize, APLPoints: points)
 
-                        drawPoint(
-                            context: context,
-                            rect: CGRect(
-                                x: CGFloat(indexXCTM) * scaleX + foregroundPointOffset,
-                                y: CGFloat(indexYCTM) * scaleY + foregroundPointOffset,
-                                width: scaleX - 2 * foregroundPointOffset,
-                                height: scaleY - 2 * foregroundPointOffset
-                            )
-                        )
-                    }
+                    drawPoint(
+                        context: context,
+                        rect: CGRect(
+                            x: CGFloat(indexXCTM) * scaleX + foregroundPointOffset,
+                            y: CGFloat(indexYCTM) * scaleY + foregroundPointOffset,
+                            width: scaleX - 2 * foregroundPointOffset,
+                            height: scaleY - 2 * foregroundPointOffset
+                        ),
+                        isStatic: isStaticPoint
+                    )
                 }
             }
             result = context.makeImage()
@@ -367,7 +421,24 @@ public class EFQRCodeGenerator: NSObject {
     }
 
     // Create Colorful QR Image
-    private func createQRCodeImageTransparent(codes: [[Bool]], colorBack: CIColor, colorFront: CIColor, size: EFIntSize) -> CGImage? {
+    #if os(iOS) || os(tvOS) || os(macOS)
+    private func createQRCodeImageTransparent(
+        codes: [[Bool]],
+        colorBack: CIColor,
+        colorFront: CIColor,
+        size: EFIntSize) -> CGImage? {
+        guard let colorCGBack = colorBack.toCGColor(), let colorCGFront = colorFront.toCGColor() else {
+            return nil
+        }
+        return createQRCodeImageTransparent(codes: codes, colorBack: colorCGBack, colorFront: colorCGFront, size: size)
+    }
+    #endif
+
+    private func createQRCodeImageTransparent(
+        codes: [[Bool]],
+        colorBack colorCGBack: CGColor,
+        colorFront colorCGFront: CGColor,
+        size: EFIntSize) -> CGImage? {
         let scaleX = CGFloat(size.width) / CGFloat(codes.count)
         let scaleY = CGFloat(size.height) / CGFloat(codes.count)
         if scaleX < 1.0 || scaleY < 1.0 {
@@ -383,7 +454,7 @@ public class EFQRCodeGenerator: NSObject {
         let pointWidthMinY = scaleY - 2 * pointMinOffsetY
 
         // Get AlignmentPatternLocations first
-        var points = [EFIntPoint]()
+        var points = [CGPoint]()
         if let locations = getAlignmentPatternLocations(version: getVersion(size: codeSize - 2)) {
             for indexX in locations {
                 for indexY in locations {
@@ -392,14 +463,10 @@ public class EFQRCodeGenerator: NSObject {
                     if !((finalX == 7 && finalY == 7)
                         || (finalX == 7 && finalY == (codeSize - 8))
                         || (finalX == (codeSize - 8) && finalY == 7)) {
-                        points.append(EFIntPoint(x: finalX, y: finalY))
+                        points.append(CGPoint(x: finalX, y: finalY))
                     }
                 }
             }
-        }
-
-        guard let colorCGBack = colorBack.toCGColor(), let colorCGFront = colorFront.toCGColor() else {
-            return nil
         }
 
         var finalImage: CGImage?
@@ -408,64 +475,62 @@ public class EFQRCodeGenerator: NSObject {
             // Back point
             context.setFillColor(colorCGBack)
             for indexY in 0 ..< codeSize {
-                for indexX in 0 ..< codeSize {
-                    if false == codes[indexX][indexY] {
-                        // CTM-90
-                        let indexXCTM = indexY
-                        let indexYCTM = codeSize - indexX - 1
-                        if isStatic(x: indexX, y: indexY, size: codeSize, APLPoints: points) {
-                            drawPoint(
-                                context: context,
-                                rect: CGRect(
-                                    x: CGFloat(indexXCTM) * scaleX,
-                                    y: CGFloat(indexYCTM) * scaleY,
-                                    width: pointWidthOriX,
-                                    height: pointWidthOriY
-                                )
+                for indexX in 0 ..< codeSize where false == codes[indexX][indexY] {
+                    // CTM-90
+                    let indexXCTM = indexY
+                    let indexYCTM = codeSize - indexX - 1
+                    if isStatic(x: indexX, y: indexY, size: codeSize, APLPoints: points) {
+                        drawPoint(
+                            context: context,
+                            rect: CGRect(
+                                x: CGFloat(indexXCTM) * scaleX,
+                                y: CGFloat(indexYCTM) * scaleY,
+                                width: pointWidthOriX,
+                                height: pointWidthOriY
+                            ),
+                            isStatic: true
+                        )
+                    } else {
+                        drawPoint(
+                            context: context,
+                            rect: CGRect(
+                                x: CGFloat(indexXCTM) * scaleX + pointMinOffsetX,
+                                y: CGFloat(indexYCTM) * scaleY + pointMinOffsetY,
+                                width: pointWidthMinX,
+                                height: pointWidthMinY
                             )
-                        } else {
-                            drawPoint(
-                                context: context,
-                                rect: CGRect(
-                                    x: CGFloat(indexXCTM) * scaleX + pointMinOffsetX,
-                                    y: CGFloat(indexYCTM) * scaleY + pointMinOffsetY,
-                                    width: pointWidthMinX,
-                                    height: pointWidthMinY
-                                )
-                            )
-                        }
+                        )
                     }
                 }
             }
             // Front point
             context.setFillColor(colorCGFront)
             for indexY in 0 ..< codeSize {
-                for indexX in 0 ..< codeSize {
-                    if true == codes[indexX][indexY] {
-                        // CTM-90
-                        let indexXCTM = indexY
-                        let indexYCTM = codeSize - indexX - 1
-                        if isStatic(x: indexX, y: indexY, size: codeSize, APLPoints: points) {
-                            drawPoint(
-                                context: context,
-                                rect: CGRect(
-                                    x: CGFloat(indexXCTM) * scaleX + foregroundPointOffset,
-                                    y: CGFloat(indexYCTM) * scaleY + foregroundPointOffset,
-                                    width: pointWidthOriX - 2 * foregroundPointOffset,
-                                    height: pointWidthOriY - 2 * foregroundPointOffset
-                                )
+                for indexX in 0 ..< codeSize where true == codes[indexX][indexY] {
+                    // CTM-90
+                    let indexXCTM = indexY
+                    let indexYCTM = codeSize - indexX - 1
+                    if isStatic(x: indexX, y: indexY, size: codeSize, APLPoints: points) {
+                        drawPoint(
+                            context: context,
+                            rect: CGRect(
+                                x: CGFloat(indexXCTM) * scaleX + foregroundPointOffset,
+                                y: CGFloat(indexYCTM) * scaleY + foregroundPointOffset,
+                                width: pointWidthOriX - 2 * foregroundPointOffset,
+                                height: pointWidthOriY - 2 * foregroundPointOffset
+                            ),
+                            isStatic: true
+                        )
+                    } else {
+                        drawPoint(
+                            context: context,
+                            rect: CGRect(
+                                x: CGFloat(indexXCTM) * scaleX + pointMinOffsetX,
+                                y: CGFloat(indexYCTM) * scaleY + pointMinOffsetY,
+                                width: pointWidthMinX,
+                                height: pointWidthMinY
                             )
-                        } else {
-                            drawPoint(
-                                context: context,
-                                rect: CGRect(
-                                    x: CGFloat(indexXCTM) * scaleX + pointMinOffsetX,
-                                    y: CGFloat(indexYCTM) * scaleY + pointMinOffsetY,
-                                    width: pointWidthMinX,
-                                    height: pointWidthMinY
-                                )
-                            )
-                        }
+                        )
                     }
                 }
             }
@@ -476,9 +541,25 @@ public class EFQRCodeGenerator: NSObject {
     }
 
     // Pre
-    private func drawWatermarkImage(context: CGContext, image: CGImage, colorBack: CIColor, mode: EFWatermarkMode, size: CGSize) {
+    #if os(iOS) || os(tvOS) || os(macOS)
+    private func drawWatermarkImage(
+        context: CGContext,
+        image: CGImage,
+        colorBack: CIColor,
+        mode: EFWatermarkMode,
+        size: CGSize) {
+        drawWatermarkImage(context: context, image: image, colorBack: colorBack.toCGColor(), mode: mode, size: size)
+    }
+    #endif
+
+    private func drawWatermarkImage(
+        context: CGContext,
+        image: CGImage,
+        colorBack: CGColor?,
+        mode: EFWatermarkMode,
+        size: CGSize) {
         // BGColor
-        if let tryColor = colorBack.toCGColor() {
+        if let tryColor = colorBack {
             context.setFillColor(tryColor)
             context.fill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
         }
@@ -503,49 +584,38 @@ public class EFQRCodeGenerator: NSObject {
         case .bottom:
             finalSize = imageSize
             finalOrigin = CGPoint(x: (size.width - imageSize.width) / 2.0, y: 0)
-            break
         case .bottomLeft:
             finalSize = imageSize
             finalOrigin = CGPoint(x: 0, y: 0)
-            break
         case .bottomRight:
             finalSize = imageSize
             finalOrigin = CGPoint(x: size.width - imageSize.width, y: 0)
-            break
         case .center:
             finalSize = imageSize
             finalOrigin = CGPoint(x: (size.width - imageSize.width) / 2.0, y: (size.height - imageSize.height) / 2.0)
-            break
         case .left:
             finalSize = imageSize
             finalOrigin = CGPoint(x: 0, y: (size.height - imageSize.height) / 2.0)
-            break
         case .right:
             finalSize = imageSize
             finalOrigin = CGPoint(x: size.width - imageSize.width, y: (size.height - imageSize.height) / 2.0)
-            break
         case .top:
             finalSize = imageSize
             finalOrigin = CGPoint(x: (size.width - imageSize.width) / 2.0, y: size.height - imageSize.height)
-            break
         case .topLeft:
             finalSize = imageSize
             finalOrigin = CGPoint(x: 0, y: size.height - imageSize.height)
-            break
         case .topRight:
             finalSize = imageSize
             finalOrigin = CGPoint(x: size.width - imageSize.width, y: size.height - imageSize.height)
-            break
         case .scaleAspectFill:
             let scale = max(size.width / imageSize.width, size.height / imageSize.height)
             finalSize = CGSize(width: imageSize.width * scale, height: imageSize.height * scale)
             finalOrigin = CGPoint(x: (size.width - finalSize.width) / 2.0, y: (size.height - finalSize.height) / 2.0)
-            break
         case .scaleAspectFit:
             let scale = max(imageSize.width / size.width, imageSize.height / size.height)
             finalSize = CGSize(width: imageSize.width / scale, height: imageSize.height / scale)
             finalOrigin = CGPoint(x: (size.width - finalSize.width) / 2.0, y: (size.height - finalSize.height) / 2.0)
-            break
         default:
             break
         }
@@ -564,12 +634,43 @@ public class EFQRCodeGenerator: NSObject {
             )
         )
     }
+    
+    private func fillDiamond(context: CGContext, rect: CGRect) {
+        // shrink rect edge
+        let drawingRect = rect.insetBy(dx: -2, dy: -2)
+        
+        // create path
+        let path = CGMutablePath()
+        // Bezier Control Point
+        let controlPoint = CGPoint(x: drawingRect.midX , y: drawingRect.midY)
+        // Bezier Start Point
+        let startPoint = CGPoint(x: drawingRect.minX, y: drawingRect.midY)
+        // the other point of diamond
+        let otherPoints = [CGPoint(x: drawingRect.midX, y: drawingRect.maxY),
+                      CGPoint(x: drawingRect.maxX, y: drawingRect.midY),
+                      CGPoint(x: drawingRect.midX, y: drawingRect.minY)]
+        path.move(to: startPoint)
+        for point in otherPoints {
+            path.addQuadCurve(to: point, control: controlPoint)
+        }
+        path.addQuadCurve(to: startPoint, control: controlPoint)
+        context.addPath(path)
+        context.fillPath()
 
-    private func drawPoint(context: CGContext, rect: CGRect) {
-        if pointShape == .circle {
-            context.fillEllipse(in: rect)
-        } else {
-            context.fill(rect)
+    }
+
+    private func drawPoint(context: CGContext, rect: CGRect, isStatic: Bool = false) {
+        switch pointShape {
+            case .circle:
+                context.fillEllipse(in: rect)
+            case .diamond:
+                if isStatic {
+                    context.fill(rect)
+                } else {
+                    fillDiamond(context: context, rect: rect)
+                }
+            default:
+                context.fill(rect)
         }
     }
 
@@ -581,12 +682,13 @@ public class EFQRCodeGenerator: NSObject {
         )
     }
 
-    // MARK:- Data
+    #if os(iOS) || os(tvOS) || os(macOS)
+    // MARK: - Data
     private func getPixels() -> [[EFUIntPixel]]? {
-        guard let finalContent = self.content else {
+        guard let finalContent = content else {
             return nil
         }
-        let finalInputCorrectionLevel = self.inputCorrectionLevel
+        let finalInputCorrectionLevel = inputCorrectionLevel
 
         guard let tryQRImagePixels = CIImage.generateQRCode(
             string: finalContent, inputCorrectionLevel: finalInputCorrectionLevel
@@ -596,6 +698,7 @@ public class EFQRCodeGenerator: NSObject {
         }
         return tryQRImagePixels
     }
+    #endif
 
     // Get QRCodes from pixels
     private func getCodes(pixels: [[EFUIntPixel]]) -> [[Bool]] {
@@ -618,19 +721,29 @@ public class EFQRCodeGenerator: NSObject {
             return tryImageCodes
         }
 
-        // Get pixels from image
-        guard let tryQRImagePixels = getPixels() else {
+        func fetchPixels() -> [[Bool]]? {
+            #if os(iOS) || os(macOS) || os(tvOS)
+            // Get pixels from image
+            guard let tryQRImagePixels = getPixels() else {
+                return nil
+            }
+            // Get QRCodes from image
+            return getCodes(pixels: tryQRImagePixels)
+            #else
+            let level = inputCorrectionLevel.qrErrorCorrectLevel
+            if let finalContent = content {
+                return QRCode(finalContent, errorCorrectLevel: level, withBorder: true)?.imageCodes
+            }
             return nil
+            #endif
         }
 
-        // Get QRCodes from image
-        imageCodes = getCodes(pixels: tryQRImagePixels)
-
+        imageCodes = fetchPixels()
         return imageCodes
     }
 
     // Special Points of QRCode
-    private func isStatic(x: Int, y: Int, size: Int, APLPoints: [EFIntPoint]) -> Bool {
+    private func isStatic(x: Int, y: Int, size: Int, APLPoints: [CGPoint]) -> Bool {
         // Empty border
         if x == 0 || y == 0 || x == (size - 1) || y == (size - 1) {
             return true
@@ -648,7 +761,7 @@ public class EFQRCodeGenerator: NSObject {
 
         // Alignment Patterns
         for point in APLPoints {
-            if x >= (point.x - 2) && x <= (point.x + 2) && y >= (point.y - 2) && y <= (point.y + 2) {
+            if x >= Int(point.x - 2) && x <= Int(point.x + 2) && y >= Int(point.y - 2) && y <= Int(point.y + 2) {
                 return true
             }
         }
@@ -693,18 +806,16 @@ public class EFQRCodeGenerator: NSObject {
         guard let codes = generateCodes() else {
             return nil
         }
-        let finalWatermark = self.watermark
+        let finalWatermark = watermark
 
         let baseMagnification = max(1, Int(size / CGFloat(codes.count)))
-        for offset in [Int(0), 1, 2, 3] {
+        for offset in [0, 1, 2, 3] {
             let tempMagnification = baseMagnification + offset
             if CGFloat(Int(tempMagnification) * codes.count) >= size {
                 if finalWatermark == nil {
                     return tempMagnification
-                } else {
-                    if tempMagnification % 3 == 0 {
-                        return tempMagnification
-                    }
+                } else if tempMagnification % 3 == 0 {
+                    return tempMagnification
                 }
             }
         }
@@ -715,7 +826,7 @@ public class EFQRCodeGenerator: NSObject {
         guard let codes = generateCodes() else {
             return nil
         }
-        let finalWatermark = self.watermark
+        let finalWatermark = watermark
 
         let baseMagnification = max(1, Int(size / CGFloat(codes.count)))
         for offset in [0, -1, -2, -3] {
@@ -725,11 +836,9 @@ public class EFQRCodeGenerator: NSObject {
             }
             if CGFloat(tempMagnification * codes.count) <= size {
                 if finalWatermark == nil {
-                    return Int(tempMagnification)
-                } else {
-                    if tempMagnification % 3 == 0 {
-                        return Int(tempMagnification)
-                    }
+                    return tempMagnification
+                } else if tempMagnification % 3 == 0 {
+                    return tempMagnification
                 }
             }
         }
@@ -741,7 +850,7 @@ public class EFQRCodeGenerator: NSObject {
         guard let codes = generateCodes() else {
             return nil
         }
-        
+
         let baseSuitableSize = Int(size)
         for offset in 0...codes.count {
             let tempSuitableSize = baseSuitableSize + offset

@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "EFQRCode.h"
 
 FOUNDATION_EXPORT double EFQRCodeVersionNumber;
 FOUNDATION_EXPORT const unsigned char EFQRCodeVersionString[];

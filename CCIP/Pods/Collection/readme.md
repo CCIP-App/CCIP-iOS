@@ -33,6 +33,7 @@ Copy the category files to your project or just
 `doesntContain:blockChecker` 
 `where:keyPath:like` 
 `where:keyPath:is` 
+`where:keyPath:isNot` 
 `whereAny:keyPaths:like` 
 `whereAny:keyPaths:is` 
 `whereNull` 

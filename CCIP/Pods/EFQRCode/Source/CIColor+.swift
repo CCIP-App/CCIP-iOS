@@ -1,6 +1,6 @@
 //
 //  CIColor+.swift
-//  EyreFree
+//  EFQRCode
 //
 //  Created by EyreFree on 2017/4/9.
 //
@@ -24,6 +24,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+#if os(iOS) || os(tvOS) || os(macOS)
 import CoreImage
 
 public extension CIColor {
@@ -37,6 +38,7 @@ public extension CIColor {
     }
 
     public func toCGColor() -> CoreImage.CGColor? {
-        return CGColor(colorSpace: self.colorSpace, components: self.components)
+        return CGColor(colorSpace: colorSpace, components: components)
     }
 }
+#endif

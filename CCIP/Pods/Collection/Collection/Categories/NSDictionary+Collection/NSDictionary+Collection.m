@@ -25,6 +25,12 @@
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
+-(NSString*)toJson{
+    NSError * err;
+    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:self options:0 error:&err];
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
+
 - (NSDictionary*)except:(NSArray*)exceptKeys{
     NSMutableDictionary* result = self.mutableCopy;
     [exceptKeys each:^(NSString* key) {

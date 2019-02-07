@@ -15,58 +15,65 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - BLKFlexibleHeightBar (1.0.2)
-  - Collection (1.10.3)
+  - Collection (1.10.8)
   - ColorArt (0.1.1)
   - CPDAcknowledgements (1.0.0)
   - DACircularProgress (2.3.1)
-  - Down (0.5.2)
-  - EFQRCode (1.2.7)
-  - Firebase/Core (5.8.1):
+  - Down (0.6.2)
+  - EFQRCode (4.5.0):
+    - swift_qrcodejs (~> 1.0.1)
+  - Firebase/Core (5.16.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.1.4)
-  - Firebase/CoreOnly (5.8.1):
-    - FirebaseCore (= 5.1.3)
-  - Firebase/DynamicLinks (5.8.1):
-    - Firebase/Core
-    - FirebaseDynamicLinks (= 3.0.2)
-  - FirebaseAnalytics (5.1.4):
-    - FirebaseCore (~> 5.1)
-    - FirebaseInstanceID (~> 3.2)
-    - GoogleAppMeasurement (~> 5.1)
+    - FirebaseAnalytics (= 5.5.0)
+  - Firebase/CoreOnly (5.16.0):
+    - FirebaseCore (= 5.2.0)
+  - Firebase/DynamicLinks (5.16.0):
+    - Firebase/CoreOnly
+    - FirebaseDynamicLinks (= 3.4.0)
+  - FirebaseAnalytics (5.5.0):
+    - FirebaseCore (~> 5.2)
+    - FirebaseInstanceID (~> 3.4)
+    - GoogleAppMeasurement (= 5.5.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - FirebaseCore (5.1.3):
+  - FirebaseAnalyticsInterop (1.1.0)
+  - FirebaseCore (5.2.0):
     - GoogleUtilities/Logger (~> 5.2)
-  - FirebaseDynamicLinks (3.0.2):
+  - FirebaseDynamicLinks (3.4.0):
     - FirebaseAnalytics (~> 5.1)
-  - FirebaseInstanceID (3.2.1):
-    - FirebaseCore (~> 5.1)
-    - GoogleUtilities/Environment (~> 5.2)
-  - FSPagerView (0.7.2)
-  - GoogleAppMeasurement (5.1.4):
+    - FirebaseAnalyticsInterop (~> 1.0)
+    - FirebaseCore (~> 5.2)
+  - FirebaseInstanceID (3.4.0):
+    - FirebaseCore (~> 5.2)
+    - GoogleUtilities/Environment (~> 5.3)
+    - GoogleUtilities/UserDefaults (~> 5.3)
+  - FSPagerView (0.8.2)
+  - GoogleAppMeasurement (5.5.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - GoogleUtilities/AppDelegateSwizzler (5.3.0):
+  - GoogleUtilities/AppDelegateSwizzler (5.3.7):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (5.3.0)
-  - GoogleUtilities/Logger (5.3.0):
+  - GoogleUtilities/Environment (5.3.7)
+  - GoogleUtilities/Logger (5.3.7):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (5.3.0):
+  - GoogleUtilities/MethodSwizzler (5.3.7):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (5.3.0):
+  - GoogleUtilities/Network (5.3.7):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (5.3.0)"
-  - GoogleUtilities/Reachability (5.3.0):
+  - "GoogleUtilities/NSData+zlib (5.3.7)"
+  - GoogleUtilities/Reachability (5.3.7):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (5.3.7):
     - GoogleUtilities/Logger
   - iCarousel (1.8.3)
   - ICViewPager (1.5.1)
@@ -77,11 +84,11 @@ PODS:
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
     - "SDWebImage (!= 3.7.2, ~> 3.7)"
-  - nanopb (0.3.8):
-    - nanopb/decode (= 0.3.8)
-    - nanopb/encode (= 0.3.8)
-  - nanopb/decode (0.3.8)
-  - nanopb/encode (0.3.8)
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
   - NJKWebViewProgress (0.2.3):
     - NJKWebViewProgress/Core (= 0.2.3)
     - NJKWebViewProgress/ProgressView (= 0.2.3)
@@ -93,8 +100,9 @@ PODS:
   - SDWebImage/Core (3.8.2)
   - Shimmer (1.0.2)
   - STPopup (1.8.3)
-  - thenPromise (4.2.0)
-  - UICKeyChainStore (2.1.1)
+  - swift_qrcodejs (1.0.1)
+  - thenPromise (4.2.1)
+  - UICKeyChainStore (2.1.2)
   - "UITableView+FDTemplateLayoutCell (1.6)"
   - "UIView+FDCollapsibleConstraints (1.1)"
 
@@ -105,7 +113,7 @@ DEPENDENCIES:
   - ColorArt (= 0.1.1)
   - CPDAcknowledgements (~> 1.0)
   - Down
-  - EFQRCode (~> 1.2.7)
+  - EFQRCode (~> 4.5)
   - Firebase/Core
   - Firebase/DynamicLinks
   - FSPagerView
@@ -113,7 +121,7 @@ DEPENDENCIES:
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
   - iRate (~> 1.11)
   - iVersion (~> 1.11)
-  - MBProgressHUD (~> 0.9.2)
+  - MBProgressHUD (~> 0.9)
   - MWPhotoBrowser (~> 2.1.2)
   - NJKWebViewProgress (~> 0.2)
   - OneSignal (~> 2.9)
@@ -137,6 +145,7 @@ SPEC REPOS:
     - EFQRCode
     - Firebase
     - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
     - FirebaseCore
     - FirebaseDynamicLinks
     - FirebaseInstanceID
@@ -154,6 +163,7 @@ SPEC REPOS:
     - SDWebImage
     - Shimmer
     - STPopup
+    - swift_qrcodejs
     - thenPromise
     - UICKeyChainStore
     - "UIView+FDCollapsibleConstraints"
@@ -176,37 +186,39 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   BLKFlexibleHeightBar: b27572a69633d8e33f1f2bbc486b04d8e86f742d
-  Collection: ea0d410a38b1988d20298e49ea0c008e1ee7fa5e
+  Collection: f6a99b6eab9b7da43213177e6bd6b389ad50512b
   ColorArt: de0ffb63da4acdde8e234ded62e200236ca3e7e4
   CPDAcknowledgements: 6e15e71849ba4ad5e8a17a0bb9d20938ad23bac8
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
-  Down: 587371ad58002b06023d9c602519216862c3acbc
-  EFQRCode: f283d7ce75a7780756a5e2a9c39077292d6e7596
-  Firebase: a870ed114d769b424021a0c8ddb0c86c3250a0c5
-  FirebaseAnalytics: 361594968a84a04d9598ef0f2e769d3735cd03de
-  FirebaseCore: 27bd80e5bfaaf9552a1f5cacb4c7e8bb925bab22
-  FirebaseDynamicLinks: eb41fb20677b0a6e944b47f45cbe59f388e9e5cc
-  FirebaseInstanceID: ea5af6920d0a4a29b40459d055bebe4a6c1333c4
-  FSPagerView: 7515f63c424da71623d299d4fbbfb3dd884642ff
-  GoogleAppMeasurement: 7d2552cea4e12d09ce737ef0441887a746585ff3
-  GoogleUtilities: 760ccb53b7c7f40f9c02d8c241f76f841a7a6162
+  Down: 8c59a03cb229ef28dfa774b2132da860f3dee0ac
+  EFQRCode: 842f431e660da841f518993af8f4cbd275601d84
+  Firebase: 749a8ff4962f9d8c79dda1966de20f6f77583d67
+  FirebaseAnalytics: d35d47c03c50c73c14a7fd31463c5775843e78a9
+  FirebaseAnalyticsInterop: e5f21be9af6548372e2f0815834ff909bff395a2
+  FirebaseCore: ea2d1816723ef21492b8e9113303e1350db5e08c
+  FirebaseDynamicLinks: 83a0071c95ad715bc324fcb8f51028d5b6a58af0
+  FirebaseInstanceID: 97ea7a5dca9afd72c79bfcdddb7a44aa1cbb42a1
+  FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
+  GoogleAppMeasurement: 621f3bc6211d5ba548debe01fafad30cf5ab6859
+  GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   ICViewPager: c1278b67eceac7252d48252829c3c703285dfb76
   iRate: 4fc69958788624545e5d050c8ffd20884013c3f1
   iVersion: 3a93a89259eb3b52b0a8ba52c46a0027fa6b4d30
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
-  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   OneSignal: ccdeb961882f8668305e5b694e2cb7cb325fc907
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STPopup: da1167250a01584af7bcccb898653185f223ec46
-  thenPromise: e46ebb9a45c23cbaa681eeeee3f59929a21c639d
-  UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
+  swift_qrcodejs: c181fe5c849d30c699546a23762d7e3dd143ab37
+  thenPromise: 8cf34fe40b0c877338feb544d64265d184d8af7f
+  UICKeyChainStore: 85db518bb1d294366d15ec9b92a416c4e670518f
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: a64a65af978973bdea7eb2a6cefc693aec8eddf8
+PODFILE CHECKSUM: 74f067064790b77109cc6eb4a1655d4bb322568e
 
 COCOAPODS: 1.6.0
