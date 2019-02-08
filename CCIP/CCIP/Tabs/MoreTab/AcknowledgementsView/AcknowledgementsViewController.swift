@@ -14,7 +14,7 @@ import AFNetworking
 import then
 import MBProgressHUD
 
-@objc class AcknowledgementsViewController : UIViewController {
+class AcknowledgementsViewController : UIViewController {
     var githubRepoLink: String?
     var progress: MBProgressHUD = MBProgressHUD.init()
 
@@ -63,7 +63,7 @@ import MBProgressHUD
 
             self.githubRepoLink = Constants.GitHubRepo("CCIP-App/CCIP-iOS")
             if (self.githubRepoLink != nil) {
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: Constants.AssertImage("AssetsUI", "ToolButton-GitHub_Filled"), landscapeImagePhone: nil, style: .plain, target: self, action: Selector(("openGithubRepo")))
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: Constants.AssertImage("AssetsUI", "ToolButton-GitHub_Filled"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(AcknowledgementsViewController.openGithubRepo))
             }
 
             let bundle = Bundle.main

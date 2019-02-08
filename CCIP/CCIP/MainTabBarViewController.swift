@@ -17,7 +17,7 @@ import UIKit
         UITabBarItem.appearance()
             .setTitleTextAttributes([NSAttributedString.Key.foregroundColor: titleHighlightedColor], for: .selected)
 
-        NotificationCenter.default.addObserver(self, selector: Selector(("appplicationDidBecomeActive:")), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainTabBarViewController.appplicationDidBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
 
         // setting selected image color from original image with replace custom color filter
         for item in self.tabBar.items! {
