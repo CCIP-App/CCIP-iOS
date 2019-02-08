@@ -1158,9 +1158,6 @@ Label2</string>
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="qU2-4l-l4a" kind="show" id="3N4-IZ-UA6"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StaffsWeb" id="mJ9-yH-NdM" customClass="MoreCell" customModule="OPass" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="248" width="414" height="44"/>
@@ -1183,12 +1180,6 @@ Label2</string>
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="MJ9-14-5hP" kind="show" identifier="" id="m5s-g0-cve">
-                                                <segue key="commit" inheritsFrom="parent" id="b43-jh-F6D"/>
-                                                <segue key="preview" inheritsFrom="commit" id="4i7-YT-ZjI"/>
-                                            </segue>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SponsorsWeb" id="nFF-Qj-5an" customClass="MoreCell" customModule="OPass" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="336" width="414" height="44"/>
@@ -1211,12 +1202,6 @@ Label2</string>
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="KLz-bD-vSw" kind="show" id="ewg-q8-EfJ">
-                                                <segue key="commit" inheritsFrom="parent" id="EBx-nC-Ao4"/>
-                                                <segue key="preview" inheritsFrom="commit" id="QYz-Kj-wgm"/>
-                                            </segue>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Acknowledgements" id="yMP-WL-Edu" customClass="MoreCell" customModule="OPass" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="424" width="414" height="44"/>
@@ -1254,40 +1239,6 @@ Label2</string>
             </objects>
             <point key="canvasLocation" x="2081" y="1006"/>
         </scene>
-        <!--Staff Group Table View Controller-->
-        <scene sceneID="1eD-Iw-gVm">
-            <objects>
-                <tableViewController modalPresentationStyle="overCurrentContext" id="MJ9-14-5hP" customClass="StaffGroupTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jf8-Ho-9Ui">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StaffGroupTableViewCell" id="2Z3-2j-yUM" customClass="StaffGroupTableViewCell">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Z3-2j-yUM" id="CDm-dn-X9R">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Du6-oE-R9e" kind="show" id="gRH-x7-Jfd">
-                                        <segue key="commit" inheritsFrom="parent" id="7YC-kW-QJi"/>
-                                        <segue key="preview" inheritsFrom="commit" id="fkN-o1-95S"/>
-                                    </segue>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="MJ9-14-5hP" id="hKp-6Z-UJb"/>
-                            <outlet property="delegate" destination="MJ9-14-5hP" id="fCO-gH-t2s"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tWc-L3-SiQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2736" y="1965"/>
-        </scene>
         <!--Staff Web View Controller-->
         <scene sceneID="PaY-Wv-gkE">
             <objects>
@@ -1311,22 +1262,7 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4A-c9-jcn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3390" y="1965"/>
-        </scene>
-        <!--Maps View Controller-->
-        <scene sceneID="DV1-Ef-pTS">
-            <objects>
-                <viewController id="qU2-4l-l4a" customClass="MapsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1zv-32-1Ho">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="7Ky-UN-HAc"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="URx-Xi-Gq3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4054" y="1965"/>
+            <point key="canvasLocation" x="2080" y="1965"/>
         </scene>
         <!--Telegram Controller-->
         <scene sceneID="LS4-DU-qoz">
@@ -1351,7 +1287,7 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaR-Ck-58c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5403" y="1965"/>
+            <point key="canvasLocation" x="3425" y="1965"/>
         </scene>
         <!--My Ticket View Controller-->
         <scene sceneID="BPq-cB-LmU">
@@ -1408,145 +1344,7 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCQ-6Q-dR4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6088" y="1965"/>
-        </scene>
-        <!--Staff View Controller-->
-        <scene sceneID="4VM-uK-3io">
-            <objects>
-                <collectionViewController modalPresentationStyle="overCurrentContext" id="Du6-oE-R9e" customClass="StaffViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="iVn-bX-KcF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="ZyF-ya-MPN">
-                            <size key="itemSize" width="160" height="180"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="30" minY="30" maxX="30" maxY="30"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StaffCell" id="ysH-Kj-XD0" customClass="StaffCell">
-                                <rect key="frame" x="30" y="30" width="160" height="180"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="160" height="180"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PassAssets.bundle/StaffIconDefault.png" translatesAutoresizingMaskIntoConstraints="NO" id="foB-ud-1gE">
-                                            <rect key="frame" x="48" y="20" width="64" height="64"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="64" id="GUf-UY-J2q"/>
-                                                <constraint firstAttribute="height" constant="64" id="yFU-56-wbu"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRk-LH-eCY">
-                                            <rect key="frame" x="13" y="86" width="134" height="28"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="134" id="BLy-vR-wiE"/>
-                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="zxS-te-8J1"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="行政組員兼場務組攤位組員" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8o-59-Qev">
-                                            <rect key="frame" x="13" y="116.00000000000001" width="134" height="50.666666666666671"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="54" id="Cqf-NA-T6g"/>
-                                                <constraint firstAttribute="width" constant="134" id="qfI-3c-pDg"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
-                                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="qRk-LH-eCY" firstAttribute="top" secondItem="foB-ud-1gE" secondAttribute="bottom" constant="2" id="2dj-vM-UFP"/>
-                                    <constraint firstItem="q8o-59-Qev" firstAttribute="top" secondItem="qRk-LH-eCY" secondAttribute="bottom" constant="2" id="8Kt-6W-Drh"/>
-                                    <constraint firstItem="q8o-59-Qev" firstAttribute="top" secondItem="qRk-LH-eCY" secondAttribute="bottom" constant="2" id="QAb-Hf-3xJ"/>
-                                    <constraint firstItem="foB-ud-1gE" firstAttribute="top" secondItem="ysH-Kj-XD0" secondAttribute="top" constant="20" id="RCx-hH-FnC"/>
-                                    <constraint firstItem="qRk-LH-eCY" firstAttribute="centerX" secondItem="ysH-Kj-XD0" secondAttribute="centerX" id="T7z-Qt-jzx"/>
-                                    <constraint firstItem="foB-ud-1gE" firstAttribute="centerX" secondItem="ysH-Kj-XD0" secondAttribute="centerX" id="i9x-sq-4zs"/>
-                                    <constraint firstItem="q8o-59-Qev" firstAttribute="centerX" secondItem="ysH-Kj-XD0" secondAttribute="centerX" id="wQY-ap-7P2"/>
-                                </constraints>
-                                <size key="customSize" width="160" height="180"/>
-                                <connections>
-                                    <outlet property="staffImg" destination="foB-ud-1gE" id="mn2-XB-aqs"/>
-                                    <outlet property="staffName" destination="qRk-LH-eCY" id="SaT-3e-xy9"/>
-                                    <outlet property="staffTitle" destination="q8o-59-Qev" id="JwS-Lp-vVX"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="Du6-oE-R9e" id="SZ1-vo-4wQ"/>
-                            <outlet property="delegate" destination="Du6-oE-R9e" id="t4e-k6-sVG"/>
-                        </connections>
-                    </collectionView>
-                    <connections>
-                        <outlet property="staffCollectionView" destination="iVn-bX-KcF" id="YQu-Vy-GkB"/>
-                    </connections>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JzY-Sh-wBC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2736" y="2795"/>
-        </scene>
-        <!--Sponsor Table View Controller-->
-        <scene sceneID="p8R-9B-eD5">
-            <objects>
-                <tableViewController id="KLz-bD-vSw" customClass="SponsorTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="260" sectionHeaderHeight="30" sectionFooterHeight="22" id="rUA-V7-Fgw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SponsorCell" rowHeight="260" id="fea-ru-5qy" customClass="SponsorTableViewCell">
-                                <rect key="frame" x="0.0" y="30" width="414" height="260"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fea-ru-5qy" id="c3w-XN-suW">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="259.66666666666669"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PIN-Ta-Ztr">
-                                            <rect key="frame" x="63" y="19" width="288" height="180"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="288" id="LDH-m7-HW1"/>
-                                                <constraint firstAttribute="height" constant="180" id="aSi-2U-XVb"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sponsor Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMG-sW-JNf">
-                                            <rect key="frame" x="20" y="207" width="374" height="48"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="48" id="rM0-5h-apL"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="YMG-sW-JNf" secondAttribute="trailing" id="762-3y-ilx"/>
-                                        <constraint firstAttribute="topMargin" secondItem="PIN-Ta-Ztr" secondAttribute="top" constant="-8" id="Ymn-J8-RA3"/>
-                                        <constraint firstItem="YMG-sW-JNf" firstAttribute="top" secondItem="PIN-Ta-Ztr" secondAttribute="bottom" constant="8" id="bh3-DC-RAx"/>
-                                        <constraint firstItem="PIN-Ta-Ztr" firstAttribute="centerX" secondItem="c3w-XN-suW" secondAttribute="centerX" id="mY8-dj-UgG"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="YMG-sW-JNf" secondAttribute="leading" id="ypq-xf-fGU"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="sponsorImg" destination="PIN-Ta-Ztr" id="N9i-fl-BW2"/>
-                                    <outlet property="sponsorTitle" destination="YMG-sW-JNf" id="r8u-Er-oUQ"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="KLz-bD-vSw" id="W6H-me-3dr"/>
-                            <outlet property="delegate" destination="KLz-bD-vSw" id="W9M-1R-a5Z"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8rh-Zz-s6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1419" y="1965"/>
+            <point key="canvasLocation" x="4109" y="1965"/>
         </scene>
         <!--Acknowledgements View Controller-->
         <scene sceneID="6ye-bt-2uY">
@@ -1850,7 +1648,7 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yHF-fU-Quw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6758" y="1965"/>
+            <point key="canvasLocation" x="4780" y="1965"/>
         </scene>
         <!--Sponsor Web View Controller-->
         <scene sceneID="R77-1g-fh1">
@@ -1875,7 +1673,7 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cmn-oL-JV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2080" y="1965"/>
+            <point key="canvasLocation" x="1419" y="1965"/>
         </scene>
         <!--Schedule Favorite Table View Controller-->
         <scene sceneID="RPj-yB-Iwi">
@@ -1921,7 +1719,7 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNe-Mc-Cf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4725" y="1965"/>
+            <point key="canvasLocation" x="2745" y="1965"/>
         </scene>
     </scenes>
     <resources>
@@ -1932,7 +1730,6 @@ Label2</string>
         <image name="AssetsUI.bundle/icon_ios_topcharts.png" width="16" height="16"/>
         <image name="PassAssets.bundle/ConnectWiFiToConf.png" width="16" height="16"/>
         <image name="PassAssets.bundle/NoAnnouncement.png" width="16" height="16"/>
-        <image name="PassAssets.bundle/StaffIconDefault.png" width="16" height="16"/>
         <image name="WebViewAssets.bundle/BarButton-Back.png" width="16" height="16"/>
         <image name="WebViewAssets.bundle/BarButton-Forward.png" width="16" height="16"/>
         <image name="WebViewAssets.bundle/BarButton-Reload.png" width="16" height="16"/>
@@ -1940,10 +1737,7 @@ Label2</string>
     <inferredMetricsTieBreakers>
         <segue reference="cBG-i4-7bv"/>
         <segue reference="351-Fd-ZV7"/>
-        <segue reference="ewg-q8-EfJ"/>
-        <segue reference="gRH-x7-Jfd"/>
         <segue reference="Vsx-u2-DYP"/>
-        <segue reference="m5s-g0-cve"/>
         <segue reference="mZ3-si-dph"/>
     </inferredMetricsTieBreakers>
 </document>

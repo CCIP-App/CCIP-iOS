@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "MoreTableViewController.h"
-#import "StaffGroupTableViewController.h"
 #import "AcknowledgementsViewController.h"
 #import <AFNetworking/AFNetworking.h>
 #import "WebServiceEndPoint.h"
@@ -49,10 +48,6 @@
     NSString *title = [sender text];
     SEND_FIB_EVENT(@"MoreTableView", @{ @"MoreTitle": title });
     [destination setTitle:title];
-    if ([destination isMemberOfClass:[StaffGroupTableViewController class]]) {
-        StaffGroupTableViewController *sgt = (StaffGroupTableViewController *)destination;
-        [sgt setStaffJsonArray:self.staffs];
-    }
     [((UITableViewCell *)sender) setSelected:NO
                                     animated:YES];
 }
@@ -98,13 +93,13 @@
                             ? @"Telegram"
                             : @"",
                         [[AppDelegate AppConfig:@"URL.MapsPath"] length] > 0
-                            ? [NSString stringWithFormat:@"Maps%@", [[AppDelegate AppConfig:@"URL.MapsUseWeb"] boolValue] ? @"Web" : @""]
+                            ? @"MapsWeb"
                             : @"",
                         [[AppDelegate AppConfig:@"URL.StaffPath"] length] > 0
-                            ? [NSString stringWithFormat:@"Staffs%@", [[AppDelegate AppConfig:@"URL.StaffUseWeb"] boolValue] ? @"Web" : @""]
+                            ? @"StaffsWeb"
                             : @"",
                         [[AppDelegate AppConfig:@"URL.SponsorPath"] length] > 0
-                            ? [NSString stringWithFormat:@"Sponsors%@", [[AppDelegate AppConfig:@"URL.SponsorUseWeb"] boolValue] ? @"Web" : @""]
+                            ? @"SponsorsWeb"
                             : @"",
                         @"Acknowledgements",
                         ] filter:^BOOL(id object) {

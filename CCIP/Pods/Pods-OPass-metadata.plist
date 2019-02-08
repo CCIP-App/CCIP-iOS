@@ -229,53 +229,6 @@ DEALINGS IN THE SOFTWARE.
 		<dict>
 			<key>authors</key>
 			<dict>
-				<key>Daniel Amitay</key>
-				<string>hello@danielamitay.com</string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;DACircularProgress is a UIView subclass with circular UIProgressView properties.
-It was built to be an imitation of Facebook&amp;#39;s photo progress indicator.&lt;/p&gt;
-</string>
-			<key>homepage</key>
-			<string>https://github.com/danielamitay/DACircularProgress</string>
-			<key>licenseText</key>
-			<string># License
-
-## MIT License
-
-Copyright (c) 2013 Daniel Amitay (http://danielamitay.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.</string>
-			<key>licenseType</key>
-			<string>MIT</string>
-			<key>name</key>
-			<string>DACircularProgress</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>DACircularProgress is a UIView subclass with circular UIProgressView properties.</string>
-			<key>version</key>
-			<string>2.3.1</string>
-		</dict>
-		<dict>
-			<key>authors</key>
-			<dict>
 				<key>Rob Phillips</key>
 				<string>rob@robphillips.me</string>
 			</dict>
@@ -1685,7 +1638,7 @@ with some additional features.&lt;/p&gt;
 			<key>homepage</key>
 			<string>http://www.bukovinski.com</string>
 			<key>licenseText</key>
-			<string>Copyright (c) 2009-2015 Matej Bukovinski
+			<string>Copyright © 2009-2016 Matej Bukovinski
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -1713,53 +1666,7 @@ THE SOFTWARE.</string>
 			<key>summary</key>
 			<string>An iOS activity indicator view.</string>
 			<key>version</key>
-			<string>0.9.2</string>
-		</dict>
-		<dict>
-			<key>authors</key>
-			<dict>
-				<key>Michael Waterfall</key>
-				<string>michaelwaterfall@gmail.com</string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;MWPhotoBrowser can display one or more images or videos by providing either UIImage
-objects, PHAsset objects, or URLs to library assets, web images/videos or local files.
-The photo browser handles the downloading and caching of photos from the web seamlessly.
-Photos can be zoomed and panned, and optional (customisable) captions can be displayed.&lt;/p&gt;
-</string>
-			<key>homepage</key>
-			<string>https://github.com/mwaterfall/MWPhotoBrowser</string>
-			<key>licenseText</key>
-			<string>Copyright (c) 2010 Michael Waterfall &lt;michaelwaterfall@gmail.com&gt;
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-</string>
-			<key>licenseType</key>
-			<string>MIT</string>
-			<key>name</key>
-			<string>MWPhotoBrowser</string>
-			<key>socialMediaURL</key>
-			<string>https://twitter.com/mwaterfall</string>
-			<key>summary</key>
-			<string>A simple iOS photo and video browser with optional grid view, captions and selections.</string>
-			<key>version</key>
-			<string>2.1.2</string>
+			<string>1.1.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1898,9 +1805,9 @@ Includes portions from BSMobileProvision:
 			<string>&lt;p&gt;This library provides a category for UIImageView with support for remote images coming from the web. It provides an UIImageView category adding web image and cache management to the Cocoa Touch framework, an asynchronous image downloader, an asynchronous memory + disk image caching with automatic cache expiration handling, a guarantee that the same URL won&amp;#39;t be downloaded several times, a guarantee that bogus URLs won&amp;#39;t be retried again and again, and performances!&lt;/p&gt;
 </string>
 			<key>homepage</key>
-			<string>https://github.com/rs/SDWebImage</string>
+			<string>https://github.com/SDWebImage/SDWebImage</string>
 			<key>licenseText</key>
-			<string>Copyright (c) 2016 Olivier Poitrey rs@dailymotion.com
+			<string>Copyright (c) 2009-2017 Olivier Poitrey rs@dailymotion.com
  
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -1930,7 +1837,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Asynchronous image downloader with cache support with an UIImageView category.</string>
 			<key>version</key>
-			<string>3.8.2</string>
+			<string>4.4.5</string>
 		</dict>
 		<dict>
 			<key>authors</key>
