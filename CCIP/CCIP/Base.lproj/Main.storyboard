@@ -575,14 +575,14 @@ Please copy and paste the token into next field or click the token link in the r
             <objects>
                 <viewController storyboardIdentifier="ScheduleDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kE9-2Q-Df0" customClass="ScheduleDetailViewController" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="mW0-8h-Rsq">
-                        <rect key="frame" x="0.0" y="0.0" width="420" height="720"/>
+                        <rect key="frame" x="0.0" y="0.0" width="426" height="720"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P00-CS-cor" customClass="FSPagerView" customModule="FSPagerView">
-                                <rect key="frame" x="0.0" y="64" width="420" height="300"/>
+                                <rect key="frame" x="0.0" y="64" width="426" height="300"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CP-bQ-x2n">
-                                        <rect key="frame" x="10" y="35" width="400" height="22"/>
+                                        <rect key="frame" x="10" y="35" width="406" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="sWm-Nt-zrN"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="zJh-WQ-xLT"/>
@@ -592,7 +592,7 @@ Please copy and paste the token into next field or click the token link in the r
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uSO-K1-shl">
-                                        <rect key="frame" x="10" y="62" width="400" height="28"/>
+                                        <rect key="frame" x="10" y="62" width="406" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="BNI-9C-dK9"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="Ln6-Mx-qRw"/>
@@ -602,7 +602,7 @@ Please copy and paste the token into next field or click the token link in the r
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F2g-0m-bel">
-                                        <rect key="frame" x="20" y="174" width="380" height="60"/>
+                                        <rect key="frame" x="20" y="174" width="386" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Goe-rS-Flj"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="i3i-Ph-6ja"/>
@@ -612,9 +612,9 @@ Please copy and paste the token into next field or click the token link in the r
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gh-d3-AGe">
-                                        <rect key="frame" x="0.0" y="244" width="420" height="56"/>
+                                        <rect key="frame" x="0.0" y="244" width="426" height="56"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uEV-Th-Vkm">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uEV-Th-Vkm">
                                                 <rect key="frame" x="25" y="5" width="100" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="UeG-Gx-RH7"/>
@@ -624,7 +624,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ven-KA-rEN">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ven-KA-rEN">
                                                 <rect key="frame" x="130" y="5" width="100" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="7WJ-5K-P5O"/>
@@ -634,8 +634,8 @@ Please copy and paste the token into next field or click the token link in the r
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vV8-PE-rYC">
-                                                <rect key="frame" x="235" y="5" width="160" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vV8-PE-rYC">
+                                                <rect key="frame" x="235" y="5" width="166" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="pE1-U5-9xP"/>
                                                 </constraints>
@@ -656,7 +656,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00-00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBM-f0-osl">
-                                                <rect key="frame" x="235" y="31" width="160" height="21"/>
+                                                <rect key="frame" x="235" y="31" width="166" height="21"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -705,14 +705,14 @@ Please copy and paste the token into next field or click the token link in the r
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4T1-hE-S3X">
-                                <rect key="frame" x="0.0" y="364" width="420" height="307"/>
+                                <rect key="frame" x="0.0" y="364" width="426" height="307"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleAbstract" rowHeight="250" id="qgL-2l-vLc" customClass="ScheduleAbstractViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="420" height="250"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleAbstract" rowHeight="250" id="qgL-2l-vLc" customClass="ScheduleAbstractViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="426" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qgL-2l-vLc" id="70q-mM-EDD">
-                                            <rect key="frame" x="0.0" y="0.0" width="420" height="249.66666666666666"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="426" height="249.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RMM-hf-aQ8">
@@ -760,10 +760,10 @@ Please copy and paste the token into next field or click the token link in the r
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleSpeakerInfo" rowHeight="250" id="WuO-8O-IR6" customClass="ScheduleSpeakerInfoViewCell">
-                                        <rect key="frame" x="0.0" y="278" width="420" height="250"/>
+                                        <rect key="frame" x="0.0" y="278" width="426" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WuO-8O-IR6" id="MR5-7W-rvW">
-                                            <rect key="frame" x="0.0" y="0.0" width="420" height="249.66666666666666"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="426" height="249.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCd-th-Z6D">
@@ -833,7 +833,7 @@ Please copy and paste the token into next field or click the token link in the r
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="420" height="720"/>
+                    <size key="freeformSize" width="426" height="720"/>
                     <connections>
                         <outlet property="lbLang" destination="ven-KA-rEN" id="u4b-pI-Osi"/>
                         <outlet property="lbLangText" destination="eDW-eh-9J7" id="W3D-x3-E36"/>
@@ -1528,7 +1528,7 @@ Label2</string>
                                                 <constraint firstAttribute="height" constant="176" id="Rdx-oq-Kmv"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fpJ-Z6-78r">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fpJ-Z6-78r">
                                             <rect key="frame" x="50" y="290" width="320" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="J5c-Zv-ix7"/>
