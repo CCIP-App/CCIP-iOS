@@ -12,9 +12,11 @@ import CPDAcknowledgements
 import SafariServices
 import AFNetworking
 import then
+import MBProgressHUD
 
 @objc class AcknowledgementsViewController : UIViewController {
-    var githubRepoLink : String?
+    var githubRepoLink: String?
+    var progress: MBProgressHUD = MBProgressHUD.init()
 
     func configuration() {
         Promise { resolve, reject in
@@ -84,6 +86,9 @@ import then
             self.view.addSubview(acknowledgementsViewController.view)
             acknowledgementsViewController.didMove(toParent: self)
             return acknowledgementsViewController
+        }.then { (vc: Any) -> Any in
+            self.progress.hide(animated: true)
+            return vc
         }
     }
 
@@ -150,6 +155,8 @@ import then
         self.configuration()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.progress = MBProgressHUD.showAdded(to: self.view, animated: true)
+        self.progress.mode = .indeterminate
     }
 
     override func didReceiveMemoryWarning() {
