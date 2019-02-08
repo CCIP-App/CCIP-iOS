@@ -293,7 +293,7 @@
         }
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    [self.progress hide:YES];
+    [self.progress hideAnimated:YES];
 }
 
 - (void)reloadAndGoToCard {
@@ -303,7 +303,7 @@
 
 - (void)reloadCard {
     if (self.progress != nil) {
-        [self.progress hide:YES];
+        [self.progress hideAnimated:YES];
     }
     self.progress = [MBProgressHUD showHUDAddedTo:self.view
                                          animated:YES];
