@@ -79,7 +79,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [AppDelegate setDevLogo:self.shimmeringLogoView
-                   WithLogo:ASSETS_IMAGE(@"AssetsUI", @"conf-logo")];
+                   WithLogo:[Constants AssertImageWithName:@"AssetsUI"
+                                              InBundleName:@"conf-logo"]];
 }
 
 - (void)showFavoritesTouchDown {

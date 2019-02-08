@@ -71,7 +71,8 @@
     [super viewWillAppear:animated];
     self.controllerTopStart = self.navigationController.navigationBar.frame.size.height;
     [AppDelegate setDevLogo:self.shimmeringLogoView
-                   WithLogo:ASSETS_IMAGE(@"AssetsUI", @"conf-logo")];
+                   WithLogo:[Constants AssertImageWithName:@"AssetsUI"
+                                              InBundleName:@"conf-logo"]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

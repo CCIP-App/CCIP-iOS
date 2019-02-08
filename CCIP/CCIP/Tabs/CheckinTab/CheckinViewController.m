@@ -65,7 +65,8 @@
     [[AppDelegate appDelegate] setCheckinView:self];
     
     // set logo on nav title
-    UIView *logoView = [[UIImageView alloc] initWithImage:ASSETS_IMAGE(@"AssetsUI", @"conf-logo")];
+    UIView *logoView = [[UIImageView alloc] initWithImage:[Constants AssertImageWithName:@"AssetsUI"
+                                                                            InBundleName:@"conf-logo"]];
     self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
     [self.shimmeringLogoView setContentView:logoView];
 //    [self.navigationItem setTitleView:self.shimmeringLogoView];
@@ -91,7 +92,8 @@
     [self.lbHi setHidden:![AppDelegate haveAccessToken]];
 //    [self.ivUserPhoto setUserInteractionEnabled:YES];
 //    [self.ivUserPhoto addGestureRecognizer:tapGesture];
-    [self.ivUserPhoto setImage:ASSETS_IMAGE(@"PassAssets", @"StaffIconDefault")];
+    [self.ivUserPhoto setImage:[Constants AssertImageWithName:@"PassAssets"
+                                                 InBundleName:@"StaffIconDefault"]];
     [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
     [self.ivUserPhoto.layer setCornerRadius:self.ivUserPhoto.frame.size.height / 2];
     [self.ivUserPhoto.layer setMasksToBounds:YES];
@@ -116,7 +118,8 @@
     [super viewWillAppear:animated];
     self.controllerTopStart = self.navigationController.navigationBar.frame.size.height;
     [AppDelegate setDevLogo:self.shimmeringLogoView
-                   WithLogo:ASSETS_IMAGE(@"AssetsUI", @"conf-logo")];
+                   WithLogo:[Constants AssertImageWithName:@"AssetsUI"
+                                              InBundleName:@"conf-logo"]];
     [self handleQRButton];
 }
 
@@ -424,7 +427,8 @@
 
 - (void)handleQRButton {
     if (self.qrButtonItem == nil) {
-        self.qrButtonItem = [[UIBarButtonItem alloc] initWithImage:ASSETS_IMAGE(@"AssetsUI", @"QR_Code")
+        self.qrButtonItem = [[UIBarButtonItem alloc] initWithImage:[Constants AssertImageWithName:@"AssetsUI"
+                                                                                     InBundleName:@"QR_Code"]
                                                landscapeImagePhone:nil
                                                              style:UIBarButtonItemStylePlain
                                                             target:self
@@ -520,7 +524,8 @@
 
 - (void)closeBarcodePickerOverlay {
     if (self.scanditBarcodePicker != nil) {
-        [self.qrButtonItem setImage:ASSETS_IMAGE(@"AssetsUI", @"QR_Code")];
+        [self.qrButtonItem setImage:[Constants AssertImageWithName:@"AssetsUI"
+                                                      InBundleName:@"QR_Code"]];
         
         [self.scanditBarcodePicker removeFromParentViewController];
         [self.scanditBarcodePicker.view removeFromSuperview];
@@ -551,7 +556,8 @@
     } else {
         [self.lbHi setHidden:YES];
         [self.ivUserPhoto setHidden:YES];
-        [self.qrButtonItem setImage:ASSETS_IMAGE(@"AssetsUI", @"QR_Code_Filled")];
+        [self.qrButtonItem setImage:[Constants AssertImageWithName:@"AssetsUI"
+                                                      InBundleName:@"QR_Code_Filled"]];
         
         // Configure the barcode picker through a scan settings instance by defining which
         // symbologies should be enabled.
@@ -787,8 +793,10 @@
             NSString *scenarioType = [dd objectForKey:@"scenarioType"];
             NSDictionary *displayText = [scenario objectForKey:@"display_text"];
             NSString *lang = [AppDelegate longLangUI];
-            UIImage *defaultIcon = ASSETS_IMAGE(@"PassAssets", @"doc");
-            UIImage *scenarioIcon = nilCoalesceDefault(ASSETS_IMAGE(@"PassAssets", scenarioType), defaultIcon);
+            UIImage *defaultIcon = [Constants AssertImageWithName:@"PassAssets"
+                                                     InBundleName:@"doc"];
+            UIImage *scenarioIcon = nilCoalesceDefault([Constants AssertImageWithName:@"PassAssets"
+                                                                         InBundleName:scenarioType], defaultIcon);
             [temp.checkinTitle setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
             [temp.checkinDate setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
             [temp.checkinText setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
@@ -798,7 +806,8 @@
             [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
             [temp.checkinIcon setImage:scenarioIcon];
             if (isCheckin) {
-                [temp.checkinIcon setImage:ASSETS_IMAGE(@"PassAssets", [@"day" stringByAppendingString:did])];
+                [temp.checkinIcon setImage:[Constants AssertImageWithName:@"PassAssets"
+                                                             InBundleName:[@"day" stringByAppendingString:did]]];
                 [temp.checkinText setText:NSLocalizedString(@"CheckinText", nil)];
             }
             if (isLunch) {

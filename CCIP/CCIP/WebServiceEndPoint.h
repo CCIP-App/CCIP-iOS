@@ -37,18 +37,6 @@
 #define LOG_CHANNEL             ([AppDelegate AppConfigURL:@"IRC_Channel"])
 #define LOG_BOT_URL             ([NSString stringWithFormat:@"https://ysitd.licson.net/channel/%@/today", LOG_CHANNEL])
 
-// Assets
-
-#define ASSETS_IMAGE(b, i)      ([UIImage imageNamed:i \
-                                            inBundle:[NSBundle bundleWithPath:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.bundle", b]]] \
-                       compatibleWithTraitCollection:nil])
-
-// Non API
-
-#define GITHUB_REPO(repo)       ([NSString stringWithFormat:@"https://github.com/%@", repo])
-#define GITHUB_AVATAR(user)     ([NSString stringWithFormat:@"https://avatars.githubusercontent.com/%@?s=86&v=3", user])
-#define GRAVATAR_AVATAR(hash)   ([NSString stringWithFormat:@"https://www.gravatar.com/avatar/%@?s=86%@", hash, [hash length] > 0 ? @"&r=x" : @"&f=y&d=mm"])
-
 // Cache
 
 #define SCHEDULE_CACHE_CLEAR    (@"ClearScheduleContentCache")

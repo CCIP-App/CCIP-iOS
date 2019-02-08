@@ -9,6 +9,9 @@
 #import <OneSignal/OneSignal.h>
 #import <ColorArt/UIImage+ColorArt.h>
 #import <Shimmer/FBShimmeringView.h>
+#import <CPDAcknowledgements/CPDCocoaPodsLibrariesLoader.h>
+#import "NSData+CommonCrypto.h"
+#import "NSData+PMUtils.h"
 #import "Constants.h"
 #import "NSInvocation+addition.h"
 #import "CheckinViewController.h"
