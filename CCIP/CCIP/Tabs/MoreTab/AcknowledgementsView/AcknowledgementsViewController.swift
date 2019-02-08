@@ -20,13 +20,13 @@ import SafariServices
         let projectInfoJSON = try! String.init(contentsOfFile: filePath!, encoding: .utf8)
         let projectInfoData = (try! JSONSerialization.jsonObject(with: projectInfoJSON.data(using: .utf8)!, options: .mutableContainers)) as! [String: NSObject]
         let selfContributorIndexList = (projectInfoData["self"]! as! [String: NSObject])["contributors"] as! [NSNumber]
-        let allContributorArray = projectInfoData["contributors"] as! [String: NSDictionary];
+        let allContributorArray = projectInfoData["contributors"] as! [NSDictionary];
 
         for contributorIndex in selfContributorIndexList {
             for contributorDict in allContributorArray {
-                if contributorDict.value.object(forKey: "index") as! NSNumber == contributorIndex {
-                    let contributor: CPDContribution = CPDContribution.init(name: contributorDict.value.object(forKey: "nick_name") as! String, websiteAddress: self.getWebsiteAddress(contributor: contributorDict.value), role: contributorDict.value.object(forKey: "role") as! String)
-                    contributor.avatarAddress = self.getAvatarAddress(contributor: contributorDict.value)
+                if contributorDict.object(forKey: "index") as! NSNumber == contributorIndex {
+                    let contributor: CPDContribution = CPDContribution.init(name: contributorDict.object(forKey: "nick_name") as! String, websiteAddress: self.getWebsiteAddress(contributor: contributorDict ), role: contributorDict.object(forKey: "role") as! String)
+                    contributor.avatarAddress = self.getAvatarAddress(contributor: contributorDict )
                     contributors.append(contributor)
                     break
                 }
@@ -43,10 +43,10 @@ import SafariServices
 
         let customAckJSONPath = bundle.path(forResource: "Project_3rd_Lib_License", ofType: "json")
         let customAckJSON = try! String.init(contentsOfFile: customAckJSONPath!, encoding: .utf8)
-        let customAckArray = try! JSONSerialization.jsonObject(with: customAckJSON.data(using: .utf8)!, options: .allowFragments) as! [String: NSObject]
+        let customAckArray = try! JSONSerialization.jsonObject(with: customAckJSON.data(using: .utf8)!, options: .allowFragments) as! [NSDictionary]
 
         for acknowledgementDict in customAckArray {
-            acknowledgements?.append(CPDLibrary.init(cocoaPodsMetadataPlistDictionary: acknowledgementDict.value as! [AnyHashable : Any]))
+            acknowledgements?.append(CPDLibrary.init(cocoaPodsMetadataPlistDictionary: acknowledgementDict as! [AnyHashable : Any]))
         }
 
         let acknowledgementsViewController: CPDAcknowledgementsViewController = CPDAcknowledgementsViewController.init(style: nil, acknowledgements: acknowledgements, contributions: (contributors as! [CPDContribution]))
@@ -99,7 +99,7 @@ import SafariServices
         }
     }
 
-    func openGithubRepo() {
+    @IBAction func openGithubRepo() {
         let url = URL.init(string: self.githubRepoLink!)
         if (SFSafariViewController.className != "") {
             // Open in SFSafariViewController
