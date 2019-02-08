@@ -10,50 +10,81 @@ import Foundation
 import UIKit
 import CPDAcknowledgements
 import SafariServices
+import AFNetworking
+import then
 
 @objc class AcknowledgementsViewController : UIViewController {
     var githubRepoLink : String?
 
-    @objc func configuration() {
-        var contributors = [Any]();
-        let filePath = Bundle.main.path(forResource: "Project_Info_and_Contributors", ofType: "json")
-        let projectInfoJSON = try! String.init(contentsOfFile: filePath!, encoding: .utf8)
-        let projectInfoData = (try! JSONSerialization.jsonObject(with: projectInfoJSON.data(using: .utf8)!, options: .mutableContainers)) as! [String: NSObject]
-        let selfContributorIndexList = (projectInfoData["self"]! as! [String: NSObject])["contributors"] as! [NSNumber]
-        let allContributorArray = projectInfoData["contributors"] as! [NSDictionary];
+    func configuration() {
+        Promise { resolve, reject in
+            var contributors = [Any]();
 
-        for contributorIndex in selfContributorIndexList {
-            for contributorDict in allContributorArray {
-                if contributorDict.object(forKey: "index") as! NSNumber == contributorIndex {
-                    let contributor: CPDContribution = CPDContribution.init(name: contributorDict.object(forKey: "nick_name") as! String, websiteAddress: self.getWebsiteAddress(contributor: contributorDict ), role: contributorDict.object(forKey: "role") as! String)
-                    contributor.avatarAddress = self.getAvatarAddress(contributor: contributorDict )
-                    contributors.append(contributor)
-                    break
+            //        let filePath = Bundle.main.path(forResource: "Project_Info_and_Contributors", ofType: "json")
+            //        let projectInfoJSON = try! String.init(contentsOfFile: filePath!, encoding: .utf8)
+            //        let projectInfoData = (try! JSONSerialization.jsonObject(with: projectInfoJSON.data(using: .utf8)!, options: .mutableContainers)) as! [String: NSObject]
+            //        let selfContributorIndexList = (projectInfoData["self"]! as! [String: NSObject])["contributors"] as! [NSNumber]
+            //        let allContributorArray = projectInfoData["contributors"] as! [NSDictionary];
+            //
+            //        for contributorIndex in selfContributorIndexList {
+            //            for contributorDict in allContributorArray {
+            //                if contributorDict.object(forKey: "index") as! NSNumber == contributorIndex {
+            //                    let contributor: CPDContribution = CPDContribution.init(name: contributorDict.object(forKey: "nick_name") as! String, websiteAddress: self.getWebsiteAddress(contributor: contributorDict ), role: contributorDict.object(forKey: "role") as! String)
+            //                    contributor.avatarAddress = self.getAvatarAddress(contributor: contributorDict )
+            //                    contributors.append(contributor)
+            //                    break
+            //                }
+            //            }
+            //        }
+
+            let manager = AFHTTPSessionManager.init()
+            manager.get("https://api.github.com/repos/CCIP-App/CCIP-iOS/contributors", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
+                NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any)!)");
+                if (responseObject != nil) {
+                    let contributorsObj = responseObject as! [NSDictionary]
+                    contributors = contributorsObj.map({ (dict: NSDictionary) -> CPDContribution in
+                        let contributor: CPDContribution = CPDContribution.init(name: dict.object(forKey: "login") as! String, websiteAddress: Constants.GitHubRepo(dict.object(forKey: "login") as! String), role: "\(dict.object(forKey: "contributions") as! NSNumber) commits")
+                        contributor.avatarAddress = (dict.object(forKey: "avatar_url") as! String)
+                        return contributor
+                    })
+                    resolve(contributors)
                 }
+            }) { (operation: URLSessionDataTask?, error: Error) in
+                NSLog("Error: \(error)");
+                reject(error)
             }
+        }.then { (obj: Any) -> Any in
+            //        let githubRepo = (projectInfoData["self"]! as! [String: NSObject])["github_repo"] as! String?
+            //        if githubRepo != nil && githubRepo != "" {
+            //            self.githubRepoLink = Constants.GitHubRepo(githubRepo!)
+            //        }
+
+            self.githubRepoLink = Constants.GitHubRepo("CCIP-App/CCIP-iOS")
+            if (self.githubRepoLink != nil) {
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: Constants.AssertImage("AssetsUI", "ToolButton-GitHub_Filled"), landscapeImagePhone: nil, style: .plain, target: self, action: Selector(("openGithubRepo")))
+            }
+
+            let bundle = Bundle.main
+            var acknowledgements = CPDCocoaPodsLibrariesLoader.loadAcknowledgements(with: bundle)
+
+            let customAckJSONPath = bundle.path(forResource: "Project_3rd_Lib_License", ofType: "json")
+            let customAckJSON = try! String.init(contentsOfFile: customAckJSONPath!, encoding: .utf8)
+            let customAckArray = try! JSONSerialization.jsonObject(with: customAckJSON.data(using: .utf8)!, options: .allowFragments) as! [NSDictionary]
+
+            for acknowledgementDict in customAckArray {
+                acknowledgements?.append(CPDLibrary.init(cocoaPodsMetadataPlistDictionary: acknowledgementDict as! [AnyHashable : Any]))
+            }
+
+            let contributors = obj as! [CPDContribution]
+            let acknowledgementsViewController: CPDAcknowledgementsViewController = CPDAcknowledgementsViewController.init(style: nil, acknowledgements: acknowledgements, contributions: contributors)
+            self.addChild(acknowledgementsViewController)
+            var frame = self.view.frame
+            frame.origin.y = 0 // force to align the top when data lag to delivered
+            acknowledgementsViewController.view.frame = frame;
+            self.view.addSubview(acknowledgementsViewController.view)
+            acknowledgementsViewController.didMove(toParent: self)
+            return acknowledgementsViewController
         }
-
-        let githubRepo = (projectInfoData["self"]! as! [String: NSObject])["github_repo"] as! String?
-        if githubRepo != nil && githubRepo != "" {
-            self.githubRepoLink = Constants.GitHubRepo(githubRepo!)
-        }
-
-        let bundle = Bundle.main
-        var acknowledgements = CPDCocoaPodsLibrariesLoader.loadAcknowledgements(with: bundle)
-
-        let customAckJSONPath = bundle.path(forResource: "Project_3rd_Lib_License", ofType: "json")
-        let customAckJSON = try! String.init(contentsOfFile: customAckJSONPath!, encoding: .utf8)
-        let customAckArray = try! JSONSerialization.jsonObject(with: customAckJSON.data(using: .utf8)!, options: .allowFragments) as! [NSDictionary]
-
-        for acknowledgementDict in customAckArray {
-            acknowledgements?.append(CPDLibrary.init(cocoaPodsMetadataPlistDictionary: acknowledgementDict as! [AnyHashable : Any]))
-        }
-
-        let acknowledgementsViewController: CPDAcknowledgementsViewController = CPDAcknowledgementsViewController.init(style: nil, acknowledgements: acknowledgements, contributions: (contributors as! [CPDContribution]))
-        self.addChild(acknowledgementsViewController)
-        acknowledgementsViewController.view.frame = self.view.frame;
-        self.view.addSubview(acknowledgementsViewController.view)
-        acknowledgementsViewController.didMove(toParent: self)
     }
 
     func getWebsiteAddress(contributor: NSDictionary) -> String? {
@@ -119,9 +150,6 @@ import SafariServices
         self.configuration()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        if (self.githubRepoLink != nil) {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: Constants.AssertImage("AssetsUI", "ToolButton-GitHub_Filled"), landscapeImagePhone: nil, style: .plain, target: self, action: Selector(("openGithubRepo")))
-        }
     }
 
     override func didReceiveMemoryWarning() {
