@@ -59,11 +59,11 @@ import Foundation
         return String(format: "https://www.gravatar.com/avatar/\(hash)?s=86&\(hash.count > 0 ? "r=x" : "f=y&d=mm")")
     }
     @objc static func AssertImage(name: String, InBundleName: String) -> UIImage {
-        return AssertImage(name, InBundleName)
+        return AssertImage(InBundleName, name)
     }
-    public static func AssertImage(_ imageName: String, _ bundleName: String ) -> UIImage {
+    public static func AssertImage(_ bundleName: String, _ imageName: String ) -> UIImage {
         let bundlePath = Bundle.main.bundlePath.appendingPathComponent("\(bundleName).bundle")
-        let bundle = Bundle.init(path: bundlePath)
+        let bundle = Bundle.init(path: bundlePath)!
         return UIImage.init(named: imageName, in: bundle, compatibleWith: nil)!
     }
 }

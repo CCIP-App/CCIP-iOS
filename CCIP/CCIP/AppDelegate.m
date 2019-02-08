@@ -168,8 +168,8 @@
 }
 
 + (UIImage *)confLogo {
-    UIImage *logo = [Constants AssertImageWithName:@"AssetsUI"
-                                      InBundleName:@"conf-logo"];
+    UIImage *logo = [Constants AssertImageWithName:@"conf-logo"
+                                      InBundleName:@"AssetsUI"];
     return [[self AppConfig:@"Themes.LogoUseMask"] boolValue] ? [logo imageWithColor:[UIColor whiteColor]] : logo;
 }
 

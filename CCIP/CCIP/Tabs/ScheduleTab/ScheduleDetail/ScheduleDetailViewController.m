@@ -168,8 +168,8 @@
 }
 
 - (FSPagerViewCell *)pagerView:(FSPagerView *)pagerView cellForItemAtIndex:(NSInteger)index {
-    UIImage *defaultIcon = [Constants AssertImageWithName:@"PassAssets"
-                                             InBundleName:@"StaffIconDefault"];
+    UIImage *defaultIcon = [Constants AssertImageWithName:@"StaffIconDefault"
+                                             InBundleName:@"PassAssets"];
     NSDictionary *speaker = [self.speakers objectAtIndex:index];
     NSString *avatar = [speaker objectForKey:@"avatar"];
     NSString *speakerPhoto = [avatar stringByReplacingOccurrencesOfString:@"http:"
