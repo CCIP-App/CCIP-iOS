@@ -104,6 +104,7 @@
 		6BE8A227220D04980035CFD8 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8A226220D04980035CFD8 /* MainTabBarViewController.swift */; };
 		6BE8A22A220DC84C0035CFD8 /* AcknowledgementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8A229220DC84C0035CFD8 /* AcknowledgementsViewController.swift */; };
 		6BE8A22C220DF0210035CFD8 /* NSString+StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8A22B220DF0210035CFD8 /* NSString+StringExt.swift */; };
+		6BE8A22E220E11160035CFD8 /* JSONSerialization+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8A22D220E11160035CFD8 /* JSONSerialization+Ext.swift */; };
 		6BEB310D1F262EF30050759D /* TicketQRCodeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */; };
 		6BEB31151F26656B0050759D /* Maps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BEB31141F26656B0050759D /* Maps.bundle */; };
 		6BF331501F2991C4004BEEA6 /* PassAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */; };
@@ -297,6 +298,7 @@
 		6BE8A226220D04980035CFD8 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		6BE8A229220DC84C0035CFD8 /* AcknowledgementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsViewController.swift; sourceTree = "<group>"; };
 		6BE8A22B220DF0210035CFD8 /* NSString+StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+StringExt.swift"; sourceTree = "<group>"; };
+		6BE8A22D220E11160035CFD8 /* JSONSerialization+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONSerialization+Ext.swift"; sourceTree = "<group>"; };
 		6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketQRCodeImage.swift; sourceTree = "<group>"; };
 		6BEB31141F26656B0050759D /* Maps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Maps.bundle; sourceTree = "<group>"; };
 		6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PassAssets.bundle; sourceTree = "<group>"; };
@@ -604,6 +606,7 @@
 				6B4FCB05218E521C0005469F /* UIApplication+addition.swift */,
 				6B4FCB1D218F5D630005469F /* UIViewController+WebView.swift */,
 				6BE8A22B220DF0210035CFD8 /* NSString+StringExt.swift */,
+				6BE8A22D220E11160035CFD8 /* JSONSerialization+Ext.swift */,
 			);
 			path = "Class+addition";
 			sourceTree = "<group>";
@@ -1025,6 +1028,7 @@
 				6B4FCB02218E30B10005469F /* NSObject+DeepCopy.swift in Sources */,
 				28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */,
 				6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */,
+				6BE8A22E220E11160035CFD8 /* JSONSerialization+Ext.swift in Sources */,
 				6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */,
 				6B4FCB15218ECACD0005469F /* UISegmentedControl+addition.swift in Sources */,
 				6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */,
