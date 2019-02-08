@@ -142,7 +142,7 @@ let beaconID = Constants.beaconID()
             central.stopScan()
             central.connect(peripheralMonitor!, options: nil)
         } else if peripheralName == "USBeacon" {
-            NSLog("Mac Addresses: \((String(data: try! JSONSerialization.data(withJSONObject: self.beaconMacAddresses, options: .prettyPrinted), encoding: .utf8)!))")
+            NSLog("Mac Addresses: \(JSONSerialization.stringify(self.beaconMacAddresses)!)")
         }
     }
 
