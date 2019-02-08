@@ -12,28 +12,46 @@ import WebKit
 import SafariServices
 import NJKWebViewProgress
 
-@objc protocol OPassWebViewIB {
-    @objc optional weak var goReloadButton: UIBarButtonItem? { get }
-    @objc optional weak var goBackButton: UIBarButtonItem? { get }
-    @objc optional weak var goForwardButton: UIBarButtonItem? { get }
+protocol OPassWebViewIB {
+    var goReloadButton: UIBarButtonItem? { get }
+    var goBackButton: UIBarButtonItem? { get }
+    var goForwardButton: UIBarButtonItem? { get }
     
-    @objc optional func reload(_ sender: Any);
-    @objc optional func goBack(_ sender: Any);
-    @objc optional func goForward(_ sender: Any);
+    func reload(_ sender: Any);
+    func goBack(_ sender: Any);
+    func goForward(_ sender: Any);
     
-    @objc optional var titleTextColor: String { get }
-    @objc optional var titleLeftColor: String { get }
-    @objc optional var titleRightColor: String { get }
+    var titleTextColor: String { get }
+    var titleLeftColor: String { get }
+    var titleRightColor: String { get }
     
-    @objc optional var PageUrl : String { get }
+    var PageUrl : String { get }
     
-    @objc optional var ShowLogo : Bool { get }
+    var ShowLogo : Bool { get }
 }
 
-@objcMembers class OPassWebViewController : UIViewController, OPassWebViewIB, WKNavigationDelegate, WKUIDelegate, SFSafariViewControllerDelegate {
-    /* fake dummy obj */ private var goReloadButton: UIBarButtonItem?;
-    /* fake dummy obj */ private var goBackButton: UIBarButtonItem?;
-    /* fake dummy obj */ private var goForwardButton: UIBarButtonItem?;
+extension OPassWebViewIB { // for all of optional properties and func used in OPassWebViewIB protoccol
+    var goReloadButton: UIBarButtonItem? { return nil }
+    var goBackButton: UIBarButtonItem? { return nil }
+    var goForwardButton: UIBarButtonItem? { return nil }
+
+    func reload(_ sender: Any) {}
+    func goBack(_ sender: Any) {}
+    func goForward(_ sender: Any) {}
+
+    var titleTextColor: String { return "" }
+    var titleLeftColor: String { return "" }
+    var titleRightColor: String { return "" }
+
+    var PageUrl : String { return "" }
+
+    var ShowLogo : Bool { return false }
+}
+
+class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDelegate, SFSafariViewControllerDelegate {
+    /* fake dummy obj */ private var goReloadButton: UIBarButtonItem? = nil;
+    /* fake dummy obj */ private var goBackButton: UIBarButtonItem? = nil;
+    /* fake dummy obj */ private var goForwardButton: UIBarButtonItem? = nil;
     
     /* fake dummy obj */ private var titleTextColor: String = "";
     /* fake dummy obj */ private var titleLeftColor: String = "";

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class StaffWebViewController : OPassWebViewController {
+class StaffWebViewController : OPassWebViewController, OPassWebViewIB {
     @IBOutlet var goReloadButton: UIBarButtonItem?
     @IBOutlet var goBackButton: UIBarButtonItem?
     @IBOutlet var goForwardButton: UIBarButtonItem?

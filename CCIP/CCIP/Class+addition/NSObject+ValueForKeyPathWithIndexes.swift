@@ -15,7 +15,18 @@ import Foundation
     func valueForKeyPaths(_ fullPath: String) -> Any? {
         let testRange = fullPath.range(of: "[");
         if (testRange == nil) {
-            return self.responds(to: Selector(fullPath)) ? self.value(forKeyPath: fullPath) as Any : nil;
+            if self.responds(to: Selector(fullPath)) {
+                return self.value(forKeyPath: fullPath) as Any
+            } else {
+                let mirror = Mirror(reflecting: self)
+                for child in mirror.children {
+                    if child.label == fullPath {
+                        NSLog("\(String(describing: child.label)): \(child.value)")
+                        return child.value
+                    }
+                }
+                return nil
+            }
         }
         let parts = fullPath.components(separatedBy: ".");
         var currentObj : NSObject? = self;

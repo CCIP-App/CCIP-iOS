@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TelegramController : OPassWebViewController {
+class TelegramController : OPassWebViewController, OPassWebViewIB {
     @IBOutlet var goReloadButton: UIBarButtonItem?
     @IBOutlet var goBackButton: UIBarButtonItem?
     @IBOutlet var goForwardButton: UIBarButtonItem?

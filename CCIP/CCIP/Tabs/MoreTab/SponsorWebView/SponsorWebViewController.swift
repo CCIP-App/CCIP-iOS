@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SponsorWebViewController : OPassWebViewController {
+class SponsorWebViewController : OPassWebViewController, OPassWebViewIB {
     @IBOutlet var goReloadButton: UIBarButtonItem?
     @IBOutlet var goBackButton: UIBarButtonItem?
     @IBOutlet var goForwardButton: UIBarButtonItem?

@@ -128,6 +128,8 @@ let beaconID = Constants.beaconID()
             case .poweredOn:
                 print("Bluetooth status is POWERED ON")
                 central.scanForPeripherals(withServices: nil, options: nil)
+            @unknown default:
+                print("unknown status of Bluetooth")
         }
     }
 

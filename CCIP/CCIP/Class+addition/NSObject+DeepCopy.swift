@@ -18,7 +18,7 @@ import Foundation
         for i in 0...count {
             let obj = self.object(at: Int(i)) as! NSObject;
             if (obj.responds(to: #selector(deepCopy))) {
-                cArray[Int(i)] = obj.perform(#selector(deepCopy));
+                cArray[Int(i)] = obj.perform(#selector(deepCopy))!;
             } else {
                 cArray[Int(i)] = obj.copy();
             }
@@ -35,13 +35,13 @@ import Foundation
             let obj = self.object(at: Int(i)) as! NSObject;
             if (obj.responds(to: #selector(mutableDeepCopy))) {
                 // Try to do a deep mutable copy, if this object supports it
-                cArray[Int(i)] = obj.perform(#selector(mutableDeepCopy));
+                cArray[Int(i)] = obj.perform(#selector(mutableDeepCopy))!;
             } else if (obj.responds(to: NSSelectorFromString("mutableCopyWithZone:"))) {
                 // Then try a shallow mutable copy, if the object supports that
-                cArray[Int(i)] = obj.perform(#selector(mutableCopy));
+                cArray[Int(i)] = obj.perform(#selector(mutableCopy))!;
             } else if (obj.responds(to: #selector(deepCopy))) {
                 // Next try to do a deep copy
-                cArray[Int(i)] = obj.perform(#selector(deepCopy));
+                cArray[Int(i)] = obj.perform(#selector(deepCopy))!;
             } else {
                 // If all else fails, fall back to an ordinary copy
                 cArray[Int(i)] = obj.copy();
@@ -61,12 +61,12 @@ import Foundation
             var cKey : Any;
             var cObj : Any;
             if ((obj.value as! NSObject).responds(to: #selector(deepCopy))) {
-                cObj = (obj.value as! NSObject).perform(#selector(deepCopy));
+                cObj = (obj.value as! NSObject).perform(#selector(deepCopy))!;
             } else {
                 cObj = (obj.value as! NSObject).copy();
             }
             if ((obj.key as! NSObject).responds(to: #selector(deepCopy))) {
-                cKey = (obj.key as! NSObject).perform(#selector(deepCopy));
+                cKey = (obj.key as! NSObject).perform(#selector(deepCopy))!;
             } else {
                 cKey = (obj.key as! NSObject).copy();
             }
@@ -86,20 +86,20 @@ import Foundation
             var cObj : Any;
             if ((obj.value as! NSObject).responds(to: #selector(mutableDeepCopy))) {
                 // Try to do a deep mutable copy, if this object supports it
-                cObj = (obj.value as! NSObject).perform(#selector(mutableDeepCopy));
+                cObj = (obj.value as! NSObject).perform(#selector(mutableDeepCopy))!;
             } else if ((obj.value as! NSObject).responds(to: #selector(mutableCopy))) {
                 // Then try a shallow mutable copy, if the object supports that
-                cObj = (obj.value as! NSObject).perform(#selector(mutableCopy));
+                cObj = (obj.value as! NSObject).perform(#selector(mutableCopy))!;
             } else if ((obj.value as! NSObject).responds(to: #selector(deepCopy))) {
                 // Next try to do a deep copy
-                cObj = (obj.value as! NSObject).perform(#selector(deepCopy));
+                cObj = (obj.value as! NSObject).perform(#selector(deepCopy))!;
             } else {
                 // If all else fails, fall back to an ordinary copy
                 cObj = (obj.value as! NSObject).copy();
             }
             // I don't think mutable keys make much sense, so just do an ordinary copy
             if ((obj.key as! NSObject).responds(to: #selector(deepCopy))) {
-                cKey = (obj.key as! NSObject).perform(#selector(deepCopy));
+                cKey = (obj.key as! NSObject).perform(#selector(deepCopy))!;
             } else {
                 cKey = (obj.key as! NSObject).copy();
             }
