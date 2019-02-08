@@ -39,7 +39,6 @@
 		28A7C5641D5F7D2D0079BB12 /* Project_3rd_Lib_License.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */; };
 		28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */; };
 		28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */; };
-		28AFCF141D5DD9CA00413927 /* AcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AFCF131D5DD9CA00413927 /* AcknowledgementsViewController.m */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
 		5F75A479AF13F31C57E574C7 /* Pods-OPass-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC0E7EB6EB420AD75E37B7F2 /* Pods-OPass-metadata.plist */; };
 		5FB4D48A1D3ABF9C005BF382 /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */; };
@@ -103,6 +102,7 @@
 		6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */; };
 		6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE250211D3133FC005FB4B2 /* GuideViewController.m */; };
 		6BE8A227220D04980035CFD8 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8A226220D04980035CFD8 /* MainTabBarViewController.swift */; };
+		6BE8A22A220DC84C0035CFD8 /* AcknowledgementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8A229220DC84C0035CFD8 /* AcknowledgementsViewController.swift */; };
 		6BE8A22C220DF0210035CFD8 /* NSString+StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8A22B220DF0210035CFD8 /* NSString+StringExt.swift */; };
 		6BEB310D1F262EF30050759D /* TicketQRCodeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */; };
 		6BEB31151F26656B0050759D /* Maps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BEB31141F26656B0050759D /* Maps.bundle */; };
@@ -198,8 +198,6 @@
 		28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+PMUtils.m"; sourceTree = "<group>"; };
 		28ACA99F1D5E92AD002A6419 /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
 		28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
-		28AFCF121D5DD9CA00413927 /* AcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgementsViewController.h; sourceTree = "<group>"; };
-		28AFCF131D5DD9CA00413927 /* AcknowledgementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcknowledgementsViewController.m; sourceTree = "<group>"; };
 		5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5FB4D4871D3ABF9C005BF382 /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewController.h; sourceTree = "<group>"; };
 		5FB4D4881D3ABF9C005BF382 /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewController.m; sourceTree = "<group>"; };
@@ -297,6 +295,7 @@
 		6BE250201D3133FC005FB4B2 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		6BE250211D3133FC005FB4B2 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		6BE8A226220D04980035CFD8 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		6BE8A229220DC84C0035CFD8 /* AcknowledgementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsViewController.swift; sourceTree = "<group>"; };
 		6BE8A22B220DF0210035CFD8 /* NSString+StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+StringExt.swift"; sourceTree = "<group>"; };
 		6BEB310C1F262EF30050759D /* TicketQRCodeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketQRCodeImage.swift; sourceTree = "<group>"; };
 		6BEB31141F26656B0050759D /* Maps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Maps.bundle; sourceTree = "<group>"; };
@@ -583,8 +582,7 @@
 			children = (
 				28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */,
 				28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */,
-				28AFCF121D5DD9CA00413927 /* AcknowledgementsViewController.h */,
-				28AFCF131D5DD9CA00413927 /* AcknowledgementsViewController.m */,
+				6BE8A229220DC84C0035CFD8 /* AcknowledgementsViewController.swift */,
 			);
 			path = AcknowledgementsView;
 			sourceTree = "<group>";
@@ -1033,6 +1031,7 @@
 				5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */,
 				280774C21F1A7B0100A5B994 /* ScheduleViewPagerController.m in Sources */,
 				5FD049891D5AFB9D00E7CEAD /* AnnounceTableViewController.m in Sources */,
+				6BE8A22A220DC84C0035CFD8 /* AcknowledgementsViewController.swift in Sources */,
 				280774BF1F1A736800A5B994 /* ScheduleViewController.m in Sources */,
 				2839BF4A1D4CDDAD0062F36D /* CheckinCardViewController.m in Sources */,
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
@@ -1063,7 +1062,6 @@
 				280774D11F1AD8D300A5B994 /* ScheduleTableViewCell.m in Sources */,
 				6BE8A22C220DF0210035CFD8 /* NSString+StringExt.swift in Sources */,
 				6B4FCB06218E521C0005469F /* UIApplication+addition.swift in Sources */,
-				28AFCF141D5DD9CA00413927 /* AcknowledgementsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

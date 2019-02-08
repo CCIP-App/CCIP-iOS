@@ -1349,7 +1349,7 @@ Label2</string>
         <!--Acknowledgements View Controller-->
         <scene sceneID="6ye-bt-2uY">
             <objects>
-                <viewController id="NbQ-cI-f1V" customClass="AcknowledgementsViewController" sceneMemberID="viewController">
+                <viewController id="NbQ-cI-f1V" customClass="AcknowledgementsViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GOq-0B-EXK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

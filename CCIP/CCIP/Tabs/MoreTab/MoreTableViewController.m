@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "MoreTableViewController.h"
-#import "AcknowledgementsViewController.h"
 #import <AFNetworking/AFNetworking.h>
 #import "WebServiceEndPoint.h"
 
