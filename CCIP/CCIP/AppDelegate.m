@@ -37,6 +37,10 @@
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
++ (AppDelegate *)delegateInstance {
+    return [self appDelegate];
+}
+
 + (id)AppConfig:(NSString *)path {
     NSDictionary *config = [NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"config"
                                                                                              withExtension:@"plist"]];
