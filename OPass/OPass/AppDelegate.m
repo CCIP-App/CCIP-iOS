@@ -389,7 +389,7 @@
             if (additionalData[@"actionSelected"])
                 fullMessage = [fullMessage stringByAppendingString:[NSString stringWithFormat:@"\nPressed ButtonId:%@", additionalData[@"actionSelected"]]];
         }
-        
+        NSLog(@"OneSignal Notification %@: %@", messageTitle, fullMessage);
 //        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:messageTitle
 //                                                            message:fullMessage
 //                                                           delegate:self
@@ -546,7 +546,7 @@
         }
         // find the biggest image metrix
         __block int sizeMetrix = 0;
-        __block NSString *fileName = nil;
+        __block NSString *fileName = @"";
         for (NSString *iconName in availIcon) {
             NSError *error = nil;
             NSRegularExpressionOptions matchOptions = NSRegularExpressionCaseInsensitive;

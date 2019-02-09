@@ -45,6 +45,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     self.downView = [[MarkdownView alloc] init:CGRectMake(0, 0, self.view.frame.size.width, self.tvContent.bounds.size.height)
                                   withMarkdown:[NSString stringWithFormat:@"<style>h1, h2 {color: %@} h3, h4, h5, h6, h7, span, div, p {color: %@;}</style>\n\n", [AppDelegate AppConfig:@"Themes.CardTextColor"], @"black"]
                                         toView:self.tvContent];
@@ -72,6 +73,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     NSDictionary *data = self.detailData;
     self.speakers = [data objectForKey:@"speakers"];
     [self.vwHeader registerClass:[FSPagerViewCell class] forCellWithReuseIdentifier:@"cell"];

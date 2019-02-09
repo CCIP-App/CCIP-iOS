@@ -28,11 +28,13 @@
 @implementation StatusViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     SEND_FIB(@"StatusViewController");
     [self.view setAutoresizingMask:UIViewAutoresizingNone];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     BOOL isKit = [[self.scenario objectForKey:@"id"] isEqualToString:@"kit"] || [[self.scenario objectForKey:@"id"] isEqualToString:@"vipkit"];
     NSString *dietType = [[self.scenario objectForKey:@"attr"] objectForKey:@"diet"];
     [self.statusMessageLabel setText:isKit ? NSLocalizedString(@"StatusNotice", nil) : NSLocalizedString([dietType stringByAppendingString:@"Lunch"], nil)];

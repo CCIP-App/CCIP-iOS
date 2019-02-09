@@ -87,6 +87,7 @@
 "ExpiredMessage" = "已超過使用的期限";
 "ExpiredButtonOk" = "知道了";
 "ExpiredOrNotAvailable" = "已過期或尚未開放使用";
+"OpenQRCodeFromFile" = "從檔案...";
 "QRFileNotAvailableTitle" = "擷取錯誤！";
 "QRFileNotAvailableDesc" = "該圖檔無法擷取出 QR Code，請重試";
 "Networking_Broken" = "網路連線異常";

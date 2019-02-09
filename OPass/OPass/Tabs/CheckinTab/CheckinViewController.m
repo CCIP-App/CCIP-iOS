@@ -623,7 +623,7 @@
         [button.layer setMasksToBounds:YES];
         [button.layer setCornerRadius:20.0f];
         
-        [button setTitle:@"Files" forState:UIControlStateNormal];
+        [button setTitle:NSLocalizedString(@"OpenQRCodeFromFile", nil) forState:UIControlStateNormal];
         [button setTintColor:[UIColor blackColor]];
         
         [button addTarget:self action:@selector(getImageFromLibrary) forControlEvents:UIControlEventTouchUpInside];
@@ -769,111 +769,111 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
                                                          bundle:nil];
     BOOL haveScenario = [[[AppDelegate delegateInstance] availableScenarios] count] > 0;
-    if (view == nil) {
-        if (haveScenario) {
-            CheckinCardViewController *temp = (CheckinCardViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CheckinCardReuseView"];
-            
-            [temp.view setFrame:cardRect];
-            view = temp.view;
-            
-            NSDictionary *scenario = [[[AppDelegate delegateInstance] availableScenarios] objectAtIndex:index];
-            
-            NSString *id = [scenario objectForKey:@"id"];
-            BOOL isCheckin = [id rangeOfString:@"checkin" options:NSCaseInsensitiveSearch].length > 0;
-            BOOL isLunch = [id rangeOfString:@"lunch" options:NSCaseInsensitiveSearch].length > 0;
-            BOOL isKit = [[id lowercaseString] isEqualToString:@"kit"];
-            BOOL isVipKit = [[id lowercaseString] isEqualToString:@"vipkit"];
-            BOOL isShirt = [[id lowercaseString] isEqualToString:@"shirt"];
-            BOOL isRadio = [id rangeOfString:@"radio" options:NSCaseInsensitiveSearch].length > 0;
-            [temp setId:id];
-            NSArray *dateRange = [AppDelegate parseRange:scenario];
-            NSString *availableRange = [NSString stringWithFormat:@"%@\n%@", [dateRange firstObject], [dateRange lastObject]];
-            NSDictionary *dd = [AppDelegate parseScenarioType:id];
-            NSString *did = [dd objectForKey:@"did"];
-            NSString *scenarioType = [dd objectForKey:@"scenarioType"];
-            NSDictionary *displayText = [scenario objectForKey:@"display_text"];
-            NSString *lang = [AppDelegate longLangUI];
-            UIImage *defaultIcon = [Constants AssertImageWithName:@"doc"
-                                                     InBundleName:@"PassAssets"];
-            UIImage *scenarioIcon = nilCoalesceDefault([Constants AssertImageWithName:scenarioType
-                                                                         InBundleName:@"PassAssets"], defaultIcon);
-            [temp.checkinTitle setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
-            [temp.checkinDate setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
-            [temp.checkinText setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
-            [temp.checkinTitle setText:[displayText objectForKey:lang]];
+    //if (view == nil) {
+    if (haveScenario) {
+        CheckinCardViewController *temp = (CheckinCardViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CheckinCardReuseView"];
+
+        [temp.view setFrame:cardRect];
+        view = temp.view;
+
+        NSDictionary *scenario = [[[AppDelegate delegateInstance] availableScenarios] objectAtIndex:index];
+
+        NSString *id = [scenario objectForKey:@"id"];
+        BOOL isCheckin = [id rangeOfString:@"checkin" options:NSCaseInsensitiveSearch].length > 0;
+        BOOL isLunch = [id rangeOfString:@"lunch" options:NSCaseInsensitiveSearch].length > 0;
+        BOOL isKit = [[id lowercaseString] isEqualToString:@"kit"];
+        BOOL isVipKit = [[id lowercaseString] isEqualToString:@"vipkit"];
+        BOOL isShirt = [[id lowercaseString] isEqualToString:@"shirt"];
+        BOOL isRadio = [id rangeOfString:@"radio" options:NSCaseInsensitiveSearch].length > 0;
+        [temp setId:id];
+        NSArray *dateRange = [AppDelegate parseRange:scenario];
+        NSString *availableRange = [NSString stringWithFormat:@"%@\n%@", [dateRange firstObject], [dateRange lastObject]];
+        NSDictionary *dd = [AppDelegate parseScenarioType:id];
+        NSString *did = [dd objectForKey:@"did"];
+        NSString *scenarioType = [dd objectForKey:@"scenarioType"];
+        NSDictionary *displayText = [scenario objectForKey:@"display_text"];
+        NSString *lang = [AppDelegate longLangUI];
+        UIImage *defaultIcon = [Constants AssertImageWithName:@"doc"
+                                                 InBundleName:@"PassAssets"];
+        UIImage *scenarioIcon = nilCoalesceDefault([Constants AssertImageWithName:scenarioType
+                                                                     InBundleName:@"PassAssets"], defaultIcon);
+        [temp.checkinTitle setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
+        [temp.checkinDate setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
+        [temp.checkinText setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
+        [temp.checkinTitle setText:[displayText objectForKey:lang]];
 //            [temp.checkinDate setText:NSLocalizedString(@"Title", nil)];
-            [temp.checkinDate setText:availableRange];
-            [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
-            [temp.checkinIcon setImage:scenarioIcon];
+        [temp.checkinDate setText:availableRange];
+        [temp.checkinText setText:NSLocalizedString(@"CheckinNotice", nil)];
+        [temp.checkinIcon setImage:scenarioIcon];
+        if (isCheckin) {
+            [temp.checkinIcon setImage:[Constants AssertImageWithName:[@"day" stringByAppendingString:did]
+                                                         InBundleName:@"PassAssets"]];
+            [temp.checkinText setText:NSLocalizedString(@"CheckinText", nil)];
+        }
+        if (isLunch) {
+            // nothing to do
+        }
+        if (isKit) {
+            // nothing to do
+        }
+        if (isVipKit) {
+            [temp.checkinText setText:NSLocalizedString(@"CheckinTextVipKit", nil)];
+        }
+        if (isShirt) {
+            [temp.checkinText setText:NSLocalizedString(@"CheckinStaffShirtNotice", nil)];
+        }
+        if (isRadio) {
+            [temp.checkinText setText:NSLocalizedString(@"CheckinStaffRadioNotice", nil)];
+        }
+
+        if ([scenario objectForKey:@"disabled"]) {
+            [temp setDisabled:[NSNumber numberWithBool:YES]];
+            [temp.checkinBtn setTitle:[scenario objectForKey:@"disabled"] forState:UIControlStateNormal];
+            [temp.checkinBtn setGradientColorFrom:[AppDelegate AppConfigColor:@"DisabledButtonLeftColor"]
+                                               to:[AppDelegate AppConfigColor:@"DisabledButtonRightColor"]
+                                       startPoint:CGPointMake(.2, .8)
+                                          toPoint:CGPointMake(1, .5)];
+        } else if ([scenario objectForKey:@"used"]) {
+            [temp setUsed:[NSNumber numberWithBool:YES]];
             if (isCheckin) {
-                [temp.checkinIcon setImage:[Constants AssertImageWithName:[@"day" stringByAppendingString:did]
-                                                             InBundleName:@"PassAssets"]];
-                [temp.checkinText setText:NSLocalizedString(@"CheckinText", nil)];
-            }
-            if (isLunch) {
-                // nothing to do
-            }
-            if (isKit) {
-                // nothing to do
-            }
-            if (isVipKit) {
-                [temp.checkinText setText:NSLocalizedString(@"CheckinTextVipKit", nil)];
-            }
-            if (isShirt) {
-                [temp.checkinText setText:NSLocalizedString(@"CheckinStaffShirtNotice", nil)];
-            }
-            if (isRadio) {
-                [temp.checkinText setText:NSLocalizedString(@"CheckinStaffRadioNotice", nil)];
-            }
-            
-            if ([scenario objectForKey:@"disabled"]) {
-                [temp setDisabled:[NSNumber numberWithBool:YES]];
-                [temp.checkinBtn setTitle:[scenario objectForKey:@"disabled"] forState:UIControlStateNormal];
-                [temp.checkinBtn setGradientColorFrom:[AppDelegate AppConfigColor:@"DisabledButtonLeftColor"]
-                                                   to:[AppDelegate AppConfigColor:@"DisabledButtonRightColor"]
-                                           startPoint:CGPointMake(.2, .8)
-                                              toPoint:CGPointMake(1, .5)];
-            } else if ([scenario objectForKey:@"used"]) {
-                [temp setUsed:[NSNumber numberWithBool:YES]];
-                if (isCheckin) {
-                    [temp.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil)
-                                     forState:UIControlStateNormal];
-                } else {
-                    [temp.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil)
-                                     forState:UIControlStateNormal];
-                }
-                [temp.checkinBtn setGradientColorFrom:[AppDelegate AppConfigColor:@"UsedButtonLeftColor"]
-                                                   to:[AppDelegate AppConfigColor:@"UsedButtonRightColor"]
-                                           startPoint:CGPointMake(.2, .8)
-                                              toPoint:CGPointMake(1, .5)];
+                [temp.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil)
+                                 forState:UIControlStateNormal];
             } else {
-                [temp setUsed:[NSNumber numberWithBool:NO]];
-                if (isCheckin) {
-                    [temp.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButton", nil)
-                                     forState:UIControlStateNormal];
-                } else {
-                    [temp.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil)
-                                     forState:UIControlStateNormal];
-                }
-                [temp.checkinBtn setGradientColorFrom:[AppDelegate AppConfigColor:@"CheckinButtonLeftColor"]
-                                                   to:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
-                                           startPoint:CGPointMake(.2, .8)
-                                              toPoint:CGPointMake(1, .5)];
+                [temp.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil)
+                                 forState:UIControlStateNormal];
             }
-            [temp.checkinBtn setTintColor:[UIColor whiteColor]];
-            
-            [temp setDelegate:self];
-            [temp setScenario:scenario];
+            [temp.checkinBtn setGradientColorFrom:[AppDelegate AppConfigColor:@"UsedButtonLeftColor"]
+                                               to:[AppDelegate AppConfigColor:@"UsedButtonRightColor"]
+                                       startPoint:CGPointMake(.2, .8)
+                                          toPoint:CGPointMake(1, .5)];
+        } else {
+            [temp setUsed:[NSNumber numberWithBool:NO]];
+            if (isCheckin) {
+                [temp.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButton", nil)
+                                 forState:UIControlStateNormal];
+            } else {
+                [temp.checkinBtn setTitle:NSLocalizedString(@"UseButton", nil)
+                                 forState:UIControlStateNormal];
+            }
+            [temp.checkinBtn setGradientColorFrom:[AppDelegate AppConfigColor:@"CheckinButtonLeftColor"]
+                                               to:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
+                                       startPoint:CGPointMake(.2, .8)
+                                          toPoint:CGPointMake(1, .5)];
+        }
+        [temp.checkinBtn setTintColor:[UIColor whiteColor]];
+
+        [temp setDelegate:self];
+        [temp setScenario:scenario];
 //        } else if ([[[AppDelegate appDelegate] availableDays] count] > 0 && [AppDelegate isAfterEvent]) {
 //            AfterEventViewController *temp = (AfterEventViewController *)[storyboard instantiateViewControllerWithIdentifier:@"AfterEventCardReuseView"];
 //
 //            [temp.view setFrame:cardRect];
 //            view = temp.view;
-        }
-    } else {
+    }
+    //} else {
         //get a reference to the label in the recycled view
         //        label = (UILabel *)[view viewWithTag:1];
-    }
+    //}
     
     //set item label
     //remember to always set any properties of your carousel item

@@ -164,18 +164,18 @@ static NSDateFormatter *formatter_date = nil;
 }
 
 - (void)actionFavorite:(NSString *)scheduleId {
-    NSDictionary *favProgram;
+    NSDictionary *favProgram = @{};
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSMutableArray *favorites = [NSMutableArray arrayWithArray:[userDefault arrayForKey:FAV_KEY]];
     for (NSDate *time in self.programTimes) {
         NSString *timeString = [formatter_date stringFromDate:time];
         for (NSDictionary *program in [self.programSections objectForKey:timeString]) {
-            if ([[self getID:program] isEqualToString:scheduleId]) {
+            if (program != nil && [[self getID:program] isEqualToString:scheduleId]) {
                 favProgram = program;
                 break;
             }
         }
-        if (favProgram) {
+        if ([[favProgram allKeys] count] > 0) {
             break;
         }
     }

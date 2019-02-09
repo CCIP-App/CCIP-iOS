@@ -87,6 +87,7 @@ static NSDateFormatter *formatter_date = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [headView setAlpha:0];
     [headView setHidden:NO];
     [UIView animateWithDuration:.5f
@@ -224,7 +225,7 @@ static NSDateFormatter *formatter_date = nil;
 }
 
 - (void)actionFavorite:(NSString *)scheduleId {
-    NSDictionary *favProgram;
+    NSDictionary *favProgram = @{};
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSMutableArray *favorites = [NSMutableArray arrayWithArray:[userDefault arrayForKey:FAV_KEY]];
     for (NSDictionary *program in favorites) {
