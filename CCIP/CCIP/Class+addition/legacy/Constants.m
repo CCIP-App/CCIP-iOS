@@ -24,6 +24,10 @@
     SEND_FIB(fib);
 }
 
++ (void)SendFIBEvent:(id)fib Event:(id)event {
+    SEND_FIB_EVENT(fib, event);
+}
+
 + (NSString *)WebToken:(id)patten useToken:(id)token {
     return WEB_TOKEN(patten, token);
 }

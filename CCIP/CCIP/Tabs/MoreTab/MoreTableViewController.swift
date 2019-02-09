@@ -20,7 +20,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         let destination = segue.destination
         let cell = sender as! UITableViewCell
         let title = cell.textLabel?.text
-        //SEND_FIB_EVENT(@"MoreTableView", @{ @"MoreTitle": title });
+        Constants.sendFIBEvent("MoreTableView", event: [ "MoreTitle": title ])
         destination.title = title
         cell.setSelected(false, animated: true)
     }
@@ -46,7 +46,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
 
         self.userInfo = AppDelegate.delegateInstance().userInfo as NSDictionary?
 
-        // SEND_FIB("MoreTableViewController");
+        Constants.sendFIB("MoreTableViewController");
 
         self.navigationItem.titleView?.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(navSingleTap))
