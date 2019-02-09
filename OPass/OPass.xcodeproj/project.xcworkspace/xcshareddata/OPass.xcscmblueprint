@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "AA4CAF1D869884DBD33213C565110D07C26E9C24",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "FE7792BCFB57366E10DA8FB0642DAA260E80C659" : 0,
+    "AA4CAF1D869884DBD33213C565110D07C26E9C24" : 0,
+    "EDD5A95C0B9BA456AC83DA491C4680B9358547CF" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D357A5C0-5711-4311-A424-4DAA5D947364",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "AA4CAF1D869884DBD33213C565110D07C26E9C24" : "CCIP-iOS\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "OPass",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "OPass\/OPass.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CCIP-App\/CCIP-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AA4CAF1D869884DBD33213C565110D07C26E9C24"
+    }
+  ]
+}

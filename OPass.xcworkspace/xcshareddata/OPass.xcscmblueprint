@@ -14,8 +14,8 @@
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "AA4CAF1D869884DBD33213C565110D07C26E9C24" : "CCIP-iOS\/"
   },
-  "DVTSourceControlWorkspaceBlueprintNameKey" : "CCIP",
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "OPass",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "CCIP.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "OPass.xcworkspace",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : []
 }

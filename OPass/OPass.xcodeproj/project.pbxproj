@@ -218,8 +218,8 @@
 		6B0DD9BF1F26AF0500AF32C5 /* ScheduleFavoriteDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFavoriteDelegate.h; sourceTree = "<group>"; };
 		6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WebViewAssets.bundle; sourceTree = "<group>"; };
 		6B19CFA3220E404C00262D99 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
-		6B2AEB7B1F23FF6F00C65868 /* CCIP.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = CCIP.release.xcconfig; sourceTree = "<group>"; };
-		6B2AEB7C1F23FF6F00C65868 /* CCIP.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = CCIP.debug.xcconfig; sourceTree = "<group>"; };
+		6B2AEB7B1F23FF6F00C65868 /* OPass.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = OPass.release.xcconfig; sourceTree = "<group>"; };
+		6B2AEB7C1F23FF6F00C65868 /* OPass.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = OPass.debug.xcconfig; sourceTree = "<group>"; };
 		6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+addition.h"; sourceTree = "<group>"; };
 		6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+addition.m"; sourceTree = "<group>"; };
 		6B2CD58A1D28780F00793194 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -260,15 +260,15 @@
 		6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleFavoriteTableViewController.m; sourceTree = "<group>"; };
 		6B75F4F0210F85460019ECD2 /* FeedbackType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackType.h; sourceTree = "<group>"; };
 		6B76DF6320B019B200EBEF06 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
-		6B9348AE1F2428A300F77757 /* CCIP.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CCIP.xcconfig; sourceTree = "<group>"; };
+		6B9348AE1F2428A300F77757 /* OPass.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = OPass.xcconfig; sourceTree = "<group>"; };
 		6BA1A5201D1EFBDC00D5924C /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
 		6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
-		6BB0B6091F1A74DF00AEB437 /* CCIP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CCIP.entitlements; sourceTree = "<group>"; };
+		6BB0B6091F1A74DF00AEB437 /* OPass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OPass.entitlements; sourceTree = "<group>"; };
 		6BB50FB11D665393002CAD0B /* AfterEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AfterEventViewController.h; sourceTree = "<group>"; };
 		6BB50FB21D665393002CAD0B /* AfterEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AfterEventViewController.m; sourceTree = "<group>"; };
-		6BB55CAB1F242EC7007BC840 /* CCIP-Build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "CCIP-Build.sh"; sourceTree = "<group>"; };
+		6BB55CAB1F242EC7007BC840 /* OPass-Build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "OPass-Build.sh"; sourceTree = "<group>"; };
 		6BC12A941F2B1B8000B14039 /* OPass-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OPass-Swift.h"; sourceTree = "<group>"; };
-		6BC12A951F2B1B8000B14039 /* CCIP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCIP-Bridging-Header.h"; sourceTree = "<group>"; };
+		6BC12A951F2B1B8000B14039 /* OPass-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OPass-Bridging-Header.h"; sourceTree = "<group>"; };
 		6BC12A961F2B1B8000B14039 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BCAC01B1F1A8FC100032096 /* OPass-Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OPass-Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCAC01E1F1A8FC100032096 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -283,8 +283,8 @@
 		6BCAC0351F1A8FC100032096 /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
 		6BCAC0371F1A8FC100032096 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6BCAC0391F1A8FC100032096 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6BCAC0441F1A8FCF00032096 /* CCIP-Watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CCIP-Watch.entitlements"; sourceTree = "<group>"; };
-		6BCAC0451F1A8FD200032096 /* CCIP-Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CCIP-Watch Extension.entitlements"; sourceTree = "<group>"; };
+		6BCAC0441F1A8FCF00032096 /* OPass-Watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "OPass-Watch.entitlements"; sourceTree = "<group>"; };
+		6BCAC0451F1A8FD200032096 /* OPass-Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "OPass-Watch Extension.entitlements"; sourceTree = "<group>"; };
 		6BD8EF271D1D73510094BE95 /* OPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -444,20 +444,20 @@
 			path = legacy;
 			sourceTree = "<group>";
 		};
-		6BCAC01C1F1A8FC100032096 /* CCIP-Watch */ = {
+		6BCAC01C1F1A8FC100032096 /* OPass-Watch */ = {
 			isa = PBXGroup;
 			children = (
-				6BCAC0441F1A8FCF00032096 /* CCIP-Watch.entitlements */,
+				6BCAC0441F1A8FCF00032096 /* OPass-Watch.entitlements */,
 				6BCAC01D1F1A8FC100032096 /* Interface.storyboard */,
 				6BCAC0221F1A8FC100032096 /* Info.plist */,
 			);
-			path = "CCIP-Watch";
+			path = "OPass-Watch";
 			sourceTree = "<group>";
 		};
-		6BCAC02B1F1A8FC100032096 /* CCIP-Watch Extension */ = {
+		6BCAC02B1F1A8FC100032096 /* OPass-Watch Extension */ = {
 			isa = PBXGroup;
 			children = (
-				6BCAC0451F1A8FD200032096 /* CCIP-Watch Extension.entitlements */,
+				6BCAC0451F1A8FD200032096 /* OPass-Watch Extension.entitlements */,
 				6BCAC02E1F1A8FC100032096 /* InterfaceController.h */,
 				6BCAC02F1F1A8FC100032096 /* InterfaceController.m */,
 				6BCAC0311F1A8FC100032096 /* ExtensionDelegate.h */,
@@ -468,7 +468,7 @@
 				6BCAC0391F1A8FC100032096 /* Info.plist */,
 				6BCAC02C1F1A8FC100032096 /* Supporting Files */,
 			);
-			path = "CCIP-Watch Extension";
+			path = "OPass-Watch Extension";
 			sourceTree = "<group>";
 		};
 		6BCAC02C1F1A8FC100032096 /* Supporting Files */ = {
@@ -482,10 +482,10 @@
 		6BD8EF1E1D1D73510094BE95 = {
 			isa = PBXGroup;
 			children = (
-				6BD8EF291D1D73510094BE95 /* CCIP */,
+				6BD8EF291D1D73510094BE95 /* OPass */,
 				6BFB83261F2B19C9005DCF00 /* Supporting Files */,
-				6BCAC01C1F1A8FC100032096 /* CCIP-Watch */,
-				6BCAC02B1F1A8FC100032096 /* CCIP-Watch Extension */,
+				6BCAC01C1F1A8FC100032096 /* OPass-Watch */,
+				6BCAC02B1F1A8FC100032096 /* OPass-Watch Extension */,
 				6BD8EF281D1D73510094BE95 /* Products */,
 				017A0FB6BC91053E5BA17E51 /* Pods */,
 				267251DBF9C24B92F4EE80DC /* Frameworks */,
@@ -502,14 +502,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6BD8EF291D1D73510094BE95 /* CCIP */ = {
+		6BD8EF291D1D73510094BE95 /* OPass */ = {
 			isa = PBXGroup;
 			children = (
 				6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */,
 				6B11BE841D4CBC9300B87EA9 /* Main.storyboard */,
 				6BC12A961F2B1B8000B14039 /* main.m */,
 				6BC12A941F2B1B8000B14039 /* OPass-Swift.h */,
-				6BC12A951F2B1B8000B14039 /* CCIP-Bridging-Header.h */,
+				6BC12A951F2B1B8000B14039 /* OPass-Bridging-Header.h */,
 				286D5FC51D6BD8EC005B6619 /* headers.h */,
 				6B75F4F0210F85460019ECD2 /* FeedbackType.h */,
 				288D3A731D599A1200E4E3A6 /* ScanditSDK */,
@@ -524,7 +524,7 @@
 				286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */,
 				6BFB831F1F2B18D0005DCF00 /* Tabs */,
 			);
-			path = CCIP;
+			path = OPass;
 			sourceTree = "<group>";
 		};
 		6BFB831D1F2B188A005DCF00 /* Class+addition */ = {
@@ -662,11 +662,11 @@
 				6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */,
 				6B036B8F1F24371600D5E5A5 /* Settings.bundle */,
 				6B023A9A20470F4B00F474F3 /* Info.plist */,
-				6BB0B6091F1A74DF00AEB437 /* CCIP.entitlements */,
-				6BB55CAB1F242EC7007BC840 /* CCIP-Build.sh */,
-				6B9348AE1F2428A300F77757 /* CCIP.xcconfig */,
-				6B2AEB7C1F23FF6F00C65868 /* CCIP.debug.xcconfig */,
-				6B2AEB7B1F23FF6F00C65868 /* CCIP.release.xcconfig */,
+				6BB0B6091F1A74DF00AEB437 /* OPass.entitlements */,
+				6BB55CAB1F242EC7007BC840 /* OPass-Build.sh */,
+				6B9348AE1F2428A300F77757 /* OPass.xcconfig */,
+				6B2AEB7C1F23FF6F00C65868 /* OPass.debug.xcconfig */,
+				6B2AEB7B1F23FF6F00C65868 /* OPass.release.xcconfig */,
 				6B76DF6320B019B200EBEF06 /* config.plist */,
 			);
 			path = "Supporting Files";
@@ -767,7 +767,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6BD8EF221D1D73510094BE95 /* Build configuration list for PBXProject "CCIP" */;
+			buildConfigurationList = 6BD8EF221D1D73510094BE95 /* Build configuration list for PBXProject "OPass" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -915,7 +915,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PROJECT_DIR/Supporting Files/CCIP-Build.sh\"\n";
+			shellScript = "\"${PROJECT_DIR}/Supporting Files/${TARGET_NAME}-Build.sh\"\n";
 		};
 		F46A6ED9AE1BFC01632EAC09 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1073,13 +1073,13 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CODE_SIGN_ENTITLEMENTS = "CCIP-Watch/CCIP-Watch.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/$(TARGET_NAME).entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
-				IBSC_MODULE = CCIP_Watch_Extension;
-				INFOPLIST_FILE = "CCIP-Watch/Info.plist";
+				IBSC_MODULE = "$(SWIFT_MODULE_NAME)_Extension";
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(WATCH_PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1097,12 +1097,12 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CODE_SIGN_ENTITLEMENTS = "CCIP-Watch/CCIP-Watch.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/$(TARGET_NAME).entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
-				IBSC_MODULE = CCIP_Watch_Extension;
-				INFOPLIST_FILE = "CCIP-Watch/Info.plist";
+				IBSC_MODULE = "$(SWIFT_MODULE_NAME)_Extension";
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(WATCH_PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1120,10 +1120,10 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CODE_SIGN_ENTITLEMENTS = "CCIP-Watch Extension/CCIP-Watch Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/$(TARGET_NAME).entitlements";
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
-				INFOPLIST_FILE = "CCIP-Watch Extension/Info.plist";
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(WATCH_EXTENSION_PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -1142,9 +1142,9 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CODE_SIGN_ENTITLEMENTS = "CCIP-Watch Extension/CCIP-Watch Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "$(TARGET_NAME)/$(TARGET_NAME).entitlements";
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
-				INFOPLIST_FILE = "CCIP-Watch Extension/Info.plist";
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(WATCH_EXTENSION_PRODUCT_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -1157,7 +1157,7 @@
 		};
 		6BD8EF3F1D1D73510094BE95 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B2AEB7C1F23FF6F00C65868 /* CCIP.debug.xcconfig */;
+			baseConfigurationReference = 6B2AEB7C1F23FF6F00C65868 /* OPass.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1217,7 +1217,7 @@
 		};
 		6BD8EF401D1D73510094BE95 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B2AEB7B1F23FF6F00C65868 /* CCIP.release.xcconfig */;
+			baseConfigurationReference = 6B2AEB7B1F23FF6F00C65868 /* OPass.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1279,13 +1279,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "Supporting Files/CCIP.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Supporting Files/$(TARGET_NAME).entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CCIP/ScanditSDK",
+					"$(PROJECT_DIR)/$(TARGET_NAME)/ScanditSDK",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"COSCUP=1",
@@ -1311,13 +1311,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "Supporting Files/CCIP.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Supporting Files/$(TARGET_NAME).entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CCIP/ScanditSDK",
+					"$(PROJECT_DIR)/$(TARGET_NAME)/ScanditSDK",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"COSCUP=1",
@@ -1357,7 +1357,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6BD8EF221D1D73510094BE95 /* Build configuration list for PBXProject "CCIP" */ = {
+		6BD8EF221D1D73510094BE95 /* Build configuration list for PBXProject "OPass" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6BD8EF3F1D1D73510094BE95 /* Debug */,

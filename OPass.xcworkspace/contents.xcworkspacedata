@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:CCIP/CCIP.xcodeproj">
+      location = "group:OPass/OPass.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:CCIP/Pods/Pods.xcodeproj">
+      location = "group:OPass/Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
