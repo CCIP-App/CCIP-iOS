@@ -31,9 +31,9 @@ import FontAwesome_swift
             return Constants.urlLogBot();
         }
     };
-    public static var URL_MAP : String {
+    public static var URL_VENUE : String {
         get {
-            return AppDelegate.appConfigURL("MapsPath");
+            return AppDelegate.appConfigURL("VenuePath");
         }
     }
     public static var URL_TELEGRAM_GROUP : String {

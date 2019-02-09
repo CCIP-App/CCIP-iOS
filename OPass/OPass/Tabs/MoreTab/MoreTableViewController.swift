@@ -61,8 +61,8 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
             (AppDelegate.appConfig("URL.tg_Chat") as! String).count > 0
                 ? "Telegram"
                 : "",
-            (AppDelegate.appConfig("URL.MapsPath") as! String).count > 0
-                ? "MapsWeb"
+            (AppDelegate.appConfig("URL.VenuePath") as! String).count > 0
+                ? "VenueWeb"
                 : "",
             (AppDelegate.appConfig("URL.StaffPath") as! String).count > 0
                 ? "StaffsWeb"
