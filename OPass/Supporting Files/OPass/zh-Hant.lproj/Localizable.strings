@@ -93,3 +93,11 @@
 "AfterEventMessage" = "在大會結束之後，我們需要您填寫一份問卷，感謝您！";
 "AfterEventActionTitle" = "開啟會後問卷";
 "EmptyScheduleDetailContent" = "";
+
+"icon-Puzzle" = "puzzle-piece";
+"icon-Ticket" = "ticket-alt";
+"icon-Telegram" = "telegram-plane";
+"icon-VenueWeb" = "map";
+"icon-StaffsWeb" = "user-friends";
+"icon-SponsorsWeb" = "hands-helping";
+"icon-Acknowledgements" = "people-carry";
