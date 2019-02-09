@@ -446,54 +446,6 @@
 			path = legacy;
 			sourceTree = "<group>";
 		};
-		6B70EF38204C5B9C00C63E63 /* StaffWebView */ = {
-			isa = PBXGroup;
-			children = (
-				6B4FCB29218F98740005469F /* StaffWebViewController.swift */,
-			);
-			path = StaffWebView;
-			sourceTree = "<group>";
-		};
-		6B70EF39204C5BAD00C63E63 /* SponsorWebView */ = {
-			isa = PBXGroup;
-			children = (
-				6B4FCB2B218F98840005469F /* SponsorWebViewController.swift */,
-			);
-			path = SponsorWebView;
-			sourceTree = "<group>";
-		};
-		6B7F713D1F25F797004E43CA /* TicketView */ = {
-			isa = PBXGroup;
-			children = (
-				6B5AABC4220CB02400C01C54 /* MyTicketViewController.swift */,
-			);
-			path = TicketView;
-			sourceTree = "<group>";
-		};
-		6B7F713E1F25F797004E43CA /* TelegramView */ = {
-			isa = PBXGroup;
-			children = (
-				6B4FCB27218F97B60005469F /* TelegramController.swift */,
-			);
-			path = TelegramView;
-			sourceTree = "<group>";
-		};
-		6B7F713F1F25F797004E43CA /* PuzzleView */ = {
-			isa = PBXGroup;
-			children = (
-				6B4FCB2D218F99260005469F /* PuzzleViewController.swift */,
-			);
-			path = PuzzleView;
-			sourceTree = "<group>";
-		};
-		6BAD226320B1F2C900155F3F /* MapsWebView */ = {
-			isa = PBXGroup;
-			children = (
-				6B4FCB25218F84640005469F /* MapsWebViewController.swift */,
-			);
-			path = MapsWebView;
-			sourceTree = "<group>";
-		};
 		6BCAC01C1F1A8FC100032096 /* CCIP-Watch */ = {
 			isa = PBXGroup;
 			children = (
@@ -575,16 +527,6 @@
 				6BFB831F1F2B18D0005DCF00 /* Tabs */,
 			);
 			path = CCIP;
-			sourceTree = "<group>";
-		};
-		6BFB831A1F2B1835005DCF00 /* AcknowledgementsView */ = {
-			isa = PBXGroup;
-			children = (
-				28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */,
-				28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */,
-				6BE8A229220DC84C0035CFD8 /* AcknowledgementsViewController.swift */,
-			);
-			path = AcknowledgementsView;
 			sourceTree = "<group>";
 		};
 		6BFB831D1F2B188A005DCF00 /* Class+addition */ = {
@@ -691,13 +633,15 @@
 			children = (
 				6B19CFA3220E404C00262D99 /* MoreTableViewController.swift */,
 				6B4FCB09218E5A0F0005469F /* MoreCell.swift */,
-				6B7F713F1F25F797004E43CA /* PuzzleView */,
-				6B7F713D1F25F797004E43CA /* TicketView */,
-				6B7F713E1F25F797004E43CA /* TelegramView */,
-				6BAD226320B1F2C900155F3F /* MapsWebView */,
-				6B70EF38204C5B9C00C63E63 /* StaffWebView */,
-				6B70EF39204C5BAD00C63E63 /* SponsorWebView */,
-				6BFB831A1F2B1835005DCF00 /* AcknowledgementsView */,
+				6B4FCB2D218F99260005469F /* PuzzleViewController.swift */,
+				6B5AABC4220CB02400C01C54 /* MyTicketViewController.swift */,
+				6B4FCB27218F97B60005469F /* TelegramController.swift */,
+				6B4FCB25218F84640005469F /* MapsWebViewController.swift */,
+				6B4FCB29218F98740005469F /* StaffWebViewController.swift */,
+				6B4FCB2B218F98840005469F /* SponsorWebViewController.swift */,
+				6BE8A229220DC84C0035CFD8 /* AcknowledgementsViewController.swift */,
+				28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */,
+				28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */,
 			);
 			path = MoreTab;
 			sourceTree = "<group>";
