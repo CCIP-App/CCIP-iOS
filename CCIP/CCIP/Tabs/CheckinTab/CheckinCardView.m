@@ -131,11 +131,11 @@
                                                   toPoint:CGPointMake(1, .5)];
                     if (isCheckin) {
                         [self.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil) forState:UIControlStateNormal];
-                        [[AppDelegate appDelegate].checkinView reloadCard];
+                        [[AppDelegate delegateInstance].checkinView reloadCard];
                     } else {
                         [self.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil) forState:UIControlStateNormal];
                     }
-                    [[AppDelegate appDelegate] setDefaultShortcutItems];
+                    [[AppDelegate delegateInstance] setDefaultShortcutItems];
                 }
             } else {
                 // Invalid Network

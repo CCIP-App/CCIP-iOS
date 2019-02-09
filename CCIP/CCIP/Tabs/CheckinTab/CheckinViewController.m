@@ -50,7 +50,7 @@
 
 - (void)setUserInfo:(NSDictionary *)userInfo {
     _userInfo = userInfo;
-    [[AppDelegate appDelegate] setUserInfo:userInfo];
+    [[AppDelegate delegateInstance] setUserInfo:userInfo];
 }
 
 #pragma mark View Events
@@ -62,7 +62,7 @@
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
     
-    [[AppDelegate appDelegate] setCheckinView:self];
+    [[AppDelegate delegateInstance] setCheckinView:self];
     
     // set logo on nav title
     UIView *logoView = [[UIImageView alloc] initWithImage:[Constants AssertImageWithName:@"conf-logo"
@@ -108,8 +108,8 @@
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
 
-    [[[AppDelegate appDelegate] beacon] checkAvailableAndRequestAuthorization];
-    [[[AppDelegate appDelegate] beacon] registerBeaconRegionWithUUIDWithUuidString:BEACON_UUID
+    [[[AppDelegate delegateInstance] beacon] checkAvailableAndRequestAuthorization];
+    [[[AppDelegate delegateInstance] beacon] registerBeaconRegionWithUUIDWithUuidString:BEACON_UUID
                                                                         identifier:BEACON_ID
                                                                          isMonitor:YES];
 }
@@ -188,7 +188,7 @@
                     NSLog(@"-- Clearing the Token --");
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                     [AppDelegate setAccessToken:@""];
-                    [[AppDelegate appDelegate].checkinView reloadCard];
+                    [[AppDelegate delegateInstance].checkinView reloadCard];
                 } else {
                     NSLog(@"-- Token is already clear --");
                 }
@@ -279,7 +279,7 @@
 //                [self.cards scrollToItemAtIndex:0
 //                                       animated:YES];
                 // auto scroll to first unused and available item
-                NSArray *scenarios = [[AppDelegate appDelegate] availableScenarios];
+                NSArray *scenarios = [[AppDelegate delegateInstance] availableScenarios];
                 for (NSDictionary *scenario in scenarios) {
                     BOOL used = [scenario objectForKey:@"used"] != nil;
                     BOOL disabled = [scenario objectForKey:@"disabled"] != nil;
@@ -324,7 +324,7 @@
             self.scenarios = [NSArray new];
             [AppDelegate sendTag:@"user_id"
                            value:@""];
-            [[AppDelegate appDelegate] setScenarios:self.scenarios];
+            [[AppDelegate delegateInstance] setScenarios:self.scenarios];
             [self reloadAndGoToCard];
         }
     } else {
@@ -353,10 +353,10 @@
                                                      @"attr" // wait for cleanup
                                                      ]];
                     [AppDelegate sendTags:[NSDictionary dictionaryWithDictionary:userTags]];
-                    if ([AppDelegate appDelegate].isLoginSession) {
-                        [[AppDelegate appDelegate] displayGreetingsForLogin];
+                    if ([AppDelegate delegateInstance].isLoginSession) {
+                        [[AppDelegate delegateInstance] displayGreetingsForLogin];
                     }
-                    [[AppDelegate appDelegate] setScenarios:self.scenarios];
+                    [[AppDelegate delegateInstance] setScenarios:self.scenarios];
                     [self reloadAndGoToCard];
                 }
             } else {
@@ -734,14 +734,14 @@
 
 #pragma mark iCarousel methods
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel {
-    if ([[[AppDelegate appDelegate] availableScenarios] count] > 0) {
+    if ([[[AppDelegate delegateInstance] availableScenarios] count] > 0) {
         [self.pageControl setCurrentPage:carousel.currentItemIndex];
     }
 }
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
     //return the total number of items in the carousel
-    NSInteger count = [[[AppDelegate appDelegate] availableScenarios] count];
+    NSInteger count = [[[AppDelegate delegateInstance] availableScenarios] count];
     [self.pageControl setNumberOfPages:count];
     return count;
 }
@@ -768,7 +768,7 @@
     //create new view if no view is available for recycling
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
                                                          bundle:nil];
-    BOOL haveScenario = [[[AppDelegate appDelegate] availableScenarios] count] > 0;
+    BOOL haveScenario = [[[AppDelegate delegateInstance] availableScenarios] count] > 0;
     if (view == nil) {
         if (haveScenario) {
             CheckinCardViewController *temp = (CheckinCardViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CheckinCardReuseView"];
@@ -776,7 +776,7 @@
             [temp.view setFrame:cardRect];
             view = temp.view;
             
-            NSDictionary *scenario = [[[AppDelegate appDelegate] availableScenarios] objectAtIndex:index];
+            NSDictionary *scenario = [[[AppDelegate delegateInstance] availableScenarios] objectAtIndex:index];
             
             NSString *id = [scenario objectForKey:@"id"];
             BOOL isCheckin = [id rangeOfString:@"checkin" options:NSCaseInsensitiveSearch].length > 0;

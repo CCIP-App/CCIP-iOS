@@ -33,12 +33,8 @@
 
 @implementation AppDelegate
 
-+ (AppDelegate *)appDelegate {
-    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
-}
-
 + (AppDelegate *)delegateInstance {
-    return [self appDelegate];
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 + (id)AppConfig:(NSString *)path {
@@ -152,7 +148,7 @@
                          forKey:@"token"];
     [OneSignal sendTag:@"token"
                  value:accessToken];
-    [[AppDelegate appDelegate] setDefaultShortcutItems];
+    [[AppDelegate delegateInstance] setDefaultShortcutItems];
 }
 
 + (NSString *)accessToken {
@@ -198,7 +194,7 @@
 }
 
 + (void)setLoginSession:(BOOL)isLogin {
-    [[AppDelegate appDelegate] setIsLoginSession:isLogin];
+    [[AppDelegate delegateInstance] setIsLoginSession:isLogin];
 }
 
 + (NSDictionary *)parseScenarioType:(NSString *)id {
@@ -461,7 +457,7 @@
     if (isOldScheme) {
         // from old scheme
         if ([urlHost isEqualToString:@"login"] && [params objectForKey:@"token"] != nil) {
-            [[AppDelegate appDelegate] setIsLoginSession:YES];
+            [[AppDelegate delegateInstance] setIsLoginSession:YES];
             [AppDelegate setAccessToken:[params objectForKey:@"token"]];
             
             if (self.checkinView != nil) {
@@ -471,7 +467,7 @@
     } else {
         // from Universal Link
         if ([params objectForKey:@"token"] != nil) {
-            [[AppDelegate appDelegate] setIsLoginSession:YES];
+            [[AppDelegate delegateInstance] setIsLoginSession:YES];
             [AppDelegate setAccessToken:[params objectForKey:@"token"]];
             
             if (self.checkinView != nil) {
@@ -724,7 +720,7 @@
 @implementation UIView (AppDelegate)
 
 + (AppDelegate *)appDelegate {
-    return [AppDelegate appDelegate];
+    return [AppDelegate delegateInstance];
 }
 
 - (void)registerForceTouch {
@@ -736,7 +732,7 @@
 @implementation UIViewController (AppDelegate)
 
 + (AppDelegate *)appDelegate {
-    return [AppDelegate appDelegate];
+    return [AppDelegate delegateInstance];
 }
 
 - (void)registerForceTouch {

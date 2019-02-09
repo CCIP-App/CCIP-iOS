@@ -38,7 +38,6 @@
 @property (strong, nonatomic) CheckinViewController * _Null_unspecified checkinView;
 @property (readonly, nonatomic) NSArray * _Null_unspecified availableScenarios;
 
-+ (AppDelegate * _Nonnull)appDelegate __deprecated_msg("Use delegateInstance instead");
 + (AppDelegate * _Nonnull)delegateInstance;
 + (id _Nonnull)AppConfig:( NSString * _Nonnull )path;
 + (UIColor * _Nonnull)AppConfigColor:( NSString * _Nonnull )path;

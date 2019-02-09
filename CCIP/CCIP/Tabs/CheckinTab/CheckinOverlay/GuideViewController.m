@@ -180,7 +180,7 @@
                     if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
                         [AppDelegate setLoginSession:YES];
                         [AppDelegate setAccessToken:code];
-                        [[AppDelegate appDelegate].checkinView reloadCard];
+                        [[AppDelegate delegateInstance].checkinView reloadCard];
                         [self dismissViewControllerAnimated:YES
                                                  completion:nil];
                     }
