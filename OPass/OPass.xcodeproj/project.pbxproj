@@ -512,7 +512,6 @@
 				6BC12A951F2B1B8000B14039 /* OPass-Bridging-Header.h */,
 				286D5FC51D6BD8EC005B6619 /* headers.h */,
 				6B75F4F0210F85460019ECD2 /* FeedbackType.h */,
-				288D3A731D599A1200E4E3A6 /* ScanditSDK */,
 				6BFB831D1F2B188A005DCF00 /* Class+addition */,
 				6BFB831E1F2B18A4005DCF00 /* CustomSegue */,
 				6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */,
@@ -659,6 +658,7 @@
 			isa = PBXGroup;
 			children = (
 				6B023A7E2046FA4400F474F3 /* OPass */,
+				288D3A731D599A1200E4E3A6 /* ScanditSDK */,
 				6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */,
 				6B036B8F1F24371600D5E5A5 /* Settings.bundle */,
 				6B023A9A20470F4B00F474F3 /* Info.plist */,
