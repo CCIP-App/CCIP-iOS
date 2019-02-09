@@ -21,8 +21,8 @@ import UIKit
             let QRImage = TicketQRCodeImage.generate(
                 AppDelegate.accessToken(),
                 size: (self.ivQRCode?.frame.size)!,
-                backgroundColor: CIColor.white,
-                foregroundColor: CIColor.black,
+                backgroundColor: CGColor.EFWhite(),
+                foregroundColor: CGColor.EFBlack(),
                 watermark: nil
             )
             let qrImage = UIImage.init(cgImage: QRImage!)
