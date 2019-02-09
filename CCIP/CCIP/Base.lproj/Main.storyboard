@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.59" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vFY-Ie-dA7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vFY-Ie-dA7">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.45"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -708,7 +708,7 @@ Please copy and paste the token into next field or click the token link in the r
                                 <rect key="frame" x="0.0" y="364" width="426" height="307"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleAbstract" rowHeight="250" id="qgL-2l-vLc" customClass="ScheduleAbstractViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleAbstract" rowHeight="250" id="qgL-2l-vLc" customClass="ScheduleAbstractViewCell">
                                         <rect key="frame" x="0.0" y="28" width="426" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qgL-2l-vLc" id="70q-mM-EDD">
@@ -716,10 +716,10 @@ Please copy and paste the token into next field or click the token link in the r
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RMM-hf-aQ8">
-                                                    <rect key="frame" x="43" y="21" width="340" height="208"/>
+                                                    <rect key="frame" x="43" y="21" width="352" height="208"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abstract" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="js4-QC-0N1">
-                                                            <rect key="frame" x="22" y="28" width="296" height="21"/>
+                                                            <rect key="frame" x="22" y="28" width="308" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="82g-Nd-Jny"/>
                                                             </constraints>
@@ -728,7 +728,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8G0-OA-Hz1">
-                                                            <rect key="frame" x="22" y="60" width="296" height="120"/>
+                                                            <rect key="frame" x="22" y="60" width="308" height="120"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -767,10 +767,10 @@ Please copy and paste the token into next field or click the token link in the r
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCd-th-Z6D">
-                                                    <rect key="frame" x="31" y="18" width="358" height="213.66666666666666"/>
+                                                    <rect key="frame" x="31" y="18" width="364" height="213.66666666666666"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6h-vx-Zyl">
-                                                            <rect key="frame" x="22" y="28" width="314" height="21"/>
+                                                            <rect key="frame" x="22" y="28" width="320" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="BAb-IW-Lpy"/>
                                                             </constraints>
@@ -779,7 +779,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ei5-NI-34T">
-                                                            <rect key="frame" x="22" y="60.000000000000007" width="314" height="125.66666666666669"/>
+                                                            <rect key="frame" x="22" y="60.000000000000007" width="320" height="125.66666666666669"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1098,7 +1098,7 @@ Label2</string>
         <!--More-->
         <scene sceneID="02H-op-VcU">
             <objects>
-                <viewController id="nut-2v-3J8" userLabel="More" customClass="MoreTableViewController" sceneMemberID="viewController">
+                <viewController id="nut-2v-3J8" userLabel="More" customClass="MoreTableViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ni5-vi-8U5" customClass="More">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
