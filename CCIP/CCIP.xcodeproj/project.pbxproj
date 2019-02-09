@@ -52,7 +52,6 @@
 		6B10CE8E1F29988100EB98F2 /* WebViewAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */; };
 		6B11BE821D4CBC9300B87EA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B11BE841D4CBC9300B87EA9 /* Main.storyboard */; };
 		6B19CFA4220E404C00262D99 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B19CFA3220E404C00262D99 /* MoreTableViewController.swift */; };
-		6B26D9131F23EE28003D9CA1 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */; };
 		6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */; };
 		6B2CD58B1D28780F00793194 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD58A1D28780F00793194 /* AudioToolbox.framework */; };
 		6B2CD59A1D2886C900793194 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B2CD5971D2886C900793194 /* Localizable.strings */; };
@@ -219,7 +218,6 @@
 		6B0DD9BF1F26AF0500AF32C5 /* ScheduleFavoriteDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFavoriteDelegate.h; sourceTree = "<group>"; };
 		6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WebViewAssets.bundle; sourceTree = "<group>"; };
 		6B19CFA3220E404C00262D99 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
-		6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fontawesome-webfont.ttf"; path = "../../FontAwesome/fonts/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		6B2AEB7B1F23FF6F00C65868 /* CCIP.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = CCIP.release.xcconfig; sourceTree = "<group>"; };
 		6B2AEB7C1F23FF6F00C65868 /* CCIP.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = CCIP.debug.xcconfig; sourceTree = "<group>"; };
 		6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+addition.h"; sourceTree = "<group>"; };
@@ -669,7 +667,6 @@
 				6B9348AE1F2428A300F77757 /* CCIP.xcconfig */,
 				6B2AEB7C1F23FF6F00C65868 /* CCIP.debug.xcconfig */,
 				6B2AEB7B1F23FF6F00C65868 /* CCIP.release.xcconfig */,
-				6B26D9121F23EE28003D9CA1 /* fontawesome-webfont.ttf */,
 				6B76DF6320B019B200EBEF06 /* config.plist */,
 			);
 			path = "Supporting Files";
@@ -832,7 +829,6 @@
 				6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */,
 				6BF331521F299207004BEEA6 /* AssetsUI.bundle in Resources */,
 				6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */,
-				6B26D9131F23EE28003D9CA1 /* fontawesome-webfont.ttf in Resources */,
 				6B10CE8E1F29988100EB98F2 /* WebViewAssets.bundle in Resources */,
 				6BF331501F2991C4004BEEA6 /* PassAssets.bundle in Resources */,
 				5F75A479AF13F31C57E574C7 /* Pods-OPass-metadata.plist in Resources */,
@@ -857,6 +853,7 @@
 				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
 				"${BUILT_PRODUCTS_DIR}/EFQRCode/EFQRCode.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/ICViewPager/ICViewPager.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
@@ -884,6 +881,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EFQRCode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ICViewPager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",

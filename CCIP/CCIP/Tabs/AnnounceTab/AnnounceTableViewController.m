@@ -209,6 +209,12 @@
     
     if (hasURL) {
         [cell.lbURL setText:uri];
+        NSDictionary *titleAttribute = @{
+                                         NSFontAttributeName: [Constants fontOfAwesomeWithSize:20 inStyle:fontAwesomeStyleSolid],
+                                         NSForegroundColorAttributeName: cell.lbIconOfURL.textColor,
+                                         };
+        NSAttributedString *title = [[NSAttributedString alloc] initWithString:[Constants fontAwesomeWithCode:@"fa-external-link-alt"] attributes:titleAttribute];
+        [cell.lbIconOfURL setAttributedText:title];
     } else {
         [cell.lbURL setText:@""];
     }

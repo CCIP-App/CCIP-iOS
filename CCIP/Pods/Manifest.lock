@@ -49,6 +49,7 @@ PODS:
     - FirebaseCore (~> 5.2)
     - GoogleUtilities/Environment (~> 5.3)
     - GoogleUtilities/UserDefaults (~> 5.3)
+  - FontAwesome.swift (1.4.9)
   - FSPagerView (0.8.2)
   - GoogleAppMeasurement (5.5.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
@@ -111,6 +112,7 @@ DEPENDENCIES:
   - EFQRCode (~> 4.5)
   - Firebase/Core
   - Firebase/DynamicLinks
+  - FontAwesome.swift
   - FSPagerView
   - iCarousel (~> 1.8)
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
@@ -142,6 +144,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseDynamicLinks
     - FirebaseInstanceID
+    - FontAwesome.swift
     - FSPagerView
     - GoogleAppMeasurement
     - GoogleUtilities
@@ -189,6 +192,7 @@ SPEC CHECKSUMS:
   FirebaseCore: ea2d1816723ef21492b8e9113303e1350db5e08c
   FirebaseDynamicLinks: 83a0071c95ad715bc324fcb8f51028d5b6a58af0
   FirebaseInstanceID: 97ea7a5dca9afd72c79bfcdddb7a44aa1cbb42a1
+  FontAwesome.swift: 7f831846e85b93d32ded5d86983804b749921760
   FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
   GoogleAppMeasurement: 621f3bc6211d5ba548debe01fafad30cf5ab6859
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
@@ -209,6 +213,6 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: e0f5013760c4191f6aceef5851cf80847f8b823c
+PODFILE CHECKSUM: e5eeb450d52d15c96b7dbbf6ccaf00833c79313b
 
 COCOAPODS: 1.6.0

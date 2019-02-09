@@ -30,10 +30,17 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+
     
+    NSDictionary *titleAttribute = @{
+                                     NSFontAttributeName: [Constants fontOfAwesomeWithSize:20 inStyle:fontAwesomeStyleSolid],
+                                     NSForegroundColorAttributeName: [UIColor whiteColor],
+                                     };
+    NSAttributedString *title = [[NSAttributedString alloc] initWithString:[Constants fontAwesomeWithCode:@"fa-heart"] attributes:titleAttribute];
+
     UIButton *favButton = [UIButton new];
-    [favButton setTitle:FAVORITE_LIKE
-               forState:UIControlStateNormal];
+    [favButton setAttributedTitle:title
+                         forState:UIControlStateNormal];
     [favButton addTarget:self
                   action:@selector(showFavoritesTouchDown)
         forControlEvents:UIControlEventTouchDown];
@@ -43,17 +50,18 @@
     [favButton addTarget:self
                   action:@selector(showFavoritesTouchUpOutside)
         forControlEvents:UIControlEventTouchUpOutside];
-    [favButton.titleLabel setFont:[UIFont fontWithName:@"FontAwesome"
-                                                  size:20.0f]];
     [favButton sizeToFit];
     UIBarButtonItem *favoritesButton = [[UIBarButtonItem alloc] initWithCustomView:favButton];
     [self.navigationItem setRightBarButtonItem:favoritesButton];
-    
+
+    NSDictionary *titleAttributeFake = @{
+                                     NSFontAttributeName: [Constants fontOfAwesomeWithSize:20 inStyle:fontAwesomeStyleSolid],
+                                     NSForegroundColorAttributeName: [UIColor clearColor],
+                                     };
+    NSAttributedString *titleFake = [[NSAttributedString alloc] initWithString:[Constants fontAwesomeWithCode:@"fa-heart"] attributes:titleAttributeFake];
     UIButton *favButtonFake = [UIButton new];
-    [favButtonFake setTitle:FAVORITE_LIKE
-                   forState:UIControlStateNormal];
-    [favButtonFake.titleLabel setFont:[UIFont fontWithName:@"FontAwesome"
-                                                      size:20.0f]];
+    [favButtonFake setAttributedTitle:titleFake
+                             forState:UIControlStateNormal];
     [favButtonFake setTitleColor:[UIColor clearColor]
                         forState:UIControlStateNormal];
     [favButtonFake sizeToFit];

@@ -32,6 +32,7 @@ def ccip_pods
     pod 'Collection'
     pod 'thenPromise'
     pod 'Down'
+    pod 'FontAwesome.swift'
 end
 
 target 'OPass' do

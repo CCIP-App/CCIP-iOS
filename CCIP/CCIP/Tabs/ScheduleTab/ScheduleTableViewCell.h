@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ScheduleFavoriteDelegate.h"
 
-#define FAVORITE_LIKE       (@"")
-#define FAVORITE_DISLIKE    (@"")
-
 @interface ScheduleTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) id<ScheduleFavoriteDelegate> delegate;

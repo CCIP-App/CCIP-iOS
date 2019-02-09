@@ -36,7 +36,6 @@ static NSDateFormatter *formatter_date = nil;
     }
     [self.LabelLabel setTextColor:[UIColor colorFromHtmlColor:@"#9B9B9B"]];
     [self.LabelLabel setBackgroundColor:[UIColor colorFromHtmlColor:@"#D8D8D8"]];
-    [self.FavoriteButton setTintColor:[AppDelegate AppConfigColor:@"FavoriteButtonColor"]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -103,8 +102,13 @@ static NSDateFormatter *formatter_date = nil;
 
 - (void)setFavorite:(BOOL)favorite {
     _favorite = favorite;
-    [self.FavoriteButton setTitle:_favorite ? FAVORITE_LIKE : FAVORITE_DISLIKE
-                         forState:UIControlStateNormal];
+    NSDictionary *titleAttribute = @{
+                                     NSFontAttributeName: [Constants fontOfAwesomeWithSize:20 inStyle:(_favorite ? fontAwesomeStyleSolid : fontAwesomeStyleRegular)],
+                                     NSForegroundColorAttributeName: [AppDelegate AppConfigColor:@"FavoriteButtonColor"],
+                                     };
+    NSAttributedString *title = [[NSAttributedString alloc] initWithString:[Constants fontAwesomeWithCode:@"fa-heart"] attributes:titleAttribute];
+    [self.FavoriteButton setAttributedTitle:title
+                                   forState:UIControlStateNormal];
 }
 
 - (BOOL)getFavorite {

@@ -7,6 +7,13 @@
 //
 
 import Foundation
+import FontAwesome_swift
+
+@objc enum fontAwesomeStyle: Int {
+    case solid
+    case regular
+    case brands
+}
 
 @objc extension Constants {
     public static var AccessToken : String {
@@ -65,5 +72,20 @@ import Foundation
         let bundlePath = Bundle.main.bundlePath.appendingPathComponent("\(bundleName).bundle")
         let bundle = Bundle.init(path: bundlePath)!
         return UIImage.init(named: imageName, in: bundle, compatibleWith: nil)
+    }
+    @objc static func fontAwesome(code: String) -> String? {
+        return String.fontAwesomeIcon(code: code)
+    }
+    @objc static func fontOfAwesome(withSize: CGFloat, inStyle: fontAwesomeStyle) -> UIFont {
+        var style: FontAwesomeStyle = FontAwesomeStyle.regular
+        switch inStyle {
+            case .brands:
+                style = .brands
+            case .regular:
+                style = .regular
+            case .solid:
+                style = .solid
+        }
+        return UIFont.fontAwesome(ofSize: withSize, style: style)
     }
 }

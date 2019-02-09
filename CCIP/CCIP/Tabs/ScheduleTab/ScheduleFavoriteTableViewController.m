@@ -44,13 +44,17 @@ static NSDateFormatter *formatter_date = nil;
     [self parseFavorites];
     
     [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
-    
+
+    NSDictionary *titleAttribute = @{
+                                     NSFontAttributeName: [Constants fontOfAwesomeWithSize:20 inStyle:fontAwesomeStyleSolid],
+                                     NSForegroundColorAttributeName: [UIColor whiteColor],
+                                     };
+    NSAttributedString *title = [[NSAttributedString alloc] initWithString:[Constants fontAwesomeWithCode:@"fa-heart"] attributes:titleAttribute];
+
     UILabel *lbTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
     [lbTitle setTextAlignment:NSTextAlignmentCenter];
     [lbTitle setTextColor:[UIColor whiteColor]];
-    [lbTitle setText:FAVORITE_LIKE];
-    [lbTitle setFont:[UIFont fontWithName:@"FontAwesome"
-                                     size:20.0f]];
+    [lbTitle setAttributedText:title];
     [self.navigationItem setTitleView:lbTitle];
     [self.navigationItem setTitle:@""];
     
@@ -66,12 +70,15 @@ static NSDateFormatter *formatter_date = nil;
     [self.navigationController.navigationBar.superview addSubview:headView];
     [self.navigationController.navigationBar.superview bringSubviewToFront:headView];
     [self.navigationController.navigationBar.superview bringSubviewToFront:self.navigationController.navigationBar];
-    
+
+    NSDictionary *titleAttributeFake = @{
+                                         NSFontAttributeName: [Constants fontOfAwesomeWithSize:20 inStyle:fontAwesomeStyleSolid],
+                                         NSForegroundColorAttributeName: [UIColor clearColor],
+                                         };
+    NSAttributedString *titleFake = [[NSAttributedString alloc] initWithString:[Constants fontAwesomeWithCode:@"fa-heart"] attributes:titleAttributeFake];
     UIButton *favButtonFake = [UIButton new];
-    [favButtonFake setTitle:FAVORITE_LIKE
-                   forState:UIControlStateNormal];
-    [favButtonFake.titleLabel setFont:[UIFont fontWithName:@"FontAwesome"
-                                                      size:20.0f]];
+    [favButtonFake setAttributedTitle:titleFake
+                             forState:UIControlStateNormal];
     [favButtonFake setTitleColor:[UIColor clearColor]
                         forState:UIControlStateNormal];
     [favButtonFake sizeToFit];
