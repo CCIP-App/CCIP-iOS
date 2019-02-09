@@ -138,7 +138,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         return self.moreItems!.count
     }
 
-    func tableView(_ tableView: UITableView, titleForHeaderIn section:NSInteger) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section:NSInteger) -> String? {
         return self.userInfo != nil && self.userInfo!.allKeys.contains(where: { $0 as! String == "user_id" }) ? String(format: NSLocalizedString("Hi", comment: ""), self.userInfo!.object(forKey: "user_id") as! CVarArg) : nil;
     }
 
