@@ -58,12 +58,12 @@ import Foundation
     public static func GravatarAvatar(_ hash: String) -> String {
         return String(format: "https://www.gravatar.com/avatar/\(hash)?s=86&\(hash.count > 0 ? "r=x" : "f=y&d=mm")")
     }
-    @objc static func AssertImage(name: String, InBundleName: String) -> UIImage {
+    @objc static func AssertImage(name: String, InBundleName: String) -> UIImage? {
         return AssertImage(InBundleName, name)
     }
-    public static func AssertImage(_ bundleName: String, _ imageName: String ) -> UIImage {
+    public static func AssertImage(_ bundleName: String, _ imageName: String ) -> UIImage? {
         let bundlePath = Bundle.main.bundlePath.appendingPathComponent("\(bundleName).bundle")
         let bundle = Bundle.init(path: bundlePath)!
-        return UIImage.init(named: imageName, in: bundle, compatibleWith: nil)!
+        return UIImage.init(named: imageName, in: bundle, compatibleWith: nil)
     }
 }
