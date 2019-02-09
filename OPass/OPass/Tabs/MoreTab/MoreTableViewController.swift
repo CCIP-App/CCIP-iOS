@@ -134,6 +134,10 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         return 1
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return (self.moreTableView?.frame.size.height)! / CGFloat(self.moreItems!.count + 1)
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.moreItems!.count
     }
@@ -145,7 +149,13 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellId = self.moreItems!.object(at: indexPath.row) as! String
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MoreCell
-        cell.textLabel!.text = NSLocalizedString(cellId, comment: "")
+        let attributeTextStyle = [
+            NSAttributedString.Key.font: Constants.fontOfAwesome(withSize: 24, inStyle: .solid),
+        ]
+        let cellIcon = NSMutableAttributedString.init(string: NSLocalizedString("icon-\(cellId)", comment: ""), attributes: attributeTextStyle)
+        let cellText = NSLocalizedString(cellId, comment: "")
+        cell.textLabel!.text = cellText
+        cell.textLabel!.attributedText = NSAttributedString.init(attributedString: cellIcon + "  \t  " + cellText)
         return cell;
     }
 

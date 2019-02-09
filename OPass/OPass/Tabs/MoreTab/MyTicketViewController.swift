@@ -17,6 +17,7 @@ import EFQRCode
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.navigationItem.title = self.navigationItem.title!.split(separator: "\t").last!.trim()
         var noticeText: String = NSLocalizedString("TicketNonExistNotice", comment: "")
         if (AppDelegate.haveAccessToken()) {
             if let QRImage = EFQRCode.generate(

@@ -50,10 +50,10 @@
 "day3lunch" = "Day 3 Lunch";
 "Addition" = "Addition";
 "IRC" = "IRC Channel";
-"Puzzle" = "Booth Reward Activity";
-"Ticket" = "My Ticket";
 "TicketNotice" = "Please keep your ticket secretly and carefully, only shows for our staff or in booth event";
 "TicketNonExistNotice" = "Your Ticket not import into OPass, please try again after import !";
+"Puzzle" = "Booth Reward Activity";
+"Ticket" = "My Ticket";
 "Telegram" = "Telegram Groups";
 "VenueWeb" = "Venue";
 "StaffsWeb" = "Staffs";
@@ -93,3 +93,11 @@
 "AfterEventMessage" = "After the Event, we need you in-form a questionnaire for us, thanks.";
 "AfterEventActionTitle" = "Open questionnaire";
 "EmptyScheduleDetailContent" = "";
+
+"icon-Puzzle" = "puzzle-piece";
+"icon-Ticket" = "ticket-alt";
+"icon-Telegram" = "telegram-plane";
+"icon-VenueWeb" = "map";
+"icon-StaffsWeb" = "user-friends";
+"icon-SponsorsWeb" = "hands-helping";
+"icon-Acknowledgements" = "people-carry";

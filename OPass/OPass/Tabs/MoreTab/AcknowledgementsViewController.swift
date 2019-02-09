@@ -155,6 +155,7 @@ class AcknowledgementsViewController : UIViewController {
         self.configuration()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.navigationItem.title = self.navigationItem.title!.split(separator: "\t").last!.trim()
         self.progress = MBProgressHUD.showAdded(to: self.view, animated: true)
         self.progress.mode = .indeterminate
     }

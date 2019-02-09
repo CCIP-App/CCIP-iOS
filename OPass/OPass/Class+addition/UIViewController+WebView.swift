@@ -88,7 +88,9 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
         super.viewDidLoad();
         
         self.parseInstanceObjects();
-        
+
+        self.navigationItem.title = self.navigationItem.title!.split(separator: "\t").last!.trim()
+
         // set logo on nav title
         let logoView = UIImageView.init(image: AppDelegate.confLogo());
         self.shimmeringLogoView = FBShimmeringView.init(frame: logoView.bounds);

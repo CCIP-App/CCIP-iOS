@@ -50,10 +50,10 @@
 "day3lunch" = "第三天午餐領取";
 "Addition" = "其他";
 "IRC" = "IRC 頻道";
-"Puzzle" = "開源巔峰挑戰賽";
-"Ticket" = "我的票券";
 "TicketNotice" = "請妥善保管您的票券，僅提供此票券給我們的工作人員或您參與攤位活動的工作人員使用";
 "TicketNonExistNotice" = "您的票券尚未登錄進 OPass，請登錄後再使用此功能！";
+"Puzzle" = "開源巔峰挑戰賽";
+"Ticket" = "我的票券";
 "Telegram" = "Telegram 群組";
 "VenueWeb" = "場內地圖";
 "StaffsWeb" = "籌備團隊";
