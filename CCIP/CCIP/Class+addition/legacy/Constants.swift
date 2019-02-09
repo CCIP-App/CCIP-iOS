@@ -11,12 +11,12 @@ import Foundation
 @objc extension Constants {
     public static var AccessToken : String {
         get {
-            return Constants.accessToken();
+            return AppDelegate.accessToken();
         }
     }
     public static var AccessTokenSHA1 : String {
         get {
-            return Constants.accessTokenSHA1();
+            return AppDelegate.accessTokenSHA1();
         }
     }
     public static var URL_LOG_BOT : String {
@@ -26,7 +26,7 @@ import Foundation
     };
     public static var URL_MAP : String {
         get {
-            return Constants.appConfigURL("MapsPath");
+            return AppDelegate.appConfigURL("MapsPath");
         }
     }
     public static var URL_TELEGRAM_GROUP : String {
@@ -36,17 +36,17 @@ import Foundation
     }
     public static var URL_STAFF_WEB : String {
         get {
-            return Constants.appConfigURL("StaffPath")
+            return AppDelegate.appConfigURL("StaffPath")
         }
     }
     public static var URL_SPONSOR_WEB : String {
         get {
-            return Constants.appConfigURL("SponsorPath")
+            return AppDelegate.appConfigURL("SponsorPath")
         }
     }
     public static var URL_GAME : String {
         get {
-            return Constants.appConfigURL("GamePath")
+            return AppDelegate.appConfigURL("GamePath")
         }
     }
     public static func GitHubRepo(_ repo: String) -> String {

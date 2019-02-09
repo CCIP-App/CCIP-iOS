@@ -90,13 +90,13 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
         self.parseInstanceObjects();
         
         // set logo on nav title
-        let logoView = UIImageView.init(image: Constants.confLogo());
+        let logoView = UIImageView.init(image: AppDelegate.confLogo());
         self.shimmeringLogoView = FBShimmeringView.init(frame: logoView.bounds);
         self.shimmeringLogoView?.contentView = logoView;
         if (self.ShowLogo) {
             self.navigationItem.titleView = self.shimmeringLogoView;
         } else {
-            self.navigationItem.titleView?.tintColor = Constants.appConfigColor(self.titleTextColor);
+            self.navigationItem.titleView?.tintColor = AppDelegate.appConfigColor(self.titleTextColor);
         }
         
         Constants.sendFIB(self.className);
@@ -105,7 +105,7 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
         let navigationBarBounds = self.navigationController!.navigationBar.bounds;
         let barFrame = CGRect(x: 0, y: navigationBarBounds.size.height - progressBarHeight, width: navigationBarBounds.size.width, height: progressBarHeight);
         self.progressView = NJKWebViewProgressView.init(frame: barFrame);
-        self.progressView?.progressBarView.backgroundColor = Constants.appConfigColor("ProgressBarColor");
+        self.progressView?.progressBarView.backgroundColor = AppDelegate.appConfigColor("ProgressBarColor");
         self.progressView?.autoresizingMask = [ .flexibleWidth, .flexibleTopMargin ];
         self.navigationController?.navigationBar.addSubview(self.progressView!);
         
@@ -117,8 +117,8 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
             let headView = UIView();
             headView.frame = frame;
             headView.setGradientColor(
-                from: Constants.appConfigColor(self.titleLeftColor),
-                to: Constants.appConfigColor(self.titleRightColor),
+                from: AppDelegate.appConfigColor(self.titleLeftColor),
+                to: AppDelegate.appConfigColor(self.titleRightColor),
                 startPoint: CGPoint(x: -0.4, y: 0.5),
                 toPoint: CGPoint(x: 1, y: 0.5)
             );
@@ -138,7 +138,7 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         self.setWebViewConstraints();
-        Constants.setDevLogo(self.shimmeringLogoView, withLogo: Constants.confLogo());
+        AppDelegate.setDevLogo(self.shimmeringLogoView, withLogo: AppDelegate.confLogo());
         
         self.reload(self);
     }
