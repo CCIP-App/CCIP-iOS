@@ -655,7 +655,7 @@
 - (void)getImageFromLibrary {
     UIImagePickerController *imagePicker = [UIImagePickerController new];
     [imagePicker setDelegate:self];
-    [imagePicker setSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
+    [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     [self presentViewController:imagePicker
                        animated:YES
                      completion:nil];

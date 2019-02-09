@@ -88,4 +88,9 @@ import FontAwesome_swift
         }
         return UIFont.fontAwesome(ofSize: withSize, style: style)
     }
+    @objc static var tintColor : UIColor {
+        get {
+            return UIView().tintColor!
+        }
+    }
 }

@@ -584,8 +584,17 @@
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
     [[UIButton appearanceWhenContainedInInstancesOfClasses:@[ [UINavigationController class] ]] setTintColor:[AppDelegate AppConfigColor:@"NavigationIndicatorColor"]];
+
+    id imagePickerNavBarAppearance = [UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]];
+    [imagePickerNavBarAppearance setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor blackColor] }];
+    [imagePickerNavBarAppearance setTintColor:Constants.tintColor];
+    id imagePickerBarButtonItemAppearance = [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]];
+    [imagePickerBarButtonItemAppearance setTintColor:Constants.tintColor];
+    id imagePickerButtonAppearance = [UIButton appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]];
+    [imagePickerButtonAppearance setTintColor:Constants.tintColor];
+
     [[UIToolbar appearanceWhenContainedInInstancesOfClasses:@[ [UINavigationController class] ]] setBarTintColor:[appArt backgroundColor]];
-    
+
     [[UITabBar appearance] setTintColor:[AppDelegate AppConfigColor:@"LabelTextColor"]];
     [[UISegmentedControl appearance] setTintColor:[AppDelegate AppConfigColor:@"LabelTextColor"]];
     [[UIProgressView appearance] setTintColor:[AppDelegate AppConfigColor:@"LabelTextColor"]];
