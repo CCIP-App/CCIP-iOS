@@ -89,7 +89,7 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
         
         self.parseInstanceObjects();
 
-        self.navigationItem.title = self.navigationItem.title!.split(separator: "\t").last!.trim()
+        self.navigationItem.title = self.navigationItem.title?.split(separator: "\t").last!.trim()
 
         // set logo on nav title
         let logoView = UIImageView.init(image: AppDelegate.confLogo());
