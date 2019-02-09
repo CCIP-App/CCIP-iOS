@@ -1285,7 +1285,7 @@
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/$(TARGET_NAME)/ScanditSDK",
+					"\"$(PROJECT_DIR)/Supporting Files/ScanditSDK\"",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"COSCUP=1",
@@ -1317,7 +1317,7 @@
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/$(TARGET_NAME)/ScanditSDK",
+					"\"$(PROJECT_DIR)/Supporting Files/ScanditSDK\"",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"COSCUP=1",
