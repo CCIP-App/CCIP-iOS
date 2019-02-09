@@ -616,19 +616,31 @@
                                                               attribute:NSLayoutAttributeBottom
                                                              multiplier:1.0
                                                                constant:0.0]];
-        
+        UIView *barcodePickerOverlay = [[self.scanditBarcodePicker.view subviews] firstObject];
+        UIButton *torchButton = [barcodePickerOverlay.subviews objectAtIndex:2];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [button setFrame:CGRectMake(65, 15, 60, 40)];
-        [button setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.35f]];
-        [button.layer setMasksToBounds:YES];
+        [button.layer setMasksToBounds:NO];
         [button.layer setCornerRadius:20.0f];
-        
+        [button setFrame:CGRectMake(65, self.navigationController.navigationBar.frame.size.height, 60, 40)];
+        [button setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.35f]];
         [button setTitle:NSLocalizedString(@"OpenQRCodeFromFile", nil) forState:UIControlStateNormal];
         [button setTintColor:[UIColor blackColor]];
-        
         [button addTarget:self action:@selector(getImageFromLibrary) forControlEvents:UIControlEventTouchUpInside];
-
-        [self.scanditBarcodePicker.view addSubview:button];
+        [barcodePickerOverlay addSubview:button];
+        [barcodePickerOverlay addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                                         attribute:NSLayoutAttributeTop
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:torchButton
+                                                                         attribute:NSLayoutAttributeTop
+                                                                        multiplier:1.0
+                                                                          constant:0]];
+        [barcodePickerOverlay addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                                         attribute:NSLayoutAttributeLeading
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:torchButton
+                                                                         attribute:NSLayoutAttributeTrailing
+                                                                        multiplier:1.0
+                                                                          constant:5]];
         
         [self.scanditBarcodePicker startScanningInPausedState:YES completionHandler:^{
             [self.scanditBarcodePicker performSelector:@selector(startScanning)
