@@ -15,21 +15,6 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
     var shimmeringLogoView: FBShimmeringView?
     var userInfo: NSDictionary?
     var moreItems: NSArray?
-    var staffs: NSArray?
-
-    func prefetchStaffs() {
-        if AppDelegate.appConfig("URL.StaffUseWeb") as! Bool == false {
-            let manager = AFHTTPSessionManager.init()
-            manager.get(AppDelegate.appConfigURL("StaffPath"), parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
-                NSLog("JSON: \(JSONSerialization.stringify(responseObject!)!)")
-                if responseObject != nil {
-                    self.staffs = responseObject as? NSArray
-                }
-            }) { (operation: URLSessionDataTask?, error: Error) in
-                NSLog("Error: \(String(describing: error))")
-            }
-        }
-    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination
@@ -87,23 +72,10 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
                 : "",
             "Acknowledgements",
         ].filter({ $0.count > 0 }) as NSArray
-        if (self.staffs == nil) {
-            self.prefetchStaffs()
-        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if AppDelegate.appConfig("URL.StaffUseWeb") as! Bool == false {
-            let semaStaff = DispatchSemaphore(value: 0)
-            while (true) {
-                if (self.staffs == nil) {
-                    semaStaff.signal()
-                }
-                RunLoop.current.run(mode: .default, before: Date.init(timeIntervalSinceNow: 0.1))
-                let _ = semaStaff.wait(timeout: DispatchTime.now())
-            }
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
