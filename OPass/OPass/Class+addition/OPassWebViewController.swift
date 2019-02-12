@@ -91,11 +91,11 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
 
         self.navigationItem.title = self.navigationItem.title?.split(separator: "\t").last!.trim()
 
-        // set logo on nav title
-        let logoView = UIImageView.init(image: AppDelegate.confLogo());
-        self.shimmeringLogoView = FBShimmeringView.init(frame: logoView.bounds);
-        self.shimmeringLogoView?.contentView = logoView;
         if (self.ShowLogo) {
+            // set logo on nav title
+            let logoView = UIImageView.init(image: AppDelegate.confLogo());
+            self.shimmeringLogoView = FBShimmeringView.init(frame: logoView.bounds);
+            self.shimmeringLogoView?.contentView = logoView;
             self.navigationItem.titleView = self.shimmeringLogoView;
         } else {
             self.navigationItem.titleView?.tintColor = AppDelegate.appConfigColor(self.titleTextColor);
@@ -144,7 +144,20 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
         
         self.reload(self);
     }
-    
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        self.webView?.stopLoading()
+        self.progressView?.setProgress(1, animated: true)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        self.progressView?.removeFromSuperview()
+    }
+
     func setWebViewConstraints() {
         let layoutGuide = UILayoutGuide();
         self.webView?.addLayoutGuide(layoutGuide);

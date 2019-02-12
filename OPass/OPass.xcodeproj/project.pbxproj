@@ -69,7 +69,7 @@
 		6B4FCB17218ECC230005469F /* UIViewController+addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB16218ECC230005469F /* UIViewController+addition.swift */; };
 		6B4FCB1A218ECE070005469F /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB19218ECE070005469F /* Constants.m */; };
 		6B4FCB1C218ECE9A0005469F /* UIView+addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB1B218ECE9A0005469F /* UIView+addition.swift */; };
-		6B4FCB1E218F5D630005469F /* UIViewController+WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB1D218F5D630005469F /* UIViewController+WebView.swift */; };
+		6B4FCB1E218F5D630005469F /* OPassWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB1D218F5D630005469F /* OPassWebViewController.swift */; };
 		6B4FCB20218F65D30005469F /* NSObject+className.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB1F218F65D30005469F /* NSObject+className.swift */; };
 		6B4FCB22218F774D0005469F /* IRCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB21218F774D0005469F /* IRCViewController.swift */; };
 		6B4FCB24218F79CB0005469F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB23218F79CB0005469F /* Constants.swift */; };
@@ -240,7 +240,7 @@
 		6B4FCB18218ECE070005469F /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		6B4FCB19218ECE070005469F /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		6B4FCB1B218ECE9A0005469F /* UIView+addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addition.swift"; sourceTree = "<group>"; };
-		6B4FCB1D218F5D630005469F /* UIViewController+WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+WebView.swift"; sourceTree = "<group>"; };
+		6B4FCB1D218F5D630005469F /* OPassWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassWebViewController.swift; sourceTree = "<group>"; };
 		6B4FCB1F218F65D30005469F /* NSObject+className.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+className.swift"; sourceTree = "<group>"; };
 		6B4FCB21218F774D0005469F /* IRCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRCViewController.swift; sourceTree = "<group>"; };
 		6B4FCB23218F79CB0005469F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -531,6 +531,7 @@
 			children = (
 				6B4FCB0F218EC1B30005469F /* legacy */,
 				6B5AABC6220CBB6700C01C54 /* iBeacon.swift */,
+				6B4FCB1D218F5D630005469F /* OPassWebViewController.swift */,
 				6B50EA312169377E000CC757 /* UIAlertController+additional.swift */,
 				6B4FCB1F218F65D30005469F /* NSObject+className.swift */,
 				6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */,
@@ -541,7 +542,6 @@
 				6B4FCB1B218ECE9A0005469F /* UIView+addition.swift */,
 				6B4FCB16218ECC230005469F /* UIViewController+addition.swift */,
 				6B4FCB05218E521C0005469F /* UIApplication+addition.swift */,
-				6B4FCB1D218F5D630005469F /* UIViewController+WebView.swift */,
 				6BE8A22B220DF0210035CFD8 /* NSString+StringExt.swift */,
 				6BE8A22D220E11160035CFD8 /* JSONSerialization+Ext.swift */,
 				6BEB310C1F262EF30050759D /* EFQRCode+Ext.swift */,
@@ -988,7 +988,7 @@
 				280774C51F1AD2F400A5B994 /* ScheduleTableViewController.m in Sources */,
 				6B4FCB13218EC5330005469F /* UIColor+addition.swift in Sources */,
 				6B02FD931F220326002AC0D3 /* ScheduleDetailViewController.m in Sources */,
-				6B4FCB1E218F5D630005469F /* UIViewController+WebView.swift in Sources */,
+				6B4FCB1E218F5D630005469F /* OPassWebViewController.swift in Sources */,
 				6B4FCB0C218E5AA80005469F /* MainNavViewController.swift in Sources */,
 				286E28A51D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m in Sources */,
 				6B4FCB1C218ECE9A0005469F /* UIView+addition.swift in Sources */,
