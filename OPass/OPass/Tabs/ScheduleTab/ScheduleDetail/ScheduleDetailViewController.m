@@ -111,11 +111,12 @@
     NSString *startTimeString = [formatter_date stringFromDate:startTime];
     NSString *endTimeString = [formatter_date stringFromDate:endTime];
     NSString *timeRange = [NSString stringWithFormat:@"%@ - %@", startTimeString, endTimeString];
+    NSString *type = [Constants GetScheduleTypeName:[data objectForKey:@"type"]];
     [self.lbSpeaker setHidden:[self.speakers count] == 0];
     [self.lbTitle setText:[currentLangObject objectForKey:@"title"]];
     [self.lbSpeakerName setText:[[data objectForKey:@"speaker"] objectForKey:@"name"]];
     [self.lbRoomText setText:[data objectForKey:@"room"]];
-    [self.lbLangText setText:[data objectForKey:@"lang"]];
+    [self.lbTypeText setText:type];
     [self.lbTimeText setText:timeRange];
     
     [self.vwHeader setGradientColorFrom:[AppDelegate AppConfigColor:@"ScheduleTitleLeftColor"]
@@ -140,8 +141,8 @@
     NSArray *lbsMeta = @[
                          self.lbRoom,
                          self.lbRoomText,
-                         self.lbLang,
-                         self.lbLangText,
+                         self.lbType,
+                         self.lbTypeText,
                          self.lbTime,
                          self.lbTimeText
                          ];

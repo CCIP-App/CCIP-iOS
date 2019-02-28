@@ -25,8 +25,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lbRoom;
 @property (weak, nonatomic) IBOutlet UILabel *lbRoomText;
-@property (weak, nonatomic) IBOutlet UILabel *lbLang;
-@property (weak, nonatomic) IBOutlet UILabel *lbLangText;
+@property (weak, nonatomic) IBOutlet UILabel *lbType;
+@property (weak, nonatomic) IBOutlet UILabel *lbTypeText;
 @property (weak, nonatomic) IBOutlet UILabel *lbTime;
 @property (weak, nonatomic) IBOutlet UILabel *lbTimeText;
 

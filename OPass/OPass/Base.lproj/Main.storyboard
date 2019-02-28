@@ -619,7 +619,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ven-KA-rEN">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ven-KA-rEN">
                                                 <rect key="frame" x="130" y="5" width="100" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="7WJ-5K-P5O"/>
@@ -644,7 +644,7 @@ Please copy and paste the token into next field or click the token link in the r
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ZH,EN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDW-eh-9J7">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keynote" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDW-eh-9J7">
                                                 <rect key="frame" x="130" y="31" width="100" height="21"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
@@ -830,8 +830,6 @@ Please copy and paste the token into next field or click the token link in the r
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="426" height="720"/>
                     <connections>
-                        <outlet property="lbLang" destination="ven-KA-rEN" id="u4b-pI-Osi"/>
-                        <outlet property="lbLangText" destination="eDW-eh-9J7" id="W3D-x3-E36"/>
                         <outlet property="lbRoom" destination="uEV-Th-Vkm" id="oNb-wd-CAO"/>
                         <outlet property="lbRoomText" destination="1yV-E5-dhL" id="zud-Oq-HTT"/>
                         <outlet property="lbSpeaker" destination="5CP-bQ-x2n" id="RqC-gA-Hbf"/>
@@ -839,6 +837,8 @@ Please copy and paste the token into next field or click the token link in the r
                         <outlet property="lbTime" destination="vV8-PE-rYC" id="KKX-sp-LH7"/>
                         <outlet property="lbTimeText" destination="SBM-f0-osl" id="uZG-3U-LfA"/>
                         <outlet property="lbTitle" destination="F2g-0m-bel" id="kA9-kF-P6x"/>
+                        <outlet property="lbType" destination="ven-KA-rEN" id="icq-nj-tNz"/>
+                        <outlet property="lbTypeText" destination="eDW-eh-9J7" id="COz-7I-nL1"/>
                         <outlet property="tvContent" destination="4T1-hE-S3X" id="mHT-ZU-r9G"/>
                         <outlet property="vwHeader" destination="P00-CS-cor" id="GcD-To-bac"/>
                         <outlet property="vwMeta" destination="3gh-d3-AGe" id="vIV-oX-2DK"/>

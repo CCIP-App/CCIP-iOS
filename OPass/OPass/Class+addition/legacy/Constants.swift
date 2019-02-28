@@ -93,4 +93,8 @@ import FontAwesome_swift
             return UIView().tintColor!
         }
     }
+    @objc static func GetScheduleTypeName(_ namePrefix: String) -> String {
+        // TODO: mapping from define file from event config
+        return namePrefix
+    }
 }
