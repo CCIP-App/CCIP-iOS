@@ -55,7 +55,10 @@ static NSDateFormatter *formatter_date = nil;
 
     [self.view setBackgroundColor:[UIColor clearColor]];
     
-    self.programs = [userDefault objectForKey:SCHEDULE_CACHE_KEY];
+    // ugly convension for crash prevent
+    NSObject *programsObj = [userDefault objectForKey:SCHEDULE_CACHE_KEY];
+    NSArray *programsData = [programsObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:programsObj] : programsObj;
+    self.programs = programsData;
     if (self.programs != nil) {
         [self setScheduleDate];
     }
@@ -90,13 +93,17 @@ static NSDateFormatter *formatter_date = nil;
         if (responseObject != nil) {
             self.programs = responseObject;
             [self setScheduleDate];
-            [userDefault setObject:responseObject
+            NSData *programsData = [NSKeyedArchiver archivedDataWithRootObject:responseObject];
+            [userDefault setObject:programsData
                             forKey:SCHEDULE_CACHE_KEY];
             [userDefault synchronize];
         }
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
-        self.programs = [userDefault objectForKey:SCHEDULE_CACHE_KEY];
+        // ugly convension for crash prevent
+        NSObject *programsObj = [userDefault objectForKey:SCHEDULE_CACHE_KEY];
+        NSArray *programsData = [programsObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:programsObj] : programsObj;
+        self.programs = programsData;
         if (self.programs != nil) {
             [self setScheduleDate];
         }

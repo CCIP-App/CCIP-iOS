@@ -106,7 +106,8 @@ static NSDateFormatter *formatter_date = nil;
 
 - (void)parseFavorites {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSArray *favorites = [userDefault arrayForKey:FAV_KEY];
+    NSObject *favObj = [userDefault valueForKey:FAV_KEY];
+    NSArray *favorites = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:favObj] : favObj;
     
     self.favoriteTimes = [NSMutableArray new];
     self.favoritesSections = [NSMutableDictionary new];
@@ -227,7 +228,9 @@ static NSDateFormatter *formatter_date = nil;
 - (void)actionFavorite:(NSString *)scheduleId {
     NSDictionary *favProgram = @{};
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *favorites = [NSMutableArray arrayWithArray:[userDefault arrayForKey:FAV_KEY]];
+    NSObject *favObj = [userDefault valueForKey:FAV_KEY];
+    NSArray *favoriteArray = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:favObj] : favObj;
+    NSMutableArray *favorites = [NSMutableArray arrayWithArray:favoriteArray];
     for (NSDictionary *program in favorites) {
         if ([[self getID:program] isEqualToString:scheduleId]) {
             favProgram = program;
@@ -240,7 +243,8 @@ static NSDateFormatter *formatter_date = nil;
     } else {
         [favorites removeObject:favProgram];
     }
-    [userDefault setValue:favorites
+    NSData *favData = [NSKeyedArchiver archivedDataWithRootObject:favorites];
+    [userDefault setValue:favData
                    forKey:FAV_KEY];
     [userDefault synchronize];
     [self parseFavorites];
@@ -248,7 +252,8 @@ static NSDateFormatter *formatter_date = nil;
 
 - (BOOL)hasFavorite:(NSString *)scheduleId {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSArray *favorites = [userDefault valueForKey:FAV_KEY];
+    NSObject *favObj = [userDefault valueForKey:FAV_KEY];
+    NSArray *favorites = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:favObj] : favObj;
     for (NSDictionary *program in favorites) {
         if ([[self getID:program] isEqualToString:scheduleId]) {
             return YES;
