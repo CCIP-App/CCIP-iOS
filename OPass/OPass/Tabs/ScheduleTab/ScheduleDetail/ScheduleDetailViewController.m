@@ -52,11 +52,11 @@
     
     NSString *shortLangUI = [AppDelegate shortLangUI];
     NSDictionary *currentLangObject = [self.detailData objectForKey:shortLangUI];
-    NSString *summary = [NSString stringWithFormat:@"%@\n", [currentLangObject objectForKey:@"summary"]];
-    NSLog(@"Set summary: %@", summary);
-    BOOL isEmptyAbstract = [summary trimWithNewLine] == nil || [[summary trimWithNewLine] isEqual:@""] || [[summary trimWithNewLine] length] == 0;
+    NSString *description = [NSString stringWithFormat:@"%@\n", [currentLangObject objectForKey:@"description"]];
+    NSLog(@"Set description: %@", description);
+    BOOL isEmptyAbstract = [description trimWithNewLine] == nil || [[description trimWithNewLine] isEqual:@""] || [[description trimWithNewLine] length] == 0;
     if (!isEmptyAbstract) {
-        [self.downView append:[NSString stringWithFormat:@"# Abstract\n%@\n", summary]];
+        [self.downView append:[NSString stringWithFormat:@"# Abstract\n%@\n", description]];
     }
     
     for (NSDictionary *speaker in self.speakers) {
@@ -112,7 +112,7 @@
     NSString *endTimeString = [formatter_date stringFromDate:endTime];
     NSString *timeRange = [NSString stringWithFormat:@"%@ - %@", startTimeString, endTimeString];
     [self.lbSpeaker setHidden:[self.speakers count] == 0];
-    [self.lbTitle setText:[currentLangObject objectForKey:@"subject"]];
+    [self.lbTitle setText:[currentLangObject objectForKey:@"title"]];
     [self.lbSpeakerName setText:[[data objectForKey:@"speaker"] objectForKey:@"name"]];
     [self.lbRoomText setText:[data objectForKey:@"room"]];
     [self.lbLangText setText:[data objectForKey:@"lang"]];
@@ -239,12 +239,12 @@
     [cells addObject:^{
         ScheduleAbstractViewCell *abstractCell = (ScheduleAbstractViewCell *)cell;
         NSDictionary *currentLangObject = [self.detailData objectForKey:[AppDelegate shortLangUI]];
-        NSString *summary = [NSString stringWithFormat:@"%@\n", [currentLangObject objectForKey:@"summary"]];
-        NSLog(@"Set summary: %@", summary);
+        NSString *description = [NSString stringWithFormat:@"%@\n", [currentLangObject objectForKey:@"description"]];
+        NSLog(@"Set description: %@", description);
         [abstractCell setFd_enforceFrameLayout: YES]; // enable (CGSize)sizeThatFits:(CGSize)size
         [abstractCell.lbAbstractTitle setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
         [self setTextFit:abstractCell.lbAbstractContent
-             WithContent:summary];
+             WithContent:description];
     }];
     
     for (NSDictionary *speaker in self.speakers) {

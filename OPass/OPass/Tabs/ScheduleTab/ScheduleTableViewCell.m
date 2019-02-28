@@ -64,7 +64,7 @@ static NSDateFormatter *formatter_date = nil;
     long mins = [[NSNumber numberWithDouble:([endTime timeIntervalSinceDate:startTime] / 60)] longValue];
     NSString *lang = [_schedule objectForKey:@"lang"];
     NSDictionary *currentLangObject = [_schedule objectForKey:[AppDelegate shortLangUI]];
-    [self.ScheduleTitleLabel setText:[currentLangObject objectForKey:@"subject"]];
+    [self.ScheduleTitleLabel setText:[currentLangObject objectForKey:@"title"]];
     [self.RoomLocationLabel setText:[NSString stringWithFormat:@"Room %@ - %ld mins", [_schedule objectForKey:@"room"], mins]];
     [self.LabelLabel setText:[NSString stringWithFormat:@"   %@   ", lang]];
     [self.LabelLabel.layer setCornerRadius:self.LabelLabel.frame.size.height / 2];

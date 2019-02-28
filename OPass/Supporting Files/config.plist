@@ -7,7 +7,7 @@
 		<key>ogToken</key>
 		<string>b6213f49-e356-4b48-aa9d-7cf10ce1904d</string>
 		<key>DateTimeFormat</key>
-		<string>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSSZ</string>
+		<string>yyyy-MM-dd&apos;T&apos;HH:mm:sszzz</string>
 		<key>DisplayDateTimeFormat</key>
 		<string>yyyy-MM-dd HH:mm</string>
 		<key>DisplayDateFormat</key>
@@ -136,7 +136,7 @@
 			<key>SponsorPath</key>
 			<string>https://summit.g0v.tw/2018/sponsors/?mode=app&amp;__ccip=##random##</string>
 			<key>ScheduleContentPath</key>
-			<string>https://summit.g0v.tw/2018/static/ccip.json?mode=app&amp;__ccip=##random##</string>
+			<string>https://sitcon.org/2019/static/json/agenda.json?__ccip=##random##</string>
 		</dict>
 	</dict>
 </dict>
