@@ -1,0 +1,6 @@
+language: objective-c
+osx_image: xcode10.1
+xcode_workspace: OPass.xcworkspace
+xcode_scheme: OPass
+xcode_destination: platform=iOS Simulator,name=iPhone X,OS=12.1
+podfile: Podfile
