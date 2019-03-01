@@ -34,6 +34,7 @@ def opass_pods
     pod 'Down'
     pod 'FontAwesome.swift'
     pod 'SwiftDate'
+    pod 'Appirater'
 end
 
 target 'OPass' do

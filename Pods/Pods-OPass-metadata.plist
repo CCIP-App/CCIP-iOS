@@ -49,6 +49,29 @@ THE SOFTWARE.
 		<dict>
 			<key>authors</key>
 			<dict>
+				<key>Arash Payan</key>
+				<string>arash@ara.sh</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://arashpayan.com/blog/2009/09/07/presenting-appirater/</string>
+			<key>licenseText</key>
+			<string>Copyright 2017. Arash Payan. This library is distributed under the terms of the MIT/X11.</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>Appirater</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>A utility that reminds your iPhone app's users to review the app.</string>
+			<key>version</key>
+			<string>2.3.1</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
 				<key>Bryan Keller</key>
 				<string>kellerbryan19@gmail.com</string>
 			</dict>

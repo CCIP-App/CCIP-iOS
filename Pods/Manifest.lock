@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - Appirater (2.3.1)
   - BLKFlexibleHeightBar (1.0.2)
   - Collection (1.10.15)
   - ColorArt (0.1.1)
@@ -105,6 +106,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1)
+  - Appirater
   - BLKFlexibleHeightBar (~> 1.0)
   - Collection
   - ColorArt (= 0.1.1)
@@ -134,6 +136,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - Appirater
     - BLKFlexibleHeightBar
     - Collection
     - ColorArt
@@ -183,6 +186,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  Appirater: 44a4651f7912a17dc906b655f0c215d5bb768b84
   BLKFlexibleHeightBar: b27572a69633d8e33f1f2bbc486b04d8e86f742d
   Collection: d553b4bdd882fa2aebbe136a981dd072eaf8e953
   ColorArt: de0ffb63da4acdde8e234ded62e200236ca3e7e4
@@ -217,6 +221,6 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: cf9e73f90060b5541d2a9120e319ebf03c963b7d
+PODFILE CHECKSUM: f039d89453bc87f9bac82b345a49b56f6722b360
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.6.1

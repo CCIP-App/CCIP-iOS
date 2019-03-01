@@ -24,6 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## Appirater
+
+Copyright 2017. Arash Payan. This library is distributed under the terms of the MIT/X11.
+
 ## BLKFlexibleHeightBar
 
 Copyright (c) 2015 Bryan Keller
