@@ -58,3 +58,6 @@ fastlane/screenshots
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+# auto-generate files
+*/Settings.bundle/AppFlags.plist

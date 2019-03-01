@@ -6,8 +6,6 @@
 	<dict>
 		<key>ogToken</key>
 		<string>b6213f49-e356-4b48-aa9d-7cf10ce1904d</string>
-		<key>DateTimeFormat</key>
-		<string>yyyy-MM-dd&apos;T&apos;HH:mm:sszzz</string>
 		<key>DisplayDateTimeFormat</key>
 		<string>yyyy-MM-dd HH:mm</string>
 		<key>DisplayDateFormat</key>
@@ -123,16 +121,10 @@
 			<string>summit.g0v.tw</string>
 			<key>GamePath</key>
 			<string></string>
-			<key>VenueUseWeb</key>
-			<true/>
 			<key>VenuePath</key>
 			<string>https://summit.g0v.tw/2018/agenda/?mode=app&amp;__ccip=##random###maps</string>
-			<key>StaffUseWeb</key>
-			<true/>
 			<key>StaffPath</key>
 			<string>https://summit.g0v.tw/2018/staff/?mode=app&amp;__ccip=##random##</string>
-			<key>SponsorUseWeb</key>
-			<true/>
 			<key>SponsorPath</key>
 			<string>https://summit.g0v.tw/2018/sponsors/?mode=app&amp;__ccip=##random##</string>
 			<key>ScheduleContentPath</key>

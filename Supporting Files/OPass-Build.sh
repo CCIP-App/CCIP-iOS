@@ -75,24 +75,6 @@ cat CCIP.xcconfig > CCIP.release.xcconfig
 
 export CONF_NAME="`echo $TARGET_NAME | awk '{ print tolower($0) }'`"
 export domain="$TARGET_NAME"
-export mainDomain="coscup.org"
-export mainStaffDomain="staff.$mainDomain"
-export sponsorWebUrlBase=""
-export sponsorWebUrl=""
-export sponsorUseWeb=0
-export staffWebUrlBase=""
-export staffWebUrl=""
-export staffUseWeb=0
-export color_title_highlighted="#009a79"
-export color_gradient1="#f9fea5"
-export color_gradient2="#20e2d7"
-export color_gradient3="#abf4b7"
-export color_button_to="#2ce4d4"
-export color_button_default="#3d983c"
-export color_card_text="#009a79"
-export color_label_text="#3d983c"
-export color_navigation_bar_item="#3d983c"
-export color_favorite_button="#50e3c2"
 
 function replace_slash() {
     echo "$1" | sed -E 's$#$\\#$g' | sed -E 's#/#\\/#g'
