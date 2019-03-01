@@ -91,10 +91,10 @@
 		6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */; };
 		6BB1C4391F1AD4BB00AB072F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
+		6BC4246D22299AE10028C7D6 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4246C22299AE10028C7D6 /* NotificationController.swift */; };
+		6BC4246F22299C830028C7D6 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4246E22299C830028C7D6 /* ExtensionDelegate.swift */; };
+		6BC4247122299F470028C7D6 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4247022299F470028C7D6 /* InterfaceController.swift */; };
 		6BCAC01F1F1A8FC100032096 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BCAC01D1F1A8FC100032096 /* Interface.storyboard */; };
-		6BCAC0301F1A8FC100032096 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCAC02F1F1A8FC100032096 /* InterfaceController.m */; };
-		6BCAC0331F1A8FC100032096 /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCAC0321F1A8FC100032096 /* ExtensionDelegate.m */; };
-		6BCAC0361F1A8FC100032096 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCAC0351F1A8FC100032096 /* NotificationController.m */; };
 		6BCAC0381F1A8FC100032096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BCAC0371F1A8FC100032096 /* Assets.xcassets */; };
 		6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */; };
 		6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
@@ -270,17 +270,14 @@
 		6BC12A941F2B1B8000B14039 /* OPass-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OPass-Swift.h"; sourceTree = "<group>"; };
 		6BC12A951F2B1B8000B14039 /* OPass-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OPass-Bridging-Header.h"; sourceTree = "<group>"; };
 		6BC12A961F2B1B8000B14039 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6BC4246C22299AE10028C7D6 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		6BC4246E22299C830028C7D6 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		6BC4247022299F470028C7D6 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		6BCAC01B1F1A8FC100032096 /* OPass-Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OPass-Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCAC01E1F1A8FC100032096 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		6BCAC0221F1A8FC100032096 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BCAC0271F1A8FC100032096 /* OPass-Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "OPass-Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCAC02D1F1A8FC100032096 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		6BCAC02E1F1A8FC100032096 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
-		6BCAC02F1F1A8FC100032096 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
-		6BCAC0311F1A8FC100032096 /* ExtensionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionDelegate.h; sourceTree = "<group>"; };
-		6BCAC0321F1A8FC100032096 /* ExtensionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
-		6BCAC0341F1A8FC100032096 /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
-		6BCAC0351F1A8FC100032096 /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
 		6BCAC0371F1A8FC100032096 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6BCAC0391F1A8FC100032096 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BCAC0441F1A8FCF00032096 /* OPass-Watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "OPass-Watch.entitlements"; sourceTree = "<group>"; };
@@ -458,12 +455,9 @@
 			isa = PBXGroup;
 			children = (
 				6BCAC0451F1A8FD200032096 /* OPass-Watch Extension.entitlements */,
-				6BCAC02E1F1A8FC100032096 /* InterfaceController.h */,
-				6BCAC02F1F1A8FC100032096 /* InterfaceController.m */,
-				6BCAC0311F1A8FC100032096 /* ExtensionDelegate.h */,
-				6BCAC0321F1A8FC100032096 /* ExtensionDelegate.m */,
-				6BCAC0341F1A8FC100032096 /* NotificationController.h */,
-				6BCAC0351F1A8FC100032096 /* NotificationController.m */,
+				6BC4247022299F470028C7D6 /* InterfaceController.swift */,
+				6BC4246E22299C830028C7D6 /* ExtensionDelegate.swift */,
+				6BC4246C22299AE10028C7D6 /* NotificationController.swift */,
 				6BCAC0371F1A8FC100032096 /* Assets.xcassets */,
 				6BCAC0391F1A8FC100032096 /* Info.plist */,
 				6BCAC02C1F1A8FC100032096 /* Supporting Files */,
@@ -944,9 +938,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BCAC0331F1A8FC100032096 /* ExtensionDelegate.m in Sources */,
-				6BCAC0301F1A8FC100032096 /* InterfaceController.m in Sources */,
-				6BCAC0361F1A8FC100032096 /* NotificationController.m in Sources */,
+				6BC4246D22299AE10028C7D6 /* NotificationController.swift in Sources */,
+				6BC4247122299F470028C7D6 /* InterfaceController.swift in Sources */,
+				6BC4246F22299C830028C7D6 /* ExtensionDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1070,6 +1064,7 @@
 		6BCAC03D1F1A8FC100032096 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1094,6 +1089,7 @@
 		6BCAC03E1F1A8FC100032096 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1213,6 +1209,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1270,6 +1267,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1301,7 +1299,6 @@
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "$(ARCHS)";
 			};
@@ -1332,7 +1329,6 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "$(ARCHS)";
 			};

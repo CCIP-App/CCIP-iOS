@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.org.coscup.ccip</string>
+		<string>group.app.ccip.opass</string>
 	</array>
 </dict>
 </plist>
