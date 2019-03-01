@@ -1,3 +1,7 @@
+# 2019-02-20 -- v3.5.0
+- Open source Firebase InstanceID. (#186)
+- Always update keychain access control when adding new keychain to ensure it won't be blocked when device is locked. (#1399)
+
 # 2019-01-22 -- v3.4.0
 - Move all keychain write operations off the main thread. (#1399)
 - Make keychain operations asynchronous where possible (given the current APIs)

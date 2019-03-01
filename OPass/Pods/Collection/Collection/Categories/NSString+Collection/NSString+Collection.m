@@ -75,10 +75,10 @@
 
 -(NSString*)limit:(int)length ending:(NSString*)ending{
     if (self.length > length){
-        if (ending.length > length) {
+        if ( (int)(ending.length) >length) {
             return ending;
         }
-        return [[self substr:0 length:(MAX(0, length - ending.length))] append:ending];
+        return [[self substr:0 length:(int)(length - ending.length)] append:ending];
     }
     return self.copy;
 }

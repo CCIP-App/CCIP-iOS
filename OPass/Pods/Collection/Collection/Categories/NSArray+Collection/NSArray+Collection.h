@@ -41,6 +41,11 @@
 - (id)first:(BOOL (^)(id object))condition default:(id)defaultObject;
 
 /**
+ * @return id first object that passes the truth test or `defaultBlock` if any passes
+ */
+- (id)first:(BOOL (^)(id object))condition defaultBlock:(id (^)(void))defaultBlock;
+
+/**
  * @return id last object that passes the truth test or `nil` if any
  */
 - (id)last:(BOOL (^)(id))condition;
@@ -79,6 +84,11 @@
  * @return NSArray elements where any of the keypaths is equal to the value
  */
 - (NSArray*)whereAny:(NSArray*)keyPaths is:(id)value;
+
+/**
+ * @return NSArray elements where keypaths is in any of the values
+ */
+- (NSArray*)whereIn:(NSString*)keyPath values:(id)values;
 
 /**
  * @return NSArray elements where any of the keypaths is like the value

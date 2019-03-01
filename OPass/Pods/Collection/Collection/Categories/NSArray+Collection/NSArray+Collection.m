@@ -48,6 +48,11 @@
     return (object) ? object : defaultObject;
 }
 
+- (id)first:(BOOL (^)(id object))condition defaultBlock:(id(^)(void))defaultBlock{
+    id object = [self first:condition];
+    return (object) ? object : defaultBlock();
+}
+
 - (id)last:(BOOL (^)(id))condition{
     return [self.reverse first:condition];
 }
@@ -119,6 +124,12 @@
     
     NSPredicate *resultPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:orPredicates];
     return [self filteredArrayUsingPredicate:resultPredicate];
+}
+
+- (NSArray*)whereIn:(NSString*)keyPath values:(id)values{
+    return [self filter:^BOOL(id object) {
+        return [values containsObject:[object valueForKeyPath:keyPath]];
+    }];
 }
 
 - (NSArray*)whereNull{

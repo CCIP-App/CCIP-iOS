@@ -40,6 +40,7 @@ Copy the category files to your project or just
 `whereNull:keyPath` 
 `whereNotNull`
 `whereNotNull:keyPath` 
+`whereIn:keyPath:values`
 
 `sort`
 `sort:key`

@@ -152,7 +152,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<key>summary</key>
 			<string>Laravel collection like inspired NSArray category</string>
 			<key>version</key>
-			<string>1.10.8</string>
+			<string>1.10.15</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -573,7 +573,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Firebase for iOS</string>
 			<key>version</key>
-			<string>5.16.0</string>
+			<string>5.17.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -597,7 +597,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Firebase Analytics for iOS</string>
 			<key>version</key>
-			<string>5.5.0</string>
+			<string>5.6.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -826,7 +826,7 @@ safe and reliable manner.&lt;/p&gt;
 			<key>summary</key>
 			<string>Interfaces that allow other Firebase SDKs to use Analytics functionality.</string>
 			<key>version</key>
-			<string>1.1.0</string>
+			<string>1.2.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1052,7 +1052,7 @@ safe and reliable manner.&lt;/p&gt;
 			<key>summary</key>
 			<string>Firebase Core for iOS (plus community support for macOS and tvOS)</string>
 			<key>version</key>
-			<string>5.2.0</string>
+			<string>5.3.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1302,7 +1302,7 @@ safe and reliable manner.&lt;/p&gt;
 			<key>summary</key>
 			<string>Firebase Instance ID for iOS.</string>
 			<key>version</key>
-			<string>3.4.0</string>
+			<string>3.5.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1344,7 +1344,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Use Font Awesome in your Swift projects</string>
 			<key>version</key>
-			<string>1.4.9</string>
+			<string>1.5.1</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1368,7 +1368,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Shared measurement methods for Google libraries. Not intended for direct use.</string>
 			<key>version</key>
-			<string>5.5.0</string>
+			<string>5.6.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1879,7 +1879,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Asynchronous image downloader with cache support with an UIImageView category.</string>
 			<key>version</key>
-			<string>4.4.5</string>
+			<string>4.4.6</string>
 		</dict>
 		<dict>
 			<key>authors</key>
