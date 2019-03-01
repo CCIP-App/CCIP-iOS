@@ -10,6 +10,7 @@
 
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import <ScanditBarcodeScanner/ScanditBarcodeScanner.h>
+#import <Appirater/Appirater.h>
 #import <iRate/iRate.h>
 #import <iVersion/iVersion.h>
 #import "AppDelegate.h"
@@ -365,6 +366,15 @@
 #ifdef DEBUG
 //    [gai.logger setLogLevel:kGAILogLevelVerbose];  // remove before app release
 #endif
+    
+    // Configure OneSignal
+    [Appirater setAppId:@"1436417025"];
+    [Appirater setDaysUntilPrompt:1];
+    [Appirater setUsesUntilPrompt:5];
+    [Appirater setSignificantEventsUntilPrompt:-1];
+    [Appirater setTimeBeforeReminding:1];
+    [Appirater setDebug:NO];
+    [Appirater appLaunched:YES];
     
     // Configure OneSignal
     NSString *oneSignalToken = [NSString stringWithString:[AppDelegate AppConfig:@"ogToken"]];
