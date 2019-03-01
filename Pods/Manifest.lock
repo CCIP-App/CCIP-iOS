@@ -78,7 +78,6 @@ PODS:
     - GoogleUtilities/Logger
   - iCarousel (1.8.3)
   - ICViewPager (1.5.1)
-  - iRate (1.12.2)
   - iVersion (1.11.5)
   - MBProgressHUD (1.1.0)
   - nanopb (0.3.901):
@@ -119,7 +118,6 @@ DEPENDENCIES:
   - FSPagerView
   - iCarousel (~> 1.8)
   - ICViewPager (from `https://github.com/FrankWu100/ICViewPager`)
-  - iRate (~> 1.11)
   - iVersion (~> 1.11)
   - MBProgressHUD (~> 1.1)
   - NJKWebViewProgress (~> 0.2)
@@ -154,7 +152,6 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - iCarousel
-    - iRate
     - iVersion
     - MBProgressHUD
     - nanopb
@@ -205,7 +202,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   ICViewPager: c1278b67eceac7252d48252829c3c703285dfb76
-  iRate: 4fc69958788624545e5d050c8ffd20884013c3f1
   iVersion: 3a93a89259eb3b52b0a8ba52c46a0027fa6b4d30
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
@@ -221,6 +217,6 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: f039d89453bc87f9bac82b345a49b56f6722b360
+PODFILE CHECKSUM: 11c75043bb846e8f784c7e4a22e8732b9431de02
 
 COCOAPODS: 1.6.1

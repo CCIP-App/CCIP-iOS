@@ -11,7 +11,7 @@
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import <ScanditBarcodeScanner/ScanditBarcodeScanner.h>
 #import <Appirater/Appirater.h>
-#import <iRate/iRate.h>
+//#import <iRate/iRate.h>
 #import <iVersion/iVersion.h>
 #import "AppDelegate.h"
 #import "GuideViewController.h"
@@ -128,11 +128,11 @@
 }
 
 + (void)initialize {
-    //configure iRate
-    [iRate sharedInstance].daysUntilPrompt = 1;
-    [iRate sharedInstance].usesUntilPrompt = 5;
-    //enable preview mode
-    [iRate sharedInstance].previewMode = NO;
+//    //configure iRate
+//    [iRate sharedInstance].daysUntilPrompt = 1;
+//    [iRate sharedInstance].usesUntilPrompt = 5;
+//    //enable preview mode
+//    [iRate sharedInstance].previewMode = NO;
     
     //configure iVersion
     //set custom BundleID
