@@ -34,7 +34,7 @@ extern NSString * _Nonnull const SBSSymbologySettingsExtensionRemoveLeadingZero;
  * When enabled, parameters for data-matrix recognition are optimized for scanning of very 
  * small data-matrix codes. This extension is disabled by default.
  */
-extern NSString * _Nonnull const SBSSymbologySettingsExtensionTiny;
+extern NSString * _Nonnull const SBSSymbologySettingsExtensionTiny SBS_DEPRECATED_MSG_ATTRIBUTE("this extension is deprecated. Using it has no effect. You can safely remove it from your code");
 
 /**
  * \brief Turn on/off full ASCII mode for Code39
@@ -56,7 +56,8 @@ SBS_ENUM_BEGIN(SBSChecksum) {
     SBSChecksumMod103 = 0x10,
     SBSChecksumMod1010 = 0x20,
     SBSChecksumMod1110 = 0x40,
-    SBSChecksumMod43 = 0x100
+    SBSChecksumMod43 = 0x100,
+    SBSChecksumMod16 = 0x200
 } SBS_ENUM_END(SBSChecksum);
 
 
@@ -105,7 +106,7 @@ SBS_ENUM_BEGIN(SBSChecksum) {
  *
  * \since 4.7.0
  */
-@property (nonnull, nonatomic, strong) NSSet *checksums;
+@property (nonnull, nonatomic, strong) NSSet<NSNumber *> *checksums;
 
 /**
  * \brief This function allows to control the length of barcodes to be decoded.
@@ -123,7 +124,7 @@ SBS_ENUM_BEGIN(SBSChecksum) {
  *
  * \since 4.7.0
  */
-@property (nonnull, nonatomic, strong) NSSet *activeSymbolCounts;
+@property (nonnull, nonatomic, strong) NSSet<NSNumber *> *activeSymbolCounts;
 
 /**
  * \brief Determine whether a certain extension is enabled for the symbology.
@@ -153,5 +154,12 @@ SBS_ENUM_BEGIN(SBSChecksum) {
  * \since 4.7.0
  */
 - (void)setExtension:(nonnull NSString *)extension enabled:(BOOL)enabled;
+
+/**
+ * \brief Retrieve the currently enabled extensions for this symbology
+ *
+ * \since 4.16.0
+ */
+@property (nonnull, nonatomic, readonly) NSSet<NSString *> *enabledExtensions;
 
 @end

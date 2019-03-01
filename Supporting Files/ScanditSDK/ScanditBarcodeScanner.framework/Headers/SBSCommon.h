@@ -17,6 +17,8 @@
 #   define SBS_ENUM_END(name) name
 #   define SBS_DESIGNATED_INITIALIZER
 #   define SBS_NOT_AVAILABLE_IN_SWIFT
+#   define SBS_SWIFT_NAME(method)
+#   define SBS_DEPRECATED_MSG_ATTRIBUTE(message)
 #else
 #   define SBS_ENUM_BEGIN(name) typedef NS_ENUM(NSInteger, name)
 #   define SBS_ENUM_END(name)
@@ -24,6 +26,8 @@
 #   if __has_attribute(swift_private)
 #     define SBS_NOT_AVAILABLE_IN_SWIFT __attribute__((swift_private))
 #   endif
+#   define SBS_SWIFT_NAME(method) NS_SWIFT_NAME(method)
+#   define SBS_DEPRECATED_MSG_ATTRIBUTE(message) DEPRECATED_MSG_ATTRIBUTE(message)
 #endif
 //! \}
 
@@ -122,10 +126,26 @@ SBS_ENUM_BEGIN(SBSGuiStyle) {
      */
     SBSGuiStyleLaser,
     /**
-     * No UI is shown to indicate where the barcode should be placed. Be aware that the Scandit 
+     * No UI is shown to indicate where the barcode should be placed. Be aware that the Scandit
      * logo continues to be displayed as showing it is part of the license agreement.
+     *
+     * Barcode locations are not highlighted when using this UI style. Use
+     * \ref SBSGuiStyleLocationsOnly if you would like to see the barcode locations highlighted.
      */
-    SBSGuiStyleNone
+    SBSGuiStyleNone,
+    /**
+     * The matrix scan UI is shown. In order to use this UI, it is required to set
+     * SBSScanSettings::matrixScanEnabled to YES.
+     *
+     * \since 5.2.0
+     */
+    SBSGuiStyleMatrixScan,
+    /**
+     * Like \ref SBSGuiStyleNone, but barcode locations are highlighted in the UI.
+     *
+     * \since 5.3.0
+     */
+    SBSGuiStyleLocationsOnly,
 } SBS_ENUM_END(SBSGuiStyle);
 
 
@@ -134,7 +154,7 @@ SBS_ENUM_BEGIN(SBSGuiStyle) {
  *
  * \since 4.11.0
  */
-FOUNDATION_EXPORT NSString *SBSErrorDomain;
+FOUNDATION_EXPORT NSString * const SBSErrorDomain;
 
 /**
  * \brief enumeration of various error codes

@@ -1,0 +1,29 @@
+framework module ScanditBarcodeScanner [extern_c] {
+    umbrella header "ScanditBarcodeScanner.h"
+
+    export *
+    module * {
+        export *
+    }
+
+    explicit module TextRecognition {
+        header "SBSTextRecognition.h"
+        header "SBSTextRecognitionSettings.h"
+        header "SBSScanSettings+TextRecognition.h"
+        header "SBSBarcodePicker+TextRecognition.h"
+        header "SBSTextRecognitionDelegate.h"
+        header "SBSCharacterSet.h"
+        export *
+    }
+    
+    explicit module Transformation {
+        header "SBSTransformation.h"
+        header "SBSTransformationData.h"
+        export *
+    }
+
+    explicit module MatrixScan {
+        header "SBSMatrixScan.h"
+        export *
+    }
+}

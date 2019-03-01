@@ -39,7 +39,10 @@
 @protocol SBSOverlayControllerDidCancelDelegate
 
 /**
- * \brief Is called when the user clicks the cancel button in the scan user interface
+ * \brief Is called when the user clicks the cancel button in the scan user interface.
+ *
+ * Typically implementations will stop the scanning and dismiss the barcode picker when the user
+ * hits the cancel button.
  *
  * \since 4.7.0
  *
@@ -48,7 +51,7 @@
  *
  */
 - (void)overlayController:(nonnull SBSOverlayController *)overlayController
-                didCancelWithStatus:(nullable NSDictionary *)status;
+      didCancelWithStatus:(nullable NSDictionary *)status;
 
 @end
 
@@ -66,6 +69,17 @@ SBS_ENUM_BEGIN(SBSCameraSwitchVisibility) {
     CAMERA_SWITCH_ALWAYS SBS_DEPRECATED = SBSCameraSwitchVisibilityAlways
 } SBS_ENUM_END(SBSCameraSwitchVisibility);
 
+/**
+ * Enumeration of different highlighting state of locations when using matrix scan.
+ *
+ * \since 5.2.0
+ */
+SBS_ENUM_BEGIN(SBSMatrixScanHighlightingState) {
+    SBSMatrixScanHighlightingStateLocalized,
+    SBSMatrixScanHighlightingStateRecognized,
+    SBSMatrixScanHighlightingStateRejected,
+} SBS_ENUM_END(SBSMatrixScanHighlightingState);
+
 typedef SBSCameraSwitchVisibility CameraSwitchVisibility SBS_DEPRECATED;
 
 
@@ -75,8 +89,8 @@ typedef SBSCameraSwitchVisibility CameraSwitchVisibility SBS_DEPRECATED;
  * The overlay controller can be used to configure various scan screen UI elements such as
  * toolbar, torch, camera switch icon, scandit logo and the viewfinder.
  *
- * Developers can inherit from the ScanditSDKOverlayController to implement their own
- * scan screen user interfaces.
+ * Developers can inherit from the SBSOverlayController to implement their own scan screen 
+ * user interfaces.
  *
  * \ingroup scanditsdk-ios-api
  *
@@ -119,26 +133,36 @@ typedef SBSCameraSwitchVisibility CameraSwitchVisibility SBS_DEPRECATED;
 ///\{
 
 /**
- * \brief Enables (or disables) the sound when a barcode is recognized. If the phone's ring mode
+ * \brief Whether to play a sound when a barcode is recognized. If the phone's ring mode
  * is set to muted or vibrate, no beep will be played regardless of the value.
  *
  * Enabled by default.
  *
- * \since 1.0.0
+ * \since 5.3.1
+ */
+- (BOOL)beepEnabled;
+
+/**
+ * \brief See \ref beepEnabled
  *
- * \param enabled Whether the beep is enabled.
+ * \since 1.0.0
  */
 - (void)setBeepEnabled:(BOOL)enabled;
 
+
 /**
- * \brief Enables or disables the vibration when a code was recognized. If the phone's ring mode
- * is set to muted, no beep will be played regardless of the value.
+ * \brief Whether the device should vibrate when a code was recognized.
  *
  * Enabled by default.
  *
- * \since 1.0.0
+ * \since 5.3.1
+ */
+ - (BOOL)vibrateEnabled;
+
+/**
+ * \brief See \ref vibrateEnabled
  *
- * \param enabled Whether vibrate is enabled.
+ * \since 1.0.0
  */
 - (void)setVibrateEnabled:(BOOL)enabled;
 
@@ -192,7 +216,7 @@ typedef SBSCameraSwitchVisibility CameraSwitchVisibility SBS_DEPRECATED;
  * \return Whether the change was successful.
  */
 - (BOOL)setTorchOnImage:(nonnull UIImage *)torchOnImage
-                pressed:(nonnull UIImage *)torchOnPressedImage;
+                pressed:(nonnull UIImage *)torchOnPressedImage SBS_SWIFT_NAME(setTorchOnImage(torchOnImage:torchOnPressedImage:));
 
 /**
  * \brief Sets the images which are being drawn when the torch is on.
@@ -229,7 +253,7 @@ typedef SBSCameraSwitchVisibility CameraSwitchVisibility SBS_DEPRECATED;
  * \return Whether the change was successful.
  */
 - (BOOL)setTorchOffImage:(nonnull UIImage *)torchOffImage
-                 pressed:(nonnull UIImage *)torchOffPressedImage;
+                 pressed:(nonnull UIImage *)torchOffPressedImage SBS_SWIFT_NAME(setTorchOffImage(torchOffImage:torchOffPressedImage:));
 
 /**
  * \brief Sets the images which are being drawn when the torch is off.
@@ -266,7 +290,7 @@ typedef SBSCameraSwitchVisibility CameraSwitchVisibility SBS_DEPRECATED;
 - (void)setTorchButtonLeftMargin:(float)leftMargin
                        topMargin:(float)topMargin
                            width:(float)width
-                          height:(float)height;
+                          height:(float)height SBS_SWIFT_NAME(setTorchButton(leftMargin:topMargin:width:height:));
 
 /**
  * \brief Sets the accessibility label and hint for the torch button while the torch is off.
@@ -374,7 +398,7 @@ typedef SBSCameraSwitchVisibility CameraSwitchVisibility SBS_DEPRECATED;
 - (void)setCameraSwitchButtonRightMargin:(float)rightMargin
                                topMargin:(float)topMargin
                                    width:(float)width
-                                  height:(float)height;
+                                  height:(float)height SBS_SWIFT_NAME(setCameraSwitchButton(rightMargin:topMargin:width:height:));
 
 /**
  * \brief Sets the accessibility label and hint for the camera switch button while the back-facing
@@ -411,6 +435,23 @@ typedef SBSCameraSwitchVisibility CameraSwitchVisibility SBS_DEPRECATED;
 ///\}
 
 
+/** \name Text Recognition Switch Configuration
+ *  Customize the viewfinder where the barcode location is highlighted.
+ */
+///\{
+
+/**
+ * Sets whether the button to switch between different recognition modes should be visible.
+ * If the scanner only supports one recognition mode the button is never shown.
+ *
+ * \param visible Whether the button should be visible.
+ *
+ * \since 5.2.0
+ */
+- (void)setTextRecognitionSwitchVisible:(BOOL)visible;
+///@}
+
+
 /** \name Viewfinder Configuration
  *  Customize the viewfinder where the barcode location is highlighted.
  */
@@ -433,17 +474,16 @@ typedef SBSCameraSwitchVisibility CameraSwitchVisibility SBS_DEPRECATED;
 - (void)drawViewfinder:(BOOL)draw SBS_DEPRECATED;
 
 /**
- * \brief Sets the size of the viewfinder relative to the size of the screen size.
+ * \brief Sets the size of the viewfinder relative to the size of the SBSBarcodePicker's size.
  *
  * Changing this value does not(!) affect the area in which barcodes are successfully recognized.
  * It only changes the size of the box drawn onto the scan screen. To restrict the active scanning area,
- * use the methods listed below.
+ * use the properties listed below.
  *
- * \see ScanditSDKBarcodePicker#restrictActiveScanningArea:
- * \see ScanditSDKBarcodePicker#setScanningHotSpotToX:andY:
- * \see ScanditSDKBarcodePicker#setScanningHotSpotHeight:
+ * \see SBSScanSettings#activeScanningAreaPortrait
+ * \see SBSScanSettings#activeScanningAreaLandscape
  *
- * By default the width is 0.8, height is 0.4, landscapeWidth is 0.6, landscapeHeight is 0.4
+ * By default the width is 0.9, height is 0.4, landscapeWidth is 0.6, landscapeHeight is 0.4
  *
  * \since 3.0.0
  *
@@ -455,7 +495,76 @@ typedef SBSCameraSwitchVisibility CameraSwitchVisibility SBS_DEPRECATED;
 - (void)setViewfinderHeight:(float)h
                       width:(float)w
             landscapeHeight:(float)lH
-             landscapeWidth:(float)lW;
+             landscapeWidth:(float)lW SBS_SWIFT_NAME(setViewfinder(height:width:landscapeHeight:landscapeWidth:)) SBS_DEPRECATED_MSG_ATTRIBUTE("use setViewfinderWidth:height:landscapeWidth:landscapeHeight: instead.");
+
+/**
+ * \brief Sets the size of the viewfinder relative to the size of the SBSBarcodePicker's size.
+ *
+ * Changing this value does not(!) affect the area in which barcodes are successfully recognized.
+ * It only changes the size of the box drawn onto the scan screen. To restrict the active scanning area,
+ * use the properties listed below.
+ *
+ * \see SBSScanSettings#activeScanningAreaPortrait
+ * \see SBSScanSettings#activeScanningAreaLandscape
+ *
+ * By default the width is 0.9, height is 0.4, landscapeWidth is 0.6, landscapeHeight is 0.4
+ *
+ * \since 5.4.0
+ *
+ * \param w Width of the viewfinder rectangle in portrait orientation.
+ * \param h Height of the viewfinder rectangle in portrait orientation.
+ * \param lW Width of the viewfinder rectangle in landscape orientation.
+ * \param lH Height of the viewfinder rectangle in landscape orientation.
+ */
+- (void)setViewfinderWidth:(float)w
+                    height:(float)h
+            landscapeWidth:(float)lW
+           landscapeHeight:(float)lH SBS_SWIFT_NAME(setViewfinder(width:height:landscapeWidth:landscapeHeight:));
+
+/**
+ * \brief Sets the size of the viewfinder relative to the size of the SBSBarcodePicker's size 
+ * in portrait orientation.
+ *
+ * Changing this value does not(!) affect the area in which barcodes are successfully recognized.
+ * It only changes the size of the box drawn onto the scan screen. To restrict the active scanning area,
+ * use the properties listed below.
+ *
+ * \see SBSScanSettings#activeScanningAreaPortrait
+ * \see SBSScanSettings#activeScanningAreaLandscape
+ *
+ *
+ * By default the width is 0.9, height is 0.4
+ *
+ * \since 4.16.0
+ *
+ * \param w Width of the viewfinder rectangle in portrait orientation.
+ * \param h Height of the viewfinder rectangle in portrait orientation.
+ */
+- (void)setViewfinderPortraitWidth:(float)w
+                            height:(float)h SBS_SWIFT_NAME(setViewfinderPortrait(width:height:));
+
+
+/**
+ * \brief Sets the size of the viewfinder relative to the size of the SBSBarcodePicker's size in 
+ * landscape orientation.
+ *
+ * Changing this value does not(!) affect the area in which barcodes are successfully recognized.
+ * It only changes the size of the box drawn onto the scan screen. To restrict the active scanning area,
+ * use the properties listed below.
+ *
+ * \see SBSScanSettings#activeScanningAreaPortrait
+ * \see SBSScanSettings#activeScanningAreaLandscape
+ *
+ *
+ * By default the width is 0.6, height is 0.4
+ *
+ * \since 4.16.0
+ *
+ * \param w Width of the viewfinder rectangle in landscape orientation.
+ * \param h Height of the viewfinder rectangle in landscape orientation.
+ */
+- (void)setViewfinderLandscapeWidth:(float)w
+                             height:(float)h SBS_SWIFT_NAME(setViewfinderLandscape(width:height:));
 
 /**
  * \brief Sets the color of the viewfinder before a bar code has been recognized
@@ -470,7 +579,7 @@ typedef SBSCameraSwitchVisibility CameraSwitchVisibility SBS_DEPRECATED;
  * \param g Green component (between 0.0 and 1.0).
  * \param b Blue component (between 0.0 and 1.0).
  */
-- (void)setViewfinderColor:(float)r green:(float)g blue:(float)b;
+- (void)setViewfinderColor:(float)r green:(float)g blue:(float)b SBS_SWIFT_NAME(setViewfinderColor(red:green:blue:));
 
 /**
  * \brief Sets the color of the viewfinder once the bar code has been recognized.
@@ -485,7 +594,7 @@ typedef SBSCameraSwitchVisibility CameraSwitchVisibility SBS_DEPRECATED;
  * \param g Green component (between 0.0 and 1.0).
  * \param b Blue component (between 0.0 and 1.0).
  */
-- (void)setViewfinderDecodedColor:(float)r green:(float)g blue:(float)b;
+- (void)setViewfinderDecodedColor:(float)r green:(float)g blue:(float)b SBS_SWIFT_NAME(setViewfinderDecodedColor(red:green:blue:));
 
 
 /**
@@ -545,6 +654,16 @@ typedef SBSCameraSwitchVisibility CameraSwitchVisibility SBS_DEPRECATED;
  */
 - (void)setMissingCameraPermissionInfoText:(nonnull NSString *)infoText;
 ///\}
+
+/**
+ * \brief Sets the color of the tracked barcodes to use for the specified state.
+ *
+ * \since 5.2.0
+ *
+ * \param color The color to use for tracked barcodes in the specified state.
+ * \param state The state that uses the specified color.
+ */
+- (void)setMatrixScanHighlightingColor:(nonnull UIColor *)color forState:(SBSMatrixScanHighlightingState)state;
 
 @end
 

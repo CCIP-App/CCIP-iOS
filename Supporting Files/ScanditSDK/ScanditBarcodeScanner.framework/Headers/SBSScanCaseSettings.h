@@ -17,7 +17,7 @@
  *
  * The settings are passed to the SBSScanCase when it is constructed.
  *
- * @since 4.13.0
+ * \since 4.13.0
  */
 @interface SBSScanCaseSettings : NSObject<NSCopying>
 
@@ -26,7 +26,16 @@
  *
  * \return new settings object
  */
-- (nonnull instancetype)init SBS_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init;
+
+/**
+ * \brief Returns a settings instance initialized with the values contained in dictionary.
+ *
+ * \param dictionary Dictionary, e.g. as deserialized from JSON to use for initializing the settings.
+ *
+ * \return new settings object
+ */
+- (nullable instancetype)initWithDictionary:(nullable NSDictionary<NSString *, id> *)dictionary SBS_DESIGNATED_INITIALIZER;
 
 /**
  * \brief Enable decoding of the given symbologies.
@@ -41,7 +50,7 @@
  *
  * \since 4.13.0
  */
-- (void)enableSymbologies:(nonnull NSSet *)symbologies;
+- (void)enableSymbologies:(nonnull NSSet<NSNumber *> *)symbologies;
 
 /**
  * \brief Enable/disable decoding of a certain symbology.
@@ -83,6 +92,15 @@
  * \since 4.13.0
  */
 - (void)setScanningAreaHeight:(float)height;
+
+/**
+ * \brief Set the active scanning height for 2d codes
+ *
+ * Use this method to set the active scanning height for 2d codes.
+ *
+ * \since 5.7
+ */
+- (void)setScanningAreaHeight2d:(float)height;
 
 /**
  * \brief Retrieve the scan settings to initialize a barcode picker

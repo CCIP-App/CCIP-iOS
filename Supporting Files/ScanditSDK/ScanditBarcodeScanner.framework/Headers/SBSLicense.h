@@ -33,4 +33,24 @@
  */
 + (void)setAppKey:(nonnull NSString *)appKey;
 
+
+/**
+ * \brief Set a customer defined id that is verified in the license key. Optional feature for
+ * resellers of the SDK.
+ *
+ * \param identifier The external id.
+ *
+ * \since 5.9.0
+ */
++ (void)setExternalId:(nullable NSString *)identifier;
+
+/**
+ * \brief Get the currently set external id.
+ *
+ * \return The currently set external id. By default no external id is set.
+ *
+ * \since 5.9.0
+ */
++ (nullable NSString *)externalId;
+
 @end

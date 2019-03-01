@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SBSSymbologySettings.h"
 #import "SBSCommon.h"
+#import "SBSSymbologySettings.h"
+#import "SBSScanAreaSettings.h"
 
 /**
  * \brief Holds settings that affect the recognition of barcodes, such as enabled barcode
@@ -22,7 +23,7 @@
  * Scan settings are not directly allocated, instead you should use one of the factory settings
  * (#defaultSettings or #pre47DefaultSettings) to receive a settings instance.
  *
- * @since 4.7.0
+ * \since 4.7.0
  */
 
 @interface SBSScanSettings : NSObject<NSCopying>
@@ -46,17 +47,17 @@
  *
  * \return new settings object
  */
-+ (nonnull instancetype)pre47DefaultSettings;
++ (nonnull instancetype)pre47DefaultSettings SBS_DEPRECATED_MSG_ATTRIBUTE("use defaultSettings and enable the required symbologies by hand instead.");
 
 
 /**
- * \brief Returns a settings instance initialized with the values contained in dict
+ * \brief Returns a settings instance initialized with the values contained in dictionary
  *
- * \param dict Dictionary, e.g. as deserialized from JSON to use for initializing the settings.
+ * \param dictionary Dictionary, e.g. as deserialized from JSON to use for initializing the settings.
  * \param error Upon failure, will contain further details on why the settings instance could 
  *    not be created.
  */
-+ (nullable instancetype)settingsWithDictionary:(nonnull NSDictionary*)dict
++ (nullable instancetype)settingsWithDictionary:(nonnull NSDictionary<NSString *, id> *)dictionary
                                           error:(NSError * _Nullable * _Nullable)error;
 
 /**
@@ -81,7 +82,7 @@
  *
  * \since 4.7.0
  */
- - (void)enableSymbologies:(nonnull NSSet *)symbologies;
+ - (void)enableSymbologies:(nonnull NSSet<NSNumber *> *)symbologies;
 
 /**
  * \brief Enable/disable decoding of a certain symbology.
@@ -116,7 +117,7 @@
 /**
  * \brief Returns the set of enabled symbologies
  */
-- (nonnull NSSet *)enabledSymbologies;
+- (nonnull NSSet<NSNumber *> *)enabledSymbologies;
 
 /**
  * \brief Retrieve symbology-specific settings.
@@ -142,7 +143,7 @@
 /**
  * \brief The maximum number of barcodes to be decoded every frame.
  *
- * Clamped to the range [1,6].
+ * If set to values smaller than one, it is set to 1.
  *
  * \since 4.7.0
  */
@@ -179,6 +180,9 @@
 
 /**
  * The zoom as a percentage of the max zoom possible (between 0 and 1).
+ *
+ * Note that this value may be overwritten by calls to \ref SBSBarcodePicker#setRelativeZoom:, or 
+ * by a manual zoom operation through pinch-to-zoom.
  */
  @property (nonatomic, assign) float relativeZoom;
 
@@ -223,10 +227,10 @@
  *
  * The active scanning area defines the rectangle in which barcodes and 2D codes are 
  * searched and decoded when the picker is in landscape orientation. By default, this area
- * is set to the full image. 
+ * is set to the full camera preview.
  *
- * The rectangle is defined in relative view coordinates, where the top-left corner 
- * is (0,0) and the bottom right corner of the view is (1,1).
+ * The rectangle is defined in relative coordinates, where the top-left corner
+ * is (0,0) and the bottom right corner of the camera preview is (1,1).
  *
  * \since 4.7.0
  */
@@ -238,13 +242,13 @@
  *
  * The active scanning area defines the rectangle in which barcodes and 2D codes are
  * searched and decoded when the picker is in portrait orientation. By default, this area
- * is set to the full image.
+ * is set to the full camera preview.
  *
  * When setting this property, restricted area scanning (#restrictedAreaScanningEnabled) is
  * automatically set to true.
  *
- * The rectangle is defined in relative view coordinates, where the top-left corner
- * is (0,0) and the bottom right corner of the view is (1,1).
+ * The rectangle is defined in relative coordinates, where the top-left corner
+ * is (0,0) and the bottom right corner of the camera preview is (1,1).
  *
  * \since 4.7.0
  */
@@ -312,6 +316,17 @@
 - (void)setProperty:(nonnull NSString *)property toValue:(int)value;
 
 /**
+ * \brief Get the value of the custom property identified by key.
+ *
+ * If the property is not set a default value of -1 is returned.
+ *
+ * \param key The name of the property to retrieve. Must not be nil.
+ *
+ * \since 5.5.0
+ */
+- (int)valueForProperty:(nonnull NSString *)key;
+
+/**
  * \brief Whether code rejection should be enabled.
  *
  * Code rejection allows you to implement custom code verification features and reject certain 
@@ -320,5 +335,46 @@
  * \since 4.15
  */
 @property (nonatomic, assign) BOOL codeRejectionEnabled;
+
+/**
+ * \brief Portrait area settings, if present
+ *
+ * This property allows a more fine-grained control over where codes are searched and scanned. By
+ * default, this property is set to nil and the settings specified by \ref activeScanningAreaPortrait
+ * and \ref activeScanningAreaLandscape are used to control where codes are scanned. As soon as this
+ * property is set to an instance, \ref activeScanningAreaPortrait and
+ * \ref activeScanningAreaLandscape have no longer any effect on the scan area.
+ *
+ * \since 5.0
+ */
+@property (nullable, nonatomic, strong) SBSScanAreaSettings *areaSettingsPortrait;
+
+/**
+ * \brief Landscape area settings, if present
+ *
+ * This property allows a more fine-grained control over where codes are searched and scanned. By
+ * default, this property is set to nil and the settings specified by \ref activeScanningAreaPortrait 
+ * and \ref activeScanningAreaLandscape are used to control where codes are scanned. As soon as this 
+ * property is set to an instance, \ref activeScanningAreaPortrait and 
+ * \ref activeScanningAreaLandscape have no longer any effect on the scan area.
+ *
+ * \since 5.0
+ */
+@property (nullable, nonatomic, strong) SBSScanAreaSettings *areaSettingsLandscape;
+
+/**
+ * \brief Whether matrix scan should be enabled.
+ *
+ * Matrix scan allows you to know the location of all localized codes.
+ * In order to get the tracked codes, it is recommended to implement the
+ * SBSProcessFrameDelegate protocol and to use SBSScanSession#trackedCodes.
+ * To use the default matrix scan UI, it is necessary to set
+ * SBSOverlayController#guiStyle to SBSGuiStyleMatrixScan.
+ * When implementing a custom matrix scan UI, it is recommended to set
+ * SBSOverlayController#guiStyle to SBSGuiStyleNone.
+ *
+ * \since 5.2
+ */
+@property (nonatomic, assign, getter=isMatrixScanEnabled) BOOL matrixScanEnabled;
 
 @end

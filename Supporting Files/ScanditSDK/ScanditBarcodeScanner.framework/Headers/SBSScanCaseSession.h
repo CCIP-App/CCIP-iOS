@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class SBSCode;
+
 /**
  * \brief Holds all barcodes that were decoded in the current session.
  *
- * <h2>Configuring Session Behaviour</h2>
+ * <h2>Configuring Session Behavior</h2>
  *
  * The scan session is responsible for determining the list of "relevant" barcodes
  * by filtering out duplicates. Depending on your app, different duplicate removal
@@ -36,28 +38,28 @@
 /**
  * \brief A new copy of the list of barcodes that have been successfully decoded in the last frame.
  */
-@property (nonnull, readonly, nonatomic, copy) NSArray* newlyRecognizedCodes;
+@property (nonnull, readonly, nonatomic, copy) NSArray<SBSCode *> *newlyRecognizedCodes;
 
 /**
  * \brief A new copy of the list of barcodes that have been localized but not
  * recognized in the last frame.
  */
-@property (nonnull, readonly, nonatomic, copy) NSArray* newlyLocalizedCodes;
+@property (nonnull, readonly, nonatomic, copy) NSArray<SBSCode *> *newlyLocalizedCodes;
 
 /**
  * \brief Returns the list of  barcodes (data, symbology) that have been decoded
  * (recognized) in this session.
  *
- * Depending on the code caching and duplicate filtering behaviour, different
+ * Depending on the code caching and duplicate filtering behavior, different
  * sets of codes are returned by this method.
  *
  * \see SBSScanSettings#codeDuplicateFilter
  * \see SBSScanSettings#codeCachingDuration
  *
- * @return a new copy of the list of barcodes that have been successfully
+ * \return a new copy of the list of barcodes that have been successfully
  * decoded in this session
  */
-@property (nonnull, readonly, nonatomic, copy) NSArray* allRecognizedCodes;
+@property (nonnull, readonly, nonatomic, copy) NSArray<SBSCode *> *allRecognizedCodes;
 
 /**
  * \brief Remove all codes from the scan session

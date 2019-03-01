@@ -1,0 +1,2321 @@
+<h1>Scandit SDK 5.10</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Improved scanning performance for DataMatrix codes (higher frame rate and better robustness)</li>
+<li>DL/ID parser: Improved robustness of header and subfile parsing for driving licenses that do not follow the AAMVA DL/ID Card Design Standard properly.</li>
+<li>Added Posi LAPA 4 State Code postal symbology scanning support.</li>
+<li>Added ITF and Code39 barcode generator support.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.10.1 (January 23rd 2019)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Issues with retrieving camera info on specific devices will no longer lead to crashes.</li>
+</ul>
+
+<h3>Cordova</h3>
+
+<ul>
+<li>MatrixScan highlighting color changes are fixed on Android &amp; iOS, the documentation has been updated with more info.</li>
+<li>On Android <code>startScanning(true)</code> will now start the scanning in paused state like on iOS.</li>
+<li>On Android the scanning will now stay paused when it was put in the background in paused state.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.10.0 (January 10th 2019)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Significantly improved Direct Part Marking mode execution speed. </li>
+<li>Fixed GS1 AI 20 parsing in some MicroPDF417 codes.</li>
+<li>Added support for color inverted Code39 codes.</li>
+<li>Increased the maximum supported symbol count for ITF codes from 46 to 50.</li>
+<li>Improved decoding of QR codes with damaged finder patterns.</li>
+<li>Fixed rare false positive EAN13 reads on Samsung J5.</li>
+<li>Fixed DataBar Expanded general purpose AI decoding after an 392x AI.</li>
+<li>Print correct ascii characters for DataMatrix headers and trailers encoded with macro characters.</li>
+</ul>
+
+<h3>Linux</h3>
+
+<ul>
+<li>Improved localization in single frame mode if no GPU is available.</li>
+<li>Added Camera class and its usage example to Python API.</li>
+<li>The minimum required libc version for amd64 (x86_64), i386 and arm64 builds were increased from version 2.19 to 2.23.
+The armhf and armv6 builds remain at libc version 2.20.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Improved auto-focus for certain Samsung Galaxy S9 devices (e.g., SM-G960F).</li>
+<li>Improved auto-exposure behavior on Amazon Fire 10 HD, 7th gen under low-light conditions.</li>
+</ul>
+
+<h3>Titanium</h3>
+
+<ul>
+<li>Increased the default supported symbol count for ITF codes from 46 to 50.</li>
+<li>Increased the default supported symbol count for Code128 codes from 48 to 50.</li>
+</ul>
+
+<h1>Scandit SDK 5.9</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Added Code 32 (Italian Pharma Code) symbology support.</li>
+<li>Added EAN-13/UPCA symbology to the barcode generator.</li>
+<li>Added beta implementation of advanced overlays for MatrixScan (iOS, Android and Xamarin Native only)</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.9.2 (October 25th 2018)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Added parser support for machine readable zones of French national identity cards.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Enable stack protection (-fstack-protector-strong) for iOS binaries.</li>
+<li>Temporarily disable motion compensation on the iPhone XS, XS Max and XR to work around issues on these devices.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed a crash in the view based matrix scan sample.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.9.1 (October 12th 2018)</h2>
+
+<h3>Linux</h3>
+
+<ul>
+<li>Changed the default maximum number of codes per frame in single frame mode from 9 to 1.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed issues with turning on the torch again after stopping and then restarting the picker.</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>Added a new property <code>alwaysShowModally</code> which forces the ScanditService to show modally on iOS even if a navigation controller is at the top of the view hierarchy.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.9.0 (September 28th 2018)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Improved MatrixScan accuracy in certain corner cases.</li>
+<li>Improved scanning performance for QR codes with logos in the center.</li>
+<li>Improved scanning performance for QR codes printed on fabric.</li>
+<li>Fixed scanning of Databar Expanded codes with an ISO/IEC 646 to numeric encoding transition.</li>
+<li>Fixed scanning of DotCodes with synthetic images containing only black and white pixels.</li>
+<li>Fixed a rare issue where blurry barcode decoding sometimes stopped working after thousands scans.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Added external ID support for ISVs. </li>
+<li>Improved scanning performance on the Verifone Carbon Mobile 5.</li>
+<li>Improved auto-focus and auto-exposure for the Huawei Y6 (SLA-L02, SLA-L03 and SLA-L22).</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Added external ID support for ISVs. </li>
+<li>Added Barcode generator API for EAN-13, UPCA, Code128, QR and Data Matrix.</li>
+<li>Fixed default visibility of the torch button.</li>
+</ul>
+
+<h3>Linux</h3>
+
+<ul>
+<li>Added Python bindings for the barcode generator API.</li>
+<li>Added first plane offset support for all image formats.</li>
+<li>Fixed rare runtime symbol collision issues when linking against certain libraries (e.g., libprotobuf).</li>
+</ul>
+
+<h3>Cordova</h3>
+
+<ul>
+<li>Added <code>setSearchBarKeyboardType()</code> to change the search bar's keyboard to one that allows text input.</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>Added Parser API to Xamarin.Forms.</li>
+</ul>
+
+<h1>Scandit SDK 5.8</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Barcode generator API for Code128, QR and Data Matrix on the Android platform.</li>
+<li>Enabled detection of mirrored Data Matrix codes by default.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.8.2 (August 15th 2018)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Important: Fixed a bug in 5.8.1 that required all production customer to have at least an intermittent network connection (once within 6 month of use) to register with our registration services. If you deploy 5.8.1 to an app that has been operating on an internal network without Internet access, the SDK will show an error message. For customers operating on an internal network, we recommend that you either upgrade to 5.8.2 or adjust your firewall to allow an (intermittent) connection to our registration servers.</li>
+<li>Fixed automatic mirroring detection for DataMatrix codes.</li>
+<li>Improved duplicate filtering for difficult localization cases.</li>
+</ul>
+
+<h3>Cordova/PhoneGap</h3>
+
+<ul>
+<li>Fixed a problem where search bar related methods did not work on iOS.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.8.1 (July 10th 2018)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Return unique results for each frame also when duplicate filtering is disabled.</li>
+<li>Fixed duplication of MatrixScan tracks if strong motion is present.</li>
+<li>Scans assigned to the wrong MatrixScan track are now forgotten after some time.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Use smoother auto-focus when matrix scan is enabled on the following devices: Samsung Xcover 4, Nokia 6 (2018), Galaxy A5.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.8.0 (June 25th 2018)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Reduced initialization time of the scanner when starting it for the first time with certain usage patterns.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed preview cropping and scaling issues for certain Google Glass devices.</li>
+<li>Fixed the package naming for the text recognition sample.</li>
+<li>Added the LicenseKeyValidationListener to programmatically know if the app key validation failed.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Added the LicenseKeyValidationDelegate to programmatically know if the app key validation failed.</li>
+</ul>
+
+<h3>Linux</h3>
+
+<ul>
+<li>Added ARM64 architecture support.</li>
+<li>Added UYVY frame data support for V4L2 cameras.</li>
+<li>Added grayscale frame data support for V4L2 cameras.</li>
+<li>Added barcode tracking (MatrixScan) API support.</li>
+<li>Added row stride support for RGB, RGBA and Gray images.</li>
+</ul>
+
+<h3>Cordova/PhoneGap</h3>
+
+<ul>
+<li>Added a callback to get the frame image when a barcode is scanned.</li>
+<li>Added a method to programmatically know if the app key validation failed.</li>
+<li>Fixed an issue where sometimes the WKWebView thread is blocked indefinitely if the scanner is presented modally and the cordova-plugin-wkwebview-engine plugin is used.</li>
+</ul>
+
+<h3>ReactNative</h3>
+
+<ul>
+<li>Added a callback to get the frame image when a barcode is scanned.</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>Added .NET Standard framework to Scandit.BarcodePicker.Unified NuGet package.</li>
+</ul>
+
+<h1>Scandit SDK 5.7</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Added Micro QR symbology support.</li>
+<li>Added support for DotCode scanning on cigarette packages.</li>
+<li>Added support for inverted Aztec codes.</li>
+<li>Improved decoding of QR codes with damaged finder patterns.</li>
+<li>Improved decoding of low-contrast (e.g., black bars on red background) codes.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.7.3 (June 15th 2018)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Reduced initialization time of the scanner when starting it for the first time with certain usage patterns.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.7.2 (April 18th 2018)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed initializing the code duplicate filter setting using a JSON configuration file. This issue was introduced in 5.7.0 and limited the code duplicate filter to 0.5s on Cordova/Phonegap.</li>
+</ul>
+
+<h3>Cordova/PhoneGap</h3>
+
+<ul>
+<li>Fixed the plugin to work with secondary webviews on top of the main webview.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.7.1 (April 6th 2018)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fixed a rare out-of-bounds access in the QR code reader.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed auto-focus issues that affected certain Samsung Galaxy S8 firmware versions.</li>
+</ul>
+
+<h3>Cordova/PhoneGap</h3>
+
+<ul>
+<li>Fixed scan case for iOS.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.7.0 (March 23th 2018)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Improved location highlighting accuracy.</li>
+<li>Improved decoding of blurry Code 39 codes with a bar ratio of 1 to 2.</li>
+<li>Improved decoding of low contrast PDF417 and MicroPDF417 codes.</li>
+<li>DL/ID parser: fix an issue that caused the two-letter state code to be left out of the unified address field for North Carolina.</li>
+<li>Added support for DataBar bar patterns that do not comply with the specification.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Improved scan case scanning capabilities.</li>
+<li>Added additional scan case settings methods specifically for Matrix Scan in downward facing mode.</li>
+<li>Improved auto-focus for the Samsung Galaxy S9 (SM-G960) and S9+ (SM-G965).</li>
+<li>Improved auto-focus for the Samsung Galaxy A8 (SM-A530) and A8+ (SM-A730).</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Fixed an issue that could cause a preview resolution change to take a very long time.</li>
+<li>Fixed an issue that could cause the torch button to not show up after switching camera.</li>
+<li>Added SBSSymbologyFromString() function to convert a symbology string to its corresponding symbology enum.</li>
+<li>The <code>switchCamera</code> property can be observed via the property observer.</li>
+<li>In Swift, <code>add(propertyObserver:)</code> and <code>remove(propertyObserver:)</code> have been renamed to <code>addPropertyObserver(_:)</code> and <code>removePropertyObserver(_:)</code> to compensate for weak type information.</li>
+<li>Added a separate property to configure the 2d scan area for the scan case.</li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Added <code>LOCATIONS_ONLY</code> GUI style.</li>
+</ul>
+
+<h3>Cordova/PhoneGap</h3>
+
+<ul>
+<li>Added <code>setTimeout()</code> function to ScanCase.</li>
+<li>Added <code>scanBeepEnabled()</code> function to ScanCase.</li>
+<li>Added <code>errorSoundEnabled()</code> function to ScanCase.</li>
+<li>Added <code>setMatrixScanHighlightingColor()</code> function to ScanOverlay.</li>
+<li>Improved MatrixScan performance by not serializing barcodes if the didScan callback is not defined.</li>
+</ul>
+
+<h3>Linux</h3>
+
+<ul>
+<li>Removed the OpenMP dependency for x86 architectures to increase portability.</li>
+<li>Fixed libscanditsdk.so compatibility issues when linking against different libstdc++ versions.</li>
+</ul>
+
+<h3>Titanium</h3>
+
+<ul>
+<li>Introduced a new build for Titanium 7 on Android, it is identified with <code>titanium7</code> on the dashboard. The build for Titanium 6 remains, marked with <code>titanium6</code>, but is now only usable for Titanium 6.2+. Older versions of Titanium are no longer supported.</li>
+</ul>
+
+<h1>Scandit SDK 5.6</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Up to 50% faster frame processing through a better multi-threading implementation if many 1d and 2d symbologies are enabled.</li>
+<li>Added all four types of Machine Readable Travel Documents (MRTD) specified by the International Civil Aviation Organization (ICAO) to the Scandit Parsing Library to support the decoding of MRZ zones on ID documents with OCR.</li>
+<li>Added support to parse the Swiss QR payment codes (QR-Rechnung) to the Scandit Parsing Library.</li>
+<li>Improved scanning performance for large QR codes.</li>
+<li>Improved location highlighting accuracy.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.6.3 (March 13th 2018)</h2>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Fixed a retain cycle in the Scan Case API.</li>
+</ul>
+
+<h3>Titanium</h3>
+
+<ul>
+<li>Fix an issue with Titanium Android that caused the license validation to fail with Error 257, even if the MatrixScan feature was not used.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.6.2 (February 12th 2018)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fix an issue that could cause didScan to be invoked twice when using the simultaneous barcode+text mode.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Avoid calling property observers if the value is NaN.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.6.1 (January 26th 2018)</h2>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Remove use of GetModuleFileNameA that caused app validation for Windows 8.1 Store Apps to fail.</li>
+<li>Further fixes for 'Unable to start video capture: The given key was not present in the dictionary' error on latest Windows 10 versions.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.6.0 (January 8th 2018)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Exposed the property change observer (torch, recognition mode, zoom) on Xamarin Native and Cordova.</li>
+<li>Fixed rare incorrect Code39 reads when codes are very small and blurry.</li>
+<li>Added option to the GS1 AI parser to handle human readable GS1 AI strings</li>
+<li>Added option to the GS1 AI parser to include the human readable GS1 AI string in the parser output.</li>
+<li>The parser's fieldsArray has been renamed to fields and fieldsDict/fieldsMap to fieldsByName. The old methods are deprecated but still available.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Armeabi (ARMv5) support has been dropped. Google officially deprecated armeabi builds starting with the Android NDK r15 (July 2017). You should use an older version of the SDK if you still require it.</li>
+<li>Improved MatrixScan animation responsiveness and accuracy.</li>
+<li>Added case mode support.</li>
+<li>Added support for ARGB image format.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Fixed an issue that caused the zoom factor not to properly reset after the application has been put into the background.</li>
+<li>Added support for ARGB image format.</li>
+<li>Fixed an issue that caused text recognition (OCR) to stop working upon changing the preview resolution.</li>
+</ul>
+
+<h3>Linux</h3>
+
+<ul>
+<li>Added support for ARGB image format.</li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Added an interface to check if a barcode is color inverted.</li>
+<li>Fixed 'Unable to start video capture: The given key was not present in the dictionary' error on latest Windows 10 versions.</li>
+</ul>
+
+<h3>Cordova/PhoneGap</h3>
+
+<ul>
+<li>The plugin now also works with cordova-android 7+</li>
+</ul>
+
+<h3>ReactNative</h3>
+
+<ul>
+<li>Orientation changes under Android are supported.</li>
+<li>The torch and camera buttons have been added.</li>
+<li>The scanning hot spot and restricting the active scanning area have been added.</li>
+<li>Added MatrixScan.</li>
+</ul>
+
+<h3>Titanium</h3>
+
+<ul>
+<li>Removed support for Titanium 5.x. If you can not update to Titanium 6.x use the SDK versions 4.16 or 5.5.</li>
+</ul>
+
+<h1>Scandit SDK 5.5</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>ReactNative support for iOS and Android. The plugin source can be found on Github: https://github.com/Scandit/barcodescanner-sdk-react-native</li>
+<li>Initial GS1 DotCode symbology support as defined in the AIM Specification Revision 3.0.</li>
+<li>Improved support for recognizing DataMatrix codes. In particular, reading of large codes with perspective and non-linear distortions has been greatly improved. In addition, a new direct part marking (DPM) mode has been added that can be used to scan codes engraved or etched into metal. The DPM mode is off by default and must be configured by enabling the direct_part_marking_mode extension.</li>
+<li>Improved MatrixScan performance for 2D codes and use-cases that require a very high resolution.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.5.2 (December 7th 2017)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fix an issue on devices with armv5 that causes loading of the barcode scanner library to fail due to undefined references to <code>__atomic_fetch_add_4</code>.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.5.1 (November 7th 2017)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fixed a rare issue with the QR code decoder.</li>
+<li>Scan in the default scan area in every frame when in single frame mode.</li>
+<li>Improved matrix scan performance for Data Matrix and other 2d symbologies.</li>
+<li>Fixed a rare issue that made the scanner unresponsive after several scans.</li>
+</ul>
+
+<h3>Cordova/PhoneGap</h3>
+
+<ul>
+<li>Added <code>volumeButtonToScanEnabled</code> in <code>ScanCase</code> for enabling/disabling the start scanner when volume button is pressed behavior.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.5.0 (October 17th 2017)</h2>
+
+<h3>Low-Level API/Linux</h3>
+
+<ul>
+<li>Added functionality to convert symbology name strings to the corresponding enum value.</li>
+<li>Added SIGINT handling to the Linux camera sample.</li>
+<li>Fixed missing error handling in sc_camera_get_frame.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>BarcodePicker now has constructors for view inflation.</li>
+<li>Fixed dark preview images on Honeywell ScanPal EDA50 devices.</li>
+<li>Added an interface to check if a barcode is color inverted.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Fix issue introduced in 5.4 that caused the auto-focus to get stuck after a tap-to-focus event on some devices.</li>
+<li>Added an interface to check if a barcode is color inverted.</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>Added option to restrict the orientation of the picker in Xamarin unified.</li>
+</ul>
+
+<h1>Scandit SDK 5.4</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Added text recognition (OCR) functionality to provide additional data capture capabilities. This functionality is available on iOS, Android, Xamarin and Cordova/Phonegap. It is not integrated in the default build. Contact support@scandit.com if you want to try it out, or visit <a href="https://www.scandit.com/products/barcode-scanner/details/">scandit.com</a> for more information.</li>
+<li>Improved tolerance for non-conformant PDF417 start and end patterns and added support for codes with a missing or unreadable start pattern.</li>
+<li>Added MatrixScan support for Xamarin Native Android and iOS.</li>
+<li>Added MatrixScan support for Cordova Android and iOS.</li>
+<li>Added quiet zone violation support for QR codes.</li>
+<li>Improved angle tolerance of the blurry reader.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.4.2 (September 13th 2017)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Improved auto-focus and auto-exposure for the Samsung Galaxy S8 active (SM-G892) and a Samsung Galaxy S8 model (SM-G950U).</li>
+</ul>
+
+<h3>Cordova/PhoneGap</h3>
+
+<ul>
+<li>Fixed a rare null pointer exception on Android.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.4.1 (September 1st 2017)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Increased tolerance for Codabar intersymbol gaps.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Improved auto-focus and auto-exposure for a Samsung Galaxy S5 model (SAMSUNG-SM-G900) and the Samsung Galaxy Note8.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Scan case: Added support for configuring the height of the scanning area.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.4.0 (August 17th 2017)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Improved decoding performance of Code 128 with severe ink-spread.</li>
+<li>Fixed an off-by-one error in analytics that could lead to an Error 6.</li>
+<li>Added optional mod 16 and mod 11 checksums to Codabar.</li>
+<li>The "MissingCameraPermissionInfoText" is now translatable on iOS, Android and Cordova.</li>
+<li>Fixed regression of scanning performance for QR codes with small quiet zone violations introduced in Scandit SDK 5.3.0.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Improved auto-focus and auto-exposure for Samsung Galaxy S8.</li>
+<li>Added x86_64 builds. Feel free to delete them if the library size is critical.</li>
+<li>Added a MatrixScan guide to the documentation.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Added <code>setViewfinderWidth:height:landscapeWidth:landscapeHeight</code> to <code>SBSOverlayController</code>. The <code>setViewfinderHeight:width:landscapeHeight:landscapeWidth</code> method has been marked deprecated.</li>
+<li>Stopping the camera will now reset the focus and the exposure.</li>
+<li>Fixed an issue that may cause the preview to either stay black or display a static frame when opening and stopping the picker in quick succession.</li>
+<li>The method <code>property:changedToValue:</code> in the <code>SBSPropertyObserver</code> protocol has been updated to <code>barcodePicker:property:changedToValue:</code>.</li>
+<li>Scan case: state changes made in the didInitialize delegate method are now no longer ignored.</li>
+<li><code>[SBSScanSettings pre47DefaultSettings]</code> has been deprecated. Instead the required symbologies should be enabled individually.</li>
+<li>Fixed an issue that may cause the scanner to process a few more frames while the app is in the background.</li>
+<li>Fixed an issue that may cause the exposure adjustment to get stuck.</li>
+<li>Added a MatrixScan guide to the documentation.</li>
+<li>Fixed an issue that may cause the application to crash in SCUserLocationManager</li>
+<li>When using <code>SBSGuiStyleLocationsOnly</code> or <code>SBSGuiStyleNone</code>, the logo can now be moved with <code>setViewfinderWidth:height:landscapeWidth:landscapeHeight:</code></li>
+</ul>
+
+<h3>Linux</h3>
+
+<ul>
+<li>Added Python 3 bindings and a Python sample app.</li>
+<li>Enabled GPU support for low-end Linux devices (e.g., Raspberry Pi models 0 and 3).</li>
+<li>Fixed "this function declaration is not a prototype" warnings in the header files.</li>
+<li>Added a barcode scanner preset to configure single frame mode use-cases.</li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>The Windows NuGet package for Scandit.Recognition now includes support for C. Code targeting Windows Desktop (x86, x64) can directly use the C/C++ API of the Scandit SDK. This feature is not available for UWP/Windows Store apps.</li>
+</ul>
+
+<h3>Cordova/PhoneGap</h3>
+
+<ul>
+<li>Added a new UI locations-only UI mode. This UI mode is identical to None, with the difference that barcode locations are highlighted.</li>
+<li>Added a matrix scan sample app.</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>Added a new UI locations-only UI mode. This UI mode is identical to None, with the difference that barcode locations are highlighted.</li>
+<li>Xamarin.iOS: Fixed an issue with image to picker coordinate conversion that caused all converted coordinates to be zero.</li>
+<li>Xamarin.iOS and Xamarin.Android: Added a matrix scan sample app.</li>
+</ul>
+
+<h1>Scandit SDK 5.3</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Improved PDF417 scan range and handling of codes with glare and defects.</li>
+<li>Added blurry decoding of MSI Plessey barcodes that use a check digit. The maximum decode range improved up to 65% (device dependent).</li>
+<li>Improved scanning performance and increased angle and non-planarity tolerance for large QR codes.</li>
+<li>Important: As announced in the 5.0 release notes, APIs deprecated during the 4.x release cycle have been removed. You will have to update your applications to use the new APIs provided on the different platforms:
+<ul>
+<li>ScanditSDKBarcodePicker on Android and iOS has been removed. Please update your application to use SBSBarcodePicker (iOS), or BarcodePicker (Android).</li>
+<li>cordova.exec-based API for Cordova/Phonegap has been removed. Please update your app to use the BarcodePicker API.</li>
+<li>ScanditSDK.* API for Xamarin has been removed. Please update your app to use the BarcodePicker API for iOS and Android.</li>
+</ul></li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.3.4 (July 25th 2017)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed focus issues on selected Samsung Galaxy S7 devices (SM-G930P, SM-G935P, SM-G930A and SM-G935A).</li>
+</ul>
+
+<h3>Cordova/PhoneGap</h3>
+
+<ul>
+<li>Fixed an issue that would cause the callbacks to not run synchronously on the engine thread, making it impossible to reject codes.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.3.3 (June 27th 2017)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed regression that broke scanning on the Samsung Galaxy Y.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Fixed a retain cycle in <code>SBSScanCase</code> introduced in 5.3.1.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.3.2 (June 22th 2017)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed a regression introduced in 5.3.0 that broke scanning on the Samsung J3, S4 and the Vuzix M100.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.3.1 (June 15th 2017)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fixed incorrect symbol count computation for MSI Plessey when blurry decoding was used.</li>
+<li>Fixed decoding issues for QR codes with module sizes between one and two pixels.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed focus issues on Samsung Galaxy S5 running Android 6.0 or newer.</li>
+<li>Fixed focus issues on selected Samsung Galaxy S7 devices (SM-G930V, SM-G935V, SM-G930T and SM-G935T).</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Scan case: expose a new option to control the duration for which the scanner should remain in active state after the volume button has been released.</li>
+<li>Added a module map: it is now possible to use our SDK from Swift without a bridging header, by just using <code>import ScanditBarcodeScanner</code>.</li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Fix issue in UTF-8 conversion for codes that use more than one encoding.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.3.0 (May 26th 2017)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Updated the DataBar GS1 AI definitions to the GS1 General Specification version 17.0.1.</li>
+<li>Added support to disable the Code11 checksum.</li>
+<li>Added support for inverse coloured Code128 codes (white code on black background).</li>
+<li>Fixed a rare segmentation fault in handling of analytics responses.</li>
+<li>The stripping of leading FNC1 characters in GS1 Code128 and DataMatrix codes can now be configured through a symbology extension (strip_leading_fnc1).</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Added a new UI locations-only UI mode. This UI mode is identical to None, with the difference that barcode locations are highlighted.</li>
+<li>The locations-only, and None UI modes now display a "scanning by Scandit" logo.</li>
+<li>Fixed issue on Vuzix M100 that caused the first processed frame to take a very long time.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Added a new UI locations-only UI mode. This UI mode is identical to None, with the difference that barcode locations are highlighted.</li>
+<li>The locations-only and None UI modes now display a "scanning by Scandit" logo.</li>
+</ul>
+
+<h3>Cordova/PhoneGap</h3>
+
+<ul>
+<li>Added support for Apache Cordova 7.0.0.</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>The picker of the unified API on Android now supports device rotation and no longer restarts the activity.</li>
+</ul>
+
+<h1>Scandit SDK 5.2</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>The new MatrixScan feature enables multi barcode scanning and tracking of 1d symbologies on Android and iOS.</li>
+<li>New PDF417 reader implementation with an improved rotation and pitch tolerance and erasure support.</li>
+<li>Improved highlighting accuracy for 1d barcodes that are localized or scanned.</li>
+<li>As announced in the 5.0 release notes, the following APIs will be removed in the upcoming 5.3 release:
+<ul>
+<li>ScanditSDKBarcodePicker on Android and iOS</li>
+<li>cordova.exec-based API for Cordova/Phonegap.</li>
+<li>ScanditSDK.* API for Xamarin</li>
+</ul></li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.2.1 (April 21th 2017)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fix issue with highlighting of Postal Code symbologies introduced in 5.2.0.</li>
+</ul>
+
+<h3>Cordova/Phonegap</h3>
+
+<ul>
+<li>Android: Fix a rare race condition that could cause the app to hang while stopping the scanner.</li>
+</ul>
+
+<h3>Linux</h3>
+
+<ul>
+<li>Fixed loading of images with indexed colors and non 8bit color depth in the C API sample.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.2.0 (April 4th 2017)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Add support for MicroPDF417 Macro character encodings.</li>
+<li>MaxiCode support for the case.</li>
+<li>Default scan locations without a barcode are no longer added to the scan session.</li>
+<li>Fixed a regression in Code 128 decoding performance for badly printed codes (introduced in 4.14).</li>
+<li>Fixed incorrect handling of invalid Extended Channel Interpretations (ECI).</li>
+<li>Improved recognition of Code 128 barcodes with printing errors.</li>
+<li>Increase performance in case only 2d barcode symbologies are enabled.</li>
+<li>Added relaxed sharp quiet zone check symbology extension (relaxed_sharp_quiet_zone_check) support for UPCA, EAN13 and EAN8.</li>
+<li>Improved scan speed for barcodes that are placed very close to each other vertically on a label.</li>
+<li>Improved the recognition of large QR codes.</li>
+<li>We no longer produce false positive Aztec results when scanning codes with a close-to-zero percentage of error code words.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Library is once again Java 6 compatible.</li>
+<li>Deprecated getMicroDataMatrixEnabled/setMicroDataMatrixEnabled. This setting no longer has any effect and can be safely removed from the code.</li>
+<li>Galaxy J3: Improve exposure behavior for low-light conditions.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Fix a bug that caused SBSScanSession stopScanning not to work when called in didProcessFrame.</li>
+<li>Fix an issue that caused an invalid license message to be displayed, even though the app key was set.</li>
+<li>Added nullability annotations to SBSScanCaseDelegate.</li>
+<li>In Swift all symbologies are now lower camel case.</li>
+</ul>
+
+<h3>Cordova/Phonegap</h3>
+
+<ul>
+<li>Fix issue with settings maxNumberOfCodesPerFrame to values larger than one (iOS only).</li>
+</ul>
+
+<h3>Titanium</h3>
+
+<ul>
+<li>Added function to set relative zoom.</li>
+<li>Added function to set high density mode.</li>
+<li>Reverted Android symbology names to their proper format.</li>
+<li>Published an extended sample application on <a href="https://github.com/Scandit/barcodescanner-sdk-titanium-samples">GitHub</a>.</li>
+</ul>
+
+<h1>Scandit SDK 5.1</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Improved blurry scan performance for a wide range of Android devices, for example the Samsung Galaxy A5 and J5 devices.</li>
+<li>Improved off center Aztec scan performance.</li>
+<li>The Aztec error correction can now handle codes that are damaged by dirt or small scale glare and codes that are partially outside of the camera image.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.1.1 (February 17th 2017)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Improve support for variable-size Codabar inter-character gaps.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Improve auto-focus and auto-exposure for Galaxy S7 Active.</li>
+<li>Improve auto-focus for Sony Xperia Z5.</li>
+<li>Fixed an issue that caused a degradation in scan performance when changing the scan settings while the camera is already running.</li>
+</ul>
+
+<h3>Titanium</h3>
+
+<ul>
+<li>Adjusted the behavior of stopScanning to match across platforms.</li>
+<li>Fixed the drawViewfinder function on iOS.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.1.0 (January 13th 2017)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Minor behaviour change: If the EAN13 symbology is enabled, then UPCA codes are scanned too. The codes are returned as a 13 digit EAN13 code. Prior to 5.1 UPCA had to be enabled explicitly.</li>
+<li>Improved erasure correction for PDF417 and MicroPDF417.</li>
+<li>Removed tiny QR and tiny DataMatrix modes. Enabling these modes is still safe, but will have no effect. It might be necessary to adapt the zoom value in case of performance regressions.</li>
+<li>Improved accuracy of localized barcode bounding boxes.</li>
+<li>Fix an issue in the QR reader that can cause frame processing to take forever.</li>
+<li>Fix incorrect UTF-8 conversion of UPCE codes in UPCA representation.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fix choppy camera preview on Samsung Galaxy J3.</li>
+<li>Fix an issue that caused the camera switch button to flicker when turning the torch on.</li>
+<li>Fix an inconsistency between how the torch behaves on Android and iOS. Previous to this change, the torch would be enabled when enabling the torch and switching from rear (back) to front camera and back. Now the torch is off when returning to the rear camera.</li>
+<li>We no longer require a camera restart when enabling the torch.</li>
+<li>Added support for optimizing the scan performance for vertical codes.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Added support for optimizing the scan performance for vertical codes.</li>
+<li>Fix an inconsistency in naming of setTorchOffImage and setTorchOnImage in Swift.</li>
+<li>Improve swift types for <code>[SBSScanSettings settingsWithDictionary:error:]</code>.</li>
+<li>Added method to create a SBSScanCaseSettings instance from an NSDictionary.</li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Scandit.Recognition can now be used with Windows Desktop applications.</li>
+<li>Added character encoding information of raw barcode data to the public API.</li>
+<li>Added automatic barcode data conversion from non-ASCII characters to UTF-8. E.g. for QR codes in Kanji mode.</li>
+<li>Added optional support for GPU acceleration through ANGLE. Requires the ANGLE UWP NuGet package version 2.1.13 or newer. This feature is currently not supported for Windows 8.1.</li>
+</ul>
+
+<h3>Titanium</h3>
+
+<ul>
+<li>Fix a bug in setViewfinderSize on iOS, which caused the new size not to be applied correctly.</li>
+<li>Add missing implementation for setCameraSwitchButtonMarginsAndSize and setTorchButtonMarginsAndSize on Android.</li>
+<li>Add missing implementation for setReverseDetectionEnabled on Android.</li>
+<li>Added scan case API support on iOS.</li>
+</ul>
+
+<h1>Linux</h1>
+
+<ul>
+<li>Fix rare deadlock on SDK deallocation.</li>
+</ul>
+
+<h1>Scandit SDK 5.0</h1>
+
+<h2>Important Changes</h2>
+
+<ul>
+<li>Support for iOS 6.0 and iOS 7.0 has been dropped. The minimal deployment target is now iOS 8.0.</li>
+<li>As part of the 5.x release cycle, we will remove some of the APIs deprecated during the 4.x releases. You will have to update your applications to use the new APIs, The deprecated APIs remain available in 5.0, 5.1 and 5.2 but will be completely removed in 5.3. These APIs include:
+<ul>
+<li>ScanditSDKBarcodePicker on Android and iOS</li>
+<li>cordova.exec-based API for Cordova/Phonegap.</li>
+<li>ScanditSDK.* API for Xamarin</li>
+</ul></li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.0.1 (December 1st 2016)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Improved 1D barcode decode range and scan speed on Motorola G3, G4 and G4 Plus. The scanning distance of a 10mil EAN13 code using the 4G Plus increased from 6-30cm to 4-45cm.</li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Fixed issue that caused camera initialization to fail on devices with the latest Windows 10 installed.</li>
+</ul>
+
+<h3>Titanium</h3>
+
+<ul>
+<li>Increased the api level of the modules to be compatible with SDK version 6.0.0.</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>Add missing framework dependencies for iOS.</li>
+<li>Implement Pinch to zoom for iOS, Android and Unified.</li>
+<li>Fixed vibrate permission in the Unified Extended Sample app.</li>
+<li>Fixed disabling the restricted scan area in the Unified Extended Sample app.</li>
+<li>Enable AutoFocusOnTapEnabled by default in Unified (only works on iOS)</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 5.0.0 (October 27th 2016)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Starting with 5.0 the low-level API function sc_barcode_get_data() no longer returns the UTF-8 representation of the data. Instead the raw string, as it is encoded in the code, is returned. Most symbologies, especially all 1d symbologies, are not affected by this change. This fixes an issue with binary-encoded PDF417 codes that can not be represented as UTF-8.</li>
+<li>The encoding of individual data sections can now be queried using sc_barcode_get_data_encoding().</li>
+<li>Fixed a decoder bug in Aztec when switching encoding modes.</li>
+<li>Fixed defect error correction of Aztec code parameter data.</li>
+<li>iOS and Android barcode picker API: Added a new interface for controlling the areas in which barcodes and 2d codes are scanned. This interface allows to separately control the scan areas for wide (linear 1d, PDF417, MicroPDF417 etc.) and square codes (QR, Aztec, Data Matrix etc.).</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Added conversion to UTF-8 for non ASCII encodings. This fixes the display of (Micro)PDF417 codes with ECI data and QR codes in Kanji or Hanzi mode.</li>
+<li>Fixed scanning area restriction issues on devices with non-landscape camera sensor orientation.</li>
+<li>Improved camera configuration parameters on Google Glass.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Swift-er SDK: in order to improve the experience of working with Swift, some methods of <code>SBSOverlayController</code> have been renamed. As a consequence, Swift code using these methods needs to be updated, anyway the compiler should automatically suggest the new names. Please note that this change will not break your Objective-C code.</li>
+<li>The minimal supported iOS version has been raised to 8.0, which is the minimum iOS version supported by Xcode 8.</li>
+<li>Update sample projects to be compatible with Xcode 8. Support for Xcode 7 has been removed.</li>
+</ul>
+
+<h3>Cordova/Phonegap</h3>
+
+<ul>
+<li>Fix preview size of subview picker on Android when the phone is put to sleep in landscape orientation and woken up again in portrait.</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>Added an extended sample app.</li>
+<li>Added Windows support for Xamarin Forms.</li>
+</ul>
+
+<h1>Scandit SDK 4.16</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Improved speed and accuracy of barcode localization for all 1d and 2d symbologies. In addition to these symbology-independent improvements, 1d barcodes with a very large height to width aspect ratio are localized much more reliably. Moreover, the localization of MicroPDF417 codes has been improved as well. MicroPDF417 codes are used as part of GS1 composite codes A and B. As a result, these composite codes can now be scanned much more quickly.</li>
+<li>Added support for two postal code symbologies: RM4SCC (Royal Mail 4 State Customer Code) and KIX (Klant Index).</li>
+<li>Added a unified Xamarin API suitable to be used together with Xamarin Forms. By using this API, the same code can be used for platforms targeting iOS, Android.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.16.4 (October 25th 2016)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fixed a rare invalid memory allocation in the blurry reader introduced in 4.16.0.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed scanning area restriction issues on devices with non-landscape camera sensor orientation.</li>
+</ul>
+
+<h3>Cordova/Phonegap</h3>
+
+<ul>
+<li>Accept UPCA and UPC12 as a symbology enum with the same value.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.16.3 (October 17th 2016)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fixed a rare crash in the blurry reader introduced in 4.16.0.</li>
+<li>Fixed a rare crash in the sharp reader.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed a rare camera-related crash on Android</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>The iOS sample now includes a NSCameraUsageDescription. This is required when targeting iOS 10 and newer, as otherwise the camera requests fail at runtime.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.16.2 (September 26th, 2016)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fixed two rare integer underflows in the blurry reader introduced in 4.16.0.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.16.1 (September 13th, 2016)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Accept Code39 inter symbol gaps that are up to 6 units wide.</li>
+<li>Allow more than six codes per frame to be scanned.</li>
+<li>Add support for scanning PDF417 and MicroPDF417 codes with the scan case (iOS, Phonegap iOS and Xamarin iOS).</li>
+</ul>
+
+<h3>Low-Level API/Linux</h3>
+
+<ul>
+<li>Add functionality to retrieve software license strings.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Improve auto-focus performance for Moto G4 and Moto G4 plus.</li>
+<li>Improve auto-focus performance for Galaxy Note 5.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.16.0 (31st of August 2016)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>New unified SDK build type that can be customized through the license key.</li>
+<li>Fixed partial code reads of blurry Code39 codes.</li>
+<li>Fixed an issue that caused the new code rejection feature to fail when the session was cleared in the didScan callback.</li>
+<li>Picker API's: PDF417 codes are now affected by the scanning area height, even if the scanning area height is very small. Previously, the scanning area height would only affect the area in which PDF417 codes are scanned if it was larger than 0.1.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fix auto-focus issues with Nexus 4.</li>
+<li>Fix issue that caused the process frame listener not to be called under certain circumstances.</li>
+<li>Fix a potential race condition in setting/reading the license key from different threads.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Add <code>resumeScanningWithCompletionHandler:</code>, <code>pauseScanningWithCompletionHandler:</code> which accept a block to be invoked when the asynchronous operation finishes.</li>
+<li>Use lightweight generics for all public methods and properties that use NSSet, NSDictionary and NSArray. For example, the newlyRecognizedCodes array of SBSScanSession is now marked to only contain SBSCode instances. This is a breaking change for Swift: Code that was previously checking the type no longer has to do so.</li>
+<li>Cleanup layout of the extended sample app.</li>
+</ul>
+
+<h3>Linux</h3>
+
+<ul>
+<li>Enabled GPU support for Linux x86 and x86_64.</li>
+<li>Added a function to get the currently enabled extensions for a particular symbology.</li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Fixed race-condition in the initialization of the barcode picker that caused a crash.</li>
+<li>Fixed issue that caused camera initialization to fail on devices with the latest Windows 10 installed.</li>
+<li>Add support for using the barcode scanner SDK with Microsoft HoloLens</li>
+</ul>
+
+<h3>Cordova/Phonegap</h3>
+
+<ul>
+<li>The barcode scanner plugin now includes a NSCameraUsageDescription. This is required when targeting iOS 10 and newer, as otherwise the camera requests fail at runtime.</li>
+<li>Fix an issue in the extended sample app that caused the continue button to be shown when it shouldn't, e.g. when pressing the home tab button when already on the home tab.</li>
+<li>Fix issue with turning on the torch programmatically before or immediately after calling startScanning.</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>Added NuGet package support.</li>
+<li>Added Scan Case API.</li>
+</ul>
+
+<h1>Scandit SDK 4.15</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Add pinch-to-zoom support to the iOS and Android barcode picker that allows to control the zoom level with a pinch gesture.</li>
+<li>Improved MicroPDF417 scan performance. Partial row scans (erasures), code highlighting and upside down codes are now supported.</li>
+<li>Improved decoding of ITF (Interleaved 2 of 5), EAN13, EAN8, UPC-A, UPC-E and PDF417 codes when the image is over- or under-exposed, or the code has ink-spread.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.15.1 (August 8th, 2016)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fixed a rare null pointer access in analytics if the device has no more disk space available.</li>
+<li>Fixed a rare out of bound read in the PDF417 error correction.</li>
+<li>Handle an unexpected exception in the PDF417 error correction.</li>
+<li>Fixed a rare out of bound read for certain 1d barcode symbologies.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed incorrect NEON detection for ARMv7 devices. This bug could lead to slightly lower frame rates on affected devices.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.15.0 (July 28th, 2016)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Backwards incompatible change: The default value of code duplicate filter has been changed from 500ms to 0 (disabled). Code that relies on duplicate filtering will need to manually set the code duplicate filter. The default value of the barcode picker API's is not affected by this change and remains at 500ms.</li>
+<li>Improved performance of blurry barcode decoder on x86 and x64-based devices such as some Android phones/tablets and Windows tablets.</li>
+<li>Updated the GS1 DataBar AI parser to comply with the GS1 General Specification version 13. The AIs 337 (kilograms per square metre), 394 (discount of a coupon), 415 (GLN of invoicing party), 8012 (software version) and 8111 (loyalty points) have been added.</li>
+<li>Add functionality to implement custom integrity checks for recognized codes. Codes that fail these additional integrity checks can be marked as rejected. As result, beeping, code highlighting as well as vibration are suppressed. This feature allows to implement custom checksums, or other types of integrity checks.</li>
+<li>The new UPC-E extension 'remove_leading_upca_zero' allows to remove the leading zero if the UPC-E code is returned in its UPC-A representation using the extension 'return_as_upca'.</li>
+<li>Fixed an issue with setDeviceName() that caused it to alternate between setting and unsetting the specified name.</li>
+<li>Fixed an issue that could cause duplicate scan events to be transmitted by analytics.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Add support for switching the UI style while the camera preview is running.</li>
+<li>Instead of showing a dialog box when the camera can not be accessed, display the error message inside the BarcodePicker view itself.</li>
+<li>The deprecated set1DScanningEnabled/set2DScanningEnabled no longer have any effect. A message is printed that they are not supposed to be used anymore.</li>
+<li>Enable remove_leading_zero for UPCA by default when creating ScanSettings from a JSON dictionary. This fixes an inconsistency between the iOS and Android barcode picker implementation.</li>
+<li>Disable torch for Samsung Galaxy Core 2 Duo which behaves in unpredictable ways and may lead to app freezes when turned on.</li>
+<li>Added possibility to specify runnables to be executed when asynchronous operations such as starting the scanning finishes. This functionality behaves identical to the completionHandler support on iOS.</li>
+<li>Fixed an issue where the camera preview would not resize properly after rotating the device in non-fullscreen.</li>
+<li>Fixed an issue that caused beeping to no longer work after creating tens of barcode pickers.</li>
+<li>Fixed a potential issue when the camera preview is not able to start.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Fix issue with default values when initializing the scan settings from a dictionary. Previously it was not possible to disable the "remove_leading_zero" extension for UPCA codes. It would always be enabled.</li>
+<li>Nul-bytes in SBSCode.data are now handled more gracefully. Previously, the string would get cut-off after the first nul-byte. While it's still recommended to use SBSCode.rawData for cases where nul-bytes are expected, this improves a few cases where nul-bytes are used to delimit UTF8-encoded data.</li>
+<li>Improved angle tolerance of the Scan Case.</li>
+<li>Improved focus performance on devices released prior to iPhone 6.</li>
+</ul>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Add didStateChange event. This event is invoked whenever the state of the picker changes, e.g. when the picker state changes from active to stopped.</li>
+<li>Fix issue that caused cancel events to be ignored for the full-screen picker when the cancel event was immediately sent after the picker has been started (affected only Android and Windows)</li>
+<li>Fix issue that caused the didScan callback not to be blocking when a scan happened during a modal show animation (iOS only).</li>
+<li>Support Android 6.0-style permission requests for accessing the camera. This makes it possible to use the barcode scanner plugin with a target SDK of 23. Previously, the target SDK had to be set to 22 and lower.</li>
+<li>Added laser UI support for the Windows platform.</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>Remove support for building pre-unified iOS applications. Applications will have to switch to the unified iOS framework.</li>
+</ul>
+
+<h3>Linux</h3>
+
+<ul>
+<li>Fixed rowstride related bug for the SC_IMAGE_LAYOUT_YPCRCB_8U layout.</li>
+<li>Added ARMv6l architecture build. Executing the SDK on the Raspberry Pi Zero is now possible.</li>
+</ul>
+
+<h1>Scandit SDK 4.14</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Added support for the MicroPDF417 symbology. Performance will be improved in coming SDK versions. Reverse code scans are currently unsupported.</li>
+<li>Added GS1 Composite Codes support for all the three composite types A, B and C.</li>
+<li>New sharp Code128 matching algorithm that can handle more severe (reverse) ink spread than before.</li>
+<li>Improved the dynamic range and angle estimation accuracy of the barcode localization. Ability to detect smaller codes than in previous versions. Furthermore, the angles of recognized barcodes are reported more accurately.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.14.1 (June 15th, 2016)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Improve Auto-Focus and Auto-Exposure behavior of Samsung Galaxy J5.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Fix a linker warning when building for the simulator.</li>
+</ul>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Make sure ScanSession.pauseScanning calls BarcodePicker.pauseScanning. Instead of calling pause/stop with cordova.exec, use the implementation offered by the JS BarcodePicker class. This makes sure the same logic is used when calling pauseScanning/stopScanning on the session and on the picker.</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>Fix an issue in the sample application that caused the preview to stay black. This was caused by a configuration problem in the sample application.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.14.0 (May 31st, 2016)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fixed that barcodes at certain angles were not reliably localized.</li>
+<li>Reduced the minimum supported symbol count for ITF from 6 to 4 digits.</li>
+<li>Reduced blurry barcode decoder frame times by a factor of 3 on ARM64 devices.</li>
+<li>Fixed a rare crash in the blurry decoder.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Use TextureView instead of SurfaceView for devices that support it. This fixes a few layout and rendering issues when displaying a cropped/scaled picker.</li>
+<li>Improved auto-focus behavior when hot spot is not in the center of the image.</li>
+<li>For Android Lollipop and higher: move files generated by the barcode scanner to the no-backup directory to avoid including them in backups.</li>
+<li>Fix focus issues on HTC One X.</li>
+<li>Improve auto-focus for Galaxy S7.</li>
+<li>Do not throw exception when the picker has been instantiated without a prior call to ScanditLicense.setAppKey</li>
+<li>Improve performance of blurry decoder on Galaxy Tab Pro 8.4.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Reduce power-consumption of standby mode in case API.</li>
+<li>Add possibility to display camera preview when using the scan case API</li>
+<li>Fix a bug that caused the viewfinder to show in the wrong color when switching between the rectangle and laser UI styles.</li>
+<li>Fix bug that caused the torch button to not work when the scanner is in paused state.</li>
+<li>Fixed an issue in the SBSScanCase class that caused the scanner to not start in pause mode when using the designated initializer.</li>
+<li>Improve scan performance for the scan case.</li>
+<li>Do not export deprecated enum values to swift, since they cause issues with lldb when another project defines enum values of the same name.</li>
+<li>Fix an issue that caused beeps to be cut off or stretched when using the volume button for triggering scans in the case API.</li>
+</ul>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Android and iOS scan callbacks are now called synchronously from the engine, fixing any previously experienced double scans.</li>
+<li>The startScanning(paused) and applyScanSettings(settings) functions have been fixed on Android (they were already working on iOS).</li>
+<li>Documented how to use the Scandit SDK on the Telerik Platform.</li>
+<li>Add rawData property to recognized codes which allows access to the data encoded in a barcode as an array of char codes.</li>
+<li>Fix a bug in the parsing of the scanning hot spot on Android that caused x and y coordinates to be flipped.</li>
+</ul>
+
+<h1>Scandit SDK 4.13</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li><p>Added Xamarin for Windows Phone 8.1, Windows 8.1 and Universal Windows Platform (Windows 10) support - our Windows is now more complete with the support for the popular development platforms Xamarin and Phonegap/Cordova.</p></li>
+<li><p>Improved glare compensation for blurry 1D barcodes - the improved glare compensation for blurry barcodes makes our barcode scan engine more reliable in challenging conditions, where the images remains blurry because of a slow autofocus.</p></li>
+<li><p>Added support for the Code25 symbology also known as 'Industrial 2 of 5', 'Standard 2 of 5' or 'Discrete 2 of 5'. The verification of the optional Mod10 checksum can be enabled to improve detection rates. With Code25, we added support for another rare 1D barcode symbology in addition to all common symbologies we've supporting for years.</p></li>
+<li><p>DataBar-14 and DataBar Expanded decoders are now significantly faster and more robust. The highlighting of Databar codes is also more precise. We would recommend that users of the previous generation of Scandit DataBar decoder upgrade to take advantage of the significant speed improvements (worst case frames with expanded Databar barcodes are now up to a factor 10 faster).</p></li>
+<li><p>Dynamic ink spread compensation for Code39 codes. The ink spread compensation for Code39 barcodes has been further improved and now tolerates even more severe ink spread than before.</p></li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.13.4 (May 17th, 2016)</h2>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Fixed an issue with relative constraints when changing the device orientation.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.13.3 (May 2nd, 2016)</h2>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Fixed a crash when using the new constraints and rotating the device on Android.</li>
+<li>Added the applyScanSettings function under Android which was not working before.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.13.2 (April 29th, 2016)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fixed out of bound reads in the DataBar-14 reader that occasionally lead to slow frames on ARMv7
+iOS devices.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fix auto-focus issues on Galaxy J7, Galaxy S6 Edge(+) and Galaxy Note5.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.13.1 (April 12th, 2016)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fixed a rare crash in the blurry 1d reader caused by a race condition.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Fix missing nullability specifier warning in SBSScanCase.h</li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Added a community edition of all our Windows platforms.</li>
+</ul>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Fixed a crash when editing the overlay after showing the picker.</li>
+<li>Added view constraints that extend the currently available margins by also providing the option to set width and height.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.13.0 (April 5th, 2016)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Reduced the incorrect default Code11 maximum symbol count from 31 to 20.</li>
+<li>Fixed a rare crash in the Aztec Code reader.</li>
+<li>Fixed a rare crash in the QR Code reader.</li>
+<li>Fixed a rare crash in the PDF417 reader.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Dropped support for Android 9 (market share dropped below 0.1%). The oldest Android OS version we support is now Android 10 (2.3.3).</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Added new API for the <a href="http://www.scandit.com/products/case/">Scandit scan case</a>.</li>
+<li>Fixed issue that caused last preview frame of a previous picker to be displayed initially when starting another picker.</li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Added torch on/off button to the scan UI.</li>
+<li>Added camera switch button to the scan UI.</li>
+<li>Added support for the laser line GUI style, similar to the laser line available on iOS and Android.</li>
+</ul>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Added an extended sample that shows multiple ways to integrate the barcode scanner into a Cordova/PhoneGap application.</li>
+<li>Switched plugin to use the ScanditBarcodeScanner AAR file for android. This breaks support for ant-based builds. Gradle must now be used to build Android phonegap/cordova projects.</li>
+<li>Added ability to specify the picker margins in percent of the screen width/height.</li>
+<li>Fixed bug in parsing scanningHotSpotHeight when using the old (cordova.exec-based) API.</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>Added Xamarin for Windows Phone 8.1, Windows 8.1 and Universal Windows Platform (Windows 10) support</li>
+<li>Fixed issues when using functions of the new api with float or int parameters on 64bit devices.</li>
+</ul>
+
+<h1>Scandit SDK 4.12</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Added support for the Data Matrix Rectangular Extension (DMRE) as defined in the AIM-D Symbology Specification Revision 1.01.</li>
+<li>Improved Data Matrix reader robustness for rotated codes and codes with perspective distortions.</li>
+<li>Added Windows PhoneGap/Cordova support (Windows Universal Platform, Windows 8.1, Windows Phone 8.1).</li>
+<li>Added a UPC-E extension to return the result in the UPC-A representation (return_as_upca).</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.12.2 (March 3rd, 2016)</h2>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Fixed a crash that sometimes occurred when scanning a code during the modal view controller animation.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.12.1 (February 29, 2016)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fix rare crash on Sprint One M9 (0PJA2) upon closing the barcode picker.</li>
+<li>Fix a rare crash on DROID RAZR.</li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Remove use of prohibited API calls which will cause app validation to fail on Windows Phone 8.1</li>
+<li>Fix a bug in the SymbologySettings.ActiveSymbolCount getter that caused only the first element to be returned.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.12.0 (February 19, 2016)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Barcode scanner settings in the low-level API can now be serialized as JSON.</li>
+<li>License verification errors now trigger an alert in the UI and the scanner stops scanning any barcode. Previously, the SDK crashed when the license key could not be verified.</li>
+<li>Fixed bug in DataBar-14 result parser if the composite linkage flag in the DataBar code is set.</li>
+<li>Increased the maximum supported symbol count for Code 39 and Code 93 to 40 symbols.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Updated samples to handle camera permission requests for Android Marshmallow (API level 23) and onwards.</li>
+<li>BarcodePickerActivity: handle camera permission requests for Android Marshmallow (API level 23) and onwards.</li>
+<li>Fixed selection of preview resolution on Masabi S1000. Previously a very low resolution was chosen.</li>
+<li>Fixed aspect ratio of preview on Masabi S1000.</li>
+<li>Fixed issue with camera switch button and torch button sizes on Galaxy Tab (GT-P1000).</li>
+<li>Fixed issue with volume of the beep for Android devices running Marshmallow (API level 23).</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Software update to add a subclass of the SBSBarcodePicker to iOS Storyboards.</li>
+<li>Added startScanningInPausedState:completionHandler: method to the SBSBarcodePicker. The completionHandler is invoked when the camera has completed initialization.</li>
+<li>Improved auto-focus behavior for iPads, especially iPad Air 2.</li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Fixed issue on Lumia 1520 that caused the preview image to flicker.</li>
+<li>Fixed issue on Lumia 950 and Lumia 950 XL that caused the video feed to fail after a short time.</li>
+<li>Fixed issue on Windows 10 Phone devices that may cause the camera initialization to fail after a suspend.</li>
+<li>Improved error message in case VideoInputRT.FrameAccess is not listed as class that can be activated.</li>
+<li>Fixed a few access violation errors during fast picker start/stop sequences.</li>
+</ul>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Added Windows PhoneGap/Cordova support (Windows Universal Platform, Windows 8.1, Windows Phone 8.1).</li>
+<li>Fixed an issue where array parameters would not be set on some Android versions because of deserialization issues.</li>
+</ul>
+
+<h3>Titanium</h3>
+
+<ul>
+<li>SetSize now calls viewDidLayoutSubviews to allow for landscape to landscape rotation and properly places the viewfinder.</li>
+<li>Added camera permission requests to the examples for Android 6.</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>Updated the API to the lastest native iOS and Android (4.7+/4.9+) Scandit SDK APIs. The old Xamarin API is still available.</li>
+</ul>
+
+<h1>Scandit SDK 4.11</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Added support for the GS1 DataBar Limited symbology.</li>
+<li>Improved recognition of Aztec codes. The Aztec decoder now supports 360 degrees of rotation and can scan pitched and skewed codes significantly better.</li>
+<li>Introduced a new API for our Phonegap/Cordova plugin that reflects the native APIs better and increases the customization options.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.11.1 (February 1, 2016)</h2>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Fixed a crash when using 4.11 with the legacy API and setting margins under Android.</li>
+<li>Fixed a crash when setting the allowed orientations under iOS.</li>
+</ul>
+
+<h3>Titanium</h3>
+
+<ul>
+<li>Readded the setSize() function under iOS as the standard frame change function is not called by Titanium when the picker is added to a list view.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.11.0 (January 14, 2016)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Improved robustness of the blurry UPC-E decoder.</li>
+<li>Fixed an issue in the Code39 decoder where only a substring of the entire barcode data was reported under certain rare conditions.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Improved accuracy of barcode highlighting on phones where screen resolution does not have the same aspect ratio as the video preview.</li>
+<li>Fixed auto-exposure issues on Samsung Galaxy Core Plus (SM G350).</li>
+<li>Software update to create scan settings from a JSON object.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Added support for import of the Scandit BarcodeScanner into Swift library projects.</li>
+<li>Software update to create scan settings from a JSON object.</li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Software update to support all 4 device orientations (portrait, landscape etc). Previously only landscape orientation was supported.</li>
+<li>Added x86 variant for Windows Phone 8.1 assemblies. The Windows phone packages can now be run in the emulator.</li>
+<li>Added x64 variant for the Windows 8.1 assemblies.</li>
+<li>Fixed an issue on Windows 10 Phone that sometimes caused the picker to fail when sending the application to the background.</li>
+<li>Added workaround for a bug in the x86 native toolchain compiler that caused the scanner to access invalid memory.</li>
+</ul>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Introduced a new API that reflects the native APIs better and increases the customization options. The old API is still available. New features will only be added to the new API.</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>Fixed the Android bindings such that the overlay view once again inherits from RelativeLayout.</li>
+</ul>
+
+<h1>Scandit SDK 4.10</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Our new QR code decoder supports perspective distortions and a much wider range of rotations. The pitch and skew (yaw) tolerance increased to up to 70 degrees (for QR codes of version 1 (without 4th alignment pattern) and version 2 and higher (with 4th alignment pattern) - this is an increase of ~50% over SDK version 4.8. We also improved the maximum decode range and robustness of the QR decoder for a much improved QR code scanning user experience (see the video on our web page for details).</li>
+<li>Scandit&#8217;s unique blurry decoding now decodes 1D barcodes before the autofocus has kicked in on additional popular Samsung devices such as the Galaxy S4 and S6. The impact is that the time to scan a barcode is drastically reduced on these devices as well.</li>
+<li>Our Barcode Scanner SDK for Windows now ships with Windows Universal Platform Support (Windows 10).</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.10.2 (January 5, 2016)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fixed incorrect sharp UPC-E end pattern parsing for some codes.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Added SBSCode.isGs1DataCarrier and SBSCode.symbologyName properties.</li>
+</ul>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Fixed a bug that made it impossible to disable symbologies that are enabled by default.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.10.1 (December 7, 2015)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fixed a rare out of bounds memory access in the Aztec reader.</li>
+<li>Fixed a rare out of bounds memory access in the DataMatrix reader</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed the green and pink camera feed that showed up on the Samsung Galaxy Core Plus because of driver problems with certain fps ranges.</li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Strip leading zero from scanned UPCA codes for consistency with other platforms</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.10.0 (December 1, 2015)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed a typo in the low-level API: IMAGE_LAYOUT_RBBA_8U is now IMAGE_LAYOUT_RGBA_8U.</li>
+<li>Fixed bug in sample project import for Android Studio.</li>
+<li>Improved exposure and auto-focus behaviour for Samsung Xcover 3, Nexus 6P and Urovo i9000s.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Improved iPad Air 2 front camera decode range.</li>
+<li>Enums are now properly exposed Swift-style. IMPORTANT: This introduces a slight incompatibility to previous version and requires clients to update their code. Code that was using e.g. SBSSymbologyCodabar will need to be updated to use SBSSymbology.Codabar (Likewise for other enumerations). Objective-C code is not affected by this change.</li>
+<li>The SBSBarcodePicker API has been annotated with nonnull, nullable. IMPORTANT: Swift code using the barcode picker will need to be updated. Objective-C code is not affected by this change.</li>
+<li>Fixed an issue when calling <code>[SBSBarcodePicker switchTorchOn:YES]</code> before or right after calling <code>[SBSBarcodePicker startScanning]</code> that caused the torch either not to turn on, or to flicker before being turned on.</li>
+<li>Added support for recognition of QR codes containing invalid characters.</li>
+<li>Fixed a bug in the activation system with simulator use.</li>
+</ul>
+
+<h3>Titanium</h3>
+
+<ul>
+<li>Software update to support stopping and resuming scanning as well as starting the picker in paused state.</li>
+</ul>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Fixed a bug with setting the button position and size after the possibility to set margins and size was introduced in 4.9.</li>
+</ul>
+
+<h1>Scandit SDK 4.9</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Added support for mirrored QR codes. Enabled by default.</li>
+<li>Improved recognition of small QR codes.</li>
+<li>Improved recognition of damaged or badly printed QR codes.</li>
+<li>More accurate reporting of QR code locations.</li>
+<li>Added support for Code 11.</li>
+<li>Added support for MaxiCode (beta).</li>
+<li>Added relaxed check for sharp quiet zone extension (relaxed_sharp_quiet_zone_check) to Code39 and Code128. The quiet zone may be interrupted by at most one bar.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.9.2 (November 30, 2015)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed a race condition introduced in 4.9.1 that could lead to a crash when invoking startScanning delayed.</li>
+<li>Fixed the code highlighting on the Nexus 5x and Nexus 6.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.9.1 (November 18, 2015)</h2>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Fixed the renaming of the internally used MBProgressHUD classes which lead to duplicated symbols.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed wrong orientation of the front and back camera preview on Nexus 5x and Nexus 6.</li>
+<li>The laser UI no longer looks active when starting in paused state.</li>
+</ul>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Fixed a bug introduced in 4.9.0 where for some symbologies barcodes over a certain length were no longer decoded.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.9.0 (November 3, 2015)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Reduced the minimum supported Code39 code length from 3 to 1 data symbol.</li>
+<li>Increased the maximum default Code39 code length from 17 to 18 data symbols.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>The torch and camera switch buttons now have meaningful accessibility labels and hints that can be changed.</li>
+<li>Improved auto-exposure behavior on iPhone 5S and onwards when restricted area scanning is enabled.</li>
+<li>The default line width of highlighted barcodes has been increased from 1 to 2 for better visibility.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>New barcode picker API implemented in the com.scandit.barcodepicker package.  This API is the new default and we encourage everyone to use this API for new applications. The com.mirasense.scanditsdk API remains available. Existing applications can continue to use this API. However, new functionality is only added to the com.scandit.barcodepicker package.</li>
+<li>New self-contained barcode picker activity for simple barcode scanning use-cases. This reduces the amount of code to be written when a single barcode needs to be scanned in a full-screen picker activity.</li>
+<li>Reduced line-width of highlighted barcodes.</li>
+<li>The torch and camera switch buttons now have meaningful content descriptions that can be changed.</li>
+<li>The barcode scanner can now be included in your project as an AAR file.</li>
+<li>The sample projects included in the SDK are now available as Android Studio projects.</li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Improved auto-focus control for phones and tablets.</li>
+<li>Fixed issue on Nokia Lumia 630 and possibly others that caused camera initialization to fail.</li>
+</ul>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Fixed the inverse recognition option so that it enables inverted Data Matrix and QR codes.</li>
+<li>Added separate interfaces to enable inverted Data Matrix and QR codes individually.</li>
+<li>Added parameter to start the scanner in paused state.</li>
+<li>Added parameter to set the device name for analytics.</li>
+</ul>
+
+<h3>Titanium</h3>
+
+<ul>
+<li>Fixed a bug where it was possible that after calling stopScanning inside the success callback function more codes were scanned before the stopScanning took effect.</li>
+<li>Added function to set the device name for analytics.</li>
+</ul>
+
+<h1>Scandit SDK 4.8</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Barcode Picker and low-level barcode scanner API for Desktop Windows 8.1 (x86) and Windows Phone 8.1 (ARM).</li>
+<li>Added support for an optional Code39 mod 43 checksum as used in the LOGMARS (Logistics Applications of Automated Marking and Reading Symbols) and HIBC (Health Industry Bar Code) Labeler Identification Code (LIC) standards.</li>
+<li>Added Full ASCII Code39 decoding mode. Can be enabled by setting the symbology extension "full_ascii".</li>
+<li>Blurry upside-down codes are now scanned on high-end devices with a fixed-focus back camera too. Previously blurry upside-down codes were only supported on fixed-focus front cameras.</li>
+<li>Improved blurry ITF performance.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.8.3 (October 20, 2015)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fix decoding of color-inverted QR codes when color-inverted Data Matrix is disabled.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Don't embed bitcode when targeting the simulator. This fixes a duplicate symbols error when building for the simulator.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.8.2 (October 2, 2015)</h2>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Fix a bitcode compatibility issue with XCode 7.0.1 that caused application archiving to fail. Archiving worked fine in XCode 7.0.</li>
+</ul>
+
+<h3>Windows</h3>
+
+<ul>
+<li>Fix an issue on some tablets that caused the video preview to be of low quality, even though a high-resolution video streaming format was chosen. This bug did not effect recognition performance, but only preview quality.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.8.1 (September 22, 2015)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fix issue in sc_barcode_scanner_is_setup_complete() that caused false to be returned when no blurry symbologies were enabled.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fix regression introduced in 4.8.0 that caused ScanditSDK.set2DScanningEnabled to have no effect.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Removed arm7s slice. It is no longer supported in Xcode 7.</li>
+<li>The iOS framework now contains bitcode information for all the architectures. It is no longer neccessary to disable bitcode generation in the iOS projects.</li>
+<li>Remove CFBundleExecutable key from ScanditBarcodeScanner.bundle. This key caused deployment of Titanium applications to fail in Xcode 7.</li>
+</ul>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>New option to show/hide the viewfinder.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.8.0 (September 15, 2015)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li><strong>Important:</strong> Analytics connects to new default hostnames ending with ".scandit.com". The former hostnames ending with ".mirasense.com" will only be used as a fallback. Please adjust your firewall rules.</li>
+<li>Fixed erratic crashes on exit caused by a race condition.</li>
+<li>Improved PDF417 localization in portrait orientation.</li>
+<li>Fixed incorrect PDF417 highlighting if codes are upside-down.</li>
+<li>Fixed PDF417 decoding when force2dRecognition is enabled.</li>
+<li>Improved barcode localization in high density mode.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Added a sample that shows how to use the barcode scanner with Swift. The sample is closely based on the SimpleSample.</li>
+<li>New alternative laser scan UI.</li>
+<li>Fixed decoding of PDF417 codes with ISO/IEC 8859 encoded data.</li>
+<li>Fixed a bug in the SBSBarcodePickerManager related to multiple concurrent requesters.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Updated scan UI design.</li>
+<li>Improved UI rendering on low-resolution screens.</li>
+<li>New alternative laser scan UI.</li>
+<li>Improved auto-focus and exposure behavior for Samsung Galaxy Xcover 3.</li>
+<li>Improved auto-exposure behavior of Nexus 5 in low-light conditions.</li>
+<li>Fixed scanning of upside-down 1d codes using front cameras.</li>
+<li>Improved phone/tablet device classification for small tablets</li>
+</ul>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>New alternative laser scan UI exposed.</li>
+<li>All Android resources are now copied on install.</li>
+</ul>
+
+<h3>Titanium</h3>
+
+<ul>
+<li>The setting of the view's width and height is now consistent and always works.</li>
+</ul>
+
+<h1>Scandit SDK 4.7</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Improved blurry decoding if quiet zone violations are present.</li>
+<li>Improved blurry decoding in complex situations (on a sticker, surrounded by lines, borders or text).</li>
+<li>Higher frame rates for 1d barcode decoding.</li>
+<li>Reduced interleaved 2 of 5 (ITF) false positives.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.7.5 (August 28, 2015)</h2>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Fixed the setting of the viewfinder color in normal and decoded state.</li>
+</ul>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Fixed the torch function.</li>
+<li>Moved the Android lifecycle events into the plugin reducing the code written by the user.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.7.4 (August 25, 2015)</h2>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Fixed a display problem with the icon top constraints on iOS 7 related to hiding and unhiding the navigation bar.</li>
+<li>Changed the internal init call to go to initWithNibName:bundle: to avoid problems caused by subclassing the picker and calling initWithSettings: inside another init method.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.7.3 (August 21, 2015)</h2>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Fixed a typo that caused the torch on icon to be set even though the torch off icon should have been set.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.7.2 (August 20, 2015)</h2>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Reduce depth of directory structure to avoid path-name issues on Windows</li>
+<li>Fixed callbacks under Android after calling non-scan functions.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.7.1 (August 18, 2015)</h2>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Setting custom image resources for the torch and camera icon is fixed for asset catalogs and all scale factors.</li>
+<li>Fix a crash-on-exit when camera preview was running. Now the camera is stopped before the application exits.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Workaround for getting high-density mode to work on Vuzix (M100).</li>
+</ul>
+
+<h3>Titanium</h3>
+
+<ul>
+<li>Calls to nonexisting functions have been removed to fix a crash when displaying the picker.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.7.0 (June 23, 2015)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Improved location highlighting precision for blurry 1d codes.</li>
+</ul>
+
+<h3>Linux / C API</h3>
+
+<ul>
+<li>Added support to query and set the framerate of a camera.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<p>This release includes a significant refactoring of the iOS barcode picker and introduces new APIs.</p>
+
+<ul>
+<li>Added support for two-digit and five-digit add-ons.</li>
+<li>The barcode picker API introduces a new scan settings class through which the scanning process is configured. The former APIs for barcode picker configuration remain available but it is recommended to switch to the new APIs.</li>
+<li>Added a new set of delegates for getting "scan" and process frame events.</li>
+<li>Added a per-symbology setting for controlling the length of barcodes to be decoded.</li>
+<li>Added support for an optional interleaved 2-of-5 checksum.</li>
+<li>Updated scan UI.</li>
+<li>Improved code highlighting.</li>
+<li>New batch scanning sample app.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>New batch scanning sample app.</li>
+<li>Improved auto-focus behavior of Samsung Galaxy S6.</li>
+<li>Increased auto-focus retrigger interval on most of the Android phones.</li>
+<li>Fixed an issue that caused the view finder rectangle not to be updated when setting the hot spot while the scanner is running.</li>
+</ul>
+
+<h3>Phonegap</h3>
+
+<ul>
+<li>Updated Android and iOS plugin to use the new scan settings.</li>
+<li>Added the option to display the scanner as a subview (scaled/cropped).</li>
+<li>Added new functions to cancel, pause, resume, stop, start and resize the scanner.</li>
+</ul>
+
+<h1>Scandit SDK 4.6</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>Better scanning performance due to new motion compensation approach.</li>
+<li>Significantly improved barcode recognition in landscape mode when the angle is close to zero degrees.</li>
+<li>Added GS1 Databar application identifiers (AI) 16, 243, 255, 427, 710-713, 7004-7010, 8010, 8011, 8017 and 8019 to comply with the new GS1 General Specifications Version 15.</li>
+<li>Added support for the Android ARM64 (arm64-v8a) architecture.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.6.1 (July 3, 2015)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Minor update to camera control and camera preview.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.6.0 (June 22, 2015)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li><strong>Important:</strong> GS1 Databar Expanded now returns the machine readable GS1 encoding and no longer the human readable representation.</li>
+<li><p><strong>Important:</strong> All GS1 Databar-14 result codes now start with the GS1 GTIN "01" application identifier.</p></li>
+<li><p>Improved location highlighting precision for DataMatrix and Aztec codes.</p></li>
+<li>Fixed scanning of short ITF codes (8 to 10 characters).</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Added support for an optional ITF modulo 10 check digit.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Fixed barcode highlighting in the iPad Air 2 front camera video stream.</li>
+<li>Added new motion compensation mode which allows codes to be scanned in the presence of motion blur. This new compensation mode is disabled by default. To enable motion compensation, use <code>[ScanditSDKBarcodePicker setMotionCompensationEnabled:YES]</code>.</li>
+<li><strong>Important:</strong> applications must now link to the GLES framework.</li>
+</ul>
+
+<h3>Linux / C API</h3>
+
+<ul>
+<li>New modular low-level API in C with advanced configuration options (beta).</li>
+<li>Added support for asynchronous engine setup.</li>
+<li>Added support to run multiple scan engines in parallel.</li>
+<li>Added support for an optional ITF modulo 10 check digit.</li>
+</ul>
+
+<h1>Scandit SDK 4.5</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li><p>Support for EAN2 and EAN5 extension codes (Android only)</p></li>
+<li><p>Improved blurry decoding of Code39, Code93 and Code128 barcodes</p></li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.5.1 (June 12, 2015)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fixed a bug that prevented the decoding of some large Data Matrix codes.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Added ScanditSDKCode.getRawByteData that allows to retrieve the actual byte data encoded barcodes without interpreting them as utf-8 strings. This is intended for codes that store non-textural data that can not be represented as utf-8.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Added the "rawData" key-value pair to the barcode dictionary that can be used to retrieve the actual raw byte sequence encoded in codes. This is intended for codes that store non-textural data that can not be represented as utf-8.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.5.0 (April 16, 2015)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Reduce rate of wrongly decoded ITF codes (false positives) when the code is only partially visible in the frame.</li>
+<li>Fixed incorrect GS1 FNC1 parsing for some DataMatrix encodings.</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>Fixed a bug on Google Glass that sometimes lead to a <em>double beep</em> after successfully decoding a barcode.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Improved iPad Air 2 scan performance.</li>
+</ul>
+
+<h1>Scandit SDK 4.4</h1>
+
+<h2>New Features/Performance Improvements</h2>
+
+<ul>
+<li>New glare compensation algorithm - Scandit 4.4 significantly improves the scanning performance in the presence of glare (and shadows).</li>
+<li>Inverted QR code support (white QR codes on a dark background) - can be enabled via an API method.</li>
+<li>The active scanning area can now be defined as a rectangle (previously only the height of the scanning area could be adjusted).</li>
+<li>Significantly improved performance with damaged barcodes (worn, weak print, ink spread).</li>
+<li>Reduced the likelihood of false positive barcodes with challenging codes (e.g. with very blurry, ink spread).</li>
+<li>Better blurry decoding of UPC-E and ITF barcodes.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.4.2 (March 31, 2015)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>Fixed a rare race condition introduced in 4.4.0 that could lead to crashes during initialization</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>disable macro mode for LG P880 for improved recognition performance.</li>
+<li>fix bug in camera handling that caused media server restart after closing the scanner. Affected devices (LG P880 and Motorola MC40) would take a long time to open the camera a second time.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>Returned barcode strings with illegal UTF8 characters are no longer nil, instead the illegal characters are ignored.</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.4.1 (March 02, 2015)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>bug fix to prevent slow-down in camera frame acquisition after successive camera restarts.</li>
+<li>bug fix to prevent null pointer exception when camera is running for extended time and device enters sleep state.</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>minor update to documentation in extended sample app</li>
+</ul>
+
+<h2>Bug Fixes/Software Updates in Scandit SDK 4.4.0 (February 03, 2015)</h2>
+
+<h3>All SDKs</h3>
+
+<ul>
+<li>fixed bug in front-facing camera implementation where default scan line orientation was wrong which impacted decoding performance significantly when fixed-focus front-facing camera was used.  </li>
+<li>fixed bug where stacked Databar 14 codes were not decoded when restrictActiveScanningArea was activated.</li>
+<li>fixed bug where expanded Databar implementation occasionally reported an AI key repeatedly.</li>
+<li>fixed bug where FNC1 characters that indicated end of variable length GS1 application identifier (AI) in GS1-128 code were stripped from result. They are now encoded again as ASCI character “GS” (group separator).</li>
+</ul>
+
+<h3>iOS</h3>
+
+<ul>
+<li>fixed bug where build in iOS simulator resulted in a build error.</li>
+<li>minor update to extended sample app ui to correct black bar in some views</li>
+</ul>
+
+<h3>Android</h3>
+
+<ul>
+<li>fixed bug where torch icon did not change state when the torch was switched on programmatically.</li>
+<li>added missing changeCameraFacing implementation</li>
+</ul>
+
+<h1>Scandit SDK 4.3</h1>
+
+<h2>New Features/Better scan performance:</h2>
+
+<ul>
+<li>Support for Aztec codes</li>
+<li>New Android camera control for faster camera start and better autofocus and exposure management. (Android only)</li>
+<li>Significantly higher frame rate (up to 50% increased) and fixed issues with dropped camera frames. (Android only)</li>
+</ul>
+
+<h2>Bug fixes/Software Updates in 4.3.3 (January 5th, 2015)  (Android only)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Software update to address issues when two barcode pickers were instantiated within the same app. With the new camera control in 4.3.0, the lifecycle of the two ScanditSDKListeners was not clearly defined so that the wrong of the two pickers could receive scan results via the callbacks. This is now fixed in Scandit SDK 4.3.3.</li>
+</ul>
+
+<h2>Bug fixes/Software Updates in 4.3.2 (December 30th, 2014) (Android only)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Added ignoreAspectRatio implementation of Scandit SDK 4.2 and earlier to address Android issue where camera preview crop of 85% and higher turns into full image camera preview on a number of Android devices.</li>
+</ul>
+
+<h2>Bug fixes/Software Updates in 4.3.1 (December 18th, 2014) (Android only)</h2>
+
+<h3>Android</h3>
+
+<ul>
+<li>Important software update to prevent (rare) crashes when Scandit SDK is not properly configured on initial start of barcode picker.  </li>
+<li>Software update to fix issues with method to set custom torch icon. In 4.3.0, setting a custom torch icon did not work.</li>
+<li>Software update to fix issue when setDeviceOrientation fails on Android 2.3 devices. The failure of this method call had no negative implications from a usability perspective.</li>
+</ul>
+
+<h2>Bug fixes/Software Updates in 4.3.0</h2>
+
+<h3>Titanium</h3>
+
+<ul>
+<li>Added support for arm64 under Ti</li>
+</ul>
+
+<h3>Xamarin</h3>
+
+<ul>
+<li>Added support for unified Xamarin component with arm64 support</li>
+</ul>
+
+<h1>Scandit SDK 4.2 for iOS</h1>
+
+<h2>New Features/Better scan performance:</h2>
+
+<ul>
+<li>Support for Truncated PDF417 codes</li>
+<li>Better performance of Datamatrix decoder for lasered Datamatrix codes and those printed with weak contrast.</li>
+<li>Better performance of QR decoder with QR codes printed with weak print quality.</li>
+<li>Improved PDF417 decoder with support for error correction.</li>
+<li>Better exposure management and autofocus management. In previous versions, the exposure was slow to adjust and did not adjust at all on some devices.  </li>
+<li>Added new long range working range (autofocus is no longer set to macro-mode in this long range working range)</li>
+</ul>
+
+<h2>Bug fixes in 4.2.2 (Oct 13th, 2014)   (iOS only)</h2>
+
+<h3>iOS only</h3>
+
+<ul>
+<li>Fixed issues with multi-scan beta implementation</li>
+</ul>
+
+<h2>Bug fixes in 4.2.1 (Oct 7th, 2014)   (iOS only)</h2>
+
+<h3>iOS only</h3>
+
+<ul>
+<li>Added support for x86 64bit simulator support and fixed problem with simulator support issues</li>
+</ul>
+
+<h2>Bug fixes/Software Updates in 4.2.0 (Sep 11th, 2014)</h2>
+
+<h3>iOS only</h3>
+
+<ul>
+<li>Fixed bug that led to slow Datamatrix and QR Code decoding performance on iPhone 4 and iPhone 3GS in 4.2.0 BETAs</li>
+</ul>
+
+<h3>Phonegap/Cordova</h3>
+
+<ul>
+<li>added continuous mode to our Cordova plugins for iOS and Android where multiple barcodes can be scanned in sequence without closing the camera after each scan. This mode can be enabled when the scan function is invoked</li>
+</ul>

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "ScanditSDKBarcodePicker.h"
+#import "SBSBarcodePicker.h"
 
 
 /**

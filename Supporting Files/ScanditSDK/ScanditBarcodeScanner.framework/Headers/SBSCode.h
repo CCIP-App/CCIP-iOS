@@ -36,8 +36,6 @@ typedef struct  {
 	CGPoint bottomLeft;
 } SBSQuadrilateral;
 
-
-
 /**
  * \brief Enumerates the symbologies supported by Scandit Barcode Scanner
  *
@@ -45,21 +43,21 @@ typedef struct  {
  */
 SBS_ENUM_BEGIN(SBSSymbology) {
     /**
-     * \brief Sentinel value to represent an unknown symbology
+     * \brief Sentinel value to represent an unknown symbology.
      */
     SBSSymbologyUnknown = 0x0000000,
     /** 
      * EAN-13 1D barcode symbology.
      */
-    SBSSymbologyEAN13 = 0x0000001,
+    SBSSymbologyEAN13 SBS_SWIFT_NAME(ean13) = 0x0000001,
     /** 
      * UPC-12/UPC-A 1D barcode symbology.
      */
-    SBSSymbologyUPC12 = 0x0000004,
+    SBSSymbologyUPC12 SBS_SWIFT_NAME(upc12) = 0x0000004,
     /** 
      * UPC-E 1D barcode symbology.
      */
-    SBSSymbologyUPCE = 0x0000008,
+    SBSSymbologyUPCE SBS_SWIFT_NAME(upce) = 0x0000008,
     /** 
      * Code 39 barcode symbology. Only available in the Professional and Enterprise Packages.
      */
@@ -67,7 +65,7 @@ SBS_ENUM_BEGIN(SBSSymbology) {
     /**
      * PDF417 barcode symbology. Only available in the Professional and Enterprise Packages. 
      */
-    SBSSymbologyPDF417 = 0x0000400,
+    SBSSymbologyPDF417 SBS_SWIFT_NAME(pdf417) = 0x0000400,
     /**
      * Data Matrix 2D barcode symbology. Only available in the Professional and Enterprise Packages.
      */
@@ -75,12 +73,12 @@ SBS_ENUM_BEGIN(SBSSymbology) {
     /**
      * QR Code 2D barcode symbology. 
      */
-    SBSSymbologyQR = 0x0000100,
+    SBSSymbologyQR SBS_SWIFT_NAME(qr) = 0x0000100,
     /**
      * Interleaved-Two-of-Five (ITF) 1D barcode symbology. Only available in the Professional and 
      * Enterprise Packages.
      */
-    SBSSymbologyITF = 0x0000080,
+    SBSSymbologyITF SBS_SWIFT_NAME(itf) = 0x0000080,
     /**
      * Code 128 1D barcode symbology, including GS1-Code128. Only available in the Professional and
      * Enterprise Packages. 
@@ -93,15 +91,15 @@ SBS_ENUM_BEGIN(SBSSymbology) {
     /** 
      * MSI Plessey 1D barcode symbology. Only available in the Professional and Enterprise Packages. 
      */
-    SBSSymbologyMSIPlessey = 0x0000800,
+    SBSSymbologyMSIPlessey SBS_SWIFT_NAME(msiPlessey) = 0x0000800,
     /** 
      * GS1 DataBar 14 1D barcode symbology. Only available in the Professional and Enterprise Packages.
      */
-    SBSSymbologyGS1Databar = 0x0001000,
+    SBSSymbologyGS1Databar SBS_SWIFT_NAME(gs1Databar) = 0x0001000,
     /** 
      * GS1 DataBar Expanded 1D barcode symbology. Only available in the Professional and Enterprise Packages.
      */
-    SBSSymbologyGS1DatabarExpanded = 0x0002000,
+    SBSSymbologyGS1DatabarExpanded SBS_SWIFT_NAME(gs1DatabarExpanded) = 0x0002000,
     /** 
      * Codabar 1D barcode symbology. Only available in the Professional and Enterprise Packages. 
      */
@@ -109,7 +107,7 @@ SBS_ENUM_BEGIN(SBSSymbology) {
     /** 
      * EAN-8 1D barcode symbology.
      */
-    SBSSymbologyEAN8 = 0x0000002,
+    SBSSymbologyEAN8 SBS_SWIFT_NAME(ean8) = 0x0000002,
     /** 
      * Aztec Code 2D barcode symbology. Only available in the Professional and Enterprise Packages.
      */
@@ -135,48 +133,77 @@ SBS_ENUM_BEGIN(SBSSymbology) {
      */
     SBSSymbologyFiveDigitAddOn = 0x0020000,
     /**
-     * Code 11 1D barcode symbology
+     * Code 11 1D barcode symbology.
      *
      * Only available in the Professional and Enterprise Packages.
      */
     SBSSymbologyCode11 = 0x0080000,
     /**
-     * MaxiCode 2D barcode symbology
+     * MaxiCode 2D barcode symbology.
      *
      * Only available in the Professional and Enterprise Packages.
      */
     SBSSymbologyMaxiCode = 0x0040000,
-    
     /**
-     * GS1 DataBar Limited 1D barcode symbology
+     * GS1 DataBar Limited 1D barcode symbology.
      *
      * Only available in the Professional and Enterprise Packages.
      */
-    SBSSymbologyGS1DatabarLimited = 0x0100000,
+    SBSSymbologyGS1DatabarLimited SBS_SWIFT_NAME(gs1DatabarLimited) = 0x0100000,
     /**
-     * Code25 1D barcode symbology
+     * Code25 1D barcode symbology.
      *
      * Also known as 'Industrial 2 of 5', 'Standard 2 of 5' or 'Discrete 2 of 5'. 
      *
      * Only available in Professional and Enterprise Packages.
      */
-    SBSSymbologyCode25            = 0x0200000,
-    
+    SBSSymbologyCode25 = 0x0200000,
     /**
-     * Micro PDF417 2D barcode symbology
+     * Micro PDF417 2D barcode symbology.
      *
-     * Only available in Professional and Enterprise Packages
+     * Only available in Professional and Enterprise Packages.
      */
-    SBSSymbologyMicroPDF417     = 0x0400000,
-} SBS_ENUM_END(SBSSymbology);
+    SBSSymbologyMicroPDF417 = 0x0400000,
+    /**
+     * Royal Mail 4 State Customer Code (RM4SCC).
+     *
+     * Only available in Professional and Enterprise Packages.
+     */
+    SBSSymbologyRM4SCC SBS_SWIFT_NAME(rm4scc) = 0x0800000,
+    /**
+     * Royal Dutch TPG Post KIX.
+     *
+     * Only available in Professional and Enterprise Packages.
+     */
+    SBSSymbologyKIX SBS_SWIFT_NAME(kix) = 0x1000000,
+    /**
+     * DotCode 2d barcode symbology.
+     *
+     * Only available in Professional and Enterprise Packages.
+     */
+    SBSSymbologyDotCode = 0x2000000,
+    /**
+     * Micro QR 2d barcode symbology.
+     */
+    SBSSymbologyMicroQR = 0x4000000,
+    /**
+     * Italian Pharma Code (Code32) barcode symbology.
+     *
+     * Only available in Professional and Enterprise Packages.
+     */
+    SBSSymbologyCode32 = 0x8000000,
 
+    /**
+     * Posti LAPA (Lajittelupalvelu) 4 State Code.
+     */
+    SBSSymbologyLAPA4SC SBS_SWIFT_NAME(lapa4sc) = 0x10000000,
+} SBS_ENUM_END(SBSSymbology);
 
 /**
  * \brief Flags to hint that two codes form a composite code.
  *
  * \since 4.14.0
  */
-
 SBS_ENUM_BEGIN(SBSCompositeFlag) {
     /**
      * Code is not part of a composite code.
@@ -207,29 +234,38 @@ SBS_ENUM_BEGIN(SBSCompositeFlag) {
     SBSCompositeFlagGs1TypeC              = 0x0000010
 } SBS_ENUM_END(SBSCompositeFlag);
 
+/**
+ * \brief Helper function to convert a symbology string to its corresponding symbology enum
+ *
+ * \param symbologyString NSString with symbology name
+ * \return the enum value for the given symbology string
+ *
+ * \since 5.7.0
+ */
+#ifdef __cplusplus
+extern "C" {
+#endif
+SBSSymbology SBSSymbologyFromString(NSString * _Nullable symbologyString);
+#ifdef __cplusplus
+}
+#endif
 
 /**
  * \brief Represents a recognized/localized barcode/2D code.
  *
- * The SBSCode class represents a  barcode, or 2D code that has been localized or recognized
+ * The SBSCode class represents a barcode, or 2D code that has been localized or recognized
  * by the barcode recognition engine.
  */
 @interface SBSCode : NSObject
 
 /**
+ * \deprecated Replaced by #symbologyName.
+ *
  * \brief The symbology of the barcode as a string, including GS1 data carrier states
- *
- * This property is set to one of the following values:
- *
- * \c "EAN8", \c "EAN13", \c "UPC12", \c "UPCE", \c "CODE128", \c "GS1-128", 
- * \c "CODE39", \c "CODE93", \c "ITF", \c "MSI", \c "CODABAR", \c "GS1-DATABAR", 
- * \c "GS1-DATABAR-EXPANDED", \c "QR", \c "GS1-QR", \c "DATAMATRIX", 
- * \c "GS1-DATAMATRIX", \c "PDF417", \c "TWO-DIGIT-ADD-ON", \c "FIVE-DIGIT-ADD-ON",
- * \c "AZTEC", \c "MAXICODE", \c "GS1-DATABAR-LIMITED", \c "CODE11", \c "UNKNOWN".
  *
  * Codes for which \ref SBSCode#isRecognized is NO, \c "UNKNOWN" is returned.
  */
-@property (nonnull, nonatomic, readonly) NSString *symbologyString;
+@property (nonnull, nonatomic, readonly) NSString *symbologyString SBS_DEPRECATED_MSG_ATTRIBUTE("Use symbologyName instead.");
 
 /**
  * \brief The symbology name of the barcode as a string.
@@ -241,7 +277,7 @@ SBS_ENUM_BEGIN(SBSCompositeFlag) {
  *
  * \since 4.10.0
  */
-@property (nonnull, nonatomic, readonly) NSString * symbologyName;
+@property (nonnull, nonatomic, readonly) NSString *symbologyName;
 
 /**
  * \brief Returns the symbology of a recognized barcode
@@ -249,7 +285,6 @@ SBS_ENUM_BEGIN(SBSCompositeFlag) {
  * Codes for which \ref SBSCode#isRecognized is NO return \ref SBSSymbologyUnknown.
  */
 @property (nonatomic, readonly) SBSSymbology symbology;
-
 
 /**
  *  \brief The data contained in the barcode/2D code, e.g. the 13 digit number
@@ -324,5 +359,13 @@ SBS_ENUM_BEGIN(SBSCompositeFlag) {
  */
 @property (nonatomic, readonly) SBSCompositeFlag compositeFlag;
 
+/**
+ * \brief Whether the scanned code is color inverted.
+ *
+ * For codes that have been localized but nor recognized, this property is set to NO.
+ *
+ * \since 5.5.0
+ */
+@property (nonatomic, readonly) BOOL isColorInverted;
 
 @end

@@ -16,14 +16,13 @@
  *
  * Classes implementing the SBSScanCaseDelegate protocol receive barcode/2D code scan events whenever
  * a new code has been scanned. 
- * The class implementing the protocol also get notified when SBSScanCase has completed initialization,
+ * The class implementing the protocol also gets notified when SBSScanCase has completed initialization,
  * and when SBSScanCase::state is changed.
  *
  * \ingroup scanditsdk-ios-api
  * \since 4.13.0
  */
 @protocol SBSScanCaseDelegate
-
 
 /**
  * \brief Method invoked when SBSScanCase has finished the initialization.
@@ -37,7 +36,7 @@
  * This method is invoked from a scan-case-internal dispatch queue. To perform UI work, you must
  * dispatch to the main queue first.
  */
-- (void)didInitializeScanCase:(SBSScanCase *)scanCase;
+- (void)didInitializeScanCase:(nonnull SBSScanCase *)scanCase;
 
 /**
  * \brief Method invoked whenever a new code is scanned.
@@ -58,9 +57,8 @@
  * This method is invoked from a scan-case-internal dispatch queue. To perform UI work, you must
  * dispatch to the main queue first.
  */
-- (SBSScanCaseState)scanCase:(SBSScanCase *)scanCase
-                     didScan:(SBSScanCaseSession *)session;
-
+- (SBSScanCaseState)scanCase:(nonnull SBSScanCase *)scanCase
+                     didScan:(nonnull SBSScanCaseSession *)session;
 
 /**
  * \brief Method invoked whenever SBSScanCase::state changed.
@@ -74,7 +72,7 @@
  * This method is invoked from a scan-case-internal dispatch queue. To perform UI work, you must
  * dispatch to the main queue first.
  */
-- (void)scanCase:(SBSScanCase *)scanCase
+- (void)scanCase:(nonnull SBSScanCase *)scanCase
   didChangeState:(SBSScanCaseState)state
           reason:(SBSScanCaseStateChangeReason)reason;
 

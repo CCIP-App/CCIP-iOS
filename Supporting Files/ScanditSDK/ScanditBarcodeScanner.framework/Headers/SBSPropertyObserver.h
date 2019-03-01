@@ -6,6 +6,10 @@
 //  Copyright © 2016 Scandit AG. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
+@class SBSBarcodePicker;
+
 /**
  * \brief Defines the protocol for an observer of property changes
  *
@@ -22,5 +26,8 @@
  * The property is invoked in the calling thread, so make sure to move any UI work to the main 
  * thread.
  */
-- (void)property:(nonnull NSString*)property changedToValue:(nullable NSObject*)value;
+- (void)barcodePicker:(nonnull SBSBarcodePicker *)barcodePicker
+             property:(nonnull NSString *)property
+       changedToValue:(nullable NSObject *)value;
+
 @end
