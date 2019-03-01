@@ -97,6 +97,7 @@ PODS:
   - Shimmer (1.0.2)
   - STPopup (1.8.3)
   - swift_qrcodejs (1.0.1)
+  - SwiftDate (5.1.0)
   - thenPromise (4.2.1)
   - UICKeyChainStore (2.1.2)
   - "UITableView+FDTemplateLayoutCell (1.6)"
@@ -124,6 +125,7 @@ DEPENDENCIES:
   - SDWebImage (~> 4.4)
   - Shimmer (~> 1.0)
   - STPopup (~> 1.7)
+  - SwiftDate
   - thenPromise
   - UICKeyChainStore (~> 2.1)
   - "UITableView+FDTemplateLayoutCell (from `https://github.com/Haraguroicha/UITableView-FDTemplateLayoutCell`, tag `1.6.1`)"
@@ -159,6 +161,7 @@ SPEC REPOS:
     - Shimmer
     - STPopup
     - swift_qrcodejs
+    - SwiftDate
     - thenPromise
     - UICKeyChainStore
     - "UIView+FDCollapsibleConstraints"
@@ -208,11 +211,12 @@ SPEC CHECKSUMS:
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STPopup: da1167250a01584af7bcccb898653185f223ec46
   swift_qrcodejs: c181fe5c849d30c699546a23762d7e3dd143ab37
+  SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
   thenPromise: 8cf34fe40b0c877338feb544d64265d184d8af7f
   UICKeyChainStore: 85db518bb1d294366d15ec9b92a416c4e670518f
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: e5eeb450d52d15c96b7dbbf6ccaf00833c79313b
+PODFILE CHECKSUM: cf9e73f90060b5541d2a9120e319ebf03c963b7d
 
 COCOAPODS: 1.6.0

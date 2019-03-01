@@ -1,9 +1,9 @@
 plugin 'cocoapods-acknowledgements'
 
 # Uncomment this line to define a global platform for your project
-platform :ios, '10.0'
+platform :ios, '11.0'
 
-def ccip_pods
+def opass_pods
     # Uncomment this line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!
     
@@ -33,8 +33,9 @@ def ccip_pods
     pod 'thenPromise'
     pod 'Down'
     pod 'FontAwesome.swift'
+    pod 'SwiftDate'
 end
 
 target 'OPass' do
-    ccip_pods
+    opass_pods
 end
