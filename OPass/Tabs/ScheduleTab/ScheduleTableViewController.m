@@ -20,9 +20,6 @@
 
 @implementation ScheduleTableViewController
 
-static NSDateFormatter *formatter_full = nil;
-static NSDateFormatter *formatter_date = nil;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self registerForceTouch];
@@ -32,20 +29,11 @@ static NSDateFormatter *formatter_date = nil;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    if (formatter_full == nil) {
-        formatter_full = [NSDateFormatter new];
-        [formatter_full setDateFormat:[AppDelegate AppConfig:@"DateTimeFormat"]];
-    }
-    if (formatter_date == nil) {
-        formatter_date = [NSDateFormatter new];
-        [formatter_date setDateFormat:[AppDelegate AppConfig:@"DisplayTimeFormat"]];
-        [formatter_date setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Taipei"]];
-    }
     self.programTimes = [NSMutableArray new];
     self.programSections = [NSMutableDictionary new];
     for (NSDictionary *program in self.programs) {
-        NSDate *startTime = [formatter_full dateFromString:[program objectForKey:@"start"]];
-        NSString *start = [formatter_date stringFromDate:startTime];
+        NSDate *startTime = [Constants DateFromString:[program objectForKey:@"start"]];
+        NSString *start = [Constants DateToDisplayTimeString:startTime];
         NSMutableArray *section = [self.programSections objectForKey:start];
         if (section == nil) {
             section = [NSMutableArray new];
@@ -82,7 +70,7 @@ static NSDateFormatter *formatter_date = nil;
                                                              bundle:nil];
         ScheduleDetailViewController *detailView = [storyboard instantiateViewControllerWithIdentifier:INIT_SCHEDULE_DETAIL_VIEW_STORYBOARD_ID];
         NSDate *time = [self.programTimes objectAtIndex:indexPath.section];
-        NSString *timeString = [formatter_date stringFromDate:time];
+        NSString *timeString = [Constants DateToDisplayTimeString:time];
         NSDictionary *program = [[self.programSections objectForKey:timeString] objectAtIndex:indexPath.row];
         [detailView setDetailData:program];
         UITableViewCell *tableCell = [tableView cellForRowAtIndexPath:indexPath];
@@ -111,7 +99,7 @@ static NSDateFormatter *formatter_date = nil;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [formatter_date stringFromDate:[self.programTimes objectAtIndex:section]];
+    return [Constants DateToDisplayTimeString:[self.programTimes objectAtIndex:section]];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
@@ -122,7 +110,7 @@ static NSDateFormatter *formatter_date = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSDate *time = [self.programTimes objectAtIndex:section];
-    NSString *timeString = [formatter_date stringFromDate:time];
+    NSString *timeString = [Constants DateToDisplayTimeString:time];
     return [[self.programSections objectForKey:timeString] count];
 }
 
@@ -136,13 +124,13 @@ static NSDateFormatter *formatter_date = nil;
     }
     
     NSDate *time = [self.programTimes objectAtIndex:indexPath.section];
-    NSString *timeString = [formatter_date stringFromDate:time];
+    NSString *timeString = [Constants DateToDisplayTimeString:time];
     NSDictionary *program = [[self.programSections objectForKey:timeString] objectAtIndex:indexPath.row];
     [cell setDelegate:self];
     [cell setSchedule:program];
     [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     
-    NSDate *endTime = [formatter_full dateFromString:[program objectForKey:@"end"]];
+    NSDate *endTime = [Constants DateFromString:[program objectForKey:@"end"]];
     NSTimeInterval sinceEnd = [endTime timeIntervalSinceDate:self.pagerController.today];
     [cell setDisabled:(sinceEnd < 0)];
     
@@ -153,7 +141,7 @@ static NSDateFormatter *formatter_date = nil;
     [tableView deselectRowAtIndexPath:indexPath
                              animated:YES];
     NSDate *time = [self.programTimes objectAtIndex:indexPath.section];
-    NSString *timeString = [formatter_date stringFromDate:time];
+    NSString *timeString = [Constants DateToDisplayTimeString:time];
     NSDictionary *program = [[self.programSections objectForKey:timeString] objectAtIndex:indexPath.row];
     [self.pagerController performSegueWithIdentifier:SCHEDULE_DETAIL_VIEW_STORYBOARD_ID
                                               sender:program];
@@ -170,7 +158,7 @@ static NSDateFormatter *formatter_date = nil;
     NSArray *favoriteArray = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:favObj] : favObj;
     NSMutableArray *favorites = [NSMutableArray arrayWithArray:favoriteArray];
     for (NSDate *time in self.programTimes) {
-        NSString *timeString = [formatter_date stringFromDate:time];
+        NSString *timeString = [Constants DateToDisplayTimeString:time];
         for (NSDictionary *program in [self.programSections objectForKey:timeString]) {
             if (program != nil && [[self getID:program] isEqualToString:scheduleId]) {
                 favProgram = program;

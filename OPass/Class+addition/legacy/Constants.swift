@@ -8,6 +8,7 @@
 
 import Foundation
 import FontAwesome_swift
+import SwiftDate
 
 @objc enum fontAwesomeStyle: Int {
     case solid
@@ -96,5 +97,24 @@ import FontAwesome_swift
     @objc static func GetScheduleTypeName(_ namePrefix: Any) -> String {
         // TODO: mapping from define file from event config
         return namePrefix as? String ?? ""
+    }
+    @objc static func DateFromString(_ dateString: String) -> Date {
+        let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
+        let isodate = dateString.toISODate(region: local)?.timeIntervalSince1970 ?? 0
+        let date = Date(seconds: isodate, region: Region.local)
+        return date
+    }
+    @objc static func DateToDisplayDateString(_ date: Date) -> String {
+        let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
+        return DateInRegion(date, region: local).toFormat(AppDelegate.appConfig("DisplayDateFormat") as! String)
+    }
+    @objc static func DateToDisplayTimeString(_ date: Date) -> String {
+        let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
+        return DateInRegion(date, region: local).toFormat(AppDelegate.appConfig("DisplayTimeFormat") as! String)
+    }
+    @objc static func DateToDisplayDateTimeString(_ date: Date) -> String {
+        let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
+        let format = String.init(format: "%@ %@", AppDelegate.appConfig("DisplayDateFormat") as! String, AppDelegate.appConfig("DisplayTimeFormat") as! String)
+        return DateInRegion(date, region: local).toFormat(format)
     }
 }

@@ -26,9 +26,6 @@
 
 @implementation ScheduleViewPagerController
 
-static NSDateFormatter *formatter_full = nil;
-static NSDateFormatter *formatter_date = nil;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -37,16 +34,6 @@ static NSDateFormatter *formatter_date = nil;
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault registerDefaults:defaults];
     [userDefault synchronize];
-    
-    if (formatter_full == nil) {
-        formatter_full = [NSDateFormatter new];
-        [formatter_full setDateFormat:[AppDelegate AppConfig:@"DateTimeFormat"]];
-        [formatter_full setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-    }
-    if (formatter_date == nil) {
-        formatter_date = [NSDateFormatter new];
-        [formatter_date setDateFormat:[AppDelegate AppConfig:@"DisplayDateFormat"]];
-    }
     
     self.dataSource = self;
     self.delegate = self;
@@ -116,9 +103,9 @@ static NSDateFormatter *formatter_date = nil;
     self.today = [NSDate new];
     NSTimeInterval preferredDateInterval = CGFLOAT_MAX;
     for (NSDictionary *program in self.programs) {
-        NSDate *startTime = [formatter_full dateFromString:[program objectForKey:@"start"]];
-        NSDate *endTime = [formatter_full dateFromString:[program objectForKey:@"end"]];
-        NSString *time_date = [formatter_date stringFromDate:startTime];
+        NSDate *startTime = [Constants DateFromString:[program objectForKey:@"start"]];
+        NSDate *endTime = [Constants DateFromString:[program objectForKey:@"end"]];
+        NSString *time_date = [Constants DateToDisplayDateString:startTime];
         NSMutableArray *tempArray = [self.program_date objectForKey:time_date];
         if (tempArray == nil) {
             tempArray = [NSMutableArray new];
@@ -137,7 +124,7 @@ static NSDateFormatter *formatter_date = nil;
     if (self.firstLoad == YES) {
         self.selected_section = [NSDate dateWithTimeInterval:preferredDateInterval
                                                    sinceDate:self.today];
-        NSUInteger selected_index = [self.segmentsTextArray indexOfObject:[formatter_date stringFromDate:self.selected_section]];
+        NSUInteger selected_index = [self.segmentsTextArray indexOfObject:[Constants DateToDisplayDateString:self.selected_section]];
         [self selectTabAtIndex:selected_index];
         self.firstLoad = NO;
     }

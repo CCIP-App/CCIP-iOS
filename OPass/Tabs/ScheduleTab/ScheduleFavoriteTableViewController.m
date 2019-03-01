@@ -22,24 +22,9 @@
 @implementation ScheduleFavoriteTableViewController
 
 static UIView *headView;
-static NSDate *today = nil;
-static NSDateFormatter *formatter_full = nil;
-static NSDateFormatter *formatter_date = nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (formatter_full == nil) {
-        formatter_full = [NSDateFormatter new];
-        [formatter_full setDateFormat:[AppDelegate AppConfig:@"DateTimeFormat"]];
-    }
-    if (formatter_date == nil) {
-        formatter_date = [NSDateFormatter new];
-        [formatter_date setDateFormat:[NSString stringWithFormat:@"%@ %@", [AppDelegate AppConfig:@"DisplayDateFormat"], [AppDelegate AppConfig:@"DisplayTimeFormat"]]];
-        [formatter_date setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Taipei"]];
-    }
-    if (today == nil) {
-        today = [NSDate new];
-    }
     
     [self parseFavorites];
     
@@ -112,8 +97,8 @@ static NSDateFormatter *formatter_date = nil;
     self.favoriteTimes = [NSMutableArray new];
     self.favoritesSections = [NSMutableDictionary new];
     for (NSDictionary *program in favorites) {
-        NSDate *startTime = [formatter_full dateFromString:[program objectForKey:@"start"]];
-        NSString *start = [formatter_date stringFromDate:startTime];
+        NSDate *startTime = [Constants DateFromString:[program objectForKey:@"start"]];
+        NSString *start = [Constants DateToDisplayDateTimeString:startTime];
         NSMutableArray *section = [self.favoritesSections objectForKey:start];
         if (section == nil) {
             section = [NSMutableArray new];
@@ -163,12 +148,12 @@ static NSDateFormatter *formatter_date = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSDate *time = [self.favoriteTimes objectAtIndex:section];
-    NSString *timeString = [formatter_date stringFromDate:time];
+    NSString *timeString = [Constants DateToDisplayDateTimeString:time];
     return [[self.favoritesSections objectForKey:timeString] count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [formatter_date stringFromDate:[self.favoriteTimes objectAtIndex:section]];
+    return [Constants DateToDisplayDateTimeString:[self.favoriteTimes objectAtIndex:section]];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
@@ -187,15 +172,15 @@ static NSDateFormatter *formatter_date = nil;
     }
     
     NSDate *time = [self.favoriteTimes objectAtIndex:indexPath.section];
-    NSString *timeString = [formatter_date stringFromDate:time];
+    NSString *timeString = [Constants DateToDisplayDateTimeString:time];
     NSDictionary *program = [[self.favoritesSections objectForKey:timeString] objectAtIndex:indexPath.row];
     
     [cell setDelegate:self];
     [cell setSchedule:program];
     [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     
-    NSDate *endTime = [formatter_full dateFromString:[program objectForKey:@"end"]];
-    NSTimeInterval sinceEnd = [endTime timeIntervalSinceDate:today];
+    NSDate *endTime = [Constants DateFromString:[program objectForKey:@"end"]];
+    NSTimeInterval sinceEnd = [endTime timeIntervalSinceDate:[NSDate new]];
     [cell setDisabled:(sinceEnd < 0)];
     
     return cell;
@@ -205,7 +190,7 @@ static NSDateFormatter *formatter_date = nil;
     [tableView deselectRowAtIndexPath:indexPath
                              animated:YES];
     NSDate *time = [self.favoriteTimes objectAtIndex:indexPath.section];
-    NSString *timeString = [formatter_date stringFromDate:time];
+    NSString *timeString = [Constants DateToDisplayDateTimeString:time];
     NSDictionary *program = [[self.favoritesSections objectForKey:timeString] objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:SCHEDULE_DETAIL_VIEW_STORYBOARD_ID
                               sender:program];

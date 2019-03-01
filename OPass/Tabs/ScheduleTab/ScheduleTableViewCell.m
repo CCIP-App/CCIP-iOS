@@ -19,21 +19,9 @@
 
 @implementation ScheduleTableViewCell
 
-static NSDateFormatter *formatter_full = nil;
-static NSDateFormatter *formatter_date = nil;
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    if (formatter_full == nil) {
-        formatter_full = [NSDateFormatter new];
-        [formatter_full setDateFormat:[AppDelegate AppConfig:@"DateTimeFormat"]];
-    }
-    if (formatter_date == nil) {
-        formatter_date = [NSDateFormatter new];
-        [formatter_date setDateFormat:[AppDelegate AppConfig:@"DisplayTimeFormat"]];
-        [formatter_date setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Taipei"]];
-    }
     [self.LabelLabel setTextColor:[UIColor colorFromHtmlColor:@"#9B9B9B"]];
     [self.LabelLabel setBackgroundColor:[UIColor colorFromHtmlColor:@"#D8D8D8"]];
 }
@@ -59,8 +47,8 @@ static NSDateFormatter *formatter_date = nil;
 
 - (void)setSchedule:(NSDictionary *)schedule {
     _schedule = schedule;
-    NSDate *startTime = [formatter_full dateFromString:[_schedule objectForKey:@"start"]];
-    NSDate *endTime = [formatter_full dateFromString:[_schedule objectForKey:@"end"]];
+    NSDate *startTime = [Constants DateFromString:[_schedule objectForKey:@"start"]];
+    NSDate *endTime = [Constants DateFromString:[_schedule objectForKey:@"end"]];
     long mins = [[NSNumber numberWithDouble:([endTime timeIntervalSinceDate:startTime] / 60)] longValue];
     NSString *type = [Constants GetScheduleTypeName:[_schedule objectForKey:@"type"]];
     NSDictionary *currentLangObject = [_schedule objectForKey:[AppDelegate shortLangUI]];
