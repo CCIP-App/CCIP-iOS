@@ -368,7 +368,9 @@
 #endif
     
     // Configure Appirater
-    [Appirater setAppId:@"1436417025"];
+    NSUInteger uTrackId = [[iVersion sharedInstance] appStoreID];
+    NSString *trackId = [NSString stringWithFormat:@"%@",  @(uTrackId)];
+    [Appirater setAppId:trackId];
     [Appirater setDaysUntilPrompt:1];
     [Appirater setUsesUntilPrompt:5];
     [Appirater setSignificantEventsUntilPrompt:-1];
