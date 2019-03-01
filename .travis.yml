@@ -4,3 +4,5 @@ xcode_workspace: OPass.xcworkspace
 xcode_scheme: OPass
 xcode_destination: platform=iOS Simulator,name=iPhone X,OS=12.1
 podfile: Podfile
+script:
+  - set -o pipefail && xcodebuild -workspace OPass.xcworkspace -scheme OPass -destination "platform=iOS Simulator,name=iPhone X,OS=12.1" clean build | xcpretty
