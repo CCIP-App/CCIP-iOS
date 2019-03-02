@@ -24,7 +24,7 @@ class OPassEventsController : UIViewController {
         Constants.GetEvents().then { (events: Array<EventShortInfo>) in
             self.opassEvents = events
         }.then {
-            // display events
+            NSLog("TODO: display events")
         }.then {
             self.progress.hide(animated: true)
         }.then {
