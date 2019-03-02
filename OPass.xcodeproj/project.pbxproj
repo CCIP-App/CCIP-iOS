@@ -101,6 +101,7 @@
 		6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */; };
 		6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE250211D3133FC005FB4B2 /* GuideViewController.m */; };
+		6BE4B8F1222ADB7B005F8B95 /* NEHotspot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B8F0222ADB7B005F8B95 /* NEHotspot.swift */; };
 		6BE8A227220D04980035CFD8 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8A226220D04980035CFD8 /* MainTabBarViewController.swift */; };
 		6BE8A22A220DC84C0035CFD8 /* AcknowledgementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8A229220DC84C0035CFD8 /* AcknowledgementsViewController.swift */; };
 		6BE8A22C220DF0210035CFD8 /* NSString+StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8A22B220DF0210035CFD8 /* NSString+StringExt.swift */; };
@@ -291,6 +292,7 @@
 		6BD8EF3C1D1D73510094BE95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BE250201D3133FC005FB4B2 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		6BE250211D3133FC005FB4B2 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		6BE4B8F0222ADB7B005F8B95 /* NEHotspot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHotspot.swift; sourceTree = "<group>"; };
 		6BE8A226220D04980035CFD8 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		6BE8A229220DC84C0035CFD8 /* AcknowledgementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsViewController.swift; sourceTree = "<group>"; };
 		6BE8A22B220DF0210035CFD8 /* NSString+StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+StringExt.swift"; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 			isa = PBXGroup;
 			children = (
 				6B4FCB0F218EC1B30005469F /* legacy */,
+				6BE4B8F0222ADB7B005F8B95 /* NEHotspot.swift */,
 				6B5AABC6220CBB6700C01C54 /* iBeacon.swift */,
 				6B4FCB1D218F5D630005469F /* OPassWebViewController.swift */,
 				6B50EA312169377E000CC757 /* UIAlertController+additional.swift */,
@@ -956,6 +959,7 @@
 				6B4FCB17218ECC230005469F /* UIViewController+addition.swift in Sources */,
 				6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */,
 				6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m in Sources */,
+				6BE4B8F1222ADB7B005F8B95 /* NEHotspot.swift in Sources */,
 				6B4FCB28218F97B60005469F /* TelegramController.swift in Sources */,
 				6B4FCB22218F774D0005469F /* IRCViewController.swift in Sources */,
 				6B5AABC7220CBB6700C01C54 /* iBeacon.swift in Sources */,

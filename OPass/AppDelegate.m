@@ -19,9 +19,6 @@
 #import "WebServiceEndPoint.h"
 #import "NSData+PMUtils.h"
 
-/* moved to .xcconfig
-#define ONE_SIGNAL_APP_TOKEN        (@"a429ff30-5c0e-4584-a32f-b866ba88c947")
-*/
 #define SCANDIT_APP_KEY             (@"2BXy4CfQi9QFc12JnjId7mHH58SdYzNC90Uo07luUUY")
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
@@ -76,36 +73,6 @@
 
 + (void)sendTagsWithJsonString:(NSString *)jsonString {
     [OneSignal sendTagsWithJsonString:jsonString];
-}
-
-+ (void)createNEHC {
-    if(@available(iOS 11.0, *)) {
-#if TARGET_OS_SIMULATOR
-        NSLog(@"In Simulator, NEHotspot not working");
-#else
-        NSDictionary *nehDict = [NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"PassAssets.bundle/WiFiConfiguration"
-                                                                                                  withExtension:@"plist"]];
-        NSString *nehSSID = [nehDict objectForKey:@"SSID"];
-        NSString *nehPass = [nehDict objectForKey:@"Pass"];
-        if ([nehSSID length] > 0) {
-            NSLog(@"NEHotspot association with SSID `%@`.", nehSSID);
-            NEHotspotConfiguration *NEHConfig = ([nehPass length] > 0) ? [[NEHotspotConfiguration alloc] initWithSSID:nehSSID
-                                                                                                           passphrase:nehPass
-                                                                                                                isWEP:NO] : [[NEHotspotConfiguration alloc] initWithSSID:nehSSID];
-            [NEHConfig setJoinOnce:NO];
-            [NEHConfig setLifeTimeInDays:[NSNumber numberWithUnsignedInteger:3]];
-            NEHotspotConfigurationManager *manager = [NEHotspotConfigurationManager sharedManager];
-            [manager applyConfiguration:NEHConfig
-                      completionHandler:^(NSError * _Nullable error) {
-                          NSLog(@"%@", error);
-            }];
-        } else {
-            NSLog(@"No SSID was set, bypass for NEHotspot association.");
-        }
-#endif
-    } else {
-        // no-op
-    }
 }
 
 + (void)sendFIB:(NSString *)_name WithEvents:(NSDictionary *)_events Func:(const char *)_func File:(const char *)_file Line:(int)_line {
@@ -425,7 +392,6 @@
     
     [self registerAppIconArt];
     [self setDefaultShortcutItems];
-    [AppDelegate createNEHC];
     
     [self setBeacon:[iBeacon new]];
 
@@ -502,8 +468,6 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     [self setDefaultShortcutItems];
-    
-    [AppDelegate createNEHC];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

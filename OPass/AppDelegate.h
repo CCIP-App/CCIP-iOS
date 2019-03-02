@@ -45,7 +45,6 @@
 + (void)sendTag:( NSString * _Nonnull )tag value:( NSString * _Nonnull )value;
 + (void)sendTags:( NSDictionary * _Nonnull )keyValuePair;
 + (void)sendTagsWithJsonString:( NSString * _Nonnull )jsonString;
-+ (void)createNEHC;
 + (void)sendFIB:( NSString * _Nonnull )_name WithEvents:( NSDictionary * _Nullable )_events Func:( const char * _Nonnull )_func File:( const char * _Nonnull )_file Line:(int)_line;
 - (void)setDefaultShortcutItems;
 
