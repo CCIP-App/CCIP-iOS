@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vFY-Ie-dA7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.59" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vFY-Ie-dA7">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.45"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1154,10 +1154,7 @@ Label2</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="K3D-KG-wwf" kind="show" id="Vsx-u2-DYP">
-                                                <segue key="commit" inheritsFrom="parent" id="H9D-nP-Y0a"/>
-                                                <segue key="preview" inheritsFrom="commit" id="WFY-yd-1DE"/>
-                                            </segue>
+                                            <segue destination="K3D-KG-wwf" kind="show" id="Vsx-u2-DYP"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SponsorsWeb" id="nFF-Qj-5an" customClass="MoreCell" customModule="OPass" customModuleProvider="target">
@@ -1168,14 +1165,22 @@ Label2</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Tct-oj-JdF" kind="show" id="cBG-i4-7bv">
-                                                <segue key="commit" inheritsFrom="parent" id="4UJ-X1-Vhz"/>
-                                                <segue key="preview" inheritsFrom="commit" id="ohE-Yk-Ah7"/>
-                                            </segue>
+                                            <segue destination="Tct-oj-JdF" kind="show" id="cBG-i4-7bv"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PartnersWeb" id="yKK-gn-1WS" customClass="MoreCell" customModule="OPass" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="292" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yKK-gn-1WS" id="Ei2-xh-HRO">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="dyW-1a-YKu" kind="show" id="eB1-cA-Zt3"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Acknowledgements" id="yMP-WL-Edu" customClass="MoreCell" customModule="OPass" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="292" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="336" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yMP-WL-Edu" id="IPq-E0-gs7">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -1233,7 +1238,7 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4A-c9-jcn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2080" y="1965"/>
+            <point key="canvasLocation" x="2742" y="1965"/>
         </scene>
         <!--Telegram Controller-->
         <scene sceneID="LS4-DU-qoz">
@@ -1258,7 +1263,7 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaR-Ck-58c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3425" y="1965"/>
+            <point key="canvasLocation" x="4087" y="1965"/>
         </scene>
         <!--My Ticket View Controller-->
         <scene sceneID="BPq-cB-LmU">
@@ -1315,7 +1320,7 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCQ-6Q-dR4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4109" y="1965"/>
+            <point key="canvasLocation" x="4771" y="1965"/>
         </scene>
         <!--Acknowledgements View Controller-->
         <scene sceneID="6ye-bt-2uY">
@@ -1619,7 +1624,7 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yHF-fU-Quw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4780" y="1965"/>
+            <point key="canvasLocation" x="5442" y="1965"/>
         </scene>
         <!--Sponsor Web View Controller-->
         <scene sceneID="R77-1g-fh1">
@@ -1690,7 +1695,32 @@ Label2</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNe-Mc-Cf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2745" y="1965"/>
+            <point key="canvasLocation" x="3407" y="1965"/>
+        </scene>
+        <!--Partner Web View Controller-->
+        <scene sceneID="AiG-je-jXM">
+            <objects>
+                <viewController id="dyW-1a-YKu" customClass="PartnerWebViewController" sceneMemberID="viewController">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="vIt-Lk-V1x">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="jKf-8b-MzZ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="T8Q-h2-Azv">
+                        <barButtonItem key="rightBarButtonItem" image="WebViewAssets.bundle/BarButton-Reload.png" id="CMR-ls-cHC">
+                            <connections>
+                                <action selector="reload:" destination="dyW-1a-YKu" id="pPf-J8-950"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="goReloadButton" destination="CMR-ls-cHC" id="l1g-8P-osq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dlF-xq-zIA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2080" y="1965"/>
         </scene>
     </scenes>
     <resources>
@@ -1706,9 +1736,7 @@ Label2</string>
         <image name="WebViewAssets.bundle/BarButton-Reload.png" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cBG-i4-7bv"/>
         <segue reference="351-Fd-ZV7"/>
-        <segue reference="Vsx-u2-DYP"/>
         <segue reference="mZ3-si-dph"/>
     </inferredMetricsTieBreakers>
 </document>

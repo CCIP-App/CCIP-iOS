@@ -136,6 +136,12 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
         
         self.checkButtonStatus(false);
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.parseInstanceObjects(); // reload again for url
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);

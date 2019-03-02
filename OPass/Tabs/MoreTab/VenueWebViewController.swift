@@ -15,5 +15,10 @@ class VenueWebViewController : OPassWebViewController, OPassWebViewIB {
         super.reload(sender);
     }
     
-    var PageUrl: String = Constants.URL_VENUE;
+    var PageUrl: String = ""
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.PageUrl = Constants.URL_VENUE
+        super.viewWillAppear(animated)
+    }
 }

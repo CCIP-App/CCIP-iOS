@@ -28,6 +28,11 @@ class IRCViewController : OPassWebViewController, OPassWebViewIB {
     var titleTextColor: String = "IRCTitleTextColor";
     var titleLeftColor: String = "IRCTitleLeftColor";
     var titleRightColor: String = "IRCTitleRightColor";
-    var PageUrl: String = Constants.URL_LOG_BOT;
+    var PageUrl: String = "";
     var ShowLogo: Bool = true;
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.PageUrl = Constants.URL_LOG_BOT
+        super.viewWillAppear(animated)
+    }
 }

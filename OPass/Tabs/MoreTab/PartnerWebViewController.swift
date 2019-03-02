@@ -1,5 +1,5 @@
 //
-//  PuzzleViewController.swift
+//  PartnerWebViewController.swift
 //  OPass
 //
 //  Created by 腹黒い茶 on 2018/11/5.
@@ -8,17 +8,17 @@
 
 import Foundation
 
-class PuzzleViewController : OPassWebViewController, OPassWebViewIB {
+class PartnerWebViewController : OPassWebViewController, OPassWebViewIB {
     @IBOutlet var goReloadButton: UIBarButtonItem?
-    
+
     @IBAction override func reload(_ sender: Any) {
         super.reload(sender);
     }
-    
+
     var PageUrl: String = ""
 
     override func viewWillAppear(_ animated: Bool) {
-        self.PageUrl = Constants.webToken(Constants.URL_GAME, useToken: Constants.AccessTokenSHA1)
+        self.PageUrl = Constants.URL_PARTNERS_WEB
         super.viewWillAppear(animated)
     }
 }

@@ -15,5 +15,10 @@ class TelegramController : OPassWebViewController, OPassWebViewIB {
         super.reload(sender);
     }
     
-    var PageUrl: String = Constants.URL_TELEGRAM_GROUP;
+    var PageUrl: String = ""
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.PageUrl = Constants.URL_TELEGRAM_GROUP
+        super.viewWillAppear(animated)
+    }
 }
