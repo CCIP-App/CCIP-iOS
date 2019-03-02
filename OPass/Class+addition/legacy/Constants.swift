@@ -64,19 +64,13 @@ struct EventInfo {
     static var currentEvent: String = ""
     @nonobjc static var eventInfo: EventInfo? = nil
     public static var HasSetEvent: Bool {
-        get {
-            return currentEvent.count > 0
-        }
+        return currentEvent.count > 0
     }
     public static var AccessToken: String {
-        get {
-            return AppDelegate.accessToken()
-        }
+        return AppDelegate.accessToken()
     }
     public static var AccessTokenSHA1: String {
-        get {
-            return AppDelegate.accessTokenSHA1()
-        }
+        return AppDelegate.accessTokenSHA1()
     }
     public static var URL_SERVER_BASE: String {
         return eventInfo?.ServerBaseUrl.absoluteString ?? ""
