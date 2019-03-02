@@ -149,11 +149,18 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellId = self.moreItems!.object(at: indexPath.row) as! String
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MoreCell
-        let attributeTextStyle = [
+        let brands = [
+            NSAttributedString.Key.font: Constants.fontOfAwesome(withSize: 24, inStyle: .brands),
+        ]
+        let solid = [
             NSAttributedString.Key.font: Constants.fontOfAwesome(withSize: 24, inStyle: .solid),
         ]
-        let cellIcon = NSMutableAttributedString.init(string: NSLocalizedString("icon-\(cellId)", comment: ""), attributes: attributeTextStyle)
+        let cellIconId = NSLocalizedString("icon-\(cellId)", comment: "");
+        var cellIcon = NSMutableAttributedString.init(string: cellIconId, attributes: solid)
         let cellText = NSLocalizedString(cellId, comment: "")
+        if (cellIcon.size().width > 40) {
+            cellIcon = NSMutableAttributedString.init(string: cellIconId, attributes: brands)
+        }
         cell.textLabel!.text = cellText
         cell.textLabel!.attributedText = NSAttributedString.init(attributedString: cellIcon + "  \t  " + cellText)
         return cell;

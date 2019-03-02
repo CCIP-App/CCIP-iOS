@@ -57,7 +57,8 @@
 "Telegram" = "Telegram Groups";
 "VenueWeb" = "Venue";
 "StaffsWeb" = "Staffs";
-"SponsorsWeb" = "Partners";
+"SponsorsWeb" = "Sponsors";
+"PartnersWeb" = "Partners";
 "Acknowledgements" = "Developers";
 "Contributions" = "Contributors";
 "Libraries" = "Open Source Libraries";
@@ -99,5 +100,6 @@
 "icon-Telegram" = "telegram-plane";
 "icon-VenueWeb" = "map";
 "icon-StaffsWeb" = "user-friends";
-"icon-SponsorsWeb" = "hands-helping";
+"icon-SponsorsWeb" = "hand-holding-heart";
+"icon-PartnersWeb" = "hands-helping";
 "icon-Acknowledgements" = "people-carry";

@@ -57,7 +57,8 @@
 "Telegram" = "Telegram 群組";
 "VenueWeb" = "場內地圖";
 "StaffsWeb" = "籌備團隊";
-"SponsorsWeb" = "合作夥伴";
+"SponsorsWeb" = "贊助商";
+"PartnersWeb" = "合作夥伴";
 "Acknowledgements" = "開發者";
 "Contributions" = "貢獻者";
 "Libraries" = "開源專案";
@@ -99,5 +100,6 @@
 "icon-Telegram" = "telegram-plane";
 "icon-VenueWeb" = "map";
 "icon-StaffsWeb" = "user-friends";
-"icon-SponsorsWeb" = "hands-helping";
+"icon-SponsorsWeb" = "hand-holding-heart";
+"icon-PartnersWeb" = "hands-helping";
 "icon-Acknowledgements" = "people-carry";
