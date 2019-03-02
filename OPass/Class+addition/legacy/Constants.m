@@ -36,12 +36,4 @@
     return DASHLINE_VIEW_ID;
 }
 
-+ (NSString *)urlLogBot {
-    return LOG_BOT_URL;
-}
-
-+ (NSString *)urlTelegramGroup {
-    return TELEGRAM_GROUP_URL;
-}
-
 @end

@@ -9,6 +9,9 @@
 import Foundation
 import FontAwesome_swift
 import SwiftDate
+import then
+import AFNetworking
+import SwiftyJSON
 
 @objc enum fontAwesomeStyle: Int {
     case solid
@@ -16,45 +19,98 @@ import SwiftDate
     case brands
 }
 
+struct DisplayName {
+    var _displayData: JSON
+    var zh: String
+    var en: String
+    func Get(lang: String) -> String {
+        return _displayData[lang].stringValue
+    }
+}
+
+struct PublishDate {
+    var Start: Date
+    var End: Date
+}
+
+struct Features {
+    var IRC: URL?
+    var Telegram: URL?
+    var Puzzle: URL?
+    var Staffs: URL?
+    var Venue: URL?
+    var Sponsors: URL?
+    var Partners: URL?
+}
+
+struct CustomFeatures {
+    var IconUrl: URL?
+    var DisplayName: DisplayName
+    var Url: URL
+}
+
+struct EventInfo {
+    var EventId: String
+    var DisplayName: DisplayName
+    var LogoUrl: URL
+    var Publish: PublishDate
+    var ServerBaseUrl: URL
+    var ScheduleUrl: URL
+    var Features: Features
+    var CustomFeatures: Array<CustomFeatures>
+}
+
 @objc extension Constants {
-    public static var AccessToken : String {
+    static var currentEvent: String = ""
+    @nonobjc static var eventInfo: EventInfo? = nil
+    public static var HasSetEvent: Bool {
         get {
-            return AppDelegate.accessToken();
+            return currentEvent.count > 0
         }
     }
-    public static var AccessTokenSHA1 : String {
+    public static var AccessToken: String {
         get {
-            return AppDelegate.accessTokenSHA1();
+            return AppDelegate.accessToken()
         }
     }
-    public static var URL_LOG_BOT : String {
+    public static var AccessTokenSHA1: String {
         get {
-            return Constants.urlLogBot();
+            return AppDelegate.accessTokenSHA1()
+        }
+    }
+    public static var URL_LOG_BOT: String {
+        get {
+            return eventInfo?.Features.IRC!.absoluteString ?? ""
         }
     };
-    public static var URL_VENUE : String {
+    public static var URL_VENUE: String {
         get {
-            return AppDelegate.appConfigURL("VenuePath");
+            return eventInfo?.Features.Venue!.absoluteString ?? ""
         }
     }
-    public static var URL_TELEGRAM_GROUP : String {
+    public static var URL_TELEGRAM_GROUP: String {
         get {
-            return Constants.urlTelegramGroup();
+            return eventInfo?.Features.Telegram!.absoluteString ?? ""
         }
     }
-    public static var URL_STAFF_WEB : String {
+    public static var URL_STAFF_WEB: String {
         get {
-            return AppDelegate.appConfigURL("StaffPath")
+            return eventInfo?.Features.Staffs!.absoluteString ?? ""
         }
     }
-    public static var URL_SPONSOR_WEB : String {
+    public static var URL_SPONSOR_WEB: String {
         get {
-            return AppDelegate.appConfigURL("SponsorPath")
+            return eventInfo?.Features.Sponsors!.absoluteString ?? ""
         }
     }
-    public static var URL_GAME : String {
+    public static var URL_PARTNERS_WEB: String {
         get {
-            return AppDelegate.appConfigURL("GamePath")
+            return eventInfo?.Features.Partners!.absoluteString ?? ""
+        }
+    }
+    public static var URL_GAME: String {
+        get {
+            return eventInfo?.Features.Puzzle!.absoluteString ?? ""
         }
     }
     public static func GitHubRepo(_ repo: String) -> String {
@@ -116,5 +172,57 @@ import SwiftDate
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
         let format = String.init(format: "%@ %@", AppDelegate.appConfig("DisplayDateFormat") as! String, AppDelegate.appConfig("DisplayTimeFormat") as! String)
         return DateInRegion(date, region: local).toFormat(format)
+    }
+    @objc static func SetEventURL(_ url: String) {
+        let _ = try? ..(Promise { resolve, reject in
+            let manager = AFHTTPSessionManager.init()
+            manager.completionQueue = DispatchQueue(label: "SetEvent")
+            manager.get(url, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
+                NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any)!)")
+                if (responseObject != nil) {
+                    resolve(responseObject!)
+                }
+            }) { (operation: URLSessionDataTask?, error: Error) in
+                NSLog("Error: \(error)")
+                reject(error)
+            }
+        }.then { (infoObj: Any) in
+            let info = JSON(infoObj)
+            let eventId = info["event_id"].stringValue
+            let dn = info["display_name"]
+            let dnzh = dn["zh"].stringValue
+            let dnen = dn["en"].stringValue
+            let displayName = DisplayName(_displayData: dn, zh: dnzh, en: dnen)
+            let logoUrl = info["logo_url"].url!
+            let pub = info["publish"]
+            let pubStart = Date.init(seconds: pub["start"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
+            let pubEnd = Date.init(seconds: pub["end"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
+            let publish = PublishDate(Start: pubStart, End: pubEnd)
+            let serverUrl = info["server_base_url"].url!
+            let scheduleUrl = info["schedule_url"].url!
+            let fts = info["features"]
+            let irc = fts["irc"].url
+            let telegram = fts["telegram"].url
+            let puzzle = fts["puzzle"].url
+            let staffs = fts["staffs"].url
+            let venue = fts["venus"].url
+            let sponsors = fts["sponsors"].url
+            let partners = fts["partners"].url
+            let features = Features(IRC: irc, Telegram: telegram, Puzzle: puzzle, Staffs: staffs, Venue: venue, Sponsors: sponsors, Partners: partners)
+            var customFeatures = Array<CustomFeatures>()
+            let cf = info["custom_features"].arrayValue
+            for ft in cf {
+                let ftIcon = ft["icon"].url
+                let ftdn = ft["display_name"]
+                let ftdnzh = dn["zh"].stringValue
+                let ftdnen = dn["en"].stringValue
+                let ftDisplayName = DisplayName(_displayData: ftdn, zh: ftdnzh, en: ftdnen)
+                let ftUrl = ft["url"].url!
+                let f = CustomFeatures(IconUrl: ftIcon, DisplayName: ftDisplayName, Url: ftUrl)
+                customFeatures.append(f)
+            }
+            eventInfo = EventInfo(EventId: eventId, DisplayName: displayName, LogoUrl: logoUrl, Publish: publish, ServerBaseUrl: serverUrl, ScheduleUrl: scheduleUrl, Features: features, CustomFeatures: customFeatures)
+            currentEvent = JSONSerialization.stringify(infoObj as Any)!
+        })
     }
 }

@@ -302,6 +302,9 @@
 }
 
 - (void)reloadCard {
+    if (![Constants HasSetEvent]) {
+        [Constants SetEventURL:@"https://portal.opass.app/events/SITCON_2019/"];
+    }
     if (self.progress != nil) {
         [self.progress hideAnimated:YES];
     }

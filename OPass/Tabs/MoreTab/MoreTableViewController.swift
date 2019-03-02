@@ -54,21 +54,24 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         self.navigationItem.titleView?.addGestureRecognizer(tapGesture)
 
         self.moreItems = [
-            (AppDelegate.appConfig("URL.GamePath") as! String).count > 0
+            Constants.eventInfo?.Features.Puzzle != nil
                 ? "Puzzle"
                 : "",
             "Ticket",
-            (AppDelegate.appConfig("URL.tg_Chat") as! String).count > 0
+            Constants.eventInfo?.Features.Telegram != nil
                 ? "Telegram"
                 : "",
-            (AppDelegate.appConfig("URL.VenuePath") as! String).count > 0
+            Constants.eventInfo?.Features.Venue != nil
                 ? "VenueWeb"
                 : "",
-            (AppDelegate.appConfig("URL.StaffPath") as! String).count > 0
+            Constants.eventInfo?.Features.Staffs != nil
                 ? "StaffsWeb"
                 : "",
-            (AppDelegate.appConfig("URL.SponsorPath") as! String).count > 0
+            Constants.eventInfo?.Features.Sponsors != nil
                 ? "SponsorsWeb"
+                : "",
+            Constants.eventInfo?.Features.Partners != nil
+                ? "PartnersWeb"
                 : "",
             "Acknowledgements",
         ].filter({ $0.count > 0 }) as NSArray
