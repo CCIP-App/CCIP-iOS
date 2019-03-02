@@ -762,9 +762,9 @@
     //    UILabel *label = nil;
     
     static CGRect cardRect;
+    // Init configure pageControl
+    [self.pageControl setHidden:YES];  // set page control to hidden
     if (CGRectIsEmpty(cardRect)) {
-        // Init configure pageControl
-        [self.pageControl setHidden:YES];  // set page control to hidden
         CGRect pageControlFrame = self.pageControl.frame;
         self.pageControl.frame = CGRectMake(self.view.frame.size.width / 2 ,
                                             (self.cards.frame.size.height + self.cards.bounds.size.height - (self.pageControl.hidden ? 0 : 10)) / 2,

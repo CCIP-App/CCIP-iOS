@@ -36,6 +36,7 @@ def opass_pods
     pod 'SwiftDate'
     pod 'Appirater'
     pod 'SwiftyJSON'
+    pod 'FoldingCell'
 end
 
 target 'OPass' do

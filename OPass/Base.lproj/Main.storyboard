@@ -282,23 +282,50 @@ Please copy and paste the token into next field or click the token link in the r
                             <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="ABm-1z-p64">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTI-27-4bn">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yND-dM-MGh">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5hI-zX-76J">
+                                <rect key="frame" x="20" y="55" width="374" height="646"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="oIA-0H-5s9" id="PK0-hd-fgd"/>
+                                    <outlet property="delegate" destination="oIA-0H-5s9" id="UIu-S6-LXl"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="5hI-zX-76J" firstAttribute="leading" secondItem="gHI-GA-NjH" secondAttribute="leading" constant="20" id="1Ap-Dc-K7F"/>
+                            <constraint firstItem="gHI-GA-NjH" firstAttribute="bottom" secondItem="5hI-zX-76J" secondAttribute="bottom" constant="35" id="PIt-QS-quV"/>
                             <constraint firstItem="ABm-1z-p64" firstAttribute="centerY" secondItem="LTi-pS-nFB" secondAttribute="centerY" id="VRg-qu-d1t"/>
+                            <constraint firstItem="5hI-zX-76J" firstAttribute="top" secondItem="gHI-GA-NjH" secondAttribute="top" constant="35" id="Zm7-zu-RkS"/>
+                            <constraint firstItem="gHI-GA-NjH" firstAttribute="trailing" secondItem="5hI-zX-76J" secondAttribute="trailing" constant="20" id="aiy-1R-e3K"/>
                             <constraint firstItem="ABm-1z-p64" firstAttribute="height" secondItem="LTi-pS-nFB" secondAttribute="height" id="b5t-ni-ACK"/>
+                            <constraint firstItem="LTI-27-4bn" firstAttribute="height" secondItem="LTi-pS-nFB" secondAttribute="height" id="euL-33-Qfh"/>
+                            <constraint firstItem="LTI-27-4bn" firstAttribute="width" secondItem="LTi-pS-nFB" secondAttribute="width" id="iFx-r5-Lfd"/>
+                            <constraint firstItem="LTI-27-4bn" firstAttribute="centerX" secondItem="LTi-pS-nFB" secondAttribute="centerX" id="pXo-ci-ZWY"/>
                             <constraint firstItem="ABm-1z-p64" firstAttribute="centerX" secondItem="LTi-pS-nFB" secondAttribute="centerX" id="q38-bS-XQh"/>
                             <constraint firstItem="ABm-1z-p64" firstAttribute="width" secondItem="LTi-pS-nFB" secondAttribute="width" id="sNn-0G-KRE"/>
+                            <constraint firstItem="LTI-27-4bn" firstAttribute="centerY" secondItem="LTi-pS-nFB" secondAttribute="centerY" id="v66-Ko-4Ha"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gHI-GA-NjH"/>
                     </view>
                     <connections>
+                        <outlet property="eventsTable" destination="5hI-zX-76J" id="hDy-tw-2YY"/>
+                        <outlet property="veView" destination="LTI-27-4bn" id="xHz-Cy-oeB"/>
                         <segue destination="vFY-Ie-dA7" kind="presentation" identifier="OPassTabView" modalTransitionStyle="crossDissolve" id="EtN-1L-0u8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dum-ja-IjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-199" y="-718"/>
+            <point key="canvasLocation" x="-200.00000000000003" y="-718.20652173913049"/>
         </scene>
         <!--Main Tab Bar View Controller-->
         <scene sceneID="djy-Ka-IMA">

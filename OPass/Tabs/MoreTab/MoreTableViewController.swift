@@ -9,12 +9,14 @@
 import Foundation
 import UIKit
 import AFNetworking
+import FontAwesome_swift
 
 class MoreTableViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var moreTableView: UITableView?
     var shimmeringLogoView: FBShimmeringView?
     var userInfo: NSDictionary?
     var moreItems: NSArray?
+    var switchEventButton: UIBarButtonItem?
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination
@@ -75,6 +77,17 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
                 : "",
             "Acknowledgements",
         ].filter({ $0.count > 0 }) as NSArray
+
+        if self.switchEventButton == nil {
+            let attribute = [
+                NSAttributedString.Key.font: UIFont.fontAwesome(ofSize: 20, style: .solid)
+            ]
+            self.switchEventButton = UIBarButtonItem.init(title: "", style: .plain, target: self, action: #selector(CallSwitchEventView))
+            self.switchEventButton!.setTitleTextAttributes(attribute, for: .normal)
+            self.switchEventButton!.title = String.fontAwesomeIcon(code: "fa-sign-out-alt")
+        }
+
+        self.navigationItem.rightBarButtonItem = self.switchEventButton
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -89,6 +102,10 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @objc func CallSwitchEventView() {
+        self.dismiss(animated: true, completion: nil)
     }
 
     @objc func navSingleTap() {
