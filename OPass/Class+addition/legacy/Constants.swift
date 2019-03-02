@@ -60,55 +60,55 @@ struct EventInfo {
     var CustomFeatures: Array<CustomFeatures>
 }
 
-@objc extension Constants {
+extension Constants {
     static var currentEvent: String = ""
-    @nonobjc static var eventInfo: EventInfo? = nil
-    public static var HasSetEvent: Bool {
+    static var eventInfo: EventInfo? = nil
+    @objc public static var HasSetEvent: Bool {
         return currentEvent.count > 0
     }
-    public static var AccessToken: String {
+    @objc public static var AccessToken: String {
         return AppDelegate.accessToken()
     }
-    public static var AccessTokenSHA1: String {
+    @objc public static var AccessTokenSHA1: String {
         return AppDelegate.accessTokenSHA1()
     }
-    public static var URL_SERVER_BASE: String {
+    @objc public static var URL_SERVER_BASE: String {
         return eventInfo?.ServerBaseUrl.absoluteString ?? ""
     }
-    public static var URL_LOG_BOT: String {
+    @objc public static var URL_LOG_BOT: String {
         return eventInfo?.Features.IRC!.absoluteString ?? ""
     };
-    public static var URL_VENUE: String {
+    @objc public static var URL_VENUE: String {
         return eventInfo?.Features.Venue!.absoluteString ?? ""
     }
-    public static var URL_TELEGRAM_GROUP: String {
+    @objc public static var URL_TELEGRAM_GROUP: String {
         return eventInfo?.Features.Telegram!.absoluteString ?? ""
     }
-    public static var URL_STAFF_WEB: String {
+    @objc public static var URL_STAFF_WEB: String {
         return eventInfo?.Features.Staffs!.absoluteString ?? ""
     }
-    public static var URL_SPONSOR_WEB: String {
+    @objc public static var URL_SPONSOR_WEB: String {
         return eventInfo?.Features.Sponsors!.absoluteString ?? ""
     }
-    public static var URL_PARTNERS_WEB: String {
+    @objc public static var URL_PARTNERS_WEB: String {
         return eventInfo?.Features.Partners!.absoluteString ?? ""
     }
-    public static var URL_GAME: String {
+    @objc public static var URL_GAME: String {
         return eventInfo?.Features.Puzzle!.absoluteString ?? ""
     }
-    public static func GitHubRepo(_ repo: String) -> String {
+    @objc public static func GitHubRepo(_ repo: String) -> String {
         return String(format: "https://github.com/\(repo)")
     }
-    public static func GitHubAvatar(_ user: String) -> String {
+    @objc public static func GitHubAvatar(_ user: String) -> String {
         return String(format: "https://avatars.githubusercontent.com/\(user)?s=86&v=3")
     }
-    public static func GravatarAvatar(_ hash: String) -> String {
+    @objc public static func GravatarAvatar(_ hash: String) -> String {
         return String(format: "https://www.gravatar.com/avatar/\(hash)?s=86&\(hash.count > 0 ? "r=x" : "f=y&d=mm")")
     }
     @objc static func AssertImage(name: String, InBundleName: String) -> UIImage? {
         return AssertImage(InBundleName, name)
     }
-    public static func AssertImage(_ bundleName: String, _ imageName: String ) -> UIImage? {
+    @objc public static func AssertImage(_ bundleName: String, _ imageName: String ) -> UIImage? {
         let bundlePath = Bundle.main.bundlePath.appendingPathComponent("\(bundleName).bundle")
         let bundle = Bundle.init(path: bundlePath)!
         return UIImage.init(named: imageName, in: bundle, compatibleWith: nil)
