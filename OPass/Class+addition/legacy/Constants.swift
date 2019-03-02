@@ -78,40 +78,29 @@ struct EventInfo {
             return AppDelegate.accessTokenSHA1()
         }
     }
+    public static var URL_SERVER_BASE: String {
+        return eventInfo?.ServerBaseUrl.absoluteString ?? ""
+    }
     public static var URL_LOG_BOT: String {
-        get {
-            return eventInfo?.Features.IRC!.absoluteString ?? ""
-        }
+        return eventInfo?.Features.IRC!.absoluteString ?? ""
     };
     public static var URL_VENUE: String {
-        get {
-            return eventInfo?.Features.Venue!.absoluteString ?? ""
-        }
+        return eventInfo?.Features.Venue!.absoluteString ?? ""
     }
     public static var URL_TELEGRAM_GROUP: String {
-        get {
-            return eventInfo?.Features.Telegram!.absoluteString ?? ""
-        }
+        return eventInfo?.Features.Telegram!.absoluteString ?? ""
     }
     public static var URL_STAFF_WEB: String {
-        get {
-            return eventInfo?.Features.Staffs!.absoluteString ?? ""
-        }
+        return eventInfo?.Features.Staffs!.absoluteString ?? ""
     }
     public static var URL_SPONSOR_WEB: String {
-        get {
-            return eventInfo?.Features.Sponsors!.absoluteString ?? ""
-        }
+        return eventInfo?.Features.Sponsors!.absoluteString ?? ""
     }
     public static var URL_PARTNERS_WEB: String {
-        get {
-            return eventInfo?.Features.Partners!.absoluteString ?? ""
-        }
+        return eventInfo?.Features.Partners!.absoluteString ?? ""
     }
     public static var URL_GAME: String {
-        get {
-            return eventInfo?.Features.Puzzle!.absoluteString ?? ""
-        }
+        return eventInfo?.Features.Puzzle!.absoluteString ?? ""
     }
     public static func GitHubRepo(_ repo: String) -> String {
         return String(format: "https://github.com/\(repo)")
@@ -146,9 +135,7 @@ struct EventInfo {
         return UIFont.fontAwesome(ofSize: withSize, style: style)
     }
     @objc static var tintColor : UIColor {
-        get {
-            return UIView().tintColor!
-        }
+        return UIView().tintColor!
     }
     @objc static func GetScheduleTypeName(_ namePrefix: Any) -> String {
         // TODO: mapping from define file from event config
