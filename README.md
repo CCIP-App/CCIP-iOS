@@ -2,7 +2,7 @@
 
 A Community Checkin with Interactivity Project for iOS app (CCIP-iOS)
 
-![](https://api.travis-ci.org/CCIP-App/CCIP-iOS.svg?branch=master)
+[![](https://api.travis-ci.org/CCIP-App/CCIP-iOS.svg?branch=master)](https://travis-ci.org/CCIP-App/CCIP-iOS)
 
 ## Pre-Requirement
 
