@@ -60,6 +60,12 @@ struct EventInfo {
     var CustomFeatures: Array<CustomFeatures>
 }
 
+struct EventShortInfo {
+    var EventId: String
+    var DisplayName: DisplayName
+    var LogoUrl: URL
+}
+
 extension Constants {
     static var currentEvent: String = ""
     static var eventInfo: EventInfo? = nil
@@ -154,11 +160,10 @@ extension Constants {
         let format = String.init(format: "%@ %@", AppDelegate.appConfig("DisplayDateFormat") as! String, AppDelegate.appConfig("DisplayTimeFormat") as! String)
         return DateInRegion(date, region: local).toFormat(format)
     }
-    @objc static func SetEventURL(_ url: String) {
-        let _ = try? ..(Promise { resolve, reject in
+    static func GetEvents() -> Promise<Array<EventShortInfo>> {
+        return Promise { resolve, reject in
             let manager = AFHTTPSessionManager.init()
-            manager.completionQueue = DispatchQueue(label: "SetEvent")
-            manager.get(url, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
+            manager.get("https://portal.opass.app/events/", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
                 NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any)!)")
                 if (responseObject != nil) {
                     resolve(responseObject!)
@@ -167,7 +172,36 @@ extension Constants {
                 NSLog("Error: \(error)")
                 reject(error)
             }
-        }.then { (infoObj: Any) in
+        }.then({ (infoObj: Any) -> Array<EventShortInfo> in
+            let info = JSON(infoObj).arrayValue
+            var infos = Array<EventShortInfo>()
+            for i in info {
+                let eventId = i["event_id"].stringValue
+                let dn = i["display_name"]
+                let dnzh = dn["zh"].stringValue
+                let dnen = dn["en"].stringValue
+                let displayName = DisplayName(_displayData: dn, zh: dnzh, en: dnen)
+                let logoUrl = i["logo_url"].url!
+                let e = EventShortInfo(EventId: eventId, DisplayName: displayName, LogoUrl: logoUrl)
+                infos.append(e)
+            }
+            return infos
+        })
+    }
+    static func SetEvent(_ eventId: String) -> Promise<EventInfo> {
+        return Promise { resolve, reject in
+            let manager = AFHTTPSessionManager.init()
+            manager.completionQueue = DispatchQueue(label: "SetEvent")
+            manager.get("https://portal.opass.app/events/\(eventId)/", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
+                NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any)!)")
+                if (responseObject != nil) {
+                    resolve(responseObject!)
+                }
+            }) { (operation: URLSessionDataTask?, error: Error) in
+                NSLog("Error: \(error)")
+                reject(error)
+            }
+        }.then { (infoObj: Any) -> EventInfo in
             let info = JSON(infoObj)
             let eventId = info["event_id"].stringValue
             let dn = info["display_name"]
@@ -204,6 +238,7 @@ extension Constants {
             }
             eventInfo = EventInfo(EventId: eventId, DisplayName: displayName, LogoUrl: logoUrl, Publish: publish, ServerBaseUrl: serverUrl, ScheduleUrl: scheduleUrl, Features: features, CustomFeatures: customFeatures)
             currentEvent = JSONSerialization.stringify(infoObj as Any)!
-        })
+            return eventInfo!
+        }
     }
 }

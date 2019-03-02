@@ -278,11 +278,22 @@ Please copy and paste the token into next field or click the token link in the r
                     <view key="view" contentMode="scaleToFill" id="LTi-pS-nFB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="ABm-1z-p64">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ABm-1z-p64" firstAttribute="centerY" secondItem="LTi-pS-nFB" secondAttribute="centerY" id="VRg-qu-d1t"/>
+                            <constraint firstItem="ABm-1z-p64" firstAttribute="height" secondItem="LTi-pS-nFB" secondAttribute="height" id="b5t-ni-ACK"/>
+                            <constraint firstItem="ABm-1z-p64" firstAttribute="centerX" secondItem="LTi-pS-nFB" secondAttribute="centerX" id="q38-bS-XQh"/>
+                            <constraint firstItem="ABm-1z-p64" firstAttribute="width" secondItem="LTi-pS-nFB" secondAttribute="width" id="sNn-0G-KRE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gHI-GA-NjH"/>
                     </view>
                     <connections>
-                        <segue destination="vFY-Ie-dA7" kind="show" identifier="PassTabView" id="EtN-1L-0u8"/>
+                        <segue destination="vFY-Ie-dA7" kind="presentation" identifier="OPassTabView" modalTransitionStyle="crossDissolve" id="EtN-1L-0u8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dum-ja-IjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1747,6 +1758,7 @@ Label2</string>
         <image name="AssetsUI.bundle/icon_ios_more.png" width="16" height="16"/>
         <image name="AssetsUI.bundle/icon_ios_pin.png" width="16" height="16"/>
         <image name="AssetsUI.bundle/icon_ios_topcharts.png" width="16" height="16"/>
+        <image name="LaunchScreen.png" width="375" height="811"/>
         <image name="PassAssets.bundle/ConnectWiFiToConf.png" width="16" height="16"/>
         <image name="PassAssets.bundle/NoAnnouncement.png" width="16" height="16"/>
         <image name="WebViewAssets.bundle/BarButton-Back.png" width="16" height="16"/>
