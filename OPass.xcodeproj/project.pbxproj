@@ -101,6 +101,7 @@
 		6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */; };
 		6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE250211D3133FC005FB4B2 /* GuideViewController.m */; };
+		6BE4B8ED222ADA75005F8B95 /* OPassEventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B8EC222ADA75005F8B95 /* OPassEventsController.swift */; };
 		6BE4B8F1222ADB7B005F8B95 /* NEHotspot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B8F0222ADB7B005F8B95 /* NEHotspot.swift */; };
 		6BE8A227220D04980035CFD8 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8A226220D04980035CFD8 /* MainTabBarViewController.swift */; };
 		6BE8A22A220DC84C0035CFD8 /* AcknowledgementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8A229220DC84C0035CFD8 /* AcknowledgementsViewController.swift */; };
@@ -292,6 +293,7 @@
 		6BD8EF3C1D1D73510094BE95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BE250201D3133FC005FB4B2 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		6BE250211D3133FC005FB4B2 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		6BE4B8EC222ADA75005F8B95 /* OPassEventsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassEventsController.swift; sourceTree = "<group>"; };
 		6BE4B8F0222ADB7B005F8B95 /* NEHotspot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHotspot.swift; sourceTree = "<group>"; };
 		6BE8A226220D04980035CFD8 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		6BE8A229220DC84C0035CFD8 /* AcknowledgementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsViewController.swift; sourceTree = "<group>"; };
@@ -514,9 +516,10 @@
 				6BFB831E1F2B18A4005DCF00 /* CustomSegue */,
 				6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */,
 				6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */,
+				286D5FC41D6BD6C5005B6619 /* WebServiceEndPoint.h */,
+				6BE4B8EC222ADA75005F8B95 /* OPassEventsController.swift */,
 				6BE8A226220D04980035CFD8 /* MainTabBarViewController.swift */,
 				6B4FCB0B218E5AA80005469F /* MainNavViewController.swift */,
-				286D5FC41D6BD6C5005B6619 /* WebServiceEndPoint.h */,
 				286E28A31D60D35B00C5CB94 /* InvalidNetworkMessageViewController.h */,
 				286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */,
 				6BFB831F1F2B18D0005DCF00 /* Tabs */,
@@ -1010,6 +1013,7 @@
 				6B19CFA4220E404C00262D99 /* MoreTableViewController.swift in Sources */,
 				6B670CCD2156E00A0089C9B5 /* MarkdownView.swift in Sources */,
 				280774D11F1AD8D300A5B994 /* ScheduleTableViewCell.m in Sources */,
+				6BE4B8ED222ADA75005F8B95 /* OPassEventsController.swift in Sources */,
 				6BE8A22C220DF0210035CFD8 /* NSString+StringExt.swift in Sources */,
 				6B4FCB06218E521C0005469F /* UIApplication+addition.swift in Sources */,
 			);
