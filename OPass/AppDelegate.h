@@ -48,7 +48,7 @@
 + (void)sendFIB:( NSString * _Nonnull )_name WithEvents:( NSDictionary * _Nullable )_events Func:( const char * _Nonnull )_func File:( const char * _Nonnull )_file Line:(int)_line;
 - (void)setDefaultShortcutItems;
 
-+ (UIImage * _Nonnull)confLogo;
+//+ (UIImage * _Nonnull)confLogo;
 
 + (void)setIsDevMode:(BOOL)isDevMode;
 + (BOOL)isDevMode;

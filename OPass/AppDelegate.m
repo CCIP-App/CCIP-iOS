@@ -135,11 +135,11 @@
     }
 }
 
-+ (UIImage *)confLogo {
-    UIImage *logo = [Constants AssertImageWithName:@"conf-logo"
-                                      InBundleName:@"AssetsUI"];
-    return [[self AppConfig:@"Themes.LogoUseMask"] boolValue] ? [logo imageWithColor:[UIColor whiteColor]] : logo;
-}
+//+ (UIImage *)confLogo {
+//    UIImage *logo = [Constants AssertImageWithName:@"conf-logo"
+//                                      InBundleName:@"AssetsUI"];
+//    return [[self AppConfig:@"Themes.LogoUseMask"] boolValue] ? [logo imageWithColor:[UIColor whiteColor]] : logo;
+//}
 
 + (void)setIsDevMode:(BOOL)isDevMode {
     [[NSUserDefaults standardUserDefaults] setBool:isDevMode forKey:@"DEV_MODE"];
@@ -152,6 +152,7 @@
 
 + (void)setDevLogo:(FBShimmeringView *)sView WithLogo:(UIImage *)logo {
     BOOL isDevMode = [AppDelegate isDevMode];
+    [[sView contentView] setContentMode:UIViewContentModeScaleAspectFit];
     if (isDevMode) {
         [((UIImageView *)[sView contentView]) setImage:[logo imageWithColor:[self AppConfigColor:@"DevelopingLogoMaskColor"]]];
     } else {

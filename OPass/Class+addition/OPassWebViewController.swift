@@ -93,7 +93,7 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
 
         if (self.ShowLogo) {
             // set logo on nav title
-            let logoView = UIImageView.init(image: AppDelegate.confLogo());
+            let logoView = UIImageView.init(image: Constants.ConfLogo());
             self.shimmeringLogoView = FBShimmeringView.init(frame: logoView.bounds);
             self.shimmeringLogoView?.contentView = logoView;
             self.navigationItem.titleView = self.shimmeringLogoView;
@@ -146,7 +146,7 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         self.setWebViewConstraints();
-        AppDelegate.setDevLogo(self.shimmeringLogoView, withLogo: AppDelegate.confLogo());
+        AppDelegate.setDevLogo(self.shimmeringLogoView, withLogo: Constants.ConfLogo());
         
         self.reload(self);
     }

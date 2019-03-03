@@ -12,6 +12,7 @@ import SwiftDate
 import then
 import AFNetworking
 import SwiftyJSON
+import SDWebImage
 
 @objc enum fontAwesomeStyle: Int {
     case solid
@@ -110,6 +111,17 @@ extension Constants {
     }
     @objc public static func GravatarAvatar(_ hash: String) -> String {
         return String(format: "https://www.gravatar.com/avatar/\(hash)?s=86&\(hash.count > 0 ? "r=x" : "f=y&d=mm")")
+    }
+    @objc static func ConfLogo() -> UIImage {
+        let ig = Promise<UIImage> { resolve, reject in
+            let option: SDWebImageOptions = [ .allowInvalidSSLCertificates, .continueInBackground, .highPriority, .queryDiskSync, .retryFailed ]
+            UIImageView.init().sd_setImage(with: eventInfo?.LogoUrl, placeholderImage: nil, options: option, completed: {
+                (image: UIImage?, error: Error?, cacheType: SDImageCacheType, url: URL?) in
+                resolve(image!)
+            })
+        }
+        let img = try! await(ig)
+        return img
     }
     @objc static func AssertImage(name: String, InBundleName: String) -> UIImage? {
         return AssertImage(InBundleName, name)

@@ -30,7 +30,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // set logo on nav title
-        let logoView = UIImageView.init(image: AppDelegate.confLogo())
+        let logoView = UIImageView.init(image: Constants.ConfLogo())
         self.shimmeringLogoView = FBShimmeringView.init(frame: logoView.bounds)
         self.shimmeringLogoView!.contentView = logoView
         self.navigationItem.titleView = self.shimmeringLogoView
@@ -96,7 +96,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        AppDelegate.setDevLogo(self.shimmeringLogoView, withLogo: AppDelegate.confLogo())
+        AppDelegate.setDevLogo(self.shimmeringLogoView, withLogo: Constants.ConfLogo())
     }
 
     override func didReceiveMemoryWarning() {
@@ -133,11 +133,11 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
                 if !AppDelegate.isDevMode() {
                     NSLog("-- Enable DEV_MODE --")
                     AppDelegate.setIsDevMode(true)
-                    AppDelegate.setDevLogo(self.shimmeringLogoView, withLogo: AppDelegate.confLogo().imageWithColor(UIColor.white))
+                    AppDelegate.setDevLogo(self.shimmeringLogoView, withLogo: Constants.ConfLogo().imageWithColor(UIColor.white))
                 } else {
                     NSLog("-- Disable DEV_MODE --")
                     AppDelegate.setIsDevMode(false)
-                    AppDelegate.setDevLogo(self.shimmeringLogoView, withLogo: AppDelegate.confLogo())
+                    AppDelegate.setDevLogo(self.shimmeringLogoView, withLogo: Constants.ConfLogo())
                 }
             }
         } else {

@@ -1793,7 +1793,7 @@ Label2</string>
         <image name="WebViewAssets.bundle/BarButton-Reload.png" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="351-Fd-ZV7"/>
+        <segue reference="LZQ-Xr-3kl"/>
         <segue reference="mZ3-si-dph"/>
     </inferredMetricsTieBreakers>
 </document>
