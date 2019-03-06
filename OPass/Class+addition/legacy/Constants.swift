@@ -172,85 +172,86 @@ extension Constants {
         let format = String.init(format: "%@ %@", AppDelegate.appConfig("DisplayDateFormat") as! String, AppDelegate.appConfig("DisplayTimeFormat") as! String)
         return DateInRegion(date, region: local).toFormat(format)
     }
-    static func GetEvents() -> Promise<Array<EventShortInfo>> {
-        return Promise { resolve, reject in
+    static func InitializeRequest(_ url: String, _ onceErrorCallback: @escaping (_ retryCount: UInt, _ retryMax: UInt, _ error: Error) -> Void) -> Promise<Any> {
+        let maxRetry: UInt = 10
+        var retryCount: UInt = 0
+        return Promise<Any> { resolve, reject in
             let manager = AFHTTPSessionManager.init()
-            manager.get("https://portal.opass.app/events/", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
+            manager.requestSerializer.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+            manager.requestSerializer.timeoutInterval = 5
+            manager.get(url, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
                 NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any)!)")
                 if (responseObject != nil) {
                     resolve(responseObject!)
                 }
             }) { (operation: URLSessionDataTask?, error: Error) in
                 NSLog("Error: \(error)")
-                reject(error)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+                    retryCount+=1
+                    onceErrorCallback(retryCount, maxRetry, error)
+                    reject(error)
+                })
             }
-        }.then({ (infoObj: Any) -> Array<EventShortInfo> in
-            let info = JSON(infoObj).arrayValue
-            var infos = Array<EventShortInfo>()
-            for i in info {
-                let eventId = i["event_id"].stringValue
-                let dn = i["display_name"]
+        }.retry(maxRetry)
+    }
+    static func GetEvents(_ onceErrorCallback: @escaping (_ retryCount: UInt, _ retryMax: UInt, _ error: Error) -> Void) -> Promise<Array<EventShortInfo>> {
+        return InitializeRequest("https://portal.opass.app/events/", onceErrorCallback)
+            .then({ (infoObj: Any) -> Array<EventShortInfo> in
+                let info = JSON(infoObj).arrayValue
+                var infos = Array<EventShortInfo>()
+                for i in info {
+                    let eventId = i["event_id"].stringValue
+                    let dn = i["display_name"]
+                    let dnzh = dn["zh"].stringValue
+                    let dnen = dn["en"].stringValue
+                    let displayName = DisplayName(_displayData: dn, zh: dnzh, en: dnen)
+                    let logoUrl = i["logo_url"].url!
+                    let e = EventShortInfo(EventId: eventId, DisplayName: displayName, LogoUrl: logoUrl)
+                    infos.append(e)
+                }
+                return infos
+            })
+    }
+    static func SetEvent(_ eventId: String, _ onceErrorCallback: @escaping (_ retryCount: UInt, _ retryMax: UInt, _ error: Error) -> Void) -> Promise<EventInfo> {
+        return InitializeRequest("https://portal.opass.app/events/\(eventId)/", onceErrorCallback)
+            .then { (infoObj: Any) -> EventInfo in
+                let info = JSON(infoObj)
+                let eventId = info["event_id"].stringValue
+                let dn = info["display_name"]
                 let dnzh = dn["zh"].stringValue
                 let dnen = dn["en"].stringValue
                 let displayName = DisplayName(_displayData: dn, zh: dnzh, en: dnen)
-                let logoUrl = i["logo_url"].url!
-                let e = EventShortInfo(EventId: eventId, DisplayName: displayName, LogoUrl: logoUrl)
-                infos.append(e)
-            }
-            return infos
-        })
-    }
-    static func SetEvent(_ eventId: String) -> Promise<EventInfo> {
-        return Promise { resolve, reject in
-            let manager = AFHTTPSessionManager.init()
-            manager.completionQueue = DispatchQueue(label: "SetEvent")
-            manager.get("https://portal.opass.app/events/\(eventId)/", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
-                NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any)!)")
-                if (responseObject != nil) {
-                    resolve(responseObject!)
+                let logoUrl = info["logo_url"].url!
+                let pub = info["publish"]
+                let pubStart = Date.init(seconds: pub["start"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
+                let pubEnd = Date.init(seconds: pub["end"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
+                let publish = PublishDate(Start: pubStart, End: pubEnd)
+                let serverUrl = info["server_base_url"].url!
+                let scheduleUrl = info["schedule_url"].url!
+                let fts = info["features"]
+                let irc = fts["irc"].url
+                let telegram = fts["telegram"].url
+                let puzzle = fts["puzzle"].url
+                let staffs = fts["staffs"].url
+                let venue = fts["venus"].url
+                let sponsors = fts["sponsors"].url
+                let partners = fts["partners"].url
+                let features = Features(IRC: irc, Telegram: telegram, Puzzle: puzzle, Staffs: staffs, Venue: venue, Sponsors: sponsors, Partners: partners)
+                var customFeatures = Array<CustomFeatures>()
+                let cf = info["custom_features"].arrayValue
+                for ft in cf {
+                    let ftIcon = ft["icon"].url
+                    let ftdn = ft["display_name"]
+                    let ftdnzh = dn["zh"].stringValue
+                    let ftdnen = dn["en"].stringValue
+                    let ftDisplayName = DisplayName(_displayData: ftdn, zh: ftdnzh, en: ftdnen)
+                    let ftUrl = ft["url"].url!
+                    let f = CustomFeatures(IconUrl: ftIcon, DisplayName: ftDisplayName, Url: ftUrl)
+                    customFeatures.append(f)
                 }
-            }) { (operation: URLSessionDataTask?, error: Error) in
-                NSLog("Error: \(error)")
-                reject(error)
-            }
-        }.then { (infoObj: Any) -> EventInfo in
-            let info = JSON(infoObj)
-            let eventId = info["event_id"].stringValue
-            let dn = info["display_name"]
-            let dnzh = dn["zh"].stringValue
-            let dnen = dn["en"].stringValue
-            let displayName = DisplayName(_displayData: dn, zh: dnzh, en: dnen)
-            let logoUrl = info["logo_url"].url!
-            let pub = info["publish"]
-            let pubStart = Date.init(seconds: pub["start"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
-            let pubEnd = Date.init(seconds: pub["end"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
-            let publish = PublishDate(Start: pubStart, End: pubEnd)
-            let serverUrl = info["server_base_url"].url!
-            let scheduleUrl = info["schedule_url"].url!
-            let fts = info["features"]
-            let irc = fts["irc"].url
-            let telegram = fts["telegram"].url
-            let puzzle = fts["puzzle"].url
-            let staffs = fts["staffs"].url
-            let venue = fts["venus"].url
-            let sponsors = fts["sponsors"].url
-            let partners = fts["partners"].url
-            let features = Features(IRC: irc, Telegram: telegram, Puzzle: puzzle, Staffs: staffs, Venue: venue, Sponsors: sponsors, Partners: partners)
-            var customFeatures = Array<CustomFeatures>()
-            let cf = info["custom_features"].arrayValue
-            for ft in cf {
-                let ftIcon = ft["icon"].url
-                let ftdn = ft["display_name"]
-                let ftdnzh = dn["zh"].stringValue
-                let ftdnen = dn["en"].stringValue
-                let ftDisplayName = DisplayName(_displayData: ftdn, zh: ftdnzh, en: ftdnen)
-                let ftUrl = ft["url"].url!
-                let f = CustomFeatures(IconUrl: ftIcon, DisplayName: ftDisplayName, Url: ftUrl)
-                customFeatures.append(f)
-            }
-            eventInfo = EventInfo(EventId: eventId, DisplayName: displayName, LogoUrl: logoUrl, Publish: publish, ServerBaseUrl: serverUrl, ScheduleUrl: scheduleUrl, Features: features, CustomFeatures: customFeatures)
-            currentEvent = JSONSerialization.stringify(infoObj as Any)!
-            return eventInfo!
+                eventInfo = EventInfo(EventId: eventId, DisplayName: displayName, LogoUrl: logoUrl, Publish: publish, ServerBaseUrl: serverUrl, ScheduleUrl: scheduleUrl, Features: features, CustomFeatures: customFeatures)
+                currentEvent = JSONSerialization.stringify(infoObj as Any)!
+                return eventInfo!
         }
     }
 }

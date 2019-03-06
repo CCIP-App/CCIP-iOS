@@ -20,41 +20,50 @@ class OPassEventsController : UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var eventsTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.progress = MBProgressHUD.init(view: self.view)
+        self.progress = MBProgressHUD.showAdded(to: self.view, animated: true)
+        self.progress.removeFromSuperViewOnHide = false
         self.progress.mode = .indeterminate
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.progress.show(animated: true)
         self.opassEvents.removeAll()
         self.eventsTable.reloadData()
-        self.progress.show(animated: true)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Constants.GetEvents().then { (events: Array<EventShortInfo>) in
+        Constants.GetEvents({ retryCount, retryMax, error in
+            self.progress.label.text = "[\(retryCount)/\(retryMax)] \(error.localizedDescription)"
+        }).then { (events: Array<EventShortInfo>) in
             self.opassEvents = events
-        }.then { _ in
-            if self.firstLoad {
-                self.veView.alpha = 0
-                self.veView.isHidden = false
-            }
-            UIView.animate(withDuration: 1, animations: {
-                self.veView.alpha = 1
-            }, completion: { (finished: Bool) in
-                self.eventsTable.reloadData()
-            })
-        }.then { _ in
-            self.progress.hide(animated: true)
-        }.then { _ in
-            if self.firstLoad && self.opassEvents.count == 1 {
-                self.LoadEvent(self.opassEvents.first!.EventId)
-                self.firstLoad = false
-            }
+            }.then { _ in
+                if self.firstLoad {
+                    self.veView.alpha = 0
+                    self.veView.isHidden = false
+                }
+                UIView.animate(withDuration: 1, animations: {
+                    self.veView.alpha = 1
+                }, completion: { (finished: Bool) in
+                    self.eventsTable.reloadData()
+                })
+            }.then { _ in
+                self.progress.label.text = ""
+                self.progress.hide(animated: true)
+            }.then { _ in
+                if self.firstLoad && self.opassEvents.count == 1 {
+                    self.LoadEvent(self.opassEvents.first!.EventId)
+                    self.firstLoad = false
+                }
         }
     }
 
     func LoadEvent(_ eventId: String) {
-        Constants.SetEvent(eventId).then { (event: EventInfo) in
+        self.progress.show(animated: true)
+        Constants.SetEvent(eventId, { retryCount, retryMax, error in
+            self.progress.label.text = "[\(retryCount)/\(retryMax)] \(error.localizedDescription)"
+        }).then { (event: EventInfo) in
+            self.progress.label.text = ""
+            self.progress.hide(animated: true)
             if Constants.HasSetEvent {
                 self.performSegue(withIdentifier: "OPassTabView", sender: event)
             }
