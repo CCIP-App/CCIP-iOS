@@ -242,7 +242,7 @@ extension Constants {
         eventInfo = nil
         currentEvent = ""
     }
-    @objc static func DoLogin(byEventId eventId: String, withToken token: String) {
+    @objc static func DoLogin(byEventId eventId: String, withToken token: String, onCompletion completion: OPassCompletionCallback) {
         async {
             while true {
                 var vc: UIViewController? = nil
@@ -276,7 +276,7 @@ extension Constants {
             DispatchQueue.main.sync {
                 let opec = UIApplication.getMostTopPresentedViewController() as! OPassEventsController
                 opec.LoadEvent(eventId).then { _ in
-                    OPassAPI.RedeemCode(forEvent: eventId, withToken: token) {_,_,_  in }
+                    OPassAPI.RedeemCode(forEvent: eventId, withToken: token, completion: completion)
                 }
             }
         }

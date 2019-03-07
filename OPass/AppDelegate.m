@@ -440,29 +440,15 @@
     NSDictionary *params = [urlQuery length] > 0 ? [self parseQuery:urlQuery] : @{};
     id event_id = [params objectForKey:@"event_id"];
     id token = [params objectForKey:@"token"];
-    if (isOldScheme) {
-        // from old scheme
-        // abendon old scheme
-//        if ([urlHost isEqualToString:@"login"] && [params objectForKey:@"token"] != nil) {
-//            [[AppDelegate delegateInstance] setIsLoginSession:YES];
-//            [AppDelegate setAccessToken:[params objectForKey:@"token"]];
-//
-//            if (self.checkinView != nil) {
-//                [self.checkinView reloadCard];
-//            }
-//            return YES;
-//        }
-    } else {
+    if (!isOldScheme) {
         // from Universal Link
         if (event_id != nil && token != nil) {
-//            [[AppDelegate delegateInstance] setIsLoginSession:YES];
-//            [AppDelegate setAccessToken:[params objectForKey:@"token"]];
-//
-//            if (self.checkinView != nil) {
-//                [self.checkinView reloadCard];
-//            }
             [Constants DoLoginByEventId:event_id
-                              withToken:token];
+                              withToken:token
+                           onCompletion:^(BOOL success, id data, NSError *error) {
+                               if (!success && data != nil) {
+                               }
+                           }];
             return YES;
         }
     }
