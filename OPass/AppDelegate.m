@@ -408,8 +408,8 @@
                                                             }];
     if (!handled) {
         // non Firbase Dynamic Link
-        handled =[self parseUniversalLinkAndURL:NO
-                              WithLink:userActivity.webpageURL];
+        handled = [self parseUniversalLinkAndURL:NO
+                                        WithLink:userActivity.webpageURL];
     }
     return handled;
 }
