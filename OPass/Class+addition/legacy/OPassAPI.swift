@@ -14,6 +14,11 @@ import SwiftyJSON
 internal typealias OPassErrorCallback = (
         (_ retryCount: UInt, _ retryMax: UInt, _ error: Error, _ responsed: URLResponse?) -> Void
     )?
+internal typealias OPassCompletionCallback = (
+        (_ success: Bool, _ data: Any?, _ error: Error) -> Void
+    )
+
+let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
 
 @objc class OPassNonSuccessDataResponse: NSObject {
     @objc public var Response: HTTPURLResponse?
@@ -69,7 +74,7 @@ internal typealias OPassErrorCallback = (
         }
     }
 
-    @objc static func RedeemCode(forEvent: String, withToken: String, completion: @escaping @convention(block) (_ success: Bool, _ data: Any?, _ error: Error) -> Void) {
+    @objc static func RedeemCode(forEvent: String, withToken: String, completion: @escaping OPassCompletionCallback) {
         var event = forEvent
         if event == "" {
             event = Constants.currentEvent
@@ -101,7 +106,7 @@ internal typealias OPassErrorCallback = (
                             AppDelegate.setLoginSession(true)
                             AppDelegate.setAccessToken(token)
                             AppDelegate.delegateInstance().checkinView.reloadCard()
-                            completion(true, json, NSError(domain: "", code: 0, userInfo: nil))
+                            completion(true, json, OPassSuccessError)
                         } else {
                             completion(false, json, NSError(domain: "Opass Redeem Code Invalid", code: 3, userInfo: nil))
                         }
