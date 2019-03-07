@@ -84,7 +84,7 @@ let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
                 completion?(false, nil, error)
             }.then { (obj: Any?) -> Void in
                 if obj != nil {
-                    switch (obj! as AnyObject).className {
+                    switch String(describing: type(of: obj!)) {
                     case OPassNonSuccessDataResponse.className:
                         let sr = obj as! OPassNonSuccessDataResponse
                         let response = sr.Response!
