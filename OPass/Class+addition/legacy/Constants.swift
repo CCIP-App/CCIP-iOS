@@ -13,6 +13,7 @@ import then
 import AFNetworking
 import SwiftyJSON
 import SDWebImage
+import SafariServices
 
 @objc enum fontAwesomeStyle: Int {
     case solid
@@ -117,6 +118,23 @@ extension Constants {
     }
     @objc public static func GravatarAvatar(_ hash: String) -> String {
         return String(format: "https://www.gravatar.com/avatar/\(hash)?s=86&\(hash.count > 0 ? "r=x" : "f=y&d=mm")")
+    }
+    @objc public static func OpenInAppSafari(forPath url: String) {
+        OpenInAppSafari(forURL: URL.init(string: url)!)
+    }
+    @objc public static func OpenInAppSafari(forURL url: URL) {
+        if (SFSafariViewController.className != "") {
+            // Open in SFSafariViewController
+            let safariViewController = SFSafariViewController.init(url: url)
+            UIApplication.getMostTopPresentedViewController()!.present(safariViewController, animated: true, completion: nil)
+        } else {
+            // Open in Mobile Safari
+            UIApplication.shared.open(url, options: [:]) { (success: Bool) in
+                if success {
+                    NSLog("Failed to open url: \(String(describing: url))")
+                }
+            }
+        }
     }
     @objc static func ConfLogo() -> UIImage {
         let ig = Promise<UIImage> { resolve, reject in

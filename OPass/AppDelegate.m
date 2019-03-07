@@ -472,7 +472,8 @@
             return YES;
         }
     }
-    return NO;
+    [Constants OpenInAppSafariForURL:url];
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
