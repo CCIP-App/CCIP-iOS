@@ -16,7 +16,7 @@ internal typealias OPassErrorCallback = (
     )?
 internal typealias OPassCompletionCallback = (
         (_ success: Bool, _ data: Any?, _ error: Error) -> Void
-    )
+    )?
 
 let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
 
@@ -52,16 +52,12 @@ let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
                 let response = operation?.response as? HTTPURLResponse
                 let data = err.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] as? Data
                 if (response != nil) {
-                    if onceErrorCallback != nil {
-                        onceErrorCallback!(retryCount, maxRetry, error, response)
-                    }
+                    onceErrorCallback?(retryCount, maxRetry, error, response)
                     resolve(OPassNonSuccessDataResponse(response, data, JSON(data as Any)))
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
                         retryCount+=1
-                        if onceErrorCallback != nil {
-                            onceErrorCallback!(retryCount, maxRetry, error, response)
-                        }
+                        onceErrorCallback?(retryCount, maxRetry, error, response)
                         reject(error)
                     })
                 }
@@ -74,7 +70,7 @@ let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
         }
     }
 
-    @objc static func RedeemCode(forEvent: String, withToken: String, completion: @escaping OPassCompletionCallback) {
+    @objc static func RedeemCode(forEvent: String, withToken: String, completion: OPassCompletionCallback) {
         var event = forEvent
         if event == "" {
             event = Constants.currentEvent
@@ -85,7 +81,7 @@ let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
         let nonAllowedCharacters = allowedCharacters.inverted
         if (token.count != 0 && token.rangeOfCharacter(from: nonAllowedCharacters) == nil) {
             InitializeRequest(Constants.URL_LANDING(token: token)) { retryCount, retryMax, error, responsed in
-                completion(false, nil, error)
+                completion?(false, nil, error)
             }.then { (obj: Any?) -> Void in
                 if obj != nil {
                     switch (obj! as AnyObject).className {
@@ -94,10 +90,10 @@ let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
                         let response = sr.Response!
                         switch response.statusCode {
                         case 400:
-                            completion(false, sr, NSError(domain: "Opass Redeem Code Invalid", code: 4, userInfo: nil))
+                            completion?(false, sr, NSError(domain: "Opass Redeem Code Invalid", code: 4, userInfo: nil))
                             break
                         default:
-                            completion(false, sr, NSError(domain: "Opass Redeem Code Invalid", code: 4, userInfo: nil))
+                            completion?(false, sr, NSError(domain: "Opass Redeem Code Invalid", code: 4, userInfo: nil))
                         }
                         break
                     default:
@@ -106,31 +102,31 @@ let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
                             AppDelegate.setLoginSession(true)
                             AppDelegate.setAccessToken(token)
                             AppDelegate.delegateInstance().checkinView.reloadCard()
-                            completion(true, json, OPassSuccessError)
+                            completion?(true, json, OPassSuccessError)
                         } else {
-                            completion(false, json, NSError(domain: "Opass Redeem Code Invalid", code: 3, userInfo: nil))
+                            completion?(false, json, NSError(domain: "Opass Redeem Code Invalid", code: 3, userInfo: nil))
                         }
                     }
                 } else {
-                    completion(false, obj, NSError(domain: "Opass Redeem Code Invalid", code: 2, userInfo: nil))
+                    completion?(false, obj, NSError(domain: "Opass Redeem Code Invalid", code: 2, userInfo: nil))
                 }
             }
         } else {
-            completion(false, nil, NSError(domain: "Opass Redeem Code Invalid", code: 1, userInfo: nil))
+            completion?(false, nil, NSError(domain: "Opass Redeem Code Invalid", code: 1, userInfo: nil))
         }
     }
 
-    @objc static func GetCurrentStatus(_ completion: @escaping OPassCompletionCallback) {
+    @objc static func GetCurrentStatus(_ completion: OPassCompletionCallback) {
         let event = Constants.currentEvent
         let token = Constants.AccessToken
         if event.count > 0 && token.count > 0 {
             InitializeRequest(Constants.URL_STATUS(token: token)) { retryCount, retryMax, error, responsed in
-                completion(false, nil, error)
+                completion?(false, nil, error)
             }.then { (obj: Any?) -> Void in
-                completion(true, obj, OPassSuccessError)
+                completion?(true, obj, OPassSuccessError)
             }
         } else {
-            completion(false, nil, NSError(domain: "Opass Current Not in Event and No Valid Token", code: 1, userInfo: nil))
+            completion?(false, nil, NSError(domain: "Opass Current Not in Event and No Valid Token", code: 1, userInfo: nil))
         }
     }
 }
