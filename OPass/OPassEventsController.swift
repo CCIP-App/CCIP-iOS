@@ -27,12 +27,13 @@ class OPassEventsController : UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.progress.show(animated: true)
+        Constants.CleanupEvents()
         self.opassEvents.removeAll()
         self.eventsTable.reloadData()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Constants.GetEvents({ retryCount, retryMax, error in
+        Constants.GetEvents({ retryCount, retryMax, error, responsed in
             self.progress.label.text = "[\(retryCount)/\(retryMax)] \(error.localizedDescription)"
         }).then { (events: Array<EventShortInfo>) in
             self.opassEvents = events
@@ -51,15 +52,15 @@ class OPassEventsController : UIViewController, UITableViewDelegate, UITableView
                 self.progress.hide(animated: true)
             }.then { _ in
                 if self.firstLoad && self.opassEvents.count == 1 {
-                    self.LoadEvent(self.opassEvents.first!.EventId)
+                    let _ = self.LoadEvent(self.opassEvents.first!.EventId)
                     self.firstLoad = false
                 }
         }
     }
 
-    func LoadEvent(_ eventId: String) {
+    func LoadEvent(_ eventId: String) -> Promise<()> {
         self.progress.show(animated: true)
-        Constants.SetEvent(eventId, { retryCount, retryMax, error in
+        let e = Constants.SetEvent(eventId, { retryCount, retryMax, error, responsed in
             self.progress.label.text = "[\(retryCount)/\(retryMax)] \(error.localizedDescription)"
         }).then { (event: EventInfo) in
             self.progress.label.text = ""
@@ -68,6 +69,7 @@ class OPassEventsController : UIViewController, UITableViewDelegate, UITableView
                 self.performSegue(withIdentifier: "OPassTabView", sender: event)
             }
         }
+        return e
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -112,7 +114,7 @@ class OPassEventsController : UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! OPassEventCell
-        self.LoadEvent(cell.EventId)
+        let _ = self.LoadEvent(cell.EventId)
 //        let cell = tableView.cellForRow(at: indexPath) as! FoldingCell
 //
 //        if cell.isAnimating() {

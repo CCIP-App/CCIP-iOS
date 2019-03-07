@@ -14,7 +14,6 @@
 #define CC_STATUS(token)        ([__API_HOST__ stringByAppendingFormat:@"/status?token=%@", token])
 #define CC_USE(token, scenario) ([__API_HOST__ stringByAppendingFormat:@"/use/%@?token=%@", scenario, token])
 #define CC_ANNOUNCEMENT         ([__API_HOST__ stringByAppendingFormat:@"/announcement"])
-#define CC_LANDING(token)       ([__API_HOST__ stringByAppendingFormat:@"/landing?token=%@", token])
 
 #define WEB_TOKEN(url, token)   ([NSString stringWithFormat:url, token])
 

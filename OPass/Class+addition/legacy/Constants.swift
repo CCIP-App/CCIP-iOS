@@ -82,6 +82,9 @@ extension Constants {
     @objc public static var URL_SERVER_BASE: String {
         return eventInfo?.ServerBaseUrl.absoluteString ?? ""
     }
+    @objc public static func URL_LANDING(token: String) -> String {
+        return URL_SERVER_BASE.appending("/landing?token=\(token)")
+    }
     @objc public static var URL_LOG_BOT: String {
         return eventInfo?.Features.IRC!.absoluteString ?? ""
     };
@@ -172,30 +175,8 @@ extension Constants {
         let format = String.init(format: "%@ %@", AppDelegate.appConfig("DisplayDateFormat") as! String, AppDelegate.appConfig("DisplayTimeFormat") as! String)
         return DateInRegion(date, region: local).toFormat(format)
     }
-    static func InitializeRequest(_ url: String, _ onceErrorCallback: @escaping (_ retryCount: UInt, _ retryMax: UInt, _ error: Error) -> Void) -> Promise<Any> {
-        let maxRetry: UInt = 10
-        var retryCount: UInt = 0
-        return Promise<Any> { resolve, reject in
-            let manager = AFHTTPSessionManager.init()
-            manager.requestSerializer.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-            manager.requestSerializer.timeoutInterval = 5
-            manager.get(url, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
-                NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any)!)")
-                if (responseObject != nil) {
-                    resolve(responseObject!)
-                }
-            }) { (operation: URLSessionDataTask?, error: Error) in
-                NSLog("Error: \(error)")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
-                    retryCount+=1
-                    onceErrorCallback(retryCount, maxRetry, error)
-                    reject(error)
-                })
-            }
-        }.retry(maxRetry)
-    }
-    static func GetEvents(_ onceErrorCallback: @escaping (_ retryCount: UInt, _ retryMax: UInt, _ error: Error) -> Void) -> Promise<Array<EventShortInfo>> {
-        return InitializeRequest("https://portal.opass.app/events/", onceErrorCallback)
+    static func GetEvents(_ onceErrorCallback: OPassErrorCallback) -> Promise<Array<EventShortInfo>> {
+        return OPassAPI.InitializeRequest("https://portal.opass.app/events/", onceErrorCallback)
             .then({ (infoObj: Any) -> Array<EventShortInfo> in
                 let info = JSON(infoObj).arrayValue
                 var infos = Array<EventShortInfo>()
@@ -212,8 +193,8 @@ extension Constants {
                 return infos
             })
     }
-    static func SetEvent(_ eventId: String, _ onceErrorCallback: @escaping (_ retryCount: UInt, _ retryMax: UInt, _ error: Error) -> Void) -> Promise<EventInfo> {
-        return InitializeRequest("https://portal.opass.app/events/\(eventId)/", onceErrorCallback)
+    static func SetEvent(_ eventId: String, _ onceErrorCallback: OPassErrorCallback) -> Promise<EventInfo> {
+        return OPassAPI.InitializeRequest("https://portal.opass.app/events/\(eventId)/", onceErrorCallback)
             .then { (infoObj: Any) -> EventInfo in
                 let info = JSON(infoObj)
                 let eventId = info["event_id"].stringValue
@@ -252,6 +233,49 @@ extension Constants {
                 eventInfo = EventInfo(EventId: eventId, DisplayName: displayName, LogoUrl: logoUrl, Publish: publish, ServerBaseUrl: serverUrl, ScheduleUrl: scheduleUrl, Features: features, CustomFeatures: customFeatures)
                 currentEvent = JSONSerialization.stringify(infoObj as Any)!
                 return eventInfo!
+        }
+    }
+    @objc static func CleanupEvents() {
+        eventInfo = nil
+        currentEvent = ""
+    }
+    @objc static func DoLogin(byEventId eventId: String, withToken token: String) {
+        async {
+            while true {
+                var vc: UIViewController? = nil
+                DispatchQueue.main.sync {
+                    vc = UIApplication.getMostTopPresentedViewController()!
+                }
+                let vcName = vc!.className
+                var done = false
+                try? await(Promise{ resolve, reject in
+                    switch vcName {
+                    case OPassEventsController.className:
+                        DispatchQueue.main.sync {
+                            AppDelegate.setLoginSession(false)
+                            AppDelegate.setAccessToken("")
+                        }
+                        done = true
+                        resolve()
+                        break
+                    default:
+                        DispatchQueue.main.async {
+                            vc!.dismiss(animated: true, completion: {
+                                resolve()
+                            })
+                        }
+                    }
+                })
+                if done {
+                    break
+                }
+            }
+            DispatchQueue.main.sync {
+                let opec = UIApplication.getMostTopPresentedViewController() as! OPassEventsController
+                opec.LoadEvent(eventId).then { _ in
+                    OPassAPI.RedeemCode(forEvent: eventId, withToken: token) {_,_,_  in }
+                }
+            }
         }
     }
 }

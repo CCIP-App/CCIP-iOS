@@ -158,51 +158,16 @@
 }
 
 - (IBAction)redeemCode:(id)sender {
-    NSString *code = [self.redeemCodeText text];
-    code = [code stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    NSMutableCharacterSet *allowedCharacters = [NSMutableCharacterSet characterSetWithCharactersInString:@"-_"];
-    [allowedCharacters formUnionWithCharacterSet:[NSCharacterSet alphanumericCharacterSet]];
-    NSCharacterSet *nonAllowedCharacters = [allowedCharacters invertedSet];
-    if ([code length] > 0 && [code rangeOfCharacterFromSet:nonAllowedCharacters].location == NSNotFound) {
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        
-        NSURL *URL = [NSURL URLWithString:CC_LANDING(code)];
-        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-        
-        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-            NSLog(@"Response: %@", response);
-            if (!error) {
-                NSLog(@"Json: %@", responseObject);
-                if (responseObject != nil) {
-                    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:responseObject];
-                    
-                    if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
-                        [AppDelegate setLoginSession:YES];
-                        [AppDelegate setAccessToken:code];
-                        [[AppDelegate delegateInstance].checkinView reloadCard];
-                        [self dismissViewControllerAnimated:YES
-                                                 completion:nil];
-                    }
-                }
-            } else {
-                NSLog(@"Error: %@", error);
-                long statusCode = [(NSHTTPURLResponse *)response statusCode];
-                switch (statusCode) {
-                    case 400:
-                        if ([responseObject objectForKey:@"message"] && [[responseObject objectForKey:@"message"] isEqualToString:@"invalid token"]) {
-                            [self showAlert];
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }];
-        [dataTask resume];
-    } else {
-        [self showAlert];
-    }
+    [OPassAPI RedeemCodeForEvent:@""
+                       withToken:[self.redeemCodeText text]
+                      completion:^(BOOL success, id obj, NSError *error) {
+                          if (success) {
+                              [self dismissViewControllerAnimated:YES
+                                                       completion:nil];
+                          } else {
+                              [self showAlert];
+                          }
+                      }];
 }
 
 - (void)showAlert {

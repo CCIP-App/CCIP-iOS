@@ -462,56 +462,29 @@
     NSLog(@"scanned %@ barcode: %@", code.symbologyName, code.data);
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        
-        NSURL *URL = [NSURL URLWithString:CC_LANDING(code.data)];
-        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-        
-        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-            NSLog(@"Response: %@", response);
-            if (!error) {
-                NSLog(@"Json: %@", responseObject);
-                if (responseObject != nil) {
-                    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:responseObject];
-                    
-                    if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
-                        [AppDelegate setLoginSession:YES];
-                        [AppDelegate setAccessToken:code.data];
-                        [self performSelector:@selector(reloadCard)
-                                   withObject:nil
-                                   afterDelay:0.5f];
-                        [self performSelector:@selector(closeBarcodePickerOverlay)
-                                   withObject:nil
-                                   afterDelay:0.5f];
-                    }
-                }
-            } else {
-                NSLog(@"Error: %@", error);
-                long statusCode = [(NSHTTPURLResponse *)response statusCode];
-                switch (statusCode) {
-                    case 400: {
-                        if (responseObject != nil) {
-                            if ([responseObject objectForKey:@"message"] && [[responseObject objectForKey:@"message"] isEqualToString:@"invalid token"]) {
-                                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
-                                                                            withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
-                                                                       cancelButtonText:NSLocalizedString(@"GotIt", nil)
-                                                                            cancelStyle:UIAlertActionStyleCancel
-                                                                           cancelAction:^(UIAlertAction *action) {
-                                                                               [self.scanditBarcodePicker resumeScanning];
-                                                                           }];
-                                [ac showAlert:^{
-                                    [AppDelegate triggerFeedback:NotificationFeedbackError];
-                                }];
-                            }
-                        }
-                        break;
-                    }
-                    default:
-                        break;
-                }
-            }
-        }];
-        [dataTask resume];
+        [OPassAPI RedeemCodeForEvent:@""
+                           withToken:code.data
+                          completion:^(BOOL success, id obj, NSError *error) {
+                              if (success) {
+                                  [self performSelector:@selector(reloadCard)
+                                             withObject:nil
+                                             afterDelay:0.5f];
+                                  [self performSelector:@selector(closeBarcodePickerOverlay)
+                                             withObject:nil
+                                             afterDelay:0.5f];
+                              } else {
+                                  UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
+                                                                              withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
+                                                                         cancelButtonText:NSLocalizedString(@"GotIt", nil)
+                                                                              cancelStyle:UIAlertActionStyleCancel
+                                                                             cancelAction:^(UIAlertAction *action) {
+                                                                                 [self.scanditBarcodePicker resumeScanning];
+                                                                             }];
+                                  [ac showAlert:^{
+                                      [AppDelegate triggerFeedback:NotificationFeedbackError];
+                                  }];
+                              }
+                          }];
     }];
 }
 
@@ -680,66 +653,33 @@
         
         __block UIAlertController *ac;
         if (result != nil) {
-            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-            
-            NSURL *URL = [NSURL URLWithString:CC_LANDING(result)];
-            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-            
-            NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-                NSLog(@"Response: %@", response);
-                if (!error) {
-                    NSLog(@"Json: %@", responseObject);
-                    if (responseObject != nil) {
-                        NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:responseObject];
-                        
-                        if ([userInfo objectForKey:@"nickname"] && ![[userInfo objectForKey:@"nickname"] isEqualToString:@""]) {
-                            [AppDelegate setLoginSession:YES];
-                            [AppDelegate setAccessToken:result];
-                            [picker dismissViewControllerAnimated:YES completion:^{
-                                [self reloadCard];
-                            }];
-                        }
-                    }
-                } else {
-                    NSLog(@"Error: %@", error);
-                    long statusCode = [(NSHTTPURLResponse *)response statusCode];
-                    switch (statusCode) {
-                        case 400: {
-                            if (responseObject != nil) {
-                                if ([responseObject objectForKey:@"message"] && [[responseObject objectForKey:@"message"] isEqualToString:@"invalid token"]) {
-                                    ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
-                                                             withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
-                                                        cancelButtonText:NSLocalizedString(@"GotIt", nil)
-                                                             cancelStyle:UIAlertActionStyleCancel
-                                                            cancelAction:nil];
-                                    [picker dismissViewControllerAnimated:YES
-                                                               completion:^{
-                                                                   [ac showAlert:^{
-                                                                       [AppDelegate triggerFeedback:NotificationFeedbackError];
-                                                                   }];
-                                                               }];
-                                }
-                            }
-                            break;
-                        }
-                        default:
-                            break;
-                    }
-                }
-            }];
-            [dataTask resume];
+            [OPassAPI RedeemCodeForEvent:@""
+                               withToken:result
+                              completion:^(BOOL success, id obj, NSError *error) {
+                                  if (success) {
+                                      [picker dismissViewControllerAnimated:YES completion:^{
+                                          // [self reloadCard];
+                                      }];
+                                  } else {
+                                      ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
+                                                               withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
+                                                          cancelButtonText:NSLocalizedString(@"GotIt", nil)
+                                                               cancelStyle:UIAlertActionStyleCancel
+                                                              cancelAction:nil];
+                                      [ac showAlert:^{
+                                          [AppDelegate triggerFeedback:NotificationFeedbackError];
+                                      }];
+                                  }
+                              }];
         } else {
             ac = [UIAlertController alertOfTitle:NSLocalizedString(@"QRFileNotAvailableTitle", nil)
                                      withMessage:NSLocalizedString(@"QRFileNotAvailableDesc", nil)
                                 cancelButtonText:NSLocalizedString(@"GotIt", nil)
                                      cancelStyle:UIAlertActionStyleCancel
                                     cancelAction:nil];
-            [picker dismissViewControllerAnimated:YES
-                                       completion:^{
-                                           [ac showAlert:^{
-                                               [AppDelegate triggerFeedback:NotificationFeedbackError];
-                                           }];
-                                       }];
+            [ac showAlert:^{
+                [AppDelegate triggerFeedback:NotificationFeedbackError];
+            }];
         }
     }
 }

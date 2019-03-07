@@ -406,6 +406,11 @@
                                                                 [self parseUniversalLinkAndURL:NO
                                                                                       WithLink:[dynamicLink url]];
                                                             }];
+    if (!handled) {
+        // non Firbase Dynamic Link
+        handled =[self parseUniversalLinkAndURL:NO
+                              WithLink:userActivity.webpageURL];
+    }
     return handled;
 }
 
@@ -419,7 +424,7 @@
     return [NSDictionary dictionaryWithDictionary:params];
 }
 
-- (void)parseUniversalLinkAndURL:(bool)isOldScheme WithLink:(id)link {
+- (bool)parseUniversalLinkAndURL:(bool)isOldScheme WithLink:(id)link {
     NSURL *url;
     if ([link isKindOfClass:[NSString class]]) {
         url = [NSURL URLWithString:link];
@@ -427,33 +432,41 @@
         url = link;
     } else {
         NSLog(@"Failling from: %@", url);
-        return;
+        return NO;
     }
     NSLog(@"Calling from: %@", url);
-    NSString *urlHost = [url host];
+//    NSString *urlHost = [url host];
     NSString *urlQuery = [url query];
     NSDictionary *params = [urlQuery length] > 0 ? [self parseQuery:urlQuery] : @{};
+    id event_id = [params objectForKey:@"event_id"];
+    id token = [params objectForKey:@"token"];
     if (isOldScheme) {
         // from old scheme
-        if ([urlHost isEqualToString:@"login"] && [params objectForKey:@"token"] != nil) {
-            [[AppDelegate delegateInstance] setIsLoginSession:YES];
-            [AppDelegate setAccessToken:[params objectForKey:@"token"]];
-            
-            if (self.checkinView != nil) {
-                [self.checkinView reloadCard];
-            }
-        }
+        // abendon old scheme
+//        if ([urlHost isEqualToString:@"login"] && [params objectForKey:@"token"] != nil) {
+//            [[AppDelegate delegateInstance] setIsLoginSession:YES];
+//            [AppDelegate setAccessToken:[params objectForKey:@"token"]];
+//
+//            if (self.checkinView != nil) {
+//                [self.checkinView reloadCard];
+//            }
+//            return YES;
+//        }
     } else {
         // from Universal Link
-        if ([params objectForKey:@"token"] != nil) {
-            [[AppDelegate delegateInstance] setIsLoginSession:YES];
-            [AppDelegate setAccessToken:[params objectForKey:@"token"]];
-            
-            if (self.checkinView != nil) {
-                [self.checkinView reloadCard];
-            }
+        if (event_id != nil && token != nil) {
+//            [[AppDelegate delegateInstance] setIsLoginSession:YES];
+//            [AppDelegate setAccessToken:[params objectForKey:@"token"]];
+//
+//            if (self.checkinView != nil) {
+//                [self.checkinView reloadCard];
+//            }
+            [Constants DoLoginByEventId:event_id
+                              withToken:token];
+            return YES;
         }
     }
+    return NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
