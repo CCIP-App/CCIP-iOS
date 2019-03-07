@@ -441,12 +441,20 @@
     id event_id = [params objectForKey:@"event_id"];
     id token = [params objectForKey:@"token"];
     if (!isOldScheme) {
+        UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"GuideViewTokenErrorTitle", nil)
+                                                    withMessage:NSLocalizedString(@"GuideViewTokenErrorDesc", nil)
+                                               cancelButtonText:NSLocalizedString(@"GotIt", nil)
+                                                    cancelStyle:UIAlertActionStyleCancel
+                                                   cancelAction:nil];
         // from Universal Link
         if (event_id != nil && token != nil) {
             [Constants DoLoginByEventId:event_id
                               withToken:token
                            onCompletion:^(BOOL success, id data, NSError *error) {
                                if (!success && data != nil) {
+                                   [ac showAlert:^{
+                                       [AppDelegate triggerFeedback:NotificationFeedbackError];
+                                   }];
                                }
                            }];
             return YES;
@@ -456,6 +464,9 @@
                                withToken:token
                               completion:^(BOOL success, id data, NSError *error) {
                                   if (!success && data != nil) {
+                                      [ac showAlert:^{
+                                          [AppDelegate triggerFeedback:NotificationFeedbackError];
+                                      }];
                                   }
                               }];
             return YES;
