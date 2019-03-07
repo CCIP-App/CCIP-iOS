@@ -136,19 +136,7 @@ class AcknowledgementsViewController : UIViewController {
     }
 
     @IBAction func openGithubRepo() {
-        let url = URL.init(string: self.githubRepoLink!)
-        if (SFSafariViewController.className != "") {
-            // Open in SFSafariViewController
-            let safariViewController = SFSafariViewController.init(url: url!)
-            self.present(safariViewController, animated: true, completion: nil)
-        } else {
-            // Open in Mobile Safari
-            UIApplication.shared.open(url!, options: [:]) { (success: Bool) in
-                if success {
-                    NSLog("Failed to open url: \(String(describing: url))")
-                }
-            }
-        }
+        Constants.OpenInAppSafari(forPath: self.githubRepoLink!)
     }
 
     override func viewDidLoad() {

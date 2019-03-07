@@ -234,16 +234,7 @@
     
     NSURL *url = [NSURL URLWithString:uri];
     
-    if ([SFSafariViewController class] != nil) {
-        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
-        [[UIApplication getMostTopPresentedViewController] presentViewController:safariViewController animated:YES completion:nil];
-    } else {
-        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
-            if (!success) {
-                NSLog(@"%@%@",@"Failed to open url:", [url description]);
-            }
-        }];
-    }
+    [Constants OpenInAppSafariForURL:url];
     
     SEND_FIB_EVENT(@"AnnounceTableView", @{@"URL": uri});
 }

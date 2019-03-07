@@ -123,14 +123,22 @@ extension Constants {
         OpenInAppSafari(forURL: URL.init(string: url)!)
     }
     @objc public static func OpenInAppSafari(forURL url: URL) {
-        if (SFSafariViewController.className != "") {
+        if (SFSafariViewController.className != "" && (url.scheme?.contains("http"))!) {
             // Open in SFSafariViewController
             let safariViewController = SFSafariViewController.init(url: url)
+
+            // SFSafariViewController Toolbar TintColor
+            // [safariViewController.view setTintColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
+            // or http://stackoverflow.com/a/35524808/1751900
+
+            // ProgressBar Color Not Found
+            // ...
+
             UIApplication.getMostTopPresentedViewController()!.present(safariViewController, animated: true, completion: nil)
         } else {
             // Open in Mobile Safari
             UIApplication.shared.open(url, options: [:]) { (success: Bool) in
-                if success {
+                if !success {
                     NSLog("Failed to open url: \(String(describing: url))")
                 }
             }

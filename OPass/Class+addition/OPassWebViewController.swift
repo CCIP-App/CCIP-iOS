@@ -48,7 +48,7 @@ extension OPassWebViewIB { // for all of optional properties and func used in OP
     var ShowLogo : Bool { return false }
 }
 
-class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDelegate, SFSafariViewControllerDelegate {
+class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDelegate {
     /* fake dummy obj */ private var goReloadButton: UIBarButtonItem? = nil;
     /* fake dummy obj */ private var goBackButton: UIBarButtonItem? = nil;
     /* fake dummy obj */ private var goForwardButton: UIBarButtonItem? = nil;
@@ -225,27 +225,7 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
                 decisionHandler(.allow);
                 return;
             } else {
-                if ((NSClassFromString("SFSafariViewController")) != nil && (url?.scheme?.contains("http"))!) {
-                    // Open in SFSafariViewController
-                    let safariViewController = SFSafariViewController.init(url: url!);
-                    safariViewController.delegate = self;
-                    
-                    // SFSafariViewController Toolbar TintColor
-                    // [safariViewController.view setTintColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
-                    // or http://stackoverflow.com/a/35524808/1751900
-                    
-                    // ProgressBar Color Not Found
-                    // ...
-                    
-                    UIApplication.getMostTopPresentedViewController()?.present(safariViewController, animated: true, completion: nil);
-                } else {
-                    // Open in Mobile Safari
-                    UIApplication.shared.open(url!, options: [:], completionHandler: { success in
-                        if !success {
-                            print("Failed to open url:\(url!.description)")
-                        }
-                    });
-                }
+                Constants.OpenInAppSafari(forURL: url!)
                 decisionHandler(.cancel);
                 return;
             }
@@ -263,9 +243,5 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
             // Make sure to call the superclass's implementation in the else block in case it is also implementing KVO
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context);
         }
-    }
-    
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        // Called when the user taps the Done button to dismiss the Safari view.
     }
 }

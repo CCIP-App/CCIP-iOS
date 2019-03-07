@@ -303,11 +303,15 @@
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     FIRDynamicLink *dynamicLink = [[FIRDynamicLinks dynamicLinks] dynamicLinkFromCustomSchemeURL:url];
     if (dynamicLink) {
-        if (url != nil) {
-            [self parseUniversalLinkAndURL:YES
-                                  WithLink:url];
+        if (dynamicLink.url != nil) {
+            return [self parseUniversalLinkAndURL:YES
+                                         WithLink:dynamicLink.url];
         }
-        return YES;
+    } else {
+        if (url != nil) {
+            return [self parseUniversalLinkAndURL:YES
+                                         WithLink:url];
+        }
     }
     return NO;
 }

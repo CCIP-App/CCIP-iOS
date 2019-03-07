@@ -6,7 +6,6 @@
 #import "CPDContribution.h"
 #import "CPDContributionDetailViewController.h"
 #import "CPDStyle.h"
-#import <SafariServices/SFSafariViewController.h>
 
 @interface CPDAcknowledgementsViewController () <UITableViewDelegate>
 @property (nonatomic, strong) CPDTableViewDataSource *dataSource;
@@ -90,24 +89,14 @@
         CPDContribution *contribution = acknowledgement;
         if (contribution.websiteAddress){
 //            detailController = [[CPDContributionDetailViewController alloc] initWithContribution:contribution];
-            if ([SFSafariViewController class] != nil) {
-                // Open in SFSafariViewController
-                SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:contribution.websiteAddress]];
-                [safariViewController setDelegate:self];
-                
-                // SFSafariViewController Toolbar TintColor
-                // [safariViewController.view setTintColor:[UIColor colorWithRed:61/255.0 green:152/255.0 blue:60/255.0 alpha:1]];
-                // or http://stackoverflow.com/a/35524808/1751900
-                
-                // ProgressBar Color Not Found
-                // ...
-                
-                UIViewController *vc = [[[UIApplication sharedApplication] keyWindow] rootViewController];
-                while ([vc presentedViewController])
-                vc = [vc presentedViewController];
-                [vc presentViewController:safariViewController
-                                 animated:YES
-                               completion:nil];
+            if (@available(iOS 9.0, *)) {
+                UIApplication *app = [UIApplication sharedApplication];
+                [[app delegate] application:app
+                                    openURL:[NSURL URLWithString:contribution.websiteAddress]
+                                    options:@{}];
+            } else {
+                // Fallback on earlier versions
+                // no-op
             }
             return;
         }
