@@ -136,6 +136,14 @@
     [self closeBarcodePickerOverlay];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    self.scenarios = @[];
+    [[AppDelegate delegateInstance] setScenarios:self.scenarios];
+    [self.cards reloadData];
+    [self.lbUserName setText:@""];
+}
+
 - (void)appplicationDidBecomeActive:(NSNotification *)notification {
     [self reloadCard];
 }
