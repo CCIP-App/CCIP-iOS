@@ -328,85 +328,68 @@
             [self reloadAndGoToCard];
         }
     } else {
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        
-        NSURL *URL = [NSURL URLWithString:CC_STATUS([AppDelegate accessToken])];
-        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-            NSLog(@"Response: %@", response);
-            if (!error) {
-                NSLog(@"Json: %@", responseObject);
-                if (responseObject != nil) {
-                    [self hideGuideView:nil];
-                    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:responseObject];
-                    [userInfo removeObjectForKey:@"scenarios"];
-                    self.userInfo = [NSDictionary dictionaryWithDictionary:userInfo];
-                    self.scenarios = [responseObject objectForKey:@"scenarios"];
-                    [self.lbHi setHidden:![AppDelegate haveAccessToken]];
-                    [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
-                    [self.lbUserName setHidden:![AppDelegate haveAccessToken]];
-                    [self.lbUserName setText:[self.userInfo objectForKey:@"user_id"]];
-                    NSMutableDictionary *userTags = [NSMutableDictionary dictionaryWithDictionary:self.userInfo];
-                    [userTags removeObjectsForKeys:@[
-                                                     @"_id",
-                                                     @"first_use",
-                                                     @"attr" // wait for cleanup
-                                                     ]];
-                    [AppDelegate sendTags:[NSDictionary dictionaryWithDictionary:userTags]];
-                    if ([AppDelegate delegateInstance].isLoginSession) {
-                        [[AppDelegate delegateInstance] displayGreetingsForLogin];
-                    }
-                    [[AppDelegate delegateInstance] setScenarios:self.scenarios];
-                    [self reloadAndGoToCard];
+        [OPassAPI GetCurrentStatus:^(BOOL success, id obj, NSError *error) {
+            if (success) {
+                [self hideGuideView:nil];
+                NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:obj];
+                [userInfo removeObjectForKey:@"scenarios"];
+                self.userInfo = [NSDictionary dictionaryWithDictionary:userInfo];
+                self.scenarios = [obj objectForKey:@"scenarios"];
+                [self.lbHi setHidden:![AppDelegate haveAccessToken]];
+                [self.ivUserPhoto setHidden:![AppDelegate haveAccessToken]];
+                [self.lbUserName setHidden:![AppDelegate haveAccessToken]];
+                [self.lbUserName setText:[self.userInfo objectForKey:@"user_id"]];
+                NSMutableDictionary *userTags = [NSMutableDictionary dictionaryWithDictionary:self.userInfo];
+                [userTags removeObjectsForKeys:@[
+                                                 @"_id",
+                                                 @"first_use",
+                                                 @"attr" // wait for cleanup
+                                                 ]];
+                [AppDelegate sendTags:[NSDictionary dictionaryWithDictionary:userTags]];
+                if ([AppDelegate delegateInstance].isLoginSession) {
+                    [[AppDelegate delegateInstance] displayGreetingsForLogin];
                 }
+                [[AppDelegate delegateInstance] setScenarios:self.scenarios];
+                [self reloadAndGoToCard];
             } else {
-                NSLog(@"Error: %@", error);
-                long statusCode = [(NSHTTPURLResponse *)response statusCode];
-                switch (statusCode) {
-                    case 400: {
-                        if (responseObject != nil) {
-                            if ([[responseObject objectForKey:@"message"] isEqual:@"invalid token"]) {
-                                NSLog(@"%@", [responseObject objectForKey:@"message"]);
-                                
-                                [AppDelegate setAccessToken:@""];
-                                
-                                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"InvalidTokenAlert", nil)
-                                                                            withMessage:NSLocalizedString(@"InvalidTokenDesc", nil)
-                                                                       cancelButtonText:NSLocalizedString(@"GotIt", nil)
-                                                                            cancelStyle:UIAlertActionStyleCancel
-                                                                           cancelAction:^(UIAlertAction *action) {
-                                                                               [self reloadCard];
-                                                                           }];
-                                [ac showAlert:^{
-                                    [AppDelegate triggerFeedback:NotificationFeedbackError];
-                                }];
+                OPassNonSuccessDataResponse *sr = (OPassNonSuccessDataResponse *)obj;
+                id responseObject = sr.Obj;
+                switch (sr.Response.statusCode) {
+                        case 400: {
+                            if (responseObject != nil) {
+                                if ([[responseObject objectForKey:@"message"] isEqual:@"invalid token"]) {
+                                    NSLog(@"%@", [responseObject objectForKey:@"message"]);
+
+                                    [AppDelegate setAccessToken:@""];
+
+                                    UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"InvalidTokenAlert", nil)
+                                                                                withMessage:NSLocalizedString(@"InvalidTokenDesc", nil)
+                                                                           cancelButtonText:NSLocalizedString(@"GotIt", nil)
+                                                                                cancelStyle:UIAlertActionStyleCancel
+                                                                               cancelAction:^(UIAlertAction *action) {
+                                                                                   [self reloadCard];
+                                                                               }];
+                                    [ac showAlert:^{
+                                        [AppDelegate triggerFeedback:NotificationFeedbackError];
+                                    }];
+                                }
                             }
+                            break;
                         }
-                        break;
-                    }
-                    case 403: {
-                        [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg"
-                                                  sender:NSLocalizedString(@"Networking_WrongWiFi", nil)];
-                        break;
-                    }
+                        case 403: {
+                            [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg"
+                                                      sender:NSLocalizedString(@"Networking_WrongWiFi", nil)];
+                            break;
+                        }
                     default: {
                         // Invalid Network
                         [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg"
                                                   sender:NSLocalizedString(@"Networking_Broken", nil)];
-//                        UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil)
-//                                                                    withMessage:NSLocalizedString(@"NetworkAlertDesc", nil)
-//                                                               cancelButtonText:NSLocalizedString(@"GotIt", nil)
-//                                                                    cancelStyle:UIAlertActionStyleCancel
-//                                                                   cancelAction:nil];
-//                        [ac showAlert:^{
-//                            [AppDelegate triggerFeedback:NotificationFeedbackError];
-//                        }];
                         break;
                     }
                 }
             }
         }];
-        [dataTask resume];
     }
 }
 

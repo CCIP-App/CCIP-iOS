@@ -85,6 +85,9 @@ extension Constants {
     @objc public static func URL_LANDING(token: String) -> String {
         return URL_SERVER_BASE.appending("/landing?token=\(token)")
     }
+    @objc public static func URL_STATUS(token: String) -> String {
+        return URL_SERVER_BASE.appending("/status?token=\(token)")
+    }
     @objc public static var URL_LOG_BOT: String {
         return eventInfo?.Features.IRC!.absoluteString ?? ""
     };

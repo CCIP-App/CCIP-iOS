@@ -119,4 +119,18 @@ let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
             completion(false, nil, NSError(domain: "Opass Redeem Code Invalid", code: 1, userInfo: nil))
         }
     }
+
+    @objc static func GetCurrentStatus(_ completion: @escaping OPassCompletionCallback) {
+        let event = Constants.currentEvent
+        let token = Constants.AccessToken
+        if event.count > 0 && token.count > 0 {
+            InitializeRequest(Constants.URL_STATUS(token: token)) { retryCount, retryMax, error, responsed in
+                completion(false, nil, error)
+            }.then { (obj: Any?) -> Void in
+                completion(true, obj, OPassSuccessError)
+            }
+        } else {
+            completion(false, nil, NSError(domain: "Opass Current Not in Event and No Valid Token", code: 1, userInfo: nil))
+        }
+    }
 }
