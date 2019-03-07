@@ -210,10 +210,10 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
             self.goReloadButton!.isEnabled = forceEnabled ?? !(self.webView?.isLoading)!;
         }
         if (self.goBackButton != nil) {
-            self.goBackButton!.isEnabled = forceEnabled ?? (self.webView?.canGoForward)!;
+            self.goBackButton!.isEnabled = forceEnabled ?? (self.webView?.canGoBack)!;
         }
         if (self.goForwardButton != nil) {
-            self.goForwardButton!.isEnabled = forceEnabled ?? (self.webView?.canGoBack)!;
+            self.goForwardButton!.isEnabled = forceEnabled ?? (self.webView?.canGoForward)!;
         }
     }
     
