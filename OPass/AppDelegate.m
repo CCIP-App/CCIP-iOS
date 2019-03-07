@@ -451,6 +451,15 @@
                            }];
             return YES;
         }
+        if (event_id == nil && token != nil && [Constants HasSetEvent]) {
+            [OPassAPI RedeemCodeForEvent:@""
+                               withToken:token
+                              completion:^(BOOL success, id data, NSError *error) {
+                                  if (!success && data != nil) {
+                                  }
+                              }];
+            return YES;
+        }
     }
     return NO;
 }
