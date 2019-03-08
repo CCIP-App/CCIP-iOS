@@ -99,17 +99,10 @@
     NSString *shortLangUI = [AppDelegate shortLangUI];
     NSDictionary *currentLangObject = [self.detailData objectForKey:shortLangUI];
 
-    NSDateFormatter *formatter_full = nil;
-    formatter_full = [NSDateFormatter new];
-    [formatter_full setDateFormat:[AppDelegate AppConfig:@"DateTimeFormat"]];
-    NSDateFormatter *formatter_date = nil;
-    formatter_date = [NSDateFormatter new];
-    [formatter_date setDateFormat:[AppDelegate AppConfig:@"DisplayTimeFormat"]];
-    [formatter_date setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Taipei"]];
-    NSDate *startTime = [formatter_full dateFromString:[data objectForKey:@"start"]];
-    NSDate *endTime = [formatter_full dateFromString:[data objectForKey:@"end"]];
-    NSString *startTimeString = [formatter_date stringFromDate:startTime];
-    NSString *endTimeString = [formatter_date stringFromDate:endTime];
+    NSDate *startTime = [Constants DateFromString:[data objectForKey:@"start"]];
+    NSDate *endTime = [Constants DateFromString:[data objectForKey:@"end"]];
+    NSString *startTimeString = [Constants DateToDisplayTimeString:startTime];
+    NSString *endTimeString = [Constants DateToDisplayTimeString:endTime];
     NSString *timeRange = [NSString stringWithFormat:@"%@ - %@", startTimeString, endTimeString];
     NSString *type = [Constants GetScheduleTypeName:[data objectForKey:@"type"]];
     [self.lbSpeaker setHidden:[self.speakers count] == 0];
