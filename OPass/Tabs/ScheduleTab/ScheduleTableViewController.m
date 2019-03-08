@@ -155,7 +155,7 @@
     NSDictionary *favProgram = @{};
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSObject *favObj = [userDefault valueForKey:FAV_KEY];
-    NSArray *favoriteArray = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:favObj] : favObj;
+    NSArray *favoriteArray = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)favObj] : favObj;
     NSMutableArray *favorites = [NSMutableArray arrayWithArray:favoriteArray];
     for (NSDate *time in self.programTimes) {
         NSString *timeString = [Constants DateToDisplayTimeString:time];
@@ -186,7 +186,7 @@
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     // ugly convension for crash prevent
     NSObject *favObj = [userDefault valueForKey:FAV_KEY];
-    NSArray *favorites = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:favObj] : favObj;
+    NSArray *favorites = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)favObj] : favObj;
     for (NSDictionary *program in favorites) {
         if ([[self getID:program] isEqualToString:scheduleId]) {
             return YES;

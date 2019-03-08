@@ -44,7 +44,7 @@
     
     // ugly convension for crash prevent
     NSObject *programsObj = [userDefault objectForKey:SCHEDULE_CACHE_KEY];
-    NSArray *programsData = [programsObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:programsObj] : programsObj;
+    NSArray *programsData = [programsObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)programsObj] : programsObj;
     self.programs = programsData;
     if (self.programs != nil) {
         [self setScheduleDate];
@@ -89,7 +89,7 @@
         NSLog(@"Error: %@", error);
         // ugly convension for crash prevent
         NSObject *programsObj = [userDefault objectForKey:SCHEDULE_CACHE_KEY];
-        NSArray *programsData = [programsObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:programsObj] : programsObj;
+        NSArray *programsData = [programsObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)programsObj] : programsObj;
         self.programs = programsData;
         if (self.programs != nil) {
             [self setScheduleDate];
