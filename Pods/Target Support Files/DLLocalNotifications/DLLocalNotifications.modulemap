@@ -1,0 +1,6 @@
+framework module DLLocalNotifications {
+  umbrella header "DLLocalNotifications-umbrella.h"
+
+  export *
+  module * { export * }
+}

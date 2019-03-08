@@ -19,6 +19,7 @@ PODS:
   - Collection (1.10.15)
   - ColorArt (0.1.1)
   - CPDAcknowledgements (1.0.0)
+  - DLLocalNotifications (0.07)
   - Down (0.6.2)
   - EFQRCode (4.5.0):
     - swift_qrcodejs (~> 1.0.1)
@@ -112,6 +113,7 @@ DEPENDENCIES:
   - Collection
   - ColorArt (= 0.1.1)
   - CPDAcknowledgements (~> 1.0)
+  - DLLocalNotifications
   - Down
   - EFQRCode (~> 4.5)
   - Firebase/Core
@@ -143,6 +145,7 @@ SPEC REPOS:
     - Collection
     - ColorArt
     - CPDAcknowledgements
+    - DLLocalNotifications
     - Down
     - EFQRCode
     - Firebase
@@ -194,6 +197,7 @@ SPEC CHECKSUMS:
   Collection: d553b4bdd882fa2aebbe136a981dd072eaf8e953
   ColorArt: de0ffb63da4acdde8e234ded62e200236ca3e7e4
   CPDAcknowledgements: 6e15e71849ba4ad5e8a17a0bb9d20938ad23bac8
+  DLLocalNotifications: 5d358a73284efab757b4a4c07f3e5987b8afcef5
   Down: 8c59a03cb229ef28dfa774b2132da860f3dee0ac
   EFQRCode: 842f431e660da841f518993af8f4cbd275601d84
   Firebase: 02f3281965c075426141a0ce1277e9de6649cab9
@@ -225,6 +229,6 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: e8491c80ece6a147ba45ff798926aec3313285ae
+PODFILE CHECKSUM: de0f3189f918fbc6ad44da8de3cb0e022a73485c
 
 COCOAPODS: 1.7.0.beta.1

@@ -7,7 +7,7 @@ def opass_pods
     # Uncomment this line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!
     
-    # Pods for CCIP
+    # Pods for OPass
     pod 'OneSignal', '~> 2.9'
     pod 'UICKeyChainStore', '~> 2.1'
     pod 'Firebase/Core'
@@ -37,6 +37,7 @@ def opass_pods
     pod 'Appirater'
     pod 'SwiftyJSON'
     pod 'FoldingCell'
+    pod 'DLLocalNotifications'
 end
 
 target 'OPass' do
