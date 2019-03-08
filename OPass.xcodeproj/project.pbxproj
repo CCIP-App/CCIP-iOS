@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -87,7 +87,7 @@
 		6B70EF45204C981700C63E63 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B70EF44204C981700C63E63 /* NetworkExtension.framework */; };
 		6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */; };
 		6B76DF6420B019B200EBEF06 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B76DF6320B019B200EBEF06 /* config.plist */; };
-		6B9650C91F2B270500F43B39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC12A961F2B1B8000B14039 /* main.m */; };
+		6B9650C91F2B270500F43B39 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC12A961F2B1B8000B14039 /* main.swift */; };
 		6B9A279A222B00C300E8463E /* OPassEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9A2799222B00C300E8463E /* OPassEventCell.xib */; };
 		6B9A279C222B040800E8463E /* OPassEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9A279B222B040800E8463E /* OPassEventCell.swift */; };
 		6B9A279E2231715600E8463E /* OPassAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9A279D2231715500E8463E /* OPassAPI.swift */; };
@@ -279,7 +279,7 @@
 		6BB97F9B222A813200338138 /* PartnerWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerWebViewController.swift; sourceTree = "<group>"; };
 		6BC12A941F2B1B8000B14039 /* OPass-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OPass-Swift.h"; sourceTree = "<group>"; };
 		6BC12A951F2B1B8000B14039 /* OPass-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OPass-Bridging-Header.h"; sourceTree = "<group>"; };
-		6BC12A961F2B1B8000B14039 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6BC12A961F2B1B8000B14039 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		6BC4246C22299AE10028C7D6 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		6BC4246E22299C830028C7D6 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		6BC4247022299F470028C7D6 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
@@ -514,7 +514,7 @@
 			children = (
 				6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */,
 				6B11BE841D4CBC9300B87EA9 /* Main.storyboard */,
-				6BC12A961F2B1B8000B14039 /* main.m */,
+				6BC12A961F2B1B8000B14039 /* main.swift */,
 				6BC12A941F2B1B8000B14039 /* OPass-Swift.h */,
 				6BC12A951F2B1B8000B14039 /* OPass-Bridging-Header.h */,
 				286D5FC51D6BD8EC005B6619 /* headers.h */,
@@ -924,7 +924,7 @@
 				6B4FCB22218F774D0005469F /* IRCViewController.swift in Sources */,
 				6B5AABC7220CBB6700C01C54 /* iBeacon.swift in Sources */,
 				6B4FCB24218F79CB0005469F /* Constants.swift in Sources */,
-				6B9650C91F2B270500F43B39 /* main.m in Sources */,
+				6B9650C91F2B270500F43B39 /* main.swift in Sources */,
 				6B4FCB11218EC2380005469F /* UIImage+addition.swift in Sources */,
 				6BB97F9C222A813200338138 /* PartnerWebViewController.swift in Sources */,
 				6B4FCB20218F65D30005469F /* NSObject+className.swift in Sources */,
