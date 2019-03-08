@@ -440,8 +440,6 @@
 		6B4FCB0F218EC1B30005469F /* legacy */ = {
 			isa = PBXGroup;
 			children = (
-				6B9A279D2231715500E8463E /* OPassAPI.swift */,
-				6B4FCB23218F79CB0005469F /* Constants.swift */,
 				6B4FCB18218ECE070005469F /* Constants.h */,
 				6B4FCB19218ECE070005469F /* Constants.m */,
 				6B2B6D7C1D29EC49007D0450 /* NSInvocation+addition.h */,
@@ -517,8 +515,6 @@
 				6BC12A961F2B1B8000B14039 /* main.swift */,
 				6BC12A941F2B1B8000B14039 /* OPass-Swift.h */,
 				6BC12A951F2B1B8000B14039 /* OPass-Bridging-Header.h */,
-				286D5FC51D6BD8EC005B6619 /* headers.h */,
-				6B75F4F0210F85460019ECD2 /* FeedbackType.h */,
 				6BFB831D1F2B188A005DCF00 /* Class+addition */,
 				6BFB831E1F2B18A4005DCF00 /* CustomSegue */,
 				6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */,
@@ -539,10 +535,16 @@
 		6BFB831D1F2B188A005DCF00 /* Class+addition */ = {
 			isa = PBXGroup;
 			children = (
-				6B4FCB0F218EC1B30005469F /* legacy */,
+				286D5FC51D6BD8EC005B6619 /* headers.h */,
+				6B75F4F0210F85460019ECD2 /* FeedbackType.h */,
+				6B9A279D2231715500E8463E /* OPassAPI.swift */,
+				6B4FCB23218F79CB0005469F /* Constants.swift */,
 				6BE4B8F0222ADB7B005F8B95 /* NEHotspot.swift */,
 				6B5AABC6220CBB6700C01C54 /* iBeacon.swift */,
 				6B4FCB1D218F5D630005469F /* OPassWebViewController.swift */,
+				6BEB310C1F262EF30050759D /* EFQRCode+Ext.swift */,
+				6BE8A22D220E11160035CFD8 /* JSONSerialization+Ext.swift */,
+				6B4FCB0F218EC1B30005469F /* legacy */,
 				6B50EA312169377E000CC757 /* UIAlertController+additional.swift */,
 				6B4FCB1F218F65D30005469F /* NSObject+className.swift */,
 				6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */,
@@ -554,8 +556,6 @@
 				6B4FCB16218ECC230005469F /* UIViewController+addition.swift */,
 				6B4FCB05218E521C0005469F /* UIApplication+addition.swift */,
 				6BE8A22B220DF0210035CFD8 /* NSString+StringExt.swift */,
-				6BE8A22D220E11160035CFD8 /* JSONSerialization+Ext.swift */,
-				6BEB310C1F262EF30050759D /* EFQRCode+Ext.swift */,
 			);
 			path = "Class+addition";
 			sourceTree = "<group>";
