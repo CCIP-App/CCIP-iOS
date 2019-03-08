@@ -18,7 +18,7 @@ def opass_pods
     #pod 'iRate', '~> 1.11'
     pod 'iCarousel', '~> 1.8'
     pod 'BLKFlexibleHeightBar', '~> 1.0'
-    pod 'SDWebImage', '~> 4.4'
+    pod 'SDWebImage', '~> 5.0.0-beta5'
     pod 'Shimmer', '~> 1.0'
     pod 'CPDAcknowledgements', '~> 1.0'
     pod 'NJKWebViewProgress', '~> 0.2'

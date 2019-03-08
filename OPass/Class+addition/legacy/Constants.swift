@@ -146,7 +146,7 @@ extension Constants {
     }
     @objc static func ConfLogo() -> UIImage {
         let ig = Promise<UIImage> { resolve, reject in
-            let option: SDWebImageOptions = [ .allowInvalidSSLCertificates, .continueInBackground, .highPriority, .queryDiskSync, .retryFailed ]
+            let option: SDWebImageOptions = [ .allowInvalidSSLCertificates, .continueInBackground, .highPriority, .queryDiskDataSync, .retryFailed ]
             UIImageView.init().sd_setImage(with: eventInfo?.LogoUrl, placeholderImage: nil, options: option, completed: {
                 (image: UIImage?, error: Error?, cacheType: SDImageCacheType, url: URL?) in
                 resolve(image!)
