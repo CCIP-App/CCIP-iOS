@@ -781,7 +781,7 @@
 			};
 			buildConfigurationList = 6BD8EF221D1D73510094BE95 /* Build configuration list for PBXProject "OPass" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
