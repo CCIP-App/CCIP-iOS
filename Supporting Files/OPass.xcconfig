@@ -6,4 +6,3 @@ MAIN_BUILD_SHORT_VERSION                    = #BUILD_VERSION#
 APP_NAME                                    = '(@"#APP_NAME#")'
 APP_GROUP_ID                                = group.app.opass.ccip
 APP_SCHEME                                  = opass
-GIT_COMMITS                                 = #GIT_COMMITS#

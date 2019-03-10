@@ -726,7 +726,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BD8EF411D1D73510094BE95 /* Build configuration list for PBXNativeTarget "OPass" */;
 			buildPhases = (
-				6BB11CED214D0B43005CE4A0 /* ShellScript */,
+				6BB11CED214D0B43005CE4A0 /* Generate Version Text */,
 				F46A6ED9AE1BFC01632EAC09 /* [CP] Check Pods Manifest.lock */,
 				6BD8EF231D1D73510094BE95 /* Sources */,
 				6BD8EF241D1D73510094BE95 /* Frameworks */,
@@ -868,12 +868,15 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OPass/Pods-OPass-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6BB11CED214D0B43005CE4A0 /* ShellScript */ = {
+		6BB11CED214D0B43005CE4A0 /* Generate Version Text */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+			);
+			name = "Generate Version Text";
+			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
