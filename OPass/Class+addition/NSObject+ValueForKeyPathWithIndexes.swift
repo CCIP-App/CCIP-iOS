@@ -38,10 +38,10 @@ import Foundation
                     return currentObj
                 }
             } else {
-                let range1End = String.Index(utf16Offset: range1!.lowerBound.utf16Offset(in: part), in: part)
-                let arrayKey = String(part[String.Index.init(utf16Offset: 0, in: "")..<range1End])
-                let start = String.Index(utf16Offset: range1!.lowerBound.utf16Offset(in: part) + 1, in: part)
-                let end = String.Index(utf16Offset: part.count - 1, in: part)
+                let range1End = String.Index(encodedOffset: range1!.lowerBound.encodedOffset)
+                let arrayKey = String(part[String.Index(encodedOffset: 0)..<range1End])
+                let start = String.Index(encodedOffset: range1!.lowerBound.encodedOffset + 1)
+                let end = String.Index(encodedOffset: part.count - 1)
                 let index = Int(String(part[start..<end]))
                 currentObj = currentObj!.responds(to: Selector(arrayKey)) ? ((currentObj!.value(forKey: arrayKey) as! NSArray).object(at: index!) as! NSObject) : nil
                 if (currentObj == nil) {

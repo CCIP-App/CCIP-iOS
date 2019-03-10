@@ -36,8 +36,8 @@ import UIKit
         let byteLength = isSingleByte ? 1 : 2
         let startOffset = 1 + forByte.rawValue * byteLength - (hasAlpha ? 0 : forByte != .Alpha ? byteLength : 0)
         let endOffset = startOffset + byteLength
-        let startRange = String.Index(utf16Offset: startOffset, in: htmlColorString)
-        let endRange = String.Index(utf16Offset: endOffset, in: htmlColorString)
+        let startRange = String.Index(encodedOffset: startOffset)
+        let endRange = String.Index(encodedOffset: endOffset)
         let byteString = String(htmlColorString[startRange..<endRange])
         if (!hasAlpha && forByte == .Alpha) {
             return CGFloat(self.hexToIntColor(String(repeating: "f", count: byteLength), isSingleByteOnly: isSingleByte))
