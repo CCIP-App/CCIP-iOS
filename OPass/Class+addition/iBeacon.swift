@@ -9,22 +9,23 @@
 import Foundation
 import CoreLocation
 import CoreBluetooth
+import DLLocalNotifications
 
 let beaconUUID = Constants.beaconUUID()
 let beaconID = Constants.beaconID()
+let beaconService = CBUUID(string: "0x180A")
+let beaconServiceID = CBUUID(string: "0x2A23")
+let beaconDisplayName = "USBeacon"
 
 @objc class iBeacon: NSObject, CLLocationManagerDelegate, CBCentralManagerDelegate, CBPeripheralDelegate {
     let locationManager = CLLocationManager()
-
-    let pService = CBUUID(string: "0x180A")
-    let sID = CBUUID(string: "0x2A23")
     var centralManager: CBCentralManager?
     var peripheralMonitor: CBPeripheral?
     var beaconMacAddresses: Dictionary = [String:String]()
 
     public override init() {
         super.init()
-        let centralQueue: DispatchQueue = DispatchQueue(label: "com.iosbrain.centralQueueName", attributes: .concurrent)
+        let centralQueue: DispatchQueue = DispatchQueue(label: "conf-beacon-scanner", attributes: .concurrent)
         centralManager = CBCentralManager(delegate: self, queue: centralQueue, options: nil)
     }
 
@@ -58,9 +59,9 @@ let beaconID = Constants.beaconID()
         if state == CLRegionState.inside {
             if CLLocationManager.isRangingAvailable() {
                 manager.startRangingBeacons(in: (region as! CLBeaconRegion))
-                print("In region")
+                NSLog("Beacon In region")
             } else {
-                print("Unsupport for Ranging")
+                NSLog("Beacon Unsupport for Ranging")
             }
         } else {
             manager.stopRangingBeacons(in: (region as! CLBeaconRegion))
@@ -71,13 +72,13 @@ let beaconID = Constants.beaconID()
         if CLLocationManager.isRangingAvailable() {
             manager.startRangingBeacons(in: (region as! CLBeaconRegion))
         } else {
-            print("Unsupport for Ranging")
+            NSLog("Beacon Unsupport for Ranging")
         }
     }
 
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         manager.stopRangingBeacons(in: (region as! CLBeaconRegion))
-        print("Out of region")
+        NSLog("Beacon Out of region")
     }
 
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
@@ -102,40 +103,40 @@ let beaconID = Constants.beaconID()
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error.localizedDescription)
+        NSLog(error.localizedDescription)
     }
 
     func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
-        print(error.localizedDescription)
+        NSLog(error.localizedDescription)
     }
 
     func locationManager(_ manager: CLLocationManager, rangingBeaconsDidFailFor region: CLBeaconRegion, withError error: Error) {
-        print(error.localizedDescription)
+        NSLog(error.localizedDescription)
     }
 
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
             case .unknown:
-                print("Bluetooth status is UNKNOWN")
+                NSLog("Bluetooth status is UNKNOWN")
             case .resetting:
-                print("Bluetooth status is RESETTING")
+                NSLog("Bluetooth status is RESETTING")
             case .unsupported:
-                print("Bluetooth status is UNSUPPORTED")
+                NSLog("Bluetooth status is UNSUPPORTED")
             case .unauthorized:
-                print("Bluetooth status is UNAUTHORIZED")
+                NSLog("Bluetooth status is UNAUTHORIZED")
             case .poweredOff:
-                print("Bluetooth status is POWERED OFF")
+                NSLog("Bluetooth status is POWERED OFF")
             case .poweredOn:
-                print("Bluetooth status is POWERED ON")
+                NSLog("Bluetooth status is POWERED ON")
                 central.scanForPeripherals(withServices: nil, options: nil)
             @unknown default:
-                print("unknown status of Bluetooth")
+                NSLog("unknown status of Bluetooth")
         }
     }
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         let peripheralName = peripheral.name ?? "<nil>"
-        if (peripheralName == "USBeacon" && !self.beaconMacAddresses.contains(where: { (mac) -> Bool in
+        if (peripheralName == beaconDisplayName && !self.beaconMacAddresses.contains(where: { (mac) -> Bool in
             let (key, _) = mac
             return key == peripheral.identifier.uuidString
         })) {
@@ -143,8 +144,8 @@ let beaconID = Constants.beaconID()
             peripheralMonitor?.delegate = self
             central.stopScan()
             central.connect(peripheralMonitor!, options: nil)
-        } else if peripheralName == "USBeacon" {
-            NSLog("Mac Addresses: \(JSONSerialization.stringify(self.beaconMacAddresses)!)")
+        } else if peripheralName == beaconDisplayName {
+            NSLog("Beacon Mac Addresses: \(JSONSerialization.stringify(self.beaconMacAddresses)!)")
         }
     }
 
@@ -158,7 +159,7 @@ let beaconID = Constants.beaconID()
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         for service in peripheral.services! {
-            if service.uuid == pService {
+            if service.uuid == beaconService {
                 peripheral.discoverCharacteristics(nil, for: service)
             }
         }
@@ -166,14 +167,14 @@ let beaconID = Constants.beaconID()
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         for characteristic in service.characteristics! {
-            if characteristic.uuid == sID {
+            if characteristic.uuid == beaconServiceID {
                 peripheral.readValue(for: characteristic)
             }
         }
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        if characteristic.uuid == sID {
+        if characteristic.uuid == beaconServiceID {
             var macAddrData = characteristic.value!
             macAddrData.remove(at: 3)
             macAddrData.remove(at: 3)
@@ -183,7 +184,7 @@ let beaconID = Constants.beaconID()
             }.joined(separator: ":")
             self.beaconMacAddresses[peripheral.identifier.uuidString] = macAddr
             DispatchQueue.main.async { () -> Void in
-                print("  id: \(peripheral.identifier)\ndata: \(macAddr)")
+                NSLog("Beacon device response\nuuid: \(peripheral.identifier)\ndata: \(macAddr)")
                 self.centralManager?.cancelPeripheralConnection(peripheral)
             }
         }
