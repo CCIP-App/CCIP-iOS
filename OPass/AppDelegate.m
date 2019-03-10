@@ -7,6 +7,7 @@
 //
 
 @import NetworkExtension;
+@import UserNotifications;
 
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import <ScanditBarcodeScanner/ScanditBarcodeScanner.h>
@@ -21,7 +22,7 @@
 
 #define SCANDIT_APP_KEY             (@"2BXy4CfQi9QFc12JnjId7mHH58SdYzNC90Uo07luUUY")
 
-@interface AppDelegate () <UISplitViewControllerDelegate>
+@interface AppDelegate () <UISplitViewControllerDelegate, UNUserNotificationCenterDelegate>
 
 @property (readwrite, nonatomic) NSArray *availableScenarios;
 @property (readwrite, nonatomic) BOOL isLoginSession;
@@ -316,6 +317,17 @@
     return NO;
 }
 
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void (^)(void))completionHandler {
+
+    if ([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        // User did tap at remote notification
+    }
+
+    completionHandler();
+}
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     [self setDefaultShortcutItems];
     NSLog(@"Receieved remote system fetching request...\nuserInfo => %@", userInfo);
@@ -323,6 +335,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
     // Override point for customization after application launch.
     [self setIsLoginSession:NO];
     // Configure tracker from GoogleService-Info.plist.
