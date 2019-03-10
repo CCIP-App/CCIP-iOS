@@ -180,6 +180,13 @@
                    forKey:FAV_KEY];
     [userDefault synchronize];
     [self.tableView reloadData];
+//    [OPassAPI RegisteringFavoriteScheduleForEvent:[Constants EventId]
+//                                        withToken:[Constants AccessToken]
+//                                       toSchedule:scheduleId
+//                                        isDisable:NO
+//                                       completion:^(BOOL success, id _Nullable obj, NSError * _Nonnull error) {
+//                                           NSLog(@"%@", obj);
+//                                       }];
 }
 
 - (BOOL)hasFavorite:(NSString *)scheduleId {

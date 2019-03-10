@@ -71,6 +71,26 @@
 
 - (void)refreshData {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//    [OPassAPI GetScheduleDataForEvent:[Constants EventId]
+//                         onCompletion:^(BOOL success, id obj, NSError *error) {
+//                             if (success) {
+//                                 self.programs = obj;
+//                                 [self setScheduleDate];
+//                                 NSData *programsData = [NSKeyedArchiver archivedDataWithRootObject:obj];
+//                                 [userDefault setObject:programsData
+//                                                 forKey:SCHEDULE_CACHE_KEY];
+//                                 [userDefault synchronize];
+//                             } else {
+//                                 NSLog(@"Error: %@", error);
+//                                 // ugly convension for crash prevent
+//                                 NSObject *programsObj = [userDefault objectForKey:SCHEDULE_CACHE_KEY];
+//                                 NSArray *programsData = [programsObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)programsObj] : programsObj;
+//                                 self.programs = programsData;
+//                                 if (self.programs != nil) {
+//                                     [self setScheduleDate];
+//                                 }
+//                             }
+//                         }];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:[AppDelegate AppConfigURL:@"ScheduleContentPath"]
       parameters:nil

@@ -11,6 +11,7 @@ import then
 import AFNetworking
 import SwiftyJSON
 import SwiftDate
+import DLLocalNotifications
 
 internal typealias OPassErrorCallback = (
         (_ retryCount: UInt, _ retryMax: UInt, _ error: Error, _ responsed: URLResponse?) -> Void
@@ -317,5 +318,124 @@ struct ScheduleInfo {
         } else {
             completion?(false, nil, NSError(domain: "OPass Current Not in Event and No Valid Token", code: 1, userInfo: nil))
         }
+    }
+
+    @objc static func GetScheduleData(forEvent event: String, onCompletion completion: OPassCompletionCallback) {
+        if event.count > 0 {
+            OPassAPI.InitializeRequest(Constants.URL_SCHEDULE) { retryCount, retryMax, error, responsed in
+                completion?(false, nil, error)
+            }.then { (obj: Any?) -> Void in
+                if obj != nil {
+                    var schedules = [ScheduleInfo]()
+                    for sch in JSON(obj!).arrayValue {
+                        let zh = sch["zh"]
+                        let en = sch["en"]
+                        let title = DisplayName(_displayData: JSON(parseJSON: ""),zh: zh["title"].stringValue, en: en["title"].stringValue)
+                        let description = DisplayName(_displayData: JSON(parseJSON: ""),zh: zh["description"].stringValue, en: en["description"].stringValue)
+                        var speakers = [SpeakerInfo]()
+                        for s in sch["speakers"].arrayValue {
+                            let szh = s["zh"]
+                            let sen = s["en"]
+                            let name = DisplayName(_displayData: JSON(parseJSON: ""), zh: szh["name"].stringValue, en: sen["name"].stringValue)
+                            let bio = DisplayName(_displayData: JSON(parseJSON: ""), zh: szh["bio"].stringValue, en: sen["bio"].stringValue)
+                            let speaker = SpeakerInfo(
+                                Id: s["id"].stringValue,
+                                Avatar: s["avatar"].url,
+                                Title: s["title"].stringValue,
+                                Info: s["info"].stringValue,
+                                Name: name,
+                                Bio: bio
+                            )
+                            speakers.append(speaker)
+                        }
+                        var tags = [TagInfo]()
+                        for t in sch["tag"].arrayValue {
+                            let tag = TagInfo(
+                                _tagData: t,
+                                Id: t["id"].stringValue,
+                                zh: t["zh"].stringValue
+                            )
+                            tags.append(tag)
+                        }
+                        let schedule = ScheduleInfo(
+                            Id: sch["id"].stringValue,
+                            ScheduleType: sch["type"].stringValue,
+                            Room: sch["room"].stringValue,
+                            Broadcast: sch["broadcast"].arrayObject as? [String],
+                            Start: Date.init(seconds: sch["start"].stringValue.toDate()!.timeIntervalSince1970),
+                            End: Date.init(seconds: sch["end"].stringValue.toDate()!.timeIntervalSince1970),
+                            QA: sch["qa"].stringValue,
+                            Slide: sch["slide"].stringValue,
+                            Title: title,
+                            Description: description,
+                            Speakers: speakers,
+                            Tag: tags
+                        )
+                        schedules.append(schedule)
+                    }
+                    completion?(true, schedules, OPassSuccessError)
+                } else {
+                    completion?(false, obj, NSError(domain: "OPass Schedule can not get by return unexcepted response", code: 2, userInfo: nil))
+                }
+            }
+        } else {
+            completion?(false, nil, NSError(domain: "OPass Schedule can not get, because event was not set", code: 1, userInfo: nil))
+        }
+    }
+
+    private static func GetFavoritesStoreKey(
+        _ event: String,
+        _ token: String
+        ) -> String {
+        return "\(event)|\(token)|favorites"
+    }
+
+    private static func GetFavoritesStoreKey(
+        _ event: String,
+        _ token: String,
+        _ schedule: String
+        ) -> String {
+        return "\(OPassAPI.GetFavoritesStoreKey(event, token))|\(schedule)"
+    }
+
+    @objc static func GetFavoritesList(
+        forEvent: String,
+        withToken: String
+        ) -> [String] {
+        let key = OPassAPI.GetFavoritesStoreKey(forEvent, withToken)
+        let ud = UserDefaults.standard
+        ud.register(defaults: [key: Array<String>()])
+        ud.synchronize()
+
+        return ud.stringArray(forKey: key)!
+    }
+
+    @objc static func RegisteringFavoriteSchedule(
+        forEvent event: String,
+        withToken token: String,
+        toSchedule schedule: String,
+        isDisable: Bool,
+        completion: OPassCompletionCallback
+    ) {
+        let schedule = ""
+        let title = ""
+        let content = ""
+        let time = 10.seconds.fromNow
+        let notification = DLNotification(
+            identifier: OPassAPI.GetFavoritesStoreKey(event, token, schedule),
+            alertTitle: title,
+            alertBody: content,
+            date: time,
+            repeats: .none,
+            soundName: ""
+        )
+        let scheduler = DLNotificationScheduler()
+        scheduler.scheduleNotification(notification: notification)
+        scheduler.scheduleAllNotifications()
+        if isDisable {
+            scheduler.cancelNotification(notification: notification)
+            scheduler.scheduleAllNotifications()
+        }
+        NSLog("\(notification)")
     }
 }
