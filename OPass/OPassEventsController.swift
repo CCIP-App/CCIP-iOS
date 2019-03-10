@@ -27,13 +27,13 @@ class OPassEventsController : UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.progress.show(animated: true)
-        Constants.CleanupEvents()
+        OPassAPI.CleanupEvents()
         self.opassEvents.removeAll()
         self.eventsTable.reloadData()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Constants.GetEvents({ retryCount, retryMax, error, responsed in
+        OPassAPI.GetEvents({ retryCount, retryMax, error, responsed in
             self.progress.label.text = "[\(retryCount)/\(retryMax)] \(error.localizedDescription)"
         }).then { (events: Array<EventShortInfo>) in
             self.opassEvents = events
@@ -60,7 +60,7 @@ class OPassEventsController : UIViewController, UITableViewDelegate, UITableView
 
     func LoadEvent(_ eventId: String) -> Promise<()> {
         self.progress.show(animated: true)
-        let e = Constants.SetEvent(eventId, { retryCount, retryMax, error, responsed in
+        let e = OPassAPI.SetEvent(eventId, { retryCount, retryMax, error, responsed in
             self.progress.label.text = "[\(retryCount)/\(retryMax)] \(error.localizedDescription)"
         }).then { (event: EventInfo) in
             self.progress.label.text = ""

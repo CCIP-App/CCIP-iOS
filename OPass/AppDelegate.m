@@ -465,7 +465,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
                                                    cancelAction:nil];
         // from Universal Link
         if (event_id != nil && token != nil) {
-            [Constants DoLoginByEventId:event_id
+            [OPassAPI DoLoginByEventId:event_id
                               withToken:token
                            onCompletion:^(BOOL success, id data, NSError *error) {
                                if (!success && data != nil) {

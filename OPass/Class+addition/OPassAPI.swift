@@ -10,6 +10,7 @@ import Foundation
 import then
 import AFNetworking
 import SwiftyJSON
+import SwiftDate
 
 internal typealias OPassErrorCallback = (
         (_ retryCount: UInt, _ retryMax: UInt, _ error: Error, _ responsed: URLResponse?) -> Void
@@ -33,7 +34,89 @@ let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
     }
 }
 
+struct DisplayName {
+    var _displayData: JSON
+    var zh: String
+    var en: String
+    func Get(lang: String) -> String {
+        return _displayData[lang].stringValue
+    }
+}
+
+struct PublishDate {
+    var Start: Date
+    var End: Date
+}
+
+struct Features {
+    var IRC: URL?
+    var Telegram: URL?
+    var Puzzle: URL?
+    var Staffs: URL?
+    var Venue: URL?
+    var Sponsors: URL?
+    var Partners: URL?
+}
+
+struct CustomFeatures {
+    var IconUrl: URL?
+    var DisplayName: DisplayName
+    var Url: URL
+}
+
+struct EventInfo {
+    var EventId: String
+    var DisplayName: DisplayName
+    var LogoUrl: URL
+    var Publish: PublishDate
+    var ServerBaseUrl: URL
+    var ScheduleUrl: URL
+    var Features: Features
+    var CustomFeatures: Array<CustomFeatures>
+}
+
+struct EventShortInfo {
+    var EventId: String
+    var DisplayName: DisplayName
+    var LogoUrl: URL
+}
+
+struct SpeakerInfo {
+    var Id: String
+    var Avatar: URL?
+    var Title: String
+    var Info: String
+    var Name: DisplayName
+    var Bio: DisplayName
+}
+
+struct TagInfo {
+    var _tagData: JSON
+    var Id: String
+    var zh: String
+    func Get(lang: String) -> String {
+        return _tagData[lang].stringValue
+    }
+}
+
+struct ScheduleInfo {
+    var Id: String
+    var ScheduleType: String
+    var Room: String
+    var Broadcast: [String]?
+    var Start: Date
+    var End: Date
+    var QA: String
+    var Slide: String
+    var Title: DisplayName
+    var Description: DisplayName
+    var Speakers: [SpeakerInfo]
+    var Tag: [TagInfo]
+}
+
 @objc class OPassAPI: NSObject {
+    static var currentEvent: String = ""
+    static var eventInfo: EventInfo? = nil
     static func InitializeRequest(_ url: String, maxRetry: UInt = 10, _ onceErrorCallback: OPassErrorCallback) -> Promise<Any?> {
         var retryCount: UInt = 0
         let e = Promise<Any?> { resolve, reject in
@@ -70,17 +153,123 @@ let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
         }
     }
 
+    static func GetEvents(_ onceErrorCallback: OPassErrorCallback) -> Promise<Array<EventShortInfo>> {
+        return OPassAPI.InitializeRequest("https://portal.opass.app/events/", onceErrorCallback)
+            .then({ (infoObj: Any) -> Array<EventShortInfo> in
+                let info = JSON(infoObj).arrayValue
+                var infos = Array<EventShortInfo>()
+                for i in info {
+                    let eventId = i["event_id"].stringValue
+                    let dn = i["display_name"]
+                    let dnzh = dn["zh"].stringValue
+                    let dnen = dn["en"].stringValue
+                    let displayName = DisplayName(_displayData: dn, zh: dnzh, en: dnen)
+                    let logoUrl = i["logo_url"].url!
+                    let e = EventShortInfo(EventId: eventId, DisplayName: displayName, LogoUrl: logoUrl)
+                    infos.append(e)
+                }
+                return infos
+            })
+    }
+
+    static func SetEvent(_ eventId: String, _ onceErrorCallback: OPassErrorCallback) -> Promise<EventInfo> {
+        return OPassAPI.InitializeRequest("https://portal.opass.app/events/\(eventId)/", onceErrorCallback)
+            .then { (infoObj: Any) -> EventInfo in
+                let info = JSON(infoObj)
+                let eventId = info["event_id"].stringValue
+                let dn = info["display_name"]
+                let dnzh = dn["zh"].stringValue
+                let dnen = dn["en"].stringValue
+                let displayName = DisplayName(_displayData: dn, zh: dnzh, en: dnen)
+                let logoUrl = info["logo_url"].url!
+                let pub = info["publish"]
+                let pubStart = Date.init(seconds: pub["start"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
+                let pubEnd = Date.init(seconds: pub["end"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
+                let publish = PublishDate(Start: pubStart, End: pubEnd)
+                let serverUrl = info["server_base_url"].url!
+                let scheduleUrl = info["schedule_url"].url!
+                let fts = info["features"]
+                let irc = fts["irc"].url
+                let telegram = fts["telegram"].url
+                let puzzle = fts["puzzle"].url
+                let staffs = fts["staffs"].url
+                let venue = fts["venus"].url
+                let sponsors = fts["sponsors"].url
+                let partners = fts["partners"].url
+                let features = Features(IRC: irc, Telegram: telegram, Puzzle: puzzle, Staffs: staffs, Venue: venue, Sponsors: sponsors, Partners: partners)
+                var customFeatures = Array<CustomFeatures>()
+                let cf = info["custom_features"].arrayValue
+                for ft in cf {
+                    let ftIcon = ft["icon"].url
+                    let ftdn = ft["display_name"]
+                    let ftdnzh = dn["zh"].stringValue
+                    let ftdnen = dn["en"].stringValue
+                    let ftDisplayName = DisplayName(_displayData: ftdn, zh: ftdnzh, en: ftdnen)
+                    let ftUrl = ft["url"].url!
+                    let f = CustomFeatures(IconUrl: ftIcon, DisplayName: ftDisplayName, Url: ftUrl)
+                    customFeatures.append(f)
+                }
+                eventInfo = EventInfo(EventId: eventId, DisplayName: displayName, LogoUrl: logoUrl, Publish: publish, ServerBaseUrl: serverUrl, ScheduleUrl: scheduleUrl, Features: features, CustomFeatures: customFeatures)
+                currentEvent = JSONSerialization.stringify(infoObj as Any)!
+                return eventInfo!
+        }
+    }
+
+    @objc static func CleanupEvents() {
+        eventInfo = nil
+        currentEvent = ""
+    }
+    @objc static func DoLogin(byEventId eventId: String, withToken token: String, onCompletion completion: OPassCompletionCallback) {
+        async {
+            while true {
+                var vc: UIViewController? = nil
+                DispatchQueue.main.sync {
+                    vc = UIApplication.getMostTopPresentedViewController()!
+                }
+                let vcName = vc!.className
+                var done = false
+                try? await(Promise{ resolve, reject in
+                    switch vcName {
+                    case OPassEventsController.className:
+                        DispatchQueue.main.sync {
+                            AppDelegate.setLoginSession(false)
+                            AppDelegate.setAccessToken("")
+                        }
+                        done = true
+                        resolve()
+                        break
+                    default:
+                        DispatchQueue.main.async {
+                            vc!.dismiss(animated: true, completion: {
+                                resolve()
+                            })
+                        }
+                    }
+                })
+                if done {
+                    break
+                }
+            }
+            DispatchQueue.main.sync {
+                let opec = UIApplication.getMostTopPresentedViewController() as! OPassEventsController
+                opec.LoadEvent(eventId).then { _ in
+                    OPassAPI.RedeemCode(forEvent: eventId, withToken: token, completion: completion)
+                }
+            }
+        }
+    }
+
     @objc static func RedeemCode(forEvent: String, withToken: String, completion: OPassCompletionCallback) {
         var event = forEvent
         if event == "" {
-            event = Constants.currentEvent
+            event = OPassAPI.currentEvent
         }
         let token = withToken.trim()
         let allowedCharacters = NSMutableCharacterSet.init(charactersIn: "-_")
         allowedCharacters.formUnion(with: NSCharacterSet.alphanumerics)
         let nonAllowedCharacters = allowedCharacters.inverted
         if (token.count != 0 && token.rangeOfCharacter(from: nonAllowedCharacters) == nil) {
-            InitializeRequest(Constants.URL_LANDING(token: token)) { retryCount, retryMax, error, responsed in
+            OPassAPI.InitializeRequest(Constants.URL_LANDING(token: token)) { retryCount, retryMax, error, responsed in
                 completion?(false, nil, error)
             }.then { (obj: Any?) -> Void in
                 if obj != nil {
@@ -117,10 +306,10 @@ let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
     }
 
     @objc static func GetCurrentStatus(_ completion: OPassCompletionCallback) {
-        let event = Constants.currentEvent
+        let event = OPassAPI.currentEvent
         let token = Constants.AccessToken
         if event.count > 0 && token.count > 0 {
-            InitializeRequest(Constants.URL_STATUS(token: token)) { retryCount, retryMax, error, responsed in
+            OPassAPI.InitializeRequest(Constants.URL_STATUS(token: token)) { retryCount, retryMax, error, responsed in
                 completion?(false, nil, error)
             }.then { (obj: Any?) -> Void in
                 completion?(true, obj, OPassSuccessError)

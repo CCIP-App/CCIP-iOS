@@ -56,23 +56,23 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         self.navigationItem.titleView?.addGestureRecognizer(tapGesture)
 
         self.moreItems = [
-            Constants.eventInfo?.Features.Puzzle != nil
+            OPassAPI.eventInfo?.Features.Puzzle != nil
                 ? "Puzzle"
                 : "",
             "Ticket",
-            Constants.eventInfo?.Features.Telegram != nil
+            OPassAPI.eventInfo?.Features.Telegram != nil
                 ? "Telegram"
                 : "",
-            Constants.eventInfo?.Features.Venue != nil
+            OPassAPI.eventInfo?.Features.Venue != nil
                 ? "VenueWeb"
                 : "",
-            Constants.eventInfo?.Features.Staffs != nil
+            OPassAPI.eventInfo?.Features.Staffs != nil
                 ? "StaffsWeb"
                 : "",
-            Constants.eventInfo?.Features.Sponsors != nil
+            OPassAPI.eventInfo?.Features.Sponsors != nil
                 ? "SponsorsWeb"
                 : "",
-            Constants.eventInfo?.Features.Partners != nil
+            OPassAPI.eventInfo?.Features.Partners != nil
                 ? "PartnersWeb"
                 : "",
             "Acknowledgements",
