@@ -9,8 +9,8 @@
 
 CFBundleDisplayName = "OPass 通關";
 CFBundleName = "OPass 通關";
-NSLocationAlwaysUsageDescription = "使用您的地理位置來確認你是否可以使用通關票證";
-NSLocationWhenInUseUsageDescription = "使用您的地理位置來確認你是否可以使用通關票證";
-NSLocationAlwaysAndWhenInUseUsageDescription = "使用您的地理位置來確認你是否可以使用通關票證";
+NSLocationAlwaysUsageDescription = "使用您的地理位置來確認你是否可以使用入場卷";
+NSLocationWhenInUseUsageDescription = "使用您的地理位置來確認你是否可以使用入場卷";
+NSLocationAlwaysAndWhenInUseUsageDescription = "使用您的地理位置來確認你是否可以使用入場卷";
 NSCameraUsageDescription = "使用您的相機掃描 QR Code";
 NSPhotoLibraryUsageDescription = "從您的相簿讀取 QR Code 圖檔";
