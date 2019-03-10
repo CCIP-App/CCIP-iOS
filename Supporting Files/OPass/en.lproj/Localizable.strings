@@ -95,6 +95,11 @@
 "AfterEventActionTitle" = "Open questionnaire";
 "EmptyScheduleDetailContent" = "";
 
+"BeaconWelcomeMessage_In_Title" = "Welcome to Event Hall";
+"BeaconWelcomeMessage_In_Content" = "Please remember to click the \"CHECK IN\" button!";
+"BeaconWelcomeMessage_Out_Title" = "Very thanks for your coming";
+"BeaconWelcomeMessage_Out_Content" = "";
+
 "icon-Puzzle" = "puzzle-piece";
 "icon-Ticket" = "ticket-alt";
 "icon-Telegram" = "telegram-plane";

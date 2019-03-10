@@ -95,6 +95,11 @@
 "AfterEventActionTitle" = "開啟會後問卷";
 "EmptyScheduleDetailContent" = "";
 
+"BeaconWelcomeMessage_In_Title" = "歡迎蒞臨大會區域";
+"BeaconWelcomeMessage_In_Content" = "請記得要按下「報到」按鈕呦";
+"BeaconWelcomeMessage_Out_Title" = "感謝您參加本次大會";
+"BeaconWelcomeMessage_Out_Content" = "";
+
 "icon-Puzzle" = "puzzle-piece";
 "icon-Ticket" = "ticket-alt";
 "icon-Telegram" = "telegram-plane";

@@ -79,6 +79,7 @@ let beaconDisplayName = "USBeacon"
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         manager.stopRangingBeacons(in: (region as! CLBeaconRegion))
         NSLog("Beacon Out of region")
+        OPassAPI.RangeBeacon()
     }
 
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
@@ -98,6 +99,7 @@ let beaconDisplayName = "USBeacon"
                 }
 
                 NSLog("Detacted beacon !!\n      UUID: \(nearstBeacon.proximityUUID.uuidString)\nMajorMinor: \(nearstBeacon.major) -> \(nearstBeacon.minor)\n Proximity: \(proximity)\n  Accuracy: \(nearstBeacon.accuracy) meter \n      RSSI: \(nearstBeacon.rssi)")
+                OPassAPI.RangeBeacon(nearstBeacon)
             }
         }
     }
