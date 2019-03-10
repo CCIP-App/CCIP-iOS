@@ -118,6 +118,32 @@ struct ScheduleInfo {
 @objc class OPassAPI: NSObject {
     static var currentEvent: String = ""
     static var eventInfo: EventInfo? = nil
+
+    private static func RegisteringNotification(
+        id: String,
+        title: String,
+        content: String,
+        time: Date,
+        isDisable: Bool = false
+    ) {
+        let notification = DLNotification(
+            identifier: id,
+            alertTitle: title,
+            alertBody: content,
+            date: time,
+            repeats: .none,
+            soundName: ""
+        )
+        let scheduler = DLNotificationScheduler()
+        scheduler.scheduleNotification(notification: notification)
+        scheduler.scheduleAllNotifications()
+        if isDisable {
+            scheduler.cancelNotification(notification: notification)
+            scheduler.scheduleAllNotifications()
+        }
+        NSLog("Notification Registered: \(notification)")
+    }
+
     static func InitializeRequest(_ url: String, maxRetry: UInt = 10, _ onceErrorCallback: OPassErrorCallback) -> Promise<Any?> {
         var retryCount: UInt = 0
         let e = Promise<Any?> { resolve, reject in
@@ -421,21 +447,12 @@ struct ScheduleInfo {
         let title = ""
         let content = ""
         let time = 10.seconds.fromNow
-        let notification = DLNotification(
-            identifier: OPassAPI.GetFavoritesStoreKey(event, token, schedule),
-            alertTitle: title,
-            alertBody: content,
-            date: time,
-            repeats: .none,
-            soundName: ""
+        OPassAPI.RegisteringNotification(
+            id: OPassAPI.GetFavoritesStoreKey(event, token, schedule),
+            title: title,
+            content: content,
+            time: time,
+            isDisable: isDisable
         )
-        let scheduler = DLNotificationScheduler()
-        scheduler.scheduleNotification(notification: notification)
-        scheduler.scheduleAllNotifications()
-        if isDisable {
-            scheduler.cancelNotification(notification: notification)
-            scheduler.scheduleAllNotifications()
-        }
-        NSLog("\(notification)")
     }
 }
