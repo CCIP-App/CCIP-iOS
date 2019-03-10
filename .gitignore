@@ -61,3 +61,4 @@ iOSInjectionProject/
 
 # auto-generate files
 */Settings.bundle/AppFlags.plist
+*/Settings.bundle/Root.plist

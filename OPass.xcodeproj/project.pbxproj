@@ -726,13 +726,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BD8EF411D1D73510094BE95 /* Build configuration list for PBXNativeTarget "OPass" */;
 			buildPhases = (
+				6BB11CED214D0B43005CE4A0 /* ShellScript */,
 				F46A6ED9AE1BFC01632EAC09 /* [CP] Check Pods Manifest.lock */,
 				6BD8EF231D1D73510094BE95 /* Sources */,
 				6BD8EF241D1D73510094BE95 /* Frameworks */,
 				6BD8EF251D1D73510094BE95 /* Resources */,
 				6B1C6A1D1D1D843F003C4865 /* Embed Frameworks */,
 				6BB0B6411F1A8E2300AEB437 /* Embed Watch Content */,
-				6BB11CED214D0B43005CE4A0 /* ShellScript */,
 				15CD47F23CD25D89139AAF9C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -1166,7 +1166,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 151;
+				CURRENT_PROJECT_VERSION = "$(GIT_COMMITS)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1227,7 +1227,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 151;
+				CURRENT_PROJECT_VERSION = "$(GIT_COMMITS)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1269,10 +1269,7 @@
 					"$(inherited)",
 					"\"$(PROJECT_DIR)/Supporting Files/ScanditSDK\"",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"COSCUP=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1303,10 +1300,7 @@
 					"$(inherited)",
 					"\"$(PROJECT_DIR)/Supporting Files/ScanditSDK\"",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"COSCUP=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
