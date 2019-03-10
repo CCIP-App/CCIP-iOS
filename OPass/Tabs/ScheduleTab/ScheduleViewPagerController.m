@@ -92,7 +92,7 @@
 //                             }
 //                         }];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:[AppDelegate AppConfigURL:@"ScheduleContentPath"]
+    [manager GET:[Constants URL_SCHEDULE]
       parameters:nil
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {

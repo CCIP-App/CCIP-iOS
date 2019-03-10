@@ -109,27 +109,6 @@
 			<key>MapTitleTextColor</key>
 			<string>#425d4f</string>
 		</dict>
-		<key>URL</key>
-		<dict>
-			<key>CCIP_API</key>
-			<string>ccip.opass.app</string>
-			<key>IRC_Channel</key>
-			<string>g0v.tw</string>
-			<key>tg_Chat</key>
-			<string></string>
-			<key>MainDomain</key>
-			<string>summit.g0v.tw</string>
-			<key>GamePath</key>
-			<string></string>
-			<key>VenuePath</key>
-			<string>https://summit.g0v.tw/2018/agenda/?mode=app&amp;__ccip=##random###maps</string>
-			<key>StaffPath</key>
-			<string>https://summit.g0v.tw/2018/staff/?mode=app&amp;__ccip=##random##</string>
-			<key>SponsorPath</key>
-			<string>https://summit.g0v.tw/2018/sponsors/?mode=app&amp;__ccip=##random##</string>
-			<key>ScheduleContentPath</key>
-			<string>https://sitcon.org/2019/static/json/agenda.json?__ccip=##random##</string>
-		</dict>
 	</dict>
 </dict>
 </plist>

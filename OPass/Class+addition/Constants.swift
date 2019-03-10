@@ -43,32 +43,45 @@ extension Constants {
     @objc public static func URL_STATUS(token: String) -> String {
         return URL_SERVER_BASE.appending("/status?token=\(token)")
     }
+    private static func OPassURL(_ url: String) -> String {
+        let opassTime = "__opass=\(0.seconds.fromNow.timeIntervalSince1970)"
+        var opassUrl = url.replacingOccurrences(of: "__opass=##random##", with: opassTime)
+        if (url == opassUrl) {
+            if url.contains("?") {
+                opassUrl = "\(opassUrl)&\(opassTime)"
+            } else {
+                opassUrl = "\(opassUrl)?\(opassTime)"
+            }
+        }
+        NSLog("Add OPass timestamp: \(url) -> \(opassUrl)");
+        return opassUrl
+    }
     @objc public static var URL_LOGO_IMG: String {
-        return OPassAPI.eventInfo?.LogoUrl.absoluteString ?? ""
+        return Constants.OPassURL(OPassAPI.eventInfo?.LogoUrl.absoluteString ?? "")
     }
     @objc public static var URL_SCHEDULE: String {
-        return OPassAPI.eventInfo?.ScheduleUrl.absoluteString ?? ""
+        return Constants.OPassURL(OPassAPI.eventInfo?.ScheduleUrl.absoluteString ?? "")
     }
     @objc public static var URL_LOG_BOT: String {
-        return OPassAPI.eventInfo?.Features.IRC!.absoluteString ?? ""
+        return Constants.OPassURL(OPassAPI.eventInfo?.Features.IRC!.absoluteString ?? "")
     }
     @objc public static var URL_VENUE: String {
-        return OPassAPI.eventInfo?.Features.Venue!.absoluteString ?? ""
+        return Constants.OPassURL(OPassAPI.eventInfo?.Features.Venue!.absoluteString ?? "")
     }
     @objc public static var URL_TELEGRAM_GROUP: String {
-        return OPassAPI.eventInfo?.Features.Telegram!.absoluteString ?? ""
+        return Constants.OPassURL(OPassAPI.eventInfo?.Features.Telegram!.absoluteString ?? "")
     }
     @objc public static var URL_STAFF_WEB: String {
-        return OPassAPI.eventInfo?.Features.Staffs!.absoluteString ?? ""
+        return Constants.OPassURL(OPassAPI.eventInfo?.Features.Staffs!.absoluteString ?? "")
     }
     @objc public static var URL_SPONSOR_WEB: String {
-        return OPassAPI.eventInfo?.Features.Sponsors!.absoluteString ?? ""
+        return Constants.OPassURL(OPassAPI.eventInfo?.Features.Sponsors!.absoluteString ?? "")
     }
     @objc public static var URL_PARTNERS_WEB: String {
-        return OPassAPI.eventInfo?.Features.Partners!.absoluteString ?? ""
+        return Constants.OPassURL(OPassAPI.eventInfo?.Features.Partners!.absoluteString ?? "")
     }
     @objc public static var URL_GAME: String {
-        return OPassAPI.eventInfo?.Features.Puzzle!.absoluteString ?? ""
+        return Constants.OPassURL(OPassAPI.eventInfo?.Features.Puzzle!.absoluteString ?? "")
     }
     @objc public static func GitHubRepo(_ repo: String) -> String {
         return String(format: "https://github.com/\(repo)")
@@ -80,7 +93,7 @@ extension Constants {
         return String(format: "https://www.gravatar.com/avatar/\(hash)?s=86&\(hash.count > 0 ? "r=x" : "f=y&d=mm")")
     }
     @objc public static func OpenInAppSafari(forPath url: String) {
-        OpenInAppSafari(forURL: URL.init(string: url)!)
+        Constants.OpenInAppSafari(forURL: URL.init(string: url)!)
     }
     @objc public static func OpenInAppSafari(forURL url: URL) {
         if (SFSafariViewController.className != "" && (url.scheme?.contains("http"))!) {

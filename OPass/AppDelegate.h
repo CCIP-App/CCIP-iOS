@@ -41,7 +41,6 @@
 + (AppDelegate * _Nonnull)delegateInstance;
 + (id _Nonnull)AppConfig:( NSString * _Nonnull )path;
 + (UIColor * _Nonnull)AppConfigColor:( NSString * _Nonnull )path;
-+ (NSString * _Nonnull)AppConfigURL:( NSString * _Nonnull )path;
 + (void)sendTag:( NSString * _Nonnull )tag value:( NSString * _Nonnull )value;
 + (void)sendTags:( NSDictionary * _Nonnull )keyValuePair;
 + (void)sendTagsWithJsonString:( NSString * _Nonnull )jsonString;

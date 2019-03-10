@@ -55,14 +55,6 @@
     return color;
 }
 
-+ (NSString *)AppConfigURL:(NSString *)path {
-    NSString *urlString = [NSString stringWithString:[self AppConfig:[NSString stringWithFormat:@"URL.%@", path]]];
-    NSString *ccipTime = [NSString stringWithFormat:@"__ccip=%f", [[NSDate new] timeIntervalSince1970]];
-    NSString *ccipPattern = [urlString stringByReplacingOccurrencesOfString:@"__ccip=##random##" withString:ccipTime];
-    NSLog(@"Add CCIP timestamp: %@ -> %@", urlString, ccipPattern);
-    return ccipPattern;
-}
-
 + (void)sendTag:(NSString *)tag value:(NSString *)value {
     [OneSignal sendTag:tag
                  value:value];
