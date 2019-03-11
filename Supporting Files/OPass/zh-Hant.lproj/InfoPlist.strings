@@ -9,6 +9,7 @@
 
 CFBundleDisplayName = "OPass 通關";
 CFBundleName = "OPass 通關";
+NSBluetoothPeripheralUsageDescription = "使用藍牙連線來確認您是否在活動場地的 iBeacon 附近";
 NSLocationAlwaysUsageDescription = "使用您的地理位置來確認你是否可以使用入場卷";
 NSLocationWhenInUseUsageDescription = "使用您的地理位置來確認你是否可以使用入場卷";
 NSLocationAlwaysAndWhenInUseUsageDescription = "使用您的地理位置來確認你是否可以使用入場卷";
