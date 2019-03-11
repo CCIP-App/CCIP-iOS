@@ -1141,6 +1141,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6B2AEB7C1F23FF6F00C65868 /* OPass.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1202,6 +1203,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6B2AEB7B1F23FF6F00C65868 /* OPass.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
