@@ -38,10 +38,10 @@ extension Constants {
         return OPassAPI.eventInfo?.ServerBaseUrl.absoluteString ?? ""
     }
     @objc public static func URL_LANDING(token: String) -> String {
-        return URL_SERVER_BASE.appending("/landing?token=\(token)")
+        return Constants.URL_SERVER_BASE.appending("/landing?token=\(token)")
     }
     @objc public static func URL_STATUS(token: String) -> String {
-        return URL_SERVER_BASE.appending("/status?token=\(token)")
+        return Constants.URL_SERVER_BASE.appending("/status?token=\(token)")
     }
     private static func OPassURL(_ url: String) -> String {
         let opassTime = "__opass=\(0.seconds.fromNow.timeIntervalSince1970)"
@@ -57,7 +57,7 @@ extension Constants {
         return opassUrl
     }
     @objc public static var URL_LOGO_IMG: String {
-        return Constants.OPassURL(OPassAPI.eventInfo?.LogoUrl.absoluteString ?? "")
+        return OPassAPI.eventInfo?.LogoUrl.absoluteString ?? ""
     }
     @objc public static var URL_SCHEDULE: String {
         return Constants.OPassURL(OPassAPI.eventInfo?.ScheduleUrl.absoluteString ?? "")
