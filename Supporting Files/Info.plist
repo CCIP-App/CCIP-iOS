@@ -29,6 +29,11 @@
 			</array>
 		</dict>
 	</array>
+	<key>FirebaseDynamicLinksCustomDomains</key>
+	<array>
+		<string>https://dl.opass.app</string>
+		<string>https://opass.page.link</string>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(MAIN_BUILD_VERSION)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>

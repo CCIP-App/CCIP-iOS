@@ -7,6 +7,7 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:opass.app</string>
+		<string>applinks:dl.opass.app</string>
 		<string>applinks:opass.page.link</string>
 	</array>
 	<key>com.apple.developer.networking.HotspotConfiguration</key>
