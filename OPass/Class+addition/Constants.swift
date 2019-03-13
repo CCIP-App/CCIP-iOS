@@ -80,8 +80,12 @@ extension Constants {
     @objc public static var URL_PARTNERS_WEB: String {
         return Constants.OPassURL(OPassAPI.eventInfo?.Features.Partners!.absoluteString ?? "")
     }
-    @objc public static var URL_GAME: String {
-        return Constants.OPassURL(OPassAPI.eventInfo?.Features.Puzzle!.absoluteString ?? "")
+    @objc public static func URL_GAME(token: String) -> String {
+        var url = OPassAPI.eventInfo?.Features.Puzzle!.absoluteString ?? ""
+        if url.count > 0 {
+            url = url + token
+        }
+        return Constants.OPassURL(url)
     }
     @objc public static func GitHubRepo(_ repo: String) -> String {
         return String(format: "https://github.com/\(repo)")

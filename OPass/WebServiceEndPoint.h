@@ -14,8 +14,6 @@
 #define CC_USE(token, scenario) ([__API_HOST__ stringByAppendingFormat:@"/use/%@?token=%@", scenario, token])
 #define CC_ANNOUNCEMENT         ([__API_HOST__ stringByAppendingFormat:@"/announcement"])
 
-#define WEB_TOKEN(url, token)   ([NSString stringWithFormat:url, token])
-
 // Cache
 
 #define SCHEDULE_CACHE_CLEAR    (@"ClearScheduleContentCache")

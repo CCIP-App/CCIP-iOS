@@ -24,8 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)SendFIB:(id)fib;
 + (void)SendFIBEvent:(id)fib Event:(id)event;
 
-+ (NSString *)WebToken:(id)patten useToken:(id)token;
-
 + (NSString *)DashlineViewId;
 
 @end

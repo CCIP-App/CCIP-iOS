@@ -28,10 +28,6 @@
     SEND_FIB_EVENT(fib, event);
 }
 
-+ (NSString *)WebToken:(id)patten useToken:(id)token {
-    return WEB_TOKEN(patten, token);
-}
-
 + (NSString *)DashlineViewId {
     return DASHLINE_VIEW_ID;
 }
