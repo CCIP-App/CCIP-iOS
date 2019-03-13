@@ -143,18 +143,6 @@
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"DEV_MODE"];
 }
 
-+ (void)setDevLogo:(FBShimmeringView *)sView WithLogo:(UIImage *)logo {
-    BOOL isDevMode = [AppDelegate isDevMode];
-    [[sView contentView] setContentMode:UIViewContentModeScaleAspectFit];
-    if (isDevMode) {
-        [((UIImageView *)[sView contentView]) setImage:[logo imageWithColor:[self AppConfigColor:@"DevelopingLogoMaskColor"]]];
-    } else {
-        [((UIImageView *)[sView contentView]) setImage:logo];
-    }
-    [sView setShimmeringSpeed:115];
-    [sView setShimmering:isDevMode];
-}
-
 + (void)setLoginSession:(BOOL)isLogin {
     [[AppDelegate delegateInstance] setIsLoginSession:isLogin];
 }

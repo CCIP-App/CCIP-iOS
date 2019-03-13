@@ -11,6 +11,7 @@ import UIKit
 import WebKit
 import SafariServices
 import NJKWebViewProgress
+import Nuke
 
 protocol OPassWebViewIB {
     var goReloadButton: UIBarButtonItem? { get }
@@ -93,9 +94,8 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
 
         if (self.ShowLogo) {
             // set logo on nav title
-            let logoView = UIImageView.init(image: Constants.ConfLogo())
-            self.shimmeringLogoView = FBShimmeringView.init(frame: logoView.bounds)
-            self.shimmeringLogoView?.contentView = logoView
+            self.shimmeringLogoView = FBShimmeringView.init()
+            self.shimmeringLogoView?.contentView = UIImageView.init()
             self.navigationItem.titleView = self.shimmeringLogoView
         } else {
             self.navigationItem.titleView?.tintColor = AppDelegate.appConfigColor(self.titleTextColor)
@@ -146,7 +146,7 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.setWebViewConstraints()
-        AppDelegate.setDevLogo(self.shimmeringLogoView, withLogo: Constants.ConfLogo())
+        Constants.LoadDevLogoTo(view: self.shimmeringLogoView)
 
         self.reload(self)
     }

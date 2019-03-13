@@ -12,7 +12,7 @@ import SwiftDate
 import then
 import AFNetworking
 import SwiftyJSON
-import SDWebImage
+import Nuke
 import SafariServices
 
 @objc enum fontAwesomeStyle: Int {
@@ -117,16 +117,44 @@ extension Constants {
             }
         }
     }
-    @objc static func ConfLogo() -> UIImage {
-        let ig = Promise<UIImage> { resolve, reject in
-            let option: SDWebImageOptions = [ .allowInvalidSSLCertificates, .continueInBackground, .highPriority, .queryDiskDataSync, .retryFailed ]
-            UIImageView.init().sd_setImage(with: URL.init(string: URL_LOGO_IMG), placeholderImage: nil, options: option, completed: {
-                (image: UIImage?, error: Error?, cacheType: SDImageCacheType, url: URL?) in
-                resolve(image!)
-            })
+    @objc static func LoadDevLogoTo(view: FBShimmeringView?) {
+        if view != nil {
+            let isDevMode = AppDelegate.isDevMode()
+            let getDevLogo = { (resp: ImageResponse?) -> UIImage? in
+                if resp != nil {
+                    DispatchQueue.main.async {
+                        view!.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: resp!.image.size)
+                    }
+                }
+                if isDevMode {
+                    return resp?.image.imageWithColor(AppDelegate.appConfigColor("DevelopingLogoMaskColor"))
+                } else {
+                    return resp?.image
+                }
+            }
+            ImagePipeline.shared.loadImage(
+                with: URL.init(string: Constants.URL_LOGO_IMG)!,
+                progress: { response, _, _ in
+                    (view!.contentView as! UIImageView).image = getDevLogo(response)
+                },
+                completion: { response, _ in
+                    (view!.contentView as! UIImageView).image = getDevLogo(response)
+                }
+            )
+            view!.contentView.contentMode = .scaleAspectFit
+            view!.shimmeringSpeed = 115
+            view!.isShimmering = isDevMode
         }
-        let img = try! await(ig)
-        return img
+    }
+    @objc static func LoadInto(view: UIImageView, forURL url: URL, withPlaceholder placeholder: UIImage) {
+        Nuke.loadImage(
+            with: url,
+            options: ImageLoadingOptions(
+                placeholder: placeholder,
+                transition: .fadeIn(duration: 0.33)
+            ),
+            into: view
+        )
     }
     @objc static func AssertImage(name: String, InBundleName: String) -> UIImage? {
         return AssertImage(InBundleName, name)

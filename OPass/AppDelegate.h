@@ -61,7 +61,6 @@
 - (void)displayGreetingsForLogin;
 - (void)setScenarios:( NSArray * _Nonnull )scenarios;
 
-+ (void)setDevLogo:(FBShimmeringView * _Null_unspecified)sView WithLogo:(UIImage * _Null_unspecified)logo;
 + (void)setLoginSession:(BOOL)isLogin;
 + (NSDictionary * _Null_unspecified)parseScenarioType:(NSString * _Nonnull)id;
 

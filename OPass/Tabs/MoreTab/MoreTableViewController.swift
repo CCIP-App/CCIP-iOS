@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import AFNetworking
 import FontAwesome_swift
+import Nuke
 
 class MoreTableViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var moreTableView: UITableView?
@@ -30,9 +31,8 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // set logo on nav title
-        let logoView = UIImageView.init(image: Constants.ConfLogo())
-        self.shimmeringLogoView = FBShimmeringView.init(frame: logoView.bounds)
-        self.shimmeringLogoView!.contentView = logoView
+        self.shimmeringLogoView = FBShimmeringView.init()
+        self.shimmeringLogoView!.contentView = UIImageView.init()
         self.navigationItem.titleView = self.shimmeringLogoView
 
         let nvBar = self.navigationController?.navigationBar
@@ -96,7 +96,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        AppDelegate.setDevLogo(self.shimmeringLogoView, withLogo: Constants.ConfLogo())
+        Constants.LoadDevLogoTo(view: self.shimmeringLogoView)
     }
 
     override func didReceiveMemoryWarning() {
@@ -133,12 +133,11 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
                 if !AppDelegate.isDevMode() {
                     NSLog("-- Enable DEV_MODE --")
                     AppDelegate.setIsDevMode(true)
-                    AppDelegate.setDevLogo(self.shimmeringLogoView, withLogo: Constants.ConfLogo().imageWithColor(UIColor.white))
                 } else {
                     NSLog("-- Disable DEV_MODE --")
                     AppDelegate.setIsDevMode(false)
-                    AppDelegate.setDevLogo(self.shimmeringLogoView, withLogo: Constants.ConfLogo())
                 }
+                Constants.LoadDevLogoTo(view: self.shimmeringLogoView)
             }
         } else {
             NSLog("--  Failed, just tap %2d times  --", tap.tapTimes)

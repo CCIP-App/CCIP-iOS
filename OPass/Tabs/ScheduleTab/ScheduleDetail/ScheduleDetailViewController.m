@@ -6,7 +6,6 @@
 //  Copyright © 2017年 CPRTeam. All rights reserved.
 //
 
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "AppDelegate.h"
 #import "ScheduleDetailViewController.h"
@@ -174,9 +173,9 @@
     NSLog(@"Loading Speaker Photo -> %@ (Parsed as %@)", speakerPhoto, speakerPhotoURL);
     FSPagerViewCell *cell = [pagerView dequeueReusableCellWithReuseIdentifier:@"cell" atIndex:index];
     [cell.imageView setContentMode:UIViewContentModeScaleAspectFit];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[speaker objectForKey:@"avatar"]]
-                      placeholderImage:defaultIcon
-                               options:SDWebImageRefreshCached];
+    [Constants LoadIntoView:cell.imageView
+                     forURL:[NSURL URLWithString:[speaker objectForKey:@"avatar"]]
+            withPlaceholder:defaultIcon];
 //    [cell.textLabel setText:[[speaker objectForKey:[AppDelegate shortLangUI]] objectForKey:@"name"]];
     [self.lbSpeakerName setText:[[speaker objectForKey:[AppDelegate shortLangUI]] objectForKey:@"name"]];
     return cell;

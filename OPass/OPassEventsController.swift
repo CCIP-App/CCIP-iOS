@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MBProgressHUD
 import then
-import SDWebImage
+import Nuke
 
 class OPassEventsController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     var progress: MBProgressHUD = MBProgressHUD.init()
@@ -100,7 +100,14 @@ class OPassEventsController : UIViewController, UITableViewDelegate, UITableView
         let event = self.opassEvents[indexPath.row]
         cell!.EventId = event.EventId
         cell!.EventName.text = event.DisplayName.zh
-        cell!.EventLogo.sd_setImage(with: event.LogoUrl, placeholderImage: Constants.AssertImage("PassAssets", "StaffIconDefault"))
+        Nuke.loadImage(
+            with: event.LogoUrl,
+            options: ImageLoadingOptions(
+                placeholder: Constants.AssertImage("PassAssets", "StaffIconDefault"),
+                transition: .fadeIn(duration: 0.33)
+            ),
+            into: cell!.EventLogo
+        )
         let durations: [TimeInterval] = [0.26, 0.2, 0.2]
         cell!.durationsForExpandedState = durations
         cell!.durationsForCollapsedState = durations

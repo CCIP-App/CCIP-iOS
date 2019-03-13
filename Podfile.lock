@@ -92,10 +92,8 @@ PODS:
     - NJKWebViewProgress/ProgressView (= 0.2.3)
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
+  - Nuke (7.5.2)
   - OneSignal (2.9.5)
-  - SDWebImage (5.0.0-beta5):
-    - SDWebImage/Core (= 5.0.0-beta5)
-  - SDWebImage/Core (5.0.0-beta5)
   - Shimmer (1.0.2)
   - STPopup (1.8.3)
   - swift_qrcodejs (1.0.1)
@@ -126,8 +124,8 @@ DEPENDENCIES:
   - iVersion (~> 1.11)
   - MBProgressHUD (~> 1.1)
   - NJKWebViewProgress (~> 0.2)
+  - Nuke (~> 7.0)
   - OneSignal (~> 2.9)
-  - SDWebImage (~> 5.0.0-beta5)
   - Shimmer (~> 1.0)
   - STPopup (~> 1.7)
   - SwiftDate
@@ -164,8 +162,8 @@ SPEC REPOS:
     - MBProgressHUD
     - nanopb
     - NJKWebViewProgress
+    - Nuke
     - OneSignal
-    - SDWebImage
     - Shimmer
     - STPopup
     - swift_qrcodejs
@@ -217,8 +215,8 @@ SPEC CHECKSUMS:
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
+  Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
   OneSignal: ccdeb961882f8668305e5b694e2cb7cb325fc907
-  SDWebImage: fd609df53c0f55fdcd4705bd14c01c9d5c348d0c
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STPopup: da1167250a01584af7bcccb898653185f223ec46
   swift_qrcodejs: c181fe5c849d30c699546a23762d7e3dd143ab37
@@ -229,6 +227,6 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: de0f3189f918fbc6ad44da8de3cb0e022a73485c
+PODFILE CHECKSUM: d7b851fd853f1ec8450838c91d3eab5773a2b697
 
 COCOAPODS: 1.7.0.beta.1
