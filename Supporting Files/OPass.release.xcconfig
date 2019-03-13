@@ -1,8 +1,8 @@
 MAIN_PRODUCT_BUNDLE_IDENTIFIER              = app.opass.ccip
 WATCH_PRODUCT_BUNDLE_IDENTIFIER             = $(MAIN_PRODUCT_BUNDLE_IDENTIFIER).watchkitapp
 WATCH_EXTENSION_PRODUCT_BUNDLE_IDENTIFIER   = $(WATCH_PRODUCT_BUNDLE_IDENTIFIER).watchkitextension
-MAIN_BUILD_VERSION                          = 3.0.984
-MAIN_BUILD_SHORT_VERSION                    = 3.0.984
+MAIN_BUILD_VERSION                          = 3.0.986
+MAIN_BUILD_SHORT_VERSION                    = 3.0.986
 APP_NAME                                    = '(@"OPass")'
 APP_GROUP_ID                                = group.app.opass.ccip
 APP_SCHEME                                  = opass
