@@ -300,7 +300,7 @@ struct ScheduleInfo {
         }
     }
 
-    @objc static func CleanupEvents() {
+    static func CleanupEvents() {
         eventInfo = nil
         currentEvent = ""
     }
