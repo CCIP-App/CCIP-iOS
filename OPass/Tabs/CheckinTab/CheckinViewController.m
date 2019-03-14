@@ -108,8 +108,8 @@
 
     [[[AppDelegate delegateInstance] beacon] checkAvailableAndRequestAuthorization];
     [[[AppDelegate delegateInstance] beacon] registerBeaconRegionWithUUIDWithUuidString:BEACON_UUID
-                                                                        identifier:BEACON_ID
-                                                                         isMonitor:YES];
+                                                                             identifier:BEACON_ID
+                                                                              isMonitor:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
