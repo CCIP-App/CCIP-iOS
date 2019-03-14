@@ -376,9 +376,9 @@ struct ScheduleInfo {
                             AppDelegate.setLoginSession(true)
                             AppDelegate.setAccessToken(token)
                             AppDelegate.delegateInstance().checkinView.reloadCard()
-                            completion?(true, json, OPassSuccessError)
+                            completion?(true, json.dictionaryObject, OPassSuccessError)
                         } else {
-                            completion?(false, json, NSError(domain: "OPass Redeem Code Invalid", code: 3, userInfo: nil))
+                            completion?(false, json.dictionaryObject, NSError(domain: "OPass Redeem Code Invalid", code: 3, userInfo: nil))
                         }
                     }
                 } else {
@@ -397,10 +397,25 @@ struct ScheduleInfo {
             OPassAPI.InitializeRequest(Constants.URL_STATUS(token: token)) { retryCount, retryMax, error, responsed in
                 completion?(false, nil, error)
             }.then { (obj: Any?) -> Void in
-                completion?(true, obj, OPassSuccessError)
+                if obj != nil {
+                    switch String(describing: type(of: obj!)) {
+                    case OPassNonSuccessDataResponse.className:
+                        let sr = obj as! OPassNonSuccessDataResponse
+                        completion?(false, sr, NSError(domain: "OPass Current Not in Event or Not a Valid Token", code: 4, userInfo: nil))
+                    default:
+                        let json = JSON(obj!)
+                        if json["user_id"].stringValue != "" {
+                            completion?(true, json.dictionaryObject, OPassSuccessError)
+                        } else {
+                            completion?(false, json.dictionaryObject, NSError(domain: "OPass Current Not in Event or Not a Valid Token", code: 3, userInfo: nil))
+                        }
+                    }
+                } else {
+                    completion?(false, obj, NSError(domain: "OPass Current Not in Event or Not a Valid Token", code: 2, userInfo: nil))
+                }
             }
         } else {
-            completion?(false, nil, NSError(domain: "OPass Current Not in Event and No Valid Token", code: 1, userInfo: nil))
+            completion?(false, nil, NSError(domain: "OPass Current Not in Event or Not a Valid Token", code: 1, userInfo: nil))
         }
     }
 

@@ -356,35 +356,38 @@
                 [[AppDelegate delegateInstance] setScenarios:self.scenarios];
                 [self reloadAndGoToCard];
             } else {
+                if (obj == nil) {
+                    return;
+                }
                 OPassNonSuccessDataResponse *sr = (OPassNonSuccessDataResponse *)obj;
                 id responseObject = sr.Obj;
                 switch (sr.Response.statusCode) {
-                        case 400: {
-                            if (responseObject != nil) {
-                                if ([[responseObject objectForKey:@"message"] isEqual:@"invalid token"]) {
-                                    NSLog(@"%@", [responseObject objectForKey:@"message"]);
+                    case 400: {
+                        if (responseObject != nil) {
+                            if ([[responseObject objectForKey:@"message"] isEqual:@"invalid token"]) {
+                                NSLog(@"%@", [responseObject objectForKey:@"message"]);
 
-                                    [AppDelegate setAccessToken:@""];
+                                [AppDelegate setAccessToken:@""];
 
-                                    UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"InvalidTokenAlert", nil)
-                                                                                withMessage:NSLocalizedString(@"InvalidTokenDesc", nil)
-                                                                           cancelButtonText:NSLocalizedString(@"GotIt", nil)
-                                                                                cancelStyle:UIAlertActionStyleCancel
-                                                                               cancelAction:^(UIAlertAction *action) {
-                                                                                   [self reloadCard];
-                                                                               }];
-                                    [ac showAlert:^{
-                                        [AppDelegate triggerFeedback:NotificationFeedbackError];
-                                    }];
-                                }
+                                UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"InvalidTokenAlert", nil)
+                                                                            withMessage:NSLocalizedString(@"InvalidTokenDesc", nil)
+                                                                       cancelButtonText:NSLocalizedString(@"GotIt", nil)
+                                                                            cancelStyle:UIAlertActionStyleCancel
+                                                                           cancelAction:^(UIAlertAction *action) {
+                                                                               [self reloadCard];
+                                                                           }];
+                                [ac showAlert:^{
+                                    [AppDelegate triggerFeedback:NotificationFeedbackError];
+                                }];
                             }
-                            break;
                         }
-                        case 403: {
-                            [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg"
-                                                      sender:NSLocalizedString(@"Networking_WrongWiFi", nil)];
-                            break;
-                        }
+                        break;
+                    }
+                    case 403: {
+                        [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg"
+                                                  sender:NSLocalizedString(@"Networking_WrongWiFi", nil)];
+                        break;
+                    }
                     default: {
                         // Invalid Network
                         [self performSegueWithIdentifier:@"ShowInvalidNetworkMsg"
