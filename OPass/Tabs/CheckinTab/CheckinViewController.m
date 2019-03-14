@@ -65,10 +65,8 @@
     [[AppDelegate delegateInstance] setCheckinView:self];
     
     // set logo on nav title
-    UIView *logoView = [[UIImageView alloc] initWithImage:[Constants AssertImageWithName:@"conf-logo"
-                                                                            InBundleName:@"AssetsUI"]];
-    self.shimmeringLogoView = [[FBShimmeringView alloc] initWithFrame:logoView.bounds];
-    [self.shimmeringLogoView setContentView:logoView];
+    self.shimmeringLogoView = [[FBShimmeringView alloc] init];
+    [self.shimmeringLogoView setContentView:[UIImageView init]];
 //    [self.navigationItem setTitleView:self.shimmeringLogoView];
     
     // Init configure pageControl
