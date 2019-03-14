@@ -66,7 +66,7 @@
     
     // set logo on nav title
     self.shimmeringLogoView = [[FBShimmeringView alloc] init];
-    [self.shimmeringLogoView setContentView:[UIImageView init]];
+    [self.shimmeringLogoView setContentView:[[UIImageView alloc] init]];
 //    [self.navigationItem setTitleView:self.shimmeringLogoView];
     
     // Init configure pageControl
