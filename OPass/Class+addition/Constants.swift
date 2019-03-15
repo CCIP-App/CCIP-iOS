@@ -121,34 +121,36 @@ extension Constants {
             }
         }
     }
-    @objc static func LoadDevLogoTo(view: FBShimmeringView?) {
-        if view != nil {
-            let isDevMode = AppDelegate.isDevMode()
-            let getDevLogo = { (resp: ImageResponse?) -> UIImage? in
-                if resp != nil {
-                    DispatchQueue.main.async {
-                        view!.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: resp!.image.size)
-                    }
-                }
+    @objc static func LoadDevLogoTo(view: FBShimmeringView) {
+        let isDevMode = AppDelegate.isDevMode()
+        let setDevLogo = { (resp: ImageResponse?) in
+            let image = resp?.image
+            if image != nil {
+                var img = image!
                 if isDevMode {
-                    return resp?.image.imageWithColor(AppDelegate.appConfigColor("DevelopingLogoMaskColor"))
-                } else {
-                    return resp?.image
+                    img = img.imageWithColor(AppDelegate.appConfigColor("DevelopingLogoMaskColor"))
+                }
+                if resp != nil {
+                    if view.contentView == nil {
+                        view.contentView = UIImageView.init(image: img)
+                    } else {
+                        (view.contentView as! UIImageView).image = img
+                    }
+                    view.contentView.contentMode = .scaleAspectFit
                 }
             }
-            ImagePipeline.shared.loadImage(
-                with: URL.init(string: Constants.URL_LOGO_IMG)!,
-                progress: { response, _, _ in
-                    (view!.contentView as! UIImageView).image = getDevLogo(response)
-                },
-                completion: { response, _ in
-                    (view!.contentView as! UIImageView).image = getDevLogo(response)
-                }
-            )
-            view!.contentView.contentMode = .scaleAspectFit
-            view!.shimmeringSpeed = 115
-            view!.isShimmering = isDevMode
         }
+        ImagePipeline.shared.loadImage(
+            with: URL.init(string: Constants.URL_LOGO_IMG)!,
+            progress: { response, _, _ in
+                setDevLogo(response)
+            },
+            completion: { response, _ in
+                setDevLogo(response)
+            }
+        )
+        view.shimmeringSpeed = 115
+        view.isShimmering = isDevMode
     }
     @objc static func LoadInto(view: UIImageView, forURL url: URL, withPlaceholder placeholder: UIImage) {
         Nuke.loadImage(

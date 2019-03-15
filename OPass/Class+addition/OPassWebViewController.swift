@@ -62,7 +62,7 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
 
     /* fake dummy obj */ private var ShowLogo: Bool = false
 
-    private var shimmeringLogoView: FBShimmeringView?
+    private var shimmeringLogoView: FBShimmeringView = FBShimmeringView.init(frame: CGRect(x: 0, y: 0, width: 500, height: 50))
     private var webView: WKWebView?
     private var progressView: NJKWebViewProgressView?
 
@@ -94,8 +94,6 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
 
         if (self.ShowLogo) {
             // set logo on nav title
-            self.shimmeringLogoView = FBShimmeringView.init()
-            self.shimmeringLogoView?.contentView = UIImageView.init()
             self.navigationItem.titleView = self.shimmeringLogoView
         } else {
             self.navigationItem.titleView?.tintColor = AppDelegate.appConfigColor(self.titleTextColor)

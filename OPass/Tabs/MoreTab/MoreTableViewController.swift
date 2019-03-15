@@ -14,7 +14,7 @@ import Nuke
 
 class MoreTableViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var moreTableView: UITableView?
-    var shimmeringLogoView: FBShimmeringView?
+    var shimmeringLogoView: FBShimmeringView = FBShimmeringView.init(frame: CGRect(x: 0, y: 0, width: 500, height: 50))
     var userInfo: NSDictionary?
     var moreItems: NSArray?
     var switchEventButton: UIBarButtonItem?
@@ -31,8 +31,10 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // set logo on nav title
-        self.shimmeringLogoView = FBShimmeringView.init()
-        self.shimmeringLogoView!.contentView = UIImageView.init()
+        self.shimmeringLogoView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(navSingleTap))
+        tapGesture.numberOfTapsRequired = 1
+        self.shimmeringLogoView.addGestureRecognizer(tapGesture)
         self.navigationItem.titleView = self.shimmeringLogoView
 
         let nvBar = self.navigationController?.navigationBar
@@ -49,11 +51,6 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         self.userInfo = AppDelegate.delegateInstance().userInfo as NSDictionary?
 
         Constants.sendFIB("MoreTableViewController");
-
-        self.navigationItem.titleView?.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(navSingleTap))
-        tapGesture.numberOfTapsRequired = 1
-        self.navigationItem.titleView?.addGestureRecognizer(tapGesture)
 
         self.moreItems = [
             OPassAPI.eventInfo?.Features.Puzzle != nil
@@ -92,11 +89,11 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        Constants.LoadDevLogoTo(view: self.shimmeringLogoView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Constants.LoadDevLogoTo(view: self.shimmeringLogoView)
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,7 +124,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
 
         if (tap.newTapTime!.timeIntervalSince(tap.oldTapTime!) <= 0.25) {
             tap.tapTimes += 1
-            if (tap.tapTimes == 10) {
+            if (tap.tapTimes >= 10) {
                 NSLog("--  Success tap 10 times  --")
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
                 if !AppDelegate.isDevMode() {
@@ -138,6 +135,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
                     AppDelegate.setIsDevMode(false)
                 }
                 Constants.LoadDevLogoTo(view: self.shimmeringLogoView)
+                tap.tapTimes = 1
             }
         } else {
             NSLog("--  Failed, just tap %2d times  --", tap.tapTimes)

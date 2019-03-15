@@ -19,8 +19,6 @@
 
 @interface CheckinViewController()
 
-@property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
-
 @property (strong, nonatomic) IBOutlet iCarousel *cards;
 @property (weak, nonatomic) IBOutlet UIImageView *ivRectangle;
 @property (weak, nonatomic) IBOutlet UIImageView *ivUserPhoto;
@@ -63,11 +61,6 @@
     [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
     
     [[AppDelegate delegateInstance] setCheckinView:self];
-    
-    // set logo on nav title
-    self.shimmeringLogoView = [[FBShimmeringView alloc] init];
-    [self.shimmeringLogoView setContentView:[[UIImageView alloc] init]];
-//    [self.navigationItem setTitleView:self.shimmeringLogoView];
     
     // Init configure pageControl
     self.pageControl = [UIPageControl new];
@@ -115,7 +108,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.controllerTopStart = self.navigationController.navigationBar.frame.size.height;
-    [Constants LoadDevLogoToView:self.shimmeringLogoView];
     [self handleQRButton];
 }
 
