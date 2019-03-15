@@ -178,7 +178,7 @@
         //NSLog(@"navSingleTap from MoreTab");
         if ([newTapTime timeIntervalSinceDate: oldTapTime] <= 0.25f) {
             tapTimes++;
-            if (tapTimes == 10) {
+            if (tapTimes >= 10) {
                 NSLog(@"--  Success tap 10 times  --");
                 if ([AppDelegate haveAccessToken]) {
                     NSLog(@"-- Clearing the Token --");
@@ -188,9 +188,9 @@
                 } else {
                     NSLog(@"-- Token is already clear --");
                 }
+                tapTimes = 1;
             }
-        }
-        else {
+        } else {
             NSLog(@"--  Failed, just tap %2d times  --", tapTimes);
             NSLog(@"-- Not trigger clean token --");
             tapTimes = 1;
