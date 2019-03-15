@@ -17,8 +17,6 @@
 
 @interface AnnounceTableViewController ()
 
-@property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
-
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @property (readwrite, nonatomic) BOOL loaded;
@@ -70,7 +68,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.controllerTopStart = self.navigationController.navigationBar.frame.size.height;
-    [Constants LoadDevLogoToView:self.shimmeringLogoView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
