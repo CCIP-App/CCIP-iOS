@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.59" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oIA-0H-5s9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oIA-0H-5s9">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.45"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -955,7 +955,7 @@ Please copy and paste the token into next field or click the token link in the r
                                 <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AnnounceCell" rowHeight="250" id="Hmk-Qi-7k1" customClass="AnnounceTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AnnounceCell" rowHeight="250" id="Hmk-Qi-7k1" customClass="AnnounceTableViewCell" customModule="OPass" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hmk-Qi-7k1" id="w2s-YF-NQD">
@@ -1038,13 +1038,6 @@ Label2</string>
                                                                         <constraint firstItem="Rr4-Vd-sfs" firstAttribute="centerY" secondItem="SNU-eU-Q7I" secondAttribute="centerY" id="x5a-2f-ApZ"/>
                                                                         <constraint firstItem="SNU-eU-Q7I" firstAttribute="top" secondItem="h6R-CC-0vL" secondAttribute="bottom" constant="18" id="xZC-GZ-KgN"/>
                                                                     </constraints>
-                                                                    <connections>
-                                                                        <outletCollection property="fd_collapsibleConstraints" destination="EPp-Ia-L9I" id="Cwa-HI-nb3"/>
-                                                                        <outletCollection property="fd_collapsibleConstraints" destination="TwP-QJ-ooI" id="qSj-RF-wYq"/>
-                                                                        <outletCollection property="fd_collapsibleConstraints" destination="J82-hB-vmj" id="ldh-9y-vyh"/>
-                                                                        <outletCollection property="fd_collapsibleConstraints" destination="G4q-tH-hTP" id="tup-zv-oQt"/>
-                                                                        <outletCollection property="fd_collapsibleConstraints" destination="fLl-QM-Prf" id="Myz-54-des"/>
-                                                                    </connections>
                                                                 </view>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1080,15 +1073,20 @@ Label2</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="lbIconOfURL" destination="SNU-eU-Q7I" id="LzT-n6-EOd"/>
-                                            <outlet property="lbMessage" destination="WLc-nf-nhY" id="4TU-mA-4AW"/>
-                                            <outlet property="lbMessageTime" destination="Kxe-Os-o2e" id="B0P-vY-XZp"/>
-                                            <outlet property="lbURL" destination="Rr4-Vd-sfs" id="AQG-qK-ZxB"/>
-                                            <outlet property="vwContent" destination="iBr-Sr-bSh" id="btH-pa-3N3"/>
-                                            <outlet property="vwDashedLine" destination="h6R-CC-0vL" id="Ea3-dq-YI8"/>
-                                            <outlet property="vwMessageTime" destination="sM4-Gr-Gtv" id="NY8-YV-ubq"/>
-                                            <outlet property="vwShadowContent" destination="p62-4l-CHO" id="zvL-UY-khL"/>
-                                            <outlet property="vwURL" destination="CRG-R0-5sb" id="O9o-nk-lBl"/>
+                                            <outlet property="lbIconOfURL" destination="SNU-eU-Q7I" id="Yzb-5f-9Pk"/>
+                                            <outlet property="lbMessage" destination="WLc-nf-nhY" id="4S2-Al-Ng5"/>
+                                            <outlet property="lbMessageTime" destination="Kxe-Os-o2e" id="3JQ-3j-x2N"/>
+                                            <outlet property="lbURL" destination="Rr4-Vd-sfs" id="x9O-9A-Aos"/>
+                                            <outlet property="vwContent" destination="iBr-Sr-bSh" id="Umq-ma-KUp"/>
+                                            <outlet property="vwDashedLine" destination="h6R-CC-0vL" id="aI7-81-9xe"/>
+                                            <outlet property="vwMessageTime" destination="sM4-Gr-Gtv" id="Ny0-jM-RK6"/>
+                                            <outlet property="vwShadowContent" destination="p62-4l-CHO" id="bRh-YL-KNs"/>
+                                            <outlet property="vwURL" destination="CRG-R0-5sb" id="s2J-ii-BEJ"/>
+                                            <outletCollection property="fd_collapsibleConstraints" destination="EPp-Ia-L9I" collectionClass="NSMutableArray" id="cHT-TH-GbF"/>
+                                            <outletCollection property="fd_collapsibleConstraints" destination="TwP-QJ-ooI" collectionClass="NSMutableArray" id="uyV-S3-fq6"/>
+                                            <outletCollection property="fd_collapsibleConstraints" destination="J82-hB-vmj" collectionClass="NSMutableArray" id="Osf-1E-7gb"/>
+                                            <outletCollection property="fd_collapsibleConstraints" destination="G4q-tH-hTP" collectionClass="NSMutableArray" id="WPq-8W-5kt"/>
+                                            <outletCollection property="fd_collapsibleConstraints" destination="fLl-QM-Prf" collectionClass="NSMutableArray" id="P3y-Xf-kwH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
