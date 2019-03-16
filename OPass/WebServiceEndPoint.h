@@ -8,11 +8,6 @@
 
 #define __TIMEOUT_INTERVAL__    (15)
 
-
-#define __API_HOST__            ([Constants URL_SERVER_BASE])
-
-#define CC_USE(token, scenario) ([__API_HOST__ stringByAppendingFormat:@"/use/%@?token=%@", scenario, token])
-
 // Cache
 
 #define SCHEDULE_CACHE_CLEAR    (@"ClearScheduleContentCache")

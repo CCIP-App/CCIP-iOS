@@ -58,7 +58,9 @@
     
     __block AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     void (^use)(void) = ^{
-        NSURL *url = [NSURL URLWithString:CC_USE([AppDelegate accessToken], self.id)];
+        NSString *useURL = [Constants URL_USEWithToken:[AppDelegate accessToken]
+                                              scenario:self.id];
+        NSURL *url = [NSURL URLWithString:useURL];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
             NSLog(@"JSON: %@", responseObject);

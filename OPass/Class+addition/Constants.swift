@@ -43,6 +43,9 @@ extension Constants {
     @objc public static func URL_STATUS(token: String) -> String {
         return Constants.URL_SERVER_BASE.appending("/status?token=\(token)")
     }
+    @objc public static func URL_USE(token: String, scenario: String) -> String {
+        return Constants.URL_SERVER_BASE.appending("/use/\(scenario)?token=\(token)")
+    }
     public static var URL_ANNOUNCEMENT: String {
         return Constants.URL_SERVER_BASE.appending("/announcement")
     }
