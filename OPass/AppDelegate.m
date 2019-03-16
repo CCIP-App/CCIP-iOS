@@ -12,14 +12,11 @@
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import <ScanditBarcodeScanner/ScanditBarcodeScanner.h>
 #import <Appirater/Appirater.h>
-//#import <iRate/iRate.h>
 #import <iVersion/iVersion.h>
 #import <AFNetworking/AFNetworking.h>
 #import "AppDelegate.h"
 #import "GuideViewController.h"
 #import "NSData+PMUtils.h"
-
-#define SCANDIT_APP_KEY             (@"2BXy4CfQi9QFc12JnjId7mHH58SdYzNC90Uo07luUUY")
 
 @interface AppDelegate () <UISplitViewControllerDelegate, UNUserNotificationCenterDelegate>
 
@@ -331,8 +328,8 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     NSLog(@"User Token: <%@>", [AppDelegate accessToken]);
     
     // Provide the app key for your scandit license.
-    [SBSLicense setAppKey:SCANDIT_APP_KEY];
-    
+    [SBSLicense setAppKey:[AppDelegate AppConfig:@"scandit"]];
+
     [self registerAppIconArt];
     [self setDefaultShortcutItems];
     
