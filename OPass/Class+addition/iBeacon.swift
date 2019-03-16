@@ -11,8 +11,8 @@ import CoreLocation
 import CoreBluetooth
 import DLLocalNotifications
 
-let beaconUUID = Constants.beaconUUID()
-let beaconID = Constants.beaconID()
+let beaconUUID = Constants.beaconUUID
+let beaconID = Constants.beaconID
 let beaconService = CBUUID(string: "0x180A")
 let beaconServiceID = CBUUID(string: "0x2A23")
 let beaconDisplayName = "USBeacon"

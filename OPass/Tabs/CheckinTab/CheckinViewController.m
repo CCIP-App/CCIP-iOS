@@ -99,8 +99,8 @@
                                                object:nil];
 
     [[[AppDelegate delegateInstance] beacon] checkAvailableAndRequestAuthorization];
-    [[[AppDelegate delegateInstance] beacon] registerBeaconRegionWithUUIDWithUuidString:BEACON_UUID
-                                                                             identifier:BEACON_ID
+    [[[AppDelegate delegateInstance] beacon] registerBeaconRegionWithUUIDWithUuidString:[Constants beaconUUID]
+                                                                             identifier:[Constants beaconID]
                                                                               isMonitor:YES];
 }
 

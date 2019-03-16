@@ -11,24 +11,5 @@
 
 @implementation Constants
 
-#pragma mark - DEFINE
-+ (NSString *)beaconUUID {
-    return BEACON_UUID;
-}
-+ (NSString *)beaconID {
-    return BEACON_ID;
-}
-
-+ (void)SendFIB:(id)fib {
-    SEND_FIB(fib);
-}
-
-+ (void)SendFIBEvent:(id)fib Event:(id)event {
-    SEND_FIB_EVENT(fib, event);
-}
-
-+ (NSString *)DashlineViewId {
-    return DASHLINE_VIEW_ID;
-}
 
 @end
