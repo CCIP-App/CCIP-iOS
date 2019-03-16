@@ -43,6 +43,9 @@ extension Constants {
     @objc public static func URL_STATUS(token: String) -> String {
         return Constants.URL_SERVER_BASE.appending("/status?token=\(token)")
     }
+    public static var URL_ANNOUNCEMENT: String {
+        return Constants.URL_SERVER_BASE.appending("/announcement")
+    }
     private static func OPassURL(_ url: String) -> String {
         let opassTime = "__opass=\(0.seconds.fromNow.timeIntervalSince1970)"
         var opassUrl = url.replacingOccurrences(of: "__opass=##random##", with: opassTime)
@@ -192,6 +195,9 @@ extension Constants {
         // TODO: mapping from define file from event config
         return namePrefix as? String ?? ""
     }
+    @objc static func DateFromUnix(_ unixInt: Int) -> Date {
+        return Date(seconds: TimeInterval(unixInt), region: Region.local)
+    }
     @objc static func DateFromString(_ dateString: String) -> Date {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
         let isodate = dateString.toISODate(region: local)?.timeIntervalSince1970 ?? 0
@@ -210,5 +216,9 @@ extension Constants {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
         let format = String.init(format: "%@ %@", AppDelegate.appConfig("DisplayDateFormat") as! String, AppDelegate.appConfig("DisplayTimeFormat") as! String)
         return DateInRegion(date, region: local).toFormat(format)
+    }
+    @objc static func DateToDisplayDateAndTimeString(_ date: Date) -> String {
+        let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
+        return DateInRegion(date, region: local).toFormat(AppDelegate.appConfig("DisplayDateTimeFormat") as! String)
     }
 }
