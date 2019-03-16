@@ -12,7 +12,6 @@
 #import "AppDelegate.h"
 #import "CheckinCardViewController.h"
 #import "CheckinViewController.h"
-#import "AfterEventViewController.h"
 #import "GuideViewController.h"
 #import "StatusViewController.h"
 
@@ -797,23 +796,7 @@
 
         [temp setDelegate:self];
         [temp setScenario:scenario];
-//        } else if ([[[AppDelegate appDelegate] availableDays] count] > 0 && [AppDelegate isAfterEvent]) {
-//            AfterEventViewController *temp = (AfterEventViewController *)[storyboard instantiateViewControllerWithIdentifier:@"AfterEventCardReuseView"];
-//
-//            [temp.view setFrame:cardRect];
-//            view = temp.view;
     }
-    //} else {
-        //get a reference to the label in the recycled view
-        //        label = (UILabel *)[view viewWithTag:1];
-    //}
-    
-    //set item label
-    //remember to always set any properties of your carousel item
-    //views outside of the `if (view == nil) {...}` check otherwise
-    //you'll get weird issues with carousel item content appearing
-    //in the wrong place in the carousel
-    //    label.text = [_items[index] stringValue];
     
     return view;
 }

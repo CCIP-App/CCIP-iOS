@@ -52,13 +52,9 @@
         CheckinViewController *cvc = (CheckinViewController *)[[mnvc childViewControllers] firstObject];
         CGFloat topStart = [cvc controllerTopStart];
         self.view.frame = CGRectMake(0.0f,
-                                     -1.0f * topStart,
+                                     0.0f - topStart,
                                      self.view.frame.size.width,
                                      self.view.frame.size.height + topStart);
-//        self.view.superview.frame = CGRectMake(0.0f,
-//                                               topStart,
-//                                               self.view.frame.size.width,
-//                                               self.view.frame.size.height + X_TOP(0.0f, 22.0f));
         self.isRelayout = true;
     }
 }
