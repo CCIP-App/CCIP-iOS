@@ -37,24 +37,24 @@ class OPassEventsController : UIViewController, UITableViewDelegate, UITableView
             self.progress.label.text = "[\(retryCount)/\(retryMax)] \(error.localizedDescription)"
         }).then { (events: Array<EventShortInfo>) in
             self.opassEvents = events
-            }.then { _ in
-                if self.firstLoad {
-                    self.veView.alpha = 0
-                    self.veView.isHidden = false
-                }
-                UIView.animate(withDuration: 1, animations: {
-                    self.veView.alpha = 1
-                }, completion: { (finished: Bool) in
-                    self.eventsTable.reloadData()
-                })
-            }.then { _ in
-                self.progress.label.text = ""
-                self.progress.hide(animated: true)
-            }.then { _ in
-                if self.firstLoad && self.opassEvents.count == 1 {
-                    let _ = self.LoadEvent(self.opassEvents.first!.EventId)
-                    self.firstLoad = false
-                }
+        }.then { _ in
+            if self.firstLoad {
+                self.veView.alpha = 0
+                self.veView.isHidden = false
+            }
+            UIView.animate(withDuration: 1, animations: {
+                self.veView.alpha = 1
+            }, completion: { (finished: Bool) in
+                self.eventsTable.reloadData()
+            })
+        }.then { _ in
+            self.progress.label.text = ""
+            self.progress.hide(animated: true)
+        }.then { _ in
+            if self.firstLoad && self.opassEvents.count == 1 {
+                let _ = self.LoadEvent(self.opassEvents.first!.EventId)
+                self.firstLoad = false
+            }
         }
     }
 
