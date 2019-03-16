@@ -13,8 +13,6 @@
 
 @interface ScheduleViewController ()
 
-@property (strong, nonatomic) FBShimmeringView *shimmeringLogoView;
-
 @end
 
 @implementation ScheduleViewController
@@ -86,7 +84,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [Constants LoadDevLogoToView:self.shimmeringLogoView];
 }
 
 - (void)showFavoritesTouchDown {
