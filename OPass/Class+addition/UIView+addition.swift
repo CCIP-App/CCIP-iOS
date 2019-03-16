@@ -9,7 +9,15 @@
 import Foundation
 import UIKit
 
-@objc extension UIView { // DashedLine and linear diagonal gradient
+@objc extension UIView {
+    var topGuideHeight: CGFloat {
+        return (self.next as! UIViewController).topGuideHeight
+    }
+
+    var bottomGuideHeight: CGFloat {
+        return (self.next as! UIViewController).bottomGuideHeight
+    }
+    // DashedLine and linear diagonal gradient
     @objc static let DASHLINE_VIEW_ID: String = "DashedLine"
     func addDashedLine(_ color : UIColor) {
         for layer in self.layer.sublayers ?? [] {

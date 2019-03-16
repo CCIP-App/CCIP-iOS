@@ -9,18 +9,8 @@
 import Foundation
 import UIKit
 
-@objc extension UIView {
-    func topGuideHeight() -> CGFloat {
-        return (self.next as! UIViewController).topGuideHeight();
-    }
-
-    func bottomGuideHeight() -> CGFloat {
-        return (self.next as! UIViewController).bottomGuideHeight();
-    }
-}
-
 @objc extension UIViewController {
-    func topGuideHeight() -> CGFloat {
+    var topGuideHeight: CGFloat {
         var guide : CGFloat = 0.0;
         if (self.navigationController!.navigationBar.isTranslucent) {
             if (self.prefersStatusBarHidden == false) {
@@ -33,7 +23,7 @@ import UIKit
         return guide;
     }
 
-    func bottomGuideHeight() -> CGFloat {
+    var bottomGuideHeight: CGFloat {
         var guide : CGFloat = 0.0;
         if (self.tabBarController!.tabBar.isHidden == false) {
             guide += self.tabBarController!.tabBar.bounds.size.height;
@@ -41,7 +31,7 @@ import UIKit
         return guide;
     }
 
-    func isVisible() -> Bool {
+    var isVisible: Bool {
         return self.isViewLoaded && (self.view!.window != nil);
     }
 }
