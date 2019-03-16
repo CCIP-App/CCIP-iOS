@@ -31,6 +31,7 @@
 "UseButton_shirt" = "確定要領取衣服嗎？";
 "UseButton_kit" = "確定要領取迎賓袋嗎？";
 "UseButton_vipkit" = "確定要領取獨家紀念品嗎？";
+"UseButton_lunch" = "確定要領取午餐嗎？";
 "UseButton_day1lunch" = "確定要領取第一天的午餐嗎？";
 "UseButton_day2lunch" = "確定要領取第二天的午餐嗎？";
 "UseButton_day3lunch" = "確定要領取第三天的午餐嗎？";
