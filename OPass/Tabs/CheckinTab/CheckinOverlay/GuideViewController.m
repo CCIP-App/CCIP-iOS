@@ -177,7 +177,7 @@
                                                 cancelStyle:UIAlertActionStyleCancel
                                                cancelAction:nil];
     [ac showAlert:^{
-        [AppDelegate triggerFeedback:NotificationFeedbackError];
+        [UIImpactFeedback triggerFeedback:UIImpactFeedbackTypeNotificationFeedbackError];
     }];
 }
 

@@ -50,7 +50,7 @@
 
 - (IBAction)checkinBtnTouched:(id)sender {
     UIAlertController *ac = nil;
-    FeedbackType feedbackType = 0;
+    UIImpactFeedbackType feedbackType = 0;
     NSDate *availableTime = [NSDate dateWithTimeIntervalSince1970:[[self.scenario objectForKey:@"available_time"] integerValue]];
     NSDate *expireTime = [NSDate dateWithTimeIntervalSince1970:[[self.scenario objectForKey:@"expire_time"] integerValue]];
     NSDate *nowTime = [NSDate new];
@@ -168,7 +168,7 @@
                              }
                          }];
         SEND_FIB_EVENT(@"CheckinCardView", @{ @"Click": @"click_disabled" });
-        feedbackType = NotificationFeedbackWarning;
+        feedbackType = UIImpactFeedbackTypeNotificationFeedbackWarning;
     } else {
         if ([nowTime compare:availableTime] != NSOrderedAscending && [nowTime compare:expireTime] != NSOrderedDescending) {
             // IN TIME
@@ -195,7 +195,7 @@
                                          cancelStyle:UIAlertActionStyleDestructive
                                         cancelAction:^(UIAlertAction *action) {
                                         }];
-                feedbackType = NotificationFeedbackError;
+                feedbackType = UIImpactFeedbackTypeNotificationFeedbackError;
             }
             if ([nowTime compare:expireTime] == NSOrderedDescending || [self.used boolValue]) {
                 ac = [UIAlertController alertOfTitle:NSLocalizedString(@"ExpiredTitle", nil)
@@ -204,7 +204,7 @@
                                          cancelStyle:UIAlertActionStyleDestructive
                                         cancelAction:^(UIAlertAction *action) {
                                         }];
-                feedbackType = NotificationFeedbackError;
+                feedbackType = UIImpactFeedbackTypeNotificationFeedbackError;
             }
         }
     }
@@ -212,12 +212,12 @@
     if (ac != nil) {
         [ac showAlert:^{
             if (feedbackType != 0) {
-                [AppDelegate triggerFeedback:feedbackType];
+                [UIImpactFeedback triggerFeedback:feedbackType];
             }
         }];
     } else {
         if (feedbackType != 0) {
-            [AppDelegate triggerFeedback:feedbackType];
+            [UIImpactFeedback triggerFeedback:feedbackType];
         }
     }
 }

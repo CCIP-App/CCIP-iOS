@@ -193,7 +193,7 @@
                                                 cancelStyle:UIAlertActionStyleDestructive
                                                cancelAction:nil];
     [ac showAlert:^{
-        [AppDelegate triggerFeedback:NotificationFeedbackSuccess];
+        [UIImpactFeedback triggerFeedback:UIImpactFeedbackTypeNotificationFeedbackSuccess];
     }];
 }
 
@@ -225,54 +225,6 @@
                               @"zh": @"zh-TW"
                               };
     return [[langMap allKeys] containsObject:shortLang] ? [langMap objectForKey:shortLang] : nil;
-}
-
-+ (void)triggerFeedback:(FeedbackType)feedbackType {
-    UIFeedbackGenerator *generator;
-    if (feedbackType < 0x00001000) {
-        // ImpactFeedback
-        UIImpactFeedbackStyle impactFeedbackStyle;
-        switch (feedbackType) {
-            case ImpactFeedbackHeavy:
-                impactFeedbackStyle = UIImpactFeedbackStyleHeavy;
-                break;
-            case ImpactFeedbackMedium:
-                impactFeedbackStyle = UIImpactFeedbackStyleMedium;
-                break;
-            case ImpactFeedbackLight:
-                impactFeedbackStyle = UIImpactFeedbackStyleLight;
-                break;
-            default:
-                return;
-        }
-        generator = [[UIImpactFeedbackGenerator alloc] initWithStyle:impactFeedbackStyle];
-        [generator prepare];
-        [((UIImpactFeedbackGenerator *)generator) impactOccurred];
-    } else if (feedbackType > 0x00000100 && feedbackType < 0x01000000) {
-        // NotificationFeedback
-        UINotificationFeedbackType notificationFeedbackType;
-        switch (feedbackType) {
-            case NotificationFeedbackSuccess:
-                notificationFeedbackType = UINotificationFeedbackTypeSuccess;
-                break;
-            case NotificationFeedbackWarning:
-                notificationFeedbackType = UINotificationFeedbackTypeWarning;
-                break;
-            case NotificationFeedbackError:
-                notificationFeedbackType = UINotificationFeedbackTypeError;
-                break;
-            default:
-                return;
-        }
-        generator = [UINotificationFeedbackGenerator new];
-        [generator prepare];
-        [((UINotificationFeedbackGenerator *)generator) notificationOccurred:notificationFeedbackType];
-    } else {
-        // SelectionFeedback
-        generator = [UISelectionFeedbackGenerator new];
-        [generator prepare];
-        [((UISelectionFeedbackGenerator *)generator) selectionChanged];
-    }
 }
     
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
@@ -444,7 +396,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
                            onCompletion:^(BOOL success, id data, NSError *error) {
                                if (!success && data != nil) {
                                    [ac showAlert:^{
-                                       [AppDelegate triggerFeedback:NotificationFeedbackError];
+                                       [UIImpactFeedback triggerFeedback:UIImpactFeedbackTypeNotificationFeedbackError];
                                    }];
                                }
                            }];
@@ -456,7 +408,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
                               completion:^(BOOL success, id data, NSError *error) {
                                   if (!success && data != nil) {
                                       [ac showAlert:^{
-                                          [AppDelegate triggerFeedback:NotificationFeedbackError];
+                                          [UIImpactFeedback triggerFeedback:UIImpactFeedbackTypeNotificationFeedbackError];
                                       }];
                                   }
                               }];

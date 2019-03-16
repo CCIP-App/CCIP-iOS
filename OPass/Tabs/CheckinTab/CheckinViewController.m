@@ -369,7 +369,7 @@
                                                                                [self reloadCard];
                                                                            }];
                                 [ac showAlert:^{
-                                    [AppDelegate triggerFeedback:NotificationFeedbackError];
+                                    [UIImpactFeedback triggerFeedback:UIImpactFeedbackTypeNotificationFeedbackError];
                                 }];
                             }
                         }
@@ -463,7 +463,7 @@
                                                                                  [self.scanditBarcodePicker resumeScanning];
                                                                              }];
                                   [ac showAlert:^{
-                                      [AppDelegate triggerFeedback:NotificationFeedbackError];
+                                      [UIImpactFeedback triggerFeedback:UIImpactFeedbackTypeNotificationFeedbackError];
                                   }];
                               }
                           }];
@@ -649,7 +649,7 @@
                                                                cancelStyle:UIAlertActionStyleCancel
                                                               cancelAction:nil];
                                       [ac showAlert:^{
-                                          [AppDelegate triggerFeedback:NotificationFeedbackError];
+                                          [UIImpactFeedback triggerFeedback:UIImpactFeedbackTypeNotificationFeedbackError];
                                       }];
                                   }
                               }];
@@ -660,7 +660,7 @@
                                      cancelStyle:UIAlertActionStyleCancel
                                     cancelAction:nil];
             [ac showAlert:^{
-                [AppDelegate triggerFeedback:NotificationFeedbackError];
+                [UIImpactFeedback triggerFeedback:UIImpactFeedbackTypeNotificationFeedbackError];
             }];
         }
     }

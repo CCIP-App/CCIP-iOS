@@ -71,7 +71,7 @@
 }
 
 - (IBAction)favoriteTouchDownAction:(id)sender {
-    [AppDelegate triggerFeedback:ImpactFeedbackMedium];
+    [UIImpactFeedback triggerFeedback:UIImpactFeedbackTypeImpactFeedbackMedium];
 }
 
 - (IBAction)favoriteTouchUpInsideAction:(id)sender {
@@ -81,11 +81,11 @@
             [self.delegate actionFavorite:[self getID]];
         }
     }
-    [AppDelegate triggerFeedback:ImpactFeedbackLight];
+    [UIImpactFeedback triggerFeedback:UIImpactFeedbackTypeImpactFeedbackLight];
 }
 
 - (IBAction)favoriteTouchUpOutsideAction:(id)sender {
-    [AppDelegate triggerFeedback:ImpactFeedbackLight];
+    [UIImpactFeedback triggerFeedback:UIImpactFeedbackTypeImpactFeedbackLight];
 }
 
 - (void)setFavorite:(BOOL)favorite {

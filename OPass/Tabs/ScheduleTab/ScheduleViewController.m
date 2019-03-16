@@ -87,17 +87,17 @@
 }
 
 - (void)showFavoritesTouchDown {
-    [AppDelegate triggerFeedback:ImpactFeedbackMedium];
+    [UIImpactFeedback triggerFeedback:UIImpactFeedbackTypeImpactFeedbackMedium];
 }
 
 - (void)showFavoritesTouchUpInside {
     [self performSegueWithIdentifier:@"ShowFavorites"
                               sender:nil];
-    [AppDelegate triggerFeedback:ImpactFeedbackLight];
+    [UIImpactFeedback triggerFeedback:UIImpactFeedbackTypeImpactFeedbackLight];
 }
 
 - (void)showFavoritesTouchUpOutside {
-    [AppDelegate triggerFeedback:ImpactFeedbackLight];
+    [UIImpactFeedback triggerFeedback:UIImpactFeedbackTypeImpactFeedbackLight];
 }
 
 /*

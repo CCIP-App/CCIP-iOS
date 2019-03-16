@@ -16,7 +16,6 @@
 #import "NSInvocation+addition.h"
 #import "CheckinViewController.h"
 #import "headers.h"
-#import "FeedbackType.h"
 #define IN_BRIDGING_HEADER
 #import "AppDelegate.h"
 #undef IN_BRIDGING_HEADER

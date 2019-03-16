@@ -95,6 +95,7 @@
 		6BB1C4391F1AD4BB00AB072F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB50FB21D665393002CAD0B /* AfterEventViewController.m */; };
 		6BB97F9C222A813200338138 /* PartnerWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB97F9B222A813200338138 /* PartnerWebViewController.swift */; };
+		6BC3820F223D627900685D00 /* UIImpactFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC3820E223D627900685D00 /* UIImpactFeedback.swift */; };
 		6BC4246D22299AE10028C7D6 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4246C22299AE10028C7D6 /* NotificationController.swift */; };
 		6BC4246F22299C830028C7D6 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4246E22299C830028C7D6 /* ExtensionDelegate.swift */; };
 		6BC4247122299F470028C7D6 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4247022299F470028C7D6 /* InterfaceController.swift */; };
@@ -262,7 +263,6 @@
 		6B70EF44204C981700C63E63 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		6B7299AE1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleFavoriteTableViewController.h; sourceTree = "<group>"; };
 		6B7299AF1F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleFavoriteTableViewController.m; sourceTree = "<group>"; };
-		6B75F4F0210F85460019ECD2 /* FeedbackType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackType.h; sourceTree = "<group>"; };
 		6B76DF6320B019B200EBEF06 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		6B9348AE1F2428A300F77757 /* OPass.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = OPass.xcconfig; sourceTree = "<group>"; };
 		6B9A2799222B00C300E8463E /* OPassEventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OPassEventCell.xib; sourceTree = "<group>"; };
@@ -278,6 +278,7 @@
 		6BC12A941F2B1B8000B14039 /* OPass-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OPass-Swift.h"; sourceTree = "<group>"; };
 		6BC12A951F2B1B8000B14039 /* OPass-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OPass-Bridging-Header.h"; sourceTree = "<group>"; };
 		6BC12A961F2B1B8000B14039 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		6BC3820E223D627900685D00 /* UIImpactFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImpactFeedback.swift; sourceTree = "<group>"; };
 		6BC4246C22299AE10028C7D6 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		6BC4246E22299C830028C7D6 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		6BC4247022299F470028C7D6 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
@@ -534,7 +535,7 @@
 			isa = PBXGroup;
 			children = (
 				286D5FC51D6BD8EC005B6619 /* headers.h */,
-				6B75F4F0210F85460019ECD2 /* FeedbackType.h */,
+				6BC3820E223D627900685D00 /* UIImpactFeedback.swift */,
 				6B9A279D2231715500E8463E /* OPassAPI.swift */,
 				6B4FCB23218F79CB0005469F /* Constants.swift */,
 				6BE4B8F0222ADB7B005F8B95 /* NEHotspot.swift */,
@@ -943,6 +944,7 @@
 				6BE8A22A220DC84C0035CFD8 /* AcknowledgementsViewController.swift in Sources */,
 				6B9A279E2231715600E8463E /* OPassAPI.swift in Sources */,
 				280774BF1F1A736800A5B994 /* ScheduleViewController.m in Sources */,
+				6BC3820F223D627900685D00 /* UIImpactFeedback.swift in Sources */,
 				2839BF4A1D4CDDAD0062F36D /* CheckinCardViewController.m in Sources */,
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
 				28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */,

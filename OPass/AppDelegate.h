@@ -17,7 +17,6 @@
 #import "NSInvocation+addition.h"
 #import "CheckinViewController.h"
 #import "headers.h"
-#import "FeedbackType.h"
 #import "RVCollection.h"
 
 #define STRINGIZE(x)                    #x
@@ -67,8 +66,6 @@
 + (NSString * _Nonnull)currentLangUI;
 + (NSString * _Nonnull)shortLangUI;
 + (NSString * _Nullable)longLangUI;
-
-+ (void)triggerFeedback:(FeedbackType)feedbackType;
 
 @end
 
