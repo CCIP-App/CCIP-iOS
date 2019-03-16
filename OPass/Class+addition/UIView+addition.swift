@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 @objc extension UIView {
+    var ViewTopStart: CGFloat {
+        return UIApplication.shared.statusBarFrame.height
+    }
     var topGuideHeight: CGFloat {
         return (self.next as! UIViewController).topGuideHeight
     }

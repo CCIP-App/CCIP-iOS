@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 @objc extension UIViewController {
+    var ViewTopStart: CGFloat {
+        return self.view.ViewTopStart
+    }
     var topGuideHeight: CGFloat {
         var guide : CGFloat = 0.0;
         if (self.navigationController!.navigationBar.isTranslucent) {
