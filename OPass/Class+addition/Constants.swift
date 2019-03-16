@@ -22,6 +22,37 @@ import SafariServices
 }
 
 extension Constants {
+    @objc public static func SendFib(
+        _ _name: Any,
+        WithEvents _events: Any? = nil,
+        Func _func: String = #function,
+        File _file: String = #file,
+        Line _line: Int = #line,
+        Col _col: Int = #column
+    ) {
+        let __file = _file.replacingOccurrences(of: Constants.sourceRoot(), with: "")
+
+        NSLog("Send FIB: \(_name)(\(String(describing: _events))) @ \(_func)\t\(__file):\(_line):\(_col)");
+
+        //    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+        if ((_name as? String) != "" && _events == nil) {
+            //        [tracker set:kGAIScreenName
+            //               value:_name];
+            Analytics.setScreenName(_name as? String, screenClass: _func)
+        }
+        if (_events != nil) {
+            Analytics.logEvent(_name as! String, parameters: _events as? [String : Any])
+        }
+    }
+    private static var iBeacon: Dictionary<String, String> {
+        return AppDelegate.appConfig("iBeacon") as! Dictionary<String, String>
+    }
+    @objc public static var beaconUUID: String {
+        return self.iBeacon["UUID"]!
+    }
+    @objc public static var beaconID: String {
+        return self.iBeacon["ID"]!
+    }
     @objc public static var HasSetEvent: Bool {
         return OPassAPI.currentEvent.count > 0
     }

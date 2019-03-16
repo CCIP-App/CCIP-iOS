@@ -6,6 +6,14 @@
 //  Copyright © 2016年 CPRTeam. All rights reserved.
 //
 
+#define STRINGIZE(x)                    #x
+#define STRINGIZE2(x)                   STRINGIZE(x)
+#define SOURCE_ROOT                     @ STRINGIZE2(SRC_ROOT)
+
+#define __FIB(name, events)             ([Constants SendFib:name WithEvents:events Func:[NSString stringWithUTF8String:__func__] File:[NSString stringWithUTF8String:__FILE__] Line:__LINE__ Col:0])
+#define SEND_FIB(name)                  (__FIB( name, nil ))
+#define SEND_FIB_EVENT(nibName, events) (__FIB( nibName, events ))
+
 #define nilCoalesce(v)              ((v != nil && ![v isKindOfClass:[NSNull class]] ? v : @""))
 #define nilCoalesceDefault(v,d)     ((v != nil && ![v isKindOfClass:[NSNull class]] ? v : d))
 //#define stringCoalesceDefault(v,d)  ((v != nil && ![v isKindOfClass:[NSNull class]] && [v isKindOfClass:[NSString class]] && [v length] > 0 ? v : d))

@@ -99,7 +99,7 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
             self.navigationItem.titleView?.tintColor = AppDelegate.appConfigColor(self.titleTextColor)
         }
 
-        Constants.sendFIB(self.className)
+        Constants.SendFib(self.className)
 
         let progressBarHeight : CGFloat = 2
         let navigationBarBounds = self.navigationController!.navigationBar.bounds

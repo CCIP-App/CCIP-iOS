@@ -64,25 +64,6 @@
     [OneSignal sendTagsWithJsonString:jsonString];
 }
 
-+ (void)sendFIB:(NSString *)_name WithEvents:(NSDictionary *)_events Func:(const char *)_func File:(const char *)_file Line:(int)_line {
-    NSString *__file = [[NSString stringWithUTF8String:_file] stringByReplacingOccurrencesOfString:SOURCE_ROOT
-                                                                                        withString:@""];
-    NSLog(@"Send FIB: %@(%@) @ %s\t%@:%d", _name, _events, _func, __file, _line);
-    
-//    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    if (_name != nil && _events == nil) {
-//        [tracker set:kGAIScreenName
-//               value:_name];
-        [FIRAnalytics setScreenName:_name
-                        screenClass:[NSString stringWithUTF8String:_func]];
-    }
-    if (_events != nil) {
-        [FIRAnalytics logEventWithName:_name
-                            parameters:_events];
-    }
-//    [tracker send:_gai];
-}
-
 + (void)initialize {
 //    //configure iRate
 //    [iRate sharedInstance].daysUntilPrompt = 1;

@@ -11,5 +11,9 @@
 
 @implementation Constants
 
+#pragma mark - SRC
++ (NSString *)SourceRoot {
+    return SOURCE_ROOT;
+}
 
 @end

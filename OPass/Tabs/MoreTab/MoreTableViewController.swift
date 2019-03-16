@@ -23,7 +23,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         let destination = segue.destination
         let cell = sender as! UITableViewCell
         let title = cell.textLabel?.text
-        Constants.sendFIBEvent("MoreTableView", event: [ "MoreTitle": title ])
+        Constants.SendFib("MoreTableView", WithEvents: [ "MoreTitle": title ])
         destination.title = title
         cell.setSelected(false, animated: true)
     }
@@ -50,7 +50,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
 
         self.userInfo = AppDelegate.delegateInstance().userInfo as NSDictionary?
 
-        Constants.sendFIB("MoreTableViewController");
+        Constants.SendFib("MoreTableViewController")
 
         self.moreItems = [
             OPassAPI.eventInfo?.Features.Puzzle != nil

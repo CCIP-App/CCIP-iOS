@@ -54,7 +54,7 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
         self.lbNoAnnouncement.attributedText = attributedNoAnnouncementText
         self.lbNoAnnouncement.textColor = AppDelegate.appConfigColor("AnnouncementNoContentTextColor")
 
-        Constants.sendFIB("AnnounceTableViewController");
+        Constants.SendFib("AnnounceTableViewController")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -222,7 +222,7 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
 
         Constants.OpenInAppSafari(forPath: uri)
 
-        Constants.sendFIBEvent("AnnounceTableView", event: ["URL": uri])
+        Constants.SendFib("AnnounceTableView", WithEvents: ["URL": uri])
     }
 
     /*
