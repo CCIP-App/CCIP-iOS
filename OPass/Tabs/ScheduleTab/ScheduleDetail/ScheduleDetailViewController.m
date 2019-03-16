@@ -9,7 +9,6 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "AppDelegate.h"
 #import "ScheduleDetailViewController.h"
-#import "WebServiceEndPoint.h"
 #import "ScheduleAbstractViewCell.h"
 #import "ScheduleSpeakerInfoViewCell.h"
 

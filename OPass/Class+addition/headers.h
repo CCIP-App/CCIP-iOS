@@ -25,3 +25,10 @@
  */
 
 #define NEAR_ZERO(A, B)             (MIN(ABS(A), ABS(B)) == ABS(A) ? A : B)
+
+/*
+ *  Cache
+ */
+
+#define SCHEDULE_CACHE_CLEAR    (@"ClearScheduleContentCache")
+#define SCHEDULE_CACHE_KEY      (@"ScheduleContentCache")

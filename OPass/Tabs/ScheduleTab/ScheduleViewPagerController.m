@@ -10,7 +10,6 @@
 #import "ScheduleViewPagerController.h"
 #import "ScheduleTableViewController.h"
 #import "ScheduleDetailViewController.h"
-#import "WebServiceEndPoint.h"
 #import <AFNetworking/AFNetworking.h>
 #import "headers.h"
 

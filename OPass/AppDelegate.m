@@ -14,10 +14,9 @@
 #import <Appirater/Appirater.h>
 //#import <iRate/iRate.h>
 #import <iVersion/iVersion.h>
+#import <AFNetworking/AFNetworking.h>
 #import "AppDelegate.h"
 #import "GuideViewController.h"
-#import <AFNetworking/AFNetworking.h>
-#import "WebServiceEndPoint.h"
 #import "NSData+PMUtils.h"
 
 #define SCANDIT_APP_KEY             (@"2BXy4CfQi9QFc12JnjId7mHH58SdYzNC90Uo07luUUY")

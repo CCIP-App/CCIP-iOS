@@ -10,7 +10,6 @@
 #import "AppDelegate.h"
 #import "GuideViewController.h"
 #import <AFNetworking/AFNetworking.h>
-#import "WebServiceEndPoint.h"
 
 @interface GuideViewController ()
 

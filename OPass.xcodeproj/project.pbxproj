@@ -177,7 +177,6 @@
 		284602DD1F121BBB00F512A3 /* LaunchScreen@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@1x.png"; sourceTree = "<group>"; };
 		284602DE1F121BBB00F512A3 /* LaunchScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@2x.png"; sourceTree = "<group>"; };
 		284602DF1F121BBB00F512A3 /* LaunchScreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@3x.png"; sourceTree = "<group>"; };
-		286D5FC41D6BD6C5005B6619 /* WebServiceEndPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebServiceEndPoint.h; sourceTree = "<group>"; };
 		286D5FC51D6BD8EC005B6619 /* headers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = headers.h; sourceTree = "<group>"; };
 		286E28A31D60D35B00C5CB94 /* InvalidNetworkMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvalidNetworkMessageViewController.h; sourceTree = "<group>"; };
 		286E28A41D60D35B00C5CB94 /* InvalidNetworkMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvalidNetworkMessageViewController.m; sourceTree = "<group>"; };
@@ -518,7 +517,6 @@
 				6BFB831E1F2B18A4005DCF00 /* CustomSegue */,
 				6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */,
 				6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */,
-				286D5FC41D6BD6C5005B6619 /* WebServiceEndPoint.h */,
 				6BE4B8EC222ADA75005F8B95 /* OPassEventsController.swift */,
 				6B9A279B222B040800E8463E /* OPassEventCell.swift */,
 				6B9A2799222B00C300E8463E /* OPassEventCell.xib */,

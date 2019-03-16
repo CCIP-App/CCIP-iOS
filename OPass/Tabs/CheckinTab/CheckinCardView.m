@@ -10,7 +10,6 @@
 #import "CheckinCardView.h"
 #import "AppDelegate.h"
 #import <AFNetworking/AFNetworking.h>
-#import "WebServiceEndPoint.h"
 
 @interface CheckinCardView()
 

@@ -9,7 +9,6 @@
 #import "ScheduleViewController.h"
 #import "AppDelegate.h"
 #import "ScheduleTableViewCell.h"
-#import "WebServiceEndPoint.h"
 
 @interface ScheduleViewController ()
 

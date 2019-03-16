@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "Constants.h"
-#import "WebServiceEndPoint.h"
 
 @implementation Constants
 

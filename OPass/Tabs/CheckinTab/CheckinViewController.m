@@ -15,7 +15,6 @@
 #import "AfterEventViewController.h"
 #import "GuideViewController.h"
 #import "StatusViewController.h"
-#import "WebServiceEndPoint.h"
 
 @interface CheckinViewController()
 
