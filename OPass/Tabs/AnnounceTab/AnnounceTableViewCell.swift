@@ -8,8 +8,10 @@
 
 import Foundation
 import UIKit
+import UIView_FDCollapsibleConstraints
+import UITableView_FDTemplateLayoutCell
 
-@objc class AnnounceTableViewCell: UITableViewCell {
+class AnnounceTableViewCell: UITableViewCell {
     @IBOutlet public var vwShadowContent: UIView!
     @IBOutlet public var vwMessageTime: UIView!
     @IBOutlet public var vwURL: UIView!
@@ -19,7 +21,6 @@ import UIKit
     @IBOutlet public var vwDashedLine: UIView!
     @IBOutlet public var lbIconOfURL: UILabel!
     @IBOutlet public var lbURL: UILabel!
-    @IBOutlet public var fd_collapsibleConstraints: [NSLayoutConstraint]!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -946,7 +946,7 @@ Please copy and paste the token into next field or click the token link in the r
         <!--Announce-->
         <scene sceneID="rLM-aC-FYG">
             <objects>
-                <viewController id="ba1-3I-FgV" userLabel="Announce" customClass="AnnounceTableViewController" sceneMemberID="viewController">
+                <viewController id="ba1-3I-FgV" userLabel="Announce" customClass="AnnounceTableViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="O9C-ij-kHs" customClass="AnnounceView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1038,6 +1038,13 @@ Label2</string>
                                                                         <constraint firstItem="Rr4-Vd-sfs" firstAttribute="centerY" secondItem="SNU-eU-Q7I" secondAttribute="centerY" id="x5a-2f-ApZ"/>
                                                                         <constraint firstItem="SNU-eU-Q7I" firstAttribute="top" secondItem="h6R-CC-0vL" secondAttribute="bottom" constant="18" id="xZC-GZ-KgN"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <outletCollection property="fd_collapsibleConstraints" destination="J82-hB-vmj" id="run-8k-vTI"/>
+                                                                        <outletCollection property="fd_collapsibleConstraints" destination="G4q-tH-hTP" id="jET-Gd-nko"/>
+                                                                        <outletCollection property="fd_collapsibleConstraints" destination="fLl-QM-Prf" id="o6V-vo-aYw"/>
+                                                                        <outletCollection property="fd_collapsibleConstraints" destination="TwP-QJ-ooI" id="GiA-tb-Ace"/>
+                                                                        <outletCollection property="fd_collapsibleConstraints" destination="EPp-Ia-L9I" id="qXz-PZ-Nox"/>
+                                                                    </connections>
                                                                 </view>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1082,11 +1089,6 @@ Label2</string>
                                             <outlet property="vwMessageTime" destination="sM4-Gr-Gtv" id="Ny0-jM-RK6"/>
                                             <outlet property="vwShadowContent" destination="p62-4l-CHO" id="bRh-YL-KNs"/>
                                             <outlet property="vwURL" destination="CRG-R0-5sb" id="s2J-ii-BEJ"/>
-                                            <outletCollection property="fd_collapsibleConstraints" destination="EPp-Ia-L9I" collectionClass="NSMutableArray" id="cHT-TH-GbF"/>
-                                            <outletCollection property="fd_collapsibleConstraints" destination="TwP-QJ-ooI" collectionClass="NSMutableArray" id="uyV-S3-fq6"/>
-                                            <outletCollection property="fd_collapsibleConstraints" destination="J82-hB-vmj" collectionClass="NSMutableArray" id="Osf-1E-7gb"/>
-                                            <outletCollection property="fd_collapsibleConstraints" destination="G4q-tH-hTP" collectionClass="NSMutableArray" id="WPq-8W-5kt"/>
-                                            <outletCollection property="fd_collapsibleConstraints" destination="fLl-QM-Prf" collectionClass="NSMutableArray" id="P3y-Xf-kwH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1791,7 +1793,7 @@ Label2</string>
         <image name="WebViewAssets.bundle/BarButton-Reload.png" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LZQ-Xr-3kl"/>
+        <segue reference="351-Fd-ZV7"/>
         <segue reference="mZ3-si-dph"/>
     </inferredMetricsTieBreakers>
 </document>
