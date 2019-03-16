@@ -44,6 +44,10 @@
     
     // ugly convension for crash prevent
     NSObject *programsObj = [userDefault objectForKey:SCHEDULE_CACHE_KEY];
+    // force empty cache for non NSData cache
+    if (![programsObj isKindOfClass:[NSData class]]) {
+        programsObj = @[];
+    }
     NSArray *programsData = [programsObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)programsObj] : programsObj;
     self.programs = programsData;
     if (self.programs != nil) {
@@ -109,6 +113,10 @@
         NSLog(@"Error: %@", error);
         // ugly convension for crash prevent
         NSObject *programsObj = [userDefault objectForKey:SCHEDULE_CACHE_KEY];
+        // force empty cache for non NSData cache
+        if (![programsObj isKindOfClass:[NSData class]]) {
+            programsObj = @[];
+        }
         NSArray *programsData = [programsObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)programsObj] : programsObj;
         self.programs = programsData;
         if (self.programs != nil) {
