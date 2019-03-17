@@ -19,15 +19,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wy3-Yj-6am">
-                                <rect key="frame" x="0.0" y="20" width="420" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="htO-bs-S6f">
-                                    <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGG-rl-Nfe">
-                                            <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cX3-Np-rYk">
-                                                <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                             <vibrancyEffect>
@@ -56,13 +56,13 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2B-3A-q53">
-                                            <rect key="frame" x="20" y="140" width="380" height="120"/>
+                                            <rect key="frame" x="20" y="140" width="380" height="140"/>
                                             <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60.000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="Naq-yu-67a">
-                                            <rect key="frame" x="20" y="280" width="380" height="120"/>
+                                            <rect key="frame" x="20" y="300" width="380" height="120"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="120" id="yKR-iB-grm"/>
                                             </constraints>
@@ -71,7 +71,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qy3-VV-KVG">
-                                            <rect key="frame" x="50" y="452" width="320" height="70"/>
+                                            <rect key="frame" x="50" y="472" width="320" height="70"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="70" id="17h-i3-QWc"/>
                                             </constraints>
@@ -80,7 +80,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Kit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBO-2l-oxB">
-                                            <rect key="frame" x="8" y="420" width="404" height="60"/>
+                                            <rect key="frame" x="8" y="440" width="404" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="WU2-Ce-ckf"/>
                                             </constraints>
@@ -89,7 +89,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dyo-cm-nZt">
-                                            <rect key="frame" x="16" y="530" width="388" height="40"/>
+                                            <rect key="frame" x="16" y="550" width="388" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="bkC-do-qaS"/>
                                             </constraints>
@@ -131,9 +131,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="hrF-Em-2oU" firstAttribute="bottom" secondItem="Wy3-Yj-6am" secondAttribute="bottom" id="LV8-IC-wRo"/>
                             <constraint firstItem="Wy3-Yj-6am" firstAttribute="leading" secondItem="uR2-9G-ppt" secondAttribute="leadingMargin" constant="-20" id="Mhg-t5-7nh"/>
-                            <constraint firstItem="Wy3-Yj-6am" firstAttribute="top" secondItem="hrF-Em-2oU" secondAttribute="top" id="ZYq-wN-Ju8"/>
+                            <constraint firstAttribute="bottom" secondItem="Wy3-Yj-6am" secondAttribute="bottom" id="TOu-mH-mnG"/>
+                            <constraint firstItem="Wy3-Yj-6am" firstAttribute="top" secondItem="uR2-9G-ppt" secondAttribute="top" id="Ysa-vN-GRU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wy3-Yj-6am" secondAttribute="trailing" constant="-20" id="wBm-SK-GiW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hrF-Em-2oU"/>
@@ -163,15 +163,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ane-io-2fB">
-                                <rect key="frame" x="0.0" y="20" width="420" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pBJ-Cx-2mH">
-                                    <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQW-Em-vct">
-                                            <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bQu-aE-znz">
-                                                <rect key="frame" x="0.0" y="0.0" width="420" height="580"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                             <vibrancyEffect>
@@ -179,7 +179,7 @@
                                             </vibrancyEffect>
                                         </visualEffectView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nug-PN-SE0">
-                                            <rect key="frame" x="52.666666666666657" y="0.0" width="315" height="290"/>
+                                            <rect key="frame" x="52.666666666666657" y="20" width="315" height="300"/>
                                             <string key="text">Please reference your attendee detail information, and your will found your access token.
 
 Please copy and paste the token into next field or click the token link in the reference mail.</string>
@@ -188,13 +188,13 @@ Please copy and paste the token into next field or click the token link in the r
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="• • •" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZF-gg-GiD">
-                                            <rect key="frame" x="0.0" y="325" width="420" height="17"/>
+                                            <rect key="frame" x="0.0" y="355" width="420" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Here ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N3c-1x-If0">
-                                            <rect key="frame" x="60" y="362" width="300" height="30"/>
+                                            <rect key="frame" x="60" y="392" width="300" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="Kgw-cW-3Gf"/>
                                                 <constraint firstAttribute="width" constant="300" id="dnP-Fr-JuI"/>
@@ -207,7 +207,7 @@ Please copy and paste the token into next field or click the token link in the r
                                             </connections>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8w3-iH-STq">
-                                            <rect key="frame" x="60" y="402" width="300" height="45"/>
+                                            <rect key="frame" x="60" y="432" width="300" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="300" id="8hu-v4-MyY"/>
                                                 <constraint firstAttribute="height" constant="45" id="FSR-OA-U65"/>
@@ -241,14 +241,14 @@ Please copy and paste the token into next field or click the token link in the r
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="r26-qR-lnQ" firstAttribute="bottom" secondItem="Ane-io-2fB" secondAttribute="bottom" id="0Ra-6b-Yug"/>
+                            <constraint firstAttribute="bottom" secondItem="Ane-io-2fB" secondAttribute="bottom" id="9Vm-4m-xAB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ane-io-2fB" secondAttribute="trailing" constant="-20" id="Cqg-DU-klY"/>
                             <constraint firstItem="Ane-io-2fB" firstAttribute="top" secondItem="7ZP-Wx-GSU" secondAttribute="topMargin" constant="-20" id="GeG-mv-zsA"/>
                             <constraint firstItem="Ane-io-2fB" firstAttribute="leading" secondItem="7ZP-Wx-GSU" secondAttribute="leadingMargin" constant="-20" id="K5y-rv-EDV"/>
                             <constraint firstItem="Ane-io-2fB" firstAttribute="top" secondItem="r26-qR-lnQ" secondAttribute="top" constant="-20" id="KOz-oh-FfY"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Ane-io-2fB" secondAttribute="bottom" constant="-20" id="PXw-Op-yQS"/>
+                            <constraint firstItem="Ane-io-2fB" firstAttribute="top" secondItem="7ZP-Wx-GSU" secondAttribute="top" id="XhG-9I-tLe"/>
                             <constraint firstItem="nug-PN-SE0" firstAttribute="top" secondItem="r26-qR-lnQ" secondAttribute="top" id="pqG-jP-L4s"/>
-                            <constraint firstItem="Ane-io-2fB" firstAttribute="top" secondItem="r26-qR-lnQ" secondAttribute="top" id="umr-38-btZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r26-qR-lnQ"/>
                         <variation key="default">
@@ -259,6 +259,8 @@ Please copy and paste the token into next field or click the token link in the r
                             </mask>
                         </variation>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="420" height="600"/>
                     <connections>
@@ -455,7 +457,7 @@ Please copy and paste the token into next field or click the token link in the r
                         <outlet property="ivUserPhoto" destination="01s-25-wxe" id="rr3-07-Jkv"/>
                         <outlet property="lbHi" destination="L3Y-MS-x0I" id="uJH-0a-vrQ"/>
                         <outlet property="lbUserName" destination="vJH-ug-pK0" id="se2-C1-fIo"/>
-                        <segue destination="VKq-4v-Yvp" kind="custom" identifier="ShowGuide" customClass="EmbeddedNavigationControllerSegue" customModule="OPass" customModuleProvider="target" id="lBg-aP-1xi"/>
+                        <segue destination="VKq-4v-Yvp" kind="custom" identifier="ShowGuide" customClass="EmbeddedNavigationTabBarControllerSegue" customModule="OPass" customModuleProvider="target" id="lBg-aP-1xi"/>
                         <segue destination="GJw-lM-l3I" kind="custom" identifier="ShowCountdown" customClass="EmbeddedNavigationControllerSegue" customModule="OPass" customModuleProvider="target" id="bIa-hc-QfB"/>
                         <segue destination="tZ3-Ep-FUt" kind="custom" identifier="ShowInvalidNetworkMsg" customClass="EmbeddedNavigationControllerSegue" customModule="OPass" customModuleProvider="target" id="LZQ-Xr-3kl"/>
                     </connections>

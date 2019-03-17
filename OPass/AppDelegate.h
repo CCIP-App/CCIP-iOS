@@ -19,8 +19,6 @@
 #import "headers.h"
 #import "RVCollection.h"
 
-#define X_TOP(X, NX)                    ([[UIScreen mainScreen] bounds].size.height == 812.0f ? X : NX)
-
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow * _Null_unspecified window;
