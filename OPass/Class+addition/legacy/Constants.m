@@ -6,8 +6,11 @@
 //  Copyright © 2018 OPass. All rights reserved.
 //
 
-#import "AppDelegate.h"
 #import "Constants.h"
+
+#define STRINGIZE(x)                    #x
+#define STRINGIZE2(x)                   STRINGIZE(x)
+#define SOURCE_ROOT                     @ STRINGIZE2(SRCROOT)
 
 @implementation Constants
 
