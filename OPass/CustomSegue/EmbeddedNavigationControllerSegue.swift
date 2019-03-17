@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class EmbeddedNavigationControllerSegue : UIStoryboardSegue {
+class EmbeddedNavigationControllerSegue: UIStoryboardSegue {
     override func perform() {
         self.source.present(self.destination, animated: true, completion: nil)
     }
