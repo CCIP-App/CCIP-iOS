@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1424C1FA2250F00A00D36266 /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1424C1F92250F00A00D36266 /* More.storyboard */; };
+		1424C1FC2250F0C200D36266 /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1424C1FB2250F0C200D36266 /* Schedule.storyboard */; };
 		280774BF1F1A736800A5B994 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774BE1F1A736800A5B994 /* ScheduleViewController.m */; };
 		280774C21F1A7B0100A5B994 /* ScheduleViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774C11F1A7B0100A5B994 /* ScheduleViewPagerController.m */; };
 		280774C51F1AD2F400A5B994 /* ScheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774C41F1AD2F400A5B994 /* ScheduleTableViewController.m */; };
@@ -162,6 +164,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1424C1F92250F00A00D36266 /* More.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
+		1424C1FB2250F0C200D36266 /* Schedule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
 		280774BD1F1A736800A5B994 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
 		280774BE1F1A736800A5B994 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		280774C01F1A7B0100A5B994 /* ScheduleViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewPagerController.h; sourceTree = "<group>"; };
@@ -370,6 +374,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		1424C1F82250EFD500D36266 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				6B11BE841D4CBC9300B87EA9 /* Main.storyboard */,
+				1424C1F92250F00A00D36266 /* More.storyboard */,
+				1424C1FB2250F0C200D36266 /* Schedule.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		267251DBF9C24B92F4EE80DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,8 +524,8 @@
 		6BD8EF291D1D73510094BE95 /* OPass */ = {
 			isa = PBXGroup;
 			children = (
+				1424C1F82250EFD500D36266 /* Storyboard */,
 				6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */,
-				6B11BE841D4CBC9300B87EA9 /* Main.storyboard */,
 				6BC12A961F2B1B8000B14039 /* main.swift */,
 				6BC12A941F2B1B8000B14039 /* OPass-Swift.h */,
 				6BC12A951F2B1B8000B14039 /* OPass-Bridging-Header.h */,
@@ -823,6 +837,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28A7C5641D5F7D2D0079BB12 /* Project_3rd_Lib_License.json in Resources */,
+				1424C1FA2250F00A00D36266 /* More.storyboard in Resources */,
 				288D3A781D599A1200E4E3A6 /* LICENSE-2.0.txt in Resources */,
 				28A7C55F1D5EE0C30079BB12 /* Project_Info_and_Contributors.json in Resources */,
 				284602E11F121BBB00F512A3 /* LaunchScreen@2x.png in Resources */,
@@ -835,6 +850,7 @@
 				6B76DF6420B019B200EBEF06 /* config.plist in Resources */,
 				284602E01F121BBB00F512A3 /* LaunchScreen@1x.png in Resources */,
 				284602E21F121BBB00F512A3 /* LaunchScreen@3x.png in Resources */,
+				1424C1FC2250F0C200D36266 /* Schedule.storyboard in Resources */,
 				5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */,
 				6B2CD59A1D2886C900793194 /* Localizable.strings in Resources */,
 				288D3A771D599A1200E4E3A6 /* CHANGELOG.txt in Resources */,

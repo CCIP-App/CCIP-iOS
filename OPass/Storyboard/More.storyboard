@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JPa-iH-gLa">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--More-->
+        <scene sceneID="JWz-OO-EbF">
+            <objects>
+                <viewController storyboardIdentifier="More" id="JPa-iH-gLa" userLabel="More" customClass="MoreTableViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eqo-6U-XiW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4FP-vb-AJC">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Puzzle" id="MRV-xV-5fU" customClass="MoreCell" customModule="OPass" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MRV-xV-5fU" id="1Au-g3-JmS">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="8S1-G1-xuU" kind="show" id="w2w-Wg-LvR"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ticket" id="z8g-bI-gB8" customClass="MoreCell" customModule="OPass" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z8g-bI-gB8" id="2BP-1D-Nc4">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Z9r-eB-0uD" kind="show" id="U7T-e8-WVn"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Telegram" id="Kpp-8P-Mds" customClass="MoreCell" customModule="OPass" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="116" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kpp-8P-Mds" id="JjO-RD-bmI">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="DBn-ZL-Z09" kind="show" id="OTn-Rz-aXt"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VenueWeb" id="D91-Rd-LYS" customClass="MoreCell" customModule="OPass" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="160" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D91-Rd-LYS" id="Y1s-9V-cdy">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="ZB3-yk-XBO" kind="show" id="jhh-tW-YWx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StaffsWeb" id="GXt-cJ-yb8" customClass="MoreCell" customModule="OPass" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="204" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GXt-cJ-yb8" id="6BE-Rc-kMQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="jeD-Gb-Rnv" kind="show" id="aM4-ai-eSI"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SponsorsWeb" id="yF3-OK-Tre" customClass="MoreCell" customModule="OPass" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="248" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yF3-OK-Tre" id="ofA-O3-WYa">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="9X9-rL-dnd" kind="show" id="Efh-na-oQe"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PartnersWeb" id="xPb-ag-6hB" customClass="MoreCell" customModule="OPass" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="292" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xPb-ag-6hB" id="B0o-oH-eUg">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="XGh-7S-2Rf" kind="show" id="Sn6-u7-oNV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Acknowledgements" id="WcG-Xj-Hfn" customClass="MoreCell" customModule="OPass" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="336" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WcG-Xj-Hfn" id="yyt-ri-RJr">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="eci-Bq-6O9" kind="show" id="2WE-ih-2MW"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="JPa-iH-gLa" id="LU8-My-Ch4"/>
+                                    <outlet property="delegate" destination="JPa-iH-gLa" id="mYC-1f-Rda"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Q35-Ni-C1V" firstAttribute="trailing" secondItem="4FP-vb-AJC" secondAttribute="trailing" id="VWs-NU-9fa"/>
+                            <constraint firstAttribute="bottom" secondItem="4FP-vb-AJC" secondAttribute="bottom" id="tbB-Ti-C0w"/>
+                            <constraint firstItem="4FP-vb-AJC" firstAttribute="top" secondItem="Q35-Ni-C1V" secondAttribute="top" id="vgt-Zh-Bfn"/>
+                            <constraint firstItem="4FP-vb-AJC" firstAttribute="leading" secondItem="Q35-Ni-C1V" secondAttribute="leading" id="wbm-Ef-Ffx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Q35-Ni-C1V"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bkS-ON-3TE"/>
+                    <connections>
+                        <outlet property="moreTableView" destination="4FP-vb-AJC" id="swQ-2P-CyL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wAP-Yb-IQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2081" y="1006"/>
+        </scene>
+        <!--Staff Web View Controller-->
+        <scene sceneID="FOz-fq-0J4">
+            <objects>
+                <viewController id="jeD-Gb-Rnv" customClass="StaffWebViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Jko-me-ghw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="x6r-xT-vuK"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="x85-8i-tmZ">
+                        <barButtonItem key="rightBarButtonItem" image="WebViewAssets.bundle/BarButton-Reload.png" id="Did-7m-EXO">
+                            <connections>
+                                <action selector="reload:" destination="jeD-Gb-Rnv" id="rZb-2c-op4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="goReloadButton" destination="Did-7m-EXO" id="zPl-Uw-jpm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MjA-iX-wms" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2742" y="1965"/>
+        </scene>
+        <!--Telegram Controller-->
+        <scene sceneID="wtK-By-oWV">
+            <objects>
+                <viewController id="DBn-ZL-Z09" customClass="TelegramController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2R6-nQ-cRw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="1cB-x2-C7h"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9as-Nc-LVm">
+                        <barButtonItem key="rightBarButtonItem" image="WebViewAssets.bundle/BarButton-Reload.png" id="oOi-1k-9fK">
+                            <connections>
+                                <action selector="reload:" destination="DBn-ZL-Z09" id="ccN-xd-ogO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="goReloadButton" destination="oOi-1k-9fK" id="tBJ-ak-gvn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5hR-lr-12R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4087" y="1965"/>
+        </scene>
+        <!--My Ticket View Controller-->
+        <scene sceneID="GWR-Vj-jfd">
+            <objects>
+                <viewController id="Z9r-eB-0uD" customClass="MyTicketViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zv8-IX-skS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyd-P0-Jtp">
+                                <rect key="frame" x="20" y="20" width="374" height="716"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notice" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tIu-hV-5Zn">
+                                        <rect key="frame" x="20" y="50" width="334" height="212"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
+                                        <color key="textColor" red="0.0" green="0.60392156860000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pgR-N6-O8I">
+                                        <rect key="frame" x="10" y="312" width="354" height="354"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="pgR-N6-O8I" secondAttribute="height" multiplier="1:1" id="KIg-FL-LON"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="pgR-N6-O8I" secondAttribute="bottom" constant="50" id="2EX-Xe-rDf"/>
+                                    <constraint firstItem="pgR-N6-O8I" firstAttribute="centerX" secondItem="gyd-P0-Jtp" secondAttribute="centerX" id="Ax2-vv-QOn"/>
+                                    <constraint firstItem="pgR-N6-O8I" firstAttribute="top" relation="lessThanOrEqual" secondItem="tIu-hV-5Zn" secondAttribute="bottom" constant="50" id="FoU-Jr-MpD"/>
+                                    <constraint firstItem="tIu-hV-5Zn" firstAttribute="top" relation="lessThanOrEqual" secondItem="gyd-P0-Jtp" secondAttribute="top" constant="50" id="Lgg-dK-dWD"/>
+                                    <constraint firstItem="pgR-N6-O8I" firstAttribute="width" relation="lessThanOrEqual" secondItem="gyd-P0-Jtp" secondAttribute="width" constant="-20" id="Qtl-Sn-4sa"/>
+                                    <constraint firstItem="pgR-N6-O8I" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tIu-hV-5Zn" secondAttribute="bottom" constant="5" id="UqO-qr-DFb"/>
+                                    <constraint firstItem="tIu-hV-5Zn" firstAttribute="width" secondItem="gyd-P0-Jtp" secondAttribute="width" constant="-40" id="WN3-B1-hdr"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="pgR-N6-O8I" secondAttribute="bottom" id="dHK-jG-h62"/>
+                                    <constraint firstItem="tIu-hV-5Zn" firstAttribute="centerX" secondItem="gyd-P0-Jtp" secondAttribute="centerX" id="gW6-uh-S3P"/>
+                                    <constraint firstItem="tIu-hV-5Zn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gyd-P0-Jtp" secondAttribute="top" id="hLW-0A-bNP"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gyd-P0-Jtp" firstAttribute="trailing" secondItem="Zv8-IX-skS" secondAttribute="trailingMargin" id="3Zf-rH-nHr"/>
+                            <constraint firstItem="gyd-P0-Jtp" firstAttribute="top" secondItem="8AG-m0-j8j" secondAttribute="top" id="3c3-OK-GlH"/>
+                            <constraint firstItem="gyd-P0-Jtp" firstAttribute="leading" secondItem="Zv8-IX-skS" secondAttribute="leadingMargin" id="Xs9-eo-JKU"/>
+                            <constraint firstItem="8AG-m0-j8j" firstAttribute="bottom" secondItem="gyd-P0-Jtp" secondAttribute="bottom" id="cc1-H5-tGl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8AG-m0-j8j"/>
+                    </view>
+                    <connections>
+                        <outlet property="ivQRCode" destination="pgR-N6-O8I" id="N1I-SB-9Aj"/>
+                        <outlet property="lbNotice" destination="tIu-hV-5Zn" id="96E-Bo-FdT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="paI-oh-5zM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4771" y="1965"/>
+        </scene>
+        <!--Acknowledgements View Controller-->
+        <scene sceneID="KU7-LC-zhu">
+            <objects>
+                <viewController id="eci-Bq-6O9" customClass="AcknowledgementsViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="imM-2I-Lqn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="tna-Vb-bOF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h3N-Sk-uuv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="765" y="1965"/>
+        </scene>
+        <!--Puzzle View Controller-->
+        <scene sceneID="9Lr-fv-Xx8">
+            <objects>
+                <viewController id="8S1-G1-xuU" customClass="PuzzleViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="WCP-a0-X3p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="ZUT-ii-aqy"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5OE-mE-cEs">
+                        <barButtonItem key="rightBarButtonItem" image="WebViewAssets.bundle/BarButton-Reload.png" id="2mf-JZ-Jab">
+                            <connections>
+                                <action selector="reload:" destination="8S1-G1-xuU" id="MuG-vd-UeA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="goReloadButton" destination="2mf-JZ-Jab" id="tyY-8D-rcV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TEy-Nc-DRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5442" y="1965"/>
+        </scene>
+        <!--Sponsor Web View Controller-->
+        <scene sceneID="GmC-4T-zKa">
+            <objects>
+                <viewController id="9X9-rL-dnd" customClass="SponsorWebViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Idw-zd-zrE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="L9j-6h-FCR"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="peJ-Ru-bO8">
+                        <barButtonItem key="rightBarButtonItem" image="WebViewAssets.bundle/BarButton-Reload.png" id="YsN-3E-pZ1">
+                            <connections>
+                                <action selector="reload:" destination="9X9-rL-dnd" id="tgE-mx-kK3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="goReloadButton" destination="YsN-3E-pZ1" id="a5j-dW-dAM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EFK-o4-OHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1419" y="1965"/>
+        </scene>
+        <!--Venue Web View Controller-->
+        <scene sceneID="Ric-7t-8DI">
+            <objects>
+                <viewController id="ZB3-yk-XBO" customClass="VenueWebViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9tc-3O-745">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="tVl-Y9-XUM"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lPg-El-WKo">
+                        <barButtonItem key="rightBarButtonItem" image="WebViewAssets.bundle/BarButton-Reload.png" id="qUm-B5-2J5">
+                            <connections>
+                                <action selector="reload:" destination="ZB3-yk-XBO" id="xKO-fV-BtZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="goReloadButton" destination="qUm-B5-2J5" id="6j0-0a-Ri9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f9Y-yc-cNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3407" y="1965"/>
+        </scene>
+        <!--Partner Web View Controller-->
+        <scene sceneID="fAF-GU-MJR">
+            <objects>
+                <viewController id="XGh-7S-2Rf" customClass="PartnerWebViewController" sceneMemberID="viewController">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="4ht-fC-gLZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="Qpe-Yc-fjM"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GKQ-kq-P9G">
+                        <barButtonItem key="rightBarButtonItem" image="WebViewAssets.bundle/BarButton-Reload.png" id="bq7-NB-3El">
+                            <connections>
+                                <action selector="reload:" destination="XGh-7S-2Rf" id="Nja-Ob-9lX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="goReloadButton" destination="bq7-NB-3El" id="UHP-1v-cu4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Od-ng-nTD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2080" y="1965"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="WebViewAssets.bundle/BarButton-Reload.png" width="16" height="16"/>
+    </resources>
+</document>
