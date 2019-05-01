@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   CCIP
 
@@ -65,10 +65,10 @@
 "Libraries" = "開源專案";
 "Introduction" = "簡介";
 "Speaker" = "講師";
-"GuideViewMessage" = "請透過行前通知內的連結開啟此應用程式\n\n您也可以點擊右上角打開相機掃描 KKTIX 提供的 QR Code";
+"GuideViewMessage" = "請透過行前通知內的連結開啟此應用程式\n\n您也可以點擊右上角打開相機掃描售票系統提供的 QR Code";
 "GuideViewButton" = "使用";
 "GuideViewTokenErrorTitle" = "錯誤的驗證碼";
-"GuideViewTokenErrorDesc" = "請透過行前通知內的連結開啟此應用程式，您也可以點擊右上角打開相機掃描 KKTIX 提供的 QR Code";
+"GuideViewTokenErrorDesc" = "請透過行前通知內的連結開啟此應用程式，您也可以點擊右上角打開相機掃描售票系統提供的 QR Code";
 "CheckinNotice" = "請注意！在點下『確認使用』之後，將立即視為已領取。\n請確認大會工作人員已經指示您按下『確認使用』按鈕後再按下按鈕，謝謝！";
 "CheckinStaffShirtNotice" = "請注意！在點下『確認使用』之後，將立即視為已領取。\n請確認發放「大會工人服」的工作人員已經指示您按下『確認使用』按鈕後再按下按鈕，謝謝！";
 "CheckinStaffRadioNotice" = "請注意！在點下『確認使用』之後，將立即視為已領取。\n請確認發放「對講機」的工作人員已經指示您按下『確認使用』按鈕後再按下按鈕，並請於當日歸還設備，若對設備有任何疑慮，請洽詢發放相關人員，謝謝！";
