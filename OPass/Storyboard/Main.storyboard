@@ -455,7 +455,7 @@ Please copy and paste the token into next field or click the token link in the r
                         <outlet property="ivUserPhoto" destination="01s-25-wxe" id="rr3-07-Jkv"/>
                         <outlet property="lbHi" destination="L3Y-MS-x0I" id="uJH-0a-vrQ"/>
                         <outlet property="lbUserName" destination="vJH-ug-pK0" id="se2-C1-fIo"/>
-                        <segue destination="VKq-4v-Yvp" kind="custom" identifier="ShowGuide" customClass="EmbeddedNavigationControllerSegue" customModule="OPass" customModuleProvider="target" id="lBg-aP-1xi"/>
+                        <segue destination="VKq-4v-Yvp" kind="custom" identifier="ShowGuide" customClass="EmbeddedNavigationTabBarControllerSegue" customModule="OPass" customModuleProvider="target" id="lBg-aP-1xi"/>
                         <segue destination="GJw-lM-l3I" kind="custom" identifier="ShowCountdown" customClass="EmbeddedNavigationControllerSegue" customModule="OPass" customModuleProvider="target" id="bIa-hc-QfB"/>
                         <segue destination="tZ3-Ep-FUt" kind="custom" identifier="ShowInvalidNetworkMsg" customClass="EmbeddedNavigationControllerSegue" customModule="OPass" customModuleProvider="target" id="LZQ-Xr-3kl"/>
                     </connections>
@@ -650,7 +650,7 @@ Please copy and paste the token into next field or click the token link in the r
         <!--Announce-->
         <scene sceneID="rLM-aC-FYG">
             <objects>
-                <viewController id="ba1-3I-FgV" userLabel="Announce" customClass="AnnounceTableViewController" sceneMemberID="viewController">
+                <viewController id="ba1-3I-FgV" userLabel="Announce" customClass="AnnounceTableViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="O9C-ij-kHs" customClass="AnnounceView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -659,7 +659,7 @@ Please copy and paste the token into next field or click the token link in the r
                                 <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AnnounceCell" rowHeight="250" id="Hmk-Qi-7k1" customClass="AnnounceTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AnnounceCell" rowHeight="250" id="Hmk-Qi-7k1" customClass="AnnounceTableViewCell" customModule="OPass" customModuleProvider="target"> 
                                         <rect key="frame" x="0.0" y="28" width="414" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hmk-Qi-7k1" id="w2s-YF-NQD">
