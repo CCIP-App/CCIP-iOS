@@ -37,7 +37,6 @@
 		288D3A931D599BCB00E4E3A6 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A921D599BCB00E4E3A6 /* CoreMedia.framework */; };
 		288D3A951D599BD600E4E3A6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A941D599BD600E4E3A6 /* SystemConfiguration.framework */; };
 		288D3A971D599BDC00E4E3A6 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A961D599BDC00E4E3A6 /* MediaPlayer.framework */; };
-		28A7C55F1D5EE0C30079BB12 /* Project_Info_and_Contributors.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */; };
 		28A7C5641D5F7D2D0079BB12 /* Project_3rd_Lib_License.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */; };
 		28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */; };
 		28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */; };
@@ -200,7 +199,6 @@
 		288D3A921D599BCB00E4E3A6 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		288D3A941D599BD600E4E3A6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		288D3A961D599BDC00E4E3A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Project_Info_and_Contributors.json; sourceTree = "<group>"; };
 		28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Project_3rd_Lib_License.json; sourceTree = "<group>"; };
 		28A7C5651D5F84FB0079BB12 /* NSData+PMUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+PMUtils.h"; sourceTree = "<group>"; };
 		28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+PMUtils.m"; sourceTree = "<group>"; };
@@ -653,7 +651,6 @@
 				6B4FCB2B218F98840005469F /* SponsorWebViewController.swift */,
 				6BB97F9B222A813200338138 /* PartnerWebViewController.swift */,
 				6BE8A229220DC84C0035CFD8 /* AcknowledgementsViewController.swift */,
-				28A7C55E1D5EE0C30079BB12 /* Project_Info_and_Contributors.json */,
 				28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */,
 			);
 			path = MoreTab;
@@ -829,7 +826,6 @@
 				28A7C5641D5F7D2D0079BB12 /* Project_3rd_Lib_License.json in Resources */,
 				1424C2032250FC7100D36266 /* Main.storyboard in Resources */,
 				288D3A781D599A1200E4E3A6 /* LICENSE-2.0.txt in Resources */,
-				28A7C55F1D5EE0C30079BB12 /* Project_Info_and_Contributors.json in Resources */,
 				284602E11F121BBB00F512A3 /* LaunchScreen@2x.png in Resources */,
 				280774D21F1AD8D300A5B994 /* ScheduleTableViewCell.xib in Resources */,
 				288D3A7B1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle in Resources */,

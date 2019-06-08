@@ -21,24 +21,6 @@ class AcknowledgementsViewController : UIViewController {
     func configuration() {
         Promise { resolve, reject in
             var contributors = [Any]();
-
-            //        let filePath = Bundle.main.path(forResource: "Project_Info_and_Contributors", ofType: "json")
-            //        let projectInfoJSON = try! String.init(contentsOfFile: filePath!, encoding: .utf8)
-            //        let projectInfoData = (try! JSONSerialization.jsonObject(with: projectInfoJSON.data(using: .utf8)!, options: .mutableContainers)) as! [String: NSObject]
-            //        let selfContributorIndexList = (projectInfoData["self"]! as! [String: NSObject])["contributors"] as! [NSNumber]
-            //        let allContributorArray = projectInfoData["contributors"] as! [NSDictionary];
-            //
-            //        for contributorIndex in selfContributorIndexList {
-            //            for contributorDict in allContributorArray {
-            //                if contributorDict.object(forKey: "index") as! NSNumber == contributorIndex {
-            //                    let contributor: CPDContribution = CPDContribution.init(name: contributorDict.object(forKey: "nick_name") as! String, websiteAddress: self.getWebsiteAddress(contributor: contributorDict ), role: contributorDict.object(forKey: "role") as! String)
-            //                    contributor.avatarAddress = self.getAvatarAddress(contributor: contributorDict )
-            //                    contributors.append(contributor)
-            //                    break
-            //                }
-            //            }
-            //        }
-
             let manager = AFHTTPSessionManager.init()
             manager.get("https://api.github.com/repos/CCIP-App/CCIP-iOS/contributors", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
                 NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any)!)");
