@@ -111,6 +111,7 @@ static const NSString *CPDEntries = @"CPDEntries";
         dispatch_async(dispatch_get_main_queue(), ^{
             UIImage *image = [UIImage imageWithData:data];
             imageView.image = image;
+            [imageView sizeToFit];
             [cell setNeedsLayout];
         });
     });

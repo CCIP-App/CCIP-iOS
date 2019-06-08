@@ -112,6 +112,7 @@ static NSMutableSet *_retainedPopupControllers;
     UILabel *_defaultTitleLabel;
     STPopupLeftBarItem *_defaultLeftBarItem;
     NSDictionary *_keyboardInfo;
+    BOOL _didOverrideSafeAreaInsets;
     BOOL _observing;
     
     // Built-in transitioning
@@ -174,7 +175,13 @@ static NSMutableSet *_retainedPopupControllers;
 - (void)setHidesCloseButton:(BOOL)hidesCloseButton
 {
     _hidesCloseButton = hidesCloseButton;
-    [self updateNavigationBarAniamted:NO];
+    [self updateNavigationBarAnimated:NO];
+}
+
+- (void)setSafeAreaInsets:(UIEdgeInsets)safeAreaInsets
+{
+    _safeAreaInsets = safeAreaInsets;
+    _didOverrideSafeAreaInsets = YES;
 }
 
 #pragma mark - Observers
@@ -245,14 +252,16 @@ static NSMutableSet *_retainedPopupControllers;
     UIViewController *topViewController = self.topViewController;
     if (object == _navigationBar || object == topViewController.navigationItem) {
         if (topViewController.isViewLoaded && topViewController.view.superview) {
-            [self updateNavigationBarAniamted:NO];
+            [self updateNavigationBarAnimated:NO];
         }
     }
     else if (object == topViewController) {
         if (topViewController.isViewLoaded && topViewController.view.superview) {
             [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:1 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                 [self layoutContainerView];
-            } completion:nil];
+            } completion:^(BOOL finished) {
+                [self adjustContainerViewOrigin];
+            }];
         }
     }
 }
@@ -275,6 +284,11 @@ static NSMutableSet *_retainedPopupControllers;
     [_retainedPopupControllers addObject:self];
     
     viewController = viewController.tabBarController ? : viewController;
+    if (@available(iOS 11.0, *)) {
+        if (!_didOverrideSafeAreaInsets) {
+            _safeAreaInsets = viewController.view.window.safeAreaInsets;
+        }
+    }
     [viewController presentViewController:_containerViewController animated:YES completion:completion];
 }
 
@@ -379,27 +393,27 @@ static NSMutableSet *_retainedPopupControllers;
         toViewController.view.alpha = 0;
         [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             [self layoutContainerView];
-            [_contentView addSubview:toViewController.view];
+            [self->_contentView addSubview:toViewController.view];
             capturedView.alpha = 0;
             toViewController.view.alpha = 1;
-            [_containerViewController setNeedsStatusBarAppearanceUpdate];
+            [self->_containerViewController setNeedsStatusBarAppearanceUpdate];
         } completion:^(BOOL finished) {
             [capturedView removeFromSuperview];
             [fromViewController removeFromParentViewController];
             
-            _containerView.userInteractionEnabled = YES;
-            [toViewController didMoveToParentViewController:_containerViewController];
+            self->_containerView.userInteractionEnabled = YES;
+            [toViewController didMoveToParentViewController:self->_containerViewController];
             
             [fromViewController endAppearanceTransition];
             [toViewController endAppearanceTransition];
         }];
-        [self updateNavigationBarAniamted:animated];
+        [self updateNavigationBarAnimated:animated];
     }
     else {
         [self layoutContainerView];
         [_contentView addSubview:toViewController.view];
         [_containerViewController setNeedsStatusBarAppearanceUpdate];
-        [self updateNavigationBarAniamted:animated];
+        [self updateNavigationBarAnimated:animated];
         
         [fromViewController.view removeFromSuperview];
         [fromViewController removeFromParentViewController];
@@ -411,7 +425,7 @@ static NSMutableSet *_retainedPopupControllers;
     }
 }
 
-- (void)updateNavigationBarAniamted:(BOOL)animated
+- (void)updateNavigationBarAnimated:(BOOL)animated
 {
     BOOL shouldAnimateDefaultLeftBarItem = animated && _navigationBar.topItem.leftBarButtonItem == _defaultLeftBarItem;
     
@@ -452,6 +466,7 @@ static NSMutableSet *_retainedPopupControllers;
             toTitleView = _defaultTitleLabel;
         }
         
+        fromTitleView.center = _navigationBar.center;
         [_navigationBar addSubview:fromTitleView];
         _navigationBar.topItem.titleView = toTitleView;
         toTitleView.alpha = 0;
@@ -501,10 +516,10 @@ static NSMutableSet *_retainedPopupControllers;
         _navigationBar.hidden = navigationBarHidden;
     }
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        _navigationBar.alpha = navigationBarHidden ? 0 : 1;
+        self->_navigationBar.alpha = navigationBarHidden ? 0 : 1;
         [self layoutContainerView];
     } completion:^(BOOL finished) {
-        _navigationBar.hidden = navigationBarHidden;
+        self->_navigationBar.hidden = navigationBarHidden;
     }];
 }
 
@@ -512,6 +527,9 @@ static NSMutableSet *_retainedPopupControllers;
 
 - (void)layoutContainerView
 {
+    CGAffineTransform lastTransform = _containerView.transform;
+    _containerView.transform = CGAffineTransformIdentity;
+    
     _backgroundView.frame = _containerViewController.view.bounds;
  
     CGFloat preferredNavigationBarHeight = [self preferredNavigationBarHeight];
@@ -522,6 +540,7 @@ static NSMutableSet *_retainedPopupControllers;
     CGFloat containerViewY = (_containerViewController.view.bounds.size.height - containerViewHeight) / 2;
     
     if (self.style == STPopupStyleBottomSheet) {
+        containerViewHeight += _safeAreaInsets.bottom;
         containerViewY = _containerViewController.view.bounds.size.height - containerViewHeight;
         containerViewHeight += STPopupBottomSheetExtraHeight;
     }
@@ -533,6 +552,8 @@ static NSMutableSet *_retainedPopupControllers;
     
     UIViewController *topViewController = self.topViewController;
     topViewController.view.frame = _contentView.bounds;
+    
+    _containerView.transform = lastTransform;
 }
 
 - (CGSize)contentSizeOfTopView
@@ -649,11 +670,12 @@ static NSMutableSet *_retainedPopupControllers;
 {
     [_containerView endEditing:YES];
     [UIView animateWithDuration:0.2 delay:0 usingSpringWithDamping:1 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        _containerView.alpha = 0;
+        self->_containerView.alpha = 0;
     } completion:^(BOOL finished) {
         [self layoutContainerView];
+        [self updateNavigationBarAnimated:NO];
         [UIView animateWithDuration:0.2 delay:0 usingSpringWithDamping:1 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            _containerView.alpha = 1;
+            self->_containerView.alpha = 1;
         } completion:nil];
     }];
 }
@@ -713,7 +735,7 @@ static NSMutableSet *_retainedPopupControllers;
     
     CGFloat offsetY = 0;
     if (self.style == STPopupStyleBottomSheet) {
-        offsetY = keyboardHeight;
+        offsetY = keyboardHeight - _safeAreaInsets.bottom;
     }
     else {
         CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
@@ -851,7 +873,7 @@ static NSMutableSet *_retainedPopupControllers;
         [self layoutContainerView];
         [_contentView addSubview:topViewController.view];
         [toViewController setNeedsStatusBarAppearanceUpdate];
-        [self updateNavigationBarAniamted:NO];
+        [self updateNavigationBarAnimated:NO];
         
         CGFloat lastBackgroundViewAlpha = _backgroundView.alpha;
         _backgroundView.alpha = 0;
@@ -860,12 +882,12 @@ static NSMutableSet *_retainedPopupControllers;
         _containerView.transform = CGAffineTransformIdentity;
         
         [UIView animateWithDuration:[transitioning popupControllerTransitionDuration:context] delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            _backgroundView.alpha = lastBackgroundViewAlpha;
+            self->_backgroundView.alpha = lastBackgroundViewAlpha;
         } completion:nil];
         
         [transitioning popupControllerAnimateTransition:context completion:^{
-            _backgroundView.userInteractionEnabled = YES;
-            _containerView.userInteractionEnabled = YES;
+            self->_backgroundView.userInteractionEnabled = YES;
+            self->_containerView.userInteractionEnabled = YES;
             
             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
             [topViewController didMoveToParentViewController:toViewController];
@@ -883,12 +905,12 @@ static NSMutableSet *_retainedPopupControllers;
         _containerView.userInteractionEnabled = NO;
         
         [UIView animateWithDuration:[transitioning popupControllerTransitionDuration:context] delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            _backgroundView.alpha = 0;
+            self->_backgroundView.alpha = 0;
         } completion:nil];
         
         [transitioning popupControllerAnimateTransition:context completion:^{
-            _backgroundView.userInteractionEnabled = YES;
-            _containerView.userInteractionEnabled = YES;;
+            self->_backgroundView.userInteractionEnabled = YES;
+            self->_containerView.userInteractionEnabled = YES;;
             
             [fromViewController.view removeFromSuperview];
             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
@@ -898,7 +920,7 @@ static NSMutableSet *_retainedPopupControllers;
             
             [toViewController endAppearanceTransition];
             
-            _backgroundView.alpha = lastBackgroundViewAlpha;
+            self->_backgroundView.alpha = lastBackgroundViewAlpha;
         }];
     }
 }
@@ -927,7 +949,7 @@ static NSMutableSet *_retainedPopupControllers;
     else {
         [_containerView endEditing:YES];
         [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            _containerView.transform = CGAffineTransformIdentity;
+            self->_containerView.transform = CGAffineTransformIdentity;
         } completion:nil];
     }
 }

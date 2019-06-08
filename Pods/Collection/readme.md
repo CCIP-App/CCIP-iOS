@@ -58,6 +58,7 @@ Copy the category files to your project or just
 `pluck:keyPath:keyKeyPath`
 `flatten`
 `flatten:keyPath`
+'partition:block'
 `reduce:block`
 `reduce:block:initialCarry`
 `pipe:block`

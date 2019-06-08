@@ -41,7 +41,7 @@ typedef NS_ENUM(NSUInteger, STPopupControllerTransitioningAction) {
  Animate transitioning the container view of popup controller. "completion" need to be called after transitioning is finished.
  Initially "containerView" will be placed at the final position with transform = CGAffineTransformIdentity if it's presenting.
  */
-- (void)popupControllerAnimateTransition:(STPopupControllerTransitioningContext *)context completion:(void(^)())completion;
+- (void)popupControllerAnimateTransition:(STPopupControllerTransitioningContext *)context completion:(void(^)(void))completion;
 
 @end
 
@@ -104,6 +104,11 @@ typedef NS_ENUM(NSUInteger, STPopupTransitionStyle) {
  Hides close button if there is only one view controller in the view controllers stack.
  */
 @property (nonatomic, assign) BOOL hidesCloseButton;
+
+/**
+ The insets that you use to determine the safe area for the popup.
+ */
+@property (nonatomic, assign) UIEdgeInsets safeAreaInsets;
 
 /**
  Navigation bar of popup.

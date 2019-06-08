@@ -9,13 +9,13 @@
 import Foundation
 
 public extension Promise {
-    public class func reject(_ error: Error = PromiseError.default) -> Promise<T> {
+    class func reject(_ error: Error = PromiseError.default) -> Promise<T> {
         return Promise { _, reject in reject(error) }
     }
 }
 
 public extension Promise {
-    public class func resolve(_ value: T) -> Promise<T> {
+    class func resolve(_ value: T) -> Promise<T> {
         return Promise { resolve, _ in resolve(value) }
     }
 }
@@ -28,13 +28,13 @@ extension Promise where T == Void {
 
 public extension Promise {
     
-    public var value: T? {
+    var value: T? {
         return synchronize { state, _ in
             return state.value
         }
     }
     
-    public var error: Error? {
+    var error: Error? {
         return synchronize { state, _ in
             return state.error
         }

@@ -276,6 +276,14 @@
     return results;
 }
 
+- (NSArray<NSMutableArray*>*)partition:(BOOL (^)(id obj))block{
+    NSArray<NSMutableArray*>* result = @[NSMutableArray.new, NSMutableArray.new];
+    [self each:^(id object) {
+        block(object) ? [result.firstObject addObject:object] : [result.lastObject addObject:object];
+    }];
+    return result;
+}
+
 - (NSArray*)pluck:(NSString*)keyPath{
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.count];
     [self each:^(id object) {
