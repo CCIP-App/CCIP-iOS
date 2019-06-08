@@ -28,6 +28,9 @@ import UIKit
         }
 
         // self.automaticallyAdjustsScrollViewInsets = false;
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
