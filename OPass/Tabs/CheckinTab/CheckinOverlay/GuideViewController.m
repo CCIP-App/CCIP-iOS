@@ -139,6 +139,7 @@
 }
 
 - (IBAction)redeemCode:(id)sender {
+    __block BOOL alreadyAlert = NO;
     [OPassAPI RedeemCodeForEvent:@""
                        withToken:[self.redeemCodeText text]
                       completion:^(BOOL success, id obj, NSError *error) {
@@ -146,7 +147,10 @@
                               [self dismissViewControllerAnimated:YES
                                                        completion:nil];
                           } else {
-                              [self showAlert];
+                              if (!alreadyAlert) {
+                                  alreadyAlert = YES;
+                                  [self showAlert];
+                              }
                           }
                       }];
 }
