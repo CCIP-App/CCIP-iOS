@@ -82,6 +82,7 @@
 		6B50EA322169377E000CC757 /* UIAlertController+additional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA312169377E000CC757 /* UIAlertController+additional.swift */; };
 		6B5AABC5220CB02400C01C54 /* MyTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5AABC4220CB02400C01C54 /* MyTicketViewController.swift */; };
 		6B5AABC7220CBB6700C01C54 /* iBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5AABC6220CBB6700C01C54 /* iBeacon.swift */; };
+		6B5C3EC822AC2EFC002B7982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B5C3EC722AC2EFB002B7982 /* LaunchScreen.storyboard */; };
 		6B5FD2D7223C4B9D005D111C /* AnnounceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5FD2D6223C4B9D005D111C /* AnnounceTableViewCell.swift */; };
 		6B5FD2D9223C51F4005D111C /* AnnounceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5FD2D8223C51F4005D111C /* AnnounceTableViewController.swift */; };
 		6B670CCD2156E00A0089C9B5 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */; };
@@ -104,7 +105,6 @@
 		6BCAC0381F1A8FC100032096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BCAC0371F1A8FC100032096 /* Assets.xcassets */; };
 		6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */; };
 		6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
-		6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */; };
 		6BE250221D3133FC005FB4B2 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE250211D3133FC005FB4B2 /* GuideViewController.m */; };
 		6BE4B8ED222ADA75005F8B95 /* OPassEventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B8EC222ADA75005F8B95 /* OPassEventsController.swift */; };
 		6BE4B8F1222ADB7B005F8B95 /* NEHotspot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B8F0222ADB7B005F8B95 /* NEHotspot.swift */; };
@@ -258,6 +258,7 @@
 		6B50EA312169377E000CC757 /* UIAlertController+additional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+additional.swift"; sourceTree = "<group>"; };
 		6B5AABC4220CB02400C01C54 /* MyTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTicketViewController.swift; sourceTree = "<group>"; };
 		6B5AABC6220CBB6700C01C54 /* iBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeacon.swift; sourceTree = "<group>"; };
+		6B5C3EC722AC2EFB002B7982 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B5FD2D6223C4B9D005D111C /* AnnounceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceTableViewCell.swift; sourceTree = "<group>"; };
 		6B5FD2D8223C51F4005D111C /* AnnounceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceTableViewController.swift; sourceTree = "<group>"; };
 		6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
@@ -296,7 +297,6 @@
 		6BD8EF2D1D1D73510094BE95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6BD8EF2E1D1D73510094BE95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6BD8EF391D1D73510094BE95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6BD8EF3C1D1D73510094BE95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BE250201D3133FC005FB4B2 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		6BE250211D3133FC005FB4B2 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		6BE4B8EC222ADA75005F8B95 /* OPassEventsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassEventsController.swift; sourceTree = "<group>"; };
@@ -372,6 +372,7 @@
 		1424C1FD2250FC4600D36266 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				6B5C3EC722AC2EFB002B7982 /* LaunchScreen.storyboard */,
 				1424C2002250FC7100D36266 /* Main.storyboard */,
 				1424C1FE2250FC7100D36266 /* More.storyboard */,
 				1424C1FF2250FC7100D36266 /* Schedule.storyboard */,
@@ -520,7 +521,6 @@
 			isa = PBXGroup;
 			children = (
 				1424C1FD2250FC4600D36266 /* Storyboard */,
-				6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */,
 				6BC12A961F2B1B8000B14039 /* main.swift */,
 				6BC12A941F2B1B8000B14039 /* OPass-Swift.h */,
 				6BC12A951F2B1B8000B14039 /* OPass-Bridging-Header.h */,
@@ -833,8 +833,8 @@
 				284602E11F121BBB00F512A3 /* LaunchScreen@2x.png in Resources */,
 				280774D21F1AD8D300A5B994 /* ScheduleTableViewCell.xib in Resources */,
 				288D3A7B1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle in Resources */,
-				6BD8EF3D1D1D73510094BE95 /* LaunchScreen.storyboard in Resources */,
 				6BEB31151F26656B0050759D /* Maps.bundle in Resources */,
+				6B5C3EC822AC2EFC002B7982 /* LaunchScreen.storyboard in Resources */,
 				6B036B901F24371700D5E5A5 /* Settings.bundle in Resources */,
 				6B76DF6420B019B200EBEF06 /* config.plist in Resources */,
 				284602E01F121BBB00F512A3 /* LaunchScreen@1x.png in Resources */,
@@ -1022,14 +1022,6 @@
 				6BCAC01E1F1A8FC100032096 /* Base */,
 			);
 			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
-		6BD8EF3B1D1D73510094BE95 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6BD8EF3C1D1D73510094BE95 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
