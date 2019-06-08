@@ -15,7 +15,7 @@
 
 @interface ScheduleViewPagerController ()
 
-@property (strong, nonatomic) NSArray *programs;
+@property (strong, nonatomic) NSMutableDictionary *programs;
 @property (strong, nonatomic) NSArray *segmentsTextArray;
 @property (strong, nonatomic) NSMutableDictionary *program_date;
 @property (strong, readwrite, nonatomic) NSDate *today;
@@ -45,9 +45,9 @@
     NSObject *programsObj = [userDefault objectForKey:SCHEDULE_CACHE_KEY];
     // force empty cache for non NSData cache
     if (![programsObj isKindOfClass:[NSData class]]) {
-        programsObj = @[];
+        programsObj = @{};
     }
-    NSArray *programsData = [programsObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)programsObj] : programsObj;
+    NSMutableDictionary *programsData = [programsObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)programsObj] : programsObj;
     self.programs = programsData;
     if (self.programs != nil) {
         [self setScheduleDate];
@@ -114,9 +114,9 @@
         NSObject *programsObj = [userDefault objectForKey:SCHEDULE_CACHE_KEY];
         // force empty cache for non NSData cache
         if (![programsObj isKindOfClass:[NSData class]]) {
-            programsObj = @[];
+            programsObj = @{};
         }
-        NSArray *programsData = [programsObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)programsObj] : programsObj;
+        NSMutableDictionary *programsData = [programsObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)programsObj] : programsObj;
         self.programs = programsData;
         if (self.programs != nil) {
             [self setScheduleDate];
@@ -129,15 +129,26 @@
     self.selected_section = [NSDate dateWithTimeIntervalSince1970:0];
     self.today = [NSDate new];
     NSTimeInterval preferredDateInterval = CGFLOAT_MAX;
-    for (NSDictionary *program in self.programs) {
-        NSDate *startTime = [Constants DateFromString:[program objectForKey:@"start"]];
-        NSDate *endTime = [Constants DateFromString:[program objectForKey:@"end"]];
+    NSArray *sessions = [self.programs objectForKey:@"sessions"];
+    NSArray *speakers = [self.programs objectForKey:@"speakers"];
+    for (NSDictionary *session in sessions) {
+        NSDate *startTime = [Constants DateFromString:[session objectForKey:@"start"]];
+        NSDate *endTime = [Constants DateFromString:[session objectForKey:@"end"]];
         NSString *time_date = [Constants DateToDisplayDateString:startTime];
         NSMutableArray *tempArray = [self.program_date objectForKey:time_date];
         if (tempArray == nil) {
             tempArray = [NSMutableArray new];
         }
-        [tempArray addObject:program];
+        NSArray *spkIds = [session objectForKey:@"speakers"];
+        NSArray *sessionSpeakers = [speakers filter:^BOOL(NSDictionary *speaker) {
+            return [spkIds contains:^BOOL(NSString *skpId) {
+                return [[speaker objectForKey:@"id"] isEqualToString:skpId];
+            }];
+        }];
+        NSMutableDictionary *sessionDict = [NSMutableDictionary dictionaryWithDictionary:session];
+        [sessionDict setObject:sessionSpeakers
+                        forKey:@"speakers"];
+        [tempArray addObject:[NSDictionary dictionaryWithDictionary:sessionDict]];
         [self.program_date setObject:tempArray
                               forKey:time_date];
         NSTimeInterval sinceNow = [startTime timeIntervalSinceDate:self.today];

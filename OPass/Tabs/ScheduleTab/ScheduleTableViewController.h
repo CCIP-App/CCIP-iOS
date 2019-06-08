@@ -15,6 +15,6 @@
 @interface ScheduleTableViewController : UITableViewController<UIViewControllerPreviewingDelegate, ScheduleFavoriteDelegate>
 
 @property (strong, nonatomic) ScheduleViewPagerController *pagerController;
-@property (strong, nonatomic) NSArray *programs;
+@property (strong, nonatomic) NSMutableDictionary *programs;
 
 @end

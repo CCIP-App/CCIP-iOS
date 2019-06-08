@@ -66,7 +66,7 @@
     UITableView *tableView = (UITableView *)[previewingContext sourceView];
     NSIndexPath *indexPath = [((NSArray *)[tableView valueForKey:@"_highlightedIndexPaths"]) firstObject];
     if (indexPath != nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Schedule"
                                                              bundle:nil];
         ScheduleDetailViewController *detailView = [storyboard instantiateViewControllerWithIdentifier:INIT_SCHEDULE_DETAIL_VIEW_STORYBOARD_ID];
         NSDate *time = [self.programTimes objectAtIndex:indexPath.section];
