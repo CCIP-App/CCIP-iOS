@@ -9,8 +9,7 @@
 @import FSPagerView;
 
 #import <UIKit/UIKit.h>
-#import "ScheduleAbstractViewCell.h"
-#import "ScheduleSpeakerInfoViewCell.h"
+#import "AppDelegate.h"
 
 #define INIT_SCHEDULE_DETAIL_VIEW_STORYBOARD_ID (@"ScheduleDetail")
 #define SCHEDULE_DETAIL_VIEW_STORYBOARD_ID      (@"ShowScheduleDetail")

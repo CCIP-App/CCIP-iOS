@@ -42,8 +42,6 @@
 		5F75A479AF13F31C57E574C7 /* Pods-OPass-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC0E7EB6EB420AD75E37B7F2 /* Pods-OPass-metadata.plist */; };
 		5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */; };
 		6B02FD931F220326002AC0D3 /* ScheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */; };
-		6B02FD961F220371002AC0D3 /* ScheduleAbstractViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD951F220371002AC0D3 /* ScheduleAbstractViewCell.m */; };
-		6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD981F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m */; };
 		6B036B901F24371700D5E5A5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B036B8F1F24371600D5E5A5 /* Settings.bundle */; };
 		6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */; };
 		6B0C6C9122AD4A2C003E7617 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C6C9022AD4A2C003E7617 /* ScheduleViewController.swift */; };
@@ -95,6 +93,8 @@
 		6B9A279E2231715600E8463E /* OPassAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9A279D2231715500E8463E /* OPassAPI.swift */; };
 		6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */; };
 		6BB1C4391F1AD4BB00AB072F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
+		6BB3AE4322AD9B12008BAD7F /* ScheduleAbstractViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB3AE4222AD9B12008BAD7F /* ScheduleAbstractViewCell.swift */; };
+		6BB3AE4522AD9B29008BAD7F /* ScheduleSpeakerInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB3AE4422AD9B29008BAD7F /* ScheduleSpeakerInfoViewCell.swift */; };
 		6BB97F9C222A813200338138 /* PartnerWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB97F9B222A813200338138 /* PartnerWebViewController.swift */; };
 		6BC3820F223D627900685D00 /* UIImpactFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC3820E223D627900685D00 /* UIImpactFeedback.swift */; };
 		6BC38212223DA45400685D00 /* InvalidNetworkMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC38210223DA45300685D00 /* InvalidNetworkMessageViewController.m */; };
@@ -207,10 +207,6 @@
 		6B023A9A20470F4B00F474F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B02FD911F220326002AC0D3 /* ScheduleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleDetailViewController.h; sourceTree = "<group>"; };
 		6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleDetailViewController.m; sourceTree = "<group>"; };
-		6B02FD941F220371002AC0D3 /* ScheduleAbstractViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleAbstractViewCell.h; sourceTree = "<group>"; };
-		6B02FD951F220371002AC0D3 /* ScheduleAbstractViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleAbstractViewCell.m; sourceTree = "<group>"; };
-		6B02FD971F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleSpeakerInfoViewCell.h; sourceTree = "<group>"; };
-		6B02FD981F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleSpeakerInfoViewCell.m; sourceTree = "<group>"; };
 		6B036B8F1F24371600D5E5A5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		6B0B84D11D2B861000DE18B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B0B84D21D2B862300DE18B0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -270,6 +266,8 @@
 		6BA1A5201D1EFBDC00D5924C /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
 		6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
 		6BB0B6091F1A74DF00AEB437 /* OPass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OPass.entitlements; sourceTree = "<group>"; };
+		6BB3AE4222AD9B12008BAD7F /* ScheduleAbstractViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleAbstractViewCell.swift; sourceTree = "<group>"; };
+		6BB3AE4422AD9B29008BAD7F /* ScheduleSpeakerInfoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSpeakerInfoViewCell.swift; sourceTree = "<group>"; };
 		6BB55CAB1F242EC7007BC840 /* OPass-Build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "OPass-Build.sh"; sourceTree = "<group>"; };
 		6BB97F9B222A813200338138 /* PartnerWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerWebViewController.swift; sourceTree = "<group>"; };
 		6BC12A941F2B1B8000B14039 /* OPass-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OPass-Swift.h"; sourceTree = "<group>"; };
@@ -436,10 +434,8 @@
 				6B02FD911F220326002AC0D3 /* ScheduleDetailViewController.h */,
 				6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */,
 				6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */,
-				6B02FD941F220371002AC0D3 /* ScheduleAbstractViewCell.h */,
-				6B02FD951F220371002AC0D3 /* ScheduleAbstractViewCell.m */,
-				6B02FD971F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.h */,
-				6B02FD981F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m */,
+				6BB3AE4222AD9B12008BAD7F /* ScheduleAbstractViewCell.swift */,
+				6BB3AE4422AD9B29008BAD7F /* ScheduleSpeakerInfoViewCell.swift */,
 			);
 			path = ScheduleDetail;
 			sourceTree = "<group>";
@@ -919,8 +915,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B4FCB17218ECC230005469F /* UIViewController+addition.swift in Sources */,
+				6BB3AE4522AD9B29008BAD7F /* ScheduleSpeakerInfoViewCell.swift in Sources */,
+				6BB3AE4322AD9B12008BAD7F /* ScheduleAbstractViewCell.swift in Sources */,
 				6B5FD2D9223C51F4005D111C /* AnnounceTableViewController.swift in Sources */,
-				6B02FD991F22039B002AC0D3 /* ScheduleSpeakerInfoViewCell.m in Sources */,
 				6BE4B8F1222ADB7B005F8B95 /* NEHotspot.swift in Sources */,
 				6B4FCB28218F97B60005469F /* TelegramController.swift in Sources */,
 				6B4FCB22218F774D0005469F /* IRCViewController.swift in Sources */,
@@ -932,7 +929,6 @@
 				6B4FCB20218F65D30005469F /* NSObject+className.swift in Sources */,
 				6B4FCB1A218ECE070005469F /* Constants.m in Sources */,
 				6B4FCB04218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift in Sources */,
-				6B02FD961F220371002AC0D3 /* ScheduleAbstractViewCell.m in Sources */,
 				6B0C6C9122AD4A2C003E7617 /* ScheduleViewController.swift in Sources */,
 				6B4FCB02218E30B10005469F /* NSObject+DeepCopy.swift in Sources */,
 				28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */,

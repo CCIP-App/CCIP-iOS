@@ -9,8 +9,6 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "AppDelegate.h"
 #import "ScheduleDetailViewController.h"
-#import "ScheduleAbstractViewCell.h"
-#import "ScheduleSpeakerInfoViewCell.h"
 
 #define ABSTRACT_CELL       (@"ScheduleAbstract")
 #define SPEAKERINFO_CELL    (@"ScheduleSpeakerInfo")

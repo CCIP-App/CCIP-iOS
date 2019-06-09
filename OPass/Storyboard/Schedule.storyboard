@@ -179,7 +179,7 @@
                                 <rect key="frame" x="0.0" y="344" width="426" height="307"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleAbstract" rowHeight="250" id="A1g-o2-Fhh" customClass="ScheduleAbstractViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleAbstract" rowHeight="250" id="A1g-o2-Fhh" customClass="ScheduleAbstractViewCell" customModule="OPass" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="426" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A1g-o2-Fhh" id="vBB-HQ-Z4k">
@@ -230,7 +230,7 @@
                                             <outlet property="vwContent" destination="xDX-tX-jsM" id="krD-Ps-ved"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleSpeakerInfo" rowHeight="250" id="vUp-jj-gRu" customClass="ScheduleSpeakerInfoViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleSpeakerInfo" rowHeight="250" id="vUp-jj-gRu" customClass="ScheduleSpeakerInfoViewCell" customModule="OPass" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="278" width="426" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vUp-jj-gRu" id="HMV-Zd-AWH">
