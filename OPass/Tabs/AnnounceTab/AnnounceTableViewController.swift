@@ -193,7 +193,7 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
             cell.lbURL.text = uri
             let titleAttribute: [NSAttributedString.Key : Any] = [
                 .font: Constants.fontOfAwesome(withSize: 20, inStyle: .solid),
-                .foregroundColor: cell.lbIconOfURL.textColor,
+                .foregroundColor: cell.lbIconOfURL.textColor!,
             ]
             let title = NSAttributedString.init(
                 string: Constants.fontAwesome(code: "fa-external-link-alt")!,
