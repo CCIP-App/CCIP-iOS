@@ -67,7 +67,7 @@ class ScheduleTableViewCell: UITableViewCell {
         let room = self.schedule?.object(forKey: "room") as! String
         let startTime = Constants.DateFromString(self.schedule?.object(forKey: "start") as! String)
         let endTime = Constants.DateFromString(self.schedule?.object(forKey: "end") as! String)
-        let mins = endTime.timeIntervalSince(startTime) / 60
+        let mins = Int(endTime.timeIntervalSince(startTime) / 60)
         self.RoomLocationLabel?.text = "Room \(room) - \(mins) mins"
 
         let currentLangObject = self.schedule?.object(forKey: AppDelegate.shortLangUI()) as! NSDictionary
