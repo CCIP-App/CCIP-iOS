@@ -16,7 +16,7 @@
 
 @interface ScheduleDetailViewController : UIViewController<UITableViewDelegate,FSPagerViewDelegate,FSPagerViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UITableView *tvContent;
+@property (weak, nonatomic) IBOutlet UIView *vContent;
 @property (weak, nonatomic) IBOutlet FSPagerView *vwHeader;
 @property (weak, nonatomic) IBOutlet UIView *vwMeta;
 @property (weak, nonatomic) IBOutlet UILabel *lbSpeaker;

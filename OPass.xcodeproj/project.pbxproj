@@ -93,8 +93,6 @@
 		6B9A279E2231715600E8463E /* OPassAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9A279D2231715500E8463E /* OPassAPI.swift */; };
 		6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */; };
 		6BB1C4391F1AD4BB00AB072F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
-		6BB3AE4322AD9B12008BAD7F /* ScheduleAbstractViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB3AE4222AD9B12008BAD7F /* ScheduleAbstractViewCell.swift */; };
-		6BB3AE4522AD9B29008BAD7F /* ScheduleSpeakerInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB3AE4422AD9B29008BAD7F /* ScheduleSpeakerInfoViewCell.swift */; };
 		6BB97F9C222A813200338138 /* PartnerWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB97F9B222A813200338138 /* PartnerWebViewController.swift */; };
 		6BC3820F223D627900685D00 /* UIImpactFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC3820E223D627900685D00 /* UIImpactFeedback.swift */; };
 		6BC38212223DA45400685D00 /* InvalidNetworkMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC38210223DA45300685D00 /* InvalidNetworkMessageViewController.m */; };
@@ -266,8 +264,6 @@
 		6BA1A5201D1EFBDC00D5924C /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
 		6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
 		6BB0B6091F1A74DF00AEB437 /* OPass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OPass.entitlements; sourceTree = "<group>"; };
-		6BB3AE4222AD9B12008BAD7F /* ScheduleAbstractViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleAbstractViewCell.swift; sourceTree = "<group>"; };
-		6BB3AE4422AD9B29008BAD7F /* ScheduleSpeakerInfoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSpeakerInfoViewCell.swift; sourceTree = "<group>"; };
 		6BB55CAB1F242EC7007BC840 /* OPass-Build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "OPass-Build.sh"; sourceTree = "<group>"; };
 		6BB97F9B222A813200338138 /* PartnerWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerWebViewController.swift; sourceTree = "<group>"; };
 		6BC12A941F2B1B8000B14039 /* OPass-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OPass-Swift.h"; sourceTree = "<group>"; };
@@ -434,8 +430,6 @@
 				6B02FD911F220326002AC0D3 /* ScheduleDetailViewController.h */,
 				6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */,
 				6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */,
-				6BB3AE4222AD9B12008BAD7F /* ScheduleAbstractViewCell.swift */,
-				6BB3AE4422AD9B29008BAD7F /* ScheduleSpeakerInfoViewCell.swift */,
 			);
 			path = ScheduleDetail;
 			sourceTree = "<group>";
@@ -915,8 +909,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B4FCB17218ECC230005469F /* UIViewController+addition.swift in Sources */,
-				6BB3AE4522AD9B29008BAD7F /* ScheduleSpeakerInfoViewCell.swift in Sources */,
-				6BB3AE4322AD9B12008BAD7F /* ScheduleAbstractViewCell.swift in Sources */,
 				6B5FD2D9223C51F4005D111C /* AnnounceTableViewController.swift in Sources */,
 				6BE4B8F1222ADB7B005F8B95 /* NEHotspot.swift in Sources */,
 				6B4FCB28218F97B60005469F /* TelegramController.swift in Sources */,

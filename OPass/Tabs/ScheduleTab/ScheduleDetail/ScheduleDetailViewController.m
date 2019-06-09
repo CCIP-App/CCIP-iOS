@@ -10,9 +10,6 @@
 #import "AppDelegate.h"
 #import "ScheduleDetailViewController.h"
 
-#define ABSTRACT_CELL       (@"ScheduleAbstract")
-#define SPEAKERINFO_CELL    (@"ScheduleSpeakerInfo")
-
 @interface ScheduleDetailViewController ()
 
 @property (strong, nonatomic) NSMutableArray *identifiers;
@@ -31,7 +28,6 @@
     SEND_FIB(@"ScheduleDetailViewController");
     
     self.identifiers = [NSMutableArray new];
-    [self.tvContent setSeparatorColor:[UIColor clearColor]];
     self.speakers = @[];
 }
 
@@ -42,9 +38,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.downView = [[MarkdownView alloc] init:CGRectMake(0, 0, self.view.frame.size.width, self.tvContent.bounds.size.height)
+    self.downView = [[MarkdownView alloc] init:CGRectMake(0, 0, self.view.frame.size.width, self.vContent.bounds.size.height)
                                   withMarkdown:[NSString stringWithFormat:@"<style>h1, h2 {color: %@} h3, h4, h5, h6, h7, span, div, p {color: %@;}</style>\n\n", [AppDelegate AppConfig:@"Themes.CardTextColor"], @"black"]
-                                        toView:self.tvContent];
+                                        toView:self.vContent];
     
     NSString *shortLangUI = [AppDelegate shortLangUI];
     NSDictionary *currentLangObject = [self.detailData objectForKey:shortLangUI];
@@ -85,10 +81,6 @@
         [self.fspager setUserInteractionEnabled:NO];
     }
 
-    [self.identifiers addObject:ABSTRACT_CELL];
-    for (int i = 0; i < [self.speakers count]; i++) {
-        [self.identifiers addObject:SPEAKERINFO_CELL];
-    }
     // force to use Down Markdown view
     self.identifiers = [NSMutableArray arrayWithArray:@[]];
     
@@ -225,30 +217,6 @@
     [vwContent.layer setShadowOpacity:0.1f];
     [vwContent.layer setMasksToBounds:NO];
     NSMutableArray *cells = [NSMutableArray new];
-    
-    [cells addObject:^{
-        ScheduleAbstractViewCell *abstractCell = (ScheduleAbstractViewCell *)cell;
-        NSDictionary *currentLangObject = [self.detailData objectForKey:[AppDelegate shortLangUI]];
-        NSString *description = [NSString stringWithFormat:@"%@\n", [currentLangObject objectForKey:@"description"]];
-        NSLog(@"Set description: %@", description);
-        [abstractCell setFd_enforceFrameLayout: YES]; // enable (CGSize)sizeThatFits:(CGSize)size
-        [abstractCell.lbAbstractTitle setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
-        [self setTextFit:abstractCell.lbAbstractContent
-             WithContent:description];
-    }];
-    
-    for (NSDictionary *speaker in self.speakers) {
-        [cells addObject:^{
-            ScheduleSpeakerInfoViewCell *speakerInfoCell = (ScheduleSpeakerInfoViewCell *)cell;
-            NSString *speakerName = [[speaker objectForKey:[AppDelegate shortLangUI]] objectForKey:@"name"];
-            NSString *bio = [NSString stringWithFormat:@"%@\n", [[speaker objectForKey:[AppDelegate shortLangUI]] objectForKey:@"bio"]];
-            NSLog(@"Set bio: %@", bio);
-            [speakerInfoCell.lbSpeakerInfoTitle setTextColor:[AppDelegate AppConfigColor:@"CardTextColor"]];
-            [speakerInfoCell.lbSpeakerInfoTitle setText:speakerName];
-            [self setTextFit:speakerInfoCell.lbSpeakerInfoContent
-                 WithContent:bio];
-        }];
-    }
     
     @try {
         void(^block)(void) = [cells objectAtIndex:indexPath.row];
