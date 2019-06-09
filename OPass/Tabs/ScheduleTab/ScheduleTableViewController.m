@@ -7,7 +7,6 @@
 //
 
 #import "ScheduleTableViewController.h"
-#import "ScheduleTableViewCell.h"
 #import "ScheduleDetailViewController.h"
 #import "AppDelegate.h"
 

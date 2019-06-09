@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 #import "ScheduleViewPagerController.h"
-#import "ScheduleFavoriteDelegate.h"
 
 #define FAV_KEY         (@"favoriteSchedules")
 

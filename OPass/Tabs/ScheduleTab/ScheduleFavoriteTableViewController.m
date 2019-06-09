@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "ScheduleFavoriteTableViewController.h"
 #import "ScheduleTableViewController.h"
-#import "ScheduleTableViewCell.h"
 #import "ScheduleDetailViewController.h"
 
 @interface ScheduleFavoriteTableViewController ()

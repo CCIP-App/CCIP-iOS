@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ScheduleFavoriteDelegate.h"
+#import "AppDelegate.h"
 
 @interface ScheduleFavoriteTableViewController : UITableViewController<ScheduleFavoriteDelegate>
 

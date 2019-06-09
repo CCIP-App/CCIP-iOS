@@ -9,6 +9,7 @@
 @import Firebase;
 #ifndef IN_BRIDGING_HEADER
 #import <OPass-Swift.h>
+@protocol ScheduleFavoriteDelegate;
 #endif
 #import <UIKit/UIKit.h>
 #import <OneSignal/OneSignal.h>
