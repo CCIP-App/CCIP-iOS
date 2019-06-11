@@ -29,7 +29,8 @@ import UIKit
 
         // self.automaticallyAdjustsScrollViewInsets = false;
         if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
+            // temporary remove this for non-iOS 13 and non-Xcode 11
+            // overrideUserInterfaceStyle = .light
         }
     }
 
