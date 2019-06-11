@@ -38,10 +38,11 @@ let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
 
 struct DisplayName {
     var _displayData: JSON
-    var zh: String
-    var en: String
-    func Get(lang: String) -> String {
-        return _displayData[lang].stringValue
+    subscript(_ member: String) -> String {
+        if member == "_displayData" {
+            return ""
+        }
+        return _displayData[member].stringValue
     }
 }
 
@@ -83,37 +84,169 @@ struct EventShortInfo {
     var LogoUrl: URL
 }
 
-struct SpeakerInfo {
-    var Id: String
-    var Avatar: URL?
-    var Title: String
-    var Info: String
-    var Name: DisplayName
-    var Bio: DisplayName
-}
-
-struct TagInfo {
-    var _tagData: JSON
-    var Id: String
-    var zh: String
-    func Get(lang: String) -> String {
-        return _tagData[lang].stringValue
+struct Programs {
+    var Sessions: [ProgramSession]
+    var Speakers: [ProgramSpeaker]
+    var SessionTypes: [ProgramSessionType]
+    var Rooms: [ProgramRoom]
+    var Tags: [ProgramsTag]
+    init(_ data: JSON) {
+        self.Sessions = data["sessions"].arrayValue.map { obj -> ProgramSession in
+            return ProgramSession(obj)
+        }
+        self.Speakers = data["speakers"].arrayValue.map { obj -> ProgramSpeaker in
+            return ProgramSpeaker(obj)
+        }
+        self.SessionTypes = data["session_types"].arrayValue.map { obj -> ProgramSessionType in
+            return ProgramSessionType(obj)
+        }
+        self.Rooms = data["rooms"].arrayValue.map { obj -> ProgramRoom in
+            return ProgramRoom(obj)
+        }
+        self.Tags = data["tags"].arrayValue.map { obj -> ProgramsTag in
+            return ProgramsTag(obj)
+        }
     }
 }
 
-struct ScheduleInfo {
+struct ProgramSession {
+    var _sessionData: JSON
     var Id: String
-    var ScheduleType: String
-    var Room: String
-    var Broadcast: [String]?
-    var Start: Date
-    var End: Date
-    var QA: String
-    var Slide: String
-    var Title: DisplayName
-    var Description: DisplayName
-    var Speakers: [SpeakerInfo]
-    var Tag: [TagInfo]
+    var `Type`: String?
+    var Room: String?
+    var Broadcast: String?
+    var Start: String
+    var End: String
+    var QA: String?
+    var Slide: String?
+    var Live: String?
+    var Record: String?
+    var Speakers: [String?]
+    var Tags: [String?]
+    init(_ data: JSON) {
+        self._sessionData = data
+        self.Id = data["id"].stringValue
+        self.Type = data["id"].stringValue
+        self.Room = data[""].string
+        self.Broadcast = data[""].string
+        self.Start = data[""].stringValue
+        self.End = data[""].stringValue
+        self.QA = data[""].string
+        self.Slide = data[""].string
+        self.Live = data[""].string
+        self.Record = data[""].string
+        self.Speakers = data[""].arrayValue.map({ obj -> String? in
+            return obj.string
+        })
+        self.Tags = data[""].arrayValue.map({ obj -> String? in
+            return obj.string
+        })
+    }
+    subscript(_ member: String) -> String {
+        if member == "Id" {
+            return Id
+        }
+        if member == "_sessionData" {
+            return ""
+        }
+        let mb = member.split(separator: "_").map(String.init)
+        if mb.count == 2 {
+            let name = mb[0].lowercased()
+            let lang = mb[1].lowercased()
+            switch name {
+            case "title", "description":
+                return _sessionData[lang].dictionaryValue[name]?.stringValue ?? ""
+            default:
+                return ""
+            }
+        }
+        return ""
+    }
+}
+
+struct ProgramSpeaker {
+    var _speakerData: JSON
+    var Id: String
+    var Avatar: URL?
+    init(_ data: JSON) {
+        self._speakerData = data
+        self.Id = data["id"].stringValue
+        self.Avatar = data["avatar"].url
+    }
+    subscript(_ member: String) -> String {
+        if member == "Id" {
+            return Id
+        }
+        if member == "_speakerData" {
+            return ""
+        }
+        let mb = member.split(separator: "_").map(String.init)
+        if mb.count == 2 {
+            let name = mb[0].lowercased()
+            let lang = mb[1].lowercased()
+            switch name {
+            case "name", "bio":
+                return _speakerData[lang].dictionaryValue[name]?.stringValue ?? ""
+            default:
+                return ""
+            }
+        }
+        return ""
+    }
+}
+
+struct ProgramSessionType {
+    var _sessionData: JSON
+    var Id: String
+    init(_ data: JSON) {
+        self._sessionData = data
+        self.Id = data["id"].stringValue
+    }
+    subscript(_ member: String) -> String {
+        if member == "Id" {
+            return Id
+        }
+        if member == "_sessionData" {
+            return ""
+        }
+        return _sessionData[member].dictionaryValue["name"]?.stringValue ?? ""
+    }
+}
+
+struct ProgramRoom {
+    var _roomData: JSON
+    var Id: String
+    init(_ data: JSON) {
+        self._roomData = data
+        self.Id = data["id"].stringValue
+    }
+    subscript(_ member: String) -> String {
+        if member == "Id" {
+            return Id
+        }
+        if member == "_roomData" {
+            return ""
+        }
+        return _roomData[member].dictionaryValue["name"]?.stringValue ?? ""
+    }
+}
+
+struct ProgramsTag {
+    var _tagData: JSON
+    var Id: String
+    init(_ data: JSON) {
+        self._tagData = data
+        self.Id = data["id"].stringValue
+    }
+    subscript(_ member: String) -> String {
+        if member == "Id" {
+            return Id
+        }
+        if member == "_tagData" {
+            return ""
+        }
+        return _tagData[member].dictionaryValue["name"]?.stringValue ?? ""
+    }
 }
 
 struct AnnouncementInfo {
@@ -252,10 +385,7 @@ struct AnnouncementInfo {
                 var infos = Array<EventShortInfo>()
                 for i in info {
                     let eventId = i["event_id"].stringValue
-                    let dn = i["display_name"]
-                    let dnzh = dn["zh"].stringValue
-                    let dnen = dn["en"].stringValue
-                    let displayName = DisplayName(_displayData: dn, zh: dnzh, en: dnen)
+                    let displayName = DisplayName(_displayData: i["display_name"])
                     let logoUrl = i["logo_url"].url!
                     let e = EventShortInfo(EventId: eventId, DisplayName: displayName, LogoUrl: logoUrl)
                     infos.append(e)
@@ -269,10 +399,7 @@ struct AnnouncementInfo {
             .then { (infoObj: Any) -> EventInfo in
                 let info = JSON(infoObj)
                 let eventId = info["event_id"].stringValue
-                let dn = info["display_name"]
-                let dnzh = dn["zh"].stringValue
-                let dnen = dn["en"].stringValue
-                let displayName = DisplayName(_displayData: dn, zh: dnzh, en: dnen)
+                let displayName = DisplayName(_displayData: info["display_name"])
                 let logoUrl = info["logo_url"].url!
                 let pub = info["publish"]
                 let pubStart = Date.init(seconds: pub["start"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
@@ -293,10 +420,7 @@ struct AnnouncementInfo {
                 let cf = info["custom_features"].arrayValue
                 for ft in cf {
                     let ftIcon = ft["icon"].url
-                    let ftdn = ft["display_name"]
-                    let ftdnzh = dn["zh"].stringValue
-                    let ftdnen = dn["en"].stringValue
-                    let ftDisplayName = DisplayName(_displayData: ftdn, zh: ftdnzh, en: ftdnen)
+                    let ftDisplayName = DisplayName(_displayData: ft["display_name"])
                     let ftUrl = ft["url"].url!
                     let f = CustomFeatures(IconUrl: ftIcon, DisplayName: ftDisplayName, Url: ftUrl)
                     customFeatures.append(f)
@@ -432,54 +556,8 @@ struct AnnouncementInfo {
                 completion?(false, nil, error)
             }.then { (obj: Any?) -> Void in
                 if obj != nil {
-                    var schedules = [ScheduleInfo]()
-                    for sch in JSON(obj!).arrayValue {
-                        let zh = sch["zh"]
-                        let en = sch["en"]
-                        let title = DisplayName(_displayData: JSON(parseJSON: ""),zh: zh["title"].stringValue, en: en["title"].stringValue)
-                        let description = DisplayName(_displayData: JSON(parseJSON: ""),zh: zh["description"].stringValue, en: en["description"].stringValue)
-                        var speakers = [SpeakerInfo]()
-                        for s in sch["speakers"].arrayValue {
-                            let szh = s["zh"]
-                            let sen = s["en"]
-                            let name = DisplayName(_displayData: JSON(parseJSON: ""), zh: szh["name"].stringValue, en: sen["name"].stringValue)
-                            let bio = DisplayName(_displayData: JSON(parseJSON: ""), zh: szh["bio"].stringValue, en: sen["bio"].stringValue)
-                            let speaker = SpeakerInfo(
-                                Id: s["id"].stringValue,
-                                Avatar: s["avatar"].url,
-                                Title: s["title"].stringValue,
-                                Info: s["info"].stringValue,
-                                Name: name,
-                                Bio: bio
-                            )
-                            speakers.append(speaker)
-                        }
-                        var tags = [TagInfo]()
-                        for t in sch["tag"].arrayValue {
-                            let tag = TagInfo(
-                                _tagData: t,
-                                Id: t["id"].stringValue,
-                                zh: t["zh"].stringValue
-                            )
-                            tags.append(tag)
-                        }
-                        let schedule = ScheduleInfo(
-                            Id: sch["id"].stringValue,
-                            ScheduleType: sch["type"].stringValue,
-                            Room: sch["room"].stringValue,
-                            Broadcast: sch["broadcast"].arrayObject as? [String],
-                            Start: Date.init(seconds: sch["start"].stringValue.toDate()!.timeIntervalSince1970),
-                            End: Date.init(seconds: sch["end"].stringValue.toDate()!.timeIntervalSince1970),
-                            QA: sch["qa"].stringValue,
-                            Slide: sch["slide"].stringValue,
-                            Title: title,
-                            Description: description,
-                            Speakers: speakers,
-                            Tag: tags
-                        )
-                        schedules.append(schedule)
-                    }
-                    completion?(true, schedules, OPassSuccessError)
+                    let prog = Programs(JSON(obj!))
+                    completion?(true, prog, OPassSuccessError)
                 } else {
                     completion?(false, obj, NSError(domain: "OPass Schedule can not get by return unexcepted response", code: 2, userInfo: nil))
                 }

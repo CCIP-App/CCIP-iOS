@@ -99,7 +99,7 @@ class OPassEventsController : UIViewController, UITableViewDelegate, UITableView
         }
         let event = self.opassEvents[indexPath.row]
         cell!.EventId = event.EventId
-        cell!.EventName.text = event.DisplayName.zh
+        cell!.EventName.text = event.DisplayName["zh"]
         Nuke.loadImage(
             with: event.LogoUrl,
             options: ImageLoadingOptions(
