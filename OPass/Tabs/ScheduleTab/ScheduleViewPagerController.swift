@@ -194,9 +194,9 @@ class ScheduleViewPagerController: ViewPagerController, ViewPagerDataSource, Vie
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         if segue.identifier == Constants.SCHEDULE_DETAIL_VIEW_STORYBOARD_ID {
-            // TODO: add back ScheduleDetailViewController as Swift code
-//            let detailView = segue.destinationViewController as ScheduleDetailViewController
-//            [detailView setDetailData:sender]
+            guard let detailView = segue.destination as? ScheduleDetailViewController else { return }
+            guard let session = self.programs!.GetSession(sender as! String) else { return }
+            detailView.setSessionData(session)
         }
     }
 }

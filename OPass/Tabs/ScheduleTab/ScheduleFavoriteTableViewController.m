@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "ScheduleFavoriteTableViewController.h"
 //#import "ScheduleTableViewController.h"
-#import "ScheduleDetailViewController.h"
 
 @interface ScheduleFavoriteTableViewController ()
 
@@ -201,7 +200,7 @@ static UIView *headView;
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:Constants.SCHEDULE_DETAIL_VIEW_STORYBOARD_ID]) {
         ScheduleDetailViewController *detailView = (ScheduleDetailViewController *)segue.destinationViewController;
-        [detailView setDetailData:sender];
+//        [detailView setDetailData:sender];
     }
 }
 

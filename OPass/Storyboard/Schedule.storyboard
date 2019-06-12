@@ -44,7 +44,7 @@
         <!--Schedule Detail View Controller-->
         <scene sceneID="lLz-Zk-hGQ">
             <objects>
-                <viewController storyboardIdentifier="ScheduleDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fRg-Pj-D5f" customClass="ScheduleDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScheduleDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fRg-Pj-D5f" customClass="ScheduleDetailViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Ina-rW-W7s">
                         <rect key="frame" x="0.0" y="0.0" width="426" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

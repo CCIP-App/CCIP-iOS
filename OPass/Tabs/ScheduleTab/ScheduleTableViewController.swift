@@ -119,16 +119,15 @@ class ScheduleTableViewController: UITableViewController, UIViewControllerPrevie
         guard let indexPath = (tableView.value(forKey: "_highlightedIndexPaths") as! Array<IndexPath>).first else {
             return nil
         }
-//        let storyboard = UIStoryboard.init(name: "Schedule", bundle: nil)
-        return UIViewController.init()
-//        ScheduleDetailViewController *detailView = [storyboard instantiateViewControllerWithIdentifier:Constants.INIT_SCHEDULE_DETAIL_VIEW_STORYBOARD_ID];
-//        NSDate *time = [self.programTimes objectAtIndex:indexPath.section];
-//        NSString *timeString = [Constants DateToDisplayTimeString:time];
-//        NSDictionary *program = [[self.programSections objectForKey:timeString] objectAtIndex:indexPath.row];
-//        [detailView setDetailData:program];
-//        UITableViewCell *tableCell = [tableView cellForRowAtIndexPath:indexPath];
-//        [previewingContext setSourceRect:[self.view convertRect:tableCell.frame fromView:tableView]];
-//        return detailView;
+        let storyboard = UIStoryboard.init(name: "Schedule", bundle: nil)
+        let detailView = storyboard.instantiateViewController(withIdentifier: Constants.INIT_SCHEDULE_DETAIL_VIEW_STORYBOARD_ID) as! ScheduleDetailViewController
+        let time = Constants.DateToDisplayTimeString(self.programTimes[indexPath.section])
+        let sessionId = (self.programSections[time]?[indexPath.row])!
+        guard let session = self.pagerController?.programs!.GetSession(sessionId) else { return detailView }
+        detailView.setSessionData(session)
+        let tableCell = tableView.cellForRow(at: indexPath)
+        previewingContext.sourceRect = self.view.convert(tableCell!.frame, from: tableView)
+        return detailView
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {

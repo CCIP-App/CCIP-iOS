@@ -39,7 +39,6 @@
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
 		5F75A479AF13F31C57E574C7 /* Pods-OPass-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC0E7EB6EB420AD75E37B7F2 /* Pods-OPass-metadata.plist */; };
 		5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */; };
-		6B02FD931F220326002AC0D3 /* ScheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */; };
 		6B036B901F24371700D5E5A5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B036B8F1F24371600D5E5A5 /* Settings.bundle */; };
 		6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */; };
 		6B0C6C9122AD4A2C003E7617 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C6C9022AD4A2C003E7617 /* ScheduleViewController.swift */; };
@@ -48,6 +47,7 @@
 		6B10CE8E1F29988100EB98F2 /* WebViewAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */; };
 		6B153B9922B13F6800C1632D /* ScheduleViewPagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B153B9822B13F6700C1632D /* ScheduleViewPagerController.swift */; };
 		6B153B9B22B176D000C1632D /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B153B9A22B176D000C1632D /* ScheduleTableViewController.swift */; };
+		6B153B9D22B1946A00C1632D /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B153B9C22B1946A00C1632D /* ScheduleDetailViewController.swift */; };
 		6B19CFA4220E404C00262D99 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B19CFA3220E404C00262D99 /* MoreTableViewController.swift */; };
 		6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */; };
 		6B2CD58B1D28780F00793194 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD58A1D28780F00793194 /* AudioToolbox.framework */; };
@@ -199,8 +199,6 @@
 		5FB4D4911D3B57FA005BF382 /* CheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinViewController.h; sourceTree = "<group>"; };
 		5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinViewController.m; sourceTree = "<group>"; };
 		6B023A9A20470F4B00F474F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6B02FD911F220326002AC0D3 /* ScheduleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleDetailViewController.h; sourceTree = "<group>"; };
-		6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleDetailViewController.m; sourceTree = "<group>"; };
 		6B036B8F1F24371600D5E5A5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		6B0B84D11D2B861000DE18B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B0B84D21D2B862300DE18B0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -210,6 +208,7 @@
 		6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WebViewAssets.bundle; sourceTree = "<group>"; };
 		6B153B9822B13F6700C1632D /* ScheduleViewPagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewPagerController.swift; sourceTree = "<group>"; };
 		6B153B9A22B176D000C1632D /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
+		6B153B9C22B1946A00C1632D /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
 		6B19CFA3220E404C00262D99 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		6B2AEB7B1F23FF6F00C65868 /* OPass.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = OPass.release.xcconfig; sourceTree = "<group>"; };
 		6B2AEB7C1F23FF6F00C65868 /* OPass.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = OPass.debug.xcconfig; sourceTree = "<group>"; };
@@ -425,8 +424,7 @@
 		6B02FD901F2202BF002AC0D3 /* ScheduleDetail */ = {
 			isa = PBXGroup;
 			children = (
-				6B02FD911F220326002AC0D3 /* ScheduleDetailViewController.h */,
-				6B02FD921F220326002AC0D3 /* ScheduleDetailViewController.m */,
+				6B153B9C22B1946A00C1632D /* ScheduleDetailViewController.swift */,
 				6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */,
 			);
 			path = ScheduleDetail;
@@ -929,6 +927,7 @@
 				6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */,
 				5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */,
 				6BE8A22A220DC84C0035CFD8 /* AcknowledgementsViewController.swift in Sources */,
+				6B153B9D22B1946A00C1632D /* ScheduleDetailViewController.swift in Sources */,
 				6B0C6C9322AD55F6003E7617 /* ScheduleTableViewCell.swift in Sources */,
 				6B9A279E2231715600E8463E /* OPassAPI.swift in Sources */,
 				6BC3820F223D627900685D00 /* UIImpactFeedback.swift in Sources */,
@@ -943,7 +942,6 @@
 				6B0C6C9522AD576F003E7617 /* ScheduleFavoriteDelegate.swift in Sources */,
 				6B4FCB13218EC5330005469F /* UIColor+addition.swift in Sources */,
 				6B9A279C222B040800E8463E /* OPassEventCell.swift in Sources */,
-				6B02FD931F220326002AC0D3 /* ScheduleDetailViewController.m in Sources */,
 				6B5FD2D7223C4B9D005D111C /* AnnounceTableViewCell.swift in Sources */,
 				6B4FCB1E218F5D630005469F /* OPassWebViewController.swift in Sources */,
 				6BC38212223DA45400685D00 /* InvalidNetworkMessageViewController.m in Sources */,
