@@ -1,5 +1,5 @@
 //
-//  ScheduleFavoriteTableViewController.m
+//  SessionFavoriteTableViewController.m
 //  CCIP
 //
 //  Created by 腹黒い茶 on 2017/07/25.
@@ -7,17 +7,16 @@
 //
 
 #import "AppDelegate.h"
-#import "ScheduleFavoriteTableViewController.h"
-//#import "ScheduleTableViewController.h"
+#import "SessionFavoriteTableViewController.h"
 
-@interface ScheduleFavoriteTableViewController ()
+@interface SessionFavoriteTableViewController ()
 
 @property (strong, nonatomic) NSMutableArray *favoriteTimes;
 @property (strong, nonatomic) NSMutableDictionary *favoritesSections;
 
 @end
 
-@implementation ScheduleFavoriteTableViewController
+@implementation SessionFavoriteTableViewController
 
 static UIView *headView;
 
@@ -46,8 +45,8 @@ static UIView *headView;
                               self.view.frame.size.width, self.navigationController.navigationBar.frame.origin.y + navigationBarBounds.size.height);
     headView = [UIView new];
     [headView setFrame:frame];
-    [headView setGradientColorFrom:[AppDelegate AppConfigColor:@"ScheduleTitleLeftColor"]
-                                to:[AppDelegate AppConfigColor:@"ScheduleTitleRightColor"]
+    [headView setGradientColorFrom:[AppDelegate AppConfigColor:@"SessionTitleLeftColor"]
+                                to:[AppDelegate AppConfigColor:@"SessionTitleRightColor"]
                         startPoint:CGPointMake(-.4f, .5f)
                            toPoint:CGPointMake(1, .5f)];
     [self.navigationController.navigationBar.superview addSubview:headView];
@@ -89,7 +88,7 @@ static UIView *headView;
 
 - (void)parseFavorites {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSObject *favObj = [userDefault valueForKey:Constants.FAV_KEY];
+    NSObject *favObj = [userDefault valueForKey:Constants.SESSION_FAV_KEY];
     NSArray *favorites = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)favObj] : favObj;
     
     self.favoriteTimes = [NSMutableArray new];
@@ -161,12 +160,12 @@ static UIView *headView;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *scheduleCellName = @"ScheduleCell";
+    NSString *sessionCellName = @"SessionCell";
     
-    ScheduleTableViewCell *cell = (ScheduleTableViewCell *)[tableView dequeueReusableCellWithIdentifier:scheduleCellName];
+    SessionTableViewCell *cell = (SessionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:sessionCellName];
     if (cell == nil) {
-        [tableView registerNib:[UINib nibWithNibName:@"ScheduleTableViewCell" bundle:nil] forCellReuseIdentifier:scheduleCellName];
-        cell = (ScheduleTableViewCell *)[tableView dequeueReusableCellWithIdentifier:scheduleCellName];
+        [tableView registerNib:[UINib nibWithNibName:@"SessionTableViewCell" bundle:nil] forCellReuseIdentifier:sessionCellName];
+        cell = (SessionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:sessionCellName];
     }
     
     NSDate *time = [self.favoriteTimes objectAtIndex:indexPath.section];
@@ -174,7 +173,7 @@ static UIView *headView;
     NSDictionary *program = [[self.favoritesSections objectForKey:timeString] objectAtIndex:indexPath.row];
     
     [cell setDelegate:self];
-//    [cell setSchedule:program];
+//    [cell setSession:program];
     [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     
     NSDate *endTime = [Constants DateFromString:[program objectForKey:@"end"]];
@@ -190,7 +189,7 @@ static UIView *headView;
     NSDate *time = [self.favoriteTimes objectAtIndex:indexPath.section];
     NSString *timeString = [Constants DateToDisplayDateTimeString:time];
     NSDictionary *program = [[self.favoritesSections objectForKey:timeString] objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:Constants.SCHEDULE_DETAIL_VIEW_STORYBOARD_ID
+    [self performSegueWithIdentifier:Constants.SESSION_DETAIL_VIEW_STORYBOARD_ID
                               sender:program];
 }
 
@@ -198,29 +197,25 @@ static UIView *headView;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:Constants.SCHEDULE_DETAIL_VIEW_STORYBOARD_ID]) {
-        ScheduleDetailViewController *detailView = (ScheduleDetailViewController *)segue.destinationViewController;
+    if ([segue.identifier isEqualToString:Constants.SESSION_DETAIL_VIEW_STORYBOARD_ID]) {
+        SessionDetailViewController *detailView = (SessionDetailViewController *)segue.destinationViewController;
 //        [detailView setDetailData:sender];
     }
 }
 
-- (NSString *)getID:(NSDictionary *)program {
-    return [NSString stringWithFormat:@"%@-%@-%@", [program objectForKey:@"room"], [program objectForKey:@"start"], [program objectForKey:@"end"]];
-}
-
-- (void)actionFavorite:(NSString *)scheduleId {
+- (void)actionFavorite:(NSString *)sessionId {
     NSDictionary *favProgram = @{};
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSObject *favObj = [userDefault valueForKey:Constants.FAV_KEY];
+    NSObject *favObj = [userDefault valueForKey:Constants.SESSION_FAV_KEY];
     NSArray *favoriteArray = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)favObj] : favObj;
     NSMutableArray *favorites = [NSMutableArray arrayWithArray:favoriteArray];
     for (NSDictionary *program in favorites) {
-        if ([[self getID:program] isEqualToString:scheduleId]) {
-            favProgram = program;
-            break;
-        }
+//        if ([[self getID:program] isEqualToString:sessionId]) {
+//            favProgram = program;
+//            break;
+//        }
     }
-    BOOL hasFavorite = [self hasFavorite:scheduleId];
+    BOOL hasFavorite = [self hasFavorite:sessionId];
     if (!hasFavorite) {
         [favorites addObject:favProgram];
     } else {
@@ -228,19 +223,19 @@ static UIView *headView;
     }
     NSData *favData = [NSKeyedArchiver archivedDataWithRootObject:favorites];
     [userDefault setValue:favData
-                   forKey:Constants.FAV_KEY];
+                   forKey:Constants.SESSION_FAV_KEY];
     [userDefault synchronize];
     [self parseFavorites];
 }
 
-- (BOOL)hasFavorite:(NSString *)scheduleId {
+- (BOOL)hasFavorite:(NSString *)sessionId {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSObject *favObj = [userDefault valueForKey:Constants.FAV_KEY];
+    NSObject *favObj = [userDefault valueForKey:Constants.SESSION_FAV_KEY];
     NSArray *favorites = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)favObj] : favObj;
     for (NSDictionary *program in favorites) {
-        if ([[self getID:program] isEqualToString:scheduleId]) {
-            return YES;
-        }
+//        if ([[self getID:program] isEqualToString:sessionId]) {
+//            return YES;
+//        }
     }
     return NO;
 }

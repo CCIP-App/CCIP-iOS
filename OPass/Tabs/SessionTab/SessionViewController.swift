@@ -1,5 +1,5 @@
 //
-//  ScheduleViewController.swift
+//  SessionViewController.swift
 //  OPass
 //
 //  Created by 腹黒い茶 on 2019/6/9.
@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-class ScheduleViewController: UIViewController {
+class SessionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let lbTitle = UILabel.init(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 30))
         lbTitle.textAlignment = .center
         lbTitle.textColor = .white
-        lbTitle.text = NSLocalizedString("ScheduleTitle", comment: "")
+        lbTitle.text = NSLocalizedString("SessionTitle", comment: "")
         self.navigationItem.title = ""
         self.navigationItem.titleView = lbTitle
         self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(), for: .default)
@@ -52,7 +52,7 @@ class ScheduleViewController: UIViewController {
 
         let frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 239)
         let headView = UIView.init(frame: frame)
-        headView.setGradientColor(from: AppDelegate.appConfigColor("ScheduleTitleLeftColor"), to: AppDelegate.appConfigColor("ScheduleTitleRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
+        headView.setGradientColor(from: AppDelegate.appConfigColor("SessionTitleLeftColor"), to: AppDelegate.appConfigColor("SessionTitleRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
         self.view.addSubview(headView)
         self.view.sendSubviewToBack(headView)
     }

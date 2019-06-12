@@ -10,13 +10,13 @@
 "CurrentLang" = "en";
 "Title" = "OPass";
 "Checkin" = "Checkin";
-"Schedule" = "Schedule";
+"Session" = "Session";
 "Announce" = "Announce";
 "More" = "More";
-"ScheduleTitle" = "SCHEDULE";
+"SessionTitle" = "SESSION";
 "AnnouncementTitle" = "ANNOUNCEMENT";
 "NoAnnouncementText" = "No Announcement !";
-"ScheduleOfDate" = "Schedule Of %@";
+"SessionOfDate" = "Session Of %@";
 "HSSBuilding" = "H.S.S. Building";
 "ActivityCenter" = "Activity Center";
 "All" = "All";
@@ -94,7 +94,7 @@
 "LoginGreeting" = "Hi %@, welcome and enjoy!";
 "AfterEventMessage" = "After the Event, we need you in-form a questionnaire for us, thanks.";
 "AfterEventActionTitle" = "Open questionnaire";
-"EmptyScheduleDetailContent" = "";
+"EmptySessionDetailContent" = "";
 
 "BeaconWelcomeMessage_In_Title" = "Welcome to Event Hall";
 "BeaconWelcomeMessage_In_Content" = "Please remember to click the \"CHECK IN\" button!";

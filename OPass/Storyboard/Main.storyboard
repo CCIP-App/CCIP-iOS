@@ -634,10 +634,10 @@ Please copy and paste the token into next field or click the token link in the r
             </objects>
             <point key="canvasLocation" x="2092" y="684"/>
         </scene>
-        <!--Schedule-->
+        <!--Session-->
         <scene sceneID="q1U-SQ-MXh">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Schedule" storyboardName="Schedule" id="Qto-S1-Rd1" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="Session" storyboardName="Session" id="Qto-S1-Rd1" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="5jP-Yl-PDp"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hC5-Wc-cQo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -847,11 +847,11 @@ Label2</string>
             </objects>
             <point key="canvasLocation" x="765.21739130434787" y="1005.9782608695652"/>
         </scene>
-        <!--Schedule-->
+        <!--Session-->
         <scene sceneID="w4n-xs-pWJ">
             <objects>
                 <navigationController id="2iG-px-jKh" customClass="MainNavViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Schedule" image="AssetsUI.bundle/icon_ios_topcharts.png" id="s9e-mH-WEn"/>
+                    <tabBarItem key="tabBarItem" title="Session" image="AssetsUI.bundle/icon_ios_topcharts.png" id="s9e-mH-WEn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="geD-Aj-Nie">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

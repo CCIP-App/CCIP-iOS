@@ -36,9 +36,9 @@
 			<key>DefaultValue</key>
 			<false/>
 			<key>Key</key>
-			<string>ClearScheduleContentCache</string>
+			<string>ClearSessionContentCache</string>
 			<key>Title</key>
-			<string>ClearScheduleContentCache</string>
+			<string>ClearSessionContentCache</string>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 		</dict>

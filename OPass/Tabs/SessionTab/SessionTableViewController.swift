@@ -1,5 +1,5 @@
 //
-//  ScheduleTableViewController.swift
+//  SessionTableViewController.swift
 //  OPass
 //
 //  Created by 腹黒い茶 on 2019/6/13.
@@ -9,20 +9,16 @@
 import Foundation
 import UIKit
 
-class ScheduleTableViewController: UITableViewController, UIViewControllerPreviewingDelegate, ScheduleFavoriteDelegate {
-    func getID(_ program: NSDictionary) -> String {
-        return ""
+class SessionTableViewController: UITableViewController, UIViewControllerPreviewingDelegate, SessionFavoriteDelegate {
+    func actionFavorite(_ sessionId: String) {
+        //
     }
 
-    func actionFavorite(_ scheduleId: String) {
-
-    }
-
-    func hasFavorite(_ scheduleId: String) -> Bool {
+    func hasFavorite(_ sessionId: String) -> Bool {
         return false
     }
 
-    //- (void)actionFavorite:(NSString *)scheduleId {
+    //- (void)actionFavorite:(NSString *)sessionId {
     //    NSDictionary *favProgram = @{};
     //    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     //    NSObject *favObj = [userDefault valueForKey:Constants.FAV_KEY];
@@ -31,7 +27,7 @@ class ScheduleTableViewController: UITableViewController, UIViewControllerPrevie
     //    for (NSDate *time in self.programTimes) {
     //        NSString *timeString = [Constants DateToDisplayTimeString:time];
     //        for (NSDictionary *program in [self.programSections objectForKey:timeString]) {
-    //            if (program != nil && [[self getID:program] isEqualToString:scheduleId]) {
+    //            if (program != nil && [[self getID:program] isEqualToString:sessionId]) {
     //                favProgram = program;
     //                break;
     //            }
@@ -40,7 +36,7 @@ class ScheduleTableViewController: UITableViewController, UIViewControllerPrevie
     //            break;
     //        }
     //    }
-    //    BOOL hasFavorite = [self hasFavorite:scheduleId];
+    //    BOOL hasFavorite = [self hasFavorite:sessionId];
     //    if (!hasFavorite) {
     //        [favorites addObject:favProgram];
     //    } else {
@@ -51,29 +47,29 @@ class ScheduleTableViewController: UITableViewController, UIViewControllerPrevie
     //                   forKey:Constants.FAV_KEY];
     //    [userDefault synchronize];
     //    [self.tableView reloadData];
-    ////    [OPassAPI RegisteringFavoriteScheduleForEvent:[Constants EventId]
+    ////    [OPassAPI RegisteringFavoriteSessionForEvent:[Constants EventId]
     ////                                        withToken:[Constants AccessToken]
-    ////                                       toSchedule:scheduleId
+    ////                                       toSession:sessionId
     ////                                        isDisable:NO
     ////                                       completion:^(BOOL success, id _Nullable obj, NSError * _Nonnull error) {
     ////                                           NSLog(@"%@", obj);
     ////                                       }];
     //}
     //
-    //- (BOOL)hasFavorite:(NSString *)scheduleId {
+    //- (BOOL)hasFavorite:(NSString *)sessionId {
     //    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     //    // ugly convension for crash prevent
     //    NSObject *favObj = [userDefault valueForKey:Constants.FAV_KEY];
     //    NSArray *favorites = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)favObj] : favObj;
     //    for (NSDictionary *program in favorites) {
-    //        if ([[self getID:program] isEqualToString:scheduleId]) {
+    //        if ([[self getID:program] isEqualToString:sessionId]) {
     //            return YES;
     //        }
     //    }
     //    return NO;
     //}
 
-    public var pagerController: ScheduleViewPagerController?
+    public var pagerController: SessionViewPagerController?
     public var sessionIds: Array<String>?
     var programTimes = Array<Date>()
     var programSections = Dictionary<String, Array<String>>()
@@ -119,8 +115,8 @@ class ScheduleTableViewController: UITableViewController, UIViewControllerPrevie
         guard let indexPath = (tableView.value(forKey: "_highlightedIndexPaths") as! Array<IndexPath>).first else {
             return nil
         }
-        let storyboard = UIStoryboard.init(name: "Schedule", bundle: nil)
-        let detailView = storyboard.instantiateViewController(withIdentifier: Constants.INIT_SCHEDULE_DETAIL_VIEW_STORYBOARD_ID) as! ScheduleDetailViewController
+        let storyboard = UIStoryboard.init(name: "Session", bundle: nil)
+        let detailView = storyboard.instantiateViewController(withIdentifier: Constants.INIT_SESSION_DETAIL_VIEW_STORYBOARD_ID) as! SessionDetailViewController
         let time = Constants.DateToDisplayTimeString(self.programTimes[indexPath.section])
         let sessionId = (self.programSections[time]?[indexPath.row])!
         guard let session = self.pagerController?.programs!.GetSession(sessionId) else { return detailView }
@@ -154,8 +150,8 @@ class ScheduleTableViewController: UITableViewController, UIViewControllerPrevie
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = AppDelegate.appConfigColor("ScheduleSectionTitleTextColor")
-        view.tintColor = AppDelegate.appConfigColor("ScheduleSectionTitleBackgroundColor")
+        header.textLabel?.textColor = AppDelegate.appConfigColor("SessionSectionTitleTextColor")
+        view.tintColor = AppDelegate.appConfigColor("SessionSectionTitleBackgroundColor")
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -164,11 +160,11 @@ class ScheduleTableViewController: UITableViewController, UIViewControllerPrevie
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let scheduleCellName = "ScheduleCell"
-        var cell = tableView.dequeueReusableCell(withIdentifier: scheduleCellName) as? ScheduleTableViewCell
+        let sessionCellName = "SessionCell"
+        var cell = tableView.dequeueReusableCell(withIdentifier: sessionCellName) as? SessionTableViewCell
         if cell == nil {
-            tableView.register(UINib.init(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: scheduleCellName)
-            cell = tableView.dequeueReusableCell(withIdentifier: scheduleCellName) as? ScheduleTableViewCell
+            tableView.register(UINib.init(nibName: "SessionTableViewCell", bundle: nil), forCellReuseIdentifier: sessionCellName)
+            cell = tableView.dequeueReusableCell(withIdentifier: sessionCellName) as? SessionTableViewCell
         }
 
         let time = Constants.DateToDisplayTimeString(self.programTimes[indexPath.section])
@@ -189,7 +185,7 @@ class ScheduleTableViewController: UITableViewController, UIViewControllerPrevie
         tableView.deselectRow(at: indexPath, animated: true)
         let time = Constants.DateToDisplayTimeString(self.programTimes[indexPath.section])
         let sessionId = self.programSections[time]?[indexPath.row]
-        self.pagerController?.performSegue(withIdentifier: Constants.SCHEDULE_DETAIL_VIEW_STORYBOARD_ID, sender: sessionId)
+        self.pagerController?.performSegue(withIdentifier: Constants.SESSION_DETAIL_VIEW_STORYBOARD_ID, sender: sessionId)
     }
 
 

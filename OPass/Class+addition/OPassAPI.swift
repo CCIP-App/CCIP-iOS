@@ -73,7 +73,7 @@ struct EventInfo {
     var LogoUrl: URL
     var Publish: PublishDate
     var ServerBaseUrl: URL
-    var ScheduleUrl: URL
+    var SessionUrl: URL
     var Features: Features
     var CustomFeatures: Array<CustomFeatures>
 }
@@ -441,7 +441,7 @@ struct AnnouncementInfo {
                 let pubEnd = Date.init(seconds: pub["end"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
                 let publish = PublishDate(Start: pubStart, End: pubEnd)
                 let serverUrl = info["server_base_url"].url!
-                let scheduleUrl = info["schedule_url"].url!
+                let sessionUrl = info["schedule_url"].url!
                 let fts = info["features"]
                 let irc = fts["irc"].url
                 let telegram = fts["telegram"].url
@@ -460,7 +460,7 @@ struct AnnouncementInfo {
                     let f = CustomFeatures(IconUrl: ftIcon, DisplayName: ftDisplayName, Url: ftUrl)
                     customFeatures.append(f)
                 }
-                eventInfo = EventInfo(EventId: eventId, DisplayName: displayName, LogoUrl: logoUrl, Publish: publish, ServerBaseUrl: serverUrl, ScheduleUrl: scheduleUrl, Features: features, CustomFeatures: customFeatures)
+                eventInfo = EventInfo(EventId: eventId, DisplayName: displayName, LogoUrl: logoUrl, Publish: publish, ServerBaseUrl: serverUrl, SessionUrl: sessionUrl, Features: features, CustomFeatures: customFeatures)
                 currentEvent = JSONSerialization.stringify(infoObj as Any)!
                 return eventInfo!
         }
@@ -585,20 +585,20 @@ struct AnnouncementInfo {
         }
     }
 
-    @objc static func GetScheduleData(forEvent event: String, onCompletion completion: OPassCompletionCallback) {
+    @objc static func GetSessionData(forEvent event: String, onCompletion completion: OPassCompletionCallback) {
         if event.count > 0 {
-            OPassAPI.InitializeRequest(Constants.URL_SCHEDULE) { retryCount, retryMax, error, responsed in
+            OPassAPI.InitializeRequest(Constants.URL_SESSION) { retryCount, retryMax, error, responsed in
                 completion?(false, nil, error)
             }.then { (obj: Any?) -> Void in
                 if obj != nil {
                     let prog = Programs(JSON(obj!))
                     completion?(true, prog, OPassSuccessError)
                 } else {
-                    completion?(false, obj, NSError(domain: "OPass Schedule can not get by return unexcepted response", code: 2, userInfo: nil))
+                    completion?(false, obj, NSError(domain: "OPass Session can not get by return unexcepted response", code: 2, userInfo: nil))
                 }
             }
         } else {
-            completion?(false, nil, NSError(domain: "OPass Schedule can not get, because event was not set", code: 1, userInfo: nil))
+            completion?(false, nil, NSError(domain: "OPass Session can not get, because event was not set", code: 1, userInfo: nil))
         }
     }
 
@@ -612,9 +612,9 @@ struct AnnouncementInfo {
     private static func GetFavoritesStoreKey(
         _ event: String,
         _ token: String,
-        _ schedule: String
+        _ session: String
         ) -> String {
-        return "\(OPassAPI.GetFavoritesStoreKey(event, token))|\(schedule)"
+        return "\(OPassAPI.GetFavoritesStoreKey(event, token))|\(session)"
     }
 
     @objc static func GetFavoritesList(
@@ -629,19 +629,19 @@ struct AnnouncementInfo {
         return ud.stringArray(forKey: key)!
     }
 
-    @objc static func RegisteringFavoriteSchedule(
+    @objc static func RegisteringFavoriteSession(
         forEvent event: String,
         withToken token: String,
-        toSchedule schedule: String,
+        toSession session: String,
         isDisable: Bool,
         completion: OPassCompletionCallback
     ) {
-        let schedule = ""
+        let session = ""
         let title = ""
         let content = ""
         let time = 10.seconds.fromNow
         OPassAPI.RegisteringNotification(
-            id: OPassAPI.GetFavoritesStoreKey(event, token, schedule),
+            id: OPassAPI.GetFavoritesStoreKey(event, token, session),
             title: title,
             content: content,
             time: time,

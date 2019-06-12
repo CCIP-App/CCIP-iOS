@@ -1,5 +1,5 @@
 //
-//  ScheduleTableViewCell.swift
+//  SessionTableViewCell.swift
 //  OPass
 //
 //  Created by 腹黒い茶 on 2019/6/9.
@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class ScheduleTableViewCell: UITableViewCell {
-    public var delegate: ScheduleFavoriteDelegate?
-    @IBOutlet public var ScheduleTitleLabel: UILabel?
+class SessionTableViewCell: UITableViewCell {
+    public var delegate: SessionFavoriteDelegate?
+    @IBOutlet public var SessionTitleLabel: UILabel?
     @IBOutlet public var RoomLocationLabel: UILabel?
     @IBOutlet public var LabelLabel: UILabel?
     @IBOutlet public var FavoriteButton: UIButton?
@@ -39,8 +39,8 @@ class ScheduleTableViewCell: UITableViewCell {
     @IBAction func favoriteTouchUpInsideAction(_ sender: NSObject) {
         self.favorite = !self.favorite
         if (self.delegate != nil) {
-            if ((self.delegate?.responds(to: #selector(ScheduleFavoriteDelegate.actionFavorite(_:))))!) {
-                self.delegate!.actionFavorite(self.getID())
+            if ((self.delegate?.responds(to: #selector(SessionFavoriteDelegate.actionFavorite(_:))))!) {
+//                self.delegate!.actionFavorite(self.getID())
             }
         }
         UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
@@ -48,10 +48,6 @@ class ScheduleTableViewCell: UITableViewCell {
 
     @IBAction func favoriteTouchUpOutsideAction(_ sender: NSObject) {
         UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
-    }
-
-    func getID() -> String {
-        return self.session?.Id ?? ""
     }
 
     func setSession(_ session: SessionInfo) {
@@ -62,9 +58,9 @@ class ScheduleTableViewCell: UITableViewCell {
         let mins = Int(endTime.timeIntervalSince(startTime) / 60)
         self.RoomLocationLabel?.text = "Room \(self.session!.Room!) - \(mins) mins"
 
-        self.ScheduleTitleLabel?.text = self.session!["title"]
+        self.SessionTitleLabel?.text = self.session!["title"]
 
-        let type = Constants.GetScheduleTypeName(self.session!.Type!)
+        let type = Constants.GetSessionTypeName(self.session!.Type!)
         self.LabelLabel?.text = "   \(type)   "
         self.LabelLabel?.layer.cornerRadius = (self.LabelLabel?.frame.size.height)! / 2
         self.LabelLabel?.sizeToFit()
@@ -72,8 +68,8 @@ class ScheduleTableViewCell: UITableViewCell {
         self.setFavorite(false)
 
         if (self.delegate != nil) {
-            if ((self.delegate?.responds(to: #selector(ScheduleFavoriteDelegate.hasFavorite(_:))))!) {
-                self.setFavorite(self.delegate!.hasFavorite(self.getID()))
+            if ((self.delegate?.responds(to: #selector(SessionFavoriteDelegate.hasFavorite(_:))))!) {
+//                self.setFavorite(self.delegate!.hasFavorite(self.getID()))
             }
         }
     }
@@ -98,14 +94,14 @@ class ScheduleTableViewCell: UITableViewCell {
 
     @objc func setDisabled(_ disabled: Bool) {
         self.disabled = disabled
-        self.ScheduleTitleLabel?.alpha = self.disabled ? 0.2 : 1
+        self.SessionTitleLabel?.alpha = self.disabled ? 0.2 : 1
     }
 
     @objc func getDisabled() -> Bool {
         return self.disabled
     }
 
-    @objc func setDelegate(_ delegate: ScheduleFavoriteDelegate) {
+    @objc func setDelegate(_ delegate: SessionFavoriteDelegate) {
         self.delegate = delegate
     }
 }

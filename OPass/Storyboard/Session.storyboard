@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Schedule-->
+        <!--Session-->
         <scene sceneID="JLP-8T-Nuq">
             <objects>
-                <viewController storyboardIdentifier="Schedule" id="da8-XG-o1M" userLabel="Schedule" customClass="ScheduleViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Session" id="da8-XG-o1M" userLabel="Session" customClass="SessionViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GI1-7h-ouj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -41,10 +41,10 @@
             </objects>
             <point key="canvasLocation" x="119" y="1006"/>
         </scene>
-        <!--Schedule Detail View Controller-->
+        <!--Session Detail View Controller-->
         <scene sceneID="lLz-Zk-hGQ">
             <objects>
-                <viewController storyboardIdentifier="ScheduleDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fRg-Pj-D5f" customClass="ScheduleDetailViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SessionDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fRg-Pj-D5f" customClass="SessionDetailViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Ina-rW-W7s">
                         <rect key="frame" x="0.0" y="0.0" width="426" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -216,10 +216,10 @@
             </objects>
             <point key="canvasLocation" x="119" y="2777"/>
         </scene>
-        <!--Schedule View Pager Controller-->
+        <!--Session View Pager Controller-->
         <scene sceneID="3Am-ao-G1A">
             <objects>
-                <viewController id="Ecb-85-g8i" customClass="ScheduleViewPagerController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ecb-85-g8i" customClass="SessionViewPagerController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Gc-eW-I6f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -227,17 +227,17 @@
                         <viewLayoutGuide key="safeArea" id="DgU-i5-Baq"/>
                     </view>
                     <connections>
-                        <segue destination="fRg-Pj-D5f" kind="show" identifier="ShowScheduleDetail" id="LrT-B4-46j"/>
+                        <segue destination="fRg-Pj-D5f" kind="show" identifier="ShowSessionDetail" id="LrT-B4-46j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yd4-h4-STh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="535" y="1847"/>
         </scene>
-        <!--Schedule Favorite Table View Controller-->
+        <!--Session Favorite Table View Controller-->
         <scene sceneID="dnZ-fD-o51">
             <objects>
-                <tableViewController id="nMK-gf-5TW" customClass="ScheduleFavoriteTableViewController" sceneMemberID="viewController">
+                <tableViewController id="nMK-gf-5TW" customClass="SessionFavoriteTableViewController" sceneMemberID="viewController">
                     <tableView key="view" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PeM-3D-WS8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -248,7 +248,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="fRg-Pj-D5f" kind="show" identifier="ShowScheduleDetail" id="DSc-k5-Kia"/>
+                        <segue destination="fRg-Pj-D5f" kind="show" identifier="ShowSessionDetail" id="DSc-k5-Kia"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0X-v2-4hf" userLabel="First Responder" sceneMemberID="firstResponder"/>

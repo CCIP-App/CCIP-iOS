@@ -414,13 +414,13 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault registerDefaults:@{ Constants.SCHEDULE_CACHE_CLEAR: @(NO), Constants.SCHEDULE_CACHE_KEY: @{} }];
+    [userDefault registerDefaults:@{ Constants.SESSION_CACHE_CLEAR: @(NO), Constants.SESSION_CACHE_KEY: @{} }];
     [userDefault synchronize];
-    if ([[userDefault objectForKey:Constants.SCHEDULE_CACHE_CLEAR] boolValue]) {
+    if ([[userDefault objectForKey:Constants.SESSION_CACHE_CLEAR] boolValue]) {
         [userDefault setObject:@(NO)
-                        forKey:Constants.SCHEDULE_CACHE_CLEAR];
+                        forKey:Constants.SESSION_CACHE_CLEAR];
         [userDefault setObject:@{}
-                        forKey:Constants.SCHEDULE_CACHE_KEY];
+                        forKey:Constants.SESSION_CACHE_KEY];
         [userDefault synchronize];
     }
     
@@ -533,12 +533,12 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
         [[NSUserDefaults standardUserDefaults] setObject:shortcutItem.userInfo
                                                   forKey:@"CheckinCard"];
     }
-    else if ([shortcutItem.type isEqualToString:@"Schedule"]) {
+    else if ([shortcutItem.type isEqualToString:@"Session"]) {
         mainTabBarViewIndex = 1;
         [[NSUserDefaults standardUserDefaults] setObject:shortcutItem.localizedTitle
-                                                  forKey:@"ScheduleIndexText"];
+                                                  forKey:@"SessionIndexText"];
         [[NSUserDefaults standardUserDefaults] setObject:shortcutItem.userInfo
-                                                  forKey:@"ScheduleData"];
+                                                  forKey:@"SessionData"];
     }
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:mainTabBarViewIndex]
@@ -619,7 +619,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 //                        }
 //
 //                        for (NSString *dateText in segmentsTextArray) {
-//                            [shortcutItems addObject:[[UIApplicationShortcutItem alloc] initWithType:@"Schedule"
+//                            [shortcutItems addObject:[[UIApplicationShortcutItem alloc] initWithType:@"Session"
 //                                                                                      localizedTitle:dateText
 //                                                                                   localizedSubtitle:@"議程"
 //                                                                                                icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeDate]

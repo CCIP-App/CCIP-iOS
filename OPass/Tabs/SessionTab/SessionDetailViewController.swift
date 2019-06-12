@@ -1,5 +1,5 @@
 //
-//  ScheduleDetailViewController.swift
+//  SessionDetailViewController.swift
 //  OPass
 //
 //  Created by 腹黒い茶 on 2019/6/13.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import FSPagerView
 
-class ScheduleDetailViewController: UIViewController, UITableViewDelegate, FSPagerViewDelegate, FSPagerViewDataSource {
+class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPagerViewDelegate, FSPagerViewDataSource {
     @IBOutlet public var vContent: UIView?
     @IBOutlet public var vwHeader: FSPagerView?
     @IBOutlet public var vwMeta: UIView?
@@ -35,9 +35,9 @@ class ScheduleDetailViewController: UIViewController, UITableViewDelegate, FSPag
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        Constants.SendFib("ScheduleDetailViewController")
+        Constants.SendFib("SessionDetailViewController")
 
-        self.vwHeader?.setGradientColor(from: AppDelegate.appConfigColor("ScheduleTitleLeftColor"), to: AppDelegate.appConfigColor("ScheduleTitleRightColor"), startPoint: CGPoint(x: 1, y: 0.5), toPoint: CGPoint(x: -0.4, y: 0.5))
+        self.vwHeader?.setGradientColor(from: AppDelegate.appConfigColor("SessionTitleLeftColor"), to: AppDelegate.appConfigColor("SessionTitleRightColor"), startPoint: CGPoint(x: 1, y: 0.5), toPoint: CGPoint(x: -0.4, y: 0.5))
 
         // following constraint for fix the storyboard autolayout broken the navigation bar alignment
         self.view.addConstraint(NSLayoutConstraint.init(item: self.vwHeader!, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0))
@@ -56,10 +56,10 @@ class ScheduleDetailViewController: UIViewController, UITableViewDelegate, FSPag
             self.lbTimeText
         ]
         for lb in lbsHeader {
-            lb?.textColor = AppDelegate.appConfigColor("ScheduleDetailHeaderTextColor")
+            lb?.textColor = AppDelegate.appConfigColor("SessionDetailHeaderTextColor")
         }
         for lb in lbsMeta {
-            lb?.textColor = AppDelegate.appConfigColor("ScheduleMetaHeaderTextColor")
+            lb?.textColor = AppDelegate.appConfigColor("SessionMetaHeaderTextColor")
         }
         for lb in (lbsHeader + lbsMeta) {
             lb?.layer.shadowColor = UIColor.gray.cgColor
@@ -93,7 +93,7 @@ class ScheduleDetailViewController: UIViewController, UITableViewDelegate, FSPag
             self.downView?.append("---\n\n## \(speakerName)\n\n\(bio)\n\n")
         }
         if isEmptyAbstract && self.session!.Speakers.count == 0 {
-            self.downView?.append("## \(NSLocalizedString("EmptyScheduleDetailContent", comment: ""))")
+            self.downView?.append("## \(NSLocalizedString("EmptySessionDetailContent", comment: ""))")
         }
     }
 
@@ -128,7 +128,7 @@ class ScheduleDetailViewController: UIViewController, UITableViewDelegate, FSPag
         self.lbTitle?.text = self.session!["title"]
         self.lbSpeakerName?.text = self.session!.Speakers.first?["name"]
         self.lbRoomText?.text = self.session!.Room
-        self.lbTypeText?.text = Constants.GetScheduleTypeName(self.session!.Type as Any)
+        self.lbTypeText?.text = Constants.GetSessionTypeName(self.session!.Type as Any)
         self.lbTimeText?.text = "\(startTimeString) - \(endTimeString)"
     }
 

@@ -10,13 +10,13 @@
 "CurrentLang" = "zh-Hant";
 "Title" = "OPass 通關";
 "Checkin" = "報到";
-"Schedule" = "議程";
+"Session" = "議程";
 "Announce" = "大會訊息";
 "More" = "更多";
-"ScheduleTitle" = "議程";
+"SessionTitle" = "議程";
 "AnnouncementTitle" = "大會公告";
 "NoAnnouncementText" = "目前無任何公告哦！";
-"ScheduleOfDate" = "%@ 當日議程";
+"SessionOfDate" = "%@ 當日議程";
 "HSSBuilding" = "人文館";
 "ActivityCenter" = "活動中心";
 "All" = "全部";
@@ -94,7 +94,7 @@
 "LoginGreeting" = "嗨 %@，歡迎您加入大會，盡情享受這場饗宴吧！";
 "AfterEventMessage" = "在大會結束之後，我們需要您填寫一份問卷，感謝您！";
 "AfterEventActionTitle" = "開啟會後問卷";
-"EmptyScheduleDetailContent" = "";
+"EmptySessionDetailContent" = "";
 
 "BeaconWelcomeMessage_In_Title" = "歡迎蒞臨大會區域";
 "BeaconWelcomeMessage_In_Content" = "請記得要按下「報到」按鈕呦";

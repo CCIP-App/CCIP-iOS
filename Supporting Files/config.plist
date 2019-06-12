@@ -67,23 +67,23 @@
 			<string>#170a31</string>
 			<key>CheckinRectangleRightColor</key>
 			<string>#67328c</string>
-			<key>ScheduleTitleLeftColor</key>
+			<key>SessionTitleLeftColor</key>
 			<string>#170a31</string>
-			<key>ScheduleTitleRightColor</key>
+			<key>SessionTitleRightColor</key>
 			<string>#67328c</string>
-			<key>ScheduleTitleTextColor</key>
+			<key>SessionTitleTextColor</key>
 			<string>#425d4f</string>
-			<key>ScheduleDateTitleTextColor</key>
+			<key>SessionDateTitleTextColor</key>
 			<string>#ffffff</string>
-			<key>ScheduleDateIndicatorColor</key>
+			<key>SessionDateIndicatorColor</key>
 			<string>#ffffff</string>
-			<key>ScheduleDetailHeaderTextColor</key>
+			<key>SessionDetailHeaderTextColor</key>
 			<string>#ffffff</string>
-			<key>ScheduleMetaHeaderTextColor</key>
+			<key>SessionMetaHeaderTextColor</key>
 			<string>#000000</string>
-			<key>ScheduleSectionTitleBackgroundColor</key>
+			<key>SessionSectionTitleBackgroundColor</key>
 			<string>#fbf6ff</string>
-			<key>ScheduleSectionTitleTextColor</key>
+			<key>SessionSectionTitleTextColor</key>
 			<string>#4d256f</string>
 			<key>AnnouncementTitleLeftColor</key>
 			<string>#170a31</string>

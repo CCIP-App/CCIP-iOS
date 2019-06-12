@@ -1,5 +1,5 @@
 //
-//  ScheduleDetailContent.swift
+//  MarkdownVIew.swift
 //  OPass
 //
 //  Created by 腹黒い茶 on 2018/9/23.

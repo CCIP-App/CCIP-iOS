@@ -96,8 +96,8 @@ extension Constants {
     @objc public static var URL_LOGO_IMG: String {
         return OPassAPI.eventInfo?.LogoUrl.absoluteString ?? ""
     }
-    @objc public static var URL_SCHEDULE: String {
-        return Constants.OPassURL(OPassAPI.eventInfo?.ScheduleUrl.absoluteString ?? "")
+    @objc public static var URL_SESSION: String {
+        return Constants.OPassURL(OPassAPI.eventInfo?.SessionUrl.absoluteString ?? "")
     }
     @objc public static var URL_LOG_BOT: String {
         return Constants.OPassURL(OPassAPI.eventInfo?.Features.IRC!.absoluteString ?? "")
@@ -225,7 +225,7 @@ extension Constants {
     @objc static var tintColor : UIColor {
         return UIView().tintColor!
     }
-    @objc static func GetScheduleTypeName(_ namePrefix: Any) -> String {
+    @objc static func GetSessionTypeName(_ namePrefix: Any) -> String {
         // TODO: mapping from define file from event config
         return namePrefix as? String ?? ""
     }
@@ -256,20 +256,20 @@ extension Constants {
         return DateInRegion(date, region: local).toFormat(AppDelegate.appConfig("DisplayDateTimeFormat") as! String)
     }
 
-    @objc public static var INIT_SCHEDULE_DETAIL_VIEW_STORYBOARD_ID: String {
-        return "ScheduleDetail"
+    @objc public static var INIT_SESSION_DETAIL_VIEW_STORYBOARD_ID: String {
+        return "SessionDetail"
     }
-    @objc public static var SCHEDULE_DETAIL_VIEW_STORYBOARD_ID: String {
-        return "ShowScheduleDetail"
+    @objc public static var SESSION_DETAIL_VIEW_STORYBOARD_ID: String {
+        return "ShowSessionDetail"
     }
-    @objc public static var FAV_KEY: String {
-        return "favoriteSchedules"
+    @objc public static var SESSION_FAV_KEY: String {
+        return "favoriteSession"
     }
-    @objc public static var SCHEDULE_CACHE_CLEAR: String {
-        return "ClearScheduleContentCache"
+    @objc public static var SESSION_CACHE_CLEAR: String {
+        return "ClearSessionContentCache"
     }
-    @objc public static var SCHEDULE_CACHE_KEY: String {
-        return "ScheduleContentCache"
+    @objc public static var SESSION_CACHE_KEY: String {
+        return "SessionContentCache"
     }
 
     // MARK: - Math
