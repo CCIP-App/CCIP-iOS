@@ -414,13 +414,13 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault registerDefaults:@{ SCHEDULE_CACHE_CLEAR: @(NO), SCHEDULE_CACHE_KEY: @{} }];
+    [userDefault registerDefaults:@{ Constants.SCHEDULE_CACHE_CLEAR: @(NO), Constants.SCHEDULE_CACHE_KEY: @{} }];
     [userDefault synchronize];
-    if ([[userDefault objectForKey:SCHEDULE_CACHE_CLEAR] boolValue]) {
+    if ([[userDefault objectForKey:Constants.SCHEDULE_CACHE_CLEAR] boolValue]) {
         [userDefault setObject:@(NO)
-                        forKey:SCHEDULE_CACHE_CLEAR];
+                        forKey:Constants.SCHEDULE_CACHE_CLEAR];
         [userDefault setObject:@{}
-                        forKey:SCHEDULE_CACHE_KEY];
+                        forKey:Constants.SCHEDULE_CACHE_KEY];
         [userDefault synchronize];
     }
     

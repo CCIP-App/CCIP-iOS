@@ -1,0 +1,203 @@
+//
+//  ScheduleViewPagerController.swift
+//  OPass
+//
+//  Created by 腹黒い茶 on 2019/6/12.
+//  Copyright © 2019 OPass. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+class ScheduleViewPagerController: ViewPagerController, ViewPagerDataSource, ViewPagerDelegate {
+    internal var selectedSection = Date.init(timeIntervalSince1970: 0)
+    internal var segmentsTextArray = Array<String>()
+    @objc public var today: Date {
+        return Date.init()
+    }
+    internal var firstLoad: Bool = true
+    internal var programs: Programs?
+
+    private func initProgramsData() {
+        let defaults: [String: Any] = [
+            Constants.FAV_KEY: [Any](),
+            Constants.SCHEDULE_CACHE_KEY: [String: Any]()
+        ]
+        let userDefault = UserDefaults.standard
+        userDefault.register(defaults: defaults)
+        userDefault.synchronize()
+    }
+
+    private func loadProgramsData() {
+        let userDefault = UserDefaults.standard
+        // ugly convension for crash prevent
+        guard let programsObj = userDefault.object(forKey: Constants.SCHEDULE_CACHE_KEY) as? Data else {
+            self.programs = nil
+            return
+        }
+        guard let prog = try? PropertyListDecoder().decode(Programs.self, from: programsObj) else { return }
+        self.programs = prog
+        self.setScheduleDate()
+    }
+
+    private func saveProgramsData() {
+        let userDefault = UserDefaults.standard
+        let programsData = try? PropertyListEncoder().encode(self.programs)
+        userDefault.set(programsData, forKey: Constants.SCHEDULE_CACHE_KEY)
+        userDefault.synchronize()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.dataSource = self
+        self.delegate = self
+        self.view.backgroundColor = .clear
+
+        // Do any additional setup after loading the view.
+        self.initProgramsData()
+        self.loadProgramsData()
+        self.refreshData()
+    }
+
+    func refreshData() {
+        OPassAPI.GetScheduleData(forEvent: OPassAPI.currentEvent) { (success, data, err) in
+            if (success) {
+                self.programs = data as? Programs
+                self.setScheduleDate()
+                self.saveProgramsData()
+            } else {
+                UIAlertController.alertOfTitle("Error", withMessage: err.localizedDescription, cancelButtonText: "Okay", cancelStyle: .destructive, cancelAction: nil).showAlert {
+                    UIImpactFeedback.triggerFeedback(.impactFeedbackHeavy)
+                }
+                NSLog("Error: \(err.localizedDescription)")
+                self.loadProgramsData()
+            }
+        }
+    }
+
+    func setScheduleDate() {
+        self.selectedSection = Date.init(timeIntervalSince1970: 0)
+        self.segmentsTextArray.removeAll()
+        var preferredDateInterval: TimeInterval = TimeInterval(CGFloat.greatestFiniteMagnitude)
+        for session in self.programs!.Sessions {
+            let startTime = Constants.DateFromString(session.Start)
+            let endTime = Constants.DateFromString(session.End)
+            let timeDate = Constants.DateToDisplayDateString(startTime)
+            self.segmentsTextArray += [ timeDate ]
+            let sinceNow = startTime.timeIntervalSince(self.today)
+            let sinceEnd = self.today.timeIntervalSince(endTime)
+            if sinceEnd >= 0 {
+                preferredDateInterval = Constants.NEAR_ZERO(sinceNow, preferredDateInterval)
+            }
+        }
+        self.segmentsTextArray = Array(Set(self.segmentsTextArray.map{ $0.lowercased() })).sorted()
+        self.reloadData()
+        if self.firstLoad {
+            self.selectedSection = Date.init(timeInterval: preferredDateInterval, since: self.today)
+            let selectedIndex = self.segmentsTextArray.firstIndex(of: Constants.DateToDisplayDateString(self.selectedSection))
+            self.selectTab(at: UInt(selectedIndex ?? 0))
+            self.firstLoad = false
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - ViewPagerDelegate
+
+    //Returns the number of tabs that will be present in ViewPager.
+    func numberOfTabs(forViewPager viewPager: ViewPagerController!) -> UInt {
+        return UInt(self.segmentsTextArray.count)
+    }
+
+    //Returns the view that will be shown as tab. Create a UIView object (or any UIView subclass object) and give it to ViewPager and it will use it as tab view.
+    func viewPager(_ viewPager: ViewPagerController!, viewForTabAt index: UInt) -> UIView! {
+        let label = UILabel.init()
+        label.text = "DAY \(self.segmentsTextArray[Int(index)])"
+        label.textColor = AppDelegate.appConfigColor("ScheduleDateTitleTextColor")
+        label.font = UIFont.init(name: "PingFangTC-Medium", size: 14)
+        label.sizeToFit()
+        return label
+    }
+
+    // MARK: - ViewPagerDataSource
+
+    //Returns the view controller that will be shown as content. Create a UIViewController object (or any UIViewController subclass object) and give it to ViewPager and it will use the view property of the view controller as content view.
+    //Alternatively, you can implement - viewPager:contentViewForTabAtIndex: method and return a UIView object (or any UIView subclass object) and ViewPager will use it as content view.
+    //The - viewPager:contentViewControllerForTabAtIndex: and - viewPager:contentViewForTabAtIndex: dataSource methods are both defined optional. But, you should implement at least one of them! They are defined as optional to provide you an option.
+    //All delegate methods are optional.
+    func viewPager(_ viewPager: ViewPagerController!, contentViewControllerForTabAt index: UInt) -> UIViewController! {
+        return UIViewController.init()
+        // TODO: add back ScheduleTableViewController as Swift code
+//        let vc = ScheduleTableViewController.init()
+//        vc.programs = [self.program_date objectForKey:[self.segmentsTextArray objectAtIndex:index]]
+//        vc.pagerController = self
+//        return vc
+    }
+
+    //ViewPager will alert your delegate object via - viewPager:didChangeTabToIndex: method, so that you can do something useful.
+    func viewPager(_ viewPager: ViewPagerController!, didChangeTabTo index: UInt) {
+        // Do something useful
+    }
+
+    //You can change ViewPager's options via viewPager:valueForOption:withDefault: delegate method. Just return the desired value for the given option. You don't have to return a value for every option. Only return values for the interested options and ViewPager will use the default values for the rest. Available options are defined in the ViewPagerController.h file and described below.
+    func viewPager(_ viewPager: ViewPagerController!, valueFor option: ViewPagerOption, withDefault value: CGFloat) -> CGFloat {
+        switch (option) {
+        case ViewPagerOption.startFromSecondTab:
+            return 0.0
+        case ViewPagerOption.centerCurrentTab:
+            return 0.0
+        case ViewPagerOption.tabLocation:
+            return 1.0
+//        case ViewPagerOption.tabHeight:
+//            return 49.0
+//        case ViewPagerOption.tabOffset:
+//            return 36.0
+        case ViewPagerOption.tabDisableTopLine:
+            return 1.0
+        case ViewPagerOption.tabDisableBottomLine:
+            return 1.0
+        case ViewPagerOption.tabNarmalLineWidth:
+            return 5.0
+        case ViewPagerOption.tabSelectedLineWidth:
+            return 5.0
+        case ViewPagerOption.tabWidth:
+            return UIScreen.main.bounds.size.width / CGFloat(self.segmentsTextArray.count)
+        case ViewPagerOption.fixFormerTabsPositions:
+            return 0.0
+        case ViewPagerOption.fixLatterTabsPositions:
+            return 0.0
+        default:
+            return value
+        }
+    }
+
+    func viewPager(_ viewPager: ViewPagerController!, colorFor component: ViewPagerComponent, withDefault color: UIColor!) -> UIColor! {
+        switch (component) {
+        case ViewPagerComponent.indicator:
+            return AppDelegate.appConfigColor("ScheduleDateIndicatorColor")
+        case ViewPagerComponent.tabsView:
+            return UIColor.clear
+        case ViewPagerComponent.content:
+            return UIColor.white
+        default:
+            return color
+        }
+    }
+
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+        if segue.identifier == Constants.SCHEDULE_DETAIL_VIEW_STORYBOARD_ID {
+            // TODO: add back ScheduleDetailViewController as Swift code
+//            let detailView = segue.destinationViewController as ScheduleDetailViewController
+//            [detailView setDetailData:sender]
+        }
+    }
+}

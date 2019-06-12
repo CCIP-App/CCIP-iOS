@@ -84,7 +84,7 @@ struct EventShortInfo {
     var LogoUrl: URL
 }
 
-struct Programs {
+struct Programs: Codable {
     var Sessions: [ProgramSession]
     var Speakers: [ProgramSpeaker]
     var SessionTypes: [ProgramSessionType]
@@ -109,7 +109,7 @@ struct Programs {
     }
 }
 
-struct ProgramSession {
+struct ProgramSession: Codable {
     var _sessionData: JSON
     var Id: String
     var `Type`: String?
@@ -164,7 +164,7 @@ struct ProgramSession {
     }
 }
 
-struct ProgramSpeaker {
+struct ProgramSpeaker: Codable {
     var _speakerData: JSON
     var Id: String
     var Avatar: URL?
@@ -195,7 +195,7 @@ struct ProgramSpeaker {
     }
 }
 
-struct ProgramSessionType {
+struct ProgramSessionType: Codable {
     var _sessionData: JSON
     var Id: String
     init(_ data: JSON) {
@@ -213,7 +213,7 @@ struct ProgramSessionType {
     }
 }
 
-struct ProgramRoom {
+struct ProgramRoom: Codable {
     var _roomData: JSON
     var Id: String
     init(_ data: JSON) {
@@ -231,7 +231,7 @@ struct ProgramRoom {
     }
 }
 
-struct ProgramsTag {
+struct ProgramsTag: Codable {
     var _tagData: JSON
     var Id: String
     init(_ data: JSON) {

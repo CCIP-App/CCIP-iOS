@@ -255,4 +255,26 @@ extension Constants {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
         return DateInRegion(date, region: local).toFormat(AppDelegate.appConfig("DisplayDateTimeFormat") as! String)
     }
+
+    @objc public static var INIT_SCHEDULE_DETAIL_VIEW_STORYBOARD_ID: String {
+        return "ScheduleDetail"
+    }
+    @objc public static var SCHEDULE_DETAIL_VIEW_STORYBOARD_ID: String {
+        return "ShowScheduleDetail"
+    }
+    @objc public static var FAV_KEY: String {
+        return "favoriteSchedules"
+    }
+    @objc public static var SCHEDULE_CACHE_CLEAR: String {
+        return "ClearScheduleContentCache"
+    }
+    @objc public static var SCHEDULE_CACHE_KEY: String {
+        return "ScheduleContentCache"
+    }
+
+    // MARK: - Math
+
+    @objc public static func NEAR_ZERO(_ A: Double, _ B: Double) -> Double {
+        return min(abs(A), abs(B)) == abs(A) ? A : B
+    }
 }

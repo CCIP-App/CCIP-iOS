@@ -10,7 +10,6 @@
 		1424C2012250FC7100D36266 /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1424C1FE2250FC7100D36266 /* More.storyboard */; };
 		1424C2022250FC7100D36266 /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1424C1FF2250FC7100D36266 /* Schedule.storyboard */; };
 		1424C2032250FC7100D36266 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1424C2002250FC7100D36266 /* Main.storyboard */; };
-		280774C21F1A7B0100A5B994 /* ScheduleViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774C11F1A7B0100A5B994 /* ScheduleViewPagerController.m */; };
 		280774C51F1AD2F400A5B994 /* ScheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280774C41F1AD2F400A5B994 /* ScheduleTableViewController.m */; };
 		280774D21F1AD8D300A5B994 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280774D01F1AD8D300A5B994 /* ScheduleTableViewCell.xib */; };
 		2839BF4A1D4CDDAD0062F36D /* CheckinCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2839BF481D4CDDAD0062F36D /* CheckinCardViewController.m */; };
@@ -48,6 +47,7 @@
 		6B0C6C9322AD55F6003E7617 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C6C9222AD55F6003E7617 /* ScheduleTableViewCell.swift */; };
 		6B0C6C9522AD576F003E7617 /* ScheduleFavoriteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C6C9422AD576F003E7617 /* ScheduleFavoriteDelegate.swift */; };
 		6B10CE8E1F29988100EB98F2 /* WebViewAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */; };
+		6B153B9922B13F6800C1632D /* ScheduleViewPagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B153B9822B13F6700C1632D /* ScheduleViewPagerController.swift */; };
 		6B19CFA4220E404C00262D99 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B19CFA3220E404C00262D99 /* MoreTableViewController.swift */; };
 		6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */; };
 		6B2CD58B1D28780F00793194 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD58A1D28780F00793194 /* AudioToolbox.framework */; };
@@ -165,8 +165,6 @@
 		1424C1FE2250FC7100D36266 /* More.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 		1424C1FF2250FC7100D36266 /* Schedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
 		1424C2002250FC7100D36266 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		280774C01F1A7B0100A5B994 /* ScheduleViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewPagerController.h; sourceTree = "<group>"; };
-		280774C11F1A7B0100A5B994 /* ScheduleViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewPagerController.m; sourceTree = "<group>"; };
 		280774C31F1AD2F400A5B994 /* ScheduleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTableViewController.h; sourceTree = "<group>"; };
 		280774C41F1AD2F400A5B994 /* ScheduleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTableViewController.m; sourceTree = "<group>"; };
 		280774D01F1AD8D300A5B994 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
@@ -212,6 +210,7 @@
 		6B0C6C9222AD55F6003E7617 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		6B0C6C9422AD576F003E7617 /* ScheduleFavoriteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleFavoriteDelegate.swift; sourceTree = "<group>"; };
 		6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WebViewAssets.bundle; sourceTree = "<group>"; };
+		6B153B9822B13F6700C1632D /* ScheduleViewPagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewPagerController.swift; sourceTree = "<group>"; };
 		6B19CFA3220E404C00262D99 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		6B2AEB7B1F23FF6F00C65868 /* OPass.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = OPass.release.xcconfig; sourceTree = "<group>"; };
 		6B2AEB7C1F23FF6F00C65868 /* OPass.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = OPass.debug.xcconfig; sourceTree = "<group>"; };
@@ -594,8 +593,7 @@
 			isa = PBXGroup;
 			children = (
 				6B0C6C9022AD4A2C003E7617 /* ScheduleViewController.swift */,
-				280774C01F1A7B0100A5B994 /* ScheduleViewPagerController.h */,
-				280774C11F1A7B0100A5B994 /* ScheduleViewPagerController.m */,
+				6B153B9822B13F6700C1632D /* ScheduleViewPagerController.swift */,
 				280774C31F1AD2F400A5B994 /* ScheduleTableViewController.h */,
 				280774C41F1AD2F400A5B994 /* ScheduleTableViewController.m */,
 				6B0C6C9422AD576F003E7617 /* ScheduleFavoriteDelegate.swift */,
@@ -920,6 +918,7 @@
 				6BB97F9C222A813200338138 /* PartnerWebViewController.swift in Sources */,
 				6B4FCB20218F65D30005469F /* NSObject+className.swift in Sources */,
 				6B4FCB1A218ECE070005469F /* Constants.m in Sources */,
+				6B153B9922B13F6800C1632D /* ScheduleViewPagerController.swift in Sources */,
 				6B4FCB04218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift in Sources */,
 				6B0C6C9122AD4A2C003E7617 /* ScheduleViewController.swift in Sources */,
 				6B4FCB02218E30B10005469F /* NSObject+DeepCopy.swift in Sources */,
@@ -930,7 +929,6 @@
 				6B4FCB15218ECACD0005469F /* UISegmentedControl+addition.swift in Sources */,
 				6B7299B01F26BFEE00D6C1DA /* ScheduleFavoriteTableViewController.m in Sources */,
 				5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */,
-				280774C21F1A7B0100A5B994 /* ScheduleViewPagerController.m in Sources */,
 				6BE8A22A220DC84C0035CFD8 /* AcknowledgementsViewController.swift in Sources */,
 				6B0C6C9322AD55F6003E7617 /* ScheduleTableViewCell.swift in Sources */,
 				6B9A279E2231715600E8463E /* OPassAPI.swift in Sources */,

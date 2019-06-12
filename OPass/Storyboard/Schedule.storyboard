@@ -176,7 +176,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFm-JR-rfR">
-                                <rect key="frame" x="93" y="508" width="240" height="128"/>
+                                <rect key="frame" x="0.0" y="344" width="426" height="307"/>
                                 <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
@@ -219,7 +219,7 @@
         <!--Schedule View Pager Controller-->
         <scene sceneID="3Am-ao-G1A">
             <objects>
-                <viewController id="Ecb-85-g8i" customClass="ScheduleViewPagerController" sceneMemberID="viewController">
+                <viewController id="Ecb-85-g8i" customClass="ScheduleViewPagerController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Gc-eW-I6f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -257,6 +257,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DSc-k5-Kia"/>
+        <segue reference="LrT-B4-46j"/>
     </inferredMetricsTieBreakers>
 </document>

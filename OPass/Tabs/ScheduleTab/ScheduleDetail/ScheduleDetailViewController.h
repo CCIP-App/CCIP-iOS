@@ -11,9 +11,6 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-#define INIT_SCHEDULE_DETAIL_VIEW_STORYBOARD_ID (@"ScheduleDetail")
-#define SCHEDULE_DETAIL_VIEW_STORYBOARD_ID      (@"ShowScheduleDetail")
-
 @interface ScheduleDetailViewController : UIViewController<UITableViewDelegate,FSPagerViewDelegate,FSPagerViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIView *vContent;

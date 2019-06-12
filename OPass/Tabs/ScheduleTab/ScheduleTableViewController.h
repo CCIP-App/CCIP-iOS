@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-#import "ScheduleViewPagerController.h"
-
-#define FAV_KEY         (@"favoriteSchedules")
 
 @interface ScheduleTableViewController : UITableViewController<UIViewControllerPreviewingDelegate, ScheduleFavoriteDelegate>
 

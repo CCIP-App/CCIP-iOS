@@ -67,7 +67,7 @@
     if (indexPath != nil) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Schedule"
                                                              bundle:nil];
-        ScheduleDetailViewController *detailView = [storyboard instantiateViewControllerWithIdentifier:INIT_SCHEDULE_DETAIL_VIEW_STORYBOARD_ID];
+        ScheduleDetailViewController *detailView = [storyboard instantiateViewControllerWithIdentifier:Constants.INIT_SCHEDULE_DETAIL_VIEW_STORYBOARD_ID];
         NSDate *time = [self.programTimes objectAtIndex:indexPath.section];
         NSString *timeString = [Constants DateToDisplayTimeString:time];
         NSDictionary *program = [[self.programSections objectForKey:timeString] objectAtIndex:indexPath.row];
@@ -142,7 +142,7 @@
     NSDate *time = [self.programTimes objectAtIndex:indexPath.section];
     NSString *timeString = [Constants DateToDisplayTimeString:time];
     NSDictionary *program = [[self.programSections objectForKey:timeString] objectAtIndex:indexPath.row];
-    [self.pagerController performSegueWithIdentifier:SCHEDULE_DETAIL_VIEW_STORYBOARD_ID
+    [self.pagerController performSegueWithIdentifier:Constants.SCHEDULE_DETAIL_VIEW_STORYBOARD_ID
                                               sender:program];
 }
 
@@ -153,7 +153,7 @@
 - (void)actionFavorite:(NSString *)scheduleId {
     NSDictionary *favProgram = @{};
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSObject *favObj = [userDefault valueForKey:FAV_KEY];
+    NSObject *favObj = [userDefault valueForKey:Constants.FAV_KEY];
     NSArray *favoriteArray = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)favObj] : favObj;
     NSMutableArray *favorites = [NSMutableArray arrayWithArray:favoriteArray];
     for (NSDate *time in self.programTimes) {
@@ -176,7 +176,7 @@
     }
     NSData *favData = [NSKeyedArchiver archivedDataWithRootObject:favorites];
     [userDefault setValue:favData
-                   forKey:FAV_KEY];
+                   forKey:Constants.FAV_KEY];
     [userDefault synchronize];
     [self.tableView reloadData];
 //    [OPassAPI RegisteringFavoriteScheduleForEvent:[Constants EventId]
@@ -191,7 +191,7 @@
 - (BOOL)hasFavorite:(NSString *)scheduleId {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     // ugly convension for crash prevent
-    NSObject *favObj = [userDefault valueForKey:FAV_KEY];
+    NSObject *favObj = [userDefault valueForKey:Constants.FAV_KEY];
     NSArray *favorites = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)favObj] : favObj;
     for (NSDictionary *program in favorites) {
         if ([[self getID:program] isEqualToString:scheduleId]) {

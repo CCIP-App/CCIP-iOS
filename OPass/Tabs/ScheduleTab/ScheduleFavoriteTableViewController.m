@@ -90,7 +90,7 @@ static UIView *headView;
 
 - (void)parseFavorites {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSObject *favObj = [userDefault valueForKey:FAV_KEY];
+    NSObject *favObj = [userDefault valueForKey:Constants.FAV_KEY];
     NSArray *favorites = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)favObj] : favObj;
     
     self.favoriteTimes = [NSMutableArray new];
@@ -191,7 +191,7 @@ static UIView *headView;
     NSDate *time = [self.favoriteTimes objectAtIndex:indexPath.section];
     NSString *timeString = [Constants DateToDisplayDateTimeString:time];
     NSDictionary *program = [[self.favoritesSections objectForKey:timeString] objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:SCHEDULE_DETAIL_VIEW_STORYBOARD_ID
+    [self performSegueWithIdentifier:Constants.SCHEDULE_DETAIL_VIEW_STORYBOARD_ID
                               sender:program];
 }
 
@@ -199,7 +199,7 @@ static UIView *headView;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:SCHEDULE_DETAIL_VIEW_STORYBOARD_ID]) {
+    if ([segue.identifier isEqualToString:Constants.SCHEDULE_DETAIL_VIEW_STORYBOARD_ID]) {
         ScheduleDetailViewController *detailView = (ScheduleDetailViewController *)segue.destinationViewController;
         [detailView setDetailData:sender];
     }
@@ -212,7 +212,7 @@ static UIView *headView;
 - (void)actionFavorite:(NSString *)scheduleId {
     NSDictionary *favProgram = @{};
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSObject *favObj = [userDefault valueForKey:FAV_KEY];
+    NSObject *favObj = [userDefault valueForKey:Constants.FAV_KEY];
     NSArray *favoriteArray = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)favObj] : favObj;
     NSMutableArray *favorites = [NSMutableArray arrayWithArray:favoriteArray];
     for (NSDictionary *program in favorites) {
@@ -229,14 +229,14 @@ static UIView *headView;
     }
     NSData *favData = [NSKeyedArchiver archivedDataWithRootObject:favorites];
     [userDefault setValue:favData
-                   forKey:FAV_KEY];
+                   forKey:Constants.FAV_KEY];
     [userDefault synchronize];
     [self parseFavorites];
 }
 
 - (BOOL)hasFavorite:(NSString *)scheduleId {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSObject *favObj = [userDefault valueForKey:FAV_KEY];
+    NSObject *favObj = [userDefault valueForKey:Constants.FAV_KEY];
     NSArray *favorites = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)favObj] : favObj;
     for (NSDictionary *program in favorites) {
         if ([[self getID:program] isEqualToString:scheduleId]) {
