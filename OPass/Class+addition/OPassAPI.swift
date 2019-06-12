@@ -107,6 +107,51 @@ struct Programs: Codable {
             return ProgramsTag(obj)
         }
     }
+
+    func GetSession(_ sessionId: String) -> SessionInfo? {
+        guard let session = (self.Sessions.filter{ $0.Id == sessionId }.first) else { return nil }
+        let speakers = self.Speakers.filter { session.Speakers.contains($0.Id) }
+        let tags = self.Tags.filter { session.Tags.contains($0.Id) }
+        return SessionInfo(session, speakers, tags)
+    }
+
+    func GetSessionIds(byDateString: String) -> Array<String> {
+        return self.Sessions.filter { Constants.DateToDisplayDateString(Constants.DateFromString($0.Start)) == byDateString }.map { $0.Id }
+    }
+}
+
+struct SessionInfo: Codable {
+    var _sessionData: ProgramSession
+    var Id: String
+    var `Type`: String?
+    var Room: String?
+    var Broadcast: String?
+    var Start: String
+    var End: String
+    var QA: String?
+    var Slide: String?
+    var Live: String?
+    var Record: String?
+    var Speakers: [ProgramSpeaker]
+    var Tags: [ProgramsTag]
+    init(_ data: ProgramSession, _ speakers: [ProgramSpeaker], _ tags: [ProgramsTag]) {
+        self._sessionData = data
+        self.Id = self._sessionData.Id
+        self.Type = self._sessionData.Type
+        self.Room = self._sessionData.Room
+        self.Broadcast = self._sessionData.Broadcast
+        self.Start = self._sessionData.Start
+        self.End = self._sessionData.End
+        self.QA = self._sessionData.QA
+        self.Slide = self._sessionData.Slide
+        self.Live = self._sessionData.Live
+        self.Record = self._sessionData.Record
+        self.Speakers = speakers
+        self.Tags = tags
+    }
+    subscript(_ member: String) -> String {
+        return self._sessionData[member]
+    }
 }
 
 struct ProgramSession: Codable {
@@ -149,18 +194,13 @@ struct ProgramSession: Codable {
         if member == "_sessionData" {
             return ""
         }
-        let mb = member.split(separator: "_").map(String.init)
-        if mb.count == 2 {
-            let name = mb[0].lowercased()
-            let lang = mb[1].lowercased()
-            switch name {
-            case "title", "description":
-                return _sessionData[lang].dictionaryValue[name]?.stringValue ?? ""
-            default:
-                return ""
-            }
+        let name = member.lowercased()
+        switch name {
+        case "title", "description":
+            return _sessionData[AppDelegate.shortLangUI()].dictionaryValue[name]?.stringValue ?? ""
+        default:
+            return ""
         }
-        return ""
     }
 }
 
@@ -180,18 +220,13 @@ struct ProgramSpeaker: Codable {
         if member == "_speakerData" {
             return ""
         }
-        let mb = member.split(separator: "_").map(String.init)
-        if mb.count == 2 {
-            let name = mb[0].lowercased()
-            let lang = mb[1].lowercased()
-            switch name {
-            case "name", "bio":
-                return _speakerData[lang].dictionaryValue[name]?.stringValue ?? ""
-            default:
-                return ""
-            }
+        let name = member.lowercased()
+        switch name {
+        case "name", "bio":
+            return _speakerData[AppDelegate.shortLangUI()].dictionaryValue[name]?.stringValue ?? ""
+        default:
+            return ""
         }
-        return ""
     }
 }
 
