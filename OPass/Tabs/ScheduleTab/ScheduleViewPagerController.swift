@@ -130,12 +130,11 @@ class ScheduleViewPagerController: ViewPagerController, ViewPagerDataSource, Vie
     //The - viewPager:contentViewControllerForTabAtIndex: and - viewPager:contentViewForTabAtIndex: dataSource methods are both defined optional. But, you should implement at least one of them! They are defined as optional to provide you an option.
     //All delegate methods are optional.
     func viewPager(_ viewPager: ViewPagerController!, contentViewControllerForTabAt index: UInt) -> UIViewController! {
-        return UIViewController.init()
-        // TODO: add back ScheduleTableViewController as Swift code
-//        let vc = ScheduleTableViewController.init()
-//        vc.programs = [self.program_date objectForKey:[self.segmentsTextArray objectAtIndex:index]]
-//        vc.pagerController = self
-//        return vc
+        let vc = ScheduleTableViewController.init()
+        let date = self.segmentsTextArray[Int(index)]
+        vc.sessionIds = self.programs?.GetSessionIds(byDateString: date)
+        vc.pagerController = self
+        return vc
     }
 
     //ViewPager will alert your delegate object via - viewPager:didChangeTabToIndex: method, so that you can do something useful.

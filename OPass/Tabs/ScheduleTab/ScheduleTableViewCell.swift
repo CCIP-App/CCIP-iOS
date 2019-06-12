@@ -18,7 +18,7 @@ class ScheduleTableViewCell: UITableViewCell {
 
     private var favorite: Bool = false
     private var disabled: Bool = false
-    private var schedule: NSDictionary?
+    private var session: SessionInfo?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,29 +51,20 @@ class ScheduleTableViewCell: UITableViewCell {
     }
 
     func getID() -> String {
-        if (self.schedule != nil) {
-            if (self.delegate != nil) {
-                if ((self.delegate?.responds(to: #selector(ScheduleFavoriteDelegate.getID(_:))))!) {
-                    return self.delegate!.getID(self.schedule!)
-                }
-            }
-        }
-        return ""
+        return self.session?.Id ?? ""
     }
 
-    @objc func setSchedule(_ schedule: NSDictionary) {
-        self.schedule = schedule
+    func setSession(_ session: SessionInfo) {
+        self.session = session
 
-        let room = self.schedule?.object(forKey: "room") as! String
-        let startTime = Constants.DateFromString(self.schedule?.object(forKey: "start") as! String)
-        let endTime = Constants.DateFromString(self.schedule?.object(forKey: "end") as! String)
+        let startTime = Constants.DateFromString(self.session!.Start)
+        let endTime = Constants.DateFromString(self.session!.End)
         let mins = Int(endTime.timeIntervalSince(startTime) / 60)
-        self.RoomLocationLabel?.text = "Room \(room) - \(mins) mins"
+        self.RoomLocationLabel?.text = "Room \(self.session!.Room!) - \(mins) mins"
 
-        let currentLangObject = self.schedule?.object(forKey: AppDelegate.shortLangUI()) as! NSDictionary
-        self.ScheduleTitleLabel?.text = currentLangObject.object(forKey: "title") as? String
+        self.ScheduleTitleLabel?.text = self.session!["title"]
 
-        let type = Constants.GetScheduleTypeName(self.schedule?.object(forKey: "type") as Any)
+        let type = Constants.GetScheduleTypeName(self.session!.Type!)
         self.LabelLabel?.text = "   \(type)   "
         self.LabelLabel?.layer.cornerRadius = (self.LabelLabel?.frame.size.height)! / 2
         self.LabelLabel?.sizeToFit()
@@ -87,8 +78,8 @@ class ScheduleTableViewCell: UITableViewCell {
         }
     }
 
-    @objc func getSchedule() -> NSDictionary? {
-        return self.schedule
+    func getSession() -> SessionInfo? {
+        return self.session
     }
 
     @objc func setFavorite(_ favorite: Bool) {

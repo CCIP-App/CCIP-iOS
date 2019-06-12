@@ -232,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yd4-h4-STh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-238" y="1877"/>
+            <point key="canvasLocation" x="535" y="1847"/>
         </scene>
         <!--Schedule Favorite Table View Controller-->
         <scene sceneID="dnZ-fD-o51">
@@ -253,10 +253,10 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0X-v2-4hf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="477" y="1877"/>
+            <point key="canvasLocation" x="-297" y="1847"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LrT-B4-46j"/>
+        <segue reference="DSc-k5-Kia"/>
     </inferredMetricsTieBreakers>
 </document>

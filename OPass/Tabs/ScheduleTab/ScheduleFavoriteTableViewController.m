@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ScheduleFavoriteTableViewController.h"
-#import "ScheduleTableViewController.h"
+//#import "ScheduleTableViewController.h"
 #import "ScheduleDetailViewController.h"
 
 @interface ScheduleFavoriteTableViewController ()
@@ -175,7 +175,7 @@ static UIView *headView;
     NSDictionary *program = [[self.favoritesSections objectForKey:timeString] objectAtIndex:indexPath.row];
     
     [cell setDelegate:self];
-    [cell setSchedule:program];
+//    [cell setSchedule:program];
     [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     
     NSDate *endTime = [Constants DateFromString:[program objectForKey:@"end"]];
