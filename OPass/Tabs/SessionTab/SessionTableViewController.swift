@@ -9,66 +9,7 @@
 import Foundation
 import UIKit
 
-class SessionTableViewController: UITableViewController, UIViewControllerPreviewingDelegate, SessionFavoriteDelegate {
-    func actionFavorite(_ sessionId: String) {
-        //
-    }
-
-    func hasFavorite(_ sessionId: String) -> Bool {
-        return false
-    }
-
-    //- (void)actionFavorite:(NSString *)sessionId {
-    //    NSDictionary *favProgram = @{};
-    //    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    //    NSObject *favObj = [userDefault valueForKey:Constants.FAV_KEY];
-    //    NSArray *favoriteArray = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)favObj] : favObj;
-    //    NSMutableArray *favorites = [NSMutableArray arrayWithArray:favoriteArray];
-    //    for (NSDate *time in self.programTimes) {
-    //        NSString *timeString = [Constants DateToDisplayTimeString:time];
-    //        for (NSDictionary *program in [self.programSections objectForKey:timeString]) {
-    //            if (program != nil && [[self getID:program] isEqualToString:sessionId]) {
-    //                favProgram = program;
-    //                break;
-    //            }
-    //        }
-    //        if ([[favProgram allKeys] count] > 0) {
-    //            break;
-    //        }
-    //    }
-    //    BOOL hasFavorite = [self hasFavorite:sessionId];
-    //    if (!hasFavorite) {
-    //        [favorites addObject:favProgram];
-    //    } else {
-    //        [favorites removeObject:favProgram];
-    //    }
-    //    NSData *favData = [NSKeyedArchiver archivedDataWithRootObject:favorites];
-    //    [userDefault setValue:favData
-    //                   forKey:Constants.FAV_KEY];
-    //    [userDefault synchronize];
-    //    [self.tableView reloadData];
-    ////    [OPassAPI RegisteringFavoriteSessionForEvent:[Constants EventId]
-    ////                                        withToken:[Constants AccessToken]
-    ////                                       toSession:sessionId
-    ////                                        isDisable:NO
-    ////                                       completion:^(BOOL success, id _Nullable obj, NSError * _Nonnull error) {
-    ////                                           NSLog(@"%@", obj);
-    ////                                       }];
-    //}
-    //
-    //- (BOOL)hasFavorite:(NSString *)sessionId {
-    //    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    //    // ugly convension for crash prevent
-    //    NSObject *favObj = [userDefault valueForKey:Constants.FAV_KEY];
-    //    NSArray *favorites = [favObj isKindOfClass:[NSData class]] ? [NSKeyedUnarchiver unarchiveObjectWithData:(NSData *)favObj] : favObj;
-    //    for (NSDictionary *program in favorites) {
-    //        if ([[self getID:program] isEqualToString:sessionId]) {
-    //            return YES;
-    //        }
-    //    }
-    //    return NO;
-    //}
-
+class SessionTableViewController: UITableViewController, UIViewControllerPreviewingDelegate {
     public var pagerController: SessionViewPagerController?
     public var sessionIds: Array<String>?
     var programTimes = Array<Date>()
@@ -175,7 +116,6 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
 
         cell?.selectionStyle = .gray
         cell?.setDisabled(sinceEnd < 0)
-        cell?.setDelegate(self)
         cell?.setSession(session)
 
         return cell!

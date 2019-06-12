@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-@interface SessionFavoriteTableViewController : UITableViewController<SessionFavoriteDelegate>
+@interface SessionFavoriteTableViewController : UITableViewController
 
 @end

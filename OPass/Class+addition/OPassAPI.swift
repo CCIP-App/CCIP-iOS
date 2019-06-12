@@ -609,19 +609,11 @@ struct AnnouncementInfo {
         return "\(event)|\(token)|favorites"
     }
 
-    private static func GetFavoritesStoreKey(
-        _ event: String,
-        _ token: String,
-        _ session: String
-        ) -> String {
-        return "\(OPassAPI.GetFavoritesStoreKey(event, token))|\(session)"
-    }
-
-    @objc static func GetFavoritesList(
-        forEvent: String,
-        withToken: String
+    static func GetFavoritesList(
+        forEvent event: String,
+        withToken token: String
         ) -> [String] {
-        let key = OPassAPI.GetFavoritesStoreKey(forEvent, withToken)
+        let key = OPassAPI.GetFavoritesStoreKey(event, token)
         let ud = UserDefaults.standard
         ud.register(defaults: [key: Array<String>()])
         ud.synchronize()
@@ -629,24 +621,49 @@ struct AnnouncementInfo {
         return ud.stringArray(forKey: key)!
     }
 
-    @objc static func RegisteringFavoriteSession(
+    static func PutFavoritesList(
         forEvent event: String,
         withToken token: String,
-        toSession session: String,
-        isDisable: Bool,
-        completion: OPassCompletionCallback
+        byNewList: [String]
     ) {
-        let session = ""
+        let key = OPassAPI.GetFavoritesStoreKey(event, token)
+        let ud = UserDefaults.standard
+        ud.set(byNewList, forKey: key)
+        ud.synchronize()
+    }
+
+    static func CheckFavoriteState(
+        forEvent event: String,
+        withToken token: String,
+        toSession session: String
+    ) -> Bool {
+        let favList = OPassAPI.GetFavoritesList(forEvent: event, withToken: token)
+        return favList.contains(session)
+    }
+
+    static func TriggerFavoriteSession(
+        forEvent event: String,
+        withToken token: String,
+        toSession session: String
+    ) {
         let title = ""
         let content = ""
         let time = 10.seconds.fromNow
+        var favList = OPassAPI.GetFavoritesList(forEvent: event, withToken: token)
+        let isDisable = favList.contains(session)
         OPassAPI.RegisteringNotification(
-            id: OPassAPI.GetFavoritesStoreKey(event, token, session),
+            id: "\(OPassAPI.GetFavoritesStoreKey(event, token))|\(session)",
             title: title,
             content: content,
             time: time,
             isDisable: isDisable
         )
+        if !isDisable {
+            favList += [ session ]
+        } else {
+            favList = favList.filter { $0 != session }
+        }
+        OPassAPI.PutFavoritesList(forEvent: event, withToken: token, byNewList: favList)
     }
 
     static func GetAnnouncement(forEvent event: String, onCompletion completion: OPassCompletionCallback) {

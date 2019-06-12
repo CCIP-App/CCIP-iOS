@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class SessionTableViewCell: UITableViewCell {
-    public var delegate: SessionFavoriteDelegate?
     @IBOutlet public var SessionTitleLabel: UILabel?
     @IBOutlet public var RoomLocationLabel: UILabel?
     @IBOutlet public var LabelLabel: UILabel?
@@ -19,6 +18,9 @@ class SessionTableViewCell: UITableViewCell {
     private var favorite: Bool = false
     private var disabled: Bool = false
     private var session: SessionInfo?
+    private var sessionId: String? {
+        return self.session?.Id
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,12 +39,8 @@ class SessionTableViewCell: UITableViewCell {
     }
 
     @IBAction func favoriteTouchUpInsideAction(_ sender: NSObject) {
-        self.favorite = !self.favorite
-        if (self.delegate != nil) {
-            if ((self.delegate?.responds(to: #selector(SessionFavoriteDelegate.actionFavorite(_:))))!) {
-//                self.delegate!.actionFavorite(self.getID())
-            }
-        }
+        OPassAPI.TriggerFavoriteSession(forEvent: OPassAPI.currentEvent, withToken: AppDelegate.accessToken(), toSession: self.sessionId!)
+        self.setFavorite(OPassAPI.CheckFavoriteState(forEvent: OPassAPI.currentEvent, withToken: AppDelegate.accessToken(), toSession: self.sessionId!))
         UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
     }
 
@@ -67,18 +65,14 @@ class SessionTableViewCell: UITableViewCell {
         self.LabelLabel?.isHidden = type.count == 0
         self.setFavorite(false)
 
-        if (self.delegate != nil) {
-            if ((self.delegate?.responds(to: #selector(SessionFavoriteDelegate.hasFavorite(_:))))!) {
-//                self.setFavorite(self.delegate!.hasFavorite(self.getID()))
-            }
-        }
+        self.setFavorite(OPassAPI.CheckFavoriteState(forEvent: OPassAPI.currentEvent, withToken: AppDelegate.accessToken(), toSession: self.sessionId!))
     }
 
     func getSession() -> SessionInfo? {
         return self.session
     }
 
-    @objc func setFavorite(_ favorite: Bool) {
+    func setFavorite(_ favorite: Bool) {
         self.favorite = favorite
         let titleAttribute = [
             NSAttributedString.Key.font: Constants.fontOfAwesome(withSize: 20, inStyle: self.favorite ? fontAwesomeStyle.solid : fontAwesomeStyle.regular),
@@ -88,7 +82,7 @@ class SessionTableViewCell: UITableViewCell {
         self.FavoriteButton?.setAttributedTitle(title, for: .normal)
     }
 
-    @objc func getFavorite() -> Bool {
+    func getFavorite() -> Bool {
         return self.favorite
     }
 
@@ -97,11 +91,7 @@ class SessionTableViewCell: UITableViewCell {
         self.SessionTitleLabel?.alpha = self.disabled ? 0.2 : 1
     }
 
-    @objc func getDisabled() -> Bool {
+    func getDisabled() -> Bool {
         return self.disabled
-    }
-
-    @objc func setDelegate(_ delegate: SessionFavoriteDelegate) {
-        self.delegate = delegate
     }
 }

@@ -172,7 +172,7 @@ static UIView *headView;
     NSString *timeString = [Constants DateToDisplayDateTimeString:time];
     NSDictionary *program = [[self.favoritesSections objectForKey:timeString] objectAtIndex:indexPath.row];
     
-    [cell setDelegate:self];
+//    [cell setDelegate:self];
 //    [cell setSession:program];
     [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     
