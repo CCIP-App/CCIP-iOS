@@ -127,18 +127,18 @@ struct ProgramSession {
         self._sessionData = data
         self.Id = data["id"].stringValue
         self.Type = data["id"].stringValue
-        self.Room = data[""].string
-        self.Broadcast = data[""].string
-        self.Start = data[""].stringValue
-        self.End = data[""].stringValue
-        self.QA = data[""].string
-        self.Slide = data[""].string
-        self.Live = data[""].string
-        self.Record = data[""].string
-        self.Speakers = data[""].arrayValue.map({ obj -> String? in
+        self.Room = data["room"].string
+        self.Broadcast = data["broadcast"].string
+        self.Start = data["start"].stringValue
+        self.End = data["end"].stringValue
+        self.QA = data["qa"].string
+        self.Slide = data["slide"].string
+        self.Live = data["live"].string
+        self.Record = data["record"].string
+        self.Speakers = data["speakers"].arrayValue.map({ obj -> String? in
             return obj.string
         })
-        self.Tags = data[""].arrayValue.map({ obj -> String? in
+        self.Tags = data["tags"].arrayValue.map({ obj -> String? in
             return obj.string
         })
     }
