@@ -99,6 +99,7 @@ PODS:
   - swift_qrcodejs (1.0.1)
   - SwiftDate (6.0.3)
   - SwiftyJSON (5.0.0)
+  - TagListView (1.4.0)
   - thenPromise (5.0.0)
   - UICKeyChainStore (2.1.2)
   - "UITableView+FDTemplateLayoutCell (1.6)"
@@ -130,6 +131,7 @@ DEPENDENCIES:
   - STPopup (~> 1.7)
   - SwiftDate
   - SwiftyJSON
+  - TagListView
   - thenPromise
   - UICKeyChainStore (~> 2.1)
   - "UITableView+FDTemplateLayoutCell (from `https://github.com/Haraguroicha/UITableView-FDTemplateLayoutCell`, tag `1.6.1`)"
@@ -169,6 +171,7 @@ SPEC REPOS:
     - swift_qrcodejs
     - SwiftDate
     - SwiftyJSON
+    - TagListView
     - thenPromise
     - UICKeyChainStore
     - "UIView+FDCollapsibleConstraints"
@@ -222,11 +225,12 @@ SPEC CHECKSUMS:
   swift_qrcodejs: c181fe5c849d30c699546a23762d7e3dd143ab37
   SwiftDate: 8d4f14bf1ef68e95094511504856547bf9e3e1a6
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  TagListView: 987b0bdbb16cd9d9e7c0e2ec32aff37ecba8b173
   thenPromise: 02f1650627feed7b0e2e6a815bc04a168c9f9ede
   UICKeyChainStore: 85db518bb1d294366d15ec9b92a416c4e670518f
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: d7b851fd853f1ec8450838c91d3eab5773a2b697
+PODFILE CHECKSUM: 4ecd674d4cbcc889a797b80c7569086a1eddf4f6
 
 COCOAPODS: 1.7.1

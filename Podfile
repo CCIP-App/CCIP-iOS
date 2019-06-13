@@ -39,6 +39,7 @@ def opass_pods
     pod 'SwiftyJSON'
     pod 'FoldingCell'
     pod 'DLLocalNotifications'
+    pod 'TagListView'
 end
 
 target 'OPass' do
