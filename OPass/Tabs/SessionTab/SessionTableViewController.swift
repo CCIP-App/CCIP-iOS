@@ -12,8 +12,8 @@ import UIKit
 class SessionTableViewController: UITableViewController, UIViewControllerPreviewingDelegate {
     public var pagerController: SessionViewPagerController?
     public var sessionIds: Array<String>?
-    var programTimes = Array<Date>()
-    var programSections = Dictionary<String, Array<String>>()
+    var sessionTimes = Array<Date>()
+    var sessionSections = Dictionary<String, Array<String>>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,18 +23,23 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        self.programTimes.removeAll()
-        self.programSections.removeAll()
-        for session in (self.pagerController?.programs!.Sessions.filter { (self.sessionIds?.contains($0.Id))! })! {
-            let startTime = Constants.DateFromString(session.Start)
-            let start = Constants.DateToDisplayTimeString(startTime)
-            if self.programSections.index(forKey: start) == nil {
-                self.programTimes.append(startTime)
-                self.programSections[start] = Array<String>()
+        // only empty is specified for display favorite list
+        if self.sessionIds != nil {
+            self.sessionTimes.removeAll()
+            self.sessionSections.removeAll()
+            for session in (self.pagerController?.programs!.Sessions.filter { (self.sessionIds?.contains($0.Id))! })! {
+                let startTime = Constants.DateFromString(session.Start)
+                let start = Constants.DateToDisplayTimeString(startTime)
+                if self.sessionSections.index(forKey: start) == nil {
+                    self.sessionTimes.append(startTime)
+                    self.sessionSections[start] = Array<String>()
+                }
+                self.sessionSections[start]?.append(session.Id)
             }
-            self.programSections[start]?.append(session.Id)
+            self.sessionTimes.sort()
+        } else {
+            self.parseFavorites()
         }
-        self.programTimes.sort()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -47,8 +52,32 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
         // Dispose of any resources that can be recreated.
     }
 
+    func parseFavorites() {
+        self.sessionTimes.removeAll()
+        self.sessionSections.removeAll()
+        let favList = OPassAPI.GetFavoritesList(forEvent: OPassAPI.currentEvent, withToken: AppDelegate.accessToken())
+        for session in (self.pagerController?.programs!.Sessions.filter { (favList.contains($0.Id)) })! {
+            let startTime = Constants.DateFromString(session.Start)
+            let start = Constants.DateToDisplayTimeString(startTime)
+            if self.sessionSections.index(forKey: start) == nil {
+                self.sessionTimes.append(startTime)
+                self.sessionSections[start] = Array<String>()
+            }
+            self.sessionSections[start]?.append(session.Id)
+        }
+        self.sessionTimes.sort()
+
+        self.tableView.reloadData()
+    }
+
+    // MARK: - Peek & Pop Preview
+
     override var previewActionItems: [UIPreviewActionItem] {
         return self.previewActions()
+    }
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        self.navigationController?.show(viewControllerToCommit, sender: nil)
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
@@ -58,17 +87,13 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
         }
         let storyboard = UIStoryboard.init(name: "Session", bundle: nil)
         let detailView = storyboard.instantiateViewController(withIdentifier: Constants.INIT_SESSION_DETAIL_VIEW_STORYBOARD_ID) as! SessionDetailViewController
-        let time = Constants.DateToDisplayTimeString(self.programTimes[indexPath.section])
-        let sessionId = (self.programSections[time]?[indexPath.row])!
+        let time = Constants.DateToDisplayTimeString(self.sessionTimes[indexPath.section])
+        let sessionId = (self.sessionSections[time]?[indexPath.row])!
         guard let session = self.pagerController?.programs!.GetSession(sessionId) else { return detailView }
         detailView.setSessionData(session)
         let tableCell = tableView.cellForRow(at: indexPath)
         previewingContext.sourceRect = self.view.convert(tableCell!.frame, from: tableView)
         return detailView
-    }
-
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        self.navigationController?.show(viewControllerToCommit, sender: nil)
     }
 
     // MARK: - Table view data source
@@ -82,11 +107,11 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.programSections.count
+        return self.sessionSections.count
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Constants.DateToDisplayTimeString(self.programTimes[section])
+        return Constants.DateToDisplayTimeString(self.sessionTimes[section])
     }
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -96,8 +121,8 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let time = Constants.DateToDisplayTimeString(self.programTimes[section])
-        return self.programSections[time]!.count
+        let time = Constants.DateToDisplayTimeString(self.sessionTimes[section])
+        return self.sessionSections[time]!.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -108,8 +133,8 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
             cell = tableView.dequeueReusableCell(withIdentifier: sessionCellName) as? SessionTableViewCell
         }
 
-        let time = Constants.DateToDisplayTimeString(self.programTimes[indexPath.section])
-        let sessionId = (self.programSections[time]?[indexPath.row])!
+        let time = Constants.DateToDisplayTimeString(self.sessionTimes[indexPath.section])
+        let sessionId = (self.sessionSections[time]?[indexPath.row])!
         guard let session = self.pagerController?.programs!.GetSession(sessionId) else { return cell! }
         let endTime = Constants.DateFromString(session.End)
         let sinceEnd = endTime.timeIntervalSince(self.pagerController!.today)
@@ -123,8 +148,8 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let time = Constants.DateToDisplayTimeString(self.programTimes[indexPath.section])
-        let sessionId = self.programSections[time]?[indexPath.row]
+        let time = Constants.DateToDisplayTimeString(self.sessionTimes[indexPath.section])
+        let sessionId = self.sessionSections[time]?[indexPath.row]
         self.pagerController?.performSegue(withIdentifier: Constants.SESSION_DETAIL_VIEW_STORYBOARD_ID, sender: sessionId)
     }
 }
