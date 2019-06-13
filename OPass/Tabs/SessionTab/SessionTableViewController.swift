@@ -127,6 +127,4 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
         let sessionId = self.programSections[time]?[indexPath.row]
         self.pagerController?.performSegue(withIdentifier: Constants.SESSION_DETAIL_VIEW_STORYBOARD_ID, sender: sessionId)
     }
-
-
 }

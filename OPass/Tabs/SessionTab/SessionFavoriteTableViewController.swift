@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SessionFavoriteTableViewController: UITableViewController {
+class SessionFavoriteTableViewController: UITableViewController, UIViewControllerPreviewingDelegate {
     public var pagerController: SessionViewPagerController?
 
     private static var headView: UIView?
@@ -18,6 +18,8 @@ class SessionFavoriteTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.registerForceTouch()
+
         self.parseFavorites()
 
         guard let navBar = self.navigationController?.navigationBar else { return }
@@ -74,7 +76,7 @@ class SessionFavoriteTableViewController: UITableViewController {
         SessionFavoriteTableViewController.headView?.setGradientColor(from: .clear, to: .clear, startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
     }
 
-    override func willMove(toParent parent: UIViewController?) {
+    override func didMove(toParent parent: UIViewController?) {
         if parent == nil {
             SessionFavoriteTableViewController.headView?.removeFromSuperview()
         }
@@ -101,6 +103,30 @@ class SessionFavoriteTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    override var previewActionItems: [UIPreviewActionItem] {
+        return self.previewActions()
+    }
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        let tableView = previewingContext.sourceView as! UITableView
+        guard let indexPath = (tableView.value(forKey: "_highlightedIndexPaths") as! Array<IndexPath>).first else {
+            return nil
+        }
+        let storyboard = UIStoryboard.init(name: "Session", bundle: nil)
+        let detailView = storyboard.instantiateViewController(withIdentifier: Constants.INIT_SESSION_DETAIL_VIEW_STORYBOARD_ID) as! SessionDetailViewController
+        let time = Constants.DateToDisplayTimeString(self.favoritesTimes[indexPath.section])
+        let sessionId = (self.favoritesSections[time]?[indexPath.row])!
+        guard let session = self.pagerController?.programs!.GetSession(sessionId) else { return detailView }
+        detailView.setSessionData(session)
+        let tableCell = tableView.cellForRow(at: indexPath)
+        previewingContext.sourceRect = self.view.convert(tableCell!.frame, from: tableView)
+        return detailView
+    }
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        self.navigationController?.show(viewControllerToCommit, sender: nil)
     }
 
     override func show(_ vc: UIViewController, sender: Any?) {
