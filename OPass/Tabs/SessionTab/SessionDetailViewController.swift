@@ -17,6 +17,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
     @IBOutlet public var lbSpeaker: UILabel?
     @IBOutlet public var lbSpeakerName: UILabel?
     @IBOutlet public var lbTitle: UILabel?
+    @IBOutlet public var btnFavorite: UIButton?
     @IBOutlet public var lbRoom: UILabel?
     @IBOutlet public var lbRoomText: UILabel?
     @IBOutlet public var lbType: UILabel?
@@ -132,6 +133,27 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
         self.lbType?.isHidden = type.count == 0
         self.lbTypeText?.text = type
         self.lbTimeText?.text = "\(startTimeString) - \(endTimeString)"
+
+        self.checkFavoriteState()
+    }
+
+    func checkFavoriteState() {
+        let favorite = OPassAPI.CheckFavoriteState(forEvent: OPassAPI.currentEvent, withToken: AppDelegate.accessToken(), toSession: self.session!.Id)
+        self.btnFavorite?.setAttributedTitle(Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: favorite ? fontAwesomeStyle.solid : fontAwesomeStyle.regular, forColor: .white), for: .normal)
+    }
+
+    @IBAction func favoriteTouchDownAction(_ sender: Any) {
+        UIImpactFeedback.triggerFeedback(.impactFeedbackMedium)
+    }
+
+    @IBAction func favoriteTouchUpInsideAction(_ sender: Any) {
+        OPassAPI.TriggerFavoriteSession(forEvent: OPassAPI.currentEvent, withToken: AppDelegate.accessToken(), toSession: self.session!.Id)
+        self.checkFavoriteState()
+        UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
+    }
+
+    @IBAction func favoriteTouchUpOutsideAction(_ sender: Any) {
+        UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
     }
 
     // MARK: - FSPagerView

@@ -85,6 +85,19 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lQk-52-pGb">
                                         <rect key="frame" x="0.0" y="244" width="426" height="56"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bjw-JH-Lfo">
+                                                <rect key="frame" x="10" y="5" width="5" height="5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="AaM-Bd-0jB"/>
+                                                    <constraint firstAttribute="width" secondItem="Bjw-JH-Lfo" secondAttribute="height" multiplier="1:1" id="Z51-K2-dLp"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="favoriteTouchDownAction:" destination="fRg-Pj-D5f" eventType="touchDown" id="bra-XR-Vjm"/>
+                                                    <action selector="favoriteTouchUpInsideAction:" destination="fRg-Pj-D5f" eventType="touchUpInside" id="eqi-vm-Lp8"/>
+                                                    <action selector="favoriteTouchUpOutsideAction:" destination="fRg-Pj-D5f" eventType="touchUpOutside" id="Oi5-WE-aCh"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="In6-hT-nBr">
                                                 <rect key="frame" x="25" y="5" width="100" height="21"/>
                                                 <constraints>
@@ -142,7 +155,9 @@
                                             <constraint firstItem="Vk7-Ne-OSp" firstAttribute="width" secondItem="eWQ-S8-YNi" secondAttribute="width" id="Bz4-hh-TBB"/>
                                             <constraint firstItem="3CQ-TR-Yng" firstAttribute="leading" secondItem="Vk7-Ne-OSp" secondAttribute="trailing" constant="5" id="J57-uD-brT"/>
                                             <constraint firstAttribute="height" constant="56" id="QFb-fQ-OHo"/>
+                                            <constraint firstItem="Bjw-JH-Lfo" firstAttribute="leading" secondItem="lQk-52-pGb" secondAttribute="leading" constant="5" id="QND-5R-2uB"/>
                                             <constraint firstItem="5ml-G8-W8C" firstAttribute="leading" secondItem="eWQ-S8-YNi" secondAttribute="trailing" constant="5" id="Sg4-fD-WJc"/>
+                                            <constraint firstItem="In6-hT-nBr" firstAttribute="leading" secondItem="Bjw-JH-Lfo" secondAttribute="trailing" constant="10" id="ThX-i5-Xxk"/>
                                             <constraint firstItem="In6-hT-nBr" firstAttribute="top" secondItem="lQk-52-pGb" secondAttribute="top" constant="5" id="XEU-5V-xAY"/>
                                             <constraint firstItem="Vk7-Ne-OSp" firstAttribute="leading" secondItem="reh-lB-wzF" secondAttribute="trailing" constant="5" id="c0d-xZ-dui"/>
                                             <constraint firstItem="3CQ-TR-Yng" firstAttribute="trailing" secondItem="5ml-G8-W8C" secondAttribute="trailing" id="eu0-Ah-LyW"/>
@@ -151,8 +166,8 @@
                                             <constraint firstItem="reh-lB-wzF" firstAttribute="width" secondItem="In6-hT-nBr" secondAttribute="width" id="i16-ya-gCf"/>
                                             <constraint firstItem="5ml-G8-W8C" firstAttribute="top" secondItem="lQk-52-pGb" secondAttribute="top" constant="5" id="lPU-5b-ebg"/>
                                             <constraint firstItem="3CQ-TR-Yng" firstAttribute="width" secondItem="5ml-G8-W8C" secondAttribute="width" id="mVe-Ef-k1K"/>
-                                            <constraint firstItem="In6-hT-nBr" firstAttribute="leading" secondItem="lQk-52-pGb" secondAttribute="leading" constant="25" id="pOO-Oy-v7c"/>
-                                            <constraint firstAttribute="trailing" secondItem="5ml-G8-W8C" secondAttribute="trailing" constant="25" id="qhI-nl-qAH"/>
+                                            <constraint firstItem="Bjw-JH-Lfo" firstAttribute="centerY" secondItem="lQk-52-pGb" secondAttribute="centerY" id="nzX-sZ-wKS"/>
+                                            <constraint firstAttribute="trailing" secondItem="5ml-G8-W8C" secondAttribute="trailing" constant="5" id="qhI-nl-qAH"/>
                                             <constraint firstItem="eWQ-S8-YNi" firstAttribute="top" secondItem="lQk-52-pGb" secondAttribute="top" constant="5" id="wBo-4B-BxG"/>
                                             <constraint firstItem="3CQ-TR-Yng" firstAttribute="top" secondItem="5ml-G8-W8C" secondAttribute="bottom" constant="5" id="wLA-Mt-P3Z"/>
                                         </constraints>
@@ -198,6 +213,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="426" height="720"/>
                     <connections>
+                        <outlet property="btnFavorite" destination="Bjw-JH-Lfo" id="7mR-IU-w1j"/>
                         <outlet property="lbRoom" destination="In6-hT-nBr" id="2Oq-cP-zCu"/>
                         <outlet property="lbRoomText" destination="reh-lB-wzF" id="Glj-hu-0zm"/>
                         <outlet property="lbSpeaker" destination="oTw-81-UrA" id="ExL-pZ-Aed"/>
