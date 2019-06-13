@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MBProgressHUD
 
 class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, ViewPagerDelegate {
     internal var selectedSection = Date.init(timeIntervalSince1970: 0)
@@ -17,6 +18,7 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
     }
     internal var firstLoad: Bool = true
     internal var programs: Programs?
+    private var progress: MBProgressHUD?
 
     private func initProgramsData() {
         let defaults: [String: Any] = [
@@ -55,9 +57,17 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
         self.view.backgroundColor = .clear
 
         // Do any additional setup after loading the view.
+        self.progress = MBProgressHUD.showAdded(to: self.view, animated: true)
+        self.progress?.mode = .indeterminate
         self.initProgramsData()
-        self.loadProgramsData()
-        self.refreshData()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.firstLoad {
+            self.loadProgramsData()
+            self.refreshData()
+        }
     }
 
     func refreshData() {
@@ -98,6 +108,9 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
             let selectedIndex = self.segmentsTextArray.firstIndex(of: Constants.DateToDisplayDateString(self.selectedSection))
             self.selectTab(at: UInt(selectedIndex ?? 0))
             self.firstLoad = false
+        }
+        if self.progress != nil {
+            self.progress?.hide(animated: true)
         }
     }
 
