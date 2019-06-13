@@ -581,9 +581,9 @@
 				6B0C6C9022AD4A2C003E7617 /* SessionViewController.swift */,
 				6B153B9822B13F6700C1632D /* SessionViewPagerController.swift */,
 				6B153B9A22B176D000C1632D /* SessionTableViewController.swift */,
+				6B153B9E22B1C09C00C1632D /* SessionFavoriteTableViewController.swift */,
 				6B0C6C9222AD55F6003E7617 /* SessionTableViewCell.swift */,
 				280774D01F1AD8D300A5B994 /* SessionTableViewCell.xib */,
-				6B153B9E22B1C09C00C1632D /* SessionFavoriteTableViewController.swift */,
 				6B153B9C22B1946A00C1632D /* SessionDetailViewController.swift */,
 			);
 			path = SessionTab;
