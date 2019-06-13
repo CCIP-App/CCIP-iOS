@@ -171,7 +171,7 @@ struct ProgramSession: Codable {
     init(_ data: JSON) {
         self._sessionData = data
         self.Id = data["id"].stringValue
-        self.Type = data["id"].stringValue
+        self.Type = data["type"].stringValue
         self.Room = data["room"].string
         self.Broadcast = data["broadcast"].string
         self.Start = data["start"].stringValue
