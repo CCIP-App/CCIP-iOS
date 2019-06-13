@@ -9,6 +9,7 @@
 
 CFBundleDisplayName = "OPass";
 CFBundleName = "OPass";
+NSBluetoothAlwaysUsageDescription = "Use your Bluetooth connection to confirm you are nearby event of iBeacon devices";
 NSBluetoothPeripheralUsageDescription = "Use your Bluetooth connection to confirm you are nearby event of iBeacon devices";
 NSLocationAlwaysUsageDescription = "Use your location service for check your pass is in validated range to use";
 NSLocationWhenInUseUsageDescription = "Use your location service for check your pass is in validated range to use";
