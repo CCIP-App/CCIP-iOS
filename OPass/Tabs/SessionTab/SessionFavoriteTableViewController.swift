@@ -39,7 +39,6 @@ class SessionFavoriteTableViewController: UITableViewController {
         let frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: navBar.frame.origin.y + navigationBarBounds.size.height)
 
         SessionFavoriteTableViewController.headView = UIView.init(frame: frame)
-        SessionFavoriteTableViewController.headView?.setGradientColor(from: AppDelegate.appConfigColor("SessionTitleLeftColor"), to: AppDelegate.appConfigColor("SessionTitleRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
 
         navBar.superview?.addSubview(SessionFavoriteTableViewController.headView!)
         navBar.superview?.bringSubviewToFront(SessionFavoriteTableViewController.headView!)
@@ -60,6 +59,7 @@ class SessionFavoriteTableViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        SessionFavoriteTableViewController.headView?.setGradientColor(from: AppDelegate.appConfigColor("SessionTitleLeftColor"), to: AppDelegate.appConfigColor("SessionTitleRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
         SessionFavoriteTableViewController.headView?.alpha = 0
         SessionFavoriteTableViewController.headView?.isHidden = false
         UIView.animate(withDuration: 0.5, animations: {
@@ -67,6 +67,11 @@ class SessionFavoriteTableViewController: UITableViewController {
         }) { finished in
             SessionFavoriteTableViewController.headView?.alpha = 1
         }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        SessionFavoriteTableViewController.headView?.setGradientColor(from: .clear, to: .clear, startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
     }
 
     override func willMove(toParent parent: UIViewController?) {
@@ -89,6 +94,8 @@ class SessionFavoriteTableViewController: UITableViewController {
             self.favoritesSections[start]?.append(session.Id)
         }
         self.favoritesTimes.sort()
+
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
