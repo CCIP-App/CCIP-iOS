@@ -47,6 +47,7 @@
 		6B153B9922B13F6800C1632D /* SessionViewPagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B153B9822B13F6700C1632D /* SessionViewPagerController.swift */; };
 		6B153B9B22B176D000C1632D /* SessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B153B9A22B176D000C1632D /* SessionTableViewController.swift */; };
 		6B153B9D22B1946A00C1632D /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B153B9C22B1946A00C1632D /* SessionDetailViewController.swift */; };
+		6B153B9F22B1C09C00C1632D /* SessionFavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B153B9E22B1C09C00C1632D /* SessionFavoriteTableViewController.swift */; };
 		6B19CFA4220E404C00262D99 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B19CFA3220E404C00262D99 /* MoreTableViewController.swift */; };
 		6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */; };
 		6B2CD58B1D28780F00793194 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD58A1D28780F00793194 /* AudioToolbox.framework */; };
@@ -84,7 +85,6 @@
 		6B5FD2D9223C51F4005D111C /* AnnounceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5FD2D8223C51F4005D111C /* AnnounceTableViewController.swift */; };
 		6B670CCD2156E00A0089C9B5 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */; };
 		6B70EF45204C981700C63E63 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B70EF44204C981700C63E63 /* NetworkExtension.framework */; };
-		6B7299B01F26BFEE00D6C1DA /* SessionFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7299AF1F26BFEE00D6C1DA /* SessionFavoriteTableViewController.m */; };
 		6B76DF6420B019B200EBEF06 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B76DF6320B019B200EBEF06 /* config.plist */; };
 		6B9650C91F2B270500F43B39 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC12A961F2B1B8000B14039 /* main.swift */; };
 		6B9A279A222B00C300E8463E /* OPassEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9A2799222B00C300E8463E /* OPassEventCell.xib */; };
@@ -207,6 +207,7 @@
 		6B153B9822B13F6700C1632D /* SessionViewPagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewPagerController.swift; sourceTree = "<group>"; };
 		6B153B9A22B176D000C1632D /* SessionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewController.swift; sourceTree = "<group>"; };
 		6B153B9C22B1946A00C1632D /* SessionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
+		6B153B9E22B1C09C00C1632D /* SessionFavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFavoriteTableViewController.swift; sourceTree = "<group>"; };
 		6B19CFA3220E404C00262D99 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		6B2AEB7B1F23FF6F00C65868 /* OPass.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = OPass.release.xcconfig; sourceTree = "<group>"; };
 		6B2AEB7C1F23FF6F00C65868 /* OPass.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = OPass.debug.xcconfig; sourceTree = "<group>"; };
@@ -249,8 +250,6 @@
 		6B5FD2D8223C51F4005D111C /* AnnounceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceTableViewController.swift; sourceTree = "<group>"; };
 		6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
 		6B70EF44204C981700C63E63 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		6B7299AE1F26BFEE00D6C1DA /* SessionFavoriteTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionFavoriteTableViewController.h; sourceTree = "<group>"; };
-		6B7299AF1F26BFEE00D6C1DA /* SessionFavoriteTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionFavoriteTableViewController.m; sourceTree = "<group>"; };
 		6B76DF6320B019B200EBEF06 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		6B9348AE1F2428A300F77757 /* OPass.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = OPass.xcconfig; sourceTree = "<group>"; };
 		6B9A2799222B00C300E8463E /* OPassEventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OPassEventCell.xib; sourceTree = "<group>"; };
@@ -584,8 +583,7 @@
 				6B153B9A22B176D000C1632D /* SessionTableViewController.swift */,
 				6B0C6C9222AD55F6003E7617 /* SessionTableViewCell.swift */,
 				280774D01F1AD8D300A5B994 /* SessionTableViewCell.xib */,
-				6B7299AE1F26BFEE00D6C1DA /* SessionFavoriteTableViewController.h */,
-				6B7299AF1F26BFEE00D6C1DA /* SessionFavoriteTableViewController.m */,
+				6B153B9E22B1C09C00C1632D /* SessionFavoriteTableViewController.swift */,
 				6B153B9C22B1946A00C1632D /* SessionDetailViewController.swift */,
 			);
 			path = SessionTab;
@@ -897,6 +895,7 @@
 				6BE4B8F1222ADB7B005F8B95 /* NEHotspot.swift in Sources */,
 				6B4FCB28218F97B60005469F /* TelegramController.swift in Sources */,
 				6B4FCB22218F774D0005469F /* IRCViewController.swift in Sources */,
+				6B153B9F22B1C09C00C1632D /* SessionFavoriteTableViewController.swift in Sources */,
 				6B5AABC7220CBB6700C01C54 /* iBeacon.swift in Sources */,
 				6B4FCB24218F79CB0005469F /* Constants.swift in Sources */,
 				6B9650C91F2B270500F43B39 /* main.swift in Sources */,
@@ -913,7 +912,6 @@
 				6BE8A22E220E11160035CFD8 /* JSONSerialization+Ext.swift in Sources */,
 				6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */,
 				6B4FCB15218ECACD0005469F /* UISegmentedControl+addition.swift in Sources */,
-				6B7299B01F26BFEE00D6C1DA /* SessionFavoriteTableViewController.m in Sources */,
 				5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */,
 				6BE8A22A220DC84C0035CFD8 /* AcknowledgementsViewController.swift in Sources */,
 				6B153B9D22B1946A00C1632D /* SessionDetailViewController.swift in Sources */,

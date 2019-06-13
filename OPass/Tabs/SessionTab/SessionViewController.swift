@@ -78,4 +78,11 @@ class SessionViewController: UIViewController {
     @objc func showFavoritesTouchUpOutside() {
         UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowFavorites" {
+            let vc = segue.destination as? SessionFavoriteTableViewController
+            vc?.pagerController = self.children.first! as? SessionViewPagerController
+        }
+    }
 }

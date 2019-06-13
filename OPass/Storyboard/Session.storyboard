@@ -237,7 +237,7 @@
         <!--Session Favorite Table View Controller-->
         <scene sceneID="dnZ-fD-o51">
             <objects>
-                <tableViewController id="nMK-gf-5TW" customClass="SessionFavoriteTableViewController" sceneMemberID="viewController">
+                <tableViewController id="nMK-gf-5TW" customClass="SessionFavoriteTableViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PeM-3D-WS8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
