@@ -83,6 +83,30 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
         self.titleRightColor = self.valueForKeyPaths("titleRightColor") as? String ?? ""
         self.PageUrl = self.valueForKeyPaths("PageUrl") as? String ?? ""
         self.ShowLogo = self.valueForKeyPaths("ShowLogo") as? Bool ?? false
+
+        if (self.ShowLogo) {
+            // set logo on nav title
+            self.navigationItem.titleView = self.shimmeringLogoView
+        } else {
+            self.navigationItem.titleView?.tintColor = AppDelegate.appConfigColor(self.titleTextColor)
+        }
+
+        if (self.ShowLogo && self.titleLeftColor != "" && self.titleRightColor != "") {
+            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
+            self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+            let navigationBarBounds = self.navigationController!.navigationBar.bounds
+            let frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.navigationController!.navigationBar.frame.origin.y + navigationBarBounds.size.height)
+            let headView = UIView.init(frame: frame)
+            headView.setGradientColor(
+                from: AppDelegate.appConfigColor(self.titleLeftColor),
+                to: AppDelegate.appConfigColor(self.titleRightColor),
+                startPoint: CGPoint(x: -0.4, y: 0.5),
+                toPoint: CGPoint(x: 1, y: 0.5)
+            )
+            self.view.addSubview(headView)
+//            self.view.sendSubviewToBack(headView) // comment out for iOS 13 doesn't need send to back
+        }
     }
 
     override func viewDidLoad() {
@@ -91,13 +115,6 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
         self.parseInstanceObjects()
 
         self.navigationItem.title = self.navigationItem.title?.split(separator: "\t").last!.trim()
-
-        if (self.ShowLogo) {
-            // set logo on nav title
-            self.navigationItem.titleView = self.shimmeringLogoView
-        } else {
-            self.navigationItem.titleView?.tintColor = AppDelegate.appConfigColor(self.titleTextColor)
-        }
 
         Constants.SendFib(self.className)
 
@@ -108,23 +125,6 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
         self.progressView?.progressBarView.backgroundColor = AppDelegate.appConfigColor("ProgressBarColor")
         self.progressView?.autoresizingMask = [ .flexibleWidth, .flexibleTopMargin ]
         self.navigationController?.navigationBar.addSubview(self.progressView!)
-
-        if (self.ShowLogo && self.titleLeftColor != "" && self.titleRightColor != "") {
-            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-            self.navigationController?.navigationBar.shadowImage = UIImage()
-            self.navigationController?.navigationBar.backgroundColor = UIColor.clear
-            let frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.navigationController!.navigationBar.frame.origin.y + navigationBarBounds.size.height)
-            let headView = UIView()
-            headView.frame = frame
-            headView.setGradientColor(
-                from: AppDelegate.appConfigColor(self.titleLeftColor),
-                to: AppDelegate.appConfigColor(self.titleRightColor),
-                startPoint: CGPoint(x: -0.4, y: 0.5),
-                toPoint: CGPoint(x: 1, y: 0.5)
-            )
-            self.view.addSubview(headView)
-            self.view.sendSubviewToBack(headView)
-        }
 
         self.webView = WKWebView()
         self.webView?.translatesAutoresizingMaskIntoConstraints = false
@@ -145,6 +145,7 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
         super.viewDidAppear(animated)
         self.setWebViewConstraints()
         Constants.LoadDevLogoTo(view: self.shimmeringLogoView)
+        self.parseInstanceObjects() // for sure navbar was setup correctly
 
         self.reload(self)
     }
