@@ -25,11 +25,7 @@ class SessionFavoriteTableViewController: UITableViewController, UIViewControlle
         guard let navBar = self.navigationController?.navigationBar else { return }
         navBar.backgroundColor = .clear
 
-        let titleAttributes = [
-            NSAttributedString.Key.font: Constants.fontOfAwesome(withSize: 20, inStyle: .solid),
-            NSAttributedString.Key.foregroundColor: UIColor.white
-        ]
-        let title = NSAttributedString.init(string: Constants.fontAwesome(code: "fa-heart")!, attributes: titleAttributes)
+        let title = Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: .solid, forColor: .white)
         let lbTitle = UILabel.init(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 30))
         lbTitle.textAlignment = .center
         lbTitle.textColor = .white
@@ -46,11 +42,7 @@ class SessionFavoriteTableViewController: UITableViewController, UIViewControlle
         navBar.superview?.bringSubviewToFront(SessionFavoriteTableViewController.headView!)
         navBar.superview?.bringSubviewToFront(self.navigationController!.navigationBar)
 
-        let titleAttributeFake = [
-            NSAttributedString.Key.font: Constants.fontOfAwesome(withSize: 20, inStyle: .solid),
-            NSAttributedString.Key.foregroundColor: UIColor.clear
-        ]
-        let titleFake = NSAttributedString.init(string: Constants.fontAwesome(code: "fa-heart")!, attributes: titleAttributeFake)
+        let titleFake = Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: .solid, forColor: .clear)
         let favButtonFake = UIButton.init()
         favButtonFake.setAttributedTitle(titleFake, for: .normal)
         favButtonFake.setTitleColor(.clear, for: .normal)

@@ -88,11 +88,7 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
 
     func setFavorite(_ favorite: Bool) {
         self.favorite = favorite
-        let titleAttribute = [
-            NSAttributedString.Key.font: Constants.fontOfAwesome(withSize: 20, inStyle: self.favorite ? fontAwesomeStyle.solid : fontAwesomeStyle.regular),
-            NSAttributedString.Key.foregroundColor: AppDelegate.appConfigColor("FavoriteButtonColor")
-        ]
-        let title = NSAttributedString.init(string: Constants.fontAwesome(code: "fa-heart")!, attributes: titleAttribute)
+        let title = Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: self.favorite ? fontAwesomeStyle.solid : fontAwesomeStyle.regular, forColor: AppDelegate.appConfigColor("FavoriteButtonColor"))
         self.FavoriteButton?.setAttributedTitle(title, for: .normal)
     }
 

@@ -222,6 +222,19 @@ extension Constants {
         }
         return UIFont.fontAwesome(ofSize: withSize, style: style)
     }
+    @objc static func attributedFontAwesome(
+        ofCode: String,
+        withSize: CGFloat,
+        inStyle: fontAwesomeStyle,
+        forColor: UIColor
+    ) -> NSAttributedString {
+        let fontAttribute = [
+            NSAttributedString.Key.font: Constants.fontOfAwesome(withSize: withSize, inStyle: inStyle),
+            NSAttributedString.Key.foregroundColor: forColor
+        ]
+        guard let fontAwesome = Constants.fontAwesome(code: ofCode) else { return NSAttributedString.init() }
+        return NSAttributedString.init(string: fontAwesome, attributes: fontAttribute)
+    }
     @objc static var tintColor : UIColor {
         return UIView().tintColor!
     }

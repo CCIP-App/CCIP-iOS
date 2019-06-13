@@ -23,11 +23,7 @@ class SessionViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage.init()
         self.navigationController?.navigationBar.backgroundColor = .clear
 
-        let titleAttribute = [
-            NSAttributedString.Key.font: Constants.fontOfAwesome(withSize: 20, inStyle: .solid),
-            NSAttributedString.Key.foregroundColor: UIColor.white
-        ]
-        let title = NSAttributedString.init(string: Constants.fontAwesome(code: "fa-heart")!, attributes: titleAttribute)
+        let title = Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: .solid, forColor: .white)
 
         let favButton = UIButton.init()
         favButton.setAttributedTitle(title, for: .normal)
@@ -38,11 +34,7 @@ class SessionViewController: UIViewController {
         let favoritesButton = UIBarButtonItem.init(customView: favButton)
         self.navigationItem.setRightBarButton(favoritesButton, animated: true)
 
-        let titleAttributeFake = [
-            NSAttributedString.Key.font: Constants.fontOfAwesome(withSize: 20, inStyle: .solid),
-            NSAttributedString.Key.foregroundColor: UIColor.clear
-        ]
-        let titleFake = NSAttributedString.init(string: Constants.fontAwesome(code: "fa-heart")!, attributes: titleAttributeFake)
+        let titleFake = Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: .solid, forColor: .clear)
 
         let favButtonFake = UIButton.init()
         favButtonFake.setAttributedTitle(titleFake, for: .normal)
