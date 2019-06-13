@@ -58,7 +58,7 @@ class SessionTableViewCell: UITableViewCell {
 
         self.SessionTitleLabel?.text = self.session!["title"]
 
-        let type = Constants.GetSessionTypeName(self.session!.Type!)
+        let type = self.session!.Type ?? ""
         self.LabelLabel?.text = "   \(type)   "
         self.LabelLabel?.layer.cornerRadius = (self.LabelLabel?.frame.size.height)! / 2
         self.LabelLabel?.sizeToFit()

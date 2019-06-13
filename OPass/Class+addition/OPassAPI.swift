@@ -109,10 +109,11 @@ struct Programs: Codable {
     }
 
     func GetSession(_ sessionId: String) -> SessionInfo? {
-        guard let session = (self.Sessions.filter{ $0.Id == sessionId }.first) else { return nil }
+        guard let session = (self.Sessions.filter { $0.Id == sessionId }.first) else { return nil }
+        let type = self.SessionTypes.filter { $0.Id == session.Type }.first
         let speakers = self.Speakers.filter { session.Speakers.contains($0.Id) }
         let tags = self.Tags.filter { session.Tags.contains($0.Id) }
-        return SessionInfo(session, speakers, tags)
+        return SessionInfo(session, type, speakers, tags)
     }
 
     func GetSessionIds(byDateString: String) -> Array<String> {
@@ -134,10 +135,10 @@ struct SessionInfo: Codable {
     var Record: String?
     var Speakers: [ProgramSpeaker]
     var Tags: [ProgramsTag]
-    init(_ data: ProgramSession, _ speakers: [ProgramSpeaker], _ tags: [ProgramsTag]) {
+    init(_ data: ProgramSession, _ type: ProgramSessionType?, _ speakers: [ProgramSpeaker], _ tags: [ProgramsTag]) {
         self._sessionData = data
         self.Id = self._sessionData.Id
-        self.Type = self._sessionData.Type
+        self.Type = type?.Name
         self.Room = self._sessionData.Room
         self.Broadcast = self._sessionData.Broadcast
         self.Start = self._sessionData.Start
@@ -233,54 +234,36 @@ struct ProgramSpeaker: Codable {
 struct ProgramSessionType: Codable {
     var _sessionData: JSON
     var Id: String
+    var Name: String {
+        return _sessionData[AppDelegate.shortLangUI()].dictionaryValue["name"]?.stringValue ?? ""
+    }
     init(_ data: JSON) {
         self._sessionData = data
         self.Id = data["id"].stringValue
-    }
-    subscript(_ member: String) -> String {
-        if member == "Id" {
-            return Id
-        }
-        if member == "_sessionData" {
-            return ""
-        }
-        return _sessionData[member].dictionaryValue["name"]?.stringValue ?? ""
     }
 }
 
 struct ProgramRoom: Codable {
     var _roomData: JSON
     var Id: String
+    var Name: String {
+        return _roomData[AppDelegate.shortLangUI()].dictionaryValue["name"]?.stringValue ?? ""
+    }
     init(_ data: JSON) {
         self._roomData = data
         self.Id = data["id"].stringValue
-    }
-    subscript(_ member: String) -> String {
-        if member == "Id" {
-            return Id
-        }
-        if member == "_roomData" {
-            return ""
-        }
-        return _roomData[member].dictionaryValue["name"]?.stringValue ?? ""
     }
 }
 
 struct ProgramsTag: Codable {
     var _tagData: JSON
     var Id: String
+    var Name: String {
+        return _tagData[AppDelegate.shortLangUI()].dictionaryValue["name"]?.stringValue ?? ""
+    }
     init(_ data: JSON) {
         self._tagData = data
         self.Id = data["id"].stringValue
-    }
-    subscript(_ member: String) -> String {
-        if member == "Id" {
-            return Id
-        }
-        if member == "_tagData" {
-            return ""
-        }
-        return _tagData[member].dictionaryValue["name"]?.stringValue ?? ""
     }
 }
 

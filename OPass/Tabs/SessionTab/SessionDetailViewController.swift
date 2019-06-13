@@ -128,7 +128,9 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
         self.lbTitle?.text = self.session!["title"]
         self.lbSpeakerName?.text = self.session!.Speakers.first?["name"]
         self.lbRoomText?.text = self.session!.Room
-        self.lbTypeText?.text = Constants.GetSessionTypeName(self.session!.Type as Any)
+        let type = self.session!.Type ?? ""
+        self.lbType?.isHidden = type.count == 0
+        self.lbTypeText?.text = type
         self.lbTimeText?.text = "\(startTimeString) - \(endTimeString)"
     }
 

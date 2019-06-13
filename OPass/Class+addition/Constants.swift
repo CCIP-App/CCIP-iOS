@@ -225,10 +225,6 @@ extension Constants {
     @objc static var tintColor : UIColor {
         return UIView().tintColor!
     }
-    @objc static func GetSessionTypeName(_ namePrefix: Any) -> String {
-        // TODO: mapping from define file from event config
-        return namePrefix as? String ?? ""
-    }
     @objc static func DateFromUnix(_ unixInt: Int) -> Date {
         return Date(seconds: TimeInterval(unixInt), region: Region.local)
     }
