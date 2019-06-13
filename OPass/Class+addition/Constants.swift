@@ -15,7 +15,7 @@ import SwiftyJSON
 import Nuke
 import SafariServices
 
-@objc enum fontAwesomeStyle: Int {
+enum fontAwesomeStyle: Int {
     case solid
     case regular
     case brands
@@ -56,22 +56,22 @@ extension Constants {
     @objc public static var HasSetEvent: Bool {
         return OPassAPI.currentEvent.count > 0
     }
-    @objc public static var EventId: String {
+    public static var EventId: String {
         return OPassAPI.eventInfo?.EventId ?? ""
     }
-    @objc public static var AccessToken: String {
+    public static var AccessToken: String {
         return AppDelegate.accessToken()
     }
-    @objc public static var AccessTokenSHA1: String {
+    public static var AccessTokenSHA1: String {
         return AppDelegate.accessTokenSHA1()
     }
-    @objc public static var URL_SERVER_BASE: String {
+    public static var URL_SERVER_BASE: String {
         return OPassAPI.eventInfo?.ServerBaseUrl.absoluteString ?? ""
     }
-    @objc public static func URL_LANDING(token: String) -> String {
+    public static func URL_LANDING(token: String) -> String {
         return Constants.URL_SERVER_BASE.appending("/landing?token=\(token)")
     }
-    @objc public static func URL_STATUS(token: String) -> String {
+    public static func URL_STATUS(token: String) -> String {
         return Constants.URL_SERVER_BASE.appending("/status?token=\(token)")
     }
     @objc public static func URL_USE(token: String, scenario: String) -> String {
@@ -93,47 +93,47 @@ extension Constants {
         NSLog("Add OPass timestamp: \(url) -> \(opassUrl)");
         return opassUrl
     }
-    @objc public static var URL_LOGO_IMG: String {
+    public static var URL_LOGO_IMG: String {
         return OPassAPI.eventInfo?.LogoUrl.absoluteString ?? ""
     }
-    @objc public static var URL_SESSION: String {
+    public static var URL_SESSION: String {
         return Constants.OPassURL(OPassAPI.eventInfo?.SessionUrl.absoluteString ?? "")
     }
-    @objc public static var URL_LOG_BOT: String {
+    public static var URL_LOG_BOT: String {
         return Constants.OPassURL(OPassAPI.eventInfo?.Features.IRC!.absoluteString ?? "")
     }
-    @objc public static var URL_VENUE: String {
+    public static var URL_VENUE: String {
         return Constants.OPassURL(OPassAPI.eventInfo?.Features.Venue!.absoluteString ?? "")
     }
-    @objc public static var URL_TELEGRAM_GROUP: String {
+    public static var URL_TELEGRAM_GROUP: String {
         return Constants.OPassURL(OPassAPI.eventInfo?.Features.Telegram!.absoluteString ?? "")
     }
-    @objc public static var URL_STAFF_WEB: String {
+    public static var URL_STAFF_WEB: String {
         return Constants.OPassURL(OPassAPI.eventInfo?.Features.Staffs!.absoluteString ?? "")
     }
-    @objc public static var URL_SPONSOR_WEB: String {
+    public static var URL_SPONSOR_WEB: String {
         return Constants.OPassURL(OPassAPI.eventInfo?.Features.Sponsors!.absoluteString ?? "")
     }
-    @objc public static var URL_PARTNERS_WEB: String {
+    public static var URL_PARTNERS_WEB: String {
         return Constants.OPassURL(OPassAPI.eventInfo?.Features.Partners!.absoluteString ?? "")
     }
-    @objc public static func URL_GAME(token: String) -> String {
+    public static func URL_GAME(token: String) -> String {
         var url = OPassAPI.eventInfo?.Features.Puzzle!.absoluteString ?? ""
         if url.count > 0 {
             url = url + token
         }
         return Constants.OPassURL(url)
     }
-    @objc public static func GitHubRepo(_ repo: String) -> String {
+    public static func GitHubRepo(_ repo: String) -> String {
         return String(format: "https://github.com/\(repo)")
     }
-    @objc public static func GitHubAvatar(_ user: String) -> String {
+    public static func GitHubAvatar(_ user: String) -> String {
         return String(format: "https://avatars.githubusercontent.com/\(user)?s=86&v=3")
     }
-    @objc public static func GravatarAvatar(_ hash: String) -> String {
+    public static func GravatarAvatar(_ hash: String) -> String {
         return String(format: "https://www.gravatar.com/avatar/\(hash)?s=86&\(hash.count > 0 ? "r=x" : "f=y&d=mm")")
     }
-    @objc public static func OpenInAppSafari(forPath url: String) {
+    public static func OpenInAppSafari(forPath url: String) {
         Constants.OpenInAppSafari(forURL: URL.init(string: url)!)
     }
     @objc public static func OpenInAppSafari(forURL url: URL) {
@@ -158,7 +158,7 @@ extension Constants {
             }
         }
     }
-    @objc static func LoadDevLogoTo(view: FBShimmeringView) {
+    static func LoadDevLogoTo(view: FBShimmeringView) {
         let isDevMode = AppDelegate.isDevMode()
         let setDevLogo = { (resp: ImageResponse?) in
             let image = resp?.image
@@ -189,7 +189,7 @@ extension Constants {
         view.shimmeringSpeed = 115
         view.isShimmering = isDevMode
     }
-    @objc static func LoadInto(view: UIImageView, forURL url: URL, withPlaceholder placeholder: UIImage) {
+    static func LoadInto(view: UIImageView, forURL url: URL, withPlaceholder placeholder: UIImage) {
         Nuke.loadImage(
             with: url,
             options: ImageLoadingOptions(
@@ -202,15 +202,15 @@ extension Constants {
     @objc static func AssertImage(name: String, InBundleName: String) -> UIImage? {
         return AssertImage(InBundleName, name)
     }
-    @objc public static func AssertImage(_ bundleName: String, _ imageName: String ) -> UIImage? {
+    public static func AssertImage(_ bundleName: String, _ imageName: String ) -> UIImage? {
         let bundlePath = Bundle.main.bundlePath.appendingPathComponent("\(bundleName).bundle")
         let bundle = Bundle.init(path: bundlePath)!
         return UIImage.init(named: imageName, in: bundle, compatibleWith: nil)
     }
-    @objc static func fontAwesome(code: String) -> String? {
+    static func fontAwesome(code: String) -> String? {
         return String.fontAwesomeIcon(code: code)
     }
-    @objc static func fontOfAwesome(withSize: CGFloat, inStyle: fontAwesomeStyle) -> UIFont {
+    static func fontOfAwesome(withSize: CGFloat, inStyle: fontAwesomeStyle) -> UIFont {
         var style: FontAwesomeStyle = FontAwesomeStyle.regular
         switch inStyle {
             case .brands:
@@ -222,7 +222,7 @@ extension Constants {
         }
         return UIFont.fontAwesome(ofSize: withSize, style: style)
     }
-    @objc static func attributedFontAwesome(
+    static func attributedFontAwesome(
         ofCode: String,
         withSize: CGFloat,
         inStyle: fontAwesomeStyle,
@@ -238,40 +238,40 @@ extension Constants {
     @objc static var tintColor : UIColor {
         return UIView().tintColor!
     }
-    @objc static func DateFromUnix(_ unixInt: Int) -> Date {
+    static func DateFromUnix(_ unixInt: Int) -> Date {
         return Date(seconds: TimeInterval(unixInt), region: Region.local)
     }
-    @objc static func DateFromString(_ dateString: String) -> Date {
+    static func DateFromString(_ dateString: String) -> Date {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
         let isodate = dateString.toISODate(region: local)?.timeIntervalSince1970 ?? 0
         let date = Date(seconds: isodate, region: Region.local)
         return date
     }
-    @objc static func DateToDisplayDateString(_ date: Date) -> String {
+    static func DateToDisplayDateString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
         return DateInRegion(date, region: local).toFormat(AppDelegate.appConfig("DisplayDateFormat") as! String)
     }
-    @objc static func DateToDisplayTimeString(_ date: Date) -> String {
+    static func DateToDisplayTimeString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
         return DateInRegion(date, region: local).toFormat(AppDelegate.appConfig("DisplayTimeFormat") as! String)
     }
-    @objc static func DateToDisplayDateTimeString(_ date: Date) -> String {
+    static func DateToDisplayDateTimeString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
         let format = String.init(format: "%@ %@", AppDelegate.appConfig("DisplayDateFormat") as! String, AppDelegate.appConfig("DisplayTimeFormat") as! String)
         return DateInRegion(date, region: local).toFormat(format)
     }
-    @objc static func DateToDisplayDateAndTimeString(_ date: Date) -> String {
+    static func DateToDisplayDateAndTimeString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
         return DateInRegion(date, region: local).toFormat(AppDelegate.appConfig("DisplayDateTimeFormat") as! String)
     }
 
-    @objc public static var INIT_SESSION_DETAIL_VIEW_STORYBOARD_ID: String {
+    public static var INIT_SESSION_DETAIL_VIEW_STORYBOARD_ID: String {
         return "SessionDetail"
     }
-    @objc public static var SESSION_DETAIL_VIEW_STORYBOARD_ID: String {
+    public static var SESSION_DETAIL_VIEW_STORYBOARD_ID: String {
         return "ShowSessionDetail"
     }
-    @objc public static var SESSION_FAV_KEY: String {
+    public static var SESSION_FAV_KEY: String {
         return "favoriteSession"
     }
     @objc public static var SESSION_CACHE_CLEAR: String {
@@ -283,7 +283,7 @@ extension Constants {
 
     // MARK: - Math
 
-    @objc public static func NEAR_ZERO(_ A: Double, _ B: Double) -> Double {
+    public static func NEAR_ZERO(_ A: Double, _ B: Double) -> Double {
         return min(abs(A), abs(B)) == abs(A) ? A : B
     }
 }

@@ -96,7 +96,7 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
         return self.favorite
     }
 
-    @objc func setDisabled(_ disabled: Bool) {
+    func setDisabled(_ disabled: Bool) {
         self.disabled = disabled
         self.SessionTitleLabel?.alpha = self.disabled ? 0.2 : 1
     }

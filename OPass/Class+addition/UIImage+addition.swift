@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@objc extension UIImage {
+extension UIImage {
     func imageWithColor(_ color1: UIColor) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale);
         let context : CGContext = UIGraphicsGetCurrentContext()!;
@@ -26,7 +26,7 @@ import UIKit
     }
 }
 
-@objc extension UIView {
+extension UIView {
     func toImage() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.isOpaque, 0.0);
         self.drawHierarchy(in: self.bounds, afterScreenUpdates: true);
@@ -36,7 +36,7 @@ import UIKit
     }
 }
 
-@objc extension CALayer {
+extension CALayer {
     func toImage() -> UIImage {
         UIGraphicsBeginImageContext(self.bounds.size);
         self.render(in: UIGraphicsGetCurrentContext()!);

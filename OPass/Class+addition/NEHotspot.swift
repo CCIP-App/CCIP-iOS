@@ -9,7 +9,7 @@
 import Foundation
 import NetworkExtension
 
-@objc class NEHotspot: NSObject {
+class NEHotspot: NSObject {
     static func ConnectWiFi(SSID: String, withPass: String) {
         if #available(iOS 11.0, *) {
             #if TARGET_OS_SIMULATOR

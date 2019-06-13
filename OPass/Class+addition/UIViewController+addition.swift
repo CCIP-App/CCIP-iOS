@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-@objc extension UIViewController {
-    var ViewTopStart: CGFloat {
+extension UIViewController {
+    @objc var ViewTopStart: CGFloat {
         return self.view.ViewTopStart
     }
     var topGuideHeight: CGFloat {
@@ -34,7 +34,7 @@ import UIKit
         return guide;
     }
 
-    var isVisible: Bool {
+    @objc var isVisible: Bool {
         return self.isViewLoaded && (self.view!.window != nil);
     }
 }

@@ -25,7 +25,7 @@ let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
 
 @objc class OPassNonSuccessDataResponse: NSObject {
     @objc public var Response: HTTPURLResponse?
-    @objc public var Data: Data?
+    public var Data: Data?
     @objc public var Obj: NSObject
     public var Json: JSON?
     init(_ response: HTTPURLResponse?, _ data: Data?, _ json: JSON?) {
@@ -274,7 +274,7 @@ struct AnnouncementInfo {
     var URI: String
 }
 
-@objc class OPassAPI: NSObject {
+class OPassAPI: NSObject {
     static var currentEvent: String = ""
     static var eventInfo: EventInfo? = nil
     private static var NextAcceptedBeaconScanMessageTime: Date {
@@ -453,6 +453,7 @@ struct AnnouncementInfo {
         eventInfo = nil
         currentEvent = ""
     }
+
     @objc static func DoLogin(byEventId eventId: String, withToken token: String, onCompletion completion: OPassCompletionCallback) {
         async {
             while true {
@@ -568,7 +569,7 @@ struct AnnouncementInfo {
         }
     }
 
-    @objc static func GetSessionData(forEvent event: String, onCompletion completion: OPassCompletionCallback) {
+    static func GetSessionData(forEvent event: String, onCompletion completion: OPassCompletionCallback) {
         if event.count > 0 {
             OPassAPI.InitializeRequest(Constants.URL_SESSION) { retryCount, retryMax, error, responsed in
                 completion?(false, nil, error)

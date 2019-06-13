@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@objc extension UISegmentedControl {
+extension UISegmentedControl {
     func resetAllSegments(_ segments: NSArray) {
         let oldIndex : NSInteger = self.selectedSegmentIndex;
         let oldTitle : String? = oldIndex != -1 ? self.titleForSegment(at: oldIndex) : nil;

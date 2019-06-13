@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@objc class MainTabBarViewController : UITabBarController {
+class MainTabBarViewController : UITabBarController {
     override func viewDidLoad() {
         let titleHighlightedColor = AppDelegate.appConfigColor("HighlightedColor")
         UITabBarItem.appearance()

@@ -13,7 +13,7 @@ import MBProgressHUD
 class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, ViewPagerDelegate {
     internal var selectedSection = Date.init(timeIntervalSince1970: 0)
     internal var segmentsTextArray = Array<String>()
-    @objc public var today: Date {
+    public var today: Date {
         return Date.init()
     }
     internal var firstLoad: Bool = true

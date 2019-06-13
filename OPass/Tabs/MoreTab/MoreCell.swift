@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@objc class MoreCell : UITableViewCell {
+class MoreCell : UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib();
         // Initialization code

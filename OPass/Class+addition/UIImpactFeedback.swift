@@ -19,9 +19,9 @@ import UIKit
     case selectionFeedback = 0x01000000
 }
 
-@objc class UIImpactFeedback: NSObject { }
+class UIImpactFeedback: NSObject { }
 
-extension UIImpactFeedback {
+@objc extension UIImpactFeedback {
     @objc static func triggerFeedback(_ feedbackType: UIImpactFeedbackType) {
         var generator: UIFeedbackGenerator
         if (feedbackType.rawValue < 0x00001000) {

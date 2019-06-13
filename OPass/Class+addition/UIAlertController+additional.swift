@@ -58,7 +58,7 @@ import UIKit
         ac.popoverPresentationController?.sourceRect = frame
         return ac
     }
-    static func alertOfTitle(
+    @objc static func alertOfTitle(
         _ title: String,
         withMessage: String,
         cancelButtonText: String,

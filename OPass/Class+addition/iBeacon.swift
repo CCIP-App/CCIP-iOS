@@ -17,7 +17,7 @@ let beaconService = CBUUID(string: "0x180A")
 let beaconServiceID = CBUUID(string: "0x2A23")
 let beaconDisplayName = "USBeacon"
 
-@objc class iBeacon: NSObject, CLLocationManagerDelegate, CBCentralManagerDelegate, CBPeripheralDelegate {
+class iBeacon: NSObject, CLLocationManagerDelegate, CBCentralManagerDelegate, CBPeripheralDelegate {
     let locationManager = CLLocationManager()
     var centralManager: CBCentralManager?
     var peripheralMonitor: CBPeripheral?

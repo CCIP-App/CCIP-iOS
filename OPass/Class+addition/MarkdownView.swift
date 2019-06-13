@@ -10,11 +10,11 @@ import Foundation
 import then
 import Down
 
-@objc public class MarkdownView : NSObject {
+public class MarkdownView : NSObject {
     public var markdownString: String
     public var downView: DownView
     
-    @objc public init(
+    public init(
         _ frame: CGRect,
         withMarkdown: String,
         toView: UIView
@@ -26,20 +26,20 @@ import Down
         toView .addSubview(self.downView)
     }
     
-    @objc public func append(
+    public func append(
         _ markdown: String
         ) {
         self .update(self.getMarkdown() + markdown)
     }
     
-    @objc public func update(
+    public func update(
         _ markdown: String
         ) {
         try? self.downView .update(markdownString: markdown)
         self.markdownString = markdown
     }
     
-    @objc public func getMarkdown() -> String {
+    public func getMarkdown() -> String {
         return self.markdownString
     }
 }

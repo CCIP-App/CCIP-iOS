@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 
-@objc public enum UIColorByteMark: Int {
+public enum UIColorByteMark: Int {
     case Alpha = 0
     case Red = 1
     case Green = 2
     case Blue = 3
 }
 
-@objc extension UIColor {
-    static func colorFrom(_ from: UIColor, to: UIColor, at:Double) -> UIColor {
+extension UIColor {
+    @objc static func colorFrom(_ from: UIColor, to: UIColor, at:Double) -> UIColor {
         let f : CIColor = CIColor.init(cgColor: from.cgColor)
         let t : CIColor = CIColor.init(cgColor: to.cgColor)
         let resultRed = f.red + CGFloat(at) * (t.red - f.red)
@@ -45,7 +45,7 @@ import UIKit
         return CGFloat(self.hexToIntColor(byteString, isSingleByteOnly: isSingleByte))
     }
 
-    static func colorFromHtmlColor(_ htmlColorString: String) -> UIColor {
+    @objc static func colorFromHtmlColor(_ htmlColorString: String) -> UIColor {
         let r = self.getColorByteFromHtmlColor(htmlColorString, forByte: .Red)
         let g = self.getColorByteFromHtmlColor(htmlColorString, forByte: .Green)
         let b = self.getColorByteFromHtmlColor(htmlColorString, forByte: .Blue)

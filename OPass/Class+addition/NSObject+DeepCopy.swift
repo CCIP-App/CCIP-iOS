@@ -11,7 +11,7 @@ import Foundation
 // Deep -copy and -mutableCopy methods for NSArray and NSDictionary
 
 @objc extension NSArray {
-    func deepCopy() -> NSArray {
+    @objc func deepCopy() -> NSArray {
         let count : UInt = UInt(self.count);
         var cArray = Array<Any>(repeating: 0, count: Int(count));
 
@@ -27,7 +27,7 @@ import Foundation
         return ret;
     }
 
-    func mutableDeepCopy() -> NSMutableArray {
+    @objc func mutableDeepCopy() -> NSMutableArray {
         let count : UInt = UInt(self.count);
         var cArray = Array<Any>(repeating: 0, count: Int(count));
 
@@ -53,7 +53,7 @@ import Foundation
 }
 
 @objc extension NSDictionary {
-    func deepCopy() -> NSDictionary {
+    @objc func deepCopy() -> NSDictionary {
         let count : UInt = UInt(self.count);
         let cDict = NSMutableDictionary(capacity: Int(count))
 
@@ -77,7 +77,7 @@ import Foundation
         return ret;
     }
 
-    func mutableDeepCopy() -> NSMutableDictionary {
+    @objc func mutableDeepCopy() -> NSMutableDictionary {
         let count : UInt = UInt(self.count);
         let cDict = NSMutableDictionary(capacity: Int(count))
 

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@objc extension UIView {
+extension UIView {
     var ViewTopStart: CGFloat {
         return UIApplication.shared.statusBarFrame.height
     }
@@ -21,7 +21,7 @@ import UIKit
         return (self.next as! UIViewController).bottomGuideHeight
     }
     // DashedLine and linear diagonal gradient
-    @objc static let DASHLINE_VIEW_ID: String = "DashedLine"
+    static let DASHLINE_VIEW_ID: String = "DashedLine"
     func addDashedLine(_ color : UIColor) {
         for layer in self.layer.sublayers ?? [] {
             if (layer.name == UIView.DASHLINE_VIEW_ID) {
@@ -49,7 +49,7 @@ import UIKit
         self.layer.addSublayer(shapeLayer)
     }
 
-    func setGradientColor(from: UIColor?, to: UIColor?, startPoint: CGPoint = CGPoint.zero, toPoint: CGPoint = CGPoint.zero) {
+    @objc func setGradientColor(from: UIColor?, to: UIColor?, startPoint: CGPoint = CGPoint.zero, toPoint: CGPoint = CGPoint.zero) {
         let name : String = "GradientBackground"
         // Set view background linear diagonal gradient
         //   Create the gradient
@@ -76,7 +76,7 @@ import UIKit
         self.layer.insertSublayer(theViewGradient!, at: 0)
     }
 
-    func sizeGradientToFit() {
+    @objc func sizeGradientToFit() {
         self.setGradientColor(from: nil, to: nil, startPoint: CGPoint.zero, toPoint: CGPoint.zero)
     }
 }

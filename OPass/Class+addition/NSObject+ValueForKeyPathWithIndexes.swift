@@ -8,8 +8,8 @@
 
 import Foundation
 
-@objc extension NSObject {
-    func valueForKeyPathWithIndexes(_ fullPath: String) -> Any? {
+extension NSObject {
+    @objc func valueForKeyPathWithIndexes(_ fullPath: String) -> Any? {
         return self.valueForKeyPaths(fullPath)
     }
     func valueForKeyPaths(_ fullPath: String) -> Any? {

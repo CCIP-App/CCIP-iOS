@@ -9,8 +9,8 @@
 import Foundation
 import EFQRCode
 
-@objc extension EFQRCode {
-    @objc public class func generate(
+extension EFQRCode {
+    public class func generate(
         _ content: String,
         size: CGSize = CGSize(width: 300, height: 300),
         backgroundColor: CGColor = CGColor.EFWhite(),
