@@ -78,7 +78,7 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 120
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

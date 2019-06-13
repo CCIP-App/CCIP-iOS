@@ -8,11 +8,12 @@
 
 import Foundation
 import UIKit
+import TagListView
 
-class SessionTableViewCell: UITableViewCell {
+class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
     @IBOutlet public var SessionTitleLabel: UILabel?
     @IBOutlet public var RoomLocationLabel: UILabel?
-    @IBOutlet public var LabelLabel: UILabel?
+    @IBOutlet public var TagList: TagListView?
     @IBOutlet public var FavoriteButton: UIButton?
 
     private var favorite: Bool = false
@@ -22,11 +23,24 @@ class SessionTableViewCell: UITableViewCell {
         return self.session?.Id
     }
 
+    func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        NSLog("Tag pressed: \(title), \(sender)")
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.LabelLabel?.textColor = UIColor.colorFromHtmlColor("#9b9b9b")
-        self.LabelLabel?.backgroundColor = UIColor.colorFromHtmlColor("#d8d8d8")
+        self.TagList?.delegate = self
+        self.TagList?.textFont = UIFont.systemFont(ofSize: 12)
+        self.TagList?.textColor = UIColor.colorFromHtmlColor("#9b9b9b")
+        self.TagList?.backgroundColor = .clear
+        self.TagList?.tagBackgroundColor = UIColor.colorFromHtmlColor("#d8d8d8")
+        self.TagList?.tagLineBreakMode = .byClipping
+        self.TagList?.cornerRadius = 3
+        self.TagList?.paddingX = 8
+        self.TagList?.paddingY = 5
+        self.TagList?.marginX = 5
+        self.TagList?.marginY = 3
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -51,6 +65,8 @@ class SessionTableViewCell: UITableViewCell {
     func setSession(_ session: SessionInfo) {
         self.session = session
 
+        self.TagList?.removeAllTags()
+
         let startTime = Constants.DateFromString(self.session!.Start)
         let endTime = Constants.DateFromString(self.session!.End)
         let mins = Int(endTime.timeIntervalSince(startTime) / 60)
@@ -59,10 +75,8 @@ class SessionTableViewCell: UITableViewCell {
         self.SessionTitleLabel?.text = self.session!["title"]
 
         let type = self.session!.Type ?? ""
-        self.LabelLabel?.text = "   \(type)   "
-        self.LabelLabel?.layer.cornerRadius = (self.LabelLabel?.frame.size.height)! / 2
-        self.LabelLabel?.sizeToFit()
-        self.LabelLabel?.isHidden = type.count == 0
+        let tags = ((self.session?.Tags.map { $0.Name.trim() } ?? []) + [ type ]).filter { $0.count > 0 }
+        self.TagList?.addTags(tags)
         self.setFavorite(false)
 
         self.setFavorite(OPassAPI.CheckFavoriteState(forEvent: OPassAPI.currentEvent, withToken: AppDelegate.accessToken(), toSession: self.sessionId!))
