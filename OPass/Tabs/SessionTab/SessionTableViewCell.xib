@@ -12,11 +12,11 @@
         <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionCell" id="l9Y-7J-4kA" customClass="SessionTableViewCell" customModule="OPass" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="420" height="120"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l9Y-7J-4kA" translatesAutoresizingMaskIntoConstraints="NO" id="U81-Gg-HeJ">
-                <rect key="frame" x="0.0" y="0.0" width="420" height="120"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="l9Y-7J-4kA" translatesAutoresizingMaskIntoConstraints="NO" id="U81-Gg-HeJ">
+                <rect key="frame" x="0.0" y="0.0" width="420" height="123"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TdY-Ng-p1O">
-                        <rect key="frame" x="15" y="11" width="348" height="49"/>
+                        <rect key="frame" x="15" y="11" width="348" height="41"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="8Ty-3Y-mqM"/>
                         </constraints>
@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HH" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R4H-1T-Ebg">
-                        <rect key="frame" x="15" y="65" width="348" height="20"/>
+                        <rect key="frame" x="15" y="57" width="348" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="hkV-D8-Dpt"/>
                         </constraints>
@@ -35,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7p-MF-tNF">
-                        <rect key="frame" x="368" y="44" width="32" height="32"/>
+                        <rect key="frame" x="368" y="45.5" width="32" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="q7p-MF-tNF" secondAttribute="height" multiplier="1:1" id="3d8-ss-VkA"/>
                             <constraint firstAttribute="height" constant="32" id="tXu-dJ-YHF"/>
@@ -52,7 +52,7 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o1H-n6-tfS" customClass="TagListView" customModule="TagListView">
-                        <rect key="frame" x="15" y="90" width="348" height="30"/>
+                        <rect key="frame" x="15" y="82" width="348" height="30"/>
                         <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="tSQ-iV-esx"/>
@@ -75,12 +75,12 @@
                 </constraints>
             </tableViewCellContentView>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="U81-Gg-HeJ" secondAttribute="bottom" id="Ns8-9W-r5Q"/>
-                <constraint firstItem="U81-Gg-HeJ" firstAttribute="centerX" secondItem="l9Y-7J-4kA" secondAttribute="centerX" id="Z9P-cG-Dhb"/>
+                <constraint firstItem="U81-Gg-HeJ" firstAttribute="width" secondItem="l9Y-7J-4kA" secondAttribute="width" id="FSb-3R-b9R"/>
+                <constraint firstItem="U81-Gg-HeJ" firstAttribute="centerX" secondItem="l9Y-7J-4kA" secondAttribute="centerX" id="KSY-Lv-53N"/>
                 <constraint firstItem="U81-Gg-HeJ" firstAttribute="leading" secondItem="l9Y-7J-4kA" secondAttribute="leading" id="ZL3-wK-3iX"/>
                 <constraint firstAttribute="trailing" secondItem="U81-Gg-HeJ" secondAttribute="trailing" id="diw-81-Ryh"/>
-                <constraint firstItem="U81-Gg-HeJ" firstAttribute="top" secondItem="l9Y-7J-4kA" secondAttribute="top" id="iKL-Ci-tTx"/>
-                <constraint firstItem="U81-Gg-HeJ" firstAttribute="centerY" secondItem="l9Y-7J-4kA" secondAttribute="centerY" id="ydW-Jo-3gS"/>
+                <constraint firstItem="U81-Gg-HeJ" firstAttribute="centerY" secondItem="l9Y-7J-4kA" secondAttribute="centerY" id="jKh-Pu-GZl"/>
+                <constraint firstItem="U81-Gg-HeJ" firstAttribute="height" secondItem="l9Y-7J-4kA" secondAttribute="height" id="o0j-rG-ETI"/>
             </constraints>
             <connections>
                 <outlet property="FavoriteButton" destination="q7p-MF-tNF" id="bvA-Ax-kaH"/>
