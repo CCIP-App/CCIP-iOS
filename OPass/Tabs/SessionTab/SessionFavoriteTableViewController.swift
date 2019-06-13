@@ -34,7 +34,7 @@ class SessionFavoriteTableViewController: UITableViewController, UIViewControlle
         lbTitle.textAlignment = .center
         lbTitle.textColor = .white
         lbTitle.attributedText = title
-        self.navigationItem.title = nil
+        self.navigationItem.title = ""
         self.navigationItem.titleView = lbTitle
 
         let navigationBarBounds = navBar.bounds
