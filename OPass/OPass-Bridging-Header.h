@@ -16,6 +16,7 @@
 #import "Constants.h"
 #import "NSInvocation+addition.h"
 #import "CheckinViewController.h"
+#import "CheckinCardView.h"
 #import "headers.h"
 #define IN_BRIDGING_HEADER
 #import "AppDelegate.h"

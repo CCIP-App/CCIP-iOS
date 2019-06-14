@@ -464,7 +464,7 @@ Please copy and paste the token into next field or click the token link in the r
         <!--Checkin Card View Controller-->
         <scene sceneID="SiN-EJ-8ci">
             <objects>
-                <viewController storyboardIdentifier="CheckinCardReuseView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V6X-cZ-B0h" customClass="CheckinCardViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CheckinCardReuseView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V6X-cZ-B0h" customClass="CheckinCardViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CVw-Vr-a5B" customClass="CheckinCardView">
                         <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
