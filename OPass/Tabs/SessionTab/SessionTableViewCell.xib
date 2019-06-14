@@ -12,8 +12,8 @@
         <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SessionCell" id="l9Y-7J-4kA" customClass="SessionTableViewCell" customModule="OPass" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="420" height="120"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="l9Y-7J-4kA" translatesAutoresizingMaskIntoConstraints="NO" id="U81-Gg-HeJ">
-                <rect key="frame" x="0.0" y="0.0" width="420" height="123"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l9Y-7J-4kA" translatesAutoresizingMaskIntoConstraints="NO" id="U81-Gg-HeJ">
+                <rect key="frame" x="0.0" y="0.0" width="420" height="120"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TdY-Ng-p1O">
                         <rect key="frame" x="15" y="11" width="348" height="41"/>
@@ -35,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7p-MF-tNF">
-                        <rect key="frame" x="368" y="45.5" width="32" height="32"/>
+                        <rect key="frame" x="368" y="44" width="32" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="q7p-MF-tNF" secondAttribute="height" multiplier="1:1" id="3d8-ss-VkA"/>
                             <constraint firstAttribute="height" constant="32" id="tXu-dJ-YHF"/>
@@ -66,7 +66,7 @@
                     <constraint firstItem="q7p-MF-tNF" firstAttribute="centerY" secondItem="U81-Gg-HeJ" secondAttribute="centerY" id="Teq-NY-e09"/>
                     <constraint firstItem="q7p-MF-tNF" firstAttribute="leading" secondItem="TdY-Ng-p1O" secondAttribute="trailing" constant="5" id="cNk-48-c8B"/>
                     <constraint firstItem="o1H-n6-tfS" firstAttribute="leading" secondItem="U81-Gg-HeJ" secondAttribute="leadingMargin" id="cmc-CU-vSd"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="o1H-n6-tfS" secondAttribute="bottom" id="ekq-g2-dIr"/>
+                    <constraint firstAttribute="bottom" secondItem="o1H-n6-tfS" secondAttribute="bottom" constant="8" id="ekq-g2-dIr"/>
                     <constraint firstItem="o1H-n6-tfS" firstAttribute="top" secondItem="R4H-1T-Ebg" secondAttribute="bottom" constant="5" id="hVv-uF-QcG"/>
                     <constraint firstItem="q7p-MF-tNF" firstAttribute="leading" secondItem="R4H-1T-Ebg" secondAttribute="trailing" constant="5" id="tK4-i0-a6b"/>
                     <constraint firstItem="q7p-MF-tNF" firstAttribute="leading" secondItem="o1H-n6-tfS" secondAttribute="trailing" constant="5" id="txi-u0-pzY"/>
@@ -75,12 +75,10 @@
                 </constraints>
             </tableViewCellContentView>
             <constraints>
-                <constraint firstItem="U81-Gg-HeJ" firstAttribute="width" secondItem="l9Y-7J-4kA" secondAttribute="width" id="FSb-3R-b9R"/>
-                <constraint firstItem="U81-Gg-HeJ" firstAttribute="centerX" secondItem="l9Y-7J-4kA" secondAttribute="centerX" id="KSY-Lv-53N"/>
-                <constraint firstItem="U81-Gg-HeJ" firstAttribute="leading" secondItem="l9Y-7J-4kA" secondAttribute="leading" id="ZL3-wK-3iX"/>
-                <constraint firstAttribute="trailing" secondItem="U81-Gg-HeJ" secondAttribute="trailing" id="diw-81-Ryh"/>
-                <constraint firstItem="U81-Gg-HeJ" firstAttribute="centerY" secondItem="l9Y-7J-4kA" secondAttribute="centerY" id="jKh-Pu-GZl"/>
-                <constraint firstItem="U81-Gg-HeJ" firstAttribute="height" secondItem="l9Y-7J-4kA" secondAttribute="height" id="o0j-rG-ETI"/>
+                <constraint firstItem="U81-Gg-HeJ" firstAttribute="top" secondItem="l9Y-7J-4kA" secondAttribute="top" id="OYQ-PE-VGP"/>
+                <constraint firstAttribute="bottom" secondItem="U81-Gg-HeJ" secondAttribute="bottom" id="Pn1-ag-A99"/>
+                <constraint firstAttribute="trailing" secondItem="U81-Gg-HeJ" secondAttribute="trailing" id="opM-Is-UF7"/>
+                <constraint firstItem="U81-Gg-HeJ" firstAttribute="leading" secondItem="l9Y-7J-4kA" secondAttribute="leading" id="xsg-f8-aGt"/>
             </constraints>
             <connections>
                 <outlet property="FavoriteButton" destination="q7p-MF-tNF" id="bvA-Ax-kaH"/>
