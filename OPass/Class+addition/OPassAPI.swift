@@ -110,10 +110,7 @@ struct Programs: Codable {
 
     func GetSession(_ sessionId: String) -> SessionInfo? {
         guard let session = (self.Sessions.filter { $0.Id == sessionId }.first) else { return nil }
-        let type = self.SessionTypes.filter { $0.Id == session.Type }.first
-        let speakers = self.Speakers.filter { session.Speakers.contains($0.Id) }
-        let tags = self.Tags.filter { session.Tags.contains($0.Id) }
-        return SessionInfo(session, type, speakers, tags)
+        return SessionInfo(session, self)
     }
 
     func GetSessionIds(byDateString: String) -> Array<String> {
@@ -124,7 +121,10 @@ struct Programs: Codable {
 struct SessionInfo: Codable {
     var _sessionData: ProgramSession
     var Id: String
-    var `Type`: String?
+    var _types: [ProgramSessionType]
+    var `Type`: String? {
+        return self._types.filter { $0.Id == self._sessionData.Type }.first?.Name
+    }
     var Room: String?
     var Broadcast: String?
     var Start: String
@@ -133,12 +133,18 @@ struct SessionInfo: Codable {
     var Slide: String?
     var Live: String?
     var Record: String?
-    var Speakers: [ProgramSpeaker]
-    var Tags: [ProgramsTag]
-    init(_ data: ProgramSession, _ type: ProgramSessionType?, _ speakers: [ProgramSpeaker], _ tags: [ProgramsTag]) {
+    var _speakers: [ProgramSpeaker]
+    var Speakers: [ProgramSpeaker] {
+        return self._speakers.filter { self._sessionData.Speakers.contains($0.Id) }
+    }
+    var _tags: [ProgramsTag]
+    var Tags: [ProgramsTag] {
+        return self._tags.filter { self._sessionData.Tags.contains($0.Id) }
+    }
+    init(_ data: ProgramSession, _ programs: Programs) {
         self._sessionData = data
         self.Id = self._sessionData.Id
-        self.Type = type?.Name
+        self._types = programs.SessionTypes
         self.Room = self._sessionData.Room
         self.Broadcast = self._sessionData.Broadcast
         self.Start = self._sessionData.Start
@@ -147,8 +153,8 @@ struct SessionInfo: Codable {
         self.Slide = self._sessionData.Slide
         self.Live = self._sessionData.Live
         self.Record = self._sessionData.Record
-        self.Speakers = speakers
-        self.Tags = tags
+        self._speakers = programs.Speakers
+        self._tags = programs.Tags
     }
     subscript(_ member: String) -> String {
         return self._sessionData[member]
