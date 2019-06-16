@@ -593,6 +593,23 @@ class OPassAPI: NSObject {
         }
     }
 
+    static func UseScenario(_ event: String, _ token: String, _ scenario: String, _ completion: OPassCompletionCallback) {
+        if event.count > 0 {
+            OPassAPI.InitializeRequest(Constants.URL_USE(token: token, scenario: scenario)) { retryCount, retryMax, error, responsed in
+                completion?(false, nil, error)
+                }.then { (obj: Any?) -> Void in
+                    if obj != nil {
+                        let used = JSON(obj!)
+                        completion?(true, used, OPassSuccessError)
+                    } else {
+                        completion?(false, obj, NSError(domain: "OPass Scenario can not use by return unexcepted response", code: 2, userInfo: nil))
+                    }
+            }
+        } else {
+            completion?(false, nil, NSError(domain: "OPass Scenario can not use, because event was not set", code: 1, userInfo: nil))
+        }
+    }
+
     private static func GetFavoritesStoreKey(
         _ event: String,
         _ token: String
