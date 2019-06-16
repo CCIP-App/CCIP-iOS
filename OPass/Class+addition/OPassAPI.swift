@@ -343,14 +343,7 @@ class OPassAPI: NSObject {
         }
         let beaconWelcome = "BeaconWelcomeMessage_\(beacon == nil ? "Out" : "In")"
         let time = 30.seconds.fromNow
-        if (beacon == nil) {
-//            OPassAPI.RegisteringNotification(
-//                id: beaconWelcome,
-//                title: NSLocalizedString("\(beaconWelcome)_Title", comment: ""),
-//                content: NSLocalizedString("\(beaconWelcome)_Content", comment: ""),
-//                time: time
-//            )
-        } else {
+        if beacon != nil {
             OPassAPI.GetCurrentStatus() { (success: Bool, obj: Any?, error: Error) in
                 if success && obj != nil {
                     for scenario in JSON(obj!)["scenarios"].arrayValue {
@@ -576,7 +569,7 @@ class OPassAPI: NSObject {
         }
     }
 
-    static func GetSessionData(forEvent event: String, onCompletion completion: OPassCompletionCallback) {
+    static func GetSessionData(_ event: String, _ completion: OPassCompletionCallback) {
         if event.count > 0 {
             OPassAPI.InitializeRequest(Constants.URL_SESSION) { retryCount, retryMax, error, responsed in
                 completion?(false, nil, error)
@@ -610,54 +603,34 @@ class OPassAPI: NSObject {
         }
     }
 
-    private static func GetFavoritesStoreKey(
-        _ event: String,
-        _ token: String
-        ) -> String {
+    private static func GetFavoritesStoreKey(_ event: String, _ token: String) -> String {
         return "\(event)|\(token)|favorites"
     }
 
-    static func GetFavoritesList(
-        forEvent event: String,
-        withToken token: String
-        ) -> [String] {
+    static func GetFavoritesList(_ event: String, _ token: String) -> [String] {
         let key = OPassAPI.GetFavoritesStoreKey(event, token)
         let ud = UserDefaults.standard
         ud.register(defaults: [key: Array<String>()])
         ud.synchronize()
-
         return ud.stringArray(forKey: key)!
     }
 
-    static func PutFavoritesList(
-        forEvent event: String,
-        withToken token: String,
-        byNewList: [String]
-    ) {
+    static func PutFavoritesList(_ event: String, _ token: String, _ newList: [String]) {
         let key = OPassAPI.GetFavoritesStoreKey(event, token)
         let ud = UserDefaults.standard
-        ud.set(byNewList, forKey: key)
+        ud.set(newList, forKey: key)
         ud.synchronize()
     }
 
-    static func CheckFavoriteState(
-        forEvent event: String,
-        withToken token: String,
-        toSession session: String
-    ) -> Bool {
-        let favList = OPassAPI.GetFavoritesList(forEvent: event, withToken: token)
-        return favList.contains(session)
+    static func CheckFavoriteState(_ event: String, _ token: String, _ session: String) -> Bool {
+        return OPassAPI.GetFavoritesList(event, token).contains(session)
     }
 
-    static func TriggerFavoriteSession(
-        forEvent event: String,
-        withToken token: String,
-        toSession session: String
-    ) {
+    static func TriggerFavoriteSession(_ event: String, _ token: String, _ session: String) {
         let title = ""
         let content = ""
         let time = 10.seconds.fromNow
-        var favList = OPassAPI.GetFavoritesList(forEvent: event, withToken: token)
+        var favList = OPassAPI.GetFavoritesList(event, token)
         let isDisable = favList.contains(session)
         OPassAPI.RegisteringNotification(
             id: "\(OPassAPI.GetFavoritesStoreKey(event, token))|\(session)",
@@ -671,10 +644,10 @@ class OPassAPI: NSObject {
         } else {
             favList = favList.filter { $0 != session }
         }
-        OPassAPI.PutFavoritesList(forEvent: event, withToken: token, byNewList: favList)
+        OPassAPI.PutFavoritesList(event, token, favList)
     }
 
-    static func GetAnnouncement(forEvent event: String, onCompletion completion: OPassCompletionCallback) {
+    static func GetAnnouncement(_ event: String, _ completion: OPassCompletionCallback) {
         if event.count > 0 {
             OPassAPI.InitializeRequest(Constants.URL_ANNOUNCEMENT) { retryCount, retryMax, error, responsed in
                 completion?(false, nil, error)

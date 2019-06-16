@@ -71,7 +71,7 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
     }
 
     func refreshData() {
-        OPassAPI.GetSessionData(forEvent: OPassAPI.currentEvent) { (success, data, err) in
+        OPassAPI.GetSessionData(OPassAPI.currentEvent) { (success, data, err) in
             if (success) {
                 self.programs = data as? Programs
                 self.setSessionDate()

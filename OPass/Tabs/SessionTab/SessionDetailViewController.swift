@@ -138,7 +138,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
     }
 
     func checkFavoriteState() {
-        let favorite = OPassAPI.CheckFavoriteState(forEvent: OPassAPI.currentEvent, withToken: AppDelegate.accessToken(), toSession: self.session!.Id)
+        let favorite = OPassAPI.CheckFavoriteState(OPassAPI.currentEvent, AppDelegate.accessToken(), self.session!.Id)
         self.btnFavorite?.setAttributedTitle(Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: favorite ? fontAwesomeStyle.solid : fontAwesomeStyle.regular, forColor: .white), for: .normal)
     }
 
@@ -147,7 +147,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
     }
 
     @IBAction func favoriteTouchUpInsideAction(_ sender: Any) {
-        OPassAPI.TriggerFavoriteSession(forEvent: OPassAPI.currentEvent, withToken: AppDelegate.accessToken(), toSession: self.session!.Id)
+        OPassAPI.TriggerFavoriteSession(OPassAPI.currentEvent, AppDelegate.accessToken(), self.session!.Id)
         self.checkFavoriteState()
         UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
     }

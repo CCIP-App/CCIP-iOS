@@ -55,7 +55,7 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
     func parseFavorites() {
         self.sessionTimes.removeAll()
         self.sessionSections.removeAll()
-        let favList = OPassAPI.GetFavoritesList(forEvent: OPassAPI.currentEvent, withToken: AppDelegate.accessToken())
+        let favList = OPassAPI.GetFavoritesList(OPassAPI.currentEvent, AppDelegate.accessToken())
         for session in (self.pagerController?.programs!.Sessions.filter { (favList.contains($0.Id)) })! {
             let startTime = Constants.DateFromString(session.Start)
             let start = Constants.DateToDisplayTimeString(startTime)
