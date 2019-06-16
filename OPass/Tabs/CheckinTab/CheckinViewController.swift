@@ -19,7 +19,7 @@ import ScanditBarcodeScanner
     case InvalidNetwork
 }
 
-@objc public class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , InvalidNetworkRetryDelegate, iCarouselDataSource, iCarouselDelegate, SBSScanDelegate, SBSProcessFrameDelegate {
+@objc class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , InvalidNetworkRetryDelegate, iCarouselDataSource, iCarouselDelegate, SBSScanDelegate, SBSProcessFrameDelegate {
     @objc public var controllerTopStart: CGFloat = 0
 
     @IBOutlet private var cards: iCarousel?
@@ -53,7 +53,7 @@ import ScanditBarcodeScanner
 
     // MARK: - View Events
 
-    override public func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage.init()
@@ -97,18 +97,18 @@ import ScanditBarcodeScanner
         beacon.registerBeaconRegionWithUUID(uuidString: Constants.beaconUUID, identifier: Constants.beaconID, isMonitor: true)
     }
 
-    override public func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.controllerTopStart = self.navigationController?.navigationBar.frame.size.height ?? 0
         self.handleQRButton()
     }
 
-    override public func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.reloadCard()
     }
 
-    override public func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.hideView(.Guide, nil)
         self.hideView(.Status, nil)
@@ -116,7 +116,7 @@ import ScanditBarcodeScanner
         self.closeBarcodePickerOverlay()
     }
 
-    override public func viewDidDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.scenarios = []
         AppDelegate.delegateInstance().setScenarios(self.scenarios as [Any])
@@ -124,7 +124,7 @@ import ScanditBarcodeScanner
         self.lbUserName?.text = ""
     }
 
-    override public func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -133,7 +133,7 @@ import ScanditBarcodeScanner
         self.reloadCard()
     }
 
-    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination
         switch destination.className {
         case GuideViewController.className:
@@ -150,7 +150,7 @@ import ScanditBarcodeScanner
         }
     }
 
-    public func refresh() {
+    func refresh() {
         self.reloadCard()
     }
 
@@ -560,21 +560,21 @@ import ScanditBarcodeScanner
 
     // MARK: - iCarousel methods
 
-    public func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
+    func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
         guard let availableScenarios = AppDelegate.delegateInstance().availableScenarios else { return }
         if availableScenarios.count > 0 {
             self.pageControl.currentPage = carousel.currentItemIndex
         }
     }
 
-    public func numberOfItems(in carousel: iCarousel) -> Int {
+    func numberOfItems(in carousel: iCarousel) -> Int {
         guard let availableScenarios = AppDelegate.delegateInstance().availableScenarios else { return 0 }
         let count = availableScenarios.count
         self.pageControl.numberOfPages = count
         return count
     }
 
-    public func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
+    func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         struct card {
             static var cardRect = CGRect()
         }
@@ -679,7 +679,7 @@ import ScanditBarcodeScanner
         return view!
     }
 
-    public func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+    func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
         switch (option) {
         case .wrap:
             //normally you would hard-code this to YES or NO
