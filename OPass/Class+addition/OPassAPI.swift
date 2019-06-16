@@ -531,7 +531,7 @@ class OPassAPI: NSObject {
                         if json["nickname"].stringValue != "" {
                             AppDelegate.setLoginSession(true)
                             AppDelegate.setAccessToken(token)
-                            AppDelegate.delegateInstance().checkinView.reloadCard()
+                            (AppDelegate.delegateInstance().checkinView as! CheckinViewController).reloadCard()
                             completion?(true, json.dictionaryObject, OPassSuccessError)
                         } else {
                             completion?(false, json.dictionaryObject, NSError(domain: "OPass Redeem Code Invalid", code: 3, userInfo: nil))

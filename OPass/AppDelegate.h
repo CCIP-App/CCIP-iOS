@@ -15,7 +15,6 @@
 #import <ColorArt/UIImage+ColorArt.h>
 #import <Shimmer/FBShimmeringView.h>
 #import "NSInvocation+addition.h"
-#import "CheckinViewController.h"
 #import "headers.h"
 #import "RVCollection.h"
 
@@ -26,8 +25,12 @@
 @property (strong, readonly, nonatomic) SLColorArt * _Null_unspecified appArt;
 @property (strong, nonatomic) NSDictionary * _Null_unspecified userInfo;
 @property (readonly, nonatomic) BOOL isLoginSession;
+#ifndef IN_BRIDGING_HEADER
 @property (strong, nonatomic) CheckinViewController * _Null_unspecified checkinView;
-@property (readonly, nonatomic) NSArray * _Null_unspecified availableScenarios;
+#else
+@property (strong, nonatomic) UIViewController * _Null_unspecified checkinView;
+#endif
+@property (readonly, nonatomic) NSArray * _Nullable availableScenarios;
 
 + (AppDelegate * _Nonnull)delegateInstance;
 + (id _Nonnull)AppConfig:( NSString * _Nonnull )path;

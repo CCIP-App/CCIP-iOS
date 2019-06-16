@@ -38,7 +38,6 @@
 		28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
 		5F75A479AF13F31C57E574C7 /* Pods-OPass-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC0E7EB6EB420AD75E37B7F2 /* Pods-OPass-metadata.plist */; };
-		5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */; };
 		6B036B901F24371700D5E5A5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B036B8F1F24371600D5E5A5 /* Settings.bundle */; };
 		6B0674E822B3CD75001DB1B6 /* CheckinCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0674E722B3CD75001DB1B6 /* CheckinCardViewController.swift */; };
 		6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */; };
@@ -53,7 +52,6 @@
 		6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B6D7D1D29EC49007D0450 /* NSInvocation+addition.m */; };
 		6B2CD58B1D28780F00793194 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2CD58A1D28780F00793194 /* AudioToolbox.framework */; };
 		6B2CD59A1D2886C900793194 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B2CD5971D2886C900793194 /* Localizable.strings */; };
-		6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F9E441D4D142700047F38 /* CheckinCardView.m */; };
 		6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
 		6B49F1411F2548C600686C27 /* OPass-Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* OPass-Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6B4FCB02218E30B10005469F /* NSObject+DeepCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */; };
@@ -94,6 +92,8 @@
 		6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */; };
 		6BB1C4391F1AD4BB00AB072F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BB97F9C222A813200338138 /* PartnerWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB97F9B222A813200338138 /* PartnerWebViewController.swift */; };
+		6BBAE47F22B67D1C003CBC57 /* CheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBAE47E22B67D1C003CBC57 /* CheckinViewController.swift */; };
+		6BBAE48122B6AC3E003CBC57 /* CheckinCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBAE48022B6AC3E003CBC57 /* CheckinCardView.swift */; };
 		6BC3820F223D627900685D00 /* UIImpactFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC3820E223D627900685D00 /* UIImpactFeedback.swift */; };
 		6BC38212223DA45400685D00 /* InvalidNetworkMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC38210223DA45300685D00 /* InvalidNetworkMessageViewController.m */; };
 		6BC4246D22299AE10028C7D6 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4246C22299AE10028C7D6 /* NotificationController.swift */; };
@@ -194,8 +194,6 @@
 		28ACA99F1D5E92AD002A6419 /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
 		28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
 		5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		5FB4D4911D3B57FA005BF382 /* CheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinViewController.h; sourceTree = "<group>"; };
-		5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinViewController.m; sourceTree = "<group>"; };
 		6B023A9A20470F4B00F474F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B036B8F1F24371600D5E5A5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		6B0674E722B3CD75001DB1B6 /* CheckinCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinCardViewController.swift; sourceTree = "<group>"; };
@@ -216,8 +214,6 @@
 		6B2CD58A1D28780F00793194 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6B2CD5981D2886C900793194 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6B2CD5991D2886C900793194 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6B2F9E431D4D142700047F38 /* CheckinCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinCardView.h; sourceTree = "<group>"; };
-		6B2F9E441D4D142700047F38 /* CheckinCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinCardView.m; sourceTree = "<group>"; };
 		6B2F9E461D4D18F100047F38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+DeepCopy.swift"; sourceTree = "<group>"; };
 		6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ValueForKeyPathWithIndexes.swift"; sourceTree = "<group>"; };
@@ -260,6 +256,8 @@
 		6BB0B6091F1A74DF00AEB437 /* OPass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OPass.entitlements; sourceTree = "<group>"; };
 		6BB55CAB1F242EC7007BC840 /* OPass-Build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "OPass-Build.sh"; sourceTree = "<group>"; };
 		6BB97F9B222A813200338138 /* PartnerWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerWebViewController.swift; sourceTree = "<group>"; };
+		6BBAE47E22B67D1C003CBC57 /* CheckinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinViewController.swift; sourceTree = "<group>"; };
+		6BBAE48022B6AC3E003CBC57 /* CheckinCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinCardView.swift; sourceTree = "<group>"; };
 		6BC12A941F2B1B8000B14039 /* OPass-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OPass-Swift.h"; sourceTree = "<group>"; };
 		6BC12A951F2B1B8000B14039 /* OPass-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OPass-Bridging-Header.h"; sourceTree = "<group>"; };
 		6BC12A961F2B1B8000B14039 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -560,11 +558,9 @@
 		6BFB83201F2B18DD005DCF00 /* CheckinTab */ = {
 			isa = PBXGroup;
 			children = (
-				5FB4D4911D3B57FA005BF382 /* CheckinViewController.h */,
-				5FB4D4921D3B57FA005BF382 /* CheckinViewController.m */,
+				6BBAE47E22B67D1C003CBC57 /* CheckinViewController.swift */,
 				6B0674E722B3CD75001DB1B6 /* CheckinCardViewController.swift */,
-				6B2F9E431D4D142700047F38 /* CheckinCardView.h */,
-				6B2F9E441D4D142700047F38 /* CheckinCardView.m */,
+				6BBAE48022B6AC3E003CBC57 /* CheckinCardView.swift */,
 				6BA1A5201D1EFBDC00D5924C /* StatusViewController.h */,
 				6BA1A5211D1EFBDC00D5924C /* StatusViewController.m */,
 				6BFB83251F2B194D005DCF00 /* CheckinOverlay */,
@@ -897,6 +893,7 @@
 				6B9650C91F2B270500F43B39 /* main.swift in Sources */,
 				6B4FCB11218EC2380005469F /* UIImage+addition.swift in Sources */,
 				6BB97F9C222A813200338138 /* PartnerWebViewController.swift in Sources */,
+				6BBAE47F22B67D1C003CBC57 /* CheckinViewController.swift in Sources */,
 				6B4FCB20218F65D30005469F /* NSObject+className.swift in Sources */,
 				2843027522B6C90E00B548A9 /* GuideViewController.swift in Sources */,
 				6B4FCB1A218ECE070005469F /* Constants.m in Sources */,
@@ -906,9 +903,7 @@
 				6B4FCB02218E30B10005469F /* NSObject+DeepCopy.swift in Sources */,
 				28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */,
 				6BE8A22E220E11160035CFD8 /* JSONSerialization+Ext.swift in Sources */,
-				6B2F9E451D4D142700047F38 /* CheckinCardView.m in Sources */,
 				6B4FCB15218ECACD0005469F /* UISegmentedControl+addition.swift in Sources */,
-				5FB4D4931D3B57FA005BF382 /* CheckinViewController.m in Sources */,
 				6BE8A22A220DC84C0035CFD8 /* AcknowledgementsViewController.swift in Sources */,
 				6B153B9D22B1946A00C1632D /* SessionDetailViewController.swift in Sources */,
 				6B0C6C9322AD55F6003E7617 /* SessionTableViewCell.swift in Sources */,
@@ -917,6 +912,7 @@
 				6BD8EF2F1D1D73510094BE95 /* AppDelegate.m in Sources */,
 				28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */,
 				6B50EA2C216921EB000CC757 /* EmbeddedNavigationTabBarControllerSegue.swift in Sources */,
+				6BBAE48122B6AC3E003CBC57 /* CheckinCardView.swift in Sources */,
 				6B4FCB2C218F98840005469F /* SponsorWebViewController.swift in Sources */,
 				6B4FCB0A218E5A0F0005469F /* MoreCell.swift in Sources */,
 				6B4FCB26218F84640005469F /* VenueWebViewController.swift in Sources */,

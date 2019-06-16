@@ -350,7 +350,7 @@ Please copy and paste the token into next field or click the token link in the r
         <!--Data Source-->
         <scene sceneID="s5H-mK-055">
             <objects>
-                <viewController storyboardIdentifier="CheckinViewController" id="6Xx-bx-CvE" customClass="CheckinViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CheckinViewController" id="6Xx-bx-CvE" customClass="CheckinViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bgm-CO-9gf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -465,7 +465,7 @@ Please copy and paste the token into next field or click the token link in the r
         <scene sceneID="SiN-EJ-8ci">
             <objects>
                 <viewController storyboardIdentifier="CheckinCardReuseView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V6X-cZ-B0h" customClass="CheckinCardViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CVw-Vr-a5B" customClass="CheckinCardView">
+                    <view key="view" contentMode="scaleToFill" id="CVw-Vr-a5B" customClass="CheckinCardView" customModule="OPass" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
