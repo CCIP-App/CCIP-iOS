@@ -36,8 +36,11 @@ let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
     }
 }
 
-struct DisplayName {
+struct EventDisplayName: Codable {
     var _displayData: JSON
+    init(_ data: JSON) {
+        self._displayData = data
+    }
     subscript(_ member: String) -> String {
         if member == "_displayData" {
             return ""
@@ -63,13 +66,13 @@ struct Features {
 
 struct CustomFeatures {
     var IconUrl: URL?
-    var DisplayName: DisplayName
+    var DisplayName: EventDisplayName
     var Url: URL
 }
 
 struct EventInfo {
     var EventId: String
-    var DisplayName: DisplayName
+    var DisplayName: EventDisplayName
     var LogoUrl: URL
     var Publish: PublishDate
     var ServerBaseUrl: URL
@@ -78,10 +81,15 @@ struct EventInfo {
     var CustomFeatures: Array<CustomFeatures>
 }
 
-struct EventShortInfo {
+struct EventShortInfo: Codable {
     var EventId: String
-    var DisplayName: DisplayName
+    var DisplayName: EventDisplayName
     var LogoUrl: URL
+    init(_ data: JSON) {
+        self.EventId = data["event_id"].stringValue
+        self.DisplayName = EventDisplayName(data["display_name"])
+        self.LogoUrl = data["logo_url"].url!
+    }
 }
 
 struct Programs: Codable {
@@ -405,16 +413,9 @@ class OPassAPI: NSObject {
     static func GetEvents(_ onceErrorCallback: OPassErrorCallback) -> Promise<Array<EventShortInfo>> {
         return OPassAPI.InitializeRequest("https://portal.opass.app/events/", onceErrorCallback)
             .then({ (infoObj: Any) -> Array<EventShortInfo> in
-                let info = JSON(infoObj).arrayValue
-                var infos = Array<EventShortInfo>()
-                for i in info {
-                    let eventId = i["event_id"].stringValue
-                    let displayName = DisplayName(_displayData: i["display_name"])
-                    let logoUrl = i["logo_url"].url!
-                    let e = EventShortInfo(EventId: eventId, DisplayName: displayName, LogoUrl: logoUrl)
-                    infos.append(e)
+                return JSON(infoObj).arrayValue.map { info -> EventShortInfo in
+                    return EventShortInfo(info)
                 }
-                return infos
             })
     }
 
@@ -423,7 +424,7 @@ class OPassAPI: NSObject {
             .then { (infoObj: Any) -> EventInfo in
                 let info = JSON(infoObj)
                 let eventId = info["event_id"].stringValue
-                let displayName = DisplayName(_displayData: info["display_name"])
+                let displayName = EventDisplayName(info["display_name"])
                 let logoUrl = info["logo_url"].url!
                 let pub = info["publish"]
                 let pubStart = Date.init(seconds: pub["start"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
@@ -444,7 +445,7 @@ class OPassAPI: NSObject {
                 let cf = info["custom_features"].arrayValue
                 for ft in cf {
                     let ftIcon = ft["icon"].url
-                    let ftDisplayName = DisplayName(_displayData: ft["display_name"])
+                    let ftDisplayName = EventDisplayName(ft["display_name"])
                     let ftUrl = ft["url"].url!
                     let f = CustomFeatures(IconUrl: ftIcon, DisplayName: ftDisplayName, Url: ftUrl)
                     customFeatures.append(f)
@@ -546,7 +547,7 @@ class OPassAPI: NSObject {
         }
     }
 
-    @objc static func GetCurrentStatus(_ completion: OPassCompletionCallback) {
+    static func GetCurrentStatus(_ completion: OPassCompletionCallback) {
         let event = OPassAPI.currentEvent
         let token = Constants.AccessToken
         if event.count > 0 && token.count > 0 {
