@@ -28,9 +28,9 @@ class GuideViewController: UIViewController, UITextFieldDelegate {
         redeemCodeText.textColor = AppDelegate.appConfigColor("RedeemCodeTextColor")
         
         redeemButton.setTitle(NSLocalizedString("GuideViewButton", comment: ""), for: .normal)
-        redeemButton.tintColor = UIColor.white
+        redeemButton.tintColor = .white
         redeemButton.backgroundColor = UIColor(red: 61 / 255.0, green: 152 / 255.0, blue: 60 / 255.0, alpha: 1)
-        redeemButton.layer.cornerRadius = 7.0
+        redeemButton.layer.cornerRadius = 7
         
         // Set carousel background linear diagonal gradient
         //   Create the colors
@@ -42,7 +42,7 @@ class GuideViewController: UIViewController, UITextFieldDelegate {
         theViewGradient.frame = CGRect(x: 0, y: 0, width: redeemButton.frame.size.width, height: redeemButton.frame.size.height)
         theViewGradient.startPoint = CGPoint(x: 1, y: 0.5)
         theViewGradient.endPoint = CGPoint(x: 0, y: 0.2)
-        theViewGradient.cornerRadius = 7.0
+        theViewGradient.cornerRadius = 7
         //   Add gradient to view
         redeemButton.layer.insertSublayer(theViewGradient, at: 0)
         
@@ -50,23 +50,23 @@ class GuideViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(GuideViewController.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(GuideViewController.appplicationDidEnterBackground(_:)), name: UIApplication.willResignActiveNotification, object: nil)
         
-        // SEND_FIB("GuideViewController")
+        Constants.SendFib("GuideViewController")
         
         view.autoresizingMask = []
     }
     
     @objc func appplicationDidEnterBackground(_ notification: Notification?) {
-        dismiss(animated: true)
+        self.dismiss(animated: true)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        dismiss(animated: true)
+        self.dismiss(animated: true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        redeemCode(nil)
+        self.redeemCode(nil)
         return true
     }
     
@@ -140,20 +140,9 @@ class GuideViewController: UIViewController, UITextFieldDelegate {
     }
 
     func showAlert() {
-        let ac = UIAlertController.alertOfTitle(NSLocalizedString("GuideViewTokenErrorTitle", comment: ""), withMessage: NSLocalizedString("GuideViewTokenErrorDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: UIAlertAction.Style.cancel, cancelAction: nil)
+        let ac = UIAlertController.alertOfTitle(NSLocalizedString("GuideViewTokenErrorTitle", comment: ""), withMessage: NSLocalizedString("GuideViewTokenErrorDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel, cancelAction: nil)
         ac.showAlert({
-            UIImpactFeedback.triggerFeedback(UIImpactFeedbackType.notificationFeedbackError)
+            UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
         })
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
