@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AudioToolbox
 import MBProgressHUD
 import iCarousel
 import ScanditBarcodeScanner
