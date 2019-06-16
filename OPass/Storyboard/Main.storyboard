@@ -986,7 +986,7 @@ Label2</string>
         <!--Invalid Network Message View Controller-->
         <scene sceneID="DDK-sN-jQD">
             <objects>
-                <viewController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="overCurrentContext" id="tZ3-Ep-FUt" customClass="InvalidNetworkMessageViewController" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="overCurrentContext" id="tZ3-Ep-FUt" customClass="InvalidNetworkMessageViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="aab-xn-Jvs">
                         <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1053,7 +1053,7 @@ Label2</string>
                                                 </mask>
                                             </variation>
                                             <connections>
-                                                <action selector="clossView:" destination="tZ3-Ep-FUt" eventType="touchUpInside" id="Wfo-uZ-Esl"/>
+                                                <action selector="closeView:" destination="tZ3-Ep-FUt" eventType="touchUpInside" id="l8n-gZ-rgT"/>
                                             </connections>
                                         </button>
                                     </subviews>

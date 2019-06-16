@@ -74,6 +74,8 @@
 		6B4FCB2A218F98740005469F /* StaffWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB29218F98740005469F /* StaffWebViewController.swift */; };
 		6B4FCB2C218F98840005469F /* SponsorWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB2B218F98840005469F /* SponsorWebViewController.swift */; };
 		6B4FCB2E218F99260005469F /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB2D218F99260005469F /* PuzzleViewController.swift */; };
+		6B50993122B6F77D00FD048F /* InvalidNetworkRetryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50993022B6F77D00FD048F /* InvalidNetworkRetryDelegate.swift */; };
+		6B50993322B6F82F00FD048F /* InvalidNetworkMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50993222B6F82F00FD048F /* InvalidNetworkMessageViewController.swift */; };
 		6B50EA2C216921EB000CC757 /* EmbeddedNavigationTabBarControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2B216921EB000CC757 /* EmbeddedNavigationTabBarControllerSegue.swift */; };
 		6B50EA2E21692210000CC757 /* EmbeddedNavigationControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */; };
 		6B50EA322169377E000CC757 /* UIAlertController+additional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA312169377E000CC757 /* UIAlertController+additional.swift */; };
@@ -95,7 +97,6 @@
 		6BBAE47F22B67D1C003CBC57 /* CheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBAE47E22B67D1C003CBC57 /* CheckinViewController.swift */; };
 		6BBAE48122B6AC3E003CBC57 /* CheckinCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBAE48022B6AC3E003CBC57 /* CheckinCardView.swift */; };
 		6BC3820F223D627900685D00 /* UIImpactFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC3820E223D627900685D00 /* UIImpactFeedback.swift */; };
-		6BC38212223DA45400685D00 /* InvalidNetworkMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC38210223DA45300685D00 /* InvalidNetworkMessageViewController.m */; };
 		6BC4246D22299AE10028C7D6 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4246C22299AE10028C7D6 /* NotificationController.swift */; };
 		6BC4246F22299C830028C7D6 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4246E22299C830028C7D6 /* ExtensionDelegate.swift */; };
 		6BC4247122299F470028C7D6 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4247022299F470028C7D6 /* InterfaceController.swift */; };
@@ -236,6 +237,8 @@
 		6B4FCB29218F98740005469F /* StaffWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffWebViewController.swift; sourceTree = "<group>"; };
 		6B4FCB2B218F98840005469F /* SponsorWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorWebViewController.swift; sourceTree = "<group>"; };
 		6B4FCB2D218F99260005469F /* PuzzleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewController.swift; sourceTree = "<group>"; };
+		6B50993022B6F77D00FD048F /* InvalidNetworkRetryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvalidNetworkRetryDelegate.swift; sourceTree = "<group>"; };
+		6B50993222B6F82F00FD048F /* InvalidNetworkMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvalidNetworkMessageViewController.swift; sourceTree = "<group>"; };
 		6B50EA2B216921EB000CC757 /* EmbeddedNavigationTabBarControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedNavigationTabBarControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedNavigationControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA312169377E000CC757 /* UIAlertController+additional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+additional.swift"; sourceTree = "<group>"; };
@@ -262,8 +265,6 @@
 		6BC12A951F2B1B8000B14039 /* OPass-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OPass-Bridging-Header.h"; sourceTree = "<group>"; };
 		6BC12A961F2B1B8000B14039 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		6BC3820E223D627900685D00 /* UIImpactFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImpactFeedback.swift; sourceTree = "<group>"; };
-		6BC38210223DA45300685D00 /* InvalidNetworkMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvalidNetworkMessageViewController.m; sourceTree = "<group>"; };
-		6BC38211223DA45300685D00 /* InvalidNetworkMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvalidNetworkMessageViewController.h; sourceTree = "<group>"; };
 		6BC4246C22299AE10028C7D6 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		6BC4246E22299C830028C7D6 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		6BC4247022299F470028C7D6 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
@@ -621,8 +622,8 @@
 			isa = PBXGroup;
 			children = (
 				2843027422B6C90E00B548A9 /* GuideViewController.swift */,
-				6BC38211223DA45300685D00 /* InvalidNetworkMessageViewController.h */,
-				6BC38210223DA45300685D00 /* InvalidNetworkMessageViewController.m */,
+				6B50993222B6F82F00FD048F /* InvalidNetworkMessageViewController.swift */,
+				6B50993022B6F77D00FD048F /* InvalidNetworkRetryDelegate.swift */,
 			);
 			path = CheckinOverlay;
 			sourceTree = "<group>";
@@ -921,12 +922,12 @@
 				6B9A279C222B040800E8463E /* OPassEventCell.swift in Sources */,
 				6B5FD2D7223C4B9D005D111C /* AnnounceTableViewCell.swift in Sources */,
 				6B4FCB1E218F5D630005469F /* OPassWebViewController.swift in Sources */,
-				6BC38212223DA45400685D00 /* InvalidNetworkMessageViewController.m in Sources */,
 				6B4FCB0C218E5AA80005469F /* MainNavViewController.swift in Sources */,
 				6B4FCB1C218ECE9A0005469F /* UIView+addition.swift in Sources */,
 				6BA1A5221D1EFBDC00D5924C /* StatusViewController.m in Sources */,
 				6BE8A227220D04980035CFD8 /* MainTabBarViewController.swift in Sources */,
 				6B50EA2E21692210000CC757 /* EmbeddedNavigationControllerSegue.swift in Sources */,
+				6B50993322B6F82F00FD048F /* InvalidNetworkMessageViewController.swift in Sources */,
 				6B5AABC5220CB02400C01C54 /* MyTicketViewController.swift in Sources */,
 				6B2B6D7E1D29EC49007D0450 /* NSInvocation+addition.m in Sources */,
 				6B4FCB2A218F98740005469F /* StaffWebViewController.swift in Sources */,
@@ -936,6 +937,7 @@
 				6B670CCD2156E00A0089C9B5 /* MarkdownView.swift in Sources */,
 				6B0674E822B3CD75001DB1B6 /* CheckinCardViewController.swift in Sources */,
 				6BE4B8ED222ADA75005F8B95 /* OPassEventsController.swift in Sources */,
+				6B50993122B6F77D00FD048F /* InvalidNetworkRetryDelegate.swift in Sources */,
 				6BE8A22C220DF0210035CFD8 /* NSString+StringExt.swift in Sources */,
 				6B4FCB06218E521C0005469F /* UIApplication+addition.swift in Sources */,
 			);

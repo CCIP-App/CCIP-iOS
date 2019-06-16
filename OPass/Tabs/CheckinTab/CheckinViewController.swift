@@ -143,7 +143,7 @@ import ScanditBarcodeScanner
             self.statusViewController?.scenario = sender as? [AnyHashable : Any]
         case InvalidNetworkMessageViewController.className:
             let inmvc = destination as! InvalidNetworkMessageViewController
-            inmvc.setMessage(sender as? String)
+            inmvc.message = sender as! String
             inmvc.delegate = self
         default:
             break

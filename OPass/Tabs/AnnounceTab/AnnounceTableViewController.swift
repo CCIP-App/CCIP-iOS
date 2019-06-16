@@ -67,7 +67,7 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
         self.refresh()
     }
 
-    func refresh() {
+    @objc func refresh() {
         self.loaded = false
         self.refreshControl.beginRefreshing()
         OPassAPI.GetAnnouncement(forEvent: Constants.EventId) { (success: Bool, data: Any?, error: Error) in
@@ -97,7 +97,7 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
         let destination = segue.destination
         if destination.isMember(of: InvalidNetworkMessageViewController.self) {
             let inmvc = destination as! InvalidNetworkMessageViewController
-            inmvc.setMessage((sender as! String))
+            inmvc.message = sender as! String
             inmvc.delegate = self
         }
     }
