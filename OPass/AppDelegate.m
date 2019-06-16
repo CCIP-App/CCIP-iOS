@@ -15,7 +15,6 @@
 #import <iVersion/iVersion.h>
 #import <AFNetworking/AFNetworking.h>
 #import "AppDelegate.h"
-#import "GuideViewController.h"
 #import "NSData+PMUtils.h"
 
 @interface AppDelegate () <UISplitViewControllerDelegate, UNUserNotificationCenterDelegate>

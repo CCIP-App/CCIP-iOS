@@ -11,7 +11,6 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "AppDelegate.h"
 #import "CheckinViewController.h"
-#import "GuideViewController.h"
 #import "StatusViewController.h"
 
 @interface CheckinViewController()
