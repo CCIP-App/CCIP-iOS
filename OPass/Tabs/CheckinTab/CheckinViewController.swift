@@ -328,7 +328,13 @@ import ScanditBarcodeScanner
                     AppDelegate.delegateInstance().setScenarios(self.scenarios)
                     self.reloadAndGoToCard()
                 } else {
-                    guard let sr = obj as? OPassNonSuccessDataResponse else { return }
+                    func broken(_ msg: String = "Networking_Broken") {
+                        self.performSegue(withIdentifier: "ShowInvalidNetworkMsg", sender: NSLocalizedString(msg, comment: ""))
+                    }
+                    guard let sr = obj as? OPassNonSuccessDataResponse else {
+                        broken()
+                        return
+                    }
                     switch (sr.Response?.statusCode) {
                     case 400:
                         guard let responseObject = sr.Obj as? NSDictionary else { return }
@@ -346,9 +352,9 @@ import ScanditBarcodeScanner
                             }
                         }
                     case 403:
-                        self.performSegue(withIdentifier: "ShowInvalidNetworkMsg", sender: NSLocalizedString("Networking_WrongWiFi", comment: ""))
+                        broken("Networking_WrongWiFi")
                     default:
-                        self.performSegue(withIdentifier: "ShowInvalidNetworkMsg", sender: NSLocalizedString("Networking_Broken", comment: ""))
+                        broken()
                     }
                 }
             }
