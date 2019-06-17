@@ -87,19 +87,18 @@ class CheckinCardView: UIView {
             OPassAPI.UseScenario(OPassAPI.currentEvent, AppDelegate.accessToken(), self.id) { (success, obj, error) in
                 DispatchQueue.main.async {
                     if success {
-//                        [self updateScenario:[responseObject objectForKey:@"scenarios"]];
-//                        [self showCountdown];
-//                        [self.checkinBtn setGradientColorFrom:[AppDelegate AppConfigColor:@"DisabledButtonLeftColor"]
-//                            to:[AppDelegate AppConfigColor:@"DisabledButtonRightColor"]
-//                            startPoint:CGPointMake(.2, .8)
-//                            toPoint:CGPointMake(1, .5)];
-//                        if (isCheckin) {
-//                            [self.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil) forState:UIControlStateNormal];
-//                            [[AppDelegate delegateInstance].checkinView reloadCard];
-//                        } else {
-//                            [self.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil) forState:UIControlStateNormal];
-//                        }
-//                        [[AppDelegate delegateInstance] setDefaultShortcutItems];
+                        let _ = self.updateScenario((obj as! Dictionary<String, NSObject>)["scenarios"] as! Array<Dictionary<String, NSObject>>)
+                        self.showCountdown()
+                        self.buttonUpdate({
+                            self.checkinBtn?.setGradientColor(from: AppDelegate.appConfigColor("DisabledButtonLeftColor"), to: AppDelegate.appConfigColor("DisabledButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                        }, nil, nil)
+                        if isCheckin {
+                            self.checkinBtn?.setTitle(NSLocalizedString("CheckinViewButtonPressed", comment: ""), for: .normal)
+                            (AppDelegate.delegateInstance().checkinView as! CheckinViewController).reloadCard()
+                        } else {
+                            self.checkinBtn?.setTitle(NSLocalizedString("UseButtonPressed", comment: ""), for: .normal)
+                        }
+                        AppDelegate.delegateInstance().setDefaultShortcutItems()
                     } else {
                         func broken(_ msg: String = "Networking_Broken") {
                             self.delegate?.showInvalidNetworkMsg(NSLocalizedString(msg, comment: ""))
