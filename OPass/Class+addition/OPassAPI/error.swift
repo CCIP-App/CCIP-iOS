@@ -14,10 +14,10 @@ let OPassSuccessError = NSError(domain: "", code: 0, userInfo: nil)
 struct OPassNonSuccessDataResponse: OPassData {
     var _data: JSON
     var Response: HTTPURLResponse? {
-        return self._data["response"].object as? HTTPURLResponse
+        return (self._data.rawValue as! Dictionary<String, Any>)["response"] as? HTTPURLResponse
     }
     var Data: Data? {
-        return self._data["data"].object as? Data
+        return (self._data.rawValue as! Dictionary<String, Any>)["data"] as? Data
     }
     var Obj: NSObject? {
         return self._data.object as? NSObject
