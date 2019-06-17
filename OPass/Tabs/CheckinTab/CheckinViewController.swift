@@ -335,7 +335,7 @@ import ScanditBarcodeScanner
                     switch (sr.Response?.statusCode) {
                     case 400:
                         guard let responseObject = sr.Obj as? NSDictionary else { return }
-                        let msg = responseObject.object(forKey: "message") as! String
+                        let msg = responseObject.value(forKeyPath: "json.message") as! String
                         if msg == "invalid token" {
                             NSLog("\(msg)")
 

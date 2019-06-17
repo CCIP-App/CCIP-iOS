@@ -111,7 +111,7 @@ class CheckinCardView: UIView {
                     switch (sr.Response?.statusCode) {
                     case 400:
                         guard let responseObject = sr.Obj as? NSDictionary else { return }
-                        let msg = responseObject.object(forKey: "message") as! String
+                        let msg = responseObject.value(forKeyPath: "json.message") as! String
                         NSLog("msg: \(msg)")
                         switch (msg) {
                         case "invalid token":
