@@ -62,7 +62,7 @@ class OPassEventsController : UIViewController, UITableViewDelegate, UITableView
         self.progress.show(animated: true)
         let e = OPassAPI.SetEvent(eventId, { retryCount, retryMax, error, responsed in
             self.progress.label.text = "[\(retryCount)/\(retryMax)] \(error.localizedDescription)"
-        }).then { (event: EventInfo) in
+        }).then { event in
             self.progress.label.text = ""
             self.progress.hide(animated: true)
             if Constants.HasSetEvent {
