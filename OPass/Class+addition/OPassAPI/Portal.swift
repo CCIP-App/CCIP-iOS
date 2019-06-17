@@ -11,25 +11,32 @@ import then
 import SwiftyJSON
 import SwiftDate
 
-struct EventDisplayName: Codable {
-    var _displayData: JSON
+struct EventDisplayName: OPassData {
+    var _data: JSON
     init(_ data: JSON) {
-        self._displayData = data
+        self._data = data
     }
     subscript(_ member: String) -> String {
         if member == "_displayData" {
             return ""
         }
-        return _displayData[member].stringValue
+        return self._data[member].stringValue
     }
 }
 
-struct PublishDate {
+struct PublishDate: OPassData {
+    var _data: JSON
     var Start: Date
     var End: Date
+    init(_ data: JSON) {
+        self._data = data
+        self.Start = Date.init(seconds: self._data["start"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
+        self.End = Date.init(seconds: self._data["end"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
+    }
 }
 
-struct Features {
+struct EventFeatures: OPassData {
+    var _data: JSON
     var IRC: URL?
     var Telegram: URL?
     var Puzzle: URL?
@@ -37,33 +44,66 @@ struct Features {
     var Venue: URL?
     var Sponsors: URL?
     var Partners: URL?
+    init(_ data: JSON) {
+        self._data = data
+        self.IRC = self._data["irc"].url
+        self.Telegram = self._data["telegram"].url
+        self.Puzzle = self._data["puzzle"].url
+        self.Staffs = self._data["staffs"].url
+        self.Venue = self._data["venus"].url
+        self.Sponsors = self._data["sponsors"].url
+        self.Partners = self._data["partners"].url
+    }
 }
 
-struct CustomFeatures {
+struct EventCustomFeatures: OPassData {
+    var _data: JSON
     var IconUrl: URL?
     var DisplayName: EventDisplayName
     var Url: URL
+    init(_ data: JSON) {
+        self._data = data
+        self.IconUrl = self._data["icon"].url
+        self.DisplayName = EventDisplayName(self._data["display_name"])
+        self.Url = self._data["url"].url!
+    }
 }
 
-struct EventInfo {
+struct EventInfo: OPassData {
+    var _data: JSON
     var EventId: String
     var DisplayName: EventDisplayName
     var LogoUrl: URL
     var Publish: PublishDate
     var ServerBaseUrl: URL
     var SessionUrl: URL
-    var Features: Features
-    var CustomFeatures: Array<CustomFeatures>
+    var Features: EventFeatures
+    var CustomFeatures: Array<EventCustomFeatures>
+    init(_ data: JSON) {
+        self._data = data
+        self.EventId = self._data["event_id"].stringValue
+        self.DisplayName = EventDisplayName(self._data["display_name"])
+        self.LogoUrl = self._data["logo_url"].url!
+        self.Publish = PublishDate(self._data["publish"])
+        self.ServerBaseUrl = self._data["server_base_url"].url!
+        self.SessionUrl = self._data["schedule_url"].url!
+        self.Features = EventFeatures(self._data["features"])
+        self.CustomFeatures = self._data["custom_features"].arrayValue.map { ft -> EventCustomFeatures in
+            return EventCustomFeatures(ft)
+        }
+    }
 }
 
 struct EventShortInfo: Codable {
+    var _data: JSON
     var EventId: String
     var DisplayName: EventDisplayName
     var LogoUrl: URL
     init(_ data: JSON) {
-        self.EventId = data["event_id"].stringValue
-        self.DisplayName = EventDisplayName(data["display_name"])
-        self.LogoUrl = data["logo_url"].url!
+        self._data = data
+        self.EventId = self._data["event_id"].stringValue
+        self.DisplayName = EventDisplayName(self._data["display_name"])
+        self.LogoUrl = self._data["logo_url"].url!
     }
 }
 
@@ -80,37 +120,9 @@ extension OPassAPI {
     static func SetEvent(_ eventId: String, _ onceErrorCallback: OPassErrorCallback) -> Promise<EventInfo> {
         return OPassAPI.InitializeRequest("https://portal.opass.app/events/\(eventId)/", onceErrorCallback)
             .then { (infoObj: Any) -> EventInfo in
-                let info = JSON(infoObj)
-                let eventId = info["event_id"].stringValue
-                let displayName = EventDisplayName(info["display_name"])
-                let logoUrl = info["logo_url"].url!
-                let pub = info["publish"]
-                let pubStart = Date.init(seconds: pub["start"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
-                let pubEnd = Date.init(seconds: pub["end"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
-                let publish = PublishDate(Start: pubStart, End: pubEnd)
-                let serverUrl = info["server_base_url"].url!
-                let sessionUrl = info["schedule_url"].url!
-                let fts = info["features"]
-                let irc = fts["irc"].url
-                let telegram = fts["telegram"].url
-                let puzzle = fts["puzzle"].url
-                let staffs = fts["staffs"].url
-                let venue = fts["venus"].url
-                let sponsors = fts["sponsors"].url
-                let partners = fts["partners"].url
-                let features = Features(IRC: irc, Telegram: telegram, Puzzle: puzzle, Staffs: staffs, Venue: venue, Sponsors: sponsors, Partners: partners)
-                var customFeatures = Array<CustomFeatures>()
-                let cf = info["custom_features"].arrayValue
-                for ft in cf {
-                    let ftIcon = ft["icon"].url
-                    let ftDisplayName = EventDisplayName(ft["display_name"])
-                    let ftUrl = ft["url"].url!
-                    let f = CustomFeatures(IconUrl: ftIcon, DisplayName: ftDisplayName, Url: ftUrl)
-                    customFeatures.append(f)
-                }
-                eventInfo = EventInfo(EventId: eventId, DisplayName: displayName, LogoUrl: logoUrl, Publish: publish, ServerBaseUrl: serverUrl, SessionUrl: sessionUrl, Features: features, CustomFeatures: customFeatures)
+                let eventInfo = EventInfo(JSON(infoObj))
                 currentEvent = JSONSerialization.stringify(infoObj as Any)!
-                return eventInfo!
+                return eventInfo
         }
     }
 
@@ -119,7 +131,7 @@ extension OPassAPI {
         currentEvent = ""
     }
 
-    @objc static func DoLogin(byEventId eventId: String, withToken token: String, onCompletion completion: OPassCompletionCallback) {
+    static func DoLogin(_ eventId: String, _ token: String, _ completion: OPassCompletionCallback) {
         async {
             while true {
                 var vc: UIViewController? = nil
@@ -153,7 +165,7 @@ extension OPassAPI {
             DispatchQueue.main.sync {
                 let opec = UIApplication.getMostTopPresentedViewController() as! OPassEventsController
                 opec.LoadEvent(eventId).then { _ in
-                    OPassAPI.RedeemCode(forEvent: eventId, withToken: token, completion: completion)
+                    OPassAPI.RedeemCode(eventId, token, completion)
                 }
             }
         }

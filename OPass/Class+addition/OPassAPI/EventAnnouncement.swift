@@ -9,34 +9,34 @@
 import Foundation
 import SwiftyJSON
 
-struct AnnouncementInfo {
+struct AnnouncementInfo: OPassData {
+    var _data: JSON
     var DateTime: Date
     var MsgZh: String
     var MsgEn: String
     var URI: String
+    init(_ data: JSON) {
+        self._data = data
+        self.DateTime = Constants.DateFromUnix(self._data["datetime"].intValue)
+        self.MsgZh = self._data["msg_zh"].stringValue
+        self.MsgEn = self._data["msg_en"].stringValue
+        self.URI = self._data["uri"].stringValue
+    }
 }
 
 extension OPassAPI {
-    static func GetAnnouncement(_ event: String, _ completion: OPassCompletionCallback) {
+    static func GetAnnouncement(_ event: String, _ completion: OPassCompletionArrayCallback) {
         if event.count > 0 {
             OPassAPI.InitializeRequest(Constants.URL_ANNOUNCEMENT) { retryCount, retryMax, error, responsed in
                 completion?(false, nil, error)
                 }.then { (obj: Any?) -> Void in
                     if obj != nil {
-                        var announces = [AnnouncementInfo]()
-                        for ann in JSON(obj!).arrayValue {
-                            let dt = Constants.DateFromUnix(ann["datetime"].intValue)
-                            let announce = AnnouncementInfo(
-                                DateTime: dt,
-                                MsgZh: ann["msg_zh"].stringValue,
-                                MsgEn: ann["msg_en"].stringValue,
-                                URI: ann["uri"].stringValue
-                            )
-                            announces.append(announce)
+                        let announces = JSON(obj!).arrayValue.map { ann -> AnnouncementInfo in
+                            return AnnouncementInfo(ann)
                         }
                         completion?(true, announces, OPassSuccessError)
                     } else {
-                        completion?(false, obj, NSError(domain: "OPass can not get announcement", code: 2, userInfo: nil))
+                        completion?(false, [RawOPassData(obj!)], NSError(domain: "OPass can not get announcement", code: 2, userInfo: nil))
                     }
             }
         } else {

@@ -127,7 +127,7 @@ class GuideViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func redeemCode(_ sender: Any?) {
         var alreadyAlert = false
-        OPassAPI.RedeemCode(forEvent: "", withToken: redeemCodeText.text!) { success, obj, error in
+        OPassAPI.RedeemCode(forEvent: "", withToken: redeemCodeText.text!) { success, landing, error in
             if success {
                 self.dismiss(animated: true)
             } else {

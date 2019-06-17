@@ -7,10 +7,25 @@
 //
 
 import Foundation
+import SwiftyJSON
+
+protocol OPassData: Codable {
+    var _data: JSON { get set }
+    init(_ data: JSON)
+}
+
+extension OPassData {
+    static var className: String {
+        return String(describing: type(of: self))
+    }
+}
 
 internal typealias OPassErrorCallback = (
     (_ retryCount: UInt, _ retryMax: UInt, _ error: Error, _ responsed: URLResponse?) -> Void
     )?
 internal typealias OPassCompletionCallback = (
-    (_ success: Bool, _ data: Any?, _ error: Error) -> Void
+    (_ success: Bool, _ data: OPassData?, _ error: Error) -> Void
+    )?
+internal typealias OPassCompletionArrayCallback = (
+    (_ success: Bool, _ data: [OPassData]?, _ error: Error) -> Void
     )?

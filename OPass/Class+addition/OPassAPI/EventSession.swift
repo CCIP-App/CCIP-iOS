@@ -10,26 +10,28 @@ import Foundation
 import SwiftyJSON
 import SwiftDate
 
-struct Programs: Codable {
+struct Programs: OPassData {
+    var _data: JSON
     var Sessions: [ProgramSession]
     var Speakers: [ProgramSpeaker]
     var SessionTypes: [ProgramSessionType]
     var Rooms: [ProgramRoom]
     var Tags: [ProgramsTag]
     init(_ data: JSON) {
-        self.Sessions = data["sessions"].arrayValue.map { obj -> ProgramSession in
+        self._data = data
+        self.Sessions = self._data["sessions"].arrayValue.map { obj -> ProgramSession in
             return ProgramSession(obj)
         }
-        self.Speakers = data["speakers"].arrayValue.map { obj -> ProgramSpeaker in
+        self.Speakers = self._data["speakers"].arrayValue.map { obj -> ProgramSpeaker in
             return ProgramSpeaker(obj)
         }
-        self.SessionTypes = data["session_types"].arrayValue.map { obj -> ProgramSessionType in
+        self.SessionTypes = self._data["session_types"].arrayValue.map { obj -> ProgramSessionType in
             return ProgramSessionType(obj)
         }
-        self.Rooms = data["rooms"].arrayValue.map { obj -> ProgramRoom in
+        self.Rooms = self._data["rooms"].arrayValue.map { obj -> ProgramRoom in
             return ProgramRoom(obj)
         }
-        self.Tags = data["tags"].arrayValue.map { obj -> ProgramsTag in
+        self.Tags = self._data["tags"].arrayValue.map { obj -> ProgramsTag in
             return ProgramsTag(obj)
         }
     }
@@ -44,7 +46,8 @@ struct Programs: Codable {
     }
 }
 
-struct SessionInfo: Codable {
+struct SessionInfo: OPassData {
+    var _data: JSON
     var _sessionData: ProgramSession
     var Id: String
     var _types: [ProgramSessionType]
@@ -67,7 +70,25 @@ struct SessionInfo: Codable {
     var Tags: [ProgramsTag] {
         return self._tags.filter { self._sessionData.Tags.contains($0.Id) }
     }
+    init(_ data: JSON) {
+        // don't use
+        self._data = data
+        self._sessionData = ProgramSession(JSON(""))
+        self.Id = self._sessionData.Id
+        self._types = Programs(JSON("")).SessionTypes
+        self.Room = self._sessionData.Room
+        self.Broadcast = self._sessionData.Broadcast
+        self.Start = self._sessionData.Start
+        self.End = self._sessionData.End
+        self.QA = self._sessionData.QA
+        self.Slide = self._sessionData.Slide
+        self.Live = self._sessionData.Live
+        self.Record = self._sessionData.Record
+        self._speakers = Programs(JSON("")).Speakers
+        self._tags = Programs(JSON("")).Tags
+    }
     init(_ data: ProgramSession, _ programs: Programs) {
+        self._data = JSON("")
         self._sessionData = data
         self.Id = self._sessionData.Id
         self._types = programs.SessionTypes
@@ -87,8 +108,8 @@ struct SessionInfo: Codable {
     }
 }
 
-struct ProgramSession: Codable {
-    var _sessionData: JSON
+struct ProgramSession: OPassData {
+    var _data: JSON
     var Id: String
     var `Type`: String?
     var Room: String?
@@ -102,21 +123,21 @@ struct ProgramSession: Codable {
     var Speakers: [String?]
     var Tags: [String?]
     init(_ data: JSON) {
-        self._sessionData = data
-        self.Id = data["id"].stringValue
-        self.Type = data["type"].stringValue
-        self.Room = data["room"].string
-        self.Broadcast = data["broadcast"].string
-        self.Start = data["start"].stringValue
-        self.End = data["end"].stringValue
-        self.QA = data["qa"].string
-        self.Slide = data["slide"].string
-        self.Live = data["live"].string
-        self.Record = data["record"].string
-        self.Speakers = data["speakers"].arrayValue.map({ obj -> String? in
+        self._data = data
+        self.Id = self._data["id"].stringValue
+        self.Type = self._data["type"].stringValue
+        self.Room = self._data["room"].string
+        self.Broadcast = self._data["broadcast"].string
+        self.Start = self._data["start"].stringValue
+        self.End = self._data["end"].stringValue
+        self.QA = self._data["qa"].string
+        self.Slide = self._data["slide"].string
+        self.Live = self._data["live"].string
+        self.Record = self._data["record"].string
+        self.Speakers = self._data["speakers"].arrayValue.map({ obj -> String? in
             return obj.string
         })
-        self.Tags = data["tags"].arrayValue.map({ obj -> String? in
+        self.Tags = self._data["tags"].arrayValue.map({ obj -> String? in
             return obj.string
         })
     }
@@ -130,21 +151,21 @@ struct ProgramSession: Codable {
         let name = member.lowercased()
         switch name {
         case "title", "description":
-            return _sessionData[AppDelegate.shortLangUI()].dictionaryValue[name]?.stringValue ?? ""
+            return self._data[AppDelegate.shortLangUI()].dictionaryValue[name]?.stringValue ?? ""
         default:
             return ""
         }
     }
 }
 
-struct ProgramSpeaker: Codable {
-    var _speakerData: JSON
+struct ProgramSpeaker: OPassData {
+    var _data: JSON
     var Id: String
     var Avatar: URL?
     init(_ data: JSON) {
-        self._speakerData = data
-        self.Id = data["id"].stringValue
-        self.Avatar = data["avatar"].url
+        self._data = data
+        self.Id = self._data["id"].stringValue
+        self.Avatar = self._data["avatar"].url
     }
     subscript(_ member: String) -> String {
         if member == "Id" {
@@ -156,46 +177,46 @@ struct ProgramSpeaker: Codable {
         let name = member.lowercased()
         switch name {
         case "name", "bio":
-            return _speakerData[AppDelegate.shortLangUI()].dictionaryValue[name]?.stringValue ?? ""
+            return self._data[AppDelegate.shortLangUI()].dictionaryValue[name]?.stringValue ?? ""
         default:
             return ""
         }
     }
 }
 
-struct ProgramSessionType: Codable {
-    var _sessionData: JSON
+struct ProgramSessionType: OPassData {
+    var _data: JSON
     var Id: String
     var Name: String {
-        return _sessionData[AppDelegate.shortLangUI()].dictionaryValue["name"]?.stringValue ?? ""
+        return self._data[AppDelegate.shortLangUI()].dictionaryValue["name"]?.stringValue ?? ""
     }
     init(_ data: JSON) {
-        self._sessionData = data
-        self.Id = data["id"].stringValue
+        self._data = data
+        self.Id = self._data["id"].stringValue
     }
 }
 
-struct ProgramRoom: Codable {
-    var _roomData: JSON
+struct ProgramRoom: OPassData {
+    var _data: JSON
     var Id: String
     var Name: String {
-        return _roomData[AppDelegate.shortLangUI()].dictionaryValue["name"]?.stringValue ?? ""
+        return self._data[AppDelegate.shortLangUI()].dictionaryValue["name"]?.stringValue ?? ""
     }
     init(_ data: JSON) {
-        self._roomData = data
-        self.Id = data["id"].stringValue
+        self._data = data
+        self.Id = self._data["id"].stringValue
     }
 }
 
-struct ProgramsTag: Codable {
-    var _tagData: JSON
+struct ProgramsTag: OPassData {
+    var _data: JSON
     var Id: String
     var Name: String {
-        return _tagData[AppDelegate.shortLangUI()].dictionaryValue["name"]?.stringValue ?? ""
+        return self._data[AppDelegate.shortLangUI()].dictionaryValue["name"]?.stringValue ?? ""
     }
     init(_ data: JSON) {
-        self._tagData = data
-        self.Id = data["id"].stringValue
+        self._data = data
+        self.Id = self._data["id"].stringValue
     }
 }
 
@@ -209,7 +230,7 @@ extension OPassAPI {
                         let prog = Programs(JSON(obj!))
                         completion?(true, prog, OPassSuccessError)
                     } else {
-                        completion?(false, obj, NSError(domain: "OPass Session can not get by return unexcepted response", code: 2, userInfo: nil))
+                        completion?(false, RawOPassData(obj!), NSError(domain: "OPass Session can not get by return unexcepted response", code: 2, userInfo: nil))
                     }
             }
         } else {

@@ -34,7 +34,7 @@ class OPassAPI: NSObject {
                 let data = err.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] as? Data
                 if (response != nil) {
                     onceErrorCallback?(retryCount, maxRetry, error, response)
-                    resolve(OPassNonSuccessDataResponse(response, data, JSON(data as Any)))
+                    resolve(OPassNonSuccessDataResponse(response!, data!, JSON(data as Any)))
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
                         retryCount+=1

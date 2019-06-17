@@ -409,7 +409,7 @@ import ScanditBarcodeScanner
         NSLog("scanned \(code.symbologyName) barcode: \(String(describing: code.data))")
 
         OperationQueue.main.addOperation {
-            OPassAPI.RedeemCode(forEvent: "", withToken: code.data!) { (success, obj, error) in
+            OPassAPI.RedeemCode(forEvent: "", withToken: code.data!) { (success, landing, error) in
                 if success {
                     self.perform(#selector(self.reloadCard), with: nil, afterDelay: 0.5)
                     self.perform(#selector(self.closeBarcodePickerOverlay), with: nil, afterDelay: 0.5)
@@ -537,7 +537,7 @@ import ScanditBarcodeScanner
 
             var ac: UIAlertController? = nil
             if result != nil {
-                OPassAPI.RedeemCode(forEvent: "", withToken: result!) { (success, obj, error) in
+                OPassAPI.RedeemCode(forEvent: "", withToken: result!) { (success, landing, error) in
                     if success {
                         picker.dismiss(animated: true) {
                             // self.reloadCard()
