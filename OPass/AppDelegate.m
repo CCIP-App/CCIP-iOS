@@ -117,46 +117,6 @@
     [[AppDelegate delegateInstance] setIsLoginSession:isLogin];
 }
 
-+ (NSDictionary *)parseScenarioType:(NSString *)id {
-    static NSDateFormatter *formatter;
-    if (formatter == nil) {
-        formatter = [NSDateFormatter new];
-        [formatter setDateFormat:@"yyyy/M/d"];
-        [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
-    }
-    
-    NSString *id_pattern = @"^(day(\\d+))?(\\w+)$";
-    NSError *error = nil;
-    NSRegularExpression *id_regex = [NSRegularExpression regularExpressionWithPattern:id_pattern
-                                                                              options:NSRegularExpressionCaseInsensitive
-                                                                                error:&error];
-    NSArray *id_matches = [id_regex matchesInString:id
-                                            options:NSMatchingWithTransparentBounds
-                                              range:NSMakeRange(0, id.length)];
-    NSRange did_range = [[id_matches firstObject] rangeAtIndex:2];
-    NSString *did = @"";
-    if (did_range.location != NSNotFound) {
-        did =  [id substringWithRange:did_range];
-    }
-    NSRange scenarioRange = [[id_matches firstObject] rangeAtIndex:3];
-    NSString *scenarioType = [id substringWithRange:scenarioRange];
-    return @{
-             @"scenarioType": scenarioType,
-             @"did": did
-             };
-}
-
-+ (NSArray *)parseRange:(NSDictionary *)scenario {
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:[self AppConfig:@"DisplayDateTimeFormat"]];
-    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
-    NSDate *availDate = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"available_time"] longValue]];
-    NSDate *expireDate = [NSDate dateWithTimeIntervalSince1970:[[scenario objectForKey:@"expire_time"] longValue]];
-    NSString *availString = [formatter stringFromDate:availDate];
-    NSString *expireString = [formatter stringFromDate:expireDate];
-    return @[ availString, expireString ];
-}
-
 + (BOOL)haveAccessToken {
     return ([[AppDelegate accessToken] length] > 0) ? YES : NO;
 }

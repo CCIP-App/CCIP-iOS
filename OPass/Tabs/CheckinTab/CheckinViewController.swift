@@ -30,8 +30,8 @@ import ScanditBarcodeScanner
 
     private var pageControl: UIPageControl = UIPageControl.init()
 
-    private var _userInfo = Dictionary<String, NSObject>()
-    private var userInfo: Dictionary<String, NSObject> {
+    private var _userInfo: ScenarioStatus?
+    private var userInfo: ScenarioStatus? {
         get {
             return self._userInfo
         }
@@ -40,7 +40,7 @@ import ScanditBarcodeScanner
             AppDelegate.delegateInstance().userInfo = newValue
         }
     }
-    private var scenarios = Array<Dictionary<String, NSObject>>()
+    private var scenarios: [Scenario]?
 
     private var scanditBarcodePicker: SBSBarcodePicker?
     private var qrButtonItem: UIBarButtonItem?
@@ -119,7 +119,7 @@ import ScanditBarcodeScanner
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.scenarios = []
-        AppDelegate.delegateInstance().setScenarios(self.scenarios as [Any])
+        AppDelegate.delegateInstance().setScenarios(self.scenarios!)
         self.cards?.reloadData()
         self.lbUserName?.text = ""
     }
@@ -243,10 +243,9 @@ import ScanditBarcodeScanner
             let checkinCard = UserDefaults.standard.object(forKey: "CheckinCard") as? NSDictionary
             if checkinCard != nil {
                 let key = checkinCard?.object(forKey: "key") as! String
-                for item in self.scenarios {
-                    let id = item["id"] as! String
-                    if id == key {
-                        let index = self.scenarios.firstIndex(of: item)!
+                for item in self.scenarios! {
+                    if item.Id == key {
+                        let index = self.scenarios!.firstIndex(of: item)!
                         NSLog("index: \(index)")
                         self.cards?.scrollToItem(at: index, animated: true)
                     }
@@ -255,10 +254,10 @@ import ScanditBarcodeScanner
             } else {
                 // force scroll to first selected item at first load
                 if self.cards!.numberOfItems > 0 {
-                    let scenarios = AppDelegate.delegateInstance().availableScenarios as! Array<NSDictionary>
+                    let scenarios = AppDelegate.delegateInstance().availableScenarios as! Array<Scenario>
                     for scenario in scenarios {
-                        let used = scenario.object(forKey: "used") != nil
-                        let disabled = scenario.object(forKey: "disabled") != nil
+                        let used = scenario.Used != nil
+                        let disabled = scenario.Disabled != nil
                         if !used && !disabled {
                             self.cards?.scrollToItem(at: scenarios.firstIndex(of: scenario)!, animated: true)
                             break
@@ -295,37 +294,35 @@ import ScanditBarcodeScanner
                 if !(self.presentedViewController?.isKind(of: GuideViewController.self) ?? false) {
                     self.performSegue(withIdentifier: "ShowGuide", sender: self.cards)
                 }
-                self.userInfo.removeAll()
-                self.scenarios.removeAll()
+                self.scenarios?.removeAll()
                 AppDelegate.sendTag("user_id", value: "")
-                AppDelegate.delegateInstance().setScenarios(self.scenarios as [Any])
+                AppDelegate.delegateInstance().setScenarios(self.scenarios!)
                 self.reloadAndGoToCard()
             }
         } else {
             OPassAPI.GetCurrentStatus { success, obj, error in
                 if success {
                     self.hideView(.Guide, nil)
-                    let userInfo = NSMutableDictionary.init(dictionary: obj as! NSDictionary)
-                    userInfo.removeObject(forKey: "scenarios")
-                    self.userInfo = userInfo as! [String : NSObject]
-                    self.scenarios = (obj as! NSDictionary).object(forKey: "scenarios") as! [Dictionary<String, NSObject>]
+                    let userInfo = obj as! ScenarioStatus
+                    self.userInfo = userInfo
+                    self.scenarios = userInfo.Scenarios
 
                     let isHidden = !AppDelegate.haveAccessToken()
                     self.lbHi?.isHidden = isHidden
                     self.ivUserPhoto?.isHidden = isHidden
                     self.lbUserName?.isHidden = isHidden
-                    self.lbUserName?.text = self.userInfo["user_id"] as? String
-                    let userTags = NSMutableDictionary.init(dictionary: self.userInfo as [AnyHashable : Any])
-                    userTags.removeObjects(forKeys: [
-                        "_id",
-                        "first_use",
-                        "attr" // wait for cleanup
-                    ])
-                    AppDelegate.sendTags(userTags as! [AnyHashable : Any])
+                    self.lbUserName?.text = userInfo.UserId
+                    let userTags = [
+                        "event_id": userInfo.EventId,
+                        "token": userInfo.Token,
+                        "user_id": userInfo.UserId,
+                        "type": userInfo.Type
+                    ]
+                    AppDelegate.sendTags(userTags)
                     if AppDelegate.delegateInstance().isLoginSession {
                         AppDelegate.delegateInstance().displayGreetingsForLogin()
                     }
-                    AppDelegate.delegateInstance().setScenarios(self.scenarios)
+                    AppDelegate.delegateInstance().setScenarios(self.scenarios!)
                     self.reloadAndGoToCard()
                 } else {
                     func broken(_ msg: String = "Networking_Broken") {
@@ -363,9 +360,9 @@ import ScanditBarcodeScanner
 
     // MARK: - display messages
 
-    @objc func showCountdown(_ json: NSDictionary) {
-        NSLog("Show Countdown: \(json)")
-        self.performSegue(withIdentifier: "ShowCountdown", sender: json)
+    func showCountdown(_ scenario: Scenario) {
+        NSLog("Show Countdown: \(scenario)")
+        self.performSegue(withIdentifier: "ShowCountdown", sender: scenario)
     }
 
     @objc func showInvalidNetworkMsg(_ msg: String? = nil) {
@@ -600,30 +597,28 @@ import ScanditBarcodeScanner
             temp.view.frame = card.cardRect
             view = temp.view
 
-            let scenario = availableScenarios[index] as! Dictionary<String, NSObject>
+            let scenario = availableScenarios[index] as! Scenario
 
-            let id = scenario["id"] as! String
+            let id = scenario.Id
             let isCheckin = id.contains("checkin")
             let isLunch = id.contains("lunch")
             let isKit = id.lowercased().contains("kit")
             let isVipKit = id.lowercased().contains("vipkit")
             let isShirt = id.lowercased().contains("shirt")
             let isRadio = id.contains("radio")
-            let isDisabled = (scenario["disabled"] as? String ?? "").count > 0
-            let isUsed = (scenario["used"] as? Int) != nil
+            let isDisabled = scenario.Disabled != nil
+            let isUsed = scenario.Used != nil
             temp.setId(id)
 
-            let dateRange = AppDelegate.parseRange(scenario as [AnyHashable : Any])
-            let availableRange = "\(dateRange!.first!)\n\(dateRange!.last!)"
-            let dd = AppDelegate.parseScenarioType(id)
-            let did = dd!["did"]
-            let scenarioType = dd!["scenarioType"]
-            let displayText = scenario["display_text"] as! Dictionary<String, String>
-            let lang = AppDelegate.longLangUI()!
+            let dateRange = OPassAPI.ParseScenarioRange(scenario)
+            let availableRange = "\(dateRange.first!)\n\(dateRange.last!)"
+            let dd = OPassAPI.ParseScenarioType(id)
+            let did = dd["did"]
+            let scenarioType = dd["scenarioType"]
             let defaultIcon = Constants.AssertImage(name: "doc", InBundleName: "PassAssets")!
             let scenarioIcon = Constants.AssertImage(name: scenarioType as! String, InBundleName: "PassAssets") ?? defaultIcon
             temp.checkinTitle.textColor = AppDelegate.appConfigColor("CardTextColor")
-            temp.checkinTitle.text = displayText[lang]
+            temp.checkinTitle.text = scenario.DisplayText
             temp.checkinDate.textColor = AppDelegate.appConfigColor("CardTextColor")
             temp.checkinDate.text = availableRange
             temp.checkinText.textColor = AppDelegate.appConfigColor("CardTextColor")
@@ -650,11 +645,11 @@ import ScanditBarcodeScanner
                 temp.checkinText.text = NSLocalizedString("CheckinStaffRadioNotice", comment: "")
             }
             if isDisabled {
-                temp.disabled = scenario["disabled"] as! String
-                temp.checkinBtn.setTitle(scenario["disabled"] as? String, for: .normal)
+                temp.disabled = scenario.Disabled
+                temp.checkinBtn.setTitle("\(scenario.Disabled!)", for: .normal)
                 temp.checkinBtn.setGradientColor(from: AppDelegate.appConfigColor("DisabledButtonLeftColor"), to: AppDelegate.appConfigColor("DisabledButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
             } else if isUsed {
-                temp.used = scenario["used"] as! Int
+                temp.used = scenario.Used
                 if isCheckin {
                     temp.checkinBtn.setTitle(NSLocalizedString("CheckinViewButtonPressed", comment: ""), for: .normal)
                 } else {

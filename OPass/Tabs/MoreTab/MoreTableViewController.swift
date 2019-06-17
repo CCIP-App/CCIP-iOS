@@ -16,7 +16,7 @@ import Nuke
 class MoreTableViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var moreTableView: UITableView?
     var shimmeringLogoView: FBShimmeringView = FBShimmeringView.init(frame: CGRect(x: 0, y: 0, width: 500, height: 50))
-    var userInfo: NSDictionary?
+    var userInfo: ScenarioStatus?
     var moreItems: NSArray?
     var switchEventButton: UIBarButtonItem?
 
@@ -49,7 +49,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         let naviBackImg = headView.layer.sublayers?.last?.toImage()
         nvBar?.setBackgroundImage(naviBackImg, for: .default)
 
-        self.userInfo = AppDelegate.delegateInstance().userInfo as NSDictionary?
+        self.userInfo = AppDelegate.delegateInstance().userInfo as? ScenarioStatus
 
         Constants.SendFib("MoreTableViewController")
 
@@ -161,7 +161,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section:NSInteger) -> String? {
-        return self.userInfo != nil && self.userInfo!.allKeys.contains(where: { $0 as! String == "user_id" }) ? String(format: NSLocalizedString("Hi", comment: ""), self.userInfo!.object(forKey: "user_id") as! CVarArg) : nil;
+        return (self.userInfo?.UserId.count ?? 0) > 0 ? String(format: NSLocalizedString("Hi", comment: ""), self.userInfo!.UserId as CVarArg) : nil;
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

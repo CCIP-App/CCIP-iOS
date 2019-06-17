@@ -20,8 +20,8 @@ class CheckinCardViewController: UIViewController {
     public var delegate: CheckinViewController?
     public var scenario: Dictionary<String, NSObject>?
     public var id: String = ""
-    public var used: Int = 0
-    public var disabled: String = ""
+    public var used: Int?
+    public var disabled: String?
 
     private var cardView: CheckinCardView?
 
@@ -49,11 +49,11 @@ class CheckinCardViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @objc func setScenario(_ scenario: Dictionary<String, NSObject>) {
+    func setScenario(_ scenario: Scenario?) {
         self.cardView?.scenario = scenario
-        guard let id = scenario["id"] as? String else { return }
+        guard let id = scenario?.Id else { return }
 
-        if id == "vipkit" && scenario["disabled"] == nil {
+        if id == "vipkit" && scenario?.Disabled == nil {
             self.cardView?.layer.shadowColor = UIColor.colorFromHtmlColor("#cff1").cgColor
             self.cardView?.layer.shadowRadius = 20
             let animation = CABasicAnimation.init(keyPath: "shadowOpacity")
@@ -67,19 +67,19 @@ class CheckinCardViewController: UIViewController {
         }
     }
 
-    @objc func setId(_ id: String) {
+    func setId(_ id: String) {
         self.cardView!.id = id
     }
 
-    @objc func setUsed(_ used: Int) {
+    func setUsed(_ used: Int?) {
         self.cardView!.used = used
     }
 
-    @objc func setDisabled(_ disabled: String) {
+    func setDisabled(_ disabled: String?) {
         self.cardView!.disabled = disabled
     }
 
-    @objc func setDelegate(_ delegate: CheckinViewController) {
+    func setDelegate(_ delegate: CheckinViewController) {
         self.cardView!.delegate = delegate
     }
 }

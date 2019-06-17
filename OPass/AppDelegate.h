@@ -23,7 +23,7 @@
 @property (strong, nonatomic) UIWindow * _Null_unspecified window;
 @property (strong, nonatomic) id _Null_unspecified beacon;
 @property (strong, readonly, nonatomic) SLColorArt * _Null_unspecified appArt;
-@property (strong, nonatomic) NSDictionary * _Null_unspecified userInfo;
+@property (strong, nonatomic) id _Null_unspecified userInfo;
 @property (readonly, nonatomic) BOOL isLoginSession;
 #ifndef IN_BRIDGING_HEADER
 @property (strong, nonatomic) CheckinViewController * _Null_unspecified checkinView;
@@ -45,7 +45,6 @@
 + (void)setIsDevMode:(BOOL)isDevMode;
 + (BOOL)isDevMode;
 
-+ (NSArray * _Null_unspecified)parseRange:(NSDictionary * _Nonnull)scenario;
 + (BOOL)haveAccessToken;
 + (void)setAccessToken:(NSString * _Null_unspecified)accessToken;
 + (NSString * _Null_unspecified)accessToken;
@@ -55,7 +54,6 @@
 - (void)setScenarios:( NSArray * _Nonnull )scenarios;
 
 + (void)setLoginSession:(BOOL)isLogin;
-+ (NSDictionary * _Null_unspecified)parseScenarioType:(NSString * _Nonnull)id;
 
 + (NSString * _Nonnull)currentLangUI;
 + (NSString * _Nonnull)shortLangUI;
