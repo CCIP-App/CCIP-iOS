@@ -21,6 +21,7 @@ ${BUILT_PRODUCTS_DIR}/Shimmer/Shimmer.framework
 ${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
 ${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework
+${BUILT_PRODUCTS_DIR}/TimelineTableViewCell/TimelineTableViewCell.framework
 ${BUILT_PRODUCTS_DIR}/UICKeyChainStore/UICKeyChainStore.framework
 ${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework
 ${BUILT_PRODUCTS_DIR}/UIView+FDCollapsibleConstraints/UIView_FDCollapsibleConstraints.framework

@@ -1,0 +1,6 @@
+framework module TimelineTableViewCell {
+  umbrella header "TimelineTableViewCell-umbrella.h"
+
+  export *
+  module * { export * }
+}
