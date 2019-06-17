@@ -53,6 +53,28 @@ class CheckinCardView: UIView {
         return self.scenario
     }
 
+    func buttonUpdate(_ intermediate: (() -> ())?, _ completeion: (() -> ())?, _ cleanup: (() -> ())?) {
+        UIView.animate(withDuration: 0.75, animations: {
+            intermediate?()
+        }) { finished in
+            if finished {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + (DispatchTimeInterval.milliseconds(Int(750)))) {
+                    UIView.animate(withDuration: 0.75, animations: {
+                        completeion?()
+                    }) { finished in
+                        if finished {
+                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + (DispatchTimeInterval.milliseconds(Int(750)))) {
+                                UIView.animate(withDuration: 0.75) {
+                                    cleanup?()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     @IBAction func checkinBtnTouched(_ sender: Any) {
         var ac: UIAlertController? = nil
         var feedbackType: UIImpactFeedbackType? = UIImpactFeedbackType(rawValue: 0)
@@ -61,99 +83,68 @@ class CheckinCardView: UIView {
         let nowTime = Date.init()
         let isCheckin = (AppDelegate.parseScenarioType(self.id)["scenarioType"] as! String) == "checkin"
 
-        //    __block AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         let use = {
-        //    void (^use)(void) = ^{
-        //        NSString *useURL = [Constants URL_USEWithToken:[AppDelegate accessToken]
-        //                                              scenario:self.id];
-        //        NSURL *url = [NSURL URLWithString:useURL];
-        //        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        //        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        //            NSLog(@"JSON: %@", responseObject);
-        //            if (responseObject != nil) {
-        //                [self setUsed:[NSNumber numberWithBool:YES]];
-        //                if ([[responseObject objectForKey:@"message"] isEqual:@"invalid token"]) {
-        //                    NSLog(@"%@", [responseObject objectForKey:@"message"]);
-        //                    [self.checkinBtn setGradientColorFrom:[UIColor redColor]
-        //                                                       to:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
-        //                                               startPoint:CGPointMake(.2, .8)
-        //                                                  toPoint:CGPointMake(1, .5)];
-        //                } else if ([[responseObject objectForKey:@"message"] isEqual:@"has been used"]) {
-        //                    [self showCountdown];
-        //                    NSLog(@"%@", [responseObject objectForKey:@"message"]);
-        //                    [UIView animateWithDuration:.25f
-        //                                     animations:^{
-        //                                         [self.checkinBtn setGradientColorFrom:[UIColor orangeColor]
-        //                                                                            to:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
-        //                                                                    startPoint:CGPointMake(.2, .8)
-        //                                                                       toPoint:CGPointMake(1, .5)];
-        //                                     }
-        //                                     completion:^(BOOL finished) {
-        //                                         if (finished) {
-        //                                             [UIView animateWithDuration:1.75f
-        //                                                              animations:^{
-        //                                                                  [self.checkinBtn setGradientColorFrom:[AppDelegate AppConfigColor:@"UsedButtonLeftColor"]
-        //                                                                                                     to:[AppDelegate AppConfigColor:@"UsedButtonRightColor"]
-        //                                                                                             startPoint:CGPointMake(.2, .8)
-        //                                                                                                toPoint:CGPointMake(1, .5)];
-        //                                                              }];
-        //                                         }
-        //                                     }];
-        //                } else if ([[responseObject objectForKey:@"message"] isEqual:@"link expired/not available now"]) {
-        //                    NSLog(@"%@", [responseObject objectForKey:@"message"]);
-        //                    [UIView animateWithDuration:.25f
-        //                                     animations:^{
-        //                                         [self.checkinBtn setGradientColorFrom:[UIColor orangeColor]
-        //                                                                            to:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
-        //                                                                    startPoint:CGPointMake(.2, .8)
-        //                                                                       toPoint:CGPointMake(1, .5)];
-        //                                         [self.checkinBtn setTitle:NSLocalizedString(@"ExpiredOrNotAvailable", nil)
-        //                                                          forState:UIControlStateNormal];
-        //                                     }
-        //                                     completion:^(BOOL finished) {
-        //                                         if (finished) {
-        //                                             [UIView animateWithDuration:1.75f
-        //                                                              animations:^{
-        //                                                                  [self.checkinBtn setGradientColorFrom:[AppDelegate AppConfigColor:@"CheckinButtonLeftColor"]
-        //                                                                                                     to:[AppDelegate AppConfigColor:@"CheckinButtonRightColor"]
-        //                                                                                             startPoint:CGPointMake(.2, .8)
-        //                                                                                                toPoint:CGPointMake(1, .5)];
-        //                                                              }
-        //                                                              completion:^(BOOL finished) {
-        //                                                                  if (finished) {
-        //                                                                      [UIView animateWithDuration:.25f
-        //                                                                                       animations:^{
-        //                                                                                           [self.checkinBtn setTitle:NSLocalizedString(isCheckin ? @"CheckinViewButton" : @"UseButton", nil)
-        //                                                                                                            forState:UIControlStateNormal];
-        //                                                                                       }];
-        //                                                                  }
-        //                                                              }];
-        //                                         }
-        //                                     }];
-        //                } else {
-        //                    [self updateScenario:[responseObject objectForKey:@"scenarios"]];
-        //                    [self showCountdown];
-        //                    [self.checkinBtn setGradientColorFrom:[AppDelegate AppConfigColor:@"DisabledButtonLeftColor"]
-        //                                                       to:[AppDelegate AppConfigColor:@"DisabledButtonRightColor"]
-        //                                               startPoint:CGPointMake(.2, .8)
-        //                                                  toPoint:CGPointMake(1, .5)];
-        //                    if (isCheckin) {
-        //                        [self.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil) forState:UIControlStateNormal];
-        //                        [[AppDelegate delegateInstance].checkinView reloadCard];
-        //                    } else {
-        //                        [self.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil) forState:UIControlStateNormal];
-        //                    }
-        //                    [[AppDelegate delegateInstance] setDefaultShortcutItems];
-        //                }
-        //            } else {
-        //                // Invalid Network
-        //                [self.delegate showInvalidNetworkMsg];
-        //                // UIAlertController *ac = [UIAlertController alertOfTitle:NSLocalizedString(@"NetworkAlert", nil) withMessage:NSLocalizedString(@"NetworkAlertDesc", nil) cancelButtonText:NSLocalizedString(@"GotIt", nil) cancelStyle:UIAlertActionStyleCancel cancelAction:nil];
-        //                // [ac showAlert:nil];
-        //            }
-        //        }];
-        //        [dataTask resume];
-        //    };
+            OPassAPI.UseScenario(OPassAPI.currentEvent, AppDelegate.accessToken(), self.id) { (success, obj, error) in
+                DispatchQueue.main.async {
+                    if success {
+//                        [self updateScenario:[responseObject objectForKey:@"scenarios"]];
+//                        [self showCountdown];
+//                        [self.checkinBtn setGradientColorFrom:[AppDelegate AppConfigColor:@"DisabledButtonLeftColor"]
+//                            to:[AppDelegate AppConfigColor:@"DisabledButtonRightColor"]
+//                            startPoint:CGPointMake(.2, .8)
+//                            toPoint:CGPointMake(1, .5)];
+//                        if (isCheckin) {
+//                            [self.checkinBtn setTitle:NSLocalizedString(@"CheckinViewButtonPressed", nil) forState:UIControlStateNormal];
+//                            [[AppDelegate delegateInstance].checkinView reloadCard];
+//                        } else {
+//                            [self.checkinBtn setTitle:NSLocalizedString(@"UseButtonPressed", nil) forState:UIControlStateNormal];
+//                        }
+//                        [[AppDelegate delegateInstance] setDefaultShortcutItems];
+                    } else {
+                        func broken(_ msg: String = "Networking_Broken") {
+                            self.delegate?.showInvalidNetworkMsg(NSLocalizedString(msg, comment: ""))
+
+                        }
+                        guard let sr = obj as? OPassNonSuccessDataResponse else {
+                            broken()
+                            return
+                        }
+                        switch (sr.Response?.statusCode) {
+                        case 400:
+                            guard let responseObject = sr.Obj as? NSDictionary else { return }
+                            let msg = responseObject.object(forKey: "message") as! String
+                            NSLog("msg: \(msg)")
+                            switch (msg) {
+                            case "invalid token":
+                                self.buttonUpdate({
+                                    self.checkinBtn?.setGradientColor(from: .red, to: AppDelegate.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                }, nil, nil)
+                            case "has been used":
+                                self.showCountdown()
+                                self.buttonUpdate({
+                                    self.checkinBtn?.setGradientColor(from: .orange, to: AppDelegate.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                }, {
+                                    self.checkinBtn?.setGradientColor(from: AppDelegate.appConfigColor("UsedButtonLeftColor"), to: AppDelegate.appConfigColor("UsedButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                }, nil)
+                            case "link expired/not available now":
+                                self.buttonUpdate({
+                                    self.checkinBtn?.setGradientColor(from: .orange, to: AppDelegate.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                }, {
+                                    self.checkinBtn?.setGradientColor(from: AppDelegate.appConfigColor("CheckinButtonLeftColor"), to: AppDelegate.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                }) {
+                                    self.checkinBtn?.setTitle(NSLocalizedString(isCheckin ? "CheckinViewButton" : "UseButton", comment: ""), for: .normal)
+                                }
+                            default:
+                                break
+                            }
+                        case 403:
+                            broken("Networking_WrongWiFi")
+                        default:
+                            broken()
+                        }
+                    }
+                }
+            }
         }
 
         if self.disabled.count > 0 {

@@ -368,8 +368,8 @@ import ScanditBarcodeScanner
         self.performSegue(withIdentifier: "ShowCountdown", sender: json)
     }
 
-    @objc func showInvalidNetworkMsg() {
-        self.performSegue(withIdentifier: "ShowInvalidNetworkMsg", sender: nil)
+    @objc func showInvalidNetworkMsg(_ msg: String? = nil) {
+        self.performSegue(withIdentifier: "ShowInvalidNetworkMsg", sender: msg)
     }
 
     // MARK: - QR Code Scanner

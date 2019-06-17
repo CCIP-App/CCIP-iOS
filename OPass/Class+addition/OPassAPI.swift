@@ -592,8 +592,14 @@ class OPassAPI: NSObject {
                 completion?(false, nil, error)
                 }.then { (obj: Any?) -> Void in
                     if obj != nil {
-                        let used = JSON(obj!)
-                        completion?(true, used, OPassSuccessError)
+                        switch String(describing: type(of: obj!)) {
+                        case OPassNonSuccessDataResponse.className:
+                            let sr = obj as! OPassNonSuccessDataResponse
+                            completion?(false, sr, NSError(domain: "OPass Scenario can not use because current is Not in Event or Not a Valid Token", code: 3, userInfo: nil))
+                        default:
+                            let used = JSON(obj!)
+                            completion?(true, used, OPassSuccessError)
+                        }
                     } else {
                         completion?(false, obj, NSError(domain: "OPass Scenario can not use by return unexcepted response", code: 2, userInfo: nil))
                     }
