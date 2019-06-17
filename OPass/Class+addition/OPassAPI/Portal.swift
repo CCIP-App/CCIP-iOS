@@ -120,15 +120,15 @@ extension OPassAPI {
     static func SetEvent(_ eventId: String, _ onceErrorCallback: OPassErrorCallback) -> Promise<EventInfo> {
         return OPassAPI.InitializeRequest("https://portal.opass.app/events/\(eventId)/", onceErrorCallback)
             .then { (infoObj: Any) -> EventInfo in
-                let eventInfo = EventInfo(JSON(infoObj))
-                currentEvent = JSONSerialization.stringify(infoObj as Any)!
-                return eventInfo
+                OPassAPI.eventInfo = EventInfo(JSON(infoObj))
+                OPassAPI.currentEvent = JSONSerialization.stringify(infoObj as Any)!
+                return OPassAPI.eventInfo!
         }
     }
 
     static func CleanupEvents() {
-        eventInfo = nil
-        currentEvent = ""
+        OPassAPI.eventInfo = nil
+        OPassAPI.currentEvent = ""
     }
 
     static func DoLogin(_ eventId: String, _ token: String, _ completion: OPassCompletionCallback) {
