@@ -16,7 +16,7 @@ protocol OPassData: Codable {
 
 extension OPassData {
     static var className: String {
-        return String(describing: type(of: self))
+        return String(describing: self)
     }
 }
 
