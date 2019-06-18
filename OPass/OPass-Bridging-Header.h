@@ -15,7 +15,6 @@
 #import "NSData+PMUtils.h"
 #import "Constants.h"
 #import "NSInvocation+addition.h"
-#import "StatusViewController.h"
 #import "headers.h"
 #define IN_BRIDGING_HEADER
 #import "AppDelegate.h"

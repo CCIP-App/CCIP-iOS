@@ -140,7 +140,7 @@ import ScanditBarcodeScanner
             self.guideViewController = destination as? GuideViewController
         case StatusViewController.className:
             self.statusViewController = destination as? StatusViewController
-            self.statusViewController?.scenario = sender as? [AnyHashable : Any]
+            self.statusViewController?.scenario = sender as? Scenario
         case InvalidNetworkMessageViewController.className:
             let inmvc = destination as! InvalidNetworkMessageViewController
             inmvc.message = sender as! String
