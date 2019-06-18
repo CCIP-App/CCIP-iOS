@@ -19,7 +19,7 @@ class StatusViewController: UIViewController {
     @IBOutlet weak var noticeTextLabel: UILabel!
     @IBOutlet weak var kitTitle: UILabel!
     @IBOutlet weak var nowTimeLabel: UILabel!
-    
+
     private var isRelayout = false
     private var timer: Timer?
     private var countTime: Date?
@@ -29,177 +29,152 @@ class StatusViewController: UIViewController {
     private var formatter: DateFormatter?
     private var countDownEnd = false
     private var needCountdown = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
-        // SEND_FIB("StatusViewController")
+        Constants.SendFib("StatusViewController")
         view.autoresizingMask = []
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let isKit = (scenario?.Id == "kit") || (scenario?.Id == "vipkit")
-        let dietType = scenario?.Attributes["diet"] as? String
-        statusMessageLabel.text = isKit ? NSLocalizedString("StatusNotice", comment: "") : NSLocalizedString(dietType ?? "" + ("Lunch"), comment: "")
-        noticeTextLabel.text = ""
+        let isKit = [ "kit", "vipkit" ].contains(self.scenario!.Id)
+        let dietType = self.scenario!.Attributes["diet"] as! String
+        self.statusMessageLabel.text = NSLocalizedString(isKit ? "StatusNotice" : "\(dietType)Lunch", comment: "")
+        self.noticeTextLabel.text = ""
         if !isKit {
-            noticeTextLabel.text = NSLocalizedString("UseNoticeText", comment: "")
-            statusMessageLabel.font = UIFont.systemFont(ofSize: 48.0)
-            kitTitle.text = ""
+            self.noticeTextLabel.text = NSLocalizedString("UseNoticeText", comment: "")
+            self.statusMessageLabel.font = UIFont.systemFont(ofSize: 48.0)
+            self.kitTitle.text = ""
             if (dietType == "meat") {
-                statusMessageLabel.textColor = UIColor.colorFromHtmlColor("#f8e71c")
-                visualEffectView.effect = UIBlurEffect(style: .dark)
-                noticeTextLabel.textColor = UIColor.white
-                nowTimeLabel.textColor = UIColor.white
+                self.statusMessageLabel.textColor = UIColor.colorFromHtmlColor("#f8e71c")
+                self.visualEffectView.effect = UIBlurEffect(style: .dark)
+                self.noticeTextLabel.textColor = UIColor.white
+                self.nowTimeLabel.textColor = UIColor.white
             }
             if (dietType == "vegetarian") {
-                statusMessageLabel.textColor = UIColor.colorFromHtmlColor("#4a90e2")
-                visualEffectView.effect = UIBlurEffect(style: .light)
-                noticeTextLabel.textColor = UIColor.black
-                nowTimeLabel.textColor = UIColor.black
+                self.statusMessageLabel.textColor = UIColor.colorFromHtmlColor("#4a90e2")
+                self.visualEffectView.effect = UIBlurEffect(style: .light)
+                self.noticeTextLabel.textColor = UIColor.black
+                self.nowTimeLabel.textColor = UIColor.black
             }
         } else {
-//            let displayText = scenario["display_text"] as? [AnyHashable : Any]
-//            let lang = AppDelegate.longLangUI()
-//            kitTitle.text = displayText?[lang] as? String
-            kitTitle.text = scenario?.DisplayText
+            self.kitTitle.text = self.scenario!.DisplayText
         }
-        let attr = scenario?.Attributes
-        if attr?._data.arrayObject?.count ?? 0 > 0 {
-            var error: Error?
-            var attrData: Data? = nil
-            do {
-                if let attr = attr {
-                    attrData = try JSONSerialization.data(withJSONObject: attr, options: .prettyPrinted)
-                }
-            } catch {
-            }
-            var attrText: String? = nil
-            if let attrData = attrData {
-                attrText = String(data: attrData, encoding: .utf8)
-            }
-            attributesLabel.text = attrText
+        let attr = self.scenario!.Attributes
+        if attr._data.dictionaryValue.count > 0 {
+            let attrData = try! JSONSerialization.data(withJSONObject: attr, options: .prettyPrinted)
+            self.attributesLabel.text = String(data: attrData, encoding: .utf8)
         } else {
-            attributesLabel.text = ""
+            self.attributesLabel.text = ""
         }
-        self.needCountdown = ((scenario?.Countdown) ?? 0 > 0)
-        countdownLabel.isHidden = !needCountdown
+        self.needCountdown = (self.scenario!.Countdown ?? 0) > 0
+        self.countdownLabel.isHidden = !self.needCountdown
         self.countDownEnd = false
         self.countTime = Date()
-        maxValue = scenario!.Used! + scenario!.Countdown! - Int(self.countTime!.timeIntervalSince1970)
-        
-        self.interval = Date().timeIntervalSince(countTime!)
-        self.countDown = (maxValue - Int(interval))
+        self.maxValue = self.scenario!.Used! + self.scenario!.Countdown! - Int(self.countTime!.timeIntervalSince1970)
+
+        self.interval = Date().timeIntervalSince(self.countTime!)
+        self.countDown = (self.maxValue - Int(self.interval))
         self.formatter = DateFormatter()
-        formatter!.dateFormat = "yyyy/MM/dd HH:mm:ss"
-        countdownLabel.text = ""
-        nowTimeLabel.text = ""
-        view.isHidden = !needCountdown
+        self.formatter!.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        self.countdownLabel.text = ""
+        self.nowTimeLabel.text = ""
+        self.view.isHidden = !self.needCountdown
     }
-    
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
-        if isRelayout != true {
-            let mnvc = presentingViewController as? MainNavViewController
+
+        if self.isRelayout != true {
+            let mnvc = self.presentingViewController as? MainNavViewController
             let cvc = mnvc?.children.first as? CheckinViewController
             let topStart = cvc?.controllerTopStart
-            view.frame = CGRect(x: 0.0, y: -1.0 * (topStart ?? 0.0), width: view.frame.size.width, height: view.frame.size.height + (topStart ?? 0.0))
-            isRelayout = true
+            view.frame = CGRect(x: 0.0, y: -1.0 * (topStart ?? 0.0), width: self.view.frame.size.width, height: self.view.frame.size.height + (topStart ?? 0.0))
+            self.isRelayout = true
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        startCountDown()
+        self.startCountDown()
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        dismissStatus()
+        self.dismissStatus()
     }
-    
+
     func setScenario(_ scenario: Scenario) {
         self.scenario = scenario
     }
-    
+
     func startCountDown() {
         self.countTime = Date()
-        timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(StatusViewController.updateCountDown), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(StatusViewController.updateCountDown), userInfo: nil, repeats: true)
     }
-    
+
     @objc func updateCountDown() {
-        var color = view.tintColor
+        var color = self.view.tintColor
         let now = Date()
         self.interval = now.timeIntervalSince(self.countTime!)
-        
-        self.countDown = (maxValue - Int(interval))
-        if countDown <= 0 {
+
+        self.countDown = (self.maxValue - Int(self.interval))
+        if self.countDown <= 0 {
             self.countDown = 0
-            color = UIColor.red
-            if countDownEnd == false {
-                ((next as? UIViewController)?.navigationItem.leftBarButtonItem)?.isEnabled = true
-                timer?.invalidate()
-                timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.updateCountDown), userInfo: nil, repeats: true)
+            color = .red
+            if self.countDownEnd == false {
+                ((self.next as? UIViewController)?.navigationItem.leftBarButtonItem)?.isEnabled = true
+                self.timer?.invalidate()
+                self.timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.updateCountDown), userInfo: nil, repeats: true)
                 self.countDownEnd = true
-                
-                if needCountdown {
-                    let delaySec = Int(0.5)
+
+                if self.needCountdown {
+                    let delayMSec = DispatchTimeInterval.milliseconds(Int(500))
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Double(delaySec) * Double(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayMSec) {
                         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Double(delaySec) * Double(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: {
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayMSec) {
                             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Double(delaySec) * Double(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: {
+                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayMSec) {
                                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Double(delaySec) * Double(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: {
+                                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayMSec) {
                                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Double(delaySec) * Double(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: {
+                                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayMSec) {
                                         self.dismissStatus()
-                                    })
-                                })
-                            })
-                        })
-                    })
-                }else {
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
                     self.dismissStatus()
                 }
-            } else if countDown >= (maxValue / 2) {
-                let at_ = 1 - ((countDown - (maxValue / 2)) / (maxValue - (maxValue / 2)))
-                color = UIColor.colorFrom(view.tintColor, to: UIColor.purple, at: Double(at_))
-            } else if countDown >= (maxValue / 6) {
-                let at_ = 1 - ((countDown - (maxValue / 6)) / (maxValue - ((maxValue / 2) + (maxValue / 6))))
-                color = UIColor.colorFrom(UIColor.purple, to: UIColor.orange, at: Double(at_))
-            } else if countDown > 0 {
-                let at_ = 1 - ((countDown - 0) / (maxValue - (maxValue - (maxValue / 6))))
-                color = UIColor.colorFrom(UIColor.orange, to: UIColor.red, at: Double(at_))
+            } else if self.countDown >= (self.maxValue / 2) {
+                let at_ = 1 - ((self.countDown - (self.maxValue / 2)) / (self.maxValue - (self.maxValue / 2)))
+                color = UIColor.colorFrom(view.tintColor, to: .purple, at: Double(at_))
+            } else if self.countDown >= (self.maxValue / 6) {
+                let at_ = 1 - ((self.countDown - (self.maxValue / 6)) / (self.maxValue - ((self.maxValue / 2) + (self.maxValue / 6))))
+                color = UIColor.colorFrom(.purple, to: .orange, at: Double(at_))
+            } else if self.countDown > 0 {
+                let at_ = 1 - ((self.countDown - 0) / (self.maxValue - (self.maxValue - (self.maxValue / 6))))
+                color = UIColor.colorFrom(.orange, to: .red, at: Double(at_))
             }
-            countdownLabel.textColor = color
-            countdownLabel.text = String(format: "%0.3f", countDown)
-            nowTimeLabel.text = formatter?.string(from: now)
+            self.countdownLabel.textColor = color
+            self.countdownLabel.text = String(format: "%0.3f", self.countDown)
+            self.nowTimeLabel.text = self.formatter?.string(from: now)
         }
     }
-    
+
     func dismissStatus() {
-        if needCountdown {
+        if self.needCountdown {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(5 * Double(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: {
                 self.dismiss(animated: true)
             })
         } else {
-            dismiss(animated: false)
+            self.dismiss(animated: false)
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
