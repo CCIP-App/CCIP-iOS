@@ -91,6 +91,7 @@
 "QRFileNotAvailableDesc" = "該圖檔無法擷取出 QR Code，請重試";
 "Networking_Broken" = "網路連線異常";
 "Networking_WrongWiFi" = "請連上大會提供的無線網路，才能使用";
+"Data_Wrong" = "資料回應格式錯誤或標頭不正確導致無法序列化";
 "LoginGreeting" = "嗨 %@，歡迎您加入大會，盡情享受這場饗宴吧！";
 "AfterEventMessage" = "在大會結束之後，我們需要您填寫一份問卷，感謝您！";
 "AfterEventActionTitle" = "開啟會後問卷";

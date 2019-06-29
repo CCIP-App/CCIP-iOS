@@ -144,8 +144,8 @@ extension OPassAPI {
                     switch vcName {
                     case OPassEventsController.className:
                         DispatchQueue.main.sync {
-                            AppDelegate.setLoginSession(false)
-                            AppDelegate.setAccessToken("")
+                            Constants.isLoginSession = false
+                            Constants.accessToken = ""
                         }
                         done = true
                         resolve()

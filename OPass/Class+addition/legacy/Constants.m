@@ -14,9 +14,13 @@
 
 @implementation Constants
 
-#pragma mark - SRC
+#pragma mark - Defines
 + (NSString *)SourceRoot {
     return SOURCE_ROOT;
+}
+
++ (NSString *)AppName {
+    return APP_NAME;
 }
 
 @end

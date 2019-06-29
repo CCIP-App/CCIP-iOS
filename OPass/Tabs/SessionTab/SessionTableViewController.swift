@@ -55,7 +55,8 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
     func parseFavorites() {
         self.sessionTimes.removeAll()
         self.sessionSections.removeAll()
-        let favList = OPassAPI.GetFavoritesList(OPassAPI.currentEvent, AppDelegate.accessToken())
+        guard let token = Constants.accessToken else { return }
+        let favList = OPassAPI.GetFavoritesList(OPassAPI.currentEvent, token)
         for session in (self.pagerController?.programs!.Sessions.filter { (favList.contains($0.Id)) })! {
             let startTime = Constants.DateFromString(session.Start)
             let start = Constants.DateToDisplayTimeString(startTime)
@@ -116,8 +117,8 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = AppDelegate.appConfigColor("SessionSectionTitleTextColor")
-        view.tintColor = AppDelegate.appConfigColor("SessionSectionTitleBackgroundColor")
+        header.textLabel?.textColor = Constants.appConfigColor("SessionSectionTitleTextColor")
+        view.tintColor = Constants.appConfigColor("SessionSectionTitleBackgroundColor")
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

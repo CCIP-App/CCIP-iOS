@@ -151,7 +151,7 @@ struct ProgramSession: OPassData {
         let name = member.lowercased()
         switch name {
         case "title", "description":
-            return self._data[AppDelegate.shortLangUI()].dictionaryValue[name]?.stringValue ?? ""
+            return self._data[Constants.shortLangUI].dictionaryValue[name]?.stringValue ?? ""
         default:
             return ""
         }
@@ -177,7 +177,7 @@ struct ProgramSpeaker: OPassData {
         let name = member.lowercased()
         switch name {
         case "name", "bio":
-            return self._data[AppDelegate.shortLangUI()].dictionaryValue[name]?.stringValue ?? ""
+            return self._data[Constants.shortLangUI].dictionaryValue[name]?.stringValue ?? ""
         default:
             return ""
         }
@@ -188,7 +188,7 @@ struct ProgramSessionType: OPassData {
     var _data: JSON
     var Id: String
     var Name: String {
-        return self._data[AppDelegate.shortLangUI()].dictionaryValue["name"]?.stringValue ?? ""
+        return self._data[Constants.shortLangUI].dictionaryValue["name"]?.stringValue ?? ""
     }
     init(_ data: JSON) {
         self._data = data
@@ -200,7 +200,7 @@ struct ProgramRoom: OPassData {
     var _data: JSON
     var Id: String
     var Name: String {
-        return self._data[AppDelegate.shortLangUI()].dictionaryValue["name"]?.stringValue ?? ""
+        return self._data[Constants.shortLangUI].dictionaryValue["name"]?.stringValue ?? ""
     }
     init(_ data: JSON) {
         self._data = data
@@ -212,7 +212,7 @@ struct ProgramsTag: OPassData {
     var _data: JSON
     var Id: String
     var Name: String {
-        return self._data[AppDelegate.shortLangUI()].dictionaryValue["name"]?.stringValue ?? ""
+        return self._data[Constants.shortLangUI].dictionaryValue["name"]?.stringValue ?? ""
     }
     init(_ data: JSON) {
         self._data = data

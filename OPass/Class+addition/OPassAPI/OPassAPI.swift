@@ -14,6 +14,9 @@ import SwiftyJSON
 class OPassAPI: NSObject {
     static var currentEvent: String = ""
     static var eventInfo: EventInfo? = nil
+    static var userInfo: ScenarioStatus? = nil
+    static var scenarios: [Scenario]? = nil
+    static var isLoginSession: Bool = false
 
     static func InitializeRequest(_ url: String, maxRetry: UInt = 10, _ onceErrorCallback: OPassErrorCallback) -> Promise<Any?> {
         var retryCount: UInt = 0

@@ -85,20 +85,20 @@ class CheckinCardView: UIView {
         let isCheckin = (OPassAPI.ParseScenarioType(self.id)["scenarioType"] as! String) == "checkin"
 
         let use = {
-            OPassAPI.UseScenario(OPassAPI.currentEvent, AppDelegate.accessToken(), self.id) { (success, obj, error) in
+            OPassAPI.UseScenario(OPassAPI.currentEvent, Constants.accessToken!, self.id) { (success, obj, error) in
                 if success {
                     let _ = self.updateScenario([obj as! Scenario])
                     self.showCountdown()
                     self.buttonUpdate({
-                        self.checkinBtn?.setGradientColor(from: AppDelegate.appConfigColor("DisabledButtonLeftColor"), to: AppDelegate.appConfigColor("DisabledButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                        self.checkinBtn?.setGradientColor(from: Constants.appConfigColor("DisabledButtonLeftColor"), to: Constants.appConfigColor("DisabledButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                     }, nil, nil)
                     if isCheckin {
                         self.checkinBtn?.setTitle(NSLocalizedString("CheckinViewButtonPressed", comment: ""), for: .normal)
-                        (AppDelegate.delegateInstance().checkinView as! CheckinViewController).reloadCard()
+                        AppDelegate.delegateInstance.checkinView?.reloadCard()
                     } else {
                         self.checkinBtn?.setTitle(NSLocalizedString("UseButtonPressed", comment: ""), for: .normal)
                     }
-                    AppDelegate.delegateInstance().setDefaultShortcutItems()
+                    AppDelegate.delegateInstance.setDefaultShortcutItems()
                 } else {
                     func broken(_ msg: String = "Networking_Broken") {
                         self.delegate?.showInvalidNetworkMsg(NSLocalizedString(msg, comment: ""))
@@ -116,20 +116,20 @@ class CheckinCardView: UIView {
                         switch (msg) {
                         case "invalid token":
                             self.buttonUpdate({
-                                self.checkinBtn?.setGradientColor(from: .red, to: AppDelegate.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                self.checkinBtn?.setGradientColor(from: .red, to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                             }, nil, nil)
                         case "has been used":
                             self.showCountdown()
                             self.buttonUpdate({
-                                self.checkinBtn?.setGradientColor(from: .orange, to: AppDelegate.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                             }, {
-                                self.checkinBtn?.setGradientColor(from: AppDelegate.appConfigColor("UsedButtonLeftColor"), to: AppDelegate.appConfigColor("UsedButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                self.checkinBtn?.setGradientColor(from: Constants.appConfigColor("UsedButtonLeftColor"), to: Constants.appConfigColor("UsedButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                             }, nil)
                         case "link expired/not available now":
                             self.buttonUpdate({
-                                self.checkinBtn?.setGradientColor(from: .orange, to: AppDelegate.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                             }, {
-                                self.checkinBtn?.setGradientColor(from: AppDelegate.appConfigColor("CheckinButtonLeftColor"), to: AppDelegate.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                self.checkinBtn?.setGradientColor(from: Constants.appConfigColor("CheckinButtonLeftColor"), to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                             }) {
                                 self.checkinBtn?.setTitle(NSLocalizedString(isCheckin ? "CheckinViewButton" : "UseButton", comment: ""), for: .normal)
                             }
@@ -147,11 +147,11 @@ class CheckinCardView: UIView {
 
         if self.disabled != nil {
             UIView.animate(withDuration: 0.25, animations: {
-                self.checkinBtn?.setGradientColor(from: .orange, to: AppDelegate.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
             }) { finished in
                 if finished {
                     UIView.animate(withDuration: 1.75) {
-                        self.checkinBtn?.setGradientColor(from: AppDelegate.appConfigColor("DisabledButtonLeftColor"), to: AppDelegate.appConfigColor("DisabledButtonLeftColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                        self.checkinBtn?.setGradientColor(from: Constants.appConfigColor("DisabledButtonLeftColor"), to: Constants.appConfigColor("DisabledButtonLeftColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                     }
                 }
             }

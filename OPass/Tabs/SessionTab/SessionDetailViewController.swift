@@ -38,7 +38,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
         // Do any additional setup after loading the view.
         Constants.SendFib("SessionDetailViewController")
 
-        self.vwHeader?.setGradientColor(from: AppDelegate.appConfigColor("SessionTitleLeftColor"), to: AppDelegate.appConfigColor("SessionTitleRightColor"), startPoint: CGPoint(x: 1, y: 0.5), toPoint: CGPoint(x: -0.4, y: 0.5))
+        self.vwHeader?.setGradientColor(from: Constants.appConfigColor("SessionTitleLeftColor"), to: Constants.appConfigColor("SessionTitleRightColor"), startPoint: CGPoint(x: 1, y: 0.5), toPoint: CGPoint(x: -0.4, y: 0.5))
 
         // following constraint for fix the storyboard autolayout broken the navigation bar alignment
         self.view.addConstraint(NSLayoutConstraint.init(item: self.vwHeader!, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0))
@@ -57,10 +57,10 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
             self.lbTimeText
         ]
         for lb in lbsHeader {
-            lb?.textColor = AppDelegate.appConfigColor("SessionDetailHeaderTextColor")
+            lb?.textColor = Constants.appConfigColor("SessionDetailHeaderTextColor")
         }
         for lb in lbsMeta {
-            lb?.textColor = AppDelegate.appConfigColor("SessionMetaHeaderTextColor")
+            lb?.textColor = Constants.appConfigColor("SessionMetaHeaderTextColor")
         }
         for lb in (lbsHeader + lbsMeta) {
             lb?.layer.shadowColor = UIColor.gray.cgColor
@@ -79,7 +79,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        let markdownStyleString = "<style>h1, h2 {color: \(AppDelegate.appConfig("Themes.CardTextColor"))} h3, h4, h5, h6, h7, span, div, p {color: black;}</style>\n\n"
+        let markdownStyleString = "<style>h1, h2 {color: \(Constants.appConfig("Themes.CardTextColor"))} h3, h4, h5, h6, h7, span, div, p {color: black;}</style>\n\n"
         self.downView = MarkdownView.init(CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.vContent!.bounds.size.height), withMarkdown: markdownStyleString, toView: self.vContent!)
         let description = self.session!["description"]
         NSLog("Set description: \(description)")
@@ -138,7 +138,8 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
     }
 
     func checkFavoriteState() {
-        let favorite = OPassAPI.CheckFavoriteState(OPassAPI.currentEvent, AppDelegate.accessToken(), self.session!.Id)
+        guard let token = Constants.accessToken else { return }
+        let favorite = OPassAPI.CheckFavoriteState(OPassAPI.currentEvent, token, self.session!.Id)
         self.btnFavorite?.setAttributedTitle(Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: favorite ? fontAwesomeStyle.solid : fontAwesomeStyle.regular, forColor: .white), for: .normal)
     }
 
@@ -147,7 +148,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
     }
 
     @IBAction func favoriteTouchUpInsideAction(_ sender: Any) {
-        OPassAPI.TriggerFavoriteSession(OPassAPI.currentEvent, AppDelegate.accessToken(), self.session!.Id)
+        OPassAPI.TriggerFavoriteSession(OPassAPI.currentEvent, Constants.accessToken!, self.session!.Id)
         self.checkFavoriteState()
         UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
     }

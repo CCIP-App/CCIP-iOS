@@ -53,8 +53,8 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
     }
 
     @IBAction func favoriteTouchUpInsideAction(_ sender: NSObject) {
-        OPassAPI.TriggerFavoriteSession(OPassAPI.currentEvent, AppDelegate.accessToken(), self.sessionId!)
-        self.setFavorite(OPassAPI.CheckFavoriteState(OPassAPI.currentEvent, AppDelegate.accessToken(), self.sessionId!))
+        OPassAPI.TriggerFavoriteSession(OPassAPI.currentEvent, Constants.accessToken!, self.sessionId!)
+        self.setFavorite(OPassAPI.CheckFavoriteState(OPassAPI.currentEvent, Constants.accessToken!, self.sessionId!))
         UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
     }
 
@@ -79,7 +79,7 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
         self.TagList?.addTags(tags)
         self.setFavorite(false)
 
-        self.setFavorite(OPassAPI.CheckFavoriteState(OPassAPI.currentEvent, AppDelegate.accessToken(), self.sessionId!))
+        self.setFavorite(OPassAPI.CheckFavoriteState(OPassAPI.currentEvent, Constants.accessToken!, self.sessionId!))
     }
 
     func getSession() -> SessionInfo? {
@@ -88,7 +88,7 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
 
     func setFavorite(_ favorite: Bool) {
         self.favorite = favorite
-        let title = Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: self.favorite ? fontAwesomeStyle.solid : fontAwesomeStyle.regular, forColor: AppDelegate.appConfigColor("FavoriteButtonColor"))
+        let title = Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: self.favorite ? fontAwesomeStyle.solid : fontAwesomeStyle.regular, forColor: Constants.appConfigColor("FavoriteButtonColor"))
         self.FavoriteButton?.setAttributedTitle(title, for: .normal)
     }
 

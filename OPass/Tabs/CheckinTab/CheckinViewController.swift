@@ -37,7 +37,7 @@ import ScanditBarcodeScanner
         }
         set {
             self._userInfo = newValue
-            AppDelegate.delegateInstance().userInfo = newValue
+            OPassAPI.userInfo = newValue
         }
     }
     private var scenarios: [Scenario]?
@@ -59,7 +59,7 @@ import ScanditBarcodeScanner
         self.navigationController?.navigationBar.shadowImage = UIImage.init()
         self.navigationController?.navigationBar.backgroundColor = .clear
 
-        AppDelegate.delegateInstance().checkinView = self
+        AppDelegate.delegateInstance.checkinView = self
 
         // Init configure pageControl
         self.pageControl.numberOfPages = 0
@@ -74,7 +74,7 @@ import ScanditBarcodeScanner
 
         let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(navSingleTap))
 
-        let isHidden = !AppDelegate.haveAccessToken()
+        let isHidden = !Constants.haveAccessToken
 
         self.lbUserName?.text = " "
         self.lbUserName?.isUserInteractionEnabled = true
@@ -88,11 +88,11 @@ import ScanditBarcodeScanner
         self.ivUserPhoto?.layer.cornerRadius = (self.ivUserPhoto?.frame.size.height ?? 0) / 2
         self.ivUserPhoto?.layer.masksToBounds = true
 
-        self.ivRectangle?.setGradientColor(from: AppDelegate.appConfigColor("CheckinRectangleLeftColor"), to: AppDelegate.appConfigColor("CheckinRectangleRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
+        self.ivRectangle?.setGradientColor(from: Constants.appConfigColor("CheckinRectangleLeftColor"), to: Constants.appConfigColor("CheckinRectangleRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
 
         NotificationCenter.default.addObserver(self, selector: #selector(appplicationDidBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
 
-        let beacon = AppDelegate.delegateInstance().beacon as! iBeacon
+        let beacon = AppDelegate.delegateInstance.beacon
         beacon.checkAvailableAndRequestAuthorization()
         beacon.registerBeaconRegionWithUUID(uuidString: Constants.beaconUUID, identifier: Constants.beaconID, isMonitor: true)
     }
@@ -119,7 +119,7 @@ import ScanditBarcodeScanner
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.scenarios = []
-        AppDelegate.delegateInstance().setScenarios(self.scenarios!)
+        OPassAPI.scenarios = self.scenarios
         self.cards?.reloadData()
         self.lbUserName?.text = ""
     }
@@ -169,17 +169,17 @@ import ScanditBarcodeScanner
             tap.oldTapTime = tap.newTapTime
         }
 
-        if AppDelegate.isDevMode() {
+        if Constants.isDevMode {
             //            NSLog("navSingleTap from MoreTab")
             if (tap.newTapTime?.timeIntervalSince(tap.oldTapTime!))! <= TimeInterval(0.25) {
                 tap.tapTimes += 1
                 if tap.tapTimes >= 10 {
                     NSLog("--  Success tap 10 times  --")
-                    if AppDelegate.haveAccessToken() {
+                    if Constants.haveAccessToken {
                         NSLog("-- Clearing the Token --")
                         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                        AppDelegate.setAccessToken("")
-                        (AppDelegate.delegateInstance().checkinView as! CheckinViewController).reloadCard()
+                        Constants.accessToken = ""
+                        AppDelegate.delegateInstance.checkinView?.reloadCard()
                     } else {
                         NSLog("-- Token is already clear --")
                     }
@@ -239,7 +239,7 @@ import ScanditBarcodeScanner
     // MARK: - cards methods
 
     func goToCard() {
-        if AppDelegate.haveAccessToken() {
+        if Constants.haveAccessToken {
             let checkinCard = UserDefaults.standard.object(forKey: "CheckinCard") as? NSDictionary
             if checkinCard != nil {
                 let key = checkinCard?.object(forKey: "key") as! String
@@ -254,12 +254,11 @@ import ScanditBarcodeScanner
             } else {
                 // force scroll to first selected item at first load
                 if self.cards!.numberOfItems > 0 {
-                    let scenarios = AppDelegate.delegateInstance().availableScenarios as! Array<Scenario>
-                    for scenario in scenarios {
+                    for scenario in OPassAPI.scenarios! {
                         let used = scenario.Used != nil
                         let disabled = scenario.Disabled != nil
                         if !used && !disabled {
-                            self.cards?.scrollToItem(at: scenarios.firstIndex(of: scenario)!, animated: true)
+                            self.cards?.scrollToItem(at: scenarios?.firstIndex(of: scenario) ?? 0, animated: true)
                             break
                         }
                     }
@@ -283,20 +282,20 @@ import ScanditBarcodeScanner
         self.progress?.mode = .indeterminate
         self.handleQRButton()
 
-        let isHidden = !AppDelegate.haveAccessToken()
+        let isHidden = !Constants.haveAccessToken
         self.lbHi?.isHidden = isHidden
         self.ivUserPhoto?.isHidden = isHidden
         self.lbUserName?.isHidden = isHidden
         self.lbUserName?.text = " "
 
-        if !AppDelegate.haveAccessToken() {
+        if !Constants.haveAccessToken {
             if self.scanditBarcodePicker == nil {
                 if !(self.presentedViewController?.isKind(of: GuideViewController.self) ?? false) {
                     self.performSegue(withIdentifier: "ShowGuide", sender: self.cards)
                 }
                 self.scenarios?.removeAll()
                 AppDelegate.sendTag("user_id", value: "")
-                AppDelegate.delegateInstance().setScenarios(self.scenarios!)
+                OPassAPI.scenarios = self.scenarios
                 self.reloadAndGoToCard()
             }
         } else {
@@ -307,7 +306,7 @@ import ScanditBarcodeScanner
                     self.userInfo = userInfo
                     self.scenarios = userInfo.Scenarios
 
-                    let isHidden = !AppDelegate.haveAccessToken()
+                    let isHidden = !Constants.haveAccessToken
                     self.lbHi?.isHidden = isHidden
                     self.ivUserPhoto?.isHidden = isHidden
                     self.lbUserName?.isHidden = isHidden
@@ -319,27 +318,29 @@ import ScanditBarcodeScanner
                         "type": userInfo.Type
                     ]
                     AppDelegate.sendTags(userTags)
-                    if AppDelegate.delegateInstance().isLoginSession {
-                        AppDelegate.delegateInstance().displayGreetingsForLogin()
+                    if Constants.isLoginSession {
+                        AppDelegate.delegateInstance.displayGreetingsForLogin()
                     }
-                    AppDelegate.delegateInstance().setScenarios(self.scenarios!)
+                    OPassAPI.scenarios = self.scenarios
                     self.reloadAndGoToCard()
                 } else {
                     func broken(_ msg: String = "Networking_Broken") {
                         self.performSegue(withIdentifier: "ShowInvalidNetworkMsg", sender: NSLocalizedString(msg, comment: ""))
                     }
                     guard let sr = obj as? OPassNonSuccessDataResponse else {
-                        broken()
+//                        broken()
                         return
                     }
                     switch (sr.Response?.statusCode) {
+                    case 200:
+                        broken("Data_Wrong")
                     case 400:
                         guard let responseObject = sr.Obj as? NSDictionary else { return }
                         let msg = responseObject.value(forKeyPath: "json.message") as! String
                         if msg == "invalid token" {
                             NSLog("\(msg)")
 
-                            AppDelegate.setAccessToken("")
+                            Constants.accessToken = ""
 
                             let ac = UIAlertController.alertOfTitle(NSLocalizedString("InvalidTokenAlert", comment: ""), withMessage: NSLocalizedString("InvalidTokenDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel) { action in
                                 self.reloadCard()
@@ -376,13 +377,13 @@ import ScanditBarcodeScanner
             self.qrButtonItem = UIBarButtonItem.init(image: Constants.AssertImage(name: "QR_Code", InBundleName: "AssetsUI"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(callBarcodePickerOverlay))
         }
         self.navigationItem.rightBarButtonItem = nil
-        if AppDelegate.isDevMode() || !AppDelegate.haveAccessToken() {
+        if Constants.isDevMode || !Constants.haveAccessToken {
             self.navigationItem.rightBarButtonItem = self.qrButtonItem
         }
     }
 
     func hideQRButton() {
-        if !AppDelegate.isDevMode() {
+        if !Constants.isDevMode {
             self.navigationItem.rightBarButtonItem = nil
         }
     }
@@ -429,7 +430,7 @@ import ScanditBarcodeScanner
             self.scanditBarcodePicker?.view.removeFromSuperview()
             self.scanditBarcodePicker?.didMove(toParent: nil)
             self.scanditBarcodePicker = nil
-            let isHidden = !AppDelegate.haveAccessToken()
+            let isHidden = !Constants.haveAccessToken
             self.lbHi?.isHidden = isHidden
             self.lbUserName?.isHidden = isHidden
             self.ivUserPhoto?.isHidden = isHidden
@@ -446,7 +447,7 @@ import ScanditBarcodeScanner
         if self.scanditBarcodePicker != nil {
             self.closeBarcodePickerOverlay()
 
-            if !AppDelegate.haveAccessToken() {
+            if !Constants.haveAccessToken {
                 self.performSegue(withIdentifier: "ShowGuide", sender: nil)
             } else {
                 self.hideQRButton()
@@ -558,14 +559,14 @@ import ScanditBarcodeScanner
     // MARK: - iCarousel methods
 
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
-        guard let availableScenarios = AppDelegate.delegateInstance().availableScenarios else { return }
+        guard let availableScenarios = OPassAPI.scenarios else { return }
         if availableScenarios.count > 0 {
             self.pageControl.currentPage = carousel.currentItemIndex
         }
     }
 
     func numberOfItems(in carousel: iCarousel) -> Int {
-        guard let availableScenarios = AppDelegate.delegateInstance().availableScenarios else { return 0 }
+        guard let availableScenarios = OPassAPI.scenarios else { return 0 }
         let count = availableScenarios.count
         self.pageControl.numberOfPages = count
         return count
@@ -590,14 +591,14 @@ import ScanditBarcodeScanner
 
         // create new view if no view is available for recycling
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        guard let availableScenarios = AppDelegate.delegateInstance().availableScenarios else { return view! }
+        guard let availableScenarios = OPassAPI.scenarios else { return view! }
         let haveScenario = availableScenarios.count > 0
         if haveScenario {
             let temp = storyboard.instantiateViewController(withIdentifier: "CheckinCardReuseView") as! CheckinCardViewController
             temp.view.frame = card.cardRect
             view = temp.view
 
-            let scenario = availableScenarios[index] as! Scenario
+            let scenario = availableScenarios[index] 
 
             let id = scenario.Id
             let isCheckin = id.contains("checkin")
@@ -617,11 +618,11 @@ import ScanditBarcodeScanner
             let scenarioType = dd["scenarioType"]
             let defaultIcon = Constants.AssertImage(name: "doc", InBundleName: "PassAssets")!
             let scenarioIcon = Constants.AssertImage(name: scenarioType as! String, InBundleName: "PassAssets") ?? defaultIcon
-            temp.checkinTitle.textColor = AppDelegate.appConfigColor("CardTextColor")
+            temp.checkinTitle.textColor = Constants.appConfigColor("CardTextColor")
             temp.checkinTitle.text = scenario.DisplayText
-            temp.checkinDate.textColor = AppDelegate.appConfigColor("CardTextColor")
+            temp.checkinDate.textColor = Constants.appConfigColor("CardTextColor")
             temp.checkinDate.text = availableRange
-            temp.checkinText.textColor = AppDelegate.appConfigColor("CardTextColor")
+            temp.checkinText.textColor = Constants.appConfigColor("CardTextColor")
             temp.checkinText.text = NSLocalizedString("CheckinNotice", comment: "")
             temp.checkinIcon.image = scenarioIcon
 
@@ -647,7 +648,7 @@ import ScanditBarcodeScanner
             if isDisabled {
                 temp.disabled = scenario.Disabled
                 temp.checkinBtn.setTitle("\(scenario.Disabled!)", for: .normal)
-                temp.checkinBtn.setGradientColor(from: AppDelegate.appConfigColor("DisabledButtonLeftColor"), to: AppDelegate.appConfigColor("DisabledButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                temp.checkinBtn.setGradientColor(from: Constants.appConfigColor("DisabledButtonLeftColor"), to: Constants.appConfigColor("DisabledButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
             } else if isUsed {
                 temp.used = scenario.Used
                 if isCheckin {
@@ -655,7 +656,7 @@ import ScanditBarcodeScanner
                 } else {
                     temp.checkinBtn.setTitle(NSLocalizedString("UseButtonPressed", comment: ""), for: .normal)
                 }
-                temp.checkinBtn.setGradientColor(from: AppDelegate.appConfigColor("UsedButtonLeftColor"), to: AppDelegate.appConfigColor("UsedButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                temp.checkinBtn.setGradientColor(from: Constants.appConfigColor("UsedButtonLeftColor"), to: Constants.appConfigColor("UsedButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
             } else {
                 temp.used = 0
                 if isCheckin {
@@ -663,7 +664,7 @@ import ScanditBarcodeScanner
                 } else {
                     temp.checkinBtn.setTitle(NSLocalizedString("UseButton", comment: ""), for: .normal)
                 }
-                temp.checkinBtn.setGradientColor(from: AppDelegate.appConfigColor("CheckinButtonLeftColor"), to: AppDelegate.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                temp.checkinBtn.setGradientColor(from: Constants.appConfigColor("CheckinButtonLeftColor"), to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
             }
             temp.checkinBtn.tintColor = .white
 

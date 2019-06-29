@@ -15,6 +15,17 @@ extension String {
     func trim() -> String {
         return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
+    subscript (bounds: CountableClosedRange<Int>) -> String {
+        let start = String.Index(utf16Offset: bounds.lowerBound, in: self)
+        let end = String.Index(utf16Offset: bounds.upperBound, in: self)
+        return String(self[start...end])
+    }
+
+    subscript (bounds: CountableRange<Int>) -> String {
+        let start = String.Index(utf16Offset: bounds.lowerBound, in: self)
+        let end = String.Index(utf16Offset: bounds.upperBound, in: self)
+        return String(self[start..<end])
+    }
 }
 
 extension Substring {

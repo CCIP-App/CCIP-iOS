@@ -16,6 +16,3 @@
 #import "Constants.h"
 #import "NSInvocation+addition.h"
 #import "headers.h"
-#define IN_BRIDGING_HEADER
-#import "AppDelegate.h"
-#undef IN_BRIDGING_HEADER

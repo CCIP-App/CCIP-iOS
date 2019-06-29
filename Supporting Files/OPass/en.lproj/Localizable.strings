@@ -91,6 +91,7 @@
 "QRFileNotAvailableDesc" = "Can not extract QR Code from the image";
 "Networking_Broken" = "Error while networking issues";
 "Networking_WrongWiFi" = "Please connect to the wifi which we provided";
+"Data_Wrong" = "Data Response Wrong Structure or Header due to serialization fail";
 "LoginGreeting" = "Hi %@, welcome and enjoy!";
 "AfterEventMessage" = "After the Event, we need you in-form a questionnaire for us, thanks.";
 "AfterEventActionTitle" = "Open questionnaire";

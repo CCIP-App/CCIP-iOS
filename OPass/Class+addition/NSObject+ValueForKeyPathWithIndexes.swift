@@ -9,7 +9,7 @@
 import Foundation
 
 extension NSObject {
-    @objc func valueForKeyPathWithIndexes(_ fullPath: String) -> Any? {
+    func valueForKeyPathWithIndexes(_ fullPath: String) -> Any? {
         return self.valueForKeyPaths(fullPath)
     }
     func valueForKeyPaths(_ fullPath: String) -> Any? {
@@ -51,5 +51,13 @@ extension NSObject {
             }
         }
         return currentObj
+    }
+}
+
+extension Array {
+    func mapToDict<T>(by block: (Element) -> T ) -> [T: Element] where T: Hashable {
+        var map = [T: Element]()
+        self.forEach{ map[block($0)] = $0 }
+        return map
     }
 }

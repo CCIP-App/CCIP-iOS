@@ -12,9 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Constants : NSObject
 
-#pragma mark - SRC
+#pragma mark - Defines
 
 + (NSString *)SourceRoot;
++ (NSString *)AppName;
 
 @end
 

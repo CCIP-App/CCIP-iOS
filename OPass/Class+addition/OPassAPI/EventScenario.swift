@@ -41,7 +41,7 @@ struct Scenario: OPassData, Equatable {
     var ExpireTime: Int?
     var AvailableTime: Int?
     var DisplayText: String? {
-        return self._data["display_text"][AppDelegate.longLangUI()!].string ?? ""
+        return self._data["display_text"][Constants.longLangUI!].string ?? ""
     }
     var Order: Int
     var Message: String?
@@ -118,9 +118,9 @@ extension OPassAPI {
                         default:
                             let landing = ScenarioLanding(JSON(obj!))
                             if landing.Nickname.count > 0 {
-                                AppDelegate.setLoginSession(true)
-                                AppDelegate.setAccessToken(token)
-                                (AppDelegate.delegateInstance().checkinView as! CheckinViewController).reloadCard()
+                                Constants.isLoginSession = true
+                                Constants.accessToken = token
+                                AppDelegate.delegateInstance.checkinView?.reloadCard()
                                 completion?(true, landing, OPassSuccessError)
                             } else {
                                 completion?(false, landing, NSError(domain: "OPass Redeem Code Invalid", code: 3, userInfo: nil))
@@ -137,7 +137,10 @@ extension OPassAPI {
 
     static func GetCurrentStatus(_ completion: OPassCompletionCallback) {
         let event = OPassAPI.currentEvent
-        let token = Constants.AccessToken
+        guard let token = Constants.accessToken else {
+            completion?(false, nil, NSError(domain: "Not a Valid Token", code: -1, userInfo: nil))
+            return
+        }
         if event.count > 0 && token.count > 0 {
             OPassAPI.InitializeRequest(Constants.URL_STATUS(token: token)) { retryCount, retryMax, error, responsed in
                 completion?(false, nil, error)
@@ -146,7 +149,13 @@ extension OPassAPI {
                         switch String(describing: type(of: obj!)) {
                         case OPassNonSuccessDataResponse.className:
                             let sr = obj as! OPassNonSuccessDataResponse
-                            completion?(false, sr, NSError(domain: "OPass Current Not in Event or Not a Valid Token", code: 4, userInfo: nil))
+                            let response = sr.Response
+                            switch response!.statusCode {
+                            case 200:
+                                completion?(false, sr, NSError(domain: "OPass Data not valid", code: 5, userInfo: nil))
+                            default:
+                                completion?(false, sr, NSError(domain: "OPass Current Not in Event or Not a Valid Token", code: 4, userInfo: nil))
+                            }
                         default:
                             let status = ScenarioStatus(JSON(obj!))
                             if status.UserId.count > 0 {
@@ -215,7 +224,7 @@ extension OPassAPI {
 
     static func ParseScenarioRange(_ scenario: Scenario) -> Array<String> {
         let formatter = DateFormatter.init()
-        formatter.dateFormat = AppDelegate.appConfig("DisplayDateTimeFormat") as? String
+        formatter.dateFormat = Constants.appConfig("DisplayDateTimeFormat") as? String
         formatter.timeZone = NSTimeZone.default
         let availDate = Date.init(timeIntervalSince1970: TimeInterval(scenario.AvailableTime!))
         let expireDate = Date.init(timeIntervalSince1970: TimeInterval(scenario.ExpireTime!))

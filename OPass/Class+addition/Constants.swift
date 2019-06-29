@@ -14,6 +14,8 @@ import AFNetworking
 import SwiftyJSON
 import Nuke
 import SafariServices
+import UICKeyChainStore
+import FirebaseAnalytics
 
 enum fontAwesomeStyle: Int {
     case solid
@@ -22,7 +24,7 @@ enum fontAwesomeStyle: Int {
 }
 
 extension Constants {
-    @objc public static func SendFib(
+    static func SendFib(
         _ _name: Any,
         WithEvents _events: Any? = nil,
         Func _func: String = #function,
@@ -30,7 +32,7 @@ extension Constants {
         Line _line: Int = #line,
         Col _col: Int = #column
     ) {
-        let __file = _file.replacingOccurrences(of: Constants.sourceRoot(), with: "")
+        let __file = _file.replacingOccurrences(of: self.sourceRoot(), with: "")
 
         NSLog("Send FIB: \(_name)(\(String(describing: _events))) @ \(_func)\t\(__file):\(_line):\(_col)");
 
@@ -44,41 +46,105 @@ extension Constants {
             Analytics.logEvent(_name as! String, parameters: _events as? [String : Any])
         }
     }
-    private static var iBeacon: Dictionary<String, String> {
-        return AppDelegate.appConfig("iBeacon") as! Dictionary<String, String>
+    static func appConfig(_ path: String) -> Any? {
+        guard var config = NSDictionary.init(contentsOf: Bundle.main.url(forResource: "config", withExtension: "plist")!) else { return nil }
+        config = config.value(forKey: self.appName()) as! NSDictionary
+        let value = config.value(forKeyPath: path)
+        return value
     }
-    @objc public static var beaconUUID: String {
+    static func appConfigColor(_ path: String) -> UIColor {
+        var color = UIColor.clear
+        let colorString = self.appConfig("Themes.\(path)") as? String
+        if (colorString ?? "").count == 0 {
+            NSLog("[WARN] Config Color `\(path)` is empty")
+        } else if (colorString ?? "").count > 0 {
+            color = UIColor.colorFromHtmlColor(colorString!)
+        }
+        return color
+    }
+    static var iBeacon: Dictionary<String, String> {
+        return self.appConfig("iBeacon") as! Dictionary<String, String>
+    }
+    static var beaconUUID: String {
         return self.iBeacon["UUID"]!
     }
-    @objc public static var beaconID: String {
+    static var beaconID: String {
         return self.iBeacon["ID"]!
     }
-    @objc public static var HasSetEvent: Bool {
+    static var HasSetEvent: Bool {
         return OPassAPI.currentEvent.count > 0
     }
-    public static var EventId: String {
+    static var EventId: String {
         return OPassAPI.eventInfo?.EventId ?? ""
     }
-    public static var AccessToken: String {
-        return AppDelegate.accessToken()
+    static var accessToken: String? {
+        get {
+            return UICKeyChainStore.string(forKey: "token")
+        }
+        set {
+            let accessToken = newValue
+            UICKeyChainStore.removeItem(forKey: "token")
+            UICKeyChainStore.setString(accessToken, forKey: "token")
+            OneSignal.sendTag("token", value: accessToken)
+            AppDelegate.delegateInstance.setDefaultShortcutItems()
+        }
     }
-    public static var AccessTokenSHA1: String {
-        return AppDelegate.accessTokenSHA1()
+    static var haveAccessToken: Bool {
+        return (self.accessToken ?? "").count > 0
     }
-    public static var URL_SERVER_BASE: String {
+    static var accessTokenSHA1: String {
+        if self.haveAccessToken {
+            let token = self.accessToken!
+            let tokenData = token.data(using: .utf8)
+            let tokenDataSHA1 = (tokenData! as NSData).sha1Hash()
+            let tokenSHA1 = (tokenDataSHA1! as NSData).hexString.lowercased()
+            return tokenSHA1
+        }
+        return ""
+    }
+    static var isLoginSession: Bool = false
+    static var isDevMode: Bool {
+        get {
+            UserDefaults.standard.synchronize()
+            return UserDefaults.standard.bool(forKey: "DEV_MODE")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "DEV_MODE")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    static var currentLangUI: String {
+        return NSLocalizedString("CurrentLang", comment: "")
+    }
+    static var shortLangUI: String {
+        let lang = self.currentLangUI
+        let regex = try? NSRegularExpression.init(pattern: "^(?<major>[\\w]{2})(-(?<minor>[\\w]{2,4}))?$", options: [ .anchorsMatchLines, .caseInsensitive ])
+        let matches = regex?.matches(in: lang, options: .withTransparentBounds, range: NSRange.init(location: 0, length: lang.count))
+        guard let langRange = matches?.first?.range(at: 1) else { return "" }
+        return lang[langRange.location..<langRange.length]
+    }
+    static var longLangUI: String? {
+        let shortLang = self.shortLangUI
+        let langMap = [
+            "en": "en-US",
+            "zh": "zh-TW"
+        ]
+        return langMap.keys.contains(shortLang) ? langMap[shortLang] : nil
+    }
+    static var URL_SERVER_BASE: String {
         return OPassAPI.eventInfo?.ServerBaseUrl.absoluteString ?? ""
     }
-    public static func URL_LANDING(token: String) -> String {
-        return Constants.URL_SERVER_BASE.appending("/landing?token=\(token)")
+    static func URL_LANDING(token: String) -> String {
+        return self.URL_SERVER_BASE.appending("/landing?token=\(token)")
     }
-    public static func URL_STATUS(token: String) -> String {
-        return Constants.URL_SERVER_BASE.appending("/status?token=\(token)")
+    static func URL_STATUS(token: String) -> String {
+        return self.URL_SERVER_BASE.appending("/status?token=\(token)")
     }
-    @objc public static func URL_USE(token: String, scenario: String) -> String {
-        return Constants.URL_SERVER_BASE.appending("/use/\(scenario)?token=\(token)")
+    static func URL_USE(token: String, scenario: String) -> String {
+        return self.URL_SERVER_BASE.appending("/use/\(scenario)?token=\(token)")
     }
-    public static var URL_ANNOUNCEMENT: String {
-        return Constants.URL_SERVER_BASE.appending("/announcement")
+    static var URL_ANNOUNCEMENT: String {
+        return self.URL_SERVER_BASE.appending("/announcement")
     }
     private static func OPassURL(_ url: String) -> String {
         let opassTime = "__opass=\(0.seconds.fromNow.timeIntervalSince1970)"
@@ -93,50 +159,50 @@ extension Constants {
         NSLog("Add OPass timestamp: \(url) -> \(opassUrl)");
         return opassUrl
     }
-    public static var URL_LOGO_IMG: String {
+    static var URL_LOGO_IMG: String {
         return OPassAPI.eventInfo?.LogoUrl.absoluteString ?? ""
     }
-    public static var URL_SESSION: String {
-        return Constants.OPassURL(OPassAPI.eventInfo?.SessionUrl.absoluteString ?? "")
+    static var URL_SESSION: String {
+        return self.OPassURL(OPassAPI.eventInfo?.SessionUrl.absoluteString ?? "")
     }
-    public static var URL_LOG_BOT: String {
-        return Constants.OPassURL(OPassAPI.eventInfo?.Features.IRC!.absoluteString ?? "")
+    static var URL_LOG_BOT: String {
+        return self.OPassURL(OPassAPI.eventInfo?.Features.IRC!.absoluteString ?? "")
     }
-    public static var URL_VENUE: String {
-        return Constants.OPassURL(OPassAPI.eventInfo?.Features.Venue!.absoluteString ?? "")
+    static var URL_VENUE: String {
+        return self.OPassURL(OPassAPI.eventInfo?.Features.Venue!.absoluteString ?? "")
     }
-    public static var URL_TELEGRAM_GROUP: String {
-        return Constants.OPassURL(OPassAPI.eventInfo?.Features.Telegram!.absoluteString ?? "")
+    static var URL_TELEGRAM_GROUP: String {
+        return self.OPassURL(OPassAPI.eventInfo?.Features.Telegram!.absoluteString ?? "")
     }
-    public static var URL_STAFF_WEB: String {
-        return Constants.OPassURL(OPassAPI.eventInfo?.Features.Staffs!.absoluteString ?? "")
+    static var URL_STAFF_WEB: String {
+        return self.OPassURL(OPassAPI.eventInfo?.Features.Staffs!.absoluteString ?? "")
     }
-    public static var URL_SPONSOR_WEB: String {
-        return Constants.OPassURL(OPassAPI.eventInfo?.Features.Sponsors!.absoluteString ?? "")
+    static var URL_SPONSOR_WEB: String {
+        return self.OPassURL(OPassAPI.eventInfo?.Features.Sponsors!.absoluteString ?? "")
     }
-    public static var URL_PARTNERS_WEB: String {
-        return Constants.OPassURL(OPassAPI.eventInfo?.Features.Partners!.absoluteString ?? "")
+    static var URL_PARTNERS_WEB: String {
+        return self.OPassURL(OPassAPI.eventInfo?.Features.Partners!.absoluteString ?? "")
     }
-    public static func URL_GAME(token: String) -> String {
+    static func URL_GAME(token: String) -> String {
         var url = OPassAPI.eventInfo?.Features.Puzzle!.absoluteString ?? ""
         if url.count > 0 {
             url = url + token
         }
-        return Constants.OPassURL(url)
+        return self.OPassURL(url)
     }
-    public static func GitHubRepo(_ repo: String) -> String {
+    static func GitHubRepo(_ repo: String) -> String {
         return String(format: "https://github.com/\(repo)")
     }
-    public static func GitHubAvatar(_ user: String) -> String {
+    static func GitHubAvatar(_ user: String) -> String {
         return String(format: "https://avatars.githubusercontent.com/\(user)?s=86&v=3")
     }
-    public static func GravatarAvatar(_ hash: String) -> String {
+    static func GravatarAvatar(_ hash: String) -> String {
         return String(format: "https://www.gravatar.com/avatar/\(hash)?s=86&\(hash.count > 0 ? "r=x" : "f=y&d=mm")")
     }
-    public static func OpenInAppSafari(forPath url: String) {
-        Constants.OpenInAppSafari(forURL: URL.init(string: url)!)
+    static func OpenInAppSafari(forPath url: String) {
+        self.OpenInAppSafari(forURL: URL.init(string: url)!)
     }
-    @objc public static func OpenInAppSafari(forURL url: URL) {
+    static func OpenInAppSafari(forURL url: URL) {
         if (SFSafariViewController.className != "" && (url.scheme?.contains("http"))!) {
             // Open in SFSafariViewController
             let safariViewController = SFSafariViewController.init(url: url)
@@ -159,13 +225,13 @@ extension Constants {
         }
     }
     static func LoadDevLogoTo(view: FBShimmeringView) {
-        let isDevMode = AppDelegate.isDevMode()
+        let isDevMode = self.isDevMode
         let setDevLogo = { (resp: ImageResponse?) in
             let image = resp?.image
             if image != nil {
                 var img = image!
                 if isDevMode {
-                    img = img.imageWithColor(AppDelegate.appConfigColor("DevelopingLogoMaskColor"))
+                    img = img.imageWithColor(self.appConfigColor("DevelopingLogoMaskColor"))
                 }
                 if resp != nil {
                     if view.contentView == nil {
@@ -178,7 +244,7 @@ extension Constants {
             }
         }
         ImagePipeline.shared.loadImage(
-            with: URL.init(string: Constants.URL_LOGO_IMG)!,
+            with: URL.init(string: self.URL_LOGO_IMG)!,
             progress: { response, _, _ in
                 setDevLogo(response)
             },
@@ -199,10 +265,10 @@ extension Constants {
             into: view
         )
     }
-    @objc static func AssertImage(name: String, InBundleName: String) -> UIImage? {
+    static func AssertImage(name: String, InBundleName: String) -> UIImage? {
         return AssertImage(InBundleName, name)
     }
-    public static func AssertImage(_ bundleName: String, _ imageName: String ) -> UIImage? {
+    static func AssertImage(_ bundleName: String, _ imageName: String ) -> UIImage? {
         let bundlePath = Bundle.main.bundlePath.appendingPathComponent("\(bundleName).bundle")
         let bundle = Bundle.init(path: bundlePath)!
         return UIImage.init(named: imageName, in: bundle, compatibleWith: nil)
@@ -229,13 +295,13 @@ extension Constants {
         forColor: UIColor
     ) -> NSAttributedString {
         let fontAttribute = [
-            NSAttributedString.Key.font: Constants.fontOfAwesome(withSize: withSize, inStyle: inStyle),
+            NSAttributedString.Key.font: self.fontOfAwesome(withSize: withSize, inStyle: inStyle),
             NSAttributedString.Key.foregroundColor: forColor
         ]
-        guard let fontAwesome = Constants.fontAwesome(code: ofCode) else { return NSAttributedString.init() }
+        guard let fontAwesome = self.fontAwesome(code: ofCode) else { return NSAttributedString.init() }
         return NSAttributedString.init(string: fontAwesome, attributes: fontAttribute)
     }
-    @objc static var tintColor : UIColor {
+    static var tintColor : UIColor {
         return UIView().tintColor!
     }
     static func DateFromUnix(_ unixInt: Int) -> Date {
@@ -249,41 +315,41 @@ extension Constants {
     }
     static func DateToDisplayDateString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
-        return DateInRegion(date, region: local).toFormat(AppDelegate.appConfig("DisplayDateFormat") as! String)
+        return DateInRegion(date, region: local).toFormat(self.appConfig("DisplayDateFormat") as! String)
     }
     static func DateToDisplayTimeString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
-        return DateInRegion(date, region: local).toFormat(AppDelegate.appConfig("DisplayTimeFormat") as! String)
+        return DateInRegion(date, region: local).toFormat(self.appConfig("DisplayTimeFormat") as! String)
     }
     static func DateToDisplayDateTimeString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
-        let format = String.init(format: "%@ %@", AppDelegate.appConfig("DisplayDateFormat") as! String, AppDelegate.appConfig("DisplayTimeFormat") as! String)
+        let format = String.init(format: "%@ %@", self.appConfig("DisplayDateFormat") as! String, self.appConfig("DisplayTimeFormat") as! String)
         return DateInRegion(date, region: local).toFormat(format)
     }
     static func DateToDisplayDateAndTimeString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
-        return DateInRegion(date, region: local).toFormat(AppDelegate.appConfig("DisplayDateTimeFormat") as! String)
+        return DateInRegion(date, region: local).toFormat(self.appConfig("DisplayDateTimeFormat") as! String)
     }
 
-    public static var INIT_SESSION_DETAIL_VIEW_STORYBOARD_ID: String {
+    static var INIT_SESSION_DETAIL_VIEW_STORYBOARD_ID: String {
         return "SessionDetail"
     }
-    public static var SESSION_DETAIL_VIEW_STORYBOARD_ID: String {
+    static var SESSION_DETAIL_VIEW_STORYBOARD_ID: String {
         return "ShowSessionDetail"
     }
-    public static var SESSION_FAV_KEY: String {
+    static var SESSION_FAV_KEY: String {
         return "favoriteSession"
     }
-    @objc public static var SESSION_CACHE_CLEAR: String {
+    static var SESSION_CACHE_CLEAR: String {
         return "ClearSessionContentCache"
     }
-    @objc public static var SESSION_CACHE_KEY: String {
+    static var SESSION_CACHE_KEY: String {
         return "SessionContentCache"
     }
 
     // MARK: - Math
 
-    public static func NEAR_ZERO(_ A: Double, _ B: Double) -> Double {
+    static func NEAR_ZERO(_ A: Double, _ B: Double) -> Double {
         return min(abs(A), abs(B)) == abs(A) ? A : B
     }
 }

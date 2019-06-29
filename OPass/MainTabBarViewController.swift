@@ -11,7 +11,7 @@ import UIKit
 
 class MainTabBarViewController : UITabBarController {
     override func viewDidLoad() {
-        let titleHighlightedColor = AppDelegate.appConfigColor("HighlightedColor")
+        let titleHighlightedColor = Constants.appConfigColor("HighlightedColor")
         UITabBarItem.appearance()
             .setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: .normal)
         UITabBarItem.appearance()

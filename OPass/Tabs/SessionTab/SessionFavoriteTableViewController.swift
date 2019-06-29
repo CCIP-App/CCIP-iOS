@@ -46,7 +46,7 @@ class SessionFavoriteTableViewController: SessionTableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        SessionFavoriteTableViewController.headView?.setGradientColor(from: AppDelegate.appConfigColor("SessionTitleLeftColor"), to: AppDelegate.appConfigColor("SessionTitleRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
+        SessionFavoriteTableViewController.headView?.setGradientColor(from: Constants.appConfigColor("SessionTitleLeftColor"), to: Constants.appConfigColor("SessionTitleRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
         SessionFavoriteTableViewController.headView?.alpha = 0
         SessionFavoriteTableViewController.headView?.isHidden = false
         UIView.animate(withDuration: 0.5, animations: {

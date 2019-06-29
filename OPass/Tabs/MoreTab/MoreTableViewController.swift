@@ -45,14 +45,33 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         nvBar!.isTranslucent = false
         let frame = CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: UIApplication.shared.statusBarFrame.size.height + self.navigationController!.navigationBar.frame.size.height)
         let headView = UIView.init(frame: frame)
-        headView.setGradientColor(from: AppDelegate.appConfigColor("MoreTitleLeftColor"), to: AppDelegate.appConfigColor("MoreTitleRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
+        headView.setGradientColor(from: Constants.appConfigColor("MoreTitleLeftColor"), to: Constants.appConfigColor("MoreTitleRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
         let naviBackImg = headView.layer.sublayers?.last?.toImage()
         nvBar?.setBackgroundImage(naviBackImg, for: .default)
 
-        self.userInfo = AppDelegate.delegateInstance().userInfo as? ScenarioStatus
-
         Constants.SendFib("MoreTableViewController")
 
+        if self.switchEventButton == nil {
+            let attribute = [
+                NSAttributedString.Key.font: UIFont.fontAwesome(ofSize: 20, style: .solid)
+            ]
+            self.switchEventButton = UIBarButtonItem.init(title: "", style: .plain, target: self, action: #selector(CallSwitchEventView))
+            self.switchEventButton!.setTitleTextAttributes(attribute, for: .normal)
+            self.switchEventButton!.title = String.fontAwesomeIcon(code: "fa-sign-out-alt")
+        }
+
+        self.navigationItem.rightBarButtonItem = self.switchEventButton
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Constants.LoadDevLogoTo(view: self.shimmeringLogoView)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.userInfo = OPassAPI.userInfo
         self.moreItems = [
             OPassAPI.eventInfo?.Features.Puzzle != nil
                 ? "Puzzle"
@@ -74,27 +93,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
                 ? "PartnersWeb"
                 : "",
             "Acknowledgements",
-        ].filter({ $0.count > 0 }) as NSArray
-
-        if self.switchEventButton == nil {
-            let attribute = [
-                NSAttributedString.Key.font: UIFont.fontAwesome(ofSize: 20, style: .solid)
-            ]
-            self.switchEventButton = UIBarButtonItem.init(title: "", style: .plain, target: self, action: #selector(CallSwitchEventView))
-            self.switchEventButton!.setTitleTextAttributes(attribute, for: .normal)
-            self.switchEventButton!.title = String.fontAwesomeIcon(code: "fa-sign-out-alt")
-        }
-
-        self.navigationItem.rightBarButtonItem = self.switchEventButton
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        Constants.LoadDevLogoTo(view: self.shimmeringLogoView)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+            ].filter({ $0.count > 0 }) as NSArray
     }
 
     override func didReceiveMemoryWarning() {
@@ -128,12 +127,12 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
             if (tap.tapTimes >= 10) {
                 NSLog("--  Success tap 10 times  --")
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                if !AppDelegate.isDevMode() {
+                if !Constants.isDevMode {
                     NSLog("-- Enable DEV_MODE --")
-                    AppDelegate.setIsDevMode(true)
+                    Constants.isDevMode = true
                 } else {
                     NSLog("-- Disable DEV_MODE --")
-                    AppDelegate.setIsDevMode(false)
+                    Constants.isDevMode = false
                 }
                 Constants.LoadDevLogoTo(view: self.shimmeringLogoView)
                 tap.tapTimes = 1

@@ -19,9 +19,9 @@ class MyTicketViewController : UIViewController {
         // Do any additional setup after loading the view.
         self.navigationItem.title = self.navigationItem.title!.split(separator: "\t").last!.trim()
         var noticeText: String = NSLocalizedString("TicketNonExistNotice", comment: "")
-        if (AppDelegate.haveAccessToken()) {
+        if (Constants.haveAccessToken) {
             if let QRImage = EFQRCode.generate(
-                    AppDelegate.accessToken(),
+                    Constants.accessToken!,
                     size: (self.ivQRCode?.frame.size)!,
                     backgroundColor: CGColor.EFWhite(),
                     foregroundColor: CGColor.EFBlack(),
@@ -33,7 +33,7 @@ class MyTicketViewController : UIViewController {
             }
         }
         self.lbNotice!.text = noticeText
-        self.lbNotice?.textColor = AppDelegate.appConfigColor("CardTextColor")
+        self.lbNotice?.textColor = Constants.appConfigColor("CardTextColor")
     }
     
     override func didReceiveMemoryWarning() {
