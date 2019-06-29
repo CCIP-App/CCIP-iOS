@@ -26,6 +26,12 @@ extension String {
         let end = String.Index(utf16Offset: bounds.upperBound, in: self)
         return String(self[start..<end])
     }
+
+    subscript (bounds: NSRange) -> String {
+        let start = bounds.location
+        let end = bounds.location + bounds.length
+        return String(self[start..<end])
+    }
 }
 
 extension Substring {

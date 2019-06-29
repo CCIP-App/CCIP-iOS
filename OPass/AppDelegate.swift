@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 // find the biggest icon for AppArt
                 // and find biggest app icon file name
                 let bundle = Bundle.main.infoDictionary!
-                let bundleIcons = bundle["CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles"] as! Array<String>
+                let bundleIcons = (bundle as NSDictionary).value(forKeyPath: "CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles") as! Array<String>
                 guard let bundleFiles = try? FileManager.init().contentsOfDirectory(atPath: Bundle.main.resourcePath!) else { return SLColorArt.init() }
                 var availIcon = Array<String>()
                 for iconPrefix in bundleIcons {
@@ -50,21 +50,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 var sizeMetrix = 0
                 var fileName = ""
                 for iconName in availIcon {
-                    guard let regex = try? NSRegularExpression.init(pattern: "([\\d]+).([\\d]+)(@[\\d]+x)*", options: .caseInsensitive) else { return SLColorArt.init() }
-                    regex.enumerateMatches(in: iconName, options: .reportCompletion, range: NSRangeFromString(iconName)) { (match, flags, stop) in
-                        let wRange = match!.range(at: 1)
-                        let width = Int(iconName[wRange.location..<wRange.length])!
-                        let hRange = match!.range(at: 2)
-                        let height = Int(iconName[hRange.location..<hRange.length])!
-                        var mutiple = 1
-                        let mpRange = match!.range(at: 3)
-                        if mpRange.location != NSNotFound {
-                            let mp = iconName[mpRange.location..<mpRange.length]
-                            mutiple = Int(mp.replacingOccurrences(of: "@", with: ""))!
-                            let size = width * height * mutiple
-                            if size > sizeMetrix {
-                                sizeMetrix = size
-                                fileName = iconName
+                    guard let regex = try? NSRegularExpression.init(pattern: "([\\d]+).([\\d]+)(@([\\d]+)x)?", options: .caseInsensitive) else { return SLColorArt.init() }
+                    regex.enumerateMatches(in: iconName, options: .reportCompletion, range: NSRange.init(location: 0, length: iconName.count)) { (match, flags, stop) in
+                        if !flags.contains([ .completed, .hitEnd ]) {
+                            let wRange = match!.range(at: 1)
+                            let width = Int(iconName[wRange])!
+                            let hRange = match!.range(at: 2)
+                            let height = Int(iconName[hRange])!
+                            var mutiple = 1
+                            let mpRange = match!.range(at: 4)
+                            if mpRange.location != NSNotFound {
+                                mutiple = Int(iconName[mpRange])!
+                                let size = width * height * mutiple
+                                if size > sizeMetrix {
+                                    sizeMetrix = size
+                                    fileName = iconName
+                                }
                             }
                         }
                     }
@@ -94,27 +95,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func setAppearance(_ appArt: SLColorArt) {
-//        //[[UINavigationBar appearance] setBarTintColor:[appArt backgroundColor]];
-//        [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor whiteColor] }];
-//        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-//        [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
-//        [[UIButton appearanceWhenContainedInInstancesOfClasses:@[ [UINavigationController class] ]] setTintColor:[AppDelegate AppConfigColor:@"NavigationIndicatorColor"]];
-//
-//        id imagePickerNavBarAppearance = [UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]];
-//        [imagePickerNavBarAppearance setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor blackColor] }];
-//        [imagePickerNavBarAppearance setTintColor:Constants.tintColor];
-//        id imagePickerBarButtonItemAppearance = [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]];
-//        [imagePickerBarButtonItemAppearance setTintColor:Constants.tintColor];
-//        id imagePickerButtonAppearance = [UIButton appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]];
-//        [imagePickerButtonAppearance setTintColor:Constants.tintColor];
-//
-//        [[UIToolbar appearanceWhenContainedInInstancesOfClasses:@[ [UINavigationController class] ]] setBarTintColor:[appArt backgroundColor]];
-//
-//        [[UITabBar appearance] setTintColor:[AppDelegate AppConfigColor:@"LabelTextColor"]];
-//        [[UISegmentedControl appearance] setTintColor:[AppDelegate AppConfigColor:@"LabelTextColor"]];
-//        [[UIProgressView appearance] setTintColor:[AppDelegate AppConfigColor:@"LabelTextColor"]];
-//        [[UILabel appearance] setTintColor:[AppDelegate AppConfigColor:@"LabelTextColor"]];
-//        [[UISearchBar appearance] setTintColor:[AppDelegate AppConfigColor:@"LabelTextColor"]];
+        //[[UINavigationBar appearance] setBarTintColor:[appArt backgroundColor]];
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().tintColor = .white
+        UIBarButtonItem.appearance().tintColor = .white
+        UIButton.appearance(whenContainedInInstancesOf: [UINavigationController.self]).tintColor = Constants.appConfigColor("NavigationIndicatorColor")
+
+        let imagePickerNavBarAppearance = UINavigationBar.appearance(whenContainedInInstancesOf: [UIImagePickerController.self])
+        imagePickerNavBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        imagePickerNavBarAppearance.tintColor = Constants.tintColor
+        let imagePickerBarButtonItemAppearance = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UIImagePickerController.self])
+        imagePickerBarButtonItemAppearance.tintColor = Constants.tintColor
+        let imagePickerButtonAppearance = UIButton.appearance(whenContainedInInstancesOf: [UIImagePickerController.self])
+        imagePickerButtonAppearance.tintColor = Constants.tintColor
+
+        UIToolbar.appearance(whenContainedInInstancesOf: [UINavigationController.self]).barTintColor = appArt.backgroundColor
+
+        let labelTextColor = Constants.appConfigColor("LabelTextColor")
+        UITabBar.appearance().tintColor = labelTextColor
+        UISegmentedControl.appearance().tintColor = labelTextColor
+        UIProgressView.appearance().tintColor = labelTextColor
+        UILabel.appearance().tintColor = labelTextColor
+        UISearchBar.appearance().tintColor = labelTextColor
     }
 
     func displayGreetingsForLogin() {
@@ -265,6 +267,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Provide the app key for your scandit license.
         SBSLicense.setAppKey(Constants.appConfig("scandit") as! String)
 
+        self.setAppearance(self.appArt)
         self.setDefaultShortcutItems()
 
         return true
