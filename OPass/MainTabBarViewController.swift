@@ -21,10 +21,14 @@ class MainTabBarViewController : UITabBarController {
 
         // setting selected image color from original image with replace custom color filter
         for item in self.tabBar.items! {
+            let title = item.title!
             var image: UIImage = item.image!.withRenderingMode(.alwaysOriginal)
             image = image.imageWithColor(titleHighlightedColor)
             item.selectedImage = image.withRenderingMode(.alwaysOriginal)
-            item.title = NSLocalizedString(item.title!, comment: "")
+            item.title = NSLocalizedString(title, comment: "")
+            if title == "IRC" {
+                item.isEnabled = OPassAPI.eventInfo?.Features.IRC != nil
+            }
         }
 
         // self.automaticallyAdjustsScrollViewInsets = false;
