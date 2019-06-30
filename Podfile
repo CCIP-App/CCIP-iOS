@@ -3,12 +3,17 @@ plugin 'cocoapods-acknowledgements'
 # Uncomment this line to define a global platform for your project
 platform :ios, '11.0'
 
-def opass_pods
+def pod_settings
   # Uncomment this line if you're using Swift or would like to use dynamic frameworks
   use_frameworks!
+end
 
-  # Pods for OPass
+def onesignal
   pod 'OneSignal', '>= 2.6.2', '< 3.0'
+end
+
+def opass_pods
+  # Pods for OPass
   pod 'UICKeyChainStore', '~> 2.1'
   pod 'Firebase/Core'
   pod 'Firebase/DynamicLinks'
@@ -44,11 +49,14 @@ def opass_pods
 end
 
 target 'OPass' do
+  pod_settings
+  onesignal
   opass_pods
+end
 
-  target 'OPass Notification Service' do
-    pod 'OneSignal', '>= 2.6.2', '< 3.0'
-  end
+target 'OPass Notification Service' do
+  pod_settings
+  onesignal
 end
 
 DEFAULT_SWIFT_VERSION = '5.0'

@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_OPass_OPass_Notification_ServiceVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_OPass_OPass_Notification_ServiceVersionString[];
+FOUNDATION_EXPORT double Pods_OPass_Notification_ServiceVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_OPass_Notification_ServiceVersionString[];
 
