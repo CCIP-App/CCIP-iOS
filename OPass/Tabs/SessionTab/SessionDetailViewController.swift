@@ -79,7 +79,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        let markdownStyleString = "<style>h1, h2 {color: \(Constants.appConfig("Themes.CardTextColor"))} h3, h4, h5, h6, h7, span, div, p {color: black;}</style>\n\n"
+        let markdownStyleString = "<style>h1, h2 {color: \(Constants.appConfig("Themes.CardTextColor") ?? "black")} h3, h4, h5, h6, h7, span, div, p {color: black;}</style>\n\n"
         self.downView = MarkdownView.init(CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.vContent!.bounds.size.height), withMarkdown: markdownStyleString, toView: self.vContent!)
         let description = self.session!["description"]
         NSLog("Set description: \(description)")
