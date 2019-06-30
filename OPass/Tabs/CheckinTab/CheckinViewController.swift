@@ -294,7 +294,6 @@ import ScanditBarcodeScanner
                     self.performSegue(withIdentifier: "ShowGuide", sender: self.cards)
                 }
                 self.scenarios?.removeAll()
-                AppDelegate.sendTag("user_id", value: "")
                 OPassAPI.scenarios = self.scenarios
                 self.reloadAndGoToCard()
             }
@@ -311,13 +310,7 @@ import ScanditBarcodeScanner
                     self.ivUserPhoto?.isHidden = isHidden
                     self.lbUserName?.isHidden = isHidden
                     self.lbUserName?.text = userInfo.UserId
-                    let userTags = [
-                        "event_id": userInfo.EventId,
-                        "token": userInfo.Token,
-                        "user_id": userInfo.UserId,
-                        "type": userInfo.Type
-                    ]
-                    AppDelegate.sendTags(userTags)
+                    AppDelegate.sendTag("\(userInfo.EventId)\(userInfo.Type)", value: userInfo.Token)
                     if Constants.isLoginSession {
                         AppDelegate.delegateInstance.displayGreetingsForLogin()
                     }
