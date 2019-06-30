@@ -180,7 +180,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         if (cellIcon.size().width > 40) {
             cellIcon = NSMutableAttributedString.init(string: cellIconId, attributes: brands)
         }
-        cell.textLabel!.text = cellText
+        // cell.textLabel!.text = cellText
         cell.textLabel!.attributedText = NSAttributedString.init(attributedString: cellIcon + "  \t  " + cellText)
         return cell;
     }
