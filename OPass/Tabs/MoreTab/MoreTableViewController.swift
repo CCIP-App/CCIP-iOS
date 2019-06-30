@@ -61,6 +61,9 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         }
 
         self.navigationItem.rightBarButtonItem = self.switchEventButton
+        
+        let emptyButton = UIBarButtonItem.init(title: "　", style: .plain, target: nil, action: nil)
+        self.navigationItem.leftBarButtonItem = emptyButton;
     }
 
     override func viewDidAppear(_ animated: Bool) {

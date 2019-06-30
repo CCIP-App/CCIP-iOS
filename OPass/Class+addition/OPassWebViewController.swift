@@ -115,7 +115,7 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
         self.parseInstanceObjects()
 
         if navigationItem.rightBarButtonItems!.count < 2 {
-            let emptyImage = UIImage.imageWithSize(size: (goReloadButton?.image!.size)!);
+            let emptyImage = UIImage.imageWithSize(size: goReloadButton!.image!.size);
             let emptyButton = UIBarButtonItem(image: emptyImage, style: .plain, target: nil, action: nil);
             self.navigationItem.rightBarButtonItems?.append(emptyButton);
         }
