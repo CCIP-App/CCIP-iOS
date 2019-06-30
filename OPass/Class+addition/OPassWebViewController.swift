@@ -14,10 +14,10 @@ import NJKWebViewProgress
 import Nuke
 
 protocol OPassWebViewIB {
-    var goReloadButton: UIBarButtonItem? { get }
     var goBackButton: UIBarButtonItem? { get }
     var goForwardButton: UIBarButtonItem? { get }
-
+    var goReloadButton: UIBarButtonItem? { get }
+    
     func reload(_ sender: Any)
     func goBack(_ sender: Any)
     func goForward(_ sender: Any)
@@ -32,10 +32,10 @@ protocol OPassWebViewIB {
 }
 
 extension OPassWebViewIB { // for all of optional properties and func used in OPassWebViewIB protoccol
-    var goReloadButton: UIBarButtonItem? { return nil }
     var goBackButton: UIBarButtonItem? { return nil }
     var goForwardButton: UIBarButtonItem? { return nil }
-
+    var goReloadButton: UIBarButtonItem? { return nil }
+    
     func reload(_ sender: Any) {}
     func goBack(_ sender: Any) {}
     func goForward(_ sender: Any) {}
@@ -50,9 +50,9 @@ extension OPassWebViewIB { // for all of optional properties and func used in OP
 }
 
 class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDelegate {
-    /* fake dummy obj */ private var goReloadButton: UIBarButtonItem? = nil
     /* fake dummy obj */ private var goBackButton: UIBarButtonItem? = nil
     /* fake dummy obj */ private var goForwardButton: UIBarButtonItem? = nil
+    /* fake dummy obj */ private var goReloadButton: UIBarButtonItem? = nil
 
     /* fake dummy obj */ private var titleTextColor: String = ""
     /* fake dummy obj */ private var titleLeftColor: String = ""
@@ -114,6 +114,12 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
 
         self.parseInstanceObjects()
 
+        if navigationItem.rightBarButtonItems!.count < 2 {
+            let emptyImage = UIImage.imageWithSize(size: (goReloadButton?.image!.size)!);
+            let emptyButton = UIBarButtonItem(image: emptyImage, style: .plain, target: nil, action: nil);
+            self.navigationItem.rightBarButtonItems?.append(emptyButton);
+        }
+        
         self.navigationItem.title = self.navigationItem.title?.split(separator: "\t").last!.trim()
 
         Constants.SendFib(self.className)
