@@ -257,9 +257,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         let onesignalInitSettings = [
-            kOSSettingsKeyAutoPrompt: true
+            kOSSettingsKeyAutoPrompt: false
         ]
         OneSignal.initWithLaunchOptions(launchOptions, appId: oneSignalToken, handleNotificationReceived: notificationReceiverBlock as? OSHandleNotificationReceivedBlock, handleNotificationAction: notificationOpenedBlock as? OSHandleNotificationActionBlock, settings: onesignalInitSettings)
+        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
+        // Recommend moving the below line to prompt for push after informing the user about
+        //   how your app will use them.
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+            print("User accepted notifications: \(accepted)")
+        })
 
         Constants.accessToken = UICKeyChainStore.string(forKey: "token") ?? ""
         NSLog("User Token: <\(Constants.accessToken ?? "n/a")>")

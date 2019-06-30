@@ -100,6 +100,8 @@
 		6B9A279A222B00C300E8463E /* OPassEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9A2799222B00C300E8463E /* OPassEventCell.xib */; };
 		6B9A279C222B040800E8463E /* OPassEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9A279B222B040800E8463E /* OPassEventCell.swift */; };
 		6B9A279E2231715600E8463E /* OPassAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9A279D2231715500E8463E /* OPassAPI.swift */; };
+		6B9B24D722C8BA1D007C41A9 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B24D622C8BA1D007C41A9 /* NotificationService.swift */; };
+		6B9B24DB22C8BA1D007C41A9 /* OPass Notification Service.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6B9B24D422C8BA1D007C41A9 /* OPass Notification Service.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6BB1C4391F1AD4BB00AB072F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
 		6BB97F9C222A813200338138 /* PartnerWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB97F9B222A813200338138 /* PartnerWebViewController.swift */; };
 		6BBAE47F22B67D1C003CBC57 /* CheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBAE47E22B67D1C003CBC57 /* CheckinViewController.swift */; };
@@ -132,6 +134,13 @@
 			remoteGlobalIDString = 6BCAC0261F1A8FC100032096;
 			remoteInfo = "CCIP-Watch Extension";
 		};
+		6B9B24D922C8BA1D007C41A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6BD8EF1F1D1D73510094BE95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B9B24D322C8BA1D007C41A9;
+			remoteInfo = "OPass Notification Service";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -143,6 +152,17 @@
 			files = (
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B9B24DC22C8BA1D007C41A9 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6B9B24DB22C8BA1D007C41A9 /* OPass Notification Service.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6BB0B6411F1A8E2300AEB437 /* Embed Watch Content */ = {
@@ -271,6 +291,9 @@
 		6B9A2799222B00C300E8463E /* OPassEventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OPassEventCell.xib; sourceTree = "<group>"; };
 		6B9A279B222B040800E8463E /* OPassEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassEventCell.swift; sourceTree = "<group>"; };
 		6B9A279D2231715500E8463E /* OPassAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPI.swift; sourceTree = "<group>"; };
+		6B9B24D422C8BA1D007C41A9 /* OPass Notification Service.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "OPass Notification Service.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B9B24D622C8BA1D007C41A9 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		6B9B24D822C8BA1D007C41A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BB0B6091F1A74DF00AEB437 /* OPass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OPass.entitlements; sourceTree = "<group>"; };
 		6BB55CAB1F242EC7007BC840 /* OPass-Build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "OPass-Build.sh"; sourceTree = "<group>"; };
 		6BB97F9B222A813200338138 /* PartnerWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerWebViewController.swift; sourceTree = "<group>"; };
@@ -310,6 +333,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6B9B24D122C8BA1D007C41A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6BCAC0241F1A8FC100032096 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -458,6 +488,15 @@
 			path = OPassAPI;
 			sourceTree = "<group>";
 		};
+		6B9B24D522C8BA1D007C41A9 /* OPass Notification Service */ = {
+			isa = PBXGroup;
+			children = (
+				6B9B24D622C8BA1D007C41A9 /* NotificationService.swift */,
+				6B9B24D822C8BA1D007C41A9 /* Info.plist */,
+			);
+			path = "OPass Notification Service";
+			sourceTree = "<group>";
+		};
 		6BCAC01C1F1A8FC100032096 /* OPass-Watch */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,6 +536,7 @@
 				6BFB83261F2B19C9005DCF00 /* Supporting Files */,
 				6BCAC01C1F1A8FC100032096 /* OPass-Watch */,
 				6BCAC02B1F1A8FC100032096 /* OPass-Watch Extension */,
+				6B9B24D522C8BA1D007C41A9 /* OPass Notification Service */,
 				6BD8EF281D1D73510094BE95 /* Products */,
 				017A0FB6BC91053E5BA17E51 /* Pods */,
 				267251DBF9C24B92F4EE80DC /* Frameworks */,
@@ -509,6 +549,7 @@
 				6BD8EF271D1D73510094BE95 /* OPass.app */,
 				6BCAC01B1F1A8FC100032096 /* OPass-Watch.app */,
 				6BCAC0271F1A8FC100032096 /* OPass-Watch Extension.appex */,
+				6B9B24D422C8BA1D007C41A9 /* OPass Notification Service.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -674,6 +715,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6B9B24D322C8BA1D007C41A9 /* OPass Notification Service */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B9B24DF22C8BA1D007C41A9 /* Build configuration list for PBXNativeTarget "OPass Notification Service" */;
+			buildPhases = (
+				6B9B24D022C8BA1D007C41A9 /* Sources */,
+				6B9B24D122C8BA1D007C41A9 /* Frameworks */,
+				6B9B24D222C8BA1D007C41A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OPass Notification Service";
+			productName = "OPass Notification Service";
+			productReference = 6B9B24D422C8BA1D007C41A9 /* OPass Notification Service.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		6BCAC01A1F1A8FC100032096 /* OPass-Watch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BCAC0431F1A8FC100032096 /* Build configuration list for PBXNativeTarget "OPass-Watch" */;
@@ -721,10 +779,12 @@
 				6B1C6A1D1D1D843F003C4865 /* Embed Frameworks */,
 				6BB0B6411F1A8E2300AEB437 /* Embed Watch Content */,
 				15CD47F23CD25D89139AAF9C /* [CP] Embed Pods Frameworks */,
+				6B9B24DC22C8BA1D007C41A9 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6B9B24DA22C8BA1D007C41A9 /* PBXTargetDependency */,
 			);
 			name = OPass;
 			productName = CCIP;
@@ -737,9 +797,13 @@
 		6BD8EF1F1D1D73510094BE95 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = OPass;
 				TargetAttributes = {
+					6B9B24D322C8BA1D007C41A9 = {
+						CreatedOnToolsVersion = 11.0;
+					};
 					6BCAC01A1F1A8FC100032096 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 9UZ879Y8DL;
@@ -783,11 +847,19 @@
 				6BD8EF261D1D73510094BE95 /* OPass */,
 				6BCAC01A1F1A8FC100032096 /* OPass-Watch */,
 				6BCAC0261F1A8FC100032096 /* OPass-Watch Extension */,
+				6B9B24D322C8BA1D007C41A9 /* OPass Notification Service */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6B9B24D222C8BA1D007C41A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6BCAC0191F1A8FC100032096 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -893,6 +965,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6B9B24D022C8BA1D007C41A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B9B24D722C8BA1D007C41A9 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6BCAC0231F1A8FC100032096 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -983,6 +1063,11 @@
 			target = 6BCAC0261F1A8FC100032096 /* OPass-Watch Extension */;
 			targetProxy = 6B49F1421F2548CA00686C27 /* PBXContainerItemProxy */;
 		};
+		6B9B24DA22C8BA1D007C41A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6B9B24D322C8BA1D007C41A9 /* OPass Notification Service */;
+			targetProxy = 6B9B24D922C8BA1D007C41A9 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1015,6 +1100,71 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6B9B24DD22C8BA1D007C41A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9UZ879Y8DL;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "OPass Notification Service/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(NOTIFICATION_PRODUCT_BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6B9B24DE22C8BA1D007C41A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9UZ879Y8DL;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "OPass Notification Service/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(NOTIFICATION_PRODUCT_BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		6BCAC03D1F1A8FC100032096 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1244,6 +1394,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A3C77281C898CA0F321FB144 /* Pods-OPass.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Supporting Files/$(TARGET_NAME).entitlements";
@@ -1276,6 +1427,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 74F12A5510F2FFDA3E20E8E5 /* Pods-OPass.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Supporting Files/$(TARGET_NAME).entitlements";
@@ -1306,6 +1458,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6B9B24DF22C8BA1D007C41A9 /* Build configuration list for PBXNativeTarget "OPass Notification Service" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B9B24DD22C8BA1D007C41A9 /* Debug */,
+				6B9B24DE22C8BA1D007C41A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6BCAC0411F1A8FC100032096 /* Build configuration list for PBXNativeTarget "OPass-Watch Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
