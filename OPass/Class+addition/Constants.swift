@@ -166,25 +166,25 @@ extension Constants {
         return self.OPassURL(OPassAPI.eventInfo?.SessionUrl.absoluteString ?? "")
     }
     static var URL_LOG_BOT: String {
-        return self.OPassURL(OPassAPI.eventInfo?.Features.IRC!.absoluteString ?? "")
+        return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.Url?.absoluteString ?? "")
     }
     static var URL_VENUE: String {
-        return self.OPassURL(OPassAPI.eventInfo?.Features.Venue!.absoluteString ?? "")
+        return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures.Venue]?.Url?.absoluteString ?? "")
     }
     static var URL_TELEGRAM_GROUP: String {
-        return self.OPassURL(OPassAPI.eventInfo?.Features.Telegram!.absoluteString ?? "")
+        return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures.Telegram]?.Url?.absoluteString ?? "")
     }
     static var URL_STAFF_WEB: String {
-        return self.OPassURL(OPassAPI.eventInfo?.Features.Staffs!.absoluteString ?? "")
+        return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures.Staffs]?.Url?.absoluteString ?? "")
     }
     static var URL_SPONSOR_WEB: String {
-        return self.OPassURL(OPassAPI.eventInfo?.Features.Sponsors!.absoluteString ?? "")
+        return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures.Sponsors]?.Url?.absoluteString ?? "")
     }
     static var URL_PARTNERS_WEB: String {
-        return self.OPassURL(OPassAPI.eventInfo?.Features.Partners!.absoluteString ?? "")
+        return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures.Partners]?.Url?.absoluteString ?? "")
     }
     static func URL_GAME(token: String) -> String {
-        var url = OPassAPI.eventInfo?.Features.Puzzle!.absoluteString ?? ""
+        var url = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Puzzle]?.Url?.absoluteString ?? ""
         if url.count > 0 {
             url = url + token
         }

@@ -27,7 +27,7 @@ class MainTabBarViewController : UITabBarController {
             item.selectedImage = image.withRenderingMode(.alwaysOriginal)
             item.title = NSLocalizedString(title, comment: "")
             if title == "IRC" {
-                item.isEnabled = OPassAPI.eventInfo?.Features.IRC != nil
+                item.isEnabled = OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.Url != nil
             }
         }
 

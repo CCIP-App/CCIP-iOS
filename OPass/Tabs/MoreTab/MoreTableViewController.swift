@@ -73,23 +73,25 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
 
         self.userInfo = OPassAPI.userInfo
         self.moreItems = [
-            OPassAPI.eventInfo?.Features.Puzzle != nil
+            OPassAPI.eventInfo?.Features[OPassKnownFeatures.Puzzle]?.Url != nil
                 ? "Puzzle"
                 : "",
-            "Ticket",
-            OPassAPI.eventInfo?.Features.Telegram != nil
+            OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass] != nil
+                ? "Ticket"
+                : "",
+            OPassAPI.eventInfo?.Features[OPassKnownFeatures.Telegram]?.Url != nil
                 ? "Telegram"
                 : "",
-            OPassAPI.eventInfo?.Features.Venue != nil
+            OPassAPI.eventInfo?.Features[OPassKnownFeatures.Venue]?.Url != nil
                 ? "VenueWeb"
                 : "",
-            OPassAPI.eventInfo?.Features.Staffs != nil
+            OPassAPI.eventInfo?.Features[OPassKnownFeatures.Staffs]?.Url != nil
                 ? "StaffsWeb"
                 : "",
-            OPassAPI.eventInfo?.Features.Sponsors != nil
+            OPassAPI.eventInfo?.Features[OPassKnownFeatures.Sponsors]?.Url != nil
                 ? "SponsorsWeb"
                 : "",
-            OPassAPI.eventInfo?.Features.Partners != nil
+            OPassAPI.eventInfo?.Features[OPassKnownFeatures.Partners]?.Url != nil
                 ? "PartnersWeb"
                 : "",
             "Acknowledgements",

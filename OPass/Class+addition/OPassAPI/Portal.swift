@@ -11,6 +11,20 @@ import then
 import SwiftyJSON
 import SwiftDate
 
+enum OPassKnownFeatures: String {
+    case FastPass = "fastpass"
+    case Schedule = "schedule"
+    case Announcement = "announcement"
+    case Puzzle = "puzzle"
+    case Ticket = "ticket"
+    case Telegram = "telegram"
+    case IM = "im"
+    case Venue = "venue"
+    case Sponsors = "sponsors"
+    case Partners = "partners"
+    case Staffs = "staffs"
+}
+
 struct EventDisplayName: OPassData {
     var _data: JSON
     init(_ data: JSON) {
@@ -37,35 +51,25 @@ struct PublishDate: OPassData {
 
 struct EventFeatures: OPassData {
     var _data: JSON
-    var IRC: URL?
-    var Telegram: URL?
-    var Puzzle: URL?
-    var Staffs: URL?
-    var Venue: URL?
-    var Sponsors: URL?
-    var Partners: URL?
+    var Feature : String
+    var DisplayText: EventDisplayName
+    var Url: URL?
     init(_ data: JSON) {
         self._data = data
-        self.IRC = self._data["irc"].url
-        self.Telegram = self._data["telegram"].url
-        self.Puzzle = self._data["puzzle"].url
-        self.Staffs = self._data["staffs"].url
-        self.Venue = self._data["venus"].url
-        self.Sponsors = self._data["sponsors"].url
-        self.Partners = self._data["partners"].url
+        self.Feature = self._data["feature"].stringValue
+        self.DisplayText = EventDisplayName(self._data["display_text"])
+        self.Url = self._data["url"].url
     }
 }
 
-struct EventCustomFeatures: OPassData {
-    var _data: JSON
-    var IconUrl: URL?
-    var DisplayName: EventDisplayName
-    var Url: URL
-    init(_ data: JSON) {
-        self._data = data
-        self.IconUrl = self._data["icon"].url
-        self.DisplayName = EventDisplayName(self._data["display_name"])
-        self.Url = self._data["url"].url!
+extension Array where Element == EventFeatures {
+    subscript(_ feature: OPassKnownFeatures) -> EventFeatures? {
+        return self.first { ft -> Bool in
+            if OPassKnownFeatures(rawValue: ft.Feature) == feature {
+                return true
+            }
+            return false
+        }
     }
 }
 
@@ -77,8 +81,7 @@ struct EventInfo: OPassData {
     var Publish: PublishDate
     var ServerBaseUrl: URL
     var SessionUrl: URL
-    var Features: EventFeatures
-    var CustomFeatures: Array<EventCustomFeatures>
+    var Features: Array<EventFeatures>
     init(_ data: JSON) {
         self._data = data
         self.EventId = self._data["event_id"].stringValue
@@ -87,9 +90,8 @@ struct EventInfo: OPassData {
         self.Publish = PublishDate(self._data["publish"])
         self.ServerBaseUrl = self._data["server_base_url"].url!
         self.SessionUrl = self._data["schedule_url"].url!
-        self.Features = EventFeatures(self._data["features"])
-        self.CustomFeatures = self._data["custom_features"].arrayValue.map { ft -> EventCustomFeatures in
-            return EventCustomFeatures(ft)
+        self.Features = self._data["features"].arrayValue.map { ft -> EventFeatures in
+            return EventFeatures(ft)
         }
     }
 }
