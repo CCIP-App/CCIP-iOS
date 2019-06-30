@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0E2C268EA02D7DF965145C /* Pods_OPass_OPass_Notification_Service.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 092D9A0DD02A1DA073AD9280 /* Pods_OPass_OPass_Notification_Service.framework */; };
 		1424C2012250FC7100D36266 /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1424C1FE2250FC7100D36266 /* More.storyboard */; };
 		1424C2022250FC7100D36266 /* Session.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1424C1FF2250FC7100D36266 /* Session.storyboard */; };
 		1424C2032250FC7100D36266 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1424C2002250FC7100D36266 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		28A7C5641D5F7D2D0079BB12 /* Project_3rd_Lib_License.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */; };
 		28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */; };
 		28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */; };
+		5694D3CF621CC8BF2D8C68BE /* Pods-OPass-OPass Notification Service-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 988D431FE4F12B6D1A9A556F /* Pods-OPass-OPass Notification Service-metadata.plist */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
 		5F75A479AF13F31C57E574C7 /* Pods-OPass-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC0E7EB6EB420AD75E37B7F2 /* Pods-OPass-metadata.plist */; };
 		6B036B901F24371700D5E5A5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B036B8F1F24371600D5E5A5 /* Settings.bundle */; };
@@ -189,6 +191,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		092D9A0DD02A1DA073AD9280 /* Pods_OPass_OPass_Notification_Service.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OPass_OPass_Notification_Service.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1424C1FE2250FC7100D36266 /* More.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 		1424C1FF2250FC7100D36266 /* Session.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Session.storyboard; sourceTree = "<group>"; };
 		1424C2002250FC7100D36266 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -222,6 +225,7 @@
 		28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+PMUtils.m"; sourceTree = "<group>"; };
 		28ACA99F1D5E92AD002A6419 /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
 		28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
+		58D13106023DD9CF88704EED /* Pods-OPass-OPass Notification Service.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OPass-OPass Notification Service.release.xcconfig"; path = "Pods/Target Support Files/Pods-OPass-OPass Notification Service/Pods-OPass-OPass Notification Service.release.xcconfig"; sourceTree = "<group>"; };
 		5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B023A9A20470F4B00F474F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B036B8F1F24371600D5E5A5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -328,8 +332,10 @@
 		6BF331511F299207004BEEA6 /* AssetsUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AssetsUI.bundle; sourceTree = "<group>"; };
 		6F0EA2CF879AB2AB4CA09023 /* Pods_OPass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OPass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F12A5510F2FFDA3E20E8E5 /* Pods-OPass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OPass.release.xcconfig"; path = "Pods/Target Support Files/Pods-OPass/Pods-OPass.release.xcconfig"; sourceTree = "<group>"; };
+		988D431FE4F12B6D1A9A556F /* Pods-OPass-OPass Notification Service-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-OPass-OPass Notification Service-metadata.plist"; path = "Pods/Pods-OPass-OPass Notification Service-metadata.plist"; sourceTree = "<group>"; };
 		A3C77281C898CA0F321FB144 /* Pods-OPass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OPass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OPass/Pods-OPass.debug.xcconfig"; sourceTree = "<group>"; };
 		BC0E7EB6EB420AD75E37B7F2 /* Pods-OPass-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-OPass-metadata.plist"; path = "Pods/Pods-OPass-metadata.plist"; sourceTree = "<group>"; };
+		D27CFE28B28DA68B6A854F50 /* Pods-OPass-OPass Notification Service.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OPass-OPass Notification Service.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OPass-OPass Notification Service/Pods-OPass-OPass Notification Service.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +343,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A0E2C268EA02D7DF965145C /* Pods_OPass_OPass_Notification_Service.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +396,9 @@
 				A3C77281C898CA0F321FB144 /* Pods-OPass.debug.xcconfig */,
 				74F12A5510F2FFDA3E20E8E5 /* Pods-OPass.release.xcconfig */,
 				BC0E7EB6EB420AD75E37B7F2 /* Pods-OPass-metadata.plist */,
+				D27CFE28B28DA68B6A854F50 /* Pods-OPass-OPass Notification Service.debug.xcconfig */,
+				58D13106023DD9CF88704EED /* Pods-OPass-OPass Notification Service.release.xcconfig */,
+				988D431FE4F12B6D1A9A556F /* Pods-OPass-OPass Notification Service-metadata.plist */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -425,6 +435,7 @@
 				6B2F9E461D4D18F100047F38 /* QuartzCore.framework */,
 				6B2CD58A1D28780F00793194 /* AudioToolbox.framework */,
 				6F0EA2CF879AB2AB4CA09023 /* Pods_OPass.framework */,
+				092D9A0DD02A1DA073AD9280 /* Pods_OPass_OPass_Notification_Service.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -719,6 +730,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6B9B24DF22C8BA1D007C41A9 /* Build configuration list for PBXNativeTarget "OPass Notification Service" */;
 			buildPhases = (
+				A4E2C3376F3DF1055C149F86 /* [CP] Check Pods Manifest.lock */,
 				6B9B24D022C8BA1D007C41A9 /* Sources */,
 				6B9B24D122C8BA1D007C41A9 /* Frameworks */,
 				6B9B24D222C8BA1D007C41A9 /* Resources */,
@@ -771,8 +783,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BD8EF411D1D73510094BE95 /* Build configuration list for PBXNativeTarget "OPass" */;
 			buildPhases = (
-				6BB11CED214D0B43005CE4A0 /* Generate Version Text */,
 				F46A6ED9AE1BFC01632EAC09 /* [CP] Check Pods Manifest.lock */,
+				6BB11CED214D0B43005CE4A0 /* Generate Version Text */,
 				6BD8EF231D1D73510094BE95 /* Sources */,
 				6BD8EF241D1D73510094BE95 /* Frameworks */,
 				6BD8EF251D1D73510094BE95 /* Resources */,
@@ -857,6 +869,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5694D3CF621CC8BF2D8C68BE /* Pods-OPass-OPass Notification Service-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -943,6 +956,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PROJECT_DIR}/Supporting Files/${TARGET_NAME}-Build.sh\"\n";
+		};
+		A4E2C3376F3DF1055C149F86 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OPass-OPass Notification Service-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 		F46A6ED9AE1BFC01632EAC09 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1102,6 +1137,7 @@
 /* Begin XCBuildConfiguration section */
 		6B9B24DD22C8BA1D007C41A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D27CFE28B28DA68B6A854F50 /* Pods-OPass-OPass Notification Service.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1138,6 +1174,7 @@
 		};
 		6B9B24DE22C8BA1D007C41A9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58D13106023DD9CF88704EED /* Pods-OPass-OPass Notification Service.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1394,7 +1431,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A3C77281C898CA0F321FB144 /* Pods-OPass.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Supporting Files/$(TARGET_NAME).entitlements";
@@ -1427,7 +1463,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 74F12A5510F2FFDA3E20E8E5 /* Pods-OPass.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Supporting Files/$(TARGET_NAME).entitlements";
