@@ -532,7 +532,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
 			<key>summary</key>
 			<string>Blazing fast Markdown rendering in Swift, built upon cmark.</string>
 			<key>version</key>
-			<string>0.8.4</string>
+			<string>0.8.5</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -641,7 +641,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Firebase for iOS</string>
 			<key>version</key>
-			<string>6.2.0</string>
+			<string>6.3.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -665,7 +665,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Firebase Analytics for iOS</string>
 			<key>version</key>
-			<string>6.0.1</string>
+			<string>6.0.2</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1120,7 +1120,7 @@ safe and reliable manner.&lt;/p&gt;
 			<key>summary</key>
 			<string>Firebase Core for iOS (plus community support for macOS and tvOS)</string>
 			<key>version</key>
-			<string>6.0.2</string>
+			<string>6.0.3</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1574,7 +1574,7 @@ services.&lt;/p&gt;
 			<key>summary</key>
 			<string>Firebase InstanceID for iOS</string>
 			<key>version</key>
-			<string>4.1.1</string>
+			<string>4.2.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1685,7 +1685,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Shared measurement methods for Google libraries. Not intended for direct use.</string>
 			<key>version</key>
-			<string>6.0.1</string>
+			<string>6.0.2</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1912,7 +1912,7 @@ other Google CocoaPods. They&amp;#39;re not intended for direct public usage.&lt
 			<key>summary</key>
 			<string>Google Utilities for iOS (plus community support for macOS and tvOS)</string>
 			<key>version</key>
-			<string>6.2.0</string>
+			<string>6.2.1</string>
 		</dict>
 		<dict>
 			<key>authors</key>

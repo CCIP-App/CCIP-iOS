@@ -8,7 +8,7 @@ def opass_pods
     use_frameworks!
     
     # Pods for OPass
-    pod 'OneSignal', '~> 2.9'
+    pod 'OneSignal', '>= 2.6.2', '< 3.0'
     pod 'UICKeyChainStore', '~> 2.1'
     pod 'Firebase/Core'
     pod 'Firebase/DynamicLinks'
