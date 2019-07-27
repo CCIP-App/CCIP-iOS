@@ -45,6 +45,10 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {[weak self] in
+            self?.tableView.beginUpdates()
+            self?.tableView.endUpdates()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,6 +73,10 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
         self.sessionTimes.sort()
 
         self.tableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {[weak self] in
+            self?.tableView.beginUpdates()
+            self?.tableView.endUpdates()
+        }
     }
 
     // MARK: - Peek & Pop Preview
@@ -104,7 +112,7 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return UITableView.automaticDimension
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
