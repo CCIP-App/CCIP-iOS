@@ -124,7 +124,12 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Constants.DateToDisplayTimeString(self.sessionTimes[section])
+        let time = self.sessionTimes[section]
+        if self.className != SessionTableViewController.className {
+            return Constants.DateToDisplayDateTimeString(time)
+        } else {
+            return Constants.DateToDisplayTimeString(time)
+        }
     }
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
