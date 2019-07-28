@@ -11,10 +11,11 @@ import UIKit
 import TagListView
 
 class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
-    @IBOutlet public var SessionTitleLabel: UILabel?
-    @IBOutlet public var RoomLocationLabel: UILabel?
-    @IBOutlet public var TagList: TagListView?
-    @IBOutlet public var FavoriteButton: UIButton?
+    @IBOutlet weak var SessionTitleLabel: UILabel!
+    @IBOutlet weak var SpeakerNamesLabel: UILabel!
+    @IBOutlet weak var RoomLocationLabel: UILabel!
+    @IBOutlet weak var TagList: TagListView!
+    @IBOutlet weak var FavoriteButton: UIButton!
 
     private var favorite: Bool = false
     private var disabled: Bool = false
@@ -30,17 +31,17 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.TagList?.delegate = self
-        self.TagList?.textFont = UIFont.systemFont(ofSize: 12)
-        self.TagList?.textColor = UIColor.colorFromHtmlColor("#9b9b9b")
-        self.TagList?.backgroundColor = .clear
-        self.TagList?.tagBackgroundColor = UIColor.colorFromHtmlColor("#d8d8d8")
-        self.TagList?.tagLineBreakMode = .byClipping
-        self.TagList?.cornerRadius = 3
-        self.TagList?.paddingX = 8
-        self.TagList?.paddingY = 5
-        self.TagList?.marginX = 5
-        self.TagList?.marginY = 3
+        self.TagList.delegate = self
+        self.TagList.textFont = UIFont.systemFont(ofSize: 12)
+        self.TagList.textColor = UIColor.colorFromHtmlColor("#9b9b9b")
+        self.TagList.backgroundColor = .clear
+        self.TagList.tagBackgroundColor = UIColor.colorFromHtmlColor("#d8d8d8")
+        self.TagList.tagLineBreakMode = .byClipping
+        self.TagList.cornerRadius = 3
+        self.TagList.paddingX = 8
+        self.TagList.paddingY = 5
+        self.TagList.marginX = 5
+        self.TagList.marginY = 3
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -65,18 +66,23 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
     func setSession(_ session: SessionInfo) {
         self.session = session
 
-        self.TagList?.removeAllTags()
+        self.TagList.removeAllTags()
+
+        let speakers = self.session!.Speakers.map({ speaker -> String in
+            return speaker["name"]
+        }).joined(separator: ", ")
+        self.SpeakerNamesLabel.text = speakers.count > 0 ? "Speaker(s): " + speakers : ""
 
         let startTime = Constants.DateFromString(self.session!.Start)
         let endTime = Constants.DateFromString(self.session!.End)
         let mins = Int(endTime.timeIntervalSince(startTime) / 60)
-        self.RoomLocationLabel?.text = "Room \(self.session!.Room!) - \(mins) mins"
+        self.RoomLocationLabel.text = "Room \(self.session!.Room!) - \(mins) mins"
 
-        self.SessionTitleLabel?.text = self.session!["title"]
+        self.SessionTitleLabel.text = self.session!["title"]
 
         let type = self.session!.Type ?? ""
         let tags = ((self.session?.Tags.map { $0.Name.trim() } ?? []) + [ type ]).filter { $0.count > 0 }
-        self.TagList?.addTags(tags)
+        self.TagList.addTags(tags)
         self.setFavorite(false)
 
         self.setFavorite(OPassAPI.CheckFavoriteState(OPassAPI.currentEvent, Constants.accessToken!, self.sessionId!))
@@ -89,7 +95,7 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
     func setFavorite(_ favorite: Bool) {
         self.favorite = favorite
         let title = Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: self.favorite ? fontAwesomeStyle.solid : fontAwesomeStyle.regular, forColor: Constants.appConfigColor("FavoriteButtonColor"))
-        self.FavoriteButton?.setAttributedTitle(title, for: .normal)
+        self.FavoriteButton.setAttributedTitle(title, for: .normal)
     }
 
     func getFavorite() -> Bool {
@@ -98,7 +104,7 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
 
     func setDisabled(_ disabled: Bool) {
         self.disabled = disabled
-        self.SessionTitleLabel?.alpha = self.disabled ? 0.2 : 1
+        self.SessionTitleLabel.alpha = self.disabled ? 0.2 : 1
     }
 
     func getDisabled() -> Bool {
