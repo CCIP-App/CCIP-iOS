@@ -6,6 +6,7 @@ platform :ios, '11.0'
 def pod_settings
   # Uncomment this line if you're using Swift or would like to use dynamic frameworks
   use_frameworks!
+  inhibit_all_warnings!
 end
 
 def onesignal
