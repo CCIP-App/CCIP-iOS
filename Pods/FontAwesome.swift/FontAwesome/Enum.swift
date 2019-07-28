@@ -2797,7 +2797,9 @@ public enum FontAwesome: String {
             case .yoast: return "\u{f2b1}"
             case .youtube: return "\u{f167}"
             case .youtubeSquare: return "\u{f431}"
-            case .zhihu: return "\u{f63f}"        
+            case .zhihu: return "\u{f63f}"
+        default:
+            break
         }
     }
 }
@@ -3663,7 +3665,9 @@ public enum FontAwesomeBrands: String {
             case .yoast: return "\u{f2b1}"
             case .youtube: return "\u{f167}"
             case .youtubeSquare: return "\u{f431}"
-            case .zhihu: return "\u{f63f}"        
+            case .zhihu: return "\u{f63f}"
+        default:
+            break
         }
     }
 }
