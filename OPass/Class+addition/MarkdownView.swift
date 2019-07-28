@@ -20,10 +20,10 @@ public class MarkdownView : NSObject {
         toView: UIView
         ) {
         self.downView = try! await(Promise { resolve, reject in
-            resolve(try! DownView(frame: frame, markdownString: withMarkdown) {})
+            resolve(try! DownView(frame: frame, markdownString: withMarkdown, options: .smartUnsafe) {})
         })
         self.markdownString = withMarkdown
-        toView .addSubview(self.downView)
+        toView.addSubview(self.downView)
     }
     
     public func append(
