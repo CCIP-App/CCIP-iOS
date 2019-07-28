@@ -80,7 +80,8 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
         super.viewDidAppear(animated)
 
         let markdownStyleString = "<style>h1, h2 {color: \(Constants.appConfig("Themes.CardTextColor") ?? "black");} h3, h4, h5, h6, h7, span, div, p {color: black;} body {font-size: 1em; padding-top: 0;}</style>\n\n"
-        self.downView = MarkdownView.init(CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.vContent!.bounds.size.height), withMarkdown: markdownStyleString, toView: self.vContent!)
+        self.downView = MarkdownView.init(markdownStyleString, toView: self.vContent!)
+
         let description = self.session!["description"]
         NSLog("Set description: \(description)")
         let isEmptyAbstract = description.trim().count == 0

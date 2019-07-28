@@ -15,28 +15,34 @@ public class MarkdownView : NSObject {
     public var downView: DownView
     
     public init(
-        _ frame: CGRect,
-        withMarkdown: String,
+        _ markdown: String,
         toView: UIView
         ) {
         self.downView = try! await(Promise { resolve, reject in
-            resolve(try! DownView(frame: frame, markdownString: withMarkdown, options: .smartUnsafe) {})
+            resolve(try! DownView(frame: CGRect.zero, markdownString: markdown, options: .smartUnsafe) {})
         })
-        self.markdownString = withMarkdown
+        self.markdownString = markdown
         toView.addSubview(self.downView)
+
+        self.downView.translatesAutoresizingMaskIntoConstraints = false
+        self.downView.addLayoutGuide(UILayoutGuide())
+        self.downView.safeAreaLayoutGuide.topAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+        self.downView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+        self.downView.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
+        self.downView.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
     }
     
     public func append(
         _ markdown: String
         ) {
-        self .update(self.getMarkdown() + markdown)
+        self.update(self.getMarkdown() + markdown)
     }
     
     public func update(
         _ markdown: String
-        ) {
-        try? self.downView .update(markdownString: markdown)
+    ) {
         self.markdownString = markdown
+        try? self.downView.update(markdownString: self.getMarkdown())
     }
     
     public func getMarkdown() -> String {
