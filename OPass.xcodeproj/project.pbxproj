@@ -37,7 +37,6 @@
 		28A7C5641D5F7D2D0079BB12 /* Project_3rd_Lib_License.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */; };
 		28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */; };
 		28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */; };
-		5694D3CF621CC8BF2D8C68BE /* Pods-OPass-OPass Notification Service-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 988D431FE4F12B6D1A9A556F /* Pods-OPass-OPass Notification Service-metadata.plist */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
 		5F75A479AF13F31C57E574C7 /* Pods-OPass-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC0E7EB6EB420AD75E37B7F2 /* Pods-OPass-metadata.plist */; };
 		6B036B901F24371700D5E5A5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B036B8F1F24371600D5E5A5 /* Settings.bundle */; };
@@ -876,7 +875,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5694D3CF621CC8BF2D8C68BE /* Pods-OPass-OPass Notification Service-metadata.plist in Resources */,
 				723057E283A559F896A0AAEF /* Pods-OPass Notification Service-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
