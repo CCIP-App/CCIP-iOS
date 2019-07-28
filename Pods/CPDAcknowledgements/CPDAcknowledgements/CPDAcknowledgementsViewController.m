@@ -88,17 +88,7 @@
     } else if([acknowledgement isKindOfClass:CPDContribution.class]){
         CPDContribution *contribution = acknowledgement;
         if (contribution.websiteAddress){
-//            detailController = [[CPDContributionDetailViewController alloc] initWithContribution:contribution];
-            if (@available(iOS 9.0, *)) {
-                UIApplication *app = [UIApplication sharedApplication];
-                [[app delegate] application:app
-                                    openURL:[NSURL URLWithString:contribution.websiteAddress]
-                                    options:@{}];
-            } else {
-                // Fallback on earlier versions
-                // no-op
-            }
-            return;
+            detailController = [[CPDContributionDetailViewController alloc] initWithContribution:contribution];
         }
     }
 

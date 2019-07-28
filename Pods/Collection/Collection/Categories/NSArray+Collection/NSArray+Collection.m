@@ -43,6 +43,7 @@
     return (index == NSNotFound) ? nil : self[index];
 }
 
+
 - (id)first:(BOOL (^)(id object))condition default:(id)defaultObject{
     id object = [self first:condition];
     return (object) ? object : defaultObject;
@@ -563,7 +564,15 @@
     return [[self.class range:times-1] map:^id(NSNumber *number, NSUInteger idx) {
         return callback(number.intValue);
     }];
-    
+}
+
+-(NSArray<NSArray*>*)chunk:(int)size{
+    NSMutableArray * result = NSMutableArray.new;
+    NSMutableArray * origin = self.mutableCopy;
+    while (origin.count > 0) {
+        [result addObject:[origin splice:size]];
+    }
+    return result;
 }
 
 -(NSArray*)crossJoin:(NSArray*)list{

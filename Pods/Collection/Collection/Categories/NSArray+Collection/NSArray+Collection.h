@@ -393,6 +393,13 @@
 + (NSArray *)times_:(int)times callback:(id (^)(int number))callback;
 
 /**
+ * The chunk method breaks the collection into multiple, smaller collections of a given size:
+ * @param size
+ * @return The chunk method breaks the collection into multiple, smaller arrays of a given size
+ */
+-(NSArray<NSArray*>*)chunk:(int)size;
+
+/**
  * Returns all the combinations with all array items
  */
 - (NSArray*)crossJoin:(NSArray*)list;
