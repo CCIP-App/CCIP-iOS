@@ -1,9 +1,9 @@
 matrix:
   include:
     - os: osx
-      osx_image: xcode10.1
+      osx_image: xcode11
       script:
-        - set -o pipefail && xcodebuild -workspace OPass.xcworkspace -scheme OPass -destination "platform=iOS Simulator,name=iPhone X,OS=12.1" clean build | xcpretty
+        - set -o pipefail && xcodebuild -workspace OPass.xcworkspace -scheme OPass -destination "platform=iOS Simulator,name=iPhone X,OS=13" clean build | xcpretty
     - os: osx
       osx_image: xcode10.2
       script:
