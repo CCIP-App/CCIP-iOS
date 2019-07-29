@@ -3,7 +3,7 @@ matrix:
     - os: osx
       osx_image: xcode11
       script:
-        - set -o pipefail && xcodebuild -workspace OPass.xcworkspace -scheme OPass -destination "platform=iOS Simulator,name=iPhone Xʀ,OS=13" clean build | xcpretty
+        - set -o pipefail && xcodebuild -workspace OPass.xcworkspace -scheme OPass -destination "platform=iOS Simulator,name=iPhone Xʀ,OS=13.0" clean build | xcpretty
     - os: osx
       osx_image: xcode10.2
       script:
