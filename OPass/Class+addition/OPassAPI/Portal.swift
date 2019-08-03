@@ -59,7 +59,22 @@ struct EventFeatures: OPassData {
         self._data = data
         self.Feature = self._data["feature"].stringValue
         self.DisplayText = EventDisplayName(self._data["display_text"])
-        self.Url = self._data["url"].url
+        var url = self._data["url"].string
+        if (url != nil) {
+            let paramsRegex = try? NSRegularExpression.init(pattern: "(\\{[^\\}]+\\})", options: .caseInsensitive)
+            let matches = paramsRegex!.matches(in: url!, options: .reportProgress, range: NSMakeRange(0, url!.count))
+            for m in stride(from: matches.count, to: 0, by: -1) {
+                let range = matches[m - 1].range(at: 1)
+                let param = url![range]
+                switch param {
+                case "{token}":
+                    url = url?.replacingOccurrences(of: param, with: Constants.accessToken ?? "")
+                default:
+                    url = url?.replacingOccurrences(of: param, with: "")
+                }
+            }
+            self.Url = URL(string: url!)
+        }
     }
 }
 
