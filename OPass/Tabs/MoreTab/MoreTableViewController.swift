@@ -18,6 +18,8 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
     var shimmeringLogoView: FBShimmeringView = FBShimmeringView.init(frame: CGRect(x: 0, y: 0, width: 500, height: 50))
     var userInfo: ScenarioStatus?
     var moreItems: NSArray?
+    var webViews: [EventFeatures] = []
+    var webViewIndex = 0
     var switchEventButton: UIBarButtonItem?
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,7 +77,13 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         super.viewWillAppear(animated)
 
         self.userInfo = OPassAPI.userInfo
-        self.moreItems = [
+        self.webViews = OPassAPI.eventInfo?.Features.filter({
+            $0.Feature == OPassKnownFeatures.WebView.rawValue
+        }) ?? []
+        let web = self.webViews.map({ _ -> String in
+            return "MoreWeb"
+        })
+        self.moreItems = ([
             OPassAPI.eventInfo?.Features[OPassKnownFeatures.Puzzle]?.Url != nil
                 ? "Puzzle"
                 : "",
@@ -97,8 +105,9 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
             OPassAPI.eventInfo?.Features[OPassKnownFeatures.Partners]?.Url != nil
                 ? "PartnersWeb"
                 : "",
-            "Acknowledgements",
-            ].filter({ $0.count > 0 }) as NSArray
+            ].filter({ $0.count > 0 }) + web + [
+                "Acknowledgements",
+            ]) as NSArray
     }
 
     override func didReceiveMemoryWarning() {
@@ -179,13 +188,28 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         ]
         let cellIconId = NSLocalizedString("icon-\(cellId)", comment: "");
         var cellIcon = NSMutableAttributedString.init(string: cellIconId, attributes: solid)
-        let cellText = NSLocalizedString(cellId, comment: "")
+        var cellText = NSLocalizedString(cellId, comment: "")
         if (cellIcon.size().width > 40) {
             cellIcon = NSMutableAttributedString.init(string: cellIconId, attributes: brands)
         }
         // cell.textLabel!.text = cellText
+        if (cellId == "MoreWeb") {
+            let feature = self.webViews[self.webViewIndex]
+            cell.Feature = feature
+            cellText = feature.DisplayText[Constants.shortLangUI]
+            self.webViewIndex += 1
+        }
         cell.textLabel!.attributedText = NSAttributedString.init(attributedString: cellIcon + "  \t  " + cellText)
         return cell;
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! MoreCell
+        let url = cell.Feature?.Url
+        if (url != nil) {
+            Constants.OpenInAppSafari(forURL: url!)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     /*

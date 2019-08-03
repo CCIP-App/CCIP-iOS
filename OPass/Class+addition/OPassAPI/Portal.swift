@@ -23,6 +23,7 @@ enum OPassKnownFeatures: String {
     case Sponsors = "sponsors"
     case Partners = "partners"
     case Staffs = "staffs"
+    case WebView = "webview"
 }
 
 struct EventDisplayName: OPassData {
