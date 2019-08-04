@@ -9,16 +9,11 @@
 
 "CurrentLang" = "zh-Hant";
 "Title" = "OPass 通關";
-"Checkin" = "報到";
-"Session" = "議程";
-"Announce" = "大會訊息";
 "More" = "更多";
 "SessionTitle" = "議程";
 "AnnouncementTitle" = "大會公告";
 "NoAnnouncementText" = "目前無任何公告哦！";
 "SessionOfDate" = "%@ 當日議程";
-"HSSBuilding" = "人文館";
-"ActivityCenter" = "活動中心";
 "All" = "全部";
 "Hi" = "嗨！%@ 您好！";
 "CheckinViewButton" = "報到";
@@ -50,16 +45,8 @@
 "day2lunch" = "第二天午餐領取";
 "day3lunch" = "第三天午餐領取";
 "Addition" = "其他";
-"IRC" = "IRC 頻道";
 "TicketNotice" = "請妥善保管您的票券，僅提供此票券給我們的工作人員或您參與攤位活動的工作人員使用";
 "TicketNonExistNotice" = "您的票券尚未登錄進 OPass，請登錄後再使用此功能！";
-"Puzzle" = "真·實境矩陣";
-"Ticket" = "我的票券";
-"Telegram" = "Telegram 群組";
-"VenueWeb" = "場內地圖";
-"StaffsWeb" = "籌備團隊";
-"SponsorsWeb" = "贊助";
-"PartnersWeb" = "合作夥伴";
 "Acknowledgements" = "開發者";
 "Contributions" = "貢獻者";
 "Libraries" = "開源專案";

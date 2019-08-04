@@ -9,16 +9,11 @@
 
 "CurrentLang" = "en";
 "Title" = "OPass";
-"Checkin" = "Checkin";
-"Session" = "Session";
-"Announce" = "Announce";
 "More" = "More";
 "SessionTitle" = "SESSION";
 "AnnouncementTitle" = "ANNOUNCEMENT";
 "NoAnnouncementText" = "No Announcement !";
 "SessionOfDate" = "Session Of %@";
-"HSSBuilding" = "H.S.S. Building";
-"ActivityCenter" = "Activity Center";
 "All" = "All";
 "Hi" = "Hi %@ !";
 "CheckinViewButton" = "CHECK IN";
@@ -50,16 +45,8 @@
 "day2lunch" = "Day 2 Lunch";
 "day3lunch" = "Day 3 Lunch";
 "Addition" = "Addition";
-"IRC" = "IRC Channel";
 "TicketNotice" = "Please keep your ticket secretly and carefully, only shows for our staff or in booth event";
 "TicketNonExistNotice" = "Your Ticket not import into OPass, please try again after import !";
-"Puzzle" = "Booth Reward Activity";
-"Ticket" = "My Ticket";
-"Telegram" = "Telegram Groups";
-"VenueWeb" = "Venue";
-"StaffsWeb" = "Staffs";
-"SponsorsWeb" = "Sponsors";
-"PartnersWeb" = "Partners";
 "Acknowledgements" = "Developers";
 "Contributions" = "Contributors";
 "Libraries" = "Open Source Libraries";
