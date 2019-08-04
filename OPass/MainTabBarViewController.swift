@@ -28,6 +28,9 @@ class MainTabBarViewController : UITabBarController {
             switch title {
             case "Checkin":
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.DisplayText[Constants.shortLangUI]
+                if ((OPassAPI.userInfo?.Type ?? "").count > 0) {
+                    item.isEnabled = (OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(OPassAPI.userInfo!.Type))!
+                }
             case "Session":
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]
             case "Announce":

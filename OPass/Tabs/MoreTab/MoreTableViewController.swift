@@ -191,6 +191,9 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         if (cellIcon.size().width > 40) {
             cellIcon = NSMutableAttributedString.init(string: cellIconId, attributes: brands)
         }
+        if ((OPassAPI.userInfo?.Type ?? "").count > 0 && !(feature?.VisibleRoles?.contains(OPassAPI.userInfo?.Type ?? "") ?? true)) {
+            cell.isUserInteractionEnabled = false
+        }
         // cell.textLabel!.text = cellText
         cell.textLabel!.attributedText = NSAttributedString.init(attributedString: cellIcon + "  \t  " + cellText)
         return cell;

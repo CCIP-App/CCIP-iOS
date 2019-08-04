@@ -52,12 +52,15 @@ struct PublishDate: OPassData {
 
 struct EventFeatures: OPassData {
     var _data: JSON
-    var Feature : String
+    var Feature: String
+    var Icon: URL?
     var DisplayText: EventDisplayName
     var Url: URL?
+    var VisibleRoles: [String]?
     init(_ data: JSON) {
         self._data = data
         self.Feature = self._data["feature"].stringValue
+        self.Icon = self._data["icon"].url
         self.DisplayText = EventDisplayName(self._data["display_text"])
         var url = self._data["url"].string
         if (url != nil) {
@@ -75,6 +78,7 @@ struct EventFeatures: OPassData {
             }
             self.Url = URL(string: url!)
         }
+        self.VisibleRoles = self._data["visible_roles"].arrayObject as? [String]
     }
 }
 
