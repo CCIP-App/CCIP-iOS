@@ -13,13 +13,13 @@ import AFNetworking
 import FontAwesome_swift
 import Nuke
 
+let ACKNOWLEDGEMENTS = "Acknowledgements"
+
 class MoreTableViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var moreTableView: UITableView?
     var shimmeringLogoView: FBShimmeringView = FBShimmeringView.init(frame: CGRect(x: 0, y: 0, width: 500, height: 50))
     var userInfo: ScenarioStatus?
     var moreItems: NSArray?
-    var webViews: [EventFeatures] = []
-    var webViewIndex = 0
     var switchEventButton: UIBarButtonItem?
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -77,37 +77,31 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         super.viewWillAppear(animated)
 
         self.userInfo = OPassAPI.userInfo
-        self.webViews = OPassAPI.eventInfo?.Features.filter({
-            $0.Feature == OPassKnownFeatures.WebView.rawValue
-        }) ?? []
-        let web = self.webViews.map({ _ -> String in
-            return "MoreWeb"
-        })
-        self.moreItems = ([
-            OPassAPI.eventInfo?.Features[OPassKnownFeatures.Puzzle]?.Url != nil
-                ? "Puzzle"
-                : "",
-            OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass] != nil
-                ? "Ticket"
-                : "",
-            OPassAPI.eventInfo?.Features[OPassKnownFeatures.Telegram]?.Url != nil
-                ? "Telegram"
-                : "",
-            OPassAPI.eventInfo?.Features[OPassKnownFeatures.Venue]?.Url != nil
-                ? "VenueWeb"
-                : "",
-            OPassAPI.eventInfo?.Features[OPassKnownFeatures.Staffs]?.Url != nil
-                ? "StaffsWeb"
-                : "",
-            OPassAPI.eventInfo?.Features[OPassKnownFeatures.Sponsors]?.Url != nil
-                ? "SponsorsWeb"
-                : "",
-            OPassAPI.eventInfo?.Features[OPassKnownFeatures.Partners]?.Url != nil
-                ? "PartnersWeb"
-                : "",
-            ].filter({ $0.count > 0 }) + web + [
-                "Acknowledgements",
-            ]) as NSArray
+        let features = OPassAPI.eventInfo?.Features.map { feature -> [Any?] in
+            switch OPassKnownFeatures(rawValue: feature.Feature) {
+            case .Puzzle:
+                return ["Puzzle", feature]
+            case .FastPass:
+                return ["Ticket", feature]
+            case .Telegram:
+                return ["Telegram", feature]
+            case .Venue:
+                return ["VenueWeb", feature]
+            case .Staffs:
+                return ["StaffsWeb", feature]
+            case .Sponsors:
+                return ["SponsorsWeb", feature]
+            case .Partners:
+                return ["PartnersWeb", feature]
+            case .WebView:
+                return ["MoreWeb", feature]
+            default:
+                return ["", nil]
+            }
+        }
+        self.moreItems = ((features ?? [["", nil]]) + [
+            [ACKNOWLEDGEMENTS, nil]
+        ]).filter { ($0![0] as! String).count > 0 } as NSArray
     }
 
     override func didReceiveMemoryWarning() {
@@ -178,8 +172,11 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellId = self.moreItems!.object(at: indexPath.row) as! String
+        let item = self.moreItems!.object(at: indexPath.row) as! NSArray
+        let feature = item[1] as? EventFeatures
+        let cellId = item[0] as! String
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MoreCell
+        cell.Feature = feature
         let brands = [
             NSAttributedString.Key.font: Constants.fontOfAwesome(withSize: 24, inStyle: .brands),
         ]
@@ -188,17 +185,13 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         ]
         let cellIconId = NSLocalizedString("icon-\(cellId)", comment: "");
         var cellIcon = NSMutableAttributedString.init(string: cellIconId, attributes: solid)
-        var cellText = NSLocalizedString(cellId, comment: "")
+        let cellText = cellId != ACKNOWLEDGEMENTS ?
+            (feature?.DisplayText[Constants.shortLangUI] ?? "") :
+            NSLocalizedString(cellId, comment: "")
         if (cellIcon.size().width > 40) {
             cellIcon = NSMutableAttributedString.init(string: cellIconId, attributes: brands)
         }
         // cell.textLabel!.text = cellText
-        if (cellId == "MoreWeb") {
-            let feature = self.webViews[self.webViewIndex]
-            cell.Feature = feature
-            cellText = feature.DisplayText[Constants.shortLangUI]
-            self.webViewIndex += 1
-        }
         cell.textLabel!.attributedText = NSAttributedString.init(attributedString: cellIcon + "  \t  " + cellText)
         return cell;
     }
