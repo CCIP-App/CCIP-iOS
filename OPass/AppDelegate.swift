@@ -133,7 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func parseUniversalLinkAndURL(_ isOldScheme: Bool, _ url: URL) -> Bool {
         NSLog("Calling from: \(url)")
-        let params = URLComponents(string: url.query ?? "")?.queryItems
+        let params = URLComponents(string: "?" + (url.query ?? ""))?.queryItems
         let event_id = params?.first(where: { $0.name == "event_id" })?.value
         let token = params?.first(where: { $0.name == "token" })?.value
         if isOldScheme {
@@ -284,12 +284,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         NSLog("Receieved Activity URL -> \(userActivity.webpageURL!)");
             var handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { dynamicLink, error in
                 if dynamicLink?.url != nil {
-                    let _ = self.parseUniversalLinkAndURL(false, dynamicLink!.url!)
+                    let _ = self.parseUniversalLinkAndURL(true, dynamicLink!.url!)
                 }
             }
             if !handled {
                 // non Firbase Dynamic Link
-                handled = self.parseUniversalLinkAndURL(false, userActivity.webpageURL!)
+                handled = self.parseUniversalLinkAndURL(true, userActivity.webpageURL!)
             }
             return handled
         }
