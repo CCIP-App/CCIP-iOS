@@ -25,9 +25,18 @@ class MainTabBarViewController : UITabBarController {
             var image: UIImage = item.image!.withRenderingMode(.alwaysOriginal)
             image = image.imageWithColor(titleHighlightedColor)
             item.selectedImage = image.withRenderingMode(.alwaysOriginal)
-            item.title = NSLocalizedString(title, comment: "")
-            if title == "IRC" {
+            switch title {
+            case "Checkin":
+                item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.DisplayText[Constants.shortLangUI]
+            case "Session":
+                item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]
+            case "Announce":
+                item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.DisplayText[Constants.shortLangUI]
+            case "IRC":
+                item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.DisplayText[Constants.shortLangUI]
                 item.isEnabled = OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.Url != nil
+            default:
+                item.title = NSLocalizedString(title, comment: "")
             }
         }
 
