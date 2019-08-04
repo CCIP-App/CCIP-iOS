@@ -206,7 +206,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! MoreCell
         let url = cell.Feature?.Url
-        if (url != nil) {
+        if (url != nil && cell.Feature?.Feature == OPassKnownFeatures.WebView.rawValue) {
             Constants.OpenInAppSafari(forURL: url!)
         }
         tableView.deselectRow(at: indexPath, animated: true)
