@@ -1145,6 +1145,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4DFF24DA2C44443FDA428128 /* Pods-OPass Notification Service.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -1182,6 +1183,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A3BF4F781877CEC15FDB3EA8 /* Pods-OPass Notification Service.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
