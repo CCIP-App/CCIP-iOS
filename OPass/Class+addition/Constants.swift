@@ -116,10 +116,10 @@ extension Constants {
     static var currentLangUI: String {
         return NSLocalizedString("CurrentLang", comment: "")
     }
+    private static let regex = try? NSRegularExpression.init(pattern: "^(?<major>[\\w]{2})(-(?<minor>[\\w]{2,4}))?$", options: [ .anchorsMatchLines, .caseInsensitive ])
     static var shortLangUI: String {
         let lang = self.currentLangUI
-        let regex = try? NSRegularExpression.init(pattern: "^(?<major>[\\w]{2})(-(?<minor>[\\w]{2,4}))?$", options: [ .anchorsMatchLines, .caseInsensitive ])
-        let matches = regex?.matches(in: lang, options: .withTransparentBounds, range: NSRange.init(location: 0, length: lang.count))
+        let matches = self.regex?.matches(in: lang, options: .withTransparentBounds, range: NSRange.init(location: 0, length: lang.count))
         guard let langRange = matches?.first?.range(at: 1) else { return "" }
         return lang[langRange.location..<langRange.length]
     }
