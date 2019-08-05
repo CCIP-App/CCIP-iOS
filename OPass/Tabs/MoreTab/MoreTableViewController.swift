@@ -195,6 +195,21 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
 
         cell.imageView!.image = UIImage.fontAwesomeIcon(name: fontName!, style: fontStyle, textColor: UIColor.black, size: CGSize(width: 24, height: 24))
 
+        // Custome Icon
+        let customIconUrl = feature?.Icon
+        if (customIconUrl != nil) {
+            let imageRequest = ImageRequest(url: customIconUrl!, targetSize: CGSize(width: 24*2, height: 24*2), contentMode: .aspectFill) //Nuke 7 is suck...
+
+            Nuke.loadImage(
+                with: imageRequest,
+                options: ImageLoadingOptions(
+                    placeholder: cell.imageView?.image,
+                    transition: .fadeIn(duration: 0.33)
+                ),
+                into: cell.imageView!
+            )
+        }
+
         let cellText = cellId != ACKNOWLEDGEMENTS ?
             (feature?.DisplayText[Constants.shortLangUI] ?? "") :
             NSLocalizedString(cellId, comment: "")
