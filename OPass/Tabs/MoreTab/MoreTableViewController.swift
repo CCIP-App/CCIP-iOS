@@ -186,7 +186,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
             switch String(cellIconId.split(separator: " ").first!) {
             case "fas":
                 return FontAwesomeStyle.solid
-            case "fad":
+            case "fab":
                 return FontAwesomeStyle.brands
             default:
                 return FontAwesomeStyle.solid
