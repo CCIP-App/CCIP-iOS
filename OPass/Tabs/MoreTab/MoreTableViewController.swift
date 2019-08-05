@@ -79,21 +79,21 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         self.userInfo = OPassAPI.userInfo
         let features = OPassAPI.eventInfo?.Features.map { feature -> [Any?] in
             switch OPassKnownFeatures(rawValue: feature.Feature) {
-            case .Puzzle:
+            case Optional(.Puzzle):
                 return ["Puzzle", feature]
-            case .FastPass:
+            case Optional(.FastPass):
                 return ["Ticket", feature]
-            case .Telegram:
+            case Optional(.Telegram):
                 return ["Telegram", feature]
-            case .Venue:
+            case Optional(.Venue):
                 return ["VenueWeb", feature]
-            case .Staffs:
+            case Optional(.Staffs):
                 return ["StaffsWeb", feature]
-            case .Sponsors:
+            case Optional(.Sponsors):
                 return ["SponsorsWeb", feature]
-            case .Partners:
+            case Optional(.Partners):
                 return ["PartnersWeb", feature]
-            case .WebView:
+            case Optional(.WebView):
                 return ["MoreWeb", feature]
             default:
                 return ["", nil]
