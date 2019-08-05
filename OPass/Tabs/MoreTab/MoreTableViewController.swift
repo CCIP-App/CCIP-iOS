@@ -177,25 +177,32 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         let cellId = item[0] as! String
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MoreCell
         cell.Feature = feature
-        let brands = [
-            NSAttributedString.Key.font: Constants.fontOfAwesome(withSize: 24, inStyle: .brands),
-        ]
-        let solid = [
-            NSAttributedString.Key.font: Constants.fontOfAwesome(withSize: 24, inStyle: .solid),
-        ]
+
         let cellIconId = NSLocalizedString("icon-\(cellId)", comment: "");
-        var cellIcon = NSMutableAttributedString.init(string: cellIconId, attributes: solid)
+
+        // FontAwesome Icon
+        let fontName = FontAwesome(rawValue: String(cellIconId.split(separator: " ").last!))
+        var fontStyle : FontAwesomeStyle {
+            switch String(cellIconId.split(separator: " ").first!) {
+            case "fas":
+                return FontAwesomeStyle.solid
+            case "fad":
+                return FontAwesomeStyle.brands
+            default:
+                return FontAwesomeStyle.solid
+            }
+        }
+
+        cell.imageView!.image = UIImage.fontAwesomeIcon(name: fontName!, style: fontStyle, textColor: UIColor.black, size: CGSize(width: 24, height: 24))
+
         let cellText = cellId != ACKNOWLEDGEMENTS ?
             (feature?.DisplayText[Constants.shortLangUI] ?? "") :
             NSLocalizedString(cellId, comment: "")
-        if (cellIcon.size().width > 40) {
-            cellIcon = NSMutableAttributedString.init(string: cellIconId, attributes: brands)
-        }
         if ((OPassAPI.userInfo?.Type ?? "").count > 0 && !(feature?.VisibleRoles?.contains(OPassAPI.userInfo?.Type ?? "") ?? true)) {
             cell.isUserInteractionEnabled = false
         }
-        // cell.textLabel!.text = cellText
-        cell.textLabel!.attributedText = NSAttributedString.init(attributedString: cellIcon + "  \t  " + cellText)
+
+        cell.textLabel!.text = cellText
         return cell;
     }
 

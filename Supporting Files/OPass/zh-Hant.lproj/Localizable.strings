@@ -89,12 +89,12 @@
 "BeaconWelcomeMessage_Out_Title" = "感謝您參加本次大會";
 "BeaconWelcomeMessage_Out_Content" = "";
 
-"icon-Puzzle" = "puzzle-piece";
-"icon-Ticket" = "ticket-alt";
-"icon-Telegram" = "telegram-plane";
-"icon-VenueWeb" = "map";
-"icon-StaffsWeb" = "user-friends";
-"icon-SponsorsWeb" = "hand-holding-heart";
-"icon-PartnersWeb" = "hands-helping";
-"icon-Acknowledgements" = "people-carry";
-"icon-MoreWeb" = "cookie-bite";
+"icon-Puzzle" = "fas fa-puzzle-piece";
+"icon-Ticket" = "fas fa-ticket-alt";
+"icon-Telegram" = "fab fa-telegram-plane";
+"icon-VenueWeb" = "fas fa-map";
+"icon-StaffsWeb" = "fas fa-user-friends";
+"icon-SponsorsWeb" = "fas fa-hand-holding-heart";
+"icon-PartnersWeb" = "fas fa-hands-helping";
+"icon-Acknowledgements" = "fas fa-people-carry";
+"icon-MoreWeb" = "fas fa-cookie-bite";
