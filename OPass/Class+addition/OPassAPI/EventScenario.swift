@@ -118,7 +118,7 @@ extension OPassAPI {
                         default:
                             let landing = ScenarioLanding(JSON(obj!))
                             if landing.Nickname.count > 0 {
-                                Constants.isLoginSession = true
+                                OPassAPI.isLoginSession = true
                                 Constants.accessToken = token
                                 AppDelegate.delegateInstance.checkinView?.reloadCard()
                                 completion?(true, landing, OPassSuccessError)

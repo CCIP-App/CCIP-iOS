@@ -309,7 +309,7 @@ import ScanditBarcodeScanner
                     self.lbUserName?.isHidden = isHidden
                     self.lbUserName?.text = userInfo.UserId
                     AppDelegate.sendTag("\(userInfo.EventId)\(userInfo.Role)", value: userInfo.Token)
-                    if Constants.isLoginSession {
+                    if OPassAPI.isLoginSession {
                         AppDelegate.delegateInstance.displayGreetingsForLogin()
                     }
                     OPassAPI.scenarios = self.scenarios

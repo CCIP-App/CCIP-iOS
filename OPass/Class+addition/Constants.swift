@@ -102,7 +102,6 @@ extension Constants {
         }
         return ""
     }
-    static var isLoginSession: Bool = false
     static var isDevMode: Bool {
         get {
             UserDefaults.standard.synchronize()
