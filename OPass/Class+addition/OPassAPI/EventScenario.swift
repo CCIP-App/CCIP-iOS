@@ -69,7 +69,7 @@ struct ScenarioStatus: OPassData {
     var UserId: String
     var Attributes: ScenarioAttribute
     var FirstUse: Int64
-    var `Type`: String
+    var Role: String
     var Scenarios: [Scenario]
     init(_ data: JSON) {
         self._data = data
@@ -78,7 +78,7 @@ struct ScenarioStatus: OPassData {
         self.UserId = self._data["user_id"].stringValue
         self.Attributes = ScenarioAttribute(self._data["attr"])
         self.FirstUse = self._data["first_use"].int64Value
-        self.Type = self._data["type"].stringValue
+        self.Role = self._data["role"].stringValue
         self.Scenarios = self._data["scenarios"].arrayValue.map { obj -> Scenario in
             return Scenario(obj)
         }

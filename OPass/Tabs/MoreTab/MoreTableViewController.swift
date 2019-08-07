@@ -213,7 +213,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         let cellText = cellId != ACKNOWLEDGEMENTS ?
             (feature?.DisplayText[Constants.shortLangUI] ?? "") :
             NSLocalizedString(cellId, comment: "")
-        if ((OPassAPI.userInfo?.Type ?? "").count > 0 && !(feature?.VisibleRoles?.contains(OPassAPI.userInfo?.Type ?? "") ?? true)) {
+        if ((OPassAPI.userInfo?.Role ?? "").count > 0 && !(feature?.VisibleRoles?.contains(OPassAPI.userInfo?.Role ?? "") ?? true)) {
             cell.isUserInteractionEnabled = false
         }
 

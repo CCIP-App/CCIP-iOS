@@ -308,13 +308,13 @@ import ScanditBarcodeScanner
                     self.ivUserPhoto?.isHidden = isHidden
                     self.lbUserName?.isHidden = isHidden
                     self.lbUserName?.text = userInfo.UserId
-                    AppDelegate.sendTag("\(userInfo.EventId)\(userInfo.Type)", value: userInfo.Token)
+                    AppDelegate.sendTag("\(userInfo.EventId)\(userInfo.Role)", value: userInfo.Token)
                     if Constants.isLoginSession {
                         AppDelegate.delegateInstance.displayGreetingsForLogin()
                     }
                     OPassAPI.scenarios = self.scenarios
-                    if ((OPassAPI.userInfo?.Type ?? "").count > 0) {
-                        self.cards?.isUserInteractionEnabled = (OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(OPassAPI.userInfo!.Type))!
+                    if ((OPassAPI.userInfo?.Role ?? "").count > 0) {
+                        self.cards?.isUserInteractionEnabled = (OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(OPassAPI.userInfo!.Role))!
                     }
                     OPassAPI.refreshTabBar()
                     self.reloadAndGoToCard()
