@@ -313,6 +313,10 @@ import ScanditBarcodeScanner
                         AppDelegate.delegateInstance.displayGreetingsForLogin()
                     }
                     OPassAPI.scenarios = self.scenarios
+                    if ((OPassAPI.userInfo?.Type ?? "").count > 0) {
+                        self.cards?.isUserInteractionEnabled = (OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(OPassAPI.userInfo!.Type))!
+                    }
+                    OPassAPI.refreshTabBar()
                     self.reloadAndGoToCard()
                 } else {
                     func broken(_ msg: String = "Networking_Broken") {

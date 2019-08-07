@@ -17,6 +17,7 @@ class OPassAPI: NSObject {
     static var userInfo: ScenarioStatus? = nil
     static var scenarios: [Scenario]? = nil
     static var isLoginSession: Bool = false
+    static private var tabBarController: MainTabBarViewController? = nil
 
     static func InitializeRequest(_ url: String, maxRetry: UInt = 10, _ onceErrorCallback: OPassErrorCallback) -> Promise<Any?> {
         var retryCount: UInt = 0
@@ -51,6 +52,37 @@ class OPassAPI: NSObject {
             return e.retry(maxRetry)
         } else {
             return e
+        }
+    }
+
+    static func initTabBar(_ tabVC: MainTabBarViewController) {
+        tabBarController = tabVC
+    }
+
+    static func refreshTabBar() {
+        guard let items = tabBarController!.tabBar.items else { return }
+        // setting selected image color from original image with replace custom color filter
+        for item in items {
+            let title = item.title!
+            var image: UIImage = item.image!.withRenderingMode(.alwaysOriginal)
+            image = image.imageWithColor(Constants.appConfigColor("HighlightedColor"))
+            item.selectedImage = image.withRenderingMode(.alwaysOriginal)
+            switch title {
+            case "Checkin":
+                item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.DisplayText[Constants.shortLangUI]
+                if ((OPassAPI.userInfo?.Type ?? "").count > 0) {
+                    item.isEnabled = (OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(OPassAPI.userInfo!.Type))!
+                }
+            case "Session":
+                item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]
+            case "Announce":
+                item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.DisplayText[Constants.shortLangUI]
+            case "IRC":
+                item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.DisplayText[Constants.shortLangUI]
+                item.isEnabled = OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.Url != nil
+            default:
+                item.title = NSLocalizedString(title, comment: "")
+            }
         }
     }
 }

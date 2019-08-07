@@ -11,37 +11,15 @@ import UIKit
 
 class MainTabBarViewController : UITabBarController {
     override func viewDidLoad() {
-        let titleHighlightedColor = Constants.appConfigColor("HighlightedColor")
         UITabBarItem.appearance()
             .setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: .normal)
         UITabBarItem.appearance()
-            .setTitleTextAttributes([NSAttributedString.Key.foregroundColor: titleHighlightedColor], for: .selected)
+            .setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Constants.appConfigColor("HighlightedColor")], for: .selected)
 
         NotificationCenter.default.addObserver(self, selector: #selector(MainTabBarViewController.appplicationDidBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
 
-        // setting selected image color from original image with replace custom color filter
-        for item in self.tabBar.items! {
-            let title = item.title!
-            var image: UIImage = item.image!.withRenderingMode(.alwaysOriginal)
-            image = image.imageWithColor(titleHighlightedColor)
-            item.selectedImage = image.withRenderingMode(.alwaysOriginal)
-            switch title {
-            case "Checkin":
-                item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.DisplayText[Constants.shortLangUI]
-                if ((OPassAPI.userInfo?.Type ?? "").count > 0) {
-                    item.isEnabled = (OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(OPassAPI.userInfo!.Type))!
-                }
-            case "Session":
-                item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]
-            case "Announce":
-                item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.DisplayText[Constants.shortLangUI]
-            case "IRC":
-                item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.DisplayText[Constants.shortLangUI]
-                item.isEnabled = OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.Url != nil
-            default:
-                item.title = NSLocalizedString(title, comment: "")
-            }
-        }
+        OPassAPI.initTabBar(self)
+        OPassAPI.refreshTabBar()
 
         // self.automaticallyAdjustsScrollViewInsets = false;
         if #available(iOS 13.0, *) {
