@@ -72,6 +72,8 @@ struct EventFeatures: OPassData {
                 switch param {
                 case "{token}":
                     url = url?.replacingOccurrences(of: param, with: Constants.accessToken ?? "")
+                case "{role}":
+                    url = url?.replacingOccurrences(of: param, with: OPassAPI.userInfo?.Role ?? "")
                 default:
                     url = url?.replacingOccurrences(of: param, with: "")
                 }
