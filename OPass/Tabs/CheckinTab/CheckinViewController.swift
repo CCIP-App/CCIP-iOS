@@ -314,7 +314,7 @@ import ScanditBarcodeScanner
                     }
                     OPassAPI.scenarios = self.scenarios
                     if ((OPassAPI.userInfo?.Role ?? "").count > 0) {
-                        self.cards?.isHidden = !(OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(OPassAPI.userInfo!.Role))!
+                        self.cards?.isHidden = !((OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(OPassAPI.userInfo!.Role)) ?? true)
                     }
                     OPassAPI.refreshTabBar()
                     self.reloadAndGoToCard()
