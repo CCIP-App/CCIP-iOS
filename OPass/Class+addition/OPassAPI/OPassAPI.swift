@@ -70,9 +70,9 @@ class OPassAPI: NSObject {
             switch title {
             case "Checkin", OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.DisplayText[Constants.shortLangUI]
-                if ((OPassAPI.userInfo?.Role ?? "").count > 0) {
-                    item.isEnabled = (OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(OPassAPI.userInfo!.Role))!
-                }
+//                if ((OPassAPI.userInfo?.Role ?? "").count > 0) {
+//                    item.isEnabled = (OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(OPassAPI.userInfo!.Role))!
+//                }
             case "Session", OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]
             case "Announce", OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.DisplayText[Constants.shortLangUI]:
