@@ -30,13 +30,11 @@ import ScanditBarcodeScanner
 
     private var pageControl: UIPageControl = UIPageControl.init()
 
-    private var _userInfo: ScenarioStatus?
     private var userInfo: ScenarioStatus? {
         get {
-            return self._userInfo
+            return OPassAPI.userInfo
         }
         set {
-            self._userInfo = newValue
             OPassAPI.userInfo = newValue
         }
     }

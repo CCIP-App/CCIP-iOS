@@ -21,7 +21,11 @@ import AFNetworking
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, UIViewControllerPreviewingDelegate {
     var window: UIWindow?
     public var checkinView: CheckinViewController?
-    public var userInfo: ScenarioStatus?
+    public var userInfo: ScenarioStatus? {
+        get {
+            return OPassAPI.userInfo
+        }
+    }
     public var beacon = iBeacon.init()
     public var appArt: SLColorArt {
         get {
