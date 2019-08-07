@@ -68,16 +68,16 @@ class OPassAPI: NSObject {
             image = image.imageWithColor(Constants.appConfigColor("HighlightedColor"))
             item.selectedImage = image.withRenderingMode(.alwaysOriginal)
             switch title {
-            case "Checkin":
+            case "Checkin", OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.DisplayText[Constants.shortLangUI]
                 if ((OPassAPI.userInfo?.Role ?? "").count > 0) {
                     item.isEnabled = (OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(OPassAPI.userInfo!.Role))!
                 }
-            case "Session":
+            case "Session", OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]
-            case "Announce":
+            case "Announce", OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.DisplayText[Constants.shortLangUI]
-            case "IRC":
+            case "IRC", OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.DisplayText[Constants.shortLangUI]
                 item.isEnabled = OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.Url != nil
             default:
