@@ -476,26 +476,27 @@ import ScanditBarcodeScanner
             self.scanditBarcodePicker?.view.translatesAutoresizingMaskIntoConstraints = false
 
             // Add constraints to scale the view and place it in the center of the controller.
+            let navBarHeight = (self.navigationController?.navigationBar.frame.size.height)!
+            //let tabBarHeight = (self.tabBarController?.tabBar.frame.size.height)!
             self.view.addConstraint(NSLayoutConstraint.init(item: self.scanditBarcodePicker?.view as Any, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0))
-            self.view.addConstraint(NSLayoutConstraint.init(item: self.scanditBarcodePicker?.view as Any, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: self.ViewTopStart))
+            self.view.addConstraint(NSLayoutConstraint.init(item: self.scanditBarcodePicker?.view as Any, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: self.controllerTopStart + navBarHeight))
             // Add constraints to set the width to 200 and height to 400. Since this is not the aspect ratio
             // of the camera preview some of the camera preview will be cut away on the left and right.
             self.view.addConstraint(NSLayoutConstraint.init(item: self.scanditBarcodePicker?.view as Any, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1, constant: 0))
             self.view.addConstraint(NSLayoutConstraint.init(item: self.scanditBarcodePicker?.view as Any, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0))
 
-            let barcodePickerOverlay = self.scanditBarcodePicker?.view.subviews.first!
+            // add "OpenQRCodeFromFile" button
+            let barcodePickerOverlay = self.scanditBarcodePicker?.overlayController.view
             let torchButton = barcodePickerOverlay?.subviews[2]
             let button = UIButton.init(type: .roundedRect)
             button.layer.masksToBounds = false
-            button.layer.cornerRadius = 20
-            button.frame = CGRect(x: 65, y: (self.navigationController?.navigationBar.frame.size.height)!, width: 60, height: 40)
+            button.layer.cornerRadius = (torchButton?.frame.height)! / 2
+            button.frame = CGRect(x: (torchButton?.frame.origin.x)! + (torchButton?.frame.width)! + 10, y: (torchButton?.frame.origin.y)!, width: 60, height: (torchButton?.frame.height)!)
             button.backgroundColor = UIColor.white.withAlphaComponent(0.35)
             button.setTitle(NSLocalizedString("OpenQRCodeFromFile", comment: ""), for: .normal)
             button.tintColor = .black
             button.addTarget(self, action: #selector(getImageFromLibrary), for: .touchUpInside)
             barcodePickerOverlay?.addSubview(button)
-            barcodePickerOverlay?.addConstraint(NSLayoutConstraint.init(item: button, attribute: .top, relatedBy: .equal, toItem: torchButton, attribute: .top, multiplier: 1, constant: 0))
-            barcodePickerOverlay?.addConstraint(NSLayoutConstraint.init(item: button, attribute: .leading, relatedBy: .equal, toItem: torchButton, attribute: .trailing, multiplier: 1, constant: 5))
 
             self.scanditBarcodePicker?.startScanning(inPausedState: true, completionHandler: {
                 self.scanditBarcodePicker?.perform(#selector(SBSBarcodePicker.startScanning as (SBSBarcodePicker) -> () -> Void), with: nil, afterDelay: 0.5)
