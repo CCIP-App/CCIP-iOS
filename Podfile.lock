@@ -23,60 +23,72 @@ PODS:
   - Down (0.8.6)
   - EFQRCode (4.5.0):
     - swift_qrcodejs (~> 1.0.1)
-  - Firebase/Core (6.5.0):
+  - Firebase/Core (6.6.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 6.0.4)
-  - Firebase/CoreOnly (6.5.0):
-    - FirebaseCore (= 6.1.0)
-  - Firebase/DynamicLinks (6.5.0):
+    - FirebaseAnalytics (= 6.1.0)
+  - Firebase/CoreOnly (6.6.0):
+    - FirebaseCore (= 6.2.0)
+  - Firebase/DynamicLinks (6.6.0):
     - Firebase/CoreOnly
-    - FirebaseDynamicLinks (~> 4.0.1)
-  - FirebaseAnalytics (6.0.4):
-    - FirebaseCore (~> 6.1)
+    - FirebaseDynamicLinks (~> 4.0.2)
+  - FirebaseAnalytics (6.1.0):
+    - FirebaseCore (~> 6.2)
     - FirebaseInstanceID (~> 4.2)
-    - GoogleAppMeasurement (= 6.0.4)
+    - GoogleAppMeasurement (= 6.1.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
-  - FirebaseAnalyticsInterop (1.2.0)
-  - FirebaseCore (6.1.0):
-    - GoogleUtilities/Environment (~> 6.0)
-    - GoogleUtilities/Logger (~> 6.0)
-  - FirebaseDynamicLinks (4.0.1):
-    - FirebaseAnalyticsInterop (~> 1.0)
-    - FirebaseCore (~> 6.0)
-  - FirebaseInstanceID (4.2.2):
+  - FirebaseAnalyticsInterop (1.3.0)
+  - FirebaseCore (6.2.0):
+    - FirebaseCoreDiagnostics (~> 1.0)
+    - FirebaseCoreDiagnosticsInterop (~> 1.0)
+    - GoogleUtilities/Environment (~> 6.2)
+    - GoogleUtilities/Logger (~> 6.2)
+  - FirebaseCoreDiagnostics (1.0.0):
+    - FirebaseCoreDiagnosticsInterop (~> 1.0)
+    - GoogleDataTransportCCTSupport (~> 1.0)
+    - GoogleUtilities/Environment (~> 6.2)
+    - GoogleUtilities/Logger (~> 6.2)
+  - FirebaseCoreDiagnosticsInterop (1.0.0)
+  - FirebaseDynamicLinks (4.0.2):
+    - FirebaseAnalyticsInterop (~> 1.3)
+    - FirebaseCore (~> 6.2)
+  - FirebaseInstanceID (4.2.3):
     - FirebaseCore (~> 6.0)
     - GoogleUtilities/Environment (~> 6.0)
     - GoogleUtilities/UserDefaults (~> 6.0)
   - FoldingCell (5.0.1)
   - FontAwesome.swift (1.8.1)
   - FSPagerView (0.8.2)
-  - GoogleAppMeasurement (6.0.4):
+  - GoogleAppMeasurement (6.1.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
-  - GoogleUtilities/AppDelegateSwizzler (6.2.3):
+  - GoogleDataTransport (1.0.0)
+  - GoogleDataTransportCCTSupport (1.0.0):
+    - GoogleDataTransport (~> 1.0)
+    - nanopb
+  - GoogleUtilities/AppDelegateSwizzler (6.2.4):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (6.2.3)
-  - GoogleUtilities/Logger (6.2.3):
+  - GoogleUtilities/Environment (6.2.4)
+  - GoogleUtilities/Logger (6.2.4):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.2.3):
+  - GoogleUtilities/MethodSwizzler (6.2.4):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (6.2.3):
+  - GoogleUtilities/Network (6.2.4):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (6.2.3)"
-  - GoogleUtilities/Reachability (6.2.3):
+  - "GoogleUtilities/NSData+zlib (6.2.4)"
+  - GoogleUtilities/Reachability (6.2.4):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (6.2.3):
+  - GoogleUtilities/UserDefaults (6.2.4):
     - GoogleUtilities/Logger
   - iCarousel (1.8.3)
   - ICViewPager (1.5.1)
@@ -101,7 +113,7 @@ PODS:
   - SwiftyJSON (5.0.0)
   - TagListView (1.4.0)
   - thenPromise (5.0.0)
-  - TimelineTableViewCell (2.0)
+  - TimelineTableViewCell (2.1)
   - UICKeyChainStore (2.1.2)
   - "UITableView+FDTemplateLayoutCell (1.6)"
   - "UIView+FDCollapsibleConstraints (1.1)"
@@ -140,7 +152,7 @@ DEPENDENCIES:
   - "UIView+FDCollapsibleConstraints (~> 1.1)"
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - AFNetworking
     - Appirater
     - BLKFlexibleHeightBar
@@ -154,12 +166,16 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseAnalyticsInterop
     - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseCoreDiagnosticsInterop
     - FirebaseDynamicLinks
     - FirebaseInstanceID
     - FoldingCell
     - FontAwesome.swift
     - FSPagerView
     - GoogleAppMeasurement
+    - GoogleDataTransport
+    - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - iCarousel
     - iVersion
@@ -204,17 +220,21 @@ SPEC CHECKSUMS:
   DLLocalNotifications: 5d358a73284efab757b4a4c07f3e5987b8afcef5
   Down: 3c758f2388fa739663023f400e742a988fa1e21d
   EFQRCode: 842f431e660da841f518993af8f4cbd275601d84
-  Firebase: dedc9e48ea3f3649ad5f6b982f8a0c73508a14b5
-  FirebaseAnalytics: 3fb375bc9d13779add4039716f868d233a473fad
-  FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
-  FirebaseCore: aecf02fb2274ec361b9bebeac112f5daa18273bd
-  FirebaseDynamicLinks: 2ba929800a256ecbf6ee28b2af9d73edf46e8914
-  FirebaseInstanceID: 662b8108a09fe9ed01aafdedba100fde8536b0f6
+  Firebase: a2b5951f30ff38fd3b3bdae9c7d340f940fd3c51
+  FirebaseAnalytics: 48414ae5cbf6976d8a2f7177e0466540e5ab33ce
+  FirebaseAnalyticsInterop: 0f250d71e8741352407a8db351e6de78c5c56d35
+  FirebaseCore: 8c9e08bce0c72a3affd83927d8184cf244918bc8
+  FirebaseCoreDiagnostics: 5807d8a32ea4455d6476da6de828675f89a8d8f3
+  FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
+  FirebaseDynamicLinks: 5eee7e229ff8a5d56af1fca9f5a71115b7a2fe8b
+  FirebaseInstanceID: 8b42755db950682e7de0d167bc6fb26a57b244af
   FoldingCell: 9197b915a415af9e52a857964066797af6a51c2b
   FontAwesome.swift: 6f55c8ed22a30ab6a8ca94033473161f678dcd4b
   FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
-  GoogleAppMeasurement: 183bd916af7f80deb67c01888368f1108d641832
-  GoogleUtilities: d2b0e277a95962e09bb27f5cd42f5f0b6a506c7d
+  GoogleAppMeasurement: 47285fa897e5a125df56b9ef8750a1d81e4598a8
+  GoogleDataTransport: fe6af28a312ae5a56d5cec00ff14f6e3ded3beef
+  GoogleDataTransportCCTSupport: e6fa721757b147d7f1481d7367b8dab3e9010889
+  GoogleUtilities: 64b5e3982b1b01bda26712affd5c523ef32563cf
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   ICViewPager: c1278b67eceac7252d48252829c3c703285dfb76
   iVersion: 3a93a89259eb3b52b0a8ba52c46a0027fa6b4d30
@@ -230,11 +250,11 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   TagListView: 987b0bdbb16cd9d9e7c0e2ec32aff37ecba8b173
   thenPromise: 02f1650627feed7b0e2e6a815bc04a168c9f9ede
-  TimelineTableViewCell: 600e93d567f6098df6eaf6acb2abb91e21452ea6
+  TimelineTableViewCell: e958c16693be642fc90180f896eabade9bffd918
   UICKeyChainStore: 85db518bb1d294366d15ec9b92a416c4e670518f
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
 PODFILE CHECKSUM: b683403a7b63098297ea585c0767854054e9d9ff
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.0.beta.1
