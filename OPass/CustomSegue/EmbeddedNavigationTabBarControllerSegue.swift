@@ -17,7 +17,7 @@ class EmbeddedNavigationTabBarControllerSegue: UIStoryboardSegue {
         let screenWidth = UIScreen.main.bounds.width
         let screenHeight = UIScreen.main.bounds.height
         let navBarHeight = (self.source.navigationController?.navigationBar.frame.size.height)!
-        let tabBarHeight = (self.source.tabBarController?.tabBar.frame.size.height)!
+        let tabBarHeight = CGFloat(0.0) //(self.source.tabBarController?.tabBar.frame.size.height)!
         let height = screenHeight - (destinationView.ViewTopStart + navBarHeight + tabBarHeight)
         let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height))
         destinationView.frame = frame.offsetBy(dx: 0, dy: screenHeight)
