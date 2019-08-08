@@ -54,7 +54,6 @@
 	<string></string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>bluetooth-central</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

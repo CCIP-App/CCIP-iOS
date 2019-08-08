@@ -89,10 +89,6 @@ import ScanditBarcodeScanner
         self.ivRectangle?.setGradientColor(from: Constants.appConfigColor("CheckinRectangleLeftColor"), to: Constants.appConfigColor("CheckinRectangleRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
 
         NotificationCenter.default.addObserver(self, selector: #selector(appplicationDidBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
-
-        let beacon = AppDelegate.delegateInstance.beacon
-        beacon.checkAvailableAndRequestAuthorization()
-        beacon.registerBeaconRegionWithUUID(uuidString: Constants.beaconUUID, identifier: Constants.beaconID, isMonitor: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {

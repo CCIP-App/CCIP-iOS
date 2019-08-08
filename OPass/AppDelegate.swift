@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return OPassAPI.userInfo
         }
     }
-    public var beacon = iBeacon.init()
     public var appArt: SLColorArt {
         get {
             struct aa {

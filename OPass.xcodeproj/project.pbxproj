@@ -93,7 +93,6 @@
 		6B50EA2E21692210000CC757 /* EmbeddedNavigationControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */; };
 		6B50EA322169377E000CC757 /* UIAlertController+additional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA312169377E000CC757 /* UIAlertController+additional.swift */; };
 		6B5AABC5220CB02400C01C54 /* MyTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5AABC4220CB02400C01C54 /* MyTicketViewController.swift */; };
-		6B5AABC7220CBB6700C01C54 /* iBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5AABC6220CBB6700C01C54 /* iBeacon.swift */; };
 		6B5C3EC822AC2EFC002B7982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B5C3EC722AC2EFB002B7982 /* LaunchScreen.storyboard */; };
 		6B5FD2D7223C4B9D005D111C /* AnnounceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5FD2D6223C4B9D005D111C /* AnnounceTableViewCell.swift */; };
 		6B5FD2D9223C51F4005D111C /* AnnounceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5FD2D8223C51F4005D111C /* AnnounceTableViewController.swift */; };
@@ -291,7 +290,6 @@
 		6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedNavigationControllerSegue.swift; sourceTree = "<group>"; };
 		6B50EA312169377E000CC757 /* UIAlertController+additional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+additional.swift"; sourceTree = "<group>"; };
 		6B5AABC4220CB02400C01C54 /* MyTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTicketViewController.swift; sourceTree = "<group>"; };
-		6B5AABC6220CBB6700C01C54 /* iBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeacon.swift; sourceTree = "<group>"; };
 		6B5C3EC722AC2EFB002B7982 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B5FD2D6223C4B9D005D111C /* AnnounceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceTableViewCell.swift; sourceTree = "<group>"; };
 		6B5FD2D8223C51F4005D111C /* AnnounceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceTableViewController.swift; sourceTree = "<group>"; };
@@ -607,7 +605,6 @@
 				6B50993422B7DC5300FD048F /* OPassAPI */,
 				6B4FCB23218F79CB0005469F /* Constants.swift */,
 				6BE4B8F0222ADB7B005F8B95 /* NEHotspot.swift */,
-				6B5AABC6220CBB6700C01C54 /* iBeacon.swift */,
 				6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */,
 				6B4FCB1D218F5D630005469F /* OPassWebViewController.swift */,
 				6BEB310C1F262EF30050759D /* EFQRCode+Ext.swift */,
@@ -1049,7 +1046,6 @@
 				6B50994422B7E98900FD048F /* legacy.swift in Sources */,
 				6B4FCB22218F774D0005469F /* IRCViewController.swift in Sources */,
 				6B153B9F22B1C09C00C1632D /* SessionFavoriteTableViewController.swift in Sources */,
-				6B5AABC7220CBB6700C01C54 /* iBeacon.swift in Sources */,
 				6B4FCB24218F79CB0005469F /* Constants.swift in Sources */,
 				6B4FCB11218EC2380005469F /* UIImage+addition.swift in Sources */,
 				6BB97F9C222A813200338138 /* PartnerWebViewController.swift in Sources */,
