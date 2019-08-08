@@ -188,7 +188,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ICViewPager:
-    :commit: bdafff5f2090df73ae911a4ccfdec42062716405
+    :commit: 7f4f7991839ff75406f95978b6bb9e45562d78ae
     :git: https://github.com/FrankWu100/ICViewPager
   "UITableView+FDTemplateLayoutCell":
     :git: https://github.com/Haraguroicha/UITableView-FDTemplateLayoutCell
