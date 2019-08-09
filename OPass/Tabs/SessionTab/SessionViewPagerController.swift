@@ -172,7 +172,7 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
             return 1.0
         case ViewPagerOption.tabDisableBottomLine:
             return 1.0
-        case ViewPagerOption.tabNarmalLineWidth:
+        case ViewPagerOption.tabNormalLineWidth:
             return 5.0
         case ViewPagerOption.tabSelectedLineWidth:
             return 5.0

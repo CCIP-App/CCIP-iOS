@@ -208,7 +208,7 @@ CHECKOUT OPTIONS:
     :commit: ac1a28bebfd3c74402b7156047bf6bcdc4f4dcb7
     :git: https://github.com/FrankWu100/CPDAcknowledgements
   ICViewPager:
-    :commit: 7f4f7991839ff75406f95978b6bb9e45562d78ae
+    :commit: 88aee5d9414db94319d40a13eb2eba7a699e5516
     :git: https://github.com/FrankWu100/ICViewPager
   "UITableView+FDTemplateLayoutCell":
     :git: https://github.com/Haraguroicha/UITableView-FDTemplateLayoutCell
