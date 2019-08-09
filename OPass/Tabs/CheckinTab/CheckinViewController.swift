@@ -97,7 +97,7 @@ import ScanditBarcodeScanner
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.controllerTopStart = self.navigationController?.navigationBar.frame.size.height ?? 0
+        self.controllerTopStart = UIApplication.shared.statusBarFrame.size.height + (self.navigationController?.navigationBar.frame.size.height ?? 0)
         self.handleQRButton()
     }
 
@@ -476,10 +476,8 @@ import ScanditBarcodeScanner
             self.scanditBarcodePicker?.view.translatesAutoresizingMaskIntoConstraints = false
 
             // Add constraints to scale the view and place it in the center of the controller.
-            let navBarHeight = (self.navigationController?.navigationBar.frame.size.height)!
-            //let tabBarHeight = (self.tabBarController?.tabBar.frame.size.height)!
             self.view.addConstraint(NSLayoutConstraint.init(item: self.scanditBarcodePicker?.view as Any, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0))
-            self.view.addConstraint(NSLayoutConstraint.init(item: self.scanditBarcodePicker?.view as Any, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: self.controllerTopStart + navBarHeight))
+            self.view.addConstraint(NSLayoutConstraint.init(item: self.scanditBarcodePicker?.view as Any, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: self.controllerTopStart))
             // Add constraints to set the width to 200 and height to 400. Since this is not the aspect ratio
             // of the camera preview some of the camera preview will be cut away on the left and right.
             self.view.addConstraint(NSLayoutConstraint.init(item: self.scanditBarcodePicker?.view as Any, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1, constant: 0))
