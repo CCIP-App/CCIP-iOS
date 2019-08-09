@@ -37,6 +37,9 @@
 		28A7C5641D5F7D2D0079BB12 /* Project_3rd_Lib_License.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */; };
 		28A7C5671D5F84FB0079BB12 /* NSData+PMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */; };
 		28ACA9A11D5E92AD002A6419 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */; };
+		4F5E01AA22FD644400D0D4E8 /* Checkin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5E01A922FD644400D0D4E8 /* Checkin.storyboard */; };
+		4F5E01AC22FD655500D0D4E8 /* Announce.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5E01AB22FD655500D0D4E8 /* Announce.storyboard */; };
+		4F5E01AE22FD66D400D0D4E8 /* IRC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5E01AD22FD66D400D0D4E8 /* IRC.storyboard */; };
 		5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */; };
 		5F75A479AF13F31C57E574C7 /* Pods-OPass-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC0E7EB6EB420AD75E37B7F2 /* Pods-OPass-metadata.plist */; };
 		6B036B901F24371700D5E5A5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B036B8F1F24371600D5E5A5 /* Settings.bundle */; };
@@ -226,6 +229,9 @@
 		28ACA99F1D5E92AD002A6419 /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
 		28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
 		4DFF24DA2C44443FDA428128 /* Pods-OPass Notification Service.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OPass Notification Service.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OPass Notification Service/Pods-OPass Notification Service.debug.xcconfig"; sourceTree = "<group>"; };
+		4F5E01A922FD644400D0D4E8 /* Checkin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Checkin.storyboard; sourceTree = "<group>"; };
+		4F5E01AB22FD655500D0D4E8 /* Announce.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Announce.storyboard; sourceTree = "<group>"; };
+		4F5E01AD22FD66D400D0D4E8 /* IRC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IRC.storyboard; sourceTree = "<group>"; };
 		58D13106023DD9CF88704EED /* Pods-OPass-OPass Notification Service.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OPass-OPass Notification Service.release.xcconfig"; path = "Pods/Target Support Files/Pods-OPass-OPass Notification Service/Pods-OPass-OPass Notification Service.release.xcconfig"; sourceTree = "<group>"; };
 		5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B023A9A20470F4B00F474F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -414,6 +420,9 @@
 			children = (
 				6B5C3EC722AC2EFB002B7982 /* LaunchScreen.storyboard */,
 				1424C2002250FC7100D36266 /* Main.storyboard */,
+				4F5E01AD22FD66D400D0D4E8 /* IRC.storyboard */,
+				4F5E01AB22FD655500D0D4E8 /* Announce.storyboard */,
+				4F5E01A922FD644400D0D4E8 /* Checkin.storyboard */,
 				1424C1FF2250FC7100D36266 /* Session.storyboard */,
 				1424C1FE2250FC7100D36266 /* More.storyboard */,
 			);
@@ -900,10 +909,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F5E01AA22FD644400D0D4E8 /* Checkin.storyboard in Resources */,
 				28A7C5641D5F7D2D0079BB12 /* Project_3rd_Lib_License.json in Resources */,
 				1424C2032250FC7100D36266 /* Main.storyboard in Resources */,
 				288D3A781D599A1200E4E3A6 /* LICENSE-2.0.txt in Resources */,
 				284602E11F121BBB00F512A3 /* LaunchScreen@2x.png in Resources */,
+				4F5E01AC22FD655500D0D4E8 /* Announce.storyboard in Resources */,
 				280774D21F1AD8D300A5B994 /* SessionTableViewCell.xib in Resources */,
 				288D3A7B1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle in Resources */,
 				6BEB31151F26656B0050759D /* Maps.bundle in Resources */,
@@ -916,6 +927,7 @@
 				5F67CE181D1EB54200B9DAA9 /* GoogleService-Info.plist in Resources */,
 				6B2CD59A1D2886C900793194 /* Localizable.strings in Resources */,
 				288D3A771D599A1200E4E3A6 /* CHANGELOG.txt in Resources */,
+				4F5E01AE22FD66D400D0D4E8 /* IRC.storyboard in Resources */,
 				6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */,
 				6BF331521F299207004BEEA6 /* AssetsUI.bundle in Resources */,
 				6B9A279A222B00C300E8463E /* OPassEventCell.xib in Resources */,

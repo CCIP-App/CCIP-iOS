@@ -37,7 +37,7 @@ class InvalidNetworkMessageViewController: UIViewController {
         super.viewWillLayoutSubviews()
         if !self.isRelayout {
             let mnvc = self.presentingViewController as! MainNavViewController
-            let cvc = mnvc.children.first! as! CheckinViewController
+            let cvc = mnvc.children.first! as! InvalidNetworkRetryDelegate
             let topStart = cvc.controllerTopStart
             self.view.frame = CGRect(x: 0, y: 0 - topStart, width: self.view.frame.size.width, height: self.view.frame.size.height + topStart)
             self.isRelayout = true

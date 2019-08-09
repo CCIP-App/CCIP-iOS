@@ -9,5 +9,6 @@
 import Foundation
 
 @objc protocol InvalidNetworkRetryDelegate {
+	@objc var controllerTopStart: CGFloat { get set }
     @objc optional func refresh()
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Oqq-Rn-AVL">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Jxo-LT-w56">
+            <objects>
+                <viewController id="Oqq-Rn-AVL" customClass="IRCViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Bze-6z-kJu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="gvn-eg-MGm"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="e0c-cS-PdU">
+                        <leftBarButtonItems>
+                            <barButtonItem image="WebViewAssets.bundle/BarButton-Back.png" id="LYt-uw-n29">
+                                <connections>
+                                    <action selector="goBack:" destination="Oqq-Rn-AVL" id="uAo-bG-4gV"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="WebViewAssets.bundle/BarButton-Forward.png" id="RKl-Kp-YRu">
+                                <connections>
+                                    <action selector="goForward:" destination="Oqq-Rn-AVL" id="1om-nw-Ukx"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="WebViewAssets.bundle/BarButton-Reload.png" id="zI6-me-UXE">
+                            <connections>
+                                <action selector="reload:" destination="Oqq-Rn-AVL" id="vts-de-isR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="goBackButton" destination="LYt-uw-n29" id="y8K-Ic-Dsx"/>
+                        <outlet property="goForwardButton" destination="RKl-Kp-YRu" id="9ph-cj-Lo8"/>
+                        <outlet property="goReloadButton" destination="zI6-me-UXE" id="f8s-nI-Qns"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ozE-dg-HTW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1419" y="1006"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="WebViewAssets.bundle/BarButton-Back.png" width="16" height="16"/>
+        <image name="WebViewAssets.bundle/BarButton-Forward.png" width="16" height="16"/>
+        <image name="WebViewAssets.bundle/BarButton-Reload.png" width="16" height="16"/>
+    </resources>
+</document>
