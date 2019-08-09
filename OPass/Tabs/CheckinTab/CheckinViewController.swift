@@ -481,7 +481,7 @@ import ScanditBarcodeScanner
             // Add constraints to set the width to 200 and height to 400. Since this is not the aspect ratio
             // of the camera preview some of the camera preview will be cut away on the left and right.
             self.view.addConstraint(NSLayoutConstraint.init(item: self.scanditBarcodePicker?.view as Any, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1, constant: 0))
-            self.view.addConstraint(NSLayoutConstraint.init(item: self.scanditBarcodePicker?.view as Any, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0))
+            self.view.addConstraint(NSLayoutConstraint.init(item: self.scanditBarcodePicker?.view as Any, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: -(self.tabBarController?.tabBar.frame.size.height)!))
 
             // add "OpenQRCodeFromFile" button
             let barcodePickerOverlay = self.scanditBarcodePicker?.overlayController.view
