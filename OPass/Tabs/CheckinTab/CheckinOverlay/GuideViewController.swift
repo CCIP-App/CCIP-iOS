@@ -145,4 +145,8 @@ class GuideViewController: UIViewController, UITextFieldDelegate {
             UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
         })
     }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent;
+    }
 }
