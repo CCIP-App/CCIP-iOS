@@ -21,7 +21,7 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
 
     private var refreshControl: UIRefreshControl = UIRefreshControl.init()
     private var loaded: Bool = false
-    private var controllerTopStart: CGFloat = 0.0
+    @objc public var controllerTopStart: CGFloat = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
