@@ -124,7 +124,7 @@ DEPENDENCIES:
   - BLKFlexibleHeightBar (~> 1.0)
   - Collection
   - ColorArt (= 0.1.1)
-  - CPDAcknowledgements (~> 1.0)
+  - CPDAcknowledgements (from `https://github.com/FrankWu100/CPDAcknowledgements`)
   - DLLocalNotifications
   - Down
   - EFQRCode (~> 4.5)
@@ -152,13 +152,12 @@ DEPENDENCIES:
   - "UIView+FDCollapsibleConstraints (~> 1.1)"
 
 SPEC REPOS:
-  trunk:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - Appirater
     - BLKFlexibleHeightBar
     - Collection
     - ColorArt
-    - CPDAcknowledgements
     - DLLocalNotifications
     - Down
     - EFQRCode
@@ -196,6 +195,8 @@ SPEC REPOS:
     - "UIView+FDCollapsibleConstraints"
 
 EXTERNAL SOURCES:
+  CPDAcknowledgements:
+    :git: https://github.com/FrankWu100/CPDAcknowledgements
   ICViewPager:
     :git: https://github.com/FrankWu100/ICViewPager
   "UITableView+FDTemplateLayoutCell":
@@ -203,6 +204,9 @@ EXTERNAL SOURCES:
     :tag: 1.6.1
 
 CHECKOUT OPTIONS:
+  CPDAcknowledgements:
+    :commit: ac1a28bebfd3c74402b7156047bf6bcdc4f4dcb7
+    :git: https://github.com/FrankWu100/CPDAcknowledgements
   ICViewPager:
     :commit: 7f4f7991839ff75406f95978b6bb9e45562d78ae
     :git: https://github.com/FrankWu100/ICViewPager
@@ -255,6 +259,6 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: b683403a7b63098297ea585c0767854054e9d9ff
+PODFILE CHECKSUM: e1ddbaef5fbda764b286417bd8f603c39819f440
 
-COCOAPODS: 1.8.0.beta.1
+COCOAPODS: 1.7.5

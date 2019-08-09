@@ -7519,24 +7519,6 @@
 			};
 			name = Release;
 		};
-		00518D5DE2A3937DAD4900CAA9C8716D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0387D57167671C3338E83F6DDA1D8ECE /* TimelineTableViewCell.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TimelineTableViewCell";
-				IBSC_MODULE = TimelineTableViewCell;
-				INFOPLIST_FILE = "Target Support Files/TimelineTableViewCell/ResourceBundle-TimelineTableViewCell-TimelineTableViewCell-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = TimelineTableViewCell;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		00F0EB6000893EDEC5165512D52087B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B7893697543C2B79E961A7643393C50D /* UICKeyChainStore.xcconfig */;
@@ -7713,6 +7695,23 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+		};
+		0D55D58CB3BF58392F364A398DA89209 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56C6235AAD6C8EB30B1CC16C0164BE99 /* FontAwesome.swift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FontAwesome.swift";
+				INFOPLIST_FILE = "Target Support Files/FontAwesome.swift/ResourceBundle-FontAwesome.swift-FontAwesome.swift-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = FontAwesome.swift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
 		};
 		16B7EEAC4D0F52A92B039DF5022F5923 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -8066,24 +8065,6 @@
 			};
 			name = Release;
 		};
-		2C55EF5D4A49D2F70AF2008BDD13A0D6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6EB7A142DBDAC0A8010C7F1E694B411C /* Appirater.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Appirater";
-				IBSC_MODULE = Appirater;
-				INFOPLIST_FILE = "Target Support Files/Appirater/ResourceBundle-Appirater-Appirater-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = Appirater;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		2DFCCBCF36810EFD0B3014DB95C19578 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EFA5AF88574AE5950385DF28F2938951 /* iCarousel.xcconfig */;
@@ -8156,6 +8137,23 @@
 			};
 			name = Release;
 		};
+		31F40022C841DD49734308B3B9F53972 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0387D57167671C3338E83F6DDA1D8ECE /* TimelineTableViewCell.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TimelineTableViewCell";
+				INFOPLIST_FILE = "Target Support Files/TimelineTableViewCell/ResourceBundle-TimelineTableViewCell-TimelineTableViewCell-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = TimelineTableViewCell;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		34B55D029B0E40E554E7F14505AAF70C /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FDFEEB94F21E7626399C19817259F4B4 /* NJKWebViewProgress.xcconfig */;
@@ -8189,24 +8187,6 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		35CD7D1B368CFDB0059F763D544501F4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0387D57167671C3338E83F6DDA1D8ECE /* TimelineTableViewCell.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TimelineTableViewCell";
-				IBSC_MODULE = TimelineTableViewCell;
-				INFOPLIST_FILE = "Target Support Files/TimelineTableViewCell/ResourceBundle-TimelineTableViewCell-TimelineTableViewCell-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = TimelineTableViewCell;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -8245,24 +8225,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		438109E1802BB2291C9A0BB8FE9DC07D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56C6235AAD6C8EB30B1CC16C0164BE99 /* FontAwesome.swift.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FontAwesome.swift";
-				IBSC_MODULE = FontAwesome_swift;
-				INFOPLIST_FILE = "Target Support Files/FontAwesome.swift/ResourceBundle-FontAwesome.swift-FontAwesome.swift-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = FontAwesome.swift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
 		};
 		45C0F18EC8C9B72FA85BFEB90E981F84 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -9420,6 +9382,23 @@
 			};
 			name = Release;
 		};
+		900354A517587F3F7CC387250E67413B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0387D57167671C3338E83F6DDA1D8ECE /* TimelineTableViewCell.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TimelineTableViewCell";
+				INFOPLIST_FILE = "Target Support Files/TimelineTableViewCell/ResourceBundle-TimelineTableViewCell-TimelineTableViewCell-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = TimelineTableViewCell;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		904B2A5853F1E759780A41F678090248 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B3E0C88BACE73D4F069ECBFC0FB83ADF /* UITableView+FDTemplateLayoutCell.xcconfig */;
@@ -9540,24 +9519,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		9E13DFDDEE829003C509964A4FF911C2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6EB7A142DBDAC0A8010C7F1E694B411C /* Appirater.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Appirater";
-				IBSC_MODULE = Appirater;
-				INFOPLIST_FILE = "Target Support Files/Appirater/ResourceBundle-Appirater-Appirater-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = Appirater;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -9777,6 +9738,23 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		B922969BA1B495EE0CD208B4A1064930 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EB7A142DBDAC0A8010C7F1E694B411C /* Appirater.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Appirater";
+				INFOPLIST_FILE = "Target Support Files/Appirater/ResourceBundle-Appirater-Appirater-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = Appirater;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
 		};
 		BA2448A6CF20B7C3BCFF6D4697C62D56 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -10008,6 +9986,23 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CBC4930D34BFE87EFD15C3A77D691928 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EB7A142DBDAC0A8010C7F1E694B411C /* Appirater.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Appirater";
+				INFOPLIST_FILE = "Target Support Files/Appirater/ResourceBundle-Appirater-Appirater-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = Appirater;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -10298,24 +10293,6 @@
 			};
 			name = Release;
 		};
-		D9BA2525D3A5887E6378C9733563CB55 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56C6235AAD6C8EB30B1CC16C0164BE99 /* FontAwesome.swift.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FontAwesome.swift";
-				IBSC_MODULE = FontAwesome_swift;
-				INFOPLIST_FILE = "Target Support Files/FontAwesome.swift/ResourceBundle-FontAwesome.swift-FontAwesome.swift-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = FontAwesome.swift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		DD8F832993327D1DD8046C3CBCBD97CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -10379,6 +10356,23 @@
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
+		};
+		DE373C0A0C90FF7FC6D3657592A3F4A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56C6235AAD6C8EB30B1CC16C0164BE99 /* FontAwesome.swift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FontAwesome.swift";
+				INFOPLIST_FILE = "Target Support Files/FontAwesome.swift/ResourceBundle-FontAwesome.swift-FontAwesome.swift-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = FontAwesome.swift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
 		};
 		DEA8CE6BCF57F176466A174D1809EE95 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -10778,8 +10772,8 @@
 		1374319CC826602B3F4F0E8D237CAC0C /* Build configuration list for PBXNativeTarget "TimelineTableViewCell-TimelineTableViewCell" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				00518D5DE2A3937DAD4900CAA9C8716D /* Debug */,
-				35CD7D1B368CFDB0059F763D544501F4 /* Release */,
+				900354A517587F3F7CC387250E67413B /* Debug */,
+				31F40022C841DD49734308B3B9F53972 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -10796,8 +10790,8 @@
 		162CE2CC222588C47F9D8623AC2D740C /* Build configuration list for PBXNativeTarget "FontAwesome.swift-FontAwesome.swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				438109E1802BB2291C9A0BB8FE9DC07D /* Debug */,
-				D9BA2525D3A5887E6378C9733563CB55 /* Release */,
+				0D55D58CB3BF58392F364A398DA89209 /* Debug */,
+				DE373C0A0C90FF7FC6D3657592A3F4A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -11174,8 +11168,8 @@
 		ED4FAF6531BDF3ACB107EBECD8670BB8 /* Build configuration list for PBXNativeTarget "Appirater-Appirater" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9E13DFDDEE829003C509964A4FF911C2 /* Debug */,
-				2C55EF5D4A49D2F70AF2008BDD13A0D6 /* Release */,
+				CBC4930D34BFE87EFD15C3A77D691928 /* Debug */,
+				B922969BA1B495EE0CD208B4A1064930 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

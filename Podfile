@@ -27,7 +27,7 @@ def opass_pods
   #pod 'SDWebImage', '~> 5.0.0-beta5'
   pod 'Nuke', '~> 7.0'
   pod 'Shimmer', '~> 1.0'
-  pod 'CPDAcknowledgements', '~> 1.0'
+  pod 'CPDAcknowledgements', :git => 'https://github.com/FrankWu100/CPDAcknowledgements'
   pod 'NJKWebViewProgress', '~> 0.2'
   pod 'iVersion', '~> 1.11'
   pod 'AFNetworking', '~> 3.1'
