@@ -511,7 +511,7 @@ import ScanditBarcodeScanner
         let mediaType = info[.mediaType] as! String
 
         if mediaType == "public.image" {
-            let srcImage = info[.originalImage] as! CIImage
+            let srcImage = info[.originalImage] as! UIImage
             let detector = CIDetector.init(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])!
 
             let image = CIImage.init(cgImage: srcImage.cgImage!)
