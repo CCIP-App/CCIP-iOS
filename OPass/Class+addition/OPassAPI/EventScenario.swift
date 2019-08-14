@@ -184,7 +184,7 @@ extension OPassAPI {
                             let sr = obj as! OPassNonSuccessDataResponse
                             completion?(false, sr, NSError(domain: "OPass Scenario can not use because current is Not in Event or Not a Valid Token", code: 3, userInfo: nil))
                         default:
-                            let used = Scenario(JSON(obj!))
+                            let used = ScenarioStatus(JSON(obj!))
                             completion?(true, used, OPassSuccessError)
                         }
                     } else {

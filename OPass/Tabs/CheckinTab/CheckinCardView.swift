@@ -87,7 +87,7 @@ class CheckinCardView: UIView {
         let use = {
             OPassAPI.UseScenario(OPassAPI.currentEvent, Constants.accessToken!, self.id) { (success, obj, error) in
                 if success {
-                    let _ = self.updateScenario([obj as! Scenario])
+                    let _ = self.updateScenario((obj as! ScenarioStatus).Scenarios)
                     self.showCountdown()
                     self.buttonUpdate({
                         self.checkinBtn?.setGradientColor(from: Constants.appConfigColor("DisabledButtonLeftColor"), to: Constants.appConfigColor("DisabledButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
