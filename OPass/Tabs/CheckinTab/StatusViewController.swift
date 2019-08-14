@@ -41,7 +41,7 @@ class StatusViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let isKit = [ "kit", "vipkit" ].contains(self.scenario!.Id)
-        let dietType = self.scenario!.Attributes["diet"] as! String
+        let dietType = self.scenario!.Attributes["diet"] as? String ?? ""
         self.statusMessageLabel.text = NSLocalizedString(isKit ? "StatusNotice" : "\(dietType)Lunch", comment: "")
         self.noticeTextLabel.text = ""
         if !isKit {
@@ -65,7 +65,7 @@ class StatusViewController: UIViewController {
         }
         let attr = self.scenario!.Attributes
         if attr._data.dictionaryValue.count > 0 {
-            let attrData = try! JSONSerialization.data(withJSONObject: attr, options: .prettyPrinted)
+            let attrData = try! attr._data.rawData(options: .prettyPrinted)
             self.attributesLabel.text = String(data: attrData, encoding: .utf8)
         } else {
             self.attributesLabel.text = ""

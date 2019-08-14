@@ -658,7 +658,7 @@ import ScanditBarcodeScanner
             }
             temp.checkinBtn.tintColor = .white
 
-            temp.delegate = self
+            temp.setDelegate(self)
             temp.setScenario(scenario)
         }
 
