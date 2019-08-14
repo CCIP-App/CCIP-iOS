@@ -617,7 +617,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>FSPagerView is an elegant Screen Slide Library for making Banner、Product Show、Welcome/Guide Pages、Screen/ViewController Sliders.</string>
 			<key>version</key>
-			<string>0.8.2</string>
+			<string>0.8.3</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1348,7 +1348,7 @@ non-Cocoapod integration. This library also respects the Firebase global data co
 			<key>summary</key>
 			<string>Firebase Core Diagnostics</string>
 			<key>version</key>
-			<string>1.0.0</string>
+			<string>1.0.1</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2368,7 +2368,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Google iOS SDK data transport.</string>
 			<key>version</key>
-			<string>1.0.0</string>
+			<string>1.1.1</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2594,7 +2594,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Support library for the GoogleDataTransport CCT backend target.</string>
 			<key>version</key>
-			<string>1.0.0</string>
+			<string>1.0.1</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2821,7 +2821,7 @@ other Google CocoaPods. They&amp;#39;re not intended for direct public usage.&lt
 			<key>summary</key>
 			<string>Google Utilities for iOS (plus community support for macOS and tvOS)</string>
 			<key>version</key>
-			<string>6.2.4</string>
+			<string>6.2.5</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -3106,7 +3106,7 @@ Includes portions from BSMobileProvision:
 			<key>summary</key>
 			<string>OneSignal push notification library for mobile apps.</string>
 			<key>version</key>
-			<string>2.10.0</string>
+			<string>2.10.1</string>
 		</dict>
 		<dict>
 			<key>authors</key>

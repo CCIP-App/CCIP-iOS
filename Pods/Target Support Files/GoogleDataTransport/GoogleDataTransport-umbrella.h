@@ -11,6 +11,7 @@
 #endif
 
 #import "GDTClock.h"
+#import "GDTConsoleLogger.h"
 #import "GDTDataFuture.h"
 #import "GDTEvent.h"
 #import "GDTEventDataObject.h"

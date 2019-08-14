@@ -86,7 +86,7 @@ Includes portions from BSMobileProvision:
 			<key>summary</key>
 			<string>OneSignal push notification library for mobile apps.</string>
 			<key>version</key>
-			<string>2.10.0</string>
+			<string>2.10.1</string>
 		</dict>
 	</array>
 </dict>

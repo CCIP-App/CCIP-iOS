@@ -17,12 +17,12 @@
 #import "GDTLibrary/Private/GDTStorage.h"
 #import "GDTLibrary/Private/GDTStorage_Private.h"
 
+#import <GoogleDataTransport/GDTConsoleLogger.h>
 #import <GoogleDataTransport/GDTLifecycle.h>
 #import <GoogleDataTransport/GDTPrioritizer.h>
 #import <GoogleDataTransport/GDTStoredEvent.h>
 
 #import "GDTLibrary/Private/GDTAssert.h"
-#import "GDTLibrary/Private/GDTConsoleLogger.h"
 #import "GDTLibrary/Private/GDTEvent_Private.h"
 #import "GDTLibrary/Private/GDTRegistrar_Private.h"
 #import "GDTLibrary/Private/GDTUploadCoordinator.h"
@@ -246,10 +246,24 @@ static NSString *const kGDTStorageUploadCoordinatorKey = @"GDTStorageUploadCoord
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
   GDTStorage *sharedInstance = [self.class sharedInstance];
-  dispatch_sync(sharedInstance.storageQueue, ^{
-    [aCoder encodeObject:sharedInstance->_storedEvents forKey:kGDTStorageStoredEventsKey];
-    [aCoder encodeObject:sharedInstance->_targetToEventSet forKey:kGDTStorageTargetToEventSetKey];
-    [aCoder encodeObject:sharedInstance->_uploadCoordinator forKey:kGDTStorageUploadCoordinatorKey];
+  dispatch_queue_t storageQueue = sharedInstance.storageQueue;
+  if (!storageQueue) {
+    return;
+  }
+  dispatch_sync(storageQueue, ^{
+    NSMutableOrderedSet<GDTStoredEvent *> *storedEvents = sharedInstance->_storedEvents;
+    if (storedEvents) {
+      [aCoder encodeObject:storedEvents forKey:kGDTStorageStoredEventsKey];
+    }
+    NSMutableDictionary<NSNumber *, NSMutableSet<GDTStoredEvent *> *> *targetToEventSet =
+        sharedInstance->_targetToEventSet;
+    if (targetToEventSet) {
+      [aCoder encodeObject:targetToEventSet forKey:kGDTStorageTargetToEventSetKey];
+    }
+    GDTUploadCoordinator *uploadCoordinator = sharedInstance->_uploadCoordinator;
+    if (uploadCoordinator) {
+      [aCoder encodeObject:uploadCoordinator forKey:kGDTStorageUploadCoordinatorKey];
+    }
   });
 }
 

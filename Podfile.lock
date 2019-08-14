@@ -46,7 +46,7 @@ PODS:
     - FirebaseCoreDiagnosticsInterop (~> 1.0)
     - GoogleUtilities/Environment (~> 6.2)
     - GoogleUtilities/Logger (~> 6.2)
-  - FirebaseCoreDiagnostics (1.0.0):
+  - FirebaseCoreDiagnostics (1.0.1):
     - FirebaseCoreDiagnosticsInterop (~> 1.0)
     - GoogleDataTransportCCTSupport (~> 1.0)
     - GoogleUtilities/Environment (~> 6.2)
@@ -61,34 +61,34 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 6.0)
   - FoldingCell (5.0.1)
   - FontAwesome.swift (1.8.1)
-  - FSPagerView (0.8.2)
+  - FSPagerView (0.8.3)
   - GoogleAppMeasurement (6.1.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
-  - GoogleDataTransport (1.0.0)
-  - GoogleDataTransportCCTSupport (1.0.0):
-    - GoogleDataTransport (~> 1.0)
+  - GoogleDataTransport (1.1.1)
+  - GoogleDataTransportCCTSupport (1.0.1):
+    - GoogleDataTransport (~> 1.1)
     - nanopb
-  - GoogleUtilities/AppDelegateSwizzler (6.2.4):
+  - GoogleUtilities/AppDelegateSwizzler (6.2.5):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (6.2.4)
-  - GoogleUtilities/Logger (6.2.4):
+  - GoogleUtilities/Environment (6.2.5)
+  - GoogleUtilities/Logger (6.2.5):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.2.4):
+  - GoogleUtilities/MethodSwizzler (6.2.5):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (6.2.4):
+  - GoogleUtilities/Network (6.2.5):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (6.2.4)"
-  - GoogleUtilities/Reachability (6.2.4):
+  - "GoogleUtilities/NSData+zlib (6.2.5)"
+  - GoogleUtilities/Reachability (6.2.5):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (6.2.4):
+  - GoogleUtilities/UserDefaults (6.2.5):
     - GoogleUtilities/Logger
   - iCarousel (1.8.3)
   - ICViewPager (1.5.1)
@@ -105,7 +105,7 @@ PODS:
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
   - Nuke (7.6.3)
-  - OneSignal (2.10.0)
+  - OneSignal (2.10.1)
   - Shimmer (1.0.2)
   - STPopup (1.8.7)
   - swift_qrcodejs (1.0.1)
@@ -228,17 +228,17 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 48414ae5cbf6976d8a2f7177e0466540e5ab33ce
   FirebaseAnalyticsInterop: 0f250d71e8741352407a8db351e6de78c5c56d35
   FirebaseCore: 8c9e08bce0c72a3affd83927d8184cf244918bc8
-  FirebaseCoreDiagnostics: 5807d8a32ea4455d6476da6de828675f89a8d8f3
+  FirebaseCoreDiagnostics: 4c04ae09d0ab027c30179828c6bb47764df1bd13
   FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
   FirebaseDynamicLinks: 5eee7e229ff8a5d56af1fca9f5a71115b7a2fe8b
   FirebaseInstanceID: 8b42755db950682e7de0d167bc6fb26a57b244af
   FoldingCell: 9197b915a415af9e52a857964066797af6a51c2b
   FontAwesome.swift: 6f55c8ed22a30ab6a8ca94033473161f678dcd4b
-  FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
+  FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   GoogleAppMeasurement: 47285fa897e5a125df56b9ef8750a1d81e4598a8
-  GoogleDataTransport: fe6af28a312ae5a56d5cec00ff14f6e3ded3beef
-  GoogleDataTransportCCTSupport: e6fa721757b147d7f1481d7367b8dab3e9010889
-  GoogleUtilities: 64b5e3982b1b01bda26712affd5c523ef32563cf
+  GoogleDataTransport: ffbadce4ab93c88fb9dd8e6366c47bfcb4a32193
+  GoogleDataTransportCCTSupport: 3451e7d8ba19093e533362a6d78d6d9014c6a037
+  GoogleUtilities: e7dc37039b19df7fe543479d3e4a02ac8d11bb69
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   ICViewPager: c1278b67eceac7252d48252829c3c703285dfb76
   iVersion: 3a93a89259eb3b52b0a8ba52c46a0027fa6b4d30
@@ -246,7 +246,7 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   Nuke: 44130e95e09463f8773ae4b96b90de1eba6b3350
-  OneSignal: 0f5ff711d9f25da54885e4ab06ef0abc221a46ef
+  OneSignal: 8fb749fa07f88006403c9b659a570fb7fb74519a
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STPopup: a9045557bc48a0df51fbb7bf0544447c5fe84d34
   swift_qrcodejs: c181fe5c849d30c699546a23762d7e3dd143ab37
