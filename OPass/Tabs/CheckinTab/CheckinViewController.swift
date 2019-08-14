@@ -637,11 +637,11 @@ import ScanditBarcodeScanner
                 temp.checkinText.text = NSLocalizedString("CheckinStaffRadioNotice", comment: "")
             }
             if isDisabled {
-                temp.disabled = scenario.Disabled
+                temp.setDisabled(scenario.Disabled)
                 temp.checkinBtn.setTitle("\(scenario.Disabled!)", for: .normal)
                 temp.checkinBtn.setGradientColor(from: Constants.appConfigColor("DisabledButtonLeftColor"), to: Constants.appConfigColor("DisabledButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
             } else if isUsed {
-                temp.used = scenario.Used
+                temp.setUsed(scenario.Used)
                 if isCheckin {
                     temp.checkinBtn.setTitle(NSLocalizedString("CheckinViewButtonPressed", comment: ""), for: .normal)
                 } else {
@@ -649,7 +649,7 @@ import ScanditBarcodeScanner
                 }
                 temp.checkinBtn.setGradientColor(from: Constants.appConfigColor("UsedButtonLeftColor"), to: Constants.appConfigColor("UsedButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
             } else {
-                temp.used = 0
+                temp.setUsed(nil)
                 if isCheckin {
                     temp.checkinBtn.setTitle(NSLocalizedString("CheckinViewButton", comment: ""), for: .normal)
                 } else {

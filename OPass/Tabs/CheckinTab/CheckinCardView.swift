@@ -161,7 +161,7 @@ class CheckinCardView: UIView {
                 // IN TIME
                 if isCheckin {
                     use()
-                } else if ((self.scenario?.Used) != nil) {
+                } else if ((self.used) != nil) {
                     self.showCountdown()
                 } else {
                     ac = UIAlertController.alertOfTitle(NSLocalizedString("UseButton_\(self.id)", comment: ""), withMessage: NSLocalizedString("ConfirmAlertText", comment: ""), cancelButtonText: NSLocalizedString("Cancel", comment: ""), cancelStyle: .cancel, cancelAction: nil)
