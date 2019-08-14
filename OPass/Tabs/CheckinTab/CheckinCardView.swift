@@ -102,7 +102,6 @@ class CheckinCardView: UIView {
                 } else {
                     func broken(_ msg: String = "Networking_Broken") {
                         self.delegate?.showInvalidNetworkMsg(NSLocalizedString(msg, comment: ""))
-
                     }
                     guard let sr = obj as? OPassNonSuccessDataResponse else {
                         broken()
