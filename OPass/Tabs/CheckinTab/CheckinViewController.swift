@@ -358,7 +358,8 @@ import ScanditBarcodeScanner
     }
 
     @objc func showInvalidNetworkMsg(_ msg: String? = nil) {
-        self.performSegue(withIdentifier: "ShowInvalidNetworkMsg", sender: msg)
+        // Temporarily bypass since it would be called before the showCountdown...
+        //self.performSegue(withIdentifier: "ShowInvalidNetworkMsg", sender: msg)
     }
 
     // MARK: - QR Code Scanner
