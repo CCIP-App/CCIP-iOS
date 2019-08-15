@@ -516,28 +516,39 @@ import ScanditBarcodeScanner
 
             let image = CIImage.init(cgImage: srcImage.cgImage!)
             let features = detector.features(in: image) as! [CIQRCodeFeature]
-            for feature in features {
-                NSLog("feature: \(String(describing: feature.messageString))")
-            }
-            let feature = features.first!
-            let result = feature.messageString
-            NSLog("QR: \(String(describing: result))")
 
             var ac: UIAlertController? = nil
-            if result != nil {
-                OPassAPI.RedeemCode(forEvent: "", withToken: result!) { (success, landing, error) in
-                    if success {
-                        picker.dismiss(animated: true) {
-                            // self.reloadCard()
-                        }
-                    } else {
-                        ac = UIAlertController.alertOfTitle(NSLocalizedString("GuideViewTokenErrorTitle", comment: ""), withMessage: NSLocalizedString("GuideViewTokenErrorDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel, cancelAction: nil)
-                        ac?.showAlert {
-                            UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
+            var noQR = false
+            if (features.count == 0) {
+                NSLog("no QR in the image")
+                noQR = true
+            } else {
+                for feature in features {
+                    NSLog("feature: \(String(describing: feature.messageString))")
+                }
+                let feature = features.first!
+                let result = feature.messageString
+                NSLog("QR: \(String(describing: result))")
+
+                if result == nil {
+                    noQR = true
+                } else {
+                    OPassAPI.RedeemCode(forEvent: "", withToken: result!) { (success, landing, error) in
+                        if success {
+                            picker.dismiss(animated: true) {
+                                // self.reloadCard()
+                            }
+                        } else {
+                            ac = UIAlertController.alertOfTitle(NSLocalizedString("GuideViewTokenErrorTitle", comment: ""), withMessage: NSLocalizedString("GuideViewTokenErrorDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel, cancelAction: nil)
+                            ac?.showAlert {
+                                UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
+                            }
                         }
                     }
                 }
-            } else {
+            }
+
+            if (noQR) {
                 ac = UIAlertController.alertOfTitle(NSLocalizedString("QRFileNotAvailableTitle", comment: ""), withMessage: NSLocalizedString("QRFileNotAvailableDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel, cancelAction: nil)
                 ac?.showAlert {
                     UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
