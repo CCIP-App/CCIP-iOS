@@ -23,8 +23,8 @@ class StatusViewController: UIViewController {
     private var isRelayout = false
     private var timer: Timer?
     private var countTime: Date?
-    private var maxValue: Int = 0
-    private var countDown: Int = 0
+    private var maxValue: Float = 0
+    private var countDown: Float = 0
     private var interval: TimeInterval = 0.0
     private var formatter: DateFormatter?
     private var countDownEnd = false
@@ -74,10 +74,10 @@ class StatusViewController: UIViewController {
         self.countdownLabel.isHidden = !self.needCountdown
         self.countDownEnd = false
         self.countTime = Date()
-        self.maxValue = self.scenario!.Used! + self.scenario!.Countdown! - Int(self.countTime!.timeIntervalSince1970)
+        self.maxValue = Float(self.scenario!.Used! + self.scenario!.Countdown! - Int(self.countTime!.timeIntervalSince1970))
 
         self.interval = Date().timeIntervalSince(self.countTime!)
-        self.countDown = (self.maxValue - Int(self.interval))
+        self.countDown = (self.maxValue - Float(self.interval))
         self.formatter = DateFormatter()
         self.formatter!.dateFormat = "yyyy/MM/dd HH:mm:ss"
         self.countdownLabel.text = ""
@@ -121,7 +121,7 @@ class StatusViewController: UIViewController {
         let now = Date()
         self.interval = now.timeIntervalSince(self.countTime!)
 
-        self.countDown = (self.maxValue - Int(self.interval))
+        self.countDown = (self.maxValue - Float(self.interval))
         if self.countDown <= 0 {
             self.countDown = 0
             color = .red
@@ -152,20 +152,20 @@ class StatusViewController: UIViewController {
                 } else {
                     self.dismissStatus()
                 }
-            } else if self.countDown >= (self.maxValue / 2) {
-                let at_ = 1 - ((self.countDown - (self.maxValue / 2)) / (self.maxValue - (self.maxValue / 2)))
-                color = UIColor.colorFrom(view.tintColor, to: .purple, at: Double(at_))
-            } else if self.countDown >= (self.maxValue / 6) {
-                let at_ = 1 - ((self.countDown - (self.maxValue / 6)) / (self.maxValue - ((self.maxValue / 2) + (self.maxValue / 6))))
-                color = UIColor.colorFrom(.purple, to: .orange, at: Double(at_))
-            } else if self.countDown > 0 {
-                let at_ = 1 - ((self.countDown - 0) / (self.maxValue - (self.maxValue - (self.maxValue / 6))))
-                color = UIColor.colorFrom(.orange, to: .red, at: Double(at_))
             }
-            self.countdownLabel.textColor = color
-            self.countdownLabel.text = String(format: "%0.3f", self.countDown)
-            self.nowTimeLabel.text = self.formatter?.string(from: now)
+        } else if self.countDown >= (self.maxValue / 2) {
+            let at_ = 1 - ((self.countDown - (self.maxValue / 2)) / (self.maxValue - (self.maxValue / 2)))
+            color = UIColor.colorFrom(view.tintColor, to: .purple, at: Double(at_))
+        } else if self.countDown >= (self.maxValue / 6) {
+            let at_ = 1 - ((self.countDown - (self.maxValue / 6)) / (self.maxValue - ((self.maxValue / 2) + (self.maxValue / 6))))
+            color = UIColor.colorFrom(.purple, to: .orange, at: Double(at_))
+        } else if self.countDown > 0 {
+            let at_ = 1 - ((self.countDown - 0) / (self.maxValue - (self.maxValue - (self.maxValue / 6))))
+            color = UIColor.colorFrom(.orange, to: .red, at: Double(at_))
         }
+        self.countdownLabel.textColor = color
+        self.countdownLabel.text = String(format: "%0.3f", self.countDown)
+        self.nowTimeLabel.text = self.formatter?.string(from: now)
     }
 
     func dismissStatus() {
