@@ -169,12 +169,6 @@ class StatusViewController: UIViewController {
     }
 
     func dismissStatus() {
-        if self.needCountdown {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(5 * Double(NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: {
-                self.dismiss(animated: true)
-            })
-        } else {
-            self.dismiss(animated: false)
-        }
+        self.dismiss(animated: true)
     }
 }
