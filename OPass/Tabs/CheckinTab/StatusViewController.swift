@@ -30,12 +30,23 @@ class StatusViewController: UIViewController {
     private var countDownEnd = false
     private var needCountdown = false
 
+    private var originY: CGFloat = 0.0
+    private var startY: CGFloat = 0.0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         Constants.SendFib("StatusViewController")
         view.autoresizingMask = []
+
+        // Add pan event
+        let pan = UIPanGestureRecognizer(
+            target:self,
+            action:#selector(self.pan(_:)))
+        pan.minimumNumberOfTouches = 1
+        pan.maximumNumberOfTouches = 1
+        self.view.addGestureRecognizer(pan)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -170,5 +181,39 @@ class StatusViewController: UIViewController {
 
     func dismissStatus() {
         self.dismiss(animated: true)
+    }
+
+    @objc func pan(_ sender: UIPanGestureRecognizer) {
+        let point = sender.location(in: self.view)
+        switch sender.state {
+        case .began:
+            NSLog("began")
+            originY = self.view.frame.origin.y
+            startY = point.y
+        case .ended:
+            NSLog("ended")
+            if ( self.view.frame.origin.y > self.view.frame.size.height / 4) {
+                dismissStatus()
+            } else {
+                self.view.frame.origin = CGPoint(x: self.view.frame.origin.x, y: originY)
+            }
+        case .changed:
+            let dY = startY - point.y
+            NSLog("dY: " + dY.description)
+            NSLog("x: " + point.x.description + " y: " + point.y.description)
+
+            if (originY < self.view.frame.origin.y - dY) {
+                UIView.animate(
+                    withDuration: 0,
+                    animations: {
+                        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: -dY)
+                    }
+                )
+            } else {
+                self.view.frame.origin = CGPoint(x: self.view.frame.origin.x, y: originY)
+            }
+        default:
+            NSLog("x: " + point.x.description + " y: " + point.y.description)
+        }
     }
 }
