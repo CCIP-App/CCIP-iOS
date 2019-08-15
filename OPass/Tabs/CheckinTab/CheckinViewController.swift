@@ -353,6 +353,10 @@ import ScanditBarcodeScanner
     // MARK: - display messages
 
     func showCountdown(_ scenario: Scenario) {
+        self.lbHi?.isHidden = true
+        self.lbUserName?.isHidden = true
+        self.ivUserPhoto?.isHidden = true
+
         NSLog("Show Countdown: \(scenario)")
         self.performSegue(withIdentifier: "ShowCountdown", sender: scenario)
     }
