@@ -9,8 +9,13 @@
 import UIKit
 import AudioToolbox
 
+protocol StatusViewDelegate : class {
+    func statusViewDisappear()
+}
+
 class StatusViewController: UIViewController {
-    var scenario: Scenario?
+    public var scenario: Scenario?
+    public var delegate: StatusViewDelegate?
 
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet weak var statusMessageLabel: UILabel!
@@ -180,7 +185,9 @@ class StatusViewController: UIViewController {
     }
 
     func dismissStatus() {
-        self.dismiss(animated: true)
+        self.dismiss(animated: true) {
+            self.delegate?.statusViewDisappear()
+        }
     }
 
     @objc func pan(_ sender: UIPanGestureRecognizer) {

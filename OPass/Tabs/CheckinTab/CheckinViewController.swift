@@ -19,7 +19,7 @@ import ScanditBarcodeScanner
     case InvalidNetwork
 }
 
-@objc class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , InvalidNetworkRetryDelegate, iCarouselDataSource, iCarouselDelegate, SBSScanDelegate, SBSProcessFrameDelegate {
+@objc class CheckinViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, StatusViewDelegate, InvalidNetworkRetryDelegate, iCarouselDataSource, iCarouselDelegate, SBSScanDelegate, SBSProcessFrameDelegate {
     @objc public var controllerTopStart: CGFloat = 0
 
     @IBOutlet private var cards: iCarousel?
@@ -135,6 +135,7 @@ import ScanditBarcodeScanner
         case StatusViewController.className:
             self.statusViewController = destination as? StatusViewController
             self.statusViewController?.scenario = sender as? Scenario
+            self.statusViewController?.delegate = self
         case InvalidNetworkMessageViewController.className:
             let inmvc = destination as! InvalidNetworkMessageViewController
             inmvc.message = sender as! String
@@ -359,6 +360,13 @@ import ScanditBarcodeScanner
 
         NSLog("Show Countdown: \(scenario)")
         self.performSegue(withIdentifier: "ShowCountdown", sender: scenario)
+    }
+
+    public func statusViewDisappear() {
+        let isHidden = !Constants.haveAccessToken
+        self.lbHi?.isHidden = isHidden
+        self.ivUserPhoto?.isHidden = isHidden
+        self.lbUserName?.isHidden = isHidden
     }
 
     @objc func showInvalidNetworkMsg(_ msg: String? = nil) {
