@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import FontAwesome_swift
 
 protocol StatusViewDelegate : class {
     func statusViewDisappear()
@@ -24,6 +25,8 @@ class StatusViewController: UIViewController {
     @IBOutlet weak var noticeTextLabel: UILabel!
     @IBOutlet weak var kitTitle: UILabel!
     @IBOutlet weak var nowTimeLabel: UILabel!
+    @IBOutlet weak var closeButton: UIButton!
+
     private var downView: MarkdownView?
 
     private var isRelayout = false
@@ -42,8 +45,11 @@ class StatusViewController: UIViewController {
         // Do any additional setup after loading the view.
         Constants.SendFib("StatusViewController")
         view.autoresizingMask = []
-
         self.attributesLabel.text = ""
+
+        // close button x FontAwesome Icon
+        self.closeButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 30, style: .solid)
+        self.closeButton.setTitle("times", for: .normal)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -182,7 +188,7 @@ class StatusViewController: UIViewController {
         self.nowTimeLabel.text = self.formatter?.string(from: now)
     }
 
-    func dismissStatus() {
+    @IBAction func dismissStatus() {
         self.delegate?.statusViewDisappear()
         self.dismiss(animated: true)
     }

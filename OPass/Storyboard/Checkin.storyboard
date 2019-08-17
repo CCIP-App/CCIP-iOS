@@ -34,6 +34,17 @@
                                                 <blurEffect style="light"/>
                                             </vibrancyEffect>
                                         </visualEffectView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crg-Y4-reI">
+                                            <rect key="frame" x="385" y="5" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="Tdg-gO-xb6"/>
+                                                <constraint firstAttribute="width" constant="30" id="cLs-Il-UL5"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="dismissStatus" destination="GJw-lM-l3I" eventType="touchUpInside" id="RMD-39-O8y"/>
+                                            </connections>
+                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4qB-gZ-oMt">
                                             <rect key="frame" x="50" y="20" width="320" height="100"/>
                                             <constraints>
@@ -105,9 +116,11 @@
                                         <constraint firstItem="E2B-3A-q53" firstAttribute="centerX" secondItem="htO-bs-S6f" secondAttribute="centerX" id="7yx-lb-XHh"/>
                                         <constraint firstAttribute="trailing" secondItem="Naq-yu-67a" secondAttribute="trailing" constant="20" id="97F-tg-UfL"/>
                                         <constraint firstAttribute="bottom" secondItem="KGG-rl-Nfe" secondAttribute="bottom" id="9Hz-ac-GuE"/>
+                                        <constraint firstAttribute="trailing" secondItem="crg-Y4-reI" secondAttribute="trailing" constant="5" id="9Ll-w5-cqZ"/>
                                         <constraint firstItem="E2B-3A-q53" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="20" id="Al0-rT-GGj"/>
                                         <constraint firstItem="4qB-gZ-oMt" firstAttribute="top" secondItem="htO-bs-S6f" secondAttribute="top" constant="20" id="Apq-Ln-OwZ"/>
                                         <constraint firstAttribute="trailing" secondItem="KGG-rl-Nfe" secondAttribute="trailing" id="Djv-Rg-UPm"/>
+                                        <constraint firstItem="crg-Y4-reI" firstAttribute="top" secondItem="htO-bs-S6f" secondAttribute="top" constant="5" id="JfJ-Qs-cBk"/>
                                         <constraint firstItem="Naq-yu-67a" firstAttribute="top" secondItem="E2B-3A-q53" secondAttribute="bottom" constant="20" id="OFm-UB-v2g"/>
                                         <constraint firstItem="Dyo-cm-nZt" firstAttribute="top" secondItem="qy3-VV-KVG" secondAttribute="bottom" constant="8" id="Qwo-u0-gZd"/>
                                         <constraint firstAttribute="trailing" secondItem="4qB-gZ-oMt" secondAttribute="trailing" constant="50" id="TOT-Em-LGM"/>
@@ -142,6 +155,7 @@
                     <size key="freeformSize" width="420" height="600"/>
                     <connections>
                         <outlet property="attributesLabel" destination="E2B-3A-q53" id="foj-Xb-dqr"/>
+                        <outlet property="closeButton" destination="crg-Y4-reI" id="67M-7U-0VM"/>
                         <outlet property="countdownLabel" destination="Naq-yu-67a" id="kHY-QK-sHX"/>
                         <outlet property="kitTitle" destination="tBO-2l-oxB" id="dWL-wC-5lE"/>
                         <outlet property="noticeTextLabel" destination="qy3-VV-KVG" id="7ct-c7-tm3"/>
