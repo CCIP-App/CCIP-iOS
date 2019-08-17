@@ -47,7 +47,7 @@ class OPassAPI: NSObject {
                     })
                 }
             }
-            }
+        }
         if maxRetry > 0 {
             return e.retry(maxRetry)
         } else {
