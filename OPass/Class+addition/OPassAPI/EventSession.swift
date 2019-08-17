@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 import SwiftDate
+import UICKeyChainStore
 
 struct Programs: OPassData {
     var _data: JSON
@@ -244,17 +245,20 @@ extension OPassAPI {
 
     static func GetFavoritesList(_ event: String, _ token: String) -> [String] {
         let key = OPassAPI.GetFavoritesStoreKey(event, token)
-        let ud = UserDefaults.standard
-        ud.register(defaults: [key: Array<String>()])
-        ud.synchronize()
-        return ud.stringArray(forKey: key)!
+        guard let favData = UICKeyChainStore.string(forKey: key) else {
+            UICKeyChainStore.setString("[]", forKey: key)
+            return []
+        }
+        guard let favList = JSON(parseJSON: favData).object as? [String] else {
+            UICKeyChainStore.setString("[]", forKey: key)
+            return []
+        }
+        return favList
     }
 
     static func PutFavoritesList(_ event: String, _ token: String, _ newList: [String]) {
         let key = OPassAPI.GetFavoritesStoreKey(event, token)
-        let ud = UserDefaults.standard
-        ud.set(newList, forKey: key)
-        ud.synchronize()
+        UICKeyChainStore.setString(JSON(newList).rawString([.castNilToNSNull: true]), forKey: key)
     }
 
     static func CheckFavoriteState(_ event: String, _ token: String, _ session: String) -> Bool {
@@ -279,6 +283,7 @@ extension OPassAPI {
         } else {
             favList = favList.filter { $0 != session }
         }
+        favList = favList.filter { $0.count > 0 }
         OPassAPI.PutFavoritesList(event, token, favList)
     }
 }

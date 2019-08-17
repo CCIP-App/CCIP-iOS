@@ -60,7 +60,7 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
         self.sessionTimes.removeAll()
         self.sessionSections.removeAll()
         guard let token = Constants.accessToken else { return }
-        let favList = OPassAPI.GetFavoritesList(OPassAPI.currentEvent, token)
+        let favList = OPassAPI.GetFavoritesList(OPassAPI.eventInfo!.EventId, token)
         for session in (self.pagerController?.programs!.Sessions.filter { (favList.contains($0.Id)) })! {
             let startTime = Constants.DateFromString(session.Start)
             let start = Constants.DateToDisplayTimeString(startTime)
