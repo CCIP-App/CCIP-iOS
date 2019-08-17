@@ -185,9 +185,8 @@ class StatusViewController: UIViewController {
     }
 
     func dismissStatus() {
-        self.dismiss(animated: true) {
-            self.delegate?.statusViewDisappear()
-        }
+        self.delegate?.statusViewDisappear()
+        self.dismiss(animated: true)
     }
 
     @objc func pan(_ sender: UIPanGestureRecognizer) {
