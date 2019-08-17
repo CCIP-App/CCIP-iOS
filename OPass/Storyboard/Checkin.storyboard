@@ -34,7 +34,7 @@
                                                 <blurEffect style="light"/>
                                             </vibrancyEffect>
                                         </visualEffectView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qB-gZ-oMt">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4qB-gZ-oMt">
                                             <rect key="frame" x="50" y="20" width="320" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="1XS-RC-GPm"/>
@@ -56,13 +56,13 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2B-3A-q53">
-                                            <rect key="frame" x="20" y="140" width="380" height="62"/>
+                                            <rect key="frame" x="20" y="140" width="380" height="112"/>
                                             <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60.000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="Naq-yu-67a">
-                                            <rect key="frame" x="20" y="222" width="380" height="120"/>
+                                            <rect key="frame" x="20" y="272" width="380" height="120"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="120" id="yKR-iB-grm"/>
                                             </constraints>
@@ -80,9 +80,9 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Kit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBO-2l-oxB">
-                                            <rect key="frame" x="8" y="362" width="404" height="60"/>
+                                            <rect key="frame" x="8" y="412" width="404" height="40"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="60" id="WU2-Ce-ckf"/>
+                                                <constraint firstAttribute="height" constant="40" id="WU2-Ce-ckf"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="50"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -119,7 +119,7 @@
                                         <constraint firstItem="tBO-2l-oxB" firstAttribute="top" secondItem="Naq-yu-67a" secondAttribute="bottom" constant="20" id="cF5-fH-ePl"/>
                                         <constraint firstAttribute="bottom" secondItem="Dyo-cm-nZt" secondAttribute="bottom" constant="10" id="coH-JR-MI3"/>
                                         <constraint firstItem="4qB-gZ-oMt" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="50" id="dWh-r8-o1b"/>
-                                        <constraint firstItem="Dyo-cm-nZt" firstAttribute="top" secondItem="tBO-2l-oxB" secondAttribute="bottom" constant="50" id="ecU-XG-V4t"/>
+                                        <constraint firstItem="Dyo-cm-nZt" firstAttribute="top" secondItem="tBO-2l-oxB" secondAttribute="bottom" constant="20" id="ecU-XG-V4t"/>
                                         <constraint firstItem="Naq-yu-67a" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="20" id="j3b-9x-aB7"/>
                                         <constraint firstItem="Naq-yu-67a" firstAttribute="centerX" secondItem="htO-bs-S6f" secondAttribute="centerX" id="ms4-oL-b2y"/>
                                         <constraint firstItem="qy3-VV-KVG" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="50" id="vGR-SO-1EF"/>

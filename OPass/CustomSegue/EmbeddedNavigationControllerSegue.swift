@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import then
+import Device_swift
 
 class EmbeddedNavigationControllerSegue: UIStoryboardSegue {
     override func perform() {
@@ -20,16 +21,31 @@ class EmbeddedNavigationControllerSegue: UIStoryboardSegue {
         let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
         let tabBarHeight = (self.source.tabBarController?.tabBar.frame.size.height)!
 
-        let frameHeight = screenHeight - (statusBarHeight + navBarHeight)
-        let superViewHeight = screenHeight - (statusBarHeight + navBarHeight + tabBarHeight)
+        var frameHeight : CGFloat
+        var superViewHeight : CGFloat
+        var superViewTop : CGFloat
 
-        let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: frameHeight))
+        var frame : CGRect
+
+        switch UIDevice.current.deviceType {
+        case .iPhoneSE, .iPhone5C, .iPhone5S, .simulator:
+            frameHeight = screenHeight
+            superViewHeight = screenHeight
+            superViewTop = 0
+        default:
+            frameHeight = screenHeight - (statusBarHeight + navBarHeight)
+            superViewHeight = screenHeight - (statusBarHeight + navBarHeight + tabBarHeight)
+            superViewTop = statusBarHeight + navBarHeight
+        }
+
+        frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: frameHeight))
         destinationView.frame = frame.offsetBy(dx: 0, dy: screenHeight)
         destinationView.alpha = 0
+
         Promise { resolve, reject in
             DispatchQueue.main.async {
                 self.source.present(self.destination, animated: false) {
-                    destinationView.superview!.frame = CGRect(origin: CGPoint(x: 0, y: statusBarHeight + navBarHeight), size: CGSize(width: screenWidth, height: superViewHeight))
+                    destinationView.superview!.frame = CGRect(origin: CGPoint(x: 0, y: superViewTop), size: CGSize(width: screenWidth, height: superViewHeight))
                     destinationView.alpha = 1
                     resolve()
                 }
