@@ -208,6 +208,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //configure iVersion
         //set custom BundleID
         iVersion.sharedInstance()?.applicationBundleID = Bundle.main.bundleIdentifier
+        //set priority
+        iVersion.sharedInstance()?.updatePriority = iVersionUpdatePriority.high
         //enable preview mode
         iVersion.sharedInstance()?.previewMode = false
 
