@@ -24,6 +24,7 @@ class StatusViewController: UIViewController {
     @IBOutlet weak var noticeTextLabel: UILabel!
     @IBOutlet weak var kitTitle: UILabel!
     @IBOutlet weak var nowTimeLabel: UILabel!
+    private var downView: MarkdownView?
 
     private var isRelayout = false
     private var timer: Timer?
@@ -52,6 +53,8 @@ class StatusViewController: UIViewController {
         pan.minimumNumberOfTouches = 1
         pan.maximumNumberOfTouches = 1
         self.view.addGestureRecognizer(pan)
+
+        self.attributesLabel.text = ""
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -82,7 +85,13 @@ class StatusViewController: UIViewController {
         let attr = self.scenario!.Attributes
         if attr._data.dictionaryValue.count > 0 {
             let attrData = try! attr._data.rawData(options: .prettyPrinted)
-            self.attributesLabel.text = String(data: attrData, encoding: .utf8)
+            let jsonText = String(data: attrData, encoding: .utf8) ?? ""
+
+            // MarkDown view
+            let markdownStyleString = "<style>html, body {height: 100%; width: 100%;} body {display: flex; align-items: center; padding: 0; font-size: 20px;} pre {width: 100%;}</style>\n```\n\(jsonText)\n```"
+            self.downView = MarkdownView.init(markdownStyleString, toView: self.attributesLabel)
+            self.downView?.downView.isOpaque = false
+            self.attributesLabel.isUserInteractionEnabled = true
         } else {
             self.attributesLabel.text = ""
         }
