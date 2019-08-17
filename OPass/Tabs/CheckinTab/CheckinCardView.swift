@@ -112,7 +112,9 @@ class CheckinCardView: UIView {
                             self.delegate?.showInvalidNetworkMsg(NSLocalizedString(msg, comment: ""))
                         }
                         guard let sr = obj as? OPassNonSuccessDataResponse else {
-                            broken()
+                            if (((error._userInfo as! NSDictionary)["com.alamofire.serialization.response.error.response"] as? HTTPURLResponse) == nil) {
+                                broken()
+                            }
                             return
                         }
                         switch (sr.Response?.statusCode) {
