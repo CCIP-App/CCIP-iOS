@@ -128,13 +128,12 @@ class CheckinCardView: UIView {
                                     self.checkinBtn?.setGradientColor(from: .red, to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                                 }, nil, nil)
                             case "has been used":
-//                                self.showCountdown()
-//                                self.buttonUpdate({
-//                                    self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
-//                                }, {
-//                                    self.checkinBtn?.setGradientColor(from: Constants.appConfigColor("UsedButtonLeftColor"), to: Constants.appConfigColor("UsedButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
-//                                }, nil)
-                                break
+                                self.showCountdown()
+                                self.buttonUpdate({
+                                    self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                }, {
+                                    self.checkinBtn?.setGradientColor(from: Constants.appConfigColor("UsedButtonLeftColor"), to: Constants.appConfigColor("UsedButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                }, nil)
                             case "link expired/not available now":
                                 self.buttonUpdate({
                                     self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
