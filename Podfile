@@ -47,6 +47,7 @@ def opass_pods
   pod 'DLLocalNotifications'
   pod 'TagListView'
   pod 'TimelineTableViewCell'
+  pod 'Device.swift'
 end
 
 target 'OPass' do

@@ -297,6 +297,54 @@ SOFTWARE.
 		<dict>
 			<key>authors</key>
 			<dict>
+				<key>Cody Winton</key>
+				<string>cody.t.winton@gmail.com</string>
+				<key>Igor Kislyuk</key>
+				<string>igorkislyuk@icloud.com</string>
+				<key>Johannes Schickling</key>
+				<string>schickling.j@gmail.com</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>homepage</key>
+			<string>https://github.com/schickling/Device.swift</string>
+			<key>licenseText</key>
+			<string>The MIT License (MIT)
+
+Copyright (c) 2015 Johannes Schickling
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>Device.swift</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Super-lightweight library to detect used device</string>
+			<key>version</key>
+			<string>1.2.2</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
 				<key>Rob Phillips</key>
 				<string>rob@robphillips.me</string>
 			</dict>

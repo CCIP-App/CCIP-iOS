@@ -19,6 +19,7 @@ PODS:
   - Collection (1.10.18)
   - ColorArt (0.1.1)
   - CPDAcknowledgements (1.0.0)
+  - Device.swift (1.2.2)
   - DLLocalNotifications (0.07)
   - Down (0.8.6)
   - EFQRCode (4.5.0):
@@ -125,6 +126,7 @@ DEPENDENCIES:
   - Collection
   - ColorArt (= 0.1.1)
   - CPDAcknowledgements (from `https://github.com/FrankWu100/CPDAcknowledgements`)
+  - Device.swift
   - DLLocalNotifications
   - Down
   - EFQRCode (~> 4.5)
@@ -158,6 +160,7 @@ SPEC REPOS:
     - BLKFlexibleHeightBar
     - Collection
     - ColorArt
+    - Device.swift
     - DLLocalNotifications
     - Down
     - EFQRCode
@@ -221,6 +224,7 @@ SPEC CHECKSUMS:
   Collection: aedf1617e8af148552452f2535480f556c99ed36
   ColorArt: de0ffb63da4acdde8e234ded62e200236ca3e7e4
   CPDAcknowledgements: 6e15e71849ba4ad5e8a17a0bb9d20938ad23bac8
+  Device.swift: 3f93632bb3fa3e4ebb9b202563975177e17c4296
   DLLocalNotifications: 5d358a73284efab757b4a4c07f3e5987b8afcef5
   Down: 3c758f2388fa739663023f400e742a988fa1e21d
   EFQRCode: 842f431e660da841f518993af8f4cbd275601d84
@@ -259,6 +263,6 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: e1ddbaef5fbda764b286417bd8f603c39819f440
+PODFILE CHECKSUM: 1e79cc3435e01033bcdd1d793a99c4b95d2ddfd7
 
 COCOAPODS: 1.7.5
