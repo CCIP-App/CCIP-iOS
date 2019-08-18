@@ -35,7 +35,7 @@
                                             </vibrancyEffect>
                                         </visualEffectView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crg-Y4-reI">
-                                            <rect key="frame" x="385" y="5" width="30" height="30"/>
+                                            <rect key="frame" x="380" y="10" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="Tdg-gO-xb6"/>
                                                 <constraint firstAttribute="width" constant="30" id="cLs-Il-UL5"/>
@@ -67,7 +67,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2B-3A-q53">
-                                            <rect key="frame" x="20" y="140" width="380" height="112"/>
+                                            <rect key="frame" x="20" y="130" width="380" height="132"/>
                                             <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -79,15 +79,6 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="80"/>
                                             <color key="textColor" red="0.02363964170217514" green="0.28717753291130066" blue="0.99830412864685059" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qy3-VV-KVG">
-                                            <rect key="frame" x="50" y="394" width="320" height="70"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="70" id="17h-i3-QWc"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Kit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBO-2l-oxB">
@@ -116,27 +107,24 @@
                                         <constraint firstItem="E2B-3A-q53" firstAttribute="centerX" secondItem="htO-bs-S6f" secondAttribute="centerX" id="7yx-lb-XHh"/>
                                         <constraint firstAttribute="trailing" secondItem="Naq-yu-67a" secondAttribute="trailing" constant="20" id="97F-tg-UfL"/>
                                         <constraint firstAttribute="bottom" secondItem="KGG-rl-Nfe" secondAttribute="bottom" id="9Hz-ac-GuE"/>
-                                        <constraint firstAttribute="trailing" secondItem="crg-Y4-reI" secondAttribute="trailing" constant="5" id="9Ll-w5-cqZ"/>
+                                        <constraint firstAttribute="trailing" secondItem="crg-Y4-reI" secondAttribute="trailing" constant="10" id="9Ll-w5-cqZ"/>
                                         <constraint firstItem="E2B-3A-q53" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="20" id="Al0-rT-GGj"/>
                                         <constraint firstItem="4qB-gZ-oMt" firstAttribute="top" secondItem="htO-bs-S6f" secondAttribute="top" constant="20" id="Apq-Ln-OwZ"/>
                                         <constraint firstAttribute="trailing" secondItem="KGG-rl-Nfe" secondAttribute="trailing" id="Djv-Rg-UPm"/>
-                                        <constraint firstItem="crg-Y4-reI" firstAttribute="top" secondItem="htO-bs-S6f" secondAttribute="top" constant="5" id="JfJ-Qs-cBk"/>
-                                        <constraint firstItem="Naq-yu-67a" firstAttribute="top" secondItem="E2B-3A-q53" secondAttribute="bottom" constant="20" id="OFm-UB-v2g"/>
-                                        <constraint firstItem="Dyo-cm-nZt" firstAttribute="top" secondItem="qy3-VV-KVG" secondAttribute="bottom" constant="8" id="Qwo-u0-gZd"/>
+                                        <constraint firstItem="crg-Y4-reI" firstAttribute="top" secondItem="htO-bs-S6f" secondAttribute="top" constant="10" id="JfJ-Qs-cBk"/>
+                                        <constraint firstItem="Naq-yu-67a" firstAttribute="top" secondItem="E2B-3A-q53" secondAttribute="bottom" constant="10" id="OFm-UB-v2g"/>
                                         <constraint firstAttribute="trailing" secondItem="4qB-gZ-oMt" secondAttribute="trailing" constant="50" id="TOT-Em-LGM"/>
                                         <constraint firstItem="Dyo-cm-nZt" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="16" id="UCY-YB-r5o"/>
                                         <constraint firstItem="KGG-rl-Nfe" firstAttribute="top" secondItem="htO-bs-S6f" secondAttribute="top" id="W00-Ek-aPZ"/>
                                         <constraint firstItem="KGG-rl-Nfe" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" id="XZf-01-JAk"/>
                                         <constraint firstItem="tBO-2l-oxB" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="8" id="Ypn-Sb-qmi"/>
-                                        <constraint firstAttribute="trailing" secondItem="qy3-VV-KVG" secondAttribute="trailing" constant="50" id="atw-pY-Cu6"/>
                                         <constraint firstItem="tBO-2l-oxB" firstAttribute="top" secondItem="Naq-yu-67a" secondAttribute="bottom" constant="20" id="cF5-fH-ePl"/>
                                         <constraint firstAttribute="bottom" secondItem="Dyo-cm-nZt" secondAttribute="bottom" constant="10" id="coH-JR-MI3"/>
                                         <constraint firstItem="4qB-gZ-oMt" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="50" id="dWh-r8-o1b"/>
                                         <constraint firstItem="Dyo-cm-nZt" firstAttribute="top" secondItem="tBO-2l-oxB" secondAttribute="bottom" constant="20" id="ecU-XG-V4t"/>
                                         <constraint firstItem="Naq-yu-67a" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="20" id="j3b-9x-aB7"/>
                                         <constraint firstItem="Naq-yu-67a" firstAttribute="centerX" secondItem="htO-bs-S6f" secondAttribute="centerX" id="ms4-oL-b2y"/>
-                                        <constraint firstItem="qy3-VV-KVG" firstAttribute="leading" secondItem="htO-bs-S6f" secondAttribute="leading" constant="50" id="vGR-SO-1EF"/>
-                                        <constraint firstItem="E2B-3A-q53" firstAttribute="top" secondItem="4qB-gZ-oMt" secondAttribute="bottom" constant="20" id="wuN-ty-y8D"/>
+                                        <constraint firstItem="E2B-3A-q53" firstAttribute="top" secondItem="4qB-gZ-oMt" secondAttribute="bottom" constant="10" id="wuN-ty-y8D"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="light"/>
@@ -157,10 +145,9 @@
                         <outlet property="attributesLabel" destination="E2B-3A-q53" id="foj-Xb-dqr"/>
                         <outlet property="closeButton" destination="crg-Y4-reI" id="67M-7U-0VM"/>
                         <outlet property="countdownLabel" destination="Naq-yu-67a" id="kHY-QK-sHX"/>
-                        <outlet property="kitTitle" destination="tBO-2l-oxB" id="dWL-wC-5lE"/>
-                        <outlet property="noticeTextLabel" destination="qy3-VV-KVG" id="7ct-c7-tm3"/>
+                        <outlet property="noticeTextLabel" destination="4qB-gZ-oMt" id="rir-LW-Zow"/>
                         <outlet property="nowTimeLabel" destination="Dyo-cm-nZt" id="2kX-ML-D66"/>
-                        <outlet property="statusMessageLabel" destination="4qB-gZ-oMt" id="L6R-DH-oyX"/>
+                        <outlet property="scenarioTitle" destination="tBO-2l-oxB" id="e4h-1M-JEj"/>
                         <outlet property="visualEffectView" destination="KGG-rl-Nfe" id="zti-nd-2Dh"/>
                     </connections>
                 </viewController>

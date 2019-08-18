@@ -19,11 +19,10 @@ class StatusViewController: UIViewController {
     public var delegate: StatusViewDelegate?
 
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
-    @IBOutlet weak var statusMessageLabel: UILabel!
     @IBOutlet weak var attributesLabel: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var noticeTextLabel: UILabel!
-    @IBOutlet weak var kitTitle: UILabel!
+    @IBOutlet weak var scenarioTitle: UILabel!
     @IBOutlet weak var nowTimeLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
 
@@ -54,36 +53,17 @@ class StatusViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let isKit = [ "kit", "vipkit" ].contains(self.scenario!.Id)
-        let dietType = self.scenario!.Attributes["diet"] as? String ?? ""
-        self.statusMessageLabel.text = NSLocalizedString(isKit ? "StatusNotice" : "\(dietType)Lunch", comment: "")
-        self.noticeTextLabel.text = ""
-        if !isKit {
-            self.noticeTextLabel.text = NSLocalizedString("UseNoticeText", comment: "")
-            self.statusMessageLabel.font = UIFont.systemFont(ofSize: 48.0)
-            self.kitTitle.text = ""
-            if (dietType == "meat") {
-                self.statusMessageLabel.textColor = UIColor.colorFromHtmlColor("#f8e71c")
-                self.visualEffectView.effect = UIBlurEffect(style: .dark)
-                self.noticeTextLabel.textColor = UIColor.white
-                self.nowTimeLabel.textColor = UIColor.white
-            }
-            if (dietType == "vegetarian") {
-                self.statusMessageLabel.textColor = UIColor.colorFromHtmlColor("#4a90e2")
-                self.visualEffectView.effect = UIBlurEffect(style: .light)
-                self.noticeTextLabel.textColor = UIColor.black
-                self.nowTimeLabel.textColor = UIColor.black
-            }
-        } else {
-            self.kitTitle.text = self.scenario!.DisplayText
-        }
+
+        self.scenarioTitle.text = self.scenario!.DisplayText
+        self.noticeTextLabel.text = NSLocalizedString("StatusNotice", comment: "")
+
         let attr = self.scenario!.Attributes
         if attr._data.dictionaryValue.count > 0 {
             let attrData = try! attr._data.rawData(options: .prettyPrinted)
             let jsonText = String(data: attrData, encoding: .utf8) ?? ""
 
             // MarkDown view
-            let markdownStyleString = "<style>html, body {height: 100%; width: 100%;} body {display: flex; align-items: center; padding: 0; font-size: 20px;} pre {width: 100%;}</style>\n```\n\(jsonText)\n```"
+            let markdownStyleString = "<style>html, body {height: 100%; width: 100%;} body {display: flex; align-items: center; padding: 0; font-size: 24px;} pre {width: 100%;}</style>\n```\n\(jsonText)\n```"
             self.downView = MarkdownView.init(markdownStyleString, toView: self.attributesLabel)
             self.downView?.downView.isOpaque = false
             self.attributesLabel.isUserInteractionEnabled = true
