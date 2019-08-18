@@ -55,7 +55,10 @@ struct SessionInfo: OPassData {
     var `Type`: String? {
         return self._types.filter { $0.Id == self._sessionData.Type }.first?.Name
     }
-    var Room: String?
+    var _rooms: [ProgramRoom]
+    var Room: String? {
+        return self._rooms.filter { $0.Id == self._sessionData.Room }.first?.Name
+    }
     var Broadcast: String?
     var Start: String
     var End: String
@@ -77,7 +80,6 @@ struct SessionInfo: OPassData {
         self._sessionData = ProgramSession(JSON(""))
         self.Id = self._sessionData.Id
         self._types = Programs(JSON("")).SessionTypes
-        self.Room = self._sessionData.Room
         self.Broadcast = self._sessionData.Broadcast
         self.Start = self._sessionData.Start
         self.End = self._sessionData.End
@@ -85,6 +87,7 @@ struct SessionInfo: OPassData {
         self.Slide = self._sessionData.Slide
         self.Live = self._sessionData.Live
         self.Record = self._sessionData.Record
+        self._rooms = Programs(JSON("")).Rooms
         self._speakers = Programs(JSON("")).Speakers
         self._tags = Programs(JSON("")).Tags
     }
@@ -93,7 +96,6 @@ struct SessionInfo: OPassData {
         self._sessionData = data
         self.Id = self._sessionData.Id
         self._types = programs.SessionTypes
-        self.Room = self._sessionData.Room
         self.Broadcast = self._sessionData.Broadcast
         self.Start = self._sessionData.Start
         self.End = self._sessionData.End
@@ -101,6 +103,7 @@ struct SessionInfo: OPassData {
         self.Slide = self._sessionData.Slide
         self.Live = self._sessionData.Live
         self.Record = self._sessionData.Record
+        self._rooms = programs.Rooms
         self._speakers = programs.Speakers
         self._tags = programs.Tags
     }
@@ -121,6 +124,7 @@ struct ProgramSession: OPassData {
     var Slide: String?
     var Live: String?
     var Record: String?
+    var Rooms: [String?]
     var Speakers: [String?]
     var Tags: [String?]
     init(_ data: JSON) {
@@ -135,6 +139,9 @@ struct ProgramSession: OPassData {
         self.Slide = self._data["slide"].string
         self.Live = self._data["live"].string
         self.Record = self._data["record"].string
+        self.Rooms = self._data["rooms"].arrayValue.map({ obj -> String? in
+            return obj.string
+        })
         self.Speakers = self._data["speakers"].arrayValue.map({ obj -> String? in
             return obj.string
         })
