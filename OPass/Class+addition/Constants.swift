@@ -79,13 +79,16 @@ extension Constants {
     }
     static var accessToken: String? {
         get {
-            return UICKeyChainStore.string(forKey: "token")
+            var token = UICKeyChainStore.string(forKey: "\(OPassAPI.eventInfo?.EventId ?? "")|token")
+            if (token == nil) {
+                token = UICKeyChainStore.string(forKey: "token")
+            }
+            return token
         }
         set {
             let accessToken = newValue
-            UICKeyChainStore.removeItem(forKey: "token")
-            UICKeyChainStore.setString(accessToken, forKey: "token")
-            OneSignal.sendTag("token", value: accessToken)
+            UICKeyChainStore.removeItem(forKey: "\(OPassAPI.eventInfo?.EventId ?? "")|token")
+            UICKeyChainStore.setString(accessToken, forKey: "\(OPassAPI.eventInfo?.EventId ?? "")|token")
             AppDelegate.delegateInstance.setDefaultShortcutItems()
         }
     }
