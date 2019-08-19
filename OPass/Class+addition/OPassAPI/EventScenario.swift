@@ -117,14 +117,10 @@ extension OPassAPI {
                             break
                         default:
                             let landing = ScenarioLanding(JSON(obj!))
-                            if landing.Nickname.count > 0 {
-                                OPassAPI.isLoginSession = true
-                                Constants.accessToken = token
-                                AppDelegate.delegateInstance.checkinView?.reloadCard()
-                                completion?(true, landing, OPassSuccessError)
-                            } else {
-                                completion?(false, landing, NSError(domain: "OPass Redeem Code Invalid", code: 3, userInfo: nil))
-                            }
+                            OPassAPI.isLoginSession = true
+                            Constants.accessToken = token
+                            AppDelegate.delegateInstance.checkinView?.reloadCard()
+                            completion?(true, landing, OPassSuccessError)
                         }
                     } else {
                         completion?(false, RawOPassData(obj!), NSError(domain: "OPass Redeem Code Invalid", code: 2, userInfo: nil))
