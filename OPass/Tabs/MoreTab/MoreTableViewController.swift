@@ -177,6 +177,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         let cellId = item[0] as! String
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MoreCell
         cell.Feature = feature
+        cell.backgroundColor = .clear
 
         let cellIconId = NSLocalizedString("icon-\(cellId)", comment: "");
 
