@@ -57,7 +57,8 @@ struct SessionInfo: OPassData {
     }
     var _rooms: [ProgramRoom]
     var Room: String? {
-        return self._rooms.filter { $0.Id == self._sessionData.Room }.first?.Name
+        let roomName = self._rooms.filter { $0.Id == self._sessionData.Room }.first?.Name ?? ""
+        return roomName.count > 0 ? roomName : self._sessionData.Room
     }
     var Broadcast: String?
     var Start: String
