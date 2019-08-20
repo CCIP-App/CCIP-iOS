@@ -11,7 +11,7 @@ import UIKit
 
 class SessionTableViewController: UITableViewController, UIViewControllerPreviewingDelegate {
     public var pagerController: SessionViewPagerController?
-    public var sessionIds: Array<String>?
+    public var sessionDate: String?
     var sessionTimes = Array<Date>()
     var sessionSections = Dictionary<String, Array<String>>()
 
@@ -24,21 +24,25 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
         super.viewWillAppear(animated)
 
         // only empty is specified for display favorite list
-        if self.sessionIds != nil {
-            self.sessionTimes.removeAll()
-            self.sessionSections.removeAll()
-            for session in (self.pagerController?.programs!.Sessions.filter { (self.sessionIds?.contains($0.Id))! })! {
-                let startTime = Constants.DateFromString(session.Start)
-                let start = Constants.DateToDisplayTimeString(startTime)
-                if self.sessionSections.index(forKey: start) == nil {
-                    self.sessionTimes.append(startTime)
-                    self.sessionSections[start] = Array<String>()
+        if (self.sessionDate != nil)
+        {
+            let sessionIds = self.pagerController?.programs!.GetSessionIds(byDateString: self.sessionDate!)
+            if sessionIds != nil {
+                self.sessionTimes.removeAll()
+                self.sessionSections.removeAll()
+                for session in (self.pagerController?.programs!.Sessions.filter { (sessionIds?.contains($0.Id))! })! {
+                    let startTime = Constants.DateFromString(session.Start)
+                    let start = Constants.DateToDisplayTimeString(startTime)
+                    if self.sessionSections.index(forKey: start) == nil {
+                        self.sessionTimes.append(startTime)
+                        self.sessionSections[start] = Array<String>()
+                    }
+                    self.sessionSections[start]?.append(session.Id)
                 }
-                self.sessionSections[start]?.append(session.Id)
+                self.sessionTimes.sort()
+            } else {
+                self.parseFavorites()
             }
-            self.sessionTimes.sort()
-        } else {
-            self.parseFavorites()
         }
     }
 

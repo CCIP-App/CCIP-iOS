@@ -144,8 +144,7 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
     //All delegate methods are optional.
     func viewPager(_ viewPager: ViewPagerController!, contentViewControllerForTabAt index: UInt) -> UIViewController! {
         let vc = SessionTableViewController.init()
-        let date = self.segmentsTextArray[Int(index)]
-        vc.sessionIds = self.programs?.GetSessionIds(byDateString: date)
+        vc.sessionDate = self.segmentsTextArray[Int(index)]
         vc.pagerController = self
         return vc
     }
