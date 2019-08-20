@@ -140,7 +140,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
 
     func checkFavoriteState() {
         guard let token = Constants.accessToken else { return }
-        let favorite = OPassAPI.CheckFavoriteState(OPassAPI.currentEvent, token, self.session!.Id)
+        let favorite = OPassAPI.CheckFavoriteState(OPassAPI.eventInfo!.EventId, token, self.session!.Id)
         self.btnFavorite?.setAttributedTitle(Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: favorite ? fontAwesomeStyle.solid : fontAwesomeStyle.regular, forColor: .white), for: .normal)
     }
 
