@@ -85,7 +85,7 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
         self.TagList.addTags(tags)
         self.setFavorite(false)
 
-        self.setFavorite(OPassAPI.CheckFavoriteState(OPassAPI.eventInfo!.EventId, Constants.accessToken!, self.sessionId!))
+        self.setFavorite(OPassAPI.CheckFavoriteState(OPassAPI.eventInfo!.EventId, Constants.accessToken ?? "", self.sessionId!))
     }
 
     func getSession() -> SessionInfo? {
