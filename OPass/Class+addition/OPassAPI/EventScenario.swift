@@ -154,11 +154,7 @@ extension OPassAPI {
                             }
                         default:
                             let status = ScenarioStatus(JSON(obj!))
-                            if status.UserId.count > 0 {
-                                completion?(true, status, OPassSuccessError)
-                            } else {
-                                completion?(false, status, NSError(domain: "OPass Current Not in Event or Not a Valid Token", code: 3, userInfo: nil))
-                            }
+                            completion?(true, status, OPassSuccessError)
                         }
                     } else {
                         completion?(false, RawOPassData(obj!), NSError(domain: "OPass Current Not in Event or Not a Valid Token", code: 2, userInfo: nil))
