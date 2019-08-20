@@ -83,7 +83,7 @@ extension Constants {
             if (token == nil) {
                 token = UICKeyChainStore.string(forKey: "token")
             }
-            return token
+            return token ?? ""
         }
         set {
             let accessToken = newValue
