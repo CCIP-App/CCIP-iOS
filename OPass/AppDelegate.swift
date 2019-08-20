@@ -272,9 +272,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             print("User accepted notifications: \(accepted)")
         })
 
-        Constants.accessToken = UICKeyChainStore.string(forKey: "token") ?? ""
-        NSLog("User Token: <\(Constants.accessToken ?? "n/a")>")
-
         // Provide the app key for your scandit license.
         SBSLicense.setAppKey(Constants.appConfig("scandit") as! String)
 

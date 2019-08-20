@@ -26,6 +26,8 @@ class MainTabBarViewController : UITabBarController {
             // temporary remove this for non-iOS 13 and non-Xcode 11
             // overrideUserInterfaceStyle = .light
         }
+
+        NSLog("User Token: <\(Constants.accessToken ?? "n/a")>")
     }
 
     override func viewDidAppear(_ animated: Bool) {
