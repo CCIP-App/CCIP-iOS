@@ -70,7 +70,7 @@ struct EventFeatures: OPassData {
                 let range = matches[m - 1].range(at: 1)
                 let param = url![range]
                 switch param {
-                case "{token}":
+                case "{public_token}":
                     url = url?.replacingOccurrences(of: param, with: Constants.accessToken ?? "")
                 case "{role}":
                     url = url?.replacingOccurrences(of: param, with: OPassAPI.userInfo?.Role ?? "")
