@@ -55,31 +55,37 @@ struct EventFeatures: OPassData {
     var Feature: String
     var Icon: URL?
     var DisplayText: EventDisplayName
-    var Url: URL?
+    var _url: String?
+    var Url: URL? {
+        get {
+            var newUrl = _url
+            if (newUrl != nil) {
+                let paramsRegex = try? NSRegularExpression.init(pattern: "(\\{[^\\}]+\\})", options: .caseInsensitive)
+                let matches = paramsRegex!.matches(in: newUrl!, options: .reportProgress, range: NSMakeRange(0, newUrl!.count))
+                for m in stride(from: matches.count, to: 0, by: -1) {
+                    let range = matches[m - 1].range(at: 1)
+                    let param = newUrl![range]
+                    switch param {
+                    case "{public_token}":
+                        newUrl = newUrl?.replacingOccurrences(of: param, with: Constants.accessTokenSHA1)
+                    case "{role}":
+                        newUrl = newUrl?.replacingOccurrences(of: param, with: OPassAPI.userInfo?.Role ?? "")
+                    default:
+                        newUrl = newUrl?.replacingOccurrences(of: param, with: "")
+                    }
+                }
+            }
+            return URL(string: newUrl!)
+        }
+    }
+
     var VisibleRoles: [String]?
     init(_ data: JSON) {
         self._data = data
         self.Feature = self._data["feature"].stringValue
         self.Icon = self._data["icon"].url
         self.DisplayText = EventDisplayName(self._data["display_text"])
-        var url = self._data["url"].string
-        if (url != nil) {
-            let paramsRegex = try? NSRegularExpression.init(pattern: "(\\{[^\\}]+\\})", options: .caseInsensitive)
-            let matches = paramsRegex!.matches(in: url!, options: .reportProgress, range: NSMakeRange(0, url!.count))
-            for m in stride(from: matches.count, to: 0, by: -1) {
-                let range = matches[m - 1].range(at: 1)
-                let param = url![range]
-                switch param {
-                case "{public_token}":
-                    url = url?.replacingOccurrences(of: param, with: Constants.accessToken ?? "")
-                case "{role}":
-                    url = url?.replacingOccurrences(of: param, with: OPassAPI.userInfo?.Role ?? "")
-                default:
-                    url = url?.replacingOccurrences(of: param, with: "")
-                }
-            }
-            self.Url = URL(string: url!)
-        }
+        self._url = self._data["url"].string
         self.VisibleRoles = self._data["visible_roles"].arrayObject as? [String]
     }
 }
