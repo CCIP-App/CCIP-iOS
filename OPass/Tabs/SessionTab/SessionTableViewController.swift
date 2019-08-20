@@ -40,9 +40,9 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
                     self.sessionSections[start]?.append(session.Id)
                 }
                 self.sessionTimes.sort()
-            } else {
-                self.parseFavorites()
             }
+        } else {
+            self.parseFavorites()
         }
     }
 
