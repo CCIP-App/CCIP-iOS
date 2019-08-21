@@ -74,8 +74,10 @@ struct EventFeatures: OPassData {
                         newUrl = newUrl?.replacingOccurrences(of: param, with: "")
                     }
                 }
+                return URL(string: newUrl!)
+            } else {
+                return nil
             }
-            return URL(string: newUrl!)
         }
     }
 
