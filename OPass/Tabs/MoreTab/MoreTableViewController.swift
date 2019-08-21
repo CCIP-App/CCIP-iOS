@@ -77,6 +77,9 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         super.viewWillAppear(animated)
 
         self.userInfo = OPassAPI.userInfo
+        if Constants.haveAccessToken {
+            self.moreTableView?.reloadSections([0], with: .automatic)
+        }
         let features = OPassAPI.eventInfo?.Features.map { feature -> [Any?] in
             switch OPassKnownFeatures(rawValue: feature.Feature) {
             case Optional(.Puzzle):
