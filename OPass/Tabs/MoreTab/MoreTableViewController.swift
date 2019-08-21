@@ -76,10 +76,10 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        self.userInfo = OPassAPI.userInfo
         if Constants.haveAccessToken {
-            self.moreTableView?.reloadSections([0], with: .automatic)
+            checkNickName()
         }
+
         let features = OPassAPI.eventInfo?.Features.map { feature -> [Any?] in
             switch OPassKnownFeatures(rawValue: feature.Feature) {
             case Optional(.Puzzle):
@@ -119,6 +119,19 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
     @objc func navSingleTap() {
         //NSLog(@"navSingleTap");
         self.handleNavTapTimes()
+    }
+
+    func checkNickName(max: Int = 10, current: Int = 0, _ milliseconds: Int = 500) {
+        self.userInfo = OPassAPI.userInfo
+        if (self.userInfo != nil) {
+            self.moreTableView?.reloadSections([0], with: .automatic)
+        } else if (current < max) {
+            let delayMSec : DispatchTimeInterval = .milliseconds(milliseconds)
+            DispatchQueue.main.asyncAfter(deadline: .now() + delayMSec) {
+                NSLog("B")
+                self.checkNickName(max: max, current: current+1, milliseconds)
+            }
+        }
     }
 
     func handleNavTapTimes() {
