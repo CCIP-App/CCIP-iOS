@@ -82,7 +82,7 @@ class CheckinCardView: UIView {
         let availableTime = Date.init(timeIntervalSince1970: TimeInterval(self.scenario!.AvailableTime!))
         let expireTime = Date.init(timeIntervalSince1970: TimeInterval(self.scenario!.ExpireTime!))
         let nowTime = Date.init()
-        let isCheckin = (OPassAPI.ParseScenarioType(self.id)["scenarioType"] as! String) == "checkin"
+        let isCheckin = (OPassAPI.ParseScenarioType(self.id)["scenarioType"] as! String).contains("checkin")
 
         let use = {
             if (self.scenario!.Used != nil) {
