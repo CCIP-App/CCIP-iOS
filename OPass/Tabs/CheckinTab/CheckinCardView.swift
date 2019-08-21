@@ -46,6 +46,7 @@ class CheckinCardView: UIView {
         for scenario in scenarios {
             if scenario.Id == self.id {
                 self.scenario = scenario
+                self.used = scenario.Used
                 break
             }
         }
