@@ -81,7 +81,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
             switch OPassKnownFeatures(rawValue: feature.Feature) {
             case Optional(.Puzzle):
                 return ["Puzzle", feature]
-            case Optional(.FastPass):
+            case Optional(.Ticket):
                 return ["Ticket", feature]
             case Optional(.Telegram):
                 return ["Telegram", feature]
