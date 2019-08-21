@@ -59,8 +59,8 @@ import UIKit
         return ac
     }
     @objc static func alertOfTitle(
-        _ title: String,
-        withMessage: String,
+        _ title: String?,
+        withMessage: String?,
         cancelButtonText: String,
         cancelStyle: UIAlertAction.Style,
         cancelAction: ((UIAlertAction) -> Void)?
