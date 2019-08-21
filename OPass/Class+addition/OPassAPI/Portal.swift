@@ -159,8 +159,11 @@ extension OPassAPI {
     }
 
     static func CleanupEvents() {
-        OPassAPI.eventInfo = nil
         OPassAPI.currentEvent = ""
+        OPassAPI.eventInfo = nil
+        OPassAPI.userInfo = nil
+        OPassAPI.scenarios = nil
+        OPassAPI.isLoginSession = false
     }
 
     static func DoLogin(_ eventId: String, _ token: String, _ completion: OPassCompletionCallback) {
