@@ -215,16 +215,15 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         // Custome Icon
         let customIconUrl = feature?.Icon
         if (customIconUrl != nil) {
-            let imageRequest = ImageRequest(url: customIconUrl!, targetSize: CGSize(width: 24*2, height: 24*2), contentMode: .aspectFill) //Nuke 7 is suck...
-
-            Nuke.loadImage(
-                with: imageRequest,
-                options: ImageLoadingOptions(
-                    placeholder: cell.imageView?.image,
-                    transition: .fadeIn(duration: 0.33)
-                ),
-                into: cell.imageView!
-            )
+            ImagePipeline.shared.loadImage(
+                with: customIconUrl!,
+                progress: { _, completed, total in
+                    print("progress updated")
+            },
+                completion: { response, error in
+                    print("task completed")
+                    cell.imageView?.image = response?.image.scaled(to: CGSize(width: 24, height: 24))
+            })
         }
 
         let cellText = cellId != ACKNOWLEDGEMENTS ?
