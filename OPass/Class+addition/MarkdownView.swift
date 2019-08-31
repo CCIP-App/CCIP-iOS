@@ -13,7 +13,7 @@ import Down
 public class MarkdownView : NSObject {
     public var markdownString: String
     public var downView: DownView
-    
+
     public init(
         _ markdown: String,
         toView: UIView
@@ -31,20 +31,20 @@ public class MarkdownView : NSObject {
         self.downView.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
         self.downView.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
     }
-    
+
     public func append(
         _ markdown: String
         ) {
         self.update(self.getMarkdown() + markdown)
     }
-    
+
     public func update(
         _ markdown: String
     ) {
         self.markdownString = markdown
         try? self.downView.update(markdownString: self.getMarkdown())
     }
-    
+
     public func getMarkdown() -> String {
         return self.markdownString
     }
