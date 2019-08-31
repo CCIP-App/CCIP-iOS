@@ -13,6 +13,10 @@ def onesignal
   pod 'OneSignal', '>= 2.6.2', '< 3.0'
 end
 
+def swift_lint
+  pod 'SwiftLint'
+end
+
 def opass_pods
   # Pods for OPass
   pod 'UICKeyChainStore', '~> 2.1'
@@ -54,11 +58,13 @@ target 'OPass' do
   pod_settings
   onesignal
   opass_pods
+  swift_lint
 end
 
 target 'OPass Notification Service' do
   pod_settings
   onesignal
+  swift_lint
 end
 
 DEFAULT_SWIFT_VERSION = '5.0'
