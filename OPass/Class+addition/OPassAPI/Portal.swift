@@ -61,7 +61,7 @@ struct EventFeatures: OPassData {
             var newUrl = _url
             if (newUrl != nil) {
                 let paramsRegex = try? NSRegularExpression.init(pattern: "(\\{[^\\}]+\\})", options: .caseInsensitive)
-                let matches = paramsRegex!.matches(in: newUrl!, options: .reportProgress, range: NSMakeRange(0, newUrl!.count))
+              let matches = paramsRegex!.matches(in: newUrl!, options: .reportProgress, range: NSRange(location: 0, length: newUrl!.count))
                 for m in stride(from: matches.count, to: 0, by: -1) {
                     let range = matches[m - 1].range(at: 1)
                     let param = newUrl![range]
