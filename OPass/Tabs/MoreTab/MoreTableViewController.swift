@@ -129,7 +129,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
             let delayMSec : DispatchTimeInterval = .milliseconds(milliseconds)
             DispatchQueue.main.asyncAfter(deadline: .now() + delayMSec) {
                 NSLog("B")
-                self.checkNickName(max: max, current: current+1, milliseconds)
+                self.checkNickName(max: max, current: current + 1, milliseconds)
             }
         }
     }
