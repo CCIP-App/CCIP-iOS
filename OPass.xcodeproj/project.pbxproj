@@ -763,6 +763,7 @@
 				6BCAC0191F1A8FC100032096 /* Resources */,
 				6BCAC0421F1A8FC100032096 /* Embed App Extensions */,
 				9DA454B99FFDD8A95B9054DF /* Frameworks */,
+				3B258990231ADB2E0092A0A0 /* Run SwiftLint Script */,
 			);
 			buildRules = (
 			);
@@ -804,6 +805,7 @@
 				6BB0B6411F1A8E2300AEB437 /* Embed Watch Content */,
 				15CD47F23CD25D89139AAF9C /* [CP] Embed Pods Frameworks */,
 				6B9B24DC22C8BA1D007C41A9 /* Embed App Extensions */,
+				3B25898F231ADB170092A0A0 /* Run SwiftLint Script */,
 			);
 			buildRules = (
 			);
@@ -955,6 +957,42 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OPass/Pods-OPass-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		3B25898F231ADB170092A0A0 /* Run SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# SwiftLint\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		3B258990231ADB2E0092A0A0 /* Run SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# SwiftLint\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		6BB11CED214D0B43005CE4A0 /* Generate Version Text */ = {
 			isa = PBXShellScriptBuildPhase;
