@@ -53,7 +53,7 @@ class CheckinCardView: UIView {
         return self.scenario!
     }
 
-    func buttonUpdate(_ intermediate: (() -> ())?, _ completeion: (() -> ())?, _ cleanup: (() -> ())?) {
+    func buttonUpdate(_ intermediate: (() -> Void)?, _ completeion: (() -> Void)?, _ cleanup: (() -> Void)?) {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.75, animations: {
                 intermediate?()
