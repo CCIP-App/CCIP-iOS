@@ -52,6 +52,9 @@ force_cast:
 force_unwrapping:
   severity: warning
 
+unused_closure_parameter:
+  severity: warning
+
 closure_spacing:
   severity: error
 
@@ -83,9 +86,6 @@ return_arrow_whitespace:
   severity: error
 
 trailing_newline:
-  severity: error
-
-unused_closure_parameter:
   severity: error
 
 unused_optional_binding:
