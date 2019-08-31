@@ -135,20 +135,20 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
     }
 
     func handleNavTapTimes() {
-        struct tap {
+        struct Tap {
             static var tapTimes: Int = 0
             static var oldTapTime: Date?
             static var newTapTime: Date?
         }
 
-        tap.newTapTime = Date.init()
-        if (tap.oldTapTime == nil) {
-            tap.oldTapTime = tap.newTapTime
+        Tap.newTapTime = Date.init()
+        if (Tap.oldTapTime == nil) {
+            Tap.oldTapTime = Tap.newTapTime
         }
 
-        if (tap.newTapTime!.timeIntervalSince(tap.oldTapTime!) <= 0.25) {
-            tap.tapTimes += 1
-            if (tap.tapTimes >= 10) {
+        if (Tap.newTapTime!.timeIntervalSince(Tap.oldTapTime!) <= 0.25) {
+            Tap.tapTimes += 1
+            if (Tap.tapTimes >= 10) {
                 NSLog("--  Success tap 10 times  --")
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
                 if !Constants.isDevMode {
@@ -159,14 +159,14 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
                     Constants.isDevMode = false
                 }
                 Constants.LoadDevLogoTo(view: self.shimmeringLogoView)
-                tap.tapTimes = 1
+                Tap.tapTimes = 1
             }
         } else {
-            NSLog("--  Failed, just tap %2d times  --", tap.tapTimes)
+            NSLog("--  Failed, just tap %2d times  --", Tap.tapTimes)
             NSLog("-- Failed to trigger DEV_MODE --")
-            tap.tapTimes = 1
+            Tap.tapTimes = 1
         }
-        tap.oldTapTime = tap.newTapTime
+        Tap.oldTapTime = Tap.newTapTime
     }
 
     // MARK: - Table view data source

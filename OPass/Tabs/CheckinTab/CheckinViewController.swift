@@ -152,23 +152,23 @@ import ScanditBarcodeScanner
     // MARK: - Dev Mode
 
     @objc func navSingleTap() {
-        struct tap {
+        struct Tap {
             static var tapTimes: Int = 0
             static var oldTapTime: Date?
             static var newTapTime: Date?
         }
         //        NSLog("navSingleTap")
 
-        tap.newTapTime = Date.init()
-        if tap.oldTapTime == nil {
-            tap.oldTapTime = tap.newTapTime
+        Tap.newTapTime = Date.init()
+        if Tap.oldTapTime == nil {
+            Tap.oldTapTime = Tap.newTapTime
         }
 
         if Constants.isDevMode {
             //            NSLog("navSingleTap from MoreTab")
-            if (tap.newTapTime?.timeIntervalSince(tap.oldTapTime!))! <= TimeInterval(0.25) {
-                tap.tapTimes += 1
-                if tap.tapTimes >= 10 {
+            if (Tap.newTapTime?.timeIntervalSince(Tap.oldTapTime!))! <= TimeInterval(0.25) {
+                Tap.tapTimes += 1
+                if Tap.tapTimes >= 10 {
                     NSLog("--  Success tap 10 times  --")
                     if Constants.haveAccessToken {
                         NSLog("-- Clearing the Token --")
@@ -178,14 +178,14 @@ import ScanditBarcodeScanner
                     } else {
                         NSLog("-- Token is already clear --")
                     }
-                    tap.tapTimes = 1
+                    Tap.tapTimes = 1
                 }
             } else {
-                NSLog("--  Failed, just tap \(tap.tapTimes) times  --")
+                NSLog("--  Failed, just tap \(Tap.tapTimes) times  --")
                 NSLog("-- Not trigger clean token --")
-                tap.tapTimes = 1
+                Tap.tapTimes = 1
             }
-            tap.oldTapTime = tap.newTapTime
+            Tap.oldTapTime = Tap.newTapTime
         }
     }
 
