@@ -44,7 +44,7 @@ type_name:
     - OPass
 
 force_try:
-  severity: error
+  severity: warning
 
 force_cast:
   severity: warning
