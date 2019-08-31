@@ -468,7 +468,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 }
 
-
 extension UIView {
     static var appDelegate: AppDelegate {
         return AppDelegate.delegateInstance
