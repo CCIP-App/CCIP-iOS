@@ -28,13 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     public var appArt: SLColorArt {
         get {
-            struct aa {
+            struct Aa {
                 static var appArt: SLColorArt?
                 static var appIconName: String = ""
 
             }
-            if aa.appArt != nil {
-                return aa.appArt!
+            if Aa.appArt != nil {
+                return Aa.appArt!
             } else {
                 // find the biggest icon for AppArt
                 // and find biggest app icon file name
@@ -72,11 +72,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                             }
                         }
                     }
-                    aa.appIconName = (fileName as NSString).deletingPathExtension
-                    aa.appArt = UIImage.init(named: aa.appIconName)?.colorArt()
+                    Aa.appIconName = (fileName as NSString).deletingPathExtension
+                    Aa.appArt = UIImage.init(named: Aa.appIconName)?.colorArt()
                 }
-                self.setAppearance(aa.appArt!)
-                return aa.appArt!
+                self.setAppearance(Aa.appArt!)
+                return Aa.appArt!
             }
         }
     }
