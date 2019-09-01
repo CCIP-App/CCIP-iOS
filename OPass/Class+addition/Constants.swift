@@ -17,7 +17,7 @@ import SafariServices
 import UICKeyChainStore
 import FirebaseAnalytics
 
-enum fontAwesomeStyle: Int {
+enum FontStyleForAwesome: Int {
     case solid
     case regular
     case brands
@@ -278,7 +278,7 @@ extension Constants {
     static func fontAwesome(code: String) -> String? {
         return String.fontAwesomeIcon(code: code)
     }
-    static func fontOfAwesome(withSize: CGFloat, inStyle: fontAwesomeStyle) -> UIFont {
+    static func fontOfAwesome(withSize: CGFloat, inStyle: FontStyleForAwesome) -> UIFont {
         var style: FontAwesomeStyle = FontAwesomeStyle.regular
         switch inStyle {
             case .brands:
@@ -293,7 +293,7 @@ extension Constants {
     static func attributedFontAwesome(
         ofCode: String,
         withSize: CGFloat,
-        inStyle: fontAwesomeStyle,
+        inStyle: FontStyleForAwesome,
         forColor: UIColor
     ) -> NSAttributedString {
         let fontAttribute = [
