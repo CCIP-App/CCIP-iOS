@@ -490,11 +490,11 @@ extension UIViewController {
     }
 
     func previewActions() -> Array<UIPreviewActionItem> {
-        struct preview {
+        struct Preview {
             static var actions: Array<UIPreviewActionItem>?
         }
 
-        if preview.actions == nil {
+        if Preview.actions == nil {
 //            UIPreviewAction *printAction = [UIPreviewAction
 //                actionWithTitle:@"Print"
 //                style:UIPreviewActionStyleDefault
@@ -503,8 +503,8 @@ extension UIViewController {
 //                // ... code to handle action here
 //                }];
 //            previewActions = @[ printAction ];
-            preview.actions = []
+            Preview.actions = []
         }
-        return preview.actions!
+        return Preview.actions!
     }
 }
