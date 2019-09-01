@@ -42,6 +42,10 @@ indentation: 4
 type_name:
   excluded:
     - OPass
+    - aa
+    - tap
+    - card
+    - preview
 
 force_try:
   severity: warning

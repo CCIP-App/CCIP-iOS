@@ -28,13 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     public var appArt: SLColorArt {
         get {
-            struct Aa {
+            struct aa {
                 static var appArt: SLColorArt?
                 static var appIconName: String = ""
 
             }
-            if Aa.appArt != nil {
-                return Aa.appArt!
+            if aa.appArt != nil {
+                return aa.appArt!
             } else {
                 // find the biggest icon for AppArt
                 // and find biggest app icon file name
@@ -72,11 +72,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                             }
                         }
                     }
-                    Aa.appIconName = (fileName as NSString).deletingPathExtension
-                    Aa.appArt = UIImage.init(named: Aa.appIconName)?.colorArt()
+                    aa.appIconName = (fileName as NSString).deletingPathExtension
+                    aa.appArt = UIImage.init(named: aa.appIconName)?.colorArt()
                 }
-                self.setAppearance(Aa.appArt!)
-                return Aa.appArt!
+                self.setAppearance(aa.appArt!)
+                return aa.appArt!
             }
         }
     }
@@ -490,11 +490,11 @@ extension UIViewController {
     }
 
     func previewActions() -> Array<UIPreviewActionItem> {
-        struct Preview {
+        struct preview {
             static var actions: Array<UIPreviewActionItem>?
         }
 
-        if Preview.actions == nil {
+        if preview.actions == nil {
 //            UIPreviewAction *printAction = [UIPreviewAction
 //                actionWithTitle:@"Print"
 //                style:UIPreviewActionStyleDefault
@@ -503,8 +503,8 @@ extension UIViewController {
 //                // ... code to handle action here
 //                }];
 //            previewActions = @[ printAction ];
-            Preview.actions = []
+            preview.actions = []
         }
-        return Preview.actions!
+        return preview.actions!
     }
 }

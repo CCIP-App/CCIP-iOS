@@ -152,23 +152,23 @@ import ScanditBarcodeScanner
     // MARK: - Dev Mode
 
     @objc func navSingleTap() {
-        struct Tap {
+        struct tap {
             static var tapTimes: Int = 0
             static var oldTapTime: Date?
             static var newTapTime: Date?
         }
         //        NSLog("navSingleTap")
 
-        Tap.newTapTime = Date.init()
-        if Tap.oldTapTime == nil {
-            Tap.oldTapTime = Tap.newTapTime
+        tap.newTapTime = Date.init()
+        if tap.oldTapTime == nil {
+            tap.oldTapTime = tap.newTapTime
         }
 
         if Constants.isDevMode {
             //            NSLog("navSingleTap from MoreTab")
-            if (Tap.newTapTime?.timeIntervalSince(Tap.oldTapTime!))! <= TimeInterval(0.25) {
-                Tap.tapTimes += 1
-                if Tap.tapTimes >= 10 {
+            if (tap.newTapTime?.timeIntervalSince(tap.oldTapTime!))! <= TimeInterval(0.25) {
+                tap.tapTimes += 1
+                if tap.tapTimes >= 10 {
                     NSLog("--  Success tap 10 times  --")
                     if Constants.haveAccessToken {
                         NSLog("-- Clearing the Token --")
@@ -178,14 +178,14 @@ import ScanditBarcodeScanner
                     } else {
                         NSLog("-- Token is already clear --")
                     }
-                    Tap.tapTimes = 1
+                    tap.tapTimes = 1
                 }
             } else {
-                NSLog("--  Failed, just tap \(Tap.tapTimes) times  --")
+                NSLog("--  Failed, just tap \(tap.tapTimes) times  --")
                 NSLog("-- Not trigger clean token --")
-                Tap.tapTimes = 1
+                tap.tapTimes = 1
             }
-            Tap.oldTapTime = Tap.newTapTime
+            tap.oldTapTime = tap.newTapTime
         }
     }
 
@@ -586,20 +586,20 @@ import ScanditBarcodeScanner
     }
 
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
-        struct Card {
+        struct card {
             static var cardRect = CGRect()
         }
         var view = view
         // Init configure pageControl
         self.pageControl.isHidden = true  // set page control to hidden
-        if Card.cardRect.isEmpty {
+        if card.cardRect.isEmpty {
             let pageControlFrame = self.pageControl.frame
             self.pageControl.frame = CGRect(x: self.view.frame.size.width / 2, y: ((self.cards?.frame.size.height ?? 0) + (self.cards?.frame.size.height ?? 0) - (self.pageControl.isHidden ? 0 : 10)) / 2, width: pageControlFrame.size.width, height: pageControlFrame.size.height)
             // Init cardRect
             // x 0, y 0, left 30, up 40, right 30, bottom 50
             // self.cards.contentOffset = CGSizeMake(0, -5.0f); // set in viewDidLoad
             // 414 736
-            Card.cardRect = CGRect(x: 0, y: 0, width: (self.cards?.bounds.size.width ?? 0), height: (self.cards?.frame.size.height ?? 0) - (self.pageControl.isHidden ? 0 : 10))
+            card.cardRect = CGRect(x: 0, y: 0, width: (self.cards?.bounds.size.width ?? 0), height: (self.cards?.frame.size.height ?? 0) - (self.pageControl.isHidden ? 0 : 10))
         }
 
         // create new view if no view is available for recycling
@@ -608,7 +608,7 @@ import ScanditBarcodeScanner
         let haveScenario = availableScenarios.count > 0
         if haveScenario {
             let temp = storyboard.instantiateViewController(withIdentifier: "CheckinCardReuseView") as! CheckinCardViewController
-            temp.view.frame = Card.cardRect
+            temp.view.frame = card.cardRect
             view = temp.view
 
             let scenario = availableScenarios[index]
