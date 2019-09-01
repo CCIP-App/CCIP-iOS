@@ -586,20 +586,20 @@ import ScanditBarcodeScanner
     }
 
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
-        struct card {
+        struct Card {
             static var cardRect = CGRect()
         }
         var view = view
         // Init configure pageControl
         self.pageControl.isHidden = true  // set page control to hidden
-        if card.cardRect.isEmpty {
+        if Card.cardRect.isEmpty {
             let pageControlFrame = self.pageControl.frame
             self.pageControl.frame = CGRect(x: self.view.frame.size.width / 2, y: ((self.cards?.frame.size.height ?? 0) + (self.cards?.frame.size.height ?? 0) - (self.pageControl.isHidden ? 0 : 10)) / 2, width: pageControlFrame.size.width, height: pageControlFrame.size.height)
             // Init cardRect
             // x 0, y 0, left 30, up 40, right 30, bottom 50
             // self.cards.contentOffset = CGSizeMake(0, -5.0f); // set in viewDidLoad
             // 414 736
-            card.cardRect = CGRect(x: 0, y: 0, width: (self.cards?.bounds.size.width ?? 0), height: (self.cards?.frame.size.height ?? 0) - (self.pageControl.isHidden ? 0 : 10))
+            Card.cardRect = CGRect(x: 0, y: 0, width: (self.cards?.bounds.size.width ?? 0), height: (self.cards?.frame.size.height ?? 0) - (self.pageControl.isHidden ? 0 : 10))
         }
 
         // create new view if no view is available for recycling
@@ -608,7 +608,7 @@ import ScanditBarcodeScanner
         let haveScenario = availableScenarios.count > 0
         if haveScenario {
             let temp = storyboard.instantiateViewController(withIdentifier: "CheckinCardReuseView") as! CheckinCardViewController
-            temp.view.frame = card.cardRect
+            temp.view.frame = Card.cardRect
             view = temp.view
 
             let scenario = availableScenarios[index]
