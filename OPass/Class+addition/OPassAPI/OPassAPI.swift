@@ -41,7 +41,7 @@ class OPassAPI: NSObject {
                     resolve(OPassNonSuccessDataResponse(response!, data!, JSON(data as Any)))
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
-                        retryCount+=1
+                        retryCount += 1
                         onceErrorCallback?(retryCount, maxRetry, error, response)
                         reject(error)
                     })

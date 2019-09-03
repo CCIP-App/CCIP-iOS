@@ -15,7 +15,7 @@ class GuideViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var guideMessageLabel: UILabel!
     @IBOutlet weak var redeemCodeText: UITextField!
     @IBOutlet weak var redeemButton: UIButton!
-    
+
     private var isRelayout = false
     private var changePoint = CGPoint.zero
 
@@ -24,14 +24,14 @@ class GuideViewController: UIViewController, UITextFieldDelegate {
 
         // Do any additional setup after loading the view.
         guideMessageLabel.text = NSLocalizedString("GuideViewMessage", comment: "")
-        
+
         redeemCodeText.textColor = Constants.appConfigColor("RedeemCodeTextColor")
-        
+
         redeemButton.setTitle(NSLocalizedString("GuideViewButton", comment: ""), for: .normal)
         redeemButton.tintColor = .white
         redeemButton.backgroundColor = UIColor(red: 61 / 255.0, green: 152 / 255.0, blue: 60 / 255.0, alpha: 1)
         redeemButton.layer.cornerRadius = 7
-        
+
         // Set carousel background linear diagonal gradient
         //   Create the colors
         let topColor = Constants.appConfigColor("RedeemButtonLeftColor")
@@ -45,78 +45,78 @@ class GuideViewController: UIViewController, UITextFieldDelegate {
         theViewGradient.cornerRadius = 7
         //   Add gradient to view
         redeemButton.layer.insertSublayer(theViewGradient, at: 0)
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(GuideViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(GuideViewController.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(GuideViewController.appplicationDidEnterBackground(_:)), name: UIApplication.willResignActiveNotification, object: nil)
-        
+
         Constants.SendFib("GuideViewController")
-        
+
         view.autoresizingMask = []
     }
-    
+
     @objc func appplicationDidEnterBackground(_ notification: Notification?) {
         self.dismiss(animated: true)
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.dismiss(animated: true)
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         self.redeemCode(nil)
         return true
     }
-    
+
     @objc func keyboardWillShow(_ note: Notification?) {
         if view.frame.size.height <= 480 {
             changePoint = CGPoint(x: 0, y: -165)
-            
+
             var guideMessageLabelFrame = guideMessageLabel.frame
             guideMessageLabelFrame.origin.y += changePoint.y
             guideMessageLabel.frame = guideMessageLabelFrame
-            
+
             var redeemCodeTextFrame = redeemCodeText.frame
             redeemCodeTextFrame.origin.y += changePoint.y
             redeemCodeText.frame = redeemCodeTextFrame
-            
+
             var redeemButtonFrame = redeemButton.frame
             redeemButtonFrame.origin.y += changePoint.y
             redeemButton.frame = redeemButtonFrame
         } else if view.frame.size.height <= 568 {
             changePoint = CGPoint(x: 0, y: -30)
-            
+
             var guideMessageLabelFrame = guideMessageLabel.frame
             guideMessageLabelFrame.origin.y += changePoint.y
             guideMessageLabel.frame = guideMessageLabelFrame
-            
+
             var redeemCodeTextFrame = redeemCodeText.frame
             redeemCodeTextFrame.origin.y += changePoint.y
             redeemCodeText.frame = redeemCodeTextFrame
-            
+
             var redeemButtonFrame = redeemButton.frame
             redeemButtonFrame.origin.y += changePoint.y
             redeemButton.frame = redeemButtonFrame
         }
     }
-    
+
     @objc func keyboardWillHide(_ note: Notification?) {
         let deltaH: CGFloat = changePoint.y * -1
-        
+
         var guideMessageLabelFrame = guideMessageLabel.frame
         guideMessageLabelFrame.origin.y += deltaH
         guideMessageLabel.frame = guideMessageLabelFrame
-        
+
         var redeemCodeTextFrame = redeemCodeText.frame
         redeemCodeTextFrame.origin.y += deltaH
         redeemCodeText.frame = redeemCodeTextFrame
-        
+
         var redeemButtonFrame = redeemButton.frame
         redeemButtonFrame.origin.y += deltaH
         redeemButton.frame = redeemButtonFrame
-        
+
         changePoint = CGPoint(x: 0, y: 0)
     }
 
@@ -124,7 +124,7 @@ class GuideViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @IBAction func redeemCode(_ sender: Any?) {
         var alreadyAlert = false
         self.redeemButton.isEnabled = false

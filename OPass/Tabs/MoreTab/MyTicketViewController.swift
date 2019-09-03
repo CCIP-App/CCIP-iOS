@@ -13,7 +13,7 @@ import EFQRCode
 class MyTicketViewController : UIViewController {
     @IBOutlet var lbNotice: UILabel?
     @IBOutlet var ivQRCode: UIImageView?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -35,7 +35,7 @@ class MyTicketViewController : UIViewController {
         self.lbNotice!.text = noticeText
         self.lbNotice?.textColor = Constants.appConfigColor("CardTextColor")
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

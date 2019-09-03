@@ -611,7 +611,7 @@ import ScanditBarcodeScanner
             temp.view.frame = card.cardRect
             view = temp.view
 
-            let scenario = availableScenarios[index] 
+            let scenario = availableScenarios[index]
 
             let id = scenario.Id
             let isCheckin = id.contains("checkin")

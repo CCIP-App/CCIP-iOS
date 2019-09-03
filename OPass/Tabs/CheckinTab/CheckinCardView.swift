@@ -53,7 +53,7 @@ class CheckinCardView: UIView {
         return self.scenario!
     }
 
-    func buttonUpdate(_ intermediate: (() -> ())?, _ completeion: (() -> ())?, _ cleanup: (() -> ())?) {
+    func buttonUpdate(_ intermediate: (() -> Void)?, _ completeion: (() -> Void)?, _ cleanup: (() -> Void)?) {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.75, animations: {
                 intermediate?()
@@ -155,7 +155,7 @@ class CheckinCardView: UIView {
                 }
             }
         }
-        
+
         if self.disabled != nil {
             UIView.animate(withDuration: 0.25, animations: {
                 self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))

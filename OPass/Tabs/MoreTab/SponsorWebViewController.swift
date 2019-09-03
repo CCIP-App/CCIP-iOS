@@ -10,11 +10,11 @@ import Foundation
 
 class SponsorWebViewController : OPassWebViewController, OPassWebViewIB {
     @IBOutlet var goReloadButton: UIBarButtonItem?
-    
+
     @IBAction override func reload(_ sender: Any) {
         super.reload(sender);
     }
-    
+
     var PageUrl: String = ""
 
     override func viewWillAppear(_ animated: Bool) {

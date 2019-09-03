@@ -60,4 +60,3 @@ extension UIImage {
         return image
     }
 }
-
