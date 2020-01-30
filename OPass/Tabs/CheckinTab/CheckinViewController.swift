@@ -93,7 +93,7 @@ import ScanditBarcodeScanner
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.controllerTopStart = UIApplication.shared.statusBarFrame.size.height + (self.navigationController?.navigationBar.frame.size.height ?? 0)
+        self.controllerTopStart = (self.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0) + (self.navigationController?.navigationBar.frame.size.height ?? 0)
         self.handleQRButton()
     }
 

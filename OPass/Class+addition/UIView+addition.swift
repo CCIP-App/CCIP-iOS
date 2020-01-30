@@ -11,7 +11,7 @@ import UIKit
 
 extension UIView {
     var ViewTopStart: CGFloat {
-        return UIApplication.shared.statusBarFrame.height
+        return self.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
     }
     var topGuideHeight: CGFloat {
         return (self.next as! UIViewController).topGuideHeight

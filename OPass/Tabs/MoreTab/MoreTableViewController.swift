@@ -45,7 +45,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         nvBar!.shadowImage = UIImage.init()
         nvBar!.backgroundColor = UIColor.clear
         nvBar!.isTranslucent = false
-        let frame = CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: UIApplication.shared.statusBarFrame.size.height + self.navigationController!.navigationBar.frame.size.height)
+        let frame = CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: (self.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0) + self.navigationController!.navigationBar.frame.size.height)
         let headView = UIView.init(frame: frame)
         headView.setGradientColor(from: Constants.appConfigColor("MoreTitleLeftColor"), to: Constants.appConfigColor("MoreTitleRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
         let naviBackImg = headView.layer.sublayers?.last?.toImage()
