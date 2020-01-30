@@ -20,102 +20,109 @@ PODS:
   - ColorArt (0.1.1)
   - CPDAcknowledgements (1.0.0)
   - Device.swift (1.2.2)
-  - DLLocalNotifications (0.07)
-  - Down (0.8.6)
+  - DLLocalNotifications (0.08)
+  - Down (0.9.0)
   - EFQRCode (4.5.0):
     - swift_qrcodejs (~> 1.0.1)
-  - Firebase/Core (6.7.0):
+  - Firebase/Core (6.16.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 6.1.1)
-  - Firebase/CoreOnly (6.7.0):
-    - FirebaseCore (= 6.2.1)
-  - Firebase/DynamicLinks (6.7.0):
+    - FirebaseAnalytics (= 6.2.2)
+  - Firebase/CoreOnly (6.16.0):
+    - FirebaseCore (= 6.6.1)
+  - Firebase/DynamicLinks (6.16.0):
     - Firebase/CoreOnly
-    - FirebaseDynamicLinks (~> 4.0.3)
-  - FirebaseAnalytics (6.1.1):
-    - FirebaseCore (~> 6.2)
-    - FirebaseInstanceID (~> 4.2)
-    - GoogleAppMeasurement (= 6.1.1)
+    - FirebaseDynamicLinks (~> 4.0.6)
+  - FirebaseAnalytics (6.2.2):
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstanceID (~> 4.3)
+    - GoogleAppMeasurement (= 6.2.2)
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - nanopb (~> 0.3)
-  - FirebaseAnalyticsInterop (1.4.0)
-  - FirebaseCore (6.2.1):
-    - FirebaseCoreDiagnostics (~> 1.0)
-    - FirebaseCoreDiagnosticsInterop (~> 1.0)
-    - GoogleUtilities/Environment (~> 6.2)
-    - GoogleUtilities/Logger (~> 6.2)
-  - FirebaseCoreDiagnostics (1.0.1):
-    - FirebaseCoreDiagnosticsInterop (~> 1.0)
-    - GoogleDataTransportCCTSupport (~> 1.0)
-    - GoogleUtilities/Environment (~> 6.2)
-    - GoogleUtilities/Logger (~> 6.2)
-  - FirebaseCoreDiagnosticsInterop (1.0.0)
-  - FirebaseDynamicLinks (4.0.3):
+    - nanopb (= 0.3.9011)
+  - FirebaseAnalyticsInterop (1.5.0)
+  - FirebaseCore (6.6.1):
+    - FirebaseCoreDiagnostics (~> 1.2)
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+  - FirebaseCoreDiagnostics (1.2.0):
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleDataTransportCCTSupport (~> 1.3)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+    - nanopb (~> 0.3.901)
+  - FirebaseCoreDiagnosticsInterop (1.2.0)
+  - FirebaseDynamicLinks (4.0.6):
     - FirebaseAnalyticsInterop (~> 1.3)
     - FirebaseCore (~> 6.2)
-  - FirebaseInstanceID (4.2.3):
-    - FirebaseCore (~> 6.0)
-    - GoogleUtilities/Environment (~> 6.0)
-    - GoogleUtilities/UserDefaults (~> 6.0)
-  - FoldingCell (5.0.1)
-  - FontAwesome.swift (1.8.1)
+  - FirebaseInstallations (1.1.0):
+    - FirebaseCore (~> 6.6)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+    - PromisesObjC (~> 1.2)
+  - FirebaseInstanceID (4.3.0):
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstallations (~> 1.0)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+  - FoldingCell (5.0.2)
+  - FontAwesome.swift (1.8.3)
   - FSPagerView (0.8.3)
-  - GoogleAppMeasurement (6.1.1):
+  - GoogleAppMeasurement (6.2.2):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - nanopb (~> 0.3)
-  - GoogleDataTransport (1.1.3)
-  - GoogleDataTransportCCTSupport (1.0.2):
-    - GoogleDataTransport (~> 1.1)
-    - nanopb
-  - GoogleUtilities/AppDelegateSwizzler (6.2.5):
+    - nanopb (= 0.3.9011)
+  - GoogleDataTransport (3.3.1)
+  - GoogleDataTransportCCTSupport (1.3.1):
+    - GoogleDataTransport (~> 3.3)
+    - nanopb (~> 0.3.901)
+  - GoogleUtilities/AppDelegateSwizzler (6.5.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (6.2.5)
-  - GoogleUtilities/Logger (6.2.5):
+  - GoogleUtilities/Environment (6.5.1)
+  - GoogleUtilities/Logger (6.5.1):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.2.5):
+  - GoogleUtilities/MethodSwizzler (6.5.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (6.2.5):
+  - GoogleUtilities/Network (6.5.1):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (6.2.5)"
-  - GoogleUtilities/Reachability (6.2.5):
+  - "GoogleUtilities/NSData+zlib (6.5.1)"
+  - GoogleUtilities/Reachability (6.5.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (6.2.5):
+  - GoogleUtilities/UserDefaults (6.5.1):
     - GoogleUtilities/Logger
   - iCarousel (1.8.3)
   - ICViewPager (1.5.1)
   - iVersion (1.11.5)
-  - MBProgressHUD (1.1.0)
-  - nanopb (0.3.901):
-    - nanopb/decode (= 0.3.901)
-    - nanopb/encode (= 0.3.901)
-  - nanopb/decode (0.3.901)
-  - nanopb/encode (0.3.901)
+  - MBProgressHUD (1.2.0)
+  - nanopb (0.3.9011):
+    - nanopb/decode (= 0.3.9011)
+    - nanopb/encode (= 0.3.9011)
+  - nanopb/decode (0.3.9011)
+  - nanopb/encode (0.3.9011)
   - NJKWebViewProgress (0.2.3):
     - NJKWebViewProgress/Core (= 0.2.3)
     - NJKWebViewProgress/ProgressView (= 0.2.3)
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
   - Nuke (7.6.3)
-  - OneSignal (2.10.1)
+  - OneSignal (2.12.5)
+  - PromisesObjC (1.2.8)
   - Shimmer (1.0.2)
   - STPopup (1.8.7)
   - swift_qrcodejs (1.0.1)
-  - SwiftDate (6.0.3)
+  - SwiftDate (6.1.0)
   - SwiftLint (0.38.2)
   - SwiftyJSON (5.0.0)
   - TagListView (1.4.0)
-  - thenPromise (5.0.0)
-  - TimelineTableViewCell (2.1)
+  - thenPromise (5.1.2)
+  - TimelineTableViewCell (2.2.1)
   - UICKeyChainStore (2.1.2)
   - "UITableView+FDTemplateLayoutCell (1.6)"
   - "UIView+FDCollapsibleConstraints (1.1)"
@@ -173,6 +180,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
     - FirebaseDynamicLinks
+    - FirebaseInstallations
     - FirebaseInstanceID
     - FoldingCell
     - FontAwesome.swift
@@ -188,6 +196,7 @@ SPEC REPOS:
     - NJKWebViewProgress
     - Nuke
     - OneSignal
+    - PromisesObjC
     - Shimmer
     - STPopup
     - swift_qrcodejs
@@ -228,41 +237,43 @@ SPEC CHECKSUMS:
   ColorArt: de0ffb63da4acdde8e234ded62e200236ca3e7e4
   CPDAcknowledgements: 6e15e71849ba4ad5e8a17a0bb9d20938ad23bac8
   Device.swift: 3f93632bb3fa3e4ebb9b202563975177e17c4296
-  DLLocalNotifications: 5d358a73284efab757b4a4c07f3e5987b8afcef5
-  Down: 3c758f2388fa739663023f400e742a988fa1e21d
+  DLLocalNotifications: 92ee357278e90b0f2b2da1bb0e5a7e7fb179354e
+  Down: 1cdbca4963b542d0ef34ebb3e10ff48382bdf761
   EFQRCode: 842f431e660da841f518993af8f4cbd275601d84
-  Firebase: 291d7b0a7b393f252358083b5d224884126fa46d
-  FirebaseAnalytics: 843c7f64a8f9c79f0d03281197ebe7bb1d58d477
-  FirebaseAnalyticsInterop: d48b6ab67bcf016a05e55b71fc39c61c0cb6b7f3
-  FirebaseCore: 32b48f41c84a56fbde73b35ed01a830b3b6dc048
-  FirebaseCoreDiagnostics: 4c04ae09d0ab027c30179828c6bb47764df1bd13
-  FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
-  FirebaseDynamicLinks: faaf90f0c580ac9da5f7b21564581d81d7b6f563
-  FirebaseInstanceID: 8b42755db950682e7de0d167bc6fb26a57b244af
-  FoldingCell: 9197b915a415af9e52a857964066797af6a51c2b
-  FontAwesome.swift: 6f55c8ed22a30ab6a8ca94033473161f678dcd4b
+  Firebase: 497158b816d0a86fc31babbd05546fcd7e6083ff
+  FirebaseAnalytics: cf95d3aab897612783020fbd98401d5366f135ee
+  FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
+  FirebaseCore: 85064903ed6c28e47fec9c7bd149d94ba1b6b6e7
+  FirebaseCoreDiagnostics: 5e78803ab276bc5b50340e3c539c06c3de35c649
+  FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
+  FirebaseDynamicLinks: 5ba2a0d46ba1615c6c08819fc964c495ca1d0845
+  FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
+  FirebaseInstanceID: 6668efc1655a4052c083f287a7141f1ead12f9c2
+  FoldingCell: f92eb5fb9842319e7cd08c71533c98408b785099
+  FontAwesome.swift: 2a3235131a6caffc6b2ccba318e94d793b2fd342
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
-  GoogleAppMeasurement: 86a82f0e1f20b8eedf8e20326530138fd71409de
-  GoogleDataTransport: 91e682bd60a49d3f8f69f2e909a66efaed5a1e7a
-  GoogleDataTransportCCTSupport: 6b545f7149111180763dc18c6f372c963de4a310
-  GoogleUtilities: e7dc37039b19df7fe543479d3e4a02ac8d11bb69
+  GoogleAppMeasurement: d0560d915abf15e692e8538ba1d58442217b6aff
+  GoogleDataTransport: 0048df6388dab1c254799f2a30365b1dffe20422
+  GoogleDataTransportCCTSupport: f880d70972efa2ed1be4e9173a0f4c5f3dc2d176
+  GoogleUtilities: 06eb53bb579efe7099152735900dd04bf09e7275
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   ICViewPager: c1278b67eceac7252d48252829c3c703285dfb76
   iVersion: 3a93a89259eb3b52b0a8ba52c46a0027fa6b4d30
-  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   Nuke: 44130e95e09463f8773ae4b96b90de1eba6b3350
-  OneSignal: 8fb749fa07f88006403c9b659a570fb7fb74519a
+  OneSignal: 1de998c42bb06ed630bb38dd1bc933a667437dbb
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STPopup: a9045557bc48a0df51fbb7bf0544447c5fe84d34
   swift_qrcodejs: c181fe5c849d30c699546a23762d7e3dd143ab37
-  SwiftDate: 8d4f14bf1ef68e95094511504856547bf9e3e1a6
+  SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
   SwiftLint: 8f5d2f903e1c9bcbc832fd16771e80a263ac6cbb
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   TagListView: 987b0bdbb16cd9d9e7c0e2ec32aff37ecba8b173
-  thenPromise: 02f1650627feed7b0e2e6a815bc04a168c9f9ede
-  TimelineTableViewCell: e958c16693be642fc90180f896eabade9bffd918
+  thenPromise: c1a319348c6052652b071d8dd4c6db9984860209
+  TimelineTableViewCell: b2721a3c1f17c4a4950ae442f45cd4e8669a2750
   UICKeyChainStore: 85db518bb1d294366d15ec9b92a416c4e670518f
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd

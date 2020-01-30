@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import MBProgressHUD
-import then
+import Then
 import Nuke
 
 class OPassEventsController : UIViewController, UITableViewDelegate, UITableViewDataSource {

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import then
+import Then
 import Down
 
 public class MarkdownView : NSObject {

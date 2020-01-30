@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import then
+import Then
 import SwiftyJSON
 import SwiftDate
 

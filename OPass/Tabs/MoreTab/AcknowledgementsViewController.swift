@@ -11,7 +11,7 @@ import UIKit
 import CPDAcknowledgements
 import SafariServices
 import AFNetworking
-import then
+import Then
 import MBProgressHUD
 
 class AcknowledgementsViewController : UIViewController {

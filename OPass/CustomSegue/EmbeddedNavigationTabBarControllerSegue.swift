@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import then
+import Then
 import SwiftDate
 
 class EmbeddedNavigationTabBarControllerSegue: UIStoryboardSegue {

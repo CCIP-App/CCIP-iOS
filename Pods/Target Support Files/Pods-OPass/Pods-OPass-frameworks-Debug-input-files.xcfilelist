@@ -17,6 +17,7 @@ ${BUILT_PRODUCTS_DIR}/ICViewPager/ICViewPager.framework
 ${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework
 ${BUILT_PRODUCTS_DIR}/NJKWebViewProgress/NJKWebViewProgress.framework
 ${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework
+${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework
 ${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework
 ${BUILT_PRODUCTS_DIR}/Shimmer/Shimmer.framework
 ${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework
@@ -30,4 +31,4 @@ ${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework
 ${BUILT_PRODUCTS_DIR}/iVersion/iVersion.framework
 ${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework
 ${BUILT_PRODUCTS_DIR}/swift_qrcodejs/swift_qrcodejs.framework
-${BUILT_PRODUCTS_DIR}/thenPromise/then.framework
+${BUILT_PRODUCTS_DIR}/thenPromise/Then.framework

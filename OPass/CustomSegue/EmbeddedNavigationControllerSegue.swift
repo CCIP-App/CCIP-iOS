@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import then
+import Then
 import Device_swift
 
 class EmbeddedNavigationControllerSegue: UIStoryboardSegue {

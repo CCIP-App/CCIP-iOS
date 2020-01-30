@@ -1,4 +1,4 @@
-framework module then {
+framework module Then {
   umbrella header "thenPromise-umbrella.h"
 
   export *

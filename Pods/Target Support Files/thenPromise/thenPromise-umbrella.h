@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double thenVersionNumber;
-FOUNDATION_EXPORT const unsigned char thenVersionString[];
+FOUNDATION_EXPORT double ThenVersionNumber;
+FOUNDATION_EXPORT const unsigned char ThenVersionString[];
 

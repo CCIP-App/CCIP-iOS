@@ -9,7 +9,7 @@
 import Foundation
 import FontAwesome_swift
 import SwiftDate
-import then
+import Then
 import AFNetworking
 import SwiftyJSON
 import Nuke
