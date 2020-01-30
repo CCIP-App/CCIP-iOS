@@ -14,7 +14,7 @@ import AFNetworking
 import Then
 import MBProgressHUD
 
-class AcknowledgementsViewController : UIViewController {
+class AcknowledgementsViewController: UIViewController {
     var githubRepoLink: String?
     var progress: MBProgressHUD = MBProgressHUD.init()
 
@@ -22,7 +22,7 @@ class AcknowledgementsViewController : UIViewController {
         Promise { resolve, reject in
             var contributors = [Any]();
             let manager = AFHTTPSessionManager.init()
-            manager.get("https://api.github.com/repos/CCIP-App/CCIP-iOS/contributors", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
+            manager.get("https://api.github.com/repos/CCIP-App/CCIP-iOS/contributors", parameters: nil, progress: nil, success: { (_, responseObject: Any?) in
                 NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any)!)");
                 if (responseObject != nil) {
                     let contributorsObj = responseObject as! [NSDictionary]
@@ -33,7 +33,7 @@ class AcknowledgementsViewController : UIViewController {
                     })
                     resolve(contributors)
                 }
-            }) { (operation: URLSessionDataTask?, error: Error) in
+            }) { (_, error: Error) in
                 NSLog("Error: \(error)");
                 reject(error)
             }
@@ -56,7 +56,7 @@ class AcknowledgementsViewController : UIViewController {
             let customAckArray = try! JSONSerialization.jsonObject(with: customAckJSON.data(using: .utf8)!, options: .allowFragments) as! [NSDictionary]
 
             for acknowledgementDict in customAckArray {
-                acknowledgements?.append(CPDLibrary.init(cocoaPodsMetadataPlistDictionary: acknowledgementDict as! [AnyHashable : Any]))
+                acknowledgements?.append(CPDLibrary.init(cocoaPodsMetadataPlistDictionary: acknowledgementDict as! [AnyHashable: Any]))
             }
 
             let contributors = obj as! [CPDContribution]

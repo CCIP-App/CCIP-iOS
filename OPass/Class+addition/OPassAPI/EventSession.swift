@@ -232,7 +232,7 @@ struct ProgramsTag: OPassData {
 extension OPassAPI {
     static func GetSessionData(_ event: String, _ completion: OPassCompletionCallback) {
         if event.count > 0 {
-            OPassAPI.InitializeRequest(Constants.URL_SESSION) { retryCount, retryMax, error, responsed in
+            OPassAPI.InitializeRequest(Constants.URL_SESSION) { _, _, error, _ in
                 completion?(false, nil, error)
                 }.then { (obj: Any?) -> Void in
                     if obj != nil {

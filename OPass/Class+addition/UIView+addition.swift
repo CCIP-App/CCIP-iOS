@@ -22,7 +22,7 @@ extension UIView {
     }
     // DashedLine and linear diagonal gradient
     static let DASHLINE_VIEW_ID: String = "DashedLine"
-    func addDashedLine(_ color : UIColor) {
+    func addDashedLine(_ color: UIColor) {
         for layer in self.layer.sublayers ?? [] {
             if (layer.name == UIView.DASHLINE_VIEW_ID) {
                 layer.removeFromSuperlayer()
@@ -30,7 +30,7 @@ extension UIView {
         }
         self.backgroundColor = UIColor.clear
 
-        let shapeLayer : CAShapeLayer = CAShapeLayer.init()
+        let shapeLayer: CAShapeLayer = CAShapeLayer.init()
         shapeLayer.name = UIView.DASHLINE_VIEW_ID
         shapeLayer.bounds = self.bounds
         shapeLayer.position = CGPoint.init(x: self.frame.size.width / 2, y: self.frame.size.height / 2)
@@ -40,8 +40,8 @@ extension UIView {
         shapeLayer.lineJoin = .round
         shapeLayer.lineDashPattern = [ 5, 5 ]
 
-        let transform : CGAffineTransform = self.transform
-        let path : CGMutablePath = CGMutablePath()
+        let transform: CGAffineTransform = self.transform
+        let path: CGMutablePath = CGMutablePath()
         path.move(to: CGPoint(x: 0, y: 0), transform: transform)
         path.addLine(to: CGPoint(x: self.frame.size.width, y: 0), transform: transform)
         shapeLayer.path = path
@@ -50,10 +50,10 @@ extension UIView {
     }
 
     @objc func setGradientColor(from: UIColor?, to: UIColor?, startPoint: CGPoint = CGPoint.zero, toPoint: CGPoint = CGPoint.zero) {
-        let name : String = "GradientBackground"
+        let name: String = "GradientBackground"
         // Set view background linear diagonal gradient
         //   Create the gradient
-        var theViewGradient : CAGradientLayer? = nil
+        var theViewGradient: CAGradientLayer? = nil
         for layer in self.layer.sublayers ?? [] {
             if (layer.name == name) {
                 theViewGradient = layer as? CAGradientLayer

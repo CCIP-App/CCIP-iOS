@@ -70,7 +70,7 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
     @objc func refresh() {
         self.loaded = false
         self.refreshControl.beginRefreshing()
-        OPassAPI.GetAnnouncement(Constants.EventId) { (success: Bool, data: Any?, error: Error) in
+        OPassAPI.GetAnnouncement(Constants.EventId) { (success: Bool, data: Any?, _) in
             if data != nil {
                 if success {
                     self.loaded = true
@@ -144,7 +144,7 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AnnounceCell", for: indexPath) as! AnnounceTableViewCell
-        self.configureCell(cell, atIndexPath:indexPath)
+        self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }
 
@@ -191,7 +191,7 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
 
         if hasURL {
             cell.lbURL.text = uri
-            let titleAttribute: [NSAttributedString.Key : Any] = [
+            let titleAttribute: [NSAttributedString.Key: Any] = [
                 .font: Constants.fontOfAwesome(withSize: 20, inStyle: .solid),
                 .foregroundColor: cell.lbIconOfURL.textColor!,
             ]

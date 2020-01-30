@@ -10,7 +10,7 @@ import UIKit
 import AudioToolbox
 import FontAwesome_swift
 
-protocol StatusViewDelegate : class {
+protocol StatusViewDelegate: class {
     func statusViewDisappear()
 }
 

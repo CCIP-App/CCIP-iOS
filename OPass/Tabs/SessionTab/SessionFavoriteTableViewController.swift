@@ -51,7 +51,7 @@ class SessionFavoriteTableViewController: SessionTableViewController {
         SessionFavoriteTableViewController.headView?.isHidden = false
         UIView.animate(withDuration: 0.5, animations: {
             SessionFavoriteTableViewController.headView?.alpha = 1
-        }) { finished in
+        }) { _ in
             SessionFavoriteTableViewController.headView?.alpha = 1
         }
     }
@@ -70,7 +70,7 @@ class SessionFavoriteTableViewController: SessionTableViewController {
     override func show(_ vc: UIViewController, sender: Any?) {
         UIView.animate(withDuration: 0.5, animations: {
             SessionFavoriteTableViewController.headView?.alpha = 0
-        }) { finished in
+        }) { _ in
             SessionFavoriteTableViewController.headView?.isHidden = true
             SessionFavoriteTableViewController.headView?.alpha = 1
         }

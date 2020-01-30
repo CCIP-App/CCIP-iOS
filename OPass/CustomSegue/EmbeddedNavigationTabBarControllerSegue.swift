@@ -22,7 +22,7 @@ class EmbeddedNavigationTabBarControllerSegue: UIStoryboardSegue {
         let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height))
         destinationView.frame = frame.offsetBy(dx: 0, dy: screenHeight)
         destinationView.alpha = 0
-        Promise { resolve, reject in
+        Promise { resolve, _ in
             DispatchQueue.main.async {
                 self.source.present(self.destination, animated: false) {
                     destinationView.superview!.frame = CGRect(origin: CGPoint(x: 0, y: destinationView.superview!.ViewTopStart + navBarHeight), size: CGSize(width: screenWidth, height: height))

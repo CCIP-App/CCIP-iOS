@@ -171,7 +171,7 @@ extension OPassAPI {
                 }
                 let vcName = vc!.className
                 var done = false
-                try? await(Promise{ resolve, reject in
+                try? await(Promise{ resolve, _ in
                     switch vcName {
                     case OPassEventsController.className:
                         DispatchQueue.main.sync {

@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 var fileName = ""
                 for iconName in availIcon {
                     guard let regex = try? NSRegularExpression.init(pattern: "([\\d]+).([\\d]+)(@([\\d]+)x)?", options: .caseInsensitive) else { return SLColorArt.init() }
-                    regex.enumerateMatches(in: iconName, options: .reportCompletion, range: NSRange.init(location: 0, length: iconName.count)) { (match, flags, stop) in
+                    regex.enumerateMatches(in: iconName, options: .reportCompletion, range: NSRange.init(location: 0, length: iconName.count)) { (match, flags, _) in
                         if !flags.contains([ .completed, .hitEnd ]) {
                             let wRange = match!.range(at: 1)
                             let width = Int(iconName[wRange])!
@@ -142,7 +142,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if isOldScheme {
             let ac = UIAlertController.alertOfTitle(NSLocalizedString("GuideViewTokenErrorTitle", comment: ""), withMessage: NSLocalizedString("GuideViewTokenErrorDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel, cancelAction: nil)
             if event_id != nil && token != nil {
-                OPassAPI.DoLogin(event_id!, token!) { success, data, error in
+                OPassAPI.DoLogin(event_id!, token!) { success, data, _ in
                     if !success && data != nil {
                         ac.showAlert {
                             UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
@@ -152,7 +152,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 return true
             }
             if event_id == nil && token != nil && Constants.HasSetEvent {
-                OPassAPI.RedeemCode("", token!) { success, data, error in
+                OPassAPI.RedeemCode("", token!) { success, data, _ in
                     if !success && data != nil {
                         ac.showAlert {
                             UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
@@ -166,7 +166,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         let dynamicLink = DynamicLinks.init().dynamicLink(fromCustomSchemeURL: url)
         if dynamicLink != nil {
             if dynamicLink!.url != nil {
@@ -185,7 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         completionHandler()
     }
 
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         self.setDefaultShortcutItems()
         NSLog("Receieved remote system fetching request...\nuserInfo => \(userInfo)")
         completionHandler(.newData)
@@ -284,7 +284,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         if userActivity.webpageURL != nil {
         NSLog("Receieved Activity URL -> \(userActivity.webpageURL!)");
-            var handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { dynamicLink, error in
+            var handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { dynamicLink, _ in
                 if dynamicLink?.url != nil {
                     let _ = self.parseUniversalLinkAndURL(true, dynamicLink!.url!)
                 }

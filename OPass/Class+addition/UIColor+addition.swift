@@ -17,9 +17,9 @@ public enum UIColorByteMark: Int {
 }
 
 extension UIColor {
-    @objc static func colorFrom(_ from: UIColor, to: UIColor, at:Double) -> UIColor {
-        let f : CIColor = CIColor.init(cgColor: from.cgColor)
-        let t : CIColor = CIColor.init(cgColor: to.cgColor)
+    @objc static func colorFrom(_ from: UIColor, to: UIColor, at: Double) -> UIColor {
+        let f: CIColor = CIColor.init(cgColor: from.cgColor)
+        let t: CIColor = CIColor.init(cgColor: to.cgColor)
         let resultRed = f.red + CGFloat(at) * (t.red - f.red)
         let resultGreen = f.green + CGFloat(at) * (t.green - f.green)
         let resultBlue = f.blue + CGFloat(at) * (t.blue - f.blue)
@@ -53,13 +53,13 @@ extension UIColor {
         return UIColor.init(red: r, green: g, blue: b, alpha: a)
     }
 
-    static func hexToIntColor(_ hex : String, isSingleByteOnly:Bool) -> Float {
-        var h : String = hex
+    static func hexToIntColor(_ hex: String, isSingleByteOnly: Bool) -> Float {
+        var h: String = hex
         if (isSingleByteOnly) {
             h = h.appending(hex)
         }
-        var result : CUnsignedInt = 0
-        let scanner : Scanner = Scanner(string: h)
+        var result: CUnsignedInt = 0
+        let scanner: Scanner = Scanner(string: h)
         scanner.scanHexInt32(&result)
         return Float(result) / 255.0
     }

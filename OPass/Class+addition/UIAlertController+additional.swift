@@ -10,19 +10,19 @@ import Foundation
 import UIKit
 
 @objc extension UIAlertController {
-    var titleLabel : UILabel {
+    var titleLabel: UILabel {
         get {
             return self.viewArray(self.view)[0] as! UILabel
         }
     }
-    var messageLabel : UILabel {
+    var messageLabel: UILabel {
         get {
             return self.viewArray(self.view)[1] as! UILabel
         }
     }
     func viewArray(_ root: UIView) -> NSArray {
-        var _subviews : NSArray? = nil
-        for v : UIView in root.subviews {
+        var _subviews: NSArray? = nil
+        for v: UIView in root.subviews {
             if (_subviews != nil) {
                 break
             }
@@ -40,16 +40,16 @@ import UIKit
         withTitle: String,
         andMessage: String
         ) -> UIAlertController {
-        let ac : UIAlertController = self.init(title: withTitle, message: andMessage, preferredStyle: UIAlertController.Style.actionSheet)
-        var sd : UIView? = sender as? UIView
-        var frame : CGRect = sd!.frame
+        let ac: UIAlertController = self.init(title: withTitle, message: andMessage, preferredStyle: UIAlertController.Style.actionSheet)
+        var sd: UIView? = sender as? UIView
+        var frame: CGRect = sd!.frame
         frame.origin.x += frame.size.width / 2.0
         frame.origin.y += frame.size.height / 2.0
         frame.size.width = 1.0
         frame.size.height = 1.0
         sd = sd!.superview
         while (!sd.self!.description.hasSuffix("ViewController") && sd != nil) {
-            let f : CGRect = sd!.frame
+            let f: CGRect = sd!.frame
             sd = sd!.superview
             frame.origin.x += f.origin.x
             frame.origin.y += f.origin.y
@@ -65,7 +65,7 @@ import UIKit
         cancelStyle: UIAlertAction.Style,
         cancelAction: ((UIAlertAction) -> Void)?
         ) -> UIAlertController {
-        let ac : UIAlertController = self.init(title: title, message: withMessage, preferredStyle: UIAlertController.Style.alert)
+        let ac: UIAlertController = self.init(title: title, message: withMessage, preferredStyle: UIAlertController.Style.alert)
         ac.modalPresentationStyle = UIModalPresentationStyle.popover
         ac.addActionButton(cancelButtonText, style: cancelStyle, handler: cancelAction)
         return ac
@@ -80,7 +80,7 @@ import UIKit
         style: UIAlertAction.Style,
         handler: ((UIAlertAction) -> Void)?
         ) {
-        let action : UIAlertAction = UIAlertAction.init(title: title, style: style, handler: handler)
+        let action: UIAlertAction = UIAlertAction.init(title: title, style: style, handler: handler)
         self.addAction(action)
     }
 }

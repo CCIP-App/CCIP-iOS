@@ -27,7 +27,7 @@ extension UIViewController {
     }
 
     var bottomGuideHeight: CGFloat {
-        var guide : CGFloat = 0.0;
+        var guide: CGFloat = 0.0;
         if (self.tabBarController!.tabBar.isHidden == false) {
             guide += self.tabBarController!.tabBar.bounds.size.height;
         }

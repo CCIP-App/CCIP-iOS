@@ -43,7 +43,7 @@ extension Constants {
             Analytics.setScreenName(_name as? String, screenClass: _func)
         }
         if (_events != nil) {
-            Analytics.logEvent(_name as! String, parameters: _events as? [String : Any])
+            Analytics.logEvent(_name as! String, parameters: _events as? [String: Any])
         }
     }
     static func appConfig(_ path: String) -> Any? {
@@ -306,7 +306,7 @@ extension Constants {
         guard let fontAwesome = self.fontAwesome(code: ofCode) else { return NSAttributedString.init() }
         return NSAttributedString.init(string: fontAwesome, attributes: fontAttribute)
     }
-    static var tintColor : UIColor {
+    static var tintColor: UIColor {
         return UIView().tintColor!
     }
     static func DateFromUnix(_ unixInt: Int) -> Date {

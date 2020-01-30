@@ -26,9 +26,9 @@ protocol OPassWebViewIB {
     var titleLeftColor: String { get }
     var titleRightColor: String { get }
 
-    var PageUrl : String { get }
+    var PageUrl: String { get }
 
-    var ShowLogo : Bool { get }
+    var ShowLogo: Bool { get }
 }
 
 extension OPassWebViewIB { // for all of optional properties and func used in OPassWebViewIB protoccol
@@ -44,9 +44,9 @@ extension OPassWebViewIB { // for all of optional properties and func used in OP
     var titleLeftColor: String { return "" }
     var titleRightColor: String { return "" }
 
-    var PageUrl : String { return "" }
+    var PageUrl: String { return "" }
 
-    var ShowLogo : Bool { return false }
+    var ShowLogo: Bool { return false }
 }
 
 class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDelegate {
@@ -124,7 +124,7 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
 
         Constants.SendFib(self.className)
 
-        let progressBarHeight : CGFloat = 2
+        let progressBarHeight: CGFloat = 2
         let navigationBarBounds = self.navigationController!.navigationBar.bounds
         let barFrame = CGRect(x: 0, y: navigationBarBounds.size.height - progressBarHeight, width: navigationBarBounds.size.width, height: progressBarHeight)
         self.progressView = NJKWebViewProgressView.init(frame: barFrame)
@@ -210,7 +210,7 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
         self.checkButtonStatus()
     }
 
-    func checkButtonStatus(_ forceEnabled : Bool? = nil) {
+    func checkButtonStatus(_ forceEnabled: Bool? = nil) {
         if (self.goReloadButton != nil) {
             self.goReloadButton!.isEnabled = forceEnabled ?? !(self.webView?.isLoading)!
         }
@@ -238,7 +238,7 @@ class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDeleg
         decisionHandler(.allow)
     }
 
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         if (keyPath == "estimatedProgress" && object as! WKWebView? == self.webView) {
             print("WebPage Loading Progress: \(self.webView?.estimatedProgress ?? 0)")
             // estimatedProgress is a value from 0.0 to 1.0

@@ -99,7 +99,7 @@ extension OPassAPI {
         allowedCharacters.formUnion(with: NSCharacterSet.alphanumerics)
         let nonAllowedCharacters = allowedCharacters.inverted
         if (token.count != 0 && token.rangeOfCharacter(from: nonAllowedCharacters) == nil) {
-            OPassAPI.InitializeRequest(Constants.URL_LANDING(token: token)) { retryCount, retryMax, error, responsed in
+            OPassAPI.InitializeRequest(Constants.URL_LANDING(token: token)) { _, _, error, _ in
                 completion?(false, nil, error)
                 }.then { (obj: Any?) -> Void in
                     if obj != nil {
@@ -138,7 +138,7 @@ extension OPassAPI {
             return
         }
         if event.count > 0 && token.count > 0 {
-            OPassAPI.InitializeRequest(Constants.URL_STATUS(token: token)) { retryCount, retryMax, error, responsed in
+            OPassAPI.InitializeRequest(Constants.URL_STATUS(token: token)) { _, _, error, _ in
                 completion?(false, nil, error)
                 }.then { (obj: Any?) -> Void in
                     if obj != nil {
@@ -167,7 +167,7 @@ extension OPassAPI {
 
     static func UseScenario(_ event: String, _ token: String, _ scenario: String, _ completion: OPassCompletionCallback) {
         if event.count > 0 {
-            OPassAPI.InitializeRequest(Constants.URL_USE(token: token, scenario: scenario)) { retryCount, retryMax, error, responsed in
+            OPassAPI.InitializeRequest(Constants.URL_USE(token: token, scenario: scenario)) { _, _, error, _ in
                 completion?(false, nil, error)
                 }.then { (obj: Any?) -> Void in
                     if obj != nil {

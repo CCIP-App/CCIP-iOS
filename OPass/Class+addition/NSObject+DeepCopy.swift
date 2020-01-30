@@ -12,7 +12,7 @@ import Foundation
 
 @objc extension NSArray {
     @objc func deepCopy() -> NSArray {
-        let count : UInt = UInt(self.count);
+        let count: UInt = UInt(self.count);
         var cArray = Array<Any>(repeating: 0, count: Int(count));
 
         for i in 0...count {
@@ -23,12 +23,12 @@ import Foundation
                 cArray[Int(i)] = obj.copy();
             }
         }
-        let ret : NSArray = NSArray(array: cArray);
+        let ret: NSArray = NSArray(array: cArray);
         return ret;
     }
 
     @objc func mutableDeepCopy() -> NSMutableArray {
-        let count : UInt = UInt(self.count);
+        let count: UInt = UInt(self.count);
         var cArray = Array<Any>(repeating: 0, count: Int(count));
 
         for i in 0...count {
@@ -54,12 +54,12 @@ import Foundation
 
 @objc extension NSDictionary {
     @objc func deepCopy() -> NSDictionary {
-        let count : UInt = UInt(self.count);
+        let count: UInt = UInt(self.count);
         let cDict = NSMutableDictionary(capacity: Int(count))
 
         for obj in self {
-            var cKey : Any;
-            var cObj : Any;
+            var cKey: Any;
+            var cObj: Any;
             if ((obj.value as! NSObject).responds(to: #selector(deepCopy))) {
                 cObj = (obj.value as! NSObject).perform(#selector(deepCopy))!;
             } else {
@@ -78,12 +78,12 @@ import Foundation
     }
 
     @objc func mutableDeepCopy() -> NSMutableDictionary {
-        let count : UInt = UInt(self.count);
+        let count: UInt = UInt(self.count);
         let cDict = NSMutableDictionary(capacity: Int(count))
 
         for obj in self {
-            var cKey : Any;
-            var cObj : Any;
+            var cKey: Any;
+            var cObj: Any;
             if ((obj.value as! NSObject).responds(to: #selector(mutableDeepCopy))) {
                 // Try to do a deep mutable copy, if this object supports it
                 cObj = (obj.value as! NSObject).perform(#selector(mutableDeepCopy))!;

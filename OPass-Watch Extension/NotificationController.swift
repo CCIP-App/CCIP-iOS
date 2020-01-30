@@ -9,7 +9,7 @@
 import Foundation
 import WatchKit
 
-class NotificationController : WKUserNotificationInterfaceController {
+class NotificationController: WKUserNotificationInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()

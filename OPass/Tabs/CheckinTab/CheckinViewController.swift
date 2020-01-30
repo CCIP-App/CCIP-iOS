@@ -293,7 +293,7 @@ import ScanditBarcodeScanner
                 self.reloadAndGoToCard()
             }
         } else {
-            OPassAPI.GetCurrentStatus { success, obj, error in
+            OPassAPI.GetCurrentStatus { success, obj, _ in
                 if success {
                     self.hideView(.Guide, nil)
                     let userInfo = obj as! ScenarioStatus
@@ -334,7 +334,7 @@ import ScanditBarcodeScanner
 
                             Constants.accessToken = ""
 
-                            let ac = UIAlertController.alertOfTitle(NSLocalizedString("InvalidTokenAlert", comment: ""), withMessage: NSLocalizedString("InvalidTokenDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel) { action in
+                            let ac = UIAlertController.alertOfTitle(NSLocalizedString("InvalidTokenAlert", comment: ""), withMessage: NSLocalizedString("InvalidTokenDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel) { _ in
                                 self.reloadCard()
                             }
                             ac.showAlert {
@@ -410,12 +410,12 @@ import ScanditBarcodeScanner
         NSLog("scanned \(code.symbologyName) barcode: \(String(describing: code.data))")
 
         OperationQueue.main.addOperation {
-            OPassAPI.RedeemCode(forEvent: "", withToken: code.data!) { (success, landing, error) in
+            OPassAPI.RedeemCode(forEvent: "", withToken: code.data!) { (success, _, _) in
                 if success {
                     self.perform(#selector(self.reloadCard), with: nil, afterDelay: 0.5)
                     self.perform(#selector(self.closeBarcodePickerOverlay), with: nil, afterDelay: 0.5)
                 } else {
-                    let ac = UIAlertController.alertOfTitle(NSLocalizedString("GuideViewTokenErrorTitle", comment: ""), withMessage: NSLocalizedString("GuideViewTokenErrorDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel) { action in
+                    let ac = UIAlertController.alertOfTitle(NSLocalizedString("GuideViewTokenErrorTitle", comment: ""), withMessage: NSLocalizedString("GuideViewTokenErrorDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel) { _ in
                         self.scanditBarcodePicker?.resumeScanning()
                     }
                     ac.showAlert {
@@ -519,7 +519,7 @@ import ScanditBarcodeScanner
         self.present(imagePicker, animated: true, completion: nil)
     }
 
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         let mediaType = info[.mediaType] as! String
 
         if mediaType == "public.image" {
@@ -545,7 +545,7 @@ import ScanditBarcodeScanner
                 if result == nil {
                     noQR = true
                 } else {
-                    OPassAPI.RedeemCode(forEvent: "", withToken: result!) { (success, landing, error) in
+                    OPassAPI.RedeemCode(forEvent: "", withToken: result!) { (success, _, _) in
                         if success {
                             picker.dismiss(animated: true) {
                                 // self.reloadCard()

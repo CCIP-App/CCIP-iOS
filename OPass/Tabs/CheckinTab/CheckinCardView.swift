@@ -178,7 +178,7 @@ class CheckinCardView: UIView {
                 } else {
                     if (self.scenario!.Countdown! > 0) {
                         ac = UIAlertController.alertOfTitle(NSLocalizedString("ConfirmAlertText", comment: ""), withMessage: nil, cancelButtonText: NSLocalizedString("Cancel", comment: ""), cancelStyle: .cancel, cancelAction: nil)
-                        ac?.addActionButton(NSLocalizedString("CONFIRM", comment: ""), style: .destructive, handler: { action in
+                        ac?.addActionButton(NSLocalizedString("CONFIRM", comment: ""), style: .destructive, handler: { _ in
                             use()
                         })
                     } else {

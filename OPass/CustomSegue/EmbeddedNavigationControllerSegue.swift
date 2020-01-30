@@ -21,11 +21,11 @@ class EmbeddedNavigationControllerSegue: UIStoryboardSegue {
 //        let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
 //        let tabBarHeight = (self.source.tabBarController?.tabBar.frame.size.height)!
 
-        var frameHeight : CGFloat
-        var superViewHeight : CGFloat
-        var superViewTop : CGFloat
+        var frameHeight: CGFloat
+        var superViewHeight: CGFloat
+        var superViewTop: CGFloat
 
-        var frame : CGRect
+        var frame: CGRect
 
 //        switch UIDevice.current.deviceType {
 //        case .iPhoneSE, .iPhone5C, .iPhone5S:
@@ -42,7 +42,7 @@ class EmbeddedNavigationControllerSegue: UIStoryboardSegue {
         destinationView.frame = frame.offsetBy(dx: 0, dy: screenHeight)
         destinationView.alpha = 0
 
-        Promise { resolve, reject in
+        Promise { resolve, _ in
             DispatchQueue.main.async {
                 self.source.present(self.destination, animated: false) {
                     destinationView.superview!.frame = CGRect(origin: CGPoint(x: 0, y: superViewTop), size: CGSize(width: screenWidth, height: superViewHeight))

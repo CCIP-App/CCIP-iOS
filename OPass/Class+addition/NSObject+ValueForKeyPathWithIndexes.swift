@@ -29,7 +29,7 @@ extension NSObject {
             }
         }
         let parts = fullPath.components(separatedBy: ".")
-        var currentObj : NSObject? = self
+        var currentObj: NSObject? = self
         for part in parts {
             let range1 = part.range(of: "[")
             if (range1 == nil) {

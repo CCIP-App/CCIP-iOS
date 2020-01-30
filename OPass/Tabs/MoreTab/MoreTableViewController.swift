@@ -15,7 +15,7 @@ import Nuke
 
 let ACKNOWLEDGEMENTS = "Acknowledgements"
 
-class MoreTableViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MoreTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var moreTableView: UITableView?
     var shimmeringLogoView: FBShimmeringView = FBShimmeringView.init(frame: CGRect(x: 0, y: 0, width: 500, height: 50))
     var userInfo: ScenarioStatus?
@@ -126,7 +126,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         if (self.userInfo != nil) {
             self.moreTableView?.reloadSections([0], with: .automatic)
         } else if (current < max) {
-            let delayMSec : DispatchTimeInterval = .milliseconds(milliseconds)
+            let delayMSec: DispatchTimeInterval = .milliseconds(milliseconds)
             DispatchQueue.main.asyncAfter(deadline: .now() + delayMSec) {
                 NSLog("B")
                 self.checkNickName(max: max, current: current + 1, milliseconds)
@@ -183,7 +183,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         return self.moreItems!.count
     }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section:NSInteger) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: NSInteger) -> String? {
         return (self.userInfo?.UserId.count ?? 0) > 0 ? String(format: NSLocalizedString("Hi", comment: ""), self.userInfo!.UserId as CVarArg) : nil;
     }
 
@@ -199,7 +199,7 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
 
         // FontAwesome Icon
         let fontName = FontAwesome(rawValue: String(cellIconId.split(separator: " ").last!))
-        var fontStyle : FontAwesomeStyle {
+        var fontStyle: FontAwesomeStyle {
             switch String(cellIconId.split(separator: " ").first!) {
             case "fas":
                 return FontAwesomeStyle.solid
@@ -217,10 +217,10 @@ class MoreTableViewController : UIViewController, UITableViewDelegate, UITableVi
         if (customIconUrl != nil) {
             ImagePipeline.shared.loadImage(
                 with: customIconUrl!,
-                progress: { _, completed, total in
+                progress: { _, _, _ in
                     print("progress updated")
             },
-                completion: { response, error in
+                completion: { response, _ in
                     print("task completed")
                     cell.imageView?.image = response?.image.scaled(to: CGSize(width: 24, height: 24))
             })

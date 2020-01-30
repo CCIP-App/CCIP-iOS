@@ -27,7 +27,7 @@ struct AnnouncementInfo: OPassData {
 extension OPassAPI {
     static func GetAnnouncement(_ event: String, _ completion: OPassCompletionArrayCallback) {
         if event.count > 0 {
-            OPassAPI.InitializeRequest(Constants.URL_ANNOUNCEMENT) { retryCount, retryMax, error, responsed in
+            OPassAPI.InitializeRequest(Constants.URL_ANNOUNCEMENT) { _, _, error, _ in
                 completion?(false, nil, error)
                 }.then { (obj: Any?) -> Void in
                     if obj != nil {
