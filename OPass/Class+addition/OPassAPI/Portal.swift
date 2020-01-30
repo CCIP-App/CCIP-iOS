@@ -109,8 +109,6 @@ struct EventInfo: OPassData {
     var DisplayName: EventDisplayName
     var LogoUrl: URL
     var Publish: PublishDate
-    var ServerBaseUrl: URL
-    var SessionUrl: URL
     var Features: Array<EventFeatures>
     init(_ data: JSON) {
         self._data = data
@@ -118,8 +116,6 @@ struct EventInfo: OPassData {
         self.DisplayName = EventDisplayName(self._data["display_name"])
         self.LogoUrl = self._data["logo_url"].url!
         self.Publish = PublishDate(self._data["publish"])
-        self.ServerBaseUrl = self._data["server_base_url"].url!
-        self.SessionUrl = self._data["schedule_url"].url!
         self.Features = self._data["features"].arrayValue.map { ft -> EventFeatures in
             return EventFeatures(ft)
         }

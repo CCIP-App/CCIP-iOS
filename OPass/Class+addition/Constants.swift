@@ -133,20 +133,23 @@ extension Constants {
         ]
         return langMap.keys.contains(shortLang) ? langMap[shortLang] : nil
     }
-    static var URL_SERVER_BASE: String {
-        return OPassAPI.eventInfo?.ServerBaseUrl.absoluteString ?? ""
+    static var URL_BASE_FASTPASS: String {
+        return OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.Url?.absoluteString ?? ""
+    }
+    static var URL_BASE_ANNOUNCEMENT: String {
+        return OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.Url?.absoluteString ?? ""
     }
     static func URL_LANDING(token: String) -> String {
-        return self.URL_SERVER_BASE.appending("/landing?token=\(token)")
+        return self.URL_BASE_FASTPASS.appending("/landing?token=\(token)")
     }
     static func URL_STATUS(token: String) -> String {
-        return self.URL_SERVER_BASE.appending("/status?token=\(token)")
+        return self.URL_BASE_FASTPASS.appending("/status?token=\(token)")
     }
     static func URL_USE(token: String, scenario: String) -> String {
-        return self.URL_SERVER_BASE.appending("/use/\(scenario)?token=\(token)")
+        return self.URL_BASE_FASTPASS.appending("/use/\(scenario)?token=\(token)")
     }
     static var URL_ANNOUNCEMENT: String {
-        return self.URL_SERVER_BASE.appending("/announcement")
+        return self.URL_BASE_ANNOUNCEMENT.appending("/announcement")
     }
     private static func OPassURL(_ url: String) -> String {
         let opassTime = "__opass=\(0.seconds.fromNow.timeIntervalSince1970)"
@@ -165,7 +168,7 @@ extension Constants {
         return OPassAPI.eventInfo?.LogoUrl.absoluteString ?? ""
     }
     static var URL_SESSION: String {
-        return self.OPassURL(OPassAPI.eventInfo?.SessionUrl.absoluteString ?? "")
+        return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.Url?.absoluteString  ?? "")
     }
     static var URL_LOG_BOT: String {
         return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.Url?.absoluteString ?? "")
