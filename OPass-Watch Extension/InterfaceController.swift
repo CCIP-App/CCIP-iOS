@@ -9,7 +9,7 @@
 import Foundation
 import WatchKit
 
-class InterfaceController : WKInterfaceController {
+class InterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         // Configure interface objects here.
