@@ -23,8 +23,7 @@ class MainTabBarViewController : UITabBarController {
 
         // self.automaticallyAdjustsScrollViewInsets = false;
         if #available(iOS 13.0, *) {
-            // temporary remove this for non-iOS 13 and non-Xcode 11
-            // overrideUserInterfaceStyle = .light
+            overrideUserInterfaceStyle = .light
         }
 
         NSLog("User Token: <\(Constants.accessToken ?? "n/a")>")
