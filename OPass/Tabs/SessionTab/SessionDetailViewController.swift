@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FSPagerView
+import WebKit
 
 class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPagerViewDelegate, FSPagerViewDataSource {
     @IBOutlet public var vContent: UIView?
@@ -80,7 +81,9 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
         super.viewDidAppear(animated)
 
         let markdownStyleString = "<style>h1, h2 {color: \(Constants.appConfig("Themes.CardTextColor") ?? "black");} h3, h4, h5, h6, h7, span, div, p {color: black;} body {font-size: 1em; padding-top: 0;}</style>\n\n"
-        self.downView = MarkdownView.init(markdownStyleString, toView: self.vContent!)
+        let webConfig = WKWebViewConfiguration()
+        webConfig.dataDetectorTypes = [.link]
+        self.downView = MarkdownView.init(markdownStyleString, toView: self.vContent!, config: webConfig)
 
         let description = self.session!["description"]
         NSLog("Set description: \(description)")
