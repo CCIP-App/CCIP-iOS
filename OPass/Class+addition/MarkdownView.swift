@@ -9,19 +9,23 @@
 import Foundation
 import Then
 import Down
+import WebKit
 
 public class MarkdownView : NSObject {
     public var markdownString: String
     public var downView: DownView
+    public var config: WKWebViewConfiguration
 
     public init(
         _ markdown: String,
-        toView: UIView
+        toView: UIView,
+        config: WKWebViewConfiguration? = nil
         ) {
         self.downView = try! await(Promise { resolve, reject in
-            resolve(try! DownView(frame: CGRect.zero, markdownString: markdown, options: .smartUnsafe) {})
+            resolve(try! DownView(frame: CGRect.zero, markdownString: markdown, configuration: config, options: .smartUnsafe) {})
         })
         self.markdownString = markdown
+        self.config = self.downView.configuration
         toView.addSubview(self.downView)
 
         self.downView.translatesAutoresizingMaskIntoConstraints = false
