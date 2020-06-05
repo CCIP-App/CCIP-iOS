@@ -54,32 +54,37 @@ class StatusViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        self.scenarioTitle.text = self.scenario!.DisplayText
+        self.scenarioTitle.text = self.scenario?.DisplayText ?? ""
         self.noticeTextLabel.text = NSLocalizedString("StatusNotice", comment: "")
 
-        let attr = self.scenario!.Attributes
-        if attr._data.dictionaryValue.count > 0 {
-            let attrData = try! attr._data.rawData(options: .prettyPrinted)
-            let jsonText = String(data: attrData, encoding: .utf8) ?? ""
+        if let attr = self.scenario?.Attributes {
+            if attr._data.dictionaryValue.count > 0 {
+                if let attrData = try? attr._data.rawData(options: .prettyPrinted) {
+                    let jsonText = String(data: attrData, encoding: .utf8) ?? ""
 
-            // MarkDown view
-            let markdownStyleString = "<style>html, body {height: 100%; width: 100%;} body {display: flex; align-items: center; padding: 0; font-size: 24px;} pre {width: 100%;}</style>\n```\n\(jsonText)\n```"
-            self.downView = MarkdownView.init(markdownStyleString, toView: self.attributesLabel)
-            self.downView?.downView.isOpaque = false
-            self.attributesLabel.isUserInteractionEnabled = true
-        } else {
-            self.attributesLabel.text = ""
+                    // MarkDown view
+                    let markdownStyleString = "<style>html, body {height: 100%; width: 100%;} body {display: flex; align-items: center; padding: 0; font-size: 24px;} pre {width: 100%;}</style>\n```\n\(jsonText)\n```"
+                    self.downView = MarkdownView.init(markdownStyleString, toView: self.attributesLabel)
+                    self.downView?.downView.isOpaque = false
+                }
+                self.attributesLabel.isUserInteractionEnabled = true
+            } else {
+                self.attributesLabel.text = ""
+            }
         }
-        self.needCountdown = (self.scenario!.Countdown ?? 0) > 0
+        self.needCountdown = (self.scenario?.Countdown ?? 0) > 0
         self.countdownLabel.isHidden = !self.needCountdown
         self.countDownEnd = false
         self.countTime = Date()
-        self.maxValue = Float(self.scenario!.Used! + self.scenario!.Countdown! - Int(self.countTime!.timeIntervalSince1970))
+        let used = self.scenario?.Used ?? 0
+        let countdown = self.scenario?.Countdown ?? 0
+        let counttime = Int(self.countTime?.timeIntervalSince1970 ?? 0)
+        self.maxValue = Float(used + countdown - counttime)
 
-        self.interval = Date().timeIntervalSince(self.countTime!)
+        self.interval = Date().timeIntervalSince(self.countTime ?? Date.init())
         self.countDown = (self.maxValue - Float(self.interval))
         self.formatter = DateFormatter()
-        self.formatter!.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        self.formatter?.dateFormat = "yyyy/MM/dd HH:mm:ss"
         self.countdownLabel.text = ""
         self.nowTimeLabel.text = ""
         self.view.isHidden = !self.needCountdown
@@ -119,7 +124,7 @@ class StatusViewController: UIViewController {
     @objc func updateCountDown() {
         var color = self.view.tintColor
         let now = Date()
-        self.interval = now.timeIntervalSince(self.countTime!)
+        self.interval = now.timeIntervalSince(self.countTime ?? Date.init())
 
         self.countDown = (self.maxValue - Float(self.interval))
         if self.countDown <= 0 {

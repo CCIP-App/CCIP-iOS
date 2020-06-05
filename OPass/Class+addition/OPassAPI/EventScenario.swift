@@ -190,8 +190,8 @@ extension OPassAPI {
 
     static func ParseScenarioType(_ id: String) -> Dictionary<String, Any> {
         let id_pattern = "^(day(\\d+))?(\\w+)$"
-        let id_regex = try? NSRegularExpression.init(pattern: id_pattern, options: .caseInsensitive)
-        let id_matches = id_regex!.matches(in: id, options: .withTransparentBounds, range: NSRangeFromString(id))
+        guard let id_regex = try? NSRegularExpression.init(pattern: id_pattern, options: .caseInsensitive) else { return [:] }
+        let id_matches = id_regex.matches(in: id, options: .withTransparentBounds, range: NSRangeFromString(id))
 
         guard let did_range = id_matches.first?.range(at: 2) else {
             return [
@@ -218,8 +218,8 @@ extension OPassAPI {
         let formatter = DateFormatter.init()
         formatter.dateFormat = Constants.appConfig("DisplayDateTimeFormat") as? String
         formatter.timeZone = NSTimeZone.default
-        let availDate = Date.init(timeIntervalSince1970: TimeInterval(scenario.AvailableTime!))
-        let expireDate = Date.init(timeIntervalSince1970: TimeInterval(scenario.ExpireTime!))
+        let availDate = Date.init(timeIntervalSince1970: TimeInterval(scenario.AvailableTime ?? 0))
+        let expireDate = Date.init(timeIntervalSince1970: TimeInterval(scenario.ExpireTime ?? 0))
         let availString = formatter.string(from: availDate)
         let expireString = formatter.string(from: expireDate)
         return [ availString, expireString ]

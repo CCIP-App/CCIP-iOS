@@ -137,9 +137,10 @@ import ScanditBarcodeScanner
             self.statusViewController?.scenario = sender as? Scenario
             self.statusViewController?.delegate = self
         case InvalidNetworkMessageViewController.className:
-            let inmvc = destination as! InvalidNetworkMessageViewController
-            inmvc.message = sender as! String
-            inmvc.delegate = self
+            if let inmvc = destination as? InvalidNetworkMessageViewController {
+                inmvc.message = sender as? String ?? ""
+                inmvc.delegate = self
+            }
         default:
             break
         }
@@ -163,10 +164,11 @@ import ScanditBarcodeScanner
         if tap.oldTapTime == nil {
             tap.oldTapTime = tap.newTapTime
         }
+        guard let oldTime = tap.oldTapTime else { return }
 
         if Constants.isDevMode {
-            //            NSLog("navSingleTap from MoreTab")
-            if (tap.newTapTime?.timeIntervalSince(tap.oldTapTime!))! <= TimeInterval(0.25) {
+            // NSLog("navSingleTap from MoreTab")
+            if ((tap.newTapTime?.timeIntervalSince(oldTime)) ?? TimeInterval(0)) <= TimeInterval(0.25) {
                 tap.tapTimes += 1
                 if tap.tapTimes >= 10 {
                     NSLog("--  Success tap 10 times  --")
@@ -192,21 +194,19 @@ import ScanditBarcodeScanner
     // MARK: - hide custom view controller method
 
     func hideView(_ viewType: HideCheckinViewOverlay, _ completion: (() -> Void)?) {
-
-        let isVisible = [
+        let visible = [
             HideCheckinViewOverlay.Guide: self.guideViewController?.isVisible,
             HideCheckinViewOverlay.Status: self.statusViewController?.isVisible,
             HideCheckinViewOverlay.InvalidNetwork: self.invalidNetworkMsgViewController?.isVisible
-        ][viewType]! ?? false
+        ][viewType] ?? false
+        let isVisible: Bool = visible ?? false
 
         let _completion = {
-            if completion != nil {
-                completion!()
-            }
+            if let c = completion { c() }
         }
 
         if isVisible {
-            [
+            if let overlay = [
                 HideCheckinViewOverlay.Guide: {
                     self.guideViewController?.dismiss(animated: true, completion: {
                         self.guideViewController = nil
@@ -225,7 +225,9 @@ import ScanditBarcodeScanner
                         _completion()
                     })
                 }
-            ][viewType]!()
+                ][viewType] {
+                overlay()
+            }
         } else {
             _completion()
         }
@@ -237,24 +239,31 @@ import ScanditBarcodeScanner
         if Constants.haveAccessToken {
             let checkinCard = UserDefaults.standard.object(forKey: "CheckinCard") as? NSDictionary
             if checkinCard != nil {
-                let key = checkinCard?.object(forKey: "key") as! String
-                for item in self.scenarios! {
-                    if item.Id == key {
-                        let index = self.scenarios!.firstIndex(of: item)!
-                        NSLog("index: \(index)")
-                        self.cards?.scrollToItem(at: index, animated: true)
+                let key = checkinCard?.object(forKey: "key") as? String ?? ""
+                if let scenarios = self.scenarios {
+                    for item in scenarios {
+                        if item.Id == key {
+                            if let index = scenarios.firstIndex(of: item) {
+                                NSLog("index: \(index)")
+                                self.cards?.scrollToItem(at: index, animated: true)
+                            }
+                        }
                     }
                 }
                 UserDefaults.standard.removeObject(forKey: "CheckinCard")
             } else {
                 // force scroll to first selected item at first load
-                if self.cards!.numberOfItems > 0 {
-                    for scenario in OPassAPI.scenarios! {
-                        let used = scenario.Used != nil
-                        let disabled = scenario.Disabled != nil
-                        if !used && !disabled {
-                            self.cards?.scrollToItem(at: scenarios?.firstIndex(of: scenario) ?? 0, animated: true)
-                            break
+                if let cards = self.cards {
+                    if cards.numberOfItems > 0 {
+                        if let scenarios = OPassAPI.scenarios {
+                            for scenario in scenarios {
+                                let used = scenario.Used != nil
+                                let disabled = scenario.Disabled != nil
+                                if !used && !disabled {
+                                    self.cards?.scrollToItem(at: scenarios.firstIndex(of: scenario) ?? 0, animated: true)
+                                    break
+                                }
+                            }
                         }
                     }
                 }
@@ -296,25 +305,28 @@ import ScanditBarcodeScanner
             OPassAPI.GetCurrentStatus { success, obj, _ in
                 if success {
                     self.hideView(.Guide, nil)
-                    let userInfo = obj as! ScenarioStatus
-                    self.userInfo = userInfo
-                    self.scenarios = userInfo.Scenarios
+                    if let userInfo = obj as? ScenarioStatus {
+                        self.userInfo = userInfo
+                        self.scenarios = userInfo.Scenarios
 
-                    let isHidden = !Constants.haveAccessToken
-                    self.lbHi?.isHidden = isHidden
-                    self.ivUserPhoto?.isHidden = isHidden
-                    self.lbUserName?.isHidden = isHidden
-                    self.lbUserName?.text = userInfo.UserId
-                    AppDelegate.sendTag("\(userInfo.EventId)\(userInfo.Role)", value: userInfo.Token)
-                    if OPassAPI.isLoginSession {
-                        AppDelegate.delegateInstance.displayGreetingsForLogin()
+                        let isHidden = !Constants.haveAccessToken
+                        self.lbHi?.isHidden = isHidden
+                        self.ivUserPhoto?.isHidden = isHidden
+                        self.lbUserName?.isHidden = isHidden
+                        self.lbUserName?.text = userInfo.UserId
+                        AppDelegate.sendTag("\(userInfo.EventId)\(userInfo.Role)", value: userInfo.Token)
+                        if OPassAPI.isLoginSession {
+                            AppDelegate.delegateInstance.displayGreetingsForLogin()
+                        }
+                        OPassAPI.scenarios = self.scenarios
+                        if ((OPassAPI.userInfo?.Role ?? "").count > 0) {
+                            if let info = OPassAPI.userInfo {
+                                self.cards?.isHidden = !((OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(info.Role)) ?? true)
+                            }
+                        }
+                        OPassAPI.refreshTabBar()
+                        self.reloadAndGoToCard()
                     }
-                    OPassAPI.scenarios = self.scenarios
-                    if ((OPassAPI.userInfo?.Role ?? "").count > 0) {
-                        self.cards?.isHidden = !((OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(OPassAPI.userInfo!.Role)) ?? true)
-                    }
-                    OPassAPI.refreshTabBar()
-                    self.reloadAndGoToCard()
                 } else {
                     func broken(_ msg: String = "Networking_Broken") {
                         self.performSegue(withIdentifier: "ShowInvalidNetworkMsg", sender: NSLocalizedString(msg, comment: ""))
@@ -328,7 +340,7 @@ import ScanditBarcodeScanner
                         broken("Data_Wrong")
                     case 400:
                         guard let responseObject = sr.Obj as? NSDictionary else { return }
-                        let msg = responseObject.value(forKeyPath: "json.message") as! String
+                        let msg = responseObject.value(forKeyPath: "json.message") as? String ?? ""
                         if msg == "invalid token" {
                             NSLog("\(msg)")
 
@@ -405,21 +417,22 @@ import ScanditBarcodeScanner
         session.pauseScanning()
 
         let recognized = session.newlyRecognizedCodes
-        let code = recognized.first!
-        // Add your own code to handle the barcode result e.g.
-        NSLog("scanned \(code.symbologyName) barcode: \(String(describing: code.data))")
+        if let code = recognized.first {
+            // Add your own code to handle the barcode result e.g.
+            NSLog("scanned \(code.symbologyName) barcode: \(String(describing: code.data))")
 
-        OperationQueue.main.addOperation {
-            OPassAPI.RedeemCode(forEvent: "", withToken: code.data!) { (success, _, _) in
-                if success {
-                    self.perform(#selector(self.reloadCard), with: nil, afterDelay: 0.5)
-                    self.perform(#selector(self.closeBarcodePickerOverlay), with: nil, afterDelay: 0.5)
-                } else {
-                    let ac = UIAlertController.alertOfTitle(NSLocalizedString("GuideViewTokenErrorTitle", comment: ""), withMessage: NSLocalizedString("GuideViewTokenErrorDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel) { _ in
-                        self.scanditBarcodePicker?.resumeScanning()
-                    }
-                    ac.showAlert {
-                        UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
+            OperationQueue.main.addOperation {
+                OPassAPI.RedeemCode(forEvent: "", withToken: code.data ?? "") { (success, _, _) in
+                    if success {
+                        self.perform(#selector(self.reloadCard), with: nil, afterDelay: 0.5)
+                        self.perform(#selector(self.closeBarcodePickerOverlay), with: nil, afterDelay: 0.5)
+                    } else {
+                        let ac = UIAlertController.alertOfTitle(NSLocalizedString("GuideViewTokenErrorTitle", comment: ""), withMessage: NSLocalizedString("GuideViewTokenErrorDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel) { _ in
+                            self.scanditBarcodePicker?.resumeScanning()
+                        }
+                        ac.showAlert {
+                            UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
+                        }
                     }
                 }
             }
@@ -477,9 +490,11 @@ import ScanditBarcodeScanner
             // Add a button behind the subview to close it.
             // self.backgroundButton.hidden = NO;
 
-            self.addChild(self.scanditBarcodePicker!)
-            self.view.addSubview(self.scanditBarcodePicker!.view)
-            self.scanditBarcodePicker?.didMove(toParent: self)
+            if let picker = self.scanditBarcodePicker {
+                self.addChild(picker)
+                self.view.addSubview(picker.view)
+                self.scanditBarcodePicker?.didMove(toParent: self)
+            }
 
             self.scanditBarcodePicker?.view.translatesAutoresizingMaskIntoConstraints = false
 
@@ -489,15 +504,15 @@ import ScanditBarcodeScanner
             // Add constraints to set the width to 200 and height to 400. Since this is not the aspect ratio
             // of the camera preview some of the camera preview will be cut away on the left and right.
             self.view.addConstraint(NSLayoutConstraint.init(item: self.scanditBarcodePicker?.view as Any, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1, constant: 0))
-            self.view.addConstraint(NSLayoutConstraint.init(item: self.scanditBarcodePicker?.view as Any, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: -(self.tabBarController?.tabBar.frame.size.height)!))
+            self.view.addConstraint(NSLayoutConstraint.init(item: self.scanditBarcodePicker?.view as Any, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: -(self.tabBarController?.tabBar.frame.size.height ?? 0)))
 
             // add "OpenQRCodeFromFile" button
             let barcodePickerOverlay = self.scanditBarcodePicker?.overlayController.view
             let torchButton = barcodePickerOverlay?.subviews[2]
             let button = UIButton.init(type: .roundedRect)
             button.layer.masksToBounds = false
-            button.layer.cornerRadius = (torchButton?.frame.height)! / 2
-            button.frame = CGRect(x: (torchButton?.frame.origin.x)! + (torchButton?.frame.width)! + 10, y: (torchButton?.frame.origin.y)!, width: 60, height: (torchButton?.frame.height)!)
+            button.layer.cornerRadius = (torchButton?.frame.height ?? 2) / 2
+            button.frame = CGRect(x: (torchButton?.frame.origin.x ?? 0) + (torchButton?.frame.width ?? 0) + 10, y: (torchButton?.frame.origin.y ?? 0), width: 60, height: (torchButton?.frame.height ?? 0))
             button.backgroundColor = UIColor.white.withAlphaComponent(0.35)
             button.setTitle(NSLocalizedString("OpenQRCodeFromFile", comment: ""), for: .normal)
             button.tintColor = .black
@@ -520,14 +535,15 @@ import ScanditBarcodeScanner
     }
 
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        let mediaType = info[.mediaType] as! String
+        let mediaType = info[.mediaType] as? String ?? ""
 
         if mediaType == "public.image" {
-            let srcImage = info[.originalImage] as! UIImage
-            let detector = CIDetector.init(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])!
+            guard let srcImage = info[.originalImage] as? UIImage else { return }
+            guard let detector = CIDetector.init(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh]) else { return }
 
-            let image = CIImage.init(cgImage: srcImage.cgImage!)
-            let features = detector.features(in: image) as! [CIQRCodeFeature]
+            guard let cgImage = srcImage.cgImage else { return }
+            let image = CIImage.init(cgImage: cgImage)
+            guard let features = detector.features(in: image) as? [CIQRCodeFeature] else { return }
 
             var ac: UIAlertController? = nil
             var noQR = false
@@ -538,14 +554,14 @@ import ScanditBarcodeScanner
                 for feature in features {
                     NSLog("feature: \(String(describing: feature.messageString))")
                 }
-                let feature = features.first!
+                guard let feature = features.first else { return }
                 let result = feature.messageString
                 NSLog("QR: \(String(describing: result))")
 
                 if result == nil {
                     noQR = true
                 } else {
-                    OPassAPI.RedeemCode(forEvent: "", withToken: result!) { (success, _, _) in
+                    OPassAPI.RedeemCode(forEvent: "", withToken: result ?? "") { (success, _, _) in
                         if success {
                             picker.dismiss(animated: true) {
                                 // self.reloadCard()
@@ -604,10 +620,10 @@ import ScanditBarcodeScanner
 
         // create new view if no view is available for recycling
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        guard let availableScenarios = OPassAPI.scenarios else { return view! }
+        guard let availableScenarios = OPassAPI.scenarios else { return view ?? UIView.init() }
         let haveScenario = availableScenarios.count > 0
         if haveScenario {
-            let temp = storyboard.instantiateViewController(withIdentifier: "CheckinCardReuseView") as! CheckinCardViewController
+            guard let temp = storyboard.instantiateViewController(withIdentifier: "CheckinCardReuseView") as? CheckinCardViewController else { return UIView.init() }
             temp.view.frame = card.cardRect
             view = temp.view
 
@@ -625,12 +641,12 @@ import ScanditBarcodeScanner
             temp.setId(id)
 
             let dateRange = OPassAPI.ParseScenarioRange(scenario)
-            let availableRange = "\(dateRange.first!)\n\(dateRange.last!)"
+            let availableRange = "\(dateRange.first ?? "")\n\(dateRange.last ?? "")"
             let dd = OPassAPI.ParseScenarioType(id)
             let did = dd["did"]
             let scenarioType = dd["scenarioType"]
-            let defaultIcon = Constants.AssertImage(name: "doc", InBundleName: "PassAssets")!
-            let scenarioIcon = Constants.AssertImage(name: scenarioType as! String, InBundleName: "PassAssets") ?? defaultIcon
+            let defaultIcon = Constants.AssertImage(name: "doc", InBundleName: "PassAssets")
+            let scenarioIcon = Constants.AssertImage(name: (scenarioType as? String) ?? "", InBundleName: "PassAssets") ?? defaultIcon
             temp.checkinTitle.textColor = Constants.appConfigColor("CardTextColor")
             temp.checkinTitle.text = scenario.DisplayText
             temp.checkinDate.textColor = Constants.appConfigColor("CardTextColor")
@@ -640,8 +656,10 @@ import ScanditBarcodeScanner
             temp.checkinIcon.image = scenarioIcon
 
             if isCheckin {
-                temp.checkinIcon.image = Constants.AssertImage(name: "day\(did!)", InBundleName: "PassAssets")
-                temp.checkinText.text = NSLocalizedString("CheckinText", comment: "")
+                if let day = did {
+                    temp.checkinIcon.image = Constants.AssertImage(name: "day\(day)", InBundleName: "PassAssets")
+                    temp.checkinText.text = NSLocalizedString("CheckinText", comment: "")
+                }
             }
             if isLunch {
                 // nothing to do
@@ -660,7 +678,7 @@ import ScanditBarcodeScanner
             }
             if isDisabled {
                 temp.setDisabled(scenario.Disabled)
-                temp.checkinBtn.setTitle("\(scenario.Disabled!)", for: .normal)
+                temp.checkinBtn.setTitle("\(scenario.Disabled ?? "")", for: .normal)
                 temp.checkinBtn.setGradientColor(from: Constants.appConfigColor("DisabledButtonLeftColor"), to: Constants.appConfigColor("DisabledButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
             } else if isUsed {
                 temp.setUsed(scenario.Used)
@@ -685,7 +703,7 @@ import ScanditBarcodeScanner
             temp.setScenario(scenario)
         }
 
-        return view!
+        return view ?? UIView.init()
     }
 
     func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {

@@ -85,7 +85,7 @@ class SessionFavoriteTableViewController: SessionTableViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == Constants.SESSION_DETAIL_VIEW_STORYBOARD_ID {
             guard let detailView = segue.destination as? SessionDetailViewController else { return }
-            guard let session = self.pagerController!.programs!.GetSession(sender as! String) else { return }
+            guard let session = self.pagerController?.programs?.GetSession(sender as? String ?? "") else { return }
             detailView.setSessionData(session)
         }
     }

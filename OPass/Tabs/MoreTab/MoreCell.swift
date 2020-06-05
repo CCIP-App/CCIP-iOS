@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MoreCell : UITableViewCell {
+class MoreCell: UITableViewCell {
     var Feature: EventFeatures?
     override func awakeFromNib() {
         super.awakeFromNib();

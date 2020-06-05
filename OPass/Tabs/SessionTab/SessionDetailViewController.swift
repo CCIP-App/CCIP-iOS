@@ -80,24 +80,26 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        guard let vContent = self.vContent else { return }
+
         let markdownStyleString = "<style>h1, h2 {color: \(Constants.appConfig("Themes.CardTextColor") ?? "black");} h3, h4, h5, h6, h7, span, div, p {color: black;} body {font-size: 1em; padding-top: 0;}</style>\n\n"
         let webConfig = WKWebViewConfiguration()
         webConfig.dataDetectorTypes = [.link]
-        self.downView = MarkdownView.init(markdownStyleString, toView: self.vContent!, config: webConfig)
+        self.downView = MarkdownView.init(markdownStyleString, toView: vContent, config: webConfig)
 
-        let description = self.session!["description"]
+        let description = self.session?["description"] ?? ""
         NSLog("Set description: \(description)")
         let isEmptyAbstract = description.trim().count == 0
         if !isEmptyAbstract {
             self.downView?.append("# Abstract\n\n\(description)\n\n")
         }
-        for speaker in self.session!.Speakers {
+        for speaker in self.session?.Speakers ?? [] {
             let speakerName = speaker["name"]
             let bio = "\(speaker["bio"])\n"
             NSLog("Set bio for \(speakerName): \(bio)")
             self.downView?.append("---\n\n## \(speakerName)\n\n\(bio)\n\n")
         }
-        if isEmptyAbstract && self.session!.Speakers.count == 0 {
+        if isEmptyAbstract && (self.session?.Speakers.count ?? 0) == 0 {
             self.downView?.append("## \(NSLocalizedString("EmptySessionDetailContent", comment: ""))")
         }
     }
@@ -109,18 +111,28 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
         self.vwHeader?.dataSource = self
         self.vwHeader?.isInfinite = true
 
-        if self.session!.Speakers.count > 1 {
+        if (self.session?.Speakers.count ?? 0) > 1 {
             self.vwHeader?.automaticSlidingInterval = 3
         }
 
         if self.fspager == nil {
-            self.fspager = self.vwHeader!.subviews.last!
-            self.fspager?.isUserInteractionEnabled = false
-//            self.vwHeader?.sendSubviewToBack(self.fspager!)
-            self.vwHeader?.bringSubviewToFront(self.vwMeta!)
-            self.vwHeader?.bringSubviewToFront(self.lbTitle!)
-            self.vwHeader?.bringSubviewToFront(self.lbSpeaker!)
-            self.vwHeader?.bringSubviewToFront(self.lbSpeakerName!)
+            if let pager = self.vwHeader?.subviews.last {
+                self.fspager = pager
+                self.fspager?.isUserInteractionEnabled = false
+                // self.vwHeader?.sendSubviewToBack(self.fspager!)
+            }
+            if let meta = self.vwMeta {
+                self.vwHeader?.bringSubviewToFront(meta)
+            }
+            if let title = self.lbTitle {
+                self.vwHeader?.bringSubviewToFront(title)
+            }
+            if let speaker = self.lbSpeaker {
+                self.vwHeader?.bringSubviewToFront(speaker)
+            }
+            if let speakerName = self.lbSpeakerName {
+                self.vwHeader?.bringSubviewToFront(speakerName)
+            }
         }
 
         // force to use Down Markdown view

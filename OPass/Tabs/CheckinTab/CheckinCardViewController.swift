@@ -29,12 +29,13 @@ class CheckinCardViewController: UIViewController {
         super.viewDidLoad()
         self.cardView = self.view as? CheckinCardView
 
-        let csc = self.cardView!.checkinSmallCard!
-        csc.layer.cornerRadius = 5
-        csc.layer.masksToBounds = false
-        csc.layer.shadowOffset = CGSize(width: 0, height: 50)
-        csc.layer.shadowRadius = 50
-        csc.layer.shadowOpacity = 0.1
+        if let csc = self.cardView?.checkinSmallCard {
+            csc.layer.cornerRadius = 5
+            csc.layer.masksToBounds = false
+            csc.layer.shadowOffset = CGSize(width: 0, height: 50)
+            csc.layer.shadowRadius = 50
+            csc.layer.shadowOpacity = 0.1
+        }
     }
 
     override func viewDidLayoutSubviews() {
@@ -68,18 +69,18 @@ class CheckinCardViewController: UIViewController {
     }
 
     func setId(_ id: String) {
-        self.cardView!.id = id
+        self.cardView?.id = id
     }
 
     func setUsed(_ used: Int?) {
-        self.cardView!.used = used
+        self.cardView?.used = used
     }
 
     func setDisabled(_ disabled: String?) {
-        self.cardView!.disabled = disabled
+        self.cardView?.disabled = disabled
     }
 
     func setDelegate(_ delegate: CheckinViewController) {
-        self.cardView!.delegate = delegate
+        self.cardView?.delegate = delegate
     }
 }

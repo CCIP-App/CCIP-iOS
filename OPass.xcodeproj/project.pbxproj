@@ -24,7 +24,6 @@
 		288D3A7F1D599B7200E4E3A6 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A7E1D599B7200E4E3A6 /* libiconv.tbd */; };
 		288D3A811D599B7A00E4E3A6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A801D599B7A00E4E3A6 /* libz.tbd */; };
 		288D3A831D599B8500E4E3A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A821D599B8500E4E3A6 /* CoreText.framework */; };
-		288D3A851D599B8D00E4E3A6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A841D599B8D00E4E3A6 /* OpenGLES.framework */; };
 		288D3A871D599B9800E4E3A6 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A861D599B9800E4E3A6 /* MessageUI.framework */; };
 		288D3A891D599B9F00E4E3A6 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A881D599B9F00E4E3A6 /* CoreVideo.framework */; };
 		288D3A8B1D599BA700E4E3A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A8A1D599BA700E4E3A6 /* UIKit.framework */; };
@@ -112,6 +111,9 @@
 		6BC4246D22299AE10028C7D6 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4246C22299AE10028C7D6 /* NotificationController.swift */; };
 		6BC4246F22299C830028C7D6 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4246E22299C830028C7D6 /* ExtensionDelegate.swift */; };
 		6BC4247122299F470028C7D6 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4247022299F470028C7D6 /* InterfaceController.swift */; };
+		6BC80BDD248AF04900B364A2 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC80BDA248AF04900B364A2 /* Metal.framework */; };
+		6BC80BDE248AF04900B364A2 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC80BDB248AF04900B364A2 /* MetalKit.framework */; };
+		6BC80BDF248AF04900B364A2 /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC80BDC248AF04900B364A2 /* MetalPerformanceShaders.framework */; };
 		6BCAC01F1F1A8FC100032096 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BCAC01D1F1A8FC100032096 /* Interface.storyboard */; };
 		6BCAC0381F1A8FC100032096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BCAC0371F1A8FC100032096 /* Assets.xcassets */; };
 		6BD8EF3A1D1D73510094BE95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8EF391D1D73510094BE95 /* Assets.xcassets */; };
@@ -314,6 +316,9 @@
 		6BC4246C22299AE10028C7D6 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		6BC4246E22299C830028C7D6 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		6BC4247022299F470028C7D6 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		6BC80BDA248AF04900B364A2 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		6BC80BDB248AF04900B364A2 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		6BC80BDC248AF04900B364A2 /* MetalPerformanceShaders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShaders.framework; path = System/Library/Frameworks/MetalPerformanceShaders.framework; sourceTree = SDKROOT; };
 		6BCAC01B1F1A8FC100032096 /* OPass-Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OPass-Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCAC01E1F1A8FC100032096 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		6BCAC0221F1A8FC100032096 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -367,6 +372,7 @@
 			files = (
 				288D3A971D599BDC00E4E3A6 /* MediaPlayer.framework in Frameworks */,
 				288D3A951D599BD600E4E3A6 /* SystemConfiguration.framework in Frameworks */,
+				6BC80BDD248AF04900B364A2 /* Metal.framework in Frameworks */,
 				6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */,
 				288D3A931D599BCB00E4E3A6 /* CoreMedia.framework in Frameworks */,
 				288D3A911D599BC400E4E3A6 /* AVFoundation.framework in Frameworks */,
@@ -376,13 +382,14 @@
 				288D3A8B1D599BA700E4E3A6 /* UIKit.framework in Frameworks */,
 				288D3A891D599B9F00E4E3A6 /* CoreVideo.framework in Frameworks */,
 				288D3A871D599B9800E4E3A6 /* MessageUI.framework in Frameworks */,
+				6BC80BDE248AF04900B364A2 /* MetalKit.framework in Frameworks */,
 				6B70EF45204C981700C63E63 /* NetworkExtension.framework in Frameworks */,
-				288D3A851D599B8D00E4E3A6 /* OpenGLES.framework in Frameworks */,
 				288D3A831D599B8500E4E3A6 /* CoreText.framework in Frameworks */,
 				288D3A811D599B7A00E4E3A6 /* libz.tbd in Frameworks */,
 				288D3A7F1D599B7200E4E3A6 /* libiconv.tbd in Frameworks */,
 				288D3A7D1D599B6700E4E3A6 /* libc++.tbd in Frameworks */,
 				288D3A791D599A1200E4E3A6 /* ScanditBarcodeScanner.framework in Frameworks */,
+				6BC80BDF248AF04900B364A2 /* MetalPerformanceShaders.framework in Frameworks */,
 				6F1E7A1A5C60140E807B118F /* Pods_OPass.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +437,9 @@
 		267251DBF9C24B92F4EE80DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6BC80BDA248AF04900B364A2 /* Metal.framework */,
+				6BC80BDB248AF04900B364A2 /* MetalKit.framework */,
+				6BC80BDC248AF04900B364A2 /* MetalPerformanceShaders.framework */,
 				6B70EF44204C981700C63E63 /* NetworkExtension.framework */,
 				288D3A961D599BDC00E4E3A6 /* MediaPlayer.framework */,
 				288D3A941D599BD600E4E3A6 /* SystemConfiguration.framework */,

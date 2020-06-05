@@ -49,7 +49,7 @@ extension OPassWebViewIB { // for all of optional properties and func used in OP
     var ShowLogo: Bool { return false }
 }
 
-class OPassWebViewController : UIViewController, WKNavigationDelegate, WKUIDelegate {
+class OPassWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     /* fake dummy obj */ private var goBackButton: UIBarButtonItem? = nil
     /* fake dummy obj */ private var goForwardButton: UIBarButtonItem? = nil
     /* fake dummy obj */ private var goReloadButton: UIBarButtonItem? = nil

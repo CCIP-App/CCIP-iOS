@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import EFQRCode
 
-class MyTicketViewController : UIViewController {
+class MyTicketViewController: UIViewController {
     @IBOutlet var lbNotice: UILabel?
     @IBOutlet var ivQRCode: UIImageView?
 

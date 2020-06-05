@@ -26,19 +26,19 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             // Check the Class of each task to decide how to process it
             if task.isKind(of: WKApplicationRefreshBackgroundTask.self) {
                 // Be sure to complete the background task once you’re done.
-                let backgroundTask = task as! WKApplicationRefreshBackgroundTask;
+                let backgroundTask = task as WKApplicationRefreshBackgroundTask;
                 backgroundTask.setTaskCompleted();
             } else if task.isKind(of: WKSnapshotRefreshBackgroundTask.self) {
                 // Snapshot tasks have a unique completion call, make sure to set your expiration date
-                let snapshotTask = task as! WKSnapshotRefreshBackgroundTask;
+                let snapshotTask = task as WKSnapshotRefreshBackgroundTask;
                 snapshotTask.setTaskCompleted(restoredDefaultState: true, estimatedSnapshotExpiration: Date.distantFuture, userInfo: nil)
             } else if task.isKind(of: WKWatchConnectivityRefreshBackgroundTask.self) {
                 // Be sure to complete the background task once you’re done.
-                let backgroundTask = task as! WKWatchConnectivityRefreshBackgroundTask;
+                let backgroundTask = task as WKWatchConnectivityRefreshBackgroundTask;
                 backgroundTask.setTaskCompleted();
             } else if task.isKind(of: WKURLSessionRefreshBackgroundTask.self) {
                 // Be sure to complete the background task once you’re done.
-                let backgroundTask = task as! WKURLSessionRefreshBackgroundTask;
+                let backgroundTask = task as WKURLSessionRefreshBackgroundTask;
                 backgroundTask.setTaskCompleted();
             } else {
                 // make sure to complete unhandled task types

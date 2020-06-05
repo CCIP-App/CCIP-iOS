@@ -12,7 +12,7 @@ import MBProgressHUD
 import Then
 import Nuke
 
-class OPassEventsController : UIViewController, UITableViewDelegate, UITableViewDataSource {
+class OPassEventsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var progress: MBProgressHUD = MBProgressHUD.init()
     var opassEvents: Array<EventShortInfo> = Array<EventShortInfo>()
     var firstLoad: Bool = true

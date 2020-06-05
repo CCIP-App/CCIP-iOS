@@ -32,14 +32,16 @@ class CheckinCardView: UIView {
     }
 
     func showCountdown() {
-        let date = Date.init(timeIntervalSince1970: TimeInterval(self.scenario!.Used!))
-        let stopDate = date.addingTimeInterval(TimeInterval(self.scenario!.Countdown!))
-        let now = Date.init()
-        NSLog("\(date) ~ \(stopDate) == \(now)")
-        // always display countdown for t-shirt view
-        // if ([now timeIntervalSince1970] - [stopDate timeIntervalSince1970] < 0) {
-        self.delegate?.showCountdown(self.scenario!)
-        // }
+        if let _scenario = self.scenario {
+            let date = Date.init(timeIntervalSince1970: TimeInterval(_scenario.Used ?? 0))
+            let stopDate = date.addingTimeInterval(TimeInterval(_scenario.Countdown ?? 0))
+            let now = Date.init()
+            NSLog("\(date) ~ \(stopDate) == \(now)")
+            // always display countdown for t-shirt view
+            // if ([now timeIntervalSince1970] - [stopDate timeIntervalSince1970] < 0) {
+            self.delegate?.showCountdown(_scenario)
+            // }
+        }
     }
 
     func updateScenario(_ scenarios: [Scenario]) -> Scenario {
@@ -50,7 +52,10 @@ class CheckinCardView: UIView {
                 break
             }
         }
-        return self.scenario!
+        guard let _scenario = self.scenario else {
+            return Scenario.init("")
+        }
+        return _scenario
     }
 
     func buttonUpdate(_ intermediate: (() -> Void)?, _ completeion: (() -> Void)?, _ cleanup: (() -> Void)?) {
@@ -80,13 +85,13 @@ class CheckinCardView: UIView {
     @IBAction func checkinBtnTouched(_ sender: Any) {
         var ac: UIAlertController? = nil
         var feedbackType: UIImpactFeedbackType? = UIImpactFeedbackType(rawValue: 0)
-        let availableTime = Date.init(timeIntervalSince1970: TimeInterval(self.scenario!.AvailableTime!))
-        let expireTime = Date.init(timeIntervalSince1970: TimeInterval(self.scenario!.ExpireTime!))
+        let availableTime = Date.init(timeIntervalSince1970: TimeInterval(self.scenario?.AvailableTime ?? 0))
+        let expireTime = Date.init(timeIntervalSince1970: TimeInterval(self.scenario?.ExpireTime ?? 0))
         let nowTime = Date.init()
-        let isCheckin = (OPassAPI.ParseScenarioType(self.id)["scenarioType"] as! String).contains("checkin")
+        let isCheckin = ((OPassAPI.ParseScenarioType(self.id)["scenarioType"] as? String) ?? "").contains("checkin")
 
         let use = {
-            if (self.scenario!.Used != nil) {
+            if (self.scenario?.Used != nil) {
                 self.showCountdown()
                 self.buttonUpdate({
                     self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
@@ -94,9 +99,11 @@ class CheckinCardView: UIView {
                     self.checkinBtn?.setGradientColor(from: Constants.appConfigColor("UsedButtonLeftColor"), to: Constants.appConfigColor("UsedButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                 }, nil)
             } else {
-                OPassAPI.UseScenario(OPassAPI.currentEvent, Constants.accessToken!, self.id) { (success, obj, error) in
+                OPassAPI.UseScenario(OPassAPI.currentEvent, Constants.accessToken ?? "", self.id) { (success, obj, error) in
                     if success {
-                        let _ = self.updateScenario((obj as! ScenarioStatus).Scenarios)
+                        if let status = obj as? ScenarioStatus {
+                            let _ = self.updateScenario((status).Scenarios)
+                        }
                         self.showCountdown()
                         self.buttonUpdate({
                             self.checkinBtn?.setGradientColor(from: Constants.appConfigColor("DisabledButtonLeftColor"), to: Constants.appConfigColor("DisabledButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
@@ -113,15 +120,19 @@ class CheckinCardView: UIView {
                             self.delegate?.showInvalidNetworkMsg(NSLocalizedString(msg, comment: ""))
                         }
                         guard let sr = obj as? OPassNonSuccessDataResponse else {
-                            if (((error._userInfo as! NSDictionary)["com.alamofire.serialization.response.error.response"] as? HTTPURLResponse) == nil) {
-                                broken()
+                            if let info: NSDictionary = error._userInfo as? NSDictionary {
+                                if let _: HTTPURLResponse = info["com.alamofire.serialization.response.error.response"] as? HTTPURLResponse {
+                                    //
+                                } else {
+                                    broken()
+                                }
                             }
                             return
                         }
                         switch (sr.Response?.statusCode) {
                         case 400:
                             guard let responseObject = sr.Obj as? NSDictionary else { return }
-                            let msg = responseObject.value(forKeyPath: "json.message") as! String
+                            let msg = responseObject.value(forKeyPath: "json.message") as? String ?? ""
                             NSLog("msg: \(msg)")
                             switch (msg) {
                             case "invalid token":
@@ -176,13 +187,15 @@ class CheckinCardView: UIView {
                 } else if ((self.used) != nil) {
                     use()
                 } else {
-                    if (self.scenario!.Countdown! > 0) {
-                        ac = UIAlertController.alertOfTitle(NSLocalizedString("ConfirmAlertText", comment: ""), withMessage: nil, cancelButtonText: NSLocalizedString("Cancel", comment: ""), cancelStyle: .cancel, cancelAction: nil)
-                        ac?.addActionButton(NSLocalizedString("CONFIRM", comment: ""), style: .destructive, handler: { _ in
+                    if let _scenario = self.scenario {
+                        if ((_scenario.Countdown ?? 0) > 0) {
+                            ac = UIAlertController.alertOfTitle(NSLocalizedString("ConfirmAlertText", comment: ""), withMessage: nil, cancelButtonText: NSLocalizedString("Cancel", comment: ""), cancelStyle: .cancel, cancelAction: nil)
+                            ac?.addActionButton(NSLocalizedString("CONFIRM", comment: ""), style: .destructive, handler: { _ in
+                                use()
+                            })
+                        } else {
                             use()
-                        })
-                    } else {
-                        use()
+                        }
                     }
                 }
             } else {
@@ -199,8 +212,8 @@ class CheckinCardView: UIView {
         }
         // only out time or need confirm will display alert controller
         let triggerFeedback = {
-            if feedbackType != nil {
-                UIImpactFeedback.triggerFeedback(feedbackType!)
+            if let feedback = feedbackType {
+                UIImpactFeedback.triggerFeedback(feedback)
             }
         }
         if (ac != nil) {

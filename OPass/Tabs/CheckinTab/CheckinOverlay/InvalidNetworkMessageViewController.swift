@@ -24,9 +24,10 @@ class InvalidNetworkMessageViewController: UIViewController {
         self.closeButton?.tintColor = .white
         self.closeButton?.backgroundColor = UIColor.init(red: 61 / 255.0, green: 152 / 255.0, blue: 60 / 255.0, alpha: 1)
         self.closeButton?.setGradientColor(from: Constants.appConfigColor("MessageButtonLeftColor"), to: Constants.appConfigColor("MessageButtonRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
-        let layer = self.closeButton!.layer.sublayers!.first!
-        layer.cornerRadius = self.closeButton!.frame.size.height / 2
-        self.closeButton?.layer.cornerRadius = self.closeButton!.frame.size.height / 2
+        if let layer = self.closeButton?.layer.sublayers?.first {
+            layer.cornerRadius = (self.closeButton?.frame.size.height ?? 2) / 2
+            self.closeButton?.layer.cornerRadius = (self.closeButton?.frame.size.height ?? 2) / 2
+        }
 
         self.messageLabel?.text = self.message
         self.view.autoresizingMask = []
@@ -36,11 +37,13 @@ class InvalidNetworkMessageViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         if !self.isRelayout {
-            let mnvc = self.presentingViewController as! MainNavViewController
-            let cvc = mnvc.children.first! as! InvalidNetworkRetryDelegate
-            let topStart = cvc.controllerTopStart
-            self.view.frame = CGRect(x: 0, y: 0 - topStart, width: self.view.frame.size.width, height: self.view.frame.size.height + topStart)
-            self.isRelayout = true
+            if let mnvc: MainNavViewController = self.presentingViewController as? MainNavViewController {
+                if let cvc: InvalidNetworkRetryDelegate = mnvc.children.first as? InvalidNetworkRetryDelegate{
+                    let topStart = cvc.controllerTopStart
+                    self.view.frame = CGRect(x: 0, y: 0 - topStart, width: self.view.frame.size.width, height: self.view.frame.size.height + topStart)
+                    self.isRelayout = true
+                }
+            }
         }
     }
 
