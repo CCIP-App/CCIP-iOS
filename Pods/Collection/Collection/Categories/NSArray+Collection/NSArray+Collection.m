@@ -185,6 +185,13 @@
     return [self sortedArrayUsingDescriptors:@[sortDescriptor]];
 }
 
+-(NSArray*)sortWith:(NSArray*)keys ascending:(BOOL)ascending{
+    NSArray * sortDescriptors =  [keys map:^id(NSString* key, NSUInteger idx) {
+        return [NSSortDescriptor sortDescriptorWithKey:key ascending:ascending];
+    }];
+    return [self sortedArrayUsingDescriptors:sortDescriptors];
+}
+
 - (NSArray*)sortWith:(NSComparisonResult (^)(id a, id b))callback{
     return [self sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
         return callback(a,b);

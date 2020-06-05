@@ -128,6 +128,11 @@
 - (NSArray*)sort:(NSString*)key ascending:(BOOL)ascending;
 
 /**
+ * @return NSArray sorted with multiple keys
+ */
+- (NSArray*)sortWith:(NSArray*)keys ascending:(BOOL)ascending;
+
+/**
  * @return NSArray sorted using custom callback
  */
 - (NSArray*)sortWith:(NSComparisonResult (^)(id a, id b))callback;

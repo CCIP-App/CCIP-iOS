@@ -6,7 +6,7 @@
 //  Copyright © 2016-2019 Down. All rights reserved.
 //
 
-#if !os(watchOS)
+#if !os(watchOS) && !os(Linux)
 
 #if canImport(UIKit)
 
@@ -18,7 +18,16 @@ import AppKit
 
 #endif
 
-public struct ParagraphStyleCollection {
+public protocol ParagraphStyleCollection {
+
+    var heading1: NSParagraphStyle { get }
+    var heading2: NSParagraphStyle { get }
+    var heading3: NSParagraphStyle { get }
+    var body: NSParagraphStyle { get }
+    var code: NSParagraphStyle { get }
+}
+
+public struct StaticParagraphStyleCollection: ParagraphStyleCollection {
 
     public var heading1: NSParagraphStyle
     public var heading2: NSParagraphStyle
