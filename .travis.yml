@@ -16,6 +16,14 @@ matrix:
       osx_image: xcode11.3
       script:
         - set -o pipefail && xcodebuild -workspace OPass.xcworkspace -scheme OPass -destination "platform=iOS Simulator,name=iPhone 11,OS=13.3" clean build | xcpretty
+    - os: osx
+      osx_image: xcode11.4
+      script:
+        - set -o pipefail && xcodebuild -workspace OPass.xcworkspace -scheme OPass -destination "platform=iOS Simulator,name=iPhone 11,OS=13.4.1" clean build | xcpretty
+    - os: osx
+      osx_image: xcode11.5
+      script:
+        - set -o pipefail && xcodebuild -workspace OPass.xcworkspace -scheme OPass -destination "platform=iOS Simulator,name=iPhone 11,OS=13.5" clean build | xcpretty
 
 language: objective-c
 podfile: Podfile
