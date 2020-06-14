@@ -82,10 +82,13 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
 
         guard let vContent = self.vContent else { return }
 
-        let markdownStyleString = "<style>h1, h2 {color: \(Constants.appConfig("Themes.CardTextColor") ?? "black");} h3, h4, h5, h6, h7, span, div, p {color: black;} body {font-size: 1em; padding-top: 0;}</style>\n\n"
+        let markdownStyleString = "<style>h1, h2 {color: \(Constants.appConfig("Themes.CardTextColor") ?? "black");} h3, h4, h5, h6, h7, span, div, p {color: black;} body {font-size: 1em; padding-top: 0;} a[href] {text-decoration-line: underline;}</style>\n\n"
         let webConfig = WKWebViewConfiguration()
         webConfig.dataDetectorTypes = [.link]
         self.downView = MarkdownView.init(markdownStyleString, toView: vContent, config: webConfig)
+
+        // add loaded script for removing a[href] default style of color attribute
+        self.downView?.append("<script>const mdLoaded = () => {Array.from(document.querySelectorAll('a[href]')).map(n => n.style.color='');}</script>\n\n")
 
         let description = self.session?["description"] ?? ""
         NSLog("Set description: \(description)")
@@ -102,6 +105,9 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
         if isEmptyAbstract && (self.session?.Speakers.count ?? 0) == 0 {
             self.downView?.append("## \(NSLocalizedString("EmptySessionDetailContent", comment: ""))")
         }
+
+        // call mdLoaded for removing a[href] default style of color attribute
+        self.downView?.append("\n\n<script>setTimeout(() => { mdLoaded(); }, 500)</script>\n\n")
     }
 
     override func viewWillAppear(_ animated: Bool) {
