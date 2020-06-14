@@ -342,14 +342,14 @@ extension Constants {
     static var SESSION_DETAIL_VIEW_STORYBOARD_ID: String {
         return "ShowSessionDetail"
     }
-    static var SESSION_FAV_KEY: String {
-        return "favoriteSession"
-    }
     static var SESSION_CACHE_CLEAR: String {
         return "ClearSessionContentCache"
     }
     static var SESSION_CACHE_KEY: String {
-        return "SessionContentCache"
+        return "\(OPassAPI.currentEvent)|SessionContentCache"
+    }
+    static var SESSION_FAV_KEY: String {
+        return "\(OPassAPI.currentEvent)|FavoriteSession"
     }
 
     // MARK: - Math

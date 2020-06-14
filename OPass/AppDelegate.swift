@@ -317,13 +317,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         let userDefault = UserDefaults.standard
         userDefault.register(defaults: [
-            Constants.SESSION_CACHE_CLEAR: false,
-            Constants.SESSION_CACHE_KEY: [:]
+            Constants.SESSION_CACHE_CLEAR: false
         ])
         userDefault.synchronize()
         if userDefault.bool(forKey: Constants.SESSION_CACHE_CLEAR) {
+            let _ = userDefault.dictionaryRepresentation().keys.map { (key) -> Void in
+                userDefault.removeObject(forKey: key)
+            }
             userDefault.set(false, forKey: Constants.SESSION_CACHE_CLEAR)
-            userDefault.set([:], forKey: Constants.SESSION_CACHE_KEY)
             userDefault.synchronize()
         }
 
