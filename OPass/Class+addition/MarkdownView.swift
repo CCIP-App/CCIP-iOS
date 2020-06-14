@@ -13,7 +13,7 @@ import WebKit
 
 public class MarkdownView: NSObject {
     public var markdownString: String
-    public var downView: DownView
+    public var downView: DownView?
     public var config: WKWebViewConfiguration
 
     public init(
@@ -21,23 +21,23 @@ public class MarkdownView: NSObject {
         toView: UIView,
         config: WKWebViewConfiguration? = nil
         ) {
-        guard let dv = WKWebView.init() as? DownView else { fatalError("Initial DoenView Error") }
-        self.downView = dv
+        self.config = WKWebViewConfiguration.init()
+        self.markdownString = markdown
         if let _d = (try? await(Promise { resolve, _ in
             resolve(try? DownView(frame: CGRect.zero, markdownString: markdown, configuration: config, options: .smartUnsafe) {})
         })) {
             self.downView = _d
         }
-        self.markdownString = markdown
-        self.config = self.downView.configuration
-        toView.addSubview(self.downView)
+        guard let downView = self.downView else { return }
+        self.config = downView.configuration
+        toView.addSubview(downView)
 
-        self.downView.translatesAutoresizingMaskIntoConstraints = false
-        self.downView.addLayoutGuide(UILayoutGuide())
-        self.downView.safeAreaLayoutGuide.topAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
-        self.downView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
-        self.downView.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
-        self.downView.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
+        self.downView?.translatesAutoresizingMaskIntoConstraints = false
+        self.downView?.addLayoutGuide(UILayoutGuide())
+        self.downView?.safeAreaLayoutGuide.topAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+        self.downView?.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+        self.downView?.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
+        self.downView?.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
     }
 
     public func append(
@@ -50,7 +50,7 @@ public class MarkdownView: NSObject {
         _ markdown: String
     ) {
         self.markdownString = markdown
-        try? self.downView.update(markdownString: self.getMarkdown())
+        try? self.downView?.update(markdownString: self.getMarkdown())
     }
 
     public func getMarkdown() -> String {

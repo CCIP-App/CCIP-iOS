@@ -65,7 +65,7 @@ class StatusViewController: UIViewController {
                     // MarkDown view
                     let markdownStyleString = "<style>html, body {height: 100%; width: 100%;} body {display: flex; align-items: center; padding: 0; font-size: 24px;} pre {width: 100%;}</style>\n```\n\(jsonText)\n```"
                     self.downView = MarkdownView.init(markdownStyleString, toView: self.attributesLabel)
-                    self.downView?.downView.isOpaque = false
+                    self.downView?.downView?.isOpaque = false
                 }
                 self.attributesLabel.isUserInteractionEnabled = true
             } else {
