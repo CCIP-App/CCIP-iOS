@@ -10,6 +10,7 @@ import Foundation
 import Then
 import AFNetworking
 import SwiftyJSON
+import UICKeyChainStore
 
 class OPassAPI: NSObject {
     static var currentEvent: String = ""
@@ -83,6 +84,20 @@ class OPassAPI: NSObject {
             default:
                 item.title = NSLocalizedString(title, comment: "")
             }
+        }
+    }
+
+    private static var LAST_EVENT_ID = "lastEventId";
+    static var lastEventId: String {
+        get {
+            guard let lastId = UICKeyChainStore.string(forKey: LAST_EVENT_ID) else {
+                UICKeyChainStore.setString("", forKey: LAST_EVENT_ID)
+                return ""
+            }
+            return lastId
+        }
+        set {
+            UICKeyChainStore.setString(newValue, forKey: LAST_EVENT_ID)
         }
     }
 }

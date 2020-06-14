@@ -150,6 +150,7 @@ extension OPassAPI {
             .then { (infoObj: Any) -> EventInfo in
                 OPassAPI.eventInfo = EventInfo(JSON(infoObj))
                 OPassAPI.currentEvent = JSONSerialization.stringify(infoObj as Any)!
+                OPassAPI.lastEventId = OPassAPI.eventInfo!.EventId
                 return OPassAPI.eventInfo!
         }
     }

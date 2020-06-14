@@ -54,6 +54,13 @@ class OPassEventsController: UIViewController, UITableViewDelegate, UITableViewD
             if self.firstLoad && self.opassEvents.count == 1 {
                 let _ = self.LoadEvent(self.opassEvents.first!.EventId)
                 self.firstLoad = false
+            } else {
+                let lastId = OPassAPI.lastEventId
+                if lastId.count > 0 && self.opassEvents.contains(where: { (event) -> Bool in
+                    event.EventId == lastId
+                }) {
+                    let _ = self.LoadEvent(lastId)
+                }
             }
         }
     }
