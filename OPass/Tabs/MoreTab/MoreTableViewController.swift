@@ -118,6 +118,8 @@ class MoreTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     @objc func CallSwitchEventView() {
+        // clear last event id
+        OPassAPI.lastEventId = ""
         self.dismiss(animated: true, completion: nil)
     }
 
