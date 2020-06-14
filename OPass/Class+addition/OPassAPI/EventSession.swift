@@ -253,22 +253,28 @@ extension OPassAPI {
         return "\(event)|\(token)|favorites"
     }
 
+    private static var favoritesLists: Dictionary<String, [String]> = [:]
+
     static func GetFavoritesList(_ event: String, _ token: String) -> [String] {
         let key = OPassAPI.GetFavoritesStoreKey(event, token)
-        guard let favData = UICKeyChainStore.string(forKey: key) else {
-            UICKeyChainStore.setString("[]", forKey: key)
-            return []
+        if let favoritesList = self.favoritesLists[key] {
+            return favoritesList
         }
-        guard let favList = JSON(parseJSON: favData).object as? [String] else {
-            UICKeyChainStore.setString("[]", forKey: key)
-            return []
+        if let favData = UICKeyChainStore.string(forKey: key) {
+            if let favList = JSON(parseJSON: favData).object as? [String] {
+                self.favoritesLists[key] = favList
+                return favList
+            }
         }
-        return favList
+        self.favoritesLists[key] = []
+        UICKeyChainStore.setString("[]", forKey: key)
+        return []
     }
 
     static func PutFavoritesList(_ event: String, _ token: String, _ newList: [String]) {
         let key = OPassAPI.GetFavoritesStoreKey(event, token)
         UICKeyChainStore.setString(JSON(newList).rawString([.castNilToNSNull: true]), forKey: key)
+        self.favoritesLists[key] = newList
     }
 
     static func CheckFavoriteState(_ event: String, _ token: String, _ session: String) -> Bool {

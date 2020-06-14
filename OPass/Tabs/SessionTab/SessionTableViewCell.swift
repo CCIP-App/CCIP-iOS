@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import TagListView
 import Then
+import SwiftDate
 
 class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
     @IBOutlet weak var SessionTitleLabel: UILabel!
@@ -70,39 +71,7 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
 
     func setSession(_ session: SessionInfo) {
         self.session = session
-
-        guard let token = Constants.accessToken else { return }
-        guard let eventInfo = OPassAPI.eventInfo else { return }
-        guard let session = self.session else { return }
-        guard let sessionId = self.sessionId else { return }
-        guard let room = session.Room else { return }
-
-        self.TagList.removeAllTags()
-
-        let speakers = session.Speakers.map({ speaker -> String in
-            return speaker["name"]
-        }).joined(separator: ", ")
-        self.SpeakerNamesLabel.text = speakers.count > 0 ? "Speaker(s): " + speakers : ""
-
-        let startTime = Constants.DateFromString(session.Start)
-        let endTime = Constants.DateFromString(session.End)
-        let mins = Int(endTime.timeIntervalSince(startTime) / 60)
-        self.RoomLocationLabel.text = "Room \(room) - \(mins) mins"
-
-        self.SessionTitleLabel.text = session["title"]
-
-        let type = session.Type ?? ""
-        let tags = ((session.Tags.map { $0.Name.trim() } ) + [ type ]).filter { $0.count > 0 }
-        self.TagList.addTags(tags)
-        self.setFavorite(false)
-        if (OPassAPI.eventInfo != nil) {
-            DispatchQueue.global(qos: .background).async {
-                let state = OPassAPI.CheckFavoriteState(eventInfo.EventId, token, sessionId)
-                DispatchQueue.main.async {
-                   self.setFavorite(state)
-                }
-            }
-        }
+        self.displayContents()
     }
 
     func getSession() -> SessionInfo? {
@@ -110,9 +79,13 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
     }
 
     func setFavorite(_ favorite: Bool) {
+        DispatchQueue.global(qos: .background).async {
         self.favorite = favorite
         let title = Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: self.favorite ? .solid : .regular, forColor: Constants.appConfigColor("FavoriteButtonColor"))
-        self.FavoriteButton.setAttributedTitle(title, for: .normal)
+            DispatchQueue.main.async {
+                self.FavoriteButton.setAttributedTitle(title, for: .normal)
+            }
+        }
     }
 
     func getFavorite() -> Bool {
@@ -126,5 +99,30 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
 
     func getDisabled() -> Bool {
         return self.disabled
+    }
+
+    func displayContents() {
+        guard let token = Constants.accessToken else { return }
+        guard let eventInfo = OPassAPI.eventInfo else { return }
+        guard let session = self.session else { return }
+        guard let sessionId = self.sessionId else { return }
+        guard let room = session.Room else { return }
+
+        let speakers = session.Speakers.map({ speaker -> String in
+            return speaker["name"]
+        }).joined(separator: ", ")
+        let startTime = Constants.DateFromString(session.Start)
+        let endTime = Constants.DateFromString(session.End)
+        let mins = Int(endTime.timeIntervalSince(startTime) / 60)
+        let type = session.Type ?? ""
+        let tags = ((session.Tags.map { $0.Name.trim() } ) + [ type ]).filter { $0.count > 0 }
+        let state = OPassAPI.CheckFavoriteState(eventInfo.EventId, token, sessionId)
+
+        self.SpeakerNamesLabel.text = speakers.count > 0 ? "Speaker(s): " + speakers : ""
+        self.RoomLocationLabel.text = "Room \(room) - \(mins) mins"
+        self.SessionTitleLabel.text = session["title"]
+        self.TagList.removeAllTags()
+        self.TagList.addTags(tags)
+        self.setFavorite(state)
     }
 }
