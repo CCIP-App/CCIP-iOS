@@ -84,6 +84,9 @@
 "AfterEventActionTitle" = "開啟會後問卷";
 "EmptySessionDetailContent" = "";
 
+"SessionWillStartIn5Minutes" = "議程即將在五分鐘內開始";
+"SessionWillStartIn5MinutesContent" = "「%@」在會議室「%@」，請儘速前往！";
+
 "BeaconWelcomeMessage_In_Title" = "歡迎蒞臨大會區域";
 "BeaconWelcomeMessage_In_Content" = "請記得要按下「報到」按鈕呦";
 "BeaconWelcomeMessage_Out_Title" = "感謝您參加本次大會";

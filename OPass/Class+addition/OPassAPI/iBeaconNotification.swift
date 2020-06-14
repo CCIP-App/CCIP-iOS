@@ -54,6 +54,9 @@ extension OPassAPI {
             scheduler.cancelNotification(notification: notification)
             scheduler.scheduleAllNotifications()
         }
-        NSLog("Notification Registered: \(notification)")
+        NSLog("Notification Registered: \(notification.debugDescription)")
+        #if DEBUG
+        scheduler.printAllNotifications()
+        #endif
     }
 }

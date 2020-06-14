@@ -273,10 +273,10 @@ extension OPassAPI {
         return OPassAPI.GetFavoritesList(event, token).contains(session)
     }
 
-    static func TriggerFavoriteSession(_ event: String, _ token: String, _ session: String) {
-        let title = ""
-        let content = ""
-        let time = 10.seconds.fromNow
+    static func TriggerFavoriteSession(_ event: String, _ token: String, _ session: String, _ sessionData: SessionInfo) {
+        let title = NSLocalizedString("SessionWillStartIn5Minutes", comment: "")
+        let content = String.init(format: NSLocalizedString("SessionWillStartIn5MinutesContent", comment: ""), sessionData["Title"], sessionData.Room ?? "")
+        let time = Date.init(seconds: sessionData.Start.toDate(style: .iso(.init()))!.timeIntervalSince1970) - 5.minutes
         var favList = OPassAPI.GetFavoritesList(event, token)
         let isDisable = favList.contains(session)
         OPassAPI.RegisteringNotification(

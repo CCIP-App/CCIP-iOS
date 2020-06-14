@@ -84,6 +84,9 @@
 "AfterEventActionTitle" = "Open questionnaire";
 "EmptySessionDetailContent" = "";
 
+"SessionWillStartIn5Minutes" = "Session will start in 5 mins.";
+"SessionWillStartIn5MinutesContent" = "\"%@\" in Room \"%@\", please keep your time of buffer to reach the room.";
+
 "BeaconWelcomeMessage_In_Title" = "Welcome to Event Hall";
 "BeaconWelcomeMessage_In_Content" = "Please remember to click the \"CHECK IN\" button!";
 "BeaconWelcomeMessage_Out_Title" = "Very thanks for your coming";
