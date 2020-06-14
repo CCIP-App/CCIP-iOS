@@ -580,7 +580,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
 			<key>summary</key>
 			<string>Blazing fast Markdown rendering in Swift, built upon cmark.</string>
 			<key>version</key>
-			<string>0.9.2</string>
+			<string>0.9.3</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -3399,7 +3399,7 @@ Includes portions from BSMobileProvision:
 			<key>summary</key>
 			<string>OneSignal push notification library for mobile apps.</string>
 			<key>version</key>
-			<string>2.14.0</string>
+			<string>2.14.2</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -3626,7 +3626,7 @@ Objective-C to facilitate writing asynchronous code.&lt;/p&gt;
 			<key>summary</key>
 			<string>Synchronization construct for Objective-C</string>
 			<key>version</key>
-			<string>1.2.8</string>
+			<string>1.2.9</string>
 		</dict>
 		<dict>
 			<key>authors</key>

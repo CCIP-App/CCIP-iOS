@@ -21,7 +21,7 @@ PODS:
   - CPDAcknowledgements (1.0.0)
   - Device.swift (1.2.2)
   - DLLocalNotifications (0.08)
-  - Down (0.9.2)
+  - Down (0.9.3)
   - EFQRCode (4.5.0):
     - swift_qrcodejs (~> 1.0.1)
   - Firebase/Core (6.26.0):
@@ -109,8 +109,8 @@ PODS:
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
   - Nuke (7.6.3)
-  - OneSignal (2.14.0)
-  - PromisesObjC (1.2.8)
+  - OneSignal (2.14.2)
+  - PromisesObjC (1.2.9)
   - Shimmer (1.0.2)
   - STPopup (1.8.7)
   - swift_qrcodejs (1.0.1)
@@ -234,7 +234,7 @@ SPEC CHECKSUMS:
   CPDAcknowledgements: 6e15e71849ba4ad5e8a17a0bb9d20938ad23bac8
   Device.swift: 3f93632bb3fa3e4ebb9b202563975177e17c4296
   DLLocalNotifications: 92ee357278e90b0f2b2da1bb0e5a7e7fb179354e
-  Down: 1f6a14846dff45ae8e7e4334b4e386a5fd3b2412
+  Down: 4553b984236807e384fa0ef7c7e360ef9f7c425d
   EFQRCode: 842f431e660da841f518993af8f4cbd275601d84
   Firebase: 7cf5f9c67f03cb3b606d1d6535286e1080e57eb6
   FirebaseAnalytics: 96634d356482d4f3af8fe459a0ebf19a99c71b75
@@ -258,8 +258,8 @@ SPEC CHECKSUMS:
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   Nuke: 44130e95e09463f8773ae4b96b90de1eba6b3350
-  OneSignal: 9fa88f227d9b0c1dd36e334b6cd4c222338a88b2
-  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  OneSignal: 1dcb1fd96f9c15a5c352dcfcab9106a7c15eced7
+  PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STPopup: a9045557bc48a0df51fbb7bf0544447c5fe84d34
   swift_qrcodejs: c181fe5c849d30c699546a23762d7e3dd143ab37
@@ -275,4 +275,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 6ab8c5475481675552e85953d5e86af8ae86d004
 
-COCOAPODS: 1.9.0.beta.2
+COCOAPODS: 1.9.3
