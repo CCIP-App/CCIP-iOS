@@ -90,7 +90,8 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
         self.selectedSection = Date.init(timeIntervalSince1970: 0)
         self.segmentsTextArray.removeAll()
         var preferredDateInterval: TimeInterval = TimeInterval(CGFloat.greatestFiniteMagnitude)
-        for session in self.programs!.Sessions {
+        guard let programs = self.programs else { return }
+        for session in programs.Sessions {
             let startTime = Constants.DateFromString(session.Start)
             let endTime = Constants.DateFromString(session.End)
             let timeDate = Constants.DateToDisplayDateString(startTime)
@@ -122,12 +123,12 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
     // MARK: - ViewPagerDelegate
 
     //Returns the number of tabs that will be present in ViewPager.
-    func numberOfTabs(forViewPager viewPager: ViewPagerController!) -> UInt {
+    func numberOfTabs(forViewPager viewPager: ViewPagerController?) -> UInt {
         return UInt(self.segmentsTextArray.count)
     }
 
     //Returns the view that will be shown as tab. Create a UIView object (or any UIView subclass object) and give it to ViewPager and it will use it as tab view.
-    func viewPager(_ viewPager: ViewPagerController!, viewForTabAt index: UInt) -> UIView! {
+    func viewPager(_ viewPager: ViewPagerController?, viewForTabAt index: UInt) -> UIView! {
         let label = UILabel.init()
         label.text = "DAY \(self.segmentsTextArray[Int(index)])"
         label.textColor = Constants.appConfigColor("SessionDateTitleTextColor")
@@ -142,7 +143,7 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
     //Alternatively, you can implement - viewPager:contentViewForTabAtIndex: method and return a UIView object (or any UIView subclass object) and ViewPager will use it as content view.
     //The - viewPager:contentViewControllerForTabAtIndex: and - viewPager:contentViewForTabAtIndex: dataSource methods are both defined optional. But, you should implement at least one of them! They are defined as optional to provide you an option.
     //All delegate methods are optional.
-    func viewPager(_ viewPager: ViewPagerController!, contentViewControllerForTabAt index: UInt) -> UIViewController! {
+    func viewPager(_ viewPager: ViewPagerController?, contentViewControllerForTabAt index: UInt) -> UIViewController! {
         let vc = SessionTableViewController.init()
         vc.sessionDate = self.segmentsTextArray[Int(index)]
         vc.pagerController = self
@@ -150,12 +151,12 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
     }
 
     //ViewPager will alert your delegate object via - viewPager:didChangeTabToIndex: method, so that you can do something useful.
-    func viewPager(_ viewPager: ViewPagerController!, didChangeTabTo index: UInt) {
+    func viewPager(_ viewPager: ViewPagerController?, didChangeTabTo index: UInt) {
         // Do something useful
     }
 
     //You can change ViewPager's options via viewPager:valueForOption:withDefault: delegate method. Just return the desired value for the given option. You don't have to return a value for every option. Only return values for the interested options and ViewPager will use the default values for the rest. Available options are defined in the ViewPagerController.h file and described below.
-    func viewPager(_ viewPager: ViewPagerController!, valueFor option: ViewPagerOption, withDefault value: CGFloat) -> CGFloat {
+    func viewPager(_ viewPager: ViewPagerController?, valueFor option: ViewPagerOption, withDefault value: CGFloat) -> CGFloat {
         switch (option) {
         case ViewPagerOption.startFromSecondTab:
             return 0.0
@@ -186,7 +187,7 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
         }
     }
 
-    func viewPager(_ viewPager: ViewPagerController!, colorFor component: ViewPagerComponent, withDefault color: UIColor!) -> UIColor! {
+    func viewPager(_ viewPager: ViewPagerController?, colorFor component: ViewPagerComponent, withDefault color: UIColor?) -> UIColor! {
         switch (component) {
         case ViewPagerComponent.indicator:
             return Constants.appConfigColor("SessionDateIndicatorColor")
@@ -206,8 +207,10 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         if segue.identifier == Constants.SESSION_DETAIL_VIEW_STORYBOARD_ID {
+            guard let sender = sender as? String else { return }
             guard let detailView = segue.destination as? SessionDetailViewController else { return }
-            guard let session = self.programs!.GetSession(sender as! String) else { return }
+            guard let programs = self.programs else { return }
+            guard let session = programs.GetSession(sender) else { return }
             detailView.setSessionData(session)
         }
     }

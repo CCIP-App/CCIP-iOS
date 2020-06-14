@@ -30,13 +30,15 @@ extension OPassAPI {
             OPassAPI.InitializeRequest(Constants.URL_ANNOUNCEMENT) { _, _, error, _ in
                 completion?(false, nil, error)
                 }.then { (obj: Any?) -> Void in
-                    if obj != nil {
-                        let announces = JSON(obj!).arrayValue.map { ann -> AnnouncementInfo in
-                            return AnnouncementInfo(ann)
+                    if let o = obj {
+                        if obj != nil {
+                            let announces = JSON(o).arrayValue.map { ann -> AnnouncementInfo in
+                                return AnnouncementInfo(ann)
+                            }
+                            completion?(true, announces, OPassSuccessError)
+                        } else {
+                            completion?(false, [RawOPassData(o)], NSError(domain: "OPass can not get announcement", code: 2, userInfo: nil))
                         }
-                        completion?(true, announces, OPassSuccessError)
-                    } else {
-                        completion?(false, [RawOPassData(obj!)], NSError(domain: "OPass can not get announcement", code: 2, userInfo: nil))
                     }
             }
         } else {

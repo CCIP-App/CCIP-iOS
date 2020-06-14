@@ -8,7 +8,7 @@
 
 import Foundation
 
-class StaffWebViewController : OPassWebViewController, OPassWebViewIB {
+class StaffWebViewController: OPassWebViewController, OPassWebViewIB {
     @IBOutlet var goReloadButton: UIBarButtonItem?
 
     @IBAction override func reload(_ sender: Any) {

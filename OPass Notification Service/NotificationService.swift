@@ -12,7 +12,7 @@ import OneSignal
 class NotificationService: UNNotificationServiceExtension {
 
     var contentHandler: ((UNNotificationContent) -> Void)?
-    var receivedRequest: UNNotificationRequest!
+    var receivedRequest: UNNotificationRequest?
     var bestAttemptContent: UNMutableNotificationContent?
 
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {

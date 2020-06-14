@@ -42,7 +42,8 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
         self.vwHeader?.setGradientColor(from: Constants.appConfigColor("SessionTitleLeftColor"), to: Constants.appConfigColor("SessionTitleRightColor"), startPoint: CGPoint(x: 1, y: 0.5), toPoint: CGPoint(x: -0.4, y: 0.5))
 
         // following constraint for fix the storyboard autolayout broken the navigation bar alignment
-        self.view.addConstraint(NSLayoutConstraint.init(item: self.vwHeader!, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0))
+        guard let vwH = self.vwHeader else { return }
+        self.view.addConstraint(NSLayoutConstraint.init(item: vwH, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0))
 
         let lbsHeader = [
             self.lbSpeaker,
@@ -142,16 +143,17 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
         }
 
         // force to use Down Markdown view
-        let startTime = Constants.DateFromString(self.session!.Start)
-        let endTime = Constants.DateFromString(self.session!.End)
+        guard let session = self.session else { return }
+        let startTime = Constants.DateFromString(session.Start)
+        let endTime = Constants.DateFromString(session.End)
         let startTimeString = Constants.DateToDisplayTimeString(startTime)
         let endTimeString = Constants.DateToDisplayTimeString(endTime)
 
-        self.lbSpeaker?.isHidden = self.session!.Speakers.count == 0
-        self.lbTitle?.text = self.session!["title"]
-        self.lbSpeakerName?.text = self.session!.Speakers.first?["name"]
-        self.lbRoomText?.text = self.session!.Room
-        let type = self.session!.Type ?? ""
+        self.lbSpeaker?.isHidden = session.Speakers.count == 0
+        self.lbTitle?.text = session["title"]
+        self.lbSpeakerName?.text = session.Speakers.first?["name"]
+        self.lbRoomText?.text = session.Room
+        let type = session.Type ?? ""
         self.lbType?.isHidden = type.count == 0
         self.lbTypeText?.text = type
         self.lbTimeText?.text = "\(startTimeString) - \(endTimeString)"
@@ -161,7 +163,9 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
 
     func checkFavoriteState() {
         guard let token = Constants.accessToken else { return }
-        let favorite = OPassAPI.CheckFavoriteState(OPassAPI.eventInfo!.EventId, token, self.session!.Id)
+        guard let eventInfo = OPassAPI.eventInfo else { return }
+        guard let session = self.session else { return }
+        let favorite = OPassAPI.CheckFavoriteState(eventInfo.EventId, token, session.Id)
         self.btnFavorite?.setAttributedTitle(Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: favorite ? .solid : .regular, forColor: .white), for: .normal)
     }
 
@@ -171,7 +175,9 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
 
     @IBAction func favoriteTouchUpInsideAction(_ sender: Any) {
         guard let token = Constants.accessToken else { return }
-        OPassAPI.TriggerFavoriteSession(OPassAPI.eventInfo!.EventId, token, self.session!.Id, self.session!)
+        guard let eventInfo = OPassAPI.eventInfo else { return }
+        guard let session = self.session else { return }
+        OPassAPI.TriggerFavoriteSession(eventInfo.EventId, token, session.Id, session)
         self.checkFavoriteState()
         UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
     }
@@ -183,17 +189,28 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
     // MARK: - FSPagerView
 
     func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return self.session!.Speakers.count
+        guard let session = self.session else {
+            return 0
+        }
+        return session.Speakers.count
     }
 
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
+        guard let session = self.session else {
+            return pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: 0)
+        }
         let defaultIcon = Constants.AssertImage(name: "StaffIconDefault", InBundleName: "PassAssets")
-        let speaker = self.session!.Speakers[index]
-        let speakerPhotoURL = speaker.Avatar
-        NSLog("Loading Speaker Photo -> \(speakerPhotoURL?.absoluteString ?? "n/a")")
+        let speaker = session.Speakers[index]
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        cell.imageView?.contentMode = .scaleAspectFit
-        Constants.LoadInto(view: cell.imageView!, forURL: speakerPhotoURL!, withPlaceholder: defaultIcon!)
+        if let cellIv = cell.imageView {
+            cellIv.contentMode = .scaleAspectFit
+            NSLog("Loading Speaker Photo -> \(speaker.Avatar?.absoluteString ?? "n/a")")
+            if let icon = defaultIcon {
+                if let speakerPhotoURL = speaker.Avatar {
+                    Constants.LoadInto(view: cellIv, forURL: speakerPhotoURL, withPlaceholder: icon)
+                }
+            }
+        }
         self.lbSpeakerName?.text = speaker["name"]
         return cell
     }

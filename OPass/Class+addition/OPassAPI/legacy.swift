@@ -22,7 +22,12 @@ internal typealias OPassCompletionCallbackLegacy = (
         self.Response = response
         self.Data = data
         self.Json = json
-        self.Obj = json?.object as! NSObject
+        self.Obj = NSObject.init()
+        if let json = json {
+            if let obj = json.object as? NSObject {
+                self.Obj = obj
+            }
+        }
     }
 }
 

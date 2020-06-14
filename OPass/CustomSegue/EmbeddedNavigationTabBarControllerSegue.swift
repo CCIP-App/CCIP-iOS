@@ -13,10 +13,11 @@ import SwiftDate
 
 class EmbeddedNavigationTabBarControllerSegue: UIStoryboardSegue {
     override func perform() {
+        guard let navController = self.source.navigationController else { return }
         let destinationView: UIView = self.destination.view
         let screenWidth = UIScreen.main.bounds.width
         let screenHeight = UIScreen.main.bounds.height
-        let navBarHeight = (self.source.navigationController?.navigationBar.frame.size.height)!
+        let navBarHeight = navController.navigationBar.frame.size.height
         let tabBarHeight = CGFloat(0.0) //(self.source.tabBarController?.tabBar.frame.size.height)!
         let height = screenHeight - (destinationView.ViewTopStart + navBarHeight + tabBarHeight)
         let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: screenWidth, height: height))
@@ -25,7 +26,11 @@ class EmbeddedNavigationTabBarControllerSegue: UIStoryboardSegue {
         Promise { resolve, _ in
             DispatchQueue.main.async {
                 self.source.present(self.destination, animated: false) {
-                    destinationView.superview!.frame = CGRect(origin: CGPoint(x: 0, y: destinationView.superview!.ViewTopStart + navBarHeight), size: CGSize(width: screenWidth, height: height))
+                    guard let dest = destinationView.superview else {
+                        resolve()
+                        return
+                    }
+                    dest.frame = CGRect(origin: CGPoint(x: 0, y: dest.ViewTopStart + navBarHeight), size: CGSize(width: screenWidth, height: height))
                     destinationView.alpha = 1
                     resolve()
                 }

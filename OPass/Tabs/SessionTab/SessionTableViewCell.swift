@@ -56,8 +56,11 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
 
     @IBAction func favoriteTouchUpInsideAction(_ sender: NSObject) {
         guard let token = Constants.accessToken else { return }
-        OPassAPI.TriggerFavoriteSession(OPassAPI.eventInfo!.EventId, token, self.sessionId!, self.session!)
-        self.setFavorite(OPassAPI.CheckFavoriteState(OPassAPI.eventInfo!.EventId, token, self.sessionId!))
+        guard let eventInfo = OPassAPI.eventInfo else { return }
+        guard let session = self.session else { return }
+        guard let sessionId = self.sessionId else { return }
+        OPassAPI.TriggerFavoriteSession(eventInfo.EventId, token, sessionId, session)
+        self.setFavorite(OPassAPI.CheckFavoriteState(eventInfo.EventId, token, sessionId))
         UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
     }
 
@@ -68,27 +71,33 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
     func setSession(_ session: SessionInfo) {
         self.session = session
 
+        guard let token = Constants.accessToken else { return }
+        guard let eventInfo = OPassAPI.eventInfo else { return }
+        guard let session = self.session else { return }
+        guard let sessionId = self.sessionId else { return }
+        guard let room = session.Room else { return }
+
         self.TagList.removeAllTags()
 
-        let speakers = self.session!.Speakers.map({ speaker -> String in
+        let speakers = session.Speakers.map({ speaker -> String in
             return speaker["name"]
         }).joined(separator: ", ")
         self.SpeakerNamesLabel.text = speakers.count > 0 ? "Speaker(s): " + speakers : ""
 
-        let startTime = Constants.DateFromString(self.session!.Start)
-        let endTime = Constants.DateFromString(self.session!.End)
+        let startTime = Constants.DateFromString(session.Start)
+        let endTime = Constants.DateFromString(session.End)
         let mins = Int(endTime.timeIntervalSince(startTime) / 60)
-        self.RoomLocationLabel.text = "Room \(self.session!.Room!) - \(mins) mins"
+        self.RoomLocationLabel.text = "Room \(room) - \(mins) mins"
 
-        self.SessionTitleLabel.text = self.session!["title"]
+        self.SessionTitleLabel.text = session["title"]
 
-        let type = self.session!.Type ?? ""
-        let tags = ((self.session?.Tags.map { $0.Name.trim() } ?? []) + [ type ]).filter { $0.count > 0 }
+        let type = session.Type ?? ""
+        let tags = ((session.Tags.map { $0.Name.trim() } ) + [ type ]).filter { $0.count > 0 }
         self.TagList.addTags(tags)
         self.setFavorite(false)
         if (OPassAPI.eventInfo != nil) {
             DispatchQueue.global(qos: .background).async {
-                let state = OPassAPI.CheckFavoriteState(OPassAPI.eventInfo!.EventId, Constants.accessToken!, self.sessionId!)
+                let state = OPassAPI.CheckFavoriteState(eventInfo.EventId, token, sessionId)
                 DispatchQueue.main.async {
                    self.setFavorite(state)
                 }

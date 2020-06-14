@@ -11,7 +11,7 @@ import Then
 import Down
 import WebKit
 
-public class MarkdownView : NSObject {
+public class MarkdownView: NSObject {
     public var markdownString: String
     public var downView: DownView
     public var config: WKWebViewConfiguration
@@ -21,9 +21,13 @@ public class MarkdownView : NSObject {
         toView: UIView,
         config: WKWebViewConfiguration? = nil
         ) {
-        self.downView = try! await(Promise { resolve, reject in
-            resolve(try! DownView(frame: CGRect.zero, markdownString: markdown, configuration: config, options: .smartUnsafe) {})
-        })
+        guard let dv = WKWebView.init() as? DownView else { fatalError("Initial DoenView Error") }
+        self.downView = dv
+        if let _d = (try? await(Promise { resolve, _ in
+            resolve(try? DownView(frame: CGRect.zero, markdownString: markdown, configuration: config, options: .smartUnsafe) {})
+        })) {
+            self.downView = _d
+        }
         self.markdownString = markdown
         self.config = self.downView.configuration
         toView.addSubview(self.downView)

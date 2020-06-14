@@ -45,7 +45,7 @@ class EmbeddedNavigationControllerSegue: UIStoryboardSegue {
         Promise { resolve, _ in
             DispatchQueue.main.async {
                 self.source.present(self.destination, animated: false) {
-                    destinationView.superview!.frame = CGRect(origin: CGPoint(x: 0, y: superViewTop), size: CGSize(width: screenWidth, height: superViewHeight))
+                    destinationView.superview?.frame = CGRect(origin: CGPoint(x: 0, y: superViewTop), size: CGSize(width: screenWidth, height: superViewHeight))
                     destinationView.alpha = 1
                     resolve()
                 }

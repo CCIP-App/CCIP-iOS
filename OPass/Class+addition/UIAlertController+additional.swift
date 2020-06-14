@@ -12,27 +12,35 @@ import UIKit
 @objc extension UIAlertController {
     var titleLabel: UILabel {
         get {
-            return self.viewArray(self.view)[0] as! UILabel
+            if let lb = self.viewArray(self.view)[0] as? UILabel {
+                return lb
+            }
+            return UILabel.init()
         }
     }
     var messageLabel: UILabel {
         get {
-            return self.viewArray(self.view)[1] as! UILabel
+            if let lb = self.viewArray(self.view)[1] as? UILabel {
+                return lb
+            }
+            return UILabel.init()
         }
     }
     func viewArray(_ root: UIView) -> NSArray {
-        var _subviews: NSArray? = nil
+        let _subviews: NSArray? = nil
         for v: UIView in root.subviews {
             if (_subviews != nil) {
                 break
             }
             if (v.isKind(of: UILabel.self)) {
-                _subviews = root.subviews as NSArray
-                return _subviews!
+                return root.subviews as NSArray
             }
             return self.viewArray(v)
         }
-        return _subviews!
+        if let sv = _subviews {
+            return sv
+        }
+        return []
     }
 
     static func actionSheet(
@@ -41,16 +49,16 @@ import UIKit
         andMessage: String
         ) -> UIAlertController {
         let ac: UIAlertController = self.init(title: withTitle, message: andMessage, preferredStyle: UIAlertController.Style.actionSheet)
-        var sd: UIView? = sender as? UIView
-        var frame: CGRect = sd!.frame
+        guard var sd = sender as? UIView else { return ac }
+        var frame: CGRect = sd.frame
         frame.origin.x += frame.size.width / 2.0
         frame.origin.y += frame.size.height / 2.0
         frame.size.width = 1.0
         frame.size.height = 1.0
-        sd = sd!.superview
-        while (!sd.self!.description.hasSuffix("ViewController") && sd != nil) {
-            let f: CGRect = sd!.frame
-            sd = sd!.superview
+        if let _sd = sd.superview { sd = _sd }
+        while (!sd.self.description.hasSuffix("ViewController")) {
+            let f: CGRect = sd.frame
+            if let _sd = sd.superview { sd = _sd }
             frame.origin.x += f.origin.x
             frame.origin.y += f.origin.y
         }

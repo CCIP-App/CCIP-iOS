@@ -43,12 +43,13 @@ extension Constants {
             Analytics.setScreenName(_name as? String, screenClass: _func)
         }
         if (_events != nil) {
-            Analytics.logEvent(_name as! String, parameters: _events as? [String: Any])
+            Analytics.logEvent(_name as? String ?? "", parameters: _events as? [String: Any])
         }
     }
     static func appConfig(_ path: String) -> Any? {
-        guard var config = NSDictionary.init(contentsOf: Bundle.main.url(forResource: "config", withExtension: "plist")!) else { return nil }
-        config = config.value(forKey: self.appName()) as! NSDictionary
+        guard let configPlist = Bundle.main.url(forResource: "config", withExtension: "plist") else { return nil }
+        guard var config = NSDictionary.init(contentsOf: configPlist) else { return nil }
+        if let configDist = config.value(forKey: self.appName()) as? NSDictionary { config = configDist }
         let value = config.value(forKeyPath: path)
         return value
     }
@@ -58,12 +59,13 @@ extension Constants {
         if (colorString ?? "").count == 0 {
             NSLog("[WARN] Config Color `\(path)` is empty")
         } else if (colorString ?? "").count > 0 {
-            color = UIColor.colorFromHtmlColor(colorString!)
+            color = UIColor.colorFromHtmlColor(colorString ?? "")
         }
         return color
     }
     static var iBeacon: Dictionary<String, String> {
-        return self.appConfig("iBeacon") as! Dictionary<String, String>
+        guard let iBeacon = self.appConfig("iBeacon") as? Dictionary<String, String> else { return [:] }
+        return iBeacon
     }
     static var beaconUUID: String {
         return self.iBeacon["UUID"]!
@@ -97,10 +99,10 @@ extension Constants {
     }
     static var accessTokenSHA1: String {
         if self.haveAccessToken {
-            let token = self.accessToken!
-            let tokenData = token.data(using: .utf8)
-            let tokenDataSHA1 = (tokenData! as NSData).sha1Hash()
-            let tokenSHA1 = (tokenDataSHA1! as NSData).hexString.lowercased()
+            guard let token = self.accessToken else { return "" }
+            guard let tokenData = token.data(using: .utf8) else { return "" }
+            guard let tokenDataSHA1 = (tokenData as NSData).sha1Hash() else { return "" }
+            let tokenSHA1 = (tokenDataSHA1 as NSData).hexString.lowercased()
             return tokenSHA1
         }
         return ""
@@ -205,10 +207,12 @@ extension Constants {
         return String(format: "https://www.gravatar.com/avatar/\(hash)?s=86&\(hash.count > 0 ? "r=x" : "f=y&d=mm")")
     }
     static func OpenInAppSafari(forPath url: String) {
-        self.OpenInAppSafari(forURL: URL.init(string: url)!)
+        if let url = URL.init(string: url) {
+            self.OpenInAppSafari(forURL: url)
+        }
     }
     static func OpenInAppSafari(forURL url: URL) {
-        if (SFSafariViewController.className != "" && (url.scheme?.contains("http"))!) {
+        if (SFSafariViewController.className != "" && ((url.scheme?.contains("http")) ?? false)) {
             // Open in SFSafariViewController
             let safariViewController = SFSafariViewController.init(url: url)
 
@@ -219,7 +223,9 @@ extension Constants {
             // ProgressBar Color Not Found
             // ...
 
-            UIApplication.getMostTopPresentedViewController()!.present(safariViewController, animated: true, completion: nil)
+            if let topMost = UIApplication.getMostTopPresentedViewController() {
+                topMost.present(safariViewController, animated: true, completion: nil)
+            }
         } else {
             // Open in Mobile Safari
             UIApplication.shared.open(url, options: [:]) { (success: Bool) in
@@ -234,29 +240,34 @@ extension Constants {
         let setDevLogo = { (resp: ImageResponse?) in
             let image = resp?.image
             if image != nil {
-                var img = image!
-                if isDevMode {
-                    img = img.imageWithColor(self.appConfigColor("DevelopingLogoMaskColor"))
-                }
-                if resp != nil {
-                    if view.contentView == nil {
-                        view.contentView = UIImageView.init(image: img)
-                    } else {
-                        (view.contentView as! UIImageView).image = img
+                if var img = image {
+                    if isDevMode {
+                        img = img.imageWithColor(self.appConfigColor("DevelopingLogoMaskColor"))
                     }
-                    view.contentView.contentMode = .scaleAspectFit
+                    if resp != nil {
+                        if view.contentView == nil {
+                            view.contentView = UIImageView.init(image: img)
+                        } else {
+                            if let iv = view.contentView as? UIImageView {
+                                iv.image = img
+                            }
+                        }
+                        view.contentView.contentMode = .scaleAspectFit
+                    }
                 }
             }
         }
-        ImagePipeline.shared.loadImage(
-            with: URL.init(string: self.URL_LOGO_IMG)!,
-            progress: { response, _, _ in
-                setDevLogo(response)
-            },
-            completion: { response, _ in
-                setDevLogo(response)
-            }
-        )
+        if let logoUrl = URL.init(string: self.URL_LOGO_IMG) {
+            ImagePipeline.shared.loadImage(
+                with: logoUrl,
+                progress: { response, _, _ in
+                    setDevLogo(response)
+                },
+                completion: { response, _ in
+                    setDevLogo(response)
+                }
+            )
+        }
         view.shimmeringSpeed = 115
         view.isShimmering = isDevMode
     }
@@ -275,7 +286,7 @@ extension Constants {
     }
     static func AssertImage(_ bundleName: String, _ imageName: String ) -> UIImage? {
         let bundlePath = Bundle.main.bundlePath.appendingPathComponent("\(bundleName).bundle")
-        let bundle = Bundle.init(path: bundlePath)!
+        guard let bundle = Bundle.init(path: bundlePath) else { return nil }
         return UIImage.init(named: imageName, in: bundle, compatibleWith: nil)
     }
     static func fontAwesome(code: String) -> String? {
@@ -307,7 +318,8 @@ extension Constants {
         return NSAttributedString.init(string: fontAwesome, attributes: fontAttribute)
     }
     static var tintColor: UIColor {
-        return UIView().tintColor!
+        guard let tint = UIView().tintColor else { return UIColor.init() }
+        return tint
     }
     static func DateFromUnix(_ unixInt: Int) -> Date {
         return Date(seconds: TimeInterval(unixInt), region: Region.local)
@@ -320,20 +332,20 @@ extension Constants {
     }
     static func DateToDisplayDateString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
-        return DateInRegion(date, region: local).toFormat(self.appConfig("DisplayDateFormat") as! String)
+        return DateInRegion(date, region: local).toFormat(self.appConfig("DisplayDateFormat") as? String ?? "")
     }
     static func DateToDisplayTimeString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
-        return DateInRegion(date, region: local).toFormat(self.appConfig("DisplayTimeFormat") as! String)
+        return DateInRegion(date, region: local).toFormat(self.appConfig("DisplayTimeFormat") as? String ?? "")
     }
     static func DateToDisplayDateTimeString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
-        let format = String.init(format: "%@ %@", self.appConfig("DisplayDateFormat") as! String, self.appConfig("DisplayTimeFormat") as! String)
+        let format = String.init(format: "%@ %@", self.appConfig("DisplayDateFormat") as? String ?? "", self.appConfig("DisplayTimeFormat") as? String ?? "")
         return DateInRegion(date, region: local).toFormat(format)
     }
     static func DateToDisplayDateAndTimeString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
-        return DateInRegion(date, region: local).toFormat(self.appConfig("DisplayDateTimeFormat") as! String)
+        return DateInRegion(date, region: local).toFormat(self.appConfig("DisplayDateTimeFormat") as? String ?? "")
     }
 
     static var INIT_SESSION_DETAIL_VIEW_STORYBOARD_ID: String {

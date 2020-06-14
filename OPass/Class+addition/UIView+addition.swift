@@ -14,11 +14,17 @@ extension UIView {
         return self.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
     }
     var topGuideHeight: CGFloat {
-        return (self.next as! UIViewController).topGuideHeight
+        if let vc = self.next as? UIViewController {
+            return vc.topGuideHeight
+        }
+        return 0
     }
 
     var bottomGuideHeight: CGFloat {
-        return (self.next as! UIViewController).bottomGuideHeight
+        if let vc = self.next as? UIViewController {
+            return vc.bottomGuideHeight
+        }
+        return 0
     }
     // DashedLine and linear diagonal gradient
     static let DASHLINE_VIEW_ID: String = "DashedLine"
@@ -63,17 +69,21 @@ extension UIView {
         }
         if (theViewGradient == nil) {
             theViewGradient = CAGradientLayer.init()
-            theViewGradient!.name = name
-            theViewGradient!.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
+            theViewGradient?.name = name
+            theViewGradient?.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         }
         if (from != nil && to != nil && CGPoint.zero != startPoint && CGPoint.zero != toPoint) {
-            theViewGradient!.colors = [ from!.cgColor, to!.cgColor ]
-            theViewGradient!.startPoint = startPoint
-            theViewGradient!.endPoint = toPoint
+            if let from = from, let to = to {
+                theViewGradient?.colors = [ from.cgColor, to.cgColor ]
+            }
+            theViewGradient?.startPoint = startPoint
+            theViewGradient?.endPoint = toPoint
         } else {
-            theViewGradient!.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
+            theViewGradient?.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         }
-        self.layer.insertSublayer(theViewGradient!, at: 0)
+        if let theViewGradient = theViewGradient {
+            self.layer.insertSublayer(theViewGradient, at: 0)
+        }
     }
 
     @objc func sizeGradientToFit() {

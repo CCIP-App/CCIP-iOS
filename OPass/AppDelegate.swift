@@ -33,56 +33,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 static var appIconName: String = ""
 
             }
-            if aa.appArt != nil {
-                return aa.appArt!
+            if let appArt = aa.appArt {
+                return appArt
             } else {
                 // find the biggest icon for AppArt
                 // and find biggest app icon file name
-                let bundle = Bundle.main.infoDictionary!
-                let bundleIcons = (bundle as NSDictionary).value(forKeyPath: "CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles") as! Array<String>
-                guard let bundleFiles = try? FileManager.init().contentsOfDirectory(atPath: Bundle.main.resourcePath!) else { return SLColorArt.init() }
-                var availIcon = Array<String>()
-                for iconPrefix in bundleIcons {
-                    for file in bundleFiles {
-                        if file.range(of: iconPrefix, options: .caseInsensitive, range: nil, locale: nil) != nil {
-                            availIcon += [ file ]
-                        }
-                    }
-                }
-                // find the biggest image metrix
-                var sizeMetrix = 0
-                var fileName = ""
-                for iconName in availIcon {
-                    guard let regex = try? NSRegularExpression.init(pattern: "([\\d]+).([\\d]+)(@([\\d]+)x)?", options: .caseInsensitive) else { return SLColorArt.init() }
-                    regex.enumerateMatches(in: iconName, options: .reportCompletion, range: NSRange.init(location: 0, length: iconName.count)) { (match, flags, _) in
-                        if !flags.contains([ .completed, .hitEnd ]) {
-                            let wRange = match!.range(at: 1)
-                            let width = Int(iconName[wRange])!
-                            let hRange = match!.range(at: 2)
-                            let height = Int(iconName[hRange])!
-                            var mutiple = 1
-                            let mpRange = match!.range(at: 4)
-                            if mpRange.location != NSNotFound {
-                                mutiple = Int(iconName[mpRange])!
-                                let size = width * height * mutiple
-                                if size > sizeMetrix {
-                                    sizeMetrix = size
-                                    fileName = iconName
-                                }
+                guard let bundle = Bundle.main.infoDictionary else { return SLColorArt.init() }
+                if let bundleIcons = (bundle as NSDictionary).value(forKeyPath: "CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles") as? Array<String> {
+                    guard let bundleFiles = try? FileManager.init().contentsOfDirectory(atPath: Bundle.main.resourcePath ?? "") else { return SLColorArt.init() }
+                    var availIcon = Array<String>()
+                    for iconPrefix in bundleIcons {
+                        for file in bundleFiles {
+                            if file.range(of: iconPrefix, options: .caseInsensitive, range: nil, locale: nil) != nil {
+                                availIcon += [ file ]
                             }
                         }
                     }
-                    aa.appIconName = (fileName as NSString).deletingPathExtension
-                    aa.appArt = UIImage.init(named: aa.appIconName)?.colorArt()
+                    // find the biggest image metrix
+                    var sizeMetrix = 0
+                    var fileName = ""
+                    for iconName in availIcon {
+                        guard let regex = try? NSRegularExpression.init(pattern: "([\\d]+).([\\d]+)(@([\\d]+)x)?", options: .caseInsensitive) else { return SLColorArt.init() }
+                        regex.enumerateMatches(in: iconName, options: .reportCompletion, range: NSRange.init(location: 0, length: iconName.count)) { (match, flags, _) in
+                            if !flags.contains([ .completed, .hitEnd ]) {
+                                let wRange = match?.range(at: 1) ?? NSRange.init()
+                                let width = Int(iconName[wRange]) ?? 0
+                                let hRange = match?.range(at: 2) ?? NSRange.init()
+                                let height = Int(iconName[hRange]) ?? 0
+                                var mutiple = 1
+                                let mpRange = match?.range(at: 4) ?? NSRange.init()
+                                if mpRange.location != NSNotFound {
+                                    mutiple = Int(iconName[mpRange]) ?? 0
+                                    let size = width * height * mutiple
+                                    if size > sizeMetrix {
+                                        sizeMetrix = size
+                                        fileName = iconName
+                                    }
+                                }
+                            }
+                        }
+                        aa.appIconName = (fileName as NSString).deletingPathExtension
+                        aa.appArt = UIImage.init(named: aa.appIconName)?.colorArt()
+                    }
+                    if let appArt = aa.appArt {
+                        self.setAppearance(appArt)
+                        return appArt
+                    }
                 }
-                self.setAppearance(aa.appArt!)
-                return aa.appArt!
             }
+            return SLColorArt.init()
         }
     }
 
     static var delegateInstance: AppDelegate {
-        return UIApplication.shared.delegate as! AppDelegate
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            return delegate
+        }
+        return AppDelegate.init()
     }
 
     static func sendTag(_ tag: String, value: String) {
@@ -131,7 +138,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func parseUniversalLinkAndURL(_ isOldScheme: Bool, _ link: String) -> Bool {
-        return self.parseUniversalLinkAndURL(isOldScheme, URL.init(string: link)!)
+        guard let url = URL.init(string: link) else { return false }
+        return self.parseUniversalLinkAndURL(isOldScheme, url)
     }
 
     func parseUniversalLinkAndURL(_ isOldScheme: Bool, _ url: URL) -> Bool {
@@ -141,8 +149,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let token = params?.first(where: { $0.name == "token" })?.value
         if isOldScheme {
             let ac = UIAlertController.alertOfTitle(NSLocalizedString("GuideViewTokenErrorTitle", comment: ""), withMessage: NSLocalizedString("GuideViewTokenErrorDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel, cancelAction: nil)
-            if event_id != nil && token != nil {
-                OPassAPI.DoLogin(event_id!, token!) { success, data, _ in
+            if let event_id = event_id, let token = token {
+                OPassAPI.DoLogin(event_id, token) { success, data, _ in
                     if !success && data != nil {
                         ac.showAlert {
                             UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
@@ -151,11 +159,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 }
                 return true
             }
-            if event_id == nil && token != nil && Constants.HasSetEvent {
-                OPassAPI.RedeemCode("", token!) { success, data, _ in
-                    if !success && data != nil {
-                        ac.showAlert {
-                            UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
+            if let token = token {
+                if event_id == nil && Constants.HasSetEvent {
+                    OPassAPI.RedeemCode("", token) { success, data, _ in
+                        if !success && data != nil {
+                            ac.showAlert {
+                                UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
+                            }
                         }
                     }
                 }
@@ -168,9 +178,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         let dynamicLink = DynamicLinks.init().dynamicLink(fromCustomSchemeURL: url)
-        if dynamicLink != nil {
-            if dynamicLink!.url != nil {
-                return self.parseUniversalLinkAndURL(true, dynamicLink!.url!)
+        if let dynamicLink = dynamicLink {
+            if let url = dynamicLink.url {
+                return self.parseUniversalLinkAndURL(true, url)
             }
         } else {
             return self.parseUniversalLinkAndURL(true, url)
@@ -179,8 +189,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))! {
-            // User did tap at remote notification
+        if let isTrigger = response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self) {
+            if (isTrigger) {
+                // User did tap at remote notification
+            }
         }
         completionHandler()
     }
@@ -196,7 +208,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         OPassAPI.isLoginSession = false
         // Configure tracker from GoogleService-Info.plist.
-        FirebaseOptions.defaultOptions()?.deepLinkURLScheme = (Bundle.main.infoDictionary! as NSObject).valueForKeyPathWithIndexes("CFBundleURLTypes[0].CFBundleURLSchemes[0]") as? String
+        guard let infoDict = Bundle.main.infoDictionary else { return false }
+        FirebaseOptions.defaultOptions()?.deepLinkURLScheme = (infoDict as NSObject).valueForKeyPathWithIndexes("CFBundleURLTypes[0].CFBundleURLSchemes[0]") as? String
         FirebaseApp.configure()
 
         //    //configure iRate
@@ -217,7 +230,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         NSLog(iVersion.sharedInstance().appStoreCountry)
 
         // Configure Appirater
-        let trackId = uTrackId != nil ? "\(uTrackId!)" : ""
+        let trackId = "\(uTrackId ?? 0)"
         if trackId.count > 0 {
             Appirater.setAppId(trackId)
             Appirater.setDaysUntilPrompt(1)
@@ -229,51 +242,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         // Configure OneSignal
-        let oneSignalToken = Constants.appConfig("ogToken") as! String
-
-        func notificationReceiverBlock(_ notification: OSNotification) {
-            NSLog("Received Notification - \(notification.payload.notificationID ?? "")")
-        }
-        func notificationOpenedBlock(_ result: OSNotificationOpenedResult) {
-            // This block gets called when the user reacts to a notification received
-            let payload = result.notification.payload
-
-            var messageTitle = "OneSignal Message"
-            var fullMessage = payload?.body.copy() as! String
-
-            if payload?.additionalData != nil {
-                if payload?.title != nil {
-                    messageTitle = payload!.title
-                }
-
-                let additionData = payload?.additionalData as! Dictionary<String, String>
-
-                if (additionData["actionSelected"] != nil) {
-                    fullMessage = "\(fullMessage)\nPressed ButtonId:\(additionData["actionSelected"]!)"
-                }
+        if let oneSignalToken = Constants.appConfig("ogToken") as? String {
+            func notificationReceiverBlock(_ notification: OSNotification) {
+                NSLog("Received Notification - \(notification.payload.notificationID ?? "")")
             }
-            NSLog("OneSignal Notification \(messageTitle): \(fullMessage)")
-            //        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:messageTitle
-            //                                                            message:fullMessage
-            //                                                           delegate:self
-            //                                                  cancelButtonTitle:@"Close"
-            //                                                  otherButtonTitles:nil, nil];
-            //        [alertView show];
-        }
+            func notificationOpenedBlock(_ result: OSNotificationOpenedResult) {
+                // This block gets called when the user reacts to a notification received
+                let payload = result.notification.payload
 
-        let onesignalInitSettings = [
-            kOSSettingsKeyAutoPrompt: false
-        ]
-        OneSignal.initWithLaunchOptions(launchOptions, appId: oneSignalToken, handleNotificationReceived: notificationReceiverBlock as? OSHandleNotificationReceivedBlock, handleNotificationAction: notificationOpenedBlock as? OSHandleNotificationActionBlock, settings: onesignalInitSettings)
-        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
-        // Recommend moving the below line to prompt for push after informing the user about
-        //   how your app will use them.
-        OneSignal.promptForPushNotifications(userResponse: { accepted in
-            print("User accepted notifications: \(accepted)")
-        })
+                var messageTitle = "OneSignal Message"
+                var fullMessage = payload?.body.copy() as? String ?? ""
+
+                if payload?.additionalData != nil {
+                    if payload?.title != nil {
+                        messageTitle = payload?.title ?? ""
+                    }
+
+                    if let additionData = payload?.additionalData as? Dictionary<String, String> {
+                        if let actionSelected = additionData["actionSelected"] {
+                            fullMessage = "\(fullMessage)\nPressed ButtonId:\(actionSelected)"
+                        }
+                    }
+                }
+                NSLog("OneSignal Notification \(messageTitle): \(fullMessage)")
+                //        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:messageTitle
+                //                                                            message:fullMessage
+                //                                                           delegate:self
+                //                                                  cancelButtonTitle:@"Close"
+                //                                                  otherButtonTitles:nil, nil];
+                //        [alertView show];
+            }
+
+            let onesignalInitSettings = [
+                kOSSettingsKeyAutoPrompt: false
+            ]
+            OneSignal.initWithLaunchOptions(launchOptions, appId: oneSignalToken, handleNotificationReceived: notificationReceiverBlock as? OSHandleNotificationReceivedBlock, handleNotificationAction: notificationOpenedBlock as? OSHandleNotificationActionBlock, settings: onesignalInitSettings)
+            OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
+            // Recommend moving the below line to prompt for push after informing the user about
+            //   how your app will use them.
+            OneSignal.promptForPushNotifications(userResponse: { accepted in
+                print("User accepted notifications: \(accepted)")
+            })
+        }
 
         // Provide the app key for your scandit license.
-        SBSLicense.setAppKey(Constants.appConfig("scandit") as! String)
+        if let key = Constants.appConfig("scandit") as? String {
+            SBSLicense.setAppKey(key)
+        }
 
         self.setAppearance(self.appArt)
         self.setDefaultShortcutItems()
@@ -282,16 +297,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        if userActivity.webpageURL != nil {
-        NSLog("Receieved Activity URL -> \(userActivity.webpageURL!)");
-            var handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { dynamicLink, _ in
-                if dynamicLink?.url != nil {
-                    let _ = self.parseUniversalLinkAndURL(true, dynamicLink!.url!)
+        if let url = userActivity.webpageURL {
+        NSLog("Receieved Activity URL -> \(url)");
+            var handled = DynamicLinks.dynamicLinks().handleUniversalLink(url) { dynamicLink, _ in
+                if let url = dynamicLink?.url {
+                    let _ = self.parseUniversalLinkAndURL(true, url)
                 }
             }
             if !handled {
                 // non Firbase Dynamic Link
-                handled = self.parseUniversalLinkAndURL(true, userActivity.webpageURL!)
+                handled = self.parseUniversalLinkAndURL(true, url)
             }
             return handled
         }
@@ -330,11 +345,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         guard let presentedView = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController else { return }
         if Constants.haveAccessToken && presentedView.className == GuideViewController.className {
-            let guideVC = presentedView as! GuideViewController
-            guideVC.redeemCodeText.text = Constants.accessToken
-            let delayMSec = TimeInterval.init(750)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayMSec) {
-                // TODO: refresh card data
+            if let guideVC = presentedView as? GuideViewController {
+                guideVC.redeemCodeText.text = Constants.accessToken
+                let delayMSec = TimeInterval.init(750)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayMSec) {
+                    // TODO: refresh card data
+                }
             }
         }
     }
@@ -475,7 +491,9 @@ extension UIView {
     }
 
     func registerForceTouch() {
-        (self.next as! UIViewController).registerForceTouch()
+        if let vc = self.next as? UIViewController {
+            vc.registerForceTouch()
+        }
     }
 }
 
@@ -486,7 +504,9 @@ extension UIViewController {
 
     func registerForceTouch() {
         if self.traitCollection.responds(to: #selector(getter: UITraitCollection.forceTouchCapability)) && self.traitCollection.forceTouchCapability == .available {
-            self.registerForPreviewing(with: self as! UIViewControllerPreviewingDelegate, sourceView: self.view)
+            if let delegate = self as? UIViewControllerPreviewingDelegate {
+                self.registerForPreviewing(with: delegate, sourceView: self.view)
+            }
         }
     }
 
@@ -506,6 +526,6 @@ extension UIViewController {
 //            previewActions = @[ printAction ];
             preview.actions = []
         }
-        return preview.actions!
+        return preview.actions ?? []
     }
 }

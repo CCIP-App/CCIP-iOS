@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TelegramController : OPassWebViewController, OPassWebViewIB {
+class TelegramController: OPassWebViewController, OPassWebViewIB {
     @IBOutlet var goReloadButton: UIBarButtonItem?
 
     @IBAction override func reload(_ sender: Any) {

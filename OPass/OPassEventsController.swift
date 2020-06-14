@@ -52,8 +52,10 @@ class OPassEventsController: UIViewController, UITableViewDelegate, UITableViewD
             self.progress.hide(animated: true)
         }.then { _ in
             if self.firstLoad && self.opassEvents.count == 1 {
-                let _ = self.LoadEvent(self.opassEvents.first!.EventId)
-                self.firstLoad = false
+                if let event = self.opassEvents.first {
+                    let _ = self.LoadEvent(event.EventId)
+                    self.firstLoad = false
+                }
             } else {
                 let lastId = OPassAPI.lastEventId
                 if lastId.count > 0 && self.opassEvents.contains(where: { (event) -> Bool in
@@ -105,20 +107,25 @@ class OPassEventsController: UIViewController, UITableViewDelegate, UITableViewD
             cell = self.eventsTable.dequeueReusableCell(withIdentifier: eventCellName) as? OPassEventCell
         }
         let event = self.opassEvents[indexPath.row]
-        cell!.EventId = event.EventId
-        cell!.EventName.text = event.DisplayName["zh"]
-        Nuke.loadImage(
-            with: event.LogoUrl,
-            options: ImageLoadingOptions(
-                placeholder: Constants.AssertImage("PassAssets", "StaffIconDefault"),
-                transition: .fadeIn(duration: 0.33)
-            ),
-            into: cell!.EventLogo
-        )
+        cell?.EventId = event.EventId
+        cell?.EventName.text = event.DisplayName["zh"]
+        if let eventLogo = cell?.EventLogo {
+            Nuke.loadImage(
+                with: event.LogoUrl,
+                options: ImageLoadingOptions(
+                    placeholder: Constants.AssertImage("PassAssets", "StaffIconDefault"),
+                    transition: .fadeIn(duration: 0.33)
+                ),
+                into: eventLogo
+            )
+        }
         let durations: [TimeInterval] = [0.26, 0.2, 0.2]
-        cell!.durationsForExpandedState = durations
-        cell!.durationsForCollapsedState = durations
-        return cell!
+        cell?.durationsForExpandedState = durations
+        cell?.durationsForCollapsedState = durations
+        if let cell = cell {
+            return cell
+        }
+        return self.eventsTable.dequeueReusableCell(withIdentifier: eventCellName, for: indexPath)
     }
 
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -126,8 +133,9 @@ class OPassEventsController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! OPassEventCell
-        let _ = self.LoadEvent(cell.EventId)
+        if let cell = tableView.cellForRow(at: indexPath) as? OPassEventCell {
+            let _ = self.LoadEvent(cell.EventId)
+        }
     }
 
 }

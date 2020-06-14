@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MainTabBarViewController : UITabBarController {
+class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         UITabBarItem.appearance()
             .setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: .normal)
@@ -47,8 +47,9 @@ class MainTabBarViewController : UITabBarController {
     func handleShortcutItem() {
         let mainTabBarViewIndexObj = UserDefaults.standard.object(forKey: "MainTabBarViewIndex")
         if ((mainTabBarViewIndexObj) != nil) {
-            let index = (mainTabBarViewIndexObj as? NSNumber)?.intValue
-            self.selectedIndex = index!
+            if let index = (mainTabBarViewIndexObj as? NSNumber)?.intValue {
+                self.selectedIndex = index
+            }
             UserDefaults.standard.removeObject(forKey: "MainTabBarViewIndex")
 
             self.navigationController?.popToRootViewController(animated: true)

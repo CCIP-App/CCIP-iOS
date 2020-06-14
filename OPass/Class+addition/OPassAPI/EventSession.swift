@@ -235,11 +235,13 @@ extension OPassAPI {
             OPassAPI.InitializeRequest(Constants.URL_SESSION) { _, _, error, _ in
                 completion?(false, nil, error)
                 }.then { (obj: Any?) -> Void in
-                    if obj != nil {
-                        let prog = Programs(JSON(obj!))
-                        completion?(true, prog, OPassSuccessError)
-                    } else {
-                        completion?(false, RawOPassData(obj!), NSError(domain: "OPass Session can not get by return unexcepted response", code: 2, userInfo: nil))
+                    if let o = obj {
+                        if obj != nil {
+                            let prog = Programs(JSON(o))
+                            completion?(true, prog, OPassSuccessError)
+                        } else {
+                            completion?(false, RawOPassData(o), NSError(domain: "OPass Session can not get by return unexcepted response", code: 2, userInfo: nil))
+                        }
                     }
             }
         } else {
@@ -276,7 +278,8 @@ extension OPassAPI {
     static func TriggerFavoriteSession(_ event: String, _ token: String, _ session: String, _ sessionData: SessionInfo) {
         let title = NSLocalizedString("SessionWillStartIn5Minutes", comment: "")
         let content = String.init(format: NSLocalizedString("SessionWillStartIn5MinutesContent", comment: ""), sessionData["Title"], sessionData.Room ?? "")
-        let time = Date.init(seconds: sessionData.Start.toDate(style: .iso(.init()))!.timeIntervalSince1970) - 5.minutes
+        guard let secs = sessionData.Start.toDate(style: .iso(.init())) else { return }
+        let time = Date.init(seconds: secs.timeIntervalSince1970) - 5.minutes
         var favList = OPassAPI.GetFavoritesList(event, token)
         let isDisable = favList.contains(session)
         OPassAPI.RegisteringNotification(

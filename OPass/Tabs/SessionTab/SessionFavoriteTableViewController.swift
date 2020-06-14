@@ -31,9 +31,11 @@ class SessionFavoriteTableViewController: SessionTableViewController {
 
         SessionFavoriteTableViewController.headView = UIView.init(frame: frame)
 
-        navBar.superview?.addSubview(SessionFavoriteTableViewController.headView!)
-        navBar.superview?.bringSubviewToFront(SessionFavoriteTableViewController.headView!)
-        navBar.superview?.bringSubviewToFront(self.navigationController!.navigationBar)
+        guard let headView = SessionFavoriteTableViewController.headView else { return }
+        guard let navController = self.navigationController else { return }
+        navBar.superview?.addSubview(headView)
+        navBar.superview?.bringSubviewToFront(headView)
+        navBar.superview?.bringSubviewToFront(navController.navigationBar)
 
         let titleFake = Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: .solid, forColor: .clear)
         let favButtonFake = UIButton.init()

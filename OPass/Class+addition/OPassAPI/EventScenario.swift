@@ -41,7 +41,10 @@ struct Scenario: OPassData, Equatable {
     var ExpireTime: Int?
     var AvailableTime: Int?
     var DisplayText: String? {
-        return self._data["display_text"][Constants.longLangUI!].string ?? ""
+        if let longLangUI = Constants.longLangUI {
+            return self._data["display_text"][longLangUI].string ?? ""
+        }
+        return ""
     }
     var Order: Int
     var Message: String?
@@ -102,28 +105,32 @@ extension OPassAPI {
             OPassAPI.InitializeRequest(Constants.URL_LANDING(token: token)) { _, _, error, _ in
                 completion?(false, nil, error)
                 }.then { (obj: Any?) -> Void in
-                    if obj != nil {
-                        switch String(describing: type(of: obj!)) {
-                        case OPassNonSuccessDataResponse.className:
-                            let sr = obj as! OPassNonSuccessDataResponse
-                            let response = sr.Response
-                            switch response!.statusCode {
-                            case 400:
-                                completion?(false, sr, NSError(domain: "OPass Redeem Code Invalid", code: 4, userInfo: nil))
+                    if let o = obj {
+                        if obj != nil {
+                            switch String(describing: type(of: o)) {
+                            case OPassNonSuccessDataResponse.className:
+                                if let sr = o as? OPassNonSuccessDataResponse {
+                                    if let response = sr.Response {
+                                        switch response.statusCode {
+                                        case 400:
+                                            completion?(false, sr, NSError(domain: "OPass Redeem Code Invalid", code: 4, userInfo: nil))
+                                            break
+                                        default:
+                                            completion?(false, sr, NSError(domain: "OPass Redeem Code Invalid", code: 4, userInfo: nil))
+                                        }
+                                    }
+                                }
                                 break
                             default:
-                                completion?(false, sr, NSError(domain: "OPass Redeem Code Invalid", code: 4, userInfo: nil))
+                                let landing = ScenarioLanding(JSON(o))
+                                OPassAPI.isLoginSession = true
+                                Constants.accessToken = token
+                                AppDelegate.delegateInstance.checkinView?.reloadCard()
+                                completion?(true, landing, OPassSuccessError)
                             }
-                            break
-                        default:
-                            let landing = ScenarioLanding(JSON(obj!))
-                            OPassAPI.isLoginSession = true
-                            Constants.accessToken = token
-                            AppDelegate.delegateInstance.checkinView?.reloadCard()
-                            completion?(true, landing, OPassSuccessError)
+                        } else {
+                            completion?(false, RawOPassData(o), NSError(domain: "OPass Redeem Code Invalid", code: 2, userInfo: nil))
                         }
-                    } else {
-                        completion?(false, RawOPassData(obj!), NSError(domain: "OPass Redeem Code Invalid", code: 2, userInfo: nil))
                     }
             }
         } else {
@@ -141,23 +148,27 @@ extension OPassAPI {
             OPassAPI.InitializeRequest(Constants.URL_STATUS(token: token)) { _, _, error, _ in
                 completion?(false, nil, error)
                 }.then { (obj: Any?) -> Void in
-                    if obj != nil {
-                        switch String(describing: type(of: obj!)) {
-                        case OPassNonSuccessDataResponse.className:
-                            let sr = obj as! OPassNonSuccessDataResponse
-                            let response = sr.Response
-                            switch response!.statusCode {
-                            case 200:
-                                completion?(false, sr, NSError(domain: "OPass Data not valid", code: 5, userInfo: nil))
+                    if let o = obj {
+                        if obj != nil {
+                            switch String(describing: type(of: o)) {
+                            case OPassNonSuccessDataResponse.className:
+                                if let sr = obj as? OPassNonSuccessDataResponse {
+                                    if let response = sr.Response {
+                                        switch response.statusCode {
+                                        case 200:
+                                            completion?(false, sr, NSError(domain: "OPass Data not valid", code: 5, userInfo: nil))
+                                        default:
+                                            completion?(false, sr, NSError(domain: "OPass Current Not in Event or Not a Valid Token", code: 4, userInfo: nil))
+                                        }
+                                    }
+                                }
                             default:
-                                completion?(false, sr, NSError(domain: "OPass Current Not in Event or Not a Valid Token", code: 4, userInfo: nil))
+                                let status = ScenarioStatus(JSON(o))
+                                completion?(true, status, OPassSuccessError)
                             }
-                        default:
-                            let status = ScenarioStatus(JSON(obj!))
-                            completion?(true, status, OPassSuccessError)
+                        } else {
+                            completion?(false, RawOPassData(o), NSError(domain: "OPass Current Not in Event or Not a Valid Token", code: 2, userInfo: nil))
                         }
-                    } else {
-                        completion?(false, RawOPassData(obj!), NSError(domain: "OPass Current Not in Event or Not a Valid Token", code: 2, userInfo: nil))
                     }
             }
         } else {
@@ -170,17 +181,20 @@ extension OPassAPI {
             OPassAPI.InitializeRequest(Constants.URL_USE(token: token, scenario: scenario)) { _, _, error, _ in
                 completion?(false, nil, error)
                 }.then { (obj: Any?) -> Void in
-                    if obj != nil {
-                        switch String(describing: type(of: obj!)) {
-                        case OPassNonSuccessDataResponse.className:
-                            let sr = obj as! OPassNonSuccessDataResponse
-                            completion?(false, sr, NSError(domain: "OPass Scenario can not use because current is Not in Event or Not a Valid Token", code: 3, userInfo: nil))
-                        default:
-                            let used = ScenarioStatus(JSON(obj!))
-                            completion?(true, used, OPassSuccessError)
+                    if let o = obj {
+                        if obj != nil {
+                            switch String(describing: type(of: o)) {
+                            case OPassNonSuccessDataResponse.className:
+                                if let sr = obj as? OPassNonSuccessDataResponse {
+                                    completion?(false, sr, NSError(domain: "OPass Scenario can not use because current is Not in Event or Not a Valid Token", code: 3, userInfo: nil))
+                                }
+                            default:
+                                let used = ScenarioStatus(JSON(o))
+                                completion?(true, used, OPassSuccessError)
+                            }
+                        } else {
+                            completion?(false, RawOPassData(o), NSError(domain: "OPass Scenario can not use by return unexcepted response", code: 2, userInfo: nil))
                         }
-                    } else {
-                        completion?(false, RawOPassData(obj!), NSError(domain: "OPass Scenario can not use by return unexcepted response", code: 2, userInfo: nil))
                     }
             }
         } else {

@@ -59,7 +59,9 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.controllerTopStart = self.navigationController!.navigationBar.frame.size.height
+        if let navController = self.navigationController {
+            self.controllerTopStart = navController.navigationBar.frame.size.height
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -74,7 +76,9 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
             if data != nil {
                 if success {
                     self.loaded = true
-                    self.announceJsonArray = data as! [AnnouncementInfo]
+                    if let data = data as? [AnnouncementInfo] {
+                        self.announceJsonArray = data
+                    }
                     self.announceTableView.reloadData()
                 } else {
                     if data != nil {
@@ -96,9 +100,12 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination
         if destination.isMember(of: InvalidNetworkMessageViewController.self) {
-            let inmvc = destination as! InvalidNetworkMessageViewController
-            inmvc.message = sender as! String
-            inmvc.delegate = self
+            if let inmvc = destination as? InvalidNetworkMessageViewController {
+                if let sender = sender as? String {
+                    inmvc.message = sender
+                    inmvc.delegate = self
+                }
+            }
         }
     }
 
@@ -143,14 +150,16 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AnnounceCell", for: indexPath) as! AnnounceTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AnnounceCell", for: indexPath) as? AnnounceTableViewCell else { return tableView.dequeueReusableCell(withIdentifier: "AnnounceCell", for: indexPath) }
         self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.fd_heightForCell(withIdentifier: "AnnounceCell", configuration: { (cell: Any) in
-            self.configureCell(cell as! AnnounceTableViewCell, atIndexPath:indexPath)
+            if let cell = cell as? AnnounceTableViewCell {
+                self.configureCell(cell, atIndexPath: indexPath)
+            }
         })
     }
 
@@ -160,11 +169,11 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
         cell.clipsToBounds = false
         cell.backgroundColor = UIColor.clear
         cell.layer.zPosition = CGFloat(indexPath.row)
-        let vwContent = cell.vwContent!
+        guard let vwContent = cell.vwContent else { return }
         vwContent.layer.cornerRadius = 5.0
         vwContent.layer.masksToBounds = true
 
-        let vwShadowContent = cell.vwShadowContent!
+        guard let vwShadowContent = cell.vwShadowContent else { return }
         vwShadowContent.layer.cornerRadius = 5.0
         vwShadowContent.layer.masksToBounds = false
         vwShadowContent.layer.shadowRadius = 50.0
@@ -173,7 +182,7 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
         vwShadowContent.layer.shadowOpacity = 0.1
 
         let announce = self.announceJsonArray[indexPath.row]
-        let language = Bundle.main.preferredLocalizations.first!
+        guard let language = Bundle.main.preferredLocalizations.first else { return }
 
         if language.contains("zh") {
             cell.lbMessage.text = announce.MsgZh
@@ -191,15 +200,19 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
 
         if hasURL {
             cell.lbURL.text = uri
+            if let foregroundColor = cell.lbIconOfURL.textColor {
             let titleAttribute: [NSAttributedString.Key: Any] = [
-                .font: Constants.fontOfAwesome(withSize: 20, inStyle: .solid),
-                .foregroundColor: cell.lbIconOfURL.textColor!,
-            ]
-            let title = NSAttributedString.init(
-                string: Constants.fontAwesome(code: "fa-external-link-alt")!,
-                attributes: titleAttribute
-            )
-            cell.lbIconOfURL.attributedText = title
+                    .font: Constants.fontOfAwesome(withSize: 20, inStyle: .solid),
+                    .foregroundColor: foregroundColor,
+                ]
+                if let str = Constants.fontAwesome(code: "fa-external-link-alt") {
+                    let title = NSAttributedString.init(
+                        string: str,
+                        attributes: titleAttribute
+                    )
+                    cell.lbIconOfURL.attributedText = title
+                }
+            }
         } else {
             cell.lbURL.text = ""
             cell.lbIconOfURL.attributedText = nil

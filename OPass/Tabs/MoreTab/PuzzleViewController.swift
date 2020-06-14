@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PuzzleViewController : OPassWebViewController, OPassWebViewIB {
+class PuzzleViewController: OPassWebViewController, OPassWebViewIB {
     @IBOutlet var goReloadButton: UIBarButtonItem?
 
     @IBAction override func reload(_ sender: Any) {

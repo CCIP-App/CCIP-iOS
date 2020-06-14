@@ -27,7 +27,7 @@ class OPassAPI: NSObject {
             manager.requestSerializer.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
             manager.requestSerializer.timeoutInterval = 5
             manager.get(url, parameters: nil, progress: nil, success: { (_, responseObject: Any?) in
-                NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any)!)")
+                NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any) ?? "nil")")
                 if (responseObject != nil) {
                     resolve(responseObject)
                 }
@@ -37,9 +37,11 @@ class OPassAPI: NSObject {
                 // let systemMsg = err.userInfo["NSLocalizedDescription"] ?? ""
                 let response = operation?.response as? HTTPURLResponse
                 let data = err.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] as? Data
-                if (response != nil) {
+                if let resp = response {
                     onceErrorCallback?(retryCount, maxRetry, error, response)
-                    resolve(OPassNonSuccessDataResponse(response!, data!, JSON(data as Any)))
+                    if let data = data {
+                        resolve(OPassNonSuccessDataResponse(resp, data, JSON(data as Any)))
+                    }
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
                         retryCount += 1
@@ -61,11 +63,13 @@ class OPassAPI: NSObject {
     }
 
     static func refreshTabBar() {
-        guard let items = tabBarController!.tabBar.items else { return }
+        guard let tabBarController = tabBarController else { return }
+        guard let items = tabBarController.tabBar.items else { return }
         // setting selected image color from original image with replace custom color filter
         for item in items {
-            let title = item.title!
-            var image: UIImage = item.image!.withRenderingMode(.alwaysOriginal)
+            guard let title = item.title else { return }
+            guard let itemImage = item.image else { return }
+            var image: UIImage = itemImage.withRenderingMode(.alwaysOriginal)
             image = image.imageWithColor(Constants.appConfigColor("HighlightedColor"))
             item.selectedImage = image.withRenderingMode(.alwaysOriginal)
             switch title {

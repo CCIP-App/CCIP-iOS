@@ -45,8 +45,14 @@ struct PublishDate: OPassData {
     var End: Date
     init(_ data: JSON) {
         self._data = data
-        self.Start = Date.init(seconds: self._data["start"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
-        self.End = Date.init(seconds: self._data["end"].stringValue.toDate(style: .iso(.init()))!.timeIntervalSince1970)
+        self.Start = Date.init()
+        self.End = Date.init()
+        if let start = self._data["start"].stringValue.toDate(style: .iso(.init())) {
+            self.Start = Date.init(seconds: start.timeIntervalSince1970)
+        }
+        if let end = self._data["end"].stringValue.toDate(style: .iso(.init())) {
+            self.End = Date.init(seconds: end.timeIntervalSince1970)
+        }
     }
 }
 
@@ -58,23 +64,22 @@ struct EventFeatures: OPassData {
     var _url: String?
     var Url: URL? {
         get {
-            var newUrl = _url
-            if (newUrl != nil) {
-                let paramsRegex = try? NSRegularExpression.init(pattern: "(\\{[^\\}]+\\})", options: .caseInsensitive)
-                let matches = paramsRegex!.matches(in: newUrl!, options: .reportProgress, range: NSRange(location: 0, length: newUrl!.count))
+            if var newUrl = _url {
+                guard let paramsRegex = try? NSRegularExpression.init(pattern: "(\\{[^\\}]+\\})", options: .caseInsensitive) else { return nil }
+                let matches = paramsRegex.matches(in: newUrl, options: .reportProgress, range: NSRange(location: 0, length: newUrl.count))
                 for m in stride(from: matches.count, to: 0, by: -1) {
                     let range = matches[m - 1].range(at: 1)
-                    let param = newUrl![range]
+                    let param = newUrl[range]
                     switch param {
                     case "{public_token}":
-                        newUrl = newUrl?.replacingOccurrences(of: param, with: Constants.accessTokenSHA1)
+                        newUrl = newUrl.replacingOccurrences(of: param, with: Constants.accessTokenSHA1)
                     case "{role}":
-                        newUrl = newUrl?.replacingOccurrences(of: param, with: OPassAPI.userInfo?.Role ?? "")
+                        newUrl = newUrl.replacingOccurrences(of: param, with: OPassAPI.userInfo?.Role ?? "")
                     default:
-                        newUrl = newUrl?.replacingOccurrences(of: param, with: "")
+                        newUrl = newUrl.replacingOccurrences(of: param, with: "")
                     }
                 }
-                return URL(string: newUrl!)
+                return URL(string: newUrl)
             } else {
                 return nil
             }
@@ -114,7 +119,10 @@ struct EventInfo: OPassData {
         self._data = data
         self.EventId = self._data["event_id"].stringValue
         self.DisplayName = EventDisplayName(self._data["display_name"])
-        self.LogoUrl = self._data["logo_url"].url!
+        self.LogoUrl = URL.init(fileURLWithPath: "")
+        if let logoUrl = self._data["logo_url"].url {
+            self.LogoUrl = logoUrl
+        }
         self.Publish = PublishDate(self._data["publish"])
         self.Features = self._data["features"].arrayValue.map { ft -> EventFeatures in
             return EventFeatures(ft)
@@ -131,7 +139,10 @@ struct EventShortInfo: Codable {
         self._data = data
         self.EventId = self._data["event_id"].stringValue
         self.DisplayName = EventDisplayName(self._data["display_name"])
-        self.LogoUrl = self._data["logo_url"].url!
+        self.LogoUrl = URL.init(fileURLWithPath: "")
+        if let logoUrl = self._data["logo_url"].url {
+            self.LogoUrl = logoUrl
+        }
     }
 }
 
@@ -149,9 +160,16 @@ extension OPassAPI {
         return OPassAPI.InitializeRequest("https://portal.opass.app/events/\(eventId)/", onceErrorCallback)
             .then { (infoObj: Any) -> EventInfo in
                 OPassAPI.eventInfo = EventInfo(JSON(infoObj))
-                OPassAPI.currentEvent = JSONSerialization.stringify(infoObj as Any)!
-                OPassAPI.lastEventId = OPassAPI.eventInfo!.EventId
-                return OPassAPI.eventInfo!
+                OPassAPI.currentEvent = ""
+                OPassAPI.lastEventId = ""
+                if let eventJson = JSONSerialization.stringify(infoObj as Any) {
+                    OPassAPI.currentEvent = eventJson
+                }
+                if let eventInfo = OPassAPI.eventInfo {
+                    OPassAPI.lastEventId = eventInfo.EventId
+                    return eventInfo
+                }
+                return EventInfo(JSON(parseJSON: "{}"))
         }
     }
 
@@ -168,9 +186,11 @@ extension OPassAPI {
             while true {
                 var vc: UIViewController? = nil
                 DispatchQueue.main.sync {
-                    vc = UIApplication.getMostTopPresentedViewController()!
+                    if let topMost = UIApplication.getMostTopPresentedViewController() {
+                        vc = topMost
+                    }
                 }
-                let vcName = vc!.className
+                guard let vcName = vc?.className else { return }
                 var done = false
                 try? await(Promise{ resolve, _ in
                     switch vcName {
@@ -184,9 +204,11 @@ extension OPassAPI {
                         break
                     default:
                         DispatchQueue.main.async {
-                            vc!.dismiss(animated: true, completion: {
-                                resolve()
-                            })
+                            if let vc = vc {
+                                vc.dismiss(animated: true, completion: {
+                                    resolve()
+                                })
+                            }
                         }
                     }
                 })
@@ -195,9 +217,10 @@ extension OPassAPI {
                 }
             }
             DispatchQueue.main.sync {
-                let opec = UIApplication.getMostTopPresentedViewController() as! OPassEventsController
-                opec.LoadEvent(eventId).then { _ in
-                    OPassAPI.RedeemCode(eventId, token, completion)
+                if let opec = UIApplication.getMostTopPresentedViewController() as? OPassEventsController {
+                    opec.LoadEvent(eventId).then { _ in
+                        OPassAPI.RedeemCode(eventId, token, completion)
+                    }
                 }
             }
         }

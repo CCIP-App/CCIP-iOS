@@ -23,15 +23,20 @@ class AcknowledgementsViewController: UIViewController {
             var contributors = [Any]();
             let manager = AFHTTPSessionManager.init()
             manager.get("https://api.github.com/repos/CCIP-App/CCIP-iOS/contributors", parameters: nil, progress: nil, success: { (_, responseObject: Any?) in
-                NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any)!)");
+                NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any) ?? "nil")");
                 if (responseObject != nil) {
-                    let contributorsObj = responseObject as! [NSDictionary]
-                    contributors = contributorsObj.map({ (dict: NSDictionary) -> CPDContribution in
-                        let contributor: CPDContribution = CPDContribution.init(name: dict.object(forKey: "login") as! String, websiteAddress: Constants.GitHubRepo(dict.object(forKey: "login") as! String), role: "\(dict.object(forKey: "contributions") as! NSNumber) commits")
-                        contributor.avatarAddress = (dict.object(forKey: "avatar_url") as! String)
-                        return contributor
-                    })
-                    resolve(contributors)
+                    if let contributorsObj = responseObject as? [NSDictionary] {
+                        contributors = contributorsObj.map({ (dict: NSDictionary) -> CPDContribution in
+                            let login = dict.object(forKey: "login") as? String ?? ""
+                            let contributions = dict.object(forKey: "contributions") as? NSNumber ?? 0
+                            let contributor: CPDContribution = CPDContribution.init(name: login, websiteAddress: Constants.GitHubRepo(login), role: "\(contributions) commits")
+                            if let avatarUrl = dict.object(forKey: "avatar_url") as? String {
+                                contributor.avatarAddress = avatarUrl
+                            }
+                            return contributor
+                        })
+                        resolve(contributors)
+                    }
                 }
             }) { (_, error: Error) in
                 NSLog("Error: \(error)");
@@ -51,15 +56,24 @@ class AcknowledgementsViewController: UIViewController {
             let bundle = Bundle.main
             var acknowledgements = CPDCocoaPodsLibrariesLoader.loadAcknowledgements(with: bundle)
 
-            let customAckJSONPath = bundle.path(forResource: "Project_3rd_Lib_License", ofType: "json")
-            let customAckJSON = try! String.init(contentsOfFile: customAckJSONPath!, encoding: .utf8)
-            let customAckArray = try! JSONSerialization.jsonObject(with: customAckJSON.data(using: .utf8)!, options: .allowFragments) as! [NSDictionary]
-
-            for acknowledgementDict in customAckArray {
-                acknowledgements?.append(CPDLibrary.init(cocoaPodsMetadataPlistDictionary: acknowledgementDict as! [AnyHashable: Any]))
+            if let customAckJSONPath = bundle.path(forResource: "Project_3rd_Lib_License", ofType: "json") {
+                do {
+                    let customAckJSON = try String.init(contentsOfFile: customAckJSONPath, encoding: .utf8)
+                    if let data = customAckJSON.data(using: .utf8) {
+                        if let customAckArray = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [NSDictionary] {
+                            for acknowledgementDict in customAckArray {
+                                if let acknowledgement = acknowledgementDict as? [AnyHashable: Any] {
+                                    acknowledgements?.append(CPDLibrary.init(cocoaPodsMetadataPlistDictionary: acknowledgement))
+                                }
+                            }
+                        }
+                    }
+                } catch {
+                    return obj
+                }
             }
 
-            let contributors = obj as! [CPDContribution]
+            guard let contributors = obj as? [CPDContribution] else { return obj }
             let acknowledgementsViewController: CPDAcknowledgementsViewController = CPDAcknowledgementsViewController.init(style: nil, acknowledgements: acknowledgements, contributions: contributors)
             self.addChild(acknowledgementsViewController)
             var frame = self.view.frame
@@ -76,8 +90,9 @@ class AcknowledgementsViewController: UIViewController {
 
     func getWebsiteAddress(contributor: NSDictionary) -> String? {
         // website > github_site(github.login) > nil
-        let website = contributor.object(forKey: "website") as! String
-        let githubLogin = (contributor.object(forKey: "github") as! NSDictionary).object(forKey: "login") as! String
+        guard let website = contributor.object(forKey: "website") as? String else { return nil }
+        guard let github = contributor.object(forKey: "github") as? NSDictionary else { return nil }
+        guard let githubLogin = github.object(forKey: "login") as? String else { return nil }
 
         if (website.count > 0) {
             return website;
@@ -92,40 +107,49 @@ class AcknowledgementsViewController: UIViewController {
 
     func getAvatarAddress(contributor: NSDictionary) -> String? {
         // avatar_link > gravatar_email > github_avatar (github.id > github.login) > default
-        let avatarLink = contributor.object(forKey: "avatar_link") as! String
-        let gravatarHash = contributor.object(forKey: "gravatar_hash") as! String
-        let gravatarEmail = contributor.object(forKey: "gravatar_email") as! String
-        let github = contributor.object(forKey: "github") as! NSDictionary
-        let githubId = github.object(forKey: "id") as! String
-        let githubLogin = github.object(forKey: "login") as! String
+        let avatarLink = contributor.object(forKey: "avatar_link") as? String ?? ""
+        let gravatarHash = contributor.object(forKey: "gravatar_hash") as? String ?? ""
+        let gravatarEmail = contributor.object(forKey: "gravatar_email") as? String ?? ""
+        let github = contributor.object(forKey: "github") as? NSDictionary ?? [:]
+        let githubId = github.object(forKey: "id") as? String ?? ""
+        let githubLogin = github.object(forKey: "login") as? String ?? ""
 
         if (avatarLink.count > 0) {
             return avatarLink;
         } else if (gravatarHash.count > 0) {
-            return Constants.GravatarAvatar(gravatarHash);
+            return Constants.GravatarAvatar(gravatarHash)
         } else if (gravatarEmail.count > 0) {
-            let hashData = gravatarEmail.data(using: .utf8)! as NSData
-            let md5Hash = hashData.md5Sum()! as NSData
-            let hashString = md5Hash.hexString.lowercased()
-            return Constants.GravatarAvatar(hashString)
+            if let emailData = gravatarEmail.data(using: .utf8) {
+                let hashData = emailData as NSData
+                if let md5 = hashData.md5Sum() {
+                    let md5Hash = md5 as NSData
+                    let hashString = md5Hash.hexString.lowercased()
+                    return Constants.GravatarAvatar(hashString)
+                }
+            }
         } else if (githubId.count > 0) {
-            return Constants.GitHubAvatar("u/\(githubId)");
+            return Constants.GitHubAvatar("u/\(githubId)")
         } else if (githubLogin.count > 0) {
-            return Constants.GitHubAvatar(githubLogin);
+            return Constants.GitHubAvatar(githubLogin)
         } else {
-            return Constants.GravatarAvatar("");
+            return Constants.GravatarAvatar("")
         }
+        return Constants.GravatarAvatar("")
     }
 
     @IBAction func openGithubRepo() {
-        Constants.OpenInAppSafari(forPath: self.githubRepoLink!)
+        if let link = self.githubRepoLink {
+            Constants.OpenInAppSafari(forPath: link)
+        }
     }
 
     override func viewDidLoad() {
         self.configuration()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.navigationItem.title = self.navigationItem.title!.split(separator: "\t").last!.trim()
+        guard let title = self.navigationItem.title else { return }
+        guard let titles = title.split(separator: "\t").last else { return }
+        self.navigationItem.title = titles.trim()
         self.progress = MBProgressHUD.showAdded(to: self.view, animated: true)
         self.progress.mode = .indeterminate
     }
