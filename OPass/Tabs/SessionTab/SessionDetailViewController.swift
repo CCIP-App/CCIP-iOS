@@ -170,7 +170,8 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
     }
 
     @IBAction func favoriteTouchUpInsideAction(_ sender: Any) {
-        OPassAPI.TriggerFavoriteSession(OPassAPI.currentEvent, Constants.accessToken!, self.session!.Id)
+        guard let token = Constants.accessToken else { return }
+        OPassAPI.TriggerFavoriteSession(OPassAPI.eventInfo!.EventId, token, self.session!.Id)
         self.checkFavoriteState()
         UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
     }

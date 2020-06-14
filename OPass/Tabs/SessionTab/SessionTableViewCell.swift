@@ -54,8 +54,9 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
     }
 
     @IBAction func favoriteTouchUpInsideAction(_ sender: NSObject) {
-        OPassAPI.TriggerFavoriteSession(OPassAPI.eventInfo!.EventId, Constants.accessToken!, self.sessionId!)
-        self.setFavorite(OPassAPI.CheckFavoriteState(OPassAPI.eventInfo!.EventId, Constants.accessToken!, self.sessionId!))
+        guard let token = Constants.accessToken else { return }
+        OPassAPI.TriggerFavoriteSession(OPassAPI.eventInfo!.EventId, token, self.sessionId!)
+        self.setFavorite(OPassAPI.CheckFavoriteState(OPassAPI.eventInfo!.EventId, token, self.sessionId!))
         UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
     }
 
