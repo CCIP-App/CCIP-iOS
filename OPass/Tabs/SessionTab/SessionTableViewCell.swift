@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import TagListView
+import Then
 
 class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
     @IBOutlet weak var SessionTitleLabel: UILabel!
@@ -86,7 +87,12 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
         self.TagList.addTags(tags)
         self.setFavorite(false)
         if (OPassAPI.eventInfo != nil) {
-            self.setFavorite(OPassAPI.CheckFavoriteState(OPassAPI.eventInfo!.EventId, Constants.accessToken!, self.sessionId!))
+            DispatchQueue.global(qos: .background).async {
+                let state = OPassAPI.CheckFavoriteState(OPassAPI.eventInfo!.EventId, Constants.accessToken!, self.sessionId!)
+                DispatchQueue.main.async {
+                   self.setFavorite(state)
+                }
+            }
         }
     }
 
