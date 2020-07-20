@@ -1,6 +1,6 @@
 FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/OneSignal/iOS_SDK/OneSignalSDK/Framework"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Firebase" "${PODS_ROOT}/Headers/Public/FirebaseAnalyticsInterop" "${PODS_ROOT}/Headers/Public/FirebaseCoreDiagnosticsInterop"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Firebase"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks' '@executable_path/../../Frameworks'
 OTHER_CFLAGS = $(inherited) -iframework "${PODS_ROOT}/OneSignal/iOS_SDK/OneSignalSDK/Framework"
 OTHER_LDFLAGS = $(inherited) -ObjC -framework "CoreGraphics" -framework "OneSignal" -framework "SystemConfiguration" -framework "UIKit" -framework "UserNotifications" -framework "WebKit"
