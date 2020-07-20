@@ -71,6 +71,8 @@ struct EventFeatures: OPassData {
                     let range = matches[m - 1].range(at: 1)
                     let param = newUrl[range]
                     switch param {
+                    case "{token}":
+                        newUrl = newUrl.replacingOccurrences(of: param, with: Constants.accessToken ?? "")
                     case "{public_token}":
                         newUrl = newUrl.replacingOccurrences(of: param, with: Constants.accessTokenSHA1)
                     case "{role}":
