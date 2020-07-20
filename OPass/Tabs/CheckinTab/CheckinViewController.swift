@@ -422,16 +422,34 @@ import ScanditBarcodeScanner
             NSLog("scanned \(code.symbologyName) barcode: \(String(describing: code.data))")
 
             OperationQueue.main.addOperation {
-                OPassAPI.RedeemCode(forEvent: "", withToken: code.data ?? "") { (success, _, _) in
+                OPassAPI.RedeemCode(forEvent: "", withToken: code.data ?? "") { (success, obj, _) in
                     if success {
                         self.perform(#selector(self.reloadCard), with: nil, afterDelay: 0.5)
                         self.perform(#selector(self.closeBarcodePickerOverlay), with: nil, afterDelay: 0.5)
                     } else {
-                        let ac = UIAlertController.alertOfTitle(NSLocalizedString("GuideViewTokenErrorTitle", comment: ""), withMessage: NSLocalizedString("GuideViewTokenErrorDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel) { _ in
-                            self.scanditBarcodePicker?.resumeScanning()
+                        func broken(_ msg: String = "") {
+                            let ac = UIAlertController.alertOfTitle(NSLocalizedString("GuideViewTokenErrorTitle", comment: ""), withMessage: NSLocalizedString("GuideViewTokenErrorDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel) { _ in
+                                self.scanditBarcodePicker?.resumeScanning()
+                            }
+                            ac.showAlert {
+                                UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
+                            }
                         }
-                        ac.showAlert {
-                            UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
+                        guard let sr = obj as? OPassNonSuccessDataResponse else {
+                            return
+                        }
+                        switch (sr.Response?.statusCode) {
+                        case 400:
+                            guard let responseObject = sr.Obj as? NSDictionary else { return }
+                            let msg = responseObject.value(forKeyPath: "json.message") as? String ?? ""
+                            if msg == "invalid token" {
+                                NSLog("\(msg)")
+                                broken()
+                            }
+                        case 403:
+                            broken("Networking_WrongWiFi")
+                        default:
+                            return
                         }
                     }
                 }
