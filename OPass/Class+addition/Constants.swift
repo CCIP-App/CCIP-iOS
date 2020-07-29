@@ -16,6 +16,7 @@ import Nuke
 import SafariServices
 import UICKeyChainStore
 import FirebaseAnalytics
+import CryptoSwift
 
 enum FontStyleForAwesome: Int {
     case solid
@@ -100,10 +101,7 @@ extension Constants {
     static var accessTokenSHA1: String {
         if self.haveAccessToken {
             guard let token = self.accessToken else { return "" }
-            guard let tokenData = token.data(using: .utf8) else { return "" }
-            guard let tokenDataSHA1 = (tokenData as NSData).sha1Hash() else { return "" }
-            let tokenSHA1 = (tokenDataSHA1 as NSData).hexString.lowercased()
-            return tokenSHA1
+            return token.sha1()
         }
         return ""
     }

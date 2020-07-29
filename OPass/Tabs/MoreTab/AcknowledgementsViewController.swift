@@ -43,11 +43,6 @@ class AcknowledgementsViewController: UIViewController {
                 reject(error)
             }
         }.then { (obj: Any) -> Any in
-            //        let githubRepo = (projectInfoData["self"]! as! [String: NSObject])["github_repo"] as! String?
-            //        if githubRepo != nil && githubRepo != "" {
-            //            self.githubRepoLink = Constants.GitHubRepo(githubRepo!)
-            //        }
-
             self.githubRepoLink = Constants.GitHubRepo("CCIP-App/CCIP-iOS")
             if (self.githubRepoLink != nil) {
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: Constants.AssertImage("AssetsUI", "ToolButton-GitHub_Filled"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(AcknowledgementsViewController.openGithubRepo))
@@ -86,55 +81,6 @@ class AcknowledgementsViewController: UIViewController {
             self.progress.hide(animated: true)
             return vc
         }
-    }
-
-    func getWebsiteAddress(contributor: NSDictionary) -> String? {
-        // website > github_site(github.login) > nil
-        guard let website = contributor.object(forKey: "website") as? String else { return nil }
-        guard let github = contributor.object(forKey: "github") as? NSDictionary else { return nil }
-        guard let githubLogin = github.object(forKey: "login") as? String else { return nil }
-
-        if (website.count > 0) {
-            return website;
-        } else {
-            if (githubLogin.count > 0) {
-                return Constants.GitHubRepo(githubLogin);
-            } else {
-                return nil;
-            }
-        }
-    }
-
-    func getAvatarAddress(contributor: NSDictionary) -> String? {
-        // avatar_link > gravatar_email > github_avatar (github.id > github.login) > default
-        let avatarLink = contributor.object(forKey: "avatar_link") as? String ?? ""
-        let gravatarHash = contributor.object(forKey: "gravatar_hash") as? String ?? ""
-        let gravatarEmail = contributor.object(forKey: "gravatar_email") as? String ?? ""
-        let github = contributor.object(forKey: "github") as? NSDictionary ?? [:]
-        let githubId = github.object(forKey: "id") as? String ?? ""
-        let githubLogin = github.object(forKey: "login") as? String ?? ""
-
-        if (avatarLink.count > 0) {
-            return avatarLink;
-        } else if (gravatarHash.count > 0) {
-            return Constants.GravatarAvatar(gravatarHash)
-        } else if (gravatarEmail.count > 0) {
-            if let emailData = gravatarEmail.data(using: .utf8) {
-                let hashData = emailData as NSData
-                if let md5 = hashData.md5Sum() {
-                    let md5Hash = md5 as NSData
-                    let hashString = md5Hash.hexString.lowercased()
-                    return Constants.GravatarAvatar(hashString)
-                }
-            }
-        } else if (githubId.count > 0) {
-            return Constants.GitHubAvatar("u/\(githubId)")
-        } else if (githubLogin.count > 0) {
-            return Constants.GitHubAvatar(githubLogin)
-        } else {
-            return Constants.GravatarAvatar("")
-        }
-        return Constants.GravatarAvatar("")
     }
 
     @IBAction func openGithubRepo() {

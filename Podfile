@@ -52,6 +52,7 @@ def opass_pods
   pod 'TagListView'
   pod 'TimelineTableViewCell'
   pod 'Device.swift'
+  pod 'CryptoSwift', '~> 1.0'
 end
 
 target 'OPass' do
