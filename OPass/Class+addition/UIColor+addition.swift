@@ -58,9 +58,9 @@ extension UIColor {
         if (isSingleByteOnly) {
             h = h.appending(hex)
         }
-        var result: CUnsignedInt = 0
+        var result: CUnsignedLongLong = 0
         let scanner: Scanner = Scanner(string: h)
-        scanner.scanHexInt32(&result)
+        scanner.scanHexInt64(&result)
         return Float(result) / 255.0
     }
 }
