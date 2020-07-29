@@ -18,7 +18,7 @@ class PuzzleViewController: OPassWebViewController, OPassWebViewIB {
     var PageUrl: String = ""
 
     override func viewWillAppear(_ animated: Bool) {
-        self.PageUrl = Constants.URL_GAME(token: Constants.accessTokenSHA1)
+        self.PageUrl = Constants.URL_GAME
         super.viewWillAppear(animated)
     }
 }

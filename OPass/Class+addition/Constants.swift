@@ -190,12 +190,8 @@ extension Constants {
     static var URL_PARTNERS_WEB: String {
         return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures.Partners]?.Url?.absoluteString ?? "")
     }
-    static func URL_GAME(token: String) -> String {
-        var url = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Puzzle]?.Url?.absoluteString ?? ""
-        if url.count > 0 {
-            url = url + token
-        }
-        return self.OPassURL(url)
+    static var URL_GAME: String {
+        return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures.Puzzle]?.Url?.absoluteString ?? "")
     }
     static func GitHubRepo(_ repo: String) -> String {
         return String(format: "https://github.com/\(repo)")
