@@ -343,7 +343,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             userDefault.synchronize()
         }
 
-        guard let presentedView = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController else { return }
+        guard let presentedView = UIApplication.getMostTopPresentedViewController() else { return }
         if Constants.haveAccessToken && presentedView.className == GuideViewController.className {
             if let guideVC = presentedView as? GuideViewController {
                 guideVC.redeemCodeText.text = Constants.accessToken

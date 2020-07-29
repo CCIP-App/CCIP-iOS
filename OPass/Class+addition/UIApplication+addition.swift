@@ -10,10 +10,15 @@ import Foundation
 
 extension UIApplication {
     static func getMostTopPresentedViewController() -> UIViewController? {
-        var vc: UIViewController? = UIApplication.shared.keyWindow?.rootViewController;
-        while (vc?.presentedViewController != nil) {
-            vc = vc?.presentedViewController;
+        var presentedViewController: UIViewController? = nil
+        let keyWindow = UIApplication.shared.windows.filter{ $0.isKeyWindow }.first
+        if var topController = keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            presentedViewController = topController
+            // topController should now be your topmost view controller
         }
-        return vc;
+        return presentedViewController
     }
 }
