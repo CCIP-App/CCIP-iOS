@@ -153,8 +153,6 @@ class SessionSearchTableViewController: SessionTableViewController {
     func updateResult() {
         self.sessionTimes.removeAll()
         self.sessionSections.removeAll()
-        guard let token = Constants.accessToken else { return }
-        guard let eventInfo = OPassAPI.eventInfo else { return }
         guard let pager = self.pagerController else { return }
         guard let programs = pager.programs else { return }
         for session in (programs.Sessions.filter { (searchedList.contains($0.Id)) }) {
