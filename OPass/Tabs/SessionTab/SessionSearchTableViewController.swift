@@ -94,10 +94,9 @@ class SessionSearchTableViewController: SessionTableViewController {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let text = searchText.trim().lowercased()
-        print(searchText)
 
         // reset search result
-        searchedList = []
+        searchedList.removeAll()
 
         // Can set minimum string length > 0, especially English
         if text.count > 0 {
@@ -131,7 +130,6 @@ class SessionSearchTableViewController: SessionTableViewController {
                     }
                 }
             }
-            print(searchedList)
         }
 
         self.updateResult()
@@ -142,7 +140,7 @@ class SessionSearchTableViewController: SessionTableViewController {
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchedList = []
+        searchedList.removeAll()
         self.updateResult()
     }
 
