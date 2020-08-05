@@ -96,10 +96,14 @@ class SessionSearchTableViewController: SessionTableViewController {
         let text = searchText.trim().lowercased()
         print(searchText)
 
-        if text == "" {
-            searchedList = []
-        } else { // Maybe can set minimum string length, especially English
-            // title + speakers + room + tags + language + date
+        // reset search result
+        searchedList = []
+
+        // Can set minimum string length > 0, especially English
+        if text.count > 0 {
+            // supported: title, description, tags
+            // not yet: speakers, room, language,date
+
             // Find in Sessions
             for session in self.programs?.Sessions ?? [] {
                 let sessionInfo = self.programs?.GetSession(session.Id)
