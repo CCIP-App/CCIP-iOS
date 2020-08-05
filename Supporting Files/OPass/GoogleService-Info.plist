@@ -23,20 +23,24 @@
 	<key>STORAGE_BUCKET</key>
 	<string>opass-8b7db.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true/>
-	<key>IS_ANALYTICS_ENABLED</key>
 	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<true/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<false/>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
-	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
-	<key>GOOGLE_APP_ID</key>
-	<string>1:1003222886889:ios:d5979168865b5f60</string>
-	<key>DATABASE_URL</key>
-	<string>https://opass-8b7db.firebaseio.com</string>
+	<false/>
 	<key>IS_MEASUREMENT_ENABLED</key>
 	<false/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<false/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1003222886889:ios:d5979168865b5f60</string>
+	<key>GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED</key>
+	<false/>
+	<key>GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS</key>
+	<false/>
+	<key>DATABASE_URL</key>
+	<string>https://opass-8b7db.firebaseio.com</string>
 </dict>
 </plist>
