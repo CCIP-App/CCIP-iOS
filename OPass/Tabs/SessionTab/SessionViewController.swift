@@ -23,24 +23,39 @@ class SessionViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage.init()
         self.navigationController?.navigationBar.backgroundColor = .clear
 
-        let title = Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: .solid, forColor: .white)
+        // Create Favorite button
+        let title_Favorites = Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: .solid, forColor: .white)
 
-        let favButton = UIButton.init()
-        favButton.setAttributedTitle(title, for: .normal)
-        favButton.addTarget(self, action: #selector(showFavoritesTouchDown), for: .touchDown)
-        favButton.addTarget(self, action: #selector(showFavoritesTouchUpInside), for: .touchUpInside)
-        favButton.addTarget(self, action: #selector(showFavoritesTouchUpOutside), for: .touchUpOutside)
-        favButton.sizeToFit()
-        let favoritesButton = UIBarButtonItem.init(customView: favButton)
-        self.navigationItem.setRightBarButton(favoritesButton, animated: true)
+        let uiButton_Favorites = UIButton.init()
+        uiButton_Favorites.setAttributedTitle(title_Favorites, for: .normal)
+        uiButton_Favorites.addTarget(self, action: #selector(showFavoritesTouchDown), for: .touchDown)
+        uiButton_Favorites.addTarget(self, action: #selector(showFavoritesTouchUpInside), for: .touchUpInside)
+        uiButton_Favorites.addTarget(self, action: #selector(showFavoritesTouchUpOutside), for: .touchUpOutside)
+        uiButton_Favorites.sizeToFit()
+        let uiBarButton_Favorites = UIBarButtonItem.init(customView: uiButton_Favorites)
 
-        let titleFake = Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: .solid, forColor: .clear)
+        // Create Search button
+        let title_Search = Constants.attributedFontAwesome(ofCode: "fa-search", withSize: 20, inStyle: .solid, forColor: .white)
 
-        let favButtonFake = UIButton.init()
-        favButtonFake.setAttributedTitle(titleFake, for: .normal)
-        favButtonFake.sizeToFit()
-        let favoritesButtonFake = UIBarButtonItem.init(customView: favButtonFake)
-        self.navigationItem.setLeftBarButton(favoritesButtonFake, animated: true)
+        let uiButton_Search = UIButton.init()
+        uiButton_Search.setAttributedTitle(title_Search, for: .normal)
+        uiButton_Search.addTarget(self, action: #selector(showSearchTouchDown), for: .touchDown)
+        uiButton_Search.addTarget(self, action: #selector(showSearchTouchUpInside), for: .touchUpInside)
+        uiButton_Search.addTarget(self, action: #selector(showSearchTouchUpOutside), for: .touchUpOutside)
+        uiButton_Search.sizeToFit()
+        let uiBarButton_Search = UIBarButtonItem.init(customView: uiButton_Search)
+
+        // Create Fake button
+        let title_Fake = Constants.attributedFontAwesome(ofCode: "fa-heart", withSize: 20, inStyle: .solid, forColor: .clear)
+
+        let uiButton_Fake = UIButton.init()
+        uiButton_Fake.setAttributedTitle(title_Fake, for: .normal)
+        uiButton_Fake.sizeToFit()
+        let uiBarButton_Fake = UIBarButtonItem.init(customView: uiButton_Fake)
+
+        // Set Navigation Buttons
+        self.navigationItem.setRightBarButtonItems([uiBarButton_Favorites, uiBarButton_Search], animated: true)
+        self.navigationItem.setLeftBarButtonItems([uiBarButton_Fake, uiBarButton_Fake], animated: true)
 
         let frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 239)
         let headView = UIView.init(frame: frame)
@@ -71,10 +86,31 @@ class SessionViewController: UIViewController {
         UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
     }
 
+    @objc func showSearchTouchDown() {
+        UIImpactFeedback.triggerFeedback(.impactFeedbackMedium)
+    }
+
+    @objc func showSearchTouchUpInside() {
+        self.performSegue(withIdentifier: "ShowSearch", sender: nil)
+        UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
+    }
+
+    @objc func showSearchTouchUpOutside() {
+        UIImpactFeedback.triggerFeedback(.impactFeedbackLight)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowFavorites" {
+        switch segue.identifier {
+        case "ShowFavorites":
             let vc = segue.destination as? SessionFavoriteTableViewController
             vc?.pagerController = self.children.first as? SessionViewPagerController
+            break
+        case "ShowSearch":
+            let vc = segue.destination as? SessionSearchTableViewController
+            vc?.pagerController = self.children.first as? SessionViewPagerController
+            break
+        default:
+            break
         }
     }
 }

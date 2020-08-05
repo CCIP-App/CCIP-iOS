@@ -11,6 +11,7 @@
 		1424C2022250FC7100D36266 /* Session.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1424C1FF2250FC7100D36266 /* Session.storyboard */; };
 		1424C2032250FC7100D36266 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1424C2002250FC7100D36266 /* Main.storyboard */; };
 		280774D21F1AD8D300A5B994 /* SessionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280774D01F1AD8D300A5B994 /* SessionTableViewCell.xib */; };
+		2810046624DB128D00F3D458 /* SessionSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810046524DB128D00F3D458 /* SessionSearchTableViewController.swift */; };
 		2843027522B6C90E00B548A9 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843027422B6C90E00B548A9 /* GuideViewController.swift */; };
 		2843027722B6D05100B548A9 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843027622B6D05100B548A9 /* StatusViewController.swift */; };
 		284602E01F121BBB00F512A3 /* LaunchScreen@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284602DD1F121BBB00F512A3 /* LaunchScreen@1x.png */; };
@@ -198,6 +199,7 @@
 		1424C2002250FC7100D36266 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		20A37831785E93E71E237712 /* Pods-OPass Notification Service-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-OPass Notification Service-metadata.plist"; path = "Pods/Pods-OPass Notification Service-metadata.plist"; sourceTree = "<group>"; };
 		280774D01F1AD8D300A5B994 /* SessionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SessionTableViewCell.xib; sourceTree = "<group>"; };
+		2810046524DB128D00F3D458 /* SessionSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSearchTableViewController.swift; sourceTree = "<group>"; };
 		2843027422B6C90E00B548A9 /* GuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		2843027622B6D05100B548A9 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		284602DD1F121BBB00F512A3 /* LaunchScreen@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@1x.png"; sourceTree = "<group>"; };
@@ -665,6 +667,7 @@
 				6B153B9822B13F6700C1632D /* SessionViewPagerController.swift */,
 				6B153B9A22B176D000C1632D /* SessionTableViewController.swift */,
 				6B153B9E22B1C09C00C1632D /* SessionFavoriteTableViewController.swift */,
+				2810046524DB128D00F3D458 /* SessionSearchTableViewController.swift */,
 				6B0C6C9222AD55F6003E7617 /* SessionTableViewCell.swift */,
 				280774D01F1AD8D300A5B994 /* SessionTableViewCell.xib */,
 				6B153B9C22B1946A00C1632D /* SessionDetailViewController.swift */,
@@ -1102,6 +1105,7 @@
 				6B50994022B7DD9300FD048F /* iBeaconNotification.swift in Sources */,
 				6B4FCB15218ECACD0005469F /* UISegmentedControl+addition.swift in Sources */,
 				6B0D366822BDE6B0007B754D /* AppDelegate.swift in Sources */,
+				2810046624DB128D00F3D458 /* SessionSearchTableViewController.swift in Sources */,
 				2843027722B6D05100B548A9 /* StatusViewController.swift in Sources */,
 				6BE8A22A220DC84C0035CFD8 /* AcknowledgementsViewController.swift in Sources */,
 				6B153B9D22B1946A00C1632D /* SessionDetailViewController.swift in Sources */,

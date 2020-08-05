@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SessionTableViewController: UITableViewController, UIViewControllerPreviewingDelegate {
+class SessionTableViewController: UITableViewController, UIViewControllerPreviewingDelegate, UISearchBarDelegate {
     public var pagerController: SessionViewPagerController?
     public var sessionDate: String?
     var sessionTimes = Array<Date>()
@@ -42,7 +42,16 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
             }
             self.sessionTimes.sort()
         } else {
-            self.parseFavorites()
+            switch self {
+            case is SessionFavoriteTableViewController:
+                self.parseFavorites()
+                break
+            case is SessionSearchTableViewController:
+                self.parseSearch()
+                break
+            default:
+                break
+            }
         }
     }
 
@@ -84,6 +93,10 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
             self?.tableView.beginUpdates()
             self?.tableView.endUpdates()
         }
+    }
+
+    func parseSearch() {
+
     }
 
     // MARK: - Peek & Pop Preview
