@@ -30,16 +30,6 @@ import ScanditBarcodeScanner
 
     private var pageControl: UIPageControl = UIPageControl.init()
 
-    private var userInfo: ScenarioStatus? {
-        get {
-            return OPassAPI.userInfo
-        }
-        set {
-            OPassAPI.userInfo = newValue
-        }
-    }
-    private var scenarios: [Scenario]?
-
     private var scanditBarcodePicker: SBSBarcodePicker?
     private var qrButtonItem: UIBarButtonItem?
 
@@ -112,8 +102,7 @@ import ScanditBarcodeScanner
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.scenarios = []
-        OPassAPI.scenarios = self.scenarios
+        OPassAPI.scenarios = []
         self.cards?.reloadData()
         self.lbUserName?.text = ""
     }
@@ -240,13 +229,11 @@ import ScanditBarcodeScanner
             let checkinCard = UserDefaults.standard.object(forKey: "CheckinCard") as? NSDictionary
             if checkinCard != nil {
                 let key = checkinCard?.object(forKey: "key") as? String ?? ""
-                if let scenarios = self.scenarios {
-                    for item in scenarios {
-                        if item.Id == key {
-                            if let index = scenarios.firstIndex(of: item) {
-                                NSLog("index: \(index)")
-                                self.cards?.scrollToItem(at: index, animated: true)
-                            }
+                for item in OPassAPI.scenarios {
+                    if item.Id == key {
+                        if let index = OPassAPI.scenarios.firstIndex(of: item) {
+                            NSLog("index: \(index)")
+                            self.cards?.scrollToItem(at: index, animated: true)
                         }
                     }
                 }
@@ -255,14 +242,12 @@ import ScanditBarcodeScanner
                 // force scroll to first selected item at first load
                 if let cards = self.cards {
                     if cards.numberOfItems > 0 {
-                        if let scenarios = OPassAPI.scenarios {
-                            for scenario in scenarios {
-                                let used = scenario.Used != nil
-                                let disabled = scenario.Disabled != nil
-                                if !used && !disabled {
-                                    self.cards?.scrollToItem(at: scenarios.firstIndex(of: scenario) ?? 0, animated: true)
-                                    break
-                                }
+                        for scenario in OPassAPI.scenarios {
+                            let used = scenario.Used != nil
+                            let disabled = scenario.Disabled != nil
+                            if !used && !disabled {
+                                self.cards?.scrollToItem(at: OPassAPI.scenarios.firstIndex(of: scenario) ?? 0, animated: true)
+                                break
                             }
                         }
                     }
@@ -297,8 +282,7 @@ import ScanditBarcodeScanner
                 if !(self.presentedViewController?.isKind(of: GuideViewController.self) ?? false) {
                     self.performSegue(withIdentifier: "ShowGuide", sender: self.cards)
                 }
-                self.scenarios?.removeAll()
-                OPassAPI.scenarios = self.scenarios
+                OPassAPI.scenarios.removeAll()
                 self.reloadAndGoToCard()
             }
         } else {
@@ -306,19 +290,18 @@ import ScanditBarcodeScanner
                 if success {
                     self.hideView(.Guide, nil)
                     if let userInfo = obj as? ScenarioStatus {
-                        self.userInfo = userInfo
-                        self.scenarios = userInfo.Scenarios
+                        OPassAPI.userInfo = userInfo
+                        OPassAPI.scenarios = OPassAPI.userInfo?.Scenarios ?? []
 
                         let isHidden = !Constants.haveAccessToken
                         self.lbHi?.isHidden = isHidden
                         self.ivUserPhoto?.isHidden = isHidden
                         self.lbUserName?.isHidden = isHidden
-                        self.lbUserName?.text = userInfo.UserId
-                        AppDelegate.sendTag("\(userInfo.EventId)\(userInfo.Role)", value: userInfo.Token)
+                        self.lbUserName?.text = OPassAPI.userInfo?.UserId
+                        AppDelegate.sendTag("\(OPassAPI.userInfo?.EventId ?? "")\(OPassAPI.userInfo?.Role ?? "")", value: OPassAPI.userInfo?.Token ?? "")
                         if OPassAPI.isLoginSession {
                             AppDelegate.delegateInstance.displayGreetingsForLogin()
                         }
-                        OPassAPI.scenarios = self.scenarios
                         if ((OPassAPI.userInfo?.Role ?? "").count > 0) {
                             if let info = OPassAPI.userInfo {
                                 self.cards?.isHidden = !((OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(info.Role)) ?? true)
@@ -606,15 +589,13 @@ import ScanditBarcodeScanner
     // MARK: - iCarousel methods
 
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
-        guard let availableScenarios = OPassAPI.scenarios else { return }
-        if availableScenarios.count > 0 {
+        if OPassAPI.scenarios.count > 0 {
             self.pageControl.currentPage = carousel.currentItemIndex
         }
     }
 
     func numberOfItems(in carousel: iCarousel) -> Int {
-        guard let availableScenarios = OPassAPI.scenarios else { return 0 }
-        let count = availableScenarios.count
+        let count = OPassAPI.scenarios.count
         self.pageControl.numberOfPages = count
         return count
     }
@@ -638,14 +619,13 @@ import ScanditBarcodeScanner
 
         // create new view if no view is available for recycling
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        guard let availableScenarios = OPassAPI.scenarios else { return view ?? UIView.init() }
-        let haveScenario = availableScenarios.count > 0
+        let haveScenario = OPassAPI.scenarios.count > 0
         if haveScenario {
             guard let temp = storyboard.instantiateViewController(withIdentifier: "CheckinCardReuseView") as? CheckinCardViewController else { return UIView.init() }
             temp.view.frame = card.cardRect
             view = temp.view
 
-            let scenario = availableScenarios[index]
+            let scenario = OPassAPI.scenarios[index]
 
             let id = scenario.Id
             let isCheckin = id.contains("checkin")

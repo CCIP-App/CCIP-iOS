@@ -179,7 +179,7 @@ extension OPassAPI {
         OPassAPI.currentEvent = ""
         OPassAPI.eventInfo = nil
         OPassAPI.userInfo = nil
-        OPassAPI.scenarios = nil
+        OPassAPI.scenarios = []
         OPassAPI.isLoginSession = false
     }
 
@@ -199,6 +199,7 @@ extension OPassAPI {
                     case OPassEventsController.className:
                         DispatchQueue.main.sync {
                             OPassAPI.isLoginSession = false
+                            OPassAPI.userInfo = nil
                             Constants.accessToken = ""
                         }
                         done = true

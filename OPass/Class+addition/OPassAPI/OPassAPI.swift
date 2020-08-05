@@ -16,7 +16,7 @@ class OPassAPI: NSObject {
     static var currentEvent: String = ""
     static var eventInfo: EventInfo? = nil
     static var userInfo: ScenarioStatus? = nil
-    static var scenarios: [Scenario]? = nil
+    static var scenarios: [Scenario] = []
     static var isLoginSession: Bool = false
     static private var tabBarController: MainTabBarViewController? = nil
 
