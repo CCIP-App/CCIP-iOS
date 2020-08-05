@@ -18,6 +18,7 @@ struct Programs: OPassData {
     var SessionTypes: [ProgramSessionType]
     var Rooms: [ProgramRoom]
     var Tags: [ProgramsTag]
+    var _sessions = Dictionary<String, SessionInfo>()
     init(_ data: JSON) {
         self._data = data
         self.Sessions = self._data["sessions"].arrayValue.map { obj -> ProgramSession in
@@ -35,11 +36,14 @@ struct Programs: OPassData {
         self.Tags = self._data["tags"].arrayValue.map { obj -> ProgramsTag in
             return ProgramsTag(obj)
         }
+        self._sessions.removeAll()
+        self.Sessions.forEach { s in
+            self._sessions[s.Id] = SessionInfo(s, self)
+        }
     }
 
     func GetSession(_ sessionId: String) -> SessionInfo? {
-        guard let session = (self.Sessions.filter { $0.Id == sessionId }.first) else { return nil }
-        return SessionInfo(session, self)
+        return self._sessions[sessionId]
     }
 
     func GetSessionIds(byDateString: String) -> Array<String> {
