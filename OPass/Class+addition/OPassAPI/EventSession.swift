@@ -71,6 +71,8 @@ struct SessionInfo: OPassData {
     var Broadcast: String?
     var Start: String
     var End: String
+    var Language: String
+    var CoWrite: String?
     var QA: String?
     var Slide: String?
     var Live: String?
@@ -92,6 +94,8 @@ struct SessionInfo: OPassData {
         self.Broadcast = self._sessionData.Broadcast
         self.Start = self._sessionData.Start
         self.End = self._sessionData.End
+        self.Language = self._sessionData.Language
+        self.CoWrite = self._sessionData.CoWrite
         self.QA = self._sessionData.QA
         self.Slide = self._sessionData.Slide
         self.Live = self._sessionData.Live
@@ -108,6 +112,8 @@ struct SessionInfo: OPassData {
         self.Broadcast = self._sessionData.Broadcast
         self.Start = self._sessionData.Start
         self.End = self._sessionData.End
+        self.Language = self._sessionData.Language
+        self.CoWrite = self._sessionData.CoWrite
         self.QA = self._sessionData.QA
         self.Slide = self._sessionData.Slide
         self.Live = self._sessionData.Live
@@ -129,6 +135,8 @@ struct ProgramSession: OPassData {
     var Broadcast: String?
     var Start: String
     var End: String
+    var Language: String
+    var CoWrite: String?
     var QA: String?
     var Slide: String?
     var Live: String?
@@ -144,6 +152,8 @@ struct ProgramSession: OPassData {
         self.Broadcast = self._data["broadcast"].string
         self.Start = self._data["start"].stringValue
         self.End = self._data["end"].stringValue
+        self.Language = self._data["language"].stringValue
+        self.CoWrite = self._data["co_write"].stringValue
         self.QA = self._data["qa"].string
         self.Slide = self._data["slide"].string
         self.Live = self._data["live"].string
