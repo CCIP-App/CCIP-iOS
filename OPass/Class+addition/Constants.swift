@@ -257,8 +257,8 @@ extension Constants {
                 progress: { response, _, _ in
                     setDevLogo(response)
                 },
-                completion: { response, _ in
-                    setDevLogo(response)
+                completion: { (result: Result<ImageResponse, ImagePipeline.Error>) in
+                    setDevLogo(try? result.get())
                 }
             )
         }

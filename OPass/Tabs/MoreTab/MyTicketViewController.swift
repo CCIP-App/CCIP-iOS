@@ -27,8 +27,8 @@ class MyTicketViewController: UIViewController {
             if let QRImage = EFQRCode.generate(
                     token,
                     size: size,
-                    backgroundColor: CGColor.EFWhite(),
-                    foregroundColor: CGColor.EFBlack(),
+                    backgroundColor: UIColor.white.cgColor,
+                    foregroundColor: UIColor.black.cgColor,
                     watermark: nil
                 ) {
                 let qrImage = UIImage.init(cgImage: QRImage)

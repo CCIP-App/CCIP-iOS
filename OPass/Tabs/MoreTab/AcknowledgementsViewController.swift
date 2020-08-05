@@ -22,7 +22,7 @@ class AcknowledgementsViewController: UIViewController {
         Promise { resolve, reject in
             var contributors = [Any]();
             let manager = AFHTTPSessionManager.init()
-            manager.get("https://api.github.com/repos/CCIP-App/CCIP-iOS/contributors", parameters: nil, progress: nil, success: { (_, responseObject: Any?) in
+            manager.get("https://api.github.com/repos/CCIP-App/CCIP-iOS/contributors", parameters: nil, headers: nil, progress: nil, success: { (_, responseObject: Any?) in
                 NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any) ?? "nil")");
                 if (responseObject != nil) {
                     if let contributorsObj = responseObject as? [NSDictionary] {

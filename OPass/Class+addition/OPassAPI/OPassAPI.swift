@@ -26,7 +26,7 @@ class OPassAPI: NSObject {
             let manager = AFHTTPSessionManager.init()
             manager.requestSerializer.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
             manager.requestSerializer.timeoutInterval = 5
-            manager.get(url, parameters: nil, progress: nil, success: { (_, responseObject: Any?) in
+            manager.get(url, parameters: nil, headers: nil, progress: nil, success: { (_, responseObject: Any?) in
                 NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any) ?? "nil")")
                 if (responseObject != nil) {
                     resolve(responseObject)

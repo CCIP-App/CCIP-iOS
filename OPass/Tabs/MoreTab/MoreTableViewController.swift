@@ -238,11 +238,12 @@ class MoreTableViewController: UIViewController, UITableViewDelegate, UITableVie
                                 with: customIconUrl,
                                 progress: { _, _, _ in
                                     print("progress updated")
-                            },
-                                completion: { response, _ in
+                                },
+                                completion: { (result: Result<ImageResponse, ImagePipeline.Error>) in
                                     print("task completed")
-                                    cell.imageView?.image = response?.image.scaled(to: CGSize(width: 24, height: 24))
-                            })
+                                    cell.imageView?.image = try? result.get().image.scaled(to: CGSize(width: 24, height: 24))
+                                }
+                            )
                         }
 
                         let cellText = cellId != ACKNOWLEDGEMENTS ?

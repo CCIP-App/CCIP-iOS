@@ -13,8 +13,8 @@ extension EFQRCode {
     public class func generate(
         _ content: String,
         size: CGSize = CGSize(width: 300, height: 300),
-        backgroundColor: CGColor = CGColor.EFWhite(),
-        foregroundColor: CGColor = CGColor.EFBlack(),
+        backgroundColor: CGColor = UIColor.white.cgColor,
+        foregroundColor: CGColor = UIColor.black.cgColor,
         watermark: CGImage? = nil
         ) -> CGImage? {
         if let generator = EFQRCodeGenerator(
