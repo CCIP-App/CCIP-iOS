@@ -115,7 +115,7 @@ class SessionTableViewCell: UITableViewCell, TagListViewDelegate {
         let endTime = Constants.DateFromString(session.End)
         let mins = Int(endTime.timeIntervalSince(startTime) / 60)
         let type = session.Type ?? ""
-        let tags = ((session.Tags.map { $0.Name.trim() } ) + [ type ]).filter { $0.count > 0 }
+        let tags = ([ session.Language ] + ( session.Tags.map { $0.Name.trim() } ) + [ type ]).filter { $0.count > 0 }
         let state = OPassAPI.CheckFavoriteState(eventInfo.EventId, token, sessionId)
 
         self.SpeakerNamesLabel.text = speakers.count > 0 ? "Speaker(s): " + speakers : ""
