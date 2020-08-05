@@ -106,27 +106,27 @@ class SessionSearchTableViewController: SessionTableViewController {
 
             // Find in Sessions
             for session in self.programs?.Sessions ?? [] {
-                let sessionInfo = self.programs?.GetSession(session.Id)
+                guard let sessionInfo = self.programs?.GetSession(session.Id) else { continue }
                 // title
-                let title = sessionInfo?["title"] ?? ""
+                let title = sessionInfo["title"]
                 //print(title)
                 if title.lowercased().contains(text) {
-                    searchedList.append(sessionInfo!.Id)
+                    searchedList.append(sessionInfo.Id)
                     continue
                 }
                 /*
                 // description
-                let description = sessionInfo?["description"] ?? ""
+                let description = sessionInfo["description"] ?? ""
                 if description.lowercased().contains(text) {
-                    searchedList.append(sessionInfo!.Id)
+                    searchedList.append(sessionInfo.Id)
                     continue
                 }
                 print(description)
                 */
                 // Find in tags
-                for tag in sessionInfo?._tags ?? [] {
+                for tag in sessionInfo._tags {
                     if tag.Id.lowercased().contains(text) {
-                        searchedList.append(sessionInfo!.Id)
+                        searchedList.append(sessionInfo.Id)
                         break
                     }
                 }
