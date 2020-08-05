@@ -102,6 +102,8 @@ extension OPassAPI {
         allowedCharacters.formUnion(with: NSCharacterSet.alphanumerics)
         let nonAllowedCharacters = allowedCharacters.inverted
         if (token.count != 0 && token.rangeOfCharacter(from: nonAllowedCharacters) == nil) {
+            OPassAPI.isLoginSession = false
+            Constants.accessToken = ""
             OPassAPI.InitializeRequest(Constants.URL_LANDING(token: token)) { _, _, error, _ in
                 completion?(false, nil, error)
                 }.then { (obj: Any?) -> Void in
