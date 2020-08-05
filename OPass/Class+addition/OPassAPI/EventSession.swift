@@ -36,6 +36,10 @@ struct Programs: OPassData {
         self.Tags = self._data["tags"].arrayValue.map { obj -> ProgramsTag in
             return ProgramsTag(obj)
         }
+        self._regenSessions()
+    }
+
+    mutating func _regenSessions() {
         self._sessions.removeAll()
         self.Sessions.forEach { s in
             self._sessions[s.Id] = SessionInfo(s, self)

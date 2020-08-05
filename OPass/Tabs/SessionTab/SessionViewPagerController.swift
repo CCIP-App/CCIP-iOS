@@ -39,12 +39,15 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
         }
         guard let prog = try? PropertyListDecoder().decode(Programs.self, from: programsObj) else { return }
         self.programs = prog
+        self.programs?._regenSessions()
         self.setSessionDate()
     }
 
     private func saveProgramsData() {
         let userDefault = UserDefaults.standard
+        self.programs?._sessions.removeAll()
         let programsData = try? PropertyListEncoder().encode(self.programs)
+        self.programs?._regenSessions()
         userDefault.set(programsData, forKey: Constants.SESSION_CACHE_KEY)
         userDefault.synchronize()
     }
