@@ -100,31 +100,30 @@ class SessionSearchTableViewController: SessionTableViewController {
 
         // Can set minimum string length > 0, especially English
         if text.count > 0 {
-            // supported: title, description, tags
-            // not yet: speakers, room, language,date
-
             // Find in Sessions
             for session in self.programs?.Sessions ?? [] {
                 guard let sessionInfo = self.programs?.GetSession(session.Id) else { continue }
-                // title
-                let title = sessionInfo["title"]
-                //print(title)
-                if title.lowercased().contains(text) {
-                    searchedList.append(sessionInfo.Id)
-                    continue
-                }
-                /*
-                // description
-                let description = sessionInfo["description"] ?? ""
-                if description.lowercased().contains(text) {
-                    searchedList.append(sessionInfo.Id)
-                    continue
-                }
-                print(description)
-                */
-                // Find in tags
-                for tag in sessionInfo._tags {
-                    if tag.Id.lowercased().contains(text) {
+
+                // supported: title, description, speakers, room, type, language, tags
+                // not yet: date
+                var searchableFields = [
+                    sessionInfo["title"].lowercased(),
+                    //sessionInfo["description"].lowercased(),
+                    sessionInfo.Room?.lowercased() ?? "",
+                    sessionInfo.Type?.lowercased() ?? "",
+                    sessionInfo.Language.lowercased(),
+                ].filter({ s -> Bool in
+                    return s.count > 0
+                })
+                searchableFields += sessionInfo.Speakers.map({ s -> String in
+                    return s["name"].lowercased()
+                })
+                searchableFields += sessionInfo.Tags.map({ t -> String in
+                    return t.Name.lowercased()
+                })
+
+                for s in searchableFields {
+                    if s.contains(text) {
                         searchedList.append(sessionInfo.Id)
                         break
                     }
