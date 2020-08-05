@@ -26,6 +26,8 @@ PODS:
   - EFQRCode (5.1.6):
     - EFQRCode/Core (= 5.1.6)
   - EFQRCode/Core (5.1.6)
+  - Firebase/Analytics (6.29.0):
+    - Firebase/Core
   - Firebase/Core (6.29.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.7.0)
@@ -130,7 +132,7 @@ DEPENDENCIES:
   - DLLocalNotifications
   - Down
   - EFQRCode (~> 5.1.6)
-  - Firebase/Core
+  - Firebase/Analytics
   - Firebase/DynamicLinks
   - FoldingCell
   - FontAwesome.swift
@@ -262,6 +264,6 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: c308c4a41d375be9bf7da3bbfd82ac3df92c6279
+PODFILE CHECKSUM: 264b7549f37cdc6a03f26f136041af6968b38cee
 
 COCOAPODS: 1.9.3

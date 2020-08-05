@@ -20,7 +20,7 @@ end
 def opass_pods
   # Pods for OPass
   pod 'UICKeyChainStore', '~> 2.1'
-  pod 'Firebase/Core'
+  pod 'Firebase/Analytics'
   pod 'Firebase/DynamicLinks'
   pod 'ICViewPager', :git => 'https://github.com/FrankWu100/ICViewPager'
   pod 'STPopup', '~> 1.7'
