@@ -2,9 +2,9 @@
 //  NSColor+.swift
 //  EFQRCode
 //
-//  Created by EyreFree on 2017/4/9.
+//  Created by EyreFree on 2019/11/21.
 //
-//  Copyright (c) 2017 EyreFree <eyrefree@eyrefree.org>
+//  Copyright © 2019 EyreFree. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,17 +24,26 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(macOS)
+#if canImport(AppKit)
 import AppKit
 
-public extension NSColor {
+extension NSColor {
 
-    public func toCIColor() -> CIColor {
-        return cgColor.toCIColor()
+    func ciColor() -> CIColor {
+        return cgColor.ciColor()
     }
 
-    public func toCGColor() -> CGColor {
-        return cgColor
+    func cgColor() -> CGColor {
+        return self.cgColor
+    }
+    
+    static func white(white: CGFloat = 1.0, alpha: CGFloat = 1.0) -> NSColor {
+        return self.init(white: white, alpha: alpha)
+    }
+    
+    static func black(black: CGFloat = 1.0, alpha: CGFloat = 1.0) -> NSColor {
+        let white: CGFloat = 1.0 - black
+        return Self.white(white: white, alpha: alpha)
     }
 }
 #endif

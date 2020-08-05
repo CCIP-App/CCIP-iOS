@@ -229,7 +229,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/iVersion/iVersion.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/swift_qrcodejs/swift_qrcodejs.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/thenPromise/Then.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -265,7 +264,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/iVersion/iVersion.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/swift_qrcodejs/swift_qrcodejs.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/thenPromise/Then.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

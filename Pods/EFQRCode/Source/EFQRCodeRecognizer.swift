@@ -24,7 +24,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS) || os(macOS) || os(tvOS)
+#if canImport(CoreImage)
 import CoreImage
 
 @objcMembers
@@ -57,9 +57,9 @@ public class EFQRCodeRecognizer: NSObject {
         guard let finalImage = image else {
             return nil
         }
-        let result = finalImage.toCIImage().recognizeQRCode(options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
-        if result.count <= 0 {
-            return finalImage.grayscale()?.toCIImage().recognizeQRCode(
+        let result = finalImage.ciImage().recognizeQRCode(options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
+        if result.isEmpty {
+            return finalImage.grayscale?.ciImage().recognizeQRCode(
                 options: [CIDetectorAccuracy: CIDetectorAccuracyLow]
             )
         }

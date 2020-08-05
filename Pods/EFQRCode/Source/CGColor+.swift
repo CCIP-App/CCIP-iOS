@@ -2,9 +2,9 @@
 //  CGColor+.swift
 //  EFQRCode
 //
-//  Created by EyreFree on 2017/4/9.
+//  Created by EyreFree on 2019/11/20.
 //
-//  Copyright (c) 2017 EyreFree <eyrefree@eyrefree.org>
+//  Copyright © 2019 EyreFree. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -26,27 +26,57 @@
 
 import CoreGraphics
 
-#if os(iOS) || os(tvOS) || os(macOS)
+#if canImport(CoreImage)
 import CoreImage
 #endif
 
-public extension CGColor {
-    
-    public static func EFWhite() -> CGColor! {
-        return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
-    }
-    
-    public static func EFBlack() -> CGColor! {
-        return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.0, 0.0, 0.0, 1.0])
-    }
+#if canImport(UIKit)
+import UIKit
+#endif
 
-    public static func fromRGB(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> CGColor? {
-        return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [red, green, blue, alpha])
-    }
-
-    #if os(iOS) || os(tvOS) || os(macOS)
-    public func toCIColor() -> CIColor {
+extension CGColor {
+    
+    #if canImport(CoreImage)
+    func ciColor() -> CIColor {
         return CIColor(cgColor: self)
     }
     #endif
+    
+    #if canImport(UIKit)
+    func uiColor() -> UIColor {
+        return UIColor(cgColor: self)
+    }
+    #endif
+    
+    var rgba: (red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8)? {
+        var color = self
+        if color.colorSpace?.model != .rgb, #available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *) {
+            color = color.converted(to: CGColorSpaceCreateDeviceRGB(), intent: .defaultIntent, options: nil) ?? color
+        }
+        if let components = color.components, 4 == color.numberOfComponents {
+            return(
+                red: UInt8(components[0] * 255.0),
+                green: UInt8(components[1] * 255.0),
+                blue: UInt8(components[2] * 255.0),
+                alpha: UInt8(components[3] * 255.0)
+            )
+        } else {
+            return nil
+        }
+    }
+    
+    static func initWith(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> CGColor? {
+        return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [red, green, blue, alpha])
+    }
+}
+
+public extension CGColor {
+    static func white(white: CGFloat = 1.0, alpha: CGFloat = 1.0) -> CGColor? {
+        return initWith(red: white, green: white, blue: white, alpha: alpha)
+    }
+    
+    static func black(black: CGFloat = 1.0, alpha: CGFloat = 1.0) -> CGColor? {
+        let white: CGFloat = 1.0 - black
+        return initWith(red: white, green: white, blue: white, alpha: alpha)
+    }
 }

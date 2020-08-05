@@ -2,9 +2,9 @@
 //  CIColor+.swift
 //  EFQRCode
 //
-//  Created by EyreFree on 2017/4/9.
+//  Created by EyreFree on 2019/11/20.
 //
-//  Copyright (c) 2017 EyreFree <eyrefree@eyrefree.org>
+//  Copyright © 2019 EyreFree. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,21 +24,32 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS) || os(tvOS) || os(macOS)
+#if canImport(CoreImage)
 import CoreImage
 
-public extension CIColor {
+#if canImport(UIKit)
+import UIKit
+#endif
 
-    public static func EFWhite() -> CIColor {
-        return CIColor(red: 1, green: 1, blue: 1)
+extension CIColor {
+
+    #if canImport(UIKit)
+    func uiColor() -> UIColor {
+        return UIColor(ciColor: self)
     }
-
-    public static func EFBlack() -> CIColor {
-        return CIColor(red: 0, green: 0, blue: 0)
+    #endif
+    
+    func cgColor() -> CGColor? {
+        return CGColor(colorSpace: self.colorSpace, components: self.components)
     }
-
-    public func toCGColor() -> CoreImage.CGColor? {
-        return CGColor(colorSpace: colorSpace, components: components)
+    
+    static func white(white: CGFloat = 1.0, alpha: CGFloat = 1.0) -> CIColor {
+        return self.init(red: white, green: white, blue: white, alpha: alpha)
+    }
+    
+    static func black(black: CGFloat = 1.0, alpha: CGFloat = 1.0) -> CIColor {
+        let white: CGFloat = 1.0 - black
+        return self.init(red: white, green: white, blue: white, alpha: alpha)
     }
 }
 #endif

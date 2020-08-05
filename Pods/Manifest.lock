@@ -1,18 +1,18 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
-  - AFNetworking/NSURLSession (3.2.1):
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - Appirater (2.3.1)
   - BLKFlexibleHeightBar (1.0.2)
@@ -23,26 +23,27 @@ PODS:
   - Device.swift (1.2.2)
   - DLLocalNotifications (0.08)
   - Down (0.9.3)
-  - EFQRCode (4.5.0):
-    - swift_qrcodejs (~> 1.0.1)
-  - Firebase/Core (6.28.1):
+  - EFQRCode (5.1.6):
+    - EFQRCode/Core (= 5.1.6)
+  - EFQRCode/Core (5.1.6)
+  - Firebase/Core (6.29.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 6.6.2)
-  - Firebase/CoreOnly (6.28.1):
-    - FirebaseCore (= 6.9.1)
-  - Firebase/DynamicLinks (6.28.1):
+    - FirebaseAnalytics (= 6.7.0)
+  - Firebase/CoreOnly (6.29.0):
+    - FirebaseCore (= 6.9.2)
+  - Firebase/DynamicLinks (6.29.0):
     - Firebase/CoreOnly
     - FirebaseDynamicLinks (~> 4.2.0)
-  - FirebaseAnalytics (6.6.2):
+  - FirebaseAnalytics (6.7.0):
     - FirebaseCore (~> 6.8)
     - FirebaseInstallations (~> 1.4)
-    - GoogleAppMeasurement (= 6.6.2)
-    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
-    - GoogleUtilities/MethodSwizzler (~> 6.0)
-    - GoogleUtilities/Network (~> 6.0)
-    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - GoogleAppMeasurement (= 6.7.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
+    - GoogleUtilities/MethodSwizzler (~> 6.7)
+    - GoogleUtilities/Network (~> 6.7)
+    - "GoogleUtilities/NSData+zlib (~> 6.7)"
     - nanopb (~> 1.30905.0)
-  - FirebaseCore (6.9.1):
+  - FirebaseCore (6.9.2):
     - FirebaseCoreDiagnostics (~> 1.3)
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/Logger (~> 6.7)
@@ -61,13 +62,13 @@ PODS:
   - FoldingCell (5.0.2)
   - FontAwesome.swift (1.9.0)
   - FSPagerView (0.8.3)
-  - GoogleAppMeasurement (6.6.2):
-    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
-    - GoogleUtilities/MethodSwizzler (~> 6.0)
-    - GoogleUtilities/Network (~> 6.0)
-    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+  - GoogleAppMeasurement (6.7.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
+    - GoogleUtilities/MethodSwizzler (~> 6.7)
+    - GoogleUtilities/Network (~> 6.7)
+    - "GoogleUtilities/NSData+zlib (~> 6.7)"
     - nanopb (~> 1.30905.0)
-  - GoogleDataTransport (7.0.0):
+  - GoogleDataTransport (7.1.0):
     - nanopb (~> 1.30905.0)
   - GoogleUtilities/AppDelegateSwizzler (6.7.1):
     - GoogleUtilities/Environment
@@ -102,12 +103,11 @@ PODS:
     - NJKWebViewProgress/ProgressView (= 0.2.3)
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
-  - Nuke (7.6.3)
-  - OneSignal (2.14.3)
+  - Nuke (9.1.1)
+  - OneSignal (2.15.0)
   - PromisesObjC (1.2.9)
   - Shimmer (1.0.2)
   - STPopup (1.8.7)
-  - swift_qrcodejs (1.0.1)
   - SwiftDate (6.1.0)
   - SwiftLint (0.39.2)
   - SwiftyJSON (5.0.0)
@@ -119,7 +119,7 @@ PODS:
   - "UIView+FDCollapsibleConstraints (1.1)"
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.1)
+  - AFNetworking (~> 4.0)
   - Appirater
   - BLKFlexibleHeightBar (~> 1.0)
   - Collection
@@ -129,7 +129,7 @@ DEPENDENCIES:
   - Device.swift
   - DLLocalNotifications
   - Down
-  - EFQRCode (~> 4.5)
+  - EFQRCode (~> 5.1.6)
   - Firebase/Core
   - Firebase/DynamicLinks
   - FoldingCell
@@ -140,7 +140,7 @@ DEPENDENCIES:
   - iVersion (~> 1.11)
   - MBProgressHUD (~> 1.1)
   - NJKWebViewProgress (~> 0.2)
-  - Nuke (~> 7.0)
+  - Nuke (~> 9.1)
   - OneSignal (< 3.0, >= 2.6.2)
   - Shimmer (~> 1.0)
   - STPopup (~> 1.7)
@@ -188,7 +188,6 @@ SPEC REPOS:
     - PromisesObjC
     - Shimmer
     - STPopup
-    - swift_qrcodejs
     - SwiftDate
     - SwiftLint
     - SwiftyJSON
@@ -219,7 +218,7 @@ CHECKOUT OPTIONS:
     :tag: 1.6.1
 
 SPEC CHECKSUMS:
-  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   Appirater: 44a4651f7912a17dc906b655f0c215d5bb768b84
   BLKFlexibleHeightBar: b27572a69633d8e33f1f2bbc486b04d8e86f742d
   Collection: 71a0f23a6a1a9915b527d21a2a6316670d85ecbc
@@ -229,18 +228,18 @@ SPEC CHECKSUMS:
   Device.swift: 3f93632bb3fa3e4ebb9b202563975177e17c4296
   DLLocalNotifications: 92ee357278e90b0f2b2da1bb0e5a7e7fb179354e
   Down: 4553b984236807e384fa0ef7c7e360ef9f7c425d
-  EFQRCode: 842f431e660da841f518993af8f4cbd275601d84
-  Firebase: ed042590caa0029392257529a8003c25ee82bc18
-  FirebaseAnalytics: 5fa308e1b13f838d0f6dc74719ac2a72e8c5afc4
-  FirebaseCore: 687b8e6a0a4337b898a6326d68254c2f80c143af
+  EFQRCode: a7ea2e517912f5bf6ba258b631327a83cd8084a5
+  Firebase: 57957c8d6eb3d8b80a560b1dc58be24724b89ff2
+  FirebaseAnalytics: aa522dce9fd93002ba1554467d23ce7092323000
+  FirebaseCore: 7930a1946517d94256d857f97371ed993b55f7bd
   FirebaseCoreDiagnostics: 7535fe695737f8c5b350584292a70b7f8ff0357b
   FirebaseDynamicLinks: cf3cfedfd47ce6ea56fa66a5c940ea0ca9c60950
   FirebaseInstallations: 3c520c951305cbf9ca54eb891ff9e6d1fd384881
   FoldingCell: f92eb5fb9842319e7cd08c71533c98408b785099
   FontAwesome.swift: a403b88cec950511745ba8f2decd1b6a07346d13
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
-  GoogleAppMeasurement: 8cd1f289d60e629cf16ab03363b9e89c776b9651
-  GoogleDataTransport: 8a40cb194ad242b6f6dfe72c14fe40fc67c4dcd7
+  GoogleAppMeasurement: 345d365fd105e6682bf5084783a5352a3db26820
+  GoogleDataTransport: af0c79193dc59acd37630b4833d0dc6912ae6bd5
   GoogleUtilities: e121a3867449ce16b0e35ddf1797ea7a389ffdf2
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   ICViewPager: c1278b67eceac7252d48252829c3c703285dfb76
@@ -248,12 +247,11 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
-  Nuke: 44130e95e09463f8773ae4b96b90de1eba6b3350
-  OneSignal: 7dfe466265c05f02b95a274b9c997a0619ad2117
+  Nuke: af4301b154d3afd8a3b045a5194a9a773a00b7a8
+  OneSignal: 2bf3ea1c72209e6d02f7208dbfefbda068b97ae1
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STPopup: a9045557bc48a0df51fbb7bf0544447c5fe84d34
-  swift_qrcodejs: c181fe5c849d30c699546a23762d7e3dd143ab37
   SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
@@ -264,6 +262,6 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   "UIView+FDCollapsibleConstraints": 9357eaf03b4e088263ab74a3b86a382a64ce38dd
 
-PODFILE CHECKSUM: 9bccb407ec8441ad1681b658cf5d29c51c3baa96
+PODFILE CHECKSUM: c308c4a41d375be9bf7da3bbfd82ac3df92c6279
 
 COCOAPODS: 1.9.3

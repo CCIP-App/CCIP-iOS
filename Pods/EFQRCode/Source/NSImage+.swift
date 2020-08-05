@@ -2,9 +2,9 @@
 //  NSImage+.swift
 //  EFQRCode
 //
-//  Created by EyreFree on 2017/4/9.
+//  Created by EyreFree on 2019/11/21.
 //
-//  Copyright (c) 2017 EyreFree <eyrefree@eyrefree.org>
+//  Copyright © 2019 EyreFree. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,20 +24,18 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(macOS)
+#if canImport(AppKit)
 import AppKit
+import CoreImage
 
-public extension NSImage {
+extension NSImage {
     
-    public func toCIImage() -> CIImage? {
-        if let data = tiffRepresentation(using: NSBitmapImageRep.TIFFCompression.none, factor: 0) {
-            return CIImage(data: data)
-        }
-        return nil
+    func ciImage() -> CIImage? {
+        return self.tiffRepresentation(using: .none, factor: 0).flatMap(CIImage.init)
     }
 
-    public func toCGImage() -> CGImage? {
-        return toCIImage()?.toCGImage()
+    func cgImage() -> CGImage? {
+        return self.cgImage(forProposedRect: nil, context: nil, hints: nil) ?? ciImage()?.cgImage()
     }
 }
 #endif

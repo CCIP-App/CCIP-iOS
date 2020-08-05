@@ -31,5 +31,4 @@ ${BUILT_PRODUCTS_DIR}/UIView+FDCollapsibleConstraints/UIView_FDCollapsibleConstr
 ${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework
 ${BUILT_PRODUCTS_DIR}/iVersion/iVersion.framework
 ${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework
-${BUILT_PRODUCTS_DIR}/swift_qrcodejs/swift_qrcodejs.framework
 ${BUILT_PRODUCTS_DIR}/thenPromise/Then.framework

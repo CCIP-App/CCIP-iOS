@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2019 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2020 Alexander Grebenyuk (github.com/kean).
 
 #if !os(macOS)
 import UIKit
@@ -14,56 +14,159 @@ import WatchKit
 
 // MARK: - ImageDecoding
 
-/// Decodes image data.
+/// An image decoder.
+///
+/// A decoder is a one-shot object created for a single image decoding session.
+///
+/// - note: If you need additional information in the decoder, you can pass
+/// anything that you might need from the `ImageDecodingContext`.
 public protocol ImageDecoding {
-    /// Produces an image from the image data. A decoder is a one-shot object
-    /// created for a single image decoding session. If image pipeline has
-    /// progressive decoding enabled, the `decode(data:isFinal:)` method gets
-    /// called each time the data buffer has new data available. The decoder may
-    /// decide whether or not to produce a new image based on the previous scans.
-    func decode(data: Data, isFinal: Bool) -> Image?
+    /// Produces an image from the given image data.
+    func decode(_ data: Data) -> ImageContainer?
+
+    /// Produces an image from the given partially dowloaded image data.
+    /// This method might be called multiple times during a single decoding
+    /// session. When the image download is complete, `decode(data:)` method is called.
+    ///
+    /// - returns: nil by default.
+    func decodePartiallyDownloadedData(_ data: Data) -> ImageContainer?
 }
+
+public extension ImageDecoding {
+    /// The default implementation which simply returns `nil` (no progressive
+    /// decoding available).
+    func decodePartiallyDownloadedData(_ data: Data) -> ImageContainer? {
+        nil
+    }
+}
+
+extension ImageDecoding {
+    func decode(_ data: Data, urlResponse: URLResponse?, isCompleted: Bool) -> ImageResponse? {
+        func _decode() -> ImageContainer? {
+            if isCompleted {
+                return decode(data)
+            } else {
+                return decodePartiallyDownloadedData(data)
+            }
+        }
+        guard let container = autoreleasepool(invoking: _decode) else {
+            return nil
+        }
+        #if !os(macOS)
+        ImageDecompression.setDecompressionNeeded(true, for: container.image)
+        #endif
+        return ImageResponse(container: container, urlResponse: urlResponse)
+    }
+}
+
+public typealias ImageDecoder = ImageDecoders.Default
+
+// MARK: - ImageDecoders
+
+public enum ImageDecoders {}
+
+// MARK: - ImageDecoders.Default
 
 // An image decoder that uses native APIs. Supports progressive decoding.
 // The decoder is stateful.
-public final class ImageDecoder: ImageDecoding {
-    // `nil` if decoder hasn't detected whether progressive decoding is enabled.
-    private(set) internal var isProgressive: Bool?
-    // Number of scans that the decoder has found so far. The last scan might be
-    // incomplete at this point.
-    private(set) internal var numberOfScans = 0
-    private var lastStartOfScan: Int = 0 // Index of the last Start of Scan that we found
-    private var scannedIndex: Int = -1 // Index at which previous scan was finished
+public extension ImageDecoders {
 
-    public init() { }
+    /// The default decoder which supports all of the formats natively supported
+    /// by the system.
+    ///
+    /// - note: The decoder automatically sets the scale of the decoded images to
+    /// match the scale of the screen.
+    ///
+    /// - note: The default decoder supports progressive JPEG. It produces a new
+    /// preview every time it encounters a new full frame.
+    final class Default: ImageDecoding, ImageDecoderRegistering {
+        // Number of scans that the decoder has found so far. The last scan might be
+        // incomplete at this point.
+        var numberOfScans: Int { scanner.numberOfScans }
+        private var scanner = ProgressiveJPEGScanner()
 
-    public func decode(data: Data, isFinal: Bool) -> Image? {
-        let format = ImageFormat.format(for: data)
+        /// A user info key to get the scan number (Int).
+        public static let scanNumberKey = "ImageDecoders.Default.scanNumberKey"
 
-        guard !isFinal else { // Just decode the data.
-            let image = _decode(data)
-            if ImagePipeline.Configuration.isAnimatedImageDataEnabled, case .gif? = format { // Keep original data around in case of GIF
-                image?.animatedImageData = data
+        private var container: ImageContainer?
+
+        public init() { }
+
+        public init?(data: Data, context: ImageDecodingContext) {
+            guard let container = _decode(data) else {
+                return nil
             }
-            return image
+            self.container = container
         }
 
-        // Determined (if we haven't yet) whether the image supports progressive
-        // decoding or not (only proressive JPEG is allowed for now, but you can
-        // add support for other formats by implementing your own decoder).
-        isProgressive = isProgressive ?? format?.isProgressive
-        guard isProgressive == true else { return nil }
+        public init?(partiallyDownloadedData data: Data, context: ImageDecodingContext) {
+            // Determined whether the image supports progressive decoding or not
+            // (only proressive JPEG is allowed for now, but you can add support
+            // for other formats by implementing your own decoder).
+            guard ImageType(data) == .jpeg,
+                ImageProperties.JPEG(data)?.isProgressive == true else {
+                return nil
+            }
+        }
 
+        public func decode(_ data: Data) -> ImageContainer? {
+            return container ?? _decode(data)
+        }
+
+        private func _decode(_ data: Data) -> ImageContainer? {
+            guard let image = ImageDecoders.Default._decode(data) else {
+                return nil
+            }
+            // Keep original data around in case of GIF
+            let type = ImageType(data)
+            if ImagePipeline.Configuration._isAnimatedImageDataEnabled, type == .gif {
+                image._animatedImageData = data
+            }
+            var container = ImageContainer(image: image, data: image._animatedImageData)
+            container.type = type
+            if type == .gif {
+                container.data = data
+            }
+            if numberOfScans > 0 {
+                container.userInfo[ImageDecoders.Default.scanNumberKey] = numberOfScans
+            }
+            return container
+        }
+
+        public func decodePartiallyDownloadedData(_ data: Data) -> ImageContainer? {
+            guard let endOfScan = scanner.scan(data), endOfScan > 0 else {
+                return nil
+            }
+            guard let image = ImageDecoder._decode(data[0...endOfScan]) else {
+                return nil
+            }
+            return ImageContainer(image: image, type: .jpeg, isPreview: true, userInfo: [ImageDecoders.Default.scanNumberKey: numberOfScans])
+        }
+    }
+}
+
+private struct ProgressiveJPEGScanner {
+    // Number of scans that the decoder has found so far. The last scan might be
+    // incomplete at this point.
+    private(set) var numberOfScans = 0
+    private var lastStartOfScan: Int = 0 // Index of the last found Start of Scan
+    private var scannedIndex: Int = -1 // Index at which previous scan was finished
+
+    /// Scans the given data. If finds new scans, returns the last index of the
+    /// last available scan.
+    mutating func scan(_ data: Data) -> Int? {
         // Check if there is more data to scan.
-        guard (scannedIndex + 1) < data.count else { return nil }
+        guard (scannedIndex + 1) < data.count else {
+            return nil
+        }
 
-        // Start scaning from the where we left off previous time.
+        // Start scaning from the where it left off previous time.
         var index = (scannedIndex + 1)
         var numberOfScans = self.numberOfScans
         while index < (data.count - 1) {
             scannedIndex = index
             // 0xFF, 0xDA - Start Of Scan
-            if data[index] == 0xFF, data[index+1] == 0xDA {
+            if data[index] == 0xFF, data[index + 1] == 0xDA {
                 lastStartOfScan = index
                 numberOfScans += 1
             }
@@ -71,42 +174,79 @@ public final class ImageDecoder: ImageDecoding {
         }
 
         // Found more scans this the previous time
-        guard numberOfScans > self.numberOfScans else { return nil }
+        guard numberOfScans > self.numberOfScans else {
+            return nil
+        }
         self.numberOfScans = numberOfScans
 
         // `> 1` checks that we've received a first scan (SOS) and then received
         // and also received a second scan (SOS). This way we know that we have
         // at least one full scan available.
-        return (numberOfScans > 1 && lastStartOfScan > 0) ? _decode(data[0..<lastStartOfScan]) : nil
+        guard numberOfScans > 1 && lastStartOfScan > 0 else {
+            return nil
+        }
+
+        return lastStartOfScan - 1
     }
 }
 
-// Image initializers are documented as fully-thread safe:
-//
-// > The immutable nature of image objects also means that they are safe
-//   to create and use from any thread.
-//
-// However, there are some versions of iOS which violated this. The
-// `UIImage` is supposably fully thread safe again starting with iOS 10.
-//
-// The `queue.sync` call below prevents the majority of the potential
-// crashes that could happen on the previous versions of iOS.
-//
-// See also https://github.com/AFNetworking/AFNetworking/issues/2572
-private let _queue = DispatchQueue(label: "com.github.kean.Nuke.DataDecoder")
-
-internal func _decode(_ data: Data) -> Image? {
-    return _queue.sync {
+extension ImageDecoders.Default {
+    static func _decode(_ data: Data) -> PlatformImage? {
         #if os(macOS)
         return NSImage(data: data)
         #else
-        #if os(iOS) || os(tvOS)
-        let scale = UIScreen.main.scale
-        #else
-        let scale = WKInterfaceDevice.current().screenScale
+        return UIImage(data: data, scale: Screen.scale)
         #endif
-        return UIImage(data: data, scale: scale)
-        #endif
+    }
+}
+
+// MARK: - ImageDecoders.Empty
+
+public extension ImageDecoders {
+    /// A decoder which returns an empty placeholder image and attaches image
+    /// data to the image container.
+    struct Empty: ImageDecoding {
+        public let isProgressive: Bool
+
+        /// - parameter isProgressive: If `false`, returns nil for every progressive
+        /// scan. `false` by default.
+        public init(isProgressive: Bool = false) {
+            self.isProgressive = isProgressive
+        }
+
+        public func decodePartiallyDownloadedData(_ data: Data) -> ImageContainer? {
+            isProgressive ? ImageContainer(image: PlatformImage(), data: data, userInfo: [:]) : nil
+        }
+
+        public func decode(_ data: Data) -> ImageContainer? {
+            ImageContainer(image: PlatformImage(), data: data, userInfo: [:])
+        }
+    }
+}
+
+// MARK: - ImageDecoderRegistering
+
+/// An image decoder which supports automatically registering in the decoder register.
+public protocol ImageDecoderRegistering: ImageDecoding {
+    /// Returns non-nil if the decoder can be used to decode the given data.
+    ///
+    /// - parameter data: The same data is going to be delivered to decoder via
+    /// `decode(_:)` method. The same instance of the decoder is going to be used.
+    init?(data: Data, context: ImageDecodingContext)
+
+    /// Returns non-nil if the decoder can be used to progressively decode the
+    /// given partially downloaded data.
+    ///
+    /// - parameter data: The first and the next data chunks are going to be
+    /// delivered to the decoder via `decodePartiallyDownloadedData(_:)` method.
+    init?(partiallyDownloadedData data: Data, context: ImageDecodingContext)
+}
+
+public extension ImageDecoderRegistering {
+    /// The default implementation which simply returns `nil` (no progressive
+    /// decoding available).
+    init?(partiallyDownloadedData data: Data, context: ImageDecodingContext) {
+        return nil
     }
 }
 
@@ -119,14 +259,31 @@ public final class ImageDecoderRegistry {
 
     private var matches = [(ImageDecodingContext) -> ImageDecoding?]()
 
+    public init() {
+        self.register(ImageDecoders.Default.self)
+    }
+
     /// Returns a decoder which matches the given context.
-    public func decoder(for context: ImageDecodingContext) -> ImageDecoding {
+    public func decoder(for context: ImageDecodingContext) -> ImageDecoding? {
         for match in matches {
             if let decoder = match(context) {
                 return decoder
             }
         }
-        return ImageDecoder() // Return default decoder if couldn't find a custom one.
+        return nil
+    }
+
+    // MARK: - Registering
+
+    /// Registers the given decoder.
+    public func register<Decoder: ImageDecoderRegistering>(_ decoder: Decoder.Type) {
+        register { context in
+            if context.isCompleted {
+                return decoder.init(data: context.data, context: context)
+            } else {
+                return decoder.init(partiallyDownloadedData: context.data, context: context)
+            }
+        }
     }
 
     /// Registers a decoder to be used in a given decoding context. The closure
@@ -135,7 +292,8 @@ public final class ImageDecoderRegistry {
         matches.insert(match, at: 0)
     }
 
-    func clear() {
+    /// Removes all registered decoders.
+    public func clear() {
         matches = []
     }
 }
@@ -143,23 +301,91 @@ public final class ImageDecoderRegistry {
 /// Image decoding context used when selecting which decoder to use.
 public struct ImageDecodingContext {
     public let request: ImageRequest
-    internal let urlResponse: URLResponse?
     public let data: Data
+    /// Returns `true` if the download was completed.
+    public let isCompleted: Bool
+    public let urlResponse: URLResponse?
+
+    public init(request: ImageRequest, data: Data, isCompleted: Bool, urlResponse: URLResponse?) {
+        self.request = request
+        self.data = data
+        self.isCompleted = isCompleted
+        self.urlResponse = urlResponse
+    }
 }
 
-// MARK: - Image Formats
+// MARK: - ImageType
 
-enum ImageFormat: Equatable {
-    /// `isProgressive` is nil if we determined that it's a jpeg, but we don't
-    /// know if it is progressive or baseline yet.
-    case jpeg(isProgressive: Bool?)
-    case png
-    case gif
+/// A uniform type identifier (UTI).
+public struct ImageType: ExpressibleByStringLiteral, Hashable {
+    public let rawValue: String
 
-    // Returns `nil` if not enough data.
-    static func format(for data: Data) -> ImageFormat? {
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public init(stringLiteral value: String) {
+        self.rawValue = value
+    }
+
+    public static let png: ImageType = "public.png"
+    public static let jpeg: ImageType = "public.jpeg"
+    public static let gif: ImageType = "com.compuserve.gif"
+    /// HEIF (High Effeciency Image Format) by Apple.
+    public static let heic: ImageType = "public.heic"
+
+}
+
+public extension ImageType {
+    /// Determines a type of the image based on the given data.
+    init?(_ data: Data) {
+        guard let type = ImageType.make(data) else {
+            return nil
+        }
+        self = type
+    }
+
+    private static func make(_ data: Data) -> ImageType? {
+        func _match(_ numbers: [UInt8]) -> Bool {
+            guard data.count >= numbers.count else {
+                return false
+            }
+            return !zip(numbers.indices, numbers).contains { (index, number) in
+                data[index] != number
+            }
+        }
+
         // JPEG magic numbers https://en.wikipedia.org/wiki/JPEG
-        if _match(data, [0xFF, 0xD8, 0xFF]) {
+        if _match([0xFF, 0xD8, 0xFF]) { return .jpeg }
+
+        // PNG Magic numbers https://en.wikipedia.org/wiki/Portable_Network_Graphics
+        if _match([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]) { return .png }
+
+        // GIF magic numbers https://en.wikipedia.org/wiki/GIF
+        if _match([0x47, 0x49, 0x46]) { return .gif }
+
+        // Either not enough data, or we just don't support this format.
+        return nil
+    }
+}
+
+// MARK: - ImageProperties
+
+enum ImageProperties {}
+
+// Keeping this private for now, not sure neither about the API, not the implementation.
+extension ImageProperties {
+    struct JPEG {
+        public var isProgressive: Bool
+
+        public init?(_ data: Data) {
+            guard let isProgressive = ImageProperties.JPEG.isProgressive(data) else {
+                return nil
+            }
+            self.isProgressive = isProgressive
+        }
+
+        private static func isProgressive(_ data: Data) -> Bool? {
             var index = 3 // start scanning right after magic numbers
             while index < (data.count - 1) {
                 // A example of first few bytes of progressive jpeg image:
@@ -168,52 +394,22 @@ enum ImageFormat: Equatable {
                 // 0xFF, 0xC0 - Start Of Frame (baseline DCT)
                 // 0xFF, 0xC2 - Start Of Frame (progressive DCT)
                 // https://en.wikipedia.org/wiki/JPEG
+                //
+                // As an alternative, Image I/O provides facilities to parse
+                // JPEG metadata via CGImageSourceCopyPropertiesAtIndex. It is a
+                // bit too convoluted to use and most likely slightly less
+                // efficient that checking this one special bit directly.
                 if data[index] == 0xFF {
-                    if data[index+1] == 0xC2 { return .jpeg(isProgressive: true) } // progressive
-                    if data[index+1] == 0xC0 { return .jpeg(isProgressive: false) } // baseline
+                    if data[index + 1] == 0xC2 {
+                        return true
+                    }
+                    if data[index + 1] == 0xC0 {
+                        return false // baseline
+                    }
                 }
                 index += 1
             }
-            // It's a jpeg but we don't know if progressive or not yet.
-            return .jpeg(isProgressive: nil)
+            return nil
         }
-
-        // GIF magic numbers https://en.wikipedia.org/wiki/GIF
-        if _match(data, [0x47, 0x49, 0x46]) {
-            return .gif
-        }
-
-        // PNG Magic numbers https://en.wikipedia.org/wiki/Portable_Network_Graphics
-        if _match(data, [0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]) {
-            return .png
-        }
-
-        // Either not enough data, or we just don't know this format yet.
-        return nil
-    }
-
-    var isProgressive: Bool? {
-        if case let .jpeg(isProgressive) = self { return isProgressive }
-        return false
-    }
-
-    private static func _match(_ data: Data, _ numbers: [UInt8]) -> Bool {
-        guard data.count >= numbers.count else { return false }
-        return !zip(numbers.indices, numbers).contains { (index, number) in
-            data[index] != number
-        }
-    }
-}
-
-// MARK: - Animated Images
-
-private var _animatedImageDataAK = "Nuke.AnimatedImageData.AssociatedKey"
-
-extension Image {
-    // Animated image data. Only not `nil` when image data actually contains
-    // an animated image.
-    public var animatedImageData: Data? {
-        get { return objc_getAssociatedObject(self, &_animatedImageDataAK) as? Data }
-        set { objc_setAssociatedObject(self, &_animatedImageDataAK, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
 }

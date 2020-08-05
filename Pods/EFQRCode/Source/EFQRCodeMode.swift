@@ -27,12 +27,8 @@
 import CoreGraphics
 import Foundation
 
-#if os(iOS) || os(tvOS) || os(macOS)
-import CoreImage
-#endif
-
-@objc public enum EFQRCodeMode: Int {
-    case none           = 0
-    case grayscale      = 1
-    case binarization   = 2
+public enum EFQRCodeMode {
+    case none
+    case grayscale
+    case binarization(threshold: CGFloat)
 }

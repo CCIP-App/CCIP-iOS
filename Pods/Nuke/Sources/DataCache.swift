@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2019 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2020 Alexander Grebenyuk (github.com/kean).
 
 import Foundation
 
@@ -65,7 +65,7 @@ public final class DataCache: DataCaching {
     /// the remaining items is lower than or equal to `sizeLimit * trimRatio` and
     /// the total count is lower than or equal to `countLimit * trimRatio`. `0.7`
     /// by default.
-    internal var trimRatio = 0.7
+    var trimRatio = 0.7
 
     /// The path for the directory managed by the cache.
     public let path: URL
@@ -80,13 +80,18 @@ public final class DataCache: DataCaching {
     /// The delay after which the initial sweep is performed. 10 by default.
     /// The initial sweep is performed after a delay to avoid competing with
     /// other subsystems for the resources.
-    private var initialSweepDelay: TimeInterval = 15
+    private var initialSweepDelay: TimeInterval = 10
 
     // Staging
-    private let _lock = NSLock()
-    private var _staging = Staging()
 
-    /* testable */ let _wqueue = DispatchQueue(label: "com.github.kean.Nuke.DataCache.WriteQueue")
+    private let lock = NSLock()
+    private var staging = Staging()
+    private var isFlushNeeded = false
+    private var isFlushScheduled = false
+    var flushInterval: DispatchTimeInterval = .seconds(2)
+
+    /// A queue which is used for disk I/O.
+    public let queue = DispatchQueue(label: "com.github.kean.Nuke.DataCache.WriteQueue", target: .global(qos: .utility))
 
     /// A function which generates a filename for the given key. A good candidate
     /// for a filename generator is a _cryptographic_ hash function like SHA1.
@@ -96,7 +101,7 @@ public final class DataCache: DataCaching {
     /// in AFPS) and do not allow certain characters to be used in filenames.
     public typealias FilenameGenerator = (_ key: String) -> String?
 
-    private let _filenameGenerator: FilenameGenerator
+    private let filenameGenerator: FilenameGenerator
 
     /// Creates a cache instance with a given `name`. The cache creates a directory
     /// with the given `name` in a `.cachesDirectory` in `.userDomainMask`.
@@ -114,8 +119,8 @@ public final class DataCache: DataCaching {
     /// The default implementation generates a filename using SHA1 hash function.
     public init(path: URL, filenameGenerator: @escaping (String) -> String? = DataCache.filename(for:)) throws {
         self.path = path
-        self._filenameGenerator = filenameGenerator
-        try self._didInit()
+        self.filenameGenerator = filenameGenerator
+        try self.didInit()
     }
 
     /// A `FilenameGenerator` implementation which uses SHA1 hash function to
@@ -124,10 +129,10 @@ public final class DataCache: DataCaching {
         return key.sha1
     }
 
-    private func _didInit() throws {
+    private func didInit() throws {
         try FileManager.default.createDirectory(at: path, withIntermediateDirectories: true, attributes: nil)
-        _wqueue.asyncAfter(deadline: .now() + initialSweepDelay) { [weak self] in
-            self?._performAndScheduleSweep()
+        queue.asyncAfter(deadline: .now() + initialSweepDelay) { [weak self] in
+            self?.performAndScheduleSweep()
         }
     }
 
@@ -136,21 +141,19 @@ public final class DataCache: DataCaching {
     /// Retrieves data for the given key. The completion will be called
     /// syncrhonously if there is no cached data for the given key.
     public func cachedData(for key: Key) -> Data? {
-        _lock.lock()
-
-        if let change = _staging.change(for: key) {
-            _lock.unlock()
-            switch change {
+        lock.lock()
+        if let change = staging.change(for: key) {
+            lock.unlock()
+            switch change { // Change wasn't flushed to disk yet
             case let .add(data):
                 return data
             case .remove:
                 return nil
             }
         }
+        lock.unlock()
 
-        _lock.unlock()
-
-        guard let url = _url(for: key) else {
+        guard let url = url(for: key) else {
             return nil
         }
         return try? Data(contentsOf: url)
@@ -159,48 +162,26 @@ public final class DataCache: DataCaching {
     /// Stores data for the given key. The method returns instantly and the data
     /// is written asynchronously.
     public func storeData(_ data: Data, for key: Key) {
-        _lock.sync {
-            let change = _staging.add(data: data, for: key)
-            _wqueue.async {
-                if let url = self._url(for: key) {
-                    try? data.write(to: url)
-                }
-                self._lock.sync {
-                    self._staging.flushed(change)
-                }
-            }
-        }
+        stage { staging.add(data: data, for: key) }
     }
 
     /// Removes data for the given key. The method returns instantly, the data
     /// is removed asynchronously.
     public func removeData(for key: Key) {
-        _lock.sync {
-            let change = _staging.removeData(for: key)
-            _wqueue.async {
-                if let url = self._url(for: key) {
-                    try? FileManager.default.removeItem(at: url)
-                }
-                self._lock.sync {
-                    self._staging.flushed(change)
-                }
-            }
-        }
+        stage { staging.removeData(for: key) }
     }
 
     /// Removes all items. The method returns instantly, the data is removed
     /// asynchronously.
     public func removeAll() {
-        _lock.sync {
-            let change = _staging.removeAll()
-            _wqueue.async {
-                try? FileManager.default.removeItem(at: self.path)
-                try? FileManager.default.createDirectory(at: self.path, withIntermediateDirectories: true, attributes: nil)
-                self._lock.sync {
-                    self._staging.flushed(change)
-                }
-            }
-        }
+        stage { staging.removeAll() }
+    }
+
+    private func stage(_ change: () -> Void) {
+        lock.lock()
+        change()
+        setNeedsFlushChanges()
+        lock.unlock()
     }
 
     /// Accesses the data associated with the given key for reading and writing.
@@ -226,7 +207,7 @@ public final class DataCache: DataCaching {
     ///
     public subscript(key: Key) -> Data? {
         get {
-            return cachedData(for: key)
+            cachedData(for: key)
         }
         set {
             if let data = newValue {
@@ -242,10 +223,11 @@ public final class DataCache: DataCaching {
     /// Uses the `FilenameGenerator` that the cache was initialized with to
     /// generate and return a filename for the given key.
     public func filename(for key: Key) -> String? {
-        return _filenameGenerator(key)
+        filenameGenerator(key)
     }
 
-    /* testable */ func _url(for key: Key) -> URL? {
+    /// Returns `url` for the given cache key.
+    public func url(for key: Key) -> URL? {
         guard let filename = self.filename(for: key) else {
             return nil
         }
@@ -254,30 +236,112 @@ public final class DataCache: DataCaching {
 
     // MARK: Flush Changes
 
-    /// Synchronously waits on the caller's thread until all outstanding disk IO
+    /// Synchronously waits on the caller's thread until all outstanding disk I/O
     /// operations are finished.
-    func flush() {
-        _wqueue.sync {}
+    public func flush() {
+        queue.sync(execute: flushChangesIfNeeded)
+    }
+
+    /// Synchronously waits on the caller's thread until all outstanding disk I/O
+    /// operations for the given key are finished.
+    public func flush(for key: Key) {
+        queue.sync {
+            guard let change = lock.sync({ staging.changes[key] }) else { return }
+            perform(change)
+            lock.sync { staging.flushed(change) }
+        }
+    }
+
+    private func setNeedsFlushChanges() {
+        guard !isFlushNeeded else { return }
+        isFlushNeeded = true
+        scheduleNextFlush()
+    }
+
+    private func scheduleNextFlush() {
+        guard !isFlushScheduled else { return }
+        isFlushScheduled = true
+        queue.asyncAfter(deadline: .now() + flushInterval, execute: flushChangesIfNeeded)
+    }
+
+    private func flushChangesIfNeeded() {
+        // Create a snapshot of the recently made changes
+        let staging: Staging
+        lock.lock()
+        guard isFlushNeeded else {
+            return lock.unlock()
+        }
+        staging = self.staging
+        isFlushNeeded = false
+        lock.unlock()
+
+        // Apply the snapshot to disk
+        performChanges(for: staging)
+
+        // Update the staging area and schedule the next flush if needed
+        lock.lock()
+        self.staging.flushed(staging)
+        isFlushScheduled = false
+        if isFlushNeeded {
+            scheduleNextFlush()
+        }
+        lock.unlock()
+    }
+
+    // MARK: - I/O
+
+    private func performChanges(for staging: Staging) {
+        autoreleasepool {
+            if let change = staging.changeRemoveAll {
+                perform(change)
+            }
+            for change in staging.changes.values {
+                perform(change)
+            }
+        }
+    }
+
+    private func perform(_ change: Staging.ChangeRemoveAll) {
+        try? FileManager.default.removeItem(at: self.path)
+        try? FileManager.default.createDirectory(at: self.path, withIntermediateDirectories: true, attributes: nil)
+    }
+
+    /// Performs the IO for the given change.
+    private func perform(_ change: Staging.Change) {
+        guard let url = url(for: change.key) else {
+            return
+        }
+        switch change.type {
+        case let .add(data):
+            do {
+                try data.write(to: url)
+            } catch let error as NSError {
+                guard error.code == CocoaError.fileNoSuchFile.rawValue && error.domain == CocoaError.errorDomain else { return }
+                try? FileManager.default.createDirectory(at: self.path, withIntermediateDirectories: true, attributes: nil)
+                try? data.write(to: url) // re-create a directory and try again
+            }
+        case .remove:
+            try? FileManager.default.removeItem(at: url)
+        }
     }
 
     // MARK: Sweep
 
-    private func _performAndScheduleSweep() {
-        _sweep()
-        _wqueue.asyncAfter(deadline: .now() + sweepInterval) { [weak self] in
-            self?._performAndScheduleSweep()
+    private func performAndScheduleSweep() {
+        performSweep()
+        queue.asyncAfter(deadline: .now() + sweepInterval) { [weak self] in
+            self?.performAndScheduleSweep()
         }
     }
 
-    /// Schedules a cache sweep to be performed immediately.
+    /// Synchronously performs a cache sweep and removes the least recently items
+    /// which no longer fit in cache.
     public func sweep() {
-        _wqueue.async {
-            self._sweep()
-        }
+        queue.sync(execute: performSweep)
     }
 
     /// Discards the least recently used items first.
-    private func _sweep() {
+    private func performSweep() {
         var items = contents(keys: [.contentAccessDateKey, .totalFileAllocatedSizeKey])
         guard !items.isEmpty else {
             return
@@ -297,7 +361,7 @@ public final class DataCache: DataCaching {
             ($0.meta.contentAccessDate ?? past) > ($1.meta.contentAccessDate ?? past)
         }
 
-        // Remove the items until we satisfy both size and count limits.
+        // Remove the items until it satisfies both size and count limits.
         while (size > sizeLimit || count > countLimit), let item = items.popLast() {
             size -= (item.meta.totalFileAllocatedSize ?? 0)
             count -= 1
@@ -316,9 +380,9 @@ public final class DataCache: DataCaching {
         guard let urls = try? FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: keys, options: .skipsHiddenFiles) else {
             return []
         }
-        let _keys = Set(keys)
+        let keys = Set(keys)
         return urls.compactMap {
-            guard let meta = try? $0.resourceValues(forKeys: _keys) else {
+            guard let meta = try? $0.resourceValues(forKeys: keys) else {
                 return nil
             }
             return Entry(url: $0, meta: meta)
@@ -330,7 +394,7 @@ public final class DataCache: DataCaching {
     /// The total number of items in the cache.
     /// - warning: Requires disk IO, avoid using from the main thread.
     public var totalCount: Int {
-        return contents().count
+        contents().count
     }
 
     /// The total file size of items written on disk.
@@ -341,7 +405,7 @@ public final class DataCache: DataCaching {
     ///
     /// - warning: Requires disk IO, avoid using from the main thread.
     public var totalSize: Int {
-        return contents(keys: [.fileSizeKey]).reduce(0) {
+        contents(keys: [.fileSizeKey]).reduce(0) {
             $0 + ($1.meta.fileSize ?? 0)
         }
     }
@@ -352,90 +416,92 @@ public final class DataCache: DataCaching {
     ///
     /// - warning: Requires disk IO, avoid using from the main thread.
     public var totalAllocatedSize: Int {
-        return contents(keys: [.totalFileAllocatedSizeKey]).reduce(0) {
+        contents(keys: [.totalFileAllocatedSizeKey]).reduce(0) {
             $0 + ($1.meta.totalFileAllocatedSize ?? 0)
         }
     }
+}
 
-    // MARK: - Staging
+// MARK: - Staging
 
-    /// DataCache allows for parallel reads and writes. This is made possible by
-    /// DataCacheStaging.
-    ///
-    /// For example, when the data is added in cache, it is first added to staging
-    /// and is removed from staging only after data is written to disk. Removal works
-    /// the same way.
-    private final class Staging {
-        private var changes = [String: Change]()
-        private var changeRemoveAll: ChangeRemoveAll?
+/// DataCache allows for parallel reads and writes. This is made possible by
+/// DataCacheStaging.
+///
+/// For example, when the data is added in cache, it is first added to staging
+/// and is removed from staging only after data is written to disk. Removal works
+/// the same way.
+private struct Staging {
+    private(set) var changes = [String: Change]()
+    private(set) var changeRemoveAll: ChangeRemoveAll?
 
-        struct ChangeRemoveAll {
-            let id: Int
+    struct ChangeRemoveAll {
+        let id: Int
+    }
+
+    struct Change {
+        let key: String
+        let id: Int
+        let type: ChangeType
+    }
+
+    enum ChangeType {
+        case add(Data)
+        case remove
+    }
+
+    private var nextChangeId = 0
+
+    // MARK: Changes
+
+    func change(for key: String) -> ChangeType? {
+        if let change = changes[key] {
+            return change.type
         }
-
-        struct Change {
-            let key: String
-            let id: Int
-            let type: ChangeType
+        if changeRemoveAll != nil {
+            return .remove
         }
+        return nil
+    }
 
-        enum ChangeType {
-            case add(Data)
-            case remove
+    // MARK: Register Changes
+
+    mutating func add(data: Data, for key: String) {
+        nextChangeId += 1
+        changes[key] = Change(key: key, id: nextChangeId, type: .add(data))
+    }
+
+    mutating func removeData(for key: String) {
+        nextChangeId += 1
+        changes[key] = Change(key: key, id: nextChangeId, type: .remove)
+    }
+
+    mutating func removeAll() {
+        nextChangeId += 1
+        changeRemoveAll = ChangeRemoveAll(id: nextChangeId)
+        changes.removeAll()
+    }
+
+    // MARK: Flush Changes
+
+    mutating func flushed(_ staging: Staging) {
+        for change in staging.changes.values {
+            flushed(change)
         }
-
-        private var nextChangeId = 0
-
-        // MARK: Changes
-
-        func change(for key: String) -> ChangeType? {
-            if let change = changes[key] {
-                return change.type
-            }
-            if changeRemoveAll != nil {
-                return .remove
-            }
-            return nil
+        if let change = staging.changeRemoveAll {
+            flushed(change)
         }
+    }
 
-        // MARK: Register Changes
-
-        func add(data: Data, for key: String) -> Change {
-            return _makeChange(.add(data), for: key)
+    mutating func flushed(_ change: Change) {
+        if let index = changes.index(forKey: change.key),
+            changes[index].value.id == change.id {
+            changes.remove(at: index)
         }
+    }
 
-        func removeData(for key: String) -> Change {
-            return _makeChange(.remove, for: key)
-        }
-
-        private func _makeChange(_ type: ChangeType, for key: String) -> Change {
-            nextChangeId += 1
-            let change = Change(key: key, id: nextChangeId, type: type)
-            changes[key] = change
-            return change
-        }
-
-        func removeAll() -> ChangeRemoveAll {
-            nextChangeId += 1
-            let change = ChangeRemoveAll(id: nextChangeId)
-            changeRemoveAll = change
-            changes.removeAll()
-            return change
-        }
-
-        // MARK: Flush Changes
-
-        func flushed(_ change: Change) {
-            if let index = changes.index(forKey: change.key),
-                changes[index].value.id == change.id {
-                changes.remove(at: index)
-            }
-        }
-
-        func flushed(_ change: ChangeRemoveAll) {
-            if changeRemoveAll?.id == change.id {
-                changeRemoveAll = nil
-            }
+    mutating func flushed(_ change: ChangeRemoveAll) {
+        if changeRemoveAll?.id == change.id {
+            changeRemoveAll = nil
         }
     }
 }

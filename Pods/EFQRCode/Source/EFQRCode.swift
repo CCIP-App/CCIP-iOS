@@ -27,15 +27,15 @@
 import Foundation
 import CoreGraphics
 
-#if os(iOS) || os(tvOS) || os(macOS)
+#if canImport(CoreImage)
 import CoreImage
 #endif
 
 @objcMembers
 public class EFQRCode: NSObject {
-
+    
     // MARK: - Recognizer
-    #if os(iOS) || os(tvOS) || os(macOS)
+    #if canImport(CoreImage)
     public static func recognize(image: CGImage) -> [String]? {
         return EFQRCodeRecognizer(image: image).recognize()
     }
@@ -45,8 +45,8 @@ public class EFQRCode: NSObject {
     public static func generate(
         content: String,
         size: EFIntSize = EFIntSize(width: 600, height: 600),
-        backgroundColor: CGColor = CGColor.EFWhite(),
-        foregroundColor: CGColor = CGColor.EFBlack(),
+        backgroundColor: CGColor = CGColor.white()!,
+        foregroundColor: CGColor = CGColor.black()!,
         watermark: CGImage? = nil,
         watermarkMode: EFWatermarkMode = .scaleAspectFill,
         inputCorrectionLevel: EFInputCorrectionLevel = .h,
@@ -55,7 +55,6 @@ public class EFQRCode: NSObject {
         allowTransparent: Bool = true,
         pointShape: EFPointShape = .square,
         mode: EFQRCodeMode = .none,
-        binarizationThreshold: CGFloat = 0.5,
         magnification: EFIntSize? = nil,
         foregroundPointOffset: CGFloat = 0
         ) -> CGImage? {
@@ -68,7 +67,6 @@ public class EFQRCode: NSObject {
         generator.setAllowTransparent(allowTransparent: allowTransparent)
         generator.setPointShape(pointShape: pointShape)
         generator.setMode(mode: mode)
-        generator.setBinarizationThreshold(binarizationThreshold: binarizationThreshold)
         generator.setMagnification(magnification: magnification)
         generator.setForegroundPointOffset(foregroundPointOffset: foregroundPointOffset)
         return generator.generate()
@@ -77,8 +75,8 @@ public class EFQRCode: NSObject {
     public static func generateWithGIF(
         content: String,
         size: EFIntSize = EFIntSize(width: 600, height: 600),
-        backgroundColor: CGColor = CGColor.EFWhite(),
-        foregroundColor: CGColor = CGColor.EFBlack(),
+        backgroundColor: CGColor = CGColor.white()!,
+        foregroundColor: CGColor = CGColor.black()!,
         watermark: Data,
         watermarkMode: EFWatermarkMode = .scaleAspectFill,
         inputCorrectionLevel: EFInputCorrectionLevel = .h,
@@ -87,7 +85,6 @@ public class EFQRCode: NSObject {
         allowTransparent: Bool = true,
         pointShape: EFPointShape = .square,
         mode: EFQRCodeMode = .none,
-        binarizationThreshold: CGFloat = 0.5,
         magnification: EFIntSize? = nil,
         foregroundPointOffset: CGFloat = 0
         ) -> Data? {
@@ -100,7 +97,6 @@ public class EFQRCode: NSObject {
         generator.setAllowTransparent(allowTransparent: allowTransparent)
         generator.setPointShape(pointShape: pointShape)
         generator.setMode(mode: mode)
-        generator.setBinarizationThreshold(binarizationThreshold: binarizationThreshold)
         generator.setMagnification(magnification: magnification)
         generator.setForegroundPointOffset(foregroundPointOffset: foregroundPointOffset)
         return EFQRCode.generateWithGIF(data: watermark, generator: generator)
