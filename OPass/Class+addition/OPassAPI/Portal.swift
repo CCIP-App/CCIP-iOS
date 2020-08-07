@@ -19,6 +19,7 @@ enum OPassKnownFeatures: String {
     case Ticket = "ticket"
     case Telegram = "telegram"
     case IM = "im"
+    case WiFiConnect = "wifi"
     case Venue = "venue"
     case Sponsors = "sponsors"
     case Partners = "partners"
@@ -56,11 +57,23 @@ struct PublishDate: OPassData {
     }
 }
 
+struct EventWiFi: OPassData {
+    var _data: JSON
+    var SSID: String
+    var Password: String
+    init(_ data: JSON) {
+        self._data = data
+        self.SSID = self._data["SSID"].stringValue
+        self.Password = self._data["password"].stringValue
+    }
+}
+
 struct EventFeatures: OPassData {
     var _data: JSON
     var Feature: String
     var Icon: URL?
     var DisplayText: EventDisplayName
+    var WiFi: [EventWiFi]
     var _url: String?
     var Url: URL? {
         get {
@@ -94,6 +107,9 @@ struct EventFeatures: OPassData {
         self.Feature = self._data["feature"].stringValue
         self.Icon = self._data["icon"].url
         self.DisplayText = EventDisplayName(self._data["display_text"])
+        self.WiFi = self._data["wifi"].arrayValue.map({ wifi -> EventWiFi in
+            return EventWiFi(wifi)
+        })
         self._url = self._data["url"].string
         self.VisibleRoles = self._data["visible_roles"].arrayObject as? [String]
     }

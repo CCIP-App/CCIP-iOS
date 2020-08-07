@@ -89,6 +89,8 @@ class MoreTableViewController: UIViewController, UITableViewDelegate, UITableVie
                 return ["Ticket", feature]
             case Optional(.Telegram):
                 return ["Telegram", feature]
+            case Optional(.WiFiConnect):
+                return ["WiFiConnect", feature]
             case Optional(.Venue):
                 return ["VenueWeb", feature]
             case Optional(.Staffs):
@@ -264,9 +266,17 @@ class MoreTableViewController: UIViewController, UITableViewDelegate, UITableVie
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? MoreCell else { return }
-        guard let url = cell.Feature?.Url else { return }
-        if (cell.Feature?.Feature == OPassKnownFeatures.WebView.rawValue) {
+        switch (cell.Feature?.Feature) {
+        case OPassKnownFeatures.WebView.rawValue:
+            guard let url = cell.Feature?.Url else { break }
             Constants.OpenInAppSafari(forURL: url)
+            break
+        case OPassKnownFeatures.WiFiConnect.rawValue:
+            guard let wifi = cell.Feature?.WiFi.first else { break }
+            NEHotspot.ConnectWiFi(SSID: wifi.SSID, withPass: wifi.Password)
+            break
+        default:
+            break
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

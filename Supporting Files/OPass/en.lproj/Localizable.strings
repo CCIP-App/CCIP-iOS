@@ -95,6 +95,7 @@
 "icon-Puzzle" = "fas fa-puzzle-piece";
 "icon-Ticket" = "fas fa-ticket-alt";
 "icon-Telegram" = "fab fa-telegram-plane";
+"icon-WiFiConnect" = "fas fa-wifi";
 "icon-VenueWeb" = "fas fa-map";
 "icon-StaffsWeb" = "fas fa-user-friends";
 "icon-SponsorsWeb" = "fas fa-hand-holding-heart";
