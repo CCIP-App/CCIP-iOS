@@ -64,16 +64,6 @@ extension Constants {
         }
         return color
     }
-    static var iBeacon: Dictionary<String, String> {
-        guard let iBeacon = self.appConfig("iBeacon") as? Dictionary<String, String> else { return [:] }
-        return iBeacon
-    }
-    static var beaconUUID: String {
-        return self.iBeacon["UUID"]!
-    }
-    static var beaconID: String {
-        return self.iBeacon["ID"]!
-    }
     static var HasSetEvent: Bool {
         return OPassAPI.currentEvent.count > 0
     }

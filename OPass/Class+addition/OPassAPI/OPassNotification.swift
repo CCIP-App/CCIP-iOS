@@ -1,5 +1,5 @@
 //
-//  iBeaconNotification.swift
+//  OPassNotification.swift
 //  OPass
 //
 //  Created by 腹黒い茶 on 2019/6/17.
@@ -13,25 +13,6 @@ import SwiftDate
 import DLLocalNotifications
 
 extension OPassAPI {
-    static var NextAcceptedBeaconScanMessageTime: Date {
-        get {
-            let ud = UserDefaults.standard;
-            ud.synchronize()
-            let lastMsgTime = ud.double(forKey: "NextAcceptedBeaconScanMessageTime")
-            if lastMsgTime == 0 {
-                return 0.minutes.fromNow
-            } else {
-                return Date.init(timeIntervalSince1970: lastMsgTime)
-            }
-        }
-        set {
-            let ud = UserDefaults.standard;
-            ud.synchronize()
-            ud.set(newValue.timeIntervalSince1970, forKey: "NextAcceptedBeaconScanMessageTime")
-            ud.synchronize()
-        }
-    }
-
     static func RegisteringNotification(
         id: String,
         title: String,

@@ -8,13 +8,6 @@
 		<string>b6213f49-e356-4b48-aa9d-7cf10ce1904d</string>
 		<key>scandit</key>
 		<string>2BXy4CfQi9QFc12JnjId7mHH58SdYzNC90Uo07luUUY</string>
-		<key>iBeacon</key>
-		<dict>
-			<key>UUID</key>
-			<string>014567cf-d0ef-4b74-8161-47ce52f3df64</string>
-			<key>ID</key>
-			<string>OPass-Beacon</string>
-		</dict>
 		<key>DisplayDateTimeFormat</key>
 		<string>YYYY-MM-dd HH:mm</string>
 		<key>DisplayDateFormat</key>
