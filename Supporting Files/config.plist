@@ -16,8 +16,6 @@
 		<string>HH:mm</string>
 		<key>Themes</key>
 		<dict>
-			<key>LogoUseMask</key>
-			<false/>
 			<key>DevelopingLogoMaskColor</key>
 			<string>#f2a900</string>
 			<key>RedeemButtonLeftColor</key>
@@ -52,8 +50,6 @@
 			<string>#4d256f</string>
 			<key>CardTextColor</key>
 			<string>#4d256f</string>
-			<key>CardBackgroundColor</key>
-			<string>#3d983c</string>
 			<key>FavoriteButtonColor</key>
 			<string>#67328c</string>
 			<key>CheckinRectangleLeftColor</key>
@@ -64,8 +60,6 @@
 			<string>#170a31</string>
 			<key>SessionTitleRightColor</key>
 			<string>#67328c</string>
-			<key>SessionTitleTextColor</key>
-			<string>#425d4f</string>
 			<key>SessionDateTitleTextColor</key>
 			<string>#ffffff</string>
 			<key>SessionDateIndicatorColor</key>
@@ -82,8 +76,6 @@
 			<string>#170a31</string>
 			<key>AnnouncementTitleRightColor</key>
 			<string>#67328c</string>
-			<key>AnnouncementTitleTextColor</key>
-			<string>#425d4f</string>
 			<key>AnnouncementNoContentTextColor</key>
 			<string>#425d4f</string>
 			<key>AnnouncementSectionTitleBackgroundColor</key>
@@ -102,14 +94,6 @@
 			<string>#170a31</string>
 			<key>MoreTitleRightColor</key>
 			<string>#67328c</string>
-			<key>MoreTitleTextColor</key>
-			<string>#425d4f</string>
-			<key>MapTitleLeftColor</key>
-			<string>#170a31</string>
-			<key>MapTitleRightColor</key>
-			<string>#67328c</string>
-			<key>MapTitleTextColor</key>
-			<string>#425d4f</string>
 		</dict>
 	</dict>
 </dict>
