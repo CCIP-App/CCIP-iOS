@@ -20,7 +20,7 @@ public class MarkdownView: NSObject {
         _ markdown: String,
         toView: UIView,
         config: WKWebViewConfiguration? = nil
-        ) {
+    ) {
         self.config = WKWebViewConfiguration.init()
         self.markdownString = markdown
         if let _d = (try? await(Promise { resolve, _ in
@@ -40,15 +40,11 @@ public class MarkdownView: NSObject {
         self.downView?.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
     }
 
-    public func append(
-        _ markdown: String
-        ) {
+    public func append(_ markdown: String) {
         self.update(self.getMarkdown() + markdown)
     }
 
-    public func update(
-        _ markdown: String
-    ) {
+    public func update(_ markdown: String) {
         self.markdownString = markdown
         try? self.downView?.update(markdownString: self.getMarkdown())
     }
