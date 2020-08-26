@@ -83,13 +83,27 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
 
         guard let vContent = self.vContent else { return }
 
-        let markdownStyleString = "<style>h1, h2 {color: \(Constants.appConfig("Themes.CardTextColor") ?? "black");} h3, h4, h5, h6, h7, span, div, p {color: black;} body {font-size: 1em; padding-top: 0;} a[href] {text-decoration-line: underline;}</style>\n\n"
+        let markdownStyleString = "<style>h1, h2 { color: \(Constants.appConfig("Themes.CardTextColor") ?? "black"); } h3, h4, h5, h6, h7, span, div, p { color: black; } body { font-size: 1em; padding-top: 0; } a[href] { text-decoration-line: underline; } table#meta { overflow: initial; word-break: break-all; } table#meta tr td:nth-child(1) { text-align: right; word-break: keep-all; color: \(Constants.appConfig("Themes.CardTextColor") ?? "black") } table#meta tr, table#meta td, table#meta th { background-color: transparent; border: none; }</style>\n\n"
         let webConfig = WKWebViewConfiguration()
         webConfig.dataDetectorTypes = [.link]
         self.downView = MarkdownView.init(markdownStyleString, toView: vContent, config: webConfig)
 
         // add loaded script for removing a[href] default style of color attribute
         self.downView?.append("<script>const mdLoaded = () => {Array.from(document.querySelectorAll('a[href]')).map(n => n.style.color='');}</script>\n\n")
+
+        var metatable = ""
+        if let lang = self.session?.Language {
+            metatable += lang.count > 0 ? "<tr><td>Lang</td><td>\(lang)</td></tr>" : ""
+        }
+        if let broadcast = self.session?.Broadcast {
+            metatable += broadcast.count > 0 ? "<tr><td>Broadcast</td><td>\(broadcast)</td></tr>" : ""
+        }
+        if let cowrite = self.session?.CoWrite {
+            metatable += cowrite.count > 0 ? "<tr><td>CoWrite</td><td>\(cowrite)</td></tr>" : ""
+        }
+        if metatable.count > 0 {
+            self.downView?.append("<table id=\"meta\">\(metatable)</table>\n\n---\n\n")
+        }
 
         let description = self.session?["description"] ?? ""
         NSLog("Set description: \(description)")
