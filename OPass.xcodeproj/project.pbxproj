@@ -57,6 +57,7 @@
 		6B2CD59A1D2886C900793194 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B2CD5971D2886C900793194 /* Localizable.strings */; };
 		6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
 		6B49F1411F2548C600686C27 /* OPass-Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* OPass-Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6B4D940924F4A34A00F8D0BD /* InternalConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D940824F4A34A00F8D0BD /* InternalConfigView.swift */; };
 		6B4FCB02218E30B10005469F /* NSObject+DeepCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */; };
 		6B4FCB04218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */; };
 		6B4FCB06218E521C0005469F /* UIApplication+addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB05218E521C0005469F /* UIApplication+addition.swift */; };
@@ -253,6 +254,7 @@
 		6B2CD5981D2886C900793194 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6B2CD5991D2886C900793194 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6B2F9E461D4D18F100047F38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6B4D940824F4A34A00F8D0BD /* InternalConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalConfigView.swift; sourceTree = "<group>"; };
 		6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+DeepCopy.swift"; sourceTree = "<group>"; };
 		6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ValueForKeyPathWithIndexes.swift"; sourceTree = "<group>"; };
 		6B4FCB05218E521C0005469F /* UIApplication+addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+addition.swift"; sourceTree = "<group>"; };
@@ -706,6 +708,7 @@
 				6BB97F9B222A813200338138 /* PartnerWebViewController.swift */,
 				6BE8A229220DC84C0035CFD8 /* AcknowledgementsViewController.swift */,
 				28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */,
+				6B4D940824F4A34A00F8D0BD /* InternalConfigView.swift */,
 			);
 			path = MoreTab;
 			sourceTree = "<group>";
@@ -1089,6 +1092,7 @@
 				6B153B9F22B1C09C00C1632D /* SessionFavoriteTableViewController.swift in Sources */,
 				6B4FCB24218F79CB0005469F /* Constants.swift in Sources */,
 				6B4FCB11218EC2380005469F /* UIImage+addition.swift in Sources */,
+				6B4D940924F4A34A00F8D0BD /* InternalConfigView.swift in Sources */,
 				6BB97F9C222A813200338138 /* PartnerWebViewController.swift in Sources */,
 				6BBAE47F22B67D1C003CBC57 /* CheckinViewController.swift in Sources */,
 				6B4FCB20218F65D30005469F /* NSObject+className.swift in Sources */,

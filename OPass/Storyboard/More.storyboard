@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Vy3-h3-U3W">
-                                    <rect key="frame" x="0.0" y="496" width="414" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="540" width="414" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
@@ -126,6 +126,17 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="eci-Bq-6O9" kind="show" id="2WE-ih-2MW"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InternalConfig" id="RVc-2e-pI2" customClass="MoreCell" customModule="OPass" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="468" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RVc-2e-pI2" id="YGS-qC-8sq">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="fxO-07-Oe9" kind="show" destinationCreationSelector="addInternalConfigView:" id="paA-Cb-xOU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -374,6 +385,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Od-ng-nTD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2080" y="1965"/>
+        </scene>
+        <!--Hosting Controller-->
+        <scene sceneID="577-kv-ler">
+            <objects>
+                <hostingController id="fxO-07-Oe9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="geK-ZO-WqA"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cpk-9B-ke3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="96" y="1965"/>
         </scene>
     </scenes>
     <resources>

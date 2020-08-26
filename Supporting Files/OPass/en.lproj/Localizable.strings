@@ -50,6 +50,7 @@
 "Acknowledgements" = "Developers";
 "Contributions" = "Contributors";
 "Libraries" = "Open Source Libraries";
+"InternalConfig" = "Internal Config";
 "Introduction" = "Introduction";
 "Speaker" = "Speaker";
 "GuideViewMessage" = "Please reference your attendee detail information, and you will find your access token.\n\nPlease copy and paste the token into next text field or click the token link in the reference mail.";
@@ -102,3 +103,4 @@
 "icon-PartnersWeb" = "fas fa-hands-helping";
 "icon-Acknowledgements" = "fas fa-people-carry";
 "icon-MoreWeb" = "fas fa-cookie-bite";
+"icon-InternalConfig" = "fas fa-hammer";

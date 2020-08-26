@@ -8,12 +8,14 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 import AudioToolbox
 import AFNetworking
 import FontAwesome_swift
 import Nuke
 
 let ACKNOWLEDGEMENTS = "Acknowledgements"
+let INTERNAL_CONFIG = "InternalConfig"
 
 class MoreTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var moreTableView: UITableView?
@@ -107,7 +109,9 @@ class MoreTableViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         self.moreItems = ((features ?? [["", nil]]) + [
             [ACKNOWLEDGEMENTS, nil]
-        ]).filter {
+        ] + (
+            Constants.isDevMode ? [[INTERNAL_CONFIG, nil]] : []
+        )).filter {
             guard let v = $0[0] else { return false }
             guard let s = v as? String else { return false }
             return s.count > 0
@@ -248,9 +252,9 @@ class MoreTableViewController: UIViewController, UITableViewDelegate, UITableVie
                             )
                         }
 
-                        let cellText = cellId != ACKNOWLEDGEMENTS ?
-                            (feature?.DisplayText[Constants.shortLangUI] ?? "") :
-                            NSLocalizedString(cellId, comment: "")
+                        let cellText = [ACKNOWLEDGEMENTS, INTERNAL_CONFIG].contains(where: { $0 == cellId } ) ?
+                            NSLocalizedString(cellId, comment: "") :
+                            (feature?.DisplayText[Constants.shortLangUI] ?? "")
                         if ((OPassAPI.userInfo?.Role ?? "").count > 0 && !(feature?.VisibleRoles?.contains(OPassAPI.userInfo?.Role ?? "") ?? true)) {
                             cell.isUserInteractionEnabled = false
                         }
@@ -281,57 +285,11 @@ class MoreTableViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    /*
-     // Override to support conditional editing of the table view.
-     - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-         // Return NO if you do not want the specified item to be editable.
-         return YES;
-     }
-     */
-
-    /*
-     // Override to support editing the table view.
-     - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-         if (editingStyle == UITableViewCellEditingStyleDelete) {
-             // Delete the row from the data source
-             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-         } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-         }
-     }
-     */
-
-    /*
-     // Override to support rearranging the table view.
-     - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-     }
-     */
-
-    /*
-     // Override to support conditional rearranging of the table view.
-     - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-         // Return NO if you do not want the item to be re-orderable.
-         return YES;
-     }
-     */
-
-    //#pragma mark - Table view delegate
-    //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //    [tableView deselectRowAtIndexPath:indexPath
-    //                             animated:YES];
-    //    NSDictionary *item = [self.moreItems objectAtIndex:indexPath.row];
-    //    NSString *title = [[[tableView cellForRowAtIndexPath:indexPath] textLabel] text];
-    //    ((void(^)(NSString *))[item objectForKey:@"detailViewController"])(title);
-    //    SEND_FIB_EVENT(@"MoreTableView", title);
-    //}
-
-    /*
-     #pragma mark - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-         // Get the new view controller using [segue destinationViewController].
-         // Pass the selected object to the new view controller.
-     }
-     */
+    @IBSegueAction func addInternalConfigView(_ coder: NSCoder) -> UIViewController? {
+        if let hostingController = UIHostingController(coder: coder, rootView: InternalConfigView()) {
+            hostingController.view.backgroundColor = UIColor.clear;
+            return hostingController
+        }
+        return nil
+    }
 }
