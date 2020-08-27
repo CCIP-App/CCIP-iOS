@@ -70,7 +70,7 @@ class OPassAPI: NSObject {
             guard let title = item.title else { return }
             guard let itemImage = item.image else { return }
             var image: UIImage = itemImage.withRenderingMode(.alwaysOriginal)
-            image = image.imageWithColor(Constants.appConfigColor("HighlightedColor"))
+            image = image.imageWithColor(Constants.appConfigColor.HighlightedColor)
             item.selectedImage = image.withRenderingMode(.alwaysOriginal)
             switch title {
             case "Checkin", OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.DisplayText[Constants.shortLangUI]:

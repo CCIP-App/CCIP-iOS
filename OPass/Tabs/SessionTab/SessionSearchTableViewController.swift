@@ -55,7 +55,7 @@ class SessionSearchTableViewController: SessionTableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        SessionSearchTableViewController.headView?.setGradientColor(from: Constants.appConfigColor("SessionTitleLeftColor"), to: Constants.appConfigColor("SessionTitleRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
+        SessionSearchTableViewController.headView?.setGradientColor(from: Constants.appConfigColor.SessionTitleLeftColor, to: Constants.appConfigColor.SessionTitleRightColor, startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
         SessionSearchTableViewController.headView?.alpha = 0
         SessionSearchTableViewController.headView?.isHidden = false
         UIView.animate(withDuration: 0.5, animations: {

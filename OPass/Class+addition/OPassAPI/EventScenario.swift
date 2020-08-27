@@ -232,7 +232,7 @@ extension OPassAPI {
 
     static func ParseScenarioRange(_ scenario: Scenario) -> Array<String> {
         let formatter = DateFormatter.init()
-        formatter.dateFormat = Constants.appConfig("DisplayDateTimeFormat") as? String
+        formatter.dateFormat = Constants.appConfig.DisplayDateTimeFormat as? String
         formatter.timeZone = NSTimeZone.default
         let availDate = Date.init(timeIntervalSince1970: TimeInterval(scenario.AvailableTime ?? 0))
         let expireDate = Date.init(timeIntervalSince1970: TimeInterval(scenario.ExpireTime ?? 0))

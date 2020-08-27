@@ -76,7 +76,7 @@ import ScanditBarcodeScanner
         self.ivUserPhoto?.layer.cornerRadius = (self.ivUserPhoto?.frame.size.height ?? 0) / 2
         self.ivUserPhoto?.layer.masksToBounds = true
 
-        self.ivRectangle?.setGradientColor(from: Constants.appConfigColor("CheckinRectangleLeftColor"), to: Constants.appConfigColor("CheckinRectangleRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
+        self.ivRectangle?.setGradientColor(from: Constants.appConfigColor.CheckinRectangleLeftColor, to: Constants.appConfigColor.CheckinRectangleRightColor, startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
 
         NotificationCenter.default.addObserver(self, selector: #selector(appplicationDidBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
@@ -645,11 +645,11 @@ import ScanditBarcodeScanner
             let scenarioType = dd["scenarioType"]
             let defaultIcon = Constants.AssertImage(name: "doc", InBundleName: "PassAssets")
             let scenarioIcon = Constants.AssertImage(name: (scenarioType as? String) ?? "", InBundleName: "PassAssets") ?? defaultIcon
-            temp.checkinTitle.textColor = Constants.appConfigColor("CardTextColor")
+            temp.checkinTitle.textColor = Constants.appConfigColor.CardTextColor
             temp.checkinTitle.text = scenario.DisplayText
-            temp.checkinDate.textColor = Constants.appConfigColor("CardTextColor")
+            temp.checkinDate.textColor = Constants.appConfigColor.CardTextColor
             temp.checkinDate.text = availableRange
-            temp.checkinText.textColor = Constants.appConfigColor("CardTextColor")
+            temp.checkinText.textColor = Constants.appConfigColor.CardTextColor
             temp.checkinText.text = NSLocalizedString("CheckinNotice", comment: "")
             temp.checkinIcon.image = scenarioIcon
 
@@ -677,7 +677,7 @@ import ScanditBarcodeScanner
             if isDisabled {
                 temp.setDisabled(scenario.Disabled)
                 temp.checkinBtn.setTitle("\(scenario.Disabled ?? "")", for: .normal)
-                temp.checkinBtn.setGradientColor(from: Constants.appConfigColor("DisabledButtonLeftColor"), to: Constants.appConfigColor("DisabledButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                temp.checkinBtn.setGradientColor(from: Constants.appConfigColor.DisabledButtonLeftColor, to: Constants.appConfigColor.DisabledButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
             } else if isUsed {
                 temp.setUsed(scenario.Used)
                 if isCheckin {
@@ -685,7 +685,7 @@ import ScanditBarcodeScanner
                 } else {
                     temp.checkinBtn.setTitle(NSLocalizedString("UseButtonPressed", comment: ""), for: .normal)
                 }
-                temp.checkinBtn.setGradientColor(from: Constants.appConfigColor("UsedButtonLeftColor"), to: Constants.appConfigColor("UsedButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                temp.checkinBtn.setGradientColor(from: Constants.appConfigColor.UsedButtonLeftColor, to: Constants.appConfigColor.UsedButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
             } else {
                 temp.setUsed(nil)
                 if isCheckin {
@@ -693,7 +693,7 @@ import ScanditBarcodeScanner
                 } else {
                     temp.checkinBtn.setTitle(NSLocalizedString("UseButton", comment: ""), for: .normal)
                 }
-                temp.checkinBtn.setGradientColor(from: Constants.appConfigColor("CheckinButtonLeftColor"), to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                temp.checkinBtn.setGradientColor(from: Constants.appConfigColor.CheckinButtonLeftColor, to: Constants.appConfigColor.CheckinButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
             }
             temp.checkinBtn.tintColor = .white
 

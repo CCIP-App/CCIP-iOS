@@ -25,7 +25,7 @@ class GuideViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         guideMessageLabel.text = NSLocalizedString("GuideViewMessage", comment: "")
 
-        redeemCodeText.textColor = Constants.appConfigColor("RedeemCodeTextColor")
+        redeemCodeText.textColor = Constants.appConfigColor.RedeemCodeTextColor
 
         redeemButton.setTitle(NSLocalizedString("GuideViewButton", comment: ""), for: .normal)
         redeemButton.tintColor = .white
@@ -34,8 +34,8 @@ class GuideViewController: UIViewController, UITextFieldDelegate {
 
         // Set carousel background linear diagonal gradient
         //   Create the colors
-        let topColor = Constants.appConfigColor("RedeemButtonLeftColor")
-        let bottomColor = Constants.appConfigColor("RedeemButtonRightColor")
+        let topColor: UIColor = Constants.appConfigColor.RedeemButtonLeftColor
+        let bottomColor: UIColor = Constants.appConfigColor.RedeemButtonRightColor
         //   Create the gradient
         let theViewGradient = CAGradientLayer()
         theViewGradient.colors = [topColor.cgColor, bottomColor.cgColor]

@@ -24,6 +24,48 @@ enum FontStyleForAwesome: Int {
     case brands
 }
 
+@dynamicMemberLookup
+class AppConfig {
+    var prependPath = ""
+    init() {
+        self.prependPath = ""
+    }
+    init(_ prependPath: String) {
+        self.prependPath = prependPath
+    }
+    subscript(dynamicMember path: String) -> Any? {
+        return self.config(path)
+    }
+    func config(_ path: String) -> Any? {
+        let p = (self.prependPath.count > 0 ? "\(self.prependPath)." : "") + path
+        guard let configPlist = Bundle.main.url(forResource: "config", withExtension: "plist") else { return nil }
+        guard var config = NSDictionary.init(contentsOf: configPlist) else { return nil }
+        if let configDist = config.value(forKey: Constants.appName()) as? NSDictionary { config = configDist }
+        let value = config.value(forKeyPath: p)
+        return value
+    }
+    func colorConfig(_ path: String) -> UIColor {
+        var color = UIColor.clear
+        let colorString = self.config(path) as? String
+        if (colorString ?? "").count == 0 {
+            NSLog("[WARN] Config Color `\(path)` is empty")
+        } else if (colorString ?? "").count > 0 {
+            color = UIColor.colorFromHtmlColor(colorString ?? "")
+        }
+        return color
+    }
+}
+
+@dynamicMemberLookup
+class AppConfigColor: AppConfig {
+    override init() {
+        super.init("Themes")
+    }
+    subscript(dynamicMember path: String) -> UIColor {
+        return self.colorConfig(path)
+    }
+}
+
 extension Constants {
     static func SendFib(
         _ _name: Any,
@@ -47,23 +89,8 @@ extension Constants {
             Analytics.logEvent(_name as? String ?? "", parameters: _events as? [String: Any])
         }
     }
-    static func appConfig(_ path: String) -> Any? {
-        guard let configPlist = Bundle.main.url(forResource: "config", withExtension: "plist") else { return nil }
-        guard var config = NSDictionary.init(contentsOf: configPlist) else { return nil }
-        if let configDist = config.value(forKey: self.appName()) as? NSDictionary { config = configDist }
-        let value = config.value(forKeyPath: path)
-        return value
-    }
-    static func appConfigColor(_ path: String) -> UIColor {
-        var color = UIColor.clear
-        let colorString = self.appConfig("Themes.\(path)") as? String
-        if (colorString ?? "").count == 0 {
-            NSLog("[WARN] Config Color `\(path)` is empty")
-        } else if (colorString ?? "").count > 0 {
-            color = UIColor.colorFromHtmlColor(colorString ?? "")
-        }
-        return color
-    }
+    static var appConfig = AppConfig()
+    static var appConfigColor = AppConfigColor()
     static var HasSetEvent: Bool {
         return OPassAPI.currentEvent.count > 0
     }
@@ -226,7 +253,7 @@ extension Constants {
             if image != nil {
                 if var img = image {
                     if isDevMode {
-                        img = img.imageWithColor(self.appConfigColor("DevelopingLogoMaskColor"))
+                        img = img.imageWithColor(self.appConfigColor.DevelopingLogoMaskColor)
                     }
                     if resp != nil {
                         if view.contentView == nil {
@@ -316,20 +343,20 @@ extension Constants {
     }
     static func DateToDisplayDateString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
-        return DateInRegion(date, region: local).toFormat(self.appConfig("DisplayDateFormat") as? String ?? "")
+        return DateInRegion(date, region: local).toFormat(self.appConfig.DisplayDateFormat as? String ?? "")
     }
     static func DateToDisplayTimeString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
-        return DateInRegion(date, region: local).toFormat(self.appConfig("DisplayTimeFormat") as? String ?? "")
+        return DateInRegion(date, region: local).toFormat(self.appConfig.DisplayTimeFormat as? String ?? "")
     }
     static func DateToDisplayDateTimeString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
-        let format = String.init(format: "%@ %@", self.appConfig("DisplayDateFormat") as? String ?? "", self.appConfig("DisplayTimeFormat") as? String ?? "")
+        let format = String.init(format: "%@ %@", self.appConfig.DisplayDateFormat as? String ?? "", self.appConfig.DisplayTimeFormat as? String ?? "")
         return DateInRegion(date, region: local).toFormat(format)
     }
     static func DateToDisplayDateAndTimeString(_ date: Date) -> String {
         let local = Region(calendar: Calendars.republicOfChina, zone: Zones.asiaTaipei, locale: Locales.chineseTaiwan)
-        return DateInRegion(date, region: local).toFormat(self.appConfig("DisplayDateTimeFormat") as? String ?? "")
+        return DateInRegion(date, region: local).toFormat(self.appConfig.DisplayDateTimeFormat as? String ?? "")
     }
 
     static var INIT_SESSION_DETAIL_VIEW_STORYBOARD_ID: String {

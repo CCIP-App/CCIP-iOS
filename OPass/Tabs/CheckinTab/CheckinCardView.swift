@@ -94,9 +94,9 @@ class CheckinCardView: UIView {
             if (self.scenario?.Used != nil) {
                 self.showCountdown()
                 self.buttonUpdate({
-                    self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                    self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor.CheckinButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                 }, {
-                    self.checkinBtn?.setGradientColor(from: Constants.appConfigColor("UsedButtonLeftColor"), to: Constants.appConfigColor("UsedButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                    self.checkinBtn?.setGradientColor(from: Constants.appConfigColor.UsedButtonLeftColor, to: Constants.appConfigColor.UsedButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                 }, nil)
             } else {
                 OPassAPI.UseScenario(OPassAPI.currentEvent, Constants.accessToken ?? "", self.id) { (success, obj, error) in
@@ -106,7 +106,7 @@ class CheckinCardView: UIView {
                         }
                         self.showCountdown()
                         self.buttonUpdate({
-                            self.checkinBtn?.setGradientColor(from: Constants.appConfigColor("DisabledButtonLeftColor"), to: Constants.appConfigColor("DisabledButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                            self.checkinBtn?.setGradientColor(from: Constants.appConfigColor.DisabledButtonLeftColor, to: Constants.appConfigColor.DisabledButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                         }, nil, nil)
                         if isCheckin {
                             self.checkinBtn?.setTitle(NSLocalizedString("CheckinViewButtonPressed", comment: ""), for: .normal)
@@ -137,20 +137,20 @@ class CheckinCardView: UIView {
                             switch (msg) {
                             case "invalid token":
                                 self.buttonUpdate({
-                                    self.checkinBtn?.setGradientColor(from: .red, to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                    self.checkinBtn?.setGradientColor(from: .red, to: Constants.appConfigColor.CheckinButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                                 }, nil, nil)
                             case "has been used":
                                 self.showCountdown()
                                 self.buttonUpdate({
-                                    self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                    self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor.CheckinButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                                 }, {
-                                    self.checkinBtn?.setGradientColor(from: Constants.appConfigColor("UsedButtonLeftColor"), to: Constants.appConfigColor("UsedButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                    self.checkinBtn?.setGradientColor(from: Constants.appConfigColor.UsedButtonLeftColor, to: Constants.appConfigColor.UsedButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                                 }, nil)
                             case "link expired/not available now":
                                 self.buttonUpdate({
-                                    self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                    self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor.CheckinButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                                 }, {
-                                    self.checkinBtn?.setGradientColor(from: Constants.appConfigColor("CheckinButtonLeftColor"), to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                                    self.checkinBtn?.setGradientColor(from: Constants.appConfigColor.CheckinButtonLeftColor, to: Constants.appConfigColor.CheckinButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                                 }) {
                                     self.checkinBtn?.setTitle(NSLocalizedString(isCheckin ? "CheckinViewButton" : "UseButton", comment: ""), for: .normal)
                                 }
@@ -169,11 +169,11 @@ class CheckinCardView: UIView {
 
         if self.disabled != nil {
             UIView.animate(withDuration: 0.25, animations: {
-                self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor("CheckinButtonRightColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor.CheckinButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
             }) { finished in
                 if finished {
                     UIView.animate(withDuration: 1.75) {
-                        self.checkinBtn?.setGradientColor(from: Constants.appConfigColor("DisabledButtonLeftColor"), to: Constants.appConfigColor("DisabledButtonLeftColor"), startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+                        self.checkinBtn?.setGradientColor(from: Constants.appConfigColor.DisabledButtonLeftColor, to: Constants.appConfigColor.DisabledButtonLeftColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                     }
                 }
             }

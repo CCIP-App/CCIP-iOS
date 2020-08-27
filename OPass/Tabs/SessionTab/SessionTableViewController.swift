@@ -157,8 +157,8 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
-        header.textLabel?.textColor = Constants.appConfigColor("SessionSectionTitleTextColor")
-        view.tintColor = Constants.appConfigColor("SessionSectionTitleBackgroundColor")
+        header.textLabel?.textColor = Constants.appConfigColor.SessionSectionTitleTextColor
+        view.tintColor = Constants.appConfigColor.SessionSectionTitleBackgroundColor
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

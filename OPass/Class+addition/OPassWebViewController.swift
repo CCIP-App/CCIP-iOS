@@ -88,7 +88,7 @@ class OPassWebViewController: UIViewController, WKNavigationDelegate, WKUIDelega
             // set logo on nav title
             self.navigationItem.titleView = self.shimmeringLogoView
         } else {
-            self.navigationItem.titleView?.tintColor = Constants.appConfigColor(self.titleTextColor)
+            self.navigationItem.titleView?.tintColor = Constants.appConfigColor[dynamicMember: self.titleTextColor]
         }
 
         if (self.ShowLogo && self.titleLeftColor != "" && self.titleRightColor != "") {
@@ -99,8 +99,8 @@ class OPassWebViewController: UIViewController, WKNavigationDelegate, WKUIDelega
                 let frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: (self.navigationController?.navigationBar.frame.origin.y ?? 0) + navigationBarBounds.size.height)
                 let headView = UIView.init(frame: frame)
                 headView.setGradientColor(
-                    from: Constants.appConfigColor(self.titleLeftColor),
-                    to: Constants.appConfigColor(self.titleRightColor),
+                    from: Constants.appConfigColor[dynamicMember: self.titleLeftColor],
+                    to: Constants.appConfigColor[dynamicMember: self.titleRightColor],
                     startPoint: CGPoint(x: -0.4, y: 0.5),
                     toPoint: CGPoint(x: 1, y: 0.5)
                 )
@@ -131,7 +131,7 @@ class OPassWebViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         if let navigationBarBounds = self.navigationController?.navigationBar.bounds {
             let barFrame = CGRect(x: 0, y: navigationBarBounds.size.height - progressBarHeight, width: navigationBarBounds.size.width, height: progressBarHeight)
             self.progressView = NJKWebViewProgressView.init(frame: barFrame)
-            self.progressView?.progressBarView.backgroundColor = Constants.appConfigColor("ProgressBarColor")
+            self.progressView?.progressBarView.backgroundColor = Constants.appConfigColor.ProgressBarColor
             self.progressView?.autoresizingMask = [ .flexibleWidth, .flexibleTopMargin ]
             if let progressView = self.progressView {
                 self.navigationController?.navigationBar.addSubview(progressView)

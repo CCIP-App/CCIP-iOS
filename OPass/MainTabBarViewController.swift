@@ -11,10 +11,11 @@ import UIKit
 
 class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
+        let highlightColor: UIColor = Constants.appConfigColor.HighlightedColor
         UITabBarItem.appearance()
             .setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: .normal)
         UITabBarItem.appearance()
-            .setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Constants.appConfigColor("HighlightedColor")], for: .selected)
+            .setTitleTextAttributes([NSAttributedString.Key.foregroundColor: highlightColor], for: .selected)
 
         NotificationCenter.default.addObserver(self, selector: #selector(MainTabBarViewController.appplicationDidBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
 

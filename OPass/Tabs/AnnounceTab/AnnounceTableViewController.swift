@@ -37,8 +37,8 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
         let frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 239)
         let headView = UIView.init(frame: frame)
         headView.setGradientColor(
-            from: Constants.appConfigColor("AnnouncementTitleLeftColor"),
-            to: Constants.appConfigColor("AnnouncementTitleRightColor"),
+            from: Constants.appConfigColor.AnnouncementTitleLeftColor,
+            to: Constants.appConfigColor.AnnouncementTitleRightColor,
             startPoint: CGPoint(x: -0.4, y: -0.5),
             toPoint: CGPoint(x: 1, y: 0.5)
         )
@@ -52,7 +52,7 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
             range: NSRange(location: 0, length: noAnnouncementText.count)
         )
         self.lbNoAnnouncement.attributedText = attributedNoAnnouncementText
-        self.lbNoAnnouncement.textColor = Constants.appConfigColor("AnnouncementNoContentTextColor")
+        self.lbNoAnnouncement.textColor = Constants.appConfigColor.AnnouncementNoContentTextColor
 
         Constants.SendFib("AnnounceTableViewController")
     }
@@ -195,8 +195,8 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
         let datetime = announce.DateTime
         let strDate = Constants.DateToDisplayDateAndTimeString(datetime)
         cell.lbMessageTime.text = strDate
-        cell.lbMessageTime.textColor = Constants.appConfigColor("AnnouncementSectionTitleTextColor")
-        cell.vwMessageTime.backgroundColor = Constants.appConfigColor("AnnouncementSectionTitleBackgroundColor")
+        cell.lbMessageTime.textColor = Constants.appConfigColor.AnnouncementSectionTitleTextColor
+        cell.vwMessageTime.backgroundColor = Constants.appConfigColor.AnnouncementSectionTitleBackgroundColor
 
         if hasURL {
             cell.lbURL.text = uri
@@ -217,7 +217,7 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
             cell.lbURL.text = ""
             cell.lbIconOfURL.attributedText = nil
         }
-        cell.vwDashedLine.addDashedLine(Constants.appConfigColor("AnnouncementDashedLineColor"))
+        cell.vwDashedLine.addDashedLine(Constants.appConfigColor.AnnouncementDashedLineColor)
         cell.vwURL.fd_collapsed = !hasURL
     }
 

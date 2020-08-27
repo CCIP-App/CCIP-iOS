@@ -109,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UINavigationBar.appearance().tintColor = .white
         UIBarButtonItem.appearance().tintColor = .white
-        UIButton.appearance(whenContainedInInstancesOf: [UINavigationController.self]).tintColor = Constants.appConfigColor("NavigationIndicatorColor")
+        UIButton.appearance(whenContainedInInstancesOf: [UINavigationController.self]).tintColor = Constants.appConfigColor.NavigationIndicatorColor
 
         let imagePickerNavBarAppearance = UINavigationBar.appearance(whenContainedInInstancesOf: [UIImagePickerController.self])
         imagePickerNavBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
@@ -121,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         UIToolbar.appearance(whenContainedInInstancesOf: [UINavigationController.self]).barTintColor = appArt.backgroundColor
 
-        let labelTextColor = Constants.appConfigColor("LabelTextColor")
+        let labelTextColor: UIColor = Constants.appConfigColor.LabelTextColor
         UITabBar.appearance().tintColor = labelTextColor
         UISegmentedControl.appearance().tintColor = labelTextColor
         UIProgressView.appearance().tintColor = labelTextColor
@@ -234,7 +234,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         // Configure OneSignal
-        if let oneSignalToken = Constants.appConfig("ogToken") as? String {
+        if let oneSignalToken = Constants.appConfig.ogToken as? String {
             func notificationReceiverBlock(_ notification: OSNotification) {
                 NSLog("Received Notification - \(notification.payload.notificationID ?? "")")
             }
@@ -278,7 +278,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         // Provide the app key for your scandit license.
-        if let key = Constants.appConfig("scandit") as? String {
+        if let key = Constants.appConfig.scandit as? String {
             SBSLicense.setAppKey(key)
         }
 

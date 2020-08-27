@@ -37,7 +37,7 @@ class MyTicketViewController: UIViewController {
             }
         }
         self.lbNotice?.text = noticeText
-        self.lbNotice?.textColor = Constants.appConfigColor("CardTextColor")
+        self.lbNotice?.textColor = Constants.appConfigColor.CardTextColor
     }
 
     override func didReceiveMemoryWarning() {

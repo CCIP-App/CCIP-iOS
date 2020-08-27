@@ -21,7 +21,7 @@ struct InternalConfigView: View {
                             .foregroundColor(.white)
                             .frame(width: geometry.size.width * 0.8, height: 40)
                     }
-                        .background(LinearGradient(gradient: Gradient(colors: [Color(Constants.appConfigColor("\(button)ButtonLeftColor")), Color(Constants.appConfigColor("\(button)ButtonRightColor"))]), startPoint: .leading, endPoint: .trailing))
+                    .background(LinearGradient(gradient: Gradient(colors: [Color(Constants.appConfigColor[dynamicMember: "\(button)ButtonLeftColor"]), Color(Constants.appConfigColor[dynamicMember: "\(button)ButtonRightColor"])]), startPoint: .leading, endPoint: .trailing))
                         .cornerRadius(.infinity)
                         .padding(5)
                 }

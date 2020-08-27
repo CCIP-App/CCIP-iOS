@@ -134,7 +134,7 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
     func viewPager(_ viewPager: ViewPagerController?, viewForTabAt index: UInt) -> UIView! {
         let label = UILabel.init()
         label.text = "DAY \(self.segmentsTextArray[Int(index)])"
-        label.textColor = Constants.appConfigColor("SessionDateTitleTextColor")
+        label.textColor = Constants.appConfigColor.SessionDateTitleTextColor
         label.font = UIFont.init(name: "PingFangTC-Medium", size: 14)
         label.sizeToFit()
         return label
@@ -193,7 +193,7 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
     func viewPager(_ viewPager: ViewPagerController?, colorFor component: ViewPagerComponent, withDefault color: UIColor?) -> UIColor! {
         switch (component) {
         case ViewPagerComponent.indicator:
-            return Constants.appConfigColor("SessionDateIndicatorColor")
+            return Constants.appConfigColor.SessionDateIndicatorColor
         case ViewPagerComponent.tabsView:
             return UIColor.clear
         case ViewPagerComponent.content:

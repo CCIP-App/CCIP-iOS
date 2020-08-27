@@ -39,7 +39,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
         // Do any additional setup after loading the view.
         Constants.SendFib("SessionDetailViewController")
 
-        self.vwHeader?.setGradientColor(from: Constants.appConfigColor("SessionTitleLeftColor"), to: Constants.appConfigColor("SessionTitleRightColor"), startPoint: CGPoint(x: 1, y: 0.5), toPoint: CGPoint(x: -0.4, y: 0.5))
+        self.vwHeader?.setGradientColor(from: Constants.appConfigColor.SessionTitleLeftColor, to: Constants.appConfigColor.SessionTitleRightColor, startPoint: CGPoint(x: 1, y: 0.5), toPoint: CGPoint(x: -0.4, y: 0.5))
 
         // following constraint for fix the storyboard autolayout broken the navigation bar alignment
         guard let vwH = self.vwHeader else { return }
@@ -59,10 +59,10 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
             self.lbTimeText
         ]
         for lb in lbsHeader {
-            lb?.textColor = Constants.appConfigColor("SessionDetailHeaderTextColor")
+            lb?.textColor = Constants.appConfigColor.SessionDetailHeaderTextColor
         }
         for lb in lbsMeta {
-            lb?.textColor = Constants.appConfigColor("SessionMetaHeaderTextColor")
+            lb?.textColor = Constants.appConfigColor.SessionMetaHeaderTextColor
         }
         for lb in (lbsHeader + lbsMeta) {
             lb?.layer.shadowColor = UIColor.gray.cgColor
@@ -83,7 +83,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
 
         guard let vContent = self.vContent else { return }
 
-        let markdownStyleString = "<style>h1, h2 { color: \(Constants.appConfig("Themes.CardTextColor") ?? "black"); } h3, h4, h5, h6, h7, span, div, p { color: black; } body { font-size: 1em; padding-top: 0; } a[href] { text-decoration-line: underline; } table#meta { overflow: initial; word-break: break-all; } table#meta tr td:nth-child(1) { text-align: right; word-break: keep-all; color: \(Constants.appConfig("Themes.CardTextColor") ?? "black") } table#meta tr, table#meta td, table#meta th { background-color: transparent; border: none; }</style>\n\n"
+        let markdownStyleString = "<style>h1, h2 { color: \( Constants.appConfigColor.CardTextColor ?? "black"); } h3, h4, h5, h6, h7, span, div, p { color: black; } body { font-size: 1em; padding-top: 0; } a[href] { text-decoration-line: underline; } table#meta { overflow: initial; word-break: break-all; } table#meta tr td:nth-child(1) { text-align: right; word-break: keep-all; color: \( Constants.appConfigColor.CardTextColor ?? "black") } table#meta tr, table#meta td, table#meta th { background-color: transparent; border: none; }</style>\n\n"
         let webConfig = WKWebViewConfiguration()
         webConfig.dataDetectorTypes = [.link]
         self.downView = MarkdownView.init(markdownStyleString, toView: vContent, config: webConfig)

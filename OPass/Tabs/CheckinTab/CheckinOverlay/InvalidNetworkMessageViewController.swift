@@ -23,7 +23,7 @@ class InvalidNetworkMessageViewController: UIViewController {
         self.closeButton?.setTitle(NSLocalizedString("InvalidNetworkButtonRetry", comment: ""), for: .normal)
         self.closeButton?.tintColor = .white
         self.closeButton?.backgroundColor = UIColor.init(red: 61 / 255.0, green: 152 / 255.0, blue: 60 / 255.0, alpha: 1)
-        self.closeButton?.setGradientColor(from: Constants.appConfigColor("MessageButtonLeftColor"), to: Constants.appConfigColor("MessageButtonRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
+        self.closeButton?.setGradientColor(from: Constants.appConfigColor.MessageButtonLeftColor, to: Constants.appConfigColor.MessageButtonRightColor, startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
         if let layer = self.closeButton?.layer.sublayers?.first {
             layer.cornerRadius = (self.closeButton?.frame.size.height ?? 2) / 2
             self.closeButton?.layer.cornerRadius = (self.closeButton?.frame.size.height ?? 2) / 2

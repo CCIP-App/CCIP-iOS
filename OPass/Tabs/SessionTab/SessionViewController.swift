@@ -59,7 +59,7 @@ class SessionViewController: UIViewController {
 
         let frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 239)
         let headView = UIView.init(frame: frame)
-        headView.setGradientColor(from: Constants.appConfigColor("SessionTitleLeftColor"), to: Constants.appConfigColor("SessionTitleRightColor"), startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
+        headView.setGradientColor(from: Constants.appConfigColor.SessionTitleLeftColor, to: Constants.appConfigColor.SessionTitleRightColor, startPoint: CGPoint(x: -0.4, y: 0.5), toPoint: CGPoint(x: 1, y: 0.5))
         self.view.addSubview(headView)
         self.view.sendSubviewToBack(headView)
     }
