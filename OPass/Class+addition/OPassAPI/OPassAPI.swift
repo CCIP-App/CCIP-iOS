@@ -27,7 +27,9 @@ class OPassAPI: NSObject {
             manager.requestSerializer.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
             manager.requestSerializer.timeoutInterval = 5
             manager.get(url, parameters: nil, headers: nil, progress: nil, success: { (_, responseObject: Any?) in
+                #if DEBUG
                 NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any) ?? "nil")")
+                #endif
                 if (responseObject != nil) {
                     resolve(responseObject)
                 }
