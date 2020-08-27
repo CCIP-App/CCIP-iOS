@@ -1,9 +1,9 @@
 //
 //  headers.h
-//  GatewayWebService
+//  OPass
 //
 //  Created by 腹黒い茶 on 2016/06/24.
-//  Copyright © 2016年 CPRTeam. All rights reserved.
+//  2016 OPass.
 //
 
 #define __FIB(name, events)             ([Constants SendFib:name WithEvents:events Func:[NSString stringWithUTF8String:__func__] File:[NSString stringWithUTF8String:__FILE__] Line:__LINE__ Col:0])

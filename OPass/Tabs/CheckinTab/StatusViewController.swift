@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by FrankWu on 2019/6/17.
-//  Copyright © 2019 OPass. All rights reserved.
+//  2019 OPass.
 //
 
 import UIKit

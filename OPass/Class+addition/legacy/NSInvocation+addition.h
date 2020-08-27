@@ -1,9 +1,9 @@
 //
 //  NSInvocation+addition.h
-//  CCIP
+//  OPass
 //
 //  Created by 腹黒い茶 on 2016/07/04.
-//  Copyright © 2016年 CPRTeam. All rights reserved.
+//  2016 OPass.
 //
 
 #import <Foundation/Foundation.h>

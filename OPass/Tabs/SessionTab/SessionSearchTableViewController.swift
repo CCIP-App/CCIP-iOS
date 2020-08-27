@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by FrankWu on 2020/8/6.
-//  Copyright © 2020 OPass. All rights reserved.
+//  2020 OPass.
 //
 
 import Foundation

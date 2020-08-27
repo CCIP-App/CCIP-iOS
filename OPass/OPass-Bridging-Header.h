@@ -1,9 +1,9 @@
 //
-//  CCIP-Bridging-Header.h
-//  CCIP
+//  OPass-Bridging-Header.h
+//  OPass
 //
 //  Created by 腹黒い茶 on 2019/2/8.
-//  Copyright © 2019 OPass. All rights reserved.
+//  2019 OPass.
 //
 
 #import <OneSignal/OneSignal.h>

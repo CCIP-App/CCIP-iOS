@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 腹黒い茶 on 2019/3/7.
-//  Copyright © 2019 OPass. All rights reserved.
+//  2019 OPass.
 //
 
 import Foundation

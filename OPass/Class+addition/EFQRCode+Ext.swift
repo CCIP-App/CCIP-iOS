@@ -1,9 +1,9 @@
 //
 //  TicketQRCodeImage.swift
-//  CCIP
+//  OPass
 //
 //  Created by 腹黒い茶 on 2017/07/24.
-//  Copyright © 2017年 CPRTeam. All rights reserved.
+//  2017 OPass.
 //
 
 import Foundation
