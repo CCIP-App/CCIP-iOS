@@ -212,12 +212,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         FirebaseOptions.defaultOptions()?.deepLinkURLScheme = (infoDict as NSObject).valueForKeyPathWithIndexes("CFBundleURLTypes[0].CFBundleURLSchemes[0]") as? String
         FirebaseApp.configure()
 
-        //    //configure iRate
-        //    [iRate sharedInstance].daysUntilPrompt = 1;
-        //    [iRate sharedInstance].usesUntilPrompt = 5;
-        //    //enable preview mode
-        //    [iRate sharedInstance].previewMode = NO;
-
         //configure iVersion
         //set custom BundleID
         iVersion.sharedInstance()?.applicationBundleID = Bundle.main.bundleIdentifier
@@ -226,13 +220,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //enable preview mode
         iVersion.sharedInstance()?.previewMode = false
 
-        let uTrackId = iVersion.sharedInstance()?.appStoreID
         NSLog(iVersion.sharedInstance().appStoreCountry)
 
-        // Configure Appirater
-        let trackId = "\(uTrackId ?? 0)"
-        if trackId.count > 0 {
-            Appirater.setAppId(trackId)
+        if let trackId = iVersion.sharedInstance()?.appStoreID {
+            // Configure Appirater
+            Appirater.setAppId(String(trackId))
             Appirater.setDaysUntilPrompt(1)
             Appirater.setUsesUntilPrompt(5)
             Appirater.setSignificantEventsUntilPrompt(-1)
