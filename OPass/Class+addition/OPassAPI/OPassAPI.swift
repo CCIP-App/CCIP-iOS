@@ -78,15 +78,29 @@ class OPassAPI: NSObject {
 //                if ((OPassAPI.userInfo?.Role ?? "").count > 0) {
 //                    item.isEnabled = (OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(OPassAPI.userInfo!.Role))!
 //                }
+                item.isEnabled = OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.Url != nil
             case "Session", OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]
             case "Announce", OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.DisplayText[Constants.shortLangUI]
+                item.isEnabled = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.Url != nil
             case "IRC", OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.DisplayText[Constants.shortLangUI]
                 item.isEnabled = OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.Url != nil
             default:
                 item.title = NSLocalizedString(title, comment: "")
+            }
+        }
+    }
+
+    static func openFirstAvailableTab() {
+        guard let tabBarController = tabBarController else { return }
+        guard let items = tabBarController.tabBar.items else { return }
+        for (index, item) in items.enumerated() {
+            NSLog("\(index): \(String(describing: item.title)) -> \(item.isEnabled)")
+            if item.isEnabled {
+                tabBarController.selectedIndex = index
+                break;
             }
         }
     }

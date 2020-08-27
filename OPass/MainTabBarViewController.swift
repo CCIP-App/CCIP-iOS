@@ -21,6 +21,7 @@ class MainTabBarViewController: UITabBarController {
 
         OPassAPI.initTabBar(self)
         OPassAPI.refreshTabBar()
+        OPassAPI.openFirstAvailableTab()
 
         // self.automaticallyAdjustsScrollViewInsets = false;
         if #available(iOS 13.0, *) {
