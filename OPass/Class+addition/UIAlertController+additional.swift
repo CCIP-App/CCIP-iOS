@@ -47,7 +47,7 @@ import UIKit
         _ sender: Any,
         withTitle: String,
         andMessage: String
-        ) -> UIAlertController {
+    ) -> UIAlertController {
         let ac: UIAlertController = self.init(title: withTitle, message: andMessage, preferredStyle: UIAlertController.Style.actionSheet)
         guard var sd = sender as? UIView else { return ac }
         var frame: CGRect = sd.frame
@@ -72,22 +72,20 @@ import UIKit
         cancelButtonText: String,
         cancelStyle: UIAlertAction.Style,
         cancelAction: ((UIAlertAction) -> Void)?
-        ) -> UIAlertController {
+    ) -> UIAlertController {
         let ac: UIAlertController = self.init(title: title, message: withMessage, preferredStyle: UIAlertController.Style.alert)
         ac.modalPresentationStyle = UIModalPresentationStyle.popover
         ac.addActionButton(cancelButtonText, style: cancelStyle, handler: cancelAction)
         return ac
     }
-    func showAlert(
-        _ completion: @escaping () -> Void
-        ) {
+    func showAlert(_ completion: @escaping () -> Void) {
         UIApplication.getMostTopPresentedViewController()?.present(self, animated: true, completion: completion)
     }
     func addActionButton(
         _ title: String,
         style: UIAlertAction.Style,
         handler: ((UIAlertAction) -> Void)?
-        ) {
+    ) {
         let action: UIAlertAction = UIAlertAction.init(title: title, style: style, handler: handler)
         self.addAction(action)
     }

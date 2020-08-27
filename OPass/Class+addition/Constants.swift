@@ -76,7 +76,6 @@ extension Constants {
         Col _col: Int = #column
     ) {
         let __file = _file.replacingOccurrences(of: self.sourceRoot(), with: "")
-
         NSLog("Send FIB: \(_name)(\(String(describing: _events))) @ \(_func)\t\(__file):\(_line):\(_col)");
 
         //    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];

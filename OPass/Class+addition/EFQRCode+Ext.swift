@@ -16,7 +16,7 @@ extension EFQRCode {
         backgroundColor: CGColor = UIColor.white.cgColor,
         foregroundColor: CGColor = UIColor.black.cgColor,
         watermark: CGImage? = nil
-        ) -> CGImage? {
+    ) -> CGImage? {
         if let generator = EFQRCodeGenerator(
                 content: content,
                 size: EFIntSize(width: NSInteger(size.width), height: NSInteger(size.height))

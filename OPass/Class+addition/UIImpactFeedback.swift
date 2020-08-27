@@ -68,6 +68,5 @@ class UIImpactFeedback: NSObject { }
             generator.prepare()
             (generator as? UISelectionFeedbackGenerator)?.selectionChanged()
         }
-
     }
 }

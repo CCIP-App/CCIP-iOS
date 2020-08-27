@@ -19,7 +19,7 @@ extension OPassAPI {
         content: String,
         time: Date,
         isDisable: Bool = false
-        ) {
+    ) {
         let notification = DLNotification(
             identifier: id,
             alertTitle: title,

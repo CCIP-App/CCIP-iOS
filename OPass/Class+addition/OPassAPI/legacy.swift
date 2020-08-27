@@ -9,9 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-internal typealias OPassCompletionCallbackLegacy = (
-    (_ success: Bool, _ data: Any?, _ error: Error) -> Void
-    )?
+internal typealias OPassCompletionCallbackLegacy = ( (_ success: Bool, _ data: Any?, _ error: Error) -> Void )?
 
 @objc class OPassNonSuccessDataResponseLegacy: NSObject {
     @objc public var Response: HTTPURLResponse?
