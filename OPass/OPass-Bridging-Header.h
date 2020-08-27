@@ -12,5 +12,4 @@
 #import <CPDAcknowledgements/CPDCocoaPodsLibrariesLoader.h>
 #import <ICViewPager/ViewPagerController.h>
 #import "Constants.h"
-#import "NSInvocation+addition.h"
 #import "headers.h"
