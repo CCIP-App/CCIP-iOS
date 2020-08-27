@@ -204,7 +204,6 @@
 		284602DD1F121BBB00F512A3 /* LaunchScreen@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@1x.png"; sourceTree = "<group>"; };
 		284602DE1F121BBB00F512A3 /* LaunchScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@2x.png"; sourceTree = "<group>"; };
 		284602DF1F121BBB00F512A3 /* LaunchScreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@3x.png"; sourceTree = "<group>"; };
-		286D5FC51D6BD8EC005B6619 /* headers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = headers.h; sourceTree = "<group>"; };
 		288D3A741D599A1200E4E3A6 /* CHANGELOG.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.txt; sourceTree = "<group>"; };
 		288D3A751D599A1200E4E3A6 /* LICENSE-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-2.0.txt"; sourceTree = "<group>"; };
 		288D3A761D599A1200E4E3A6 /* ScanditBarcodeScanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ScanditBarcodeScanner.framework; sourceTree = "<group>"; };
@@ -486,15 +485,6 @@
 			path = OPass;
 			sourceTree = "<group>";
 		};
-		6B4FCB0F218EC1B30005469F /* legacy */ = {
-			isa = PBXGroup;
-			children = (
-				6B4FCB18218ECE070005469F /* Constants.h */,
-				6B4FCB19218ECE070005469F /* Constants.m */,
-			);
-			path = legacy;
-			sourceTree = "<group>";
-		};
 		6B50993422B7DC5300FD048F /* OPassAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,20 +589,20 @@
 		6BFB831D1F2B188A005DCF00 /* Class+addition */ = {
 			isa = PBXGroup;
 			children = (
-				286D5FC51D6BD8EC005B6619 /* headers.h */,
-				6BC3820E223D627900685D00 /* UIImpactFeedback.swift */,
-				6B50993422B7DC5300FD048F /* OPassAPI */,
+				6B4FCB18218ECE070005469F /* Constants.h */,
+				6B4FCB19218ECE070005469F /* Constants.m */,
 				6B4FCB23218F79CB0005469F /* Constants.swift */,
+				6B50993422B7DC5300FD048F /* OPassAPI */,
 				6BE4B8F0222ADB7B005F8B95 /* NEHotspot.swift */,
 				6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */,
 				6B4FCB1D218F5D630005469F /* OPassWebViewController.swift */,
 				6BEB310C1F262EF30050759D /* EFQRCode+Ext.swift */,
 				6BE8A22D220E11160035CFD8 /* JSONSerialization+Ext.swift */,
-				6B4FCB0F218EC1B30005469F /* legacy */,
 				6B50EA312169377E000CC757 /* UIAlertController+additional.swift */,
 				6B4FCB1F218F65D30005469F /* NSObject+className.swift */,
 				6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */,
 				6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */,
+				6BC3820E223D627900685D00 /* UIImpactFeedback.swift */,
 				6B4FCB10218EC2380005469F /* UIImage+addition.swift */,
 				6B4FCB12218EC5330005469F /* UIColor+addition.swift */,
 				6B4FCB14218ECACD0005469F /* UISegmentedControl+addition.swift */,
