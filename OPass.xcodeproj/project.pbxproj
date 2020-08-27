@@ -46,7 +46,6 @@
 		6B0C6C9122AD4A2C003E7617 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C6C9022AD4A2C003E7617 /* SessionViewController.swift */; };
 		6B0C6C9322AD55F6003E7617 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C6C9222AD55F6003E7617 /* SessionTableViewCell.swift */; };
 		6B0D366822BDE6B0007B754D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D366722BDE6B0007B754D /* AppDelegate.swift */; };
-		6B10CE8E1F29988100EB98F2 /* WebViewAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */; };
 		6B153B9922B13F6800C1632D /* SessionViewPagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B153B9822B13F6700C1632D /* SessionViewPagerController.swift */; };
 		6B153B9B22B176D000C1632D /* SessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B153B9A22B176D000C1632D /* SessionTableViewController.swift */; };
 		6B153B9D22B1946A00C1632D /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B153B9C22B1946A00C1632D /* SessionDetailViewController.swift */; };
@@ -58,6 +57,7 @@
 		6B2F9E471D4D18F100047F38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2F9E461D4D18F100047F38 /* QuartzCore.framework */; };
 		6B49F1411F2548C600686C27 /* OPass-Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6BCAC0271F1A8FC100032096 /* OPass-Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6B4D940924F4A34A00F8D0BD /* InternalConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D940824F4A34A00F8D0BD /* InternalConfigView.swift */; };
+		6B4D940F24F803EB00F8D0BD /* WebViewAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B4D940E24F803EB00F8D0BD /* WebViewAssets.bundle */; };
 		6B4FCB02218E30B10005469F /* NSObject+DeepCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */; };
 		6B4FCB04218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */; };
 		6B4FCB06218E521C0005469F /* UIApplication+addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FCB05218E521C0005469F /* UIApplication+addition.swift */; };
@@ -124,7 +124,6 @@
 		6BE8A22C220DF0210035CFD8 /* NSString+StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8A22B220DF0210035CFD8 /* NSString+StringExt.swift */; };
 		6BE8A22E220E11160035CFD8 /* JSONSerialization+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8A22D220E11160035CFD8 /* JSONSerialization+Ext.swift */; };
 		6BEB310D1F262EF30050759D /* EFQRCode+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEB310C1F262EF30050759D /* EFQRCode+Ext.swift */; };
-		6BEB31151F26656B0050759D /* Maps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BEB31141F26656B0050759D /* Maps.bundle */; };
 		6BF331501F2991C4004BEEA6 /* PassAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */; };
 		6BF331521F299207004BEEA6 /* AssetsUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BF331511F299207004BEEA6 /* AssetsUI.bundle */; };
 		6C7C1B5144B676A0DFDA690C /* Pods_OPass_Notification_Service.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 892BD4AFE92612F68FEC0610 /* Pods_OPass_Notification_Service.framework */; };
@@ -240,7 +239,6 @@
 		6B0C6C9022AD4A2C003E7617 /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
 		6B0C6C9222AD55F6003E7617 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		6B0D366722BDE6B0007B754D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WebViewAssets.bundle; sourceTree = "<group>"; };
 		6B153B9822B13F6700C1632D /* SessionViewPagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewPagerController.swift; sourceTree = "<group>"; };
 		6B153B9A22B176D000C1632D /* SessionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewController.swift; sourceTree = "<group>"; };
 		6B153B9C22B1946A00C1632D /* SessionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +253,7 @@
 		6B2CD5991D2886C900793194 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6B2F9E461D4D18F100047F38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6B4D940824F4A34A00F8D0BD /* InternalConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalConfigView.swift; sourceTree = "<group>"; };
+		6B4D940E24F803EB00F8D0BD /* WebViewAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WebViewAssets.bundle; sourceTree = "<group>"; };
 		6B4FCB01218E30B00005469F /* NSObject+DeepCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+DeepCopy.swift"; sourceTree = "<group>"; };
 		6B4FCB03218E47200005469F /* NSObject+ValueForKeyPathWithIndexes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ValueForKeyPathWithIndexes.swift"; sourceTree = "<group>"; };
 		6B4FCB05218E521C0005469F /* UIApplication+addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+addition.swift"; sourceTree = "<group>"; };
@@ -335,7 +334,6 @@
 		6BE8A22B220DF0210035CFD8 /* NSString+StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+StringExt.swift"; sourceTree = "<group>"; };
 		6BE8A22D220E11160035CFD8 /* JSONSerialization+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONSerialization+Ext.swift"; sourceTree = "<group>"; };
 		6BEB310C1F262EF30050759D /* EFQRCode+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EFQRCode+Ext.swift"; sourceTree = "<group>"; };
-		6BEB31141F26656B0050759D /* Maps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Maps.bundle; sourceTree = "<group>"; };
 		6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PassAssets.bundle; sourceTree = "<group>"; };
 		6BF331511F299207004BEEA6 /* AssetsUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AssetsUI.bundle; sourceTree = "<group>"; };
 		6F0EA2CF879AB2AB4CA09023 /* Pods_OPass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OPass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -476,12 +474,14 @@
 			isa = PBXGroup;
 			children = (
 				6BD8EF391D1D73510094BE95 /* Assets.xcassets */,
+				6B76DF6320B019B200EBEF06 /* config.plist */,
 				6B0B84D01D2B860D00DE18B0 /* InfoPlist.strings */,
 				6B2CD5971D2886C900793194 /* Localizable.strings */,
-				5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */,
+				6B036B8F1F24371600D5E5A5 /* Settings.bundle */,
 				6BF3314F1F2991C4004BEEA6 /* PassAssets.bundle */,
 				6BF331511F299207004BEEA6 /* AssetsUI.bundle */,
-				6BEB31141F26656B0050759D /* Maps.bundle */,
+				6B4D940E24F803EB00F8D0BD /* WebViewAssets.bundle */,
+				5F67CE171D1EB54200B9DAA9 /* GoogleService-Info.plist */,
 				284602DD1F121BBB00F512A3 /* LaunchScreen@1x.png */,
 				284602DE1F121BBB00F512A3 /* LaunchScreen@2x.png */,
 				284602DF1F121BBB00F512A3 /* LaunchScreen@3x.png */,
@@ -728,15 +728,12 @@
 			children = (
 				6B023A7E2046FA4400F474F3 /* OPass */,
 				288D3A731D599A1200E4E3A6 /* ScanditSDK */,
-				6B10CE8D1F29988100EB98F2 /* WebViewAssets.bundle */,
-				6B036B8F1F24371600D5E5A5 /* Settings.bundle */,
 				6B023A9A20470F4B00F474F3 /* Info.plist */,
 				6BB0B6091F1A74DF00AEB437 /* OPass.entitlements */,
 				6BB55CAB1F242EC7007BC840 /* OPass-Build.sh */,
 				6B9348AE1F2428A300F77757 /* OPass.xcconfig */,
 				6B2AEB7C1F23FF6F00C65868 /* OPass.debug.xcconfig */,
 				6B2AEB7B1F23FF6F00C65868 /* OPass.release.xcconfig */,
-				6B76DF6320B019B200EBEF06 /* config.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -922,7 +919,7 @@
 				4F5E01AC22FD655500D0D4E8 /* Announce.storyboard in Resources */,
 				280774D21F1AD8D300A5B994 /* SessionTableViewCell.xib in Resources */,
 				288D3A7B1D599AE000E4E3A6 /* ScanditBarcodeScanner.bundle in Resources */,
-				6BEB31151F26656B0050759D /* Maps.bundle in Resources */,
+				6B4D940F24F803EB00F8D0BD /* WebViewAssets.bundle in Resources */,
 				6B5C3EC822AC2EFC002B7982 /* LaunchScreen.storyboard in Resources */,
 				6B036B901F24371700D5E5A5 /* Settings.bundle in Resources */,
 				6B76DF6420B019B200EBEF06 /* config.plist in Resources */,
@@ -937,7 +934,6 @@
 				6BF331521F299207004BEEA6 /* AssetsUI.bundle in Resources */,
 				6B9A279A222B00C300E8463E /* OPassEventCell.xib in Resources */,
 				6B0B84CE1D2B860D00DE18B0 /* InfoPlist.strings in Resources */,
-				6B10CE8E1F29988100EB98F2 /* WebViewAssets.bundle in Resources */,
 				6BF331501F2991C4004BEEA6 /* PassAssets.bundle in Resources */,
 				5F75A479AF13F31C57E574C7 /* Pods-OPass-metadata.plist in Resources */,
 				1424C2022250FC7100D36266 /* Session.storyboard in Resources */,

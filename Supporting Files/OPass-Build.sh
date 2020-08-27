@@ -2,9 +2,10 @@
 
 export MAIN_VERSION=3.0
 export GIT_COMMITS=$(($(git rev-list --all --count) + 1))
-export SETTINGS_FILE="${PROJECT_DIR}/Supporting Files/Settings.bundle/Root.plist"
-export SETTINGS_FILE_TEMPLATE="${PROJECT_DIR}/Supporting Files/Settings.bundle/Root-blank.plist"
-export APP_FLAGS_FILE="${PROJECT_DIR}/Supporting Files/Settings.bundle/AppFlags.plist"
+export SETTINGS_BUNDLE="${PROJECT_DIR}/Supporting Files/OPass/Settings.bundle"
+export SETTINGS_FILE="${SETTINGS_BUNDLE}/Root.plist"
+export SETTINGS_FILE_TEMPLATE="${SETTINGS_BUNDLE}/Root-blank.plist"
+export APP_FLAGS_FILE="${SETTINGS_BUNDLE}/AppFlags.plist"
 
 cp "${SETTINGS_FILE_TEMPLATE}" "${SETTINGS_FILE}"
 
