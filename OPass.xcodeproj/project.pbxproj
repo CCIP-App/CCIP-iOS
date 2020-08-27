@@ -421,10 +421,10 @@
 			children = (
 				6B5C3EC722AC2EFB002B7982 /* LaunchScreen.storyboard */,
 				1424C2002250FC7100D36266 /* Main.storyboard */,
-				4F5E01AD22FD66D400D0D4E8 /* IRC.storyboard */,
-				4F5E01AB22FD655500D0D4E8 /* Announce.storyboard */,
 				4F5E01A922FD644400D0D4E8 /* Checkin.storyboard */,
 				1424C1FF2250FC7100D36266 /* Session.storyboard */,
+				4F5E01AB22FD655500D0D4E8 /* Announce.storyboard */,
+				4F5E01AD22FD66D400D0D4E8 /* IRC.storyboard */,
 				1424C1FE2250FC7100D36266 /* More.storyboard */,
 			);
 			path = Storyboard;
