@@ -58,30 +58,6 @@ class CheckinCardView: UIView {
         return _scenario
     }
 
-    func buttonUpdate(_ intermediate: (() -> Void)?, _ completeion: (() -> Void)?, _ cleanup: (() -> Void)?) {
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.75, animations: {
-                intermediate?()
-            }) { finished in
-                if finished {
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + (DispatchTimeInterval.milliseconds(Int(750)))) {
-                        UIView.animate(withDuration: 0.75, animations: {
-                            completeion?()
-                        }) { finished in
-                            if finished {
-                                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + (DispatchTimeInterval.milliseconds(Int(750)))) {
-                                    UIView.animate(withDuration: 0.75) {
-                                        cleanup?()
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     @IBAction func checkinBtnTouched(_ sender: Any) {
         var ac: UIAlertController? = nil
         var feedbackType: UIImpactFeedbackType? = UIImpactFeedbackType(rawValue: 0)
@@ -93,7 +69,7 @@ class CheckinCardView: UIView {
         let use = {
             if (self.scenario?.Used != nil) {
                 self.showCountdown()
-                self.buttonUpdate({
+                OPassAPI.buttonStyleUpdate({
                     self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor.CheckinButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                 }, {
                     self.checkinBtn?.setGradientColor(from: Constants.appConfigColor.UsedButtonLeftColor, to: Constants.appConfigColor.UsedButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
@@ -105,7 +81,7 @@ class CheckinCardView: UIView {
                             let _ = self.updateScenario((status).Scenarios)
                         }
                         self.showCountdown()
-                        self.buttonUpdate({
+                        OPassAPI.buttonStyleUpdate({
                             self.checkinBtn?.setGradientColor(from: Constants.appConfigColor.DisabledButtonLeftColor, to: Constants.appConfigColor.DisabledButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                         }, nil, nil)
                         if isCheckin {
@@ -136,18 +112,18 @@ class CheckinCardView: UIView {
                             NSLog("msg: \(msg)")
                             switch (msg) {
                             case "invalid token":
-                                self.buttonUpdate({
+                                OPassAPI.buttonStyleUpdate({
                                     self.checkinBtn?.setGradientColor(from: .red, to: Constants.appConfigColor.CheckinButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                                 }, nil, nil)
                             case "has been used":
                                 self.showCountdown()
-                                self.buttonUpdate({
+                                OPassAPI.buttonStyleUpdate({
                                     self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor.CheckinButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                                 }, {
                                     self.checkinBtn?.setGradientColor(from: Constants.appConfigColor.UsedButtonLeftColor, to: Constants.appConfigColor.UsedButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                                 }, nil)
                             case "link expired/not available now":
-                                self.buttonUpdate({
+                                OPassAPI.buttonStyleUpdate({
                                     self.checkinBtn?.setGradientColor(from: .orange, to: Constants.appConfigColor.CheckinButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
                                 }, {
                                     self.checkinBtn?.setGradientColor(from: Constants.appConfigColor.CheckinButtonLeftColor, to: Constants.appConfigColor.CheckinButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))

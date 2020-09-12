@@ -125,4 +125,29 @@ class OPassAPI: NSObject {
             UICKeyChainStore.setString(newValue, forKey: LAST_EVENT_ID)
         }
     }
+
+    static func buttonStyleUpdate(_ intermediate: (() -> Void)?, _ completeion: (() -> Void)?, _ cleanup: (() -> Void)?) {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.75, animations: {
+                intermediate?()
+            }) { finished in
+                if finished {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + (DispatchTimeInterval.milliseconds(Int(750)))) {
+                        UIView.animate(withDuration: 0.75, animations: {
+                            completeion?()
+                        }) { finished in
+                            if finished {
+                                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + (DispatchTimeInterval.milliseconds(Int(750)))) {
+                                    UIView.animate(withDuration: 0.75) {
+                                        cleanup?()
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }

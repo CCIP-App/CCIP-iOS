@@ -232,24 +232,38 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pgR-N6-O8I">
-                                        <rect key="frame" x="10" y="312" width="354" height="354"/>
+                                        <rect key="frame" x="40" y="312" width="294" height="294"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="pgR-N6-O8I" secondAttribute="height" multiplier="1:1" id="KIg-FL-LON"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoS-us-FGi">
+                                        <rect key="frame" x="254" y="656" width="100" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="XuD-1t-HFb"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="kEU-C8-YD5"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="logoutAction:" destination="Z9r-eB-0uD" eventType="touchUpInside" id="Aj0-om-bhz"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="pgR-N6-O8I" secondAttribute="bottom" constant="50" id="2EX-Xe-rDf"/>
+                                    <constraint firstItem="AoS-us-FGi" firstAttribute="top" relation="lessThanOrEqual" secondItem="pgR-N6-O8I" secondAttribute="bottom" constant="50" id="2V1-Yl-PXr"/>
+                                    <constraint firstItem="AoS-us-FGi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pgR-N6-O8I" secondAttribute="bottom" constant="5" id="6WY-R4-uc0"/>
+                                    <constraint firstAttribute="bottom" secondItem="AoS-us-FGi" secondAttribute="bottom" constant="20" id="6ne-4g-c3I"/>
                                     <constraint firstItem="pgR-N6-O8I" firstAttribute="centerX" secondItem="gyd-P0-Jtp" secondAttribute="centerX" id="Ax2-vv-QOn"/>
                                     <constraint firstItem="pgR-N6-O8I" firstAttribute="top" relation="lessThanOrEqual" secondItem="tIu-hV-5Zn" secondAttribute="bottom" constant="50" id="FoU-Jr-MpD"/>
+                                    <constraint firstItem="AoS-us-FGi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gyd-P0-Jtp" secondAttribute="leading" constant="20" id="Kht-ih-Gw0"/>
                                     <constraint firstItem="tIu-hV-5Zn" firstAttribute="top" relation="lessThanOrEqual" secondItem="gyd-P0-Jtp" secondAttribute="top" constant="50" id="Lgg-dK-dWD"/>
-                                    <constraint firstItem="pgR-N6-O8I" firstAttribute="width" relation="lessThanOrEqual" secondItem="gyd-P0-Jtp" secondAttribute="width" constant="-20" id="Qtl-Sn-4sa"/>
+                                    <constraint firstItem="pgR-N6-O8I" firstAttribute="width" relation="lessThanOrEqual" secondItem="gyd-P0-Jtp" secondAttribute="width" constant="-80" id="Qtl-Sn-4sa"/>
                                     <constraint firstItem="pgR-N6-O8I" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tIu-hV-5Zn" secondAttribute="bottom" constant="5" id="UqO-qr-DFb"/>
                                     <constraint firstItem="tIu-hV-5Zn" firstAttribute="width" secondItem="gyd-P0-Jtp" secondAttribute="width" constant="-40" id="WN3-B1-hdr"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="pgR-N6-O8I" secondAttribute="bottom" id="dHK-jG-h62"/>
                                     <constraint firstItem="tIu-hV-5Zn" firstAttribute="centerX" secondItem="gyd-P0-Jtp" secondAttribute="centerX" id="gW6-uh-S3P"/>
                                     <constraint firstItem="tIu-hV-5Zn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gyd-P0-Jtp" secondAttribute="top" id="hLW-0A-bNP"/>
+                                    <constraint firstAttribute="trailing" secondItem="AoS-us-FGi" secondAttribute="trailing" constant="20" id="oSo-CQ-qHD"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -263,6 +277,7 @@
                         <viewLayoutGuide key="safeArea" id="8AG-m0-j8j"/>
                     </view>
                     <connections>
+                        <outlet property="btnLogout" destination="AoS-us-FGi" id="lgl-VO-0dG"/>
                         <outlet property="ivQRCode" destination="pgR-N6-O8I" id="N1I-SB-9Aj"/>
                         <outlet property="lbNotice" destination="tIu-hV-5Zn" id="96E-Bo-FdT"/>
                         <segue destination="lsD-DG-AMx" kind="show" identifier="ShowGuide" id="0fE-kE-LX6"/>
@@ -270,7 +285,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="paI-oh-5zM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4771" y="1965"/>
+            <point key="canvasLocation" x="4769.5652173913049" y="1964.6739130434785"/>
         </scene>
         <!--GuideViewController-->
         <scene sceneID="u1F-wy-LT7">

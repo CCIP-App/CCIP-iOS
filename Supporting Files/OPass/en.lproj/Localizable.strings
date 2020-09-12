@@ -47,6 +47,7 @@
 "Addition" = "Addition";
 "TicketNotice" = "Please keep your ticket secretly and carefully, only shows for our staff or in booth event";
 "TicketNonExistNotice" = "Your Ticket not import into OPass, please try again after import !";
+"TicketLogout" = "Logout";
 "Acknowledgements" = "Developers";
 "Contributions" = "Contributors";
 "Libraries" = "Open Source Libraries";

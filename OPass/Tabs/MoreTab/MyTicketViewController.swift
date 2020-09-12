@@ -8,11 +8,13 @@
 
 import Foundation
 import UIKit
+import AudioToolbox
 import EFQRCode
 
 class MyTicketViewController: UIViewController {
-    @IBOutlet var lbNotice: UILabel?
-    @IBOutlet var ivQRCode: UIImageView?
+    @IBOutlet var lbNotice: UILabel!
+    @IBOutlet var ivQRCode: UIImageView!
+    @IBOutlet var btnLogout: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,7 @@ class MyTicketViewController: UIViewController {
         guard let titles = title.split(separator: "\t").last else { return }
         self.navigationItem.title = titles.trim()
         var noticeText: String = NSLocalizedString("TicketNonExistNotice", comment: "")
+        var logoutTitle: String = NSLocalizedString("TicketLogout", comment: "")
         if (Constants.haveAccessToken) {
             guard let token = Constants.accessToken else { return }
             guard let size = self.ivQRCode?.frame.size else { return }
@@ -32,12 +35,20 @@ class MyTicketViewController: UIViewController {
                     watermark: nil
                 ) {
                 let qrImage = UIImage.init(cgImage: QRImage)
-                self.ivQRCode?.image = qrImage;
+                self.ivQRCode.image = qrImage;
                 noticeText = NSLocalizedString("TicketNotice", comment: "")
             }
+        } else {
+            logoutTitle = ""
         }
-        self.lbNotice?.text = noticeText
-        self.lbNotice?.textColor = Constants.appConfigColor.CardTextColor
+        self.lbNotice.text = noticeText
+        self.lbNotice.textColor = Constants.appConfigColor.CardTextColor
+        self.btnLogout.setTitle(logoutTitle, for: .normal)
+        self.btnLogout.setGradientColor(from: Constants.appConfigColor.RedeemButtonLeftColor, to: Constants.appConfigColor.RedeemButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+        self.btnLogout.isHidden = logoutTitle.count == 0
+        guard let layer = self.btnLogout.layer.sublayers?.first else { return }
+        layer.cornerRadius = self.btnLogout.frame.size.height / 2
+        self.btnLogout.layer.cornerRadius = self.btnLogout.frame.size.height / 2
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -51,5 +62,19 @@ class MyTicketViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func logoutAction(_ sender: Any) {
+        OPassAPI.buttonStyleUpdate({
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            self.btnLogout.setGradientColor(from: .orange, to: Constants.appConfigColor.CheckinButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+        }, {
+            self.btnLogout.setGradientColor(from: Constants.appConfigColor.UsedButtonLeftColor, to: Constants.appConfigColor.UsedButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+        }, {
+            OPassAPI.isLoginSession = false
+            OPassAPI.userInfo = nil
+            Constants.accessToken = ""
+            self.dismiss(animated: true, completion: nil)
+        })
     }
 }
