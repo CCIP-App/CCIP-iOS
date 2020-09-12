@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JPa-iH-gLa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JPa-iH-gLa">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -265,11 +265,22 @@
                     <connections>
                         <outlet property="ivQRCode" destination="pgR-N6-O8I" id="N1I-SB-9Aj"/>
                         <outlet property="lbNotice" destination="tIu-hV-5Zn" id="96E-Bo-FdT"/>
+                        <segue destination="lsD-DG-AMx" kind="show" identifier="ShowGuide" id="0fE-kE-LX6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="paI-oh-5zM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4771" y="1965"/>
+        </scene>
+        <!--GuideViewController-->
+        <scene sceneID="u1F-wy-LT7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Checkin" referencedIdentifier="GuideViewController" id="lsD-DG-AMx" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1zB-4f-V34"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AIe-Xf-ADa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4770" y="2617"/>
         </scene>
         <!--Acknowledgements View Controller-->
         <scene sceneID="KU7-LC-zhu">

@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Xx-bx-CvE">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Xx-bx-CvE">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -158,7 +155,7 @@
         <!--Guide View Controller-->
         <scene sceneID="lMV-v9-8VF">
             <objects>
-                <viewController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="overCurrentContext" id="VKq-4v-Yvp" customClass="GuideViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GuideViewController" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="overCurrentContext" id="VKq-4v-Yvp" customClass="GuideViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="7ZP-Wx-GSU">
                         <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -179,8 +176,8 @@
                                                 <blurEffect style="light"/>
                                             </vibrancyEffect>
                                         </visualEffectView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nug-PN-SE0">
-                                            <rect key="frame" x="52.5" y="0.0" width="315" height="290"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nug-PN-SE0">
+                                            <rect key="frame" x="52.5" y="0.0" width="315" height="261"/>
                                             <string key="text">Please reference your attendee detail information, and your will found your access token.
 
 Please copy and paste the token into next field or click the token link in the reference mail.</string>
@@ -188,14 +185,14 @@ Please copy and paste the token into next field or click the token link in the r
                                             <color key="textColor" red="0.2901606559753418" green="0.29021644592285156" blue="0.29015710949897766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="• • •" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZF-gg-GiD">
-                                            <rect key="frame" x="0.0" y="325" width="420" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="• • •" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZF-gg-GiD">
+                                            <rect key="frame" x="0.0" y="296" width="420" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Here ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N3c-1x-If0">
-                                            <rect key="frame" x="60" y="362" width="300" height="30"/>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token Here ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N3c-1x-If0">
+                                            <rect key="frame" x="60" y="333" width="300" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="Kgw-cW-3Gf"/>
                                                 <constraint firstAttribute="width" constant="300" id="dnP-Fr-JuI"/>
@@ -207,8 +204,8 @@ Please copy and paste the token into next field or click the token link in the r
                                                 <outlet property="delegate" destination="VKq-4v-Yvp" id="k2G-pz-ly6"/>
                                             </connections>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8w3-iH-STq">
-                                            <rect key="frame" x="60" y="402" width="300" height="45"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8w3-iH-STq">
+                                            <rect key="frame" x="60" y="373" width="300" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="300" id="8hu-v4-MyY"/>
                                                 <constraint firstAttribute="height" constant="45" id="FSR-OA-U65"/>
@@ -230,6 +227,7 @@ Please copy and paste the token into next field or click the token link in the r
                                         <constraint firstItem="8w3-iH-STq" firstAttribute="top" secondItem="N3c-1x-If0" secondAttribute="bottom" constant="10" id="Y6X-Aj-sTx"/>
                                         <constraint firstItem="hQW-Em-vct" firstAttribute="top" secondItem="pBJ-Cx-2mH" secondAttribute="top" id="cX9-HQ-4Eh"/>
                                         <constraint firstItem="lZF-gg-GiD" firstAttribute="width" secondItem="pBJ-Cx-2mH" secondAttribute="width" id="e3N-ej-Mkf"/>
+                                        <constraint firstItem="nug-PN-SE0" firstAttribute="top" secondItem="hQW-Em-vct" secondAttribute="top" id="evS-eK-Ldl"/>
                                         <constraint firstItem="lZF-gg-GiD" firstAttribute="top" secondItem="nug-PN-SE0" secondAttribute="bottom" constant="35" id="iEk-rm-GGa"/>
                                         <constraint firstAttribute="trailing" secondItem="hQW-Em-vct" secondAttribute="trailing" id="jlZ-SY-L3H"/>
                                         <constraint firstItem="8w3-iH-STq" firstAttribute="centerX" secondItem="nug-PN-SE0" secondAttribute="centerX" id="q3W-NT-1Ha"/>
@@ -271,7 +269,7 @@ Please copy and paste the token into next field or click the token link in the r
             </objects>
             <point key="canvasLocation" x="49" y="1965"/>
         </scene>
-        <!--Data Source-->
+        <!--Checkin View Controller-->
         <scene sceneID="s5H-mK-055">
             <objects>
                 <viewController storyboardIdentifier="CheckinViewController" id="6Xx-bx-CvE" customClass="CheckinViewController" customModule="OPass" customModuleProvider="target" sceneMemberID="viewController">

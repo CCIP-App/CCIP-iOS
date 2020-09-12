@@ -40,6 +40,14 @@ class MyTicketViewController: UIViewController {
         self.lbNotice?.textColor = Constants.appConfigColor.CardTextColor
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if (!Constants.haveAccessToken) {
+            self.performSegue(withIdentifier: "ShowGuide", sender: nil)
+        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
