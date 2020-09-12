@@ -53,6 +53,13 @@
 "InternalConfig" = "內部設定";
 "Introduction" = "簡介";
 "Speaker" = "講師";
+"Session_Language" = "語言";
+"Session_Slide" = "簡報";
+"Session_Live" = "直播";
+"Session_Record" = "記錄";
+"Session_Broadcast" = "直播";
+"Session_CoWrite" = "共筆";
+"Session_QA" = "QA";
 "GuideViewMessage" = "請透過行前通知內的連結開啟此應用程式\n\n您也可以點擊右上角打開相機掃描售票系統提供的 QR Code";
 "GuideViewButton" = "使用";
 "GuideViewTokenErrorTitle" = "錯誤的驗證碼";

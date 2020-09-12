@@ -92,15 +92,22 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, FSPage
         self.downView?.append("<script>const mdLoaded = () => {Array.from(document.querySelectorAll('a[href]')).map(n => n.style.color='');}</script>\n\n")
 
         var metatable = ""
-        if let lang = self.session?.Language {
-            metatable += lang.count > 0 ? "<tr><td>Lang</td><td>\(lang)</td></tr>" : ""
+        func meta(_ mData: String?, _ langKey: String?) {
+            if let mData = mData {
+                var lang = ""
+                if let l = langKey {
+                    lang = NSLocalizedString("Session_\(l)", comment: "")
+                }
+                metatable += mData.count > 0 ? "<tr><td>\(lang)</td><td>\(mData)</td></tr>" : ""
+            }
         }
-        if let broadcast = self.session?.Broadcast {
-            metatable += broadcast.count > 0 ? "<tr><td>Broadcast</td><td>\(broadcast)</td></tr>" : ""
-        }
-        if let cowrite = self.session?.CoWrite {
-            metatable += cowrite.count > 0 ? "<tr><td>CoWrite</td><td>\(cowrite)</td></tr>" : ""
-        }
+        meta(self.session?.Language, "Language")
+        meta(self.session?.Slide, "Slide")
+        meta(self.session?.Live, "Live")
+        meta(self.session?.Record, "Record")
+        meta(self.session?.Broadcast, "Broadcast")
+        meta(self.session?.CoWrite, "CoWrite")
+        meta(self.session?.QA, "QA")
         if metatable.count > 0 {
             self.downView?.append("<table id=\"meta\">\(metatable)</table>\n\n---\n\n")
         }

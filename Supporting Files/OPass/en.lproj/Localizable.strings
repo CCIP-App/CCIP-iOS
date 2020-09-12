@@ -53,6 +53,13 @@
 "InternalConfig" = "Internal Config";
 "Introduction" = "Introduction";
 "Speaker" = "Speaker";
+"Session_Language" = "Language";
+"Session_Slide" = "Slide";
+"Session_Live" = "Live";
+"Session_Record" = "Record";
+"Session_Broadcast" = "Broadcast";
+"Session_CoWrite" = "CoWrite";
+"Session_QA" = "QA";
 "GuideViewMessage" = "Please reference your attendee detail information, and you will find your access token.\n\nPlease copy and paste the token into next text field or click the token link in the reference mail.";
 "GuideViewButton" = "REDEEM";
 "GuideViewTokenErrorTitle" = "Wrong Redeem Token";
