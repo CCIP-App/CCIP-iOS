@@ -48,6 +48,8 @@
 "TicketNotice" = "Please keep your ticket secretly and carefully, only shows for our staff or in booth event";
 "TicketNonExistNotice" = "Your Ticket not import into OPass, please try again after import !";
 "TicketLogout" = "Logout";
+"TicketLogoutWarning" = "Are you sure logout ?";
+"TicketLogoutWarningDesc" = "You might need rescan QRCode or relogin by link again to use full features for this event.";
 "Acknowledgements" = "Developers";
 "Contributions" = "Contributors";
 "Libraries" = "Open Source Libraries";

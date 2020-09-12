@@ -65,16 +65,22 @@ class MyTicketViewController: UIViewController {
     }
 
     @IBAction func logoutAction(_ sender: Any) {
-        OPassAPI.buttonStyleUpdate({
+        let ac = UIAlertController.alertOfTitle(NSLocalizedString("TicketLogoutWarning", comment: ""), withMessage: NSLocalizedString("TicketLogoutWarningDesc", comment: ""), cancelButtonText: NSLocalizedString("Cancel", comment: ""), cancelStyle: .cancel) { _ in
+        }
+        ac.addActionButton(NSLocalizedString("Okay", comment: ""), style: .destructive) { _ in
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-            self.btnLogout.setGradientColor(from: .orange, to: Constants.appConfigColor.CheckinButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
-        }, {
-            self.btnLogout.setGradientColor(from: Constants.appConfigColor.UsedButtonLeftColor, to: Constants.appConfigColor.UsedButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
-        }, {
             OPassAPI.isLoginSession = false
             OPassAPI.userInfo = nil
             Constants.accessToken = ""
             self.dismiss(animated: true, completion: nil)
-        })
+        }
+        ac.showAlert {
+            UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
+            OPassAPI.buttonStyleUpdate({
+                self.btnLogout.setGradientColor(from: .orange, to: Constants.appConfigColor.CheckinButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+            }, {
+                self.btnLogout.setGradientColor(from: Constants.appConfigColor.UsedButtonLeftColor, to: Constants.appConfigColor.UsedButtonRightColor, startPoint: CGPoint(x: 0.2, y: 0.8), toPoint: CGPoint(x: 1, y: 0.5))
+            }, nil)
+        }
     }
 }
