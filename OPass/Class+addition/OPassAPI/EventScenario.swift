@@ -106,34 +106,34 @@ extension OPassAPI {
             Constants.accessToken = ""
             OPassAPI.InitializeRequest(Constants.URL_LANDING(token: token)) { _, _, error, _ in
                 completion?(false, nil, error)
-                }.then { (obj: Any?) -> Void in
-                    if let o = obj {
-                        if obj != nil {
-                            switch String(describing: type(of: o)) {
-                            case OPassNonSuccessDataResponse.className:
-                                if let sr = o as? OPassNonSuccessDataResponse {
-                                    if let response = sr.Response {
-                                        switch response.statusCode {
-                                        case 400:
-                                            completion?(false, sr, NSError(domain: "OPass Redeem Code Invalid", code: 4, userInfo: nil))
-                                            break
-                                        default:
-                                            completion?(false, sr, NSError(domain: "OPass Redeem Code Invalid", code: 4, userInfo: nil))
-                                        }
+            }.then { (obj: Any?) -> Void in
+                if let o = obj {
+                    if obj != nil {
+                        switch String(describing: type(of: o)) {
+                        case OPassNonSuccessDataResponse.className:
+                            if let sr = o as? OPassNonSuccessDataResponse {
+                                if let response = sr.Response {
+                                    switch response.statusCode {
+                                    case 400:
+                                        completion?(false, sr, NSError(domain: "OPass Redeem Code Invalid", code: 4, userInfo: nil))
+                                        break
+                                    default:
+                                        completion?(false, sr, NSError(domain: "OPass Redeem Code Invalid", code: 4, userInfo: nil))
                                     }
                                 }
-                                break
-                            default:
-                                let landing = ScenarioLanding(JSON(o))
-                                OPassAPI.isLoginSession = true
-                                Constants.accessToken = token
-                                AppDelegate.delegateInstance.checkinView?.reloadCard()
-                                completion?(true, landing, OPassSuccessError)
                             }
-                        } else {
-                            completion?(false, RawOPassData(o), NSError(domain: "OPass Redeem Code Invalid", code: 2, userInfo: nil))
+                            break
+                        default:
+                            let landing = ScenarioLanding(JSON(o))
+                            OPassAPI.isLoginSession = true
+                            Constants.accessToken = token
+                            AppDelegate.delegateInstance.checkinView?.reloadCard()
+                            completion?(true, landing, OPassSuccessError)
                         }
+                    } else {
+                        completion?(false, RawOPassData(o), NSError(domain: "OPass Redeem Code Invalid", code: 2, userInfo: nil))
                     }
+                }
             }
         } else {
             completion?(false, nil, NSError(domain: "OPass Redeem Code Invalid", code: 1, userInfo: nil))
