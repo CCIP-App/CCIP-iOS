@@ -63,6 +63,18 @@ import Foundation
 }
 
 @objc extension NSDictionary {
+    @nonobjc func ordinaryCopy(_ obj: Element, _ cKey: inout Any) {
+        if let key = obj.key as? NSObject {
+            if (key.responds(to: #selector(deepCopy))) {
+                if let deep = key.perform(#selector(deepCopy)) {
+                    cKey = deep
+                }
+            } else {
+                cKey = key.copy()
+            }
+        }
+    }
+
     @objc func deepCopy() -> NSDictionary {
         let count: UInt = UInt(self.count)
         let cDict = NSMutableDictionary(capacity: Int(count))
@@ -79,15 +91,7 @@ import Foundation
                     cObj = value.copy()
                 }
             }
-            if let key = obj.key as? NSObject {
-                if (key.responds(to: #selector(deepCopy))) {
-                    if let deep = key.perform(#selector(deepCopy)) {
-                        cKey = deep
-                    }
-                } else {
-                    cKey = key.copy()
-                }
-            }
+            self.ordinaryCopy(obj, &cKey)
             cDict[cKey] = cObj
         }
 
@@ -124,15 +128,7 @@ import Foundation
                 }
             }
             // I don't think mutable keys make much sense, so just do an ordinary copy
-            if let key = obj.key as? NSObject {
-                if (key.responds(to: #selector(deepCopy))) {
-                    if let deep = key.perform(#selector(deepCopy)) {
-                        cKey = deep
-                    }
-                } else {
-                    cKey = key.copy()
-                }
-            }
+            self.ordinaryCopy(obj, &cKey)
             cDict[cKey] = cObj
         }
 

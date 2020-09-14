@@ -87,8 +87,7 @@
 		6B50994022B7DD9300FD048F /* OPassNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50993F22B7DD9300FD048F /* OPassNotification.swift */; };
 		6B50994222B7DF2600FD048F /* EventScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50994122B7DF2600FD048F /* EventScenario.swift */; };
 		6B50994422B7E98900FD048F /* legacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50994322B7E98900FD048F /* legacy.swift */; };
-		6B50EA2C216921EB000CC757 /* EmbeddedNavigationTabBarControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2B216921EB000CC757 /* EmbeddedNavigationTabBarControllerSegue.swift */; };
-		6B50EA2E21692210000CC757 /* EmbeddedNavigationControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */; };
+		6B50EA2C216921EB000CC757 /* EmbeddedNavigationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA2B216921EB000CC757 /* EmbeddedNavigationSegue.swift */; };
 		6B50EA322169377E000CC757 /* UIAlertController+additional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B50EA312169377E000CC757 /* UIAlertController+additional.swift */; };
 		6B5AABC5220CB02400C01C54 /* MyTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5AABC4220CB02400C01C54 /* MyTicketViewController.swift */; };
 		6B5C3EC822AC2EFC002B7982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B5C3EC722AC2EFB002B7982 /* LaunchScreen.storyboard */; };
@@ -281,8 +280,7 @@
 		6B50993F22B7DD9300FD048F /* OPassNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassNotification.swift; sourceTree = "<group>"; };
 		6B50994122B7DF2600FD048F /* EventScenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventScenario.swift; sourceTree = "<group>"; };
 		6B50994322B7E98900FD048F /* legacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = legacy.swift; sourceTree = "<group>"; };
-		6B50EA2B216921EB000CC757 /* EmbeddedNavigationTabBarControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedNavigationTabBarControllerSegue.swift; sourceTree = "<group>"; };
-		6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedNavigationControllerSegue.swift; sourceTree = "<group>"; };
+		6B50EA2B216921EB000CC757 /* EmbeddedNavigationSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedNavigationSegue.swift; sourceTree = "<group>"; };
 		6B50EA312169377E000CC757 /* UIAlertController+additional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+additional.swift"; sourceTree = "<group>"; };
 		6B5AABC4220CB02400C01C54 /* MyTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTicketViewController.swift; sourceTree = "<group>"; };
 		6B5C3EC722AC2EFB002B7982 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -574,7 +572,6 @@
 				6BC12A941F2B1B8000B14039 /* OPass-Swift.h */,
 				6BC12A951F2B1B8000B14039 /* OPass-Bridging-Header.h */,
 				6BFB831D1F2B188A005DCF00 /* Class+addition */,
-				6BFB831E1F2B18A4005DCF00 /* CustomSegue */,
 				6B0D366722BDE6B0007B754D /* AppDelegate.swift */,
 				6BE4B8EC222ADA75005F8B95 /* OPassEventsController.swift */,
 				6B9A279B222B040800E8463E /* OPassEventCell.swift */,
@@ -592,6 +589,7 @@
 				6B4FCB18218ECE070005469F /* Constants.h */,
 				6B4FCB19218ECE070005469F /* Constants.m */,
 				6B4FCB23218F79CB0005469F /* Constants.swift */,
+				6BFB831E1F2B18A4005DCF00 /* CustomSegue */,
 				6B50993422B7DC5300FD048F /* OPassAPI */,
 				6BE4B8F0222ADB7B005F8B95 /* NEHotspot.swift */,
 				6B670CCC2156E00A0089C9B5 /* MarkdownView.swift */,
@@ -617,8 +615,7 @@
 		6BFB831E1F2B18A4005DCF00 /* CustomSegue */ = {
 			isa = PBXGroup;
 			children = (
-				6B50EA2B216921EB000CC757 /* EmbeddedNavigationTabBarControllerSegue.swift */,
-				6B50EA2D21692210000CC757 /* EmbeddedNavigationControllerSegue.swift */,
+				6B50EA2B216921EB000CC757 /* EmbeddedNavigationSegue.swift */,
 			);
 			path = CustomSegue;
 			sourceTree = "<group>";
@@ -1097,7 +1094,7 @@
 				6B0C6C9322AD55F6003E7617 /* SessionTableViewCell.swift in Sources */,
 				6B9A279E2231715600E8463E /* OPassAPI.swift in Sources */,
 				6BC3820F223D627900685D00 /* UIImpactFeedback.swift in Sources */,
-				6B50EA2C216921EB000CC757 /* EmbeddedNavigationTabBarControllerSegue.swift in Sources */,
+				6B50EA2C216921EB000CC757 /* EmbeddedNavigationSegue.swift in Sources */,
 				6BBAE48122B6AC3E003CBC57 /* CheckinCardView.swift in Sources */,
 				6B4FCB2C218F98840005469F /* SponsorWebViewController.swift in Sources */,
 				6B4FCB0A218E5A0F0005469F /* MoreCell.swift in Sources */,
@@ -1110,7 +1107,6 @@
 				6B4FCB0C218E5AA80005469F /* MainNavViewController.swift in Sources */,
 				6B4FCB1C218ECE9A0005469F /* UIView+addition.swift in Sources */,
 				6BE8A227220D04980035CFD8 /* MainTabBarViewController.swift in Sources */,
-				6B50EA2E21692210000CC757 /* EmbeddedNavigationControllerSegue.swift in Sources */,
 				6B50993322B6F82F00FD048F /* InvalidNetworkMessageViewController.swift in Sources */,
 				6B5AABC5220CB02400C01C54 /* MyTicketViewController.swift in Sources */,
 				6B4FCB2A218F98740005469F /* StaffWebViewController.swift in Sources */,
