@@ -263,62 +263,50 @@ import ScanditBarcodeScanner
         self.goToCard()
     }
 
-    @objc func reloadCard() {
-        if self.progress != nil {
-            self.progress?.hide(animated: true)
-        }
-        self.progress = MBProgressHUD.showAdded(to: self.view, animated: true)
-        self.progress?.mode = .indeterminate
-        self.handleQRButton()
-
-        let isHidden = !Constants.haveAccessToken
-        self.lbHi?.isHidden = isHidden
-        self.ivUserPhoto?.isHidden = isHidden
-        self.lbUserName?.isHidden = isHidden
-        self.lbUserName?.text = " "
-
-        if !Constants.haveAccessToken {
-            if self.scanditBarcodePicker == nil {
-                if !(self.presentedViewController?.isKind(of: GuideViewController.self) ?? false) {
-                    self.performSegue(withIdentifier: "ShowGuide", sender: self.cards)
-                }
-                OPassAPI.scenarios.removeAll()
-                self.reloadAndGoToCard()
+    func showGuide() {
+        if self.scanditBarcodePicker == nil {
+            if !(self.presentedViewController?.isKind(of: GuideViewController.self) ?? false) {
+                self.performSegue(withIdentifier: "ShowGuide", sender: self.cards)
             }
-        } else {
-            OPassAPI.GetCurrentStatus { success, obj, _ in
-                if success {
-                    self.hideView(.Guide, nil)
-                    if let userInfo = obj as? ScenarioStatus {
-                        OPassAPI.userInfo = userInfo
-                        OPassAPI.scenarios = OPassAPI.userInfo?.Scenarios ?? []
+            OPassAPI.scenarios.removeAll()
+            self.reloadAndGoToCard()
+        }
+    }
 
-                        let isHidden = !Constants.haveAccessToken
-                        self.lbHi?.isHidden = isHidden
-                        self.ivUserPhoto?.isHidden = isHidden
-                        self.lbUserName?.isHidden = isHidden
-                        self.lbUserName?.text = OPassAPI.userInfo?.UserId
-                        AppDelegate.sendTag("\(OPassAPI.userInfo?.EventId ?? "")\(OPassAPI.userInfo?.Role ?? "")", value: OPassAPI.userInfo?.Token ?? "")
-                        if OPassAPI.isLoginSession {
-                            AppDelegate.delegateInstance.displayGreetingsForLogin()
+    func processStatus() {
+        OPassAPI.GetCurrentStatus { success, obj, _ in
+            if success {
+                self.hideView(.Guide, nil)
+                if let userInfo = obj as? ScenarioStatus {
+                    OPassAPI.userInfo = userInfo
+                    OPassAPI.scenarios = OPassAPI.userInfo?.Scenarios ?? []
+
+                    let isHidden = !Constants.haveAccessToken
+                    self.lbHi?.isHidden = isHidden
+                    self.ivUserPhoto?.isHidden = isHidden
+                    self.lbUserName?.isHidden = isHidden
+                    self.lbUserName?.text = OPassAPI.userInfo?.UserId
+                    AppDelegate.sendTag("\(OPassAPI.userInfo?.EventId ?? "")\(OPassAPI.userInfo?.Role ?? "")", value: OPassAPI.userInfo?.Token ?? "")
+                    if OPassAPI.isLoginSession {
+                        AppDelegate.delegateInstance.displayGreetingsForLogin()
+                    }
+                    if ((OPassAPI.userInfo?.Role ?? "").count > 0) {
+                        if let info = OPassAPI.userInfo {
+                            self.cards?.isHidden = !((OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(info.Role)) ?? true)
                         }
-                        if ((OPassAPI.userInfo?.Role ?? "").count > 0) {
-                            if let info = OPassAPI.userInfo {
-                                self.cards?.isHidden = !((OPassAPI.eventInfo?.Features[OPassKnownFeatures.FastPass]?.VisibleRoles?.contains(info.Role)) ?? true)
-                            }
-                        }
-                        OPassAPI.refreshTabBar()
-                        self.reloadAndGoToCard()
                     }
-                } else {
-                    func broken(_ msg: String = "Networking_Broken") {
-                        self.performSegue(withIdentifier: "ShowInvalidNetworkMsg", sender: NSLocalizedString(msg, comment: ""))
-                    }
-                    guard let sr = obj as? OPassNonSuccessDataResponse else {
-//                        broken()
-                        return
-                    }
-                    switch (sr.Response?.statusCode) {
+                    OPassAPI.refreshTabBar()
+                    self.reloadAndGoToCard()
+                }
+            } else {
+                func broken(_ msg: String = "Networking_Broken") {
+                    self.performSegue(withIdentifier: "ShowInvalidNetworkMsg", sender: NSLocalizedString(msg, comment: ""))
+                }
+                guard let sr = obj as? OPassNonSuccessDataResponse else {
+//                    broken()
+                    return
+                }
+                switch (sr.Response?.statusCode) {
                     case 200:
                         broken("Data_Wrong")
                     case 400:
@@ -340,9 +328,29 @@ import ScanditBarcodeScanner
                         broken("Networking_WrongWiFi")
                     default:
                         broken()
-                    }
                 }
             }
+        }
+    }
+
+    @objc func reloadCard() {
+        if self.progress != nil {
+            self.progress?.hide(animated: true)
+        }
+        self.progress = MBProgressHUD.showAdded(to: self.view, animated: true)
+        self.progress?.mode = .indeterminate
+        self.handleQRButton()
+
+        let isHidden = !Constants.haveAccessToken
+        self.lbHi?.isHidden = isHidden
+        self.ivUserPhoto?.isHidden = isHidden
+        self.lbUserName?.isHidden = isHidden
+        self.lbUserName?.text = " "
+
+        if !Constants.haveAccessToken {
+            self.showGuide()
+        } else {
+            self.processStatus()
         }
     }
 

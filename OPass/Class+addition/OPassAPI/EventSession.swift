@@ -211,7 +211,7 @@ struct ProgramSpeaker: OPassData {
     }
 }
 
-struct ProgramSessionType: OPassData {
+struct OPassTagData: OPassData {
     var _data: JSON
     var Id: String
     var Name: String {
@@ -223,29 +223,9 @@ struct ProgramSessionType: OPassData {
     }
 }
 
-struct ProgramRoom: OPassData {
-    var _data: JSON
-    var Id: String
-    var Name: String {
-        return self._data[Constants.shortLangUI].dictionaryValue["name"]?.stringValue ?? ""
-    }
-    init(_ data: JSON) {
-        self._data = data
-        self.Id = self._data["id"].stringValue
-    }
-}
-
-struct ProgramsTag: OPassData {
-    var _data: JSON
-    var Id: String
-    var Name: String {
-        return self._data[Constants.shortLangUI].dictionaryValue["name"]?.stringValue ?? ""
-    }
-    init(_ data: JSON) {
-        self._data = data
-        self.Id = self._data["id"].stringValue
-    }
-}
+typealias ProgramSessionType = OPassTagData
+typealias ProgramRoom = OPassTagData
+typealias ProgramsTag = OPassTagData
 
 extension OPassAPI {
     static func GetSessionData(_ event: String, _ completion: OPassCompletionCallback) {
