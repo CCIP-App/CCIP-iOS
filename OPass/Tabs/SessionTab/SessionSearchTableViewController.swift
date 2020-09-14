@@ -152,22 +152,7 @@ class SessionSearchTableViewController: SessionTableViewController {
         self.sessionSections.removeAll()
         guard let pager = self.pagerController else { return }
         guard let programs = pager.programs else { return }
-        for session in (programs.Sessions.filter { (searchedList.contains($0.Id)) }) {
-            let startTime = Constants.DateFromString(session.Start)
-            let start = Constants.DateToDisplayTimeString(startTime)
-            if self.sessionSections.index(forKey: start) == nil {
-                self.sessionTimes.append(startTime)
-                self.sessionSections[start] = Array<String>()
-            }
-            self.sessionSections[start]?.append(session.Id)
-        }
-        self.sessionTimes.sort()
-
-        self.tableView.reloadData()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {[weak self] in
-            self?.tableView.beginUpdates()
-            self?.tableView.endUpdates()
-        }
+        self.parseSectionsAndTime(programs, self.searchedList)
     }
 
     /*

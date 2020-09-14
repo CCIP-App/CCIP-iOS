@@ -77,7 +77,11 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
         let favList = OPassAPI.GetFavoritesList(eventInfo.EventId, token)
         guard let pager = self.pagerController else { return }
         guard let programs = pager.programs else { return }
-        for session in (programs.Sessions.filter { (favList.contains($0.Id)) }) {
+        self.parseSectionsAndTime(programs, favList)
+    }
+
+    func parseSectionsAndTime(_ programs: Programs, _ list: [String]) {
+        for session in (programs.Sessions.filter { (list.contains($0.Id)) }) {
             let startTime = Constants.DateFromString(session.Start)
             let start = Constants.DateToDisplayTimeString(startTime)
             if self.sessionSections.index(forKey: start) == nil {
@@ -96,7 +100,7 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
     }
 
     func parseSearch() {
-
+        // no-op
     }
 
     // MARK: - Peek & Pop Preview
