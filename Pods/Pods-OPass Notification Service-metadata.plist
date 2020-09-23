@@ -86,7 +86,7 @@ Includes portions from BSMobileProvision:
 			<key>summary</key>
 			<string>OneSignal push notification library for mobile apps.</string>
 			<key>version</key>
-			<string>2.15.0</string>
+			<string>2.15.3</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -130,7 +130,7 @@ SOFTWARE.
 			<key>summary</key>
 			<string>A tool to enforce Swift style and conventions.</string>
 			<key>version</key>
-			<string>0.39.2</string>
+			<string>0.40.3</string>
 		</dict>
 	</array>
 </dict>

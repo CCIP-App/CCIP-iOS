@@ -282,7 +282,7 @@ Permission is granted to anyone to use this software for any purpose,including c
 			<key>summary</key>
 			<string>Cryptography in Swift. SHA, MD5, CRC, PBKDF, Poly1305, HMAC, CMAC, HDKF, Scrypt, ChaCha20, Rabbit, Blowfish, AES.</string>
 			<key>version</key>
-			<string>1.3.1</string>
+			<string>1.3.2</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -658,7 +658,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>A better way to operate quick response code in Swift.</string>
 			<key>version</key>
-			<string>5.1.6</string>
+			<string>5.1.8</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -926,7 +926,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Firebase</string>
 			<key>version</key>
-			<string>6.29.0</string>
+			<string>6.33.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -950,7 +950,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Firebase Analytics for iOS</string>
 			<key>version</key>
-			<string>6.7.0</string>
+			<string>6.8.3</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1176,7 +1176,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Firebase Core</string>
 			<key>version</key>
-			<string>6.9.2</string>
+			<string>6.10.3</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1381,7 +1381,7 @@ non-Cocoapod integration. This library also respects the Firebase global data co
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright [yyyy] [name of copyright owner]
+   Copyright 2020 Firebase, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1404,7 +1404,7 @@ non-Cocoapod integration. This library also respects the Firebase global data co
 			<key>summary</key>
 			<string>Firebase Core Diagnostics</string>
 			<key>version</key>
-			<string>1.5.0</string>
+			<string>1.7.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1607,7 +1607,7 @@ non-Cocoapod integration. This library also respects the Firebase global data co
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright [yyyy] [name of copyright owner]
+   Copyright 2020 Firebase, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1630,7 +1630,7 @@ non-Cocoapod integration. This library also respects the Firebase global data co
 			<key>summary</key>
 			<string>Firebase Dynamic Links</string>
 			<key>version</key>
-			<string>4.2.0</string>
+			<string>4.3.1</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1833,7 +1833,7 @@ non-Cocoapod integration. This library also respects the Firebase global data co
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright [yyyy] [name of copyright owner]
+   Copyright 2020 Firebase, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1856,7 +1856,7 @@ non-Cocoapod integration. This library also respects the Firebase global data co
 			<key>summary</key>
 			<string>Firebase Installations</string>
 			<key>version</key>
-			<string>1.5.0</string>
+			<string>1.7.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1967,7 +1967,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Shared measurement methods for Google libraries. Not intended for direct use.</string>
 			<key>version</key>
-			<string>6.7.0</string>
+			<string>6.8.3</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2193,7 +2193,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Google iOS SDK data transport.</string>
 			<key>version</key>
-			<string>7.1.0</string>
+			<string>7.4.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2465,7 +2465,7 @@ Fuller's blog&lt;/a&gt;
 			<key>summary</key>
 			<string>Google Utilities for iOS (plus community support for macOS and tvOS)</string>
 			<key>version</key>
-			<string>6.7.1</string>
+			<string>6.7.2</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2666,7 +2666,7 @@ SOFTWARE.
 			<key>summary</key>
 			<string>A powerful image loading and caching system</string>
 			<key>version</key>
-			<string>9.1.1</string>
+			<string>9.1.2</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2750,7 +2750,7 @@ Includes portions from BSMobileProvision:
 			<key>summary</key>
 			<string>OneSignal push notification library for mobile apps.</string>
 			<key>version</key>
-			<string>2.15.0</string>
+			<string>2.15.3</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2977,7 +2977,7 @@ Objective-C to facilitate writing asynchronous code.&lt;/p&gt;
 			<key>summary</key>
 			<string>Synchronization construct for Objective-C</string>
 			<key>version</key>
-			<string>1.2.9</string>
+			<string>1.2.10</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -3133,7 +3133,7 @@ SOFTWARE.
 			<key>summary</key>
 			<string>The best way to deal with Dates &amp; Time Zones in Swift</string>
 			<key>version</key>
-			<string>6.1.0</string>
+			<string>6.2.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -3177,7 +3177,7 @@ SOFTWARE.
 			<key>summary</key>
 			<string>A tool to enforce Swift style and conventions.</string>
 			<key>version</key>
-			<string>0.39.2</string>
+			<string>0.40.3</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -3266,7 +3266,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			<key>summary</key>
 			<string>Simple but highly customizable iOS tag list view, in Swift.</string>
 			<key>version</key>
-			<string>1.4.0</string>
+			<string>1.4.1</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -3352,7 +3352,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<key>summary</key>
 			<string>UICKeyChainStore is a simple wrapper for Keychain that works on iOS and OS X. Makes using Keychain APIs as easy as NSUserDefaults.</string>
 			<key>version</key>
-			<string>2.2.0</string>
+			<string>2.2.1</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -3576,7 +3576,7 @@ redistribute it freely, subject to the following restrictions:
 			<key>summary</key>
 			<string>Protocol buffers with small code size.</string>
 			<key>version</key>
-			<string>1.30905.0</string>
+			<string>1.30906.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>

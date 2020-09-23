@@ -74,9 +74,10 @@ POD_SWIFT_VERSION_MAP = {
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     swift_version = POD_SWIFT_VERSION_MAP[target.name] || DEFAULT_SWIFT_VERSION
-    puts "Setting #{target.name} Swift version to #{swift_version}"
+    puts "Setting #{target.name} Swift version to #{swift_version} and iOS 13.0 SDK"
     target.build_configurations.each do |config|
       config.build_settings['SWIFT_VERSION'] = swift_version
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
     end
   end
 end
