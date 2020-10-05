@@ -6,6 +6,8 @@
 	<dict>
 		<key>PortalDomain</key>
 		<string>portal.opass.app</string>
+		<key>AcknowledgementsRepo</key>
+		<string>CCIP-App/CCIP-iOS</string>
 		<key>ogToken</key>
 		<string>b6213f49-e356-4b48-aa9d-7cf10ce1904d</string>
 		<key>scandit</key>

@@ -86,6 +86,11 @@ extension Constants {
     }
     static var appConfig = AppConfig()
     static var appConfigColor = AppConfigColor()
+    static var AcknowledgementsRepo: String {
+        get {
+            return (Constants.appConfig.AcknowledgementsRepo as? String) ?? "CCIP-App/CCIP-iOS"
+        }
+    }
     static var HasSetEvent: Bool {
         return OPassAPI.currentEvent.count > 0
     }
