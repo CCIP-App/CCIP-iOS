@@ -13,6 +13,11 @@ import SwiftyJSON
 import UICKeyChainStore
 
 class OPassAPI: NSObject {
+    static var PORTAL_DOMAIN: String {
+        get {
+            return (Constants.appConfig.PortalDomain as? String) ?? "portal.opass.app"
+        }
+    }
     static var currentEvent: String = ""
     static var eventInfo: EventInfo? = nil
     static var userInfo: ScenarioStatus? = nil
