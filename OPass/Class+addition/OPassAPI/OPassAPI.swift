@@ -31,12 +31,19 @@ class OPassAPI: NSObject {
             let manager = AFHTTPSessionManager.init()
             manager.requestSerializer.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
             manager.requestSerializer.timeoutInterval = 5
-            manager.get(url, parameters: nil, headers: nil, progress: nil, success: { (_, responseObject: Any?) in
-                #if DEBUG
-                NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any) ?? "nil")")
-                #endif
+            manager.get(url, parameters: nil, headers: nil, progress: nil, success: { (response, responseObject: Any?) in
                 if (responseObject != nil) {
+                    #if DEBUG
+                    NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any) ?? "nil")")
+                    #endif
                     resolve(responseObject)
+                } else {
+                    #if DEBUG
+                    NSLog("JSON: nil")
+                    #endif
+                    if let resp = response.response as? HTTPURLResponse {
+                        resolve(OPassNonSuccessDataResponse(resp, Data.init(), JSON("")))
+                    }
                 }
             }) { (operation: URLSessionDataTask?, error: Error) in
                 NSLog("Error: \(error)")
