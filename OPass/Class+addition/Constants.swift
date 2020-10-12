@@ -156,9 +156,6 @@ extension Constants {
     static var URL_BASE_ANNOUNCEMENT: String {
         return OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.Url?.absoluteString ?? ""
     }
-    static func URL_LANDING(token: String) -> String {
-        return self.URL_BASE_FASTPASS.appending("/landing?token=\(token)")
-    }
     static func URL_STATUS(token: String) -> String {
         return self.URL_BASE_FASTPASS.appending("/status?token=\(token)")
     }
