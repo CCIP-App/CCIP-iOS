@@ -62,7 +62,7 @@ class EmbeddedNavigationTabBarControllerSegue: EmbeddedNavigationSegue {
                                 resolve()
                                 return
                             }
-                            dest.frame = CGRect(origin: CGPoint(x: 0, y: dest.ViewTopStart + navBarHeight), size: CGSize(width: self.screenWidth, height: height))
+                            dest.frame = CGRect(origin: CGPoint(x: 0, y: dest.ViewTopStart), size: CGSize(width: self.screenWidth, height: height + navBarHeight))
                             destinationView.alpha = 1
                             resolve()
                         }
