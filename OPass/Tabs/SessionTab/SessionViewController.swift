@@ -17,6 +17,11 @@ class SessionViewController: UIViewController {
         lbTitle.textAlignment = .center
         lbTitle.textColor = .white
         lbTitle.text = NSLocalizedString("SessionTitle", comment: "")
+        if let tabIndex = self.tabBarController?.selectedIndex {
+            if let currentItems = self.tabBarController?.tabBar.items {
+                lbTitle.text = currentItems[tabIndex].title
+            }
+        }
         self.navigationItem.title = ""
         self.navigationItem.titleView = lbTitle
         self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(), for: .default)
