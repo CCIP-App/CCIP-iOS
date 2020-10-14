@@ -365,11 +365,11 @@ extension Constants {
     static var SESSION_CACHE_CLEAR: String {
         return "ClearSessionContentCache"
     }
-    static var SESSION_CACHE_KEY: String {
-        return "\(OPassAPI.currentEvent)|SessionContentCache"
+    static func SESSION_CACHE_KEY(_ sessionKey: String?) -> String {
+        return "\(OPassAPI.currentEvent)|\(sessionKey ?? "")|SessionContentCache"
     }
-    static var SESSION_FAV_KEY: String {
-        return "\(OPassAPI.currentEvent)|FavoriteSession"
+    static func SESSION_FAV_KEY(_ sessionKey: String?) -> String {
+        return "\(OPassAPI.currentEvent)|\(sessionKey ?? "")|FavoriteSession"
     }
 
     // MARK: - Math
