@@ -228,9 +228,9 @@ typealias ProgramRoom = OPassTagData
 typealias ProgramsTag = OPassTagData
 
 extension OPassAPI {
-    static func GetSessionData(_ event: String, _ completion: OPassCompletionCallback) {
+    static func GetSessionData(_ event: String, _ sessionKey: String, _ completion: OPassCompletionCallback) {
         if event.count > 0 {
-            OPassAPI.InitializeRequest(Constants.URL_SESSION) { _, _, error, _ in
+            OPassAPI.InitializeRequest(Constants.URL_SESSION(sessionKey)) { _, _, error, _ in
                 completion?(false, nil, error)
                 }.then { (obj: Any?) -> Void in
                     if let o = obj {

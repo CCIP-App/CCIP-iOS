@@ -181,8 +181,8 @@ extension Constants {
     static var URL_LOGO_IMG: String {
         return OPassAPI.eventInfo?.LogoUrl.absoluteString ?? ""
     }
-    static var URL_SESSION: String {
-        return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.Url?.absoluteString  ?? "")
+    static func URL_SESSION(_ sessionKey: String) -> String {
+        return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures(rawValue: sessionKey.lowercased()) ?? OPassKnownFeatures.Schedule]?.Url?.absoluteString  ?? "")
     }
     static var URL_LOG_BOT: String {
         return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.Url?.absoluteString ?? "")

@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class SessionViewController: UIViewController {
+    internal var endpointKey: String? = nil
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,7 +21,9 @@ class SessionViewController: UIViewController {
         lbTitle.text = NSLocalizedString("SessionTitle", comment: "")
         if let tabIndex = self.tabBarController?.selectedIndex {
             if let currentItems = self.tabBarController?.tabBar.items {
-                lbTitle.text = currentItems[tabIndex].title
+                let item = currentItems[tabIndex]
+                lbTitle.text = item.title
+                self.endpointKey = item.accessibilityValue
             }
         }
         self.navigationItem.title = ""

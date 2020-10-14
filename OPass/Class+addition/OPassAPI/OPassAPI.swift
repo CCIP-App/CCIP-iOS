@@ -100,6 +100,7 @@ class OPassAPI: NSObject {
                 }
             case "Session", OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]
+                item.accessibilityValue = String(describing: OPassKnownFeatures.Schedule)
             case "Announce", OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.DisplayText[Constants.shortLangUI]
                 item.isEnabled = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.Url != nil

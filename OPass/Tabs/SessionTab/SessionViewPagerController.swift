@@ -11,6 +11,14 @@ import UIKit
 import MBProgressHUD
 
 class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, ViewPagerDelegate {
+    private var endpointKey: String? {
+        get {
+            if let svc = self.parent as? SessionViewController {
+                return svc.endpointKey
+            }
+            return nil
+        }
+    }
     internal var selectedSection = Date.init(timeIntervalSince1970: 0)
     internal var segmentsTextArray = Array<String>()
     public var today: Date {
@@ -74,7 +82,7 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
     }
 
     func refreshData() {
-        OPassAPI.GetSessionData(OPassAPI.currentEvent) { (success, data, err) in
+        OPassAPI.GetSessionData(OPassAPI.currentEvent, self.endpointKey ?? String(describing: OPassKnownFeatures.Schedule)) { (success, data, err) in
             if (success) {
                 self.programs = data as? Programs
                 self.setSessionDate()
