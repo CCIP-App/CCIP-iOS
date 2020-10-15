@@ -13,6 +13,7 @@ import UICKeyChainStore
 
 class GuideViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var guideMessageLabel: UILabel!
+    @IBOutlet weak var guideLineLabel: UILabel!
     @IBOutlet weak var redeemCodeText: UITextField!
     @IBOutlet weak var redeemButton: UIButton!
 
@@ -70,54 +71,47 @@ class GuideViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
-    @objc func keyboardWillShow(_ note: Notification?) {
-        if view.frame.size.height <= 480 {
-            changePoint = CGPoint(x: 0, y: -165)
-
-            var guideMessageLabelFrame = guideMessageLabel.frame
-            guideMessageLabelFrame.origin.y += changePoint.y
-            guideMessageLabel.frame = guideMessageLabelFrame
-
-            var redeemCodeTextFrame = redeemCodeText.frame
-            redeemCodeTextFrame.origin.y += changePoint.y
-            redeemCodeText.frame = redeemCodeTextFrame
-
-            var redeemButtonFrame = redeemButton.frame
-            redeemButtonFrame.origin.y += changePoint.y
-            redeemButton.frame = redeemButtonFrame
-        } else if view.frame.size.height <= 568 {
-            changePoint = CGPoint(x: 0, y: -30)
-
-            var guideMessageLabelFrame = guideMessageLabel.frame
-            guideMessageLabelFrame.origin.y += changePoint.y
-            guideMessageLabel.frame = guideMessageLabelFrame
-
-            var redeemCodeTextFrame = redeemCodeText.frame
-            redeemCodeTextFrame.origin.y += changePoint.y
-            redeemCodeText.frame = redeemCodeTextFrame
-
-            var redeemButtonFrame = redeemButton.frame
-            redeemButtonFrame.origin.y += changePoint.y
-            redeemButton.frame = redeemButtonFrame
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            if touch.phase == .began {
+                self.redeemCodeText.resignFirstResponder()
+            }
         }
     }
 
+    @objc func keyboardWillShow(_ note: Notification?) {
+        if self.changePoint.y != 0 {
+            return
+        }
+        if view.frame.size.height <= 480 {
+            self.changePoint.y = -30
+        } else if view.frame.size.height <= 768 {
+            self.changePoint.y = -165
+        }
+        self.moveOjectsByOffset(self.changePoint.y)
+    }
+
     @objc func keyboardWillHide(_ note: Notification?) {
-        let deltaH: CGFloat = changePoint.y * -1
+        self.moveOjectsByOffset(self.changePoint.y * -1)
+        self.changePoint.y = 0
+    }
 
-        var guideMessageLabelFrame = guideMessageLabel.frame
-        guideMessageLabelFrame.origin.y += deltaH
-        guideMessageLabel.frame = guideMessageLabelFrame
+    func moveOjectsByOffset(_ dy: CGFloat) {
+        var guideMessageLabelFrame = self.guideMessageLabel.frame
+        guideMessageLabelFrame.origin.y += dy
+        self.guideMessageLabel.frame = guideMessageLabelFrame
 
-        var redeemCodeTextFrame = redeemCodeText.frame
-        redeemCodeTextFrame.origin.y += deltaH
-        redeemCodeText.frame = redeemCodeTextFrame
+        var guideLineLabelFrame = self.guideLineLabel.frame
+        guideLineLabelFrame.origin.y += dy
+        self.guideLineLabel.frame = guideLineLabelFrame
 
-        var redeemButtonFrame = redeemButton.frame
-        redeemButtonFrame.origin.y += deltaH
-        redeemButton.frame = redeemButtonFrame
+        var redeemCodeTextFrame = self.redeemCodeText.frame
+        redeemCodeTextFrame.origin.y += dy
+        self.redeemCodeText.frame = redeemCodeTextFrame
 
-        changePoint = CGPoint(x: 0, y: 0)
+        var redeemButtonFrame = self.redeemButton.frame
+        redeemButtonFrame.origin.y += dy
+        self.redeemButton.frame = redeemButtonFrame
     }
 
     override func didReceiveMemoryWarning() {
