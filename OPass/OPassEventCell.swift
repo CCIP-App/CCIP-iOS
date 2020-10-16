@@ -16,7 +16,8 @@ class OPassEventCell: FoldingCell {
     @IBOutlet weak var EventName: UILabel!
 
     override func awakeFromNib() {
-        foregroundView.layer.cornerRadius = 10
+        self.foregroundView.layer.cornerRadius = 10
+        self.foregroundView.backgroundColor = Constants.appConfigColor.colorConfig("EventSwitcherButtonColor")
         self.backgroundColor = UIColor.clear
 
         self.layer.shadowColor = UIColor.black.cgColor
@@ -31,7 +32,7 @@ class OPassEventCell: FoldingCell {
         self.EventLogo.layer.shadowOffset = CGSize(width: 1, height: 1)
         self.EventLogo.layer.masksToBounds = false
 
-        self.EventName.textColor = .white
+        self.EventName.textColor = Constants.appConfigColor.colorConfig("EventSwitcherTextColor")
         self.EventName.layer.shadowColor = UIColor.black.cgColor
         self.EventName.layer.shadowRadius = 4.0
         self.EventName.layer.shadowOpacity = 0.3

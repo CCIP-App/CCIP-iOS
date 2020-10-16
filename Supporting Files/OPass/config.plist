@@ -22,6 +22,10 @@
 		<dict>
 			<key>DevelopingLogoMaskColor</key>
 			<string>#f2a900</string>
+			<key>EventSwitcherButtonColor</key>
+			<string>#682e8e</string>
+			<key>EventSwitcherTextColor</key>
+			<string>#ffffff</string>
 			<key>RedeemButtonLeftColor</key>
 			<string>#170a31</string>
 			<key>RedeemButtonRightColor</key>
