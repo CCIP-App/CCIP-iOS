@@ -1,7 +1,5 @@
 #!/bin/bash
 
-export MAIN_VERSION=3.0
-export GIT_COMMITS=$(($(git rev-list --all --count) + 1))
 export SETTINGS_BUNDLE="${PROJECT_DIR}/Supporting Files/OPass/Settings.bundle"
 export SETTINGS_FILE="${SETTINGS_BUNDLE}/Root.plist"
 export SETTINGS_FILE_TEMPLATE="${SETTINGS_BUNDLE}/Root-blank.plist"
@@ -60,23 +58,12 @@ settingFlagsBundle() {
     done
     /usr/libexec/PlistBuddy -c "Add :Title string ""SettingsTitle""" "$APP_FLAGS_FILE"
 }
-gitVersion=$(git rev-parse --short HEAD)
-buildVersion=$(agvtool vers -terse)
-cd "$PROJECT_DIR"
-productVersion=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "$INFOPLIST_FILE")
-productVersion="$MAIN_VERSION"
-#mainVersion="$productVersion.$buildVersion"
-mainVersion="$productVersion.$GIT_COMMITS"
-version="$mainVersion #$gitVersion"
-flags=$GCC_PREPROCESSOR_DEFINITIONS
-timeStamp=$(date +"%Y-%m-%d %H:%M:%S GMT+8")
 
-# /usr/libexec/PlistBuddy -c "set CFBundleVersion $version" "$INFOPLIST_FILE"
+cd "$PROJECT_DIR/Supporting Files"
 
-cd "Supporting Files"
-settingBundle "version_preference" "$version $ARCHS"
-settingBundle "build_timestamp" "$timeStamp"
-settingFlagsBundle $flags
+settingBundle "version_preference" "${OPASS_VERSION_PREFERENCE} ${ARCHS}"
+settingBundle "build_timestamp" "${OPASS_BUILD_TIMESTAMP}"
+settingFlagsBundle $GCC_PREPROCESSOR_DEFINITIONS
 
 cat "${PROJECT_DIR}/Supporting Files/${TARGET_NAME}.xcconfig" > "${PROJECT_DIR}/Supporting Files/${TARGET_NAME}.debug.xcconfig"
 cat "${PROJECT_DIR}/Supporting Files/${TARGET_NAME}.xcconfig" > "${PROJECT_DIR}/Supporting Files/${TARGET_NAME}.release.xcconfig"
@@ -99,8 +86,6 @@ function xcc_replace() {
 
 #xcc_replace 1 "#Dev#"                       "-Dev"
 xcc_replace 1 "#Dev#"                       ""
-xcc_replace 0 "#BUILD_VERSION#"             "$mainVersion"
-xcc_replace 0 "#BUILD_SHORT_VERSION#"       "$productVersion"
 xcc_replace 0 "#APP_NAME#"                  "$TARGET_NAME"
 xcc_replace 0 "#define#"                    "$PREDEFINITIONS"
 xcc_replace 0 "#domain#"                    "$domain"
