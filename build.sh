@@ -16,6 +16,8 @@ export OPASS_GIT_COMMITS=$(($(git rev-list --all --count) + 1))
 export OPASS_VERSION="${OPASS_MAIN_VERSION}.${OPASS_GIT_COMMITS}"
 export OPASS_VERSION_PREFERENCE="${OPASS_VERSION} #${OPASS_GIT_VERSION}"
 export OPASS_BUILD_TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S GMT+8")
+export OPASS_PROFILE_UDID=$(echo "$OPASS_PROVISIONING_PROFILES" | jq -r '.[].udid')
+export OPASS_WILDCARD_PROFILE_UDID=$(echo "$OPASS_WILDCARD_PROVISIONING_PROFILES" | jq -r '.[].udid')
 
 SDK="${SDK:-iphoneos}"
 WORKSPACE="${WORKSPACE:-OPass.xcworkspace}"
