@@ -11,6 +11,8 @@ jobs:
     timeout-minutes: 30
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Import Codesign Certificates
       uses: Apple-Actions/import-codesign-certs@v1
       with:
