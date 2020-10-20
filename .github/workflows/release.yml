@@ -27,7 +27,6 @@ jobs:
     - name: Setup Cocoapods
       uses: maxim-lobanov/setup-cocoapods@v1
       with:
-        version: 1.9.0
         podfile-path: Podfile.lock
     - name: Build
       run: ./build.sh
