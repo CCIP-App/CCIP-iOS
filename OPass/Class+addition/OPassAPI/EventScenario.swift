@@ -118,6 +118,8 @@ extension OPassAPI {
                             let status = ScenarioStatus(JSON(o))
                             OPassAPI.isLoginSession = true
                             Constants.accessToken = token
+                            OPassAPI.refreshTabBar()
+                            OPassAPI.openFirstAvailableTab()
                             AppDelegate.delegateInstance.checkinView?.reloadCard()
                             completion?(true, status, OPassSuccessError)
                         }
