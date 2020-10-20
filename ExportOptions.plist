@@ -18,5 +18,12 @@
 	<true/>
 	<key>uploadSymbols</key>
 	<true/>
+	<key>provisioningProfiles</key>
+	<dict>
+		<key>app.opass.ccip</key>
+		<string>OPass Profile</string>
+		<key>app.opass.ccip.notification-service</key>
+		<string>OPass WIldcard</string>
+	</dict>
 </dict>
 </plist>
