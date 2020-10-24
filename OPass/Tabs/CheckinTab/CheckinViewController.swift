@@ -521,7 +521,7 @@ import ScanditBarcodeScanner
             let button = UIButton.init(type: .roundedRect)
             button.layer.masksToBounds = false
             button.layer.cornerRadius = (torchButton?.frame.height ?? 2) / 2
-            button.frame = CGRect(x: (torchButton?.frame.origin.x ?? 0) + (torchButton?.frame.width ?? 0) + 10, y: (torchButton?.frame.origin.y ?? 0), width: 60, height: (torchButton?.frame.height ?? 0))
+            button.frame = CGRect(x: (torchButton?.frame.origin.x ?? 0) + (torchButton?.frame.width ?? 0) + 15, y: (torchButton?.frame.origin.y ?? 0) + (self.navigationController?.navigationBar.frame.height ?? 0), width: 80, height: (torchButton?.frame.height ?? 0))
             button.backgroundColor = UIColor.white.withAlphaComponent(0.35)
             button.setTitle(NSLocalizedString("OpenQRCodeFromFile", comment: ""), for: .normal)
             button.tintColor = .black
