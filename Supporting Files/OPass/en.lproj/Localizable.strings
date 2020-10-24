@@ -63,7 +63,7 @@
 "Session_Broadcast" = "Broadcast";
 "Session_CoWrite" = "CoWrite";
 "Session_QA" = "QA";
-"GuideViewMessage" = "Please reference your attendee detail information, and you will find your access token.\n\nPlease copy and paste the token into next text field or click the token link in the reference mail.";
+"GuideViewMessage" = "Please reference your attendee detail information and touch right-top corner button to scan your QR Code pass, or click the link in the reference mail.";
 "GuideViewButton" = "REDEEM";
 "GuideViewTokenErrorTitle" = "Wrong Redeem Token";
 "GuideViewTokenErrorDesc" = "Please reference the pre-notification, and your will found the redeem code from the mail, or you can click that redeem code link directly. ";
