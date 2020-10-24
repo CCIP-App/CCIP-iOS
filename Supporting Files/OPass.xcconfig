@@ -5,3 +5,5 @@ NOTIFICATION_PRODUCT_BUNDLE_IDENTIFIER      = $(MAIN_PRODUCT_BUNDLE_IDENTIFIER).
 APP_NAME                                    = '(@"#APP_NAME#")'
 APP_GROUP_ID                                = group.app.opass.ccip
 APP_SCHEME                                  = opass
+MAIN_BUILD_VERSION                          = 9999.9999.9999
+MAIN_BUILD_SHORT_VERSION                    = 9999.9999.9999
