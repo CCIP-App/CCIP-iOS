@@ -22,7 +22,7 @@ class AcknowledgementsViewController: UIViewController {
         Promise { resolve, reject in
             var contributors = [Any]();
             let manager = AFHTTPSessionManager.init()
-            manager.get("https://api.github.com/repos/CCIP-App/CCIP-iOS/contributors", parameters: nil, headers: nil, progress: nil, success: { (_, responseObject: Any?) in
+            manager.get("https://api.github.com/repos/\(Constants.AcknowledgementsRepo)/contributors", parameters: nil, headers: nil, progress: nil, success: { (_, responseObject: Any?) in
                 NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any) ?? "nil")");
                 if (responseObject != nil) {
                     if let contributorsObj = responseObject as? [NSDictionary] {
@@ -43,7 +43,7 @@ class AcknowledgementsViewController: UIViewController {
                 reject(error)
             }
         }.then { (obj: Any) -> Any in
-            self.githubRepoLink = Constants.GitHubRepo("CCIP-App/CCIP-iOS")
+            self.githubRepoLink = Constants.GitHubRepo(Constants.AcknowledgementsRepo)
             if (self.githubRepoLink != nil) {
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: Constants.AssertImage("AssetsUI", "ToolButton-GitHub_Filled"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(AcknowledgementsViewController.openGithubRepo))
             }

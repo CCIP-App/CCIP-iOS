@@ -86,6 +86,11 @@ extension Constants {
     }
     static var appConfig = AppConfig()
     static var appConfigColor = AppConfigColor()
+    static var AcknowledgementsRepo: String {
+        get {
+            return (Constants.appConfig.AcknowledgementsRepo as? String) ?? "CCIP-App/CCIP-iOS"
+        }
+    }
     static var HasSetEvent: Bool {
         return OPassAPI.currentEvent.count > 0
     }
@@ -151,9 +156,6 @@ extension Constants {
     static var URL_BASE_ANNOUNCEMENT: String {
         return OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.Url?.absoluteString ?? ""
     }
-    static func URL_LANDING(token: String) -> String {
-        return self.URL_BASE_FASTPASS.appending("/landing?token=\(token)")
-    }
     static func URL_STATUS(token: String) -> String {
         return self.URL_BASE_FASTPASS.appending("/status?token=\(token)")
     }
@@ -179,8 +181,8 @@ extension Constants {
     static var URL_LOGO_IMG: String {
         return OPassAPI.eventInfo?.LogoUrl.absoluteString ?? ""
     }
-    static var URL_SESSION: String {
-        return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.Url?.absoluteString  ?? "")
+    static func URL_SESSION(_ sessionKey: String) -> String {
+        return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures(rawValue: sessionKey.lowercased()) ?? OPassKnownFeatures.Schedule]?.Url?.absoluteString  ?? "")
     }
     static var URL_LOG_BOT: String {
         return self.OPassURL(OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.Url?.absoluteString ?? "")
@@ -363,11 +365,11 @@ extension Constants {
     static var SESSION_CACHE_CLEAR: String {
         return "ClearSessionContentCache"
     }
-    static var SESSION_CACHE_KEY: String {
-        return "\(OPassAPI.currentEvent)|SessionContentCache"
+    static func SESSION_CACHE_KEY(_ sessionKey: String?) -> String {
+        return "\(OPassAPI.currentEvent)|\(sessionKey ?? "")|SessionContentCache"
     }
-    static var SESSION_FAV_KEY: String {
-        return "\(OPassAPI.currentEvent)|FavoriteSession"
+    static func SESSION_FAV_KEY(_ sessionKey: String?) -> String {
+        return "\(OPassAPI.currentEvent)|\(sessionKey ?? "")|FavoriteSession"
     }
 
     // MARK: - Math

@@ -166,7 +166,7 @@ struct EventShortInfo: Codable {
 
 extension OPassAPI {
     static func GetEvents(_ onceErrorCallback: OPassErrorCallback) -> Promise<Array<EventShortInfo>> {
-        return OPassAPI.InitializeRequest("https://portal.opass.app/events/", onceErrorCallback)
+        return OPassAPI.InitializeRequest("https://\(OPassAPI.PORTAL_DOMAIN)/events/", onceErrorCallback)
             .then({ (infoObj: Any) -> Array<EventShortInfo> in
                 return JSON(infoObj).arrayValue.map { info -> EventShortInfo in
                     return EventShortInfo(info)
@@ -175,7 +175,7 @@ extension OPassAPI {
     }
 
     static func SetEvent(_ eventId: String, _ onceErrorCallback: OPassErrorCallback) -> Promise<EventInfo> {
-        return OPassAPI.InitializeRequest("https://portal.opass.app/events/\(eventId)/", onceErrorCallback)
+        return OPassAPI.InitializeRequest("https://\(OPassAPI.PORTAL_DOMAIN)/events/\(eventId)/", onceErrorCallback)
             .then { (infoObj: Any) -> EventInfo in
                 OPassAPI.eventInfo = EventInfo(JSON(infoObj))
                 OPassAPI.currentEvent = ""

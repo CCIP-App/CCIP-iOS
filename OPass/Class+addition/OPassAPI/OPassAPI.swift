@@ -13,6 +13,11 @@ import SwiftyJSON
 import UICKeyChainStore
 
 class OPassAPI: NSObject {
+    static var PORTAL_DOMAIN: String {
+        get {
+            return (Constants.appConfig.PortalDomain as? String) ?? "portal.opass.app"
+        }
+    }
     static var currentEvent: String = ""
     static var eventInfo: EventInfo? = nil
     static var userInfo: ScenarioStatus? = nil
@@ -26,12 +31,19 @@ class OPassAPI: NSObject {
             let manager = AFHTTPSessionManager.init()
             manager.requestSerializer.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
             manager.requestSerializer.timeoutInterval = 5
-            manager.get(url, parameters: nil, headers: nil, progress: nil, success: { (_, responseObject: Any?) in
-                #if DEBUG
-                NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any) ?? "nil")")
-                #endif
+            manager.get(url, parameters: nil, headers: nil, progress: nil, success: { (response, responseObject: Any?) in
                 if (responseObject != nil) {
+                    #if DEBUG
+                    NSLog("JSON: \(JSONSerialization.stringify(responseObject as Any) ?? "nil")")
+                    #endif
                     resolve(responseObject)
+                } else {
+                    #if DEBUG
+                    NSLog("JSON: nil")
+                    #endif
+                    if let resp = response.response as? HTTPURLResponse {
+                        resolve(OPassNonSuccessDataResponse(resp, Data.init(), JSON("")))
+                    }
                 }
             }) { (operation: URLSessionDataTask?, error: Error) in
                 NSLog("Error: \(error)")
@@ -88,6 +100,7 @@ class OPassAPI: NSObject {
                 }
             case "Session", OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]
+                item.accessibilityValue = String(describing: OPassKnownFeatures.Schedule)
             case "Announce", OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.DisplayText[Constants.shortLangUI]
                 item.isEnabled = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.Url != nil

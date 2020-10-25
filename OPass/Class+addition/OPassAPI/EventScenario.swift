@@ -9,15 +9,6 @@
 import Foundation
 import SwiftyJSON
 
-struct ScenarioLanding: OPassData {
-    var _data: JSON
-    var Nickname: String
-    init(_ data: JSON) {
-        self._data = data
-        self.Nickname = self._data["nickname"].stringValue
-    }
-}
-
 struct ScenarioAttribute: OPassData {
     var _data: JSON
     init(_ data: JSON) {
@@ -104,7 +95,7 @@ extension OPassAPI {
         if (token.count != 0 && token.rangeOfCharacter(from: nonAllowedCharacters) == nil) {
             OPassAPI.isLoginSession = false
             Constants.accessToken = ""
-            OPassAPI.InitializeRequest(Constants.URL_LANDING(token: token)) { _, _, error, _ in
+            OPassAPI.InitializeRequest(Constants.URL_STATUS(token: token)) { _, _, error, _ in
                 completion?(false, nil, error)
             }.then { (obj: Any?) -> Void in
                 if let o = obj {
@@ -124,11 +115,13 @@ extension OPassAPI {
                             }
                             break
                         default:
-                            let landing = ScenarioLanding(JSON(o))
+                            let status = ScenarioStatus(JSON(o))
                             OPassAPI.isLoginSession = true
                             Constants.accessToken = token
+                            OPassAPI.refreshTabBar()
+                            OPassAPI.openFirstAvailableTab()
                             AppDelegate.delegateInstance.checkinView?.reloadCard()
-                            completion?(true, landing, OPassSuccessError)
+                            completion?(true, status, OPassSuccessError)
                         }
                     } else {
                         completion?(false, RawOPassData(o), NSError(domain: "OPass Redeem Code Invalid", code: 2, userInfo: nil))

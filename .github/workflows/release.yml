@@ -1,0 +1,54 @@
+name: "Release"
+on: # rebuild any PRs and main branch changes
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    timeout-minutes: 30
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Import Codesign Certificates
+      uses: Apple-Actions/import-codesign-certs@v1
+      with:
+        p12-file-base64: ${{ secrets.CERTIFICATES_FILE_BASE64 }}
+        p12-password: ${{ secrets.CERTIFICATES_PASSWORD }}
+    - name: Download OPass Profile
+      id: opass-profiles
+      uses: Apple-Actions/download-provisioning-profiles@v1
+      with:
+        bundle-id: app.opass.ccip
+        profile-type: IOS_APP_STORE
+        issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+        api-key-id: ${{ secrets.APPSTORE_KEY_ID }}
+        api-private-key: ${{ secrets.APPSTORE_PRIVATE_KEY }}
+    - name: Download OPass Wildcard Profile
+      id: opass-wildcard-profiles
+      uses: Apple-Actions/download-provisioning-profiles@v1
+      with:
+        bundle-id: app.opass.ccip.*
+        profile-type: IOS_APP_STORE
+        issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+        api-key-id: ${{ secrets.APPSTORE_KEY_ID }}
+        api-private-key: ${{ secrets.APPSTORE_PRIVATE_KEY }}
+    - name: Setup Cocoapods
+      uses: maxim-lobanov/setup-cocoapods@v1
+      with:
+        podfile-path: Podfile.lock
+    - name: Build
+      run: ./build.sh
+      env:
+        OPASS_PROVISIONING_PROFILES: ${{ steps.opass-profiles.outputs.profiles }}
+        OPASS_WILDCARD_PROVISIONING_PROFILES: ${{ steps.opass-wildcard-profiles.outputs.profiles }}
+    - name: Upload to TestFlight
+      uses: Apple-Actions/upload-testflight-build@master
+      with:
+        app-path: .build/Artifacts/OPass.app/OPass.ipa
+        issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+        api-key-id: ${{ secrets.APPSTORE_KEY_ID }}
+        api-private-key: ${{ secrets.APPSTORE_PRIVATE_KEY }}
