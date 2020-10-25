@@ -73,12 +73,14 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
         }
     }
 
-    func refreshData() {
+    func refreshData(_ onSuccess: (() -> Void)? = nil) {
         OPassAPI.GetSessionData(OPassAPI.currentEvent) { (success, data, err) in
             if (success) {
                 self.programs = data as? Programs
                 self.setSessionDate()
                 self.saveProgramsData()
+
+                onSuccess?()
             } else {
                 UIAlertController.alertOfTitle("Error", withMessage: err.localizedDescription, cancelButtonText: "Okay", cancelStyle: .destructive, cancelAction: nil).showAlert {
                     UIImpactFeedback.triggerFeedback(.impactFeedbackHeavy)
