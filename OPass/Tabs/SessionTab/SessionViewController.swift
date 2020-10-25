@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class SessionViewController: UIViewController {
+    internal var endpointKey: String? = nil
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,6 +19,13 @@ class SessionViewController: UIViewController {
         lbTitle.textAlignment = .center
         lbTitle.textColor = .white
         lbTitle.text = NSLocalizedString("SessionTitle", comment: "")
+        if let tabIndex = self.tabBarController?.selectedIndex {
+            if let currentItems = self.tabBarController?.tabBar.items {
+                let item = currentItems[tabIndex]
+                lbTitle.text = item.title
+                self.endpointKey = item.accessibilityValue
+            }
+        }
         self.navigationItem.title = ""
         self.navigationItem.titleView = lbTitle
         self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(), for: .default)

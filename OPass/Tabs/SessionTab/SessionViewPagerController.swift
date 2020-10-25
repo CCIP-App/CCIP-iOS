@@ -11,6 +11,18 @@ import UIKit
 import MBProgressHUD
 
 class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, ViewPagerDelegate {
+    private var _endpointKey: String? = nil
+    private var endpointKey: String? {
+        get {
+            if self._endpointKey != nil {
+                return self._endpointKey
+            }
+            if let svc = self.parent as? SessionViewController {
+                self._endpointKey = svc.endpointKey
+            }
+            return self._endpointKey
+        }
+    }
     internal var selectedSection = Date.init(timeIntervalSince1970: 0)
     internal var segmentsTextArray = Array<String>()
     public var today: Date {
@@ -22,8 +34,8 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
 
     private func initProgramsData() {
         let defaults: [String: Any] = [
-            Constants.SESSION_FAV_KEY: [Any](),
-            Constants.SESSION_CACHE_KEY: [String: Any]()
+            Constants.SESSION_FAV_KEY(self.endpointKey): [Any](),
+            Constants.SESSION_CACHE_KEY(self.endpointKey): [String: Any]()
         ]
         let userDefault = UserDefaults.standard
         userDefault.register(defaults: defaults)
@@ -33,7 +45,7 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
     private func loadProgramsData() {
         let userDefault = UserDefaults.standard
         // ugly convension for crash prevent
-        guard let programsObj = userDefault.object(forKey: Constants.SESSION_CACHE_KEY) as? Data else {
+        guard let programsObj = userDefault.object(forKey: Constants.SESSION_CACHE_KEY(self.endpointKey)) as? Data else {
             self.programs = nil
             return
         }
@@ -48,7 +60,7 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
         self.programs?._sessions.removeAll()
         let programsData = try? PropertyListEncoder().encode(self.programs)
         self.programs?._regenSessions()
-        userDefault.set(programsData, forKey: Constants.SESSION_CACHE_KEY)
+        userDefault.set(programsData, forKey: Constants.SESSION_CACHE_KEY(self.endpointKey))
         userDefault.synchronize()
     }
 
@@ -74,7 +86,7 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
     }
 
     func refreshData(_ onSuccess: (() -> Void)? = nil) {
-        OPassAPI.GetSessionData(OPassAPI.currentEvent) { (success, data, err) in
+        OPassAPI.GetSessionData(OPassAPI.currentEvent, self.endpointKey ?? String(describing: OPassKnownFeatures.Schedule)) { (success, data, err) in
             if (success) {
                 self.programs = data as? Programs
                 self.setSessionDate()
