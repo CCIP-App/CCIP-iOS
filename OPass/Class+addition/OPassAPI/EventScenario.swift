@@ -116,6 +116,7 @@ extension OPassAPI {
                             break
                         default:
                             let status = ScenarioStatus(JSON(o))
+                            OPassAPI.userInfo = status
                             OPassAPI.isLoginSession = true
                             Constants.accessToken = token
                             OPassAPI.refreshTabBar()

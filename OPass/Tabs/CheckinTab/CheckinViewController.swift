@@ -296,6 +296,7 @@ import ScanditBarcodeScanner
                         }
                     }
                     OPassAPI.refreshTabBar()
+                    OPassAPI.openFirstAvailableTab()
                     self.reloadAndGoToCard()
                 }
             } else {
