@@ -18,6 +18,9 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerForceTouch()
+        let refreshControl = UIRefreshControl()
+        self.tableView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -199,5 +202,13 @@ class SessionTableViewController: UITableViewController, UIViewControllerPreview
         let time = Constants.DateToDisplayTimeString(self.sessionTimes[indexPath.section])
         let sessionId = self.sessionSections[time]?[indexPath.row]
         self.pagerController?.performSegue(withIdentifier: Constants.SESSION_DETAIL_VIEW_STORYBOARD_ID, sender: sessionId)
+    }
+
+    @objc private func refreshTableView() {
+        self.pagerController?.refreshData() {[weak self] in
+            let refreshControl = self?.tableView.subviews.first(where: { $0 is UIRefreshControl }) as? UIRefreshControl
+            refreshControl?.endRefreshing()
+            self?.tableView.reloadData()
+        }
     }
 }
