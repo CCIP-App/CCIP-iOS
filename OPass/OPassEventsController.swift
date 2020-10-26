@@ -33,35 +33,37 @@ class OPassEventsController: UIViewController, UITableViewDelegate, UITableViewD
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        OPassAPI.GetEvents({ retryCount, retryMax, error, _ in
-            self.progress.label.text = "[\(retryCount)/\(retryMax)] \(error.localizedDescription)"
-        }).then { (events: Array<EventShortInfo>) in
-            self.opassEvents = events
-        }.then { _ in
-            if self.firstLoad {
-                self.veView.alpha = 0
-                self.veView.isHidden = false
-            }
-            UIView.animate(withDuration: 1, animations: {
-                self.veView.alpha = 1
-            }, completion: { _ in
-                self.eventsTable.reloadData()
-            })
-        }.then { _ in
-            self.progress.label.text = ""
-            self.progress.hide(animated: true)
-        }.then { _ in
-            if self.firstLoad && self.opassEvents.count == 1 {
-                if let event = self.opassEvents.first {
-                    let _ = self.LoadEvent(event.EventId)
-                    self.firstLoad = false
+        if !OPassAPI.duringLoginFromLink {
+            OPassAPI.GetEvents({ retryCount, retryMax, error, _ in
+                self.progress.label.text = "[\(retryCount)/\(retryMax)] \(error.localizedDescription)"
+            }).then { (events: Array<EventShortInfo>) in
+                self.opassEvents = events
+            }.then { _ in
+                if self.firstLoad {
+                    self.veView.alpha = 0
+                    self.veView.isHidden = false
                 }
-            } else {
-                let lastId = OPassAPI.lastEventId
-                if lastId.count > 0 && self.opassEvents.contains(where: { (event) -> Bool in
-                    event.EventId == lastId
-                }) {
-                    let _ = self.LoadEvent(lastId)
+                UIView.animate(withDuration: 1, animations: {
+                    self.veView.alpha = 1
+                }, completion: { _ in
+                    self.eventsTable.reloadData()
+                })
+            }.then { _ in
+                self.progress.label.text = ""
+                self.progress.hide(animated: true)
+            }.then { _ in
+                if self.firstLoad && self.opassEvents.count == 1 {
+                    if let event = self.opassEvents.first {
+                        let _ = self.LoadEvent(event.EventId)
+                        self.firstLoad = false
+                    }
+                } else {
+                    let lastId = OPassAPI.lastEventId
+                    if lastId.count > 0 && self.opassEvents.contains(where: { (event) -> Bool in
+                        event.EventId == lastId
+                    }) {
+                        let _ = self.LoadEvent(lastId)
+                    }
                 }
             }
         }
@@ -74,7 +76,7 @@ class OPassEventsController: UIViewController, UITableViewDelegate, UITableViewD
         }).then { event in
             self.progress.label.text = ""
             self.progress.hide(animated: true)
-            if Constants.HasSetEvent {
+            if Constants.HasSetEvent && !OPassAPI.duringLoginFromLink {
                 self.performSegue(withIdentifier: "OPassTabView", sender: event)
             }
         }

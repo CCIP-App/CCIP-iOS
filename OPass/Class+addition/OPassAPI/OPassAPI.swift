@@ -23,6 +23,7 @@ class OPassAPI: NSObject {
     static var userInfo: ScenarioStatus? = nil
     static var scenarios: [Scenario] = []
     static var isLoginSession: Bool = false
+    static var duringLoginFromLink: Bool = false
     static private var tabBarController: MainTabBarViewController? = nil
 
     static func InitializeRequest(_ url: String, maxRetry: UInt = 10, _ onceErrorCallback: OPassErrorCallback) -> Promise<Any?> {

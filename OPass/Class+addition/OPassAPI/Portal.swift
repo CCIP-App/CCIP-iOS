@@ -197,6 +197,7 @@ extension OPassAPI {
         OPassAPI.userInfo = nil
         OPassAPI.scenarios = []
         OPassAPI.isLoginSession = false
+        AppDelegate.delegateInstance.checkinView = nil
     }
 
     static func DoLogin(_ eventId: String, _ token: String, _ completion: OPassCompletionCallback) {

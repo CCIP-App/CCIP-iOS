@@ -147,6 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let params = URLComponents(string: "?" + (url.query ?? ""))?.queryItems
         let event_id = params?.first(where: { $0.name == "event_id" })?.value
         let token = params?.first(where: { $0.name == "token" })?.value
+        OPassAPI.duringLoginFromLink = true
         if isOldScheme {
             let ac = UIAlertController.alertOfTitle(NSLocalizedString("GuideViewTokenErrorTitle", comment: ""), withMessage: NSLocalizedString("GuideViewTokenErrorDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel, cancelAction: nil)
             if let event_id = event_id, let token = token {
