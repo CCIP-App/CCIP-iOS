@@ -53,3 +53,17 @@ jobs:
         issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
         api-key-id: ${{ secrets.APPSTORE_KEY_ID }}
         api-private-key: ${{ secrets.APPSTORE_PRIVATE_KEY }}
+    - name: Archive IPA Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: OPass IPA
+        path: |
+          .build/Artifacts/*.ipa
+    - name: Archive Artifacts without IPA
+      uses: actions/upload-artifact@v2
+      with:
+        name: OPass Archive
+        path: |
+          .build/Artifacts
+          !.build/Artifacts/*.ipa
+          !.DS_Store
