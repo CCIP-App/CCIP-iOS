@@ -47,6 +47,7 @@ jobs:
         OPASS_WILDCARD_PROVISIONING_PROFILES: ${{ steps.opass-wildcard-profiles.outputs.profiles }}
     - name: Upload to TestFlight
       uses: Apple-Actions/upload-testflight-build@master
+      if: ${{ github.event != 'push' }}
       with:
         app-path: .build/Artifacts/OPass.app/OPass.ipa
         issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
