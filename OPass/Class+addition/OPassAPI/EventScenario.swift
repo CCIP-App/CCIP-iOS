@@ -102,6 +102,10 @@ extension OPassAPI {
                     if obj != nil {
                         switch String(describing: type(of: o)) {
                         case OPassNonSuccessDataResponse.className:
+                            OPassAPI.duringLoginFromLink = false
+                            if let opec = UIApplication.getMostTopPresentedViewController() as? OPassEventsController {
+                                opec.performSegue(withIdentifier: "OPassTabView", sender: OPassAPI.eventInfo)
+                            }
                             if let sr = o as? OPassNonSuccessDataResponse {
                                 if let response = sr.Response {
                                     switch response.statusCode {
