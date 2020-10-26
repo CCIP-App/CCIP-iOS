@@ -79,6 +79,7 @@ class OPassAPI: NSObject {
     static func refreshTabBar() {
         guard let tabBarController = tabBarController else { return }
         guard let items = tabBarController.tabBar.items else { return }
+        var tabNeedRemove: [Int] = []
         // setting selected image color from original image with replace custom color filter
         for item in items {
             guard let title = item.title else { return }
@@ -96,19 +97,39 @@ class OPassAPI: NSObject {
                     }
                 }
                 if !item.isEnabled {
-                    tabBarController.viewControllers?.remove(at: 0)
+                    tabNeedRemove.append(0)
                 }
             case "Session", OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.DisplayText[Constants.shortLangUI]
                 item.accessibilityValue = String(describing: OPassKnownFeatures.Schedule)
+                item.isEnabled = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.Url != nil
+                if item.isEnabled && ((OPassAPI.userInfo?.Role ?? "").count > 0) {
+                    if let role = OPassAPI.userInfo?.Role {
+                        item.isEnabled = (OPassAPI.eventInfo?.Features[OPassKnownFeatures.Schedule]?.VisibleRoles?.contains(role)) ?? true
+                    }
+                }
+                if !item.isEnabled {
+                    tabNeedRemove.append(1)
+                }
             case "Announce", OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.DisplayText[Constants.shortLangUI]
                 item.isEnabled = OPassAPI.eventInfo?.Features[OPassKnownFeatures.Announcement]?.Url != nil
+                if !item.isEnabled {
+                    tabNeedRemove.append(2)
+                }
             case "IRC", OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.DisplayText[Constants.shortLangUI]:
                 item.title = OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.DisplayText[Constants.shortLangUI]
                 item.isEnabled = OPassAPI.eventInfo?.Features[OPassKnownFeatures.IM]?.Url != nil
+                if !item.isEnabled {
+                    tabNeedRemove.append(3)
+                }
             default:
                 item.title = NSLocalizedString(title, comment: "")
+            }
+        }
+        if tabNeedRemove.count > 0 {
+            tabNeedRemove.reversed().forEach { index in
+                tabBarController.viewControllers?.remove(at: index)
             }
         }
     }
