@@ -184,11 +184,7 @@ class AnnounceTableViewController: UIViewController, InvalidNetworkRetryDelegate
         let announce = self.announceJsonArray[indexPath.row]
         guard let language = Bundle.main.preferredLocalizations.first else { return }
 
-        if language.contains("zh") {
-            cell.lbMessage.text = announce.MsgZh
-        } else {
-            cell.lbMessage.text = announce.MsgEn
-        }
+        cell.lbMessage.text = (language.contains("zh") ? announce.MsgZh : announce.MsgEn) + "\n"
         let uri = announce.URI
         let hasURL = uri != ""
         // cell.accessoryType = hasURL ? .disclosureIndicator : .none
