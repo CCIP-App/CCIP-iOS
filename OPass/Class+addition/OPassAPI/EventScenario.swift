@@ -127,6 +127,9 @@ extension OPassAPI {
                                 if let opec = UIApplication.getMostTopPresentedViewController() as? OPassEventsController {
                                     opec.performSegue(withIdentifier: "OPassTabView", sender: OPassAPI.eventInfo)
                                 }
+                                if OPassAPI.isLoginSession {
+                                    AppDelegate.delegateInstance.displayGreetingsForLogin()
+                                }
                             }
                             OPassAPI.duringLoginFromLink = false
                             AppDelegate.delegateInstance.checkinView?.reloadCard()
