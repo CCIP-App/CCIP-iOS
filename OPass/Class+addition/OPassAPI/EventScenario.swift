@@ -119,18 +119,16 @@ extension OPassAPI {
                             }
                             break
                         default:
+                            let status = ScenarioStatus(JSON(o))
+                            Constants.accessToken = token
+                            OPassAPI.userInfo = status
+                            OPassAPI.isLoginSession = true
                             if OPassAPI.duringLoginFromLink {
                                 if let opec = UIApplication.getMostTopPresentedViewController() as? OPassEventsController {
                                     opec.performSegue(withIdentifier: "OPassTabView", sender: OPassAPI.eventInfo)
                                 }
                             }
-                            let status = ScenarioStatus(JSON(o))
-                            Constants.accessToken = token
-                            OPassAPI.userInfo = status
                             OPassAPI.duringLoginFromLink = false
-                            OPassAPI.isLoginSession = true
-                            OPassAPI.refreshTabBar()
-                            OPassAPI.openFirstAvailableTab()
                             AppDelegate.delegateInstance.checkinView?.reloadCard()
                             completion?(true, status, OPassSuccessError)
                         }
