@@ -50,7 +50,9 @@
 "TicketLogout" = "Logout";
 "TicketLogoutWarning" = "Are you sure logout ?";
 "TicketLogoutWarningDesc" = "You might need rescan QRCode or relogin by link again to use full features for this event.";
-"Acknowledgements" = "Developers";
+"Acknowledgements" = "About OPass";
+"About" = "About";
+"AboutPrivacyPolicy" = "Privacy Policy";
 "Contributions" = "Contributors";
 "Libraries" = "Open Source Libraries";
 "InternalConfig" = "Internal Config";
@@ -111,6 +113,6 @@
 "icon-StaffsWeb" = "fas fa-user-friends";
 "icon-SponsorsWeb" = "fas fa-hand-holding-heart";
 "icon-PartnersWeb" = "fas fa-hands-helping";
-"icon-Acknowledgements" = "fas fa-people-carry";
+"icon-Acknowledgements" = "fas fa-info-circle";
 "icon-MoreWeb" = "fas fa-cookie-bite";
 "icon-InternalConfig" = "fas fa-hammer";

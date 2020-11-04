@@ -50,7 +50,9 @@
 "TicketLogout" = "登出";
 "TicketLogoutWarning" = "確定要登出嗎？";
 "TicketLogoutWarningDesc" = "你可能需要重新掃描 QRCode 或重新使用連結登入才能使用這個活動的完整功能";
-"Acknowledgements" = "開發者";
+"Acknowledgements" = "關於 OPass";
+"About" = "關於";
+"AboutPrivacyPolicy" = "隱私權政策";
 "Contributions" = "貢獻者";
 "Libraries" = "開源專案";
 "InternalConfig" = "內部設定";
@@ -111,6 +113,6 @@
 "icon-StaffsWeb" = "fas fa-user-friends";
 "icon-SponsorsWeb" = "fas fa-hand-holding-heart";
 "icon-PartnersWeb" = "fas fa-hands-helping";
-"icon-Acknowledgements" = "fas fa-people-carry";
+"icon-Acknowledgements" = "fas fa-info-circle";
 "icon-MoreWeb" = "fas fa-cookie-bite";
 "icon-InternalConfig" = "fas fa-hammer";

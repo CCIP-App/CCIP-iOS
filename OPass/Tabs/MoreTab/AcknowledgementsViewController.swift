@@ -68,8 +68,42 @@ class AcknowledgementsViewController: UIViewController {
                 }
             }
 
-            guard let contributors = obj as? [CPDContribution] else { return obj }
+            guard var contributors = obj as? [CPDContribution] else { return obj }
+            if let hideContributor = Constants.appConfig.HideContributor as? Bool {
+                if hideContributor {
+                    contributors.removeAll()
+                }
+            }
+            if let hideLibraries = Constants.appConfig.HideLibraries as? Bool {
+                if hideLibraries {
+                    acknowledgements?.removeAll()
+                }
+            }
             let acknowledgementsViewController: CPDAcknowledgementsViewController = CPDAcknowledgementsViewController.init(style: nil, acknowledgements: acknowledgements, contributions: contributors)
+            let sectionsKey = "_sections"
+            if let ackDataSource = acknowledgementsViewController.tableView.dataSource as? NSObject {
+                if var sections = ackDataSource.value(forKey: sectionsKey) as? [NSObject] {
+                    if let contributors = sections.first?.value(forKey: "CPDEntries") as? [NSObject] {
+                        if contributors.count == 0 {
+                            sections.removeFirst()
+                        }
+                    }
+                    if let libraries = sections.last?.value(forKey: "CPDEntries") as? [NSObject] {
+                        if libraries.count == 0 {
+                            sections.removeFirst()
+                        }
+                    }
+                    if let ppURL = Constants.appConfig.PrivacyURL as? String {
+                        sections.insert([
+                            "CPDTitle": NSLocalizedString("About", comment: ""),
+                            "CPDEntries": [
+                                CPDContribution.init(name: NSLocalizedString("AboutPrivacyPolicy", comment: ""), websiteAddress: ppURL, role: "")
+                            ]
+                        ] as NSObject, at: 0)
+                    }
+                    ackDataSource.setValue(sections, forKey: sectionsKey)
+                }
+            }
             self.addChild(acknowledgementsViewController)
             var frame = self.view.frame
             frame.origin.y = 0 // force to align the top when data lag to delivered
