@@ -35,6 +35,7 @@
 		288D3A951D599BD600E4E3A6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A941D599BD600E4E3A6 /* SystemConfiguration.framework */; };
 		288D3A971D599BDC00E4E3A6 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288D3A961D599BDC00E4E3A6 /* MediaPlayer.framework */; };
 		28A7C5641D5F7D2D0079BB12 /* Project_3rd_Lib_License.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */; };
+		4F3CDEDB2645B33E00DD02E2 /* ViewPagerController+Reload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3CDEDA2645B33E00DD02E2 /* ViewPagerController+Reload.swift */; };
 		4F5E01AA22FD644400D0D4E8 /* Checkin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5E01A922FD644400D0D4E8 /* Checkin.storyboard */; };
 		4F5E01AC22FD655500D0D4E8 /* Announce.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5E01AB22FD655500D0D4E8 /* Announce.storyboard */; };
 		4F5E01AE22FD66D400D0D4E8 /* IRC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5E01AD22FD66D400D0D4E8 /* IRC.storyboard */; };
@@ -223,6 +224,8 @@
 		288D3A961D599BDC00E4E3A6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		28A7C5631D5F7D2D0079BB12 /* Project_3rd_Lib_License.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Project_3rd_Lib_License.json; sourceTree = "<group>"; };
 		4DFF24DA2C44443FDA428128 /* Pods-OPass Notification Service.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OPass Notification Service.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OPass Notification Service/Pods-OPass Notification Service.debug.xcconfig"; sourceTree = "<group>"; };
+		4F3CDEDA2645B33E00DD02E2 /* ViewPagerController+Reload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewPagerController+Reload.swift"; sourceTree = "<group>"; };
+		4F3CDEDF2645B5BD00DD02E2 /* ViewPageController+activeTabIndex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViewPageController+activeTabIndex.h"; sourceTree = "<group>"; };
 		4F5E01A922FD644400D0D4E8 /* Checkin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Checkin.storyboard; sourceTree = "<group>"; };
 		4F5E01AB22FD655500D0D4E8 /* Announce.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Announce.storyboard; sourceTree = "<group>"; };
 		4F5E01AD22FD66D400D0D4E8 /* IRC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IRC.storyboard; sourceTree = "<group>"; };
@@ -608,6 +611,8 @@
 				6B4FCB16218ECC230005469F /* UIViewController+addition.swift */,
 				6B4FCB05218E521C0005469F /* UIApplication+addition.swift */,
 				6BE8A22B220DF0210035CFD8 /* NSString+StringExt.swift */,
+				4F3CDEDA2645B33E00DD02E2 /* ViewPagerController+Reload.swift */,
+				4F3CDEDF2645B5BD00DD02E2 /* ViewPageController+activeTabIndex.h */,
 			);
 			path = "Class+addition";
 			sourceTree = "<group>";
@@ -1104,6 +1109,7 @@
 				6B5FD2D7223C4B9D005D111C /* AnnounceTableViewCell.swift in Sources */,
 				6B4FCB1E218F5D630005469F /* OPassWebViewController.swift in Sources */,
 				6B4FCB0C218E5AA80005469F /* MainNavViewController.swift in Sources */,
+				4F3CDEDB2645B33E00DD02E2 /* ViewPagerController+Reload.swift in Sources */,
 				6B4FCB1C218ECE9A0005469F /* UIView+addition.swift in Sources */,
 				6BE8A227220D04980035CFD8 /* MainTabBarViewController.swift in Sources */,
 				6B50993322B6F82F00FD048F /* InvalidNetworkMessageViewController.swift in Sources */,

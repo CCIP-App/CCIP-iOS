@@ -11,4 +11,5 @@
 #import <Shimmer/FBShimmeringView.h>
 #import <CPDAcknowledgements/CPDCocoaPodsLibrariesLoader.h>
 #import <ICViewPager/ViewPagerController.h>
+#import "ViewPageController+activeTabIndex.h"
 #import "Constants.h"
