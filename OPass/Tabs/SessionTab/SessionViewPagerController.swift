@@ -120,7 +120,7 @@ class SessionViewPagerController: ViewPagerController, ViewPagerDataSource, View
             }
         }
         self.segmentsTextArray = Array(Set(self.segmentsTextArray.map{ $0.lowercased() })).sorted()
-        self.reloadData()
+        self.reload(keepSelectedIndex: true)
         if self.firstLoad {
             self.selectedSection = Date.init(timeInterval: preferredDateInterval, since: self.today)
             let selectedIndex = self.segmentsTextArray.firstIndex(of: Constants.DateToDisplayDateString(self.selectedSection))
