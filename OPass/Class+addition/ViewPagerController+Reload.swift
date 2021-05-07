@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by secminhr on 2021/5/8.
-//  Copyright © 2021 OPass. All rights reserved.
+//  2021 OPass.
 //
 
 //Provide a way to reload data without the side effect of the change of selected tab, which loadData does.
