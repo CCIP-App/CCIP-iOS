@@ -66,7 +66,7 @@ class OPassAPIModels: ObservableObject {
         }
     }
     
-    private func saveLocalData(dataObject: Data, filename: String) throws -> Bool {
+    private func saveLocalData(dataObject: Data, filename: String) -> Bool {
         do {
             if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
                 let fileURL = url.appendingPathComponent(filename)
@@ -78,16 +78,12 @@ class OPassAPIModels: ObservableObject {
             return false
         }
     }
-    private func loadLocalData(filename: String) throws -> Data? {
-        do {
-            if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                let fileURL = url.appendingPathComponent(filename)
-                let data = try Data(contentsOf: fileURL)
-                return data
-            }
-            return nil
-        } catch {
+    
+    private func loadLocalData(filename: String) -> Data? {
+        guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return nil
         }
+        let fileURL = url.appendingPathComponent(filename)
+        return try? Data(contentsOf: fileURL)
     }
 }
