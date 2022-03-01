@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var OPassAPI = OPassAPIModels()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        EventListView()
+            .environmentObject(OPassAPI)
     }
 }
 
+#if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+#endif

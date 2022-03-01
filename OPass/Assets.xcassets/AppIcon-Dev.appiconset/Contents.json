@@ -1,115 +1,115 @@
 {
   "images" : [
     {
-      "filename" : "iOS-iPhone-notification@2x.png",
+      "filename" : "iOS Dev-iPhone-notification@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "iOS-iPhone-notification@3x.png",
+      "filename" : "iOS Dev-iPhone-notification@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
-      "filename" : "iOS-spotlight-settings@2x.png",
+      "filename" : "iOS Dev-spotlight-settings@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "iOS-spotlight-settings@3x.png",
+      "filename" : "iOS Dev-spotlight-settings@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename" : "iOS-spotlight@2x.png",
+      "filename" : "iOS Dev-spotlight@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "iOS-spotlight@3x.png",
+      "filename" : "iOS Dev-spotlight@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "iOS-iPhone@2x.png",
+      "filename" : "iOS Dev-iPhone@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "iOS-iPhone@3x.png",
+      "filename" : "iOS Dev-iPhone@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
-      "filename" : "iOS-iPad-notification@1x.png",
+      "filename" : "iOS Dev-iPad-notification@1x.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "20x20"
     },
     {
-      "filename" : "iOS-iPad-notification@2x.png",
+      "filename" : "iOS Dev-iPad-notification@2x.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "iOS-settings@1x.png",
+      "filename" : "iOS Dev-settings@1x.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "29x29"
     },
     {
-      "filename" : "iOS-settings@2x.png",
+      "filename" : "iOS Dev-settings@2x.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "iOS-iPad-spotlight@1x.png",
+      "filename" : "iOS Dev-iPad-spotlight@1x.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "40x40"
     },
     {
-      "filename" : "iOS-iPad-spotlight@2x.png",
+      "filename" : "iOS Dev-iPad-spotlight@2x.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "iOS-iPad@1x.png",
+      "filename" : "iOS Dev-iPad@1x.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "76x76"
     },
     {
-      "filename" : "iOS-iPad@2x.png",
+      "filename" : "iOS Dev-iPad@2x.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
-      "filename" : "iOS-iPadPro@2x.png",
+      "filename" : "iOS Dev-iPadPro@2x.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "iOS-marketing.png",
+      "filename" : "iOS Dev-marketing.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
     },
     {
-      "filename" : "watchOS-notificition-38mm@2x.png",
+      "filename" : "watchOS Dev-notificition-38mm@2x.png",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -117,7 +117,7 @@
       "subtype" : "38mm"
     },
     {
-      "filename" : "watchOS-notificition-42mm@2x.png",
+      "filename" : "watchOS Dev-notificition-42mm@2x.png",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -125,14 +125,14 @@
       "subtype" : "42mm"
     },
     {
-      "filename" : "watchOS-settings@2x.png",
+      "filename" : "watchOS Dev-settings@2x.png",
       "idiom" : "watch",
       "role" : "companionSettings",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "watchOS-settings@3x.png",
+      "filename" : "watchOS Dev-settings@3x.png",
       "idiom" : "watch",
       "role" : "companionSettings",
       "scale" : "3x",
@@ -146,7 +146,7 @@
       "subtype" : "45mm"
     },
     {
-      "filename" : "watchOS-all.png",
+      "filename" : "watchOS Dev-all.png",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
@@ -182,7 +182,7 @@
       "subtype" : "45mm"
     },
     {
-      "filename" : "watchOS-short-38mm@2x.png",
+      "filename" : "watchOS Dev-short-38mm@2x.png",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -190,7 +190,7 @@
       "subtype" : "38mm"
     },
     {
-      "filename" : "watchOS-short-42mm@2x.png",
+      "filename" : "watchOS Dev-short-42mm@2x.png",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -212,7 +212,7 @@
       "subtype" : "45mm"
     },
     {
-      "filename" : "watchOS-marketing.png",
+      "filename" : "watchOS Dev-marketing.png",
       "idiom" : "watch-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
