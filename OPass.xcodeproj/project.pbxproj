@@ -10,6 +10,11 @@
 		4F48B5D427CF07910010FC2C /* eventListSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D327CF07910010FC2C /* eventListSample.json */; };
 		4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */; };
 		4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */; };
+		D3C6194827CF864B00643D97 /* EventSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194727CF864B00643D97 /* EventSessionModel.swift */; };
+		D3C6194B27CF964A00643D97 /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194A27CF964A00643D97 /* URLImageView.swift */; };
+		D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingView.swift */; };
+		D3C6194F27CF9A8800643D97 /* TestTabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194E27CF9A8800643D97 /* TestTabsView.swift */; };
+		D3C6195127CFA9A800643D97 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6195027CFA9A800643D97 /* SessionView.swift */; };
 		D3D3788227CE440D00021FC4 /* OPassAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788127CE440D00021FC4 /* OPassAPI.swift */; };
 		D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788A27CE542100021FC4 /* MoreModels.swift */; };
 		D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789027CE62EB00021FC4 /* EventListView.swift */; };
@@ -24,6 +29,11 @@
 		4F48B5D327CF07910010FC2C /* eventListSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventListSample.json; sourceTree = "<group>"; };
 		4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPISampleExt.swift; sourceTree = "<group>"; };
 		4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventSettingsSample.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		D3C6194727CF864B00643D97 /* EventSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSessionModel.swift; sourceTree = "<group>"; };
+		D3C6194A27CF964A00643D97 /* URLImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
+		D3C6194C27CF9A7400643D97 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingView.swift; path = OPass/Views/Tabs/SettingView.swift; sourceTree = SOURCE_ROOT; };
+		D3C6194E27CF9A8800643D97 /* TestTabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabsView.swift; sourceTree = "<group>"; };
+		D3C6195027CFA9A800643D97 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionView.swift; path = OPass/Views/Tabs/SessionView.swift; sourceTree = SOURCE_ROOT; };
 		D3D3788127CE440D00021FC4 /* OPassAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPI.swift; sourceTree = "<group>"; };
 		D3D3788A27CE542100021FC4 /* MoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreModels.swift; sourceTree = "<group>"; };
 		D3D3789027CE62EB00021FC4 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
@@ -46,12 +56,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D3C6194927CF963000643D97 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				D3C6194A27CF964A00643D97 /* URLImageView.swift */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		D3C6195227CFC10400643D97 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				D3C6194C27CF9A7400643D97 /* SettingView.swift */,
+				D3C6195027CFA9A800643D97 /* SessionView.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
 		D3D3787F27CE42A200021FC4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				D3E4E6C027CD158400FFACEB /* ContentView.swift */,
 				D3D3789027CE62EB00021FC4 /* EventListView.swift */,
-				D3D3788427CE442600021FC4 /* Tabs */,
+				D3C6194E27CF9A8800643D97 /* TestTabsView.swift */,
+				D3C6195227CFC10400643D97 /* Tabs */,
+				D3C6194927CF963000643D97 /* Additions */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -68,17 +97,11 @@
 		D3D3788327CE441200021FC4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D3C6194727CF864B00643D97 /* EventSessionModel.swift */,
 				D3D3789227CE70EE00021FC4 /* EventSettingsModel.swift */,
 				D3D3788A27CE542100021FC4 /* MoreModels.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		D3D3788427CE442600021FC4 /* Tabs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tabs;
 			sourceTree = "<group>";
 		};
 		D3E4E6B227CD158400FFACEB = {
@@ -193,10 +216,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3D3788227CE440D00021FC4 /* OPassAPI.swift in Sources */,
+				D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */,
 				D3E4E6C127CD158400FFACEB /* ContentView.swift in Sources */,
+				D3C6194B27CF964A00643D97 /* URLImageView.swift in Sources */,
 				D3D3789327CE70EE00021FC4 /* EventSettingsModel.swift in Sources */,
 				D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */,
 				D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */,
+				D3C6195127CFA9A800643D97 /* SessionView.swift in Sources */,
+				D3C6194827CF864B00643D97 /* EventSessionModel.swift in Sources */,
+				D3C6194F27CF9A8800643D97 /* TestTabsView.swift in Sources */,
 				4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */,
 				D3E4E6BF27CD158400FFACEB /* OPassApp.swift in Sources */,
 			);
@@ -336,6 +364,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -347,7 +376,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -366,6 +395,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -377,7 +407,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

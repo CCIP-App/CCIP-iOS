@@ -8,12 +8,12 @@
 import Foundation
 
 struct EventModel: Hashable, Codable {
-    var event_id: String
-    var display_name: DisplayTextModel
-    var logo_url: String
+    var event_id = ""
+    var display_name = DisplayTextModel()
+    var logo_url = ""
 }
 
 struct DisplayTextModel: Hashable, Codable {
-    var en: String
-    var zh: String
+    var en = ""
+    var zh = ""
 }

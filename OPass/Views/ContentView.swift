@@ -12,8 +12,14 @@ struct ContentView: View {
     @EnvironmentObject var OPassAPI: OPassAPIModels
     
     var body: some View {
-        EventListView()
-            .environmentObject(OPassAPI)
+        //Only for API Testing
+        if OPassAPI.eventSettings.event_id == "" {
+            EventListView()
+                .environmentObject(OPassAPI)
+        } else {
+            TestTabsView()
+                .environmentObject(OPassAPI)
+        }
     }
 }
 
