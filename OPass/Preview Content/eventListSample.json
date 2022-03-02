@@ -1,0 +1,82 @@
+[
+    {
+        "event_id": "SITCON_2021",
+        "display_name": {
+            "en": "SITCON 2021",
+            "zh": "SITCON 2021"
+        },
+        "logo_url": "https://sitcon.org/branding/withname-white.png"
+    },
+    {
+        "event_id": "COSCUP_2021",
+        "display_name": {
+            "en": "COSCUP 2021",
+            "zh": "COSCUP 2021"
+        },
+        "logo_url": "https://coscup.org/2020/images/logo-512-white.png"
+    },
+    {
+        "event_id": "HITCON_2020",
+        "display_name": {
+            "en": "HITCON 2020",
+            "zh": "HITCON 2020"
+        },
+        "logo_url": "https://hitcon.org/2020/images/logo_padding.png"
+    },
+    {
+        "event_id": "PyCon_2020",
+        "display_name": {
+            "en": "PyConTW 2020",
+            "zh": "PyConTW 2020"
+        },
+        "logo_url": "https://raw.githubusercontent.com/pycontw/ccip-files/master/2020/mobile_logo_white_title.png"
+    },
+    {
+        "event_id": "SITCON_2020",
+        "display_name": {
+            "en": "SITCON 2020",
+            "zh": "SITCON 2020"
+        },
+        "logo_url": "https://sitcon.org/branding/withname-white.png"
+    },
+    {
+        "event_id": "COSCUP_2020",
+        "display_name": {
+            "en": "COSCUP 2020",
+            "zh": "COSCUP 2020"
+        },
+        "logo_url": "https://coscup.org/2020/images/logo-512-white.png"
+    },
+    {
+        "event_id": "Crosslink_2019",
+        "display_name": {
+            "en": "Crosslink 2019",
+            "zh": "Crosslink 2019"
+        },
+        "logo_url": "https://crosslink.taipei/images/logo.png"
+    },
+    {
+        "event_id": "PyCon_2019",
+        "display_name": {
+            "en": "PyConTW 2019",
+            "zh": "PyConTW 2019"
+        },
+        "logo_url": "https://github.com/pycontw/ccip-files/blob/master/mobile-logo.png?raw=true"
+    },
+    {
+        "event_id": "HITCON_2019",
+        "display_name": {
+            "en": "HITCON CMT 2019",
+            "zh": "HITCON CMT 2019"
+        },
+        "logo_url": "https://cfp2019.hitcon.org/static/images/HITCON15_KV.png"
+    },
+    {
+        "event_id": "COSCUP_2019",
+        "display_name": {
+            "en": "COSCUP 2019",
+            "zh": "COSCUP 2019"
+        },
+        "logo_url": "https://coscup.org/2019/logo-512-white.png"
+    }
+]

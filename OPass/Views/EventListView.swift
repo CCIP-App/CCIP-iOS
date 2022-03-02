@@ -29,7 +29,7 @@ struct EventListView: View {
 struct EventListView_Previews: PreviewProvider {
     static var previews: some View {
         EventListView()
-            .environmentObject(OPassAPIModels())
+            .environmentObject(OPassAPIModels.mock())
     }
 }
 #endif

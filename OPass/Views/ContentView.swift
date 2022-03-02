@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @StateObject var OPassAPI = OPassAPIModels()
+    @EnvironmentObject var OPassAPI: OPassAPIModels
     
     var body: some View {
         EventListView()
@@ -21,6 +21,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(OPassAPIModels.mock())
     }
 }
 #endif
