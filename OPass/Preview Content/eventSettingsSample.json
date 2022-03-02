@@ -1,26 +1,34 @@
 {
-    "event_id": "SITCON_2021",
+    "event_id": "SITCON_2020",
     "display_name": {
-        "en": "SITCON 2021",
-        "zh": "SITCON 2021"
+        "en": "SITCON 2020",
+        "zh": "SITCON 2020"
     },
     "logo_url": "https://sitcon.org/branding/withname-white.png",
     "event_date": {
-        "start": "2021-09-04T09:00:00+08:00",
-        "end": "2021-09-04T18:00:00+08:00"
+        "start": "2020-08-08T00:00:00+08:00",
+        "end": "2020-08-08T00:00:00+08:00"
     },
     "publish": {
-        "start": "2021-01-24T08:00",
-        "end": "2021-12-28T08:00"
+        "start": "2020-01-24T08:00",
+        "end": "2020-12-28T08:00"
     },
     "features": [
+        {
+            "feature": "fastpass",
+            "display_text": {
+                "en": "Fast Pass",
+                "zh": "快速通關"
+            },
+            "url": "https://sitcon.opass.app"
+        },
         {
             "feature": "schedule",
             "display_text": {
                 "en": "Schedule",
                 "zh": "議程"
             },
-            "url": "https://sitcon.org/2021/json/session.json"
+            "url": "https://sitcon.org/2020/json/session.json"
         },
         {
             "feature": "announcement",
@@ -31,8 +39,23 @@
             "url": "https://sitcon.opass.app"
         },
         {
+            "feature": "puzzle",
+            "display_text": {
+                "en": "#define matrix",
+                "zh": "#define matrix"
+            },
+            "url": "https://play.sitcon.party/?mode=app&token={public_token}&"
+        },
+        {
+            "feature": "ticket",
+            "display_text": {
+                "en": "Ticket",
+                "zh": "我的票券"
+            }
+        },
+        {
             "feature": "webview",
-            "icon": "https://sitcon.org/2021/img/baseline_how_to_reg_black_48.png",
+            "icon": "https://sitcon.org/2020/img/baseline_how_to_reg_black_48.png",
             "display_text": {
                 "en": "Health Declaration",
                 "zh": "健康聲明書"
@@ -56,12 +79,25 @@
             "url": "https://ysitd.licson.net/channel/sitcon/today"
         },
         {
+            "feature": "wifi",
+            "display_text": {
+                "en": "WiFi",
+                "zh": "會場 WiFi"
+            },
+            "wifi": [
+                {
+                    "SSID": "SITCON 2020",
+                    "password": "20200808"
+                }
+            ]
+        },
+        {
             "feature": "venue",
             "display_text": {
                 "en": "Venue",
                 "zh": "會場地圖"
             },
-            "url": "https://sitcon.org/2021/venue?mode=app"
+            "url": "https://sitcon.org/2020/venue?mode=app"
         },
         {
             "feature": "sponsors",
@@ -69,7 +105,7 @@
                 "en": "Sponsors",
                 "zh": "贊助"
             },
-            "url": "https://sitcon.org/2021/sponsor?mode=app"
+            "url": "https://sitcon.org/2020/team/sponsor?mode=app"
         },
         {
             "feature": "staffs",
@@ -77,7 +113,7 @@
                 "en": "Staffs",
                 "zh": "工作人員"
             },
-            "url": "https://sitcon.org/2021/team?mode=app"
+            "url": "https://sitcon.org/2020/team?mode=app"
         }
     ]
 }
