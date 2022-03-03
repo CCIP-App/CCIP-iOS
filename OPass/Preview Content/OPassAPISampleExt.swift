@@ -23,9 +23,13 @@ fileprivate func loadJson<T: Decodable>(filename: String) -> T {
 extension OPassAPIModels {
     static func mock() -> OPassAPIModels {
         let model = OPassAPIModels()
-        model.eventLogo = Data()
         model.eventList = loadJson(filename: "eventListSample.json")
-        model.eventSettings = loadJson(filename: "eventSettingsSample.json")
         return model
+    }
+}
+
+extension EventSettingsModel {
+    static func mock() -> EventSettingsModel {
+        return loadJson(filename: "eventSettingsSample.json")
     }
 }

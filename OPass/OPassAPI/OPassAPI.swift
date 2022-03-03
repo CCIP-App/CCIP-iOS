@@ -9,9 +9,17 @@ import Foundation
 
 class OPassAPIModels: ObservableObject {
     
-    @Published var eventLogo = Data()
     @Published var eventList = [EventModel]()
-    @Published var eventSettings = EventSettingsModel()
+    @Published var currentEvent: EventModel? = nil {
+        willSet {
+            if newValue?.eventSettings == nil {
+                Task {
+                    await newValue?.loadEventSettings_Logo()
+                }
+            }
+        }
+    }
+    
     
     func loadEventList() async {
         guard let url = URL(string: "https://portal.opass.app/events/") else {
@@ -29,40 +37,6 @@ class OPassAPIModels: ObservableObject {
             }
         } catch {
             print("Invalid EventList Data From API")
-        }
-    }
-    func loadEventSettings_Logo(event_id: String) async {
-        //Settings
-        guard let SettingsUrl = URL(string: "https://portal.opass.app/events/\(event_id)") else {
-            print("Invalid EventDetail URL")
-            return
-        }
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: SettingsUrl)
-            
-            let decodedResponse = try JSONDecoder().decode(EventSettingsModel.self, from: data)
-            
-            DispatchQueue.main.async {
-                self.eventSettings = decodedResponse
-            }
-        } catch {
-            print("EventSettingsDataError")
-        }
-        //Logo
-        guard let logoUrl = URL(string: self.eventSettings.logo_url) else {
-            print("Invalid Sessions PNG URL")
-            return
-        }
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: logoUrl)
-            
-            DispatchQueue.main.async {
-                self.eventLogo = data
-            }
-        } catch {
-            print("EventLogoError")
         }
     }
     

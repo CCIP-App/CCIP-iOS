@@ -14,8 +14,10 @@ struct EventListView: View {
     var body: some View {
         ScrollView {
             VStack {
-                ForEach(OPassAPI.eventList, id: \.self) { list in
-                    Text(list.event_id)
+                ForEach(OPassAPI.eventList, id: \.event_id) { list in
+                    Button(list.event_id) {
+                        OPassAPI.currentEvent = list
+                    }
                 }
             }
         }

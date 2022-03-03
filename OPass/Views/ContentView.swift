@@ -10,10 +10,15 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIModels
-    
+
     var body: some View {
-        EventListView()
-            .environmentObject(OPassAPI)
+        VStack {
+            if let event = OPassAPI.currentEvent {
+                EventView(event: event)
+            }
+            EventListView()
+                .environmentObject(OPassAPI)
+        }
     }
 }
 

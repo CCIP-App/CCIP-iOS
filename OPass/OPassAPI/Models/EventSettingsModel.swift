@@ -13,7 +13,7 @@ struct EventSettingsModel: Hashable, Codable {
     var logo_url: String = ""
     var event_date: Start_EndModel = Start_EndModel(start: "", end: "")
     var publish: Start_EndModel = Start_EndModel(start: "", end: "")
-    var features: [FeatureDetailModel] = [FeatureDetailModel(feature: "", display_text: DisplayTextModel(en: "", zh: ""))]
+    var features: [FeatureDetailModel] = []
 }
 
 struct WiFiModel: Hashable, Codable {
@@ -27,9 +27,13 @@ struct Start_EndModel: Hashable, Codable {
 }
 
 struct FeatureDetailModel: Hashable, Codable {
-    var feature: String
+    var feature: FeatureType
     var icon: String?
     var display_text: DisplayTextModel
     var wifi: [WiFiModel]?
     var url: String?
+}
+
+enum FeatureType: String, Hashable, Codable {
+    case fastpass, ticket, schedule, announcement, wifi, telegram, im, puzzle, venue, sponsors, staffs, webview
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F03683927CFE30F00A6AEF1 /* EventSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03683827CFE30F00A6AEF1 /* EventSettingsView.swift */; };
+		4F03683B27CFEAD800A6AEF1 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03683A27CFEAD800A6AEF1 /* EventView.swift */; };
 		4F48B5D427CF07910010FC2C /* eventListSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D327CF07910010FC2C /* eventListSample.json */; };
 		4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */; };
 		4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F03683827CFE30F00A6AEF1 /* EventSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSettingsView.swift; sourceTree = "<group>"; };
+		4F03683A27CFEAD800A6AEF1 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		4F48B5D327CF07910010FC2C /* eventListSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventListSample.json; sourceTree = "<group>"; };
 		4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPISampleExt.swift; sourceTree = "<group>"; };
 		4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventSettingsSample.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
@@ -52,6 +56,8 @@
 				D3E4E6C027CD158400FFACEB /* ContentView.swift */,
 				D3D3789027CE62EB00021FC4 /* EventListView.swift */,
 				D3D3788427CE442600021FC4 /* Tabs */,
+				4F03683827CFE30F00A6AEF1 /* EventSettingsView.swift */,
+				4F03683A27CFEAD800A6AEF1 /* EventView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,7 +198,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F03683927CFE30F00A6AEF1 /* EventSettingsView.swift in Sources */,
 				D3D3788227CE440D00021FC4 /* OPassAPI.swift in Sources */,
+				4F03683B27CFEAD800A6AEF1 /* EventView.swift in Sources */,
 				D3E4E6C127CD158400FFACEB /* ContentView.swift in Sources */,
 				D3D3789327CE70EE00021FC4 /* EventSettingsModel.swift in Sources */,
 				D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */,
