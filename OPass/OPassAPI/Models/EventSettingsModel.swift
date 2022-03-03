@@ -8,28 +8,28 @@
 import Foundation
 
 struct EventSettingsModel: Hashable, Codable {
-    var event_id: String = ""
-    var display_name: DisplayTextModel = DisplayTextModel(en: "", zh: "")
-    var logo_url: String = ""
-    var event_date: Start_EndModel = Start_EndModel(start: "", end: "")
-    var publish: Start_EndModel = Start_EndModel(start: "", end: "")
+    var event_id = ""
+    var display_name = DisplayTextModel()
+    var logo_url = ""
+    var event_date = Start_EndModel()
+    var publish = Start_EndModel()
     var features: [FeatureDetailModel] = []
 }
 
 struct WiFiModel: Hashable, Codable {
-    var SSID: String
-    var password: String
+    var SSID = ""
+    var password = ""
 }
 
 struct Start_EndModel: Hashable, Codable {
-    var start: String
-    var end: String
+    var start = ""
+    var end = ""
 }
 
 struct FeatureDetailModel: Hashable, Codable {
     var feature: FeatureType
     var icon: String?
-    var display_text: DisplayTextModel
+    var display_text = DisplayTextModel()
     var wifi: [WiFiModel]?
     var url: String?
 }

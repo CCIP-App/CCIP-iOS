@@ -20,6 +20,8 @@ class OPassAPIModels: ObservableObject {
         }
     }
     
+    @Published var eventSettings = EventSettingsModel()
+    @Published var eventSession = EventSessionModel()
     
     func loadEventList() async {
         guard let url = URL(string: "https://portal.opass.app/events/") else {
@@ -37,6 +39,42 @@ class OPassAPIModels: ObservableObject {
             }
         } catch {
             print("Invalid EventList Data From API")
+        }
+    }
+    
+    func loadEventSession() async {
+        
+        //Looking for better solution
+        var session_url = ""
+            
+        if eventSettings.features[0].feature == .schedule {
+            session_url = eventSettings.features[0].url!
+        } else {
+            session_url = eventSettings.features[1].url!
+        }
+        //End of it
+        
+        guard let url = URL(string: session_url) else {
+            print("Invalid EventSession URL")
+            DispatchQueue.main.async {
+                self.eventSession = EventSessionModel()
+            }
+            return
+        }
+        
+        do {
+            let (urlData, _) = try await URLSession.shared.data(from: url)
+            
+            let decodedResponse = try JSONDecoder().decode(EventSessionModel.self, from: urlData)
+            
+            DispatchQueue.main.async {
+                self.eventSession = decodedResponse
+            }
+        } catch {
+            DispatchQueue.main.async {
+                self.eventSession = EventSessionModel()
+            }
+            print("Invalid EventSession Data From API")
         }
     }
     

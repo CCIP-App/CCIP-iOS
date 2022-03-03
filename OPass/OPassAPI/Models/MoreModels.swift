@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class EventModel: ObservableObject, Codable {
     //conform to Codable
     enum CodingKeys: CodingKey {
@@ -73,6 +72,6 @@ class EventModel: ObservableObject, Codable {
 }
 
 struct DisplayTextModel: Hashable, Codable {
-    var en: String
-    var zh: String
+    var en = ""
+    var zh = ""
 }

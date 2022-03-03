@@ -16,8 +16,14 @@ struct ContentView: View {
             if let event = OPassAPI.currentEvent {
                 EventView(event: event)
             }
-            EventListView()
-                .environmentObject(OPassAPI)
+            //Only for API Testing
+            if OPassAPI.eventSettings.event_id == "" {
+                EventListView()
+                    .environmentObject(OPassAPI)
+            } else {
+                TestTabsView()
+                    .environmentObject(OPassAPI)
+            }
         }
     }
 }
