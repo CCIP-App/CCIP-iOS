@@ -16,7 +16,7 @@
 		D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingView.swift */; };
 		D3C6194F27CF9A8800643D97 /* TestTabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194E27CF9A8800643D97 /* TestTabsView.swift */; };
 		D3C6195127CFA9A800643D97 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6195027CFA9A800643D97 /* SessionView.swift */; };
-		D3D3788227CE440D00021FC4 /* OPassAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788127CE440D00021FC4 /* OPassAPI.swift */; };
+		D3D3788227CE440D00021FC4 /* OPassAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */; };
 		D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788A27CE542100021FC4 /* MoreModels.swift */; };
 		D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789027CE62EB00021FC4 /* EventListView.swift */; };
 		D3D3789327CE70EE00021FC4 /* EventSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789227CE70EE00021FC4 /* EventSettingsModel.swift */; };
@@ -36,7 +36,7 @@
 		D3C6194C27CF9A7400643D97 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingView.swift; path = OPass/Views/Tabs/SettingView.swift; sourceTree = SOURCE_ROOT; };
 		D3C6194E27CF9A8800643D97 /* TestTabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabsView.swift; sourceTree = "<group>"; };
 		D3C6195027CFA9A800643D97 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionView.swift; path = OPass/Views/Tabs/SessionView.swift; sourceTree = SOURCE_ROOT; };
-		D3D3788127CE440D00021FC4 /* OPassAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPI.swift; sourceTree = "<group>"; };
+		D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPIViewModel.swift; sourceTree = "<group>"; };
 		D3D3788A27CE542100021FC4 /* MoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreModels.swift; sourceTree = "<group>"; };
 		D3D3789027CE62EB00021FC4 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		D3D3789227CE70EE00021FC4 /* EventSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSettingsModel.swift; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 		D3D3788027CE43D700021FC4 /* OPassAPI */ = {
 			isa = PBXGroup;
 			children = (
-				D3D3788127CE440D00021FC4 /* OPassAPI.swift */,
+				D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */,
 				D314B66E27D1089200481D5E /* EventViewModel.swift */,
 				D3D3788327CE441200021FC4 /* Models */,
 			);
@@ -218,7 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3D3788227CE440D00021FC4 /* OPassAPI.swift in Sources */,
+				D3D3788227CE440D00021FC4 /* OPassAPIViewModel.swift in Sources */,
 				D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */,
 				D3E4E6C127CD158400FFACEB /* ContentView.swift in Sources */,
 				D3C6194B27CF964A00643D97 /* URLImageView.swift in Sources */,

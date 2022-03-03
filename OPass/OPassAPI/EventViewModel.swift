@@ -36,44 +36,40 @@ class EventViewModel: ObservableObject, Codable {
     @Published var eventSession: EventSessionModel? = nil
     
     func loadEventSettings_Logo() async {
-        //Settings
         guard let SettingsUrl = URL(string: "https://portal.opass.app/events/\(event_id)") else {
             print("Invalid EventDetail URL")
             return
         }
         
-        let group = DispatchGroup()
-        group.enter()
-        
+        let eventSettings: EventSettingsModel
         do {
-            let eventSettings: EventSettingsModel = try await URLSession.shared.jsonData(from: SettingsUrl)
+            eventSettings = try await URLSession.shared.jsonData(from: SettingsUrl)
             DispatchQueue.main.async {
                 self.eventSettings = eventSettings
-                group.leave()
             }
         } catch {
             print("EventSettingsDataError")
             return
         }
-        
-        group.wait()
-        
-        //Logo
-        if let logoURL = self.eventSettings?.logo_url {
-            guard let logoUrl = URL(string: logoURL) else {
-                print("Invalid Sessions PNG URL")
-                return
+        if let logo = await loadLogo(from: eventSettings.logo_url) {
+            DispatchQueue.main.async {
+                self.eventLogo = logo
             }
+        }
+    }
+    
+    fileprivate func loadLogo(from url: String) async -> Data? {
+        guard let logoUrl = URL(string: url) else {
+            print("Invalid Sessions PNG URL")
+            return nil
+        }
 
-            do {
-                let (data, _) = try await URLSession.shared.data(from: logoUrl)
-
-                DispatchQueue.main.async {
-                    self.eventLogo = data
-                }
-            } catch {
-                print("EventLogoError")
-            }
+        do {
+            let (data, _) = try await URLSession.shared.data(from: logoUrl)
+            return data
+        } catch {
+            print("EventLogoError")
+            return nil
         }
     }
     
