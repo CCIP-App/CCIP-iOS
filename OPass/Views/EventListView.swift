@@ -16,7 +16,6 @@ struct EventListView: View {
         ScrollView {
             VStack {
                 ForEach(OPassAPI.eventList, id: \.event_id) { list in
-                    
                     Button(action: {
                         OPassAPI.currentEvent = list
                     }) {
@@ -28,7 +27,6 @@ struct EventListView: View {
                             }
                             .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 0.35)
                             .background(Color.purple)
-
                             Text(list.display_name.zh)
                                 .font(.title)
                                 .padding()
