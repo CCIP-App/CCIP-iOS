@@ -10,15 +10,20 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIModels
-    
+
     var body: some View {
-        //Only for API Testing
-        if OPassAPI.eventSettings.event_id == "" {
-            EventListView()
-                .environmentObject(OPassAPI)
-        } else {
-            TestTabsView()
-                .environmentObject(OPassAPI)
+        VStack {
+            if let event = OPassAPI.currentEvent {
+                EventView(event: event)
+            }
+            //Only for API Testing
+            if OPassAPI.eventSettings.event_id == "" {
+                EventListView()
+                    .environmentObject(OPassAPI)
+            } else {
+                TestTabsView()
+                    .environmentObject(OPassAPI)
+            }
         }
     }
 }

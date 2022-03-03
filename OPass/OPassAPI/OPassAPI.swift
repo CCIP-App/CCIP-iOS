@@ -9,8 +9,17 @@ import Foundation
 
 class OPassAPIModels: ObservableObject {
     
-    @Published var eventLogo = Data()
     @Published var eventList = [EventModel]()
+    @Published var currentEvent: EventModel? = nil {
+        willSet {
+            if newValue?.eventSettings == nil {
+                Task {
+                    await newValue?.loadEventSettings_Logo()
+                }
+            }
+        }
+    }
+    
     @Published var eventSettings = EventSettingsModel()
     @Published var eventSession = EventSessionModel()
     
@@ -33,53 +42,37 @@ class OPassAPIModels: ObservableObject {
         }
     }
     
-    func loadEventSettings_Logo(event_id: String) async {
-        //Clean Data
-        DispatchQueue.main.async {
-            self.eventLogo = Data()
-        }
+    func loadEventSession() async {
         
-        //Fetch Settings
-        guard let SettingsUrl = URL(string: "https://portal.opass.app/events/\(event_id)") else {
-            print("Invalid EventDetail URL")
-            return
+        //Looking for better solution
+        var session_url = ""
+            
+        if eventSettings.features[0].feature == .schedule {
+            session_url = eventSettings.features[0].url!
+        } else {
+            session_url = eventSettings.features[1].url!
         }
+        //End of it
         
-        let group = DispatchGroup()
-        group.enter()
+        guard let url = URL(string: session_url) else {
+            print("Invalid EventSession URL")
+            DispatchQueue.main.async {
+                self.eventSession = EventSessionModel()
+            }
         
         do {
-            let (data, _) = try await URLSession.shared.data(from: SettingsUrl)
+            let (urlData, _) = try await URLSession.shared.data(from: url)
             
-            let decodedResponse = try JSONDecoder().decode(EventSettingsModel.self, from: data)
+            let decodedResponse = try JSONDecoder().decode(EventSessionModel.self, from: urlData)
             
             DispatchQueue.main.async {
-                self.eventSettings = decodedResponse
-                group.leave()
+                self.eventSession = decodedResponse
             }
         } catch {
-            print("EventSettingsDataError")
-            return
-        }
-        
-        group.wait()
-        //Fetch Logo
-        guard let logoUrl = URL(string: eventSettings.logo_url) else {
-            print("Invalid Sessions PNG URL" + eventSettings.logo_url)
             DispatchQueue.main.async {
-                self.eventLogo = Data()
+                self.eventSession = EventSessionModel()
             }
-            return
-        }
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: logoUrl)
-            
-            DispatchQueue.main.async {
-                self.eventLogo = data
-            }
-        } catch {
-            print("EventLogoError")
+            print("Invalid EventSession Data From API")
         }
     }
     

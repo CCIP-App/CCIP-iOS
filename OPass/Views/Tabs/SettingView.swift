@@ -14,7 +14,7 @@ struct SettingView: View {
     var body: some View {
         //Only for API Testing
         VStack {
-            if let data = OPassAPI.eventLogo, let uiimage = UIImage(data: data) {
+            if let data = OPassAPI.currentEvent?.eventLogo, let uiimage = UIImage(data: data) {
                 Image(uiImage: uiimage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)

@@ -15,11 +15,9 @@ struct EventListView: View {
         //Only for API Testing
         ScrollView {
             VStack {
-                ForEach(OPassAPI.eventList, id: \.self) { list in
+                ForEach(OPassAPI.eventList, id: \.event_id) { list in
                     Button(action: {
-                        Task {
-                            await OPassAPI.loadEventSettings_Logo(event_id: list.event_id)
-                        }
+                        OPassAPI.currentEvent = list
                     }) {
                         VStack(spacing: 0) {
                             HStack {
@@ -29,7 +27,6 @@ struct EventListView: View {
                             }
                             .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 0.35)
                             .background(Color.purple)
-                            
                             Text(list.display_name.zh)
                                 .font(.title)
                                 .padding()
