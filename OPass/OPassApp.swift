@@ -12,7 +12,7 @@ struct OPassApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(OPassAPIModels())
+                .environmentObject(OPassAPIViewModel())
         }
     }
 }

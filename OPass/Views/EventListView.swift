@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EventListView: View {
     
-    @EnvironmentObject var OPassAPI: OPassAPIModels
+    @EnvironmentObject var OPassAPI: OPassAPIViewModel
     
     var body: some View {
         //Only for API Testing
@@ -51,7 +51,7 @@ struct EventListView: View {
 struct EventListView_Previews: PreviewProvider {
     static var previews: some View {
         EventListView()
-            .environmentObject(OPassAPIModels.mock())
+            .environmentObject(OPassAPIViewModel.mock())
     }
 }
 #endif

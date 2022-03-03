@@ -8,30 +8,30 @@
 import Foundation
 
 struct EventSettingsModel: Hashable, Codable {
-    var event_id = ""
+    var event_id: String = ""
     var display_name = DisplayTextModel()
-    var logo_url = ""
+    var logo_url: String = ""
     var event_date = Start_EndModel()
     var publish = Start_EndModel()
     var features: [FeatureDetailModel] = []
 }
 
 struct WiFiModel: Hashable, Codable {
-    var SSID = ""
-    var password = ""
+    var SSID: String = ""
+    var password: String = ""
 }
 
 struct Start_EndModel: Hashable, Codable {
-    var start = ""
-    var end = ""
+    var start: String = ""
+    var end: String = ""
 }
 
 struct FeatureDetailModel: Hashable, Codable {
     var feature: FeatureType
-    var icon: String?
+    var icon: String? = nil
     var display_text = DisplayTextModel()
-    var wifi: [WiFiModel]?
-    var url: String?
+    var wifi: [WiFiModel]? = nil
+    var url: String? = nil
 }
 
 enum FeatureType: String, Hashable, Codable {

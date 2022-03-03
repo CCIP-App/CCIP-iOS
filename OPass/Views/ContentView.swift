@@ -9,19 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject var OPassAPI: OPassAPIModels
+    @EnvironmentObject var OPassAPI: OPassAPIViewModel
 
     var body: some View {
+        //Only for API Testing
         VStack {
             if let event = OPassAPI.currentEvent {
-                EventView(event: event)
-            }
-            //Only for API Testing
-            if OPassAPI.eventSettings.event_id == "" {
-                EventListView()
+                TestTabsView(event: event)
                     .environmentObject(OPassAPI)
             } else {
-                TestTabsView()
+                EventListView()
                     .environmentObject(OPassAPI)
             }
         }
@@ -32,7 +29,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(OPassAPIModels.mock())
+            .environmentObject(OPassAPIViewModel.mock())
     }
 }
 #endif
