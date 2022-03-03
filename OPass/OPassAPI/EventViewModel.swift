@@ -46,11 +46,9 @@ class EventViewModel: ObservableObject, Codable {
         group.enter()
         
         do {
-            let (data, _) = try await URLSession.shared.data(from: SettingsUrl)
-            
-            let decodedResponse = try JSONDecoder().decode(EventSettingsModel.self, from: data)
+            let eventSettings: EventSettingsModel = try await URLSession.shared.jsonData(from: SettingsUrl)
             DispatchQueue.main.async {
-                self.eventSettings = decodedResponse
+                self.eventSettings = eventSettings
                 group.leave()
             }
         } catch {
@@ -80,16 +78,11 @@ class EventViewModel: ObservableObject, Codable {
     }
     
     func loadEventSession() async {
-        
-        //Looking for better solution
-        var session_url = ""
-            
-        if eventSettings!.features[0].feature == .schedule {
-            session_url = eventSettings!.features[0].url!
-        } else {
-            session_url = eventSettings!.features[1].url!
+        let schefuleFeature = eventSettings?.features[ofType: .schedule]
+        guard let session_url = schefuleFeature?.url else {
+            print("Couldn't find session url in features")
+            return
         }
-        //End of it
         
         guard let url = URL(string: session_url) else {
             print("Invalid EventSession URL")
@@ -99,15 +92,19 @@ class EventViewModel: ObservableObject, Codable {
             return
         }
         do {
-            let (urlData, _) = try await URLSession.shared.data(from: url)
-            
-            let decodedResponse = try JSONDecoder().decode(EventSessionModel.self, from: urlData)
+            let eventSession: EventSessionModel = try await URLSession.shared.jsonData(from: url)
             
             DispatchQueue.main.async {
-                self.eventSession = decodedResponse
+                self.eventSession = eventSession
             }
         } catch {
             print("Invalid EventSession Data From API")
         }
+    }
+}
+
+extension Array where Element == FeatureDetailModel {
+    fileprivate subscript(ofType type: FeatureType) -> Element? {
+        return self.first { $0.feature == type }
     }
 }

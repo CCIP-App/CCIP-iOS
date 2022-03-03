@@ -27,12 +27,9 @@ class OPassAPIViewModel: ObservableObject {
         }
         
         do {
-            let (urlData, _) = try await URLSession.shared.data(from: url)
-            
-            let decodedResponse = try JSONDecoder().decode([EventViewModel].self, from: urlData)
-            
+            let eventList: [EventViewModel] = try await URLSession.shared.jsonData(from: url)
             DispatchQueue.main.async {
-                self.eventList = decodedResponse
+                self.eventList = eventList
             }
         } catch {
             print("Invalid EventList Data From API")
@@ -58,5 +55,12 @@ class OPassAPIViewModel: ObservableObject {
         }
         let fileURL = url.appendingPathComponent(filename)
         return try? Data(contentsOf: fileURL)
+    }
+}
+
+extension URLSession {
+    func jsonData<T: Decodable>(from url: URL) async throws -> T {
+        let (data, _) = try await self.data(from: url)
+        return try JSONDecoder().decode(T.self, from: data)
     }
 }
