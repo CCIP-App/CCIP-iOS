@@ -59,7 +59,8 @@ class OPassAPIModels: ObservableObject {
             DispatchQueue.main.async {
                 self.eventSession = EventSessionModel()
             }
-        
+            return
+        }
         do {
             let (urlData, _) = try await URLSession.shared.data(from: url)
             
