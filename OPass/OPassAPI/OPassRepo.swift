@@ -92,18 +92,10 @@ final class OPassRepo {
         }
         
         do {
-            return try await URLSession.shared.jsonData(from: url) { jsonDecoder in
-                jsonDecoder.dateDecodingStrategy = .custom { decoder in
-                    let container = try decoder.singleValueContainer()
-                    let jsonString = try container.decode(String.self)
-                    if let date = jsonString.toISODate()?.date {
-                        return date
-                    }
-                    throw LoadError.invalidDateString(jsonString)
-                }
-            }
+            return try await URLSession.shared.jsonData(from: url)
         } catch {
             print("Invalid EventSession Data From API")
+            print(error)
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
@@ -116,10 +108,9 @@ extension URL {
 }
 
 extension URLSession {
-    func jsonData<T: Decodable>(from url: URL, configDecoder: ((JSONDecoder) -> Void)? = nil) async throws -> T {
+    func jsonData<T: Decodable>(from url: URL) async throws -> T {
         let (data, _) = try await self.data(from: url)
         let decoder = JSONDecoder()
-        configDecoder?(decoder)
         return try decoder.decode(T.self, from: data)
     }
 }

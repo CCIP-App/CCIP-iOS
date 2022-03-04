@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftDate
 
 struct EventSessionModel: Hashable {
     var sessions = [[SessionModel()]]
@@ -47,24 +48,21 @@ extension SessionModel {
     }
 }
 
-extension Date {
-    func sameDay(as date: Date) -> Bool {
-        let components = self.dateComponents
-        let otherComponents = date.dateComponents
-        
-        return components.year == otherComponents.year &&
-                components.month == otherComponents.month &&
-                components.day == otherComponents.day
+extension DateInRegion {
+    func sameDay(as date: DateInRegion) -> Bool {
+        return self.year == date.year &&
+                self.month == date.month &&
+                self.day == date.day
     }
 }
 
-struct SessionModel: Hashable, Codable {
+struct SessionModel: Hashable {
     var id: String = ""
     var type: String? = nil
     var room: String = ""
     var broadcast: [String]? = nil
-    var start: Date = Date()
-    var end: Date = Date()
+    var start: DateInRegion = DateInRegion() //use DateInRegion from SwiftDate to keep timezone data
+    var end: DateInRegion = DateInRegion()
     var qa: String? = nil
     var slide: String? = nil
     var live: String? = nil
@@ -75,6 +73,38 @@ struct SessionModel: Hashable, Codable {
     var en = Title_DescriptionModel()
     var speakers: [String] = [""]
     var tags: [String] = [""]
+}
+
+//Since we use DateInRegion as the type of start and end, we have to again customize the json decode
+extension SessionModel: Decodable {
+    enum CodingKeys: CodingKey {
+        case id, type, room, broadcast, start, end, qa, slide, live, record, pad, language, zh, en, speakers, tags
+    }
+    //how can we avoid these boilerplate?
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.type = try container.decodeIfPresent(String.self, forKey: .type)
+        self.room = try container.decode(String.self, forKey: .room)
+        self.broadcast = try container.decodeIfPresent([String].self, forKey: .broadcast)
+        self.qa = try container.decodeIfPresent(String.self, forKey: .qa)
+        self.slide = try container.decodeIfPresent(String.self, forKey: .slide)
+        self.live = try container.decodeIfPresent(String.self, forKey: .live)
+        self.record = try container.decodeIfPresent(String.self, forKey: .record)
+        self.pad = try container.decodeIfPresent(String.self, forKey: .pad)
+        self.language = try container.decodeIfPresent(String.self, forKey: .language)
+        self.zh = try container.decode(Title_DescriptionModel.self, forKey: .zh)
+        self.en = try container.decode(Title_DescriptionModel.self, forKey: .en)
+        self.speakers = try container.decode([String].self, forKey: .speakers)
+        self.tags = try container.decode([String].self, forKey: .tags)
+        
+        let startString = try container.decode(String.self, forKey: .start)
+        let endString = try container.decode(String.self, forKey: .end)
+        
+        self.start = startString.toISODate()!
+        self.end = endString.toISODate()!
+        print(self.start)
+    }
 }
 
 struct SpeakerModel: Hashable, Codable {
