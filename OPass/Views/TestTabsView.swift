@@ -9,17 +9,17 @@ import SwiftUI
 
 struct TestTabsView: View {
     
-    @ObservedObject var event: EventViewModel
+    @ObservedObject var eventAPI: EventAPIViewModel
     
     var body: some View {
         //Only for API Testing
         VStack {
             TabView {
-                SettingView(event: event).tabItem {
+                SettingView(eventAPI: eventAPI).tabItem {
                     Image(systemName: "gearshape.fill")
                 }
                 
-                SessionView(event: event).tabItem({
+                SessionView(eventAPI: eventAPI).tabItem({
                     Image(systemName: "list.bullet.rectangle.portrait.fill")
                 })
                 
@@ -34,7 +34,7 @@ struct TestTabsView: View {
 #if DEBUG
 struct TestTabsView_Previews: PreviewProvider {
     static var previews: some View {
-        TestTabsView(event: OPassAPIViewModel.mock().eventList[5])
+        TestTabsView(eventAPI: OPassAPIViewModel.mock().eventList[5])
             .environmentObject(OPassAPIViewModel.mock())
     }
 }

@@ -33,7 +33,7 @@ final class OPassRepo {
         }
     }
     
-    static func loadEventList() async throws -> [EventViewModel] {
+    static func loadEventList() async throws -> [EventAPIViewModel] {
         guard let url = URL(.eventList) else {
             print("Invalid EventList URL")
             throw LoadError.invalidURL(url: .eventList)

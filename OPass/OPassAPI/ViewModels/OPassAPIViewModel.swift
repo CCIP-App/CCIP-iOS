@@ -7,10 +7,11 @@
 
 import Foundation
 
+//Endpoint hold by OPass Official.
 class OPassAPIViewModel: ObservableObject {
     
-    @Published var eventList = [EventViewModel]()
-    @Published var currentEvent: EventViewModel? = nil {
+    @Published var eventList = [EventAPIViewModel]()
+    @Published var currentEvent: EventAPIViewModel? = nil {
         willSet {
             if newValue?.eventSettings == nil {
                 Task {

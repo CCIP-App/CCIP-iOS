@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SettingView: View {
     
-    @ObservedObject var event: EventViewModel
+    @ObservedObject var eventAPI: EventAPIViewModel
     
     var body: some View {
         //Only for API Testing
         VStack {
-            if let data = event.eventLogo, let uiimage = UIImage(data: data) {
+            if let data = eventAPI.eventLogo, let uiimage = UIImage(data: data) {
                 Image(uiImage: uiimage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -23,10 +23,10 @@ struct SettingView: View {
                     .background(Color.purple)
             }
             
-            Text(event.eventSettings?.event_id ?? "No Current Event Data")
+            Text(eventAPI.eventSettings?.event_id ?? "No Current Event Data")
             
             ScrollView {
-                if let data = event.eventSettings {
+                if let data = eventAPI.eventSettings {
                     ForEach(data.features, id: \.self) { feature in
                         Text(feature.display_text.zh)
                     }
@@ -39,7 +39,7 @@ struct SettingView: View {
 #if DEBUG
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView(event: OPassAPIViewModel.mock().eventList[5])
+        SettingView(eventAPI: OPassAPIViewModel.mock().eventList[5])
             .environmentObject(OPassAPIViewModel.mock())
     }
 }

@@ -12,7 +12,7 @@
 		4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */; };
 		4F5EB73127D2311200235396 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 4F5EB73027D2311200235396 /* SwiftDate */; };
 		4FEF38FB27D13FBA00FC97F4 /* OPassRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF38FA27D13FBA00FC97F4 /* OPassRepo.swift */; };
-		D314B66F27D1089200481D5E /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314B66E27D1089200481D5E /* EventViewModel.swift */; };
+		D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314B66E27D1089200481D5E /* EventAPIViewModel.swift */; };
 		D3C6194827CF864B00643D97 /* EventSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194727CF864B00643D97 /* EventSessionModel.swift */; };
 		D3C6194B27CF964A00643D97 /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194A27CF964A00643D97 /* URLImageView.swift */; };
 		D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingView.swift */; };
@@ -33,7 +33,7 @@
 		4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPISampleExt.swift; sourceTree = "<group>"; };
 		4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventSettingsSample.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		4FEF38FA27D13FBA00FC97F4 /* OPassRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassRepo.swift; sourceTree = "<group>"; };
-		D314B66E27D1089200481D5E /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
+		D314B66E27D1089200481D5E /* EventAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPIViewModel.swift; sourceTree = "<group>"; };
 		D3C6194727CF864B00643D97 /* EventSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSessionModel.swift; sourceTree = "<group>"; };
 		D3C6194A27CF964A00643D97 /* URLImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
 		D3C6194C27CF9A7400643D97 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingView.swift; path = OPass/Views/Tabs/SettingView.swift; sourceTree = SOURCE_ROOT; };
@@ -62,6 +62,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D3BAB49C27D2536300ECD44A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */,
+				D314B66E27D1089200481D5E /* EventAPIViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		D3C6194927CF963000643D97 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +103,7 @@
 		D3D3788027CE43D700021FC4 /* OPassAPI */ = {
 			isa = PBXGroup;
 			children = (
-				D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */,
-				D314B66E27D1089200481D5E /* EventViewModel.swift */,
+				D3BAB49C27D2536300ECD44A /* ViewModels */,
 				D3D3788327CE441200021FC4 /* Models */,
 				4FEF38FA27D13FBA00FC97F4 /* OPassRepo.swift */,
 			);
@@ -240,7 +248,7 @@
 				D3C6194827CF864B00643D97 /* EventSessionModel.swift in Sources */,
 				D3C6194F27CF9A8800643D97 /* TestTabsView.swift in Sources */,
 				4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */,
-				D314B66F27D1089200481D5E /* EventViewModel.swift in Sources */,
+				D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */,
 				4FEF38FB27D13FBA00FC97F4 /* OPassRepo.swift in Sources */,
 				D3E4E6BF27CD158400FFACEB /* OPassApp.swift in Sources */,
 			);

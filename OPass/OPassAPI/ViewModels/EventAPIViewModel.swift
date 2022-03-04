@@ -7,7 +7,8 @@
 
 import Foundation
 
-class EventViewModel: ObservableObject, Decodable {
+//Endpoint hold by each Event Organization.
+class EventAPIViewModel: ObservableObject, Decodable {
     //Conform to Codable
     enum CodingKeys: CodingKey {
         case event_id, display_name, logo_url
@@ -52,10 +53,6 @@ class EventViewModel: ObservableObject, Decodable {
         if let session = try? await OPassRepo.loadSession(fromSchedule: scheduleFeature) {
             DispatchQueue.main.async {
                 self.eventSession = session
-            }
-        } else {
-            DispatchQueue.main.async {
-                self.eventSession = EventSessionModel()
             }
         }
     }
