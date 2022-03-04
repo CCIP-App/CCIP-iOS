@@ -21,18 +21,10 @@ class OPassAPIViewModel: ObservableObject {
     }
     
     func loadEventList() async {
-        guard let url = URL(string: "https://portal.opass.app/events/") else {
-            print("Invalid EventList URL")
-            return
-        }
-        
-        do {
-            let eventList: [EventViewModel] = try await URLSession.shared.jsonData(from: url)
+        if let eventList = try? await OPassRepo.loadEventList() {
             DispatchQueue.main.async {
                 self.eventList = eventList
             }
-        } catch {
-            print("Invalid EventList Data From API")
         }
     }
     
@@ -55,12 +47,5 @@ class OPassAPIViewModel: ObservableObject {
         }
         let fileURL = url.appendingPathComponent(filename)
         return try? Data(contentsOf: fileURL)
-    }
-}
-
-extension URLSession {
-    func jsonData<T: Decodable>(from url: URL) async throws -> T {
-        let (data, _) = try await self.data(from: url)
-        return try JSONDecoder().decode(T.self, from: data)
     }
 }

@@ -16,9 +16,9 @@ struct SessionView: View {
         ScrollView {
             VStack {
                 if let data = event.eventSession {
-                    ForEach(data.sessions, id: \.self) { session in
+                    //simply flatten here
+                    ForEach(data.sessions.flatMap { $0 }, id: \.self) { session in
                         Text(session.zh.title)
-                        
                         Divider()
                     }
                 }
