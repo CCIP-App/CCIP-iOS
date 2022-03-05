@@ -20,6 +20,7 @@ final class OPassRepo {
         case eventList
         case eventSettings(String)
         case announcements(String, String)
+        case eventScenarioStatus(String, String)
         case raw(String)
         
         func getString() -> String {
@@ -30,10 +31,31 @@ final class OPassRepo {
                     return "https://portal.opass.app/events/\(id)"
                 case .announcements(let baseURL, let token):
                     return "\(baseURL)/announcement?token=\(token)"
+                case .eventScenarioStatus(let url, let token):
+                    return "\(url)/status?token=\(token)"
                 case .raw(let url):
                     return url
             }
         }
+    }
+    
+    static func loadEventScenarioStatus(url: String,token: String) async throws -> EventScenarioStatusModel {
+        guard let ScenarioUrl = URL(.eventScenarioStatus(url, token)) else {
+            print("Invalid EventScenarioStatus URL")
+            throw LoadError.invalidURL(url: .eventScenarioStatus(url, token))
+        }
+        
+        print(ScenarioUrl)
+        
+        do {
+            
+            return try await URLSession.shared.jsonData(from: ScenarioUrl)
+        } catch {
+            print(error)
+            print("EventScenarioStatusError")
+            throw LoadError.dataFetchingFailed(cause: error)
+        }
+        
     }
     
     static func loadEventList() async throws -> [EventAPIViewModel] {
@@ -103,15 +125,13 @@ final class OPassRepo {
         }
     }
     
-    static func loadAnnouncement(from feature: FeatureDetailModel) async throws -> [AnnouncementModel] {
+    static func loadAnnouncement(from feature: FeatureDetailModel, token: String) async throws -> [AnnouncementModel] {
         guard feature.feature == .announcement else {
             throw LoadError.incorrectFeatureType(require: .announcement, found: feature.feature)
         }
         guard let baseURL = feature.url else {
             throw LoadError.missingURL(feature: feature)
         }
-        //since token part is under development, a temporary token from ccip sample is used
-        let token = "7679f08f7eaeef5e9a65a1738ae2840e"
         
         guard let url = URL(.announcements(baseURL, token)) else {
             throw LoadError.invalidURL(url: .announcements(baseURL, token))

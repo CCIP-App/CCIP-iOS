@@ -26,6 +26,10 @@
 		D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788A27CE542100021FC4 /* MoreModels.swift */; };
 		D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789027CE62EB00021FC4 /* EventListView.swift */; };
 		D3D3789327CE70EE00021FC4 /* EventSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789227CE70EE00021FC4 /* EventSettingsModel.swift */; };
+		D3E0123127D35D970040621F /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = D3E0123027D35D970040621F /* KeychainAccess */; };
+		D3E0123327D3667C0040621F /* EventScenarioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123227D3667C0040621F /* EventScenarioModel.swift */; };
+		D3E0123527D38B840040621F /* ScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123427D38B840040621F /* ScenarioView.swift */; };
+		D3E0123827D38D3D0040621F /* RedeemTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123727D38D3D0040621F /* RedeemTokenView.swift */; };
 		D3E4E6BF27CD158400FFACEB /* OPassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4E6BE27CD158400FFACEB /* OPassApp.swift */; };
 		D3E4E6C127CD158400FFACEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4E6C027CD158400FFACEB /* ContentView.swift */; };
 		D3E4E6C327CD158700FFACEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E4E6C227CD158700FFACEB /* Assets.xcassets */; };
@@ -51,6 +55,9 @@
 		D3D3788A27CE542100021FC4 /* MoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreModels.swift; sourceTree = "<group>"; };
 		D3D3789027CE62EB00021FC4 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		D3D3789227CE70EE00021FC4 /* EventSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSettingsModel.swift; sourceTree = "<group>"; };
+		D3E0123227D3667C0040621F /* EventScenarioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventScenarioModel.swift; sourceTree = "<group>"; };
+		D3E0123427D38B840040621F /* ScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioView.swift; sourceTree = "<group>"; };
+		D3E0123727D38D3D0040621F /* RedeemTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemTokenView.swift; sourceTree = "<group>"; };
 		D3E4E6BB27CD158400FFACEB /* OPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E4E6BE27CD158400FFACEB /* OPassApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassApp.swift; sourceTree = "<group>"; };
 		D3E4E6C027CD158400FFACEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3E0123127D35D970040621F /* KeychainAccess in Frameworks */,
 				4F5EB73127D2311200235396 /* SwiftDate in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +98,7 @@
 		D3C6195227CFC10400643D97 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				D3E0123627D38CF70040621F /* Scenario */,
 				D3C6194C27CF9A7400643D97 /* SettingView.swift */,
 				D3C6195027CFA9A800643D97 /* SessionView.swift */,
 				4F5EB73727D3648100235396 /* AnnounceView.swift */,
@@ -125,10 +134,20 @@
 			children = (
 				D3C6194727CF864B00643D97 /* EventSessionModel.swift */,
 				D3D3789227CE70EE00021FC4 /* EventSettingsModel.swift */,
-				D3D3788A27CE542100021FC4 /* MoreModels.swift */,
+				D3E0123227D3667C0040621F /* EventScenarioModel.swift */,
 				4F35B17B27D3850B0023621F /* AnnouncementModel.swift */,
+				D3D3788A27CE542100021FC4 /* MoreModels.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D3E0123627D38CF70040621F /* Scenario */ = {
+			isa = PBXGroup;
+			children = (
+				D3E0123427D38B840040621F /* ScenarioView.swift */,
+				D3E0123727D38D3D0040621F /* RedeemTokenView.swift */,
+			);
+			path = Scenario;
 			sourceTree = "<group>";
 		};
 		D3E4E6B227CD158400FFACEB = {
@@ -189,6 +208,7 @@
 			name = OPass;
 			packageProductDependencies = (
 				4F5EB73027D2311200235396 /* SwiftDate */,
+				D3E0123027D35D970040621F /* KeychainAccess */,
 			);
 			productName = OPass;
 			productReference = D3E4E6BB27CD158400FFACEB /* OPass.app */;
@@ -220,6 +240,7 @@
 			mainGroup = D3E4E6B227CD158400FFACEB;
 			packageReferences = (
 				4F5EB72F27D2311200235396 /* XCRemoteSwiftPackageReference "SwiftDate" */,
+				D3E0122F27D35D970040621F /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = D3E4E6BC27CD158400FFACEB /* Products */;
 			projectDirPath = "";
@@ -257,10 +278,13 @@
 				4F35B17C27D3850B0023621F /* AnnouncementModel.swift in Sources */,
 				D3D3789327CE70EE00021FC4 /* EventSettingsModel.swift in Sources */,
 				D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */,
+				D3E0123527D38B840040621F /* ScenarioView.swift in Sources */,
 				D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */,
 				4F5EB73527D3346D00235396 /* JsonDecodeHelper.swift in Sources */,
 				D3C6195127CFA9A800643D97 /* SessionView.swift in Sources */,
 				D3C6194827CF864B00643D97 /* EventSessionModel.swift in Sources */,
+				D3E0123327D3667C0040621F /* EventScenarioModel.swift in Sources */,
+				D3E0123827D38D3D0040621F /* RedeemTokenView.swift in Sources */,
 				D3C6194F27CF9A8800643D97 /* TestTabsView.swift in Sources */,
 				4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */,
 				D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */,
@@ -483,6 +507,14 @@
 				minimumVersion = 6.3.0;
 			};
 		};
+		D3E0122F27D35D970040621F /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -490,6 +522,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4F5EB72F27D2311200235396 /* XCRemoteSwiftPackageReference "SwiftDate" */;
 			productName = SwiftDate;
+		};
+		D3E0123027D35D970040621F /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3E0122F27D35D970040621F /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

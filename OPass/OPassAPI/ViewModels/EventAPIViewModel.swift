@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import KeychainAccess
 
-//Endpoint hold by each Event Organization.
+//Endpoint hold by each Event Organization or hold by OPass Official but switch by Event Organization.
 class EventAPIViewModel: ObservableObject, Decodable {
     //Conform to Codable
     enum CodingKeys: CodingKey {
@@ -21,6 +22,8 @@ class EventAPIViewModel: ObservableObject, Decodable {
         logo_url = try container.decode(String.self, forKey: .logo_url)
     }
     
+    private let keychain = Keychain(service: "app.opass.ccip")
+    
     @Published var event_id: String = ""
     @Published var display_name = DisplayTextModel()
     @Published var logo_url: String = ""
@@ -28,12 +31,51 @@ class EventAPIViewModel: ObservableObject, Decodable {
     @Published var eventLogo: Data? = nil
     @Published var eventSession: EventSessionModel? = nil
     @Published var eventAnnouncements: [AnnouncementModel] = []
+    @Published var eventScenarioStatus: EventScenarioStatusModel? = nil
+    @Published var isLogin: Bool = false
+    
+    var accessToken: String? {
+        get {
+            return try? keychain.get(self.event_id + "_token")
+        }
+        set {
+            if let accessToken = newValue {
+                do {
+                    try keychain.remove(self.event_id + "_token")
+                    try keychain.set(accessToken, key: self.event_id + "_token")
+                } catch {
+                    print("save accessToken faild")
+                }
+            } else {
+                print("No accessToken")
+            }
+        }
+    }
+    
+    func loadEventScenarioStatus() async {
+        guard let url = eventSettings?.features[ofType: .fastpass]?.url else {
+            print("FastPass feature or URL is not included")
+            return
+        }
+        
+        guard let token = accessToken else {
+            print("No accessToken included")
+            return
+        }
+        
+        if let eventScenarioStatus = try? await OPassRepo.loadEventScenarioStatus(url: url, token: token) {
+            DispatchQueue.main.async {
+                self.eventScenarioStatus = eventScenarioStatus
+            }
+        }
+    }
     
     func loadEventSettings_Logo() async {
         guard let eventSettings = try? await OPassRepo.loadSettings(ofEvent: event_id) else {
             print("load settings failed")
             return
         }
+        
         DispatchQueue.main.async {
             self.eventSettings = eventSettings
         }
@@ -63,7 +105,8 @@ class EventAPIViewModel: ObservableObject, Decodable {
             print("Announcement feature is not included")
             return
         }
-        if let announcements = try? await OPassRepo.loadAnnouncement(from: announcementFeature) {
+        
+        if let announcements = try? await OPassRepo.loadAnnouncement(from: announcementFeature, token: accessToken ?? "") {
             DispatchQueue.main.async {
                 self.eventAnnouncements = announcements
             }

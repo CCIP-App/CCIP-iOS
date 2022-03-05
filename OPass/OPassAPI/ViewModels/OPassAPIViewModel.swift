@@ -11,7 +11,7 @@ import Foundation
 class OPassAPIViewModel: ObservableObject {
     
     @Published var eventList = [EventAPIViewModel]()
-    @Published var currentEvent: EventAPIViewModel? = nil {
+    @Published var currentEventAPI: EventAPIViewModel? = nil {
         willSet {
             if newValue?.eventSettings == nil {
                 Task {

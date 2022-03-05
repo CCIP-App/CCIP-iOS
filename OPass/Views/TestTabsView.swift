@@ -22,12 +22,18 @@ struct TestTabsView: View {
                 SessionView(eventAPI: eventAPI).tabItem({
                     Image(systemName: "list.bullet.rectangle.portrait.fill")
                 })
+                
                 AnnounceView(announcements: eventAPI.eventAnnouncements) {
                     await eventAPI.loadAnnouncements()
                 }
                 .tabItem {
                     Image(systemName: "exclamationmark.bubble.fill")
                 }
+                
+                ScenarioView(eventAPI: eventAPI).tabItem({
+                    Image(systemName: "square.stack.fill")
+                })
+                
                 EventListView().tabItem {
                     Image(systemName: "list.bullet.circle.fill")
                 }

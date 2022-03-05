@@ -17,7 +17,7 @@ struct EventListView: View {
             VStack {
                 ForEach(OPassAPI.eventList, id: \.event_id) { list in
                     Button(action: {
-                        OPassAPI.currentEvent = list
+                        OPassAPI.currentEventAPI = list
                     }) {
                         VStack(spacing: 0) {
                             HStack {

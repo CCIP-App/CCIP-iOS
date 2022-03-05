@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         //Only for API Testing
         VStack {
-            if let eventAPI = OPassAPI.currentEvent {
+            if let eventAPI = OPassAPI.currentEventAPI {
                 TestTabsView(eventAPI: eventAPI)
                     .environmentObject(OPassAPI)
             } else {
