@@ -19,6 +19,7 @@ final class OPassRepo {
     enum URLs {
         case eventList
         case eventSettings(String)
+        case announcements(String, String)
         case raw(String)
         
         func getString() -> String {
@@ -27,6 +28,8 @@ final class OPassRepo {
                     return "https://portal.opass.app/events/"
                 case .eventSettings(let id):
                     return "https://portal.opass.app/events/\(id)"
+                case .announcements(let baseURL, let token):
+                    return "\(baseURL)/announcement?token=\(token)"
                 case .raw(let url):
                     return url
             }
@@ -96,6 +99,27 @@ final class OPassRepo {
         } catch {
             print("Invalid EventSession Data From API")
             print(error)
+            throw LoadError.dataFetchingFailed(cause: error)
+        }
+    }
+    
+    static func loadAnnouncement(from feature: FeatureDetailModel) async throws -> [AnnouncementModel] {
+        guard feature.feature == .announcement else {
+            throw LoadError.incorrectFeatureType(require: .announcement, found: feature.feature)
+        }
+        guard let baseURL = feature.url else {
+            throw LoadError.missingURL(feature: feature)
+        }
+        //since token part is under development, a temporary token from ccip sample is used
+        let token = "7679f08f7eaeef5e9a65a1738ae2840e"
+        
+        guard let url = URL(.announcements(baseURL, token)) else {
+            throw LoadError.invalidURL(url: .announcements(baseURL, token))
+        }
+        
+        do {
+            return try await URLSession.shared.jsonData(from: url)
+        } catch {
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-fileprivate func loadJson<T: Decodable>(filename: String) -> T {
+func loadJson<T: Decodable>(filename: String) -> T {
     guard let fileURL = Bundle.main.url(forResource: filename, withExtension: nil) else {
         fatalError("Couldn't find \(filename).")
     }

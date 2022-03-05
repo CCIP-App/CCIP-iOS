@@ -1,0 +1,47 @@
+[
+    {
+        "_id": {
+            "$oid": "5f26781fff6707f0eec3292c"
+        },
+        "datetime": 1596356639,
+        "msg_en": "We also have plenty of snacks in TR312/TR310 that you can bring them home!",
+        "msg_zh": "TR312/TR310 還有海量零食餅乾，歡迎各位索取回家！",
+        "uri": ""
+    },
+    {
+        "_id": {
+            "$oid": "5f266aacff6707f0eec32919"
+        },
+        "datetime": 1596353196,
+        "msg_en": "Only 5 minutes left to redeem your points at the conference booth in TR 2F. COSCUP souvenirs shop will close at 16:00pm in room 312. Hurry up before they are gone!",
+        "msg_zh": "TR 2F 大會攤位點數兌換只剩最後 5 分鐘；紀念品販賣到 16:00，敬請把握！",
+        "uri": ""
+    },
+    {
+        "_id": {
+            "$oid": "5f261e3cff6707f0eec3268f"
+        },
+        "datetime": 1596333628,
+        "msg_en": "Last Call for Lightning Talks! The final list will be drawn soon. Submit your COSCUP Lightning Talks before 11:00am at TR 2F! Don’t miss the chance to present your project, idea, or experience in 5 minutes!",
+        "msg_zh": "閃電講今日報名到 11.00截止！請至 TR大樓 2F 服務台報名，本次採抽籤制，有投有機會，快把你的好點子秀出來吧！！",
+        "uri": ""
+    },
+    {
+        "_id": {
+            "$oid": "5f251631ff6707f0eec32351"
+        },
+        "datetime": 1596266033,
+        "msg_en": "Last Call for Lightning Talks! The final list will be drawn soon. Submit your COSCUP Lightning Talks before 15:30pm at TR 2F! Don’t miss the chance to present your project, idea, or experience in 5 minutes!",
+        "msg_zh": "閃電講今日報名到 15:30 截止！請至 TR大樓 2F 服務台報名，本次採抽籤制，有投有機會，快把你的好點子秀出來吧！！",
+        "uri": ""
+    },
+    {
+        "_id": {
+            "$oid": "5f25015bff6707f0eec3227c"
+        },
+        "datetime": 1596260699,
+        "msg_en": "Feeling hot and thirsty? There will be refreshing drinks in TR312/TR310 at 14:00pm. Drop by to get a drink while you are playing the quest!",
+        "msg_zh": "天氣爆熱口渴了嗎？14:00 在 TR312/TR310 有補上清涼飲料唷，跑大地遊戲時順便來喝一下吧！",
+        "uri": ""
+    }
+]

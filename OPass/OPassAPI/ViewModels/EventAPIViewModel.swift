@@ -27,6 +27,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
     @Published var eventSettings: EventSettingsModel? = nil
     @Published var eventLogo: Data? = nil
     @Published var eventSession: EventSessionModel? = nil
+    @Published var eventAnnouncements: [AnnouncementModel] = []
     
     func loadEventSettings_Logo() async {
         guard let eventSettings = try? await OPassRepo.loadSettings(ofEvent: event_id) else {
@@ -53,6 +54,22 @@ class EventAPIViewModel: ObservableObject, Decodable {
         if let session = try? await OPassRepo.loadSession(fromSchedule: scheduleFeature) {
             DispatchQueue.main.async {
                 self.eventSession = session
+            }
+        }
+    }
+    
+    func loadAnnouncements() async {
+        guard let announcementFeature = eventSettings?.features[ofType: .announcement] else {
+            print("Announcement feature is not included")
+            return
+        }
+        if let announcements = try? await OPassRepo.loadAnnouncement(from: announcementFeature) {
+            DispatchQueue.main.async {
+                self.eventAnnouncements = announcements
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.eventAnnouncements = []
             }
         }
     }

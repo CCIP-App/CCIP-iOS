@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F35B17C27D3850B0023621F /* AnnouncementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F35B17B27D3850B0023621F /* AnnouncementModel.swift */; };
 		4F48B5D427CF07910010FC2C /* eventListSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D327CF07910010FC2C /* eventListSample.json */; };
 		4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */; };
 		4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */; };
 		4F5EB73127D2311200235396 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 4F5EB73027D2311200235396 /* SwiftDate */; };
 		4F5EB73527D3346D00235396 /* JsonDecodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EB73427D3346D00235396 /* JsonDecodeHelper.swift */; };
+		4F5EB73827D3648100235396 /* AnnounceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EB73727D3648100235396 /* AnnounceView.swift */; };
+		4F5EB73A27D37D4A00235396 /* announcementSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F5EB73927D37D4A00235396 /* announcementSample.json */; };
 		4FEF38FB27D13FBA00FC97F4 /* OPassRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF38FA27D13FBA00FC97F4 /* OPassRepo.swift */; };
 		D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314B66E27D1089200481D5E /* EventAPIViewModel.swift */; };
 		D3C6194827CF864B00643D97 /* EventSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194727CF864B00643D97 /* EventSessionModel.swift */; };
@@ -30,10 +33,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F35B17B27D3850B0023621F /* AnnouncementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementModel.swift; sourceTree = "<group>"; };
 		4F48B5D327CF07910010FC2C /* eventListSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventListSample.json; sourceTree = "<group>"; };
 		4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPISampleExt.swift; sourceTree = "<group>"; };
 		4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventSettingsSample.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		4F5EB73427D3346D00235396 /* JsonDecodeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecodeHelper.swift; sourceTree = "<group>"; };
+		4F5EB73727D3648100235396 /* AnnounceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceView.swift; sourceTree = "<group>"; };
+		4F5EB73927D37D4A00235396 /* announcementSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = announcementSample.json; sourceTree = "<group>"; };
 		4FEF38FA27D13FBA00FC97F4 /* OPassRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassRepo.swift; sourceTree = "<group>"; };
 		D314B66E27D1089200481D5E /* EventAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPIViewModel.swift; sourceTree = "<group>"; };
 		D3C6194727CF864B00643D97 /* EventSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSessionModel.swift; sourceTree = "<group>"; };
@@ -86,6 +92,7 @@
 			children = (
 				D3C6194C27CF9A7400643D97 /* SettingView.swift */,
 				D3C6195027CFA9A800643D97 /* SessionView.swift */,
+				4F5EB73727D3648100235396 /* AnnounceView.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -119,6 +126,7 @@
 				D3C6194727CF864B00643D97 /* EventSessionModel.swift */,
 				D3D3789227CE70EE00021FC4 /* EventSettingsModel.swift */,
 				D3D3788A27CE542100021FC4 /* MoreModels.swift */,
+				4F35B17B27D3850B0023621F /* AnnouncementModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -158,6 +166,7 @@
 				4F48B5D327CF07910010FC2C /* eventListSample.json */,
 				4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */,
 				4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */,
+				4F5EB73927D37D4A00235396 /* announcementSample.json */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -226,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F5EB73A27D37D4A00235396 /* announcementSample.json in Resources */,
 				D3E4E6C627CD158700FFACEB /* Preview Assets.xcassets in Resources */,
 				4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */,
 				D3E4E6C327CD158700FFACEB /* Assets.xcassets in Resources */,
@@ -244,6 +254,7 @@
 				D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */,
 				D3E4E6C127CD158400FFACEB /* ContentView.swift in Sources */,
 				D3C6194B27CF964A00643D97 /* URLImageView.swift in Sources */,
+				4F35B17C27D3850B0023621F /* AnnouncementModel.swift in Sources */,
 				D3D3789327CE70EE00021FC4 /* EventSettingsModel.swift in Sources */,
 				D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */,
 				D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */,
@@ -255,6 +266,7 @@
 				D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */,
 				4FEF38FB27D13FBA00FC97F4 /* OPassRepo.swift in Sources */,
 				D3E4E6BF27CD158400FFACEB /* OPassApp.swift in Sources */,
+				4F5EB73827D3648100235396 /* AnnounceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
