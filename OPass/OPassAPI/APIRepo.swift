@@ -57,7 +57,7 @@ final class APIRepo {
         }
     }
     //Event APIs
-    static func loadScenarioStatus(from feature: FeatureModel,token: String) async throws -> ScenarioStatusModel {
+    static func load(scenarioStatusFrom feature: FeatureModel,token: String) async throws -> ScenarioStatusModel {
         guard feature.feature == .fastpass else {
             print("Fastpass feature double check Error")
             throw LoadError.incorrectFeatureType(require: .fastpass, found: feature.feature)
@@ -111,7 +111,7 @@ final class APIRepo {
         }
     }
     
-    static func loadSchedule(fromSchedule schedule: FeatureModel) async throws -> ScheduleModel {
+    static func load(scheduleFrom schedule: FeatureModel) async throws -> ScheduleModel {
         guard schedule.feature == .schedule else {
             print("Schedule feature double check Error")
             throw LoadError.incorrectFeatureType(require: .schedule, found: schedule.feature)
@@ -135,7 +135,7 @@ final class APIRepo {
         }
     }
     
-    static func loadAnnouncement(from feature: FeatureModel, token: String) async throws -> [AnnouncementModel] {
+    static func load(announcementFrom feature: FeatureModel, token: String) async throws -> [AnnouncementModel] {
         guard feature.feature == .announcement else {
             print("Announcement feature double check Error")
             throw LoadError.incorrectFeatureType(require: .announcement, found: feature.feature)

@@ -65,7 +65,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
                 return
             }
             
-            if let eventScenarioStatus = try? await APIRepo.loadScenarioStatus(from: fastpassFeature, token: token) {
+            if let eventScenarioStatus = try? await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token) {
                 DispatchQueue.main.async {
                     self.eventScenarioStatus = eventScenarioStatus
                     self.accessToken = token
@@ -88,7 +88,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
             return
         }
         
-        if let eventScenarioStatus = try? await APIRepo.loadScenarioStatus(from: fastpassFeature, token: token) {
+        if let eventScenarioStatus = try? await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token) {
             DispatchQueue.main.async {
                 self.eventScenarioStatus = eventScenarioStatus
                 self.isLogin = true
@@ -118,7 +118,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
             return
         }
         
-        if let schedule = try? await APIRepo.loadSchedule(fromSchedule: scheduleFeature) {
+        if let schedule = try? await APIRepo.load(scheduleFrom: scheduleFeature) {
             DispatchQueue.main.async {
                 self.eventSchedule = schedule
             }
@@ -136,7 +136,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
             return
         }
         
-        if let announcements = try? await APIRepo.loadAnnouncement(from: announcementFeature, token: token) {
+        if let announcements = try? await APIRepo.load(announcementFrom: announcementFeature, token: token) {
             DispatchQueue.main.async {
                 self.eventAnnouncements = announcements
             }
