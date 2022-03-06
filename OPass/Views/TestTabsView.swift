@@ -37,6 +37,10 @@ struct TestTabsView: View {
                 EventListView().tabItem {
                     Image(systemName: "list.bullet.circle.fill")
                 }
+                
+                WiFiView(eventAPI: eventAPI).tabItem({
+                    Image(systemName: "wifi")
+                })
             }
         }
     }

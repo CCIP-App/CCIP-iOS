@@ -20,6 +20,8 @@
 		4F5EB73A27D37D4A00235396 /* announcementSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F5EB73927D37D4A00235396 /* announcementSample.json */; };
 		4FEF38FB27D13FBA00FC97F4 /* APIRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */; };
 		D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314B66E27D1089200481D5E /* EventAPIViewModel.swift */; };
+		D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C0E21927D51B460095169F /* NetworkExtension.framework */; };
+		D3C0E21C27D51C060095169F /* WifiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0E21B27D51C060095169F /* WifiView.swift */; };
 		D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194727CF864B00643D97 /* ScheduleModel.swift */; };
 		D3C6194B27CF964A00643D97 /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194A27CF964A00643D97 /* URLImageView.swift */; };
 		D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingView.swift */; };
@@ -50,6 +52,9 @@
 		4F5EB73927D37D4A00235396 /* announcementSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = announcementSample.json; sourceTree = "<group>"; };
 		4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRepo.swift; sourceTree = "<group>"; };
 		D314B66E27D1089200481D5E /* EventAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPIViewModel.swift; sourceTree = "<group>"; };
+		D3C0E21727D51B460095169F /* OPass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OPass.entitlements; sourceTree = "<group>"; };
+		D3C0E21927D51B460095169F /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		D3C0E21B27D51C060095169F /* WifiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiView.swift; sourceTree = "<group>"; };
 		D3C6194727CF864B00643D97 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		D3C6194A27CF964A00643D97 /* URLImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
 		D3C6194C27CF9A7400643D97 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingView.swift; path = OPass/Views/Tabs/SettingView.swift; sourceTree = SOURCE_ROOT; };
@@ -77,6 +82,7 @@
 				D3E0123127D35D970040621F /* KeychainAccess in Frameworks */,
 				4F5EB73127D2311200235396 /* SwiftDate in Frameworks */,
 				4F29D9CA27D4EA2D00292CC4 /* FirebaseAnalytics in Frameworks */,
+				D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */,
 				4F29D9CE27D4EA2D00292CC4 /* FirebaseDynamicLinks in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +107,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		D3C0E21827D51B460095169F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3C0E21927D51B460095169F /* NetworkExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D3C6194927CF963000643D97 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +130,7 @@
 				D3C6194C27CF9A7400643D97 /* SettingView.swift */,
 				D3C6195027CFA9A800643D97 /* ScheduleView.swift */,
 				4F5EB73727D3648100235396 /* AnnounceView.swift */,
+				D3C0E21B27D51C060095169F /* WifiView.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -169,6 +184,7 @@
 			children = (
 				D3E4E6BD27CD158400FFACEB /* OPass */,
 				D3E4E6BC27CD158400FFACEB /* Products */,
+				D3C0E21827D51B460095169F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,6 +199,7 @@
 		D3E4E6BD27CD158400FFACEB /* OPass */ = {
 			isa = PBXGroup;
 			children = (
+				D3C0E21727D51B460095169F /* OPass.entitlements */,
 				4F29D9C627D4E6DA00292CC4 /* GoogleService-Info.plist */,
 				D3E4E6BE27CD158400FFACEB /* OPassApp.swift */,
 				D3D3787F27CE42A200021FC4 /* Views */,
@@ -308,6 +325,7 @@
 				4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */,
 				D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */,
 				4FEF38FB27D13FBA00FC97F4 /* APIRepo.swift in Sources */,
+				D3C0E21C27D51C060095169F /* WifiView.swift in Sources */,
 				D3E4E6BF27CD158400FFACEB /* OPassApp.swift in Sources */,
 				4F5EB73827D3648100235396 /* AnnounceView.swift in Sources */,
 			);
@@ -438,10 +456,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = OPass/OPass.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OPass/Preview Content\"";
-				DEVELOPMENT_TEAM = 8NETVC8VTT;
+				DEVELOPMENT_TEAM = DW8PG2JYW5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -469,10 +488,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = OPass/OPass.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OPass/Preview Content\"";
-				DEVELOPMENT_TEAM = 8NETVC8VTT;
+				DEVELOPMENT_TEAM = DW8PG2JYW5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
