@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4F29D9C727D4E6DA00292CC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F29D9C627D4E6DA00292CC4 /* GoogleService-Info.plist */; };
 		4F29D9CA27D4EA2D00292CC4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4F29D9C927D4EA2D00292CC4 /* FirebaseAnalytics */; };
-		4F29D9CC27D4EA2D00292CC4 /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 4F29D9CB27D4EA2D00292CC4 /* FirebaseAnalyticsSwift-Beta */; };
 		4F29D9CE27D4EA2D00292CC4 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = 4F29D9CD27D4EA2D00292CC4 /* FirebaseDynamicLinks */; };
 		4F35B17C27D3850B0023621F /* AnnouncementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F35B17B27D3850B0023621F /* AnnouncementModel.swift */; };
 		4F48B5D427CF07910010FC2C /* eventListSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D327CF07910010FC2C /* eventListSample.json */; };
@@ -77,7 +76,6 @@
 			files = (
 				D3E0123127D35D970040621F /* KeychainAccess in Frameworks */,
 				4F5EB73127D2311200235396 /* SwiftDate in Frameworks */,
-				4F29D9CC27D4EA2D00292CC4 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
 				4F29D9CA27D4EA2D00292CC4 /* FirebaseAnalytics in Frameworks */,
 				4F29D9CE27D4EA2D00292CC4 /* FirebaseDynamicLinks in Frameworks */,
 			);
@@ -227,7 +225,6 @@
 				4F5EB73027D2311200235396 /* SwiftDate */,
 				D3E0123027D35D970040621F /* KeychainAccess */,
 				4F29D9C927D4EA2D00292CC4 /* FirebaseAnalytics */,
-				4F29D9CB27D4EA2D00292CC4 /* FirebaseAnalyticsSwift-Beta */,
 				4F29D9CD27D4EA2D00292CC4 /* FirebaseDynamicLinks */,
 			);
 			productName = OPass;
@@ -552,11 +549,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4F29D9C827D4EA2D00292CC4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
-		};
-		4F29D9CB27D4EA2D00292CC4 /* FirebaseAnalyticsSwift-Beta */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4F29D9C827D4EA2D00292CC4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseAnalyticsSwift-Beta";
 		};
 		4F29D9CD27D4EA2D00292CC4 /* FirebaseDynamicLinks */ = {
 			isa = XCSwiftPackageProductDependency;
