@@ -52,6 +52,26 @@ class EventAPIViewModel: ObservableObject, Decodable {
         }
     }
     
+    func useScenario(scenario: String) async -> Bool{ //Scenario switch by scenario ID. Return true/false for view update
+        guard let fastpassFeature = eventSettings?.features[ofType: .fastpass] else {
+            print("FastPass feature is not included")
+            return false
+        }
+        
+        guard let token = accessToken else {
+            print("No accessToken included")
+            return false
+        }
+        
+        if let eventScenarioUseStatus = try? await APIRepo.load(scenarioUseFrom: fastpassFeature, scenario: scenario, token: token) {
+            DispatchQueue.main.async {
+                self.eventScenarioStatus = eventScenarioUseStatus
+            }
+            return true
+        }
+        return false
+    }
+    
     func redeemToken(token: String) async { //Save token after token check
         let token = token.tirm()
         let allowedCharacters = NSMutableCharacterSet.init(charactersIn: "-_")

@@ -57,6 +57,30 @@ final class APIRepo {
         }
     }
     //Event APIs
+    static func load(scenarioUseFrom feature: FeatureModel, scenario: String, token: String) async throws -> ScenarioStatusModel {
+        guard feature.feature == .fastpass else {
+            print("Fastpass feature double check Error")
+            throw LoadError.incorrectFeatureType(require: .fastpass, found: feature.feature)
+        }
+        
+        guard let baseURL = feature.url else {
+            print("Couldn't find URL in fastpass feature")
+            throw LoadError.missingURL(feature: feature)
+        }
+        
+        guard let url = URL(.scenarioUse(baseURL, scenario, token)) else {
+            print("Invalid ScenarioUse URL")
+            throw LoadError.invalidURL(url: .scenarioUse(baseURL, scenario, token))
+        }
+        
+        do {
+            return try await URLSession.shared.jsonData(from: url)
+        } catch {
+            print("Invaild ScenarioUse or AccessToken Error")
+            throw LoadError.dataFetchingFailed(cause: error)
+        }
+    }
+    
     static func load(scenarioStatusFrom feature: FeatureModel,token: String) async throws -> ScenarioStatusModel {
         guard feature.feature == .fastpass else {
             print("Fastpass feature double check Error")
@@ -79,7 +103,6 @@ final class APIRepo {
             print("ScenarioStatus Data or AccessToken Error")
             throw LoadError.dataFetchingFailed(cause: error)
         }
-        
     }
     
     static func loadSettings(ofEvent eventId: String) async throws -> SettingsModel {

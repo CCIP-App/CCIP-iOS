@@ -29,5 +29,6 @@ struct ScenarioModel: Hashable, Codable {
     var disable: String? = nil
     var countdown: Int = 0
     var attr = AttrModel()
+    var used: Int? = nil
     var id: String = ""
 }
