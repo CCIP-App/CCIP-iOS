@@ -29,7 +29,7 @@ struct ScenarioView: View {
         .onAppear(perform: {
             if eventAPI.accessToken != "" {
                 Task {
-                    await eventAPI.loadEventScenarioStatus()
+                    await eventAPI.loadScenarioStatus()
                 }
             }
         })

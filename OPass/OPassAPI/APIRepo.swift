@@ -1,5 +1,5 @@
 //
-//  OPassRepo.swift
+//  APIRepo.swift
 //  OPass
 //
 //  Created by secminhr on 2022/3/4.
@@ -8,30 +8,30 @@
 import Foundation
 import SwiftDate
 
-final class OPassRepo {
+final class APIRepo {
     enum LoadError: Error {
         case invalidURL(url: URLs)
         case dataFetchingFailed(cause: Error)
         case incorrectFeatureType(require: FeatureType, found: FeatureType)
-        case missingURL(feature: FeatureDetailModel)
+        case missingURL(feature: FeatureModel)
         case invalidDateString(String)
     }
     enum URLs {
         case eventList
-        case eventSettings(String)
+        case settings(String)
         case announcements(String, String)
-        case eventScenarioStatus(String, String)
+        case scenarioStatus(String, String)
         case raw(String)
         
         func getString() -> String {
             switch self {
                 case .eventList:
                     return "https://portal.opass.app/events/"
-                case .eventSettings(let id):
+                case .settings(let id):
                     return "https://portal.opass.app/events/\(id)"
                 case .announcements(let baseURL, let token):
                     return "\(baseURL)/announcement?token=\(token)"
-                case .eventScenarioStatus(let url, let token):
+                case .scenarioStatus(let url, let token):
                     return "\(url)/status?token=\(token)"
                 case .raw(let url):
                     return url
@@ -39,25 +39,7 @@ final class OPassRepo {
         }
     }
     
-    static func loadEventScenarioStatus(url: String,token: String) async throws -> EventScenarioStatusModel {
-        guard let ScenarioUrl = URL(.eventScenarioStatus(url, token)) else {
-            print("Invalid EventScenarioStatus URL")
-            throw LoadError.invalidURL(url: .eventScenarioStatus(url, token))
-        }
-        
-        print(ScenarioUrl)
-        
-        do {
-            
-            return try await URLSession.shared.jsonData(from: ScenarioUrl)
-        } catch {
-            print(error)
-            print("EventScenarioStatusError")
-            throw LoadError.dataFetchingFailed(cause: error)
-        }
-        
-    }
-    
+    //Opass APIs
     static func loadEventList() async throws -> [EventAPIViewModel] {
         guard let url = URL(.eventList) else {
             print("Invalid EventList URL")
@@ -67,28 +49,53 @@ final class OPassRepo {
         do {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
-            print("Invalid EventList Data From API")
+            print("EventList Data Error")
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
+    //Event APIs
+    static func loadScenarioStatus(from feature: FeatureModel,token: String) async throws -> ScenarioStatusModel {
+        guard feature.feature == .fastpass else {
+            print("Fastpass feature double check Error")
+            throw LoadError.incorrectFeatureType(require: .fastpass, found: feature.feature)
+        }
+        
+        guard let baseURL = feature.url else {
+            print("Couldn't find URL in fastpass feature")
+            throw LoadError.missingURL(feature: feature)
+        }
+        
+        guard let url = URL(.scenarioStatus(baseURL, token)) else {
+            print("Invalid ScenarioStatus URL")
+            throw LoadError.invalidURL(url: .scenarioStatus(baseURL, token))
+        }
+        
+        do {
+            return try await URLSession.shared.jsonData(from: url)
+        } catch {
+            print("ScenarioStatus Data Errir")
+            throw LoadError.dataFetchingFailed(cause: error)
+        }
+        
+    }
     
-    static func loadSettings(ofEvent eventId: String) async throws -> EventSettingsModel {
-        guard let SettingsUrl = URL(.eventSettings(eventId)) else {
-            print("Invalid EventDetail URL")
-            throw LoadError.invalidURL(url: .eventSettings(eventId))
+    static func loadSettings(ofEvent eventId: String) async throws -> SettingsModel {
+        guard let SettingsUrl = URL(.settings(eventId)) else {
+            print("Invalid Settings URL")
+            throw LoadError.invalidURL(url: .settings(eventId))
         }
         
         do {
             return try await URLSession.shared.jsonData(from: SettingsUrl)
         } catch {
-            print("EventSettingsDataError")
+            print("Settings Data Error")
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
     
     static func loadLogo(from url: String) async throws -> Data {
         guard let logoUrl = URL(string: url) else {
-            print("Invalid Sessions PNG URL")
+            print("Invalid Logo URL")
             throw LoadError.invalidURL(url: .raw(url))
         }
 
@@ -96,57 +103,61 @@ final class OPassRepo {
             let (data, _) = try await URLSession.shared.data(from: logoUrl)
             return data
         } catch {
-            print("EventLogoError")
+            print("Logo Data Error")
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
     
-    static func loadSession(fromSchedule schedule: FeatureDetailModel) async throws -> EventSessionModel {
+    static func loadSchedule(fromSchedule schedule: FeatureModel) async throws -> ScheduleModel {
         guard schedule.feature == .schedule else {
+            print("Schedule feature double check Error")
             throw LoadError.incorrectFeatureType(require: .schedule, found: schedule.feature)
         }
         
-        guard let session_url = schedule.url else {
-            print("Couldn't find session url in schedule feature")
+        guard let baseURL = schedule.url else {
+            print("Couldn't find URL in schedule feature")
             throw LoadError.missingURL(feature: schedule)
         }
         
-        guard let url = URL(string: session_url) else {
-            print("Invalid EventSession URL")
-            throw LoadError.invalidURL(url: .raw(session_url))
+        guard let url = URL(string: baseURL) else {
+            print("Invalid Schedule URL")
+            throw LoadError.invalidURL(url: .raw(baseURL))
         }
         
         do {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
-            print("Invalid EventSession Data From API")
-            print(error)
+            print("Schedule Data Errir")
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
     
-    static func loadAnnouncement(from feature: FeatureDetailModel, token: String) async throws -> [AnnouncementModel] {
+    static func loadAnnouncement(from feature: FeatureModel, token: String) async throws -> [AnnouncementModel] {
         guard feature.feature == .announcement else {
+            print("Announcement feature double check Error")
             throw LoadError.incorrectFeatureType(require: .announcement, found: feature.feature)
         }
         guard let baseURL = feature.url else {
+            print("Couldn't find URL in announcement feature")
             throw LoadError.missingURL(feature: feature)
         }
         
         guard let url = URL(.announcements(baseURL, token)) else {
+            print("Invalid Announcements URL")
             throw LoadError.invalidURL(url: .announcements(baseURL, token))
         }
         
         do {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
+            print("Announcement Data Errir")
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
 }
 
 extension URL {
-    fileprivate init?(_ urlType: OPassRepo.URLs) {
+    fileprivate init?(_ urlType: APIRepo.URLs) {
         self.init(string: urlType.getString())
     }
 }

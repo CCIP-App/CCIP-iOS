@@ -15,19 +15,19 @@
 		4F5EB73527D3346D00235396 /* JsonDecodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EB73427D3346D00235396 /* JsonDecodeHelper.swift */; };
 		4F5EB73827D3648100235396 /* AnnounceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EB73727D3648100235396 /* AnnounceView.swift */; };
 		4F5EB73A27D37D4A00235396 /* announcementSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F5EB73927D37D4A00235396 /* announcementSample.json */; };
-		4FEF38FB27D13FBA00FC97F4 /* OPassRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF38FA27D13FBA00FC97F4 /* OPassRepo.swift */; };
+		4FEF38FB27D13FBA00FC97F4 /* APIRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */; };
 		D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314B66E27D1089200481D5E /* EventAPIViewModel.swift */; };
-		D3C6194827CF864B00643D97 /* EventSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194727CF864B00643D97 /* EventSessionModel.swift */; };
+		D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194727CF864B00643D97 /* ScheduleModel.swift */; };
 		D3C6194B27CF964A00643D97 /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194A27CF964A00643D97 /* URLImageView.swift */; };
 		D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingView.swift */; };
 		D3C6194F27CF9A8800643D97 /* TestTabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194E27CF9A8800643D97 /* TestTabsView.swift */; };
-		D3C6195127CFA9A800643D97 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6195027CFA9A800643D97 /* SessionView.swift */; };
+		D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6195027CFA9A800643D97 /* ScheduleView.swift */; };
 		D3D3788227CE440D00021FC4 /* OPassAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */; };
 		D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788A27CE542100021FC4 /* MoreModels.swift */; };
 		D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789027CE62EB00021FC4 /* EventListView.swift */; };
-		D3D3789327CE70EE00021FC4 /* EventSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789227CE70EE00021FC4 /* EventSettingsModel.swift */; };
+		D3D3789327CE70EE00021FC4 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789227CE70EE00021FC4 /* SettingsModel.swift */; };
 		D3E0123127D35D970040621F /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = D3E0123027D35D970040621F /* KeychainAccess */; };
-		D3E0123327D3667C0040621F /* EventScenarioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123227D3667C0040621F /* EventScenarioModel.swift */; };
+		D3E0123327D3667C0040621F /* ScenarioStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123227D3667C0040621F /* ScenarioStatusModel.swift */; };
 		D3E0123527D38B840040621F /* ScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123427D38B840040621F /* ScenarioView.swift */; };
 		D3E0123827D38D3D0040621F /* RedeemTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123727D38D3D0040621F /* RedeemTokenView.swift */; };
 		D3E4E6BF27CD158400FFACEB /* OPassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4E6BE27CD158400FFACEB /* OPassApp.swift */; };
@@ -44,18 +44,18 @@
 		4F5EB73427D3346D00235396 /* JsonDecodeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecodeHelper.swift; sourceTree = "<group>"; };
 		4F5EB73727D3648100235396 /* AnnounceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceView.swift; sourceTree = "<group>"; };
 		4F5EB73927D37D4A00235396 /* announcementSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = announcementSample.json; sourceTree = "<group>"; };
-		4FEF38FA27D13FBA00FC97F4 /* OPassRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassRepo.swift; sourceTree = "<group>"; };
+		4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRepo.swift; sourceTree = "<group>"; };
 		D314B66E27D1089200481D5E /* EventAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPIViewModel.swift; sourceTree = "<group>"; };
-		D3C6194727CF864B00643D97 /* EventSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSessionModel.swift; sourceTree = "<group>"; };
+		D3C6194727CF864B00643D97 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		D3C6194A27CF964A00643D97 /* URLImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
 		D3C6194C27CF9A7400643D97 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingView.swift; path = OPass/Views/Tabs/SettingView.swift; sourceTree = SOURCE_ROOT; };
 		D3C6194E27CF9A8800643D97 /* TestTabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabsView.swift; sourceTree = "<group>"; };
-		D3C6195027CFA9A800643D97 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionView.swift; path = OPass/Views/Tabs/SessionView.swift; sourceTree = SOURCE_ROOT; };
+		D3C6195027CFA9A800643D97 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleView.swift; path = OPass/Views/Tabs/ScheduleView.swift; sourceTree = SOURCE_ROOT; };
 		D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPIViewModel.swift; sourceTree = "<group>"; };
 		D3D3788A27CE542100021FC4 /* MoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreModels.swift; sourceTree = "<group>"; };
 		D3D3789027CE62EB00021FC4 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
-		D3D3789227CE70EE00021FC4 /* EventSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSettingsModel.swift; sourceTree = "<group>"; };
-		D3E0123227D3667C0040621F /* EventScenarioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventScenarioModel.swift; sourceTree = "<group>"; };
+		D3D3789227CE70EE00021FC4 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		D3E0123227D3667C0040621F /* ScenarioStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioStatusModel.swift; sourceTree = "<group>"; };
 		D3E0123427D38B840040621F /* ScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioView.swift; sourceTree = "<group>"; };
 		D3E0123727D38D3D0040621F /* RedeemTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemTokenView.swift; sourceTree = "<group>"; };
 		D3E4E6BB27CD158400FFACEB /* OPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D36DC46327D46F6800012D43 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				4F5EB73427D3346D00235396 /* JsonDecodeHelper.swift */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
 		D3BAB49C27D2536300ECD44A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,7 +108,7 @@
 			children = (
 				D3E0123627D38CF70040621F /* Scenario */,
 				D3C6194C27CF9A7400643D97 /* SettingView.swift */,
-				D3C6195027CFA9A800643D97 /* SessionView.swift */,
+				D3C6195027CFA9A800643D97 /* ScheduleView.swift */,
 				4F5EB73727D3648100235396 /* AnnounceView.swift */,
 			);
 			path = Tabs;
@@ -121,10 +129,10 @@
 		D3D3788027CE43D700021FC4 /* OPassAPI */ = {
 			isa = PBXGroup;
 			children = (
-				4FEF38FA27D13FBA00FC97F4 /* OPassRepo.swift */,
-				4F5EB73427D3346D00235396 /* JsonDecodeHelper.swift */,
+				4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */,
 				D3BAB49C27D2536300ECD44A /* ViewModels */,
 				D3D3788327CE441200021FC4 /* Models */,
+				D36DC46327D46F6800012D43 /* Additions */,
 			);
 			path = OPassAPI;
 			sourceTree = "<group>";
@@ -132,9 +140,9 @@
 		D3D3788327CE441200021FC4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D3C6194727CF864B00643D97 /* EventSessionModel.swift */,
-				D3D3789227CE70EE00021FC4 /* EventSettingsModel.swift */,
-				D3E0123227D3667C0040621F /* EventScenarioModel.swift */,
+				D3C6194727CF864B00643D97 /* ScheduleModel.swift */,
+				D3D3789227CE70EE00021FC4 /* SettingsModel.swift */,
+				D3E0123227D3667C0040621F /* ScenarioStatusModel.swift */,
 				4F35B17B27D3850B0023621F /* AnnouncementModel.swift */,
 				D3D3788A27CE542100021FC4 /* MoreModels.swift */,
 			);
@@ -276,19 +284,19 @@
 				D3E4E6C127CD158400FFACEB /* ContentView.swift in Sources */,
 				D3C6194B27CF964A00643D97 /* URLImageView.swift in Sources */,
 				4F35B17C27D3850B0023621F /* AnnouncementModel.swift in Sources */,
-				D3D3789327CE70EE00021FC4 /* EventSettingsModel.swift in Sources */,
+				D3D3789327CE70EE00021FC4 /* SettingsModel.swift in Sources */,
 				D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */,
 				D3E0123527D38B840040621F /* ScenarioView.swift in Sources */,
 				D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */,
 				4F5EB73527D3346D00235396 /* JsonDecodeHelper.swift in Sources */,
-				D3C6195127CFA9A800643D97 /* SessionView.swift in Sources */,
-				D3C6194827CF864B00643D97 /* EventSessionModel.swift in Sources */,
-				D3E0123327D3667C0040621F /* EventScenarioModel.swift in Sources */,
+				D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */,
+				D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */,
+				D3E0123327D3667C0040621F /* ScenarioStatusModel.swift in Sources */,
 				D3E0123827D38D3D0040621F /* RedeemTokenView.swift in Sources */,
 				D3C6194F27CF9A8800643D97 /* TestTabsView.swift in Sources */,
 				4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */,
 				D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */,
-				4FEF38FB27D13FBA00FC97F4 /* OPassRepo.swift in Sources */,
+				4FEF38FB27D13FBA00FC97F4 /* APIRepo.swift in Sources */,
 				D3E4E6BF27CD158400FFACEB /* OPassApp.swift in Sources */,
 				4F5EB73827D3648100235396 /* AnnounceView.swift in Sources */,
 			);

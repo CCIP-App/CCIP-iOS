@@ -19,7 +19,7 @@ struct TestTabsView: View {
                     Image(systemName: "gearshape.fill")
                 }
                 
-                SessionView(eventAPI: eventAPI).tabItem({
+                ScheduleView(eventAPI: eventAPI).tabItem({
                     Image(systemName: "list.bullet.rectangle.portrait.fill")
                 })
                 

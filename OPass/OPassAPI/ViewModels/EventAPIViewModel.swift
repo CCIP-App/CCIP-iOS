@@ -22,21 +22,21 @@ class EventAPIViewModel: ObservableObject, Decodable {
         logo_url = try container.decode(String.self, forKey: .logo_url)
     }
     
-    private let keychain = Keychain(service: "app.opass.ccip")
-    
     @Published var event_id: String = ""
     @Published var display_name = DisplayTextModel()
     @Published var logo_url: String = ""
-    @Published var eventSettings: EventSettingsModel? = nil
+    //End of Codable
+    @Published var eventSettings: SettingsModel? = nil
     @Published var eventLogo: Data? = nil
-    @Published var eventSession: EventSessionModel? = nil
+    @Published var eventSchedule: ScheduleModel? = nil
     @Published var eventAnnouncements: [AnnouncementModel] = []
-    @Published var eventScenarioStatus: EventScenarioStatusModel? = nil
+    @Published var eventScenarioStatus: ScenarioStatusModel? = nil
     @Published var isLogin: Bool = false
     
-    var accessToken: String? {
+    private let keychain = Keychain(service: "app.opass.ccip") //Service key value match App Bundle ID
+    var accessToken: String? { //Try not use this for view update beacuse of it's not published.
         get {
-            return try? keychain.get(self.event_id + "_token")
+            return try? keychain.get(self.event_id + "_token") //Key sample: SITCON_2020_token
         }
         set {
             if let accessToken = newValue {
@@ -44,17 +44,17 @@ class EventAPIViewModel: ObservableObject, Decodable {
                     try keychain.remove(self.event_id + "_token")
                     try keychain.set(accessToken, key: self.event_id + "_token")
                 } catch {
-                    print("save accessToken faild")
+                    print("Save accessToken faild")
                 }
             } else {
-                print("No accessToken")
+                print("No accessToken import")
             }
         }
     }
     
-    func loadEventScenarioStatus() async {
-        guard let url = eventSettings?.features[ofType: .fastpass]?.url else {
-            print("FastPass feature or URL is not included")
+    func loadScenarioStatus() async {
+        guard let fastpassFeature = eventSettings?.features[ofType: .fastpass] else {
+            print("FastPass feature is not included")
             return
         }
         
@@ -63,16 +63,15 @@ class EventAPIViewModel: ObservableObject, Decodable {
             return
         }
         
-        if let eventScenarioStatus = try? await OPassRepo.loadEventScenarioStatus(url: url, token: token) {
+        if let eventScenarioStatus = try? await APIRepo.loadScenarioStatus(from: fastpassFeature, token: token) {
             DispatchQueue.main.async {
                 self.eventScenarioStatus = eventScenarioStatus
             }
         }
     }
     
-    func loadEventSettings_Logo() async {
-        guard let eventSettings = try? await OPassRepo.loadSettings(ofEvent: event_id) else {
-            print("load settings failed")
+    func loadSettings_Logo() async {
+        guard let eventSettings = try? await APIRepo.loadSettings(ofEvent: event_id) else {
             return
         }
         
@@ -80,22 +79,22 @@ class EventAPIViewModel: ObservableObject, Decodable {
             self.eventSettings = eventSettings
         }
 
-        if let logo = try? await OPassRepo.loadLogo(from: eventSettings.logo_url) {
+        if let logo = try? await APIRepo.loadLogo(from: eventSettings.logo_url) {
             DispatchQueue.main.async {
                 self.eventLogo = logo
             }
         }
     }
     
-    func loadEventSession() async {
+    func loadSchedule() async {
         guard let scheduleFeature = eventSettings?.features[ofType: .schedule] else {
             print("Schedule feature is not included")
             return
         }
         
-        if let session = try? await OPassRepo.loadSession(fromSchedule: scheduleFeature) {
+        if let schedule = try? await APIRepo.loadSchedule(fromSchedule: scheduleFeature) {
             DispatchQueue.main.async {
-                self.eventSession = session
+                self.eventSchedule = schedule
             }
         }
     }
@@ -106,7 +105,12 @@ class EventAPIViewModel: ObservableObject, Decodable {
             return
         }
         
-        if let announcements = try? await OPassRepo.loadAnnouncement(from: announcementFeature, token: accessToken ?? "") {
+        guard let token = accessToken else {
+            print("No accessToken included")
+            return
+        }
+        
+        if let announcements = try? await APIRepo.loadAnnouncement(from: announcementFeature, token: token) {
             DispatchQueue.main.async {
                 self.eventAnnouncements = announcements
             }
@@ -118,7 +122,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
     }
 }
 
-extension Array where Element == FeatureDetailModel {
+extension Array where Element == FeatureModel {
     fileprivate subscript(ofType type: FeatureType) -> Element? {
         return self.first { $0.feature == type }
     }

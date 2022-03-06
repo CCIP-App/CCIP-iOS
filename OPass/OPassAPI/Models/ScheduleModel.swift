@@ -1,5 +1,5 @@
 //
-//  EventSessionsModel.swift
+//  ScheduleModel.swift
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/2.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftDate
 
-struct EventSessionModel: Hashable, Decodable {
+struct ScheduleModel: Hashable, Decodable {
     //The transform() function in below Array extension will be used automatically when decoding json
     @TransformedFrom<[SessionModel]> var sessions = [[SessionModel()]]
     var speakers = [SpeakerModel()]

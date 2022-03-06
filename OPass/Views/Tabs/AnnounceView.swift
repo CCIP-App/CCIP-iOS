@@ -13,6 +13,7 @@ struct AnnounceView: View {
     var refresh: @Sendable () async -> Void
     
     var body: some View {
+        //Only for API Testing
         List(announcements, id: \.datetime) { announcement in
             Text(announcement.msg_zh)
                 .padding()

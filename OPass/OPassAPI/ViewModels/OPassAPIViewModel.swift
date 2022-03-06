@@ -15,14 +15,14 @@ class OPassAPIViewModel: ObservableObject {
         willSet {
             if newValue?.eventSettings == nil {
                 Task {
-                    await newValue?.loadEventSettings_Logo()
+                    await newValue?.loadSettings_Logo()
                 }
             }
         }
     }
     
     func loadEventList() async {
-        if let eventList = try? await OPassRepo.loadEventList() {
+        if let eventList = try? await APIRepo.loadEventList() {
             DispatchQueue.main.async {
                 self.eventList = eventList
             }

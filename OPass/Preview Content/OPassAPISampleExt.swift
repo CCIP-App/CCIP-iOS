@@ -28,8 +28,8 @@ extension OPassAPIViewModel {
     }
 }
 
-extension EventSettingsModel {
-    static func mock() -> EventSettingsModel {
+extension SettingsModel {
+    static func mock() -> SettingsModel {
         return loadJson(filename: "eventSettingsSample.json")
     }
 }

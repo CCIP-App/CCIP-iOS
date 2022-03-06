@@ -11,3 +11,13 @@ struct DisplayTextModel: Hashable, Codable {
     var en: String = ""
     var zh: String = ""
 }
+
+struct DisplayTextModel_CountryCode: Hashable, Codable {
+    var en: String = ""
+    var zh: String = ""
+    
+    private enum CodingKeys: String, CodingKey {
+        case en = "en-US"
+        case zh = "zh-TW"
+    }
+}

@@ -23,7 +23,7 @@ struct RedeemTokenView: View {
                 if token != "" {
                     eventAPI.accessToken = token
                     Task {
-                        await eventAPI.loadEventScenarioStatus()
+                        await eventAPI.loadScenarioStatus()
                     }
                 }
             }) {

@@ -7,17 +7,16 @@
 
 import SwiftUI
 
-struct SessionView: View {
+struct ScheduleView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     @State var selectDayData = [SessionModel()]
     
     var body: some View {
         //Only for API Testing
-        
         //Current design performance veryyyyyyyy bad. 'Pre-draw' session list view in future
         VStack {
-            if let allData = eventAPI.eventSession {
+            if let allData = eventAPI.eventSchedule {
                 //Select date list view
                 HStack(spacing: 10) {
                     ForEach(allData.sessions, id: \.self) { dayData in
@@ -58,15 +57,15 @@ struct SessionView: View {
             }
         }
         .task {
-            await eventAPI.loadEventSession()
+            await eventAPI.loadSchedule()
         }
     }
 }
 
 #if DEBUG
-struct SessionView_Previews: PreviewProvider {
+struct ScheduleView_Previews: PreviewProvider {
     static var previews: some View {
-        SessionView(eventAPI: OPassAPIViewModel.mock().eventList[5])
+        ScheduleView(eventAPI: OPassAPIViewModel.mock().eventList[5])
             .environmentObject(OPassAPIViewModel.mock())
     }
 }

@@ -1,5 +1,5 @@
 //
-//  EventSettingsModel.swift
+//  SettingsModel.swift
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/1.
@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct EventSettingsModel: Hashable, Codable {
+struct SettingsModel: Hashable, Codable {
     var event_id: String = ""
     var display_name = DisplayTextModel()
     var logo_url: String = ""
     var event_date = Start_EndModel()
     var publish = Start_EndModel()
-    var features: [FeatureDetailModel] = []
+    var features: [FeatureModel] = []
 }
 
 struct WiFiModel: Hashable, Codable {
@@ -26,7 +26,7 @@ struct Start_EndModel: Hashable, Codable {
     var end: String = ""
 }
 
-struct FeatureDetailModel: Hashable, Codable {
+struct FeatureModel: Hashable, Codable {
     var feature: FeatureType
     var icon: String? = nil
     var display_text = DisplayTextModel()
