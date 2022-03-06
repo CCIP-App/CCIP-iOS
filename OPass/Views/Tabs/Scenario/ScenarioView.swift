@@ -14,11 +14,11 @@ struct ScenarioView: View {
     var body: some View {
         //Only for API Testing
         VStack {
-            if let eventScenarioStatus = eventAPI.eventScenarioStatus {
+            if eventAPI.isLogin {
                 VStack {
                     Text("Get Scenario Status Scuess")
                     Text("Current Token")
-                    Text(eventScenarioStatus.token)
+                    Text(eventAPI.eventScenarioStatus?.token ?? "Error")
                 }
             }
             
@@ -27,7 +27,7 @@ struct ScenarioView: View {
             RedeemTokenView(eventAPI: eventAPI)
         }
         .onAppear(perform: {
-            if eventAPI.accessToken != "" {
+            if eventAPI.accessToken != nil {
                 Task {
                     await eventAPI.loadScenarioStatus()
                 }

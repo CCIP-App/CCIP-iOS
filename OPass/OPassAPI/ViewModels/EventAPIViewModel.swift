@@ -34,7 +34,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
     @Published var isLogin: Bool = false
     
     private let keychain = Keychain(service: "app.opass.ccip") //Service key value match App Bundle ID
-    var accessToken: String? { //Try not use this for view update beacuse of it's not published.
+    var accessToken: String? { //Try not to use this for view update beacuse of it's not published. Use isLogin.
         get {
             return try? keychain.get(self.event_id + "_token") //Key sample: SITCON_2020_token
         }
@@ -52,6 +52,31 @@ class EventAPIViewModel: ObservableObject, Decodable {
         }
     }
     
+    func redeemToken(token: String) async { //Save token after token check
+        let token = token.tirm()
+        let allowedCharacters = NSMutableCharacterSet.init(charactersIn: "-_")
+        allowedCharacters.formUnion(with: NSCharacterSet.alphanumerics)
+        let nonAllowedCharacters = allowedCharacters.inverted
+        if (token.count != 0 && token.rangeOfCharacter(from: nonAllowedCharacters) == nil) {
+            self.isLogin = false
+            
+            guard let fastpassFeature = eventSettings?.features[ofType: .fastpass] else {
+                print("FastPass feature is not included")
+                return
+            }
+            
+            if let eventScenarioStatus = try? await APIRepo.loadScenarioStatus(from: fastpassFeature, token: token) {
+                DispatchQueue.main.async {
+                    self.eventScenarioStatus = eventScenarioStatus
+                    self.accessToken = token
+                    self.isLogin = true
+                }
+            }
+        } else {
+            print("Invaild accessToken")
+        }
+    }
+    
     func loadScenarioStatus() async {
         guard let fastpassFeature = eventSettings?.features[ofType: .fastpass] else {
             print("FastPass feature is not included")
@@ -66,6 +91,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
         if let eventScenarioStatus = try? await APIRepo.loadScenarioStatus(from: fastpassFeature, token: token) {
             DispatchQueue.main.async {
                 self.eventScenarioStatus = eventScenarioStatus
+                self.isLogin = true
             }
         }
     }
@@ -125,5 +151,11 @@ class EventAPIViewModel: ObservableObject, Decodable {
 extension Array where Element == FeatureModel {
     fileprivate subscript(ofType type: FeatureType) -> Element? {
         return self.first { $0.feature == type }
+    }
+}
+
+extension String {
+    func tirm() -> String {
+        return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 }

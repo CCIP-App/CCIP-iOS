@@ -18,13 +18,10 @@ struct RedeemTokenView: View {
             
             TextField("Token", text: $token, prompt: Text("Token"))
                 .padding()
+            
             Button(action: {
-                //It shoud has token Certification
-                if token != "" {
-                    eventAPI.accessToken = token
-                    Task {
-                        await eventAPI.loadScenarioStatus()
-                    }
+                Task {
+                    await eventAPI.redeemToken(token: token)
                 }
             }) {
                 Text("Redeem")

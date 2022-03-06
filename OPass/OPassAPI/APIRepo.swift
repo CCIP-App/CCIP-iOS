@@ -21,6 +21,7 @@ final class APIRepo {
         case settings(String)
         case announcements(String, String)
         case scenarioStatus(String, String)
+        case scenarioUse(String, String, String)
         case raw(String)
         
         func getString() -> String {
@@ -31,8 +32,10 @@ final class APIRepo {
                     return "https://portal.opass.app/events/\(id)"
                 case .announcements(let baseURL, let token):
                     return "\(baseURL)/announcement?token=\(token)"
-                case .scenarioStatus(let url, let token):
-                    return "\(url)/status?token=\(token)"
+                case .scenarioStatus(let baseURL, let token):
+                    return "\(baseURL)/status?token=\(token)"
+                case .scenarioUse(let baseURL, let scenario, let token):
+                    return "\(baseURL)/use/\(scenario)?token=\(token)"
                 case .raw(let url):
                     return url
             }
@@ -73,7 +76,7 @@ final class APIRepo {
         do {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
-            print("ScenarioStatus Data Errir")
+            print("ScenarioStatus Data or AccessToken Error")
             throw LoadError.dataFetchingFailed(cause: error)
         }
         
