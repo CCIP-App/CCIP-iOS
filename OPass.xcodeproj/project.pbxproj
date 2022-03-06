@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F29D9C727D4E6DA00292CC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F29D9C627D4E6DA00292CC4 /* GoogleService-Info.plist */; };
+		4F29D9CA27D4EA2D00292CC4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4F29D9C927D4EA2D00292CC4 /* FirebaseAnalytics */; };
+		4F29D9CC27D4EA2D00292CC4 /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 4F29D9CB27D4EA2D00292CC4 /* FirebaseAnalyticsSwift-Beta */; };
+		4F29D9CE27D4EA2D00292CC4 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = 4F29D9CD27D4EA2D00292CC4 /* FirebaseDynamicLinks */; };
 		4F35B17C27D3850B0023621F /* AnnouncementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F35B17B27D3850B0023621F /* AnnouncementModel.swift */; };
 		4F48B5D427CF07910010FC2C /* eventListSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D327CF07910010FC2C /* eventListSample.json */; };
 		4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */; };
@@ -37,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F29D9C627D4E6DA00292CC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F35B17B27D3850B0023621F /* AnnouncementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementModel.swift; sourceTree = "<group>"; };
 		4F48B5D327CF07910010FC2C /* eventListSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventListSample.json; sourceTree = "<group>"; };
 		4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPISampleExt.swift; sourceTree = "<group>"; };
@@ -72,6 +77,9 @@
 			files = (
 				D3E0123127D35D970040621F /* KeychainAccess in Frameworks */,
 				4F5EB73127D2311200235396 /* SwiftDate in Frameworks */,
+				4F29D9CC27D4EA2D00292CC4 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
+				4F29D9CA27D4EA2D00292CC4 /* FirebaseAnalytics in Frameworks */,
+				4F29D9CE27D4EA2D00292CC4 /* FirebaseDynamicLinks in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +185,7 @@
 		D3E4E6BD27CD158400FFACEB /* OPass */ = {
 			isa = PBXGroup;
 			children = (
+				4F29D9C627D4E6DA00292CC4 /* GoogleService-Info.plist */,
 				D3E4E6BE27CD158400FFACEB /* OPassApp.swift */,
 				D3D3787F27CE42A200021FC4 /* Views */,
 				D3D3788027CE43D700021FC4 /* OPassAPI */,
@@ -217,6 +226,9 @@
 			packageProductDependencies = (
 				4F5EB73027D2311200235396 /* SwiftDate */,
 				D3E0123027D35D970040621F /* KeychainAccess */,
+				4F29D9C927D4EA2D00292CC4 /* FirebaseAnalytics */,
+				4F29D9CB27D4EA2D00292CC4 /* FirebaseAnalyticsSwift-Beta */,
+				4F29D9CD27D4EA2D00292CC4 /* FirebaseDynamicLinks */,
 			);
 			productName = OPass;
 			productReference = D3E4E6BB27CD158400FFACEB /* OPass.app */;
@@ -249,6 +261,7 @@
 			packageReferences = (
 				4F5EB72F27D2311200235396 /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				D3E0122F27D35D970040621F /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				4F29D9C827D4EA2D00292CC4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = D3E4E6BC27CD158400FFACEB /* Products */;
 			projectDirPath = "";
@@ -266,6 +279,7 @@
 			files = (
 				4F5EB73A27D37D4A00235396 /* announcementSample.json in Resources */,
 				D3E4E6C627CD158700FFACEB /* Preview Assets.xcassets in Resources */,
+				4F29D9C727D4E6DA00292CC4 /* GoogleService-Info.plist in Resources */,
 				4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */,
 				D3E4E6C327CD158700FFACEB /* Assets.xcassets in Resources */,
 				4F48B5D427CF07910010FC2C /* eventListSample.json in Resources */,
@@ -430,7 +444,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OPass/Preview Content\"";
-				DEVELOPMENT_TEAM = DW8PG2JYW5;
+				DEVELOPMENT_TEAM = 8NETVC8VTT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -444,7 +458,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.brianChang.OPass;
+				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -461,7 +475,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OPass/Preview Content\"";
-				DEVELOPMENT_TEAM = DW8PG2JYW5;
+				DEVELOPMENT_TEAM = 8NETVC8VTT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -475,7 +489,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.brianChang.OPass;
+				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -507,6 +521,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4F29D9C827D4EA2D00292CC4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 		4F5EB72F27D2311200235396 /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/malcommac/SwiftDate.git";
@@ -526,6 +548,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4F29D9C927D4EA2D00292CC4 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4F29D9C827D4EA2D00292CC4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		4F29D9CB27D4EA2D00292CC4 /* FirebaseAnalyticsSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4F29D9C827D4EA2D00292CC4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAnalyticsSwift-Beta";
+		};
+		4F29D9CD27D4EA2D00292CC4 /* FirebaseDynamicLinks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4F29D9C827D4EA2D00292CC4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDynamicLinks;
+		};
 		4F5EB73027D2311200235396 /* SwiftDate */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4F5EB72F27D2311200235396 /* XCRemoteSwiftPackageReference "SwiftDate" */;
