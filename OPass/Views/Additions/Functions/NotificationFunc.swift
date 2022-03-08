@@ -50,4 +50,10 @@ func registeringNotification(
     } else {
         NotificationCenter.removePendingNotificationRequests(withIdentifiers: [id])
     }
+    
+    NotificationCenter.getPendingNotificationRequests(completionHandler: { requests in
+        for request in requests {
+            print(request)
+        }
+    })
 }
