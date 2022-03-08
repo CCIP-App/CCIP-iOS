@@ -20,6 +20,9 @@ struct ContentView: View {
             } else {
                 EventListView()
                     .environmentObject(OPassAPI)
+                    .onAppear(perform: {
+                        requestNotificationAuthorization()
+                    })
             }
         }
     }
