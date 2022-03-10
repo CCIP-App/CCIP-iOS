@@ -2,9 +2,30 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+<<<<<<< Updated upstream
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
+=======
+	<key>FirebaseDynamicLinksCustomDomains</key>
+	<array>
+		<string>https://dl.opass.app</string>
+		<string>https://opass.page.link</string>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>jk;</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>app.opass.ccip</string>
+			</array>
+		</dict>
+		<dict/>
+>>>>>>> Stashed changes
 	</array>
 </dict>
 </plist>
