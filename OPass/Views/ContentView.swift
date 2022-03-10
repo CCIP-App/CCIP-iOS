@@ -10,18 +10,40 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
+    @State var handlingURL = false
 
     var body: some View {
         //Only for API Testing
         VStack {
-            if let eventAPI = OPassAPI.currentEventAPI {
-                TestTabsView(eventAPI: eventAPI)
-                    .environmentObject(OPassAPI)
+            if handlingURL {
+                ProgressView {
+                    Text("Logining in")
+                }
             } else {
-                EventListView()
-                    .environmentObject(OPassAPI)
+                if let eventAPI = OPassAPI.currentEventAPI {
+                    TestTabsView(eventAPI: eventAPI)
+                        .environmentObject(OPassAPI)
+                } else {
+                    EventListView()
+                        .environmentObject(OPassAPI)
+                }
             }
         }
+        .onOpenURL(perform: handleURL)
+    }
+    
+    func handleURL(url: URL) {
+        handlingURL = true
+        Task {
+            let (eventId, token) = parseURL(url)
+            await OPassAPI.loginEvent(eventId, withToken: token)
+            handlingURL = false
+        }
+    }
+    
+    func parseURL(_ url: URL) -> (String, String) {
+        //TODO: implement it when dynamic link can work and we can see the real URL
+        return ("COSCUP_2019", "7679f08f7eaeef5e9a65a1738ae2840e")
     }
 }
 

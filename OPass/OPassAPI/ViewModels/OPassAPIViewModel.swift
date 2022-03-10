@@ -29,6 +29,25 @@ class OPassAPIViewModel: ObservableObject {
         }
     }
     
+    func loginEvent(_ eventId: String, withToken token: String) async {
+        do {
+            let eventModel = try await APIRepo.loadEvent(id: eventId)
+            //Awe call and await loadSettings_Logo manually to make sure that redeemToken can have valid eventSettings
+            await eventModel.loadSettings_Logo()
+            DispatchQueue.main.async {
+                self.currentEventAPI = eventModel
+            }
+            await currentEventAPI!.redeemToken(token: token)
+        } catch APIRepo.LoadError.invalidURL(url: let url) {
+            print("\(url.getString()) is invalid")
+            print("The eventId is possibly wrong")
+        } catch APIRepo.LoadError.dataFetchingFailed(cause: let cause) {
+            print("Data fetch failed. \n Caused by: \(cause)")
+        } catch {
+            print("Error: \(error)")
+        }
+    }
+    
     private func saveLocalData(dataObject: Data, filename: String) -> Bool {
         do {
             if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {

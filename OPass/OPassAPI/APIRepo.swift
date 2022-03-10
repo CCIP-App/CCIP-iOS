@@ -56,6 +56,24 @@ final class APIRepo {
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
+    
+    static func loadEvent(id: String) async throws -> EventAPIViewModel {
+        //Here we reuse settings loading to obtain an EventAPIViewModel for a specific id.
+        //The reason why it works is that both EventAPIViewModel and SettingsModel have event_id, display_name, logo_url fields.
+        //Therefore, the json from settings url can be converted to EventAPIViewModel safely.
+        
+        //Maybe we should combine loadEvent and loadSettings, since they are identical except return type.
+        //However, the meaning of the function might be confusing if we make these two functions into one.
+        guard let url = URL(.settings(id)) else {
+            throw LoadError.invalidURL(url: .settings(id))
+        }
+        do {
+            return try await URLSession.shared.jsonData(from: url)
+        } catch {
+            throw LoadError.dataFetchingFailed(cause: error)
+        }
+    }
+    
     //Event APIs
     static func load(scenarioUseFrom feature: FeatureModel, scenario: String, token: String) async throws -> ScenarioStatusModel {
         guard feature.feature == .fastpass else {
