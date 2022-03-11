@@ -74,26 +74,28 @@ class EventAPIViewModel: ObservableObject, Decodable {
     
     func redeemToken(token: String) async { //Save token after token check
         let token = token.tirm()
-        let allowedCharacters = NSMutableCharacterSet.init(charactersIn: "-_")
-        allowedCharacters.formUnion(with: NSCharacterSet.alphanumerics)
-        let nonAllowedCharacters = allowedCharacters.inverted
-        if (token.count != 0 && token.rangeOfCharacter(from: nonAllowedCharacters) == nil) {
-            self.isLogin = false
-            
-            guard let fastpassFeature = eventSettings?.features[ofType: .fastpass] else {
-                print("FastPass feature is not included")
-                return
+        let nonAllowedCharacters = CharacterSet
+                                    .alphanumerics
+                                    .union(CharacterSet(charactersIn: "-_"))
+                                    .inverted
+        if (token.isEmpty || token.containsAny(nonAllowedCharacters)) {
+            print("Invalid accessToken")
+            return
+        }
+        
+        self.isLogin = false
+        
+        guard let fastpassFeature = eventSettings?.features[ofType: .fastpass] else {
+            print("FastPass feature is not included")
+            return
+        }
+        
+        if let eventScenarioStatus = try? await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token) {
+            DispatchQueue.main.async {
+                self.eventScenarioStatus = eventScenarioStatus
+                self.accessToken = token
+                self.isLogin = true
             }
-            
-            if let eventScenarioStatus = try? await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token) {
-                DispatchQueue.main.async {
-                    self.eventScenarioStatus = eventScenarioStatus
-                    self.accessToken = token
-                    self.isLogin = true
-                }
-            }
-        } else {
-            print("Invaild accessToken")
         }
     }
     
@@ -177,5 +179,9 @@ extension Array where Element == FeatureModel {
 extension String {
     func tirm() -> String {
         return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    }
+    
+    func containsAny(_ characterSet: CharacterSet) -> Bool {
+        return rangeOfCharacter(from: characterSet) != nil
     }
 }
