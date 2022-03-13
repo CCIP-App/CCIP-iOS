@@ -15,7 +15,7 @@ struct Feature {
     }
     init(wrappedValue: FeatureModel, _ type: FeatureType) {
         //Only accept the target type or null feature
-        //Other mismatched type must be a argument error, it's fatal and should be fixed during development.
+        //Other mismatched type must be an argument error, it's fatal and should be fixed during development.
         if wrappedValue.feature == type || wrappedValue.feature == .nullFeature {
             self.wrappedValue = wrappedValue
         } else {
