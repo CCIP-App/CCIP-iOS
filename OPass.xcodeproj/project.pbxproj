@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F22826327DD8C5E0030D73E /* FeatureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F22826227DD8C5E0030D73E /* FeatureHelper.swift */; };
 		4F29D9C727D4E6DA00292CC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F29D9C627D4E6DA00292CC4 /* GoogleService-Info.plist */; };
 		4F29D9CA27D4EA2D00292CC4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4F29D9C927D4EA2D00292CC4 /* FirebaseAnalytics */; };
 		4F29D9CE27D4EA2D00292CC4 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = 4F29D9CD27D4EA2D00292CC4 /* FirebaseDynamicLinks */; };
@@ -70,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4F22826227DD8C5E0030D73E /* FeatureHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureHelper.swift; sourceTree = "<group>"; };
 		4F29D9C627D4E6DA00292CC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F35B17B27D3850B0023621F /* AnnouncementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementModel.swift; sourceTree = "<group>"; };
 		4F48B5D327CF07910010FC2C /* eventListSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventListSample.json; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				4F5EB73427D3346D00235396 /* JsonDecodeHelper.swift */,
+				4F22826227DD8C5E0030D73E /* FeatureHelper.swift */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				4F35B17C27D3850B0023621F /* AnnouncementModel.swift in Sources */,
 				D3D3789327CE70EE00021FC4 /* SettingsModel.swift in Sources */,
 				D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */,
+				4F22826327DD8C5E0030D73E /* FeatureHelper.swift in Sources */,
 				D3E0123527D38B840040621F /* ScenarioView.swift in Sources */,
 				D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */,
 				4F5EB73527D3346D00235396 /* JsonDecodeHelper.swift in Sources */,

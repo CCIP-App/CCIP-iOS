@@ -53,7 +53,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
     }
     
     func useScenario(scenario: String) async -> Bool{ //Scenario switch by scenario ID. Return true/false for view update
-        let fastpassFeature = eventSettings.feature(ofType: .fastpass)
+        @Feature(.fastpass, in: eventSettings) var fastpassFeature
         guard let token = accessToken else {
             print("No accessToken included")
             return false
@@ -81,7 +81,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
         
         self.isLogin = false
         
-        let fastpassFeature = eventSettings.feature(ofType: .fastpass)
+        @Feature(.fastpass, in: eventSettings) var fastpassFeature
         
         if let eventScenarioStatus = try? await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token) {
             DispatchQueue.main.async {
@@ -93,7 +93,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
     }
     
     func loadScenarioStatus() async {
-        let fastpassFeature = eventSettings.feature(ofType: .fastpass)
+        @Feature(.fastpass, in: eventSettings) var fastpassFeature
         
         guard let token = accessToken else {
             print("No accessToken included")
@@ -125,7 +125,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
     }
     
     func loadSchedule() async {
-        let scheduleFeature = eventSettings.feature(ofType: .schedule)
+        @Feature(.schedule, in: eventSettings) var scheduleFeature
         
         if let schedule = try? await APIRepo.load(scheduleFrom: scheduleFeature) {
             DispatchQueue.main.async {
@@ -135,7 +135,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
     }
     
     func loadAnnouncements() async {
-        let announcementFeature = eventSettings.feature(ofType: .announcement)
+        @Feature(.announcement, in: eventSettings) var announcementFeature
         
         guard let token = accessToken else {
             print("No accessToken included")
