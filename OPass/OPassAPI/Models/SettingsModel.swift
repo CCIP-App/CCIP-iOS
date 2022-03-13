@@ -28,7 +28,7 @@ struct Start_EndModel: Hashable, Decodable {
 }
 
 struct FeatureModel: Hashable, Codable {
-    var feature: FeatureType
+    let feature: FeatureType
     var icon: String? = nil
     var display_text = DisplayTextModel()
     var wifi: [WiFiModel]? = nil
@@ -36,5 +36,23 @@ struct FeatureModel: Hashable, Codable {
 }
 
 enum FeatureType: String, Hashable, Codable {
-    case fastpass, ticket, schedule, announcement, wifi, telegram, im, puzzle, venue, sponsors, staffs, webview
+    case nullFeature, fastpass, ticket, schedule, announcement, wifi, telegram, im, puzzle, venue, sponsors, staffs, webview
+}
+
+
+extension Optional where Wrapped == SettingsModel {
+    func feature(ofType type: FeatureType) -> FeatureModel {
+        switch self {
+            case .none:
+                return FeatureModel(feature: .nullFeature)
+            case .some(let model):
+                return model.features[ofType: type] ?? FeatureModel(feature: .nullFeature)
+        }
+    }
+}
+
+extension Array where Element == FeatureModel {
+    fileprivate subscript(ofType type: FeatureType) -> Element? {
+        return self.first { $0.feature == type }
+    }
 }

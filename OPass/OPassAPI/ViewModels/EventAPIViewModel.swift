@@ -53,11 +53,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
     }
     
     func useScenario(scenario: String) async -> Bool{ //Scenario switch by scenario ID. Return true/false for view update
-        guard let fastpassFeature = eventSettings?.features[ofType: .fastpass] else {
-            print("FastPass feature is not included")
-            return false
-        }
-        
+        @Feature(.fastpass, in: eventSettings) var fastpassFeature
         guard let token = accessToken else {
             print("No accessToken included")
             return false
@@ -85,10 +81,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
         
         self.isLogin = false
         
-        guard let fastpassFeature = eventSettings?.features[ofType: .fastpass] else {
-            print("FastPass feature is not included")
-            return
-        }
+        @Feature(.fastpass, in: eventSettings) var fastpassFeature
         
         if let eventScenarioStatus = try? await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token) {
             DispatchQueue.main.async {
@@ -100,10 +93,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
     }
     
     func loadScenarioStatus() async {
-        guard let fastpassFeature = eventSettings?.features[ofType: .fastpass] else {
-            print("FastPass feature is not included")
-            return
-        }
+        @Feature(.fastpass, in: eventSettings) var fastpassFeature
         
         guard let token = accessToken else {
             print("No accessToken included")
@@ -135,10 +125,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
     }
     
     func loadSchedule() async {
-        guard let scheduleFeature = eventSettings?.features[ofType: .schedule] else {
-            print("Schedule feature is not included")
-            return
-        }
+        @Feature(.schedule, in: eventSettings) var scheduleFeature
         
         if let schedule = try? await APIRepo.load(scheduleFrom: scheduleFeature) {
             DispatchQueue.main.async {
@@ -148,10 +135,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
     }
     
     func loadAnnouncements() async {
-        guard let announcementFeature = eventSettings?.features[ofType: .announcement] else {
-            print("Announcement feature is not included")
-            return
-        }
+        @Feature(.announcement, in: eventSettings) var announcementFeature
         
         guard let token = accessToken else {
             print("No accessToken included")
@@ -167,12 +151,6 @@ class EventAPIViewModel: ObservableObject, Decodable {
                 self.eventAnnouncements = []
             }
         }
-    }
-}
-
-extension Array where Element == FeatureModel {
-    fileprivate subscript(ofType type: FeatureType) -> Element? {
-        return self.first { $0.feature == type }
     }
 }
 

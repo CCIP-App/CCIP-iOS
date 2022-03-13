@@ -12,7 +12,6 @@ final class APIRepo {
     enum LoadError: Error {
         case invalidURL(url: URLs)
         case dataFetchingFailed(cause: Error)
-        case incorrectFeatureType(require: FeatureType, found: FeatureType)
         case missingURL(feature: FeatureModel)
         case invalidDateString(String)
     }
@@ -75,14 +74,9 @@ final class APIRepo {
     }
     
     //Event APIs
-    static func load(scenarioUseFrom feature: FeatureModel, scenario: String, token: String) async throws -> ScenarioStatusModel {
-        guard feature.feature == .fastpass else {
-            print("Fastpass feature double check Error")
-            throw LoadError.incorrectFeatureType(require: .fastpass, found: feature.feature)
-        }
-        
+    static func load(@Feature(.fastpass) scenarioUseFrom feature: FeatureModel, scenario: String, token: String) async throws -> ScenarioStatusModel {
         guard let baseURL = feature.url else {
-            print("Couldn't find URL in fastpass feature")
+            print("Couldn't find URL in feature: \(feature)")
             throw LoadError.missingURL(feature: feature)
         }
         
@@ -99,14 +93,9 @@ final class APIRepo {
         }
     }
     
-    static func load(scenarioStatusFrom feature: FeatureModel,token: String) async throws -> ScenarioStatusModel {
-        guard feature.feature == .fastpass else {
-            print("Fastpass feature double check Error")
-            throw LoadError.incorrectFeatureType(require: .fastpass, found: feature.feature)
-        }
-        
+    static func load(@Feature(.fastpass) scenarioStatusFrom feature: FeatureModel,token: String) async throws -> ScenarioStatusModel {
         guard let baseURL = feature.url else {
-            print("Couldn't find URL in fastpass feature")
+            print("Couldn't find URL in feature: \(feature)")
             throw LoadError.missingURL(feature: feature)
         }
         
@@ -152,14 +141,9 @@ final class APIRepo {
         }
     }
     
-    static func load(scheduleFrom schedule: FeatureModel) async throws -> ScheduleModel {
-        guard schedule.feature == .schedule else {
-            print("Schedule feature double check Error")
-            throw LoadError.incorrectFeatureType(require: .schedule, found: schedule.feature)
-        }
-        
+    static func load(@Feature(.schedule) scheduleFrom schedule: FeatureModel) async throws -> ScheduleModel {
         guard let baseURL = schedule.url else {
-            print("Couldn't find URL in schedule feature")
+            print("Couldn't find URL in feature: \(schedule)")
             throw LoadError.missingURL(feature: schedule)
         }
         
@@ -176,13 +160,9 @@ final class APIRepo {
         }
     }
     
-    static func load(announcementFrom feature: FeatureModel, token: String) async throws -> [AnnouncementModel] {
-        guard feature.feature == .announcement else {
-            print("Announcement feature double check Error")
-            throw LoadError.incorrectFeatureType(require: .announcement, found: feature.feature)
-        }
+    static func load(@Feature(.announcement) announcementFrom feature: FeatureModel, token: String) async throws -> [AnnouncementModel] {
         guard let baseURL = feature.url else {
-            print("Couldn't find URL in announcement feature")
+            print("Couldn't find URL in feature: \(feature)")
             throw LoadError.missingURL(feature: feature)
         }
         
