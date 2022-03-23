@@ -11,25 +11,50 @@ struct ContentView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @State var handlingURL = false
+    @State var choosingEvent = false
 
     var body: some View {
-        //Only for API Testing
-        VStack {
-            if handlingURL {
-                ProgressView {
-                    Text("Logining in")
-                }
-            } else {
-                if let eventAPI = OPassAPI.currentEventAPI {
-                    TestTabsView(eventAPI: eventAPI)
-                        .environmentObject(OPassAPI)
-                } else {
+        NavigationView {
+            Text("a")
+                .environmentObject(OPassAPI)
+                .sheet(isPresented: $choosingEvent) {
                     EventListView()
                         .environmentObject(OPassAPI)
                 }
-            }
+                .navigationTitle("OPass")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        SFButton(systemName: "person.crop.rectangle.stack") {
+                            choosingEvent = true
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        SFButton(systemName: "gearshape") {
+                            
+                        }
+                    }
+                }
         }
         .onOpenURL(perform: handleURL)
+        
+//        //Only for API Testing
+//        VStack {
+//            if handlingURL {
+//                ProgressView {
+//                    Text("Logining in")
+//                }
+//            } else {
+//                if let eventAPI = OPassAPI.currentEventAPI {
+//                    TestTabsView(eventAPI: eventAPI)
+//                        .environmentObject(OPassAPI)
+//                } else {
+//                    EventListView()
+//                        .environmentObject(OPassAPI)
+//                }
+//            }
+//        }
+//        .onOpenURL(perform: handleURL)
     }
     
     func handleURL(url: URL) {
