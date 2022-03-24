@@ -31,7 +31,6 @@
 		D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194727CF864B00643D97 /* ScheduleModel.swift */; };
 		D3C6194B27CF964A00643D97 /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194A27CF964A00643D97 /* URLImageView.swift */; };
 		D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingView.swift */; };
-		D3C6194F27CF9A8800643D97 /* TestTabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194E27CF9A8800643D97 /* TestTabsView.swift */; };
 		D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6195027CFA9A800643D97 /* ScheduleView.swift */; };
 		D3D3788227CE440D00021FC4 /* OPassAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */; };
 		D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788A27CE542100021FC4 /* MoreModels.swift */; };
@@ -95,8 +94,7 @@
 		D3C0E21B27D51C060095169F /* WifiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiView.swift; sourceTree = "<group>"; };
 		D3C6194727CF864B00643D97 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		D3C6194A27CF964A00643D97 /* URLImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
-		D3C6194C27CF9A7400643D97 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingView.swift; path = OPass/Views/Tabs/SettingView.swift; sourceTree = SOURCE_ROOT; };
-		D3C6194E27CF9A8800643D97 /* TestTabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabsView.swift; sourceTree = "<group>"; };
+		D3C6194C27CF9A7400643D97 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingView.swift; path = OPass/Views/SettingView.swift; sourceTree = SOURCE_ROOT; };
 		D3C6195027CFA9A800643D97 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleView.swift; path = OPass/Views/Tabs/ScheduleView.swift; sourceTree = SOURCE_ROOT; };
 		D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPIViewModel.swift; sourceTree = "<group>"; };
 		D3D3788A27CE542100021FC4 /* MoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreModels.swift; sourceTree = "<group>"; };
@@ -185,6 +183,7 @@
 			children = (
 				D3095F1627D78EB500225C7D /* Functions */,
 				D3C6194A27CF964A00643D97 /* URLImageView.swift */,
+				4F6968A527EBCB5E009073E4 /* SFButton.swift */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -193,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				D3E0123627D38CF70040621F /* Scenario */,
-				D3C6194C27CF9A7400643D97 /* SettingView.swift */,
 				D3C6195027CFA9A800643D97 /* ScheduleView.swift */,
 				4F5EB73727D3648100235396 /* AnnounceView.swift */,
 				D3C0E21B27D51C060095169F /* WifiView.swift */,
@@ -206,10 +204,9 @@
 			children = (
 				D3E4E6C027CD158400FFACEB /* ContentView.swift */,
 				D3D3789027CE62EB00021FC4 /* EventListView.swift */,
-				D3C6194E27CF9A8800643D97 /* TestTabsView.swift */,
+				D3C6194C27CF9A7400643D97 /* SettingView.swift */,
 				D3C6195227CFC10400643D97 /* Tabs */,
 				D3C6194927CF963000643D97 /* Additions */,
-				4F6968A527EBCB5E009073E4 /* SFButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -433,7 +430,6 @@
 				D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */,
 				D3E0123327D3667C0040621F /* ScenarioStatusModel.swift in Sources */,
 				D3E0123827D38D3D0040621F /* RedeemTokenView.swift in Sources */,
-				D3C6194F27CF9A8800643D97 /* TestTabsView.swift in Sources */,
 				4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */,
 				D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */,
 				4FEF38FB27D13FBA00FC97F4 /* APIRepo.swift in Sources */,

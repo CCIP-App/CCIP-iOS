@@ -11,32 +11,44 @@ struct ContentView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @State var handlingURL = false
-    @State var choosingEvent = false
+    @State var isShowingEventList = false
 
     var body: some View {
         NavigationView {
-            Text("a")
-                .environmentObject(OPassAPI)
-                .sheet(isPresented: $choosingEvent) {
-                    EventListView()
-                        .environmentObject(OPassAPI)
+            VStack {
+                if let eventAPI = OPassAPI.currentEventAPI {
+                    Text(eventAPI.display_name.zh)
+                } else {
+                    Text("No selected Event")
                 }
-                .navigationTitle("OPass")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        SFButton(systemName: "person.crop.rectangle.stack") {
-                            choosingEvent = true
-                        }
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        SFButton(systemName: "gearshape") {
-                            
-                        }
+            }
+            .environmentObject(OPassAPI)
+            .sheet(isPresented: $isShowingEventList) {
+                EventListView()
+                    .environmentObject(OPassAPI)
+            }
+            .navigationTitle("OPass")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    SFButton(systemName: "person.crop.rectangle.stack") {
+                        isShowingEventList.toggle()
                     }
                 }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: SettingView()) {
+                        Image(systemName: "gearshape")
+                    }
+                }
+            }
         }
         .onOpenURL(perform: handleURL)
+        .onAppear(perform: {
+            if OPassAPI.currentEventAPI == nil {
+                isShowingEventList.toggle()
+            }
+        })
         
 //        //Only for API Testing
 //        VStack {

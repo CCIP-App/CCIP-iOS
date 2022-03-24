@@ -21,6 +21,7 @@ struct OPassApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(OPassAPIViewModel())
+                .preferredColorScheme(.light) //DarkMode not design
         }
     }
 }
