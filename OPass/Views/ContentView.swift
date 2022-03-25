@@ -17,9 +17,17 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 if let eventAPI = OPassAPI.currentEventAPI {
-                    Text(eventAPI.display_name.zh)
+                    MainView(eventAPI: eventAPI)
                 } else {
-                    Text("No selected Event")
+                    SFButton(systemName: "person.crop.rectangle.stack") {
+                        isShowingEventList.toggle()
+                    }
+                    .tint(.blue)
+                    .buttonStyle(.bordered)
+                    .controlSize(.large)
+                    
+                    Text("Select Event")
+                        .font(.caption2)
                 }
             }
             .environmentObject(OPassAPI)

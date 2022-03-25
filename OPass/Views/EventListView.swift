@@ -41,11 +41,11 @@ struct EventListView: View {
                     }
                 }
             }
-            .navigationTitle("選擇活動")
+            .navigationTitle("Select Event")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("關閉") {
+                    Button("Close") {
                         dismiss()
                     }
                 }
