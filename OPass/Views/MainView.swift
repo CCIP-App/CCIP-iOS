@@ -112,8 +112,16 @@ struct TabButton: View {
             .tint(.gray)
         default: //WebView
             NavigationLink(destination: EmptyView()) {
-                Image(systemName: "link.icloud")
-                //TODO: Add Tabs Icon data in EventAPI feature model
+                if let iconData = feature.iconData, let iconUIImage = UIImage(data: iconData) {
+                    Image(uiImage: iconUIImage)
+                        .renderingMode(.template)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding()
+                        .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.width * 0.2)
+                } else {
+                    Image(systemName: "exclamationmark.icloud")
+                }
             }
             .tint(.purple)
         }

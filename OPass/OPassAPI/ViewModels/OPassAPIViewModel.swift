@@ -15,7 +15,7 @@ class OPassAPIViewModel: ObservableObject {
         willSet {
             if newValue?.eventSettings == nil {
                 Task {
-                    await newValue?.loadSettings_Logo()
+                    await newValue?.initialization()
                 }
             }
         }
@@ -33,7 +33,7 @@ class OPassAPIViewModel: ObservableObject {
         do {
             let eventModel = try await APIRepo.loadEvent(id: eventId)
             //Awe call and await loadSettings_Logo manually to make sure that redeemToken can have valid eventSettings
-            await eventModel.loadSettings_Logo()
+            await eventModel.initialization()
             DispatchQueue.main.async {
                 self.currentEventAPI = eventModel
             }

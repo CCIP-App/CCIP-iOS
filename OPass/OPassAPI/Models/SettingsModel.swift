@@ -30,6 +30,7 @@ struct Start_EndModel: Hashable, Decodable {
 struct FeatureModel: Hashable, Codable {
     let feature: FeatureType
     var icon: String? = nil
+    var iconData: Data? = nil
     var display_text = DisplayTextModel()
     var wifi: [WiFiModel]? = nil
     var url: String? = nil

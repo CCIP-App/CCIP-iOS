@@ -108,7 +108,8 @@ class EventAPIViewModel: ObservableObject, Decodable {
         }
     }
     
-    func loadSettings_Logo() async {
+    func initialization() async {
+        //Load Event Settings
         guard let eventSettings = try? await APIRepo.loadSettings(ofEvent: event_id) else {
             return
         }
@@ -116,10 +117,21 @@ class EventAPIViewModel: ObservableObject, Decodable {
         DispatchQueue.main.async {
             self.eventSettings = eventSettings
         }
-
+        
+        //Load Event Logo
         if let logo = try? await APIRepo.loadLogo(from: eventSettings.logo_url) {
             DispatchQueue.main.async {
                 self.eventLogo = logo
+            }
+        }
+        //Load WebView Icon
+        let webViewFeatureIndex = eventSettings.features.enumerated().filter({ $0.element.feature == .webview }).map { $0.offset }
+        
+        for index in webViewFeatureIndex {
+            if let iconUrl = eventSettings.features[index].icon, let iconData = try? await APIRepo.loadLogo(from: iconUrl) {
+                DispatchQueue.main.async {
+                    self.eventSettings!.features[index].iconData = iconData
+                }
             }
         }
     }
