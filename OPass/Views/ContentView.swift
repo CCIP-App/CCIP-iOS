@@ -57,24 +57,6 @@ struct ContentView: View {
                 isShowingEventList.toggle()
             }
         })
-        
-//        //Only for API Testing
-//        VStack {
-//            if handlingURL {
-//                ProgressView {
-//                    Text("Logining in")
-//                }
-//            } else {
-//                if let eventAPI = OPassAPI.currentEventAPI {
-//                    TestTabsView(eventAPI: eventAPI)
-//                        .environmentObject(OPassAPI)
-//                } else {
-//                    EventListView()
-//                        .environmentObject(OPassAPI)
-//                }
-//            }
-//        }
-//        .onOpenURL(perform: handleURL)
     }
     
     func handleURL(url: URL) {
