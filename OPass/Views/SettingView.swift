@@ -11,6 +11,8 @@ struct SettingView: View {
     
     @Environment(\.openURL) var openURL
     @State var isDebug = false
+    private let CCIPGithub = "https://github.com/CCIP-App"
+    private let policy = "https://opass.app/privacy-policy.html"
     
     var body: some View {
         VStack {
@@ -47,13 +49,13 @@ struct SettingView: View {
                     }
                     
                     Button(action: {
-                        openURL(URL(string: "https://github.com/CCIP-App")!)
+                        openURL(URL(string: CCIPGithub)!)
                     }) {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text("GitHub")
                                     .foregroundColor(.black)
-                                Text("https://github.com/CCIP-App" as! String)
+                                Text(CCIPGithub)
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
@@ -65,13 +67,13 @@ struct SettingView: View {
                     }
                     
                     Button(action: {
-                        openURL(URL(string: "https://opass.app/privacy-policy.html")!)
+                        openURL(URL(string: policy)!)
                     }) {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text("Privacy Policy")
                                     .foregroundColor(.black)
-                                Text("https://opass.app/privacy-policy.html" as! String)
+                                Text(policy)
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
