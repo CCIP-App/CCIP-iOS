@@ -20,19 +20,21 @@ struct MainView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .padding()
-                        .foregroundColor(Color.purple)
+                        .foregroundColor(Color("LogoColor"))
                         .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
                 } else {
-                    Text(eventSettings.display_name.zh)
-                        .font(.title)
+                    Text(eventAPI.display_name.en)
+                        .font(.largeTitle)
                         .padding()
-                        .foregroundColor(Color.purple)
+                        .foregroundColor(Color("LogoColor"))
+                        .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
                 }
                 
                 ScrollView {
                     ForEach(eventSettings.features, id: \.self) { feature in
                         VStack() {
-                            TabButton(feature: feature)
+                            TabButton(feature: feature, eventAPI: eventAPI)
+                                .frame(width: 70, height: 70)
                                 .buttonStyle(.bordered)
                                 .controlSize(.large)
                             
@@ -52,78 +54,104 @@ struct TabButton: View {
     
     let buttonSize: CGFloat = 50
     @State var feature: FeatureModel
+    @ObservedObject var eventAPI: EventAPIViewModel
     //fastpass, ticket, schedule, announcement, wifi, telegram, im, puzzle, venue, sponsors, staffs, webview
     var body: some View {
-        switch(feature.feature) {
-        case .fastpass:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "wallet.pass")
-            }
-            .tint(.blue)
-        case .ticket:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "ticket")
-            }
-            .tint(.purple)
-        case .schedule:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "newspaper")
-            }
-            .tint(.green)
-        case .announcement:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "megaphone")
-            }
-            .tint(.orange)
-        case .wifi:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "wifi")
-            }
-            .tint(.brown)
-        case .telegram:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "paperplane")
-            }
-            .tint(.green)
-        case .im:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "bubble.right")
-            }
-            .tint(.purple)
-        case .puzzle:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "puzzlepiece.extension")
-            }
-            .tint(.blue)
-        case .venue:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "map")
-            }
-            .tint(.blue)
-        case .sponsors:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "dollarsign.square")
-            }
-            .tint(.yellow)
-        case .staffs:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "person.3.sequence")
-            }
-            .tint(.gray)
-        default: //WebView
-            NavigationLink(destination: EmptyView()) {
-                if let iconData = feature.iconData, let iconUIImage = UIImage(data: iconData) {
-                    Image(uiImage: iconUIImage)
-                        .renderingMode(.template)
+        VStack {
+            switch(feature.feature) {
+            case .fastpass:
+                NavigationLink(destination: FastpassView(eventAPI: eventAPI)) {
+                    Image(systemName: "wallet.pass")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .padding()
-                        .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.width * 0.2)
-                } else {
-                    Image(systemName: "exclamationmark.icloud")
                 }
+                .tint(.blue)
+            case .ticket:
+                NavigationLink(destination: EmptyView()) {
+                    Image(systemName: "ticket")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                .tint(.purple)
+            case .schedule:
+                NavigationLink(destination: ScheduleView(eventAPI: eventAPI)) {
+                    Image(systemName: "newspaper")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                .tint(.green)
+            case .announcement:
+                NavigationLink(destination: EmptyView()) {
+                    Image(systemName: "megaphone")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                .tint(.orange)
+            case .wifi:
+                NavigationLink(destination: EmptyView()) {
+                    Image(systemName: "wifi")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                .tint(.brown)
+            case .telegram:
+                NavigationLink(destination: EmptyView()) {
+                    Image(systemName: "paperplane")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                .tint(.green)
+            case .im:
+                NavigationLink(destination: EmptyView()) {
+                    Image(systemName: "bubble.right")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                .tint(.purple)
+            case .puzzle:
+                NavigationLink(destination: EmptyView()) {
+                    Image(systemName: "puzzlepiece.extension")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                .tint(.blue)
+            case .venue:
+                NavigationLink(destination: EmptyView()) {
+                    Image(systemName: "map")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                .tint(.blue)
+            case .sponsors:
+                NavigationLink(destination: EmptyView()) {
+                    Image(systemName: "dollarsign.square")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                .tint(.yellow)
+            case .staffs:
+                NavigationLink(destination: EmptyView()) {
+                    Image(systemName: "person.3.sequence")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+                .tint(.gray)
+            default: //WebView
+                NavigationLink(destination: EmptyView()) {
+                    if let iconData = feature.iconData, let iconUIImage = UIImage(data: iconData) {
+                        Image(uiImage: iconUIImage)
+                            .renderingMode(.template)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            
+                    } else {
+                        Image(systemName: "exclamationmark.icloud")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }
+                }
+                .tint(.purple)
             }
-            .tint(.purple)
         }
     }
 }

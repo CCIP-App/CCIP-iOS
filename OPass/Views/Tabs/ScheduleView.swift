@@ -6,58 +6,83 @@
 //
 
 import SwiftUI
+import SwiftDate
 
 struct ScheduleView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
-    @State var selectDayData = [SessionModel()]
+    let weekDayName = ["Mon", "Tue", "Wen", "Thr", "Fri", "Sat", "Sun"]
+    
+    @State var scheduleData = [SessionModel()]
+    @State var scheduleDataCollation: [DateInRegion : [SessionModel]] = [DateInRegion():[SessionModel()]]
+    @State var scheduleDataUniqueStartDate: [DateInRegion] = [DateInRegion()]
     
     var body: some View {
-        //Only for API Testing
         //Current design performance veryyyyyyyy bad. 'Pre-draw' session list view in future
         VStack {
-            if let allData = eventAPI.eventSchedule {
-                //Select date list view
-                HStack(spacing: 10) {
-                    ForEach(allData.sessions, id: \.self) { dayData in
-                        Button(action: {
-                            selectDayData = dayData
-                        }) {
-                            VStack {
-                                Text(String(dayData[0].start.month) + "/" + String(dayData[0].start.day))
-                                    .foregroundColor(Color.white)
+            if let allScheduleData = eventAPI.eventSchedule {
+                VStack(spacing: 0) {
+                    if allScheduleData.sessions.count > 1 {
+                        HStack(spacing: 10) {
+                            ForEach(allScheduleData.sessions, id: \.self) { dayData in
+                                Button(action: {
+                                    scheduleData = dayData
+                                    scheduleDataCollation = Dictionary(grouping: scheduleData, by: { $0.start })
+                                    scheduleDataUniqueStartDate = scheduleDataCollation.map({ $0.key }).sorted()
+                                }) {
+                                    VStack {
+                                        Text(
+                                            String(weekDayName[dayData[0].start.weekday - 1])
+                                            + "\n" +
+                                            String(dayData[0].start.day)
+                                        )
+                                        .foregroundColor(scheduleData == dayData ? Color.white : Color.black)
+                                    }
+                                    .padding(8)
+                                    .background(Color.blue.opacity(scheduleData == dayData ? 1 : 0))
+                                    .cornerRadius(10)
+                                }
                             }
-                            .padding(5)
-                            .background(Color.blue.opacity(selectDayData == dayData ? 1 : 0))
-                            .cornerRadius(5)
+                        }
+                        Divider().padding(.top, 8)
+                    }
+                    
+                    Form {
+                        ForEach(scheduleDataUniqueStartDate, id: \.self) { startDate in
+                            Section {
+                                if let sectionScheduleData = self.scheduleDataCollation[startDate] {
+                                    ForEach(sectionScheduleData, id: \.self) { sessionDetail in
+                                        NavigationLink(destination: EmptyView()) {
+                                            VStack {
+                                                Text(sessionDetail.zh.title)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.purple)
                 .onAppear(perform: {
-                    selectDayData = allData.sessions[0]
+                    scheduleData = allScheduleData.sessions[0]
+                    scheduleDataCollation = Dictionary(grouping: scheduleData, by: { $0.start })
+                    scheduleDataUniqueStartDate = scheduleDataCollation.map({ $0.key }).sorted()
                 })
-                
-                //Session list view
-                ScrollView {
-                    VStack(spacing: 10) {
-                        ForEach(selectDayData, id: \.self) { currentSession in
-                            VStack {
-                                Text(currentSession.zh.title)
-                            }
-                            .padding(5)
-                            .frame(width: UIScreen.main.bounds.width * 0.9)
-                            .background(Color.green)
-                            .cornerRadius(10)
-                        }
-                    }
-                }
+            } else {
+                ProgressView("Loading...")
             }
         }
         .task {
             await eventAPI.loadSchedule()
+        }
+        .navigationTitle("Schedule")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                SFButton(systemName: "line.3.horizontal.decrease.circle") {
+                    
+                }
+            }
         }
     }
 }
