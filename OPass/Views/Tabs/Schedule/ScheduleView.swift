@@ -18,7 +18,6 @@ struct ScheduleView: View {
     @State var scheduleDataUniqueStartDate: [DateInRegion] = [DateInRegion()]
     
     var body: some View {
-        //Current design performance veryyyyyyyy bad. 'Pre-draw' session list view in future
         VStack {
             if let allScheduleData = eventAPI.eventSchedule {
                 VStack(spacing: 0) {

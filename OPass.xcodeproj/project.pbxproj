@@ -23,6 +23,8 @@
 		4FEF38FB27D13FBA00FC97F4 /* APIRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */; };
 		D3095F1827D78EE600225C7D /* NotificationFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3095F1727D78EE600225C7D /* NotificationFunc.swift */; };
 		D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314B66E27D1089200481D5E /* EventAPIViewModel.swift */; };
+		D322F60C27EF3B09007EED5D /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60B27EF3B09007EED5D /* SlideOverCard */; };
+		D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60E27EF4698007EED5D /* CodeScanner */; };
 		D358E55827EDEDB2000A6554 /* FastpassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D358E55727EDEDB2000A6554 /* FastpassView.swift */; };
 		D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366D8EF27ED50CB00AA4267 /* MainView.swift */; };
 		D3A00F1F27D837D00097A6AB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00F1E27D837D00097A6AB /* NotificationService.swift */; };
@@ -99,7 +101,7 @@
 		D3C6194727CF864B00643D97 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		D3C6194A27CF964A00643D97 /* URLImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
 		D3C6194C27CF9A7400643D97 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingView.swift; path = OPass/Views/SettingView.swift; sourceTree = SOURCE_ROOT; };
-		D3C6195027CFA9A800643D97 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleView.swift; path = OPass/Views/Tabs/ScheduleView.swift; sourceTree = SOURCE_ROOT; };
+		D3C6195027CFA9A800643D97 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleView.swift; path = OPass/Views/Tabs/Schedule/ScheduleView.swift; sourceTree = SOURCE_ROOT; };
 		D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPIViewModel.swift; sourceTree = "<group>"; };
 		D3D3788A27CE542100021FC4 /* MoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreModels.swift; sourceTree = "<group>"; };
 		D3D3789027CE62EB00021FC4 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
@@ -126,10 +128,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */,
 				D3E0123127D35D970040621F /* KeychainAccess in Frameworks */,
 				4F5EB73127D2311200235396 /* SwiftDate in Frameworks */,
 				4F29D9CA27D4EA2D00292CC4 /* FirebaseAnalytics in Frameworks */,
 				D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */,
+				D322F60C27EF3B09007EED5D /* SlideOverCard in Frameworks */,
 				4F29D9CE27D4EA2D00292CC4 /* FirebaseDynamicLinks in Frameworks */,
 				D3A00F2A27D838920097A6AB /* OneSignal in Frameworks */,
 			);
@@ -144,6 +148,14 @@
 				D3095F1727D78EE600225C7D /* NotificationFunc.swift */,
 			);
 			path = Functions;
+			sourceTree = "<group>";
+		};
+		D322F60927EF1862007EED5D /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				D3C6195027CFA9A800643D97 /* ScheduleView.swift */,
+			);
+			path = Schedule;
 			sourceTree = "<group>";
 		};
 		D36DC46327D46F6800012D43 /* Additions */ = {
@@ -196,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E0123627D38CF70040621F /* Fastpass */,
-				D3C6195027CFA9A800643D97 /* ScheduleView.swift */,
+				D322F60927EF1862007EED5D /* Schedule */,
 				4F5EB73727D3648100235396 /* AnnounceView.swift */,
 				D3C0E21B27D51C060095169F /* WifiView.swift */,
 			);
@@ -336,6 +348,8 @@
 				4F29D9C927D4EA2D00292CC4 /* FirebaseAnalytics */,
 				4F29D9CD27D4EA2D00292CC4 /* FirebaseDynamicLinks */,
 				D3A00F2927D838920097A6AB /* OneSignal */,
+				D322F60B27EF3B09007EED5D /* SlideOverCard */,
+				D322F60E27EF4698007EED5D /* CodeScanner */,
 			);
 			productName = OPass;
 			productReference = D3E4E6BB27CD158400FFACEB /* OPass.app */;
@@ -373,6 +387,8 @@
 				D3E0122F27D35D970040621F /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				4F29D9C827D4EA2D00292CC4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
+				D322F60A27EF3B09007EED5D /* XCRemoteSwiftPackageReference "SlideOverCard" */,
+				D322F60D27EF4698007EED5D /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = D3E4E6BC27CD158400FFACEB /* Products */;
 			projectDirPath = "";
@@ -477,7 +493,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip.OneSignalNotificationServiceExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip.brianchang.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -504,7 +520,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip.OneSignalNotificationServiceExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip.brianchang.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -644,6 +660,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OPass/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Use Camera to scan QRCode inoder to get token";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -655,7 +672,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip;
+				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip.brianchang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -678,6 +695,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OPass/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Use Camera to scan QRCode inoder to get token";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -689,7 +707,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip;
+				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip.brianchang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -746,6 +764,22 @@
 				minimumVersion = 6.3.0;
 			};
 		};
+		D322F60A27EF3B09007EED5D /* XCRemoteSwiftPackageReference "SlideOverCard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/joogps/SlideOverCard";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		D322F60D27EF4698007EED5D /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
@@ -779,6 +813,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4F5EB72F27D2311200235396 /* XCRemoteSwiftPackageReference "SwiftDate" */;
 			productName = SwiftDate;
+		};
+		D322F60B27EF3B09007EED5D /* SlideOverCard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D322F60A27EF3B09007EED5D /* XCRemoteSwiftPackageReference "SlideOverCard" */;
+			productName = SlideOverCard;
+		};
+		D322F60E27EF4698007EED5D /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D322F60D27EF4698007EED5D /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 		D3A00F2927D838920097A6AB /* OneSignal */ = {
 			isa = XCSwiftPackageProductDependency;

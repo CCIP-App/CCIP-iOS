@@ -13,22 +13,6 @@ struct FastpassView: View {
     
     var body: some View {
         VStack {
-            if let eventLogoData = eventAPI.eventLogo, let eventLogoUIImage = UIImage(data: eventLogoData) {
-                Image(uiImage: eventLogoUIImage)
-                    .renderingMode(.template)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding()
-                    .foregroundColor(Color("LogoColor"))
-                    .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
-            } else {
-                Text(eventAPI.display_name.en)
-                    .font(.largeTitle)
-                    .padding()
-                    .foregroundColor(Color("LogoColor"))
-                    .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
-            }
-            
             if eventAPI.accessToken != nil {
                 ScenarioView(eventAPI: eventAPI)
             } else {
