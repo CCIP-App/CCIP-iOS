@@ -51,10 +51,21 @@ struct ScheduleView: View {
                             Section {
                                 if let sectionScheduleData = self.scheduleDataCollation[startDate] {
                                     ForEach(sectionScheduleData, id: \.self) { sessionDetail in
-                                        NavigationLink(destination: EmptyView()) {
-                                            VStack {
-                                                Text(sessionDetail.zh.title)
+                                        if sessionDetail.type != "Ev" {
+                                            NavigationLink(destination:
+                                                            ScheduleDetailView(
+                                                                scheduleDetail: sessionDetail,
+                                                                speakersData: allScheduleData.speakers,
+                                                                roomsData: allScheduleData.rooms,
+                                                                tagsData: allScheduleData.tags
+                                                            )
+                                            ){
+                                                VStack {
+                                                    Text(sessionDetail.zh.title)
+                                                }
                                             }
+                                        } else {
+                                            Text(sessionDetail.zh.title)
                                         }
                                     }
                                 }

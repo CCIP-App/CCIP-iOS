@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
-    private let gridItemLayout = Array(repeating: GridItem(spacing: CGFloat(12.0), alignment: Alignment.top), count: 4)
+    private let gridItemLayout = Array(repeating: GridItem(spacing: CGFloat(25.0), alignment: Alignment.top), count: 4)
     
     
     var body: some View {
@@ -26,8 +26,9 @@ struct MainView: View {
                         .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
                 } else {
                     Text(eventAPI.display_name.en)
-                        .font(.largeTitle)
-                        .padding()
+                        .font(.system(.largeTitle, design: .rounded))
+                        .fontWeight(.medium)
+                        .padding(.vertical)
                         .foregroundColor(Color("LogoColor"))
                         .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
                 }
@@ -41,7 +42,7 @@ struct MainView: View {
                                         .frame(width: geometry.size.width, height: geometry.size.width)
                                 }
                                 .aspectRatio(contentMode: .fill)
-                                .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
+                                .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
                                 
                                 Text(feature.display_text.zh)
                                     .font(.caption2)
@@ -59,7 +60,6 @@ struct MainView: View {
 
 struct TabButton: View {
     
-    let buttonSize: CGFloat = 50
     @State var feature: FeatureModel
     @ObservedObject var eventAPI: EventAPIViewModel
     //fastpass, ticket, schedule, announcement, wifi, telegram, im, puzzle, venue, sponsors, staffs, webview
@@ -70,7 +70,7 @@ struct TabButton: View {
                 Image(systemName: "wallet.pass")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(4))
+                    .padding(CGFloat(8))
             }
             .tabButtonStyle(color: .blue)
         case .ticket:
@@ -78,7 +78,7 @@ struct TabButton: View {
                 Image(systemName: "ticket")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(4))
+                    .padding(CGFloat(8))
             }
             .tabButtonStyle(color: .purple)
         case .schedule:
@@ -86,7 +86,7 @@ struct TabButton: View {
                 Image(systemName: "scroll")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(4))
+                    .padding(CGFloat(8))
             }
             .tabButtonStyle(color: .green)
         case .announcement:
@@ -94,7 +94,7 @@ struct TabButton: View {
                 Image(systemName: "megaphone")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(4))
+                    .padding(CGFloat(8))
             }
             .tabButtonStyle(color: .orange)
         case .wifi:
@@ -102,7 +102,7 @@ struct TabButton: View {
                 Image(systemName: "wifi")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(4))
+                    .padding(CGFloat(8))
             }
             .tabButtonStyle(color: .brown)
         case .telegram:
@@ -110,7 +110,7 @@ struct TabButton: View {
                 Image(systemName: "paperplane")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(4))
+                    .padding(CGFloat(8))
             }
             .tabButtonStyle(color: .green)
         case .im:
@@ -118,7 +118,7 @@ struct TabButton: View {
                 Image(systemName: "bubble.right")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(4))
+                    .padding(CGFloat(8))
             }
             .tabButtonStyle(color: .purple)
         case .puzzle:
@@ -126,7 +126,7 @@ struct TabButton: View {
                 Image(systemName: "puzzlepiece.extension")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(4))
+                    .padding(CGFloat(8))
             }
             .tabButtonStyle(color: .blue)
         case .venue:
@@ -134,7 +134,7 @@ struct TabButton: View {
                 Image(systemName: "map")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(4))
+                    .padding(CGFloat(8))
             }
             .tabButtonStyle(color: .blue)
         case .sponsors:
@@ -142,7 +142,7 @@ struct TabButton: View {
                 Image(systemName: "banknote")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(4))
+                    .padding(CGFloat(8))
             }
             .tabButtonStyle(color: .yellow)
         case .staffs:
@@ -150,7 +150,7 @@ struct TabButton: View {
                 Image(systemName: "person.3")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(4))
+                    .padding(CGFloat(8))
             }
             .tabButtonStyle(color: .gray)
         default: //WebView
@@ -160,13 +160,13 @@ struct TabButton: View {
                         .renderingMode(.template)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .padding(CGFloat(4))
+                        .padding(CGFloat(8))
                         
                 } else {
                     Image(systemName: "exclamationmark.icloud")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .padding(CGFloat(4))
+                        .padding(CGFloat(8))
                 }
             }
             .tabButtonStyle(color: .purple)

@@ -30,7 +30,8 @@ struct RedeemTokenView: View {
                             .foregroundColor(Color("LogoColor"))
                     } else {
                         Text(eventAPI.display_name.en)
-                            .font(.largeTitle)
+                            .font(.system(.largeTitle, design: .rounded))
+                            .fontWeight(.medium)
                             .foregroundColor(Color("LogoColor"))
                     }
                     Spacer()
