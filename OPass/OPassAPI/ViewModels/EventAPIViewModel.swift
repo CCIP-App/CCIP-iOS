@@ -143,6 +143,18 @@ class EventAPIViewModel: ObservableObject, Decodable {
             DispatchQueue.main.async {
                 self.eventSchedule = schedule
             }
+            
+            //TODO: Avatar Data fetching funtion
+            //for index in 0..<schedule.speakers.count {
+            //    if self.eventSchedule?.speakers[index].avatarData == nil {
+            //        print(schedule.speakers[index].avatar)
+            //        if let avatarData = try? await APIRepo.loadLogo(from: schedule.speakers[index].avatar)  {
+            //            DispatchQueue.main.async {
+            //                self.eventSchedule?.speakers[index].avatarData = avatarData
+            //            }
+            //        }
+            //   }
+            //}
         }
     }
     

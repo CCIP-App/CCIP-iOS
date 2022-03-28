@@ -127,7 +127,7 @@ final class APIRepo {
     }
     
     static func loadLogo(from url: String) async throws -> Data {
-        guard let logoUrl = URL(string: url) else {
+        guard let urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let logoUrl = URL(string: urlString) else {
             print("Invalid Logo URL")
             throw LoadError.invalidURL(url: .raw(url))
         }

@@ -24,10 +24,10 @@ struct EventListView: View {
                     }) {
                         HStack {
                             URLImage(urlString: list.logo_url)
+                                .foregroundColor(Color("LogoColor"))
                                 .aspectRatio(contentMode: .fit)
-                                .padding(3)
+                                .padding(.horizontal, 3)
                                 .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.15)
-                                .background(Color.purple)
                                 .cornerRadius(5)
                             
                             Text(list.display_name.zh)

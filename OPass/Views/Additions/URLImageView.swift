@@ -16,9 +16,10 @@ struct URLImage: View {
     var body: some View {
         if let data = data, let uiimage = UIImage(data: data) {
             Image(uiImage: uiimage)
+                .renderingMode(.template)
                 .resizable()
         } else {
-            Image(systemName: "")
+            Image(systemName: "exclamationmark.icloud")
                 .onAppear {
                     fetchData()
                 }

@@ -74,6 +74,7 @@ extension DateInRegion {
 struct SpeakerModel: Hashable, Codable {
     var id: String = ""
     var avatar: String = ""
+    var avatarData: Data?
     var zh = Name_BioModel()
     var en = Name_BioModel()
 }

@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import SwiftDate
 
 struct ScheduleDetailView: View {
     
-    let scheduleDetail: SessionModel
+    @State var scheduleDetail: SessionModel
     let speakers: [String: SpeakerModel]
     let rooms: [String : Id_Name_DescriptionModel]
     let tags: [String : Id_Name_DescriptionModel]
@@ -20,7 +21,7 @@ struct ScheduleDetailView: View {
         roomsData: [Id_Name_DescriptionModel],
         tagsData: [Id_Name_DescriptionModel]
     ) {
-        self.scheduleDetail = scheduleDetail
+        self._scheduleDetail = State(initialValue: scheduleDetail)
         self.speakers = speakersData.toDictionary {$0.id}
         self.rooms = roomsData.toDictionary {$0.id}
         self.tags = tagsData.toDictionary {$0.id}
@@ -31,17 +32,8 @@ struct ScheduleDetailView: View {
             Color("BackgroundColor").edgesIgnoringSafeArea(.bottom)
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    HStack {
-                        ForEach(scheduleDetail.tags, id: \.self) { tag in
-                            Text(tags[tag]?.zh.name ?? tag)
-                                .font(.caption)
-                                .padding(5)
-                                .foregroundColor(Color.black)
-                                .background(Color.black.opacity(0.1))
-                                .cornerRadius(5)
-                        }
-                    }
-                    .padding(.vertical, 8)
+                    TagsSection(tagsID: scheduleDetail.tags, tags: tags)
+                        .padding(.vertical, 8)
                     
                     Text(scheduleDetail.zh.title)
                         .font(.largeTitle.bold())
@@ -49,8 +41,52 @@ struct ScheduleDetailView: View {
                     FeatureButtons(scheduleDetail: scheduleDetail)
                         .padding(.vertical)
                     
-                    HStack {
-                        Image(systemName: "")
+                    PlaceSection(name: rooms[scheduleDetail.room]?.zh.name ?? scheduleDetail.room)
+                        .background(Color.white)
+                        .cornerRadius(8)
+                        .padding(.bottom)
+                    
+                    TimeSection(scheduleDetail: scheduleDetail)
+                        .background(Color.white)
+                        .cornerRadius(8)
+                        .padding(.bottom)
+                    
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("Speakers").font(.caption)
+                            .foregroundColor(.gray)
+                            .padding(.leading, 10)
+                        
+                        ForEach(scheduleDetail.speakers, id: \.self) { speaker in
+                            VStack(alignment: .leading, spacing: 0) {
+                                HStack(alignment: .center) {
+                                    //TODO: Avatar feature
+                                    //if let speakerData = speakers[speaker],
+                                    //   let avatarData = speakerData.avatarData,
+                                    //   let avatarUIImage = UIImage(data: avatarData) {
+                                    //    Image(uiImage: avatarUIImage)
+                                    //        .clipShape(Circle())
+                                    //        .font(.title)
+                                    //}
+                                    Text(speakers[speaker]?.zh.name ?? speaker)
+                                        .font(.subheadline.bold())
+                                    Spacer()
+                                }
+                                .padding(.vertical, 8)
+                                if let speakerData = speakers[speaker], speakerData.zh.bio != "" {
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Divider()
+                                        Text(speakerData.zh.bio)
+                                            .padding(.vertical, 8)
+                                            .font(.caption)
+                                            .lineLimit(2)
+                                    }
+                                }
+                            }
+                            .padding(.horizontal, 10)
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .padding(.top, 8)
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -69,6 +105,74 @@ struct ScheduleDetailView: View {
                     }
                 }
             }
+        }
+    }
+}
+
+fileprivate struct TagsSection: View {
+    
+    let tagsID: [String]
+    let tags: [String : Id_Name_DescriptionModel]
+    
+    var body: some View {
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(tagsID, id: \.self) { tagID in
+                    Text(tags[tagID]?.zh.name ?? tagID)
+                        .font(.caption)
+                        .padding(.vertical, 2)
+                        .padding(.horizontal, 8)
+                        .foregroundColor(Color.black)
+                        .background(Color.black.opacity(0.1))
+                        .cornerRadius(5)
+                }
+            }
+        }
+    }
+}
+
+fileprivate struct PlaceSection: View {
+    
+    let name: String
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            Image(systemName: "map").foregroundColor(Color.blue)
+                .padding()
+            VStack(alignment: .leading) {
+                Text("Place").font(.caption)
+                    .foregroundColor(.gray)
+                Text(name)
+            }
+            Spacer()
+        }
+    }
+}
+
+fileprivate struct TimeSection: View {
+    
+    let start: DateInRegion
+    let end: DateInRegion
+    let durationMinute: Int
+    
+    init(scheduleDetail: SessionModel) {
+        self.start = scheduleDetail.start
+        self.end = scheduleDetail.end
+        self.durationMinute = Int((scheduleDetail.end - scheduleDetail.start) / 60)
+    }
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            Image(systemName: "clock").foregroundColor(Color.red)
+                .padding()
+            VStack(alignment: .leading) {
+                Text(String(format: "%d/%d/%d", start.year, start.month, start.day))
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                
+                Text(String(format: "%d:%02d ~ %d:%02d • %d minutes", start.hour, start.minute, end.hour, end.minute, durationMinute))
+            }
+            Spacer()
         }
     }
 }
