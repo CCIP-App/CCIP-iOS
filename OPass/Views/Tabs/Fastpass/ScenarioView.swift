@@ -10,29 +10,40 @@ import SwiftUI
 struct ScenarioView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
+    @State var isShowingLogOutAlert = false
     
     var body: some View {
         //Only for API Testing
         VStack {
-            if eventAPI.isLogin {
-                VStack {
-                    Text("Get Scenario Status Scuess")
-                    Text("Current Token")
-                    Text(eventAPI.eventScenarioStatus?.token ?? "Error")
-                }
+            VStack {
+                Text("Get Scenario Status Scuess")
+                Text("Current Token")
+                Text(eventAPI.eventScenarioStatus?.token ?? "Error")
             }
-            
-            Divider()
-            
-            RedeemTokenView(eventAPI: eventAPI)
         }
-        .onAppear(perform: {
-            if eventAPI.accessToken != nil {
-                Task {
-                    await eventAPI.loadScenarioStatus()
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    Text("Fast Pass").font(.headline)
+                    Text(eventAPI.display_name.en).font(.caption).foregroundColor(.gray)
                 }
             }
-        })
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                SFButton(systemName: "rectangle.portrait.and.arrow.right") {
+                    isShowingLogOutAlert.toggle()
+                }
+            }
+        }
+        .alert("Confirm sign out", isPresented: $isShowingLogOutAlert) {
+            Button("Sign out", role: .destructive) {
+                eventAPI.isLogin = false
+                eventAPI.accessToken = nil
+            }
+            
+            Button("Cancel", role: .cancel) { }
+        }
     }
 }
 

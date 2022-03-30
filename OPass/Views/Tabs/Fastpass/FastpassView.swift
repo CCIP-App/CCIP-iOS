@@ -10,10 +10,11 @@ import SwiftUI
 struct FastpassView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
+    @State var isShowingLoading = false
     
     var body: some View {
         VStack {
-            if eventAPI.accessToken != nil {
+            if eventAPI.isLogin == true {
                 ScenarioView(eventAPI: eventAPI)
             } else {
                 RedeemTokenView(eventAPI: eventAPI)
@@ -28,6 +29,13 @@ struct FastpassView: View {
                 }
             }
         }
+        .onAppear(perform: {
+            if eventAPI.accessToken != nil {
+                Task {
+                    await eventAPI.loadScenarioStatus()
+                }
+            }
+        })
     }
 }
 

@@ -68,7 +68,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
         return false
     }
     
-    func redeemToken(token: String) async { //Save token after token check
+    func redeemToken(token: String) async -> Bool { //Save token after token check
         let token = token.tirm()
         let nonAllowedCharacters = CharacterSet
                                     .alphanumerics
@@ -76,7 +76,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
                                     .inverted
         if (token.isEmpty || token.containsAny(nonAllowedCharacters)) {
             print("Invalid accessToken")
-            return
+            return false
         }
         
         self.isLogin = false
@@ -89,6 +89,9 @@ class EventAPIViewModel: ObservableObject, Decodable {
                 self.accessToken = token
                 self.isLogin = true
             }
+            return true
+        } else  {
+            return false
         }
     }
     
