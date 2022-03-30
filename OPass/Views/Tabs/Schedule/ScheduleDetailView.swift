@@ -12,19 +12,19 @@ struct ScheduleDetailView: View {
     
     @State var scheduleDetail: SessionModel
     let speakers: [String: SpeakerModel]
-    let rooms: [String : Id_Name_DescriptionModel]
-    let tags: [String : Id_Name_DescriptionModel]
+    let rooms: [String : Name_DescriptionPair]
+    let tags: [String : Name_DescriptionPair]
     
     init(
         scheduleDetail: SessionModel,
-        speakersData: [SpeakerModel],
-        roomsData: [Id_Name_DescriptionModel],
-        tagsData: [Id_Name_DescriptionModel]
+        speakersData: [String: SpeakerModel],
+        roomsData: [String: Name_DescriptionPair],
+        tagsData: [String: Name_DescriptionPair]
     ) {
         self._scheduleDetail = State(initialValue: scheduleDetail)
-        self.speakers = speakersData.toDictionary {$0.id}
-        self.rooms = roomsData.toDictionary {$0.id}
-        self.tags = tagsData.toDictionary {$0.id}
+        self.speakers = speakersData
+        self.rooms = roomsData
+        self.tags = tagsData
     }
     
     var body: some View {
@@ -112,7 +112,7 @@ struct ScheduleDetailView: View {
 fileprivate struct TagsSection: View {
     
     let tagsID: [String]
-    let tags: [String : Id_Name_DescriptionModel]
+    let tags: [String : Name_DescriptionPair]
     
     var body: some View {
         ScrollView(.horizontal) {
