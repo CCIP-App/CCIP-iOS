@@ -34,7 +34,8 @@ struct SessionModelsTransform: TransformFunction {
 struct SpeakerTransform: TransformFunction {
     static func transform(_ speakers: [Id_SpeakerModel]) -> [String: SpeakerModel] {
         return Dictionary(uniqueKeysWithValues: speakers.map { element in
-            (element.id, SpeakerModel(avatar: element.avatar, avatarData: element.avatarData, zh: element.zh, en: element.zh))
+            (element.id, SpeakerModel(avatar: element.avatar, zh: element.zh, en: element.zh))
+            //(element.id, SpeakerModel(avatar: element.avatar, avatarData: element.avatarData, zh: element.zh, en: element.zh))
         })
     }
 }
@@ -97,7 +98,7 @@ struct Id_SpeakerModel: Hashable, Codable {
 
 struct SpeakerModel: Hashable {
     var avatar: String = ""
-    var avatarData: Data?
+    //var avatarData: Data?
     var zh = Name_BioModel()
     var en = Name_BioModel()
 }

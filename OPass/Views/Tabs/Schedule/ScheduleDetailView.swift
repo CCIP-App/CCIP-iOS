@@ -10,29 +10,15 @@ import SwiftDate
 
 struct ScheduleDetailView: View {
     
+    @ObservedObject var eventAPI: EventAPIViewModel
     @State var scheduleDetail: SessionModel
-    let speakers: [String: SpeakerModel]
-    let rooms: [String : Name_DescriptionPair]
-    let tags: [String : Name_DescriptionPair]
-    
-    init(
-        scheduleDetail: SessionModel,
-        speakersData: [String: SpeakerModel],
-        roomsData: [String: Name_DescriptionPair],
-        tagsData: [String: Name_DescriptionPair]
-    ) {
-        self._scheduleDetail = State(initialValue: scheduleDetail)
-        self.speakers = speakersData
-        self.rooms = roomsData
-        self.tags = tagsData
-    }
     
     var body: some View {
         ZStack {
             Color("BackgroundColor").edgesIgnoringSafeArea(.bottom)
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    TagsSection(tagsID: scheduleDetail.tags, tags: tags)
+                    TagsSection(tagsID: scheduleDetail.tags, tags: eventAPI.eventSchedule?.tags ?? [:])
                         .padding(.vertical, 8)
                     
                     Text(scheduleDetail.zh.title)
@@ -41,7 +27,7 @@ struct ScheduleDetailView: View {
                     FeatureButtons(scheduleDetail: scheduleDetail)
                         .padding(.vertical)
                     
-                    PlaceSection(name: rooms[scheduleDetail.room]?.zh.name ?? scheduleDetail.room)
+                    PlaceSection(name: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.zh.name ?? scheduleDetail.room)
                         .background(Color.white)
                         .cornerRadius(8)
                         .padding(.bottom)
@@ -51,42 +37,13 @@ struct ScheduleDetailView: View {
                         .cornerRadius(8)
                         .padding(.bottom)
                     
-                    VStack(alignment: .leading, spacing: 0) {
-                        Text("Speakers").font(.caption)
-                            .foregroundColor(.gray)
-                            .padding(.leading, 10)
-                        
-                        ForEach(scheduleDetail.speakers, id: \.self) { speaker in
-                            VStack(alignment: .leading, spacing: 0) {
-                                HStack(alignment: .center) {
-                                    //TODO: Avatar feature
-                                    //if let speakerData = speakers[speaker],
-                                    //   let avatarData = speakerData.avatarData,
-                                    //   let avatarUIImage = UIImage(data: avatarData) {
-                                    //    Image(uiImage: avatarUIImage)
-                                    //        .clipShape(Circle())
-                                    //        .font(.title)
-                                    //}
-                                    Text(speakers[speaker]?.zh.name ?? speaker)
-                                        .font(.subheadline.bold())
-                                    Spacer()
-                                }
-                                .padding(.vertical, 8)
-                                if let speakerData = speakers[speaker], speakerData.zh.bio != "" {
-                                    VStack(alignment: .leading, spacing: 0) {
-                                        Divider()
-                                        Text(speakerData.zh.bio)
-                                            .padding(.vertical, 8)
-                                            .font(.caption)
-                                            .lineLimit(2)
-                                    }
-                                }
-                            }
-                            .padding(.horizontal, 10)
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            .padding(.top, 8)
-                        }
+                    if scheduleDetail.speakers.count != 0 {
+                        SpeakersSection(eventAPI: eventAPI, scheduleDetail: scheduleDetail)
+                            .padding(.bottom)
+                    }
+                    
+                    if let description = scheduleDetail.zh.description, description != "" {
+                        DescriptionSection(description: description)
                     }
                 }
                 .padding(.horizontal)
@@ -127,52 +84,6 @@ fileprivate struct TagsSection: View {
                         .cornerRadius(5)
                 }
             }
-        }
-    }
-}
-
-fileprivate struct PlaceSection: View {
-    
-    let name: String
-    
-    var body: some View {
-        HStack(spacing: 0) {
-            Image(systemName: "map").foregroundColor(Color.blue)
-                .padding()
-            VStack(alignment: .leading) {
-                Text("Place").font(.caption)
-                    .foregroundColor(.gray)
-                Text(name)
-            }
-            Spacer()
-        }
-    }
-}
-
-fileprivate struct TimeSection: View {
-    
-    let start: DateInRegion
-    let end: DateInRegion
-    let durationMinute: Int
-    
-    init(scheduleDetail: SessionModel) {
-        self.start = scheduleDetail.start
-        self.end = scheduleDetail.end
-        self.durationMinute = Int((scheduleDetail.end - scheduleDetail.start) / 60)
-    }
-    
-    var body: some View {
-        HStack(spacing: 0) {
-            Image(systemName: "clock").foregroundColor(Color.red)
-                .padding()
-            VStack(alignment: .leading) {
-                Text(String(format: "%d/%d/%d", start.year, start.month, start.day))
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                
-                Text(String(format: "%d:%02d ~ %d:%02d • %d minutes", start.hour, start.minute, end.hour, end.minute, durationMinute))
-            }
-            Spacer()
         }
     }
 }
@@ -284,13 +195,118 @@ fileprivate struct FeatureButtons: View {
     }
 }
 
-fileprivate extension Array {
-    func toDictionary<Key: Hashable>(with selectKey: (Element) -> Key) -> [Key:Element] {
-        var dict = [Key:Element]()
-        for element in self {
-            dict[selectKey(element)] = element
+fileprivate struct PlaceSection: View {
+    
+    let name: String
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            Image(systemName: "map").foregroundColor(Color.blue)
+                .padding()
+            VStack(alignment: .leading) {
+                Text("Place").font(.caption)
+                    .foregroundColor(.gray)
+                Text(name)
+            }
+            Spacer()
         }
-        return dict
+    }
+}
+
+fileprivate struct TimeSection: View {
+    
+    let start: DateInRegion
+    let end: DateInRegion
+    let durationMinute: Int
+    
+    init(scheduleDetail: SessionModel) {
+        self.start = scheduleDetail.start
+        self.end = scheduleDetail.end
+        self.durationMinute = Int((scheduleDetail.end - scheduleDetail.start) / 60)
+    }
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            Image(systemName: "clock").foregroundColor(Color.red)
+                .padding()
+            VStack(alignment: .leading) {
+                Text(String(format: "%d/%d/%d", start.year, start.month, start.day))
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                
+                Text(String(format: "%d:%02d ~ %d:%02d • %d minutes", start.hour, start.minute, end.hour, end.minute, durationMinute))
+            }
+            Spacer()
+        }
+    }
+}
+
+fileprivate struct SpeakersSection: View {
+    
+    @ObservedObject var eventAPI: EventAPIViewModel
+    let scheduleDetail: SessionModel
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Speakers").font(.caption)
+                .foregroundColor(.gray)
+                .padding(.leading, 10)
+            
+            ForEach(scheduleDetail.speakers, id: \.self) { speaker in
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack(alignment: .center) {
+                        if let avatarURL = eventAPI.eventSchedule?.speakers[speaker]?.avatar {
+                            URLImage(urlString: avatarURL, isRenderOriginal: true)
+                                .clipShape(Circle())
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 30)
+                        }
+                        
+                        Text(eventAPI.eventSchedule?.speakers[speaker]?.zh.name ?? speaker)
+                            .font(.subheadline.bold())
+                        Spacer()
+                    }
+                    .padding(.vertical, 8)
+                    if let speakerData = eventAPI.eventSchedule?.speakers[speaker], speakerData.zh.bio != "" {
+                        VStack(alignment: .leading, spacing: 0) {
+                            Divider()
+                            Text(speakerData.zh.bio)
+                                .padding(.vertical, 8)
+                                .font(.caption)
+                                .lineLimit(2)
+                        }
+                    }
+                }
+                .padding(.horizontal, 10)
+                .background(Color.white)
+                .cornerRadius(8)
+                .padding(.top, 8)
+            }
+        }
+    }
+}
+
+fileprivate struct DescriptionSection: View {
+    
+    let description: String
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Session Introduction").font(.caption)
+                .foregroundColor(.gray)
+                .padding(.leading, 10)
+            
+            HStack {
+                Text(description)
+                    .padding(.vertical, 8)
+                    .font(.caption)
+                Spacer()
+            }
+                .padding(.horizontal, 10)
+                .background(Color.white)
+                .cornerRadius(8)
+                .padding(.top, 8)
+        }
     }
 }
 

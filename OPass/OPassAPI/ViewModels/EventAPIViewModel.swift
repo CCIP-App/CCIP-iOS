@@ -34,6 +34,7 @@ class EventAPIViewModel: ObservableObject, Decodable {
     @Published var isLogin: Bool = false
     
     private let keychain = Keychain(service: "app.opass.ccip") //Service key value match App Bundle ID
+        .synchronizable(true)
     var accessToken: String? { //Try not to use this for view update beacuse of it's not published. Use isLogin.
         get {
             return try? keychain.get(self.event_id + "_token") //Key sample: SITCON_2020_token
@@ -47,7 +48,12 @@ class EventAPIViewModel: ObservableObject, Decodable {
                     print("Save accessToken faild")
                 }
             } else {
-                print("No accessToken import")
+                print("AccessToken with nil, remove token")
+                do {
+                    try keychain.remove(self.event_id + "_token")
+                } catch {
+                    print("Token remove error")
+                }
             }
         }
     }
@@ -139,6 +145,19 @@ class EventAPIViewModel: ObservableObject, Decodable {
         }
     }
     
+    //func loadAvatar(id: String) async {
+    //    guard let avatarURL = self.eventSchedule?.speakers[id]?.avatar else {
+    //        print("Speaker ID:\(id) not found")
+    //        return
+    //    }
+    //
+    //    if let avatarData = try? await APIRepo.loadLogo(from: avatarURL) {
+    //        DispatchQueue.main.async {
+    //            self.eventSchedule?.speakers[id]?.avatarData = avatarData
+    //        }
+    //    }
+    //}
+    
     func loadSchedule() async {
         @Feature(.schedule, in: eventSettings) var scheduleFeature
         
@@ -146,18 +165,6 @@ class EventAPIViewModel: ObservableObject, Decodable {
             DispatchQueue.main.async {
                 self.eventSchedule = schedule
             }
-            
-            //TODO: Avatar Data fetching funtion
-            //for index in 0..<schedule.speakers.count {
-            //    if self.eventSchedule?.speakers[index].avatarData == nil {
-            //        print(schedule.speakers[index].avatar)
-            //        if let avatarData = try? await APIRepo.loadLogo(from: schedule.speakers[index].avatar)  {
-            //            DispatchQueue.main.async {
-            //                self.eventSchedule?.speakers[index].avatarData = avatarData
-            //            }
-            //        }
-            //   }
-            //}
         }
     }
     

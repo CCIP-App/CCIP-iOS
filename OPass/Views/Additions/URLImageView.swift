@@ -10,16 +10,26 @@ import SwiftUI
 struct URLImage: View {
     
     let urlString: String
+    let isRenderOriginal: Bool
+    
+    init(urlString: String, isRenderOriginal: Bool? = nil) {
+        self.urlString = urlString
+        if let bool = isRenderOriginal {
+            self.isRenderOriginal = bool
+        } else {
+            self.isRenderOriginal = false
+        }
+    }
     
     @State var data: Data?
     
     var body: some View {
         if let data = data, let uiimage = UIImage(data: data) {
             Image(uiImage: uiimage)
-                .renderingMode(.template)
+                .renderingMode((isRenderOriginal ? .original : .template))
                 .resizable()
         } else {
-            Image(systemName: "exclamationmark.icloud")
+            Image(systemName: "")
                 .onAppear {
                     fetchData()
                 }
@@ -28,7 +38,7 @@ struct URLImage: View {
     
     private func fetchData() {
         guard let url = URL(string: urlString) else {
-            print("Invalid Sessions PNG URL")
+            print("Invalid PNG URL")
             return
         }
         

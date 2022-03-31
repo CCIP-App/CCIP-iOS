@@ -53,12 +53,7 @@ struct ScheduleView: View {
                                     ForEach(sectionScheduleData, id: \.self) { sessionDetail in
                                         if sessionDetail.type != "Ev" {
                                             NavigationLink(destination:
-                                                            ScheduleDetailView(
-                                                                scheduleDetail: sessionDetail,
-                                                                speakersData: allScheduleData.speakers,
-                                                                roomsData: allScheduleData.rooms,
-                                                                tagsData: allScheduleData.tags
-                                                            )
+                                                            ScheduleDetailView(eventAPI: eventAPI, scheduleDetail: sessionDetail)
                                             ){
                                                 VStack {
                                                     Text(sessionDetail.zh.title)
@@ -93,6 +88,14 @@ struct ScheduleView: View {
                     
                 }
             }
+        }
+    }
+}
+
+fileprivate struct DetailOverView: View {
+    var body: some View {
+        VStack {
+            
         }
     }
 }

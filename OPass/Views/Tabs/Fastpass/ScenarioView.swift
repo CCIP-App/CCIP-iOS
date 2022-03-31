@@ -31,13 +31,13 @@ struct ScenarioView: View {
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
-                SFButton(systemName: "rectangle.portrait.and.arrow.right") {
+                Button(action: {
                     isShowingLogOutAlert.toggle()
-                }
+                }) { Text("Sign Out").foregroundColor(.red) }
             }
         }
-        .alert("Confirm sign out", isPresented: $isShowingLogOutAlert) {
-            Button("Sign out", role: .destructive) {
+        .alert("Confirm sign out?", isPresented: $isShowingLogOutAlert) {
+            Button("Sign Out", role: .destructive) {
                 eventAPI.isLogin = false
                 eventAPI.accessToken = nil
             }
