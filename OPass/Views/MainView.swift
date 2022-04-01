@@ -67,6 +67,7 @@ struct TabButton: View {
     let feature: FeatureModel
     @ObservedObject var eventAPI: EventAPIViewModel
     @State private var safariViewURL = ""
+    @State private var presentingWifiSheet = false
     @State private var presentingSafariView = false
     //fastpass, ticket, schedule, announcement, wifi, telegram, im, puzzle, venue, sponsors, staffs, webview
     var body: some View {
@@ -80,7 +81,7 @@ struct TabButton: View {
             }
             .tabButtonStyle(color: buttonColor[.fastpass]!)
         case .ticket:
-            NavigationLink(destination: EmptyView()) {
+            NavigationLink(destination: TicketView()) {
                 Image(systemName: "ticket")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -96,7 +97,9 @@ struct TabButton: View {
             }
             .tabButtonStyle(color: buttonColor[.schedule]!)
         case .announcement:
-            NavigationLink(destination: EmptyView()) {
+            NavigationLink(destination: AnnounceView(announcements: eventAPI.eventAnnouncements, refresh: {
+                await eventAPI.loadAnnouncements()
+            })) {
                 Image(systemName: "megaphone")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -104,13 +107,20 @@ struct TabButton: View {
             }
             .tabButtonStyle(color: buttonColor[.announcement]!)
         case .wifi:
-            NavigationLink(destination: EmptyView()) {
+            Button(action: {
+                presentingWifiSheet.toggle()
+            }) {
                 Image(systemName: "wifi")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(CGFloat(8))
             }
             .tabButtonStyle(color: buttonColor[.wifi]!)
+            .sheet(isPresented: $presentingWifiSheet) {
+                NavigationView {
+                    WiFiView(feature: feature)
+                }
+            }
         case .telegram:
             Button(action: {
                 if let telegramURLString = feature.url, let telegramURL = URL(string: telegramURLString) {

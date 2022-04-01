@@ -96,10 +96,6 @@ struct RedeemTokenView: View {
                     token = ""
                 }
             }
-            
-            //Task {
-            //    await eventAPI.redeemToken(token: token)
-            //}
         }
         .slideOverCard(isPresented: $isShowingCameraSOC) {
             VStack {

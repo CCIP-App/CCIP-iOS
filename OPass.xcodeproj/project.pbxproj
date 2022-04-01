@@ -51,6 +51,7 @@
 		D3E4E6C327CD158700FFACEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E4E6C227CD158700FFACEB /* Assets.xcassets */; };
 		D3E4E6C627CD158700FFACEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E4E6C527CD158700FFACEB /* Preview Assets.xcassets */; };
 		D3EA819827F68FFF00FE7985 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = D3EA819727F68FFF00FE7985 /* BetterSafariView */; };
+		D3EA819A27F747E100FE7985 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EA819927F747E100FE7985 /* TicketView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		D3E4E6C027CD158400FFACEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D3E4E6C227CD158700FFACEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3E4E6C527CD158700FFACEB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D3EA819927F747E100FE7985 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 			children = (
 				D3E0123627D38CF70040621F /* Fastpass */,
 				D322F60927EF1862007EED5D /* Schedule */,
+				D3EA819927F747E100FE7985 /* TicketView.swift */,
 				4F5EB73727D3648100235396 /* AnnounceView.swift */,
 				D3C0E21B27D51C060095169F /* WifiView.swift */,
 			);
@@ -456,6 +459,7 @@
 				D3D3789327CE70EE00021FC4 /* SettingsModel.swift in Sources */,
 				D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */,
 				4F22826327DD8C5E0030D73E /* FeatureHelper.swift in Sources */,
+				D3EA819A27F747E100FE7985 /* TicketView.swift in Sources */,
 				D3E0123527D38B840040621F /* ScenarioView.swift in Sources */,
 				4F6968A827EF863A009073E4 /* TabButtonStyle.swift in Sources */,
 				D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */,

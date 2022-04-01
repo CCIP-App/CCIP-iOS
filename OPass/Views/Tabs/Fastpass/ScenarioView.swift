@@ -13,7 +13,6 @@ struct ScenarioView: View {
     @State var isShowingLogOutAlert = false
     
     var body: some View {
-        //Only for API Testing
         VStack {
             VStack {
                 Text("Get Scenario Status Scuess")

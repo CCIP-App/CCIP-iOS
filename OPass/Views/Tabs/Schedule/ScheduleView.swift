@@ -55,12 +55,16 @@ struct ScheduleView: View {
                                             NavigationLink(destination:
                                                             ScheduleDetailView(eventAPI: eventAPI, scheduleDetail: sessionDetail)
                                             ){
-                                                VStack {
-                                                    Text(sessionDetail.zh.title)
-                                                }
+                                                DetailOverView(room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
+                                                               start: sessionDetail.start,
+                                                               end: sessionDetail.end,
+                                                               title: sessionDetail.zh.title)
                                             }
                                         } else {
-                                            Text(sessionDetail.zh.title)
+                                            DetailOverView(room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
+                                                           start: sessionDetail.start,
+                                                           end: sessionDetail.end,
+                                                           title: sessionDetail.zh.title)
                                         }
                                     }
                                 }
@@ -93,9 +97,29 @@ struct ScheduleView: View {
 }
 
 fileprivate struct DetailOverView: View {
+    
+    let room: String,
+        start: DateInRegion,
+        end: DateInRegion,
+        title: String
+    
     var body: some View {
-        VStack {
-            
+        VStack(alignment: .leading, spacing: 3) {
+            HStack() {
+                Text(room)
+                    .font(.caption2)
+                    .padding(.vertical, 2)
+                    .padding(.horizontal, 8)
+                    .foregroundColor(.white)
+                    .background(.blue)
+                    .cornerRadius(5)
+                
+                Text(String(format: "%d:%02d ~ %d:%02d", start.hour, start.minute, end.hour, end.minute))
+                    .foregroundColor(.gray)
+                    .font(.footnote)
+            }
+            Text(title)
+                .lineLimit(2)
         }
     }
 }

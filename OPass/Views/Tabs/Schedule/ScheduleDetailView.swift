@@ -272,7 +272,7 @@ fileprivate struct SpeakersSection: View {
                             Divider()
                             Text(speakerData.zh.bio)
                                 .padding(.vertical, 8)
-                                .font(.caption)
+                                .font(.footnote)
                                 .lineLimit(2)
                         }
                     }
@@ -299,7 +299,7 @@ fileprivate struct DescriptionSection: View {
             HStack {
                 Text(description)
                     .padding(.vertical, 8)
-                    .font(.caption)
+                    .font(.footnote)
                 Spacer()
             }
                 .padding(.horizontal, 10)
