@@ -75,7 +75,7 @@ final class APIRepo {
     
     //Event APIs
     static func load(@Feature(.fastpass) scenarioUseFrom feature: FeatureModel, scenario: String, token: String) async throws -> ScenarioStatusModel {
-        guard let baseURL = feature.url else {
+        guard let baseURL = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             print("Couldn't find URL in feature: \(feature)")
             throw LoadError.missingURL(feature: feature)
         }
@@ -94,7 +94,7 @@ final class APIRepo {
     }
     
     static func load(@Feature(.fastpass) scenarioStatusFrom feature: FeatureModel,token: String) async throws -> ScenarioStatusModel {
-        guard let baseURL = feature.url else {
+        guard let baseURL = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             print("Couldn't find URL in feature: \(feature)")
             throw LoadError.missingURL(feature: feature)
         }
@@ -142,7 +142,7 @@ final class APIRepo {
     }
     
     static func load(@Feature(.schedule) scheduleFrom schedule: FeatureModel) async throws -> ScheduleModel {
-        guard let baseURL = schedule.url else {
+        guard let baseURL = schedule.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             print("Couldn't find URL in feature: \(schedule)")
             throw LoadError.missingURL(feature: schedule)
         }
@@ -161,7 +161,7 @@ final class APIRepo {
     }
     
     static func load(@Feature(.announcement) announcementFrom feature: FeatureModel, token: String) async throws -> [AnnouncementModel] {
-        guard let baseURL = feature.url else {
+        guard let baseURL = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             print("Couldn't find URL in feature: \(feature)")
             throw LoadError.missingURL(feature: feature)
         }

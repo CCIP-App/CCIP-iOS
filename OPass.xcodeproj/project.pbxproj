@@ -50,6 +50,7 @@
 		D3E4E6C127CD158400FFACEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4E6C027CD158400FFACEB /* ContentView.swift */; };
 		D3E4E6C327CD158700FFACEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E4E6C227CD158700FFACEB /* Assets.xcassets */; };
 		D3E4E6C627CD158700FFACEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E4E6C527CD158700FFACEB /* Preview Assets.xcassets */; };
+		D3EA819827F68FFF00FE7985 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = D3EA819727F68FFF00FE7985 /* BetterSafariView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */,
+				D3EA819827F68FFF00FE7985 /* BetterSafariView in Frameworks */,
 				D3E0123127D35D970040621F /* KeychainAccess in Frameworks */,
 				4F5EB73127D2311200235396 /* SwiftDate in Frameworks */,
 				4F29D9CA27D4EA2D00292CC4 /* FirebaseAnalytics in Frameworks */,
@@ -356,6 +358,7 @@
 				D3A00F2927D838920097A6AB /* OneSignal */,
 				D322F60B27EF3B09007EED5D /* SlideOverCard */,
 				D322F60E27EF4698007EED5D /* CodeScanner */,
+				D3EA819727F68FFF00FE7985 /* BetterSafariView */,
 			);
 			productName = OPass;
 			productReference = D3E4E6BB27CD158400FFACEB /* OPass.app */;
@@ -395,6 +398,7 @@
 				D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
 				D322F60A27EF3B09007EED5D /* XCRemoteSwiftPackageReference "SlideOverCard" */,
 				D322F60D27EF4698007EED5D /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				D3EA819627F68FFE00FE7985 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
 			);
 			productRefGroup = D3E4E6BC27CD158400FFACEB /* Products */;
 			projectDirPath = "";
@@ -804,6 +808,14 @@
 				minimumVersion = 4.2.2;
 			};
 		};
+		D3EA819627F68FFE00FE7985 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stleamist/BetterSafariView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -841,6 +853,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D3E0122F27D35D970040621F /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		D3EA819727F68FFF00FE7985 /* BetterSafariView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3EA819627F68FFE00FE7985 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
+			productName = BetterSafariView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

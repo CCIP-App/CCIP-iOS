@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BetterSafariView
 
 struct MainView: View {
     
@@ -60,8 +61,13 @@ struct MainView: View {
 
 struct TabButton: View {
     
-    @State var feature: FeatureModel
+    let buttonColor: [FeatureType : Color] = [.fastpass : .blue, .ticket : .purple, .schedule : .green, .announcement : .orange, .wifi : .brown, .telegram : .green, .im : .purple, .puzzle : .blue, .venue : .blue, .sponsors : .yellow, .staffs : .gray, .webview : .purple]
+    let buttonSymbolName: [FeatureType : String] = [.fastpass : "wallet.pass", .ticket : "ticket", .schedule : "scroll", .announcement : "megaphone", .wifi : "wifi", .telegram : "paperplane", .im : "bubble.right", .puzzle : "puzzlepiece.extension", .venue : "map", .sponsors : "banknote", .staffs : "person.3"]
+    @Environment(\.openURL) var openURL
+    let feature: FeatureModel
     @ObservedObject var eventAPI: EventAPIViewModel
+    @State private var safariViewURL = ""
+    @State private var presentingSafariView = false
     //fastpass, ticket, schedule, announcement, wifi, telegram, im, puzzle, venue, sponsors, staffs, webview
     var body: some View {
         switch(feature.feature) {
@@ -72,7 +78,7 @@ struct TabButton: View {
                     .aspectRatio(contentMode: .fit)
                     .padding(CGFloat(8))
             }
-            .tabButtonStyle(color: .blue)
+            .tabButtonStyle(color: buttonColor[.fastpass]!)
         case .ticket:
             NavigationLink(destination: EmptyView()) {
                 Image(systemName: "ticket")
@@ -80,7 +86,7 @@ struct TabButton: View {
                     .aspectRatio(contentMode: .fit)
                     .padding(CGFloat(8))
             }
-            .tabButtonStyle(color: .purple)
+            .tabButtonStyle(color: buttonColor[.ticket]!)
         case .schedule:
             NavigationLink(destination: ScheduleView(eventAPI: eventAPI)) {
                 Image(systemName: "scroll")
@@ -88,7 +94,7 @@ struct TabButton: View {
                     .aspectRatio(contentMode: .fit)
                     .padding(CGFloat(8))
             }
-            .tabButtonStyle(color: .green)
+            .tabButtonStyle(color: buttonColor[.schedule]!)
         case .announcement:
             NavigationLink(destination: EmptyView()) {
                 Image(systemName: "megaphone")
@@ -96,7 +102,7 @@ struct TabButton: View {
                     .aspectRatio(contentMode: .fit)
                     .padding(CGFloat(8))
             }
-            .tabButtonStyle(color: .orange)
+            .tabButtonStyle(color: buttonColor[.announcement]!)
         case .wifi:
             NavigationLink(destination: EmptyView()) {
                 Image(systemName: "wifi")
@@ -104,72 +110,59 @@ struct TabButton: View {
                     .aspectRatio(contentMode: .fit)
                     .padding(CGFloat(8))
             }
-            .tabButtonStyle(color: .brown)
+            .tabButtonStyle(color: buttonColor[.wifi]!)
         case .telegram:
-            NavigationLink(destination: EmptyView()) {
+            Button(action: {
+                if let telegramURLString = feature.url, let telegramURL = URL(string: telegramURLString) {
+                    openURL(telegramURL)
+                }
+            }) {
                 Image(systemName: "paperplane")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(CGFloat(8))
             }
-            .tabButtonStyle(color: .green)
-        case .im:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "bubble.right")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(8))
-            }
-            .tabButtonStyle(color: .purple)
-        case .puzzle:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "puzzlepiece.extension")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(8))
-            }
-            .tabButtonStyle(color: .blue)
-        case .venue:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "map")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(8))
-            }
-            .tabButtonStyle(color: .blue)
-        case .sponsors:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "banknote")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(8))
-            }
-            .tabButtonStyle(color: .yellow)
-        case .staffs:
-            NavigationLink(destination: EmptyView()) {
-                Image(systemName: "person.3")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(8))
-            }
-            .tabButtonStyle(color: .gray)
-        default: //WebView
-            NavigationLink(destination: EmptyView()) {
-                if let iconData = feature.iconData, let iconUIImage = UIImage(data: iconData) {
-                    Image(uiImage: iconUIImage)
-                        .renderingMode(.template)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(CGFloat(8))
-                        
-                } else {
-                    Image(systemName: "exclamationmark.icloud")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(CGFloat(8))
+            .tabButtonStyle(color: buttonColor[.telegram]!)
+        default:
+            if let urlString = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: urlString) {
+                Button(action: {
+                    presentingSafariView.toggle()
+                }) {
+                    if feature.feature != .webview {
+                        Image(systemName: buttonSymbolName[feature.feature] ?? "exclamationmark.icloud")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(CGFloat(8))
+                    } else {
+                        if let iconData = feature.iconData, let iconUIImage = UIImage(data: iconData) {
+                            Image(uiImage: iconUIImage)
+                                .renderingMode(.template)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding(CGFloat(8))
+                                
+                        } else {
+                            Image(systemName: "exclamationmark.icloud")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding(CGFloat(8))
+                        }
+                    }
+                }
+                .tabButtonStyle(color: buttonColor[feature.feature] ?? .purple)
+                .safariView(isPresented: $presentingSafariView) {
+                    SafariView(
+                        url: url,
+                        configuration: SafariView.Configuration(
+                            entersReaderIfAvailable: false,
+                            barCollapsingEnabled: true
+                        )
+                    )
+                    .preferredBarAccentColor(.white)
+                    .preferredControlAccentColor(.accentColor)
+                    .dismissButtonStyle(.cancel)
                 }
             }
-            .tabButtonStyle(color: .purple)
         }
     }
 }

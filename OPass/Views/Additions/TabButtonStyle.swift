@@ -24,3 +24,9 @@ extension NavigationLink {
         modifier(TabButtonStyleModifier(color: color))
     }
 }
+
+extension Button {
+    func tabButtonStyle(color: Color) -> some View {
+        modifier(TabButtonStyleModifier(color: color))
+    }
+}
