@@ -81,7 +81,7 @@ struct TabButton: View {
             }
             .tabButtonStyle(color: buttonColor[.fastpass]!)
         case .ticket:
-            NavigationLink(destination: TicketView()) {
+            NavigationLink(destination: TicketView(eventAPI: eventAPI)) {
                 Image(systemName: "ticket")
                     .resizable()
                     .aspectRatio(contentMode: .fit)

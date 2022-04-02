@@ -14,7 +14,6 @@ struct AnnounceView: View {
     @Environment(\.openURL) var openURL
     
     var body: some View {
-        //Only for API Testing
         Form {
             ForEach(announcements, id: \.datetime) { announcement in
                 Button(action: {
@@ -40,6 +39,13 @@ struct AnnounceView: View {
         }
         .navigationTitle("Announcement")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                SFButton(systemName: "arrow.clockwise") {
+                    Task {refresh}
+                }
+            }
+        }
         .refreshable(action: refresh)
         .task(refresh)
     }

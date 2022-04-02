@@ -7,14 +7,21 @@
 
 import Foundation
 
-struct ScenarioStatusModel: Hashable, Codable {
+struct ScenarioStatusModel: Hashable, Decodable {
     var event_id: String = ""
     var token: String = ""
     var user_id: String = ""
     var attr = AttrModel()
     var first_use: Int = 0
     var role: String = ""
-    var scenarios = [ScenarioModel()]
+    @TransformWith<ScenarioModelsTransform> var scenarios = [ScenarioModel()]
+}
+
+struct ScenarioModelsTransform: TransformFunction {
+    static func transform(_ scenarios: [ScenarioModel]) -> [ScenarioModel] {
+        return scenarios
+            .sorted { $0.order < $1.order } //sort by order
+    }
 }
 
 struct AttrModel: Hashable, Codable {

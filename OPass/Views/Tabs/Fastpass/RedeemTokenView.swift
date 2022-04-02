@@ -22,22 +22,7 @@ struct RedeemTokenView: View {
     var body: some View {
         VStack {
             Form {
-                HStack {
-                    Spacer()
-                    if let eventLogoData = eventAPI.eventLogo, let eventLogoUIImage = UIImage(data: eventLogoData) {
-                        Image(uiImage: eventLogoUIImage)
-                            .renderingMode(.template)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundColor(Color("LogoColor"))
-                    } else {
-                        Text(eventAPI.display_name.en)
-                            .font(.system(.largeTitle, design: .rounded))
-                            .fontWeight(.medium)
-                            .foregroundColor(Color("LogoColor"))
-                    }
-                    Spacer()
-                }
+                FastpassLogoView(eventAPI: eventAPI)
                 .frame(height: UIScreen.main.bounds.width * 0.4)
                 .listRowBackground(Color.white.opacity(0))
                 

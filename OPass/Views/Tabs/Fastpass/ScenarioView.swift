@@ -14,10 +14,14 @@ struct ScenarioView: View {
     
     var body: some View {
         VStack {
-            VStack {
-                Text("Get Scenario Status Scuess")
-                Text("Current Token")
-                Text(eventAPI.eventScenarioStatus?.token ?? "Error")
+            Form {
+                FastpassLogoView(eventAPI: eventAPI)
+                .frame(height: UIScreen.main.bounds.width * 0.4)
+                .listRowBackground(Color.white.opacity(0))
+                
+                if let scenario = eventAPI.eventScenarioStatus {
+                    
+                }
             }
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -42,6 +46,30 @@ struct ScenarioView: View {
             }
             
             Button("Cancel", role: .cancel) { }
+        }
+    }
+}
+
+struct FastpassLogoView: View {
+    
+    @ObservedObject var eventAPI: EventAPIViewModel
+    
+    var body: some View {
+        HStack {
+            Spacer()
+            if let eventLogoData = eventAPI.eventLogo, let eventLogoUIImage = UIImage(data: eventLogoData) {
+                Image(uiImage: eventLogoUIImage)
+                    .renderingMode(.template)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(Color("LogoColor"))
+            } else {
+                Text(eventAPI.display_name.en)
+                    .font(.system(.largeTitle, design: .rounded))
+                    .fontWeight(.medium)
+                    .foregroundColor(Color("LogoColor"))
+            }
+            Spacer()
         }
     }
 }
