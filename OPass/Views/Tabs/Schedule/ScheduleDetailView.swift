@@ -297,7 +297,7 @@ fileprivate struct DescriptionSection: View {
                 .padding(.leading, 10)
             
             HStack {
-                Text(description)
+                Text(.init(description)) //suport markdown
                     .padding(.vertical, 8)
                     .font(.footnote)
                 Spacer()

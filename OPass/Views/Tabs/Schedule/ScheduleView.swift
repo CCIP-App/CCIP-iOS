@@ -108,7 +108,7 @@ fileprivate struct DetailOverView: View {
             HStack() {
                 Text(room)
                     .font(.caption2)
-                    .padding(.vertical, 2)
+                    .padding(.vertical, 1)
                     .padding(.horizontal, 8)
                     .foregroundColor(.white)
                     .background(.blue)

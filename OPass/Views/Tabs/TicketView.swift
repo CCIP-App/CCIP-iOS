@@ -18,17 +18,44 @@ struct TicketView: View {
         VStack {
             if let token = eventAPI.accessToken {
                 Form {
-                    Section(header: Text("QRCode")) {
+                    Section() {
                         HStack {
                             Spacer()
-                            Image(uiImage: generateQRCode(from: token))
-                                .interpolation(.none)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.width * 0.6)
+                            VStack(spacing: 0) {
+                                ZStack {
+                                    Image(uiImage: generateQRCode(from: token))
+                                        .interpolation(.none)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: UIScreen.main.bounds.width * 0.6)
+                                    
+                                    Image("InAppIcon")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: UIScreen.main.bounds.width * 0.1)
+                                        .clipShape(Circle())
+                                        .overlay(
+                                            Circle()
+                                                .stroke(Color.white, lineWidth: 4)
+                                        )
+                                }
+                                
+                                VStack {
+                                    if let id = eventAPI.eventScenarioStatus?.user_id {
+                                        Text("@\(id)")
+                                            .font(.system(.title, design: .rounded))
+                                            .fontWeight(.medium)
+                                    }
+                                }
+                                .padding(.vertical, UIScreen.main.bounds.width * 0.04)
+                            }
+                            .padding([.leading, .trailing, .top], UIScreen.main.bounds.width * 0.08)
+                            .background(.white)
+                            .cornerRadius(UIScreen.main.bounds.width * 0.1)
                             Spacer()
                         }
                     }
+                    .listRowBackground(Color.white.opacity(0))
                     
                     Section(header: Text("Token")) {
                         Text(token)
