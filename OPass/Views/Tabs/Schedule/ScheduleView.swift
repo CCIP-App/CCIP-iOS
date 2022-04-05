@@ -17,6 +17,8 @@ struct ScheduleView: View {
     @State var scheduleDataCollation: [DateInRegion : [SessionModel]] = [DateInRegion():[SessionModel()]]
     @State var scheduleDataUniqueStartDate: [DateInRegion] = [DateInRegion()]
     
+    @State var filterIndex = 0
+    
     var body: some View {
         VStack {
             if let allScheduleData = eventAPI.eventSchedule {
@@ -88,8 +90,33 @@ struct ScheduleView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                SFButton(systemName: "line.3.horizontal.decrease.circle") {
-                    
+                Menu {
+                    Picker(selection: $filterIndex, label: EmptyView()) {
+                        HStack {
+                            Text("所有議程")
+                            Spacer()
+                            Image(systemName: "list.bullet")
+                        }
+                        .tag(0)
+                        HStack {
+                            Text("喜歡")
+                            Spacer()
+                            Image(systemName: "heart")
+                        }
+                        .tag(1)
+                        HStack {
+                            Text("標籤")
+                            Spacer()
+                            Image(systemName: "tag")
+                        }
+                        .tag(2)
+                    }
+                    .labelsHidden()
+                    .pickerStyle(.inline)
+                } label: {
+                    SFButton(systemName: "line.3.horizontal.decrease.circle\(filterIndex == 0 ? "" : ".fill")") {
+
+                    }
                 }
             }
         }
