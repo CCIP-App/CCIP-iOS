@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftDate
 
 struct ScenarioStatusModel: Hashable, Decodable {
     @TransformWith<OidTransform> var _id = ""
@@ -13,9 +14,9 @@ struct ScenarioStatusModel: Hashable, Decodable {
     var token: String = ""
     var user_id: String = ""
     var attr = AttrModel()
-    @TransformWith<IntergerToDateTransform> var first_use = Date()
+    @TransformWith<IntergerToDateTransform> var first_use: DateInRegion
     var role: String = ""
-    @TransformWith<ScenarioModelsTransform> var scenarios = [ScenarioModel()]
+    @TransformWith<ScenarioModelsTransform> var scenarios = []
 }
 
 struct OidTransform: TransformFunction {
@@ -38,8 +39,8 @@ struct AttrModel: Hashable, Codable {
 struct ScenarioModel: Hashable, Decodable {
     var order: Int = 0
     var display_text = DisplayTextModel_CountryCode()
-    @TransformWith<IntergerToDateTransform> var available_time = Date()
-    @TransformWith<IntergerToDateTransform> var expire_time = Date()
+    @TransformWith<IntergerToDateTransform> var available_time: DateInRegion
+    @TransformWith<IntergerToDateTransform> var expire_time: DateInRegion
     var disable: String? = nil
     var countdown: Int = 0
     var attr = AttrModel()
@@ -48,7 +49,7 @@ struct ScenarioModel: Hashable, Decodable {
 }
 
 struct IntergerToDateTransform: TransformFunction {
-    static func transform(_ time: Int) -> Date {
-        return Date.init(timeIntervalSince1970: TimeInterval(time))
+    static func transform(_ time: Int) -> DateInRegion {
+        return DateInRegion(milliseconds: time, region: Region.current)
     }
 }
