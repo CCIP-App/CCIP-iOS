@@ -12,16 +12,9 @@ struct TabButtonStyleModifier: ViewModifier {
     let color: Color
     func body(content: Content) -> some View {
         content
+            .tint(Color.white.opacity(0))
             .aspectRatio(contentMode: .fill)
-            .padding()
-            .tint(color)
             .background(color.opacity(0.1))
-    }
-}
-
-extension NavigationLink {
-    func tabButtonStyle(color: Color) -> some View {
-        modifier(TabButtonStyleModifier(color: color))
     }
 }
 

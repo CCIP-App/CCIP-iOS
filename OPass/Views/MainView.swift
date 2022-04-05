@@ -12,7 +12,7 @@ struct MainView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     private let gridItemLayout = Array(repeating: GridItem(spacing: CGFloat(25.0), alignment: Alignment.top), count: 4)
-    
+    @State private var selectedFeature: FeatureType? = nil
     
     var body: some View {
         if let eventSettings = eventAPI.eventSettings {
@@ -39,7 +39,7 @@ struct MainView: View {
                         ForEach(eventSettings.features, id: \.self) { feature in
                             VStack {
                                 GeometryReader { geometry in
-                                    TabButton(feature: feature, eventAPI: eventAPI)
+                                    TabButton(feature: feature, selectedFeature: $selectedFeature, eventAPI: eventAPI)
                                         .frame(width: geometry.size.width, height: geometry.size.width)
                                 }
                                 .aspectRatio(contentMode: .fill)
@@ -53,6 +53,45 @@ struct MainView: View {
                 }
                 .padding(.horizontal)
             }
+            .background {
+                //put invisible NavigationLink in background
+                NavigationLink(
+                    tag: FeatureType.fastpass,
+                    selection: $selectedFeature,
+                    destination: { FastpassView(eventAPI: eventAPI) }) {
+                    EmptyView()
+                }
+                .frame(width: 0, height: 0)
+                .opacity(0)
+                NavigationLink(
+                    tag: FeatureType.ticket,
+                    selection: $selectedFeature,
+                    destination: { TicketView(eventAPI: eventAPI) }) {
+                    EmptyView()
+                }
+                .frame(width: 0, height: 0)
+                .opacity(0)
+                NavigationLink(
+                    tag: FeatureType.schedule,
+                    selection: $selectedFeature,
+                    destination: { ScheduleView(eventAPI: eventAPI) }) {
+                    EmptyView()
+                }
+                .frame(width: 0, height: 0)
+                .opacity(0)
+                NavigationLink(
+                    tag: FeatureType.announcement,
+                    selection: $selectedFeature,
+                    destination: {
+                        AnnounceView(announcements: eventAPI.eventAnnouncements, refresh: {
+                            await eventAPI.loadAnnouncements()
+                        })
+                    }) {
+                    EmptyView()
+                }
+                .frame(width: 0, height: 0)
+                .opacity(0)
+            }
         } else {
             ProgressView("Loading...")
         }
@@ -60,11 +99,9 @@ struct MainView: View {
 }
 
 struct TabButton: View {
-    
-    let buttonColor: [FeatureType : Color] = [.fastpass : .blue, .ticket : .purple, .schedule : .green, .announcement : .orange, .wifi : .brown, .telegram : .green, .im : .purple, .puzzle : .blue, .venue : .blue, .sponsors : .yellow, .staffs : .gray, .webview : .purple]
-    let buttonSymbolName: [FeatureType : String] = [.fastpass : "wallet.pass", .ticket : "ticket", .schedule : "scroll", .announcement : "megaphone", .wifi : "wifi", .telegram : "paperplane", .im : "bubble.right", .puzzle : "puzzlepiece.extension", .venue : "map", .sponsors : "banknote", .staffs : "person.3"]
     @Environment(\.openURL) var openURL
     let feature: FeatureModel
+    @Binding var selectedFeature: FeatureType?
     @ObservedObject var eventAPI: EventAPIViewModel
     @State private var safariViewURL = ""
     @State private var presentingWifiSheet = false
@@ -72,114 +109,133 @@ struct TabButton: View {
     //fastpass, ticket, schedule, announcement, wifi, telegram, im, puzzle, venue, sponsors, staffs, webview
     var body: some View {
         switch(feature.feature) {
-        case .fastpass:
-            NavigationLink(destination: FastpassView(eventAPI: eventAPI)) {
-                Image(systemName: "wallet.pass")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(8))
-            }
-            .tabButtonStyle(color: buttonColor[.fastpass]!)
-        case .ticket:
-            NavigationLink(destination: TicketView(eventAPI: eventAPI)) {
-                Image(systemName: "ticket")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(8))
-            }
-            .tabButtonStyle(color: buttonColor[.ticket]!)
-        case .schedule:
-            NavigationLink(destination: ScheduleView(eventAPI: eventAPI)) {
-                Image(systemName: "scroll")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(8))
-            }
-            .tabButtonStyle(color: buttonColor[.schedule]!)
-        case .announcement:
-            NavigationLink(destination: AnnounceView(announcements: eventAPI.eventAnnouncements, refresh: {
-                await eventAPI.loadAnnouncements()
-            })) {
-                Image(systemName: "megaphone")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(8))
-            }
-            .tabButtonStyle(color: buttonColor[.announcement]!)
-        case .wifi:
-            Button(action: {
-                presentingWifiSheet.toggle()
-            }) {
-                Image(systemName: "wifi")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(8))
-            }
-            .tabButtonStyle(color: buttonColor[.wifi]!)
-            .sheet(isPresented: $presentingWifiSheet) {
-                NavigationView {
-                    WiFiView(feature: feature)
+            case .fastpass, .ticket, .schedule, .announcement:
+                Button(action: { selectedFeature = feature.feature }) {
+                    Rectangle() //there must be something as button's body, otherwise it won't expand
                 }
-            }
-        case .telegram:
-            Button(action: {
-                if let telegramURLString = feature.url, let telegramURL = URL(string: telegramURLString) {
-                    openURL(telegramURL)
+                .tabButtonStyle(color: feature.color)
+                .overlay {
+                    Image(systemName: feature.symbolName)
+                        .imageScale(.large)
+                        .foregroundColor(feature.color)
                 }
-            }) {
-                Image(systemName: "paperplane")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(CGFloat(8))
-            }
-            .tabButtonStyle(color: buttonColor[.telegram]!)
-        default:
-            if let urlString = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: urlString) {
+            case .wifi:
                 Button(action: {
-                    presentingSafariView.toggle()
+                    presentingWifiSheet.toggle()
                 }) {
-                    if feature.feature != .webview {
-                        Image(systemName: buttonSymbolName[feature.feature] ?? "exclamationmark.icloud")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .padding(CGFloat(8))
-                    } else {
-                        if let iconData = feature.iconData, let iconUIImage = UIImage(data: iconData) {
-                            Image(uiImage: iconUIImage)
-                                .renderingMode(.template)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .padding(CGFloat(8))
-                                
-                        } else {
-                            Image(systemName: "exclamationmark.icloud")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .padding(CGFloat(8))
-                        }
+                    Rectangle()
+                }
+                .tabButtonStyle(color: feature.color)
+                .sheet(isPresented: $presentingWifiSheet) {
+                    NavigationView {
+                        WiFiView(feature: feature)
                     }
                 }
-                .tabButtonStyle(color: buttonColor[feature.feature] ?? .purple)
-                .safariView(isPresented: $presentingSafariView) {
-                    SafariView(
-                        url: url,
-                        configuration: SafariView.Configuration(
-                            entersReaderIfAvailable: false,
-                            barCollapsingEnabled: true
-                        )
-                    )
-                    .preferredBarAccentColor(.white)
-                    .preferredControlAccentColor(.accentColor)
-                    .dismissButtonStyle(.cancel)
+                .overlay {
+                    Image(systemName: feature.symbolName)
+                        .imageScale(.large)
+                        .foregroundColor(feature.color)
                 }
-            }
+            case .telegram:
+                Button(action: {
+                    if let telegramURLString = feature.url, let telegramURL = URL(string: telegramURLString) {
+                        openURL(telegramURL)
+                    }
+                }) {
+                    Rectangle()
+                }
+                .tabButtonStyle(color: feature.color)
+                .overlay {
+                    Image(systemName: feature.symbolName)
+                        .imageScale(.large)
+                        .foregroundColor(feature.color)
+                }
+            default:
+                if let urlString = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: urlString) {
+                    Button(action: {
+                        presentingSafariView.toggle()
+                    }) {
+                        Rectangle()
+                    }
+                    .tabButtonStyle(color: feature.color)
+                    .safariView(isPresented: $presentingSafariView) {
+                        SafariView(
+                            url: url,
+                            configuration: SafariView.Configuration(
+                                entersReaderIfAvailable: false,
+                                barCollapsingEnabled: true
+                            )
+                        )
+                        .preferredBarAccentColor(.white)
+                        .preferredControlAccentColor(.accentColor)
+                        .dismissButtonStyle(.cancel)
+                    }
+                    .overlay(content: {
+                        if feature.feature != .webview {
+                            Image(systemName: feature.symbolName)
+                                .imageScale(.large)
+                                .foregroundColor(feature.color)
+                        } else {
+                            if let iconData = feature.iconData, let iconUIImage = UIImage(data: iconData) {
+                                Image(uiImage: iconUIImage)
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .foregroundColor(feature.color)
+                                    .padding()
+                            } else {
+                                Image(systemName: "exclamationmark.icloud")
+                                    .imageScale(.large)
+                                    .foregroundColor(feature.color)
+                            }
+                        }
+                    })
+                }
         }
     }
 }
 
-extension Double {
-    var cgFloat: CGFloat { CGFloat(self) }
+fileprivate extension FeatureType {
+    var color: Color {
+        let buttonColor: [FeatureType : Color] = [
+            .fastpass : .blue,
+            .ticket : .purple,
+            .schedule : .green,
+            .announcement : .orange,
+            .wifi : .brown,
+            .telegram : .green,
+            .im : .purple,
+            .puzzle : .blue,
+            .venue : .blue,
+            .sponsors : .yellow,
+            .staffs : .gray,
+            .webview : .purple
+        ]
+        return buttonColor[self] ?? .purple
+    }
+    
+    var symbolName: String {
+        let buttonSymbolName: [FeatureType : String] = [
+            .fastpass : "wallet.pass",
+            .ticket : "ticket",
+            .schedule : "scroll",
+            .announcement : "megaphone",
+            .wifi : "wifi",
+            .telegram : "paperplane",
+            .im : "bubble.right",
+            .puzzle : "puzzlepiece.extension",
+            .venue : "map",
+            .sponsors : "banknote",
+            .staffs : "person.3"
+        ]
+        return buttonSymbolName[self] ?? "exclamationmark.icloud"
+    }
 }
+
+fileprivate extension FeatureModel {
+    var color: Color { feature.color }
+    var symbolName: String { feature.symbolName }
+}
+
 
 #if DEBUG
 struct MainView_Previews: PreviewProvider {
