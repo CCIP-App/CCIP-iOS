@@ -12,8 +12,9 @@ struct TabButtonStyleModifier: ViewModifier {
     let color: Color
     func body(content: Content) -> some View {
         content
-            .tint(Color.white.opacity(0))
+            .tint(color)
             .aspectRatio(contentMode: .fill)
+            .padding()
             .background(color.opacity(0.1))
     }
 }

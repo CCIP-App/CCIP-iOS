@@ -39,7 +39,7 @@ struct MainView: View {
                         ForEach(eventSettings.features, id: \.self) { feature in
                             VStack {
                                 GeometryReader { geometry in
-                                    TabButton(feature: feature, selectedFeature: $selectedFeature, eventAPI: eventAPI)
+                                    TabButton(feature: feature, selectedFeature: $selectedFeature, eventAPI: eventAPI, width: geometry.size.width)
                                         .frame(width: geometry.size.width, height: geometry.size.width)
                                 }
                                 .aspectRatio(contentMode: .fill)
@@ -103,6 +103,7 @@ struct TabButton: View {
     let feature: FeatureModel
     @Binding var selectedFeature: FeatureType?
     @ObservedObject var eventAPI: EventAPIViewModel
+    let width: CGFloat
     @State private var safariViewURL = ""
     @State private var presentingWifiSheet = false
     @State private var presentingSafariView = false
@@ -111,19 +112,20 @@ struct TabButton: View {
         switch(feature.feature) {
             case .fastpass, .ticket, .schedule, .announcement:
                 Button(action: { selectedFeature = feature.feature }) {
-                    Rectangle() //there must be something as button's body, otherwise it won't expand
+                    Image(systemName: feature.symbolName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(width / 10)
                 }
                 .tabButtonStyle(color: feature.color)
-                .overlay {
-                    Image(systemName: feature.symbolName)
-                        .imageScale(.large)
-                        .foregroundColor(feature.color)
-                }
             case .wifi:
                 Button(action: {
                     presentingWifiSheet.toggle()
                 }) {
-                    Rectangle()
+                    Image(systemName: feature.symbolName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(width / 10)
                 }
                 .tabButtonStyle(color: feature.color)
                 .sheet(isPresented: $presentingWifiSheet) {
@@ -131,31 +133,42 @@ struct TabButton: View {
                         WiFiView(feature: feature)
                     }
                 }
-                .overlay {
-                    Image(systemName: feature.symbolName)
-                        .imageScale(.large)
-                        .foregroundColor(feature.color)
-                }
             case .telegram:
                 Button(action: {
                     if let telegramURLString = feature.url, let telegramURL = URL(string: telegramURLString) {
                         openURL(telegramURL)
                     }
                 }) {
-                    Rectangle()
+                    Image(systemName: feature.symbolName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(width / 10)
                 }
                 .tabButtonStyle(color: feature.color)
-                .overlay {
-                    Image(systemName: feature.symbolName)
-                        .imageScale(.large)
-                        .foregroundColor(feature.color)
-                }
             default:
                 if let urlString = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: urlString) {
                     Button(action: {
                         presentingSafariView.toggle()
                     }) {
-                        Rectangle()
+                        if feature.feature != .webview {
+                            Image(systemName: feature.symbolName)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding(width / 10)
+                        } else {
+                            if let iconData = feature.iconData, let iconUIImage = UIImage(data: iconData) {
+                                Image(uiImage: iconUIImage)
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(width / 10)
+                            } else {
+                                Image(systemName: "exclamationmark.icloud")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(width / 10)
+                            }
+                        }
                     }
                     .tabButtonStyle(color: feature.color)
                     .safariView(isPresented: $presentingSafariView) {
@@ -170,25 +183,6 @@ struct TabButton: View {
                         .preferredControlAccentColor(.accentColor)
                         .dismissButtonStyle(.cancel)
                     }
-                    .overlay(content: {
-                        if feature.feature != .webview {
-                            Image(systemName: feature.symbolName)
-                                .imageScale(.large)
-                                .foregroundColor(feature.color)
-                        } else {
-                            if let iconData = feature.iconData, let iconUIImage = UIImage(data: iconData) {
-                                Image(uiImage: iconUIImage)
-                                    .renderingMode(.template)
-                                    .resizable()
-                                    .foregroundColor(feature.color)
-                                    .padding()
-                            } else {
-                                Image(systemName: "exclamationmark.icloud")
-                                    .imageScale(.large)
-                                    .foregroundColor(feature.color)
-                            }
-                        }
-                    })
                 }
         }
     }
