@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftDate
+import MarkdownUI
 
 struct ScheduleDetailView: View {
     
@@ -16,7 +17,7 @@ struct ScheduleDetailView: View {
     var body: some View {
         ZStack {
             Color("BackgroundColor").edgesIgnoringSafeArea(.bottom)
-            ScrollView {
+            List {
                 VStack(alignment: .leading, spacing: 0) {
                     TagsSection(tagsID: scheduleDetail.tags, tags: eventAPI.eventSchedule?.tags ?? [:])
                         .padding(.vertical, 8)
@@ -35,19 +36,19 @@ struct ScheduleDetailView: View {
                     TimeSection(scheduleDetail: scheduleDetail)
                         .background(Color.white)
                         .cornerRadius(8)
-                        .padding(.bottom)
-                    
-                    if scheduleDetail.speakers.count != 0 {
-                        SpeakersSection(eventAPI: eventAPI, scheduleDetail: scheduleDetail)
-                            .padding(.bottom)
-                    }
-                    
-                    if let description = scheduleDetail.zh.description, description != "" {
-                        DescriptionSection(description: description)
-                    }
                 }
-                .padding(.horizontal)
+                .listRowBackground(Color.transparent)
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    
+                if scheduleDetail.speakers.count != 0 {
+                    SpeakersSection(eventAPI: eventAPI, scheduleDetail: scheduleDetail)
+                }
+                
+                if let description = scheduleDetail.zh.description, description != "" {
+                    DescriptionSection(description: description)
+                }
             }
+            .listStyle(.insetGrouped)
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -247,28 +248,24 @@ fileprivate struct SpeakersSection: View {
     let scheduleDetail: SessionModel
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text("Speakers").font(.caption)
-                .foregroundColor(.gray)
-                .padding(.leading, 10)
-            
-            ForEach(scheduleDetail.speakers, id: \.self) { speaker in
-                VStack(alignment: .leading, spacing: 0) {
-                    HStack(alignment: .center) {
-                        if let avatarURL = eventAPI.eventSchedule?.speakers[speaker]?.avatar {
-                            URLImage(urlString: avatarURL, isRenderOriginal: true)
-                                .clipShape(Circle())
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 30)
+        Section("Speakers") {
+            VStack(alignment: .leading, spacing: 0) {
+                ForEach(scheduleDetail.speakers, id: \.self) { speaker in
+                    VStack(alignment: .leading, spacing: 0) {
+                        HStack(alignment: .center) {
+                            if let avatarURL = eventAPI.eventSchedule?.speakers[speaker]?.avatar {
+                                URLImage(urlString: avatarURL, isRenderOriginal: true)
+                                    .clipShape(Circle())
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 30)
+                            }
+                            
+                            Text(eventAPI.eventSchedule?.speakers[speaker]?.zh.name ?? speaker)
+                                .font(.subheadline.bold())
+                            Spacer()
                         }
-                        
-                        Text(eventAPI.eventSchedule?.speakers[speaker]?.zh.name ?? speaker)
-                            .font(.subheadline.bold())
-                        Spacer()
-                    }
-                    .padding(.vertical, 8)
-                    if let speakerData = eventAPI.eventSchedule?.speakers[speaker], speakerData.zh.bio != "" {
-                        VStack(alignment: .leading, spacing: 0) {
+                        .padding(.vertical, 8)
+                        if let speakerData = eventAPI.eventSchedule?.speakers[speaker], speakerData.zh.bio != "" {
                             Divider()
                             Text(speakerData.zh.bio)
                                 .padding(.vertical, 8)
@@ -276,13 +273,15 @@ fileprivate struct SpeakersSection: View {
                                 .lineLimit(2)
                         }
                     }
+                    .padding(.horizontal, 10)
+                    .background(Color.white)
+                    .cornerRadius(8)
+                    .padding(.bottom, 8)
                 }
-                .padding(.horizontal, 10)
-                .background(Color.white)
-                .cornerRadius(8)
-                .padding(.top, 8)
             }
         }
+        .listRowBackground(Color.transparent)
+        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
 }
 
@@ -291,22 +290,14 @@ fileprivate struct DescriptionSection: View {
     let description: String
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text("Session Introduction").font(.caption)
-                .foregroundColor(.gray)
-                .padding(.leading, 10)
-            
-            HStack {
-                Text(.init(description)) //suport markdown
-                    .padding(.vertical, 8)
-                    .font(.footnote)
-                Spacer()
-            }
-                .padding(.horizontal, 10)
-                .background(Color.white)
-                .cornerRadius(8)
-                .padding(.top, 8)
+        Section("Session Introduction") {
+            Markdown(description.tirm())
+                .markdownStyle(
+                    MarkdownStyle(font: .footnote)
+                )
+                .padding()
         }
+        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
 }
 
