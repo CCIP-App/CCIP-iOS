@@ -19,16 +19,14 @@ struct ScenarioView: View {
                 .frame(height: UIScreen.main.bounds.width * 0.4)
                 .listRowBackground(Color.white.opacity(0))
                 
-                Section {
-                    if let scenarioStatus = eventAPI.eventScenarioStatus {
-                        ForEach(scenarioStatus.scenarios, id: \.self) { scenario in
+                ForEach(eventAPI.eventScenarioStatus?.scenarios.sectionID ?? [], id: \.self) { sectionID in
+                    Section(header: Text(sectionID)) {
+                        ForEach(eventAPI.eventScenarioStatus?.scenarios.sectionData[sectionID] ?? [], id: \.self) { scenario in
                             Button(action: {
                                 
                             }) {
                                 VStack {
-                                    Text(scenario.display_text.zh)
-                                        .foregroundColor(.black)
-                                    Text(String(format: "%d/%d %d:%02d", scenario.available_time.month, scenario.available_time.day, scenario.available_time.hour, scenario.available_time.minute))
+                                    Text(scenario.display_text.zh).foregroundColor(.black)
                                 }
                             }
                         }
