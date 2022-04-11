@@ -29,6 +29,7 @@
 		D322F60C27EF3B09007EED5D /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60B27EF3B09007EED5D /* SlideOverCard */; };
 		D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60E27EF4698007EED5D /* CodeScanner */; };
 		D358E55827EDEDB2000A6554 /* FastpassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D358E55727EDEDB2000A6554 /* FastpassView.swift */; };
+		D3602CAC280400D8001D9C15 /* UseScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3602CAB280400D8001D9C15 /* UseScenarioView.swift */; };
 		D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366D8EF27ED50CB00AA4267 /* MainView.swift */; };
 		D3A00F1F27D837D00097A6AB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00F1E27D837D00097A6AB /* NotificationService.swift */; };
 		D3A00F2327D837D00097A6AB /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -97,6 +98,7 @@
 		D3095F1727D78EE600225C7D /* NotificationFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFunc.swift; sourceTree = "<group>"; };
 		D314B66E27D1089200481D5E /* EventAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPIViewModel.swift; sourceTree = "<group>"; };
 		D358E55727EDEDB2000A6554 /* FastpassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastpassView.swift; sourceTree = "<group>"; };
+		D3602CAB280400D8001D9C15 /* UseScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseScenarioView.swift; sourceTree = "<group>"; };
 		D366D8EF27ED50CB00AA4267 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A00F1E27D837D00097A6AB /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			children = (
 				D358E55727EDEDB2000A6554 /* FastpassView.swift */,
 				D3E0123427D38B840040621F /* ScenarioView.swift */,
+				D3602CAB280400D8001D9C15 /* UseScenarioView.swift */,
 				D3E0123727D38D3D0040621F /* RedeemTokenView.swift */,
 			);
 			path = Fastpass;
@@ -456,6 +459,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3602CAC280400D8001D9C15 /* UseScenarioView.swift in Sources */,
 				D3D3788227CE440D00021FC4 /* OPassAPIViewModel.swift in Sources */,
 				D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */,
 				D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */,

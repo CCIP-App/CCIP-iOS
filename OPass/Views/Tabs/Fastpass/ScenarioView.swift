@@ -3,14 +3,19 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/5.
+//  2022 OPass.
 //
 
 import SwiftUI
+import SwiftDate
 
 struct ScenarioView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     @State var isShowingLogOutAlert = false
+    @State var isShowingDisableAlert = false
+    @State var alertString = ""
+    @State var sheetScenarioData: ScenarioDataModel?
     
     var body: some View {
         VStack {
@@ -23,11 +28,26 @@ struct ScenarioView: View {
                     Section(header: Text(sectionID)) {
                         ForEach(eventAPI.eventScenarioStatus?.scenarios.sectionData[sectionID] ?? [], id: \.self) { scenario in
                             Button(action: {
-                                
-                            }) {
-                                VStack {
-                                    Text(scenario.display_text.zh).foregroundColor(.black)
+                                if scenario.used != nil {
+                                    if let errorText = scenario.disable {
+                                        alertString = errorText
+                                        isShowingDisableAlert.toggle()
+                                    } else if !DateInRegion().isInRange(date: scenario.available_time,
+                                                                        and: scenario.expire_time, orEqual: false,
+                                                                        granularity: .second) {
+                                        alertString = String(format: "Only available at\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d",
+                                                             scenario.available_time.year, scenario.available_time.month,
+                                                             scenario.available_time.day, scenario.available_time.hour,
+                                                             scenario.available_time.minute, scenario.expire_time.year,
+                                                             scenario.expire_time.month, scenario.expire_time.day,
+                                                             scenario.expire_time.hour, scenario.expire_time.minute)
+                                        isShowingDisableAlert.toggle()
+                                    } else {
+                                        sheetScenarioData = scenario
+                                    }
                                 }
+                            }) {
+                                buttonContentView(scenario: scenario)
                             }
                         }
                     }
@@ -56,6 +76,51 @@ struct ScenarioView: View {
             }
             
             Button("Cancel", role: .cancel) { }
+        }
+        .alert("Not available", isPresented: $isShowingDisableAlert, actions: {
+            Button("Cancel", role: .cancel) { }
+        }, message: { Text(alertString) })
+        .sheet(item: $sheetScenarioData) { scenario in
+            NavigationView {
+                UseScenarioView(eventAPI: eventAPI, scenario: scenario)
+            }
+        }
+    }
+    
+    private func checkTimeRange(start startTime: DateInRegion, end endTime: DateInRegion) -> Bool {
+        return DateInRegion().isInRange(date: startTime, and: endTime, orEqual: false, granularity: .second) ? true : false
+    }
+}
+
+fileprivate struct buttonContentView: View {
+    
+    let scenario: ScenarioDataModel
+    let buttonColor: [String : Color] = [
+        "pencil" : Color(red: 88 / 255, green: 174 / 255, blue: 196 / 255),
+        "takeoutbag.and.cup.and.straw" : Color.purple,
+        "bag" : Color(red: 89 / 255, green: 196 / 255, blue: 189 / 255),
+        "gift" : Color(red: 88 / 255, green: 172 / 255, blue: 225 / 255)
+    ]
+    
+    var body: some View {
+        HStack {
+            Image(systemName: scenario.used == nil ? scenario.symbolName : "checkmark.circle.fill")
+                .font(.callout.bold())
+                .foregroundColor(.white)
+                .frame(width: UIScreen.main.bounds.width * 0.09, height: UIScreen.main.bounds.width * 0.09)
+                .background(buttonColor[scenario.symbolName] ?? .orange)
+                .cornerRadius(UIScreen.main.bounds.width * 0.028)
+            
+            VStack(alignment: .leading) {
+                Text(scenario.display_text.zh).foregroundColor(.black)
+                Text((scenario.disable == nil ? (scenario.used == nil ? String(format: "%d:%02d ~ %d:%02d", scenario.available_time.hour, scenario.available_time.minute, scenario.expire_time.hour, scenario.expire_time.minute) : String(format: "Done at %d:%02d", scenario.used!.hour, scenario.used!.minute) ) : (scenario.disable)!))
+                    .font(.callout)
+                    .foregroundColor(.gray)
+            }
+            Spacer()
+            if scenario.used == nil {
+                Image(systemName: "chevron.right").foregroundColor(.gray)
+            }
         }
     }
 }
