@@ -35,10 +35,9 @@ struct ScenarioModelsTransform: TransformFunction {
             var id = scenario.id
             if id.contains("day") {
                 while(id[id.index(id.startIndex, offsetBy: index+1)].isNumber) { index += 1 }
-                id = String(id[...id.index(id.startIndex, offsetBy: index)])
+                id = String(id[...id.index(id.startIndex, offsetBy: index)]) + String(format: " • %d/%d", scenario.available_time.month, scenario.available_time.day)
                 id.insert(" ", at: id.index(id.startIndex, offsetBy: 3))
             } else if scenario.id.contains("kit") { id = "kit" }
-            id += String(format: " • %d/%d", scenario.available_time.month, scenario.available_time.day)
             if !data.sectionID.contains(id) { data.sectionID.append(id) }
             _ = data.sectionData.append(element: toScenarioData(from: scenario), toValueOfKey: id)
         }
@@ -66,7 +65,7 @@ struct ScenarioModelsTransform: TransformFunction {
             display_text: data.display_text,
             available_time: data.available_time,
             expire_time: data.expire_time,
-            disable: data.disable,
+            disabled: data.disabled,
             countdown: data.countdown,
             attr: data.attr,
             used: data.used == nil ? nil : DateInRegion(seconds: TimeInterval(data.used!), region: Region.current),
@@ -98,7 +97,7 @@ struct ScenarioDataModel: Hashable, Decodable, Identifiable {
     var display_text = DisplayTextModel_CountryCode()
     var available_time: DateInRegion
     var expire_time: DateInRegion
-    var disable: String? = nil
+    var disabled: String? = nil
     var countdown: Int = 0
     var attr = AttrModel()
     var used: DateInRegion?
@@ -111,7 +110,7 @@ struct RawScenarioDataModel: Hashable, Decodable {
     var display_text = DisplayTextModel_CountryCode()
     @TransformWith<IntergerToDateTransform> var available_time: DateInRegion
     @TransformWith<IntergerToDateTransform> var expire_time: DateInRegion
-    var disable: String? = nil
+    var disabled: String? = nil
     var countdown: Int = 0
     var attr = AttrModel()
     var used: Int?

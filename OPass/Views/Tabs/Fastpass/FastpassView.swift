@@ -3,6 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/25.
+//  2022 OPass.
 //
 
 import SwiftUI
@@ -14,10 +15,14 @@ struct FastpassView: View {
     
     var body: some View {
         VStack {
-            if eventAPI.isLogin == true {
-                ScenarioView(eventAPI: eventAPI)
-            } else {
+            if eventAPI.accessToken == nil {
                 RedeemTokenView(eventAPI: eventAPI)
+            } else {
+                if eventAPI.isLogin == true {
+                    ScenarioView(eventAPI: eventAPI)
+                } else {
+                    ProgressView()
+                }
             }
         }
         .navigationBarTitleDisplayMode(.inline)

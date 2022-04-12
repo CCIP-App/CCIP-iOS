@@ -13,9 +13,38 @@ struct UseScenarioView: View {
     @ObservedObject var eventAPI: EventAPIViewModel
     let scenario: ScenarioDataModel
     @Environment(\.dismiss) var dismiss
-    @State var isShowingLoadingView = false
+    @State var viewStage = 0 // 0 -> ConfirmUseScenarioView, 1 -> LoadingView, 2 -> SuccessView, other -> ErrorView
     
     var body: some View {
+        VStack {
+            switch viewStage {
+            case 0:
+                ConfirmUseScenarioView()
+            case 1:
+                ActivityIndicatorMark_1()
+                    .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.25)
+            case 2:
+                Text("Scuess") //TODO: Handle Scuess View
+            default:
+                VStack {
+                    Text("Error") //TODO: Handle Error Message
+                }
+            }
+        }
+        .frame(width: UIScreen.main.bounds.width * 0.85)
+        .navigationTitle(scenario.display_text.en)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button("Close") {
+                    dismiss()
+                }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func ConfirmUseScenarioView() -> some View {
         VStack {
             Spacer()
             
@@ -28,7 +57,7 @@ struct UseScenarioView: View {
                     .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.width * 0.2)
                     .background(.blue)
                     .cornerRadius(UIScreen.main.bounds.width * 0.05)
-                Text(scenario.display_text.zh)
+                Text(scenario.display_text.en)
                     .font(.largeTitle.bold())
                 
                 Text("This item can only be used once, please follow the instructions of the staff to use.")
@@ -42,9 +71,16 @@ struct UseScenarioView: View {
             }
             
             Button(action: {
-                isShowingLoadingView.toggle()
+                viewStage = 1
+                Task {
+                    if await eventAPI.useScenario(scenario: scenario.id) {
+                        viewStage = 2
+                    } else {
+                        viewStage = 3
+                    }
+                }
             }) {
-                Text("Confirm Redeem")
+                Text("Confirm Use")
                     .foregroundColor(.white)
                     .padding(.vertical, 11)
                     .frame(maxWidth: .infinity)
@@ -53,19 +89,9 @@ struct UseScenarioView: View {
             }
 
             Button(action: { dismiss() }) {
-                Text("Cancel Redeem")
+                Text("Cancel Use")
                     .foregroundColor(.blue)
                     .padding(.vertical, 10)
-            }
-        }
-        .frame(width: UIScreen.main.bounds.width * 0.85)
-        .navigationTitle(scenario.display_text.zh)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button("Close") {
-                    dismiss()
-                }
             }
         }
     }

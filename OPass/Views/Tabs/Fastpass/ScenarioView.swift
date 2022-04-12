@@ -28,8 +28,8 @@ struct ScenarioView: View {
                     Section(header: Text(sectionID)) {
                         ForEach(eventAPI.eventScenarioStatus?.scenarios.sectionData[sectionID] ?? [], id: \.self) { scenario in
                             Button(action: {
-                                if scenario.used != nil {
-                                    if let errorText = scenario.disable {
+                                if scenario.used == nil {
+                                    if let errorText = scenario.disabled {
                                         alertString = errorText
                                         isShowingDisableAlert.toggle()
                                     } else if !DateInRegion().isInRange(date: scenario.available_time,
@@ -87,38 +87,31 @@ struct ScenarioView: View {
         }
     }
     
-    private func checkTimeRange(start startTime: DateInRegion, end endTime: DateInRegion) -> Bool {
-        return DateInRegion().isInRange(date: startTime, and: endTime, orEqual: false, granularity: .second) ? true : false
-    }
-}
-
-fileprivate struct buttonContentView: View {
-    
-    let scenario: ScenarioDataModel
-    let buttonColor: [String : Color] = [
-        "pencil" : Color(red: 88 / 255, green: 174 / 255, blue: 196 / 255),
-        "takeoutbag.and.cup.and.straw" : Color.purple,
-        "bag" : Color(red: 89 / 255, green: 196 / 255, blue: 189 / 255),
-        "gift" : Color(red: 88 / 255, green: 172 / 255, blue: 225 / 255)
-    ]
-    
-    var body: some View {
+    @ViewBuilder
+    func buttonContentView(scenario: ScenarioDataModel) -> some View {
+        let buttonColor: [String : Color] = [
+            "pencil" : Color(red: 88 / 255, green: 174 / 255, blue: 196 / 255),
+            "takeoutbag.and.cup.and.straw" : Color.purple,
+            "bag" : Color(red: 89 / 255, green: 196 / 255, blue: 189 / 255),
+            "gift" : Color(red: 88 / 255, green: 172 / 255, blue: 225 / 255)
+        ]
+        
         HStack {
             Image(systemName: scenario.used == nil ? scenario.symbolName : "checkmark.circle.fill")
                 .font(.callout.bold())
                 .foregroundColor(.white)
                 .frame(width: UIScreen.main.bounds.width * 0.09, height: UIScreen.main.bounds.width * 0.09)
-                .background(buttonColor[scenario.symbolName] ?? .orange)
+                .background(scenario.used == nil ? buttonColor[scenario.symbolName] ?? .orange : .green)
                 .cornerRadius(UIScreen.main.bounds.width * 0.028)
             
             VStack(alignment: .leading) {
                 Text(scenario.display_text.zh).foregroundColor(.black)
-                Text((scenario.disable == nil ? (scenario.used == nil ? String(format: "%d:%02d ~ %d:%02d", scenario.available_time.hour, scenario.available_time.minute, scenario.expire_time.hour, scenario.expire_time.minute) : String(format: "Done at %d:%02d", scenario.used!.hour, scenario.used!.minute) ) : (scenario.disable)!))
+                Text((scenario.disabled == nil ? (scenario.used == nil ? String(format: "%d:%02d ~ %d:%02d", scenario.available_time.hour, scenario.available_time.minute, scenario.expire_time.hour, scenario.expire_time.minute) : String(format: "Check at %d:%02d", scenario.used!.hour, scenario.used!.minute) ) : (scenario.disabled)!))
                     .font(.callout)
                     .foregroundColor(.gray)
             }
             Spacer()
-            if scenario.used == nil {
+            if scenario.used == nil && scenario.disabled == nil{
                 Image(systemName: "chevron.right").foregroundColor(.gray)
             }
         }
