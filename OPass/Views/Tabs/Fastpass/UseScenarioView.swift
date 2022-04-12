@@ -20,18 +20,18 @@ struct UseScenarioView: View {
             switch viewStage {
             case 0:
                 ConfirmUseScenarioView()
+                    .frame(width: UIScreen.main.bounds.width * 0.85)
             case 1:
                 ActivityIndicatorMark_1()
                     .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.25)
             case 2:
-                Text("Scuess") //TODO: Handle Scuess View
+                ScuessScenarioView(dismiss: _dismiss, scenario: scenario)
             default:
                 VStack {
                     Text("Error") //TODO: Handle Error Message
                 }
             }
         }
-        .frame(width: UIScreen.main.bounds.width * 0.85)
         .navigationTitle(scenario.display_text.en)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -92,6 +92,47 @@ struct UseScenarioView: View {
                 Text("Cancel Use")
                     .foregroundColor(.blue)
                     .padding(.vertical, 10)
+            }
+        }
+    }
+}
+
+//Not finish
+fileprivate struct ScuessScenarioView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    let scenario: ScenarioDataModel
+    @State var time = 10
+    
+    var body: some View {
+        VStack {
+            if scenario.countdown == 0 {
+                VStack {
+                    Text(String(format: "%d:%02d:%02d", time/60, time%100, time*100%100))
+                        .font(.largeTitle) //"trying" to display down to microsecond
+                }
+                .frame(width: UIScreen.main.bounds.width * 0.9)
+                .background(
+                    VStack(alignment: .trailing) {
+                        Spacer()
+                        if let symbolName = scenario.symbolName {
+                            Image(systemName: symbolName)
+                                .font(.largeTitle.bold())
+                        }
+                    }
+                        .background(Color.blue)
+                )
+            } else {
+                
+            }
+            
+            Button(action: { dismiss() }) {
+                Text("Complete")
+                    .foregroundColor(.white)
+                    .padding(.vertical, 11)
+                    .frame(width: UIScreen.main.bounds.width * 0.85)
+                    .background(.blue)
+                    .cornerRadius(10)
             }
         }
     }

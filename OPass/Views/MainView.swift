@@ -48,6 +48,7 @@ struct MainView: View {
                                 
                                 Text(feature.display_text.zh)
                                     .font(.caption2)
+                                    .multilineTextAlignment(.center)
                             }
                         }
                     }

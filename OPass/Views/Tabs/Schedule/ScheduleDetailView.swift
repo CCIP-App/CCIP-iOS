@@ -13,7 +13,7 @@ import MarkdownUI
 struct ScheduleDetailView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
-    @State var scheduleDetail: SessionModel
+    @State var scheduleDetail: SessionDataModel
     
     var body: some View {
         ZStack {
@@ -93,7 +93,7 @@ fileprivate struct TagsSection: View {
 fileprivate struct FeatureButtons: View {
     
     @Environment(\.openURL) var openURL
-    let scheduleDetail: SessionModel
+    let scheduleDetail: SessionDataModel
     
     var body: some View {
         ScrollView(.horizontal) {
@@ -221,7 +221,7 @@ fileprivate struct TimeSection: View {
     let end: DateInRegion
     let durationMinute: Int
     
-    init(scheduleDetail: SessionModel) {
+    init(scheduleDetail: SessionDataModel) {
         self.start = scheduleDetail.start
         self.end = scheduleDetail.end
         self.durationMinute = Int((scheduleDetail.end - scheduleDetail.start) / 60)
@@ -246,7 +246,7 @@ fileprivate struct TimeSection: View {
 fileprivate struct SpeakersSection: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
-    let scheduleDetail: SessionModel
+    let scheduleDetail: SessionDataModel
     
     var body: some View {
         Section("Speakers") {

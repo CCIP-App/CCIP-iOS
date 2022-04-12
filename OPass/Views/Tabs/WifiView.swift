@@ -22,12 +22,16 @@ struct WiFiView: View {
                         Button(action: {
                             ConnectWiFi(SSID: wifiDetail.SSID, withPass: wifiDetail.password)
                         }) {
-                            VStack(alignment: .leading) {
-                                Text(wifiDetail.SSID)
-                                    .foregroundColor(.black)
-                                Text(wifiDetail.password)
-                                    .foregroundColor(.gray)
-                                    .font(.footnote)
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(wifiDetail.SSID)
+                                        .foregroundColor(.black)
+                                    Text(wifiDetail.password)
+                                        .foregroundColor(.gray)
+                                        .font(.footnote)
+                                }
+                                Spacer()
+                                Image(systemName: "chevron.right").foregroundColor(.gray)
                             }
                         }
                     }
