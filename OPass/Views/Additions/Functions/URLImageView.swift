@@ -12,14 +12,12 @@ struct URLImage: View {
     
     let urlString: String
     let isRenderOriginal: Bool
+    let defaultSymbolName: String
     
-    init(urlString: String, isRenderOriginal: Bool? = nil) {
+    init(urlString: String, isRenderOriginal: Bool = false, defaultSymbolName: String = "") {
         self.urlString = urlString
-        if let bool = isRenderOriginal {
-            self.isRenderOriginal = bool
-        } else {
-            self.isRenderOriginal = false
-        }
+        self.isRenderOriginal = isRenderOriginal
+        self.defaultSymbolName = defaultSymbolName
     }
     
     @State var data: Data?
@@ -30,7 +28,9 @@ struct URLImage: View {
                 .renderingMode((isRenderOriginal ? .original : .template))
                 .resizable()
         } else {
-            Image(systemName: "")
+            Image(systemName: defaultSymbolName)
+                .resizable()
+                .foregroundColor(.gray)
                 .onAppear {
                     fetchData()
                 }

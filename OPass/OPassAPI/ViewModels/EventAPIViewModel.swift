@@ -34,9 +34,9 @@ class EventAPIViewModel: ObservableObject, Decodable {
     @Published var eventScenarioStatus: ScenarioStatusModel? = nil
     @Published var isLogin: Bool = false
     
-    private let keychain = Keychain(service: "app.opass.ccip") //Service key value match App Bundle ID
+    private let keychain = Keychain(service: "app.opass.ccip-token") //Service key value match App Bundle ID + "-token"
         .synchronizable(true)
-    var accessToken: String? { //Try not to use this for view update beacuse of it's not published. Use isLogin.
+    var accessToken: String? { //DO NOT use this for view update beacuse it's not published. Use isLogin.
         get {
             return try? keychain.get(self.event_id + "_token") //Key sample: SITCON_2020_token
         }
@@ -145,19 +145,6 @@ class EventAPIViewModel: ObservableObject, Decodable {
             }
         }
     }
-    
-    //func loadAvatar(id: String) async {
-    //    guard let avatarURL = self.eventSchedule?.speakers[id]?.avatar else {
-    //        print("Speaker ID:\(id) not found")
-    //        return
-    //    }
-    //
-    //    if let avatarData = try? await APIRepo.loadLogo(from: avatarURL) {
-    //        DispatchQueue.main.async {
-    //            self.eventSchedule?.speakers[id]?.avatarData = avatarData
-    //        }
-    //    }
-    //}
     
     func loadSchedule() async {
         @Feature(.schedule, in: eventSettings) var scheduleFeature

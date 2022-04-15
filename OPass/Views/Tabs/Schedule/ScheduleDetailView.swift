@@ -9,48 +9,49 @@
 import SwiftUI
 import SwiftDate
 import MarkdownUI
+import SlideOverCard
 
 struct ScheduleDetailView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     @State var scheduleDetail: SessionDataModel
+    @State var isShowingSpeakerDetail: Bool = false
+    @State var showSpeaker: String?
     
     var body: some View {
-        ZStack {
-            Color("BackgroundColor").edgesIgnoringSafeArea(.bottom)
-            List {
-                VStack(alignment: .leading, spacing: 0) {
-                    TagsSection(tagsID: scheduleDetail.tags, tags: eventAPI.eventSchedule?.tags ?? [:])
-                        .padding(.vertical, 8)
-                    
-                    Text(scheduleDetail.zh.title)
-                        .font(.largeTitle.bold())
-                    
-                    FeatureButtons(scheduleDetail: scheduleDetail)
-                        .padding(.vertical)
-                    
-                    PlaceSection(name: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.zh.name ?? scheduleDetail.room)
-                        .background(Color.white)
-                        .cornerRadius(8)
-                        .padding(.bottom)
-                    
-                    TimeSection(scheduleDetail: scheduleDetail)
-                        .background(Color.white)
-                        .cornerRadius(8)
-                }
-                .listRowBackground(Color.transparent)
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                    
-                if scheduleDetail.speakers.count != 0 {
-                    SpeakersSection(eventAPI: eventAPI, scheduleDetail: scheduleDetail)
-                }
+        List {
+            VStack(alignment: .leading, spacing: 0) {
+                TagsSection(tagsID: scheduleDetail.tags, tags: eventAPI.eventSchedule?.tags ?? [:])
+                    .padding(.vertical, 8)
                 
-                if let description = scheduleDetail.zh.description, description != "" {
-                    DescriptionSection(description: description)
-                }
+                Text(scheduleDetail.zh.title)
+                    .font(.largeTitle.bold())
+                    .fixedSize(horizontal: false, vertical: true) //To avoid unexpected line wrapping
+                
+                FeatureButtons(scheduleDetail: scheduleDetail)
+                    .padding(.vertical)
+                
+                PlaceSection(name: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.zh.name ?? scheduleDetail.room)
+                    .background(Color.white)
+                    .cornerRadius(8)
+                    .padding(.bottom)
+                
+                TimeSection(scheduleDetail: scheduleDetail)
+                    .background(Color.white)
+                    .cornerRadius(8)
             }
-            .listStyle(.insetGrouped)
+            .listRowBackground(Color.transparent)
+            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                
+            if scheduleDetail.speakers.count != 0 {
+                SpeakersSection(eventAPI: eventAPI, scheduleDetail: scheduleDetail, showSpeaker: $showSpeaker)
+            }
+            
+            if let description = scheduleDetail.zh.description, description != "" {
+                DescriptionSection(description: description)
+            }
         }
+        .listStyle(.insetGrouped)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -65,6 +66,13 @@ struct ScheduleDetailView: View {
                 }
             }
         }
+    }
+}
+
+extension String: Identifiable {
+    public typealias ID = Int
+    public var id: Int {
+        return hash
     }
 }
 
@@ -90,30 +98,31 @@ fileprivate struct TagsSection: View {
     }
 }
 
+//Feature button size need to be fixed not dynamic 
 fileprivate struct FeatureButtons: View {
     
     @Environment(\.openURL) var openURL
     let scheduleDetail: SessionDataModel
+    let buttonSize = CGFloat(62)
     
     var body: some View {
         ScrollView(.horizontal) {
-            HStack {
+            HStack(spacing: 12) {
                 if let liveURL = scheduleDetail.live {
                     VStack {
                         Button(action: {
                             openURL(URL(string: liveURL)!)
                         }) {
                             Image(systemName: "video")
-                                .font(.largeTitle)
-                                .padding(CGFloat(8))
+                                .font(.system(size: 23, weight: .semibold, design: .rounded))
+                                .foregroundColor(Color(red: 72/255, green: 72/255, blue: 74/255))
+                                .frame(width: buttonSize, height: buttonSize)
+                                .background(.white)
+                                .cornerRadius(10)
                         }
-                        .aspectRatio(contentMode: .fill)
-                        .padding()
-                        .tint(Color.black)
-                        .background(Color.white)
-                        .cornerRadius(10)
                         Text("Live")
                             .font(.caption2)
+                            .multilineTextAlignment(.center)
                     }
                 }
                 if let padURL = scheduleDetail.pad {
@@ -122,16 +131,15 @@ fileprivate struct FeatureButtons: View {
                             openURL(URL(string: padURL)!)
                         }) {
                             Image(systemName: "keyboard")
-                                .font(.largeTitle)
-                                .padding(CGFloat(8))
+                                .font(.system(size: 23, weight: .semibold, design: .rounded))
+                                .foregroundColor(Color(red: 72/255, green: 72/255, blue: 74/255))
+                                .frame(width: buttonSize, height: buttonSize)
+                                .background(.white)
+                                .cornerRadius(10)
                         }
-                        .aspectRatio(contentMode: .fill)
-                        .padding()
-                        .tint(Color.black)
-                        .background(Color.white)
-                        .cornerRadius(10)
                         Text("Co-writing")
                             .font(.caption2)
+                            .multilineTextAlignment(.center)
                     }
                 }
                 if let recordURL = scheduleDetail.record {
@@ -140,18 +148,15 @@ fileprivate struct FeatureButtons: View {
                             openURL(URL(string: recordURL)!)
                         }) {
                             Image(systemName: "play")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .font(.title)
-                                .padding(CGFloat(8))
+                                .font(.system(size: 23, weight: .semibold, design: .rounded))
+                                .foregroundColor(Color(red: 72/255, green: 72/255, blue: 74/255))
+                                .frame(width: buttonSize, height: buttonSize)
+                                .background(.white)
+                                .cornerRadius(10)
                         }
-                        .aspectRatio(contentMode: .fill)
-                        .padding()
-                        .tint(Color.black)
-                        .background(Color.white)
-                        .cornerRadius(10)
                         Text("Record")
                             .font(.caption2)
+                            .multilineTextAlignment(.center)
                     }
                 }
                 if let slideURL = scheduleDetail.slide {
@@ -160,17 +165,15 @@ fileprivate struct FeatureButtons: View {
                             openURL(URL(string: slideURL)!)
                         }) {
                             Image(systemName: "paperclip")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .padding(CGFloat(8))
+                                .font(.system(size: 23, weight: .semibold, design: .rounded))
+                                .foregroundColor(Color(red: 72/255, green: 72/255, blue: 74/255))
+                                .frame(width: buttonSize, height: buttonSize)
+                                .background(.white)
+                                .cornerRadius(10)
                         }
-                        .aspectRatio(contentMode: .fill)
-                        .padding()
-                        .tint(Color.black)
-                        .background(Color.white)
-                        .cornerRadius(10)
                         Text("Slide")
                             .font(.caption2)
+                            .multilineTextAlignment(.center)
                     }
                 }
                 if let qaURL = scheduleDetail.qa {
@@ -179,17 +182,15 @@ fileprivate struct FeatureButtons: View {
                             openURL(URL(string: qaURL)!)
                         }) {
                             Image(systemName: "questionmark")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .padding(CGFloat(8))
+                                .font(.system(size: 23, weight: .semibold, design: .rounded))
+                                .foregroundColor(Color(red: 72/255, green: 72/255, blue: 74/255))
+                                .frame(width: buttonSize, height: buttonSize)
+                                .background(.white)
+                                .cornerRadius(10)
                         }
-                        .aspectRatio(contentMode: .fill)
-                        .padding()
-                        .tint(Color.black)
-                        .background(Color.white)
-                        .cornerRadius(10)
                         Text("QA")
                             .font(.caption2)
+                            .multilineTextAlignment(.center)
                     }
                 }
             }
@@ -245,44 +246,93 @@ fileprivate struct TimeSection: View {
 
 fileprivate struct SpeakersSection: View {
     
+    @State var isTruncated: Bool = false
+    @State var forceFullText: Bool = false
+    @State var isShowingSpeakerDetail = false
     @ObservedObject var eventAPI: EventAPIViewModel
     let scheduleDetail: SessionDataModel
+    @Binding var showSpeaker: String?
     
     var body: some View {
         Section("Speakers") {
             VStack(alignment: .leading, spacing: 0) {
                 ForEach(scheduleDetail.speakers, id: \.self) { speaker in
-                    VStack(alignment: .leading, spacing: 0) {
-                        HStack(alignment: .center) {
-                            if let avatarURL = eventAPI.eventSchedule?.speakers[speaker]?.avatar {
-                                URLImage(urlString: avatarURL, isRenderOriginal: true)
-                                    .clipShape(Circle())
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 30)
+                    ZStack {
+                        VStack(alignment: .leading, spacing: 0) {
+                            HStack(alignment: .center) {
+                                if let avatarURL = eventAPI.eventSchedule?.speakers[speaker]?.avatar {
+                                    URLImage(urlString: avatarURL, isRenderOriginal: true, defaultSymbolName: "person.crop.circle.fill")
+                                        .clipShape(Circle())
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 30, height: 30)
+                                }
+                                
+                                Text(eventAPI.eventSchedule?.speakers[speaker]?.zh.name ?? speaker)
+                                    .font(.subheadline.bold())
+                                Spacer()
                             }
-                            
-                            Text(eventAPI.eventSchedule?.speakers[speaker]?.zh.name ?? speaker)
-                                .font(.subheadline.bold())
-                            Spacer()
+                            .padding(.vertical, 8)
+                            if let speakerData = eventAPI.eventSchedule?.speakers[speaker], speakerData.zh.bio != "" {
+                                SpeakerBio(speaker: speaker, speakerBio: speakerData.zh.bio)
+                            }
                         }
-                        .padding(.vertical, 8)
-                        if let speakerData = eventAPI.eventSchedule?.speakers[speaker], speakerData.zh.bio != "" {
-                            Divider()
-                            Text(speakerData.zh.bio)
-                                .padding(.vertical, 8)
-                                .font(.footnote)
-                                .lineLimit(2)
-                        }
+                        .padding(.horizontal, 10)
+                        .background(Color.white)
+                        .cornerRadius(8)
+                        .padding(.bottom, 8)
                     }
-                    .padding(.horizontal, 10)
-                    .background(Color.white)
-                    .cornerRadius(8)
-                    .padding(.bottom, 8)
                 }
             }
         }
         .listRowBackground(Color.transparent)
         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+    }
+    
+    @ViewBuilder
+    func SpeakerBio(speaker: String, speakerBio: String) -> some View {
+        Divider()
+        VStack(spacing: 0) {
+            TruncableMarkdown(text: speakerBio, font: .footnote, lineLimit: 2) {
+                isTruncated = $0
+            }
+            if isTruncated {
+                HStack {
+                    Spacer()
+                    Button("More") {
+                        SOCManager.present(isPresented: $isShowingSpeakerDetail) {
+                            VStack {
+                                /*
+                                if let avatarURL = eventAPI.eventSchedule?.speakers[speaker]?.avatar {
+                                    URLImage(urlString: avatarURL, isRenderOriginal: true, defaultSymbolName: "person.crop.circle.fill")
+                                        .clipShape(Circle())
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.3)
+                                }*/
+                                
+                                Text(eventAPI.eventSchedule?.speakers[speaker]?.zh.name ?? speaker)
+                                    .font(.title.bold())
+                                
+                                if let speakerData = eventAPI.eventSchedule?.speakers[speaker], speakerData.zh.bio != "" {
+                                    HStack {
+                                        Markdown(speakerData.zh.bio.tirm())
+                                            .markdownStyle(
+                                                MarkdownStyle(font: .footnote)
+                                            )
+                                            .padding()
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    .background(.white)
+                                    .cornerRadius(20)
+                                }
+                            }
+                            .frame(maxWidth: .infinity)
+                        }
+                    }
+                    .font(.footnote)
+                }
+            }
+        }
+        .padding(.vertical, 8)
     }
 }
 
@@ -301,11 +351,3 @@ fileprivate struct DescriptionSection: View {
         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
 }
-
-//#if DEBUG
-//struct ScheduleDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ScheduleDetailView()
-//    }
-//}
-//#endif

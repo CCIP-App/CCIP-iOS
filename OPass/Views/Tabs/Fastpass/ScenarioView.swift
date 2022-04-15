@@ -69,7 +69,7 @@ struct ScenarioView: View {
                 }) { Text("Sign Out").foregroundColor(.red) }
             }
         }
-        .alert("Confirm sign out?", isPresented: $isShowingLogOutAlert) {
+        .alert("Confirm Sign Out?", isPresented: $isShowingLogOutAlert) {
             Button("Sign Out", role: .destructive) {
                 eventAPI.isLogin = false
                 eventAPI.accessToken = nil
@@ -77,7 +77,7 @@ struct ScenarioView: View {
             
             Button("Cancel", role: .cancel) { }
         }
-        .alert("Not available", isPresented: $isShowingDisableAlert, actions: {
+        .alert("Not Available", isPresented: $isShowingDisableAlert, actions: {
             Button("Cancel", role: .cancel) { }
         }, message: { Text(alertString) })
         .sheet(item: $sheetScenarioData) { scenario in

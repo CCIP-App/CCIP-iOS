@@ -56,14 +56,24 @@ struct TicketView: View {
                             Spacer()
                         }
                     }
-                    .listRowBackground(Color.white.opacity(0))
+                    .listRowBackground(Color.transparent)
                     
                     Section(header: Text("Token")) {
                         Text(token)
                     }
+                    
+                    HStack(alignment: .center) {
+                        Spacer()
+                        Text("Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths.")
+                            .foregroundColor(.gray)
+                            .font(.footnote)
+                        Spacer()
+                    }
+                        .listRowBackground(Color.transparent)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
             } else {
-                Text("Havn't check in")
+                RedeemTokenView(eventAPI: eventAPI)
             }
         }
         .navigationTitle("Ticket")
@@ -82,9 +92,3 @@ struct TicketView: View {
         return UIImage(systemName: "xmark.circle") ?? UIImage()
     }
 }
-
-//struct TicketView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TicketView()
-//    }
-//}

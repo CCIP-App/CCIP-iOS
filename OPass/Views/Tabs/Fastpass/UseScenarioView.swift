@@ -97,34 +97,35 @@ struct UseScenarioView: View {
     }
 }
 
-//Not finish
 fileprivate struct ScuessScenarioView: View {
     
     @Environment(\.dismiss) var dismiss
     let scenario: ScenarioDataModel
-    @State var time = 10
+    @State var time = 0
     
     var body: some View {
         VStack {
-            if scenario.countdown == 0 {
-                VStack {
-                    Text(String(format: "%d:%02d:%02d", time/60, time%100, time*100%100))
-                        .font(.largeTitle) //"trying" to display down to microsecond
-                }
-                .frame(width: UIScreen.main.bounds.width * 0.9)
-                .background(
-                    VStack(alignment: .trailing) {
-                        Spacer()
-                        if let symbolName = scenario.symbolName {
-                            Image(systemName: symbolName)
-                                .font(.largeTitle.bold())
-                        }
-                    }
-                        .background(Color.blue)
-                )
+            if scenario.countdown != 0 {
+                TimerView(scenario: scenario, countTime: Double(10), symbolName: scenario.symbolName, dismiss: _dismiss)
+                    .padding()
             } else {
-                
+                VStack {
+                    Spacer()
+                    Image(systemName: "checkmark.square.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: UIScreen.main.bounds.width * 0.2)
+                        .foregroundColor(.green)
+                    Text(scenario.display_text.en + " Complete")
+                        .font(.title.bold())
+                    Group{
+                        Spacer()
+                        Spacer()
+                    }
+                }
             }
+            
+            Spacer()
             
             Button(action: { dismiss() }) {
                 Text("Complete")
@@ -134,12 +135,74 @@ fileprivate struct ScuessScenarioView: View {
                     .background(.blue)
                     .cornerRadius(10)
             }
+            .padding(.bottom)
         }
     }
 }
 
-//struct UseScenarioView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UseScenarioView()
-//    }
-//}
+fileprivate struct TimerView: View {
+    
+    let scenario: ScenarioDataModel
+    let countTime: Double
+    let symbolName: String
+    @Environment(\.dismiss) var dismiss
+    
+    @State var time: Double = 0
+    let timer = Timer.publish(every: 0.03, tolerance: 0.05, on: .main, in: .common).autoconnect()
+    let startTime = Date().timeIntervalSince1970
+    
+    var body: some View {
+        VStack {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(String(format: "%d:%02d.%02d", Int(time)/60, Int(time)%100, Int(time*100)%100))
+                        .font(.system(size: 70, weight: .light)) //TODO: Dynamic size
+                }
+                Spacer()
+            }
+            .foregroundColor(.white)
+            .padding(.horizontal)
+            
+            if let diet = scenario.attr.diet {
+                HStack {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("Diet")
+                            .foregroundColor(.white.opacity(0.5))
+                        Text(diet)
+                            .foregroundColor(.white)
+                            .font(.system(size: 70, weight: .light)) //TODO: Dynamic size
+                            .offset(x: 0, y: -10)
+                    }
+                    Spacer()
+                }
+                .padding(.horizontal)
+            }
+        }
+        .frame(maxWidth: .infinity, minHeight: UIScreen.main.bounds.width * 0.5)
+        .background(Color.blue)
+        .overlay(content: {
+            VStack {
+                Spacer()
+                HStack(alignment: .bottom) {
+                    Spacer()
+                    if symbolName != "" {
+                        Image(systemName: symbolName)
+                            .font(.system(size: UIScreen.main.bounds.width*0.18, weight: .bold, design: .rounded))
+                            .foregroundColor(Color(red: 77/255, green: 148/255, blue: 247/255))
+                    }
+                }
+                    .frame(maxWidth: .infinity)
+            }
+            .offset(x: 0, y: 30)
+        })
+        .cornerRadius(10)
+        .onReceive(timer) { _ in
+            let tmpTime = countTime - (Date().timeIntervalSince1970 - startTime)
+            if tmpTime <= 0 {
+                dismiss()
+            } else {
+                time = tmpTime
+            }
+        }
+    }
+}

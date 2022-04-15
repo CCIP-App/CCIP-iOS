@@ -110,6 +110,7 @@ fileprivate struct SelectDayView: View {
                                 + "\n" +
                                 String(allScheduleData.sessions[index].sectionID[0].day)
                             )
+                            .font(.system(.body, design: .monospaced))
                             .foregroundColor(index == selectDayIndex ? Color.white : Color.black)
                         }
                         .padding(8)

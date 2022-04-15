@@ -21,7 +21,7 @@ struct FastpassView: View {
                 if eventAPI.isLogin == true {
                     ScenarioView(eventAPI: eventAPI)
                 } else {
-                    ProgressView()
+                    ProgressView("Loading...")
                 }
             }
         }
