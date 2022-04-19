@@ -246,51 +246,51 @@ fileprivate struct TimeSection: View {
 
 fileprivate struct SpeakersSection: View {
     
-    @State var isTruncated: Bool = false
     @State var forceFullText: Bool = false
-    @State var isShowingSpeakerDetail = false
     @ObservedObject var eventAPI: EventAPIViewModel
     let scheduleDetail: SessionDataModel
     @Binding var showSpeaker: String?
     
     var body: some View {
         Section("Speakers") {
-            VStack(alignment: .leading, spacing: 0) {
-                ForEach(scheduleDetail.speakers, id: \.self) { speaker in
-                    ZStack {
-                        VStack(alignment: .leading, spacing: 0) {
-                            HStack(alignment: .center) {
-                                if let avatarURL = eventAPI.eventSchedule?.speakers[speaker]?.avatar {
-                                    URLImage(urlString: avatarURL, isRenderOriginal: true, defaultSymbolName: "person.crop.circle.fill")
-                                        .clipShape(Circle())
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 30, height: 30)
-                                }
-                                
-                                Text(eventAPI.eventSchedule?.speakers[speaker]?.zh.name ?? speaker)
-                                    .font(.subheadline.bold())
-                                Spacer()
-                            }
-                            .padding(.vertical, 8)
-                            if let speakerData = eventAPI.eventSchedule?.speakers[speaker], speakerData.zh.bio != "" {
-                                SpeakerBio(speaker: speaker, speakerBio: speakerData.zh.bio)
-                            }
+            ForEach(scheduleDetail.speakers, id: \.self) { speaker in
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack(alignment: .center) {
+                        if let avatarURL = eventAPI.eventSchedule?.speakers[speaker]?.avatar {
+                            URLImage(urlString: avatarURL, isRenderOriginal: true, defaultSymbolName: "person.crop.circle.fill")
+                                .clipShape(Circle())
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 30, height: 30)
                         }
-                        .padding(.horizontal, 10)
-                        .background(Color.white)
-                        .cornerRadius(8)
-                        .padding(.bottom, 8)
+                        
+                        Text(eventAPI.eventSchedule?.speakers[speaker]?.zh.name ?? speaker)
+                            .font(.subheadline.bold())
+                        Spacer()
+                    }
+                    .padding(.vertical, 8)
+                    if let speakerData = eventAPI.eventSchedule?.speakers[speaker], speakerData.zh.bio != "" {
+                        Divider()
+                        SpeakerBio(speaker: eventAPI.eventSchedule?.speakers[speaker]?.zh.name ?? speaker, speakerBio: speakerData.zh.bio)
                     }
                 }
+                .padding(.horizontal, 10)
+                .background(Color.white)
+                .cornerRadius(8)
+                .padding(.bottom, 8)
             }
+            .listRowBackground(Color.transparent)
+            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
-        .listRowBackground(Color.transparent)
-        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
+}
+
+struct SpeakerBio: View {
+    let speaker: String
+    let speakerBio: String
+    @State var isTruncated: Bool = false
+    @State var isShowingSpeakerDetail = false
     
-    @ViewBuilder
-    func SpeakerBio(speaker: String, speakerBio: String) -> some View {
-        Divider()
+    var body: some View {
         VStack(spacing: 0) {
             TruncableMarkdown(text: speakerBio, font: .footnote, lineLimit: 2) {
                 isTruncated = $0
@@ -308,13 +308,12 @@ fileprivate struct SpeakersSection: View {
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.3)
                                 }*/
-                                
-                                Text(eventAPI.eventSchedule?.speakers[speaker]?.zh.name ?? speaker)
+                                Text(speaker)
                                     .font(.title.bold())
                                 
-                                if let speakerData = eventAPI.eventSchedule?.speakers[speaker], speakerData.zh.bio != "" {
+                                if speakerBio != "" {
                                     HStack {
-                                        Markdown(speakerData.zh.bio.tirm())
+                                        Markdown(speakerBio.tirm())
                                             .markdownStyle(
                                                 MarkdownStyle(font: .footnote)
                                             )
