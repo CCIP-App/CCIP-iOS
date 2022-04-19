@@ -257,10 +257,17 @@ fileprivate struct SpeakersSection: View {
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(alignment: .center) {
                         if let avatarURL = eventAPI.eventSchedule?.speakers[speaker]?.avatar {
-                            URLImage(urlString: avatarURL, isRenderOriginal: true, defaultSymbolName: "person.crop.circle.fill")
-                                .clipShape(Circle())
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 30, height: 30)
+                            AsyncImage(url: URL(string: avatarURL)) { image in
+                                image
+                                    .renderingMode(.original)
+                                    .resizable().scaledToFit()
+                            } placeholder: {
+                                Image(systemName: "person.crop.circle.fill")
+                                    .resizable().scaledToFit()
+                                    .foregroundColor(.gray)
+                            }
+                            .clipShape(Circle())
+                            .frame(width: 30, height: 30)
                         }
                         
                         Text(eventAPI.eventSchedule?.speakers[speaker]?.zh.name ?? speaker)
@@ -299,7 +306,7 @@ struct SpeakerBio: View {
                 HStack {
                     Spacer()
                     Button("More") {
-                        SOCManager.present(isPresented: $isShowingSpeakerDetail) {
+                        SOCManager.present(isPresented: $isShowingSpeakerDetail, style: .light) {
                             VStack {
                                 /*
                                 if let avatarURL = eventAPI.eventSchedule?.speakers[speaker]?.avatar {

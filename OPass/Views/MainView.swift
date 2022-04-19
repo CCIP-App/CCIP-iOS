@@ -119,7 +119,7 @@ struct TabButton: View {
                         .aspectRatio(contentMode: .fit)
                         .padding(width / 10)
                 }
-                .tabButtonStyle(color: feature.color)
+                .tabButtonStyle(color: feature.color, width: width)
             case .wifi:
                 Button(action: {
                     presentingWifiSheet.toggle()
@@ -129,7 +129,7 @@ struct TabButton: View {
                         .aspectRatio(contentMode: .fit)
                         .padding(width / 10)
                 }
-                .tabButtonStyle(color: feature.color)
+                .tabButtonStyle(color: feature.color, width: width)
                 .sheet(isPresented: $presentingWifiSheet) {
                     NavigationView {
                         WiFiView(feature: feature)
@@ -146,7 +146,7 @@ struct TabButton: View {
                         .aspectRatio(contentMode: .fit)
                         .padding(width / 10)
                 }
-                .tabButtonStyle(color: feature.color)
+                .tabButtonStyle(color: feature.color, width: width)
             default:
                 if let urlString = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: urlString) {
                     Button(action: {
@@ -172,7 +172,7 @@ struct TabButton: View {
                             }
                         }
                     }
-                    .tabButtonStyle(color: feature.color)
+                    .tabButtonStyle(color: feature.color, width: width)
                     .safariView(isPresented: $presentingSafariView) {
                         SafariView(
                             url: url,

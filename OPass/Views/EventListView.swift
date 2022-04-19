@@ -24,12 +24,16 @@ struct EventListView: View {
                         dismiss()
                     }) {
                         HStack {
-                            URLImage(urlString: list.logo_url)
-                                .foregroundColor(Color("LogoColor"))
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.horizontal, 3)
-                                .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.15)
-                                .cornerRadius(5)
+                            AsyncImage(url: URL(string: list.logo_url)) { Image in
+                                Image
+                                    .renderingMode(.template)
+                                    .resizable().aspectRatio(contentMode: .fit)
+                                    .foregroundColor(Color("LogoColor"))
+                            } placeholder: {
+                                Rectangle().hidden()
+                            }
+                            .padding(.horizontal, 3)
+                            .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.15)
                             
                             Text(list.display_name.zh)
                                 .foregroundColor(.black)
