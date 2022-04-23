@@ -20,22 +20,33 @@ struct ScheduleModel: Hashable, Decodable {
 
 struct SessionModelsTransform: TransformFunction {
     static func transform(_ sessions: [SessionDataModel]) -> [SessionModel] {
-        let preProcessData = sessions
-            .sorted { $0.start < $1.start || $0.end <= $1.end } //sort by time
-            .reduce(into: [], { (sessionsAcrossDays: inout [[SessionDataModel]], currentSession) in
-                if !sessionsAcrossDays.isEmpty && sessionsAcrossDays.last![0].onSameDay(as: currentSession) {
-                    sessionsAcrossDays[sessionsAcrossDays.count-1].append(currentSession)
+        return sessions
+            .grouped(by: { [$0.start.year, $0.start.month, $0.start.day] })
+            .sorted(by: { entry1, entry2 in
+                let day1 = entry1.key
+                let day2 = entry2.key
+                if day1[0] != day2[0] {
+                    return day1[0] < day2[0]
+                } else if day1[1] != day2[1] {
+                    return day1[1] < day2[1]
                 } else {
-                    sessionsAcrossDays.append([currentSession])
+                    return day1[2] < day2[2]
                 }
-            }) //combine events on the same day into an array
-        var data: [SessionModel] = []
-        for index in 0 ..< preProcessData.count {
-            let sessionData = Dictionary(grouping: preProcessData[index], by: { $0.start })
-            let sectionID = sessionData.map({ $0.key }).sorted()
-            data.append(SessionModel(sectionID: sectionID, sessionData: sessionData))
-        }
-        return data
+            })
+            .map { (_, session) in session }
+            .map { $0.grouped(by: \.start) }
+            .map { sessionsDict in
+                SessionModel(sectionID: Array(sessionsDict.keys.sorted()), sessionData: sessionsDict)
+            }
+    }
+}
+
+fileprivate extension Sequence {
+    func grouped<K>(by keyPath: KeyPath<Element, K>) -> Dictionary<K, [Element]> {
+        return grouped(by: { $0[keyPath: keyPath] })
+    }
+    func grouped<K>(by key: ((Element) -> K)) -> Dictionary<K, [Element]> {
+        Dictionary(grouping: self, by: key)
     }
 }
 
