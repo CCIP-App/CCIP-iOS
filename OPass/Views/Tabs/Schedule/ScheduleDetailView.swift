@@ -120,95 +120,39 @@ fileprivate struct FeatureButtons: View {
     @Environment(\.openURL) var openURL
     let scheduleDetail: SessionDataModel
     let buttonSize = CGFloat(62)
+    let features: [(String, String, String)]
+    
+    init(scheduleDetail: SessionDataModel) {
+        self.scheduleDetail = scheduleDetail
+        features = [
+            (scheduleDetail.live, "video", "Live"),
+            (scheduleDetail.pad, "keyboard", "Co-writing"),
+            (scheduleDetail.record, "play", "Record"),
+            (scheduleDetail.slide, "paperclip", "Slide"),
+            (scheduleDetail.qa, "questionmark", "QA")
+        ].filter { (url, _, _) in url != nil } as! [(String, String, String)]
+    }
     
     var body: some View {
         ScrollView(.horizontal) {
             HStack(spacing: 12) {
-                if let liveURL = scheduleDetail.live {
+                ForEach(features, id: \.0, content: { (url, systemImageName, text) in
                     VStack {
                         Button(action: {
-                            openURL(URL(string: liveURL)!)
+                            openURL(URL(string: url)!)
                         }) {
-                            Image(systemName: "video")
+                            Image(systemName: systemImageName)
                                 .font(.system(size: 23, weight: .semibold, design: .rounded))
                                 .foregroundColor(Color(red: 72/255, green: 72/255, blue: 74/255))
                                 .frame(width: buttonSize, height: buttonSize)
                                 .background(.white)
                                 .cornerRadius(10)
                         }
-                        Text("Live")
+                        Text(text)
                             .font(.caption2)
                             .multilineTextAlignment(.center)
-                    }
-                }
-                if let padURL = scheduleDetail.pad {
-                    VStack {
-                        Button(action: {
-                            openURL(URL(string: padURL)!)
-                        }) {
-                            Image(systemName: "keyboard")
-                                .font(.system(size: 23, weight: .semibold, design: .rounded))
-                                .foregroundColor(Color(red: 72/255, green: 72/255, blue: 74/255))
-                                .frame(width: buttonSize, height: buttonSize)
-                                .background(.white)
-                                .cornerRadius(10)
-                        }
-                        Text("Co-writing")
-                            .font(.caption2)
-                            .multilineTextAlignment(.center)
-                    }
-                }
-                if let recordURL = scheduleDetail.record {
-                    VStack {
-                        Button(action: {
-                            openURL(URL(string: recordURL)!)
-                        }) {
-                            Image(systemName: "play")
-                                .font(.system(size: 23, weight: .semibold, design: .rounded))
-                                .foregroundColor(Color(red: 72/255, green: 72/255, blue: 74/255))
-                                .frame(width: buttonSize, height: buttonSize)
-                                .background(.white)
-                                .cornerRadius(10)
-                        }
-                        Text("Record")
-                            .font(.caption2)
-                            .multilineTextAlignment(.center)
-                    }
-                }
-                if let slideURL = scheduleDetail.slide {
-                    VStack {
-                        Button(action: {
-                            openURL(URL(string: slideURL)!)
-                        }) {
-                            Image(systemName: "paperclip")
-                                .font(.system(size: 23, weight: .semibold, design: .rounded))
-                                .foregroundColor(Color(red: 72/255, green: 72/255, blue: 74/255))
-                                .frame(width: buttonSize, height: buttonSize)
-                                .background(.white)
-                                .cornerRadius(10)
-                        }
-                        Text("Slide")
-                            .font(.caption2)
-                            .multilineTextAlignment(.center)
-                    }
-                }
-                if let qaURL = scheduleDetail.qa {
-                    VStack {
-                        Button(action: {
-                            openURL(URL(string: qaURL)!)
-                        }) {
-                            Image(systemName: "questionmark")
-                                .font(.system(size: 23, weight: .semibold, design: .rounded))
-                                .foregroundColor(Color(red: 72/255, green: 72/255, blue: 74/255))
-                                .frame(width: buttonSize, height: buttonSize)
-                                .background(.white)
-                                .cornerRadius(10)
-                        }
-                        Text("QA")
-                            .font(.caption2)
-                            .multilineTextAlignment(.center)
-                    }
-                }
+                   }
+                })
             }
         }
     }

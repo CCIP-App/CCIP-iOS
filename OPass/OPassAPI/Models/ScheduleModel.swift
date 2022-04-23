@@ -10,7 +10,6 @@ import Foundation
 import SwiftDate
 
 struct ScheduleModel: Hashable, Decodable {
-    //The transform() function in below Array extension will be used automatically when decoding json
     @TransformWith<SessionModelsTransform> var sessions = []
     @TransformWith<SpeakerTransform> var speakers = [:]
     @TransformWith<Id_Name_DescriptionTransform> var session_types = [:]
@@ -72,11 +71,6 @@ struct SessionDataModel: Hashable, Decodable {
     var en = Title_DescriptionModel()
     var speakers: [String] = [""]
     var tags: [String] = [""]
-    
-    func onSameDay(as session: SessionDataModel) -> Bool {
-        //Note: we only compare its start time
-        return self.start.sameDay(as: session.start)
-    }
 }
 
 struct SpeakerTransform: TransformFunction {
@@ -98,14 +92,6 @@ struct Id_Name_DescriptionTransform: TransformFunction {
 extension String: TransformSelf {
     static func transform(_ dateString: String) -> DateInRegion {
         return dateString.toISODate()!
-    }
-}
-
-extension DateInRegion {
-    func sameDay(as date: DateInRegion) -> Bool {
-        return self.year == date.year &&
-                self.month == date.month &&
-                self.day == date.day
     }
 }
 
