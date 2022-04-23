@@ -14,9 +14,19 @@ import SlideOverCard
 struct ScheduleDetailView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
-    @State var scheduleDetail: SessionDataModel
+    let scheduleDetail: SessionDataModel
+    @AppStorage var likedSessions: [String]
     @State var isShowingSpeakerDetail: Bool = false
     @State var showSpeaker: String?
+    private var isLiked: Bool {
+        likedSessions.contains(scheduleDetail.id)
+    }
+    
+    init(eventAPI: EventAPIViewModel, scheduleDetail: SessionDataModel) {
+        _eventAPI = ObservedObject(wrappedValue: eventAPI)
+        self.scheduleDetail = scheduleDetail
+        _likedSessions = AppStorage(wrappedValue: [], "liked_sessions", store: UserDefaults(suiteName: eventAPI.event_id))
+    }
     
     var body: some View {
         List {
@@ -60,8 +70,14 @@ struct ScheduleDetailView: View {
                         
                     }
                     
-                    SFButton(systemName: "heart") {
-                        
+                    SFButton(systemName: "heart\(isLiked ? ".fill" : "")") {
+                        if isLiked {
+                            if let index = likedSessions.firstIndex(of: scheduleDetail.id) {
+                                likedSessions.remove(at: index)
+                            }
+                        } else {
+                            likedSessions.append(scheduleDetail.id)
+                        }
                     }
                 }
             }

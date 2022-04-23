@@ -12,9 +12,25 @@ import SwiftDate
 struct ScheduleView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
-    
+    @AppStorage var likedSessions: [String]
     @State var selectDayIndex = 0
     @State var filterIndex = 0
+    private var filters: [((SessionDataModel) -> Bool)]! = nil
+    
+    init(eventAPI: EventAPIViewModel) {
+        _eventAPI = ObservedObject(wrappedValue: eventAPI)
+        _likedSessions = AppStorage(wrappedValue: [], "liked_sessions", store: UserDefaults(suiteName: eventAPI.event_id))
+        filters = [allSessions, likedSessions, taggedSessions]
+    }
+    private func allSessions(session: SessionDataModel) -> Bool {
+        return true
+    }
+    private func likedSessions(session: SessionDataModel) -> Bool {
+        return likedSessions.contains(session.id)
+    }
+    private func taggedSessions(seession: SessionDataModel) -> Bool {
+        return true
+    }
     
     var body: some View {
         VStack {
@@ -27,7 +43,7 @@ struct ScheduleView: View {
                     Form {
                         ForEach(allScheduleData.sessions[selectDayIndex].sectionID, id: \.self) { sectionID in
                             Section {
-                                ForEach(allScheduleData.sessions[selectDayIndex].sessionData[sectionID] ?? [], id: \.self) { sessionDetail in
+                                ForEach(allScheduleData.sessions[selectDayIndex].sessionData[sectionID]?.filter(filters[filterIndex]) ?? [], id: \.self) { sessionDetail in
                                     if sessionDetail.type != "Ev" {
                                         NavigationLink(destination:
                                                         ScheduleDetailView(eventAPI: eventAPI, scheduleDetail: sessionDetail)
