@@ -45,6 +45,11 @@ struct RedeemTokenView: View {
                             Image(systemName: "chevron.right").foregroundColor(.gray)
                         }
                     }
+                    .alert("Invaild Token", isPresented: $isShowingTokenErrorAlert) {
+                        Button("OK", role: .cancel) {
+                            token = ""
+                        }
+                    }
                     
                     Button(action: {
                         isShowingImagePicker = true
@@ -59,6 +64,11 @@ struct RedeemTokenView: View {
                             Text("Select a picture to scan token").foregroundColor(Color.black)
                             Spacer()
                             Image(systemName: "chevron.right").foregroundColor(.gray)
+                        }
+                    }
+                    .alert("No QR code found in the picture", isPresented: $isShowingNoQRCodeAlert) {
+                        Button("OK", role: .cancel) {
+                            isShowingNoQRCodeAlert = false
                         }
                     }
                     
@@ -77,11 +87,6 @@ struct RedeemTokenView: View {
                             Image(systemName: "chevron.right").foregroundColor(.gray)
                         }
                     }
-                }
-            }
-            .alert("Invaild Token", isPresented: $isShowingTokenErrorAlert) {
-                Button("OK", role: .cancel) {
-                    token = ""
                 }
             }
         }
@@ -143,17 +148,18 @@ struct RedeemTokenView: View {
                 isShowingImagePicker = false
                 if let result = extractFromQRCode(selectedImage) {
                     Task {
-                        isShowingTokenErrorAlert = !(await eventAPI.redeemToken(token: result))
+                        if !(await eventAPI.redeemToken(token: result)) {
+                            DispatchQueue.main.async {
+                                isShowingTokenErrorAlert = true
+                            }
+                        }
                     }
                 } else {
-                    isShowingNoQRCodeAlert = true
+                    DispatchQueue.main.async {
+                        isShowingNoQRCodeAlert = true
+                    }
                 }
             }
-//            .alert("No QR code found in the picture", isPresented: $isShowingNoQRCodeAlert) {
-//                Button("OK", role: .cancel) {
-//                    isShowingNoQRCodeAlert = false
-//                }
-//            }
         }
     }
 
