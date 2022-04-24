@@ -12,56 +12,25 @@ import SwiftDate
 struct ScheduleView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
-    @AppStorage var likedSessions: [String]
     @State var selectDayIndex = 0
     @State var filterIndex = 0
-    private var filters: [((SessionDataModel) -> Bool)]! = nil
-    
-    init(eventAPI: EventAPIViewModel) {
-        _eventAPI = ObservedObject(wrappedValue: eventAPI)
-        _likedSessions = AppStorage(wrappedValue: [], "liked_sessions", store: UserDefaults(suiteName: eventAPI.event_id))
-        filters = [allSessions, likedSessions, taggedSessions]
-    }
-    private func allSessions(session: SessionDataModel) -> Bool {
-        return true
-    }
-    private func likedSessions(session: SessionDataModel) -> Bool {
-        return likedSessions.contains(session.id)
-    }
-    private func taggedSessions(seession: SessionDataModel) -> Bool {
-        return true
-    }
     
     var body: some View {
         VStack {
             if let allScheduleData = eventAPI.eventSchedule {
                 VStack(spacing: 0) {
-                    if allScheduleData.sessions.count > 1 {
-                        SelectDayView(selectDayIndex: $selectDayIndex, allScheduleData: allScheduleData)
+                    if allScheduleData.sessions.section.count > 1 {
+                        SelectDayView(selectDayIndex: $selectDayIndex, section: allScheduleData.sessions.section)
                     }
                     
                     Form {
-                        ForEach(allScheduleData.sessions[selectDayIndex].sectionID, id: \.self) { sectionID in
-                            Section {
-                                ForEach(allScheduleData.sessions[selectDayIndex].sessionData[sectionID]?.filter(filters[filterIndex]) ?? [], id: \.self) { sessionDetail in
-                                    if sessionDetail.type != "Ev" {
-                                        NavigationLink(destination:
-                                                        ScheduleDetailView(eventAPI: eventAPI, scheduleDetail: sessionDetail)
-                                        ){
-                                            DetailOverView(room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
-                                                           start: sessionDetail.start,
-                                                           end: sessionDetail.end,
-                                                           title: sessionDetail.zh.title)
-                                        }
-                                    } else {
-                                        DetailOverView(room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
-                                                       start: sessionDetail.start,
-                                                       end: sessionDetail.end,
-                                                       title: sessionDetail.zh.title)
-                                    }
-                                }
-                            }
-                            .listRowInsets(.init(top: 10, leading: 15, bottom: 10, trailing: 15))
+                        switch filterIndex {
+                        case 1:
+                            FavoriteSessionView(eventAPI: eventAPI, sessionData: allScheduleData.sessions.data)
+                        case 2:
+                            VStack{} //TODO: Tag filter
+                        default: //0
+                            AllSessionView(allScheduleData: allScheduleData, selectDayIndex: selectDayIndex, eventAPI: eventAPI)
                         }
                     }
                 }
@@ -70,7 +39,7 @@ struct ScheduleView: View {
             }
         }
         .task {
-            await eventAPI.loadSchedule()
+            await eventAPI.loadSchedule() //TODO: need optimize
         }
         .navigationTitle("Schedule")
         .navigationBarTitleDisplayMode(.inline)
@@ -87,13 +56,13 @@ struct ScheduleView: View {
                         HStack {
                             Text("喜歡")
                             Spacer()
-                            Image(systemName: "heart")
+                            Image(systemName: "heart\(filterIndex == 1 ? ".fill" : "")")
                         }
                         .tag(1)
                         HStack {
                             Text("標籤")
                             Spacer()
-                            Image(systemName: "tag")
+                            Image(systemName: "tag\(filterIndex == 2 ? ".fill" : "")")
                         }
                         .tag(2)
                     }
@@ -109,22 +78,89 @@ struct ScheduleView: View {
     }
 }
 
+fileprivate struct AllSessionView: View {
+    
+    let allScheduleData: ScheduleModel
+    let selectDayIndex: Int
+    @ObservedObject var eventAPI: EventAPIViewModel
+    
+    var body: some View {
+        ForEach(allScheduleData.sessions.section[selectDayIndex].header, id: \.self) { header in
+            Section {
+                ForEach(allScheduleData.sessions.section[selectDayIndex].sessionId[header] ?? [], id: \.self) { sessionId in
+                    if let sessionDetail = allScheduleData.sessions.data[sessionId] {
+                        if sessionDetail.type != "Ev" {
+                            NavigationLink(destination:
+                                            ScheduleDetailView(eventAPI: eventAPI, scheduleDetail: sessionDetail)
+                            ){
+                                DetailOverView(room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
+                                               start: sessionDetail.start,
+                                               end: sessionDetail.end,
+                                               title: sessionDetail.zh.title)
+                            }
+                        } else {
+                            DetailOverView(room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
+                                           start: sessionDetail.start,
+                                           end: sessionDetail.end,
+                                           title: sessionDetail.zh.title)
+                        }
+                    }
+                }
+            }
+            .listRowInsets(.init(top: 10, leading: 15, bottom: 10, trailing: 15))
+        }
+    }
+}
+
+fileprivate struct FavoriteSessionView: View {
+    
+    let sessionData: [String : SessionDataModel]
+    @AppStorage var likedSessions: [String]
+    @ObservedObject var eventAPI: EventAPIViewModel
+    
+    init(eventAPI: EventAPIViewModel, sessionData: [String : SessionDataModel]) {
+        self.sessionData = sessionData
+        _eventAPI = ObservedObject(wrappedValue: eventAPI)
+        _likedSessions = AppStorage(wrappedValue: [], "liked_sessions", store: UserDefaults(suiteName: eventAPI.event_id))
+    }
+    
+    var body: some View {
+        ForEach(sessionData.filter {likedSessions.contains($0.key)}.sorted(by: {$0.value.start < $1.value.start}), id: \.key) { _, sessionDetail in
+            if sessionDetail.type != "Ev" {
+                NavigationLink(destination:
+                                ScheduleDetailView(eventAPI: eventAPI, scheduleDetail: sessionDetail)
+                ){
+                    DetailOverView(room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
+                                   start: sessionDetail.start,
+                                   end: sessionDetail.end,
+                                   title: sessionDetail.zh.title)
+                }
+            } else {
+                DetailOverView(room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
+                               start: sessionDetail.start,
+                               end: sessionDetail.end,
+                               title: sessionDetail.zh.title)
+            }
+        }
+    }
+}
+
 fileprivate struct SelectDayView: View {
     @Binding var selectDayIndex: Int
     let weekDayName = ["Mon", "Tue", "Wen", "Thr", "Fri", "Sat", "Sun"]
-    let allScheduleData: ScheduleModel
+    let section: [SectionModel]
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 10) {
-                ForEach(0 ..< allScheduleData.sessions.count, id: \.self) { index in
+                ForEach(0 ..< section.count, id: \.self) { index in
                     Button(action: {
                         selectDayIndex = index
                     }) {
                         VStack {
                             Text(
-                                String(weekDayName[allScheduleData.sessions[index].sectionID[0].weekday - 1])
+                                String(weekDayName[section[index].header[0].weekday - 1])
                                 + "\n" +
-                                String(allScheduleData.sessions[index].sectionID[0].day)
+                                String(section[index].header[0].day)
                             )
                             .font(.system(.body, design: .monospaced))
                             .foregroundColor(index == selectDayIndex ? Color.white : Color.black)

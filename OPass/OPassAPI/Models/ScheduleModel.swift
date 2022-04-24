@@ -10,7 +10,7 @@ import Foundation
 import SwiftDate
 
 struct ScheduleModel: Hashable, Decodable {
-    @TransformWith<SessionModelsTransform> var sessions = []
+    @TransformWith<SessionModelsTransform> var sessions = SessionModel()
     @TransformWith<SpeakerTransform> var speakers = [:]
     @TransformWith<Id_Name_DescriptionTransform> var session_types = [:]
     @TransformWith<Id_Name_DescriptionTransform> var rooms = [:]
@@ -18,25 +18,32 @@ struct ScheduleModel: Hashable, Decodable {
 }
 
 struct SessionModelsTransform: TransformFunction {
-    static func transform(_ sessions: [SessionDataModel]) -> [SessionModel] {
-        return sessions
-            .grouped(by: { [$0.start.year, $0.start.month, $0.start.day] })
-            .sorted(by: { entry1, entry2 in
-                let day1 = entry1.key
-                let day2 = entry2.key
-                if day1[0] != day2[0] {
-                    return day1[0] < day2[0]
-                } else if day1[1] != day2[1] {
-                    return day1[1] < day2[1]
-                } else {
-                    return day1[2] < day2[2]
-                }
-            })
-            .map { (_, session) in session }
-            .map { $0.grouped(by: \.start) }
-            .map { sessionsDict in
-                SessionModel(sectionID: Array(sessionsDict.keys.sorted()), sessionData: sessionsDict)
-            }
+    static func transform(_ sessions: [SessionDataModel]) -> SessionModel {
+        return SessionModel(
+            section: sessions
+                .grouped(by: { [$0.start.year, $0.start.month, $0.start.day] })
+                .sorted(by: { entry1, entry2 in
+                    let day1 = entry1.key
+                    let day2 = entry2.key
+                    if day1[0] != day2[0] {
+                        return day1[0] < day2[0]
+                    } else if day1[1] != day2[1] {
+                        return day1[1] < day2[1]
+                    } else {
+                        return day1[2] < day2[2]
+                    }
+                })
+                .map { (_, session) in session }
+                .map { $0.grouped(by: \.start) }
+                .map { sessionsDict in
+                    SectionModel(header: Array(sessionsDict.keys.sorted()),
+                                 sessionId: sessionsDict.mapValues{ $0.map{ $0.id }} )
+                },
+            data: Dictionary(grouping: sessions, by: {$0.id})
+                .mapValues({ data in
+                    return data[0]
+                })
+        )
     }
 }
 
@@ -50,8 +57,13 @@ fileprivate extension Sequence {
 }
 
 struct SessionModel: Hashable, Decodable {
-    var sectionID: [DateInRegion] = []
-    var sessionData: [DateInRegion : [SessionDataModel]] = [:]
+    var section: [SectionModel] = []
+    var data: [String : SessionDataModel] = [:]
+}
+
+struct SectionModel: Hashable, Decodable {
+    var header: [DateInRegion] = []
+    var sessionId: [DateInRegion : [String]] = [:]
 }
 
 struct SessionDataModel: Hashable, Decodable {
