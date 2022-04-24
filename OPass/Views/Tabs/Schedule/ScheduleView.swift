@@ -19,18 +19,18 @@ struct ScheduleView: View {
         VStack {
             if let allScheduleData = eventAPI.eventSchedule {
                 VStack(spacing: 0) {
-                    if allScheduleData.sessions.section.count > 1 {
-                        SelectDayView(selectDayIndex: $selectDayIndex, section: allScheduleData.sessions.section)
+                    if allScheduleData.sessions.count > 1 {
+                        SelectDayView(selectDayIndex: $selectDayIndex, sessions: allScheduleData.sessions)
                     }
                     
                     Form {
                         switch filterIndex {
                         case 1:
-                            FavoriteSessionView(eventAPI: eventAPI, sessionData: allScheduleData.sessions.data)
+                            FavoriteSessionView(eventAPI: eventAPI, sessionData: allScheduleData.sessions[selectDayIndex].data)
                         case 2:
                             VStack{} //TODO: Tag filter
                         default: //0
-                            AllSessionView(allScheduleData: allScheduleData, selectDayIndex: selectDayIndex, eventAPI: eventAPI)
+                            AllSessionView(sessions: allScheduleData.sessions[selectDayIndex], selectDayIndex: selectDayIndex, eventAPI: eventAPI)
                         }
                     }
                 }
@@ -80,15 +80,15 @@ struct ScheduleView: View {
 
 fileprivate struct AllSessionView: View {
     
-    let allScheduleData: ScheduleModel
+    let sessions: SessionModel
     let selectDayIndex: Int
     @ObservedObject var eventAPI: EventAPIViewModel
     
     var body: some View {
-        ForEach(allScheduleData.sessions.section[selectDayIndex].header, id: \.self) { header in
+        ForEach(sessions.header, id: \.self) { header in
             Section {
-                ForEach(allScheduleData.sessions.section[selectDayIndex].sessionId[header] ?? [], id: \.self) { sessionId in
-                    if let sessionDetail = allScheduleData.sessions.data[sessionId] {
+                ForEach(sessions.id[header] ?? [], id: \.self) { id in
+                    if let sessionDetail = sessions.data[id] {
                         if sessionDetail.type != "Ev" {
                             NavigationLink(destination:
                                             ScheduleDetailView(eventAPI: eventAPI, scheduleDetail: sessionDetail)
@@ -125,7 +125,10 @@ fileprivate struct FavoriteSessionView: View {
     }
     
     var body: some View {
-        ForEach(sessionData.filter {likedSessions.contains($0.key)}.sorted(by: {$0.value.start < $1.value.start}), id: \.key) { _, sessionDetail in
+        ForEach(sessionData.filter {likedSessions.contains($0.key)}.values.sorted(by: {
+            if $0.start != $1.start { return $0.start < $1.start }
+            else { return $0.end < $1.end }
+        }), id: \.self.id) { sessionDetail in
             if sessionDetail.type != "Ev" {
                 NavigationLink(destination:
                                 ScheduleDetailView(eventAPI: eventAPI, scheduleDetail: sessionDetail)
@@ -146,21 +149,24 @@ fileprivate struct FavoriteSessionView: View {
 }
 
 fileprivate struct SelectDayView: View {
+    
     @Binding var selectDayIndex: Int
+    let sessions: [SessionModel]
+    
     let weekDayName = ["Mon", "Tue", "Wen", "Thr", "Fri", "Sat", "Sun"]
-    let section: [SectionModel]
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 10) {
-                ForEach(0 ..< section.count, id: \.self) { index in
+                ForEach(0 ..< sessions.count, id: \.self) { index in
                     Button(action: {
                         selectDayIndex = index
                     }) {
                         VStack {
                             Text(
-                                String(weekDayName[section[index].header[0].weekday - 1])
+                                String(weekDayName[sessions[index].header[0].weekday - 1])
                                 + "\n" +
-                                String(section[index].header[0].day)
+                                String(sessions[index].header[0].day)
                             )
                             .font(.system(.body, design: .monospaced))
                             .foregroundColor(index == selectDayIndex ? Color.white : Color.black)
