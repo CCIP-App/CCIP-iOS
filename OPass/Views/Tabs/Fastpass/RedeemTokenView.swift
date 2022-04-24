@@ -17,6 +17,8 @@ struct RedeemTokenView: View {
     @ObservedObject var eventAPI: EventAPIViewModel
     
     @State var isShowingCameraSOC = false
+    @State var isShowingImagePicker = false
+    @State var isShowingNoQRCodeAlert = false
     @State var isShowingManuallySOC = false
     @State var isShowingTokenErrorAlert = false
     
@@ -45,7 +47,7 @@ struct RedeemTokenView: View {
                     }
                     
                     Button(action: {
-                        //TODO: Scan QRCode from gallery
+                        isShowingImagePicker = true
                     }) {
                         HStack {
                             Image(systemName: "photo")
@@ -136,6 +138,23 @@ struct RedeemTokenView: View {
                 }
             }
         }
+        .sheet(isPresented: $isShowingImagePicker) {
+            ImagePicker { selectedImage in
+                isShowingImagePicker = false
+                if let result = extractFromQRCode(selectedImage) {
+                    Task {
+                        isShowingTokenErrorAlert = !(await eventAPI.redeemToken(token: result))
+                    }
+                } else {
+                    isShowingNoQRCodeAlert = true
+                }
+            }
+//            .alert("No QR code found in the picture", isPresented: $isShowingNoQRCodeAlert) {
+//                Button("OK", role: .cancel) {
+//                    isShowingNoQRCodeAlert = false
+//                }
+//            }
+        }
     }
 
     func handleScan(result: Result<ScanResult, ScanError>) {
@@ -152,7 +171,15 @@ struct RedeemTokenView: View {
             print("Scanning failed: \(error.localizedDescription)")
         }
     }
-
+    
+    func extractFromQRCode(_ image: UIImage) -> String? {
+        guard let ciImage = CIImage(image: image),
+              let qrCodeDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil) else {
+            return nil
+        }
+        let feature = qrCodeDetector.features(in: ciImage) as! [CIQRCodeFeature]
+        return feature.first?.messageString
+    }
 }
 
 extension UIApplication {
