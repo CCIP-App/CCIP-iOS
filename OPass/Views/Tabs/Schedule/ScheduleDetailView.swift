@@ -31,7 +31,7 @@ struct ScheduleDetailView: View {
     var body: some View {
         List {
             VStack(alignment: .leading, spacing: 0) {
-                TagsSection(tagsID: scheduleDetail.tags, tags: eventAPI.eventSchedule?.tags ?? [:])
+                TagsSection(tagsID: scheduleDetail.tags, tags: eventAPI.eventSchedule?.tags.data ?? [:])
                     .padding(.vertical, 8)
                 
                 Text(scheduleDetail.zh.title)

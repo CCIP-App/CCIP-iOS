@@ -14,7 +14,7 @@ struct ScheduleModel: Hashable, Decodable {
     @TransformWith<SpeakerTransform> var speakers = [:]
     @TransformWith<Id_Name_DescriptionTransform> var session_types = [:]
     @TransformWith<Id_Name_DescriptionTransform> var rooms = [:]
-    @TransformWith<Id_Name_DescriptionTransform> var tags = [:]
+    @TransformWith<TagsTransform> var tags = TagsModel()
 }
 
 struct SessionModelsTransform: TransformFunction {
@@ -35,12 +35,7 @@ struct SessionModelsTransform: TransformFunction {
             .map { (_, session) in session }
             .map { $0.grouped(by: \.start) }
             .map { sessionsDict in
-                SessionModel(
-                    header: Array(sessionsDict.keys.sorted()),
-                    id: sessionsDict.mapValues{ $0.map{ $0.id }},
-                    data: Dictionary(grouping: Array(sessionsDict.values.joined()), by: {$0.id})
-                        .mapValues({ data in data[0] })
-                )
+                SessionModel(header: Array(sessionsDict.keys.sorted()), datas: sessionsDict)
             }
     }
 }
@@ -56,8 +51,7 @@ fileprivate extension Sequence {
 
 struct SessionModel: Hashable, Decodable {
     var header: [DateInRegion] = []
-    var id: [DateInRegion : [String]] = [:]
-    var data: [String : SessionDataModel] = [:]
+    var datas: [DateInRegion : [SessionDataModel]] = [:]
 }
 
 struct SessionDataModel: Hashable, Decodable {
@@ -85,6 +79,21 @@ struct SpeakerTransform: TransformFunction {
             (element.id, SpeakerModel(avatar: element.avatar, zh: element.zh, en: element.zh))
         })
     }
+}
+
+struct TagsTransform: TransformFunction {
+    static func transform(_ array: [Id_Name_DescriptionModel]) -> TagsModel {
+        return TagsModel(
+            id: array.map { $0.id },
+            data: Dictionary(uniqueKeysWithValues: array.map { element in
+                (element.id, Name_DescriptionPair(zh: element.zh, en: element.en))
+            }))
+    }
+}
+
+struct TagsModel: Hashable, Decodable {
+    var id: [String] = []
+    var data: [String: Name_DescriptionPair] = [:]
 }
 
 struct Id_Name_DescriptionTransform: TransformFunction {
@@ -131,7 +140,7 @@ struct Name_BioModel: Hashable, Codable {
     var bio: String = ""
 }
 
-struct Name_DescriptionPair: Hashable {
+struct Name_DescriptionPair: Hashable, Decodable {
     var zh: Name_DescriptionModel
     var en: Name_DescriptionModel
 }

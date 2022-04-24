@@ -29,7 +29,7 @@ struct Transform<Func: TransformFunction>: Decodable, Hashable {
 typealias TransformedFrom<Func: TransformSelf> = Transform<Func>
 typealias TransformWith = Transform
 
-protocol TransformSelf: TransformFunction where FromType == Self {}
+protocol TransformSelf: TransformFunction {}
 protocol TransformFunction {
     associatedtype FromType: Decodable
     associatedtype ToType: Hashable

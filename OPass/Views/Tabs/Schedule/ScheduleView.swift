@@ -1,5 +1,5 @@
 //
-//  SessionView.swift
+//  ScheduleView.swift
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/2.
@@ -12,8 +12,15 @@ import SwiftDate
 struct ScheduleView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
+    @AppStorage var likedSessions: [String]
     @State var selectDayIndex = 0
     @State var filterIndex = 0
+    @State var filterWithTag: String = ""
+    
+    init(eventAPI: EventAPIViewModel) {
+        _eventAPI = ObservedObject(wrappedValue: eventAPI)
+        _likedSessions = AppStorage(wrappedValue: [], "liked_sessions", store: UserDefaults(suiteName: eventAPI.event_id))
+    }
     
     var body: some View {
         VStack {
@@ -24,13 +31,38 @@ struct ScheduleView: View {
                     }
                     
                     Form {
-                        switch filterIndex {
-                        case 1:
-                            FavoriteSessionView(eventAPI: eventAPI, sessionData: allScheduleData.sessions[selectDayIndex].data)
-                        case 2:
-                            VStack{} //TODO: Tag filter
-                        default: //0
-                            AllSessionView(sessions: allScheduleData.sessions[selectDayIndex], selectDayIndex: selectDayIndex, eventAPI: eventAPI)
+                        ForEach(allScheduleData.sessions[selectDayIndex].header, id: \.self) { header in
+                            if let filteredData = allScheduleData.sessions[selectDayIndex].datas[header]?.filter { session in
+                                switch filterIndex {
+                                case 1: return likedSessions.contains(session.id)
+                                case 2: return session.tags.contains(filterWithTag)
+                                default: return true
+                                }
+                            }, !filteredData.isEmpty {
+                                Section {
+                                    ForEach(filteredData.sorted(by: { $0.end < $1.end }), id: \.self.id) { sessionDetail in
+                                        if sessionDetail.type != "Ev" {
+                                            NavigationLink(
+                                                destination: ScheduleDetailView(eventAPI: eventAPI,
+                                                                                scheduleDetail: sessionDetail)
+                                            ){
+                                                DetailOverView(
+                                                    room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
+                                                    start: sessionDetail.start,
+                                                    end: sessionDetail.end,
+                                                    title: sessionDetail.zh.title)
+                                            }
+                                        } else {
+                                            DetailOverView(
+                                                room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
+                                                start: sessionDetail.start,
+                                                end: sessionDetail.end,
+                                                title: sessionDetail.zh.title)
+                                        }
+                                    }
+                                }
+                                .listRowInsets(.init(top: 10, leading: 15, bottom: 10, trailing: 15))
+                            }
                         }
                     }
                 }
@@ -59,90 +91,34 @@ struct ScheduleView: View {
                             Image(systemName: "heart\(filterIndex == 1 ? ".fill" : "")")
                         }
                         .tag(1)
-                        HStack {
-                            Text("標籤")
-                            Spacer()
-                            Image(systemName: "tag\(filterIndex == 2 ? ".fill" : "")")
+                        if let tags = eventAPI.eventSchedule?.tags {
+                            Menu {
+                                Picker(selection: $filterWithTag, label: EmptyView()) {
+                                    ForEach(tags.id, id: \.self) { id in
+                                        Text(tags.data[id]?.zh.name ?? id)
+                                        .tag(id)
+                                    }
+                                }
+                            } label: {
+                                HStack {
+                                    Text("標籤")
+                                    Spacer()
+                                    Image(systemName: "tag\(filterIndex == 2 ? ".fill" : "")")
+                                }
+                            }
                         }
-                        .tag(2)
                     }
                     .labelsHidden()
                     .pickerStyle(.inline)
+                    .onChange(of: filterIndex) { value in
+                        if value == 1 || value == 0 { filterWithTag = "" }
+                    }
+                    .onChange(of: filterWithTag) { value in
+                        if value != "" { filterIndex = 2 }
+                    }
                 } label: {
-                    SFButton(systemName: "line.3.horizontal.decrease.circle\(filterIndex == 0 ? "" : ".fill")") {
-
-                    }
+                    Image(systemName: "line.3.horizontal.decrease.circle\(filterIndex == 0 ? "" : ".fill")")
                 }
-            }
-        }
-    }
-}
-
-fileprivate struct AllSessionView: View {
-    
-    let sessions: SessionModel
-    let selectDayIndex: Int
-    @ObservedObject var eventAPI: EventAPIViewModel
-    
-    var body: some View {
-        ForEach(sessions.header, id: \.self) { header in
-            Section {
-                ForEach(sessions.id[header] ?? [], id: \.self) { id in
-                    if let sessionDetail = sessions.data[id] {
-                        if sessionDetail.type != "Ev" {
-                            NavigationLink(destination:
-                                            ScheduleDetailView(eventAPI: eventAPI, scheduleDetail: sessionDetail)
-                            ){
-                                DetailOverView(room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
-                                               start: sessionDetail.start,
-                                               end: sessionDetail.end,
-                                               title: sessionDetail.zh.title)
-                            }
-                        } else {
-                            DetailOverView(room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
-                                           start: sessionDetail.start,
-                                           end: sessionDetail.end,
-                                           title: sessionDetail.zh.title)
-                        }
-                    }
-                }
-            }
-            .listRowInsets(.init(top: 10, leading: 15, bottom: 10, trailing: 15))
-        }
-    }
-}
-
-fileprivate struct FavoriteSessionView: View {
-    
-    let sessionData: [String : SessionDataModel]
-    @AppStorage var likedSessions: [String]
-    @ObservedObject var eventAPI: EventAPIViewModel
-    
-    init(eventAPI: EventAPIViewModel, sessionData: [String : SessionDataModel]) {
-        self.sessionData = sessionData
-        _eventAPI = ObservedObject(wrappedValue: eventAPI)
-        _likedSessions = AppStorage(wrappedValue: [], "liked_sessions", store: UserDefaults(suiteName: eventAPI.event_id))
-    }
-    
-    var body: some View {
-        ForEach(sessionData.filter {likedSessions.contains($0.key)}.values.sorted(by: {
-            if $0.start != $1.start { return $0.start < $1.start }
-            else { return $0.end < $1.end }
-        }), id: \.self.id) { sessionDetail in
-            if sessionDetail.type != "Ev" {
-                NavigationLink(destination:
-                                ScheduleDetailView(eventAPI: eventAPI, scheduleDetail: sessionDetail)
-                ){
-                    DetailOverView(room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
-                                   start: sessionDetail.start,
-                                   end: sessionDetail.end,
-                                   title: sessionDetail.zh.title)
-                }
-            } else {
-                DetailOverView(room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
-                               start: sessionDetail.start,
-                               end: sessionDetail.end,
-                               title: sessionDetail.zh.title)
             }
         }
     }
