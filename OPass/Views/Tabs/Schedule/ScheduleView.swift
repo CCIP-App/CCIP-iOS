@@ -9,11 +9,6 @@
 import SwiftUI
 import SwiftDate
 
-enum Filter: Hashable {
-    case all, liked
-    case tag(String)
-}
-
 struct ScheduleView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
@@ -125,6 +120,11 @@ struct ScheduleView: View {
             }
         }
     }
+}
+
+enum Filter: Hashable {
+    case all, liked
+    case tag(String)
 }
 
 fileprivate struct SelectDayView: View {

@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  OPass
+
+  Created by 張智堯 on 2022/4/25.
+  2022 OPass.
+  
+*/
+
+"Continue" = "Continue";
+"EnterTokenManuallyContent" = "Please look for the Token provided by the email and enter it in the field above";
+"ScanToGetTokenContent" = "Please look for the QRCode provided by the email and place it in the viewfinder";
+"ScanToGetToken" = "Scan to get token";
+"EnterTokenManually" = "Enter token manually";
+"SelectAPictureToScanQRCode" = "Select a picture to scan QR Code";
+"InvaildToken" = "Invaild Token";
+"ScanQRCodeWithCamera" = "Scan QR Code with camera";
+"Complete" = "Complete";
+"ConfirmUse" = "Confirm Use";
+"ConfirmUseScenarioMessage" = "This item can only be used once, please follow the instructions of the staff to use.";
+"Cancel" = "Cancel";
+"SignOut" = "Sign Out";
+"ConfirmSignOut" = "Confirm Sign Out?";
+"CheckAtContent" = "Check at %d:%02d";
+"NotAvailable" = "Not Available";
+"OnlyAvailableAtContent" = "Only available at\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d";
+"Loading" = "Loading...";
+"FastPass" = "Fast Pass";
+"Setting" = "Setting";
+"DebugFuction" = "Debug Fuction";
+"DeveloperOption" = "Developer Option";
+"PrivacyPolicy" = "Privacy Policy";
+"Version" = "Version";
+"Close" = "Close";
+"SelectEvent" = "Select Event";
+"SessionWillStartIn5Minutes" = "Session will start in 5 mins.";
+"SessionWillStartIn5MinutesContent" = "\"%@\" in Room \"%@\", please keep your time of buffer to reach the room.";

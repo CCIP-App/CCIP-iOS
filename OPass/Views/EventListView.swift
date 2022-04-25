@@ -35,7 +35,7 @@ struct EventListView: View {
                             .padding(.horizontal, 3)
                             .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.15)
                             
-                            Text(list.display_name.zh)
+                            Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ?  list.display_name.zh : list.display_name.en)
                                 .foregroundColor(.black)
                             
                             Spacer()
@@ -46,11 +46,11 @@ struct EventListView: View {
                     }
                 }
             }
-            .navigationTitle("Select Event")
+            .navigationTitle(LocalizedStringKey("SelectEvent"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Close") {
+                    Button(LocalizedStringKey("Close")) {
                         dismiss()
                     }
                 }

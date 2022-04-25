@@ -40,12 +40,12 @@ struct RedeemTokenView: View {
                                 .padding(.vertical, 10)
                                 .background(Color.blue)
                                 .cornerRadius(9)
-                            Text("Scan token with camera").foregroundColor(Color.black)
+                            Text(LocalizedStringKey("ScanQRCodeWithCamera")).foregroundColor(Color.black)
                             Spacer()
                             Image(systemName: "chevron.right").foregroundColor(.gray)
                         }
                     }
-                    .alert("Invaild Token", isPresented: $isShowingTokenErrorAlert) {
+                    .alert(LocalizedStringKey("InvaildToken"), isPresented: $isShowingTokenErrorAlert) {
                         Button("OK", role: .cancel) {
                             token = ""
                         }
@@ -61,12 +61,12 @@ struct RedeemTokenView: View {
                                 .padding(.vertical, 10)
                                 .background(Color.green)
                                 .cornerRadius(9)
-                            Text("Select a picture to scan token").foregroundColor(Color.black)
+                            Text("Select a picture to scan QR Code").foregroundColor(Color.black)
                             Spacer()
                             Image(systemName: "chevron.right").foregroundColor(.gray)
                         }
                     }
-                    .alert("No QR code found in the picture", isPresented: $isShowingNoQRCodeAlert) {
+                    .alert(LocalizedStringKey("SelectAPictureToScanQRCode"), isPresented: $isShowingNoQRCodeAlert) {
                         Button("OK", role: .cancel) {
                             isShowingNoQRCodeAlert = false
                         }
@@ -82,7 +82,7 @@ struct RedeemTokenView: View {
                                 .padding(.vertical, 10)
                                 .background(Color.purple)
                                 .cornerRadius(9)
-                            Text("Enter token manually").foregroundColor(Color.black)
+                            Text(LocalizedStringKey("EnterTokenManually")).foregroundColor(Color.black)
                             Spacer()
                             Image(systemName: "chevron.right").foregroundColor(.gray)
                         }
@@ -92,8 +92,8 @@ struct RedeemTokenView: View {
         }
         .slideOverCard(isPresented: $isShowingCameraSOC) {
             VStack {
-                Text("Fast Pass").font(Font.largeTitle.weight(.bold))
-                Text("Scan token with camera")
+                Text(LocalizedStringKey("FastPass")).font(Font.largeTitle.weight(.bold))
+                Text(LocalizedStringKey("ScanQRCodeWithCamera"))
                 
                 //TODO: Handle Camera not permit
                 CodeScannerView(codeTypes: [.qr], scanMode: .once, showViewfinder: false, shouldVibrateOnSuccess: true, completion: handleScan)
@@ -101,16 +101,16 @@ struct RedeemTokenView: View {
                     .cornerRadius(20)
                 
                 VStack(alignment: .leading) {
-                    Text("Scan to get token").bold()
-                    Text("Please look for the QRCode provided by the email and place it in the viewfinder")
+                    Text(LocalizedStringKey("ScanToGetToken")).bold()
+                    Text(LocalizedStringKey("ScanToGetTokenContent"))
                         .foregroundColor(Color.gray)
                 }
             }
         }
         .slideOverCard(isPresented: $isShowingManuallySOC) {
             VStack {
-                Text("Fast Pass").font(Font.largeTitle.weight(.bold))
-                Text("Enter token manually")
+                Text(LocalizedStringKey("FastPass")).font(Font.largeTitle.weight(.bold))
+                Text(LocalizedStringKey("EnterTokenManually"))
                 
                 TextField("Token", text: $token)
                     .padding(10)
@@ -120,7 +120,7 @@ struct RedeemTokenView: View {
                     )
                 
                 VStack(alignment: .leading) {
-                    Text("Please look for the Token provided by the email and enter it in the field above")
+                    Text(LocalizedStringKey("EnterTokenManuallyContent"))
                         .foregroundColor(Color.gray)
                         .font(.caption)
                 }
@@ -135,7 +135,7 @@ struct RedeemTokenView: View {
                 }) {
                     HStack {
                         Spacer()
-                        Text("Continue")
+                        Text(LocalizedStringKey("Continue"))
                             .padding(.vertical, 20)
                             .foregroundColor(Color.white)
                         Spacer()

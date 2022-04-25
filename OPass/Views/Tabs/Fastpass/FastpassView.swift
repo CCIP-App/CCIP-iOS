@@ -21,7 +21,7 @@ struct FastpassView: View {
                 if eventAPI.isLogin == true {
                     ScenarioView(eventAPI: eventAPI)
                 } else {
-                    ProgressView("Loading...")
+                    ProgressView(LocalizedStringKey("Loading"))
                 }
             }
         }
@@ -29,8 +29,8 @@ struct FastpassView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {
-                    Text("Fast Pass").font(.headline)
-                    Text(eventAPI.display_name.en).font(.caption).foregroundColor(.gray)
+                    Text(LocalizedStringKey("FastPass")).font(.headline)
+                    Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? eventAPI.display_name.zh : eventAPI.display_name.en).font(.caption).foregroundColor(.gray)
                 }
             }
         }

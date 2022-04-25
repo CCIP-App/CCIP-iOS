@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  OPass
+
+  Created by 張智堯 on 2022/4/25.
+  2022 OPass.
+  
+*/
+
+"Continue" = "繼續";
+"EnterTokenManuallyContent" = "請查找電子郵件提供的驗證碼，並在上方中輸入";
+"ScanToGetTokenContent" = "請尋找電子郵件提供的二維碼，並將其放置在取景器中";
+"ScanToGetToken" = "掃描取得驗證碼";
+"EnterTokenManually" = "手動輸入驗證碼";
+"SelectAPictureToScanQRCode" = "選擇照片掃描QR Code";
+"InvaildToken" = "錯誤的驗證碼";
+"ScanQRCodeWithCamera" = "使用相機掃描QR Code";
+"Complete" = "完成";
+"ConfirmUse" = "確認使用";
+"ConfirmUseScenarioMessage" = "此項目只能使用一次，請按照工作人員的指示使用。";
+"Cancel" = "取消";
+"SignOut" = "登出";
+"ConfirmSignOut" = "確定登出？";
+"CheckAtContent" = "已在%d:%02d完成";
+"NotAvailable" = "無法使用";
+"OnlyAvailableAtContent" = "開放時間：\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d";
+"Loading" = "載入中...";
+"FastPass" = "快速通關";
+"Setting" = "設定";
+"DebugFuction" = "調試";
+"DeveloperOption" = "開發者選項";
+"PrivacyPolicy" = "隱私權政策";
+"Version" = "版本";
+"Close" = "關閉";
+"SelectEvent" = "選擇活動";
+"SessionWillStartIn5Minutes" = "議程即將在五分鐘內開始";
+"SessionWillStartIn5MinutesContent" = "「%@」在會議室「%@」，請儘速前往！";

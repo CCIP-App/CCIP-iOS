@@ -35,7 +35,7 @@ struct ScenarioView: View {
                                     } else if !DateInRegion().isInRange(date: scenario.available_time,
                                                                         and: scenario.expire_time, orEqual: false,
                                                                         granularity: .second) {
-                                        alertString = String(format: "Only available at\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d",
+                                        alertString = String(format: String(localized: "OnlyAvailableAtContent"),
                                                              scenario.available_time.year, scenario.available_time.month,
                                                              scenario.available_time.day, scenario.available_time.hour,
                                                              scenario.available_time.minute, scenario.expire_time.year,
@@ -56,29 +56,22 @@ struct ScenarioView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .principal) {
-                VStack {
-                    Text("Fast Pass").font(.headline)
-                    Text(eventAPI.display_name.en).font(.caption).foregroundColor(.gray)
-                }
-            }
-            
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
                     isShowingLogOutAlert.toggle()
-                }) { Text("Sign Out").foregroundColor(.red) }
+                }) { Text(LocalizedStringKey("SignOut")).foregroundColor(.red) }
             }
         }
-        .alert("Confirm Sign Out?", isPresented: $isShowingLogOutAlert) {
-            Button("Sign Out", role: .destructive) {
+        .alert(LocalizedStringKey("ConfirmSignOut"), isPresented: $isShowingLogOutAlert) {
+            Button(String(localized: "SignOut"), role: .destructive) {
                 eventAPI.isLogin = false
                 eventAPI.accessToken = nil
             }
             
-            Button("Cancel", role: .cancel) { }
+            Button(String(localized: "Cancel"), role: .cancel) { }
         }
-        .alert("Not Available", isPresented: $isShowingDisableAlert, actions: {
-            Button("Cancel", role: .cancel) { }
+        .alert(LocalizedStringKey("NotAvailable"), isPresented: $isShowingDisableAlert, actions: {
+            Button(String(localized: "Cancel"), role: .cancel) { }
         }, message: { Text(alertString) })
         .sheet(item: $sheetScenarioData) { scenario in
             NavigationView {
@@ -105,8 +98,8 @@ struct ScenarioView: View {
                 .cornerRadius(UIScreen.main.bounds.width * 0.028)
             
             VStack(alignment: .leading) {
-                Text(scenario.display_text.zh).foregroundColor(.black)
-                Text((scenario.disabled == nil ? (scenario.used == nil ? String(format: "%d:%02d ~ %d:%02d", scenario.available_time.hour, scenario.available_time.minute, scenario.expire_time.hour, scenario.expire_time.minute) : String(format: "Check at %d:%02d", scenario.used!.hour, scenario.used!.minute) ) : (scenario.disabled)!))
+                Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? scenario.display_text.zh : scenario.display_text.en).foregroundColor(.black)
+                Text((scenario.disabled == nil ? (scenario.used == nil ? String(format: "%d:%02d ~ %d:%02d", scenario.available_time.hour, scenario.available_time.minute, scenario.expire_time.hour, scenario.expire_time.minute) : String(format: String(localized: "CheckAtContent"), scenario.used!.hour, scenario.used!.minute) ) : (scenario.disabled)!))
                     .font(.callout)
                     .foregroundColor(.gray)
             }
@@ -132,7 +125,7 @@ struct FastpassLogoView: View {
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(Color("LogoColor"))
             } else {
-                Text(eventAPI.display_name.en)
+                Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? eventAPI.display_name.zh : eventAPI.display_name.en)
                     .font(.system(.largeTitle, design: .rounded))
                     .fontWeight(.medium)
                     .foregroundColor(Color("LogoColor"))

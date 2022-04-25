@@ -32,11 +32,11 @@ struct UseScenarioView: View {
                 }
             }
         }
-        .navigationTitle(scenario.display_text.en)
+        .navigationTitle(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? scenario.display_text.zh : scenario.display_text.en)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button("Close") {
+                Button(LocalizedStringKey("Close")) {
                     dismiss()
                 }
             }
@@ -57,10 +57,10 @@ struct UseScenarioView: View {
                     .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.width * 0.2)
                     .background(.blue)
                     .cornerRadius(UIScreen.main.bounds.width * 0.05)
-                Text(scenario.display_text.en)
+                Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? scenario.display_text.zh : scenario.display_text.en)
                     .font(.largeTitle.bold())
                 
-                Text("This item can only be used once, please follow the instructions of the staff to use.")
+                Text(LocalizedStringKey("ConfirmUseScenarioMessage"))
                     .multilineTextAlignment(.center)
             }
             
@@ -80,7 +80,7 @@ struct UseScenarioView: View {
                     }
                 }
             }) {
-                Text("Confirm Use")
+                Text(LocalizedStringKey("ConfirmUse"))
                     .foregroundColor(.white)
                     .padding(.vertical, 11)
                     .frame(maxWidth: .infinity)
@@ -89,7 +89,7 @@ struct UseScenarioView: View {
             }
 
             Button(action: { dismiss() }) {
-                Text("Cancel Use")
+                Text(LocalizedStringKey("Cancel"))
                     .foregroundColor(.blue)
                     .padding(.vertical, 10)
             }
@@ -116,7 +116,10 @@ fileprivate struct ScuessScenarioView: View {
                         .scaledToFit()
                         .frame(width: UIScreen.main.bounds.width * 0.2)
                         .foregroundColor(.green)
-                    Text(scenario.display_text.en + " Complete")
+                    Text(
+                        Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? scenario.display_text.zh : scenario.display_text.en +
+                        " " + String(localized: "Complete")
+                    )
                         .font(.title.bold())
                     Group{
                         Spacer()
@@ -128,7 +131,7 @@ fileprivate struct ScuessScenarioView: View {
             Spacer()
             
             Button(action: { dismiss() }) {
-                Text("Complete")
+                Text(LocalizedStringKey("Complete"))
                     .foregroundColor(.white)
                     .padding(.vertical, 11)
                     .frame(width: UIScreen.main.bounds.width * 0.85)

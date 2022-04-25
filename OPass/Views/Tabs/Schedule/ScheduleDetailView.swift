@@ -71,10 +71,17 @@ struct ScheduleDetailView: View {
                     }
                     
                     SFButton(systemName: "heart\(isLiked ? ".fill" : "")") {
+                        registeringNotification(
+                            id: scheduleDetail.id,
+                            title: String(localized: "SessionWillStartIn5Minutes"),
+                            content: String(format: String(localized: "SessionWillStartIn5MinutesContent"),
+                                            scheduleDetail.en.title,
+                                            eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.en.name ?? ""),
+                            rawTime: scheduleDetail.start,
+                            cancel: isLiked
+                        )
                         if isLiked {
-                            if let index = likedSessions.firstIndex(of: scheduleDetail.id) {
-                                likedSessions.remove(at: index)
-                            }
+                            likedSessions.removeAll { $0 == scheduleDetail.id }
                         } else {
                             likedSessions.append(scheduleDetail.id)
                         }

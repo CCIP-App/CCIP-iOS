@@ -28,7 +28,7 @@ struct MainView: View {
                         .foregroundColor(Color("LogoColor"))
                         .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
                 } else {
-                    Text(eventAPI.display_name.en)
+                    Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? eventAPI.display_name.zh : eventAPI.display_name.en)
                         .font(.system(.largeTitle, design: .rounded))
                         .fontWeight(.medium)
                         .padding(.vertical)
@@ -47,7 +47,7 @@ struct MainView: View {
                                 .aspectRatio(contentMode: .fill)
                                 .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
                                 
-                                Text(feature.display_text.zh)
+                                Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ?  feature.display_text.zh : feature.display_text.en)
                                     .font(.caption2)
                                     .multilineTextAlignment(.center)
                             }
@@ -96,7 +96,7 @@ struct MainView: View {
                 .opacity(0)
             }
         } else {
-            ProgressView("Loading...")
+            ProgressView(LocalizedStringKey("Loading"))
         }
     }
 }

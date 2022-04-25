@@ -27,7 +27,7 @@ struct ContentView: View {
                     .buttonStyle(.bordered)
                     .controlSize(.large)
                     
-                    Text("Select Event")
+                    Text(LocalizedStringKey("SelectEvent"))
                         .font(.caption2)
                 }
             }

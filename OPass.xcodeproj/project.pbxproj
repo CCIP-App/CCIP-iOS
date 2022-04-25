@@ -58,6 +58,7 @@
 		D3E4E6C627CD158700FFACEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E4E6C527CD158700FFACEB /* Preview Assets.xcassets */; };
 		D3EA819827F68FFF00FE7985 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = D3EA819727F68FFF00FE7985 /* BetterSafariView */; };
 		D3EA819A27F747E100FE7985 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EA819927F747E100FE7985 /* TicketView.swift */; };
+		D3F23B4F28166DEF00A0FB35 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3F23B5128166DEF00A0FB35 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,8 @@
 		D3E4E6C227CD158700FFACEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3E4E6C527CD158700FFACEB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D3EA819927F747E100FE7985 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
+		D3F23B5228166DF600A0FB35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D3F23B5328166E0A00A0FB35 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E4E6BD27CD158400FFACEB /* OPass */,
+				D3F23B4B28166CE200A0FB35 /* Supporting Files */,
 				D3A00F1D27D837D00097A6AB /* OneSignalNotificationServiceExtension */,
 				D3E4E6BC27CD158400FFACEB /* Products */,
 				D3C0E21827D51B460095169F /* Frameworks */,
@@ -341,6 +345,22 @@
 				4F5EB73927D37D4A00235396 /* announcementSample.json */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D3F23B4B28166CE200A0FB35 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D3F23B4C28166D2F00A0FB35 /* OPass */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D3F23B4C28166D2F00A0FB35 /* OPass */ = {
+			isa = PBXGroup;
+			children = (
+				D3F23B5128166DEF00A0FB35 /* Localizable.strings */,
+			);
+			path = OPass;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,7 +437,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				"zh-Hant",
 			);
 			mainGroup = D3E4E6B227CD158400FFACEB;
 			packageReferences = (
@@ -455,6 +475,7 @@
 				4F5EB73A27D37D4A00235396 /* announcementSample.json in Resources */,
 				D3E4E6C627CD158700FFACEB /* Preview Assets.xcassets in Resources */,
 				4F29D9C727D4E6DA00292CC4 /* GoogleService-Info.plist in Resources */,
+				D3F23B4F28166DEF00A0FB35 /* Localizable.strings in Resources */,
 				4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */,
 				D3E4E6C327CD158700FFACEB /* Assets.xcassets in Resources */,
 				4F48B5D427CF07910010FC2C /* eventListSample.json in Resources */,
@@ -521,6 +542,18 @@
 			targetProxy = D3A00F2127D837D00097A6AB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D3F23B5128166DEF00A0FB35 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3F23B5228166DF600A0FB35 /* en */,
+				D3F23B5328166E0A00A0FB35 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D3A00F2527D837D00097A6AB /* Debug */ = {

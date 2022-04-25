@@ -39,7 +39,7 @@ struct SettingView: View {
                 
                 Section {
                     VStack(alignment: .leading) {
-                        Text("Version")
+                        Text(LocalizedStringKey("Version"))
                             .foregroundColor(.black)
                         Text(
                             String(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String + " (Build ") +
@@ -72,7 +72,7 @@ struct SettingView: View {
                     }) {
                         HStack {
                             VStack(alignment: .leading) {
-                                Text("Privacy Policy")
+                                Text(LocalizedStringKey("PrivacyPolicy"))
                                     .foregroundColor(.black)
                                 Text(policy)
                                     .font(.subheadline)
@@ -89,38 +89,15 @@ struct SettingView: View {
                 
                 Section {
                     NavigationLink(destination: EmptyView()) {
-                        Text("Developer Option")
+                        Text(LocalizedStringKey("DeveloperOption"))
                     }
                     
-                    Toggle("Debug Fuction", isOn: $isDebug)
+                    Toggle(LocalizedStringKey("DebugFuction"), isOn: $isDebug)
                 }
             }
         }
-        .navigationTitle("Setting")
+        .navigationTitle(LocalizedStringKey("Setting"))
         .navigationBarTitleDisplayMode(.inline)
-        
-        /*
-        //Only for API Testing
-        VStack {
-            if let data = eventAPI.eventLogo, let uiimage = UIImage(data: data) {
-                Image(uiImage: uiimage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding()
-                    .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
-                    .background(Color.purple)
-            }
-            
-            Text(eventAPI.eventSettings?.event_id ?? "No Current Event Data")
-            
-            ScrollView {
-                if let data = eventAPI.eventSettings {
-                    ForEach(data.features, id: \.self) { feature in
-                        Text(feature.display_text.zh)
-                    }
-                }
-            }
-        }*/
     }
 }
 
