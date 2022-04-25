@@ -111,7 +111,7 @@ struct ScheduleView: View {
                     .labelsHidden()
                     .pickerStyle(.inline)
                     .onChange(of: filterIndex) { value in
-                        if value == 1 || value == 0 { filterWithTag = "" }
+                        if value != 2 { filterWithTag = "" }
                     }
                     .onChange(of: filterWithTag) { value in
                         if value != "" { filterIndex = 2 }

@@ -8,6 +8,7 @@
 
 import SwiftUI
 import BetterSafariView
+import CryptoKit
 
 struct MainView: View {
     
@@ -148,8 +149,12 @@ struct TabButton: View {
                 }
                 .tabButtonStyle(color: feature.color, width: width)
             default:
-                if let urlString = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: urlString) {
+            if let urlString = feature.url?
+                .checkAndReplace(withToken: eventAPI.accessToken)
+                .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+               let url = URL(string: urlString) {
                     Button(action: {
+                        print(urlString)
                         presentingSafariView.toggle()
                     }) {
                         if feature.feature != .webview {
@@ -187,6 +192,21 @@ struct TabButton: View {
                     }
                 }
         }
+    }
+}
+
+fileprivate extension String {
+    func checkAndReplace(withToken: String?) -> String {
+        if let token = withToken {
+            if self.contains("{public_token}") {
+                return self.replacingOccurrences(
+                    of: "{public_token}",
+                    with: Insecure.SHA1.hash(data: Data(token.utf8)).map { String(format: "%02X", $0) }.joined())
+            } else if self.contains("{token}") {
+                return self.replacingOccurrences(of: "{token}", with: token)
+            }
+        }
+        return self
     }
 }
 
