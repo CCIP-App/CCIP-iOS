@@ -36,7 +36,7 @@ struct ScheduleView: View {
                     
                     Form {
                         ForEach(allScheduleData.sessions[selectDayIndex].header, id: \.self) { header in
-                            if let filteredData = allScheduleData.sessions[selectDayIndex].datas[header]?.filter { session in
+                            if let filteredData = allScheduleData.sessions[selectDayIndex].data[header]?.filter { session in
                                 switch filter {
                                     case .liked: return likedSessions.contains(session.id)
                                     case .tag(let tag): return session.tags.contains(tag)
@@ -44,7 +44,7 @@ struct ScheduleView: View {
                                 }
                             }, !filteredData.isEmpty {
                                 Section {
-                                    ForEach(filteredData.sorted(by: { $0.end < $1.end }), id: \.self.id) { sessionDetail in
+                                    ForEach(filteredData.sorted(by: { $0.end < $1.end }), id: \.id) { sessionDetail in
                                         if sessionDetail.type != "Ev" {
                                             NavigationLink(
                                                 destination: ScheduleDetailView(eventAPI: eventAPI,

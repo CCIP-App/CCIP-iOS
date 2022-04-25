@@ -35,7 +35,7 @@ struct SessionModelsTransform: TransformFunction {
             .map { (_, session) in session }
             .map { $0.grouped(by: \.start) }
             .map { sessionsDict in
-                SessionModel(header: Array(sessionsDict.keys.sorted()), datas: sessionsDict)
+                SessionModel(header: Array(sessionsDict.keys.sorted()), data: sessionsDict)
             }
     }
 }
@@ -51,7 +51,7 @@ fileprivate extension Sequence {
 
 struct SessionModel: Hashable, Decodable {
     var header: [DateInRegion] = []
-    var datas: [DateInRegion : [SessionDataModel]] = [:]
+    var data: [DateInRegion : [SessionDataModel]] = [:]
 }
 
 struct SessionDataModel: Hashable, Decodable {
