@@ -9,13 +9,17 @@
 import SwiftUI
 import SwiftDate
 
+enum Filter: Hashable {
+    case all, liked
+    case tag(String)
+}
+
 struct ScheduleView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     @AppStorage var likedSessions: [String]
     @State var selectDayIndex = 0
-    @State var filterIndex = 0
-    @State var filterWithTag: String = ""
+    @State var filter = Filter.all
     
     init(eventAPI: EventAPIViewModel) {
         _eventAPI = ObservedObject(wrappedValue: eventAPI)
@@ -33,10 +37,10 @@ struct ScheduleView: View {
                     Form {
                         ForEach(allScheduleData.sessions[selectDayIndex].header, id: \.self) { header in
                             if let filteredData = allScheduleData.sessions[selectDayIndex].datas[header]?.filter { session in
-                                switch filterIndex {
-                                case 1: return likedSessions.contains(session.id)
-                                case 2: return session.tags.contains(filterWithTag)
-                                default: return true
+                                switch filter {
+                                    case .liked: return likedSessions.contains(session.id)
+                                    case .tag(let tag): return session.tags.contains(tag)
+                                    default: return true
                                 }
                             }, !filteredData.isEmpty {
                                 Section {
@@ -78,46 +82,45 @@ struct ScheduleView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
-                    Picker(selection: $filterIndex, label: EmptyView()) {
+                    Picker(selection: $filter, label: EmptyView()) {
                         HStack {
                             Text("所有議程")
                             Spacer()
                             Image(systemName: "list.bullet")
                         }
-                        .tag(0)
+                        .tag(Filter.all)
                         HStack {
                             Text("喜歡")
                             Spacer()
-                            Image(systemName: "heart\(filterIndex == 1 ? ".fill" : "")")
+                            Image(systemName: "heart\(filter == .liked ? ".fill" : "")")
                         }
-                        .tag(1)
+                        .tag(Filter.liked)
                         if let tags = eventAPI.eventSchedule?.tags {
                             Menu {
-                                Picker(selection: $filterWithTag, label: EmptyView()) {
+                                Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(tags.id, id: \.self) { id in
                                         Text(tags.data[id]?.zh.name ?? id)
-                                        .tag(id)
+                                            .tag(Filter.tag(id))
                                     }
                                 }
                             } label: {
                                 HStack {
                                     Text("標籤")
                                     Spacer()
-                                    Image(systemName: "tag\(filterIndex == 2 ? ".fill" : "")")
+                                    switch filter {
+                                        case .tag(_):
+                                            Image(systemName: "tag.fill")
+                                        default:
+                                            Image(systemName: "tag")
+                                    }
                                 }
                             }
                         }
                     }
                     .labelsHidden()
                     .pickerStyle(.inline)
-                    .onChange(of: filterIndex) { value in
-                        if value != 2 { filterWithTag = "" }
-                    }
-                    .onChange(of: filterWithTag) { value in
-                        if value != "" { filterIndex = 2 }
-                    }
                 } label: {
-                    Image(systemName: "line.3.horizontal.decrease.circle\(filterIndex == 0 ? "" : ".fill")")
+                    Image(systemName: "line.3.horizontal.decrease.circle\(filter == .all ? "" : ".fill")")
                 }
             }
         }
