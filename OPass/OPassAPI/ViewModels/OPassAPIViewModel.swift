@@ -38,7 +38,7 @@ class OPassAPIViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.currentEventAPI = eventModel
             }
-            await eventModel.redeemToken(token: token)
+            _ = await eventModel.redeemToken(token: token)
         } catch APIRepo.LoadError.invalidURL(url: let url) {
             print("\(url.getString()) is invalid")
             print("The eventId is possibly wrong")
