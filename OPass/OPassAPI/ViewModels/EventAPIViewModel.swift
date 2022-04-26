@@ -10,24 +10,19 @@ import Foundation
 import KeychainAccess
 
 //Endpoint hold by each Event Organization or hold by OPass Official but switch by Event Organization.
-class EventAPIViewModel: ObservableObject, Decodable {
-    //Conform to Codable
-    enum CodingKeys: CodingKey {
-        case event_id, display_name, logo_url
-    }
-
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        event_id = try container.decode(String.self, forKey: .event_id)
-        display_name = try container.decode(DisplayTextModel.self, forKey: .display_name)
-        logo_url = try container.decode(String.self, forKey: .logo_url)
+class EventAPIViewModel: ObservableObject {
+    
+    init(eventSettings: SettingsModel) {
+        self.event_id = eventSettings.event_id
+        self.display_name = eventSettings.display_name
+        self.logo_url = eventSettings.logo_url
+        self.eventSettings = eventSettings
     }
     
-    @Published var event_id: String = ""
-    @Published var display_name = DisplayTextModel()
-    @Published var logo_url: String = ""
-    //End of Codable
-    @Published var eventSettings: SettingsModel? = nil
+    @Published var event_id: String
+    @Published var display_name: DisplayTextModel
+    @Published var logo_url: String
+    @Published var eventSettings: SettingsModel
     @Published var eventLogo: Data? = nil
     @Published var eventSchedule: ScheduleModel? = nil
     @Published var eventAnnouncements: [AnnouncementModel] = []
@@ -120,13 +115,13 @@ class EventAPIViewModel: ObservableObject, Decodable {
     
     func initialization() async {
         //Load Event Settings
-        guard let eventSettings = try? await APIRepo.loadSettings(ofEvent: event_id) else {
-            return
-        }
+//        guard let eventSettings = try? await APIRepo.loadSettings(ofEvent: event_id) else {
+//            return
+//        }
         
-        DispatchQueue.main.async {
-            self.eventSettings = eventSettings
-        }
+//        DispatchQueue.main.async {
+//            self.eventSettings = eventSettings
+//        }
         
         //Load Event Logo
         if let logo = try? await APIRepo.loadLogo(from: eventSettings.logo_url) {
@@ -140,7 +135,8 @@ class EventAPIViewModel: ObservableObject, Decodable {
         for index in webViewFeatureIndex {
             if let iconUrl = eventSettings.features[index].icon, let iconData = try? await APIRepo.loadLogo(from: iconUrl) {
                 DispatchQueue.main.async {
-                    self.eventSettings!.features[index].iconData = iconData
+//                    self.eventSettings!.features[index].iconData = iconData
+                    self.eventSettings.features[index].iconData = iconData
                 }
             }
         }

@@ -11,21 +11,22 @@ import Foundation
 //Endpoint hold by OPass Official.
 class OPassAPIViewModel: ObservableObject {
     
-    @Published var eventList = [EventAPIViewModel]()
-    @Published var currentEventAPI: EventAPIViewModel? = nil {
-        willSet {
-            if newValue?.eventSettings == nil {
-                Task {
-                    await newValue?.initialization()
-                }
-            }
-        }
-    }
+    @Published var eventList = [EventTitleModel]()
+    @Published var currentEventID: String? = nil
+    @Published var currentEventAPI: EventAPIViewModel? = nil
     
     func loadEventList() async {
         if let eventList = try? await APIRepo.loadEventList() {
             DispatchQueue.main.async {
                 self.eventList = eventList
+            }
+        }
+    }
+    
+    func loadCurrentEventAPI() async {
+        if let eventId = currentEventID, let event = try? await APIRepo.loadEvent(id: eventId) {
+            DispatchQueue.main.async {
+                self.currentEventAPI = event
             }
         }
     }

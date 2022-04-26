@@ -193,7 +193,7 @@ fileprivate struct DetailOverView: View {
 #if DEBUG
 struct ScheduleView_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleView(eventAPI: OPassAPIViewModel.mock().eventList[5])
+        ScheduleView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
             .environmentObject(OPassAPIViewModel.mock())
     }
 }

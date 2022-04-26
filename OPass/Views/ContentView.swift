@@ -17,9 +17,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if let eventAPI = OPassAPI.currentEventAPI {
-                    MainView(eventAPI: eventAPI)
-                } else {
+                if OPassAPI.currentEventID == nil {
                     SFButton(systemName: "person.crop.rectangle.stack") {
                         isShowingEventList.toggle()
                     }
@@ -29,6 +27,13 @@ struct ContentView: View {
                     
                     Text(LocalizedStringKey("SelectEvent"))
                         .font(.caption2)
+                } else if OPassAPI.currentEventID != OPassAPI.currentEventAPI?.event_id {
+                    ProgressView(LocalizedStringKey("Loading"))
+                        .task {
+                            await OPassAPI.loadCurrentEventAPI()
+                        }
+                } else {
+                    MainView(eventAPI: OPassAPI.currentEventAPI!)
                 }
             }
             .environmentObject(OPassAPI)
@@ -54,7 +59,7 @@ struct ContentView: View {
         }
         .onOpenURL(perform: handleURL)
         .onAppear(perform: {
-            if OPassAPI.currentEventAPI == nil {
+            if OPassAPI.currentEventID == nil {
                 isShowingEventList.toggle()
             }
         })

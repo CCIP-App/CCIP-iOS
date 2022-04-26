@@ -197,7 +197,7 @@ extension UIApplication {
 #if DEBUG
 struct RedeemTokenView_Previews: PreviewProvider {
     static var previews: some View {
-        RedeemTokenView(eventAPI: OPassAPIViewModel.mock().eventList[5])
+        RedeemTokenView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
     }
 }
 #endif

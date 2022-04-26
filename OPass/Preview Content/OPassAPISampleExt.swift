@@ -25,9 +25,9 @@ extension OPassAPIViewModel {
     static func mock() -> OPassAPIViewModel {
         let model = OPassAPIViewModel()
         model.eventList = loadJson(filename: "eventListSample.json")
-        for event in model.eventList {
-            event.eventSettings = SettingsModel.mock()
-        }
+        model.currentEventID = model.eventList[0].event_id
+        let settings = SettingsModel.mock()
+        model.currentEventAPI = EventAPIViewModel(eventSettings: settings)
         return model
     }
 }

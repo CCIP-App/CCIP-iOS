@@ -138,7 +138,7 @@ struct FastpassLogoView: View {
 #if DEBUG
 struct ScenarioView_Previews: PreviewProvider {
     static var previews: some View {
-        ScenarioView(eventAPI: OPassAPIViewModel.mock().eventList[5])
+        ScenarioView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
     }
 }
 #endif

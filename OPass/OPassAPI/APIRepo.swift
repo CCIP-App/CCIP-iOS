@@ -43,7 +43,7 @@ final class APIRepo {
     }
     
     //Opass APIs
-    static func loadEventList() async throws -> [EventAPIViewModel] {
+    static func loadEventList() async throws -> [EventTitleModel] {
         guard let url = URL(.eventList) else {
             print("Invalid EventList URL")
             throw LoadError.invalidURL(url: .eventList)
@@ -58,18 +58,16 @@ final class APIRepo {
     }
     
     static func loadEvent(id: String) async throws -> EventAPIViewModel {
-        //Here we reuse settings loading to obtain an EventAPIViewModel for a specific id.
-        //The reason why it works is that both EventAPIViewModel and SettingsModel have event_id, display_name, logo_url fields.
-        //Therefore, the json from settings url can be converted to EventAPIViewModel safely.
-        
-        //Maybe we should combine loadEvent and loadSettings, since they are identical except return type.
-        //However, the meaning of the function might be confusing if we make these two functions into one.
-        guard let url = URL(.settings(id)) else {
+        guard let settingsUrl = URL(.settings(id)) else {
+            print("Invalid Settings URL")
             throw LoadError.invalidURL(url: .settings(id))
         }
+        
         do {
-            return try await URLSession.shared.jsonData(from: url)
+            let eventSettings: SettingsModel = try await URLSession.shared.jsonData(from: settingsUrl)
+            return EventAPIViewModel(eventSettings: eventSettings)
         } catch {
+            print("Settings Data Error")
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
@@ -109,20 +107,6 @@ final class APIRepo {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
             print("ScenarioStatus Data or AccessToken Error")
-            throw LoadError.dataFetchingFailed(cause: error)
-        }
-    }
-    
-    static func loadSettings(ofEvent eventId: String) async throws -> SettingsModel {
-        guard let SettingsUrl = URL(.settings(eventId)) else {
-            print("Invalid Settings URL")
-            throw LoadError.invalidURL(url: .settings(eventId))
-        }
-        
-        do {
-            return try await URLSession.shared.jsonData(from: SettingsUrl)
-        } catch {
-            print("Settings Data Error")
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }

@@ -17,86 +17,83 @@ struct MainView: View {
     @State private var selectedFeature: FeatureType? = nil
     
     var body: some View {
-        if let eventSettings = eventAPI.eventSettings {
-            VStack {
-                if let eventLogoData = eventAPI.eventLogo, let eventLogoUIImage = UIImage(data: eventLogoData) {
-                    Image(uiImage: eventLogoUIImage)
-                        .renderingMode(.template)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding()
-                        .foregroundColor(Color("LogoColor"))
-                        .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
-                } else {
-                    Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? eventAPI.display_name.zh : eventAPI.display_name.en)
-                        .font(.system(.largeTitle, design: .rounded))
-                        .fontWeight(.medium)
-                        .padding(.vertical)
-                        .foregroundColor(Color("LogoColor"))
-                        .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
-                }
-                
-                ScrollView {
-                    LazyVGrid(columns: gridItemLayout) {
-                        ForEach(eventSettings.features, id: \.self) { feature in
-                            VStack {
-                                GeometryReader { geometry in
-                                    TabButton(feature: feature, selectedFeature: $selectedFeature, eventAPI: eventAPI, width: geometry.size.width)
-                                        .frame(width: geometry.size.width, height: geometry.size.width)
-                                }
-                                .aspectRatio(contentMode: .fill)
-                                .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
-                                
-                                Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ?  feature.display_text.zh : feature.display_text.en)
-                                    .font(.caption2)
-                                    .multilineTextAlignment(.center)
+        let eventSettings = eventAPI.eventSettings
+        VStack {
+            if let eventLogoData = eventAPI.eventLogo, let eventLogoUIImage = UIImage(data: eventLogoData) {
+                Image(uiImage: eventLogoUIImage)
+                    .renderingMode(.template)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding()
+                    .foregroundColor(Color("LogoColor"))
+                    .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
+            } else {
+                Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? eventAPI.display_name.zh : eventAPI.display_name.en)
+                    .font(.system(.largeTitle, design: .rounded))
+                    .fontWeight(.medium)
+                    .padding(.vertical)
+                    .foregroundColor(Color("LogoColor"))
+                    .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
+            }
+            
+            ScrollView {
+                LazyVGrid(columns: gridItemLayout) {
+                    ForEach(eventSettings.features, id: \.self) { feature in
+                        VStack {
+                            GeometryReader { geometry in
+                                TabButton(feature: feature, selectedFeature: $selectedFeature, eventAPI: eventAPI, width: geometry.size.width)
+                                    .frame(width: geometry.size.width, height: geometry.size.width)
                             }
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
+                            
+                            Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ?  feature.display_text.zh : feature.display_text.en)
+                                .font(.caption2)
+                                .multilineTextAlignment(.center)
                         }
                     }
                 }
-                .padding(.horizontal)
             }
-            .background {
-                //put invisible NavigationLink in background
-                NavigationLink(
-                    tag: FeatureType.fastpass,
-                    selection: $selectedFeature,
-                    destination: { FastpassView(eventAPI: eventAPI) }) {
-                    EmptyView()
-                }
-                .frame(width: 0, height: 0)
-                .opacity(0)
-                NavigationLink(
-                    tag: FeatureType.ticket,
-                    selection: $selectedFeature,
-                    destination: { TicketView(eventAPI: eventAPI) }) {
-                    EmptyView()
-                }
-                .frame(width: 0, height: 0)
-                .opacity(0)
-                NavigationLink(
-                    tag: FeatureType.schedule,
-                    selection: $selectedFeature,
-                    destination: { ScheduleView(eventAPI: eventAPI) }) {
-                    EmptyView()
-                }
-                .frame(width: 0, height: 0)
-                .opacity(0)
-                NavigationLink(
-                    tag: FeatureType.announcement,
-                    selection: $selectedFeature,
-                    destination: {
-                        AnnounceView(announcements: eventAPI.eventAnnouncements, refresh: {
-                            await eventAPI.loadAnnouncements()
-                        })
-                    }) {
-                    EmptyView()
-                }
-                .frame(width: 0, height: 0)
-                .opacity(0)
+            .padding(.horizontal)
+        }
+        .background {
+            //put invisible NavigationLink in background
+            NavigationLink(
+                tag: FeatureType.fastpass,
+                selection: $selectedFeature,
+                destination: { FastpassView(eventAPI: eventAPI) }) {
+                EmptyView()
             }
-        } else {
-            ProgressView(LocalizedStringKey("Loading"))
+            .frame(width: 0, height: 0)
+            .opacity(0)
+            NavigationLink(
+                tag: FeatureType.ticket,
+                selection: $selectedFeature,
+                destination: { TicketView(eventAPI: eventAPI) }) {
+                EmptyView()
+            }
+            .frame(width: 0, height: 0)
+            .opacity(0)
+            NavigationLink(
+                tag: FeatureType.schedule,
+                selection: $selectedFeature,
+                destination: { ScheduleView(eventAPI: eventAPI) }) {
+                EmptyView()
+            }
+            .frame(width: 0, height: 0)
+            .opacity(0)
+            NavigationLink(
+                tag: FeatureType.announcement,
+                selection: $selectedFeature,
+                destination: {
+                    AnnounceView(announcements: eventAPI.eventAnnouncements, refresh: {
+                        await eventAPI.loadAnnouncements()
+                    })
+                }) {
+                EmptyView()
+            }
+            .frame(width: 0, height: 0)
+            .opacity(0)
         }
     }
 }
@@ -257,7 +254,7 @@ fileprivate extension FeatureModel {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            MainView(eventAPI: OPassAPIViewModel.mock().eventList[5])
+            MainView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
         }
     }
 }

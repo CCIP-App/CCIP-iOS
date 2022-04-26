@@ -19,7 +19,7 @@ struct EventListView: View {
             Form {
                 ForEach(OPassAPI.eventList, id: \.event_id) { list in
                     Button(action: {
-                        OPassAPI.currentEventAPI = list
+                        OPassAPI.currentEventID = list.event_id
                         currentEvent = list.event_id
                         dismiss()
                     }) {
