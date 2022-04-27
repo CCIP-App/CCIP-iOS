@@ -11,7 +11,7 @@ import Foundation
 @propertyWrapper
 struct Feature {
     let wrappedValue: FeatureModel
-    init(_ type: FeatureType, in settings: SettingsModel?) {
+    init(_ type: FeatureType, in settings: SettingsModel) {
         wrappedValue = settings.feature(ofType: type)
     }
     init(wrappedValue: FeatureModel, _ type: FeatureType) {

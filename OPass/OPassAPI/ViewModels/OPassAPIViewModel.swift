@@ -25,6 +25,7 @@ class OPassAPIViewModel: ObservableObject {
     
     func loadCurrentEventAPI() async {
         if let eventId = currentEventID, let event = try? await APIRepo.loadEvent(id: eventId) {
+            await event.loadLogos()
             DispatchQueue.main.async {
                 self.currentEventAPI = event
             }
@@ -34,8 +35,6 @@ class OPassAPIViewModel: ObservableObject {
     func loginEvent(_ eventId: String, withToken token: String) async {
         do {
             let eventModel = try await APIRepo.loadEvent(id: eventId)
-            //Awe call and await loadSettings_Logo manually to make sure that redeemToken can have valid eventSettings
-            await eventModel.initialization()
             DispatchQueue.main.async {
                 self.currentEventAPI = eventModel
             }

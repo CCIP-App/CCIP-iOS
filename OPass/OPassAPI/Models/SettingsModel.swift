@@ -42,19 +42,9 @@ enum FeatureType: String, Hashable, Codable {
 }
 
 
-extension Optional where Wrapped == SettingsModel {
+extension SettingsModel {
     func feature(ofType type: FeatureType) -> FeatureModel {
-        switch self {
-            case .none:
-                return FeatureModel(feature: .nullFeature)
-            case .some(let model):
-                return model.features[ofType: type] ?? FeatureModel(feature: .nullFeature)
-        }
-    }
-}
-
-extension Array where Element == FeatureModel {
-    fileprivate subscript(ofType type: FeatureType) -> Element? {
-        return self.first { $0.feature == type }
+        return features.first { $0.feature == type } ??
+                    FeatureModel(feature: .nullFeature)
     }
 }

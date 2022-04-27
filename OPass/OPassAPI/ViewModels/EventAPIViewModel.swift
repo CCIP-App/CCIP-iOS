@@ -113,30 +113,34 @@ class EventAPIViewModel: ObservableObject {
         }
     }
     
-    func initialization() async {
-        //Load Event Settings
-//        guard let eventSettings = try? await APIRepo.loadSettings(ofEvent: event_id) else {
-//            return
-//        }
-        
-//        DispatchQueue.main.async {
-//            self.eventSettings = eventSettings
-//        }
-        
+    func loadLogos() async {
         //Load Event Logo
-        if let logo = try? await APIRepo.loadLogo(from: eventSettings.logo_url) {
-            DispatchQueue.main.async {
-                self.eventLogo = logo
+        let icons: [Int: Data] = await withTaskGroup(of: (Int, Data?).self) { group in
+            let logo_url = eventSettings.logo_url
+            let webViewFeatureIndex = eventSettings.features.enumerated().filter({ $0.element.feature == .webview }).map { $0.offset }
+            
+            group.addTask { (-1, try? await APIRepo.loadLogo(from: logo_url)) }
+            for index in webViewFeatureIndex {
+                if let iconUrl = eventSettings.features[index].icon{
+                    group.addTask { (index, try? await APIRepo.loadLogo(from: iconUrl)) }
+                }
             }
+            
+            var indexToIcon: [Int: Data] = [:]
+            for await (index, data) in group {
+                if data != nil {
+                    indexToIcon[index] = data
+                }
+            }
+            return indexToIcon
         }
-        //Load WebView Icon
-        let webViewFeatureIndex = eventSettings.features.enumerated().filter({ $0.element.feature == .webview }).map { $0.offset }
         
-        for index in webViewFeatureIndex {
-            if let iconUrl = eventSettings.features[index].icon, let iconData = try? await APIRepo.loadLogo(from: iconUrl) {
-                DispatchQueue.main.async {
-//                    self.eventSettings!.features[index].iconData = iconData
-                    self.eventSettings.features[index].iconData = iconData
+        for (index, data) in icons {
+            DispatchQueue.main.async {
+                if index == -1 {
+                    self.eventLogo = data
+                } else {
+                    self.eventSettings.features[index].iconData = data
                 }
             }
         }
