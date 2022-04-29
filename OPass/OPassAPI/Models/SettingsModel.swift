@@ -9,7 +9,7 @@
 import Foundation
 import SwiftDate
 
-struct SettingsModel: Hashable, Decodable {
+struct SettingsModel: Hashable, Codable {
     var event_id: String = ""
     var display_name = DisplayTextModel()
     var logo_url: String = ""
@@ -23,7 +23,7 @@ struct WiFiModel: Hashable, Codable {
     var password: String = ""
 }
 
-struct Start_EndModel: Hashable, Decodable {
+struct Start_EndModel: Hashable, Codable {
     @TransformedFrom<String> var start = DateInRegion()
     @TransformedFrom<String> var end = DateInRegion()
 }

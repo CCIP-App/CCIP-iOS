@@ -105,7 +105,7 @@ struct ScenarioDataModel: Hashable, Codable, Identifiable {
     var id: String = ""
 }
 
-struct RawScenarioDataModel: Hashable, Decodable {
+struct RawScenarioDataModel: Hashable, Codable {
     var order: Int = 0
     var display_text = DisplayTextModel_CountryCode()
     @TransformWith<IntergerToDateTransform> var available_time: DateInRegion

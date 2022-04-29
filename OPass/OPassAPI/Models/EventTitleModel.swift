@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EventTitleModel: Decodable {
+struct EventTitleModel: Codable {
     let event_id: String
     let display_name: DisplayTextModel
     let logo_url: String

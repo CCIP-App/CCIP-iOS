@@ -12,13 +12,27 @@ import KeychainAccess
 //Endpoint hold by each Event Organization or hold by OPass Official but switch by Event Organization.
 class EventAPIViewModel: ObservableObject {
     
-    init(eventSettings: SettingsModel) {
+    init(eventSettings: SettingsModel,
+         eventLogo: Data? = nil,
+         eventSchedule: ScheduleModel? = nil,
+         eventAnnouncements: [AnnouncementModel] = [],
+         eventScenarioStatus: ScenarioStatusModel? = nil,
+         isLogin: Bool = false,
+         saveData: @escaping () async -> Void = {}
+    ) {
         self.event_id = eventSettings.event_id
         self.display_name = eventSettings.display_name
         self.logo_url = eventSettings.logo_url
         self.eventSettings = eventSettings
+        self.eventLogo = eventLogo
+        self.eventSchedule = eventSchedule
+        self.eventAnnouncements = eventAnnouncements
+        self.eventScenarioStatus = eventScenarioStatus
+        self.isLogin = isLogin
+        self.saveData = saveData
     }
     
+    var saveData: () async -> Void
     @Published var event_id: String
     @Published var display_name: DisplayTextModel
     @Published var logo_url: String
@@ -65,6 +79,7 @@ class EventAPIViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.eventScenarioStatus = eventScenarioUseStatus
             }
+            await saveData()
             return true
         }
         return false
@@ -91,6 +106,7 @@ class EventAPIViewModel: ObservableObject {
                 self.accessToken = token
                 self.isLogin = true
             }
+            Task{ await saveData() }
             return true
         } else  {
             return false
@@ -110,6 +126,7 @@ class EventAPIViewModel: ObservableObject {
                 self.eventScenarioStatus = eventScenarioStatus
                 self.isLogin = true
             }
+            Task{ await saveData() }
         }
     }
     
@@ -144,6 +161,7 @@ class EventAPIViewModel: ObservableObject {
                 }
             }
         }
+        Task{ await saveData() }
     }
     
     func loadSchedule() async {
@@ -153,6 +171,7 @@ class EventAPIViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.eventSchedule = schedule
             }
+            await saveData()
         }
     }
     
@@ -168,10 +187,7 @@ class EventAPIViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.eventAnnouncements = announcements
             }
-        } else {
-            DispatchQueue.main.async {
-                self.eventAnnouncements = []
-            }
+            Task{ await saveData() }
         }
     }
 }
@@ -184,4 +200,37 @@ extension String {
     func containsAny(_ characterSet: CharacterSet) -> Bool {
         return rangeOfCharacter(from: characterSet) != nil
     }
+}
+
+class CodableEventAPIVM: Codable {
+    
+    init(event_id: String,
+         display_name: DisplayTextModel,
+         logo_url: String,
+         eventSettings: SettingsModel,
+         eventLogo: Data?,
+         eventSchedule: ScheduleModel?,
+         eventAnnouncements: [AnnouncementModel],
+         eventScenarioStatus: ScenarioStatusModel?,
+         isLogin: Bool) {
+        self.event_id = event_id
+        self.display_name = display_name
+        self.logo_url = logo_url
+        self.eventSettings = eventSettings
+        self.eventLogo = eventLogo
+        self.eventSchedule = eventSchedule
+        self.eventAnnouncements = eventAnnouncements
+        self.eventScenarioStatus = eventScenarioStatus
+        self.isLogin = isLogin
+    }
+    
+    var event_id: String
+    var display_name: DisplayTextModel
+    var logo_url: String
+    var eventSettings: SettingsModel
+    var eventLogo: Data?
+    var eventSchedule: ScheduleModel?
+    var eventAnnouncements: [AnnouncementModel]
+    var eventScenarioStatus: ScenarioStatusModel?
+    var isLogin: Bool
 }

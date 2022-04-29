@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AnnouncementModel: Decodable {
+struct AnnouncementModel: Codable {
     var datetime: Date
     var msg_en: String
     var msg_zh: String

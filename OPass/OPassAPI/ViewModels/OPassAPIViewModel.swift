@@ -15,6 +15,50 @@ class OPassAPIViewModel: ObservableObject {
     @Published var currentEventID: String? = nil
     @Published var currentEventAPI: EventAPIViewModel? = nil
     
+    init() {
+        if let data = UserDefaults.standard.data(forKey: "EventAPI") {
+            do {
+                let eventAPIData = try JSONDecoder().decode(CodableEventAPIVM.self, from: data)
+                self.currentEventAPI = EventAPIViewModel(
+                    eventSettings: eventAPIData.eventSettings,
+                    eventLogo: eventAPIData.eventLogo,
+                    eventSchedule: eventAPIData.eventSchedule,
+                    eventAnnouncements: eventAPIData.eventAnnouncements,
+                    eventScenarioStatus: eventAPIData.eventScenarioStatus,
+                    isLogin: eventAPIData.isLogin,
+                    saveData: {  })
+            } catch {
+                print("Unable to decode EventAPI \(error)")
+            }
+        } else {
+            print("No EventAPI data found")
+        }
+    }
+    
+    func saveEventAPIData() async {
+        print("123")
+        if let eventAPI = self.currentEventAPI {
+            do {
+                let data = try JSONEncoder().encode(CodableEventAPIVM(
+                    event_id: eventAPI.event_id,
+                    display_name: eventAPI.display_name,
+                    logo_url: eventAPI.logo_url,
+                    eventSettings: eventAPI.eventSettings,
+                    eventLogo: eventAPI.eventLogo,
+                    eventSchedule: eventAPI.eventSchedule,
+                    eventAnnouncements: eventAPI.eventAnnouncements,
+                    eventScenarioStatus: eventAPI.eventScenarioStatus,
+                    isLogin: eventAPI.isLogin))
+                UserDefaults.standard.set(data, forKey: "EventAPI")
+                print("Save scuess")
+            } catch {
+                print("Save eventAPI data \(error)")
+            }
+        } else {
+            print("Because this is not taking object")
+        }
+    }
+    
     func loadEventList() async {
         if let eventList = try? await APIRepo.loadEventList() {
             DispatchQueue.main.async {
@@ -25,10 +69,23 @@ class OPassAPIViewModel: ObservableObject {
     
     func loadCurrentEventAPI() async {
         if let eventId = currentEventID, let event = try? await APIRepo.loadEvent(id: eventId) {
+            //let group = DispatchGroup()
+            //group.enter()
             await event.loadLogos()
             DispatchQueue.main.async {
                 self.currentEventAPI = event
+                Task {
+                    await self.saveEventAPIData()
+                }
+                //group.leave()
             }
+            //group.notify(queue: .main) {
+            //    Task {
+            //        await saveEventAPIData()
+            //    }
+            //}
+            print("Why this is not working")
+            
         }
     }
     

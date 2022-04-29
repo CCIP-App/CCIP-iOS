@@ -49,6 +49,7 @@
 		D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788A27CE542100021FC4 /* MoreModels.swift */; };
 		D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789027CE62EB00021FC4 /* EventListView.swift */; };
 		D3D3789327CE70EE00021FC4 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789227CE70EE00021FC4 /* SettingsModel.swift */; };
+		D3D664DF281BAD4D00657867 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D664DE281BAD4D00657867 /* LandingView.swift */; };
 		D3E0123127D35D970040621F /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = D3E0123027D35D970040621F /* KeychainAccess */; };
 		D3E0123327D3667C0040621F /* ScenarioStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123227D3667C0040621F /* ScenarioStatusModel.swift */; };
 		D3E0123527D38B840040621F /* ScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123427D38B840040621F /* ScenarioView.swift */; };
@@ -126,6 +127,7 @@
 		D3D3788A27CE542100021FC4 /* MoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreModels.swift; sourceTree = "<group>"; };
 		D3D3789027CE62EB00021FC4 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		D3D3789227CE70EE00021FC4 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		D3D664DE281BAD4D00657867 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		D3E0123227D3667C0040621F /* ScenarioStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioStatusModel.swift; sourceTree = "<group>"; };
 		D3E0123427D38B840040621F /* ScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioView.swift; sourceTree = "<group>"; };
 		D3E0123727D38D3D0040621F /* RedeemTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemTokenView.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			children = (
 				D3E4E6C027CD158400FFACEB /* ContentView.swift */,
 				D366D8EF27ED50CB00AA4267 /* MainView.swift */,
+				D3D664DE281BAD4D00657867 /* LandingView.swift */,
 				D3D3789027CE62EB00021FC4 /* EventListView.swift */,
 				D3C6194C27CF9A7400643D97 /* SettingView.swift */,
 				D3C6195227CFC10400643D97 /* Tabs */,
@@ -516,6 +519,7 @@
 				4F6968A827EF863A009073E4 /* TabButtonStyle.swift in Sources */,
 				D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */,
 				4F8522E12817D4C00015BB13 /* EventTitleModel.swift in Sources */,
+				D3D664DF281BAD4D00657867 /* LandingView.swift in Sources */,
 				4F5EB73527D3346D00235396 /* JsonDecodeHelper.swift in Sources */,
 				D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */,
 				D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */,
