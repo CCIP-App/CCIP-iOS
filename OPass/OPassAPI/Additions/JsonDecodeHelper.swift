@@ -24,8 +24,13 @@ struct Transform<Func: TransformFunction>: Codable, Hashable {
             let decoded = try container.decode(Func.FromType.self)
             self.wrappedValue = Func.transform(decoded)
         } else {
-            self = try container.decode(Transform.self)
+            self.wrappedValue = try container.decode(Func.ToType.self)
         }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(self.wrappedValue)
     }
 }
 //Recommand use TransformedFrom when the type implement TransformSelf and use TransformWith when the type implement TransformFunction
