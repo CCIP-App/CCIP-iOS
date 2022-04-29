@@ -57,15 +57,14 @@ final class APIRepo {
         }
     }
     
-    static func loadEvent(id: String) async throws -> EventAPIViewModel {
+    static func loadEventSettings(id: String) async throws -> SettingsModel {
         guard let settingsUrl = URL(.settings(id)) else {
             print("Invalid Settings URL")
             throw LoadError.invalidURL(url: .settings(id))
         }
         
         do {
-            let eventSettings: SettingsModel = try await URLSession.shared.jsonData(from: settingsUrl)
-            return EventAPIViewModel(eventSettings: eventSettings)
+            return try await URLSession.shared.jsonData(from: settingsUrl)
         } catch {
             print("Settings Data Error")
             throw LoadError.dataFetchingFailed(cause: error)

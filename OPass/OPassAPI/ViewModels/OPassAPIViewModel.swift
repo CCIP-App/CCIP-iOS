@@ -26,7 +26,7 @@ class OPassAPIViewModel: ObservableObject {
                     eventAnnouncements: eventAPIData.eventAnnouncements,
                     eventScenarioStatus: eventAPIData.eventScenarioStatus,
                     isLogin: eventAPIData.isLogin,
-                    saveData: {  })
+                    saveData: saveEventAPIData)
             } catch {
                 print("Unable to decode EventAPI \(error)")
             }
@@ -68,9 +68,10 @@ class OPassAPIViewModel: ObservableObject {
     }
     
     func loadCurrentEventAPI() async {
-        if let eventId = currentEventID, let event = try? await APIRepo.loadEvent(id: eventId) {
+        if let eventId = currentEventID, let eventSettings = try? await APIRepo.loadEventSettings(id: eventId) {
             //let group = DispatchGroup()
             //group.enter()
+            let event = EventAPIViewModel(eventSettings: eventSettings, saveData: saveEventAPIData)
             await event.loadLogos()
             DispatchQueue.main.async {
                 self.currentEventAPI = event
@@ -91,7 +92,8 @@ class OPassAPIViewModel: ObservableObject {
     
     func loginEvent(_ eventId: String, withToken token: String) async {
         do {
-            let eventModel = try await APIRepo.loadEvent(id: eventId)
+            let eventSettings = try await APIRepo.loadEventSettings(id: eventId)
+            let eventModel = EventAPIViewModel(eventSettings: eventSettings, saveData: saveEventAPIData)
             DispatchQueue.main.async {
                 self.currentEventAPI = eventModel
             }
