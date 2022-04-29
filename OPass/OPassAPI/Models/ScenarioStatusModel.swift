@@ -9,7 +9,7 @@
 import Foundation
 import SwiftDate
 
-struct ScenarioStatusModel: Hashable, Decodable {
+struct ScenarioStatusModel: Hashable, Codable {
     @TransformWith<OidTransform> var _id = ""
     var event_id: String = ""
     var token: String = ""
@@ -87,12 +87,12 @@ struct AttrModel: Hashable, Codable {
     var diet: String? = nil
 }
 
-struct ScenarioModel: Hashable, Decodable {
+struct ScenarioModel: Hashable, Codable {
     var sectionID: [String] = []
     var sectionData: [String : [ScenarioDataModel]] = [:]
 }
 
-struct ScenarioDataModel: Hashable, Decodable, Identifiable {
+struct ScenarioDataModel: Hashable, Codable, Identifiable {
     var order: Int = 0
     var display_text = DisplayTextModel_CountryCode()
     var available_time: DateInRegion

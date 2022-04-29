@@ -11,7 +11,7 @@ import Foundation
 //When decoding json, this wrapper will perform a transform, which is written by user, on the applied property/field.
 //You may find the usage in EventSessionModel
 @propertyWrapper
-struct Transform<Func: TransformFunction>: Decodable, Hashable {
+struct Transform<Func: TransformFunction>: Codable, Hashable {
     var wrappedValue: Func.ToType
     
     init(wrappedValue: Func.ToType) {
@@ -20,8 +20,12 @@ struct Transform<Func: TransformFunction>: Decodable, Hashable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        let decoded = try container.decode(Func.FromType.self)
-        self.wrappedValue = Func.transform(decoded)
+        if (decoder.userInfo[.needTransform] as? Bool) ?? false {
+            let decoded = try container.decode(Func.FromType.self)
+            self.wrappedValue = Func.transform(decoded)
+        } else {
+            self = try container.decode(Transform.self)
+        }
     }
 }
 //Recommand use TransformedFrom when the type implement TransformSelf and use TransformWith when the type implement TransformFunction
@@ -32,7 +36,7 @@ typealias TransformWith = Transform
 protocol TransformSelf: TransformFunction {}
 protocol TransformFunction {
     associatedtype FromType: Decodable
-    associatedtype ToType: Hashable
+    associatedtype ToType: Codable, Hashable
     
     static func transform(_: FromType) -> ToType
 }

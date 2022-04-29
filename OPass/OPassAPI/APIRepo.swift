@@ -175,6 +175,11 @@ extension URLSession {
     func jsonData<T: Decodable>(from url: URL) async throws -> T {
         let (data, _) = try await self.data(from: url)
         let decoder = JSONDecoder()
+        decoder.userInfo[.needTransform] = true
         return try decoder.decode(T.self, from: data)
     }
+}
+
+extension CodingUserInfoKey {
+    static let needTransform = CodingUserInfoKey(rawValue: "needTransform")!
 }

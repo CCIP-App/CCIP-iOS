@@ -9,7 +9,7 @@
 import Foundation
 import SwiftDate
 
-struct ScheduleModel: Hashable, Decodable {
+struct ScheduleModel: Hashable, Codable {
     @TransformWith<SessionModelsTransform> var sessions = []
     @TransformWith<SpeakerTransform> var speakers = [:]
     @TransformWith<Id_Name_DescriptionTransform> var session_types = [:]
@@ -49,12 +49,12 @@ fileprivate extension Sequence {
     }
 }
 
-struct SessionModel: Hashable, Decodable {
+struct SessionModel: Hashable, Codable {
     var header: [DateInRegion] = []
     var data: [DateInRegion : [SessionDataModel]] = [:]
 }
 
-struct SessionDataModel: Hashable, Decodable {
+struct SessionDataModel: Hashable, Codable {
     var id: String = ""
     var type: String? = nil
     var room: String = ""
@@ -91,7 +91,7 @@ struct TagsTransform: TransformFunction {
     }
 }
 
-struct TagsModel: Hashable, Decodable {
+struct TagsModel: Hashable, Codable {
     var id: [String] = []
     var data: [String: Name_DescriptionPair] = [:]
 }
@@ -117,7 +117,7 @@ struct Id_SpeakerModel: Hashable, Codable {
     var en = Name_BioModel()
 }
 
-struct SpeakerModel: Hashable {
+struct SpeakerModel: Hashable, Codable {
     var avatar: String = ""
     var avatarData: Data?
     var zh = Name_BioModel()
@@ -140,7 +140,7 @@ struct Name_BioModel: Hashable, Codable {
     var bio: String = ""
 }
 
-struct Name_DescriptionPair: Hashable, Decodable {
+struct Name_DescriptionPair: Hashable, Codable {
     var zh: Name_DescriptionModel
     var en: Name_DescriptionModel
 }
