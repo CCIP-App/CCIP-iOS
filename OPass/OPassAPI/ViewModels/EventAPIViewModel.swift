@@ -79,7 +79,7 @@ class EventAPIViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.eventScenarioStatus = eventScenarioUseStatus
             }
-            await saveData()
+            Task { await saveData() }
             return true
         }
         return false
@@ -171,7 +171,7 @@ class EventAPIViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.eventSchedule = schedule
             }
-            await saveData()
+            Task { await saveData() }
         }
     }
     

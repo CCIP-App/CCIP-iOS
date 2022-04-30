@@ -31,6 +31,10 @@
 		D3095F1827D78EE600225C7D /* NotificationFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3095F1727D78EE600225C7D /* NotificationFunc.swift */; };
 		D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314B66E27D1089200481D5E /* EventAPIViewModel.swift */; };
 		D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D318CE43280918C400CEA1AA /* TruncableText.swift */; };
+		D31900D8281CF07E00864982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D31900D7281CF07E00864982 /* LaunchScreen.storyboard */; };
+		D31900DC281CF17600864982 /* LaunchScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D31900D9281CF17500864982 /* LaunchScreen@2x.png */; };
+		D31900DD281CF17600864982 /* LaunchScreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D31900DA281CF17600864982 /* LaunchScreen@3x.png */; };
+		D31900DE281CF17600864982 /* LaunchScreen@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = D31900DB281CF17600864982 /* LaunchScreen@1x.png */; };
 		D322F60C27EF3B09007EED5D /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60B27EF3B09007EED5D /* SlideOverCard */; };
 		D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60E27EF4698007EED5D /* CodeScanner */; };
 		D358E55827EDEDB2000A6554 /* FastpassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D358E55727EDEDB2000A6554 /* FastpassView.swift */; };
@@ -49,7 +53,6 @@
 		D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788A27CE542100021FC4 /* MoreModels.swift */; };
 		D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789027CE62EB00021FC4 /* EventListView.swift */; };
 		D3D3789327CE70EE00021FC4 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789227CE70EE00021FC4 /* SettingsModel.swift */; };
-		D3D664DF281BAD4D00657867 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D664DE281BAD4D00657867 /* LandingView.swift */; };
 		D3E0123127D35D970040621F /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = D3E0123027D35D970040621F /* KeychainAccess */; };
 		D3E0123327D3667C0040621F /* ScenarioStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123227D3667C0040621F /* ScenarioStatusModel.swift */; };
 		D3E0123527D38B840040621F /* ScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123427D38B840040621F /* ScenarioView.swift */; };
@@ -108,6 +111,10 @@
 		D3095F1727D78EE600225C7D /* NotificationFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFunc.swift; sourceTree = "<group>"; };
 		D314B66E27D1089200481D5E /* EventAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPIViewModel.swift; sourceTree = "<group>"; };
 		D318CE43280918C400CEA1AA /* TruncableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncableText.swift; sourceTree = "<group>"; };
+		D31900D7281CF07E00864982 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D31900D9281CF17500864982 /* LaunchScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@2x.png"; sourceTree = "<group>"; };
+		D31900DA281CF17600864982 /* LaunchScreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@3x.png"; sourceTree = "<group>"; };
+		D31900DB281CF17600864982 /* LaunchScreen@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@1x.png"; sourceTree = "<group>"; };
 		D358E55727EDEDB2000A6554 /* FastpassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastpassView.swift; sourceTree = "<group>"; };
 		D3602CAB280400D8001D9C15 /* UseScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseScenarioView.swift; sourceTree = "<group>"; };
 		D366D8EF27ED50CB00AA4267 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -127,7 +134,6 @@
 		D3D3788A27CE542100021FC4 /* MoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreModels.swift; sourceTree = "<group>"; };
 		D3D3789027CE62EB00021FC4 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		D3D3789227CE70EE00021FC4 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
-		D3D664DE281BAD4D00657867 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		D3E0123227D3667C0040621F /* ScenarioStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioStatusModel.swift; sourceTree = "<group>"; };
 		D3E0123427D38B840040621F /* ScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioView.swift; sourceTree = "<group>"; };
 		D3E0123727D38D3D0040621F /* RedeemTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemTokenView.swift; sourceTree = "<group>"; };
@@ -262,7 +268,6 @@
 			children = (
 				D3E4E6C027CD158400FFACEB /* ContentView.swift */,
 				D366D8EF27ED50CB00AA4267 /* MainView.swift */,
-				D3D664DE281BAD4D00657867 /* LandingView.swift */,
 				D3D3789027CE62EB00021FC4 /* EventListView.swift */,
 				D3C6194C27CF9A7400643D97 /* SettingView.swift */,
 				D3C6195227CFC10400643D97 /* Tabs */,
@@ -329,13 +334,13 @@
 		D3E4E6BD27CD158400FFACEB /* OPass */ = {
 			isa = PBXGroup;
 			children = (
+				D31900D7281CF07E00864982 /* LaunchScreen.storyboard */,
 				D3A00F2B27D839B10097A6AB /* Info.plist */,
 				D3C0E21727D51B460095169F /* OPass.entitlements */,
 				4F29D9C627D4E6DA00292CC4 /* GoogleService-Info.plist */,
 				D3E4E6BE27CD158400FFACEB /* OPassApp.swift */,
 				D3D3787F27CE42A200021FC4 /* Views */,
 				D3D3788027CE43D700021FC4 /* OPassAPI */,
-				D3E4E6C227CD158700FFACEB /* Assets.xcassets */,
 				D3E4E6C427CD158700FFACEB /* Preview Content */,
 			);
 			path = OPass;
@@ -356,6 +361,7 @@
 		D3F23B4B28166CE200A0FB35 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D3E4E6C227CD158700FFACEB /* Assets.xcassets */,
 				D3F23B4C28166D2F00A0FB35 /* OPass */,
 			);
 			path = "Supporting Files";
@@ -364,6 +370,9 @@
 		D3F23B4C28166D2F00A0FB35 /* OPass */ = {
 			isa = PBXGroup;
 			children = (
+				D31900DB281CF17600864982 /* LaunchScreen@1x.png */,
+				D31900D9281CF17500864982 /* LaunchScreen@2x.png */,
+				D31900DA281CF17600864982 /* LaunchScreen@3x.png */,
 				D3F23B5128166DEF00A0FB35 /* Localizable.strings */,
 			);
 			path = OPass;
@@ -478,10 +487,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D31900DE281CF17600864982 /* LaunchScreen@1x.png in Resources */,
+				D31900DD281CF17600864982 /* LaunchScreen@3x.png in Resources */,
 				4F5EB73A27D37D4A00235396 /* announcementSample.json in Resources */,
+				D31900D8281CF07E00864982 /* LaunchScreen.storyboard in Resources */,
 				D3E4E6C627CD158700FFACEB /* Preview Assets.xcassets in Resources */,
 				4F29D9C727D4E6DA00292CC4 /* GoogleService-Info.plist in Resources */,
 				D3F23B4F28166DEF00A0FB35 /* Localizable.strings in Resources */,
+				D31900DC281CF17600864982 /* LaunchScreen@2x.png in Resources */,
 				4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */,
 				D3E4E6C327CD158700FFACEB /* Assets.xcassets in Resources */,
 				4F48B5D427CF07910010FC2C /* eventListSample.json in Resources */,
@@ -519,7 +532,6 @@
 				4F6968A827EF863A009073E4 /* TabButtonStyle.swift in Sources */,
 				D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */,
 				4F8522E12817D4C00015BB13 /* EventTitleModel.swift in Sources */,
-				D3D664DF281BAD4D00657867 /* LandingView.swift in Sources */,
 				4F5EB73527D3346D00235396 /* JsonDecodeHelper.swift in Sources */,
 				D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */,
 				D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */,

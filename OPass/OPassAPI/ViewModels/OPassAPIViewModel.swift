@@ -14,19 +14,14 @@ class OPassAPIViewModel: ObservableObject {
     @Published var eventList = [EventTitleModel]()
     @Published var currentEventID: String? = nil
     @Published var currentEventAPI: EventAPIViewModel? = nil
+    private var eventAPITemporaryData: CodableEventAPIVM? = nil
     
     init() {
         if let data = UserDefaults.standard.data(forKey: "EventAPI") {
             do {
                 let eventAPIData = try JSONDecoder().decode(CodableEventAPIVM.self, from: data)
-                self.currentEventAPI = EventAPIViewModel(
-                    eventSettings: eventAPIData.eventSettings,
-                    eventLogo: eventAPIData.eventLogo,
-                    eventSchedule: eventAPIData.eventSchedule,
-                    eventAnnouncements: eventAPIData.eventAnnouncements,
-                    eventScenarioStatus: eventAPIData.eventScenarioStatus,
-                    isLogin: eventAPIData.isLogin,
-                    saveData: saveEventAPIData)
+                self.eventAPITemporaryData = eventAPIData
+                self.currentEventID = eventAPIData.event_id
             } catch {
                 print("Unable to decode EventAPI \(error)")
             }
@@ -36,7 +31,7 @@ class OPassAPIViewModel: ObservableObject {
     }
     
     func saveEventAPIData() async {
-        print("123")
+        print("Saving data")
         if let eventAPI = self.currentEventAPI {
             do {
                 let data = try JSONEncoder().encode(CodableEventAPIVM(
@@ -50,12 +45,12 @@ class OPassAPIViewModel: ObservableObject {
                     eventScenarioStatus: eventAPI.eventScenarioStatus,
                     isLogin: eventAPI.isLogin))
                 UserDefaults.standard.set(data, forKey: "EventAPI")
-                print("Save scuess")
+                print("Save scuess of id: \(eventAPI.event_id)")
             } catch {
                 print("Save eventAPI data \(error)")
             }
         } else {
-            print("Because this is not taking object")
+            print("Save data error")
         }
     }
     
@@ -67,26 +62,67 @@ class OPassAPIViewModel: ObservableObject {
         }
     }
     
-    func loadCurrentEventAPI() async {
-        if let eventId = currentEventID, let eventSettings = try? await APIRepo.loadEventSettings(id: eventId) {
-            //let group = DispatchGroup()
-            //group.enter()
-            let event = EventAPIViewModel(eventSettings: eventSettings, saveData: saveEventAPIData)
-            await event.loadLogos()
-            DispatchQueue.main.async {
-                self.currentEventAPI = event
-                Task {
-                    await self.saveEventAPIData()
+    func loadCurrentEventAPI() async { //TODO: Very very ugly code.
+        if let eventID = currentEventID {
+            if let eventId = currentEventID, let eventSettings = try? await APIRepo.loadEventSettings(id: eventId) {
+                if let eventAPIData = eventAPITemporaryData, eventID == eventAPIData.event_id { //Reload
+                    let group = DispatchGroup()
+                    group.enter()
+                    let event = EventAPIViewModel(
+                        eventSettings: eventSettings,
+                        eventLogo: eventAPIData.eventLogo,
+                        eventSchedule: eventAPIData.eventSchedule,
+                        eventAnnouncements: eventAPIData.eventAnnouncements,
+                        eventScenarioStatus: eventAPIData.eventScenarioStatus,
+                        isLogin: eventAPIData.isLogin,
+                        saveData: self.saveEventAPIData)
+                    await event.loadLogos() //TODO: Will save old one and that is badddd.
+                    DispatchQueue.main.async {
+                        self.currentEventAPI = event
+                        group.leave()
+                    }
+                    group.notify(queue: .main) {
+                        Task { await self.saveEventAPIData() }
+                    }
+                    //Using this ugly code in order to make sure it run after
+                    //currentEventAPI is set properly or it will save the old one.
+                    //And I still had "One" time that will save the old one after the new one set.
+                    //It mean the old one will exist in system.
+                    //Test it about ten to twenty times.
+                } else { //Load new
+                    let group = DispatchGroup()
+                    group.enter()
+                    let event = EventAPIViewModel(eventSettings: eventSettings, saveData: self.saveEventAPIData)
+                    await event.loadLogos() //TODO: Will save old one and that is badddd.
+                    DispatchQueue.main.async {
+                        self.currentEventAPI = event
+                        group.leave()
+                    }
+                    group.notify(queue: .main) {
+                        Task { await self.saveEventAPIData() }
+                    }
+                    //Using this ugly code in order to make sure it run after
+                    //currentEventAPI is set properly or it will save the old one.
+                    //And I still had "One" time that will save the old one after the new one set.
+                    //It mean the old one will exist in system.
+                    //Test it about ten to twenty times.
                 }
-                //group.leave()
+            } else { //Use local data when it can't get data from API
+                print("Can't get data from API. Using local data")
+                if let eventAPIData = eventAPITemporaryData {
+                    DispatchQueue.main.async {
+                        self.currentEventAPI = EventAPIViewModel(
+                            eventSettings: eventAPIData.eventSettings,
+                            eventLogo: eventAPIData.eventLogo,
+                            eventSchedule: eventAPIData.eventSchedule,
+                            eventAnnouncements: eventAPIData.eventAnnouncements,
+                            eventScenarioStatus: eventAPIData.eventScenarioStatus,
+                            isLogin: eventAPIData.isLogin,
+                            saveData: self.saveEventAPIData)
+                    }
+                }
             }
-            //group.notify(queue: .main) {
-            //    Task {
-            //        await saveEventAPIData()
-            //    }
-            //}
-            print("Why this is not working")
-            
+            self.eventAPITemporaryData = nil //Clear temporary data
         }
     }
     
@@ -106,26 +142,5 @@ class OPassAPIViewModel: ObservableObject {
         } catch {
             print("Error: \(error)")
         }
-    }
-    
-    private func saveLocalData(dataObject: Data, filename: String) -> Bool {
-        do {
-            if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                let fileURL = url.appendingPathComponent(filename)
-                try dataObject.write(to: fileURL)
-                return true
-            }
-            return false
-        } catch {
-            return false
-        }
-    }
-    
-    private func loadLocalData(filename: String) -> Data? {
-        guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            return nil
-        }
-        let fileURL = url.appendingPathComponent(filename)
-        return try? Data(contentsOf: fileURL)
     }
 }

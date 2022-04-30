@@ -10,7 +10,6 @@ import SwiftUI
 
 struct EventListView: View {
     
-    @AppStorage("CurrentEvent") var currentEvent = "NULL"
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @Environment(\.dismiss) var dismiss
     
@@ -20,7 +19,6 @@ struct EventListView: View {
                 ForEach(OPassAPI.eventList, id: \.event_id) { list in
                     Button(action: {
                         OPassAPI.currentEventID = list.event_id
-                        currentEvent = list.event_id
                         dismiss()
                     }) {
                         HStack {
@@ -66,6 +64,7 @@ struct EventListView: View {
         .task {
             await OPassAPI.loadEventList()
         }
+        .interactiveDismissDisabled(OPassAPI.currentEventID == nil)
     }
 }
 
