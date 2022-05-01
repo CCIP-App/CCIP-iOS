@@ -78,8 +78,8 @@ class EventAPIViewModel: ObservableObject {
         if let eventScenarioUseStatus = try? await APIRepo.load(scenarioUseFrom: fastpassFeature, scenario: scenario, token: token) {
             DispatchQueue.main.async {
                 self.eventScenarioStatus = eventScenarioUseStatus
+                Task{ await self.saveData() }
             }
-            Task { await saveData() }
             return true
         }
         return false
@@ -105,8 +105,8 @@ class EventAPIViewModel: ObservableObject {
                 self.eventScenarioStatus = eventScenarioStatus
                 self.accessToken = token
                 self.isLogin = true
+                Task{ await self.saveData() }
             }
-            Task{ await saveData() }
             return true
         } else  {
             return false
@@ -125,8 +125,8 @@ class EventAPIViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.eventScenarioStatus = eventScenarioStatus
                 self.isLogin = true
+                Task{ await self.saveData() }
             }
-            Task{ await saveData() }
         }
     }
     
@@ -161,7 +161,7 @@ class EventAPIViewModel: ObservableObject {
                 }
             }
         }
-        Task{ await saveData() }
+        Task{ await self.saveData() }
     }
     
     func loadSchedule() async {
@@ -170,8 +170,8 @@ class EventAPIViewModel: ObservableObject {
         if let schedule = try? await APIRepo.load(scheduleFrom: scheduleFeature) {
             DispatchQueue.main.async {
                 self.eventSchedule = schedule
+                Task { await self.saveData() }
             }
-            Task { await saveData() }
         }
     }
     
@@ -186,8 +186,8 @@ class EventAPIViewModel: ObservableObject {
         if let announcements = try? await APIRepo.load(announcementFrom: announcementFeature, token: token) {
             DispatchQueue.main.async {
                 self.eventAnnouncements = announcements
+                Task{ await self.saveData() }
             }
-            Task{ await saveData() }
         }
     }
 }

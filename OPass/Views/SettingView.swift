@@ -12,8 +12,9 @@ struct SettingView: View {
     
     @Environment(\.openURL) var openURL
     @State var isDebug = false
+    private let CCIPWebsite = "https://opass.app"
     private let CCIPGithub = "https://github.com/CCIP-App"
-    private let policy = "https://opass.app/privacy-policy.html"
+    private let CCIPPolicy = "https://opass.app/privacy-policy.html"
     
     var body: some View {
         VStack {
@@ -50,6 +51,24 @@ struct SettingView: View {
                     }
                     
                     Button(action: {
+                        openURL(URL(string: CCIPWebsite)!)
+                    }) {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("Official Website")
+                                    .foregroundColor(.black)
+                                Text(CCIPWebsite)
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }
+                            
+                            Spacer()
+                            
+                            Image(systemName: "arrow.up.right.square.fill")
+                        }
+                    }
+                    
+                    Button(action: {
                         openURL(URL(string: CCIPGithub)!)
                     }) {
                         HStack {
@@ -68,13 +87,13 @@ struct SettingView: View {
                     }
                     
                     Button(action: {
-                        openURL(URL(string: policy)!)
+                        openURL(URL(string: CCIPPolicy)!)
                     }) {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(LocalizedStringKey("PrivacyPolicy"))
                                     .foregroundColor(.black)
-                                Text(policy)
+                                Text(CCIPPolicy)
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }

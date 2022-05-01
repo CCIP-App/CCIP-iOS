@@ -62,12 +62,10 @@ class OPassAPIViewModel: ObservableObject {
         }
     }
     
-    func loadCurrentEventAPI() async { //TODO: Very very ugly code.
+    func loadCurrentEventAPI() async {
         if let eventID = currentEventID {
             if let eventId = currentEventID, let eventSettings = try? await APIRepo.loadEventSettings(id: eventId) {
                 if let eventAPIData = eventAPITemporaryData, eventID == eventAPIData.event_id { //Reload
-                    let group = DispatchGroup()
-                    group.enter()
                     let event = EventAPIViewModel(
                         eventSettings: eventSettings,
                         eventLogo: eventAPIData.eventLogo,
@@ -76,36 +74,18 @@ class OPassAPIViewModel: ObservableObject {
                         eventScenarioStatus: eventAPIData.eventScenarioStatus,
                         isLogin: eventAPIData.isLogin,
                         saveData: self.saveEventAPIData)
-                    await event.loadLogos() //TODO: Will save old one and that is badddd.
+                    print("Reload event \(event.event_id)")
                     DispatchQueue.main.async {
                         self.currentEventAPI = event
-                        group.leave()
+                        Task{ await self.currentEventAPI!.loadLogos() }
                     }
-                    group.notify(queue: .main) {
-                        Task { await self.saveEventAPIData() }
-                    }
-                    //Using this ugly code in order to make sure it run after
-                    //currentEventAPI is set properly or it will save the old one.
-                    //And I still had "One" time that will save the old one after the new one set.
-                    //It mean the old one will exist in system.
-                    //Test it about ten to twenty times.
                 } else { //Load new
-                    let group = DispatchGroup()
-                    group.enter()
                     let event = EventAPIViewModel(eventSettings: eventSettings, saveData: self.saveEventAPIData)
-                    await event.loadLogos() //TODO: Will save old one and that is badddd.
+                    print("Loading new event from \(currentEventAPI?.event_id ?? "none") to \(event.event_id)")
                     DispatchQueue.main.async {
                         self.currentEventAPI = event
-                        group.leave()
+                        Task{ await self.currentEventAPI!.loadLogos() }
                     }
-                    group.notify(queue: .main) {
-                        Task { await self.saveEventAPIData() }
-                    }
-                    //Using this ugly code in order to make sure it run after
-                    //currentEventAPI is set properly or it will save the old one.
-                    //And I still had "One" time that will save the old one after the new one set.
-                    //It mean the old one will exist in system.
-                    //Test it about ten to twenty times.
                 }
             } else { //Use local data when it can't get data from API
                 print("Can't get data from API. Using local data")
