@@ -65,6 +65,7 @@ struct ScenarioView: View {
         .alert(LocalizedStringKey("ConfirmSignOut"), isPresented: $isShowingLogOutAlert) {
             Button(String(localized: "SignOut"), role: .destructive) {
                 eventAPI.isLogin = false
+                eventAPI.eventScenarioStatus = nil
                 eventAPI.accessToken = nil
             }
             

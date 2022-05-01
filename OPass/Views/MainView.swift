@@ -86,9 +86,9 @@ struct MainView: View {
                 tag: FeatureType.announcement,
                 selection: $selectedFeature,
                 destination: {
-                    AnnounceView(announcements: eventAPI.eventAnnouncements, refresh: {
-                        await eventAPI.loadAnnouncements()
-                    })
+                    AnnounceView(
+                        eventAPI: eventAPI,
+                        announcements: eventAPI.eventAnnouncements)
                 }) {
                 EmptyView()
             }

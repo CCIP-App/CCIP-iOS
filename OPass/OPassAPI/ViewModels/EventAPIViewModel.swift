@@ -175,7 +175,7 @@ class EventAPIViewModel: ObservableObject {
         }
     }
     
-    func loadAnnouncements() async {
+    func loadAnnouncements() async throws {
         @Feature(.announcement, in: eventSettings) var announcementFeature
         
         guard let token = accessToken else {
@@ -183,11 +183,10 @@ class EventAPIViewModel: ObservableObject {
             return
         }
         
-        if let announcements = try? await APIRepo.load(announcementFrom: announcementFeature, token: token) {
-            DispatchQueue.main.async {
-                self.eventAnnouncements = announcements
-                Task{ await self.saveData() }
-            }
+        let announcements = try await APIRepo.load(announcementFrom: announcementFeature, token: token)
+        DispatchQueue.main.async {
+            self.eventAnnouncements = announcements
+            Task{ await self.saveData() }
         }
     }
 }

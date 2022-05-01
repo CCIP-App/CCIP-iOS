@@ -18,10 +18,12 @@ struct FastpassView: View {
             if eventAPI.accessToken == nil {
                 RedeemTokenView(eventAPI: eventAPI)
             } else {
-                if eventAPI.isLogin == true {
+                if eventAPI.eventScenarioStatus != nil {
                     ScenarioView(eventAPI: eventAPI)
+                        .task { await eventAPI.loadScenarioStatus() }
                 } else {
                     ProgressView(LocalizedStringKey("Loading"))
+                        .task { await eventAPI.loadScenarioStatus() }
                 }
             }
         }
@@ -34,13 +36,6 @@ struct FastpassView: View {
                 }
             }
         }
-        .onAppear(perform: {
-            if eventAPI.accessToken != nil {
-                Task {
-                    await eventAPI.loadScenarioStatus()
-                }
-            }
-        })
     }
 }
 

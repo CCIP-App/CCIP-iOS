@@ -263,6 +263,8 @@ struct SpeakerBio: View {
     let speakerBio: String
     @State var isTruncated: Bool = false
     @State var isShowingSpeakerDetail = false
+    @State var normalSize: CGSize = .zero
+    @State var maxHeightSize: CGSize = .zero
     
     var body: some View {
         VStack(spacing: 0) {
@@ -274,35 +276,89 @@ struct SpeakerBio: View {
                     Spacer()
                     Button("More") {
                         SOCManager.present(isPresented: $isShowingSpeakerDetail, style: .light) {
-                            VStack {
-                                /*
-                                if let avatarURL = eventAPI.eventSchedule?.speakers[speaker]?.avatar {
-                                    URLImage(urlString: avatarURL, isRenderOriginal: true, defaultSymbolName: "person.crop.circle.fill")
-                                        .clipShape(Circle())
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.3)
-                                }*/
-                                Text(speaker)
-                                    .font(.title.bold())
-                                
-                                if speakerBio != "" {
-                                    HStack {
-                                        Markdown(speakerBio.tirm())
-                                            .markdownStyle(
-                                                MarkdownStyle(font: .footnote)
-                                            )
-                                            .padding()
+                            if normalSize == maxHeightSize {
+                                VStack {
+                                    Text(speaker)
+                                        .font(.title.bold())
+                                    
+                                    if speakerBio != "" {
+                                        HStack {
+                                            Markdown(speakerBio.tirm())
+                                                .markdownStyle(
+                                                    MarkdownStyle(font: .footnote)
+                                                )
+                                                .padding()
+                                        }
+                                        .frame(maxWidth: .infinity)
+                                        .background(.white)
+                                        .cornerRadius(20)
                                     }
-                                    .frame(maxWidth: .infinity)
-                                    .background(.white)
-                                    .cornerRadius(20)
                                 }
+                                .frame(maxWidth: .infinity)
+                            } else {
+                                VStack {
+                                    Text(speaker)
+                                        .font(.title.bold())
+                                    
+                                    if speakerBio != "" {
+                                        HStack {
+                                            ScrollView {
+                                                Markdown(speakerBio.tirm())
+                                                    .markdownStyle(
+                                                        MarkdownStyle(font: .footnote)
+                                                    )
+                                                    .padding()
+                                            }
+                                        }
+                                        .frame(maxWidth: .infinity)
+                                        .background(.white)
+                                        .cornerRadius(20)
+                                    }
+                                }
+                                .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.4)
                             }
-                            .frame(maxWidth: .infinity)
                         }
                     }
                     .font(.footnote)
                 }
+                .background(
+                    VStack {
+                        VStack {
+                            if speakerBio != "" {
+                                HStack {
+                                    Markdown(speakerBio.tirm())
+                                        .markdownStyle(
+                                            MarkdownStyle(font: .footnote)
+                                        )
+                                        .padding()
+                                }
+                                .frame(maxWidth: .infinity)
+                                .background(.white)
+                                .cornerRadius(20)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .readSize { size in normalSize = size }
+                        
+                        VStack {
+                            if speakerBio != "" {
+                                HStack {
+                                    Markdown(speakerBio.tirm())
+                                        .markdownStyle(
+                                            MarkdownStyle(font: .footnote)
+                                        )
+                                        .padding()
+                                }
+                                .frame(maxWidth: .infinity)
+                                .background(.white)
+                                .cornerRadius(20)
+                            }
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.4)
+                        .readSize { size in maxHeightSize = size }
+                    }
+                    .hidden()
+                )
             }
         }
         .padding(.vertical, 8)

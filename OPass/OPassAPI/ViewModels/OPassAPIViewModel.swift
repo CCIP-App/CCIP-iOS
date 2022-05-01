@@ -54,11 +54,11 @@ class OPassAPIViewModel: ObservableObject {
         }
     }
     
-    func loadEventList() async {
-        if let eventList = try? await APIRepo.loadEventList() {
-            DispatchQueue.main.async {
-                self.eventList = eventList
-            }
+    func loadEventList() async throws {
+        print("Loading eventList")
+        let eventList = try await APIRepo.loadEventList()
+        DispatchQueue.main.async {
+            self.eventList = eventList
         }
     }
     
