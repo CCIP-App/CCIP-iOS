@@ -7,6 +7,13 @@
   
 */
 
+"MON" = "Mon";
+"TUE" = "Tue";
+"WEN" = "Wen";
+"THR" = "Thr";
+"FRI" = "Fri";
+"SAT" = "Sat";
+"SUN" = "Sun";
 "Continue" = "Continue";
 "EnterTokenManuallyContent" = "Please look for the Token provided by the email and enter it in the field above";
 "ScanToGetTokenContent" = "Please look for the QRCode provided by the email and place it in the viewfinder";

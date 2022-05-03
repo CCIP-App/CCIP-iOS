@@ -7,6 +7,13 @@
   
 */
 
+"MON" = "一";
+"TUE" = "二";
+"WEN" = "三";
+"THR" = "四";
+"FRI" = "五";
+"SAT" = "六";
+"SUN" = "日";
 "Continue" = "繼續";
 "EnterTokenManuallyContent" = "請查找電子郵件提供的驗證碼，並在上方中輸入";
 "ScanToGetTokenContent" = "請尋找電子郵件提供的二維碼，並將其放置在取景器中";

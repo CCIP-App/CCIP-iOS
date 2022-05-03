@@ -38,7 +38,7 @@ struct SettingView: View {
                     }
                 }
                 
-                Section {
+                Section(header: Text("ABOUT")) {
                     VStack(alignment: .leading) {
                         Text(LocalizedStringKey("Version"))
                             .foregroundColor(.black)
@@ -106,7 +106,7 @@ struct SettingView: View {
 
                 }
                 
-                Section {
+                Section(header: Text("DEVELOPER")) {
                     NavigationLink(destination: EmptyView()) {
                         Text(LocalizedStringKey("DeveloperOption"))
                     }

@@ -46,14 +46,20 @@ struct ScheduleView: View {
                                                                                 scheduleDetail: sessionDetail)
                                             ){
                                                 DetailOverView(
-                                                    room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
+                                                    room: (LocalizeIn (
+                                                        zh: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name,
+                                                        en: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.en.name
+                                                    ) ?? sessionDetail.room),
                                                     start: sessionDetail.start,
                                                     end: sessionDetail.end,
                                                     title: sessionDetail.zh.title)
                                             }
                                         } else {
                                             DetailOverView(
-                                                room: (eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name ?? sessionDetail.room),
+                                                room: (LocalizeIn (
+                                                    zh: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name,
+                                                    en: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.en.name
+                                                ) ?? sessionDetail.room),
                                                 start: sessionDetail.start,
                                                 end: sessionDetail.end,
                                                 title: sessionDetail.zh.title)
@@ -132,7 +138,7 @@ fileprivate struct SelectDayView: View {
     @Binding var selectDayIndex: Int
     let sessions: [SessionModel]
     
-    let weekDayName = ["Mon", "Tue", "Wen", "Thr", "Fri", "Sat", "Sun"]
+    let weekDayName = ["MON", "TUE", "WEN", "THR", "FRI", "SAT", "SUN"]
     
     var body: some View {
         VStack(spacing: 0) {
@@ -143,7 +149,7 @@ fileprivate struct SelectDayView: View {
                     }) {
                         VStack {
                             Text(
-                                String(weekDayName[sessions[index].header[0].weekday - 1])
+                                String(localized: String.LocalizationValue(weekDayName[sessions[index].header[0].weekday - 1]))
                                 + "\n" +
                                 String(sessions[index].header[0].day)
                             )

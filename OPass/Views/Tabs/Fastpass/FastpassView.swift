@@ -32,7 +32,7 @@ struct FastpassView: View {
             ToolbarItem(placement: .principal) {
                 VStack {
                     Text(LocalizedStringKey("FastPass")).font(.headline)
-                    Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? eventAPI.display_name.zh : eventAPI.display_name.en).font(.caption).foregroundColor(.gray)
+                    Text(LocalizeIn(zh: eventAPI.display_name.zh, en: eventAPI.display_name.en)).font(.caption).foregroundColor(.gray)
                 }
             }
         }

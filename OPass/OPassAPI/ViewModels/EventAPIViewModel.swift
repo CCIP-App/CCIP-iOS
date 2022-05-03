@@ -130,21 +130,21 @@ class EventAPIViewModel: ObservableObject {
         }
     }
     
-    func loadLogos() async throws {
+    func loadLogos() async {
         //Load Event Logo
-        let icons: [Int: Data] = try await withThrowingTaskGroup(of: (Int, Data?).self) { group in
+        let icons: [Int: Data] = await withTaskGroup(of: (Int, Data?).self) { group in
             let logo_url = eventSettings.logo_url
             let webViewFeatureIndex = eventSettings.features.enumerated().filter({ $0.element.feature == .webview }).map { $0.offset }
             
-            group.addTask { (-1, try await APIRepo.loadLogo(from: logo_url)) }
+            group.addTask { (-1, try? await APIRepo.loadLogo(from: logo_url)) }
             for index in webViewFeatureIndex {
                 if let iconUrl = eventSettings.features[index].icon{
-                    group.addTask { (index, try await APIRepo.loadLogo(from: iconUrl)) }
+                    group.addTask { (index, try? await APIRepo.loadLogo(from: iconUrl)) }
                 }
             }
             
             var indexToIcon: [Int: Data] = [:]
-            for try await (index, data) in group {
+            for await (index, data) in group {
                 if data != nil {
                     indexToIcon[index] = data
                 }

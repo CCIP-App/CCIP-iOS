@@ -28,7 +28,7 @@
 		4F9E9B4E2813F0A300A14905 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E9B4D2813F0A300A14905 /* ArrayExtension.swift */; };
 		4FEF38FB27D13FBA00FC97F4 /* APIRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */; };
 		D301C39428053ED600D027FE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301C39328053ED600D027FE /* ActivityIndicator.swift */; };
-		D3095F1827D78EE600225C7D /* NotificationFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3095F1727D78EE600225C7D /* NotificationFunc.swift */; };
+		D3095F1827D78EE600225C7D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3095F1727D78EE600225C7D /* Notifications.swift */; };
 		D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314B66E27D1089200481D5E /* EventAPIViewModel.swift */; };
 		D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D318CE43280918C400CEA1AA /* TruncableText.swift */; };
 		D31900D8281CF07E00864982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D31900D7281CF07E00864982 /* LaunchScreen.storyboard */; };
@@ -37,6 +37,7 @@
 		D31900DE281CF17600864982 /* LaunchScreen@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = D31900DB281CF17600864982 /* LaunchScreen@1x.png */; };
 		D322F60C27EF3B09007EED5D /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60B27EF3B09007EED5D /* SlideOverCard */; };
 		D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60E27EF4698007EED5D /* CodeScanner */; };
+		D34012102821349200D07034 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340120F2821349200D07034 /* Localization.swift */; };
 		D358E55827EDEDB2000A6554 /* FastpassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D358E55727EDEDB2000A6554 /* FastpassView.swift */; };
 		D3602CAC280400D8001D9C15 /* UseScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3602CAB280400D8001D9C15 /* UseScenarioView.swift */; };
 		D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366D8EF27ED50CB00AA4267 /* MainView.swift */; };
@@ -109,13 +110,14 @@
 		4F9E9B4D2813F0A300A14905 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRepo.swift; sourceTree = "<group>"; };
 		D301C39328053ED600D027FE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
-		D3095F1727D78EE600225C7D /* NotificationFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFunc.swift; sourceTree = "<group>"; };
+		D3095F1727D78EE600225C7D /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		D314B66E27D1089200481D5E /* EventAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPIViewModel.swift; sourceTree = "<group>"; };
 		D318CE43280918C400CEA1AA /* TruncableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncableText.swift; sourceTree = "<group>"; };
 		D31900D7281CF07E00864982 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D31900D9281CF17500864982 /* LaunchScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@2x.png"; sourceTree = "<group>"; };
 		D31900DA281CF17600864982 /* LaunchScreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@3x.png"; sourceTree = "<group>"; };
 		D31900DB281CF17600864982 /* LaunchScreen@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@1x.png"; sourceTree = "<group>"; };
+		D340120F2821349200D07034 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		D358E55727EDEDB2000A6554 /* FastpassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastpassView.swift; sourceTree = "<group>"; };
 		D3602CAB280400D8001D9C15 /* UseScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseScenarioView.swift; sourceTree = "<group>"; };
 		D366D8EF27ED50CB00AA4267 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -189,7 +191,8 @@
 		D3095F1627D78EB500225C7D /* Functions */ = {
 			isa = PBXGroup;
 			children = (
-				D3095F1727D78EE600225C7D /* NotificationFunc.swift */,
+				D3095F1727D78EE600225C7D /* Notifications.swift */,
+				D340120F2821349200D07034 /* Localization.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -523,7 +526,7 @@
 				D3D3788227CE440D00021FC4 /* OPassAPIViewModel.swift in Sources */,
 				D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */,
 				D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */,
-				D3095F1827D78EE600225C7D /* NotificationFunc.swift in Sources */,
+				D3095F1827D78EE600225C7D /* Notifications.swift in Sources */,
 				D3E4E6C127CD158400FFACEB /* ContentView.swift in Sources */,
 				4F35B17C27D3850B0023621F /* AnnouncementModel.swift in Sources */,
 				D3D3789327CE70EE00021FC4 /* SettingsModel.swift in Sources */,
@@ -533,6 +536,7 @@
 				4F9E9B4E2813F0A300A14905 /* ArrayExtension.swift in Sources */,
 				D3E0123527D38B840040621F /* ScenarioView.swift in Sources */,
 				4F6968A827EF863A009073E4 /* TabButtonStyle.swift in Sources */,
+				D34012102821349200D07034 /* Localization.swift in Sources */,
 				D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */,
 				4F8522E12817D4C00015BB13 /* EventTitleModel.swift in Sources */,
 				4F5EB73527D3346D00235396 /* JsonDecodeHelper.swift in Sources */,
