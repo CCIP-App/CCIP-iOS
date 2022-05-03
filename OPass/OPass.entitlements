@@ -8,7 +8,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.app.opass.ccip.onesignal</string>
+		<string>group.app.opass.ccip</string>
 	</array>
 </dict>
 </plist>
