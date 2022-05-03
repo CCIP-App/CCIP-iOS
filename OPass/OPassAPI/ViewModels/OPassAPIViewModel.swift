@@ -77,14 +77,20 @@ class OPassAPIViewModel: ObservableObject {
                     print("Reload event \(event.event_id)")
                     DispatchQueue.main.async {
                         self.currentEventAPI = event
-                        Task{ await self.currentEventAPI!.loadLogos() }
+                        Task{
+                            do { try await self.currentEventAPI!.loadLogos() }
+                            catch { await self.saveEventAPIData() }
+                        }
                     }
                 } else { //Load new
                     let event = EventAPIViewModel(eventSettings: eventSettings, saveData: self.saveEventAPIData)
                     print("Loading new event from \(currentEventAPI?.event_id ?? "none") to \(event.event_id)")
                     DispatchQueue.main.async {
                         self.currentEventAPI = event
-                        Task{ await self.currentEventAPI!.loadLogos() }
+                        Task{
+                            do { try await self.currentEventAPI!.loadLogos() }
+                            catch { await self.saveEventAPIData() }
+                        }
                     }
                 }
             } else { //Use local data when it can't get data from API

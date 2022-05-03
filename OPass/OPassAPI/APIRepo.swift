@@ -158,7 +158,7 @@ final class APIRepo {
         do {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
-            print("Announcement Data Errir")
+            print("Announcement Data Error")
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }

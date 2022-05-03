@@ -130,21 +130,21 @@ class EventAPIViewModel: ObservableObject {
         }
     }
     
-    func loadLogos() async {
+    func loadLogos() async throws {
         //Load Event Logo
-        let icons: [Int: Data] = await withTaskGroup(of: (Int, Data?).self) { group in
+        let icons: [Int: Data] = try await withThrowingTaskGroup(of: (Int, Data?).self) { group in
             let logo_url = eventSettings.logo_url
             let webViewFeatureIndex = eventSettings.features.enumerated().filter({ $0.element.feature == .webview }).map { $0.offset }
             
-            group.addTask { (-1, try? await APIRepo.loadLogo(from: logo_url)) }
+            group.addTask { (-1, try await APIRepo.loadLogo(from: logo_url)) }
             for index in webViewFeatureIndex {
                 if let iconUrl = eventSettings.features[index].icon{
-                    group.addTask { (index, try? await APIRepo.loadLogo(from: iconUrl)) }
+                    group.addTask { (index, try await APIRepo.loadLogo(from: iconUrl)) }
                 }
             }
             
             var indexToIcon: [Int: Data] = [:]
-            for await (index, data) in group {
+            for try await (index, data) in group {
                 if data != nil {
                     indexToIcon[index] = data
                 }
@@ -178,12 +178,7 @@ class EventAPIViewModel: ObservableObject {
     func loadAnnouncements() async throws {
         @Feature(.announcement, in: eventSettings) var announcementFeature
         
-        guard let token = accessToken else {
-            print("No accessToken included")
-            return
-        }
-        
-        let announcements = try await APIRepo.load(announcementFrom: announcementFeature, token: token)
+        let announcements = try await APIRepo.load(announcementFrom: announcementFeature, token: accessToken ?? "")
         DispatchQueue.main.async {
             self.eventAnnouncements = announcements
             Task{ await self.saveData() }

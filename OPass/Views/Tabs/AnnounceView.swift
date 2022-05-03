@@ -17,59 +17,55 @@ struct AnnounceView: View {
     
     var body: some View {
         VStack {
-            if eventAPI.accessToken != nil {
-                if !isError {
-                    if !announcements.isEmpty {
-                        List(announcements, id: \.datetime) { announcement in
-                            Button(action: {
-                                if let urlString = announcement.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: urlString) {
-                                    openURL(url)
+            if !isError {
+                if !announcements.isEmpty {
+                    List(announcements, id: \.datetime) { announcement in
+                        Button(action: {
+                            if let urlString = announcement.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: urlString) {
+                                openURL(url)
+                            }
+                        }) {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(announcement.msg_zh).foregroundColor(.black)
+                                    Text(String(format: "%d/%d %d:%02d", announcement.datetime.month, announcement.datetime.day, announcement.datetime.hour, announcement.datetime.minute))
+                                        .font(.footnote)
+                                        .foregroundColor(.gray)
                                 }
-                            }) {
-                                HStack {
-                                    VStack(alignment: .leading) {
-                                        Text(announcement.msg_zh).foregroundColor(.black)
-                                        Text(String(format: "%d/%d %d:%02d", announcement.datetime.month, announcement.datetime.day, announcement.datetime.hour, announcement.datetime.minute))
-                                            .font(.footnote)
-                                            .foregroundColor(.gray)
-                                    }
-                                    Spacer()
-                                    if let _ = announcement.url {
-                                        Image(systemName: "chevron.right")
-                                            .foregroundColor(.gray)
-                                    }
+                                Spacer()
+                                if let _ = announcement.url {
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(.gray)
                                 }
                             }
                         }
-                        .refreshable{ try? await eventAPI.loadAnnouncements() }
-                        .task{ try? await eventAPI.loadAnnouncements() }
-                    } else {
-                        VStack {
-                            Image(systemName: "tray.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: UIScreen.main.bounds.width * 0.25)
-                                .foregroundColor(Color("LogoColor"))
-                            Text("Empty Announcement")
-                                .font(.title2)
-                        }
-                        .task{
-                            do { try await self.eventAPI.loadAnnouncements() }
-                            catch { self.isError = true }
-                            //TODO: Need to identify announcement is really empty when catch error
-                        }
                     }
+                    .refreshable{ try? await eventAPI.loadAnnouncements() }
+                    .task{ try? await eventAPI.loadAnnouncements() }
                 } else {
-                    ErrorView {
-                        self.isError = false
-                        Task {
-                            do { try await self.eventAPI.loadAnnouncements() }
-                            catch { self.isError = true }
-                        }
+                    VStack {
+                        Image(systemName: "tray.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: UIScreen.main.bounds.width * 0.25)
+                            .foregroundColor(Color("LogoColor"))
+                        Text("Empty Announcement")
+                            .font(.title2)
+                    }
+                    .task{
+                        do { try await self.eventAPI.loadAnnouncements() }
+                        catch { self.isError = true }
+                        //TODO: Need to identify announcement is really empty when catch error
                     }
                 }
             } else {
-                RedeemTokenView(eventAPI: eventAPI)
+                ErrorView {
+                    self.isError = false
+                    Task {
+                        do { try await self.eventAPI.loadAnnouncements() }
+                        catch { self.isError = true }
+                    }
+                }
             }
         }
         .listStyle(.insetGrouped)
