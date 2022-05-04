@@ -64,24 +64,21 @@ struct MainView: View {
                 destination: { FastpassView(eventAPI: eventAPI) }) {
                 EmptyView()
             }
-            .frame(width: 0, height: 0)
-            .opacity(0)
+                .frame(width: 0, height: 0).hidden()
             NavigationLink(
                 tag: FeatureType.ticket,
                 selection: $selectedFeature,
                 destination: { TicketView(eventAPI: eventAPI) }) {
                 EmptyView()
             }
-            .frame(width: 0, height: 0)
-            .opacity(0)
+                .frame(width: 0, height: 0).hidden()
             NavigationLink(
                 tag: FeatureType.schedule,
                 selection: $selectedFeature,
                 destination: { ScheduleView(eventAPI: eventAPI) }) {
                 EmptyView()
             }
-            .frame(width: 0, height: 0)
-            .opacity(0)
+                .frame(width: 0, height: 0).hidden()
             NavigationLink(
                 tag: FeatureType.announcement,
                 selection: $selectedFeature,
@@ -92,8 +89,7 @@ struct MainView: View {
                 }) {
                 EmptyView()
             }
-            .frame(width: 0, height: 0)
-            .opacity(0)
+            .frame(width: 0, height: 0).hidden()
         }
     }
 }

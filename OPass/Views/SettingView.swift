@@ -10,8 +10,8 @@ import SwiftUI
 
 struct SettingView: View {
     
+    @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @Environment(\.openURL) var openURL
-    @State var isDebug = false
     private let CCIPWebsite = "https://opass.app"
     private let CCIPGithub = "https://github.com/CCIP-App"
     private let CCIPPolicy = "https://opass.app/privacy-policy.html"
@@ -38,7 +38,7 @@ struct SettingView: View {
                     }
                 }
                 
-                Section(header: Text("ABOUT")) {
+                Section(header: Text(LocalizedStringKey("ABOUT"))) {
                     VStack(alignment: .leading) {
                         Text(LocalizedStringKey("Version"))
                             .foregroundColor(.black)
@@ -55,7 +55,7 @@ struct SettingView: View {
                     }) {
                         HStack {
                             VStack(alignment: .leading) {
-                                Text("Official Website")
+                                Text(LocalizedStringKey("OfficialWebsite"))
                                     .foregroundColor(.black)
                                 Text(CCIPWebsite)
                                     .font(.subheadline)
@@ -64,7 +64,12 @@ struct SettingView: View {
                             
                             Spacer()
                             
-                            Image(systemName: "arrow.up.right.square.fill")
+                            Image("external-link")
+                                .renderingMode(.template)
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(.gray)
+                                .frame(width: UIScreen.main.bounds.width * 0.045)
                         }
                     }
                     
@@ -82,7 +87,12 @@ struct SettingView: View {
                             
                             Spacer()
                             
-                            Image(systemName: "arrow.up.right.square.fill")
+                            Image("external-link")
+                                .renderingMode(.template)
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(.gray)
+                                .frame(width: UIScreen.main.bounds.width * 0.045)
                         }
                     }
                     
@@ -100,22 +110,50 @@ struct SettingView: View {
                             
                             Spacer()
                             
-                            Image(systemName: "arrow.up.right.square.fill")
+                            Image("external-link")
+                                .renderingMode(.template)
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(.gray)
+                                .frame(width: UIScreen.main.bounds.width * 0.045)
                         }
                     }
 
                 }
                 
                 Section(header: Text("DEVELOPER")) {
-                    NavigationLink(destination: EmptyView()) {
-                        Text(LocalizedStringKey("DeveloperOption"))
+                    NavigationLink(destination: DeveloperOptionView()) {
+                        Image(systemName: "hammer")
+                        Text("Developer Option")
                     }
-                    
-                    Toggle(LocalizedStringKey("DebugFuction"), isOn: $isDebug)
                 }
             }
         }
         .navigationTitle(LocalizedStringKey("Setting"))
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct DeveloperOptionView: View {
+    
+    private var keyStore = NSUbiquitousKeyValueStore()
+    @EnvironmentObject var OPassAPI: OPassAPIViewModel
+    @State var isDebug = false
+    
+    var body: some View {
+        Form {
+            Button(action: {
+                keyStore.synchronize()
+                keyStore.removeObject(forKey: "EventAPI")
+            }) {
+                Label {
+                    Text("Clear Cach Data (Restart required)")
+                } icon: {
+                    Image(systemName: "trash")
+                }
+            }
+        }
+        .navigationTitle("Developer Option")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

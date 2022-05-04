@@ -68,7 +68,7 @@ struct ScheduleDetailView: View {
                 HStack {
                     SFButton(systemName: "square.and.arrow.up") {
                         
-                    }
+                    }.hidden() //Disable temporary until OPass server udpate feature
                     
                     SFButton(systemName: "heart\(isLiked ? ".fill" : "")") {
                         registeringNotification(
@@ -81,8 +81,10 @@ struct ScheduleDetailView: View {
                             cancel: isLiked
                         )
                         if isLiked {
+                            UINotificationFeedbackGenerator().notificationOccurred(.warning)
                             likedSessions.removeAll { $0 == scheduleDetail.id }
                         } else {
+                            UINotificationFeedbackGenerator().notificationOccurred(.success)
                             likedSessions.append(scheduleDetail.id)
                         }
                     }
@@ -263,8 +265,7 @@ struct SpeakerBio: View {
     let speakerBio: String
     @State var isTruncated: Bool = false
     @State var isShowingSpeakerDetail = false
-    @State var normalSize: CGSize = .zero
-    @State var maxHeightSize: CGSize = .zero
+    @State var readSize: CGSize = .zero
     
     var body: some View {
         VStack(spacing: 0) {
@@ -276,7 +277,7 @@ struct SpeakerBio: View {
                     Spacer()
                     Button("More") {
                         SOCManager.present(isPresented: $isShowingSpeakerDetail, style: .light) {
-                            if normalSize == maxHeightSize {
+                            if readSize.height < UIScreen.main.bounds.height * 0.5 {
                                 VStack {
                                     Text(speaker)
                                         .font(.title.bold())
@@ -315,7 +316,7 @@ struct SpeakerBio: View {
                                         .cornerRadius(20)
                                     }
                                 }
-                                .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.4)
+                                .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.6)
                             }
                         }
                     }
@@ -338,26 +339,8 @@ struct SpeakerBio: View {
                             }
                         }
                         .frame(maxWidth: .infinity)
-                        .readSize { size in normalSize = size }
-                        
-                        VStack {
-                            if speakerBio != "" {
-                                HStack {
-                                    Markdown(speakerBio.tirm())
-                                        .markdownStyle(
-                                            MarkdownStyle(font: .footnote)
-                                        )
-                                        .padding()
-                                }
-                                .frame(maxWidth: .infinity)
-                                .background(.white)
-                                .cornerRadius(20)
-                            }
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.4)
-                        .readSize { size in maxHeightSize = size }
-                    }
-                    .hidden()
+                        .readSize { size in readSize = size }
+                    }.hidden()
                 )
             }
         }

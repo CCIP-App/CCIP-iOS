@@ -15,9 +15,11 @@ class OPassAPIViewModel: ObservableObject {
     @Published var currentEventID: String? = nil
     @Published var currentEventAPI: EventAPIViewModel? = nil
     private var eventAPITemporaryData: CodableEventAPIVM? = nil
+    private var keyStore = NSUbiquitousKeyValueStore()
     
     init() {
-        if let data = UserDefaults.standard.data(forKey: "EventAPI") {
+        keyStore.synchronize()
+        if let data = keyStore.data(forKey: "EventAPI") {
             do {
                 let eventAPIData = try JSONDecoder().decode(CodableEventAPIVM.self, from: data)
                 self.eventAPITemporaryData = eventAPIData
@@ -44,7 +46,7 @@ class OPassAPIViewModel: ObservableObject {
                     eventAnnouncements: eventAPI.eventAnnouncements,
                     eventScenarioStatus: eventAPI.eventScenarioStatus,
                     isLogin: eventAPI.isLogin))
-                UserDefaults.standard.set(data, forKey: "EventAPI")
+                keyStore.set(data, forKey: "EventAPI")
                 print("Save scuess of id: \(eventAPI.event_id)")
             } catch {
                 print("Save eventAPI data \(error)")

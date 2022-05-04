@@ -15,6 +15,7 @@ struct ScheduleView: View {
     @AppStorage var likedSessions: [String]
     @State var selectDayIndex = 0
     @State var filter = Filter.all
+    @State var first = true
     
     init(eventAPI: EventAPIViewModel) {
         _eventAPI = ObservedObject(wrappedValue: eventAPI)
@@ -76,7 +77,10 @@ struct ScheduleView: View {
             }
         }
         .task {
-            await eventAPI.loadSchedule() //TODO: need optimize
+            if first {
+                await eventAPI.loadSchedule()
+                first.toggle()
+            }
         }
         .navigationTitle("Schedule")
         .navigationBarTitleDisplayMode(.inline)
