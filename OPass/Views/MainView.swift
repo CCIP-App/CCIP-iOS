@@ -28,7 +28,7 @@ struct MainView: View {
                     .foregroundColor(Color("LogoColor"))
                     .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
             } else {
-                Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? eventAPI.display_name.zh : eventAPI.display_name.en)
+                Text(LocalizeIn(zh: eventAPI.display_name.zh, en: eventAPI.display_name.en))
                     .font(.system(.largeTitle, design: .rounded))
                     .fontWeight(.medium)
                     .padding(.vertical)
@@ -47,7 +47,7 @@ struct MainView: View {
                             .aspectRatio(contentMode: .fill)
                             .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
                             
-                            Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ?  feature.display_text.zh : feature.display_text.en)
+                            Text(LocalizeIn(zh: feature.display_text.zh, en: feature.display_text.en))
                                 .font(.caption2)
                                 .multilineTextAlignment(.center)
                         }
@@ -146,12 +146,8 @@ struct TabButton: View {
                 }
                 .tabButtonStyle(color: feature.color, width: width)
             default:
-            if let urlString = feature.url?
-                .checkAndReplace(withToken: eventAPI.accessToken)
-                .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-               let url = URL(string: urlString) {
+            if let url = feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) {
                     Button(action: {
-                        print(urlString)
                         presentingSafariView.toggle()
                     }) {
                         if feature.feature != .webview {
@@ -193,17 +189,25 @@ struct TabButton: View {
 }
 
 fileprivate extension String {
-    func checkAndReplace(withToken: String?) -> String {
-        if let token = withToken {
-            if self.contains("{public_token}") {
-                return self.replacingOccurrences(
-                    of: "{public_token}",
-                    with: Insecure.SHA1.hash(data: Data(token.utf8)).map { String(format: "%02X", $0) }.joined())
-            } else if self.contains("{token}") {
-                return self.replacingOccurrences(of: "{token}", with: token)
+    func processWith(token: String?, role: String?) -> URL? {
+        var url = self
+        guard let paramsRegex = try? NSRegularExpression.init(pattern: "(\\{[^\\}]+\\})", options: .caseInsensitive) else { return nil }
+        let matches = paramsRegex.matches(in: url, options: .reportProgress, range: NSRange(location: 0, length: url.count))
+        for m in stride(from: matches.count, to: 0, by: -1) {
+            let range = Range(matches[m - 1].range(at: 1), in: url)!
+            let param = url[range]
+            switch param {
+            case "{token}":
+                url = url.replacingOccurrences(of: param, with: token ?? "")
+            case "{public_token}":
+                url = url.replacingOccurrences(of: param, with: Insecure.SHA1.hash(data: Data((token ?? "").utf8)).map { String(format: "%02X", $0) }.joined())
+            case "{role}":
+                url = url.replacingOccurrences(of: param, with: role ?? "")
+            default:
+                url = url.replacingOccurrences(of: param, with: "")
             }
         }
-        return self
+        return URL(string: url)
     }
 }
 

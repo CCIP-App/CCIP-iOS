@@ -99,7 +99,7 @@ struct ScenarioView: View {
                 .cornerRadius(UIScreen.main.bounds.width * 0.028)
             
             VStack(alignment: .leading) {
-                Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? scenario.display_text.zh : scenario.display_text.en).foregroundColor(.black)
+                Text(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en)).foregroundColor(.black)
                 Text((scenario.disabled == nil ? (scenario.used == nil ? String(format: "%d:%02d ~ %d:%02d", scenario.available_time.hour, scenario.available_time.minute, scenario.expire_time.hour, scenario.expire_time.minute) : String(format: String(localized: "CheckAtContent"), scenario.used!.hour, scenario.used!.minute) ) : (scenario.disabled)!))
                     .font(.callout)
                     .foregroundColor(.gray)
@@ -126,7 +126,7 @@ struct FastpassLogoView: View {
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(Color("LogoColor"))
             } else {
-                Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? eventAPI.display_name.zh : eventAPI.display_name.en)
+                Text(LocalizeIn(zh: eventAPI.display_name.zh, en: eventAPI.display_name.en))
                     .font(.system(.largeTitle, design: .rounded))
                     .fontWeight(.medium)
                     .foregroundColor(Color("LogoColor"))

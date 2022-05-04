@@ -37,7 +37,7 @@ struct EventListView: View {
                                         .padding(.horizontal, 3)
                                         .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.15)
                                         
-                                        Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ?  list.display_name.zh : list.display_name.en)
+                                        Text(LocalizeIn(zh: list.display_name.zh, en: list.display_name.en))
                                             .foregroundColor(.black)
                                         
                                         Spacer()

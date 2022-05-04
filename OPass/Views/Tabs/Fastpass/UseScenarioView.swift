@@ -32,7 +32,7 @@ struct UseScenarioView: View {
                 }
             }
         }
-        .navigationTitle(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? scenario.display_text.zh : scenario.display_text.en)
+        .navigationTitle(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -57,7 +57,7 @@ struct UseScenarioView: View {
                     .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.width * 0.2)
                     .background(.blue)
                     .cornerRadius(UIScreen.main.bounds.width * 0.05)
-                Text(Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? scenario.display_text.zh : scenario.display_text.en)
+                Text(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en))
                     .font(.largeTitle.bold())
                 
                 Text(LocalizedStringKey("ConfirmUseScenarioMessage"))
@@ -117,7 +117,7 @@ fileprivate struct ScuessScenarioView: View {
                         .frame(width: UIScreen.main.bounds.width * 0.2)
                         .foregroundColor(.green)
                     Text(
-                        Bundle.main.preferredLocalizations[0] ==  "zh-Hant" ? scenario.display_text.zh : scenario.display_text.en +
+                        LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en) +
                         " " + String(localized: "Complete")
                     )
                         .font(.title.bold())
