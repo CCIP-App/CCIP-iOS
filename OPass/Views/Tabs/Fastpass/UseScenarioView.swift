@@ -13,7 +13,9 @@ struct UseScenarioView: View {
     @ObservedObject var eventAPI: EventAPIViewModel
     let scenario: ScenarioDataModel
     @Environment(\.dismiss) var dismiss
-    @State var viewStage = 0 // 0 -> ConfirmUseScenarioView, 1 -> LoadingView, 2 -> SuccessView, other -> ErrorView
+    @State var viewStage = 0
+    @State var usedTime: TimeInterval = 0
+    // 0 -> ConfirmUseScenarioView, 1 -> LoadingView, 2 -> SuccessView, other -> ErrorView
     
     var body: some View {
         VStack {
@@ -25,11 +27,9 @@ struct UseScenarioView: View {
                 ActivityIndicatorMark_1()
                     .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.25)
             case 2:
-                ScuessScenarioView(dismiss: _dismiss, scenario: scenario)
+                ScuessScenarioView(dismiss: _dismiss, scenario: scenario, usedTime: $usedTime)
             default:
-                VStack {
-                    Text("Error") //TODO: Handle Error Message
-                }
+                ErrorView()
             }
         }
         .navigationTitle(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en))
@@ -74,10 +74,9 @@ struct UseScenarioView: View {
                 viewStage = 1
                 Task {
                     if await eventAPI.useScenario(scenario: scenario.id) {
+                        usedTime = Date().timeIntervalSince1970
                         viewStage = 2
-                    } else {
-                        viewStage = 3
-                    }
+                    } else { viewStage = 3 }
                 }
             }) {
                 Text(LocalizedStringKey("ConfirmUse"))
@@ -102,11 +101,12 @@ fileprivate struct ScuessScenarioView: View {
     @Environment(\.dismiss) var dismiss
     let scenario: ScenarioDataModel
     @State var time = 0
+    @Binding var usedTime: TimeInterval
     
     var body: some View {
         VStack {
             if scenario.countdown != 0 {
-                TimerView(scenario: scenario, countTime: Double(10), symbolName: scenario.symbolName, dismiss: _dismiss)
+                TimerView(scenario: scenario, countTime: Double(scenario.countdown), symbolName: scenario.symbolName, dismiss: _dismiss, usedTime: $usedTime)
                     .padding()
             } else {
                 VStack {
@@ -152,7 +152,7 @@ fileprivate struct TimerView: View {
     
     @State var time: Double = 0
     let timer = Timer.publish(every: 0.03, tolerance: 0.05, on: .main, in: .common).autoconnect()
-    let startTime = Date().timeIntervalSince1970
+    @Binding var usedTime: TimeInterval
     
     var body: some View {
         VStack {
@@ -173,7 +173,9 @@ fileprivate struct TimerView: View {
                             .foregroundColor(.white.opacity(0.5))
                         Text(diet)
                             .foregroundColor(.white)
-                            .font(.system(size: 70, weight: .light)) //TODO: Dynamic size
+                            .fontWeight(.light)
+                            .font(.largeTitle)
+                            .multilineTextAlignment(.leading)
                             .offset(x: 0, y: -10)
                     }
                     Spacer()
@@ -182,8 +184,7 @@ fileprivate struct TimerView: View {
             }
         }
         .frame(maxWidth: .infinity, minHeight: UIScreen.main.bounds.width * 0.5)
-        .background(Color.blue)
-        .overlay(content: {
+        .background(content: {
             VStack {
                 Spacer()
                 HStack(alignment: .bottom) {
@@ -198,9 +199,10 @@ fileprivate struct TimerView: View {
             }
             .offset(x: 0, y: 30)
         })
+        .background(Color.blue)
         .cornerRadius(10)
         .onReceive(timer) { _ in
-            let tmpTime = countTime - (Date().timeIntervalSince1970 - startTime)
+            let tmpTime = countTime - (Date().timeIntervalSince1970 - usedTime)
             if tmpTime <= 0 {
                 dismiss()
             } else {

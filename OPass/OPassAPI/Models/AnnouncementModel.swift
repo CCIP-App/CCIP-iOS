@@ -12,5 +12,5 @@ struct AnnouncementModel: Codable {
     var datetime: Date
     var msg_en: String
     var msg_zh: String
-    var url: String?
+    var uri: String
 }

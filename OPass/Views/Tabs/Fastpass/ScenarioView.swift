@@ -30,7 +30,7 @@ struct ScenarioView: View {
                             Button(action: {
                                 if scenario.used == nil {
                                     if let errorText = scenario.disabled {
-                                        alertString = errorText
+                                        alertString = String(localized: String.LocalizationValue(errorText))
                                         isShowingDisableAlert.toggle()
                                     } else if !DateInRegion().isInRange(date: scenario.available_time,
                                                                         and: scenario.expire_time, orEqual: false,
@@ -100,7 +100,7 @@ struct ScenarioView: View {
             
             VStack(alignment: .leading) {
                 Text(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en)).foregroundColor(.black)
-                Text((scenario.disabled == nil ? (scenario.used == nil ? String(format: "%d:%02d ~ %d:%02d", scenario.available_time.hour, scenario.available_time.minute, scenario.expire_time.hour, scenario.expire_time.minute) : String(format: String(localized: "CheckAtContent"), scenario.used!.hour, scenario.used!.minute) ) : (scenario.disabled)!))
+                Text((scenario.disabled == nil ? (scenario.used == nil ? String(format: "%d:%02d ~ %d:%02d", scenario.available_time.hour, scenario.available_time.minute, scenario.expire_time.hour, scenario.expire_time.minute) : String(format: String(localized: "CheckAtContent"), scenario.used!.hour, scenario.used!.minute) ) : String(localized: String.LocalizationValue(scenario.disabled!))))
                     .font(.callout)
                     .foregroundColor(.gray)
             }

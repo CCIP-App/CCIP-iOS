@@ -38,11 +38,11 @@ struct WiFiView: View {
                 }
             }
         }
-        .navigationTitle("Choose Network")
+        .navigationTitle(LocalizedStringKey("Choose Network"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button("Close") {
+                Button(LocalizedStringKey("Close")) {
                     dismiss()
                 }
             }

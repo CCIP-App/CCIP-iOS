@@ -58,13 +58,13 @@ struct TicketView: View {
                     }
                     .listRowBackground(Color.transparent)
                     
-                    Section(header: Text("Token")) {
+                    Section(header: Text(LocalizedStringKey("Token"))) {
                         Text(token)
                     }
                     
                     HStack(alignment: .center) {
                         Spacer()
-                        Text("Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths.")
+                        Text(LocalizedStringKey("TicketWarningContent"))
                             .foregroundColor(.gray)
                             .font(.footnote)
                         Spacer()
@@ -76,7 +76,7 @@ struct TicketView: View {
                 RedeemTokenView(eventAPI: eventAPI)
             }
         }
-        .navigationTitle("Ticket")
+        .navigationTitle(LocalizedStringKey("Ticket"))
         .navigationBarTitleDisplayMode(.inline)
     }
     

@@ -14,6 +14,7 @@ import OneSignal
 struct OPassApp: App {
     init() {
         FirebaseApp.configure()
+        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).overrideUserInterfaceStyle = .light
     }
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
@@ -22,7 +23,7 @@ struct OPassApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(OPassAPIViewModel())
-                .preferredColorScheme(.light) //DarkMode not design
+                .preferredColorScheme(.light)
         }
     }
 }

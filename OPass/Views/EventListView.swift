@@ -50,7 +50,7 @@ struct EventListView: View {
                         }
                     } else { ProgressView("Loading") }
                 } else {
-                    ErrorView {
+                    ErrorWithRetryView {
                         self.isError = false
                         Task {
                             do { try await self.OPassAPI.loadEventList() }

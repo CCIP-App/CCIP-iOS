@@ -89,13 +89,13 @@ struct ScheduleView: View {
                 Menu {
                     Picker(selection: $filter, label: EmptyView()) {
                         HStack {
-                            Text("所有議程")
+                            Text(LocalizedStringKey("AllSessions"))
                             Spacer()
                             Image(systemName: "list.bullet")
                         }
                         .tag(Filter.all)
                         HStack {
-                            Text("喜歡")
+                            Text(LocalizedStringKey("Favorite"))
                             Spacer()
                             Image(systemName: "heart\(filter == .liked ? ".fill" : "")")
                         }
@@ -104,13 +104,13 @@ struct ScheduleView: View {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(tags.id, id: \.self) { id in
-                                        Text(tags.data[id]?.zh.name ?? id)
+                                        Text(LocalizeIn(zh: tags.data[id]?.zh.name, en: tags.data[id]?.en.name) ?? id)
                                             .tag(Filter.tag(id))
                                     }
                                 }
                             } label: {
                                 HStack {
-                                    Text("標籤")
+                                    Text(LocalizedStringKey("Tags"))
                                     Spacer()
                                     switch filter {
                                         case .tag(_):

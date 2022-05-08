@@ -54,11 +54,15 @@ struct ScenarioModelsTransform: TransformFunction {
     }
     
     private static func toScenarioData(from data: RawScenarioDataModel) -> ScenarioDataModel {
-        var symbolName = "squareshape.squareshape.dashed" //default value
-        if data.id.contains("checkin") { symbolName = "pencil" }
-        else if data.id.contains("breakfast") || data.id.contains("lunch") || data.id.contains("dinner") { symbolName = "takeoutbag.and.cup.and.straw" }
-        else if data.id.contains("vipkit") { symbolName = "gift" }
-        else if data.id.contains("kit") { symbolName = "bag" }
+        var symbolName: String {
+            switch data.id {
+            case let id where id.contains("checkin") || id.contains("checkout"): return "pencil"
+            case let id where id.contains("breakfast") || id.contains("lunch") || id.contains("dinner"): return "takeoutbag.and.cup.and.straw"
+            case let id where id.contains("vipkit"): return "gift"
+            case let id where id.contains("kit"): return "bag"
+            default: return "squareshape.squareshape.dashed"
+            }
+        }
         
         return ScenarioDataModel(
             order: data.order,

@@ -21,19 +21,19 @@ struct AnnounceView: View {
                 if !announcements.isEmpty {
                     List(announcements, id: \.datetime) { announcement in
                         Button(action: {
-                            if let urlString = announcement.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: urlString) {
+                            if !announcement.uri.isEmpty, let url = URL(string: announcement.uri) {
                                 openURL(url)
                             }
                         }) {
                             HStack {
                                 VStack(alignment: .leading) {
-                                    Text(announcement.msg_zh).foregroundColor(.black)
+                                    Text(LocalizeIn(zh: announcement.msg_zh, en: announcement.msg_en)).foregroundColor(.black)
                                     Text(String(format: "%d/%d %d:%02d", announcement.datetime.month, announcement.datetime.day, announcement.datetime.hour, announcement.datetime.minute))
                                         .font(.footnote)
                                         .foregroundColor(.gray)
                                 }
                                 Spacer()
-                                if let _ = announcement.url {
+                                if !announcement.uri.isEmpty {
                                     Image(systemName: "chevron.right")
                                         .foregroundColor(.gray)
                                 }
@@ -49,7 +49,7 @@ struct AnnounceView: View {
                             .scaledToFit()
                             .frame(width: UIScreen.main.bounds.width * 0.25)
                             .foregroundColor(Color("LogoColor"))
-                        Text("Empty Announcement")
+                        Text(LocalizedStringKey("Empty Announcement"))
                             .font(.title2)
                     }
                     .task{
@@ -59,7 +59,7 @@ struct AnnounceView: View {
                     }
                 }
             } else {
-                ErrorView {
+                ErrorWithRetryView {
                     self.isError = false
                     Task {
                         do { try await self.eventAPI.loadAnnouncements() }
@@ -69,7 +69,7 @@ struct AnnounceView: View {
             }
         }
         .listStyle(.insetGrouped)
-        .navigationTitle("Announcement")
+        .navigationTitle(LocalizedStringKey("Announcement"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

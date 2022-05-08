@@ -7,6 +7,31 @@
   
 */
 
+"TryAgain" = "再試一次";
+"ErrorWithRetryContent" = "出了點問題，但不要擔心。\n讓我們再試一次。";
+"ErrorContent" = "出了點問題，但不要擔心。\n稍後再試試看。";
+"OhNo" = "喔不!";
+"ChooseNetwork" = "選擇網路";
+"Ticket" = "票券";
+"Token" = "驗證碼";
+"TicketWarningContent" = "請將您的票保密。除工作人員或活動攤位外，請勿與其他任何人共享。";
+"Announcement" = "公告";
+"EmptyAnnouncement" = "沒有公告";
+"Tags" = "標籤";
+"Favorite" = "喜歡";
+"AllSessions" = "所有議程";
+"Speakers" = "講師";
+"SessionIntroduction" = "議程介紹";
+"TimeWithLengthContent" = "%d:%02d ~ %d:%02d • %d分鐘";
+"Place" = "地點";
+"Live" = "直播";
+"CoWriting" = "共筆";
+"Record" = "紀錄";
+"Slide" = "簡報";
+"QA" = "問答";
+"Too late to check-in" = "使用時間已過";
+"For Supporters Only" = "專屬於支持者";
+"Haven't Check-in" = "尚未報到";
 "MON" = "一";
 "TUE" = "二";
 "WEN" = "三";
@@ -15,12 +40,13 @@
 "SAT" = "六";
 "SUN" = "日";
 "Continue" = "繼續";
-"EnterTokenManuallyContent" = "請查找電子郵件提供的驗證碼，並在上方中輸入";
+"EnterTokenManuallyContent" = "請查找電子郵件提供的驗證碼，並在上方欄位中輸入";
 "ScanToGetTokenContent" = "請尋找電子郵件提供的二維碼，並將其放置在取景器中";
 "ScanToGetToken" = "掃描取得驗證碼";
 "EnterTokenManually" = "手動輸入驗證碼";
 "SelectAPictureToScanQRCode" = "選擇照片掃描QR Code";
-"InvaildToken" = "錯誤的驗證碼";
+"InvaildToken" = "無效的驗證碼";
+"NoQRCodeFoundInPicture" = "在圖片中找不到QR Code";
 "ScanQRCodeWithCamera" = "使用相機掃描QR Code";
 "Complete" = "完成";
 "ConfirmUse" = "確認使用";

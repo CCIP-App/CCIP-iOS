@@ -7,6 +7,31 @@
   
 */
 
+"TryAgain" = "Try Again";
+"ErrorWithRetryContent" = "Something went wrong, but don't feel fret.\nLet's give it another shot.";
+"ErrorContent" = "Something went wrong, but don't feel fret.\nTry again later.";
+"OhNo" = "Oh no!";
+"ChooseNetwork" = "Choose Network";
+"Ticket" = "Ticket";
+"Token" = "Token";
+"TicketWarningContent" = "Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths.";
+"Announcement" = "Announcement";
+"EmptyAnnouncement" = "Empty Announcement";
+"Tags" = "Tags";
+"Favorite" = "Favorite";
+"AllSessions" = "All Sessions";
+"Speakers" = "Speakers";
+"SessionIntroduction" = "Session Introduction";
+"TimeWithLengthContent" = "%d:%02d ~ %d:%02d • %d minutes";
+"Place" = "Place";
+"Live" = "Live";
+"CoWriting" = "Co-writing";
+"Record" = "Record";
+"Slide" = "Slide";
+"QA" = "QA";
+"Too late to check-in" = "Too late to check-in";
+"For Supporters Only" = "For Supporters Only";
+"Haven't Check-in" = "Haven't Check-in";
 "MON" = "Mon";
 "TUE" = "Tue";
 "WEN" = "Wen";
@@ -21,6 +46,7 @@
 "EnterTokenManually" = "Enter token manually";
 "SelectAPictureToScanQRCode" = "Select a picture to scan QR Code";
 "InvaildToken" = "Invaild Token";
+"NoQRCodeFoundInPicture" = "No QR Code found in picture";
 "ScanQRCodeWithCamera" = "Scan QR Code with camera";
 "Complete" = "Complete";
 "ConfirmUse" = "Confirm Use";

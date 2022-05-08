@@ -34,14 +34,15 @@ struct ScheduleDetailView: View {
                 TagsSection(tagsID: scheduleDetail.tags, tags: eventAPI.eventSchedule?.tags.data ?? [:])
                     .padding(.vertical, 8)
                 
-                Text(scheduleDetail.zh.title)
+                Text(LocalizeIn(zh: scheduleDetail.zh.title, en: scheduleDetail.en.title))
                     .font(.largeTitle.bold())
-                    .fixedSize(horizontal: false, vertical: true) //To avoid unexpected line wrapping
+                    .fixedSize(horizontal: false, vertical: true)
                 
                 FeatureButtons(scheduleDetail: scheduleDetail)
                     .padding(.vertical)
                 
-                PlaceSection(name: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.zh.name ?? scheduleDetail.room)
+                PlaceSection(name: LocalizeIn(zh: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.zh.name,
+                                              en: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.en.name) ?? scheduleDetail.room)
                     .background(Color.white)
                     .cornerRadius(8)
                     .padding(.bottom)
@@ -110,7 +111,7 @@ fileprivate struct TagsSection: View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(tagsID, id: \.self) { tagID in
-                    Text(tags[tagID]?.zh.name ?? tagID)
+                    Text(LocalizeIn(zh: tags[tagID]?.zh.name, en: tags[tagID]?.en.name) ?? tagID)
                         .font(.caption)
                         .padding(.vertical, 2)
                         .padding(.horizontal, 8)
@@ -135,7 +136,7 @@ fileprivate struct FeatureButtons: View {
         self.scheduleDetail = scheduleDetail
         features = [
             (scheduleDetail.live, "video", "Live"),
-            (scheduleDetail.pad, "keyboard", "Co-writing"),
+            (scheduleDetail.pad, "keyboard", "CoWriting"),
             (scheduleDetail.record, "play", "Record"),
             (scheduleDetail.slide, "paperclip", "Slide"),
             (scheduleDetail.qa, "questionmark", "QA")
@@ -157,7 +158,7 @@ fileprivate struct FeatureButtons: View {
                                 .background(.white)
                                 .cornerRadius(10)
                         }
-                        Text(text)
+                        Text(LocalizedStringKey(text))
                             .font(.caption2)
                             .multilineTextAlignment(.center)
                    }
@@ -176,7 +177,7 @@ fileprivate struct PlaceSection: View {
             Image(systemName: "map").foregroundColor(Color.blue)
                 .padding()
             VStack(alignment: .leading) {
-                Text("Place").font(.caption)
+                Text(LocalizedStringKey("Place")).font(.caption)
                     .foregroundColor(.gray)
                 Text(name)
             }
@@ -206,7 +207,7 @@ fileprivate struct TimeSection: View {
                     .font(.caption)
                     .foregroundColor(.gray)
                 
-                Text(String(format: "%d:%02d ~ %d:%02d • %d minutes", start.hour, start.minute, end.hour, end.minute, durationMinute))
+                Text(String(format: String(localized: "TimeWithLengthContent"), start.hour, start.minute, end.hour, end.minute, durationMinute))
             }
             Spacer()
         }
@@ -221,7 +222,7 @@ fileprivate struct SpeakersSection: View {
     @Binding var showSpeaker: String?
     
     var body: some View {
-        Section("Speakers") {
+        Section(LocalizedStringKey("Speakers")) {
             ForEach(scheduleDetail.speakers, id: \.self) { speaker in
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(alignment: .center) {
@@ -239,14 +240,15 @@ fileprivate struct SpeakersSection: View {
                             .frame(width: 30, height: 30)
                         }
                         
-                        Text(eventAPI.eventSchedule?.speakers[speaker]?.zh.name ?? speaker)
+                        Text(LocalizeIn(zh: eventAPI.eventSchedule?.speakers[speaker]?.zh.name, en: eventAPI.eventSchedule?.speakers[speaker]?.en.name) ?? speaker)
                             .font(.subheadline.bold())
                         Spacer()
                     }
                     .padding(.vertical, 8)
-                    if let speakerData = eventAPI.eventSchedule?.speakers[speaker], speakerData.zh.bio != "" {
+                    if let speakerData = eventAPI.eventSchedule?.speakers[speaker], LocalizeIn(zh: speakerData.zh.bio, en: speakerData.en.bio) != "" {
                         Divider()
-                        SpeakerBio(speaker: eventAPI.eventSchedule?.speakers[speaker]?.zh.name ?? speaker, speakerBio: speakerData.zh.bio)
+                        SpeakerBio(speaker: LocalizeIn(zh: eventAPI.eventSchedule?.speakers[speaker]?.zh.name, en: eventAPI.eventSchedule?.speakers[speaker]?.en.name) ?? speaker,
+                                   speakerBio: LocalizeIn(zh: speakerData.zh.bio, en: speakerData.en.bio))
                     }
                 }
                 .padding(.horizontal, 10)
@@ -256,6 +258,7 @@ fileprivate struct SpeakersSection: View {
             }
             .listRowBackground(Color.transparent)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            .listRowSeparator(.hidden)
         }
     }
 }
@@ -282,7 +285,7 @@ struct SpeakerBio: View {
                                     Text(speaker)
                                         .font(.title.bold())
                                     
-                                    if speakerBio != "" {
+                                    if !speakerBio.isEmpty {
                                         HStack {
                                             Markdown(speakerBio.tirm())
                                                 .markdownStyle(
@@ -301,7 +304,7 @@ struct SpeakerBio: View {
                                     Text(speaker)
                                         .font(.title.bold())
                                     
-                                    if speakerBio != "" {
+                                    if !speakerBio.isEmpty {
                                         HStack {
                                             ScrollView {
                                                 Markdown(speakerBio.tirm())
@@ -325,7 +328,7 @@ struct SpeakerBio: View {
                 .background(
                     VStack {
                         VStack {
-                            if speakerBio != "" {
+                            if !speakerBio.isEmpty {
                                 HStack {
                                     Markdown(speakerBio.tirm())
                                         .markdownStyle(
@@ -353,7 +356,7 @@ fileprivate struct DescriptionSection: View {
     let description: String
     
     var body: some View {
-        Section("Session Introduction") {
+        Section(LocalizedStringKey("SessionIntroduction")) {
             Markdown(description.tirm())
                 .markdownStyle(
                     MarkdownStyle(font: .footnote)

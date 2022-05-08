@@ -61,12 +61,12 @@ struct RedeemTokenView: View {
                                 .padding(.vertical, 10)
                                 .background(Color.green)
                                 .cornerRadius(9)
-                            Text("Select a picture to scan QR Code").foregroundColor(Color.black)
+                            Text(LocalizedStringKey("SelectAPictureToScanQRCode")).foregroundColor(Color.black)
                             Spacer()
                             Image(systemName: "chevron.right").foregroundColor(.gray)
                         }
                     }
-                    .alert(LocalizedStringKey("SelectAPictureToScanQRCode"), isPresented: $isShowingNoQRCodeAlert) {
+                    .alert(LocalizedStringKey("NoQRCodeFoundInPicture"), isPresented: $isShowingNoQRCodeAlert) {
                         Button("OK", role: .cancel) {
                             isShowingNoQRCodeAlert = false
                         }
