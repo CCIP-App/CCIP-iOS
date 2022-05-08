@@ -222,7 +222,7 @@ fileprivate struct SpeakersSection: View {
     @Binding var showSpeaker: String?
     
     var body: some View {
-        Section(LocalizedStringKey("Speakers")) {
+        Section(header: Text(LocalizedStringKey("Speakers")).padding(.leading, 10)) {
             ForEach(scheduleDetail.speakers, id: \.self) { speaker in
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(alignment: .center) {
@@ -257,9 +257,9 @@ fileprivate struct SpeakersSection: View {
                 .padding(.bottom, 8)
             }
             .listRowBackground(Color.transparent)
-            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             .listRowSeparator(.hidden)
         }
+        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
 }
 
@@ -356,7 +356,7 @@ fileprivate struct DescriptionSection: View {
     let description: String
     
     var body: some View {
-        Section(LocalizedStringKey("SessionIntroduction")) {
+        Section(header: Text(LocalizedStringKey("SessionIntroduction")).padding(.leading, 10)) {
             Markdown(description.tirm())
                 .markdownStyle(
                     MarkdownStyle(font: .footnote)
