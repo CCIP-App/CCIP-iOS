@@ -12,6 +12,12 @@ struct FastpassView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     @State var isShowingLoading = false
+    let display_text: DisplayTextModel
+    
+    init(eventAPI: EventAPIViewModel) {
+        self.eventAPI = eventAPI
+        self.display_text = eventAPI.eventSettings.feature(ofType: .fastpass).display_text
+    }
     
     var body: some View {
         VStack {
@@ -31,7 +37,7 @@ struct FastpassView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {
-                    Text(LocalizedStringKey("FastPass")).font(.headline)
+                    Text(LocalizeIn(zh: display_text.zh, en: display_text.en)).font(.headline)
                     Text(LocalizeIn(zh: eventAPI.display_name.zh, en: eventAPI.display_name.en)).font(.caption).foregroundColor(.gray)
                 }
             }

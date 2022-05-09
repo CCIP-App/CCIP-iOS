@@ -10,6 +10,7 @@ import SwiftUI
 import SwiftDate
 import MarkdownUI
 import SlideOverCard
+import BetterSafariView
 
 struct ScheduleDetailView: View {
     
@@ -18,6 +19,9 @@ struct ScheduleDetailView: View {
     @AppStorage var likedSessions: [String]
     @State var isShowingSpeakerDetail: Bool = false
     @State var showSpeaker: String?
+    @State var url: URL = URL(string: "https://opass.app")!
+    @State var showingUrlAlert = false
+    @State var showingSafari = false
     private var isLiked: Bool {
         likedSessions.contains(scheduleDetail.id)
     }
@@ -40,6 +44,14 @@ struct ScheduleDetailView: View {
                 
                 FeatureButtons(scheduleDetail: scheduleDetail)
                     .padding(.vertical)
+                    .environment(
+                        \.openURL,
+                         OpenURLAction { url in
+                             self.url = url
+                             self.showingSafari = true
+                             return .handled
+                         }
+                    )
                 
                 PlaceSection(name: LocalizeIn(zh: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.zh.name,
                                               en: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.en.name) ?? scheduleDetail.room)
@@ -53,13 +65,29 @@ struct ScheduleDetailView: View {
             }
             .listRowBackground(Color.transparent)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            .alert(LocalizedStringKey("Open \(url) ?"), isPresented: $showingUrlAlert) {
+                Button(String(localized: "Cancel")) {}
+                Button(String(localized: "Yes")) { showingSafari.toggle() }
+            }
+            .safariView(isPresented: $showingSafari) {
+                SafariView(
+                    url: url,
+                    configuration: SafariView.Configuration(
+                        entersReaderIfAvailable: false,
+                        barCollapsingEnabled: true
+                    )
+                )
+                .preferredBarAccentColor(.white)
+                .preferredControlAccentColor(.accentColor)
+                .dismissButtonStyle(.cancel)
+            }
                 
             if scheduleDetail.speakers.count != 0 {
-                SpeakersSection(eventAPI: eventAPI, scheduleDetail: scheduleDetail, showSpeaker: $showSpeaker)
+                SpeakersSection(eventAPI: eventAPI, scheduleDetail: scheduleDetail, showSpeaker: $showSpeaker, url: $url, showingAlert: $showingUrlAlert)
             }
             
             if let description = scheduleDetail.zh.description, description != "" {
-                DescriptionSection(description: description)
+                DescriptionSection(description: description, url: $url, showingAlert: $showingUrlAlert)
             }
         }
         .listStyle(.insetGrouped)
@@ -220,6 +248,8 @@ fileprivate struct SpeakersSection: View {
     @ObservedObject var eventAPI: EventAPIViewModel
     let scheduleDetail: SessionDataModel
     @Binding var showSpeaker: String?
+    @Binding var url: URL
+    @Binding var showingAlert: Bool
     
     var body: some View {
         Section(header: Text(LocalizedStringKey("Speakers")).padding(.leading, 10)) {
@@ -248,7 +278,7 @@ fileprivate struct SpeakersSection: View {
                     if let speakerData = eventAPI.eventSchedule?.speakers[speaker], LocalizeIn(zh: speakerData.zh.bio, en: speakerData.en.bio) != "" {
                         Divider()
                         SpeakerBio(speaker: LocalizeIn(zh: eventAPI.eventSchedule?.speakers[speaker]?.zh.name, en: eventAPI.eventSchedule?.speakers[speaker]?.en.name) ?? speaker,
-                                   speakerBio: LocalizeIn(zh: speakerData.zh.bio, en: speakerData.en.bio))
+                                   speakerBio: LocalizeIn(zh: speakerData.zh.bio, en: speakerData.en.bio), url: $url, showingAlert: $showingAlert)
                     }
                 }
                 .padding(.horizontal, 10)
@@ -266,6 +296,8 @@ fileprivate struct SpeakersSection: View {
 struct SpeakerBio: View {
     let speaker: String
     let speakerBio: String
+    @Binding var url: URL
+    @Binding var showingAlert: Bool
     @State var isTruncated: Bool = false
     @State var isShowingSpeakerDetail = false
     @State var readSize: CGSize = .zero
@@ -275,6 +307,7 @@ struct SpeakerBio: View {
             TruncableMarkdown(text: speakerBio, font: .footnote, lineLimit: 2) {
                 isTruncated = $0
             }
+            
             if isTruncated {
                 HStack {
                     Spacer()
@@ -354,6 +387,8 @@ struct SpeakerBio: View {
 fileprivate struct DescriptionSection: View {
     
     let description: String
+    @Binding var url: URL
+    @Binding var showingAlert: Bool
     
     var body: some View {
         Section(header: Text(LocalizedStringKey("SessionIntroduction")).padding(.leading, 10)) {
@@ -362,6 +397,14 @@ fileprivate struct DescriptionSection: View {
                     MarkdownStyle(font: .footnote)
                 )
                 .padding()
+                .environment(
+                    \.openURL,
+                     OpenURLAction { url in
+                         self.url = url
+                         self.showingAlert = true
+                         return .handled
+                     }
+                )
         }
         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }

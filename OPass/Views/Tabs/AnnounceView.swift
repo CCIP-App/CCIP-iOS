@@ -11,9 +11,16 @@ import SwiftUI
 struct AnnounceView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
+    let display_text: DisplayTextModel
     @State var isError = false
     var announcements: [AnnouncementModel]
     @Environment(\.openURL) var openURL
+    
+    init(eventAPI: EventAPIViewModel, announcements: [AnnouncementModel]) {
+        self.eventAPI = eventAPI
+        self.display_text = eventAPI.eventSettings.feature(ofType: .announcement).display_text
+        self.announcements = announcements
+    }
     
     var body: some View {
         VStack {
@@ -26,7 +33,7 @@ struct AnnounceView: View {
                             }
                         }) {
                             HStack {
-                                VStack(alignment: .leading) {
+                                VStack(alignment: .leading, spacing: 3) {
                                     Text(LocalizeIn(zh: announcement.msg_zh, en: announcement.msg_en)).foregroundColor(.black)
                                     Text(String(format: "%d/%d %d:%02d", announcement.datetime.month, announcement.datetime.day, announcement.datetime.hour, announcement.datetime.minute))
                                         .font(.footnote)
@@ -49,7 +56,7 @@ struct AnnounceView: View {
                             .scaledToFit()
                             .frame(width: UIScreen.main.bounds.width * 0.25)
                             .foregroundColor(Color("LogoColor"))
-                        Text(LocalizedStringKey("Empty Announcement"))
+                        Text(LocalizedStringKey("EmptyAnnouncement"))
                             .font(.title2)
                     }
                     .task{
@@ -69,7 +76,7 @@ struct AnnounceView: View {
             }
         }
         .listStyle(.insetGrouped)
-        .navigationTitle(LocalizedStringKey("Announcement"))
+        .navigationTitle(LocalizeIn(zh: display_text.zh, en: display_text.en))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

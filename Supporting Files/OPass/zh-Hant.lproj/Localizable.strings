@@ -15,7 +15,6 @@
 "Ticket" = "票券";
 "Token" = "驗證碼";
 "TicketWarningContent" = "請將您的票保密。除工作人員或活動攤位外，請勿與其他任何人共享。";
-"Announcement" = "公告";
 "EmptyAnnouncement" = "沒有公告";
 "Tags" = "標籤";
 "Favorite" = "喜歡";
@@ -51,6 +50,7 @@
 "Complete" = "完成";
 "ConfirmUse" = "確認使用";
 "ConfirmUseScenarioMessage" = "此項目只能使用一次，請按照工作人員的指示使用。";
+"Yes" = "好";
 "Cancel" = "取消";
 "SignOut" = "登出";
 "ConfirmSignOut" = "確定登出？";
@@ -58,7 +58,6 @@
 "NotAvailable" = "無法使用";
 "OnlyAvailableAtContent" = "開放時間：\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d";
 "Loading" = "載入中...";
-"FastPass" = "快速通關";
 "Setting" = "設定";
 "ABOUT" = "關於";
 "OfficialWebsite" = "官方網站";

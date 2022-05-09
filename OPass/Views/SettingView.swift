@@ -7,13 +7,17 @@
 //
 
 import SwiftUI
+import BetterSafariView
 
 struct SettingView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @Environment(\.openURL) var openURL
+    @State var isShowCCIPWebsite = false
+    @State var isShowCCIPGitHub = false
+    @State var isShowCCIPPolicy = false
     private let CCIPWebsite = "https://opass.app"
-    private let CCIPGithub = "https://github.com/CCIP-App"
+    private let CCIPGitHub = "https://github.com/CCIP-App"
     private let CCIPPolicy = "https://opass.app/privacy-policy.html"
     
     var body: some View {
@@ -51,7 +55,7 @@ struct SettingView: View {
                     }
                     
                     Button(action: {
-                        openURL(URL(string: CCIPWebsite)!)
+                        isShowCCIPWebsite.toggle()
                     }) {
                         HStack {
                             VStack(alignment: .leading) {
@@ -72,15 +76,27 @@ struct SettingView: View {
                                 .frame(width: UIScreen.main.bounds.width * 0.045)
                         }
                     }
+                    .safariView(isPresented: $isShowCCIPWebsite) {
+                        SafariView(
+                            url: URL(string: CCIPWebsite)!,
+                            configuration: SafariView.Configuration(
+                                entersReaderIfAvailable: false,
+                                barCollapsingEnabled: true
+                            )
+                        )
+                        .preferredBarAccentColor(.white)
+                        .preferredControlAccentColor(.accentColor)
+                        .dismissButtonStyle(.cancel)
+                    }
                     
                     Button(action: {
-                        openURL(URL(string: CCIPGithub)!)
+                        isShowCCIPGitHub.toggle()
                     }) {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text("GitHub")
                                     .foregroundColor(.black)
-                                Text(CCIPGithub)
+                                Text(CCIPGitHub)
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
@@ -95,9 +111,21 @@ struct SettingView: View {
                                 .frame(width: UIScreen.main.bounds.width * 0.045)
                         }
                     }
+                    .safariView(isPresented: $isShowCCIPGitHub) {
+                        SafariView(
+                            url: URL(string: CCIPGitHub)!,
+                            configuration: SafariView.Configuration(
+                                entersReaderIfAvailable: false,
+                                barCollapsingEnabled: true
+                            )
+                        )
+                        .preferredBarAccentColor(.white)
+                        .preferredControlAccentColor(.accentColor)
+                        .dismissButtonStyle(.cancel)
+                    }
                     
                     Button(action: {
-                        openURL(URL(string: CCIPPolicy)!)
+                        isShowCCIPPolicy.toggle()
                     }) {
                         HStack {
                             VStack(alignment: .leading) {
@@ -117,6 +145,18 @@ struct SettingView: View {
                                 .foregroundColor(.gray)
                                 .frame(width: UIScreen.main.bounds.width * 0.045)
                         }
+                    }
+                    .safariView(isPresented: $isShowCCIPPolicy) {
+                        SafariView(
+                            url: URL(string: CCIPPolicy)!,
+                            configuration: SafariView.Configuration(
+                                entersReaderIfAvailable: false,
+                                barCollapsingEnabled: true
+                            )
+                        )
+                        .preferredBarAccentColor(.white)
+                        .preferredControlAccentColor(.accentColor)
+                        .dismissButtonStyle(.cancel)
                     }
 
                 }

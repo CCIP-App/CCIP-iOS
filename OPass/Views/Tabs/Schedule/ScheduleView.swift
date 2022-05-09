@@ -13,13 +13,15 @@ struct ScheduleView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     @AppStorage var likedSessions: [String]
+    let display_text: DisplayTextModel
     @State var selectDayIndex = 0
     @State var filter = Filter.all
     @State var first = true
     
     init(eventAPI: EventAPIViewModel) {
-        _eventAPI = ObservedObject(wrappedValue: eventAPI)
+        self.eventAPI = eventAPI
         _likedSessions = AppStorage(wrappedValue: [], "liked_sessions", store: UserDefaults(suiteName: eventAPI.event_id))
+        self.display_text = eventAPI.eventSettings.feature(ofType: .schedule).display_text
     }
     
     var body: some View {
@@ -82,7 +84,7 @@ struct ScheduleView: View {
                 first.toggle()
             }
         }
-        .navigationTitle("Schedule")
+        .navigationTitle(LocalizeIn(zh: display_text.zh, en: display_text.en))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

@@ -38,7 +38,7 @@ struct WiFiView: View {
                 }
             }
         }
-        .navigationTitle(LocalizedStringKey("Choose Network"))
+        .navigationTitle(LocalizeIn(zh: feature.display_text.zh, en: feature.display_text.en))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {

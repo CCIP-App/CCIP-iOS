@@ -15,7 +15,6 @@
 "Ticket" = "Ticket";
 "Token" = "Token";
 "TicketWarningContent" = "Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths.";
-"Announcement" = "Announcement";
 "EmptyAnnouncement" = "Empty Announcement";
 "Tags" = "Tags";
 "Favorite" = "Favorite";
@@ -51,6 +50,7 @@
 "Complete" = "Complete";
 "ConfirmUse" = "Confirm Use";
 "ConfirmUseScenarioMessage" = "This item can only be used once, please follow the instructions of the staff to use.";
+"Yes" = "Yes";
 "Cancel" = "Cancel";
 "SignOut" = "Sign Out";
 "ConfirmSignOut" = "Confirm Sign Out?";
@@ -58,7 +58,6 @@
 "NotAvailable" = "Not Available";
 "OnlyAvailableAtContent" = "Only available at\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d";
 "Loading" = "Loading...";
-"FastPass" = "Fast Pass";
 "Setting" = "Setting";
 "ABOUT" = "ABOUT";
 "OfficialWebsite" = "Official Website";

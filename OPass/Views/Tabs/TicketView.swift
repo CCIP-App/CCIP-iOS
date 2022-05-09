@@ -12,8 +12,14 @@ import CoreImage.CIFilterBuiltins
 struct TicketView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
+    let display_text: DisplayTextModel
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
+    
+    init(eventAPI: EventAPIViewModel) {
+        self.eventAPI = eventAPI
+        self.display_text = eventAPI.eventSettings.feature(ofType: .ticket).display_text
+    }
     
     var body: some View {
         VStack {
@@ -76,7 +82,7 @@ struct TicketView: View {
                 RedeemTokenView(eventAPI: eventAPI)
             }
         }
-        .navigationTitle(LocalizedStringKey("Ticket"))
+        .navigationTitle(LocalizeIn(zh: display_text.zh, en: display_text.en))
         .navigationBarTitleDisplayMode(.inline)
     }
     
