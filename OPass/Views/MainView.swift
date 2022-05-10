@@ -116,7 +116,10 @@ struct TabButton: View {
                 .tabButtonStyle(color: feature.color, width: width)
             case .wifi:
                 Button(action: {
-                    presentingWifiSheet.toggle()
+                    if let wifi = feature.wifi, wifi.count == 1 {
+                        NEHotspot.ConnectWiFi(SSID: wifi[0].SSID, withPass: wifi[0].password)
+                    }
+                    else { presentingWifiSheet.toggle() }
                 }) {
                     Image(systemName: feature.symbolName)
                         .resizable()

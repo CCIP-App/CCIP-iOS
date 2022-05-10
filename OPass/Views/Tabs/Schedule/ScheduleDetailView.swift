@@ -100,7 +100,7 @@ struct ScheduleDetailView: View {
                     }.hidden() //Disable temporary until OPass server udpate feature
                     
                     SFButton(systemName: "heart\(isLiked ? ".fill" : "")") {
-                        registeringNotification(
+                        UNUserNotification.registeringNotification(
                             id: scheduleDetail.id,
                             title: String(localized: "SessionWillStartIn5Minutes"),
                             content: String(format: String(localized: "SessionWillStartIn5MinutesContent"),

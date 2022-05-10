@@ -8,8 +8,10 @@
 
 import Foundation
 import SwiftDate
+import OSLog
 
 final class APIRepo {
+    private static let logger = Logger(subsystem: "app.opass.ccip", category: "APIRepo")
     enum LoadError: Error {
         case invalidURL(url: URLs)
         case dataFetchingFailed(cause: Error)
@@ -45,28 +47,28 @@ final class APIRepo {
     //Opass APIs
     static func loadEventList() async throws -> [EventTitleModel] {
         guard let url = URL(.eventList) else {
-            print("Invalid EventList URL")
+            logger.error("Invalid EventList URL: \(URLs.eventList.getString())")
             throw LoadError.invalidURL(url: .eventList)
         }
         
         do {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
-            print("EventList Data Error")
+            logger.error("EventList Data Error: \(error.localizedDescription)")
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
     
     static func loadEventSettings(id: String) async throws -> SettingsModel {
         guard let settingsUrl = URL(.settings(id)) else {
-            print("Invalid Settings URL")
+            logger.error("Invalid Settings URL: \(URLs.settings(id).getString())")
             throw LoadError.invalidURL(url: .settings(id))
         }
         
         do {
             return try await URLSession.shared.jsonData(from: settingsUrl)
         } catch {
-            print("Settings Data Error")
+            logger.error("Settings Data Error: \(error.localizedDescription)")
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
@@ -74,45 +76,45 @@ final class APIRepo {
     //Event APIs
     static func load(@Feature(.fastpass) scenarioUseFrom feature: FeatureModel, scenario: String, token: String) async throws -> ScenarioStatusModel {
         guard let baseURL = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            print("Couldn't find URL in feature: \(feature)")
+            logger.error("Couldn't find URL in feature: \(feature.feature.rawValue)")
             throw LoadError.missingURL(feature: feature)
         }
         
         guard let url = URL(.scenarioUse(baseURL, scenario, token)) else {
-            print("Invalid ScenarioUse URL")
+            logger.error("Invalid ScenarioUse URL: \(URLs.scenarioUse(baseURL, scenario, token).getString())")
             throw LoadError.invalidURL(url: .scenarioUse(baseURL, scenario, token))
         }
         
         do {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
-            print("Invaild ScenarioUse or AccessToken Error")
+            logger.error("Invaild ScenarioUse or AccessToken Error: \(error.localizedDescription)")
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
     
     static func load(@Feature(.fastpass) scenarioStatusFrom feature: FeatureModel,token: String) async throws -> ScenarioStatusModel {
         guard let baseURL = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            print("Couldn't find URL in feature: \(feature)")
+            logger.error("Couldn't find URL in feature: \(feature.feature.rawValue)")
             throw LoadError.missingURL(feature: feature)
         }
         
         guard let url = URL(.scenarioStatus(baseURL, token)) else {
-            print("Invalid ScenarioStatus URL")
+            logger.error("Invalid ScenarioStatus URL: \(URLs.scenarioStatus(baseURL, token).getString())")
             throw LoadError.invalidURL(url: .scenarioStatus(baseURL, token))
         }
         
         do {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
-            print("ScenarioStatus Data or AccessToken Error")
+            logger.error("ScenarioStatus Data or AccessToken Error: \(error.localizedDescription)")
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
     
     static func loadLogo(from url: String) async throws -> Data {
         guard let urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let logoUrl = URL(string: urlString) else {
-            print("Invalid Logo URL")
+            logger.error("Invalid Logo URL: \(url)")
             throw LoadError.invalidURL(url: .raw(url))
         }
 
@@ -120,45 +122,45 @@ final class APIRepo {
             let (data, _) = try await URLSession.shared.data(from: logoUrl)
             return data
         } catch {
-            print("Logo Data Error")
+            logger.error("Logo Data Error: \(error.localizedDescription)")
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
     
     static func load(@Feature(.schedule) scheduleFrom schedule: FeatureModel) async throws -> ScheduleModel {
         guard let baseURL = schedule.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            print("Couldn't find URL in feature: \(schedule)")
+            logger.error("Couldn't find URL in feature: \(schedule.feature.rawValue)")
             throw LoadError.missingURL(feature: schedule)
         }
         
         guard let url = URL(string: baseURL) else {
-            print("Invalid Schedule URL")
+            logger.error("Invalid Schedule URL: \(baseURL)")
             throw LoadError.invalidURL(url: .raw(baseURL))
         }
         
         do {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
-            print("Schedule Data Errir")
+            logger.error("Schedule Data Error: \(error.localizedDescription)")
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
     
     static func load(@Feature(.announcement) announcementFrom feature: FeatureModel, token: String) async throws -> [AnnouncementModel] {
         guard let baseURL = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            print("Couldn't find URL in feature: \(feature)")
+            logger.error("Couldn't find URL in feature: \(feature.feature.rawValue)")
             throw LoadError.missingURL(feature: feature)
         }
         
         guard let url = URL(.announcements(baseURL, token)) else {
-            print("Invalid Announcements URL")
+            logger.error("Invalid Announcements URL: \(URLs.announcements(baseURL, token).getString())")
             throw LoadError.invalidURL(url: .announcements(baseURL, token))
         }
         
         do {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
-            print("Announcement Data Error")
+            logger.error("Announcement Data Error: \(error.localizedDescription)")
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }

@@ -21,8 +21,8 @@ struct ScenarioView: View {
         VStack {
             Form {
                 FastpassLogoView(eventAPI: eventAPI)
-                .frame(height: UIScreen.main.bounds.width * 0.4)
-                .listRowBackground(Color.white.opacity(0))
+                    .frame(height: UIScreen.main.bounds.width * 0.4)
+                    .listRowBackground(Color.transparent)
                 
                 ForEach(eventAPI.eventScenarioStatus?.scenarios.sectionID ?? [], id: \.self) { sectionID in
                     Section(header: Text(sectionID)) {

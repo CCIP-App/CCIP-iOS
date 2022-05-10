@@ -164,14 +164,13 @@ class EventAPIViewModel: ObservableObject {
         Task{ await self.saveData() }
     }
     
-    func loadSchedule() async {
+    func loadSchedule() async throws {
         @Feature(.schedule, in: eventSettings) var scheduleFeature
         
-        if let schedule = try? await APIRepo.load(scheduleFrom: scheduleFeature) {
-            DispatchQueue.main.async {
-                self.eventSchedule = schedule
-                Task { await self.saveData() }
-            }
+        let schedule = try await APIRepo.load(scheduleFrom: scheduleFeature)
+        DispatchQueue.main.async {
+            self.eventSchedule = schedule
+            Task { await self.saveData() }
         }
     }
     

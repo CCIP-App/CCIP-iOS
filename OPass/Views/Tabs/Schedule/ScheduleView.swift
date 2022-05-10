@@ -17,6 +17,7 @@ struct ScheduleView: View {
     @State var selectDayIndex = 0
     @State var filter = Filter.all
     @State var first = true
+    @State var isError = false
     
     init(eventAPI: EventAPIViewModel) {
         self.eventAPI = eventAPI
@@ -26,28 +27,39 @@ struct ScheduleView: View {
     
     var body: some View {
         VStack {
-            if let allScheduleData = eventAPI.eventSchedule {
-                VStack(spacing: 0) {
-                    if allScheduleData.sessions.count > 1 {
-                        SelectDayView(selectDayIndex: $selectDayIndex, sessions: allScheduleData.sessions)
-                    }
-                    
-                    Form {
-                        ForEach(allScheduleData.sessions[selectDayIndex].header, id: \.self) { header in
-                            if let filteredData = allScheduleData.sessions[selectDayIndex].data[header]?.filter { session in
-                                switch filter {
-                                    case .liked: return likedSessions.contains(session.id)
-                                    case .tag(let tag): return session.tags.contains(tag)
-                                    default: return true
-                                }
-                            }, !filteredData.isEmpty {
-                                Section {
-                                    ForEach(filteredData.sorted(by: { $0.end < $1.end }), id: \.id) { sessionDetail in
-                                        if sessionDetail.type != "Ev" {
-                                            NavigationLink(
-                                                destination: ScheduleDetailView(eventAPI: eventAPI,
-                                                                                scheduleDetail: sessionDetail)
-                                            ){
+            if !isError {
+                if let allScheduleData = eventAPI.eventSchedule {
+                    VStack(spacing: 0) {
+                        if allScheduleData.sessions.count > 1 {
+                            SelectDayView(selectDayIndex: $selectDayIndex, sessions: allScheduleData.sessions)
+                        }
+                        
+                        Form {
+                            ForEach(allScheduleData.sessions[selectDayIndex].header, id: \.self) { header in
+                                if let filteredData = allScheduleData.sessions[selectDayIndex].data[header]?.filter { session in
+                                    switch filter {
+                                        case .liked: return likedSessions.contains(session.id)
+                                        case .tag(let tag): return session.tags.contains(tag)
+                                        default: return true
+                                    }
+                                }, !filteredData.isEmpty {
+                                    Section {
+                                        ForEach(filteredData.sorted(by: { $0.end < $1.end }), id: \.id) { sessionDetail in
+                                            if sessionDetail.type != "Ev" {
+                                                NavigationLink(
+                                                    destination: ScheduleDetailView(eventAPI: eventAPI,
+                                                                                    scheduleDetail: sessionDetail)
+                                                ){
+                                                    DetailOverView(
+                                                        room: (LocalizeIn (
+                                                            zh: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name,
+                                                            en: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.en.name
+                                                        ) ?? sessionDetail.room),
+                                                        start: sessionDetail.start,
+                                                        end: sessionDetail.end,
+                                                        title: sessionDetail.zh.title)
+                                                }
+                                            } else {
                                                 DetailOverView(
                                                     room: (LocalizeIn (
                                                         zh: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name,
@@ -57,31 +69,29 @@ struct ScheduleView: View {
                                                     end: sessionDetail.end,
                                                     title: sessionDetail.zh.title)
                                             }
-                                        } else {
-                                            DetailOverView(
-                                                room: (LocalizeIn (
-                                                    zh: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name,
-                                                    en: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.en.name
-                                                ) ?? sessionDetail.room),
-                                                start: sessionDetail.start,
-                                                end: sessionDetail.end,
-                                                title: sessionDetail.zh.title)
                                         }
                                     }
+                                    .listRowInsets(.init(top: 10, leading: 15, bottom: 10, trailing: 15))
                                 }
-                                .listRowInsets(.init(top: 10, leading: 15, bottom: 10, trailing: 15))
                             }
                         }
+                        .refreshable { try? await eventAPI.loadSchedule() }
                     }
+                } else {
+                    ProgressView("Loading...")
+                        .task {
+                            do { try await eventAPI.loadSchedule() }
+                            catch { isError = true }
+                        }
                 }
             } else {
-                ProgressView("Loading...")
-            }
-        }
-        .task {
-            if first {
-                await eventAPI.loadSchedule()
-                first.toggle()
+                ErrorWithRetryView {
+                    self.isError = false
+                    Task {
+                        do { try await eventAPI.loadSchedule() }
+                        catch { self.isError = true }
+                    }
+                }
             }
         }
         .navigationTitle(LocalizeIn(zh: display_text.zh, en: display_text.en))
