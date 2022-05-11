@@ -13,12 +13,11 @@ struct SettingView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @Environment(\.openURL) var openURL
-    @State var isShowCCIPWebsite = false
-    @State var isShowCCIPGitHub = false
-    @State var isShowCCIPPolicy = false
-    private let CCIPWebsite = "https://opass.app"
-    private let CCIPGitHub = "https://github.com/CCIP-App"
-    private let CCIPPolicy = "https://opass.app/privacy-policy.html"
+    @State var isShowingSafari = false
+    @State var url = URL(string: "https://opass.app")!
+    private let CCIPWebsiteURL = URL(string: "https://opass.app")!
+    private let CCIPGitHubURL = URL(string: "https://github.com/CCIP-App")!
+    private let CCIPPolicyURL = URL(string: "https://opass.app/privacy-policy.html")!
     
     var body: some View {
         VStack {
@@ -55,13 +54,14 @@ struct SettingView: View {
                     }
                     
                     Button(action: {
-                        isShowCCIPWebsite.toggle()
+                        url = CCIPWebsiteURL
+                        isShowingSafari.toggle()
                     }) {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(LocalizedStringKey("OfficialWebsite"))
                                     .foregroundColor(.black)
-                                Text(CCIPWebsite)
+                                Text("\(CCIPWebsiteURL)")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
@@ -76,27 +76,16 @@ struct SettingView: View {
                                 .frame(width: UIScreen.main.bounds.width * 0.045)
                         }
                     }
-                    .safariView(isPresented: $isShowCCIPWebsite) {
-                        SafariView(
-                            url: URL(string: CCIPWebsite)!,
-                            configuration: SafariView.Configuration(
-                                entersReaderIfAvailable: false,
-                                barCollapsingEnabled: true
-                            )
-                        )
-                        .preferredBarAccentColor(.white)
-                        .preferredControlAccentColor(.accentColor)
-                        .dismissButtonStyle(.cancel)
-                    }
                     
                     Button(action: {
-                        isShowCCIPGitHub.toggle()
+                        url = CCIPGitHubURL
+                        isShowingSafari.toggle()
                     }) {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text("GitHub")
                                     .foregroundColor(.black)
-                                Text(CCIPGitHub)
+                                Text("\(CCIPGitHubURL)")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
@@ -111,27 +100,16 @@ struct SettingView: View {
                                 .frame(width: UIScreen.main.bounds.width * 0.045)
                         }
                     }
-                    .safariView(isPresented: $isShowCCIPGitHub) {
-                        SafariView(
-                            url: URL(string: CCIPGitHub)!,
-                            configuration: SafariView.Configuration(
-                                entersReaderIfAvailable: false,
-                                barCollapsingEnabled: true
-                            )
-                        )
-                        .preferredBarAccentColor(.white)
-                        .preferredControlAccentColor(.accentColor)
-                        .dismissButtonStyle(.cancel)
-                    }
                     
                     Button(action: {
-                        isShowCCIPPolicy.toggle()
+                        url = CCIPPolicyURL
+                        isShowingSafari.toggle()
                     }) {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(LocalizedStringKey("PrivacyPolicy"))
                                     .foregroundColor(.black)
-                                Text(CCIPPolicy)
+                                Text("\(CCIPPolicyURL)")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
@@ -146,19 +124,6 @@ struct SettingView: View {
                                 .frame(width: UIScreen.main.bounds.width * 0.045)
                         }
                     }
-                    .safariView(isPresented: $isShowCCIPPolicy) {
-                        SafariView(
-                            url: URL(string: CCIPPolicy)!,
-                            configuration: SafariView.Configuration(
-                                entersReaderIfAvailable: false,
-                                barCollapsingEnabled: true
-                            )
-                        )
-                        .preferredBarAccentColor(.white)
-                        .preferredControlAccentColor(.accentColor)
-                        .dismissButtonStyle(.cancel)
-                    }
-
                 }
                 
                 Section(header: Text("DEVELOPER")) {
@@ -167,6 +132,18 @@ struct SettingView: View {
                         Text("Developer Option")
                     }
                 }
+            }
+            .safariView(isPresented: $isShowingSafari) {
+                SafariView(
+                    url: url,
+                    configuration: SafariView.Configuration(
+                        entersReaderIfAvailable: false,
+                        barCollapsingEnabled: true
+                    )
+                )
+                .preferredBarAccentColor(.white)
+                .preferredControlAccentColor(.accentColor)
+                .dismissButtonStyle(.cancel)
             }
         }
         .navigationTitle(LocalizedStringKey("Setting"))
@@ -187,7 +164,7 @@ struct DeveloperOptionView: View {
                 keyStore.removeObject(forKey: "EventAPI")
             }) {
                 Label {
-                    Text("Clear Cach Data (Restart required)")
+                    Text("Clear Cach Data")
                 } icon: {
                     Image(systemName: "trash")
                 }

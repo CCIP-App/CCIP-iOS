@@ -110,9 +110,11 @@ struct ScheduleDetailView: View {
                             cancel: isLiked
                         )
                         if isLiked {
+                            SoundManager.instance.play(sound: .don)
                             UINotificationFeedbackGenerator().notificationOccurred(.warning)
                             likedSessions.removeAll { $0 == scheduleDetail.id }
                         } else {
+                            SoundManager.instance.play(sound: .din)
                             UINotificationFeedbackGenerator().notificationOccurred(.success)
                             likedSessions.append(scheduleDetail.id)
                         }
@@ -261,6 +263,7 @@ fileprivate struct SpeakersSection: View {
                                 image
                                     .renderingMode(.original)
                                     .resizable().scaledToFit()
+                                    .transition(.opacity)
                             } placeholder: {
                                 Image(systemName: "person.crop.circle.fill")
                                     .resizable().scaledToFit()
@@ -293,7 +296,7 @@ fileprivate struct SpeakersSection: View {
     }
 }
 
-struct SpeakerBio: View {
+fileprivate struct SpeakerBio: View {
     let speaker: String
     let speakerBio: String
     @Binding var url: URL

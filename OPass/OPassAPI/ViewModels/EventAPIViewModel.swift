@@ -8,6 +8,7 @@
 
 import Foundation
 import KeychainAccess
+import OSLog
 
 //Endpoint hold by each Event Organization or hold by OPass Official but switch by Event Organization.
 class EventAPIViewModel: ObservableObject {
@@ -43,6 +44,7 @@ class EventAPIViewModel: ObservableObject {
     @Published var eventScenarioStatus: ScenarioStatusModel? = nil
     @Published var isLogin: Bool = false
     
+    private let logger = Logger(subsystem: "app.opass.ccip", category: "EventAPI")
     private let keychain = Keychain(service: "app.opass.ccip-token") //Service key value match App Bundle ID + "-token"
         .synchronizable(true)
     var accessToken: String? { //DO NOT use this for view update beacuse it's not published. Use isLogin.
@@ -55,14 +57,14 @@ class EventAPIViewModel: ObservableObject {
                     try keychain.remove(self.event_id + "_token")
                     try keychain.set(accessToken, key: self.event_id + "_token")
                 } catch {
-                    print("Save accessToken faild")
+                    logger.error("Save accessToken faild: \(error.localizedDescription)")
                 }
             } else {
-                print("AccessToken with nil, remove token")
+                logger.info("Access \"accessToken\" with nil, removing token")
                 do {
                     try keychain.remove(self.event_id + "_token")
                 } catch {
-                    print("Token remove error")
+                    logger.error("Token remove error: \(error.localizedDescription)")
                 }
             }
         }
@@ -71,7 +73,7 @@ class EventAPIViewModel: ObservableObject {
     func useScenario(scenario: String) async -> Bool{ //Scenario switch by scenario ID. Return true/false for view update
         @Feature(.fastpass, in: eventSettings) var fastpassFeature
         guard let token = accessToken else {
-            print("No accessToken included")
+            logger.error("No accessToken included")
             return false
         }
         
@@ -92,7 +94,7 @@ class EventAPIViewModel: ObservableObject {
                                     .union(CharacterSet(charactersIn: "-_"))
                                     .inverted
         if (token.isEmpty || token.containsAny(nonAllowedCharacters)) {
-            print("Invalid accessToken")
+            logger.info("Invalid accessToken of \(token)")
             return false
         }
         
@@ -113,20 +115,19 @@ class EventAPIViewModel: ObservableObject {
         }
     }
     
-    func loadScenarioStatus() async {
+    func loadScenarioStatus() async throws {
         @Feature(.fastpass, in: eventSettings) var fastpassFeature
         
         guard let token = accessToken else {
-            print("No accessToken included")
+            logger.error("No accessToken included")
             return
         }
         
-        if let eventScenarioStatus = try? await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token) {
-            DispatchQueue.main.async {
-                self.eventScenarioStatus = eventScenarioStatus
-                self.isLogin = true
-                Task{ await self.saveData() }
-            }
+        let eventScenarioStatus = try await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token)
+        DispatchQueue.main.async {
+            self.eventScenarioStatus = eventScenarioStatus
+            self.isLogin = true
+            Task{ await self.saveData() }
         }
     }
     

@@ -59,6 +59,7 @@
 "OnlyAvailableAtContent" = "開放時間：\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d";
 "Loading" = "載入中...";
 "Setting" = "設定";
+"FastPass" = "快速通關";
 "ABOUT" = "關於";
 "OfficialWebsite" = "官方網站";
 "PrivacyPolicy" = "隱私權政策";

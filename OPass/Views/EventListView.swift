@@ -7,12 +7,14 @@
 //
 
 import SwiftUI
+import OSLog
 
 struct EventListView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @Environment(\.dismiss) var dismiss
     @State var isError = false
+    private let logger = Logger(subsystem: "app.opass.ccip", category: "EventListView")
     
     var body: some View {
         NavigationView {
@@ -26,13 +28,26 @@ struct EventListView: View {
                                     dismiss()
                                 }) {
                                     HStack {
-                                        AsyncImage(url: URL(string: list.logo_url)) { Image in
-                                            Image
-                                                .renderingMode(.template)
-                                                .resizable().aspectRatio(contentMode: .fit)
-                                                .foregroundColor(Color("LogoColor"))
-                                        } placeholder: {
-                                            Rectangle().hidden()
+                                        AsyncImage(url: URL(string: list.logo_url), transaction: Transaction(animation: .spring())) { phase in
+                                            switch phase {
+                                            case .empty:
+                                                ProgressView()
+                                            case .success(let image):
+                                                image
+                                                    .renderingMode(.template)
+                                                    .resizable().scaledToFit()
+                                                    .foregroundColor(Color("LogoColor"))
+                                            case .failure(_):
+                                                Image(systemName: "xmark.circle")
+                                                    .foregroundColor(Color("LogoColor").opacity(0.5))
+                                            @unknown default:
+                                                Image(systemName: "xmark.circle")
+                                                    .foregroundColor(Color("LogoColor").opacity(0.5))
+                                                    .onAppear {
+                                                        logger.error("Unknow AsyncImage status, please call developer to update")
+                                                        
+                                                    }
+                                            }
                                         }
                                         .padding(.horizontal, 3)
                                         .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.15)

@@ -59,6 +59,7 @@
 "OnlyAvailableAtContent" = "Only available at\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d";
 "Loading" = "Loading...";
 "Setting" = "Setting";
+"FastPass" = "Fast Pass";
 "ABOUT" = "ABOUT";
 "OfficialWebsite" = "Official Website";
 "PrivacyPolicy" = "Privacy Policy";

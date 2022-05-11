@@ -12,6 +12,7 @@ struct FastpassView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     @State var isShowingLoading = false
+    @State var isError = false
     let display_text: DisplayTextModel
     
     init(eventAPI: EventAPIViewModel) {
@@ -24,12 +25,25 @@ struct FastpassView: View {
             if eventAPI.accessToken == nil {
                 RedeemTokenView(eventAPI: eventAPI)
             } else {
-                if eventAPI.eventScenarioStatus != nil {
-                    ScenarioView(eventAPI: eventAPI)
-                        .task { await eventAPI.loadScenarioStatus() }
+                if !isError {
+                    if eventAPI.eventScenarioStatus != nil {
+                        ScenarioView(eventAPI: eventAPI)
+                            .task { try? await eventAPI.loadScenarioStatus() }
+                    } else {
+                        ProgressView(LocalizedStringKey("Loading"))
+                            .task {
+                                do { try await eventAPI.loadScenarioStatus() }
+                                catch { self.isError = true }
+                            }
+                    }
                 } else {
-                    ProgressView(LocalizedStringKey("Loading"))
-                        .task { await eventAPI.loadScenarioStatus() }
+                    ErrorWithRetryView {
+                        self.isError = false
+                        Task {
+                            do { try await eventAPI.loadScenarioStatus() }
+                            catch { self.isError = true }
+                        }
+                    }
                 }
             }
         }

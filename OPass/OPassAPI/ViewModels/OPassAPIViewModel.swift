@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import OSLog
 
 //Endpoint hold by OPass Official.
 class OPassAPIViewModel: ObservableObject {
@@ -16,6 +17,7 @@ class OPassAPIViewModel: ObservableObject {
     @Published var currentEventAPI: EventAPIViewModel? = nil
     private var eventAPITemporaryData: CodableEventAPIVM? = nil
     private var keyStore = NSUbiquitousKeyValueStore()
+    private let logger = Logger(subsystem: "app.opass.ccip", category: "OPassAPI")
     
     init() {
         keyStore.synchronize()
@@ -25,15 +27,15 @@ class OPassAPIViewModel: ObservableObject {
                 self.eventAPITemporaryData = eventAPIData
                 self.currentEventID = eventAPIData.event_id
             } catch {
-                print("Unable to decode EventAPI \(error)")
+                logger.error("Unable to decode EventAPI \(error.localizedDescription)")
             }
         } else {
-            print("No EventAPI data found")
+            logger.info("No EventAPI data found")
         }
     }
     
     func saveEventAPIData() async {
-        print("Saving data")
+        logger.info("Saving data")
         if let eventAPI = self.currentEventAPI {
             do {
                 let data = try JSONEncoder().encode(CodableEventAPIVM(
@@ -47,17 +49,17 @@ class OPassAPIViewModel: ObservableObject {
                     eventScenarioStatus: eventAPI.eventScenarioStatus,
                     isLogin: eventAPI.isLogin))
                 keyStore.set(data, forKey: "EventAPI")
-                print("Save scuess of id: \(eventAPI.event_id)")
+                logger.info("Save scuess of id: \(eventAPI.event_id)")
             } catch {
-                print("Save eventAPI data \(error)")
+                logger.error("Save eventAPI data \(error.localizedDescription)")
             }
         } else {
-            print("Save data error")
+            logger.notice("No data found, bypass for saving EventAPIData")
         }
     }
     
     func loadEventList() async throws {
-        print("Loading eventList")
+        logger.info("Loading eventList")
         let eventList = try await APIRepo.loadEventList()
         DispatchQueue.main.async {
             self.eventList = eventList
@@ -76,21 +78,21 @@ class OPassAPIViewModel: ObservableObject {
                         eventScenarioStatus: eventAPIData.eventScenarioStatus,
                         isLogin: eventAPIData.isLogin,
                         saveData: self.saveEventAPIData)
-                    print("Reload event \(event.event_id)")
+                    logger.info("Reload event \(event.event_id)")
                     DispatchQueue.main.async {
                         self.currentEventAPI = event
                         Task{ await self.currentEventAPI!.loadLogos() }
                     }
                 } else { //Load new
                     let event = EventAPIViewModel(eventSettings: eventSettings, saveData: self.saveEventAPIData)
-                    print("Loading new event from \(currentEventAPI?.event_id ?? "none") to \(event.event_id)")
+                    logger.info("Loading new event from \(self.currentEventAPI?.event_id ?? "none") to \(event.event_id)")
                     DispatchQueue.main.async {
                         self.currentEventAPI = event
                         Task{ await self.currentEventAPI!.loadLogos() }
                     }
                 }
             } else { //Use local data when it can't get data from API
-                print("Can't get data from API. Using local data")
+                logger.notice("Can't get data from API. Using local data")
                 if let eventAPIData = eventAPITemporaryData {
                     DispatchQueue.main.async {
                         self.currentEventAPI = EventAPIViewModel(
@@ -117,12 +119,11 @@ class OPassAPIViewModel: ObservableObject {
             }
             _ = await eventModel.redeemToken(token: token)
         } catch APIRepo.LoadError.invalidURL(url: let url) {
-            print("\(url.getString()) is invalid")
-            print("The eventId is possibly wrong")
+            logger.error("\(url.getString()) is invalid, eventId is possibly wrong")
         } catch APIRepo.LoadError.dataFetchingFailed(cause: let cause) {
-            print("Data fetch failed. \n Caused by: \(cause)")
+            logger.error("Data fetch failed. \n Caused by: \(cause.localizedDescription)")
         } catch {
-            print("Error: \(error)")
+            logger.error("Error: \(error.localizedDescription)")
         }
     }
 }

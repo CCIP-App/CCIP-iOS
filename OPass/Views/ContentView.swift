@@ -40,7 +40,7 @@ struct ContentView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    SFButton(systemName: "person.crop.rectangle.stack") {
+                    SFButton(systemName: "rectangle.stack") {
                         isShowingEventList.toggle()
                     }
                 }

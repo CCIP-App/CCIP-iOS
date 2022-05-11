@@ -118,8 +118,7 @@ struct TabButton: View {
                 Button(action: {
                     if let wifi = feature.wifi, wifi.count == 1 {
                         NEHotspot.ConnectWiFi(SSID: wifi[0].SSID, withPass: wifi[0].password)
-                    }
-                    else { presentingWifiSheet.toggle() }
+                    } else { presentingWifiSheet.toggle() }
                 }) {
                     Image(systemName: feature.symbolName)
                         .resizable()
@@ -162,7 +161,7 @@ struct TabButton: View {
                                     .aspectRatio(contentMode: .fit)
                                     .padding(width / 10)
                             } else {
-                                Image(systemName: "exclamationmark.icloud")
+                                Image(systemName: "shippingbox")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .padding(width / 10)
