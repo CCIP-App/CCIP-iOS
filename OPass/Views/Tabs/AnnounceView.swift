@@ -13,57 +13,60 @@ struct AnnounceView: View {
     @ObservedObject var eventAPI: EventAPIViewModel
     let display_text: DisplayTextModel
     @State var isError = false
-    var announcements: [AnnouncementModel]
     @Environment(\.openURL) var openURL
     
-    init(eventAPI: EventAPIViewModel, announcements: [AnnouncementModel]) {
+    init(eventAPI: EventAPIViewModel) {
         self.eventAPI = eventAPI
         self.display_text = eventAPI.eventSettings.feature(ofType: .announcement).display_text
-        self.announcements = announcements
     }
     
     var body: some View {
         VStack {
             if !isError {
-                if !announcements.isEmpty {
-                    List(announcements, id: \.datetime) { announcement in
-                        Button(action: {
-                            if !announcement.uri.isEmpty, let url = URL(string: announcement.uri) {
-                                openURL(url)
-                            }
-                        }) {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 3) {
-                                    Text(LocalizeIn(zh: announcement.msg_zh, en: announcement.msg_en)).foregroundColor(.black)
-                                    Text(String(format: "%d/%d %d:%02d", announcement.datetime.month, announcement.datetime.day, announcement.datetime.hour, announcement.datetime.minute))
-                                        .font(.footnote)
-                                        .foregroundColor(.gray)
+                if let announcements = eventAPI.eventAnnouncements {
+                    if !announcements.isEmpty {
+                        List(announcements, id: \.datetime) { announcement in
+                            Button(action: {
+                                if !announcement.uri.isEmpty, let url = URL(string: announcement.uri) {
+                                    openURL(url)
                                 }
-                                Spacer()
-                                if !announcement.uri.isEmpty {
-                                    Image(systemName: "chevron.right")
-                                        .foregroundColor(.gray)
+                            }) {
+                                HStack {
+                                    VStack(alignment: .leading, spacing: 3) {
+                                        Text(LocalizeIn(zh: announcement.msg_zh, en: announcement.msg_en)).foregroundColor(.black)
+                                        Text(String(format: "%d/%d %d:%02d", announcement.datetime.month, announcement.datetime.day, announcement.datetime.hour, announcement.datetime.minute))
+                                            .font(.footnote)
+                                            .foregroundColor(.gray)
+                                    }
+                                    Spacer()
+                                    if !announcement.uri.isEmpty {
+                                        Image(systemName: "chevron.right")
+                                            .foregroundColor(.gray)
+                                    }
                                 }
                             }
                         }
+                        .refreshable{ try? await eventAPI.loadAnnouncements() }
+                        .task{ try? await eventAPI.loadAnnouncements() }
+                    } else {
+                        VStack {
+                            Image(systemName: "tray.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: UIScreen.main.bounds.width * 0.25)
+                                .foregroundColor(Color("LogoColor"))
+                            Text(LocalizedStringKey("EmptyAnnouncement"))
+                                .font(.title2)
+                        }
+                        .refreshable{ try? await eventAPI.loadAnnouncements() }
+                        .task{ try? await eventAPI.loadAnnouncements() }
                     }
-                    .refreshable{ try? await eventAPI.loadAnnouncements() }
-                    .task{ try? await eventAPI.loadAnnouncements() }
                 } else {
-                    VStack {
-                        Image(systemName: "tray.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: UIScreen.main.bounds.width * 0.25)
-                            .foregroundColor(Color("LogoColor"))
-                        Text(LocalizedStringKey("EmptyAnnouncement"))
-                            .font(.title2)
-                    }
-                    .task{
-                        do { try await self.eventAPI.loadAnnouncements() }
-                        catch { self.isError = true }
-                        //TODO: Need to identify announcement is really empty when catch error
-                    }
+                    ProgressView(LocalizedStringKey("Loading"))
+                        .task {
+                            do { try await self.eventAPI.loadAnnouncements() }
+                            catch { self.isError = true }
+                        }
                 }
             } else {
                 ErrorWithRetryView {
@@ -82,21 +85,17 @@ struct AnnounceView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 SFButton(systemName: "arrow.clockwise") {
                     self.isError = false
-                    Task {
-                        do { try await self.eventAPI.loadAnnouncements() }
-                        catch {
-                            if self.announcements.isEmpty { self.isError = true }
-                            //TODO: Need to identify announcement is really empty when catch error
-                        }
-                    }
+                    Task { try? await self.eventAPI.loadAnnouncements() }
                 }
             }
         }
     }
 }
 
+#if DEBUG
 struct AnnounceView_Previews: PreviewProvider {
     static var previews: some View {
-        AnnounceView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!, announcements: loadJson(filename: "announcementSample.json"))
+        AnnounceView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
     }
 }
+#endif

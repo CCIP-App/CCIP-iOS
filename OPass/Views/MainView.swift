@@ -9,11 +9,13 @@
 import SwiftUI
 import BetterSafariView
 import CryptoKit
+import OSLog
 
 struct MainView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     private let gridItemLayout = Array(repeating: GridItem(spacing: CGFloat(25.0), alignment: Alignment.top), count: 4)
+    private let logger = Logger(subsystem: "app.opass.ccip", category: "MainView")
     @State private var selectedFeature: FeatureType? = nil
     
     var body: some View {
@@ -39,18 +41,21 @@ struct MainView: View {
             ScrollView {
                 LazyVGrid(columns: gridItemLayout) {
                     ForEach(eventSettings.features, id: \.self) { feature in
-                        VStack {
-                            GeometryReader { geometry in
-                                TabButton(feature: feature, selectedFeature: $selectedFeature, eventAPI: eventAPI, width: geometry.size.width)
-                                    .frame(width: geometry.size.width, height: geometry.size.width)
+                        if !(CheckFeatureIsWebview(type: feature.feature) && feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) == nil) {
+                            VStack {
+                                GeometryReader { geometry in
+                                    TabButton(feature: feature, selectedFeature: $selectedFeature, eventAPI: eventAPI, width: geometry.size.width)
+                                        .frame(width: geometry.size.width, height: geometry.size.width)
+                                }
+                                .aspectRatio(contentMode: .fill)
+                                .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
+                                
+                                Text(LocalizeIn(zh: feature.display_text.zh, en: feature.display_text.en))
+                                    .font(.caption2)
+                                    .multilineTextAlignment(.center)
+                                    .fixedSize(horizontal: false, vertical: true)
                             }
-                            .aspectRatio(contentMode: .fill)
-                            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
-                            
-                            Text(LocalizeIn(zh: feature.display_text.zh, en: feature.display_text.en))
-                                .font(.caption2)
-                                .multilineTextAlignment(.center)
-                        }
+                        } //Bypass Webview feature that it's url not accepted by URL structure
                     }
                 }
             }
@@ -82,15 +87,15 @@ struct MainView: View {
             NavigationLink(
                 tag: FeatureType.announcement,
                 selection: $selectedFeature,
-                destination: {
-                    AnnounceView(
-                        eventAPI: eventAPI,
-                        announcements: eventAPI.eventAnnouncements)
-                }) {
+                destination: { AnnounceView(eventAPI: eventAPI) }) {
                 EmptyView()
             }
             .frame(width: 0, height: 0).hidden()
         }
+    }
+    
+    private func CheckFeatureIsWebview(type featureType: FeatureType) -> Bool {
+        return featureType == .im || featureType == .puzzle || featureType == .venue || featureType == .sponsors || featureType == .staffs || featureType == .webview
     }
 }
 

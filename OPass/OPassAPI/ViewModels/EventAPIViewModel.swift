@@ -16,7 +16,7 @@ class EventAPIViewModel: ObservableObject {
     init(eventSettings: SettingsModel,
          eventLogo: Data? = nil,
          eventSchedule: ScheduleModel? = nil,
-         eventAnnouncements: [AnnouncementModel] = [],
+         eventAnnouncements: [AnnouncementModel]? = nil,
          eventScenarioStatus: ScenarioStatusModel? = nil,
          isLogin: Bool = false,
          saveData: @escaping () async -> Void = {}
@@ -40,7 +40,7 @@ class EventAPIViewModel: ObservableObject {
     @Published var eventSettings: SettingsModel
     @Published var eventLogo: Data? = nil
     @Published var eventSchedule: ScheduleModel? = nil
-    @Published var eventAnnouncements: [AnnouncementModel] = []
+    @Published var eventAnnouncements: [AnnouncementModel]? = nil
     @Published var eventScenarioStatus: ScenarioStatusModel? = nil
     @Published var isLogin: Bool = false
     
@@ -204,7 +204,7 @@ class CodableEventAPIVM: Codable {
          eventSettings: SettingsModel,
          eventLogo: Data?,
          eventSchedule: ScheduleModel?,
-         eventAnnouncements: [AnnouncementModel],
+         eventAnnouncements: [AnnouncementModel]?,
          eventScenarioStatus: ScenarioStatusModel?,
          isLogin: Bool) {
         self.event_id = event_id
@@ -224,7 +224,7 @@ class CodableEventAPIVM: Codable {
     var eventSettings: SettingsModel
     var eventLogo: Data?
     var eventSchedule: ScheduleModel?
-    var eventAnnouncements: [AnnouncementModel]
+    var eventAnnouncements: [AnnouncementModel]?
     var eventScenarioStatus: ScenarioStatusModel?
     var isLogin: Bool
 }

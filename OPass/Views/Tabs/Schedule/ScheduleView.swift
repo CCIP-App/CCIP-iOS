@@ -16,7 +16,6 @@ struct ScheduleView: View {
     let display_text: DisplayTextModel
     @State var selectDayIndex = 0
     @State var filter = Filter.all
-    @State var first = true
     @State var isError = false
     
     init(eventAPI: EventAPIViewModel) {
@@ -78,7 +77,7 @@ struct ScheduleView: View {
                         .refreshable { try? await eventAPI.loadSchedule() }
                     }
                 } else {
-                    ProgressView("Loading...")
+                    ProgressView(LocalizedStringKey("Loading"))
                         .task {
                             do { try await eventAPI.loadSchedule() }
                             catch { isError = true }

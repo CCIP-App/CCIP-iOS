@@ -76,7 +76,9 @@ struct SessionDataModel: Hashable, Codable {
 struct SpeakerTransform: TransformFunction {
     static func transform(_ speakers: [Id_SpeakerModel]) -> [String: SpeakerModel] {
         return Dictionary(uniqueKeysWithValues: speakers.map { element in
-            (element.id, SpeakerModel(avatar: element.avatar, zh: element.zh, en: element.zh))
+            (element.id, SpeakerModel(avatar: element.avatar,
+                                      zh: Name_BioModel(name: element.zh.name, bio: element.zh.bio),
+                                      en: Name_BioModel(name: element.en.name, bio: element.en.bio)))
         })
     }
 }
@@ -113,8 +115,8 @@ extension String: TransformSelf {
 struct Id_SpeakerModel: Hashable, Codable {
     var id: String = ""
     var avatar: String = ""
-    var zh = Name_BioModel()
-    var en = Name_BioModel()
+    var zh = RawName_BioModel()
+    var en = RawName_BioModel()
 }
 
 struct SpeakerModel: Hashable, Codable {
@@ -132,12 +134,36 @@ struct Id_Name_DescriptionModel: Hashable, Codable {
 
 struct Title_DescriptionModel: Hashable, Codable {
     var title: String = ""
-    var description: String = ""
+    @TransformWith<PhraseStringWithUrlInToMarkdownStyleTransform> var description = ""
+}
+
+//This tranform funtion is garbge. Super inefficient.
+//And may have some bug in feautre. Needs to find a better way to make it.
+struct PhraseStringWithUrlInToMarkdownStyleTransform: TransformFunction {
+    static func transform(_ text: String) -> String {
+        var phraseText = text
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        let matches = detector.matches(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count))
+        
+        for match in matches {
+            guard let range = Range(match.range, in: text) else { continue }
+            let url = text[range]
+            if phraseText.contains("](\(url))") { continue } //A very bad way to bypass url that written in markdown.
+            phraseText = phraseText.replacingOccurrences(of: url, with: "[\(url)](\(url))")
+        }
+        
+        return phraseText
+    }
+}
+
+struct RawName_BioModel: Hashable, Codable {
+    var name: String = ""
+    @TransformWith<PhraseStringWithUrlInToMarkdownStyleTransform> var bio = ""
 }
 
 struct Name_BioModel: Hashable, Codable {
     var name: String = ""
-    var bio: String = ""
+    var bio = ""
 }
 
 struct Name_DescriptionPair: Hashable, Codable {
