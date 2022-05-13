@@ -150,6 +150,7 @@ enum Filter: Hashable {
 
 fileprivate struct SelectDayView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @Binding var selectDayIndex: Int
     let sessions: [SessionModel]
     
@@ -169,7 +170,9 @@ fileprivate struct SelectDayView: View {
                                 String(sessions[index].header[0].day)
                             )
                             .font(.system(.body, design: .monospaced))
-                            .foregroundColor(index == selectDayIndex ? Color.white : Color.black)
+                            .foregroundColor(index == selectDayIndex ?
+                                             (colorScheme == .dark ? Color.black : Color.white) :
+                                                (colorScheme == .dark ? Color.white : Color.black))
                         }
                         .padding(8)
                         .background(Color.blue.opacity(index == selectDayIndex ? 1 : 0))

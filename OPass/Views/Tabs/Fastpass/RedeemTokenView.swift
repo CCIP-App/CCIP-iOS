@@ -15,6 +15,7 @@ struct RedeemTokenView: View {
     
     @State var token: String = ""
     @ObservedObject var eventAPI: EventAPIViewModel
+    @Environment(\.colorScheme) var colorScheme
     
     @State var isShowingCameraSOC = false
     @State var isShowingImagePicker = false
@@ -40,7 +41,7 @@ struct RedeemTokenView: View {
                                 .padding(.vertical, 10)
                                 .background(Color.blue)
                                 .cornerRadius(9)
-                            Text(LocalizedStringKey("ScanQRCodeWithCamera")).foregroundColor(Color.black)
+                            Text(LocalizedStringKey("ScanQRCodeWithCamera")).foregroundColor(colorScheme == .dark ? .white : .black)
                             Spacer()
                             Image(systemName: "chevron.right").foregroundColor(.gray)
                         }
@@ -61,7 +62,7 @@ struct RedeemTokenView: View {
                                 .padding(.vertical, 10)
                                 .background(Color.green)
                                 .cornerRadius(9)
-                            Text(LocalizedStringKey("SelectAPictureToScanQRCode")).foregroundColor(Color.black)
+                            Text(LocalizedStringKey("SelectAPictureToScanQRCode")).foregroundColor(colorScheme == .dark ? .white : .black)
                             Spacer()
                             Image(systemName: "chevron.right").foregroundColor(.gray)
                         }
@@ -82,7 +83,7 @@ struct RedeemTokenView: View {
                                 .padding(.vertical, 10)
                                 .background(Color.purple)
                                 .cornerRadius(9)
-                            Text(LocalizedStringKey("EnterTokenManually")).foregroundColor(Color.black)
+                            Text(LocalizedStringKey("EnterTokenManually")).foregroundColor(colorScheme == .dark ? .white : .black)
                             Spacer()
                             Image(systemName: "chevron.right").foregroundColor(.gray)
                         }

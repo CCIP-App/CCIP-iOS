@@ -13,6 +13,7 @@ struct EventListView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @Environment(\.dismiss) var dismiss
+    @Environment(\.colorScheme) var colorScheme
     @State var isError = false
     private let logger = Logger(subsystem: "app.opass.ccip", category: "EventListView")
     
@@ -53,7 +54,7 @@ struct EventListView: View {
                                         .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.15)
                                         
                                         Text(LocalizeIn(zh: list.display_name.zh, en: list.display_name.en))
-                                            .foregroundColor(.black)
+                                            .foregroundColor(colorScheme == .dark ? .white : .black)
                                         
                                         Spacer()
                                         

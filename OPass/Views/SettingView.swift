@@ -11,6 +11,7 @@ import BetterSafariView
 
 struct SettingView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @Environment(\.openURL) var openURL
     @State var isShowingSafari = false
@@ -44,7 +45,7 @@ struct SettingView: View {
                 Section(header: Text(LocalizedStringKey("ABOUT"))) {
                     VStack(alignment: .leading) {
                         Text(LocalizedStringKey("Version"))
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
                         Text(
                             String(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String + " (Build ") +
                             String(Bundle.main.infoDictionary!["CFBundleVersion"] as! String + ")")
@@ -60,7 +61,7 @@ struct SettingView: View {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(LocalizedStringKey("OfficialWebsite"))
-                                    .foregroundColor(.black)
+                                    .foregroundColor(colorScheme == .dark ? .white : .black)
                                 Text("\(CCIPWebsiteURL)")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
@@ -84,7 +85,7 @@ struct SettingView: View {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text("GitHub")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(colorScheme == .dark ? .white : .black)
                                 Text("\(CCIPGitHubURL)")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
@@ -108,7 +109,7 @@ struct SettingView: View {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(LocalizedStringKey("PrivacyPolicy"))
-                                    .foregroundColor(.black)
+                                    .foregroundColor(colorScheme == .dark ? .white : .black)
                                 Text("\(CCIPPolicyURL)")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)

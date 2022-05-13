@@ -14,6 +14,7 @@ struct AnnounceView: View {
     let display_text: DisplayTextModel
     @State var isError = false
     @Environment(\.openURL) var openURL
+    @Environment(\.colorScheme) var colorScheme
     
     init(eventAPI: EventAPIViewModel) {
         self.eventAPI = eventAPI
@@ -33,7 +34,8 @@ struct AnnounceView: View {
                             }) {
                                 HStack {
                                     VStack(alignment: .leading, spacing: 3) {
-                                        Text(LocalizeIn(zh: announcement.msg_zh, en: announcement.msg_en)).foregroundColor(.black)
+                                        Text(LocalizeIn(zh: announcement.msg_zh, en: announcement.msg_en))
+                                            .foregroundColor(colorScheme == .dark ? .white : .black)
                                         Text(String(format: "%d/%d %d:%02d", announcement.datetime.month, announcement.datetime.day, announcement.datetime.hour, announcement.datetime.minute))
                                             .font(.footnote)
                                             .foregroundColor(.gray)

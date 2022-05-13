@@ -55,12 +55,12 @@ struct ScheduleDetailView: View {
                 
                 PlaceSection(name: LocalizeIn(zh: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.zh.name,
                                               en: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.en.name) ?? scheduleDetail.room)
-                    .background(Color.white)
+                    .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
                     .padding(.bottom)
                 
                 TimeSection(scheduleDetail: scheduleDetail)
-                    .background(Color.white)
+                    .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
             }
             .listRowBackground(Color.transparent)
@@ -134,6 +134,7 @@ extension String: Identifiable {
 
 fileprivate struct TagsSection: View {
     
+    @Environment(\.colorScheme) var colorScheme
     let tagsID: [String]
     let tags: [String : Name_DescriptionPair]
     
@@ -145,8 +146,8 @@ fileprivate struct TagsSection: View {
                         .font(.caption)
                         .padding(.vertical, 2)
                         .padding(.horizontal, 8)
-                        .foregroundColor(Color.black)
-                        .background(Color.black.opacity(0.1))
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                        .background((colorScheme == .dark ? Color.white : Color.black).opacity(0.1))
                         .cornerRadius(5)
                 }
             }
@@ -185,7 +186,7 @@ fileprivate struct FeatureButtons: View {
                                 .font(.system(size: 23, weight: .semibold, design: .rounded))
                                 .foregroundColor(Color(red: 72/255, green: 72/255, blue: 74/255))
                                 .frame(width: buttonSize, height: buttonSize)
-                                .background(.white)
+                                .background(Color("SectionBackgroundColor"))
                                 .cornerRadius(10)
                         }
                         Text(LocalizedStringKey(text))
@@ -285,7 +286,7 @@ fileprivate struct SpeakersSection: View {
                     }
                 }
                 .padding(.horizontal, 10)
-                .background(Color.white)
+                .background(Color("SectionBackgroundColor"))
                 .cornerRadius(8)
                 .padding(.bottom, 8)
             }
@@ -304,6 +305,7 @@ fileprivate struct SpeakerBio: View {
     @State var isTruncated: Bool = false
     @State var isShowingSpeakerDetail = false
     @State var readSize: CGSize = .zero
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack(spacing: 0) {
@@ -315,7 +317,7 @@ fileprivate struct SpeakerBio: View {
                 HStack {
                     Spacer()
                     Button("More") {
-                        SOCManager.present(isPresented: $isShowingSpeakerDetail, style: .light) {
+                        SOCManager.present(isPresented: $isShowingSpeakerDetail) {
                             if readSize.height < UIScreen.main.bounds.height * 0.5 {
                                 VStack {
                                     Text(speaker)
@@ -330,7 +332,7 @@ fileprivate struct SpeakerBio: View {
                                                 .padding()
                                         }
                                         .frame(maxWidth: .infinity)
-                                        .background(.white)
+                                        .background(colorScheme == .light ? .white : .black.opacity(0.6))
                                         .cornerRadius(20)
                                     }
                                 }
@@ -351,7 +353,7 @@ fileprivate struct SpeakerBio: View {
                                             }
                                         }
                                         .frame(maxWidth: .infinity)
-                                        .background(.white)
+                                        .background(colorScheme == .light ? .white : .black.opacity(0.6))
                                         .cornerRadius(20)
                                     }
                                 }
@@ -373,8 +375,6 @@ fileprivate struct SpeakerBio: View {
                                         .padding()
                                 }
                                 .frame(maxWidth: .infinity)
-                                .background(.white)
-                                .cornerRadius(20)
                             }
                         }
                         .frame(maxWidth: .infinity)

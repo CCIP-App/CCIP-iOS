@@ -11,6 +11,7 @@ import CoreImage.CIFilterBuiltins
 
 struct TicketView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var eventAPI: EventAPIViewModel
     let display_text: DisplayTextModel
     let context = CIContext()
@@ -57,7 +58,7 @@ struct TicketView: View {
                                 .padding(.vertical, UIScreen.main.bounds.width * 0.04)
                             }
                             .padding([.leading, .trailing, .top], UIScreen.main.bounds.width * 0.08)
-                            .background(.white)
+                            .background(Color("SectionBackgroundColor"))
                             .cornerRadius(UIScreen.main.bounds.width * 0.1)
                             Spacer()
                         }
@@ -91,10 +92,44 @@ struct TicketView: View {
 
         if let outputImage = filter.outputImage {
             if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+                
                 return UIImage(cgImage: cgimg)
             }
         }
 
         return UIImage(systemName: "xmark.circle") ?? UIImage()
     }
+    
+    private func QrCode(_ uiImage: UIImage, colorScheme: ColorScheme) -> UIImage {
+        if colorScheme == .dark {
+            return uiImage.invertColor()?.transparentBackground() ?? UIImage()
+        }
+        return uiImage
+    }
+}
+
+extension UIImage {
+
+    func transparentBackground() -> UIImage? {
+        let context = CIContext(options: nil)
+        let filter = CIFilter(name: "CIMaskToAlpha")
+        filter?.setDefaults()
+        filter?.setValue(self.ciImage, forKey: kCIInputImageKey)
+        if let output = filter?.outputImage,
+           let imageRef = context.createCGImage(output, from: output.extent) {
+            return UIImage(cgImage: imageRef)
+        }
+        return nil
+    }
+
+    func invertColor() -> UIImage? {
+        let filter = CIFilter(name: "CIColorInvert")
+        filter?.setDefaults()
+        filter?.setValue(self.ciImage, forKey: kCIInputImageKey)
+        if let output = filter?.outputImage {
+            return UIImage(ciImage: output)
+        }
+        return nil
+    }
+
 }

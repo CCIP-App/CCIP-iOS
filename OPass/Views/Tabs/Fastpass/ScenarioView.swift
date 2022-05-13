@@ -11,6 +11,7 @@ import SwiftDate
 
 struct ScenarioView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var eventAPI: EventAPIViewModel
     @State var isShowingLogOutAlert = false
     @State var isShowingDisableAlert = false
@@ -99,7 +100,8 @@ struct ScenarioView: View {
                 .cornerRadius(UIScreen.main.bounds.width * 0.028)
             
             VStack(alignment: .leading) {
-                Text(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en)).foregroundColor(.black)
+                Text(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en))
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
                 Text((scenario.disabled == nil ? (scenario.used == nil ? String(format: "%d:%02d ~ %d:%02d", scenario.available_time.hour, scenario.available_time.minute, scenario.expire_time.hour, scenario.expire_time.minute) : String(format: String(localized: "CheckAtContent"), scenario.used!.hour, scenario.used!.minute) ) : String(localized: String.LocalizationValue(scenario.disabled!))))
                     .font(.callout)
                     .foregroundColor(.gray)
