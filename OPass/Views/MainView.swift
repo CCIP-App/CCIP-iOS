@@ -54,7 +54,7 @@ struct MainView: View {
                                     .font(.caption2)
                                     .multilineTextAlignment(.center)
                                     .fixedSize(horizontal: false, vertical: true)
-                            }
+                            }.padding(.bottom, 8)
                         } //Bypass Webview feature that it's url not accepted by URL structure
                     }
                 }

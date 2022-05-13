@@ -65,8 +65,8 @@ struct ScheduleDetailView: View {
             }
             .listRowBackground(Color.transparent)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-            .alert(LocalizedStringKey("Open \(url) ?"), isPresented: $showingUrlAlert) {
-                Button(String(localized: "Cancel")) {}
+            .alert(LocalizedStringKey("Open \(url)?"), isPresented: $showingUrlAlert) {
+                Button(String(localized: "Cancel"), role: .cancel) {}
                 Button(String(localized: "Yes")) { showingSafari.toggle() }
             }
             .safariView(isPresented: $showingSafari) {
@@ -400,14 +400,15 @@ fileprivate struct DescriptionSection: View {
                     MarkdownStyle(font: .footnote)
                 )
                 .padding()
-                .environment(
-                    \.openURL,
-                     OpenURLAction { url in
-                         self.url = url
-                         self.showingAlert = true
-                         return .handled
-                     }
-                )
+                //.onOpenMarkdownLink { url in
+                //    self.url = url
+                //    self.showingAlert = true
+                //}
+                //.environment(\.openURL, OpenURLAction { url in
+                //    self.url = url
+                //    self.showingAlert = true
+                //    return .handled
+                //})
         }
         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
