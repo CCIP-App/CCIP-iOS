@@ -163,24 +163,22 @@ fileprivate struct SelectDayView: View {
                     Button(action: {
                         selectDayIndex = index
                     }) {
-                        VStack {
-                            Text(
-                                String(localized: String.LocalizationValue(weekDayName[sessions[index].header[0].weekday - 1]))
-                                + "\n" +
-                                String(sessions[index].header[0].day)
-                            )
-                            .font(.system(.body, design: .monospaced))
-                            .foregroundColor(index == selectDayIndex ?
-                                             (colorScheme == .dark ? Color.black : Color.white) :
-                                                (colorScheme == .dark ? Color.white : Color.black))
+                        VStack(alignment: .center, spacing: 0) {
+                            Text(String(localized: String.LocalizationValue(weekDayName[sessions[index].header[0].weekday - 1])))
+                                .font(.system(.subheadline, design: .monospaced))
+                            Text(String(sessions[index].header[0].day))
+                                .font(.system(.body, design: .monospaced))
                         }
+                        .foregroundColor(index == selectDayIndex ?
+                                         (colorScheme == .dark ? Color.black : Color.white) :
+                                            (colorScheme == .dark ? Color.white : Color.black))
                         .padding(8)
                         .background(Color.blue.opacity(index == selectDayIndex ? 1 : 0))
                         .cornerRadius(10)
                     }
                 }
             }
-            Divider().padding(.top, 8)
+            Divider().padding(.top, 13)
         }
         .frame(maxWidth: .infinity)
     }

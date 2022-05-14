@@ -13,6 +13,10 @@ import CodeScanner
 
 struct RedeemTokenView: View {
     
+    enum Field: Hashable {
+        case ManuallyToken
+    }
+    
     @State var token: String = ""
     @ObservedObject var eventAPI: EventAPIViewModel
     @Environment(\.colorScheme) var colorScheme
@@ -22,6 +26,7 @@ struct RedeemTokenView: View {
     @State var isShowingNoQRCodeAlert = false
     @State var isShowingManuallySOC = false
     @State var isShowingTokenErrorAlert = false
+    @FocusState private var focusedField: Field?
     
     var body: some View {
         VStack {
@@ -114,10 +119,11 @@ struct RedeemTokenView: View {
                 Text(LocalizedStringKey("EnterTokenManually"))
                 
                 TextField("Token", text: $token)
+                    .focused($focusedField, equals: .ManuallyToken)
                     .padding(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.yellow, lineWidth: 2)
+                            .stroke((focusedField == .ManuallyToken ? .yellow : .gray), lineWidth: 2)
                     )
                 
                 VStack(alignment: .leading) {

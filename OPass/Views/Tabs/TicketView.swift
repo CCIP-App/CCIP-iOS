@@ -8,11 +8,14 @@
 
 import SwiftUI
 import CoreImage.CIFilterBuiltins
+import AlertToast
+import EFQRCode
 
 struct TicketView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var eventAPI: EventAPIViewModel
+    @State var showingTokenCopyToast = false
     let display_text: DisplayTextModel
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
@@ -31,13 +34,10 @@ struct TicketView: View {
                             Spacer()
                             VStack(spacing: 0) {
                                 ZStack {
-                                    Image(uiImage: generateQRCode(from: token))
+                                    Image(uiImage: QRCode(string: token))
                                         .interpolation(.none)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: UIScreen.main.bounds.width * 0.6)
                                     
-                                    Image("InAppIcon")
+                                    /*Image("InAppIcon")
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: UIScreen.main.bounds.width * 0.1)
@@ -45,7 +45,7 @@ struct TicketView: View {
                                         .overlay(
                                             Circle()
                                                 .stroke(Color.white, lineWidth: 4)
-                                        )
+                                        )*/
                                 }
                                 
                                 VStack {
@@ -68,6 +68,10 @@ struct TicketView: View {
                     Section(header: Text(LocalizedStringKey("Token"))) {
                         Text(token)
                     }
+                    .onLongPressGesture {
+                        UIPasteboard.general.string = token
+                        showingTokenCopyToast.toggle()
+                    }
                     
                     HStack(alignment: .center) {
                         Spacer()
@@ -85,51 +89,27 @@ struct TicketView: View {
         }
         .navigationTitle(LocalizeIn(zh: display_text.zh, en: display_text.en))
         .navigationBarTitleDisplayMode(.inline)
+        .toast(isPresenting: $showingTokenCopyToast){
+            AlertToast(displayMode: .banner(.pop), type: .regular, title: String(localized: "TokenCopied"), style: .style(backgroundColor: Color("SectionBackgroundColor")))
+        }
     }
     
-    private func generateQRCode(from string: String) -> UIImage {
-        filter.message = Data(string.utf8)
-
-        if let outputImage = filter.outputImage {
-            if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-                
-                return UIImage(cgImage: cgimg)
-            }
+    private func QRCode(string: String) -> UIImage {
+        let generator = EFQRCodeGenerator(content: string, encoding: .utf8, size: EFIntSize())
+        
+        generator.withInputCorrectionLevel(.h)
+        generator.withColors(backgroundColor: UIColor(Color("SectionBackgroundColor")).cgColor, foregroundColor: UIColor(colorScheme == .dark ? Color.white : Color.black).cgColor)
+        if let maxMagnification = generator
+            .maxMagnification(lessThanOrEqualTo: UIScreen.main.bounds.width * 0.6) {
+            generator.magnification = EFIntSize(
+                width: maxMagnification,
+                height: maxMagnification
+            )
         }
-
-        return UIImage(systemName: "xmark.circle") ?? UIImage()
-    }
-    
-    private func QrCode(_ uiImage: UIImage, colorScheme: ColorScheme) -> UIImage {
-        if colorScheme == .dark {
-            return uiImage.invertColor()?.transparentBackground() ?? UIImage()
+        
+        if let cgImage = generator.generate() {
+            return UIImage(cgImage: cgImage)
         }
-        return uiImage
+        return UIImage()
     }
-}
-
-extension UIImage {
-
-    func transparentBackground() -> UIImage? {
-        let context = CIContext(options: nil)
-        let filter = CIFilter(name: "CIMaskToAlpha")
-        filter?.setDefaults()
-        filter?.setValue(self.ciImage, forKey: kCIInputImageKey)
-        if let output = filter?.outputImage,
-           let imageRef = context.createCGImage(output, from: output.extent) {
-            return UIImage(cgImage: imageRef)
-        }
-        return nil
-    }
-
-    func invertColor() -> UIImage? {
-        let filter = CIFilter(name: "CIColorInvert")
-        filter?.setDefaults()
-        filter?.setValue(self.ciImage, forKey: kCIInputImageKey)
-        if let output = filter?.outputImage {
-            return UIImage(ciImage: output)
-        }
-        return nil
-    }
-
 }

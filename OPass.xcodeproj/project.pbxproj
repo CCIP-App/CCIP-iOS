@@ -37,6 +37,8 @@
 		D31900DE281CF17600864982 /* LaunchScreen@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = D31900DB281CF17600864982 /* LaunchScreen@1x.png */; };
 		D322F60C27EF3B09007EED5D /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60B27EF3B09007EED5D /* SlideOverCard */; };
 		D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60E27EF4698007EED5D /* CodeScanner */; };
+		D323C1EC282F7F9B009AFF97 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = D323C1EB282F7F9B009AFF97 /* AlertToast */; };
+		D323C1F5282FE03C009AFF97 /* EFQRCode in Frameworks */ = {isa = PBXBuildFile; productRef = D323C1F4282FE03C009AFF97 /* EFQRCode */; };
 		D34012102821349200D07034 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340120F2821349200D07034 /* Localization.swift */; };
 		D358E55827EDEDB2000A6554 /* FastpassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D358E55727EDEDB2000A6554 /* FastpassView.swift */; };
 		D3602CAC280400D8001D9C15 /* UseScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3602CAB280400D8001D9C15 /* UseScenarioView.swift */; };
@@ -172,9 +174,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */,
+				D323C1EC282F7F9B009AFF97 /* AlertToast in Frameworks */,
 				D3EA819827F68FFF00FE7985 /* BetterSafariView in Frameworks */,
 				D3E0123127D35D970040621F /* KeychainAccess in Frameworks */,
 				4F5EB73127D2311200235396 /* SwiftDate in Frameworks */,
+				D323C1F5282FE03C009AFF97 /* EFQRCode in Frameworks */,
 				4F29D9CA27D4EA2D00292CC4 /* FirebaseAnalytics in Frameworks */,
 				D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */,
 				D322F60C27EF3B09007EED5D /* SlideOverCard in Frameworks */,
@@ -449,6 +453,8 @@
 				D322F60E27EF4698007EED5D /* CodeScanner */,
 				D3EA819727F68FFF00FE7985 /* BetterSafariView */,
 				4F5CA37F27FDD1B400DEAB39 /* MarkdownUI */,
+				D323C1EB282F7F9B009AFF97 /* AlertToast */,
+				D323C1F4282FE03C009AFF97 /* EFQRCode */,
 			);
 			productName = OPass;
 			productReference = D3E4E6BB27CD158400FFACEB /* OPass.app */;
@@ -490,6 +496,8 @@
 				D322F60D27EF4698007EED5D /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				D3EA819627F68FFE00FE7985 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
 				4F5CA37E27FDD1B300DEAB39 /* XCRemoteSwiftPackageReference "MarkdownUI" */,
+				D323C1EA282F7F9A009AFF97 /* XCRemoteSwiftPackageReference "AlertToast" */,
+				D323C1F3282FE03C009AFF97 /* XCRemoteSwiftPackageReference "EFQRCode" */,
 			);
 			productRefGroup = D3E4E6BC27CD158400FFACEB /* Products */;
 			projectDirPath = "";
@@ -923,6 +931,22 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		D323C1EA282F7F9A009AFF97 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.7;
+			};
+		};
+		D323C1F3282FE03C009AFF97 /* XCRemoteSwiftPackageReference "EFQRCode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/EFPrefix/EFQRCode.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.1;
+			};
+		};
 		D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
@@ -979,6 +1003,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D322F60D27EF4698007EED5D /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
+		};
+		D323C1EB282F7F9B009AFF97 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D323C1EA282F7F9A009AFF97 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+		D323C1F4282FE03C009AFF97 /* EFQRCode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D323C1F3282FE03C009AFF97 /* XCRemoteSwiftPackageReference "EFQRCode" */;
+			productName = EFQRCode;
 		};
 		D3A00F2927D838920097A6AB /* OneSignal */ = {
 			isa = XCSwiftPackageProductDependency;

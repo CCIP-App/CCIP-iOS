@@ -158,6 +158,7 @@ fileprivate struct TagsSection: View {
 //Feature button size need to be fixed not dynamic 
 fileprivate struct FeatureButtons: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.openURL) var openURL
     let scheduleDetail: SessionDataModel
     let buttonSize = CGFloat(62)
@@ -184,7 +185,7 @@ fileprivate struct FeatureButtons: View {
                         }) {
                             Image(systemName: systemImageName)
                                 .font(.system(size: 23, weight: .semibold, design: .rounded))
-                                .foregroundColor(Color(red: 72/255, green: 72/255, blue: 74/255))
+                                .foregroundColor(colorScheme == .dark ? .gray : Color(red: 72/255, green: 72/255, blue: 74/255))
                                 .frame(width: buttonSize, height: buttonSize)
                                 .background(Color("SectionBackgroundColor"))
                                 .cornerRadius(10)
@@ -263,7 +264,7 @@ fileprivate struct SpeakersSection: View {
                             AsyncImage(url: URL(string: avatarURL)) { image in
                                 image
                                     .renderingMode(.original)
-                                    .resizable().scaledToFit()
+                                    .resizable().scaledToFill()
                                     .transition(.opacity)
                             } placeholder: {
                                 Image(systemName: "person.crop.circle.fill")
@@ -282,7 +283,8 @@ fileprivate struct SpeakersSection: View {
                     if let speakerData = eventAPI.eventSchedule?.speakers[speaker], LocalizeIn(zh: speakerData.zh.bio, en: speakerData.en.bio) != "" {
                         Divider()
                         SpeakerBio(speaker: LocalizeIn(zh: eventAPI.eventSchedule?.speakers[speaker]?.zh.name, en: eventAPI.eventSchedule?.speakers[speaker]?.en.name) ?? speaker,
-                                   speakerBio: LocalizeIn(zh: speakerData.zh.bio, en: speakerData.en.bio), url: $url, showingAlert: $showingAlert)
+                                   speakerBio: LocalizeIn(zh: speakerData.zh.bio, en: speakerData.en.bio),
+                                   avatarURL: eventAPI.eventSchedule?.speakers[speaker]?.avatar, url: $url, showingAlert: $showingAlert)
                     }
                 }
                 .padding(.horizontal, 10)
@@ -300,11 +302,13 @@ fileprivate struct SpeakersSection: View {
 fileprivate struct SpeakerBio: View {
     let speaker: String
     let speakerBio: String
+    let avatarURL: String?
     @Binding var url: URL
     @Binding var showingAlert: Bool
     @State var isTruncated: Bool = false
     @State var isShowingSpeakerDetail = false
     @State var readSize: CGSize = .zero
+    @State var showAvatar = false
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -357,7 +361,6 @@ fileprivate struct SpeakerBio: View {
                                         .cornerRadius(20)
                                     }
                                 }
-                                .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.6)
                             }
                         }
                     }

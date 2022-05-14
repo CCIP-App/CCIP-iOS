@@ -134,31 +134,13 @@ struct Id_Name_DescriptionModel: Hashable, Codable {
 
 struct Title_DescriptionModel: Hashable, Codable {
     var title: String = ""
-    @TransformWith<PhraseStringWithUrlInToMarkdownStyleTransform> var description = ""
+    var description: String = ""
 }
 
-//This tranform funtion is garbge. Super inefficient.
-//And may have some bug in feautre. Needs to find a better way to make it.
-struct PhraseStringWithUrlInToMarkdownStyleTransform: TransformFunction {
-    static func transform(_ text: String) -> String {
-        var phraseText = text
-        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-        let matches = detector.matches(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count))
-        
-        for match in matches {
-            guard let range = Range(match.range, in: text) else { continue }
-            let url = text[range]
-            if phraseText.contains("](\(url))") { continue } //A very bad way to bypass url that written in markdown.
-            phraseText = phraseText.replacingOccurrences(of: url, with: "[\(url)](\(url))")
-        }
-        
-        return phraseText
-    }
-}
 
 struct RawName_BioModel: Hashable, Codable {
     var name: String = ""
-    @TransformWith<PhraseStringWithUrlInToMarkdownStyleTransform> var bio = ""
+    var bio: String = ""
 }
 
 struct Name_BioModel: Hashable, Codable {

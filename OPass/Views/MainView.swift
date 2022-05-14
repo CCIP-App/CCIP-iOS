@@ -19,7 +19,6 @@ struct MainView: View {
     @State private var selectedFeature: FeatureType? = nil
     
     var body: some View {
-        let eventSettings = eventAPI.eventSettings
         VStack {
             if let eventLogoData = eventAPI.eventLogo, let eventLogoUIImage = UIImage(data: eventLogoData) {
                 Image(uiImage: eventLogoUIImage)
@@ -40,7 +39,7 @@ struct MainView: View {
             
             ScrollView {
                 LazyVGrid(columns: gridItemLayout) {
-                    ForEach(eventSettings.features, id: \.self) { feature in
+                    ForEach(eventAPI.eventSettings.features, id: \.self) { feature in
                         if !(CheckFeatureIsWebview(type: feature.feature) && feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) == nil) {
                             VStack {
                                 GeometryReader { geometry in
