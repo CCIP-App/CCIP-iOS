@@ -9,20 +9,24 @@
 import SwiftUI
 
 struct ImagePicker: UIViewControllerRepresentable {
-    private var imagePickerDelegate: ImagePickerDelegate
+    private let onImageSelected: (UIImage) -> Void
     
     init(onImageSelected: @escaping (UIImage) -> Void) {
-        imagePickerDelegate = ImagePickerDelegate(onImageSelected: onImageSelected)
+        self.onImageSelected = onImageSelected
     }
     
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = imagePickerDelegate
+        imagePickerController.delegate = context.coordinator
         return imagePickerController
     }
     
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
         //intentionally left empty
+    }
+    
+    func makeCoordinator() -> ImagePickerDelegate {
+        return ImagePickerDelegate(onImageSelected: onImageSelected)
     }
 }
 
@@ -31,12 +35,14 @@ class ImagePickerDelegate: NSObject, UIImagePickerControllerDelegate, UINavigati
     init(onImageSelected: @escaping (UIImage) -> Void) {
         self.onImageSelected = onImageSelected
     }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
         onImageSelected(image)
     }
+    
 }
 
 struct ImagePicker_Previews: PreviewProvider {
