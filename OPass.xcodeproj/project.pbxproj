@@ -44,6 +44,7 @@
 		D3602CAC280400D8001D9C15 /* UseScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3602CAB280400D8001D9C15 /* UseScenarioView.swift */; };
 		D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366D8EF27ED50CB00AA4267 /* MainView.swift */; };
 		D36A2FD82829F9C500EFBDB1 /* NEHotspot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */; };
+		D39AC55828314137002EF23B /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = D39AC55728314137002EF23B /* OneSignal */; };
 		D3A00F1F27D837D00097A6AB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00F1E27D837D00097A6AB /* NotificationService.swift */; };
 		D3A00F2327D837D00097A6AB /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D3A00F2A27D838920097A6AB /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = D3A00F2927D838920097A6AB /* OneSignal */; };
@@ -166,6 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D39AC55828314137002EF23B /* OneSignal in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +426,9 @@
 			dependencies = (
 			);
 			name = OneSignalNotificationServiceExtension;
+			packageProductDependencies = (
+				D39AC55728314137002EF23B /* OneSignal */,
+			);
 			productName = OneSignalNotificationServiceExtension;
 			productReference = D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -621,7 +626,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
@@ -648,7 +653,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
@@ -1013,6 +1018,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D323C1F3282FE03C009AFF97 /* XCRemoteSwiftPackageReference "EFQRCode" */;
 			productName = EFQRCode;
+		};
+		D39AC55728314137002EF23B /* OneSignal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignal;
 		};
 		D3A00F2927D838920097A6AB /* OneSignal */ = {
 			isa = XCSwiftPackageProductDependency;
