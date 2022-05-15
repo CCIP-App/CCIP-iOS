@@ -53,6 +53,14 @@ struct ScheduleDetailView: View {
                          }
                     )
                 
+                if let type = scheduleDetail.type {
+                    TypeSection(name: LocalizeIn(zh: eventAPI.eventSchedule?.session_types.data[type]?.zh.name,
+                                                 en: eventAPI.eventSchedule?.session_types.data[type]?.en.name) ?? type)
+                    .background(Color("SectionBackgroundColor"))
+                    .cornerRadius(8)
+                    .padding(.bottom)
+                }
+                
                 PlaceSection(name: LocalizeIn(zh: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.zh.name,
                                               en: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.en.name) ?? scheduleDetail.room)
                     .background(Color("SectionBackgroundColor"))
@@ -200,13 +208,33 @@ fileprivate struct FeatureButtons: View {
     }
 }
 
+fileprivate struct TypeSection: View {
+    
+    let name: String
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            Image(systemName: "signpost.right")
+                .foregroundColor(Color(red: 1, green: 204/255, blue: 0, opacity: 1))
+                .padding()
+            VStack(alignment: .leading) {
+                Text(LocalizedStringKey("Type")).font(.caption)
+                    .foregroundColor(.gray)
+                Text(name)
+            }
+            Spacer()
+        }
+    }
+}
+
 fileprivate struct PlaceSection: View {
     
     let name: String
     
     var body: some View {
         HStack(spacing: 0) {
-            Image(systemName: "map").foregroundColor(Color.blue)
+            Image(systemName: "map")
+                .foregroundColor(Color.blue)
                 .padding()
             VStack(alignment: .leading) {
                 Text(LocalizedStringKey("Place")).font(.caption)

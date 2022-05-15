@@ -17,6 +17,8 @@
 "Token" = "驗證碼";
 "TicketWarningContent" = "請將您的票保密。除工作人員或活動攤位外，請勿與其他任何人共享。";
 "EmptyAnnouncement" = "沒有公告";
+"Type" = "類型";
+"Types" = "類型";
 "Tags" = "標籤";
 "Favorite" = "喜歡";
 "AllSessions" = "所有議程";

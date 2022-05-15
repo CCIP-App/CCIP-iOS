@@ -37,9 +37,10 @@ struct ScheduleView: View {
                             ForEach(allScheduleData.sessions[selectDayIndex].header, id: \.self) { header in
                                 if let filteredData = allScheduleData.sessions[selectDayIndex].data[header]?.filter { session in
                                     switch filter {
-                                        case .liked: return likedSessions.contains(session.id)
-                                        case .tag(let tag): return session.tags.contains(tag)
-                                        default: return true
+                                    case .liked: return likedSessions.contains(session.id)
+                                    case .tag(let tag): return session.tags.contains(tag)
+                                    case .type(let type): return session.type == type
+                                    default: return true
                                     }
                                 }, !filteredData.isEmpty {
                                     Section {
@@ -111,6 +112,29 @@ struct ScheduleView: View {
                             Image(systemName: "heart\(filter == .liked ? ".fill" : "")")
                         }
                         .tag(Filter.liked)
+                        
+                        if let types = eventAPI.eventSchedule?.session_types {
+                            Menu {
+                                Picker(selection: $filter, label: EmptyView()) {
+                                    ForEach(types.id, id: \.self) { id in
+                                        Text(LocalizeIn(zh: types.data[id]?.zh.name, en: types.data[id]?.en.name) ?? id)
+                                            .tag(Filter.type(id))
+                                    }
+                                }
+                            } label: {
+                                HStack {
+                                    Text(LocalizedStringKey("Types"))
+                                    Spacer()
+                                    switch filter {
+                                        case .type(_):
+                                            Image(systemName: "signpost.right.fill")
+                                        default:
+                                            Image(systemName: "signpost.right")
+                                    }
+                                }
+                            }
+                        }
+                        
                         if let tags = eventAPI.eventSchedule?.tags {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
@@ -146,6 +170,7 @@ struct ScheduleView: View {
 enum Filter: Hashable {
     case all, liked
     case tag(String)
+    case type(String)
 }
 
 fileprivate struct SelectDayView: View {

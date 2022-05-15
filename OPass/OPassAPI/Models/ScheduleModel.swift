@@ -12,7 +12,7 @@ import SwiftDate
 struct ScheduleModel: Hashable, Codable {
     @TransformWith<SessionModelsTransform> var sessions = []
     @TransformWith<SpeakerTransform> var speakers = [:]
-    @TransformWith<Id_Name_DescriptionTransform> var session_types = [:]
+    @TransformWith<TagsTransform> var session_types = TagsModel()
     @TransformWith<Id_Name_DescriptionTransform> var rooms = [:]
     @TransformWith<TagsTransform> var tags = TagsModel()
 }

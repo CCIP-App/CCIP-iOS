@@ -151,14 +151,14 @@ fileprivate struct TimerView: View {
     @Environment(\.dismiss) var dismiss
     
     @State var time: Double = 0
-    let timer = Timer.publish(every: 0.03, tolerance: 0.05, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @Binding var usedTime: TimeInterval
     
     var body: some View {
         VStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(String(format: "%d:%02d.%02d", Int(time)/60, Int(time)%100, Int(time*100)%100))
+                    Text(String(format: "%d:%02d", Int(time)/60, Int(time)%100))
                         .font(.system(size: 70, weight: .light)) //TODO: Dynamic size
                 }
                 Spacer()
@@ -192,14 +192,14 @@ fileprivate struct TimerView: View {
                     if symbolName != "" {
                         Image(systemName: symbolName)
                             .font(.system(size: UIScreen.main.bounds.width*0.18, weight: .bold, design: .rounded))
-                            .foregroundColor(Color(red: 77/255, green: 148/255, blue: 247/255))
+                            .foregroundColor(Color.white.opacity(0.2))
                     }
                 }
                     .frame(maxWidth: .infinity)
             }
             .offset(x: 0, y: 30)
         })
-        .background(Color.blue)
+        .background(BackgroundColor(diet: scenario.attr.diet))
         .cornerRadius(10)
         .onReceive(timer) { _ in
             let tmpTime = countTime - (Date().timeIntervalSince1970 - usedTime)
@@ -209,5 +209,19 @@ fileprivate struct TimerView: View {
                 time = tmpTime
             }
         }
+    }
+    
+    private func BackgroundColor(diet input: String?) -> Color {
+        if let diet = input {
+            switch diet {
+            case "meat":
+                return Color(red: 1, green: 160/255, blue: 0, opacity: 1)
+            case "vegetarian":
+                return Color(red: 41/255, green: 138/255, blue: 8/255, opacity: 1)
+            default:
+                return Color.blue
+            }
+        }
+        return Color.blue
     }
 }
