@@ -183,7 +183,7 @@ struct TabButton: View {
                         )
                         //.preferredBarAccentColor(.white)
                         //.preferredControlAccentColor(.accentColor)
-                        .dismissButtonStyle(.cancel)
+                        .dismissButtonStyle(.done)
                     }
                 }
         }

@@ -144,7 +144,7 @@ struct SettingView: View {
                 )
                 .preferredBarAccentColor(.white)
                 .preferredControlAccentColor(.accentColor)
-                .dismissButtonStyle(.cancel)
+                .dismissButtonStyle(.done)
             }
         }
         .navigationTitle(LocalizedStringKey("Setting"))

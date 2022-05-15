@@ -170,7 +170,7 @@ fileprivate struct SelectDayView: View {
                                 .font(.system(.body, design: .monospaced))
                         }
                         .foregroundColor(index == selectDayIndex ?
-                                         (colorScheme == .dark ? Color.black : Color.white) :
+                                         (colorScheme == .dark ? Color.white : Color.white) :
                                             (colorScheme == .dark ? Color.white : Color.black))
                         .padding(8)
                         .background(Color.blue.opacity(index == selectDayIndex ? 1 : 0))
