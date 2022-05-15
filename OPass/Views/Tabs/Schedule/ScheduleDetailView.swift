@@ -221,6 +221,7 @@ fileprivate struct TypeSection: View {
                 Text(LocalizedStringKey("Type")).font(.caption)
                     .foregroundColor(.gray)
                 Text(name)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
         }
@@ -240,6 +241,7 @@ fileprivate struct PlaceSection: View {
                 Text(LocalizedStringKey("Place")).font(.caption)
                     .foregroundColor(.gray)
                 Text(name)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
         }

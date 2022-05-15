@@ -165,7 +165,7 @@ struct DeveloperOptionView: View {
                 keyStore.removeObject(forKey: "EventAPI")
             }) {
                 Label {
-                    Text("Clear Cach Data")
+                    Text("Clear Cache Data")
                 } icon: {
                     Image(systemName: "trash")
                 }
