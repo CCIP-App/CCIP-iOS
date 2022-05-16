@@ -96,7 +96,7 @@ struct RedeemTokenView: View {
                 }
             }
         }
-        .slideOverCard(isPresented: $isShowingCameraSOC) {
+        .slideOverCard(isPresented: $isShowingCameraSOC, background: (colorScheme == .dark ? Color(.systemGray6) : Color.white)) {
             VStack {
                 Text(LocalizedStringKey("FastPass")).font(Font.largeTitle.weight(.bold))
                 Text(LocalizedStringKey("ScanQRCodeWithCamera"))
@@ -113,7 +113,7 @@ struct RedeemTokenView: View {
                 }
             }
         }
-        .slideOverCard(isPresented: $isShowingManuallySOC) {
+        .slideOverCard(isPresented: $isShowingManuallySOC, background: (colorScheme == .dark ? Color(.systemGray6) : Color.white)) {
             VStack {
                 Text(LocalizedStringKey("FastPass")).font(Font.largeTitle.weight(.bold))
                 Text(LocalizedStringKey("EnterTokenManually"))
@@ -123,7 +123,9 @@ struct RedeemTokenView: View {
                     .padding(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 5)
-                            .stroke((focusedField == .ManuallyToken ? .yellow : .gray), lineWidth: 2)
+                            .stroke(
+                                (focusedField == .ManuallyToken ? .yellow : Color(red: 209/255, green: 209/255, blue: 213/255)),
+                                lineWidth: (focusedField == .ManuallyToken ? 2 : 1))
                     )
                 
                 VStack(alignment: .leading) {
