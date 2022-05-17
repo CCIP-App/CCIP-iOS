@@ -12,24 +12,40 @@ import OneSignal
 
 @main
 struct OPassApp: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @State var url: URL? = nil
+    
     init() {
         FirebaseApp.configure()
         //UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).overrideUserInterfaceStyle = .light
     }
     
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(OPassAPIViewModel())
-                //.preferredColorScheme(.light)
+            EntryView(url: url)
+                .onOpenURL { url in
+                    //we use the way to universal link here, guaranteed by the swiftui doc that the passed in url being a universal link
+                    let handled = DynamicLinks.dynamicLinks().handleUniversalLink(url) { dynamicLink, _ in
+                        if let url = dynamicLink?.url {
+                            self.url = url
+                        }
+                    }
+                    if !handled {
+                        // non Firbase Dynamic Link
+                        self.url = url
+                    }
+                }
+                .onReceive(appDelegate.$dynamicURL) { url = $0 }
         }
     }
 }
 
 //Only use this as a last resort. Always try to use SwiftUI lifecycle
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    
+    //use this published property to notify SwiftUI lifecycle
+    @Published var dynamicURL: URL? = nil
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
@@ -74,4 +90,34 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         
         return true
     }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+            if let url = userActivity.webpageURL {
+                NSLog("Receieved Activity URL -> \(url)");
+                let handled = DynamicLinks.dynamicLinks().handleUniversalLink(url) { dynamicLink, _ in
+                    if let url = dynamicLink?.url {
+                        self.dynamicURL = url
+                    }
+                }
+                if !handled {
+                    // non Firbase Dynamic Link
+                    dynamicURL = url
+                }
+                return true
+            }
+            return false
+        }
+        
+        func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+            let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url)
+            if let dynamicLink = dynamicLink {
+                if let url = dynamicLink.url {
+                    dynamicURL = url
+                }
+            } else {
+                dynamicURL = url
+                return true
+            }
+            return false
+        }
 }

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseDynamicLinks
 
 struct ContentView: View {
     
@@ -52,7 +53,7 @@ struct ContentView: View {
                 }
             }
         }
-        .onOpenURL(perform: handleURL)
+        //.onOpenURL(perform: handleURL)
     }
     
     func handleURL(url: URL) {
@@ -66,6 +67,10 @@ struct ContentView: View {
     
     func parseURL(_ url: URL) -> (String, String) {
         //TODO: implement it when dynamic link can work and we can see the real URL
+        DynamicLinks.dynamicLinks().handleUniversalLink(url) { link, error in
+            print(link)
+            print(error)
+        }
         return ("COSCUP_2019", "7679f08f7eaeef5e9a65a1738ae2840e")
     }
 }
