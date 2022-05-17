@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EntryView: View {
+    
     @State var urlProcessed = false
     let url: URL?
     
@@ -16,7 +17,6 @@ struct EntryView: View {
         if (url == nil || urlProcessed) {
             ContentView()
                 .environmentObject(OPassAPIViewModel())
-                //.preferredColorScheme(.light)
         } else {
             ProgressView()
                 .onAppear {

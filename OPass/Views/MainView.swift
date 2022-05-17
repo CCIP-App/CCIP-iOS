@@ -99,6 +99,7 @@ struct MainView: View {
 }
 
 struct TabButton: View {
+    @AppStorage("appearance") var appearance: Appearance = .system
     @Environment(\.openURL) var openURL
     let feature: FeatureModel
     @Binding var selectedFeature: FeatureType?
@@ -181,8 +182,8 @@ struct TabButton: View {
                                 barCollapsingEnabled: true
                             )
                         )
-                        //.preferredBarAccentColor(.white)
-                        //.preferredControlAccentColor(.accentColor)
+                        .preferredBarAccentColor(appearance == .system ? nil :
+                                                    appearance == .dark ? .black : .white)
                         .dismissButtonStyle(.done)
                     }
                 }

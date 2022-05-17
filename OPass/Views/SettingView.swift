@@ -14,6 +14,7 @@ struct SettingView: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @Environment(\.openURL) var openURL
+    @AppStorage("appearance") var appearance: Appearance = .system
     @State var isShowingSafari = false
     @State var url = URL(string: "https://opass.app")!
     private let CCIPWebsiteURL = URL(string: "https://opass.app")!
@@ -39,6 +40,22 @@ struct SettingView: View {
                         .padding(5)
                         
                         Spacer()
+                    }
+                }
+                
+                Section(header: Text(LocalizedStringKey("GENERAL"))) {
+                    Picker(selection: $appearance) {
+                        Text(LocalizedStringKey("System")).tag(Appearance.system)
+                        Text(LocalizedStringKey("Light")).tag(Appearance.light)
+                        Text(LocalizedStringKey("Dark")).tag(Appearance.dark)
+                    } label: {
+                        Label { Text(LocalizedStringKey("Appearance")) } icon: {
+                            Image(systemName: "circle.lefthalf.filled")
+                                .padding(5)
+                                .foregroundColor(.white)
+                                .background(Color(red: 89/255, green: 169/255, blue: 214/255))
+                                .cornerRadius(9)
+                        }
                     }
                 }
                 
@@ -142,8 +159,8 @@ struct SettingView: View {
                         barCollapsingEnabled: true
                     )
                 )
-                .preferredBarAccentColor(.white)
-                .preferredControlAccentColor(.accentColor)
+                .preferredBarAccentColor(appearance == .system ? nil :
+                                            appearance == .dark ? .black : .white)
                 .dismissButtonStyle(.done)
             }
         }

@@ -14,11 +14,15 @@ import OneSignal
 struct OPassApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @AppStorage var appearance: Appearance
     @State var url: URL? = nil
     
     init() {
         FirebaseApp.configure()
-        //UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).overrideUserInterfaceStyle = .light
+        _appearance = AppStorage(wrappedValue: Appearance.system, "appearance")
+        if appearance != .system {
+            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).overrideUserInterfaceStyle = appearance == .dark ? .dark : .light
+        }
     }
     
     var body: some Scene {
@@ -37,6 +41,8 @@ struct OPassApp: App {
                     }
                 }
                 .onReceive(appDelegate.$dynamicURL) { url = $0 }
+                .preferredColorScheme(appearance == .system ? nil :
+                                        appearance == .dark ? .dark : .light)
         }
     }
 }
@@ -120,4 +126,10 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             }
             return false
         }
+}
+
+enum Appearance: String, Codable {
+    case system
+    case light
+    case dark
 }

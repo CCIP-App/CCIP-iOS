@@ -63,6 +63,11 @@
 "Loading" = "Loading...";
 "Setting" = "Setting";
 "FastPass" = "Fast Pass";
+"System" = "System";
+"Light" = "Light";
+"Dark" = "Dark";
+"Appearance" = "Appearance";
+"GENERAL" = "GENERAL";
 "ABOUT" = "ABOUT";
 "OfficialWebsite" = "Official Website";
 "PrivacyPolicy" = "Privacy Policy";
