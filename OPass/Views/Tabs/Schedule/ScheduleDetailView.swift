@@ -391,6 +391,7 @@ fileprivate struct SpeakerBio: View {
                                         .cornerRadius(20)
                                     }
                                 }
+                                .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.6)
                             }
                         }
                     }
