@@ -110,14 +110,22 @@ class OPassAPIViewModel: ObservableObject {
         }
     }
     
-    func loginEvent(_ eventId: String, withToken token: String) async {
+    func loginCurrentEvent(token: String) async -> Bool {
+        if let eventID = currentEventID {
+            return await loginEvent(eventID, withToken: token)
+        }
+        return false
+    }
+    
+    func loginEvent(_ eventId: String, withToken token: String) async -> Bool {
         do {
             let eventSettings = try await APIRepo.loadEventSettings(id: eventId)
             let eventModel = EventAPIViewModel(eventSettings: eventSettings, saveData: saveEventAPIData)
             DispatchQueue.main.async {
+                self.currentEventID = eventId
                 self.currentEventAPI = eventModel
             }
-            _ = await eventModel.redeemToken(token: token)
+            return await eventModel.redeemToken(token: token)
         } catch APIRepo.LoadError.invalidURL(url: let url) {
             logger.error("\(url.getString()) is invalid, eventId is possibly wrong")
         } catch APIRepo.LoadError.dataFetchingFailed(cause: let cause) {
@@ -125,5 +133,6 @@ class OPassAPIViewModel: ObservableObject {
         } catch {
             logger.error("Error: \(error.localizedDescription)")
         }
+        return false
     }
 }

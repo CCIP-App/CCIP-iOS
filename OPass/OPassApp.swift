@@ -43,6 +43,7 @@ struct OPassApp: App {
                 .onReceive(appDelegate.$dynamicURL) { url = $0 }
                 .preferredColorScheme(appearance == .system ? nil :
                                         appearance == .dark ? .dark : .light)
+                .environmentObject(OPassAPIViewModel())
         }
     }
 }

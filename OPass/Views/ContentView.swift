@@ -53,25 +53,6 @@ struct ContentView: View {
                 }
             }
         }
-        //.onOpenURL(perform: handleURL)
-    }
-    
-    func handleURL(url: URL) {
-        handlingURL = true
-        Task {
-            let (eventId, token) = parseURL(url)
-            await OPassAPI.loginEvent(eventId, withToken: token)
-            handlingURL = false
-        }
-    }
-    
-    func parseURL(_ url: URL) -> (String, String) {
-        //TODO: implement it when dynamic link can work and we can see the real URL
-        DynamicLinks.dynamicLinks().handleUniversalLink(url) { link, error in
-            print(link)
-            print(error)
-        }
-        return ("COSCUP_2019", "7679f08f7eaeef5e9a65a1738ae2840e")
     }
 }
 

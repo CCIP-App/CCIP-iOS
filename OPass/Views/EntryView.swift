@@ -10,50 +10,53 @@ import SwiftUI
 struct EntryView: View {
     
     @State var urlProcessed = false
+    @State var showInvalidURL = false
+    @EnvironmentObject var OPassAPI: OPassAPIViewModel
     let url: URL?
     
     var body: some View {
-        //WIP, push first to reduce conflict
         if (url == nil || urlProcessed) {
             ContentView()
-                .environmentObject(OPassAPIViewModel())
+                //.preferredColorScheme(.light)
         } else {
-            ProgressView()
-                .onAppear {
-                    parseUniversalLinkAndURL(url!)
+            ProgressView("Logging in...")
+                .task {
+                    await parseUniversalLinkAndURL(url!)
+                }
+                .alert("Invalid URL", isPresented: $showInvalidURL) {
+                    Button("OK", role: .cancel) {
+                        showInvalidURL = false
+                        urlProcessed = true
+                    }
+                } message: {
+                    Text("You have an invalid URL or the token is incorrect.")
                 }
         }
     }
     
-    func parseUniversalLinkAndURL(_ url: URL) -> Bool {
-//        let params = URLComponents(string: "?" + (url.query ?? ""))?.queryItems
-//        let event_id = params?.first(where: { $0.name == "event_id" })?.value
-//        let token = params?.first(where: { $0.name == "token" })?.value
-//        let ac = UIAlertController.alertOfTitle(NSLocalizedString("GuideViewTokenErrorTitle", comment: ""), withMessage: NSLocalizedString("GuideViewTokenErrorDesc", comment: ""), cancelButtonText: NSLocalizedString("GotIt", comment: ""), cancelStyle: .cancel, cancelAction: nil)
-//        if let event_id = event_id, let token = token {
-//            OPassAPI.DoLogin(event_id, token) { success, data, _ in
-//                if !success && data != nil {
-//                    ac.showAlert {
-//                        UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
-//                    }
-//                }
-//            }
-//            return true
-//        }
-//        if let token = token {
-//            if event_id == nil && Constants.HasSetEvent {
-//                OPassAPI.RedeemCode("", token) { success, data, _ in
-//                    if !success && data != nil {
-//                        ac.showAlert {
-//                            UIImpactFeedback.triggerFeedback(.notificationFeedbackError)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        return true
-//        Constants.OpenInAppSafari(forURL: url)
-        return true
+    func parseUniversalLinkAndURL(_ url: URL) async {
+        let params = URLComponents(string: "?" + (url.query ?? ""))?.queryItems
+        guard let token = params?.first(where: { $0.name == "token" })?.value else {
+            showInvalidURL = true
+            return
+        }
+        if let eventId = params?.first(where: { $0.name == "event_id" })?.value {
+            let success = await OPassAPI.loginEvent(eventId, withToken: token)
+            if success {
+                urlProcessed = true
+            } else {
+                showInvalidURL = true
+            }
+        } else if OPassAPI.currentEventID != nil {
+            let success = await OPassAPI.loginCurrentEvent(token: token)
+            if success {
+                urlProcessed = true
+            } else {
+                showInvalidURL = true
+            }
+        } else {
+            showInvalidURL = true
+        }
     }
 }
 
