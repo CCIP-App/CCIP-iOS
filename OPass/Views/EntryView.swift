@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct EntryView: View {
     
@@ -15,23 +16,28 @@ struct EntryView: View {
     let url: URL?
     
     var body: some View {
-        if (url == nil || urlProcessed) {
-            ContentView()
-                //.preferredColorScheme(.light)
-        } else {
-            ProgressView("Logging in...")
-                .task {
-                    await parseUniversalLinkAndURL(url!)
-                }
-                .alert("Invalid URL", isPresented: $showInvalidURL) {
-                    Button("OK", role: .cancel) {
-                        showInvalidURL = false
-                        urlProcessed = true
+        let processingURL = Binding(get: {
+            return self.url != nil && !self.urlProcessed
+        }, set: { _ in
+            //nothing to set
+        })
+        
+        ContentView()
+            .sheet(isPresented: processingURL) {
+                ProgressView("Logging in...")
+                    .task {
+                        await parseUniversalLinkAndURL(url!)
                     }
-                } message: {
-                    Text("You have an invalid URL or the token is incorrect.")
+                    .interactiveDismissDisabled()
+            }
+            .alert("Invalid URL", isPresented: $showInvalidURL) {
+                Button("OK", role: .cancel) {
+                    showInvalidURL = false
+                    urlProcessed = true
                 }
-        }
+            } message: {
+                Text("You have an invalid URL or the token is incorrect.")
+            }
     }
     
     func parseUniversalLinkAndURL(_ url: URL) async {
