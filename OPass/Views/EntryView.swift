@@ -29,14 +29,14 @@ struct EntryView: View {
                         await parseUniversalLinkAndURL(url!)
                     }
                     .interactiveDismissDisabled()
-            }
-            .alert("Invalid URL", isPresented: $showInvalidURL) {
-                Button("OK", role: .cancel) {
-                    showInvalidURL = false
-                    urlProcessed = true
-                }
-            } message: {
-                Text("You have an invalid URL or the token is incorrect.")
+                    .alert("Invalid URL", isPresented: $showInvalidURL) {
+                        Button("OK", role: .cancel) {
+                            showInvalidURL = false
+                            urlProcessed = true
+                        }
+                    } message: {
+                        Text("You have an invalid URL or the token is incorrect.")
+                    }
             }
     }
     
