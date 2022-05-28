@@ -13,9 +13,7 @@ struct EventListView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @Environment(\.dismiss) var dismiss
-    @Environment(\.colorScheme) var colorScheme
     @State var isError = false
-    private let logger = Logger(subsystem: "app.opass.ccip", category: "EventListView")
     
     var body: some View {
         NavigationView {
@@ -24,43 +22,9 @@ struct EventListView: View {
                     if !OPassAPI.eventList.isEmpty {
                         Form {
                             ForEach(OPassAPI.eventList, id: \.event_id) { list in
-                                Button(action: {
+                                EventRow(url: list.logo_url, displayName: list.display_name) {
                                     OPassAPI.currentEventID = list.event_id
                                     dismiss()
-                                }) {
-                                    HStack {
-                                        AsyncImage(url: URL(string: list.logo_url), transaction: Transaction(animation: .spring())) { phase in
-                                            switch phase {
-                                            case .empty:
-                                                ProgressView()
-                                            case .success(let image):
-                                                image
-                                                    .renderingMode(.template)
-                                                    .resizable().scaledToFit()
-                                                    .foregroundColor(Color("LogoColor"))
-                                            case .failure(_):
-                                                Image(systemName: "xmark.circle")
-                                                    .foregroundColor(Color("LogoColor").opacity(0.5))
-                                            @unknown default:
-                                                Image(systemName: "xmark.circle")
-                                                    .foregroundColor(Color("LogoColor").opacity(0.5))
-                                                    .onAppear {
-                                                        logger.error("Unknow AsyncImage status, please call developer to update")
-                                                        
-                                                    }
-                                            }
-                                        }
-                                        .padding(.horizontal, 3)
-                                        .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.15)
-                                        
-                                        Text(LocalizeIn(zh: list.display_name.zh, en: list.display_name.en))
-                                            .foregroundColor(colorScheme == .dark ? .white : .black)
-                                        
-                                        Spacer()
-                                        
-                                        Image(systemName: "chevron.right")
-                                            .foregroundColor(.gray)
-                                    }
                                 }
                             }
                         }
@@ -105,6 +69,55 @@ struct EventListView: View {
         }
         .interactiveDismissDisabled(OPassAPI.currentEventID == nil)
     }
+}
+
+private struct EventRow: View {
+    let url: String
+    let displayName: DisplayTextModel
+    let action: () -> Void
+    
+    @Environment(\.colorScheme) var colorScheme
+    
+    private let logger = Logger(subsystem: "app.opass.ccip", category: "EventListView")
+    var body: some View {
+        Button(action: action) {
+            HStack {
+                AsyncImage(url: URL(string: url), transaction: Transaction(animation: .spring())) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                    case .success(let image):
+                        image
+                            .renderingMode(.template)
+                            .resizable().scaledToFit()
+                            .foregroundColor(Color("LogoColor"))
+                    case .failure(_):
+                        Image(systemName: "xmark.circle")
+                            .foregroundColor(Color("LogoColor").opacity(0.5))
+                    @unknown default:
+                        Image(systemName: "xmark.circle")
+                            .foregroundColor(Color("LogoColor").opacity(0.5))
+                            .onAppear {
+                                logger.error("Unknow AsyncImage status, please call developer to update")
+                                
+                            }
+                    }
+                }
+                .padding(.horizontal, 3)
+                .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.15)
+                
+                Text(LocalizeIn(zh: displayName.zh, en: displayName.en))
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                
+                Spacer()
+                
+                Image(systemName: "chevron.right")
+                    .foregroundColor(.gray)
+            }
+        }
+    }
+    
+    
 }
 
 #if DEBUG

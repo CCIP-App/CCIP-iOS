@@ -14,12 +14,11 @@ import OneSignal
 struct OPassApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @AppStorage var appearance: Appearance
+    @AppStorage("appearance") var appearance: Appearance = .system
     @State var url: URL? = nil
     
     init() {
         FirebaseApp.configure()
-        _appearance = AppStorage(wrappedValue: Appearance.system, "appearance")
         if appearance != .system {
             UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).overrideUserInterfaceStyle = appearance == .dark ? .dark : .light
         }

@@ -32,10 +32,8 @@ struct ContentView: View {
                     MainView(eventAPI: OPassAPI.currentEventAPI!)
                 }
             }
-            .environmentObject(OPassAPI)
             .sheet(isPresented: $isShowingEventList) {
                 EventListView()
-                    .environmentObject(OPassAPI)
             }
             .navigationTitle("OPass")
             .navigationBarTitleDisplayMode(.inline)

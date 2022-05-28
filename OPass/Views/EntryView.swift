@@ -46,20 +46,14 @@ struct EntryView: View {
             showInvalidURL = true
             return
         }
+        var success = false
         if let eventId = params?.first(where: { $0.name == "event_id" })?.value {
-            let success = await OPassAPI.loginEvent(eventId, withToken: token)
-            if success {
-                urlProcessed = true
-            } else {
-                showInvalidURL = true
-            }
+            success = await OPassAPI.loginEvent(eventId, withToken: token)
         } else if OPassAPI.currentEventID != nil {
-            let success = await OPassAPI.loginCurrentEvent(token: token)
-            if success {
-                urlProcessed = true
-            } else {
-                showInvalidURL = true
-            }
+            success = await OPassAPI.loginCurrentEvent(token: token)
+        }
+        if success {
+            urlProcessed = true
         } else {
             showInvalidURL = true
         }
