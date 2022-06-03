@@ -91,11 +91,16 @@ struct ScheduleDetailView: View {
             }
                 
             if scheduleDetail.speakers.count != 0 {
-                SpeakersSection(eventAPI: eventAPI, scheduleDetail: scheduleDetail, showSpeaker: $showSpeaker, url: $url, showingAlert: $showingUrlAlert)
+                SpeakersSections(
+                    eventAPI: eventAPI,
+                    scheduleDetail: scheduleDetail,
+                    url: $url, showingAlert: $showingUrlAlert
+                )
             }
             
             if let description = scheduleDetail.zh.description, description != "" {
-                DescriptionSection(description: description, url: $url, showingAlert: $showingUrlAlert)
+                DescriptionSection(description: description,
+                                   url: $url, showingAlert: $showingUrlAlert)
             }
         }
         .listStyle(.insetGrouped)
@@ -276,51 +281,21 @@ fileprivate struct TimeSection: View {
     }
 }
 
-fileprivate struct SpeakersSection: View {
+fileprivate struct SpeakersSections: View {
     
-    @State var forceFullText: Bool = false
     @ObservedObject var eventAPI: EventAPIViewModel
     let scheduleDetail: SessionDataModel
-    @Binding var showSpeaker: String?
     @Binding var url: URL
     @Binding var showingAlert: Bool
     
     var body: some View {
         Section(header: Text(LocalizedStringKey("Speakers")).padding(.leading, 10)) {
             ForEach(scheduleDetail.speakers, id: \.self) { speaker in
-                VStack(alignment: .leading, spacing: 0) {
-                    HStack(alignment: .center) {
-                        if let avatarURL = eventAPI.eventSchedule?.speakers[speaker]?.avatar {
-                            AsyncImage(url: URL(string: avatarURL)) { image in
-                                image
-                                    .renderingMode(.original)
-                                    .resizable().scaledToFill()
-                                    .transition(.opacity)
-                            } placeholder: {
-                                Image(systemName: "person.crop.circle.fill")
-                                    .resizable().scaledToFit()
-                                    .foregroundColor(.gray)
-                            }
-                            .clipShape(Circle())
-                            .frame(width: 30, height: 30)
-                        }
-                        
-                        Text(LocalizeIn(zh: eventAPI.eventSchedule?.speakers[speaker]?.zh.name, en: eventAPI.eventSchedule?.speakers[speaker]?.en.name) ?? speaker)
-                            .font(.subheadline.bold())
-                        Spacer()
-                    }
-                    .padding(.vertical, 8)
-                    if let speakerData = eventAPI.eventSchedule?.speakers[speaker], LocalizeIn(zh: speakerData.zh.bio, en: speakerData.en.bio) != "" {
-                        Divider()
-                        SpeakerBio(speaker: LocalizeIn(zh: eventAPI.eventSchedule?.speakers[speaker]?.zh.name, en: eventAPI.eventSchedule?.speakers[speaker]?.en.name) ?? speaker,
-                                   speakerBio: LocalizeIn(zh: speakerData.zh.bio, en: speakerData.en.bio),
-                                   avatarURL: eventAPI.eventSchedule?.speakers[speaker]?.avatar, url: $url, showingAlert: $showingAlert)
-                    }
-                }
-                .padding(.horizontal, 10)
-                .background(Color("SectionBackgroundColor"))
-                .cornerRadius(8)
-                .padding(.bottom, 8)
+                SpeakerBlock(
+                    speaker: speaker,
+                    speakerData: eventAPI.eventSchedule?.speakers[speaker],
+                    url: $url, showingAlert: $showingAlert
+                )
             }
             .listRowBackground(Color.transparent)
             .listRowSeparator(.hidden)
@@ -329,10 +304,71 @@ fileprivate struct SpeakersSection: View {
     }
 }
 
+fileprivate struct SpeakerBlock: View {
+    
+    let speaker: String
+    let speakerData: SpeakerModel?
+    @Binding var url: URL
+    @Binding var showingAlert: Bool
+    @State var avatarData: Data?
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            HStack(alignment: .center) {
+                if let avatarURL = speakerData?.avatar {
+                    Group {
+                        if let data = avatarData, let uiImage = UIImage(data: data) {
+                            Image(uiImage: uiImage)
+                                .renderingMode(.original)
+                                .resizable().scaledToFill()
+                        } else {
+                            Image(systemName: "person.crop.circle.fill")
+                                .resizable().scaledToFit()
+                                .foregroundColor(.gray)
+                                .onAppear {
+                                    fetchAvatarData(url: avatarURL)
+                                }
+                        }
+                    }
+                    .clipShape(Circle())
+                    .frame(width: 30, height: 30)
+                }
+                
+                Text(LocalizeIn(zh: speakerData?.zh.name, en: speakerData?.en.name) ?? speaker)
+                    .font(.subheadline.bold())
+                Spacer()
+            }
+            .padding(.vertical, 8)
+            if let data = speakerData, LocalizeIn(zh: speakerData?.zh.bio, en: speakerData?.en.bio) != "" {
+                Divider()
+                SpeakerBio(speaker: LocalizeIn(zh: data.zh.name, en: data.en.name),
+                           speakerBio: LocalizeIn(zh: data.zh.bio, en: data.en.bio),
+                           avatarData: avatarData, url: $url, showingAlert: $showingAlert)
+            }
+        }
+        .padding(.horizontal, 10)
+        .background(Color("SectionBackgroundColor"))
+        .cornerRadius(8)
+        .padding(.bottom, 8)
+    }
+    
+    private func fetchAvatarData(url urlString: String) {
+        guard let url = URL(string: urlString) else {
+            print("Invalid PNG URL")
+            return
+        }
+            
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+            self.avatarData = data
+        }
+        task.resume()
+    }
+}
+
 fileprivate struct SpeakerBio: View {
     let speaker: String
     let speakerBio: String
-    let avatarURL: String?
+    let avatarData: Data?
     @Binding var url: URL
     @Binding var showingAlert: Bool
     @State var isTruncated: Bool = false
@@ -352,46 +388,55 @@ fileprivate struct SpeakerBio: View {
                     Spacer()
                     Button("More") {
                         SOCManager.present(isPresented: $isShowingSpeakerDetail) {
-                            if readSize.height < UIScreen.main.bounds.height * 0.5 {
-                                VStack {
-                                    Text(speaker)
-                                        .font(.title.bold())
-                                    
-                                    if !speakerBio.isEmpty {
-                                        HStack {
-                                            Markdown(speakerBio.tirm())
-                                                .markdownStyle(
-                                                    MarkdownStyle(font: .footnote)
-                                                )
-                                                .padding()
-                                        }
-                                        .frame(maxWidth: .infinity)
-                                        .background(colorScheme == .light ? .white : .black.opacity(0.6))
-                                        .cornerRadius(20)
-                                    }
+                            VStack {
+                                if let data = avatarData, let uiImage = UIImage(data: data) {
+                                    Image(uiImage: uiImage)
+                                        .renderingMode(.original)
+                                        .resizable().scaledToFill()
+                                        .clipShape(Circle())
+                                        .frame(width: UIScreen.main.bounds.width * 0.25,
+                                               height: UIScreen.main.bounds.width * 0.25)
+                                        .padding(.bottom, 2)
                                 }
-                                .frame(maxWidth: .infinity)
-                            } else {
-                                VStack {
-                                    Text(speaker)
-                                        .font(.title.bold())
-                                    
-                                    if !speakerBio.isEmpty {
-                                        HStack {
-                                            ScrollView {
+                                
+                                Text(speaker)
+                                    .font(.title.bold())
+                                
+                                if readSize.height < UIScreen.main.bounds.height * 0.5 {
+                                    VStack {
+                                        if !speakerBio.isEmpty {
+                                            HStack {
                                                 Markdown(speakerBio.tirm())
                                                     .markdownStyle(
                                                         MarkdownStyle(font: .footnote)
                                                     )
                                                     .padding()
                                             }
+                                            .frame(maxWidth: .infinity)
+                                            .background(colorScheme == .light ? .white : .black.opacity(0.6))
+                                            .cornerRadius(20)
                                         }
-                                        .frame(maxWidth: .infinity)
-                                        .background(colorScheme == .light ? .white : .black.opacity(0.6))
-                                        .cornerRadius(20)
                                     }
+                                    .frame(maxWidth: .infinity)
+                                } else {
+                                    VStack {
+                                        if !speakerBio.isEmpty {
+                                            HStack {
+                                                ScrollView {
+                                                    Markdown(speakerBio.tirm())
+                                                        .markdownStyle(
+                                                            MarkdownStyle(font: .footnote)
+                                                        )
+                                                        .padding()
+                                                }
+                                            }
+                                            .frame(maxWidth: .infinity)
+                                            .background(colorScheme == .light ? .white : .black.opacity(0.6))
+                                            .cornerRadius(20)
+                                        }
+                                    }
+                                    .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.5)
                                 }
-                                .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.6)
                             }
                         }
                     }

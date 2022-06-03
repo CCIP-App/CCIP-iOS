@@ -64,15 +64,6 @@
       }
     },
     {
-      "identity" : "customsoc",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/viere1234/CustomSOC",
-      "state" : {
-        "branch" : "main",
-        "revision" : "2ddc5e6ab35ca867b9331470076005f6f18886d9"
-      }
-    },
-    {
       "identity" : "efqrcode",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/EFPrefix/EFQRCode.git",
@@ -196,6 +187,15 @@
       "state" : {
         "revision" : "46c1e6b5ac09d8f82c991061c659f67e573d425d",
         "version" : "2.1.0"
+      }
+    },
+    {
+      "identity" : "slideovercard",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/joogps/SlideOverCard",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f58d646d7666c00cf4c4835a3b674a3d905b3fa9"
       }
     },
     {

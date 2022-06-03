@@ -29,7 +29,6 @@
 		4F9E9B4E2813F0A300A14905 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E9B4D2813F0A300A14905 /* ArrayExtension.swift */; };
 		4FEF38FB27D13FBA00FC97F4 /* APIRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */; };
 		D301C39428053ED600D027FE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301C39328053ED600D027FE /* ActivityIndicator.swift */; };
-		D3069FDA2832150D00B47503 /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = D3069FD92832150D00B47503 /* SlideOverCard */; };
 		D3095F1827D78EE600225C7D /* UNUserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3095F1727D78EE600225C7D /* UNUserNotification.swift */; };
 		D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314B66E27D1089200481D5E /* EventAPIViewModel.swift */; };
 		D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D318CE43280918C400CEA1AA /* TruncableText.swift */; };
@@ -52,6 +51,7 @@
 		D3A94D03281E62530053FEFA /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A94D02281E62530053FEFA /* ErrorView.swift */; };
 		D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C0E21927D51B460095169F /* NetworkExtension.framework */; };
 		D3C0E21C27D51C060095169F /* WifiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0E21B27D51C060095169F /* WifiView.swift */; };
+		D3C5C92B2849BE1B00F175AB /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = D3C5C92A2849BE1B00F175AB /* SlideOverCard */; };
 		D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194727CF864B00643D97 /* ScheduleModel.swift */; };
 		D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingView.swift */; };
 		D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6195027CFA9A800643D97 /* ScheduleView.swift */; };
@@ -181,7 +181,7 @@
 				D323C1EC282F7F9B009AFF97 /* AlertToast in Frameworks */,
 				D3EA819827F68FFF00FE7985 /* BetterSafariView in Frameworks */,
 				D3E0123127D35D970040621F /* KeychainAccess in Frameworks */,
-				D3069FDA2832150D00B47503 /* SlideOverCard in Frameworks */,
+				D3C5C92B2849BE1B00F175AB /* SlideOverCard in Frameworks */,
 				4F5EB73127D2311200235396 /* SwiftDate in Frameworks */,
 				D323C1F5282FE03C009AFF97 /* EFQRCode in Frameworks */,
 				4F29D9CA27D4EA2D00292CC4 /* FirebaseAnalytics in Frameworks */,
@@ -462,7 +462,7 @@
 				4F5CA37F27FDD1B400DEAB39 /* MarkdownUI */,
 				D323C1EB282F7F9B009AFF97 /* AlertToast */,
 				D323C1F4282FE03C009AFF97 /* EFQRCode */,
-				D3069FD92832150D00B47503 /* SlideOverCard */,
+				D3C5C92A2849BE1B00F175AB /* SlideOverCard */,
 			);
 			productName = OPass;
 			productReference = D3E4E6BB27CD158400FFACEB /* OPass.app */;
@@ -506,7 +506,7 @@
 				4F5CA37E27FDD1B300DEAB39 /* XCRemoteSwiftPackageReference "MarkdownUI" */,
 				D323C1EA282F7F9A009AFF97 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				D323C1F3282FE03C009AFF97 /* XCRemoteSwiftPackageReference "EFQRCode" */,
-				D3069FD82832150D00B47503 /* XCRemoteSwiftPackageReference "CustomSOC" */,
+				D3C5C9292849BE1B00F175AB /* XCRemoteSwiftPackageReference "SlideOverCard" */,
 			);
 			productRefGroup = D3E4E6BC27CD158400FFACEB /* Products */;
 			projectDirPath = "";
@@ -927,14 +927,6 @@
 				minimumVersion = 6.3.0;
 			};
 		};
-		D3069FD82832150D00B47503 /* XCRemoteSwiftPackageReference "CustomSOC" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/viere1234/CustomSOC";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		D322F60D27EF4698007EED5D /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
@@ -965,6 +957,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 3.0.0;
+			};
+		};
+		D3C5C9292849BE1B00F175AB /* XCRemoteSwiftPackageReference "SlideOverCard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/joogps/SlideOverCard";
+			requirement = {
+				branch = main;
+				kind = branch;
 			};
 		};
 		D3E0122F27D35D970040621F /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
@@ -1006,11 +1006,6 @@
 			package = 4F5EB72F27D2311200235396 /* XCRemoteSwiftPackageReference "SwiftDate" */;
 			productName = SwiftDate;
 		};
-		D3069FD92832150D00B47503 /* SlideOverCard */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D3069FD82832150D00B47503 /* XCRemoteSwiftPackageReference "CustomSOC" */;
-			productName = SlideOverCard;
-		};
 		D322F60E27EF4698007EED5D /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D322F60D27EF4698007EED5D /* XCRemoteSwiftPackageReference "CodeScanner" */;
@@ -1035,6 +1030,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
 			productName = OneSignal;
+		};
+		D3C5C92A2849BE1B00F175AB /* SlideOverCard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3C5C9292849BE1B00F175AB /* XCRemoteSwiftPackageReference "SlideOverCard" */;
+			productName = SlideOverCard;
 		};
 		D3E0123027D35D970040621F /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
