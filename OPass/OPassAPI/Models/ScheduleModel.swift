@@ -61,11 +61,11 @@ struct SessionDataModel: Hashable, Codable {
     var broadcast: [String]? = nil
     @TransformedFrom<String> var start = DateInRegion()
     @TransformedFrom<String> var end = DateInRegion()
+    var co_write: String? = nil
     var qa: String? = nil
     var slide: String? = nil
     var live: String? = nil
     var record: String? = nil
-    var pad: String? = nil
     var language: String? = nil
     var zh = Title_DescriptionModel()
     var en = Title_DescriptionModel()

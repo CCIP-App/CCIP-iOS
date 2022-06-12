@@ -181,7 +181,7 @@ fileprivate struct FeatureButtons: View {
         self.scheduleDetail = scheduleDetail
         features = [
             (scheduleDetail.live, "video", "Live"),
-            (scheduleDetail.pad, "keyboard", "CoWriting"),
+            (scheduleDetail.co_write, "keyboard", "CoWriting"),
             (scheduleDetail.record, "play", "Record"),
             (scheduleDetail.slide, "paperclip", "Slide"),
             (scheduleDetail.qa, "questionmark", "QA")
