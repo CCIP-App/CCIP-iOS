@@ -8,14 +8,14 @@
 
 import SwiftUI
 import CoreImage.CIFilterBuiltins
-import AlertToast
 import EFQRCode
 
 struct TicketView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var eventAPI: EventAPIViewModel
-    @State var showingTokenCopyToast = false
+    @State var showingToken = false
+    @State var qrCodeUIImage = UIImage()
     let display_text: DisplayTextModel
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
@@ -34,18 +34,11 @@ struct TicketView: View {
                             Spacer()
                             VStack(spacing: 0) {
                                 ZStack {
-                                    Image(uiImage: QRCode(string: token))
+                                    Image(uiImage: qrCodeUIImage)
                                         .interpolation(.none)
-                                    
-                                    /*Image("InAppIcon")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: UIScreen.main.bounds.width * 0.1)
-                                        .clipShape(Circle())
-                                        .overlay(
-                                            Circle()
-                                                .stroke(Color.white, lineWidth: 4)
-                                        )*/
+                                        .onAppear {
+                                            qrCodeUIImage = renderQRCode(string: token)
+                                        }
                                 }
                                 
                                 VStack {
@@ -66,11 +59,22 @@ struct TicketView: View {
                     .listRowBackground(Color.transparent)
                     
                     Section(header: Text(LocalizedStringKey("Token"))) {
-                        Text(token)
+                        HStack {
+                            showingToken
+                            ? Text(token)
+                            : Text(String(repeating: "•", count: token.count))
+                                .font(.title3)
+                        }
                     }
-                    .onLongPressGesture {
-                        UIPasteboard.general.string = token
-                        showingTokenCopyToast.toggle()
+                    .onTapGesture {
+                        showingToken.toggle()
+                    }
+                    .contextMenu {
+                        Button {
+                            UIPasteboard.general.string = token
+                        } label: {
+                            Label("Copy Token", systemImage: "square.on.square")
+                        }
                     }
                     
                     HStack(alignment: .center) {
@@ -89,12 +93,9 @@ struct TicketView: View {
         }
         .navigationTitle(LocalizeIn(zh: display_text.zh, en: display_text.en))
         .navigationBarTitleDisplayMode(.inline)
-        .toast(isPresenting: $showingTokenCopyToast){
-            AlertToast(displayMode: .banner(.pop), type: .regular, title: String(localized: "TokenCopied"), style: .style(backgroundColor: Color("SectionBackgroundColor")))
-        }
     }
     
-    private func QRCode(string: String) -> UIImage {
+    private func renderQRCode(string: String) -> UIImage {
         let generator = EFQRCodeGenerator(content: string, encoding: .utf8, size: EFIntSize())
         
         generator.withInputCorrectionLevel(.h)

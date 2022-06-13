@@ -14,6 +14,7 @@ import BetterSafariView
 
 struct ScheduleDetailView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var eventAPI: EventAPIViewModel
     let scheduleDetail: SessionDataModel
     @AppStorage var likedSessions: [String]
@@ -70,6 +71,13 @@ struct ScheduleDetailView: View {
                 TimeSection(scheduleDetail: scheduleDetail)
                     .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
+                    .padding(.bottom)
+                
+                if let broadcast = scheduleDetail.broadcast, !broadcast.isEmpty {
+                    BroadcastSection(eventAPI.eventSchedule, broadcast: broadcast)
+                        .background(Color("SectionBackgroundColor"))
+                        .cornerRadius(8)
+                }
             }
             .listRowBackground(Color.transparent)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
@@ -85,9 +93,8 @@ struct ScheduleDetailView: View {
                         barCollapsingEnabled: true
                     )
                 )
-                //.preferredBarAccentColor(.white)
-                //.preferredControlAccentColor(.accentColor)
-                .dismissButtonStyle(.cancel)
+                .preferredBarAccentColor(colorScheme == .dark ? .black : .white)
+                .dismissButtonStyle(.done)
             }
                 
             if scheduleDetail.speakers.count != 0 {
@@ -220,8 +227,10 @@ fileprivate struct TypeSection: View {
     var body: some View {
         HStack(spacing: 0) {
             Image(systemName: "signpost.right")
+                .resizable().scaledToFit()
                 .foregroundColor(Color(red: 1, green: 204/255, blue: 0, opacity: 1))
                 .padding()
+                .frame(width: 50, height: 50)
             VStack(alignment: .leading) {
                 Text(LocalizedStringKey("Type")).font(.caption)
                     .foregroundColor(.gray)
@@ -240,8 +249,10 @@ fileprivate struct PlaceSection: View {
     var body: some View {
         HStack(spacing: 0) {
             Image(systemName: "map")
+                .resizable().scaledToFit()
                 .foregroundColor(Color.blue)
                 .padding()
+                .frame(width: 50, height: 50)
             VStack(alignment: .leading) {
                 Text(LocalizedStringKey("Place")).font(.caption)
                     .foregroundColor(.gray)
@@ -267,17 +278,62 @@ fileprivate struct TimeSection: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            Image(systemName: "clock").foregroundColor(Color.red)
+            Image(systemName: "clock")
+                .resizable().scaledToFit()
+                .foregroundColor(Color.red)
                 .padding()
+                .frame(width: 50, height: 50)
             VStack(alignment: .leading) {
                 Text(String(format: "%d/%d/%d", start.year, start.month, start.day))
                     .font(.caption)
                     .foregroundColor(.gray)
-                
                 Text(String(format: String(localized: "TimeWithLengthContent"), start.hour, start.minute, end.hour, end.minute, durationMinute))
             }
             Spacer()
         }
+    }
+}
+
+fileprivate struct BroadcastSection: View {
+    
+    let eventSchedule: ScheduleModel?
+    let broadcast: [String]
+    
+    init(_ eventSchedule: ScheduleModel?, broadcast: [String]) {
+        self.eventSchedule = eventSchedule
+        self.broadcast = broadcast
+    }
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            Image(systemName: "megaphone")
+                .resizable().scaledToFit()
+                .foregroundColor(Color.orange)
+                .padding()
+                .frame(width: 50, height: 50)
+            VStack(alignment: .leading) {
+                Text(LocalizedStringKey("Broadcast")).font(.caption)
+                    .foregroundColor(.gray)
+                Text(renderRoomsString())
+            }
+            Spacer()
+        }
+    }
+    
+    private func renderRoomsString() -> String {
+        var result = ""
+        for (offset, room) in broadcast.enumerated() {
+            if let name = LocalizeIn(
+                zh: eventSchedule?.rooms[room]?.zh.name,
+                en: eventSchedule?.rooms[room]?.en.name
+            ) {
+                result.append(name)
+                if offset < broadcast.count - 1 {
+                    result.append(", ")
+                }
+            }
+        }
+        return result
     }
 }
 
@@ -387,7 +443,7 @@ fileprivate struct SpeakerBio: View {
                 HStack {
                     Spacer()
                     Button("More") {
-                        SOCManager.present(isPresented: $isShowingSpeakerDetail) {
+                        SOCManager.present(isPresented: $isShowingSpeakerDetail, style: colorScheme == .dark ? .dark : .light) {
                             VStack {
                                 if let data = avatarData, let uiImage = UIImage(data: data) {
                                     Image(uiImage: uiImage)
