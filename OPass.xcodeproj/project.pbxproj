@@ -261,6 +261,7 @@
 		D3C6194927CF963000643D97 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				D3C72B352858CCDB0033269E /* Markdown */,
 				4F9E9B4C2813F08100A14905 /* Extensions */,
 				D3095F1627D78EB500225C7D /* Functions */,
 				4F6968A527EBCB5E009073E4 /* SFButton.swift */,
@@ -283,6 +284,13 @@
 				D3C0E21B27D51C060095169F /* WifiView.swift */,
 			);
 			path = Tabs;
+			sourceTree = "<group>";
+		};
+		D3C72B352858CCDB0033269E /* Markdown */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Markdown;
 			sourceTree = "<group>";
 		};
 		D3D3787F27CE42A200021FC4 /* Views */ = {
@@ -627,7 +635,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
@@ -654,7 +662,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
