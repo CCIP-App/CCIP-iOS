@@ -73,7 +73,7 @@ struct TicketView: View {
                         Button {
                             UIPasteboard.general.string = token
                         } label: {
-                            Label("Copy Token", systemImage: "square.on.square")
+                            Label(String(localized: "Copy Token"), systemImage: "square.on.square")
                         }
                     }
                     

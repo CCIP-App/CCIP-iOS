@@ -7,7 +7,6 @@
   
 */
 
-"TokenCopied" = "Token Copied!";
 "TryAgain" = "Try Again";
 "ErrorWithRetryContent" = "Something went wrong, but don't feel fret.\nLet's give it another shot.";
 "ErrorContent" = "Something went wrong, but don't feel fret.\nTry again later.";
@@ -15,6 +14,7 @@
 "ChooseNetwork" = "Choose Network";
 "Ticket" = "Ticket";
 "Token" = "Token";
+"Copy Token" = "Copy Token";
 "TicketWarningContent" = "Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths.";
 "EmptyAnnouncement" = "Empty Announcement";
 "Type" = "Type";
@@ -26,6 +26,7 @@
 "SessionIntroduction" = "Session Introduction";
 "TimeWithLengthContent" = "%d:%02d ~ %d:%02d • %d minutes";
 "Place" = "Place";
+"Broadcast" = "Broadcast";
 "Live" = "Live";
 "CoWriting" = "Co-Writing";
 "Record" = "Record";

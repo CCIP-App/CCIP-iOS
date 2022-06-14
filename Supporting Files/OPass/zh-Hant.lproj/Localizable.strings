@@ -7,7 +7,6 @@
   
 */
 
-"TokenCopied" = "已複製驗證碼！";
 "TryAgain" = "再試一次";
 "ErrorWithRetryContent" = "出了點問題，但不要擔心。\n讓我們再試一次。";
 "ErrorContent" = "出了點問題，但不要擔心。\n稍後再試試看。";
@@ -15,6 +14,7 @@
 "ChooseNetwork" = "選擇網路";
 "Ticket" = "票券";
 "Token" = "驗證碼";
+"Copy Token" = "複製驗證碼";
 "TicketWarningContent" = "請將您的票保密。除工作人員或活動攤位外，請勿與其他任何人共享。";
 "EmptyAnnouncement" = "沒有公告";
 "Type" = "類型";
@@ -27,6 +27,7 @@
 "TimeWithLengthContent" = "%d:%02d ~ %d:%02d • %d分鐘";
 "Place" = "地點";
 "Live" = "直播";
+"Broadcast" = "轉播";
 "CoWriting" = "共筆";
 "Record" = "紀錄";
 "Slide" = "簡報";

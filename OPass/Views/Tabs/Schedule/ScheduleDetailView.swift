@@ -296,6 +296,7 @@ fileprivate struct TimeSection: View {
 
 fileprivate struct BroadcastSection: View {
     
+    @State var roomsString: String = ""
     let eventSchedule: ScheduleModel?
     let broadcast: [String]
     
@@ -314,10 +315,11 @@ fileprivate struct BroadcastSection: View {
             VStack(alignment: .leading) {
                 Text(LocalizedStringKey("Broadcast")).font(.caption)
                     .foregroundColor(.gray)
-                Text(renderRoomsString())
+                Text(roomsString)
             }
             Spacer()
         }
+        .onAppear { roomsString = renderRoomsString() }
     }
     
     private func renderRoomsString() -> String {
@@ -329,7 +331,7 @@ fileprivate struct BroadcastSection: View {
             ) {
                 result.append(name)
                 if offset < broadcast.count - 1 {
-                    result.append(", ")
+                    result.append(LocalizeIn(zh: "、", en: ", "))
                 }
             }
         }
