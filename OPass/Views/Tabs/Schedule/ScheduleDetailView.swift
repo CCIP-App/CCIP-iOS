@@ -159,7 +159,7 @@ fileprivate struct TagsSection: View {
     let tags: [String : Name_DescriptionPair]
     
     var body: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(tagsID, id: \.self) { tagID in
                     Text(LocalizeIn(zh: tags[tagID]?.zh.name, en: tags[tagID]?.en.name) ?? tagID)
@@ -231,12 +231,14 @@ fileprivate struct TypeSection: View {
                 .foregroundColor(Color(red: 1, green: 204/255, blue: 0, opacity: 1))
                 .padding()
                 .frame(width: 50, height: 50)
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
                 Text(LocalizedStringKey("Type")).font(.caption)
                     .foregroundColor(.gray)
                 Text(name)
                     .fixedSize(horizontal: false, vertical: true)
             }
+            .fixedSize(horizontal: false, vertical: true)
+            .padding(.vertical, 7)
             Spacer()
         }
     }
@@ -253,12 +255,14 @@ fileprivate struct PlaceSection: View {
                 .foregroundColor(Color.blue)
                 .padding()
                 .frame(width: 50, height: 50)
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
                 Text(LocalizedStringKey("Place")).font(.caption)
                     .foregroundColor(.gray)
                 Text(name)
                     .fixedSize(horizontal: false, vertical: true)
             }
+            .fixedSize(horizontal: false, vertical: true)
+            .padding(.vertical, 7)
             Spacer()
         }
     }
@@ -283,12 +287,14 @@ fileprivate struct TimeSection: View {
                 .foregroundColor(Color.red)
                 .padding()
                 .frame(width: 50, height: 50)
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
                 Text(String(format: "%d/%d/%d", start.year, start.month, start.day))
                     .font(.caption)
                     .foregroundColor(.gray)
                 Text(String(format: String(localized: "TimeWithLengthContent"), start.hour, start.minute, end.hour, end.minute, durationMinute))
             }
+            .fixedSize(horizontal: false, vertical: true)
+            .padding(.vertical, 7)
             Spacer()
         }
     }
@@ -312,11 +318,13 @@ fileprivate struct BroadcastSection: View {
                 .foregroundColor(Color.orange)
                 .padding()
                 .frame(width: 50, height: 50)
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
                 Text(LocalizedStringKey("Broadcast")).font(.caption)
                     .foregroundColor(.gray)
                 Text(roomsString)
             }
+            .fixedSize(horizontal: false, vertical: true)
+            .padding(.vertical, 7)
             Spacer()
         }
         .onAppear { roomsString = renderRoomsString() }
