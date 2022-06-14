@@ -43,8 +43,10 @@ final class APIRepo {
             }
         }
     }
-    
-    //Opass APIs
+}
+
+// MARK: - Opass APIs
+extension APIRepo {
     static func loadEventList() async throws -> [EventTitleModel] {
         guard let url = URL(.eventList) else {
             logger.error("Invalid EventList URL: \(URLs.eventList.getString())")
@@ -72,8 +74,10 @@ final class APIRepo {
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
-    
-    //Event APIs
+}
+
+// MARK: - Event APIs
+extension APIRepo {
     static func load(@Feature(.fastpass) scenarioUseFrom feature: FeatureModel, scenario: String, token: String) async throws -> ScenarioStatusModel {
         guard let baseURL = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             logger.error("Couldn't find URL in feature: \(feature.feature.rawValue)")

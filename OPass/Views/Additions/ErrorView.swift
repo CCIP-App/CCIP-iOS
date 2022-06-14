@@ -21,10 +21,6 @@ struct ErrorWithRetryView: View {
                 .frame(width: UIScreen.main.bounds.width * 0.25)
                 .padding(.bottom, 8)
             
-            //Text(LocalizedStringKey("OhNo"))
-            //    .font(.largeTitle)
-            //    .foregroundColor(.black)
-            //    .padding(.bottom, 3)
             Text(LocalizedStringKey("ErrorWithRetryContent"))
                 .font(.callout)
                 .multilineTextAlignment(.center)
@@ -50,10 +46,6 @@ struct ErrorView: View {
                 .frame(width: UIScreen.main.bounds.width * 0.25)
                 .padding(.bottom, 8)
             
-            //Text(LocalizedStringKey("OhNo"))
-            //    .font(.largeTitle)
-            //    .foregroundColor(.black)
-            //    .padding(.bottom, 3)
             Text(LocalizedStringKey("ErrorContent"))
                 .font(.callout)
                 .multilineTextAlignment(.center)
@@ -62,8 +54,10 @@ struct ErrorView: View {
     }
 }
 
+#if DEBUG
 struct ErrorView_Previews: PreviewProvider {
     static var previews: some View {
         ErrorWithRetryView() {}
     }
 }
+#endif

@@ -9,7 +9,7 @@
 import Foundation
 import OSLog
 
-//Endpoint hold by OPass Official.
+///Endpoint hold by OPass Official.
 class OPassAPIViewModel: ObservableObject {
     
     @Published var eventList = [EventTitleModel]()
@@ -33,7 +33,9 @@ class OPassAPIViewModel: ObservableObject {
             logger.info("No EventAPI data found")
         }
     }
-    
+}
+
+extension OPassAPIViewModel {
     func saveEventAPIData() async {
         logger.info("Saving data")
         if let eventAPI = self.currentEventAPI {

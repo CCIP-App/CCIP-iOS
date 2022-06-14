@@ -10,7 +10,7 @@ import Foundation
 import KeychainAccess
 import OSLog
 
-//Endpoint hold by each Event Organization or hold by OPass Official but switch by Event Organization.
+///Endpoint hold by each Event Organization or hold by OPass Official but switch by Event Organization.
 class EventAPIViewModel: ObservableObject {
     
     init(eventSettings: SettingsModel,
@@ -45,9 +45,10 @@ class EventAPIViewModel: ObservableObject {
     @Published var isLogin: Bool = false
     
     private let logger = Logger(subsystem: "app.opass.ccip", category: "EventAPI")
-    private let keychain = Keychain(service: "app.opass.ccip-token") //Service key value match App Bundle ID + "-token"
+    private let keychain = Keychain(service: "app.opass.ccip-token")//Service key value match App Bundle ID + "-token"
         .synchronizable(true)
-    var accessToken: String? { //DO NOT use this for view update beacuse it's not published. Use isLogin.
+    
+    var accessToken: String? {//DO NOT use this for view update beacuse it's not published. Use isLogin.
         get {
             return try? keychain.get(self.event_id + "_token") //Key sample: SITCON_2020_token
         }
@@ -69,8 +70,12 @@ class EventAPIViewModel: ObservableObject {
             }
         }
     }
-    
-    func useScenario(scenario: String) async -> Bool{ //Scenario switch by scenario ID. Return true/false for view update
+}
+
+
+extension EventAPIViewModel {
+    ///Return bool to indicate success or not
+    func useScenario(scenario: String) async -> Bool{
         @Feature(.fastpass, in: eventSettings) var fastpassFeature
         guard let token = accessToken else {
             logger.error("No accessToken included")
@@ -87,7 +92,8 @@ class EventAPIViewModel: ObservableObject {
         return false
     }
     
-    func redeemToken(token: String) async -> Bool { //Save token after token check
+    ///Return bool to indicate token is valid or not. Will save token if is vaild.
+    func redeemToken(token: String) async -> Bool {
         let token = token.tirm()
         let nonAllowedCharacters = CharacterSet
                                     .alphanumerics
@@ -196,8 +202,8 @@ extension String {
     }
 }
 
+// MARK: - Codable EventAPIViewModel
 class CodableEventAPIVM: Codable {
-    
     init(event_id: String,
          display_name: DisplayTextModel,
          logo_url: String,
