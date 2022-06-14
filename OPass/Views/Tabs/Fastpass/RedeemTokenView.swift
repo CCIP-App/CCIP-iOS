@@ -10,6 +10,7 @@ import SwiftUI
 import UIKit
 import SlideOverCard
 import CodeScanner
+import AVFoundation
 
 struct RedeemTokenView: View {
     
@@ -101,10 +102,31 @@ struct RedeemTokenView: View {
                 Text(LocalizedStringKey("FastPass")).font(Font.largeTitle.weight(.bold))
                 Text(LocalizedStringKey("ScanQRCodeWithCamera"))
                 
-                //TODO: Handle Camera not permit
                 CodeScannerView(codeTypes: [.qr], scanMode: .once, showViewfinder: false, shouldVibrateOnSuccess: true, completion: handleScan)
                     .frame(height: UIScreen.main.bounds.height * 0.25)
                     .cornerRadius(20)
+                    .overlay {
+                        if AVCaptureDevice.authorizationStatus(for: .video) == .denied || AVCaptureDevice.authorizationStatus(for: .video) == .restricted {
+                            VStack {
+                                Spacer()
+                                Spacer()
+                                Text(LocalizedStringKey("RequestUserPermitCamera"))
+                                    .foregroundColor(.white)
+                                    .multilineTextAlignment(.center)
+                                Spacer()
+                                Button {
+                                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                                } label: {
+                                    Text(LocalizedStringKey("OpenSettings"))
+                                        .foregroundColor(.blue)
+                                        .bold()
+                                }
+                                Spacer()
+                                Spacer()
+                            }
+                            .padding(10)
+                        }
+                    }
                 
                 VStack(alignment: .leading) {
                     Text(LocalizedStringKey("ScanToGetToken")).bold()
@@ -172,7 +194,7 @@ struct RedeemTokenView: View {
         }
     }
 
-    func handleScan(result: Result<ScanResult, ScanError>) {
+    private func handleScan(result: Result<ScanResult, ScanError>) {
         isShowingCameraSOC = false
         
         switch result {
@@ -187,7 +209,7 @@ struct RedeemTokenView: View {
         }
     }
     
-    func extractFromQRCode(_ image: UIImage) -> String? {
+    private func extractFromQRCode(_ image: UIImage) -> String? {
         guard let ciImage = CIImage(image: image),
               let qrCodeDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil) else {
             return nil

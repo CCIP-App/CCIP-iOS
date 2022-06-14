@@ -51,6 +51,8 @@
 "InvaildToken" = "Invaild Token";
 "NoQRCodeFoundInPicture" = "No QR Code found in picture";
 "ScanQRCodeWithCamera" = "Scan QR Code with camera";
+"RequestUserPermitCamera" = "Please allow OPass to access your camera under OPass in your device's settings.";
+"OpenSettings" = "Open Settings";
 "Complete" = "Complete";
 "ConfirmUse" = "Confirm Use";
 "ConfirmUseScenarioMessage" = "This item can only be used once, please follow the instructions of the staff to use.";
