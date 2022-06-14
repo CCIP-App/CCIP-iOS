@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AlertToast
 
 struct EntryView: View {
     
