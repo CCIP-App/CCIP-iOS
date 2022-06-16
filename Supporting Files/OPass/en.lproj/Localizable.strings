@@ -24,6 +24,7 @@
 "AllSessions" = "All Sessions";
 "AddToCalendar" = "Add to Calendar";
 "Speakers" = "Speakers";
+"More" = "More";
 "SessionIntroduction" = "Session Introduction";
 "TimeWithLengthContent" = "%d:%02d ~ %d:%02d • %d minutes";
 "Place" = "Place";

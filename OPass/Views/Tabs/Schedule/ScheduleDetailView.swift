@@ -500,6 +500,7 @@ fileprivate struct SpeakerBio: View {
                                                     .markdownStyle(
                                                         MarkdownStyle(font: .footnote)
                                                     )
+                                                    .lineSpacing(5)
                                                     .padding()
                                             }
                                             .frame(maxWidth: .infinity)
@@ -517,6 +518,7 @@ fileprivate struct SpeakerBio: View {
                                                         .markdownStyle(
                                                             MarkdownStyle(font: .footnote)
                                                         )
+                                                        .lineSpacing(5)
                                                         .padding()
                                                 }
                                             }
@@ -541,6 +543,7 @@ fileprivate struct SpeakerBio: View {
                                         .markdownStyle(
                                             MarkdownStyle(font: .footnote)
                                         )
+                                        .lineSpacing(5)
                                         .padding()
                                 }
                                 .frame(maxWidth: .infinity)
@@ -568,6 +571,7 @@ fileprivate struct DescriptionSection: View {
                 .markdownStyle(
                     MarkdownStyle(font: .footnote)
                 )
+                .lineSpacing(5)
                 .padding()
                 //.onOpenMarkdownLink { url in
                 //    self.url = url

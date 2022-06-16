@@ -24,6 +24,7 @@
 "AllSessions" = "所有議程";
 "AddToCalendar" = "新增至行事曆";
 "Speakers" = "講師";
+"More" = "更多";
 "SessionIntroduction" = "議程介紹";
 "TimeWithLengthContent" = "%d:%02d ~ %d:%02d • %d分鐘";
 "Place" = "地點";

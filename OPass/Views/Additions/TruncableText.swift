@@ -53,6 +53,7 @@ struct TruncableMarkdown: View {
                 truncatedSize = size
                 isTruncatedUpdate(truncatedSize != intrinsicSize)
             }
+            .lineSpacing(5)
             .background(
                 Markdown(text.tirm())
                     .markdownStyle(
