@@ -60,36 +60,35 @@ struct MainView: View {
             }
             .padding(.horizontal)
         }
+        .background(Color("SectionBackgroundColor"))
         .background {
             //put invisible NavigationLink in background
-            NavigationLink(
-                tag: FeatureType.fastpass,
-                selection: $selectedFeature,
-                destination: { FastpassView(eventAPI: eventAPI) }) {
-                EmptyView()
-            }
-                .frame(width: 0, height: 0).hidden()
-            NavigationLink(
-                tag: FeatureType.ticket,
-                selection: $selectedFeature,
-                destination: { TicketView(eventAPI: eventAPI) }) {
-                EmptyView()
-            }
-                .frame(width: 0, height: 0).hidden()
-            NavigationLink(
-                tag: FeatureType.schedule,
-                selection: $selectedFeature,
-                destination: { ScheduleView(eventAPI: eventAPI) }) {
-                EmptyView()
-            }
-                .frame(width: 0, height: 0).hidden()
-            NavigationLink(
-                tag: FeatureType.announcement,
-                selection: $selectedFeature,
-                destination: { AnnounceView(eventAPI: eventAPI) }) {
-                EmptyView()
-            }
-            .frame(width: 0, height: 0).hidden()
+            Group {
+                NavigationLink(
+                    tag: FeatureType.fastpass,
+                    selection: $selectedFeature,
+                    destination: { FastpassView(eventAPI: eventAPI) }) {
+                    EmptyView()
+                }
+                NavigationLink(
+                    tag: FeatureType.ticket,
+                    selection: $selectedFeature,
+                    destination: { TicketView(eventAPI: eventAPI) }) {
+                    EmptyView()
+                }
+                NavigationLink(
+                    tag: FeatureType.schedule,
+                    selection: $selectedFeature,
+                    destination: { ScheduleView(eventAPI: eventAPI) }) {
+                    EmptyView()
+                }
+                NavigationLink(
+                    tag: FeatureType.announcement,
+                    selection: $selectedFeature,
+                    destination: { AnnounceView(eventAPI: eventAPI) }) {
+                    EmptyView()
+                }
+            }.hidden()
         }
     }
     

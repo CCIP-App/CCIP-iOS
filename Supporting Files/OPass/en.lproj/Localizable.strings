@@ -22,6 +22,7 @@
 "Tags" = "Tags";
 "Favorite" = "Favorite";
 "AllSessions" = "All Sessions";
+"AddToCalendar" = "Add to Calendar";
 "Speakers" = "Speakers";
 "SessionIntroduction" = "Session Introduction";
 "TimeWithLengthContent" = "%d:%02d ~ %d:%02d • %d minutes";

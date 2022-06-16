@@ -147,7 +147,7 @@ struct ScheduleDetailView: View {
                                 }
                             }
                         } label: {
-                            Label("Add to Calendar", systemImage: "calendar.badge.plus")
+                            Label("AddToCalendar", systemImage: "calendar.badge.plus")
                         }
                     } label: {
                         Image(systemName: "ellipsis.circle")

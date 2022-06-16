@@ -101,18 +101,11 @@ struct ScheduleView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Picker(selection: $filter, label: EmptyView()) {
-                        HStack {
-                            Text(LocalizedStringKey("AllSessions"))
-                            Spacer()
-                            Image(systemName: "list.bullet")
-                        }
-                        .tag(Filter.all)
-                        HStack {
-                            Text(LocalizedStringKey("Favorite"))
-                            Spacer()
-                            Image(systemName: "heart\(filter == .liked ? ".fill" : "")")
-                        }
-                        .tag(Filter.liked)
+                        Label("AllSessions", systemImage: "list.bullet")
+                            .tag(Filter.all)
+                        
+                        Label("Favorite", systemImage: "heart\(filter == .liked ? ".fill" : "")")
+                            .tag(Filter.liked)
                         
                         if let types = eventAPI.eventSchedule?.session_types {
                             Menu {
@@ -123,16 +116,14 @@ struct ScheduleView: View {
                                     }
                                 }
                             } label: {
-                                HStack {
-                                    Text(LocalizedStringKey("Types"))
-                                    Spacer()
+                                Label("Types", systemImage: {
                                     switch filter {
-                                        case .type(_):
-                                            Image(systemName: "signpost.right.fill")
-                                        default:
-                                            Image(systemName: "signpost.right")
+                                    case .type(_):
+                                        return "signpost.right.fill"
+                                    default:
+                                        return "signpost.right"
                                     }
-                                }
+                                }())
                             }
                         }
                         
@@ -145,16 +136,14 @@ struct ScheduleView: View {
                                     }
                                 }
                             } label: {
-                                HStack {
-                                    Text(LocalizedStringKey("Tags"))
-                                    Spacer()
+                                Label("Tags", systemImage: {
                                     switch filter {
-                                        case .tag(_):
-                                            Image(systemName: "tag.fill")
-                                        default:
-                                            Image(systemName: "tag")
+                                    case .tag(_):
+                                        return "tag.fill"
+                                    default:
+                                        return "tag"
                                     }
-                                }
+                                }())
                             }
                         }
                     }

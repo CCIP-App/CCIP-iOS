@@ -236,13 +236,6 @@
 			path = Additions;
 			sourceTree = "<group>";
 		};
-		D39512F6285A36C3009B9AE8 /* EventKit */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = EventKit;
-			sourceTree = "<group>";
-		};
 		D3A00F1D27D837D00097A6AB /* OneSignalNotificationServiceExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,7 +266,6 @@
 		D3C6194927CF963000643D97 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
-				D39512F6285A36C3009B9AE8 /* EventKit */,
 				4F9E9B4C2813F08100A14905 /* Extensions */,
 				D3095F1627D78EB500225C7D /* Functions */,
 				4F6968A527EBCB5E009073E4 /* SFButton.swift */,
