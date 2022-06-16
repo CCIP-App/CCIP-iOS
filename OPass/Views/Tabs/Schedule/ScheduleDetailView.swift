@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import EventKit
 import SwiftDate
 import MarkdownUI
 import SlideOverCard
@@ -23,6 +24,8 @@ struct ScheduleDetailView: View {
     @State var url: URL = URL(string: "https://opass.app")!
     @State var showingUrlAlert = false
     @State var showingSafari = false
+    @State var showingEventEditView = false
+    private var eventStore = EKEventStore()
     private var isLiked: Bool {
         likedSessions.contains(scheduleDetail.id)
     }
@@ -115,10 +118,6 @@ struct ScheduleDetailView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack {
-                    SFButton(systemName: "square.and.arrow.up") {
-                        
-                    }.hidden() //Disable temporary until OPass server udpate feature
-                    
                     SFButton(systemName: "heart\(isLiked ? ".fill" : "")") {
                         UNUserNotification.registeringNotification(
                             id: scheduleDetail.id,
@@ -139,8 +138,33 @@ struct ScheduleDetailView: View {
                             likedSessions.append(scheduleDetail.id)
                         }
                     }
+                    
+                    Menu {
+                        Button {
+                            Task {
+                                if (try? await eventStore.requestAccess(to: .event)) == true {
+                                    showingEventEditView.toggle()
+                                }
+                            }
+                        } label: {
+                            Label("Add to Calendar", systemImage: "calendar.badge.plus")
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                    }
                 }
             }
+        }
+        .sheet(isPresented: $showingEventEditView) {
+            EventEditView(
+                eventStore: eventStore,
+                event: eventStore.createEvent(
+                    title: LocalizeIn(zh: scheduleDetail.zh.title, en: scheduleDetail.zh.title),
+                    startDate: scheduleDetail.start.date,
+                    endDate: scheduleDetail.end.date,
+                    alertOffset: -300 // T minus 5 minutes
+                )
+            )
         }
     }
 }

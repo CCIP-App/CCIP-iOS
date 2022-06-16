@@ -1,5 +1,5 @@
 //
-//  ColorExtention.swift
+//  ColorExtension.swift
 //  OPass
 //
 //  Created by secminhr on 2022/4/6.

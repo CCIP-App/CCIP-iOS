@@ -31,6 +31,7 @@ struct ScheduleView: View {
                     VStack(spacing: 0) {
                         if allScheduleData.sessions.count > 1 {
                             SelectDayView(selectDayIndex: $selectDayIndex, sessions: allScheduleData.sessions)
+                                .background(Color("SectionBackgroundColor"))
                         }
                         
                         Form {

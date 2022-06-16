@@ -17,7 +17,7 @@
 		4F48B5D427CF07910010FC2C /* eventListSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D327CF07910010FC2C /* eventListSample.json */; };
 		4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */; };
 		4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */; };
-		4F5CA37D27FD58D600DEAB39 /* ColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5CA37C27FD58D600DEAB39 /* ColorExtention.swift */; };
+		4F5CA37D27FD58D600DEAB39 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5CA37C27FD58D600DEAB39 /* ColorExtension.swift */; };
 		4F5CA38027FDD1B400DEAB39 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4F5CA37F27FDD1B400DEAB39 /* MarkdownUI */; };
 		4F5EB73127D2311200235396 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 4F5EB73027D2311200235396 /* SwiftDate */; };
 		4F5EB73527D3346D00235396 /* JsonDecodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EB73427D3346D00235396 /* JsonDecodeHelper.swift */; };
@@ -43,6 +43,8 @@
 		D3602CAC280400D8001D9C15 /* UseScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3602CAB280400D8001D9C15 /* UseScenarioView.swift */; };
 		D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366D8EF27ED50CB00AA4267 /* MainView.swift */; };
 		D36A2FD82829F9C500EFBDB1 /* NEHotspot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */; };
+		D39512F5285A174F009B9AE8 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39512F4285A174F009B9AE8 /* EventEditView.swift */; };
+		D39512F8285A370D009B9AE8 /* EventKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39512F7285A370D009B9AE8 /* EventKitExtension.swift */; };
 		D39AC55828314137002EF23B /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = D39AC55728314137002EF23B /* OneSignal */; };
 		D3A00F1F27D837D00097A6AB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00F1E27D837D00097A6AB /* NotificationService.swift */; };
 		D3A00F2327D837D00097A6AB /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -108,7 +110,7 @@
 		4F48B5D327CF07910010FC2C /* eventListSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventListSample.json; sourceTree = "<group>"; };
 		4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPISampleExt.swift; sourceTree = "<group>"; };
 		4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventSettingsSample.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
-		4F5CA37C27FD58D600DEAB39 /* ColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtention.swift; sourceTree = "<group>"; };
+		4F5CA37C27FD58D600DEAB39 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		4F5EB73427D3346D00235396 /* JsonDecodeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecodeHelper.swift; sourceTree = "<group>"; };
 		4F5EB73727D3648100235396 /* AnnounceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceView.swift; sourceTree = "<group>"; };
 		4F5EB73927D37D4A00235396 /* announcementSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = announcementSample.json; sourceTree = "<group>"; };
@@ -130,6 +132,8 @@
 		D3602CAB280400D8001D9C15 /* UseScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseScenarioView.swift; sourceTree = "<group>"; };
 		D366D8EF27ED50CB00AA4267 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHotspot.swift; sourceTree = "<group>"; };
+		D39512F4285A174F009B9AE8 /* EventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
+		D39512F7285A370D009B9AE8 /* EventKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitExtension.swift; sourceTree = "<group>"; };
 		D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A00F1E27D837D00097A6AB /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		D3A00F2027D837D00097A6AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -196,8 +200,9 @@
 		4F9E9B4C2813F08100A14905 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4F5CA37C27FD58D600DEAB39 /* ColorExtention.swift */,
+				4F5CA37C27FD58D600DEAB39 /* ColorExtension.swift */,
 				4F9E9B4D2813F0A300A14905 /* ArrayExtension.swift */,
+				D39512F7285A370D009B9AE8 /* EventKitExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -231,6 +236,13 @@
 			path = Additions;
 			sourceTree = "<group>";
 		};
+		D39512F6285A36C3009B9AE8 /* EventKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EventKit;
+			sourceTree = "<group>";
+		};
 		D3A00F1D27D837D00097A6AB /* OneSignalNotificationServiceExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,7 +273,7 @@
 		D3C6194927CF963000643D97 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
-				D3C72B352858CCDB0033269E /* Markdown */,
+				D39512F6285A36C3009B9AE8 /* EventKit */,
 				4F9E9B4C2813F08100A14905 /* Extensions */,
 				D3095F1627D78EB500225C7D /* Functions */,
 				4F6968A527EBCB5E009073E4 /* SFButton.swift */,
@@ -270,6 +282,7 @@
 				D318CE43280918C400CEA1AA /* TruncableText.swift */,
 				4F3A10DB2815201D00CCE5A9 /* ImagePicker.swift */,
 				D3A94D02281E62530053FEFA /* ErrorView.swift */,
+				D39512F4285A174F009B9AE8 /* EventEditView.swift */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -284,13 +297,6 @@
 				D3C0E21B27D51C060095169F /* WifiView.swift */,
 			);
 			path = Tabs;
-			sourceTree = "<group>";
-		};
-		D3C72B352858CCDB0033269E /* Markdown */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Markdown;
 			sourceTree = "<group>";
 		};
 		D3D3787F27CE42A200021FC4 /* Views */ = {
@@ -580,6 +586,7 @@
 				D3E0123527D38B840040621F /* ScenarioView.swift in Sources */,
 				4F6968A827EF863A009073E4 /* TabButtonStyle.swift in Sources */,
 				4F43FCA02830B12700F41874 /* EntryView.swift in Sources */,
+				D39512F8285A370D009B9AE8 /* EventKitExtension.swift in Sources */,
 				D34012102821349200D07034 /* Localization.swift in Sources */,
 				D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */,
 				4F8522E12817D4C00015BB13 /* EventTitleModel.swift in Sources */,
@@ -588,7 +595,7 @@
 				D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */,
 				D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */,
 				4F3A10DC2815201E00CCE5A9 /* ImagePicker.swift in Sources */,
-				4F5CA37D27FD58D600DEAB39 /* ColorExtention.swift in Sources */,
+				4F5CA37D27FD58D600DEAB39 /* ColorExtension.swift in Sources */,
 				D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */,
 				D3E0123327D3667C0040621F /* ScenarioStatusModel.swift in Sources */,
 				D358E55827EDEDB2000A6554 /* FastpassView.swift in Sources */,
@@ -598,6 +605,7 @@
 				4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */,
 				D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */,
 				D301C39428053ED600D027FE /* ActivityIndicator.swift in Sources */,
+				D39512F5285A174F009B9AE8 /* EventEditView.swift in Sources */,
 				4FEF38FB27D13FBA00FC97F4 /* APIRepo.swift in Sources */,
 				D3C0E21C27D51C060095169F /* WifiView.swift in Sources */,
 				D3E4E6BF27CD158400FFACEB /* OPassApp.swift in Sources */,
@@ -817,6 +825,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OPass/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "App requires your consent to access calendars during use";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Use Camera to scan QRCode inoder to get token";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App requires your consent to access location during use";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -853,6 +862,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OPass/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "App requires your consent to access calendars during use";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Use Camera to scan QRCode inoder to get token";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App requires your consent to access location during use";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
