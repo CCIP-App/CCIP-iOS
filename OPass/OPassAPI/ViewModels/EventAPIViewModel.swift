@@ -9,6 +9,7 @@
 import Foundation
 import KeychainAccess
 import OSLog
+import OneSignal
 
 ///Endpoint hold by each Event Organization or hold by OPass Official but switch by Event Organization.
 class EventAPIViewModel: ObservableObject {
@@ -109,6 +110,7 @@ extension EventAPIViewModel {
         @Feature(.fastpass, in: eventSettings) var fastpassFeature
         
         if let eventScenarioStatus = try? await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token) {
+            OneSignal.sendTag("\(eventScenarioStatus.event_id)\(eventScenarioStatus.role)", value: "\(eventScenarioStatus.token)")
             DispatchQueue.main.async {
                 self.eventScenarioStatus = eventScenarioStatus
                 self.accessToken = token
@@ -189,6 +191,13 @@ extension EventAPIViewModel {
             self.eventAnnouncements = announcements
             Task{ await self.saveData() }
         }
+    }
+    
+    func signOut() {
+        OneSignal.sendTag("\(self.eventScenarioStatus?.event_id ?? "")\(self.eventScenarioStatus?.role ?? "")", value: "")
+        self.isLogin = false
+        self.eventScenarioStatus = nil
+        self.accessToken = nil
     }
 }
 
