@@ -64,7 +64,7 @@
 "CheckAtContent" = "Check at %d:%02d";
 "NotAvailable" = "Not Available";
 "OnlyAvailableAtContent" = "Only available at\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d";
-"Loading" = "Loading...";
+"Loading" = "LOADING";
 "Setting" = "Setting";
 "FastPass" = "Fast Pass";
 "System" = "System";

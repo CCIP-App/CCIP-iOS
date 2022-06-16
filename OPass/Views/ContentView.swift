@@ -20,11 +20,13 @@ struct ContentView: View {
             VStack {
                 if OPassAPI.currentEventID == nil {
                     VStack {}
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .onAppear(perform: {
                             isShowingEventList.toggle()
                         })
                 } else if OPassAPI.currentEventID != OPassAPI.currentEventAPI?.event_id {
                     ProgressView(LocalizedStringKey("Loading"))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .task {
                             await OPassAPI.loadCurrentEventAPI()
                         }
@@ -32,6 +34,7 @@ struct ContentView: View {
                     MainView(eventAPI: OPassAPI.currentEventAPI!)
                 }
             }
+            .background(Color("SectionBackgroundColor"))
             .sheet(isPresented: $isShowingEventList) {
                 EventListView()
             }

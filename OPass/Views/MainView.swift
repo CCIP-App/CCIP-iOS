@@ -60,7 +60,6 @@ struct MainView: View {
             }
             .padding(.horizontal)
         }
-        .background(Color("SectionBackgroundColor"))
         .background {
             //put invisible NavigationLink in background
             Group {

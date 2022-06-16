@@ -64,7 +64,7 @@
 "CheckAtContent" = "已在%d:%02d完成";
 "NotAvailable" = "無法使用";
 "OnlyAvailableAtContent" = "開放時間：\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d";
-"Loading" = "載入中...";
+"Loading" = "載入中";
 "Setting" = "設定";
 "FastPass" = "快速通關";
 "System" = "系統";

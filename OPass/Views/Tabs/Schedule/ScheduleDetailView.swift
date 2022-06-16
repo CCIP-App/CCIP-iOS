@@ -46,6 +46,7 @@ struct ScheduleDetailView: View {
                     .font(.largeTitle.bold())
                     .fixedSize(horizontal: false, vertical: true)
                 
+                
                 FeatureButtons(scheduleDetail: scheduleDetail)
                     .padding(.vertical)
                     .environment(
@@ -74,12 +75,12 @@ struct ScheduleDetailView: View {
                 TimeSection(scheduleDetail: scheduleDetail)
                     .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
-                    .padding(.bottom)
                 
                 if let broadcast = scheduleDetail.broadcast, !broadcast.isEmpty {
                     BroadcastSection(eventAPI.eventSchedule, broadcast: broadcast)
                         .background(Color("SectionBackgroundColor"))
                         .cornerRadius(8)
+                        .padding(.top)
                 }
             }
             .listRowBackground(Color.transparent)
@@ -326,7 +327,6 @@ fileprivate struct TimeSection: View {
 
 fileprivate struct BroadcastSection: View {
     
-    @State var roomsString: String = ""
     let eventSchedule: ScheduleModel?
     let broadcast: [String]
     
@@ -343,15 +343,15 @@ fileprivate struct BroadcastSection: View {
                 .padding()
                 .frame(width: 50, height: 50)
             VStack(alignment: .leading, spacing: 0) {
-                Text(LocalizedStringKey("Broadcast")).font(.caption)
+                Text(LocalizedStringKey("Broadcast"))
+                    .font(.caption)
                     .foregroundColor(.gray)
-                Text(roomsString)
+                Text(renderRoomsString())
             }
             .fixedSize(horizontal: false, vertical: true)
             .padding(.vertical, 7)
             Spacer()
         }
-        .onAppear { roomsString = renderRoomsString() }
     }
     
     private func renderRoomsString() -> String {

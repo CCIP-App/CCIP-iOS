@@ -11,157 +11,18 @@ import BetterSafariView
 
 struct SettingView: View {
     
-    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
-    @Environment(\.openURL) var openURL
-    @AppStorage("appearance") var appearance: Appearance = .system
-    @State var isShowingSafari = false
-    @State var url = URL(string: "https://opass.app")!
-    private let CCIPWebsiteURL = URL(string: "https://opass.app")!
-    private let CCIPGitHubURL = URL(string: "https://github.com/CCIP-App")!
-    private let CCIPPolicyURL = URL(string: "https://opass.app/privacy-policy.html")!
     
     var body: some View {
         VStack {
             Form {
-                Section {
-                    HStack {
-                        Spacer()
-                        
-                        VStack {
-                            Image("InAppIcon")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: UIScreen.main.bounds.width * 0.28)
-                                .clipShape(Circle())
-                            
-                            Text("OPass")
-                        }
-                        .padding(5)
-                        
-                        Spacer()
-                    }
-                }
+                AppIconSection()
                 
-                Section(header: Text(LocalizedStringKey("GENERAL"))) {
-                    Picker(selection: $appearance) {
-                        Text(LocalizedStringKey("System")).tag(Appearance.system)
-                        Text(LocalizedStringKey("Light")).tag(Appearance.light)
-                        Text(LocalizedStringKey("Dark")).tag(Appearance.dark)
-                    } label: {
-                        Label { Text(LocalizedStringKey("Appearance")) } icon: {
-                            Image(systemName: "circle.lefthalf.filled")
-                                .padding(5)
-                                .foregroundColor(.white)
-                                .background(Color(red: 89/255, green: 169/255, blue: 214/255))
-                                .cornerRadius(9)
-                        }
-                    }
-                }
+                GeneralSection()
                 
-                Section(header: Text(LocalizedStringKey("ABOUT"))) {
-                    VStack(alignment: .leading) {
-                        Text(LocalizedStringKey("Version"))
-                            .foregroundColor(colorScheme == .dark ? .white : .black)
-                        Text(
-                            String(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String + " (Build ") +
-                            String(Bundle.main.infoDictionary!["CFBundleVersion"] as! String + ")")
-                        )
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                    }
-                    
-                    Button(action: {
-                        url = CCIPWebsiteURL
-                        isShowingSafari.toggle()
-                    }) {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(LocalizedStringKey("OfficialWebsite"))
-                                    .foregroundColor(colorScheme == .dark ? .white : .black)
-                                Text("\(CCIPWebsiteURL)")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-                            }
-                            
-                            Spacer()
-                            
-                            Image("external-link")
-                                .renderingMode(.template)
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(.gray)
-                                .frame(width: UIScreen.main.bounds.width * 0.045)
-                        }
-                    }
-                    
-                    Button(action: {
-                        url = CCIPGitHubURL
-                        isShowingSafari.toggle()
-                    }) {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text("GitHub")
-                                    .foregroundColor(colorScheme == .dark ? .white : .black)
-                                Text("\(CCIPGitHubURL)")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-                            }
-                            
-                            Spacer()
-                            
-                            Image("external-link")
-                                .renderingMode(.template)
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(.gray)
-                                .frame(width: UIScreen.main.bounds.width * 0.045)
-                        }
-                    }
-                    
-                    Button(action: {
-                        url = CCIPPolicyURL
-                        isShowingSafari.toggle()
-                    }) {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(LocalizedStringKey("PrivacyPolicy"))
-                                    .foregroundColor(colorScheme == .dark ? .white : .black)
-                                Text("\(CCIPPolicyURL)")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-                            }
-                            
-                            Spacer()
-                            
-                            Image("external-link")
-                                .renderingMode(.template)
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(.gray)
-                                .frame(width: UIScreen.main.bounds.width * 0.045)
-                        }
-                    }
-                }
+                AboutSection()
                 
-                Section(header: Text("DEVELOPER")) {
-                    NavigationLink(destination: DeveloperOptionView()) {
-                        Image(systemName: "hammer")
-                        Text("Developer Option")
-                    }
-                }
-            }
-            .safariView(isPresented: $isShowingSafari) {
-                SafariView(
-                    url: url,
-                    configuration: SafariView.Configuration(
-                        entersReaderIfAvailable: false,
-                        barCollapsingEnabled: true
-                    )
-                )
-                .preferredBarAccentColor(appearance == .system ? nil :
-                                            appearance == .dark ? .black : .white)
-                .dismissButtonStyle(.done)
+                DeveloperSection()
             }
         }
         .navigationTitle(LocalizedStringKey("Setting"))
@@ -169,7 +30,170 @@ struct SettingView: View {
     }
 }
 
-struct DeveloperOptionView: View {
+fileprivate struct AppIconSection: View {
+    var body: some View {
+        Section {
+            HStack {
+                Spacer()
+                VStack {
+                    Image("InAppIcon")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: UIScreen.main.bounds.width * 0.28)
+                        .clipShape(Circle())
+                    Text("OPass")
+                }
+                .padding(5)
+                Spacer()
+            }
+        }
+    }
+}
+
+fileprivate struct GeneralSection: View {
+    
+    @AppStorage("appearance") var appearance: Appearance = .system
+    
+    var body: some View {
+        Section(header: Text(LocalizedStringKey("GENERAL"))) {
+            Picker(selection: $appearance) {
+                Text(LocalizedStringKey("System")).tag(Appearance.system)
+                Text(LocalizedStringKey("Light")).tag(Appearance.light)
+                Text(LocalizedStringKey("Dark")).tag(Appearance.dark)
+            } label: {
+                Label { Text(LocalizedStringKey("Appearance")) } icon: {
+                    Image(systemName: "circle.lefthalf.filled")
+                        .padding(5)
+                        .foregroundColor(.white)
+                        .background(Color(red: 89/255, green: 169/255, blue: 214/255))
+                        .cornerRadius(9)
+                }
+            }
+        }
+    }
+}
+
+fileprivate struct AboutSection: View {
+    
+    @Environment(\.colorScheme) var colorScheme
+    private let CCIPWebsiteURL = URL(string: "https://opass.app")!
+    private let CCIPGitHubURL = URL(string: "https://github.com/CCIP-App")!
+    private let CCIPPolicyURL = URL(string: "https://opass.app/privacy-policy.html")!
+    
+    @State var isShowingSafari = false
+    @State var url = URL(string: "https://opass.app")!
+    
+    var body: some View {
+        Section(header: Text(LocalizedStringKey("ABOUT"))) {
+            VStack(alignment: .leading) {
+                Text(LocalizedStringKey("Version"))
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                Text(
+                    String(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String + " (Build ") +
+                    String(Bundle.main.infoDictionary!["CFBundleVersion"] as! String + ")")
+                )
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
+            
+            Button(action: {
+                url = CCIPWebsiteURL
+                isShowingSafari.toggle()
+            }) {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(LocalizedStringKey("OfficialWebsite"))
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                        Text(CCIPWebsiteURL.absoluteString)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
+                    
+                    Spacer()
+                    
+                    Image("external-link")
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(.gray)
+                        .frame(width: UIScreen.main.bounds.width * 0.045)
+                }
+            }
+            
+            Button(action: {
+                url = CCIPGitHubURL
+                isShowingSafari.toggle()
+            }) {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("GitHub")
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                        Text(CCIPGitHubURL.absoluteString)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
+                    
+                    Spacer()
+                    
+                    Image("external-link")
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(.gray)
+                        .frame(width: UIScreen.main.bounds.width * 0.045)
+                }
+            }
+            
+            Button(action: {
+                url = CCIPPolicyURL
+                isShowingSafari.toggle()
+            }) {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(LocalizedStringKey("PrivacyPolicy"))
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                        Text(CCIPPolicyURL.absoluteString)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
+                    
+                    Spacer()
+                    
+                    Image("external-link")
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(.gray)
+                        .frame(width: UIScreen.main.bounds.width * 0.045)
+                }
+            }
+        }
+        .safariView(isPresented: $isShowingSafari) {
+            SafariView(
+                url: url,
+                configuration: SafariView.Configuration(
+                    entersReaderIfAvailable: false,
+                    barCollapsingEnabled: true
+                )
+            )
+            .preferredBarAccentColor(colorScheme == .dark ? .black : .white)
+            .dismissButtonStyle(.done)
+        }
+    }
+}
+
+fileprivate struct DeveloperSection: View {
+    var body: some View {
+        Section(header: Text("DEVELOPER")) {
+            NavigationLink(destination: DeveloperOptionView()) {
+                Image(systemName: "hammer")
+                Text("Developer Option")
+            }
+        }
+    }
+}
+
+fileprivate struct DeveloperOptionView: View {
     
     private var keyStore = NSUbiquitousKeyValueStore()
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
@@ -181,11 +205,7 @@ struct DeveloperOptionView: View {
                 keyStore.synchronize()
                 keyStore.removeObject(forKey: "EventAPI")
             }) {
-                Label {
-                    Text("Clear Cache Data")
-                } icon: {
-                    Image(systemName: "trash")
-                }
+                Label("Clear Cache Data", systemImage: "trash")
             }
         }
         .navigationTitle("Developer Option")
