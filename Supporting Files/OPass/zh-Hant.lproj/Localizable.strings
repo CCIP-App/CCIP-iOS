@@ -54,6 +54,8 @@
 "NoQRCodeFoundInPicture" = "在圖片中找不到 QR Code";
 "ScanQRCodeWithCamera" = "使用相機掃描 QR Code";
 "RequestUserPermitCamera" = "請允許 OPass 在您設備設定中的 OPass 下訪問您的相機";
+"RequestUserPermitCalendar" = "請允許 OPass 在您設備設定中的 OPass 下訪問您的行事曆";
+"Settings" = "設定";
 "OpenSettings" = "打開設定";
 "Complete" = "完成";
 "ConfirmUse" = "確認使用";

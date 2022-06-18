@@ -47,15 +47,15 @@ struct OPassApp: App {
     }
 }
 
-//Only use this as a last resort. Always try to use SwiftUI lifecycle
+// Only use this as a last resort. Always try to use SwiftUI lifecycle
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
-    //use this published property to notify SwiftUI lifecycle
+    // Use this published property to notify SwiftUI lifecycle
     @Published var dynamicURL: URL? = nil
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
-        //Configure OneSignal
+        // Configure OneSignal
         let notificationReceiverBlock: OSNotificationWillShowInForegroundBlock = { notification,_  in
             print("Received Notification - \(notification.notificationId ?? "")")
         }
@@ -85,14 +85,11 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         OneSignal.setAppId("b6213f49-e356-4b48-aa9d-7cf10ce1904d")
         OneSignal.setNotificationWillShowInForegroundHandler(notificationReceiverBlock)
         OneSignal.setNotificationOpenedHandler(notificationOpenedBlock)
+        OneSignal.setLocationShared(false)
         
         OneSignal.promptForPushNotifications(userResponse: { accepted in
            print("User accepted notifications: ", accepted)
         }, fallbackToSettings: false)
-        
-        
-        
-        
         
         return true
     }

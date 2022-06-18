@@ -19,10 +19,9 @@ struct ScheduleDetailView: View {
     @ObservedObject var eventAPI: EventAPIViewModel
     let scheduleDetail: SessionDataModel
     @AppStorage var likedSessions: [String]
-    @State var isShowingSpeakerDetail: Bool = false
-    @State var showSpeaker: String?
     @State var url: URL = URL(string: "https://opass.app")!
     @State var showingUrlAlert = false
+    @State var showingCalendarAlert = false
     @State var showingSafari = false
     @State var showingEventEditView = false
     private var eventStore = EKEventStore()
@@ -145,6 +144,8 @@ struct ScheduleDetailView: View {
                             Task {
                                 if (try? await eventStore.requestAccess(to: .event)) == true {
                                     showingEventEditView.toggle()
+                                } else {
+                                    showingCalendarAlert.toggle()
                                 }
                             }
                         } label: {
@@ -152,6 +153,12 @@ struct ScheduleDetailView: View {
                         }
                     } label: {
                         Image(systemName: "ellipsis.circle")
+                    }
+                    .alert("RequestUserPermitCalendar", isPresented: $showingCalendarAlert) {
+                        Button("Cancel", role: .cancel, action: {})
+                        Button("Settings", action: {
+                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                        })
                     }
                 }
             }
