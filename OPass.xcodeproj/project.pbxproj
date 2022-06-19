@@ -72,6 +72,13 @@
 		D3EA819827F68FFF00FE7985 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = D3EA819727F68FFF00FE7985 /* BetterSafariView */; };
 		D3EA819A27F747E100FE7985 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EA819927F747E100FE7985 /* TicketView.swift */; };
 		D3F23B4F28166DEF00A0FB35 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3F23B5128166DEF00A0FB35 /* Localizable.strings */; };
+		D3FAD811285EFBD00025AE7A /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80A285EFBD00025AE7A /* RobotoCondensed-Bold.ttf */; };
+		D3FAD812285EFBD00025AE7A /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80B285EFBD00025AE7A /* RobotoCondensed-Light.ttf */; };
+		D3FAD813285EFBD00025AE7A /* RobotoCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80C285EFBD00025AE7A /* RobotoCondensed-Italic.ttf */; };
+		D3FAD814285EFBD00025AE7A /* RobotoCondensed-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80D285EFBD00025AE7A /* RobotoCondensed-BoldItalic.ttf */; };
+		D3FAD815285EFBD00025AE7A /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80E285EFBD00025AE7A /* RobotoCondensed-LightItalic.ttf */; };
+		D3FAD816285EFBD00025AE7A /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80F285EFBD00025AE7A /* RobotoCondensed-Regular.ttf */; };
+		D3FAD817285EFBD00025AE7A /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD810285EFBD00025AE7A /* LICENSE.txt */; };
 		D3FBFA64282A936100DE118E /* din.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D3FBFA62282A936100DE118E /* din.mp3 */; };
 		D3FBFA65282A936100DE118E /* don.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D3FBFA63282A936100DE118E /* don.mp3 */; };
 		D3FBFA67282A93B200DE118E /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FBFA66282A93B200DE118E /* SoundManager.swift */; };
@@ -162,6 +169,13 @@
 		D3EA819927F747E100FE7985 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		D3F23B5228166DF600A0FB35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D3F23B5328166E0A00A0FB35 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D3FAD80A285EFBD00025AE7A /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
+		D3FAD80B285EFBD00025AE7A /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
+		D3FAD80C285EFBD00025AE7A /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; };
+		D3FAD80D285EFBD00025AE7A /* RobotoCondensed-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-BoldItalic.ttf"; sourceTree = "<group>"; };
+		D3FAD80E285EFBD00025AE7A /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
+		D3FAD80F285EFBD00025AE7A /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
+		D3FAD810285EFBD00025AE7A /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		D3FBFA62282A936100DE118E /* din.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = din.mp3; sourceTree = "<group>"; };
 		D3FBFA63282A936100DE118E /* don.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = don.mp3; sourceTree = "<group>"; };
 		D3FBFA66282A93B200DE118E /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
@@ -391,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E4E6C227CD158700FFACEB /* Assets.xcassets */,
+				D3FAD808285EFBAC0025AE7A /* Fonts */,
 				D3FBFA61282A935400DE118E /* Sounds */,
 				D3F23B4C28166D2F00A0FB35 /* OPass */,
 			);
@@ -406,6 +421,28 @@
 				D3F23B5128166DEF00A0FB35 /* Localizable.strings */,
 			);
 			path = OPass;
+			sourceTree = "<group>";
+		};
+		D3FAD808285EFBAC0025AE7A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D3FAD809285EFBD00025AE7A /* Roboto_Condensed */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		D3FAD809285EFBD00025AE7A /* Roboto_Condensed */ = {
+			isa = PBXGroup;
+			children = (
+				D3FAD80A285EFBD00025AE7A /* RobotoCondensed-Bold.ttf */,
+				D3FAD80B285EFBD00025AE7A /* RobotoCondensed-Light.ttf */,
+				D3FAD80C285EFBD00025AE7A /* RobotoCondensed-Italic.ttf */,
+				D3FAD80D285EFBD00025AE7A /* RobotoCondensed-BoldItalic.ttf */,
+				D3FAD80E285EFBD00025AE7A /* RobotoCondensed-LightItalic.ttf */,
+				D3FAD80F285EFBD00025AE7A /* RobotoCondensed-Regular.ttf */,
+				D3FAD810285EFBD00025AE7A /* LICENSE.txt */,
+			);
+			path = Roboto_Condensed;
 			sourceTree = "<group>";
 		};
 		D3FBFA61282A935400DE118E /* Sounds */ = {
@@ -532,10 +569,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3FAD815285EFBD00025AE7A /* RobotoCondensed-LightItalic.ttf in Resources */,
 				D3FBFA64282A936100DE118E /* din.mp3 in Resources */,
+				D3FAD813285EFBD00025AE7A /* RobotoCondensed-Italic.ttf in Resources */,
 				D31900DE281CF17600864982 /* LaunchScreen@1x.png in Resources */,
 				D31900DD281CF17600864982 /* LaunchScreen@3x.png in Resources */,
+				D3FAD814285EFBD00025AE7A /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				4F5EB73A27D37D4A00235396 /* announcementSample.json in Resources */,
+				D3FAD812285EFBD00025AE7A /* RobotoCondensed-Light.ttf in Resources */,
+				D3FAD817285EFBD00025AE7A /* LICENSE.txt in Resources */,
+				D3FAD811285EFBD00025AE7A /* RobotoCondensed-Bold.ttf in Resources */,
+				D3FAD816285EFBD00025AE7A /* RobotoCondensed-Regular.ttf in Resources */,
 				D31900D8281CF07E00864982 /* LaunchScreen.storyboard in Resources */,
 				D3E4E6C627CD158700FFACEB /* Preview Assets.xcassets in Resources */,
 				4F29D9C727D4E6DA00292CC4 /* GoogleService-Info.plist in Resources */,

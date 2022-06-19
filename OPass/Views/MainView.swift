@@ -50,7 +50,7 @@ struct MainView: View {
                                 .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
                                 
                                 Text(LocalizeIn(zh: feature.display_text.zh, en: feature.display_text.en))
-                                    .font(.caption2)
+                                    .font(.custom("RobotoCondensed-Regular", size: 11, relativeTo: .caption2))
                                     .multilineTextAlignment(.center)
                                     .fixedSize(horizontal: false, vertical: true)
                             }.padding(.bottom, 10)
