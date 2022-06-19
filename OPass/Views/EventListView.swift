@@ -14,6 +14,7 @@ struct EventListView: View {
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @Environment(\.dismiss) var dismiss
     @State var isError = false
+    @State var searchText = ""
     
     var body: some View {
         NavigationView {
@@ -21,7 +22,18 @@ struct EventListView: View {
                 if !isError {
                     if !OPassAPI.eventList.isEmpty {
                         Form {
-                            ForEach(OPassAPI.eventList, id: \.event_id) { list in
+                            ForEach(OPassAPI.eventList.filter { event in
+                                if searchText.isEmpty {
+                                    return true
+                                } else {
+                                    for component in searchText.tirm().lowercased().components(separatedBy: " ") {
+                                        if !LocalizeIn(zh: event.display_name.zh, en: event.display_name.en).lowercased().contains(component) {
+                                            return false
+                                        }
+                                    }
+                                    return true
+                                }
+                            }, id: \.event_id) { list in
                                 EventRow(url: list.logo_url, displayName: list.display_name) {
                                     OPassAPI.currentEventID = list.event_id
                                     dismiss()
@@ -63,6 +75,7 @@ struct EventListView: View {
                 }
             }
         }
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .automatic))
         .task {
             do { try await OPassAPI.loadEventList() }
             catch { isError = true }

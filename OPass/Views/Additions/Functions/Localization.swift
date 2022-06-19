@@ -8,12 +8,7 @@
 
 import Foundation
 
-func LocalizeIn(zh: String, en: String) -> String{
-    if Bundle.main.preferredLocalizations[0] ==  "zh-Hant" { return zh }
-    else { return en }
-}
-
-func LocalizeIn(zh: String?, en: String?) -> String? {
+func LocalizeIn<T>(zh: T, en: T) -> T {
     if Bundle.main.preferredLocalizations[0] ==  "zh-Hant" { return zh }
     else { return en }
 }

@@ -41,7 +41,7 @@ struct ScheduleDetailView: View {
                 TagsSection(tagsID: scheduleDetail.tags, tags: eventAPI.eventSchedule?.tags.data ?? [:])
                     .padding(.vertical, 8)
                 
-                Text(LocalizeIn(zh: scheduleDetail.zh.title, en: scheduleDetail.en.title))
+                Text(LocalizeIn(zh: scheduleDetail.zh, en: scheduleDetail.en).title)
                     .font(.largeTitle.bold())
                     .fixedSize(horizontal: false, vertical: true)
                 
@@ -58,15 +58,15 @@ struct ScheduleDetailView: View {
                     )
                 
                 if let type = scheduleDetail.type {
-                    TypeSection(name: LocalizeIn(zh: eventAPI.eventSchedule?.session_types.data[type]?.zh.name,
-                                                 en: eventAPI.eventSchedule?.session_types.data[type]?.en.name) ?? type)
+                    TypeSection(name: LocalizeIn(zh: eventAPI.eventSchedule?.session_types.data[type]?.zh,
+                                                 en: eventAPI.eventSchedule?.session_types.data[type]?.en)?.name ?? type)
                     .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
                     .padding(.bottom)
                 }
                 
-                PlaceSection(name: LocalizeIn(zh: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.zh.name,
-                                              en: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.en.name) ?? scheduleDetail.room)
+                PlaceSection(name: LocalizeIn(zh: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.zh,
+                                              en: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.en)?.name ?? scheduleDetail.room)
                     .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
                     .padding(.bottom)
@@ -167,7 +167,7 @@ struct ScheduleDetailView: View {
             EventEditView(
                 eventStore: eventStore,
                 event: eventStore.createEvent(
-                    title: LocalizeIn(zh: scheduleDetail.zh.title, en: scheduleDetail.zh.title),
+                    title: LocalizeIn(zh: scheduleDetail.zh, en: scheduleDetail.zh).title,
                     startDate: scheduleDetail.start.date,
                     endDate: scheduleDetail.end.date,
                     alertOffset: -300 // T minus 5 minutes
@@ -194,7 +194,7 @@ fileprivate struct TagsSection: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(tagsID, id: \.self) { tagID in
-                    Text(LocalizeIn(zh: tags[tagID]?.zh.name, en: tags[tagID]?.en.name) ?? tagID)
+                    Text(LocalizeIn(zh: tags[tagID]?.zh, en: tags[tagID]?.en)?.name ?? tagID)
                         .font(.caption)
                         .padding(.vertical, 2)
                         .padding(.horizontal, 8)
@@ -431,15 +431,15 @@ fileprivate struct SpeakerBlock: View {
                     .frame(width: 30, height: 30)
                 }
                 
-                Text(LocalizeIn(zh: speakerData?.zh.name, en: speakerData?.en.name) ?? speaker)
+                Text(LocalizeIn(zh: speakerData?.zh, en: speakerData?.en)?.name ?? speaker)
                     .font(.subheadline.bold())
                 Spacer()
             }
             .padding(.vertical, 8)
-            if let data = speakerData, LocalizeIn(zh: speakerData?.zh.bio, en: speakerData?.en.bio) != "" {
+            if let data = speakerData, LocalizeIn(zh: speakerData?.zh, en: speakerData?.en)?.bio != "" {
                 Divider()
-                SpeakerBio(speaker: LocalizeIn(zh: data.zh.name, en: data.en.name),
-                           speakerBio: LocalizeIn(zh: data.zh.bio, en: data.en.bio),
+                SpeakerBio(speaker: LocalizeIn(zh: data.zh, en: data.en).name,
+                           speakerBio: LocalizeIn(zh: data.zh, en: data.en).bio,
                            avatarData: avatarData, url: $url, showingAlert: $showingAlert)
             }
         }
