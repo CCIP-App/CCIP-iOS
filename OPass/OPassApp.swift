@@ -28,14 +28,14 @@ struct OPassApp: App {
         WindowGroup {
             EntryView(url: url)
                 .onOpenURL { url in
-                    //we use the way to universal link here, guaranteed by the swiftui doc that the passed in url being a universal link
+                    // We use the way to universal link here, guaranteed by the swiftui doc that the passed in url being a universal link
                     let handled = DynamicLinks.dynamicLinks().handleUniversalLink(url) { dynamicLink, _ in
                         if let url = dynamicLink?.url {
                             self.url = url
                         }
                     }
                     if !handled {
-                        // non Firbase Dynamic Link
+                        // Non Firbase Dynamic Link
                         self.url = url
                     }
                 }
@@ -103,7 +103,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
                     }
                 }
                 if !handled {
-                    // non Firbase Dynamic Link
+                    // Non Firbase Dynamic Link
                     dynamicURL = url
                 }
                 return true

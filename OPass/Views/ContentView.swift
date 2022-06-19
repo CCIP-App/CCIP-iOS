@@ -14,24 +14,32 @@ struct ContentView: View {
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @State var handlingURL = false
     @State var isShowingEventList = false
+    @State var isError = false
 
     var body: some View {
         NavigationView {
             VStack {
-                if OPassAPI.currentEventID == nil {
-                    VStack {}
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .onAppear(perform: {
-                            isShowingEventList.toggle()
-                        })
-                } else if OPassAPI.currentEventID != OPassAPI.currentEventAPI?.event_id {
-                    ProgressView(LocalizedStringKey("Loading"))
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .task {
-                            await OPassAPI.loadCurrentEventAPI()
-                        }
+                if !isError {
+                    if OPassAPI.currentEventID == nil {
+                        VStack {}
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .onAppear(perform: {
+                                isShowingEventList.toggle()
+                            })
+                    } else if OPassAPI.currentEventID != OPassAPI.currentEventAPI?.event_id {
+                        ProgressView(LocalizedStringKey("Loading"))
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .task {
+                                do { try await OPassAPI.loadCurrentEventAPI() }
+                                catch { self.isError = true }
+                            }
+                    } else {
+                        MainView(eventAPI: OPassAPI.currentEventAPI!)
+                    }
                 } else {
-                    MainView(eventAPI: OPassAPI.currentEventAPI!)
+                    ErrorWithRetryView {
+                        self.isError = false
+                    }.frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
             .background(Color("SectionBackgroundColor"))

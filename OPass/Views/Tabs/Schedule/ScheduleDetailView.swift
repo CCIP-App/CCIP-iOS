@@ -96,7 +96,7 @@ struct ScheduleDetailView: View {
                         barCollapsingEnabled: true
                     )
                 )
-                .preferredBarAccentColor(colorScheme == .dark ? .black : .white)
+                .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
                 .dismissButtonStyle(.done)
             }
                 

@@ -54,7 +54,7 @@ struct MainView: View {
                                     .multilineTextAlignment(.center)
                                     .fixedSize(horizontal: false, vertical: true)
                             }.padding(.bottom, 10)
-                        } //Bypass Webview feature that it's url not accepted by URL structure
+                        } // Bypass Webview feature that it's url not accepted by URL structure
                     }
                 }
             }
@@ -180,7 +180,7 @@ struct TabButton: View {
                                 barCollapsingEnabled: true
                             )
                         )
-                        .preferredBarAccentColor(colorScheme == .dark ? .black : .white)
+                        .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
                         .dismissButtonStyle(.done)
                     }
                 }

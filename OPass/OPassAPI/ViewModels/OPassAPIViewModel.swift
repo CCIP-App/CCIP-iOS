@@ -68,10 +68,11 @@ extension OPassAPIViewModel {
         }
     }
     
-    func loadCurrentEventAPI() async {
-        if let eventID = currentEventID {
-            if let eventId = currentEventID, let eventSettings = try? await APIRepo.loadEventSettings(id: eventId) {
-                if let eventAPIData = eventAPITemporaryData, eventID == eventAPIData.event_id { //Reload
+    func loadCurrentEventAPI() async throws {
+        if let eventId = currentEventID {
+            do {
+                let eventSettings = try await APIRepo.loadEventSettings(id: eventId)
+                if let eventAPIData = eventAPITemporaryData, eventId == eventAPIData.event_id { // Reload
                     let event = EventAPIViewModel(
                         eventSettings: eventSettings,
                         eventLogo: eventAPIData.eventLogo,
@@ -85,7 +86,7 @@ extension OPassAPIViewModel {
                         self.currentEventAPI = event
                         Task{ await self.currentEventAPI!.loadLogos() }
                     }
-                } else { //Load new
+                } else { // Load new
                     let event = EventAPIViewModel(eventSettings: eventSettings, saveData: self.saveEventAPIData)
                     logger.info("Loading new event from \(self.currentEventAPI?.event_id ?? "none") to \(event.event_id)")
                     DispatchQueue.main.async {
@@ -93,9 +94,9 @@ extension OPassAPIViewModel {
                         Task{ await self.currentEventAPI!.loadLogos() }
                     }
                 }
-            } else { //Use local data when it can't get data from API
+            } catch { // Use local data when it can't get data from API
                 logger.notice("Can't get data from API. Using local data")
-                if let eventAPIData = eventAPITemporaryData {
+                if let eventAPIData = eventAPITemporaryData, eventAPIData.event_id == eventId {
                     DispatchQueue.main.async {
                         self.currentEventAPI = EventAPIViewModel(
                             eventSettings: eventAPIData.eventSettings,
@@ -106,9 +107,12 @@ extension OPassAPIViewModel {
                             isLogin: eventAPIData.isLogin,
                             saveData: self.saveEventAPIData)
                     }
+                } else {
+                    self.eventAPITemporaryData = nil
+                    throw error
                 }
             }
-            self.eventAPITemporaryData = nil //Clear temporary data
+            self.eventAPITemporaryData = nil // Clear temporary data
         }
     }
     
