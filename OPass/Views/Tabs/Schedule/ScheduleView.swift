@@ -34,33 +34,23 @@ struct ScheduleView: View {
                                 .background(Color("SectionBackgroundColor"))
                         }
                         
+                        let filteredModel = allScheduleData.sessions[selectDayIndex].filter({ session in
+                            switch filter {
+                                case .liked: return likedSessions.contains(session.id)
+                                case .tag(let tag): return session.tags.contains(tag)
+                                case .type(let type): return session.type == type
+                                default: return true
+                            }
+                        })
                         Form {
-                            ForEach(allScheduleData.sessions[selectDayIndex].header, id: \.self) { header in
-                                if let filteredData = allScheduleData.sessions[selectDayIndex].data[header]?.filter { session in
-                                    switch filter {
-                                    case .liked: return likedSessions.contains(session.id)
-                                    case .tag(let tag): return session.tags.contains(tag)
-                                    case .type(let type): return session.type == type
-                                    default: return true
-                                    }
-                                }, !filteredData.isEmpty {
-                                    Section {
-                                        ForEach(filteredData.sorted(by: { $0.end < $1.end }), id: \.id) { sessionDetail in
-                                            if sessionDetail.type != "Ev" {
-                                                NavigationLink(
-                                                    destination: ScheduleDetailView(eventAPI: eventAPI,
-                                                                                    scheduleDetail: sessionDetail)
-                                                ){
-                                                    DetailOverView(
-                                                        room: (LocalizeIn (
-                                                            zh: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh,
-                                                            en: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.en
-                                                        )?.name ?? sessionDetail.room),
-                                                        start: sessionDetail.start,
-                                                        end: sessionDetail.end,
-                                                        title: sessionDetail.zh.title)
-                                                }
-                                            } else {
+                            ForEach(filteredModel.header, id: \.self) { header in
+                                Section {
+                                    ForEach(filteredModel.data[header]!.sorted(by: { $0.end < $1.end }), id: \.id) { sessionDetail in
+                                        if sessionDetail.type != "Ev" {
+                                            NavigationLink(
+                                                destination: ScheduleDetailView(eventAPI: eventAPI,
+                                                                                scheduleDetail: sessionDetail)
+                                            ){
                                                 DetailOverView(
                                                     room: (LocalizeIn (
                                                         zh: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name,
@@ -70,13 +60,38 @@ struct ScheduleView: View {
                                                     end: sessionDetail.end,
                                                     title: sessionDetail.zh.title)
                                             }
+                                        } else {
+                                            DetailOverView(
+                                                room: (LocalizeIn (
+                                                    zh: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name,
+                                                    en: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.en.name
+                                                ) ?? sessionDetail.room),
+                                                start: sessionDetail.start,
+                                                end: sessionDetail.end,
+                                                title: sessionDetail.zh.title)
                                         }
                                     }
-                                    .listRowInsets(.init(top: 10, leading: 15, bottom: 10, trailing: 15))
                                 }
+                                .listRowInsets(.init(top: 10, leading: 15, bottom: 10, trailing: 15))
                             }
                         }
                         .refreshable { try? await eventAPI.loadSchedule() }
+                        .overlay {
+                            if filteredModel.isEmpty {
+                                VStack(alignment: .center) {
+                                    Image(systemName: "text.badge.xmark")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .foregroundColor(Color("LogoColor"))
+                                        .frame(width: UIScreen.main.bounds.width * 0.15)
+                                        .padding(.bottom)
+                                    
+                                    Text(LocalizedStringKey("NoEventFiltered"))
+                                        .multilineTextAlignment(.center)
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                        }
                     }
                 } else {
                     ProgressView(LocalizedStringKey("Loading"))

@@ -54,6 +54,24 @@ struct SessionModel: Hashable, Codable {
     var data: [DateInRegion : [SessionDataModel]] = [:]
 }
 
+                                   
+extension SessionModel {
+    func filter(_ filter: (SessionDataModel) -> Bool) -> SessionModel {
+        let filteredHeader = header.filter { header in
+            switch data[header]?.filter(filter) {
+                case .none: return false
+                case .some(let filtered): return !filtered.isEmpty
+            }
+        }
+        return SessionModel(
+            header: filteredHeader,
+            data: data.filter { (k, _) in filteredHeader.contains(k) }
+        )
+    }
+
+    var isEmpty: Bool { header.isEmpty }
+}
+
 struct SessionDataModel: Hashable, Codable {
     var id: String = ""
     var type: String? = nil

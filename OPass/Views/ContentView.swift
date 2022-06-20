@@ -39,7 +39,11 @@ struct ContentView: View {
                 } else {
                     ErrorWithRetryView {
                         self.isError = false
-                    }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .onChange(of: OPassAPI.currentEventID) { _ in
+                        self.isError = false
+                    }
                 }
             }
             .background(Color("SectionBackgroundColor"))
