@@ -24,8 +24,8 @@ struct WiFiModel: Hashable, Codable {
 }
 
 struct Start_EndModel: Hashable, Codable {
-    @TransformedFrom<String> var start = DateInRegion()
-    @TransformedFrom<String> var end = DateInRegion()
+    @TransformWith<StringToDateTransform> var start = DateInRegion()
+    @TransformWith<StringToDateTransform> var end = DateInRegion()
 }
 
 struct FeatureModel: Hashable, Codable {

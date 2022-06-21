@@ -77,8 +77,8 @@ struct SessionDataModel: Hashable, Codable {
     var type: String? = nil
     var room: String = ""
     var broadcast: [String]? = nil
-    @TransformedFrom<String> var start = DateInRegion()
-    @TransformedFrom<String> var end = DateInRegion()
+    @TransformWith<StringToDateTransform> var start = DateInRegion()
+    @TransformWith<StringToDateTransform> var end = DateInRegion()
     var co_write: String? = nil
     var qa: String? = nil
     var slide: String? = nil
@@ -124,10 +124,11 @@ struct Id_Name_DescriptionTransform: TransformFunction {
     }
 }
 
-extension String: TransformSelf {
+struct StringToDateTransform: TransformFunction {
     static func transform(_ dateString: String) -> DateInRegion {
         return dateString.toISODate()!
     }
+    
 }
 
 struct Id_SpeakerModel: Hashable, Codable {

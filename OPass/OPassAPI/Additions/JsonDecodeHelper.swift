@@ -9,7 +9,6 @@
 import Foundation
 
 //When decoding json, this wrapper will perform a transform, which is written by user, on the applied property/field.
-//You may find the usage in EventSessionModel
 @propertyWrapper
 struct Transform<Func: TransformFunction>: Codable, Hashable {
     var wrappedValue: Func.ToType
@@ -33,12 +32,8 @@ struct Transform<Func: TransformFunction>: Codable, Hashable {
         try container.encode(self.wrappedValue)
     }
 }
-//Recommand use TransformedFrom when the type implement TransformSelf and use TransformWith when the type implement TransformFunction
-//This is however only a matter of name, you can replace these two with Transform if you want.
-typealias TransformedFrom<Func: TransformSelf> = Transform<Func>
 typealias TransformWith = Transform
 
-protocol TransformSelf: TransformFunction {}
 protocol TransformFunction {
     associatedtype FromType: Decodable
     associatedtype ToType: Codable, Hashable
