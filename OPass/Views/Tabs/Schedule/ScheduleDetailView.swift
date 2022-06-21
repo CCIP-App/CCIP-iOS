@@ -468,17 +468,34 @@ fileprivate struct SpeakerBio: View {
     let avatarData: Data?
     @Binding var url: URL
     @Binding var showingAlert: Bool
-    @State var isTruncated: Bool = false
-    @State var isShowingSpeakerDetail = false
-    @State var readSize: CGSize = .zero
-    @State var showAvatar = false
+    @State private var isTruncated: Bool = false
+    @State private var isShowingSpeakerDetail = false
+    @State private var showAvatar = false
+    @State private var intrinsicSize: CGSize = .zero
+    @State private var truncatedSize: CGSize = .zero
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack(spacing: 0) {
-            TruncableMarkdown(text: speakerBio, font: .footnote, lineLimit: 2) {
-                isTruncated = $0
-            }
+            Markdown(speakerBio.tirm())
+                .markdownStyle(MarkdownStyle(font: .footnote))
+                .lineSpacing(4)
+                .lineLimit(2)
+                .readSize { size in
+                    truncatedSize = size
+                    isTruncated = truncatedSize != intrinsicSize
+                }
+                .background(
+                    Markdown(speakerBio.tirm())
+                        .markdownStyle(MarkdownStyle(font: .footnote))
+                        .lineSpacing(4)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .hidden()
+                        .readSize { size in
+                            intrinsicSize = size
+                            isTruncated = truncatedSize != intrinsicSize
+                        }
+                )
             
             if isTruncated {
                 HStack {
@@ -499,7 +516,7 @@ fileprivate struct SpeakerBio: View {
                                 Text(speaker)
                                     .font(.title.bold())
                                 
-                                if readSize.height < UIScreen.main.bounds.height * 0.5 {
+                                if intrinsicSize.height < UIScreen.main.bounds.height * 0.5 {
                                     VStack {
                                         if !speakerBio.isEmpty {
                                             HStack {
@@ -507,7 +524,7 @@ fileprivate struct SpeakerBio: View {
                                                     .markdownStyle(
                                                         MarkdownStyle(font: .footnote)
                                                     )
-                                                    .lineSpacing(5)
+                                                    .lineSpacing(4)
                                                     .padding()
                                             }
                                             .frame(maxWidth: .infinity)
@@ -525,7 +542,7 @@ fileprivate struct SpeakerBio: View {
                                                         .markdownStyle(
                                                             MarkdownStyle(font: .footnote)
                                                         )
-                                                        .lineSpacing(5)
+                                                        .lineSpacing(4)
                                                         .padding()
                                                 }
                                             }
@@ -541,25 +558,6 @@ fileprivate struct SpeakerBio: View {
                     }
                     .font(.footnote)
                 }
-                .background(
-                    VStack {
-                        VStack {
-                            if !speakerBio.isEmpty {
-                                HStack {
-                                    Markdown(speakerBio.tirm())
-                                        .markdownStyle(
-                                            MarkdownStyle(font: .footnote)
-                                        )
-                                        .lineSpacing(5)
-                                        .padding()
-                                }
-                                .frame(maxWidth: .infinity)
-                            }
-                        }
-                        .frame(maxWidth: .infinity)
-                        .readSize { size in readSize = size }
-                    }.hidden()
-                )
             }
         }
         .padding(.vertical, 8)

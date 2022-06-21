@@ -53,22 +53,22 @@ struct ScheduleView: View {
                                             ){
                                                 DetailOverView(
                                                     room: (LocalizeIn (
-                                                        zh: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name,
-                                                        en: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.en.name
-                                                    ) ?? sessionDetail.room),
+                                                        zh: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh,
+                                                        en: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.en
+                                                    )?.name ?? sessionDetail.room),
                                                     start: sessionDetail.start,
                                                     end: sessionDetail.end,
-                                                    title: sessionDetail.zh.title)
+                                                    title: LocalizeIn(zh: sessionDetail.zh, en: sessionDetail.en).title)
                                             }
                                         } else {
                                             DetailOverView(
                                                 room: (LocalizeIn (
-                                                    zh: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh.name,
-                                                    en: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.en.name
-                                                ) ?? sessionDetail.room),
+                                                    zh: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh,
+                                                    en: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.en
+                                                )?.name ?? sessionDetail.room),
                                                 start: sessionDetail.start,
                                                 end: sessionDetail.end,
-                                                title: sessionDetail.zh.title)
+                                                title: LocalizeIn(zh: sessionDetail.zh, en: sessionDetail.en).title)
                                         }
                                     }
                                 }
