@@ -66,7 +66,7 @@ fileprivate struct GeneralSection: View {
                         .padding(5)
                         .foregroundColor(.white)
                         .background(Color(red: 89/255, green: 169/255, blue: 214/255))
-                        .cornerRadius(9)
+                        .cornerRadius(7)
                 }
             }
         }
@@ -89,8 +89,8 @@ fileprivate struct AboutSection: View {
                 Text(LocalizedStringKey("Version"))
                     .foregroundColor(colorScheme == .dark ? .white : .black)
                 Text(
-                    String(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String + " (Build ") +
-                    String(Bundle.main.infoDictionary!["CFBundleVersion"] as! String + ")")
+                    String("\(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)") +
+                    String(" (Build \(Bundle.main.infoDictionary!["CFBundleVersion"]!))")
                 )
                     .font(.subheadline)
                     .foregroundColor(.gray)
