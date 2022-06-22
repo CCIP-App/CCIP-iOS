@@ -57,6 +57,7 @@
 		D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6195027CFA9A800643D97 /* ScheduleView.swift */; };
 		D3C6F607286349B30074B942 /* AttributedText in Frameworks */ = {isa = PBXBuildFile; productRef = D3C6F606286349B30074B942 /* AttributedText */; };
 		D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3C6F60C28634F3B0074B942 /* MarkdownKit */; };
+		D3C6F60F286360FC0074B942 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6F60E286360FC0074B942 /* Markdown.swift */; };
 		D3C972F227F03531008561DE /* ScheduleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C972F127F03531008561DE /* ScheduleDetailView.swift */; };
 		D3D3788227CE440D00021FC4 /* OPassAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */; };
 		D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788A27CE542100021FC4 /* MoreModels.swift */; };
@@ -154,6 +155,7 @@
 		D3C6194727CF864B00643D97 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		D3C6194C27CF9A7400643D97 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingView.swift; path = OPass/Views/SettingView.swift; sourceTree = SOURCE_ROOT; };
 		D3C6195027CFA9A800643D97 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleView.swift; path = OPass/Views/Tabs/Schedule/ScheduleView.swift; sourceTree = SOURCE_ROOT; };
+		D3C6F60E286360FC0074B942 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
 		D3C972F127F03531008561DE /* ScheduleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailView.swift; sourceTree = "<group>"; };
 		D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPIViewModel.swift; sourceTree = "<group>"; };
 		D3D3788A27CE542100021FC4 /* MoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreModels.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				4F3A10DB2815201D00CCE5A9 /* ImagePicker.swift */,
 				D3A94D02281E62530053FEFA /* ErrorView.swift */,
 				D39512F4285A174F009B9AE8 /* EventEditView.swift */,
+				D3C6F60E286360FC0074B942 /* Markdown.swift */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				D3D3789327CE70EE00021FC4 /* SettingsModel.swift in Sources */,
 				D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */,
 				4F22826327DD8C5E0030D73E /* FeatureHelper.swift in Sources */,
+				D3C6F60F286360FC0074B942 /* Markdown.swift in Sources */,
 				D3EA819A27F747E100FE7985 /* TicketView.swift in Sources */,
 				4F9E9B4E2813F0A300A14905 /* ArrayExtension.swift in Sources */,
 				D3E0123527D38B840040621F /* ScenarioView.swift in Sources */,

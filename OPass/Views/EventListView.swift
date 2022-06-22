@@ -27,7 +27,7 @@ struct EventListView: View {
                                     return true
                                 } else {
                                     for component in searchText.tirm().lowercased().components(separatedBy: " ") {
-                                        if !LocalizeIn(zh: event.display_name.zh, en: event.display_name.en).lowercased().contains(component) {
+                                        if !LocalizeIn(zh: event.display_name.zh, en: event.display_name.en).lowercased().contains(component.tirm()) {
                                             return false
                                         }
                                     }
