@@ -9,6 +9,7 @@
 import SwiftUI
 import Firebase
 import OneSignal
+import FirebaseAnalytics
 
 @main
 struct OPassApp: App {
@@ -22,6 +23,7 @@ struct OPassApp: App {
         if appearance != .system {
             UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).overrideUserInterfaceStyle = appearance == .dark ? .dark : .light
         }
+        Analytics.setAnalyticsCollectionEnabled(true)
     }
     
     var body: some Scene {
@@ -95,34 +97,36 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-            if let url = userActivity.webpageURL {
-                NSLog("Receieved Activity URL -> \(url)");
-                let handled = DynamicLinks.dynamicLinks().handleUniversalLink(url) { dynamicLink, _ in
-                    if let url = dynamicLink?.url {
-                        self.dynamicURL = url
-                    }
+        Analytics.logEvent("dynamic_link_appdelegate", parameters: ["entry": "userActivity"])
+        if let url = userActivity.webpageURL {
+            NSLog("Receieved Activity URL -> \(url)");
+            let handled = DynamicLinks.dynamicLinks().handleUniversalLink(url) { dynamicLink, _ in
+                if let url = dynamicLink?.url {
+                    self.dynamicURL = url
                 }
-                if !handled {
-                    // Non Firbase Dynamic Link
-                    dynamicURL = url
-                }
-                return true
             }
-            return false
-        }
-        
-        func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-            let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url)
-            if let dynamicLink = dynamicLink {
-                if let url = dynamicLink.url {
-                    dynamicURL = url
-                }
-            } else {
+            if !handled {
+                // Non Firbase Dynamic Link
                 dynamicURL = url
-                return true
             }
-            return false
+            return true
         }
+        return false
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        Analytics.logEvent("dynamic_link_appdelegate", parameters: ["entry": "url"])
+        let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url)
+        if let dynamicLink = dynamicLink {
+            if let url = dynamicLink.url {
+                dynamicURL = url
+            }
+        } else {
+            dynamicURL = url
+            return true
+        }
+        return false
+    }
 }
 
 enum Appearance: String, Codable {
