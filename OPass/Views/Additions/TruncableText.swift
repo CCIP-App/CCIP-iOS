@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import MarkdownUI
 
 struct TruncableText: View {
     let text: Text
@@ -25,40 +24,6 @@ struct TruncableText: View {
             }
             .background(
                 text
-                    .fixedSize(horizontal: false, vertical: true)
-                    .hidden()
-                    .readSize { size in
-                        intrinsicSize = size
-                        isTruncatedUpdate(truncatedSize != intrinsicSize)
-                    }
-            )
-    }
-}
-
-struct TruncableMarkdown: View {
-    let text: String
-    let font: MarkdownStyle.Font
-    let lineLimit: Int?
-    @State private var intrinsicSize: CGSize = .zero
-    @State private var truncatedSize: CGSize = .zero
-    let isTruncatedUpdate: (_ isTruncated: Bool) -> Void
-    
-    var body: some View {
-        Markdown(text.tirm())
-            .markdownStyle(
-                MarkdownStyle(font: font)
-            )
-            .lineLimit(lineLimit)
-            .readSize { size in
-                truncatedSize = size
-                isTruncatedUpdate(truncatedSize != intrinsicSize)
-            }
-            .lineSpacing(5)
-            .background(
-                Markdown(text.tirm())
-                    .markdownStyle(
-                        MarkdownStyle(font: font)
-                    )
                     .fixedSize(horizontal: false, vertical: true)
                     .hidden()
                     .readSize { size in

@@ -9,9 +9,10 @@
 import SwiftUI
 import EventKit
 import SwiftDate
-import MarkdownUI
 import SlideOverCard
 import BetterSafariView
+import AttributedText
+import MarkdownKit
 
 struct ScheduleDetailView: View {
     
@@ -477,6 +478,34 @@ fileprivate struct SpeakerBio: View {
     
     var body: some View {
         VStack(spacing: 0) {
+            AttributedText {
+                let markdownParser = MarkdownParser(font: .preferredFont(forTextStyle: .footnote))
+                markdownParser.enabledElements = .all
+                markdownParser.header.fontIncrease = 0
+                return markdownParser.parse(speakerBio.tirm())
+            }
+            .lineSpacing(4)
+            .lineLimit(2)
+            .readSize { size in
+                truncatedSize = size
+                isTruncated = truncatedSize != intrinsicSize
+            }
+            .background(
+                AttributedText {
+                    let markdownParser = MarkdownParser(font: .preferredFont(forTextStyle: .footnote))
+                    markdownParser.enabledElements = .all
+                    markdownParser.header.fontIncrease = 0
+                    return markdownParser.parse(speakerBio.tirm())
+                }
+                    .lineSpacing(4)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .hidden()
+                    .readSize { size in
+                        intrinsicSize = size
+                        isTruncated = truncatedSize != intrinsicSize
+                    }
+            )
+            /*
             Markdown(speakerBio.tirm())
                 .markdownStyle(MarkdownStyle(font: .footnote))
                 .lineSpacing(4)
@@ -496,6 +525,7 @@ fileprivate struct SpeakerBio: View {
                             isTruncated = truncatedSize != intrinsicSize
                         }
                 )
+             */
             
             if isTruncated {
                 HStack {
@@ -520,12 +550,22 @@ fileprivate struct SpeakerBio: View {
                                     VStack {
                                         if !speakerBio.isEmpty {
                                             HStack {
+                                                AttributedText {
+                                                    let markdownParser = MarkdownParser(font: .preferredFont(forTextStyle: .footnote))
+                                                    markdownParser.enabledElements = .all
+                                                    markdownParser.header.fontIncrease = 0
+                                                    return markdownParser.parse(speakerBio.tirm())
+                                                }
+                                                .lineSpacing(4)
+                                                .padding()
+                                                /*
                                                 Markdown(speakerBio.tirm())
                                                     .markdownStyle(
                                                         MarkdownStyle(font: .footnote)
                                                     )
                                                     .lineSpacing(4)
                                                     .padding()
+                                                 */
                                             }
                                             .frame(maxWidth: .infinity)
                                             .background(colorScheme == .light ? .white : .black.opacity(0.6))
@@ -538,12 +578,22 @@ fileprivate struct SpeakerBio: View {
                                         if !speakerBio.isEmpty {
                                             HStack {
                                                 ScrollView {
+                                                    AttributedText {
+                                                        let markdownParser = MarkdownParser(font: .preferredFont(forTextStyle: .footnote))
+                                                        markdownParser.enabledElements = .all
+                                                        markdownParser.header.fontIncrease = 0
+                                                        return markdownParser.parse(speakerBio.tirm())
+                                                    }
+                                                    .lineSpacing(4)
+                                                    .padding()
+                                                    /*
                                                     Markdown(speakerBio.tirm())
                                                         .markdownStyle(
                                                             MarkdownStyle(font: .footnote)
                                                         )
                                                         .lineSpacing(4)
                                                         .padding()
+                                                     */
                                                 }
                                             }
                                             .frame(maxWidth: .infinity)
@@ -572,6 +622,15 @@ fileprivate struct DescriptionSection: View {
     
     var body: some View {
         Section(header: Text(LocalizedStringKey("SessionIntroduction")).padding(.leading, 10)) {
+            AttributedText {
+                let markdownParser = MarkdownParser(font: .preferredFont(forTextStyle: .footnote))
+                markdownParser.enabledElements = .all
+                markdownParser.header.fontIncrease = 0
+                return markdownParser.parse(description.tirm())
+            }
+            .lineSpacing(4)
+            .padding()
+            /*
             Markdown(description.tirm())
                 .markdownStyle(
                     MarkdownStyle(font: .footnote)
@@ -587,6 +646,7 @@ fileprivate struct DescriptionSection: View {
                 //    self.showingAlert = true
                 //    return .handled
                 //})
+             */
         }
         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }

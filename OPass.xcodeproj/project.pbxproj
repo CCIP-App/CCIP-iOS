@@ -18,7 +18,6 @@
 		4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */; };
 		4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */; };
 		4F5CA37D27FD58D600DEAB39 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5CA37C27FD58D600DEAB39 /* ColorExtension.swift */; };
-		4F5CA38027FDD1B400DEAB39 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4F5CA37F27FDD1B400DEAB39 /* MarkdownUI */; };
 		4F5EB73127D2311200235396 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 4F5EB73027D2311200235396 /* SwiftDate */; };
 		4F5EB73527D3346D00235396 /* JsonDecodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EB73427D3346D00235396 /* JsonDecodeHelper.swift */; };
 		4F5EB73827D3648100235396 /* AnnounceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EB73727D3648100235396 /* AnnounceView.swift */; };
@@ -56,6 +55,8 @@
 		D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194727CF864B00643D97 /* ScheduleModel.swift */; };
 		D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingView.swift */; };
 		D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6195027CFA9A800643D97 /* ScheduleView.swift */; };
+		D3C6F607286349B30074B942 /* AttributedText in Frameworks */ = {isa = PBXBuildFile; productRef = D3C6F606286349B30074B942 /* AttributedText */; };
+		D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3C6F60C28634F3B0074B942 /* MarkdownKit */; };
 		D3C972F227F03531008561DE /* ScheduleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C972F127F03531008561DE /* ScheduleDetailView.swift */; };
 		D3D3788227CE440D00021FC4 /* OPassAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */; };
 		D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788A27CE542100021FC4 /* MoreModels.swift */; };
@@ -195,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */,
+				D3C6F607286349B30074B942 /* AttributedText in Frameworks */,
 				D3EA819827F68FFF00FE7985 /* BetterSafariView in Frameworks */,
 				D3E0123127D35D970040621F /* KeychainAccess in Frameworks */,
 				D3C5C92B2849BE1B00F175AB /* SlideOverCard in Frameworks */,
@@ -203,8 +205,8 @@
 				4F29D9CA27D4EA2D00292CC4 /* FirebaseAnalytics in Frameworks */,
 				D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */,
 				4F29D9CE27D4EA2D00292CC4 /* FirebaseDynamicLinks in Frameworks */,
+				D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */,
 				D3A00F2A27D838920097A6AB /* OneSignal in Frameworks */,
-				4F5CA38027FDD1B400DEAB39 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,9 +502,10 @@
 				D3A00F2927D838920097A6AB /* OneSignal */,
 				D322F60E27EF4698007EED5D /* CodeScanner */,
 				D3EA819727F68FFF00FE7985 /* BetterSafariView */,
-				4F5CA37F27FDD1B400DEAB39 /* MarkdownUI */,
 				D323C1F4282FE03C009AFF97 /* EFQRCode */,
 				D3C5C92A2849BE1B00F175AB /* SlideOverCard */,
+				D3C6F606286349B30074B942 /* AttributedText */,
+				D3C6F60C28634F3B0074B942 /* MarkdownKit */,
 			);
 			productName = OPass;
 			productReference = D3E4E6BB27CD158400FFACEB /* OPass.app */;
@@ -543,9 +546,10 @@
 				D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
 				D322F60D27EF4698007EED5D /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				D3EA819627F68FFE00FE7985 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
-				4F5CA37E27FDD1B300DEAB39 /* XCRemoteSwiftPackageReference "MarkdownUI" */,
 				D323C1F3282FE03C009AFF97 /* XCRemoteSwiftPackageReference "EFQRCode" */,
 				D3C5C9292849BE1B00F175AB /* XCRemoteSwiftPackageReference "SlideOverCard" */,
+				D3C6F605286349B20074B942 /* XCRemoteSwiftPackageReference "AttributedText" */,
+				D3C6F60B28634F3A0074B942 /* XCRemoteSwiftPackageReference "MarkdownKit" */,
 			);
 			productRefGroup = D3E4E6BC27CD158400FFACEB /* Products */;
 			projectDirPath = "";
@@ -965,14 +969,6 @@
 				minimumVersion = 8.0.0;
 			};
 		};
-		4F5CA37E27FDD1B300DEAB39 /* XCRemoteSwiftPackageReference "MarkdownUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/gonzalezreal/MarkdownUI";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.0;
-			};
-		};
 		4F5EB72F27D2311200235396 /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/malcommac/SwiftDate.git";
@@ -1013,6 +1009,22 @@
 				kind = branch;
 			};
 		};
+		D3C6F605286349B20074B942 /* XCRemoteSwiftPackageReference "AttributedText" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/AttributedText";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		D3C6F60B28634F3A0074B942 /* XCRemoteSwiftPackageReference "MarkdownKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bmoliveira/MarkdownKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		D3E0122F27D35D970040621F /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
@@ -1041,11 +1053,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4F29D9C827D4EA2D00292CC4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDynamicLinks;
-		};
-		4F5CA37F27FDD1B400DEAB39 /* MarkdownUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4F5CA37E27FDD1B300DEAB39 /* XCRemoteSwiftPackageReference "MarkdownUI" */;
-			productName = MarkdownUI;
 		};
 		4F5EB73027D2311200235396 /* SwiftDate */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1076,6 +1083,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D3C5C9292849BE1B00F175AB /* XCRemoteSwiftPackageReference "SlideOverCard" */;
 			productName = SlideOverCard;
+		};
+		D3C6F606286349B30074B942 /* AttributedText */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3C6F605286349B20074B942 /* XCRemoteSwiftPackageReference "AttributedText" */;
+			productName = AttributedText;
+		};
+		D3C6F60C28634F3B0074B942 /* MarkdownKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3C6F60B28634F3A0074B942 /* XCRemoteSwiftPackageReference "MarkdownKit" */;
+			productName = MarkdownKit;
 		};
 		D3E0123027D35D970040621F /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
