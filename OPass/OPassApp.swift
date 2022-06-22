@@ -97,7 +97,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        Analytics.logEvent("dynamic_link_appdelegate", parameters: ["entry": "userActivity"])
+        Analytics.logEvent("dynamic_link_appdelegate", parameters: ["entry": "user_activity"])
         if let url = userActivity.webpageURL {
             NSLog("Receieved Activity URL -> \(url)");
             let handled = DynamicLinks.dynamicLinks().handleUniversalLink(url) { dynamicLink, _ in
