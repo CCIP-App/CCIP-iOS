@@ -11,6 +11,7 @@ import MarkdownKit
 import AttributedText
 
 struct Markdown: View {
+    @Environment(\.colorScheme) var colorScheme
     let markdown: String
     let font: UIFont.TextStyle
     
@@ -24,7 +25,13 @@ struct Markdown: View {
             let markdownParser = MarkdownParser(font: .preferredFont(forTextStyle: font))
             markdownParser.enabledElements = .all
             markdownParser.header.fontIncrease = 0
-            return markdownParser.parse(markdown.tirm())
+            let result = NSMutableAttributedString(attributedString: markdownParser.parse(markdown.tirm()))
+            result.addAttribute(
+                .foregroundColor,
+                value: colorScheme == .dark ? UIColor.white : UIColor.black,
+                range: NSRange(0..<result.length)
+            )
+            return result
         }
     }
 }
