@@ -1,15 +1,48 @@
 //
-//  SafariView.swift
+//  WebView.swift
 //  OPass
 //
 //  Created by secminhr on 2022/6/23.
+//  2022 OPass.
 //
 
-import Foundation
 import SwiftUI
 import WebKit
 
-struct WebviewWrapper: UIViewRepresentable {
+struct WebView: View {
+    let url: URL?
+    let title: String?
+    @State private var progress: Double = 0.0
+    @State private var outdated: Bool = false
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            Divider()
+            WebViewWrapper(url: url, outdated: $outdated, progress: $progress)
+        }
+            .background(Color("SectionBackgroundColor").edgesIgnoringSafeArea(.all))
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle(title ?? "")
+            .refreshable { outdated = true }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    SFButton(systemName: progress != 1.0 ? "xmark" : "arrow.clockwise") {
+                        outdated = progress == 1.0
+                    }
+                }
+            }
+            .overlay {
+                if progress != 1.0 {
+                    VStack {
+                        ProgressView(value: progress)
+                        Spacer()
+                    }.frame(width: UIScreen.main.bounds.width + 3)
+                }
+            }
+    }
+}
+
+struct WebViewWrapper: UIViewRepresentable {
     let url: URL?
     @Binding var outdated: Bool
     @Binding var progress: Double

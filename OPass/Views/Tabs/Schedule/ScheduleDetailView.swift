@@ -22,7 +22,7 @@ struct ScheduleDetailView: View {
     @State var navigationY_Coordinate: CGFloat = .zero
     @State var showingUrlAlert = false
     @State var showingCalendarAlert = false
-    @State var showingWebview = false
+    @State var showingSafari = false
     @State var showingEventEditView = false
     @State var showingNavigationTitle = false
     private var eventStore = EKEventStore()
@@ -59,7 +59,7 @@ struct ScheduleDetailView: View {
                         \.openURL,
                          OpenURLAction { url in
                              self.url = url
-                             self.showingWebview = true
+                             self.showingSafari = true
                              return .handled
                          }
                     )
@@ -93,15 +93,18 @@ struct ScheduleDetailView: View {
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             .alert(LocalizedStringKey("Open \(url)?"), isPresented: $showingUrlAlert) {
                 Button(String(localized: "Cancel"), role: .cancel) {}
-                Button(String(localized: "Yes")) { showingWebview.toggle() }
+                Button(String(localized: "Yes")) { showingSafari.toggle() }
             }
-            .background {
-                NavigationLink(
-                    isActive: $showingWebview,
-                    destination: { Webview(url: url, title: nil) }
-                ) {
-                    EmptyView()
-                }.hidden()
+            .safariView(isPresented: $showingSafari) {
+                SafariView(
+                    url: url,
+                    configuration: SafariView.Configuration(
+                        entersReaderIfAvailable: false,
+                        barCollapsingEnabled: true
+                    )
+                )
+                .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
+                .dismissButtonStyle(.done)
             }
                 
             if scheduleDetail.speakers.count != 0 {
@@ -119,15 +122,8 @@ struct ScheduleDetailView: View {
         }
         .listStyle(.insetGrouped)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(showingNavigationTitle ? LocalizeIn(zh: scheduleDetail.zh, en: scheduleDetail.en).title : "")
         .toolbar {
-            ToolbarItem(placement: .principal) {
-                if showingNavigationTitle {
-                    Text(LocalizeIn(zh: scheduleDetail.zh, en: scheduleDetail.en).title)
-                        .bold()
-                        .lineLimit(1)
-                }
-            }
-            
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack {
                     SFButton(systemName: "heart\(isLiked ? ".fill" : "")") {
@@ -227,7 +223,7 @@ fileprivate struct TagsSection: View {
     }
 }
 
-//Feature button size need to be fixed not dynamic 
+//Feature button size need to be fixed not dynamic
 fileprivate struct FeatureButtons: View {
     
     @Environment(\.colorScheme) var colorScheme

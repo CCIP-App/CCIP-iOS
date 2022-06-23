@@ -177,11 +177,9 @@ struct TabButton: View {
                         NavigationLink(
                             isActive: $presentingWebview,
                             destination: {
-                                Webview(url: url, title: LocalizeIn(zh: feature.display_text.zh, en: feature.display_text.en))
+                                WebView(url: url, title: LocalizeIn(zh: feature.display_text.zh, en: feature.display_text.en))
                             }
-                        ) {
-                            EmptyView()
-                        }.hidden()
+                        ) { EmptyView() }.hidden()
                     }
                 }
         }
