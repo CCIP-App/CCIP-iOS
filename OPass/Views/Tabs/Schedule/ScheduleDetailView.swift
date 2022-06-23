@@ -11,8 +11,6 @@ import EventKit
 import SwiftDate
 import SlideOverCard
 import BetterSafariView
-import AttributedText
-import MarkdownKit
 
 struct ScheduleDetailView: View {
     
@@ -21,10 +19,12 @@ struct ScheduleDetailView: View {
     let scheduleDetail: SessionDataModel
     @AppStorage var likedSessions: [String]
     @State var url: URL = URL(string: "https://opass.app")!
+    @State var navigationY_Coordinate: CGFloat = .zero
     @State var showingUrlAlert = false
     @State var showingCalendarAlert = false
     @State var showingSafari = false
     @State var showingEventEditView = false
+    @State var showingNavigationTitle = false
     private var eventStore = EKEventStore()
     private var isLiked: Bool {
         likedSessions.contains(scheduleDetail.id)
@@ -45,7 +45,13 @@ struct ScheduleDetailView: View {
                 Text(LocalizeIn(zh: scheduleDetail.zh, en: scheduleDetail.en).title)
                     .font(.largeTitle.bold())
                     .fixedSize(horizontal: false, vertical: true)
-                
+                    .background(GeometryReader { geo in
+                        Color.clear
+                            .preference(key: TitleY_CoordinatePreferenceKey.self, value: geo.frame(in: .global).maxY)
+                    })
+                    .onPreferenceChange(TitleY_CoordinatePreferenceKey.self) { y in
+                        showingNavigationTitle = y < navigationY_Coordinate
+                    }
                 
                 FeatureButtons(scheduleDetail: scheduleDetail)
                     .padding(.vertical)
@@ -117,6 +123,14 @@ struct ScheduleDetailView: View {
         .listStyle(.insetGrouped)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItem(placement: .principal) {
+                if showingNavigationTitle {
+                    Text(LocalizeIn(zh: scheduleDetail.zh, en: scheduleDetail.en).title)
+                        .bold()
+                        .lineLimit(1)
+                }
+            }
+            
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack {
                     SFButton(systemName: "heart\(isLiked ? ".fill" : "")") {
@@ -162,7 +176,15 @@ struct ScheduleDetailView: View {
                         })
                     }
                 }
+                .background(GeometryReader { geo in
+                    Color.clear
+                        .preference(key: navigationY_CoordinatePreferenceKey.self, value: geo.frame(in: .global).maxY)
+                })
+                .onPreferenceChange(navigationY_CoordinatePreferenceKey.self) { y in
+                    self.navigationY_Coordinate = y
+                }
             }
+            
         }
         .sheet(isPresented: $showingEventEditView) {
             EventEditView(
@@ -565,4 +587,14 @@ fileprivate struct DescriptionSection: View {
         }
         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
+}
+
+fileprivate struct TitleY_CoordinatePreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = .zero
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {}
+}
+
+fileprivate struct navigationY_CoordinatePreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = .zero
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {}
 }

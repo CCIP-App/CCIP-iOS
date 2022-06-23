@@ -50,7 +50,7 @@ struct ContentView: View {
             .sheet(isPresented: $isShowingEventList) {
                 EventListView()
             }
-            .navigationTitle("OPass")
+            .navigationTitle(LocalizeIn(zh: OPassAPI.currentEventAPI?.display_name.zh, en: OPassAPI.currentEventAPI?.display_name.en) ?? "OPass")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
