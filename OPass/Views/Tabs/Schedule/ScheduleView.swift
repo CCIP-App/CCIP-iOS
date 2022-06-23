@@ -86,7 +86,7 @@ struct ScheduleView: View {
                                         .frame(width: UIScreen.main.bounds.width * 0.15)
                                         .padding(.bottom)
                                     
-                                    Text(LocalizedStringKey("NoEventFiltered"))
+                                    Text(LocalizedStringKey("NoFilteredEvent"))
                                         .multilineTextAlignment(.center)
                                         .foregroundColor(.gray)
                                 }

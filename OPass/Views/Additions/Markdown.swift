@@ -23,7 +23,7 @@ struct Markdown: View {
     var body: some View {
         AttributedText {
             let markdownParser = MarkdownParser(font: .preferredFont(forTextStyle: font))
-            markdownParser.enabledElements = .all
+            markdownParser.enabledElements = [.all]
             markdownParser.header.fontIncrease = 0
             let result = NSMutableAttributedString(attributedString: markdownParser.parse(markdown.tirm()))
             result.addAttribute(

@@ -50,7 +50,7 @@ struct ScheduleDetailView: View {
                             .preference(key: TitleY_CoordinatePreferenceKey.self, value: geo.frame(in: .global).maxY)
                     })
                     .onPreferenceChange(TitleY_CoordinatePreferenceKey.self) { y in
-                        showingNavigationTitle = y < navigationY_Coordinate
+                        showingNavigationTitle = y < navigationY_Coordinate + 10
                     }
                 
                 FeatureButtons(scheduleDetail: scheduleDetail)

@@ -21,7 +21,7 @@
 "Types" = "Types";
 "Tags" = "Tags";
 "Favorite" = "Favorite";
-"NoEventFiltered" = "No Event Filtered";
+"NoFilteredEvent" = "No Filtered Event";
 "AllSessions" = "All Sessions";
 "AddToCalendar" = "Add to Calendar";
 "Speakers" = "Speakers";
