@@ -32,6 +32,7 @@ struct MainView: View {
                 Text(LocalizeIn(zh: eventAPI.display_name.zh, en: eventAPI.display_name.en))
                     .font(.system(.largeTitle, design: .rounded))
                     .fontWeight(.medium)
+                    .fixedSize(horizontal: false, vertical: true)
                     .padding(.vertical)
                     .foregroundColor(Color("LogoColor"))
                     .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)

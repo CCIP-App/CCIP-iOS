@@ -50,9 +50,20 @@ struct ContentView: View {
             .sheet(isPresented: $isShowingEventList) {
                 EventListView()
             }
-            .navigationTitle(LocalizeIn(zh: OPassAPI.currentEventAPI?.display_name.zh, en: OPassAPI.currentEventAPI?.display_name.en) ?? "OPass")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(
+                        LocalizeIn(
+                            zh: OPassAPI.currentEventAPI?.display_name.zh,
+                            en: OPassAPI.currentEventAPI?.display_name.en
+                        ) ?? "OPass"
+                    )
+                    .bold()
+                    .lineLimit(1)
+                    .fixedSize()
+                }
+                
                 ToolbarItem(placement: .navigationBarLeading) {
                     SFButton(systemName: "rectangle.stack") {
                         isShowingEventList.toggle()
