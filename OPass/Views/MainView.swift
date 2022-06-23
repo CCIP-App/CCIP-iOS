@@ -104,9 +104,9 @@ struct TabButton: View {
     @Binding var selectedFeature: FeatureType?
     @ObservedObject var eventAPI: EventAPIViewModel
     let width: CGFloat
-    @State private var safariViewURL = ""
+    
     @State private var presentingWifiSheet = false
-    @State private var presentingSafariView = false
+    @State private var presentingWebview = false
     //fastpass, ticket, schedule, announcement, wifi, telegram, im, puzzle, venue, sponsors, staffs, webview
     var body: some View {
         switch(feature.feature) {
@@ -150,7 +150,7 @@ struct TabButton: View {
             default:
             if let url = feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) {
                     Button(action: {
-                        presentingSafariView.toggle()
+                        presentingWebview = true
                     }) {
                         if feature.feature != .webview {
                             Image(systemName: feature.symbolName)
@@ -173,16 +173,15 @@ struct TabButton: View {
                         }
                     }
                     .tabButtonStyle(color: feature.color, width: width)
-                    .safariView(isPresented: $presentingSafariView) {
-                        SafariView(
-                            url: url,
-                            configuration: SafariView.Configuration(
-                                entersReaderIfAvailable: false,
-                                barCollapsingEnabled: true
-                            )
-                        )
-                        .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
-                        .dismissButtonStyle(.done)
+                    .background {
+                        NavigationLink(
+                            isActive: $presentingWebview,
+                            destination: {
+                                Webview(url: url, title: LocalizeIn(zh: feature.display_text.zh, en: feature.display_text.en))
+                            }
+                        ) {
+                            EmptyView()
+                        }.hidden()
                     }
                 }
         }

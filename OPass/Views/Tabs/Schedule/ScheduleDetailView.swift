@@ -22,7 +22,7 @@ struct ScheduleDetailView: View {
     @State var navigationY_Coordinate: CGFloat = .zero
     @State var showingUrlAlert = false
     @State var showingCalendarAlert = false
-    @State var showingSafari = false
+    @State var showingWebview = false
     @State var showingEventEditView = false
     @State var showingNavigationTitle = false
     private var eventStore = EKEventStore()
@@ -59,7 +59,7 @@ struct ScheduleDetailView: View {
                         \.openURL,
                          OpenURLAction { url in
                              self.url = url
-                             self.showingSafari = true
+                             self.showingWebview = true
                              return .handled
                          }
                     )
@@ -93,18 +93,15 @@ struct ScheduleDetailView: View {
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             .alert(LocalizedStringKey("Open \(url)?"), isPresented: $showingUrlAlert) {
                 Button(String(localized: "Cancel"), role: .cancel) {}
-                Button(String(localized: "Yes")) { showingSafari.toggle() }
+                Button(String(localized: "Yes")) { showingWebview.toggle() }
             }
-            .safariView(isPresented: $showingSafari) {
-                SafariView(
-                    url: url,
-                    configuration: SafariView.Configuration(
-                        entersReaderIfAvailable: false,
-                        barCollapsingEnabled: true
-                    )
-                )
-                .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
-                .dismissButtonStyle(.done)
+            .background {
+                NavigationLink(
+                    isActive: $showingWebview,
+                    destination: { Webview(url: url, title: nil) }
+                ) {
+                    EmptyView()
+                }.hidden()
             }
                 
             if scheduleDetail.speakers.count != 0 {

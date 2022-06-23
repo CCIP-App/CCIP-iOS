@@ -82,6 +82,7 @@ fileprivate struct AboutSection: View {
     
     @State var isShowingSafari = false
     @State var url = URL(string: "https://opass.app")!
+    @State var webviewTitle: String? = nil
     
     var body: some View {
         Section(header: Text(LocalizedStringKey("ABOUT"))) {
@@ -99,6 +100,7 @@ fileprivate struct AboutSection: View {
             Button(action: {
                 url = CCIPWebsiteURL
                 isShowingSafari.toggle()
+                //maybe add title? But don't know how to deal with LocalizedStringKey
             }) {
                 HStack {
                     VStack(alignment: .leading) {
@@ -168,16 +170,13 @@ fileprivate struct AboutSection: View {
                 }
             }
         }
-        .safariView(isPresented: $isShowingSafari) {
-            SafariView(
-                url: url,
-                configuration: SafariView.Configuration(
-                    entersReaderIfAvailable: false,
-                    barCollapsingEnabled: true
-                )
-            )
-            .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
-            .dismissButtonStyle(.done)
+        .background {
+            NavigationLink(
+                isActive: $isShowingSafari,
+                destination: { Webview(url: url, title: webviewTitle) }
+            ) {
+                EmptyView()
+            }.hidden()
         }
     }
 }
