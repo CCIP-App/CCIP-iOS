@@ -62,6 +62,8 @@ struct WebView: View {
                         .foregroundColor(.gray)
                         .padding()
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color("SectionBackgroundColor").edgesIgnoringSafeArea(.all))
             }
         }
     }
@@ -79,8 +81,6 @@ struct WebViewWrapper: UIViewRepresentable {
     
     func makeUIView(context: Context) -> WKWebView {
         let view = WKWebView()
-        view.isOpaque = false
-        view.backgroundColor = .clear
         
         context.coordinator.observer = view.observe(\.estimatedProgress, options: [.new]) { _, change in
             DispatchQueue.main.async {
