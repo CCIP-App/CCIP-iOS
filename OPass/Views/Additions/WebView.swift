@@ -14,11 +14,12 @@ struct WebView: View {
     let title: String?
     @State private var progress: Double = 0.0
     @State private var outdated: Bool = false
+    @State private var error: Error? = nil
     
     var body: some View {
         VStack(spacing: 0) {
             Divider()
-            WebViewWrapper(url: url, outdated: $outdated, progress: $progress)
+            WebViewWrapper(url: url, outdated: $outdated, progress: $progress, error: $error)
         }
             .background(Color("SectionBackgroundColor").edgesIgnoringSafeArea(.all))
             .navigationBarTitleDisplayMode(.inline)
@@ -38,6 +39,9 @@ struct WebView: View {
                         Spacer()
                     }.frame(width: UIScreen.main.bounds.width + 3)
                 }
+                if error != nil {
+                    Text("Error occur \(error!.localizedDescription)")
+                }
             }
     }
 }
@@ -46,9 +50,10 @@ struct WebViewWrapper: UIViewRepresentable {
     let url: URL?
     @Binding var outdated: Bool
     @Binding var progress: Double
+    @Binding var error: Error?
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(outdated: _outdated, progress: _progress)
+        return Coordinator(outdated: _outdated, progress: _progress, error: _error)
     }
     
     func makeUIView(context: Context) -> WKWebView {
@@ -76,22 +81,40 @@ struct WebViewWrapper: UIViewRepresentable {
             DispatchQueue.main.async {
                 outdated = false
             }
-            uiView.reload()
+            if error != nil {
+                uiView.load(URLRequest(url: url!))
+            } else {
+                uiView.reload()
+            }
         }
     }
     
     class Coordinator: NSObject, WKNavigationDelegate {
         @Binding var outdated: Bool
         @Binding var progress: Double
+        @Binding var error: Error?
         var observer: NSKeyValueObservation? = nil
         private(set) var started = false
-        init(outdated: Binding<Bool>, progress: Binding<Double>) {
+        init(outdated: Binding<Bool>, progress: Binding<Double>, error: Binding<Error?>) {
             _outdated = outdated
             _progress = progress
+            _error = error
+        }
+        
+        func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+            started = true
         }
         
         func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-            started = true
+            error = nil
+        }
+        
+        func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+            self.error = error
+        }
+        
+        func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+            self.error = error
         }
         
         deinit {
