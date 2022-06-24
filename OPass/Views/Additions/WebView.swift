@@ -44,7 +44,7 @@ struct WebView: View {
                 VStack {
                     ProgressView(value: progress)
                     Spacer()
-                }
+                }.frame(width: UIScreen.main.bounds.width + 4)
             }
             if error != nil {
                 VStack {
