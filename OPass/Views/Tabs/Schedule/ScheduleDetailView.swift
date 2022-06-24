@@ -115,7 +115,7 @@ struct ScheduleDetailView: View {
                 )
             }
             
-            if let description = scheduleDetail.zh.description, description != "" {
+            if let description = LocalizeIn(zh: scheduleDetail.zh, en: scheduleDetail.en).description, description != "" {
                 DescriptionSection(description: description,
                                    url: $url, showingAlert: $showingUrlAlert)
             }

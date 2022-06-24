@@ -10,39 +10,60 @@ import SwiftUI
 import WebKit
 
 struct WebView: View {
-    let url: URL?
-    let title: String?
+    let url: URL
+    let title: String
     @State private var progress: Double = 0.0
     @State private var outdated: Bool = false
     @State private var error: Error? = nil
+    @Environment(\.colorScheme) var colorScheme
+    
+    init(_ url: URL, title: String? = nil) {
+        self.url = url
+        self.title = title ?? ""
+    }
     
     var body: some View {
         VStack(spacing: 0) {
             Divider()
             WebViewWrapper(url: url, outdated: $outdated, progress: $progress, error: $error)
         }
-            .background(Color("SectionBackgroundColor").edgesIgnoringSafeArea(.all))
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(title ?? "")
-            .refreshable { outdated = true }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    SFButton(systemName: progress != 1.0 ? "xmark" : "arrow.clockwise") {
-                        outdated = progress == 1.0
-                    }
+        .edgesIgnoringSafeArea(.bottom)
+        .background(Color("SectionBackgroundColor").edgesIgnoringSafeArea(.all))
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(title)
+        .refreshable { outdated = true }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                SFButton(systemName: progress != 1.0 ? "xmark" : "arrow.clockwise") {
+                    outdated = progress == 1.0
                 }
             }
-            .overlay {
-                if progress != 1.0 {
-                    VStack {
-                        ProgressView(value: progress)
-                        Spacer()
-                    }.frame(width: UIScreen.main.bounds.width + 3)
-                }
-                if error != nil {
-                    Text("Error occur \(error!.localizedDescription)")
+        }
+        .overlay {
+            if progress != 1.0 {
+                VStack {
+                    ProgressView(value: progress)
+                    Spacer()
                 }
             }
+            if error != nil {
+                VStack {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(Color("LogoColor"))
+                        .frame(width: UIScreen.main.bounds.width * 0.25)
+                        .padding(.bottom, 8)
+                    
+                    Text("\(error!.localizedDescription)")
+                        .font(.callout)
+                        .multilineTextAlignment(.center)
+                        //.foregroundColor(colorScheme == .dark ? .white : .black)
+                        .foregroundColor(.gray)
+                        .padding()
+                }
+            }
+        }
     }
 }
 
@@ -58,6 +79,8 @@ struct WebViewWrapper: UIViewRepresentable {
     
     func makeUIView(context: Context) -> WKWebView {
         let view = WKWebView()
+        view.isOpaque = false
+        view.backgroundColor = .clear
         
         context.coordinator.observer = view.observe(\.estimatedProgress, options: [.new]) { _, change in
             DispatchQueue.main.async {
