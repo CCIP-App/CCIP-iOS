@@ -72,8 +72,8 @@ struct ScheduleDetailView: View {
                     .padding(.bottom)
                 }
                 
-                PlaceSection(name: LocalizeIn(zh: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.zh,
-                                              en: eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.en)?.name ?? scheduleDetail.room)
+                PlaceSection(name: LocalizeIn(zh: eventAPI.eventSchedule?.rooms.data[scheduleDetail.room]?.zh,
+                                              en: eventAPI.eventSchedule?.rooms.data[scheduleDetail.room]?.en)?.name ?? scheduleDetail.room)
                     .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
                     .padding(.bottom)
@@ -128,7 +128,7 @@ struct ScheduleDetailView: View {
                             title: String(localized: "SessionWillStartIn5Minutes"),
                             content: String(format: String(localized: "SessionWillStartIn5MinutesContent"),
                                             scheduleDetail.en.title,
-                                            eventAPI.eventSchedule?.rooms[scheduleDetail.room]?.en.name ?? ""),
+                                            eventAPI.eventSchedule?.rooms.data[scheduleDetail.room]?.en.name ?? ""),
                             rawTime: scheduleDetail.start,
                             cancel: isLiked
                         )
@@ -377,8 +377,8 @@ fileprivate struct BroadcastSection: View {
         var result = ""
         for (offset, room) in broadcast.enumerated() {
             if let name = LocalizeIn(
-                zh: eventSchedule?.rooms[room]?.zh.name,
-                en: eventSchedule?.rooms[room]?.en.name
+                zh: eventSchedule?.rooms.data[room]?.zh.name,
+                en: eventSchedule?.rooms.data[room]?.en.name
             ) {
                 result.append(name)
                 if offset < broadcast.count - 1 {
@@ -402,7 +402,7 @@ fileprivate struct SpeakersSections: View {
             ForEach(scheduleDetail.speakers, id: \.self) { speaker in
                 SpeakerBlock(
                     speaker: speaker,
-                    speakerData: eventAPI.eventSchedule?.speakers[speaker],
+                    speakerData: eventAPI.eventSchedule?.speakers.data[speaker],
                     url: $url, showingSafari: $showingSafari
                 )
             }

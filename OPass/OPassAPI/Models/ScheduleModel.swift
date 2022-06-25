@@ -11,9 +11,9 @@ import SwiftDate
 
 struct ScheduleModel: Hashable, Codable {
     @TransformWith<SessionModelsTransform> var sessions = []
-    @TransformWith<SpeakerTransform> var speakers = [:]
+    @TransformWith<SpeakerTransform> var speakers = SpeakersModel()
     @TransformWith<TagsTransform> var session_types = TagsModel()
-    @TransformWith<Id_Name_DescriptionTransform> var rooms = [:]
+    @TransformWith<TagsTransform> var rooms = TagsModel()
     @TransformWith<TagsTransform> var tags = TagsModel()
 }
 
@@ -66,6 +66,7 @@ extension SessionModel {
         return SessionModel(
             header: filteredHeader,
             data: data.filter { (k, _) in filteredHeader.contains(k) }
+                .mapValues { sessions in sessions.filter(filter) }
         )
     }
 
@@ -91,16 +92,6 @@ struct SessionDataModel: Hashable, Codable {
     var tags: [String] = [""]
 }
 
-struct SpeakerTransform: TransformFunction {
-    static func transform(_ speakers: [Id_SpeakerModel]) -> [String: SpeakerModel] {
-        return Dictionary(uniqueKeysWithValues: speakers.map { element in
-            (element.id, SpeakerModel(avatar: element.avatar,
-                                      zh: Name_BioModel(name: element.zh.name, bio: element.zh.bio),
-                                      en: Name_BioModel(name: element.en.name, bio: element.en.bio)))
-        })
-    }
-}
-
 struct TagsTransform: TransformFunction {
     static func transform(_ array: [Id_Name_DescriptionModel]) -> TagsModel {
         return TagsModel(
@@ -116,14 +107,6 @@ struct TagsModel: Hashable, Codable {
     var data: [String: Name_DescriptionPair] = [:]
 }
 
-struct Id_Name_DescriptionTransform: TransformFunction {
-    static func transform(_ array: [Id_Name_DescriptionModel]) -> [String: Name_DescriptionPair] {
-        return Dictionary(uniqueKeysWithValues: array.map { element in
-            (element.id, Name_DescriptionPair(zh: element.zh, en: element.en))
-        })
-    }
-}
-
 struct StringToDateTransform: TransformFunction {
     static func transform(_ dateString: String) -> DateInRegion {
         return dateString.toISODate()!
@@ -136,6 +119,24 @@ struct Id_SpeakerModel: Hashable, Codable {
     var avatar: String = ""
     var zh = RawName_BioModel()
     var en = RawName_BioModel()
+}
+
+struct SpeakerTransform: TransformFunction {
+    static func transform(_ speakers: [Id_SpeakerModel]) -> SpeakersModel {
+        return SpeakersModel(
+            id: speakers.map { $0.id },
+            data: Dictionary(uniqueKeysWithValues: speakers.map { element in
+                (element.id, SpeakerModel(avatar: element.avatar,
+                                          zh: Name_BioModel(name: element.zh.name, bio: element.zh.bio),
+                                          en: Name_BioModel(name: element.en.name, bio: element.en.bio)))
+            })
+        )
+    }
+}
+
+struct SpeakersModel: Hashable, Codable {
+    var id: [String] = []
+    var data: [String : SpeakerModel] = [:]
 }
 
 struct SpeakerModel: Hashable, Codable {

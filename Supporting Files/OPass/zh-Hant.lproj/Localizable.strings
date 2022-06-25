@@ -29,6 +29,7 @@
 "SessionIntroduction" = "議程介紹";
 "TimeWithLengthContent" = "%d:%02d ~ %d:%02d • %d分鐘";
 "Place" = "地點";
+"Places" = "地點";
 "Live" = "直播";
 "Broadcast" = "轉播";
 "CoWriting" = "共筆";

@@ -36,10 +36,12 @@ struct ScheduleView: View {
                         
                         let filteredModel = allScheduleData.sessions[selectDayIndex].filter({ session in
                             switch filter {
-                                case .liked: return likedSessions.contains(session.id)
-                                case .tag(let tag): return session.tags.contains(tag)
-                                case .type(let type): return session.type == type
-                                default: return true
+                            case .liked: return likedSessions.contains(session.id)
+                            case .tag(let tag): return session.tags.contains(tag)
+                            case .type(let type): return session.type == type
+                            case .room(let room): return session.room == room
+                            case .speaker(let speaker): return session.speakers.contains(speaker)
+                            default: return true
                             }
                         })
                         Form {
@@ -53,8 +55,8 @@ struct ScheduleView: View {
                                             ){
                                                 DetailOverView(
                                                     room: (LocalizeIn (
-                                                        zh: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh,
-                                                        en: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.en
+                                                        zh: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.zh,
+                                                        en: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.en
                                                     )?.name ?? sessionDetail.room),
                                                     start: sessionDetail.start,
                                                     end: sessionDetail.end,
@@ -63,8 +65,8 @@ struct ScheduleView: View {
                                         } else {
                                             DetailOverView(
                                                 room: (LocalizeIn (
-                                                    zh: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.zh,
-                                                    en: eventAPI.eventSchedule?.rooms[sessionDetail.room]?.en
+                                                    zh: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.zh,
+                                                    en: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.en
                                                 )?.name ?? sessionDetail.room),
                                                 start: sessionDetail.start,
                                                 end: sessionDetail.end,
@@ -122,12 +124,34 @@ struct ScheduleView: View {
                         Label("Favorite", systemImage: "heart\(filter == .liked ? ".fill" : "")")
                             .tag(Filter.liked)
                         
-                        if let types = eventAPI.eventSchedule?.session_types {
+                        if let schedule = eventAPI.eventSchedule {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
-                                    ForEach(types.id, id: \.self) { id in
-                                        Text(LocalizeIn(zh: types.data[id]?.zh.name, en: types.data[id]?.en.name) ?? id)
-                                            .tag(Filter.type(id))
+                                    ForEach(schedule.tags.id, id: \.self) { id in
+                                        Text(LocalizeIn(
+                                            zh: schedule.tags.data[id]?.zh.name,
+                                            en: schedule.tags.data[id]?.en.name) ?? id
+                                        ).tag(Filter.tag(id))
+                                    }
+                                }
+                            } label: {
+                                Label("Tags", systemImage: {
+                                    switch filter {
+                                    case .tag(_):
+                                        return "tag.fill"
+                                    default:
+                                        return "tag"
+                                    }
+                                }())
+                            }
+                            
+                            Menu {
+                                Picker(selection: $filter, label: EmptyView()) {
+                                    ForEach(schedule.session_types.id, id: \.self) { id in
+                                        Text(LocalizeIn(
+                                            zh: schedule.session_types.data[id]?.zh.name,
+                                            en: schedule.session_types.data[id]?.en.name) ?? id
+                                        ).tag(Filter.type(id))
                                     }
                                 }
                             } label: {
@@ -140,23 +164,43 @@ struct ScheduleView: View {
                                     }
                                 }())
                             }
-                        }
-                        
-                        if let tags = eventAPI.eventSchedule?.tags {
+                            
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
-                                    ForEach(tags.id, id: \.self) { id in
-                                        Text(LocalizeIn(zh: tags.data[id]?.zh.name, en: tags.data[id]?.en.name) ?? id)
-                                            .tag(Filter.tag(id))
+                                    ForEach(schedule.rooms.id, id: \.self) { id in
+                                        Text(LocalizeIn(
+                                            zh: schedule.rooms.data[id]?.zh,
+                                            en: schedule.rooms.data[id]?.en)?.name ?? id
+                                        ).tag(Filter.room(id))
                                     }
                                 }
                             } label: {
-                                Label("Tags", systemImage: {
+                                Label("Places", systemImage: {
                                     switch filter {
-                                    case .tag(_):
-                                        return "tag.fill"
+                                    case .room(_):
+                                        return "map.fill"
                                     default:
-                                        return "tag"
+                                        return "map"
+                                    }
+                                }())
+                            }
+                            
+                            Menu {
+                                Picker(selection: $filter, label: EmptyView()) {
+                                    ForEach(schedule.speakers.id, id: \.self) { id in
+                                        Text(LocalizeIn(
+                                            zh: schedule.speakers.data[id]?.zh,
+                                            en: schedule.speakers.data[id]?.en)?.name ?? id
+                                        ).tag(Filter.speaker(id))
+                                    }
+                                }
+                            } label: {
+                                Label("Speakers", systemImage: {
+                                    switch filter {
+                                    case .speaker(_):
+                                        return "person.fill"
+                                    default:
+                                        return "person"
                                     }
                                 }())
                             }
@@ -176,6 +220,8 @@ enum Filter: Hashable {
     case all, liked
     case tag(String)
     case type(String)
+    case room(String)
+    case speaker(String)
 }
 
 fileprivate struct SelectDayView: View {

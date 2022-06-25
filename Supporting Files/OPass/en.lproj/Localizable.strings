@@ -29,6 +29,7 @@
 "SessionIntroduction" = "Session Introduction";
 "TimeWithLengthContent" = "%d:%02d ~ %d:%02d • %d minutes";
 "Place" = "Place";
+"Places" = "Places";
 "Broadcast" = "Broadcast";
 "Live" = "Live";
 "CoWriting" = "Co-Writing";
