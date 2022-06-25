@@ -7,13 +7,15 @@
 //
 
 import SwiftUI
+import BetterSafariView
 
 struct AnnounceView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     let display_text: DisplayTextModel
+    @State var isShowingSafari = false
+    @State var url = URL(string: "https://opass.app")!
     @State var isError = false
-    @Environment(\.openURL) var openURL
     @Environment(\.colorScheme) var colorScheme
     
     init(eventAPI: EventAPIViewModel) {
@@ -28,8 +30,17 @@ struct AnnounceView: View {
                     if !announcements.isEmpty {
                         List(announcements, id: \.datetime) { announcement in
                             Button(action: {
-                                if !announcement.uri.isEmpty, let url = URL(string: announcement.uri) {
-                                    openURL(url)
+                                if !announcement.uri.isEmpty, let rawUrl = URL(string: announcement.uri) {
+                                    var url: URL? = rawUrl
+                                    if !rawUrl.absoluteString.lowercased().hasPrefix("http") {
+                                        url = URL(string: "http://" + rawUrl.absoluteString)
+                                    }
+                                    if let url = url {
+                                        self.url = url
+                                        self.isShowingSafari = true
+                                    } else {
+                                        UIApplication.shared.open(rawUrl)
+                                    }
                                 }
                             }) {
                                 HStack {
@@ -41,7 +52,7 @@ struct AnnounceView: View {
                                             .foregroundColor(.gray)
                                     }
                                     Spacer()
-                                    if !announcement.uri.isEmpty {
+                                    if URL(string: announcement.uri) != nil {
                                         Image(systemName: "chevron.right")
                                             .foregroundColor(.gray)
                                     }
@@ -50,6 +61,17 @@ struct AnnounceView: View {
                         }
                         .refreshable{ try? await eventAPI.loadAnnouncements() }
                         .task{ try? await eventAPI.loadAnnouncements() }
+                        .safariView(isPresented: $isShowingSafari) {
+                            SafariView(
+                                url: url,
+                                configuration: SafariView.Configuration(
+                                    entersReaderIfAvailable: false,
+                                    barCollapsingEnabled: true
+                                )
+                            )
+                            .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
+                            .dismissButtonStyle(.done)
+                        }
                     } else {
                         VStack {
                             Image(systemName: "tray.fill")
