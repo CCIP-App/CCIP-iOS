@@ -13,6 +13,7 @@ import OSLog
 
 struct MainView: View {
     
+    @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @ObservedObject var eventAPI: EventAPIViewModel
     private let gridItemLayout = Array(repeating: GridItem(spacing: CGFloat(25.0), alignment: Alignment.top), count: 4)
     private let logger = Logger(subsystem: "app.opass.ccip", category: "MainView")
@@ -20,7 +21,15 @@ struct MainView: View {
     
     var body: some View {
         VStack {
-            if let eventLogoData = eventAPI.eventLogo, let eventLogoUIImage = UIImage(data: eventLogoData) {
+            if let image = OPassAPI.currentEventLogo {
+                image
+                    .renderingMode(.template)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding()
+                    .foregroundColor(Color("LogoColor"))
+                    .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
+            } else if let eventLogoData = eventAPI.eventLogo, let eventLogoUIImage = UIImage(data: eventLogoData) {
                 Image(uiImage: eventLogoUIImage)
                     .renderingMode(.template)
                     .resizable()

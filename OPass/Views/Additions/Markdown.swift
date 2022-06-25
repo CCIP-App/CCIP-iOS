@@ -12,16 +12,18 @@ import AttributedText
 
 struct Markdown: View {
     @Environment(\.colorScheme) var colorScheme
-    let markdown: String
-    let font: UIFont.TextStyle
+    private let markdown: String
+    private let font: UIFont.TextStyle
+    private let onOpenLink: ((URL) -> Void)?
     
-    init(_ markdown: String, font: UIFont.TextStyle) {
+    init(_ markdown: String, font: UIFont.TextStyle, onOpenLink: ((URL) -> Void)? = nil) {
         self.markdown = markdown
         self.font = font
+        self.onOpenLink = onOpenLink
     }
     
     var body: some View {
-        AttributedText {
+        AttributedText(attributedText: {
             let markdownParser = MarkdownParser(font: .preferredFont(forTextStyle: font))
             markdownParser.enabledElements = [.all]
             markdownParser.header.fontIncrease = 0
@@ -32,6 +34,6 @@ struct Markdown: View {
                 range: NSRange(0..<result.length)
             )
             return result
-        }
+        }, onOpenLink: onOpenLink)
     }
 }

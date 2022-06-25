@@ -91,34 +91,30 @@ struct ScheduleDetailView: View {
             }
             .listRowBackground(Color.transparent)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-            .alert(LocalizedStringKey("Open \(url)?"), isPresented: $showingUrlAlert) {
-                Button(String(localized: "Cancel"), role: .cancel) {}
-                Button(String(localized: "Yes")) { showingSafari.toggle() }
-            }
-            .safariView(isPresented: $showingSafari) {
-                SafariView(
-                    url: url,
-                    configuration: SafariView.Configuration(
-                        entersReaderIfAvailable: false,
-                        barCollapsingEnabled: true
-                    )
-                )
-                .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
-                .dismissButtonStyle(.done)
-            }
                 
             if scheduleDetail.speakers.count != 0 {
                 SpeakersSections(
                     eventAPI: eventAPI,
                     scheduleDetail: scheduleDetail,
-                    url: $url, showingAlert: $showingUrlAlert
+                    url: $url, showingSafari: $showingSafari
                 )
             }
             
             if let description = LocalizeIn(zh: scheduleDetail.zh, en: scheduleDetail.en).description, description != "" {
                 DescriptionSection(description: description,
-                                   url: $url, showingAlert: $showingUrlAlert)
+                                   url: $url, showingSafari: $showingSafari)
             }
+        }
+        .safariView(isPresented: $showingSafari) {
+            SafariView(
+                url: url,
+                configuration: SafariView.Configuration(
+                    entersReaderIfAvailable: false,
+                    barCollapsingEnabled: true
+                )
+            )
+            .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
+            .dismissButtonStyle(.done)
         }
         .listStyle(.insetGrouped)
         .navigationBarTitleDisplayMode(.inline)
@@ -399,7 +395,7 @@ fileprivate struct SpeakersSections: View {
     @ObservedObject var eventAPI: EventAPIViewModel
     let scheduleDetail: SessionDataModel
     @Binding var url: URL
-    @Binding var showingAlert: Bool
+    @Binding var showingSafari: Bool
     
     var body: some View {
         Section(header: Text(LocalizedStringKey("Speakers")).padding(.leading, 10)) {
@@ -407,7 +403,7 @@ fileprivate struct SpeakersSections: View {
                 SpeakerBlock(
                     speaker: speaker,
                     speakerData: eventAPI.eventSchedule?.speakers[speaker],
-                    url: $url, showingAlert: $showingAlert
+                    url: $url, showingSafari: $showingSafari
                 )
             }
             .listRowBackground(Color.transparent)
@@ -422,7 +418,7 @@ fileprivate struct SpeakerBlock: View {
     let speaker: String
     let speakerData: SpeakerModel?
     @Binding var url: URL
-    @Binding var showingAlert: Bool
+    @Binding var showingSafari: Bool
     @State var avatarData: Data?
     
     var body: some View {
@@ -456,7 +452,7 @@ fileprivate struct SpeakerBlock: View {
                 Divider()
                 SpeakerBio(speaker: LocalizeIn(zh: data.zh, en: data.en).name,
                            speakerBio: LocalizeIn(zh: data.zh, en: data.en).bio,
-                           avatarData: avatarData, url: $url, showingAlert: $showingAlert)
+                           avatarData: avatarData, url: $url, showingSafari: $showingSafari)
             }
         }
         .padding(.horizontal, 10)
@@ -483,7 +479,7 @@ fileprivate struct SpeakerBio: View {
     let speakerBio: String
     let avatarData: Data?
     @Binding var url: URL
-    @Binding var showingAlert: Bool
+    @Binding var showingSafari: Bool
     @State private var isTruncated: Bool = false
     @State private var isShowingSpeakerDetail = false
     @State private var showAvatar = false
@@ -493,23 +489,34 @@ fileprivate struct SpeakerBio: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Markdown(speakerBio, font: .footnote)
-                .lineSpacing(4)
-                .lineLimit(2)
-                .readSize { size in
-                    truncatedSize = size
-                    isTruncated = truncatedSize != intrinsicSize
+            Markdown(speakerBio, font: .footnote) { rawUrl in
+                var url: URL? = rawUrl
+                if !rawUrl.absoluteString.lowercased().hasPrefix("http") {
+                    url = URL(string: "http://" + rawUrl.absoluteString)
                 }
-                .background(
-                    Markdown(speakerBio, font: .footnote)
-                        .lineSpacing(4)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .hidden()
-                        .readSize { size in
-                            intrinsicSize = size
-                            isTruncated = truncatedSize != intrinsicSize
-                        }
-                )
+                if let url = url {
+                    self.url = url
+                    self.showingSafari = true
+                } else {
+                    UIApplication.shared.open(rawUrl)
+                }
+            }
+            .lineSpacing(4)
+            .lineLimit(2)
+            .readSize { size in
+                truncatedSize = size
+                isTruncated = truncatedSize != intrinsicSize
+            }
+            .background(
+                Markdown(speakerBio, font: .footnote)
+                    .lineSpacing(4)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .hidden()
+                    .readSize { size in
+                        intrinsicSize = size
+                        isTruncated = truncatedSize != intrinsicSize
+                    }
+            )
             
             if isTruncated {
                 HStack {
@@ -517,15 +524,20 @@ fileprivate struct SpeakerBio: View {
                     Button("More") {
                         SOCManager.present(isPresented: $isShowingSpeakerDetail, style: colorScheme == .dark ? .dark : .light) {
                             VStack {
-                                if let data = avatarData, let uiImage = UIImage(data: data) {
-                                    Image(uiImage: uiImage)
-                                        .renderingMode(.original)
-                                        .resizable().scaledToFill()
-                                        .clipShape(Circle())
-                                        .frame(width: UIScreen.main.bounds.width * 0.25,
-                                               height: UIScreen.main.bounds.width * 0.25)
-                                        .padding(.bottom, 2)
+                                Group {
+                                    if let data = avatarData, let uiImage = UIImage(data: data) {
+                                        Image(uiImage: uiImage)
+                                            .renderingMode(.original)
+                                            .resizable().scaledToFill()
+                                    } else {
+                                        Image(systemName: "person.crop.circle.fill")
+                                            .resizable().scaledToFit()
+                                    }
                                 }
+                                .clipShape(Circle())
+                                .frame(width: UIScreen.main.bounds.width * 0.25,
+                                       height: UIScreen.main.bounds.width * 0.25)
+                                .padding(.bottom, 2)
                                 
                                 Text(speaker)
                                     .font(.title.bold())
@@ -533,9 +545,23 @@ fileprivate struct SpeakerBio: View {
                                 if intrinsicSize.height < UIScreen.main.bounds.height * 0.5 {
                                     VStack {
                                         HStack {
-                                            Markdown(speakerBio, font: .footnote)
-                                                .lineSpacing(4)
-                                                .padding()
+                                            Markdown(speakerBio, font: .footnote) { rawUrl in
+                                                var url: URL? = rawUrl
+                                                if !rawUrl.absoluteString.lowercased().hasPrefix("http") {
+                                                    url = URL(string: "http://" + rawUrl.absoluteString)
+                                                }
+                                                if let url = url {
+                                                    SOCManager.dismiss(isPresented: $isShowingSpeakerDetail)
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
+                                                        self.url = url
+                                                        self.showingSafari = true
+                                                    }
+                                                } else {
+                                                    UIApplication.shared.open(rawUrl)
+                                                }
+                                            }
+                                            .lineSpacing(4)
+                                            .padding()
                                         }
                                         .frame(maxWidth: .infinity)
                                         .background(colorScheme == .light ? .white : .black.opacity(0.6))
@@ -545,9 +571,23 @@ fileprivate struct SpeakerBio: View {
                                     VStack {
                                         HStack {
                                             ScrollView {
-                                                Markdown(speakerBio, font: .footnote)
-                                                    .lineSpacing(4)
-                                                    .padding()
+                                                Markdown(speakerBio, font: .footnote) { rawUrl in
+                                                    var url: URL? = rawUrl
+                                                    if !rawUrl.absoluteString.lowercased().hasPrefix("http") {
+                                                        url = URL(string: "http://" + rawUrl.absoluteString)
+                                                    }
+                                                    if let url = url {
+                                                        SOCManager.dismiss(isPresented: $isShowingSpeakerDetail)
+                                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
+                                                            self.url = url
+                                                            self.showingSafari = true
+                                                        }
+                                                    } else {
+                                                        UIApplication.shared.open(rawUrl)
+                                                    }
+                                                }
+                                                .lineSpacing(4)
+                                                .padding()
                                             }
                                         }
                                         .frame(maxWidth: .infinity)
@@ -570,13 +610,24 @@ fileprivate struct DescriptionSection: View {
     
     let description: String
     @Binding var url: URL
-    @Binding var showingAlert: Bool
+    @Binding var showingSafari: Bool
     
     var body: some View {
         Section(header: Text(LocalizedStringKey("SessionIntroduction")).padding(.leading, 10)) {
-            Markdown(description, font: .footnote)
-                .lineSpacing(4)
-                .padding()
+            Markdown(description, font: .footnote) { rawUrl in
+                var url: URL? = rawUrl
+                if !rawUrl.absoluteString.lowercased().hasPrefix("http") {
+                    url = URL(string: "http://" + rawUrl.absoluteString)
+                }
+                if let url = url {
+                    self.url = url
+                    self.showingSafari = true
+                } else {
+                    UIApplication.shared.open(rawUrl)
+                }
+            }
+            .lineSpacing(4)
+            .padding()
         }
         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }

@@ -27,7 +27,8 @@ struct EventListView: View {
                                     return true
                                 } else {
                                     for component in searchText.tirm().lowercased().components(separatedBy: " ") {
-                                        if !LocalizeIn(zh: event.display_name.zh, en: event.display_name.en).lowercased().contains(component.tirm()) {
+                                        let component = component.tirm()
+                                        if !component.isEmpty, !LocalizeIn(zh: event.display_name.zh, en: event.display_name.en).lowercased().contains(component) {
                                             return false
                                         }
                                     }
@@ -65,6 +66,7 @@ struct EventListView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     SFButton(systemName: "arrow.clockwise") {
                         self.isError = false
+                        self.OPassAPI.eventList = []
                         Task {
                             do { try await self.OPassAPI.loadEventList() }
                             catch {
@@ -89,11 +91,16 @@ private struct EventRow: View {
     let displayName: DisplayTextModel
     let action: () -> Void
     
+    @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @Environment(\.colorScheme) var colorScheme
+    @State private var preloadLogoImage: Image? = nil
     
     private let logger = Logger(subsystem: "app.opass.ccip", category: "EventListView")
     var body: some View {
-        Button(action: action) {
+        Button(action: {
+            action()
+            OPassAPI.currentEventLogo = preloadLogoImage
+        }) {
             HStack {
                 AsyncImage(url: URL(string: url), transaction: Transaction(animation: .spring())) { phase in
                     switch phase {
@@ -104,6 +111,7 @@ private struct EventRow: View {
                             .renderingMode(.template)
                             .resizable().scaledToFit()
                             .foregroundColor(Color("LogoColor"))
+                            .onAppear { self.preloadLogoImage = image }
                     case .failure(_):
                         Image(systemName: "xmark.circle")
                             .foregroundColor(Color("LogoColor").opacity(0.5))

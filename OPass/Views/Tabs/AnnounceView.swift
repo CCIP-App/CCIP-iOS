@@ -87,7 +87,7 @@ struct AnnounceView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 SFButton(systemName: "arrow.clockwise") {
                     self.isError = false
-                    Task { try? await self.eventAPI.loadAnnouncements() }
+                    self.eventAPI.eventAnnouncements = nil
                 }
             }
         }

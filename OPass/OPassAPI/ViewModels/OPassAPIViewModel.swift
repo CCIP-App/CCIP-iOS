@@ -8,12 +8,14 @@
 
 import Foundation
 import OSLog
+import SwiftUI
 
 ///Endpoint hold by OPass Official.
 class OPassAPIViewModel: ObservableObject {
     
     @Published var eventList = [EventTitleModel]()
     @Published var currentEventID: String? = nil
+    @Published var currentEventLogo: Image? = nil
     @Published var currentEventAPI: EventAPIViewModel? = nil
     private var eventAPITemporaryData: CodableEventAPIVM? = nil
     private var keyStore = NSUbiquitousKeyValueStore()
