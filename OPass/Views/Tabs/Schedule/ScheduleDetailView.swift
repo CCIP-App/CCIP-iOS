@@ -18,7 +18,6 @@ struct ScheduleDetailView: View {
     @ObservedObject var eventAPI: EventAPIViewModel
     let scheduleDetail: SessionDataModel
     @AppStorage var likedSessions: [String]
-    @State var url: URL = URL(string: "https://opass.app")!
     @State var navigationY_Coordinate: CGFloat = .zero
     @State var showingUrlAlert = false
     @State var showingCalendarAlert = false
@@ -37,6 +36,7 @@ struct ScheduleDetailView: View {
     }
     
     var body: some View {
+        var url = URL(string: "https://opass.app")!
         List {
             VStack(alignment: .leading, spacing: 0) {
                 TagsSection(tagsID: scheduleDetail.tags, tags: eventAPI.eventSchedule?.tags.data ?? [:])
@@ -57,9 +57,13 @@ struct ScheduleDetailView: View {
                     .padding(.vertical)
                     .environment(
                         \.openURL,
-                         OpenURLAction { url in
-                             self.url = url
-                             self.showingSafari = true
+                         OpenURLAction { rawUrl in
+                             if let processUrl = processURL(rawUrl) {
+                                 url = processUrl
+                                 self.showingSafari.toggle()
+                             } else {
+                                 UIApplication.shared.open(rawUrl)
+                             }
                              return .handled
                          }
                     )
@@ -93,16 +97,11 @@ struct ScheduleDetailView: View {
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 
             if scheduleDetail.speakers.count != 0 {
-                SpeakersSections(
-                    eventAPI: eventAPI,
-                    scheduleDetail: scheduleDetail,
-                    url: $url, showingSafari: $showingSafari
-                )
+                SpeakersSections(eventAPI: eventAPI, scheduleDetail: scheduleDetail)
             }
             
             if let description = LocalizeIn(zh: scheduleDetail.zh, en: scheduleDetail.en).description, description != "" {
-                DescriptionSection(description: description,
-                                   url: $url, showingSafari: $showingSafari)
+                DescriptionSection(description: description)
             }
         }
         .safariView(isPresented: $showingSafari) {
@@ -394,16 +393,13 @@ fileprivate struct SpeakersSections: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     let scheduleDetail: SessionDataModel
-    @Binding var url: URL
-    @Binding var showingSafari: Bool
     
     var body: some View {
         Section(header: Text(LocalizedStringKey("Speakers")).padding(.leading, 10)) {
             ForEach(scheduleDetail.speakers, id: \.self) { speaker in
                 SpeakerBlock(
                     speaker: speaker,
-                    speakerData: eventAPI.eventSchedule?.speakers.data[speaker],
-                    url: $url, showingSafari: $showingSafari
+                    speakerData: eventAPI.eventSchedule?.speakers.data[speaker]
                 )
             }
             .listRowBackground(Color.transparent)
@@ -417,9 +413,7 @@ fileprivate struct SpeakerBlock: View {
     
     let speaker: String
     let speakerData: SpeakerModel?
-    @Binding var url: URL
-    @Binding var showingSafari: Bool
-    @State var avatarData: Data?
+    @State var avatarData: Data? = nil
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -450,9 +444,11 @@ fileprivate struct SpeakerBlock: View {
             .padding(.vertical, 8)
             if let data = speakerData, LocalizeIn(zh: speakerData?.zh, en: speakerData?.en)?.bio != "" {
                 Divider()
-                SpeakerBio(speaker: LocalizeIn(zh: data.zh, en: data.en).name,
-                           speakerBio: LocalizeIn(zh: data.zh, en: data.en).bio,
-                           avatarData: avatarData, url: $url, showingSafari: $showingSafari)
+                SpeakerBio(
+                    speaker: LocalizeIn(zh: data.zh, en: data.en).name,
+                    speakerBio: LocalizeIn(zh: data.zh, en: data.en).bio,
+                    avatarData: avatarData
+                )
             }
         }
         .padding(.horizontal, 10)
@@ -478,8 +474,7 @@ fileprivate struct SpeakerBio: View {
     let speaker: String
     let speakerBio: String
     let avatarData: Data?
-    @Binding var url: URL
-    @Binding var showingSafari: Bool
+    @State private var showSafari = false
     @State private var isTruncated: Bool = false
     @State private var isShowingSpeakerDetail = false
     @State private var showAvatar = false
@@ -488,15 +483,12 @@ fileprivate struct SpeakerBio: View {
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
+        var url = URL(string: "https://opass.app")!
         VStack(spacing: 0) {
             Markdown(speakerBio, font: .footnote) { rawUrl in
-                var url: URL? = rawUrl
-                if !rawUrl.absoluteString.lowercased().hasPrefix("http") {
-                    url = URL(string: "http://" + rawUrl.absoluteString)
-                }
-                if let url = url {
-                    self.url = url
-                    self.showingSafari = true
+                if let processUrl = processURL(rawUrl) {
+                    url = processUrl
+                    self.showSafari.toggle()
                 } else {
                     UIApplication.shared.open(rawUrl)
                 }
@@ -546,15 +538,11 @@ fileprivate struct SpeakerBio: View {
                                     VStack {
                                         HStack {
                                             Markdown(speakerBio, font: .footnote) { rawUrl in
-                                                var url: URL? = rawUrl
-                                                if !rawUrl.absoluteString.lowercased().hasPrefix("http") {
-                                                    url = URL(string: "http://" + rawUrl.absoluteString)
-                                                }
-                                                if let url = url {
+                                                if let processUrl = processURL(rawUrl) {
+                                                    url = processUrl
                                                     SOCManager.dismiss(isPresented: $isShowingSpeakerDetail)
                                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
-                                                        self.url = url
-                                                        self.showingSafari = true
+                                                        self.showSafari = true
                                                     }
                                                 } else {
                                                     UIApplication.shared.open(rawUrl)
@@ -572,15 +560,11 @@ fileprivate struct SpeakerBio: View {
                                         HStack {
                                             ScrollView {
                                                 Markdown(speakerBio, font: .footnote) { rawUrl in
-                                                    var url: URL? = rawUrl
-                                                    if !rawUrl.absoluteString.lowercased().hasPrefix("http") {
-                                                        url = URL(string: "http://" + rawUrl.absoluteString)
-                                                    }
-                                                    if let url = url {
+                                                    if let processUrl = processURL(rawUrl) {
+                                                        url = processUrl
                                                         SOCManager.dismiss(isPresented: $isShowingSpeakerDetail)
                                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
-                                                            self.url = url
-                                                            self.showingSafari = true
+                                                            self.showSafari = true
                                                         }
                                                     } else {
                                                         UIApplication.shared.open(rawUrl)
@@ -603,31 +587,48 @@ fileprivate struct SpeakerBio: View {
             }
         }
         .padding(.vertical, 8)
+        .safariView(isPresented: $showSafari) {
+            SafariView(
+                url: url,
+                configuration: .init(
+                    entersReaderIfAvailable: false,
+                    barCollapsingEnabled: true
+                )
+            )
+            .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
+        }
     }
 }
 
 fileprivate struct DescriptionSection: View {
     
     let description: String
-    @Binding var url: URL
-    @Binding var showingSafari: Bool
+    @State var showSafari = false
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
+        var url = URL(string: "https://opass.app")!
         Section(header: Text(LocalizedStringKey("SessionIntroduction")).padding(.leading, 10)) {
             Markdown(description, font: .footnote) { rawUrl in
-                var url: URL? = rawUrl
-                if !rawUrl.absoluteString.lowercased().hasPrefix("http") {
-                    url = URL(string: "http://" + rawUrl.absoluteString)
-                }
-                if let url = url {
-                    self.url = url
-                    self.showingSafari = true
+                if let processUrl = processURL(rawUrl) {
+                    url = processUrl
+                    self.showSafari.toggle()
                 } else {
                     UIApplication.shared.open(rawUrl)
                 }
             }
             .lineSpacing(4)
             .padding()
+            .safariView(isPresented: $showSafari) {
+                SafariView(
+                    url: url,
+                    configuration: .init(
+                        entersReaderIfAvailable: false,
+                        barCollapsingEnabled: true
+                    )
+                )
+                .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
+            }
         }
         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }

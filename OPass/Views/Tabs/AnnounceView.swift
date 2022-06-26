@@ -14,7 +14,6 @@ struct AnnounceView: View {
     @ObservedObject var eventAPI: EventAPIViewModel
     let display_text: DisplayTextModel
     @State var isShowingSafari = false
-    @State var url = URL(string: "https://opass.app")!
     @State var isError = false
     @Environment(\.colorScheme) var colorScheme
     
@@ -24,6 +23,7 @@ struct AnnounceView: View {
     }
     
     var body: some View {
+        var url = URL(string: "https://opass.app")!
         VStack {
             if !isError {
                 if let announcements = eventAPI.eventAnnouncements {
@@ -31,12 +31,8 @@ struct AnnounceView: View {
                         List(announcements, id: \.datetime) { announcement in
                             Button(action: {
                                 if !announcement.uri.isEmpty, let rawUrl = URL(string: announcement.uri) {
-                                    var url: URL? = rawUrl
-                                    if !rawUrl.absoluteString.lowercased().hasPrefix("http") {
-                                        url = URL(string: "http://" + rawUrl.absoluteString)
-                                    }
-                                    if let url = url {
-                                        self.url = url
+                                    if let processUrl = processURL(rawUrl) {
+                                        url = processUrl
                                         self.isShowingSafari = true
                                     } else {
                                         UIApplication.shared.open(rawUrl)
@@ -64,7 +60,7 @@ struct AnnounceView: View {
                         .safariView(isPresented: $isShowingSafari) {
                             SafariView(
                                 url: url,
-                                configuration: SafariView.Configuration(
+                                configuration: .init(
                                     entersReaderIfAvailable: false,
                                     barCollapsingEnabled: true
                                 )
