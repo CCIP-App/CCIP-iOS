@@ -10,15 +10,6 @@
       }
     },
     {
-      "identity" : "attributedtext",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/gonzalezreal/AttributedText",
-      "state" : {
-        "revision" : "2dc2d7864e0fee4b524a5850d7d7cf9a7eeda0fc",
-        "version" : "1.0.0"
-      }
-    },
-    {
       "identity" : "bettersafariview",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/stleamist/BetterSafariView.git",

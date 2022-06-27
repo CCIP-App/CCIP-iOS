@@ -8,7 +8,6 @@
 
 import SwiftUI
 import MarkdownKit
-import AttributedText
 
 struct Markdown: View {
     @Environment(\.colorScheme) var colorScheme

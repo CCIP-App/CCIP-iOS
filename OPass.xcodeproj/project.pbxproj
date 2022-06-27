@@ -42,6 +42,13 @@
 		D346CD6828687B4800EC7396 /* ProcessURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CD6728687B4800EC7396 /* ProcessURL.swift */; };
 		D358E55827EDEDB2000A6554 /* FastpassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D358E55727EDEDB2000A6554 /* FastpassView.swift */; };
 		D3602CAC280400D8001D9C15 /* UseScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3602CAB280400D8001D9C15 /* UseScenarioView.swift */; };
+		D3652A772869AF72002AC419 /* AttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A702869AF72002AC419 /* AttributedText.swift */; };
+		D3652A782869AF72002AC419 /* TextSizeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A712869AF72002AC419 /* TextSizeViewModel.swift */; };
+		D3652A792869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A722869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift */; };
+		D3652A7A2869AF72002AC419 /* AttributedTextImpl+macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A732869AF72002AC419 /* AttributedTextImpl+macOS.swift */; };
+		D3652A7B2869AF72002AC419 /* AttributedTextImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A742869AF72002AC419 /* AttributedTextImpl.swift */; };
+		D3652A7C2869AF72002AC419 /* AttributedTextImpl+tvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A752869AF72002AC419 /* AttributedTextImpl+tvOS.swift */; };
+		D3652A7D2869AF72002AC419 /* AttributedTextImpl+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A762869AF72002AC419 /* AttributedTextImpl+iOS.swift */; };
 		D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366D8EF27ED50CB00AA4267 /* MainView.swift */; };
 		D36A2FD82829F9C500EFBDB1 /* NEHotspot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */; };
 		D39512F5285A174F009B9AE8 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39512F4285A174F009B9AE8 /* EventEditView.swift */; };
@@ -57,7 +64,6 @@
 		D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194727CF864B00643D97 /* ScheduleModel.swift */; };
 		D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingView.swift */; };
 		D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6195027CFA9A800643D97 /* ScheduleView.swift */; };
-		D3C6F607286349B30074B942 /* AttributedText in Frameworks */ = {isa = PBXBuildFile; productRef = D3C6F606286349B30074B942 /* AttributedText */; };
 		D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3C6F60C28634F3B0074B942 /* MarkdownKit */; };
 		D3C6F60F286360FC0074B942 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6F60E286360FC0074B942 /* Markdown.swift */; };
 		D3C972F227F03531008561DE /* ScheduleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C972F127F03531008561DE /* ScheduleDetailView.swift */; };
@@ -143,6 +149,13 @@
 		D346CD6728687B4800EC7396 /* ProcessURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessURL.swift; sourceTree = "<group>"; };
 		D358E55727EDEDB2000A6554 /* FastpassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastpassView.swift; sourceTree = "<group>"; };
 		D3602CAB280400D8001D9C15 /* UseScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseScenarioView.swift; sourceTree = "<group>"; };
+		D3652A702869AF72002AC419 /* AttributedText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedText.swift; sourceTree = "<group>"; };
+		D3652A712869AF72002AC419 /* TextSizeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSizeViewModel.swift; sourceTree = "<group>"; };
+		D3652A722869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLineBreakMode+TruncationMode.swift"; sourceTree = "<group>"; };
+		D3652A732869AF72002AC419 /* AttributedTextImpl+macOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+macOS.swift"; sourceTree = "<group>"; };
+		D3652A742869AF72002AC419 /* AttributedTextImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextImpl.swift; sourceTree = "<group>"; };
+		D3652A752869AF72002AC419 /* AttributedTextImpl+tvOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+tvOS.swift"; sourceTree = "<group>"; };
+		D3652A762869AF72002AC419 /* AttributedTextImpl+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+iOS.swift"; sourceTree = "<group>"; };
 		D366D8EF27ED50CB00AA4267 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHotspot.swift; sourceTree = "<group>"; };
 		D39512F4285A174F009B9AE8 /* EventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
@@ -202,7 +215,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */,
-				D3C6F607286349B30074B942 /* AttributedText in Frameworks */,
 				D3EA819827F68FFF00FE7985 /* BetterSafariView in Frameworks */,
 				D3E0123127D35D970040621F /* KeychainAccess in Frameworks */,
 				D3C5C92B2849BE1B00F175AB /* SlideOverCard in Frameworks */,
@@ -248,6 +260,28 @@
 				D3C972F127F03531008561DE /* ScheduleDetailView.swift */,
 			);
 			path = Schedule;
+			sourceTree = "<group>";
+		};
+		D3652A6E2869AF17002AC419 /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				D3652A6F2869AF72002AC419 /* AttributedText */,
+			);
+			path = Submodules;
+			sourceTree = "<group>";
+		};
+		D3652A6F2869AF72002AC419 /* AttributedText */ = {
+			isa = PBXGroup;
+			children = (
+				D3652A702869AF72002AC419 /* AttributedText.swift */,
+				D3652A712869AF72002AC419 /* TextSizeViewModel.swift */,
+				D3652A722869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift */,
+				D3652A732869AF72002AC419 /* AttributedTextImpl+macOS.swift */,
+				D3652A742869AF72002AC419 /* AttributedTextImpl.swift */,
+				D3652A752869AF72002AC419 /* AttributedTextImpl+tvOS.swift */,
+				D3652A762869AF72002AC419 /* AttributedTextImpl+iOS.swift */,
+			);
+			path = AttributedText;
 			sourceTree = "<group>";
 		};
 		D36DC46327D46F6800012D43 /* Additions */ = {
@@ -369,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E4E6BD27CD158400FFACEB /* OPass */,
+				D3652A6E2869AF17002AC419 /* Submodules */,
 				D3F23B4B28166CE200A0FB35 /* Supporting Files */,
 				D3A00F1D27D837D00097A6AB /* OneSignalNotificationServiceExtension */,
 				D3E4E6BC27CD158400FFACEB /* Products */,
@@ -513,7 +548,6 @@
 				D3EA819727F68FFF00FE7985 /* BetterSafariView */,
 				D323C1F4282FE03C009AFF97 /* EFQRCode */,
 				D3C5C92A2849BE1B00F175AB /* SlideOverCard */,
-				D3C6F606286349B30074B942 /* AttributedText */,
 				D3C6F60C28634F3B0074B942 /* MarkdownKit */,
 			);
 			productName = OPass;
@@ -557,7 +591,6 @@
 				D3EA819627F68FFE00FE7985 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
 				D323C1F3282FE03C009AFF97 /* XCRemoteSwiftPackageReference "EFQRCode" */,
 				D3C5C9292849BE1B00F175AB /* XCRemoteSwiftPackageReference "SlideOverCard" */,
-				D3C6F605286349B20074B942 /* XCRemoteSwiftPackageReference "AttributedText" */,
 				D3C6F60B28634F3A0074B942 /* XCRemoteSwiftPackageReference "MarkdownKit" */,
 			);
 			productRefGroup = D3E4E6BC27CD158400FFACEB /* Products */;
@@ -623,6 +656,7 @@
 				D3602CAC280400D8001D9C15 /* UseScenarioView.swift in Sources */,
 				D3D3788227CE440D00021FC4 /* OPassAPIViewModel.swift in Sources */,
 				D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */,
+				D3652A772869AF72002AC419 /* AttributedText.swift in Sources */,
 				D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */,
 				D3095F1827D78EE600225C7D /* UNUserNotification.swift in Sources */,
 				D3E4E6C127CD158400FFACEB /* ContentView.swift in Sources */,
@@ -636,11 +670,13 @@
 				4F9E9B4E2813F0A300A14905 /* ArrayExtension.swift in Sources */,
 				D3E0123527D38B840040621F /* ScenarioView.swift in Sources */,
 				4F6968A827EF863A009073E4 /* TabButtonStyle.swift in Sources */,
+				D3652A7D2869AF72002AC419 /* AttributedTextImpl+iOS.swift in Sources */,
 				4F43FCA02830B12700F41874 /* EntryView.swift in Sources */,
 				D39512F8285A370D009B9AE8 /* EventKitExtension.swift in Sources */,
 				D34012102821349200D07034 /* Localization.swift in Sources */,
 				D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */,
 				4F8522E12817D4C00015BB13 /* EventTitleModel.swift in Sources */,
+				D3652A7A2869AF72002AC419 /* AttributedTextImpl+macOS.swift in Sources */,
 				D346CD6828687B4800EC7396 /* ProcessURL.swift in Sources */,
 				D3FBFA67282A93B200DE118E /* SoundManager.swift in Sources */,
 				4F5EB73527D3346D00235396 /* JsonDecodeHelper.swift in Sources */,
@@ -649,16 +685,20 @@
 				4F3A10DC2815201E00CCE5A9 /* ImagePicker.swift in Sources */,
 				4F5CA37D27FD58D600DEAB39 /* ColorExtension.swift in Sources */,
 				D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */,
+				D3652A792869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift in Sources */,
+				D3652A782869AF72002AC419 /* TextSizeViewModel.swift in Sources */,
 				D3E0123327D3667C0040621F /* ScenarioStatusModel.swift in Sources */,
 				D358E55827EDEDB2000A6554 /* FastpassView.swift in Sources */,
 				D36A2FD82829F9C500EFBDB1 /* NEHotspot.swift in Sources */,
 				D3E0123827D38D3D0040621F /* RedeemTokenView.swift in Sources */,
 				D3A94D03281E62530053FEFA /* ErrorView.swift in Sources */,
+				D3652A7C2869AF72002AC419 /* AttributedTextImpl+tvOS.swift in Sources */,
 				4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */,
 				D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */,
 				D301C39428053ED600D027FE /* ActivityIndicator.swift in Sources */,
 				D39512F5285A174F009B9AE8 /* EventEditView.swift in Sources */,
 				4FEF38FB27D13FBA00FC97F4 /* APIRepo.swift in Sources */,
+				D3652A7B2869AF72002AC419 /* AttributedTextImpl.swift in Sources */,
 				D3C0E21C27D51C060095169F /* WifiView.swift in Sources */,
 				D3E4E6BF27CD158400FFACEB /* OPassApp.swift in Sources */,
 				4F6968A627EBCB5E009073E4 /* SFButton.swift in Sources */,
@@ -1021,14 +1061,6 @@
 				kind = branch;
 			};
 		};
-		D3C6F605286349B20074B942 /* XCRemoteSwiftPackageReference "AttributedText" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/gonzalezreal/AttributedText";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		D3C6F60B28634F3A0074B942 /* XCRemoteSwiftPackageReference "MarkdownKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bmoliveira/MarkdownKit.git";
@@ -1095,11 +1127,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D3C5C9292849BE1B00F175AB /* XCRemoteSwiftPackageReference "SlideOverCard" */;
 			productName = SlideOverCard;
-		};
-		D3C6F606286349B30074B942 /* AttributedText */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D3C6F605286349B20074B942 /* XCRemoteSwiftPackageReference "AttributedText" */;
-			productName = AttributedText;
 		};
 		D3C6F60C28634F3B0074B942 /* MarkdownKit */ = {
 			isa = XCSwiftPackageProductDependency;
