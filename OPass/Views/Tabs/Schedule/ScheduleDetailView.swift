@@ -96,7 +96,7 @@ struct ScheduleDetailView: View {
             .listRowBackground(Color.transparent)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 
-            if scheduleDetail.speakers.count != 0 {
+            if !scheduleDetail.speakers.isEmpty {
                 SpeakersSections(eventAPI: eventAPI, scheduleDetail: scheduleDetail)
             }
             
@@ -413,29 +413,26 @@ fileprivate struct SpeakerBlock: View {
     
     let speaker: String
     let speakerData: SpeakerModel?
-    @State var avatarData: Data? = nil
+    @State var avatarImage: Image? = nil
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .center) {
-                if let avatarURL = speakerData?.avatar {
-                    Group {
-                        if let data = avatarData, let uiImage = UIImage(data: data) {
-                            Image(uiImage: uiImage)
-                                .renderingMode(.original)
-                                .resizable().scaledToFill()
-                        } else {
-                            Image(systemName: "person.crop.circle.fill")
-                                .resizable().scaledToFit()
-                                .foregroundColor(.gray)
-                                .onAppear {
-                                    fetchAvatarData(url: avatarURL)
-                                }
-                        }
+                AsyncImage(url: URL(string: speakerData?.avatar ?? ""), transaction: .init(animation: .spring())) { phase in
+                    switch phase {
+                    case .success(let image):
+                        image
+                            .renderingMode(.original)
+                            .resizable().scaledToFill()
+                            .onAppear { avatarImage = image }
+                    default:
+                        Image(systemName: "person.crop.circle.fill")
+                            .resizable().scaledToFit()
+                            .foregroundColor(.gray)
                     }
-                    .clipShape(Circle())
-                    .frame(width: 30, height: 30)
                 }
+                .clipShape(Circle())
+                .frame(width: 30, height: 30)
                 
                 Text(LocalizeIn(zh: speakerData?.zh, en: speakerData?.en)?.name ?? speaker)
                     .font(.subheadline.bold())
@@ -447,7 +444,7 @@ fileprivate struct SpeakerBlock: View {
                 SpeakerBio(
                     speaker: LocalizeIn(zh: data.zh, en: data.en).name,
                     speakerBio: LocalizeIn(zh: data.zh, en: data.en).bio,
-                    avatarData: avatarData
+                    avatarImage: avatarImage
                 )
             }
         }
@@ -456,24 +453,12 @@ fileprivate struct SpeakerBlock: View {
         .cornerRadius(8)
         .padding(.bottom, 8)
     }
-    
-    private func fetchAvatarData(url urlString: String) {
-        guard let url = URL(string: urlString) else {
-            print("Invalid PNG URL")
-            return
-        }
-            
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            self.avatarData = data
-        }
-        task.resume()
-    }
 }
 
 fileprivate struct SpeakerBio: View {
     let speaker: String
     let speakerBio: String
-    let avatarData: Data?
+    let avatarImage: Image?
     @State private var showSafari = false
     @State private var isTruncated: Bool = false
     @State private var isShowingSpeakerDetail = false
@@ -517,13 +502,14 @@ fileprivate struct SpeakerBio: View {
                         SOCManager.present(isPresented: $isShowingSpeakerDetail, style: colorScheme == .dark ? .dark : .light) {
                             VStack {
                                 Group {
-                                    if let data = avatarData, let uiImage = UIImage(data: data) {
-                                        Image(uiImage: uiImage)
+                                    if let image = avatarImage {
+                                        image
                                             .renderingMode(.original)
                                             .resizable().scaledToFill()
                                     } else {
                                         Image(systemName: "person.crop.circle.fill")
                                             .resizable().scaledToFit()
+                                            .foregroundColor(.gray)
                                     }
                                 }
                                 .clipShape(Circle())
