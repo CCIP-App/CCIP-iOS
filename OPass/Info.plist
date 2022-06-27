@@ -20,6 +20,8 @@
 		<string>https://dl.opass.app</string>
 		<string>https://opass.page.link</string>
 	</array>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>RobotoCondensed-Bold.ttf</string>
