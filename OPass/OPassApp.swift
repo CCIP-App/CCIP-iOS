@@ -28,7 +28,7 @@ struct OPassApp: App {
     
     var body: some Scene {
         WindowGroup {
-            EntryView(url: url)
+            ContentView(url: $url)
                 .onOpenURL { url in
                     // We use the way to universal link here, guaranteed by the swiftui doc that the passed in url being a universal link
                     let handled = DynamicLinks.dynamicLinks().handleUniversalLink(url) { dynamicLink, _ in

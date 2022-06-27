@@ -13,7 +13,6 @@
 		4F29D9CE27D4EA2D00292CC4 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = 4F29D9CD27D4EA2D00292CC4 /* FirebaseDynamicLinks */; };
 		4F35B17C27D3850B0023621F /* AnnouncementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F35B17B27D3850B0023621F /* AnnouncementModel.swift */; };
 		4F3A10DC2815201E00CCE5A9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A10DB2815201D00CCE5A9 /* ImagePicker.swift */; };
-		4F43FCA02830B12700F41874 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43FC9F2830B12700F41874 /* EntryView.swift */; };
 		4F48B5D427CF07910010FC2C /* eventListSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D327CF07910010FC2C /* eventListSample.json */; };
 		4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */; };
 		4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */; };
@@ -123,7 +122,6 @@
 		4F29D9C627D4E6DA00292CC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F35B17B27D3850B0023621F /* AnnouncementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementModel.swift; sourceTree = "<group>"; };
 		4F3A10DB2815201D00CCE5A9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		4F43FC9F2830B12700F41874 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		4F48B5D327CF07910010FC2C /* eventListSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventListSample.json; sourceTree = "<group>"; };
 		4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPISampleExt.swift; sourceTree = "<group>"; };
 		4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventSettingsSample.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
@@ -353,7 +351,6 @@
 		D3D3787F27CE42A200021FC4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4F43FC9F2830B12700F41874 /* EntryView.swift */,
 				D3E4E6C027CD158400FFACEB /* ContentView.swift */,
 				D366D8EF27ED50CB00AA4267 /* MainView.swift */,
 				D3D3789027CE62EB00021FC4 /* EventListView.swift */,
@@ -671,7 +668,6 @@
 				D3E0123527D38B840040621F /* ScenarioView.swift in Sources */,
 				4F6968A827EF863A009073E4 /* TabButtonStyle.swift in Sources */,
 				D3652A7D2869AF72002AC419 /* AttributedTextImpl+iOS.swift in Sources */,
-				4F43FCA02830B12700F41874 /* EntryView.swift in Sources */,
 				D39512F8285A370D009B9AE8 /* EventKitExtension.swift in Sources */,
 				D34012102821349200D07034 /* Localization.swift in Sources */,
 				D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */,

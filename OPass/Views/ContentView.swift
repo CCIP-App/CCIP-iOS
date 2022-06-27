@@ -15,6 +15,10 @@ struct ContentView: View {
     @State var handlingURL = false
     @State var isShowingEventList = false
     @State var isError = false
+    
+    @State var urlProcessed = false
+    @State var showInvalidURL = false
+    @Binding var url: URL?
 
     var body: some View {
         NavigationView {
@@ -24,7 +28,7 @@ struct ContentView: View {
                         VStack {}
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .onAppear(perform: {
-                                isShowingEventList.toggle()
+                                isShowingEventList = true
                             })
                     } else if OPassAPI.currentEventID != OPassAPI.currentEventAPI?.event_id {
                         ProgressView(LocalizedStringKey("Loading"))
@@ -77,13 +81,56 @@ struct ContentView: View {
                 }
             }
         }
+        .overlay {
+            if self.url != nil {
+                ProgressView("Logging in...")
+                    .task {
+                        self.isShowingEventList = false
+                        await parseUniversalLinkAndURL(url!)
+                    }
+                    .alert("Invalid URL", isPresented: $showInvalidURL) {
+                        Button("OK", role: .cancel) {
+                            url = nil
+                        }
+                    } message: {
+                        Text("You have an invalid URL or the token is incorrect.")
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color("SectionBackgroundColor").edgesIgnoringSafeArea(.all))
+            }
+        }
+    }
+    
+    private func parseUniversalLinkAndURL(_ url: URL) async {
+        let params = URLComponents(string: "?" + (url.query ?? ""))?.queryItems
+        guard let token = params?.first(where: { $0.name == "token" })?.value else {
+            DispatchQueue.main.async {
+                showInvalidURL = true
+            }
+            return
+        }
+        var success = false
+        if let eventId = params?.first(where: { $0.name == "event_id" })?.value {
+            success = await OPassAPI.loginEvent(eventId, withToken: token)
+        } else if OPassAPI.currentEventID != nil {
+            success = await OPassAPI.loginCurrentEvent(token: token)
+        }
+        if success {
+            DispatchQueue.main.async {
+                self.url = nil
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.showInvalidURL = true
+            }
+        }
     }
 }
 
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(url: .constant(nil))
             .environmentObject(OPassAPIViewModel.mock())
     }
 }

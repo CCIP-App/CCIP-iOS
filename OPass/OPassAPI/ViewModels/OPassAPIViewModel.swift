@@ -130,9 +130,11 @@ extension OPassAPIViewModel {
             let eventSettings = try await APIRepo.loadEventSettings(id: eventId)
             let eventModel = EventAPIViewModel(eventSettings: eventSettings, saveData: saveEventAPIData)
             DispatchQueue.main.async {
+                self.currentEventLogo = nil
                 self.currentEventID = eventId
                 self.currentEventAPI = eventModel
             }
+            await eventModel.loadLogos()
             return await eventModel.redeemToken(token: token)
         } catch APIRepo.LoadError.invalidURL(url: let url) {
             logger.error("\(url.getString()) is invalid, eventId is possibly wrong")
