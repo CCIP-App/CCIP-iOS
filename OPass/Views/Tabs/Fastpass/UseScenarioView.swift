@@ -151,7 +151,7 @@ fileprivate struct TimerView: View {
     @Environment(\.dismiss) var dismiss
     
     @State var time: Double = 0
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     @Binding var usedTime: TimeInterval
     
     var body: some View {

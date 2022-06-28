@@ -70,6 +70,10 @@
 "NotAvailable" = "無法使用";
 "OnlyAvailableAtContent" = "開放時間：\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d";
 "Loading" = "載入中";
+"LOGGINGIN" = "登入中";
+"InvalidURL" = "無效的網址";
+"OK" = "好";
+"InvalidURLOrTokenContent" = "您的網址無效或驗證碼不正確。";
 "Setting" = "設定";
 "FastPass" = "快速通關";
 "System" = "系統";

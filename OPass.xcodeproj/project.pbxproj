@@ -46,7 +46,6 @@
 		D3652A792869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A722869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift */; };
 		D3652A7A2869AF72002AC419 /* AttributedTextImpl+macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A732869AF72002AC419 /* AttributedTextImpl+macOS.swift */; };
 		D3652A7B2869AF72002AC419 /* AttributedTextImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A742869AF72002AC419 /* AttributedTextImpl.swift */; };
-		D3652A7C2869AF72002AC419 /* AttributedTextImpl+tvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A752869AF72002AC419 /* AttributedTextImpl+tvOS.swift */; };
 		D3652A7D2869AF72002AC419 /* AttributedTextImpl+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A762869AF72002AC419 /* AttributedTextImpl+iOS.swift */; };
 		D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366D8EF27ED50CB00AA4267 /* MainView.swift */; };
 		D36A2FD82829F9C500EFBDB1 /* NEHotspot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */; };
@@ -152,7 +151,6 @@
 		D3652A722869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLineBreakMode+TruncationMode.swift"; sourceTree = "<group>"; };
 		D3652A732869AF72002AC419 /* AttributedTextImpl+macOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+macOS.swift"; sourceTree = "<group>"; };
 		D3652A742869AF72002AC419 /* AttributedTextImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextImpl.swift; sourceTree = "<group>"; };
-		D3652A752869AF72002AC419 /* AttributedTextImpl+tvOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+tvOS.swift"; sourceTree = "<group>"; };
 		D3652A762869AF72002AC419 /* AttributedTextImpl+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+iOS.swift"; sourceTree = "<group>"; };
 		D366D8EF27ED50CB00AA4267 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHotspot.swift; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 				D3652A722869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift */,
 				D3652A732869AF72002AC419 /* AttributedTextImpl+macOS.swift */,
 				D3652A742869AF72002AC419 /* AttributedTextImpl.swift */,
-				D3652A752869AF72002AC419 /* AttributedTextImpl+tvOS.swift */,
 				D3652A762869AF72002AC419 /* AttributedTextImpl+iOS.swift */,
 			);
 			path = AttributedText;
@@ -688,7 +685,6 @@
 				D36A2FD82829F9C500EFBDB1 /* NEHotspot.swift in Sources */,
 				D3E0123827D38D3D0040621F /* RedeemTokenView.swift in Sources */,
 				D3A94D03281E62530053FEFA /* ErrorView.swift in Sources */,
-				D3652A7C2869AF72002AC419 /* AttributedTextImpl+tvOS.swift in Sources */,
 				4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */,
 				D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */,
 				D301C39428053ED600D027FE /* ActivityIndicator.swift in Sources */,

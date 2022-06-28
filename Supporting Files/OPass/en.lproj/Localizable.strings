@@ -70,6 +70,10 @@
 "NotAvailable" = "Not Available";
 "OnlyAvailableAtContent" = "Only available at\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d";
 "Loading" = "LOADING";
+"LOGGINGIN" = "LOGGING IN";
+"InvalidURL" = "Invalid URL";
+"OK" = "OK";
+"InvalidURLOrTokenContent" = "You have an invalid URL or the token is incorrect.";
 "Setting" = "Setting";
 "FastPass" = "Fast Pass";
 "System" = "System";

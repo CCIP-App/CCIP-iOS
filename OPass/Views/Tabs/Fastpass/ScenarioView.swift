@@ -48,7 +48,7 @@ struct ScenarioView: View {
                                     }
                                 }
                             }) {
-                                buttonContentView(scenario: scenario)
+                                buttonContentView(scenario, sectionID: sectionID)
                             }
                         }
                     }
@@ -81,7 +81,7 @@ struct ScenarioView: View {
     }
     
     @ViewBuilder
-    func buttonContentView(scenario: ScenarioDataModel) -> some View {
+    func buttonContentView(_ scenario: ScenarioDataModel, sectionID: String) -> some View {
         let buttonColor: [String : Color] = [
             "pencil" : Color(red: 88 / 255, green: 174 / 255, blue: 196 / 255),
             "takeoutbag.and.cup.and.straw" : Color.purple,
@@ -100,9 +100,47 @@ struct ScenarioView: View {
             VStack(alignment: .leading) {
                 Text(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en))
                     .foregroundColor(colorScheme == .dark ? .white : .black)
-                Text((scenario.disabled == nil ? (scenario.used == nil ? String(format: "%d:%02d ~ %d:%02d", scenario.available_time.hour, scenario.available_time.minute, scenario.expire_time.hour, scenario.expire_time.minute) : String(format: String(localized: "CheckAtContent"), scenario.used!.hour, scenario.used!.minute) ) : String(localized: String.LocalizationValue(scenario.disabled!))))
-                    .font(.callout)
-                    .foregroundColor(.gray)
+                Text(
+                    scenario.disabled == nil
+                    ? scenario.used == nil
+                    ? sectionID.contains("•")
+                    ? String(
+                        format: "%d:%02d ~ %d:%02d",
+                        scenario.available_time.hour,
+                        scenario.available_time.minute,
+                        scenario.expire_time.hour,
+                        scenario.expire_time.minute
+                    )
+                    : scenario.available_time.month == scenario.expire_time.month && scenario.available_time.day == scenario.expire_time.day
+                    ? String(
+                        format: "%d/%d • %d:%02d ~ %d:%02d",
+                        scenario.available_time.month,
+                        scenario.available_time.day,
+                        scenario.available_time.hour,
+                        scenario.available_time.minute,
+                        scenario.expire_time.hour,
+                        scenario.expire_time.minute
+                    )
+                    : String(
+                        format: "%d/%d • %d:%02d ~ %d/%d • %d:%02d",
+                        scenario.available_time.month,
+                        scenario.available_time.day,
+                        scenario.available_time.hour,
+                        scenario.available_time.minute,
+                        scenario.expire_time.month,
+                        scenario.expire_time.day,
+                        scenario.expire_time.hour,
+                        scenario.expire_time.minute
+                    )
+                    : String(
+                        format: String(localized: "CheckAtContent"),
+                        scenario.used!.hour,
+                        scenario.used!.minute
+                    )
+                    : String(localized: String.LocalizationValue(scenario.disabled!))
+                )
+                .font(.callout)
+                .foregroundColor(.gray)
             }
             Spacer()
             if scenario.used == nil && scenario.disabled == nil{

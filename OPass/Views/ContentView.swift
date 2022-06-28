@@ -15,8 +15,6 @@ struct ContentView: View {
     @State var handlingURL = false
     @State var isShowingEventList = false
     @State var isError = false
-    
-    @State var urlProcessed = false
     @State var showInvalidURL = false
     @Binding var url: URL?
 
@@ -83,17 +81,22 @@ struct ContentView: View {
         }
         .overlay {
             if self.url != nil {
-                ProgressView("Logging in...")
+                ProgressView("LOGGINGIN")
                     .task {
                         self.isShowingEventList = false
                         await parseUniversalLinkAndURL(url!)
                     }
-                    .alert("Invalid URL", isPresented: $showInvalidURL) {
+                    .alert("InvalidURL", isPresented: $showInvalidURL) {
                         Button("OK", role: .cancel) {
                             url = nil
+                            if OPassAPI.currentEventAPI == nil {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                    self.isShowingEventList = true
+                                }
+                            }
                         }
                     } message: {
-                        Text("You have an invalid URL or the token is incorrect.")
+                        Text("InvalidURLOrTokenContent")
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color("SectionBackgroundColor").edgesIgnoringSafeArea(.all))
@@ -119,6 +122,7 @@ struct ContentView: View {
             DispatchQueue.main.async {
                 self.url = nil
             }
+            await OPassAPI.currentEventAPI?.loadLogos()
         } else {
             DispatchQueue.main.async {
                 self.showInvalidURL = true
