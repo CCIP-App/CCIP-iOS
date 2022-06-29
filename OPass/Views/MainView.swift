@@ -182,13 +182,16 @@ struct TabButton: View {
                         }
                     }
                     .tabButtonStyle(color: feature.color, width: width)
-                    .background {
-                        NavigationLink(
-                            isActive: $presentingWebview,
-                            destination: {
-                                WebView(url, title: LocalizeIn(zh: feature.display_text.zh, en: feature.display_text.en))
-                            }
-                        ) { EmptyView() }.hidden()
+                    .safariView(isPresented: $presentingWebview) {
+                        SafariView(
+                            url: url,
+                            configuration: SafariView.Configuration(
+                                entersReaderIfAvailable: false,
+                                barCollapsingEnabled: true
+                            )
+                        )
+                        .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
+                        .dismissButtonStyle(.done)
                     }
                 }
         }
