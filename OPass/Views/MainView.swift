@@ -21,31 +21,29 @@ struct MainView: View {
     
     var body: some View {
         VStack {
-            if let image = OPassAPI.currentEventLogo {
-                image
-                    .renderingMode(.template)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding()
-                    .foregroundColor(Color("LogoColor"))
-                    .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
-            } else if let eventLogoData = eventAPI.eventLogo, let eventLogoUIImage = UIImage(data: eventLogoData) {
-                Image(uiImage: eventLogoUIImage)
-                    .renderingMode(.template)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding()
-                    .foregroundColor(Color("LogoColor"))
-                    .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
-            } else {
-                Text(LocalizeIn(zh: eventAPI.display_name.zh, en: eventAPI.display_name.en))
-                    .font(.system(.largeTitle, design: .rounded))
-                    .fontWeight(.medium)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .padding(.vertical)
-                    .foregroundColor(Color("LogoColor"))
-                    .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
+            Group {
+                if let image = OPassAPI.currentEventLogo {
+                    image
+                        .renderingMode(.template)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.horizontal)
+                } else if let eventLogoData = eventAPI.eventLogo, let eventLogoUIImage = UIImage(data: eventLogoData) {
+                    Image(uiImage: eventLogoUIImage)
+                        .renderingMode(.template)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.horizontal)
+                } else {
+                    Text(LocalizeIn(zh: eventAPI.display_name.zh, en: eventAPI.display_name.en))
+                        .font(.system(.largeTitle, design: .rounded))
+                        .fontWeight(.medium)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             }
+            .padding(.vertical)
+            .foregroundColor(Color("LogoColor"))
+            .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
             
             ScrollView {
                 LazyVGrid(columns: gridItemLayout) {
@@ -71,7 +69,6 @@ struct MainView: View {
             .padding(.horizontal)
         }
         .background {
-            //put invisible NavigationLink in background
             Group {
                 NavigationLink(
                     tag: FeatureType.fastpass,
@@ -106,7 +103,7 @@ struct MainView: View {
     }
 }
 
-struct TabButton: View {
+fileprivate struct TabButton: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.openURL) var openURL
     let feature: FeatureModel
@@ -115,7 +112,7 @@ struct TabButton: View {
     let width: CGFloat
     
     @State private var presentingWifiSheet = false
-    @State private var presentingWebview = false
+    @State private var presentingSafariView = false
     //fastpass, ticket, schedule, announcement, wifi, telegram, im, puzzle, venue, sponsors, staffs, webview
     var body: some View {
         switch(feature.feature) {
@@ -159,7 +156,7 @@ struct TabButton: View {
             default:
             if let url = feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) {
                     Button(action: {
-                        presentingWebview = true
+                        presentingSafariView = true
                     }) {
                         if feature.feature != .webview {
                             Image(systemName: feature.symbolName)
@@ -182,16 +179,15 @@ struct TabButton: View {
                         }
                     }
                     .tabButtonStyle(color: feature.color, width: width)
-                    .safariView(isPresented: $presentingWebview) {
+                    .safariView(isPresented: $presentingSafariView) {
                         SafariView(
                             url: url,
-                            configuration: SafariView.Configuration(
+                            configuration: .init(
                                 entersReaderIfAvailable: false,
                                 barCollapsingEnabled: true
                             )
                         )
                         .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
-                        .dismissButtonStyle(.done)
                     }
                 }
         }

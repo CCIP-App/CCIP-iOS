@@ -86,7 +86,7 @@ struct EventListView: View {
     }
 }
 
-private struct EventRow: View {
+fileprivate struct EventRow: View {
     let url: String
     let displayName: DisplayTextModel
     let action: () -> Void

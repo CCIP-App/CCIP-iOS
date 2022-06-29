@@ -66,7 +66,6 @@ struct AnnounceView: View {
                                 )
                             )
                             .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
-                            .dismissButtonStyle(.done)
                         }
                     } else {
                         VStack {

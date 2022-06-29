@@ -81,9 +81,9 @@ fileprivate struct AboutSection: View {
     private let CCIPPolicyURL = URL(string: "https://opass.app/privacy-policy.html")!
     
     @State var isShowingSafari = false
-    @State var url = URL(string: "https://opass.app")!
     
     var body: some View {
+        var url = URL(string: "https://opass.app")!
         Section(header: Text(LocalizedStringKey("ABOUT"))) {
             VStack(alignment: .leading) {
                 Text(LocalizedStringKey("Version"))
@@ -171,13 +171,12 @@ fileprivate struct AboutSection: View {
         .safariView(isPresented: $isShowingSafari) {
             SafariView(
                 url: url,
-                configuration: SafariView.Configuration(
+                configuration: .init(
                     entersReaderIfAvailable: false,
                     barCollapsingEnabled: true
                 )
             )
             .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
-            .dismissButtonStyle(.done)
         }
     }
 }
