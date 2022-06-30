@@ -39,8 +39,10 @@ struct ScheduleDetailView: View {
         var url = URL(string: "https://opass.app")!
         List {
             VStack(alignment: .leading, spacing: 0) {
-                TagsSection(tagsID: scheduleDetail.tags, tags: eventAPI.eventSchedule?.tags.data ?? [:])
-                    .padding(.vertical, 8)
+                if !scheduleDetail.tags.isEmpty {
+                    TagsSection(tagsID: scheduleDetail.tags, tags: eventAPI.eventSchedule?.tags.data ?? [:])
+                        .padding(.bottom, 8)
+                }
                 
                 Text(LocalizeIn(zh: scheduleDetail.zh, en: scheduleDetail.en).title)
                     .font(.largeTitle.bold())
