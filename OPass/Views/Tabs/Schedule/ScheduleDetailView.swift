@@ -42,6 +42,7 @@ struct ScheduleDetailView: View {
                 if !scheduleDetail.tags.isEmpty {
                     TagsSection(tagsID: scheduleDetail.tags, tags: eventAPI.eventSchedule?.tags.data ?? [:])
                         .padding(.bottom, 8)
+                        .padding(.top, 3.9)
                 }
                 
                 Text(LocalizeIn(zh: scheduleDetail.zh, en: scheduleDetail.en).title)
