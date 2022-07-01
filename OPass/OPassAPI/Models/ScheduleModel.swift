@@ -86,6 +86,7 @@ struct SessionDataModel: Hashable, Codable {
     var live: String? = nil
     var record: String? = nil
     var language: String? = nil
+    var uri: String? = nil
     var zh = Title_DescriptionModel()
     var en = Title_DescriptionModel()
     var speakers: [String] = [""]

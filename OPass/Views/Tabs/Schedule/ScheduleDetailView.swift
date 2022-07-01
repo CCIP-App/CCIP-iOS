@@ -157,6 +157,14 @@ struct ScheduleDetailView: View {
                         } label: {
                             Label("AddToCalendar", systemImage: "calendar.badge.plus")
                         }
+                        
+                        if let uri = self.scheduleDetail.uri, let url = URL(string: uri), let av = UIActivityViewController(activityItems: [url], applicationActivities: nil) {
+                            Button {
+                                UIApplication.shared.currentUIWindow()?.rootViewController?.present(av, animated: true, completion: nil)
+                            } label: {
+                                Label("Share", systemImage: "square.and.arrow.up")
+                            }
+                        }
                     } label: {
                         Image(systemName: "ellipsis.circle")
                     }
