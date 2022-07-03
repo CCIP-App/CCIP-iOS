@@ -3,7 +3,7 @@ on: # rebuild any PRs and main branch changes
   pull_request_target:
   push:
     branches:
-      - master
+      - previous
 
 jobs:
   build:
