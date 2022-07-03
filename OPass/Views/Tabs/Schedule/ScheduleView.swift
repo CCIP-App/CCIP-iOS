@@ -233,7 +233,7 @@ fileprivate struct SelectDayView: View {
     @Binding var selectDayIndex: Int
     let sessions: [SessionModel]
     
-    let weekDayName = ["MON", "TUE", "WEN", "THR", "FRI", "SAT", "SUN"]
+    let weekDayName = ["SUN", "MON", "TUE", "WEN", "THR", "FRI", "SAT"]
     
     var body: some View {
         VStack(spacing: 0) {
