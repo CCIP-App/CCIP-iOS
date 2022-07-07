@@ -15,6 +15,7 @@ struct TicketView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var eventAPI: EventAPIViewModel
     @State var showingToken = false
+    @State var isShowingLogOutAlert = false
     @State var qrCodeUIImage = UIImage()
     let display_text: DisplayTextModel
     let context = CIContext()
@@ -93,6 +94,21 @@ struct TicketView: View {
         }
         .navigationTitle(LocalizeIn(zh: display_text.zh, en: display_text.en))
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                if eventAPI.accessToken != nil {
+                    Button(action: {
+                        isShowingLogOutAlert.toggle()
+                    }) { Text(LocalizedStringKey("SignOut")).foregroundColor(.red) }
+                }
+            }
+        }
+        .alert(LocalizedStringKey("ConfirmSignOut"), isPresented: $isShowingLogOutAlert) {
+            Button(String(localized: "SignOut"), role: .destructive) {
+                eventAPI.signOut()
+            }
+            Button(String(localized: "Cancel"), role: .cancel) { }
+        }
     }
     
     private func renderQRCode(string: String) -> UIImage {

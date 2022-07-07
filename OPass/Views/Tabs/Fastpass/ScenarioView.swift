@@ -67,7 +67,6 @@ struct ScenarioView: View {
             Button(String(localized: "SignOut"), role: .destructive) {
                 eventAPI.signOut()
             }
-            
             Button(String(localized: "Cancel"), role: .cancel) { }
         }
         .alert(LocalizedStringKey("NotAvailable"), isPresented: $isShowingDisableAlert, actions: {
