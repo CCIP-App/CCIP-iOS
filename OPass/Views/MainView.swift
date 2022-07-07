@@ -48,7 +48,8 @@ struct MainView: View {
             ScrollView {
                 LazyVGrid(columns: gridItemLayout) {
                     ForEach(eventAPI.eventSettings.features, id: \.self) { feature in
-                        if !(CheckFeatureIsWebview(type: feature.feature) && feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) == nil) {
+                        if !(CheckFeatureIsWebview(feature.feature) && feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) == nil),
+                           CheckFeatureVisible(feature.visible_roles) {
                             VStack {
                                 GeometryReader { geometry in
                                     TabButton(feature: feature, selectedFeature: $selectedFeature, eventAPI: eventAPI, width: geometry.size.width)
@@ -98,8 +99,17 @@ struct MainView: View {
         }
     }
     
-    private func CheckFeatureIsWebview(type featureType: FeatureType) -> Bool {
+    private func CheckFeatureIsWebview(_ featureType: FeatureType) -> Bool {
         return featureType == .im || featureType == .puzzle || featureType == .venue || featureType == .sponsors || featureType == .staffs || featureType == .webview
+    }
+    private func CheckFeatureVisible(_ visible: [String]?) -> Bool {
+        if let visible = visible {
+            if let role = eventAPI.eventScenarioStatus?.role, visible.contains(role) {
+                return true
+            }
+            return false
+        }
+        return true
     }
 }
 

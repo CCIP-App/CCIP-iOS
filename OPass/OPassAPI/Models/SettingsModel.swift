@@ -33,6 +33,7 @@ struct FeatureModel: Hashable, Codable {
     var icon: String? = nil
     var iconData: Data? = nil
     var display_text = DisplayTextModel()
+    var visible_roles: [String]? = nil
     var wifi: [WiFiModel]? = nil
     var url: String? = nil
 }
