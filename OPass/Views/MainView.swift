@@ -206,7 +206,13 @@ fileprivate extension String {
             case "{token}":
                 url = url.replacingOccurrences(of: param, with: token ?? "")
             case "{public_token}":
-                url = url.replacingOccurrences(of: param, with: Insecure.SHA1.hash(data: Data((token ?? "").utf8)).map { String(format: "%02X", $0) }.joined())
+                url = url.replacingOccurrences(
+                    of: param,
+                    with: Insecure.SHA1.hash(data: Data((token ?? "").utf8))
+                        .map { String(format: "%02X", $0) }
+                        .joined()
+                        .lowercased()
+                )
             case "{role}":
                 url = url.replacingOccurrences(of: param, with: role ?? "")
             default:
