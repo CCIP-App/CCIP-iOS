@@ -52,7 +52,6 @@ struct OPassApp: App {
                         self.url = url
                     }
                 }
-                .onReceive(appDelegate.$dynamicURL) { url = $0 }
                 .preferredColorScheme(appearance == .system ? nil :
                                         appearance == .dark ? .dark : .light)
                 .environmentObject(OPassAPIViewModel())
@@ -62,9 +61,6 @@ struct OPassApp: App {
 
 // Only use this as a last resort. Always try to use SwiftUI lifecycle
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-    
-    // Use this published property to notify SwiftUI lifecycle
-    @Published var dynamicURL: URL? = nil
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
