@@ -106,18 +106,28 @@ struct ContentView: View {
     
     private func parseUniversalLinkAndURL(_ url: URL) async {
         let params = URLComponents(string: "?" + (url.query ?? ""))?.queryItems
-        guard let token = params?.first(where: { $0.name == "token" })?.value else {
+        let token = params?.first(where: { $0.name == "token" })?.value
+        let eventId = params?.first(where: { $0.name == "event_id"})?.value
+        
+        if let token = token {
+            await loginViaLink(token: token, eventId: eventId)
+        } else if let eventId = eventId {
+            directToEvent(eventId: eventId)
+        } else {
             DispatchQueue.main.async {
                 showInvalidURL = true
             }
-            return
         }
+    }
+    
+    private func loginViaLink(token: String, eventId: String?) async {
         var success = false
-        if let eventId = params?.first(where: { $0.name == "event_id" })?.value {
-            success = await OPassAPI.loginEvent(eventId, withToken: token)
+        if eventId != nil  {
+            success = await OPassAPI.loginEvent(eventId!, withToken: token)
         } else if OPassAPI.currentEventID != nil {
             success = await OPassAPI.loginCurrentEvent(token: token)
         }
+        
         if success {
             DispatchQueue.main.async {
                 self.url = nil
@@ -127,6 +137,13 @@ struct ContentView: View {
             DispatchQueue.main.async {
                 self.showInvalidURL = true
             }
+        }
+    }
+    
+    private func directToEvent(eventId: String) {
+        OPassAPI.currentEventID = eventId
+        DispatchQueue.main.async {
+            self.url = nil
         }
     }
 }
