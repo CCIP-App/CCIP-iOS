@@ -16,9 +16,9 @@ class NEHotspot {
         #if targetEnvironment(simulator)
         logger.debug("In Simulator, NEHotspot not working")
         #else
-        if SSID.count > 0 {
+        if !SSID.isEmpty {
             logger.info("NEHotspot association with SSID: \(SSID).");
-            let NEHConfig: NEHotspotConfiguration = (withPass.count > 0) ? NEHotspotConfiguration.init(ssid: SSID, passphrase: withPass, isWEP: false) : NEHotspotConfiguration.init(ssid: SSID);
+            let NEHConfig: NEHotspotConfiguration = withPass.isEmpty ? NEHotspotConfiguration(ssid: SSID) : NEHotspotConfiguration(ssid: SSID, passphrase: withPass, isWEP: false)
             NEHConfig.joinOnce = false
             NEHConfig.lifeTimeInDays = 3
             let manager = NEHotspotConfigurationManager.shared

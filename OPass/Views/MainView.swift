@@ -147,9 +147,7 @@ fileprivate struct TabButton: View {
                 }
                 .tabButtonStyle(color: feature.color, width: width)
                 .sheet(isPresented: $presentingWifiSheet) {
-                    NavigationView {
-                        WiFiView(feature: feature)
-                    }
+                    WiFiView(feature: feature)
                 }
             case .telegram:
                 Button(action: {

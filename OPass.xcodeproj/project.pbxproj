@@ -22,7 +22,6 @@
 		4F5EB73827D3648100235396 /* AnnounceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EB73727D3648100235396 /* AnnounceView.swift */; };
 		4F5EB73A27D37D4A00235396 /* announcementSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F5EB73927D37D4A00235396 /* announcementSample.json */; };
 		4F6968A627EBCB5E009073E4 /* SFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6968A527EBCB5E009073E4 /* SFButton.swift */; };
-		4F6968A827EF863A009073E4 /* TabButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6968A727EF863A009073E4 /* TabButtonStyle.swift */; };
 		4F8522E12817D4C00015BB13 /* EventTitleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8522E02817D4C00015BB13 /* EventTitleModel.swift */; };
 		4F9E9B4E2813F0A300A14905 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E9B4D2813F0A300A14905 /* ArrayExtension.swift */; };
 		4FEF38FB27D13FBA00FC97F4 /* APIRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */; };
@@ -34,11 +33,11 @@
 		D31900DC281CF17600864982 /* LaunchScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D31900D9281CF17500864982 /* LaunchScreen@2x.png */; };
 		D31900DD281CF17600864982 /* LaunchScreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D31900DA281CF17600864982 /* LaunchScreen@3x.png */; };
 		D31900DE281CF17600864982 /* LaunchScreen@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = D31900DB281CF17600864982 /* LaunchScreen@1x.png */; };
+		D3227ABD287FC40D00B458CD /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3227ABC287FC40D00B458CD /* ButtonExtension.swift */; };
 		D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60E27EF4698007EED5D /* CodeScanner */; };
 		D323C1F5282FE03C009AFF97 /* EFQRCode in Frameworks */ = {isa = PBXBuildFile; productRef = D323C1F4282FE03C009AFF97 /* EFQRCode */; };
 		D324EF08286EB9B7004D03D6 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D324EF07286EB9B7004D03D6 /* UIApplicationExtension.swift */; };
-		D34012102821349200D07034 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340120F2821349200D07034 /* Localization.swift */; };
-		D346CD6828687B4800EC7396 /* ProcessURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CD6728687B4800EC7396 /* ProcessURL.swift */; };
+		D34012102821349200D07034 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340120F2821349200D07034 /* ViewExtension.swift */; };
 		D358E55827EDEDB2000A6554 /* FastpassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D358E55727EDEDB2000A6554 /* FastpassView.swift */; };
 		D3602CAC280400D8001D9C15 /* UseScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3602CAB280400D8001D9C15 /* UseScenarioView.swift */; };
 		D3652A772869AF72002AC419 /* AttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A702869AF72002AC419 /* AttributedText.swift */; };
@@ -129,7 +128,6 @@
 		4F5EB73727D3648100235396 /* AnnounceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceView.swift; sourceTree = "<group>"; };
 		4F5EB73927D37D4A00235396 /* announcementSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = announcementSample.json; sourceTree = "<group>"; };
 		4F6968A527EBCB5E009073E4 /* SFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFButton.swift; sourceTree = "<group>"; };
-		4F6968A727EF863A009073E4 /* TabButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonStyle.swift; sourceTree = "<group>"; };
 		4F8522E02817D4C00015BB13 /* EventTitleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTitleModel.swift; sourceTree = "<group>"; };
 		4F9E9B4D2813F0A300A14905 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRepo.swift; sourceTree = "<group>"; };
@@ -141,9 +139,9 @@
 		D31900D9281CF17500864982 /* LaunchScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@2x.png"; sourceTree = "<group>"; };
 		D31900DA281CF17600864982 /* LaunchScreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@3x.png"; sourceTree = "<group>"; };
 		D31900DB281CF17600864982 /* LaunchScreen@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@1x.png"; sourceTree = "<group>"; };
+		D3227ABC287FC40D00B458CD /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		D324EF07286EB9B7004D03D6 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
-		D340120F2821349200D07034 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
-		D346CD6728687B4800EC7396 /* ProcessURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessURL.swift; sourceTree = "<group>"; };
+		D340120F2821349200D07034 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		D358E55727EDEDB2000A6554 /* FastpassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastpassView.swift; sourceTree = "<group>"; };
 		D3602CAB280400D8001D9C15 /* UseScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseScenarioView.swift; sourceTree = "<group>"; };
 		D3652A702869AF72002AC419 /* AttributedText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedText.swift; sourceTree = "<group>"; };
@@ -234,20 +232,20 @@
 				4F9E9B4D2813F0A300A14905 /* ArrayExtension.swift */,
 				D39512F7285A370D009B9AE8 /* EventKitExtension.swift */,
 				D324EF07286EB9B7004D03D6 /* UIApplicationExtension.swift */,
+				D340120F2821349200D07034 /* ViewExtension.swift */,
+				D3227ABC287FC40D00B458CD /* ButtonExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		D3095F1627D78EB500225C7D /* Functions */ = {
+		D3227ABB287FBDE100B458CD /* Class+Extension */ = {
 			isa = PBXGroup;
 			children = (
-				D3095F1727D78EE600225C7D /* UNUserNotification.swift */,
-				D340120F2821349200D07034 /* Localization.swift */,
-				D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */,
 				D3FBFA66282A93B200DE118E /* SoundManager.swift */,
-				D346CD6728687B4800EC7396 /* ProcessURL.swift */,
+				D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */,
+				D3095F1727D78EE600225C7D /* UNUserNotification.swift */,
 			);
-			path = Functions;
+			path = "Class+Extension";
 			sourceTree = "<group>";
 		};
 		D322F60927EF1862007EED5D /* Schedule */ = {
@@ -320,9 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				4F9E9B4C2813F08100A14905 /* Extensions */,
-				D3095F1627D78EB500225C7D /* Functions */,
 				4F6968A527EBCB5E009073E4 /* SFButton.swift */,
-				4F6968A727EF863A009073E4 /* TabButtonStyle.swift */,
 				D301C39328053ED600D027FE /* ActivityIndicator.swift */,
 				D318CE43280918C400CEA1AA /* TruncableText.swift */,
 				4F3A10DB2815201D00CCE5A9 /* ImagePicker.swift */,
@@ -424,6 +420,7 @@
 				D3E4E6BE27CD158400FFACEB /* OPassApp.swift */,
 				D3D3787F27CE42A200021FC4 /* Views */,
 				D3D3788027CE43D700021FC4 /* OPassAPI */,
+				D3227ABB287FBDE100B458CD /* Class+Extension */,
 				D3E4E6C427CD158700FFACEB /* Preview Content */,
 			);
 			path = OPass;
@@ -662,20 +659,19 @@
 				D3EA819A27F747E100FE7985 /* TicketView.swift in Sources */,
 				4F9E9B4E2813F0A300A14905 /* ArrayExtension.swift in Sources */,
 				D3E0123527D38B840040621F /* ScenarioView.swift in Sources */,
-				4F6968A827EF863A009073E4 /* TabButtonStyle.swift in Sources */,
 				D3652A7D2869AF72002AC419 /* AttributedTextImpl+iOS.swift in Sources */,
 				D39512F8285A370D009B9AE8 /* EventKitExtension.swift in Sources */,
-				D34012102821349200D07034 /* Localization.swift in Sources */,
+				D34012102821349200D07034 /* ViewExtension.swift in Sources */,
 				D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */,
 				4F8522E12817D4C00015BB13 /* EventTitleModel.swift in Sources */,
 				D3652A7A2869AF72002AC419 /* AttributedTextImpl+macOS.swift in Sources */,
-				D346CD6828687B4800EC7396 /* ProcessURL.swift in Sources */,
 				D3FBFA67282A93B200DE118E /* SoundManager.swift in Sources */,
 				4F5EB73527D3346D00235396 /* JsonDecodeHelper.swift in Sources */,
 				D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */,
 				D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */,
 				4F3A10DC2815201E00CCE5A9 /* ImagePicker.swift in Sources */,
 				4F5CA37D27FD58D600DEAB39 /* ColorExtension.swift in Sources */,
+				D3227ABD287FC40D00B458CD /* ButtonExtension.swift in Sources */,
 				D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */,
 				D3652A792869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift in Sources */,
 				D3652A782869AF72002AC419 /* TextSizeViewModel.swift in Sources */,

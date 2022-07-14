@@ -20,8 +20,6 @@ struct SFButton: View {
 
 struct SFButton_Previews: PreviewProvider {
     static var previews: some View {
-        SFButton(systemName: "gearshape") {
-            
-        }
+        SFButton(systemName: "gearshape") {}
     }
 }

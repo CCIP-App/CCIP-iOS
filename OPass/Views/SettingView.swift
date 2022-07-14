@@ -201,8 +201,8 @@ fileprivate struct DeveloperOptionView: View {
     var body: some View {
         Form {
             Button(action: {
-                keyStore.synchronize()
                 keyStore.removeObject(forKey: "EventAPI")
+                keyStore.synchronize()
             }) {
                 Label("Clear Cache Data", systemImage: "trash")
             }

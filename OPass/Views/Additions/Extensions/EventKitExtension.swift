@@ -28,8 +28,4 @@ extension EKEventStore {
         event.endDate = endDate
         return event
     }
-    
-    func fetchEvent(identifier: String) -> EKEvent? {
-        event(withIdentifier: identifier)
-    }
 }

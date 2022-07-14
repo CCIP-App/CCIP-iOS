@@ -14,35 +14,37 @@ struct WiFiView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        VStack {
-            if let wifi = feature.wifi {
-                Form {
-                    ForEach(wifi, id: \.self) { wifiDetail in
-                        Button(action: {
-                            NEHotspot.ConnectWiFi(SSID: wifiDetail.SSID, withPass: wifiDetail.password)
-                        }) {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(wifiDetail.SSID)
-                                        .foregroundColor(.black)
-                                    Text(wifiDetail.password)
-                                        .foregroundColor(.gray)
-                                        .font(.footnote)
+        NavigationView {
+            VStack {
+                if let wifi = feature.wifi {
+                    Form {
+                        ForEach(wifi, id: \.self) { wifiDetail in
+                            Button(action: {
+                                NEHotspot.ConnectWiFi(SSID: wifiDetail.SSID, withPass: wifiDetail.password)
+                            }) {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(wifiDetail.SSID)
+                                            .foregroundColor(.black)
+                                        Text(wifiDetail.password)
+                                            .foregroundColor(.gray)
+                                            .font(.footnote)
+                                    }
+                                    Spacer()
+                                    Image(systemName: "chevron.right").foregroundColor(.gray)
                                 }
-                                Spacer()
-                                Image(systemName: "chevron.right").foregroundColor(.gray)
                             }
                         }
                     }
                 }
             }
-        }
-        .navigationTitle(LocalizeIn(zh: feature.display_text.zh, en: feature.display_text.en))
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(LocalizedStringKey("Close")) {
-                    dismiss()
+            .navigationTitle(LocalizeIn(zh: feature.display_text.zh, en: feature.display_text.en))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(LocalizedStringKey("Close")) {
+                        dismiss()
+                    }
                 }
             }
         }
