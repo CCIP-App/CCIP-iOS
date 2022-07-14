@@ -106,29 +106,28 @@ struct ContentView: View {
     
     private func parseUniversalLinkAndURL(_ url: URL) async {
         let params = URLComponents(string: "?" + (url.query ?? ""))?.queryItems
-        let token = params?.first(where: { $0.name == "token" })?.value
-        let eventId = params?.first(where: { $0.name == "event_id"})?.value
         
-        if let token = token {
-            await loginViaLink(token: token, eventId: eventId)
-        } else if let eventId = eventId {
-            directToEvent(eventId: eventId)
-        } else {
+        // Select event
+        guard let eventId = params?.first(where: { $0.name == "event_id"})?.value else {
             DispatchQueue.main.async {
-                showInvalidURL = true
+                self.showInvalidURL = true
             }
-        }
-    }
-    
-    private func loginViaLink(token: String, eventId: String?) async {
-        var success = false
-        if eventId != nil  {
-            success = await OPassAPI.loginEvent(eventId!, withToken: token)
-        } else if OPassAPI.currentEventID != nil {
-            success = await OPassAPI.loginCurrentEvent(token: token)
+            return
         }
         
-        if success {
+        DispatchQueue.main.async {
+            OPassAPI.currentEventID = eventId
+        }
+        
+        // Login
+        guard let token = params?.first(where: { $0.name == "token" })?.value else {
+            DispatchQueue.main.async {
+                self.url = nil
+            }
+            return
+        }
+        
+        if await OPassAPI.loginCurrentEvent(token: token) {
             DispatchQueue.main.async {
                 self.url = nil
             }
@@ -137,13 +136,6 @@ struct ContentView: View {
             DispatchQueue.main.async {
                 self.showInvalidURL = true
             }
-        }
-    }
-    
-    private func directToEvent(eventId: String) {
-        OPassAPI.currentEventID = eventId
-        DispatchQueue.main.async {
-            self.url = nil
         }
     }
 }
