@@ -127,15 +127,17 @@ struct ContentView: View {
             return
         }
         
-        if await OPassAPI.loginCurrentEvent(token: token) {
+        if await OPassAPI.loginCurrentEvent(withToken: token) {
             DispatchQueue.main.async {
                 self.url = nil
             }
             await OPassAPI.currentEventAPI?.loadLogos()
-        } else {
-            DispatchQueue.main.async {
-                self.showInvalidURL = true
-            }
+            return
+        }
+        
+        // Error
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            self.showInvalidURL = true
         }
     }
 }

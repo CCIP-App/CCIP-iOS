@@ -20,10 +20,10 @@ struct OPassApp: App {
     
     init() {
         FirebaseApp.configure()
+        Analytics.setAnalyticsCollectionEnabled(true)
         if appearance != .system {
             UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).overrideUserInterfaceStyle = appearance == .dark ? .dark : .light
         }
-        Analytics.setAnalyticsCollectionEnabled(true)
     }
     
     var body: some Scene {
@@ -31,26 +31,18 @@ struct OPassApp: App {
             ContentView(url: $url)
                 .onOpenURL { url in
                     //It seems that both universal link and custom schemed url from firebase are received via onOpenURL, so we must try parse it in both ways.
-                    var handled = DynamicLinks.dynamicLinks().handleUniversalLink(url) { dynamicLink, _ in
+                    if DynamicLinks.dynamicLinks().handleUniversalLink(url, completion: { dynamicLink, _ in
                         if let url = dynamicLink?.url {
                             self.url = url
                         }
-                    }
+                    }) { return }
                     
-                    if handled {
+                    if let url = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url)?.url {
+                        self.url = url
                         return
                     }
                     
-                    if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
-                        if let url = dynamicLink.url {
-                            handled = true
-                            self.url = url
-                        }
-                    }
-                    if !handled {
-                        // Non Firbase Dynamic Link
-                        self.url = url
-                    }
+                    self.url = url // Non Firbase Dynamic Link
                 }
                 .preferredColorScheme(appearance == .system ? nil :
                                         appearance == .dark ? .dark : .light)

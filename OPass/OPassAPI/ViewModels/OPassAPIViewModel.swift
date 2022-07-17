@@ -118,20 +118,16 @@ extension OPassAPIViewModel {
         }
     }
     
-    func loginCurrentEvent(token: String) async -> Bool {
-        if let eventID = currentEventID {
-            return await loginEvent(eventID, withToken: token)
-        }
-        return false
-    }
-    
-    func loginEvent(_ eventId: String, withToken token: String) async -> Bool {
+    func loginCurrentEvent(withToken token: String) async -> Bool {
+        guard let eventId = self.currentEventID else { return false }
         do {
+            if eventId == currentEventAPI?.event_id {
+                return await currentEventAPI?.redeemToken(token: token) ?? false
+            }
             let eventSettings = try await APIRepo.loadEventSettings(id: eventId)
             let eventModel = EventAPIViewModel(eventSettings: eventSettings, saveData: saveEventAPIData)
             DispatchQueue.main.async {
                 self.currentEventLogo = nil
-                self.currentEventID = eventId
                 self.currentEventAPI = eventModel
             }
             return await eventModel.redeemToken(token: token)
