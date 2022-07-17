@@ -117,6 +117,7 @@ struct ContentView: View {
         
         DispatchQueue.main.async {
             OPassAPI.currentEventID = eventId
+            if eventId != OPassAPI.currentEventAPI?.event_id { OPassAPI.currentEventLogo = nil }
         }
         
         // Login
