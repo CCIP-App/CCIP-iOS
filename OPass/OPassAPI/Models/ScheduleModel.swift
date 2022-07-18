@@ -20,24 +20,18 @@ struct ScheduleModel: Hashable, Codable {
 struct SessionModelsTransform: TransformFunction {
     static func transform(_ sessions: [SessionDataModel]) -> [SessionModel] {
         return sessions
-            .grouped(by: { [$0.start.year, $0.start.month, $0.start.day] })
-            .sorted(by: { entry1, entry2 in
-                let day1 = entry1.key
-                let day2 = entry2.key
-                if day1[0] != day2[0] {
-                    return day1[0] < day2[0]
-                } else if day1[1] != day2[1] {
-                    return day1[1] < day2[1]
-                } else {
-                    return day1[2] < day2[2]
-                }
-            })
+            .grouped(by: \.start.timeTruncated)
+            .sorted { $0.key < $1.key }
             .map { (_, session) in session }
             .map { $0.grouped(by: \.start) }
             .map { sessionsDict in
                 SessionModel(header: Array(sessionsDict.keys.sorted()), data: sessionsDict)
             }
     }
+}
+
+fileprivate extension DateInRegion {
+    var timeTruncated: DateInRegion { self.dateTruncated(from: .hour)! }
 }
 
 fileprivate extension Sequence {
