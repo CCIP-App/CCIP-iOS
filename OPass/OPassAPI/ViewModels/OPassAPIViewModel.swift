@@ -76,20 +76,18 @@ extension OPassAPIViewModel {
                 let eventSettings = try await APIRepo.loadEventSettings(id: eventId)
                 if let eventAPIData = eventAPITemporaryData, eventId == eventAPIData.event_id { // Reload
                     let event = EventAPIViewModel(
-                        eventSettings: eventSettings,
+                        eventSettings,
                         eventLogo: eventAPIData.eventLogo,
-                        eventSchedule: eventAPIData.eventSchedule,
-                        eventAnnouncements: eventAPIData.eventAnnouncements,
-                        eventScenarioStatus: eventAPIData.eventScenarioStatus,
-                        isLogin: eventAPIData.isLogin,
-                        saveData: self.saveEventAPIData)
+                        saveData: self.saveEventAPIData,
+                        tmpData: eventAPIData
+                    )
                     logger.info("Reload event \(event.event_id)")
                     DispatchQueue.main.async {
                         self.currentEventAPI = event
                         Task{ await self.currentEventAPI!.loadLogos() }
                     }
                 } else { // Load new
-                    let event = EventAPIViewModel(eventSettings: eventSettings, saveData: self.saveEventAPIData)
+                    let event = EventAPIViewModel(eventSettings, saveData: self.saveEventAPIData)
                     logger.info("Loading new event from \(self.currentEventAPI?.event_id ?? "none") to \(event.event_id)")
                     DispatchQueue.main.async {
                         self.currentEventAPI = event
@@ -101,13 +99,11 @@ extension OPassAPIViewModel {
                 if let eventAPIData = eventAPITemporaryData, eventAPIData.event_id == eventId {
                     DispatchQueue.main.async {
                         self.currentEventAPI = EventAPIViewModel(
-                            eventSettings: eventAPIData.eventSettings,
+                            eventAPIData.eventSettings,
                             eventLogo: eventAPIData.eventLogo,
-                            eventSchedule: eventAPIData.eventSchedule,
-                            eventAnnouncements: eventAPIData.eventAnnouncements,
-                            eventScenarioStatus: eventAPIData.eventScenarioStatus,
-                            isLogin: eventAPIData.isLogin,
-                            saveData: self.saveEventAPIData)
+                            saveData: self.saveEventAPIData,
+                            tmpData: eventAPIData
+                        )
                     }
                 } else {
                     self.eventAPITemporaryData = nil
@@ -125,7 +121,7 @@ extension OPassAPIViewModel {
                 return await currentEventAPI?.redeemToken(token: token) ?? false
             }
             let eventSettings = try await APIRepo.loadEventSettings(id: eventId)
-            let eventModel = EventAPIViewModel(eventSettings: eventSettings, saveData: saveEventAPIData)
+            let eventModel = EventAPIViewModel(eventSettings, saveData: saveEventAPIData)
             DispatchQueue.main.async {
                 self.currentEventLogo = nil
                 self.currentEventAPI = eventModel

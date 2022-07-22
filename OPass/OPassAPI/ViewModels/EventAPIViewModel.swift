@@ -14,24 +14,19 @@ import OneSignal
 ///Endpoint hold by each Event Organization or hold by OPass Official but switch by Event Organization.
 class EventAPIViewModel: ObservableObject {
     
-    init(eventSettings: SettingsModel,
-         eventLogo: Data? = nil,
-         eventSchedule: ScheduleModel? = nil,
-         eventAnnouncements: [AnnouncementModel]? = nil,
-         eventScenarioStatus: ScenarioStatusModel? = nil,
-         isLogin: Bool = false,
-         saveData: @escaping () async -> Void = {}
+    init(
+        _ eventSettings: SettingsModel,
+        eventLogo: Data? = nil,
+        saveData: @escaping () async -> Void = {},
+        tmpData: CodableEventAPIVM? = nil
     ) {
         self.event_id = eventSettings.event_id
         self.display_name = eventSettings.display_name
         self.logo_url = eventSettings.logo_url
         self.eventSettings = eventSettings
         self.eventLogo = eventLogo
-        self.eventSchedule = eventSchedule
-        self.eventAnnouncements = eventAnnouncements
-        self.eventScenarioStatus = eventScenarioStatus
-        self.isLogin = isLogin
         self.saveData = saveData
+        self.eventAPITemporaryData = tmpData
     }
     
     var saveData: () async -> Void
@@ -43,13 +38,14 @@ class EventAPIViewModel: ObservableObject {
     @Published var eventSchedule: ScheduleModel? = nil
     @Published var eventAnnouncements: [AnnouncementModel]? = nil
     @Published var eventScenarioStatus: ScenarioStatusModel? = nil
-    @Published var isLogin: Bool = false
+    @Published var isLogin: Bool = false // TODO: Pending replace by object will change
+    private var eventAPITemporaryData: CodableEventAPIVM? = nil
     
     private let logger = Logger(subsystem: "app.opass.ccip", category: "EventAPI")
     private let keychain = Keychain(service: "app.opass.ccip-token")//Service key value match App Bundle ID + "-token"
         .synchronizable(true)
     
-    var accessToken: String? {//DO NOT use this for view update beacuse it's not published. Use isLogin.
+    var accessToken: String? {
         get {
             return try? keychain.get(self.event_id + "_token") //Key sample: SITCON_2020_token
         }
@@ -62,14 +58,19 @@ class EventAPIViewModel: ObservableObject {
                     logger.error("Save accessToken faild: \(error.localizedDescription)")
                 }
             } else {
-                logger.info("Access \"accessToken\" with nil, removing token")
+                logger.info("Set \"accessToken\" with nil, removing token")
                 do {
                     try keychain.remove(self.event_id + "_token")
                 } catch {
                     logger.error("Token remove error: \(error.localizedDescription)")
                 }
             }
+            //objectWillChange.send()
         }
+    }
+    
+    enum EventAPIError: Error {
+        case noTokenFound
     }
 }
 
@@ -100,7 +101,7 @@ extension EventAPIViewModel {
                                     .alphanumerics
                                     .union(CharacterSet(charactersIn: "-_"))
                                     .inverted
-        if (token.isEmpty || token.containsAny(nonAllowedCharacters)) {
+        guard !token.isEmpty, !token.containsAny(nonAllowedCharacters) else {
             logger.info("Invalid accessToken of \(token)")
             return false
         }
@@ -118,9 +119,8 @@ extension EventAPIViewModel {
                 Task{ await self.saveData() }
             }
             return true
-        } else  {
-            return false
         }
+        return false
     }
     
     func loadScenarioStatus() async throws {
@@ -128,14 +128,25 @@ extension EventAPIViewModel {
         
         guard let token = accessToken else {
             logger.error("No accessToken included")
-            return
+            throw EventAPIError.noTokenFound
         }
         
-        let eventScenarioStatus = try await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token)
-        DispatchQueue.main.async {
-            self.eventScenarioStatus = eventScenarioStatus
-            self.isLogin = true
-            Task{ await self.saveData() }
+        do {
+            let eventScenarioStatus = try await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token)
+            DispatchQueue.main.async {
+                self.eventScenarioStatus = eventScenarioStatus
+                self.isLogin = true
+                Task{ await self.saveData() }
+            }
+        } catch {
+            guard let data = self.eventAPITemporaryData, let scenarioStatus = data.eventScenarioStatus else {
+                throw error
+            }
+            self.eventAPITemporaryData?.eventScenarioStatus = nil
+            DispatchQueue.main.async {
+                self.eventScenarioStatus = scenarioStatus
+                self.isLogin = data.isLogin
+            }
         }
     }
     
@@ -176,20 +187,40 @@ extension EventAPIViewModel {
     func loadSchedule() async throws {
         @Feature(.schedule, in: eventSettings) var scheduleFeature
         
-        let schedule = try await APIRepo.load(scheduleFrom: scheduleFeature)
-        DispatchQueue.main.async {
-            self.eventSchedule = schedule
-            Task { await self.saveData() }
+        do {
+            let schedule = try await APIRepo.load(scheduleFrom: scheduleFeature)
+            DispatchQueue.main.async {
+                self.eventSchedule = schedule
+                Task { await self.saveData() }
+            }
+        } catch {
+            guard let schedule = self.eventAPITemporaryData?.eventSchedule else {
+                throw error
+            }
+            self.eventAPITemporaryData?.eventSchedule = nil
+            DispatchQueue.main.async {
+                self.eventSchedule = schedule
+            }
         }
     }
     
     func loadAnnouncements() async throws {
         @Feature(.announcement, in: eventSettings) var announcementFeature
         
-        let announcements = try await APIRepo.load(announcementFrom: announcementFeature, token: accessToken ?? "")
-        DispatchQueue.main.async {
-            self.eventAnnouncements = announcements
-            Task{ await self.saveData() }
+        do {
+            let announcements = try await APIRepo.load(announcementFrom: announcementFeature, token: accessToken ?? "")
+            DispatchQueue.main.async {
+                self.eventAnnouncements = announcements
+                Task{ await self.saveData() }
+            }
+        } catch {
+            guard let announcements = self.eventAPITemporaryData?.eventAnnouncements else {
+                throw error
+            }
+            self.eventAPITemporaryData?.eventAnnouncements = nil
+            DispatchQueue.main.async {
+                self.eventAnnouncements = announcements
+            }
         }
     }
     
