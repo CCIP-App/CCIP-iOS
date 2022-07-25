@@ -15,7 +15,7 @@ struct MainView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @ObservedObject var eventAPI: EventAPIViewModel
-    private let gridItemLayout = Array(repeating: GridItem(spacing: CGFloat(25.0), alignment: Alignment.top), count: 4)
+    private let gridItemLayout = Array(repeating: GridItem(spacing: CGFloat(UIScreen.main.bounds.width / 16.56), alignment: Alignment.top), count: 4)
     private let logger = Logger(subsystem: "app.opass.ccip", category: "MainView")
     @State private var selectedFeature: FeatureType? = nil
     
@@ -51,12 +51,21 @@ struct MainView: View {
                         if !(CheckFeatureIsWebview(feature.feature) && feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) == nil),
                            CheckFeatureVisible(feature.visible_roles) {
                             VStack {
-                                GeometryReader { geometry in
-                                    TabButton(feature: feature, selectedFeature: $selectedFeature, eventAPI: eventAPI, width: geometry.size.width)
-                                        .frame(width: geometry.size.width, height: geometry.size.width)
-                                }
+                                TabButton(
+                                    feature: feature,
+                                    selectedFeature: $selectedFeature,
+                                    eventAPI: eventAPI,
+                                    width: UIScreen.main.bounds.width / 5.394136
+                                )
                                 .aspectRatio(contentMode: .fill)
-                                .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
+                                .frame(
+                                    width: UIScreen.main.bounds.width / 5.394136,
+                                    height: UIScreen.main.bounds.width / 5.394136
+                                )
+                                .clipShape(RoundedRectangle(cornerSize: CGSize(
+                                    width: UIScreen.main.bounds.width / 27.6,
+                                    height: UIScreen.main.bounds.width / 27.6
+                                )))
                                 
                                 Text(LocalizeIn(zh: feature.display_text.zh, en: feature.display_text.en))
                                     .font(.custom("RobotoCondensed-Regular", size: 11, relativeTo: .caption2))
