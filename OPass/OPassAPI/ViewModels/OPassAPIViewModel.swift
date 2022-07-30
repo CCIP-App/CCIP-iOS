@@ -50,8 +50,8 @@ extension OPassAPIViewModel {
                     eventLogo: eventAPI.eventLogo,
                     eventSchedule: eventAPI.eventSchedule,
                     eventAnnouncements: eventAPI.eventAnnouncements,
-                    eventScenarioStatus: eventAPI.eventScenarioStatus,
-                    isLogin: eventAPI.isLogin))
+                    eventScenarioStatus: eventAPI.eventScenarioStatus
+                ))
                 keyStore.set(data, forKey: "EventAPI")
                 logger.info("Save scuess of id: \(eventAPI.event_id)")
             } catch {

@@ -44,8 +44,7 @@ enum FeatureType: String, Hashable, Codable {
 
 
 extension SettingsModel {
-    func feature(ofType type: FeatureType) -> FeatureModel {
-        return features.first { $0.feature == type } ??
-                    FeatureModel(feature: .nullFeature)
+    func feature(ofType type: FeatureType) -> FeatureModel? {
+        return features.first { $0.feature == type }
     }
 }

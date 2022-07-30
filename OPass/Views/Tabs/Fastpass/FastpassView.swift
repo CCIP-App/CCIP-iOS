@@ -17,7 +17,7 @@ struct FastpassView: View {
     
     init(eventAPI: EventAPIViewModel) {
         self.eventAPI = eventAPI
-        self.display_text = eventAPI.eventSettings.feature(ofType: .fastpass).display_text
+        self.display_text = eventAPI.eventSettings.feature(ofType: .fastpass)?.display_text ?? .init(en: "", zh: "")
     }
     
     var body: some View {

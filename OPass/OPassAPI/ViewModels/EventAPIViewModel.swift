@@ -38,7 +38,6 @@ class EventAPIViewModel: ObservableObject {
     @Published var eventSchedule: ScheduleModel? = nil
     @Published var eventAnnouncements: [AnnouncementModel]? = nil
     @Published var eventScenarioStatus: ScenarioStatusModel? = nil
-    @Published var isLogin: Bool = false // TODO: Pending replace by object will change
     private var eventAPITemporaryData: CodableEventAPIVM? = nil
     
     private let logger = Logger(subsystem: "app.opass.ccip", category: "EventAPI")
@@ -65,12 +64,13 @@ class EventAPIViewModel: ObservableObject {
                     logger.error("Token remove error: \(error.localizedDescription)")
                 }
             }
-            //objectWillChange.send()
+            objectWillChange.send()
         }
     }
     
     enum EventAPIError: Error {
         case noTokenFound
+        case noCorrectFeatureFound
     }
 }
 
@@ -79,6 +79,11 @@ extension EventAPIViewModel {
     ///Return bool to indicate success or not
     func useScenario(scenario: String) async -> Bool{
         @Feature(.fastpass, in: eventSettings) var fastpassFeature
+        
+        guard let fastpassFeature = fastpassFeature else {
+            logger.critical("Can't find correct fastpass feature")
+            return false
+        }
         guard let token = accessToken else {
             logger.error("No accessToken included")
             return false
@@ -106,16 +111,18 @@ extension EventAPIViewModel {
             return false
         }
         
-        self.isLogin = false
-        
         @Feature(.fastpass, in: eventSettings) var fastpassFeature
+        
+        guard let fastpassFeature = fastpassFeature else {
+            logger.critical("Can't find correct fastpass feature")
+            return false
+        }
         
         if let eventScenarioStatus = try? await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token) {
             OneSignal.sendTag("\(eventScenarioStatus.event_id)\(eventScenarioStatus.role)", value: "\(eventScenarioStatus.token)")
             DispatchQueue.main.async {
                 self.eventScenarioStatus = eventScenarioStatus
                 self.accessToken = token
-                self.isLogin = true
                 Task{ await self.saveData() }
             }
             return true
@@ -126,6 +133,10 @@ extension EventAPIViewModel {
     func loadScenarioStatus() async throws {
         @Feature(.fastpass, in: eventSettings) var fastpassFeature
         
+        guard let fastpassFeature = fastpassFeature else {
+            logger.critical("Can't find correct fastpass feature")
+            throw EventAPIError.noCorrectFeatureFound
+        }
         guard let token = accessToken else {
             logger.error("No accessToken included")
             throw EventAPIError.noTokenFound
@@ -135,7 +146,6 @@ extension EventAPIViewModel {
             let eventScenarioStatus = try await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token)
             DispatchQueue.main.async {
                 self.eventScenarioStatus = eventScenarioStatus
-                self.isLogin = true
                 Task{ await self.saveData() }
             }
         } catch {
@@ -145,7 +155,6 @@ extension EventAPIViewModel {
             self.eventAPITemporaryData?.eventScenarioStatus = nil
             DispatchQueue.main.async {
                 self.eventScenarioStatus = scenarioStatus
-                self.isLogin = data.isLogin
             }
         }
     }
@@ -187,6 +196,10 @@ extension EventAPIViewModel {
     func loadSchedule() async throws {
         @Feature(.schedule, in: eventSettings) var scheduleFeature
         
+        guard let scheduleFeature = scheduleFeature else {
+            logger.critical("Can't find correct schedule feature")
+            throw EventAPIError.noCorrectFeatureFound
+        }
         do {
             let schedule = try await APIRepo.load(scheduleFrom: scheduleFeature)
             DispatchQueue.main.async {
@@ -207,6 +220,10 @@ extension EventAPIViewModel {
     func loadAnnouncements() async throws {
         @Feature(.announcement, in: eventSettings) var announcementFeature
         
+        guard let announcementFeature = announcementFeature else {
+            logger.critical("Can't find correct announcement feature")
+            throw EventAPIError.noCorrectFeatureFound
+        }
         do {
             let announcements = try await APIRepo.load(announcementFrom: announcementFeature, token: accessToken ?? "")
             DispatchQueue.main.async {
@@ -226,7 +243,6 @@ extension EventAPIViewModel {
     
     func signOut() {
         OneSignal.sendTag("\(self.eventScenarioStatus?.event_id ?? "")\(self.eventScenarioStatus?.role ?? "")", value: "")
-        self.isLogin = false
         self.eventScenarioStatus = nil
         self.accessToken = nil
     }
@@ -251,8 +267,7 @@ class CodableEventAPIVM: Codable {
          eventLogo: Data?,
          eventSchedule: ScheduleModel?,
          eventAnnouncements: [AnnouncementModel]?,
-         eventScenarioStatus: ScenarioStatusModel?,
-         isLogin: Bool) {
+         eventScenarioStatus: ScenarioStatusModel?) {
         self.event_id = event_id
         self.display_name = display_name
         self.logo_url = logo_url
@@ -261,7 +276,6 @@ class CodableEventAPIVM: Codable {
         self.eventSchedule = eventSchedule
         self.eventAnnouncements = eventAnnouncements
         self.eventScenarioStatus = eventScenarioStatus
-        self.isLogin = isLogin
     }
     
     var event_id: String
@@ -272,5 +286,4 @@ class CodableEventAPIVM: Codable {
     var eventSchedule: ScheduleModel?
     var eventAnnouncements: [AnnouncementModel]?
     var eventScenarioStatus: ScenarioStatusModel?
-    var isLogin: Bool
 }

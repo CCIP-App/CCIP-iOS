@@ -19,7 +19,7 @@ struct AnnounceView: View {
     
     init(eventAPI: EventAPIViewModel) {
         self.eventAPI = eventAPI
-        self.display_text = eventAPI.eventSettings.feature(ofType: .announcement).display_text
+        self.display_text = eventAPI.eventSettings.feature(ofType: .announcement)?.display_text ?? .init(en: "", zh: "")
     }
     
     var body: some View {

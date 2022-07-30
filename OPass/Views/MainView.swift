@@ -15,24 +15,26 @@ struct MainView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @ObservedObject var eventAPI: EventAPIViewModel
-    private let gridItemLayout = Array(repeating: GridItem(spacing: CGFloat(UIScreen.main.bounds.width / 16.56), alignment: Alignment.top), count: 4)
-    private let logger = Logger(subsystem: "app.opass.ccip", category: "MainView")
     @State private var selectedFeature: FeatureType? = nil
+    private let gridItemLayout = Array(repeating: GridItem(spacing: UIScreen.main.bounds.width / 16.56, alignment: .top), count: 4)
+    private let logger = Logger(subsystem: "app.opass.ccip", category: "MainView")
     
     var body: some View {
         VStack {
             Group {
                 if let image = OPassAPI.currentEventLogo {
                     image
+                        .interpolation(.none)
                         .renderingMode(.template)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
                         .padding(.horizontal)
                 } else if let eventLogoData = eventAPI.eventLogo, let eventLogoUIImage = UIImage(data: eventLogoData) {
                     Image(uiImage: eventLogoUIImage)
+                        .interpolation(.none)
                         .renderingMode(.template)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
                         .padding(.horizontal)
                 } else {
                     Text(LocalizeIn(zh: eventAPI.display_name.zh, en: eventAPI.display_name.en))
@@ -48,8 +50,7 @@ struct MainView: View {
             ScrollView {
                 LazyVGrid(columns: gridItemLayout) {
                     ForEach(eventAPI.eventSettings.features, id: \.self) { feature in
-                        if !(CheckFeatureIsWebview(feature.feature) && feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) == nil),
-                           CheckFeatureVisible(feature.visible_roles) {
+                        if FeatureIsAvailable(feature), FeatureIsVisible(feature.visible_roles) {
                             VStack {
                                 TabButton(
                                     feature: feature,
@@ -72,53 +73,46 @@ struct MainView: View {
                                     .multilineTextAlignment(.center)
                                     .fixedSize(horizontal: false, vertical: true)
                             }.padding(.bottom, 10)
-                        } // Bypass Webview feature that it's url not accepted by URL structure
+                        }
                     }
                 }
-            }
-            .padding(.horizontal)
+            }.padding(.horizontal)
         }
         .background {
             Group {
                 NavigationLink(
                     tag: FeatureType.fastpass,
                     selection: $selectedFeature,
-                    destination: { FastpassView(eventAPI: eventAPI) }) {
-                    EmptyView()
-                }
+                    destination: { FastpassView(eventAPI: eventAPI) }
+                ) { EmptyView() }
                 NavigationLink(
                     tag: FeatureType.ticket,
                     selection: $selectedFeature,
-                    destination: { TicketView(eventAPI: eventAPI) }) {
-                    EmptyView()
-                }
+                    destination: { TicketView(eventAPI: eventAPI) }
+                ) { EmptyView() }
                 NavigationLink(
                     tag: FeatureType.schedule,
                     selection: $selectedFeature,
-                    destination: { ScheduleView(eventAPI: eventAPI) }) {
-                    EmptyView()
-                }
+                    destination: { ScheduleView(eventAPI: eventAPI) }
+                ) { EmptyView() }
                 NavigationLink(
                     tag: FeatureType.announcement,
                     selection: $selectedFeature,
-                    destination: { AnnounceView(eventAPI: eventAPI) }) {
-                    EmptyView()
-                }
+                    destination: { AnnounceView(eventAPI: eventAPI) }
+                ) { EmptyView() }
             }.hidden()
         }
     }
     
-    private func CheckFeatureIsWebview(_ featureType: FeatureType) -> Bool {
-        return featureType == .im || featureType == .puzzle || featureType == .venue || featureType == .sponsors || featureType == .staffs || featureType == .webview
+    private func FeatureIsAvailable(_ feature: FeatureModel) -> Bool {
+        let t = feature.feature
+        guard t == .im || t == .puzzle || t == .venue || t == .sponsors || t == .staffs || t == .webview else { return true }
+        return feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) != nil
     }
-    private func CheckFeatureVisible(_ visible: [String]?) -> Bool {
-        if let visible = visible {
-            if let role = eventAPI.eventScenarioStatus?.role, visible.contains(role) {
-                return true
-            }
-            return false
-        }
-        return true
+    private func FeatureIsVisible(_ visible_roles: [String]?) -> Bool {
+        guard let visible_roles = visible_roles else { return true }
+        guard let user_role = eventAPI.eventScenarioStatus?.role else { return false }
+        return visible_roles.contains(user_role)
     }
 }
 
@@ -132,89 +126,71 @@ fileprivate struct TabButton: View {
     
     @State private var presentingWifiSheet = false
     @State private var presentingSafariView = false
-    //fastpass, ticket, schedule, announcement, wifi, telegram, im, puzzle, venue, sponsors, staffs, webview
     var body: some View {
-        switch(feature.feature) {
-            case .fastpass, .ticket, .schedule, .announcement:
-                Button(action: { selectedFeature = feature.feature }) {
-                    Image(systemName: feature.symbolName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(width / 10)
-                }
-                .tabButtonStyle(color: feature.color, width: width)
+        var url = URL(string: "https://opass.app")!
+        Button {
+            switch(feature.feature) {
+            case .fastpass, .schedule, .ticket, .announcement:
+                self.selectedFeature = feature.feature
             case .wifi:
-                Button(action: {
-                    if let wifi = feature.wifi, wifi.count == 1 {
-                        NEHotspot.ConnectWiFi(SSID: wifi[0].SSID, withPass: wifi[0].password)
-                    } else { presentingWifiSheet.toggle() }
-                }) {
-                    Image(systemName: feature.symbolName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(width / 10)
-                }
-                .tabButtonStyle(color: feature.color, width: width)
-                .sheet(isPresented: $presentingWifiSheet) {
-                    WiFiView(feature: feature)
-                }
+                if let wifi = feature.wifi, wifi.count == 1 {
+                    NEHotspot.ConnectWiFi(SSID: wifi[0].SSID, withPass: wifi[0].password)
+                } else { self.presentingWifiSheet.toggle() }
             case .telegram:
-                Button(action: {
-                    if let telegramURLString = feature.url, let telegramURL = URL(string: telegramURLString) {
-                        openURL(telegramURL)
-                    }
-                }) {
-                    Image(systemName: feature.symbolName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(width / 10)
-                }
-                .tabButtonStyle(color: feature.color, width: width)
+                if let url = URL(string: feature.url ?? "") { openURL(url) }
             default:
-            if let url = feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) {
-                    Button(action: {
-                        presentingSafariView = true
-                    }) {
-                        if feature.feature != .webview {
-                            Image(systemName: feature.symbolName)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .padding(width / 10)
-                        } else {
-                            if let iconData = feature.iconData, let iconUIImage = UIImage(data: iconData) {
-                                Image(uiImage: iconUIImage)
-                                    .renderingMode(.template)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .padding(width / 10)
-                            } else {
-                                Image(systemName: "shippingbox")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .padding(width / 10)
-                            }
-                        }
-                    }
-                    .tabButtonStyle(color: feature.color, width: width)
-                    .safariView(isPresented: $presentingSafariView) {
-                        SafariView(
-                            url: url,
-                            configuration: .init(
-                                entersReaderIfAvailable: false,
-                                barCollapsingEnabled: true
-                            )
-                        )
-                        .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
-                    }
+                if let featureUrl = feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) {
+                    url = featureUrl
+                    self.presentingSafariView.toggle()
                 }
+            }
+        } label: {
+            Group {
+                if let data = feature.iconData, let uiImage = UIImage(data: data) {
+                    Image(uiImage: uiImage)
+                        .interpolation(.none)
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                } else {
+                    Image(systemName: feature.symbolName ?? "shippingbox")
+                        .resizable()
+                        .scaledToFit()
+                }
+            }.padding(width / 10)
         }
+        .tint(feature.color)
+        .aspectRatio(contentMode: .fill)
+        .padding(width * 0.2)
+        .background(feature.color.opacity(0.1))
+        .if (self.feature.feature == .wifi && self.feature.wifi?.count != 1) { $0
+            .sheet(isPresented: $presentingWifiSheet) { WiFiView(feature: feature) }
+        }
+        .if (FeatureIsWebView(feature)) { $0
+            .safariView(isPresented: $presentingSafariView) {
+                SafariView(
+                    url: url,
+                    configuration: .init(
+                        entersReaderIfAvailable: false,
+                        barCollapsingEnabled: true
+                    )
+                )
+                .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
+            }
+        }
+    }
+    
+    private func FeatureIsWebView(_ feature: FeatureModel) -> Bool {
+        let t = feature.feature
+        if t == .im || t == .puzzle || t == .venue || t == .sponsors || t == .staffs || t == .webview { return true }
+        return false
     }
 }
 
 fileprivate extension String {
     func processWith(token: String?, role: String?) -> URL? {
         var url = self
-        guard let paramsRegex = try? NSRegularExpression.init(pattern: "(\\{[^\\}]+\\})", options: .caseInsensitive) else { return nil }
+        guard let paramsRegex = try? NSRegularExpression(pattern: "(\\{[^\\}]+\\})", options: .caseInsensitive) else { return nil }
         let matches = paramsRegex.matches(in: url, options: .reportProgress, range: NSRange(location: 0, length: url.count))
         for m in stride(from: matches.count, to: 0, by: -1) {
             let range = Range(matches[m - 1].range(at: 1), in: url)!
@@ -259,7 +235,7 @@ fileprivate extension FeatureType {
         return buttonColor[self] ?? .purple
     }
     
-    var symbolName: String {
+    var symbolName: String? {
         let buttonSymbolName: [FeatureType : String] = [
             .fastpass : "wallet.pass",
             .ticket : "ticket",
@@ -273,15 +249,14 @@ fileprivate extension FeatureType {
             .sponsors : "banknote",
             .staffs : "person.3"
         ]
-        return buttonSymbolName[self] ?? "exclamationmark.icloud"
+        return buttonSymbolName[self]
     }
 }
 
 fileprivate extension FeatureModel {
     var color: Color { feature.color }
-    var symbolName: String { feature.symbolName }
+    var symbolName: String? { feature.symbolName }
 }
-
 
 #if DEBUG
 struct MainView_Previews: PreviewProvider {

@@ -11,7 +11,7 @@ import SwiftUI
 extension View {
     func LocalizeIn<T>(zh: T, en: T) -> T {
         if Bundle.main.preferredLocalizations[0] ==  "zh-Hant" { return zh }
-        else { return en }
+        return en
     }
     
     func processURL(_ rawURL: URL) -> URL? {
@@ -20,5 +20,11 @@ extension View {
             result = URL(string: "http://" + rawURL.absoluteString)
         }
         return result
+    }
+    
+    @ViewBuilder //Use this at last resort. It's bad in SwiftUI.
+    func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
+        if condition { transform(self) }
+        else { self }
     }
 }

@@ -18,12 +18,10 @@ struct TicketView: View {
     @State var isShowingLogOutAlert = false
     @State var qrCodeUIImage = UIImage()
     let display_text: DisplayTextModel
-    let context = CIContext()
-    let filter = CIFilter.qrCodeGenerator()
     
     init(eventAPI: EventAPIViewModel) {
         self.eventAPI = eventAPI
-        self.display_text = eventAPI.eventSettings.feature(ofType: .ticket).display_text
+        self.display_text = eventAPI.eventSettings.feature(ofType: .ticket)?.display_text ?? .init(en: "", zh: "")
     }
     
     var body: some View {
@@ -41,18 +39,9 @@ struct TicketView: View {
                                             qrCodeUIImage = renderQRCode(string: token)
                                         }
                                 }
-                                
-                                VStack {
-                                    if let id = eventAPI.eventScenarioStatus?.user_id {
-                                        Text("@\(id)")
-                                            .font(.system(.title, design: .rounded))
-                                            .fontWeight(.medium)
-                                    }
-                                }
-                                .padding(.vertical, UIScreen.main.bounds.width * 0.04)
                             }
-                            .padding([.leading, .trailing, .top], UIScreen.main.bounds.width * 0.08)
-                            .background(Color("SectionBackgroundColor"))
+                            .padding(UIScreen.main.bounds.width * 0.08)
+                            .background(Color.white)
                             .cornerRadius(UIScreen.main.bounds.width * 0.1)
                             Spacer()
                         }
@@ -85,8 +74,8 @@ struct TicketView: View {
                             .font(.footnote)
                         Spacer()
                     }
-                        .listRowBackground(Color.transparent)
-                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    .listRowBackground(Color.transparent)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
             } else {
                 RedeemTokenView(eventAPI: eventAPI)
@@ -115,7 +104,7 @@ struct TicketView: View {
         let generator = EFQRCodeGenerator(content: string, encoding: .utf8, size: EFIntSize())
         
         generator.withInputCorrectionLevel(.h)
-        generator.withColors(backgroundColor: UIColor(Color("SectionBackgroundColor")).cgColor, foregroundColor: UIColor(colorScheme == .dark ? Color.white : Color.black).cgColor)
+        generator.withColors(backgroundColor: UIColor.white.cgColor, foregroundColor: UIColor.black.cgColor)
         if let maxMagnification = generator
             .maxMagnification(lessThanOrEqualTo: UIScreen.main.bounds.width * 0.6) {
             generator.magnification = EFIntSize(

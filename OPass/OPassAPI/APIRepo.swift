@@ -17,6 +17,7 @@ final class APIRepo {
         case dataFetchingFailed(cause: Error)
         case missingURL(feature: FeatureModel)
         case invalidDateString(String)
+        case noCorrectFeatureFound
     }
     enum URLs {
         case eventList
@@ -78,7 +79,13 @@ extension APIRepo {
 
 // MARK: - Event APIs
 extension APIRepo {
-    static func load(@Feature(.fastpass) scenarioUseFrom feature: FeatureModel, scenario: String, token: String) async throws -> ScenarioStatusModel {
+    static func load(@Feature(.fastpass) scenarioUseFrom feature: FeatureModel?, scenario: String, token: String) async throws -> ScenarioStatusModel {
+        
+        guard let feature = feature else {
+            logger.critical("Can't find correct fastpass feature")
+            throw LoadError.noCorrectFeatureFound
+        }
+        
         guard let baseURL = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             logger.error("Couldn't find URL in feature: \(feature.feature.rawValue)")
             throw LoadError.missingURL(feature: feature)
@@ -97,7 +104,13 @@ extension APIRepo {
         }
     }
     
-    static func load(@Feature(.fastpass) scenarioStatusFrom feature: FeatureModel,token: String) async throws -> ScenarioStatusModel {
+    static func load(@Feature(.fastpass) scenarioStatusFrom feature: FeatureModel?,token: String) async throws -> ScenarioStatusModel {
+        
+        guard let feature = feature else {
+            logger.critical("Can't find correct fastpass feature")
+            throw LoadError.noCorrectFeatureFound
+        }
+        
         guard let baseURL = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             logger.error("Couldn't find URL in feature: \(feature.feature.rawValue)")
             throw LoadError.missingURL(feature: feature)
@@ -131,10 +144,16 @@ extension APIRepo {
         }
     }
     
-    static func load(@Feature(.schedule) scheduleFrom schedule: FeatureModel) async throws -> ScheduleModel {
-        guard let baseURL = schedule.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            logger.error("Couldn't find URL in feature: \(schedule.feature.rawValue)")
-            throw LoadError.missingURL(feature: schedule)
+    static func load(@Feature(.schedule) scheduleFrom feature: FeatureModel?) async throws -> ScheduleModel {
+        
+        guard let feature = feature else {
+            logger.critical("Can't find correct schedule feature")
+            throw LoadError.noCorrectFeatureFound
+        }
+        
+        guard let baseURL = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            logger.error("Couldn't find URL in feature: \(feature.feature.rawValue)")
+            throw LoadError.missingURL(feature: feature)
         }
         
         guard let url = URL(string: baseURL) else {
@@ -150,7 +169,13 @@ extension APIRepo {
         }
     }
     
-    static func load(@Feature(.announcement) announcementFrom feature: FeatureModel, token: String) async throws -> [AnnouncementModel] {
+    static func load(@Feature(.announcement) announcementFrom feature: FeatureModel?, token: String) async throws -> [AnnouncementModel] {
+        
+        guard let feature = feature else {
+            logger.critical("Can't find correct announcement feature")
+            throw LoadError.noCorrectFeatureFound
+        }
+        
         guard let baseURL = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             logger.error("Couldn't find URL in feature: \(feature.feature.rawValue)")
             throw LoadError.missingURL(feature: feature)

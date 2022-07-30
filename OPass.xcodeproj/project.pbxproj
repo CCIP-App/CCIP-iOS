@@ -30,10 +30,6 @@
 		D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314B66E27D1089200481D5E /* EventAPIViewModel.swift */; };
 		D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D318CE43280918C400CEA1AA /* TruncableText.swift */; };
 		D31900D8281CF07E00864982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D31900D7281CF07E00864982 /* LaunchScreen.storyboard */; };
-		D31900DC281CF17600864982 /* LaunchScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D31900D9281CF17500864982 /* LaunchScreen@2x.png */; };
-		D31900DD281CF17600864982 /* LaunchScreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D31900DA281CF17600864982 /* LaunchScreen@3x.png */; };
-		D31900DE281CF17600864982 /* LaunchScreen@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = D31900DB281CF17600864982 /* LaunchScreen@1x.png */; };
-		D3227ABD287FC40D00B458CD /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3227ABC287FC40D00B458CD /* ButtonExtension.swift */; };
 		D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60E27EF4698007EED5D /* CodeScanner */; };
 		D323C1F5282FE03C009AFF97 /* EFQRCode in Frameworks */ = {isa = PBXBuildFile; productRef = D323C1F4282FE03C009AFF97 /* EFQRCode */; };
 		D324EF08286EB9B7004D03D6 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D324EF07286EB9B7004D03D6 /* UIApplicationExtension.swift */; };
@@ -136,10 +132,6 @@
 		D314B66E27D1089200481D5E /* EventAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPIViewModel.swift; sourceTree = "<group>"; };
 		D318CE43280918C400CEA1AA /* TruncableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncableText.swift; sourceTree = "<group>"; };
 		D31900D7281CF07E00864982 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D31900D9281CF17500864982 /* LaunchScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@2x.png"; sourceTree = "<group>"; };
-		D31900DA281CF17600864982 /* LaunchScreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@3x.png"; sourceTree = "<group>"; };
-		D31900DB281CF17600864982 /* LaunchScreen@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen@1x.png"; sourceTree = "<group>"; };
-		D3227ABC287FC40D00B458CD /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		D324EF07286EB9B7004D03D6 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		D340120F2821349200D07034 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		D358E55727EDEDB2000A6554 /* FastpassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastpassView.swift; sourceTree = "<group>"; };
@@ -233,7 +225,6 @@
 				D39512F7285A370D009B9AE8 /* EventKitExtension.swift */,
 				D324EF07286EB9B7004D03D6 /* UIApplicationExtension.swift */,
 				D340120F2821349200D07034 /* ViewExtension.swift */,
-				D3227ABC287FC40D00B458CD /* ButtonExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -452,9 +443,6 @@
 		D3F23B4C28166D2F00A0FB35 /* OPass */ = {
 			isa = PBXGroup;
 			children = (
-				D31900DB281CF17600864982 /* LaunchScreen@1x.png */,
-				D31900D9281CF17500864982 /* LaunchScreen@2x.png */,
-				D31900DA281CF17600864982 /* LaunchScreen@3x.png */,
 				D3F23B5128166DEF00A0FB35 /* Localizable.strings */,
 			);
 			path = OPass;
@@ -609,8 +597,6 @@
 				D3FAD815285EFBD00025AE7A /* RobotoCondensed-LightItalic.ttf in Resources */,
 				D3FBFA64282A936100DE118E /* din.mp3 in Resources */,
 				D3FAD813285EFBD00025AE7A /* RobotoCondensed-Italic.ttf in Resources */,
-				D31900DE281CF17600864982 /* LaunchScreen@1x.png in Resources */,
-				D31900DD281CF17600864982 /* LaunchScreen@3x.png in Resources */,
 				D3FAD814285EFBD00025AE7A /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				4F5EB73A27D37D4A00235396 /* announcementSample.json in Resources */,
 				D3FAD812285EFBD00025AE7A /* RobotoCondensed-Light.ttf in Resources */,
@@ -622,7 +608,6 @@
 				4F29D9C727D4E6DA00292CC4 /* GoogleService-Info.plist in Resources */,
 				D3FBFA65282A936100DE118E /* don.mp3 in Resources */,
 				D3F23B4F28166DEF00A0FB35 /* Localizable.strings in Resources */,
-				D31900DC281CF17600864982 /* LaunchScreen@2x.png in Resources */,
 				4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */,
 				D3E4E6C327CD158700FFACEB /* Assets.xcassets in Resources */,
 				4F48B5D427CF07910010FC2C /* eventListSample.json in Resources */,
@@ -671,7 +656,6 @@
 				D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */,
 				4F3A10DC2815201E00CCE5A9 /* ImagePicker.swift in Sources */,
 				4F5CA37D27FD58D600DEAB39 /* ColorExtension.swift in Sources */,
-				D3227ABD287FC40D00B458CD /* ButtonExtension.swift in Sources */,
 				D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */,
 				D3652A792869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift in Sources */,
 				D3652A782869AF72002AC419 /* TextSizeViewModel.swift in Sources */,

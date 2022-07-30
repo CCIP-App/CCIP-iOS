@@ -21,7 +21,7 @@ struct ScheduleView: View {
     init(eventAPI: EventAPIViewModel) {
         self.eventAPI = eventAPI
         _likedSessions = AppStorage(wrappedValue: [], "liked_sessions", store: UserDefaults(suiteName: eventAPI.event_id))
-        self.display_text = eventAPI.eventSettings.feature(ofType: .schedule).display_text
+        self.display_text = eventAPI.eventSettings.feature(ofType: .schedule)?.display_text ?? .init(en: "", zh: "")
     }
     
     var body: some View {
