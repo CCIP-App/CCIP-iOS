@@ -15,6 +15,6 @@ struct Feature {
         self.wrappedValue = settings.feature(ofType: type)
     }
     init(wrappedValue: FeatureModel?, _ type: FeatureType) {
-        self.wrappedValue = wrappedValue
+        self.wrappedValue = wrappedValue?.feature == type ? wrappedValue : nil
     }
 }
