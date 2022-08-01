@@ -52,16 +52,16 @@ fileprivate struct AppIconSection: View {
 
 fileprivate struct GeneralSection: View {
     
-    @AppStorage("appearance") var appearance: Appearance = .system
+    @AppStorage("appearance") var appearance: UIUserInterfaceStyle = .unspecified
     
     var body: some View {
-        Section(header: Text(LocalizedStringKey("GENERAL"))) {
+        Section(header: Text("GENERAL")) {
             Picker(selection: $appearance) {
-                Text(LocalizedStringKey("System")).tag(Appearance.system)
-                Text(LocalizedStringKey("Light")).tag(Appearance.light)
-                Text(LocalizedStringKey("Dark")).tag(Appearance.dark)
+                Text("System").tag(UIUserInterfaceStyle.unspecified)
+                Text("Light").tag(UIUserInterfaceStyle.light)
+                Text("Dark").tag(UIUserInterfaceStyle.dark)
             } label: {
-                Label { Text(LocalizedStringKey("Appearance")) } icon: {
+                Label { Text("Appearance") } icon: {
                     Image(systemName: "circle.lefthalf.filled")
                         .padding(5)
                         .foregroundColor(.white)

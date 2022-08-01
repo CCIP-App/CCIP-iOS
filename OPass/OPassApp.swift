@@ -15,15 +15,13 @@ import FirebaseAnalytics
 struct OPassApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @AppStorage("appearance") var appearance: Appearance = .system
+    @AppStorage("appearance") var appearance: UIUserInterfaceStyle = .unspecified
     @State var url: URL? = nil
     
     init() {
         FirebaseApp.configure()
         Analytics.setAnalyticsCollectionEnabled(true)
-        if appearance != .system {
-            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).overrideUserInterfaceStyle = appearance == .dark ? .dark : .light
-        }
+        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).overrideUserInterfaceStyle = appearance
     }
     
     var body: some Scene {
@@ -44,8 +42,7 @@ struct OPassApp: App {
                     
                     self.url = url // Non Firbase Dynamic Link
                 }
-                .preferredColorScheme(appearance == .system ? nil :
-                                        appearance == .dark ? .dark : .light)
+                .preferredColorScheme(.init(appearance))
                 .environmentObject(OPassAPIViewModel())
         }
     }
@@ -94,10 +91,4 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         
         return true
     }
-}
-
-enum Appearance: String, Codable {
-    case system
-    case light
-    case dark
 }
