@@ -12,7 +12,7 @@ import OSLog
 
 class SoundManager {
     private let logger = Logger(subsystem: "app.opass.ccip", category: "SoundManager")
-    static let instance = SoundManager()
+    static let shared = SoundManager()
     var player: AVAudioPlayer?
     
     enum SoundOption: String {

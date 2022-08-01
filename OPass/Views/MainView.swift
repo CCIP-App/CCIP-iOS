@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import BetterSafariView
 import CryptoKit
 import OSLog
 
@@ -118,16 +117,13 @@ struct MainView: View {
 
 fileprivate struct TabButton: View {
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.openURL) var openURL
     let feature: FeatureModel
     @Binding var selectedFeature: FeatureType?
     @ObservedObject var eventAPI: EventAPIViewModel
     let width: CGFloat
     
     @State private var presentingWifiSheet = false
-    @State private var presentingSafariView = false
     var body: some View {
-        var url = URL(string: "https://opass.app")!
         Button {
             switch(feature.feature) {
             case .fastpass, .schedule, .ticket, .announcement:
@@ -137,11 +133,12 @@ fileprivate struct TabButton: View {
                     NEHotspot.ConnectWiFi(SSID: wifi[0].SSID, withPass: wifi[0].password)
                 } else { self.presentingWifiSheet.toggle() }
             case .telegram:
-                if let url = URL(string: feature.url ?? "") { openURL(url) }
+                if let url = URL(string: feature.url ?? "") {
+                    OpenInOS(forURL: url)
+                }
             default:
-                if let featureUrl = feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) {
-                    url = featureUrl
-                    self.presentingSafariView.toggle()
+                if let url = feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) {
+                    OpenInAppSafari(forURL: url, style: colorScheme)
                 }
             }
         } label: {
@@ -165,18 +162,6 @@ fileprivate struct TabButton: View {
         .background(feature.color.opacity(0.1))
         .if (self.feature.feature == .wifi && self.feature.wifi?.count != 1) { $0
             .sheet(isPresented: $presentingWifiSheet) { WiFiView(feature: feature) }
-        }
-        .if (FeatureIsWebView(feature)) { $0
-            .safariView(isPresented: $presentingSafariView) {
-                SafariView(
-                    url: url,
-                    configuration: .init(
-                        entersReaderIfAvailable: false,
-                        barCollapsingEnabled: true
-                    )
-                )
-                .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
-            }
         }
     }
     

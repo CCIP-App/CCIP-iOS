@@ -7,15 +7,15 @@
 //
 
 import SwiftUI
-import Firebase
 import OneSignal
+import Firebase
 import FirebaseAnalytics
 
 @main
 struct OPassApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @AppStorage("appearance") var appearance: UIUserInterfaceStyle = .unspecified
+    @AppStorage("UserInterfaceStyle") var appearance: UIUserInterfaceStyle = .unspecified
     @State var url: URL? = nil
     
     init() {

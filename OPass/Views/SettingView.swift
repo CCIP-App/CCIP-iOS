@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import BetterSafariView
 
 struct SettingView: View {
     
@@ -22,10 +21,10 @@ struct SettingView: View {
                 
                 AboutSection()
                 
-                DeveloperSection()
+                AdvancedSection()
             }
         }
-        .navigationTitle(LocalizedStringKey("Setting"))
+        .navigationTitle("Setting")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -52,7 +51,7 @@ fileprivate struct AppIconSection: View {
 
 fileprivate struct GeneralSection: View {
     
-    @AppStorage("appearance") var appearance: UIUserInterfaceStyle = .unspecified
+    @AppStorage("UserInterfaceStyle") var appearance: UIUserInterfaceStyle = .unspecified
     
     var body: some View {
         Section(header: Text("GENERAL")) {
@@ -70,6 +69,9 @@ fileprivate struct GeneralSection: View {
                 }
             }
         }
+        .onChange(of: appearance) {
+            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).overrideUserInterfaceStyle = $0
+        }
     }
 }
 
@@ -80,29 +82,25 @@ fileprivate struct AboutSection: View {
     private let CCIPGitHubURL = URL(string: "https://github.com/CCIP-App")!
     private let CCIPPolicyURL = URL(string: "https://opass.app/privacy-policy.html")!
     
-    @State var isShowingSafari = false
-    
     var body: some View {
-        var url = URL(string: "https://opass.app")!
-        Section(header: Text(LocalizedStringKey("ABOUT"))) {
+        Section(header: Text("ABOUT")) {
             VStack(alignment: .leading) {
-                Text(LocalizedStringKey("Version"))
+                Text("Version")
                     .foregroundColor(colorScheme == .dark ? .white : .black)
                 Text(
                     String("\(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)") +
                     String(" (Build \(Bundle.main.infoDictionary!["CFBundleVersion"]!))")
                 )
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
+                .font(.subheadline)
+                .foregroundColor(.gray)
             }
             
-            Button(action: {
-                url = CCIPWebsiteURL
-                isShowingSafari.toggle()
-            }) {
+            Button {
+                OpenInAppSafari(forURL: CCIPWebsiteURL, style: colorScheme)
+            } label: {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(LocalizedStringKey("OfficialWebsite"))
+                        Text("OfficialWebsite")
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                         Text(CCIPWebsiteURL.absoluteString)
                             .font(.subheadline)
@@ -120,10 +118,9 @@ fileprivate struct AboutSection: View {
                 }
             }
             
-            Button(action: {
-                url = CCIPGitHubURL
-                isShowingSafari.toggle()
-            }) {
+            Button {
+                OpenInAppSafari(forURL: CCIPGitHubURL, style: colorScheme)
+            } label: {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("GitHub")
@@ -144,13 +141,12 @@ fileprivate struct AboutSection: View {
                 }
             }
             
-            Button(action: {
-                url = CCIPPolicyURL
-                isShowingSafari.toggle()
-            }) {
+            Button {
+                OpenInAppSafari(forURL: CCIPPolicyURL, style: colorScheme)
+            } label: {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(LocalizedStringKey("PrivacyPolicy"))
+                        Text("PrivacyPolicy")
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                         Text(CCIPPolicyURL.absoluteString)
                             .font(.subheadline)
@@ -168,35 +164,24 @@ fileprivate struct AboutSection: View {
                 }
             }
         }
-        .safariView(isPresented: $isShowingSafari) {
-            SafariView(
-                url: url,
-                configuration: .init(
-                    entersReaderIfAvailable: false,
-                    barCollapsingEnabled: true
-                )
-            )
-            .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
-        }
     }
 }
 
-fileprivate struct DeveloperSection: View {
+fileprivate struct AdvancedSection: View {
     var body: some View {
-        Section(header: Text("DEVELOPER")) {
-            NavigationLink(destination: DeveloperOptionView()) {
+        Section(header: Text("ADVANCED")) {
+            NavigationLink(destination: AdvancedOptionView()) {
                 Image(systemName: "hammer")
-                Text("Developer Option")
+                Text("AdvancedOption")
             }
         }
     }
 }
 
-fileprivate struct DeveloperOptionView: View {
+fileprivate struct AdvancedOptionView: View {
     
     private var keyStore = NSUbiquitousKeyValueStore()
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
-    @State var isDebug = false
     
     var body: some View {
         Form {
@@ -204,10 +189,10 @@ fileprivate struct DeveloperOptionView: View {
                 keyStore.removeObject(forKey: "EventAPI")
                 keyStore.synchronize()
             }) {
-                Label("Clear Cache Data", systemImage: "trash")
+                Label("ClearCacheData", systemImage: "trash")
             }
         }
-        .navigationTitle("Developer Option")
+        .navigationTitle("AdvancedOption")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

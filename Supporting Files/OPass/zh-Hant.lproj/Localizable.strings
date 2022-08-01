@@ -85,6 +85,9 @@
 "ABOUT" = "關於";
 "OfficialWebsite" = "官方網站";
 "PrivacyPolicy" = "隱私權政策";
+"ADVANCED" = "進階";
+"AdvancedOption" = "進階選項";
+"ClearCacheData" = "清除快取資料";
 "Version" = "版本";
 "Close" = "關閉";
 "SelectEvent" = "選擇活動";

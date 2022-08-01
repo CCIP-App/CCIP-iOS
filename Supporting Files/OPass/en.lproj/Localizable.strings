@@ -86,6 +86,9 @@
 "OfficialWebsite" = "Official Website";
 "PrivacyPolicy" = "Privacy Policy";
 "Version" = "Version";
+"ADVANCED" = "ADVANCED";
+"AdvancedOption" = "Advanced Option";
+"ClearCacheData" = "Clear Cache Data";
 "Close" = "Close";
 "SelectEvent" = "Select Event";
 "SessionWillStartIn5Minutes" = "Session will start in 5 mins.";

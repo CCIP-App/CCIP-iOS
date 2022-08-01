@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import BetterSafariView
 
 struct AnnounceView: View {
     
@@ -23,20 +22,14 @@ struct AnnounceView: View {
     }
     
     var body: some View {
-        var url = URL(string: "https://opass.app")!
         VStack {
             if !isError {
                 if let announcements = eventAPI.eventAnnouncements {
                     if !announcements.isEmpty {
                         List(announcements, id: \.datetime) { announcement in
                             Button(action: {
-                                if !announcement.uri.isEmpty, let rawUrl = URL(string: announcement.uri) {
-                                    if let processUrl = processURL(rawUrl) {
-                                        url = processUrl
-                                        self.isShowingSafari = true
-                                    } else {
-                                        UIApplication.shared.open(rawUrl)
-                                    }
+                                if let url = URL(string: announcement.uri) {
+                                    OpenInAppSafari(forURL: url, style: colorScheme)
                                 }
                             }) {
                                 HStack {
@@ -57,16 +50,6 @@ struct AnnounceView: View {
                         }
                         .refreshable{ try? await eventAPI.loadAnnouncements() }
                         .task{ try? await eventAPI.loadAnnouncements() }
-                        .safariView(isPresented: $isShowingSafari) {
-                            SafariView(
-                                url: url,
-                                configuration: .init(
-                                    entersReaderIfAvailable: false,
-                                    barCollapsingEnabled: true
-                                )
-                            )
-                            .preferredBarAccentColor(colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : .white)
-                        }
                     } else {
                         VStack {
                             Image(systemName: "tray.fill")

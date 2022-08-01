@@ -52,8 +52,9 @@ struct TicketView: View {
                         HStack {
                             showingToken
                             ? Text(token)
+                                .fixedSize(horizontal: false, vertical: true)
                             : Text(String(repeating: "•", count: token.count))
-                                .font(.title3)
+                                .font(.title3).fixedSize(horizontal: false, vertical: true)
                         }
                     }
                     .onTapGesture {
