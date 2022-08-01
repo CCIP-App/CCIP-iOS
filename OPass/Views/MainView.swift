@@ -134,11 +134,11 @@ fileprivate struct TabButton: View {
                 } else { self.presentingWifiSheet.toggle() }
             case .telegram:
                 if let url = URL(string: feature.url ?? "") {
-                    OpenInOS(forURL: url)
+                    Constants.OpenInOS(forURL: url)
                 }
             default:
                 if let url = feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) {
-                    OpenInAppSafari(forURL: url, style: colorScheme)
+                    Constants.OpenInAppSafari(forURL: url, style: colorScheme)
                 }
             }
         } label: {

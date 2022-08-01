@@ -27,11 +27,12 @@ struct AnnounceView: View {
                 if let announcements = eventAPI.eventAnnouncements {
                     if !announcements.isEmpty {
                         List(announcements, id: \.datetime) { announcement in
-                            Button(action: {
-                                if let url = URL(string: announcement.uri) {
-                                    OpenInAppSafari(forURL: url, style: colorScheme)
+                            let url = URL(string: announcement.uri)
+                            Button {
+                                if let url = url {
+                                    Constants.OpenInAppSafari(forURL: url, style: colorScheme)
                                 }
-                            }) {
+                            } label: {
                                 HStack {
                                     VStack(alignment: .leading, spacing: 3) {
                                         Text(LocalizeIn(zh: announcement.msg_zh, en: announcement.msg_en))
@@ -41,7 +42,7 @@ struct AnnounceView: View {
                                             .foregroundColor(.gray)
                                     }
                                     Spacer()
-                                    if URL(string: announcement.uri) != nil {
+                                    if url != nil {
                                         Image(systemName: "chevron.right")
                                             .foregroundColor(.gray)
                                     }
@@ -57,14 +58,14 @@ struct AnnounceView: View {
                                 .scaledToFit()
                                 .frame(width: UIScreen.main.bounds.width * 0.25)
                                 .foregroundColor(Color("LogoColor"))
-                            Text(LocalizedStringKey("EmptyAnnouncement"))
+                            Text("EmptyAnnouncement")
                                 .font(.title2)
                         }
                         .refreshable{ try? await eventAPI.loadAnnouncements() }
                         .task{ try? await eventAPI.loadAnnouncements() }
                     }
                 } else {
-                    ProgressView(LocalizedStringKey("Loading"))
+                    ProgressView("Loading")
                         .task {
                             do { try await self.eventAPI.loadAnnouncements() }
                             catch { self.isError = true }

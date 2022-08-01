@@ -19,9 +19,9 @@ struct WiFiView: View {
                 if let wifi = feature.wifi {
                     Form {
                         ForEach(wifi, id: \.self) { wifiDetail in
-                            Button(action: {
+                            Button {
                                 NEHotspot.ConnectWiFi(SSID: wifiDetail.SSID, withPass: wifiDetail.password)
-                            }) {
+                            } label: {
                                 HStack {
                                     VStack(alignment: .leading) {
                                         Text(wifiDetail.SSID)

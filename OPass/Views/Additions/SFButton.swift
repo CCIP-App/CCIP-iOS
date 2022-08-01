@@ -18,8 +18,10 @@ struct SFButton: View {
     }
 }
 
+#if DEBUG
 struct SFButton_Previews: PreviewProvider {
     static var previews: some View {
         SFButton(systemName: "gearshape") {}
     }
 }
+#endif

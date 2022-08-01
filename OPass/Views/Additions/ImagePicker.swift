@@ -45,6 +45,7 @@ class ImagePickerDelegate: NSObject, UIImagePickerControllerDelegate, UINavigati
     
 }
 
+#if DEBUG
 struct ImagePicker_Previews: PreviewProvider {
     static var previews: some View {
         ImagePicker {_ in
@@ -52,3 +53,4 @@ struct ImagePicker_Previews: PreviewProvider {
         }
     }
 }
+#endif

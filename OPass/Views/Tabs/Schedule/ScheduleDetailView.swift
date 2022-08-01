@@ -227,7 +227,7 @@ fileprivate struct FeatureButtons: View {
                     if let url = URL(string: url) {
                         VStack {
                             Button {
-                                OpenInAppSafari(forURL: url, style: colorScheme)
+                                Constants.OpenInAppSafari(forURL: url, style: colorScheme)
                             } label: {
                                 Image(systemName: systemImageName)
                                     .font(.system(size: 23, weight: .semibold, design: .rounded))
@@ -453,7 +453,7 @@ fileprivate struct SpeakerBio: View {
     var body: some View {
         VStack(spacing: 0) {
             Markdown(speakerBio, font: .footnote) { url in
-                OpenInAppSafari(forURL: url, style: colorScheme)
+                Constants.OpenInAppSafari(forURL: url, style: colorScheme)
             }
             .lineSpacing(4)
             .lineLimit(2)
@@ -503,7 +503,7 @@ fileprivate struct SpeakerBio: View {
                                             Markdown(speakerBio, font: .footnote) { url in
                                                 SOCManager.dismiss(isPresented: $isShowingSpeakerDetail)
                                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
-                                                    OpenInAppSafari(forURL: url, style: colorScheme)
+                                                    Constants.OpenInAppSafari(forURL: url, style: colorScheme)
                                                 }
                                             }
                                             .lineSpacing(4)
@@ -520,7 +520,7 @@ fileprivate struct SpeakerBio: View {
                                                 Markdown(speakerBio, font: .footnote) { url in
                                                     SOCManager.dismiss(isPresented: $isShowingSpeakerDetail)
                                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
-                                                        OpenInAppSafari(forURL: url, style: colorScheme)
+                                                        Constants.OpenInAppSafari(forURL: url, style: colorScheme)
                                                     }
                                                 }
                                                 .lineSpacing(4)
@@ -551,7 +551,7 @@ fileprivate struct DescriptionSection: View {
     var body: some View {
         Section(header: Text(LocalizedStringKey("SessionIntroduction")).padding(.leading, 10)) {
             Markdown(description, font: .footnote) { url in
-                OpenInAppSafari(forURL: url, style: colorScheme)
+                Constants.OpenInAppSafari(forURL: url, style: colorScheme)
             }
             .lineSpacing(4)
             .padding()

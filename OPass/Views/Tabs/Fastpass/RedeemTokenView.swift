@@ -115,7 +115,7 @@ struct RedeemTokenView: View {
                                     .multilineTextAlignment(.center)
                                 Spacer()
                                 Button {
-                                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                                    Constants.OpenInOS(forURL: URL(string: UIApplication.openSettingsURLString)!)
                                 } label: {
                                     Text(LocalizedStringKey("OpenSettings"))
                                         .foregroundColor(.blue)

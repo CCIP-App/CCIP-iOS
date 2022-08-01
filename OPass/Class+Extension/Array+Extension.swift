@@ -1,5 +1,5 @@
 //
-//  ArrayExtension.swift
+//  Array+Extension.swift
 //  OPass
 //
 //  Created by secminhr on 2022/4/23.
