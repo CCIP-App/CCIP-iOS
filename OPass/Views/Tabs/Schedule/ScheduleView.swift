@@ -14,7 +14,7 @@ struct ScheduleView: View {
     @ObservedObject var eventAPI: EventAPIViewModel
     @AppStorage var likedSessions: [String]
     let display_text: DisplayTextModel
-    @State var selectDayIndex = 0
+    @State var selectDayIndex: Int
     @State var filter = Filter.all
     @State var isError = false
     
@@ -22,6 +22,7 @@ struct ScheduleView: View {
         self.eventAPI = eventAPI
         _likedSessions = AppStorage(wrappedValue: [], "liked_sessions", store: UserDefaults(suiteName: eventAPI.event_id))
         self.display_text = eventAPI.eventSettings.feature(ofType: .schedule)?.display_text ?? .init(en: "", zh: "")
+        _selectDayIndex = State(initialValue: eventAPI.eventSchedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0)
     }
     
     var body: some View {
@@ -97,18 +98,12 @@ struct ScheduleView: View {
                     }
                 } else {
                     ProgressView(LocalizedStringKey("Loading"))
-                        .task {
-                            do { try await eventAPI.loadSchedule() }
-                            catch { isError = true }
-                        }
+                        .task { await scheduleFreshLoad() }
                 }
             } else {
                 ErrorWithRetryView {
                     self.isError = false
-                    Task {
-                        do { try await eventAPI.loadSchedule() }
-                        catch { self.isError = true }
-                    }
+                    Task { await scheduleFreshLoad() }
                 }
             }
         }
@@ -216,6 +211,14 @@ struct ScheduleView: View {
                 }
             }
         }
+    }
+    
+    private func scheduleFreshLoad() async {
+        do {
+            try await eventAPI.loadSchedule()
+            selectDayIndex = eventAPI.eventSchedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0
+        }
+        catch { isError = true }
     }
 }
 
