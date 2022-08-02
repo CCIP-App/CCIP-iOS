@@ -30,11 +30,11 @@ struct SessionModelsTransform: TransformFunction {
     }
 }
 
-fileprivate extension DateInRegion {
+private extension DateInRegion {
     var timeTruncated: DateInRegion { self.dateTruncated(from: .hour)! }
 }
 
-fileprivate extension Sequence {
+private extension Sequence {
     func grouped<K>(by keyPath: KeyPath<Element, K>) -> Dictionary<K, [Element]> {
         return grouped(by: { $0[keyPath: keyPath] })
     }

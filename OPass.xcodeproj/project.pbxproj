@@ -60,7 +60,7 @@
 		D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6195027CFA9A800643D97 /* ScheduleView.swift */; };
 		D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3C6F60C28634F3B0074B942 /* MarkdownKit */; };
 		D3C6F60F286360FC0074B942 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6F60E286360FC0074B942 /* Markdown.swift */; };
-		D3C972F227F03531008561DE /* ScheduleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C972F127F03531008561DE /* ScheduleDetailView.swift */; };
+		D3C972F227F03531008561DE /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C972F127F03531008561DE /* SessionDetailView.swift */; };
 		D3D3788227CE440D00021FC4 /* OPassAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */; };
 		D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788A27CE542100021FC4 /* MoreModels.swift */; };
 		D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789027CE62EB00021FC4 /* EventListView.swift */; };
@@ -160,7 +160,7 @@
 		D3C6194C27CF9A7400643D97 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingView.swift; path = OPass/Views/SettingView.swift; sourceTree = SOURCE_ROOT; };
 		D3C6195027CFA9A800643D97 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleView.swift; path = OPass/Views/Tabs/Schedule/ScheduleView.swift; sourceTree = SOURCE_ROOT; };
 		D3C6F60E286360FC0074B942 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
-		D3C972F127F03531008561DE /* ScheduleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailView.swift; sourceTree = "<group>"; };
+		D3C972F127F03531008561DE /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPIViewModel.swift; sourceTree = "<group>"; };
 		D3D3788A27CE542100021FC4 /* MoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreModels.swift; sourceTree = "<group>"; };
 		D3D3789027CE62EB00021FC4 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
@@ -237,7 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				D3C6195027CFA9A800643D97 /* ScheduleView.swift */,
-				D3C972F127F03531008561DE /* ScheduleDetailView.swift */,
+				D3C972F127F03531008561DE /* SessionDetailView.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -318,6 +318,7 @@
 			children = (
 				D3E0123627D38CF70040621F /* Fastpass */,
 				D322F60927EF1862007EED5D /* Schedule */,
+				D3E0123727D38D3D0040621F /* RedeemTokenView.swift */,
 				D3EA819927F747E100FE7985 /* TicketView.swift */,
 				4F5EB73727D3648100235396 /* AnnounceView.swift */,
 				D3C0E21B27D51C060095169F /* WifiView.swift */,
@@ -368,7 +369,6 @@
 				D358E55727EDEDB2000A6554 /* FastpassView.swift */,
 				D3E0123427D38B840040621F /* ScenarioView.swift */,
 				D3602CAB280400D8001D9C15 /* UseScenarioView.swift */,
-				D3E0123727D38D3D0040621F /* RedeemTokenView.swift */,
 			);
 			path = Fastpass;
 			sourceTree = "<group>";
@@ -667,7 +667,7 @@
 				D3E4E6BF27CD158400FFACEB /* OPassApp.swift in Sources */,
 				4F6968A627EBCB5E009073E4 /* SFButton.swift in Sources */,
 				4F5EB73827D3648100235396 /* AnnounceView.swift in Sources */,
-				D3C972F227F03531008561DE /* ScheduleDetailView.swift in Sources */,
+				D3C972F227F03531008561DE /* SessionDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

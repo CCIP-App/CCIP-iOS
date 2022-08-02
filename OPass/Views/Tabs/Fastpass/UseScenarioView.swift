@@ -60,7 +60,7 @@ struct UseScenarioView: View {
                 Text(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en))
                     .font(.largeTitle.bold())
                 
-                Text(LocalizedStringKey("ConfirmUseScenarioMessage"))
+                Text("ConfirmUseScenarioMessage")
                     .multilineTextAlignment(.center)
             }
             
@@ -70,7 +70,7 @@ struct UseScenarioView: View {
                 Spacer()
             }
             
-            Button(action: {
+            Button {
                 viewStage = 1
                 Task {
                     if await eventAPI.useScenario(scenario: scenario.id) {
@@ -78,8 +78,8 @@ struct UseScenarioView: View {
                         viewStage = 2
                     } else { viewStage = 3 }
                 }
-            }) {
-                Text(LocalizedStringKey("ConfirmUse"))
+            } label: {
+                Text("ConfirmUse")
                     .foregroundColor(.white)
                     .padding(.vertical, 11)
                     .frame(maxWidth: .infinity)
@@ -87,7 +87,7 @@ struct UseScenarioView: View {
                     .cornerRadius(10)
             }
 
-            Button(action: { dismiss() }) {
+            Button { dismiss() } label: {
                 Text(LocalizedStringKey("Cancel"))
                     .foregroundColor(.blue)
                     .padding(.vertical, 10)
@@ -96,7 +96,7 @@ struct UseScenarioView: View {
     }
 }
 
-fileprivate struct ScuessScenarioView: View {
+private struct ScuessScenarioView: View {
     
     @Environment(\.dismiss) var dismiss
     let scenario: ScenarioDataModel
@@ -143,7 +143,7 @@ fileprivate struct ScuessScenarioView: View {
     }
 }
 
-fileprivate struct TimerView: View {
+private struct TimerView: View {
     
     let scenario: ScenarioDataModel
     let countTime: Double
@@ -211,17 +211,11 @@ fileprivate struct TimerView: View {
         }
     }
     
-    private func BackgroundColor(diet input: String?) -> Color {
-        if let diet = input {
-            switch diet {
-            case "meat":
-                return Color(red: 1, green: 160/255, blue: 0, opacity: 1)
-            case "vegetarian":
-                return Color(red: 41/255, green: 138/255, blue: 8/255, opacity: 1)
-            default:
-                return Color.blue
-            }
+    private func BackgroundColor(diet: String?) -> Color {
+        switch diet {
+        case "meat": return Color(red: 1, green: 160/255, blue: 0)
+        case "vegetarian": return Color(red: 41/255, green: 138/255, blue: 8/255)
+        default: return Color.blue
         }
-        return Color.blue
     }
 }

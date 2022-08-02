@@ -115,7 +115,7 @@ struct MainView: View {
     }
 }
 
-fileprivate struct TabButton: View {
+private struct TabButton: View {
     @Environment(\.colorScheme) var colorScheme
     let feature: FeatureModel
     @Binding var selectedFeature: FeatureType?
@@ -172,7 +172,7 @@ fileprivate struct TabButton: View {
     }
 }
 
-fileprivate extension String {
+private extension String {
     func processWith(token: String?, role: String?) -> URL? {
         var url = self
         guard let paramsRegex = try? NSRegularExpression(pattern: "(\\{[^\\}]+\\})", options: .caseInsensitive) else { return nil }
@@ -201,7 +201,7 @@ fileprivate extension String {
     }
 }
 
-fileprivate extension FeatureType {
+private extension FeatureType {
     var color: Color {
         let buttonColor: [FeatureType : Color] = [
             .fastpass : .blue,
@@ -238,7 +238,7 @@ fileprivate extension FeatureType {
     }
 }
 
-fileprivate extension FeatureModel {
+private extension FeatureModel {
     var color: Color { feature.color }
     var symbolName: String? { feature.symbolName }
 }

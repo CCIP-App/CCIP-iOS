@@ -15,14 +15,14 @@ struct ScheduleView: View {
     @AppStorage var likedSessions: [String]
     let display_text: DisplayTextModel
     @State var selectDayIndex: Int
-    @State var filter = Filter.all
-    @State var isError = false
+    @State private var filter = Filter.all
+    @State private var isError = false
     
     init(eventAPI: EventAPIViewModel) {
         self.eventAPI = eventAPI
-        _likedSessions = AppStorage(wrappedValue: [], "liked_sessions", store: UserDefaults(suiteName: eventAPI.event_id))
+        self._likedSessions = AppStorage(wrappedValue: [], "liked_sessions", store: UserDefaults(suiteName: eventAPI.event_id))
         self.display_text = eventAPI.eventSettings.feature(ofType: .schedule)?.display_text ?? .init(en: "", zh: "")
-        _selectDayIndex = State(initialValue: eventAPI.eventSchedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0)
+        self.selectDayIndex = eventAPI.eventSchedule?.sessions.count == 1 ? 0 : eventAPI.eventSchedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0
     }
     
     var body: some View {
@@ -51,27 +51,28 @@ struct ScheduleView: View {
                                     ForEach(filteredModel.data[header]!.sorted(by: { $0.end < $1.end }), id: \.id) { sessionDetail in
                                         if sessionDetail.type != "Ev" {
                                             NavigationLink(
-                                                destination: ScheduleDetailView(eventAPI: eventAPI,
-                                                                                scheduleDetail: sessionDetail)
+                                                destination: SessionDetailView(eventAPI: eventAPI, detail: sessionDetail)
                                             ){
-                                                DetailOverView(
+                                                SessionOverView(
                                                     room: (LocalizeIn (
                                                         zh: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.zh,
                                                         en: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.en
                                                     )?.name ?? sessionDetail.room),
                                                     start: sessionDetail.start,
                                                     end: sessionDetail.end,
-                                                    title: LocalizeIn(zh: sessionDetail.zh, en: sessionDetail.en).title)
+                                                    title: LocalizeIn(zh: sessionDetail.zh, en: sessionDetail.en).title
+                                                )
                                             }
                                         } else {
-                                            DetailOverView(
+                                            SessionOverView(
                                                 room: (LocalizeIn (
                                                     zh: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.zh,
                                                     en: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.en
                                                 )?.name ?? sessionDetail.room),
                                                 start: sessionDetail.start,
                                                 end: sessionDetail.end,
-                                                title: LocalizeIn(zh: sessionDetail.zh, en: sessionDetail.en).title)
+                                                title: LocalizeIn(zh: sessionDetail.zh, en: sessionDetail.en).title
+                                            )
                                         }
                                     }
                                 }
@@ -98,12 +99,12 @@ struct ScheduleView: View {
                     }
                 } else {
                     ProgressView(LocalizedStringKey("Loading"))
-                        .task { await scheduleFreshLoad() }
+                        .task { await ScheduleFirstLoad() }
                 }
             } else {
                 ErrorWithRetryView {
                     self.isError = false
-                    Task { await scheduleFreshLoad() }
+                    Task { await ScheduleFirstLoad() }
                 }
             }
         }
@@ -165,19 +166,19 @@ struct ScheduleView: View {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(schedule.rooms.id, id: \.self) { id in
-                                        Text(LocalizeIn(
-                                            zh: schedule.rooms.data[id]?.zh,
-                                            en: schedule.rooms.data[id]?.en)?.name ?? id
+                                        Text(
+                                            LocalizeIn(
+                                                zh: schedule.rooms.data[id]?.zh,
+                                                en: schedule.rooms.data[id]?.en
+                                            )?.name ?? id
                                         ).tag(Filter.room(id))
                                     }
                                 }
                             } label: {
                                 Label("Places", systemImage: {
                                     switch filter {
-                                    case .room(_):
-                                        return "map.fill"
-                                    default:
-                                        return "map"
+                                    case .room(_): return "map.fill"
+                                    default: return "map"
                                     }
                                 }())
                             }
@@ -186,19 +187,19 @@ struct ScheduleView: View {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(schedule.speakers.id, id: \.self) { id in
-                                        Text(LocalizeIn(
-                                            zh: schedule.speakers.data[id]?.zh,
-                                            en: schedule.speakers.data[id]?.en)?.name ?? id
+                                        Text(
+                                            LocalizeIn(
+                                                zh: schedule.speakers.data[id]?.zh,
+                                                en: schedule.speakers.data[id]?.en
+                                            )?.name ?? id
                                         ).tag(Filter.speaker(id))
                                     }
                                 }
                             } label: {
                                 Label("Speakers", systemImage: {
                                     switch filter {
-                                    case .speaker(_):
-                                        return "person.fill"
-                                    default:
-                                        return "person"
+                                    case .speaker(_): return "person.fill"
+                                    default: return "person"
                                     }
                                 }())
                             }
@@ -213,16 +214,18 @@ struct ScheduleView: View {
         }
     }
     
-    private func scheduleFreshLoad() async {
+    private func ScheduleFirstLoad() async {
         do {
             try await eventAPI.loadSchedule()
-            selectDayIndex = eventAPI.eventSchedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0
+            if eventAPI.eventSchedule?.sessions.count ?? 0 > 1 {
+                self.selectDayIndex = eventAPI.eventSchedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0
+            }
         }
         catch { isError = true }
     }
 }
 
-enum Filter: Hashable {
+private enum Filter: Hashable {
     case all, liked
     case tag(String)
     case type(String)
@@ -230,23 +233,22 @@ enum Filter: Hashable {
     case speaker(String)
 }
 
-fileprivate struct SelectDayView: View {
+private struct SelectDayView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @Binding var selectDayIndex: Int
     let sessions: [SessionModel]
-    
-    let weekDayName = ["SUN", "MON", "TUE", "WEN", "THR", "FRI", "SAT"]
+    private let weekDayName: [LocalizedStringKey] = ["SUN", "MON", "TUE", "WEN", "THR", "FRI", "SAT"]
     
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 10) {
                 ForEach(0 ..< sessions.count, id: \.self) { index in
-                    Button(action: {
-                        selectDayIndex = index
-                    }) {
+                    Button {
+                        self.selectDayIndex = index
+                    } label: {
                         VStack(alignment: .center, spacing: 0) {
-                            Text(String(localized: String.LocalizationValue(weekDayName[sessions[index].header[0].weekday - 1])))
+                            Text(weekDayName[sessions[index].header[0].weekday - 1])
                                 .font(.system(.subheadline, design: .monospaced))
                             Text(String(sessions[index].header[0].day))
                                 .font(.system(.body, design: .monospaced))
@@ -266,7 +268,7 @@ fileprivate struct SelectDayView: View {
     }
 }
 
-fileprivate struct DetailOverView: View {
+private struct SessionOverView: View {
     
     let room: String,
         start: DateInRegion,

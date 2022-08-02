@@ -29,7 +29,7 @@ struct SettingView: View {
     }
 }
 
-fileprivate struct AppIconSection: View {
+private struct AppIconSection: View {
     var body: some View {
         Section {
             HStack {
@@ -49,7 +49,7 @@ fileprivate struct AppIconSection: View {
     }
 }
 
-fileprivate struct GeneralSection: View {
+private struct GeneralSection: View {
     
     @AppStorage("UserInterfaceStyle") var appearance: UIUserInterfaceStyle = .unspecified
     
@@ -62,7 +62,7 @@ fileprivate struct GeneralSection: View {
             } label: {
                 Label { Text("Appearance") } icon: {
                     Image(systemName: "circle.lefthalf.filled")
-                        .padding(5)
+                        .padding(4)
                         .foregroundColor(.white)
                         .background(Color(red: 89/255, green: 169/255, blue: 214/255))
                         .cornerRadius(7)
@@ -75,7 +75,7 @@ fileprivate struct GeneralSection: View {
     }
 }
 
-fileprivate struct AboutSection: View {
+private struct AboutSection: View {
     
     @Environment(\.colorScheme) var colorScheme
     private let CCIPWebsiteURL = URL(string: "https://opass.app")!
@@ -167,7 +167,7 @@ fileprivate struct AboutSection: View {
     }
 }
 
-fileprivate struct AdvancedSection: View {
+private struct AdvancedSection: View {
     var body: some View {
         Section(header: Text("ADVANCED")) {
             NavigationLink(destination: AdvancedOptionView()) {
@@ -178,7 +178,7 @@ fileprivate struct AdvancedSection: View {
     }
 }
 
-fileprivate struct AdvancedOptionView: View {
+private struct AdvancedOptionView: View {
     
     private var keyStore = NSUbiquitousKeyValueStore()
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
