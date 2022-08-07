@@ -25,9 +25,9 @@ struct ContentView: View {
                     if OPassAPI.currentEventID == nil {
                         VStack {}
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .onAppear(perform: {
-                                isShowingEventList = true
-                            })
+                            .onAppear {
+                                self.isShowingEventList = true
+                            }
                     } else if OPassAPI.currentEventID != OPassAPI.currentEventAPI?.event_id {
                         ProgressView(LocalizedStringKey("Loading"))
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -37,6 +37,9 @@ struct ContentView: View {
                             }
                     } else {
                         MainView(eventAPI: OPassAPI.currentEventAPI!)
+                            .onAppear {
+                                Constants.PromptForPushNotifications()
+                            }
                     }
                 } else {
                     ErrorWithRetryView {

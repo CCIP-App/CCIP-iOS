@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import OneSignal
 import Foundation
 import SafariServices
 
@@ -37,5 +38,11 @@ final class Constants {
             result = URL(string: "http://" + rawURL.absoluteString)
         }
         return result
+    }
+    ///Use this method to request user push notifications permission.
+    static func PromptForPushNotifications() {
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+           print("User accepted notifications: ", accepted)
+        }, fallbackToSettings: false)
     }
 }

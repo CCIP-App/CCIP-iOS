@@ -87,10 +87,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         OneSignal.setNotificationOpenedHandler(notificationOpenedBlock)
         OneSignal.setLocationShared(false)
         
-        OneSignal.promptForPushNotifications(userResponse: { accepted in
-           print("User accepted notifications: ", accepted)
-        }, fallbackToSettings: false)
-        
         return true
     }
 }
