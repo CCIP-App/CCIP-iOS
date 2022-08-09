@@ -93,6 +93,8 @@
 "ADVANCED" = "進階";
 "AdvancedOption" = "進階選項";
 "ClearCacheData" = "清除快取資料";
+"FEATURE" = "功能";
+"AutoSelectScheduleDay" = "自動選擇日程";
 "Version" = "版本";
 "Close" = "關閉";
 "SelectEvent" = "選擇活動";

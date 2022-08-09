@@ -12,6 +12,7 @@ import SwiftDate
 struct ScheduleView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
+    @AppStorage("AutoSelectScheduleDay") var autoSelectScheduleDay = true
     @AppStorage var likedSessions: [String]
     let display_text: DisplayTextModel
     @State var selectDayIndex: Int
@@ -22,7 +23,11 @@ struct ScheduleView: View {
         self.eventAPI = eventAPI
         self._likedSessions = AppStorage(wrappedValue: [], "liked_sessions", store: UserDefaults(suiteName: eventAPI.event_id))
         self.display_text = eventAPI.eventSettings.feature(ofType: .schedule)?.display_text ?? .init(en: "", zh: "")
-        self.selectDayIndex = eventAPI.eventSchedule?.sessions.count == 1 ? 0 : eventAPI.eventSchedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0
+        if AppStorage(wrappedValue: true, "AutoSelectScheduleDay").wrappedValue {
+            self.selectDayIndex = eventAPI.eventSchedule?.sessions.count == 1 ? 0 : eventAPI.eventSchedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0
+        } else {
+            self.selectDayIndex = 0
+        }
     }
     
     var body: some View {
@@ -205,7 +210,7 @@ struct ScheduleView: View {
     private func ScheduleFirstLoad() async {
         do {
             try await eventAPI.loadSchedule()
-            if eventAPI.eventSchedule?.sessions.count ?? 0 > 1 {
+            if eventAPI.eventSchedule?.sessions.count ?? 0 > 1, autoSelectScheduleDay{
                 self.selectDayIndex = eventAPI.eventSchedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0
             }
         }

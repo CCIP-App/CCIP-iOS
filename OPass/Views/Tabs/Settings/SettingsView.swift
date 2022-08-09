@@ -172,6 +172,7 @@ private struct AdvancedSection: View {
 
 private struct AdvancedOptionView: View {
     
+    @AppStorage("AutoSelectScheduleDay") var autoSelectScheduleDay = true
     private var keyStore = NSUbiquitousKeyValueStore()
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     
@@ -183,6 +184,10 @@ private struct AdvancedOptionView: View {
             }) {
                 Label("ClearCacheData", systemImage: "trash")
                     .foregroundColor(.red)
+            }
+            
+            Section("FEATURE") {
+                Toggle("AutoSelectScheduleDay", isOn: $autoSelectScheduleDay)
             }
         }
         .navigationTitle("AdvancedOption")

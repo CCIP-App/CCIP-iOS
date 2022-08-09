@@ -94,6 +94,8 @@
 "ADVANCED" = "ADVANCED";
 "AdvancedOption" = "Advanced Option";
 "ClearCacheData" = "Clear Cache Data";
+"FEATURE" = "FEATURE";
+"AutoSelectScheduleDay" = "Auto-Select Schedule Day";
 "Close" = "Close";
 "SelectEvent" = "Select Event";
 "SessionWillStartIn5Minutes" = "Session will start in 5 mins.";
