@@ -76,7 +76,7 @@ struct ContentView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: SettingView()) {
+                    NavigationLink(destination: SettingsView()) {
                         Image(systemName: "gearshape")
                     }
                 }

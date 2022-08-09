@@ -49,26 +49,14 @@ struct ScheduleView: View {
                             ForEach(filteredModel.header, id: \.self) { header in
                                 Section {
                                     ForEach(filteredModel.data[header]!.sorted(by: { $0.end < $1.end }), id: \.id) { sessionDetail in
-                                        if sessionDetail.type != "Ev" {
-                                            NavigationLink(
-                                                destination: SessionDetailView(eventAPI: eventAPI, detail: sessionDetail)
-                                            ){
-                                                SessionOverView(
-                                                    room: (LocalizeIn (
-                                                        zh: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.zh,
-                                                        en: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.en
-                                                    )?.name ?? sessionDetail.room),
-                                                    start: sessionDetail.start,
-                                                    end: sessionDetail.end,
-                                                    title: LocalizeIn(zh: sessionDetail.zh, en: sessionDetail.en).title
-                                                )
-                                            }
-                                        } else {
+                                        NavigationLink {
+                                            SessionDetailView(eventAPI: eventAPI, detail: sessionDetail)
+                                        } label: {
                                             SessionOverView(
-                                                room: (LocalizeIn (
+                                                room: LocalizeIn(
                                                     zh: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.zh,
                                                     en: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.en
-                                                )?.name ?? sessionDetail.room),
+                                                )?.name ?? sessionDetail.room,
                                                 start: sessionDetail.start,
                                                 end: sessionDetail.end,
                                                 title: LocalizeIn(zh: sessionDetail.zh, en: sessionDetail.en).title
@@ -270,6 +258,8 @@ private struct SelectDayView: View {
 
 private struct SessionOverView: View {
     
+    @AppStorage("DimPastSession") var dimPastSession = true
+    @AppStorage("PastSessionOpacity") var pastSessionOpacity: Double = 0.4
     let room: String,
         start: DateInRegion,
         end: DateInRegion,
@@ -293,6 +283,7 @@ private struct SessionOverView: View {
             Text(title)
                 .lineLimit(2)
         }
+        .opacity(end.isBeforeDate(DateInRegion(), orEqual: true, granularity: .minute) && dimPastSession ? pastSessionOpacity : 1)
     }
 }
 

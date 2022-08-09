@@ -56,7 +56,7 @@
 		D3C0E21C27D51C060095169F /* WifiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0E21B27D51C060095169F /* WifiView.swift */; };
 		D3C5C92B2849BE1B00F175AB /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = D3C5C92A2849BE1B00F175AB /* SlideOverCard */; };
 		D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194727CF864B00643D97 /* ScheduleModel.swift */; };
-		D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingView.swift */; };
+		D3C6194D27CF9A7400643D97 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingsView.swift */; };
 		D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6195027CFA9A800643D97 /* ScheduleView.swift */; };
 		D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3C6F60C28634F3B0074B942 /* MarkdownKit */; };
 		D3C6F60F286360FC0074B942 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6F60E286360FC0074B942 /* Markdown.swift */; };
@@ -74,6 +74,7 @@
 		D3E4E6C327CD158700FFACEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E4E6C227CD158700FFACEB /* Assets.xcassets */; };
 		D3E4E6C627CD158700FFACEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E4E6C527CD158700FFACEB /* Preview Assets.xcassets */; };
 		D3EA819A27F747E100FE7985 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EA819927F747E100FE7985 /* TicketView.swift */; };
+		D3EFF36F28A12824004CD8DF /* AppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFF36E28A12824004CD8DF /* AppearanceView.swift */; };
 		D3F23B4F28166DEF00A0FB35 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3F23B5128166DEF00A0FB35 /* Localizable.strings */; };
 		D3FAD811285EFBD00025AE7A /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80A285EFBD00025AE7A /* RobotoCondensed-Bold.ttf */; };
 		D3FAD812285EFBD00025AE7A /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80B285EFBD00025AE7A /* RobotoCondensed-Light.ttf */; };
@@ -157,7 +158,7 @@
 		D3C0E21927D51B460095169F /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		D3C0E21B27D51C060095169F /* WifiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiView.swift; sourceTree = "<group>"; };
 		D3C6194727CF864B00643D97 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
-		D3C6194C27CF9A7400643D97 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingView.swift; path = OPass/Views/SettingView.swift; sourceTree = SOURCE_ROOT; };
+		D3C6194C27CF9A7400643D97 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = OPass/Views/Tabs/Settings/SettingsView.swift; sourceTree = SOURCE_ROOT; };
 		D3C6195027CFA9A800643D97 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleView.swift; path = OPass/Views/Tabs/Schedule/ScheduleView.swift; sourceTree = SOURCE_ROOT; };
 		D3C6F60E286360FC0074B942 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
 		D3C972F127F03531008561DE /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
@@ -174,6 +175,7 @@
 		D3E4E6C227CD158700FFACEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3E4E6C527CD158700FFACEB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D3EA819927F747E100FE7985 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
+		D3EFF36E28A12824004CD8DF /* AppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceView.swift; sourceTree = "<group>"; };
 		D3F23B5228166DF600A0FB35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D3F23B5328166E0A00A0FB35 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D3FAD80A285EFBD00025AE7A /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
@@ -240,6 +242,15 @@
 				D3C972F127F03531008561DE /* SessionDetailView.swift */,
 			);
 			path = Schedule;
+			sourceTree = "<group>";
+		};
+		D35CE09D28A0429700E9AF06 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D3C6194C27CF9A7400643D97 /* SettingsView.swift */,
+				D3EFF36E28A12824004CD8DF /* AppearanceView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		D3652A6E2869AF17002AC419 /* Submodules */ = {
@@ -316,6 +327,7 @@
 		D3C6195227CFC10400643D97 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				D35CE09D28A0429700E9AF06 /* Settings */,
 				D3E0123627D38CF70040621F /* Fastpass */,
 				D322F60927EF1862007EED5D /* Schedule */,
 				D3E0123727D38D3D0040621F /* RedeemTokenView.swift */,
@@ -332,7 +344,6 @@
 				D3E4E6C027CD158400FFACEB /* ContentView.swift */,
 				D366D8EF27ED50CB00AA4267 /* MainView.swift */,
 				D3D3789027CE62EB00021FC4 /* EventListView.swift */,
-				D3C6194C27CF9A7400643D97 /* SettingView.swift */,
 				D3C6195227CFC10400643D97 /* Tabs */,
 				D3C6194927CF963000643D97 /* Additions */,
 			);
@@ -624,7 +635,7 @@
 				D3D3788227CE440D00021FC4 /* OPassAPIViewModel.swift in Sources */,
 				D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */,
 				D3652A772869AF72002AC419 /* AttributedText.swift in Sources */,
-				D3C6194D27CF9A7400643D97 /* SettingView.swift in Sources */,
+				D3C6194D27CF9A7400643D97 /* SettingsView.swift in Sources */,
 				D3095F1827D78EE600225C7D /* UNUserNotification.swift in Sources */,
 				D3E4E6C127CD158400FFACEB /* ContentView.swift in Sources */,
 				4F35B17C27D3850B0023621F /* AnnouncementModel.swift in Sources */,
@@ -663,6 +674,7 @@
 				D39512F5285A174F009B9AE8 /* EventEditView.swift in Sources */,
 				4FEF38FB27D13FBA00FC97F4 /* APIRepo.swift in Sources */,
 				D3652A7B2869AF72002AC419 /* AttributedTextImpl.swift in Sources */,
+				D3EFF36F28A12824004CD8DF /* AppearanceView.swift in Sources */,
 				D3C0E21C27D51C060095169F /* WifiView.swift in Sources */,
 				D3E4E6BF27CD158400FFACEB /* OPassApp.swift in Sources */,
 				4F6968A627EBCB5E009073E4 /* SFButton.swift in Sources */,

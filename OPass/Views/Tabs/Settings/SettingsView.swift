@@ -1,5 +1,5 @@
 //
-//  SettingView.swift
+//  SettingsView.swift
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/2.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SettingView: View {
+struct SettingsView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     
@@ -24,7 +24,7 @@ struct SettingView: View {
                 AdvancedSection()
             }
         }
-        .navigationTitle("Setting")
+        .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -50,15 +50,10 @@ private struct AppIconSection: View {
 }
 
 private struct GeneralSection: View {
-    
-    @AppStorage("UserInterfaceStyle") var appearance: UIUserInterfaceStyle = .unspecified
-    
     var body: some View {
         Section(header: Text("GENERAL")) {
-            Picker(selection: $appearance) {
-                Text("System").tag(UIUserInterfaceStyle.unspecified)
-                Text("Light").tag(UIUserInterfaceStyle.light)
-                Text("Dark").tag(UIUserInterfaceStyle.dark)
+            NavigationLink {
+                AppearanceView()
             } label: {
                 Label { Text("Appearance") } icon: {
                     Image(systemName: "circle.lefthalf.filled")
@@ -68,9 +63,6 @@ private struct GeneralSection: View {
                         .cornerRadius(7)
                 }
             }
-        }
-        .onChange(of: appearance) {
-            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).overrideUserInterfaceStyle = $0
         }
     }
 }
@@ -190,6 +182,7 @@ private struct AdvancedOptionView: View {
                 keyStore.synchronize()
             }) {
                 Label("ClearCacheData", systemImage: "trash")
+                    .foregroundColor(.red)
             }
         }
         .navigationTitle("AdvancedOption")
@@ -198,9 +191,9 @@ private struct AdvancedOptionView: View {
 }
 
 #if DEBUG
-struct SettingView_Previews: PreviewProvider {
+struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView()
+        SettingsView()
     }
 }
 #endif
