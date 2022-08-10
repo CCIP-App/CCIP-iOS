@@ -14,8 +14,9 @@
 "ChooseNetwork" = "Choose Network";
 "Ticket" = "Ticket";
 "Token" = "Token";
-"Copy Token" = "Copy Token";
+"CopyToken" = "Copy Token";
 "TicketWarningContent" = "Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths.";
+"AutoAdjustBrightness" = "Auto-Adjust Brightness";
 "EmptyAnnouncement" = "Empty Announcement";
 "Type" = "Type";
 "Types" = "Types";

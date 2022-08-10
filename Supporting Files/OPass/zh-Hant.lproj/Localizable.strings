@@ -14,8 +14,9 @@
 "ChooseNetwork" = "選擇網路";
 "Ticket" = "票券";
 "Token" = "驗證碼";
-"Copy Token" = "複製驗證碼";
+"CopyToken" = "複製驗證碼";
 "TicketWarningContent" = "請將您的票保密。除工作人員或活動攤位外，請勿與其他任何人共享。";
+"AutoAdjustBrightness" = "自動調整亮度";
 "EmptyAnnouncement" = "沒有公告";
 "Type" = "類型";
 "Types" = "類型";

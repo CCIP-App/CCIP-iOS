@@ -12,11 +12,14 @@ import EFQRCode
 
 struct TicketView: View {
     
+    @Environment(\.scenePhase) var scenePhase
     @Environment(\.colorScheme) var colorScheme
+    @AppStorage("AutoAdjustTicketBirghtness") var autoAdjustTicketBirghtness = true
     @ObservedObject var eventAPI: EventAPIViewModel
     @State var showingToken = false
     @State var isShowingLogOutAlert = false
     @State var qrCodeUIImage = UIImage()
+    @State var defaultBrightness = UIScreen.main.brightness
     let display_text: DisplayTextModel
     
     init(eventAPI: EventAPIViewModel) {
@@ -27,56 +30,68 @@ struct TicketView: View {
     var body: some View {
         VStack {
             if let token = eventAPI.accessToken {
-                Form {
-                    Section() {
-                        HStack {
-                            Spacer()
-                            VStack(spacing: 0) {
-                                ZStack {
-                                    Image(uiImage: qrCodeUIImage)
-                                        .interpolation(.none)
-                                        .onAppear {
-                                            qrCodeUIImage = renderQRCode(string: token)
-                                        }
+                VStack(spacing: 0) {
+                    Form {
+                        Section() {
+                            HStack {
+                                Spacer()
+                                VStack(spacing: 0) {
+                                    ZStack {
+                                        Image(uiImage: qrCodeUIImage)
+                                            .interpolation(.none)
+                                            .onAppear {
+                                                qrCodeUIImage = renderQRCode(string: token)
+                                            }
+                                    }
                                 }
+                                .padding(UIScreen.main.bounds.width * 0.08)
+                                .background(Color.white)
+                                .cornerRadius(UIScreen.main.bounds.width * 0.1)
+                                Spacer()
                             }
-                            .padding(UIScreen.main.bounds.width * 0.08)
-                            .background(Color.white)
-                            .cornerRadius(UIScreen.main.bounds.width * 0.1)
-                            Spacer()
+                        }
+                        .listRowBackground(Color.transparent)
+                        
+                        Section(header: Text("Token"), footer: Text("TicketWarningContent")) {
+                            HStack {
+                                showingToken
+                                ? Text(token)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                : Text(String(repeating: "•", count: token.count))
+                                    .font(.title3).fixedSize(horizontal: false, vertical: true)
+                            }
+                        }
+                        .onTapGesture {
+                            showingToken.toggle()
+                        }
+                        .contextMenu {
+                            Button {
+                                UIPasteboard.general.string = token
+                            } label: {
+                                Label("CopyToken", systemImage: "square.on.square")
+                            }
                         }
                     }
-                    .listRowBackground(Color.transparent)
+                    .onAppear { AutoAdjustBrightness() }
+                    .onDisappear { ResetBrightness() }
+                    .onChange(of: scenePhase) { phase in
+                        if phase == .active {
+                            AutoAdjustBrightness()
+                        } else {
+                            ResetBrightness()
+                        }
+                    }
                     
-                    Section(header: Text(LocalizedStringKey("Token"))) {
-                        HStack {
-                            showingToken
-                            ? Text(token)
-                                .fixedSize(horizontal: false, vertical: true)
-                            : Text(String(repeating: "•", count: token.count))
-                                .font(.title3).fixedSize(horizontal: false, vertical: true)
+                    Toggle("AutoAdjustBrightness", isOn: $autoAdjustTicketBirghtness)
+                        .onChange(of: autoAdjustTicketBirghtness) { auto in
+                            if auto {
+                                self.defaultBrightness = UIScreen.main.brightness
+                                UIScreen.main.brightness = 1
+                            } else { UIScreen.main.brightness = defaultBrightness }
                         }
-                    }
-                    .onTapGesture {
-                        showingToken.toggle()
-                    }
-                    .contextMenu {
-                        Button {
-                            UIPasteboard.general.string = token
-                        } label: {
-                            Label(String(localized: "Copy Token"), systemImage: "square.on.square")
-                        }
-                    }
-                    
-                    HStack(alignment: .center) {
-                        Spacer()
-                        Text(LocalizedStringKey("TicketWarningContent"))
-                            .foregroundColor(.gray)
-                            .font(.footnote)
-                        Spacer()
-                    }
-                    .listRowBackground(Color.transparent)
-                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                        .padding([.leading, .trailing])
+                        .padding([.bottom, .top], 10)
+                        .background(Color("SectionBackgroundColor"))
                 }
             } else {
                 RedeemTokenView(eventAPI: eventAPI)
@@ -118,5 +133,16 @@ struct TicketView: View {
             return UIImage(cgImage: cgImage)
         }
         return UIImage()
+    }
+    
+    private func AutoAdjustBrightness() {
+        if autoAdjustTicketBirghtness {
+            UIScreen.main.brightness = 1
+        }
+    }
+    private func ResetBrightness() {
+        if autoAdjustTicketBirghtness {
+            UIScreen.main.brightness = defaultBrightness
+        }
     }
 }
