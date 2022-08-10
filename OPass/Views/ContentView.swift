@@ -16,6 +16,7 @@ struct ContentView: View {
     @State var isShowingEventList = false
     @State var isError = false
     @State var showInvalidURL = false
+    @State var viewFirstActive = true
     @Binding var url: URL?
 
     var body: some View {
@@ -38,7 +39,10 @@ struct ContentView: View {
                     } else {
                         MainView(eventAPI: OPassAPI.currentEventAPI!)
                             .onAppear {
-                                Constants.PromptForPushNotifications()
+                                if viewFirstActive {
+                                    Constants.PromptForPushNotifications()
+                                    viewFirstActive.toggle()
+                                }
                             }
                     }
                 } else {
