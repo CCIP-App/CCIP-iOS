@@ -8,6 +8,7 @@
 
 import SwiftUI
 import SwiftDate
+import Introspect
 
 struct ScheduleView: View {
     
@@ -18,6 +19,7 @@ struct ScheduleView: View {
     @State var selectDayIndex: Int
     @State private var filter = Filter.all
     @State private var isError = false
+    @State private var searchText: String = ""
     
     init(eventAPI: EventAPIViewModel) {
         self.eventAPI = eventAPI
@@ -40,16 +42,11 @@ struct ScheduleView: View {
                                 .background(Color("SectionBackgroundColor"))
                         }
                         
-                        let filteredModel = allScheduleData.sessions[selectDayIndex].filter({ session in
-                            switch filter {
-                            case .liked: return likedSessions.contains(session.id)
-                            case .tag(let tag): return session.tags.contains(tag)
-                            case .type(let type): return session.type == type
-                            case .room(let room): return session.room == room
-                            case .speaker(let speaker): return session.speakers.contains(speaker)
-                            default: return true
-                            }
-                        })
+                        let filteredModel = allScheduleData.sessions[selectDayIndex]
+                                                .filter { filter($0) }
+                                                .filter {
+                                                    searchText.isEmpty ||  $0.zh.title.contains(searchText) || $0.en.title.contains(searchText)
+                                                }
                         Form {
                             ForEach(filteredModel.header, id: \.self) { header in
                                 Section {
@@ -89,6 +86,10 @@ struct ScheduleView: View {
                                 }
                             }
                         }
+                        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .automatic))
+                        .introspectNavigationController { controller in
+                            controller.navigationItem.searchController?.hidesNavigationBarDuringPresentation = false
+                        }
                     }
                 } else {
                     ProgressView(LocalizedStringKey("Loading"))
@@ -110,8 +111,8 @@ struct ScheduleView: View {
                         Label("AllSessions", systemImage: "list.bullet")
                             .tag(Filter.all)
                         
-                        Label("Favorite", systemImage: "heart\(filter == .liked ? ".fill" : "")")
-                            .tag(Filter.liked)
+                        Label("Favorite", systemImage: "heart\(filter == .liked(likedSessions) ? ".fill" : "")")
+                            .tag(Filter.liked(likedSessions))
                         
                         if !(eventAPI.eventSchedule?.tags.id.isEmpty ?? true), let schedule = eventAPI.eventSchedule {
                             Menu {
@@ -219,11 +220,25 @@ struct ScheduleView: View {
 }
 
 private enum Filter: Hashable {
-    case all, liked
+    case all
+    case liked([String])
     case tag(String)
     case type(String)
     case room(String)
     case speaker(String)
+}
+
+extension Filter {
+    func callAsFunction(_ session: SessionDataModel) -> Bool {
+        switch self {
+            case .liked(let likedSessions): return likedSessions.contains(session.id)
+            case .tag(let tag): return session.tags.contains(tag)
+            case .type(let type): return session.type == type
+            case .room(let room): return session.room == room
+            case .speaker(let speaker): return session.speakers.contains(speaker)
+            default: return true
+        }
+    }
 }
 
 private struct SelectDayView: View {

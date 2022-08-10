@@ -16,6 +16,7 @@
 		4F48B5D427CF07910010FC2C /* eventListSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D327CF07910010FC2C /* eventListSample.json */; };
 		4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */; };
 		4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */; };
+		4F5603BA28A3FA4A003F9B7E /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 4F5603B928A3FA4A003F9B7E /* Introspect */; };
 		4F5CA37D27FD58D600DEAB39 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5CA37C27FD58D600DEAB39 /* Color+Extension.swift */; };
 		4F5EB73127D2311200235396 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 4F5EB73027D2311200235396 /* SwiftDate */; };
 		4F5EB73527D3346D00235396 /* JsonDecodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EB73427D3346D00235396 /* JsonDecodeHelper.swift */; };
@@ -207,6 +208,7 @@
 				D3E0123127D35D970040621F /* KeychainAccess in Frameworks */,
 				D3C5C92B2849BE1B00F175AB /* SlideOverCard in Frameworks */,
 				4F5EB73127D2311200235396 /* SwiftDate in Frameworks */,
+				4F5603BA28A3FA4A003F9B7E /* Introspect in Frameworks */,
 				D323C1F5282FE03C009AFF97 /* EFQRCode in Frameworks */,
 				4F29D9CA27D4EA2D00292CC4 /* FirebaseAnalytics in Frameworks */,
 				D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */,
@@ -531,6 +533,7 @@
 				D323C1F4282FE03C009AFF97 /* EFQRCode */,
 				D3C5C92A2849BE1B00F175AB /* SlideOverCard */,
 				D3C6F60C28634F3B0074B942 /* MarkdownKit */,
+				4F5603B928A3FA4A003F9B7E /* Introspect */,
 			);
 			productName = OPass;
 			productReference = D3E4E6BB27CD158400FFACEB /* OPass.app */;
@@ -573,6 +576,7 @@
 				D323C1F3282FE03C009AFF97 /* XCRemoteSwiftPackageReference "EFQRCode" */,
 				D3C5C9292849BE1B00F175AB /* XCRemoteSwiftPackageReference "SlideOverCard" */,
 				D3C6F60B28634F3A0074B942 /* XCRemoteSwiftPackageReference "MarkdownKit" */,
+				4F5603B828A3FA4A003F9B7E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = D3E4E6BC27CD158400FFACEB /* Products */;
 			projectDirPath = "";
@@ -997,6 +1001,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		4F5603B828A3FA4A003F9B7E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
 		4F5EB72F27D2311200235396 /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/malcommac/SwiftDate.git";
@@ -1065,6 +1077,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4F29D9C827D4EA2D00292CC4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDynamicLinks;
+		};
+		4F5603B928A3FA4A003F9B7E /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4F5603B828A3FA4A003F9B7E /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 		4F5EB73027D2311200235396 /* SwiftDate */ = {
 			isa = XCSwiftPackageProductDependency;
