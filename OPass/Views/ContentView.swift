@@ -14,6 +14,7 @@ struct ContentView: View {
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
     @State var handlingURL = false
     @State var isShowingEventList = false
+    @State var showHttp403Alert = false
     @State var isError = false
     @State var showInvalidURL = false
     @State var viewFirstActive = true
@@ -85,6 +86,9 @@ struct ContentView: View {
                     }
                 }
             }
+            .http403Alert(isPresented: $showHttp403Alert) {
+                self.url = nil
+            }
         }
         .overlay {
             if self.url != nil {
@@ -116,7 +120,7 @@ struct ContentView: View {
         
         // Select event
         guard let eventId = params?.first(where: { $0.name == "event_id"})?.value else {
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.showInvalidURL = true
             }
             return
@@ -135,16 +139,21 @@ struct ContentView: View {
             return
         }
         
-        if await OPassAPI.loginCurrentEvent(withToken: token) {
-            DispatchQueue.main.async {
-                self.url = nil
+        do {
+            if try await OPassAPI.loginCurrentEvent(withToken: token) {
+                DispatchQueue.main.async { self.url = nil }
+                await OPassAPI.currentEventAPI?.loadLogos()
+                return
             }
-            await OPassAPI.currentEventAPI?.loadLogos()
+        } catch APIRepo.LoadError.http403Forbidden {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showHttp403Alert = true
+            }
             return
-        }
+        } catch {}
         
         // Error
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.showInvalidURL = true
         }
     }

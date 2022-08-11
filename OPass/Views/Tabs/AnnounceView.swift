@@ -12,7 +12,7 @@ struct AnnounceView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     let display_text: DisplayTextModel
-    @State var isShowingSafari = false
+    @State var showHttp403Alert = false
     @State var isError = false
     @Environment(\.colorScheme) var colorScheme
     
@@ -49,8 +49,20 @@ struct AnnounceView: View {
                                 }
                             }
                         }
-                        .refreshable{ try? await eventAPI.loadAnnouncements() }
-                        .task{ try? await eventAPI.loadAnnouncements() }
+                        .refreshable{
+                            do {
+                                try await eventAPI.loadAnnouncements()
+                            } catch APIRepo.LoadError.http403Forbidden {
+                                self.showHttp403Alert = true
+                            } catch {}
+                        }
+                        .task{
+                            do {
+                                try await eventAPI.loadAnnouncements()
+                            } catch APIRepo.LoadError.http403Forbidden {
+                                self.showHttp403Alert = true
+                            } catch {}
+                        }
                     } else {
                         VStack {
                             Image(systemName: "tray.fill")
@@ -61,23 +73,34 @@ struct AnnounceView: View {
                             Text("EmptyAnnouncement")
                                 .font(.title2)
                         }
-                        .refreshable{ try? await eventAPI.loadAnnouncements() }
-                        .task{ try? await eventAPI.loadAnnouncements() }
+                        .refreshable{
+                            do {
+                                try await eventAPI.loadAnnouncements()
+                            } catch APIRepo.LoadError.http403Forbidden {
+                                self.showHttp403Alert = true
+                            } catch {}
+                        }
+                        .task{
+                            do {
+                                try await eventAPI.loadAnnouncements()
+                            } catch APIRepo.LoadError.http403Forbidden {
+                                self.showHttp403Alert = true
+                            } catch {}
+                        }
                     }
                 } else {
                     ProgressView("Loading")
                         .task {
                             do { try await self.eventAPI.loadAnnouncements() }
-                            catch { self.isError = true }
+                            catch APIRepo.LoadError.http403Forbidden {
+                                self.showHttp403Alert = true
+                                self.isError = true
+                            } catch { self.isError = true }
                         }
                 }
             } else {
                 ErrorWithRetryView {
                     self.isError = false
-                    Task {
-                        do { try await self.eventAPI.loadAnnouncements() }
-                        catch { self.isError = true }
-                    }
                 }
             }
         }
@@ -92,6 +115,7 @@ struct AnnounceView: View {
                 }
             }
         }
+        .http403Alert(isPresented: $showHttp403Alert)
     }
 }
 

@@ -53,6 +53,9 @@ struct ScenarioView: View {
                         }
                     }
                 }
+                .alert("NotAvailable", isPresented: $isShowingDisableAlert, actions: {
+                    Button(String(localized: "Cancel"), role: .cancel) { }
+                }, message: { Text(alertString) })
             }
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -63,19 +66,14 @@ struct ScenarioView: View {
                 }) { Text(LocalizedStringKey("SignOut")).foregroundColor(.red) }
             }
         }
-        .alert(LocalizedStringKey("ConfirmSignOut"), isPresented: $isShowingLogOutAlert) {
+        .alert("ConfirmSignOut", isPresented: $isShowingLogOutAlert) {
             Button(String(localized: "SignOut"), role: .destructive) {
                 eventAPI.signOut()
             }
             Button(String(localized: "Cancel"), role: .cancel) { }
         }
-        .alert(LocalizedStringKey("NotAvailable"), isPresented: $isShowingDisableAlert, actions: {
-            Button(String(localized: "Cancel"), role: .cancel) { }
-        }, message: { Text(alertString) })
         .sheet(item: $sheetScenarioData) { scenario in
-            NavigationView {
-                UseScenarioView(eventAPI: eventAPI, scenario: scenario)
-            }
+            UseScenarioView(eventAPI: eventAPI, scenario: scenario)
         }
     }
     

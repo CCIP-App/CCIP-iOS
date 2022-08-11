@@ -11,7 +11,7 @@ import SwiftUI
 struct FastpassView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
-    @State var isShowingLoading = false
+    @State var showHttp403Alert = false
     @State var isError = false
     let display_text: DisplayTextModel
     
@@ -28,21 +28,26 @@ struct FastpassView: View {
                 if !isError {
                     if eventAPI.eventScenarioStatus != nil {
                         ScenarioView(eventAPI: eventAPI)
-                            .task { try? await eventAPI.loadScenarioStatus() }
+                            .task {
+                                do { try await eventAPI.loadScenarioStatus() }
+                                catch APIRepo.LoadError.http403Forbidden {
+                                    self.showHttp403Alert = true
+                                } catch {}
+                            }
                     } else {
                         ProgressView(LocalizedStringKey("Loading"))
                             .task {
                                 do { try await eventAPI.loadScenarioStatus() }
+                                catch APIRepo.LoadError.http403Forbidden {
+                                    self.showHttp403Alert = true
+                                    self.isError = true
+                                }
                                 catch { self.isError = true }
                             }
                     }
                 } else {
                     ErrorWithRetryView {
                         self.isError = false
-                        Task {
-                            do { try await eventAPI.loadScenarioStatus() }
-                            catch { self.isError = true }
-                        }
                     }
                 }
             }
@@ -58,6 +63,7 @@ struct FastpassView: View {
                 }
             }
         }
+        .http403Alert(isPresented: $showHttp403Alert)
     }
 }
 

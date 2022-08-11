@@ -9,7 +9,6 @@
 import Foundation
 import KeychainAccess
 import OSLog
-import OneSignal
 
 ///Endpoint hold by each Event Organization or hold by OPass Official but switch by Event Organization.
 class EventAPIViewModel: ObservableObject {
@@ -77,7 +76,7 @@ class EventAPIViewModel: ObservableObject {
 
 extension EventAPIViewModel {
     ///Return bool to indicate success or not
-    func useScenario(scenario: String) async -> Bool{
+    func useScenario(scenario: String) async throws -> Bool{
         @Feature(.fastpass, in: eventSettings) var fastpassFeature
         
         guard let fastpassFeature = fastpassFeature else {
@@ -89,18 +88,20 @@ extension EventAPIViewModel {
             return false
         }
         
-        if let eventScenarioUseStatus = try? await APIRepo.load(scenarioUseFrom: fastpassFeature, scenario: scenario, token: token) {
+        do {
+            let eventScenarioUseStatus = try await APIRepo.load(scenarioUseFrom: fastpassFeature, scenario: scenario, token: token)
             DispatchQueue.main.async {
                 self.eventScenarioStatus = eventScenarioUseStatus
                 Task{ await self.saveData() }
             }
             return true
-        }
-        return false
+        } catch APIRepo.LoadError.http403Forbidden {
+            throw APIRepo.LoadError.http403Forbidden
+        } catch { return false }
     }
     
     ///Return bool to indicate token is valid or not. Will save token if is vaild.
-    func redeemToken(token: String) async -> Bool {
+    func redeemToken(token: String) async throws -> Bool {
         let token = token.tirm()
         let nonAllowedCharacters = CharacterSet
                                     .alphanumerics
@@ -118,16 +119,18 @@ extension EventAPIViewModel {
             return false
         }
         
-        if let eventScenarioStatus = try? await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token) {
-            OneSignal.sendTag("\(eventScenarioStatus.event_id)\(eventScenarioStatus.role)", value: "\(eventScenarioStatus.token)")
+        do {
+            let eventScenarioStatus = try await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token)
+            Constants.sendTag("\(eventScenarioStatus.event_id)\(eventScenarioStatus.role)", value: "\(eventScenarioStatus.token)")
             DispatchQueue.main.async {
                 self.eventScenarioStatus = eventScenarioStatus
                 self.accessToken = token
                 Task{ await self.saveData() }
             }
             return true
-        }
-        return false
+        } catch APIRepo.LoadError.http403Forbidden {
+            throw APIRepo.LoadError.http403Forbidden
+        } catch { return false }
     }
     
     func loadScenarioStatus() async throws {
@@ -148,6 +151,8 @@ extension EventAPIViewModel {
                 self.eventScenarioStatus = eventScenarioStatus
                 Task{ await self.saveData() }
             }
+        } catch APIRepo.LoadError.http403Forbidden {
+            throw APIRepo.LoadError.http403Forbidden
         } catch {
             guard let data = self.eventAPITemporaryData, let scenarioStatus = data.eventScenarioStatus else {
                 throw error
@@ -230,6 +235,8 @@ extension EventAPIViewModel {
                 self.eventAnnouncements = announcements
                 Task{ await self.saveData() }
             }
+        } catch  APIRepo.LoadError.http403Forbidden {
+            throw APIRepo.LoadError.http403Forbidden
         } catch {
             guard let announcements = self.eventAPITemporaryData?.eventAnnouncements else {
                 throw error
@@ -242,8 +249,10 @@ extension EventAPIViewModel {
     }
     
     func signOut() {
-        OneSignal.sendTag("\(self.eventScenarioStatus?.event_id ?? "")\(self.eventScenarioStatus?.role ?? "")", value: "")
-        self.eventScenarioStatus = nil
+        if let scenarioStatus = eventScenarioStatus {
+            Constants.sendTag("\(scenarioStatus.event_id)\(scenarioStatus.role)", value: "")
+            self.eventScenarioStatus = nil
+        }
         self.accessToken = nil
     }
 }

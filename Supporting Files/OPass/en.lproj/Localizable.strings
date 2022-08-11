@@ -101,3 +101,5 @@
 "SelectEvent" = "Select Event";
 "SessionWillStartIn5Minutes" = "Session will start in 5 mins.";
 "SessionWillStartIn5MinutesContent" = "\"%@\" in Room \"%@\", please keep your time of buffer to reach the room.";
+"403Forbidden" = "403 Forbidden";
+"PleaseConnectToTheWiFiProvidedByTheEventHost" = "Please connect to the WiFi provided by the Event Host";

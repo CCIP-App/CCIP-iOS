@@ -134,7 +134,7 @@ struct SessionDetailView: View {
                         
                         if let uri = self.sessionDetail.uri, let url = URL(string: uri), let av = UIActivityViewController(activityItems: [url], applicationActivities: nil) {
                             Button {
-                                UIApplication.shared.currentUIWindow()?.rootViewController?.present(av, animated: true, completion: nil)
+                                UIApplication.topViewController()?.present(av, animated: true)
                             } label: {
                                 Label("Share", systemImage: "square.and.arrow.up")
                             }

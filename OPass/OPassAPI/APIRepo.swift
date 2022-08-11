@@ -18,6 +18,7 @@ final class APIRepo {
         case missingURL(feature: FeatureModel)
         case invalidDateString(String)
         case noCorrectFeatureFound
+        case http403Forbidden
     }
     enum URLs {
         case eventList
@@ -58,6 +59,7 @@ extension APIRepo {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
             logger.error("EventList Data Error: \(error.localizedDescription)")
+            if error is LoadError { throw error }
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
@@ -72,6 +74,7 @@ extension APIRepo {
             return try await URLSession.shared.jsonData(from: settingsUrl)
         } catch {
             logger.error("Settings Data Error: \(error.localizedDescription)")
+            if error is LoadError { throw error }
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
@@ -100,6 +103,7 @@ extension APIRepo {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
             logger.error("Invaild ScenarioUse or AccessToken Error: \(error.localizedDescription)")
+            if error is LoadError { throw error }
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
@@ -125,6 +129,7 @@ extension APIRepo {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
             logger.error("ScenarioStatus Data or AccessToken Error: \(error.localizedDescription)")
+            if error is LoadError { throw error }
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
@@ -140,6 +145,7 @@ extension APIRepo {
             return data
         } catch {
             logger.error("Logo Data Error: \(error.localizedDescription)")
+            if error is LoadError { throw error }
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
@@ -165,6 +171,7 @@ extension APIRepo {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
             logger.error("Schedule Data Error: \(error.localizedDescription)")
+            if error is LoadError { throw error }
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
@@ -190,6 +197,7 @@ extension APIRepo {
             return try await URLSession.shared.jsonData(from: url)
         } catch {
             logger.error("Announcement Data Error: \(error.localizedDescription)")
+            if error is LoadError { throw error }
             throw LoadError.dataFetchingFailed(cause: error)
         }
     }
@@ -201,9 +209,15 @@ extension URL {
     }
 }
 
-extension URLSession {
-    func jsonData<T: Decodable>(from url: URL) async throws -> T {
-        let (data, _) = try await self.data(from: url)
+private extension URLSession {
+     func jsonData<T: Decodable>(from url: URL) async throws -> T {
+        let (data, response) = try await self.data(from: url)
+        if let resp = response as? HTTPURLResponse {
+            switch resp.statusCode {
+            case 403: throw APIRepo.LoadError.http403Forbidden
+            default: break
+            }
+        }
         let decoder = JSONDecoder()
         decoder.userInfo[.needTransform] = true
         return try decoder.decode(T.self, from: data)

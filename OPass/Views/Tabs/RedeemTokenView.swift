@@ -22,23 +22,24 @@ struct RedeemTokenView: View {
     @ObservedObject var eventAPI: EventAPIViewModel
     @Environment(\.colorScheme) var colorScheme
     
-    @State var isShowingCameraSOC = false
-    @State var isShowingImagePicker = false
-    @State var isShowingNoQRCodeAlert = false
-    @State var isShowingManuallySOC = false
-    @State var isShowingTokenErrorAlert = false
+    @State var showCameraSOC = false
+    @State var showImagePicker = false
+    @State var showManuallySOC = false
+    @State var showNoQRCodeAlert = false
+    @State var showInvaildTokenAlert = false
+    @State var showHttp403Alert = false
     @FocusState private var focusedField: Field?
     
     var body: some View {
         VStack {
             Form {
                 FastpassLogoView(eventAPI: eventAPI)
-                .frame(height: UIScreen.main.bounds.width * 0.4)
-                .listRowBackground(Color.white.opacity(0))
+                    .frame(height: UIScreen.main.bounds.width * 0.4)
+                    .listRowBackground(Color.white.opacity(0))
                 
                 Section {
                     Button(action: {
-                        isShowingCameraSOC.toggle()
+                        self.showCameraSOC = true
                     }) {
                         HStack {
                             Image(systemName: "camera")
@@ -52,14 +53,12 @@ struct RedeemTokenView: View {
                             Image(systemName: "chevron.right").foregroundColor(.gray)
                         }
                     }
-                    .alert(LocalizedStringKey("InvaildToken"), isPresented: $isShowingTokenErrorAlert) {
-                        Button("OK", role: .cancel) {
-                            token = ""
-                        }
+                    .alert("InvaildToken", isPresented: $showInvaildTokenAlert) {
+                        Button("OK", role: .cancel) {}
                     }
                     
                     Button(action: {
-                        isShowingImagePicker = true
+                        self.showImagePicker = true
                     }) {
                         HStack {
                             Image(systemName: "photo")
@@ -73,14 +72,12 @@ struct RedeemTokenView: View {
                             Image(systemName: "chevron.right").foregroundColor(.gray)
                         }
                     }
-                    .alert(LocalizedStringKey("NoQRCodeFoundInPicture"), isPresented: $isShowingNoQRCodeAlert) {
-                        Button("OK", role: .cancel) {
-                            isShowingNoQRCodeAlert = false
-                        }
+                    .alert("NoQRCodeFoundInPicture", isPresented: $showNoQRCodeAlert) {
+                        Button("OK", role: .cancel) {}
                     }
                     
                     Button(action: {
-                        isShowingManuallySOC.toggle()
+                        self.showManuallySOC = true
                     }) {
                         HStack {
                             Image(systemName: "keyboard")
@@ -97,16 +94,16 @@ struct RedeemTokenView: View {
                 }
             }
         }
-        .slideOverCard(isPresented: $isShowingCameraSOC, backgroundColor: (colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : Color.white)) {
+        .slideOverCard(isPresented: $showCameraSOC, backgroundColor: (colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : Color.white)) {
             VStack {
                 Text(LocalizedStringKey("FastPass")).font(Font.largeTitle.weight(.bold))
                 Text(LocalizedStringKey("ScanQRCodeWithCamera"))
                 
-                CodeScannerView(codeTypes: [.qr], scanMode: .once, showViewfinder: false, shouldVibrateOnSuccess: true, completion: handleScan)
+                CodeScannerView(codeTypes: [.qr], scanMode: .once, showViewfinder: false, shouldVibrateOnSuccess: true, completion: HandleScan)
                     .frame(height: UIScreen.main.bounds.height * 0.25)
                     .cornerRadius(20)
                     .overlay {
-                        if AVCaptureDevice.authorizationStatus(for: .video) == .denied || AVCaptureDevice.authorizationStatus(for: .video) == .restricted {
+                        if !(AVCaptureDevice.authorizationStatus(for: .video) == .authorized) {
                             VStack {
                                 Spacer()
                                 Spacer()
@@ -135,7 +132,7 @@ struct RedeemTokenView: View {
                 }
             }
         }
-        .slideOverCard(isPresented: $isShowingManuallySOC, backgroundColor: (colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : Color.white)) {
+        .slideOverCard(isPresented: $showManuallySOC, backgroundColor: (colorScheme == .dark ? Color(red: 28/255, green: 28/255, blue: 30/255) : Color.white)) {
             VStack {
                 Text(LocalizedStringKey("FastPass")).font(Font.largeTitle.weight(.bold))
                 Text(LocalizedStringKey("EnterTokenManually"))
@@ -151,22 +148,27 @@ struct RedeemTokenView: View {
                     )
                 
                 VStack(alignment: .leading) {
-                    Text(LocalizedStringKey("EnterTokenManuallyContent"))
+                    Text("EnterTokenManuallyContent")
                         .foregroundColor(Color.gray)
                         .font(.caption)
                 }
                 
                 Button(action: {
-                    UIApplication.shared.endEditing()
-                    isShowingManuallySOC.toggle()
+                    UIApplication.endEditing()
+                    self.showManuallySOC = false
                     Task {
-                        isShowingTokenErrorAlert = !(await eventAPI.redeemToken(token: token))
-                        print(isShowingTokenErrorAlert)
+                        do {
+                            self.showInvaildTokenAlert = !(try await eventAPI.redeemToken(token: token))
+                        } catch APIRepo.LoadError.http403Forbidden {
+                            self.showHttp403Alert = true
+                        } catch {
+                            self.showInvaildTokenAlert = true
+                        }
                     }
                 }) {
                     HStack {
                         Spacer()
-                        Text(LocalizedStringKey("Continue"))
+                        Text("Continue")
                             .padding(.vertical, 20)
                             .foregroundColor(Color.white)
                         Spacer()
@@ -174,54 +176,71 @@ struct RedeemTokenView: View {
                 }
             }
         }
-        .sheet(isPresented: $isShowingImagePicker) {
-            ImagePicker { selectedImage in
-                isShowingImagePicker = false
-                if let result = extractFromQRCode(selectedImage) {
+        .sheet(isPresented: $showImagePicker) {
+            ImagePicker { image in
+                self.showImagePicker = false
+                if let result = ExtractQRCodeString(from: image) {
                     Task {
-                        if !(await eventAPI.redeemToken(token: result)) {
+                        do {
+                            let result = try await eventAPI.redeemToken(token: result)
                             DispatchQueue.main.async {
-                                isShowingTokenErrorAlert = true
+                                self.showInvaildTokenAlert = !result
+                            }
+                        } catch APIRepo.LoadError.http403Forbidden {
+                            DispatchQueue.main.async {
+                                self.showHttp403Alert = true
+                            }
+                        } catch {
+                            DispatchQueue.main.async {
+                                self.showInvaildTokenAlert = true
                             }
                         }
                     }
                 } else {
                     DispatchQueue.main.async {
-                        isShowingNoQRCodeAlert = true
+                        self.showNoQRCodeAlert = true
                     }
                 }
             }
         }
+        .http403Alert(isPresented: $showHttp403Alert)
     }
 
-    private func handleScan(result: Result<ScanResult, ScanError>) {
-        isShowingCameraSOC = false
-        
+    private func HandleScan(result: Result<ScanResult, ScanError>) {
+        self.showCameraSOC = false
         switch result {
         case .success(let result):
             Task {
-                isShowingTokenErrorAlert = !(await eventAPI.redeemToken(token: result.string))
+                do {
+                    let result = try await eventAPI.redeemToken(token: result.string)
+                    DispatchQueue.main.async {
+                        self.showInvaildTokenAlert = !result
+                    }
+                } catch APIRepo.LoadError.http403Forbidden {
+                    DispatchQueue.main.async {
+                        self.showHttp403Alert = true
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        self.showInvaildTokenAlert = true
+                    }
+                }
             }
-            print(result.string)
         case .failure(let error):
-            isShowingTokenErrorAlert.toggle()
+            DispatchQueue.main.async {
+                self.showInvaildTokenAlert = true
+            }
             print("Scanning failed: \(error.localizedDescription)")
         }
     }
     
-    private func extractFromQRCode(_ image: UIImage) -> String? {
+    private func ExtractQRCodeString(from image: UIImage) -> String? {
         guard let ciImage = CIImage(image: image),
-              let qrCodeDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil) else {
+              let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil),
+              let feature = detector.features(in: ciImage) as? [CIQRCodeFeature] else {
             return nil
         }
-        let feature = qrCodeDetector.features(in: ciImage) as! [CIQRCodeFeature]
         return feature.first?.messageString
-    }
-}
-
-extension UIApplication {
-    func endEditing() {
-        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
