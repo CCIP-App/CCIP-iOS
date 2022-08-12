@@ -28,7 +28,7 @@ final class Constants {
             config.barCollapsingEnabled = true
             let safariViewController = SFSafariViewController(url: url, configuration: config)
             safariViewController.overrideUserInterfaceStyle = style
-            UIApplication.shared.currentUIWindow()?.rootViewController?.present(safariViewController, animated: true)
+            UIApplication.topViewController()?.present(safariViewController, animated: true)
         } else { OpenInOS(forURL: url) }
     }
     ///Use this method to try process URL if it's not http protocol. Return nil if it faild.
@@ -44,5 +44,8 @@ final class Constants {
         OneSignal.promptForPushNotifications(userResponse: { accepted in
            print("User accepted notifications: ", accepted)
         }, fallbackToSettings: false)
+    }
+    static func sendTag(_ key: String, value: String) {
+        OneSignal.sendTag(key, value: value)
     }
 }

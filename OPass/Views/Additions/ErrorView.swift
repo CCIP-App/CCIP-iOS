@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ErrorWithRetryView: View {
     
+    var message: LocalizedStringKey? = nil
     let action: () -> Void
     
     var body: some View {
@@ -21,16 +22,16 @@ struct ErrorWithRetryView: View {
                 .frame(width: UIScreen.main.bounds.width * 0.25)
                 .padding(.bottom, 8)
             
-            Text(LocalizedStringKey("ErrorWithRetryContent"))
+            Text(message == nil ? "ErrorWithRetryContent" : message!)
                 .font(.callout)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.gray)
-                .padding(.bottom, 2)
             
             Button(action: action) {
                 Text(LocalizedStringKey("TryAgain"))
                     .font(.subheadline)
                     .foregroundColor(.blue)
+                    .padding(2)
             }
         }
     }

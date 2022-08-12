@@ -29,20 +29,19 @@ struct OPassApp: App {
             ContentView(url: $url)
                 .onOpenURL { url in
                     //It seems that both universal link and custom schemed url from firebase are received via onOpenURL, so we must try parse it in both ways.
-                    if let vc = UIApplication.shared.currentUIWindow()?.rootViewController { vc.dismiss(animated: true) }
                     
                     if DynamicLinks.dynamicLinks().handleUniversalLink(url, completion: { dynamicLink, _ in
                         if let url = dynamicLink?.url {
+                            UIApplication.currentUIWindow()?.rootViewController?.dismiss(animated: true)
                             self.url = url
                         }
                     }) { return }
                     
                     if let url = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url)?.url {
+                        UIApplication.currentUIWindow()?.rootViewController?.dismiss(animated: true)
                         self.url = url
                         return
                     }
-                    
-                    self.url = url // Non Firbase Dynamic Link
                 }
                 .preferredColorScheme(.init(interfaceStyle))
                 .environmentObject(OPassAPIViewModel())

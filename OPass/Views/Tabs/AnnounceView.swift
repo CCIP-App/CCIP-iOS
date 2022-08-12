@@ -12,8 +12,8 @@ struct AnnounceView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     let display_text: DisplayTextModel
-    @State var isShowingSafari = false
-    @State var isError = false
+    @State var showHttp403Alert = false
+    @State var errorType: String? = nil
     @Environment(\.colorScheme) var colorScheme
     
     init(eventAPI: EventAPIViewModel) {
@@ -23,7 +23,7 @@ struct AnnounceView: View {
     
     var body: some View {
         VStack {
-            if !isError {
+            if errorType == nil {
                 if let announcements = eventAPI.eventAnnouncements {
                     if !announcements.isEmpty {
                         List(announcements, id: \.datetime) { announcement in
@@ -49,8 +49,20 @@ struct AnnounceView: View {
                                 }
                             }
                         }
-                        .refreshable{ try? await eventAPI.loadAnnouncements() }
-                        .task{ try? await eventAPI.loadAnnouncements() }
+                        .refreshable{
+                            do {
+                                try await eventAPI.loadAnnouncements()
+                            } catch APIRepo.LoadError.http403Forbidden {
+                                self.showHttp403Alert = true
+                            } catch {}
+                        }
+                        .task{
+                            do {
+                                try await eventAPI.loadAnnouncements()
+                            } catch APIRepo.LoadError.http403Forbidden {
+                                self.showHttp403Alert = true
+                            } catch {}
+                        }
                     } else {
                         VStack {
                             Image(systemName: "tray.fill")
@@ -61,23 +73,39 @@ struct AnnounceView: View {
                             Text("EmptyAnnouncement")
                                 .font(.title2)
                         }
-                        .refreshable{ try? await eventAPI.loadAnnouncements() }
-                        .task{ try? await eventAPI.loadAnnouncements() }
+                        .refreshable{
+                            do {
+                                try await eventAPI.loadAnnouncements()
+                            } catch APIRepo.LoadError.http403Forbidden {
+                                self.showHttp403Alert = true
+                            } catch {}
+                        }
+                        .task{
+                            do {
+                                try await eventAPI.loadAnnouncements()
+                            } catch APIRepo.LoadError.http403Forbidden {
+                                self.showHttp403Alert = true
+                            } catch {}
+                        }
                     }
                 } else {
                     ProgressView("Loading")
                         .task {
                             do { try await self.eventAPI.loadAnnouncements() }
-                            catch { self.isError = true }
+                            catch APIRepo.LoadError.http403Forbidden {
+                                self.showHttp403Alert = true
+                                self.errorType = "http403"
+                            } catch { self.errorType = "unknown" }
                         }
                 }
             } else {
-                ErrorWithRetryView {
-                    self.isError = false
-                    Task {
-                        do { try await self.eventAPI.loadAnnouncements() }
-                        catch { self.isError = true }
+                ErrorWithRetryView(message: {
+                    switch errorType! {
+                    case "http403": return "ConnectToConferenceWiFi"
+                    default: return nil
                     }
+                }()) {
+                    self.errorType = nil
                 }
             }
         }
@@ -87,11 +115,12 @@ struct AnnounceView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 SFButton(systemName: "arrow.clockwise") {
-                    self.isError = false
+                    self.errorType = nil
                     self.eventAPI.eventAnnouncements = nil
                 }
             }
         }
+        .http403Alert(isPresented: $showHttp403Alert)
     }
 }
 

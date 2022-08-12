@@ -114,11 +114,11 @@ extension OPassAPIViewModel {
         }
     }
     
-    func loginCurrentEvent(withToken token: String) async -> Bool {
+    func loginCurrentEvent(withToken token: String) async throws -> Bool {
         guard let eventId = self.currentEventID else { return false }
         do {
             if eventId == currentEventAPI?.event_id {
-                return await currentEventAPI?.redeemToken(token: token) ?? false
+                return try await currentEventAPI?.redeemToken(token: token) ?? false
             }
             let eventSettings = try await APIRepo.loadEventSettings(id: eventId)
             let eventModel = EventAPIViewModel(eventSettings, saveData: saveEventAPIData)
@@ -126,7 +126,9 @@ extension OPassAPIViewModel {
                 self.currentEventLogo = nil
                 self.currentEventAPI = eventModel
             }
-            return await eventModel.redeemToken(token: token)
+            return try await eventModel.redeemToken(token: token)
+        } catch APIRepo.LoadError.http403Forbidden {
+            throw APIRepo.LoadError.http403Forbidden
         } catch APIRepo.LoadError.invalidURL(url: let url) {
             logger.error("\(url.getString()) is invalid, eventId is possibly wrong")
         } catch APIRepo.LoadError.dataFetchingFailed(cause: let cause) {

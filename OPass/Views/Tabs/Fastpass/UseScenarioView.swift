@@ -13,33 +13,32 @@ struct UseScenarioView: View {
     @ObservedObject var eventAPI: EventAPIViewModel
     let scenario: ScenarioDataModel
     @Environment(\.dismiss) var dismiss
+    
     @State var viewStage = 0
+    @State var showHttp403Alert = false
     @State var usedTime: TimeInterval = 0
-    // 0 -> ConfirmUseScenarioView, 1 -> LoadingView, 2 -> SuccessView, other -> ErrorView
     
     var body: some View {
-        VStack {
-            switch viewStage {
-            case 0:
-                ConfirmUseScenarioView()
-                    .frame(width: UIScreen.main.bounds.width * 0.85)
-            case 1:
-                ActivityIndicatorMark_1()
-                    .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.25)
-            case 2:
-                ScuessScenarioView(dismiss: _dismiss, scenario: scenario, usedTime: $usedTime)
-            default:
-                ErrorView()
-            }
-        }
-        .navigationTitle(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en))
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(LocalizedStringKey("Close")) {
-                    dismiss()
+        NavigationView {
+            VStack {
+                switch viewStage {
+                case 0: ConfirmUseScenarioView()
+                case 1: ActivityIndicatorMark_1()
+                        .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.25)
+                case 2: ScuessScenarioView(dismiss: _dismiss, scenario: scenario, usedTime: $usedTime)
+                default: ErrorView()
                 }
             }
+            .navigationTitle(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(LocalizedStringKey("Close")) {
+                        dismiss()
+                    }
+                }
+            }
+            .http403Alert(isPresented: $showHttp403Alert)
         }
     }
     
@@ -71,12 +70,16 @@ struct UseScenarioView: View {
             }
             
             Button {
-                viewStage = 1
+                self.viewStage = 1
                 Task {
-                    if await eventAPI.useScenario(scenario: scenario.id) {
-                        usedTime = Date().timeIntervalSince1970
-                        viewStage = 2
-                    } else { viewStage = 3 }
+                    do {
+                        if try await eventAPI.useScenario(scenario: scenario.id) {
+                            self.usedTime = Date().timeIntervalSince1970
+                            self.viewStage = 2
+                        } else { self.viewStage = 3 }
+                    } catch APIRepo.LoadError.http403Forbidden {
+                        self.showHttp403Alert = true
+                    } catch { self.viewStage = 3 }
                 }
             } label: {
                 Text("ConfirmUse")
@@ -88,11 +91,12 @@ struct UseScenarioView: View {
             }
 
             Button { dismiss() } label: {
-                Text(LocalizedStringKey("Cancel"))
+                Text("Cancel")
                     .foregroundColor(.blue)
                     .padding(.vertical, 10)
             }
         }
+        .frame(width: UIScreen.main.bounds.width * 0.85)
     }
 }
 
