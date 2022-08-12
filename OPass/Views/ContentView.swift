@@ -86,9 +86,6 @@ struct ContentView: View {
                     }
                 }
             }
-            .http403Alert(isPresented: $showHttp403Alert) {
-                self.url = nil
-            }
         }
         .overlay {
             if self.url != nil {
@@ -99,7 +96,7 @@ struct ContentView: View {
                     }
                     .alert("InvalidURL", isPresented: $showInvalidURL) {
                         Button("OK", role: .cancel) {
-                            url = nil
+                            self.url = nil
                             if OPassAPI.currentEventAPI == nil {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                     self.isShowingEventList = true
@@ -108,6 +105,14 @@ struct ContentView: View {
                         }
                     } message: {
                         Text("InvalidURLOrTokenContent")
+                    }
+                    .http403Alert(title: "CouldntVerifiyYourIdentity", isPresented: $showHttp403Alert) {
+                        self.url = nil
+                        if OPassAPI.currentEventAPI == nil {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                self.isShowingEventList = true
+                            }
+                        }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color("SectionBackgroundColor").edgesIgnoringSafeArea(.all))
