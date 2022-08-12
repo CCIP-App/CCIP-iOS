@@ -39,7 +39,6 @@ struct FastpassView: View {
                             .task {
                                 do { try await eventAPI.loadScenarioStatus() }
                                 catch APIRepo.LoadError.http403Forbidden {
-                                    self.showHttp403Alert = true
                                     self.errorType = "http403"
                                 }
                                 catch { self.errorType = "unknown" }
