@@ -12,7 +12,7 @@ struct FastpassView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     @State var showHttp403Alert = false
-    @State var isError = false
+    @State var errorType: String? = nil
     let display_text: DisplayTextModel
     
     init(eventAPI: EventAPIViewModel) {
@@ -25,7 +25,7 @@ struct FastpassView: View {
             if eventAPI.accessToken == nil {
                 RedeemTokenView(eventAPI: eventAPI)
             } else {
-                if !isError {
+                if errorType == nil {
                     if eventAPI.eventScenarioStatus != nil {
                         ScenarioView(eventAPI: eventAPI)
                             .task {
@@ -35,19 +35,24 @@ struct FastpassView: View {
                                 } catch {}
                             }
                     } else {
-                        ProgressView(LocalizedStringKey("Loading"))
+                        ProgressView("Loading")
                             .task {
                                 do { try await eventAPI.loadScenarioStatus() }
                                 catch APIRepo.LoadError.http403Forbidden {
                                     self.showHttp403Alert = true
-                                    self.isError = true
+                                    self.errorType = "http403"
                                 }
-                                catch { self.isError = true }
+                                catch { self.errorType = "unknown" }
                             }
                     }
                 } else {
-                    ErrorWithRetryView {
-                        self.isError = false
+                    ErrorWithRetryView(message: {
+                        switch errorType! {
+                        case "http403": return "ConnectToConferenceWiFi"
+                        default: return nil
+                        }
+                    }()) {
+                        self.errorType = nil
                     }
                 }
             }

@@ -10,13 +10,13 @@ import SwiftUI
 
 extension View {
     @ViewBuilder
-    func http403Alert(isPresented: Binding<Bool>, action: (() -> Void)? = nil) -> some View {
-        self.alert("403Forbidden", isPresented: isPresented) {
+    func http403Alert(title: LocalizedStringKey? = nil, isPresented: Binding<Bool>, action: (() -> Void)? = nil) -> some View {
+        self.alert(title ?? "ConnectToConferenceWiFi", isPresented: isPresented) {
             Button("OK", role: .cancel) {
                 if let action = action { return action() }
             }
         } message: {
-            Text("PleaseConnectToTheWiFiProvidedByTheEventHost")
+            title != nil ? Text("ConnectToConferenceWiFi") : nil
         }
     }
 }

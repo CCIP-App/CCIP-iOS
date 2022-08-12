@@ -101,5 +101,5 @@
 "SelectEvent" = "選擇活動";
 "SessionWillStartIn5Minutes" = "議程即將在五分鐘內開始";
 "SessionWillStartIn5MinutesContent" = "「%@」在會議室「%@」，請儘速前往！";
-"403Forbidden" = "403 拒絕存取";
-"PleaseConnectToTheWiFiProvidedByTheEventHost" = "請連接活動主辦方所提供的 WiFi";
+"ConnectToConferenceWiFi" = "請使用會場提供的無線網路";
+"CouldntVerifiyYourIdentity" = "無法驗證您的身份";

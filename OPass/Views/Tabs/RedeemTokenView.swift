@@ -53,8 +53,10 @@ struct RedeemTokenView: View {
                             Image(systemName: "chevron.right").foregroundColor(.gray)
                         }
                     }
-                    .alert("InvaildToken", isPresented: $showInvaildTokenAlert) {
+                    .alert("CouldntVerifiyYourIdentity", isPresented: $showInvaildTokenAlert) {
                         Button("OK", role: .cancel) {}
+                    } message: {
+                        Text("InvaildToken")
                     }
                     
                     Button(action: {
@@ -203,7 +205,7 @@ struct RedeemTokenView: View {
                 }
             }
         }
-        .http403Alert(isPresented: $showHttp403Alert)
+        .http403Alert(title: "CouldntVerifiyYourIdentity", isPresented: $showHttp403Alert)
     }
 
     private func HandleScan(result: Result<ScanResult, ScanError>) {

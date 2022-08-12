@@ -41,8 +41,6 @@ struct OPassApp: App {
                         self.url = url
                         return
                     }
-                    
-                    self.url = url // Non Firbase Dynamic Link
                 }
                 .preferredColorScheme(.init(interfaceStyle))
                 .environmentObject(OPassAPIViewModel())
