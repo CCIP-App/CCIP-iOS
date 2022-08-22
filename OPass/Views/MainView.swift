@@ -209,10 +209,10 @@ private extension FeatureType {
             .schedule : .green,
             .announcement : .orange,
             .wifi : .brown,
-            .telegram : .green,
-            .im : .purple,
+            .telegram : .init(red: 89/255, green: 196/255, blue: 189/255),
+            .im : .init(red: 86/255, green: 89/255, blue: 207/255),
             .puzzle : .blue,
-            .venue : .blue,
+            .venue : .init(red: 87/255, green: 172/255, blue: 225/255),
             .sponsors : .yellow,
             .staffs : .gray,
             .webview : .purple
