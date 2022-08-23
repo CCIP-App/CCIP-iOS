@@ -145,15 +145,6 @@
       }
     },
     {
-      "identity" : "slideovercard",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/joogps/SlideOverCard",
-      "state" : {
-        "branch" : "main",
-        "revision" : "f58d646d7666c00cf4c4835a3b674a3d905b3fa9"
-      }
-    },
-    {
       "identity" : "swift-protobuf",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",

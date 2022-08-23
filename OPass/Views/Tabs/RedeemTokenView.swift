@@ -8,7 +8,6 @@
 
 import SwiftUI
 import UIKit
-import SlideOverCard
 import CodeScanner
 import AVFoundation
 

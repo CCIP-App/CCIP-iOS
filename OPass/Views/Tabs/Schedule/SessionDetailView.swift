@@ -9,7 +9,6 @@
 import SwiftUI
 import EventKit
 import SwiftDate
-import SlideOverCard
 
 struct SessionDetailView: View {
     
