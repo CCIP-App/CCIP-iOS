@@ -93,6 +93,7 @@ struct TicketView: View {
                         .padding([.bottom, .top], 10)
                         .background(Color("SectionBackgroundColor"))
                 }
+                .task { try? await eventAPI.loadScenarioStatus() }
             } else {
                 RedeemTokenView(eventAPI: eventAPI)
             }

@@ -6,6 +6,7 @@
 //  2022 OPass.
 //
 
+import SwiftUI
 import Foundation
 import KeychainAccess
 import OSLog
@@ -26,6 +27,7 @@ class EventAPIViewModel: ObservableObject {
         self.eventLogo = eventLogo
         self.saveData = saveData
         self.eventAPITemporaryData = tmpData
+        self._user_role = AppStorage(wrappedValue: "nil", "\(eventSettings.event_id)_user_role")
     }
     
     var saveData: () async -> Void
@@ -38,6 +40,7 @@ class EventAPIViewModel: ObservableObject {
     @Published var eventAnnouncements: [AnnouncementModel]? = nil
     @Published var eventScenarioStatus: ScenarioStatusModel? = nil
     private var eventAPITemporaryData: CodableEventAPIVM? = nil
+    @AppStorage var user_role: String
     
     private let logger = Logger(subsystem: "app.opass.ccip", category: "EventAPI")
     private let keychain = Keychain(service: "app.opass.ccip-token")//Service key value match App Bundle ID + "-token"
@@ -125,6 +128,7 @@ extension EventAPIViewModel {
             DispatchQueue.main.async {
                 self.eventScenarioStatus = eventScenarioStatus
                 self.accessToken = token
+                self.user_role = eventScenarioStatus.role
                 Task{ await self.saveData() }
             }
             return true
@@ -149,6 +153,7 @@ extension EventAPIViewModel {
             let eventScenarioStatus = try await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token)
             DispatchQueue.main.async {
                 self.eventScenarioStatus = eventScenarioStatus
+                self.user_role = eventScenarioStatus.role
                 Task{ await self.saveData() }
             }
         } catch APIRepo.LoadError.http403Forbidden {
@@ -159,6 +164,7 @@ extension EventAPIViewModel {
             }
             self.eventAPITemporaryData?.eventScenarioStatus = nil
             DispatchQueue.main.async {
+                self.user_role = scenarioStatus.role
                 self.eventScenarioStatus = scenarioStatus
             }
         }
@@ -252,6 +258,7 @@ extension EventAPIViewModel {
         if let scenarioStatus = eventScenarioStatus {
             Constants.sendTag("\(scenarioStatus.event_id)\(scenarioStatus.role)", value: "")
             self.eventScenarioStatus = nil
+            self.user_role = "nil"
         }
         self.accessToken = nil
     }

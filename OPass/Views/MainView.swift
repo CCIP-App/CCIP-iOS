@@ -110,8 +110,8 @@ struct MainView: View {
     }
     private func FeatureIsVisible(_ visible_roles: [String]?) -> Bool {
         guard let visible_roles = visible_roles else { return true }
-        guard let user_role = eventAPI.eventScenarioStatus?.role else { return false }
-        return visible_roles.contains(user_role)
+        guard eventAPI.user_role != "nil" else { return false }
+        return visible_roles.contains(eventAPI.user_role)
     }
 }
 
