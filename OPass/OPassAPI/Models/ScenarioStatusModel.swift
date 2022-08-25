@@ -14,7 +14,7 @@ struct ScenarioStatusModel: Hashable, Codable {
     var event_id: String = ""
     var token: String = ""
     var user_id: String = ""
-    var attr = AttrModel()
+    var attr: [String : String]
     @TransformWith<IntergerToDateTransform> var first_use: DateInRegion
     var role: String = ""
     @TransformWith<ScenarioModelsTransform> var scenarios: ScenarioModel
@@ -87,10 +87,6 @@ extension Dictionary where Value: RangeReplaceableCollection {
     }
 }
 
-struct AttrModel: Hashable, Codable {
-    var diet: String? = nil
-}
-
 struct ScenarioModel: Hashable, Codable {
     var sectionID: [String] = []
     var sectionData: [String : [ScenarioDataModel]] = [:]
@@ -103,7 +99,7 @@ struct ScenarioDataModel: Hashable, Codable, Identifiable {
     var expire_time: DateInRegion
     var disabled: String? = nil
     var countdown: Int = 0
-    var attr = AttrModel()
+    var attr: [String : String]
     var used: DateInRegion?
     var symbolName: String = ""
     var id: String = ""
@@ -116,7 +112,7 @@ struct RawScenarioDataModel: Hashable, Codable {
     @TransformWith<IntergerToDateTransform> var expire_time: DateInRegion
     var disabled: String? = nil
     var countdown: Int = 0
-    var attr = AttrModel()
+    var attr: [String : String]
     var used: Int?
     var id: String = ""
 }

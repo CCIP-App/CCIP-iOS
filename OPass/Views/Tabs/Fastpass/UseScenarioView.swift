@@ -170,12 +170,12 @@ private struct TimerView: View {
             .foregroundColor(.white)
             .padding(.horizontal)
             
-            if let diet = scenario.attr.diet {
+            ForEach(scenario.attr.keys.sorted(), id: \.self) { key in
                 HStack {
-                    VStack(alignment: .leading, spacing: 0) {
-                        Text("Diet")
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(key.capitalizingFirstLetter())
                             .foregroundColor(.white.opacity(0.5))
-                        Text(diet)
+                        Text(scenario.attr[key]?.capitalizingFirstLetter() ?? "")
                             .foregroundColor(.white)
                             .fontWeight(.light)
                             .font(.largeTitle)
@@ -203,7 +203,7 @@ private struct TimerView: View {
             }
             .offset(x: 0, y: 30)
         })
-        .background(BackgroundColor(diet: scenario.attr.diet))
+        .background(BackgroundColor(diet: scenario.attr["diet"]))
         .cornerRadius(10)
         .onReceive(timer) { _ in
             let tmpTime = countTime - (Date().timeIntervalSince1970 - usedTime)
