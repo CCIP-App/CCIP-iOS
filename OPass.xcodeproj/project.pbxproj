@@ -58,6 +58,7 @@
 		D3A00F2327D837D00097A6AB /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D3A00F2A27D838920097A6AB /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = D3A00F2927D838920097A6AB /* OneSignal */; };
 		D3A94D03281E62530053FEFA /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A94D02281E62530053FEFA /* ErrorView.swift */; };
+		D3B0B20528BBC4400001B311 /* DevelopersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B0B20428BBC4400001B311 /* DevelopersView.swift */; };
 		D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C0E21927D51B460095169F /* NetworkExtension.framework */; };
 		D3C0E21C27D51C060095169F /* WifiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0E21B27D51C060095169F /* WifiView.swift */; };
 		D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194727CF864B00643D97 /* ScheduleModel.swift */; };
@@ -165,6 +166,7 @@
 		D3A00F2B27D839B10097A6AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D3A00F2C27D840C10097A6AB /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		D3A94D02281E62530053FEFA /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		D3B0B20428BBC4400001B311 /* DevelopersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersView.swift; sourceTree = "<group>"; };
 		D3C0E21727D51B460095169F /* OPass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OPass.entitlements; sourceTree = "<group>"; };
 		D3C0E21927D51B460095169F /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		D3C0E21B27D51C060095169F /* WifiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiView.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 			children = (
 				D3C6194C27CF9A7400643D97 /* SettingsView.swift */,
 				D3EFF36E28A12824004CD8DF /* AppearanceView.swift */,
+				D3B0B20428BBC4400001B311 /* DevelopersView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				4F3A10DC2815201E00CCE5A9 /* ImagePicker.swift in Sources */,
 				4F5CA37D27FD58D600DEAB39 /* Color+Extension.swift in Sources */,
 				D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */,
+				D3B0B20528BBC4400001B311 /* DevelopersView.swift in Sources */,
 				D3652A792869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift in Sources */,
 				D3652A782869AF72002AC419 /* TextSizeViewModel.swift in Sources */,
 				D3E0123327D3667C0040621F /* ScenarioStatusModel.swift in Sources */,

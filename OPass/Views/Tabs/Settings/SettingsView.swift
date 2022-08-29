@@ -155,6 +155,10 @@ private struct AboutSection: View {
                         .frame(width: UIScreen.main.bounds.width * 0.045)
                 }
             }
+            
+            NavigationLink("Developers") {
+                DevelopersView()
+            }
         }
     }
 }
