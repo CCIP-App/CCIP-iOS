@@ -43,7 +43,6 @@ struct OPassApp: App {
                     }
                 }
                 .preferredColorScheme(.init(interfaceStyle))
-                .environmentObject(OPassAPIViewModel())
         }
     }
 }

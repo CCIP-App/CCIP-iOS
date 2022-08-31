@@ -36,7 +36,7 @@ struct MainView: View {
                         .scaledToFit()
                         .padding(.horizontal)
                 } else {
-                    Text(LocalizeIn(zh: eventAPI.display_name.zh, en: eventAPI.display_name.en))
+                    Text(eventAPI.display_name.localized())
                         .font(.system(.largeTitle, design: .rounded))
                         .fontWeight(.medium)
                         .fixedSize(horizontal: false, vertical: true)
@@ -67,7 +67,7 @@ struct MainView: View {
                                     height: UIScreen.main.bounds.width / 27.6
                                 )))
                                 
-                                Text(LocalizeIn(zh: feature.display_text.zh, en: feature.display_text.en))
+                                Text(feature.display_text.localized())
                                     .font(.custom("RobotoCondensed-Regular", size: 11, relativeTo: .caption2))
                                     .multilineTextAlignment(.center)
                                     .fixedSize(horizontal: false, vertical: true)
@@ -77,32 +77,10 @@ struct MainView: View {
                 }
             }.padding(.horizontal)
         }
-        .background {
-            Group {
-                NavigationLink(
-                    tag: FeatureType.fastpass,
-                    selection: $selectedFeature,
-                    destination: { FastpassView(eventAPI: eventAPI) }
-                ) { EmptyView() }
-                NavigationLink(
-                    tag: FeatureType.ticket,
-                    selection: $selectedFeature,
-                    destination: { TicketView(eventAPI: eventAPI) }
-                ) { EmptyView() }
-                NavigationLink(
-                    tag: FeatureType.schedule,
-                    selection: $selectedFeature,
-                    destination: { ScheduleView(eventAPI: eventAPI) }
-                ) { EmptyView() }
-                NavigationLink(
-                    tag: FeatureType.announcement,
-                    selection: $selectedFeature,
-                    destination: { AnnounceView(eventAPI: eventAPI) }
-                ) { EmptyView() }
-            }.hidden()
+        .navigationDestination(for: SessionDataModel.self) { detail in
+            SessionDetailView(eventAPI, detail: detail)
         }
     }
-    
     private func FeatureIsAvailable(_ feature: FeatureModel) -> Bool {
         let t = feature.feature
         guard t == .im || t == .puzzle || t == .venue || t == .sponsors || t == .staffs || t == .webview else { return true }
@@ -120,14 +98,17 @@ private struct TabButton: View {
     let feature: FeatureModel
     @Binding var selectedFeature: FeatureType?
     @ObservedObject var eventAPI: EventAPIViewModel
+    @EnvironmentObject var pathManager: PathManager
     let width: CGFloat
     
     @State private var presentingWifiSheet = false
     var body: some View {
         Button {
             switch(feature.feature) {
-            case .fastpass, .schedule, .ticket, .announcement:
-                self.selectedFeature = feature.feature
+            case .fastpass:     pathManager.path.append(.fastpass)
+            case .schedule:     pathManager.path.append(.schedule)
+            case .ticket:       pathManager.path.append(.ticket)
+            case .announcement: pathManager.path.append(.announcement)
             case .wifi:
                 if let wifi = feature.wifi, wifi.count == 1 {
                     NEHotspot.ConnectWiFi(SSID: wifi[0].SSID, withPass: wifi[0].password)
@@ -136,7 +117,7 @@ private struct TabButton: View {
                 if let url = URL(string: feature.url ?? "") {
                     Constants.OpenInOS(forURL: url)
                 }
-            default:
+            case .im, .puzzle, .venue, .sponsors, .staffs, .webview:
                 if let url = feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) {
                     Constants.OpenInAppSafari(forURL: url, style: colorScheme)
                 }
@@ -246,7 +227,7 @@ private extension FeatureModel {
 #if DEBUG
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             MainView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
         }
     }

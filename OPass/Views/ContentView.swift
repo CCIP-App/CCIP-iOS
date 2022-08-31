@@ -11,7 +11,8 @@ import FirebaseDynamicLinks
 
 struct ContentView: View {
     
-    @EnvironmentObject var OPassAPI: OPassAPIViewModel
+    @StateObject var pathManager = PathManager()
+    @StateObject var OPassAPI = OPassAPIViewModel()
     @State var handlingURL = false
     @State var isShowingEventList = false
     @State var showHttp403Alert = false
@@ -21,7 +22,7 @@ struct ContentView: View {
     @Binding var url: URL?
 
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $pathManager.path) {
             VStack {
                 if !isError {
                     if OPassAPI.currentEventID == nil {
@@ -31,20 +32,24 @@ struct ContentView: View {
                                 self.isShowingEventList = true
                             }
                     } else if OPassAPI.currentEventID != OPassAPI.currentEventAPI?.event_id {
-                        ProgressView(LocalizedStringKey("Loading"))
+                        ProgressView("Loading")
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .task {
                                 do { try await OPassAPI.loadCurrentEventAPI() }
                                 catch { self.isError = true }
                             }
-                    } else {
-                        MainView(eventAPI: OPassAPI.currentEventAPI!)
+                    } else if let eventAPI = OPassAPI.currentEventAPI {
+                        MainView(eventAPI: eventAPI)
                             .onAppear {
                                 if viewFirstActive {
                                     Constants.PromptForPushNotifications()
                                     viewFirstActive.toggle()
                                 }
                             }
+                    } else {
+                        VStack {} // Unknown status
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .onAppear { self.isError = true }
                     }
                 } else {
                     ErrorWithRetryView {
@@ -57,23 +62,24 @@ struct ContentView: View {
                 }
             }
             .background(Color("SectionBackgroundColor"))
+            .navigationTitle(OPassAPI.currentEventAPI?.display_name.localized() ?? "OPass")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(for: PathManager.destination.self) { destination in
+                switch destination {
+                case .fastpass:                FastpassView(eventAPI: OPassAPI.currentEventAPI!)
+                case .schedule:                ScheduleView(eventAPI: OPassAPI.currentEventAPI!)
+                case .sessionDetail(let data): SessionDetailView(OPassAPI.currentEventAPI!, detail: data)
+                case .ticket:                  TicketView(eventAPI: OPassAPI.currentEventAPI!)
+                case .announcement:            AnnouncementView(eventAPI: OPassAPI.currentEventAPI!)
+                case .settings:                SettingsView()
+                case .appearance:              AppearanceView()
+                case .developers:              DevelopersView()
+                }
+            }
             .sheet(isPresented: $isShowingEventList) {
                 EventListView()
             }
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text(
-                        LocalizeIn(
-                            zh: OPassAPI.currentEventAPI?.display_name.zh,
-                            en: OPassAPI.currentEventAPI?.display_name.en
-                        ) ?? "OPass"
-                    )
-                    .bold()
-                    .lineLimit(1)
-                    .fixedSize()
-                }
-                
                 ToolbarItem(placement: .navigationBarLeading) {
                     SFButton(systemName: "rectangle.stack") {
                         isShowingEventList.toggle()
@@ -81,12 +87,14 @@ struct ContentView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: SettingsView()) {
+                    NavigationLink(value: PathManager.destination.settings) {
                         Image(systemName: "gearshape")
                     }
                 }
             }
         }
+        .environmentObject(pathManager)
+        .environmentObject(OPassAPI)
         .overlay {
             if self.url != nil {
                 ProgressView("LOGGINGIN")

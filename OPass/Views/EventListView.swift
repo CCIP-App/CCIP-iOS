@@ -28,7 +28,7 @@ struct EventListView: View {
                                 } else {
                                     for component in searchText.tirm().lowercased().components(separatedBy: " ") {
                                         let component = component.tirm()
-                                        if !component.isEmpty, !LocalizeIn(zh: event.display_name.zh, en: event.display_name.en).lowercased().contains(component) {
+                                        if !component.isEmpty, !event.display_name.localized().lowercased().contains(component) {
                                             return false
                                         }
                                     }
@@ -127,7 +127,7 @@ private struct EventRow: View {
                 .padding(.horizontal, 3)
                 .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.15)
                 
-                Text(LocalizeIn(zh: displayName.zh, en: displayName.en))
+                Text(displayName.localized())
                     .foregroundColor(colorScheme == .dark ? .white : .black)
                 
                 Spacer()

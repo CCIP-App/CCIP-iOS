@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Foundation
 import KeychainAccess
 import OSLog
 
@@ -15,19 +14,20 @@ import OSLog
 class EventAPIViewModel: ObservableObject {
     
     init(
-        _ eventSettings: SettingsModel,
+        _ settings: SettingsModel,
         eventLogo: Data? = nil,
         saveData: @escaping () async -> Void = {},
         tmpData: CodableEventAPIVM? = nil
     ) {
-        self.event_id = eventSettings.event_id
-        self.display_name = eventSettings.display_name
-        self.logo_url = eventSettings.logo_url
-        self.eventSettings = eventSettings
+        self.event_id = settings.event_id
+        self.display_name = settings.display_name
+        self.logo_url = settings.logo_url
+        self.eventSettings = settings
         self.eventLogo = eventLogo
         self.saveData = saveData
-        self.eventAPITemporaryData = tmpData
-        self._user_role = AppStorage(wrappedValue: "nil", "\(eventSettings.event_id)_user_role")
+        self._user_role = AppStorage(wrappedValue: "nil", "user_role", store: .init(suiteName: settings.event_id))
+        self._liked_sessions = AppStorage(wrappedValue: [], "liked_sessions", store: .init(suiteName: settings.event_id))
+        self.eventAPITmpData = tmpData
     }
     
     var saveData: () async -> Void
@@ -39,16 +39,17 @@ class EventAPIViewModel: ObservableObject {
     @Published var eventSchedule: ScheduleModel? = nil
     @Published var eventAnnouncements: [AnnouncementModel]? = nil
     @Published var eventScenarioStatus: ScenarioStatusModel? = nil
-    private var eventAPITemporaryData: CodableEventAPIVM? = nil
     @AppStorage var user_role: String
+    @AppStorage var liked_sessions: [String]
+    private var eventAPITmpData: CodableEventAPIVM? = nil
     
     private let logger = Logger(subsystem: "app.opass.ccip", category: "EventAPI")
-    private let keychain = Keychain(service: "app.opass.ccip-token")//Service key value match App Bundle ID + "-token"
+    private let keychain = Keychain(service: "app.opass.ccip-token")
         .synchronizable(true)
     
     var accessToken: String? {
         get {
-            return try? keychain.get(self.event_id + "_token") //Key sample: SITCON_2020_token
+            return try? keychain.get(self.event_id + "_token")
         }
         set {
             if let accessToken = newValue {
@@ -159,10 +160,10 @@ extension EventAPIViewModel {
         } catch APIRepo.LoadError.http403Forbidden {
             throw APIRepo.LoadError.http403Forbidden
         } catch {
-            guard let data = self.eventAPITemporaryData, let scenarioStatus = data.eventScenarioStatus else {
+            guard let data = self.eventAPITmpData, let scenarioStatus = data.eventScenarioStatus else {
                 throw error
             }
-            self.eventAPITemporaryData?.eventScenarioStatus = nil
+            self.eventAPITmpData?.eventScenarioStatus = nil
             DispatchQueue.main.async {
                 self.user_role = scenarioStatus.role
                 self.eventScenarioStatus = scenarioStatus
@@ -218,10 +219,10 @@ extension EventAPIViewModel {
                 Task { await self.saveData() }
             }
         } catch {
-            guard let schedule = self.eventAPITemporaryData?.eventSchedule else {
+            guard let schedule = self.eventAPITmpData?.eventSchedule else {
                 throw error
             }
-            self.eventAPITemporaryData?.eventSchedule = nil
+            self.eventAPITmpData?.eventSchedule = nil
             DispatchQueue.main.async {
                 self.eventSchedule = schedule
             }
@@ -244,10 +245,10 @@ extension EventAPIViewModel {
         } catch  APIRepo.LoadError.http403Forbidden {
             throw APIRepo.LoadError.http403Forbidden
         } catch {
-            guard let announcements = self.eventAPITemporaryData?.eventAnnouncements else {
+            guard let announcements = self.eventAPITmpData?.eventAnnouncements else {
                 throw error
             }
-            self.eventAPITemporaryData?.eventAnnouncements = nil
+            self.eventAPITmpData?.eventAnnouncements = nil
             DispatchQueue.main.async {
                 self.eventAnnouncements = announcements
             }

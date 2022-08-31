@@ -38,7 +38,7 @@ struct WiFiView: View {
                     }
                 }
             }
-            .navigationTitle(LocalizeIn(zh: feature.display_text.zh, en: feature.display_text.en))
+            .navigationTitle(feature.display_text.localized())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

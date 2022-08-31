@@ -39,7 +39,7 @@ struct FeatureModel: Hashable, Codable {
 }
 
 enum FeatureType: String, Hashable, Codable {
-    case nullFeature, fastpass, ticket, schedule, announcement, wifi, telegram, im, puzzle, venue, sponsors, staffs, webview
+    case fastpass, ticket, schedule, announcement, wifi, telegram, im, puzzle, venue, sponsors, staffs, webview
 }
 
 

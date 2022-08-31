@@ -1,5 +1,5 @@
 //
-//  AnnounceView.swift
+//  AnnouncementView.swift
 //  OPass
 //
 //  Created by secminhr on 2022/3/5.
@@ -8,10 +8,10 @@
 
 import SwiftUI
 
-struct AnnounceView: View {
+struct AnnouncementView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
-    let display_text: DisplayTextModel
+    private let display_text: DisplayTextModel
     @State var showHttp403Alert = false
     @State var errorType: String? = nil
     @Environment(\.colorScheme) var colorScheme
@@ -25,7 +25,7 @@ struct AnnounceView: View {
         VStack {
             if errorType == nil {
                 if let announcements = eventAPI.eventAnnouncements {
-                    if !announcements.isEmpty {
+                    if announcements.isNotEmpty {
                         List(announcements, id: \.datetime) { announcement in
                             let url = URL(string: announcement.uri)
                             Button {
@@ -35,7 +35,7 @@ struct AnnounceView: View {
                             } label: {
                                 HStack {
                                     VStack(alignment: .leading, spacing: 3) {
-                                        Text(LocalizeIn(zh: announcement.msg_zh, en: announcement.msg_en))
+                                        Text(announcement.localized())
                                             .foregroundColor(colorScheme == .dark ? .white : .black)
                                         Text(String(format: "%d/%d %d:%02d", announcement.datetime.month, announcement.datetime.day, announcement.datetime.hour, announcement.datetime.minute))
                                             .font(.footnote)
@@ -110,7 +110,7 @@ struct AnnounceView: View {
             }
         }
         .listStyle(.insetGrouped)
-        .navigationTitle(LocalizeIn(zh: display_text.zh, en: display_text.en))
+        .navigationTitle(display_text.localized())
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -127,7 +127,7 @@ struct AnnounceView: View {
 #if DEBUG
 struct AnnounceView_Previews: PreviewProvider {
     static var previews: some View {
-        AnnounceView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
+        AnnouncementView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
     }
 }
 #endif

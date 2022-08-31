@@ -60,10 +60,10 @@ struct FastpassView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {
-                    Text(LocalizeIn(zh: display_text.zh, en: display_text.en)).font(.headline)
-                        //.fixedSize(horizontal: true, vertical: true)
-                    Text(LocalizeIn(zh: eventAPI.display_name.zh, en: eventAPI.display_name.en)).font(.caption).foregroundColor(.gray)
-                        //.fixedSize(horizontal: true, vertical: true)
+                    Text(display_text.localized())
+                        .font(.headline)
+                    Text(eventAPI.display_name.localized())
+                        .font(.caption).foregroundColor(.gray)
                 }
             }
         }

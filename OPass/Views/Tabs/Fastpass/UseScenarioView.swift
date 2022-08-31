@@ -29,7 +29,7 @@ struct UseScenarioView: View {
                 default: ErrorView()
                 }
             }
-            .navigationTitle(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en))
+            .navigationTitle(scenario.display_text.localized())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -56,7 +56,7 @@ struct UseScenarioView: View {
                     .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.width * 0.2)
                     .background(.blue)
                     .cornerRadius(UIScreen.main.bounds.width * 0.05)
-                Text(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en))
+                Text(scenario.display_text.localized())
                     .font(.largeTitle.bold())
                 
                 Text("ConfirmUseScenarioMessage")
@@ -120,10 +120,7 @@ private struct ScuessScenarioView: View {
                         .scaledToFit()
                         .frame(width: UIScreen.main.bounds.width * 0.2)
                         .foregroundColor(.green)
-                    Text(
-                        LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en) +
-                        " " + String(localized: "Complete")
-                    )
+                    Text(scenario.display_text.localized() + " " + String(localized: "Complete"))
                         .font(.title.bold())
                     Group{
                         Spacer()

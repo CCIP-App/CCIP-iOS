@@ -12,10 +12,9 @@ import SwiftDate
 
 struct SessionDetailView: View {
     
-    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var eventAPI: EventAPIViewModel
     let sessionDetail: SessionDataModel
-    @AppStorage var likedSessions: [String]
+    @Environment(\.colorScheme) var colorScheme
     @State var navigationY_Coordinate: CGFloat = .zero
     @State var showingUrlAlert = false
     @State var showingCalendarAlert = false
@@ -23,13 +22,12 @@ struct SessionDetailView: View {
     @State var showingNavigationTitle = false
     private var eventStore = EKEventStore()
     private var isLiked: Bool {
-        likedSessions.contains(sessionDetail.id)
+        self.eventAPI.liked_sessions.contains(sessionDetail.id)
     }
     
-    init(eventAPI: EventAPIViewModel, detail: SessionDataModel) {
-        self._eventAPI = ObservedObject(wrappedValue: eventAPI)
+    init(_ eventAPI: EventAPIViewModel, detail: SessionDataModel) {
+        self.eventAPI = eventAPI
         self.sessionDetail = detail
-        self._likedSessions = AppStorage(wrappedValue: [], "liked_sessions", store: UserDefaults(suiteName: eventAPI.event_id))
     }
     
     var body: some View {
@@ -41,7 +39,7 @@ struct SessionDetailView: View {
                         .padding(.top, 3.9)
                 }
                 
-                Text(LocalizeIn(zh: sessionDetail.zh, en: sessionDetail.en).title)
+                Text(sessionDetail.localized().title)
                     .font(.largeTitle.bold())
                     .fixedSize(horizontal: false, vertical: true)
                     .background(GeometryReader { geo in
@@ -56,15 +54,13 @@ struct SessionDetailView: View {
                     .padding(.vertical)
                 
                 if let type = sessionDetail.type {
-                    TypeSection(name: LocalizeIn(zh: eventAPI.eventSchedule?.session_types.data[type]?.zh,
-                                                 en: eventAPI.eventSchedule?.session_types.data[type]?.en)?.name ?? type)
-                    .background(Color("SectionBackgroundColor"))
-                    .cornerRadius(8)
-                    .padding(.bottom)
+                    TypeSection(name: eventAPI.eventSchedule?.session_types.data[type]?.localized().name ?? type)
+                        .background(Color("SectionBackgroundColor"))
+                        .cornerRadius(8)
+                        .padding(.bottom)
                 }
                 
-                PlaceSection(name: LocalizeIn(zh: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.zh,
-                                              en: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.en)?.name ?? sessionDetail.room)
+                PlaceSection(name: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.localized().name ?? sessionDetail.room)
                     .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
                     .padding(.bottom)
@@ -87,13 +83,13 @@ struct SessionDetailView: View {
                 SpeakersSections(eventAPI: eventAPI, sessionDetail: sessionDetail)
             }
             
-            if let description = LocalizeIn(zh: sessionDetail.zh, en: sessionDetail.en).description, description != "" {
+            if let description = sessionDetail.localized().description, description != "" {
                 DescriptionSection(description: description)
             }
         }
         .listStyle(.insetGrouped)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle(showingNavigationTitle ? LocalizeIn(zh: sessionDetail.zh, en: sessionDetail.en).title : "")
+        .navigationTitle(showingNavigationTitle ? sessionDetail.localized().title : "")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack {
@@ -110,11 +106,11 @@ struct SessionDetailView: View {
                         if isLiked {
                             SoundManager.shared.play(sound: .don)
                             UINotificationFeedbackGenerator().notificationOccurred(.warning)
-                            likedSessions.removeAll { $0 == sessionDetail.id }
+                            self.eventAPI.liked_sessions.removeAll { $0 == sessionDetail.id }
                         } else {
                             SoundManager.shared.play(sound: .din)
                             UINotificationFeedbackGenerator().notificationOccurred(.success)
-                            likedSessions.append(sessionDetail.id)
+                            self.eventAPI.liked_sessions.append(sessionDetail.id)
                         }
                     }
                     
@@ -131,7 +127,7 @@ struct SessionDetailView: View {
                             Label("AddToCalendar", systemImage: "calendar.badge.plus")
                         }
                         
-                        if let uri = self.sessionDetail.uri, let url = URL(string: uri), let av = UIActivityViewController(activityItems: [url], applicationActivities: nil) {
+                        if let url = URL(string: sessionDetail.uri ?? ""), let av = UIActivityViewController(activityItems: [url], applicationActivities: nil) {
                             Button {
                                 UIApplication.topViewController()?.present(av, animated: true)
                             } label: {
@@ -162,7 +158,7 @@ struct SessionDetailView: View {
             EventEditView(
                 eventStore: eventStore,
                 event: eventStore.createEvent(
-                    title: LocalizeIn(zh: sessionDetail.zh, en: sessionDetail.zh).title,
+                    title: sessionDetail.localized().title,
                     startDate: sessionDetail.start.date,
                     endDate: sessionDetail.end.date,
                     alertOffset: -300 // T minus 5 minutes
@@ -189,7 +185,7 @@ private struct TagsSection: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(tagsID, id: \.self) { tagID in
-                    Text(LocalizeIn(zh: tags[tagID]?.zh, en: tags[tagID]?.en)?.name ?? tagID)
+                    Text(tags[tagID]?.localized().name ?? tagID)
                         .font(.caption)
                         .padding(.vertical, 2)
                         .padding(.horizontal, 8)
@@ -358,10 +354,7 @@ private struct BroadcastSection: View {
     private func renderRoomsString() -> String {
         var result = ""
         for (offset, room) in broadcast.enumerated() {
-            if let name = LocalizeIn(
-                zh: eventSchedule?.rooms.data[room]?.zh.name,
-                en: eventSchedule?.rooms.data[room]?.en.name
-            ) {
+            if let name = eventSchedule?.rooms.data[room]?.localized().name {
                 result.append(name)
                 if offset < broadcast.count - 1 {
                     result.append(LocalizeIn(zh: "、", en: ", "))
@@ -417,16 +410,16 @@ private struct SpeakerBlock: View {
                 .clipShape(Circle())
                 .frame(width: 30, height: 30)
                 
-                Text(LocalizeIn(zh: speakerData?.zh, en: speakerData?.en)?.name ?? speaker)
+                Text(speakerData?.localized().name ?? speaker)
                     .font(.subheadline.bold())
                 Spacer()
             }
             .padding(.vertical, 8)
-            if let data = speakerData, LocalizeIn(zh: speakerData?.zh, en: speakerData?.en)?.bio != "" {
+            if let data = speakerData, data.localized().bio.isNotEmpty {
                 Divider()
                 SpeakerBio(
-                    speaker: LocalizeIn(zh: data.zh, en: data.en).name,
-                    speakerBio: LocalizeIn(zh: data.zh, en: data.en).bio,
+                    speaker: data.localized().name,
+                    speakerBio: data.localized().bio,
                     avatarImage: avatarImage
                 )
             }

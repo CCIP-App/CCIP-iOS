@@ -13,21 +13,17 @@ struct ScheduleView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     @AppStorage("AutoSelectScheduleDay") var autoSelectScheduleDay = true
-    @AppStorage var likedSessions: [String]
-    let display_text: DisplayTextModel
+    @State var display_text: DisplayTextModel
     @State var selectDayIndex: Int
     @State private var filter = Filter.all
     @State private var isError = false
     
     init(eventAPI: EventAPIViewModel) {
         self.eventAPI = eventAPI
-        self._likedSessions = AppStorage(wrappedValue: [], "liked_sessions", store: UserDefaults(suiteName: eventAPI.event_id))
         self.display_text = eventAPI.eventSettings.feature(ofType: .schedule)?.display_text ?? .init(en: "", zh: "")
         if AppStorage(wrappedValue: true, "AutoSelectScheduleDay").wrappedValue {
             self.selectDayIndex = eventAPI.eventSchedule?.sessions.count == 1 ? 0 : eventAPI.eventSchedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0
-        } else {
-            self.selectDayIndex = 0
-        }
+        } else { self.selectDayIndex = 0 }
     }
     
     var body: some View {
@@ -42,29 +38,24 @@ struct ScheduleView: View {
                         
                         let filteredModel = allScheduleData.sessions[selectDayIndex].filter({ session in
                             switch filter {
-                            case .liked: return likedSessions.contains(session.id)
+                            case .all: return true
+                            case .liked: return eventAPI.liked_sessions.contains(session.id)
                             case .tag(let tag): return session.tags.contains(tag)
                             case .type(let type): return session.type == type
                             case .room(let room): return session.room == room
                             case .speaker(let speaker): return session.speakers.contains(speaker)
-                            default: return true
                             }
                         })
                         Form {
                             ForEach(filteredModel.header, id: \.self) { header in
                                 Section {
-                                    ForEach(filteredModel.data[header]!.sorted(by: { $0.end < $1.end }), id: \.id) { sessionDetail in
-                                        NavigationLink {
-                                            SessionDetailView(eventAPI: eventAPI, detail: sessionDetail)
-                                        } label: {
+                                    ForEach(filteredModel.data[header]!.sorted { $0.end < $1.end }, id: \.id) { detail in
+                                        NavigationLink(value: PathManager.destination.sessionDetail(detail)) {
                                             SessionOverView(
-                                                room: LocalizeIn(
-                                                    zh: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.zh,
-                                                    en: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.en
-                                                )?.name ?? sessionDetail.room,
-                                                start: sessionDetail.start,
-                                                end: sessionDetail.end,
-                                                title: LocalizeIn(zh: sessionDetail.zh, en: sessionDetail.en).title
+                                                room: eventAPI.eventSchedule?.rooms.data[detail.room]?.localized().name ?? detail.room,
+                                                start: detail.start,
+                                                end: detail.end,
+                                                title: detail.localized().title
                                             )
                                         }
                                     }
@@ -101,7 +92,7 @@ struct ScheduleView: View {
                 }
             }
         }
-        .navigationTitle(LocalizeIn(zh: display_text.zh, en: display_text.en))
+        .navigationTitle(display_text.localized())
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -117,10 +108,8 @@ struct ScheduleView: View {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(schedule.tags.id, id: \.self) { id in
-                                        Text(LocalizeIn(
-                                            zh: schedule.tags.data[id]?.zh.name,
-                                            en: schedule.tags.data[id]?.en.name) ?? id
-                                        ).tag(Filter.tag(id))
+                                        Text(schedule.tags.data[id]?.localized().name ?? id)
+                                            .tag(Filter.tag(id))
                                     }
                                 }
                             } label: {
@@ -138,10 +127,8 @@ struct ScheduleView: View {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(schedule.session_types.id, id: \.self) { id in
-                                        Text(LocalizeIn(
-                                            zh: schedule.session_types.data[id]?.zh.name,
-                                            en: schedule.session_types.data[id]?.en.name) ?? id
-                                        ).tag(Filter.type(id))
+                                        Text(schedule.session_types.data[id]?.localized().name ?? id)
+                                            .tag(Filter.type(id))
                                     }
                                 }
                             } label: {
@@ -159,12 +146,8 @@ struct ScheduleView: View {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(schedule.rooms.id, id: \.self) { id in
-                                        Text(
-                                            LocalizeIn(
-                                                zh: schedule.rooms.data[id]?.zh,
-                                                en: schedule.rooms.data[id]?.en
-                                            )?.name ?? id
-                                        ).tag(Filter.room(id))
+                                        Text(schedule.rooms.data[id]?.localized().name ?? id)
+                                            .tag(Filter.room(id))
                                     }
                                 }
                             } label: {
@@ -180,12 +163,8 @@ struct ScheduleView: View {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(schedule.speakers.id, id: \.self) { id in
-                                        Text(
-                                            LocalizeIn(
-                                                zh: schedule.speakers.data[id]?.zh,
-                                                en: schedule.speakers.data[id]?.en
-                                            )?.name ?? id
-                                        ).tag(Filter.speaker(id))
+                                        Text(schedule.speakers.data[id]?.localized().name ?? id)
+                                            .tag(Filter.speaker(id))
                                     }
                                 }
                             } label: {

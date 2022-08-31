@@ -95,7 +95,7 @@ struct ScenarioView: View {
                 .cornerRadius(UIScreen.main.bounds.width * 0.028)
             
             VStack(alignment: .leading) {
-                Text(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en))
+                Text(scenario.display_text.localized())
                     .foregroundColor(colorScheme == .dark ? .white : .black)
                 Text(
                     scenario.disabled == nil
@@ -161,7 +161,7 @@ struct FastpassLogoView: View {
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(Color("LogoColor"))
             } else {
-                Text(LocalizeIn(zh: eventAPI.display_name.zh, en: eventAPI.display_name.en))
+                Text(eventAPI.display_name.localized())
                     .font(.system(.largeTitle, design: .rounded))
                     .fontWeight(.medium)
                     .foregroundColor(Color("LogoColor"))

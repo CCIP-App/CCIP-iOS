@@ -12,10 +12,10 @@ import EFQRCode
 
 struct TicketView: View {
     
+    @ObservedObject var eventAPI: EventAPIViewModel
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("AutoAdjustTicketBirghtness") var autoAdjustTicketBirghtness = true
-    @ObservedObject var eventAPI: EventAPIViewModel
     @State var showingToken = false
     @State var isShowingLogOutAlert = false
     @State var qrCodeUIImage = UIImage()
@@ -98,7 +98,7 @@ struct TicketView: View {
                 RedeemTokenView(eventAPI: eventAPI)
             }
         }
-        .navigationTitle(LocalizeIn(zh: display_text.zh, en: display_text.en))
+        .navigationTitle(display_text.localized())
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -109,11 +109,11 @@ struct TicketView: View {
                 }
             }
         }
-        .alert(LocalizedStringKey("ConfirmSignOut"), isPresented: $isShowingLogOutAlert) {
-            Button(String(localized: "SignOut"), role: .destructive) {
-                eventAPI.signOut()
+        .alert("ConfirmSignOut", isPresented: $isShowingLogOutAlert) {
+            Button("SignOut", role: .destructive) {
+                self.eventAPI.signOut()
             }
-            Button(String(localized: "Cancel"), role: .cancel) { }
+            Button("Cancel", role: .cancel) { }
         }
     }
     

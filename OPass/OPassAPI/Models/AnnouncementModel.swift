@@ -13,4 +13,9 @@ struct AnnouncementModel: Codable {
     var msg_en: String
     var msg_zh: String
     var uri: String
+    
+    func localized() -> String {
+        if Bundle.main.preferredLocalizations[0] ==  "zh-Hant" { return self.msg_zh }
+        return self.msg_en
+    }
 }
