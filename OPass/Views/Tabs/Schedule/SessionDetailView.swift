@@ -34,7 +34,7 @@ struct SessionDetailView: View {
         List {
             VStack(alignment: .leading, spacing: 0) {
                 if !sessionDetail.tags.isEmpty {
-                    TagsSection(tagsID: sessionDetail.tags, tags: eventAPI.eventSchedule?.tags.data ?? [:])
+                    TagsSection(tagsID: sessionDetail.tags, tags: eventAPI.schedule?.tags.data ?? [:])
                         .padding(.bottom, 8)
                         .padding(.top, 3.9)
                 }
@@ -54,13 +54,13 @@ struct SessionDetailView: View {
                     .padding(.vertical)
                 
                 if let type = sessionDetail.type {
-                    TypeSection(name: eventAPI.eventSchedule?.session_types.data[type]?.localized().name ?? type)
+                    TypeSection(name: eventAPI.schedule?.session_types.data[type]?.localized().name ?? type)
                         .background(Color("SectionBackgroundColor"))
                         .cornerRadius(8)
                         .padding(.bottom)
                 }
                 
-                PlaceSection(name: eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.localized().name ?? sessionDetail.room)
+                PlaceSection(name: eventAPI.schedule?.rooms.data[sessionDetail.room]?.localized().name ?? sessionDetail.room)
                     .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
                     .padding(.bottom)
@@ -70,7 +70,7 @@ struct SessionDetailView: View {
                     .cornerRadius(8)
                 
                 if let broadcast = sessionDetail.broadcast, !broadcast.isEmpty {
-                    BroadcastSection(eventAPI.eventSchedule, broadcast: broadcast)
+                    BroadcastSection(eventAPI.schedule, broadcast: broadcast)
                         .background(Color("SectionBackgroundColor"))
                         .cornerRadius(8)
                         .padding(.top)
@@ -99,7 +99,7 @@ struct SessionDetailView: View {
                             title: String(localized: "SessionWillStartIn5Minutes"),
                             content: String(format: String(localized: "SessionWillStartIn5MinutesContent"),
                                             sessionDetail.en.title,
-                                            eventAPI.eventSchedule?.rooms.data[sessionDetail.room]?.en.name ?? ""),
+                                            eventAPI.schedule?.rooms.data[sessionDetail.room]?.en.name ?? ""),
                             rawTime: sessionDetail.start,
                             cancel: isLiked
                         )
@@ -324,11 +324,11 @@ private struct TimeSection: View {
 
 private struct BroadcastSection: View {
     
-    let eventSchedule: ScheduleModel?
+    let schedule: ScheduleModel?
     let broadcast: [String]
     
-    init(_ eventSchedule: ScheduleModel?, broadcast: [String]) {
-        self.eventSchedule = eventSchedule
+    init(_ schedule: ScheduleModel?, broadcast: [String]) {
+        self.schedule = schedule
         self.broadcast = broadcast
     }
     
@@ -354,7 +354,7 @@ private struct BroadcastSection: View {
     private func renderRoomsString() -> String {
         var result = ""
         for (offset, room) in broadcast.enumerated() {
-            if let name = eventSchedule?.rooms.data[room]?.localized().name {
+            if let name = schedule?.rooms.data[room]?.localized().name {
                 result.append(name)
                 if offset < broadcast.count - 1 {
                     result.append(LocalizeIn(zh: "、", en: ", "))
@@ -375,7 +375,7 @@ private struct SpeakersSections: View {
             ForEach(sessionDetail.speakers, id: \.self) { speaker in
                 SpeakerBlock(
                     speaker: speaker,
-                    speakerData: eventAPI.eventSchedule?.speakers.data[speaker]
+                    speakerData: eventAPI.schedule?.speakers.data[speaker]
                 )
             }
             .listRowBackground(Color.transparent)

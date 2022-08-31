@@ -28,8 +28,8 @@ struct MainView: View {
                         .resizable()
                         .scaledToFit()
                         .padding(.horizontal)
-                } else if let eventLogoData = eventAPI.eventLogo, let eventLogoUIImage = UIImage(data: eventLogoData) {
-                    Image(uiImage: eventLogoUIImage)
+                } else if let logoData = eventAPI.logo, let logoUIImage = UIImage(data: logoData) {
+                    Image(uiImage: logoUIImage)
                         .interpolation(.none)
                         .renderingMode(.template)
                         .resizable()
@@ -48,7 +48,7 @@ struct MainView: View {
             
             ScrollView {
                 LazyVGrid(columns: gridItemLayout) {
-                    ForEach(eventAPI.eventSettings.features, id: \.self) { feature in
+                    ForEach(eventAPI.settings.features, id: \.self) { feature in
                         if FeatureIsAvailable(feature), FeatureIsVisible(feature.visible_roles) {
                             VStack {
                                 TabButton(
@@ -84,7 +84,7 @@ struct MainView: View {
     private func FeatureIsAvailable(_ feature: FeatureModel) -> Bool {
         let t = feature.feature
         guard t == .im || t == .puzzle || t == .venue || t == .sponsors || t == .staffs || t == .webview else { return true }
-        return feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) != nil
+        return feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.scenarioStatus?.role) != nil
     }
     private func FeatureIsVisible(_ visible_roles: [String]?) -> Bool {
         guard let visible_roles = visible_roles else { return true }
@@ -118,7 +118,7 @@ private struct TabButton: View {
                     Constants.OpenInOS(forURL: url)
                 }
             case .im, .puzzle, .venue, .sponsors, .staffs, .webview:
-                if let url = feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) {
+                if let url = feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.scenarioStatus?.role) {
                     Constants.OpenInAppSafari(forURL: url, style: colorScheme)
                 }
             }

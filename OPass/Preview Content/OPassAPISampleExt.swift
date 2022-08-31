@@ -34,6 +34,6 @@ extension OPassAPIViewModel {
 
 extension SettingsModel {
     static func mock() -> SettingsModel {
-        return loadJson(filename: "eventSettingsSample.json")
+        return loadJson(filename: "settingsSample.json")
     }
 }

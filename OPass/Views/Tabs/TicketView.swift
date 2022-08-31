@@ -24,7 +24,7 @@ struct TicketView: View {
     
     init(eventAPI: EventAPIViewModel) {
         self.eventAPI = eventAPI
-        self.display_text = eventAPI.eventSettings.feature(ofType: .ticket)?.display_text ?? .init(en: "", zh: "")
+        self.display_text = eventAPI.settings.feature(ofType: .ticket)?.display_text ?? .init(en: "", zh: "")
     }
     
     var body: some View {

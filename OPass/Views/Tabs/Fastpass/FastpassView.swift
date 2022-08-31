@@ -17,7 +17,7 @@ struct FastpassView: View {
     
     init(eventAPI: EventAPIViewModel) {
         self.eventAPI = eventAPI
-        self.display_text = eventAPI.eventSettings.feature(ofType: .fastpass)?.display_text ?? .init(en: "", zh: "")
+        self.display_text = eventAPI.settings.feature(ofType: .fastpass)?.display_text ?? .init(en: "", zh: "")
     }
     
     var body: some View {
@@ -26,7 +26,7 @@ struct FastpassView: View {
                 RedeemTokenView(eventAPI: eventAPI)
             } else {
                 if errorType == nil {
-                    if eventAPI.eventScenarioStatus != nil {
+                    if eventAPI.scenarioStatus != nil {
                         ScenarioView(eventAPI: eventAPI)
                             .task {
                                 do { try await eventAPI.loadScenarioStatus() }

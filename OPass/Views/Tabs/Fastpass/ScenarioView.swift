@@ -25,9 +25,9 @@ struct ScenarioView: View {
                     .frame(height: UIScreen.main.bounds.width * 0.4)
                     .listRowBackground(Color.transparent)
                 
-                ForEach(eventAPI.eventScenarioStatus?.scenarios.sectionID ?? [], id: \.self) { sectionID in
+                ForEach(eventAPI.scenarioStatus?.scenarios.sectionID ?? [], id: \.self) { sectionID in
                     Section(header: Text(sectionID)) {
-                        ForEach(eventAPI.eventScenarioStatus?.scenarios.sectionData[sectionID] ?? [], id: \.self) { scenario in
+                        ForEach(eventAPI.scenarioStatus?.scenarios.sectionData[sectionID] ?? [], id: \.self) { scenario in
                             Button(action: {
                                 if scenario.used == nil {
                                     if let errorText = scenario.disabled {
@@ -154,8 +154,8 @@ struct FastpassLogoView: View {
     var body: some View {
         HStack {
             Spacer()
-            if let eventLogoData = eventAPI.eventLogo, let eventLogoUIImage = UIImage(data: eventLogoData) {
-                Image(uiImage: eventLogoUIImage)
+            if let logoData = eventAPI.logo, let logoUIImage = UIImage(data: logoData) {
+                Image(uiImage: logoUIImage)
                     .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)

@@ -18,13 +18,13 @@ struct AnnouncementView: View {
     
     init(eventAPI: EventAPIViewModel) {
         self.eventAPI = eventAPI
-        self.display_text = eventAPI.eventSettings.feature(ofType: .announcement)?.display_text ?? .init(en: "", zh: "")
+        self.display_text = eventAPI.settings.feature(ofType: .announcement)?.display_text ?? .init(en: "", zh: "")
     }
     
     var body: some View {
         VStack {
             if errorType == nil {
-                if let announcements = eventAPI.eventAnnouncements {
+                if let announcements = eventAPI.announcements {
                     if announcements.isNotEmpty {
                         List(announcements, id: \.datetime) { announcement in
                             let url = URL(string: announcement.uri)
@@ -116,7 +116,7 @@ struct AnnouncementView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 SFButton(systemName: "arrow.clockwise") {
                     self.errorType = nil
-                    self.eventAPI.eventAnnouncements = nil
+                    self.eventAPI.announcements = nil
                 }
             }
         }
