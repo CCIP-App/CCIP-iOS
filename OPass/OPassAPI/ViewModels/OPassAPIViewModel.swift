@@ -47,10 +47,10 @@ extension OPassAPIViewModel {
                     display_name: eventAPI.display_name,
                     logo_url: eventAPI.logo_url,
                     settings: eventAPI.settings,
-                    logo: eventAPI.logo,
+                    logo_data: eventAPI.logo_data,
                     schedule: eventAPI.schedule,
                     announcements: eventAPI.announcements,
-                    scenarioStatus: eventAPI.scenarioStatus
+                    scenario_status: eventAPI.scenario_status
                 ))
                 keyStore.set(data, forKey: "EventAPI")
                 logger.info("Save scuess of id: \(eventAPI.event_id)")
@@ -77,7 +77,7 @@ extension OPassAPIViewModel {
                 if let eventAPIData = eventAPITemporaryData, eventId == eventAPIData.event_id { // Reload
                     let event = EventAPIViewModel(
                         settings,
-                        logo: eventAPIData.logo,
+                        logo_data: eventAPIData.logo_data,
                         saveData: self.saveEventAPIData,
                         tmpData: eventAPIData
                     )
@@ -100,7 +100,7 @@ extension OPassAPIViewModel {
                     DispatchQueue.main.async {
                         self.currentEventAPI = EventAPIViewModel(
                             eventAPIData.settings,
-                            logo: eventAPIData.logo,
+                            logo_data: eventAPIData.logo_data,
                             saveData: self.saveEventAPIData,
                             tmpData: eventAPIData
                         )

@@ -29,7 +29,7 @@ struct TicketView: View {
     
     var body: some View {
         VStack {
-            if let token = eventAPI.accessToken {
+            if let token = eventAPI.user_token {
                 VStack(spacing: 0) {
                     Form {
                         Section() {
@@ -102,7 +102,7 @@ struct TicketView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                if eventAPI.accessToken != nil {
+                if eventAPI.user_token != nil {
                     Button(action: {
                         isShowingLogOutAlert.toggle()
                     }) { Text(LocalizedStringKey("SignOut")).foregroundColor(.red) }

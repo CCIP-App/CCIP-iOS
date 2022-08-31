@@ -22,11 +22,11 @@ struct FastpassView: View {
     
     var body: some View {
         VStack {
-            if eventAPI.accessToken == nil {
+            if eventAPI.user_token == nil {
                 RedeemTokenView(eventAPI: eventAPI)
             } else {
                 if errorType == nil {
-                    if eventAPI.scenarioStatus != nil {
+                    if eventAPI.scenario_status != nil {
                         ScenarioView(eventAPI: eventAPI)
                             .task {
                                 do { try await eventAPI.loadScenarioStatus() }

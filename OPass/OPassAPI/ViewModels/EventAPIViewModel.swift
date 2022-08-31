@@ -15,61 +15,54 @@ class EventAPIViewModel: ObservableObject {
     
     init(
         _ settings: SettingsModel,
-        logo: Data? = nil,
+        logo_data: Data? = nil,
         saveData: @escaping () async -> Void = {},
         tmpData: CodableEventAPIVM? = nil
     ) {
         self.event_id = settings.event_id
         self.display_name = settings.display_name
         self.logo_url = settings.logo_url
+        self.logo_data = logo_data
         self.settings = settings
-        self.logo = logo
-        self.saveData = saveData
+        self.save = saveData
         self._user_role = AppStorage(wrappedValue: "nil", "user_role", store: .init(suiteName: settings.event_id))
         self._liked_sessions = AppStorage(wrappedValue: [], "liked_sessions", store: .init(suiteName: settings.event_id))
         self.eventAPITmpData = tmpData
     }
     
-    var saveData: () async -> Void
     @Published var event_id: String
     @Published var display_name: DisplayTextModel
     @Published var logo_url: String
+    @Published var logo_data: Data? = nil
     @Published var settings: SettingsModel
-    @Published var logo: Data? = nil
     @Published var schedule: ScheduleModel? = nil
     @Published var announcements: [AnnouncementModel]? = nil
-    @Published var scenarioStatus: ScenarioStatusModel? = nil
+    @Published var scenario_status: ScenarioStatusModel? = nil
     @AppStorage var user_role: String
     @AppStorage var liked_sessions: [String]
-    private var eventAPITmpData: CodableEventAPIVM? = nil
-    
-    private let logger = Logger(subsystem: "app.opass.ccip", category: "EventAPI")
-    private let keychain = Keychain(service: "app.opass.ccip-token")
-        .synchronizable(true)
-    
-    var accessToken: String? {
-        get {
-            return try? keychain.get(self.event_id + "_token")
-        }
+    var save: () async -> Void
+    var logo: Image? {
+        guard let data = logo_data else { return nil }
+        guard let uiImage = UIImage(data: data) else { return nil }
+        return Image(uiImage: uiImage)
+    }
+    var user_token: String? {
+        get { try? keychain.get("\(self.event_id)_token") }
         set {
-            if let accessToken = newValue {
-                do {
-                    try keychain.remove(self.event_id + "_token")
-                    try keychain.set(accessToken, key: self.event_id + "_token")
-                } catch {
-                    logger.error("Save accessToken faild: \(error.localizedDescription)")
-                }
+            if let user_token = newValue {
+                do { try keychain.set(user_token, key: "\(self.event_id)_token") }
+                catch { logger.error("Save user_token faild: \(error.localizedDescription)") }
             } else {
-                logger.info("Set \"accessToken\" with nil, removing token")
-                do {
-                    try keychain.remove(self.event_id + "_token")
-                } catch {
-                    logger.error("Token remove error: \(error.localizedDescription)")
-                }
+                do { try keychain.remove("\(self.event_id)_token") }
+                catch { logger.error("Token remove error: \(error.localizedDescription)") }
             }
             objectWillChange.send()
         }
     }
+    
+    private var eventAPITmpData: CodableEventAPIVM? = nil
+    private let logger = Logger(subsystem: "app.opass.ccip", category: "EventAPI")
+    private let keychain = Keychain(service: "app.opass.ccip-token").synchronizable(true)
     
     enum EventAPIError: Error {
         case noTokenFound
@@ -87,16 +80,16 @@ extension EventAPIViewModel {
             logger.critical("Can't find correct fastpass feature")
             return false
         }
-        guard let token = accessToken else {
-            logger.error("No accessToken included")
+        guard let token = user_token else {
+            logger.error("No user_token included")
             return false
         }
         
         do {
             let eventScenarioUseStatus = try await APIRepo.load(scenarioUseFrom: fastpassFeature, scenario: scenario, token: token)
             DispatchQueue.main.async {
-                self.scenarioStatus = eventScenarioUseStatus
-                Task{ await self.saveData() }
+                self.scenario_status = eventScenarioUseStatus
+                Task{ await self.save() }
             }
             return true
         } catch APIRepo.LoadError.http403Forbidden {
@@ -112,7 +105,7 @@ extension EventAPIViewModel {
                                     .union(CharacterSet(charactersIn: "-_"))
                                     .inverted
         guard !token.isEmpty, !token.containsAny(nonAllowedCharacters) else {
-            logger.info("Invalid accessToken of \(token)")
+            logger.info("Invalid user_token of \(token)")
             return false
         }
         
@@ -124,13 +117,13 @@ extension EventAPIViewModel {
         }
         
         do {
-            let scenarioStatus = try await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token)
-            Constants.sendTag("\(scenarioStatus.event_id)\(scenarioStatus.role)", value: "\(scenarioStatus.token)")
+            let scenario_status = try await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token)
+            Constants.sendTag("\(scenario_status.event_id)\(scenario_status.role)", value: "\(scenario_status.token)")
             DispatchQueue.main.async {
-                self.scenarioStatus = scenarioStatus
-                self.accessToken = token
-                self.user_role = scenarioStatus.role
-                Task{ await self.saveData() }
+                self.scenario_status = scenario_status
+                self.user_token = token
+                self.user_role = scenario_status.role
+                Task{ await self.save() }
             }
             return true
         } catch APIRepo.LoadError.http403Forbidden {
@@ -145,28 +138,28 @@ extension EventAPIViewModel {
             logger.critical("Can't find correct fastpass feature")
             throw EventAPIError.noCorrectFeatureFound
         }
-        guard let token = accessToken else {
-            logger.error("No accessToken included")
+        guard let token = user_token else {
+            logger.error("No user_token included")
             throw EventAPIError.noTokenFound
         }
         
         do {
-            let scenarioStatus = try await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token)
+            let scenario_status = try await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token)
             DispatchQueue.main.async {
-                self.scenarioStatus = scenarioStatus
-                self.user_role = scenarioStatus.role
-                Task{ await self.saveData() }
+                self.scenario_status = scenario_status
+                self.user_role = scenario_status.role
+                Task{ await self.save() }
             }
         } catch APIRepo.LoadError.http403Forbidden {
             throw APIRepo.LoadError.http403Forbidden
         } catch {
-            guard let data = self.eventAPITmpData, let scenarioStatus = data.scenarioStatus else {
+            guard let data = self.eventAPITmpData, let scenario_status = data.scenario_status else {
                 throw error
             }
-            self.eventAPITmpData?.scenarioStatus = nil
+            self.eventAPITmpData?.scenario_status = nil
             DispatchQueue.main.async {
-                self.user_role = scenarioStatus.role
-                self.scenarioStatus = scenarioStatus
+                self.user_role = scenario_status.role
+                self.scenario_status = scenario_status
             }
         }
     }
@@ -196,13 +189,13 @@ extension EventAPIViewModel {
         for (index, data) in icons {
             DispatchQueue.main.async {
                 if index == -1 {
-                    self.logo = data
+                    self.logo_data = data
                 } else {
                     self.settings.features[index].iconData = data
                 }
             }
         }
-        Task{ await self.saveData() }
+        Task{ await self.save() }
     }
     
     func loadSchedule() async throws {
@@ -216,7 +209,7 @@ extension EventAPIViewModel {
             let schedule = try await APIRepo.load(scheduleFrom: scheduleFeature)
             DispatchQueue.main.async {
                 self.schedule = schedule
-                Task { await self.saveData() }
+                Task { await self.save() }
             }
         } catch {
             guard let schedule = self.eventAPITmpData?.schedule else {
@@ -237,10 +230,10 @@ extension EventAPIViewModel {
             throw EventAPIError.noCorrectFeatureFound
         }
         do {
-            let announcements = try await APIRepo.load(announcementFrom: announcementFeature, token: accessToken ?? "")
+            let announcements = try await APIRepo.load(announcementFrom: announcementFeature, token: user_token ?? "")
             DispatchQueue.main.async {
                 self.announcements = announcements
-                Task{ await self.saveData() }
+                Task{ await self.save() }
             }
         } catch  APIRepo.LoadError.http403Forbidden {
             throw APIRepo.LoadError.http403Forbidden
@@ -256,12 +249,12 @@ extension EventAPIViewModel {
     }
     
     func signOut() {
-        if let scenarioStatus = scenarioStatus {
-            Constants.sendTag("\(scenarioStatus.event_id)\(scenarioStatus.role)", value: "")
-            self.scenarioStatus = nil
+        if let scenario_status = scenario_status {
+            Constants.sendTag("\(scenario_status.event_id)\(scenario_status.role)", value: "")
+            self.scenario_status = nil
             self.user_role = "nil"
         }
-        self.accessToken = nil
+        self.user_token = nil
     }
 }
 
@@ -281,26 +274,26 @@ class CodableEventAPIVM: Codable {
          display_name: DisplayTextModel,
          logo_url: String,
          settings: SettingsModel,
-         logo: Data?,
+         logo_data: Data?,
          schedule: ScheduleModel?,
          announcements: [AnnouncementModel]?,
-         scenarioStatus: ScenarioStatusModel?) {
+         scenario_status: ScenarioStatusModel?) {
         self.event_id = event_id
         self.display_name = display_name
         self.logo_url = logo_url
         self.settings = settings
-        self.logo = logo
+        self.logo_data = logo_data
         self.schedule = schedule
         self.announcements = announcements
-        self.scenarioStatus = scenarioStatus
+        self.scenario_status = scenario_status
     }
     
     var event_id: String
     var display_name: DisplayTextModel
     var logo_url: String
     var settings: SettingsModel
-    var logo: Data?
+    var logo_data: Data?
     var schedule: ScheduleModel?
     var announcements: [AnnouncementModel]?
-    var scenarioStatus: ScenarioStatusModel?
+    var scenario_status: ScenarioStatusModel?
 }

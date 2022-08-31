@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import CryptoKit
 import OSLog
 
 struct MainView: View {
@@ -28,8 +27,8 @@ struct MainView: View {
                         .resizable()
                         .scaledToFit()
                         .padding(.horizontal)
-                } else if let logoData = eventAPI.logo, let logoUIImage = UIImage(data: logoData) {
-                    Image(uiImage: logoUIImage)
+                } else if let logo = eventAPI.logo {
+                    logo
                         .interpolation(.none)
                         .renderingMode(.template)
                         .resizable()
@@ -84,7 +83,7 @@ struct MainView: View {
     private func FeatureIsAvailable(_ feature: FeatureModel) -> Bool {
         let t = feature.feature
         guard t == .im || t == .puzzle || t == .venue || t == .sponsors || t == .staffs || t == .webview else { return true }
-        return feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.scenarioStatus?.role) != nil
+        return feature.url(token: eventAPI.user_token, role: eventAPI.scenario_status?.role) != nil
     }
     private func FeatureIsVisible(_ visible_roles: [String]?) -> Bool {
         guard let visible_roles = visible_roles else { return true }
@@ -118,20 +117,20 @@ private struct TabButton: View {
                     Constants.OpenInOS(forURL: url)
                 }
             case .im, .puzzle, .venue, .sponsors, .staffs, .webview:
-                if let url = feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.scenarioStatus?.role) {
+                if let url = feature.url(token: eventAPI.user_token, role: eventAPI.scenario_status?.role) {
                     Constants.OpenInAppSafari(forURL: url, style: colorScheme)
                 }
             }
         } label: {
             Group {
-                if let data = feature.iconData, let uiImage = UIImage(data: data) {
-                    Image(uiImage: uiImage)
+                if let image = feature.iconImage {
+                    image
                         .interpolation(.none)
                         .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
                 } else {
-                    Image(systemName: feature.symbolName ?? "shippingbox")
+                    Image(systemName: feature.symbol)
                         .resizable()
                         .scaledToFit()
                 }
@@ -151,77 +150,6 @@ private struct TabButton: View {
         if t == .im || t == .puzzle || t == .venue || t == .sponsors || t == .staffs || t == .webview { return true }
         return false
     }
-}
-
-private extension String {
-    func processWith(token: String?, role: String?) -> URL? {
-        var url = self
-        guard let paramsRegex = try? NSRegularExpression(pattern: "(\\{[^\\}]+\\})", options: .caseInsensitive) else { return nil }
-        let matches = paramsRegex.matches(in: url, options: .reportProgress, range: NSRange(location: 0, length: url.count))
-        for m in stride(from: matches.count, to: 0, by: -1) {
-            let range = Range(matches[m - 1].range(at: 1), in: url)!
-            let param = url[range]
-            switch param {
-            case "{token}":
-                url = url.replacingOccurrences(of: param, with: token ?? "")
-            case "{public_token}":
-                url = url.replacingOccurrences(
-                    of: param,
-                    with: Insecure.SHA1.hash(data: Data((token ?? "").utf8))
-                        .map { String(format: "%02X", $0) }
-                        .joined()
-                        .lowercased()
-                )
-            case "{role}":
-                url = url.replacingOccurrences(of: param, with: role ?? "")
-            default:
-                url = url.replacingOccurrences(of: param, with: "")
-            }
-        }
-        return URL(string: url)
-    }
-}
-
-private extension FeatureType {
-    var color: Color {
-        let buttonColor: [FeatureType : Color] = [
-            .fastpass : .blue,
-            .ticket : .purple,
-            .schedule : .green,
-            .announcement : .orange,
-            .wifi : .brown,
-            .telegram : .init(red: 89/255, green: 196/255, blue: 189/255),
-            .im : .init(red: 86/255, green: 89/255, blue: 207/255),
-            .puzzle : .blue,
-            .venue : .init(red: 87/255, green: 172/255, blue: 225/255),
-            .sponsors : .yellow,
-            .staffs : .gray,
-            .webview : .purple
-        ]
-        return buttonColor[self] ?? .purple
-    }
-    
-    var symbolName: String? {
-        let buttonSymbolName: [FeatureType : String] = [
-            .fastpass : "wallet.pass",
-            .ticket : "ticket",
-            .schedule : "scroll",
-            .announcement : "megaphone",
-            .wifi : "wifi",
-            .telegram : "paperplane",
-            .im : "bubble.right",
-            .puzzle : "puzzlepiece.extension",
-            .venue : "map",
-            .sponsors : "banknote",
-            .staffs : "person.3"
-        ]
-        return buttonSymbolName[self]
-    }
-}
-
-private extension FeatureModel {
-    var color: Color { feature.color }
-    var symbolName: String? { feature.symbolName }
 }
 
 #if DEBUG
