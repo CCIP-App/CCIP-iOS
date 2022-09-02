@@ -222,7 +222,25 @@ private struct FeatureButtons: View {
                     if let url = URL(string: url) {
                         VStack {
                             Button {
-                                Constants.OpenInAppSafari(forURL: url, style: colorScheme)
+                                if ({
+                                    guard let regex = try? NSRegularExpression(
+                                        pattern: "(?<=v(=|/))([-a-zA-Z0-9_]+)|(?<=youtu.be/)([-a-zA-Z0-9_]+)",
+                                        options: .caseInsensitive
+                                    ) else { return true }
+                                    guard let match = regex.firstMatch(
+                                        in: url.absoluteString,
+                                        options: .reportProgress,
+                                        range: NSRange(location: 0, length: url.absoluteString.count)
+                                    ) else { return true }
+                                    guard let youtubeUrl = URL(
+                                        string:"youtube://\((url.absoluteString as NSString).substring(with: match.range(at: 0)))")
+                                    else { return true }
+                                    guard UIApplication.shared.canOpenURL(youtubeUrl) else { return true }
+                                    Constants.OpenInOS(forURL: youtubeUrl)
+                                    return false
+                                }()) {
+                                    Constants.OpenInAppSafari(forURL: url, style: colorScheme)
+                                }
                             } label: {
                                 Image(systemName: systemImageName)
                                     .font(.system(size: 23, weight: .semibold, design: .rounded))

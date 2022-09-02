@@ -22,14 +22,12 @@ struct MainView: View {
             Group {
                 if let image = OPassAPI.currentEventLogo {
                     image
-                        .interpolation(.none)
                         .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
                         .padding(.horizontal)
                 } else if let logo = eventAPI.logo {
                     logo
-                        .interpolation(.none)
                         .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
