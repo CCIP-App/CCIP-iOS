@@ -23,14 +23,12 @@ struct MainView: View {
             Group {
                 if let image = OPassAPI.currentEventLogo {
                     image
-                        .interpolation(.none)
                         .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
                         .padding(.horizontal)
                 } else if let eventLogoData = eventAPI.eventLogo, let eventLogoUIImage = UIImage(data: eventLogoData) {
                     Image(uiImage: eventLogoUIImage)
-                        .interpolation(.none)
                         .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
