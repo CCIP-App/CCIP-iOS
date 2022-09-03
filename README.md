@@ -6,10 +6,5 @@ A Community Checkin with Interactivity Project for iOS app (CCIP-iOS)
 
 ## Pre-Requirements
 
-* Xcode 13 and above to support iOS 15
-* iOS 15 and above
-
-## Optional Pre-Requirements
-* Xcode 13.3 and above to suppoort Package.resolved v2
-  > If using under Xcode 13.3, rebuild your own Package.resolved v1.  
-  > **DO NOT** upload it.
+* Xcode 14 and above to support iOS 16
+* iOS 16 and above
