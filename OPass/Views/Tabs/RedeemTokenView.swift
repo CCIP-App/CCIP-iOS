@@ -119,7 +119,11 @@ struct RedeemTokenView: View {
                 }
             }
         }
-        .slideOverCard(isPresented: $showManuallySOC, backgroundColor: (colorScheme == .dark ? .init(red: 28/255, green: 28/255, blue: 30/255) : .white)) {
+        .slideOverCard(
+            isPresented: $showManuallySOC,
+            onDismiss: { UIApplication.endEditing() },
+            backgroundColor: (colorScheme == .dark ? .init(red: 28/255, green: 28/255, blue: 30/255) : .white)
+        ) {
             VStack {
                 Text("FastPass").font(Font.largeTitle.weight(.bold))
                 Text("EnterTokenManually")
