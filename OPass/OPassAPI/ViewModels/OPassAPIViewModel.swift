@@ -6,9 +6,8 @@
 //  2022 OPass.
 //
 
-import Foundation
-import OSLog
 import SwiftUI
+import OSLog
 
 ///Endpoint hold by OPass Official.
 class OPassAPIViewModel: ObservableObject {
