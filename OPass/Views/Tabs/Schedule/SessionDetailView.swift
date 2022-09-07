@@ -131,8 +131,9 @@ struct SessionDetailView: View {
                             Label("AddToCalendar", systemImage: "calendar.badge.plus")
                         }
                         
-                        if let uri = self.sessionDetail.uri, let url = URL(string: uri), let av = UIActivityViewController(activityItems: [url], applicationActivities: nil) {
+                        if let uri = self.sessionDetail.uri, let url = URL(string: uri) {
                             Button {
+                                let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
                                 UIApplication.topViewController()?.present(av, animated: true)
                             } label: {
                                 Label("Share", systemImage: "square.and.arrow.up")
