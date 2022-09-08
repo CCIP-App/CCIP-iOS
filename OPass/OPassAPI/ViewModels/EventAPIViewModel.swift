@@ -25,6 +25,7 @@ class EventAPIViewModel: ObservableObject {
         self.logo_data = logo_data
         self.settings = settings
         self.save = saveData
+        self._user_id = AppStorage(wrappedValue: "nil", "user_id", store: .init(suiteName: settings.event_id))
         self._user_role = AppStorage(wrappedValue: "nil", "user_role", store: .init(suiteName: settings.event_id))
         self._liked_sessions = AppStorage(wrappedValue: [], "liked_sessions", store: .init(suiteName: settings.event_id))
         self.eventAPITmpData = tmpData
@@ -38,6 +39,7 @@ class EventAPIViewModel: ObservableObject {
     @Published var schedule: ScheduleModel? = nil
     @Published var announcements: [AnnouncementModel]? = nil
     @Published var scenario_status: ScenarioStatusModel? = nil
+    @AppStorage var user_id: String
     @AppStorage var user_role: String
     @AppStorage var liked_sessions: [String]
     var save: () async -> Void
@@ -147,6 +149,7 @@ extension EventAPIViewModel {
             let scenario_status = try await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token)
             DispatchQueue.main.async {
                 self.scenario_status = scenario_status
+                self.user_id = scenario_status.user_id
                 self.user_role = scenario_status.role
                 Task{ await self.save() }
             }
@@ -158,6 +161,7 @@ extension EventAPIViewModel {
             }
             self.eventAPITmpData?.scenario_status = nil
             DispatchQueue.main.async {
+                self.user_id = scenario_status.user_id
                 self.user_role = scenario_status.role
                 self.scenario_status = scenario_status
             }

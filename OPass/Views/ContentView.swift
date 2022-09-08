@@ -18,7 +18,6 @@ struct ContentView: View {
     @State var showHttp403Alert = false
     @State var isError = false
     @State var showInvalidURL = false
-    @State var viewFirstActive = true
     @Binding var url: URL?
 
     var body: some View {
@@ -40,12 +39,6 @@ struct ContentView: View {
                             }
                     } else if let eventAPI = OPassAPI.currentEventAPI {
                         MainView(eventAPI: eventAPI)
-                            .onAppear {
-                                if viewFirstActive {
-                                    Constants.PromptForPushNotifications()
-                                    viewFirstActive.toggle()
-                                }
-                            }
                     } else {
                         VStack {} // Unknown status
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -62,7 +55,6 @@ struct ContentView: View {
                 }
             }
             .background(Color("SectionBackgroundColor"))
-            .navigationTitle(OPassAPI.currentEventAPI?.display_name.localized() ?? "OPass")
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: PathManager.destination.self) { destination in
                 switch destination {
@@ -83,6 +75,18 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     SFButton(systemName: "rectangle.stack") {
                         isShowingEventList.toggle()
+                    }
+                }
+                
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text(OPassAPI.currentEventAPI?.display_name.localized() ?? "OPass")
+                            .font(.headline)
+                        if let userId = OPassAPI.currentEventAPI?.user_id, userId != "nil" {
+                            Text(userId)
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                        }
                     }
                 }
                 

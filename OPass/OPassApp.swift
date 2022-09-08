@@ -10,6 +10,7 @@ import SwiftUI
 import OneSignal
 import Firebase
 import FirebaseAnalytics
+import OSLog
 
 @main
 struct OPassApp: App {
@@ -53,8 +54,9 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         // Configure OneSignal
+        let logger = Logger(subsystem: "app.opass.ccip", category: "OneSignal")
         let notificationReceiverBlock: OSNotificationWillShowInForegroundBlock = { notification,_  in
-            print("Received Notification - \(notification.notificationId ?? "")")
+            logger.info("Received Notification - \(notification.notificationId ?? "")")
         }
         
         let notificationOpenedBlock: OSNotificationOpenedBlock = { result in
@@ -75,7 +77,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
                     }
                 }
             }
-            print("OneSignal Notification \(messageTitle): \(fullMessage)")
+            logger.info("OneSignal Notification \(messageTitle): \(fullMessage)")
         }
         
         OneSignal.initWithLaunchOptions(launchOptions)
@@ -83,6 +85,9 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         OneSignal.setNotificationWillShowInForegroundHandler(notificationReceiverBlock)
         OneSignal.setNotificationOpenedHandler(notificationOpenedBlock)
         OneSignal.setLocationShared(false)
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+            logger.info("User accepted notifications: \(accepted)")
+        }, fallbackToSettings: false)
         
         return true
     }
