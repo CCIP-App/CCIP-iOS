@@ -48,13 +48,13 @@ struct SessionModel: Hashable, Codable {
     var data: [DateInRegion : [SessionDataModel]] = [:]
 }
 
-                                   
+
 extension SessionModel {
     func filter(_ filter: (SessionDataModel) -> Bool) -> SessionModel {
         let filteredHeader = header.filter { header in
             switch data[header]?.filter(filter) {
-                case .none: return false
-                case .some(let filtered): return !filtered.isEmpty
+            case .none: return false
+            case .some(let filtered): return filtered.isNotEmpty
             }
         }
         return SessionModel(
@@ -63,7 +63,7 @@ extension SessionModel {
                 .mapValues { sessions in sessions.filter(filter) }
         )
     }
-
+    
     var isEmpty: Bool { header.isEmpty }
 }
 

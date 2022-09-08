@@ -20,7 +20,7 @@ struct EventListView: View {
         NavigationView {
             VStack {
                 if !isError {
-                    if !OPassAPI.eventList.isEmpty {
+                    if OPassAPI.eventList.isNotEmpty {
                         Form {
                             ForEach(OPassAPI.eventList.filter { event in
                                 if searchText.isEmpty {
@@ -28,7 +28,7 @@ struct EventListView: View {
                                 } else {
                                     for component in searchText.tirm().lowercased().components(separatedBy: " ") {
                                         let component = component.tirm()
-                                        if !component.isEmpty, !event.display_name.localized().lowercased().contains(component) {
+                                        if component.isNotEmpty, !event.display_name.localized().lowercased().contains(component) {
                                             return false
                                         }
                                     }

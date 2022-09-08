@@ -103,10 +103,10 @@ extension EventAPIViewModel {
     func redeemToken(token: String) async throws -> Bool {
         let token = token.tirm()
         let nonAllowedCharacters = CharacterSet
-                                    .alphanumerics
-                                    .union(CharacterSet(charactersIn: "-_"))
-                                    .inverted
-        guard !token.isEmpty, !token.containsAny(nonAllowedCharacters) else {
+            .alphanumerics
+            .union(CharacterSet(charactersIn: "-_"))
+            .inverted
+        guard token.isNotEmpty, !token.containsAny(nonAllowedCharacters) else {
             logger.info("Invalid user_token of \(token)")
             return false
         }

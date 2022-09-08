@@ -18,7 +18,7 @@ struct RedeemTokenView: View {
     @State private var showManuallySOC = false
     @State private var showNoQRCodeAlert = false
     @State private var showInvaildTokenAlert = false
-    @State private var showHttp403Alert = false
+    @State private var isHttp403AlertPresented = false
     @State private var selectedPhotoItem: PhotosPickerItem? = nil
     @FocusState private var focusedField: Field?
     @Environment(\.colorScheme) private var colorScheme
@@ -79,7 +79,7 @@ struct RedeemTokenView: View {
                 }
             }
         }
-        .http403Alert(title: "CouldntVerifiyYourIdentity", isPresented: $showHttp403Alert)
+        .http403Alert(title: "CouldntVerifiyYourIdentity", isPresented: $isHttp403AlertPresented)
         .alert("CouldntVerifiyYourIdentity", message: "InvaildToken", isPresented: $showInvaildTokenAlert)
         .slideOverCard(isPresented: $showCameraSOC, backgroundColor: (colorScheme == .dark ? .init(red: 28/255, green: 28/255, blue: 30/255) : .white)) {
             VStack {
@@ -151,7 +151,7 @@ struct RedeemTokenView: View {
                         do {
                             self.showInvaildTokenAlert = !(try await eventAPI.redeemToken(token: token))
                         } catch APIRepo.LoadError.http403Forbidden {
-                            self.showHttp403Alert = true
+                            self.isHttp403AlertPresented = true
                         } catch {
                             self.showInvaildTokenAlert = true
                         }
@@ -179,12 +179,12 @@ struct RedeemTokenView: View {
                     let result = try await eventAPI.redeemToken(token: token)
                     self.showInvaildTokenAlert = !result
                 } catch APIRepo.LoadError.http403Forbidden {
-                    self.showHttp403Alert = true
+                    self.isHttp403AlertPresented = true
                 } catch { self.showInvaildTokenAlert = true }
             }
         }
     }
-
+    
     private func HandleScan(result: Result<ScanResult, ScanError>) {
         self.showCameraSOC = false
         switch result {
@@ -197,7 +197,7 @@ struct RedeemTokenView: View {
                     }
                 } catch APIRepo.LoadError.http403Forbidden {
                     DispatchQueue.main.async {
-                        self.showHttp403Alert = true
+                        self.isHttp403AlertPresented = true
                     }
                 } catch {
                     DispatchQueue.main.async {

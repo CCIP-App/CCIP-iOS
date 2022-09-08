@@ -12,7 +12,7 @@ struct AnnouncementView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
     private let display_text: DisplayTextModel
-    @State var showHttp403Alert = false
+    @State var isHttp403AlertPresented = false
     @State var errorType: String? = nil
     @Environment(\.colorScheme) var colorScheme
     
@@ -53,14 +53,14 @@ struct AnnouncementView: View {
                             do {
                                 try await eventAPI.loadAnnouncements()
                             } catch APIRepo.LoadError.http403Forbidden {
-                                self.showHttp403Alert = true
+                                self.isHttp403AlertPresented = true
                             } catch {}
                         }
                         .task{
                             do {
                                 try await eventAPI.loadAnnouncements()
                             } catch APIRepo.LoadError.http403Forbidden {
-                                self.showHttp403Alert = true
+                                self.isHttp403AlertPresented = true
                             } catch {}
                         }
                     } else {
@@ -77,14 +77,14 @@ struct AnnouncementView: View {
                             do {
                                 try await eventAPI.loadAnnouncements()
                             } catch APIRepo.LoadError.http403Forbidden {
-                                self.showHttp403Alert = true
+                                self.isHttp403AlertPresented = true
                             } catch {}
                         }
                         .task{
                             do {
                                 try await eventAPI.loadAnnouncements()
                             } catch APIRepo.LoadError.http403Forbidden {
-                                self.showHttp403Alert = true
+                                self.isHttp403AlertPresented = true
                             } catch {}
                         }
                     }
@@ -93,7 +93,7 @@ struct AnnouncementView: View {
                         .task {
                             do { try await self.eventAPI.loadAnnouncements() }
                             catch APIRepo.LoadError.http403Forbidden {
-                                self.showHttp403Alert = true
+                                self.isHttp403AlertPresented = true
                                 self.errorType = "http403"
                             } catch { self.errorType = "unknown" }
                         }
@@ -120,7 +120,7 @@ struct AnnouncementView: View {
                 }
             }
         }
-        .http403Alert(isPresented: $showHttp403Alert)
+        .http403Alert(isPresented: $isHttp403AlertPresented)
     }
 }
 

@@ -30,18 +30,18 @@ final class APIRepo {
         
         func getString() -> String {
             switch self {
-                case .eventList:
-                    return "https://portal.opass.app/events/"
-                case .settings(let id):
-                    return "https://portal.opass.app/events/\(id)"
-                case .announcements(let baseURL, let token):
-                    return "\(baseURL)/announcement?token=\(token)"
-                case .scenario_status(let baseURL, let token):
-                    return "\(baseURL)/status?token=\(token)"
-                case .scenarioUse(let baseURL, let scenario, let token):
-                    return "\(baseURL)/use/\(scenario)?token=\(token)"
-                case .raw(let url):
-                    return url
+            case .eventList:
+                return "https://portal.opass.app/events/"
+            case .settings(let id):
+                return "https://portal.opass.app/events/\(id)"
+            case .announcements(let baseURL, let token):
+                return "\(baseURL)/announcement?token=\(token)"
+            case .scenario_status(let baseURL, let token):
+                return "\(baseURL)/status?token=\(token)"
+            case .scenarioUse(let baseURL, let scenario, let token):
+                return "\(baseURL)/use/\(scenario)?token=\(token)"
+            case .raw(let url):
+                return url
             }
         }
     }
@@ -139,7 +139,7 @@ extension APIRepo {
             logger.error("Invalid Logo URL: \(url)")
             throw LoadError.invalidURL(url: .raw(url))
         }
-
+        
         do {
             let (data, _) = try await URLSession.shared.data(from: logoUrl)
             return data
@@ -210,7 +210,7 @@ extension URL {
 }
 
 private extension URLSession {
-     func jsonData<T: Decodable>(from url: URL) async throws -> T {
+    func jsonData<T: Decodable>(from url: URL) async throws -> T {
         let (data, response) = try await self.data(from: url)
         if let resp = response as? HTTPURLResponse {
             switch resp.statusCode {

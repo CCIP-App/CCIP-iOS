@@ -13,10 +13,10 @@ import OSLog
 class NEHotspot {
     private static let logger = Logger(subsystem: "app.opass.ccip", category: "NEHotspot")
     static func ConnectWiFi(SSID: String, withPass: String) {
-        #if targetEnvironment(simulator)
+#if targetEnvironment(simulator)
         logger.debug("In Simulator, NEHotspot not working")
-        #else
-        if !SSID.isEmpty {
+#else
+        if SSID.isNotEmpty {
             logger.info("NEHotspot association with SSID: \(SSID).");
             let NEHConfig: NEHotspotConfiguration = withPass.isEmpty ? NEHotspotConfiguration(ssid: SSID) : NEHotspotConfiguration(ssid: SSID, passphrase: withPass, isWEP: false)
             NEHConfig.joinOnce = false
@@ -30,6 +30,6 @@ class NEHotspot {
         } else {
             logger.info("No SSID was set, bypass for NEHotspot association.");
         }
-        #endif
+#endif
     }
 }

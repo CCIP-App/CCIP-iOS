@@ -11,15 +11,15 @@ import FirebaseDynamicLinks
 
 struct ContentView: View {
     
+    @Binding var url: URL?
     @StateObject var pathManager = PathManager()
     @StateObject var OPassAPI = OPassAPIViewModel()
-    @State var handlingURL = false
-    @State var isShowingEventList = false
-    @State var showHttp403Alert = false
-    @State var isError = false
-    @State var showInvalidURL = false
-    @Binding var url: URL?
-
+    @State private var isError = false
+    @State private var handlingURL = false
+    @State private var isEventListPresented = false
+    @State private var isHttp403AlertPresented = false
+    @State private var isInvalidURLAlertPresented = false
+    
     var body: some View {
         NavigationStack(path: $pathManager.path) {
             VStack {
@@ -28,7 +28,7 @@ struct ContentView: View {
                         VStack {}
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .onAppear {
-                                self.isShowingEventList = true
+                                self.isEventListPresented = true
                             }
                     } else if OPassAPI.currentEventID != OPassAPI.currentEventAPI?.event_id {
                         ProgressView("Loading")
@@ -68,13 +68,13 @@ struct ContentView: View {
                 case .developers:              DevelopersView()
                 }
             }
-            .sheet(isPresented: $isShowingEventList) {
+            .sheet(isPresented: $isEventListPresented) {
                 EventListView()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     SFButton(systemName: "rectangle.stack") {
-                        isShowingEventList.toggle()
+                        isEventListPresented.toggle()
                     }
                 }
                 
@@ -103,26 +103,26 @@ struct ContentView: View {
             if self.url != nil {
                 ProgressView("LOGGINGIN")
                     .task {
-                        self.isShowingEventList = false
+                        self.isEventListPresented = false
                         await parseUniversalLinkAndURL(url!)
                     }
-                    .alert("InvalidURL", isPresented: $showInvalidURL) {
+                    .alert("InvalidURL", isPresented: $isInvalidURLAlertPresented) {
                         Button("OK", role: .cancel) {
                             self.url = nil
                             if OPassAPI.currentEventAPI == nil {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                    self.isShowingEventList = true
+                                    self.isEventListPresented = true
                                 }
                             }
                         }
                     } message: {
                         Text("InvalidURLOrTokenContent")
                     }
-                    .http403Alert(title: "CouldntVerifiyYourIdentity", isPresented: $showHttp403Alert) {
+                    .http403Alert(title: "CouldntVerifiyYourIdentity", isPresented: $isHttp403AlertPresented) {
                         self.url = nil
                         if OPassAPI.currentEventAPI == nil {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                self.isShowingEventList = true
+                                self.isEventListPresented = true
                             }
                         }
                     }
@@ -138,7 +138,7 @@ struct ContentView: View {
         // Select event
         guard let eventId = params?.first(where: { $0.name == "event_id"})?.value else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.showInvalidURL = true
+                self.isInvalidURLAlertPresented = true
             }
             return
         }
@@ -164,14 +164,14 @@ struct ContentView: View {
             }
         } catch APIRepo.LoadError.http403Forbidden {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.showHttp403Alert = true
+                self.isHttp403AlertPresented = true
             }
             return
         } catch {}
         
         // Error
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.showInvalidURL = true
+            self.isInvalidURLAlertPresented = true
         }
     }
 }

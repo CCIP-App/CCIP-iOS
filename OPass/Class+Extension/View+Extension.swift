@@ -26,7 +26,7 @@ extension View {
             self.alert(titleKey, isPresented: isPresented) {
                 Button("OK", role: .cancel) {}
             } message: { Text(message) }
-
+            
         } else {
             self.alert(titleKey, isPresented: isPresented) {
                 Button("OK", role: .cancel) {}

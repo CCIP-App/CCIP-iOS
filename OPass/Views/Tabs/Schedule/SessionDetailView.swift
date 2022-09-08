@@ -33,7 +33,7 @@ struct SessionDetailView: View {
     var body: some View {
         List {
             VStack(alignment: .leading, spacing: 0) {
-                if !sessionDetail.tags.isEmpty {
+                if sessionDetail.tags.isNotEmpty {
                     TagsSection(tagsID: sessionDetail.tags, tags: eventAPI.schedule?.tags.data ?? [:])
                         .padding(.bottom, 8)
                         .padding(.top, 3.9)
@@ -69,7 +69,7 @@ struct SessionDetailView: View {
                     .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
                 
-                if let broadcast = sessionDetail.broadcast, !broadcast.isEmpty {
+                if let broadcast = sessionDetail.broadcast, broadcast.isNotEmpty {
                     BroadcastSection(eventAPI.schedule, broadcast: broadcast)
                         .background(Color("SectionBackgroundColor"))
                         .cornerRadius(8)
@@ -78,8 +78,8 @@ struct SessionDetailView: View {
             }
             .listRowBackground(Color.transparent)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                
-            if !sessionDetail.speakers.isEmpty {
+            
+            if sessionDetail.speakers.isNotEmpty {
                 SpeakersSections(eventAPI: eventAPI, sessionDetail: sessionDetail)
             }
             
@@ -141,7 +141,7 @@ struct SessionDetailView: View {
                     .alert("RequestUserPermitCalendar", isPresented: $showingCalendarAlert) {
                         Button("Cancel", role: .cancel, action: {})
                         Button("Settings", action: {
-                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                            Constants.OpenInOS(forURL: URL(string: UIApplication.openSettingsURLString)!)
                         })
                     }
                 }
@@ -253,7 +253,7 @@ private struct FeatureButtons: View {
                             Text(LocalizedStringKey(text))
                                 .font(.caption2)
                                 .multilineTextAlignment(.center)
-                       }
+                        }
                     }
                 })
             }

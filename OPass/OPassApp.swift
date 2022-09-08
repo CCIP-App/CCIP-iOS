@@ -70,7 +70,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
                 if notification.title != nil {
                     messageTitle = notification.title ?? ""
                 }
-
+                
                 if let additionData = notification.additionalData as? Dictionary<String, String> {
                     if let actionSelected = additionData["actionSelected"] {
                         fullMessage = "\(fullMessage)\nPressed ButtonId:\(actionSelected)"

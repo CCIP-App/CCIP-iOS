@@ -16,8 +16,8 @@ struct TicketView: View {
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("AutoAdjustTicketBirghtness") var autoAdjustTicketBirghtness = true
-    @State var showingToken = false
-    @State var isShowingLogOutAlert = false
+    @State var isTokenVisible = false
+    @State var isLogOutAlertPresented = false
     @State var qrCodeUIImage = UIImage()
     @State var defaultBrightness = UIScreen.main.brightness
     let display_text: DisplayTextModel
@@ -54,16 +54,14 @@ struct TicketView: View {
                         
                         Section(header: Text("Token"), footer: Text("TicketWarningContent")) {
                             HStack {
-                                showingToken
+                                isTokenVisible
                                 ? Text(token)
                                     .fixedSize(horizontal: false, vertical: true)
                                 : Text(String(repeating: "•", count: token.count))
                                     .font(.title3).fixedSize(horizontal: false, vertical: true)
                             }
                         }
-                        .onTapGesture {
-                            showingToken.toggle()
-                        }
+                        .onTapGesture { isTokenVisible.toggle() }
                         .contextMenu {
                             Button {
                                 UIPasteboard.general.string = token
@@ -104,12 +102,12 @@ struct TicketView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 if eventAPI.user_token != nil {
                     Button(action: {
-                        isShowingLogOutAlert.toggle()
+                        isLogOutAlertPresented.toggle()
                     }) { Text(LocalizedStringKey("SignOut")).foregroundColor(.red) }
                 }
             }
         }
-        .alert("ConfirmSignOut", isPresented: $isShowingLogOutAlert) {
+        .alert("ConfirmSignOut", isPresented: $isLogOutAlertPresented) {
             Button("SignOut", role: .destructive) {
                 self.eventAPI.signOut()
             }

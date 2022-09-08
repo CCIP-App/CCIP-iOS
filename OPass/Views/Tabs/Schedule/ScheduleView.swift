@@ -104,7 +104,7 @@ struct ScheduleView: View {
                         Label("Favorite", systemImage: "heart\(filter == .liked ? ".fill" : "")")
                             .tag(Filter.liked)
                         
-                        if !(eventAPI.schedule?.tags.id.isEmpty ?? true), let schedule = eventAPI.schedule {
+                        if let schedule = eventAPI.schedule, schedule.tags.id.isNotEmpty {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(schedule.tags.id, id: \.self) { id in
@@ -123,7 +123,8 @@ struct ScheduleView: View {
                                 }())
                             }
                         }
-                        if !(eventAPI.schedule?.session_types.id.isEmpty ?? true), let schedule = eventAPI.schedule {
+                        
+                        if let schedule = eventAPI.schedule, schedule.session_types.id.isNotEmpty {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(schedule.session_types.id, id: \.self) { id in
@@ -142,7 +143,8 @@ struct ScheduleView: View {
                                 }())
                             }
                         }
-                        if !(eventAPI.schedule?.rooms.id.isEmpty ?? true), let schedule = eventAPI.schedule {
+                        
+                        if let schedule = eventAPI.schedule, schedule.rooms.id.isNotEmpty {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(schedule.rooms.id, id: \.self) { id in
@@ -159,7 +161,8 @@ struct ScheduleView: View {
                                 }())
                             }
                         }
-                        if !(eventAPI.schedule?.speakers.id.isEmpty ?? true), let schedule = eventAPI.schedule {
+                        
+                        if let schedule = eventAPI.schedule, schedule.speakers.id.isNotEmpty {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(schedule.speakers.id, id: \.self) { id in

@@ -15,7 +15,7 @@ struct UseScenarioView: View {
     @Environment(\.dismiss) var dismiss
     
     @State var viewStage = 0
-    @State var showHttp403Alert = false
+    @State var isHttp403AlertPresented = false
     @State var usedTime: TimeInterval = 0
     
     var body: some View {
@@ -38,7 +38,7 @@ struct UseScenarioView: View {
                     }
                 }
             }
-            .http403Alert(isPresented: $showHttp403Alert)
+            .http403Alert(isPresented: $isHttp403AlertPresented)
         }
     }
     
@@ -78,7 +78,7 @@ struct UseScenarioView: View {
                             self.viewStage = 2
                         } else { self.viewStage = 3 }
                     } catch APIRepo.LoadError.http403Forbidden {
-                        self.showHttp403Alert = true
+                        self.isHttp403AlertPresented = true
                     } catch { self.viewStage = 3 }
                 }
             } label: {
@@ -89,7 +89,7 @@ struct UseScenarioView: View {
                     .background(.blue)
                     .cornerRadius(10)
             }
-
+            
             Button { dismiss() } label: {
                 Text("Cancel")
                     .foregroundColor(.blue)
@@ -196,7 +196,7 @@ private struct TimerView: View {
                             .foregroundColor(Color.white.opacity(0.2))
                     }
                 }
-                    .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity)
             }
             .offset(x: 0, y: 30)
         })
