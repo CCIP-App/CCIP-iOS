@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import SwiftDate
 
 struct AnnouncementModel: Codable {
-    var datetime: Date
+    @TransformWith<IntergerToDateTransform> var datetime: DateInRegion
     var msg_en: String
     var msg_zh: String
     var uri: String
