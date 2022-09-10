@@ -12,15 +12,13 @@ import SwiftDate
 struct ScheduleView: View {
     
     @ObservedObject var eventAPI: EventAPIViewModel
-    @AppStorage("AutoSelectScheduleDay") var autoSelectScheduleDay = true
-    @State var display_text: DisplayTextModel
-    @State var selectDayIndex: Int
+    @State private var selectDayIndex: Int
     @State private var filter = Filter.all
     @State private var isError = false
+    @AppStorage("AutoSelectScheduleDay") var autoSelectScheduleDay = true
     
     init(eventAPI: EventAPIViewModel) {
         self.eventAPI = eventAPI
-        self.display_text = eventAPI.settings.feature(ofType: .schedule)?.display_text ?? .init(en: "", zh: "")
         if AppStorage(wrappedValue: true, "AutoSelectScheduleDay").wrappedValue {
             self.selectDayIndex = eventAPI.schedule?.sessions.count == 1 ? 0 : eventAPI.schedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0
         } else { self.selectDayIndex = 0 }
@@ -50,7 +48,7 @@ struct ScheduleView: View {
                             ForEach(filteredModel.header, id: \.self) { header in
                                 Section {
                                     ForEach(filteredModel.data[header]!.sorted { $0.end < $1.end }, id: \.id) { detail in
-                                        NavigationLink(value: PathManager.destination.sessionDetail(detail)) {
+                                        NavigationLink(value: Router.mainDestination.sessionDetail(detail)) {
                                             SessionOverView(
                                                 room: eventAPI.schedule?.rooms.data[detail.room]?.localized().name ?? detail.room,
                                                 start: detail.start,
@@ -92,9 +90,14 @@ struct ScheduleView: View {
                 }
             }
         }
-        .navigationTitle(display_text.localized())
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            if let displayText = eventAPI.settings.feature(ofType: .schedule)?.display_text {
+                ToolbarItem(placement: .principal) {
+                    Text(displayText.localized()).font(.headline)
+                }
+            }
+            
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Picker(selection: $filter, label: EmptyView()) {

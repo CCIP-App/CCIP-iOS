@@ -12,34 +12,32 @@ import SwiftDate
 
 struct SessionDetailView: View {
     
-    @ObservedObject var eventAPI: EventAPIViewModel
-    let sessionDetail: SessionDataModel
+    let sessionData: SessionDataModel
+    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @State private var isCalendarAlertPresented = false
+    @State private var isEventEditViewPresented = false
+    @State private var isNavigationTitlePresented = false
+    @State private var navigationY_Coordinate: CGFloat = .zero
     @Environment(\.colorScheme) var colorScheme
-    @State var navigationY_Coordinate: CGFloat = .zero
-    @State var showingUrlAlert = false
-    @State var showingCalendarAlert = false
-    @State var showingEventEditView = false
-    @State var showingNavigationTitle = false
     private var eventStore = EKEventStore()
     private var isLiked: Bool {
-        self.eventAPI.liked_sessions.contains(sessionDetail.id)
+        self.eventAPI.liked_sessions.contains(sessionData.id)
     }
     
-    init(_ eventAPI: EventAPIViewModel, detail: SessionDataModel) {
-        self.eventAPI = eventAPI
-        self.sessionDetail = detail
+    init(_ sessionData: SessionDataModel) {
+        self.sessionData = sessionData
     }
     
     var body: some View {
         List {
             VStack(alignment: .leading, spacing: 0) {
-                if sessionDetail.tags.isNotEmpty {
-                    TagsSection(tagsID: sessionDetail.tags, tags: eventAPI.schedule?.tags.data ?? [:])
+                if sessionData.tags.isNotEmpty, let schedule = eventAPI.schedule {
+                    TagsSection(tagsID: sessionData.tags, tags: schedule.tags.data)
                         .padding(.bottom, 8)
                         .padding(.top, 3.9)
                 }
                 
-                Text(sessionDetail.localized().title)
+                Text(sessionData.localized().title)
                     .font(.largeTitle.bold())
                     .fixedSize(horizontal: false, vertical: true)
                     .background(GeometryReader { geo in
@@ -47,29 +45,29 @@ struct SessionDetailView: View {
                             .preference(key: TitleY_CoordinatePreferenceKey.self, value: geo.frame(in: .global).maxY)
                     })
                     .onPreferenceChange(TitleY_CoordinatePreferenceKey.self) { y in
-                        showingNavigationTitle = y < navigationY_Coordinate + 10
+                        isNavigationTitlePresented = y < navigationY_Coordinate + 10
                     }
                 
-                FeatureButtons(sessionDetail: sessionDetail)
+                FeatureButtons(sessionData: sessionData)
                     .padding(.vertical)
                 
-                if let type = sessionDetail.type {
+                if let type = sessionData.type {
                     TypeSection(name: eventAPI.schedule?.session_types.data[type]?.localized().name ?? type)
                         .background(Color("SectionBackgroundColor"))
                         .cornerRadius(8)
                         .padding(.bottom)
                 }
                 
-                PlaceSection(name: eventAPI.schedule?.rooms.data[sessionDetail.room]?.localized().name ?? sessionDetail.room)
+                PlaceSection(name: eventAPI.schedule?.rooms.data[sessionData.room]?.localized().name ?? sessionData.room)
                     .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
                     .padding(.bottom)
                 
-                TimeSection(sessionDetail: sessionDetail)
+                TimeSection(sessionData: sessionData)
                     .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
                 
-                if let broadcast = sessionDetail.broadcast, broadcast.isNotEmpty {
+                if let broadcast = sessionData.broadcast, broadcast.isNotEmpty {
                     BroadcastSection(eventAPI.schedule, broadcast: broadcast)
                         .background(Color("SectionBackgroundColor"))
                         .cornerRadius(8)
@@ -79,38 +77,45 @@ struct SessionDetailView: View {
             .listRowBackground(Color.transparent)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             
-            if sessionDetail.speakers.isNotEmpty {
-                SpeakersSections(eventAPI: eventAPI, sessionDetail: sessionDetail)
+            if sessionData.speakers.isNotEmpty {
+                SpeakersSections(sessionData: sessionData)
             }
             
-            if let description = sessionDetail.localized().description, description != "" {
+            if let description = sessionData.localized().description, description != "" {
                 DescriptionSection(description: description)
             }
         }
         .listStyle(.insetGrouped)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle(showingNavigationTitle ? sessionDetail.localized().title : "")
         .toolbar {
+            if isNavigationTitlePresented {
+                ToolbarItem(placement: .principal) {
+                    Text(sessionData.localized().title)
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                }
+            }
+            
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack {
                     SFButton(systemName: "heart\(isLiked ? ".fill" : "")") {
                         UNUserNotification.registeringNotification(
-                            id: sessionDetail.id,
+                            id: sessionData.id,
                             title: String(localized: "SessionWillStartIn5Minutes"),
                             content: String(format: String(localized: "SessionWillStartIn5MinutesContent"),
-                                            sessionDetail.en.title,
-                                            eventAPI.schedule?.rooms.data[sessionDetail.room]?.en.name ?? ""),
-                            rawTime: sessionDetail.start,
+                                            sessionData.en.title,
+                                            eventAPI.schedule?.rooms.data[sessionData.room]?.en.name ?? ""),
+                            rawTime: sessionData.start,
                             cancel: isLiked
                         )
                         if isLiked {
                             SoundManager.shared.play(sound: .don)
                             UINotificationFeedbackGenerator().notificationOccurred(.warning)
-                            self.eventAPI.liked_sessions.removeAll { $0 == sessionDetail.id }
+                            self.eventAPI.liked_sessions.removeAll { $0 == sessionData.id }
                         } else {
                             SoundManager.shared.play(sound: .din)
                             UINotificationFeedbackGenerator().notificationOccurred(.success)
-                            self.eventAPI.liked_sessions.append(sessionDetail.id)
+                            self.eventAPI.liked_sessions.append(sessionData.id)
                         }
                     }
                     
@@ -118,16 +123,16 @@ struct SessionDetailView: View {
                         Button {
                             Task {
                                 if (try? await eventStore.requestAccess(to: .event)) == true {
-                                    showingEventEditView.toggle()
+                                    isEventEditViewPresented.toggle()
                                 } else {
-                                    showingCalendarAlert.toggle()
+                                    isCalendarAlertPresented.toggle()
                                 }
                             }
                         } label: {
                             Label("AddToCalendar", systemImage: "calendar.badge.plus")
                         }
                         
-                        if let uri = self.sessionDetail.uri, let url = URL(string: uri) {
+                        if let uri = self.sessionData.uri, let url = URL(string: uri) {
                             Button {
                                 let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
                                 UIApplication.topViewController()?.present(av, animated: true)
@@ -136,13 +141,13 @@ struct SessionDetailView: View {
                             }
                         }
                     } label: {
-                        Image(systemName: "ellipsis.circle")
+                        Image(systemName: "ellipsis")
                     }
-                    .alert("RequestUserPermitCalendar", isPresented: $showingCalendarAlert) {
+                    .alert("RequestUserPermitCalendar", isPresented: $isCalendarAlertPresented) {
                         Button("Cancel", role: .cancel, action: {})
-                        Button("Settings", action: {
+                        Button("Settigns") {
                             Constants.OpenInOS(forURL: URL(string: UIApplication.openSettingsURLString)!)
-                        })
+                        }
                     }
                 }
                 .background(GeometryReader { geo in
@@ -155,13 +160,13 @@ struct SessionDetailView: View {
             }
             
         }
-        .sheet(isPresented: $showingEventEditView) {
+        .sheet(isPresented: $isEventEditViewPresented) {
             EventEditView(
                 eventStore: eventStore,
                 event: eventStore.createEvent(
-                    title: sessionDetail.localized().title,
-                    startDate: sessionDetail.start.date,
-                    endDate: sessionDetail.end.date,
+                    title: sessionData.localized().title,
+                    startDate: sessionData.start.date,
+                    endDate: sessionData.end.date,
                     alertOffset: -300 // T minus 5 minutes
                 )
             )
@@ -206,13 +211,13 @@ private struct FeatureButtons: View {
     let features: [(String, String, String)]
     let buttonSize = CGFloat(62)
     
-    init(sessionDetail: SessionDataModel) {
+    init(sessionData: SessionDataModel) {
         features = [
-            (sessionDetail.live, "video", "Live"),
-            (sessionDetail.co_write, "keyboard", "CoWriting"),
-            (sessionDetail.record, "play", "Record"),
-            (sessionDetail.slide, "paperclip", "Slide"),
-            (sessionDetail.qa, "questionmark", "QA")
+            (sessionData.live, "video", "Live"),
+            (sessionData.co_write, "keyboard", "CoWriting"),
+            (sessionData.record, "play", "Record"),
+            (sessionData.slide, "paperclip", "Slide"),
+            (sessionData.qa, "questionmark", "QA")
         ].filter { (url, _, _) in url != nil } as! [(String, String, String)]
     }
     
@@ -315,10 +320,10 @@ private struct TimeSection: View {
     let end: DateInRegion
     let durationMinute: Int
     
-    init(sessionDetail: SessionDataModel) {
-        self.start = sessionDetail.start
-        self.end = sessionDetail.end
-        self.durationMinute = Int((sessionDetail.end - sessionDetail.start) / 60)
+    init(sessionData: SessionDataModel) {
+        self.start = sessionData.start
+        self.end = sessionData.end
+        self.durationMinute = Int((sessionData.end - sessionData.start) / 60)
     }
     
     var body: some View {
@@ -386,12 +391,12 @@ private struct BroadcastSection: View {
 
 private struct SpeakersSections: View {
     
-    @ObservedObject var eventAPI: EventAPIViewModel
-    let sessionDetail: SessionDataModel
+    let sessionData: SessionDataModel
+    @EnvironmentObject var eventAPI: EventAPIViewModel
     
     var body: some View {
         Section(header: Text(LocalizedStringKey("Speakers")).padding(.leading, 10)) {
-            ForEach(sessionDetail.speakers, id: \.self) { speaker in
+            ForEach(sessionData.speakers, id: \.self) { speaker in
                 SpeakerBlock(
                     speaker: speaker,
                     speakerData: eventAPI.schedule?.speakers.data[speaker]

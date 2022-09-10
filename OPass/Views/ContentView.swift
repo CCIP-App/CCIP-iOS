@@ -7,12 +7,11 @@
 //
 
 import SwiftUI
-import FirebaseDynamicLinks
 
 struct ContentView: View {
     
     @Binding var url: URL?
-    @StateObject var pathManager = PathManager()
+    @StateObject var router = Router()
     @StateObject var OPassAPI = OPassAPIViewModel()
     @State private var isError = false
     @State private var handlingURL = false
@@ -21,7 +20,7 @@ struct ContentView: View {
     @State private var isInvalidURLAlertPresented = false
     
     var body: some View {
-        NavigationStack(path: $pathManager.path) {
+        NavigationStack(path: $router.path) {
             VStack {
                 if !isError {
                     if OPassAPI.currentEventID == nil {
@@ -38,7 +37,18 @@ struct ContentView: View {
                                 catch { self.isError = true }
                             }
                     } else if let eventAPI = OPassAPI.currentEventAPI {
-                        MainView(eventAPI: eventAPI)
+                        MainView()
+                            .environmentObject(eventAPI)
+                            .navigationDestination(for: Router.mainDestination.self) { destination in
+                                switch destination {
+                                case .fastpass:                FastpassView().environmentObject(eventAPI)
+                                case .schedule:                ScheduleView(eventAPI: eventAPI)
+                                case .sessionDetail(let data): SessionDetailView(data).environmentObject(eventAPI)
+                                case .ticket:                  TicketView().environmentObject(eventAPI)
+                                case .announcement:            AnnouncementView().environmentObject(eventAPI)
+                                }
+                            }
+                            
                     } else {
                         VStack {} // Unknown status
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -56,16 +66,11 @@ struct ContentView: View {
             }
             .background(Color("SectionBackgroundColor"))
             .navigationBarTitleDisplayMode(.inline)
-            .navigationDestination(for: PathManager.destination.self) { destination in
+            .navigationDestination(for: Router.rootDestination.self) { destination in
                 switch destination {
-                case .fastpass:                FastpassView(eventAPI: OPassAPI.currentEventAPI!)
-                case .schedule:                ScheduleView(eventAPI: OPassAPI.currentEventAPI!)
-                case .sessionDetail(let data): SessionDetailView(OPassAPI.currentEventAPI!, detail: data)
-                case .ticket:                  TicketView(eventAPI: OPassAPI.currentEventAPI!)
-                case .announcement:            AnnouncementView(eventAPI: OPassAPI.currentEventAPI!)
-                case .settings:                SettingsView()
-                case .appearance:              AppearanceView()
-                case .developers:              DevelopersView()
+                case .settings:   SettingsView()
+                case .appearance: AppearanceView()
+                case .developers: DevelopersView()
                 }
             }
             .sheet(isPresented: $isEventListPresented) {
@@ -91,13 +96,13 @@ struct ContentView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(value: PathManager.destination.settings) {
+                    NavigationLink(value: Router.rootDestination.settings) {
                         Image(systemName: "gearshape")
                     }
                 }
             }
         }
-        .environmentObject(pathManager)
+        .environmentObject(router)
         .environmentObject(OPassAPI)
         .overlay {
             if self.url != nil {

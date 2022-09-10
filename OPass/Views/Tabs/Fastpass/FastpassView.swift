@@ -10,24 +10,18 @@ import SwiftUI
 
 struct FastpassView: View {
     
-    @ObservedObject var eventAPI: EventAPIViewModel
-    @State var isHttp403AlertPresented = false
-    @State var errorType: String? = nil
-    let display_text: DisplayTextModel
-    
-    init(eventAPI: EventAPIViewModel) {
-        self.eventAPI = eventAPI
-        self.display_text = eventAPI.settings.feature(ofType: .fastpass)?.display_text ?? .init(en: "", zh: "")
-    }
+    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @State private var isHttp403AlertPresented = false
+    @State private var errorType: String? = nil
     
     var body: some View {
         VStack {
             if eventAPI.user_token == nil {
-                RedeemTokenView(eventAPI: eventAPI)
+                RedeemTokenView()
             } else {
                 if errorType == nil {
                     if eventAPI.scenario_status != nil {
-                        ScenarioView(eventAPI: eventAPI)
+                        ScenarioView()
                             .task {
                                 do { try await eventAPI.loadScenarioStatus() }
                                 catch APIRepo.LoadError.http403Forbidden {
@@ -60,8 +54,9 @@ struct FastpassView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {
-                    Text(display_text.localized())
-                        .font(.headline)
+                    if let displayText = eventAPI.settings.feature(ofType: .fastpass)?.display_text {
+                        Text(displayText.localized()).font(.headline)
+                    }
                     Text(eventAPI.display_name.localized())
                         .font(.caption).foregroundColor(.gray)
                 }
@@ -74,7 +69,8 @@ struct FastpassView: View {
 #if DEBUG
 struct FastpassView_Previews: PreviewProvider {
     static var previews: some View {
-        FastpassView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
+        FastpassView()
+            .environmentObject(OPassAPIViewModel.mock().currentEventAPI!)
     }
 }
 #endif

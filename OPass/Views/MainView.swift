@@ -12,8 +12,7 @@ import OSLog
 struct MainView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
-    @ObservedObject var eventAPI: EventAPIViewModel
-    @State private var selectedFeature: FeatureType? = nil
+    @EnvironmentObject var eventAPI: EventAPIViewModel
     private let gridItemLayout = Array(repeating: GridItem(spacing: UIScreen.main.bounds.width / 16.56, alignment: .top), count: 4)
     private let logger = Logger(subsystem: "app.opass.ccip", category: "MainView")
     
@@ -48,21 +47,16 @@ struct MainView: View {
                     ForEach(eventAPI.settings.features, id: \.self) { feature in
                         if FeatureIsAvailable(feature), FeatureIsVisible(feature.visible_roles) {
                             VStack {
-                                TabButton(
-                                    feature: feature,
-                                    selectedFeature: $selectedFeature,
-                                    eventAPI: eventAPI,
-                                    width: UIScreen.main.bounds.width / 5.394136
-                                )
-                                .aspectRatio(contentMode: .fill)
-                                .frame(
-                                    width: UIScreen.main.bounds.width / 5.394136,
-                                    height: UIScreen.main.bounds.width / 5.394136
-                                )
-                                .clipShape(RoundedRectangle(cornerSize: CGSize(
-                                    width: UIScreen.main.bounds.width / 27.6,
-                                    height: UIScreen.main.bounds.width / 27.6
-                                )))
+                                TabButton(feature: feature, width: UIScreen.main.bounds.width / 5.394136)
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(
+                                        width: UIScreen.main.bounds.width / 5.394136,
+                                        height: UIScreen.main.bounds.width / 5.394136
+                                    )
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(
+                                        width: UIScreen.main.bounds.width / 27.6,
+                                        height: UIScreen.main.bounds.width / 27.6
+                                    )))
                                 
                                 Text(feature.display_text.localized())
                                     .font(.custom("RobotoCondensed-Regular", size: 11, relativeTo: .caption2))
@@ -73,9 +67,6 @@ struct MainView: View {
                     }
                 }
             }.padding(.horizontal)
-        }
-        .navigationDestination(for: SessionDataModel.self) { detail in
-            SessionDetailView(eventAPI, detail: detail)
         }
     }
     private func FeatureIsAvailable(_ feature: FeatureModel) -> Bool {
@@ -91,21 +82,19 @@ struct MainView: View {
 }
 
 private struct TabButton: View {
+    let feature: FeatureModel, width: CGFloat
+    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @EnvironmentObject var router: Router
     @Environment(\.colorScheme) var colorScheme
-    let feature: FeatureModel
-    @Binding var selectedFeature: FeatureType?
-    @ObservedObject var eventAPI: EventAPIViewModel
-    @EnvironmentObject var pathManager: PathManager
-    let width: CGFloat
     
     @State private var presentingWifiSheet = false
     var body: some View {
         Button {
             switch(feature.feature) {
-            case .fastpass:     pathManager.path.append(.fastpass)
-            case .schedule:     pathManager.path.append(.schedule)
-            case .ticket:       pathManager.path.append(.ticket)
-            case .announcement: pathManager.path.append(.announcement)
+            case .fastpass:     router.path.append(Router.mainDestination.fastpass)
+            case .schedule:     router.path.append(Router.mainDestination.schedule)
+            case .ticket:       router.path.append(Router.mainDestination.ticket)
+            case .announcement: router.path.append(Router.mainDestination.announcement)
             case .wifi:
                 if let wifi = feature.wifi, wifi.count == 1 {
                     NEHotspot.ConnectWiFi(SSID: wifi[0].SSID, withPass: wifi[0].password)
@@ -154,7 +143,7 @@ private struct TabButton: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            MainView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
+            MainView().environmentObject(OPassAPIViewModel.mock().currentEventAPI!)
         }
     }
 }

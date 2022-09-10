@@ -10,16 +10,10 @@ import SwiftUI
 
 struct AnnouncementView: View {
     
-    @ObservedObject var eventAPI: EventAPIViewModel
-    private let display_text: DisplayTextModel
-    @State var isHttp403AlertPresented = false
-    @State var errorType: String? = nil
+    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @State private var isHttp403AlertPresented = false
+    @State private var errorType: String? = nil
     @Environment(\.colorScheme) var colorScheme
-    
-    init(eventAPI: EventAPIViewModel) {
-        self.eventAPI = eventAPI
-        self.display_text = eventAPI.settings.feature(ofType: .announcement)?.display_text ?? .init(en: "", zh: "")
-    }
     
     var body: some View {
         VStack {
@@ -27,9 +21,8 @@ struct AnnouncementView: View {
                 if let announcements = eventAPI.announcements {
                     if announcements.isNotEmpty {
                         List(announcements, id: \.datetime) { announcement in
-                            let url = URL(string: announcement.uri)
                             Button {
-                                if let url = url {
+                                if let url = announcement.url {
                                     Constants.OpenInAppSafari(forURL: url, style: colorScheme)
                                 }
                             } label: {
@@ -37,12 +30,18 @@ struct AnnouncementView: View {
                                     VStack(alignment: .leading, spacing: 3) {
                                         Text(announcement.localized())
                                             .foregroundColor(colorScheme == .dark ? .white : .black)
-                                        Text(String(format: "%d/%d %d:%02d", announcement.datetime.month, announcement.datetime.day, announcement.datetime.hour, announcement.datetime.minute))
-                                            .font(.footnote)
-                                            .foregroundColor(.gray)
+                                        Text(String(
+                                            format: "%d/%d %d:%02d",
+                                            announcement.datetime.month,
+                                            announcement.datetime.day,
+                                            announcement.datetime.hour,
+                                            announcement.datetime.minute
+                                        ))
+                                        .font(.footnote)
+                                        .foregroundColor(.gray)
                                     }
                                     Spacer()
-                                    if url != nil {
+                                    if announcement.url != nil {
                                         Image(systemName: "chevron.right")
                                             .foregroundColor(.gray)
                                     }
@@ -110,9 +109,14 @@ struct AnnouncementView: View {
             }
         }
         .listStyle(.insetGrouped)
-        .navigationTitle(display_text.localized())
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            if let displayText = eventAPI.settings.feature(ofType: .announcement)?.display_text {
+                ToolbarItem(placement: .principal) {
+                    Text(displayText.localized()).font(.headline)
+                }
+            }
+            
             ToolbarItem(placement: .navigationBarTrailing) {
                 SFButton(systemName: "arrow.clockwise") {
                     self.errorType = nil
@@ -127,7 +131,8 @@ struct AnnouncementView: View {
 #if DEBUG
 struct AnnounceView_Previews: PreviewProvider {
     static var previews: some View {
-        AnnouncementView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
+        AnnouncementView()
+            .environmentObject(OPassAPIViewModel.mock().currentEventAPI!)
     }
 }
 #endif

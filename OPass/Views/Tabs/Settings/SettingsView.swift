@@ -52,7 +52,7 @@ private struct AppIconSection: View {
 private struct GeneralSection: View {
     var body: some View {
         Section(header: Text("GENERAL")) {
-            NavigationLink(value: PathManager.destination.appearance) {
+            NavigationLink(value: Router.rootDestination.appearance) {
                 Label { Text("Appearance") } icon: {
                     Image(systemName: "circle.lefthalf.filled")
                         .padding(4)
@@ -154,7 +154,7 @@ private struct AboutSection: View {
                 }
             }
             
-            NavigationLink("Developers", value: PathManager.destination.developers)
+            NavigationLink("Developers", value: Router.rootDestination.developers)
         }
     }
 }

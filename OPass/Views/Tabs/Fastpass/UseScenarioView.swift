@@ -10,13 +10,12 @@ import SwiftUI
 
 struct UseScenarioView: View {
     
-    @ObservedObject var eventAPI: EventAPIViewModel
     let scenario: ScenarioDataModel
+    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @State private var viewStage = 0
+    @State private var isHttp403AlertPresented = false
+    @State private var usedTime: TimeInterval = 0
     @Environment(\.dismiss) var dismiss
-    
-    @State var viewStage = 0
-    @State var isHttp403AlertPresented = false
-    @State var usedTime: TimeInterval = 0
     
     var body: some View {
         NavigationView {

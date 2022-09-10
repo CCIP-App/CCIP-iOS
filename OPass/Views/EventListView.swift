@@ -12,9 +12,9 @@ import OSLog
 struct EventListView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
+    @State private var isError = false
+    @State private var searchText = ""
     @Environment(\.dismiss) var dismiss
-    @State var isError = false
-    @State var searchText = ""
     
     var body: some View {
         NavigationView {

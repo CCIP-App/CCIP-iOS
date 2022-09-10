@@ -7,25 +7,18 @@
 //
 
 import SwiftUI
-import CoreImage.CIFilterBuiltins
 import EFQRCode
 
 struct TicketView: View {
     
-    @ObservedObject var eventAPI: EventAPIViewModel
+    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @State private var isTokenVisible = false
+    @State private var isLogOutAlertPresented = false
+    @State private var qrCodeUIImage = UIImage()
+    @State private var defaultBrightness = UIScreen.main.brightness
+    @AppStorage("AutoAdjustTicketBirghtness") var autoAdjustTicketBirghtness = true
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.colorScheme) var colorScheme
-    @AppStorage("AutoAdjustTicketBirghtness") var autoAdjustTicketBirghtness = true
-    @State var isTokenVisible = false
-    @State var isLogOutAlertPresented = false
-    @State var qrCodeUIImage = UIImage()
-    @State var defaultBrightness = UIScreen.main.brightness
-    let display_text: DisplayTextModel
-    
-    init(eventAPI: EventAPIViewModel) {
-        self.eventAPI = eventAPI
-        self.display_text = eventAPI.settings.feature(ofType: .ticket)?.display_text ?? .init(en: "", zh: "")
-    }
     
     var body: some View {
         VStack {
@@ -93,12 +86,17 @@ struct TicketView: View {
                 }
                 .task { try? await eventAPI.loadScenarioStatus() }
             } else {
-                RedeemTokenView(eventAPI: eventAPI)
+                RedeemTokenView()
             }
         }
-        .navigationTitle(display_text.localized())
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            if let displayText = eventAPI.settings.feature(ofType: .ticket)?.display_text {
+                ToolbarItem(placement: .principal) {
+                    Text(displayText.localized()).font(.headline)
+                }
+            }
+            
             ToolbarItem(placement: .navigationBarTrailing) {
                 if eventAPI.user_token != nil {
                     Button(action: {

@@ -12,13 +12,13 @@ import CodeScanner
 
 struct RedeemTokenView: View {
     
-    @ObservedObject var eventAPI: EventAPIViewModel
+    @EnvironmentObject var eventAPI: EventAPIViewModel
     @State private var token: String = ""
-    @State private var showCameraSOC = false
-    @State private var showManuallySOC = false
-    @State private var showNoQRCodeAlert = false
-    @State private var showInvaildTokenAlert = false
+    @State private var isCameraSOCPresented = false
+    @State private var isManuallySOCPresented = false
     @State private var isHttp403AlertPresented = false
+    @State private var isNoQRCodeAlertPresented = false
+    @State private var isInvaildTokenAlertPresented = false
     @State private var selectedPhotoItem: PhotosPickerItem? = nil
     @FocusState private var focusedField: Field?
     @Environment(\.colorScheme) private var colorScheme
@@ -26,12 +26,12 @@ struct RedeemTokenView: View {
     var body: some View {
         VStack {
             Form {
-                FastpassLogoView(eventAPI: eventAPI)
+                FastpassLogoView()
                     .frame(height: UIScreen.main.bounds.width * 0.4)
                     .listRowBackground(Color.white.opacity(0))
                 
                 Section {
-                    Button { self.showCameraSOC = true } label: {
+                    Button { self.isCameraSOCPresented = true } label: {
                         HStack {
                             Image(systemName: "camera")
                                 .foregroundColor(Color.white)
@@ -60,9 +60,9 @@ struct RedeemTokenView: View {
                             Image(systemName: "chevron.right").foregroundColor(.gray)
                         }
                     }
-                    .alert("NoQRCodeFoundInPicture", isPresented: $showNoQRCodeAlert)
+                    .alert("NoQRCodeFoundInPicture", isPresented: $isNoQRCodeAlertPresented)
                     
-                    Button { self.showManuallySOC = true } label: {
+                    Button { self.isManuallySOCPresented = true } label: {
                         HStack {
                             Image(systemName: "keyboard")
                                 .foregroundColor(Color.white)
@@ -80,8 +80,8 @@ struct RedeemTokenView: View {
             }
         }
         .http403Alert(title: "CouldntVerifiyYourIdentity", isPresented: $isHttp403AlertPresented)
-        .alert("CouldntVerifiyYourIdentity", message: "InvaildToken", isPresented: $showInvaildTokenAlert)
-        .slideOverCard(isPresented: $showCameraSOC, backgroundColor: (colorScheme == .dark ? .init(red: 28/255, green: 28/255, blue: 30/255) : .white)) {
+        .alert("CouldntVerifiyYourIdentity", message: "InvaildToken", isPresented: $isInvaildTokenAlertPresented)
+        .slideOverCard(isPresented: $isCameraSOCPresented, backgroundColor: (colorScheme == .dark ? .init(red: 28/255, green: 28/255, blue: 30/255) : .white)) {
             VStack {
                 Text("FastPass").font(Font.largeTitle.weight(.bold))
                 Text("ScanQRCodeWithCamera")
@@ -120,7 +120,7 @@ struct RedeemTokenView: View {
             }
         }
         .slideOverCard(
-            isPresented: $showManuallySOC,
+            isPresented: $isManuallySOCPresented,
             onDismiss: { UIApplication.endEditing() },
             backgroundColor: (colorScheme == .dark ? .init(red: 28/255, green: 28/255, blue: 30/255) : .white)
         ) {
@@ -146,14 +146,14 @@ struct RedeemTokenView: View {
                 
                 Button(action: {
                     UIApplication.endEditing()
-                    self.showManuallySOC = false
+                    self.isManuallySOCPresented = false
                     Task {
                         do {
-                            self.showInvaildTokenAlert = !(try await eventAPI.redeemToken(token: token))
+                            self.isInvaildTokenAlertPresented = !(try await eventAPI.redeemToken(token: token))
                         } catch APIRepo.LoadError.http403Forbidden {
                             self.isHttp403AlertPresented = true
                         } catch {
-                            self.showInvaildTokenAlert = true
+                            self.isInvaildTokenAlertPresented = true
                         }
                     }
                 }) {
@@ -174,26 +174,26 @@ struct RedeemTokenView: View {
                       let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil),
                       let feature = detector.features(in: ciImage) as? [CIQRCodeFeature],
                       let token = feature.first?.messageString
-                else { self.showNoQRCodeAlert = true; return }
+                else { self.isNoQRCodeAlertPresented = true; return }
                 do {
                     let result = try await eventAPI.redeemToken(token: token)
-                    self.showInvaildTokenAlert = !result
+                    self.isInvaildTokenAlertPresented = !result
                 } catch APIRepo.LoadError.http403Forbidden {
                     self.isHttp403AlertPresented = true
-                } catch { self.showInvaildTokenAlert = true }
+                } catch { self.isInvaildTokenAlertPresented = true }
             }
         }
     }
     
     private func HandleScan(result: Result<ScanResult, ScanError>) {
-        self.showCameraSOC = false
+        self.isCameraSOCPresented = false
         switch result {
         case .success(let result):
             Task {
                 do {
                     let result = try await eventAPI.redeemToken(token: result.string)
                     DispatchQueue.main.async {
-                        self.showInvaildTokenAlert = !result
+                        self.isInvaildTokenAlertPresented = !result
                     }
                 } catch APIRepo.LoadError.http403Forbidden {
                     DispatchQueue.main.async {
@@ -201,13 +201,13 @@ struct RedeemTokenView: View {
                     }
                 } catch {
                     DispatchQueue.main.async {
-                        self.showInvaildTokenAlert = true
+                        self.isInvaildTokenAlertPresented = true
                     }
                 }
             }
         case .failure(let error):
             DispatchQueue.main.async {
-                self.showInvaildTokenAlert = true
+                self.isInvaildTokenAlertPresented = true
             }
             print("Scanning failed: \(error.localizedDescription)")
         }
@@ -221,7 +221,8 @@ struct RedeemTokenView: View {
 #if DEBUG
 struct RedeemTokenView_Previews: PreviewProvider {
     static var previews: some View {
-        RedeemTokenView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
+        RedeemTokenView()
+            .environmentObject(OPassAPIViewModel.mock().currentEventAPI!)
     }
 }
 #endif
