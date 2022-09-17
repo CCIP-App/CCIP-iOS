@@ -16,7 +16,7 @@ extension Array: RawRepresentable where Element == String {
         }
         self = dictionary
     }
-
+    
     public var rawValue: String {
         guard let json = try? JSONEncoder().encode(self),
               let jsonString = String(data: json, encoding: .utf8) else {

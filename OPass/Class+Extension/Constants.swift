@@ -39,12 +39,6 @@ final class Constants {
         }
         return result
     }
-    ///Use this method to request user push notifications permission.
-    static func PromptForPushNotifications() {
-        OneSignal.promptForPushNotifications(userResponse: { accepted in
-           print("User accepted notifications: ", accepted)
-        }, fallbackToSettings: false)
-    }
     static func sendTag(_ key: String, value: String) {
         OneSignal.sendTag(key, value: value)
     }

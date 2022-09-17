@@ -48,13 +48,13 @@ struct SessionModel: Hashable, Codable {
     var data: [DateInRegion : [SessionDataModel]] = [:]
 }
 
-                                   
+
 extension SessionModel {
     func filter(_ filter: (SessionDataModel) -> Bool) -> SessionModel {
         let filteredHeader = header.filter { header in
             switch data[header]?.filter(filter) {
-                case .none: return false
-                case .some(let filtered): return !filtered.isEmpty
+            case .none: return false
+            case .some(let filtered): return filtered.isNotEmpty
             }
         }
         return SessionModel(
@@ -63,7 +63,7 @@ extension SessionModel {
                 .mapValues { sessions in sessions.filter(filter) }
         )
     }
-
+    
     var isEmpty: Bool { header.isEmpty }
 }
 
@@ -85,6 +85,11 @@ struct SessionDataModel: Hashable, Codable {
     var en = Title_DescriptionModel()
     var speakers: [String] = [""]
     var tags: [String] = [""]
+    
+    func localized() -> Title_DescriptionModel {
+        if Bundle.main.preferredLocalizations[0] ==  "zh-Hant" { return self.zh }
+        return self.en
+    }
 }
 
 struct TagsTransform: TransformFunction {
@@ -139,6 +144,11 @@ struct SpeakerModel: Hashable, Codable {
     var avatarData: Data?
     var zh = Name_BioModel()
     var en = Name_BioModel()
+    
+    func localized() -> Name_BioModel {
+        if Bundle.main.preferredLocalizations[0] ==  "zh-Hant" { return self.zh }
+        return self.en
+    }
 }
 
 struct Id_Name_DescriptionModel: Hashable, Codable {
@@ -166,6 +176,11 @@ struct Name_BioModel: Hashable, Codable {
 struct Name_DescriptionPair: Hashable, Codable {
     var zh: Name_DescriptionModel
     var en: Name_DescriptionModel
+    
+    func localized() -> Name_DescriptionModel {
+        if Bundle.main.preferredLocalizations[0] ==  "zh-Hant" { return self.zh }
+        return self.en
+    }
 }
 
 struct Name_DescriptionModel: Hashable, Codable {

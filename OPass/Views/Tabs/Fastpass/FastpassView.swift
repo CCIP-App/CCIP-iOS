@@ -10,28 +10,22 @@ import SwiftUI
 
 struct FastpassView: View {
     
-    @ObservedObject var eventAPI: EventAPIViewModel
-    @State var showHttp403Alert = false
-    @State var errorType: String? = nil
-    let display_text: DisplayTextModel
-    
-    init(eventAPI: EventAPIViewModel) {
-        self.eventAPI = eventAPI
-        self.display_text = eventAPI.eventSettings.feature(ofType: .fastpass)?.display_text ?? .init(en: "", zh: "")
-    }
+    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @State private var isHttp403AlertPresented = false
+    @State private var errorType: String? = nil
     
     var body: some View {
         VStack {
-            if eventAPI.accessToken == nil {
-                RedeemTokenView(eventAPI: eventAPI)
+            if eventAPI.user_token == nil {
+                RedeemTokenView()
             } else {
                 if errorType == nil {
-                    if eventAPI.eventScenarioStatus != nil {
-                        ScenarioView(eventAPI: eventAPI)
+                    if eventAPI.scenario_status != nil {
+                        ScenarioView()
                             .task {
                                 do { try await eventAPI.loadScenarioStatus() }
                                 catch APIRepo.LoadError.http403Forbidden {
-                                    self.showHttp403Alert = true
+                                    self.isHttp403AlertPresented = true
                                 } catch {}
                             }
                     } else {
@@ -60,21 +54,23 @@ struct FastpassView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {
-                    Text(LocalizeIn(zh: display_text.zh, en: display_text.en)).font(.headline)
-                        //.fixedSize(horizontal: true, vertical: true)
-                    Text(LocalizeIn(zh: eventAPI.display_name.zh, en: eventAPI.display_name.en)).font(.caption).foregroundColor(.gray)
-                        //.fixedSize(horizontal: true, vertical: true)
+                    if let displayText = eventAPI.settings.feature(ofType: .fastpass)?.display_text {
+                        Text(displayText.localized()).font(.headline)
+                    }
+                    Text(eventAPI.display_name.localized())
+                        .font(.caption).foregroundColor(.gray)
                 }
             }
         }
-        .http403Alert(isPresented: $showHttp403Alert)
+        .http403Alert(isPresented: $isHttp403AlertPresented)
     }
 }
 
 #if DEBUG
 struct FastpassView_Previews: PreviewProvider {
     static var previews: some View {
-        FastpassView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
+        FastpassView()
+            .environmentObject(OPassAPIViewModel.mock().currentEventAPI!)
     }
 }
 #endif

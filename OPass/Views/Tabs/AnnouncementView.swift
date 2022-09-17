@@ -1,5 +1,5 @@
 //
-//  AnnounceView.swift
+//  AnnouncementView.swift
 //  OPass
 //
 //  Created by secminhr on 2022/3/5.
@@ -8,41 +8,40 @@
 
 import SwiftUI
 
-struct AnnounceView: View {
+struct AnnouncementView: View {
     
-    @ObservedObject var eventAPI: EventAPIViewModel
-    let display_text: DisplayTextModel
-    @State var showHttp403Alert = false
-    @State var errorType: String? = nil
+    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @State private var isHttp403AlertPresented = false
+    @State private var errorType: String? = nil
     @Environment(\.colorScheme) var colorScheme
-    
-    init(eventAPI: EventAPIViewModel) {
-        self.eventAPI = eventAPI
-        self.display_text = eventAPI.eventSettings.feature(ofType: .announcement)?.display_text ?? .init(en: "", zh: "")
-    }
     
     var body: some View {
         VStack {
             if errorType == nil {
-                if let announcements = eventAPI.eventAnnouncements {
-                    if !announcements.isEmpty {
+                if let announcements = eventAPI.announcements {
+                    if announcements.isNotEmpty {
                         List(announcements, id: \.datetime) { announcement in
-                            let url = URL(string: announcement.uri)
                             Button {
-                                if let url = url {
+                                if let url = announcement.url {
                                     Constants.OpenInAppSafari(forURL: url, style: colorScheme)
                                 }
                             } label: {
                                 HStack {
                                     VStack(alignment: .leading, spacing: 3) {
-                                        Text(LocalizeIn(zh: announcement.msg_zh, en: announcement.msg_en))
+                                        Text(announcement.localized())
                                             .foregroundColor(colorScheme == .dark ? .white : .black)
-                                        Text(String(format: "%d/%d %d:%02d", announcement.datetime.month, announcement.datetime.day, announcement.datetime.hour, announcement.datetime.minute))
-                                            .font(.footnote)
-                                            .foregroundColor(.gray)
+                                        Text(String(
+                                            format: "%d/%d %d:%02d",
+                                            announcement.datetime.month,
+                                            announcement.datetime.day,
+                                            announcement.datetime.hour,
+                                            announcement.datetime.minute
+                                        ))
+                                        .font(.footnote)
+                                        .foregroundColor(.gray)
                                     }
                                     Spacer()
-                                    if url != nil {
+                                    if announcement.url != nil {
                                         Image(systemName: "chevron.right")
                                             .foregroundColor(.gray)
                                     }
@@ -53,14 +52,14 @@ struct AnnounceView: View {
                             do {
                                 try await eventAPI.loadAnnouncements()
                             } catch APIRepo.LoadError.http403Forbidden {
-                                self.showHttp403Alert = true
+                                self.isHttp403AlertPresented = true
                             } catch {}
                         }
                         .task{
                             do {
                                 try await eventAPI.loadAnnouncements()
                             } catch APIRepo.LoadError.http403Forbidden {
-                                self.showHttp403Alert = true
+                                self.isHttp403AlertPresented = true
                             } catch {}
                         }
                     } else {
@@ -77,14 +76,14 @@ struct AnnounceView: View {
                             do {
                                 try await eventAPI.loadAnnouncements()
                             } catch APIRepo.LoadError.http403Forbidden {
-                                self.showHttp403Alert = true
+                                self.isHttp403AlertPresented = true
                             } catch {}
                         }
                         .task{
                             do {
                                 try await eventAPI.loadAnnouncements()
                             } catch APIRepo.LoadError.http403Forbidden {
-                                self.showHttp403Alert = true
+                                self.isHttp403AlertPresented = true
                             } catch {}
                         }
                     }
@@ -93,7 +92,7 @@ struct AnnounceView: View {
                         .task {
                             do { try await self.eventAPI.loadAnnouncements() }
                             catch APIRepo.LoadError.http403Forbidden {
-                                self.showHttp403Alert = true
+                                self.isHttp403AlertPresented = true
                                 self.errorType = "http403"
                             } catch { self.errorType = "unknown" }
                         }
@@ -110,24 +109,30 @@ struct AnnounceView: View {
             }
         }
         .listStyle(.insetGrouped)
-        .navigationTitle(LocalizeIn(zh: display_text.zh, en: display_text.en))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            if let displayText = eventAPI.settings.feature(ofType: .announcement)?.display_text {
+                ToolbarItem(placement: .principal) {
+                    Text(displayText.localized()).font(.headline)
+                }
+            }
+            
             ToolbarItem(placement: .navigationBarTrailing) {
                 SFButton(systemName: "arrow.clockwise") {
                     self.errorType = nil
-                    self.eventAPI.eventAnnouncements = nil
+                    self.eventAPI.announcements = nil
                 }
             }
         }
-        .http403Alert(isPresented: $showHttp403Alert)
+        .http403Alert(isPresented: $isHttp403AlertPresented)
     }
 }
 
 #if DEBUG
 struct AnnounceView_Previews: PreviewProvider {
     static var previews: some View {
-        AnnounceView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
+        AnnouncementView()
+            .environmentObject(OPassAPIViewModel.mock().currentEventAPI!)
     }
 }
 #endif

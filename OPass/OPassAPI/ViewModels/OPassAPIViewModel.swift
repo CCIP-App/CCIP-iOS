@@ -6,9 +6,8 @@
 //  2022 OPass.
 //
 
-import Foundation
-import OSLog
 import SwiftUI
+import OSLog
 
 ///Endpoint hold by OPass Official.
 class OPassAPIViewModel: ObservableObject {
@@ -46,11 +45,11 @@ extension OPassAPIViewModel {
                     event_id: eventAPI.event_id,
                     display_name: eventAPI.display_name,
                     logo_url: eventAPI.logo_url,
-                    eventSettings: eventAPI.eventSettings,
-                    eventLogo: eventAPI.eventLogo,
-                    eventSchedule: eventAPI.eventSchedule,
-                    eventAnnouncements: eventAPI.eventAnnouncements,
-                    eventScenarioStatus: eventAPI.eventScenarioStatus
+                    settings: eventAPI.settings,
+                    logo_data: eventAPI.logo_data,
+                    schedule: eventAPI.schedule,
+                    announcements: eventAPI.announcements,
+                    scenario_status: eventAPI.scenario_status
                 ))
                 keyStore.set(data, forKey: "EventAPI")
                 logger.info("Save scuess of id: \(eventAPI.event_id)")
@@ -73,11 +72,11 @@ extension OPassAPIViewModel {
     func loadCurrentEventAPI() async throws {
         if let eventId = currentEventID {
             do {
-                let eventSettings = try await APIRepo.loadEventSettings(id: eventId)
+                let settings = try await APIRepo.loadEventSettings(id: eventId)
                 if let eventAPIData = eventAPITemporaryData, eventId == eventAPIData.event_id { // Reload
                     let event = EventAPIViewModel(
-                        eventSettings,
-                        eventLogo: eventAPIData.eventLogo,
+                        settings,
+                        logo_data: eventAPIData.logo_data,
                         saveData: self.saveEventAPIData,
                         tmpData: eventAPIData
                     )
@@ -87,7 +86,7 @@ extension OPassAPIViewModel {
                         Task{ await self.currentEventAPI!.loadLogos() }
                     }
                 } else { // Load new
-                    let event = EventAPIViewModel(eventSettings, saveData: self.saveEventAPIData)
+                    let event = EventAPIViewModel(settings, saveData: self.saveEventAPIData)
                     logger.info("Loading new event from \(self.currentEventAPI?.event_id ?? "none") to \(event.event_id)")
                     DispatchQueue.main.async {
                         self.currentEventAPI = event
@@ -99,8 +98,8 @@ extension OPassAPIViewModel {
                 if let eventAPIData = eventAPITemporaryData, eventAPIData.event_id == eventId {
                     DispatchQueue.main.async {
                         self.currentEventAPI = EventAPIViewModel(
-                            eventAPIData.eventSettings,
-                            eventLogo: eventAPIData.eventLogo,
+                            eventAPIData.settings,
+                            logo_data: eventAPIData.logo_data,
                             saveData: self.saveEventAPIData,
                             tmpData: eventAPIData
                         )
@@ -120,8 +119,8 @@ extension OPassAPIViewModel {
             if eventId == currentEventAPI?.event_id {
                 return try await currentEventAPI?.redeemToken(token: token) ?? false
             }
-            let eventSettings = try await APIRepo.loadEventSettings(id: eventId)
-            let eventModel = EventAPIViewModel(eventSettings, saveData: saveEventAPIData)
+            let settings = try await APIRepo.loadEventSettings(id: eventId)
+            let eventModel = EventAPIViewModel(settings, saveData: saveEventAPIData)
             DispatchQueue.main.async {
                 self.currentEventLogo = nil
                 self.currentEventAPI = eventModel

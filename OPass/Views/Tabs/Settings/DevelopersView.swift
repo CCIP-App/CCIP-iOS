@@ -10,9 +10,9 @@ import SwiftUI
 
 struct DevelopersView: View {
     
-    @Environment(\.colorScheme) private var colorScheme
     @State private var contributors: [ContributorsModel]? = nil
     @State private var error = false
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         Group {

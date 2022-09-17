@@ -46,12 +46,12 @@ class UNUserNotification {
             NotificationCenter.removePendingNotificationRequests(withIdentifiers: [id])
         }
         logger.info("Notification Registered: \(NotificationCenter.debugDescription)")
-        #if DEBUG
+#if DEBUG
         NotificationCenter.getPendingNotificationRequests(completionHandler: { requests in
             for request in requests {
                 print(request)
             }
         })
-        #endif
+#endif
     }
 }

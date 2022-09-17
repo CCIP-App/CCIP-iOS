@@ -89,10 +89,10 @@ public struct SlideOverCard<Content: View>: View {
     }
     
     func dismiss() {
+        if onDismiss != nil { onDismiss!() }
         withAnimation {
             isPresented.wrappedValue = false
         }
-        if (onDismiss != nil) { onDismiss!() }
     }
 }
 

@@ -12,15 +12,15 @@ import OSLog
 struct EventListView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
+    @State private var isError = false
+    @State private var searchText = ""
     @Environment(\.dismiss) var dismiss
-    @State var isError = false
-    @State var searchText = ""
     
     var body: some View {
         NavigationView {
             VStack {
                 if !isError {
-                    if !OPassAPI.eventList.isEmpty {
+                    if OPassAPI.eventList.isNotEmpty {
                         Form {
                             ForEach(OPassAPI.eventList.filter { event in
                                 if searchText.isEmpty {
@@ -28,7 +28,7 @@ struct EventListView: View {
                                 } else {
                                     for component in searchText.tirm().lowercased().components(separatedBy: " ") {
                                         let component = component.tirm()
-                                        if !component.isEmpty, !LocalizeIn(zh: event.display_name.zh, en: event.display_name.en).lowercased().contains(component) {
+                                        if component.isNotEmpty, !event.display_name.localized().lowercased().contains(component) {
                                             return false
                                         }
                                     }
@@ -127,7 +127,7 @@ private struct EventRow: View {
                 .padding(.horizontal, 3)
                 .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.15)
                 
-                Text(LocalizeIn(zh: displayName.zh, en: displayName.en))
+                Text(displayName.localized())
                     .foregroundColor(colorScheme == .dark ? .white : .black)
                 
                 Spacer()

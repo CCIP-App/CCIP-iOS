@@ -10,13 +10,12 @@ import SwiftUI
 
 struct UseScenarioView: View {
     
-    @ObservedObject var eventAPI: EventAPIViewModel
     let scenario: ScenarioDataModel
+    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @State private var viewStage = 0
+    @State private var isHttp403AlertPresented = false
+    @State private var usedTime: TimeInterval = 0
     @Environment(\.dismiss) var dismiss
-    
-    @State var viewStage = 0
-    @State var showHttp403Alert = false
-    @State var usedTime: TimeInterval = 0
     
     var body: some View {
         NavigationView {
@@ -29,7 +28,7 @@ struct UseScenarioView: View {
                 default: ErrorView()
                 }
             }
-            .navigationTitle(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en))
+            .navigationTitle(scenario.display_text.localized())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -38,7 +37,7 @@ struct UseScenarioView: View {
                     }
                 }
             }
-            .http403Alert(isPresented: $showHttp403Alert)
+            .http403Alert(isPresented: $isHttp403AlertPresented)
         }
     }
     
@@ -56,7 +55,7 @@ struct UseScenarioView: View {
                     .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.width * 0.2)
                     .background(.blue)
                     .cornerRadius(UIScreen.main.bounds.width * 0.05)
-                Text(LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en))
+                Text(scenario.display_text.localized())
                     .font(.largeTitle.bold())
                 
                 Text("ConfirmUseScenarioMessage")
@@ -78,7 +77,7 @@ struct UseScenarioView: View {
                             self.viewStage = 2
                         } else { self.viewStage = 3 }
                     } catch APIRepo.LoadError.http403Forbidden {
-                        self.showHttp403Alert = true
+                        self.isHttp403AlertPresented = true
                     } catch { self.viewStage = 3 }
                 }
             } label: {
@@ -89,7 +88,7 @@ struct UseScenarioView: View {
                     .background(.blue)
                     .cornerRadius(10)
             }
-
+            
             Button { dismiss() } label: {
                 Text("Cancel")
                     .foregroundColor(.blue)
@@ -120,10 +119,7 @@ private struct ScuessScenarioView: View {
                         .scaledToFit()
                         .frame(width: UIScreen.main.bounds.width * 0.2)
                         .foregroundColor(.green)
-                    Text(
-                        LocalizeIn(zh: scenario.display_text.zh, en: scenario.display_text.en) +
-                        " " + String(localized: "Complete")
-                    )
+                    Text(scenario.display_text.localized() + " " + String(localized: "Complete"))
                         .font(.title.bold())
                     Group{
                         Spacer()
@@ -199,7 +195,7 @@ private struct TimerView: View {
                             .foregroundColor(Color.white.opacity(0.2))
                     }
                 }
-                    .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity)
             }
             .offset(x: 0, y: 30)
         })

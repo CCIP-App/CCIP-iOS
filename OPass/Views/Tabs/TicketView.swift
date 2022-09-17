@@ -7,29 +7,22 @@
 //
 
 import SwiftUI
-import CoreImage.CIFilterBuiltins
 import EFQRCode
 
 struct TicketView: View {
     
+    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @State private var isTokenVisible = false
+    @State private var isLogOutAlertPresented = false
+    @State private var qrCodeUIImage = UIImage()
+    @State private var defaultBrightness = UIScreen.main.brightness
+    @AppStorage("AutoAdjustTicketBirghtness") var autoAdjustTicketBirghtness = true
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.colorScheme) var colorScheme
-    @AppStorage("AutoAdjustTicketBirghtness") var autoAdjustTicketBirghtness = true
-    @ObservedObject var eventAPI: EventAPIViewModel
-    @State var showingToken = false
-    @State var isShowingLogOutAlert = false
-    @State var qrCodeUIImage = UIImage()
-    @State var defaultBrightness = UIScreen.main.brightness
-    let display_text: DisplayTextModel
-    
-    init(eventAPI: EventAPIViewModel) {
-        self.eventAPI = eventAPI
-        self.display_text = eventAPI.eventSettings.feature(ofType: .ticket)?.display_text ?? .init(en: "", zh: "")
-    }
     
     var body: some View {
         VStack {
-            if let token = eventAPI.accessToken {
+            if let token = eventAPI.user_token {
                 VStack(spacing: 0) {
                     Form {
                         Section() {
@@ -54,16 +47,14 @@ struct TicketView: View {
                         
                         Section(header: Text("Token"), footer: Text("TicketWarningContent")) {
                             HStack {
-                                showingToken
+                                isTokenVisible
                                 ? Text(token)
                                     .fixedSize(horizontal: false, vertical: true)
                                 : Text(String(repeating: "•", count: token.count))
                                     .font(.title3).fixedSize(horizontal: false, vertical: true)
                             }
                         }
-                        .onTapGesture {
-                            showingToken.toggle()
-                        }
+                        .onTapGesture { isTokenVisible.toggle() }
                         .contextMenu {
                             Button {
                                 UIPasteboard.general.string = token
@@ -95,25 +86,30 @@ struct TicketView: View {
                 }
                 .task { try? await eventAPI.loadScenarioStatus() }
             } else {
-                RedeemTokenView(eventAPI: eventAPI)
+                RedeemTokenView()
             }
         }
-        .navigationTitle(LocalizeIn(zh: display_text.zh, en: display_text.en))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            if let displayText = eventAPI.settings.feature(ofType: .ticket)?.display_text {
+                ToolbarItem(placement: .principal) {
+                    Text(displayText.localized()).font(.headline)
+                }
+            }
+            
             ToolbarItem(placement: .navigationBarTrailing) {
-                if eventAPI.accessToken != nil {
+                if eventAPI.user_token != nil {
                     Button(action: {
-                        isShowingLogOutAlert.toggle()
+                        isLogOutAlertPresented.toggle()
                     }) { Text(LocalizedStringKey("SignOut")).foregroundColor(.red) }
                 }
             }
         }
-        .alert(LocalizedStringKey("ConfirmSignOut"), isPresented: $isShowingLogOutAlert) {
-            Button(String(localized: "SignOut"), role: .destructive) {
-                eventAPI.signOut()
+        .alert("ConfirmSignOut", isPresented: $isLogOutAlertPresented) {
+            Button("SignOut", role: .destructive) {
+                self.eventAPI.signOut()
             }
-            Button(String(localized: "Cancel"), role: .cancel) { }
+            Button("Cancel", role: .cancel) { }
         }
     }
     

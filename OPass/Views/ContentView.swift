@@ -7,44 +7,52 @@
 //
 
 import SwiftUI
-import FirebaseDynamicLinks
 
 struct ContentView: View {
     
-    @EnvironmentObject var OPassAPI: OPassAPIViewModel
-    @State var handlingURL = false
-    @State var isShowingEventList = false
-    @State var showHttp403Alert = false
-    @State var isError = false
-    @State var showInvalidURL = false
-    @State var viewFirstActive = true
     @Binding var url: URL?
-
+    @StateObject var router = Router()
+    @StateObject var OPassAPI = OPassAPIViewModel()
+    @State private var isError = false
+    @State private var handlingURL = false
+    @State private var isEventListPresented = false
+    @State private var isHttp403AlertPresented = false
+    @State private var isInvalidURLAlertPresented = false
+    
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $router.path) {
             VStack {
                 if !isError {
                     if OPassAPI.currentEventID == nil {
                         VStack {}
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .onAppear {
-                                self.isShowingEventList = true
+                                self.isEventListPresented = true
                             }
                     } else if OPassAPI.currentEventID != OPassAPI.currentEventAPI?.event_id {
-                        ProgressView(LocalizedStringKey("Loading"))
+                        ProgressView("Loading")
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .task {
                                 do { try await OPassAPI.loadCurrentEventAPI() }
                                 catch { self.isError = true }
                             }
-                    } else {
-                        MainView(eventAPI: OPassAPI.currentEventAPI!)
-                            .onAppear {
-                                if viewFirstActive {
-                                    Constants.PromptForPushNotifications()
-                                    viewFirstActive.toggle()
+                    } else if let eventAPI = OPassAPI.currentEventAPI {
+                        MainView()
+                            .environmentObject(eventAPI)
+                            .navigationDestination(for: Router.mainDestination.self) { destination in
+                                switch destination {
+                                case .fastpass:                FastpassView().environmentObject(eventAPI)
+                                case .schedule:                ScheduleView(eventAPI: eventAPI)
+                                case .sessionDetail(let data): SessionDetailView(data).environmentObject(eventAPI)
+                                case .ticket:                  TicketView().environmentObject(eventAPI)
+                                case .announcement:            AnnouncementView().environmentObject(eventAPI)
                                 }
                             }
+                            
+                    } else {
+                        VStack {} // Unknown status
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .onAppear { self.isError = true }
                     }
                 } else {
                     ErrorWithRetryView {
@@ -57,60 +65,69 @@ struct ContentView: View {
                 }
             }
             .background(Color("SectionBackgroundColor"))
-            .sheet(isPresented: $isShowingEventList) {
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(for: Router.rootDestination.self) { destination in
+                switch destination {
+                case .settings:   SettingsView()
+                case .appearance: AppearanceView()
+                case .developers: DevelopersView()
+                }
+            }
+            .sheet(isPresented: $isEventListPresented) {
                 EventListView()
             }
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text(
-                        LocalizeIn(
-                            zh: OPassAPI.currentEventAPI?.display_name.zh,
-                            en: OPassAPI.currentEventAPI?.display_name.en
-                        ) ?? "OPass"
-                    )
-                    .bold()
-                    .lineLimit(1)
-                    .fixedSize()
-                }
-                
                 ToolbarItem(placement: .navigationBarLeading) {
                     SFButton(systemName: "rectangle.stack") {
-                        isShowingEventList.toggle()
+                        isEventListPresented.toggle()
+                    }
+                }
+                
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text(OPassAPI.currentEventAPI?.display_name.localized() ?? "OPass")
+                            .font(.headline)
+                        if let userId = OPassAPI.currentEventAPI?.user_id, userId != "nil" {
+                            Text(userId)
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                        }
                     }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: SettingsView()) {
+                    NavigationLink(value: Router.rootDestination.settings) {
                         Image(systemName: "gearshape")
                     }
                 }
             }
         }
+        .environmentObject(router)
+        .environmentObject(OPassAPI)
         .overlay {
             if self.url != nil {
                 ProgressView("LOGGINGIN")
                     .task {
-                        self.isShowingEventList = false
+                        self.isEventListPresented = false
                         await parseUniversalLinkAndURL(url!)
                     }
-                    .alert("InvalidURL", isPresented: $showInvalidURL) {
+                    .alert("InvalidURL", isPresented: $isInvalidURLAlertPresented) {
                         Button("OK", role: .cancel) {
                             self.url = nil
                             if OPassAPI.currentEventAPI == nil {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                    self.isShowingEventList = true
+                                    self.isEventListPresented = true
                                 }
                             }
                         }
                     } message: {
                         Text("InvalidURLOrTokenContent")
                     }
-                    .http403Alert(title: "CouldntVerifiyYourIdentity", isPresented: $showHttp403Alert) {
+                    .http403Alert(title: "CouldntVerifiyYourIdentity", isPresented: $isHttp403AlertPresented) {
                         self.url = nil
                         if OPassAPI.currentEventAPI == nil {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                self.isShowingEventList = true
+                                self.isEventListPresented = true
                             }
                         }
                     }
@@ -126,7 +143,7 @@ struct ContentView: View {
         // Select event
         guard let eventId = params?.first(where: { $0.name == "event_id"})?.value else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.showInvalidURL = true
+                self.isInvalidURLAlertPresented = true
             }
             return
         }
@@ -152,14 +169,14 @@ struct ContentView: View {
             }
         } catch APIRepo.LoadError.http403Forbidden {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.showHttp403Alert = true
+                self.isHttp403AlertPresented = true
             }
             return
         } catch {}
         
         // Error
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.showInvalidURL = true
+            self.isInvalidURLAlertPresented = true
         }
     }
 }

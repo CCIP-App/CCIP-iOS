@@ -24,24 +24,24 @@ final class APIRepo {
         case eventList
         case settings(String)
         case announcements(String, String)
-        case scenarioStatus(String, String)
+        case scenario_status(String, String)
         case scenarioUse(String, String, String)
         case raw(String)
         
         func getString() -> String {
             switch self {
-                case .eventList:
-                    return "https://portal.opass.app/events/"
-                case .settings(let id):
-                    return "https://portal.opass.app/events/\(id)"
-                case .announcements(let baseURL, let token):
-                    return "\(baseURL)/announcement?token=\(token)"
-                case .scenarioStatus(let baseURL, let token):
-                    return "\(baseURL)/status?token=\(token)"
-                case .scenarioUse(let baseURL, let scenario, let token):
-                    return "\(baseURL)/use/\(scenario)?token=\(token)"
-                case .raw(let url):
-                    return url
+            case .eventList:
+                return "https://portal.opass.app/events/"
+            case .settings(let id):
+                return "https://portal.opass.app/events/\(id)"
+            case .announcements(let baseURL, let token):
+                return "\(baseURL)/announcement?token=\(token)"
+            case .scenario_status(let baseURL, let token):
+                return "\(baseURL)/status?token=\(token)"
+            case .scenarioUse(let baseURL, let scenario, let token):
+                return "\(baseURL)/use/\(scenario)?token=\(token)"
+            case .raw(let url):
+                return url
             }
         }
     }
@@ -120,9 +120,9 @@ extension APIRepo {
             throw LoadError.missingURL(feature: feature)
         }
         
-        guard let url = URL(.scenarioStatus(baseURL, token)) else {
-            logger.error("Invalid ScenarioStatus URL: \(URLs.scenarioStatus(baseURL, token).getString())")
-            throw LoadError.invalidURL(url: .scenarioStatus(baseURL, token))
+        guard let url = URL(.scenario_status(baseURL, token)) else {
+            logger.error("Invalid ScenarioStatus URL: \(URLs.scenario_status(baseURL, token).getString())")
+            throw LoadError.invalidURL(url: .scenario_status(baseURL, token))
         }
         
         do {
@@ -139,7 +139,7 @@ extension APIRepo {
             logger.error("Invalid Logo URL: \(url)")
             throw LoadError.invalidURL(url: .raw(url))
         }
-
+        
         do {
             let (data, _) = try await URLSession.shared.data(from: logoUrl)
             return data
@@ -210,7 +210,7 @@ extension URL {
 }
 
 private extension URLSession {
-     func jsonData<T: Decodable>(from url: URL) async throws -> T {
+    func jsonData<T: Decodable>(from url: URL) async throws -> T {
         let (data, response) = try await self.data(from: url)
         if let resp = response as? HTTPURLResponse {
             switch resp.statusCode {

@@ -7,14 +7,12 @@
 //
 
 import SwiftUI
-import CryptoKit
 import OSLog
 
 struct MainView: View {
     
     @EnvironmentObject var OPassAPI: OPassAPIViewModel
-    @ObservedObject var eventAPI: EventAPIViewModel
-    @State private var selectedFeature: FeatureType? = nil
+    @EnvironmentObject var eventAPI: EventAPIViewModel
     private let gridItemLayout = Array(repeating: GridItem(spacing: UIScreen.main.bounds.width / 16.56, alignment: .top), count: 4)
     private let logger = Logger(subsystem: "app.opass.ccip", category: "MainView")
     
@@ -27,14 +25,14 @@ struct MainView: View {
                         .resizable()
                         .scaledToFit()
                         .padding(.horizontal)
-                } else if let eventLogoData = eventAPI.eventLogo, let eventLogoUIImage = UIImage(data: eventLogoData) {
-                    Image(uiImage: eventLogoUIImage)
+                } else if let logo = eventAPI.logo {
+                    logo
                         .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
                         .padding(.horizontal)
                 } else {
-                    Text(LocalizeIn(zh: eventAPI.display_name.zh, en: eventAPI.display_name.en))
+                    Text(eventAPI.display_name.localized())
                         .font(.system(.largeTitle, design: .rounded))
                         .fontWeight(.medium)
                         .fixedSize(horizontal: false, vertical: true)
@@ -46,26 +44,21 @@ struct MainView: View {
             
             ScrollView {
                 LazyVGrid(columns: gridItemLayout) {
-                    ForEach(eventAPI.eventSettings.features, id: \.self) { feature in
+                    ForEach(eventAPI.settings.features, id: \.self) { feature in
                         if FeatureIsAvailable(feature), FeatureIsVisible(feature.visible_roles) {
                             VStack {
-                                TabButton(
-                                    feature: feature,
-                                    selectedFeature: $selectedFeature,
-                                    eventAPI: eventAPI,
-                                    width: UIScreen.main.bounds.width / 5.394136
-                                )
-                                .aspectRatio(contentMode: .fill)
-                                .frame(
-                                    width: UIScreen.main.bounds.width / 5.394136,
-                                    height: UIScreen.main.bounds.width / 5.394136
-                                )
-                                .clipShape(RoundedRectangle(cornerSize: CGSize(
-                                    width: UIScreen.main.bounds.width / 27.6,
-                                    height: UIScreen.main.bounds.width / 27.6
-                                )))
+                                TabButton(feature: feature, width: UIScreen.main.bounds.width / 5.394136)
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(
+                                        width: UIScreen.main.bounds.width / 5.394136,
+                                        height: UIScreen.main.bounds.width / 5.394136
+                                    )
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(
+                                        width: UIScreen.main.bounds.width / 27.6,
+                                        height: UIScreen.main.bounds.width / 27.6
+                                    )))
                                 
-                                Text(LocalizeIn(zh: feature.display_text.zh, en: feature.display_text.en))
+                                Text(feature.display_text.localized())
                                     .font(.custom("RobotoCondensed-Regular", size: 11, relativeTo: .caption2))
                                     .multilineTextAlignment(.center)
                                     .fixedSize(horizontal: false, vertical: true)
@@ -75,36 +68,11 @@ struct MainView: View {
                 }
             }.padding(.horizontal)
         }
-        .background {
-            Group {
-                NavigationLink(
-                    tag: FeatureType.fastpass,
-                    selection: $selectedFeature,
-                    destination: { FastpassView(eventAPI: eventAPI) }
-                ) { EmptyView() }
-                NavigationLink(
-                    tag: FeatureType.ticket,
-                    selection: $selectedFeature,
-                    destination: { TicketView(eventAPI: eventAPI) }
-                ) { EmptyView() }
-                NavigationLink(
-                    tag: FeatureType.schedule,
-                    selection: $selectedFeature,
-                    destination: { ScheduleView(eventAPI: eventAPI) }
-                ) { EmptyView() }
-                NavigationLink(
-                    tag: FeatureType.announcement,
-                    selection: $selectedFeature,
-                    destination: { AnnounceView(eventAPI: eventAPI) }
-                ) { EmptyView() }
-            }.hidden()
-        }
     }
-    
     private func FeatureIsAvailable(_ feature: FeatureModel) -> Bool {
         let t = feature.feature
         guard t == .im || t == .puzzle || t == .venue || t == .sponsors || t == .staffs || t == .webview else { return true }
-        return feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) != nil
+        return feature.url(token: eventAPI.user_token, role: eventAPI.scenario_status?.role) != nil
     }
     private func FeatureIsVisible(_ visible_roles: [String]?) -> Bool {
         guard let visible_roles = visible_roles else { return true }
@@ -114,18 +82,19 @@ struct MainView: View {
 }
 
 private struct TabButton: View {
+    let feature: FeatureModel, width: CGFloat
+    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @EnvironmentObject var router: Router
     @Environment(\.colorScheme) var colorScheme
-    let feature: FeatureModel
-    @Binding var selectedFeature: FeatureType?
-    @ObservedObject var eventAPI: EventAPIViewModel
-    let width: CGFloat
     
     @State private var presentingWifiSheet = false
     var body: some View {
         Button {
             switch(feature.feature) {
-            case .fastpass, .schedule, .ticket, .announcement:
-                self.selectedFeature = feature.feature
+            case .fastpass:     router.path.append(Router.mainDestination.fastpass)
+            case .schedule:     router.path.append(Router.mainDestination.schedule)
+            case .ticket:       router.path.append(Router.mainDestination.ticket)
+            case .announcement: router.path.append(Router.mainDestination.announcement)
             case .wifi:
                 if let wifi = feature.wifi, wifi.count == 1 {
                     NEHotspot.ConnectWiFi(SSID: wifi[0].SSID, withPass: wifi[0].password)
@@ -134,21 +103,21 @@ private struct TabButton: View {
                 if let url = URL(string: feature.url ?? "") {
                     Constants.OpenInOS(forURL: url)
                 }
-            default:
-                if let url = feature.url?.processWith(token: eventAPI.accessToken, role: eventAPI.eventScenarioStatus?.role) {
+            case .im, .puzzle, .venue, .sponsors, .staffs, .webview:
+                if let url = feature.url(token: eventAPI.user_token, role: eventAPI.scenario_status?.role) {
                     Constants.OpenInAppSafari(forURL: url, style: colorScheme)
                 }
             }
         } label: {
             Group {
-                if let data = feature.iconData, let uiImage = UIImage(data: data) {
-                    Image(uiImage: uiImage)
+                if let image = feature.iconImage {
+                    image
                         .interpolation(.none)
                         .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
                 } else {
-                    Image(systemName: feature.symbolName ?? "shippingbox")
+                    Image(systemName: feature.symbol)
                         .resizable()
                         .scaledToFit()
                 }
@@ -170,82 +139,11 @@ private struct TabButton: View {
     }
 }
 
-private extension String {
-    func processWith(token: String?, role: String?) -> URL? {
-        var url = self
-        guard let paramsRegex = try? NSRegularExpression(pattern: "(\\{[^\\}]+\\})", options: .caseInsensitive) else { return nil }
-        let matches = paramsRegex.matches(in: url, options: .reportProgress, range: NSRange(location: 0, length: url.count))
-        for m in stride(from: matches.count, to: 0, by: -1) {
-            let range = Range(matches[m - 1].range(at: 1), in: url)!
-            let param = url[range]
-            switch param {
-            case "{token}":
-                url = url.replacingOccurrences(of: param, with: token ?? "")
-            case "{public_token}":
-                url = url.replacingOccurrences(
-                    of: param,
-                    with: Insecure.SHA1.hash(data: Data((token ?? "").utf8))
-                        .map { String(format: "%02X", $0) }
-                        .joined()
-                        .lowercased()
-                )
-            case "{role}":
-                url = url.replacingOccurrences(of: param, with: role ?? "")
-            default:
-                url = url.replacingOccurrences(of: param, with: "")
-            }
-        }
-        return URL(string: url)
-    }
-}
-
-private extension FeatureType {
-    var color: Color {
-        let buttonColor: [FeatureType : Color] = [
-            .fastpass : .blue,
-            .ticket : .purple,
-            .schedule : .green,
-            .announcement : .orange,
-            .wifi : .brown,
-            .telegram : .init(red: 89/255, green: 196/255, blue: 189/255),
-            .im : .init(red: 86/255, green: 89/255, blue: 207/255),
-            .puzzle : .blue,
-            .venue : .init(red: 87/255, green: 172/255, blue: 225/255),
-            .sponsors : .yellow,
-            .staffs : .gray,
-            .webview : .purple
-        ]
-        return buttonColor[self] ?? .purple
-    }
-    
-    var symbolName: String? {
-        let buttonSymbolName: [FeatureType : String] = [
-            .fastpass : "wallet.pass",
-            .ticket : "ticket",
-            .schedule : "scroll",
-            .announcement : "megaphone",
-            .wifi : "wifi",
-            .telegram : "paperplane",
-            .im : "bubble.right",
-            .puzzle : "puzzlepiece.extension",
-            .venue : "map",
-            .sponsors : "banknote",
-            .staffs : "person.3"
-        ]
-        return buttonSymbolName[self]
-    }
-}
-
-private extension FeatureModel {
-    var color: Color { feature.color }
-    var symbolName: String? { feature.symbolName }
-}
-
 #if DEBUG
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            MainView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
+        NavigationStack {
+            MainView().environmentObject(OPassAPIViewModel.mock().currentEventAPI!)
         }
     }
 }

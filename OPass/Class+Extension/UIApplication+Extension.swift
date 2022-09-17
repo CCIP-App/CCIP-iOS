@@ -18,7 +18,7 @@ extension UIApplication {
         let window = connectedScenes.first?
             .windows
             .first { $0.isKeyWindow }
-
+        
         return window
     }
     static func topViewController() -> UIViewController? {
