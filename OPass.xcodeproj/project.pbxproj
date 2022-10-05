@@ -1070,7 +1070,7 @@
 			repositoryURL = "https://github.com/malcommac/SwiftDate.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.3.0;
+				minimumVersion = 7.0.0;
 			};
 		};
 		D322F60D27EF4698007EED5D /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
