@@ -47,7 +47,7 @@ final class APIRepo {
     }
 }
 
-// MARK: - Opass APIs
+// MARK: - OPass APIs
 extension APIRepo {
     static func loadEventList() async throws -> [EventTitleModel] {
         guard let url = URL(.eventList) else {
@@ -222,8 +222,4 @@ private extension URLSession {
         decoder.userInfo[.needTransform] = true
         return try decoder.decode(T.self, from: data)
     }
-}
-
-extension CodingUserInfoKey {
-    static let needTransform = CodingUserInfoKey(rawValue: "needTransform")!
 }

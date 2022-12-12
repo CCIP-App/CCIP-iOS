@@ -28,7 +28,7 @@
 		D30D9CC128B3F68C00C1E489 /* Accessories.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D9CBC28B3F68C00C1E489 /* Accessories.swift */; };
 		D30D9CC228B3F68C00C1E489 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D9CBD28B3F68C00C1E489 /* Modifiers.swift */; };
 		D30D9CC328B3F68C00C1E489 /* SlideOverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D9CBE28B3F68C00C1E489 /* SlideOverCard.swift */; };
-		D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314B66E27D1089200481D5E /* EventAPIViewModel.swift */; };
+		D314B66F27D1089200481D5E /* EventAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314B66E27D1089200481D5E /* EventAPI.swift */; };
 		D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D318CE43280918C400CEA1AA /* TruncableText.swift */; };
 		D31900D8281CF07E00864982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D31900D7281CF07E00864982 /* LaunchScreen.storyboard */; };
 		D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60E27EF4698007EED5D /* CodeScanner */; };
@@ -49,6 +49,7 @@
 		D3652A7A2869AF72002AC419 /* AttributedTextImpl+macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A732869AF72002AC419 /* AttributedTextImpl+macOS.swift */; };
 		D3652A7B2869AF72002AC419 /* AttributedTextImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A742869AF72002AC419 /* AttributedTextImpl.swift */; };
 		D3652A7D2869AF72002AC419 /* AttributedTextImpl+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A762869AF72002AC419 /* AttributedTextImpl+iOS.swift */; };
+		D36567442928BECE0021D3CC /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36567432928BECE0021D3CC /* APIManager.swift */; };
 		D366ADC82898413F00F33CEC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366ADC72898413F00F33CEC /* Constants.swift */; };
 		D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366D8EF27ED50CB00AA4267 /* MainView.swift */; };
 		D36A2FD82829F9C500EFBDB1 /* NEHotspot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */; };
@@ -69,7 +70,7 @@
 		D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3C6F60C28634F3B0074B942 /* MarkdownKit */; };
 		D3C6F60F286360FC0074B942 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6F60E286360FC0074B942 /* Markdown.swift */; };
 		D3C972F227F03531008561DE /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C972F127F03531008561DE /* SessionDetailView.swift */; };
-		D3D3788227CE440D00021FC4 /* OPassAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */; };
+		D3D3788227CE440D00021FC4 /* OPassAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788127CE440D00021FC4 /* OPassAPIService.swift */; };
 		D3D3788B27CE542100021FC4 /* MoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788A27CE542100021FC4 /* MoreModels.swift */; };
 		D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789027CE62EB00021FC4 /* EventListView.swift */; };
 		D3D3789327CE70EE00021FC4 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789227CE70EE00021FC4 /* SettingsModel.swift */; };
@@ -142,7 +143,7 @@
 		D30D9CBC28B3F68C00C1E489 /* Accessories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accessories.swift; sourceTree = "<group>"; };
 		D30D9CBD28B3F68C00C1E489 /* Modifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		D30D9CBE28B3F68C00C1E489 /* SlideOverCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOverCard.swift; sourceTree = "<group>"; };
-		D314B66E27D1089200481D5E /* EventAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPIViewModel.swift; sourceTree = "<group>"; };
+		D314B66E27D1089200481D5E /* EventAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPI.swift; sourceTree = "<group>"; };
 		D318CE43280918C400CEA1AA /* TruncableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncableText.swift; sourceTree = "<group>"; };
 		D31900D7281CF07E00864982 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D324EF07286EB9B7004D03D6 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -157,6 +158,7 @@
 		D3652A732869AF72002AC419 /* AttributedTextImpl+macOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+macOS.swift"; sourceTree = "<group>"; };
 		D3652A742869AF72002AC419 /* AttributedTextImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextImpl.swift; sourceTree = "<group>"; };
 		D3652A762869AF72002AC419 /* AttributedTextImpl+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+iOS.swift"; sourceTree = "<group>"; };
+		D36567432928BECE0021D3CC /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D366ADC72898413F00F33CEC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D366D8EF27ED50CB00AA4267 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHotspot.swift; sourceTree = "<group>"; };
@@ -178,7 +180,7 @@
 		D3C6195027CFA9A800643D97 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleView.swift; path = OPass/Views/Tabs/Schedule/ScheduleView.swift; sourceTree = SOURCE_ROOT; };
 		D3C6F60E286360FC0074B942 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
 		D3C972F127F03531008561DE /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
-		D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPIViewModel.swift; sourceTree = "<group>"; };
+		D3D3788127CE440D00021FC4 /* OPassAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPIService.swift; sourceTree = "<group>"; };
 		D3D3788A27CE542100021FC4 /* MoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreModels.swift; sourceTree = "<group>"; };
 		D3D3789027CE62EB00021FC4 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		D3D3789227CE70EE00021FC4 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
@@ -330,8 +332,8 @@
 		D3BAB49C27D2536300ECD44A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				D3D3788127CE440D00021FC4 /* OPassAPIViewModel.swift */,
-				D314B66E27D1089200481D5E /* EventAPIViewModel.swift */,
+				D3D3788127CE440D00021FC4 /* OPassAPIService.swift */,
+				D314B66E27D1089200481D5E /* EventAPI.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -388,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */,
+				D36567432928BECE0021D3CC /* APIManager.swift */,
 				D3BAB49C27D2536300ECD44A /* ViewModels */,
 				D3D3788327CE441200021FC4 /* Models */,
 				D36DC46327D46F6800012D43 /* Additions */,
@@ -690,7 +693,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3602CAC280400D8001D9C15 /* UseScenarioView.swift in Sources */,
-				D3D3788227CE440D00021FC4 /* OPassAPIViewModel.swift in Sources */,
+				D3D3788227CE440D00021FC4 /* OPassAPIService.swift in Sources */,
 				D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */,
 				D3652A772869AF72002AC419 /* AttributedText.swift in Sources */,
 				D3C6194D27CF9A7400643D97 /* SettingsView.swift in Sources */,
@@ -723,6 +726,7 @@
 				D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */,
 				D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */,
 				4F5CA37D27FD58D600DEAB39 /* Color+Extension.swift in Sources */,
+				D36567442928BECE0021D3CC /* APIManager.swift in Sources */,
 				D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */,
 				D3B0B20528BBC4400001B311 /* DevelopersView.swift in Sources */,
 				D3652A792869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift in Sources */,
@@ -734,7 +738,7 @@
 				D3A94D03281E62530053FEFA /* ErrorView.swift in Sources */,
 				D37BC4DA28A57F1B00449482 /* Alerts.swift in Sources */,
 				4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */,
-				D314B66F27D1089200481D5E /* EventAPIViewModel.swift in Sources */,
+				D314B66F27D1089200481D5E /* EventAPI.swift in Sources */,
 				D301C39428053ED600D027FE /* ActivityIndicator.swift in Sources */,
 				D324EF08286EB9B7004D03D6 /* UIApplication+Extension.swift in Sources */,
 				D39512F5285A174F009B9AE8 /* EventEditView.swift in Sources */,

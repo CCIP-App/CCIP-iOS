@@ -40,3 +40,7 @@ protocol TransformFunction {
     
     static func transform(_: FromType) -> ToType
 }
+
+extension CodingUserInfoKey {
+    static let needTransform = CodingUserInfoKey(rawValue: "needTransform")!
+}

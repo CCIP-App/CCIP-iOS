@@ -15,18 +15,20 @@ func loadJson<T: Decodable>(filename: String) -> T {
     
     do {
         let data = try Data(contentsOf: fileURL)
-        return try JSONDecoder().decode(T.self, from: data)
+        let decoder = JSONDecoder()
+        decoder.userInfo[.needTransform] = true
+        return try decoder.decode(T.self, from: data)
     } catch {
         fatalError("Couldn't load \(fileURL.path) and parse it as \(T.self). \nError: \(error)")
     }
 }
 
-extension OPassAPIViewModel {
-    static func mock() -> OPassAPIViewModel {
-        let model = OPassAPIViewModel()
-        model.eventList = loadJson(filename: "eventListSample.json")
-        model.currentEventID = model.eventList[0].event_id
-        let settings = SettingsModel.mock()
+extension OPassAPIService {
+    static func mock() -> OPassAPIService {
+        let model = OPassAPIService()
+        let list: [EventTitleModel] = loadJson(filename: "eventListSample.json")
+        let settings: SettingsModel = loadJson(filename: "eventSettingsSample.json")
+        model.currentEventID = list[0].event_id
         model.currentEventAPI = EventAPIViewModel(settings)
         return model
     }
@@ -34,6 +36,6 @@ extension OPassAPIViewModel {
 
 extension SettingsModel {
     static func mock() -> SettingsModel {
-        return loadJson(filename: "settingsSample.json")
+        return loadJson(filename: "eventSettingsSample.json")
     }
 }

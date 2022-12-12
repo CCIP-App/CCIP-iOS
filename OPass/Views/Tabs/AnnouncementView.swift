@@ -132,7 +132,7 @@ struct AnnouncementView: View {
 struct AnnounceView_Previews: PreviewProvider {
     static var previews: some View {
         AnnouncementView()
-            .environmentObject(OPassAPIViewModel.mock().currentEventAPI!)
+            .environmentObject(OPassAPIService.mock().currentEventAPI!)
     }
 }
 #endif

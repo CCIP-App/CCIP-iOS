@@ -10,9 +10,8 @@ import SwiftUI
 import OSLog
 
 ///Endpoint hold by OPass Official.
-class OPassAPIViewModel: ObservableObject {
+class OPassAPIService: ObservableObject {
     
-    @Published var eventList = [EventTitleModel]()
     @Published var currentEventID: String? = nil
     @Published var currentEventLogo: Image? = nil
     @Published var currentEventAPI: EventAPIViewModel? = nil
@@ -36,7 +35,7 @@ class OPassAPIViewModel: ObservableObject {
     }
 }
 
-extension OPassAPIViewModel {
+extension OPassAPIService {
     func saveEventAPIData() async {
         logger.info("Saving data")
         if let eventAPI = self.currentEventAPI {
@@ -58,14 +57,6 @@ extension OPassAPIViewModel {
             }
         } else {
             logger.notice("No data found, bypass for saving EventAPIData")
-        }
-    }
-    
-    func loadEventList() async throws {
-        logger.info("Loading eventList")
-        let eventList = try await APIRepo.loadEventList()
-        DispatchQueue.main.async {
-            self.eventList = eventList
         }
     }
     

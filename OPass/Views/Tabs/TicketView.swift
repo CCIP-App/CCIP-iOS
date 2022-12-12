@@ -73,7 +73,7 @@ struct TicketView: View {
                         }
                     }
                     
-                    Toggle("AutoAdjustBrightness", isOn: $autoAdjustTicketBirghtness)
+                    Toggle("AutoBrighten", isOn: $autoAdjustTicketBirghtness)
                         .onChange(of: autoAdjustTicketBirghtness) { auto in
                             if auto {
                                 self.defaultBrightness = UIScreen.main.brightness

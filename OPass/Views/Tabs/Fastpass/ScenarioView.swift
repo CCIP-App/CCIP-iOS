@@ -11,6 +11,7 @@ import SwiftDate
 
 struct ScenarioView: View {
     
+    // MARK: - Variables
     @EnvironmentObject var eventAPI: EventAPIViewModel
     @State private var disableAlertString = ""
     @State private var isDisableAlertPresented = false
@@ -18,6 +19,7 @@ struct ScenarioView: View {
     @State private var sheetScenarioDataItem: ScenarioDataModel?
     @Environment(\.colorScheme) var colorScheme
     
+    // MARK: - Views
     var body: some View {
         VStack {
             Form {
@@ -172,7 +174,7 @@ struct FastpassLogoView: View {
 #if DEBUG
 struct ScenarioView_Previews: PreviewProvider {
     static var previews: some View {
-        ScenarioView().environmentObject(OPassAPIViewModel.mock().currentEventAPI!)
+        ScenarioView().environmentObject(OPassAPIService.mock().currentEventAPI!)
     }
 }
 #endif

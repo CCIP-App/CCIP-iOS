@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @EnvironmentObject var OPassAPI: OPassAPIViewModel
+    @EnvironmentObject var OPassAPI: OPassAPIService
     
     var body: some View {
         VStack {
@@ -174,7 +174,7 @@ private struct AdvancedOptionView: View {
     
     @AppStorage("AutoSelectScheduleDay") var autoSelectScheduleDay = true
     private var keyStore = NSUbiquitousKeyValueStore()
-    @EnvironmentObject var OPassAPI: OPassAPIViewModel
+    @EnvironmentObject var OPassAPI: OPassAPIService
     
     var body: some View {
         Form {

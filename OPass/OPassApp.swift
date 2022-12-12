@@ -17,6 +17,7 @@ struct OPassApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @AppStorage("UserInterfaceStyle") var interfaceStyle: UIUserInterfaceStyle = .unspecified
+    @StateObject var OPassAPI = OPassAPIService()
     @State var url: URL? = nil
     
     init() {
@@ -28,6 +29,8 @@ struct OPassApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(url: $url)
+                .preferredColorScheme(.init(interfaceStyle))
+                .environmentObject(OPassAPI)
                 .onOpenURL { url in
                     //It seems that both universal link and custom schemed url from firebase are received via onOpenURL, so we must try parse it in both ways.
                     if DynamicLinks.dynamicLinks().handleUniversalLink(url, completion: { dynamicLink, _ in
@@ -43,7 +46,6 @@ struct OPassApp: App {
                         return
                     }
                 }
-                .preferredColorScheme(.init(interfaceStyle))
         }
     }
 }

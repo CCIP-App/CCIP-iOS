@@ -15,4 +15,8 @@ extension String {
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
+    
+    func notContains<T>(_ other: T) -> Bool where T : StringProtocol {
+        return !self.contains(other)
+    }
 }

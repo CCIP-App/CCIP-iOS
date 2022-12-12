@@ -11,11 +11,13 @@ import OSLog
 
 struct MainView: View {
     
-    @EnvironmentObject var OPassAPI: OPassAPIViewModel
+    // MARK: - Variables
+    @EnvironmentObject var OPassAPI: OPassAPIService
     @EnvironmentObject var eventAPI: EventAPIViewModel
     private let gridItemLayout = Array(repeating: GridItem(spacing: UIScreen.main.bounds.width / 16.56, alignment: .top), count: 4)
     private let logger = Logger(subsystem: "app.opass.ccip", category: "MainView")
     
+    // MARK: - Views
     var body: some View {
         VStack {
             Group {
@@ -143,7 +145,7 @@ private struct TabButton: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            MainView().environmentObject(OPassAPIViewModel.mock().currentEventAPI!)
+            MainView().environmentObject(OPassAPIService.mock().currentEventAPI!)
         }
     }
 }

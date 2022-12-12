@@ -10,15 +10,17 @@ import SwiftUI
 
 struct ContentView: View {
     
+    // MARK: - Variables
     @Binding var url: URL?
     @StateObject var router = Router()
-    @StateObject var OPassAPI = OPassAPIViewModel()
+    @EnvironmentObject var OPassAPI: OPassAPIService
     @State private var isError = false
     @State private var handlingURL = false
     @State private var isEventListPresented = false
     @State private var isHttp403AlertPresented = false
     @State private var isInvalidURLAlertPresented = false
     
+    // MARK: - Views
     var body: some View {
         NavigationStack(path: $router.path) {
             VStack {
@@ -185,7 +187,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(url: .constant(nil))
-            .environmentObject(OPassAPIViewModel.mock())
+            .environmentObject(OPassAPIService.mock())
     }
 }
 #endif

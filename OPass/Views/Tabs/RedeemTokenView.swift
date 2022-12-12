@@ -222,7 +222,7 @@ struct RedeemTokenView: View {
 struct RedeemTokenView_Previews: PreviewProvider {
     static var previews: some View {
         RedeemTokenView()
-            .environmentObject(OPassAPIViewModel.mock().currentEventAPI!)
+            .environmentObject(OPassAPIService.mock().currentEventAPI!)
     }
 }
 #endif

@@ -10,10 +10,12 @@ import SwiftUI
 
 struct FastpassView: View {
     
+    // MARK: - Variables
     @EnvironmentObject var eventAPI: EventAPIViewModel
     @State private var isHttp403AlertPresented = false
     @State private var errorType: String? = nil
     
+    // MARK: - Views
     var body: some View {
         VStack {
             if eventAPI.user_token == nil {
@@ -70,7 +72,7 @@ struct FastpassView: View {
 struct FastpassView_Previews: PreviewProvider {
     static var previews: some View {
         FastpassView()
-            .environmentObject(OPassAPIViewModel.mock().currentEventAPI!)
+            .environmentObject(OPassAPIService.mock().currentEventAPI!)
     }
 }
 #endif
