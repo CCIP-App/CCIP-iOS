@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/4/1.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ import EFQRCode
 
 struct TicketView: View {
     
-    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @EnvironmentObject var EventService: EventService
     @State private var isTokenVisible = false
     @State private var isLogOutAlertPresented = false
     @State private var qrCodeUIImage = UIImage()
@@ -22,7 +22,7 @@ struct TicketView: View {
     
     var body: some View {
         VStack {
-            if let token = eventAPI.user_token {
+            if let token = EventService.user_token {
                 VStack(spacing: 0) {
                     Form {
                         Section() {
@@ -84,21 +84,21 @@ struct TicketView: View {
                         .padding([.bottom, .top], 10)
                         .background(Color("SectionBackgroundColor"))
                 }
-                .task { try? await eventAPI.loadScenarioStatus() }
+                .task { try? await EventService.loadScenarioStatus() }
             } else {
                 RedeemTokenView()
             }
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if let displayText = eventAPI.settings.feature(ofType: .ticket)?.display_text {
+            if let displayText = EventService.settings.feature(ofType: .ticket)?.display_text {
                 ToolbarItem(placement: .principal) {
                     Text(displayText.localized()).font(.headline)
                 }
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
-                if eventAPI.user_token != nil {
+                if EventService.user_token != nil {
                     Button(action: {
                         isLogOutAlertPresented.toggle()
                     }) { Text(LocalizedStringKey("SignOut")).foregroundColor(.red) }
@@ -107,7 +107,7 @@ struct TicketView: View {
         }
         .alert("ConfirmSignOut", isPresented: $isLogOutAlertPresented) {
             Button("SignOut", role: .destructive) {
-                self.eventAPI.signOut()
+                self.EventService.signOut()
             }
             Button("Cancel", role: .cancel) { }
         }

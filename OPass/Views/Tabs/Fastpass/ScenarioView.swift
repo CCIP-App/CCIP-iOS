@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/5.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import SwiftUI
@@ -12,7 +12,7 @@ import SwiftDate
 struct ScenarioView: View {
     
     // MARK: - Variables
-    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @EnvironmentObject var EventService: EventService
     @State private var disableAlertString = ""
     @State private var isDisableAlertPresented = false
     @State private var isLogOutAlertPresented = false
@@ -27,9 +27,9 @@ struct ScenarioView: View {
                     .frame(height: UIScreen.main.bounds.width * 0.4)
                     .listRowBackground(Color.transparent)
                 
-                ForEach(eventAPI.scenario_status?.scenarios.sectionID ?? [], id: \.self) { sectionID in
+                ForEach(EventService.scenario_status?.scenarios.sectionID ?? [], id: \.self) { sectionID in
                     Section(header: Text(sectionID)) {
-                        ForEach(eventAPI.scenario_status?.scenarios.sectionData[sectionID] ?? [], id: \.self) { scenario in
+                        ForEach(EventService.scenario_status?.scenarios.sectionData[sectionID] ?? [], id: \.self) { scenario in
                             Button {
                                 if scenario.used == nil {
                                     if let errorText = scenario.disabled {
@@ -68,7 +68,7 @@ struct ScenarioView: View {
         }
         .alert("ConfirmSignOut", isPresented: $isLogOutAlertPresented) {
             Button(String(localized: "SignOut"), role: .destructive) {
-                eventAPI.signOut()
+                EventService.signOut()
             }
             Button(String(localized: "Cancel"), role: .cancel) { }
         }
@@ -149,19 +149,19 @@ struct ScenarioView: View {
 
 struct FastpassLogoView: View {
     
-    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @EnvironmentObject var EventService: EventService
     
     var body: some View {
         HStack {
             Spacer()
-            if let logo = eventAPI.logo {
+            if let logo = EventService.logo {
                 logo
                     .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(Color("LogoColor"))
             } else {
-                Text(eventAPI.display_name.localized())
+                Text(EventService.display_name.localized())
                     .font(.system(.largeTitle, design: .rounded))
                     .fontWeight(.medium)
                     .foregroundColor(Color("LogoColor"))
@@ -174,7 +174,7 @@ struct FastpassLogoView: View {
 #if DEBUG
 struct ScenarioView_Previews: PreviewProvider {
     static var previews: some View {
-        ScenarioView().environmentObject(OPassAPIService.mock().currentEventAPI!)
+        ScenarioView().environmentObject(OPassService.mock().currentEventAPI!)
     }
 }
 #endif

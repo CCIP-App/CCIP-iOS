@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/4/11.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ import SwiftUI
 struct UseScenarioView: View {
     
     let scenario: ScenarioDataModel
-    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @EnvironmentObject var EventService: EventService
     @State private var viewStage = 0
     @State private var isHttp403AlertPresented = false
     @State private var usedTime: TimeInterval = 0
@@ -72,7 +72,7 @@ struct UseScenarioView: View {
                 self.viewStage = 1
                 Task {
                     do {
-                        if try await eventAPI.useScenario(scenario: scenario.id) {
+                        if try await EventService.useScenario(scenario: scenario.id) {
                             self.usedTime = Date().timeIntervalSince1970
                             self.viewStage = 2
                         } else { self.viewStage = 3 }

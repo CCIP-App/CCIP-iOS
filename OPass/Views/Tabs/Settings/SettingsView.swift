@@ -3,14 +3,14 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/2.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import SwiftUI
 
 struct SettingsView: View {
     
-    @EnvironmentObject var OPassAPI: OPassAPIService
+    @EnvironmentObject var OPassService: OPassService
     
     var body: some View {
         VStack {
@@ -174,7 +174,7 @@ private struct AdvancedOptionView: View {
     
     @AppStorage("AutoSelectScheduleDay") var autoSelectScheduleDay = true
     private var keyStore = NSUbiquitousKeyValueStore()
-    @EnvironmentObject var OPassAPI: OPassAPIService
+    @EnvironmentObject var OPassService: OPassService
     
     var body: some View {
         Form {

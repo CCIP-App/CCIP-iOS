@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/1.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import SwiftUI
@@ -12,7 +12,7 @@ import OSLog
 struct EventListView: View {
     
     // MARK: - Variables
-    @EnvironmentObject private var OPassAPI: OPassAPIService
+    @EnvironmentObject private var OPassService: OPassService
     @StateObject private var viewModel = EventListViewModel()
     @Environment(\.dismiss) var dismiss
     
@@ -30,7 +30,7 @@ struct EventListView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { toolbar }
         }
-        .interactiveDismissDisabled(OPassAPI.currentEventID == nil)
+        .interactiveDismissDisabled(OPassService.currentEventID == nil)
     }
     
     var list: some View {
@@ -54,7 +54,7 @@ struct EventListView: View {
     var toolbar: some ToolbarContent {
         Group {
             ToolbarItem(placement: .navigationBarLeading) {
-                if OPassAPI.currentEventAPI != nil {
+                if OPassService.currentEventAPI != nil {
                     Button(LocalizedStringKey("Close")) {
                         dismiss()
                     }
@@ -73,7 +73,7 @@ struct EventListView: View {
 private struct EventRow: View {
     let event: EventTitleModel
     
-    @EnvironmentObject var OPassAPI: OPassAPIService
+    @EnvironmentObject var OPassService: OPassService
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @State private var preloadLogoImage: Image? = nil
@@ -81,8 +81,8 @@ private struct EventRow: View {
     private let logger = Logger(subsystem: "app.opass.ccip", category: "EventListView")
     var body: some View {
         Button {
-            OPassAPI.currentEventID = event.event_id
-            OPassAPI.currentEventLogo = preloadLogoImage
+            OPassService.currentEventID = event.event_id
+            OPassService.currentEventLogo = preloadLogoImage
             dismiss()
         } label: {
             HStack {
@@ -175,7 +175,7 @@ private class EventListViewModel: ObservableObject {
 struct EventListView_Previews: PreviewProvider {
     static var previews: some View {
         EventListView()
-            .environmentObject(OPassAPIService.mock())
+            .environmentObject(OPassService.mock())
     }
 }
 #endif

@@ -3,14 +3,14 @@
 //  OPass
 //
 //  Created by secminhr on 2022/3/5.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import SwiftUI
 
 struct AnnouncementView: View {
     
-    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @EnvironmentObject var EventService: EventService
     @State private var isHttp403AlertPresented = false
     @State private var errorType: String? = nil
     @Environment(\.colorScheme) var colorScheme
@@ -18,7 +18,7 @@ struct AnnouncementView: View {
     var body: some View {
         VStack {
             if errorType == nil {
-                if let announcements = eventAPI.announcements {
+                if let announcements = EventService.announcements {
                     if announcements.isNotEmpty {
                         List(announcements, id: \.datetime) { announcement in
                             Button {
@@ -50,14 +50,14 @@ struct AnnouncementView: View {
                         }
                         .refreshable{
                             do {
-                                try await eventAPI.loadAnnouncements()
+                                try await EventService.loadAnnouncements()
                             } catch APIRepo.LoadError.http403Forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
                         }
                         .task{
                             do {
-                                try await eventAPI.loadAnnouncements()
+                                try await EventService.loadAnnouncements()
                             } catch APIRepo.LoadError.http403Forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
@@ -74,14 +74,14 @@ struct AnnouncementView: View {
                         }
                         .refreshable{
                             do {
-                                try await eventAPI.loadAnnouncements()
+                                try await EventService.loadAnnouncements()
                             } catch APIRepo.LoadError.http403Forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
                         }
                         .task{
                             do {
-                                try await eventAPI.loadAnnouncements()
+                                try await EventService.loadAnnouncements()
                             } catch APIRepo.LoadError.http403Forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
@@ -90,7 +90,7 @@ struct AnnouncementView: View {
                 } else {
                     ProgressView("Loading")
                         .task {
-                            do { try await self.eventAPI.loadAnnouncements() }
+                            do { try await self.EventService.loadAnnouncements() }
                             catch APIRepo.LoadError.http403Forbidden {
                                 self.isHttp403AlertPresented = true
                                 self.errorType = "http403"
@@ -111,7 +111,7 @@ struct AnnouncementView: View {
         .listStyle(.insetGrouped)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if let displayText = eventAPI.settings.feature(ofType: .announcement)?.display_text {
+            if let displayText = EventService.settings.feature(ofType: .announcement)?.display_text {
                 ToolbarItem(placement: .principal) {
                     Text(displayText.localized()).font(.headline)
                 }
@@ -120,7 +120,7 @@ struct AnnouncementView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 SFButton(systemName: "arrow.clockwise") {
                     self.errorType = nil
-                    self.eventAPI.announcements = nil
+                    self.EventService.announcements = nil
                 }
             }
         }
@@ -132,7 +132,7 @@ struct AnnouncementView: View {
 struct AnnounceView_Previews: PreviewProvider {
     static var previews: some View {
         AnnouncementView()
-            .environmentObject(OPassAPIService.mock().currentEventAPI!)
+            .environmentObject(OPassService.mock().currentEventAPI!)
     }
 }
 #endif

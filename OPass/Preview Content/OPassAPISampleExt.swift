@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by secminhr on 2022/3/2.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import Foundation
@@ -23,13 +23,13 @@ func loadJson<T: Decodable>(filename: String) -> T {
     }
 }
 
-extension OPassAPIService {
-    static func mock() -> OPassAPIService {
-        let model = OPassAPIService()
+extension OPassService {
+    static func mock() -> OPassService {
+        let model = OPassService()
         let list: [EventTitleModel] = loadJson(filename: "eventListSample.json")
         let settings: SettingsModel = loadJson(filename: "eventSettingsSample.json")
         model.currentEventID = list[0].event_id
-        model.currentEventAPI = EventAPIViewModel(settings)
+        model.currentEventAPI = EventService(settings)
         return model
     }
 }

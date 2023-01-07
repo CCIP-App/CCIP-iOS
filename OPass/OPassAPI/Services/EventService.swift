@@ -1,17 +1,16 @@
 //
-//  EventViewModel.swift
+//  EventService.swift
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/3.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import SwiftUI
 import KeychainAccess
 import OSLog
 
-///Endpoint hold by each Event Organization or hold by OPass Official but switch by Event Organization.
-class EventAPIViewModel: ObservableObject {
+class EventService: ObservableObject {
     
     init(
         _ settings: SettingsModel,
@@ -73,7 +72,7 @@ class EventAPIViewModel: ObservableObject {
 }
 
 
-extension EventAPIViewModel {
+extension EventService {
     ///Return bool to indicate success or not
     func useScenario(scenario: String) async throws -> Bool{
         @Feature(.fastpass, in: settings) var fastpassFeature
@@ -272,7 +271,7 @@ extension String {
     }
 }
 
-// MARK: - Codable EventAPIViewModel
+// MARK: - Codable EventService
 class CodableEventAPIVM: Codable {
     init(event_id: String,
          display_name: DisplayTextModel,

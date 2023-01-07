@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/5.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import SwiftUI
@@ -12,7 +12,7 @@ import CodeScanner
 
 struct RedeemTokenView: View {
     
-    @EnvironmentObject var eventAPI: EventAPIViewModel
+    @EnvironmentObject var EventService: EventService
     @State private var token: String = ""
     @State private var isCameraSOCPresented = false
     @State private var isManuallySOCPresented = false
@@ -149,7 +149,7 @@ struct RedeemTokenView: View {
                     self.isManuallySOCPresented = false
                     Task {
                         do {
-                            self.isInvaildTokenAlertPresented = !(try await eventAPI.redeemToken(token: token))
+                            self.isInvaildTokenAlertPresented = !(try await EventService.redeemToken(token: token))
                         } catch APIRepo.LoadError.http403Forbidden {
                             self.isHttp403AlertPresented = true
                         } catch {
@@ -176,7 +176,7 @@ struct RedeemTokenView: View {
                       let token = feature.first?.messageString
                 else { self.isNoQRCodeAlertPresented = true; return }
                 do {
-                    let result = try await eventAPI.redeemToken(token: token)
+                    let result = try await EventService.redeemToken(token: token)
                     self.isInvaildTokenAlertPresented = !result
                 } catch APIRepo.LoadError.http403Forbidden {
                     self.isHttp403AlertPresented = true
@@ -191,7 +191,7 @@ struct RedeemTokenView: View {
         case .success(let result):
             Task {
                 do {
-                    let result = try await eventAPI.redeemToken(token: result.string)
+                    let result = try await EventService.redeemToken(token: result.string)
                     DispatchQueue.main.async {
                         self.isInvaildTokenAlertPresented = !result
                     }
@@ -222,7 +222,7 @@ struct RedeemTokenView: View {
 struct RedeemTokenView_Previews: PreviewProvider {
     static var previews: some View {
         RedeemTokenView()
-            .environmentObject(OPassAPIService.mock().currentEventAPI!)
+            .environmentObject(OPassService.mock().currentEventAPI!)
     }
 }
 #endif

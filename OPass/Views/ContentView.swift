@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/2/28.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import SwiftUI
@@ -13,8 +13,8 @@ struct ContentView: View {
     // MARK: - Variables
     @Binding var url: URL?
     @StateObject var router = Router()
-    @EnvironmentObject var OPassAPI: OPassAPIService
-    @State private var isError = false
+    @EnvironmentObject var OPassService: OPassService
+    @State private var error: Error? = nil
     @State private var handlingURL = false
     @State private var isEventListPresented = false
     @State private var isHttp403AlertPresented = false
@@ -24,45 +24,40 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $router.path) {
             VStack {
-                if !isError {
-                    if OPassAPI.currentEventID == nil {
-                        VStack {}
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .onAppear {
-                                self.isEventListPresented = true
+                switch viewState {
+                case .ready(let EventService):
+                    MainView()
+                        .environmentObject(EventService)
+                        .navigationDestination(for: Router.mainDestination.self) { destination in
+                            switch destination {
+                            case .fastpass:                FastpassView().environmentObject(EventService)
+                            case .schedule:                ScheduleView(EventService: EventService)
+                            case .sessionDetail(let data): SessionDetailView(data).environmentObject(EventService)
+                            case .ticket:                  TicketView().environmentObject(EventService)
+                            case .announcement:            AnnouncementView().environmentObject(EventService)
                             }
-                    } else if OPassAPI.currentEventID != OPassAPI.currentEventAPI?.event_id {
-                        ProgressView("Loading")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .task {
-                                do { try await OPassAPI.loadCurrentEventAPI() }
-                                catch { self.isError = true }
+                        }
+                case .loading:
+                    ProgressView("Loading")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .task {
+                            await OPassService.loadCurrentEventAPI { error in
+                                self.error = error
                             }
-                    } else if let eventAPI = OPassAPI.currentEventAPI {
-                        MainView()
-                            .environmentObject(eventAPI)
-                            .navigationDestination(for: Router.mainDestination.self) { destination in
-                                switch destination {
-                                case .fastpass:                FastpassView().environmentObject(eventAPI)
-                                case .schedule:                ScheduleView(eventAPI: eventAPI)
-                                case .sessionDetail(let data): SessionDetailView(data).environmentObject(eventAPI)
-                                case .ticket:                  TicketView().environmentObject(eventAPI)
-                                case .announcement:            AnnouncementView().environmentObject(eventAPI)
-                                }
-                            }
-                            
-                    } else {
-                        VStack {} // Unknown status
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .onAppear { self.isError = true }
-                    }
-                } else {
+                        }
+                case .empty:
+                    VStack {}
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .onAppear {
+                            self.isEventListPresented = true
+                        }
+                case .error:
                     ErrorWithRetryView {
-                        self.isError = false
+                        self.error = nil
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .onChange(of: OPassAPI.currentEventID) { _ in
-                        self.isError = false
+                    .onChange(of: OPassService.currentEventID) { _ in
+                        self.error = nil
                     }
                 }
             }
@@ -75,9 +70,7 @@ struct ContentView: View {
                 case .developers: DevelopersView()
                 }
             }
-            .sheet(isPresented: $isEventListPresented) {
-                EventListView()
-            }
+            .sheet(isPresented: $isEventListPresented) { EventListView() }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     SFButton(systemName: "rectangle.stack") {
@@ -87,9 +80,9 @@ struct ContentView: View {
                 
                 ToolbarItem(placement: .principal) {
                     VStack {
-                        Text(OPassAPI.currentEventAPI?.display_name.localized() ?? "OPass")
+                        Text(OPassService.currentEventAPI?.display_name.localized() ?? "OPass")
                             .font(.headline)
-                        if let userId = OPassAPI.currentEventAPI?.user_id, userId != "nil" {
+                        if let userId = OPassService.currentEventAPI?.user_id, userId != "nil" {
                             Text(userId)
                                 .font(.caption)
                                 .foregroundColor(.gray)
@@ -105,7 +98,7 @@ struct ContentView: View {
             }
         }
         .environmentObject(router)
-        .environmentObject(OPassAPI)
+        .environmentObject(OPassService)
         .overlay {
             if self.url != nil {
                 ProgressView("LOGGINGIN")
@@ -116,7 +109,7 @@ struct ContentView: View {
                     .alert("InvalidURL", isPresented: $isInvalidURLAlertPresented) {
                         Button("OK", role: .cancel) {
                             self.url = nil
-                            if OPassAPI.currentEventAPI == nil {
+                            if OPassService.currentEventAPI == nil {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                     self.isEventListPresented = true
                                 }
@@ -127,7 +120,7 @@ struct ContentView: View {
                     }
                     .http403Alert(title: "CouldntVerifiyYourIdentity", isPresented: $isHttp403AlertPresented) {
                         self.url = nil
-                        if OPassAPI.currentEventAPI == nil {
+                        if OPassService.currentEventAPI == nil {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                 self.isEventListPresented = true
                             }
@@ -139,6 +132,7 @@ struct ContentView: View {
         }
     }
     
+    // MARK: Functions
     private func parseUniversalLinkAndURL(_ url: URL) async {
         let params = URLComponents(string: "?" + (url.query ?? ""))?.queryItems
         
@@ -151,8 +145,8 @@ struct ContentView: View {
         }
         
         DispatchQueue.main.async {
-            OPassAPI.currentEventID = eventId
-            if eventId != OPassAPI.currentEventAPI?.event_id { OPassAPI.currentEventLogo = nil }
+            OPassService.currentEventID = eventId
+            if eventId != OPassService.currentEventAPI?.event_id { OPassService.currentEventLogo = nil }
         }
         
         // Login
@@ -164,9 +158,9 @@ struct ContentView: View {
         }
         
         do {
-            if try await OPassAPI.loginCurrentEvent(withToken: token) {
+            if try await OPassService.loginCurrentEvent(withToken: token) {
                 DispatchQueue.main.async { self.url = nil }
-                await OPassAPI.currentEventAPI?.loadLogos()
+                await OPassService.currentEventAPI?.loadLogos()
                 return
             }
         } catch APIRepo.LoadError.http403Forbidden {
@@ -183,11 +177,28 @@ struct ContentView: View {
     }
 }
 
+// MARK: ViewState
+extension ContentView {
+    private enum ViewState {
+        case ready(EventService)
+        case loading
+        case empty //Landing page?
+        case error
+    }
+    
+    private var viewState: ViewState {
+        guard error == nil else { return .error }
+        guard let eventID = OPassService.currentEventID else { return .empty }
+        guard let EventService = OPassService.currentEventAPI, eventID == EventService.event_id else { return .loading }
+        return .ready(EventService)
+    }
+}
+
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(url: .constant(nil))
-            .environmentObject(OPassAPIService.mock())
+            .environmentObject(OPassService.mock())
     }
 }
 #endif
