@@ -41,7 +41,7 @@ struct ContentView: View {
                     ProgressView("Loading")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .task {
-                            await OPassService.loadCurrentEventAPI { error in
+                            await OPassService.loadEvent { error in
                                 self.error = error
                             }
                         }
@@ -132,7 +132,7 @@ struct ContentView: View {
         }
     }
     
-    // MARK: Functions
+    // MARK: - Functions
     private func parseUniversalLinkAndURL(_ url: URL) async {
         let params = URLComponents(string: "?" + (url.query ?? ""))?.queryItems
         
@@ -158,7 +158,7 @@ struct ContentView: View {
         }
         
         do {
-            if try await OPassService.loginCurrentEvent(withToken: token) {
+            if try await OPassService.loginCurrentEvent(with: token) {
                 DispatchQueue.main.async { self.url = nil }
                 await OPassService.currentEventAPI?.loadLogos()
                 return

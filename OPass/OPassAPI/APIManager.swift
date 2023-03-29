@@ -29,10 +29,10 @@ class APIManager {
             }
         }
     }
-    enum APIError: Error, LocalizedError {
+    enum Error: Swift.Error, LocalizedError {
         case invaildUrl(String)
-        case fetchFaild(Error)
-        case decodeFaild(Error)
+        case fetchFaild(Swift.Error)
+        case decodeFaild(Swift.Error)
         case uncorrectFeature(String)
         case missedUrl(FeatureType)
         case forbidden
@@ -51,17 +51,17 @@ class APIManager {
 }
 
 extension APIManager {
-    func fetchEvents(completion: @MainActor @escaping (Result<[EventTitleModel], APIError>) -> Void) async {
+    func fetchEvents(completion: @MainActor @escaping (Result<[EventTitleModel], Error>) -> Void) async {
         return await fetch(from: .events, type: [EventTitleModel].self, completion: completion)
     }
     
-    func fetchConfig(for id: String, completion: @MainActor @escaping (Result<SettingsModel, APIError>) -> Void) async {
+    func fetchConfig(for id: String, completion: @MainActor @escaping (Result<SettingsModel, Error>) -> Void) async {
         return await fetch(from: .config(id), type: SettingsModel.self, completion: completion)
     }
 }
 
 extension APIManager {
-    func fetchAnnouncement(@Feature(.announcement) from feature: FeatureModel?, with token: String?, completion: @MainActor @escaping (Result<[AnnouncementModel], APIError>) -> Void) async {
+    func fetchAnnouncement(@Feature(.announcement) from feature: FeatureModel?, with token: String?, completion: @MainActor @escaping (Result<[AnnouncementModel], Error>) -> Void) async {
         guard let feature = feature else {
             return await completion(.failure(.uncorrectFeature("announcement")))
         }
@@ -71,7 +71,7 @@ extension APIManager {
         return await fetch(from: .announcement(baseUrl, token), type: [AnnouncementModel].self, completion: completion)
     }
     
-    func fetchStatus(@Feature(.fastpass) from feature: FeatureModel?, with token: String, completion: @MainActor @escaping (Result<ScenarioStatusModel, APIError>) -> Void) async {
+    func fetchStatus(@Feature(.fastpass) from feature: FeatureModel?, with token: String, completion: @MainActor @escaping (Result<ScenarioStatusModel, Error>) -> Void) async {
         guard let feature = feature else {
             return await completion(.failure(.uncorrectFeature("fastpass")))
         }
@@ -81,7 +81,7 @@ extension APIManager {
         return await fetch(from: .status(baseUrl, token), type: ScenarioStatusModel.self, completion: completion)
     }
     
-    func fetchStatus(@Feature(.fastpass) from feature: FeatureModel?, using scenario: String, with token: String, completion: @MainActor @escaping (Result<ScenarioStatusModel, APIError>) -> Void) async {
+    func fetchStatus(@Feature(.fastpass) from feature: FeatureModel?, using scenario: String, with token: String, completion: @MainActor @escaping (Result<ScenarioStatusModel, Error>) -> Void) async {
         guard let feature = feature else {
             return await completion(.failure(.uncorrectFeature("fastpass")))
         }
@@ -93,15 +93,15 @@ extension APIManager {
 }
 
 extension APIManager {
-    func fetchData(from endpoint: String, completion: @MainActor @escaping (Result<Data, APIError>) -> Void) async {
+    func fetchData(from endpoint: String, completion: @MainActor @escaping (Result<Data, Error>) -> Void) async {
         return await fetch(from: endpoint, type: Data.self, completion: completion)
     }
     
-    func fetch<T: Decodable>(from endpoint: CCIPEndpoint, type: T.Type, completion: @MainActor @escaping (Result<T, APIError>) -> Void) async {
+    func fetch<T: Decodable>(from endpoint: CCIPEndpoint, type: T.Type, completion: @MainActor @escaping (Result<T, Error>) -> Void) async {
         return await fetch(from: endpoint.url, type: type, completion: completion)
     }
     
-    func fetch<T: Decodable>(from endpoint: String, type: T.Type, completion: @MainActor @escaping (Result<T, APIError>) -> Void) async {
+    func fetch<T: Decodable>(from endpoint: String, type: T.Type, completion: @MainActor @escaping (Result<T, Error>) -> Void) async {
         guard let url = URLComponents(string: endpoint)?.url else {
             return await completion(.failure(.invaildUrl(endpoint)))
         }

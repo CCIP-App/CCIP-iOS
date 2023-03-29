@@ -14,7 +14,7 @@ class OPassService: ObservableObject {
     @Published var currentEventID: String? = nil
     @Published var currentEventLogo: Image? = nil
     @Published var currentEventAPI: EventService? = nil
-    private var eventAPITemporaryData: CodableEventAPIVM? = nil
+    private var eventAPITemporaryData: CodableEventService? = nil
     private var keyStore = NSUbiquitousKeyValueStore()
     private let logger = Logger(subsystem: "app.opass.ccip", category: "OPassService")
     
@@ -22,7 +22,7 @@ class OPassService: ObservableObject {
         keyStore.synchronize()
         if let data = keyStore.data(forKey: "EventAPI") {
             do {
-                let eventAPIData = try JSONDecoder().decode(CodableEventAPIVM.self, from: data)
+                let eventAPIData = try JSONDecoder().decode(CodableEventService.self, from: data)
                 self.eventAPITemporaryData = eventAPIData
                 self.currentEventID = eventAPIData.event_id
             } catch {
@@ -39,7 +39,7 @@ extension OPassService {
         logger.info("Saving data")
         if let EventService = self.currentEventAPI {
             do {
-                let data = try JSONEncoder().encode(CodableEventAPIVM(
+                let data = try JSONEncoder().encode(CodableEventService(
                     event_id: EventService.event_id,
                     display_name: EventService.display_name,
                     logo_url: EventService.logo_url,
@@ -59,7 +59,7 @@ extension OPassService {
         }
     }
     
-    func loadCurrentEventAPI(errorCallback: @MainActor @escaping (Error) -> Void) async {
+    func loadEvent(_ errorCallback: @MainActor @escaping (APIManager.Error) -> Void) async {
         if let eventId = currentEventID {
             await APIManager.shared.fetchConfig(for: eventId) { result in
                 switch result {
@@ -105,7 +105,7 @@ extension OPassService {
         }
     }
     
-    func loginCurrentEvent(withToken token: String) async throws -> Bool {
+    func loginCurrentEvent(with token: String) async throws -> Bool {
         guard let eventId = self.currentEventID else { return false }
         do {
             if eventId == currentEventAPI?.event_id {

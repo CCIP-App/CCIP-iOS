@@ -16,7 +16,7 @@ class EventService: ObservableObject {
         _ settings: SettingsModel,
         logo_data: Data? = nil,
         saveData: @escaping () async -> Void = {},
-        tmpData: CodableEventAPIVM? = nil
+        tmpData: CodableEventService? = nil
     ) {
         self.event_id = settings.event_id
         self.display_name = settings.display_name
@@ -61,7 +61,7 @@ class EventService: ObservableObject {
         }
     }
     
-    private var eventAPITmpData: CodableEventAPIVM? = nil
+    private var eventAPITmpData: CodableEventService? = nil
     private let logger = Logger(subsystem: "app.opass.ccip", category: "EventAPI")
     private let keychain = Keychain(service: "app.opass.ccip-token").synchronizable(true)
     
@@ -115,6 +115,19 @@ extension EventService {
         guard let fastpassFeature = fastpassFeature else {
             logger.critical("Can't find correct fastpass feature")
             return false
+        }
+        
+        await APIManager.shared.fetchStatus(from: fastpassFeature, with: token) { result in
+            switch result {
+            case .success(let scenarioStatus):
+                Constants.sendTag("\(scenarioStatus.event_id)\(scenarioStatus.role)", value: "\(scenarioStatus.token)")
+                self.scenario_status = scenarioStatus
+                self.user_token = token
+                self.user_role = scenarioStatus.role
+                Task{ await self.save() }
+            case .failure(let error):
+                break
+            }
         }
         
         do {
@@ -272,7 +285,7 @@ extension String {
 }
 
 // MARK: - Codable EventService
-class CodableEventAPIVM: Codable {
+class CodableEventService: Codable {
     init(event_id: String,
          display_name: DisplayTextModel,
          logo_url: String,
