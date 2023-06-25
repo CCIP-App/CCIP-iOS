@@ -3,23 +3,15 @@
 //  OPass
 //
 //  Created by secminhr on 2022/3/4.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import Foundation
-import SwiftDate
 import OSLog
 
 final class APIRepo {
     private static let logger = Logger(subsystem: "app.opass.ccip", category: "APIRepo")
-    enum LoadError: Error {
-        case invalidURL(url: URLs)
-        case dataFetchingFailed(cause: Error)
-        case missingURL(feature: FeatureModel)
-        case invalidDateString(String)
-        case noCorrectFeatureFound
-        case http403Forbidden
-    }
+    
     enum URLs {
         case eventList
         case settings(String)
@@ -45,9 +37,19 @@ final class APIRepo {
             }
         }
     }
+    
+    enum LoadError: Error, LocalizedError {
+        case invalidURL(url: URLs)
+        case fetchFaild(cause: Error)
+        case missingURL(feature: FeatureModel)
+        case noCorrectFeatureFound
+        case forbidden
+        
+        
+    }
 }
 
-// MARK: - Opass APIs
+// MARK: - OPass APIs
 extension APIRepo {
     static func loadEventList() async throws -> [EventTitleModel] {
         guard let url = URL(.eventList) else {
@@ -60,7 +62,7 @@ extension APIRepo {
         } catch {
             logger.error("EventList Data Error: \(error.localizedDescription)")
             if error is LoadError { throw error }
-            throw LoadError.dataFetchingFailed(cause: error)
+            throw LoadError.fetchFaild(cause: error)
         }
     }
     
@@ -75,7 +77,7 @@ extension APIRepo {
         } catch {
             logger.error("Settings Data Error: \(error.localizedDescription)")
             if error is LoadError { throw error }
-            throw LoadError.dataFetchingFailed(cause: error)
+            throw LoadError.fetchFaild(cause: error)
         }
     }
 }
@@ -104,7 +106,7 @@ extension APIRepo {
         } catch {
             logger.error("Invaild ScenarioUse or AccessToken Error: \(error.localizedDescription)")
             if error is LoadError { throw error }
-            throw LoadError.dataFetchingFailed(cause: error)
+            throw LoadError.fetchFaild(cause: error)
         }
     }
     
@@ -130,7 +132,7 @@ extension APIRepo {
         } catch {
             logger.error("ScenarioStatus Data or AccessToken Error: \(error.localizedDescription)")
             if error is LoadError { throw error }
-            throw LoadError.dataFetchingFailed(cause: error)
+            throw LoadError.fetchFaild(cause: error)
         }
     }
     
@@ -146,7 +148,7 @@ extension APIRepo {
         } catch {
             logger.error("Logo Data Error: \(error.localizedDescription)")
             if error is LoadError { throw error }
-            throw LoadError.dataFetchingFailed(cause: error)
+            throw LoadError.fetchFaild(cause: error)
         }
     }
     
@@ -172,7 +174,7 @@ extension APIRepo {
         } catch {
             logger.error("Schedule Data Error: \(error.localizedDescription)")
             if error is LoadError { throw error }
-            throw LoadError.dataFetchingFailed(cause: error)
+            throw LoadError.fetchFaild(cause: error)
         }
     }
     
@@ -198,7 +200,7 @@ extension APIRepo {
         } catch {
             logger.error("Announcement Data Error: \(error.localizedDescription)")
             if error is LoadError { throw error }
-            throw LoadError.dataFetchingFailed(cause: error)
+            throw LoadError.fetchFaild(cause: error)
         }
     }
 }
@@ -214,7 +216,7 @@ private extension URLSession {
         let (data, response) = try await self.data(from: url)
         if let resp = response as? HTTPURLResponse {
             switch resp.statusCode {
-            case 403: throw APIRepo.LoadError.http403Forbidden
+            case 403: throw APIRepo.LoadError.forbidden
             default: break
             }
         }
@@ -222,8 +224,4 @@ private extension URLSession {
         decoder.userInfo[.needTransform] = true
         return try decoder.decode(T.self, from: data)
     }
-}
-
-extension CodingUserInfoKey {
-    static let needTransform = CodingUserInfoKey(rawValue: "needTransform")!
 }

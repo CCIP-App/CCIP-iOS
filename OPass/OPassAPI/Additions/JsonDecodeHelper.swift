@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by secminhr on 2022/3/5.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import Foundation
@@ -39,4 +39,8 @@ protocol TransformFunction {
     associatedtype ToType: Codable, Hashable
     
     static func transform(_: FromType) -> ToType
+}
+
+extension CodingUserInfoKey {
+    static let needTransform = CodingUserInfoKey(rawValue: "needTransform")!
 }

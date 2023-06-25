@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/6.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import SwiftUI
@@ -54,7 +54,7 @@ struct WiFiView: View {
 //#if DEBUG
 //struct WiFiView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        WiFiView(eventAPI: OPassAPIViewModel.mock().eventList[5])
+//        WiFiView(EventService: OPassService.mock().eventList[5])
 //    }
 //}
 //#endif

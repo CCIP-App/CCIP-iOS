@@ -16,7 +16,7 @@
 "Token" = "Token";
 "CopyToken" = "Copy Token";
 "TicketWarningContent" = "Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths.";
-"AutoAdjustBrightness" = "Auto-Adjust Brightness";
+"AutoBrighten" = "Auto-Brighten";
 "EmptyAnnouncement" = "Empty Announcement";
 "Type" = "Type";
 "Types" = "Types";

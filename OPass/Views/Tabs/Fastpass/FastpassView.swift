@@ -3,36 +3,38 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/25.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import SwiftUI
 
 struct FastpassView: View {
     
-    @EnvironmentObject var eventAPI: EventAPIViewModel
+    // MARK: - Variables
+    @EnvironmentObject var EventService: EventService
     @State private var isHttp403AlertPresented = false
     @State private var errorType: String? = nil
     
+    // MARK: - Views
     var body: some View {
         VStack {
-            if eventAPI.user_token == nil {
+            if EventService.user_token == nil {
                 RedeemTokenView()
             } else {
                 if errorType == nil {
-                    if eventAPI.scenario_status != nil {
+                    if EventService.scenario_status != nil {
                         ScenarioView()
                             .task {
-                                do { try await eventAPI.loadScenarioStatus() }
-                                catch APIRepo.LoadError.http403Forbidden {
+                                do { try await EventService.loadScenarioStatus() }
+                                catch APIRepo.LoadError.forbidden {
                                     self.isHttp403AlertPresented = true
                                 } catch {}
                             }
                     } else {
                         ProgressView("Loading")
                             .task {
-                                do { try await eventAPI.loadScenarioStatus() }
-                                catch APIRepo.LoadError.http403Forbidden {
+                                do { try await EventService.loadScenarioStatus() }
+                                catch APIRepo.LoadError.forbidden {
                                     self.errorType = "http403"
                                 }
                                 catch { self.errorType = "unknown" }
@@ -54,10 +56,10 @@ struct FastpassView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {
-                    if let displayText = eventAPI.settings.feature(ofType: .fastpass)?.display_text {
+                    if let displayText = EventService.settings.feature(ofType: .fastpass)?.display_text {
                         Text(displayText.localized()).font(.headline)
                     }
-                    Text(eventAPI.display_name.localized())
+                    Text(EventService.display_name.localized())
                         .font(.caption).foregroundColor(.gray)
                 }
             }
@@ -70,7 +72,7 @@ struct FastpassView: View {
 struct FastpassView_Previews: PreviewProvider {
     static var previews: some View {
         FastpassView()
-            .environmentObject(OPassAPIViewModel.mock().currentEventAPI!)
+            .environmentObject(OPassService.mock().currentEventAPI!)
     }
 }
 #endif

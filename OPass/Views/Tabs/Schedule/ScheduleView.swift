@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/2.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import SwiftUI
@@ -11,23 +11,23 @@ import SwiftDate
 
 struct ScheduleView: View {
     
-    @ObservedObject var eventAPI: EventAPIViewModel
+    @ObservedObject var EventService: EventService
     @State private var selectDayIndex: Int
     @State private var filter = Filter.all
     @State private var isError = false
     @AppStorage("AutoSelectScheduleDay") var autoSelectScheduleDay = true
     
-    init(eventAPI: EventAPIViewModel) {
-        self.eventAPI = eventAPI
+    init(EventService: EventService) {
+        self.EventService = EventService
         if AppStorage(wrappedValue: true, "AutoSelectScheduleDay").wrappedValue {
-            self.selectDayIndex = eventAPI.schedule?.sessions.count == 1 ? 0 : eventAPI.schedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0
+            self.selectDayIndex = EventService.schedule?.sessions.count == 1 ? 0 : EventService.schedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0
         } else { self.selectDayIndex = 0 }
     }
     
     var body: some View {
         VStack {
             if !isError {
-                if let allScheduleData = eventAPI.schedule {
+                if let allScheduleData = EventService.schedule {
                     VStack(spacing: 0) {
                         if allScheduleData.sessions.count > 1 {
                             SelectDayView(selectDayIndex: $selectDayIndex, sessions: allScheduleData.sessions)
@@ -37,7 +37,7 @@ struct ScheduleView: View {
                         let filteredModel = allScheduleData.sessions[selectDayIndex].filter({ session in
                             switch filter {
                             case .all: return true
-                            case .liked: return eventAPI.liked_sessions.contains(session.id)
+                            case .liked: return EventService.liked_sessions.contains(session.id)
                             case .tag(let tag): return session.tags.contains(tag)
                             case .type(let type): return session.type == type
                             case .room(let room): return session.room == room
@@ -50,7 +50,7 @@ struct ScheduleView: View {
                                     ForEach(filteredModel.data[header]!.sorted { $0.end < $1.end }, id: \.id) { detail in
                                         NavigationLink(value: Router.mainDestination.sessionDetail(detail)) {
                                             SessionOverView(
-                                                room: eventAPI.schedule?.rooms.data[detail.room]?.localized().name ?? detail.room,
+                                                room: EventService.schedule?.rooms.data[detail.room]?.localized().name ?? detail.room,
                                                 start: detail.start,
                                                 end: detail.end,
                                                 title: detail.localized().title
@@ -61,7 +61,7 @@ struct ScheduleView: View {
                                 .listRowInsets(.init(top: 10, leading: 15, bottom: 10, trailing: 15))
                             }
                         }
-                        .refreshable { try? await eventAPI.loadSchedule() }
+                        .refreshable { try? await EventService.loadSchedule() }
                         .overlay {
                             if filteredModel.isEmpty {
                                 VStack(alignment: .center) {
@@ -92,7 +92,7 @@ struct ScheduleView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if let displayText = eventAPI.settings.feature(ofType: .schedule)?.display_text {
+            if let displayText = EventService.settings.feature(ofType: .schedule)?.display_text {
                 ToolbarItem(placement: .principal) {
                     Text(displayText.localized()).font(.headline)
                 }
@@ -107,7 +107,7 @@ struct ScheduleView: View {
                         Label("Favorite", systemImage: "heart\(filter == .liked ? ".fill" : "")")
                             .tag(Filter.liked)
                         
-                        if let schedule = eventAPI.schedule, schedule.tags.id.isNotEmpty {
+                        if let schedule = EventService.schedule, schedule.tags.id.isNotEmpty {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(schedule.tags.id, id: \.self) { id in
@@ -127,7 +127,7 @@ struct ScheduleView: View {
                             }
                         }
                         
-                        if let schedule = eventAPI.schedule, schedule.session_types.id.isNotEmpty {
+                        if let schedule = EventService.schedule, schedule.session_types.id.isNotEmpty {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(schedule.session_types.id, id: \.self) { id in
@@ -147,7 +147,7 @@ struct ScheduleView: View {
                             }
                         }
                         
-                        if let schedule = eventAPI.schedule, schedule.rooms.id.isNotEmpty {
+                        if let schedule = EventService.schedule, schedule.rooms.id.isNotEmpty {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(schedule.rooms.id, id: \.self) { id in
@@ -165,7 +165,7 @@ struct ScheduleView: View {
                             }
                         }
                         
-                        if let schedule = eventAPI.schedule, schedule.speakers.id.isNotEmpty {
+                        if let schedule = EventService.schedule, schedule.speakers.id.isNotEmpty {
                             Menu {
                                 Picker(selection: $filter, label: EmptyView()) {
                                     ForEach(schedule.speakers.id, id: \.self) { id in
@@ -194,9 +194,9 @@ struct ScheduleView: View {
     
     private func ScheduleFirstLoad() async {
         do {
-            try await eventAPI.loadSchedule()
-            if eventAPI.schedule?.sessions.count ?? 0 > 1, autoSelectScheduleDay{
-                self.selectDayIndex = eventAPI.schedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0
+            try await EventService.loadSchedule()
+            if EventService.schedule?.sessions.count ?? 0 > 1, autoSelectScheduleDay{
+                self.selectDayIndex = EventService.schedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0
             }
         }
         catch { isError = true }
@@ -280,8 +280,8 @@ private struct SessionOverView: View {
 #if DEBUG
 struct ScheduleView_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleView(eventAPI: OPassAPIViewModel.mock().currentEventAPI!)
-            .environmentObject(OPassAPIViewModel.mock())
+        ScheduleView(EventService: OPassService.mock().currentEventAPI!)
+            .environmentObject(OPassService.mock())
     }
 }
 #endif

@@ -1,23 +1,22 @@
 //
-//  EventViewModel.swift
+//  EventService.swift
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/3.
-//  2022 OPass.
+//  2023 OPass.
 //
 
 import SwiftUI
 import KeychainAccess
 import OSLog
 
-///Endpoint hold by each Event Organization or hold by OPass Official but switch by Event Organization.
-class EventAPIViewModel: ObservableObject {
+class EventService: ObservableObject {
     
     init(
         _ settings: SettingsModel,
         logo_data: Data? = nil,
         saveData: @escaping () async -> Void = {},
-        tmpData: CodableEventAPIVM? = nil
+        tmpData: CodableEventService? = nil
     ) {
         self.event_id = settings.event_id
         self.display_name = settings.display_name
@@ -62,7 +61,7 @@ class EventAPIViewModel: ObservableObject {
         }
     }
     
-    private var eventAPITmpData: CodableEventAPIVM? = nil
+    private var eventAPITmpData: CodableEventService? = nil
     private let logger = Logger(subsystem: "app.opass.ccip", category: "EventAPI")
     private let keychain = Keychain(service: "app.opass.ccip-token").synchronizable(true)
     
@@ -73,7 +72,7 @@ class EventAPIViewModel: ObservableObject {
 }
 
 
-extension EventAPIViewModel {
+extension EventService {
     ///Return bool to indicate success or not
     func useScenario(scenario: String) async throws -> Bool{
         @Feature(.fastpass, in: settings) var fastpassFeature
@@ -94,8 +93,8 @@ extension EventAPIViewModel {
                 Task{ await self.save() }
             }
             return true
-        } catch APIRepo.LoadError.http403Forbidden {
-            throw APIRepo.LoadError.http403Forbidden
+        } catch APIRepo.LoadError.forbidden {
+            throw APIRepo.LoadError.forbidden
         } catch { return false }
     }
     
@@ -128,8 +127,8 @@ extension EventAPIViewModel {
                 Task{ await self.save() }
             }
             return true
-        } catch APIRepo.LoadError.http403Forbidden {
-            throw APIRepo.LoadError.http403Forbidden
+        } catch APIRepo.LoadError.forbidden {
+            throw APIRepo.LoadError.forbidden
         } catch { return false }
     }
     
@@ -153,8 +152,8 @@ extension EventAPIViewModel {
                 self.user_role = scenario_status.role
                 Task{ await self.save() }
             }
-        } catch APIRepo.LoadError.http403Forbidden {
-            throw APIRepo.LoadError.http403Forbidden
+        } catch APIRepo.LoadError.forbidden {
+            throw APIRepo.LoadError.forbidden
         } catch {
             guard let data = self.eventAPITmpData, let scenario_status = data.scenario_status else {
                 throw error
@@ -239,8 +238,8 @@ extension EventAPIViewModel {
                 self.announcements = announcements
                 Task{ await self.save() }
             }
-        } catch  APIRepo.LoadError.http403Forbidden {
-            throw APIRepo.LoadError.http403Forbidden
+        } catch  APIRepo.LoadError.forbidden {
+            throw APIRepo.LoadError.forbidden
         } catch {
             guard let announcements = self.eventAPITmpData?.announcements else {
                 throw error
@@ -272,8 +271,8 @@ extension String {
     }
 }
 
-// MARK: - Codable EventAPIViewModel
-class CodableEventAPIVM: Codable {
+// MARK: - Codable EventService
+class CodableEventService: Codable {
     init(event_id: String,
          display_name: DisplayTextModel,
          logo_url: String,
