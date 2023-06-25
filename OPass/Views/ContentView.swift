@@ -41,9 +41,8 @@ struct ContentView: View {
                     ProgressView("Loading")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .task {
-                            await OPassService.loadEvent { error in
-                                self.error = error
-                            }
+                            do { try await OPassService.loadEvent() }
+                            catch { self.error = error }
                         }
                 case .empty:
                     VStack {}
@@ -163,7 +162,7 @@ struct ContentView: View {
                 await OPassService.currentEventAPI?.loadLogos()
                 return
             }
-        } catch APIRepo.LoadError.http403Forbidden {
+        } catch APIRepo.LoadError.forbidden {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.isHttp403AlertPresented = true
             }

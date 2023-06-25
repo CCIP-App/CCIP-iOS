@@ -156,12 +156,8 @@ private class EventListViewModel: ObservableObject {
     }
     
     func loadEvents() async {
-        await APIManager.shared.fetchEvents { result in
-            switch result {
-            case .success(let events): self.events = events
-            case .failure(let error): self.error = error
-            }
-        }
+        do { self.events = try await APIRepo.loadEventList() }
+        catch { self.error = error }
     }
     
     func reset() async {

@@ -150,7 +150,7 @@ struct RedeemTokenView: View {
                     Task {
                         do {
                             self.isInvaildTokenAlertPresented = !(try await EventService.redeemToken(token: token))
-                        } catch APIRepo.LoadError.http403Forbidden {
+                        } catch APIRepo.LoadError.forbidden {
                             self.isHttp403AlertPresented = true
                         } catch {
                             self.isInvaildTokenAlertPresented = true
@@ -178,7 +178,7 @@ struct RedeemTokenView: View {
                 do {
                     let result = try await EventService.redeemToken(token: token)
                     self.isInvaildTokenAlertPresented = !result
-                } catch APIRepo.LoadError.http403Forbidden {
+                } catch APIRepo.LoadError.forbidden {
                     self.isHttp403AlertPresented = true
                 } catch { self.isInvaildTokenAlertPresented = true }
             }
@@ -195,7 +195,7 @@ struct RedeemTokenView: View {
                     DispatchQueue.main.async {
                         self.isInvaildTokenAlertPresented = !result
                     }
-                } catch APIRepo.LoadError.http403Forbidden {
+                } catch APIRepo.LoadError.forbidden {
                     DispatchQueue.main.async {
                         self.isHttp403AlertPresented = true
                     }

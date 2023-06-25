@@ -59,46 +59,42 @@ extension OPassService {
         }
     }
     
-    func loadEvent(_ errorCallback: @MainActor @escaping (APIManager.Error) -> Void) async {
+    func loadEvent() async throws {
         if let eventId = currentEventID {
-            await APIManager.shared.fetchConfig(for: eventId) { result in
-                switch result {
-                case .success(let settings):
-                    if let eventAPIData = self.eventAPITemporaryData, eventId == eventAPIData.event_id { // Reload
-                        let event = EventService(
-                            settings,
+            do {
+                let settings = try await APIRepo.loadEventSettings(id: eventId)
+                if let eventAPIData = eventAPITemporaryData, eventId == eventAPIData.event_id { // Reload
+                    let event = EventService(
+                        settings,
+                        logo_data: eventAPIData.logo_data,
+                        saveData: self.saveEventAPIData,
+                        tmpData: eventAPIData)
+                    logger.info("Reload event \(event.event_id)")
+                    DispatchQueue.main.async {
+                        self.currentEventAPI = event
+                        Task{ await self.currentEventAPI!.loadLogos() }
+                    }
+                } else { // Load new
+                    let event = EventService(settings, saveData: self.saveEventAPIData)
+                    logger.info("Loading new event from \(self.currentEventAPI?.event_id ?? "none") to \(event.event_id)")
+                    DispatchQueue.main.async {
+                        self.currentEventAPI = event
+                        Task{ await self.currentEventAPI!.loadLogos() }
+                    }
+                }
+            } catch { // Use local data when it can't get data from API
+                logger.notice("Can't get data from API. Using local data")
+                if let eventAPIData = eventAPITemporaryData, eventAPIData.event_id == eventId {
+                    DispatchQueue.main.async {
+                        self.currentEventAPI = EventService(
+                            eventAPIData.settings,
                             logo_data: eventAPIData.logo_data,
                             saveData: self.saveEventAPIData,
-                            tmpData: eventAPIData
-                        )
-                        self.logger.info("Reload event \(event.event_id)")
-                        DispatchQueue.main.async {
-                            self.currentEventAPI = event
-                            Task{ await self.currentEventAPI!.loadLogos() }
-                        }
-                    } else { // Load new
-                        let event = EventService(settings, saveData: self.saveEventAPIData)
-                        self.logger.info("Loading new event from \(self.currentEventAPI?.event_id ?? "none") to \(event.event_id)")
-                        DispatchQueue.main.async {
-                            self.currentEventAPI = event
-                            Task{ await self.currentEventAPI!.loadLogos() }
-                        }
+                            tmpData: eventAPIData)
                     }
-                case .failure(let error):
-                    self.logger.notice("Can't get data from API. Using local data")
-                    if let eventAPIData = self.eventAPITemporaryData, eventAPIData.event_id == eventId {
-                        DispatchQueue.main.async {
-                            self.currentEventAPI = EventService(
-                                eventAPIData.settings,
-                                logo_data: eventAPIData.logo_data,
-                                saveData: self.saveEventAPIData,
-                                tmpData: eventAPIData
-                            )
-                        }
-                    } else {
-                        self.eventAPITemporaryData = nil
-                        return errorCallback(error)
-                    }
+                } else {
+                    self.eventAPITemporaryData = nil
+                    throw error
                 }
             }
             self.eventAPITemporaryData = nil // Clear temporary data
@@ -118,11 +114,11 @@ extension OPassService {
                 self.currentEventAPI = eventModel
             }
             return try await eventModel.redeemToken(token: token)
-        } catch APIRepo.LoadError.http403Forbidden {
-            throw APIRepo.LoadError.http403Forbidden
+        } catch APIRepo.LoadError.forbidden {
+            throw APIRepo.LoadError.forbidden
         } catch APIRepo.LoadError.invalidURL(url: let url) {
             logger.error("\(url.getString()) is invalid, eventId is possibly wrong")
-        } catch APIRepo.LoadError.dataFetchingFailed(cause: let cause) {
+        } catch APIRepo.LoadError.fetchFaild(cause: let cause) {
             logger.error("Data fetch failed. \n Caused by: \(cause.localizedDescription)")
         } catch {
             logger.error("Error: \(error.localizedDescription)")

@@ -81,8 +81,8 @@ struct SessionDetailView: View {
                 SpeakersSections(sessionData: sessionData)
             }
             
-            if let description = sessionData.localized().description, description != "" {
-                DescriptionSection(description: description)
+            if sessionData.localized().description != "" {
+                DescriptionSection(description: sessionData.localized().description)
             }
         }
         .listStyle(.insetGrouped)

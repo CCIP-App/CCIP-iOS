@@ -93,8 +93,8 @@ extension EventService {
                 Task{ await self.save() }
             }
             return true
-        } catch APIRepo.LoadError.http403Forbidden {
-            throw APIRepo.LoadError.http403Forbidden
+        } catch APIRepo.LoadError.forbidden {
+            throw APIRepo.LoadError.forbidden
         } catch { return false }
     }
     
@@ -117,19 +117,6 @@ extension EventService {
             return false
         }
         
-        await APIManager.shared.fetchStatus(from: fastpassFeature, with: token) { result in
-            switch result {
-            case .success(let scenarioStatus):
-                Constants.sendTag("\(scenarioStatus.event_id)\(scenarioStatus.role)", value: "\(scenarioStatus.token)")
-                self.scenario_status = scenarioStatus
-                self.user_token = token
-                self.user_role = scenarioStatus.role
-                Task{ await self.save() }
-            case .failure(let error):
-                break
-            }
-        }
-        
         do {
             let scenario_status = try await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token)
             Constants.sendTag("\(scenario_status.event_id)\(scenario_status.role)", value: "\(scenario_status.token)")
@@ -140,8 +127,8 @@ extension EventService {
                 Task{ await self.save() }
             }
             return true
-        } catch APIRepo.LoadError.http403Forbidden {
-            throw APIRepo.LoadError.http403Forbidden
+        } catch APIRepo.LoadError.forbidden {
+            throw APIRepo.LoadError.forbidden
         } catch { return false }
     }
     
@@ -165,8 +152,8 @@ extension EventService {
                 self.user_role = scenario_status.role
                 Task{ await self.save() }
             }
-        } catch APIRepo.LoadError.http403Forbidden {
-            throw APIRepo.LoadError.http403Forbidden
+        } catch APIRepo.LoadError.forbidden {
+            throw APIRepo.LoadError.forbidden
         } catch {
             guard let data = self.eventAPITmpData, let scenario_status = data.scenario_status else {
                 throw error
@@ -251,8 +238,8 @@ extension EventService {
                 self.announcements = announcements
                 Task{ await self.save() }
             }
-        } catch  APIRepo.LoadError.http403Forbidden {
-            throw APIRepo.LoadError.http403Forbidden
+        } catch  APIRepo.LoadError.forbidden {
+            throw APIRepo.LoadError.forbidden
         } catch {
             guard let announcements = self.eventAPITmpData?.announcements else {
                 throw error
