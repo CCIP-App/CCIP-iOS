@@ -71,7 +71,6 @@ class EventService: ObservableObject {
     }
 }
 
-
 extension EventService {
     ///Return bool to indicate success or not
     func useScenario(scenario: String) async throws -> Bool{
@@ -123,6 +122,7 @@ extension EventService {
             DispatchQueue.main.async {
                 self.scenario_status = scenario_status
                 self.user_token = token
+                self.user_id = scenario_status.user_id ?? "nil"
                 self.user_role = scenario_status.role
                 Task{ await self.save() }
             }
@@ -148,7 +148,7 @@ extension EventService {
             let scenario_status = try await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token)
             DispatchQueue.main.async {
                 self.scenario_status = scenario_status
-                self.user_id = scenario_status.user_id
+                self.user_id = scenario_status.user_id ?? "nil"
                 self.user_role = scenario_status.role
                 Task{ await self.save() }
             }
@@ -160,7 +160,7 @@ extension EventService {
             }
             self.eventAPITmpData?.scenario_status = nil
             DispatchQueue.main.async {
-                self.user_id = scenario_status.user_id
+                self.user_id = scenario_status.user_id ?? "nil"
                 self.user_role = scenario_status.role
                 self.scenario_status = scenario_status
             }
@@ -255,6 +255,7 @@ extension EventService {
         if let scenario_status = scenario_status {
             Constants.sendTag("\(scenario_status.event_id)\(scenario_status.role)", value: "")
             self.scenario_status = nil
+            self.user_id = "nil"
             self.user_role = "nil"
         }
         self.user_token = nil

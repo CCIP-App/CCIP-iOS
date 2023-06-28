@@ -13,7 +13,7 @@ struct ScenarioStatusModel: Hashable, Codable {
     @TransformWith<OidTransform> var _id = ""
     var event_id: String = ""
     var token: String = ""
-    var user_id: String = ""
+    var user_id: String? = nil
     var attr: [String : String]
     @TransformWith<IntergerToDateTransform> var first_use: DateInRegion
     var role: String = ""

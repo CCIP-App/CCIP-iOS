@@ -142,12 +142,8 @@ struct ContentView: View {
             }
             return
         }
-        
-        DispatchQueue.main.async {
-            OPassService.currentEventID = eventId
-            if eventId != OPassService.currentEventAPI?.event_id { OPassService.currentEventLogo = nil }
-        }
-        
+        OPassService.currentEventID = eventId
+        if eventId != OPassService.currentEventAPI?.event_id { OPassService.currentEventLogo = nil }
         // Login
         guard let token = params?.first(where: { $0.name == "token" })?.value else {
             DispatchQueue.main.async {
