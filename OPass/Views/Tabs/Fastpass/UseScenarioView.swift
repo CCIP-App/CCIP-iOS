@@ -12,7 +12,7 @@ struct UseScenarioView: View {
     
     let scenario: ScenarioDataModel
     @EnvironmentObject var EventService: EventService
-    @State private var viewStage = 0
+    @State private var viewState = 0
     @State private var isHttp403AlertPresented = false
     @State private var usedTime: TimeInterval = 0
     @Environment(\.dismiss) var dismiss
@@ -20,7 +20,7 @@ struct UseScenarioView: View {
     var body: some View {
         NavigationView {
             VStack {
-                switch viewStage {
+                switch viewState {
                 case 0: ConfirmUseScenarioView()
                 case 1: ActivityIndicatorMark_1()
                         .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.25)
@@ -68,19 +68,7 @@ struct UseScenarioView: View {
                 Spacer()
             }
             
-            Button {
-                self.viewStage = 1
-                Task {
-                    do {
-                        if try await EventService.useScenario(scenario: scenario.id) {
-                            self.usedTime = Date().timeIntervalSince1970
-                            self.viewStage = 2
-                        } else { self.viewStage = 3 }
-                    } catch APIRepo.LoadError.forbidden {
-                        self.isHttp403AlertPresented = true
-                    } catch { self.viewStage = 3 }
-                }
-            } label: {
+            Button { useScenario() } label: {
                 Text("ConfirmUse")
                     .foregroundColor(.white)
                     .padding(.vertical, 11)
@@ -96,6 +84,21 @@ struct UseScenarioView: View {
             }
         }
         .frame(width: UIScreen.main.bounds.width * 0.85)
+        .onAppear { if scenario.countdown == 0 { self.useScenario() } }
+    }
+    
+    private func useScenario() {
+        self.viewState = 1
+        Task {
+            do {
+                if try await EventService.useScenario(scenario: scenario.id) {
+                    self.usedTime = Date().timeIntervalSince1970
+                    self.viewState = 2
+                } else { self.viewState = 3 }
+            } catch APIRepo.LoadError.forbidden {
+                self.isHttp403AlertPresented = true
+            } catch { self.viewState = 3 }
+        }
     }
 }
 
