@@ -288,13 +288,13 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		D3652A6E2869AF17002AC419 /* Submodules */ = {
+		D3652A6E2869AF17002AC419 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				D30D9CB928B3F68C00C1E489 /* SlideOverCard */,
 				D3652A6F2869AF72002AC419 /* AttributedText */,
 			);
-			path = Submodules;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		D3652A6F2869AF72002AC419 /* AttributedText */ = {
@@ -386,7 +386,7 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		D3D3788027CE43D700021FC4 /* OPassAPI */ = {
+		D3D3788027CE43D700021FC4 /* OPassKit */ = {
 			isa = PBXGroup;
 			children = (
 				4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */,
@@ -395,7 +395,7 @@
 				D3D3788327CE441200021FC4 /* Models */,
 				D36DC46327D46F6800012D43 /* Additions */,
 			);
-			path = OPassAPI;
+			path = OPassKit;
 			sourceTree = "<group>";
 		};
 		D3D3788327CE441200021FC4 /* Models */ = {
@@ -425,7 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E4E6BD27CD158400FFACEB /* OPass */,
-				D3652A6E2869AF17002AC419 /* Submodules */,
+				D3652A6E2869AF17002AC419 /* Modules */,
 				D3F23B4B28166CE200A0FB35 /* Supporting Files */,
 				D3A00F1D27D837D00097A6AB /* OneSignalNotificationServiceExtension */,
 				D3E4E6BC27CD158400FFACEB /* Products */,
@@ -448,7 +448,7 @@
 				D31900D7281CF07E00864982 /* LaunchScreen.storyboard */,
 				D3E4E6BE27CD158400FFACEB /* OPassApp.swift */,
 				D3D3787F27CE42A200021FC4 /* Views */,
-				D3D3788027CE43D700021FC4 /* OPassAPI */,
+				D3D3788027CE43D700021FC4 /* OPassKit */,
 				D3227ABB287FBDE100B458CD /* Class+Extension */,
 				D3E4E6C427CD158700FFACEB /* Preview Content */,
 			);
