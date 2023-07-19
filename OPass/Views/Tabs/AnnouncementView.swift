@@ -51,14 +51,14 @@ struct AnnouncementView: View {
                         .refreshable{
                             do {
                                 try await EventService.loadAnnouncements()
-                            } catch APIRepo.LoadError.forbidden {
+                            } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
                         }
                         .task{
                             do {
                                 try await EventService.loadAnnouncements()
-                            } catch APIRepo.LoadError.forbidden {
+                            } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
                         }
@@ -75,14 +75,14 @@ struct AnnouncementView: View {
                         .refreshable{
                             do {
                                 try await EventService.loadAnnouncements()
-                            } catch APIRepo.LoadError.forbidden {
+                            } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
                         }
                         .task{
                             do {
                                 try await EventService.loadAnnouncements()
-                            } catch APIRepo.LoadError.forbidden {
+                            } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
                         }
@@ -91,7 +91,7 @@ struct AnnouncementView: View {
                     ProgressView("Loading")
                         .task {
                             do { try await self.EventService.loadAnnouncements() }
-                            catch APIRepo.LoadError.forbidden {
+                            catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                                 self.errorType = "http403"
                             } catch { self.errorType = "unknown" }

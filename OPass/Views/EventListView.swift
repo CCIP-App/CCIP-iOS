@@ -156,7 +156,7 @@ private class EventListViewModel: ObservableObject {
     }
     
     func loadEvents() async {
-        do { self.events = try await APIRepo.loadEventList() }
+        do { self.events = try await APIManager.fetchEvents() }
         catch { self.error = error }
     }
     

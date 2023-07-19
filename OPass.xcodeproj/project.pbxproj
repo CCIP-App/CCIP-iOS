@@ -21,7 +21,7 @@
 		4F6968A627EBCB5E009073E4 /* SFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6968A527EBCB5E009073E4 /* SFButton.swift */; };
 		4F8522E12817D4C00015BB13 /* EventTitleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8522E02817D4C00015BB13 /* EventTitleModel.swift */; };
 		4F9E9B4E2813F0A300A14905 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E9B4D2813F0A300A14905 /* Array+Extension.swift */; };
-		4FEF38FB27D13FBA00FC97F4 /* APIRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */; };
+		4FEF38FB27D13FBA00FC97F4 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF38FA27D13FBA00FC97F4 /* APIManager.swift */; };
 		D301C39428053ED600D027FE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301C39328053ED600D027FE /* ActivityIndicator.swift */; };
 		D3095F1827D78EE600225C7D /* UNUserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3095F1727D78EE600225C7D /* UNUserNotification.swift */; };
 		D30D9CC028B3F68C00C1E489 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D9CBB28B3F68C00C1E489 /* Manager.swift */; };
@@ -49,7 +49,6 @@
 		D3652A7A2869AF72002AC419 /* AttributedTextImpl+macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A732869AF72002AC419 /* AttributedTextImpl+macOS.swift */; };
 		D3652A7B2869AF72002AC419 /* AttributedTextImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A742869AF72002AC419 /* AttributedTextImpl.swift */; };
 		D3652A7D2869AF72002AC419 /* AttributedTextImpl+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A762869AF72002AC419 /* AttributedTextImpl+iOS.swift */; };
-		D36567442928BECE0021D3CC /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36567432928BECE0021D3CC /* APIManager.swift */; };
 		D366ADC82898413F00F33CEC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366ADC72898413F00F33CEC /* Constants.swift */; };
 		D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366D8EF27ED50CB00AA4267 /* MainView.swift */; };
 		D36A2FD82829F9C500EFBDB1 /* NEHotspot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */; };
@@ -136,7 +135,7 @@
 		4F6968A527EBCB5E009073E4 /* SFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFButton.swift; sourceTree = "<group>"; };
 		4F8522E02817D4C00015BB13 /* EventTitleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTitleModel.swift; sourceTree = "<group>"; };
 		4F9E9B4D2813F0A300A14905 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
-		4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRepo.swift; sourceTree = "<group>"; };
+		4FEF38FA27D13FBA00FC97F4 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D301C39328053ED600D027FE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D3095F1727D78EE600225C7D /* UNUserNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotification.swift; sourceTree = "<group>"; };
 		D30D9CBB28B3F68C00C1E489 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
@@ -158,7 +157,6 @@
 		D3652A732869AF72002AC419 /* AttributedTextImpl+macOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+macOS.swift"; sourceTree = "<group>"; };
 		D3652A742869AF72002AC419 /* AttributedTextImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextImpl.swift; sourceTree = "<group>"; };
 		D3652A762869AF72002AC419 /* AttributedTextImpl+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+iOS.swift"; sourceTree = "<group>"; };
-		D36567432928BECE0021D3CC /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D366ADC72898413F00F33CEC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D366D8EF27ED50CB00AA4267 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHotspot.swift; sourceTree = "<group>"; };
@@ -389,8 +387,7 @@
 		D3D3788027CE43D700021FC4 /* OPassKit */ = {
 			isa = PBXGroup;
 			children = (
-				4FEF38FA27D13FBA00FC97F4 /* APIRepo.swift */,
-				D36567432928BECE0021D3CC /* APIManager.swift */,
+				4FEF38FA27D13FBA00FC97F4 /* APIManager.swift */,
 				D3BAB49C27D2536300ECD44A /* Services */,
 				D3D3788327CE441200021FC4 /* Models */,
 				D36DC46327D46F6800012D43 /* Additions */,
@@ -726,7 +723,6 @@
 				D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */,
 				D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */,
 				4F5CA37D27FD58D600DEAB39 /* Color+Extension.swift in Sources */,
-				D36567442928BECE0021D3CC /* APIManager.swift in Sources */,
 				D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */,
 				D3B0B20528BBC4400001B311 /* DevelopersView.swift in Sources */,
 				D3652A792869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift in Sources */,
@@ -742,7 +738,7 @@
 				D301C39428053ED600D027FE /* ActivityIndicator.swift in Sources */,
 				D324EF08286EB9B7004D03D6 /* UIApplication+Extension.swift in Sources */,
 				D39512F5285A174F009B9AE8 /* EventEditView.swift in Sources */,
-				4FEF38FB27D13FBA00FC97F4 /* APIRepo.swift in Sources */,
+				4FEF38FB27D13FBA00FC97F4 /* APIManager.swift in Sources */,
 				D3652A7B2869AF72002AC419 /* AttributedTextImpl.swift in Sources */,
 				D3EFF36F28A12824004CD8DF /* AppearanceView.swift in Sources */,
 				D3C0E21C27D51C060095169F /* WifiView.swift in Sources */,

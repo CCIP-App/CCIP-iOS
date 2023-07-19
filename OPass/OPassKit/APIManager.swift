@@ -2,125 +2,164 @@
 //  APIManager.swift
 //  OPass
 //
-//  Created by Brian Chang on 2022/11/19.
+//  Created by secminhr on 2022/3/4.
 //  2023 OPass.
 //
 
 import Foundation
 import OSLog
 
-class APIManager {
-    static let shared = APIManager()
+final class APIManager {
+    private static let logger = Logger(subsystem: "app.opass.ccip", category: "APIManager")
     
-    enum CCIPEndpoint {
+    public enum CCIPEndpoint {
         case events
         case config(String)
         case announcement(String, String?)
         case status(String, String)
         case use(String, String, String)
+        case any(String)
         
-        var url: String {
+        var string: String {
             switch self {
-            case .events: return "https://portal.opass.app/events/"
-            case .config(let id): return "https://portal.opass.app/events/\(id)"
-            case .announcement(let baseUrl, let token): return "\(baseUrl)/announcement?token=\(token ?? "")"
-            case .status(let baseUrl, let token): return "\(baseUrl)/status?token=\(token)"
-            case .use(let baseUrl, let scenario, let token): return "\(baseUrl)/use/\(scenario)?token=\(token)"
+            case .events:
+                return "https://portal.opass.app/events/"
+            case .config(let id):
+                return "https://portal.opass.app/events/\(id)"
+            case .announcement(let baseUrl, let token):
+                return "\(baseUrl)/announcement?token=\(token ?? "")"
+            case .status(let baseUrl, let token):
+                return "\(baseUrl)/status?token=\(token)"
+            case .use(let baseUrl, let scenario, let token):
+                return "\(baseUrl)/use/\(scenario)?token=\(token)"
+            case .any(let url):
+                return url
             }
         }
+        
+        var url: URL? { return URL(string: self.string) }
     }
-    enum Error: Swift.Error, LocalizedError {
-        case invaildUrl(String)
-        case fetchFaild(Swift.Error)
-        case decodeFaild(Swift.Error)
+    
+    public enum LoadError: Error, LocalizedError {
+        case invalidURL(CCIPEndpoint)
+        case fetchFaild(Error)
+        case decodeFaild(Error)
+        case missingURL(FeatureModel)
         case uncorrectFeature(String)
-        case missedUrl(FeatureType)
         case forbidden
         
-        var errorDescription: String? {
+        public var errorDescription: String? {
             switch self {
-            case .invaildUrl(let url): return "Invaild URL with \(url)"
-            case .fetchFaild(let error): return "Fetch Faild with \(error.localizedDescription)"
-            case .decodeFaild(let error): return "Decode Faild with \(error.localizedDescription)"
-            case .uncorrectFeature(let feature): return "Uncorrect Feature with \(feature)"
-            case .missedUrl(let feature): return "Missing URL with \(feature.rawValue)"
-            case .forbidden: return "Http 403 Forbidden"
+            case .invalidURL(let url):
+                return "Invaild URL with \(url.string))"
+            case .fetchFaild(let error):
+                return "Fetch Faild with \(error.localizedDescription)"
+            case .decodeFaild(let error):
+                return "Decode Faild with \(error.localizedDescription)"
+            case .missingURL(let feature):
+                return "Missing URL in: \(feature.feature.rawValue)"
+            case .uncorrectFeature(let feature):
+                return "Uncorrect Feature for: \(feature)"
+            case .forbidden:
+                return "Http 403 Forbidden"
             }
         }
     }
 }
 
 extension APIManager {
-    func fetchEvents(completion: @MainActor @escaping (Result<[EventTitleModel], Error>) -> Void) async {
-        return await fetch(from: .events, type: [EventTitleModel].self, completion: completion)
+    // MARK: - OPass
+    public static func fetchEvents() async throws -> [EventTitleModel] {
+        return try await fetch(from: .events)
     }
     
-    func fetchConfig(for id: String, completion: @MainActor @escaping (Result<SettingsModel, Error>) -> Void) async {
-        return await fetch(from: .config(id), type: SettingsModel.self, completion: completion)
+    public static func fetchConfig(for event: String) async throws -> SettingsModel {
+        return try await fetch(from: .config(event))
     }
-}
-
-extension APIManager {
-    func fetchAnnouncement(@Feature(.announcement) from feature: FeatureModel?, with token: String?, completion: @MainActor @escaping (Result<[AnnouncementModel], Error>) -> Void) async {
+    
+    // MARK: - Event
+    public static func fetchStatus(
+        @Feature(.fastpass) from feature: FeatureModel?,
+        token: String,
+        scenario: String? = nil
+    ) async throws -> ScenarioStatusModel {
         guard let feature = feature else {
-            return await completion(.failure(.uncorrectFeature("announcement")))
+            logger.critical("Can't find correct fastpass feature")
+            throw LoadError.uncorrectFeature("fastpass")
         }
-        guard let baseUrl = feature.url else {
-            return await completion(.failure(.missedUrl(feature.feature)))
+        guard let url = feature.url else {
+            logger.error("Missing URL in feature: \(feature.feature.rawValue)")
+            throw LoadError.missingURL(feature)
         }
-        return await fetch(from: .announcement(baseUrl, token), type: [AnnouncementModel].self, completion: completion)
+        return try await fetch(from: scenario == nil ? .status(url, token) : .use(url, scenario!, token))
     }
     
-    func fetchStatus(@Feature(.fastpass) from feature: FeatureModel?, with token: String, completion: @MainActor @escaping (Result<ScenarioStatusModel, Error>) -> Void) async {
+    public static func fetchSchedule(@Feature(.schedule) from feature: FeatureModel?) async throws -> ScheduleModel {
         guard let feature = feature else {
-            return await completion(.failure(.uncorrectFeature("fastpass")))
+            logger.critical("Can't find correct schedule feature")
+            throw LoadError.uncorrectFeature("schedule")
         }
-        guard let baseUrl = feature.url else {
-            return await completion(.failure(.missedUrl(feature.feature)))
+        guard let url = feature.url else {
+            logger.error("Missing URL in feature: \(feature.feature.rawValue)")
+            throw LoadError.missingURL(feature)
         }
-        return await fetch(from: .status(baseUrl, token), type: ScenarioStatusModel.self, completion: completion)
+        return try await fetch(from: .any(url))
     }
     
-    func fetchStatus(@Feature(.fastpass) from feature: FeatureModel?, using scenario: String, with token: String, completion: @MainActor @escaping (Result<ScenarioStatusModel, Error>) -> Void) async {
+    public static func fetchAnnouncement(
+        @Feature(.announcement) from feature: FeatureModel?,
+        token: String? = nil
+    ) async throws -> [AnnouncementModel] {
         guard let feature = feature else {
-            return await completion(.failure(.uncorrectFeature("fastpass")))
+            logger.critical("Can't find correct announcement feature")
+            throw LoadError.uncorrectFeature("announcement")
         }
-        guard let baseUrl = feature.url else {
-            return await completion(.failure(.missedUrl(feature.feature)))
+        guard let url = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            logger.error("Missing URL in feature: \(feature.feature.rawValue)")
+            throw LoadError.missingURL(feature)
         }
-        return await fetch(from: .use(baseUrl, scenario, token), type: ScenarioStatusModel.self, completion: completion)
-    }
-}
-
-extension APIManager {
-    func fetchData(from endpoint: String, completion: @MainActor @escaping (Result<Data, Error>) -> Void) async {
-        return await fetch(from: endpoint, type: Data.self, completion: completion)
+        return try await fetch(from: .announcement(url, token))
     }
     
-    func fetch<T: Decodable>(from endpoint: CCIPEndpoint, type: T.Type, completion: @MainActor @escaping (Result<T, Error>) -> Void) async {
-        return await fetch(from: endpoint.url, type: type, completion: completion)
+    // MARK: - Data
+    public static func fetchData(from endpoint: String) async throws -> Data {
+        guard
+            let endpoint = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+            let url = URL(string: endpoint)
+        else {
+            logger.error("Invalid URL: \(endpoint)")
+            throw LoadError.invalidURL(.any(endpoint))
+        }
+        let (data, _) = try await URLSession.shared.data(from: url)
+        return data
     }
     
-    func fetch<T: Decodable>(from endpoint: String, type: T.Type, completion: @MainActor @escaping (Result<T, Error>) -> Void) async {
-        guard let url = URLComponents(string: endpoint)?.url else {
-            return await completion(.failure(.invaildUrl(endpoint)))
+    // MARK: - Private
+    private static func fetch<T: Decodable>(from endpoint: CCIPEndpoint) async throws -> T {
+        guard let url = endpoint.url else {
+            logger.error("Invalid URL: \(endpoint.string)")
+            throw LoadError.invalidURL(endpoint)
         }
         do {
             let (data, response) = try await URLSession.shared.data(from: url)
             if let response = response as? HTTPURLResponse {
                 switch response.statusCode {
-                case 403: return await completion(.failure(.forbidden))
-                default: break
+                case 403:
+                    logger.warning("Http 403 Forbidden with url: \(endpoint.string)")
+                    throw LoadError.forbidden
+                default:
+                    break
                 }
             }
             let decoder = JSONDecoder()
             decoder.userInfo[.needTransform] = true
-            let result = try decoder.decode(type, from: data)
-            return await completion(.success(result))
+            return try decoder.decode(T.self, from: data)
         } catch where error is DecodingError {
-            return await completion(.failure(.decodeFaild(error)))
+            logger.error("Decode Faild with: \(error.localizedDescription), url: \(endpoint.string)")
+            throw LoadError.decodeFaild(error)
         } catch {
-            return await completion(.failure(.fetchFaild(error)))
+            logger.error("Fetch Faild with: \(error.localizedDescription), url: \(endpoint.string)")
+            throw LoadError.fetchFaild(error)
         }
     }
 }

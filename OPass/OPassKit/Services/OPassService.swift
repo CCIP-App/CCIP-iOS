@@ -62,7 +62,7 @@ extension OPassService {
     func loadEvent() async throws {
         if let eventId = currentEventID {
             do {
-                let settings = try await APIRepo.loadEventSettings(id: eventId)
+                let settings = try await APIManager.fetchConfig(for: eventId)
                 if let eventAPIData = eventAPITemporaryData, eventId == eventAPIData.event_id { // Reload
                     let event = EventService(
                         settings,
@@ -107,18 +107,18 @@ extension OPassService {
             if eventId == currentEventAPI?.event_id {
                 return try await currentEventAPI?.redeemToken(token: token) ?? false
             }
-            let settings = try await APIRepo.loadEventSettings(id: eventId)
+            let settings = try await APIManager.fetchConfig(for: eventId)
             let eventModel = EventService(settings, saveData: saveEventAPIData)
             DispatchQueue.main.async {
                 self.currentEventLogo = nil
                 self.currentEventAPI = eventModel
             }
             return try await eventModel.redeemToken(token: token)
-        } catch APIRepo.LoadError.forbidden {
-            throw APIRepo.LoadError.forbidden
-        } catch APIRepo.LoadError.invalidURL(url: let url) {
-            logger.error("\(url.getString()) is invalid, eventId is possibly wrong")
-        } catch APIRepo.LoadError.fetchFaild(cause: let cause) {
+        } catch APIManager.LoadError.forbidden {
+            throw APIManager.LoadError.forbidden
+        } catch APIManager.LoadError.invalidURL(url: let url) {
+            logger.error("\(url.string) is invalid, eventId is possibly wrong")
+        } catch APIManager.LoadError.fetchFaild(cause: let cause) {
             logger.error("Data fetch failed. \n Caused by: \(cause.localizedDescription)")
         } catch {
             logger.error("Error: \(error.localizedDescription)")

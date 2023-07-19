@@ -158,7 +158,7 @@ struct ContentView: View {
                 await OPassService.currentEventAPI?.loadLogos()
                 return
             }
-        } catch APIRepo.LoadError.forbidden {
+        } catch APIManager.LoadError.forbidden {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.isHttp403AlertPresented = true
             }

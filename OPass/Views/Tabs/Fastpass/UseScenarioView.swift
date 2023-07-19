@@ -95,7 +95,7 @@ struct UseScenarioView: View {
                     self.usedTime = Date().timeIntervalSince1970
                     self.viewState = 2
                 } else { self.viewState = 3 }
-            } catch APIRepo.LoadError.forbidden {
+            } catch APIManager.LoadError.forbidden {
                 self.isHttp403AlertPresented = true
             } catch { self.viewState = 3 }
         }

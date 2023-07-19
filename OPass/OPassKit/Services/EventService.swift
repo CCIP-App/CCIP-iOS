@@ -67,7 +67,7 @@ class EventService: ObservableObject {
     
     enum EventAPIError: Error {
         case noTokenFound
-        case noCorrectFeatureFound
+        case uncorrectFeature
     }
 }
 
@@ -86,14 +86,14 @@ extension EventService {
         }
         
         do {
-            let eventScenarioUseStatus = try await APIRepo.load(scenarioUseFrom: fastpassFeature, scenario: scenario, token: token)
+            let eventScenarioUseStatus = try await APIManager.fetchStatus(from: fastpassFeature, token: token, scenario: scenario)
             DispatchQueue.main.async {
                 self.scenario_status = eventScenarioUseStatus
                 Task{ await self.save() }
             }
             return true
-        } catch APIRepo.LoadError.forbidden {
-            throw APIRepo.LoadError.forbidden
+        } catch APIManager.LoadError.forbidden {
+            throw APIManager.LoadError.forbidden
         } catch { return false }
     }
     
@@ -117,7 +117,7 @@ extension EventService {
         }
         
         do {
-            let scenario_status = try await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token)
+            let scenario_status = try await APIManager.fetchStatus(from: fastpassFeature, token: token)
             Constants.sendTag("\(scenario_status.event_id)\(scenario_status.role)", value: "\(scenario_status.token)")
             DispatchQueue.main.async {
                 self.scenario_status = scenario_status
@@ -127,8 +127,8 @@ extension EventService {
                 Task{ await self.save() }
             }
             return true
-        } catch APIRepo.LoadError.forbidden {
-            throw APIRepo.LoadError.forbidden
+        } catch APIManager.LoadError.forbidden {
+            throw APIManager.LoadError.forbidden
         } catch { return false }
     }
     
@@ -137,7 +137,7 @@ extension EventService {
         
         guard let fastpassFeature = fastpassFeature else {
             logger.critical("Can't find correct fastpass feature")
-            throw EventAPIError.noCorrectFeatureFound
+            throw EventAPIError.uncorrectFeature
         }
         guard let token = user_token else {
             logger.error("No user_token included")
@@ -145,15 +145,15 @@ extension EventService {
         }
         
         do {
-            let scenario_status = try await APIRepo.load(scenarioStatusFrom: fastpassFeature, token: token)
+            let scenario_status = try await APIManager.fetchStatus(from: fastpassFeature, token: token)
             DispatchQueue.main.async {
                 self.scenario_status = scenario_status
                 self.user_id = scenario_status.user_id ?? "nil"
                 self.user_role = scenario_status.role
                 Task{ await self.save() }
             }
-        } catch APIRepo.LoadError.forbidden {
-            throw APIRepo.LoadError.forbidden
+        } catch APIManager.LoadError.forbidden {
+            throw APIManager.LoadError.forbidden
         } catch {
             guard let data = self.eventAPITmpData, let scenario_status = data.scenario_status else {
                 throw error
@@ -173,10 +173,10 @@ extension EventService {
             let logo_url = settings.logo_url
             let webViewFeatureIndex = settings.features.enumerated().filter({ $0.element.feature == .webview }).map { $0.offset }
             
-            group.addTask { (-1, try? await APIRepo.loadLogo(from: logo_url)) }
+            group.addTask { (-1, try? await APIManager.fetchData(from: logo_url)) }
             for index in webViewFeatureIndex {
                 if let iconUrl = settings.features[index].icon{
-                    group.addTask { (index, try? await APIRepo.loadLogo(from: iconUrl)) }
+                    group.addTask { (index, try? await APIManager.fetchData(from: iconUrl)) }
                 }
             }
             
@@ -206,10 +206,10 @@ extension EventService {
         
         guard let scheduleFeature = scheduleFeature else {
             logger.critical("Can't find correct schedule feature")
-            throw EventAPIError.noCorrectFeatureFound
+            throw EventAPIError.uncorrectFeature
         }
         do {
-            let schedule = try await APIRepo.load(scheduleFrom: scheduleFeature)
+            let schedule = try await APIManager.fetchSchedule(from: scheduleFeature)
             DispatchQueue.main.async {
                 self.schedule = schedule
                 Task { await self.save() }
@@ -230,16 +230,16 @@ extension EventService {
         
         guard let announcementFeature = announcementFeature else {
             logger.critical("Can't find correct announcement feature")
-            throw EventAPIError.noCorrectFeatureFound
+            throw EventAPIError.uncorrectFeature
         }
         do {
-            let announcements = try await APIRepo.load(announcementFrom: announcementFeature, token: user_token ?? "")
+            let announcements = try await APIManager.fetchAnnouncement(from: announcementFeature, token: user_token)
             DispatchQueue.main.async {
                 self.announcements = announcements
                 Task{ await self.save() }
             }
-        } catch  APIRepo.LoadError.forbidden {
-            throw APIRepo.LoadError.forbidden
+        } catch  APIManager.LoadError.forbidden {
+            throw APIManager.LoadError.forbidden
         } catch {
             guard let announcements = self.eventAPITmpData?.announcements else {
                 throw error
