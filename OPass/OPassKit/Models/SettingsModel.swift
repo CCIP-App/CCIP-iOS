@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CryptoKit
 import SwiftDate
 import SwiftUI
 
@@ -59,10 +58,7 @@ struct FeatureModel: Hashable, Codable {
             case "{public_token}":
                 url = url.replacingOccurrences(
                     of: param,
-                    with: Insecure.SHA1.hash(data: Data((token ?? "").utf8))
-                        .map { String(format: "%02X", $0) }
-                        .joined()
-                        .lowercased()
+                    with: token?.data(using: .utf8)?.sha1() ?? ""
                 )
             case "{role}":
                 url = url.replacingOccurrences(of: param, with: role ?? "")

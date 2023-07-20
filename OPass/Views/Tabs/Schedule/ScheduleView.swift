@@ -34,7 +34,7 @@ struct ScheduleView: View {
                                 .background(Color("SectionBackgroundColor"))
                         }
                         
-                        let filteredModel = allScheduleData.sessions[selectDayIndex].filter({ session in
+                        let filteredModel = allScheduleData.sessions[selectDayIndex].filter { session in
                             switch filter {
                             case .all: return true
                             case .liked: return EventService.liked_sessions.contains(session.id)
@@ -43,7 +43,7 @@ struct ScheduleView: View {
                             case .room(let room): return session.room == room
                             case .speaker(let speaker): return session.speakers.contains(speaker)
                             }
-                        })
+                        }
                         Form {
                             ForEach(filteredModel.header, id: \.self) { header in
                                 Section {
@@ -92,101 +92,107 @@ struct ScheduleView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if let displayText = EventService.settings.feature(ofType: .schedule)?.display_text {
-                ToolbarItem(placement: .principal) {
-                    Text(displayText.localized()).font(.headline)
-                }
+            ToolbarItem(placement: .principal) {
+                Text(EventService.settings.feature(ofType: .schedule)?.display_text.localized() ?? "Schedule").font(.headline)
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
-                Menu {
-                    Picker(selection: $filter, label: EmptyView()) {
-                        Label("AllSessions", systemImage: "list.bullet")
-                            .tag(Filter.all)
-                        
-                        Label("Favorite", systemImage: "heart\(filter == .liked ? ".fill" : "")")
-                            .tag(Filter.liked)
-                        
-                        if let schedule = EventService.schedule, schedule.tags.id.isNotEmpty {
-                            Menu {
-                                Picker(selection: $filter, label: EmptyView()) {
-                                    ForEach(schedule.tags.id, id: \.self) { id in
-                                        Text(schedule.tags.data[id]?.localized().name ?? id)
-                                            .tag(Filter.tag(id))
-                                    }
-                                }
-                            } label: {
-                                Label("Tags", systemImage: {
-                                    switch filter {
-                                    case .tag(_):
-                                        return "tag.fill"
-                                    default:
-                                        return "tag"
-                                    }
-                                }())
-                            }
-                        }
-                        
-                        if let schedule = EventService.schedule, schedule.session_types.id.isNotEmpty {
-                            Menu {
-                                Picker(selection: $filter, label: EmptyView()) {
-                                    ForEach(schedule.session_types.id, id: \.self) { id in
-                                        Text(schedule.session_types.data[id]?.localized().name ?? id)
-                                            .tag(Filter.type(id))
-                                    }
-                                }
-                            } label: {
-                                Label("Types", systemImage: {
-                                    switch filter {
-                                    case .type(_):
-                                        return "signpost.right.fill"
-                                    default:
-                                        return "signpost.right"
-                                    }
-                                }())
-                            }
-                        }
-                        
-                        if let schedule = EventService.schedule, schedule.rooms.id.isNotEmpty {
-                            Menu {
-                                Picker(selection: $filter, label: EmptyView()) {
-                                    ForEach(schedule.rooms.id, id: \.self) { id in
-                                        Text(schedule.rooms.data[id]?.localized().name ?? id)
-                                            .tag(Filter.room(id))
-                                    }
-                                }
-                            } label: {
-                                Label("Places", systemImage: {
-                                    switch filter {
-                                    case .room(_): return "map.fill"
-                                    default: return "map"
-                                    }
-                                }())
-                            }
-                        }
-                        
-                        if let schedule = EventService.schedule, schedule.speakers.id.isNotEmpty {
-                            Menu {
-                                Picker(selection: $filter, label: EmptyView()) {
-                                    ForEach(schedule.speakers.id, id: \.self) { id in
-                                        Text(schedule.speakers.data[id]?.localized().name ?? id)
-                                            .tag(Filter.speaker(id))
-                                    }
-                                }
-                            } label: {
-                                Label("Speakers", systemImage: {
-                                    switch filter {
-                                    case .speaker(_): return "person.fill"
-                                    default: return "person"
-                                    }
-                                }())
-                            }
+                HStack {
+                    if let schedule = EventService.schedule {
+                        NavigationLink(value: Router.mainDestination.scheduleSearch(schedule)) {
+                            Image(systemName: "magnifyingglass")
                         }
                     }
-                    .labelsHidden()
-                    .pickerStyle(.inline)
-                } label: {
-                    Image(systemName: "line.3.horizontal.decrease.circle\(filter == .all ? "" : ".fill")")
+                    
+                    Menu {
+                        Picker(selection: $filter, label: EmptyView()) {
+                            Label("AllSessions", systemImage: "list.bullet")
+                                .tag(Filter.all)
+                            
+                            Label("Favorite", systemImage: "heart\(filter == .liked ? ".fill" : "")")
+                                .tag(Filter.liked)
+                            
+                            if let schedule = EventService.schedule, schedule.tags.id.isNotEmpty {
+                                Menu {
+                                    Picker(selection: $filter, label: EmptyView()) {
+                                        ForEach(schedule.tags.id, id: \.self) { id in
+                                            Text(schedule.tags.data[id]?.localized().name ?? id)
+                                                .tag(Filter.tag(id))
+                                        }
+                                    }
+                                } label: {
+                                    Label("Tags", systemImage: {
+                                        switch filter {
+                                        case .tag(_):
+                                            return "tag.fill"
+                                        default:
+                                            return "tag"
+                                        }
+                                    }())
+                                }
+                            }
+                            
+                            if let schedule = EventService.schedule, schedule.session_types.id.isNotEmpty {
+                                Menu {
+                                    Picker(selection: $filter, label: EmptyView()) {
+                                        ForEach(schedule.session_types.id, id: \.self) { id in
+                                            Text(schedule.session_types.data[id]?.localized().name ?? id)
+                                                .tag(Filter.type(id))
+                                        }
+                                    }
+                                } label: {
+                                    Label("Types", systemImage: {
+                                        switch filter {
+                                        case .type(_):
+                                            return "signpost.right.fill"
+                                        default:
+                                            return "signpost.right"
+                                        }
+                                    }())
+                                }
+                            }
+                            
+                            if let schedule = EventService.schedule, schedule.rooms.id.isNotEmpty {
+                                Menu {
+                                    Picker(selection: $filter, label: EmptyView()) {
+                                        ForEach(schedule.rooms.id, id: \.self) { id in
+                                            Text(schedule.rooms.data[id]?.localized().name ?? id)
+                                                .tag(Filter.room(id))
+                                        }
+                                    }
+                                } label: {
+                                    Label("Places", systemImage: {
+                                        switch filter {
+                                        case .room(_): return "map.fill"
+                                        default: return "map"
+                                        }
+                                    }())
+                                }
+                            }
+                            
+                            if let schedule = EventService.schedule, schedule.speakers.id.isNotEmpty {
+                                Menu {
+                                    Picker(selection: $filter, label: EmptyView()) {
+                                        ForEach(schedule.speakers.id, id: \.self) { id in
+                                            Text(schedule.speakers.data[id]?.localized().name ?? id)
+                                                .tag(Filter.speaker(id))
+                                        }
+                                    }
+                                } label: {
+                                    Label("Speakers", systemImage: {
+                                        switch filter {
+                                        case .speaker(_): return "person.fill"
+                                        default: return "person"
+                                        }
+                                    }())
+                                }
+                            }
+                        }
+                        .labelsHidden()
+                        .pickerStyle(.inline)
+                    } label: {
+                        Image(systemName: "line.3.horizontal.decrease.circle\(filter == .all ? "" : ".fill")")
+                    }
                 }
             }
         }
@@ -246,7 +252,7 @@ private struct SelectDayView: View {
     }
 }
 
-private struct SessionOverView: View {
+struct SessionOverView: View {
     
     @AppStorage("DimPastSession") var dimPastSession = true
     @AppStorage("PastSessionOpacity") var pastSessionOpacity: Double = 0.4

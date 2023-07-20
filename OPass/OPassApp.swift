@@ -9,6 +9,7 @@
 import SwiftUI
 import OneSignal
 import Firebase
+import FirebaseAppCheck
 import FirebaseAnalytics
 import OSLog
 
@@ -21,6 +22,7 @@ struct OPassApp: App {
     @State var url: URL? = nil
     
     init() {
+        AppCheck.setAppCheckProviderFactory(OPassAppCheckProviderFactory())
         FirebaseApp.configure()
         Analytics.setAnalyticsCollectionEnabled(true)
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).overrideUserInterfaceStyle = interfaceStyle
@@ -54,7 +56,6 @@ struct OPassApp: App {
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
         // Configure OneSignal
         let logger = Logger(subsystem: "app.opass.ccip", category: "OneSignal")
         let notificationReceiverBlock: OSNotificationWillShowInForegroundBlock = { notification,_  in
@@ -62,7 +63,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         }
         
         let notificationOpenedBlock: OSNotificationOpenedBlock = { result in
-            // This block gets called when the user reacts to a notification received
             let notification: OSNotification = result.notification
             
             var messageTitle = "OneSignal Message"
@@ -93,4 +93,14 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         
         return true
     }
+}
+
+class OPassAppCheckProviderFactory: NSObject, AppCheckProviderFactory {
+  func createProvider(with app: FirebaseApp) -> AppCheckProvider? {
+#if targetEnvironment(simulator)
+      return AppCheckDebugProvider(app: app)
+#else
+      return AppAttestProvider(app: app)
+#endif
+  }
 }

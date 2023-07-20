@@ -30,11 +30,24 @@ struct ContentView: View {
                         .environmentObject(EventService)
                         .navigationDestination(for: Router.mainDestination.self) { destination in
                             switch destination {
-                            case .fastpass:                FastpassView().environmentObject(EventService)
-                            case .schedule:                ScheduleView(EventService: EventService)
-                            case .sessionDetail(let data): SessionDetailView(data).environmentObject(EventService)
-                            case .ticket:                  TicketView().environmentObject(EventService)
-                            case .announcement:            AnnouncementView().environmentObject(EventService)
+                            case .fastpass:
+                                FastpassView().environmentObject(EventService)
+                                
+                            case .schedule:
+                                ScheduleView(EventService: EventService)
+                                
+                            case .scheduleSearch(let schedule):
+                                SearchScheduleView(schedule: schedule)
+                                    .environmentObject(EventService)
+                                
+                            case .sessionDetail(let data):
+                                SessionDetailView(data).environmentObject(EventService)
+                                
+                            case .ticket:
+                                TicketView().environmentObject(EventService)
+                                
+                            case .announcement:
+                                AnnouncementView().environmentObject(EventService)
                             }
                         }
                 case .loading:

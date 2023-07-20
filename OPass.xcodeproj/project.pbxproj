@@ -52,6 +52,8 @@
 		D366ADC82898413F00F33CEC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366ADC72898413F00F33CEC /* Constants.swift */; };
 		D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366D8EF27ED50CB00AA4267 /* MainView.swift */; };
 		D36A2FD82829F9C500EFBDB1 /* NEHotspot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */; };
+		D36E33C42A681916006D4159 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = D36E33C32A681916006D4159 /* FirebaseAppCheck */; };
+		D36E33C62A684CC8006D4159 /* Data+CryptoKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36E33C52A684CC8006D4159 /* Data+CryptoKit.swift */; };
 		D37BC4DA28A57F1B00449482 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37BC4D928A57F1B00449482 /* Alerts.swift */; };
 		D38E24C028C8DDC100D75337 /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = D38E24BF28C8DDC100D75337 /* OneSignalExtension */; };
 		D39512F5285A174F009B9AE8 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39512F4285A174F009B9AE8 /* EventEditView.swift */; };
@@ -85,6 +87,7 @@
 		D3EA819A27F747E100FE7985 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EA819927F747E100FE7985 /* TicketView.swift */; };
 		D3EFF36F28A12824004CD8DF /* AppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFF36E28A12824004CD8DF /* AppearanceView.swift */; };
 		D3F23B4F28166DEF00A0FB35 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3F23B5128166DEF00A0FB35 /* Localizable.strings */; };
+		D3F6C4C02A696884001BF3F8 /* ScheduleSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F6C4BF2A696884001BF3F8 /* ScheduleSearchView.swift */; };
 		D3FAD811285EFBD00025AE7A /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80A285EFBD00025AE7A /* RobotoCondensed-Bold.ttf */; };
 		D3FAD812285EFBD00025AE7A /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80B285EFBD00025AE7A /* RobotoCondensed-Light.ttf */; };
 		D3FAD813285EFBD00025AE7A /* RobotoCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80C285EFBD00025AE7A /* RobotoCondensed-Italic.ttf */; };
@@ -160,6 +163,7 @@
 		D366ADC72898413F00F33CEC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D366D8EF27ED50CB00AA4267 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHotspot.swift; sourceTree = "<group>"; };
+		D36E33C52A684CC8006D4159 /* Data+CryptoKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+CryptoKit.swift"; sourceTree = "<group>"; };
 		D37BC4D928A57F1B00449482 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		D39512F4285A174F009B9AE8 /* EventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
 		D39512F7285A370D009B9AE8 /* EKEventStore+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKEventStore+Extension.swift"; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 		D3EFF36E28A12824004CD8DF /* AppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceView.swift; sourceTree = "<group>"; };
 		D3F23B5228166DF600A0FB35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D3F23B5328166E0A00A0FB35 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D3F6C4BF2A696884001BF3F8 /* ScheduleSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSearchView.swift; sourceTree = "<group>"; };
 		D3FAD80A285EFBD00025AE7A /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		D3FAD80B285EFBD00025AE7A /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		D3FAD80C285EFBD00025AE7A /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; };
@@ -224,6 +229,7 @@
 				D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */,
 				D3E0123127D35D970040621F /* KeychainAccess in Frameworks */,
 				D33FB2FE28C21178006BBEF4 /* FirebaseAnalytics in Frameworks */,
+				D36E33C42A681916006D4159 /* FirebaseAppCheck in Frameworks */,
 				4F5EB73127D2311200235396 /* SwiftDate in Frameworks */,
 				D323C1F5282FE03C009AFF97 /* EFQRCode in Frameworks */,
 				D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */,
@@ -263,6 +269,7 @@
 				4F5CA37C27FD58D600DEAB39 /* Color+Extension.swift */,
 				D35562E728B7CA0800DBE367 /* String+Extension.swift */,
 				D3E2476C28BF553200B3E71A /* Collection+Extension.swift */,
+				D36E33C52A684CC8006D4159 /* Data+CryptoKit.swift */,
 			);
 			path = "Class+Extension";
 			sourceTree = "<group>";
@@ -271,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				D3C6195027CFA9A800643D97 /* ScheduleView.swift */,
+				D3F6C4BF2A696884001BF3F8 /* ScheduleSearchView.swift */,
 				D3C972F127F03531008561DE /* SessionDetailView.swift */,
 			);
 			path = Schedule;
@@ -567,6 +575,7 @@
 				D33FB2FF28C21178006BBEF4 /* FirebaseCrashlytics */,
 				D33FB30128C21178006BBEF4 /* FirebaseDynamicLinks */,
 				D33FB30328C21178006BBEF4 /* FirebasePerformance */,
+				D36E33C32A681916006D4159 /* FirebaseAppCheck */,
 			);
 			productName = OPass;
 			productReference = D3E4E6BB27CD158400FFACEB /* OPass.app */;
@@ -724,6 +733,8 @@
 				D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */,
 				4F5CA37D27FD58D600DEAB39 /* Color+Extension.swift in Sources */,
 				D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */,
+				D36E33C62A684CC8006D4159 /* Data+CryptoKit.swift in Sources */,
+				D3F6C4C02A696884001BF3F8 /* ScheduleSearchView.swift in Sources */,
 				D3B0B20528BBC4400001B311 /* DevelopersView.swift in Sources */,
 				D3652A792869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift in Sources */,
 				D3652A782869AF72002AC419 /* TextSizeViewModel.swift in Sources */,
@@ -1158,6 +1169,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D33FB2FC28C21178006BBEF4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebasePerformance;
+		};
+		D36E33C32A681916006D4159 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D33FB2FC28C21178006BBEF4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
 		};
 		D38E24BF28C8DDC100D75337 /* OneSignalExtension */ = {
 			isa = XCSwiftPackageProductDependency;
