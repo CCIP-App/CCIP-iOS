@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: Build test
-    runs-on: macos-latest
+    runs-on: macos-13
 
     steps:
       - name: Checkout
@@ -20,6 +20,8 @@ jobs:
           default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
           echo $default | cat >default
           echo Using default scheme: $default
+      - name: Select Xcode 14.3.1
+        run: sudo xcode-select -s /Applications/Xcode_14.3.1.app
       - name: Build
         env:
           scheme: ${{ 'default' }}
