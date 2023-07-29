@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchScheduleView: View {
-    let schedule: ScheduleModel
+    let schedule: Schedule
     @EnvironmentObject private var event: EventService
     
     @State private var searchText = ""
@@ -52,7 +52,7 @@ struct SearchScheduleView: View {
                             ForEach(result.data[header]!, id: \.id) { session in
                                 NavigationLink(value: Router.mainDestination.sessionDetail(session)) {
                                     SessionOverView(
-                                        room: schedule.rooms.data[session.room]?.localized().name ?? session.room,
+                                        room: schedule.rooms[session.room]?.localized().name ?? session.room,
                                         start: session.start,
                                         end: session.end,
                                         title: session.localized().title

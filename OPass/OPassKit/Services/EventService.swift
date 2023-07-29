@@ -35,7 +35,7 @@ class EventService: ObservableObject {
     @Published var logo_url: String
     @Published var logo_data: Data? = nil
     @Published var settings: SettingsModel
-    @Published var schedule: ScheduleModel? = nil
+    @Published var schedule: Schedule? = nil
     @Published var announcements: [AnnouncementModel]? = nil
     @Published var scenario_status: ScenarioStatusModel? = nil
     @AppStorage var user_id: String
@@ -279,7 +279,7 @@ class CodableEventService: Codable {
          logo_url: String,
          settings: SettingsModel,
          logo_data: Data?,
-         schedule: ScheduleModel?,
+         schedule: Schedule?,
          announcements: [AnnouncementModel]?,
          scenario_status: ScenarioStatusModel?) {
         self.event_id = event_id
@@ -297,7 +297,7 @@ class CodableEventService: Codable {
     var logo_url: String
     var settings: SettingsModel
     var logo_data: Data?
-    var schedule: ScheduleModel?
+    var schedule: Schedule?
     var announcements: [AnnouncementModel]?
     var scenario_status: ScenarioStatusModel?
 }

@@ -43,7 +43,7 @@ struct TicketView: View {
                                 Spacer()
                             }
                         }
-                        .listRowBackground(Color.transparent)
+                        .listRowBackground(Color.clear)
                         
                         Section(header: Text("Token"), footer: Text("TicketWarningContent")) {
                             HStack {

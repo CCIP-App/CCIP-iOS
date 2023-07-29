@@ -92,7 +92,7 @@ private struct ScheduleOptions: View {
             .background(Color("SectionBackgroundColor"))
             .cornerRadius(8)
         }
-        .listRowBackground(Color.transparent)
+        .listRowBackground(Color.clear)
         .listRowSeparator(.hidden)
         .listRowInsets(EdgeInsets(top: 0, leading: 10, bottom: 6, trailing: 10))
         

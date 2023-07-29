@@ -25,7 +25,7 @@ struct ScenarioView: View {
             Form {
                 FastpassLogoView()
                     .frame(height: UIScreen.main.bounds.width * 0.4)
-                    .listRowBackground(Color.transparent)
+                    .listRowBackground(Color.clear)
                 
                 ForEach(EventService.scenario_status?.scenarios.sectionID ?? [], id: \.self) { sectionID in
                     Section(header: Text(sectionID)) {

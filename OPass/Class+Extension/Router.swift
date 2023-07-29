@@ -20,7 +20,7 @@ final class Router: ObservableObject{
     enum mainDestination: Hashable, Codable {
         case fastpass
         case schedule
-        case scheduleSearch(ScheduleModel)
+        case scheduleSearch(Schedule)
         case sessionDetail(SessionDataModel)
         case ticket
         case announcement

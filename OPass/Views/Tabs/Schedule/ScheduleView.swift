@@ -50,7 +50,7 @@ struct ScheduleView: View {
                                     ForEach(filteredModel.data[header]!.sorted { $0.end < $1.end }, id: \.id) { detail in
                                         NavigationLink(value: Router.mainDestination.sessionDetail(detail)) {
                                             SessionOverView(
-                                                room: EventService.schedule?.rooms.data[detail.room]?.localized().name ?? detail.room,
+                                                room: EventService.schedule?.rooms[detail.room]?.localized().name ?? detail.room,
                                                 start: detail.start,
                                                 end: detail.end,
                                                 title: detail.localized().title
@@ -112,11 +112,11 @@ struct ScheduleView: View {
                             Label("Favorite", systemImage: "heart\(filter == .liked ? ".fill" : "")")
                                 .tag(Filter.liked)
                             
-                            if let schedule = EventService.schedule, schedule.tags.id.isNotEmpty {
+                            if let schedule = EventService.schedule, !schedule.tags.isEmpty {
                                 Menu {
                                     Picker(selection: $filter, label: EmptyView()) {
-                                        ForEach(schedule.tags.id, id: \.self) { id in
-                                            Text(schedule.tags.data[id]?.localized().name ?? id)
+                                        ForEach(schedule.tags.keys, id: \.self) { id in
+                                            Text(schedule.tags[id]?.localized().name ?? id)
                                                 .tag(Filter.tag(id))
                                         }
                                     }
@@ -132,11 +132,11 @@ struct ScheduleView: View {
                                 }
                             }
                             
-                            if let schedule = EventService.schedule, schedule.session_types.id.isNotEmpty {
+                            if let schedule = EventService.schedule, !schedule.types.isEmpty {
                                 Menu {
                                     Picker(selection: $filter, label: EmptyView()) {
-                                        ForEach(schedule.session_types.id, id: \.self) { id in
-                                            Text(schedule.session_types.data[id]?.localized().name ?? id)
+                                        ForEach(schedule.types.keys, id: \.self) { id in
+                                            Text(schedule.types[id]?.localized().name ?? id)
                                                 .tag(Filter.type(id))
                                         }
                                     }
@@ -152,11 +152,11 @@ struct ScheduleView: View {
                                 }
                             }
                             
-                            if let schedule = EventService.schedule, schedule.rooms.id.isNotEmpty {
+                            if let schedule = EventService.schedule, !schedule.rooms.isEmpty {
                                 Menu {
                                     Picker(selection: $filter, label: EmptyView()) {
-                                        ForEach(schedule.rooms.id, id: \.self) { id in
-                                            Text(schedule.rooms.data[id]?.localized().name ?? id)
+                                        ForEach(schedule.rooms.keys, id: \.self) { id in
+                                            Text(schedule.rooms[id]?.localized().name ?? id)
                                                 .tag(Filter.room(id))
                                         }
                                     }
@@ -170,11 +170,11 @@ struct ScheduleView: View {
                                 }
                             }
                             
-                            if let schedule = EventService.schedule, schedule.speakers.id.isNotEmpty {
+                            if let schedule = EventService.schedule, !schedule.speakers.isEmpty {
                                 Menu {
                                     Picker(selection: $filter, label: EmptyView()) {
-                                        ForEach(schedule.speakers.id, id: \.self) { id in
-                                            Text(schedule.speakers.data[id]?.localized().name ?? id)
+                                        ForEach(schedule.speakers.keys, id: \.self) { id in
+                                            Text(schedule.speakers[id]?.localized().name ?? id)
                                                 .tag(Filter.speaker(id))
                                         }
                                     }

@@ -9,6 +9,7 @@
 import SwiftUI
 import EventKit
 import SwiftDate
+import OrderedCollections
 
 struct SessionDetailView: View {
     
@@ -32,7 +33,7 @@ struct SessionDetailView: View {
         List {
             VStack(alignment: .leading, spacing: 0) {
                 if sessionData.tags.isNotEmpty, let schedule = EventService.schedule {
-                    TagsSection(tagsID: sessionData.tags, tags: schedule.tags.data)
+                    TagsSection(tags: schedule.tags)
                         .padding(.bottom, 8)
                         .padding(.top, 3.9)
                 }
@@ -52,13 +53,13 @@ struct SessionDetailView: View {
                     .padding(.vertical)
                 
                 if let type = sessionData.type {
-                    TypeSection(name: EventService.schedule?.session_types.data[type]?.localized().name ?? type)
+                    TypeSection(name: EventService.schedule?.types[type]?.localized().name ?? type)
                         .background(Color("SectionBackgroundColor"))
                         .cornerRadius(8)
                         .padding(.bottom)
                 }
                 
-                PlaceSection(name: EventService.schedule?.rooms.data[sessionData.room]?.localized().name ?? sessionData.room)
+                PlaceSection(name: EventService.schedule?.rooms[sessionData.room]?.localized().name ?? sessionData.room)
                     .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
                     .padding(.bottom)
@@ -74,7 +75,7 @@ struct SessionDetailView: View {
                         .padding(.top)
                 }
             }
-            .listRowBackground(Color.transparent)
+            .listRowBackground(Color.clear)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             
             if sessionData.speakers.isNotEmpty {
@@ -104,7 +105,7 @@ struct SessionDetailView: View {
                             title: String(localized: "SessionWillStartIn5Minutes"),
                             content: String(format: String(localized: "SessionWillStartIn5MinutesContent"),
                                             sessionData.en.title,
-                                            EventService.schedule?.rooms.data[sessionData.room]?.en.name ?? ""),
+                                            EventService.schedule?.rooms[sessionData.room]?.en.name ?? ""),
                             rawTime: sessionData.start,
                             cancel: isLiked
                         )
@@ -184,14 +185,13 @@ extension String: Identifiable {
 private struct TagsSection: View {
     
     @Environment(\.colorScheme) var colorScheme
-    let tagsID: [String]
-    let tags: [String : Name_DescriptionPair]
+    let tags: OrderedDictionary<String, Tag>
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(tagsID, id: \.self) { tagID in
-                    Text(tags[tagID]?.localized().name ?? tagID)
+                ForEach(tags.keys, id: \.self) { key in
+                    Text(tags[key]?.localized().name ?? key)
                         .font(.caption)
                         .padding(.vertical, 2)
                         .padding(.horizontal, 8)
@@ -348,10 +348,10 @@ private struct TimeSection: View {
 
 private struct BroadcastSection: View {
     
-    let schedule: ScheduleModel?
+    let schedule: Schedule?
     let broadcast: [String]
     
-    init(_ schedule: ScheduleModel?, broadcast: [String]) {
+    init(_ schedule: Schedule?, broadcast: [String]) {
         self.schedule = schedule
         self.broadcast = broadcast
     }
@@ -378,7 +378,7 @@ private struct BroadcastSection: View {
     private func renderRoomsString() -> String {
         var result = ""
         for (offset, room) in broadcast.enumerated() {
-            if let name = schedule?.rooms.data[room]?.localized().name {
+            if let name = schedule?.rooms[room]?.localized().name {
                 result.append(name)
                 if offset < broadcast.count - 1 {
                     result.append(LocalizeIn(zh: "、", en: ", "))
@@ -399,10 +399,10 @@ private struct SpeakersSections: View {
             ForEach(sessionData.speakers, id: \.self) { speaker in
                 SpeakerBlock(
                     speaker: speaker,
-                    speakerData: EventService.schedule?.speakers.data[speaker]
+                    speakerData: EventService.schedule?.speakers[speaker]
                 )
             }
-            .listRowBackground(Color.transparent)
+            .listRowBackground(Color.clear)
             .listRowSeparator(.hidden)
         }
         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
@@ -412,7 +412,7 @@ private struct SpeakersSections: View {
 private struct SpeakerBlock: View {
     
     let speaker: String
-    let speakerData: SpeakerModel?
+    let speakerData: Speaker?
     @State var avatarImage: Image? = nil
     
     var body: some View {

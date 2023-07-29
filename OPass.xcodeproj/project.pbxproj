@@ -13,7 +13,6 @@
 		4F48B5D427CF07910010FC2C /* eventListSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D327CF07910010FC2C /* eventListSample.json */; };
 		4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */; };
 		4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */; };
-		4F5CA37D27FD58D600DEAB39 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5CA37C27FD58D600DEAB39 /* Color+Extension.swift */; };
 		4F5EB73127D2311200235396 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 4F5EB73027D2311200235396 /* SwiftDate */; };
 		4F5EB73527D3346D00235396 /* JsonDecodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EB73427D3346D00235396 /* JsonDecodeHelper.swift */; };
 		4F5EB73827D3648100235396 /* AnnouncementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EB73727D3648100235396 /* AnnouncementView.swift */; };
@@ -56,6 +55,11 @@
 		D36E33C62A684CC8006D4159 /* Data+CryptoKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36E33C52A684CC8006D4159 /* Data+CryptoKit.swift */; };
 		D37BC4DA28A57F1B00449482 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37BC4D928A57F1B00449482 /* Alerts.swift */; };
 		D38E24C028C8DDC100D75337 /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = D38E24BF28C8DDC100D75337 /* OneSignalExtension */; };
+		D394440D2A75371A00EE2021 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = D394440C2A75371A00EE2021 /* OrderedCollections */; };
+		D394440F2A75383400EE2021 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D394440E2A75383400EE2021 /* Speaker.swift */; };
+		D39444112A754A2F00EE2021 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39444102A754A2F00EE2021 /* Tag.swift */; };
+		D39444132A754EF200EE2021 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39444122A754EF200EE2021 /* Localizable.swift */; };
+		D39444152A755F4C00EE2021 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39444142A755F4C00EE2021 /* Session.swift */; };
 		D39512F5285A174F009B9AE8 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39512F4285A174F009B9AE8 /* EventEditView.swift */; };
 		D39512F8285A370D009B9AE8 /* EKEventStore+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39512F7285A370D009B9AE8 /* EKEventStore+Extension.swift */; };
 		D3A00F1F27D837D00097A6AB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00F1E27D837D00097A6AB /* NotificationService.swift */; };
@@ -65,7 +69,7 @@
 		D3B0B20528BBC4400001B311 /* DevelopersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B0B20428BBC4400001B311 /* DevelopersView.swift */; };
 		D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C0E21927D51B460095169F /* NetworkExtension.framework */; };
 		D3C0E21C27D51C060095169F /* WifiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0E21B27D51C060095169F /* WifiView.swift */; };
-		D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194727CF864B00643D97 /* ScheduleModel.swift */; };
+		D3C6194827CF864B00643D97 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194727CF864B00643D97 /* Schedule.swift */; };
 		D3C6194D27CF9A7400643D97 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingsView.swift */; };
 		D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6195027CFA9A800643D97 /* ScheduleView.swift */; };
 		D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3C6F60C28634F3B0074B942 /* MarkdownKit */; };
@@ -131,7 +135,6 @@
 		4F48B5D327CF07910010FC2C /* eventListSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventListSample.json; sourceTree = "<group>"; };
 		4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPISampleExt.swift; sourceTree = "<group>"; };
 		4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventSettingsSample.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
-		4F5CA37C27FD58D600DEAB39 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		4F5EB73427D3346D00235396 /* JsonDecodeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecodeHelper.swift; sourceTree = "<group>"; };
 		4F5EB73727D3648100235396 /* AnnouncementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementView.swift; sourceTree = "<group>"; };
 		4F5EB73927D37D4A00235396 /* announcementSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = announcementSample.json; sourceTree = "<group>"; };
@@ -165,6 +168,10 @@
 		D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHotspot.swift; sourceTree = "<group>"; };
 		D36E33C52A684CC8006D4159 /* Data+CryptoKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+CryptoKit.swift"; sourceTree = "<group>"; };
 		D37BC4D928A57F1B00449482 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		D394440E2A75383400EE2021 /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
+		D39444102A754A2F00EE2021 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		D39444122A754EF200EE2021 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		D39444142A755F4C00EE2021 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		D39512F4285A174F009B9AE8 /* EventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
 		D39512F7285A370D009B9AE8 /* EKEventStore+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKEventStore+Extension.swift"; sourceTree = "<group>"; };
 		D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,7 +184,7 @@
 		D3C0E21727D51B460095169F /* OPass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OPass.entitlements; sourceTree = "<group>"; };
 		D3C0E21927D51B460095169F /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		D3C0E21B27D51C060095169F /* WifiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiView.swift; sourceTree = "<group>"; };
-		D3C6194727CF864B00643D97 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
+		D3C6194727CF864B00643D97 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		D3C6194C27CF9A7400643D97 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = OPass/Views/Tabs/Settings/SettingsView.swift; sourceTree = SOURCE_ROOT; };
 		D3C6195027CFA9A800643D97 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleView.swift; path = OPass/Views/Tabs/Schedule/ScheduleView.swift; sourceTree = SOURCE_ROOT; };
 		D3C6F60E286360FC0074B942 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
@@ -236,6 +243,7 @@
 				D33FB30028C21178006BBEF4 /* FirebaseCrashlytics in Frameworks */,
 				D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */,
 				D3A00F2A27D838920097A6AB /* OneSignal in Frameworks */,
+				D394440D2A75371A00EE2021 /* OrderedCollections in Frameworks */,
 				D33FB30228C21178006BBEF4 /* FirebaseDynamicLinks in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,7 +274,6 @@
 				D340120F2821349200D07034 /* View+Extension.swift */,
 				D39512F7285A370D009B9AE8 /* EKEventStore+Extension.swift */,
 				4F9E9B4D2813F0A300A14905 /* Array+Extension.swift */,
-				4F5CA37C27FD58D600DEAB39 /* Color+Extension.swift */,
 				D35562E728B7CA0800DBE367 /* String+Extension.swift */,
 				D3E2476C28BF553200B3E71A /* Collection+Extension.swift */,
 				D36E33C52A684CC8006D4159 /* Data+CryptoKit.swift */,
@@ -406,12 +413,16 @@
 		D3D3788327CE441200021FC4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D3C6194727CF864B00643D97 /* ScheduleModel.swift */,
+				D3C6194727CF864B00643D97 /* Schedule.swift */,
 				D3D3789227CE70EE00021FC4 /* SettingsModel.swift */,
 				D3E0123227D3667C0040621F /* ScenarioStatusModel.swift */,
 				4F35B17B27D3850B0023621F /* AnnouncementModel.swift */,
 				D3D3788A27CE542100021FC4 /* MoreModels.swift */,
 				4F8522E02817D4C00015BB13 /* EventTitleModel.swift */,
+				D394440E2A75383400EE2021 /* Speaker.swift */,
+				D39444102A754A2F00EE2021 /* Tag.swift */,
+				D39444122A754EF200EE2021 /* Localizable.swift */,
+				D39444142A755F4C00EE2021 /* Session.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -576,6 +587,7 @@
 				D33FB30128C21178006BBEF4 /* FirebaseDynamicLinks */,
 				D33FB30328C21178006BBEF4 /* FirebasePerformance */,
 				D36E33C32A681916006D4159 /* FirebaseAppCheck */,
+				D394440C2A75371A00EE2021 /* OrderedCollections */,
 			);
 			productName = OPass;
 			productReference = D3E4E6BB27CD158400FFACEB /* OPass.app */;
@@ -617,6 +629,7 @@
 				D323C1F3282FE03C009AFF97 /* XCRemoteSwiftPackageReference "EFQRCode" */,
 				D3C6F60B28634F3A0074B942 /* XCRemoteSwiftPackageReference "MarkdownKit" */,
 				D33FB2FC28C21178006BBEF4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D394440B2A75371A00EE2021 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = D3E4E6BC27CD158400FFACEB /* Products */;
 			projectDirPath = "";
@@ -710,6 +723,7 @@
 				D3D3789327CE70EE00021FC4 /* SettingsModel.swift in Sources */,
 				D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */,
 				4F22826327DD8C5E0030D73E /* FeatureHelper.swift in Sources */,
+				D39444112A754A2F00EE2021 /* Tag.swift in Sources */,
 				D3C6F60F286360FC0074B942 /* Markdown.swift in Sources */,
 				D3E2476D28BF553200B3E71A /* Collection+Extension.swift in Sources */,
 				D3EA819A27F747E100FE7985 /* TicketView.swift in Sources */,
@@ -730,8 +744,7 @@
 				4F5EB73527D3346D00235396 /* JsonDecodeHelper.swift in Sources */,
 				D366ADC82898413F00F33CEC /* Constants.swift in Sources */,
 				D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */,
-				D3C6194827CF864B00643D97 /* ScheduleModel.swift in Sources */,
-				4F5CA37D27FD58D600DEAB39 /* Color+Extension.swift in Sources */,
+				D3C6194827CF864B00643D97 /* Schedule.swift in Sources */,
 				D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */,
 				D36E33C62A684CC8006D4159 /* Data+CryptoKit.swift in Sources */,
 				D3F6C4C02A696884001BF3F8 /* ScheduleSearchView.swift in Sources */,
@@ -742,17 +755,20 @@
 				D358E55827EDEDB2000A6554 /* FastpassView.swift in Sources */,
 				D36A2FD82829F9C500EFBDB1 /* NEHotspot.swift in Sources */,
 				D3E0123827D38D3D0040621F /* RedeemTokenView.swift in Sources */,
+				D39444132A754EF200EE2021 /* Localizable.swift in Sources */,
 				D3A94D03281E62530053FEFA /* ErrorView.swift in Sources */,
 				D37BC4DA28A57F1B00449482 /* Alerts.swift in Sources */,
 				4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */,
 				D314B66F27D1089200481D5E /* EventService.swift in Sources */,
 				D301C39428053ED600D027FE /* ActivityIndicator.swift in Sources */,
+				D39444152A755F4C00EE2021 /* Session.swift in Sources */,
 				D324EF08286EB9B7004D03D6 /* UIApplication+Extension.swift in Sources */,
 				D39512F5285A174F009B9AE8 /* EventEditView.swift in Sources */,
 				4FEF38FB27D13FBA00FC97F4 /* APIManager.swift in Sources */,
 				D3652A7B2869AF72002AC419 /* AttributedTextImpl.swift in Sources */,
 				D3EFF36F28A12824004CD8DF /* AppearanceView.swift in Sources */,
 				D3C0E21C27D51C060095169F /* WifiView.swift in Sources */,
+				D394440F2A75383400EE2021 /* Speaker.swift in Sources */,
 				D3E4E6BF27CD158400FFACEB /* OPassApp.swift in Sources */,
 				4F6968A627EBCB5E009073E4 /* SFButton.swift in Sources */,
 				4F5EB73827D3648100235396 /* AnnouncementView.swift in Sources */,
@@ -1108,6 +1124,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		D394440B2A75371A00EE2021 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
@@ -1179,6 +1203,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
 			productName = OneSignalExtension;
+		};
+		D394440C2A75371A00EE2021 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D394440B2A75371A00EE2021 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
 		};
 		D3A00F2927D838920097A6AB /* OneSignal */ = {
 			isa = XCSwiftPackageProductDependency;

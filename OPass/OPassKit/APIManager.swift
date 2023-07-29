@@ -94,7 +94,7 @@ extension APIManager {
         return try await fetch(from: scenario == nil ? .status(url, token) : .use(url, scenario!, token))
     }
     
-    public static func fetchSchedule(@Feature(.schedule) from feature: FeatureModel?) async throws -> ScheduleModel {
+    public static func fetchSchedule(@Feature(.schedule) from feature: FeatureModel?) async throws -> Schedule {
         guard let feature = feature else {
             logger.critical("Can't find correct schedule feature")
             throw LoadError.uncorrectFeature("schedule")
