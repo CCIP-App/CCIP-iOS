@@ -56,7 +56,7 @@ struct FastpassView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {
-                    if let displayText = EventService.settings.feature(ofType: .fastpass)?.display_text {
+                    if let displayText = EventService.settings.feature(.fastpass)?.title {
                         Text(displayText.localized()).font(.headline)
                     }
                     Text(EventService.display_name.localized())

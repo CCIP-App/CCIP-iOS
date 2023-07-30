@@ -91,7 +91,7 @@ struct TicketView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if let displayText = EventService.settings.feature(ofType: .ticket)?.display_text {
+            if let displayText = EventService.settings.feature(.ticket)?.title {
                 ToolbarItem(placement: .principal) {
                     Text(displayText.localized()).font(.headline)
                 }

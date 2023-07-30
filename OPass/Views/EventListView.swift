@@ -34,7 +34,7 @@ struct EventListView: View {
     }
     
     var list: some View {
-        List(viewModel.listedEvents, id: \.event_id) { event in
+        List(viewModel.listedEvents) { event in
             EventRow(event: event, dismiss: _dismiss)
         }
         .searchable(text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .automatic))
@@ -71,7 +71,7 @@ struct EventListView: View {
 }
 
 private struct EventRow: View {
-    let event: EventTitleModel
+    let event: Event
     
     @EnvironmentObject var OPassService: OPassService
     @Environment(\.colorScheme) var colorScheme
@@ -81,12 +81,12 @@ private struct EventRow: View {
     private let logger = Logger(subsystem: "app.opass.ccip", category: "EventListView")
     var body: some View {
         Button {
-            OPassService.currentEventID = event.event_id
+            OPassService.currentEventID = event.id
             OPassService.currentEventLogo = preloadLogoImage
             dismiss()
         } label: {
             HStack {
-                AsyncImage(url: URL(string: event.logo_url), transaction: Transaction(animation: .spring())) { phase in
+                AsyncImage(url: URL(string: event.logoUrl), transaction: Transaction(animation: .spring())) { phase in
                     switch phase {
                     case .empty:
                         ProgressView()
@@ -110,7 +110,7 @@ private struct EventRow: View {
                 .padding(.horizontal, 3)
                 .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.15)
                 
-                Text(event.display_name.localized())
+                Text(event.title.localized())
                     .foregroundColor(colorScheme == .dark ? .white : .black)
                 
                 Spacer()
@@ -124,15 +124,15 @@ private struct EventRow: View {
 
 @MainActor
 private class EventListViewModel: ObservableObject {
-    @Published var events: [EventTitleModel] = []
+    @Published var events: [Event] = []
     @Published var searchQuery: String = ""
     @Published var error: Error? = nil
     
-    var listedEvents: [EventTitleModel] {
+    var listedEvents: [Event] {
         if searchQuery.isEmpty { return events }
         else {
             return events.filter { event in
-                let name = event.display_name.localized().lowercased()
+                let name = event.title.localized().lowercased()
                 for component in searchQuery.tirm().lowercased().components(separatedBy: " ") {
                     let component = component.tirm()
                     if component.isEmpty { continue }

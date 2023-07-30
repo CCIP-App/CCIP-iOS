@@ -44,7 +44,7 @@ final class APIManager {
         case invalidURL(CCIPEndpoint)
         case fetchFaild(Error)
         case decodeFaild(Error)
-        case missingURL(FeatureModel)
+        case missingURL(Feature)
         case uncorrectFeature(String)
         case forbidden
         
@@ -69,17 +69,17 @@ final class APIManager {
 
 extension APIManager {
     // MARK: - OPass
-    public static func fetchEvents() async throws -> [EventTitleModel] {
+    public static func fetchEvents() async throws -> [Event] {
         return try await fetch(from: .events)
     }
     
-    public static func fetchConfig(for event: String) async throws -> SettingsModel {
+    public static func fetchConfig(for event: String) async throws -> EventConfig {
         return try await fetch(from: .config(event))
     }
     
     // MARK: - Event
     public static func fetchStatus(
-        @Feature(.fastpass) from feature: FeatureModel?,
+        @Extract(.fastpass) from feature: Feature?,
         token: String,
         scenario: String? = nil
     ) async throws -> ScenarioStatusModel {
@@ -94,7 +94,7 @@ extension APIManager {
         return try await fetch(from: scenario == nil ? .status(url, token) : .use(url, scenario!, token))
     }
     
-    public static func fetchSchedule(@Feature(.schedule) from feature: FeatureModel?) async throws -> Schedule {
+    public static func fetchSchedule(@Extract(.schedule) from feature: Feature?) async throws -> Schedule {
         guard let feature = feature else {
             logger.critical("Can't find correct schedule feature")
             throw LoadError.uncorrectFeature("schedule")
@@ -107,9 +107,9 @@ extension APIManager {
     }
     
     public static func fetchAnnouncement(
-        @Feature(.announcement) from feature: FeatureModel?,
+        @Extract(.announcement) from feature: Feature?,
         token: String? = nil
-    ) async throws -> [AnnouncementModel] {
+    ) async throws -> [Announcement] {
         guard let feature = feature else {
             logger.critical("Can't find correct announcement feature")
             throw LoadError.uncorrectFeature("announcement")

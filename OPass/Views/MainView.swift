@@ -47,7 +47,7 @@ struct MainView: View {
             ScrollView {
                 LazyVGrid(columns: gridItemLayout) {
                     ForEach(EventService.settings.features, id: \.self) { feature in
-                        if FeatureIsAvailable(feature), FeatureIsVisible(feature.visible_roles) {
+                        if FeatureIsAvailable(feature), FeatureIsVisible(feature.visibleRoles) {
                             VStack {
                                 TabButton(feature: feature, width: UIScreen.main.bounds.width / 5.394136)
                                     .aspectRatio(contentMode: .fill)
@@ -60,7 +60,7 @@ struct MainView: View {
                                         height: UIScreen.main.bounds.width / 27.6
                                     )))
                                 
-                                Text(feature.display_text.localized())
+                                Text(feature.title.localized())
                                     .font(.custom("RobotoCondensed-Regular", size: 11, relativeTo: .caption2))
                                     .multilineTextAlignment(.center)
                                     .fixedSize(horizontal: false, vertical: true)
@@ -71,7 +71,7 @@ struct MainView: View {
             }.padding(.horizontal)
         }
     }
-    private func FeatureIsAvailable(_ feature: FeatureModel) -> Bool {
+    private func FeatureIsAvailable(_ feature: Feature) -> Bool {
         let t = feature.feature
         guard t == .im || t == .puzzle || t == .venue || t == .sponsors || t == .staffs || t == .webview else { return true }
         return feature.url(token: EventService.user_token, role: EventService.scenario_status?.role) != nil
@@ -84,7 +84,7 @@ struct MainView: View {
 }
 
 private struct TabButton: View {
-    let feature: FeatureModel, width: CGFloat
+    let feature: Feature, width: CGFloat
     @EnvironmentObject var EventService: EventService
     @EnvironmentObject var router: Router
     @Environment(\.colorScheme) var colorScheme
@@ -99,7 +99,7 @@ private struct TabButton: View {
             case .announcement: router.path.append(Router.mainDestination.announcement)
             case .wifi:
                 if let wifi = feature.wifi, wifi.count == 1 {
-                    NEHotspot.ConnectWiFi(SSID: wifi[0].SSID, withPass: wifi[0].password)
+                    NEHotspot.ConnectWiFi(SSID: wifi[0].ssid, withPass: wifi[0].password)
                 } else { self.presentingWifiSheet.toggle() }
             case .telegram:
                 if let url = URL(string: feature.url ?? "") {
@@ -134,7 +134,7 @@ private struct TabButton: View {
         }
     }
     
-    private func FeatureIsWebView(_ feature: FeatureModel) -> Bool {
+    private func FeatureIsWebView(_ feature: Feature) -> Bool {
         let t = feature.feature
         if t == .im || t == .puzzle || t == .venue || t == .sponsors || t == .staffs || t == .webview { return true }
         return false

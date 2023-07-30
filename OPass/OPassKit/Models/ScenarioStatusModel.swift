@@ -94,7 +94,7 @@ struct ScenarioModel: Hashable, Codable {
 
 struct ScenarioDataModel: Hashable, Codable, Identifiable {
     var order: Int = 0
-    var display_text = DisplayTextModel_CountryCode()
+    var display_text: LocalizedCodeString
     var available_time: DateInRegion
     var expire_time: DateInRegion
     var disabled: String? = nil
@@ -107,7 +107,7 @@ struct ScenarioDataModel: Hashable, Codable, Identifiable {
 
 struct RawScenarioDataModel: Hashable, Codable {
     var order: Int = 0
-    var display_text = DisplayTextModel_CountryCode()
+    var display_text: LocalizedCodeString
     @TransformWith<IntergerToDateTransform> var available_time: DateInRegion
     @TransformWith<IntergerToDateTransform> var expire_time: DateInRegion
     var disabled: String? = nil

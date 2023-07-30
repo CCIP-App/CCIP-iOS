@@ -8,7 +8,7 @@
 
 import OrderedCollections
 
-struct Speaker: Hashable, Codable, Localizable {
+struct Speaker: Hashable, Codable, Identifiable, Localizable {
     var id: String
     var avatar: String
     var zh: SpeakerDetail

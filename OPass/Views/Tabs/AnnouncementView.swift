@@ -111,7 +111,7 @@ struct AnnouncementView: View {
         .listStyle(.insetGrouped)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if let displayText = EventService.settings.feature(ofType: .announcement)?.display_text {
+            if let displayText = EventService.settings.feature(.announcement)?.title {
                 ToolbarItem(placement: .principal) {
                     Text(displayText.localized()).font(.headline)
                 }

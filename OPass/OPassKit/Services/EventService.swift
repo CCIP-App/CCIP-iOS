@@ -13,30 +13,30 @@ import OSLog
 class EventService: ObservableObject {
     
     init(
-        _ settings: SettingsModel,
+        _ settings: EventConfig,
         logo_data: Data? = nil,
         saveData: @escaping () async -> Void = {},
         tmpData: CodableEventService? = nil
     ) {
-        self.event_id = settings.event_id
-        self.display_name = settings.display_name
-        self.logo_url = settings.logo_url
+        self.event_id = settings.id
+        self.display_name = settings.title
+        self.logo_url = settings.logoUrl
         self.logo_data = logo_data
         self.settings = settings
         self.save = saveData
-        self._user_id = AppStorage(wrappedValue: "nil", "user_id", store: .init(suiteName: settings.event_id))
-        self._user_role = AppStorage(wrappedValue: "nil", "user_role", store: .init(suiteName: settings.event_id))
-        self._liked_sessions = AppStorage(wrappedValue: [], "liked_sessions", store: .init(suiteName: settings.event_id))
+        self._user_id = AppStorage(wrappedValue: "nil", "user_id", store: .init(suiteName: settings.id))
+        self._user_role = AppStorage(wrappedValue: "nil", "user_role", store: .init(suiteName: settings.id))
+        self._liked_sessions = AppStorage(wrappedValue: [], "liked_sessions", store: .init(suiteName: settings.id))
         self.eventAPITmpData = tmpData
     }
     
     @Published var event_id: String
-    @Published var display_name: DisplayTextModel
+    @Published var display_name: LocalizedString
     @Published var logo_url: String
     @Published var logo_data: Data? = nil
-    @Published var settings: SettingsModel
+    @Published var settings: EventConfig
     @Published var schedule: Schedule? = nil
-    @Published var announcements: [AnnouncementModel]? = nil
+    @Published var announcements: [Announcement]? = nil
     @Published var scenario_status: ScenarioStatusModel? = nil
     @AppStorage var user_id: String
     @AppStorage var user_role: String
@@ -74,7 +74,7 @@ class EventService: ObservableObject {
 extension EventService {
     ///Return bool to indicate success or not
     func useScenario(scenario: String) async throws -> Bool{
-        @Feature(.fastpass, in: settings) var fastpassFeature
+        @Extract(.fastpass, in: settings) var fastpassFeature
         
         guard let fastpassFeature = fastpassFeature else {
             logger.critical("Can't find correct fastpass feature")
@@ -109,7 +109,7 @@ extension EventService {
             return false
         }
         
-        @Feature(.fastpass, in: settings) var fastpassFeature
+        @Extract(.fastpass, in: settings) var fastpassFeature
         
         guard let fastpassFeature = fastpassFeature else {
             logger.critical("Can't find correct fastpass feature")
@@ -133,7 +133,7 @@ extension EventService {
     }
     
     func loadScenarioStatus() async throws {
-        @Feature(.fastpass, in: settings) var fastpassFeature
+        @Extract(.fastpass, in: settings) var fastpassFeature
         
         guard let fastpassFeature = fastpassFeature else {
             logger.critical("Can't find correct fastpass feature")
@@ -170,7 +170,7 @@ extension EventService {
     func loadLogos() async {
         //Load Event Logo
         let icons: [Int: Data] = await withTaskGroup(of: (Int, Data?).self) { group in
-            let logo_url = settings.logo_url
+            let logo_url = settings.logoUrl
             let webViewFeatureIndex = settings.features.enumerated().filter({ $0.element.feature == .webview }).map { $0.offset }
             
             group.addTask { (-1, try? await APIManager.fetchData(from: logo_url)) }
@@ -202,7 +202,7 @@ extension EventService {
     }
     
     func loadSchedule() async throws {
-        @Feature(.schedule, in: settings) var scheduleFeature
+        @Extract(.schedule, in: settings) var scheduleFeature
         
         guard let scheduleFeature = scheduleFeature else {
             logger.critical("Can't find correct schedule feature")
@@ -226,7 +226,7 @@ extension EventService {
     }
     
     func loadAnnouncements() async throws {
-        @Feature(.announcement, in: settings) var announcementFeature
+        @Extract(.announcement, in: settings) var announcementFeature
         
         guard let announcementFeature = announcementFeature else {
             logger.critical("Can't find correct announcement feature")
@@ -275,12 +275,12 @@ extension String {
 // MARK: - Codable EventService
 class CodableEventService: Codable {
     init(event_id: String,
-         display_name: DisplayTextModel,
+         display_name: LocalizedString,
          logo_url: String,
-         settings: SettingsModel,
+         settings: EventConfig,
          logo_data: Data?,
          schedule: Schedule?,
-         announcements: [AnnouncementModel]?,
+         announcements: [Announcement]?,
          scenario_status: ScenarioStatusModel?) {
         self.event_id = event_id
         self.display_name = display_name
@@ -293,11 +293,11 @@ class CodableEventService: Codable {
     }
     
     var event_id: String
-    var display_name: DisplayTextModel
+    var display_name: LocalizedString
     var logo_url: String
-    var settings: SettingsModel
+    var settings: EventConfig
     var logo_data: Data?
     var schedule: Schedule?
-    var announcements: [AnnouncementModel]?
+    var announcements: [Announcement]?
     var scenario_status: ScenarioStatusModel?
 }

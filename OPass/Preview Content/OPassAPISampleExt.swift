@@ -26,16 +26,16 @@ func loadJson<T: Decodable>(filename: String) -> T {
 extension OPassService {
     static func mock() -> OPassService {
         let model = OPassService()
-        let list: [EventTitleModel] = loadJson(filename: "eventListSample.json")
-        let settings: SettingsModel = loadJson(filename: "eventSettingsSample.json")
-        model.currentEventID = list[0].event_id
+        let list: [Event] = loadJson(filename: "eventListSample.json")
+        let settings: EventConfig = loadJson(filename: "eventSettingsSample.json")
+        model.currentEventID = list[0].id
         model.currentEventAPI = EventService(settings)
         return model
     }
 }
 
-extension SettingsModel {
-    static func mock() -> SettingsModel {
+extension EventConfig {
+    static func mock() -> EventConfig {
         return loadJson(filename: "eventSettingsSample.json")
     }
 }

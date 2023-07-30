@@ -8,6 +8,7 @@
 
 import SwiftUI
 import SwiftDate
+import OrderedCollections
 
 struct ScheduleView: View {
     
@@ -20,34 +21,40 @@ struct ScheduleView: View {
     init(EventService: EventService) {
         self.EventService = EventService
         if AppStorage(wrappedValue: true, "AutoSelectScheduleDay").wrappedValue {
-            self.selectDayIndex = EventService.schedule?.sessions.count == 1 ? 0 : EventService.schedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0
+            self.selectDayIndex = EventService.schedule?.sessions.count == 1 ? 0 : EventService.schedule?.sessions.firstIndex { $0.keys[0].isToday } ?? 0
         } else { self.selectDayIndex = 0 }
+    }
+
+    private var filteredSessions: OrderedDictionary<DateInRegion, [Session]>? {
+        guard let schedule = EventService.schedule else { return nil }
+        return schedule.sessions[selectDayIndex].compactMapValues { sessions in
+            let sessions = sessions.filter { session in
+                switch filter {
+                case .all: return true
+                case .liked: return EventService.liked_sessions.contains(session.id)
+                case .tag(let tag): return session.tags.contains(tag)
+                case .type(let type): return session.type == type
+                case .room(let room): return session.room == room
+                case .speaker(let speaker): return session.speakers.contains(speaker)
+                }
+            }
+            return sessions.isEmpty ? nil : sessions
+        }
     }
     
     var body: some View {
         VStack {
             if !isError {
-                if let allScheduleData = EventService.schedule {
+                if let schedule = EventService.schedule, let filteredModel = filteredSessions {
                     VStack(spacing: 0) {
-                        if allScheduleData.sessions.count > 1 {
-                            SelectDayView(selectDayIndex: $selectDayIndex, sessions: allScheduleData.sessions)
+                        if schedule.sessions.count > 1 {
+                            SelectDayView(selectDayIndex: $selectDayIndex, sessions: schedule.sessions)
                                 .background(Color("SectionBackgroundColor"))
                         }
-                        
-                        let filteredModel = allScheduleData.sessions[selectDayIndex].filter { session in
-                            switch filter {
-                            case .all: return true
-                            case .liked: return EventService.liked_sessions.contains(session.id)
-                            case .tag(let tag): return session.tags.contains(tag)
-                            case .type(let type): return session.type == type
-                            case .room(let room): return session.room == room
-                            case .speaker(let speaker): return session.speakers.contains(speaker)
-                            }
-                        }
                         Form {
-                            ForEach(filteredModel.header, id: \.self) { header in
+                            ForEach(filteredModel.keys, id: \.self) { header in
                                 Section {
-                                    ForEach(filteredModel.data[header]!.sorted { $0.end < $1.end }, id: \.id) { detail in
+                                    ForEach(filteredModel[header]!) { detail in
                                         NavigationLink(value: Router.mainDestination.sessionDetail(detail)) {
                                             SessionOverView(
                                                 room: EventService.schedule?.rooms[detail.room]?.localized().name ?? detail.room,
@@ -93,7 +100,7 @@ struct ScheduleView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Text(EventService.settings.feature(ofType: .schedule)?.display_text.localized() ?? "Schedule").font(.headline)
+                Text(EventService.settings.feature(.schedule)?.title.localized() ?? "Schedule").font(.headline)
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -202,7 +209,7 @@ struct ScheduleView: View {
         do {
             try await EventService.loadSchedule()
             if EventService.schedule?.sessions.count ?? 0 > 1, autoSelectScheduleDay{
-                self.selectDayIndex = EventService.schedule?.sessions.firstIndex { $0.header[0].isToday } ?? 0
+                self.selectDayIndex = EventService.schedule?.sessions.firstIndex { $0.keys[0].isToday } ?? 0
             }
         }
         catch { isError = true }
@@ -221,7 +228,7 @@ private struct SelectDayView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @Binding var selectDayIndex: Int
-    let sessions: [SessionModel]
+    let sessions: [OrderedDictionary<DateInRegion, [Session]>]
     private let weekDayName: [LocalizedStringKey] = ["SUN", "MON", "TUE", "WEN", "THR", "FRI", "SAT"]
     
     var body: some View {
@@ -232,9 +239,9 @@ private struct SelectDayView: View {
                         self.selectDayIndex = index
                     } label: {
                         VStack(alignment: .center, spacing: 0) {
-                            Text(weekDayName[sessions[index].header[0].weekday - 1])
+                            Text(weekDayName[sessions[index].keys[0].weekday - 1])
                                 .font(.system(.subheadline, design: .monospaced))
-                            Text(String(sessions[index].header[0].day))
+                            Text(String(sessions[index].keys[0].day))
                                 .font(.system(.body, design: .monospaced))
                         }
                         .foregroundColor(index == selectDayIndex ?

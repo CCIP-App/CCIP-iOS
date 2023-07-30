@@ -21,7 +21,7 @@ final class Router: ObservableObject{
         case fastpass
         case schedule
         case scheduleSearch(Schedule)
-        case sessionDetail(SessionDataModel)
+        case sessionDetail(Session)
         case ticket
         case announcement
     }

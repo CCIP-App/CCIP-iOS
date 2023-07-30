@@ -13,7 +13,7 @@ import OrderedCollections
 
 struct SessionDetailView: View {
     
-    let sessionData: SessionDataModel
+    let sessionData: Session
     @EnvironmentObject var EventService: EventService
     @State private var isCalendarAlertPresented = false
     @State private var isEventEditViewPresented = false
@@ -25,7 +25,7 @@ struct SessionDetailView: View {
         self.EventService.liked_sessions.contains(sessionData.id)
     }
     
-    init(_ sessionData: SessionDataModel) {
+    init(_ sessionData: Session) {
         self.sessionData = sessionData
     }
     
@@ -211,7 +211,7 @@ private struct FeatureButtons: View {
     let features: [(String, String, String)]
     let buttonSize = CGFloat(62)
     
-    init(sessionData: SessionDataModel) {
+    init(sessionData: Session) {
         features = [
             (sessionData.live, "video", "Live"),
             (sessionData.co_write, "keyboard", "CoWriting"),
@@ -320,7 +320,7 @@ private struct TimeSection: View {
     let end: DateInRegion
     let durationMinute: Int
     
-    init(sessionData: SessionDataModel) {
+    init(sessionData: Session) {
         self.start = sessionData.start
         self.end = sessionData.end
         self.durationMinute = Int((sessionData.end - sessionData.start) / 60)
@@ -391,7 +391,7 @@ private struct BroadcastSection: View {
 
 private struct SpeakersSections: View {
     
-    let sessionData: SessionDataModel
+    let sessionData: Session
     @EnvironmentObject var EventService: EventService
     
     var body: some View {

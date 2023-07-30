@@ -10,7 +10,7 @@ import SwiftUI
 
 struct WiFiView: View {
     
-    let feature: FeatureModel
+    let feature: Feature
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -20,11 +20,11 @@ struct WiFiView: View {
                     Form {
                         ForEach(wifi, id: \.self) { wifiDetail in
                             Button {
-                                NEHotspot.ConnectWiFi(SSID: wifiDetail.SSID, withPass: wifiDetail.password)
+                                NEHotspot.ConnectWiFi(SSID: wifiDetail.ssid, withPass: wifiDetail.password)
                             } label: {
                                 HStack {
                                     VStack(alignment: .leading) {
-                                        Text(wifiDetail.SSID)
+                                        Text(wifiDetail.ssid)
                                             .foregroundColor(.black)
                                         Text(wifiDetail.password)
                                             .foregroundColor(.gray)
@@ -38,7 +38,7 @@ struct WiFiView: View {
                     }
                 }
             }
-            .navigationTitle(feature.display_text.localized())
+            .navigationTitle(feature.title.localized())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

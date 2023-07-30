@@ -8,7 +8,7 @@
 
 import OrderedCollections
 
-struct Tag: Hashable, Codable, Localizable {
+struct Tag: Hashable, Codable, Identifiable, Localizable {
     var id: String
     var zh: TagDetail
     var en: TagDetail

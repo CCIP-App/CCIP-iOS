@@ -1,5 +1,5 @@
 //
-//  JsonWrapper.swift
+//  TransformWrapper.swift
 //  OPass
 //
 //  Created by secminhr on 2022/3/5.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-//When decoding json, this wrapper will perform a transform, which is written by user, on the applied property/field.
 @propertyWrapper
 struct Transform<Func: TransformFunction>: Codable, Hashable {
     var wrappedValue: Func.ToType
