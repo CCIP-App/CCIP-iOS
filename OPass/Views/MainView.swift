@@ -21,7 +21,7 @@ struct MainView: View {
     var body: some View {
         VStack {
             Group {
-                if let image = OPassService.currentEventLogo {
+                if let image = OPassService.eventLogo {
                     image
                         .renderingMode(.template)
                         .resizable()
@@ -145,7 +145,7 @@ private struct TabButton: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            MainView().environmentObject(OPassService.mock().currentEventAPI!)
+            MainView().environmentObject(OPassService.mock().event!)
         }
     }
 }

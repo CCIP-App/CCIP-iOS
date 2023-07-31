@@ -29,8 +29,8 @@ struct EventConfig: Hashable, Codable {
 }
 
 struct TimeRange: Hashable, Codable {
-    @Transform<DateInRegion> var start: DateInRegion
-    @Transform<DateInRegion> var end: DateInRegion
+    @Transform<StringToDate> var start: DateInRegion
+    @Transform<StringToDate> var end: DateInRegion
 }
 
 extension EventConfig {

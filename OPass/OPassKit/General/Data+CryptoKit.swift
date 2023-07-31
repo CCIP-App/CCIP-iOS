@@ -9,6 +9,7 @@ import Foundation
 import CryptoKit
 
 extension Data {
+    @inline(__always)
     func sha1() -> String {
         return Insecure.SHA1.hash(data: self)
             .map { String(format: "%02x", $0) }

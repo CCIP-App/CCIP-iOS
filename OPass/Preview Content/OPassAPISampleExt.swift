@@ -28,8 +28,8 @@ extension OPassService {
         let model = OPassService()
         let list: [Event] = loadJson(filename: "eventListSample.json")
         let settings: EventConfig = loadJson(filename: "eventSettingsSample.json")
-        model.currentEventID = list[0].id
-        model.currentEventAPI = EventService(settings)
+        model.eventId = list[0].id
+        model.event = EventService(settings)
         return model
     }
 }

@@ -9,35 +9,32 @@
 import SwiftUI
 import OSLog
 
+private let logger = Logger(subsystem: "OPassKit", category: "OPassStore")
+
 class OPassService: ObservableObject {
-    
-    @Published var currentEventID: String? = nil
-    @Published var currentEventLogo: Image? = nil
-    @Published var currentEventAPI: EventService? = nil
+    @Published var event: EventService? = nil
+    @Published var eventId: String? = nil
+    @Published var eventLogo: Image? = nil
+
     private var eventAPITemporaryData: CodableEventService? = nil
     private var keyStore = NSUbiquitousKeyValueStore()
-    private let logger = Logger(subsystem: "app.opass.ccip", category: "OPassService")
     
     init() {
         keyStore.synchronize()
-        if let data = keyStore.data(forKey: "EventAPI") {
+        if let data = keyStore.data(forKey: "EventStore") {
             do {
                 let eventAPIData = try JSONDecoder().decode(CodableEventService.self, from: data)
                 self.eventAPITemporaryData = eventAPIData
-                self.currentEventID = eventAPIData.event_id
-            } catch {
-                logger.error("Unable to decode EventAPI \(error.localizedDescription)")
-            }
-        } else {
-            logger.info("No EventAPI data found")
-        }
+                self.eventId = eventAPIData.event_id
+            } catch { logger.error("Unable to decode Event stored date: \(error.localizedDescription)") }
+        } else { logger.info("No Event stored data was found") }
     }
 }
 
 extension OPassService {
     func saveEventAPIData() async {
         logger.info("Saving data")
-        if let EventService = self.currentEventAPI {
+        if let EventService = self.event {
             do {
                 let data = try JSONEncoder().encode(CodableEventService(
                     event_id: EventService.event_id,
@@ -60,7 +57,7 @@ extension OPassService {
     }
     
     func loadEvent() async throws {
-        if let eventId = currentEventID {
+        if let eventId = eventId {
             do {
                 let settings = try await APIManager.fetchConfig(for: eventId)
                 if let eventAPIData = eventAPITemporaryData, eventId == eventAPIData.event_id { // Reload
@@ -71,22 +68,22 @@ extension OPassService {
                         tmpData: eventAPIData)
                     logger.info("Reload event \(event.event_id)")
                     DispatchQueue.main.async {
-                        self.currentEventAPI = event
-                        Task{ await self.currentEventAPI!.loadLogos() }
+                        self.event = event
+                        Task{ await self.event!.loadLogos() }
                     }
                 } else { // Load new
                     let event = EventService(settings, saveData: self.saveEventAPIData)
-                    logger.info("Loading new event from \(self.currentEventAPI?.event_id ?? "none") to \(event.event_id)")
+                    logger.info("Loading new event from \(self.event?.event_id ?? "none") to \(event.event_id)")
                     DispatchQueue.main.async {
-                        self.currentEventAPI = event
-                        Task{ await self.currentEventAPI!.loadLogos() }
+                        self.event = event
+                        Task{ await self.event!.loadLogos() }
                     }
                 }
             } catch { // Use local data when it can't get data from API
                 logger.notice("Can't get data from API. Using local data")
                 if let eventAPIData = eventAPITemporaryData, eventAPIData.event_id == eventId {
                     DispatchQueue.main.async {
-                        self.currentEventAPI = EventService(
+                        self.event = EventService(
                             eventAPIData.settings,
                             logo_data: eventAPIData.logo_data,
                             saveData: self.saveEventAPIData,
@@ -102,16 +99,16 @@ extension OPassService {
     }
     
     func loginCurrentEvent(with token: String) async throws -> Bool {
-        guard let eventId = self.currentEventID else { return false }
+        guard let eventId = self.eventId else { return false }
         do {
-            if eventId == currentEventAPI?.event_id {
-                return try await currentEventAPI?.redeemToken(token: token) ?? false
+            if eventId == event?.event_id {
+                return try await event?.redeemToken(token: token) ?? false
             }
             let settings = try await APIManager.fetchConfig(for: eventId)
             let eventModel = EventService(settings, saveData: saveEventAPIData)
             DispatchQueue.main.async {
-                self.currentEventLogo = nil
-                self.currentEventAPI = eventModel
+                self.eventLogo = nil
+                self.event = eventModel
             }
             return try await eventModel.redeemToken(token: token)
         } catch APIManager.LoadError.forbidden {

@@ -53,11 +53,12 @@
 		D36E33C42A681916006D4159 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = D36E33C32A681916006D4159 /* FirebaseAppCheck */; };
 		D36E33C62A684CC8006D4159 /* Data+CryptoKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36E33C52A684CC8006D4159 /* Data+CryptoKit.swift */; };
 		D37BC4DA28A57F1B00449482 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37BC4D928A57F1B00449482 /* Alerts.swift */; };
-		D3829EA42A765DF300610B28 /* DateInRegion+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3829EA32A765DF300610B28 /* DateInRegion+Transform.swift */; };
+		D3829EA42A765DF300610B28 /* DateInRegionTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3829EA32A765DF300610B28 /* DateInRegionTransform.swift */; };
 		D3829EA62A76606E00610B28 /* Wifi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3829EA52A76606E00610B28 /* Wifi.swift */; };
 		D3829EA82A76649300610B28 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3829EA72A76649300610B28 /* Event.swift */; };
 		D3829EAA2A76690900610B28 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3829EA92A76690900610B28 /* LocalizedString.swift */; };
 		D3829EAC2A766F1700610B28 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3829EAB2A766F1700610B28 /* Feature.swift */; };
+		D3829EB02A76BAAC00610B28 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3829EAF2A76BAAC00610B28 /* Scenario.swift */; };
 		D38E24C028C8DDC100D75337 /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = D38E24BF28C8DDC100D75337 /* OneSignalExtension */; };
 		D394440D2A75371A00EE2021 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = D394440C2A75371A00EE2021 /* OrderedCollections */; };
 		D394440F2A75383400EE2021 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D394440E2A75383400EE2021 /* Speaker.swift */; };
@@ -83,7 +84,7 @@
 		D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789027CE62EB00021FC4 /* EventListView.swift */; };
 		D3D3789327CE70EE00021FC4 /* EventConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789227CE70EE00021FC4 /* EventConfig.swift */; };
 		D3E0123127D35D970040621F /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = D3E0123027D35D970040621F /* KeychainAccess */; };
-		D3E0123327D3667C0040621F /* ScenarioStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123227D3667C0040621F /* ScenarioStatusModel.swift */; };
+		D3E0123327D3667C0040621F /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123227D3667C0040621F /* Attendee.swift */; };
 		D3E0123527D38B840040621F /* ScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123427D38B840040621F /* ScenarioView.swift */; };
 		D3E0123827D38D3D0040621F /* RedeemTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123727D38D3D0040621F /* RedeemTokenView.swift */; };
 		D3E2476D28BF553200B3E71A /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E2476C28BF553200B3E71A /* Collection+Extension.swift */; };
@@ -170,11 +171,12 @@
 		D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHotspot.swift; sourceTree = "<group>"; };
 		D36E33C52A684CC8006D4159 /* Data+CryptoKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+CryptoKit.swift"; sourceTree = "<group>"; };
 		D37BC4D928A57F1B00449482 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
-		D3829EA32A765DF300610B28 /* DateInRegion+Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateInRegion+Transform.swift"; sourceTree = "<group>"; };
+		D3829EA32A765DF300610B28 /* DateInRegionTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInRegionTransform.swift; sourceTree = "<group>"; };
 		D3829EA52A76606E00610B28 /* Wifi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wifi.swift; sourceTree = "<group>"; };
 		D3829EA72A76649300610B28 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D3829EA92A76690900610B28 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		D3829EAB2A766F1700610B28 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		D3829EAF2A76BAAC00610B28 /* Scenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
 		D394440E2A75383400EE2021 /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
 		D39444102A754A2F00EE2021 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D39444122A754EF200EE2021 /* LocalizableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableProtocol.swift; sourceTree = "<group>"; };
@@ -199,7 +201,7 @@
 		D3D3788127CE440D00021FC4 /* OPassService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassService.swift; sourceTree = "<group>"; };
 		D3D3789027CE62EB00021FC4 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		D3D3789227CE70EE00021FC4 /* EventConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConfig.swift; sourceTree = "<group>"; };
-		D3E0123227D3667C0040621F /* ScenarioStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioStatusModel.swift; sourceTree = "<group>"; };
+		D3E0123227D3667C0040621F /* Attendee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendee.swift; sourceTree = "<group>"; };
 		D3E0123427D38B840040621F /* ScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioView.swift; sourceTree = "<group>"; };
 		D3E0123727D38D3D0040621F /* RedeemTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemTokenView.swift; sourceTree = "<group>"; };
 		D3E2476C28BF553200B3E71A /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
@@ -282,7 +284,6 @@
 				4F9E9B4D2813F0A300A14905 /* Array+Extension.swift */,
 				D35562E728B7CA0800DBE367 /* String+Extension.swift */,
 				D3E2476C28BF553200B3E71A /* Collection+Extension.swift */,
-				D36E33C52A684CC8006D4159 /* Data+CryptoKit.swift */,
 			);
 			path = "Class+Extension";
 			sourceTree = "<group>";
@@ -295,6 +296,14 @@
 				D3C972F127F03531008561DE /* SessionDetailView.swift */,
 			);
 			path = Schedule;
+			sourceTree = "<group>";
+		};
+		D32654F22A77A4D600B07765 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				4FEF38FA27D13FBA00FC97F4 /* APIManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		D35CE09D28A0429700E9AF06 /* Settings */ = {
@@ -329,15 +338,16 @@
 			path = AttributedText;
 			sourceTree = "<group>";
 		};
-		D36DC46327D46F6800012D43 /* Additions */ = {
+		D36DC46327D46F6800012D43 /* General */ = {
 			isa = PBXGroup;
 			children = (
 				D39444122A754EF200EE2021 /* LocalizableProtocol.swift */,
 				4F5EB73427D3346D00235396 /* TransformWrapper.swift */,
 				4F22826227DD8C5E0030D73E /* ExtractWrapper.swift */,
-				D3829EA32A765DF300610B28 /* DateInRegion+Transform.swift */,
+				D3829EA32A765DF300610B28 /* DateInRegionTransform.swift */,
+				D36E33C52A684CC8006D4159 /* Data+CryptoKit.swift */,
 			);
-			path = Additions;
+			path = General;
 			sourceTree = "<group>";
 		};
 		D3A00F1D27D837D00097A6AB /* OneSignalNotificationServiceExtension */ = {
@@ -410,22 +420,23 @@
 		D3D3788027CE43D700021FC4 /* OPassKit */ = {
 			isa = PBXGroup;
 			children = (
-				4FEF38FA27D13FBA00FC97F4 /* APIManager.swift */,
+				D32654F22A77A4D600B07765 /* Manager */,
 				D3BAB49C27D2536300ECD44A /* Services */,
-				D3D3788327CE441200021FC4 /* Models */,
-				D36DC46327D46F6800012D43 /* Additions */,
+				D3D3788327CE441200021FC4 /* Model */,
+				D36DC46327D46F6800012D43 /* General */,
 			);
 			path = OPassKit;
 			sourceTree = "<group>";
 		};
-		D3D3788327CE441200021FC4 /* Models */ = {
+		D3D3788327CE441200021FC4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				D3829EA72A76649300610B28 /* Event.swift */,
 				D3D3789227CE70EE00021FC4 /* EventConfig.swift */,
 				D3829EAB2A766F1700610B28 /* Feature.swift */,
 				D3C6194727CF864B00643D97 /* Schedule.swift */,
-				D3E0123227D3667C0040621F /* ScenarioStatusModel.swift */,
+				D3E0123227D3667C0040621F /* Attendee.swift */,
+				D3829EAF2A76BAAC00610B28 /* Scenario.swift */,
 				4F35B17B27D3850B0023621F /* Announcement.swift */,
 				D394440E2A75383400EE2021 /* Speaker.swift */,
 				D39444102A754A2F00EE2021 /* Tag.swift */,
@@ -433,7 +444,7 @@
 				D3829EA52A76606E00610B28 /* Wifi.swift */,
 				D3829EA92A76690900610B28 /* LocalizedString.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D3E0123627D38CF70040621F /* Fastpass */ = {
@@ -753,15 +764,16 @@
 				D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */,
 				D3C6194827CF864B00643D97 /* Schedule.swift in Sources */,
 				D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */,
+				D3829EB02A76BAAC00610B28 /* Scenario.swift in Sources */,
 				D36E33C62A684CC8006D4159 /* Data+CryptoKit.swift in Sources */,
 				D3F6C4C02A696884001BF3F8 /* ScheduleSearchView.swift in Sources */,
 				D3B0B20528BBC4400001B311 /* DevelopersView.swift in Sources */,
 				D3652A792869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift in Sources */,
 				D3829EAC2A766F1700610B28 /* Feature.swift in Sources */,
-				D3829EA42A765DF300610B28 /* DateInRegion+Transform.swift in Sources */,
+				D3829EA42A765DF300610B28 /* DateInRegionTransform.swift in Sources */,
 				D3652A782869AF72002AC419 /* TextSizeViewModel.swift in Sources */,
 				D3829EAA2A76690900610B28 /* LocalizedString.swift in Sources */,
-				D3E0123327D3667C0040621F /* ScenarioStatusModel.swift in Sources */,
+				D3E0123327D3667C0040621F /* Attendee.swift in Sources */,
 				D358E55827EDEDB2000A6554 /* FastpassView.swift in Sources */,
 				D36A2FD82829F9C500EFBDB1 /* NEHotspot.swift in Sources */,
 				D3E0123827D38D3D0040621F /* RedeemTokenView.swift in Sources */,

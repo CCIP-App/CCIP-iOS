@@ -72,7 +72,7 @@ struct FastpassView: View {
 struct FastpassView_Previews: PreviewProvider {
     static var previews: some View {
         FastpassView()
-            .environmentObject(OPassService.mock().currentEventAPI!)
+            .environmentObject(OPassService.mock().event!)
     }
 }
 #endif

@@ -10,7 +10,7 @@ import Foundation
 import SwiftDate
 
 struct Announcement: Hashable, Codable, Localizable {
-    @Transform<IntergerToDateTransform> var datetime: DateInRegion
+    @Transform<IntToDate> var datetime: DateInRegion
     var zh: String
     var en: String
     var uri: String
@@ -24,5 +24,6 @@ struct Announcement: Hashable, Codable, Localizable {
 }
 
 extension Announcement {
+    @inline(__always)
     var url: URL? { URL(string: uri) }
 }

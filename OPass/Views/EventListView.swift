@@ -30,7 +30,7 @@ struct EventListView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { toolbar }
         }
-        .interactiveDismissDisabled(OPassService.currentEventID == nil)
+        .interactiveDismissDisabled(OPassService.eventId == nil)
     }
     
     var list: some View {
@@ -54,7 +54,7 @@ struct EventListView: View {
     var toolbar: some ToolbarContent {
         Group {
             ToolbarItem(placement: .navigationBarLeading) {
-                if OPassService.currentEventAPI != nil {
+                if OPassService.event != nil {
                     Button(LocalizedStringKey("Close")) {
                         dismiss()
                     }
@@ -81,8 +81,8 @@ private struct EventRow: View {
     private let logger = Logger(subsystem: "app.opass.ccip", category: "EventListView")
     var body: some View {
         Button {
-            OPassService.currentEventID = event.id
-            OPassService.currentEventLogo = preloadLogoImage
+            OPassService.eventId = event.id
+            OPassService.eventLogo = preloadLogoImage
             dismiss()
         } label: {
             HStack {

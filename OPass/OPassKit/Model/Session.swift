@@ -14,8 +14,8 @@ struct Session: Hashable, Codable, Identifiable, Localizable {
     var type: String?
     var room: String
     var broadcast: [String]?
-    @Transform<DateInRegion> var start: DateInRegion
-    @Transform<DateInRegion> var end: DateInRegion
+    @Transform<StringToDate> var start: DateInRegion
+    @Transform<StringToDate> var end: DateInRegion
     var co_write: String?
     var qa: String?
     var slide: String?

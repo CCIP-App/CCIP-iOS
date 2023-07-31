@@ -68,7 +68,7 @@ struct ContentView: View {
                         self.error = nil
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .onChange(of: OPassService.currentEventID) { _ in
+                    .onChange(of: OPassService.eventId) { _ in
                         self.error = nil
                     }
                 }
@@ -92,9 +92,9 @@ struct ContentView: View {
                 
                 ToolbarItem(placement: .principal) {
                     VStack {
-                        Text(OPassService.currentEventAPI?.display_name.localized() ?? "OPass")
+                        Text(OPassService.event?.display_name.localized() ?? "OPass")
                             .font(.headline)
-                        if let userId = OPassService.currentEventAPI?.user_id, userId != "nil" {
+                        if let userId = OPassService.event?.user_id, userId != "nil" {
                             Text(userId)
                                 .font(.caption)
                                 .foregroundColor(.gray)
@@ -121,7 +121,7 @@ struct ContentView: View {
                     .alert("InvalidURL", isPresented: $isInvalidURLAlertPresented) {
                         Button("OK", role: .cancel) {
                             self.url = nil
-                            if OPassService.currentEventAPI == nil {
+                            if OPassService.event == nil {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                     self.isEventListPresented = true
                                 }
@@ -132,7 +132,7 @@ struct ContentView: View {
                     }
                     .http403Alert(title: "CouldntVerifiyYourIdentity", isPresented: $isHttp403AlertPresented) {
                         self.url = nil
-                        if OPassService.currentEventAPI == nil {
+                        if OPassService.event == nil {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                 self.isEventListPresented = true
                             }
@@ -155,8 +155,8 @@ struct ContentView: View {
             }
             return
         }
-        OPassService.currentEventID = eventId
-        if eventId != OPassService.currentEventAPI?.event_id { OPassService.currentEventLogo = nil }
+        OPassService.eventId = eventId
+        if eventId != OPassService.event?.event_id { OPassService.eventLogo = nil }
         // Login
         guard let token = params?.first(where: { $0.name == "token" })?.value else {
             DispatchQueue.main.async {
@@ -168,7 +168,7 @@ struct ContentView: View {
         do {
             if try await OPassService.loginCurrentEvent(with: token) {
                 DispatchQueue.main.async { self.url = nil }
-                await OPassService.currentEventAPI?.loadLogos()
+                await OPassService.event?.loadLogos()
                 return
             }
         } catch APIManager.LoadError.forbidden {
@@ -196,8 +196,8 @@ extension ContentView {
     
     private var viewState: ViewState {
         guard error == nil else { return .error }
-        guard let eventID = OPassService.currentEventID else { return .empty }
-        guard let EventService = OPassService.currentEventAPI, eventID == EventService.event_id else { return .loading }
+        guard let eventID = OPassService.eventId else { return .empty }
+        guard let EventService = OPassService.event, eventID == EventService.event_id else { return .loading }
         return .ready(EventService)
     }
 }

@@ -293,7 +293,7 @@ struct SessionOverView: View {
 #if DEBUG
 struct ScheduleView_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleView(EventService: OPassService.mock().currentEventAPI!)
+        ScheduleView(EventService: OPassService.mock().event!)
             .environmentObject(OPassService.mock())
     }
 }

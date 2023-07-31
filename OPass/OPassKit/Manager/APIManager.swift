@@ -9,9 +9,9 @@
 import Foundation
 import OSLog
 
+private let logger = Logger(subsystem: "OPassKit", category: "APIManager")
+
 final class APIManager {
-    private static let logger = Logger(subsystem: "app.opass.ccip", category: "APIManager")
-    
     public enum CCIPEndpoint {
         case events
         case config(String)
@@ -82,7 +82,7 @@ extension APIManager {
         @Extract(.fastpass) from feature: Feature?,
         token: String,
         scenario: String? = nil
-    ) async throws -> ScenarioStatusModel {
+    ) async throws -> Attendee {
         guard let feature = feature else {
             logger.critical("Can't find correct fastpass feature")
             throw LoadError.uncorrectFeature("fastpass")

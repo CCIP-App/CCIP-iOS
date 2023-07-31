@@ -10,6 +10,8 @@ import SwiftUI
 import KeychainAccess
 import OSLog
 
+private let logger = Logger(subsystem: "OPassKit", category: "EventStore")
+
 class EventService: ObservableObject {
     
     init(
@@ -37,7 +39,7 @@ class EventService: ObservableObject {
     @Published var settings: EventConfig
     @Published var schedule: Schedule? = nil
     @Published var announcements: [Announcement]? = nil
-    @Published var scenario_status: ScenarioStatusModel? = nil
+    @Published var scenario_status: Attendee? = nil
     @AppStorage var user_id: String
     @AppStorage var user_role: String
     @AppStorage var liked_sessions: [String]
@@ -62,7 +64,6 @@ class EventService: ObservableObject {
     }
     
     private var eventAPITmpData: CodableEventService? = nil
-    private let logger = Logger(subsystem: "app.opass.ccip", category: "EventAPI")
     private let keychain = Keychain(service: "app.opass.ccip-token").synchronizable(true)
     
     enum EventAPIError: Error {
@@ -118,11 +119,11 @@ extension EventService {
         
         do {
             let scenario_status = try await APIManager.fetchStatus(from: fastpassFeature, token: token)
-            Constants.sendTag("\(scenario_status.event_id)\(scenario_status.role)", value: "\(scenario_status.token)")
+            Constants.sendTag("\(scenario_status.eventId)\(scenario_status.role)", value: "\(scenario_status.token)")
             DispatchQueue.main.async {
                 self.scenario_status = scenario_status
                 self.user_token = token
-                self.user_id = scenario_status.user_id ?? "nil"
+                self.user_id = scenario_status.userId ?? "nil"
                 self.user_role = scenario_status.role
                 Task{ await self.save() }
             }
@@ -148,7 +149,7 @@ extension EventService {
             let scenario_status = try await APIManager.fetchStatus(from: fastpassFeature, token: token)
             DispatchQueue.main.async {
                 self.scenario_status = scenario_status
-                self.user_id = scenario_status.user_id ?? "nil"
+                self.user_id = scenario_status.userId ?? "nil"
                 self.user_role = scenario_status.role
                 Task{ await self.save() }
             }
@@ -160,7 +161,7 @@ extension EventService {
             }
             self.eventAPITmpData?.scenario_status = nil
             DispatchQueue.main.async {
-                self.user_id = scenario_status.user_id ?? "nil"
+                self.user_id = scenario_status.userId ?? "nil"
                 self.user_role = scenario_status.role
                 self.scenario_status = scenario_status
             }
@@ -253,7 +254,7 @@ extension EventService {
     
     func signOut() {
         if let scenario_status = scenario_status {
-            Constants.sendTag("\(scenario_status.event_id)\(scenario_status.role)", value: "")
+            Constants.sendTag("\(scenario_status.eventId)\(scenario_status.role)", value: "")
             self.scenario_status = nil
             self.user_id = "nil"
             self.user_role = "nil"
@@ -281,7 +282,7 @@ class CodableEventService: Codable {
          logo_data: Data?,
          schedule: Schedule?,
          announcements: [Announcement]?,
-         scenario_status: ScenarioStatusModel?) {
+         scenario_status: Attendee?) {
         self.event_id = event_id
         self.display_name = display_name
         self.logo_url = logo_url
@@ -299,5 +300,5 @@ class CodableEventService: Codable {
     var logo_data: Data?
     var schedule: Schedule?
     var announcements: [Announcement]?
-    var scenario_status: ScenarioStatusModel?
+    var scenario_status: Attendee?
 }

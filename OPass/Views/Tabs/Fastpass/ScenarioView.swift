@@ -16,7 +16,7 @@ struct ScenarioView: View {
     @State private var disableAlertString = ""
     @State private var isDisableAlertPresented = false
     @State private var isLogOutAlertPresented = false
-    @State private var sheetScenarioDataItem: ScenarioDataModel?
+    @State private var sheetScenarioDataItem: Scenario?
     @Environment(\.colorScheme) var colorScheme
     
     // MARK: - Views
@@ -27,24 +27,24 @@ struct ScenarioView: View {
                     .frame(height: UIScreen.main.bounds.width * 0.4)
                     .listRowBackground(Color.clear)
                 
-                ForEach(EventService.scenario_status?.scenarios.sectionID ?? [], id: \.self) { sectionID in
+                ForEach(EventService.scenario_status?.scenarios.keys ?? [], id: \.self) { sectionID in
                     Section(header: Text(sectionID)) {
-                        ForEach(EventService.scenario_status?.scenarios.sectionData[sectionID] ?? [], id: \.self) { scenario in
+                        ForEach(EventService.scenario_status?.scenarios[sectionID] ?? []) { scenario in
                             Button {
                                 if scenario.used == nil {
                                     if let errorText = scenario.disabled {
                                         disableAlertString = String(localized: String.LocalizationValue(errorText))
                                         isDisableAlertPresented.toggle()
-                                    } else if !DateInRegion().isInRange(date: scenario.available_time,
-                                                                        and: scenario.expire_time, orEqual: false,
+                                    } else if !DateInRegion().isInRange(date: scenario.available,
+                                                                        and: scenario.expire, orEqual: false,
                                                                         granularity: .second) {
                                         disableAlertString = String(
                                             format: String(localized: "OnlyAvailableAtContent"),
-                                            scenario.available_time.year, scenario.available_time.month,
-                                            scenario.available_time.day, scenario.available_time.hour,
-                                            scenario.available_time.minute, scenario.expire_time.year,
-                                            scenario.expire_time.month, scenario.expire_time.day,
-                                            scenario.expire_time.hour, scenario.expire_time.minute
+                                            scenario.available.year, scenario.available.month,
+                                            scenario.available.day, scenario.available.hour,
+                                            scenario.available.minute, scenario.expire.year,
+                                            scenario.expire.month, scenario.expire.day,
+                                            scenario.expire.hour, scenario.expire.minute
                                         )
                                         isDisableAlertPresented.toggle()
                                     } else { sheetScenarioDataItem = scenario }
@@ -78,7 +78,7 @@ struct ScenarioView: View {
     }
     
     @ViewBuilder
-    func buttonContentView(_ scenario: ScenarioDataModel, sectionID: String) -> some View {
+    func buttonContentView(_ scenario: Scenario, sectionID: String) -> some View {
         let buttonColor: [String : Color] = [
             "pencil" : Color(red: 88 / 255, green: 174 / 255, blue: 196 / 255),
             "takeoutbag.and.cup.and.straw" : Color.purple,
@@ -87,15 +87,15 @@ struct ScenarioView: View {
         ]
         
         HStack {
-            Image(systemName: scenario.used == nil ? scenario.symbolName : "checkmark.circle.fill")
+            Image(systemName: scenario.used == nil ? scenario.symbol : "checkmark.circle.fill")
                 .font(.callout.bold())
                 .foregroundColor(.white)
                 .frame(width: UIScreen.main.bounds.width * 0.09, height: UIScreen.main.bounds.width * 0.09)
-                .background(scenario.used == nil ? buttonColor[scenario.symbolName] ?? .orange : .green)
+                .background(scenario.used == nil ? buttonColor[scenario.symbol] ?? .orange : .green)
                 .cornerRadius(UIScreen.main.bounds.width * 0.028)
             
             VStack(alignment: .leading) {
-                Text(scenario.display_text.localized())
+                Text(scenario.title.localized())
                     .foregroundColor(colorScheme == .dark ? .white : .black)
                 Text(
                     scenario.disabled == nil
@@ -103,31 +103,31 @@ struct ScenarioView: View {
                     ? sectionID.contains("•")
                     ? String(
                         format: "%d:%02d ~ %d:%02d",
-                        scenario.available_time.hour,
-                        scenario.available_time.minute,
-                        scenario.expire_time.hour,
-                        scenario.expire_time.minute
+                        scenario.available.hour,
+                        scenario.available.minute,
+                        scenario.expire.hour,
+                        scenario.expire.minute
                     )
-                    : scenario.available_time.month == scenario.expire_time.month && scenario.available_time.day == scenario.expire_time.day
+                    : scenario.available.month == scenario.expire.month && scenario.available.day == scenario.expire.day
                     ? String(
                         format: "%d/%d • %d:%02d ~ %d:%02d",
-                        scenario.available_time.month,
-                        scenario.available_time.day,
-                        scenario.available_time.hour,
-                        scenario.available_time.minute,
-                        scenario.expire_time.hour,
-                        scenario.expire_time.minute
+                        scenario.available.month,
+                        scenario.available.day,
+                        scenario.available.hour,
+                        scenario.available.minute,
+                        scenario.expire.hour,
+                        scenario.expire.minute
                     )
                     : String(
                         format: "%d/%d • %d:%02d ~ %d/%d • %d:%02d",
-                        scenario.available_time.month,
-                        scenario.available_time.day,
-                        scenario.available_time.hour,
-                        scenario.available_time.minute,
-                        scenario.expire_time.month,
-                        scenario.expire_time.day,
-                        scenario.expire_time.hour,
-                        scenario.expire_time.minute
+                        scenario.available.month,
+                        scenario.available.day,
+                        scenario.available.hour,
+                        scenario.available.minute,
+                        scenario.expire.month,
+                        scenario.expire.day,
+                        scenario.expire.hour,
+                        scenario.expire.minute
                     )
                     : String(
                         format: String(localized: "CheckAtContent"),
@@ -174,7 +174,7 @@ struct FastpassLogoView: View {
 #if DEBUG
 struct ScenarioView_Previews: PreviewProvider {
     static var previews: some View {
-        ScenarioView().environmentObject(OPassService.mock().currentEventAPI!)
+        ScenarioView().environmentObject(OPassService.mock().event!)
     }
 }
 #endif

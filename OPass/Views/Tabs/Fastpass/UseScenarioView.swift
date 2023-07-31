@@ -10,7 +10,7 @@ import SwiftUI
 
 struct UseScenarioView: View {
     
-    let scenario: ScenarioDataModel
+    let scenario: Scenario
     @EnvironmentObject var EventService: EventService
     @State private var viewState = 0
     @State private var isHttp403AlertPresented = false
@@ -28,7 +28,7 @@ struct UseScenarioView: View {
                 default: ErrorView()
                 }
             }
-            .navigationTitle(scenario.display_text.localized())
+            .navigationTitle(scenario.title.localized())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -47,7 +47,7 @@ struct UseScenarioView: View {
             Spacer()
             
             VStack(spacing: 10) {
-                Image(systemName: scenario.symbolName)
+                Image(systemName: scenario.symbol)
                     .resizable()
                     .scaledToFit()
                     .foregroundColor(.white)
@@ -55,7 +55,7 @@ struct UseScenarioView: View {
                     .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.width * 0.2)
                     .background(.blue)
                     .cornerRadius(UIScreen.main.bounds.width * 0.05)
-                Text(scenario.display_text.localized())
+                Text(scenario.title.localized())
                     .font(.largeTitle.bold())
                 
                 Text("ConfirmUseScenarioMessage")
@@ -105,14 +105,14 @@ struct UseScenarioView: View {
 private struct ScuessScenarioView: View {
     
     @Environment(\.dismiss) var dismiss
-    let scenario: ScenarioDataModel
+    let scenario: Scenario
     @State var time = 0
     @Binding var usedTime: TimeInterval
     
     var body: some View {
         VStack {
             if scenario.countdown != 0 {
-                TimerView(scenario: scenario, countTime: Double(scenario.countdown), symbolName: scenario.symbolName, dismiss: _dismiss, usedTime: $usedTime)
+                TimerView(scenario: scenario, countTime: Double(scenario.countdown), symbolName: scenario.symbol, dismiss: _dismiss, usedTime: $usedTime)
                     .padding()
             } else {
                 VStack {
@@ -122,7 +122,7 @@ private struct ScuessScenarioView: View {
                         .scaledToFit()
                         .frame(width: UIScreen.main.bounds.width * 0.2)
                         .foregroundColor(.green)
-                    Text(scenario.display_text.localized() + " " + String(localized: "Complete"))
+                    Text(scenario.title.localized() + " " + String(localized: "Complete"))
                         .font(.title.bold())
                     Group{
                         Spacer()
@@ -148,7 +148,7 @@ private struct ScuessScenarioView: View {
 
 private struct TimerView: View {
     
-    let scenario: ScenarioDataModel
+    let scenario: Scenario
     let countTime: Double
     let symbolName: String
     @Environment(\.dismiss) var dismiss
@@ -169,12 +169,12 @@ private struct TimerView: View {
             .foregroundColor(.white)
             .padding(.horizontal)
             
-            ForEach(scenario.attr.keys.sorted(), id: \.self) { key in
+            ForEach(scenario.attributes.keys.sorted(), id: \.self) { key in
                 HStack {
                     VStack(alignment: .leading, spacing: 5) {
                         Text(key.capitalizingFirstLetter())
                             .foregroundColor(.white.opacity(0.5))
-                        Text(scenario.attr[key]?.capitalizingFirstLetter() ?? "")
+                        Text(scenario.attributes[key]?.capitalizingFirstLetter() ?? "")
                             .foregroundColor(.white)
                             .fontWeight(.light)
                             .font(.largeTitle)
@@ -202,7 +202,7 @@ private struct TimerView: View {
             }
             .offset(x: 0, y: 30)
         })
-        .background(BackgroundColor(diet: scenario.attr["diet"]))
+        .background(BackgroundColor(diet: scenario.attributes["diet"]))
         .cornerRadius(10)
         .onReceive(timer) { _ in
             let tmpTime = countTime - (Date().timeIntervalSince1970 - usedTime)
