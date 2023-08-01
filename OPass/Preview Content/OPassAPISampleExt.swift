@@ -23,13 +23,13 @@ func loadJson<T: Decodable>(filename: String) -> T {
     }
 }
 
-extension OPassService {
-    static func mock() -> OPassService {
-        let model = OPassService()
+extension OPassStore {
+    static func mock() -> OPassStore {
+        let model = OPassStore()
         let list: [Event] = loadJson(filename: "eventListSample.json")
         let settings: EventConfig = loadJson(filename: "eventSettingsSample.json")
         model.eventId = list[0].id
-        model.event = EventService(settings)
+        model.event = EventStore(settings)
         return model
     }
 }

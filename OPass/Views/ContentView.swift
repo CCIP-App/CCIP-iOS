@@ -13,7 +13,7 @@ struct ContentView: View {
     // MARK: - Variables
     @Binding var url: URL?
     @StateObject var router = Router()
-    @EnvironmentObject var OPassService: OPassService
+    @EnvironmentObject var OPassService: OPassStore
     @State private var error: Error? = nil
     @State private var handlingURL = false
     @State private var isEventListPresented = false
@@ -25,29 +25,29 @@ struct ContentView: View {
         NavigationStack(path: $router.path) {
             VStack {
                 switch viewState {
-                case .ready(let EventService):
+                case .ready(let EventStore):
                     MainView()
-                        .environmentObject(EventService)
+                        .environmentObject(EventStore)
                         .navigationDestination(for: Router.mainDestination.self) { destination in
                             switch destination {
                             case .fastpass:
-                                FastpassView().environmentObject(EventService)
+                                FastpassView().environmentObject(EventStore)
                                 
                             case .schedule:
-                                ScheduleView(EventService: EventService)
+                                ScheduleView(EventStore: EventStore)
                                 
                             case .scheduleSearch(let schedule):
                                 SearchScheduleView(schedule: schedule)
-                                    .environmentObject(EventService)
+                                    .environmentObject(EventStore)
                                 
                             case .sessionDetail(let data):
-                                SessionDetailView(data).environmentObject(EventService)
+                                SessionDetailView(data).environmentObject(EventStore)
                                 
                             case .ticket:
-                                TicketView().environmentObject(EventService)
+                                TicketView().environmentObject(EventStore)
                                 
                             case .announcement:
-                                AnnouncementView().environmentObject(EventService)
+                                AnnouncementView().environmentObject(EventStore)
                             }
                         }
                 case .loading:
@@ -92,9 +92,9 @@ struct ContentView: View {
                 
                 ToolbarItem(placement: .principal) {
                     VStack {
-                        Text(OPassService.event?.display_name.localized() ?? "OPass")
+                        Text(OPassService.event?.config.title.localized() ?? "OPass")
                             .font(.headline)
-                        if let userId = OPassService.event?.user_id, userId != "nil" {
+                        if let userId = OPassService.event?.userId, userId != "nil" {
                             Text(userId)
                                 .font(.caption)
                                 .foregroundColor(.gray)
@@ -156,7 +156,7 @@ struct ContentView: View {
             return
         }
         OPassService.eventId = eventId
-        if eventId != OPassService.event?.event_id { OPassService.eventLogo = nil }
+        if eventId != OPassService.event?.id { OPassService.eventLogo = nil }
         // Login
         guard let token = params?.first(where: { $0.name == "token" })?.value else {
             DispatchQueue.main.async {
@@ -188,7 +188,7 @@ struct ContentView: View {
 // MARK: ViewState
 extension ContentView {
     private enum ViewState {
-        case ready(EventService)
+        case ready(EventStore)
         case loading
         case empty //Landing page?
         case error
@@ -197,8 +197,8 @@ extension ContentView {
     private var viewState: ViewState {
         guard error == nil else { return .error }
         guard let eventID = OPassService.eventId else { return .empty }
-        guard let EventService = OPassService.event, eventID == EventService.event_id else { return .loading }
-        return .ready(EventService)
+        guard let EventStore = OPassService.event, eventID == EventStore.id else { return .loading }
+        return .ready(EventStore)
     }
 }
 
@@ -206,7 +206,7 @@ extension ContentView {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(url: .constant(nil))
-            .environmentObject(OPassService.mock())
+            .environmentObject(OPassStore.mock())
     }
 }
 #endif

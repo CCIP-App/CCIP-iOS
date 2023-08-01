@@ -16,7 +16,7 @@ struct Feature: Hashable, Codable {
     var wifi: [Wifi]?
     var url: String?
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case feature
         case icon
         case title = "display_text"

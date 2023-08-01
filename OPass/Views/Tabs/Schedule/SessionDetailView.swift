@@ -14,7 +14,7 @@ import OrderedCollections
 struct SessionDetailView: View {
     
     let sessionData: Session
-    @EnvironmentObject var EventService: EventService
+    @EnvironmentObject var EventStore: EventStore
     @State private var isCalendarAlertPresented = false
     @State private var isEventEditViewPresented = false
     @State private var isNavigationTitlePresented = false
@@ -22,7 +22,7 @@ struct SessionDetailView: View {
     @Environment(\.colorScheme) var colorScheme
     private var eventStore = EKEventStore()
     private var isLiked: Bool {
-        self.EventService.liked_sessions.contains(sessionData.id)
+        self.EventStore.likedSessions.contains(sessionData.id)
     }
     
     init(_ sessionData: Session) {
@@ -32,7 +32,7 @@ struct SessionDetailView: View {
     var body: some View {
         List {
             VStack(alignment: .leading, spacing: 0) {
-                if sessionData.tags.isNotEmpty, let schedule = EventService.schedule {
+                if sessionData.tags.isNotEmpty, let schedule = EventStore.schedule {
                     TagsSection(tags: schedule.tags)
                         .padding(.bottom, 8)
                         .padding(.top, 3.9)
@@ -53,13 +53,13 @@ struct SessionDetailView: View {
                     .padding(.vertical)
                 
                 if let type = sessionData.type {
-                    TypeSection(name: EventService.schedule?.types[type]?.localized().name ?? type)
+                    TypeSection(name: EventStore.schedule?.types[type]?.localized().name ?? type)
                         .background(Color("SectionBackgroundColor"))
                         .cornerRadius(8)
                         .padding(.bottom)
                 }
                 
-                PlaceSection(name: EventService.schedule?.rooms[sessionData.room]?.localized().name ?? sessionData.room)
+                PlaceSection(name: EventStore.schedule?.rooms[sessionData.room]?.localized().name ?? sessionData.room)
                     .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
                     .padding(.bottom)
@@ -69,7 +69,7 @@ struct SessionDetailView: View {
                     .cornerRadius(8)
                 
                 if let broadcast = sessionData.broadcast, broadcast.isNotEmpty {
-                    BroadcastSection(EventService.schedule, broadcast: broadcast)
+                    BroadcastSection(EventStore.schedule, broadcast: broadcast)
                         .background(Color("SectionBackgroundColor"))
                         .cornerRadius(8)
                         .padding(.top)
@@ -105,18 +105,18 @@ struct SessionDetailView: View {
                             title: String(localized: "SessionWillStartIn5Minutes"),
                             content: String(format: String(localized: "SessionWillStartIn5MinutesContent"),
                                             sessionData.en.title,
-                                            EventService.schedule?.rooms[sessionData.room]?.en.name ?? ""),
+                                            EventStore.schedule?.rooms[sessionData.room]?.en.name ?? ""),
                             rawTime: sessionData.start,
                             cancel: isLiked
                         )
                         if isLiked {
                             SoundManager.shared.play(sound: .don)
                             UINotificationFeedbackGenerator().notificationOccurred(.warning)
-                            self.EventService.liked_sessions.removeAll { $0 == sessionData.id }
+                            self.EventStore.likedSessions.removeAll { $0 == sessionData.id }
                         } else {
                             SoundManager.shared.play(sound: .din)
                             UINotificationFeedbackGenerator().notificationOccurred(.success)
-                            self.EventService.liked_sessions.append(sessionData.id)
+                            self.EventStore.likedSessions.append(sessionData.id)
                         }
                     }
                     
@@ -392,14 +392,14 @@ private struct BroadcastSection: View {
 private struct SpeakersSections: View {
     
     let sessionData: Session
-    @EnvironmentObject var EventService: EventService
+    @EnvironmentObject var EventStore: EventStore
     
     var body: some View {
         Section(header: Text(LocalizedStringKey("Speakers")).padding(.leading, 10)) {
             ForEach(sessionData.speakers, id: \.self) { speaker in
                 SpeakerBlock(
                     speaker: speaker,
-                    speakerData: EventService.schedule?.speakers[speaker]
+                    speakerData: EventStore.schedule?.speakers[speaker]
                 )
             }
             .listRowBackground(Color.clear)

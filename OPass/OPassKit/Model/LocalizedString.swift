@@ -17,7 +17,7 @@ struct LocalizedCodeString: Hashable, Codable, Localizable {
     var zh: String
     var en: String
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case zh = "zh-TW"
         case en = "en-US"
     }

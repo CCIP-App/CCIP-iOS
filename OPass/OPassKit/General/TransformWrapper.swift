@@ -31,7 +31,6 @@ struct Transform<Func: TransformFunction>: Codable, Hashable {
         try container.encode(self.wrappedValue)
     }
 }
-typealias TransformWith = Transform
 
 protocol TransformFunction {
     associatedtype FromType: Decodable

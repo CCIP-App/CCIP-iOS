@@ -11,21 +11,21 @@ import SwiftUI
 struct FastpassView: View {
     
     // MARK: - Variables
-    @EnvironmentObject var EventService: EventService
+    @EnvironmentObject var EventStore: EventStore
     @State private var isHttp403AlertPresented = false
     @State private var errorType: String? = nil
     
     // MARK: - Views
     var body: some View {
         VStack {
-            if EventService.user_token == nil {
+            if EventStore.user_token == nil {
                 RedeemTokenView()
             } else {
                 if errorType == nil {
-                    if EventService.scenario_status != nil {
+                    if EventStore.attendee != nil {
                         ScenarioView()
                             .task {
-                                do { try await EventService.loadScenarioStatus() }
+                                do { try await EventStore.loadScenarioStatus() }
                                 catch APIManager.LoadError.forbidden {
                                     self.isHttp403AlertPresented = true
                                 } catch {}
@@ -33,7 +33,7 @@ struct FastpassView: View {
                     } else {
                         ProgressView("Loading")
                             .task {
-                                do { try await EventService.loadScenarioStatus() }
+                                do { try await EventStore.loadScenarioStatus() }
                                 catch APIManager.LoadError.forbidden {
                                     self.errorType = "http403"
                                 }
@@ -56,10 +56,10 @@ struct FastpassView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {
-                    if let displayText = EventService.settings.feature(.fastpass)?.title {
+                    if let displayText = EventStore.config.feature(.fastpass)?.title {
                         Text(displayText.localized()).font(.headline)
                     }
-                    Text(EventService.display_name.localized())
+                    Text(EventStore.config.title.localized())
                         .font(.caption).foregroundColor(.gray)
                 }
             }
@@ -72,7 +72,7 @@ struct FastpassView: View {
 struct FastpassView_Previews: PreviewProvider {
     static var previews: some View {
         FastpassView()
-            .environmentObject(OPassService.mock().event!)
+            .environmentObject(OPassStore.mock().event!)
     }
 }
 #endif

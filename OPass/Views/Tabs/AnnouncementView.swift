@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AnnouncementView: View {
     
-    @EnvironmentObject var EventService: EventService
+    @EnvironmentObject var EventStore: EventStore
     @State private var isHttp403AlertPresented = false
     @State private var errorType: String? = nil
     @Environment(\.colorScheme) var colorScheme
@@ -18,7 +18,7 @@ struct AnnouncementView: View {
     var body: some View {
         VStack {
             if errorType == nil {
-                if let announcements = EventService.announcements {
+                if let announcements = EventStore.announcements {
                     if announcements.isNotEmpty {
                         List(announcements, id: \.datetime) { announcement in
                             Button {
@@ -50,14 +50,14 @@ struct AnnouncementView: View {
                         }
                         .refreshable{
                             do {
-                                try await EventService.loadAnnouncements()
+                                try await EventStore.loadAnnouncements()
                             } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
                         }
                         .task{
                             do {
-                                try await EventService.loadAnnouncements()
+                                try await EventStore.loadAnnouncements()
                             } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
@@ -74,14 +74,14 @@ struct AnnouncementView: View {
                         }
                         .refreshable{
                             do {
-                                try await EventService.loadAnnouncements()
+                                try await EventStore.loadAnnouncements()
                             } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
                         }
                         .task{
                             do {
-                                try await EventService.loadAnnouncements()
+                                try await EventStore.loadAnnouncements()
                             } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
@@ -90,7 +90,7 @@ struct AnnouncementView: View {
                 } else {
                     ProgressView("Loading")
                         .task {
-                            do { try await self.EventService.loadAnnouncements() }
+                            do { try await self.EventStore.loadAnnouncements() }
                             catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                                 self.errorType = "http403"
@@ -111,7 +111,7 @@ struct AnnouncementView: View {
         .listStyle(.insetGrouped)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if let displayText = EventService.settings.feature(.announcement)?.title {
+            if let displayText = EventStore.config.feature(.announcement)?.title {
                 ToolbarItem(placement: .principal) {
                     Text(displayText.localized()).font(.headline)
                 }
@@ -120,7 +120,7 @@ struct AnnouncementView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 SFButton(systemName: "arrow.clockwise") {
                     self.errorType = nil
-                    self.EventService.announcements = nil
+                    self.EventStore.announcements = nil
                 }
             }
         }
@@ -132,7 +132,7 @@ struct AnnouncementView: View {
 struct AnnounceView_Previews: PreviewProvider {
     static var previews: some View {
         AnnouncementView()
-            .environmentObject(OPassService.mock().event!)
+            .environmentObject(OPassStore.mock().event!)
     }
 }
 #endif

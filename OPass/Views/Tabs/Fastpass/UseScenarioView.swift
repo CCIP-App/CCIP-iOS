@@ -11,7 +11,7 @@ import SwiftUI
 struct UseScenarioView: View {
     
     let scenario: Scenario
-    @EnvironmentObject var EventService: EventService
+    @EnvironmentObject var EventStore: EventStore
     @State private var viewState = 0
     @State private var isHttp403AlertPresented = false
     @State private var usedTime: TimeInterval = 0
@@ -91,7 +91,7 @@ struct UseScenarioView: View {
         self.viewState = 1
         Task {
             do {
-                if try await EventService.useScenario(scenario: scenario.id) {
+                if try await EventStore.useScenario(scenario: scenario.id) {
                     self.usedTime = Date().timeIntervalSince1970
                     self.viewState = 2
                 } else { self.viewState = 3 }

@@ -1,5 +1,5 @@
 //
-//  OPassService.swift
+//  OPassStore.swift
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/1.
@@ -11,12 +11,12 @@ import OSLog
 
 private let logger = Logger(subsystem: "OPassKit", category: "OPassStore")
 
-class OPassService: ObservableObject {
-    @Published var event: EventService? = nil
-    @Published var eventId: String? = nil
-    @Published var eventLogo: Image? = nil
+class OPassStore: ObservableObject {
+    @Published var event: EventStore?
+    @Published var eventId: String?
+    @Published var eventLogo: Image?
 
-    private var eventAPITemporaryData: CodableEventService? = nil
+    private var eventTemporaryData: CodableEventService?
     private var keyStore = NSUbiquitousKeyValueStore()
     
     init() {
@@ -24,32 +24,30 @@ class OPassService: ObservableObject {
         if let data = keyStore.data(forKey: "EventStore") {
             do {
                 let eventAPIData = try JSONDecoder().decode(CodableEventService.self, from: data)
-                self.eventAPITemporaryData = eventAPIData
-                self.eventId = eventAPIData.event_id
+                self.eventTemporaryData = eventAPIData
+                self.eventId = eventAPIData.id
             } catch { logger.error("Unable to decode Event stored date: \(error.localizedDescription)") }
         } else { logger.info("No Event stored data was found") }
     }
 }
 
-extension OPassService {
-    func saveEventAPIData() async {
+extension OPassStore {
+    func save() async {
         logger.info("Saving data")
-        if let EventService = self.event {
+        if let EventStore = self.event {
             do {
                 let data = try JSONEncoder().encode(CodableEventService(
-                    event_id: EventService.event_id,
-                    display_name: EventService.display_name,
-                    logo_url: EventService.logo_url,
-                    settings: EventService.settings,
-                    logo_data: EventService.logo_data,
-                    schedule: EventService.schedule,
-                    announcements: EventService.announcements,
-                    scenario_status: EventService.scenario_status
+                    id: EventStore.id,
+                    settings: EventStore.config,
+                    logoData: EventStore.logoData,
+                    schedule: EventStore.schedule,
+                    announcements: EventStore.announcements,
+                    attendee: EventStore.attendee
                 ))
                 keyStore.set(data, forKey: "EventAPI")
-                logger.info("Save scuess of id: \(EventService.event_id)")
+                logger.info("Save scuess of id: \(EventStore.id)")
             } catch {
-                logger.error("Save EventService data \(error.localizedDescription)")
+                logger.error("Save EventStore data \(error.localizedDescription)")
             }
         } else {
             logger.notice("No data found, bypass for saving EventAPIData")
@@ -60,20 +58,20 @@ extension OPassService {
         if let eventId = eventId {
             do {
                 let settings = try await APIManager.fetchConfig(for: eventId)
-                if let eventAPIData = eventAPITemporaryData, eventId == eventAPIData.event_id { // Reload
-                    let event = EventService(
+                if let eventAPIData = eventTemporaryData, eventId == eventAPIData.id { // Reload
+                    let event = EventStore(
                         settings,
-                        logo_data: eventAPIData.logo_data,
-                        saveData: self.saveEventAPIData,
+                        logoData: eventAPIData.logoData,
+                        saveData: self.save,
                         tmpData: eventAPIData)
-                    logger.info("Reload event \(event.event_id)")
+                    logger.info("Reload event \(event.id)")
                     DispatchQueue.main.async {
                         self.event = event
                         Task{ await self.event!.loadLogos() }
                     }
                 } else { // Load new
-                    let event = EventService(settings, saveData: self.saveEventAPIData)
-                    logger.info("Loading new event from \(self.event?.event_id ?? "none") to \(event.event_id)")
+                    let event = EventStore(settings, saveData: self.save)
+                    logger.info("Loading new event from \(self.event?.id ?? "none") to \(event.id)")
                     DispatchQueue.main.async {
                         self.event = event
                         Task{ await self.event!.loadLogos() }
@@ -81,31 +79,31 @@ extension OPassService {
                 }
             } catch { // Use local data when it can't get data from API
                 logger.notice("Can't get data from API. Using local data")
-                if let eventAPIData = eventAPITemporaryData, eventAPIData.event_id == eventId {
+                if let eventAPIData = eventTemporaryData, eventAPIData.id == eventId {
                     DispatchQueue.main.async {
-                        self.event = EventService(
+                        self.event = EventStore(
                             eventAPIData.settings,
-                            logo_data: eventAPIData.logo_data,
-                            saveData: self.saveEventAPIData,
+                            logoData: eventAPIData.logoData,
+                            saveData: self.save,
                             tmpData: eventAPIData)
                     }
                 } else {
-                    self.eventAPITemporaryData = nil
+                    self.eventTemporaryData = nil
                     throw error
                 }
             }
-            self.eventAPITemporaryData = nil // Clear temporary data
+            self.eventTemporaryData = nil // Clear temporary data
         }
     }
     
     func loginCurrentEvent(with token: String) async throws -> Bool {
         guard let eventId = self.eventId else { return false }
         do {
-            if eventId == event?.event_id {
+            if eventId == event?.id {
                 return try await event?.redeemToken(token: token) ?? false
             }
             let settings = try await APIManager.fetchConfig(for: eventId)
-            let eventModel = EventService(settings, saveData: saveEventAPIData)
+            let eventModel = EventStore(settings, saveData: save)
             DispatchQueue.main.async {
                 self.eventLogo = nil
                 self.event = eventModel

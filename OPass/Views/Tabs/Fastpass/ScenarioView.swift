@@ -12,7 +12,7 @@ import SwiftDate
 struct ScenarioView: View {
     
     // MARK: - Variables
-    @EnvironmentObject var EventService: EventService
+    @EnvironmentObject var EventStore: EventStore
     @State private var disableAlertString = ""
     @State private var isDisableAlertPresented = false
     @State private var isLogOutAlertPresented = false
@@ -27,9 +27,9 @@ struct ScenarioView: View {
                     .frame(height: UIScreen.main.bounds.width * 0.4)
                     .listRowBackground(Color.clear)
                 
-                ForEach(EventService.scenario_status?.scenarios.keys ?? [], id: \.self) { sectionID in
+                ForEach(EventStore.attendee?.scenarios.keys ?? [], id: \.self) { sectionID in
                     Section(header: Text(sectionID)) {
-                        ForEach(EventService.scenario_status?.scenarios[sectionID] ?? []) { scenario in
+                        ForEach(EventStore.attendee?.scenarios[sectionID] ?? []) { scenario in
                             Button {
                                 if scenario.used == nil {
                                     if let errorText = scenario.disabled {
@@ -68,7 +68,7 @@ struct ScenarioView: View {
         }
         .alert("ConfirmSignOut", isPresented: $isLogOutAlertPresented) {
             Button(String(localized: "SignOut"), role: .destructive) {
-                EventService.signOut()
+                EventStore.signOut()
             }
             Button(String(localized: "Cancel"), role: .cancel) { }
         }
@@ -149,19 +149,19 @@ struct ScenarioView: View {
 
 struct FastpassLogoView: View {
     
-    @EnvironmentObject var EventService: EventService
+    @EnvironmentObject var EventStore: EventStore
     
     var body: some View {
         HStack {
             Spacer()
-            if let logo = EventService.logo {
+            if let logo = EventStore.logo {
                 logo
                     .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(Color("LogoColor"))
             } else {
-                Text(EventService.display_name.localized())
+                Text(EventStore.config.title.localized())
                     .font(.system(.largeTitle, design: .rounded))
                     .fontWeight(.medium)
                     .foregroundColor(Color("LogoColor"))
@@ -174,7 +174,7 @@ struct FastpassLogoView: View {
 #if DEBUG
 struct ScenarioView_Previews: PreviewProvider {
     static var previews: some View {
-        ScenarioView().environmentObject(OPassService.mock().event!)
+        ScenarioView().environmentObject(OPassStore.mock().event!)
     }
 }
 #endif

@@ -11,7 +11,7 @@ import OrderedCollections
 
 struct SearchScheduleView: View {
     let schedule: Schedule
-    @EnvironmentObject private var event: EventService
+    @EnvironmentObject private var event: EventStore
     
     @State private var searchText = ""
     //@State private var searchActive = true //TODO: Will be implement in iOS 17

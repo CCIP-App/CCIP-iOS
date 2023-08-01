@@ -12,7 +12,7 @@ struct Wifi: Hashable, Codable {
     var ssid: String
     var password: String
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case ssid = "SSID"
         case password
     }

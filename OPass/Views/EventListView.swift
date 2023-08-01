@@ -12,7 +12,7 @@ import OSLog
 struct EventListView: View {
     
     // MARK: - Variables
-    @EnvironmentObject private var OPassService: OPassService
+    @EnvironmentObject private var OPassService: OPassStore
     @StateObject private var viewModel = EventListViewModel()
     @Environment(\.dismiss) var dismiss
     
@@ -73,7 +73,7 @@ struct EventListView: View {
 private struct EventRow: View {
     let event: Event
     
-    @EnvironmentObject var OPassService: OPassService
+    @EnvironmentObject var OPassService: OPassStore
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @State private var preloadLogoImage: Image? = nil
@@ -136,7 +136,7 @@ private class EventListViewModel: ObservableObject {
                 for component in searchQuery.tirm().lowercased().components(separatedBy: " ") {
                     let component = component.tirm()
                     if component.isEmpty { continue }
-                    if name.notContains(component) { return false }
+                    if !name.contains(component) { return false }
                 }
                 return true
             }
@@ -171,7 +171,7 @@ private class EventListViewModel: ObservableObject {
 struct EventListView_Previews: PreviewProvider {
     static var previews: some View {
         EventListView()
-            .environmentObject(OPassService.mock())
+            .environmentObject(OPassStore.mock())
     }
 }
 #endif

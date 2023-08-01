@@ -11,7 +11,7 @@ import EFQRCode
 
 struct TicketView: View {
     
-    @EnvironmentObject var EventService: EventService
+    @EnvironmentObject var EventStore: EventStore
     @State private var isTokenVisible = false
     @State private var isLogOutAlertPresented = false
     @State private var qrCodeUIImage = UIImage()
@@ -22,7 +22,7 @@ struct TicketView: View {
     
     var body: some View {
         VStack {
-            if let token = EventService.user_token {
+            if let token = EventStore.user_token {
                 VStack(spacing: 0) {
                     Form {
                         Section() {
@@ -84,21 +84,21 @@ struct TicketView: View {
                         .padding([.bottom, .top], 10)
                         .background(Color("SectionBackgroundColor"))
                 }
-                .task { try? await EventService.loadScenarioStatus() }
+                .task { try? await EventStore.loadScenarioStatus() }
             } else {
                 RedeemTokenView()
             }
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if let displayText = EventService.settings.feature(.ticket)?.title {
+            if let displayText = EventStore.config.feature(.ticket)?.title {
                 ToolbarItem(placement: .principal) {
                     Text(displayText.localized()).font(.headline)
                 }
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
-                if EventService.user_token != nil {
+                if EventStore.user_token != nil {
                     Button(action: {
                         isLogOutAlertPresented.toggle()
                     }) { Text(LocalizedStringKey("SignOut")).foregroundColor(.red) }
@@ -107,7 +107,7 @@ struct TicketView: View {
         }
         .alert("ConfirmSignOut", isPresented: $isLogOutAlertPresented) {
             Button("SignOut", role: .destructive) {
-                self.EventService.signOut()
+                self.EventStore.signOut()
             }
             Button("Cancel", role: .cancel) { }
         }

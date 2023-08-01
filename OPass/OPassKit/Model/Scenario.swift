@@ -19,7 +19,7 @@ struct Scenario: Hashable, Codable, Identifiable {
     var attributes: Dictionary<String, String>
     var used: DateInRegion?
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case id
         case order
         case title = "display_text"

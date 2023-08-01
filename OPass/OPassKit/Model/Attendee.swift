@@ -19,7 +19,7 @@ struct Attendee: Hashable, Codable, Identifiable {
     @Transform<IntToDate> var firstUse: DateInRegion
     @Transform<Scenario> var scenarios: OrderedDictionary<String, [Scenario]>
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case id
         case eventId = "event_id"
         case userId = "user_id"

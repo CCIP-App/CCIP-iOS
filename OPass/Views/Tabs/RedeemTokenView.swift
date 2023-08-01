@@ -12,7 +12,7 @@ import CodeScanner
 
 struct RedeemTokenView: View {
     
-    @EnvironmentObject var EventService: EventService
+    @EnvironmentObject var EventStore: EventStore
     @State private var token: String = ""
     @State private var isCameraSOCPresented = false
     @State private var isManuallySOCPresented = false
@@ -149,7 +149,7 @@ struct RedeemTokenView: View {
                     self.isManuallySOCPresented = false
                     Task {
                         do {
-                            self.isInvaildTokenAlertPresented = !(try await EventService.redeemToken(token: token))
+                            self.isInvaildTokenAlertPresented = !(try await EventStore.redeemToken(token: token))
                         } catch APIManager.LoadError.forbidden {
                             self.isHttp403AlertPresented = true
                         } catch {
@@ -176,7 +176,7 @@ struct RedeemTokenView: View {
                       let token = feature.first?.messageString
                 else { self.isNoQRCodeAlertPresented = true; return }
                 do {
-                    let result = try await EventService.redeemToken(token: token)
+                    let result = try await EventStore.redeemToken(token: token)
                     self.isInvaildTokenAlertPresented = !result
                 } catch APIManager.LoadError.forbidden {
                     self.isHttp403AlertPresented = true
@@ -191,7 +191,7 @@ struct RedeemTokenView: View {
         case .success(let result):
             Task {
                 do {
-                    let result = try await EventService.redeemToken(token: result.string)
+                    let result = try await EventStore.redeemToken(token: result.string)
                     DispatchQueue.main.async {
                         self.isInvaildTokenAlertPresented = !result
                     }
@@ -222,7 +222,7 @@ struct RedeemTokenView: View {
 struct RedeemTokenView_Previews: PreviewProvider {
     static var previews: some View {
         RedeemTokenView()
-            .environmentObject(OPassService.mock().event!)
+            .environmentObject(OPassStore.mock().event!)
     }
 }
 #endif

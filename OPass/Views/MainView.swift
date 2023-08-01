@@ -12,8 +12,8 @@ import OSLog
 struct MainView: View {
     
     // MARK: - Variables
-    @EnvironmentObject var OPassService: OPassService
-    @EnvironmentObject var EventService: EventService
+    @EnvironmentObject var OPassService: OPassStore
+    @EnvironmentObject var EventStore: EventStore
     private let gridItemLayout = Array(repeating: GridItem(spacing: UIScreen.main.bounds.width / 16.56, alignment: .top), count: 4)
     private let logger = Logger(subsystem: "app.opass.ccip", category: "MainView")
     
@@ -27,14 +27,14 @@ struct MainView: View {
                         .resizable()
                         .scaledToFit()
                         .padding(.horizontal)
-                } else if let logo = EventService.logo {
+                } else if let logo = EventStore.logo {
                     logo
                         .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
                         .padding(.horizontal)
                 } else {
-                    Text(EventService.display_name.localized())
+                    Text(EventStore.config.title.localized())
                         .font(.system(.largeTitle, design: .rounded))
                         .fontWeight(.medium)
                         .fixedSize(horizontal: false, vertical: true)
@@ -46,7 +46,7 @@ struct MainView: View {
             
             ScrollView {
                 LazyVGrid(columns: gridItemLayout) {
-                    ForEach(EventService.settings.features, id: \.self) { feature in
+                    ForEach(EventStore.config.features, id: \.self) { feature in
                         if FeatureIsAvailable(feature), FeatureIsVisible(feature.visibleRoles) {
                             VStack {
                                 TabButton(feature: feature, width: UIScreen.main.bounds.width / 5.394136)
@@ -74,18 +74,18 @@ struct MainView: View {
     private func FeatureIsAvailable(_ feature: Feature) -> Bool {
         let t = feature.feature
         guard t == .im || t == .puzzle || t == .venue || t == .sponsors || t == .staffs || t == .webview else { return true }
-        return feature.url(token: EventService.user_token, role: EventService.scenario_status?.role) != nil
+        return feature.url(token: EventStore.user_token, role: EventStore.attendee?.role) != nil
     }
     private func FeatureIsVisible(_ visible_roles: [String]?) -> Bool {
         guard let visible_roles = visible_roles else { return true }
-        guard EventService.user_role != "nil" else { return false }
-        return visible_roles.contains(EventService.user_role)
+        guard EventStore.userRole != "nil" else { return false }
+        return visible_roles.contains(EventStore.userRole)
     }
 }
 
 private struct TabButton: View {
     let feature: Feature, width: CGFloat
-    @EnvironmentObject var EventService: EventService
+    @EnvironmentObject var EventStore: EventStore
     @EnvironmentObject var router: Router
     @Environment(\.colorScheme) var colorScheme
     
@@ -106,7 +106,7 @@ private struct TabButton: View {
                     Constants.OpenInOS(forURL: url)
                 }
             case .im, .puzzle, .venue, .sponsors, .staffs, .webview:
-                if let url = feature.url(token: EventService.user_token, role: EventService.scenario_status?.role) {
+                if let url = feature.url(token: EventStore.user_token, role: EventStore.attendee?.role) {
                     Constants.OpenInAppSafari(forURL: url, style: colorScheme)
                 }
             }
@@ -145,7 +145,7 @@ private struct TabButton: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            MainView().environmentObject(OPassService.mock().event!)
+            MainView().environmentObject(OPassStore.mock().event!)
         }
     }
 }

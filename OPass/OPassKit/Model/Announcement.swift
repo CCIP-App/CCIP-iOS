@@ -15,7 +15,7 @@ struct Announcement: Hashable, Codable, Localizable {
     var en: String
     var uri: String
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case datetime
         case zh = "msg_zh"
         case en = "msg_en"

@@ -8,7 +8,7 @@
 
 import SwiftDate
 
-struct EventConfig: Hashable, Codable {
+struct EventConfig: Hashable, Codable, Identifiable {
     var id: String
     var title: LocalizedString
     var logoUrl: String
@@ -17,7 +17,7 @@ struct EventConfig: Hashable, Codable {
     var publish: TimeRange
     var features: [Feature]
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case id = "event_id"
         case title = "display_name"
         case logoUrl = "logo_url"

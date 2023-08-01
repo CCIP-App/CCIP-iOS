@@ -12,26 +12,26 @@ import OrderedCollections
 
 struct ScheduleView: View {
     
-    @ObservedObject var EventService: EventService
+    @ObservedObject var EventStore: EventStore
     @State private var selectDayIndex: Int
     @State private var filter = Filter.all
     @State private var isError = false
     @AppStorage("AutoSelectScheduleDay") var autoSelectScheduleDay = true
     
-    init(EventService: EventService) {
-        self.EventService = EventService
+    init(EventStore: EventStore) {
+        self.EventStore = EventStore
         if AppStorage(wrappedValue: true, "AutoSelectScheduleDay").wrappedValue {
-            self.selectDayIndex = EventService.schedule?.sessions.count == 1 ? 0 : EventService.schedule?.sessions.firstIndex { $0.keys[0].isToday } ?? 0
+            self.selectDayIndex = EventStore.schedule?.sessions.count == 1 ? 0 : EventStore.schedule?.sessions.firstIndex { $0.keys[0].isToday } ?? 0
         } else { self.selectDayIndex = 0 }
     }
 
     private var filteredSessions: OrderedDictionary<DateInRegion, [Session]>? {
-        guard let schedule = EventService.schedule else { return nil }
+        guard let schedule = EventStore.schedule else { return nil }
         return schedule.sessions[selectDayIndex].compactMapValues { sessions in
             let sessions = sessions.filter { session in
                 switch filter {
                 case .all: return true
-                case .liked: return EventService.liked_sessions.contains(session.id)
+                case .liked: return EventStore.likedSessions.contains(session.id)
                 case .tag(let tag): return session.tags.contains(tag)
                 case .type(let type): return session.type == type
                 case .room(let room): return session.room == room
@@ -45,7 +45,7 @@ struct ScheduleView: View {
     var body: some View {
         VStack {
             if !isError {
-                if let schedule = EventService.schedule, let filteredModel = filteredSessions {
+                if let schedule = EventStore.schedule, let filteredModel = filteredSessions {
                     VStack(spacing: 0) {
                         if schedule.sessions.count > 1 {
                             SelectDayView(selectDayIndex: $selectDayIndex, sessions: schedule.sessions)
@@ -57,7 +57,7 @@ struct ScheduleView: View {
                                     ForEach(filteredModel[header]!) { detail in
                                         NavigationLink(value: Router.mainDestination.sessionDetail(detail)) {
                                             SessionOverView(
-                                                room: EventService.schedule?.rooms[detail.room]?.localized().name ?? detail.room,
+                                                room: EventStore.schedule?.rooms[detail.room]?.localized().name ?? detail.room,
                                                 start: detail.start,
                                                 end: detail.end,
                                                 title: detail.localized().title
@@ -68,7 +68,7 @@ struct ScheduleView: View {
                                 .listRowInsets(.init(top: 10, leading: 15, bottom: 10, trailing: 15))
                             }
                         }
-                        .refreshable { try? await EventService.loadSchedule() }
+                        .refreshable { try? await EventStore.loadSchedule() }
                         .overlay {
                             if filteredModel.isEmpty {
                                 VStack(alignment: .center) {
@@ -100,12 +100,12 @@ struct ScheduleView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Text(EventService.settings.feature(.schedule)?.title.localized() ?? "Schedule").font(.headline)
+                Text(EventStore.config.feature(.schedule)?.title.localized() ?? "Schedule").font(.headline)
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack {
-                    if let schedule = EventService.schedule {
+                    if let schedule = EventStore.schedule {
                         NavigationLink(value: Router.mainDestination.scheduleSearch(schedule)) {
                             Image(systemName: "magnifyingglass")
                         }
@@ -119,7 +119,7 @@ struct ScheduleView: View {
                             Label("Favorite", systemImage: "heart\(filter == .liked ? ".fill" : "")")
                                 .tag(Filter.liked)
                             
-                            if let schedule = EventService.schedule, !schedule.tags.isEmpty {
+                            if let schedule = EventStore.schedule, !schedule.tags.isEmpty {
                                 Menu {
                                     Picker(selection: $filter, label: EmptyView()) {
                                         ForEach(schedule.tags.keys, id: \.self) { id in
@@ -139,7 +139,7 @@ struct ScheduleView: View {
                                 }
                             }
                             
-                            if let schedule = EventService.schedule, !schedule.types.isEmpty {
+                            if let schedule = EventStore.schedule, !schedule.types.isEmpty {
                                 Menu {
                                     Picker(selection: $filter, label: EmptyView()) {
                                         ForEach(schedule.types.keys, id: \.self) { id in
@@ -159,7 +159,7 @@ struct ScheduleView: View {
                                 }
                             }
                             
-                            if let schedule = EventService.schedule, !schedule.rooms.isEmpty {
+                            if let schedule = EventStore.schedule, !schedule.rooms.isEmpty {
                                 Menu {
                                     Picker(selection: $filter, label: EmptyView()) {
                                         ForEach(schedule.rooms.keys, id: \.self) { id in
@@ -177,7 +177,7 @@ struct ScheduleView: View {
                                 }
                             }
                             
-                            if let schedule = EventService.schedule, !schedule.speakers.isEmpty {
+                            if let schedule = EventStore.schedule, !schedule.speakers.isEmpty {
                                 Menu {
                                     Picker(selection: $filter, label: EmptyView()) {
                                         ForEach(schedule.speakers.keys, id: \.self) { id in
@@ -207,9 +207,9 @@ struct ScheduleView: View {
     
     private func ScheduleFirstLoad() async {
         do {
-            try await EventService.loadSchedule()
-            if EventService.schedule?.sessions.count ?? 0 > 1, autoSelectScheduleDay{
-                self.selectDayIndex = EventService.schedule?.sessions.firstIndex { $0.keys[0].isToday } ?? 0
+            try await EventStore.loadSchedule()
+            if EventStore.schedule?.sessions.count ?? 0 > 1, autoSelectScheduleDay{
+                self.selectDayIndex = EventStore.schedule?.sessions.firstIndex { $0.keys[0].isToday } ?? 0
             }
         }
         catch { isError = true }
@@ -293,8 +293,8 @@ struct SessionOverView: View {
 #if DEBUG
 struct ScheduleView_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleView(EventService: OPassService.mock().event!)
-            .environmentObject(OPassService.mock())
+        ScheduleView(EventStore: OPassStore.mock().event!)
+            .environmentObject(OPassStore.mock())
     }
 }
 #endif
