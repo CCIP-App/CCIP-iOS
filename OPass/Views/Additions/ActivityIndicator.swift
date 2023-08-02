@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ActivityIndicatorMark_1: View {
+struct ActivityIndicator: View {
     @State var animate = false
     let style = StrokeStyle(lineWidth: 6, lineCap: .round)
     let color1 = Color.gray, color2 = Color.gray.opacity(0.5)
@@ -21,7 +21,7 @@ struct ActivityIndicatorMark_1: View {
                     style: style)
                 .rotationEffect(Angle(degrees: animate ? 360 : 0))
                 .animation(Animation.linear(duration: 0.7).repeatForever(autoreverses: false), value: animate)
-        }.onAppear() {
+        }.onAppear {
             self.animate.toggle()
         }
     }

@@ -86,7 +86,7 @@ private struct AboutSection: View {
             }
             
             Button {
-                Constants.OpenInAppSafari(forURL: CCIPWebsiteURL, style: colorScheme)
+                Constants.openInAppSafari(forURL: CCIPWebsiteURL, style: colorScheme)
             } label: {
                 HStack {
                     VStack(alignment: .leading) {
@@ -109,7 +109,7 @@ private struct AboutSection: View {
             }
             
             Button {
-                Constants.OpenInAppSafari(forURL: CCIPGitHubURL, style: colorScheme)
+                Constants.openInAppSafari(forURL: CCIPGitHubURL, style: colorScheme)
             } label: {
                 HStack {
                     VStack(alignment: .leading) {
@@ -132,7 +132,7 @@ private struct AboutSection: View {
             }
             
             Button {
-                Constants.OpenInAppSafari(forURL: CCIPPolicyURL, style: colorScheme)
+                Constants.openInAppSafari(forURL: CCIPPolicyURL, style: colorScheme)
             } label: {
                 HStack {
                     VStack(alignment: .leading) {

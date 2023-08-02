@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F22826327DD8C5E0030D73E /* ExtractWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F22826227DD8C5E0030D73E /* ExtractWrapper.swift */; };
 		4F29D9C727D4E6DA00292CC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F29D9C627D4E6DA00292CC4 /* GoogleService-Info.plist */; };
 		4F35B17C27D3850B0023621F /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F35B17B27D3850B0023621F /* Announcement.swift */; };
 		4F48B5D427CF07910010FC2C /* eventListSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D327CF07910010FC2C /* eventListSample.json */; };
@@ -134,7 +133,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4F22826227DD8C5E0030D73E /* ExtractWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractWrapper.swift; sourceTree = "<group>"; };
 		4F29D9C627D4E6DA00292CC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F35B17B27D3850B0023621F /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		4F48B5D327CF07910010FC2C /* eventListSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventListSample.json; sourceTree = "<group>"; };
@@ -344,7 +342,6 @@
 			children = (
 				D39444122A754EF200EE2021 /* LocalizableProtocol.swift */,
 				4F5EB73427D3346D00235396 /* TransformWrapper.swift */,
-				4F22826227DD8C5E0030D73E /* ExtractWrapper.swift */,
 				D3829EA32A765DF300610B28 /* DateInRegionTransform.swift */,
 				D36E33C52A684CC8006D4159 /* Data+CryptoKit.swift */,
 				D3DA440A2A78110400361D79 /* String+Extension.swift */,
@@ -746,7 +743,6 @@
 				D3D3789327CE70EE00021FC4 /* EventConfig.swift in Sources */,
 				D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */,
 				D3DA440B2A78110400361D79 /* String+Extension.swift in Sources */,
-				4F22826327DD8C5E0030D73E /* ExtractWrapper.swift in Sources */,
 				D39444112A754A2F00EE2021 /* Tag.swift in Sources */,
 				D3C6F60F286360FC0074B942 /* Markdown.swift in Sources */,
 				D3E2476D28BF553200B3E71A /* Collection+Extension.swift in Sources */,

@@ -147,7 +147,7 @@ struct SessionDetailView: View {
                     .alert("RequestUserPermitCalendar", isPresented: $isCalendarAlertPresented) {
                         Button("Cancel", role: .cancel, action: {})
                         Button("Settigns") {
-                            Constants.OpenInOS(forURL: URL(string: UIApplication.openSettingsURLString)!)
+                            Constants.openInOS(forURL: URL(string: UIApplication.openSettingsURLString)!)
                         }
                     }
                 }
@@ -242,10 +242,10 @@ private struct FeatureButtons: View {
                                         string:"youtube://\((url.absoluteString as NSString).substring(with: match.range(at: 0)))")
                                     else { return true }
                                     guard UIApplication.shared.canOpenURL(youtubeUrl) else { return true }
-                                    Constants.OpenInOS(forURL: youtubeUrl)
+                                    Constants.openInOS(forURL: youtubeUrl)
                                     return false
                                 }()) {
-                                    Constants.OpenInAppSafari(forURL: url, style: colorScheme)
+                                    Constants.openInAppSafari(forURL: url, style: colorScheme)
                                 }
                             } label: {
                                 Image(systemName: systemImageName)
@@ -469,7 +469,7 @@ private struct SpeakerBio: View {
     var body: some View {
         VStack(spacing: 0) {
             Markdown(speakerBio, font: .footnote) { url in
-                Constants.OpenInAppSafari(forURL: url, style: colorScheme)
+                Constants.openInAppSafari(forURL: url, style: colorScheme)
             }
             .lineSpacing(4)
             .lineLimit(2)
@@ -519,7 +519,7 @@ private struct SpeakerBio: View {
                                             Markdown(speakerBio, font: .footnote) { url in
                                                 SOCManager.dismiss(isPresented: $isShowingSpeakerDetail)
                                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
-                                                    Constants.OpenInAppSafari(forURL: url, style: colorScheme)
+                                                    Constants.openInAppSafari(forURL: url, style: colorScheme)
                                                 }
                                             }
                                             .lineSpacing(4)
@@ -536,7 +536,7 @@ private struct SpeakerBio: View {
                                                 Markdown(speakerBio, font: .footnote) { url in
                                                     SOCManager.dismiss(isPresented: $isShowingSpeakerDetail)
                                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
-                                                        Constants.OpenInAppSafari(forURL: url, style: colorScheme)
+                                                        Constants.openInAppSafari(forURL: url, style: colorScheme)
                                                     }
                                                 }
                                                 .lineSpacing(4)
@@ -567,7 +567,7 @@ private struct DescriptionSection: View {
     var body: some View {
         Section(header: Text(LocalizedStringKey("SessionIntroduction")).padding(.leading, 10)) {
             Markdown(description, font: .footnote) { url in
-                Constants.OpenInAppSafari(forURL: url, style: colorScheme)
+                Constants.openInAppSafari(forURL: url, style: colorScheme)
             }
             .lineSpacing(4)
             .padding()

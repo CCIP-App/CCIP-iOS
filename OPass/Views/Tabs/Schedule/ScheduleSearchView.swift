@@ -26,7 +26,7 @@ struct SearchScheduleView: View {
         if texts.isEmpty { return schedule.sessions } //TODO: Tokens
         return schedule.sessions.compactMap { session in
             var session = session
-            for (index, value) in session.values.elements.enumerated() { //TODO: FIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+            for (key, value) in session.elements {
                 let value = value.filter { session in
                     for text in texts {
                         if session.en.title.range(of: text, options: .caseInsensitive) != nil ||
@@ -36,8 +36,8 @@ struct SearchScheduleView: View {
                     }
                     return false
                 }
-                if value.isEmpty { session.remove(at: index) }
-                else { session.values[index] = value }
+                if value.isEmpty { session[key] = nil }
+                else { session[key] = value }
             }
             return session.isEmpty ? nil : session
         }

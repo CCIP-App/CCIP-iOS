@@ -6,9 +6,10 @@
 //  2023 OPass.
 //
 
-import SwiftUI
-import KeychainAccess
 import OSLog
+import SwiftUI
+import OneSignal
+import KeychainAccess
 
 private let logger = Logger(subsystem: "OPassKit", category: "EventStore")
 
@@ -25,49 +26,31 @@ class EventStore: ObservableObject, Codable, Identifiable {
     @AppStorage var userRole: String
     @AppStorage var likedSessions: [String]
 
-    private var eventAPITmpData: CodableEventService? = nil
+    private var eventAPITmpData: EventStore? = nil
     private let keychain = Keychain(service: "app.opass.ccip-token").synchronizable(true) //TODO: Change keychain id to "token.app.opass.ccip" after PyCon 23
     private let keyStore = NSUbiquitousKeyValueStore()
     
     init(
         _ config: EventConfig,
         logoData: Data? = nil,
-        saveData: @escaping () async -> Void = {},
-        tmpData: CodableEventService? = nil
+        tmpData: EventStore? = nil
     ) {
         id = config.id
         self.logoData = logoData
         self.config = config
-        save = saveData
         _userId = AppStorage(wrappedValue: "nil", "userId", store: .init(suiteName: config.id))
         _userRole = AppStorage(wrappedValue: "nil", "userRole", store: .init(suiteName: config.id))
         _likedSessions = AppStorage(wrappedValue: [], "likedSessions", store: .init(suiteName: config.id))
         eventAPITmpData = tmpData
     }
-
-    var save: () async -> Void
-    var logo: Image? { logoData?.image() }
-    var user_token: String? {
-        get { try? keychain.get("\(self.id)_token") }
-        set {
-            if let user_token = newValue {
-                do { try keychain.set(user_token, key: "\(self.id)_token") }
-                catch { logger.error("Save user_token faild: \(error.localizedDescription)") }
-            } else {
-                do { try keychain.remove("\(self.id)_token") }
-                catch { logger.error("Token remove error: \(error.localizedDescription)") }
-            }
-            objectWillChange.send()
-        }
-    }
     
     enum EventAPIError: Error {
         case noTokenFound
-        case uncorrectFeature
+        case incorrectFeature
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id, logoData, config, schedule, announcements, attendee
+        case id, logoData, config, attendee, schedule, announcements
     }
 
     required init(from decoder: Decoder) throws {
@@ -76,13 +59,12 @@ class EventStore: ObservableObject, Codable, Identifiable {
         logoData = try container.decode(Data?.self, forKey: .logoData)
         let config = try container.decode(EventConfig.self, forKey: .config)
         self.config = config
+        attendee = try container.decode(Attendee?.self, forKey: .attendee)
         schedule = try container.decode(Schedule?.self, forKey: .schedule)
         announcements = try container.decode([Announcement]?.self, forKey: .announcements)
-        attendee = try container.decode(Attendee?.self, forKey: .attendee)
         _userId = AppStorage(wrappedValue: "nil", "userId", store: .init(suiteName: config.id))
         _userRole = AppStorage(wrappedValue: "nil", "userRole", store: .init(suiteName: config.id))
         _likedSessions = AppStorage(wrappedValue: [], "likedSessions", store: .init(suiteName: config.id))
-        save = {}
     }
 
     func encode(to encoder: Encoder) throws {
@@ -90,28 +72,46 @@ class EventStore: ObservableObject, Codable, Identifiable {
         try container.encode(id, forKey: .id)
         try container.encode(logoData, forKey: .logoData)
         try container.encode(config, forKey: .config)
+        try container.encode(attendee, forKey: .attendee)
         try container.encode(schedule, forKey: .schedule)
         try container.encode(announcements, forKey: .announcements)
-        try container.encode(attendee, forKey: .attendee)
     }
 }
 
 extension EventStore {
+    @inline(__always)
+    var logo: Image? { logoData?.image() }
+
+    @inline(__always)
+    var token: String? {
+        get { try? keychain.get("\(self.id)_token") }
+        set {
+            if let token = newValue {
+                do {
+                    try keychain.set(token, key: "\(self.id)_token")
+                } catch { logger.error("Save user token faild: \(error.localizedDescription)") }
+            } else {
+                do {
+                    try keychain.remove("\(self.id)_token")
+                } catch { logger.error("Token remove error: \(error.localizedDescription)") }
+            }
+            objectWillChange.send()
+        }
+    }
+
     ///Return bool to indicate success or not
-    func useScenario(scenario: String) async throws -> Bool{
-        @Extract(.fastpass, in: config) var fastpassFeature
-        
-        guard let fastpassFeature = fastpassFeature else {
+    func use(scenario: String) async throws -> Bool{
+        guard let feature = config.feature(.fastpass) else {
             logger.critical("Can't find correct fastpass feature")
             return false
         }
-        guard let token = user_token else {
-            logger.error("No user_token included")
+        guard let token = token else {
+            logger.error("No token included")
             return false
         }
         
         do {
-            let eventScenarioUseStatus = try await APIManager.fetchStatus(from: fastpassFeature, token: token, scenario: scenario)
+            let eventScenarioUseStatus = try await APIManager.fetchAttendee(from: feature, token: token, scenario: scenario)
             DispatchQueue.main.async {
                 self.attendee = eventScenarioUseStatus
                 Task{ await self.save() }
@@ -123,30 +123,27 @@ extension EventStore {
     }
     
     ///Return bool to indicate token is valid or not. Will save token if is vaild.
-    func redeemToken(token: String) async throws -> Bool {
+    func redeem(token: String) async throws -> Bool {
         let token = token.tirm()
         let nonAllowedCharacters = CharacterSet
             .alphanumerics
             .union(CharacterSet(charactersIn: "-_"))
             .inverted
         guard token.isNotEmpty, token.rangeOfCharacter(from: nonAllowedCharacters) == nil else {
-            logger.info("Invalid user_token of \(token)")
+            logger.info("Invalid token of \(token)")
             return false
         }
-        
-        @Extract(.fastpass, in: config) var fastpassFeature
-        
-        guard let fastpassFeature = fastpassFeature else {
+        guard let feature = config.feature(.fastpass) else {
             logger.critical("Can't find correct fastpass feature")
             return false
         }
         
         do {
-            let attendee = try await APIManager.fetchStatus(from: fastpassFeature, token: token)
-            Constants.sendTag("\(attendee.eventId)\(attendee.role)", value: "\(attendee.token)")
+            let attendee = try await APIManager.fetchAttendee(from: feature, token: token)
+            OneSignal.sendTag("\(attendee.eventId)\(attendee.role)", value: "\(attendee.token)")
             DispatchQueue.main.async {
                 self.attendee = attendee
-                self.user_token = token
+                self.token = token
                 self.userId = attendee.userId ?? "nil"
                 self.userRole = attendee.role
                 Task{ await self.save() }
@@ -156,21 +153,53 @@ extension EventStore {
             throw APIManager.LoadError.forbidden
         } catch { return false }
     }
-    
-    func loadScenarioStatus() async throws {
-        @Extract(.fastpass, in: config) var fastpassFeature
-        
-        guard let fastpassFeature = fastpassFeature else {
-            logger.critical("Can't find correct fastpass feature")
-            throw EventAPIError.uncorrectFeature
+
+    func loadLogos() async {
+        //Load Event Logo
+        let icons: [Int: Data] = await withTaskGroup(of: (Int, Data?).self) { group in
+            let logo_url = config.logoUrl
+            let webViewFeatureIndex = config.features.enumerated().filter({ $0.element.feature == .webview }).map { $0.offset }
+
+            group.addTask { (-1, try? await APIManager.fetchData(from: logo_url)) }
+            for index in webViewFeatureIndex {
+                if let iconUrl = config.features[index].icon{
+                    group.addTask { (index, try? await APIManager.fetchData(from: iconUrl)) }
+                }
+            }
+
+            var indexToIcon: [Int: Data] = [:]
+            for await (index, data) in group {
+                if data != nil {
+                    indexToIcon[index] = data
+                }
+            }
+            return indexToIcon
         }
-        guard let token = user_token else {
-            logger.error("No user_token included")
+
+        for (index, data) in icons {
+            DispatchQueue.main.async {
+                if index == -1 {
+                    self.logoData = data
+                } else {
+                    self.config.features[index].iconData = data
+                }
+            }
+        }
+        Task{ await self.save() }
+    }
+    
+    func loadAttendee() async throws {
+        guard let feature = config.feature(.fastpass) else {
+            logger.critical("Can't find correct fastpass feature")
+            throw EventAPIError.incorrectFeature
+        }
+        guard let token = token else {
+            logger.error("No token included")
             throw EventAPIError.noTokenFound
         }
-        
+
         do {
-            let attendee = try await APIManager.fetchStatus(from: fastpassFeature, token: token)
+            let attendee = try await APIManager.fetchAttendee(from: feature, token: token)
             DispatchQueue.main.async {
                 self.attendee = attendee
                 self.userId = attendee.userId ?? "nil"
@@ -191,50 +220,14 @@ extension EventStore {
             }
         }
     }
-    
-    func loadLogos() async {
-        //Load Event Logo
-        let icons: [Int: Data] = await withTaskGroup(of: (Int, Data?).self) { group in
-            let logo_url = config.logoUrl
-            let webViewFeatureIndex = config.features.enumerated().filter({ $0.element.feature == .webview }).map { $0.offset }
-            
-            group.addTask { (-1, try? await APIManager.fetchData(from: logo_url)) }
-            for index in webViewFeatureIndex {
-                if let iconUrl = config.features[index].icon{
-                    group.addTask { (index, try? await APIManager.fetchData(from: iconUrl)) }
-                }
-            }
-            
-            var indexToIcon: [Int: Data] = [:]
-            for await (index, data) in group {
-                if data != nil {
-                    indexToIcon[index] = data
-                }
-            }
-            return indexToIcon
-        }
-        
-        for (index, data) in icons {
-            DispatchQueue.main.async {
-                if index == -1 {
-                    self.logoData = data
-                } else {
-                    self.config.features[index].iconData = data
-                }
-            }
-        }
-        Task{ await self.save() }
-    }
-    
+
     func loadSchedule() async throws {
-        @Extract(.schedule, in: config) var scheduleFeature
-        
-        guard let scheduleFeature = scheduleFeature else {
+        guard let feature = config.feature(.schedule) else {
             logger.critical("Can't find correct schedule feature")
-            throw EventAPIError.uncorrectFeature
+            throw EventAPIError.incorrectFeature
         }
         do {
-            let schedule = try await APIManager.fetchSchedule(from: scheduleFeature)
+            let schedule = try await APIManager.fetchSchedule(from: feature)
             DispatchQueue.main.async {
                 self.schedule = schedule
                 Task { await self.save() }
@@ -251,14 +244,12 @@ extension EventStore {
     }
     
     func loadAnnouncements() async throws {
-        @Extract(.announcement, in: config) var announcementFeature
-        
-        guard let announcementFeature = announcementFeature else {
+        guard let feature = config.feature(.announcement) else {
             logger.critical("Can't find correct announcement feature")
-            throw EventAPIError.uncorrectFeature
+            throw EventAPIError.incorrectFeature
         }
         do {
-            let announcements = try await APIManager.fetchAnnouncement(from: announcementFeature, token: user_token)
+            let announcements = try await APIManager.fetchAnnouncements(from: feature, token: token)
             DispatchQueue.main.async {
                 self.announcements = announcements
                 Task{ await self.save() }
@@ -278,37 +269,19 @@ extension EventStore {
     
     func signOut() {
         if let attendee = attendee {
-            Constants.sendTag("\(attendee.eventId)\(attendee.role)", value: "")
+            OneSignal.sendTag("\(attendee.eventId)\(attendee.role)", value: "")
             self.attendee = nil
             self.userId = "nil"
             self.userRole = "nil"
         }
-        self.user_token = nil
+        self.token = nil
     }
-}
 
-
-
-// MARK: - Codable EventStore
-class CodableEventService: Codable {
-    init(id: String,
-         settings: EventConfig,
-         logoData: Data?,
-         schedule: Schedule?,
-         announcements: [Announcement]?,
-         attendee: Attendee?) {
-        self.id = id
-        self.settings = settings
-        self.logoData = logoData
-        self.schedule = schedule
-        self.announcements = announcements
-        self.attendee = attendee
+    private func save() async {
+        do {
+            let data = try JSONEncoder().encode(self)
+            keyStore.set(data, forKey: "EventStore")
+            logger.info("Save scuess of id: \(self.id)")
+        } catch { logger.error("Save faild with: \(error.localizedDescription), id: \(self.id)") }
     }
-    
-    var id: String
-    var settings: EventConfig
-    var logoData: Data?
-    var schedule: Schedule?
-    var announcements: [Announcement]?
-    var attendee: Attendee?
 }

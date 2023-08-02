@@ -45,7 +45,7 @@ final class APIManager {
         case fetchFaild(Error)
         case decodeFaild(Error)
         case missingURL(Feature)
-        case uncorrectFeature(String)
+        case incorrectFeature(FeatureType)
         case forbidden
         
         public var errorDescription: String? {
@@ -58,7 +58,7 @@ final class APIManager {
                 return "Decode Faild with \(error.localizedDescription)"
             case .missingURL(let feature):
                 return "Missing URL in: \(feature.feature.rawValue)"
-            case .uncorrectFeature(let feature):
+            case .incorrectFeature(let feature):
                 return "Uncorrect Feature for: \(feature)"
             case .forbidden:
                 return "Http 403 Forbidden"
@@ -78,14 +78,14 @@ extension APIManager {
     }
     
     // MARK: - Event
-    public static func fetchStatus(
-        @Extract(.fastpass) from feature: Feature?,
+    public static func fetchAttendee(
+        from feature: Feature,
         token: String,
         scenario: String? = nil
     ) async throws -> Attendee {
-        guard let feature = feature else {
+        guard feature.feature == .fastpass else {
             logger.critical("Can't find correct fastpass feature")
-            throw LoadError.uncorrectFeature("fastpass")
+            throw LoadError.incorrectFeature(.fastpass)
         }
         guard let url = feature.url else {
             logger.error("Missing URL in feature: \(feature.feature.rawValue)")
@@ -94,10 +94,10 @@ extension APIManager {
         return try await fetch(from: scenario == nil ? .status(url, token) : .use(url, scenario!, token))
     }
     
-    public static func fetchSchedule(@Extract(.schedule) from feature: Feature?) async throws -> Schedule {
-        guard let feature = feature else {
+    public static func fetchSchedule(from feature: Feature) async throws -> Schedule {
+        guard feature.feature == .schedule else {
             logger.critical("Can't find correct schedule feature")
-            throw LoadError.uncorrectFeature("schedule")
+            throw LoadError.incorrectFeature(.schedule)
         }
         guard let url = feature.url else {
             logger.error("Missing URL in feature: \(feature.feature.rawValue)")
@@ -105,14 +105,11 @@ extension APIManager {
         }
         return try await fetch(from: .any(url))
     }
-    
-    public static func fetchAnnouncement(
-        @Extract(.announcement) from feature: Feature?,
-        token: String? = nil
-    ) async throws -> [Announcement] {
-        guard let feature = feature else {
+
+    public static func fetchAnnouncements(from feature: Feature, token: String? = nil) async throws -> [Announcement] {
+        guard feature.feature == .announcement else {
             logger.critical("Can't find correct announcement feature")
-            throw LoadError.uncorrectFeature("announcement")
+            throw LoadError.incorrectFeature(.announcement)
         }
         guard let url = feature.url?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             logger.error("Missing URL in feature: \(feature.feature.rawValue)")

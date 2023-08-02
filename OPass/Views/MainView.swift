@@ -10,13 +10,12 @@ import SwiftUI
 import OSLog
 
 struct MainView: View {
-    
     // MARK: - Variables
     @EnvironmentObject var OPassService: OPassStore
-    @EnvironmentObject var EventStore: EventStore
+    @EnvironmentObject var event: EventStore
     private let gridItemLayout = Array(repeating: GridItem(spacing: UIScreen.main.bounds.width / 16.56, alignment: .top), count: 4)
     private let logger = Logger(subsystem: "app.opass.ccip", category: "MainView")
-    
+
     // MARK: - Views
     var body: some View {
         VStack {
@@ -27,14 +26,14 @@ struct MainView: View {
                         .resizable()
                         .scaledToFit()
                         .padding(.horizontal)
-                } else if let logo = EventStore.logo {
+                } else if let logo = event.logo {
                     logo
                         .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
                         .padding(.horizontal)
                 } else {
-                    Text(EventStore.config.title.localized())
+                    Text(event.config.title.localized())
                         .font(.system(.largeTitle, design: .rounded))
                         .fontWeight(.medium)
                         .fixedSize(horizontal: false, vertical: true)
@@ -43,11 +42,11 @@ struct MainView: View {
             .padding(.vertical)
             .foregroundColor(Color("LogoColor"))
             .frame(width: UIScreen.main.bounds.width * 0.78, height: UIScreen.main.bounds.width * 0.4)
-            
+
             ScrollView {
                 LazyVGrid(columns: gridItemLayout) {
-                    ForEach(EventStore.config.features, id: \.self) { feature in
-                        if FeatureIsAvailable(feature), FeatureIsVisible(feature.visibleRoles) {
+                    ForEach(event.config.features, id: \.self) { feature in
+                        if featureIsAvailable(feature), featureIsVisible(feature.visibleRoles) {
                             VStack {
                                 TabButton(feature: feature, width: UIScreen.main.bounds.width / 5.394136)
                                     .aspectRatio(contentMode: .fill)
@@ -59,7 +58,7 @@ struct MainView: View {
                                         width: UIScreen.main.bounds.width / 27.6,
                                         height: UIScreen.main.bounds.width / 27.6
                                     )))
-                                
+
                                 Text(feature.title.localized())
                                     .font(.custom("RobotoCondensed-Regular", size: 11, relativeTo: .caption2))
                                     .multilineTextAlignment(.center)
@@ -71,28 +70,28 @@ struct MainView: View {
             }.padding(.horizontal)
         }
     }
-    private func FeatureIsAvailable(_ feature: Feature) -> Bool {
-        let t = feature.feature
-        guard t == .im || t == .puzzle || t == .venue || t == .sponsors || t == .staffs || t == .webview else { return true }
-        return feature.url(token: EventStore.user_token, role: EventStore.attendee?.role) != nil
+    private func featureIsAvailable(_ feature: Feature) -> Bool {
+        let type = feature.feature
+        guard type == .im || type == .puzzle || type == .venue || type == .sponsors || type == .staffs || type == .webview else { return true }
+        return feature.url(token: event.token, role: event.attendee?.role) != nil
     }
-    private func FeatureIsVisible(_ visible_roles: [String]?) -> Bool {
-        guard let visible_roles = visible_roles else { return true }
-        guard EventStore.userRole != "nil" else { return false }
-        return visible_roles.contains(EventStore.userRole)
+    private func featureIsVisible(_ visibleRoles: [String]?) -> Bool {
+        guard let visibleRoles = visibleRoles else { return true }
+        guard event.userRole != "nil" else { return false }
+        return visibleRoles.contains(event.userRole)
     }
 }
 
 private struct TabButton: View {
     let feature: Feature, width: CGFloat
-    @EnvironmentObject var EventStore: EventStore
+    @EnvironmentObject var event: EventStore
     @EnvironmentObject var router: Router
     @Environment(\.colorScheme) var colorScheme
-    
+
     @State private var presentingWifiSheet = false
     var body: some View {
         Button {
-            switch(feature.feature) {
+            switch feature.feature {
             case .fastpass:     router.path.append(Router.mainDestination.fastpass)
             case .schedule:     router.path.append(Router.mainDestination.schedule)
             case .ticket:       router.path.append(Router.mainDestination.ticket)
@@ -103,11 +102,11 @@ private struct TabButton: View {
                 } else { self.presentingWifiSheet.toggle() }
             case .telegram:
                 if let url = URL(string: feature.url ?? "") {
-                    Constants.OpenInOS(forURL: url)
+                    Constants.openInOS(forURL: url)
                 }
             case .im, .puzzle, .venue, .sponsors, .staffs, .webview:
-                if let url = feature.url(token: EventStore.user_token, role: EventStore.attendee?.role) {
-                    Constants.OpenInAppSafari(forURL: url, style: colorScheme)
+                if let url = feature.url(token: event.token, role: event.attendee?.role) {
+                    Constants.openInAppSafari(forURL: url, style: colorScheme)
                 }
             }
         } label: {
@@ -129,15 +128,9 @@ private struct TabButton: View {
         .aspectRatio(contentMode: .fill)
         .padding(width * 0.2)
         .background(feature.color.opacity(0.1))
-        .if (self.feature.feature == .wifi && self.feature.wifi?.count != 1) { $0
+        .if(self.feature.feature == .wifi && self.feature.wifi?.count != 1) { $0
             .sheet(isPresented: $presentingWifiSheet) { WiFiView(feature: feature) }
         }
-    }
-    
-    private func FeatureIsWebView(_ feature: Feature) -> Bool {
-        let t = feature.feature
-        if t == .im || t == .puzzle || t == .venue || t == .sponsors || t == .staffs || t == .webview { return true }
-        return false
     }
 }
 

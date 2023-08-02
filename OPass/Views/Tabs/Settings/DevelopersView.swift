@@ -9,11 +9,10 @@
 import SwiftUI
 
 struct DevelopersView: View {
-    
-    @State private var contributors: [ContributorsModel]? = nil
+    @State private var contributors: [ContributorsModel]?
     @State private var error = false
     @Environment(\.colorScheme) var colorScheme
-    
+
     var body: some View {
         Group {
             if !error {
@@ -22,7 +21,7 @@ struct DevelopersView: View {
                         ForEach(contributors, id: \.id) { contributor in
                             Button {
                                 if let url = URL(string: contributor.html_url) {
-                                    Constants.OpenInAppSafari(forURL: url, style: colorScheme)
+                                    Constants.openInAppSafari(forURL: url, style: colorScheme)
                                 }
                             } label: {
                                 HStack {
@@ -39,7 +38,7 @@ struct DevelopersView: View {
                                     }
                                     .clipShape(Circle())
                                     .frame(width: 35)
-                                    
+
                                     VStack(alignment: .leading) {
                                         HStack {
                                             if let name = contributor.name {
@@ -49,7 +48,7 @@ struct DevelopersView: View {
                                             Text(contributor.id)
                                                 .foregroundColor(.gray)
                                         }
-                                        
+
                                         Text("\(contributor.contributions) contribution\(contributor.contributions > 1 ? "s" : "")")
                                             .foregroundColor(.gray)
                                     }
@@ -67,8 +66,9 @@ struct DevelopersView: View {
                 } else {
                     ProgressView("LOADING")
                         .task {
-                            do { self.contributors = try await GetContributorsData() }
-                            catch { self.error = true }
+                            do {
+                                self.contributors = try await getContributorsData()
+                            } catch { self.error = true }
                         }
                 }
             } else {
@@ -82,7 +82,7 @@ struct DevelopersView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    Constants.OpenInAppSafari(forURL: URL(string: "https://github.com/CCIP-App/CCIP-iOS/graphs/contributors")!, style: colorScheme)
+                    Constants.openInAppSafari(forURL: URL(string: "https://github.com/CCIP-App/CCIP-iOS/graphs/contributors")!, style: colorScheme)
                 } label: { Image(systemName: "chart.bar.xaxis") }
             }
         }
@@ -103,7 +103,7 @@ struct DevelopersView_Previews: PreviewProvider {
 
 // MARK: GitHub REST API
 private extension DevelopersView {
-    func GetContributorsData() async throws -> [ContributorsModel] {
+    func getContributorsData() async throws -> [ContributorsModel] {
         var result: [ContributorsModel] = []
         let decoder = JSONDecoder()
         let (contributorsData, _) = try await URLSession.shared.data(from: URL(string: "https://api.github.com/repos/CCIP-App/CCIP-iOS/contributors")!)
@@ -121,7 +121,7 @@ private extension DevelopersView {
         }
         return result
     }
-    
+
     struct ContributorsModel: Hashable, Codable {
         var id: String
         var name: String?
@@ -129,14 +129,14 @@ private extension DevelopersView {
         var html_url: String
         var contributions: Int
     }
-    
+
     struct RawContributorsModel: Hashable, Codable {
         var login: String
         var avatar_url: String
         var html_url: String
         var contributions: Int
     }
-    
+
     struct UserModel: Hashable, Codable {
         var name: String?
     }

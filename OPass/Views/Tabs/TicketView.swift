@@ -22,7 +22,7 @@ struct TicketView: View {
     
     var body: some View {
         VStack {
-            if let token = EventStore.user_token {
+            if let token = EventStore.token {
                 VStack(spacing: 0) {
                     Form {
                         Section() {
@@ -84,7 +84,7 @@ struct TicketView: View {
                         .padding([.bottom, .top], 10)
                         .background(Color("SectionBackgroundColor"))
                 }
-                .task { try? await EventStore.loadScenarioStatus() }
+                .task { try? await EventStore.loadAttendee() }
             } else {
                 RedeemTokenView()
             }
@@ -98,7 +98,7 @@ struct TicketView: View {
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
-                if EventStore.user_token != nil {
+                if EventStore.token != nil {
                     Button(action: {
                         isLogOutAlertPresented.toggle()
                     }) { Text(LocalizedStringKey("SignOut")).foregroundColor(.red) }

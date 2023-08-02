@@ -16,14 +16,14 @@ class OPassStore: ObservableObject {
     @Published var eventId: String?
     @Published var eventLogo: Image?
 
-    private var eventTemporaryData: CodableEventService?
+    private var eventTemporaryData: EventStore?
     private var keyStore = NSUbiquitousKeyValueStore()
     
     init() {
         keyStore.synchronize()
         if let data = keyStore.data(forKey: "EventStore") {
             do {
-                let eventAPIData = try JSONDecoder().decode(CodableEventService.self, from: data)
+                let eventAPIData = try JSONDecoder().decode(EventStore.self, from: data)
                 self.eventTemporaryData = eventAPIData
                 self.eventId = eventAPIData.id
             } catch { logger.error("Unable to decode Event stored date: \(error.localizedDescription)") }
@@ -32,48 +32,24 @@ class OPassStore: ObservableObject {
 }
 
 extension OPassStore {
-    func save() async {
-        logger.info("Saving data")
-        if let EventStore = self.event {
-            do {
-                let data = try JSONEncoder().encode(CodableEventService(
-                    id: EventStore.id,
-                    settings: EventStore.config,
-                    logoData: EventStore.logoData,
-                    schedule: EventStore.schedule,
-                    announcements: EventStore.announcements,
-                    attendee: EventStore.attendee
-                ))
-                keyStore.set(data, forKey: "EventAPI")
-                logger.info("Save scuess of id: \(EventStore.id)")
-            } catch {
-                logger.error("Save EventStore data \(error.localizedDescription)")
-            }
-        } else {
-            logger.notice("No data found, bypass for saving EventAPIData")
-        }
-    }
-    
     func loadEvent() async throws {
         if let eventId = eventId {
             do {
-                let settings = try await APIManager.fetchConfig(for: eventId)
+                let config = try await APIManager.fetchConfig(for: eventId)
                 if let eventAPIData = eventTemporaryData, eventId == eventAPIData.id { // Reload
                     let event = EventStore(
-                        settings,
+                        config,
                         logoData: eventAPIData.logoData,
-                        saveData: self.save,
                         tmpData: eventAPIData)
                     logger.info("Reload event \(event.id)")
                     DispatchQueue.main.async {
                         self.event = event
                         Task{ await self.event!.loadLogos() }
                     }
-                } else { // Load new
-                    let event = EventStore(settings, saveData: self.save)
-                    logger.info("Loading new event from \(self.event?.id ?? "none") to \(event.id)")
+                } else {
+                    logger.info("Loading new event from \(self.event?.id ?? "none") to \(config.id)")
                     DispatchQueue.main.async {
-                        self.event = event
+                        self.event = .init(config)
                         Task{ await self.event!.loadLogos() }
                     }
                 }
@@ -82,10 +58,10 @@ extension OPassStore {
                 if let eventAPIData = eventTemporaryData, eventAPIData.id == eventId {
                     DispatchQueue.main.async {
                         self.event = EventStore(
-                            eventAPIData.settings,
+                            eventAPIData.config,
                             logoData: eventAPIData.logoData,
-                            saveData: self.save,
-                            tmpData: eventAPIData)
+                            tmpData: eventAPIData
+                        )
                     }
                 } else {
                     self.eventTemporaryData = nil
@@ -100,15 +76,15 @@ extension OPassStore {
         guard let eventId = self.eventId else { return false }
         do {
             if eventId == event?.id {
-                return try await event?.redeemToken(token: token) ?? false
+                return try await event?.redeem(token: token) ?? false
             }
-            let settings = try await APIManager.fetchConfig(for: eventId)
-            let eventModel = EventStore(settings, saveData: save)
+            let config = try await APIManager.fetchConfig(for: eventId)
+            let eventModel = EventStore(config)
             DispatchQueue.main.async {
                 self.eventLogo = nil
                 self.event = eventModel
             }
-            return try await eventModel.redeemToken(token: token)
+            return try await eventModel.redeem(token: token)
         } catch APIManager.LoadError.forbidden {
             throw APIManager.LoadError.forbidden
         } catch APIManager.LoadError.invalidURL(url: let url) {

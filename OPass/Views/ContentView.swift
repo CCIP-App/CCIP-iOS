@@ -9,53 +9,53 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     // MARK: - Variables
     @Binding var url: URL?
     @StateObject var router = Router()
     @EnvironmentObject var OPassService: OPassStore
-    @State private var error: Error? = nil
+    @State private var error: Error?
     @State private var handlingURL = false
     @State private var isEventListPresented = false
     @State private var isHttp403AlertPresented = false
     @State private var isInvalidURLAlertPresented = false
-    
+
     // MARK: - Views
     var body: some View {
         NavigationStack(path: $router.path) {
             VStack {
                 switch viewState {
-                case .ready(let EventStore):
+                case .ready(let event):
                     MainView()
-                        .environmentObject(EventStore)
+                        .environmentObject(event)
                         .navigationDestination(for: Router.mainDestination.self) { destination in
                             switch destination {
                             case .fastpass:
-                                FastpassView().environmentObject(EventStore)
-                                
+                                FastpassView().environmentObject(event)
+
                             case .schedule:
-                                ScheduleView(EventStore: EventStore)
-                                
+                                ScheduleView(EventStore: event)
+
                             case .scheduleSearch(let schedule):
                                 SearchScheduleView(schedule: schedule)
-                                    .environmentObject(EventStore)
-                                
+                                    .environmentObject(event)
+
                             case .sessionDetail(let data):
-                                SessionDetailView(data).environmentObject(EventStore)
-                                
+                                SessionDetailView(data).environmentObject(event)
+
                             case .ticket:
-                                TicketView().environmentObject(EventStore)
-                                
+                                TicketView().environmentObject(event)
+
                             case .announcement:
-                                AnnouncementView().environmentObject(EventStore)
+                                AnnouncementView().environmentObject(event)
                             }
                         }
                 case .loading:
                     ProgressView("Loading")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .task {
-                            do { try await OPassService.loadEvent() }
-                            catch { self.error = error }
+                            do {
+                                try await OPassService.loadEvent()
+                            } catch { self.error = error }
                         }
                 case .empty:
                     VStack {}
@@ -89,7 +89,7 @@ struct ContentView: View {
                         isEventListPresented.toggle()
                     }
                 }
-                
+
                 ToolbarItem(placement: .principal) {
                     VStack {
                         Text(OPassService.event?.config.title.localized() ?? "OPass")
@@ -101,7 +101,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                
+
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(value: Router.rootDestination.settings) {
                         Image(systemName: "gearshape")
@@ -143,11 +143,11 @@ struct ContentView: View {
             }
         }
     }
-    
+
     // MARK: - Functions
     private func parseUniversalLinkAndURL(_ url: URL) async {
         let params = URLComponents(string: "?" + (url.query ?? ""))?.queryItems
-        
+
         // Select event
         guard let eventId = params?.first(where: { $0.name == "event_id"})?.value else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -164,7 +164,7 @@ struct ContentView: View {
             }
             return
         }
-        
+
         do {
             if try await OPassService.loginCurrentEvent(with: token) {
                 DispatchQueue.main.async { self.url = nil }
@@ -177,7 +177,7 @@ struct ContentView: View {
             }
             return
         } catch {}
-        
+
         // Error
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.isInvalidURLAlertPresented = true
@@ -190,15 +190,15 @@ extension ContentView {
     private enum ViewState {
         case ready(EventStore)
         case loading
-        case empty //Landing page?
+        case empty // Landing page?
         case error
     }
-    
+
     private var viewState: ViewState {
         guard error == nil else { return .error }
         guard let eventID = OPassService.eventId else { return .empty }
-        guard let EventStore = OPassService.event, eventID == EventStore.id else { return .loading }
-        return .ready(EventStore)
+        guard let event = OPassService.event, eventID == event.id else { return .loading }
+        return .ready(event)
     }
 }
 

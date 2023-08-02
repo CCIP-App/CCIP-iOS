@@ -18,14 +18,14 @@ struct FastpassView: View {
     // MARK: - Views
     var body: some View {
         VStack {
-            if EventStore.user_token == nil {
+            if EventStore.token == nil {
                 RedeemTokenView()
             } else {
                 if errorType == nil {
                     if EventStore.attendee != nil {
                         ScenarioView()
                             .task {
-                                do { try await EventStore.loadScenarioStatus() }
+                                do { try await EventStore.loadAttendee() }
                                 catch APIManager.LoadError.forbidden {
                                     self.isHttp403AlertPresented = true
                                 } catch {}
@@ -33,7 +33,7 @@ struct FastpassView: View {
                     } else {
                         ProgressView("Loading")
                             .task {
-                                do { try await EventStore.loadScenarioStatus() }
+                                do { try await EventStore.loadAttendee() }
                                 catch APIManager.LoadError.forbidden {
                                     self.errorType = "http403"
                                 }

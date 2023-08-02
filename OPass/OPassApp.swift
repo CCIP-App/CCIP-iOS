@@ -6,12 +6,13 @@
 //  2023 OPass.
 //
 
+
+import OSLog
 import SwiftUI
 import OneSignal
 import Firebase
 import FirebaseAppCheck
 import FirebaseAnalytics
-import OSLog
 
 @main
 struct OPassApp: App {
@@ -51,11 +52,9 @@ struct OPassApp: App {
     }
 }
 
-// Only use this as a last resort. Always try to use SwiftUI lifecycle
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        // Configure OneSignal
+        // MARK: - Configure OneSignal
         let logger = Logger(subsystem: "app.opass.ccip", category: "OneSignal")
         let notificationReceiverBlock: OSNotificationWillShowInForegroundBlock = { notification,_  in
             logger.info("Received Notification - \(notification.notificationId ?? "")")

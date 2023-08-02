@@ -22,7 +22,7 @@ struct UseScenarioView: View {
             VStack {
                 switch viewState {
                 case 0: ConfirmUseScenarioView()
-                case 1: ActivityIndicatorMark_1()
+                case 1: ActivityIndicator()
                         .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.25)
                 case 2: ScuessScenarioView(dismiss: _dismiss, scenario: scenario, usedTime: $usedTime)
                 default: ErrorView()
@@ -91,7 +91,7 @@ struct UseScenarioView: View {
         self.viewState = 1
         Task {
             do {
-                if try await EventStore.useScenario(scenario: scenario.id) {
+                if try await EventStore.use(scenario: scenario.id) {
                     self.usedTime = Date().timeIntervalSince1970
                     self.viewState = 2
                 } else { self.viewState = 3 }

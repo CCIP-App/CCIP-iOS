@@ -99,7 +99,7 @@ struct RedeemTokenView: View {
                                     .multilineTextAlignment(.center)
                                 Spacer()
                                 Button {
-                                    Constants.OpenInOS(forURL: URL(string: UIApplication.openSettingsURLString)!)
+                                    Constants.openInOS(forURL: URL(string: UIApplication.openSettingsURLString)!)
                                 } label: {
                                     Text("OpenSettings")
                                         .foregroundColor(.blue)
@@ -149,7 +149,7 @@ struct RedeemTokenView: View {
                     self.isManuallySOCPresented = false
                     Task {
                         do {
-                            self.isInvaildTokenAlertPresented = !(try await EventStore.redeemToken(token: token))
+                            self.isInvaildTokenAlertPresented = !(try await EventStore.redeem(token: token))
                         } catch APIManager.LoadError.forbidden {
                             self.isHttp403AlertPresented = true
                         } catch {
@@ -176,7 +176,7 @@ struct RedeemTokenView: View {
                       let token = feature.first?.messageString
                 else { self.isNoQRCodeAlertPresented = true; return }
                 do {
-                    let result = try await EventStore.redeemToken(token: token)
+                    let result = try await EventStore.redeem(token: token)
                     self.isInvaildTokenAlertPresented = !result
                 } catch APIManager.LoadError.forbidden {
                     self.isHttp403AlertPresented = true
@@ -191,7 +191,7 @@ struct RedeemTokenView: View {
         case .success(let result):
             Task {
                 do {
-                    let result = try await EventStore.redeemToken(token: result.string)
+                    let result = try await EventStore.redeem(token: result.string)
                     DispatchQueue.main.async {
                         self.isInvaildTokenAlertPresented = !result
                     }

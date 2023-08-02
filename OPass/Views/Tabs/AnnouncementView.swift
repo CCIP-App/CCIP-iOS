@@ -9,21 +9,20 @@
 import SwiftUI
 
 struct AnnouncementView: View {
-    
-    @EnvironmentObject var EventStore: EventStore
+    @EnvironmentObject var event: EventStore
     @State private var isHttp403AlertPresented = false
-    @State private var errorType: String? = nil
+    @State private var errorType: String?
     @Environment(\.colorScheme) var colorScheme
-    
+
     var body: some View {
         VStack {
             if errorType == nil {
-                if let announcements = EventStore.announcements {
+                if let announcements = event.announcements {
                     if announcements.isNotEmpty {
                         List(announcements, id: \.datetime) { announcement in
                             Button {
                                 if let url = announcement.url {
-                                    Constants.OpenInAppSafari(forURL: url, style: colorScheme)
+                                    Constants.openInAppSafari(forURL: url, style: colorScheme)
                                 }
                             } label: {
                                 HStack {
@@ -48,16 +47,16 @@ struct AnnouncementView: View {
                                 }
                             }
                         }
-                        .refreshable{
+                        .refreshable {
                             do {
-                                try await EventStore.loadAnnouncements()
+                                try await event.loadAnnouncements()
                             } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
                         }
-                        .task{
+                        .task {
                             do {
-                                try await EventStore.loadAnnouncements()
+                                try await event.loadAnnouncements()
                             } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
@@ -72,16 +71,16 @@ struct AnnouncementView: View {
                             Text("EmptyAnnouncement")
                                 .font(.title2)
                         }
-                        .refreshable{
+                        .refreshable {
                             do {
-                                try await EventStore.loadAnnouncements()
+                                try await event.loadAnnouncements()
                             } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
                         }
-                        .task{
+                        .task {
                             do {
-                                try await EventStore.loadAnnouncements()
+                                try await event.loadAnnouncements()
                             } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
@@ -90,8 +89,9 @@ struct AnnouncementView: View {
                 } else {
                     ProgressView("Loading")
                         .task {
-                            do { try await self.EventStore.loadAnnouncements() }
-                            catch APIManager.LoadError.forbidden {
+                            do {
+                                try await self.event.loadAnnouncements()
+                            } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                                 self.errorType = "http403"
                             } catch { self.errorType = "unknown" }
@@ -111,7 +111,7 @@ struct AnnouncementView: View {
         .listStyle(.insetGrouped)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if let displayText = EventStore.config.feature(.announcement)?.title {
+            if let displayText = event.config.feature(.announcement)?.title {
                 ToolbarItem(placement: .principal) {
                     Text(displayText.localized()).font(.headline)
                 }
@@ -120,7 +120,7 @@ struct AnnouncementView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 SFButton(systemName: "arrow.clockwise") {
                     self.errorType = nil
-                    self.EventStore.announcements = nil
+                    self.event.announcements = nil
                 }
             }
         }
