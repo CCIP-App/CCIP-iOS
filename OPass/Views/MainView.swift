@@ -11,7 +11,7 @@ import OSLog
 
 struct MainView: View {
     // MARK: - Variables
-    @EnvironmentObject var OPassService: OPassStore
+    @EnvironmentObject var store: OPassStore
     @EnvironmentObject var event: EventStore
     private let gridItemLayout = Array(repeating: GridItem(spacing: UIScreen.main.bounds.width / 16.56, alignment: .top), count: 4)
     private let logger = Logger(subsystem: "app.opass.ccip", category: "MainView")
@@ -20,7 +20,7 @@ struct MainView: View {
     var body: some View {
         VStack {
             Group {
-                if let image = OPassService.eventLogo {
+                if let image = store.eventLogo {
                     image
                         .renderingMode(.template)
                         .resizable()

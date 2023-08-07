@@ -12,7 +12,7 @@ import OSLog
 struct EventListView: View {
     
     // MARK: - Variables
-    @EnvironmentObject private var OPassService: OPassStore
+    @EnvironmentObject private var store: OPassStore
     @StateObject private var viewModel = EventListViewModel()
     @Environment(\.dismiss) var dismiss
     
@@ -30,7 +30,7 @@ struct EventListView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { toolbar }
         }
-        .interactiveDismissDisabled(OPassService.eventId == nil)
+        .interactiveDismissDisabled(store.eventId == nil)
     }
     
     var list: some View {
@@ -54,7 +54,7 @@ struct EventListView: View {
     var toolbar: some ToolbarContent {
         Group {
             ToolbarItem(placement: .navigationBarLeading) {
-                if OPassService.event != nil {
+                if store.event != nil {
                     Button(LocalizedStringKey("Close")) {
                         dismiss()
                     }
@@ -73,7 +73,7 @@ struct EventListView: View {
 private struct EventRow: View {
     let event: Event
     
-    @EnvironmentObject var OPassService: OPassStore
+    @EnvironmentObject var store: OPassStore
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @State private var preloadLogoImage: Image? = nil
@@ -81,8 +81,8 @@ private struct EventRow: View {
     private let logger = Logger(subsystem: "app.opass.ccip", category: "EventListView")
     var body: some View {
         Button {
-            OPassService.eventId = event.id
-            OPassService.eventLogo = preloadLogoImage
+            store.eventId = event.id
+            store.eventLogo = preloadLogoImage
             dismiss()
         } label: {
             HStack {

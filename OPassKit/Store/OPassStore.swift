@@ -6,8 +6,8 @@
 //  2023 OPass.
 //
 
-import SwiftUI
 import OSLog
+import SwiftUI
 
 private let logger = Logger(subsystem: "OPassKit", category: "OPassStore")
 
@@ -91,9 +91,7 @@ extension OPassStore {
             logger.error("\(url.string) is invalid, eventId is possibly wrong")
         } catch APIManager.LoadError.fetchFaild(cause: let cause) {
             logger.error("Data fetch failed. \n Caused by: \(cause.localizedDescription)")
-        } catch {
-            logger.error("Error: \(error.localizedDescription)")
-        }
+        } catch { logger.error("Error: \(error.localizedDescription)") }
         return false
     }
 }

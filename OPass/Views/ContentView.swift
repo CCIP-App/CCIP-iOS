@@ -12,7 +12,7 @@ struct ContentView: View {
     // MARK: - Variables
     @Binding var url: URL?
     @StateObject var router = Router()
-    @EnvironmentObject var OPassService: OPassStore
+    @EnvironmentObject var store: OPassStore
     @State private var error: Error?
     @State private var handlingURL = false
     @State private var isEventListPresented = false
@@ -33,7 +33,7 @@ struct ContentView: View {
                                 FastpassView().environmentObject(event)
 
                             case .schedule:
-                                ScheduleView(EventStore: event)
+                                ScheduleView(event)
 
                             case .scheduleSearch(let schedule):
                                 SearchScheduleView(schedule: schedule)
@@ -54,7 +54,7 @@ struct ContentView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .task {
                             do {
-                                try await OPassService.loadEvent()
+                                try await store.loadEvent()
                             } catch { self.error = error }
                         }
                 case .empty:
@@ -68,7 +68,7 @@ struct ContentView: View {
                         self.error = nil
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .onChange(of: OPassService.eventId) { _ in
+                    .onChange(of: store.eventId) { _ in
                         self.error = nil
                     }
                 }
@@ -92,9 +92,9 @@ struct ContentView: View {
 
                 ToolbarItem(placement: .principal) {
                     VStack {
-                        Text(OPassService.event?.config.title.localized() ?? "OPass")
+                        Text(store.event?.config.title.localized() ?? "OPass")
                             .font(.headline)
-                        if let userId = OPassService.event?.userId, userId != "nil" {
+                        if let userId = store.event?.userId, userId != "nil" {
                             Text(userId)
                                 .font(.caption)
                                 .foregroundColor(.gray)
@@ -110,7 +110,7 @@ struct ContentView: View {
             }
         }
         .environmentObject(router)
-        .environmentObject(OPassService)
+        .environmentObject(store)
         .overlay {
             if self.url != nil {
                 ProgressView("LOGGINGIN")
@@ -121,7 +121,7 @@ struct ContentView: View {
                     .alert("InvalidURL", isPresented: $isInvalidURLAlertPresented) {
                         Button("OK", role: .cancel) {
                             self.url = nil
-                            if OPassService.event == nil {
+                            if store.event == nil {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                     self.isEventListPresented = true
                                 }
@@ -132,7 +132,7 @@ struct ContentView: View {
                     }
                     .http403Alert(title: "CouldntVerifiyYourIdentity", isPresented: $isHttp403AlertPresented) {
                         self.url = nil
-                        if OPassService.event == nil {
+                        if store.event == nil {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                 self.isEventListPresented = true
                             }
@@ -155,8 +155,8 @@ struct ContentView: View {
             }
             return
         }
-        OPassService.eventId = eventId
-        if eventId != OPassService.event?.id { OPassService.eventLogo = nil }
+        store.eventId = eventId
+        if eventId != store.event?.id { store.eventLogo = nil }
         // Login
         guard let token = params?.first(where: { $0.name == "token" })?.value else {
             DispatchQueue.main.async {
@@ -166,9 +166,9 @@ struct ContentView: View {
         }
 
         do {
-            if try await OPassService.loginCurrentEvent(with: token) {
+            if try await store.loginCurrentEvent(with: token) {
                 DispatchQueue.main.async { self.url = nil }
-                await OPassService.event?.loadLogos()
+                await store.event?.loadLogos()
                 return
             }
         } catch APIManager.LoadError.forbidden {
@@ -196,8 +196,8 @@ extension ContentView {
 
     private var viewState: ViewState {
         guard error == nil else { return .error }
-        guard let eventID = OPassService.eventId else { return .empty }
-        guard let event = OPassService.event, eventID == event.id else { return .loading }
+        guard let eventID = store.eventId else { return .empty }
+        guard let event = store.event, eventID == event.id else { return .loading }
         return .ready(event)
     }
 }

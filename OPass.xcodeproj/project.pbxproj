@@ -461,6 +461,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E4E6BD27CD158400FFACEB /* OPass */,
+				D3D3788027CE43D700021FC4 /* OPassKit */,
 				D3652A6E2869AF17002AC419 /* Modules */,
 				D3F23B4B28166CE200A0FB35 /* Supporting Files */,
 				D3A00F1D27D837D00097A6AB /* OneSignalNotificationServiceExtension */,
@@ -481,10 +482,8 @@
 		D3E4E6BD27CD158400FFACEB /* OPass */ = {
 			isa = PBXGroup;
 			children = (
-				D31900D7281CF07E00864982 /* LaunchScreen.storyboard */,
 				D3E4E6BE27CD158400FFACEB /* OPassApp.swift */,
 				D3D3787F27CE42A200021FC4 /* Views */,
-				D3D3788027CE43D700021FC4 /* OPassKit */,
 				D3227ABB287FBDE100B458CD /* Class+Extension */,
 				D3E4E6C427CD158700FFACEB /* Preview Content */,
 			);
@@ -506,6 +505,7 @@
 		D3F23B4B28166CE200A0FB35 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D31900D7281CF07E00864982 /* LaunchScreen.storyboard */,
 				D3C0E21727D51B460095169F /* OPass.entitlements */,
 				D3A00F2B27D839B10097A6AB /* Info.plist */,
 				4F29D9C627D4E6DA00292CC4 /* GoogleService-Info.plist */,

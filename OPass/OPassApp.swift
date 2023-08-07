@@ -10,15 +10,16 @@
 import OSLog
 import SwiftUI
 import OneSignal
-import Firebase
+import FirebaseCore
 import FirebaseAppCheck
 import FirebaseAnalytics
+import FirebaseDynamicLinks
 
 @main
 struct OPassApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @AppStorage("UserInterfaceStyle") var interfaceStyle: UIUserInterfaceStyle = .unspecified
-    @StateObject var store = OPassStore()
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+    @AppStorage("UserInterfaceStyle") private var interfaceStyle: UIUserInterfaceStyle = .unspecified
+    @StateObject private var store = OPassStore()
     @State var url: URL? = nil
     
     init() {
@@ -34,14 +35,12 @@ struct OPassApp: App {
                 .preferredColorScheme(.init(interfaceStyle))
                 .environmentObject(store)
                 .onOpenURL { url in
-                    //It seems that both universal link and custom schemed url from firebase are received via onOpenURL, so we must try parse it in both ways.
                     if DynamicLinks.dynamicLinks().handleUniversalLink(url, completion: { dynamicLink, _ in
                         if let url = dynamicLink?.url {
                             UIApplication.currentUIWindow()?.rootViewController?.dismiss(animated: true)
                             self.url = url
                         }
                     }) { return }
-                    
                     if let url = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url)?.url {
                         UIApplication.currentUIWindow()?.rootViewController?.dismiss(animated: true)
                         self.url = url
@@ -53,11 +52,12 @@ struct OPassApp: App {
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    private let logger = Logger(subsystem: "OPassApp", category: "AppDelegate")
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // MARK: - Configure OneSignal
-        let logger = Logger(subsystem: "app.opass.ccip", category: "OneSignal")
         let notificationReceiverBlock: OSNotificationWillShowInForegroundBlock = { notification,_  in
-            logger.info("Received Notification - \(notification.notificationId ?? "")")
+            self.logger.info("Received Notification - \(notification.notificationId ?? "")")
         }
         
         let notificationOpenedBlock: OSNotificationOpenedBlock = { result in
@@ -77,7 +77,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
                     }
                 }
             }
-            logger.info("OneSignal Notification \(messageTitle): \(fullMessage)")
+            self.logger.info("OneSignal Notification \(messageTitle): \(fullMessage)")
         }
         
         OneSignal.initWithLaunchOptions(launchOptions)
@@ -86,7 +86,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         OneSignal.setNotificationOpenedHandler(notificationOpenedBlock)
         OneSignal.setLocationShared(false)
         OneSignal.promptForPushNotifications(userResponse: { accepted in
-            logger.info("User accepted notifications: \(accepted)")
+            self.logger.info("User accepted notifications: \(accepted)")
         }, fallbackToSettings: false)
         
         return true
@@ -94,11 +94,11 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 }
 
 class OPassAppCheckProviderFactory: NSObject, AppCheckProviderFactory {
-  func createProvider(with app: FirebaseApp) -> AppCheckProvider? {
+    func createProvider(with app: FirebaseApp) -> AppCheckProvider? {
 #if targetEnvironment(simulator)
-      return AppCheckDebugProvider(app: app)
+        return AppCheckDebugProvider(app: app)
 #else
-      return AppAttestProvider(app: app)
+        return AppAttestProvider(app: app)
 #endif
-  }
+    }
 }

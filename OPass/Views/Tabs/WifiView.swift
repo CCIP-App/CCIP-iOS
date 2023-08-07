@@ -54,7 +54,7 @@ struct WiFiView: View {
 //#if DEBUG
 //struct WiFiView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        WiFiView(EventStore: OPassService.mock().eventList[5])
+//        WiFiView(EventStore: store.mock().eventList[5])
 //    }
 //}
 //#endif
