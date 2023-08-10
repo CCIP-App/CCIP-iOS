@@ -31,7 +31,6 @@
 		D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60E27EF4698007EED5D /* CodeScanner */; };
 		D323C1F5282FE03C009AFF97 /* EFQRCode in Frameworks */ = {isa = PBXBuildFile; productRef = D323C1F4282FE03C009AFF97 /* EFQRCode */; };
 		D324EF08286EB9B7004D03D6 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D324EF07286EB9B7004D03D6 /* UIApplication+Extension.swift */; };
-		D33B41CE28BE2832006DA85B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B41CD28BE2832006DA85B /* Router.swift */; };
 		D33FB2FE28C21178006BBEF4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D33FB2FD28C21178006BBEF4 /* FirebaseAnalytics */; };
 		D33FB30028C21178006BBEF4 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D33FB2FF28C21178006BBEF4 /* FirebaseCrashlytics */; };
 		D33FB30228C21178006BBEF4 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = D33FB30128C21178006BBEF4 /* FirebaseDynamicLinks */; };
@@ -46,7 +45,6 @@
 		D3652A7B2869AF72002AC419 /* AttributedTextImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A742869AF72002AC419 /* AttributedTextImpl.swift */; };
 		D3652A7D2869AF72002AC419 /* AttributedTextImpl+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3652A762869AF72002AC419 /* AttributedTextImpl+iOS.swift */; };
 		D366ADC82898413F00F33CEC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366ADC72898413F00F33CEC /* Constants.swift */; };
-		D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D366D8EF27ED50CB00AA4267 /* MainView.swift */; };
 		D36A2FD82829F9C500EFBDB1 /* NEHotspot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */; };
 		D36E33C42A681916006D4159 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = D36E33C32A681916006D4159 /* FirebaseAppCheck */; };
 		D36E33C62A684CC8006D4159 /* Data+CryptoKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36E33C52A684CC8006D4159 /* Data+CryptoKit.swift */; };
@@ -65,9 +63,13 @@
 		D39444152A755F4C00EE2021 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39444142A755F4C00EE2021 /* Session.swift */; };
 		D39512F5285A174F009B9AE8 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39512F4285A174F009B9AE8 /* EventEditView.swift */; };
 		D39512F8285A370D009B9AE8 /* EKEventStore+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39512F7285A370D009B9AE8 /* EKEventStore+Extension.swift */; };
+		D398F68E2A83F4EE00FB2912 /* SettingsDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D398F68D2A83F4EE00FB2912 /* SettingsDestinations.swift */; };
+		D398F6922A83FD9800FB2912 /* FeatureGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D398F6912A83FD9800FB2912 /* FeatureGridItem.swift */; };
 		D3A00F1F27D837D00097A6AB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00F1E27D837D00097A6AB /* NotificationService.swift */; };
 		D3A00F2327D837D00097A6AB /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D3A00F2A27D838920097A6AB /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = D3A00F2927D838920097A6AB /* OneSignal */; };
+		D3A705612A829334009E5ADF /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A705602A829334009E5ADF /* EventView.swift */; };
+		D3A705662A82A7D9009E5ADF /* FeatureDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A705652A82A7D9009E5ADF /* FeatureDestinations.swift */; };
 		D3A94D03281E62530053FEFA /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A94D02281E62530053FEFA /* ErrorView.swift */; };
 		D3B0B20528BBC4400001B311 /* DevelopersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B0B20428BBC4400001B311 /* DevelopersView.swift */; };
 		D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C0E21927D51B460095169F /* NetworkExtension.framework */; };
@@ -75,14 +77,17 @@
 		D3C28CA62A78F5DD00DA7BF3 /* Data+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C28CA52A78F5DD00DA7BF3 /* Data+Image.swift */; };
 		D3C6194827CF864B00643D97 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194727CF864B00643D97 /* Schedule.swift */; };
 		D3C6194D27CF9A7400643D97 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingsView.swift */; };
-		D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6195027CFA9A800643D97 /* ScheduleView.swift */; };
 		D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3C6F60C28634F3B0074B942 /* MarkdownKit */; };
 		D3C6F60F286360FC0074B942 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6F60E286360FC0074B942 /* Markdown.swift */; };
-		D3C972F227F03531008561DE /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C972F127F03531008561DE /* SessionDetailView.swift */; };
+		D3D0BB242A820F2F00DC4E61 /* FeatureGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0BB232A820F2F00DC4E61 /* FeatureGrid.swift */; };
+		D3D0BB262A8213C300DC4E61 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0BB252A8213C300DC4E61 /* RootView.swift */; };
+		D3D0BB2A2A82254800DC4E61 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0BB292A82254800DC4E61 /* Router.swift */; };
+		D3D0BB2C2A82276800DC4E61 /* RootDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0BB2B2A82276800DC4E61 /* RootDestinations.swift */; };
 		D3D3788227CE440D00021FC4 /* OPassStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3788127CE440D00021FC4 /* OPassStore.swift */; };
 		D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789027CE62EB00021FC4 /* EventListView.swift */; };
 		D3D3789327CE70EE00021FC4 /* EventConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D3789227CE70EE00021FC4 /* EventConfig.swift */; };
 		D3DA440B2A78110400361D79 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DA440A2A78110400361D79 /* String+Extension.swift */; };
+		D3DCB8432A85119500B043FC /* SessionOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DCB8422A85119500B043FC /* SessionOverView.swift */; };
 		D3E0123127D35D970040621F /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = D3E0123027D35D970040621F /* KeychainAccess */; };
 		D3E0123327D3667C0040621F /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123227D3667C0040621F /* Attendee.swift */; };
 		D3E0123527D38B840040621F /* ScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0123427D38B840040621F /* ScenarioView.swift */; };
@@ -95,7 +100,6 @@
 		D3EA819A27F747E100FE7985 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EA819927F747E100FE7985 /* TicketView.swift */; };
 		D3EFF36F28A12824004CD8DF /* AppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFF36E28A12824004CD8DF /* AppearanceView.swift */; };
 		D3F23B4F28166DEF00A0FB35 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3F23B5128166DEF00A0FB35 /* Localizable.strings */; };
-		D3F6C4C02A696884001BF3F8 /* ScheduleSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F6C4BF2A696884001BF3F8 /* ScheduleSearchView.swift */; };
 		D3FAD811285EFBD00025AE7A /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80A285EFBD00025AE7A /* RobotoCondensed-Bold.ttf */; };
 		D3FAD812285EFBD00025AE7A /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80B285EFBD00025AE7A /* RobotoCondensed-Light.ttf */; };
 		D3FAD813285EFBD00025AE7A /* RobotoCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80C285EFBD00025AE7A /* RobotoCondensed-Italic.ttf */; };
@@ -106,6 +110,10 @@
 		D3FBFA64282A936100DE118E /* din.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D3FBFA62282A936100DE118E /* din.mp3 */; };
 		D3FBFA65282A936100DE118E /* don.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D3FBFA63282A936100DE118E /* don.mp3 */; };
 		D3FBFA67282A93B200DE118E /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FBFA66282A93B200DE118E /* SoundManager.swift */; };
+		D3FE04F02A83FE72009CA4B4 /* ScheduleSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FE04EC2A83FE72009CA4B4 /* ScheduleSearchView.swift */; };
+		D3FE04F12A83FE72009CA4B4 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FE04ED2A83FE72009CA4B4 /* SessionView.swift */; };
+		D3FE04F22A83FE72009CA4B4 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FE04EE2A83FE72009CA4B4 /* ScheduleView.swift */; };
+		D3FE04F32A83FE72009CA4B4 /* ScheduleDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FE04EF2A83FE72009CA4B4 /* ScheduleDestinations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,7 +162,6 @@
 		D318CE43280918C400CEA1AA /* TruncableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncableText.swift; sourceTree = "<group>"; };
 		D31900D7281CF07E00864982 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D324EF07286EB9B7004D03D6 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
-		D33B41CD28BE2832006DA85B /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D340120F2821349200D07034 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		D358E55727EDEDB2000A6554 /* FastpassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastpassView.swift; sourceTree = "<group>"; };
 		D3602CAB280400D8001D9C15 /* UseScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseScenarioView.swift; sourceTree = "<group>"; };
@@ -165,7 +172,6 @@
 		D3652A742869AF72002AC419 /* AttributedTextImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextImpl.swift; sourceTree = "<group>"; };
 		D3652A762869AF72002AC419 /* AttributedTextImpl+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+iOS.swift"; sourceTree = "<group>"; };
 		D366ADC72898413F00F33CEC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D366D8EF27ED50CB00AA4267 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHotspot.swift; sourceTree = "<group>"; };
 		D36E33C52A684CC8006D4159 /* Data+CryptoKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+CryptoKit.swift"; sourceTree = "<group>"; };
 		D37BC4D928A57F1B00449482 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -181,11 +187,15 @@
 		D39444142A755F4C00EE2021 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		D39512F4285A174F009B9AE8 /* EventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
 		D39512F7285A370D009B9AE8 /* EKEventStore+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKEventStore+Extension.swift"; sourceTree = "<group>"; };
+		D398F68D2A83F4EE00FB2912 /* SettingsDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDestinations.swift; sourceTree = "<group>"; };
+		D398F6912A83FD9800FB2912 /* FeatureGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureGridItem.swift; sourceTree = "<group>"; };
 		D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A00F1E27D837D00097A6AB /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		D3A00F2027D837D00097A6AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3A00F2B27D839B10097A6AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3A00F2C27D840C10097A6AB /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
+		D3A705602A829334009E5ADF /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		D3A705652A82A7D9009E5ADF /* FeatureDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureDestinations.swift; sourceTree = "<group>"; };
 		D3A94D02281E62530053FEFA /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		D3B0B20428BBC4400001B311 /* DevelopersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersView.swift; sourceTree = "<group>"; };
 		D3C0E21727D51B460095169F /* OPass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OPass.entitlements; sourceTree = "<group>"; };
@@ -193,14 +203,17 @@
 		D3C0E21B27D51C060095169F /* WifiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiView.swift; sourceTree = "<group>"; };
 		D3C28CA52A78F5DD00DA7BF3 /* Data+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Image.swift"; sourceTree = "<group>"; };
 		D3C6194727CF864B00643D97 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
-		D3C6194C27CF9A7400643D97 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = OPass/Views/Tabs/Settings/SettingsView.swift; sourceTree = SOURCE_ROOT; };
-		D3C6195027CFA9A800643D97 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleView.swift; path = OPass/Views/Tabs/Schedule/ScheduleView.swift; sourceTree = SOURCE_ROOT; };
+		D3C6194C27CF9A7400643D97 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = OPass/Settings/SettingsView.swift; sourceTree = SOURCE_ROOT; };
 		D3C6F60E286360FC0074B942 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
-		D3C972F127F03531008561DE /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
+		D3D0BB232A820F2F00DC4E61 /* FeatureGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureGrid.swift; sourceTree = "<group>"; };
+		D3D0BB252A8213C300DC4E61 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		D3D0BB292A82254800DC4E61 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		D3D0BB2B2A82276800DC4E61 /* RootDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDestinations.swift; sourceTree = "<group>"; };
 		D3D3788127CE440D00021FC4 /* OPassStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassStore.swift; sourceTree = "<group>"; };
 		D3D3789027CE62EB00021FC4 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		D3D3789227CE70EE00021FC4 /* EventConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConfig.swift; sourceTree = "<group>"; };
 		D3DA440A2A78110400361D79 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		D3DCB8422A85119500B043FC /* SessionOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionOverView.swift; sourceTree = "<group>"; };
 		D3E0123227D3667C0040621F /* Attendee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendee.swift; sourceTree = "<group>"; };
 		D3E0123427D38B840040621F /* ScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioView.swift; sourceTree = "<group>"; };
 		D3E0123727D38D3D0040621F /* RedeemTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemTokenView.swift; sourceTree = "<group>"; };
@@ -214,7 +227,6 @@
 		D3EFF36E28A12824004CD8DF /* AppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceView.swift; sourceTree = "<group>"; };
 		D3F23B5228166DF600A0FB35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D3F23B5328166E0A00A0FB35 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		D3F6C4BF2A696884001BF3F8 /* ScheduleSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSearchView.swift; sourceTree = "<group>"; };
 		D3FAD80A285EFBD00025AE7A /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		D3FAD80B285EFBD00025AE7A /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		D3FAD80C285EFBD00025AE7A /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; };
@@ -225,6 +237,10 @@
 		D3FBFA62282A936100DE118E /* din.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = din.mp3; sourceTree = "<group>"; };
 		D3FBFA63282A936100DE118E /* don.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = don.mp3; sourceTree = "<group>"; };
 		D3FBFA66282A93B200DE118E /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		D3FE04EC2A83FE72009CA4B4 /* ScheduleSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleSearchView.swift; sourceTree = "<group>"; };
+		D3FE04ED2A83FE72009CA4B4 /* SessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
+		D3FE04EE2A83FE72009CA4B4 /* ScheduleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		D3FE04EF2A83FE72009CA4B4 /* ScheduleDestinations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDestinations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,7 +290,6 @@
 			isa = PBXGroup;
 			children = (
 				D366ADC72898413F00F33CEC /* Constants.swift */,
-				D33B41CD28BE2832006DA85B /* Router.swift */,
 				D3FBFA66282A93B200DE118E /* SoundManager.swift */,
 				D36A2FD72829F9C500EFBDB1 /* NEHotspot.swift */,
 				D3095F1727D78EE600225C7D /* UNUserNotification.swift */,
@@ -287,32 +302,12 @@
 			path = "Class+Extension";
 			sourceTree = "<group>";
 		};
-		D322F60927EF1862007EED5D /* Schedule */ = {
-			isa = PBXGroup;
-			children = (
-				D3C6195027CFA9A800643D97 /* ScheduleView.swift */,
-				D3F6C4BF2A696884001BF3F8 /* ScheduleSearchView.swift */,
-				D3C972F127F03531008561DE /* SessionDetailView.swift */,
-			);
-			path = Schedule;
-			sourceTree = "<group>";
-		};
 		D32654F22A77A4D600B07765 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				4FEF38FA27D13FBA00FC97F4 /* APIManager.swift */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		D35CE09D28A0429700E9AF06 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				D3C6194C27CF9A7400643D97 /* SettingsView.swift */,
-				D3EFF36E28A12824004CD8DF /* AppearanceView.swift */,
-				D3B0B20428BBC4400001B311 /* DevelopersView.swift */,
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		D3652A6E2869AF17002AC419 /* Modules */ = {
@@ -360,6 +355,17 @@
 			path = OneSignalNotificationServiceExtension;
 			sourceTree = "<group>";
 		};
+		D3A7055F2A82931E009E5ADF /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				D3A705602A829334009E5ADF /* EventView.swift */,
+				D3D0BB232A820F2F00DC4E61 /* FeatureGrid.swift */,
+				D398F6912A83FD9800FB2912 /* FeatureGridItem.swift */,
+				D3A705652A82A7D9009E5ADF /* FeatureDestinations.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
 		D3BAB49C27D2536300ECD44A /* Store */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,47 +383,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D3C6194927CF963000643D97 /* Additions */ = {
+		D3D0BB222A820F1500DC4E61 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				4F6968A527EBCB5E009073E4 /* SFButton.swift */,
-				D301C39328053ED600D027FE /* ActivityIndicator.swift */,
-				D318CE43280918C400CEA1AA /* TruncableText.swift */,
-				D3A94D02281E62530053FEFA /* ErrorView.swift */,
-				D39512F4285A174F009B9AE8 /* EventEditView.swift */,
-				D3C6F60E286360FC0074B942 /* Markdown.swift */,
-				D37BC4D928A57F1B00449482 /* Alerts.swift */,
+				D3D0BB292A82254800DC4E61 /* Router.swift */,
 			);
-			path = Additions;
+			path = Navigation;
 			sourceTree = "<group>";
 		};
-		D3C6195227CFC10400643D97 /* Tabs */ = {
+		D3D0BB2D2A822DD600DC4E61 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				D35CE09D28A0429700E9AF06 /* Settings */,
-				D3E0123627D38CF70040621F /* Fastpass */,
-				D322F60927EF1862007EED5D /* Schedule */,
-				D3E0123727D38D3D0040621F /* RedeemTokenView.swift */,
-				D3EA819927F747E100FE7985 /* TicketView.swift */,
-				4F5EB73727D3648100235396 /* AnnouncementView.swift */,
-				D3C0E21B27D51C060095169F /* WifiView.swift */,
+				D3D0BB252A8213C300DC4E61 /* RootView.swift */,
+				D3D0BB2B2A82276800DC4E61 /* RootDestinations.swift */,
 			);
-			path = Tabs;
+			path = Root;
 			sourceTree = "<group>";
 		};
-		D3D3787F27CE42A200021FC4 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				D3E4E6C027CD158400FFACEB /* ContentView.swift */,
-				D366D8EF27ED50CB00AA4267 /* MainView.swift */,
-				D3D3789027CE62EB00021FC4 /* EventListView.swift */,
-				D3C6195227CFC10400643D97 /* Tabs */,
-				D3C6194927CF963000643D97 /* Additions */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		D3D3788027CE43D700021FC4 /* OPassKit */ = {
+		D3D3788027CE43D700021FC4 /* OPassData */ = {
 			isa = PBXGroup;
 			children = (
 				D32654F22A77A4D600B07765 /* Manager */,
@@ -425,7 +408,7 @@
 				D3D3788327CE441200021FC4 /* Model */,
 				D36DC46327D46F6800012D43 /* General */,
 			);
-			path = OPassKit;
+			path = OPassData;
 			sourceTree = "<group>";
 		};
 		D3D3788327CE441200021FC4 /* Model */ = {
@@ -447,21 +430,45 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		D3E0123627D38CF70040621F /* Fastpass */ = {
+		D3DCB83F2A850D8100B043FC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D3C6194C27CF9A7400643D97 /* SettingsView.swift */,
+				D3EFF36E28A12824004CD8DF /* AppearanceView.swift */,
+				D3B0B20428BBC4400001B311 /* DevelopersView.swift */,
+				D398F68D2A83F4EE00FB2912 /* SettingsDestinations.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D3DCB8402A850DA000B043FC /* Fastpass */ = {
 			isa = PBXGroup;
 			children = (
 				D358E55727EDEDB2000A6554 /* FastpassView.swift */,
 				D3E0123427D38B840040621F /* ScenarioView.swift */,
 				D3602CAB280400D8001D9C15 /* UseScenarioView.swift */,
+				D3E0123727D38D3D0040621F /* RedeemTokenView.swift */,
+				D3EA819927F747E100FE7985 /* TicketView.swift */,
+				D301C39328053ED600D027FE /* ActivityIndicator.swift */,
 			);
 			path = Fastpass;
+			sourceTree = "<group>";
+		};
+		D3DCB8412A850E0D00B043FC /* General */ = {
+			isa = PBXGroup;
+			children = (
+				4F6968A527EBCB5E009073E4 /* SFButton.swift */,
+				D3A94D02281E62530053FEFA /* ErrorView.swift */,
+				D37BC4D928A57F1B00449482 /* Alerts.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 		D3E4E6B227CD158400FFACEB = {
 			isa = PBXGroup;
 			children = (
 				D3E4E6BD27CD158400FFACEB /* OPass */,
-				D3D3788027CE43D700021FC4 /* OPassKit */,
+				D3D3788027CE43D700021FC4 /* OPassData */,
 				D3652A6E2869AF17002AC419 /* Modules */,
 				D3F23B4B28166CE200A0FB35 /* Supporting Files */,
 				D3A00F1D27D837D00097A6AB /* OneSignalNotificationServiceExtension */,
@@ -483,7 +490,17 @@
 			isa = PBXGroup;
 			children = (
 				D3E4E6BE27CD158400FFACEB /* OPassApp.swift */,
-				D3D3787F27CE42A200021FC4 /* Views */,
+				D3E4E6C027CD158400FFACEB /* ContentView.swift */,
+				D3D3789027CE62EB00021FC4 /* EventListView.swift */,
+				D3D0BB222A820F1500DC4E61 /* Navigation */,
+				D3D0BB2D2A822DD600DC4E61 /* Root */,
+				D3A7055F2A82931E009E5ADF /* Event */,
+				D3DCB83F2A850D8100B043FC /* Settings */,
+				D3DCB8402A850DA000B043FC /* Fastpass */,
+				D3FE04EB2A83FE72009CA4B4 /* Schedule */,
+				D3DCB8412A850E0D00B043FC /* General */,
+				D3C0E21B27D51C060095169F /* WifiView.swift */,
+				4F5EB73727D3648100235396 /* AnnouncementView.swift */,
 				D3227ABB287FBDE100B458CD /* Class+Extension */,
 				D3E4E6C427CD158700FFACEB /* Preview Content */,
 			);
@@ -554,6 +571,21 @@
 				D3FBFA63282A936100DE118E /* don.mp3 */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		D3FE04EB2A83FE72009CA4B4 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				D3FE04EE2A83FE72009CA4B4 /* ScheduleView.swift */,
+				D3FE04EC2A83FE72009CA4B4 /* ScheduleSearchView.swift */,
+				D3DCB8422A85119500B043FC /* SessionOverView.swift */,
+				D3FE04ED2A83FE72009CA4B4 /* SessionView.swift */,
+				D3FE04EF2A83FE72009CA4B4 /* ScheduleDestinations.swift */,
+				D39512F4285A174F009B9AE8 /* EventEditView.swift */,
+				D318CE43280918C400CEA1AA /* TruncableText.swift */,
+				D3C6F60E286360FC0074B942 /* Markdown.swift */,
+			);
+			path = Schedule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -732,16 +764,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3602CAC280400D8001D9C15 /* UseScenarioView.swift in Sources */,
+				D3D0BB2C2A82276800DC4E61 /* RootDestinations.swift in Sources */,
 				D3D3788227CE440D00021FC4 /* OPassStore.swift in Sources */,
-				D366D8F027ED50CB00AA4267 /* MainView.swift in Sources */,
 				D3652A772869AF72002AC419 /* AttributedText.swift in Sources */,
 				D3C6194D27CF9A7400643D97 /* SettingsView.swift in Sources */,
 				D3095F1827D78EE600225C7D /* UNUserNotification.swift in Sources */,
 				D3E4E6C127CD158400FFACEB /* ContentView.swift in Sources */,
 				D30D9CC028B3F68C00C1E489 /* Manager.swift in Sources */,
+				D3FE04F32A83FE72009CA4B4 /* ScheduleDestinations.swift in Sources */,
 				4F35B17C27D3850B0023621F /* Announcement.swift in Sources */,
 				D3D3789327CE70EE00021FC4 /* EventConfig.swift in Sources */,
+				D398F6922A83FD9800FB2912 /* FeatureGridItem.swift in Sources */,
 				D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */,
+				D3D0BB262A8213C300DC4E61 /* RootView.swift in Sources */,
 				D3DA440B2A78110400361D79 /* String+Extension.swift in Sources */,
 				D39444112A754A2F00EE2021 /* Tag.swift in Sources */,
 				D3C6F60F286360FC0074B942 /* Markdown.swift in Sources */,
@@ -749,28 +784,30 @@
 				D3EA819A27F747E100FE7985 /* TicketView.swift in Sources */,
 				4F9E9B4E2813F0A300A14905 /* Array+Extension.swift in Sources */,
 				D3E0123527D38B840040621F /* ScenarioView.swift in Sources */,
-				D33B41CE28BE2832006DA85B /* Router.swift in Sources */,
 				D30D9CC228B3F68C00C1E489 /* Modifiers.swift in Sources */,
 				D3652A7D2869AF72002AC419 /* AttributedTextImpl+iOS.swift in Sources */,
 				D39512F8285A370D009B9AE8 /* EKEventStore+Extension.swift in Sources */,
 				D34012102821349200D07034 /* View+Extension.swift in Sources */,
 				D30D9CC128B3F68C00C1E489 /* Accessories.swift in Sources */,
 				D3652A7A2869AF72002AC419 /* AttributedTextImpl+macOS.swift in Sources */,
+				D3D0BB242A820F2F00DC4E61 /* FeatureGrid.swift in Sources */,
 				D30D9CC328B3F68C00C1E489 /* SlideOverCard.swift in Sources */,
+				D3A705662A82A7D9009E5ADF /* FeatureDestinations.swift in Sources */,
 				D3FBFA67282A93B200DE118E /* SoundManager.swift in Sources */,
+				D3FE04F22A83FE72009CA4B4 /* ScheduleView.swift in Sources */,
 				4F5EB73527D3346D00235396 /* TransformWrapper.swift in Sources */,
 				D366ADC82898413F00F33CEC /* Constants.swift in Sources */,
-				D3C6195127CFA9A800643D97 /* ScheduleView.swift in Sources */,
 				D3C6194827CF864B00643D97 /* Schedule.swift in Sources */,
+				D3FE04F12A83FE72009CA4B4 /* SessionView.swift in Sources */,
 				D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */,
 				D3829EB02A76BAAC00610B28 /* Scenario.swift in Sources */,
 				D36E33C62A684CC8006D4159 /* Data+CryptoKit.swift in Sources */,
-				D3F6C4C02A696884001BF3F8 /* ScheduleSearchView.swift in Sources */,
 				D3B0B20528BBC4400001B311 /* DevelopersView.swift in Sources */,
 				D3652A792869AF72002AC419 /* NSLineBreakMode+TruncationMode.swift in Sources */,
 				D3829EAC2A766F1700610B28 /* Feature.swift in Sources */,
 				D3829EA42A765DF300610B28 /* DateInRegionTransform.swift in Sources */,
 				D3652A782869AF72002AC419 /* TextSizeViewModel.swift in Sources */,
+				D398F68E2A83F4EE00FB2912 /* SettingsDestinations.swift in Sources */,
 				D3829EAA2A76690900610B28 /* LocalizedString.swift in Sources */,
 				D3E0123327D3667C0040621F /* Attendee.swift in Sources */,
 				D358E55827EDEDB2000A6554 /* FastpassView.swift in Sources */,
@@ -778,10 +815,12 @@
 				D3E0123827D38D3D0040621F /* RedeemTokenView.swift in Sources */,
 				D39444132A754EF200EE2021 /* LocalizableProtocol.swift in Sources */,
 				D3A94D03281E62530053FEFA /* ErrorView.swift in Sources */,
+				D3A705612A829334009E5ADF /* EventView.swift in Sources */,
 				D37BC4DA28A57F1B00449482 /* Alerts.swift in Sources */,
 				4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */,
 				D314B66F27D1089200481D5E /* EventStore.swift in Sources */,
 				D301C39428053ED600D027FE /* ActivityIndicator.swift in Sources */,
+				D3FE04F02A83FE72009CA4B4 /* ScheduleSearchView.swift in Sources */,
 				D39444152A755F4C00EE2021 /* Session.swift in Sources */,
 				D3829EA62A76606E00610B28 /* Wifi.swift in Sources */,
 				D324EF08286EB9B7004D03D6 /* UIApplication+Extension.swift in Sources */,
@@ -795,8 +834,9 @@
 				D3E4E6BF27CD158400FFACEB /* OPassApp.swift in Sources */,
 				4F6968A627EBCB5E009073E4 /* SFButton.swift in Sources */,
 				4F5EB73827D3648100235396 /* AnnouncementView.swift in Sources */,
-				D3C972F227F03531008561DE /* SessionDetailView.swift in Sources */,
+				D3D0BB2A2A82254800DC4E61 /* Router.swift in Sources */,
 				D3829EA82A76649300610B28 /* Event.swift in Sources */,
+				D3DCB8432A85119500B043FC /* SessionOverView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

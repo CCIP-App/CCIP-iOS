@@ -32,6 +32,11 @@ enum FeatureType: String, Hashable, Codable {
 
 extension Feature {
     @inline(__always)
+    var isWeb: Bool {
+        return feature == .im || feature == .puzzle || feature == .venue || feature == .sponsors || feature == .staffs || feature == .webview
+    }
+
+    @inline(__always)
     var color: Color {
         switch self.feature {
         case .fastpass: return .blue
@@ -62,7 +67,7 @@ extension Feature {
         case .puzzle: return "puzzlepiece.extension"
         case .venue: return "map"
         case .sponsors: return "banknote"
-        case .staffs: return "person.3"
+        case .staffs: return "person.2"
         case .webview: return "shippingbox"
         }
     }

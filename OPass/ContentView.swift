@@ -11,7 +11,6 @@ import SwiftUI
 struct ContentView: View {
     // MARK: - Variables
     @Binding var url: URL?
-    @StateObject var router = Router()
     @EnvironmentObject var store: OPassStore
     @State private var error: Error?
     @State private var handlingURL = false
@@ -21,96 +20,59 @@ struct ContentView: View {
 
     // MARK: - Views
     var body: some View {
-        NavigationStack(path: $router.path) {
-            VStack {
-                switch viewState {
-                case .ready(let event):
-                    MainView()
-                        .environmentObject(event)
-                        .navigationDestination(for: Router.mainDestination.self) { destination in
-                            switch destination {
-                            case .fastpass:
-                                FastpassView().environmentObject(event)
-
-                            case .schedule:
-                                ScheduleView(event)
-
-                            case .scheduleSearch(let schedule):
-                                SearchScheduleView(schedule: schedule)
-                                    .environmentObject(event)
-
-                            case .sessionDetail(let data):
-                                SessionDetailView(data).environmentObject(event)
-
-                            case .ticket:
-                                TicketView().environmentObject(event)
-
-                            case .announcement:
-                                AnnouncementView().environmentObject(event)
-                            }
-                        }
-                case .loading:
-                    ProgressView("Loading")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .task {
-                            do {
-                                try await store.loadEvent()
-                            } catch { self.error = error }
-                        }
-                case .empty:
-                    VStack {}
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .onAppear {
-                            self.isEventListPresented = true
-                        }
-                case .error:
-                    ErrorWithRetryView {
-                        self.error = nil
-                    }
+        Group {
+            switch viewState {
+            case .ready(let event):
+                RootView()
+                    .environmentObject(event)
+            case .loading:
+                ProgressView("Loading")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .onChange(of: store.eventId) { _ in
-                        self.error = nil
+                    .task {
+                        do {
+                            try await store.loadEvent()
+                        } catch { self.error = error }
                     }
+            case .empty:
+                EventListView()
+            case .error:
+                ErrorWithRetryView {
+                    self.error = nil
                 }
-            }
-            .background(Color("SectionBackgroundColor"))
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationDestination(for: Router.rootDestination.self) { destination in
-                switch destination {
-                case .settings:   SettingsView()
-                case .appearance: AppearanceView()
-                case .developers: DevelopersView()
-                }
-            }
-            .sheet(isPresented: $isEventListPresented) { EventListView() }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    SFButton(systemName: "rectangle.stack") {
-                        isEventListPresented.toggle()
-                    }
-                }
-
-                ToolbarItem(placement: .principal) {
-                    VStack {
-                        Text(store.event?.config.title.localized() ?? "OPass")
-                            .font(.headline)
-                        if let userId = store.event?.userId, userId != "nil" {
-                            Text(userId)
-                                .font(.caption)
-                                .foregroundColor(.gray)
-                        }
-                    }
-                }
-
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(value: Router.rootDestination.settings) {
-                        Image(systemName: "gearshape")
-                    }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .onChange(of: store.eventId) { _ in
+                    self.error = nil
                 }
             }
         }
-        .environmentObject(router)
-        .environmentObject(store)
+        .background(Color("SectionBackgroundColor"))
+        .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $isEventListPresented) { EventListView() }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                SFButton(systemName: "rectangle.stack") {
+                    isEventListPresented.toggle()
+                }
+            }
+
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    Text(store.event?.config.title.localized() ?? "OPass")
+                        .font(.headline)
+                    if let userId = store.event?.userId, userId != "nil" {
+                        Text(userId)
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
+
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(value: RootDestinations.settings) {
+                    Image(systemName: "gearshape")
+                }
+            }
+        }
         .overlay {
             if self.url != nil {
                 ProgressView("LOGGINGIN")

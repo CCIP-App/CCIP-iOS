@@ -9,7 +9,7 @@
 import Foundation
 import OSLog
 
-private let logger = Logger(subsystem: "OPassKit", category: "APIManager")
+private let logger = Logger(subsystem: "OPassData", category: "APIManager")
 
 final class APIManager {
     public enum CCIPEndpoint {

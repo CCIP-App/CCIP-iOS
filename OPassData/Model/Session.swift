@@ -38,7 +38,7 @@ extension Session: TransformFunction {
     static func transform(_ sessions: [Session]) -> [OrderedDictionary<DateInRegion, [Session]>] {
         return Dictionary(grouping: sessions) { $0.start.dateTruncated(from: .hour)! }
             .sorted { $0.key < $1.key }
-            .map { $0.value }
+            .map { $0.value.sorted { $0.start < $1.start } }
             .map { OrderedDictionary(grouping: $0, by: \.start) }
             .map { $0.mapValues { $0.sorted { $0.end < $1.end } } }
     }

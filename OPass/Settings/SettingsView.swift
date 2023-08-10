@@ -24,8 +24,9 @@ struct SettingsView: View {
                 AdvancedSection()
             }
         }
-        .navigationTitle("Settings")
+        .navigationDestination(for: SettingsDestinations.self) { $0.view }
         .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Settings")
     }
 }
 
@@ -43,7 +44,7 @@ private struct AppIconSection: View {
                     Text("OPass")
                 }
                 .padding(5)
-                Spacer()
+                 Spacer()
             }
         }
     }
@@ -52,7 +53,7 @@ private struct AppIconSection: View {
 private struct GeneralSection: View {
     var body: some View {
         Section(header: Text("GENERAL")) {
-            NavigationLink(value: Router.rootDestination.appearance) {
+            NavigationLink(value: SettingsDestinations.appearance) {
                 Label { Text("Appearance") } icon: {
                     Image(systemName: "circle.lefthalf.filled")
                         .padding(4)
@@ -154,7 +155,7 @@ private struct AboutSection: View {
                 }
             }
             
-            NavigationLink("Developers", value: Router.rootDestination.developers)
+            NavigationLink("Developers", value: SettingsDestinations.developers)
         }
     }
 }

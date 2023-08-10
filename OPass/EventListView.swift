@@ -50,21 +50,20 @@ struct EventListView: View {
             Task { await viewModel.reset() }
         }
     }
-    
+
+    @ToolbarContentBuilder
     var toolbar: some ToolbarContent {
-        Group {
-            ToolbarItem(placement: .navigationBarLeading) {
-                if store.event != nil {
-                    Button(LocalizedStringKey("Close")) {
-                        dismiss()
-                    }
+        ToolbarItem(placement: .navigationBarLeading) {
+            if store.event != nil {
+                Button(LocalizedStringKey("Close")) {
+                    dismiss()
                 }
             }
-            
-            ToolbarItem(placement: .navigationBarTrailing) {
-                SFButton(systemName: "arrow.clockwise") {
-                    Task { await viewModel.reset() }
-                }
+        }
+
+        ToolbarItem(placement: .navigationBarTrailing) {
+            SFButton(systemName: "arrow.clockwise") {
+                Task { await viewModel.reset() }
             }
         }
     }

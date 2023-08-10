@@ -1,5 +1,5 @@
 //
-//  SearchScheduleView.swift
+//  ScheduleSearchView.swift
 //  OPass
 //
 //  Created by Brian Chang on 2023/7/4.
@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftDate
 import OrderedCollections
 
-struct SearchScheduleView: View {
+struct ScheduleSearchView: View {
     let schedule: Schedule
     @EnvironmentObject private var event: EventStore
     
@@ -51,13 +51,8 @@ struct SearchScheduleView: View {
                     ForEach(result.elements.indices, id: \.self) { index in
                         Section {
                              ForEach(result.values[index]) { session in
-                                 NavigationLink(value: Router.mainDestination.sessionDetail(session)) {
-                                     SessionOverView(
-                                         room: schedule.rooms[session.room]?.localized().name ?? session.room,
-                                         start: session.start,
-                                         end: session.end,
-                                         title: session.localized().title
-                                     )
+                                 NavigationLink(value: ScheduleDestinations.session(session)) {
+                                     SessionOverView(session: session)
                                  }
                              }
                         } header: {

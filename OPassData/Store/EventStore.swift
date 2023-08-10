@@ -11,7 +11,7 @@ import SwiftUI
 import OneSignal
 import KeychainAccess
 
-private let logger = Logger(subsystem: "OPassKit", category: "EventStore")
+private let logger = Logger(subsystem: "OPassData", category: "EventStore")
 
 class EventStore: ObservableObject, Codable, Identifiable {
     public let id: String
@@ -44,7 +44,7 @@ class EventStore: ObservableObject, Codable, Identifiable {
         eventAPITmpData = tmpData
     }
     
-    enum EventAPIError: Error {
+    enum Error: Swift.Error {
         case noTokenFound
         case incorrectFeature
     }
@@ -96,6 +96,18 @@ extension EventStore {
                 } catch { logger.error("Token remove error: \(error.localizedDescription)") }
             }
             objectWillChange.send()
+        }
+    }
+
+    @inline(__always)
+    var avaliableFeatures: [Feature] {
+        config.features.filter { feature in
+            if feature.isWeb && feature.url(token: token, role: userRole) == nil { return false }
+            if let visibleRoles = feature.visibleRoles {
+                guard userRole != "nil" else { return false }
+                return visibleRoles.contains(userRole)
+            }
+            return true
         }
     }
 
@@ -191,11 +203,11 @@ extension EventStore {
     func loadAttendee() async throws {
         guard let feature = config.feature(.fastpass) else {
             logger.critical("Can't find correct fastpass feature")
-            throw EventAPIError.incorrectFeature
+            throw Error.incorrectFeature
         }
         guard let token = token else {
             logger.error("No token included")
-            throw EventAPIError.noTokenFound
+            throw Error.noTokenFound
         }
 
         do {
@@ -224,7 +236,7 @@ extension EventStore {
     func loadSchedule() async throws {
         guard let feature = config.feature(.schedule) else {
             logger.critical("Can't find correct schedule feature")
-            throw EventAPIError.incorrectFeature
+            throw Error.incorrectFeature
         }
         do {
             let schedule = try await APIManager.fetchSchedule(from: feature)
@@ -246,7 +258,7 @@ extension EventStore {
     func loadAnnouncements() async throws {
         guard let feature = config.feature(.announcement) else {
             logger.critical("Can't find correct announcement feature")
-            throw EventAPIError.incorrectFeature
+            throw Error.incorrectFeature
         }
         do {
             let announcements = try await APIManager.fetchAnnouncements(from: feature, token: token)
@@ -266,7 +278,8 @@ extension EventStore {
             }
         }
     }
-    
+
+    @inline(__always)
     func signOut() {
         if let attendee = attendee {
             OneSignal.sendTag("\(attendee.eventId)\(attendee.role)", value: "")
@@ -282,6 +295,8 @@ extension EventStore {
             let data = try JSONEncoder().encode(self)
             keyStore.set(data, forKey: "EventStore")
             logger.info("Save scuess of id: \(self.id)")
-        } catch { logger.error("Save faild with: \(error.localizedDescription), id: \(self.id)") }
+        } catch {
+            logger.error("Save faild with: \(error.localizedDescription), id: \(self.id)")
+        }
     }
 }

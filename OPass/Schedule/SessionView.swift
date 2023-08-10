@@ -1,5 +1,5 @@
 //
-//  SessionDetailView.swift
+//  SessionView.swift
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/27.
@@ -11,34 +11,32 @@ import EventKit
 import SwiftDate
 import OrderedCollections
 
-struct SessionDetailView: View {
-    
-    let sessionData: Session
-    @EnvironmentObject var EventStore: EventStore
+struct SessionView: View {
+    let session: Session
+
+    @EnvironmentObject private var event: EventStore
     @State private var isCalendarAlertPresented = false
     @State private var isEventEditViewPresented = false
     @State private var isNavigationTitlePresented = false
     @State private var navigationY_Coordinate: CGFloat = .zero
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
     private var eventStore = EKEventStore()
     private var isLiked: Bool {
-        self.EventStore.likedSessions.contains(sessionData.id)
+        self.event.likedSessions.contains(session.id)
     }
-    
-    init(_ sessionData: Session) {
-        self.sessionData = sessionData
-    }
+
+    init(session: Session) { self.session = session }
     
     var body: some View {
         List {
             VStack(alignment: .leading, spacing: 0) {
-                if sessionData.tags.isNotEmpty, let schedule = EventStore.schedule {
-                    TagsSection(tags: schedule.tags)
+                if session.tags.isNotEmpty {
+                    TagsSection(tags: session.tags)
                         .padding(.bottom, 8)
                         .padding(.top, 3.9)
                 }
                 
-                Text(sessionData.localized().title)
+                Text(session.localized().title)
                     .font(.largeTitle.bold())
                     .fixedSize(horizontal: false, vertical: true)
                     .background(GeometryReader { geo in
@@ -49,27 +47,27 @@ struct SessionDetailView: View {
                         isNavigationTitlePresented = y < navigationY_Coordinate + 10
                     }
                 
-                FeatureButtons(sessionData: sessionData)
+                FeatureButtons(session: session)
                     .padding(.vertical)
                 
-                if let type = sessionData.type {
-                    TypeSection(name: EventStore.schedule?.types[type]?.localized().name ?? type)
+                if let type = session.type {
+                    TypeSection(name: event.schedule?.types[type]?.localized().name ?? type)
                         .background(Color("SectionBackgroundColor"))
                         .cornerRadius(8)
                         .padding(.bottom)
                 }
                 
-                PlaceSection(name: EventStore.schedule?.rooms[sessionData.room]?.localized().name ?? sessionData.room)
+                PlaceSection(name: event.schedule?.rooms[session.room]?.localized().name ?? session.room)
                     .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
                     .padding(.bottom)
                 
-                TimeSection(sessionData: sessionData)
+                TimeSection(session: session)
                     .background(Color("SectionBackgroundColor"))
                     .cornerRadius(8)
                 
-                if let broadcast = sessionData.broadcast, broadcast.isNotEmpty {
-                    BroadcastSection(EventStore.schedule, broadcast: broadcast)
+                if let broadcast = session.broadcast, broadcast.isNotEmpty {
+                    BroadcastSection(event.schedule, broadcast: broadcast)
                         .background(Color("SectionBackgroundColor"))
                         .cornerRadius(8)
                         .padding(.top)
@@ -78,12 +76,12 @@ struct SessionDetailView: View {
             .listRowBackground(Color.clear)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             
-            if sessionData.speakers.isNotEmpty {
-                SpeakersSections(sessionData: sessionData)
+            if session.speakers.isNotEmpty {
+                SpeakersSections(session: session)
             }
             
-            if sessionData.localized().description != "" {
-                DescriptionSection(description: sessionData.localized().description)
+            if session.localized().description != "" {
+                DescriptionSection(description: session.localized().description)
             }
         }
         .listStyle(.insetGrouped)
@@ -91,7 +89,7 @@ struct SessionDetailView: View {
         .toolbar {
             if isNavigationTitlePresented {
                 ToolbarItem(placement: .principal) {
-                    Text(sessionData.localized().title)
+                    Text(session.localized().title)
                         .font(.headline)
                         .multilineTextAlignment(.center)
                 }
@@ -101,22 +99,22 @@ struct SessionDetailView: View {
                 HStack {
                     SFButton(systemName: "heart\(isLiked ? ".fill" : "")") {
                         UNUserNotification.registeringNotification(
-                            id: sessionData.id,
+                            id: session.id,
                             title: String(localized: "SessionWillStartIn5Minutes"),
                             content: String(format: String(localized: "SessionWillStartIn5MinutesContent"),
-                                            sessionData.en.title,
-                                            EventStore.schedule?.rooms[sessionData.room]?.en.name ?? ""),
-                            rawTime: sessionData.start,
+                                            session.en.title,
+                                            event.schedule?.rooms[session.room]?.en.name ?? ""),
+                            rawTime: session.start,
                             cancel: isLiked
                         )
                         if isLiked {
                             SoundManager.shared.play(sound: .don)
                             UINotificationFeedbackGenerator().notificationOccurred(.warning)
-                            self.EventStore.likedSessions.removeAll { $0 == sessionData.id }
+                            self.event.likedSessions.removeAll { $0 == session.id }
                         } else {
                             SoundManager.shared.play(sound: .din)
                             UINotificationFeedbackGenerator().notificationOccurred(.success)
-                            self.EventStore.likedSessions.append(sessionData.id)
+                            self.event.likedSessions.append(session.id)
                         }
                     }
                     
@@ -133,7 +131,7 @@ struct SessionDetailView: View {
                             Label("AddToCalendar", systemImage: "calendar.badge.plus")
                         }
                         
-                        if let uri = self.sessionData.uri, let url = URL(string: uri) {
+                        if let uri = self.session.uri, let url = URL(string: uri) {
                             Button {
                                 let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
                                 UIApplication.topViewController()?.present(av, animated: true)
@@ -165,9 +163,9 @@ struct SessionDetailView: View {
             EventEditView(
                 eventStore: eventStore,
                 event: eventStore.createEvent(
-                    title: sessionData.localized().title,
-                    startDate: sessionData.start.date,
-                    endDate: sessionData.end.date,
+                    title: session.localized().title,
+                    startDate: session.start.date,
+                    endDate: session.end.date,
                     alertOffset: -300 // T minus 5 minutes
                 )
             )
@@ -183,15 +181,16 @@ extension String: Identifiable {
 }
 
 private struct TagsSection: View {
-    
+    let tags: [String]
+
+    @EnvironmentObject private var event: EventStore
     @Environment(\.colorScheme) var colorScheme
-    let tags: OrderedDictionary<String, Tag>
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(tags.keys, id: \.self) { key in
-                    Text(tags[key]?.localized().name ?? key)
+                ForEach(tags, id: \.self) { key in
+                    Text(event.schedule?.tags[key]?.localized().name ?? key)
                         .font(.caption)
                         .padding(.vertical, 2)
                         .padding(.horizontal, 8)
@@ -211,13 +210,13 @@ private struct FeatureButtons: View {
     let features: [(String, String, String)]
     let buttonSize = CGFloat(62)
     
-    init(sessionData: Session) {
+    init(session: Session) {
         features = [
-            (sessionData.live, "video", "Live"),
-            (sessionData.co_write, "keyboard", "CoWriting"),
-            (sessionData.record, "play", "Record"),
-            (sessionData.slide, "paperclip", "Slide"),
-            (sessionData.qa, "questionmark", "QA")
+            (session.live, "video", "Live"),
+            (session.co_write, "keyboard", "CoWriting"),
+            (session.record, "play", "Record"),
+            (session.slide, "paperclip", "Slide"),
+            (session.qa, "questionmark", "QA")
         ].filter { (url, _, _) in url != nil } as! [(String, String, String)]
     }
     
@@ -320,10 +319,10 @@ private struct TimeSection: View {
     let end: DateInRegion
     let durationMinute: Int
     
-    init(sessionData: Session) {
-        self.start = sessionData.start
-        self.end = sessionData.end
-        self.durationMinute = Int((sessionData.end - sessionData.start) / 60)
+    init(session: Session) {
+        self.start = session.start
+        self.end = session.end
+        self.durationMinute = Int((session.end - session.start) / 60)
     }
     
     var body: some View {
@@ -391,15 +390,15 @@ private struct BroadcastSection: View {
 
 private struct SpeakersSections: View {
     
-    let sessionData: Session
-    @EnvironmentObject var EventStore: EventStore
+    let session: Session
+    @EnvironmentObject var event: EventStore
     
     var body: some View {
         Section(header: Text(LocalizedStringKey("Speakers")).padding(.leading, 10)) {
-            ForEach(sessionData.speakers, id: \.self) { speaker in
+            ForEach(session.speakers, id: \.self) { speaker in
                 SpeakerBlock(
                     speaker: speaker,
-                    speakerData: EventStore.schedule?.speakers[speaker]
+                    speakerData: event.schedule?.speakers[speaker]
                 )
             }
             .listRowBackground(Color.clear)
@@ -585,4 +584,13 @@ private struct navigationY_CoordinatePreferenceKey: PreferenceKey {
     static var defaultValue: CGFloat = .zero
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {}
 }
-//
+
+extension UINavigationController: UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
+    }
+}

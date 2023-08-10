@@ -9,7 +9,7 @@
 import OSLog
 import SwiftUI
 
-private let logger = Logger(subsystem: "OPassKit", category: "OPassStore")
+private let logger = Logger(subsystem: "OPassData", category: "OPassStore")
 
 class OPassStore: ObservableObject {
     @Published var event: EventStore?
