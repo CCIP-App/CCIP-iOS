@@ -13,10 +13,9 @@ struct ContentView: View {
     @Binding var url: URL?
     @EnvironmentObject var store: OPassStore
     @State private var error: Error?
-    @State private var handlingURL = false
-    @State private var isEventListPresented = false
-    @State private var isHttp403AlertPresented = false
-    @State private var isInvalidURLAlertPresented = false
+    @State private var presentEventList = false
+    @State private var presentHttp403Alert = false
+    @State private var presentInvaildUrlAlert = false
 
     // MARK: - Views
     var body: some View {
@@ -31,118 +30,110 @@ struct ContentView: View {
                     .task {
                         do {
                             try await store.loadEvent()
+                            print("#123")
                         } catch { self.error = error }
                     }
+            case .login(let url):
+                ProgressView("LOGGINGIN")
+                    .task { await parseUniversalLinkAndURL(url) }
+                    .alert("InvalidURL", isPresented: $presentInvaildUrlAlert) {
+                        Button("OK", role: .cancel) { self.url = nil }
+                    } message: { Text("InvalidURLOrTokenContent") }
+                    .alert("CouldntVerifiyYourIdentity", isPresented: $presentHttp403Alert) {
+                        Button("OK", role: .cancel) { self.url = nil }
+                    } message: { Text("ConnectToConferenceWiFi") }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             case .empty:
                 EventListView()
             case .error:
-                ErrorWithRetryView {
-                    self.error = nil
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .onChange(of: store.eventId) { _ in
-                    self.error = nil
-                }
+                ErrorView(error: $error)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        .sheet(isPresented: $presentEventList) { EventListView() }
         .background(Color("SectionBackgroundColor"))
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $isEventListPresented) { EventListView() }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                SFButton(systemName: "rectangle.stack") {
-                    isEventListPresented.toggle()
-                }
-            }
+        .toolbar { toolbar }
+    }
 
-            ToolbarItem(placement: .principal) {
-                VStack {
-                    Text(store.event?.config.title.localized() ?? "OPass")
-                        .font(.headline)
-                    if let userId = store.event?.userId, userId != "nil" {
-                        Text(userId)
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                    }
-                }
+    @ToolbarContentBuilder
+    private var toolbar: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarLeading) {
+            SFButton(systemName: "rectangle.stack") {
+                presentEventList.toggle()
             }
+        }
 
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(value: RootDestinations.settings) {
-                    Image(systemName: "gearshape")
+        ToolbarItem(placement: .principal) {
+            VStack {
+                Text(store.event?.config.title.localized() ?? "OPass")
+                    .font(.headline)
+                if let userId = store.event?.userId, userId != "nil" {
+                    Text(userId)
+                        .font(.caption)
+                        .foregroundColor(.gray)
                 }
             }
         }
-        .overlay {
-            if self.url != nil {
-                ProgressView("LOGGINGIN")
-                    .task {
-                        self.isEventListPresented = false
-                        await parseUniversalLinkAndURL(url!)
-                    }
-                    .alert("InvalidURL", isPresented: $isInvalidURLAlertPresented) {
-                        Button("OK", role: .cancel) {
-                            self.url = nil
-                            if store.event == nil {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                    self.isEventListPresented = true
-                                }
-                            }
-                        }
-                    } message: {
-                        Text("InvalidURLOrTokenContent")
-                    }
-                    .http403Alert(title: "CouldntVerifiyYourIdentity", isPresented: $isHttp403AlertPresented) {
-                        self.url = nil
-                        if store.event == nil {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                self.isEventListPresented = true
-                            }
-                        }
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color("SectionBackgroundColor").edgesIgnoringSafeArea(.all))
+
+        ToolbarItem(placement: .navigationBarTrailing) {
+            NavigationLink(value: RootDestinations.settings) {
+                Image(systemName: "gearshape")
             }
         }
     }
 
-    // MARK: - Functions
-    private func parseUniversalLinkAndURL(_ url: URL) async {
-        let params = URLComponents(string: "?" + (url.query ?? ""))?.queryItems
+    private struct ErrorView: View {
+        @EnvironmentObject var store: OPassStore
+        @Binding var error: Error?
 
-        // Select event
-        guard let eventId = params?.first(where: { $0.name == "event_id"})?.value else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isInvalidURLAlertPresented = true
-            }
-            return
-        }
-        store.eventId = eventId
-        if eventId != store.event?.id { store.eventLogo = nil }
-        // Login
-        guard let token = params?.first(where: { $0.name == "token" })?.value else {
-            DispatchQueue.main.async {
-                self.url = nil
-            }
-            return
-        }
+        var body: some View {
+            VStack {
+                Spacer()
 
-        do {
-            if try await store.loginCurrentEvent(with: token) {
-                DispatchQueue.main.async { self.url = nil }
-                await store.event?.loadLogos()
-                return
-            }
-        } catch APIManager.LoadError.forbidden {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isHttp403AlertPresented = true
-            }
-            return
-        } catch {}
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor(Color("LogoColor"))
+                    .frame(width: UIScreen.main.bounds.width * 0.25)
+                    .padding(.bottom, 5)
 
-        // Error
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.isInvalidURLAlertPresented = true
+                Text("Something went wrong")
+                    .multilineTextAlignment(.center)
+                    .font(.title)
+
+                Text(error?.localizedDescription ?? "")
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.gray)
+                    .font(.callout)
+
+                Spacer()
+
+                Button {
+                    self.error = nil
+                } label: {
+                    HStack {
+                        Spacer()
+                        Text("Try Again")
+                        Spacer()
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+
+                Button {
+                    self.store.eventId = nil
+                    self.error = nil
+                } label: {
+                    HStack {
+                        Spacer()
+                        Text("Select Event")
+                        Spacer()
+                    }
+                }
+                .buttonStyle(.bordered)
+                .padding(.bottom)
+            }
+            .frame(width: UIScreen.main.bounds.width * 0.9)
         }
     }
 }
@@ -151,16 +142,57 @@ struct ContentView: View {
 extension ContentView {
     private enum ViewState {
         case ready(EventStore)
+        case empty
         case loading
-        case empty // Landing page?
+        case login(URL)
         case error
     }
 
     private var viewState: ViewState {
+        if let url = url {
+            error = nil
+            return .login(url)
+        }
         guard error == nil else { return .error }
         guard let eventID = store.eventId else { return .empty }
         guard let event = store.event, eventID == event.id else { return .loading }
         return .ready(event)
+    }
+
+    private func parseUniversalLinkAndURL(_ url: URL) async {
+        let params = URLComponents(string: "?" + (url.query ?? ""))?.queryItems
+        // MARK: Select Event
+        guard let eventId = params?.first(where: { $0.name == "event_id"})?.value else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.presentInvaildUrlAlert = true
+            }
+            return
+        }
+        store.eventId = eventId
+        if eventId != store.event?.id { store.eventLogo = nil }
+        // MARK: Login
+        guard let token = params?.first(where: { $0.name == "token" })?.value else {
+            DispatchQueue.main.async {
+                self.url = nil
+            }
+            return
+        }
+        do {
+            if try await store.loginCurrentEvent(with: token) {
+                DispatchQueue.main.async { self.url = nil }
+                await store.event?.loadLogos()
+                return
+            }
+        } catch APIManager.LoadError.forbidden {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.presentHttp403Alert = true
+            }
+            return
+        } catch {}
+        // MARK: Error
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.presentInvaildUrlAlert = true
+        }
     }
 }
 

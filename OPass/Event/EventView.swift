@@ -21,8 +21,9 @@ struct EventView: View {
                     height: UIScreen.main.bounds.width * 0.4)
 
             FeatureGrid()
-                .navigationDestination(for: FeatureDestinations.self) { $0.view }
         }
+        .navigationDestination(for: FeatureDestinations.self) { $0.view }
+        .background(Color("SectionBackgroundColor"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar { toolbar }
     }

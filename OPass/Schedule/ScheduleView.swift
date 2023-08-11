@@ -94,7 +94,7 @@ struct ScheduleView: View {
                                 .background(Color("SectionBackgroundColor"))
                         }
                         Form {
-                            ForEach(filteredSessions.keys.sorted(), id: \.self) { header in
+                            ForEach(filteredSessions.keys, id: \.self) { header in
                                 Section {
                                     ForEach(filteredSessions[header]!) { session in
                                         NavigationLink(value: ScheduleDestinations.session(session)) {

@@ -180,7 +180,7 @@ private struct AdvancedOptionView: View {
     var body: some View {
         Form {
             Button(action: {
-                keyStore.removeObject(forKey: "EventAPI")
+                keyStore.removeObject(forKey: "EventStore")
                 keyStore.synchronize()
             }) {
                 Label("ClearCacheData", systemImage: "trash")
