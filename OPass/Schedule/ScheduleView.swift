@@ -75,7 +75,8 @@ struct ScheduleContainerView: View {
 }
 
 struct ScheduleView: View {
-    @EnvironmentObject var event: EventStore
+    @EnvironmentObject private var event: EventStore
+    @EnvironmentObject private var router: Router
 
     @Binding var selectDayIndex: Int
     @Binding var filter: ScheduleFilter
@@ -135,29 +136,32 @@ struct ScheduleView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text(event.config.feature(.schedule)?.title.localized() ?? "Schedule").font(.headline)
-            }
-            
+        .toolbar { toolbar }
+    }
+
+    @ToolbarContentBuilder
+    private var toolbar: some ToolbarContent {
+        ToolbarItem(placement: .principal) {
+            Text(event.config.feature(.schedule)?.title.localized() ?? "Schedule").font(.headline)
+        }
+
+        if let schedule = event.schedule {
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack {
-                    if let schedule = event.schedule {
-                        NavigationLink(value: ScheduleDestinations.search(schedule)) {
-                            Image(systemName: "magnifyingglass")
-                        }
+                    NavigationLink(value: ScheduleDestinations.search(schedule)) {
+                        Image(systemName: "magnifyingglass")
                     }
-                    
+
                     Menu {
                         Picker(selection: $filter, label: EmptyView()) {
                             Label("AllSessions", systemImage: "list.bullet")
                                 .tag(ScheduleFilter.all)
-                            
+
                             Label("Favorite", systemImage: "heart")
                                 .symbolVariant(filter == .liked ? .fill : .none)
                                 .tag(ScheduleFilter.liked)
-                            
-                            if let schedule = event.schedule, !schedule.tags.isEmpty {
+
+                            if !schedule.tags.isEmpty {
                                 Menu {
                                     Picker(selection: $filter, label: EmptyView()) {
                                         ForEach(schedule.tags.keys, id: \.self) { id in
@@ -168,16 +172,14 @@ struct ScheduleView: View {
                                 } label: {
                                     Label("Tags", systemImage: {
                                         switch filter {
-                                        case .tag(_):
-                                            return "tag.fill"
-                                        default:
-                                            return "tag"
+                                        case .tag(_): return "tag.fill"
+                                        default: return "tag"
                                         }
                                     }())
                                 }
                             }
-                            
-                            if let schedule = event.schedule, !schedule.types.isEmpty {
+
+                            if !schedule.types.isEmpty {
                                 Menu {
                                     Picker(selection: $filter, label: EmptyView()) {
                                         ForEach(schedule.types.keys, id: \.self) { id in
@@ -188,16 +190,14 @@ struct ScheduleView: View {
                                 } label: {
                                     Label("Types", systemImage: {
                                         switch filter {
-                                        case .type(_):
-                                            return "signpost.right.fill"
-                                        default:
-                                            return "signpost.right"
+                                        case .type(_): return "signpost.right.fill"
+                                        default: return "signpost.right"
                                         }
                                     }())
                                 }
                             }
-                            
-                            if let schedule = event.schedule, !schedule.rooms.isEmpty {
+
+                            if !schedule.rooms.isEmpty {
                                 Menu {
                                     Picker(selection: $filter, label: EmptyView()) {
                                         ForEach(schedule.rooms.keys, id: \.self) { id in
@@ -214,8 +214,8 @@ struct ScheduleView: View {
                                     }())
                                 }
                             }
-                            
-                            if let schedule = event.schedule, !schedule.speakers.isEmpty {
+
+                            if !schedule.speakers.isEmpty {
                                 Menu {
                                     Picker(selection: $filter, label: EmptyView()) {
                                         ForEach(schedule.speakers.keys, id: \.self) { id in
@@ -233,8 +233,6 @@ struct ScheduleView: View {
                                 }
                             }
                         }
-                        .labelsHidden()
-                        .pickerStyle(.inline)
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                             .symbolVariant(filter == .all ? .none : .fill)

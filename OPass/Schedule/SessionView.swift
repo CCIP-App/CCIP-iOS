@@ -9,6 +9,7 @@
 import SwiftUI
 import EventKit
 import SwiftDate
+import UserNotifications
 import OrderedCollections
 
 struct SessionView: View {
@@ -18,7 +19,9 @@ struct SessionView: View {
     @State private var isCalendarAlertPresented = false
     @State private var isEventEditViewPresented = false
     @State private var isNavigationTitlePresented = false
+    @State private var presentNotifiedAlert = false
     @State private var navigationY_Coordinate: CGFloat = .zero
+    @AppStorage("NotifiedAlert") private var notifiedAlert = true
     @Environment(\.colorScheme) private var colorScheme
     private var eventStore = EKEventStore()
     private var isLiked: Bool {
@@ -98,15 +101,19 @@ struct SessionView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack {
                     SFButton(systemName: "heart\(isLiked ? ".fill" : "")") {
-                        UNUserNotification.registeringNotification(
-                            id: session.id,
-                            title: String(localized: "SessionWillStartIn5Minutes"),
-                            content: String(format: String(localized: "SessionWillStartIn5MinutesContent"),
-                                            session.en.title,
-                                            event.schedule?.rooms[session.room]?.en.name ?? ""),
-                            rawTime: session.start,
-                            cancel: isLiked
-                        )
+                        UNUserNotificationCenter.current().getNotificationSettings { settings in
+                            if settings.authorizationStatus == .authorized {
+                                UNUserNotification.registeringNotification(
+                                    id: session.id,
+                                    title: String(localized: "SessionWillStartIn5Minutes"),
+                                    content: String(format: String(localized: "SessionWillStartIn5MinutesContent"),
+                                                    session.en.title,
+                                                    event.schedule?.rooms[session.room]?.en.name ?? ""),
+                                    rawTime: session.start,
+                                    cancel: isLiked
+                                )
+                            } else if notifiedAlert && !isLiked { presentNotifiedAlert.toggle() }
+                        }
                         if isLiked {
                             SoundManager.shared.play(sound: .don)
                             UINotificationFeedbackGenerator().notificationOccurred(.warning)
@@ -117,6 +124,13 @@ struct SessionView: View {
                             self.event.likedSessions.append(session.id)
                         }
                     }
+                    .alert("GetNotified", isPresented: $presentNotifiedAlert) {
+                        Button("Settings") {
+                            Constants.openInOS(forURL: URL(string: UIApplication.openSettingsURLString)!)
+                        }
+                        Button("DontAskAgain", role: .destructive) { notifiedAlert = false }
+                        Button("Cancel", role: .cancel) {}
+                    } message: { Text("NotifiedAlertMessage") }
                     
                     Menu {
                         Button {
@@ -140,7 +154,7 @@ struct SessionView: View {
                             }
                         }
                     } label: {
-                        Image(systemName: "ellipsis")
+                        Image(systemName: "ellipsis.circle")
                     }
                     .alert("RequestUserPermitCalendar", isPresented: $isCalendarAlertPresented) {
                         Button("Cancel", role: .cancel, action: {})

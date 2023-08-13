@@ -104,3 +104,6 @@
 "SessionWillStartIn5MinutesContent" = "\"%@\" in Room \"%@\", please keep your time of buffer to reach the room.";
 "ConnectToConferenceWiFi" = "Please connect to the WiFi provided by event";
 "CouldntVerifiyYourIdentity" = "Couldn't verifiy your identity";
+"GetNotified" = "Get Notified";
+"DontAskAgain" = "Don't ask again";
+"NotifiedAlertMessage" = "OPass can send you notification just before the session starts.\nWould you like to allow OPass notifications in Settings?";

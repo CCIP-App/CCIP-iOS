@@ -104,3 +104,6 @@
 "SessionWillStartIn5MinutesContent" = "「%@」在會議室「%@」，請儘速前往！";
 "ConnectToConferenceWiFi" = "請使用會場提供的無線網路";
 "CouldntVerifiyYourIdentity" = "無法驗證您的身份";
+"GetNotified" = "獲得通知";
+"DontAskAgain" = "不再詢問";
+"NotifiedAlertMessage" = "OPass 可以在議程開始前向您發送通知。\n您想在“設置”中允許 OPass 通知嗎？";
