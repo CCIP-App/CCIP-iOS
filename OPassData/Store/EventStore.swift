@@ -8,8 +8,10 @@
 
 import OSLog
 import SwiftUI
+import SwiftDate
 import OneSignal
 import KeychainAccess
+import UserNotifications
 
 private let logger = Logger(subsystem: "OPassData", category: "EventStore")
 
@@ -275,6 +277,37 @@ extension EventStore {
             self.eventAPITmpData?.announcements = nil
             DispatchQueue.main.async {
                 self.announcements = announcements
+            }
+        }
+    }
+
+    @inline(__always)
+    func notify(session: Session) {
+        let notificationCenter = UNUserNotificationCenter.current()
+        if likedSessions.contains(session.id) {
+            notificationCenter.removePendingNotificationRequests(withIdentifiers: [session.id])
+        } else {
+            let content = UNMutableNotificationContent()
+            content.title = String(localized: "SessionWillStartIn5Minutes")
+            content.body = String(
+                format: String(localized: "SessionWillStartIn5MinutesContent"),
+                session.localized().title,
+                schedule?.rooms[session.room]?.localized().name ?? "")
+            content.sound = .default
+            let time = session.start - 5.minutes
+            var date = DateComponents()
+            date.month = time.month
+            date.day = time.day
+            date.hour = time.hour
+            date.minute = time.minute
+            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
+            let request = UNNotificationRequest(identifier: session.id, content: content, trigger: trigger)
+            notificationCenter.add(request) { error in
+                if let error = error {
+                    logger.error("Faild to add notification due to \(error.localizedDescription)")
+                } else {
+                    logger.info("Success to add notification with id: \(session.id)")
+                }
             }
         }
     }

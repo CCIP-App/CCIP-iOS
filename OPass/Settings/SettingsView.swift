@@ -172,27 +172,41 @@ private struct AdvancedSection: View {
 }
 
 private struct AdvancedOptionView: View {
-    
-    @AppStorage("AutoSelectScheduleDay") var autoSelectScheduleDay = true
+    @AppStorage("UserInterfaceStyle") private var interfaceStyle: UIUserInterfaceStyle = .unspecified
+    @AppStorage("AutoAdjustTicketBirghtness") private var autoAdjustTicketBirghtness = true
+    @AppStorage("AutoSelectScheduleDay") private var autoSelectScheduleDay = true
+    @AppStorage("PastSessionOpacity") private var pastSessionOpacity = 0.4
+    @AppStorage("DimPastSession") private var dimPastSession = true
+    @AppStorage("NotifiedAlert") private var notifiedAlert = true
     private var keyStore = NSUbiquitousKeyValueStore()
     @EnvironmentObject var store: OPassStore
     
     var body: some View {
         Form {
-            Button(action: {
-                keyStore.removeObject(forKey: "EventStore")
-                keyStore.synchronize()
-            }) {
-                Label("ClearCacheData", systemImage: "trash")
-                    .foregroundColor(.red)
-            }
-            
             Section("FEATURE") {
                 Toggle("AutoSelectScheduleDay", isOn: $autoSelectScheduleDay)
+            }
+
+            Button("Reset All", role: .destructive) {
+                resetAll()
+            }
+
+            Button("ClearCacheData", role: .destructive) {
+                keyStore.removeObject(forKey: "EventStore")
+                keyStore.synchronize()
             }
         }
         .navigationTitle("AdvancedOption")
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func resetAll() {
+        interfaceStyle = .unspecified
+        autoAdjustTicketBirghtness = true
+        autoSelectScheduleDay = true
+        pastSessionOpacity = 0.4
+        dimPastSession = true
+        notifiedAlert = true
     }
 }
 

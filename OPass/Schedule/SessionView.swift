@@ -23,6 +23,8 @@ struct SessionView: View {
     @State private var navigationY_Coordinate: CGFloat = .zero
     @AppStorage("NotifiedAlert") private var notifiedAlert = true
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var pendNotified = false
     private var eventStore = EKEventStore()
     private var isLiked: Bool {
         self.event.likedSessions.contains(session.id)
@@ -103,15 +105,7 @@ struct SessionView: View {
                     SFButton(systemName: "heart\(isLiked ? ".fill" : "")") {
                         UNUserNotificationCenter.current().getNotificationSettings { settings in
                             if settings.authorizationStatus == .authorized {
-                                UNUserNotification.registeringNotification(
-                                    id: session.id,
-                                    title: String(localized: "SessionWillStartIn5Minutes"),
-                                    content: String(format: String(localized: "SessionWillStartIn5MinutesContent"),
-                                                    session.en.title,
-                                                    event.schedule?.rooms[session.room]?.en.name ?? ""),
-                                    rawTime: session.start,
-                                    cancel: isLiked
-                                )
+                                event.notify(session: session)
                             } else if notifiedAlert && !isLiked { presentNotifiedAlert.toggle() }
                         }
                         if isLiked {
@@ -127,10 +121,21 @@ struct SessionView: View {
                     .alert("GetNotified", isPresented: $presentNotifiedAlert) {
                         Button("Settings") {
                             Constants.openInOS(forURL: URL(string: UIApplication.openSettingsURLString)!)
+                            pendNotified = true
                         }
                         Button("DontAskAgain", role: .destructive) { notifiedAlert = false }
                         Button("Cancel", role: .cancel) {}
-                    } message: { Text("NotifiedAlertMessage") }
+                    } message: {
+                        Text("NotifiedAlertMessage")
+                    }
+                    .onChange(of: scenePhase) { phase in
+                        switch phase {
+                        case .active:
+                            if pendNotified { event.notify(session: session) }
+                        default:
+                            break
+                        }
+                    }
                     
                     Menu {
                         Button {

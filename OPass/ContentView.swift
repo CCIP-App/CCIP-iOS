@@ -30,7 +30,6 @@ struct ContentView: View {
                     .task {
                         do {
                             try await store.loadEvent()
-                            print("#123")
                         } catch { self.error = error }
                     }
             case .login(let url):
