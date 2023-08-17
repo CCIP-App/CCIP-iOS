@@ -61,7 +61,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         OneSignal.Notifications.requestPermission({ accepted in
             self.logger.info("User accepted notifications: \(accepted)")
         }, fallbackToSettings: false)
-        print("#\(OneSignal.User.pushSubscription.id)")
         return true
     }
 }
