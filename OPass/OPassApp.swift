@@ -9,7 +9,7 @@
 
 import OSLog
 import SwiftUI
-import OneSignal
+import OneSignalFramework
 import FirebaseCore
 import FirebaseAppCheck
 import FirebaseAnalytics
@@ -56,39 +56,12 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // MARK: - Configure OneSignal
-        let notificationReceiverBlock: OSNotificationWillShowInForegroundBlock = { notification,_  in
-            self.logger.info("Received Notification - \(notification.notificationId ?? "")")
-        }
-        
-        let notificationOpenedBlock: OSNotificationOpenedBlock = { result in
-            let notification: OSNotification = result.notification
-            
-            var messageTitle = "OneSignal Message"
-            var fullMessage = notification.body?.copy() as? String ?? ""
-            
-            if notification.additionalData != nil {
-                if notification.title != nil {
-                    messageTitle = notification.title ?? ""
-                }
-                
-                if let additionData = notification.additionalData as? Dictionary<String, String> {
-                    if let actionSelected = additionData["actionSelected"] {
-                        fullMessage = "\(fullMessage)\nPressed ButtonId:\(actionSelected)"
-                    }
-                }
-            }
-            self.logger.info("OneSignal Notification \(messageTitle): \(fullMessage)")
-        }
-        
-        OneSignal.initWithLaunchOptions(launchOptions)
-        OneSignal.setAppId("b6213f49-e356-4b48-aa9d-7cf10ce1904d")
-        OneSignal.setNotificationWillShowInForegroundHandler(notificationReceiverBlock)
-        OneSignal.setNotificationOpenedHandler(notificationOpenedBlock)
-        OneSignal.setLocationShared(false)
-        OneSignal.promptForPushNotifications(userResponse: { accepted in
+        OneSignal.Debug.setLogLevel(.LL_VERBOSE)
+        OneSignal.initialize("b6213f49-e356-4b48-aa9d-7cf10ce1904d", withLaunchOptions: launchOptions)
+        OneSignal.Notifications.requestPermission({ accepted in
             self.logger.info("User accepted notifications: \(accepted)")
         }, fallbackToSettings: false)
-        
+        print("#\(OneSignal.User.pushSubscription.id)")
         return true
     }
 }

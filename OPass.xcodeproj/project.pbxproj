@@ -25,6 +25,7 @@
 		D30D9CC228B3F68C00C1E489 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D9CBD28B3F68C00C1E489 /* Modifiers.swift */; };
 		D30D9CC328B3F68C00C1E489 /* SlideOverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D9CBE28B3F68C00C1E489 /* SlideOverCard.swift */; };
 		D314B66F27D1089200481D5E /* EventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314B66E27D1089200481D5E /* EventStore.swift */; };
+		D3153BC02A8DF850006A2DD8 /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = D3153BBF2A8DF850006A2DD8 /* OneSignalFramework */; };
 		D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D318CE43280918C400CEA1AA /* TruncableText.swift */; };
 		D31900D8281CF07E00864982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D31900D7281CF07E00864982 /* LaunchScreen.storyboard */; };
 		D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60E27EF4698007EED5D /* CodeScanner */; };
@@ -66,7 +67,6 @@
 		D398F6922A83FD9800FB2912 /* FeatureGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D398F6912A83FD9800FB2912 /* FeatureGridItem.swift */; };
 		D3A00F1F27D837D00097A6AB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00F1E27D837D00097A6AB /* NotificationService.swift */; };
 		D3A00F2327D837D00097A6AB /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D3A00F2A27D838920097A6AB /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = D3A00F2927D838920097A6AB /* OneSignal */; };
 		D3A705612A829334009E5ADF /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A705602A829334009E5ADF /* EventView.swift */; };
 		D3A705662A82A7D9009E5ADF /* FeatureDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A705652A82A7D9009E5ADF /* FeatureDestinations.swift */; };
 		D3A94D03281E62530053FEFA /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A94D02281E62530053FEFA /* ErrorView.swift */; };
@@ -256,6 +256,7 @@
 			files = (
 				D33FB30428C21178006BBEF4 /* FirebasePerformance in Frameworks */,
 				D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */,
+				D3153BC02A8DF850006A2DD8 /* OneSignalFramework in Frameworks */,
 				D3E0123127D35D970040621F /* KeychainAccess in Frameworks */,
 				D33FB2FE28C21178006BBEF4 /* FirebaseAnalytics in Frameworks */,
 				D36E33C42A681916006D4159 /* FirebaseAppCheck in Frameworks */,
@@ -264,7 +265,6 @@
 				D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */,
 				D33FB30028C21178006BBEF4 /* FirebaseCrashlytics in Frameworks */,
 				D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */,
-				D3A00F2A27D838920097A6AB /* OneSignal in Frameworks */,
 				D394440D2A75371A00EE2021 /* OrderedCollections in Frameworks */,
 				D33FB30228C21178006BBEF4 /* FirebaseDynamicLinks in Frameworks */,
 			);
@@ -627,7 +627,6 @@
 			packageProductDependencies = (
 				4F5EB73027D2311200235396 /* SwiftDate */,
 				D3E0123027D35D970040621F /* KeychainAccess */,
-				D3A00F2927D838920097A6AB /* OneSignal */,
 				D322F60E27EF4698007EED5D /* CodeScanner */,
 				D323C1F4282FE03C009AFF97 /* EFQRCode */,
 				D3C6F60C28634F3B0074B942 /* MarkdownKit */,
@@ -637,6 +636,7 @@
 				D33FB30328C21178006BBEF4 /* FirebasePerformance */,
 				D36E33C32A681916006D4159 /* FirebaseAppCheck */,
 				D394440C2A75371A00EE2021 /* OrderedCollections */,
+				D3153BBF2A8DF850006A2DD8 /* OneSignalFramework */,
 			);
 			productName = OPass;
 			productReference = D3E4E6BB27CD158400FFACEB /* OPass.app */;
@@ -1197,7 +1197,7 @@
 			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
+				minimumVersion = 5.0.0;
 			};
 		};
 		D3C6F60B28634F3A0074B942 /* XCRemoteSwiftPackageReference "MarkdownKit" */ = {
@@ -1223,6 +1223,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4F5EB72F27D2311200235396 /* XCRemoteSwiftPackageReference "SwiftDate" */;
 			productName = SwiftDate;
+		};
+		D3153BBF2A8DF850006A2DD8 /* OneSignalFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalFramework;
 		};
 		D322F60E27EF4698007EED5D /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1268,11 +1273,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D394440B2A75371A00EE2021 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
-		};
-		D3A00F2927D838920097A6AB /* OneSignal */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
-			productName = OneSignal;
 		};
 		D3C6F60C28634F3B0074B942 /* MarkdownKit */ = {
 			isa = XCSwiftPackageProductDependency;

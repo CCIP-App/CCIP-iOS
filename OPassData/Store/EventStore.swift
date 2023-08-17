@@ -9,7 +9,7 @@
 import OSLog
 import SwiftUI
 import SwiftDate
-import OneSignal
+import OneSignalFramework
 import KeychainAccess
 import UserNotifications
 
@@ -154,7 +154,7 @@ extension EventStore {
         
         do {
             let attendee = try await APIManager.fetchAttendee(from: feature, token: token)
-            OneSignal.sendTag("\(attendee.eventId)\(attendee.role)", value: "\(attendee.token)")
+            OneSignal.User.addTag(key: "\(attendee.eventId)\(attendee.role)", value: "\(attendee.token)")
             DispatchQueue.main.async {
                 self.attendee = attendee
                 self.token = token
@@ -315,7 +315,7 @@ extension EventStore {
     @inline(__always)
     func signOut() {
         if let attendee = attendee {
-            OneSignal.sendTag("\(attendee.eventId)\(attendee.role)", value: "")
+            OneSignal.User.addTag(key: "\(attendee.eventId)\(attendee.role)", value: "")
             self.attendee = nil
             self.userId = "nil"
             self.userRole = "nil"
