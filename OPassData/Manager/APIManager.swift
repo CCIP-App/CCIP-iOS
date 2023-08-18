@@ -69,19 +69,20 @@ final class APIManager {
 
 extension APIManager {
     // MARK: - OPass
-    public static func fetchEvents() async throws -> [Event] {
-        return try await fetch(from: .events)
+    public static func fetchEvents(reload: Bool = false) async throws -> [Event] {
+        return try await fetch(from: .events, reload: reload)
     }
     
-    public static func fetchConfig(for event: String) async throws -> EventConfig {
-        return try await fetch(from: .config(event))
+    public static func fetchConfig(for event: String, reload: Bool = false) async throws -> EventConfig {
+        return try await fetch(from: .config(event), reload: reload)
     }
     
     // MARK: - Event
     public static func fetchAttendee(
         from feature: Feature,
         token: String,
-        scenario: String? = nil
+        scenario: String? = nil,
+        reload: Bool = false
     ) async throws -> Attendee {
         guard feature.feature == .fastpass else {
             logger.critical("Can't find correct fastpass feature")
@@ -91,10 +92,13 @@ extension APIManager {
             logger.error("Missing URL in feature: \(feature.feature.rawValue)")
             throw LoadError.missingURL(feature)
         }
-        return try await fetch(from: scenario == nil ? .status(url, token) : .use(url, scenario!, token))
+        return try await fetch(from: scenario == nil ? .status(url, token) : .use(url, scenario!, token), reload: reload)
     }
     
-    public static func fetchSchedule(from feature: Feature) async throws -> Schedule {
+    public static func fetchSchedule(
+        from feature: Feature,
+        reload: Bool = false
+    ) async throws -> Schedule {
         guard feature.feature == .schedule else {
             logger.critical("Can't find correct schedule feature")
             throw LoadError.incorrectFeature(.schedule)
@@ -103,10 +107,14 @@ extension APIManager {
             logger.error("Missing URL in feature: \(feature.feature.rawValue)")
             throw LoadError.missingURL(feature)
         }
-        return try await fetch(from: .any(url))
+        return try await fetch(from: .any(url), reload: reload)
     }
 
-    public static func fetchAnnouncements(from feature: Feature, token: String? = nil) async throws -> [Announcement] {
+    public static func fetchAnnouncements(
+        from feature: Feature,
+        token: String? = nil,
+        reload: Bool = false
+    ) async throws -> [Announcement] {
         guard feature.feature == .announcement else {
             logger.critical("Can't find correct announcement feature")
             throw LoadError.incorrectFeature(.announcement)
@@ -115,7 +123,7 @@ extension APIManager {
             logger.error("Missing URL in feature: \(feature.feature.rawValue)")
             throw LoadError.missingURL(feature)
         }
-        return try await fetch(from: .announcement(url, token))
+        return try await fetch(from: .announcement(url, token), reload: reload)
     }
     
     // MARK: - Data
@@ -132,13 +140,16 @@ extension APIManager {
     }
     
     // MARK: - Private
-    private static func fetch<T: Decodable>(from endpoint: CCIPEndpoint) async throws -> T {
+    private static func fetch<T: Decodable>(from endpoint: CCIPEndpoint, reload: Bool = false) async throws -> T {
         guard let url = endpoint.url else {
             logger.error("Invalid URL: \(endpoint.string)")
             throw LoadError.invalidURL(endpoint)
         }
         do {
-            let (data, response) = try await URLSession.shared.data(from: url)
+            let urlRequest = URLRequest(
+                url: url,
+                cachePolicy: reload ? .reloadIgnoringLocalCacheData : .useProtocolCachePolicy)
+            let (data, response) = try await URLSession.shared.data(for: urlRequest)
             if let response = response as? HTTPURLResponse {
                 switch response.statusCode {
                 case 403:

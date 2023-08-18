@@ -235,13 +235,15 @@ extension EventStore {
         }
     }
 
-    func loadSchedule() async throws {
+    func loadSchedule(reload: Bool = false) async throws {
         guard let feature = config.feature(.schedule) else {
             logger.critical("Can't find correct schedule feature")
             throw Error.incorrectFeature
         }
         do {
-            let schedule = try await APIManager.fetchSchedule(from: feature)
+            let schedule = try await APIManager.fetchSchedule(
+                from: feature,
+                reload: reload)
             DispatchQueue.main.async {
                 self.schedule = schedule
                 Task { await self.save() }
@@ -257,13 +259,16 @@ extension EventStore {
         }
     }
     
-    func loadAnnouncements() async throws {
+    func loadAnnouncements(reload: Bool = false) async throws {
         guard let feature = config.feature(.announcement) else {
             logger.critical("Can't find correct announcement feature")
             throw Error.incorrectFeature
         }
         do {
-            let announcements = try await APIManager.fetchAnnouncements(from: feature, token: token)
+            let announcements = try await APIManager.fetchAnnouncements(
+                from: feature,
+                token: token,
+                reload: reload)
             DispatchQueue.main.async {
                 self.announcements = announcements
                 Task{ await self.save() }

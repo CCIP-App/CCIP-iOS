@@ -32,10 +32,10 @@ class OPassStore: ObservableObject {
 }
 
 extension OPassStore {
-    func loadEvent() async throws {
+    func loadEvent(reload: Bool = false) async throws {
         if let eventId = eventId {
             do {
-                let config = try await APIManager.fetchConfig(for: eventId)
+                let config = try await APIManager.fetchConfig(for: eventId, reload: reload)
                 if let eventAPIData = eventTemporaryData, eventId == eventAPIData.id { // Reload
                     let event = EventStore(
                         config,

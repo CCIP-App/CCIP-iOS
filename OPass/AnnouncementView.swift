@@ -49,7 +49,7 @@ struct AnnouncementView: View {
                         }
                         .refreshable {
                             do {
-                                try await event.loadAnnouncements()
+                                try await event.loadAnnouncements(reload: true)
                             } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
@@ -73,14 +73,14 @@ struct AnnouncementView: View {
                         }
                         .refreshable {
                             do {
-                                try await event.loadAnnouncements()
+                                try await event.loadAnnouncements(reload: true)
                             } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}
                         }
                         .task {
                             do {
-                                try await event.loadAnnouncements()
+                                try await event.loadAnnouncements(reload: true)
                             } catch APIManager.LoadError.forbidden {
                                 self.isHttp403AlertPresented = true
                             } catch {}

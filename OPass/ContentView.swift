@@ -29,7 +29,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .task {
                         do {
-                            try await store.loadEvent()
+                            try await store.loadEvent(reload: true)
                         } catch { self.error = error }
                     }
             case .login(let url):

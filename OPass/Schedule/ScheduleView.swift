@@ -106,7 +106,7 @@ struct ScheduleView: View {
                                 .listRowInsets(.init(top: 10, leading: 15, bottom: 10, trailing: 15))
                             }
                         }
-                        .refreshable { try? await event.loadSchedule() }
+                        .refreshable { try? await event.loadSchedule(reload: true) }
                         .overlay {
                             if filteredSessions.isEmpty {
                                 VStack(alignment: .center) {
