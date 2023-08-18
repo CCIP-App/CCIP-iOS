@@ -27,6 +27,7 @@ struct OPassApp: App {
         FirebaseApp.configure()
         Analytics.setAnalyticsCollectionEnabled(true)
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).overrideUserInterfaceStyle = interfaceStyle
+        SoundManager.shared.initialize()
     }
     
     var body: some Scene {

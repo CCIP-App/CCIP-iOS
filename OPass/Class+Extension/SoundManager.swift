@@ -10,24 +10,50 @@ import Foundation
 import AVFAudio
 import OSLog
 
-class SoundManager {
-    private let logger = Logger(subsystem: "app.opass.ccip", category: "SoundManager")
+private let logger = Logger(subsystem: "app.opass.ccip", category: "SoundManager")
+
+class SoundManager: NSObject {
     static let shared = SoundManager()
-    var player: AVAudioPlayer?
+
+    private var audioSession = AVAudioSession.sharedInstance()
+    private var player: AVAudioPlayer?
     
     enum SoundOption: String {
         case din
         case don
     }
+
+    func initialize() {
+        do {
+            try audioSession.setCategory(.ambient, options: .duckOthers)
+            try audioSession.setActive(false)
+
+        } catch {
+            logger.error("Error when initializing SoundManager due to: \(error.localizedDescription)")
+        }
+    }
     
     func play(sound: SoundOption) {
         guard let url = Bundle.main.url(forResource: sound.rawValue, withExtension: ".mp3") else { return }
-        
         do {
-            player = try AVAudioPlayer(contentsOf: url)
+            player = try .init(contentsOf: url)
+            player?.delegate = self
+            try audioSession.setActive(true)
             player?.play()
         } catch {
-            logger.error("Error playing sound: \(error.localizedDescription)")
+            logger.error("Error when playing sound due to: \(error.localizedDescription)")
+        }
+    }
+}
+
+extension SoundManager: AVAudioPlayerDelegate {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        DispatchQueue.global().async {
+            do {
+                try self.audioSession.setActive(false, options: .notifyOthersOnDeactivation)
+            } catch {
+                logger.error("Error when deactivating AudioSession due to: \(error.localizedDescription)")
+            }
         }
     }
 }
