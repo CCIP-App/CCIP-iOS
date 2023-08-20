@@ -27,7 +27,6 @@ class SoundManager: NSObject {
         do {
             try audioSession.setCategory(.ambient, options: .duckOthers)
             try audioSession.setActive(false)
-
         } catch {
             logger.error("Error when initializing SoundManager due to: \(error.localizedDescription)")
         }
