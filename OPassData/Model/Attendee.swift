@@ -20,7 +20,7 @@ struct Attendee: Hashable, Codable, Identifiable {
     @Transform<Scenario> var scenarios: OrderedDictionary<String, [Scenario]>
 
     private enum CodingKeys: String, CodingKey {
-        case id
+        case id = "_id"
         case eventId = "event_id"
         case userId = "user_id"
         case token

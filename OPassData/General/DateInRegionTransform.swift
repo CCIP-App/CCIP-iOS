@@ -17,6 +17,6 @@ struct StringToDate: TransformFunction {
 
 struct IntToDate: TransformFunction {
     static func transform(_ time: Int) -> DateInRegion {
-        return DateInRegion(seconds: TimeInterval(time), region: Region.current)
+        return DateInRegion(seconds: .init(time), region: .current)
     }
 }
