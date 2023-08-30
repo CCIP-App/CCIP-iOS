@@ -11,7 +11,7 @@ import SwiftDate
 
 struct StringToDate: TransformFunction {
     static func transform(_ string: String) -> DateInRegion {
-        return string.toISODate()!
+        return string.toISODate(region: .current)!
     }
 }
 
