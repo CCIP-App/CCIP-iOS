@@ -29,12 +29,12 @@ struct ScheduleSearchView: View {
             for (key, value) in session.elements {
                 let value = value.filter { session in
                     for text in texts {
-                        if session.en.title.range(of: text, options: .caseInsensitive) != nil ||
-                            session.zh.title.range(of: text, options: .caseInsensitive) != nil {
-                            return true
+                        if session.en.title.range(of: text, options: .caseInsensitive) == nil &&
+                            session.zh.title.range(of: text, options: .caseInsensitive) == nil {
+                            return false
                         }
                     }
-                    return false
+                    return true
                 }
                 if value.isEmpty { session[key] = nil }
                 else { session[key] = value }
