@@ -14,7 +14,7 @@ struct ScheduleSearchView: View {
     @EnvironmentObject private var event: EventStore
     
     @State private var searchText = ""
-    //@State private var searchActive = true //TODO: Will be implement in iOS 17
+    @State private var searchActive = true
     
     private let weekDayName: [LocalizedStringKey] = ["SUN", "MON", "TUE", "WEN", "THR", "FRI", "SAT"]
     
@@ -67,7 +67,7 @@ struct ScheduleSearchView: View {
         }
         .searchable(
             text: $searchText,
-            //isPresented: $searchActive, //TODO: Will be avaiable in iOS 17
+            isPresented: $searchActive,
             placement: .navigationBarDrawer(displayMode: .always),
             prompt: "Title"
         )

@@ -128,8 +128,8 @@ struct SessionView: View {
                     } message: {
                         Text("NotifiedAlertMessage")
                     }
-                    .onChange(of: scenePhase) { phase in
-                        switch phase {
+                    .onChange(of: scenePhase) {
+                        switch scenePhase {
                         case .active:
                             if pendNotified { event.notify(session: session) }
                         default:
@@ -139,8 +139,8 @@ struct SessionView: View {
                     
                     Menu {
                         Button {
-                            Task {
-                                if (try? await eventStore.requestAccess(to: .event)) == true {
+                            eventStore.requestWriteOnlyAccessToEvents { result, error in
+                                if result && error == nil {
                                     isEventEditViewPresented.toggle()
                                 } else {
                                     isCalendarAlertPresented.toggle()

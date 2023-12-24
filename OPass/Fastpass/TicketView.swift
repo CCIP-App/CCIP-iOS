@@ -65,8 +65,8 @@ struct TicketView: View {
                     }
                     .onAppear { AutoAdjustBrightness() }
                     .onDisappear { ResetBrightness() }
-                    .onChange(of: scenePhase) { phase in
-                        if phase == .active {
+                    .onChange(of: scenePhase) {
+                        if scenePhase == .active {
                             AutoAdjustBrightness()
                         } else {
                             ResetBrightness()
@@ -74,8 +74,8 @@ struct TicketView: View {
                     }
                     
                     Toggle("AutoBrighten", isOn: $autoAdjustTicketBirghtness)
-                        .onChange(of: autoAdjustTicketBirghtness) { auto in
-                            if auto {
+                        .onChange(of: autoAdjustTicketBirghtness) {
+                            if autoAdjustTicketBirghtness {
                                 self.defaultBrightness = UIScreen.main.brightness
                                 UIScreen.main.brightness = 1
                             } else { UIScreen.main.brightness = defaultBrightness }
