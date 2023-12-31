@@ -53,7 +53,7 @@ struct DevelopersView: View {
                                             .foregroundColor(.gray)
                                     }
                                     Spacer()
-                                    Image("external-link")
+                                    Image(.externalLink)
                                         .renderingMode(.template)
                                         .resizable()
                                         .scaledToFit()

@@ -42,7 +42,9 @@ struct AnnouncementView: View {
                                     Spacer()
                                     if announcement.url != nil {
                                         Image(systemName: "chevron.right")
-                                            .foregroundColor(.gray)
+                                            .foregroundColor(.gray.opacity(0.56))
+                                            .fontWeight(.semibold)
+                                            .font(.callout)
                                     }
                                 }
                             }
@@ -67,7 +69,7 @@ struct AnnouncementView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: UIScreen.main.bounds.width * 0.25)
-                                .foregroundColor(Color("LogoColor"))
+                                .foregroundColor(.logo)
                             Text("EmptyAnnouncement")
                                 .font(.title2)
                         }

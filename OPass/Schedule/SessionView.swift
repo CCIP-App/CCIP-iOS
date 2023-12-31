@@ -57,23 +57,23 @@ struct SessionView: View {
                 
                 if let type = session.type {
                     TypeSection(name: event.schedule?.types[type]?.localized().name ?? type)
-                        .background(Color("SectionBackgroundColor"))
+                        .background(.sectionBackground)
                         .cornerRadius(8)
                         .padding(.bottom)
                 }
                 
                 PlaceSection(name: event.schedule?.rooms[session.room]?.localized().name ?? session.room)
-                    .background(Color("SectionBackgroundColor"))
+                    .background(.sectionBackground)
                     .cornerRadius(8)
                     .padding(.bottom)
                 
                 TimeSection(session: session)
-                    .background(Color("SectionBackgroundColor"))
+                    .background(.sectionBackground)
                     .cornerRadius(8)
                 
                 if let broadcast = session.broadcast, broadcast.isNotEmpty {
                     BroadcastSection(event.schedule, broadcast: broadcast)
-                        .background(Color("SectionBackgroundColor"))
+                        .background(.sectionBackground)
                         .cornerRadius(8)
                         .padding(.top)
                 }
@@ -270,7 +270,7 @@ private struct FeatureButtons: View {
                                     .font(.system(size: 23, weight: .semibold, design: .rounded))
                                     .foregroundColor(colorScheme == .dark ? .gray : Color(red: 72/255, green: 72/255, blue: 74/255))
                                     .frame(width: buttonSize, height: buttonSize)
-                                    .background(Color("SectionBackgroundColor"))
+                                    .background(.sectionBackground)
                                     .cornerRadius(10)
                             }
                             Text(LocalizedStringKey(text))
@@ -467,7 +467,7 @@ private struct SpeakerBlock: View {
             }
         }
         .padding(.horizontal, 10)
-        .background(Color("SectionBackgroundColor"))
+        .background(.sectionBackground)
         .cornerRadius(8)
         .padding(.bottom, 8)
     }

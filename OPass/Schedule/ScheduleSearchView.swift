@@ -12,7 +12,8 @@ import OrderedCollections
 struct ScheduleSearchView: View {
     let schedule: Schedule
     @EnvironmentObject private var event: EventStore
-    
+    @EnvironmentObject private var router: Router
+
     @State private var searchText = ""
     @State private var searchActive = true
     
@@ -51,7 +52,9 @@ struct ScheduleSearchView: View {
                     ForEach(result.elements.indices, id: \.self) { index in
                         Section {
                              ForEach(result.values[index]) { session in
-                                 NavigationLink(value: ScheduleDestinations.session(session)) {
+                                 Button {
+                                     self.router.forward(ScheduleDestinations.session(session))
+                                 } label: {
                                      SessionOverView(session: session)
                                  }
                              }

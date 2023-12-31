@@ -50,7 +50,7 @@ struct ContentView: View {
             }
         }
         .sheet(isPresented: $presentEventList) { EventListView() }
-        .background(Color("SectionBackgroundColor"))
+        .background(.sectionBackground)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar { toolbar }
     }
@@ -93,7 +93,7 @@ struct ContentView: View {
                 Image(systemName: "exclamationmark.triangle.fill")
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(Color("LogoColor"))
+                    .foregroundColor(.logo)
                     .frame(width: UIScreen.main.bounds.width * 0.25)
                     .padding(.bottom, 5)
 

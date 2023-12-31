@@ -163,7 +163,7 @@ struct RedeemTokenView: View {
                             .padding(.vertical, 20)
                             .foregroundColor(Color.white)
                         Spacer()
-                    }.background(Color("LogoColor")).cornerRadius(12)
+                    }.background(.logo).cornerRadius(12)
                 }
             }
         }

@@ -82,7 +82,7 @@ struct TicketView: View {
                         }
                         .padding([.leading, .trailing])
                         .padding([.bottom, .top], 10)
-                        .background(Color("SectionBackgroundColor"))
+                        .background(.sectionBackground)
                 }
                 .task { try? await EventStore.loadAttendee() }
             } else {

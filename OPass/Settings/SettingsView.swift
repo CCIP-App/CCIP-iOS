@@ -36,7 +36,7 @@ private struct AppIconSection: View {
             HStack {
                 Spacer()
                 VStack {
-                    Image("InAppIcon")
+                    Image(.inAppIcon)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: UIScreen.main.bounds.width * 0.28)
@@ -100,7 +100,7 @@ private struct AboutSection: View {
                     
                     Spacer()
                     
-                    Image("external-link")
+                    Image(.externalLink)
                         .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
@@ -123,7 +123,7 @@ private struct AboutSection: View {
                     
                     Spacer()
                     
-                    Image("external-link")
+                    Image(.externalLink)
                         .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
@@ -146,7 +146,7 @@ private struct AboutSection: View {
                     
                     Spacer()
                     
-                    Image("external-link")
+                    Image(.externalLink)
                         .renderingMode(.template)
                         .resizable()
                         .scaledToFit()

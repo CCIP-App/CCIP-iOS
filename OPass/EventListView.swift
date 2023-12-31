@@ -93,14 +93,14 @@ private struct EventRow: View {
                         image
                             .renderingMode(.template)
                             .resizable().scaledToFit()
-                            .foregroundColor(Color("LogoColor"))
+                            .foregroundColor(.logo)
                             .onAppear { self.preloadLogoImage = image }
                     case .failure(_):
                         Image(systemName: "xmark.circle")
-                            .foregroundColor(Color("LogoColor").opacity(0.5))
+                            .foregroundColor(.logo.opacity(0.5))
                     @unknown default:
                         Image(systemName: "xmark.circle")
-                            .foregroundColor(Color("LogoColor").opacity(0.5))
+                            .foregroundColor(.logo.opacity(0.5))
                             .onAppear {
                                 logger.error("Unknow AsyncImage status")
                             }
