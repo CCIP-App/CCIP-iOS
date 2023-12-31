@@ -6,5 +6,5 @@ A Community Checkin with Interactivity Project for iOS app (CCIP-iOS)
 
 ## Pre-Requirements
 
-* Xcode 14.1 or later to support iOS 16
-* iOS 16 and above
+* Xcode 15 or later
+* iOS 17 and above
