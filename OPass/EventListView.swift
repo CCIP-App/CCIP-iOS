@@ -34,8 +34,14 @@ struct EventListView: View {
     }
     
     var list: some View {
-        List(viewModel.listedEvents) { event in
-            EventRow(event: event, dismiss: _dismiss)
+        Group {
+            if (!viewModel.listedEvents.isEmpty) {
+                List(viewModel.listedEvents) { event in
+                    EventRow(event: event, dismiss: _dismiss)
+                }
+            } else {
+                ContentUnavailableView.search(text: viewModel.searchQuery)
+            }
         }
         .searchable(text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .automatic))
     }
@@ -46,8 +52,15 @@ struct EventListView: View {
     }
     
     var error: some View {
-        ErrorWithRetryView {
-            Task { await viewModel.reset() }
+        ContentUnavailableView {
+            Label("Faild to load event list", systemImage: "exclamationmark.triangle.fill")
+        } description: {
+            Text("Check your network status or try again.")
+        } actions: {
+            Button("Try Again") {
+                self.viewModel.error = nil
+            }
+            .buttonStyle(.borderedProminent)
         }
     }
 

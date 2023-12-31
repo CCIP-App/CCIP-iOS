@@ -43,36 +43,48 @@ struct ScheduleSearchView: View {
             return session.isEmpty ? nil : session
         }
     }
-    
+
+    private var searchIsEmpty: Bool {
+        guard !searchResult.isEmpty else { return true }
+        for daySessions in searchResult {
+            if (daySessions.isEmpty) { return true }
+        }
+        return false
+    }
+
     var body: some View {
         Group {
             //TODO: Tokens
-            Form {
-                ForEach(searchResult, id: \.self) { result in
-                    ForEach(result.elements.indices, id: \.self) { index in
-                        Section {
-                             ForEach(result.values[index]) { session in
-                                 Button {
-                                     self.router.forward(ScheduleDestinations.session(session))
-                                 } label: {
-                                     SessionOverView(session: session)
+            if (!searchIsEmpty) {
+                Form {
+                    ForEach(searchResult, id: \.self) { result in
+                        ForEach(result.elements.indices, id: \.self) { index in
+                            Section {
+                                 ForEach(result.values[index]) { session in
+                                     Button {
+                                         self.router.forward(ScheduleDestinations.session(session))
+                                     } label: {
+                                         SessionOverView(session: session)
+                                     }
                                  }
-                             }
-                        } header: {
-                            if index == 0 {
-                                Text("\(result.keys[index].month)/\(result.keys[index].day) ") +
-                                Text(weekDayName[result.keys[index].weekday - 1])
+                            } header: {
+                                if index == 0 {
+                                    Text("\(result.keys[index].month)/\(result.keys[index].day) ") +
+                                    Text(weekDayName[result.keys[index].weekday - 1])
+                                }
                             }
                         }
                     }
                 }
+            } else {
+                ContentUnavailableView.search(text: searchText)
             }
         }
         .searchable(
             text: $searchText,
             isPresented: $searchActive,
             placement: .navigationBarDrawer(displayMode: .always),
-            prompt: "Title"
+            prompt: "Search Title"
         )
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Search")

@@ -90,7 +90,7 @@ struct ScheduleView: View {
     let initialize: () async -> Void
     
     var body: some View {
-        VStack {
+        Group {
             if !isError {
                 if let schedule = event.schedule, let filteredSessions = filteredSessions {
                     VStack(spacing: 0) {
@@ -170,15 +170,23 @@ struct ScheduleView: View {
                             .background(.listBackground)
                         }
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
-                    ProgressView(LocalizedStringKey("Loading"))
-                        .task { await initialize() }
+                    ProgressView("Loading")
+                        .task {
+                            await initialize()
+                        }
                 }
             } else {
-                ErrorWithRetryView {
-                    self.isError = false
-                    Task { await initialize() }
+                ContentUnavailableView {
+                    Label("Something went wrong", systemImage: "exclamationmark.triangle.fill")
+                } description: {
+                    Text("Check your network status or try again later.")
+                } actions: {
+                    Button("Try Again") {
+                        self.isError = false
+                        Task { await initialize() }
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
             }
         }
@@ -297,7 +305,7 @@ private struct SelectDayView: View {
     @Binding var selectedDay: Int?
     let sessions: [OrderedDictionary<DateInRegion, [Session]>]
     private let weekDayName: [LocalizedStringKey] = ["SUN", "MON", "TUE", "WEN", "THR", "FRI", "SAT"]
-    private let colorGray = simd_double3(0.55686, 0.55686, 0.57647), colorWhite = simd_double3(1.0, 1.0, 1.0), colorBlack = simd_double3(0.0, 0.0, 0.0)
+    private let colorGray = simd_double2(0.55686, 0.57647), colorWhite = simd_double2(1.0, 1.0), colorBlack = simd_double2(0.0, 0.0)
 
     var body: some View {
         VStack(spacing: 0) {
@@ -341,7 +349,7 @@ private struct SelectDayView: View {
     private func caculateColor(_ index: Int) -> Color {
         let factor = min(abs(Float(tabProgress) - (Float(index) / Float(sessions.count - 1))) * 2.0 * Float(sessions.count - 1), 1.0)
         let color = (colorScheme == .dark ? colorWhite : colorBlack) * Double(1.0 - factor) + colorGray * Double(factor)
-        return .init(red: color.x, green: color.y, blue: color.z)
+        return .init(red: color.x, green: color.x, blue: color.y)
     }
 }
 

@@ -72,8 +72,15 @@ struct DevelopersView: View {
                         }
                 }
             } else {
-                ErrorWithRetryView {
-                    self.error = false
+                ContentUnavailableView {
+                    Label("Something went wrong", systemImage: "exclamationmark.triangle.fill")
+                } description: {
+                    Text("Check your network status or try again later.")
+                } actions: {
+                    Button("Try Again") {
+                        self.error = false
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
             }
         }

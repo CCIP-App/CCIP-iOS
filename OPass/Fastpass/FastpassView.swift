@@ -41,13 +41,25 @@ struct FastpassView: View {
                             }
                     }
                 } else {
-                    ErrorWithRetryView(message: {
+                    ContentUnavailableView {
                         switch errorType! {
-                        case "http403": return "ConnectToConferenceWiFi"
-                        default: return nil
+                        case "http403":
+                            Label("Network Error", systemImage: "wifi.exclamationmark")
+                        default:
+                            Label("Something went wrong", systemImage: "exclamationmark.triangle.fill")
                         }
-                    }()) {
-                        self.errorType = nil
+                    } description: {
+                        switch errorType! {
+                        case "http403":
+                            Text("ConnectToConferenceWiFi")
+                        default:
+                            Text("Check your network status or select a new event.")
+                        }
+                    } actions: {
+                        Button("Try Again") {
+                            self.errorType = nil
+                        }
+                        .buttonStyle(.borderedProminent)
                     }
                 }
             }
