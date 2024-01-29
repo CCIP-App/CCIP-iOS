@@ -25,4 +25,3 @@ struct FeatureGrid: View {
         .padding(.horizontal)
     }
 }
-//.init(spacing: UIScreen.main.bounds.width / 16.56, alignment: .top)
