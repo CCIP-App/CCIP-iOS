@@ -11,13 +11,13 @@ import SwiftDate
 import OrderedCollections
 import simd
 
-enum ScheduleFilter: Hashable {
-    case all
-    case liked
-    case tag(String)
-    case type(String)
-    case room(String)
-    case speaker(String)
+struct ScheduleFilter: Hashable {
+    var speaker: Set<String> = []
+    var type: Set<String> = []
+    var room: Set<String> = []
+    var tag: Set<String> = []
+    var liked = false
+    var count = 0
 }
 
 struct ScheduleContainerView: View {
@@ -25,7 +25,7 @@ struct ScheduleContainerView: View {
 
     @State private var selectedDay: Int? = 0
     @State private var didAppear = false
-    @State private var filter = ScheduleFilter.all
+    @State private var filters = ScheduleFilter()
     @State private var isError = false
 
     @AppStorage("AutoSelectScheduleDay") private var autoSelectScheduleDay = true
@@ -33,7 +33,7 @@ struct ScheduleContainerView: View {
     var body: some View {
         ScheduleView(
             selectedDay: $selectedDay,
-            filter: $filter,
+            filters: $filters,
             isError: $isError,
             filteredSessions: filteredSessions,
             initialize: initialize)
@@ -48,18 +48,16 @@ struct ScheduleContainerView: View {
 
     private var filteredSessions: [OrderedDictionary<DateInRegion, [Session]>]? {
         guard let allSessions = event.schedule?.sessions else { return nil }
-        guard filter != .all else { return allSessions }
+        guard filters.count != 0 else { return allSessions }
         return allSessions.map { daySessions in
             daySessions.compactMapValues { sessions in
                 let sessions = sessions.filter { session in
-                    switch filter {
-                    case .liked: return event.likedSessions.contains(session.id)
-                    case .tag(let tag): return session.tags.contains(tag)
-                    case .type(let type): return session.type == type
-                    case .room(let room): return session.room == room
-                    case .speaker(let speaker): return session.speakers.contains(speaker)
-                    default: return false
-                    }
+                    if !filters.speaker.isEmpty, filters.speaker.isDisjoint(with: session.speakers) { return false }
+                    if !filters.type.isEmpty, let type = session.type, !filters.type.contains(type) { return false }
+                    if !filters.room.isEmpty, !filters.room.contains(session.room) { return false }
+                    if !filters.tag.isEmpty, filters.tag.isDisjoint(with: session.tags) { return false }
+                    if filters.liked, !event.likedSessions.contains(session.id) { return false }
+                    return true
                 }
                 return sessions.isEmpty ? nil : sessions
             }
@@ -83,7 +81,7 @@ struct ScheduleView: View {
 
     @State var tabProgress: CGFloat = 0
     @Binding var selectedDay: Int?
-    @Binding var filter: ScheduleFilter
+    @Binding var filters: ScheduleFilter
     @Binding var isError: Bool
 
     var filteredSessions: [OrderedDictionary<DateInRegion, [Session]>]?
@@ -135,17 +133,15 @@ struct ScheduleView: View {
                                         .scrollIndicators(.automatic)
                                         .overlay {
                                             if filteredSessions[day].isEmpty {
-                                                VStack(alignment: .center) {
-                                                    Image(systemName: "text.badge.xmark")
-                                                        .resizable()
-                                                        .scaledToFit()
-                                                        .foregroundColor(.logo)
-                                                        .frame(width: UIScreen.main.bounds.width * 0.15)
-                                                        .padding(.bottom)
-
-                                                    Text(LocalizedStringKey("NoFilteredEvent"))
-                                                        .multilineTextAlignment(.center)
-                                                        .foregroundColor(.gray)
+                                                ContentUnavailableView {
+                                                    Label("No sessions found", systemImage: "text.badge.xmark")
+                                                } description: {
+                                                    Text("Use fewer filters or reset all filters.")
+                                                } actions: {
+                                                    Button("Reset filters") {
+                                                        self.filters = .init()
+                                                    }
+                                                    .bold()
                                                 }
                                             }
                                         }
@@ -207,7 +203,7 @@ struct ScheduleView: View {
                         Image(systemName: "magnifyingglass")
                     }
 
-                    FilterMenuView(schedule: schedule, filter: $filter)
+                    FilterMenuView(schedule: schedule, filters: $filters)
                 }
             }
         }
@@ -278,36 +274,27 @@ private struct OffsetKey: PreferenceKey {
 
 private struct FilterMenuView: View {
     @State var schedule: Schedule
-    @Binding var filter: ScheduleFilter
+    @Binding var filters: ScheduleFilter
 
     @State private var filterOption: Int?
-    @State private var searchText = ""
-    @Environment(\.colorScheme) var colorScheme
-
-    let optionTitle = ["Speakers", "Types", "Rooms", "Tags"]
 
     var body: some View {
         Menu {
             VStack {
-                Picker(selection: $filter, label: EmptyView()) {
-                    Label("AllSessions", systemImage: "list.bullet")
-                        .tag(ScheduleFilter.all)
-
+                Button {
+                    filters.count += filters.liked ? -1 : 1
+                    filters.liked.toggle()
+                } label: {
                     Label("Favorite", systemImage: "heart")
-                        .symbolVariant(filter == .liked ? .fill : .none)
-                        .tag(ScheduleFilter.liked)
+                        .symbolVariant(filters.liked ? .fill : .none)
                 }
 
                 if !schedule.speakers.isEmpty {
                     Button {
                         filterOption = 0
                     } label: {
-                        Label("Speakers", systemImage: {
-                            switch filter {
-                            case .speaker(_): return "person.fill"
-                            default: return "person"
-                            }
-                        }())
+                        Label("Speakers", systemImage: "person")
+                            .symbolVariant(filters.speaker.isEmpty ? .none : .fill)
                     }
                 }
 
@@ -315,12 +302,8 @@ private struct FilterMenuView: View {
                     Button {
                         filterOption = 1
                     } label: {
-                        Label("Types", systemImage: {
-                            switch filter {
-                            case .type(_): return "signpost.right.fill"
-                            default: return "signpost.right"
-                            }
-                        }())
+                        Label("Types", systemImage: "signpost.right")
+                            .symbolVariant(filters.type.isEmpty ? .none : .fill)
                     }
                 }
 
@@ -328,12 +311,8 @@ private struct FilterMenuView: View {
                     Button {
                         filterOption = 2
                     } label: {
-                        Label("Places", systemImage: {
-                            switch filter {
-                            case .room(_): return "map.fill"
-                            default: return "map"
-                            }
-                        }())
+                        Label("Places", systemImage: "map")
+                            .symbolVariant(filters.room.isEmpty ? .none : .fill)
                     }
                 }
 
@@ -341,108 +320,168 @@ private struct FilterMenuView: View {
                     Button {
                         filterOption = 3
                     } label: {
-                        Label("Tags", systemImage: {
-                            switch filter {
-                            case .tag(_): return "tag.fill"
-                            default: return "tag"
-                            }
-                        }())
+                        Label("Tags", systemImage: "tag")
+                            .symbolVariant(filters.tag.isEmpty ? .none : .fill)
+                    }
+                }
+
+                Section {
+                    if filters.count != 0 {
+                        Button(role: .destructive) {
+                            filters = .init()
+                        } label: {
+                            Label("Erase All Filters", systemImage: "eraser.fill")
+                        }
                     }
                 }
             }
         } label: {
             Image(systemName: "line.3.horizontal.decrease.circle")
-                .symbolVariant(filter == .all ? .none : .fill)
+                .symbolVariant(filters.count == 0 ? .none : .fill)
         }
-        .sheet(item: $filterOption) { option in
-            NavigationStack {
-                List {
-                    Group {
-                        switch option {
-                        case 0:
-                            ForEach(schedule.speakers.elements.filter {
-                                if searchQuery.isEmpty { return true }
-                                for text in searchQuery {
-                                    if $0.value.localized().name.range(of: text, options: .caseInsensitive) != nil {
-                                        return true
-                                    }
-                                }
-                                return false
-                            }, id: \.key) { element in
-                                Button {
-                                    filter = .speaker(element.key)
-                                    filterOption = nil
-                                } label: {
-                                    Label(element.value.localized().name, systemImage: filter == .speaker(element.key) ? "checkmark.circle.fill" : "circle")
-                                }
-                            }
-                        case 1:
-                            ForEach(schedule.types.elements.filter {
-                                if searchQuery.isEmpty { return true }
-                                for text in searchQuery {
-                                    if $0.value.localized().name.range(of: text, options: .caseInsensitive) != nil {
-                                        return true
-                                    }
-                                }
-                                return false
-                            }, id: \.key) { element in
-                                Button {
-                                    filter = .type(element.key)
-                                    filterOption = nil
-                                } label: {
-                                    Label(element.value.localized().name, systemImage: filter == .type(element.key) ? "checkmark.circle.fill" : "circle")
+        .sheet(item: $filterOption) { FilterSheetView(of: $0, with: schedule, filters: $filters) }
+    }
+}
+
+struct FilterSheetView: View {
+    let option: Int
+    let schedule: Schedule
+    @Binding var filters: ScheduleFilter
+
+    @State private var searchText = ""
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var colorScheme
+
+    private let optionTitle = ["Speakers", "Types", "Rooms", "Tags"]
+
+    init(of option: Int, with schedule: Schedule, filters: Binding<ScheduleFilter>) {
+        self.option = option
+        self.schedule = schedule
+        self._filters = filters
+    }
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Group {
+                    switch option {
+                    case 0:
+                        ForEach(schedule.speakers.elements.filter {
+                            if searchQuery.isEmpty { return true }
+                            for text in searchQuery {
+                                if $0.value.localized().name.range(of: text, options: .caseInsensitive) != nil {
+                                    return true
                                 }
                             }
-                        case 2:
-                            ForEach(schedule.rooms.elements.filter {
-                                if searchQuery.isEmpty { return true }
-                                for text in searchQuery {
-                                    if $0.value.localized().name.range(of: text, options: .caseInsensitive) != nil {
-                                        return true
-                                    }
+                            return false
+                        }, id: \.key) { element in
+                            Button {
+                                if filters.speaker.contains(element.key) {
+                                    filters.count -= 1
+                                    filters.speaker.remove(element.key)
+                                } else {
+                                    filters.count += 1
+                                    filters.speaker.insert(element.key)
                                 }
-                                return false
-                            }, id: \.key) { element in
-                                Button {
-                                    filter = .room(element.key)
-                                    filterOption = nil
-                                } label: {
-                                    Label(element.value.localized().name, systemImage: filter == .room(element.key) ? "checkmark.circle.fill" : "circle")
+                            } label: {
+                                Label(
+                                    element.value.localized().name,
+                                    systemImage: filters.speaker.contains(element.key) ? "checkmark.circle.fill" : "circle"
+                                )
+                            }
+                        }
+                    case 1:
+                        ForEach(schedule.types.elements.filter {
+                            if searchQuery.isEmpty { return true }
+                            for text in searchQuery {
+                                if $0.value.localized().name.range(of: text, options: .caseInsensitive) != nil {
+                                    return true
                                 }
                             }
-                        default:
-                            ForEach(schedule.tags.elements.filter {
-                                if searchQuery.isEmpty { return true }
-                                for text in searchQuery {
-                                    if $0.value.localized().name.range(of: text, options: .caseInsensitive) != nil {
-                                        return true
-                                    }
+                            return false
+                        }, id: \.key) { element in
+                            Button {
+                                if filters.type.contains(element.key) {
+                                    filters.count -= 1
+                                    filters.type.remove(element.key)
+                                } else {
+                                    filters.count += 1
+                                    filters.type.insert(element.key)
                                 }
-                                return false
-                            }, id: \.key) { element in
-                                Button {
-                                    filter = .tag(element.key)
-                                    filterOption = nil
-                                } label: {
-                                    Label(element.value.localized().name, systemImage: filter == .tag(element.key) ? "checkmark.circle.fill" : "circle")
+                            } label: {
+                                Label(
+                                    element.value.localized().name,
+                                    systemImage: filters.type.contains(element.key) ? "checkmark.circle.fill" : "circle"
+                                )
+                            }
+                        }
+                    case 2:
+                        ForEach(schedule.rooms.elements.filter {
+                            if searchQuery.isEmpty { return true }
+                            for text in searchQuery {
+                                if $0.value.localized().name.range(of: text, options: .caseInsensitive) != nil {
+                                    return true
                                 }
+                            }
+                            return false
+                        }, id: \.key) { element in
+                            Button {
+                                if filters.room.contains(element.key) {
+                                    filters.count -= 1
+                                    filters.room.remove(element.key)
+                                } else {
+                                    filters.count += 1
+                                    filters.room.insert(element.key)
+                                }
+                            } label: {
+                                Label(
+                                    element.value.localized().name,
+                                    systemImage: filters.room.contains(element.key) ? "checkmark.circle.fill" : "circle"
+                                )
+                            }
+                        }
+                    default:
+                        ForEach(schedule.tags.elements.filter {
+                            if searchQuery.isEmpty { return true }
+                            for text in searchQuery {
+                                if $0.value.localized().name.range(of: text, options: .caseInsensitive) != nil {
+                                    return true
+                                }
+                            }
+                            return false
+                        }, id: \.key) { element in
+                            Button {
+                                if filters.tag.contains(element.key) {
+                                    filters.count -= 1
+                                    filters.tag.remove(element.key)
+                                } else {
+                                    filters.count += 1
+                                    filters.tag.insert(element.key)
+                                }
+                            } label: {
+                                Label(
+                                    element.value.localized().name,
+                                    systemImage: filters.tag.contains(element.key) ? "checkmark.circle.fill" : "circle"
+                                )
                             }
                         }
                     }
-                    .foregroundStyle(colorScheme == .dark ? .white : .black)
                 }
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationTitle("Filter by \(optionTitle[option])")
-                .searchable(
-                    text: $searchText,
-                    placement: .navigationBarDrawer(displayMode: .always),
-                    prompt: "Filter \(optionTitle[option])")
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button("Cancel", role: .cancel) {
-                            filterOption = nil
-                        }
+                .foregroundStyle(colorScheme == .dark ? .white : .black)
+            }
+            .navigationTitle("Filter by \(optionTitle[option])")
+            .navigationBarTitleDisplayMode(.inline)
+            .searchable(
+                text: $searchText,
+                placement: .navigationBarDrawer(displayMode: .always),
+                prompt: "Filter \(optionTitle[option])"
+            )
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done") {
+                        dismiss()
                     }
+                    .bold()
                 }
             }
         }
