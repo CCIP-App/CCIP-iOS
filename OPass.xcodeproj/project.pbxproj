@@ -1040,7 +1040,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Supporting Files/OPass.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_ASSET_PATHS = "\"OPass/Preview Content\"";
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				ENABLE_PREVIEWS = YES;
@@ -1063,7 +1063,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.2.5;
+				MARKETING_VERSION = 4.2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1084,7 +1084,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Supporting Files/OPass.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_ASSET_PATHS = "\"OPass/Preview Content\"";
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				ENABLE_PREVIEWS = YES;
@@ -1107,7 +1107,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.2.5;
+				MARKETING_VERSION = 4.2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
