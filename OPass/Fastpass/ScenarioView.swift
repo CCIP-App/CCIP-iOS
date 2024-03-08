@@ -54,9 +54,6 @@ struct ScenarioView: View {
                         }
                     }
                 }
-                .alert("NotAvailable", isPresented: $isDisableAlertPresented, actions: {
-                    Button(String(localized: "Cancel"), role: .cancel) { }
-                }, message: { Text(disableAlertString) })
             }
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -67,6 +64,9 @@ struct ScenarioView: View {
                 }
             }
         }
+        .alert("NotAvailable", isPresented: $isDisableAlertPresented, actions: {
+            Button(String(localized: "Cancel"), role: .cancel) { }
+        }, message: { Text(disableAlertString) })
         .alert("ConfirmSignOut", isPresented: $isLogOutAlertPresented) {
             Button(String(localized: "SignOut"), role: .destructive) {
                 EventStore.signOut()
