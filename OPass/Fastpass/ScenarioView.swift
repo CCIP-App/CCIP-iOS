@@ -31,7 +31,8 @@ struct ScenarioView: View {
                     Section(header: Text(sectionID)) {
                         ForEach(EventStore.attendee?.scenarios[sectionID] ?? []) { scenario in
                             Button {
-                                if scenario.used == nil {
+                                // Only if the scenario not been used or there still countdown time left.
+                                if Date().timeIntervalSince1970 - (scenario.used?.timeIntervalSince1970 ?? 0) - Double(scenario.countdown) > 0 {
                                     if let errorText = scenario.disabled {
                                         disableAlertString = String(localized: String.LocalizationValue(errorText))
                                         isDisableAlertPresented.toggle()
@@ -73,7 +74,9 @@ struct ScenarioView: View {
             Button(String(localized: "Cancel"), role: .cancel) { }
         }
         .sheet(item: $sheetScenarioDataItem) { scenario in
-            UseScenarioView(scenario: scenario)
+            UseScenarioView(
+                scenario: scenario,
+                used: (Date().timeIntervalSince1970 - (scenario.used?.timeIntervalSince1970 ?? 0.0) - Double(scenario.countdown) > 0.0) && scenario.used != nil)
         }
     }
     
