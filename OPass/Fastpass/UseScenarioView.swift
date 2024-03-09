@@ -167,7 +167,7 @@ private struct TimerView: View {
         VStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(String(format: "%d:%02d", Int(time)/60, Int(time)%100))
+                    Text(String(format: "%d:%02d", Int(time)/60, Int(time)%60))
                         .font(.system(size: 70, weight: .light)) //TODO: Dynamic size
                 }
                 Spacer()
