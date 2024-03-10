@@ -9,7 +9,7 @@
 import OrderedCollections
 
 struct Speaker: Hashable, Codable, Identifiable, Localizable {
-    var id: String
+    internal var id: String?
     var avatar: String
     var zh: SpeakerDetail
     var en: SpeakerDetail
@@ -22,6 +22,8 @@ struct SpeakerDetail: Hashable, Codable {
 
 extension Speaker: TransformFunction {
     static func transform(_ speakers: [Speaker]) -> OrderedDictionary<String, Speaker> {
-        return OrderedDictionary(uniqueKeysWithValues: speakers.map { ($0.id, $0) })
+        return OrderedDictionary(uniqueKeysWithValues: speakers.compactMap {
+            return $0.id == nil ? nil : ($0.id!, $0)
+        })
     }
 }
