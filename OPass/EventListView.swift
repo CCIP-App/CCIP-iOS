@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/1.
-//  2023 OPass.
+//  2024 OPass.
 //
 
 import SwiftUI
@@ -34,8 +34,14 @@ struct EventListView: View {
     }
     
     var list: some View {
-        List(viewModel.listedEvents) { event in
-            EventRow(event: event, dismiss: _dismiss)
+        Group {
+            if (!viewModel.listedEvents.isEmpty) {
+                List(viewModel.listedEvents) { event in
+                    EventRow(event: event, dismiss: _dismiss)
+                }
+            } else {
+                ContentUnavailableView.search(text: viewModel.searchQuery)
+            }
         }
         .searchable(text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .automatic))
     }
@@ -46,8 +52,15 @@ struct EventListView: View {
     }
     
     var error: some View {
-        ErrorWithRetryView {
-            Task { await viewModel.reset() }
+        ContentUnavailableView {
+            Label("Faild to load event list", systemImage: "exclamationmark.triangle.fill")
+        } description: {
+            Text("Check your network status or try again.")
+        } actions: {
+            Button("Try Again") {
+                self.viewModel.error = nil
+            }
+            .buttonStyle(.borderedProminent)
         }
     }
 
@@ -93,14 +106,14 @@ private struct EventRow: View {
                         image
                             .renderingMode(.template)
                             .resizable().scaledToFit()
-                            .foregroundColor(Color("LogoColor"))
+                            .foregroundColor(.logo)
                             .onAppear { self.preloadLogoImage = image }
                     case .failure(_):
                         Image(systemName: "xmark.circle")
-                            .foregroundColor(Color("LogoColor").opacity(0.5))
+                            .foregroundColor(.logo.opacity(0.5))
                     @unknown default:
                         Image(systemName: "xmark.circle")
-                            .foregroundColor(Color("LogoColor").opacity(0.5))
+                            .foregroundColor(.logo.opacity(0.5))
                             .onAppear {
                                 logger.error("Unknow AsyncImage status")
                             }

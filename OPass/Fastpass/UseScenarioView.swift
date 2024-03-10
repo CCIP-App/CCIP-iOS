@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/4/11.
-//  2023 OPass.
+//  2024 OPass.
 //
 
 import SwiftUI
@@ -24,21 +24,28 @@ struct UseScenarioView: View {
     }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 switch viewState {
-                case 0: ConfirmUseScenarioView()
-                case 1: ActivityIndicator()
+                case 0: 
+                    ConfirmUseScenarioView()
+                case 1:
+                    ActivityIndicator()
                         .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.25)
-                case 2: ScuessScenarioView(dismiss: _dismiss, scenario: scenario, usedTime: $usedTime)
-                default: ErrorView()
+                case 2: 
+                    ScuessScenarioView(scenario: scenario, usedTime: $usedTime)
+                default:
+                    ContentUnavailableView(
+                        "Faild to confirm \(scenario.title.localized())",
+                        systemImage: "exclamationmark.triangle.fill",
+                        description: Text("Check your network status or try again"))
                 }
             }
             .navigationTitle(scenario.title.localized())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(LocalizedStringKey("Close")) {
+                    Button("Close") {
                         dismiss()
                     }
                 }
@@ -140,7 +147,7 @@ private struct ScuessScenarioView: View {
             Spacer()
             
             Button(action: { dismiss() }) {
-                Text(LocalizedStringKey("Complete"))
+                Text("Complete")
                     .foregroundColor(.white)
                     .padding(.vertical, 11)
                     .frame(width: UIScreen.main.bounds.width * 0.85)

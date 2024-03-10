@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/8/28.
-//  2023 OPass.
+//  2024 OPass.
 //
 
 import SwiftUI
@@ -53,7 +53,7 @@ struct DevelopersView: View {
                                             .foregroundColor(.gray)
                                     }
                                     Spacer()
-                                    Image("external-link")
+                                    Image(.externalLink)
                                         .renderingMode(.template)
                                         .resizable()
                                         .scaledToFit()
@@ -72,8 +72,15 @@ struct DevelopersView: View {
                         }
                 }
             } else {
-                ErrorWithRetryView {
-                    self.error = false
+                ContentUnavailableView {
+                    Label("Something went wrong", systemImage: "exclamationmark.triangle.fill")
+                } description: {
+                    Text("Check your network status or try again later.")
+                } actions: {
+                    Button("Try Again") {
+                        self.error = false
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
             }
         }

@@ -12,9 +12,10 @@ import OrderedCollections
 struct ScheduleSearchView: View {
     let schedule: Schedule
     @EnvironmentObject private var event: EventStore
-    
+    @EnvironmentObject private var router: Router
+
     @State private var searchText = ""
-    //@State private var searchActive = true //TODO: Will be implement in iOS 17
+    @State private var searchActive = true
     
     private let weekDayName: [LocalizedStringKey] = ["SUN", "MON", "TUE", "WEN", "THR", "FRI", "SAT"]
     
@@ -42,34 +43,48 @@ struct ScheduleSearchView: View {
             return session.isEmpty ? nil : session
         }
     }
-    
+
+    private var searchIsEmpty: Bool {
+        guard !searchResult.isEmpty else { return true }
+        for daySessions in searchResult {
+            if (daySessions.isEmpty) { return true }
+        }
+        return false
+    }
+
     var body: some View {
         Group {
             //TODO: Tokens
-            Form {
-                ForEach(searchResult, id: \.self) { result in
-                    ForEach(result.elements.indices, id: \.self) { index in
-                        Section {
-                             ForEach(result.values[index]) { session in
-                                 NavigationLink(value: ScheduleDestinations.session(session)) {
-                                     SessionOverView(session: session)
+            if (!searchIsEmpty) {
+                Form {
+                    ForEach(searchResult, id: \.self) { result in
+                        ForEach(result.elements.indices, id: \.self) { index in
+                            Section {
+                                 ForEach(result.values[index]) { session in
+                                     Button {
+                                         self.router.forward(ScheduleDestinations.session(session))
+                                     } label: {
+                                         SessionOverView(session: session)
+                                     }
                                  }
-                             }
-                        } header: {
-                            if index == 0 {
-                                Text("\(result.keys[index].month)/\(result.keys[index].day) ") +
-                                Text(weekDayName[result.keys[index].weekday - 1])
+                            } header: {
+                                if index == 0 {
+                                    Text("\(result.keys[index].month)/\(result.keys[index].day) ") +
+                                    Text(weekDayName[result.keys[index].weekday - 1])
+                                }
                             }
                         }
                     }
                 }
+            } else {
+                ContentUnavailableView.search(text: searchText)
             }
         }
         .searchable(
             text: $searchText,
-            //isPresented: $searchActive, //TODO: Will be avaiable in iOS 17
+            isPresented: $searchActive,
             placement: .navigationBarDrawer(displayMode: .always),
-            prompt: "Title"
+            prompt: "Search Title"
         )
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Search")

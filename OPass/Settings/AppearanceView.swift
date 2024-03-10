@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/8/8.
-//  2023 OPass.
+//  2024 OPass.
 //
 
 import SwiftUI
@@ -64,7 +64,7 @@ private struct ScheduleOptions: View {
                 .padding(10)
                 Spacer()
             }
-            .background(Color("SectionBackgroundColor"))
+            .background(.sectionBackground)
             .cornerRadius(8)
             
             HStack {
@@ -89,7 +89,7 @@ private struct ScheduleOptions: View {
                 .padding(10)
                 Spacer()
             }
-            .background(Color("SectionBackgroundColor"))
+            .background(.sectionBackground)
             .cornerRadius(8)
         }
         .listRowBackground(Color.clear)

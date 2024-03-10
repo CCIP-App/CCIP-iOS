@@ -64,12 +64,10 @@
 		D39512F5285A174F009B9AE8 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39512F4285A174F009B9AE8 /* EventEditView.swift */; };
 		D39512F8285A370D009B9AE8 /* EKEventStore+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39512F7285A370D009B9AE8 /* EKEventStore+Extension.swift */; };
 		D398F68E2A83F4EE00FB2912 /* SettingsDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D398F68D2A83F4EE00FB2912 /* SettingsDestinations.swift */; };
-		D398F6922A83FD9800FB2912 /* FeatureGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D398F6912A83FD9800FB2912 /* FeatureGridItem.swift */; };
 		D3A00F1F27D837D00097A6AB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00F1E27D837D00097A6AB /* NotificationService.swift */; };
 		D3A00F2327D837D00097A6AB /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D3A705612A829334009E5ADF /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A705602A829334009E5ADF /* EventView.swift */; };
 		D3A705662A82A7D9009E5ADF /* FeatureDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A705652A82A7D9009E5ADF /* FeatureDestinations.swift */; };
-		D3A94D03281E62530053FEFA /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A94D02281E62530053FEFA /* ErrorView.swift */; };
 		D3B0B20528BBC4400001B311 /* DevelopersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B0B20428BBC4400001B311 /* DevelopersView.swift */; };
 		D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C0E21927D51B460095169F /* NetworkExtension.framework */; };
 		D3C0E21C27D51C060095169F /* WifiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0E21B27D51C060095169F /* WifiView.swift */; };
@@ -78,7 +76,6 @@
 		D3C6194D27CF9A7400643D97 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingsView.swift */; };
 		D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3C6F60C28634F3B0074B942 /* MarkdownKit */; };
 		D3C6F60F286360FC0074B942 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6F60E286360FC0074B942 /* Markdown.swift */; };
-		D3D0BB242A820F2F00DC4E61 /* FeatureGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0BB232A820F2F00DC4E61 /* FeatureGrid.swift */; };
 		D3D0BB262A8213C300DC4E61 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0BB252A8213C300DC4E61 /* RootView.swift */; };
 		D3D0BB2A2A82254800DC4E61 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0BB292A82254800DC4E61 /* Router.swift */; };
 		D3D0BB2C2A82276800DC4E61 /* RootDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0BB2B2A82276800DC4E61 /* RootDestinations.swift */; };
@@ -186,7 +183,6 @@
 		D39512F4285A174F009B9AE8 /* EventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
 		D39512F7285A370D009B9AE8 /* EKEventStore+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKEventStore+Extension.swift"; sourceTree = "<group>"; };
 		D398F68D2A83F4EE00FB2912 /* SettingsDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDestinations.swift; sourceTree = "<group>"; };
-		D398F6912A83FD9800FB2912 /* FeatureGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureGridItem.swift; sourceTree = "<group>"; };
 		D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A00F1E27D837D00097A6AB /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		D3A00F2027D837D00097A6AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -194,7 +190,6 @@
 		D3A00F2C27D840C10097A6AB /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		D3A705602A829334009E5ADF /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		D3A705652A82A7D9009E5ADF /* FeatureDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureDestinations.swift; sourceTree = "<group>"; };
-		D3A94D02281E62530053FEFA /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		D3B0B20428BBC4400001B311 /* DevelopersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersView.swift; sourceTree = "<group>"; };
 		D3C0E21727D51B460095169F /* OPass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OPass.entitlements; sourceTree = "<group>"; };
 		D3C0E21927D51B460095169F /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
@@ -203,7 +198,6 @@
 		D3C6194727CF864B00643D97 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		D3C6194C27CF9A7400643D97 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = OPass/Settings/SettingsView.swift; sourceTree = SOURCE_ROOT; };
 		D3C6F60E286360FC0074B942 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
-		D3D0BB232A820F2F00DC4E61 /* FeatureGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureGrid.swift; sourceTree = "<group>"; };
 		D3D0BB252A8213C300DC4E61 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D3D0BB292A82254800DC4E61 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D3D0BB2B2A82276800DC4E61 /* RootDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDestinations.swift; sourceTree = "<group>"; };
@@ -356,8 +350,6 @@
 			isa = PBXGroup;
 			children = (
 				D3A705602A829334009E5ADF /* EventView.swift */,
-				D3D0BB232A820F2F00DC4E61 /* FeatureGrid.swift */,
-				D398F6912A83FD9800FB2912 /* FeatureGridItem.swift */,
 				D3A705652A82A7D9009E5ADF /* FeatureDestinations.swift */,
 			);
 			path = Event;
@@ -455,7 +447,6 @@
 			isa = PBXGroup;
 			children = (
 				4F6968A527EBCB5E009073E4 /* SFButton.swift */,
-				D3A94D02281E62530053FEFA /* ErrorView.swift */,
 				D37BC4D928A57F1B00449482 /* Alerts.swift */,
 			);
 			path = General;
@@ -650,7 +641,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					D3A00F1B27D837D00097A6AB = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -734,8 +725,11 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
-				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
 			);
 			outputFileListPaths = (
 			);
@@ -770,7 +764,6 @@
 				D3FE04F32A83FE72009CA4B4 /* ScheduleDestinations.swift in Sources */,
 				4F35B17C27D3850B0023621F /* Announcement.swift in Sources */,
 				D3D3789327CE70EE00021FC4 /* EventConfig.swift in Sources */,
-				D398F6922A83FD9800FB2912 /* FeatureGridItem.swift in Sources */,
 				D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */,
 				D3D0BB262A8213C300DC4E61 /* RootView.swift in Sources */,
 				D3DA440B2A78110400361D79 /* String+Extension.swift in Sources */,
@@ -786,7 +779,6 @@
 				D34012102821349200D07034 /* View+Extension.swift in Sources */,
 				D30D9CC128B3F68C00C1E489 /* Accessories.swift in Sources */,
 				D3652A7A2869AF72002AC419 /* AttributedTextImpl+macOS.swift in Sources */,
-				D3D0BB242A820F2F00DC4E61 /* FeatureGrid.swift in Sources */,
 				D30D9CC328B3F68C00C1E489 /* SlideOverCard.swift in Sources */,
 				D3A705662A82A7D9009E5ADF /* FeatureDestinations.swift in Sources */,
 				D3FBFA67282A93B200DE118E /* SoundManager.swift in Sources */,
@@ -810,7 +802,6 @@
 				D36A2FD82829F9C500EFBDB1 /* NEHotspot.swift in Sources */,
 				D3E0123827D38D3D0040621F /* RedeemTokenView.swift in Sources */,
 				D39444132A754EF200EE2021 /* LocalizableProtocol.swift in Sources */,
-				D3A94D03281E62530053FEFA /* ErrorView.swift in Sources */,
 				D3A705612A829334009E5ADF /* EventView.swift in Sources */,
 				D37BC4DA28A57F1B00449482 /* Alerts.swift in Sources */,
 				4F48B5D627CF081D0010FC2C /* OPassAPISampleExt.swift in Sources */,
@@ -866,6 +857,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
@@ -893,6 +885,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
@@ -917,6 +910,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -951,6 +946,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -979,6 +975,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1013,6 +1011,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1044,6 +1043,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"OPass/Preview Content\"";
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = OPass;
@@ -1058,7 +1058,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1088,6 +1088,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"OPass/Preview Content\"";
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = OPass;
@@ -1102,7 +1103,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

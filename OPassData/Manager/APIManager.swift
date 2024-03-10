@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by secminhr on 2022/3/4.
-//  2023 OPass.
+//  2024 OPass.
 //
 
 import Foundation
@@ -68,7 +68,9 @@ final class APIManager {
 }
 
 extension APIManager {
+
     // MARK: - OPass
+
     public static func fetchEvents(reload: Bool = false) async throws -> [Event] {
         return try await fetch(from: .events, reload: reload)
     }
@@ -78,6 +80,7 @@ extension APIManager {
     }
     
     // MARK: - Event
+
     public static func fetchAttendee(
         from feature: Feature,
         token: String,
@@ -139,7 +142,8 @@ extension APIManager {
         return data
     }
     
-    // MARK: - Private
+    // MARK: - Private Helper
+
     private static func fetch<T: Decodable>(from endpoint: CCIPEndpoint, reload: Bool = false) async throws -> T {
         guard let url = endpoint.url else {
             logger.error("Invalid URL: \(endpoint.string)")

@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by secminhr on 2022/3/5.
-//  2023 OPass.
+//  2024 OPass.
 //
 
 import SwiftUI
@@ -42,7 +42,9 @@ struct AnnouncementView: View {
                                     Spacer()
                                     if announcement.url != nil {
                                         Image(systemName: "chevron.right")
-                                            .foregroundColor(.gray)
+                                            .foregroundColor(.gray.opacity(0.56))
+                                            .fontWeight(.semibold)
+                                            .font(.callout)
                                     }
                                 }
                             }
@@ -67,7 +69,7 @@ struct AnnouncementView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: UIScreen.main.bounds.width * 0.25)
-                                .foregroundColor(Color("LogoColor"))
+                                .foregroundColor(.logo)
                             Text("EmptyAnnouncement")
                                 .font(.title2)
                         }
@@ -98,13 +100,25 @@ struct AnnouncementView: View {
                         }
                 }
             } else {
-                ErrorWithRetryView(message: {
+                ContentUnavailableView {
                     switch errorType! {
-                    case "http403": return "ConnectToConferenceWiFi"
-                    default: return nil
+                    case "http403":
+                        Label("Network Error", systemImage: "wifi.exclamationmark")
+                    default:
+                        Label("Something went wrong", systemImage: "exclamationmark.triangle.fill")
                     }
-                }()) {
-                    self.errorType = nil
+                } description: {
+                    switch errorType! {
+                    case "http403":
+                        Text("ConnectToConferenceWiFi")
+                    default:
+                        Text("Check your network status or select a new event.")
+                    }
+                } actions: {
+                    Button("Try Again") {
+                        self.errorType = nil
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
             }
         }
