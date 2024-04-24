@@ -20,7 +20,7 @@ struct Transform<Func: TransformFunction>: Codable, Hashable {
         let container = try decoder.singleValueContainer()
         if (decoder.userInfo[.needTransform] as? Bool) ?? false {
             let decoded = try container.decode(Func.FromType.self)
-            self.wrappedValue = Func.transform(decoded)
+            self.wrappedValue = try Func.transform(decoded)
         } else {
             self.wrappedValue = try container.decode(Func.ToType.self)
         }
@@ -36,7 +36,7 @@ protocol TransformFunction {
     associatedtype FromType: Decodable
     associatedtype ToType: Codable, Hashable
     
-    static func transform(_: FromType) -> ToType
+    static func transform(_: FromType) throws -> ToType
 }
 
 extension CodingUserInfoKey {
