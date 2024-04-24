@@ -12,11 +12,17 @@ struct UseScenarioView: View {
     
     let scenario: Scenario
     @EnvironmentObject var EventStore: EventStore
-    @State private var viewState = 0
+    @State private var viewState: Int
     @State private var isHttp403AlertPresented = false
-    @State private var usedTime: TimeInterval = 0
+    @State private var usedTime: TimeInterval
     @Environment(\.dismiss) var dismiss
-    
+
+    init (scenario: Scenario, used: Bool) {
+        self.scenario = scenario
+        self._viewState = .init(wrappedValue: used ? 2 : 0)
+        self._usedTime = .init(wrappedValue: used ? scenario.used!.timeIntervalSince1970 : 0)
+    }
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -44,7 +50,7 @@ struct UseScenarioView: View {
                     }
                 }
             }
-            .http403Alert(isPresented: $isHttp403AlertPresented)
+            .http403Alert(isPresented: $isHttp403AlertPresented, action: { dismiss() })
         }
     }
     
@@ -168,7 +174,7 @@ private struct TimerView: View {
         VStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(String(format: "%d:%02d", Int(time)/60, Int(time)%100))
+                    Text(String(format: "%d:%02d", Int(time)/60, Int(time)%60))
                         .font(.system(size: 70, weight: .light)) //TODO: Dynamic size
                 }
                 Spacer()

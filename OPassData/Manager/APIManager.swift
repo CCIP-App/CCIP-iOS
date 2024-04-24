@@ -166,6 +166,8 @@ extension APIManager {
             let decoder = JSONDecoder()
             decoder.userInfo[.needTransform] = true
             return try decoder.decode(T.self, from: data)
+        } catch LoadError.forbidden {
+            throw LoadError.forbidden
         } catch where error is DecodingError {
             logger.error("Decode Faild with: \(error.localizedDescription), url: \(endpoint.string)")
             throw LoadError.decodeFaild(error)
