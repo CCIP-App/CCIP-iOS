@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version number'
+        description: 'Version Number'
         required: true
 
 jobs:
@@ -28,11 +28,11 @@ jobs:
 
     - name: Update version in Xcode project
       run: |
-        /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${{ github.event.inputs.version }}" /Supporting Files/Info.plist
+        /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${{ github.event.inputs.version }}" "/Supporting Files/Info.plist"
 
     - name: Commit version change
       run: |
-        git add /Supporting Files/Info.plist
+        git add "/Supporting Files/Info.plist"
         git commit -m "Bump version to ${{ github.event.inputs.version }}"
 
     - name: Push changes
