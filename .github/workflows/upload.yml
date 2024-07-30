@@ -1,0 +1,39 @@
+name: Upload to App Store Connect
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number'
+        required: true
+
+jobs:
+  merge_and_update:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Configure Git
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+
+    - name: Merge develop into master
+      run: |
+        git checkout master
+        git merge origin/develop
+
+    - name: Update version in Xcode project
+      run: |
+        /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${{ github.event.inputs.version }}" /Supporting Files/Info.plist
+
+    - name: Commit version change
+      run: |
+        git add /Supporting Files/Info.plist
+        git commit -m "Bump version to ${{ github.event.inputs.version }}"
+
+    - name: Push changes
+      run: git push origin master
