@@ -5,7 +5,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>app.opass.ccip</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.0.1</string>
+	<string>4.2.8</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
