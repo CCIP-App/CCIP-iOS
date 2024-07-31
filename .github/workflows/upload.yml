@@ -1,4 +1,4 @@
-name: Upload to App Store Connect
+name: Upload
 
 on:
   workflow_dispatch:
@@ -28,14 +28,14 @@ jobs:
 
     - name: Update version in Xcode project
       run: |
-        /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${{ github.event.inputs.version }}" "Supporting Files/Info.plist"
-        /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${{ github.event.inputs.version }}" "OneSignalNotificationServiceExtension/Info.plist"
+        /usr/libexec/PlistBuddy -c "Set CFBundleShortVersionString ${{ github.event.inputs.version }}" "Supporting Files/Info.plist"
+        /usr/libexec/PlistBuddy -c "Set CFBundleShortVersionString ${{ github.event.inputs.version }}" "OneSignalNotificationServiceExtension/Info.plist"
 
     - name: Commit version change
       run: |
         git add "Supporting Files/Info.plist"
         git add "OneSignalNotificationServiceExtension/Info.plist"
-        git commit -m "Bump version to ${{ github.event.inputs.version }}"
+        git commit -m "Upload with Version ${{ github.event.inputs.version }}"
 
     - name: Push changes
       run: git push origin master
