@@ -3,10 +3,10 @@ permissions:
   contents: write
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version Number'
-        required: true
+    #inputs:
+    #  version:
+    #    description: 'Version Number'
+    #    required: true
 jobs:
   merge_and_update:
     runs-on: macos-latest
@@ -27,13 +27,14 @@ jobs:
           git reset --hard origin/develop
           echo "Merge failed. Master reset to develop."
         )
+    # We manually change the version number for now
     #- name: Update version in Xcode project
     #  run: |
     #    /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${{ github.event.inputs.version }}" "Supporting Files/Info.plist"
     #    /usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier org.YuKaBu.app" "Supporting Files/Info.plist"
-    - name: Commit version change
-      run: |
-        git add .
-        git commit -m "Upload with Version ${{ github.event.inputs.version }}" --allow-empty
+    #- name: Commit version change
+    #  run: |
+    #    git add .
+    #    git commit -m "Upload with Version ${{ github.event.inputs.version }}" --allow-empty
     - name: Force push changes
       run: git push --force origin master
