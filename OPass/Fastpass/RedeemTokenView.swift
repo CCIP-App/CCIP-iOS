@@ -167,9 +167,9 @@ struct RedeemTokenView: View {
                 }
             }
         }
-        .onChange(of: selectedPhotoItem) { item in
+        .onChange(of: selectedPhotoItem) {
             Task {
-                guard let data = try? await item?.loadTransferable(type: Data.self),
+                guard let data = try? await selectedPhotoItem?.loadTransferable(type: Data.self),
                       let ciImage = CIImage(data: data),
                       let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil),
                       let feature = detector.features(in: ciImage) as? [CIQRCodeFeature],

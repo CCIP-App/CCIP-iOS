@@ -128,8 +128,8 @@ struct SessionView: View {
                     } message: {
                         Text("NotifiedAlertMessage")
                     }
-                    .onChange(of: scenePhase) { phase in
-                        switch phase {
+                    .onChange(of: scenePhase) {
+                        switch scenePhase {
                         case .active:
                             if pendNotified { event.notify(session: session) }
                         default:
@@ -140,7 +140,7 @@ struct SessionView: View {
                     Menu {
                         Button {
                             Task {
-                                if (try? await eventStore.requestAccess(to: .event)) == true {
+                                if (try? await eventStore.requestFullAccessToEvents()) == true {
                                     isEventEditViewPresented.toggle()
                                 } else {
                                     isCalendarAlertPresented.toggle()
@@ -192,7 +192,7 @@ struct SessionView: View {
     }
 }
 
-extension String: Identifiable {
+extension String: @retroactive Identifiable {
     public typealias ID = Int
     public var id: Int {
         return hash
