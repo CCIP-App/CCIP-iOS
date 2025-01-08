@@ -64,7 +64,6 @@
 		D39512F5285A174F009B9AE8 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39512F4285A174F009B9AE8 /* EventEditView.swift */; };
 		D39512F8285A370D009B9AE8 /* EKEventStore+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39512F7285A370D009B9AE8 /* EKEventStore+Extension.swift */; };
 		D398F68E2A83F4EE00FB2912 /* SettingsDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D398F68D2A83F4EE00FB2912 /* SettingsDestinations.swift */; };
-		D398F6922A83FD9800FB2912 /* FeatureGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D398F6912A83FD9800FB2912 /* FeatureGridItem.swift */; };
 		D3A00F1F27D837D00097A6AB /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00F1E27D837D00097A6AB /* NotificationService.swift */; };
 		D3A00F2327D837D00097A6AB /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D3A705612A829334009E5ADF /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A705602A829334009E5ADF /* EventView.swift */; };
@@ -77,7 +76,6 @@
 		D3C6194D27CF9A7400643D97 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingsView.swift */; };
 		D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3C6F60C28634F3B0074B942 /* MarkdownKit */; };
 		D3C6F60F286360FC0074B942 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6F60E286360FC0074B942 /* Markdown.swift */; };
-		D3D0BB242A820F2F00DC4E61 /* FeatureGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0BB232A820F2F00DC4E61 /* FeatureGrid.swift */; };
 		D3D0BB262A8213C300DC4E61 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0BB252A8213C300DC4E61 /* RootView.swift */; };
 		D3D0BB2A2A82254800DC4E61 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0BB292A82254800DC4E61 /* Router.swift */; };
 		D3D0BB2C2A82276800DC4E61 /* RootDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0BB2B2A82276800DC4E61 /* RootDestinations.swift */; };
@@ -185,7 +183,6 @@
 		D39512F4285A174F009B9AE8 /* EventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
 		D39512F7285A370D009B9AE8 /* EKEventStore+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKEventStore+Extension.swift"; sourceTree = "<group>"; };
 		D398F68D2A83F4EE00FB2912 /* SettingsDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDestinations.swift; sourceTree = "<group>"; };
-		D398F6912A83FD9800FB2912 /* FeatureGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureGridItem.swift; sourceTree = "<group>"; };
 		D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A00F1E27D837D00097A6AB /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		D3A00F2027D837D00097A6AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -201,7 +198,6 @@
 		D3C6194727CF864B00643D97 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		D3C6194C27CF9A7400643D97 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = OPass/Settings/SettingsView.swift; sourceTree = SOURCE_ROOT; };
 		D3C6F60E286360FC0074B942 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
-		D3D0BB232A820F2F00DC4E61 /* FeatureGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureGrid.swift; sourceTree = "<group>"; };
 		D3D0BB252A8213C300DC4E61 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D3D0BB292A82254800DC4E61 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D3D0BB2B2A82276800DC4E61 /* RootDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDestinations.swift; sourceTree = "<group>"; };
@@ -354,8 +350,6 @@
 			isa = PBXGroup;
 			children = (
 				D3A705602A829334009E5ADF /* EventView.swift */,
-				D3D0BB232A820F2F00DC4E61 /* FeatureGrid.swift */,
-				D398F6912A83FD9800FB2912 /* FeatureGridItem.swift */,
 				D3A705652A82A7D9009E5ADF /* FeatureDestinations.swift */,
 			);
 			path = Event;
@@ -767,7 +761,6 @@
 				D3FE04F32A83FE72009CA4B4 /* ScheduleDestinations.swift in Sources */,
 				4F35B17C27D3850B0023621F /* Announcement.swift in Sources */,
 				D3D3789327CE70EE00021FC4 /* EventConfig.swift in Sources */,
-				D398F6922A83FD9800FB2912 /* FeatureGridItem.swift in Sources */,
 				D3D3789127CE62EB00021FC4 /* EventListView.swift in Sources */,
 				D3D0BB262A8213C300DC4E61 /* RootView.swift in Sources */,
 				D3DA440B2A78110400361D79 /* String+Extension.swift in Sources */,
@@ -783,7 +776,6 @@
 				D34012102821349200D07034 /* View+Extension.swift in Sources */,
 				D30D9CC128B3F68C00C1E489 /* Accessories.swift in Sources */,
 				D3652A7A2869AF72002AC419 /* AttributedTextImpl+macOS.swift in Sources */,
-				D3D0BB242A820F2F00DC4E61 /* FeatureGrid.swift in Sources */,
 				D30D9CC328B3F68C00C1E489 /* SlideOverCard.swift in Sources */,
 				D3A705662A82A7D9009E5ADF /* FeatureDestinations.swift in Sources */,
 				D3FBFA67282A93B200DE118E /* SoundManager.swift in Sources */,
