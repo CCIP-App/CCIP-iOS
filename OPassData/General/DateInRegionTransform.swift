@@ -10,8 +10,17 @@ import Foundation
 import SwiftDate
 
 struct StringToDate: TransformFunction {
-    static func transform(_ string: String) -> DateInRegion {
-        return string.toISODate(region: .current)!
+    static func transform(_ string: String) throws -> DateInRegion {
+        guard let date = string.toISODate(region: .current) else {
+            throw DecodingError.typeMismatch(
+                DateInRegion.self,
+                .init(
+                    codingPath: [],
+                    debugDescription: "String: \"\(string)\" can't be decoded to DateInRegion"
+                )
+            )
+        }
+        return date
     }
 }
 
