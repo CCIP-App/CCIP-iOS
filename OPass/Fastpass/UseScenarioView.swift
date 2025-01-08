@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct UseScenarioView: View {
-    
+
     let scenario: Scenario
     @EnvironmentObject var EventStore: EventStore
     @State private var viewState: Int
@@ -17,28 +17,37 @@ struct UseScenarioView: View {
     @State private var usedTime: TimeInterval
     @Environment(\.dismiss) var dismiss
 
-    init (scenario: Scenario, used: Bool) {
+    init(scenario: Scenario, used: Bool) {
         self.scenario = scenario
         self._viewState = .init(wrappedValue: used ? 2 : 0)
         self._usedTime = .init(wrappedValue: used ? scenario.used!.timeIntervalSince1970 : 0)
     }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 switch viewState {
-                case 0: ConfirmUseScenarioView()
-                case 1: ActivityIndicator()
-                        .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.25)
-                case 2: ScuessScenarioView(dismiss: _dismiss, scenario: scenario, usedTime: $usedTime)
-                default: ErrorView()
+                case 0:
+                    ConfirmUseScenarioView()
+                case 1:
+                    ActivityIndicator()
+                        .frame(
+                            width: UIScreen.main.bounds.width * 0.25,
+                            height: UIScreen.main.bounds.width * 0.25)
+                case 2:
+                    ScuessScenarioView(scenario: scenario, usedTime: $usedTime)
+                default:
+                    ContentUnavailableView(
+                        "Faild to confirm \(scenario.title.localized())",
+                        systemImage: "exclamationmark.triangle.fill",
+                        description: Text("Check your network status or try again"))
                 }
             }
             .navigationTitle(scenario.title.localized())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(LocalizedStringKey("Close")) {
+                    Button("Close") {
                         dismiss()
                     }
                 }
@@ -46,35 +55,40 @@ struct UseScenarioView: View {
             .http403Alert(isPresented: $isHttp403AlertPresented, action: { dismiss() })
         }
     }
-    
+
     @ViewBuilder
     func ConfirmUseScenarioView() -> some View {
         VStack {
             Spacer()
-            
+
             VStack(spacing: 10) {
                 Image(systemName: scenario.symbol)
                     .resizable()
                     .scaledToFit()
                     .foregroundColor(.white)
                     .padding()
-                    .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.width * 0.2)
+                    .frame(
+                        width: UIScreen.main.bounds.width * 0.2,
+                        height: UIScreen.main.bounds.width * 0.2
+                    )
                     .background(.blue)
                     .cornerRadius(UIScreen.main.bounds.width * 0.05)
                 Text(scenario.title.localized())
                     .font(.largeTitle.bold())
-                
+
                 Text("ConfirmUseScenarioMessage")
                     .multilineTextAlignment(.center)
             }
-            
+
             Group {
                 Spacer()
                 Spacer()
                 Spacer()
             }
-            
-            Button { useScenario() } label: {
+
+            Button {
+                useScenario()
+            } label: {
                 Text("ConfirmUse")
                     .foregroundColor(.white)
                     .padding(.vertical, 11)
@@ -82,8 +96,10 @@ struct UseScenarioView: View {
                     .background(.blue)
                     .cornerRadius(10)
             }
-            
-            Button { dismiss() } label: {
+
+            Button {
+                dismiss()
+            } label: {
                 Text("Cancel")
                     .foregroundColor(.blue)
                     .padding(.vertical, 10)
@@ -92,7 +108,7 @@ struct UseScenarioView: View {
         .frame(width: UIScreen.main.bounds.width * 0.85)
         .onAppear { if scenario.countdown == 0 { self.useScenario() } }
     }
-    
+
     private func useScenario() {
         self.viewState = 1
         Task {
@@ -100,7 +116,9 @@ struct UseScenarioView: View {
                 if try await EventStore.use(scenario: scenario.id) {
                     self.usedTime = Date().timeIntervalSince1970
                     self.viewState = 2
-                } else { self.viewState = 3 }
+                } else {
+                    self.viewState = 3
+                }
             } catch APIManager.LoadError.forbidden {
                 self.isHttp403AlertPresented = true
             } catch { self.viewState = 3 }
@@ -109,17 +127,20 @@ struct UseScenarioView: View {
 }
 
 private struct ScuessScenarioView: View {
-    
+
     @Environment(\.dismiss) var dismiss
     let scenario: Scenario
     @State var time = 0
     @Binding var usedTime: TimeInterval
-    
+
     var body: some View {
         VStack {
             if scenario.countdown != 0 {
-                TimerView(scenario: scenario, countTime: Double(scenario.countdown), symbolName: scenario.symbol, dismiss: _dismiss, usedTime: $usedTime)
-                    .padding()
+                TimerView(
+                    scenario: scenario, countTime: Double(scenario.countdown),
+                    symbolName: scenario.symbol, dismiss: _dismiss, usedTime: $usedTime
+                )
+                .padding()
             } else {
                 VStack {
                     Spacer()
@@ -130,17 +151,17 @@ private struct ScuessScenarioView: View {
                         .foregroundColor(.green)
                     Text(scenario.title.localized() + " " + String(localized: "Complete"))
                         .font(.title.bold())
-                    Group{
+                    Group {
                         Spacer()
                         Spacer()
                     }
                 }
             }
-            
+
             Spacer()
-            
+
             Button(action: { dismiss() }) {
-                Text(LocalizedStringKey("Complete"))
+                Text("Complete")
                     .foregroundColor(.white)
                     .padding(.vertical, 11)
                     .frame(width: UIScreen.main.bounds.width * 0.85)
@@ -153,28 +174,28 @@ private struct ScuessScenarioView: View {
 }
 
 private struct TimerView: View {
-    
+
     let scenario: Scenario
     let countTime: Double
     let symbolName: String
     @Environment(\.dismiss) var dismiss
-    
+
     @State var time: Double = 0
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     @Binding var usedTime: TimeInterval
-    
+
     var body: some View {
         VStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(String(format: "%d:%02d", Int(time)/60, Int(time)%60))
-                        .font(.system(size: 70, weight: .light)) //TODO: Dynamic size
+                    Text(String(format: "%d:%02d", Int(time) / 60, Int(time) % 60))
+                        .font(.system(size: 70, weight: .light))  //TODO: Dynamic size
                 }
                 Spacer()
             }
             .foregroundColor(.white)
             .padding(.horizontal)
-            
+
             ForEach(scenario.attributes.keys.sorted(), id: \.self) { key in
                 HStack {
                     VStack(alignment: .leading, spacing: 5) {
@@ -200,7 +221,11 @@ private struct TimerView: View {
                     Spacer()
                     if symbolName != "" {
                         Image(systemName: symbolName)
-                            .font(.system(size: UIScreen.main.bounds.width*0.18, weight: .bold, design: .rounded))
+                            .font(
+                                .system(
+                                    size: UIScreen.main.bounds.width * 0.18, weight: .bold,
+                                    design: .rounded)
+                            )
                             .foregroundColor(Color.white.opacity(0.2))
                     }
                 }
@@ -219,11 +244,11 @@ private struct TimerView: View {
             }
         }
     }
-    
+
     private func BackgroundColor(diet: String?) -> Color {
         switch diet {
-        case "meat": return Color(red: 1, green: 160/255, blue: 0)
-        case "vegetarian": return Color(red: 41/255, green: 138/255, blue: 8/255)
+        case "meat": return Color(red: 1, green: 160 / 255, blue: 0)
+        case "vegetarian": return Color(red: 41 / 255, green: 138 / 255, blue: 8 / 255)
         default: return Color.blue
         }
     }

@@ -12,8 +12,8 @@ struct ContentView: View {
     // MARK: - Variables
     @Binding var url: URL?
     @EnvironmentObject var store: OPassStore
+    @StateObject private var router = Router()
     @State private var error: Error?
-    @State private var presentEventList = false
     @State private var presentHttp403Alert = false
     @State private var presentInvaildUrlAlert = false
 
@@ -37,103 +37,37 @@ struct ContentView: View {
                     .task { await parseUniversalLinkAndURL(url) }
                     .alert("InvalidURL", isPresented: $presentInvaildUrlAlert) {
                         Button("OK", role: .cancel) { self.url = nil }
-                    } message: { Text("InvalidURLOrTokenContent") }
+                    } message: {
+                        Text("InvalidURLOrTokenContent")
+                    }
                     .alert("CouldntVerifiyYourIdentity", isPresented: $presentHttp403Alert) {
                         Button("OK", role: .cancel) { self.url = nil }
-                    } message: { Text("ConnectToConferenceWiFi") }
+                    } message: {
+                        Text("ConnectToConferenceWiFi")
+                    }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             case .empty:
                 EventListView()
             case .error:
-                ErrorView(error: $error)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                ContentUnavailableView {
+                    Label("Can't load Event", systemImage: "exclamationmark.triangle.fill")
+                } description: {
+                    Text("Check your network status or select a new event.")
+                } actions: {
+                    Button("Try Again") {
+                        self.error = nil
+                    }
+                    .buttonStyle(.borderedProminent)
+
+                    Button("Select Event") {
+                        self.error = nil
+                        self.store.eventId = nil
+                    }
+                    .buttonStyle(.bordered)
+                }
             }
         }
-        .sheet(isPresented: $presentEventList) { EventListView() }
         .background(.sectionBackground)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar { toolbar }
-    }
-
-    @ToolbarContentBuilder
-    private var toolbar: some ToolbarContent {
-        ToolbarItem(placement: .navigationBarLeading) {
-            SFButton(systemName: "rectangle.stack") {
-                presentEventList.toggle()
-            }
-        }
-
-        ToolbarItem(placement: .principal) {
-            VStack {
-                Text(store.event?.config.title.localized() ?? "OPass")
-                    .font(.headline)
-                if let userId = store.event?.userId, userId != "nil" {
-                    Text(userId)
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                }
-            }
-        }
-
-        ToolbarItem(placement: .navigationBarTrailing) {
-            NavigationLink(value: RootDestinations.settings) {
-                Image(systemName: "gearshape")
-            }
-        }
-    }
-
-    private struct ErrorView: View {
-        @EnvironmentObject var store: OPassStore
-        @Binding var error: Error?
-
-        var body: some View {
-            VStack {
-                Spacer()
-
-                Image(systemName: "exclamationmark.triangle.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(.logo)
-                    .frame(width: UIScreen.main.bounds.width * 0.25)
-                    .padding(.bottom, 5)
-
-                Text("Something went wrong")
-                    .multilineTextAlignment(.center)
-                    .font(.title)
-
-                Text(error?.localizedDescription ?? "")
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.gray)
-                    .font(.callout)
-
-                Spacer()
-
-                Button {
-                    self.error = nil
-                } label: {
-                    HStack {
-                        Spacer()
-                        Text("Try Again")
-                        Spacer()
-                    }
-                }
-                .buttonStyle(.borderedProminent)
-
-                Button {
-                    self.store.eventId = nil
-                    self.error = nil
-                } label: {
-                    HStack {
-                        Spacer()
-                        Text("Select Event")
-                        Spacer()
-                    }
-                }
-                .buttonStyle(.bordered)
-                .padding(.bottom)
-            }
-            .frame(width: UIScreen.main.bounds.width * 0.9)
-        }
     }
 }
 
@@ -161,7 +95,7 @@ extension ContentView {
     private func parseUniversalLinkAndURL(_ url: URL) async {
         let params = URLComponents(string: "?" + (url.query ?? ""))?.queryItems
         // MARK: Select Event
-        guard let eventId = params?.first(where: { $0.name == "event_id"})?.value else {
+        guard let eventId = params?.first(where: { $0.name == "event_id" })?.value else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.presentInvaildUrlAlert = true
             }
@@ -196,10 +130,10 @@ extension ContentView {
 }
 
 #if DEBUG
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(url: .constant(nil))
-            .environmentObject(OPassStore.mock())
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView(url: .constant(nil))
+                .environmentObject(OPassStore.mock())
+        }
     }
-}
 #endif

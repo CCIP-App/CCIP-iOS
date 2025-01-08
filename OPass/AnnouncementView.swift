@@ -29,13 +29,15 @@ struct AnnouncementView: View {
                                     VStack(alignment: .leading, spacing: 3) {
                                         Text(announcement.localized())
                                             .foregroundColor(colorScheme == .dark ? .white : .black)
-                                        Text(String(
-                                            format: "%d/%d %d:%02d",
-                                            announcement.datetime.month,
-                                            announcement.datetime.day,
-                                            announcement.datetime.hour,
-                                             announcement.datetime.minute
-                                        ))
+                                        Text(
+                                            String(
+                                                format: "%d/%d %d:%02d",
+                                                announcement.datetime.month,
+                                                announcement.datetime.day,
+                                                announcement.datetime.hour,
+                                                announcement.datetime.minute
+                                            )
+                                        )
                                         .font(.footnote)
                                         .foregroundColor(.gray)
                                     }
@@ -100,13 +102,25 @@ struct AnnouncementView: View {
                         }
                 }
             } else {
-                ErrorWithRetryView(message: {
+                ContentUnavailableView {
                     switch errorType! {
-                    case "http403": return "ConnectToConferenceWiFi"
-                    default: return nil
+                    case "http403":
+                        Label("Network Error", systemImage: "wifi.exclamationmark")
+                    default:
+                        Label("Something went wrong", systemImage: "exclamationmark.triangle.fill")
                     }
-                }()) {
-                    self.errorType = nil
+                } description: {
+                    switch errorType! {
+                    case "http403":
+                        Text("ConnectToConferenceWiFi")
+                    default:
+                        Text("Check your network status or select a new event.")
+                    }
+                } actions: {
+                    Button("Try Again") {
+                        self.errorType = nil
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
             }
         }
@@ -118,7 +132,7 @@ struct AnnouncementView: View {
                     Text(displayText.localized()).font(.headline)
                 }
             }
-            
+
             ToolbarItem(placement: .navigationBarTrailing) {
                 SFButton(systemName: "arrow.clockwise") {
                     self.errorType = nil
@@ -131,10 +145,10 @@ struct AnnouncementView: View {
 }
 
 #if DEBUG
-struct AnnounceView_Previews: PreviewProvider {
-    static var previews: some View {
-        AnnouncementView()
-            .environmentObject(OPassStore.mock().event!)
+    struct AnnounceView_Previews: PreviewProvider {
+        static var previews: some View {
+            AnnouncementView()
+                .environmentObject(OPassStore.mock().event!)
+        }
     }
-}
 #endif

@@ -6,16 +6,16 @@
 //  2023 OPass.
 //
 
-import SwiftUI
 import OSLog
+import SwiftUI
 
 struct EventListView: View {
-    
+
     // MARK: - Variables
     @EnvironmentObject private var store: OPassStore
     @StateObject private var viewModel = EventListViewModel()
     @Environment(\.dismiss) var dismiss
-    
+
     // MARK: - Views
     var body: some View {
         NavigationView {
@@ -32,22 +32,36 @@ struct EventListView: View {
         }
         .interactiveDismissDisabled(store.eventId == nil)
     }
-    
+
     var list: some View {
-        List(viewModel.listedEvents) { event in
-            EventRow(event: event, dismiss: _dismiss)
+        Group {
+            if !viewModel.listedEvents.isEmpty {
+                List(viewModel.listedEvents) { event in
+                    EventRow(event: event, dismiss: _dismiss)
+                }
+            } else {
+                ContentUnavailableView.search(text: viewModel.searchQuery)
+            }
         }
-        .searchable(text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .automatic))
+        .searchable(
+            text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .automatic))
     }
-    
+
     var loading: some View {
         ProgressView("Loading")
             .task { await viewModel.loadEvents() }
     }
-    
+
     var error: some View {
-        ErrorWithRetryView {
-            Task { await viewModel.reset() }
+        ContentUnavailableView {
+            Label("Faild to load event list", systemImage: "exclamationmark.triangle.fill")
+        } description: {
+            Text("Check your network status or try again.")
+        } actions: {
+            Button("Try Again") {
+                self.viewModel.error = nil
+            }
+            .buttonStyle(.borderedProminent)
         }
     }
 
@@ -71,12 +85,12 @@ struct EventListView: View {
 
 private struct EventRow: View {
     let event: Event
-    
+
     @EnvironmentObject var store: OPassStore
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @State private var preloadLogoImage: Image? = nil
-    
+
     private let logger = Logger(subsystem: "app.opass.ccip", category: "EventListView")
     var body: some View {
         Button {
@@ -85,7 +99,9 @@ private struct EventRow: View {
             dismiss()
         } label: {
             HStack {
-                AsyncImage(url: URL(string: event.logoUrl), transaction: Transaction(animation: .spring())) { phase in
+                AsyncImage(
+                    url: URL(string: event.logoUrl), transaction: Transaction(animation: .spring())
+                ) { phase in
                     switch phase {
                     case .empty:
                         ProgressView()
@@ -107,13 +123,15 @@ private struct EventRow: View {
                     }
                 }
                 .padding(.horizontal, 3)
-                .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.15)
-                
+                .frame(
+                    width: UIScreen.main.bounds.width * 0.25,
+                    height: UIScreen.main.bounds.width * 0.15)
+
                 Text(event.title.localized())
                     .foregroundColor(colorScheme == .dark ? .white : .black)
-                
+
                 Spacer()
-                
+
                 Image(systemName: "chevron.right")
                     .foregroundColor(.gray)
             }
@@ -126,10 +144,11 @@ private class EventListViewModel: ObservableObject {
     @Published var events: [Event] = []
     @Published var searchQuery: String = ""
     @Published var error: Error? = nil
-    
+
     var listedEvents: [Event] {
-        if searchQuery.isEmpty { return events }
-        else {
+        if searchQuery.isEmpty {
+            return events
+        } else {
             return events.filter { event in
                 let name = event.title.localized().lowercased()
                 for component in searchQuery.tirm().lowercased().components(separatedBy: " ") {
@@ -141,24 +160,23 @@ private class EventListViewModel: ObservableObject {
             }
         }
     }
-    
+
     enum ViewState {
         case ready
         case loading
         case error
     }
-    
+
     var viewState: ViewState {
         if error != nil { return .error }
         if events.isNotEmpty { return .ready }
         return .loading
     }
-    
+
     func loadEvents() async {
-        do { self.events = try await APIManager.fetchEvents() }
-        catch { self.error = error }
+        do { self.events = try await APIManager.fetchEvents() } catch { self.error = error }
     }
-    
+
     func reset() async {
         self.error = nil
         self.events = []
@@ -167,10 +185,10 @@ private class EventListViewModel: ObservableObject {
 }
 
 #if DEBUG
-struct EventListView_Previews: PreviewProvider {
-    static var previews: some View {
-        EventListView()
-            .environmentObject(OPassStore.mock())
+    struct EventListView_Previews: PreviewProvider {
+        static var previews: some View {
+            EventListView()
+                .environmentObject(OPassStore.mock())
+        }
     }
-}
 #endif

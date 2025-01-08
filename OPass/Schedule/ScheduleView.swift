@@ -89,7 +89,7 @@ struct ScheduleView: View {
     let initialize: () async -> Void
 
     var body: some View {
-        VStack {
+        Group {
             if !isError {
                 if let schedule = event.schedule, let filteredSessions = filteredSessions {
                     VStack(spacing: 0) {
@@ -192,15 +192,23 @@ struct ScheduleView: View {
                             .background(.listBackground)
                         }
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
-                    ProgressView(LocalizedStringKey("Loading"))
-                        .task { await initialize() }
+                    ProgressView("Loading")
+                        .task {
+                            await initialize()
+                        }
                 }
             } else {
-                ErrorWithRetryView {
-                    self.isError = false
-                    Task { await initialize() }
+                ContentUnavailableView {
+                    Label("Something went wrong", systemImage: "exclamationmark.triangle.fill")
+                } description: {
+                    Text("Check your network status or try again later.")
+                } actions: {
+                    Button("Try Again") {
+                        self.isError = false
+                        Task { await initialize() }
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
             }
         }
