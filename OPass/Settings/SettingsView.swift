@@ -9,18 +9,18 @@
 import SwiftUI
 
 struct SettingsView: View {
-    
+
     @EnvironmentObject var store: OPassStore
-    
+
     var body: some View {
         VStack {
             Form {
                 AppIconSection()
-                
+
                 GeneralSection()
-                
+
                 AboutSection()
-                
+
                 AdvancedSection()
             }
         }
@@ -44,7 +44,7 @@ private struct AppIconSection: View {
                     Text("OPass")
                 }
                 .padding(5)
-                 Spacer()
+                Spacer()
             }
         }
     }
@@ -54,11 +54,13 @@ private struct GeneralSection: View {
     var body: some View {
         Section(header: Text("GENERAL")) {
             NavigationLink(value: SettingsDestinations.appearance) {
-                Label { Text("Appearance") } icon: {
+                Label {
+                    Text("Appearance")
+                } icon: {
                     Image(systemName: "circle.lefthalf.filled")
                         .padding(4)
                         .foregroundColor(.white)
-                        .background(Color(red: 89/255, green: 169/255, blue: 214/255))
+                        .background(Color(red: 89 / 255, green: 169 / 255, blue: 214 / 255))
                         .cornerRadius(7)
                 }
             }
@@ -67,25 +69,25 @@ private struct GeneralSection: View {
 }
 
 private struct AboutSection: View {
-    
+
     @Environment(\.colorScheme) var colorScheme
     private let CCIPWebsiteURL = URL(string: "https://opass.app")!
     private let CCIPGitHubURL = URL(string: "https://github.com/CCIP-App")!
     private let CCIPPolicyURL = URL(string: "https://opass.app/privacy-policy.html")!
-    
+
     var body: some View {
         Section(header: Text("ABOUT")) {
             VStack(alignment: .leading) {
                 Text("Version")
                     .foregroundColor(colorScheme == .dark ? .white : .black)
                 Text(
-                    String("\(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)") +
-                    String(" (Build \(Bundle.main.infoDictionary!["CFBundleVersion"]!))")
+                    String("\(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)")
+                        + String(" (Build \(Bundle.main.infoDictionary!["CFBundleVersion"]!))")
                 )
                 .font(.subheadline)
                 .foregroundColor(.gray)
             }
-            
+
             Button {
                 Constants.openInAppSafari(forURL: CCIPWebsiteURL, style: colorScheme)
             } label: {
@@ -97,9 +99,9 @@ private struct AboutSection: View {
                             .font(.subheadline)
                             .foregroundColor(.gray)
                     }
-                    
+
                     Spacer()
-                    
+
                     Image("external-link")
                         .renderingMode(.template)
                         .resizable()
@@ -108,7 +110,7 @@ private struct AboutSection: View {
                         .frame(width: UIScreen.main.bounds.width * 0.045)
                 }
             }
-            
+
             Button {
                 Constants.openInAppSafari(forURL: CCIPGitHubURL, style: colorScheme)
             } label: {
@@ -120,9 +122,9 @@ private struct AboutSection: View {
                             .font(.subheadline)
                             .foregroundColor(.gray)
                     }
-                    
+
                     Spacer()
-                    
+
                     Image("external-link")
                         .renderingMode(.template)
                         .resizable()
@@ -131,7 +133,7 @@ private struct AboutSection: View {
                         .frame(width: UIScreen.main.bounds.width * 0.045)
                 }
             }
-            
+
             Button {
                 Constants.openInAppSafari(forURL: CCIPPolicyURL, style: colorScheme)
             } label: {
@@ -143,9 +145,9 @@ private struct AboutSection: View {
                             .font(.subheadline)
                             .foregroundColor(.gray)
                     }
-                    
+
                     Spacer()
-                    
+
                     Image("external-link")
                         .renderingMode(.template)
                         .resizable()
@@ -154,7 +156,7 @@ private struct AboutSection: View {
                         .frame(width: UIScreen.main.bounds.width * 0.045)
                 }
             }
-            
+
             NavigationLink("Developers", value: SettingsDestinations.developers)
         }
     }
@@ -172,7 +174,8 @@ private struct AdvancedSection: View {
 }
 
 private struct AdvancedOptionView: View {
-    @AppStorage("UserInterfaceStyle") private var interfaceStyle: UIUserInterfaceStyle = .unspecified
+    @AppStorage("UserInterfaceStyle") private var interfaceStyle: UIUserInterfaceStyle =
+        .unspecified
     @AppStorage("AutoAdjustTicketBirghtness") private var autoAdjustTicketBirghtness = true
     @AppStorage("AutoSelectScheduleDay") private var autoSelectScheduleDay = true
     @AppStorage("PastSessionOpacity") private var pastSessionOpacity = 0.4
@@ -180,7 +183,7 @@ private struct AdvancedOptionView: View {
     @AppStorage("NotifiedAlert") private var notifiedAlert = true
     private var keyStore = NSUbiquitousKeyValueStore()
     @EnvironmentObject var store: OPassStore
-    
+
     var body: some View {
         Form {
             Section("FEATURE") {
@@ -211,9 +214,9 @@ private struct AdvancedOptionView: View {
 }
 
 #if DEBUG
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
+    struct SettingsView_Previews: PreviewProvider {
+        static var previews: some View {
+            SettingsView()
+        }
     }
-}
 #endif

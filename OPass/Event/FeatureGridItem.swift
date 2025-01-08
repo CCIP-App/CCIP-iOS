@@ -65,16 +65,17 @@ struct FeatureGridItem: View {
         case .wifi:
             if let wifi = feature.wifi, wifi.count == 1 {
                 NEHotspot.ConnectWiFi(SSID: wifi[0].ssid, withPass: wifi[0].password)
-            } else { presentWifi = true }
+            } else {
+                presentWifi = true
+            }
         case .telegram:
             if let urlString = feature.url, let url = URL(string: urlString) {
                 Constants.openInOS(forURL: url)
             }
         default:
             if let url = feature.url(token: event.token, role: event.attendee?.role) {
-                Constants.openInAppSafari(forURL: url, style: colorScheme) // TODO: Custom Webview
+                Constants.openInAppSafari(forURL: url, style: colorScheme)  // TODO: Custom Webview
             }
         }
     }
 }
-

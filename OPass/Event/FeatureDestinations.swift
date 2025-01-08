@@ -28,7 +28,7 @@ extension FeatureDestinations {
         case .announcement:
             AnnouncementView()
         case .webview:
-            EmptyView() // TODO: Custom WebView
+            EmptyView()  // TODO: Custom WebView
         }
     }
 }

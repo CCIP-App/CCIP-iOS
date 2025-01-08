@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct AppearanceView: View {
-    
+
     var body: some View {
         Form {
             Section("SCHEDULE") {
@@ -28,7 +28,7 @@ struct AppearanceView: View {
 }
 
 private struct ScheduleOptions: View {
-    
+
     @AppStorage("DimPastSession") var dimPastSession = true
     @AppStorage("PastSessionOpacity") var pastSessionOpacity: Double = 0.4
     let sampleTimeHour: [Int] = [
@@ -37,12 +37,12 @@ private struct ScheduleOptions: View {
         Calendar.current.component(.hour, from: Date.now.advanced(by: 3600)),
         Calendar.current.component(.hour, from: Date.now.advanced(by: 7200))
     ]
-    
+
     var body: some View {
         List {
             HStack {
                 VStack(alignment: .leading, spacing: 3) {
-                    HStack() {
+                    HStack {
                         Text("OPass Room 1")
                             .font(.caption2)
                             .padding(.vertical, 1)
@@ -50,7 +50,7 @@ private struct ScheduleOptions: View {
                             .foregroundColor(.white)
                             .background(.blue)
                             .cornerRadius(5)
-                        
+
                         Text(String(format: "%d:00 ~ %d:00", sampleTimeHour[0], sampleTimeHour[1]))
                             .foregroundColor(.gray)
                             .font(.footnote)
@@ -58,7 +58,7 @@ private struct ScheduleOptions: View {
                     Text("PastSession")
                         .lineLimit(2)
                 }
-                
+
                 .opacity(self.dimPastSession ? self.pastSessionOpacity : 1)
                 .padding(.horizontal, 5)
                 .padding(10)
@@ -66,10 +66,10 @@ private struct ScheduleOptions: View {
             }
             .background(.sectionBackground)
             .cornerRadius(8)
-            
+
             HStack {
                 VStack(alignment: .leading, spacing: 3) {
-                    HStack() {
+                    HStack {
                         Text("OPass Room 2")
                             .font(.caption2)
                             .padding(.vertical, 1)
@@ -77,7 +77,7 @@ private struct ScheduleOptions: View {
                             .foregroundColor(.white)
                             .background(.blue)
                             .cornerRadius(5)
-                        
+
                         Text(String(format: "%d:00 ~ %d:00", sampleTimeHour[2], sampleTimeHour[3]))
                             .foregroundColor(.gray)
                             .font(.footnote)
@@ -95,14 +95,14 @@ private struct ScheduleOptions: View {
         .listRowBackground(Color.clear)
         .listRowSeparator(.hidden)
         .listRowInsets(EdgeInsets(top: 0, leading: 10, bottom: 6, trailing: 10))
-        
+
         Toggle("Dim Past Session", isOn: $dimPastSession.animation())
-        
+
         if self.dimPastSession {
             Slider(
                 value: $pastSessionOpacity.animation(),
                 in: 0.1...0.9,
-                onEditingChanged: {_ in},
+                onEditingChanged: { _ in },
                 minimumValueLabel: Image(systemName: "sun.min"),
                 maximumValueLabel: Image(systemName: "sun.min.fill"),
                 label: {}
@@ -112,12 +112,16 @@ private struct ScheduleOptions: View {
 }
 
 private struct DarkModePicker: View {
-    
+
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("UserInterfaceStyle") var userInterfaceStyle: UIUserInterfaceStyle = .unspecified
-    private let buttons: [(LocalizedStringKey, UIUserInterfaceStyle)] = [("System", .unspecified), ("On", .dark), ("Off", .light)]
-    private let darkModeStatusText: [UIUserInterfaceStyle : LocalizedStringKey] = [.unspecified : "System", .dark : "On", .light : "Off"]
-    
+    private let buttons: [(LocalizedStringKey, UIUserInterfaceStyle)] = [
+        ("System", .unspecified), ("On", .dark), ("Off", .light)
+    ]
+    private let darkModeStatusText: [UIUserInterfaceStyle: LocalizedStringKey] = [
+        .unspecified: "System", .dark: "On", .light: "Off"
+    ]
+
     var body: some View {
         NavigationLink {
             Form {
@@ -125,7 +129,8 @@ private struct DarkModePicker: View {
                     ForEach(buttons, id: \.1) { (name, interfaceStyle) in
                         Button {
                             self.userInterfaceStyle = interfaceStyle
-                            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).overrideUserInterfaceStyle = interfaceStyle
+                            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self])
+                                .overrideUserInterfaceStyle = interfaceStyle
                         } label: {
                             HStack {
                                 Text(name)
@@ -153,11 +158,11 @@ private struct DarkModePicker: View {
 }
 
 private struct ResetAllAppearanceButton: View {
-    
+
     @AppStorage("DimPastSession") var dimPastSession = true
     @AppStorage("PastSessionOpacity") var pastSessionOpacity: Double = 0.4
     @AppStorage("UserInterfaceStyle") var userInterfaceStyle: UIUserInterfaceStyle = .unspecified
-    
+
     var body: some View {
         Button {
             withAnimation {
@@ -165,7 +170,8 @@ private struct ResetAllAppearanceButton: View {
                 self.pastSessionOpacity = 0.4
             }
             self.userInterfaceStyle = .unspecified
-            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).overrideUserInterfaceStyle = userInterfaceStyle
+            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self])
+                .overrideUserInterfaceStyle = userInterfaceStyle
         } label: {
             Text("ResetAllAppearance")
                 .foregroundColor(.red)
@@ -174,9 +180,9 @@ private struct ResetAllAppearanceButton: View {
 }
 
 #if DEBUG
-struct AppearanceView_Previews: PreviewProvider {
-    static var previews: some View {
-        AppearanceView()
+    struct AppearanceView_Previews: PreviewProvider {
+        static var previews: some View {
+            AppearanceView()
+        }
     }
-}
 #endif

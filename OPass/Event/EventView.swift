@@ -12,7 +12,7 @@ struct EventView: View {
     @EnvironmentObject private var event: EventStore
 
     var body: some View {
-        VStack() {
+        VStack {
             eventLogo
                 .foregroundColor(.logo)
                 .padding(.bottom)
