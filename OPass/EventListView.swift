@@ -56,7 +56,7 @@ struct EventListView: View {
         ContentUnavailableView {
             Label("Faild to load event list", systemImage: "exclamationmark.triangle.fill")
         } description: {
-            Text("Check your network status or try again.")
+            Text("Check your network status or try again")
         } actions: {
             Button("Try Again") {
                 self.viewModel.error = nil

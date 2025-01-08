@@ -163,7 +163,7 @@ struct SessionView: View {
                     }
                     .alert("RequestUserPermitCalendar", isPresented: $isCalendarAlertPresented) {
                         Button("Cancel", role: .cancel, action: {})
-                        Button("Settigns") {
+                        Button("Settings") {
                             Constants.openInOS(forURL: URL(string: UIApplication.openSettingsURLString)!)
                         }
                     }

@@ -93,9 +93,9 @@
 		D3E4E6C127CD158400FFACEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4E6C027CD158400FFACEB /* ContentView.swift */; };
 		D3E4E6C327CD158700FFACEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E4E6C227CD158700FFACEB /* Assets.xcassets */; };
 		D3E4E6C627CD158700FFACEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E4E6C527CD158700FFACEB /* Preview Assets.xcassets */; };
+		D3E592682D2EA1BC00C45D2F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D3E592672D2EA1BC00C45D2F /* Localizable.xcstrings */; };
 		D3EA819A27F747E100FE7985 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EA819927F747E100FE7985 /* TicketView.swift */; };
 		D3EFF36F28A12824004CD8DF /* AppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFF36E28A12824004CD8DF /* AppearanceView.swift */; };
-		D3F23B4F28166DEF00A0FB35 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3F23B5128166DEF00A0FB35 /* Localizable.strings */; };
 		D3FAD811285EFBD00025AE7A /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80A285EFBD00025AE7A /* RobotoCondensed-Bold.ttf */; };
 		D3FAD812285EFBD00025AE7A /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80B285EFBD00025AE7A /* RobotoCondensed-Light.ttf */; };
 		D3FAD813285EFBD00025AE7A /* RobotoCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80C285EFBD00025AE7A /* RobotoCondensed-Italic.ttf */; };
@@ -215,10 +215,9 @@
 		D3E4E6C027CD158400FFACEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D3E4E6C227CD158700FFACEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3E4E6C527CD158700FFACEB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D3E592672D2EA1BC00C45D2F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		D3EA819927F747E100FE7985 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		D3EFF36E28A12824004CD8DF /* AppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceView.swift; sourceTree = "<group>"; };
-		D3F23B5228166DF600A0FB35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D3F23B5328166E0A00A0FB35 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D3FAD80A285EFBD00025AE7A /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		D3FAD80B285EFBD00025AE7A /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		D3FAD80C285EFBD00025AE7A /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; };
@@ -515,19 +514,11 @@
 				D3A00F2B27D839B10097A6AB /* Info.plist */,
 				4F29D9C627D4E6DA00292CC4 /* GoogleService-Info.plist */,
 				D3E4E6C227CD158700FFACEB /* Assets.xcassets */,
+				D3E592672D2EA1BC00C45D2F /* Localizable.xcstrings */,
 				D3FAD808285EFBAC0025AE7A /* Fonts */,
 				D3FBFA61282A935400DE118E /* Sounds */,
-				D3F23B4C28166D2F00A0FB35 /* OPass */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D3F23B4C28166D2F00A0FB35 /* OPass */ = {
-			isa = PBXGroup;
-			children = (
-				D3F23B5128166DEF00A0FB35 /* Localizable.strings */,
-			);
-			path = OPass;
 			sourceTree = "<group>";
 		};
 		D3FAD808285EFBAC0025AE7A /* Fonts */ = {
@@ -701,12 +692,12 @@
 				D3FAD812285EFBD00025AE7A /* RobotoCondensed-Light.ttf in Resources */,
 				D3FAD817285EFBD00025AE7A /* LICENSE.txt in Resources */,
 				D3FAD811285EFBD00025AE7A /* RobotoCondensed-Bold.ttf in Resources */,
+				D3E592682D2EA1BC00C45D2F /* Localizable.xcstrings in Resources */,
 				D3FAD816285EFBD00025AE7A /* RobotoCondensed-Regular.ttf in Resources */,
 				D31900D8281CF07E00864982 /* LaunchScreen.storyboard in Resources */,
 				D3E4E6C627CD158700FFACEB /* Preview Assets.xcassets in Resources */,
 				4F29D9C727D4E6DA00292CC4 /* GoogleService-Info.plist in Resources */,
 				D3FBFA65282A936100DE118E /* don.mp3 in Resources */,
-				D3F23B4F28166DEF00A0FB35 /* Localizable.strings in Resources */,
 				4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */,
 				D3E4E6C327CD158700FFACEB /* Assets.xcassets in Resources */,
 				4F48B5D427CF07910010FC2C /* eventListSample.json in Resources */,
@@ -834,18 +825,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		D3F23B5128166DEF00A0FB35 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D3F23B5228166DF600A0FB35 /* en */,
-				D3F23B5328166E0A00A0FB35 /* zh-Hant */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		D3A00F2527D837D00097A6AB /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -960,6 +939,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1016,6 +996,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
