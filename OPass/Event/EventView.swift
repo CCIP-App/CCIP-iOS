@@ -14,7 +14,7 @@ struct EventView: View {
     var body: some View {
         VStack() {
             eventLogo
-                .foregroundColor(Color("LogoColor"))
+                .foregroundColor(.logo)
                 .padding(.bottom)
                 .frame(
                     width: UIScreen.main.bounds.width * 0.78,
@@ -23,7 +23,7 @@ struct EventView: View {
             FeatureGrid()
         }
         .navigationDestination(for: FeatureDestinations.self) { $0.view }
-        .background(Color("SectionBackgroundColor"))
+        .background(.sectionBackground)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar { toolbar }
     }

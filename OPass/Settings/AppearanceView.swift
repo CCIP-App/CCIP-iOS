@@ -64,7 +64,7 @@ private struct ScheduleOptions: View {
                 .padding(10)
                 Spacer()
             }
-            .background(Color("SectionBackgroundColor"))
+            .background(.sectionBackground)
             .cornerRadius(8)
             
             HStack {
@@ -89,7 +89,7 @@ private struct ScheduleOptions: View {
                 .padding(10)
                 Spacer()
             }
-            .background(Color("SectionBackgroundColor"))
+            .background(.sectionBackground)
             .cornerRadius(8)
         }
         .listRowBackground(Color.clear)

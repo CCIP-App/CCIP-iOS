@@ -161,12 +161,12 @@ struct FastpassLogoView: View {
                     .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(Color("LogoColor"))
+                    .foregroundColor(.logo)
             } else {
                 Text(EventStore.config.title.localized())
                     .font(.system(.largeTitle, design: .rounded))
                     .fontWeight(.medium)
-                    .foregroundColor(Color("LogoColor"))
+                    .foregroundColor(.logo)
             }
             Spacer()
         }

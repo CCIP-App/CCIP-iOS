@@ -12,9 +12,10 @@ import OrderedCollections
 struct ScheduleSearchView: View {
     let schedule: Schedule
     @EnvironmentObject private var event: EventStore
-    
+    @EnvironmentObject private var router: Router
+
     @State private var searchText = ""
-    //@State private var searchActive = true //TODO: Will be implement in iOS 17
+    @State private var searchActive = true
     
     private let weekDayName: [LocalizedStringKey] = ["SUN", "MON", "TUE", "WEN", "THR", "FRI", "SAT"]
     
@@ -51,7 +52,9 @@ struct ScheduleSearchView: View {
                     ForEach(result.elements.indices, id: \.self) { index in
                         Section {
                              ForEach(result.values[index]) { session in
-                                 NavigationLink(value: ScheduleDestinations.session(session)) {
+                                 Button {
+                                     router.forward(ScheduleDestinations.session(session))
+                                 } label: {
                                      SessionOverView(session: session)
                                  }
                              }
@@ -67,7 +70,7 @@ struct ScheduleSearchView: View {
         }
         .searchable(
             text: $searchText,
-            //isPresented: $searchActive, //TODO: Will be avaiable in iOS 17
+            isPresented: $searchActive,
             placement: .navigationBarDrawer(displayMode: .always),
             prompt: "Title"
         )
