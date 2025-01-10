@@ -6,15 +6,18 @@
 //  2025 OPass.
 //
 
+import StoreKit
 import SwiftUI
 
 struct SettingsView: View {
     // MARK: - Variables
     @EnvironmentObject var store: OPassStore
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.requestReview) private var requestReview
     @AppStorage("HapticFeedback") private var hapticFeedback = true
     @State private var safariUrl = URL(string: "https://opass.app")!
     @State private var isSafariPresented = false
+    @State private var requestReviewTrigger = false
     private let websiteURL = URL(string: "https://opass.app")!
     private let gitHubURL = URL(string: "https://github.com/CCIP-App/CCIP-iOS")!
     private let policyURL = URL(string: "https://opass.app/privacy-policy.html")!
@@ -130,7 +133,6 @@ struct SettingsView: View {
         }
         .sensoryFeedback(.selection, trigger: isSafariPresented) { $1 && hapticFeedback }
     }
-    
 
     @ViewBuilder
     private func aboutSectionButton<S>(
@@ -179,16 +181,23 @@ struct SettingsView: View {
 
     @ViewBuilder
     private func bottomText() -> some View {
-        VStack {
-            Text("Version \(Bundle.main.releaseVersionNumber ?? "") (\(Bundle.main.buildVersionNumber ?? ""))")
-                .foregroundStyle(.gray)
-                .font(.footnote)
-            Text("Made with Love")
-                .foregroundStyle(.gray)
-                .font(.caption)
-                .bold()
+        Button {
+            requestReviewTrigger.toggle()
+            requestReview()
+        } label: {
+            VStack {
+                Text("Version \(Bundle.main.releaseVersionNumber ?? "") (\(Bundle.main.buildVersionNumber ?? ""))")
+                    .foregroundStyle(.gray)
+                    .font(.footnote)
+                Text("Made with Love")
+                    .foregroundStyle(.gray)
+                    .font(.caption)
+                    .bold()
+                    .underline(color: .gray.opacity(0.5))
+            }
+            .frame(maxWidth: .infinity, alignment: .center)
         }
-        .frame(maxWidth: .infinity, alignment: .center)
+        .sensoryFeedback(.success, trigger: requestReviewTrigger) { _, _ in hapticFeedback }
         .listRowBackground(Color.clear)
     }
 }
