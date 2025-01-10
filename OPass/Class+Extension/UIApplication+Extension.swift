@@ -11,19 +11,13 @@ import UIKit
 
 extension UIApplication {
     static func currentUIWindow() -> UIWindow? {
-        let connectedScenes = self.shared.connectedScenes
-            .filter { $0.activationState == .foregroundActive }
-            .compactMap { $0 as? UIWindowScene }
-        
-        let window = connectedScenes.first?
-            .windows
-            .first { $0.isKeyWindow }
-        
-        return window
+        let scene = shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
+        return scene?.windows.first(where: { $0.isKeyWindow })
     }
+
     static func topViewController() -> UIViewController? {
         var presentedViewController: UIViewController? = nil
-        let currentUIWindow = self.currentUIWindow()
+        let currentUIWindow = currentUIWindow()
         if var topController = currentUIWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
@@ -32,7 +26,14 @@ extension UIApplication {
         }
         return presentedViewController
     }
+
     static func endEditing() {
-        self.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+
+    static var size: CGSize {
+        guard let windowScene = shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
+        else { return UIScreen.main.bounds.size }
+        return windowScene.screen.bounds.size
     }
 }

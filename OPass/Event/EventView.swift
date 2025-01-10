@@ -56,9 +56,10 @@ struct EventView: View {
 
     private var featureGrid: some View {
         ScrollView {
+            let spacing = UIApplication.size.width * 0.0545454
             LazyVGrid(
                 columns: .init(
-                    repeating: .init(spacing: 30, alignment: .top),
+                    repeating: .init(spacing: spacing, alignment: .top),
                     count: 4
                 )
             ) {
@@ -67,8 +68,8 @@ struct EventView: View {
                         .padding(.bottom, 5)
                 }
             }
+            .padding(.horizontal, spacing)
         }
-        .padding(.horizontal)
     }
 
     private func featureButton(of feature: Feature) -> some View {
@@ -77,27 +78,33 @@ struct EventView: View {
                 featureAction(of: feature)
             } label: {
                 Rectangle()
-                    .aspectRatio(1, contentMode: .fit)
+                    .aspectRatio(0.8484848, contentMode: .fit)
                     .foregroundColor(.clear)
                     .overlay {
-                        if let image = feature.iconImage {
-                            image
-                                .renderingMode(.template)
-                                .interpolation(.none)
-                                .resizable()
-                                .scaledToFill()
-                        } else {
-                            Image(systemName: feature.symbol)
-                                .resizable()
-                                .scaledToFill()
-                                .padding(3)
+                        GeometryReader { geometry in
+                            let width = geometry.size.width
+                            Group {
+                                if let image = feature.iconImage {
+                                    image
+                                        .renderingMode(.template)
+                                        .interpolation(.none)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: width * 0.8, height: width * 0.8)
+                                } else {
+                                    Image(systemName: feature.symbol)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: width * 0.7, height: width * 0.65)
+                                }
+                            }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                         }
                     }
-                    .padding(.horizontal, 7)
-                    .padding(.vertical, 12)
             }
             .buttonStyle(.bordered)
             .tint(feature.color)
+
             Text(feature.title.localized())
                 .font(.custom("RobotoCondensed-Regular", size: 11, relativeTo: .caption2))
                 .multilineTextAlignment(.center)
