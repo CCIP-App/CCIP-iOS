@@ -3,18 +3,18 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/25.
-//  2023 OPass.
+//  2025 OPass.
 //
 
 import SwiftUI
 
 struct FastpassView: View {
-    
+
     // MARK: - Variables
     @EnvironmentObject var EventStore: EventStore
     @State private var isHttp403AlertPresented = false
     @State private var errorType: String? = nil
-    
+
     // MARK: - Views
     var body: some View {
         VStack {
@@ -25,29 +25,44 @@ struct FastpassView: View {
                     if EventStore.attendee != nil {
                         ScenarioView()
                             .task {
-                                do { try await EventStore.loadAttendee() }
-                                catch APIManager.LoadError.forbidden {
+                                do { try await EventStore.loadAttendee() } catch APIManager
+                                    .LoadError.forbidden
+                                {
                                     self.isHttp403AlertPresented = true
                                 } catch {}
                             }
                     } else {
                         ProgressView("Loading")
                             .task {
-                                do { try await EventStore.loadAttendee() }
-                                catch APIManager.LoadError.forbidden {
+                                do { try await EventStore.loadAttendee() } catch APIManager
+                                    .LoadError.forbidden
+                                {
                                     self.errorType = "http403"
-                                }
-                                catch { self.errorType = "unknown" }
+                                } catch { self.errorType = "unknown" }
                             }
                     }
                 } else {
-                    ErrorWithRetryView(message: {
+                    ContentUnavailableView {
                         switch errorType! {
-                        case "http403": return "ConnectToConferenceWiFi"
-                        default: return nil
+                        case "http403":
+                            Label("Network Error", systemImage: "wifi.exclamationmark")
+                        default:
+                            Label(
+                                "Something went wrong", systemImage: "exclamationmark.triangle.fill"
+                            )
                         }
-                    }()) {
-                        self.errorType = nil
+                    } description: {
+                        switch errorType! {
+                        case "http403":
+                            Text("ConnectToConferenceWiFi")
+                        default:
+                            Text("Check your network status or select a new event.")
+                        }
+                    } actions: {
+                        Button("Try Again") {
+                            self.errorType = nil
+                        }
+                        .buttonStyle(.borderedProminent)
                     }
                 }
             }
@@ -69,10 +84,10 @@ struct FastpassView: View {
 }
 
 #if DEBUG
-struct FastpassView_Previews: PreviewProvider {
-    static var previews: some View {
-        FastpassView()
-            .environmentObject(OPassStore.mock().event!)
+    struct FastpassView_Previews: PreviewProvider {
+        static var previews: some View {
+            FastpassView()
+                .environmentObject(OPassStore.mock().event!)
+        }
     }
-}
 #endif

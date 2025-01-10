@@ -3,217 +3,216 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/2.
-//  2023 OPass.
+//  2025 OPass.
 //
 
+import StoreKit
 import SwiftUI
 
 struct SettingsView: View {
-    
+    // MARK: - Variables
     @EnvironmentObject var store: OPassStore
-    
-    var body: some View {
-        VStack {
-            Form {
-                AppIconSection()
-                
-                GeneralSection()
-                
-                AboutSection()
-                
-                AdvancedSection()
-            }
-        }
-        .navigationDestination(for: SettingsDestinations.self) { $0.view }
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Settings")
-    }
-}
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.requestReview) private var requestReview
+    @AppStorage("HapticFeedback") private var hapticFeedback = true
+    @State private var safariUrl = URL(string: "https://opass.app")!
+    @State private var isSafariPresented = false
+    @State private var requestReviewTrigger = false
+    private let websiteURL = URL(string: "https://opass.app")!
+    private let gitHubURL = URL(string: "https://github.com/CCIP-App/CCIP-iOS")!
+    private let policyURL = URL(string: "https://opass.app/privacy-policy.html")!
 
-private struct AppIconSection: View {
-    var body: some View {
-        Section {
-            HStack {
-                Spacer()
-                VStack {
-                    Image("InAppIcon")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: UIScreen.main.bounds.width * 0.28)
-                        .clipShape(Circle())
-                    Text("OPass")
-                }
-                .padding(5)
-                 Spacer()
-            }
-        }
-    }
-}
-
-private struct GeneralSection: View {
-    var body: some View {
-        Section(header: Text("GENERAL")) {
-            NavigationLink(value: SettingsDestinations.appearance) {
-                Label { Text("Appearance") } icon: {
-                    Image(systemName: "circle.lefthalf.filled")
-                        .padding(4)
-                        .foregroundColor(.white)
-                        .background(Color(red: 89/255, green: 169/255, blue: 214/255))
-                        .cornerRadius(7)
-                }
-            }
-        }
-    }
-}
-
-private struct AboutSection: View {
-    
-    @Environment(\.colorScheme) var colorScheme
-    private let CCIPWebsiteURL = URL(string: "https://opass.app")!
-    private let CCIPGitHubURL = URL(string: "https://github.com/CCIP-App")!
-    private let CCIPPolicyURL = URL(string: "https://opass.app/privacy-policy.html")!
-    
-    var body: some View {
-        Section(header: Text("ABOUT")) {
-            VStack(alignment: .leading) {
-                Text("Version")
-                    .foregroundColor(colorScheme == .dark ? .white : .black)
-                Text(
-                    String("\(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)") +
-                    String(" (Build \(Bundle.main.infoDictionary!["CFBundleVersion"]!))")
-                )
-                .font(.subheadline)
-                .foregroundColor(.gray)
-            }
-            
-            Button {
-                Constants.openInAppSafari(forURL: CCIPWebsiteURL, style: colorScheme)
-            } label: {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("OfficialWebsite")
-                            .foregroundColor(colorScheme == .dark ? .white : .black)
-                        Text(CCIPWebsiteURL.absoluteString)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                    }
-                    
-                    Spacer()
-                    
-                    Image("external-link")
-                        .renderingMode(.template)
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(.gray)
-                        .frame(width: UIScreen.main.bounds.width * 0.045)
-                }
-            }
-            
-            Button {
-                Constants.openInAppSafari(forURL: CCIPGitHubURL, style: colorScheme)
-            } label: {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("GitHub")
-                            .foregroundColor(colorScheme == .dark ? .white : .black)
-                        Text(CCIPGitHubURL.absoluteString)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                    }
-                    
-                    Spacer()
-                    
-                    Image("external-link")
-                        .renderingMode(.template)
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(.gray)
-                        .frame(width: UIScreen.main.bounds.width * 0.045)
-                }
-            }
-            
-            Button {
-                Constants.openInAppSafari(forURL: CCIPPolicyURL, style: colorScheme)
-            } label: {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("PrivacyPolicy")
-                            .foregroundColor(colorScheme == .dark ? .white : .black)
-                        Text(CCIPPolicyURL.absoluteString)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                    }
-                    
-                    Spacer()
-                    
-                    Image("external-link")
-                        .renderingMode(.template)
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(.gray)
-                        .frame(width: UIScreen.main.bounds.width * 0.045)
-                }
-            }
-            
-            NavigationLink("Developers", value: SettingsDestinations.developers)
-        }
-    }
-}
-
-private struct AdvancedSection: View {
-    var body: some View {
-        Section(header: Text("ADVANCED")) {
-            NavigationLink(destination: AdvancedOptionView()) {
-                Image(systemName: "hammer")
-                Text("AdvancedOption")
-            }
-        }
-    }
-}
-
-private struct AdvancedOptionView: View {
-    @AppStorage("UserInterfaceStyle") private var interfaceStyle: UIUserInterfaceStyle = .unspecified
-    @AppStorage("AutoAdjustTicketBirghtness") private var autoAdjustTicketBirghtness = true
-    @AppStorage("AutoSelectScheduleDay") private var autoSelectScheduleDay = true
-    @AppStorage("PastSessionOpacity") private var pastSessionOpacity = 0.4
-    @AppStorage("DimPastSession") private var dimPastSession = true
-    @AppStorage("NotifiedAlert") private var notifiedAlert = true
-    private var keyStore = NSUbiquitousKeyValueStore()
-    @EnvironmentObject var store: OPassStore
-    
+    // MARK: - Views
     var body: some View {
         Form {
-            Section("FEATURE") {
-                Toggle("AutoSelectScheduleDay", isOn: $autoSelectScheduleDay)
-            }
+            introductionSection()
 
-            Button("Reset All", role: .destructive) {
-                resetAll()
-            }
+            generalSection()
 
-            Button("ClearCacheData", role: .destructive) {
-                keyStore.removeObject(forKey: "EventStore")
-                keyStore.synchronize()
-            }
+            aboutSection()
+
+            bottomText()
         }
-        .navigationTitle("AdvancedOption")
-        .navigationBarTitleDisplayMode(.inline)
+        .safariViewSheet(url: safariUrl, isPresented: $isSafariPresented)
+        .navigationBarTitleDisplayMode(.large)
+        .navigationTitle("Settings")
+        .listSectionSpacing(0)
     }
 
-    private func resetAll() {
-        interfaceStyle = .unspecified
-        autoAdjustTicketBirghtness = true
-        autoSelectScheduleDay = true
-        pastSessionOpacity = 0.4
-        dimPastSession = true
-        notifiedAlert = true
+    @ViewBuilder
+    private func introductionSection() -> some View {
+        VStack(spacing: 5) {
+            Image(.inAppIcon)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 70)
+                .clipShape(.rect(cornerRadius: 15.6))  // radius = width * 2/9
+
+            Text("OPass")
+                .font(.title2)
+                .bold()
+
+            Text("Open Pass & All Pass - A Community Checkin with Interactivity Project for iOS")
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 5)
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+        .padding(.vertical, 5)
+    }
+
+    @ViewBuilder
+    private func generalSection() -> some View {
+        Section("GENERAL") {
+            generalSectionButton(
+                "General",
+                iconSystemName: "gear",
+                iconForegroundStyle: .gray
+            ) { GeneralSettingsView() }
+
+            generalSectionButton(
+                "Appearance",
+                iconSystemName: "sun.max.fill",
+                iconForegroundStyle: .yellow
+            ) { AppearanceSettingsView() }
+        }
+    }
+
+    @ViewBuilder
+    private func generalSectionButton<S, V>(
+        _ title: String,
+        iconSystemName: String,
+        iconForegroundStyle: S,
+        destination: () -> V
+    ) -> some View where S: ShapeStyle, V: View {
+        NavigationLink(destination: destination) {
+            Label {
+                Text(title)
+            } icon: {
+                Image(systemName: iconSystemName)
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(iconForegroundStyle)
+            }
+            .labelStyle(CenterLabelStyle())
+        }
+    }
+
+    @ViewBuilder
+    private func aboutSection() -> some View {
+        Section("ABOUT") {
+            aboutSectionButton(
+                "Official Website",
+                urlText: websiteURL.absoluteString,
+                iconSystemName: "safari",
+                iconRenderingMode: .hierarchical,
+                iconColor: .primary
+            ) {
+                safariUrl = websiteURL
+                isSafariPresented.toggle()
+            }
+
+            aboutSectionButton(
+                "Source Code",
+                urlText: gitHubURL.absoluteString,
+                icon: .githubMark,
+                iconColor: colorScheme == .light ? .black : .white
+            ) {
+                safariUrl = gitHubURL
+                isSafariPresented.toggle()
+            }
+
+            aboutSectionButton(
+                "Privacy Policy",
+                urlText: policyURL.absoluteString,
+                iconSystemName: "doc.plaintext",
+                iconColor: .gray
+            ) {
+                safariUrl = policyURL
+                isSafariPresented.toggle()
+            }
+        }
+        .sensoryFeedback(.selection, trigger: isSafariPresented) { $1 && hapticFeedback }
+    }
+
+    @ViewBuilder
+    private func aboutSectionButton<S>(
+        _ title: String,
+        urlText: String,
+        icon: ImageResource? = nil,
+        iconSystemName: String? = nil,
+        iconRenderingMode: SymbolRenderingMode? = nil,
+        iconColor: S,
+        action: @escaping () -> Void
+    ) -> some View where S: ShapeStyle {
+        Button(action: action) {
+            Label {
+                VStack(alignment: .leading, spacing: 0) {
+                    Text(title)
+                        .foregroundStyle(colorScheme == .light ? .black : .white)
+                    Text(urlText)
+                        .foregroundStyle(.gray)
+                        .font(.subheadline)
+                }
+                Spacer()
+                Image(.externalLink)
+                    .renderingMode(.template)
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(.gray.opacity(0.7))
+                    .frame(width: 18)
+            } icon: {
+                if let icon = icon {
+                    Image(icon)
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundStyle(iconColor)
+                } else {
+                    Image(systemName: iconSystemName ?? "exclamationmark.triangle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundStyle(iconColor)
+                        .symbolRenderingMode(iconRenderingMode)
+                }
+            }
+        }
+        .labelStyle(CenterLabelStyle())
+    }
+
+    @ViewBuilder
+    private func bottomText() -> some View {
+        Button {
+            requestReviewTrigger.toggle()
+            requestReview()
+        } label: {
+            VStack {
+                Text("Version \(Bundle.main.releaseVersionNumber ?? "") (\(Bundle.main.buildVersionNumber ?? ""))")
+                    .foregroundStyle(.gray)
+                    .font(.footnote)
+                Text("Made with Love")
+                    .foregroundStyle(.gray)
+                    .font(.caption)
+                    .bold()
+                    .underline(color: .gray.opacity(0.5))
+            }
+            .frame(maxWidth: .infinity, alignment: .center)
+        }
+        .sensoryFeedback(.success, trigger: requestReviewTrigger) { _, _ in hapticFeedback }
+        .listRowBackground(Color.clear)
     }
 }
 
-#if DEBUG
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
+extension Bundle {
+    fileprivate var releaseVersionNumber: String? {
+        return infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+    fileprivate var buildVersionNumber: String? {
+        return infoDictionary?["CFBundleVersion"] as? String
+    }
+}
+
+#Preview {
+    NavigationView {
         SettingsView()
     }
 }
-#endif

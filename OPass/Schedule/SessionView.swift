@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/27.
-//  2023 OPass.
+//  2025 OPass.
 //
 
 import SwiftUI
@@ -57,23 +57,23 @@ struct SessionView: View {
                 
                 if let type = session.type {
                     TypeSection(name: event.schedule?.types[type]?.localized().name ?? type)
-                        .background(Color("SectionBackgroundColor"))
+                        .background(.sectionBackground)
                         .cornerRadius(8)
                         .padding(.bottom)
                 }
                 
                 PlaceSection(name: event.schedule?.rooms[session.room]?.localized().name ?? session.room)
-                    .background(Color("SectionBackgroundColor"))
+                    .background(.sectionBackground)
                     .cornerRadius(8)
                     .padding(.bottom)
                 
                 TimeSection(session: session)
-                    .background(Color("SectionBackgroundColor"))
+                    .background(.sectionBackground)
                     .cornerRadius(8)
                 
                 if let broadcast = session.broadcast, broadcast.isNotEmpty {
                     BroadcastSection(event.schedule, broadcast: broadcast)
-                        .background(Color("SectionBackgroundColor"))
+                        .background(.sectionBackground)
                         .cornerRadius(8)
                         .padding(.top)
                 }
@@ -128,8 +128,8 @@ struct SessionView: View {
                     } message: {
                         Text("NotifiedAlertMessage")
                     }
-                    .onChange(of: scenePhase) { phase in
-                        switch phase {
+                    .onChange(of: scenePhase) {
+                        switch scenePhase {
                         case .active:
                             if pendNotified { event.notify(session: session) }
                         default:
@@ -140,7 +140,7 @@ struct SessionView: View {
                     Menu {
                         Button {
                             Task {
-                                if (try? await eventStore.requestAccess(to: .event)) == true {
+                                if (try? await eventStore.requestFullAccessToEvents()) == true {
                                     isEventEditViewPresented.toggle()
                                 } else {
                                     isCalendarAlertPresented.toggle()
@@ -163,7 +163,7 @@ struct SessionView: View {
                     }
                     .alert("RequestUserPermitCalendar", isPresented: $isCalendarAlertPresented) {
                         Button("Cancel", role: .cancel, action: {})
-                        Button("Settigns") {
+                        Button("Settings") {
                             Constants.openInOS(forURL: URL(string: UIApplication.openSettingsURLString)!)
                         }
                     }
@@ -192,7 +192,7 @@ struct SessionView: View {
     }
 }
 
-extension String: Identifiable {
+extension String: @retroactive Identifiable {
     public typealias ID = Int
     public var id: Int {
         return hash
@@ -270,7 +270,7 @@ private struct FeatureButtons: View {
                                     .font(.system(size: 23, weight: .semibold, design: .rounded))
                                     .foregroundColor(colorScheme == .dark ? .gray : Color(red: 72/255, green: 72/255, blue: 74/255))
                                     .frame(width: buttonSize, height: buttonSize)
-                                    .background(Color("SectionBackgroundColor"))
+                                    .background(.sectionBackground)
                                     .cornerRadius(10)
                             }
                             Text(LocalizedStringKey(text))
@@ -467,7 +467,7 @@ private struct SpeakerBlock: View {
             }
         }
         .padding(.horizontal, 10)
-        .background(Color("SectionBackgroundColor"))
+        .background(.sectionBackground)
         .cornerRadius(8)
         .padding(.bottom, 8)
     }

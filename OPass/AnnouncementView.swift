@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by secminhr on 2022/3/5.
-//  2023 OPass.
+//  2025 OPass.
 //
 
 import SwiftUI
@@ -29,20 +29,24 @@ struct AnnouncementView: View {
                                     VStack(alignment: .leading, spacing: 3) {
                                         Text(announcement.localized())
                                             .foregroundColor(colorScheme == .dark ? .white : .black)
-                                        Text(String(
-                                            format: "%d/%d %d:%02d",
-                                            announcement.datetime.month,
-                                            announcement.datetime.day,
-                                            announcement.datetime.hour,
-                                            announcement.datetime.minute
-                                        ))
+                                        Text(
+                                            String(
+                                                format: "%d/%d %d:%02d",
+                                                announcement.datetime.month,
+                                                announcement.datetime.day,
+                                                announcement.datetime.hour,
+                                                announcement.datetime.minute
+                                            )
+                                        )
                                         .font(.footnote)
                                         .foregroundColor(.gray)
                                     }
                                     Spacer()
                                     if announcement.url != nil {
                                         Image(systemName: "chevron.right")
-                                            .foregroundColor(.gray)
+                                            .foregroundColor(.gray.opacity(0.56))
+                                            .fontWeight(.semibold)
+                                            .font(.callout)
                                     }
                                 }
                             }
@@ -67,7 +71,7 @@ struct AnnouncementView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: UIScreen.main.bounds.width * 0.25)
-                                .foregroundColor(Color("LogoColor"))
+                                .foregroundColor(.logo)
                             Text("EmptyAnnouncement")
                                 .font(.title2)
                         }
@@ -98,13 +102,25 @@ struct AnnouncementView: View {
                         }
                 }
             } else {
-                ErrorWithRetryView(message: {
+                ContentUnavailableView {
                     switch errorType! {
-                    case "http403": return "ConnectToConferenceWiFi"
-                    default: return nil
+                    case "http403":
+                        Label("Network Error", systemImage: "wifi.exclamationmark")
+                    default:
+                        Label("Something went wrong", systemImage: "exclamationmark.triangle.fill")
                     }
-                }()) {
-                    self.errorType = nil
+                } description: {
+                    switch errorType! {
+                    case "http403":
+                        Text("ConnectToConferenceWiFi")
+                    default:
+                        Text("Check your network status or select a new event.")
+                    }
+                } actions: {
+                    Button("Try Again") {
+                        self.errorType = nil
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
             }
         }
@@ -116,7 +132,7 @@ struct AnnouncementView: View {
                     Text(displayText.localized()).font(.headline)
                 }
             }
-            
+
             ToolbarItem(placement: .navigationBarTrailing) {
                 SFButton(systemName: "arrow.clockwise") {
                     self.errorType = nil
@@ -129,10 +145,10 @@ struct AnnouncementView: View {
 }
 
 #if DEBUG
-struct AnnounceView_Previews: PreviewProvider {
-    static var previews: some View {
-        AnnouncementView()
-            .environmentObject(OPassStore.mock().event!)
+    struct AnnounceView_Previews: PreviewProvider {
+        static var previews: some View {
+            AnnouncementView()
+                .environmentObject(OPassStore.mock().event!)
+        }
     }
-}
 #endif

@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/4/1.
-//  2023 OPass.
+//  2025 OPass.
 //
 
 import SwiftUI
@@ -65,8 +65,8 @@ struct TicketView: View {
                     }
                     .onAppear { AutoAdjustBrightness() }
                     .onDisappear { ResetBrightness() }
-                    .onChange(of: scenePhase) { phase in
-                        if phase == .active {
+                    .onChange(of: scenePhase) {
+                        if scenePhase == .active {
                             AutoAdjustBrightness()
                         } else {
                             ResetBrightness()
@@ -74,15 +74,15 @@ struct TicketView: View {
                     }
                     
                     Toggle("AutoBrighten", isOn: $autoAdjustTicketBirghtness)
-                        .onChange(of: autoAdjustTicketBirghtness) { auto in
-                            if auto {
+                        .onChange(of: autoAdjustTicketBirghtness) {
+                            if autoAdjustTicketBirghtness {
                                 self.defaultBrightness = UIScreen.main.brightness
                                 UIScreen.main.brightness = 1
                             } else { UIScreen.main.brightness = defaultBrightness }
                         }
                         .padding([.leading, .trailing])
                         .padding([.bottom, .top], 10)
-                        .background(Color("SectionBackgroundColor"))
+                        .background(.sectionBackground)
                 }
                 .task { try? await EventStore.loadAttendee() }
             } else {

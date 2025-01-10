@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/5.
-//  2023 OPass.
+//  2025 OPass.
 //
 
 import SwiftUI
@@ -161,12 +161,12 @@ struct FastpassLogoView: View {
                     .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(Color("LogoColor"))
+                    .foregroundColor(.logo)
             } else {
                 Text(EventStore.config.title.localized())
                     .font(.system(.largeTitle, design: .rounded))
                     .fontWeight(.medium)
-                    .foregroundColor(Color("LogoColor"))
+                    .foregroundColor(.logo)
             }
             Spacer()
         }

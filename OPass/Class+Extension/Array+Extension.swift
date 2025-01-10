@@ -3,12 +3,12 @@
 //  OPass
 //
 //  Created by secminhr on 2022/4/23.
-//  2023 OPass.
+//  2025 OPass.
 //
 
 import Foundation
 
-extension Array: RawRepresentable where Element == String {
+extension Array: @retroactive RawRepresentable where Element == String {
     public init?(rawValue: String) {
         guard let json = rawValue.data(using: .utf8),
               let dictionary = try? JSONDecoder().decode([String].self, from: json)  else {
