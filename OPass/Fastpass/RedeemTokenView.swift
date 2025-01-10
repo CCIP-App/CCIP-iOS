@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/5.
-//  2023 OPass.
+//  2025 OPass.
 //
 
 import SwiftUI
@@ -163,13 +163,13 @@ struct RedeemTokenView: View {
                             .padding(.vertical, 20)
                             .foregroundColor(Color.white)
                         Spacer()
-                    }.background(Color("LogoColor")).cornerRadius(12)
+                    }.background(.logo).cornerRadius(12)
                 }
             }
         }
-        .onChange(of: selectedPhotoItem) { item in
+        .onChange(of: selectedPhotoItem) {
             Task {
-                guard let data = try? await item?.loadTransferable(type: Data.self),
+                guard let data = try? await selectedPhotoItem?.loadTransferable(type: Data.self),
                       let ciImage = CIImage(data: data),
                       let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil),
                       let feature = detector.features(in: ciImage) as? [CIQRCodeFeature],
