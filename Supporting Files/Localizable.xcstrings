@@ -1,23 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%lld contribution%@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld contribution%2$@"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld 貢獻"
-          }
-        }
-      }
-    },
     "%lld/%lld" : {
       "localizations" : {
         "en" : {
@@ -76,34 +59,6 @@
         }
       }
     },
-    "ADVANCED" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "進階"
-          }
-        }
-      }
-    },
-    "AdvancedOption" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Advanced Option"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "進階選項"
-          }
-        }
-      }
-    },
     "Appearance" : {
       "localizations" : {
         "zh-Hant" : {
@@ -115,7 +70,14 @@
       }
     },
     "Auto-Select Schedule Day" : {
-
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動選擇日程"
+          }
+        }
+      }
     },
     "AutoBrighten" : {
       "localizations" : {
@@ -129,23 +91,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自動調亮"
-          }
-        }
-      }
-    },
-    "AutoSelectScheduleDay" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Auto-Select Schedule Day"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自動選擇日程"
           }
         }
       }
@@ -222,23 +167,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已在 %d:%02d 完成"
-          }
-        }
-      }
-    },
-    "ClearCacheData" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clear Cache Data"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "清除暫存資料"
           }
         }
       }
@@ -370,32 +298,11 @@
       }
     },
     "Dark Mode" : {
-
-    },
-    "DarkMode" : {
-      "extractionState" : "stale",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dark Mode"
-          }
-        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "深色模式"
-          }
-        }
-      }
-    },
-    "Developers" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "開發者"
           }
         }
       }
@@ -411,7 +318,14 @@
       }
     },
     "Disable" : {
-
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關閉"
+          }
+        }
+      }
     },
     "Done" : {
       "localizations" : {
@@ -456,7 +370,14 @@
       }
     },
     "Enable" : {
-
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開啟"
+          }
+        }
+      }
     },
     "EnterTokenManually" : {
       "localizations" : {
@@ -546,17 +467,6 @@
         }
       }
     },
-    "FEATURE" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "功能"
-          }
-        }
-      }
-    },
     "Filter %@" : {
       "localizations" : {
         "zh-Hant" : {
@@ -604,7 +514,14 @@
       }
     },
     "General" : {
-
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一般"
+          }
+        }
+      }
     },
     "GENERAL" : {
       "localizations" : {
@@ -632,19 +549,15 @@
         }
       }
     },
-    "GitHub" : {
-      "extractionState" : "stale",
+    "Haptic Feedback" : {
       "localizations" : {
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GitHub"
+            "value" : "觸覺回饋"
           }
         }
       }
-    },
-    "Haptic Feedback" : {
-
     },
     "InvaildToken" : {
       "localizations" : {
@@ -704,17 +617,6 @@
         }
       }
     },
-    "LOADING" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "載入中"
-          }
-        }
-      }
-    },
     "LOGGINGIN" : {
       "localizations" : {
         "en" : {
@@ -732,7 +634,14 @@
       }
     },
     "Made with Love" : {
-
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Made with Love"
+          }
+        }
+      }
     },
     "MON" : {
       "localizations" : {
@@ -822,51 +731,12 @@
         }
       }
     },
-    "Off" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "關閉"
-          }
-        }
-      }
-    },
-    "OfficialWebsite" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Official Website"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "官方網站"
-          }
-        }
-      }
-    },
     "OK" : {
       "localizations" : {
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
-          }
-        }
-      }
-    },
-    "On" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "開啟"
           }
         }
       }
@@ -918,7 +788,14 @@
       }
     },
     "Open Pass & All Pass - A Community Checkin with Interactivity Project for iOS" : {
-
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Pass & All Pass - A Community Checkin with Interactivity Project for iOS"
+          }
+        }
+      }
     },
     "OpenSettings" : {
       "localizations" : {
@@ -972,23 +849,6 @@
         }
       }
     },
-    "PrivacyPolicy" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Privacy Policy"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "隱私權政策"
-          }
-        }
-      }
-    },
     "RequestUserPermitCalendar" : {
       "localizations" : {
         "en" : {
@@ -1021,19 +881,15 @@
         }
       }
     },
-    "Reset All" : {
-      "extractionState" : "stale",
+    "Reset Appearance Settings" : {
       "localizations" : {
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "全部重設"
+            "value" : "重置外觀設定"
           }
         }
       }
-    },
-    "Reset Appearance Settings" : {
-
     },
     "Reset filters" : {
       "localizations" : {
@@ -1046,21 +902,11 @@
       }
     },
     "Reset General Settings" : {
-
-    },
-    "ResetAllAppearance" : {
-      "extractionState" : "stale",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reset All Appearance"
-          }
-        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "重設所有外觀"
+            "value" : "重置一般設定"
           }
         }
       }
@@ -1431,22 +1277,17 @@
         }
       }
     },
-    "Version" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "版本"
-          }
-        }
-      }
-    },
     "Version %@ (%@)" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "Version %1$@ (%2$@)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Version %1$@ (%2$@)"
           }
         }
