@@ -15,6 +15,7 @@ struct SettingsView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.requestReview) private var requestReview
     @AppStorage("HapticFeedback") private var hapticFeedback = true
+    @AppStorage("RequestReviewVersion") private var requestReviewVersion = ""
     @State private var safariUrl = URL(string: "https://opass.app")!
     @State private var isSafariPresented = false
     @State private var requestReviewTrigger = false
@@ -181,9 +182,11 @@ struct SettingsView: View {
 
     @ViewBuilder
     private func bottomText() -> some View {
+        let availableRequestReview = requestReviewVersion != Bundle.main.buildVersionNumber
         Button {
             requestReviewTrigger.toggle()
             requestReview()
+            requestReviewVersion = Bundle.main.buildVersionNumber ?? "1"
         } label: {
             VStack {
                 Text("Version \(Bundle.main.releaseVersionNumber ?? "") (\(Bundle.main.buildVersionNumber ?? ""))")
@@ -193,11 +196,12 @@ struct SettingsView: View {
                     .foregroundStyle(.gray)
                     .font(.caption)
                     .bold()
-                    .underline(color: .gray.opacity(0.5))
+                    .underline(availableRequestReview, color: .gray.opacity(0.5))
             }
             .frame(maxWidth: .infinity, alignment: .center)
         }
         .sensoryFeedback(.success, trigger: requestReviewTrigger) { _, _ in hapticFeedback }
+        .disabled(!availableRequestReview)
         .listRowBackground(Color.clear)
     }
 }
