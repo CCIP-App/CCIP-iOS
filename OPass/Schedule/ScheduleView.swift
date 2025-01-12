@@ -98,100 +98,18 @@ struct ScheduleView: View {
                             )
                             .background(.sectionBackground)
                             .frame(maxWidth: .infinity)
-                        }
-                        GeometryReader {
-                            let size = $0.size
-                            ScrollView(.horizontal) {
-                                LazyHStack(spacing: 0) {
-                                    ForEach(0..<filteredSessions.count, id: \.self) { day in
-                                        ScrollView(.vertical) {
-                                            LazyVStack {
-                                                ForEach(filteredSessions[day].keys, id: \.self) {
-                                                    header in
-                                                    LazyVStack(alignment: .leading, spacing: 0) {
-                                                        ForEach(
-                                                            0..<filteredSessions[day][header]!.count,
-                                                            id: \.self
-                                                        ) { index in
-                                                            VStack(spacing: 0) {
-                                                                if index != 0 { Divider() }
-                                                                Button {
-                                                                    self.router.forward(
-                                                                        ScheduleDestinations.session(
-                                                                            filteredSessions[day][
-                                                                                header]![index]))
-                                                                } label: {
-                                                                    SessionOverView(
-                                                                        session: filteredSessions[
-                                                                            day][header]![index]
-                                                                    )
-                                                                    .padding(.vertical, 10)
-                                                                    .padding(.horizontal, 15)
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                    .background(.sectionBackground)
-                                                    .cornerRadius(10)
-                                                    .padding(.bottom)
-                                                }
-                                            }
-                                            .padding()
-                                            .id(day)
-                                        }
-                                        .refreshable { try? await event.loadSchedule(reload: true) }
-                                        .containerRelativeFrame(.horizontal)
-                                        .scrollIndicators(.automatic)
-                                        .overlay {
-                                            if filteredSessions[day].isEmpty {
-                                                ContentUnavailableView {
-                                                    Label("No sessions found", systemImage: "text.badge.xmark")
-                                                } description: {
-                                                    Text("Use fewer filters or reset all filters.")
-                                                } actions: {
-                                                    Button("Reset filters") {
-                                                        self.filters = .init()
-                                                    }
-                                                    .bold()
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                                .scrollTargetLayout()
-                                .overlay {
-                                    GeometryReader {
-                                        Color.clear
-                                            .preference(
-                                                key: OffsetKey.self,
-                                                value: $0.frame(in: .scrollView(axis: .horizontal))
-                                                    .minX
-                                            )
-                                            .onPreferenceChange(OffsetKey.self) { value in
-                                                tabProgress = max(
-                                                    min(
-                                                        -value
-                                                            / (size.width
-                                                                * CGFloat(
-                                                                    filteredSessions.count - 1)),
-                                                        1), 0)
-                                            }
-                                    }
-                                }
-                            }
-                            .scrollDisabled(schedule.sessions.count == 1)
-                            .scrollPosition(id: $selectedDay)
-                            .scrollTargetBehavior(.paging)
-                            .scrollIndicators(.never)
-                            .ignoresSafeArea(.all, edges: .bottom)
-                            .background(.listBackground)
+
+                            scheduleList(
+                                schedule: schedule,
+                                filteredSessions: filteredSessions
+                            )
+                        } else {
+                            sessionList(filteredSessions[0])
                         }
                     }
                 } else {
                     ProgressView("Loading")
-                        .task {
-                            await initialize()
-                        }
+                        .task { await initialize() }
                 }
             } else {
                 ContentUnavailableView {
@@ -207,16 +125,97 @@ struct ScheduleView: View {
                 }
             }
         }
+        .navigationTitle(event.config.feature(.schedule)?.title.localized() ?? "Schedule")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar { toolbar }
     }
 
+    @ViewBuilder
+    private func scheduleList(schedule: Schedule, filteredSessions: [OrderedDictionary<DateInRegion, [Session]>]) -> some View {
+        GeometryReader {
+            let size = $0.size
+            ScrollView(.horizontal) {
+                LazyHStack(spacing: 0) {
+                    ForEach(0..<filteredSessions.count, id: \.self) { day in
+                        sessionList(filteredSessions[day]).id(day)
+                    }
+                }
+                .scrollTargetLayout()
+                .overlay {
+                    GeometryReader {
+                        Color.clear
+                            .preference(
+                                key: OffsetKey.self,
+                                value: $0.frame(in: .scrollView(axis: .horizontal))
+                                    .minX
+                            )
+                            .onPreferenceChange(OffsetKey.self) { value in
+                                tabProgress = max(min((-value / (size.width * CGFloat(filteredSessions.count - 1))), 1), 0)
+                            }
+                    }
+                }
+            }
+            .scrollDisabled(schedule.sessions.count == 1)
+            .scrollPosition(id: $selectedDay)
+            .scrollTargetBehavior(.paging)
+            .scrollIndicators(.never)
+            .ignoresSafeArea(.all, edges: .bottom)
+            .background(.listBackground)
+        }
+    }
+
+    @ViewBuilder
+    private func sessionList(_ sessions: OrderedDictionary<DateInRegion, [Session]>) -> some View {
+        ScrollView(.vertical) {
+            LazyVStack {
+                ForEach(sessions.keys, id: \.self) {
+                    header in
+                    LazyVStack(alignment: .leading, spacing: 0) {
+                        ForEach(
+                            0..<sessions[header]!.count,
+                            id: \.self
+                        ) { index in
+                            VStack(spacing: 0) {
+                                if index != 0 { Divider() }
+                                Button {
+                                    self.router.forward(ScheduleDestinations.session(sessions[header]![index]))
+                                } label: {
+                                    SessionOverView(session: sessions[header]![index])
+                                        .padding(.vertical, 10)
+                                        .padding(.horizontal, 15)
+                                }
+                            }
+                        }
+                    }
+                    .background(.sectionBackground)
+                    .cornerRadius(10)
+                    .padding(.bottom)
+                }
+            }
+            .padding()
+
+        }
+        .refreshable { try? await event.loadSchedule(reload: true) }
+        .containerRelativeFrame(.horizontal)
+        .scrollIndicators(.automatic)
+        .overlay {
+            if sessions.isEmpty {
+                ContentUnavailableView {
+                    Label("No sessions found", systemImage: "text.badge.xmark")
+                } description: {
+                    Text("Use fewer filters or reset all filters.")
+                } actions: {
+                    Button("Reset filters") {
+                        self.filters = .init()
+                    }
+                    .bold()
+                }
+            }
+        }
+    }
+
     @ToolbarContentBuilder
     private var toolbar: some ToolbarContent {
-        ToolbarItem(placement: .principal) {
-            Text(event.config.feature(.schedule)?.title.localized() ?? "Schedule").font(.headline)
-        }
-
         if let schedule = event.schedule {
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack {
