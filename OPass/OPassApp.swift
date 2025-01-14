@@ -35,26 +35,9 @@ struct OPassApp: App {
             ContentView(url: $url)
                 .preferredColorScheme(.init(interfaceStyle))
                 .environmentObject(store)
-                .onOpenURL { url in
-                    if DynamicLinks.dynamicLinks().handleUniversalLink(
-                        url,
-                        completion: { dynamicLink, _ in
-                            if let url = dynamicLink?.url {
-                                UIApplication.currentUIWindow()?.rootViewController?.dismiss(
-                                    animated: true)
-                                self.url = url
-                            }
-                        })
-                    {
-                        return
-                    }
-                    if let url = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url)?
-                        .url
-                    {
-                        UIApplication.currentUIWindow()?.rootViewController?.dismiss(animated: true)
-                        self.url = url
-                        return
-                    }
+                .onOpenURL {
+                    UIApplication.currentUIWindow()?.rootViewController?.dismiss(animated: true)
+                    self.url = $0
                 }
         }
     }

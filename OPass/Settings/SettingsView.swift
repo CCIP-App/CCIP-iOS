@@ -16,8 +16,7 @@ struct SettingsView: View {
     @Environment(\.requestReview) private var requestReview
     @AppStorage("HapticFeedback") private var hapticFeedback = true
     @AppStorage("RequestReviewVersion") private var requestReviewVersion = ""
-    @State private var safariUrl = URL(string: "https://opass.app")!
-    @State private var isSafariPresented = false
+    @State private var safariUrl: URL?
     @State private var requestReviewTrigger = false
     private let websiteURL = URL(string: "https://opass.app")!
     private let gitHubURL = URL(string: "https://github.com/CCIP-App/CCIP-iOS")!
@@ -34,7 +33,7 @@ struct SettingsView: View {
 
             bottomText()
         }
-        .safariViewSheet(url: safariUrl, isPresented: $isSafariPresented)
+        .safariViewSheet(url: $safariUrl) { print("Hello") }
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle("Settings")
         .listSectionSpacing(0)
@@ -107,32 +106,23 @@ struct SettingsView: View {
                 iconSystemName: "safari",
                 iconRenderingMode: .hierarchical,
                 iconColor: .primary
-            ) {
-                safariUrl = websiteURL
-                isSafariPresented.toggle()
-            }
+            ) { safariUrl = websiteURL }
 
             aboutSectionButton(
                 "Source Code",
                 urlText: gitHubURL.absoluteString,
                 icon: .githubMark,
                 iconColor: colorScheme == .light ? .black : .white
-            ) {
-                safariUrl = gitHubURL
-                isSafariPresented.toggle()
-            }
+            ) { safariUrl = gitHubURL }
 
             aboutSectionButton(
                 "Privacy Policy",
                 urlText: policyURL.absoluteString,
                 iconSystemName: "doc.plaintext",
                 iconColor: .gray
-            ) {
-                safariUrl = policyURL
-                isSafariPresented.toggle()
-            }
+            ) { safariUrl = policyURL }
         }
-        .sensoryFeedback(.selection, trigger: isSafariPresented) { $1 && hapticFeedback }
+        .sensoryFeedback(.selection, trigger: safariUrl != nil) { $1 && hapticFeedback }
     }
 
     @ViewBuilder
