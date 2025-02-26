@@ -34,7 +34,7 @@ struct ContentView: View {
                     }
             case .login(let url):
                 ProgressView("LOGGINGIN")
-                    .task { await parseUniversalLinkAndURL(url) }
+                    .task { await parseUniversalLink(url) }
                     .alert("InvalidURL", isPresented: $presentInvaildUrlAlert) {
                         Button("OK", role: .cancel) { self.url = nil }
                     } message: {
@@ -83,7 +83,7 @@ extension ContentView {
 
     private var viewState: ViewState {
         if let url = url {
-            error = nil
+            DispatchQueue.main.async { error = nil }
             return .login(url)
         }
         guard error == nil else { return .error }
@@ -92,9 +92,19 @@ extension ContentView {
         return .ready(event)
     }
 
-    private func parseUniversalLinkAndURL(_ url: URL) async {
-        let params = URLComponents(string: "?" + (url.query ?? ""))?.queryItems
-        // MARK: Select Event
+    private func parseUniversalLink(_ url: URL) async {
+        // Parse
+        var prasedUrl = url
+        if let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+            let linkParam = components.queryItems?.first(where: { $0.name == "link" })?.value,
+            let decodedLink = linkParam.removingPercentEncoding,
+            let linkURL = URL(string: decodedLink)
+        {
+            prasedUrl = linkURL
+        }
+        let params = URLComponents(url: prasedUrl, resolvingAgainstBaseURL: false)?.queryItems
+
+        // Select Event
         guard let eventId = params?.first(where: { $0.name == "event_id" })?.value else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.presentInvaildUrlAlert = true
@@ -103,7 +113,8 @@ extension ContentView {
         }
         store.eventId = eventId
         if eventId != store.event?.id { store.eventLogo = nil }
-        // MARK: Login
+        
+        // Login
         guard let token = params?.first(where: { $0.name == "token" })?.value else {
             DispatchQueue.main.async {
                 self.url = nil
@@ -122,7 +133,8 @@ extension ContentView {
             }
             return
         } catch {}
-        // MARK: Error
+        
+        // Error
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.presentInvaildUrlAlert = true
         }

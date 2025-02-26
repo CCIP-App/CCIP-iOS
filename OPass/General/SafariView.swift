@@ -10,8 +10,8 @@ import SafariServices
 import SwiftUI
 
 extension View {
-    func safariViewSheet(url: URL, isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil) -> some View {
-        self.sheet(isPresented: isPresented, onDismiss: onDismiss) {
+    func safariViewSheet(url: Binding<URL?>, onDismiss: (() -> Void)? = nil) -> some View {
+        self.sheet(item: url, onDismiss: onDismiss) { url in
             SFSafariViewWrapper(url: url)
                 .analyticsScreen(name: "SFSafariView")
                 .ignoresSafeArea()
@@ -27,4 +27,8 @@ private struct SFSafariViewWrapper: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: SFSafariViewController, context: UIViewControllerRepresentableContext<SFSafariViewWrapper>) {
         return
     }
+}
+
+extension URL: @retroactive Identifiable {
+    public var id: Int { self.absoluteString.hashValue }
 }
