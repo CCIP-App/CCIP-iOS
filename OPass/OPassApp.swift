@@ -36,6 +36,7 @@ struct OPassApp: App {
                 .preferredColorScheme(.init(interfaceStyle))
                 .environmentObject(store)
                 .onOpenURL {
+                    if ($0.scheme == "app.opass.ccip") { return }
                     UIApplication.currentUIWindow()?.rootViewController?.dismiss(animated: true)
                     self.url = $0
                 }

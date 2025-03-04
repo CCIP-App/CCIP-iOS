@@ -111,8 +111,21 @@ extension ContentView {
             }
             return
         }
+        let originalEvent = store.eventId
         store.eventId = eventId
-        if eventId != store.event?.id { store.eventLogo = nil }
+        
+        // Load Event
+        if eventId != store.event?.id {
+            store.eventLogo = nil
+            do { try await store.loadEvent() }
+            catch {
+                store.eventId = originalEvent
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.presentInvaildUrlAlert = true
+                }
+                return
+            }
+        }
         
         // Login
         guard let token = params?.first(where: { $0.name == "token" })?.value else {
@@ -124,7 +137,6 @@ extension ContentView {
         do {
             if try await store.loginCurrentEvent(with: token) {
                 DispatchQueue.main.async { self.url = nil }
-                await store.event?.loadLogos()
                 return
             }
         } catch APIManager.LoadError.forbidden {

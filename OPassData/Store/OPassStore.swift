@@ -76,7 +76,7 @@ extension OPassStore {
         guard let eventId = self.eventId else { return false }
         do {
             if eventId == event?.id {
-                return try await event?.redeem(token: token) ?? false
+                return try await event!.redeem(token: token)
             }
             let config = try await APIManager.fetchConfig(for: eventId)
             let eventModel = EventStore(config)
