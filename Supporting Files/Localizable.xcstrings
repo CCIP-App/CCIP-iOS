@@ -731,6 +731,16 @@
         }
       }
     },
+    "Official Website" : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "官方網站"
+          }
+        }
+      }
+    },
     "OK" : {
       "localizations" : {
         "zh-Hant" : {
@@ -845,6 +855,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "地點"
+          }
+        }
+      }
+    },
+    "Privacy Policy" : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隱私權政策"
           }
         }
       }
@@ -1131,6 +1151,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "出現了一些錯誤"
+          }
+        }
+      }
+    },
+    "Source Code" : {
+      "localizations" : {
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原始碼"
           }
         }
       }

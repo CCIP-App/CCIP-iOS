@@ -79,7 +79,7 @@ struct SettingsView: View {
 
     @ViewBuilder
     private func generalSectionButton<S, V>(
-        _ title: String,
+        _ title: LocalizedStringKey,
         iconSystemName: String,
         iconForegroundStyle: S,
         destination: () -> V
@@ -127,7 +127,7 @@ struct SettingsView: View {
 
     @ViewBuilder
     private func aboutSectionButton<S>(
-        _ title: String,
+        _ title: LocalizedStringKey,
         urlText: String,
         icon: ImageResource? = nil,
         iconSystemName: String? = nil,
