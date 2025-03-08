@@ -1098,7 +1098,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\\\"%@\\\" in Room \\\"%@\\\", please keep your time of buffer to reach the room."
+            "value" : "\"%@\" in Room \"%@\", please keep your time of buffer to reach the room."
           }
         },
         "zh-Hant" : {
