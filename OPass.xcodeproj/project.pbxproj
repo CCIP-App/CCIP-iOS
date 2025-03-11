@@ -653,6 +653,7 @@
 				en,
 				"zh-Hant",
 				Base,
+				ja,
 			);
 			mainGroup = D3E4E6B227CD158400FFACEB;
 			packageReferences = (
