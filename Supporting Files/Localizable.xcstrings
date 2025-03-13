@@ -1116,19 +1116,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Only available at\\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d"
+            "value" : "Only available at\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "利用可能時間：\\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d"
+            "value" : "利用可能時間：\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "開放時間：\\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d"
+            "value" : "開放時間：\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d"
           }
         }
       }
