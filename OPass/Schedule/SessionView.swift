@@ -9,6 +9,7 @@
 import SwiftUI
 import EventKit
 import SwiftDate
+import Translation
 import UserNotifications
 import OrderedCollections
 
@@ -578,16 +579,30 @@ private struct SpeakerBio: View {
 }
 
 private struct DescriptionSection: View {
-    
-    let description: String
     @Environment(\.colorScheme) var colorScheme
+    @State var description: String
+    @State private var translationPresented = false
     
     var body: some View {
         Section(header: Text(LocalizedStringKey("SessionIntroduction")).padding(.leading, 10)) {
-            Markdown(description, font: .footnote) { url in
-                Constants.openInAppSafari(forURL: url, style: colorScheme)
+            VStack {
+                Markdown(description, font: .footnote) { url in
+                    Constants.openInAppSafari(forURL: url, style: colorScheme)
+                }
+                .lineSpacing(4)
+                
+                if #available(iOS 17.4, *) {
+                    Divider()
+                    Button("Translate", systemImage: "translate") {
+                        translationPresented.toggle()
+                    }
+                    .font(.callout)
+                    .translationPresentation(
+                        isPresented: $translationPresented,
+                        text: description
+                    ) { description = $0 }
+                }
             }
-            .lineSpacing(4)
             .padding()
         }
         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
