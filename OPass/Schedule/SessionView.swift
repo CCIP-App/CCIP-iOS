@@ -211,12 +211,13 @@ private struct TagsSection: View {
             HStack {
                 ForEach(tags, id: \.self) { key in
                     Text(event.schedule?.tags[key]?.localized().name ?? key)
-                        .font(.caption)
-                        .padding(.vertical, 2)
-                        .padding(.horizontal, 8)
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .padding(.vertical, 7)
+                        .padding(.horizontal, 10)
                         .foregroundColor(colorScheme == .dark ? .white : .black)
-                        .background((colorScheme == .dark ? Color.white : Color.black).opacity(0.1))
-                        .cornerRadius(5)
+                        .background(.sectionBackground)
+                        .cornerRadius(10)
                 }
             }
         }
@@ -597,6 +598,7 @@ private struct DescriptionSection: View {
                         translationPresented.toggle()
                     }
                     .font(.callout)
+                    .padding(.bottom, -7)
                     .translationPresentation(
                         isPresented: $translationPresented,
                         text: description
