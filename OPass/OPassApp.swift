@@ -35,7 +35,15 @@ struct OPassApp: App {
             ContentView(url: $url)
                 .preferredColorScheme(.init(interfaceStyle))
                 .environmentObject(store)
+                .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
+                    if let url = activity.webpageURL {
+                        print("#\(url)")
+                        UIApplication.currentUIWindow()?.rootViewController?.dismiss(animated: true)
+                        self.url = url
+                    }
+                }
                 .onOpenURL {
+                    print("#\($0)")
                     if ($0.scheme == "app.opass.ccip") { return }
                     UIApplication.currentUIWindow()?.rootViewController?.dismiss(animated: true)
                     self.url = $0
@@ -53,12 +61,10 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     ) -> Bool {
         // MARK: - Configure OneSignal
         OneSignal.Debug.setLogLevel(.LL_VERBOSE)
-        OneSignal.initialize(
-            "b6213f49-e356-4b48-aa9d-7cf10ce1904d", withLaunchOptions: launchOptions)
-        OneSignal.Notifications.requestPermission(
-            { accepted in
-                self.logger.info("User accepted notifications: \(accepted)")
-            }, fallbackToSettings: false)
+        OneSignal.initialize("b6213f49-e356-4b48-aa9d-7cf10ce1904d", withLaunchOptions: launchOptions)
+        OneSignal.Notifications.requestPermission({ accepted in
+            self.logger.info("User accepted notifications: \(accepted)")
+        }, fallbackToSettings: false)
         return true
     }
 }
