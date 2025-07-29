@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
     "%lld/%lld" : {
       "localizations" : {
         "en" : {
@@ -21,7 +32,8 @@
             "value" : "%1$lld/%2$lld"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "%lld/%lld " : {
       "localizations" : {
@@ -43,7 +55,8 @@
             "value" : "%1$lld/%2$lld "
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "ABOUT" : {
       "localizations" : {
@@ -181,6 +194,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "取消"
+          }
+        }
+      }
+    },
+    "Check back later for announcements" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "後でお知らせを確認してください"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "稍後回來查看公告"
           }
         }
       }
@@ -521,14 +550,8 @@
         }
       }
     },
-    "EmptyAnnouncement" : {
+    "Empty Announcement" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Empty Announcement"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -911,6 +934,22 @@
         }
       }
     },
+    "Loading Announcements..." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お知らせを読み込み中..."
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在載入公告..."
+          }
+        }
+      }
+    },
     "LOGGINGIN" : {
       "localizations" : {
         "en" : {
@@ -1285,6 +1324,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "隱私權政策"
+          }
+        }
+      }
+    },
+    "Refresh" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新整理"
           }
         }
       }
@@ -1863,6 +1918,22 @@
         }
       }
     },
+    "Translate" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "翻訳する"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "翻譯"
+          }
+        }
+      }
+    },
     "Try Again" : {
       "localizations" : {
         "ja" : {
@@ -1961,6 +2032,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version %1$@ (%2$@)"
+          }
+        }
+      }
+    },
+    "View Details" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "詳細を表示"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查看詳情"
           }
         }
       }

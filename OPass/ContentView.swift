@@ -96,10 +96,9 @@ extension ContentView {
         // Parse
         var prasedUrl = url
         if let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
-            let linkParam = components.queryItems?.first(where: { $0.name == "link" })?.value,
-            let decodedLink = linkParam.removingPercentEncoding,
-            let linkURL = URL(string: decodedLink)
-        {
+           let linkParam = components.queryItems?.first(where: { $0.name == "link" })?.value,
+           let decodedLink = linkParam.removingPercentEncoding,
+           let linkURL = URL(string: decodedLink) {
             prasedUrl = linkURL
         }
         let params = URLComponents(url: prasedUrl, resolvingAgainstBaseURL: false)?.queryItems
