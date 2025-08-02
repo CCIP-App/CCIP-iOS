@@ -95,7 +95,7 @@
 		D3E592702D300B4000C45D2F /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E5926F2D300B4000C45D2F /* GeneralSettingsView.swift */; };
 		D3E592722D300DD400C45D2F /* AppearanceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E592712D300DD400C45D2F /* AppearanceSettingsView.swift */; };
 		D3EA819A27F747E100FE7985 /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EA819927F747E100FE7985 /* TicketView.swift */; };
-		D3F5EF592E3DE21400112FA1 /* EFQRCode in Frameworks */ = {isa = PBXBuildFile; productRef = D3F5EF582E3DE21400112FA1 /* EFQRCode */; };
+		D3F5EF5B2E3E341A00112FA1 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F5EF5A2E3E341A00112FA1 /* QRCodeGenerator.swift */; };
 		D3FAD811285EFBD00025AE7A /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80A285EFBD00025AE7A /* RobotoCondensed-Bold.ttf */; };
 		D3FAD812285EFBD00025AE7A /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80B285EFBD00025AE7A /* RobotoCondensed-Light.ttf */; };
 		D3FAD813285EFBD00025AE7A /* RobotoCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FAD80C285EFBD00025AE7A /* RobotoCondensed-Italic.ttf */; };
@@ -219,6 +219,7 @@
 		D3E5926F2D300B4000C45D2F /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
 		D3E592712D300DD400C45D2F /* AppearanceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSettingsView.swift; sourceTree = "<group>"; };
 		D3EA819927F747E100FE7985 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
+		D3F5EF5A2E3E341A00112FA1 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
 		D3FAD80A285EFBD00025AE7A /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		D3FAD80B285EFBD00025AE7A /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		D3FAD80C285EFBD00025AE7A /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; };
@@ -253,7 +254,6 @@
 				D3153BC02A8DF850006A2DD8 /* OneSignalFramework in Frameworks */,
 				D3E0123127D35D970040621F /* KeychainAccess in Frameworks */,
 				D33FB2FE28C21178006BBEF4 /* FirebaseAnalytics in Frameworks */,
-				D3F5EF592E3DE21400112FA1 /* EFQRCode in Frameworks */,
 				D36E33C42A681916006D4159 /* FirebaseAppCheck in Frameworks */,
 				4F5EB73127D2311200235396 /* SwiftDate in Frameworks */,
 				D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */,
@@ -444,6 +444,7 @@
 		D3DCB8412A850E0D00B043FC /* General */ = {
 			isa = PBXGroup;
 			children = (
+				D3F5EF5A2E3E341A00112FA1 /* QRCodeGenerator.swift */,
 				4F6968A527EBCB5E009073E4 /* SFButton.swift */,
 				D37BC4D928A57F1B00449482 /* Alerts.swift */,
 				D3E592692D2FFEEA00C45D2F /* SafariView.swift */,
@@ -618,7 +619,6 @@
 				D36E33C32A681916006D4159 /* FirebaseAppCheck */,
 				D394440C2A75371A00EE2021 /* OrderedCollections */,
 				D3153BBF2A8DF850006A2DD8 /* OneSignalFramework */,
-				D3F5EF582E3DE21400112FA1 /* EFQRCode */,
 			);
 			productName = OPass;
 			productReference = D3E4E6BB27CD158400FFACEB /* OPass.app */;
@@ -661,7 +661,6 @@
 				D3C6F60B28634F3A0074B942 /* XCRemoteSwiftPackageReference "MarkdownKit" */,
 				D33FB2FC28C21178006BBEF4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				D394440B2A75371A00EE2021 /* XCRemoteSwiftPackageReference "swift-collections" */,
-				D3F5EF572E3DE21400112FA1 /* XCRemoteSwiftPackageReference "EFQRCode" */,
 			);
 			productRefGroup = D3E4E6BC27CD158400FFACEB /* Products */;
 			projectDirPath = "";
@@ -807,6 +806,7 @@
 				D3E592722D300DD400C45D2F /* AppearanceSettingsView.swift in Sources */,
 				D3C28CA62A78F5DD00DA7BF3 /* Data+Image.swift in Sources */,
 				D39512F5285A174F009B9AE8 /* EventEditView.swift in Sources */,
+				D3F5EF5B2E3E341A00112FA1 /* QRCodeGenerator.swift in Sources */,
 				4FEF38FB27D13FBA00FC97F4 /* APIManager.swift in Sources */,
 				D3E5926A2D2FFEEA00C45D2F /* SafariView.swift in Sources */,
 				D3652A7B2869AF72002AC419 /* AttributedTextImpl.swift in Sources */,
@@ -1184,14 +1184,6 @@
 				minimumVersion = 4.2.2;
 			};
 		};
-		D3F5EF572E3DE21400112FA1 /* XCRemoteSwiftPackageReference "EFQRCode" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/EFPrefix/EFQRCode";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1249,11 +1241,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D3E0122F27D35D970040621F /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
-		};
-		D3F5EF582E3DE21400112FA1 /* EFQRCode */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D3F5EF572E3DE21400112FA1 /* XCRemoteSwiftPackageReference "EFQRCode" */;
-			productName = EFQRCode;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
