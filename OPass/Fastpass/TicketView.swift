@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import EFQRCode
 
 struct TicketView: View {
     
@@ -30,14 +29,15 @@ struct TicketView: View {
                                 Spacer()
                                 VStack(spacing: 0) {
                                     ZStack {
-                                        Image(uiImage: qrCodeUIImage)
-                                            .interpolation(.none)
-                                            .onAppear {
-                                                qrCodeUIImage = renderQRCode(string: token)
-                                            }
+                                        if let qrImage = generateQRCode(
+                                            string: token,
+                                            size: UIScreen.main.bounds.width * 0.6
+                                        ) {
+                                            Image(uiImage: qrImage)
+                                        }
                                     }
                                 }
-                                .padding(UIScreen.main.bounds.width * 0.08)
+                                .padding(UIScreen.main.bounds.width * 0.07)
                                 .background(Color.white)
                                 .cornerRadius(UIScreen.main.bounds.width * 0.1)
                                 Spacer()
@@ -111,25 +111,6 @@ struct TicketView: View {
             }
             Button("Cancel", role: .cancel) { }
         }
-    }
-    
-    private func renderQRCode(string: String) -> UIImage {
-        let generator = EFQRCodeGenerator(content: string, encoding: .utf8, size: EFIntSize())
-        
-        generator.withInputCorrectionLevel(.h)
-        generator.withColors(backgroundColor: UIColor.white.cgColor, foregroundColor: UIColor.black.cgColor)
-        if let maxMagnification = generator
-            .maxMagnification(lessThanOrEqualTo: UIScreen.main.bounds.width * 0.6) {
-            generator.magnification = EFIntSize(
-                width: maxMagnification,
-                height: maxMagnification
-            )
-        }
-        
-        if let cgImage = generator.generate() {
-            return UIImage(cgImage: cgImage)
-        }
-        return UIImage()
     }
     
     private func AutoAdjustBrightness() {
