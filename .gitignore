@@ -64,3 +64,4 @@ iOSInjectionProject/
 **/Settings.bundle/Root.plist
 .build
 .DS_Store
+.claude/
