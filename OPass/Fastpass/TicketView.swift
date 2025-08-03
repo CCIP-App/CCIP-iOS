@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import QRCode
 
 struct TicketView: View {
     
@@ -28,14 +29,20 @@ struct TicketView: View {
                             HStack {
                                 Spacer()
                                 VStack(spacing: 0) {
-                                    ZStack {
-                                        if let qrImage = generateQRCode(
-                                            string: token,
-                                            size: UIScreen.main.bounds.width * 0.6
-                                        ) {
-                                            Image(uiImage: qrImage)
-                                        }
-                                    }
+                                    QRCodeViewUI(
+                                        content: token,
+                                        errorCorrection: .low,
+                                        onPixelShape: QRCode.PixelShape.RoundedPath(
+                                            cornerRadiusFraction: 1,
+                                            hasInnerCorners: true
+                                        ),
+                                        eyeShape: QRCode.EyeShape.RoundedRect(cornerRadiusFraction: 0.6),
+                                        logoTemplate: nil,
+                                    )
+                                    .frame(
+                                        width: UIScreen.main.bounds.width * 0.55,
+                                        height: UIScreen.main.bounds.width * 0.55
+                                    )
                                 }
                                 .padding(UIScreen.main.bounds.width * 0.07)
                                 .background(Color.white)
