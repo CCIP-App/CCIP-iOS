@@ -299,12 +299,7 @@ extension EventStore {
                 session.localized().title,
                 schedule?.rooms[session.room]?.localized().name ?? "")
             content.sound = .default
-            let time = session.start - 5.minutes
-            var date = DateComponents()
-            date.month = time.month
-            date.day = time.day
-            date.hour = time.hour
-            date.minute = time.minute
+            let date = (session.start - 5.minutes).dateComponents
             let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
             let request = UNNotificationRequest(identifier: session.id, content: content, trigger: trigger)
             notificationCenter.add(request) { error in
