@@ -36,13 +36,11 @@ struct OPassApp: App {
                 .environmentObject(store)
                 .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
                     if let url = activity.webpageURL {
-                        print("#\(url)")
                         UIApplication.currentUIWindow()?.rootViewController?.dismiss(animated: true)
                         self.url = url
                     }
                 }
                 .onOpenURL {
-                    print("#\($0)")
                     if ($0.scheme == "app.opass.ccip") { return }
                     UIApplication.currentUIWindow()?.rootViewController?.dismiss(animated: true)
                     self.url = $0
