@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import EFQRCode
+import QRCode
 
 struct TicketView: View {
     
@@ -29,15 +29,22 @@ struct TicketView: View {
                             HStack {
                                 Spacer()
                                 VStack(spacing: 0) {
-                                    ZStack {
-                                        Image(uiImage: qrCodeUIImage)
-                                            .interpolation(.none)
-                                            .onAppear {
-                                                qrCodeUIImage = renderQRCode(string: token)
-                                            }
-                                    }
+                                    QRCodeViewUI(
+                                        content: token,
+                                        errorCorrection: .low,
+                                        onPixelShape: QRCode.PixelShape.RoundedPath(
+                                            cornerRadiusFraction: 1,
+                                            hasInnerCorners: true
+                                        ),
+                                        eyeShape: QRCode.EyeShape.RoundedRect(cornerRadiusFraction: 0.6),
+                                        logoTemplate: nil,
+                                    )
+                                    .frame(
+                                        width: UIScreen.main.bounds.width * 0.55,
+                                        height: UIScreen.main.bounds.width * 0.55
+                                    )
                                 }
-                                .padding(UIScreen.main.bounds.width * 0.08)
+                                .padding(UIScreen.main.bounds.width * 0.07)
                                 .background(Color.white)
                                 .cornerRadius(UIScreen.main.bounds.width * 0.1)
                                 Spacer()
@@ -111,25 +118,6 @@ struct TicketView: View {
             }
             Button("Cancel", role: .cancel) { }
         }
-    }
-    
-    private func renderQRCode(string: String) -> UIImage {
-        let generator = EFQRCodeGenerator(content: string, encoding: .utf8, size: EFIntSize())
-        
-        generator.withInputCorrectionLevel(.h)
-        generator.withColors(backgroundColor: UIColor.white.cgColor, foregroundColor: UIColor.black.cgColor)
-        if let maxMagnification = generator
-            .maxMagnification(lessThanOrEqualTo: UIScreen.main.bounds.width * 0.6) {
-            generator.magnification = EFIntSize(
-                width: maxMagnification,
-                height: maxMagnification
-            )
-        }
-        
-        if let cgImage = generator.generate() {
-            return UIImage(cgImage: cgImage)
-        }
-        return UIImage()
     }
     
     private func AutoAdjustBrightness() {

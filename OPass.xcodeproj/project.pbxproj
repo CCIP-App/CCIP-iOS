@@ -14,7 +14,6 @@
 		4F48B5D827CF353C0010FC2C /* eventSettingsSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */; };
 		4F5EB73127D2311200235396 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 4F5EB73027D2311200235396 /* SwiftDate */; };
 		4F5EB73527D3346D00235396 /* TransformWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EB73427D3346D00235396 /* TransformWrapper.swift */; };
-		4F5EB73827D3648100235396 /* AnnouncementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EB73727D3648100235396 /* AnnouncementView.swift */; };
 		4F5EB73A27D37D4A00235396 /* announcementSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F5EB73927D37D4A00235396 /* announcementSample.json */; };
 		4F6968A627EBCB5E009073E4 /* SFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6968A527EBCB5E009073E4 /* SFButton.swift */; };
 		4F9E9B4E2813F0A300A14905 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E9B4D2813F0A300A14905 /* Array+Extension.swift */; };
@@ -29,11 +28,10 @@
 		D318CE44280918C400CEA1AA /* TruncableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D318CE43280918C400CEA1AA /* TruncableText.swift */; };
 		D31900D8281CF07E00864982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D31900D7281CF07E00864982 /* LaunchScreen.storyboard */; };
 		D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60E27EF4698007EED5D /* CodeScanner */; };
-		D323C1F5282FE03C009AFF97 /* EFQRCode in Frameworks */ = {isa = PBXBuildFile; productRef = D323C1F4282FE03C009AFF97 /* EFQRCode */; };
 		D324EF08286EB9B7004D03D6 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D324EF07286EB9B7004D03D6 /* UIApplication+Extension.swift */; };
+		D3351EB72E3F6C1A00454EBE /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = D3351EB62E3F6C1A00454EBE /* QRCode */; };
 		D33FB2FE28C21178006BBEF4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D33FB2FD28C21178006BBEF4 /* FirebaseAnalytics */; };
 		D33FB30028C21178006BBEF4 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D33FB2FF28C21178006BBEF4 /* FirebaseCrashlytics */; };
-		D33FB30228C21178006BBEF4 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = D33FB30128C21178006BBEF4 /* FirebaseDynamicLinks */; };
 		D33FB30428C21178006BBEF4 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = D33FB30328C21178006BBEF4 /* FirebasePerformance */; };
 		D34012102821349200D07034 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340120F2821349200D07034 /* View+Extension.swift */; };
 		D358E55827EDEDB2000A6554 /* FastpassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D358E55727EDEDB2000A6554 /* FastpassView.swift */; };
@@ -74,6 +72,7 @@
 		D3C6194D27CF9A7400643D97 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6194C27CF9A7400643D97 /* SettingsView.swift */; };
 		D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3C6F60C28634F3B0074B942 /* MarkdownKit */; };
 		D3C6F60F286360FC0074B942 /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6F60E286360FC0074B942 /* Markdown.swift */; };
+		D3C89C162D8E6D9F001EDFBF /* AnnouncementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C89C152D8E6D9F001EDFBF /* AnnouncementView.swift */; };
 		D3D0BB262A8213C300DC4E61 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0BB252A8213C300DC4E61 /* RootView.swift */; };
 		D3D0BB2A2A82254800DC4E61 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0BB292A82254800DC4E61 /* Router.swift */; };
 		D3D0BB2C2A82276800DC4E61 /* RootDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D0BB2B2A82276800DC4E61 /* RootDestinations.swift */; };
@@ -144,7 +143,6 @@
 		4F48B5D527CF081D0010FC2C /* OPassAPISampleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPassAPISampleExt.swift; sourceTree = "<group>"; };
 		4F48B5D727CF353C0010FC2C /* eventSettingsSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = eventSettingsSample.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		4F5EB73427D3346D00235396 /* TransformWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformWrapper.swift; sourceTree = "<group>"; };
-		4F5EB73727D3648100235396 /* AnnouncementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementView.swift; sourceTree = "<group>"; };
 		4F5EB73927D37D4A00235396 /* announcementSample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = announcementSample.json; sourceTree = "<group>"; };
 		4F6968A527EBCB5E009073E4 /* SFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFButton.swift; sourceTree = "<group>"; };
 		4F9E9B4D2813F0A300A14905 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
@@ -197,6 +195,7 @@
 		D3C6194727CF864B00643D97 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		D3C6194C27CF9A7400643D97 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = OPass/Settings/SettingsView.swift; sourceTree = SOURCE_ROOT; };
 		D3C6F60E286360FC0074B942 /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
+		D3C89C152D8E6D9F001EDFBF /* AnnouncementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementView.swift; sourceTree = "<group>"; };
 		D3D0BB252A8213C300DC4E61 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D3D0BB292A82254800DC4E61 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D3D0BB2B2A82276800DC4E61 /* RootDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDestinations.swift; sourceTree = "<group>"; };
@@ -256,12 +255,11 @@
 				D33FB2FE28C21178006BBEF4 /* FirebaseAnalytics in Frameworks */,
 				D36E33C42A681916006D4159 /* FirebaseAppCheck in Frameworks */,
 				4F5EB73127D2311200235396 /* SwiftDate in Frameworks */,
-				D323C1F5282FE03C009AFF97 /* EFQRCode in Frameworks */,
 				D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */,
+				D3351EB72E3F6C1A00454EBE /* QRCode in Frameworks */,
 				D33FB30028C21178006BBEF4 /* FirebaseCrashlytics in Frameworks */,
 				D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */,
 				D394440D2A75371A00EE2021 /* OrderedCollections in Frameworks */,
-				D33FB30228C21178006BBEF4 /* FirebaseDynamicLinks in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,7 +488,7 @@
 				D3FE04EB2A83FE72009CA4B4 /* Schedule */,
 				D3DCB8412A850E0D00B043FC /* General */,
 				D3C0E21B27D51C060095169F /* WifiView.swift */,
-				4F5EB73727D3648100235396 /* AnnouncementView.swift */,
+				D3C89C152D8E6D9F001EDFBF /* AnnouncementView.swift */,
 				D3227ABB287FBDE100B458CD /* Class+Extension */,
 				D3E4E6C427CD158700FFACEB /* Preview Content */,
 			);
@@ -613,15 +611,14 @@
 				4F5EB73027D2311200235396 /* SwiftDate */,
 				D3E0123027D35D970040621F /* KeychainAccess */,
 				D322F60E27EF4698007EED5D /* CodeScanner */,
-				D323C1F4282FE03C009AFF97 /* EFQRCode */,
 				D3C6F60C28634F3B0074B942 /* MarkdownKit */,
 				D33FB2FD28C21178006BBEF4 /* FirebaseAnalytics */,
 				D33FB2FF28C21178006BBEF4 /* FirebaseCrashlytics */,
-				D33FB30128C21178006BBEF4 /* FirebaseDynamicLinks */,
 				D33FB30328C21178006BBEF4 /* FirebasePerformance */,
 				D36E33C32A681916006D4159 /* FirebaseAppCheck */,
 				D394440C2A75371A00EE2021 /* OrderedCollections */,
 				D3153BBF2A8DF850006A2DD8 /* OneSignalFramework */,
+				D3351EB62E3F6C1A00454EBE /* QRCode */,
 			);
 			productName = OPass;
 			productReference = D3E4E6BB27CD158400FFACEB /* OPass.app */;
@@ -635,7 +632,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1620;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					D3A00F1B27D837D00097A6AB = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -653,6 +650,7 @@
 				en,
 				"zh-Hant",
 				Base,
+				ja,
 			);
 			mainGroup = D3E4E6B227CD158400FFACEB;
 			packageReferences = (
@@ -660,10 +658,10 @@
 				D3E0122F27D35D970040621F /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
 				D322F60D27EF4698007EED5D /* XCRemoteSwiftPackageReference "CodeScanner" */,
-				D323C1F3282FE03C009AFF97 /* XCRemoteSwiftPackageReference "EFQRCode" */,
 				D3C6F60B28634F3A0074B942 /* XCRemoteSwiftPackageReference "MarkdownKit" */,
 				D33FB2FC28C21178006BBEF4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				D394440B2A75371A00EE2021 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				D3351EB52E3F6C1A00454EBE /* XCRemoteSwiftPackageReference "QRCode" */,
 			);
 			productRefGroup = D3E4E6BC27CD158400FFACEB /* Products */;
 			projectDirPath = "";
@@ -766,6 +764,7 @@
 				D3C6F60F286360FC0074B942 /* Markdown.swift in Sources */,
 				D3E2476D28BF553200B3E71A /* Collection+Extension.swift in Sources */,
 				D3EA819A27F747E100FE7985 /* TicketView.swift in Sources */,
+				D3C89C162D8E6D9F001EDFBF /* AnnouncementView.swift in Sources */,
 				4F9E9B4E2813F0A300A14905 /* Array+Extension.swift in Sources */,
 				D3E0123527D38B840040621F /* ScenarioView.swift in Sources */,
 				D30D9CC228B3F68C00C1E489 /* Modifiers.swift in Sources */,
@@ -815,7 +814,6 @@
 				D394440F2A75383400EE2021 /* Speaker.swift in Sources */,
 				D3E4E6BF27CD158400FFACEB /* OPassApp.swift in Sources */,
 				4F6968A627EBCB5E009073E4 /* SFButton.swift in Sources */,
-				4F5EB73827D3648100235396 /* AnnouncementView.swift in Sources */,
 				D3D0BB2A2A82254800DC4E61 /* Router.swift in Sources */,
 				D3829EA82A76649300610B28 /* Event.swift in Sources */,
 				D3DCB8432A85119500B043FC /* SessionOverView.swift in Sources */,
@@ -840,7 +838,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
@@ -851,7 +848,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.3.0;
+				MARKETING_VERSION = 4.3.5;
 				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -868,7 +865,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
@@ -879,7 +875,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.3.0;
+				MARKETING_VERSION = 4.3.5;
 				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -926,6 +922,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -990,6 +987,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1022,7 +1020,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"OPass/Preview Content\"";
-				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
@@ -1043,7 +1040,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.3.0;
+				MARKETING_VERSION = 4.3.5;
 				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1066,7 +1063,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"OPass/Preview Content\"";
-				DEVELOPMENT_TEAM = 9UZ879Y8DL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
@@ -1087,7 +1083,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.3.0;
+				MARKETING_VERSION = 4.3.5;
 				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1148,12 +1144,12 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		D323C1F3282FE03C009AFF97 /* XCRemoteSwiftPackageReference "EFQRCode" */ = {
+		D3351EB52E3F6C1A00454EBE /* XCRemoteSwiftPackageReference "QRCode" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/EFPrefix/EFQRCode.git";
+			repositoryURL = "https://github.com/dagronf/QRCode";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.2.1;
+				minimumVersion = 26.10.0;
 			};
 		};
 		D33FB2FC28C21178006BBEF4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -1161,7 +1157,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
+				minimumVersion = 12.0.0;
 			};
 		};
 		D394440B2A75371A00EE2021 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
@@ -1214,10 +1210,10 @@
 			package = D322F60D27EF4698007EED5D /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
 		};
-		D323C1F4282FE03C009AFF97 /* EFQRCode */ = {
+		D3351EB62E3F6C1A00454EBE /* QRCode */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D323C1F3282FE03C009AFF97 /* XCRemoteSwiftPackageReference "EFQRCode" */;
-			productName = EFQRCode;
+			package = D3351EB52E3F6C1A00454EBE /* XCRemoteSwiftPackageReference "QRCode" */;
+			productName = QRCode;
 		};
 		D33FB2FD28C21178006BBEF4 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1228,11 +1224,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D33FB2FC28C21178006BBEF4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
-		};
-		D33FB30128C21178006BBEF4 /* FirebaseDynamicLinks */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D33FB2FC28C21178006BBEF4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDynamicLinks;
 		};
 		D33FB30328C21178006BBEF4 /* FirebasePerformance */ = {
 			isa = XCSwiftPackageProductDependency;

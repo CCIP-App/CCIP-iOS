@@ -86,7 +86,7 @@ struct RedeemTokenView: View {
                 Text("FastPass").font(Font.largeTitle.weight(.bold))
                 Text("ScanQRCodeWithCamera")
                 
-                CodeScannerView(codeTypes: [.qr], scanMode: .once, showViewfinder: false, shouldVibrateOnSuccess: true, completion: HandleScan)
+                CodeScannerView(codeTypes: [.qr], scanMode: .once, showViewfinder: false, shouldVibrateOnSuccess: true, completion: handleScan)
                     .frame(height: UIScreen.main.bounds.height * 0.25)
                     .cornerRadius(20)
                     .overlay {
@@ -185,13 +185,24 @@ struct RedeemTokenView: View {
         }
     }
     
-    private func HandleScan(result: Result<ScanResult, ScanError>) {
+    /// Handles the result of a QR code scan operation
+    private func handleScan(result: Result<ScanResult, ScanError>) {
+        // Hide the camera interface immediately after scan
         self.isCameraSOCPresented = false
+        
         switch result {
         case .success(let result):
+            // Extract token from scanned string (handle both direct tokens and URL parameters)
+            var token = result.string
+            if let urlComponents = URLComponents(string: token),
+               let queryItems = urlComponents.queryItems,
+               let tokenValue = queryItems.first(where: { $0.name == "token" })?.value {
+                token = tokenValue
+            }
+            
             Task {
                 do {
-                    let result = try await EventStore.redeem(token: result.string)
+                    let result = try await EventStore.redeem(token: token)
                     DispatchQueue.main.async {
                         self.isInvaildTokenAlertPresented = !result
                     }

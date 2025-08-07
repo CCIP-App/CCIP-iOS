@@ -105,6 +105,7 @@ struct ScheduleView: View {
                             )
                         } else {
                             sessionList(filteredSessions[0])
+                                .background(.listBackground)
                         }
                     }
                 } else {

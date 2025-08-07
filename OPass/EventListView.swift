@@ -180,7 +180,6 @@ private class EventListViewModel: ObservableObject {
     func reset() async {
         self.error = nil
         self.events = []
-        await loadEvents()
     }
 }
 
