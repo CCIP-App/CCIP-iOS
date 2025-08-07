@@ -114,7 +114,7 @@ struct ScheduleView: View {
                 }
             } else {
                 ContentUnavailableView {
-                    Label("Something went wrong", systemImage: "exclamationmark.triangle.fill")
+                    Label("Something Went Wrong", systemImage: "exclamationmark.triangle.fill")
                 } description: {
                     Text("Check your network status or try again later.")
                 } actions: {
@@ -202,11 +202,11 @@ struct ScheduleView: View {
         .overlay {
             if sessions.isEmpty {
                 ContentUnavailableView {
-                    Label("No sessions found", systemImage: "text.badge.xmark")
+                    Label("No Sessions Found", systemImage: "text.badge.xmark")
                 } description: {
                     Text("Use fewer filters or reset all filters.")
                 } actions: {
-                    Button("Reset filters") {
+                    Button("Reset Filters") {
                         self.filters = .init()
                     }
                     .bold()
@@ -300,7 +300,6 @@ private struct FilterMenuView: View {
     @State private var filterOption: Int?
     @State private var searchText = ""
     @Environment(\.colorScheme) var colorScheme
-    let optionTitle = ["Speakers", "Types", "Rooms", "Tags"]
     var body: some View {
         Menu {
             VStack {
@@ -367,7 +366,7 @@ struct FilterSheetView: View {
     @State private var searchText = ""
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
-    private let optionTitle = ["Speakers", "Types", "Rooms", "Tags"]
+    private let optionTitle: [String.LocalizationValue] = ["Speakers", "Types", "Places", "Tags"]
     init(of option: Int, with schedule: Schedule, filters: Binding<ScheduleFilter>) {
         self.option = option
         self.schedule = schedule
@@ -491,12 +490,12 @@ struct FilterSheetView: View {
                 }
                 .foregroundStyle(colorScheme == .dark ? .white : .black)
             }
-            .navigationTitle("Filter by \(optionTitle[option])")
+            .navigationTitle("Filter by \(String(localized: optionTitle[option]))")
             .navigationBarTitleDisplayMode(.inline)
             .searchable(
                 text: $searchText,
                 placement: .navigationBarDrawer(displayMode: .always),
-                prompt: "Filter \(optionTitle[option])"
+                prompt: "Filter \(String(localized: optionTitle[option]).localizedLowercase)"
             )
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {

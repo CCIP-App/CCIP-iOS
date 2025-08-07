@@ -119,15 +119,15 @@ struct SessionView: View {
                             self.event.likedSessions.append(session.id)
                         }
                     }
-                    .alert("GetNotified", isPresented: $presentNotifiedAlert) {
+                    .alert("Get notified", isPresented: $presentNotifiedAlert) {
                         Button("Settings") {
                             Constants.openInOS(forURL: URL(string: UIApplication.openSettingsURLString)!)
                             pendNotified = true
                         }
-                        Button("DontAskAgain", role: .destructive) { notifiedAlert = false }
+                        Button("Don't Ask Again", role: .destructive) { notifiedAlert = false }
                         Button("Cancel", role: .cancel) {}
                     } message: {
-                        Text("NotifiedAlertMessage")
+                        Text("OPass can send you notification just before the session starts.\\nWould you like to allow OPass notifications in Settings?")
                     }
                     .onChange(of: scenePhase) {
                         switch scenePhase {
@@ -148,7 +148,7 @@ struct SessionView: View {
                                 }
                             }
                         } label: {
-                            Label("AddToCalendar", systemImage: "calendar.badge.plus")
+                            Label("Add to Calendar", systemImage: "calendar.badge.plus")
                         }
                         
                         if let uri = self.session.uri, let url = URL(string: uri) {
@@ -162,7 +162,7 @@ struct SessionView: View {
                     } label: {
                         Image(systemName: "ellipsis.circle")
                     }
-                    .alert("RequestUserPermitCalendar", isPresented: $isCalendarAlertPresented) {
+                    .alert("Please allow OPass to access your calendar under OPass in your device's settings.", isPresented: $isCalendarAlertPresented) {
                         Button("Cancel", role: .cancel, action: {})
                         Button("Settings") {
                             Constants.openInOS(forURL: URL(string: UIApplication.openSettingsURLString)!)
@@ -357,7 +357,7 @@ private struct TimeSection: View {
                 Text(String(format: "%d/%d/%d", start.year, start.month, start.day))
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text(String(format: String(localized: "TimeWithLengthContent"), start.hour, start.minute, end.hour, end.minute, durationMinute))
+                Text(String(format: String(localized: "%d:%02d ~ %d:%02d • %d minutes"), start.hour, start.minute, end.hour, end.minute, durationMinute))
             }
             .fixedSize(horizontal: false, vertical: true)
             .padding(.vertical, 7)
@@ -585,7 +585,7 @@ private struct DescriptionSection: View {
     @State private var translationPresented = false
     
     var body: some View {
-        Section(header: Text(LocalizedStringKey("SessionIntroduction")).padding(.leading, 10)) {
+        Section(header: Text(LocalizedStringKey("Session Introduction")).padding(.leading, 10)) {
             VStack {
                 Markdown(description, font: .footnote) { url in
                     Constants.openInAppSafari(forURL: url, style: colorScheme)

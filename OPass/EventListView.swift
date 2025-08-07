@@ -26,7 +26,7 @@ struct EventListView: View {
                 case .error: error
                 }
             }
-            .navigationTitle("SelectEvent")
+            .navigationTitle("Select Event")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { toolbar }
         }
@@ -54,7 +54,7 @@ struct EventListView: View {
 
     var error: some View {
         ContentUnavailableView {
-            Label("Faild to load event list", systemImage: "exclamationmark.triangle.fill")
+            Label("Faild to Load Event List", systemImage: "exclamationmark.triangle.fill")
         } description: {
             Text("Check your network status or try again")
         } actions: {

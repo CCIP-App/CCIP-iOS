@@ -48,13 +48,13 @@ struct FastpassView: View {
                             Label("Network Error", systemImage: "wifi.exclamationmark")
                         default:
                             Label(
-                                "Something went wrong", systemImage: "exclamationmark.triangle.fill"
+                                "Something Went Wrong", systemImage: "exclamationmark.triangle.fill"
                             )
                         }
                     } description: {
                         switch errorType! {
                         case "http403":
-                            Text("ConnectToConferenceWiFi")
+                            Text("Please connect to the Wi-Fi provided by event")
                         default:
                             Text("Check your network status or select a new event.")
                         }

@@ -86,7 +86,7 @@ struct ScheduleSearchView: View {
             text: $searchText,
             isPresented: $searchActive,
             placement: .navigationBarDrawer(displayMode: .always),
-            prompt: "Search Title"
+            prompt: "Search title"
         )
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Search")

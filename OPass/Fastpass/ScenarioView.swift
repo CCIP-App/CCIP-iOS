@@ -15,7 +15,7 @@ struct ScenarioView: View {
     @EnvironmentObject var EventStore: EventStore
     @State private var disableAlertString = ""
     @State private var isDisableAlertPresented = false
-    @State private var isLogOutAlertPresented = false
+    @State private var isSignOutAlertPresented = false
     @State private var sheetScenarioDataItem: Scenario?
     @Environment(\.colorScheme) var colorScheme
     
@@ -39,7 +39,7 @@ struct ScenarioView: View {
                                                                         and: scenario.expire, orEqual: false,
                                                                         granularity: .second) {
                                         disableAlertString = String(
-                                            format: String(localized: "OnlyAvailableAtContent"),
+                                            format: String(localized: "Only available at\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d"),
                                             scenario.available.year, scenario.available.month,
                                             scenario.available.day, scenario.available.hour,
                                             scenario.available.minute, scenario.expire.year,
@@ -58,16 +58,16 @@ struct ScenarioView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button { isLogOutAlertPresented.toggle() } label: {
-                    Text("SignOut").foregroundColor(.red)
+                Button { isSignOutAlertPresented.toggle() } label: {
+                    Text("Sign Out").foregroundColor(.red)
                 }
             }
         }
-        .alert("NotAvailable", isPresented: $isDisableAlertPresented, actions: {
+        .alert("Not available", isPresented: $isDisableAlertPresented, actions: {
             Button(String(localized: "Cancel"), role: .cancel) { }
         }, message: { Text(disableAlertString) })
-        .alert("ConfirmSignOut", isPresented: $isLogOutAlertPresented) {
-            Button(String(localized: "SignOut"), role: .destructive) {
+        .alert("Are you sure you want to sign out?", isPresented: $isSignOutAlertPresented) {
+            Button(String(localized: "Sign Out"), role: .destructive) {
                 EventStore.signOut()
             }
             Button(String(localized: "Cancel"), role: .cancel) { }
@@ -132,7 +132,7 @@ struct ScenarioView: View {
                         scenario.expire.minute
                     )
                     : String(
-                        format: String(localized: "CheckAtContent"),
+                        format: String(localized: "Check at %d:%02d"),
                         scenario.used!.hour,
                         scenario.used!.minute
                     )

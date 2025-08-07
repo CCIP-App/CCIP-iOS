@@ -13,7 +13,7 @@ struct TicketView: View {
     
     @EnvironmentObject var EventStore: EventStore
     @State private var isTokenVisible = false
-    @State private var isLogOutAlertPresented = false
+    @State private var isSignOutAlertPresented = false
     @State private var qrCodeUIImage = UIImage()
     @State private var defaultBrightness = UIScreen.main.brightness
     @AppStorage("AutoAdjustTicketBirghtness") var autoAdjustTicketBirghtness = true
@@ -52,7 +52,7 @@ struct TicketView: View {
                         }
                         .listRowBackground(Color.clear)
                         
-                        Section(header: Text("Token"), footer: Text("TicketWarningContent")) {
+                        Section(header: Text("Token"), footer: Text("Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths.")) {
                             HStack {
                                 isTokenVisible
                                 ? Text(token)
@@ -66,7 +66,7 @@ struct TicketView: View {
                             Button {
                                 UIPasteboard.general.string = token
                             } label: {
-                                Label("CopyToken", systemImage: "square.on.square")
+                                Label("Copy Token", systemImage: "square.on.square")
                             }
                         }
                     }
@@ -80,7 +80,7 @@ struct TicketView: View {
                         }
                     }
                     
-                    Toggle("AutoBrighten", isOn: $autoAdjustTicketBirghtness)
+                    Toggle("Auto-Brighten", isOn: $autoAdjustTicketBirghtness)
                         .onChange(of: autoAdjustTicketBirghtness) {
                             if autoAdjustTicketBirghtness {
                                 self.defaultBrightness = UIScreen.main.brightness
@@ -107,13 +107,13 @@ struct TicketView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 if EventStore.token != nil {
                     Button(action: {
-                        isLogOutAlertPresented.toggle()
-                    }) { Text(LocalizedStringKey("SignOut")).foregroundColor(.red) }
+                        isSignOutAlertPresented.toggle()
+                    }) { Text(LocalizedStringKey("Sign Out")).foregroundColor(.red) }
                 }
             }
         }
-        .alert("ConfirmSignOut", isPresented: $isLogOutAlertPresented) {
-            Button("SignOut", role: .destructive) {
+        .alert("Are you sure you want to sign out?", isPresented: $isSignOutAlertPresented) {
+            Button("Sign Out", role: .destructive) {
                 self.EventStore.signOut()
             }
             Button("Cancel", role: .cancel) { }
