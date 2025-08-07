@@ -37,7 +37,7 @@ struct TicketView: View {
                                             hasInnerCorners: true
                                         ),
                                         eyeShape: QRCode.EyeShape.RoundedRect(cornerRadiusFraction: 0.6),
-                                        logoTemplate: nil,
+                                        logoTemplate: nil
                                     )
                                     .frame(
                                         width: UIScreen.main.bounds.width * 0.55,
