@@ -72,7 +72,7 @@ extension OPassStore {
         }
     }
     
-    func loginCurrentEvent(with token: String) async throws -> Bool {
+    func signinCurrentEvent(with token: String) async throws -> Bool {
         guard let eventId = self.eventId else { return false }
         do {
             if eventId == event?.id {

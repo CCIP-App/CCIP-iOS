@@ -32,25 +32,25 @@ struct ContentView: View {
                             try await store.loadEvent(reload: true)
                         } catch { self.error = error }
                     }
-            case .login(let url):
-                ProgressView("LOGGINGIN")
+            case .signin(let url):
+                ProgressView("SIGNING IN")
                     .task { await parseUniversalLink(url) }
-                    .alert("InvalidURL", isPresented: $presentInvaildUrlAlert) {
+                    .alert("Invalid URL", isPresented: $presentInvaildUrlAlert) {
                         Button("OK", role: .cancel) { self.url = nil }
                     } message: {
-                        Text("InvalidURLOrTokenContent")
+                        Text("You have an invalid URL or the token is incorrect.")
                     }
-                    .alert("CouldntVerifiyYourIdentity", isPresented: $presentHttp403Alert) {
+                    .alert("Couldn't verify your identity", isPresented: $presentHttp403Alert) {
                         Button("OK", role: .cancel) { self.url = nil }
                     } message: {
-                        Text("ConnectToConferenceWiFi")
+                        Text("Please connect to the Wi-Fi provided by event")
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             case .empty:
                 EventListView()
             case .error:
                 ContentUnavailableView {
-                    Label("Can't load Event", systemImage: "exclamationmark.triangle.fill")
+                    Label("Unable to Load Event", systemImage: "exclamationmark.triangle.fill")
                 } description: {
                     Text("Check your network status or select a new event.")
                 } actions: {
@@ -77,14 +77,14 @@ extension ContentView {
         case ready(EventStore)
         case empty
         case loading
-        case login(URL)
+        case signin(URL)
         case error
     }
 
     private var viewState: ViewState {
         if let url = url {
             DispatchQueue.main.async { error = nil }
-            return .login(url)
+            return .signin(url)
         }
         guard error == nil else { return .error }
         guard let eventID = store.eventId else { return .empty }
@@ -126,7 +126,7 @@ extension ContentView {
             }
         }
         
-        // Login
+        // Signin
         guard let token = params?.first(where: { $0.name == "token" })?.value else {
             DispatchQueue.main.async {
                 self.url = nil
@@ -134,7 +134,7 @@ extension ContentView {
             return
         }
         do {
-            if try await store.loginCurrentEvent(with: token) {
+            if try await store.signinCurrentEvent(with: token) {
                 DispatchQueue.main.async { self.url = nil }
                 return
             }

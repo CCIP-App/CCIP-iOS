@@ -293,9 +293,9 @@ extension EventStore {
             notificationCenter.removePendingNotificationRequests(withIdentifiers: [session.id])
         } else {
             let content = UNMutableNotificationContent()
-            content.title = String(localized: "SessionWillStartIn5Minutes")
+            content.title = String(localized: "Session will start in 5 mins.")
             content.body = String(
-                format: String(localized: "SessionWillStartIn5MinutesContent"),
+                format: String(localized: "\"%@\" in room \"%@\", please keep your time of buffer to reach the room."),
                 session.localized().title,
                 schedule?.rooms[session.room]?.localized().name ?? "")
             content.sound = .default

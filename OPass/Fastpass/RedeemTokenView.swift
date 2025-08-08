@@ -39,7 +39,7 @@ struct RedeemTokenView: View {
                                 .padding(.vertical, 10)
                                 .background(Color.blue)
                                 .cornerRadius(9)
-                            Text("ScanQRCodeWithCamera")
+                            Text("Scan QR code with camera")
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                             Spacer()
                             Image(systemName: "chevron.right").foregroundColor(.gray)
@@ -54,13 +54,13 @@ struct RedeemTokenView: View {
                                 .padding(.vertical, 10)
                                 .background(Color.green)
                                 .cornerRadius(9)
-                            Text("SelectAPictureToScanQRCode")
+                            Text("Select a picture to scan QR code")
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                             Spacer()
                             Image(systemName: "chevron.right").foregroundColor(.gray)
                         }
                     }
-                    .alert("NoQRCodeFoundInPicture", isPresented: $isNoQRCodeAlertPresented)
+                    .alert("No QR code found in picture", isPresented: $isNoQRCodeAlertPresented)
                     
                     Button { self.isManuallySOCPresented = true } label: {
                         HStack {
@@ -70,7 +70,7 @@ struct RedeemTokenView: View {
                                 .padding(.vertical, 10)
                                 .background(Color.purple)
                                 .cornerRadius(9)
-                            Text("EnterTokenManually")
+                            Text("Enter token manually")
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                             Spacer()
                             Image(systemName: "chevron.right").foregroundColor(.gray)
@@ -79,12 +79,12 @@ struct RedeemTokenView: View {
                 }
             }
         }
-        .http403Alert(title: "CouldntVerifiyYourIdentity", isPresented: $isHttp403AlertPresented)
-        .alert("CouldntVerifiyYourIdentity", message: "InvaildToken", isPresented: $isInvaildTokenAlertPresented)
+        .http403Alert(title: "Couldn't verify your identity", isPresented: $isHttp403AlertPresented)
+        .alert("Couldn't verify your identity", message: "Invaild token", isPresented: $isInvaildTokenAlertPresented)
         .slideOverCard(isPresented: $isCameraSOCPresented, backgroundColor: (colorScheme == .dark ? .init(red: 28/255, green: 28/255, blue: 30/255) : .white)) {
             VStack {
-                Text("FastPass").font(Font.largeTitle.weight(.bold))
-                Text("ScanQRCodeWithCamera")
+                Text("Fast Pass").font(Font.largeTitle.weight(.bold))
+                Text("Scan QR code with camera")
                 
                 CodeScannerView(codeTypes: [.qr], scanMode: .once, showViewfinder: false, shouldVibrateOnSuccess: true, completion: handleScan)
                     .frame(height: UIScreen.main.bounds.height * 0.25)
@@ -94,14 +94,14 @@ struct RedeemTokenView: View {
                             VStack {
                                 Spacer()
                                 Spacer()
-                                Text("RequestUserPermitCamera")
+                                Text("Please allow OPass to access your camera under OPass in your device's settings.")
                                     .foregroundColor(.white)
                                     .multilineTextAlignment(.center)
                                 Spacer()
                                 Button {
                                     Constants.openInOS(forURL: URL(string: UIApplication.openSettingsURLString)!)
                                 } label: {
-                                    Text("OpenSettings")
+                                    Text("Open Settings")
                                         .foregroundColor(.blue)
                                         .bold()
                                 }
@@ -113,8 +113,8 @@ struct RedeemTokenView: View {
                     }
                 
                 VStack(alignment: .leading) {
-                    Text("ScanToGetToken").bold()
-                    Text("ScanToGetTokenContent")
+                    Text("Scan to get token").bold()
+                    Text("Please look for the QR code provided by the email and place it in the viewfinder")
                         .foregroundColor(Color.gray)
                 }
             }
@@ -125,8 +125,8 @@ struct RedeemTokenView: View {
             backgroundColor: (colorScheme == .dark ? .init(red: 28/255, green: 28/255, blue: 30/255) : .white)
         ) {
             VStack {
-                Text("FastPass").font(Font.largeTitle.weight(.bold))
-                Text("EnterTokenManually")
+                Text("Fast Pass").font(Font.largeTitle.weight(.bold))
+                Text("Enter token manually")
                 
                 TextField("Token", text: $token)
                     .focused($focusedField, equals: .ManuallyToken)
@@ -139,7 +139,7 @@ struct RedeemTokenView: View {
                     )
                 
                 VStack(alignment: .leading) {
-                    Text("EnterTokenManuallyContent")
+                    Text("Please look for the token provided by the email and enter it in the field above")
                         .foregroundColor(Color.gray)
                         .font(.caption)
                 }
