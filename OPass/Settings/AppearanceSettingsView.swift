@@ -101,7 +101,7 @@ private struct ScheduleOptions: View {
                                 .foregroundColor(.gray)
                                 .font(.footnote)
                         }
-                        Text("PastSession")
+                        Text("Past Session")
                             .lineLimit(2)
                     }
                     
@@ -128,7 +128,7 @@ private struct ScheduleOptions: View {
                                 .foregroundColor(.gray)
                                 .font(.footnote)
                         }
-                        Text("FutureSession")
+                        Text("Future Session")
                             .lineLimit(2)
                     }
                     .padding(.horizontal, 5)
@@ -143,7 +143,7 @@ private struct ScheduleOptions: View {
             .listRowInsets(EdgeInsets(top: 0, leading: 10, bottom: 6, trailing: 10))
         }
 
-        Toggle("Dim Past Session", isOn: $dimPastSession.animation())
+        Toggle("Dim Past Sessions", isOn: $dimPastSession.animation())
 
         if dimPastSession {
             Slider(

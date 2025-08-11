@@ -76,7 +76,7 @@ struct UseScenarioView: View {
                 Text(scenario.title.localized())
                     .font(.largeTitle.bold())
 
-                Text("ConfirmUseScenarioMessage")
+                Text("This item can only be used once, please follow the instructions of the staff to use.")
                     .multilineTextAlignment(.center)
             }
 
@@ -89,7 +89,7 @@ struct UseScenarioView: View {
             Button {
                 useScenario()
             } label: {
-                Text("ConfirmUse")
+                Text("Confirm Use")
                     .foregroundColor(.white)
                     .padding(.vertical, 11)
                     .frame(maxWidth: .infinity)

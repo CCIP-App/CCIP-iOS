@@ -129,14 +129,14 @@ struct AnnouncementView: View {
     private func errorView() -> some View {
         ContentUnavailableView {
             Label {
-                Text(viewModel.errorType == "http403" ? "Network Error" : "Something went wrong")
+                Text(viewModel.errorType == "http403" ? "Network Error" : "Something Went Wrong")
             } icon: {
                 Image(systemName: viewModel.errorType == "http403" ? "wifi.exclamationmark" : "exclamationmark.triangle.fill")
                     .foregroundStyle(.blue)
                     .symbolEffect(.pulse)
             }
         } description: {
-            Text(viewModel.errorType == "http403" ? "ConnectToConferenceWiFi" : "Check your network status or select a new event.")
+            Text(viewModel.errorType == "http403" ? "Please connect to the Wi-Fi provided by event" : "Check your network status or select a new event.")
         } actions: {
             Button {
                 viewModel.reset()
