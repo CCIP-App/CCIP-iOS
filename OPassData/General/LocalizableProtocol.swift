@@ -17,7 +17,13 @@ protocol Localizable {
 extension Localizable {
     @inline(__always)
     func localized() -> T {
-        if Bundle.main.preferredLocalizations[0] ==  "zh-Hant" { return self.zh }
-        return self.en
+        switch Bundle.main.preferredLocalizations[0] {
+        case "zh-Hant":
+            return self.zh
+        case "nan":
+            return self.zh
+        default:
+            return self.en
+        }
     }
 }
