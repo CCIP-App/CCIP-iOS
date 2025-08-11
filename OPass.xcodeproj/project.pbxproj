@@ -649,10 +649,8 @@
 			knownRegions = (
 				en,
 				"zh-Hant",
-				Base,
 				ja,
-				"nan-Hant",
-				"nan-Latn-pehoeji",
+				nan,
 			);
 			mainGroup = D3E4E6B227CD158400FFACEB;
 			packageReferences = (
