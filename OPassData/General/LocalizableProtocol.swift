@@ -18,9 +18,7 @@ extension Localizable {
     @inline(__always)
     func localized() -> T {
         switch Bundle.main.preferredLocalizations[0] {
-        case "zh-Hant":
-            return self.zh
-        case "nan":
+        case "nan", "zh-Hant":
             return self.zh
         default:
             return self.en
