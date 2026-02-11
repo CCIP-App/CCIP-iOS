@@ -30,7 +30,7 @@ struct GeneralSettingsView: View {
                     }
                     .labelStyle(CenterLabelStyle())
                 }
-                
+
                 Toggle(isOn: $autoSelectScheduleDay) {
                     Label {
                         Text("Auto-Select Schedule Day")

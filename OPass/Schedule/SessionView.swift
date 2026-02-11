@@ -32,7 +32,7 @@ struct SessionView: View {
     }
 
     init(session: Session) { self.session = session }
-    
+
     var body: some View {
         List {
             VStack(alignment: .leading, spacing: 0) {
@@ -41,7 +41,7 @@ struct SessionView: View {
                         .padding(.bottom, 8)
                         .padding(.top, 3.9)
                 }
-                
+
                 Text(session.localized().title)
                     .font(.largeTitle.bold())
                     .fixedSize(horizontal: false, vertical: true)
@@ -52,26 +52,26 @@ struct SessionView: View {
                     .onPreferenceChange(TitleY_CoordinatePreferenceKey.self) { y in
                         isNavigationTitlePresented = y < navigationY_Coordinate + 10
                     }
-                
+
                 FeatureButtons(session: session)
                     .padding(.vertical)
-                
+
                 if let type = session.type {
                     TypeSection(name: event.schedule?.types[type]?.localized().name ?? type)
                         .background(.sectionBackground)
                         .cornerRadius(8)
                         .padding(.bottom)
                 }
-                
+
                 PlaceSection(name: event.schedule?.rooms[session.room]?.localized().name ?? session.room)
                     .background(.sectionBackground)
                     .cornerRadius(8)
                     .padding(.bottom)
-                
+
                 TimeSection(session: session)
                     .background(.sectionBackground)
                     .cornerRadius(8)
-                
+
                 if let broadcast = session.broadcast, broadcast.isNotEmpty {
                     BroadcastSection(event.schedule, broadcast: broadcast)
                         .background(.sectionBackground)
@@ -81,11 +81,11 @@ struct SessionView: View {
             }
             .listRowBackground(Color.clear)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-            
+
             if session.speakers.isNotEmpty {
                 SpeakersSections(session: session)
             }
-            
+
             if session.localized().description != "" {
                 DescriptionSection(description: session.localized().description)
             }
@@ -100,7 +100,7 @@ struct SessionView: View {
                         .multilineTextAlignment(.center)
                 }
             }
-            
+
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack {
                     SFButton(systemName: "heart\(isLiked ? ".fill" : "")") {
@@ -137,7 +137,7 @@ struct SessionView: View {
                             break
                         }
                     }
-                    
+
                     Menu {
                         Button {
                             Task {
@@ -150,7 +150,7 @@ struct SessionView: View {
                         } label: {
                             Label("Add to Calendar", systemImage: "calendar.badge.plus")
                         }
-                        
+
                         if let uri = self.session.uri, let url = URL(string: uri) {
                             Button {
                                 let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
@@ -177,7 +177,7 @@ struct SessionView: View {
                     self.navigationY_Coordinate = y
                 }
             }
-            
+
         }
         .sheet(isPresented: $isEventEditViewPresented) {
             EventEditView(
@@ -205,7 +205,7 @@ private struct TagsSection: View {
 
     @EnvironmentObject private var event: EventStore
     @Environment(\.colorScheme) var colorScheme
-    
+
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
@@ -226,11 +226,11 @@ private struct TagsSection: View {
 
 //Feature button size need to be fixed not dynamic
 private struct FeatureButtons: View {
-    
+
     @Environment(\.colorScheme) var colorScheme
     let features: [(String, String, String)]
     let buttonSize = CGFloat(62)
-    
+
     init(session: Session) {
         features = [
             (session.live, "video", "Live"),
@@ -240,7 +240,7 @@ private struct FeatureButtons: View {
             (session.qa, "questionmark", "QA")
         ].filter { (url, _, _) in url != nil } as! [(String, String, String)]
     }
-    
+
     var body: some View {
         ScrollView(.horizontal) {
             HStack(spacing: 12) {
@@ -287,9 +287,9 @@ private struct FeatureButtons: View {
 }
 
 private struct TypeSection: View {
-    
+
     let name: String
-    
+
     var body: some View {
         HStack(spacing: 0) {
             Image(systemName: "signpost.right")
@@ -311,9 +311,9 @@ private struct TypeSection: View {
 }
 
 private struct PlaceSection: View {
-    
+
     let name: String
-    
+
     var body: some View {
         HStack(spacing: 0) {
             Image(systemName: "map")
@@ -335,17 +335,17 @@ private struct PlaceSection: View {
 }
 
 private struct TimeSection: View {
-    
+
     let start: DateInRegion
     let end: DateInRegion
     let durationMinute: Int
-    
+
     init(session: Session) {
         self.start = session.start
         self.end = session.end
         self.durationMinute = Int((session.end - session.start) / 60)
     }
-    
+
     var body: some View {
         HStack(spacing: 0) {
             Image(systemName: "clock")
@@ -367,15 +367,15 @@ private struct TimeSection: View {
 }
 
 private struct BroadcastSection: View {
-    
+
     let schedule: Schedule?
     let broadcast: [String]
-    
+
     init(_ schedule: Schedule?, broadcast: [String]) {
         self.schedule = schedule
         self.broadcast = broadcast
     }
-    
+
     var body: some View {
         HStack(spacing: 0) {
             Image(systemName: "megaphone")
@@ -394,7 +394,7 @@ private struct BroadcastSection: View {
             Spacer()
         }
     }
-    
+
     private func renderRoomsString() -> String {
         var result = ""
         for (offset, room) in broadcast.enumerated() {
@@ -410,10 +410,10 @@ private struct BroadcastSection: View {
 }
 
 private struct SpeakersSections: View {
-    
+
     let session: Session
     @EnvironmentObject var event: EventStore
-    
+
     var body: some View {
         Section(header: Text(LocalizedStringKey("Speakers")).padding(.leading, 10)) {
             ForEach(session.speakers, id: \.self) { speaker in
@@ -430,11 +430,11 @@ private struct SpeakersSections: View {
 }
 
 private struct SpeakerBlock: View {
-    
+
     let speaker: String
     let speakerData: Speaker?
     @State var avatarImage: Image? = nil
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .center) {
@@ -453,7 +453,7 @@ private struct SpeakerBlock: View {
                 }
                 .clipShape(Circle())
                 .frame(width: 30, height: 30)
-                
+
                 Text(speakerData?.localized().name ?? speaker)
                     .font(.subheadline.bold())
                 Spacer()
@@ -485,7 +485,7 @@ private struct SpeakerBio: View {
     @State private var intrinsicSize: CGSize = .zero
     @State private var truncatedSize: CGSize = .zero
     @Environment(\.colorScheme) var colorScheme
-    
+
     var body: some View {
         VStack(spacing: 0) {
             Markdown(speakerBio, font: .footnote) { url in
@@ -507,7 +507,7 @@ private struct SpeakerBio: View {
                         isTruncated = truncatedSize != intrinsicSize
                     }
             )
-            
+
             if isTruncated {
                 HStack {
                     Spacer()
@@ -529,10 +529,10 @@ private struct SpeakerBio: View {
                                 .frame(width: UIScreen.main.bounds.width * 0.25,
                                        height: UIScreen.main.bounds.width * 0.25)
                                 .padding(.bottom, 2)
-                                
+
                                 Text(speaker)
                                     .font(.title.bold())
-                                
+
                                 if intrinsicSize.height < UIScreen.main.bounds.height * 0.5 {
                                     VStack {
                                         HStack {
@@ -583,7 +583,7 @@ private struct DescriptionSection: View {
     @Environment(\.colorScheme) var colorScheme
     @State var description: String
     @State private var translationPresented = false
-    
+
     var body: some View {
         Section(header: Text(LocalizedStringKey("Session Introduction")).padding(.leading, 10)) {
             VStack {
@@ -591,7 +591,7 @@ private struct DescriptionSection: View {
                     Constants.openInAppSafari(forURL: url, style: colorScheme)
                 }
                 .lineSpacing(4)
-                
+
                 if #available(iOS 17.4, *) {
                     Divider()
                     Button("Translate", systemImage: "translate") {

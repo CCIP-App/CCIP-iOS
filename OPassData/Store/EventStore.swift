@@ -31,7 +31,7 @@ class EventStore: ObservableObject, Codable, Identifiable {
     private var eventAPITmpData: EventStore? = nil
     private let keychain = Keychain(service: "app.opass.ccip-token").synchronizable(true) //TODO: Change keychain id to "token.app.opass.ccip" after PyCon 23
     private let keyStore = NSUbiquitousKeyValueStore()
-    
+
     init(
         _ config: EventConfig,
         logoData: Data? = nil,
@@ -45,7 +45,7 @@ class EventStore: ObservableObject, Codable, Identifiable {
         _likedSessions = AppStorage(wrappedValue: [], "likedSessions", store: .init(suiteName: config.id))
         eventAPITmpData = tmpData
     }
-    
+
     enum Error: Swift.Error {
         case noTokenFound
         case incorrectFeature
@@ -123,7 +123,7 @@ extension EventStore {
             logger.error("No token included")
             return false
         }
-        
+
         do {
             let eventScenarioUseStatus = try await APIManager.fetchAttendee(from: feature, token: token, scenario: scenario)
             DispatchQueue.main.async {
@@ -135,7 +135,7 @@ extension EventStore {
             throw APIManager.LoadError.forbidden
         } catch { return false }
     }
-    
+
     ///Return bool to indicate token is valid or not. Will save token if is vaild.
     func redeem(token: String) async throws -> Bool {
         let token = token.tirm()
@@ -151,7 +151,7 @@ extension EventStore {
             logger.critical("Can't find correct fastpass feature")
             return false
         }
-        
+
         do {
             let attendee = try await APIManager.fetchAttendee(from: feature, token: token)
             OneSignal.User.addTag(key: "\(attendee.eventId)\(attendee.role)", value: "\(attendee.token)")
@@ -201,7 +201,7 @@ extension EventStore {
         }
         Task{ await self.save() }
     }
-    
+
     func loadAttendee() async throws {
         guard let feature = config.feature(.fastpass) else {
             logger.critical("Can't find correct fastpass feature")
@@ -258,7 +258,7 @@ extension EventStore {
             }
         }
     }
-    
+
     func loadAnnouncements(reload: Bool = false) async throws {
         guard let feature = config.feature(.announcement) else {
             logger.critical("Can't find correct announcement feature")

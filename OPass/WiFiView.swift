@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct WiFiView: View {
-    
+
     let feature: Feature
     @Environment(\.dismiss) var dismiss
-    
+
     var body: some View {
         NavigationView {
             VStack {

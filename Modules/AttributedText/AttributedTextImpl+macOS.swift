@@ -61,7 +61,7 @@ extension AttributedTextImpl {
 
     final class Coordinator: NSObject, NSTextViewDelegate {
         var openLink: ((URL) -> Void)?
-        
+
         func textView(_: NSTextView, clickedOnLink link: Any, at _: Int) -> Bool {
             guard let openLink = self.openLink,
                   let url = (link as? URL) ?? (link as? String).flatMap(URL.init(string:))

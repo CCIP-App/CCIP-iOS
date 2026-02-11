@@ -15,7 +15,7 @@ struct Schedule: Hashable, Codable {
     @Transform<Tag> var types: OrderedDictionary<String, Tag>
     @Transform<Tag> var rooms: OrderedDictionary<String, Tag>
     @Transform<Tag> var tags: OrderedDictionary<String, Tag>
-    
+
     private enum CodingKeys: String, CodingKey {
         case sessions
         case speakers

@@ -19,7 +19,7 @@ final class APIManager {
         case status(String, String)
         case use(String, String, String)
         case any(String)
-        
+
         var string: String {
             switch self {
             case .events:
@@ -36,10 +36,10 @@ final class APIManager {
                 return url
             }
         }
-        
+
         var url: URL? { return URL(string: self.string) }
     }
-    
+
     public enum LoadError: Error, LocalizedError {
         case invalidURL(CCIPEndpoint)
         case fetchFaild(Error)
@@ -47,7 +47,7 @@ final class APIManager {
         case missingURL(Feature)
         case incorrectFeature(FeatureType)
         case forbidden
-        
+
         public var errorDescription: String? {
             switch self {
             case .invalidURL(let url):
@@ -72,11 +72,11 @@ extension APIManager {
     public static func fetchEvents(reload: Bool = false) async throws -> [Event] {
         return try await fetch(from: .events, reload: reload)
     }
-    
+
     public static func fetchConfig(for event: String, reload: Bool = false) async throws -> EventConfig {
         return try await fetch(from: .config(event), reload: reload)
     }
-    
+
     // MARK: - Event
     public static func fetchAttendee(
         from feature: Feature,
@@ -94,7 +94,7 @@ extension APIManager {
         }
         return try await fetch(from: scenario == nil ? .status(url, token) : .use(url, scenario!, token), reload: reload)
     }
-    
+
     public static func fetchSchedule(
         from feature: Feature,
         reload: Bool = false
@@ -125,7 +125,7 @@ extension APIManager {
         }
         return try await fetch(from: .announcement(url, token), reload: reload)
     }
-    
+
     // MARK: - Data
     public static func fetchData(from endpoint: String) async throws -> Data {
         guard
@@ -138,7 +138,7 @@ extension APIManager {
         let (data, _) = try await URLSession.shared.data(from: url)
         return data
     }
-    
+
     // MARK: - Private
     private static func fetch<T: Decodable>(from endpoint: CCIPEndpoint, reload: Bool = false) async throws -> T {
         guard let url = endpoint.url else {

@@ -11,7 +11,7 @@ import PhotosUI
 import CodeScanner
 
 struct RedeemTokenView: View {
-    
+
     @EnvironmentObject var EventStore: EventStore
     @State private var token: String = ""
     @State private var isCameraSOCPresented = false
@@ -22,13 +22,13 @@ struct RedeemTokenView: View {
     @State private var selectedPhotoItem: PhotosPickerItem? = nil
     @FocusState private var focusedField: Field?
     @Environment(\.colorScheme) private var colorScheme
-    
+
     var body: some View {
         Form {
-            FastpassLogoView()
-                .frame(height: UIScreen.main.bounds.width * 0.4)
-                .listRowBackground(Color.white.opacity(0))
-            
+            FastPassLogoView()
+                .frame(height: UIScreen.main.bounds.width * 0.3)
+                .listRowBackground(Image(.appGradientBackground).resizable().brightness(0.1))
+
             Section {
                 Button { self.isCameraSOCPresented = true } label: {
                     Label {
@@ -60,10 +60,10 @@ struct RedeemTokenView: View {
                                     .font(.system(size: 13))
                             }
                         }
-                        
+
                     }
                 }
-                
+
                 PhotosPicker(selection: $selectedPhotoItem, matching: .any(of: [.images, .not(.livePhotos)])) {
                     Label {
                         HStack {
@@ -97,7 +97,7 @@ struct RedeemTokenView: View {
                     }
                 }
                 .alert("No QR code found in picture", isPresented: $isNoQRCodeAlertPresented)
-                
+
                 Button { self.isManuallySOCPresented = true } label: {
                     Label {
                         HStack {
@@ -132,15 +132,14 @@ struct RedeemTokenView: View {
                 }
             }
         }
-        .contentMargins(.top, 0)
-        .listSectionSpacing(5)
+        .contentMargins(.top, 10)
         .http403Alert(title: "Couldn't verify your identity", isPresented: $isHttp403AlertPresented)
         .alert("Couldn't verify your identity", message: "Invaild token", isPresented: $isInvaildTokenAlertPresented)
         .slideOverCard(isPresented: $isCameraSOCPresented, backgroundColor: (colorScheme == .dark ? .init(red: 28/255, green: 28/255, blue: 30/255) : .white)) {
             VStack {
                 Text("Fast Pass").font(Font.largeTitle.weight(.bold))
                 Text("Scan QR code with camera")
-                
+
                 CodeScannerView(codeTypes: [.qr], scanMode: .once, showViewfinder: false, shouldVibrateOnSuccess: true, completion: handleScan)
                     .frame(height: UIScreen.main.bounds.height * 0.25)
                     .cornerRadius(20)
@@ -166,7 +165,7 @@ struct RedeemTokenView: View {
                             .padding(10)
                         }		
                     }
-                
+
                 VStack(alignment: .leading) {
                     Text("Scan to get token").bold()
                     Text("Please look for the QR code provided by the email and place it in the viewfinder")
@@ -182,7 +181,7 @@ struct RedeemTokenView: View {
             VStack {
                 Text("Fast Pass").font(Font.largeTitle.weight(.bold))
                 Text("Enter token manually")
-                
+
                 TextField("Token", text: $token)
                     .focused($focusedField, equals: .ManuallyToken)
                     .padding(10)
@@ -192,13 +191,13 @@ struct RedeemTokenView: View {
                                 (focusedField == .ManuallyToken ? .yellow : Color(red: 209/255, green: 209/255, blue: 213/255)),
                                 lineWidth: (focusedField == .ManuallyToken ? 2 : 1))
                     )
-                
+
                 VStack(alignment: .leading) {
                     Text("Please look for the token provided by the email and enter it in the field above")
                         .foregroundColor(Color.gray)
                         .font(.caption)
                 }
-                
+
                 Button(action: {
                     UIApplication.endEditing()
                     self.isManuallySOCPresented = false
@@ -239,12 +238,12 @@ struct RedeemTokenView: View {
             }
         }
     }
-    
+
     /// Handles the result of a QR code scan operation
     private func handleScan(result: Result<ScanResult, ScanError>) {
         // Hide the camera interface immediately after scan
         self.isCameraSOCPresented = false
-        
+
         switch result {
         case .success(let result):
             // Extract token from scanned string (handle both direct tokens and URL parameters)
@@ -254,7 +253,7 @@ struct RedeemTokenView: View {
                let tokenValue = queryItems.first(where: { $0.name == "token" })?.value {
                 token = tokenValue
             }
-            
+
             Task {
                 do {
                     let result = try await EventStore.redeem(token: token)
@@ -278,7 +277,7 @@ struct RedeemTokenView: View {
             print("Scanning failed: \(error.localizedDescription)")
         }
     }
-    
+
     enum Field: Hashable {
         case ManuallyToken
     }
@@ -290,6 +289,7 @@ struct RedeemTokenView_Previews: PreviewProvider {
         NavigationStack {
             RedeemTokenView()
                 .environmentObject(OPassStore.mock().event!)
+                .navigationTitle("Ticket")
         }
     }
 }

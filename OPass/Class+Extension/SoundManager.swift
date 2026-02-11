@@ -17,7 +17,7 @@ class SoundManager: NSObject {
 
     private var audioSession = AVAudioSession.sharedInstance()
     private var player: AVAudioPlayer?
-    
+
     enum SoundOption: String {
         case din
         case don
@@ -31,7 +31,7 @@ class SoundManager: NSObject {
             logger.error("Error when initializing SoundManager due to: \(error.localizedDescription)")
         }
     }
-    
+
     func play(sound: SoundOption) {
         guard let url = Bundle.main.url(forResource: sound.rawValue, withExtension: ".mp3") else { return }
         do {

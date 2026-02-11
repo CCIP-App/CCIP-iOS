@@ -3,14 +3,14 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/5.
-//  2025 OPass.
+//  2026 OPass.
 //
 
 import SwiftUI
 import SwiftDate
 
 struct ScenarioView: View {
-    
+
     // MARK: - Variables
     @EnvironmentObject var EventStore: EventStore
     @State private var disableAlertString = ""
@@ -18,15 +18,15 @@ struct ScenarioView: View {
     @State private var isSignOutAlertPresented = false
     @State private var sheetScenarioDataItem: Scenario?
     @Environment(\.colorScheme) var colorScheme
-    
+
     // MARK: - Views
     var body: some View {
         VStack {
             Form {
-                FastpassLogoView()
-                    .frame(height: UIScreen.main.bounds.width * 0.4)
-                    .listRowBackground(Color.clear)
-                
+                FastPassLogoView()
+                    .frame(height: UIScreen.main.bounds.width * 0.3)
+                    .listRowBackground(Image(.appGradientBackground).resizable().brightness(0.1))
+
                 ForEach(EventStore.attendee?.scenarios.keys ?? [], id: \.self) { sectionID in
                     Section(header: Text(sectionID)) {
                         ForEach(EventStore.attendee?.scenarios[sectionID] ?? []) { scenario in
@@ -78,7 +78,7 @@ struct ScenarioView: View {
                 used: Date().timeIntervalSince1970 < (scenario.used?.timeIntervalSince1970 ?? 0) + Double(scenario.countdown))
         }
     }
-    
+
     @ViewBuilder
     func buttonContentView(_ scenario: Scenario, sectionID: String) -> some View {
         let buttonColor: [String : Color] = [
@@ -87,7 +87,7 @@ struct ScenarioView: View {
             "bag" : Color(red: 89 / 255, green: 196 / 255, blue: 189 / 255),
             "gift" : Color(red: 88 / 255, green: 172 / 255, blue: 225 / 255)
         ]
-        
+
         HStack {
             Image(systemName: scenario.used == nil ? scenario.symbol : "checkmark.circle.fill")
                 .font(.callout.bold())
@@ -95,7 +95,7 @@ struct ScenarioView: View {
                 .frame(width: UIScreen.main.bounds.width * 0.09, height: UIScreen.main.bounds.width * 0.09)
                 .background(scenario.used == nil ? buttonColor[scenario.symbol] ?? .orange : .green)
                 .cornerRadius(UIScreen.main.bounds.width * 0.028)
-            
+
             VStack(alignment: .leading) {
                 Text(scenario.title.localized())
                     .foregroundColor(colorScheme == .dark ? .white : .black)
@@ -149,24 +149,23 @@ struct ScenarioView: View {
     }
 }
 
-struct FastpassLogoView: View {
-    
+struct FastPassLogoView: View {
+
     @EnvironmentObject var EventStore: EventStore
-    
+
     var body: some View {
         HStack {
             Spacer()
             if let logo = EventStore.logo {
                 logo
-                    .renderingMode(.template)
+                    .renderingMode(.original)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.logo)
             } else {
                 Text(EventStore.config.title.localized())
-                    .font(.system(.largeTitle, design: .rounded))
+                    .font(.system(.largeTitle))
                     .fontWeight(.medium)
-                    .foregroundColor(.logo)
+                    .foregroundStyle(.white)
             }
             Spacer()
         }

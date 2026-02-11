@@ -39,4 +39,9 @@ final class Constants {
         }
         return result
     }
+
+    static var isOS26: Bool {
+        if #available(iOS 26, *) { return true }
+        return false
+    }
 }

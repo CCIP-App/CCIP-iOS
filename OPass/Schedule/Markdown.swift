@@ -14,13 +14,13 @@ struct Markdown: View {
     private let markdown: String
     private let font: UIFont.TextStyle
     private let onOpenLink: ((URL) -> Void)?
-    
+
     init(_ markdown: String, font: UIFont.TextStyle, onOpenLink: ((URL) -> Void)? = nil) {
         self.markdown = markdown
         self.font = font
         self.onOpenLink = onOpenLink
     }
-    
+
     var body: some View {
         AttributedText(attributedText: {
             let markdownParser = MarkdownParser(font: .preferredFont(forTextStyle: font))

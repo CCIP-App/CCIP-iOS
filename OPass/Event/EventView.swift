@@ -3,6 +3,7 @@
 //  OPass
 //
 //  Created by Brian Chang on 2023/8/8.
+//  2026 OPass.
 //
 
 import SwiftUI
@@ -16,59 +17,60 @@ struct EventView: View {
 
     // MARK: - Views
     var body: some View {
-        VStack {
+        Form {
             eventLogo
-                .foregroundColor(.logo)
-                .padding(.bottom)
-                .frame(
-                    width: UIScreen.main.bounds.width * 0.78,
-                    height: UIScreen.main.bounds.width * 0.4)
+                .frame(height: UIScreen.main.bounds.width * 0.3)
+                .listRowBackground(Image(.appGradientBackground).resizable().brightness(0.1))
 
-            featureGrid
+            Section { featureGrid }
+                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                .listRowBackground(Color.sectionBackground)
         }
         .navigationDestination(for: FeatureDestinations.self) { $0.view }
-        .background(.sectionBackground)
         .navigationBarTitleDisplayMode(.inline)
+        .scrollContentBackground(.hidden)
+        .background(.sectionBackground)
         .toolbar { toolbar }
+        .contentMargins(.top, 10)
     }
 
     @ViewBuilder
     private var eventLogo: some View {
-        if let image = store.eventLogo {
-            image
-                .renderingMode(.template)
-                .resizable()
-                .scaledToFit()
-                .padding(.horizontal)
-        } else if let logo = event.logo {
-            logo
-                .renderingMode(.template)
-                .resizable()
-                .scaledToFit()
-                .padding(.horizontal)
-        } else {
-            Text(event.config.title.localized())
-                .font(.system(.largeTitle, design: .rounded))
-                .fontWeight(.medium)
-                .fixedSize(horizontal: false, vertical: true)
+        HStack {
+            Spacer()
+            if let image = store.eventLogo {
+                image
+                    .renderingMode(.original)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            } else if let logo = event.logo {
+                logo
+                    .renderingMode(.original)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            } else {
+                Text(event.config.title.localized())
+                    .font(.system(.largeTitle, design: .rounded))
+                    .fontWeight(.medium)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .foregroundStyle(.white)
+            }
+            Spacer()
         }
     }
 
     private var featureGrid: some View {
-        ScrollView {
-            let spacing = UIApplication.size.width * 0.0545454
-            LazyVGrid(
-                columns: .init(
-                    repeating: .init(spacing: spacing, alignment: .top),
-                    count: 4
-                )
-            ) {
-                ForEach(event.avaliableFeatures, id: \.self) { feature in
-                    featureButton(of: feature)
-                        .padding(.bottom, 5)
-                }
+        let spacing = UIApplication.size.width * 0.0545454
+        return LazyVGrid(
+            columns: .init(
+                repeating: .init(spacing: spacing, alignment: .top),
+                count: 4
+            )
+        ) {
+            ForEach(event.avaliableFeatures, id: \.self) { feature in
+                featureButton(of: feature)
+                    .padding(.bottom, 5)
             }
-            .padding(.horizontal, spacing)
         }
     }
 
@@ -104,7 +106,7 @@ struct EventView: View {
             }
             .buttonStyle(.bordered)
             .tint(feature.color)
-            .buttonBorderShape(.roundedRectangle(radius: 18))
+            .buttonBorderShape(.roundedRectangle(radius: 26))
             .conditionalGlassEffect()
 
             Text(feature.title.localized())
@@ -162,7 +164,7 @@ struct EventView: View {
 private extension View {
     func conditionalGlassEffect() -> some View {
         if #available(iOS 26, *) {
-            return self.glassEffect(in: .rect(cornerRadius: 18))
+            return self.glassEffect(in: .rect(cornerRadius: 26))
         }
         return self
     }

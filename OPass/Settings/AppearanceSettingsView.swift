@@ -96,7 +96,7 @@ private struct ScheduleOptions: View {
                                 .foregroundColor(.white)
                                 .background(.blue)
                                 .cornerRadius(5)
-                            
+
                             Text(String(format: "%d:00 ~ %d:00", sampleTimeHour[0], sampleTimeHour[1]))
                                 .foregroundColor(.gray)
                                 .font(.footnote)
@@ -104,7 +104,7 @@ private struct ScheduleOptions: View {
                         Text("Past Session")
                             .lineLimit(2)
                     }
-                    
+
                     .opacity(self.dimPastSession ? self.pastSessionOpacity : 1)
                     .padding(.horizontal, 5)
                     .padding(10)
@@ -112,7 +112,7 @@ private struct ScheduleOptions: View {
                 }
                 .background(.sectionBackground)
                 .cornerRadius(8)
-                
+
                 HStack {
                     VStack(alignment: .leading, spacing: 3) {
                         HStack {
@@ -123,7 +123,7 @@ private struct ScheduleOptions: View {
                                 .foregroundColor(.white)
                                 .background(.blue)
                                 .cornerRadius(5)
-                            
+
                             Text(String(format: "%d:00 ~ %d:00", sampleTimeHour[2], sampleTimeHour[3]))
                                 .foregroundColor(.gray)
                                 .font(.footnote)

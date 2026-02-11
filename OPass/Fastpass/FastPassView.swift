@@ -1,5 +1,5 @@
 //
-//  FastpassView.swift
+//  FastPassView.swift
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/25.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct FastpassView: View {
+struct FastPassView: View {
 
     // MARK: - Variables
     @EnvironmentObject var EventStore: EventStore
@@ -84,9 +84,9 @@ struct FastpassView: View {
 }
 
 #if DEBUG
-    struct FastpassView_Previews: PreviewProvider {
+    struct FastPassView_Previews: PreviewProvider {
         static var previews: some View {
-            FastpassView()
+            FastPassView()
                 .environmentObject(OPassStore.mock().event!)
         }
     }

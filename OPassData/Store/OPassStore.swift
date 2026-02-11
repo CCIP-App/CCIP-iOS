@@ -18,7 +18,7 @@ class OPassStore: ObservableObject {
 
     private var eventTemporaryData: EventStore?
     private var keyStore = NSUbiquitousKeyValueStore()
-    
+
     init() {
         keyStore.synchronize()
         if let data = keyStore.data(forKey: "EventStore") {
@@ -71,7 +71,7 @@ extension OPassStore {
             self.eventTemporaryData = nil // Clear temporary data
         }
     }
-    
+
     func signinCurrentEvent(with token: String) async throws -> Bool {
         guard let eventId = self.eventId else { return false }
         do {

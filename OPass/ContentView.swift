@@ -112,7 +112,7 @@ extension ContentView {
         }
         let originalEvent = store.eventId
         store.eventId = eventId
-        
+
         // Load Event
         if eventId != store.event?.id {
             store.eventLogo = nil
@@ -125,7 +125,7 @@ extension ContentView {
                 return
             }
         }
-        
+
         // Signin
         guard let token = params?.first(where: { $0.name == "token" })?.value else {
             DispatchQueue.main.async {
@@ -144,7 +144,7 @@ extension ContentView {
             }
             return
         } catch {}
-        
+
         // Error
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.presentInvaildUrlAlert = true

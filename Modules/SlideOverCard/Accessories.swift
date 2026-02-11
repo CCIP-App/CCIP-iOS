@@ -5,7 +5,7 @@ public struct SOCActionButton: ButtonStyle {
     public init(textColor: Color = .white) {
         self.textColor = textColor
     }
-    
+
     public func makeBody(configuration: Configuration) -> some View {
         HStack {
             Spacer()
@@ -20,7 +20,7 @@ public struct SOCActionButton: ButtonStyle {
 
 public struct SOCAlternativeButton: ButtonStyle {
     public init() {}
-    
+
     public func makeBody(configuration: Configuration) -> some View {
         SOCActionButton(textColor: .primary).makeBody(configuration: configuration).accentColor(Color(.systemGray5))
     }
@@ -28,7 +28,7 @@ public struct SOCAlternativeButton: ButtonStyle {
 
 public struct SOCEmptyButton: ButtonStyle {
     public init() {}
-    
+
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(Font.body.weight(.bold))
@@ -40,7 +40,7 @@ public struct SOCEmptyButton: ButtonStyle {
 
 public struct SOCExitButton: View {
     @Environment(\.colorScheme) var colorScheme
-    
+
     public var body: some View {
         ZStack {
             Circle()

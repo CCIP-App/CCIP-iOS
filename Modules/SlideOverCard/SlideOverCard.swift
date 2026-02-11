@@ -6,7 +6,7 @@ public struct SlideOverCard<Content: View>: View {
     var options: SOCOptions
     let content: Content
     let backgroundColor: Color
-    
+
     public init(isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil, options: SOCOptions = [], backgroundColor: Color = Color(.systemGray6), content: @escaping () -> Content) {
         self.isPresented = isPresented
         self.onDismiss = onDismiss
@@ -14,13 +14,13 @@ public struct SlideOverCard<Content: View>: View {
         self.backgroundColor = backgroundColor
         self.content = content()
     }
-    
+
     @GestureState private var viewOffset: CGFloat = 0.0
-    
+
     var isiPad: Bool {
         UIDevice.current.userInterfaceIdiom == .pad
     }
-    
+
     public var body: some View {
         ZStack {
             if isPresented.wrappedValue {
@@ -31,7 +31,7 @@ public struct SlideOverCard<Content: View>: View {
                     .onTapGesture {
                         dismiss()
                     }
-                
+
                 Group {
                     if #available(iOS 14.0, *) {
                         container
@@ -45,11 +45,11 @@ public struct SlideOverCard<Content: View>: View {
             }
         }.animation(.spring(response: 0.35, dampingFraction: 1), value: isPresented.wrappedValue)
     }
-    
+
     private var container: some View {
         VStack {
             Spacer()
-            
+
             if isiPad {
                 card.aspectRatio(1.0, contentMode: .fit)
                 Spacer()
@@ -58,7 +58,7 @@ public struct SlideOverCard<Content: View>: View {
             }
         }
     }
-    
+
     private var card: some View {
         VStack(alignment: .trailing, spacing: 0) {
             if !options.contains(.hideExitButton) {
@@ -66,7 +66,7 @@ public struct SlideOverCard<Content: View>: View {
                     SOCExitButton()
                 }.frame(width: 24, height: 24)
             }
-            
+
             content
                 .padding([.horizontal, options.contains(.hideExitButton) ? .vertical : .bottom], 14)
         }.padding(20)
@@ -87,7 +87,7 @@ public struct SlideOverCard<Content: View>: View {
                 }
         )
     }
-    
+
     func dismiss() {
         if onDismiss != nil { onDismiss!() }
         withAnimation {
@@ -98,11 +98,11 @@ public struct SlideOverCard<Content: View>: View {
 
 public struct SOCOptions: OptionSet {
     public let rawValue: Int8
-    
+
     public init(rawValue: Int8) {
         self.rawValue = rawValue
     }
-    
+
     public static let disableDrag = SOCOptions(rawValue: 1)
     public static let disableDragToDismiss = SOCOptions(rawValue: 1 << 1)
     public static let hideExitButton = SOCOptions(rawValue: 1 << 2)

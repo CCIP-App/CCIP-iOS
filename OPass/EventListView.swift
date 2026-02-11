@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/1.
-//  2025 OPass.
+//  2026 OPass.
 //
 
 import OSLog
@@ -39,6 +39,7 @@ struct EventListView: View {
                 List(viewModel.listedEvents) { event in
                     EventRow(event: event, dismiss: _dismiss)
                 }
+                .contentMargins(.top, 8)
             } else {
                 ContentUnavailableView.search(text: viewModel.searchQuery)
             }
@@ -99,41 +100,39 @@ private struct EventRow: View {
             dismiss()
         } label: {
             HStack {
-                AsyncImage(
-                    url: URL(string: event.logoUrl), transaction: Transaction(animation: .spring())
-                ) { phase in
-                    switch phase {
-                    case .empty:
-                        ProgressView()
-                    case .success(let image):
+                AsyncImage(url: URL(string: event.logoUrl), transaction: .init(animation: .spring)) { phase in
+                    if let image = phase.image {
                         image
-                            .renderingMode(.template)
-                            .resizable().scaledToFit()
-                            .foregroundColor(.logo)
+                            .resizable()
+                            .scaledToFit()
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 8)
                             .onAppear { self.preloadLogoImage = image }
-                    case .failure(_):
+                    } else if let error = phase.error {
                         Image(systemName: "xmark.circle")
-                            .foregroundColor(.logo.opacity(0.5))
-                    @unknown default:
-                        Image(systemName: "xmark.circle")
-                            .foregroundColor(.logo.opacity(0.5))
-                            .onAppear {
-                                logger.error("Unknow AsyncImage status")
-                            }
-                    }
+                            .foregroundStyle(.white)
+                            .onAppear { logger.error("\(error)") }
+                    } else { ProgressView() }
                 }
-                .padding(.horizontal, 3)
                 .frame(
                     width: UIScreen.main.bounds.width * 0.25,
-                    height: UIScreen.main.bounds.width * 0.15)
+                    height: UIScreen.main.bounds.width * 0.15
+                )
+                .background(Image(.appGradientBackground).resizable().brightness(0.1))
+                .clipShape(.rect(cornerRadius: 15, style: .continuous))
+                .padding(.trailing, 10)
+                .padding(.leading, -4)
 
                 Text(event.title.localized())
                     .foregroundColor(colorScheme == .dark ? .white : .black)
+                    .fontWeight(.medium)
 
                 Spacer()
 
                 Image(systemName: "chevron.right")
-                    .foregroundColor(.gray)
+                    .font(.system(size: 13, weight: .bold))
+                    .foregroundColor(.gray.opacity(0.55))
+                    .padding(.trailing, 1.5)
             }
         }
     }

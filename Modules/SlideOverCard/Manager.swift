@@ -2,18 +2,18 @@ import SwiftUI
 
 public struct SOCManager {
     private static var viewController: UIViewController? = nil
-    
+
     @available(iOSApplicationExtension, unavailable)
     public static func present<Content:View>(isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil, options: SOCOptions = SOCOptions(), style: UIUserInterfaceStyle = .unspecified, @ViewBuilder content: @escaping () -> Content) {
         let rootCard = SlideOverCard(isPresented: isPresented, onDismiss: {
             dismiss(isPresented: isPresented)
         }, options: options, content: content)
-        
+
         let controller = UIHostingController(rootView: rootCard)
         controller.view.backgroundColor = .clear
         controller.modalPresentationStyle = .overFullScreen
         controller.overrideUserInterfaceStyle = style
-        
+
         self.viewController = UIApplication.getTopViewController()
         self.viewController?.present(controller, animated: false)
         DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
@@ -22,7 +22,7 @@ public struct SOCManager {
             }
         }
     }
-    
+
     @available(iOSApplicationExtension, unavailable)
     public static func dismiss(isPresented: Binding<Bool>) {
         withAnimation {
@@ -47,12 +47,12 @@ private extension UIApplication {
         }
         return presentedViewController
     }
-    
+
     static func getCurrentUIWindow() -> UIWindow? {
         let connectedScenes = self.shared.connectedScenes
             .filter { $0.activationState == .foregroundActive }
             .compactMap { $0 as? UIWindowScene }
-        
+
         let window = connectedScenes.first?
             .windows
             .first { $0.isKeyWindow }

@@ -14,7 +14,7 @@ struct TruncableText: View {
     @State private var intrinsicSize: CGSize = .zero
     @State private var truncatedSize: CGSize = .zero
     let isTruncatedUpdate: (_ isTruncated: Bool) -> Void
-    
+
     var body: some View {
         text
             .lineLimit(lineLimit)

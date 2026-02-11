@@ -20,7 +20,7 @@ extension FeatureDestinations {
     var view: some View {
         switch self {
         case .fastpass:
-            FastpassView()
+            FastPassView()
         case .schedule:
             ScheduleContainerView()
         case .ticket:

@@ -3,10 +3,10 @@ import SwiftUI
 /// A view that displays styled attributed text.
 struct AttributedText: View {
     @StateObject private var textSizeViewModel = TextSizeViewModel()
-    
+
     private let attributedText: NSAttributedString
     private let onOpenLink: ((URL) -> Void)?
-    
+
     /// Creates an attributed text view.
     /// - Parameters:
     ///   - attributedText: An attributed string to display.

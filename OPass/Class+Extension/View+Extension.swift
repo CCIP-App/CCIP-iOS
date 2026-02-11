@@ -14,7 +14,7 @@ extension View {
         if Bundle.main.preferredLocalizations[0] ==  "zh-Hant" { return zh }
         return en
     }
-    
+
     @ViewBuilder //Use this at last resort. It's bad in SwiftUI.
     func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
         if condition { transform(self) }
@@ -26,7 +26,7 @@ extension View {
             self.alert(titleKey, isPresented: isPresented) {
                 Button("OK", role: .cancel) {}
             } message: { Text(message) }
-            
+
         } else {
             self.alert(titleKey, isPresented: isPresented) {
                 Button("OK", role: .cancel) {}
