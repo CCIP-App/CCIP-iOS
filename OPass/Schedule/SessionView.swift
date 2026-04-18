@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/27.
-//  2025 OPass.
+//  2026 OPass.
 //
 
 import SwiftUI
@@ -34,63 +34,67 @@ struct SessionView: View {
     init(session: Session) { self.session = session }
 
     var body: some View {
-        List {
+        ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                if session.tags.isNotEmpty {
-                    TagsSection(tags: session.tags)
-                        .padding(.bottom, 8)
-                        .padding(.top, 3.9)
-                }
-
-                Text(session.localized().title)
-                    .font(.largeTitle.bold())
-                    .fixedSize(horizontal: false, vertical: true)
-                    .background(GeometryReader { geo in
-                        Color.clear
-                            .preference(key: TitleY_CoordinatePreferenceKey.self, value: geo.frame(in: .global).maxY)
-                    })
-                    .onPreferenceChange(TitleY_CoordinatePreferenceKey.self) { y in
-                        isNavigationTitlePresented = y < navigationY_Coordinate + 10
+                VStack(alignment: .leading, spacing: 0) {
+                    if session.tags.isNotEmpty {
+                        TagsSection(tags: session.tags)
+                            .padding(.bottom, 8)
+                            .padding(.top, 3.9)
                     }
 
-                FeatureButtons(session: session)
-                    .padding(.vertical)
+                    Text(session.localized().title)
+                        .font(.largeTitle.bold())
+                        .fixedSize(horizontal: false, vertical: true)
+                        .background(GeometryReader { geo in
+                            Color.clear
+                                .preference(key: TitleY_CoordinatePreferenceKey.self, value: geo.frame(in: .global).maxY)
+                        })
+                        .onPreferenceChange(TitleY_CoordinatePreferenceKey.self) { y in
+                            isNavigationTitlePresented = y < navigationY_Coordinate + 10
+                        }
 
-                if let type = session.type {
-                    TypeSection(name: event.schedule?.types[type]?.localized().name ?? type)
-                        .background(.sectionBackground)
-                        .cornerRadius(8)
-                        .padding(.bottom)
+                    FeatureButtons(session: session)
+                        .padding(.vertical)
+
+                    VStack(spacing: 10) {
+                        if let type = session.type {
+                            TypeSection(name: event.schedule?.types[type]?.localized().name ?? type)
+                                .background(.sectionBackground)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                        }
+
+                        PlaceSection(name: event.schedule?.rooms[session.room]?.localized().name ?? session.room)
+                            .background(.sectionBackground)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+
+                        TimeSection(session: session)
+                            .background(.sectionBackground)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+
+                        if let broadcast = session.broadcast, broadcast.isNotEmpty {
+                            BroadcastSection(event.schedule, broadcast: broadcast)
+                                .background(.sectionBackground)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                        }
+                    }
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+
+                if session.speakers.isNotEmpty {
+                    SpeakersSections(session: session)
+                        .padding(.vertical, 8)
                 }
 
-                PlaceSection(name: event.schedule?.rooms[session.room]?.localized().name ?? session.room)
-                    .background(.sectionBackground)
-                    .cornerRadius(8)
-                    .padding(.bottom)
-
-                TimeSection(session: session)
-                    .background(.sectionBackground)
-                    .cornerRadius(8)
-
-                if let broadcast = session.broadcast, broadcast.isNotEmpty {
-                    BroadcastSection(event.schedule, broadcast: broadcast)
-                        .background(.sectionBackground)
-                        .cornerRadius(8)
-                        .padding(.top)
+                if session.localized().description != "" {
+                    DescriptionSection(description: session.localized().description)
+                        .padding(.top, 8)
+                        .padding(.bottom, 16)
                 }
-            }
-            .listRowBackground(Color.clear)
-            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-
-            if session.speakers.isNotEmpty {
-                SpeakersSections(session: session)
-            }
-
-            if session.localized().description != "" {
-                DescriptionSection(description: session.localized().description)
             }
         }
-        .listStyle(.insetGrouped)
+        .background(Color(.systemGroupedBackground).ignoresSafeArea())
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if isNavigationTitlePresented {
@@ -177,7 +181,6 @@ struct SessionView: View {
                     self.navigationY_Coordinate = y
                 }
             }
-
         }
         .sheet(isPresented: $isEventEditViewPresented) {
             EventEditView(
@@ -217,7 +220,7 @@ private struct TagsSection: View {
                         .padding(.horizontal, 10)
                         .foregroundColor(colorScheme == .dark ? .white : .black)
                         .background(.sectionBackground)
-                        .cornerRadius(10)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
             }
         }
@@ -273,7 +276,7 @@ private struct FeatureButtons: View {
                                     .foregroundColor(colorScheme == .dark ? .gray : Color(red: 72/255, green: 72/255, blue: 74/255))
                                     .frame(width: buttonSize, height: buttonSize)
                                     .background(.sectionBackground)
-                                    .cornerRadius(10)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
                             }
                             Text(LocalizedStringKey(text))
                                 .font(.caption2)
@@ -298,7 +301,7 @@ private struct TypeSection: View {
                 .padding()
                 .frame(width: 50, height: 50)
             VStack(alignment: .leading, spacing: 0) {
-                Text(LocalizedStringKey("Type")).font(.caption)
+                Text("Type").font(.caption)
                     .foregroundColor(.gray)
                 Text(name)
                     .fixedSize(horizontal: false, vertical: true)
@@ -322,7 +325,7 @@ private struct PlaceSection: View {
                 .padding()
                 .frame(width: 50, height: 50)
             VStack(alignment: .leading, spacing: 0) {
-                Text(LocalizedStringKey("Place")).font(.caption)
+                Text("Place").font(.caption)
                     .foregroundColor(.gray)
                 Text(name)
                     .fixedSize(horizontal: false, vertical: true)
@@ -384,7 +387,7 @@ private struct BroadcastSection: View {
                 .padding()
                 .frame(width: 50, height: 50)
             VStack(alignment: .leading, spacing: 0) {
-                Text(LocalizedStringKey("Broadcast"))
+                Text("Broadcast")
                     .font(.caption)
                     .foregroundColor(.gray)
                 Text(renderRoomsString())
@@ -415,17 +418,22 @@ private struct SpeakersSections: View {
     @EnvironmentObject var event: EventStore
 
     var body: some View {
-        Section(header: Text(LocalizedStringKey("Speakers")).padding(.leading, 10)) {
-            ForEach(session.speakers, id: \.self) { speaker in
-                SpeakerBlock(
-                    speaker: speaker,
-                    speakerData: event.schedule?.speakers[speaker]
-                )
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Speakers")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .padding(.leading, 26)
+
+            VStack(spacing: 8) {
+                ForEach(session.speakers, id: \.self) { speaker in
+                    SpeakerBlock(
+                        speaker: speaker,
+                        speakerData: event.schedule?.speakers[speaker]
+                    )
+                    .padding(.horizontal, 16)
+                }
             }
-            .listRowBackground(Color.clear)
-            .listRowSeparator(.hidden)
         }
-        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
 }
 
@@ -470,8 +478,7 @@ private struct SpeakerBlock: View {
         }
         .padding(.horizontal, 10)
         .background(.sectionBackground)
-        .cornerRadius(8)
-        .padding(.bottom, 8)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
 
@@ -509,33 +516,48 @@ private struct SpeakerBio: View {
             )
 
             if isTruncated {
-                HStack {
-                    Spacer()
-                    Button("More") {
-                        SOCManager.present(isPresented: $isShowingSpeakerDetail, style: colorScheme == .dark ? .dark : .light) {
-                            VStack {
-                                Group {
-                                    if let image = avatarImage {
-                                        image
-                                            .renderingMode(.original)
-                                            .resizable().scaledToFill()
-                                    } else {
-                                        Image(systemName: "person.crop.circle.fill")
-                                            .resizable().scaledToFit()
-                                            .foregroundColor(.gray)
-                                    }
+                Button {
+                    SOCManager.present(isPresented: $isShowingSpeakerDetail, style: colorScheme == .dark ? .dark : .light) {
+                        VStack {
+                            Group {
+                                if let image = avatarImage {
+                                    image
+                                        .renderingMode(.original)
+                                        .resizable().scaledToFill()
+                                } else {
+                                    Image(systemName: "person.crop.circle.fill")
+                                        .resizable().scaledToFit()
+                                        .foregroundColor(.gray)
                                 }
-                                .clipShape(Circle())
-                                .frame(width: UIScreen.main.bounds.width * 0.25,
-                                       height: UIScreen.main.bounds.width * 0.25)
-                                .padding(.bottom, 2)
+                            }
+                            .clipShape(Circle())
+                            .frame(width: UIScreen.main.bounds.width * 0.25,
+                                   height: UIScreen.main.bounds.width * 0.25)
+                            .padding(.bottom, 2)
 
-                                Text(speaker)
-                                    .font(.title.bold())
+                            Text(speaker)
+                                .font(.title.bold())
 
-                                if intrinsicSize.height < UIScreen.main.bounds.height * 0.5 {
-                                    VStack {
-                                        HStack {
+                            if intrinsicSize.height < UIScreen.main.bounds.height * 0.5 {
+                                VStack {
+                                    HStack {
+                                        Markdown(speakerBio, font: .footnote) { url in
+                                            SOCManager.dismiss(isPresented: $isShowingSpeakerDetail)
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
+                                                Constants.openInAppSafari(forURL: url, style: colorScheme)
+                                            }
+                                        }
+                                        .lineSpacing(4)
+                                        .padding()
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    .background(colorScheme == .light ? .white : .black.opacity(0.6))
+                                    .cornerRadius(20)
+                                }.frame(maxWidth: .infinity)
+                            } else {
+                                VStack {
+                                    HStack {
+                                        ScrollView {
                                             Markdown(speakerBio, font: .footnote) { url in
                                                 SOCManager.dismiss(isPresented: $isShowingSpeakerDetail)
                                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
@@ -545,33 +567,19 @@ private struct SpeakerBio: View {
                                             .lineSpacing(4)
                                             .padding()
                                         }
-                                        .frame(maxWidth: .infinity)
-                                        .background(colorScheme == .light ? .white : .black.opacity(0.6))
-                                        .cornerRadius(20)
-                                    }.frame(maxWidth: .infinity)
-                                } else {
-                                    VStack {
-                                        HStack {
-                                            ScrollView {
-                                                Markdown(speakerBio, font: .footnote) { url in
-                                                    SOCManager.dismiss(isPresented: $isShowingSpeakerDetail)
-                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.11) {
-                                                        Constants.openInAppSafari(forURL: url, style: colorScheme)
-                                                    }
-                                                }
-                                                .lineSpacing(4)
-                                                .padding()
-                                            }
-                                        }
-                                        .frame(maxWidth: .infinity)
-                                        .background(colorScheme == .light ? .white : .black.opacity(0.6))
-                                        .cornerRadius(20)
-                                    }.frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.5)
-                                }
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    .background(colorScheme == .light ? .white : .black.opacity(0.6))
+                                    .cornerRadius(20)
+                                }.frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.5)
                             }
                         }
                     }
-                    .font(.footnote)
+                } label: {
+                    HStack {
+                        Spacer()
+                        Text("More").font(.footnote)
+                    }
                 }
             }
         }
@@ -585,7 +593,12 @@ private struct DescriptionSection: View {
     @State private var translationPresented = false
 
     var body: some View {
-        Section(header: Text(LocalizedStringKey("Session Introduction")).padding(.leading, 10)) {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Session Introduction")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .padding(.leading, 26)
+
             VStack {
                 Markdown(description, font: .footnote) { url in
                     Constants.openInAppSafari(forURL: url, style: colorScheme)
@@ -598,16 +611,19 @@ private struct DescriptionSection: View {
                         translationPresented.toggle()
                     }
                     .font(.callout)
-                    .padding(.bottom, -7)
+                    .padding(.top, 1)
                     .translationPresentation(
                         isPresented: $translationPresented,
                         text: description
                     ) { description = $0 }
                 }
             }
-            .padding()
+            .padding(.vertical, 10)
+            .padding(.horizontal, 11)
+            .background(.sectionBackground)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .padding(.horizontal, 16)
         }
-        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
 }
 
