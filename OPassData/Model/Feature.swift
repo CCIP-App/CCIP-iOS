@@ -57,7 +57,7 @@ extension Feature {
     @inline(__always)
     var symbol: String {
         switch self.feature {
-        case .fastpass: return "wallet.pass"
+        case .fastpass: return "person"
         case .ticket: return "ticket"
         case .schedule: return "scroll"
         case .announcement: return "megaphone"
