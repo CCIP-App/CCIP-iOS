@@ -91,7 +91,13 @@ struct ScheduleView: View {
             if !isError {
                 if let schedule = event.schedule, let filteredSessions = filteredSessions {
                     VStack(spacing: 0) {
-                        if schedule.sessions.count > 1 {
+                        if schedule.sessions.isEmpty {
+                            ContentUnavailableView(
+                                "No Schedule",
+                                systemImage: "calendar.badge.exclamationmark",
+                                description: Text("The schedule for this event is not available yet.")
+                            )
+                        } else if schedule.sessions.count > 1 {
                             SelectDayView(
                                 tabProgress: $tabProgress, selectedDay: $selectedDay,
                                 sessions: schedule.sessions
