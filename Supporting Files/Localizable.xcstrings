@@ -1141,6 +1141,22 @@
         }
       }
     },
+    "No Schedule" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スケジュールなし"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有議程表"
+          }
+        }
+      }
+    },
     "No Sessions Found" : {
       "localizations" : {
         "en" : {
@@ -2169,6 +2185,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "標籤"
+          }
+        }
+      }
+    },
+    "The schedule for this event is not available yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このイベントのスケジュールはまだ公開されていません"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此活動的議程表尚未公布"
           }
         }
       }

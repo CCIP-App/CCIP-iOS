@@ -107,7 +107,6 @@ struct EventView: View {
             .buttonStyle(.bordered)
             .tint(feature.color)
             .buttonBorderShape(.roundedRectangle(radius: 26))
-            .conditionalGlassEffect()
 
             Text(feature.title.localized())
                 .font(.custom("RobotoCondensed-Regular", size: 11, relativeTo: .caption2))
@@ -158,14 +157,5 @@ struct EventView: View {
                 Constants.openInAppSafari(forURL: url, style: colorScheme)  // TODO: Custom Webview
             }
         }
-    }
-}
-
-private extension View {
-    func conditionalGlassEffect() -> some View {
-        if #available(iOS 26, *) {
-            return self.glassEffect(in: .rect(cornerRadius: 26))
-        }
-        return self
     }
 }
