@@ -25,9 +25,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_16.4.app
-
       - name: Export localizations
         run: |
           rm -rf "$RUNNER_TEMP/xcloc"
