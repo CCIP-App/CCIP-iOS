@@ -43,6 +43,9 @@ jobs:
           find "$RUNNER_TEMP/xcloc" -name "*.xliff" -exec cp {} "$OUTPUT_DIR/" \;
           ls -la "$OUTPUT_DIR"
 
+      - name: Clean XLIFF
+        run: python3 XLIFF/clean_xliff.py "$OUTPUT_DIR"
+
       - name: Commit
         run: |
           git config user.name  "github-actions[bot]"
