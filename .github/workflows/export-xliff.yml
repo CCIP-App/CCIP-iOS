@@ -1,0 +1,60 @@
+name: Export XLIFF
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - 'Supporting Files/Localizable.xcstrings'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: export-xliff-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  export:
+    runs-on: macos-26
+    env:
+      PROJECT: OPass.xcodeproj
+      SCHEME: OPass
+      OUTPUT_DIR: XLIFF
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.4.app
+
+      - name: Export localizations
+        run: |
+          rm -rf "$RUNNER_TEMP/xcloc"
+          xcodebuild -exportLocalizations \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -localizationPath "$RUNNER_TEMP/xcloc" \
+            -derivedDataPath "$RUNNER_TEMP/dd" \
+            -skipPackagePluginValidation \
+            -skipMacroValidation
+
+      - name: Collect .xliff files
+        run: |
+          rm -rf "$OUTPUT_DIR"
+          mkdir -p "$OUTPUT_DIR"
+          find "$RUNNER_TEMP/xcloc" -name "*.xliff" -exec cp {} "$OUTPUT_DIR/" \;
+          ls -la "$OUTPUT_DIR"
+
+      - name: Commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f "$OUTPUT_DIR"
+          if git diff --cached --quiet; then
+            echo "No localization changes."
+            exit 0
+          fi
+          git commit -m "chore: export localizations [skip ci]"
+          git pull --rebase --autostash
+          git push
