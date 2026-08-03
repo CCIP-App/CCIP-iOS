@@ -23,7 +23,8 @@ jobs:
       OUTPUT_DIR: XLIFF
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v7
 
       - name: Export localizations
         run: |
