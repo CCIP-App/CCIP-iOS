@@ -1,59 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
-  <file original="OneSignalNotificationServiceExtension/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
-    <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.6" build-num="17F113"/>
-    </header>
-    <body>
-      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
-        <source>OneSignalNotificationServiceExtension</source>
-        <target>OneSignalNotificationServiceExtension</target>
-        <note>Bundle display name</note>
-      </trans-unit>
-      <trans-unit id="CFBundleName" xml:space="preserve">
-        <source>OneSignalNotificationServiceExtension</source>
-        <target>OneSignalNotificationServiceExtension</target>
-        <note>Bundle name</note>
-      </trans-unit>
-      <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
-        <source/>
-        <target/>
-        <note>Copyright (human-readable)</note>
-      </trans-unit>
-    </body>
-  </file>
-  <file original="Supporting Files/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
-    <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.6" build-num="17F113"/>
-    </header>
-    <body>
-      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
-        <source>OPass</source>
-        <target>OPass</target>
-        <note>Bundle display name</note>
-      </trans-unit>
-      <trans-unit id="CFBundleName" xml:space="preserve">
-        <source>OPass</source>
-        <target>OPass</target>
-        <note>Bundle name</note>
-      </trans-unit>
-      <trans-unit id="NSCalendarsUsageDescription" xml:space="preserve">
-        <source>In order to add session detail to your calendars</source>
-        <target>In order to add session detail to your calendars</target>
-        <note>Privacy - Calendars Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
-        <source>Use camera to scan QR code in order to get token</source>
-        <target>Use camera to scan QR code in order to get token</target>
-        <note>Privacy - Camera Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSLocationWhenInUseUsageDescription" xml:space="preserve">
-        <source>App requires your consent to access location during use</source>
-        <target>App requires your consent to access location during use</target>
-        <note>Privacy - Location When In Use Usage Description</note>
-      </trans-unit>
-    </body>
-  </file>
   <file original="Supporting Files/Localizable.xcstrings" source-language="en" target-language="en" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.6" build-num="17F113"/>
@@ -67,21 +13,6 @@
       <trans-unit id="%d:%02d ~ %d:%02d • %d minutes" xml:space="preserve">
         <source>%d:%02d ~ %d:%02d • %d minutes</source>
         <target state="new">%d:%02d ~ %d:%02d • %d minutes</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="%lld %@" translate="no" xml:space="preserve">
-        <source>%1$lld %2$@</source>
-        <target state="new">%1$lld %2$@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="%lld/%lld" translate="no" xml:space="preserve">
-        <source>%1$lld/%2$lld</source>
-        <target state="new">%1$lld/%2$lld</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="%lld/%lld " translate="no" xml:space="preserve">
-        <source>%1$lld/%2$lld </source>
-        <target state="new">%1$lld/%2$lld </target>
         <note/>
       </trans-unit>
       <trans-unit id="About" xml:space="preserve">
@@ -302,11 +233,6 @@
       <trans-unit id="MON" xml:space="preserve">
         <source>MON</source>
         <target state="new">MON</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="Made with Love" translate="no" xml:space="preserve">
-        <source>Made with Love</source>
-        <target state="new">Made with Love</target>
         <note/>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
