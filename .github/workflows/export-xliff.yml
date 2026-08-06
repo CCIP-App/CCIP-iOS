@@ -45,7 +45,7 @@ jobs:
           ls -la "$OUTPUT_DIR"
 
       - name: Clean XLIFF
-        run: python3 XLIFF/clean_xliff.py "$OUTPUT_DIR"
+        run: python3 .github/scripts/clean_xliff.py "$OUTPUT_DIR"
 
       - name: Commit
         run: |
