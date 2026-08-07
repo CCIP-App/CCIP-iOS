@@ -44,6 +44,7 @@ struct ScheduleContainerView: View {
             guard autoSelectScheduleDay else { return }
             selectedDay = event.schedule?.sessions.firstIndex { $0.keys[0].isToday } ?? 0
         }
+        .trackScreen("ScheduleView")
     }
 
     private var filteredSessions: [OrderedDictionary<DateInRegion, [Session]>]? {

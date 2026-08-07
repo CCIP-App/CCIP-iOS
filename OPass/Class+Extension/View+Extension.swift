@@ -8,8 +8,13 @@
 
 import SwiftUI
 import SafariServices
+import FirebaseCrashlytics
 
 extension View {
+    func trackScreen(_ name: String) -> some View {
+        onAppear { Crashlytics.crashlytics().setCustomValue(name, forKey: "current_screen") }
+    }
+
     func LocalizeIn<T>(zh: T, en: T) -> T {
         if Bundle.main.preferredLocalizations[0] ==  "zh-Hant" { return zh }
         return en

@@ -32,6 +32,7 @@ struct EventView: View {
         .background(.sectionBackground)
         .toolbar { toolbar }
         .contentMargins(.top, 10)
+        .trackScreen("EventView")
     }
 
     @ViewBuilder
@@ -61,15 +62,22 @@ struct EventView: View {
 
     private var featureGrid: some View {
         let spacing = UIApplication.size.width * 0.0545454
-        return LazyVGrid(
-            columns: .init(
-                repeating: .init(spacing: spacing, alignment: .top),
-                count: 4
-            )
-        ) {
-            ForEach(event.avaliableFeatures, id: \.self) { feature in
-                featureButton(of: feature)
-                    .padding(.bottom, 5)
+        let features = event.avaliableFeatures
+        return VStack(spacing: 8) {
+            ForEach(Array(stride(from: 0, to: features.count, by: 4)), id: \.self) { start in
+                HStack(alignment: .top, spacing: spacing) {
+                    ForEach(features[start..<min(start + 4, features.count)], id: \.self) { feature in
+                        featureButton(of: feature)
+                            .padding(.bottom, 5)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .frame(maxWidth: .infinity)
+                    }
+                    if features.count - start < 4 {
+                        ForEach(0..<(4 - (features.count - start)), id: \.self) { _ in
+                            Color.clear.frame(maxWidth: .infinity)
+                        }
+                    }
+                }
             }
         }
     }

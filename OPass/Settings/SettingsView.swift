@@ -37,6 +37,7 @@ struct SettingsView: View {
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle("Settings")
         .listSectionSpacing(0)
+        .trackScreen("SettingsView")
     }
 
     @ViewBuilder

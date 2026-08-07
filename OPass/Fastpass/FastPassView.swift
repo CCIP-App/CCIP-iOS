@@ -80,6 +80,7 @@ struct FastPassView: View {
             }
         }
         .http403Alert(isPresented: $isHttp403AlertPresented)
+        .trackScreen("FastPassView")
     }
 }
 

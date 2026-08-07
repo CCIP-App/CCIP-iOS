@@ -28,6 +28,7 @@ struct AnnouncementView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar { toolbarItems() }
         .http403Alert(isPresented: $viewModel.isHttp403AlertPresented)
+        .trackScreen("AnnouncementView")
     }
 
     private func announcementListView(_ announcements: [Announcement]) -> some View {
