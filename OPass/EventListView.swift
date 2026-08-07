@@ -31,6 +31,7 @@ struct EventListView: View {
             .toolbar { toolbar }
         }
         .interactiveDismissDisabled(store.eventId == nil)
+        .trackScreen("EventListView")
     }
 
     var list: some View {

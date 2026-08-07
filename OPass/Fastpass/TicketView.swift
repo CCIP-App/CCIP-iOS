@@ -121,6 +121,7 @@ struct TicketView: View {
             }
             Button("Cancel", role: .cancel) { }
         }
+        .trackScreen("TicketView")
     }
 
     private func AutoAdjustBrightness() {

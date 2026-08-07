@@ -48,6 +48,7 @@ struct WiFiView: View {
                 }
             }
         }
+        .trackScreen("WiFiView")
     }
 }
 

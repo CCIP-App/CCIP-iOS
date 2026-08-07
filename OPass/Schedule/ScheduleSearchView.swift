@@ -90,5 +90,6 @@ struct ScheduleSearchView: View {
         )
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Search")
+        .trackScreen("ScheduleSearchView")
     }
 }

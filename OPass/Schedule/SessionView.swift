@@ -193,6 +193,7 @@ struct SessionView: View {
                 )
             )
         }
+        .trackScreen("SessionView")
     }
 }
 
