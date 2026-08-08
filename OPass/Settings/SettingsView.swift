@@ -21,6 +21,7 @@ struct SettingsView: View {
     private let websiteURL = URL(string: "https://opass.app")!
     private let gitHubURL = URL(string: "https://github.com/CCIP-App/CCIP-iOS")!
     private let policyURL = URL(string: "https://opass.app/privacy-policy.html")!
+    private let weblateURL = URL(string: "https://hosted.weblate.org/projects/opass/ccip-ios")!
 
     // MARK: - Views
     var body: some View {
@@ -127,6 +128,13 @@ struct SettingsView: View {
             ) { safariUrl = gitHubURL }
 
             aboutSectionButton(
+                "Translation",
+                urlText: weblateURL.absoluteString,
+                icon: .weblateIcon,
+                iconColor: colorScheme == .light ? .black : .white
+            ) { safariUrl = weblateURL }
+
+            aboutSectionButton(
                 "Privacy Policy",
                 urlText: policyURL.absoluteString,
                 iconSystemName: "doc.plaintext",
@@ -165,10 +173,8 @@ struct SettingsView: View {
             } icon: {
                 if let icon = icon {
                     Image(icon)
-                        .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
-                        .foregroundStyle(iconColor)
                 } else {
                     Image(systemName: iconSystemName ?? "exclamationmark.triangle.fill")
                         .resizable()
