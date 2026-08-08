@@ -154,6 +154,10 @@ extension EventStore {
 
         do {
             let attendee = try await APIManager.fetchAttendee(from: feature, token: token)
+            let tags = OneSignal.User.getTags()
+            if tags.count >= 2 {
+                OneSignal.User.removeTags(Array(tags.keys))
+            }
             OneSignal.User.addTag(key: "\(attendee.eventId)\(attendee.role)", value: "\(attendee.token)")
             DispatchQueue.main.async {
                 self.attendee = attendee
