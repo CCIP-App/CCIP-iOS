@@ -1,0 +1,118 @@
+name: Import XLIFF
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - 'XLIFF/**.xliff'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: localization-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: macos-26
+    env:
+      PROJECT: OPass.xcodeproj
+      SCHEME: OPass
+      INPUT_DIR: XLIFF
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Determine languages
+        id: langs
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, os, subprocess
+          proj = os.environ["PROJECT"]
+          data = json.loads(subprocess.check_output(
+              ["plutil", "-convert", "json", "-o", "-", f"{proj}/project.pbxproj"]))
+          for obj in data["objects"].values():
+              if obj.get("isa") == "PBXProject":
+                  dev = obj.get("developmentRegion", "en")
+                  regions = [r for r in obj.get("knownRegions", [])
+                             if r not in ("Base", dev)]
+                  print("langs=" + " ".join(regions))
+                  break
+          PY
+          cat "$GITHUB_OUTPUT"
+
+      - name: Export skeleton bundles
+        env:
+          LANGS: ${{ steps.langs.outputs.langs }}
+        run: |
+          rm -rf "$RUNNER_TEMP/xcloc"
+          args=()
+          for lang in $LANGS; do
+            args+=(-exportLanguage "$lang")
+          done
+          xcodebuild -exportLocalizations \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -localizationPath "$RUNNER_TEMP/xcloc" \
+            -derivedDataPath "$RUNNER_TEMP/dd" \
+            -skipPackagePluginValidation \
+            -skipMacroValidation \
+            "${args[@]}"
+
+      - name: Merge translations into bundles
+        env:
+          LANGS: ${{ steps.langs.outputs.langs }}
+        run: |
+          for lang in $LANGS; do
+            src="$INPUT_DIR/$lang.xliff"
+            dst="$RUNNER_TEMP/xcloc/$lang.xcloc/Localized Contents/$lang.xliff"
+            if [ ! -f "$src" ]; then
+              echo "::notice::no $src in repo, skipping $lang"
+              rm -rf "$RUNNER_TEMP/xcloc/$lang.xcloc"
+              continue
+            fi
+            if [ ! -f "$dst" ]; then
+              echo "::warning::no exported bundle for $lang, skipping"
+              continue
+            fi
+            python3 .github/scripts/merge_xliff.py "$dst" "$src"
+          done
+
+      - name: Import localizations
+        env:
+          LANGS: ${{ steps.langs.outputs.langs }}
+        run: |
+          for lang in $LANGS; do
+            bundle="$RUNNER_TEMP/xcloc/$lang.xcloc"
+            [ -d "$bundle" ] || continue
+            echo "::group::import $lang"
+            xcodebuild -importLocalizations \
+              -project "$PROJECT" \
+              -scheme "$SCHEME" \
+              -localizationPath "$bundle" \
+              -derivedDataPath "$RUNNER_TEMP/dd" \
+              -skipPackagePluginValidation \
+              -skipMacroValidation
+            echo "::endgroup::"
+          done
+
+      - name: Sanity check catalog
+        run: |
+          python3 -c "import json,sys; json.load(open(sys.argv[1]))" \
+            "Supporting Files/Localizable.xcstrings"
+
+      - name: Commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- . ':!XLIFF'
+          if git diff --cached --quiet; then
+            echo "No catalog changes."
+            exit 0
+          fi
+          git commit -m "chore: import localizations [skip ci]"
+          git pull --rebase --autostash
+          git push

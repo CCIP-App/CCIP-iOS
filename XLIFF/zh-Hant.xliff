@@ -1,278 +1,278 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
-  <file original="Supporting Files/Localizable.xcstrings" source-language="en" target-language="en" datatype="plaintext">
+  <file original="Supporting Files/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.6" build-num="17F113"/>
     </header>
     <body>
       <trans-unit id="&quot;%@&quot; in room &quot;%@&quot;, please keep your time of buffer to reach the room." xml:space="preserve">
         <source>"%@" in room "%@", please keep your time of buffer to reach the room.</source>
-        <target state="translated">"%@" in room "%@", please keep your time of buffer to reach the room.</target>
+        <target state="translated">「%@」在會議室「%@」，請預留足夠的緩衝時間前往。</target>
         <note/>
       </trans-unit>
       <trans-unit id="%d:%02d ~ %d:%02d • %d minutes" xml:space="preserve">
         <source>%d:%02d ~ %d:%02d • %d minutes</source>
-        <target state="translated">%d:%02d ~ %d:%02d • %d minutes</target>
+        <target state="translated">%d:%02d ~ %d:%02d • %d分鐘</target>
         <note/>
       </trans-unit>
       <trans-unit id="About" xml:space="preserve">
         <source>About</source>
-        <target state="translated">About</target>
+        <target state="translated">關於</target>
         <note/>
       </trans-unit>
       <trans-unit id="Add to Calendar" xml:space="preserve">
         <source>Add to Calendar</source>
-        <target state="translated">Add to Calendar</target>
+        <target state="translated">加入行事曆</target>
         <note/>
       </trans-unit>
       <trans-unit id="Appearance" xml:space="preserve">
         <source>Appearance</source>
-        <target state="translated">Appearance</target>
+        <target state="translated">外觀</target>
         <note/>
       </trans-unit>
       <trans-unit id="Are you sure you want to sign out?" xml:space="preserve">
         <source>Are you sure you want to sign out?</source>
-        <target state="translated">Are you sure you want to sign out?</target>
+        <target state="translated">確定登出？</target>
         <note/>
       </trans-unit>
       <trans-unit id="Auto-Brighten" xml:space="preserve">
         <source>Auto-Brighten</source>
-        <target state="translated">Auto-Brighten</target>
+        <target state="translated">自動調亮</target>
         <note/>
       </trans-unit>
       <trans-unit id="Auto-Select Schedule Day" xml:space="preserve">
         <source>Auto-Select Schedule Day</source>
-        <target state="translated">Auto-Select Schedule Day</target>
+        <target state="translated">自動選擇日程</target>
         <note/>
       </trans-unit>
       <trans-unit id="Broadcast" xml:space="preserve">
         <source>Broadcast</source>
-        <target state="translated">Broadcast</target>
+        <target state="translated">轉播</target>
         <note/>
       </trans-unit>
       <trans-unit id="Cancel" xml:space="preserve">
         <source>Cancel</source>
-        <target state="translated">Cancel</target>
+        <target state="translated">取消</target>
         <note/>
       </trans-unit>
       <trans-unit id="Check at %d:%02d" xml:space="preserve">
         <source>Check at %d:%02d</source>
-        <target state="translated">Check at %d:%02d</target>
+        <target state="translated">已在 %d:%02d 完成</target>
         <note/>
       </trans-unit>
       <trans-unit id="Check back later for announcements" xml:space="preserve">
         <source>Check back later for announcements</source>
-        <target state="translated">Check back later for announcements</target>
+        <target state="translated">稍後回來查看公告</target>
         <note/>
       </trans-unit>
       <trans-unit id="Check your network status or select a new event." xml:space="preserve">
         <source>Check your network status or select a new event.</source>
-        <target state="translated">Check your network status or select a new event.</target>
+        <target state="translated">檢查您的網路狀態或選擇新的活動</target>
         <note/>
       </trans-unit>
       <trans-unit id="Check your network status or try again" xml:space="preserve">
         <source>Check your network status or try again</source>
-        <target state="translated">Check your network status or try again</target>
+        <target state="translated">檢查您的網路狀態或再試一次</target>
         <note/>
       </trans-unit>
       <trans-unit id="Check your network status or try again later." xml:space="preserve">
         <source>Check your network status or try again later.</source>
-        <target state="translated">Check your network status or try again later.</target>
+        <target state="translated">檢查您的網路狀態或晚點再試一次</target>
         <note/>
       </trans-unit>
       <trans-unit id="Close" xml:space="preserve">
         <source>Close</source>
-        <target state="translated">Close</target>
+        <target state="translated">關閉</target>
         <note/>
       </trans-unit>
       <trans-unit id="Complete" xml:space="preserve">
         <source>Complete</source>
-        <target state="translated">Complete</target>
+        <target state="translated">完成</target>
         <note/>
       </trans-unit>
       <trans-unit id="Confirm Use" xml:space="preserve">
         <source>Confirm Use</source>
-        <target state="translated">Confirm Use</target>
+        <target state="translated">確認使用</target>
         <note/>
       </trans-unit>
       <trans-unit id="Continue" xml:space="preserve">
         <source>Continue</source>
-        <target state="translated">Continue</target>
+        <target state="translated">繼續</target>
         <note/>
       </trans-unit>
       <trans-unit id="Copy ID" xml:space="preserve">
         <source>Copy ID</source>
-        <target state="translated">Copy ID</target>
+        <target state="translated">複製ID</target>
         <note/>
       </trans-unit>
       <trans-unit id="Copy Token" xml:space="preserve">
         <source>Copy Token</source>
-        <target state="translated">Copy Token</target>
+        <target state="translated">複製驗證碼</target>
         <note/>
       </trans-unit>
       <trans-unit id="Couldn't verify your identity" xml:space="preserve">
         <source>Couldn't verify your identity</source>
-        <target state="translated">Couldn't verify your identity</target>
+        <target state="translated">無法驗證您的身分</target>
         <note/>
       </trans-unit>
       <trans-unit id="Dark Mode" xml:space="preserve">
         <source>Dark Mode</source>
-        <target state="translated">Dark Mode</target>
+        <target state="translated">深色模式</target>
         <note/>
       </trans-unit>
       <trans-unit id="Diagnostic" xml:space="preserve">
         <source>Diagnostic</source>
-        <target state="translated">Diagnostic</target>
+        <target state="translated">診斷</target>
         <note/>
       </trans-unit>
       <trans-unit id="Dim Past Sessions" xml:space="preserve">
         <source>Dim Past Sessions</source>
-        <target state="translated">Dim Past Sessions</target>
+        <target state="translated">調暗過去的議程</target>
         <note/>
       </trans-unit>
       <trans-unit id="Disable" xml:space="preserve">
         <source>Disable</source>
-        <target state="translated">Disable</target>
+        <target state="translated">關閉</target>
         <note/>
       </trans-unit>
       <trans-unit id="Don't Ask Again" xml:space="preserve">
         <source>Don't Ask Again</source>
-        <target state="translated">Don't Ask Again</target>
+        <target state="translated">不再詢問</target>
         <note/>
       </trans-unit>
       <trans-unit id="Done" xml:space="preserve">
         <source>Done</source>
-        <target state="translated">Done</target>
+        <target state="translated">完成</target>
         <note/>
       </trans-unit>
       <trans-unit id="Empty Announcement" xml:space="preserve">
         <source>Empty Announcement</source>
-        <target state="translated">Empty Announcement</target>
+        <target state="translated">沒有公告</target>
         <note/>
       </trans-unit>
       <trans-unit id="Enable" xml:space="preserve">
         <source>Enable</source>
-        <target state="translated">Enable</target>
+        <target state="translated">開啟</target>
         <note/>
       </trans-unit>
       <trans-unit id="Enter token manually" xml:space="preserve">
         <source>Enter token manually</source>
-        <target state="translated">Enter token manually</target>
+        <target state="translated">手動輸入驗證碼</target>
         <note/>
       </trans-unit>
       <trans-unit id="Erase All Filters" xml:space="preserve">
         <source>Erase All Filters</source>
-        <target state="translated">Erase All Filters</target>
+        <target state="translated">清除所有條件</target>
         <note/>
       </trans-unit>
       <trans-unit id="FRI" xml:space="preserve">
         <source>FRI</source>
-        <target state="translated">FRI</target>
+        <target state="translated">五</target>
         <note/>
       </trans-unit>
       <trans-unit id="Faild to Load Event List" xml:space="preserve">
         <source>Faild to Load Event List</source>
-        <target state="translated">Faild to Load Event List</target>
+        <target state="translated">無法載入活動列表</target>
         <note/>
       </trans-unit>
       <trans-unit id="Faild to confirm %@" xml:space="preserve">
         <source>Faild to confirm %@</source>
-        <target state="translated">Faild to confirm %@</target>
+        <target state="translated">無法確認%@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Fast Pass" xml:space="preserve">
         <source>Fast Pass</source>
-        <target state="translated">Fast Pass</target>
+        <target state="translated">快速通關</target>
         <note/>
       </trans-unit>
       <trans-unit id="Favorite" xml:space="preserve">
         <source>Favorite</source>
-        <target state="translated">Favorite</target>
+        <target state="translated">喜歡</target>
         <note/>
       </trans-unit>
       <trans-unit id="Filter %@" xml:space="preserve">
         <source>Filter %@</source>
-        <target state="translated">Filter %@</target>
+        <target state="translated">篩選%@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Filter by %@" xml:space="preserve">
         <source>Filter by %@</source>
-        <target state="translated">Filter by %@</target>
+        <target state="translated">篩選%@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Future Session" xml:space="preserve">
         <source>Future Session</source>
-        <target state="translated">Future Session</target>
+        <target state="translated">未來的議程</target>
         <note/>
       </trans-unit>
       <trans-unit id="General" xml:space="preserve">
         <source>General</source>
-        <target state="translated">General</target>
+        <target state="translated">一般</target>
         <note/>
       </trans-unit>
       <trans-unit id="Get notified" xml:space="preserve">
         <source>Get notified</source>
-        <target state="translated">Get notified</target>
+        <target state="translated">取得通知</target>
         <note/>
       </trans-unit>
       <trans-unit id="Haptic Feedback" xml:space="preserve">
         <source>Haptic Feedback</source>
-        <target state="translated">Haptic Feedback</target>
+        <target state="translated">觸覺回饋</target>
         <note/>
       </trans-unit>
       <trans-unit id="Invaild token" xml:space="preserve">
         <source>Invaild token</source>
-        <target state="translated">Invaild token</target>
+        <target state="translated">無效的驗證碼</target>
         <note/>
       </trans-unit>
       <trans-unit id="Invalid URL" xml:space="preserve">
         <source>Invalid URL</source>
-        <target state="translated">Invalid URL</target>
+        <target state="translated">無效的網址</target>
         <note/>
       </trans-unit>
       <trans-unit id="Loading" xml:space="preserve">
         <source>Loading</source>
-        <target state="translated">Loading</target>
+        <target state="translated">正在載入</target>
         <note/>
       </trans-unit>
       <trans-unit id="Loading Announcements..." xml:space="preserve">
         <source>Loading Announcements...</source>
-        <target state="translated">Loading Announcements...</target>
+        <target state="translated">正在載入公告...</target>
         <note/>
       </trans-unit>
       <trans-unit id="MON" xml:space="preserve">
         <source>MON</source>
-        <target state="translated">MON</target>
+        <target state="translated">一</target>
         <note/>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
         <source>More</source>
-        <target state="translated">More</target>
+        <target state="translated">更多</target>
         <note/>
       </trans-unit>
       <trans-unit id="Network Error" xml:space="preserve">
         <source>Network Error</source>
-        <target state="translated">Network Error</target>
+        <target state="translated">網路錯誤</target>
         <note/>
       </trans-unit>
       <trans-unit id="No QR code found in picture" xml:space="preserve">
         <source>No QR code found in picture</source>
-        <target state="translated">No QR code found in picture</target>
+        <target state="translated">在圖片中找不到QR碼</target>
         <note/>
       </trans-unit>
       <trans-unit id="No Schedule" xml:space="preserve">
         <source>No Schedule</source>
-        <target state="translated">No Schedule</target>
+        <target state="translated">沒有議程表</target>
         <note/>
       </trans-unit>
       <trans-unit id="No Sessions Found" xml:space="preserve">
         <source>No Sessions Found</source>
-        <target state="translated">No Sessions Found</target>
+        <target state="translated">沒有找到的議程</target>
         <note/>
       </trans-unit>
       <trans-unit id="Not available" xml:space="preserve">
         <source>Not available</source>
-        <target state="translated">Not available</target>
+        <target state="translated">無法使用</target>
         <note/>
       </trans-unit>
       <trans-unit id="OK" xml:space="preserve">
@@ -297,18 +297,18 @@
       </trans-unit>
       <trans-unit id="OPass can send you notification just before the session starts.\nWould you like to allow OPass notifications in Settings?" xml:space="preserve">
         <source>OPass can send you notification just before the session starts.\nWould you like to allow OPass notifications in Settings?</source>
-        <target state="translated">OPass can send you notification just before the session starts.\nWould you like to allow OPass notifications in Settings?</target>
+        <target state="translated">OPass 可以在議程開始前向您發送通知。\n您想在「設定」中允許 OPass 通知嗎？</target>
         <note/>
       </trans-unit>
       <trans-unit id="Official Website" xml:space="preserve">
         <source>Official Website</source>
-        <target state="translated">Official Website</target>
+        <target state="translated">官方網站</target>
         <note/>
       </trans-unit>
       <trans-unit id="Only available at&#10;%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d" xml:space="preserve">
         <source>Only available at
 %d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d</source>
-        <target state="translated">Only available at
+        <target state="translated">開放時間：
 %d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d</target>
         <note/>
       </trans-unit>
@@ -319,232 +319,232 @@
       </trans-unit>
       <trans-unit id="Open Settings" xml:space="preserve">
         <source>Open Settings</source>
-        <target state="translated">Open Settings</target>
+        <target state="translated">開啟設定</target>
         <note/>
       </trans-unit>
       <trans-unit id="Past Session" xml:space="preserve">
         <source>Past Session</source>
-        <target state="translated">Past Session</target>
+        <target state="translated">過去的議程</target>
         <note/>
       </trans-unit>
       <trans-unit id="Place" xml:space="preserve">
         <source>Place</source>
-        <target state="translated">Place</target>
+        <target state="translated">地點</target>
         <note/>
       </trans-unit>
       <trans-unit id="Places" xml:space="preserve">
         <source>Places</source>
-        <target state="translated">Places</target>
+        <target state="translated">地點</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please allow OPass to access your calendar under OPass in your device's settings." xml:space="preserve">
         <source>Please allow OPass to access your calendar under OPass in your device's settings.</source>
-        <target state="translated">Please allow OPass to access your calendar under OPass in your device's settings.</target>
+        <target state="translated">請允許 OPass 在您裝置設定中的 OPass 下存取您的行事曆</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please allow OPass to access your camera under OPass in your device's settings." xml:space="preserve">
         <source>Please allow OPass to access your camera under OPass in your device's settings.</source>
-        <target state="translated">Please allow OPass to access your camera under OPass in your device's settings.</target>
+        <target state="translated">請允許 OPass 在您裝置設定中的 OPass 下存取您的相機</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please connect to the Wi-Fi provided by event" xml:space="preserve">
         <source>Please connect to the Wi-Fi provided by event</source>
-        <target state="translated">Please connect to the Wi-Fi provided by event</target>
+        <target state="translated">請使用會場提供的無線網路</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths." xml:space="preserve">
         <source>Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths.</source>
-        <target state="translated">Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths.</target>
+        <target state="translated">請將您的票保密。除工作人員或活動攤位外，請勿與其他任何人共享。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please look for the QR code provided by the email and place it in the viewfinder" xml:space="preserve">
         <source>Please look for the QR code provided by the email and place it in the viewfinder</source>
-        <target state="translated">Please look for the QR code provided by the email and place it in the viewfinder</target>
+        <target state="translated">請尋找電子郵件提供的QR碼，並將其放置在取景器中</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please look for the token provided by the email and enter it in the field above" xml:space="preserve">
         <source>Please look for the token provided by the email and enter it in the field above</source>
-        <target state="translated">Please look for the token provided by the email and enter it in the field above</target>
+        <target state="translated">請查找電子郵件提供的驗證碼，並在上方欄位中輸入</target>
         <note/>
       </trans-unit>
       <trans-unit id="Privacy Policy" xml:space="preserve">
         <source>Privacy Policy</source>
-        <target state="translated">Privacy Policy</target>
+        <target state="translated">隱私權政策</target>
         <note/>
       </trans-unit>
       <trans-unit id="Refresh" xml:space="preserve">
         <source>Refresh</source>
-        <target state="translated">Refresh</target>
+        <target state="translated">重新整理</target>
         <note/>
       </trans-unit>
       <trans-unit id="Reset Appearance Settings" xml:space="preserve">
         <source>Reset Appearance Settings</source>
-        <target state="translated">Reset Appearance Settings</target>
+        <target state="translated">重設外觀設定</target>
         <note/>
       </trans-unit>
       <trans-unit id="Reset Filters" xml:space="preserve">
         <source>Reset Filters</source>
-        <target state="translated">Reset Filters</target>
+        <target state="translated">重設條件</target>
         <note/>
       </trans-unit>
       <trans-unit id="Reset General Settings" xml:space="preserve">
         <source>Reset General Settings</source>
-        <target state="translated">Reset General Settings</target>
+        <target state="translated">重置一般設定</target>
         <note/>
       </trans-unit>
       <trans-unit id="SAT" xml:space="preserve">
         <source>SAT</source>
-        <target state="translated">SAT</target>
+        <target state="translated">六</target>
         <note/>
       </trans-unit>
       <trans-unit id="SIGNING IN" xml:space="preserve">
         <source>SIGNING IN</source>
-        <target state="translated">SIGNING IN</target>
+        <target state="translated">登入中</target>
         <note/>
       </trans-unit>
       <trans-unit id="SUN" xml:space="preserve">
         <source>SUN</source>
-        <target state="translated">SUN</target>
+        <target state="translated">日</target>
         <note/>
       </trans-unit>
       <trans-unit id="Scan QR code with camera" xml:space="preserve">
         <source>Scan QR code with camera</source>
-        <target state="translated">Scan QR code with camera</target>
+        <target state="translated">使用相機掃描QR碼</target>
         <note/>
       </trans-unit>
       <trans-unit id="Scan to get token" xml:space="preserve">
         <source>Scan to get token</source>
-        <target state="translated">Scan to get token</target>
+        <target state="translated">掃描取得驗證碼</target>
         <note/>
       </trans-unit>
       <trans-unit id="Schedule" xml:space="preserve">
         <source>Schedule</source>
-        <target state="translated">Schedule</target>
+        <target state="translated">議程</target>
         <note/>
       </trans-unit>
       <trans-unit id="Search" xml:space="preserve">
         <source>Search</source>
-        <target state="translated">Search</target>
+        <target state="translated">搜尋</target>
         <note/>
       </trans-unit>
       <trans-unit id="Search title" xml:space="preserve">
         <source>Search title</source>
-        <target state="translated">Search title</target>
+        <target state="translated">搜尋標題</target>
         <note/>
       </trans-unit>
       <trans-unit id="Select Event" xml:space="preserve">
         <source>Select Event</source>
-        <target state="translated">Select Event</target>
+        <target state="translated">選擇活動</target>
         <note/>
       </trans-unit>
       <trans-unit id="Select a picture to scan QR code" xml:space="preserve">
         <source>Select a picture to scan QR code</source>
-        <target state="translated">Select a picture to scan QR code</target>
+        <target state="translated">選擇照片掃描QR碼</target>
         <note/>
       </trans-unit>
       <trans-unit id="Session Introduction" xml:space="preserve">
         <source>Session Introduction</source>
-        <target state="translated">Session Introduction</target>
+        <target state="translated">議程簡介</target>
         <note/>
       </trans-unit>
       <trans-unit id="Session will start in 5 mins." xml:space="preserve">
         <source>Session will start in 5 mins.</source>
-        <target state="translated">Session will start in 5 mins.</target>
+        <target state="translated">議程即將在5分鐘內開始</target>
         <note/>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
         <source>Settings</source>
-        <target state="translated">Settings</target>
+        <target state="translated">設定</target>
         <note/>
       </trans-unit>
       <trans-unit id="Share" xml:space="preserve">
         <source>Share</source>
-        <target state="translated">Share</target>
+        <target state="translated">分享</target>
         <note/>
       </trans-unit>
       <trans-unit id="Sign Out" xml:space="preserve">
         <source>Sign Out</source>
-        <target state="translated">Sign Out</target>
+        <target state="translated">登出</target>
         <note/>
       </trans-unit>
       <trans-unit id="Something Went Wrong" xml:space="preserve">
         <source>Something Went Wrong</source>
-        <target state="translated">Something Went Wrong</target>
+        <target state="translated">出了一些問題</target>
         <note/>
       </trans-unit>
       <trans-unit id="Source Code" xml:space="preserve">
         <source>Source Code</source>
-        <target state="translated">Source Code</target>
+        <target state="translated">原始碼</target>
         <note/>
       </trans-unit>
       <trans-unit id="Speakers" xml:space="preserve">
         <source>Speakers</source>
-        <target state="translated">Speakers</target>
+        <target state="translated">講者</target>
         <note/>
       </trans-unit>
       <trans-unit id="System" xml:space="preserve">
         <source>System</source>
-        <target state="translated">System</target>
+        <target state="translated">系統</target>
         <note/>
       </trans-unit>
       <trans-unit id="THR" xml:space="preserve">
         <source>THR</source>
-        <target state="translated">THR</target>
+        <target state="translated">四</target>
         <note/>
       </trans-unit>
       <trans-unit id="TUE" xml:space="preserve">
         <source>TUE</source>
-        <target state="translated">TUE</target>
+        <target state="translated">二</target>
         <note/>
       </trans-unit>
       <trans-unit id="Tags" xml:space="preserve">
         <source>Tags</source>
-        <target state="translated">Tags</target>
+        <target state="translated">標籤</target>
         <note/>
       </trans-unit>
       <trans-unit id="The schedule for this event is not available yet." xml:space="preserve">
         <source>The schedule for this event is not available yet.</source>
-        <target state="translated">The schedule for this event is not available yet.</target>
+        <target state="translated">此活動的議程表尚未公布</target>
         <note/>
       </trans-unit>
       <trans-unit id="This item can only be used once, please follow the instructions of the staff to use." xml:space="preserve">
         <source>This item can only be used once, please follow the instructions of the staff to use.</source>
-        <target state="translated">This item can only be used once, please follow the instructions of the staff to use.</target>
+        <target state="translated">此項目只能使用一次，請按照工作人員的指示使用</target>
         <note/>
       </trans-unit>
       <trans-unit id="Token" xml:space="preserve">
         <source>Token</source>
-        <target state="translated">Token</target>
+        <target state="translated">驗證碼</target>
         <note/>
       </trans-unit>
       <trans-unit id="Translate" xml:space="preserve">
         <source>Translate</source>
-        <target state="translated">Translate</target>
+        <target state="translated">翻譯</target>
         <note/>
       </trans-unit>
       <trans-unit id="Try Again" xml:space="preserve">
         <source>Try Again</source>
-        <target state="translated">Try Again</target>
+        <target state="translated">再試一次</target>
         <note/>
       </trans-unit>
       <trans-unit id="Type" xml:space="preserve">
         <source>Type</source>
-        <target state="translated">Type</target>
+        <target state="translated">類型</target>
         <note/>
       </trans-unit>
       <trans-unit id="Types" xml:space="preserve">
         <source>Types</source>
-        <target state="translated">Types</target>
+        <target state="translated">類型</target>
         <note/>
       </trans-unit>
       <trans-unit id="Unable to Load Event" xml:space="preserve">
         <source>Unable to Load Event</source>
-        <target state="translated">Unable to Load Event</target>
+        <target state="translated">無法載入活動</target>
         <note/>
       </trans-unit>
       <trans-unit id="Use fewer filters or reset all filters." xml:space="preserve">
         <source>Use fewer filters or reset all filters.</source>
-        <target state="translated">Use fewer filters or reset all filters.</target>
+        <target state="translated">選擇更少的條件或重設</target>
         <note/>
       </trans-unit>
       <trans-unit id="Version %@ (%@)" xml:space="preserve">
@@ -554,17 +554,17 @@
       </trans-unit>
       <trans-unit id="View Details" xml:space="preserve">
         <source>View Details</source>
-        <target state="translated">View Details</target>
+        <target state="translated">查看詳情</target>
         <note/>
       </trans-unit>
       <trans-unit id="WEN" xml:space="preserve">
         <source>WED</source>
-        <target state="translated">WED</target>
+        <target state="translated">三</target>
         <note/>
       </trans-unit>
       <trans-unit id="You have an invalid URL or the token is incorrect." xml:space="preserve">
         <source>You have an invalid URL or the token is incorrect.</source>
-        <target state="translated">You have an invalid URL or the token is incorrect.</target>
+        <target state="translated">您的網址無效或驗證碼不正確</target>
         <note/>
       </trans-unit>
     </body>

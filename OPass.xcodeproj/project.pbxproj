@@ -240,6 +240,10 @@
 				ja,
 				nan,
 				"zh-Hant",
+				ko,
+				hi,
+				ta,
+				nb,
 			);
 			mainGroup = D3E4E6B227CD158400FFACEB;
 			packageReferences = (

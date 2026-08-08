@@ -26,16 +26,39 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      - name: Determine languages
+        id: langs
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, os, subprocess
+          proj = os.environ["PROJECT"]
+          data = json.loads(subprocess.check_output(
+              ["plutil", "-convert", "json", "-o", "-", f"{proj}/project.pbxproj"]))
+          for obj in data["objects"].values():
+              if obj.get("isa") == "PBXProject":
+                  regions = [r for r in obj.get("knownRegions", []) if r != "Base"]
+                  print("langs=" + " ".join(regions))
+                  break
+          PY
+          cat "$GITHUB_OUTPUT"
+
       - name: Export localizations
+        env:
+          LANGS: ${{ steps.langs.outputs.langs }}
         run: |
           rm -rf "$RUNNER_TEMP/xcloc"
+          args=()
+          for lang in $LANGS; do
+            args+=(-exportLanguage "$lang")
+          done
           xcodebuild -exportLocalizations \
             -project "$PROJECT" \
             -scheme "$SCHEME" \
             -localizationPath "$RUNNER_TEMP/xcloc" \
             -derivedDataPath "$RUNNER_TEMP/dd" \
             -skipPackagePluginValidation \
-            -skipMacroValidation
+            -skipMacroValidation \
+            "${args[@]}"
 
       - name: Collect .xliff files
         run: |

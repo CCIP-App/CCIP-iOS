@@ -1,570 +1,457 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
-  <file original="Supporting Files/Localizable.xcstrings" source-language="en" target-language="en" datatype="plaintext">
+  <file original="Supporting Files/Localizable.xcstrings" source-language="en" target-language="hi" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.6" build-num="17F113"/>
     </header>
     <body>
       <trans-unit id="&quot;%@&quot; in room &quot;%@&quot;, please keep your time of buffer to reach the room." xml:space="preserve">
         <source>"%@" in room "%@", please keep your time of buffer to reach the room.</source>
-        <target state="translated">"%@" in room "%@", please keep your time of buffer to reach the room.</target>
         <note/>
       </trans-unit>
       <trans-unit id="%d:%02d ~ %d:%02d • %d minutes" xml:space="preserve">
         <source>%d:%02d ~ %d:%02d • %d minutes</source>
-        <target state="translated">%d:%02d ~ %d:%02d • %d minutes</target>
         <note/>
       </trans-unit>
       <trans-unit id="About" xml:space="preserve">
         <source>About</source>
-        <target state="translated">About</target>
         <note/>
       </trans-unit>
       <trans-unit id="Add to Calendar" xml:space="preserve">
         <source>Add to Calendar</source>
-        <target state="translated">Add to Calendar</target>
         <note/>
       </trans-unit>
       <trans-unit id="Appearance" xml:space="preserve">
         <source>Appearance</source>
-        <target state="translated">Appearance</target>
         <note/>
       </trans-unit>
       <trans-unit id="Are you sure you want to sign out?" xml:space="preserve">
         <source>Are you sure you want to sign out?</source>
-        <target state="translated">Are you sure you want to sign out?</target>
         <note/>
       </trans-unit>
       <trans-unit id="Auto-Brighten" xml:space="preserve">
         <source>Auto-Brighten</source>
-        <target state="translated">Auto-Brighten</target>
         <note/>
       </trans-unit>
       <trans-unit id="Auto-Select Schedule Day" xml:space="preserve">
         <source>Auto-Select Schedule Day</source>
-        <target state="translated">Auto-Select Schedule Day</target>
         <note/>
       </trans-unit>
       <trans-unit id="Broadcast" xml:space="preserve">
         <source>Broadcast</source>
-        <target state="translated">Broadcast</target>
         <note/>
       </trans-unit>
       <trans-unit id="Cancel" xml:space="preserve">
         <source>Cancel</source>
-        <target state="translated">Cancel</target>
         <note/>
       </trans-unit>
       <trans-unit id="Check at %d:%02d" xml:space="preserve">
         <source>Check at %d:%02d</source>
-        <target state="translated">Check at %d:%02d</target>
         <note/>
       </trans-unit>
       <trans-unit id="Check back later for announcements" xml:space="preserve">
         <source>Check back later for announcements</source>
-        <target state="translated">Check back later for announcements</target>
         <note/>
       </trans-unit>
       <trans-unit id="Check your network status or select a new event." xml:space="preserve">
         <source>Check your network status or select a new event.</source>
-        <target state="translated">Check your network status or select a new event.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Check your network status or try again" xml:space="preserve">
         <source>Check your network status or try again</source>
-        <target state="translated">Check your network status or try again</target>
         <note/>
       </trans-unit>
       <trans-unit id="Check your network status or try again later." xml:space="preserve">
         <source>Check your network status or try again later.</source>
-        <target state="translated">Check your network status or try again later.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Close" xml:space="preserve">
         <source>Close</source>
-        <target state="translated">Close</target>
         <note/>
       </trans-unit>
       <trans-unit id="Complete" xml:space="preserve">
         <source>Complete</source>
-        <target state="translated">Complete</target>
         <note/>
       </trans-unit>
       <trans-unit id="Confirm Use" xml:space="preserve">
         <source>Confirm Use</source>
-        <target state="translated">Confirm Use</target>
         <note/>
       </trans-unit>
       <trans-unit id="Continue" xml:space="preserve">
         <source>Continue</source>
-        <target state="translated">Continue</target>
         <note/>
       </trans-unit>
       <trans-unit id="Copy ID" xml:space="preserve">
         <source>Copy ID</source>
-        <target state="translated">Copy ID</target>
         <note/>
       </trans-unit>
       <trans-unit id="Copy Token" xml:space="preserve">
         <source>Copy Token</source>
-        <target state="translated">Copy Token</target>
         <note/>
       </trans-unit>
       <trans-unit id="Couldn't verify your identity" xml:space="preserve">
         <source>Couldn't verify your identity</source>
-        <target state="translated">Couldn't verify your identity</target>
         <note/>
       </trans-unit>
       <trans-unit id="Dark Mode" xml:space="preserve">
         <source>Dark Mode</source>
-        <target state="translated">Dark Mode</target>
         <note/>
       </trans-unit>
       <trans-unit id="Diagnostic" xml:space="preserve">
         <source>Diagnostic</source>
-        <target state="translated">Diagnostic</target>
         <note/>
       </trans-unit>
       <trans-unit id="Dim Past Sessions" xml:space="preserve">
         <source>Dim Past Sessions</source>
-        <target state="translated">Dim Past Sessions</target>
         <note/>
       </trans-unit>
       <trans-unit id="Disable" xml:space="preserve">
         <source>Disable</source>
-        <target state="translated">Disable</target>
         <note/>
       </trans-unit>
       <trans-unit id="Don't Ask Again" xml:space="preserve">
         <source>Don't Ask Again</source>
-        <target state="translated">Don't Ask Again</target>
         <note/>
       </trans-unit>
       <trans-unit id="Done" xml:space="preserve">
         <source>Done</source>
-        <target state="translated">Done</target>
         <note/>
       </trans-unit>
       <trans-unit id="Empty Announcement" xml:space="preserve">
         <source>Empty Announcement</source>
-        <target state="translated">Empty Announcement</target>
         <note/>
       </trans-unit>
       <trans-unit id="Enable" xml:space="preserve">
         <source>Enable</source>
-        <target state="translated">Enable</target>
         <note/>
       </trans-unit>
       <trans-unit id="Enter token manually" xml:space="preserve">
         <source>Enter token manually</source>
-        <target state="translated">Enter token manually</target>
         <note/>
       </trans-unit>
       <trans-unit id="Erase All Filters" xml:space="preserve">
         <source>Erase All Filters</source>
-        <target state="translated">Erase All Filters</target>
         <note/>
       </trans-unit>
       <trans-unit id="FRI" xml:space="preserve">
         <source>FRI</source>
-        <target state="translated">FRI</target>
         <note/>
       </trans-unit>
       <trans-unit id="Faild to Load Event List" xml:space="preserve">
         <source>Faild to Load Event List</source>
-        <target state="translated">Faild to Load Event List</target>
         <note/>
       </trans-unit>
       <trans-unit id="Faild to confirm %@" xml:space="preserve">
         <source>Faild to confirm %@</source>
-        <target state="translated">Faild to confirm %@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Fast Pass" xml:space="preserve">
         <source>Fast Pass</source>
-        <target state="translated">Fast Pass</target>
         <note/>
       </trans-unit>
       <trans-unit id="Favorite" xml:space="preserve">
         <source>Favorite</source>
-        <target state="translated">Favorite</target>
         <note/>
       </trans-unit>
       <trans-unit id="Filter %@" xml:space="preserve">
         <source>Filter %@</source>
-        <target state="translated">Filter %@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Filter by %@" xml:space="preserve">
         <source>Filter by %@</source>
-        <target state="translated">Filter by %@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Future Session" xml:space="preserve">
         <source>Future Session</source>
-        <target state="translated">Future Session</target>
         <note/>
       </trans-unit>
       <trans-unit id="General" xml:space="preserve">
         <source>General</source>
-        <target state="translated">General</target>
         <note/>
       </trans-unit>
       <trans-unit id="Get notified" xml:space="preserve">
         <source>Get notified</source>
-        <target state="translated">Get notified</target>
         <note/>
       </trans-unit>
       <trans-unit id="Haptic Feedback" xml:space="preserve">
         <source>Haptic Feedback</source>
-        <target state="translated">Haptic Feedback</target>
         <note/>
       </trans-unit>
       <trans-unit id="Invaild token" xml:space="preserve">
         <source>Invaild token</source>
-        <target state="translated">Invaild token</target>
         <note/>
       </trans-unit>
       <trans-unit id="Invalid URL" xml:space="preserve">
         <source>Invalid URL</source>
-        <target state="translated">Invalid URL</target>
         <note/>
       </trans-unit>
       <trans-unit id="Loading" xml:space="preserve">
         <source>Loading</source>
-        <target state="translated">Loading</target>
         <note/>
       </trans-unit>
       <trans-unit id="Loading Announcements..." xml:space="preserve">
         <source>Loading Announcements...</source>
-        <target state="translated">Loading Announcements...</target>
         <note/>
       </trans-unit>
       <trans-unit id="MON" xml:space="preserve">
         <source>MON</source>
-        <target state="translated">MON</target>
         <note/>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
         <source>More</source>
-        <target state="translated">More</target>
         <note/>
       </trans-unit>
       <trans-unit id="Network Error" xml:space="preserve">
         <source>Network Error</source>
-        <target state="translated">Network Error</target>
         <note/>
       </trans-unit>
       <trans-unit id="No QR code found in picture" xml:space="preserve">
         <source>No QR code found in picture</source>
-        <target state="translated">No QR code found in picture</target>
         <note/>
       </trans-unit>
       <trans-unit id="No Schedule" xml:space="preserve">
         <source>No Schedule</source>
-        <target state="translated">No Schedule</target>
         <note/>
       </trans-unit>
       <trans-unit id="No Sessions Found" xml:space="preserve">
         <source>No Sessions Found</source>
-        <target state="translated">No Sessions Found</target>
         <note/>
       </trans-unit>
       <trans-unit id="Not available" xml:space="preserve">
         <source>Not available</source>
-        <target state="translated">Not available</target>
         <note/>
       </trans-unit>
       <trans-unit id="OK" xml:space="preserve">
         <source>OK</source>
-        <target state="translated">OK</target>
         <note/>
       </trans-unit>
       <trans-unit id="OPass" xml:space="preserve">
         <source>OPass</source>
-        <target state="translated">OPass</target>
         <note/>
       </trans-unit>
       <trans-unit id="OPass Room 1" xml:space="preserve">
         <source>OPass Room 1</source>
-        <target state="translated">OPass Room 1</target>
         <note/>
       </trans-unit>
       <trans-unit id="OPass Room 2" xml:space="preserve">
         <source>OPass Room 2</source>
-        <target state="translated">OPass Room 2</target>
         <note/>
       </trans-unit>
       <trans-unit id="OPass can send you notification just before the session starts.\nWould you like to allow OPass notifications in Settings?" xml:space="preserve">
         <source>OPass can send you notification just before the session starts.\nWould you like to allow OPass notifications in Settings?</source>
-        <target state="translated">OPass can send you notification just before the session starts.\nWould you like to allow OPass notifications in Settings?</target>
         <note/>
       </trans-unit>
       <trans-unit id="Official Website" xml:space="preserve">
         <source>Official Website</source>
-        <target state="translated">Official Website</target>
         <note/>
       </trans-unit>
       <trans-unit id="Only available at&#10;%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d" xml:space="preserve">
         <source>Only available at
 %d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d</source>
-        <target state="translated">Only available at
-%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d</target>
         <note/>
       </trans-unit>
       <trans-unit id="Open Pass &amp; All Pass - A Community Checkin with Interactivity Project for iOS" xml:space="preserve">
         <source>Open Pass &amp; All Pass - A Community Checkin with Interactivity Project for iOS</source>
-        <target state="translated">Open Pass &amp; All Pass - A Community Checkin with Interactivity Project for iOS</target>
         <note/>
       </trans-unit>
       <trans-unit id="Open Settings" xml:space="preserve">
         <source>Open Settings</source>
-        <target state="translated">Open Settings</target>
         <note/>
       </trans-unit>
       <trans-unit id="Past Session" xml:space="preserve">
         <source>Past Session</source>
-        <target state="translated">Past Session</target>
         <note/>
       </trans-unit>
       <trans-unit id="Place" xml:space="preserve">
         <source>Place</source>
-        <target state="translated">Place</target>
         <note/>
       </trans-unit>
       <trans-unit id="Places" xml:space="preserve">
         <source>Places</source>
-        <target state="translated">Places</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please allow OPass to access your calendar under OPass in your device's settings." xml:space="preserve">
         <source>Please allow OPass to access your calendar under OPass in your device's settings.</source>
-        <target state="translated">Please allow OPass to access your calendar under OPass in your device's settings.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please allow OPass to access your camera under OPass in your device's settings." xml:space="preserve">
         <source>Please allow OPass to access your camera under OPass in your device's settings.</source>
-        <target state="translated">Please allow OPass to access your camera under OPass in your device's settings.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please connect to the Wi-Fi provided by event" xml:space="preserve">
         <source>Please connect to the Wi-Fi provided by event</source>
-        <target state="translated">Please connect to the Wi-Fi provided by event</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths." xml:space="preserve">
         <source>Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths.</source>
-        <target state="translated">Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please look for the QR code provided by the email and place it in the viewfinder" xml:space="preserve">
         <source>Please look for the QR code provided by the email and place it in the viewfinder</source>
-        <target state="translated">Please look for the QR code provided by the email and place it in the viewfinder</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please look for the token provided by the email and enter it in the field above" xml:space="preserve">
         <source>Please look for the token provided by the email and enter it in the field above</source>
-        <target state="translated">Please look for the token provided by the email and enter it in the field above</target>
         <note/>
       </trans-unit>
       <trans-unit id="Privacy Policy" xml:space="preserve">
         <source>Privacy Policy</source>
-        <target state="translated">Privacy Policy</target>
         <note/>
       </trans-unit>
       <trans-unit id="Refresh" xml:space="preserve">
         <source>Refresh</source>
-        <target state="translated">Refresh</target>
         <note/>
       </trans-unit>
       <trans-unit id="Reset Appearance Settings" xml:space="preserve">
         <source>Reset Appearance Settings</source>
-        <target state="translated">Reset Appearance Settings</target>
         <note/>
       </trans-unit>
       <trans-unit id="Reset Filters" xml:space="preserve">
         <source>Reset Filters</source>
-        <target state="translated">Reset Filters</target>
         <note/>
       </trans-unit>
       <trans-unit id="Reset General Settings" xml:space="preserve">
         <source>Reset General Settings</source>
-        <target state="translated">Reset General Settings</target>
         <note/>
       </trans-unit>
       <trans-unit id="SAT" xml:space="preserve">
         <source>SAT</source>
-        <target state="translated">SAT</target>
         <note/>
       </trans-unit>
       <trans-unit id="SIGNING IN" xml:space="preserve">
         <source>SIGNING IN</source>
-        <target state="translated">SIGNING IN</target>
         <note/>
       </trans-unit>
       <trans-unit id="SUN" xml:space="preserve">
         <source>SUN</source>
-        <target state="translated">SUN</target>
         <note/>
       </trans-unit>
       <trans-unit id="Scan QR code with camera" xml:space="preserve">
         <source>Scan QR code with camera</source>
-        <target state="translated">Scan QR code with camera</target>
         <note/>
       </trans-unit>
       <trans-unit id="Scan to get token" xml:space="preserve">
         <source>Scan to get token</source>
-        <target state="translated">Scan to get token</target>
         <note/>
       </trans-unit>
       <trans-unit id="Schedule" xml:space="preserve">
         <source>Schedule</source>
-        <target state="translated">Schedule</target>
         <note/>
       </trans-unit>
       <trans-unit id="Search" xml:space="preserve">
         <source>Search</source>
-        <target state="translated">Search</target>
         <note/>
       </trans-unit>
       <trans-unit id="Search title" xml:space="preserve">
         <source>Search title</source>
-        <target state="translated">Search title</target>
         <note/>
       </trans-unit>
       <trans-unit id="Select Event" xml:space="preserve">
         <source>Select Event</source>
-        <target state="translated">Select Event</target>
         <note/>
       </trans-unit>
       <trans-unit id="Select a picture to scan QR code" xml:space="preserve">
         <source>Select a picture to scan QR code</source>
-        <target state="translated">Select a picture to scan QR code</target>
         <note/>
       </trans-unit>
       <trans-unit id="Session Introduction" xml:space="preserve">
         <source>Session Introduction</source>
-        <target state="translated">Session Introduction</target>
         <note/>
       </trans-unit>
       <trans-unit id="Session will start in 5 mins." xml:space="preserve">
         <source>Session will start in 5 mins.</source>
-        <target state="translated">Session will start in 5 mins.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
         <source>Settings</source>
-        <target state="translated">Settings</target>
         <note/>
       </trans-unit>
       <trans-unit id="Share" xml:space="preserve">
         <source>Share</source>
-        <target state="translated">Share</target>
         <note/>
       </trans-unit>
       <trans-unit id="Sign Out" xml:space="preserve">
         <source>Sign Out</source>
-        <target state="translated">Sign Out</target>
         <note/>
       </trans-unit>
       <trans-unit id="Something Went Wrong" xml:space="preserve">
         <source>Something Went Wrong</source>
-        <target state="translated">Something Went Wrong</target>
         <note/>
       </trans-unit>
       <trans-unit id="Source Code" xml:space="preserve">
         <source>Source Code</source>
-        <target state="translated">Source Code</target>
         <note/>
       </trans-unit>
       <trans-unit id="Speakers" xml:space="preserve">
         <source>Speakers</source>
-        <target state="translated">Speakers</target>
         <note/>
       </trans-unit>
       <trans-unit id="System" xml:space="preserve">
         <source>System</source>
-        <target state="translated">System</target>
         <note/>
       </trans-unit>
       <trans-unit id="THR" xml:space="preserve">
         <source>THR</source>
-        <target state="translated">THR</target>
         <note/>
       </trans-unit>
       <trans-unit id="TUE" xml:space="preserve">
         <source>TUE</source>
-        <target state="translated">TUE</target>
         <note/>
       </trans-unit>
       <trans-unit id="Tags" xml:space="preserve">
         <source>Tags</source>
-        <target state="translated">Tags</target>
         <note/>
       </trans-unit>
       <trans-unit id="The schedule for this event is not available yet." xml:space="preserve">
         <source>The schedule for this event is not available yet.</source>
-        <target state="translated">The schedule for this event is not available yet.</target>
         <note/>
       </trans-unit>
       <trans-unit id="This item can only be used once, please follow the instructions of the staff to use." xml:space="preserve">
         <source>This item can only be used once, please follow the instructions of the staff to use.</source>
-        <target state="translated">This item can only be used once, please follow the instructions of the staff to use.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Token" xml:space="preserve">
         <source>Token</source>
-        <target state="translated">Token</target>
         <note/>
       </trans-unit>
       <trans-unit id="Translate" xml:space="preserve">
         <source>Translate</source>
-        <target state="translated">Translate</target>
         <note/>
       </trans-unit>
       <trans-unit id="Try Again" xml:space="preserve">
         <source>Try Again</source>
-        <target state="translated">Try Again</target>
         <note/>
       </trans-unit>
       <trans-unit id="Type" xml:space="preserve">
         <source>Type</source>
-        <target state="translated">Type</target>
         <note/>
       </trans-unit>
       <trans-unit id="Types" xml:space="preserve">
         <source>Types</source>
-        <target state="translated">Types</target>
         <note/>
       </trans-unit>
       <trans-unit id="Unable to Load Event" xml:space="preserve">
         <source>Unable to Load Event</source>
-        <target state="translated">Unable to Load Event</target>
         <note/>
       </trans-unit>
       <trans-unit id="Use fewer filters or reset all filters." xml:space="preserve">
         <source>Use fewer filters or reset all filters.</source>
-        <target state="translated">Use fewer filters or reset all filters.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Version %@ (%@)" xml:space="preserve">
         <source>Version %1$@ (%2$@)</source>
-        <target state="translated">Version %1$@ (%2$@)</target>
         <note/>
       </trans-unit>
       <trans-unit id="View Details" xml:space="preserve">
         <source>View Details</source>
-        <target state="translated">View Details</target>
         <note/>
       </trans-unit>
       <trans-unit id="WEN" xml:space="preserve">
         <source>WED</source>
-        <target state="translated">WED</target>
         <note/>
       </trans-unit>
       <trans-unit id="You have an invalid URL or the token is incorrect." xml:space="preserve">
         <source>You have an invalid URL or the token is incorrect.</source>
-        <target state="translated">You have an invalid URL or the token is incorrect.</target>
         <note/>
       </trans-unit>
     </body>
