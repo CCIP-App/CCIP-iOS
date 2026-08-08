@@ -5,7 +5,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"%@\" in room \"%@\", please keep your time of buffer to reach the room."
           }
         },
@@ -27,7 +27,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%d:%02d ~ %d:%02d • %d minutes"
           }
         },
@@ -80,6 +80,12 @@
     },
     "About" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -98,7 +104,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Add to Calendar"
           }
         },
@@ -126,7 +132,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Appearance"
           }
         },
@@ -148,7 +154,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Are you sure you want to sign out?"
           }
         },
@@ -170,7 +176,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Auto-Brighten"
           }
         },
@@ -192,7 +198,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Auto-Select Schedule Day"
           }
         },
@@ -214,7 +220,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Broadcast"
           }
         },
@@ -236,7 +242,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Cancel"
           }
         },
@@ -264,7 +270,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Check at %d:%02d"
           }
         },
@@ -286,7 +292,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Check back later for announcements"
           }
         },
@@ -308,7 +314,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Check your network status or select a new event."
           }
         },
@@ -330,7 +336,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Check your network status or try again"
           }
         },
@@ -352,7 +358,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Check your network status or try again later."
           }
         },
@@ -374,7 +380,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Close"
           }
         },
@@ -396,7 +402,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Complete"
           }
         },
@@ -418,7 +424,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Confirm Use"
           }
         },
@@ -440,7 +446,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Continue"
           }
         },
@@ -460,6 +466,12 @@
     },
     "Copy ID" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy ID"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -478,7 +490,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Copy Token"
           }
         },
@@ -506,7 +518,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Couldn't verify your identity"
           }
         },
@@ -528,7 +540,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Dark Mode"
           }
         },
@@ -548,6 +560,12 @@
     },
     "Diagnostic" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diagnostic"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -566,7 +584,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Dim Past Sessions"
           }
         },
@@ -588,7 +606,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Disable"
           }
         },
@@ -610,7 +628,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Don't Ask Again"
           }
         },
@@ -632,7 +650,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Done"
           }
         },
@@ -654,7 +672,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Empty Announcement"
           }
         },
@@ -676,7 +694,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Enable"
           }
         },
@@ -698,7 +716,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Enter token manually"
           }
         },
@@ -720,7 +738,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Erase All Filters"
           }
         },
@@ -742,7 +760,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Faild to confirm %@"
           }
         },
@@ -764,7 +782,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Faild to Load Event List"
           }
         },
@@ -786,7 +804,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Fast Pass"
           }
         },
@@ -814,7 +832,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Favorite"
           }
         },
@@ -836,7 +854,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Filter %@"
           }
         },
@@ -858,7 +876,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Filter by %@"
           }
         },
@@ -880,7 +898,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "FRI"
           }
         },
@@ -902,7 +920,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Future Session"
           }
         },
@@ -924,7 +942,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "General"
           }
         },
@@ -946,7 +964,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Get notified"
           }
         },
@@ -968,7 +986,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Haptic Feedback"
           }
         },
@@ -990,7 +1008,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Invaild token"
           }
         },
@@ -1012,7 +1030,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Invalid URL"
           }
         },
@@ -1034,7 +1052,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Loading"
           }
         },
@@ -1056,7 +1074,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Loading Announcements..."
           }
         },
@@ -1089,7 +1107,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "MON"
           }
         },
@@ -1111,7 +1129,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "More"
           }
         },
@@ -1133,7 +1151,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Network Error"
           }
         },
@@ -1155,7 +1173,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "No QR code found in picture"
           }
         },
@@ -1175,6 +1193,12 @@
     },
     "No Schedule" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Schedule"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1193,7 +1217,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "No Sessions Found"
           }
         },
@@ -1215,7 +1239,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Not available"
           }
         },
@@ -1237,7 +1261,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Official Website"
           }
         },
@@ -1259,7 +1283,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "OK"
           }
         },
@@ -1284,7 +1308,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Only available at\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d"
           }
         },
@@ -1306,7 +1330,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "OPass"
           }
         },
@@ -1328,7 +1352,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "OPass can send you notification just before the session starts.\\nWould you like to allow OPass notifications in Settings?"
           }
         },
@@ -1350,7 +1374,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "OPass Room 1"
           }
         },
@@ -1372,7 +1396,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "OPass Room 2"
           }
         },
@@ -1394,7 +1418,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Open Pass & All Pass - A Community Checkin with Interactivity Project for iOS"
           }
         },
@@ -1416,7 +1440,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Open Settings"
           }
         },
@@ -1438,7 +1462,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Past Session"
           }
         },
@@ -1460,7 +1484,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Place"
           }
         },
@@ -1482,7 +1506,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Places"
           }
         },
@@ -1504,7 +1528,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Please allow OPass to access your calendar under OPass in your device's settings."
           }
         },
@@ -1526,7 +1550,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Please allow OPass to access your camera under OPass in your device's settings."
           }
         },
@@ -1548,7 +1572,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Please connect to the Wi-Fi provided by event"
           }
         },
@@ -1570,7 +1594,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths."
           }
         },
@@ -1592,7 +1616,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Please look for the QR code provided by the email and place it in the viewfinder"
           }
         },
@@ -1614,7 +1638,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Please look for the token provided by the email and enter it in the field above"
           }
         },
@@ -1636,7 +1660,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Privacy Policy"
           }
         },
@@ -1658,7 +1682,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Refresh"
           }
         },
@@ -1680,7 +1704,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Reset Appearance Settings"
           }
         },
@@ -1702,7 +1726,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Reset Filters"
           }
         },
@@ -1724,7 +1748,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Reset General Settings"
           }
         },
@@ -1746,7 +1770,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "SAT"
           }
         },
@@ -1768,7 +1792,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Scan QR code with camera"
           }
         },
@@ -1790,7 +1814,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Scan to get token"
           }
         },
@@ -1810,6 +1834,12 @@
     },
     "Schedule" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schedule"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1828,7 +1858,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Search"
           }
         },
@@ -1850,7 +1880,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Search title"
           }
         },
@@ -1872,7 +1902,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Select a picture to scan QR code"
           }
         },
@@ -1894,7 +1924,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Select Event"
           }
         },
@@ -1922,7 +1952,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Session Introduction"
           }
         },
@@ -1950,7 +1980,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Session will start in 5 mins."
           }
         },
@@ -1972,7 +2002,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Settings"
           }
         },
@@ -2000,7 +2030,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Share"
           }
         },
@@ -2028,7 +2058,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Sign Out"
           }
         },
@@ -2056,7 +2086,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "SIGNING IN"
           }
         },
@@ -2078,7 +2108,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Something Went Wrong"
           }
         },
@@ -2100,7 +2130,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Source Code"
           }
         },
@@ -2128,7 +2158,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Speakers"
           }
         },
@@ -2156,7 +2186,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "SUN"
           }
         },
@@ -2178,7 +2208,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "System"
           }
         },
@@ -2206,7 +2236,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Tags"
           }
         },
@@ -2226,6 +2256,12 @@
     },
     "The schedule for this event is not available yet." : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The schedule for this event is not available yet."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2244,7 +2280,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "This item can only be used once, please follow the instructions of the staff to use."
           }
         },
@@ -2266,7 +2302,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "THR"
           }
         },
@@ -2288,7 +2324,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Token"
           }
         },
@@ -2316,7 +2352,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Translate"
           }
         },
@@ -2338,7 +2374,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Try Again"
           }
         },
@@ -2366,7 +2402,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "TUE"
           }
         },
@@ -2388,7 +2424,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Type"
           }
         },
@@ -2410,7 +2446,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Types"
           }
         },
@@ -2432,7 +2468,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Unable to Load Event"
           }
         },
@@ -2454,7 +2490,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Use fewer filters or reset all filters."
           }
         },
@@ -2476,7 +2512,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Version %1$@ (%2$@)"
           }
         },
@@ -2498,7 +2534,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "View Details"
           }
         },
@@ -2520,7 +2556,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "WED"
           }
         },
@@ -2542,7 +2578,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "You have an invalid URL or the token is incorrect."
           }
         },
