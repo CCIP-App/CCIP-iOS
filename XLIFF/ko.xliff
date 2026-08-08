@@ -13,22 +13,22 @@
         <source>%d:%02d ~ %d:%02d • %d minutes</source>
         <note/>
       </trans-unit>
-      <trans-unit id="About" xml:space="preserve" approved="no">
+      <trans-unit id="About" xml:space="preserve">
         <source>About</source>
         <target state="translated">정보</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Add to Calendar" xml:space="preserve" approved="no">
+      <trans-unit id="Add to Calendar" xml:space="preserve">
         <source>Add to Calendar</source>
         <target state="translated">캘린더에 추가</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Appearance" xml:space="preserve" approved="no">
+      <trans-unit id="Appearance" xml:space="preserve">
         <source>Appearance</source>
         <target state="translated">외관</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Are you sure you want to sign out?" xml:space="preserve" approved="no">
+      <trans-unit id="Are you sure you want to sign out?" xml:space="preserve">
         <source>Are you sure you want to sign out?</source>
         <target state="translated">정말 로그아웃하시겠습니까?</target>
         <note/>
@@ -41,17 +41,17 @@
         <source>Auto-Select Schedule Day</source>
         <note/>
       </trans-unit>
-      <trans-unit id="Broadcast" xml:space="preserve" approved="no">
+      <trans-unit id="Broadcast" xml:space="preserve">
         <source>Broadcast</source>
         <target state="translated">중계</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Cancel" xml:space="preserve" approved="no">
+      <trans-unit id="Cancel" xml:space="preserve">
         <source>Cancel</source>
         <target state="translated">취소</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Check at %d:%02d" xml:space="preserve" approved="no">
+      <trans-unit id="Check at %d:%02d" xml:space="preserve">
         <source>Check at %d:%02d</source>
         <target state="translated">%d:%02d에 확인 완료</target>
         <note/>
@@ -423,6 +423,12 @@
       </trans-unit>
       <trans-unit id="Translate" xml:space="preserve">
         <source>Translate</source>
+        <target state="translated">번역</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Translation" xml:space="preserve">
+        <source>Translation</source>
+        <target state="translated">번역</target>
         <note/>
       </trans-unit>
       <trans-unit id="Try Again" xml:space="preserve">
@@ -443,6 +449,11 @@
       </trans-unit>
       <trans-unit id="Use fewer filters or reset all filters." xml:space="preserve">
         <source>Use fewer filters or reset all filters.</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Verifying" xml:space="preserve">
+        <source>Verifying</source>
+        <target state="translated">확인 중</target>
         <note/>
       </trans-unit>
       <trans-unit id="Version %@ (%@)" xml:space="preserve">
