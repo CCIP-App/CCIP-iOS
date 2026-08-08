@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/5.
-//  2025 OPass.
+//  2026 OPass.
 //
 
 import SwiftUI
@@ -14,6 +14,7 @@ struct RedeemTokenView: View {
 
     @EnvironmentObject var EventStore: EventStore
     @State private var token: String = ""
+    @State private var isRedeeming = false
     @State private var isCameraSOCPresented = false
     @State private var isManuallySOCPresented = false
     @State private var isHttp403AlertPresented = false
@@ -133,6 +134,19 @@ struct RedeemTokenView: View {
             }
         }
         .contentMargins(.top, 10)
+        .disabled(isRedeeming)
+        .overlay {
+            if isRedeeming {
+                ZStack {
+                    Color(.systemBackground)
+                        .opacity(0.6)
+                        .ignoresSafeArea()
+                    ProgressView("Verifying")
+                        .padding(25)
+                        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 15))
+                }
+            }
+        }
         .http403Alert(title: "Couldn't verify your identity", isPresented: $isHttp403AlertPresented)
         .alert("Couldn't verify your identity", message: "Invaild token", isPresented: $isInvaildTokenAlertPresented)
         .slideOverCard(isPresented: $isCameraSOCPresented, backgroundColor: (colorScheme == .dark ? .init(red: 28/255, green: 28/255, blue: 30/255) : .white)) {
@@ -202,6 +216,8 @@ struct RedeemTokenView: View {
                     UIApplication.endEditing()
                     self.isManuallySOCPresented = false
                     Task {
+                        self.isRedeeming = true
+                        defer { self.isRedeeming = false }
                         do {
                             self.isInvaildTokenAlertPresented = !(try await EventStore.redeem(token: token))
                         } catch APIManager.LoadError.forbidden {
@@ -229,6 +245,8 @@ struct RedeemTokenView: View {
                       let feature = detector.features(in: ciImage) as? [CIQRCodeFeature],
                       let token = feature.first?.messageString
                 else { self.isNoQRCodeAlertPresented = true; return }
+                self.isRedeeming = true
+                defer { self.isRedeeming = false }
                 do {
                     let result = try await EventStore.redeem(token: token)
                     self.isInvaildTokenAlertPresented = !result
@@ -254,7 +272,9 @@ struct RedeemTokenView: View {
                 token = tokenValue
             }
 
-            Task {
+            Task { @MainActor in
+                self.isRedeeming = true
+                defer { self.isRedeeming = false }
                 do {
                     let result = try await EventStore.redeem(token: token)
                     DispatchQueue.main.async {

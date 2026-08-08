@@ -416,6 +416,12 @@
       </trans-unit>
       <trans-unit id="Translate" xml:space="preserve">
         <source>Translate</source>
+        <target state="translated">மொழிபெயர்</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Translation" xml:space="preserve">
+        <source>Translation</source>
+        <target state="translated">மொழிபெயர்ப்பு</target>
         <note/>
       </trans-unit>
       <trans-unit id="Try Again" xml:space="preserve">
@@ -436,6 +442,11 @@
       </trans-unit>
       <trans-unit id="Use fewer filters or reset all filters." xml:space="preserve">
         <source>Use fewer filters or reset all filters.</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Verifying" xml:space="preserve">
+        <source>Verifying</source>
+        <target state="translated">சரிபார்க்கப்படுகிறது</target>
         <note/>
       </trans-unit>
       <trans-unit id="Version %@ (%@)" xml:space="preserve">

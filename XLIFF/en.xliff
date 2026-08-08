@@ -522,6 +522,11 @@
         <target state="translated">Translate</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Translation" xml:space="preserve">
+        <source>Translation</source>
+        <target state="new">Translation</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Try Again" xml:space="preserve">
         <source>Try Again</source>
         <target state="translated">Try Again</target>
@@ -545,6 +550,11 @@
       <trans-unit id="Use fewer filters or reset all filters." xml:space="preserve">
         <source>Use fewer filters or reset all filters.</source>
         <target state="translated">Use fewer filters or reset all filters.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Verifying" xml:space="preserve">
+        <source>Verifying</source>
+        <target state="new">Verifying</target>
         <note/>
       </trans-unit>
       <trans-unit id="Version %@ (%@)" xml:space="preserve">
