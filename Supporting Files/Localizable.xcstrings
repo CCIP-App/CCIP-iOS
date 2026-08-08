@@ -18,7 +18,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「%@」在會議室「%@」，請儘速前往！"
+            "value" : "「%@」在會議室「%@」，請預留足夠的緩衝時間前往。"
           }
         }
       }
@@ -1844,6 +1844,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スケジュール"
+          }
+        },
+        "nan" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "議程"
           }
         },
         "zh-Hant" : {
