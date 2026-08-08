@@ -458,6 +458,22 @@
         }
       }
     },
+    "Copy ID" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IDコピー"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "複製ID"
+          }
+        }
+      }
+    },
     "Copy Token" : {
       "localizations" : {
         "en" : {
@@ -526,6 +542,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "深色模式"
+          }
+        }
+      }
+    },
+    "Diagnostic" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "診断"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "診斷"
           }
         }
       }
@@ -1244,6 +1276,9 @@
           }
         }
       }
+    },
+    "OneSignal ID" : {
+      "shouldTranslate" : false
     },
     "Only available at\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d" : {
       "localizations" : {
