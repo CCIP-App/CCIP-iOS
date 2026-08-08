@@ -91,6 +91,7 @@ jobs:
             echo "::group::import $lang"
             xcodebuild -importLocalizations \
               -project "$PROJECT" \
+              -scheme "$SCHEME" \
               -localizationPath "$bundle" \
               -derivedDataPath "$RUNNER_TEMP/dd" \
               -skipPackagePluginValidation \
