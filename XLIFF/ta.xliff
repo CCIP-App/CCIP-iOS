@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
-  <file original="Supporting Files/Localizable.xcstrings" source-language="en" target-language="nan" datatype="plaintext">
+  <file original="Supporting Files/Localizable.xcstrings" source-language="en" target-language="ta" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.6" build-num="17F113"/>
     </header>
@@ -19,7 +19,6 @@
       </trans-unit>
       <trans-unit id="Add to Calendar" xml:space="preserve">
         <source>Add to Calendar</source>
-        <target state="translated">加入行事曆</target>
         <note/>
       </trans-unit>
       <trans-unit id="Appearance" xml:space="preserve">
@@ -44,7 +43,6 @@
       </trans-unit>
       <trans-unit id="Cancel" xml:space="preserve">
         <source>Cancel</source>
-        <target state="translated">取消</target>
         <note/>
       </trans-unit>
       <trans-unit id="Check at %d:%02d" xml:space="preserve">
@@ -89,7 +87,6 @@
       </trans-unit>
       <trans-unit id="Copy Token" xml:space="preserve">
         <source>Copy Token</source>
-        <target state="translated">複製 Token</target>
         <note/>
       </trans-unit>
       <trans-unit id="Couldn't verify your identity" xml:space="preserve">
@@ -150,7 +147,6 @@
       </trans-unit>
       <trans-unit id="Fast Pass" xml:space="preserve">
         <source>Fast Pass</source>
-        <target state="translated">快速通關</target>
         <note/>
       </trans-unit>
       <trans-unit id="Favorite" xml:space="preserve">
@@ -340,7 +336,6 @@
       </trans-unit>
       <trans-unit id="Schedule" xml:space="preserve">
         <source>Schedule</source>
-        <target state="translated">議程</target>
         <note/>
       </trans-unit>
       <trans-unit id="Search" xml:space="preserve">
@@ -353,7 +348,6 @@
       </trans-unit>
       <trans-unit id="Select Event" xml:space="preserve">
         <source>Select Event</source>
-        <target state="translated">選擇活動</target>
         <note/>
       </trans-unit>
       <trans-unit id="Select a picture to scan QR code" xml:space="preserve">
@@ -362,7 +356,6 @@
       </trans-unit>
       <trans-unit id="Session Introduction" xml:space="preserve">
         <source>Session Introduction</source>
-        <target state="translated">議程簡介</target>
         <note/>
       </trans-unit>
       <trans-unit id="Session will start in 5 mins." xml:space="preserve">
@@ -371,17 +364,14 @@
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
         <source>Settings</source>
-        <target state="translated">設定</target>
         <note/>
       </trans-unit>
       <trans-unit id="Share" xml:space="preserve">
         <source>Share</source>
-        <target state="translated">分享</target>
         <note/>
       </trans-unit>
       <trans-unit id="Sign Out" xml:space="preserve">
         <source>Sign Out</source>
-        <target state="translated">登出</target>
         <note/>
       </trans-unit>
       <trans-unit id="Something Went Wrong" xml:space="preserve">
@@ -390,17 +380,14 @@
       </trans-unit>
       <trans-unit id="Source Code" xml:space="preserve">
         <source>Source Code</source>
-        <target state="translated">原始碼</target>
         <note/>
       </trans-unit>
       <trans-unit id="Speakers" xml:space="preserve">
         <source>Speakers</source>
-        <target state="translated">講者</target>
         <note/>
       </trans-unit>
       <trans-unit id="System" xml:space="preserve">
         <source>System</source>
-        <target state="translated">系統</target>
         <note/>
       </trans-unit>
       <trans-unit id="THR" xml:space="preserve">
@@ -425,7 +412,6 @@
       </trans-unit>
       <trans-unit id="Token" xml:space="preserve">
         <source>Token</source>
-        <target state="translated">Token</target>
         <note/>
       </trans-unit>
       <trans-unit id="Translate" xml:space="preserve">
@@ -434,7 +420,6 @@
       </trans-unit>
       <trans-unit id="Try Again" xml:space="preserve">
         <source>Try Again</source>
-        <target state="translated">閣試一改</target>
         <note/>
       </trans-unit>
       <trans-unit id="Type" xml:space="preserve">
