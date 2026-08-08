@@ -338,8 +338,9 @@
         <source>Scan to get token</source>
         <note/>
       </trans-unit>
-      <trans-unit id="Schedule" xml:space="preserve">
+      <trans-unit id="Schedule" xml:space="preserve" approved="no">
         <source>Schedule</source>
+        <target state="translated">議程</target>
         <note/>
       </trans-unit>
       <trans-unit id="Search" xml:space="preserve">
