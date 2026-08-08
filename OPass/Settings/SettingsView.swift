@@ -3,7 +3,7 @@
 //  OPass
 //
 //  Created by 張智堯 on 2022/3/2.
-//  2025 OPass.
+//  2026 OPass.
 //
 
 import StoreKit
@@ -183,26 +183,21 @@ struct SettingsView: View {
 
     @ViewBuilder
     private func bottomText() -> some View {
-        let availableRequestReview = requestReviewVersion != Bundle.main.buildVersionNumber
-        Button {
-            requestReviewTrigger.toggle()
-            requestReview()
-            requestReviewVersion = Bundle.main.buildVersionNumber ?? "1"
-        } label: {
-            VStack {
-                Text("Version \(Bundle.main.releaseVersionNumber ?? "") (\(Bundle.main.buildVersionNumber ?? ""))")
-                    .foregroundStyle(.gray)
-                    .font(.footnote)
-                Text("Made with Love")
-                    .foregroundStyle(.gray)
-                    .font(.caption)
-                    .bold()
-                    .underline(availableRequestReview, color: .gray.opacity(0.5))
+
+
+        VStack {
+            Text("Version \(Bundle.main.releaseVersionNumber ?? "") (\(Bundle.main.buildVersionNumber ?? ""))")
+                .foregroundStyle(.gray)
+                .font(.footnote)
+            NavigationLink("Made with Love") {
+                DiagnosticView()
             }
-            .frame(maxWidth: .infinity, alignment: .center)
+            .navigationLinkIndicatorVisibility(.hidden)
+            .foregroundStyle(.gray)
+            .font(.caption)
+            .bold()
         }
-        .sensoryFeedback(.success, trigger: requestReviewTrigger) { _, _ in hapticFeedback }
-        .disabled(!availableRequestReview)
+        .frame(maxWidth: .infinity, alignment: .center)
         .listRowBackground(Color.clear)
     }
 }
