@@ -13,20 +13,24 @@
         <source>%d:%02d ~ %d:%02d • %d minutes</source>
         <note/>
       </trans-unit>
-      <trans-unit id="About" xml:space="preserve">
+      <trans-unit id="About" xml:space="preserve" approved="no">
         <source>About</source>
+        <target state="translated">정보</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Add to Calendar" xml:space="preserve">
+      <trans-unit id="Add to Calendar" xml:space="preserve" approved="no">
         <source>Add to Calendar</source>
+        <target state="translated">캘린더에 추가</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Appearance" xml:space="preserve">
+      <trans-unit id="Appearance" xml:space="preserve" approved="no">
         <source>Appearance</source>
+        <target state="translated">외관</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Are you sure you want to sign out?" xml:space="preserve">
+      <trans-unit id="Are you sure you want to sign out?" xml:space="preserve" approved="no">
         <source>Are you sure you want to sign out?</source>
+        <target state="translated">정말 로그아웃하시겠습니까?</target>
         <note/>
       </trans-unit>
       <trans-unit id="Auto-Brighten" xml:space="preserve">
@@ -37,16 +41,19 @@
         <source>Auto-Select Schedule Day</source>
         <note/>
       </trans-unit>
-      <trans-unit id="Broadcast" xml:space="preserve">
+      <trans-unit id="Broadcast" xml:space="preserve" approved="no">
         <source>Broadcast</source>
+        <target state="translated">중계</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Cancel" xml:space="preserve">
+      <trans-unit id="Cancel" xml:space="preserve" approved="no">
         <source>Cancel</source>
+        <target state="translated">취소</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Check at %d:%02d" xml:space="preserve">
+      <trans-unit id="Check at %d:%02d" xml:space="preserve" approved="no">
         <source>Check at %d:%02d</source>
+        <target state="translated">%d:%02d에 확인 완료</target>
         <note/>
       </trans-unit>
       <trans-unit id="Check back later for announcements" xml:space="preserve">
