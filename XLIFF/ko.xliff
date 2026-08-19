@@ -5,12 +5,14 @@
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.6" build-num="17F113"/>
     </header>
     <body>
-      <trans-unit id="&quot;%@&quot; in room &quot;%@&quot;, please keep your time of buffer to reach the room." xml:space="preserve">
+      <trans-unit id="&quot;%@&quot; in room &quot;%@&quot;, please keep your time of buffer to reach the room." xml:space="preserve" approved="no">
         <source>"%@" in room "%@", please keep your time of buffer to reach the room.</source>
+        <target state="translated">%@ 세션이 %@에서 진행됩니다. 이동 시간을 넉넉히 잡아 주세요.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="%d:%02d ~ %d:%02d • %d minutes" xml:space="preserve">
+      <trans-unit id="%d:%02d ~ %d:%02d • %d minutes" xml:space="preserve" approved="no">
         <source>%d:%02d ~ %d:%02d • %d minutes</source>
+        <target state="translated">%d:%02d ~ %d:%02d • %d분</target>
         <note/>
       </trans-unit>
       <trans-unit id="About" xml:space="preserve">
@@ -25,7 +27,7 @@
       </trans-unit>
       <trans-unit id="Appearance" xml:space="preserve">
         <source>Appearance</source>
-        <target state="translated">외관</target>
+        <target state="translated">화면</target>
         <note/>
       </trans-unit>
       <trans-unit id="Are you sure you want to sign out?" xml:space="preserve">
@@ -33,12 +35,14 @@
         <target state="translated">정말 로그아웃하시겠습니까?</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Auto-Brighten" xml:space="preserve">
+      <trans-unit id="Auto-Brighten" xml:space="preserve" approved="no">
         <source>Auto-Brighten</source>
+        <target state="translated">화면 밝기 자동 조절</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Auto-Select Schedule Day" xml:space="preserve">
+      <trans-unit id="Auto-Select Schedule Day" xml:space="preserve" approved="no">
         <source>Auto-Select Schedule Day</source>
+        <target state="translated">일정 날짜 자동 선택</target>
         <note/>
       </trans-unit>
       <trans-unit id="Broadcast" xml:space="preserve">
@@ -53,372 +57,464 @@
       </trans-unit>
       <trans-unit id="Check at %d:%02d" xml:space="preserve">
         <source>Check at %d:%02d</source>
-        <target state="translated">%d:%02d에 확인 완료</target>
+        <target state="translated">%d:%02d에 사용 완료</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Check back later for announcements" xml:space="preserve">
+      <trans-unit id="Check back later for announcements" xml:space="preserve" approved="no">
         <source>Check back later for announcements</source>
+        <target state="translated">나중에 다시 확인해 주세요</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Check your network status or select a new event." xml:space="preserve">
+      <trans-unit id="Check your network status or select a new event." xml:space="preserve" approved="no">
         <source>Check your network status or select a new event.</source>
+        <target state="translated">네트워크 상태를 확인하거나 다른 행사를 선택해 주세요.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Check your network status or try again" xml:space="preserve">
+      <trans-unit id="Check your network status or try again" xml:space="preserve" approved="no">
         <source>Check your network status or try again</source>
+        <target state="translated">네트워크 상태를 확인하거나 다시 시도해 주세요</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Check your network status or try again later." xml:space="preserve">
+      <trans-unit id="Check your network status or try again later." xml:space="preserve" approved="no">
         <source>Check your network status or try again later.</source>
+        <target state="translated">네트워크 상태를 확인하거나 잠시 후 다시 시도해 주세요.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Close" xml:space="preserve">
+      <trans-unit id="Close" xml:space="preserve" approved="no">
         <source>Close</source>
+        <target state="translated">닫기</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Complete" xml:space="preserve">
+      <trans-unit id="Complete" xml:space="preserve" approved="no">
         <source>Complete</source>
+        <target state="translated">완료</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Confirm Use" xml:space="preserve">
+      <trans-unit id="Confirm Use" xml:space="preserve" approved="no">
         <source>Confirm Use</source>
+        <target state="translated">사용 확인</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Continue" xml:space="preserve">
+      <trans-unit id="Continue" xml:space="preserve" approved="no">
         <source>Continue</source>
+        <target state="translated">계속</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Copy ID" xml:space="preserve">
+      <trans-unit id="Copy ID" xml:space="preserve" approved="no">
         <source>Copy ID</source>
+        <target state="translated">ID 복사</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Copy Token" xml:space="preserve">
+      <trans-unit id="Copy Token" xml:space="preserve" approved="no">
         <source>Copy Token</source>
+        <target state="translated">토큰 복사</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Couldn't verify your identity" xml:space="preserve">
+      <trans-unit id="Couldn't verify your identity" xml:space="preserve" approved="no">
         <source>Couldn't verify your identity</source>
+        <target state="translated">본인 인증에 실패했습니다</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Dark Mode" xml:space="preserve">
+      <trans-unit id="Dark Mode" xml:space="preserve" approved="no">
         <source>Dark Mode</source>
+        <target state="translated">다크 모드</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Diagnostic" xml:space="preserve">
+      <trans-unit id="Diagnostic" xml:space="preserve" approved="no">
         <source>Diagnostic</source>
+        <target state="translated">진단</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Dim Past Sessions" xml:space="preserve">
+      <trans-unit id="Dim Past Sessions" xml:space="preserve" approved="no">
         <source>Dim Past Sessions</source>
+        <target state="translated">지난 세션 흐리게 표시</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Disable" xml:space="preserve">
+      <trans-unit id="Disable" xml:space="preserve" approved="no">
         <source>Disable</source>
+        <target state="translated">끔</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Don't Ask Again" xml:space="preserve">
+      <trans-unit id="Don't Ask Again" xml:space="preserve" approved="no">
         <source>Don't Ask Again</source>
+        <target state="translated">다시 묻지 않기</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Done" xml:space="preserve">
+      <trans-unit id="Done" xml:space="preserve" approved="no">
         <source>Done</source>
+        <target state="translated">완료</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Empty Announcement" xml:space="preserve">
+      <trans-unit id="Empty Announcement" xml:space="preserve" approved="no">
         <source>Empty Announcement</source>
+        <target state="translated">공지사항 없음</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Enable" xml:space="preserve">
+      <trans-unit id="Enable" xml:space="preserve" approved="no">
         <source>Enable</source>
+        <target state="translated">켬</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Enter token manually" xml:space="preserve">
+      <trans-unit id="Enter token manually" xml:space="preserve" approved="no">
         <source>Enter token manually</source>
+        <target state="translated">토큰 직접 입력</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Erase All Filters" xml:space="preserve">
+      <trans-unit id="Erase All Filters" xml:space="preserve" approved="no">
         <source>Erase All Filters</source>
+        <target state="translated">필터 모두 지우기</target>
         <note/>
       </trans-unit>
-      <trans-unit id="FRI" xml:space="preserve">
+      <trans-unit id="FRI" xml:space="preserve" approved="no">
         <source>FRI</source>
+        <target state="translated">금</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Faild to Load Event List" xml:space="preserve">
+      <trans-unit id="Faild to Load Event List" xml:space="preserve" approved="no">
         <source>Faild to Load Event List</source>
+        <target state="translated">행사 목록을 불러오지 못했습니다</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Faild to confirm %@" xml:space="preserve">
+      <trans-unit id="Faild to confirm %@" xml:space="preserve" approved="no">
         <source>Faild to confirm %@</source>
+        <target state="translated">%@ 사용에 실패했습니다</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Fast Pass" xml:space="preserve">
+      <trans-unit id="Fast Pass" xml:space="preserve" approved="no">
         <source>Fast Pass</source>
+        <target state="translated">패스트 패스</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Favorite" xml:space="preserve">
+      <trans-unit id="Favorite" xml:space="preserve" approved="no">
         <source>Favorite</source>
+        <target state="translated">북마크</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Filter %@" xml:space="preserve">
+      <trans-unit id="Filter %@" xml:space="preserve" approved="no">
         <source>Filter %@</source>
+        <target state="translated">%@ 검색</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Filter by %@" xml:space="preserve">
+      <trans-unit id="Filter by %@" xml:space="preserve" approved="no">
         <source>Filter by %@</source>
+        <target state="translated">%@ 필터</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Future Session" xml:space="preserve">
+      <trans-unit id="Future Session" xml:space="preserve" approved="no">
         <source>Future Session</source>
+        <target state="translated">다가오는 세션</target>
         <note/>
       </trans-unit>
-      <trans-unit id="General" xml:space="preserve">
+      <trans-unit id="General" xml:space="preserve" approved="no">
         <source>General</source>
+        <target state="translated">일반</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Get notified" xml:space="preserve">
+      <trans-unit id="Get notified" xml:space="preserve" approved="no">
         <source>Get notified</source>
+        <target state="translated">알림 받기</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Haptic Feedback" xml:space="preserve">
+      <trans-unit id="Haptic Feedback" xml:space="preserve" approved="no">
         <source>Haptic Feedback</source>
+        <target state="translated">햅틱 피드백</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Invaild token" xml:space="preserve">
+      <trans-unit id="Invaild token" xml:space="preserve" approved="no">
         <source>Invaild token</source>
+        <target state="translated">토큰이 올바르지 않습니다</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Invalid URL" xml:space="preserve">
+      <trans-unit id="Invalid URL" xml:space="preserve" approved="no">
         <source>Invalid URL</source>
+        <target state="translated">올바르지 않은 URL</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Loading" xml:space="preserve">
+      <trans-unit id="Loading" xml:space="preserve" approved="no">
         <source>Loading</source>
+        <target state="translated">불러오는 중</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Loading Announcements..." xml:space="preserve">
+      <trans-unit id="Loading Announcements..." xml:space="preserve" approved="no">
         <source>Loading Announcements...</source>
+        <target state="translated">공지사항을 불러오는 중...</target>
         <note/>
       </trans-unit>
-      <trans-unit id="MON" xml:space="preserve">
+      <trans-unit id="MON" xml:space="preserve" approved="no">
         <source>MON</source>
+        <target state="translated">월</target>
         <note/>
       </trans-unit>
-      <trans-unit id="More" xml:space="preserve">
+      <trans-unit id="More" xml:space="preserve" approved="no">
         <source>More</source>
+        <target state="translated">더보기</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Network Error" xml:space="preserve">
+      <trans-unit id="Network Error" xml:space="preserve" approved="no">
         <source>Network Error</source>
+        <target state="translated">네트워크 오류</target>
         <note/>
       </trans-unit>
-      <trans-unit id="No QR code found in picture" xml:space="preserve">
+      <trans-unit id="No QR code found in picture" xml:space="preserve" approved="no">
         <source>No QR code found in picture</source>
+        <target state="translated">사진에서 QR 코드를 찾지 못했습니다</target>
         <note/>
       </trans-unit>
-      <trans-unit id="No Schedule" xml:space="preserve">
+      <trans-unit id="No Schedule" xml:space="preserve" approved="no">
         <source>No Schedule</source>
+        <target state="translated">일정 없음</target>
         <note/>
       </trans-unit>
-      <trans-unit id="No Sessions Found" xml:space="preserve">
+      <trans-unit id="No Sessions Found" xml:space="preserve" approved="no">
         <source>No Sessions Found</source>
+        <target state="translated">세션 없음</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Not available" xml:space="preserve">
+      <trans-unit id="Not available" xml:space="preserve" approved="no">
         <source>Not available</source>
+        <target state="translated">사용할 수 없음</target>
         <note/>
       </trans-unit>
-      <trans-unit id="OK" xml:space="preserve">
+      <trans-unit id="OK" xml:space="preserve" approved="no">
         <source>OK</source>
+        <target state="translated">확인</target>
         <note/>
       </trans-unit>
-      <trans-unit id="OPass" xml:space="preserve">
+      <trans-unit id="OPass" xml:space="preserve" approved="no">
         <source>OPass</source>
+        <target state="translated">OPass</target>
         <note/>
       </trans-unit>
-      <trans-unit id="OPass Room 1" xml:space="preserve">
+      <trans-unit id="OPass Room 1" xml:space="preserve" approved="no">
         <source>OPass Room 1</source>
+        <target state="translated">OPass Room 1</target>
         <note/>
       </trans-unit>
-      <trans-unit id="OPass Room 2" xml:space="preserve">
+      <trans-unit id="OPass Room 2" xml:space="preserve" approved="no">
         <source>OPass Room 2</source>
+        <target state="translated">OPass Room 2</target>
         <note/>
       </trans-unit>
-      <trans-unit id="OPass can send you notification just before the session starts.\nWould you like to allow OPass notifications in Settings?" xml:space="preserve">
+      <trans-unit id="OPass can send you notification just before the session starts.\nWould you like to allow OPass notifications in Settings?" xml:space="preserve" approved="no">
         <source>OPass can send you notification just before the session starts.\nWould you like to allow OPass notifications in Settings?</source>
+        <target state="translated">OPass는 세션이 시작되기 전에 알림을 보내 드릴 수 있습니다.\n설정에서 OPass 알림을 허용하시겠습니까?</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Official Website" xml:space="preserve">
+      <trans-unit id="Official Website" xml:space="preserve" approved="no">
         <source>Official Website</source>
+        <target state="translated">공식 웹사이트</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Only available at&#10;%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d" xml:space="preserve">
+      <trans-unit id="Only available at&#10;%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d" xml:space="preserve" approved="no">
         <source>Only available at
 %d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d</source>
+        <target state="translated">이용 가능 시간:
+%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Open Pass &amp; All Pass - A Community Checkin with Interactivity Project for iOS" xml:space="preserve">
+      <trans-unit id="Open Pass &amp; All Pass - A Community Checkin with Interactivity Project for iOS" xml:space="preserve" approved="no">
         <source>Open Pass &amp; All Pass - A Community Checkin with Interactivity Project for iOS</source>
+        <target state="translated">Open Pass &amp; All Pass - A Community Checkin with Interactivity Project for iOS</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Open Settings" xml:space="preserve">
+      <trans-unit id="Open Settings" xml:space="preserve" approved="no">
         <source>Open Settings</source>
+        <target state="translated">설정 열기</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Past Session" xml:space="preserve">
+      <trans-unit id="Past Session" xml:space="preserve" approved="no">
         <source>Past Session</source>
+        <target state="translated">지난 세션</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Place" xml:space="preserve">
+      <trans-unit id="Place" xml:space="preserve" approved="no">
         <source>Place</source>
+        <target state="translated">장소</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Places" xml:space="preserve">
+      <trans-unit id="Places" xml:space="preserve" approved="no">
         <source>Places</source>
+        <target state="translated">장소</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Please allow OPass to access your calendar under OPass in your device's settings." xml:space="preserve">
+      <trans-unit id="Please allow OPass to access your calendar under OPass in your device's settings." xml:space="preserve" approved="no">
         <source>Please allow OPass to access your calendar under OPass in your device's settings.</source>
+        <target state="translated">기기 설정의 OPass에서 캘린더 접근을 허용해 주세요.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Please allow OPass to access your camera under OPass in your device's settings." xml:space="preserve">
+      <trans-unit id="Please allow OPass to access your camera under OPass in your device's settings." xml:space="preserve" approved="no">
         <source>Please allow OPass to access your camera under OPass in your device's settings.</source>
+        <target state="translated">기기 설정의 OPass에서 카메라 접근을 허용해 주세요.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Please connect to the Wi-Fi provided by event" xml:space="preserve">
+      <trans-unit id="Please connect to the Wi-Fi provided by event" xml:space="preserve" approved="no">
         <source>Please connect to the Wi-Fi provided by event</source>
+        <target state="translated">행사장 Wi-Fi에 연결해 주세요</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths." xml:space="preserve">
+      <trans-unit id="Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths." xml:space="preserve" approved="no">
         <source>Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths.</source>
+        <target state="translated">티켓을 안전하게 보관하고, 스태프와 부스 운영자에게만 보여 주세요.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Please look for the QR code provided by the email and place it in the viewfinder" xml:space="preserve">
+      <trans-unit id="Please look for the QR code provided by the email and place it in the viewfinder" xml:space="preserve" approved="no">
         <source>Please look for the QR code provided by the email and place it in the viewfinder</source>
+        <target state="translated">이메일로 받은 QR 코드를 찾아 카메라 화면 안에 맞춰 주세요</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Please look for the token provided by the email and enter it in the field above" xml:space="preserve">
+      <trans-unit id="Please look for the token provided by the email and enter it in the field above" xml:space="preserve" approved="no">
         <source>Please look for the token provided by the email and enter it in the field above</source>
+        <target state="translated">이메일로 받은 토큰을 위 입력란에 입력해 주세요</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Privacy Policy" xml:space="preserve">
+      <trans-unit id="Privacy Policy" xml:space="preserve" approved="no">
         <source>Privacy Policy</source>
+        <target state="translated">개인정보 처리방침</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Refresh" xml:space="preserve">
+      <trans-unit id="Refresh" xml:space="preserve" approved="no">
         <source>Refresh</source>
+        <target state="translated">새로 고침</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Reset Appearance Settings" xml:space="preserve">
+      <trans-unit id="Reset Appearance Settings" xml:space="preserve" approved="no">
         <source>Reset Appearance Settings</source>
+        <target state="translated">화면 설정 초기화</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Reset Filters" xml:space="preserve">
+      <trans-unit id="Reset Filters" xml:space="preserve" approved="no">
         <source>Reset Filters</source>
+        <target state="translated">필터 초기화</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Reset General Settings" xml:space="preserve">
+      <trans-unit id="Reset General Settings" xml:space="preserve" approved="no">
         <source>Reset General Settings</source>
+        <target state="translated">일반 설정 초기화</target>
         <note/>
       </trans-unit>
-      <trans-unit id="SAT" xml:space="preserve">
+      <trans-unit id="SAT" xml:space="preserve" approved="no">
         <source>SAT</source>
+        <target state="translated">토</target>
         <note/>
       </trans-unit>
-      <trans-unit id="SIGNING IN" xml:space="preserve">
+      <trans-unit id="SIGNING IN" xml:space="preserve" approved="no">
         <source>SIGNING IN</source>
+        <target state="translated">로그인 중</target>
         <note/>
       </trans-unit>
-      <trans-unit id="SUN" xml:space="preserve">
+      <trans-unit id="SUN" xml:space="preserve" approved="no">
         <source>SUN</source>
+        <target state="translated">일</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Scan QR code with camera" xml:space="preserve">
+      <trans-unit id="Scan QR code with camera" xml:space="preserve" approved="no">
         <source>Scan QR code with camera</source>
+        <target state="translated">카메라로 QR 코드 스캔</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Scan to get token" xml:space="preserve">
+      <trans-unit id="Scan to get token" xml:space="preserve" approved="no">
         <source>Scan to get token</source>
+        <target state="translated">스캔해서 토큰 받기</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Schedule" xml:space="preserve">
+      <trans-unit id="Schedule" xml:space="preserve" approved="no">
         <source>Schedule</source>
+        <target state="translated">일정</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Search" xml:space="preserve">
+      <trans-unit id="Search" xml:space="preserve" approved="no">
         <source>Search</source>
+        <target state="translated">검색</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Search title" xml:space="preserve">
+      <trans-unit id="Search title" xml:space="preserve" approved="no">
         <source>Search title</source>
+        <target state="translated">제목 검색</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Select Event" xml:space="preserve">
+      <trans-unit id="Select Event" xml:space="preserve" approved="no">
         <source>Select Event</source>
+        <target state="translated">행사 선택</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Select a picture to scan QR code" xml:space="preserve">
+      <trans-unit id="Select a picture to scan QR code" xml:space="preserve" approved="no">
         <source>Select a picture to scan QR code</source>
+        <target state="translated">사진에서 QR 코드 스캔</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Session Introduction" xml:space="preserve">
+      <trans-unit id="Session Introduction" xml:space="preserve" approved="no">
         <source>Session Introduction</source>
+        <target state="translated">세션 소개</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Session will start in 5 mins." xml:space="preserve">
+      <trans-unit id="Session will start in 5 mins." xml:space="preserve" approved="no">
         <source>Session will start in 5 mins.</source>
+        <target state="translated">5분 후에 세션이 시작됩니다.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Settings" xml:space="preserve">
+      <trans-unit id="Settings" xml:space="preserve" approved="no">
         <source>Settings</source>
+        <target state="translated">설정</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Share" xml:space="preserve">
+      <trans-unit id="Share" xml:space="preserve" approved="no">
         <source>Share</source>
+        <target state="translated">공유</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Sign Out" xml:space="preserve">
+      <trans-unit id="Sign Out" xml:space="preserve" approved="no">
         <source>Sign Out</source>
+        <target state="translated">로그아웃</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Something Went Wrong" xml:space="preserve">
+      <trans-unit id="Something Went Wrong" xml:space="preserve" approved="no">
         <source>Something Went Wrong</source>
+        <target state="translated">문제가 발생했습니다</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Source Code" xml:space="preserve">
+      <trans-unit id="Source Code" xml:space="preserve" approved="no">
         <source>Source Code</source>
+        <target state="translated">소스 코드</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Speakers" xml:space="preserve">
+      <trans-unit id="Speakers" xml:space="preserve" approved="no">
         <source>Speakers</source>
+        <target state="translated">발표자</target>
         <note/>
       </trans-unit>
-      <trans-unit id="System" xml:space="preserve">
+      <trans-unit id="System" xml:space="preserve" approved="no">
         <source>System</source>
+        <target state="translated">시스템</target>
         <note/>
       </trans-unit>
-      <trans-unit id="THR" xml:space="preserve">
+      <trans-unit id="THR" xml:space="preserve" approved="no">
         <source>THR</source>
+        <target state="translated">목</target>
         <note/>
       </trans-unit>
-      <trans-unit id="TUE" xml:space="preserve">
+      <trans-unit id="TUE" xml:space="preserve" approved="no">
         <source>TUE</source>
+        <target state="translated">화</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Tags" xml:space="preserve">
+      <trans-unit id="Tags" xml:space="preserve" approved="no">
         <source>Tags</source>
+        <target state="translated">태그</target>
         <note/>
       </trans-unit>
-      <trans-unit id="The schedule for this event is not available yet." xml:space="preserve">
+      <trans-unit id="The schedule for this event is not available yet." xml:space="preserve" approved="no">
         <source>The schedule for this event is not available yet.</source>
+        <target state="translated">이 행사의 일정은 아직 공개되지 않았습니다.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="This item can only be used once, please follow the instructions of the staff to use." xml:space="preserve">
+      <trans-unit id="This item can only be used once, please follow the instructions of the staff to use." xml:space="preserve" approved="no">
         <source>This item can only be used once, please follow the instructions of the staff to use.</source>
+        <target state="translated">이 항목은 한 번만 사용할 수 있습니다. 스태프의 안내에 따라 사용해 주세요.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Token" xml:space="preserve">
+      <trans-unit id="Token" xml:space="preserve" approved="no">
         <source>Token</source>
+        <target state="translated">토큰</target>
         <note/>
       </trans-unit>
       <trans-unit id="Translate" xml:space="preserve">
@@ -428,48 +524,57 @@
       </trans-unit>
       <trans-unit id="Translation" xml:space="preserve">
         <source>Translation</source>
-        <target state="translated">번역</target>
+        <target state="translated">번역 참여</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Try Again" xml:space="preserve">
+      <trans-unit id="Try Again" xml:space="preserve" approved="no">
         <source>Try Again</source>
+        <target state="translated">다시 시도</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Type" xml:space="preserve">
+      <trans-unit id="Type" xml:space="preserve" approved="no">
         <source>Type</source>
+        <target state="translated">유형</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Types" xml:space="preserve">
+      <trans-unit id="Types" xml:space="preserve" approved="no">
         <source>Types</source>
+        <target state="translated">유형</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Unable to Load Event" xml:space="preserve">
+      <trans-unit id="Unable to Load Event" xml:space="preserve" approved="no">
         <source>Unable to Load Event</source>
+        <target state="translated">행사를 불러올 수 없습니다</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Use fewer filters or reset all filters." xml:space="preserve">
+      <trans-unit id="Use fewer filters or reset all filters." xml:space="preserve" approved="no">
         <source>Use fewer filters or reset all filters.</source>
+        <target state="translated">필터 조건을 줄이거나 모두 초기화해 보세요.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Verifying" xml:space="preserve">
         <source>Verifying</source>
-        <target state="translated">확인 중</target>
+        <target state="translated">티켓 인증 중</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Version %@ (%@)" xml:space="preserve">
+      <trans-unit id="Version %@ (%@)" xml:space="preserve" approved="no">
         <source>Version %1$@ (%2$@)</source>
+        <target state="translated">버전 %1$@ (%2$@)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="View Details" xml:space="preserve">
+      <trans-unit id="View Details" xml:space="preserve" approved="no">
         <source>View Details</source>
+        <target state="translated">자세히 보기</target>
         <note/>
       </trans-unit>
-      <trans-unit id="WEN" xml:space="preserve">
+      <trans-unit id="WEN" xml:space="preserve" approved="no">
         <source>WED</source>
+        <target state="translated">수</target>
         <note/>
       </trans-unit>
-      <trans-unit id="You have an invalid URL or the token is incorrect." xml:space="preserve">
+      <trans-unit id="You have an invalid URL or the token is incorrect." xml:space="preserve" approved="no">
         <source>You have an invalid URL or the token is incorrect.</source>
+        <target state="translated">URL이 올바르지 않거나 토큰이 잘못되었습니다.</target>
         <note/>
       </trans-unit>
     </body>
