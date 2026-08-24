@@ -86,6 +86,12 @@
             "value" : "About"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tentang"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
