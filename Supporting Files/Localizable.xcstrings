@@ -15,6 +15,12 @@
             "value" : "「%@」が会場「%@」で行われます。時間に余裕をもって会場へお越しください。"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 세션이 %@에서 진행됩니다. 이동 시간을 넉넉히 잡아 주세요."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -35,6 +41,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%d:%02d ~ %d:%02d • %d分"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d:%02d ~ %d:%02d • %d분"
           }
         },
         "zh-Hant" : {
@@ -163,7 +175,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "외관"
+            "value" : "화면"
           }
         },
         "zh-Hant" : {
@@ -216,6 +228,12 @@
             "value" : "自動明るさ調整"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "화면 밝기 자동 조절"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -236,6 +254,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スケジュールの日を自動選択"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일정 날짜 자동 선택"
           }
         },
         "zh-Hant" : {
@@ -325,7 +349,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%d:%02d에 확인 완료"
+            "value" : "%d:%02d에 사용 완료"
           }
         },
         "zh-Hant" : {
@@ -350,6 +374,12 @@
             "value" : "後でお知らせを確認してください"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "나중에 다시 확인해 주세요"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -370,6 +400,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ネットワーク状態を確認するか、新しいイベントを選択してください"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 상태를 확인하거나 다른 행사를 선택해 주세요."
           }
         },
         "zh-Hant" : {
@@ -394,6 +430,12 @@
             "value" : "ネットワーク状態を確認するか、再試行してください"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 상태를 확인하거나 다시 시도해 주세요"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -414,6 +456,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ネットワーク状態を確認するか、再試行してください"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 상태를 확인하거나 잠시 후 다시 시도해 주세요."
           }
         },
         "zh-Hant" : {
@@ -438,6 +486,12 @@
             "value" : "閉じる"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "닫기"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -458,6 +512,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "完了"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "완료"
           }
         },
         "zh-Hant" : {
@@ -482,6 +542,12 @@
             "value" : "使用を確認"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용 확인"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -502,6 +568,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "続ける"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속"
           }
         },
         "zh-Hant" : {
@@ -526,6 +598,12 @@
             "value" : "IDコピー"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ID 복사"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -546,6 +624,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "トークンをコピー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "토큰 복사"
           }
         },
         "nan" : {
@@ -576,6 +660,12 @@
             "value" : "本人確認ができませんでした"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "본인 인증에 실패했습니다"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -596,6 +686,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ダークモード"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다크 모드"
           }
         },
         "zh-Hant" : {
@@ -620,6 +716,12 @@
             "value" : "診断"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "진단"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -640,6 +742,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "過去のセッションを暗くする"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지난 세션 흐리게 표시"
           }
         },
         "zh-Hant" : {
@@ -664,6 +772,12 @@
             "value" : "無効"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "끔"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -684,6 +798,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "今後表示しない"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다시 묻지 않기"
           }
         },
         "zh-Hant" : {
@@ -708,6 +828,12 @@
             "value" : "完了"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "완료"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -728,6 +854,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "お知らせはありません"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공지사항 없음"
           }
         },
         "zh-Hant" : {
@@ -752,6 +884,12 @@
             "value" : "有効"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "켬"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -772,6 +910,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "トークンを手動で入力"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "토큰 직접 입력"
           }
         },
         "zh-Hant" : {
@@ -796,6 +940,12 @@
             "value" : "すべてのフィルターを消去"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "필터 모두 지우기"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -816,6 +966,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@の確認に失敗しました"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 사용에 실패했습니다"
           }
         },
         "zh-Hant" : {
@@ -840,6 +996,12 @@
             "value" : "イベントリストの読み込みに失敗しました"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "행사 목록을 불러오지 못했습니다"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -860,6 +1022,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ファストパス"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "패스트 패스"
           }
         },
         "nan" : {
@@ -890,6 +1058,12 @@
             "value" : "お気に入り"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "북마크"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -910,6 +1084,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@でフィルター"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 검색"
           }
         },
         "zh-Hant" : {
@@ -934,6 +1114,12 @@
             "value" : "%@でフィルター"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 필터"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -954,6 +1140,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "金"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "금"
           }
         },
         "zh-Hant" : {
@@ -978,6 +1170,12 @@
             "value" : "今後のセッション"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다가오는 세션"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -998,6 +1196,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "一般"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일반"
           }
         },
         "zh-Hant" : {
@@ -1022,6 +1226,12 @@
             "value" : "通知を受け取る"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "알림 받기"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1042,6 +1252,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "触覚フィードバック"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "햅틱 피드백"
           }
         },
         "zh-Hant" : {
@@ -1066,6 +1282,12 @@
             "value" : "無効なトークン"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "토큰이 올바르지 않습니다"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1086,6 +1308,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "無効なURL"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "올바르지 않은 URL"
           }
         },
         "zh-Hant" : {
@@ -1110,6 +1338,12 @@
             "value" : "読み込み中"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "불러오는 중"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1130,6 +1364,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "お知らせを読み込み中..."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공지사항을 불러오는 중..."
           }
         },
         "zh-Hant" : {
@@ -1165,6 +1405,12 @@
             "value" : "月"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "월"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1185,6 +1431,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "もっと見る"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "더보기"
           }
         },
         "zh-Hant" : {
@@ -1209,6 +1461,12 @@
             "value" : "ネットワークエラー"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 오류"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1229,6 +1487,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "画像内にQRコードが見つかりません"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사진에서 QR 코드를 찾지 못했습니다"
           }
         },
         "zh-Hant" : {
@@ -1253,6 +1517,12 @@
             "value" : "スケジュールなし"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일정 없음"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1273,6 +1543,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "セッションが見つかりません"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "세션 없음"
           }
         },
         "zh-Hant" : {
@@ -1297,6 +1573,12 @@
             "value" : "利用不可"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용할 수 없음"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1319,6 +1601,12 @@
             "value" : "公式サイト"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공식 웹사이트"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1339,6 +1627,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "확인"
           }
         },
         "zh-Hant" : {
@@ -1366,6 +1660,12 @@
             "value" : "利用可能時間：\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이용 가능 시간:\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1383,6 +1683,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OPass"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OPass"
@@ -1410,6 +1716,12 @@
             "value" : "OPassはセッション開始直前に通知を送信できます。\\n設定でOPassの通知を許可しますか？"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OPass는 세션이 시작되기 전에 알림을 보내 드릴 수 있습니다.\\n설정에서 OPass 알림을 허용하시겠습니까?"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1430,6 +1742,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "OPass ルーム 1"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OPass Room 1"
           }
         },
         "zh-Hant" : {
@@ -1454,6 +1772,12 @@
             "value" : "OPass ルーム 2"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OPass Room 2"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1474,6 +1798,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Open Pass & All Pass - iOS向けインタラクティブなコミュニティチェックインプロジェクト"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Pass & All Pass - A Community Checkin with Interactivity Project for iOS"
           }
         },
         "zh-Hant" : {
@@ -1498,6 +1828,12 @@
             "value" : "設定を開く"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정 열기"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1518,6 +1854,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "過去のセッション"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지난 세션"
           }
         },
         "zh-Hant" : {
@@ -1542,6 +1884,12 @@
             "value" : "場所"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "장소"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1562,6 +1910,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "場所"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "장소"
           }
         },
         "zh-Hant" : {
@@ -1586,6 +1940,12 @@
             "value" : "デバイスの設定でOPassがカレンダーにアクセスすることを許可してください"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기기 설정의 OPass에서 캘린더 접근을 허용해 주세요."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1606,6 +1966,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "デバイスの設定でOPassがカメラにアクセスすることを許可してください"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기기 설정의 OPass에서 카메라 접근을 허용해 주세요."
           }
         },
         "zh-Hant" : {
@@ -1630,6 +1996,12 @@
             "value" : "イベントが提供するWi-Fiに接続してください"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "행사장 Wi-Fi에 연결해 주세요"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1650,6 +2022,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "チケットは秘密にしておいてください。スタッフやイベントブース以外の人と共有しないでください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "티켓을 안전하게 보관하고, 스태프와 부스 운영자에게만 보여 주세요."
           }
         },
         "zh-Hant" : {
@@ -1674,6 +2052,12 @@
             "value" : "メールで提供されたQRコードを探し、ファインダーに配置してください"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이메일로 받은 QR 코드를 찾아 카메라 화면 안에 맞춰 주세요"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1694,6 +2078,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "メールで提供されたトークンを確認し、上のフィールドに入力してください"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이메일로 받은 토큰을 위 입력란에 입력해 주세요"
           }
         },
         "zh-Hant" : {
@@ -1718,6 +2108,12 @@
             "value" : "プライバシーポリシー"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개인정보 처리방침"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1738,6 +2134,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "更新"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새로 고침"
           }
         },
         "zh-Hant" : {
@@ -1762,6 +2164,12 @@
             "value" : "外観設定をリセット"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "화면 설정 초기화"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1782,6 +2190,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "フィルターをリセット"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "필터 초기화"
           }
         },
         "zh-Hant" : {
@@ -1806,6 +2220,12 @@
             "value" : "一般設定をリセット"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일반 설정 초기화"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1826,6 +2246,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "土"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "토"
           }
         },
         "zh-Hant" : {
@@ -1850,6 +2276,12 @@
             "value" : "カメラでQRコードをスキャン"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "카메라로 QR 코드 스캔"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1872,6 +2304,12 @@
             "value" : "スキャンしてトークンを取得"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "스캔해서 토큰 받기"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1892,6 +2330,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スケジュール"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일정"
           }
         },
         "nan" : {
@@ -1922,6 +2366,12 @@
             "value" : "検索"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1942,6 +2392,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "タイトルを検索"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "제목 검색"
           }
         },
         "zh-Hant" : {
@@ -1966,6 +2422,12 @@
             "value" : "QRコードをスキャンする画像を選択"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사진에서 QR 코드 스캔"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1986,6 +2448,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "イベントを選択"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "행사 선택"
           }
         },
         "nan" : {
@@ -2016,6 +2484,12 @@
             "value" : "セッション紹介"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "세션 소개"
+          }
+        },
         "nan" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2044,6 +2518,12 @@
             "value" : "セッションは5分後に開始します"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5분 후에 세션이 시작됩니다."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2064,6 +2544,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정"
           }
         },
         "nan" : {
@@ -2094,6 +2580,12 @@
             "value" : "共有"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공유"
+          }
+        },
         "nan" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2120,6 +2612,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "サインアウト"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로그아웃"
           }
         },
         "nan" : {
@@ -2150,6 +2648,12 @@
             "value" : "ログイン中"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로그인 중"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2172,6 +2676,12 @@
             "value" : "問題が発生しました"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "문제가 발생했습니다"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2192,6 +2702,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ソースコード"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "소스 코드"
           }
         },
         "nan" : {
@@ -2222,6 +2738,12 @@
             "value" : "スピーカー"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "발표자"
+          }
+        },
         "nan" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2250,6 +2772,12 @@
             "value" : "日"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2270,6 +2798,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "システム"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시스템"
           }
         },
         "nan" : {
@@ -2300,6 +2834,12 @@
             "value" : "タグ"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "태그"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2320,6 +2860,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "このイベントのスケジュールはまだ公開されていません"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 행사의 일정은 아직 공개되지 않았습니다."
           }
         },
         "zh-Hant" : {
@@ -2344,6 +2890,12 @@
             "value" : "このアイテムは一度しか使用できません。スタッフの指示に従って使用してください"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 항목은 한 번만 사용할 수 있습니다. 스태프의 안내에 따라 사용해 주세요."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2366,6 +2918,12 @@
             "value" : "木"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "목"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2386,6 +2944,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "トークン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "토큰"
           }
         },
         "nan" : {
@@ -2471,7 +3035,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "번역"
+            "value" : "번역 참여"
           }
         },
         "nan" : {
@@ -2514,6 +3078,12 @@
             "value" : "再試行"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다시 시도"
+          }
+        },
         "nan" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2542,6 +3112,12 @@
             "value" : "火"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "화"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2562,6 +3138,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "タイプ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "유형"
           }
         },
         "zh-Hant" : {
@@ -2586,6 +3168,12 @@
             "value" : "タイプ"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "유형"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2608,6 +3196,12 @@
             "value" : "イベントを読み込めません"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "행사를 불러올 수 없습니다"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2628,6 +3222,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "フィルターを減らすか、すべてのフィルターをリセットしてください"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "필터 조건을 줄이거나 모두 초기화해 보세요."
           }
         },
         "zh-Hant" : {
@@ -2655,7 +3255,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "확인 중"
+            "value" : "티켓 인증 중"
           }
         },
         "nan" : {
@@ -2698,6 +3298,12 @@
             "value" : "Version %1$@ (%2$@)"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "버전 %1$@ (%2$@)"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2718,6 +3324,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "詳細を表示"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "자세히 보기"
           }
         },
         "zh-Hant" : {
@@ -2742,6 +3354,12 @@
             "value" : "水"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "수"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2762,6 +3380,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URLが無効であるか、トークンが正しくありません"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL이 올바르지 않거나 토큰이 잘못되었습니다."
           }
         },
         "zh-Hant" : {
