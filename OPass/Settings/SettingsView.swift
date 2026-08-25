@@ -46,13 +46,16 @@ struct SettingsView: View {
         VStack(spacing: 5) {
             if #available(iOS 26, *) {
                 Image(.inAppIcon)
+                    .interpolation(.high)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 70)
                     .clipShape(.rect(cornerRadius: 15.6))  // radius = width * 2/9
                     .glassEffect(in: .rect(cornerRadius: 15.6))
+
             } else {
                 Image(.inAppIcon)
+                    .interpolation(.high)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 70)
@@ -175,6 +178,7 @@ struct SettingsView: View {
                     Image(icon)
                         .resizable()
                         .scaledToFit()
+                        .foregroundStyle(iconColor)
                 } else {
                     Image(systemName: iconSystemName ?? "exclamationmark.triangle.fill")
                         .resizable()
