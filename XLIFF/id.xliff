@@ -5,12 +5,14 @@
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.6" build-num="17F113"/>
     </header>
     <body>
-      <trans-unit id="&quot;%@&quot; in room &quot;%@&quot;, please keep your time of buffer to reach the room." xml:space="preserve">
+      <trans-unit id="&quot;%@&quot; in room &quot;%@&quot;, please keep your time of buffer to reach the room." xml:space="preserve" approved="no">
         <source>"%@" in room "%@", please keep your time of buffer to reach the room.</source>
+        <target state="translated">"%@" di ruangan "%@", mohon sisihkan waktu yang Anda perlukan untuk ke ruangan terebut.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="%d:%02d ~ %d:%02d • %d minutes" xml:space="preserve">
+      <trans-unit id="%d:%02d ~ %d:%02d • %d minutes" xml:space="preserve" approved="no">
         <source>%d:%02d ~ %d:%02d • %d minutes</source>
+        <target state="translated">%d:%02d ~ %d:%02d -  %d menit</target>
         <note/>
       </trans-unit>
       <trans-unit id="About" xml:space="preserve">
@@ -18,449 +20,562 @@
         <target state="translated">Tentang</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Add to Calendar" xml:space="preserve">
+      <trans-unit id="Add to Calendar" xml:space="preserve" approved="no">
         <source>Add to Calendar</source>
+        <target state="translated">Tambahkan ke Kalender</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Appearance" xml:space="preserve">
+      <trans-unit id="Appearance" xml:space="preserve" approved="no">
         <source>Appearance</source>
+        <target state="translated">Tampilan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Are you sure you want to sign out?" xml:space="preserve">
+      <trans-unit id="Are you sure you want to sign out?" xml:space="preserve" approved="no">
         <source>Are you sure you want to sign out?</source>
+        <target state="translated">Apakah Anda yakin ingin keluar?</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Auto-Brighten" xml:space="preserve">
+      <trans-unit id="Auto-Brighten" xml:space="preserve" approved="no">
         <source>Auto-Brighten</source>
+        <target state="translated">Pencerahan Otomatis</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Auto-Select Schedule Day" xml:space="preserve">
+      <trans-unit id="Auto-Select Schedule Day" xml:space="preserve" approved="no">
         <source>Auto-Select Schedule Day</source>
+        <target state="translated">Pilih Hari Jadwal Otomatis</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Broadcast" xml:space="preserve">
+      <trans-unit id="Broadcast" xml:space="preserve" approved="no">
         <source>Broadcast</source>
+        <target state="translated">Siaran</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Cancel" xml:space="preserve">
+      <trans-unit id="Cancel" xml:space="preserve" approved="no">
         <source>Cancel</source>
+        <target state="translated">Batal</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Check at %d:%02d" xml:space="preserve">
+      <trans-unit id="Check at %d:%02d" xml:space="preserve" approved="no">
         <source>Check at %d:%02d</source>
+        <target state="translated">Check-in pada %d:%02d</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Check back later for announcements" xml:space="preserve">
+      <trans-unit id="Check back later for announcements" xml:space="preserve" approved="no">
         <source>Check back later for announcements</source>
+        <target state="translated">Periksa kembali nanti untuk pengumuman</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Check your network status or select a new event." xml:space="preserve">
+      <trans-unit id="Check your network status or select a new event." xml:space="preserve" approved="no">
         <source>Check your network status or select a new event.</source>
+        <target state="translated">Periksa status jaringan Anda atau pilih acara baru.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Check your network status or try again" xml:space="preserve">
+      <trans-unit id="Check your network status or try again" xml:space="preserve" approved="no">
         <source>Check your network status or try again</source>
+        <target state="translated">Periksa status jaringan Anda atau coba lagi</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Check your network status or try again later." xml:space="preserve">
+      <trans-unit id="Check your network status or try again later." xml:space="preserve" approved="no">
         <source>Check your network status or try again later.</source>
+        <target state="translated">Periksa status jaringan Anda atau coba lagi nanti.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Close" xml:space="preserve">
+      <trans-unit id="Close" xml:space="preserve" approved="no">
         <source>Close</source>
+        <target state="translated">Tutup</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Complete" xml:space="preserve">
+      <trans-unit id="Complete" xml:space="preserve" approved="no">
         <source>Complete</source>
+        <target state="translated">Selesai</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Confirm Use" xml:space="preserve">
+      <trans-unit id="Confirm Use" xml:space="preserve" approved="no">
         <source>Confirm Use</source>
+        <target state="translated">Konfirmasi Penggunaan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Continue" xml:space="preserve">
+      <trans-unit id="Continue" xml:space="preserve" approved="no">
         <source>Continue</source>
+        <target state="translated">Lanjutkan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Copy ID" xml:space="preserve">
+      <trans-unit id="Copy ID" xml:space="preserve" approved="no">
         <source>Copy ID</source>
+        <target state="translated">Salin ID</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Copy Token" xml:space="preserve">
+      <trans-unit id="Copy Token" xml:space="preserve" approved="no">
         <source>Copy Token</source>
+        <target state="translated">Salin Token</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Couldn't verify your identity" xml:space="preserve">
+      <trans-unit id="Couldn't verify your identity" xml:space="preserve" approved="no">
         <source>Couldn't verify your identity</source>
+        <target state="translated">Identitas Anda tidak dapat diverifikasi</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Dark Mode" xml:space="preserve">
+      <trans-unit id="Dark Mode" xml:space="preserve" approved="no">
         <source>Dark Mode</source>
+        <target state="translated">Mode Gelap</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Diagnostic" xml:space="preserve">
+      <trans-unit id="Diagnostic" xml:space="preserve" approved="no">
         <source>Diagnostic</source>
+        <target state="translated">Diagnostik</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Dim Past Sessions" xml:space="preserve">
+      <trans-unit id="Dim Past Sessions" xml:space="preserve" approved="no">
         <source>Dim Past Sessions</source>
+        <target state="translated">Redupkan Sesi yang Telah Berlalu</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Disable" xml:space="preserve">
+      <trans-unit id="Disable" xml:space="preserve" approved="no">
         <source>Disable</source>
+        <target state="translated">Nonaktifkan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Don't Ask Again" xml:space="preserve">
+      <trans-unit id="Don't Ask Again" xml:space="preserve" approved="no">
         <source>Don't Ask Again</source>
+        <target state="translated">Jangan Tanyakan Lagi</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Done" xml:space="preserve">
+      <trans-unit id="Done" xml:space="preserve" approved="no">
         <source>Done</source>
+        <target state="translated">Selesai</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Empty Announcement" xml:space="preserve">
+      <trans-unit id="Empty Announcement" xml:space="preserve" approved="no">
         <source>Empty Announcement</source>
+        <target state="translated">Pengumuman Kosong</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Enable" xml:space="preserve">
+      <trans-unit id="Enable" xml:space="preserve" approved="no">
         <source>Enable</source>
+        <target state="translated">Aktifkan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Enter token manually" xml:space="preserve">
+      <trans-unit id="Enter token manually" xml:space="preserve" approved="no">
         <source>Enter token manually</source>
+        <target state="translated">Masukkan token secara manual</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Erase All Filters" xml:space="preserve">
+      <trans-unit id="Erase All Filters" xml:space="preserve" approved="no">
         <source>Erase All Filters</source>
+        <target state="translated">Hapus Semua Filter</target>
         <note/>
       </trans-unit>
-      <trans-unit id="FRI" xml:space="preserve">
+      <trans-unit id="FRI" xml:space="preserve" approved="no">
         <source>FRI</source>
+        <target state="translated">JUM</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Faild to Load Event List" xml:space="preserve">
+      <trans-unit id="Faild to Load Event List" xml:space="preserve" approved="no">
         <source>Faild to Load Event List</source>
+        <target state="translated">Gagal Memuat Daftar Acara</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Faild to confirm %@" xml:space="preserve">
+      <trans-unit id="Faild to confirm %@" xml:space="preserve" approved="no">
         <source>Faild to confirm %@</source>
+        <target state="translated">Gagal mengonfirmasi %@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Fast Pass" xml:space="preserve">
+      <trans-unit id="Fast Pass" xml:space="preserve" approved="no">
         <source>Fast Pass</source>
+        <target state="translated">Fast Pass</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Favorite" xml:space="preserve">
+      <trans-unit id="Favorite" xml:space="preserve" approved="no">
         <source>Favorite</source>
+        <target state="translated">Favorit</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Filter %@" xml:space="preserve">
+      <trans-unit id="Filter %@" xml:space="preserve" approved="no">
         <source>Filter %@</source>
+        <target state="translated">Filter %@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Filter by %@" xml:space="preserve">
+      <trans-unit id="Filter by %@" xml:space="preserve" approved="no">
         <source>Filter by %@</source>
+        <target state="translated">Filter berdasarkan %@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Future Session" xml:space="preserve">
+      <trans-unit id="Future Session" xml:space="preserve" approved="no">
         <source>Future Session</source>
+        <target state="translated">Sesi Mendatang</target>
         <note/>
       </trans-unit>
-      <trans-unit id="General" xml:space="preserve">
+      <trans-unit id="General" xml:space="preserve" approved="no">
         <source>General</source>
+        <target state="translated">Umum</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Get notified" xml:space="preserve">
+      <trans-unit id="Get notified" xml:space="preserve" approved="no">
         <source>Get notified</source>
+        <target state="translated">Dapatkan notifikasi</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Haptic Feedback" xml:space="preserve">
+      <trans-unit id="Haptic Feedback" xml:space="preserve" approved="no">
         <source>Haptic Feedback</source>
+        <target state="translated">Umpan Balik Haptik</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Invaild token" xml:space="preserve">
+      <trans-unit id="Invaild token" xml:space="preserve" approved="no">
         <source>Invaild token</source>
+        <target state="translated">Token tidak valid</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Invalid URL" xml:space="preserve">
+      <trans-unit id="Invalid URL" xml:space="preserve" approved="no">
         <source>Invalid URL</source>
+        <target state="translated">URL tidak valid</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Loading" xml:space="preserve">
+      <trans-unit id="Loading" xml:space="preserve" approved="no">
         <source>Loading</source>
+        <target state="translated">Memuat</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Loading Announcements..." xml:space="preserve">
+      <trans-unit id="Loading Announcements..." xml:space="preserve" approved="no">
         <source>Loading Announcements...</source>
+        <target state="translated">Memuat Pengumuman...</target>
         <note/>
       </trans-unit>
-      <trans-unit id="MON" xml:space="preserve">
+      <trans-unit id="MON" xml:space="preserve" approved="no">
         <source>MON</source>
+        <target state="translated">SEN</target>
         <note/>
       </trans-unit>
-      <trans-unit id="More" xml:space="preserve">
+      <trans-unit id="More" xml:space="preserve" approved="no">
         <source>More</source>
+        <target state="translated">Lainnya</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Network Error" xml:space="preserve">
+      <trans-unit id="Network Error" xml:space="preserve" approved="no">
         <source>Network Error</source>
+        <target state="translated">Kesalahan Jaringan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="No QR code found in picture" xml:space="preserve">
+      <trans-unit id="No QR code found in picture" xml:space="preserve" approved="no">
         <source>No QR code found in picture</source>
+        <target state="translated">Tidak ada kode QR yang ditemukan dalam gambar</target>
         <note/>
       </trans-unit>
-      <trans-unit id="No Schedule" xml:space="preserve">
+      <trans-unit id="No Schedule" xml:space="preserve" approved="no">
         <source>No Schedule</source>
+        <target state="translated">Tidak Ada Jadwal</target>
         <note/>
       </trans-unit>
-      <trans-unit id="No Sessions Found" xml:space="preserve">
+      <trans-unit id="No Sessions Found" xml:space="preserve" approved="no">
         <source>No Sessions Found</source>
+        <target state="translated">Tidak Ada Sesi Ditemukan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Not available" xml:space="preserve">
+      <trans-unit id="Not available" xml:space="preserve" approved="no">
         <source>Not available</source>
+        <target state="translated">Tidak tersedia</target>
         <note/>
       </trans-unit>
-      <trans-unit id="OK" xml:space="preserve">
+      <trans-unit id="OK" xml:space="preserve" approved="no">
         <source>OK</source>
+        <target state="translated">OK</target>
         <note/>
       </trans-unit>
-      <trans-unit id="OPass" xml:space="preserve">
+      <trans-unit id="OPass" xml:space="preserve" approved="no">
         <source>OPass</source>
+        <target state="translated">OPass</target>
         <note/>
       </trans-unit>
-      <trans-unit id="OPass Room 1" xml:space="preserve">
+      <trans-unit id="OPass Room 1" xml:space="preserve" approved="no">
         <source>OPass Room 1</source>
+        <target state="translated">Ruang OPass 1</target>
         <note/>
       </trans-unit>
-      <trans-unit id="OPass Room 2" xml:space="preserve">
+      <trans-unit id="OPass Room 2" xml:space="preserve" approved="no">
         <source>OPass Room 2</source>
+        <target state="translated">Ruang OPass 2</target>
         <note/>
       </trans-unit>
-      <trans-unit id="OPass can send you notification just before the session starts.\nWould you like to allow OPass notifications in Settings?" xml:space="preserve">
+      <trans-unit id="OPass can send you notification just before the session starts.\nWould you like to allow OPass notifications in Settings?" xml:space="preserve" approved="no">
         <source>OPass can send you notification just before the session starts.\nWould you like to allow OPass notifications in Settings?</source>
+        <target state="translated">OPass dapat mengirimkan notifikasi kepada Anda sesaat sebelum sesi dimulai.
+Apakah Anda ingin mengizinkan notifikasi OPass di Pengaturan?</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Official Website" xml:space="preserve">
+      <trans-unit id="Official Website" xml:space="preserve" approved="no">
         <source>Official Website</source>
+        <target state="translated">Situs Web Resmi</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Only available at&#10;%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d" xml:space="preserve">
+      <trans-unit id="Only available at&#10;%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d" xml:space="preserve" approved="no">
         <source>Only available at
 %d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d</source>
+        <target state="translated">Hanya tersedia pada
+%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Open Pass &amp; All Pass - A Community Checkin with Interactivity Project for iOS" xml:space="preserve">
+      <trans-unit id="Open Pass &amp; All Pass - A Community Checkin with Interactivity Project for iOS" xml:space="preserve" approved="no">
         <source>Open Pass &amp; All Pass - A Community Checkin with Interactivity Project for iOS</source>
+        <target state="translated">Open Pass &amp; All Pass - Proyek Check-in Komunitas Interaktif untuk iOS</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Open Settings" xml:space="preserve">
+      <trans-unit id="Open Settings" xml:space="preserve" approved="no">
         <source>Open Settings</source>
+        <target state="translated">Buka Pengaturan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Past Session" xml:space="preserve">
+      <trans-unit id="Past Session" xml:space="preserve" approved="no">
         <source>Past Session</source>
+        <target state="translated">Sesi Sebelumnya</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Place" xml:space="preserve">
+      <trans-unit id="Place" xml:space="preserve" approved="no">
         <source>Place</source>
+        <target state="translated">Tempat</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Places" xml:space="preserve">
+      <trans-unit id="Places" xml:space="preserve" approved="no">
         <source>Places</source>
+        <target state="translated">Lokasi</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Please allow OPass to access your calendar under OPass in your device's settings." xml:space="preserve">
+      <trans-unit id="Please allow OPass to access your calendar under OPass in your device's settings." xml:space="preserve" approved="no">
         <source>Please allow OPass to access your calendar under OPass in your device's settings.</source>
+        <target state="translated">Harap izinkan OPass mengakses kalender Anda melalui pengaturan perangkat, pada bagian OPass.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Please allow OPass to access your camera under OPass in your device's settings." xml:space="preserve">
+      <trans-unit id="Please allow OPass to access your camera under OPass in your device's settings." xml:space="preserve" approved="no">
         <source>Please allow OPass to access your camera under OPass in your device's settings.</source>
+        <target state="translated">Harap izinkan OPass mengakses kamera Anda melalui pengaturan perangkat, pada bagian OPass.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Please connect to the Wi-Fi provided by event" xml:space="preserve">
+      <trans-unit id="Please connect to the Wi-Fi provided by event" xml:space="preserve" approved="no">
         <source>Please connect to the Wi-Fi provided by event</source>
+        <target state="translated">Harap sambungkan ke Wi-Fi yang disediakan oleh acara</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths." xml:space="preserve">
+      <trans-unit id="Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths." xml:space="preserve" approved="no">
         <source>Please keep your ticket as a secret. Do not share it with anyone else but the staff or event booths.</source>
+        <target state="translated">Harap rahasiakan tiket Anda. Jangan bagikan kepada siapa pun selain staf atau stan acara.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Please look for the QR code provided by the email and place it in the viewfinder" xml:space="preserve">
+      <trans-unit id="Please look for the QR code provided by the email and place it in the viewfinder" xml:space="preserve" approved="no">
         <source>Please look for the QR code provided by the email and place it in the viewfinder</source>
+        <target state="translated">Harap cari kode QR yang diberikan melalui email dan arahkan ke dalam bingkai kamera</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Please look for the token provided by the email and enter it in the field above" xml:space="preserve">
+      <trans-unit id="Please look for the token provided by the email and enter it in the field above" xml:space="preserve" approved="no">
         <source>Please look for the token provided by the email and enter it in the field above</source>
+        <target state="translated">Harap cari token yang diberikan melalui email dan masukkan pada kolom di atas</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Privacy Policy" xml:space="preserve">
+      <trans-unit id="Privacy Policy" xml:space="preserve" approved="no">
         <source>Privacy Policy</source>
+        <target state="translated">Kebijakan Privasi</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Refresh" xml:space="preserve">
+      <trans-unit id="Refresh" xml:space="preserve" approved="no">
         <source>Refresh</source>
+        <target state="translated">Muat Ulang</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Reset Appearance Settings" xml:space="preserve">
+      <trans-unit id="Reset Appearance Settings" xml:space="preserve" approved="no">
         <source>Reset Appearance Settings</source>
+        <target state="translated">Atur Ulang Pengaturan Tampilan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Reset Filters" xml:space="preserve">
+      <trans-unit id="Reset Filters" xml:space="preserve" approved="no">
         <source>Reset Filters</source>
+        <target state="translated">Atur Ulang Filter</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Reset General Settings" xml:space="preserve">
+      <trans-unit id="Reset General Settings" xml:space="preserve" approved="no">
         <source>Reset General Settings</source>
+        <target state="translated">Atur Ulang Pengaturan Umum</target>
         <note/>
       </trans-unit>
-      <trans-unit id="SAT" xml:space="preserve">
+      <trans-unit id="SAT" xml:space="preserve" approved="no">
         <source>SAT</source>
+        <target state="translated">SAB</target>
         <note/>
       </trans-unit>
-      <trans-unit id="SIGNING IN" xml:space="preserve">
+      <trans-unit id="SIGNING IN" xml:space="preserve" approved="no">
         <source>SIGNING IN</source>
+        <target state="translated">SEDANG MASUK</target>
         <note/>
       </trans-unit>
-      <trans-unit id="SUN" xml:space="preserve">
+      <trans-unit id="SUN" xml:space="preserve" approved="no">
         <source>SUN</source>
+        <target state="translated">MIN</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Scan QR code with camera" xml:space="preserve">
+      <trans-unit id="Scan QR code with camera" xml:space="preserve" approved="no">
         <source>Scan QR code with camera</source>
+        <target state="translated">Pindai kode QR dengan kamera</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Scan to get token" xml:space="preserve">
+      <trans-unit id="Scan to get token" xml:space="preserve" approved="no">
         <source>Scan to get token</source>
+        <target state="translated">Pindai untuk mendapatkan token</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Schedule" xml:space="preserve">
+      <trans-unit id="Schedule" xml:space="preserve" approved="no">
         <source>Schedule</source>
+        <target state="translated">Jadwal</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Search" xml:space="preserve">
+      <trans-unit id="Search" xml:space="preserve" approved="no">
         <source>Search</source>
+        <target state="translated">Cari</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Search title" xml:space="preserve">
+      <trans-unit id="Search title" xml:space="preserve" approved="no">
         <source>Search title</source>
+        <target state="translated">Cari judul</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Select Event" xml:space="preserve">
+      <trans-unit id="Select Event" xml:space="preserve" approved="no">
         <source>Select Event</source>
+        <target state="translated">Pilih Acara</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Select a picture to scan QR code" xml:space="preserve">
+      <trans-unit id="Select a picture to scan QR code" xml:space="preserve" approved="no">
         <source>Select a picture to scan QR code</source>
+        <target state="translated">Pilih gambar untuk memindai kode QR</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Session Introduction" xml:space="preserve">
+      <trans-unit id="Session Introduction" xml:space="preserve" approved="no">
         <source>Session Introduction</source>
+        <target state="translated">Pengantar Sesi</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Session will start in 5 mins." xml:space="preserve">
+      <trans-unit id="Session will start in 5 mins." xml:space="preserve" approved="no">
         <source>Session will start in 5 mins.</source>
+        <target state="translated">Sesi akan dimulai dalam 5 menit.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Settings" xml:space="preserve">
+      <trans-unit id="Settings" xml:space="preserve" approved="no">
         <source>Settings</source>
+        <target state="translated">Pengaturan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Share" xml:space="preserve">
+      <trans-unit id="Share" xml:space="preserve" approved="no">
         <source>Share</source>
+        <target state="translated">Bagikan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Sign Out" xml:space="preserve">
+      <trans-unit id="Sign Out" xml:space="preserve" approved="no">
         <source>Sign Out</source>
+        <target state="translated">Keluar</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Something Went Wrong" xml:space="preserve">
+      <trans-unit id="Something Went Wrong" xml:space="preserve" approved="no">
         <source>Something Went Wrong</source>
+        <target state="translated">Terjadi Kesalahan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Source Code" xml:space="preserve">
+      <trans-unit id="Source Code" xml:space="preserve" approved="no">
         <source>Source Code</source>
+        <target state="translated">Kode Sumber</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Speakers" xml:space="preserve">
+      <trans-unit id="Speakers" xml:space="preserve" approved="no">
         <source>Speakers</source>
+        <target state="translated">Pembicara</target>
         <note/>
       </trans-unit>
-      <trans-unit id="System" xml:space="preserve">
+      <trans-unit id="System" xml:space="preserve" approved="no">
         <source>System</source>
+        <target state="translated">Sistem</target>
         <note/>
       </trans-unit>
-      <trans-unit id="THR" xml:space="preserve">
+      <trans-unit id="THR" xml:space="preserve" approved="no">
         <source>THR</source>
+        <target state="translated">KAM</target>
         <note/>
       </trans-unit>
-      <trans-unit id="TUE" xml:space="preserve">
+      <trans-unit id="TUE" xml:space="preserve" approved="no">
         <source>TUE</source>
+        <target state="translated">SEL</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Tags" xml:space="preserve">
+      <trans-unit id="Tags" xml:space="preserve" approved="no">
         <source>Tags</source>
+        <target state="translated">Tag</target>
         <note/>
       </trans-unit>
-      <trans-unit id="The schedule for this event is not available yet." xml:space="preserve">
+      <trans-unit id="The schedule for this event is not available yet." xml:space="preserve" approved="no">
         <source>The schedule for this event is not available yet.</source>
+        <target state="translated">Jadwal untuk acara ini belum tersedia.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="This item can only be used once, please follow the instructions of the staff to use." xml:space="preserve">
+      <trans-unit id="This item can only be used once, please follow the instructions of the staff to use." xml:space="preserve" approved="no">
         <source>This item can only be used once, please follow the instructions of the staff to use.</source>
+        <target state="translated">Item ini hanya dapat digunakan sekali. Harap ikuti petunjuk staf untuk menggunakannya.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Token" xml:space="preserve">
+      <trans-unit id="Token" xml:space="preserve" approved="no">
         <source>Token</source>
+        <target state="translated">Token</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Translate" xml:space="preserve">
+      <trans-unit id="Translate" xml:space="preserve" approved="no">
         <source>Translate</source>
+        <target state="translated">Terjemahkan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Translation" xml:space="preserve">
+      <trans-unit id="Translation" xml:space="preserve" approved="no">
         <source>Translation</source>
+        <target state="translated">Terjemahan</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Try Again" xml:space="preserve">
+      <trans-unit id="Try Again" xml:space="preserve" approved="no">
         <source>Try Again</source>
+        <target state="translated">Coba Lagi</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Type" xml:space="preserve">
+      <trans-unit id="Type" xml:space="preserve" approved="no">
         <source>Type</source>
+        <target state="translated">Jenis</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Types" xml:space="preserve">
+      <trans-unit id="Types" xml:space="preserve" approved="no">
         <source>Types</source>
+        <target state="translated">Jenis-Jenis</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Unable to Load Event" xml:space="preserve">
+      <trans-unit id="Unable to Load Event" xml:space="preserve" approved="no">
         <source>Unable to Load Event</source>
+        <target state="translated">Tidak Dapat Memuat Acara</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Use fewer filters or reset all filters." xml:space="preserve">
+      <trans-unit id="Use fewer filters or reset all filters." xml:space="preserve" approved="no">
         <source>Use fewer filters or reset all filters.</source>
+        <target state="translated">Gunakan lebih sedikit filter atau atur ulang semua filter.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Verifying" xml:space="preserve">
+      <trans-unit id="Verifying" xml:space="preserve" approved="no">
         <source>Verifying</source>
+        <target state="translated">Memverifikasi</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Version %@ (%@)" xml:space="preserve">
+      <trans-unit id="Version %@ (%@)" xml:space="preserve" approved="no">
         <source>Version %1$@ (%2$@)</source>
+        <target state="translated">Versi %1$@ (%2$@)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="View Details" xml:space="preserve">
+      <trans-unit id="View Details" xml:space="preserve" approved="no">
         <source>View Details</source>
+        <target state="translated">Lihat Detail</target>
         <note/>
       </trans-unit>
-      <trans-unit id="WEN" xml:space="preserve">
+      <trans-unit id="WEN" xml:space="preserve" approved="no">
         <source>WED</source>
+        <target state="translated">RAB</target>
         <note/>
       </trans-unit>
-      <trans-unit id="You have an invalid URL or the token is incorrect." xml:space="preserve">
+      <trans-unit id="You have an invalid URL or the token is incorrect." xml:space="preserve" approved="no">
         <source>You have an invalid URL or the token is incorrect.</source>
+        <target state="translated">URL Anda tidak valid atau token salah.</target>
         <note/>
       </trans-unit>
     </body>
