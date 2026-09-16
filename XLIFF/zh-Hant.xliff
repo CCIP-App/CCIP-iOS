@@ -77,7 +77,7 @@
       </trans-unit>
       <trans-unit id="Check your network status or try again later." xml:space="preserve">
         <source>Check your network status or try again later.</source>
-        <target state="translated">檢查您的網路狀態或晚點再試一次</target>
+        <target state="translated">檢查您的網路狀態或晚點再試一次。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Close" xml:space="preserve">
@@ -287,12 +287,12 @@
       </trans-unit>
       <trans-unit id="OPass Room 1" xml:space="preserve">
         <source>OPass Room 1</source>
-        <target state="translated">OPass Room 1</target>
+        <target state="translated">OPass 房間 1</target>
         <note/>
       </trans-unit>
       <trans-unit id="OPass Room 2" xml:space="preserve">
         <source>OPass Room 2</source>
-        <target state="translated">OPass Room 2</target>
+        <target state="translated">OPass 房間 2</target>
         <note/>
       </trans-unit>
       <trans-unit id="OPass can send you notification just before the session starts.\nWould you like to allow OPass notifications in Settings?" xml:space="preserve">
@@ -314,7 +314,7 @@
       </trans-unit>
       <trans-unit id="Open Pass &amp; All Pass - A Community Checkin with Interactivity Project for iOS" xml:space="preserve">
         <source>Open Pass &amp; All Pass - A Community Checkin with Interactivity Project for iOS</source>
-        <target state="translated">Open Pass &amp; All Pass - A Community Checkin with Interactivity Project for iOS</target>
+        <target state="translated">Open Pass &amp; All Pass - 社群製作的 iOS 互動報到專案</target>
         <note/>
       </trans-unit>
       <trans-unit id="Open Settings" xml:space="preserve">
@@ -339,12 +339,12 @@
       </trans-unit>
       <trans-unit id="Please allow OPass to access your calendar under OPass in your device's settings." xml:space="preserve">
         <source>Please allow OPass to access your calendar under OPass in your device's settings.</source>
-        <target state="translated">請允許 OPass 在您裝置設定中的 OPass 下存取您的行事曆</target>
+        <target state="translated">請允許 OPass 在您裝置設定中的 OPass 下存取您的行事曆。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please allow OPass to access your camera under OPass in your device's settings." xml:space="preserve">
         <source>Please allow OPass to access your camera under OPass in your device's settings.</source>
-        <target state="translated">請允許 OPass 在您裝置設定中的 OPass 下存取您的相機</target>
+        <target state="translated">請允許 OPass 在您裝置設定中的 OPass 下存取您的相機。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please connect to the Wi-Fi provided by event" xml:space="preserve">
@@ -449,7 +449,7 @@
       </trans-unit>
       <trans-unit id="Session will start in 5 mins." xml:space="preserve">
         <source>Session will start in 5 mins.</source>
-        <target state="translated">議程即將在5分鐘內開始</target>
+        <target state="translated">議程即將在5分鐘內開始。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
@@ -504,12 +504,12 @@
       </trans-unit>
       <trans-unit id="The schedule for this event is not available yet." xml:space="preserve">
         <source>The schedule for this event is not available yet.</source>
-        <target state="translated">此活動的議程表尚未公布</target>
+        <target state="translated">此活動的議程表尚未公布。</target>
         <note/>
       </trans-unit>
       <trans-unit id="This item can only be used once, please follow the instructions of the staff to use." xml:space="preserve">
         <source>This item can only be used once, please follow the instructions of the staff to use.</source>
-        <target state="translated">此項目只能使用一次，請按照工作人員的指示使用</target>
+        <target state="translated">此項目只能使用一次，請按照工作人員的指示使用。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Token" xml:space="preserve">
@@ -549,7 +549,7 @@
       </trans-unit>
       <trans-unit id="Use fewer filters or reset all filters." xml:space="preserve">
         <source>Use fewer filters or reset all filters.</source>
-        <target state="translated">選擇更少的條件或重設</target>
+        <target state="translated">選擇更少的條件或重設。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Verifying" xml:space="preserve">
@@ -574,7 +574,7 @@
       </trans-unit>
       <trans-unit id="You have an invalid URL or the token is incorrect." xml:space="preserve">
         <source>You have an invalid URL or the token is incorrect.</source>
-        <target state="translated">您的網址無效或驗證碼不正確</target>
+        <target state="translated">您的網址無效或驗證碼不正確。</target>
         <note/>
       </trans-unit>
     </body>
