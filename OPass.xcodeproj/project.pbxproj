@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1E5700000000000000000A /* NotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0A1E57000000000000000002 /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0A1E5700000000000000000E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1E5700000000000000000D /* FirebaseMessaging */; };
 		4F5EB73127D2311200235396 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 4F5EB73027D2311200235396 /* SwiftDate */; };
-		D3153BC02A8DF850006A2DD8 /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = D3153BBF2A8DF850006A2DD8 /* OneSignalFramework */; };
+		D309182A3066B02E00C64E3A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D30918293066B02E00C64E3A /* FirebaseMessaging */; };
 		D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = D322F60E27EF4698007EED5D /* CodeScanner */; };
 		D3351EB72E3F6C1A00454EBE /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = D3351EB62E3F6C1A00454EBE /* QRCode */; };
-		D38E24C028C8DDC100D75337 /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = D38E24BF28C8DDC100D75337 /* OneSignalExtension */; };
 		D394440D2A75371A00EE2021 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = D394440C2A75371A00EE2021 /* OrderedCollections */; };
-		D3A00F2327D837D00097A6AB /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D3C0E21A27D51B460095169F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C0E21927D51B460095169F /* NetworkExtension.framework */; };
 		D3C6F60D28634F3B0074B942 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3C6F60C28634F3B0074B942 /* MarkdownKit */; };
 		D3CBF54E2F37556200C16F51 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D3CBF54D2F37556200C16F51 /* FirebaseAnalytics */; };
@@ -27,12 +27,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D3A00F2127D837D00097A6AB /* PBXContainerItemProxy */ = {
+		0A1E5700000000000000000B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D3E4E6B327CD158400FFACEB /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D3A00F1B27D837D00097A6AB;
-			remoteInfo = OneSignalNotificationServiceExtension;
+			remoteGlobalIDString = 0A1E57000000000000000001;
+			remoteInfo = NotificationServiceExtension;
+		};
+		0A1E5700000000000000001B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3E4E6B327CD158400FFACEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3E4E6BA27CD158400FFACEB;
+			remoteInfo = OPass;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -43,7 +50,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				D3A00F2327D837D00097A6AB /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */,
+				0A1E5700000000000000000A /* NotificationServiceExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,12 +58,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A1E57000000000000000002 /* NotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A1E57000000000000000012 /* OPassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OPassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3C0E21927D51B460095169F /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		D3E4E6BB27CD158400FFACEB /* OPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0A1E5700000000000000000F /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0A1E57000000000000000001 /* NotificationServiceExtension */;
+		};
 		8B873B3A2F39FA51001F4430 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -64,29 +79,30 @@
 			);
 			target = D3E4E6BA27CD158400FFACEB /* OPass */;
 		};
-		8B873BB62F39FF0C001F4430 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = D3A00F1B27D837D00097A6AB /* OneSignalNotificationServiceExtension */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		0A1E57000000000000000003 /* NotificationServiceExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0A1E5700000000000000000F /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = NotificationServiceExtension; sourceTree = "<group>"; };
+		0A1E57000000000000000013 /* OPassTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = OPassTests; sourceTree = "<group>"; };
 		D3652A6E2869AF17002AC419 /* Modules */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Modules; sourceTree = "<group>"; };
-		D3A00F1D27D837D00097A6AB /* OneSignalNotificationServiceExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8B873BB62F39FF0C001F4430 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = OneSignalNotificationServiceExtension; sourceTree = "<group>"; };
 		D3D3788027CE43D700021FC4 /* OPassData */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = OPassData; sourceTree = "<group>"; };
 		D3E4E6BD27CD158400FFACEB /* OPass */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = OPass; sourceTree = "<group>"; };
 		D3F23B4B28166CE200A0FB35 /* Supporting Files */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8B873B3A2F39FA51001F4430 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Supporting Files"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D3A00F1927D837D00097A6AB /* Frameworks */ = {
+		0A1E57000000000000000005 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D38E24C028C8DDC100D75337 /* OneSignalExtension in Frameworks */,
+				0A1E5700000000000000000E /* FirebaseMessaging in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A1E57000000000000000015 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +111,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D322F60F27EF4698007EED5D /* CodeScanner in Frameworks */,
-				D3153BC02A8DF850006A2DD8 /* OneSignalFramework in Frameworks */,
 				D3CBF55A2F37556200C16F51 /* FirebasePerformance in Frameworks */,
 				D3E0123127D35D970040621F /* KeychainAccess in Frameworks */,
 				D3CBF5582F37556200C16F51 /* FirebaseCrashlytics in Frameworks */,
@@ -107,6 +122,7 @@
 				D3CBF5562F37556200C16F51 /* FirebaseCore in Frameworks */,
 				D3CBF5502F37556200C16F51 /* FirebaseAnalyticsCore in Frameworks */,
 				D3CBF5522F37556200C16F51 /* FirebaseAnalyticsIdentitySupport in Frameworks */,
+				D309182A3066B02E00C64E3A /* FirebaseMessaging in Frameworks */,
 				D394440D2A75371A00EE2021 /* OrderedCollections in Frameworks */,
 				D3CBF54E2F37556200C16F51 /* FirebaseAnalytics in Frameworks */,
 			);
@@ -130,7 +146,8 @@
 				D3D3788027CE43D700021FC4 /* OPassData */,
 				D3652A6E2869AF17002AC419 /* Modules */,
 				D3F23B4B28166CE200A0FB35 /* Supporting Files */,
-				D3A00F1D27D837D00097A6AB /* OneSignalNotificationServiceExtension */,
+				0A1E57000000000000000003 /* NotificationServiceExtension */,
+				0A1E57000000000000000013 /* OPassTests */,
 				D3E4E6BC27CD158400FFACEB /* Products */,
 				D3C0E21827D51B460095169F /* Frameworks */,
 			);
@@ -140,7 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				D3E4E6BB27CD158400FFACEB /* OPass.app */,
-				D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */,
+				0A1E57000000000000000002 /* NotificationServiceExtension.appex */,
+				0A1E57000000000000000012 /* OPassTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,28 +166,49 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D3A00F1B27D837D00097A6AB /* OneSignalNotificationServiceExtension */ = {
+		0A1E57000000000000000001 /* NotificationServiceExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D3A00F2727D837D00097A6AB /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildConfigurationList = 0A1E57000000000000000009 /* Build configuration list for PBXNativeTarget "NotificationServiceExtension" */;
 			buildPhases = (
-				D3A00F1827D837D00097A6AB /* Sources */,
-				D3A00F1927D837D00097A6AB /* Frameworks */,
-				D3A00F1A27D837D00097A6AB /* Resources */,
+				0A1E57000000000000000004 /* Sources */,
+				0A1E57000000000000000005 /* Frameworks */,
+				0A1E57000000000000000006 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				D3A00F1D27D837D00097A6AB /* OneSignalNotificationServiceExtension */,
+				0A1E57000000000000000003 /* NotificationServiceExtension */,
 			);
-			name = OneSignalNotificationServiceExtension;
+			name = NotificationServiceExtension;
 			packageProductDependencies = (
-				D38E24BF28C8DDC100D75337 /* OneSignalExtension */,
+				0A1E5700000000000000000D /* FirebaseMessaging */,
 			);
-			productName = OneSignalNotificationServiceExtension;
-			productReference = D3A00F1C27D837D00097A6AB /* OneSignalNotificationServiceExtension.appex */;
+			productName = NotificationServiceExtension;
+			productReference = 0A1E57000000000000000002 /* NotificationServiceExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		0A1E57000000000000000011 /* OPassTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A1E57000000000000000019 /* Build configuration list for PBXNativeTarget "OPassTests" */;
+			buildPhases = (
+				0A1E57000000000000000014 /* Sources */,
+				0A1E57000000000000000015 /* Frameworks */,
+				0A1E57000000000000000016 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A1E5700000000000000001C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0A1E57000000000000000013 /* OPassTests */,
+			);
+			name = OPassTests;
+			productName = OPassTests;
+			productReference = 0A1E57000000000000000012 /* OPassTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		D3E4E6BA27CD158400FFACEB /* OPass */ = {
 			isa = PBXNativeTarget;
@@ -184,7 +223,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				D3A00F2227D837D00097A6AB /* PBXTargetDependency */,
+				0A1E5700000000000000000C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				D3652A6E2869AF17002AC419 /* Modules */,
@@ -199,7 +238,6 @@
 				D322F60E27EF4698007EED5D /* CodeScanner */,
 				D3C6F60C28634F3B0074B942 /* MarkdownKit */,
 				D394440C2A75371A00EE2021 /* OrderedCollections */,
-				D3153BBF2A8DF850006A2DD8 /* OneSignalFramework */,
 				D3351EB62E3F6C1A00454EBE /* QRCode */,
 				D3CBF54D2F37556200C16F51 /* FirebaseAnalytics */,
 				D3CBF54F2F37556200C16F51 /* FirebaseAnalyticsCore */,
@@ -208,6 +246,7 @@
 				D3CBF5552F37556200C16F51 /* FirebaseCore */,
 				D3CBF5572F37556200C16F51 /* FirebaseCrashlytics */,
 				D3CBF5592F37556200C16F51 /* FirebasePerformance */,
+				D30918293066B02E00C64E3A /* FirebaseMessaging */,
 			);
 			productName = OPass;
 			productReference = D3E4E6BB27CD158400FFACEB /* OPass.app */;
@@ -221,10 +260,14 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 2660;
+				LastUpgradeCheck = 2700;
 				TargetAttributes = {
-					D3A00F1B27D837D00097A6AB = {
-						CreatedOnToolsVersion = 13.2.1;
+					0A1E57000000000000000001 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+					0A1E57000000000000000011 = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = D3E4E6BA27CD158400FFACEB;
 					};
 					D3E4E6BA27CD158400FFACEB = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -250,7 +293,6 @@
 			packageReferences = (
 				4F5EB72F27D2311200235396 /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				D3E0122F27D35D970040621F /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
 				D322F60D27EF4698007EED5D /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				D3C6F60B28634F3A0074B942 /* XCRemoteSwiftPackageReference "MarkdownKit" */,
 				D394440B2A75371A00EE2021 /* XCRemoteSwiftPackageReference "swift-collections" */,
@@ -262,13 +304,21 @@
 			projectRoot = "";
 			targets = (
 				D3E4E6BA27CD158400FFACEB /* OPass */,
-				D3A00F1B27D837D00097A6AB /* OneSignalNotificationServiceExtension */,
+				0A1E57000000000000000001 /* NotificationServiceExtension */,
+				0A1E57000000000000000011 /* OPassTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D3A00F1A27D837D00097A6AB /* Resources */ = {
+		0A1E57000000000000000006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A1E57000000000000000016 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -299,6 +349,7 @@
 				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
 				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
 				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}.debug.dylib",
 			);
 			outputFileListPaths = (
 			);
@@ -311,7 +362,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D3A00F1827D837D00097A6AB /* Sources */ = {
+		0A1E57000000000000000004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A1E57000000000000000014 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -328,24 +386,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D3A00F2227D837D00097A6AB /* PBXTargetDependency */ = {
+		0A1E5700000000000000000C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D3A00F1B27D837D00097A6AB /* OneSignalNotificationServiceExtension */;
-			targetProxy = D3A00F2127D837D00097A6AB /* PBXContainerItemProxy */;
+			target = 0A1E57000000000000000001 /* NotificationServiceExtension */;
+			targetProxy = 0A1E5700000000000000000B /* PBXContainerItemProxy */;
+		};
+		0A1E5700000000000000001C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3E4E6BA27CD158400FFACEB /* OPass */;
+			targetProxy = 0A1E5700000000000000001B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		D3A00F2527D837D00097A6AB /* Debug */ = {
+		0A1E57000000000000000007 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
+				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationServiceExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -354,7 +416,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 4.3.7;
-				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip.OneSignalNotificationServiceExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -363,16 +425,15 @@
 			};
 			name = Debug;
 		};
-		D3A00F2627D837D00097A6AB /* Release */ = {
+		0A1E57000000000000000008 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
+				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationServiceExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -381,12 +442,48 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 4.3.7;
-				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip.OneSignalNotificationServiceExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		0A1E57000000000000000017 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 4.3.7;
+				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip.OPassTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OPass.app/OPass";
+			};
+			name = Debug;
+		};
+		0A1E57000000000000000018 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 4.3.7;
+				PRODUCT_BUNDLE_IDENTIFIER = app.opass.ccip.OPassTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OPass.app/OPass";
 			};
 			name = Release;
 		};
@@ -428,8 +525,10 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
+				ENABLE_DEBUG_DYLIB = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -494,8 +593,10 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9UZ879Y8DL;
+				ENABLE_DEBUG_DYLIB = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -607,11 +708,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D3A00F2727D837D00097A6AB /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+		0A1E57000000000000000009 /* Build configuration list for PBXNativeTarget "NotificationServiceExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D3A00F2527D837D00097A6AB /* Debug */,
-				D3A00F2627D837D00097A6AB /* Release */,
+				0A1E57000000000000000007 /* Debug */,
+				0A1E57000000000000000008 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A1E57000000000000000019 /* Build configuration list for PBXNativeTarget "OPassTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A1E57000000000000000017 /* Debug */,
+				0A1E57000000000000000018 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -669,14 +779,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		D3C6F60B28634F3A0074B942 /* XCRemoteSwiftPackageReference "MarkdownKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bmoliveira/MarkdownKit.git";
@@ -690,7 +792,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 12.9.0;
+				minimumVersion = 12.19.0;
 			};
 		};
 		D3E0122F27D35D970040621F /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
@@ -704,15 +806,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0A1E5700000000000000000D /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3CBF54C2F37556200C16F51 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
 		4F5EB73027D2311200235396 /* SwiftDate */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4F5EB72F27D2311200235396 /* XCRemoteSwiftPackageReference "SwiftDate" */;
 			productName = SwiftDate;
 		};
-		D3153BBF2A8DF850006A2DD8 /* OneSignalFramework */ = {
+		D30918293066B02E00C64E3A /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
-			productName = OneSignalFramework;
+			package = D3CBF54C2F37556200C16F51 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		D322F60E27EF4698007EED5D /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -723,11 +830,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D3351EB52E3F6C1A00454EBE /* XCRemoteSwiftPackageReference "QRCode" */;
 			productName = QRCode;
-		};
-		D38E24BF28C8DDC100D75337 /* OneSignalExtension */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D3A00F2827D838920097A6AB /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
-			productName = OneSignalExtension;
 		};
 		D394440C2A75371A00EE2021 /* OrderedCollections */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -6,6 +6,7 @@
 //  2025 OPass.
 //
 
+import Combine
 import SwiftUI
 
 struct UseScenarioView: View {

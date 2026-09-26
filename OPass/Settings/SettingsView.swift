@@ -199,13 +199,10 @@ struct SettingsView: View {
             Text("Version \(Bundle.main.releaseVersionNumber ?? "") (\(Bundle.main.buildVersionNumber ?? ""))")
                 .foregroundStyle(.gray)
                 .font(.footnote)
-            NavigationLink("Made with Love") {
-                DiagnosticView()
-            }
-            .navigationLinkIndicatorVisibility(.hidden)
-            .foregroundStyle(.gray)
-            .font(.caption)
-            .bold()
+            Text("Made with Love")
+                .foregroundStyle(.gray)
+                .font(.caption)
+                .bold()
         }
         .frame(maxWidth: .infinity, alignment: .center)
         .listRowBackground(Color.clear)

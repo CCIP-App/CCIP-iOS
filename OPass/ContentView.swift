@@ -12,6 +12,7 @@ struct ContentView: View {
     // MARK: - Variables
     @Binding var url: URL?
     @EnvironmentObject var store: OPassStore
+    @EnvironmentObject private var appDelegate: AppDelegate
     @StateObject private var router = Router()
     @State private var error: Error?
     @State private var presentHttp403Alert = false
@@ -27,10 +28,10 @@ struct ContentView: View {
             case .loading:
                 ProgressView("Loading")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .task {
+                    .task(id: store.eventId) { // Restarts when a notification selects another event while loading
                         do {
                             try await store.loadEvent(reload: true)
-                        } catch { self.error = error }
+                        } catch { if !Task.isCancelled { self.error = error } }
                     }
             case .signin(let url):
                 ProgressView("SIGNING IN")
@@ -68,6 +69,7 @@ struct ContentView: View {
             }
         }
         .background(.sectionBackground)
+        .task(id: appDelegate.announcementEventId) { selectNotificationEvent() }
     }
 }
 
@@ -90,6 +92,17 @@ extension ContentView {
         guard let eventID = store.eventId else { return .empty }
         guard let event = store.event, eventID == event.id else { return .loading }
         return .ready(event)
+    }
+
+    /// Switches to the event of a tapped push notification; `RootView` then opens its announcements.
+    private func selectNotificationEvent() {
+        guard let eventId = appDelegate.announcementEventId else { return }
+        UIApplication.currentUIWindow()?.rootViewController?.dismiss(animated: true)
+        if eventId != store.eventId {
+            error = nil
+            store.eventLogo = nil
+            store.eventId = eventId
+        }
     }
 
     private func parseUniversalLink(_ url: URL) async {
@@ -157,6 +170,7 @@ extension ContentView {
         static var previews: some View {
             ContentView(url: .constant(nil))
                 .environmentObject(OPassStore.mock())
+                .environmentObject(AppDelegate())
         }
     }
 #endif

@@ -692,40 +692,6 @@
         }
       }
     },
-    "Copy ID" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copy ID"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Salin ID"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "IDコピー"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ID 복사"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "複製ID"
-          }
-        }
-      }
-    },
     "Copy Token" : {
       "localizations" : {
         "en" : {
@@ -830,40 +796,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "深色模式"
-          }
-        }
-      }
-    },
-    "Diagnostic" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diagnostic"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diagnostik"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "診断"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "진단"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "診斷"
           }
         }
       }
@@ -1972,9 +1904,6 @@
           }
         }
       }
-    },
-    "OneSignal ID" : {
-      "shouldTranslate" : false
     },
     "Only available at\n%d/%d/%d %d:%02d ~ %d/%d/%d %d:%02d" : {
       "localizations" : {

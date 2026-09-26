@@ -9,7 +9,6 @@
 import OSLog
 import SwiftUI
 import SwiftDate
-import OneSignalFramework
 import KeychainAccess
 import UserNotifications
 
@@ -113,7 +112,8 @@ extension EventStore {
         }
     }
 
-    ///Return bool to indicate success or not
+    /// Return bool to indicate success or not
+    @MainActor
     func use(scenario: String) async throws -> Bool{
         guard let feature = config.feature(.fastpass) else {
             logger.critical("Can't find correct fastpass feature")
@@ -126,17 +126,16 @@ extension EventStore {
 
         do {
             let eventScenarioUseStatus = try await APIManager.fetchAttendee(from: feature, token: token, scenario: scenario)
-            DispatchQueue.main.async {
-                self.attendee = eventScenarioUseStatus
-                Task{ await self.save() }
-            }
+            self.attendee = eventScenarioUseStatus
+            Task{ await self.save() }
             return true
         } catch APIManager.LoadError.forbidden {
             throw APIManager.LoadError.forbidden
         } catch { return false }
     }
 
-    ///Return bool to indicate token is valid or not. Will save token if is vaild.
+    /// Return bool to indicate token is valid or not. Will save token if is vaild.
+    @MainActor
     func redeem(token: String) async throws -> Bool {
         let token = token.tirm()
         let nonAllowedCharacters = CharacterSet
@@ -152,26 +151,25 @@ extension EventStore {
             return false
         }
 
+        let version = loginVersion
         do {
             let attendee = try await APIManager.fetchAttendee(from: feature, token: token)
-            let tags = OneSignal.User.getTags()
-            if tags.count >= 2 {
-                OneSignal.User.removeTags(Array(tags.keys))
-            }
-            OneSignal.User.addTag(key: "\(attendee.eventId)\(attendee.role)", value: "\(attendee.token)")
-            DispatchQueue.main.async {
-                self.attendee = attendee
-                self.token = token
-                self.userId = attendee.userId ?? "nil"
-                self.userRole = attendee.role
-                Task{ await self.save() }
-            }
+            // Ignore the result if the user signed in or out while it was loading.
+            guard loginVersion == version else { return false }
+            loginVersion += 1
+            self.attendee = attendee
+            self.token = token
+            self.userId = attendee.userId ?? "nil"
+            self.userRole = attendee.role
+            updatePushTopic(with: attendee)
+            Task{ await self.save() }
             return true
         } catch APIManager.LoadError.forbidden {
             throw APIManager.LoadError.forbidden
         } catch { return false }
     }
 
+    @MainActor
     func loadLogos() async {
         //Load Event Logo
         let icons: [Int: Data] = await withTaskGroup(of: (Int, Data?).self) { group in
@@ -195,17 +193,16 @@ extension EventStore {
         }
 
         for (index, data) in icons {
-            DispatchQueue.main.async {
-                if index == -1 {
-                    self.logoData = data
-                } else {
-                    self.config.features[index].iconData = data
-                }
+            if index == -1 {
+                self.logoData = data
+            } else {
+                self.config.features[index].iconData = data
             }
         }
         Task{ await self.save() }
     }
 
+    @MainActor
     func loadAttendee() async throws {
         guard let feature = config.feature(.fastpass) else {
             logger.critical("Can't find correct fastpass feature")
@@ -216,29 +213,44 @@ extension EventStore {
             throw Error.noTokenFound
         }
 
+        let version = loginVersion
         do {
             let attendee = try await APIManager.fetchAttendee(from: feature, token: token)
-            DispatchQueue.main.async {
-                self.attendee = attendee
-                self.userId = attendee.userId ?? "nil"
-                self.userRole = attendee.role
-                Task{ await self.save() }
-            }
+            // Ignore the response if the user signed out, signed in again, or got another token from iCloud meanwhile.
+            guard self.token == token, loginVersion == version else { return }
+            self.attendee = attendee
+            self.userId = attendee.userId ?? "nil"
+            self.userRole = attendee.role
+            updatePushTopic(with: attendee)
+            Task{ await self.save() }
         } catch APIManager.LoadError.forbidden {
             throw APIManager.LoadError.forbidden
         } catch {
+            guard self.token == token, loginVersion == version else { return }
+            // Only an explicit rejection ends the push subscription; being offline or a server error keeps it.
+            if case APIManager.LoadError.invalidToken = error {
+                PushTopicManager.shared.setRole(nil, for: id)
+            }
+            // Cached data is shown, but never counts as a verified login.
             guard let data = self.eventAPITmpData, let attendee = data.attendee else {
                 throw error
             }
             self.eventAPITmpData?.attendee = nil
-            DispatchQueue.main.async {
-                self.userId = attendee.userId ?? "nil"
-                self.userRole = attendee.role
-                self.attendee = attendee
-            }
+            self.userId = attendee.userId ?? "nil"
+            self.userRole = attendee.role
+            self.attendee = attendee
         }
     }
 
+    /// Re-verifies a stored token, which may come from iCloud Keychain or a restored backup,
+    /// so this installation subscribes to the event's push topic only once the event service confirms it.
+    @MainActor
+    func verifyLogin() async {
+        guard token != nil else { return }
+        try? await loadAttendee()
+    }
+
+    @MainActor
     func loadSchedule(reload: Bool = false) async throws {
         guard let feature = config.feature(.schedule) else {
             logger.critical("Can't find correct schedule feature")
@@ -248,21 +260,18 @@ extension EventStore {
             let schedule = try await APIManager.fetchSchedule(
                 from: feature,
                 reload: reload)
-            DispatchQueue.main.async {
-                self.schedule = schedule
-                Task { await self.save() }
-            }
+            self.schedule = schedule
+            Task { await self.save() }
         } catch {
             guard let schedule = self.eventAPITmpData?.schedule else {
                 throw error
             }
             self.eventAPITmpData?.schedule = nil
-            DispatchQueue.main.async {
-                self.schedule = schedule
-            }
+            self.schedule = schedule
         }
     }
 
+    @MainActor
     func loadAnnouncements(reload: Bool = false) async throws {
         guard let feature = config.feature(.announcement) else {
             logger.critical("Can't find correct announcement feature")
@@ -273,10 +282,8 @@ extension EventStore {
                 from: feature,
                 token: token,
                 reload: reload)
-            DispatchQueue.main.async {
-                self.announcements = announcements
-                Task{ await self.save() }
-            }
+            self.announcements = announcements
+            Task{ await self.save() }
         } catch  APIManager.LoadError.forbidden {
             throw APIManager.LoadError.forbidden
         } catch {
@@ -284,9 +291,7 @@ extension EventStore {
                 throw error
             }
             self.eventAPITmpData?.announcements = nil
-            DispatchQueue.main.async {
-                self.announcements = announcements
-            }
+            self.announcements = announcements
         }
     }
 
@@ -316,15 +321,35 @@ extension EventStore {
         }
     }
 
-    @inline(__always)
+    @MainActor
     func signOut() {
-        if let attendee = attendee {
-            OneSignal.User.addTag(key: "\(attendee.eventId)\(attendee.role)", value: "")
+        loginVersion += 1
+        PushTopicManager.shared.setRole(nil, for: id)
+        if attendee != nil {
             self.attendee = nil
             self.userId = "nil"
             self.userRole = "nil"
         }
         self.token = nil
+    }
+
+    /// Subscribes to the event's push topic with the role the event service just verified.
+    @MainActor
+    private func updatePushTopic(with attendee: Attendee) {
+        guard attendee.eventId == id else {
+            logger.warning("Attendee belongs to \(attendee.eventId) instead of \(self.id), push topic unchanged")
+            return
+        }
+        PushTopicManager.shared.setRole(attendee.role, for: id)
+    }
+
+    /// Bumped on every sign-in and sign-out, and shared by all `EventStore` instances of the same event,
+    /// so a response that belongs to an earlier login is never applied.
+    @MainActor private static var loginVersions: [String: Int] = [:]
+
+    @MainActor private var loginVersion: Int {
+        get { Self.loginVersions[id, default: 0] }
+        set { Self.loginVersions[id] = newValue }
     }
 
     private func save() async {

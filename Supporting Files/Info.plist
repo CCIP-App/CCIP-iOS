@@ -15,11 +15,15 @@
 			</array>
 		</dict>
 	</array>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>FirebaseDynamicLinksCustomDomains</key>
 	<array>
 		<string>https://dl.opass.app</string>
 		<string>https://opass.page.link</string>
 	</array>
+	<key>FirebaseMessagingInstallationIdEnabled</key>
+	<true/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>youtube</string>

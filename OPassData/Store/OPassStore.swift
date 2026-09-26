@@ -32,6 +32,7 @@ class OPassStore: ObservableObject {
 }
 
 extension OPassStore {
+    @MainActor
     func loadEvent(reload: Bool = false) async throws {
         if let eventId = eventId {
             do {
@@ -42,21 +43,24 @@ extension OPassStore {
                         logoData: eventAPIData.logoData,
                         tmpData: eventAPIData)
                     logger.info("Reload event \(event.id)")
-                    DispatchQueue.main.async {
+                    if self.eventId == eventId { // Skip if another event was selected meanwhile
                         self.event = event
-                        Task{ await self.event!.loadLogos() }
+                        Task{ await event.loadLogos() }
+                        Task{ await event.verifyLogin() }
                     }
                 } else {
                     logger.info("Loading new event from \(self.event?.id ?? "none") to \(config.id)")
-                    DispatchQueue.main.async {
-                        self.event = .init(config)
-                        Task{ await self.event!.loadLogos() }
+                    if self.eventId == eventId { // Skip if another event was selected meanwhile
+                        let event = EventStore(config)
+                        self.event = event
+                        Task{ await event.loadLogos() }
+                        Task{ await event.verifyLogin() }
                     }
                 }
             } catch { // Use local data when it can't get data from API
                 logger.notice("Can't get data from API. Using local data")
                 if let eventAPIData = eventTemporaryData, eventAPIData.id == eventId {
-                    DispatchQueue.main.async {
+                    if self.eventId == eventId { // Skip if another event was selected meanwhile
                         self.event = EventStore(
                             eventAPIData.config,
                             logoData: eventAPIData.logoData,
@@ -72,6 +76,7 @@ extension OPassStore {
         }
     }
 
+    @MainActor
     func signinCurrentEvent(with token: String) async throws -> Bool {
         guard let eventId = self.eventId else { return false }
         do {
@@ -80,10 +85,8 @@ extension OPassStore {
             }
             let config = try await APIManager.fetchConfig(for: eventId)
             let eventModel = EventStore(config)
-            DispatchQueue.main.async {
-                self.eventLogo = nil
-                self.event = eventModel
-            }
+            self.eventLogo = nil
+            self.event = eventModel
             return try await eventModel.redeem(token: token)
         } catch APIManager.LoadError.forbidden {
             throw APIManager.LoadError.forbidden

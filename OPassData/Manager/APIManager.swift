@@ -47,6 +47,7 @@ final class APIManager {
         case missingURL(Feature)
         case incorrectFeature(FeatureType)
         case forbidden
+        case invalidToken
 
         public var errorDescription: String? {
             switch self {
@@ -62,6 +63,8 @@ final class APIManager {
                 return "Uncorrect Feature for: \(feature)"
             case .forbidden:
                 return "Http 403 Forbidden"
+            case .invalidToken:
+                return "Invalid token"
             }
         }
     }
@@ -152,6 +155,9 @@ extension APIManager {
             let (data, response) = try await URLSession.shared.data(for: urlRequest)
             if let response = response as? HTTPURLResponse {
                 switch response.statusCode {
+                case 400 where (try? JSONDecoder().decode([String: String].self, from: data))?["message"] == "invalid token":
+                    logger.warning("Invalid token")
+                    throw LoadError.invalidToken
                 case 403:
                     logger.warning("Http 403 Forbidden with url: \(endpoint.string)")
                     throw LoadError.forbidden
@@ -162,8 +168,8 @@ extension APIManager {
             let decoder = JSONDecoder()
             decoder.userInfo[.needTransform] = true
             return try decoder.decode(T.self, from: data)
-        } catch LoadError.forbidden {
-            throw LoadError.forbidden
+        } catch let error as LoadError {
+            throw error
         } catch where error is DecodingError {
             logger.error("Decode Faild with: \(error.localizedDescription), url: \(endpoint.string)")
             throw LoadError.decodeFaild(error)

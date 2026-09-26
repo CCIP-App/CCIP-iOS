@@ -29,6 +29,7 @@ struct AnnouncementView: View {
         .toolbar { toolbarItems() }
         .http403Alert(isPresented: $viewModel.isHttp403AlertPresented)
         .trackScreen("AnnouncementView")
+        .task { await UNUserNotificationCenter.current().removeAnnouncementNotifications(of: event.id) }
     }
 
     private func announcementListView(_ announcements: [Announcement]) -> some View {
