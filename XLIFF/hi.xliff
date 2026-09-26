@@ -81,10 +81,6 @@
         <source>Continue</source>
         <note/>
       </trans-unit>
-      <trans-unit id="Copy ID" xml:space="preserve">
-        <source>Copy ID</source>
-        <note/>
-      </trans-unit>
       <trans-unit id="Copy Token" xml:space="preserve">
         <source>Copy Token</source>
         <note/>
@@ -95,10 +91,6 @@
       </trans-unit>
       <trans-unit id="Dark Mode" xml:space="preserve">
         <source>Dark Mode</source>
-        <note/>
-      </trans-unit>
-      <trans-unit id="Diagnostic" xml:space="preserve">
-        <source>Diagnostic</source>
         <note/>
       </trans-unit>
       <trans-unit id="Dim Past Sessions" xml:space="preserve">

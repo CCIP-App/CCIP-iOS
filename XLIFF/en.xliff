@@ -100,11 +100,6 @@
         <target state="translated">Continue</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Copy ID" xml:space="preserve">
-        <source>Copy ID</source>
-        <target state="translated">Copy ID</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="Copy Token" xml:space="preserve">
         <source>Copy Token</source>
         <target state="translated">Copy Token</target>
@@ -118,11 +113,6 @@
       <trans-unit id="Dark Mode" xml:space="preserve">
         <source>Dark Mode</source>
         <target state="translated">Dark Mode</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="Diagnostic" xml:space="preserve">
-        <source>Diagnostic</source>
-        <target state="translated">Diagnostic</target>
         <note/>
       </trans-unit>
       <trans-unit id="Dim Past Sessions" xml:space="preserve">
