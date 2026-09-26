@@ -12,7 +12,10 @@ import SwiftUI
 private let logger = Logger(subsystem: "OPassData", category: "OPassStore")
 
 class OPassStore: ObservableObject {
-    @Published var event: EventStore?
+    @Published var event: EventStore? {
+        // Only the ID goes to iCloud, so the user's other devices open the same event.
+        didSet { if let event { keyStore.set(event.id, forKey: "EventId") } }
+    }
     @Published var eventId: String?
     @Published var eventLogo: Image?
 
@@ -21,13 +24,9 @@ class OPassStore: ObservableObject {
 
     init() {
         keyStore.synchronize()
-        if let data = keyStore.data(forKey: "EventStore") {
-            do {
-                let eventAPIData = try JSONDecoder().decode(EventStore.self, from: data)
-                self.eventTemporaryData = eventAPIData
-                self.eventId = eventAPIData.id
-            } catch { logger.error("Unable to decode Event stored date: \(error.localizedDescription)") }
-        } else { logger.info("No Event stored data was found") }
+        EventCache.shared.migrate(from: keyStore)
+        eventTemporaryData = EventCache.shared.load()
+        eventId = keyStore.string(forKey: "EventId") ?? eventTemporaryData?.id
     }
 }
 

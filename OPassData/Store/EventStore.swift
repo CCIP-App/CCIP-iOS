@@ -28,8 +28,7 @@ class EventStore: ObservableObject, Codable, Identifiable {
     @AppStorage var likedSessions: [String]
 
     private var eventAPITmpData: EventStore? = nil
-    private let keychain = Keychain(service: "app.opass.ccip-token").synchronizable(true) //TODO: Change keychain id to "token.app.opass.ccip" after PyCon 23
-    private let keyStore = NSUbiquitousKeyValueStore()
+    private let keychain = Keychain(service: "token.app.opass.ccip").synchronizable(true)
 
     init(
         _ config: EventConfig,
@@ -354,8 +353,7 @@ extension EventStore {
 
     private func save() async {
         do {
-            let data = try JSONEncoder().encode(self)
-            keyStore.set(data, forKey: "EventStore")
+            try EventCache.shared.save(self)
             logger.info("Save scuess of id: \(self.id)")
         } catch {
             logger.error("Save faild with: \(error.localizedDescription), id: \(self.id)")
