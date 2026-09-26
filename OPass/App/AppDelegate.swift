@@ -37,6 +37,15 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         return true
     }
 
+    func application(
+        _ application: UIApplication,
+        handleEventsForBackgroundURLSession identifier: String,
+        completionHandler: @escaping () -> Void
+    ) {
+        // Analytics uploads through a background URL session and needs its events forwarded.
+        Analytics.handleEvents(forBackgroundURLSession: identifier, completionHandler: completionHandler)
+    }
+
     // MARK: - APNs & FCM Registration
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().apnsToken = deviceToken

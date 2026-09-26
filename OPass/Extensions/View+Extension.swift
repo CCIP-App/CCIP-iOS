@@ -8,11 +8,14 @@
 
 import SwiftUI
 import SafariServices
+import FirebaseAnalytics
 import FirebaseCrashlytics
 
 extension View {
+    /// Logs an Analytics `screen_view` and tags Crashlytics reports with the screen.
     func trackScreen(_ name: String) -> some View {
-        onAppear { Crashlytics.crashlytics().setCustomValue(name, forKey: "current_screen") }
+        analyticsScreen(name: name)
+            .onAppear { Crashlytics.crashlytics().setCustomValue(name, forKey: "current_screen") }
     }
 
     func LocalizeIn<T>(zh: T, en: T) -> T {

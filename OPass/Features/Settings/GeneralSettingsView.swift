@@ -51,7 +51,7 @@ struct GeneralSettingsView: View {
                 }
             }
         }
-        .analyticsScreen(name: "GeneralSettingsView")
+        .trackScreen("GeneralSettingsView")
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle("General")
     }

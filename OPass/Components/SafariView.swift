@@ -13,7 +13,7 @@ extension View {
     func safariViewSheet(url: Binding<URL?>, onDismiss: (() -> Void)? = nil) -> some View {
         self.sheet(item: url, onDismiss: onDismiss) { url in
             SFSafariViewWrapper(url: url)
-                .analyticsScreen(name: "SFSafariView")
+                .trackScreen("SFSafariView")
                 .ignoresSafeArea()
         }
     }

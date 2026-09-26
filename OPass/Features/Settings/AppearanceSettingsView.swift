@@ -29,7 +29,7 @@ struct AppearanceSettingsView: View {
                 }
             }
         }
-        .analyticsScreen(name: "AppearanceSettingsView")
+        .trackScreen("AppearanceSettingsView")
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle("Appearance")
     }

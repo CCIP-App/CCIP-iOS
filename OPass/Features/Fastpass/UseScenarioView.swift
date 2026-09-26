@@ -55,6 +55,7 @@ struct UseScenarioView: View {
             }
             .http403Alert(isPresented: $isHttp403AlertPresented, action: { dismiss() })
         }
+        .trackScreen("UseScenarioView")
     }
 
     @ViewBuilder

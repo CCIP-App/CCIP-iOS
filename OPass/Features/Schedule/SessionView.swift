@@ -192,6 +192,7 @@ struct SessionView: View {
                     alertOffset: -300 // T minus 5 minutes
                 )
             )
+            .trackScreen("EventEditView")
         }
         .trackScreen("SessionView")
     }
