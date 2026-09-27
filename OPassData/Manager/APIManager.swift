@@ -8,6 +8,7 @@
 
 import Foundation
 import OSLog
+import FirebaseAppCheck
 
 private let logger = Logger(subsystem: "OPassData", category: "APIManager")
 
@@ -18,6 +19,7 @@ final class APIManager {
         case announcement(String, String?)
         case status(String, String)
         case use(String, String, String)
+        case walletPass
         case any(String)
 
         var string: String {
@@ -32,6 +34,8 @@ final class APIManager {
                 return "\(baseUrl)/status?token=\(token)"
             case .use(let baseUrl, let scenario, let token):
                 return "\(baseUrl)/use/\(scenario)?token=\(token)"
+            case .walletPass:
+                return "https://opass-wallet.brianchang928.workers.dev/pass"
             case .any(let url):
                 return url
             }
@@ -127,6 +131,37 @@ extension APIManager {
             throw LoadError.missingURL(feature)
         }
         return try await fetch(from: .announcement(url, token), reload: reload)
+    }
+
+    // MARK: - Wallet
+    /// Asks the OPass wallet service to sign the attendee's ticket as an Apple Wallet pass.
+    /// The App Check token proves the request comes from this app and build by OPass.
+    public static func fetchWalletPass(eventId: String, token: String) async throws -> Data {
+        let endpoint = CCIPEndpoint.walletPass
+        guard let url = endpoint.url else {
+            logger.error("Invalid URL: \(endpoint.string)")
+            throw LoadError.invalidURL(endpoint)
+        }
+        do {
+            let appCheckToken = try await AppCheck.appCheck().token(forcingRefresh: false).token
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue(appCheckToken, forHTTPHeaderField: "X-Firebase-AppCheck")
+            request.httpBody = try JSONEncoder().encode(["eventId": eventId, "token": token])
+            let (data, response) = try await URLSession.shared.data(for: request)
+            let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
+            guard statusCode == 200 else {
+                logger.warning("Wallet pass request failed with \(statusCode): \(String(decoding: data, as: UTF8.self))")
+                throw LoadError.fetchFaild(URLError(.badServerResponse))
+            }
+            return data
+        } catch let error as LoadError {
+            throw error
+        } catch {
+            logger.error("Fetch wallet pass faild with: \(error.localizedDescription)")
+            throw LoadError.fetchFaild(error)
+        }
     }
 
     // MARK: - Data

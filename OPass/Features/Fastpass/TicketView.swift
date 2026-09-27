@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import PassKit
 import QRCode
 
 struct TicketView: View {
@@ -15,6 +16,7 @@ struct TicketView: View {
     @State private var isTokenVisible = false
     @State private var isSignOutAlertPresented = false
     @State private var qrCodeUIImage = UIImage()
+    @State private var walletPass: PKPass?
     @State private var defaultBrightness = UIScreen.main.brightness
     @AppStorage("AutoAdjustTicketBirghtness") var autoAdjustTicketBirghtness = true
     @Environment(\.scenePhase) var scenePhase
@@ -69,6 +71,13 @@ struct TicketView: View {
                                 Label("Copy Token", systemImage: "square.on.square")
                             }
                         }
+                        
+                        if let walletPass {
+                            AddPassToWalletButton([walletPass]) { _ in }
+                                .addPassToWalletButtonStyle(.black)
+                                .listRowBackground(Color.clear)
+                                .listRowInsets(EdgeInsets())
+                        }
                     }
                     .onAppear { AutoAdjustBrightness() }
                     .onDisappear { ResetBrightness() }
@@ -92,6 +101,7 @@ struct TicketView: View {
                         .background(.sectionBackground)
                 }
                 .task { try? await EventStore.loadAttendee() }
+                .task { walletPass = await EventStore.loadWalletPass() }
                 .toolbar {
                     if let displayText = EventStore.config.feature(.ticket)?.title {
                         ToolbarItem(placement: .principal) {

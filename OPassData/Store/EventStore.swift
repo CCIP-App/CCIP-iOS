@@ -7,6 +7,7 @@
 //
 
 import OSLog
+import PassKit
 import SwiftUI
 import SwiftDate
 import KeychainAccess
@@ -28,6 +29,7 @@ class EventStore: ObservableObject, Codable, Identifiable {
     @AppStorage var likedSessions: [String]
 
     private var eventAPITmpData: EventStore? = nil
+    private var walletPasses: [String: PKPass] = [:]
     private let keychain = Keychain(service: "token.app.opass.ccip").synchronizable(true)
 
     init(
@@ -241,6 +243,23 @@ extension EventStore {
         }
     }
 
+    /// The ticket as an Apple Wallet pass, or nil when this device can't add passes
+    /// or the wallet service doesn't issue one for this event.
+    @MainActor
+    func loadWalletPass() async -> PKPass? {
+        guard let token, config.feature(.fastpass) != nil, PKAddPassesViewController.canAddPasses() else { return nil }
+        if let pass = walletPasses[token] { return pass }
+        do {
+            let data = try await APIManager.fetchWalletPass(eventId: id, token: token)
+            let pass = try PKPass(data: data)
+            walletPasses[token] = pass
+            return pass
+        } catch {
+            logger.error("Load wallet pass faild: \(error.localizedDescription)")
+            return nil
+        }
+    }
+
     /// Re-verifies a stored token, which may come from iCloud Keychain or a restored backup,
     /// so this installation subscribes to the event's push topic only once the event service confirms it.
     @MainActor
@@ -324,6 +343,7 @@ extension EventStore {
     func signOut() {
         loginVersion += 1
         PushTopicManager.shared.setRole(nil, for: id)
+        walletPasses.removeAll()
         if attendee != nil {
             self.attendee = nil
             self.userId = "nil"
