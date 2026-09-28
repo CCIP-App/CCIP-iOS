@@ -19,6 +19,7 @@ struct Feature: Hashable, Codable {
     private enum CodingKeys: String, CodingKey {
         case feature
         case icon
+        case iconData
         case title = "display_text"
         case visibleRoles = "visible_roles"
         case wifi

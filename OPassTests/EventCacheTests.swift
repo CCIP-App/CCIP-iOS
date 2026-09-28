@@ -11,13 +11,6 @@ import Testing
 @testable import OPass
 
 struct EventCacheTests {
-    final class FakeKeyValueStore: NSUbiquitousKeyValueStore {
-        var values: [String: Any] = [:]
-
-        override func data(forKey aKey: String) -> Data? { values[aKey] as? Data }
-        override func removeObject(forKey aKey: String) { values[aKey] = nil }
-    }
-
     let cache = EventCache(fileURL: FileManager.default.temporaryDirectory.appending(path: "\(UUID().uuidString)/EventStore.json"))
 
     /// Larger than the 1 MB quota of iCloud key-value storage.
@@ -38,31 +31,36 @@ struct EventCacheTests {
         #expect(cache.load() == nil)
     }
 
-    @Test func migratesLegacyCache() throws {
-        let keyStore = FakeKeyValueStore()
-        keyStore.values[EventCache.legacyKey] = try JSONEncoder().encode(makeLargeEvent())
-
-        cache.migrate(from: keyStore)
-
-        #expect(keyStore.values.isEmpty)
-        #expect(cache.load()?.logoData?.count == 2_000_000)
+    func makeConfigWithIcon() throws -> EventConfig {
+        var config = EventConfig.mock()
+        let index = try #require(config.features.firstIndex { $0.icon != nil })
+        config.features[index].iconData = Data([1, 2, 3])
+        return config
     }
 
-    @Test func migrationKeepsExistingCache() throws {
+    @Test func cachesFeatureIcons() throws {
+        let config = try makeConfigWithIcon()
+        try cache.save(EventStore(config))
+
+        #expect(try #require(cache.load()).config == config)
+    }
+
+    @Test func restoredEventIsStale() throws {
+        #expect(!EventStore(.mock()).isStale)
         try cache.save(EventStore(.mock()))
-        let keyStore = FakeKeyValueStore()
-        keyStore.values[EventCache.legacyKey] = try JSONEncoder().encode(makeLargeEvent())
 
-        cache.migrate(from: keyStore)
-
-        #expect(keyStore.values.isEmpty)
-        let event = try #require(cache.load())
-        #expect(event.logoData == nil)
+        #expect(try #require(cache.load()).isStale)
     }
 
-    @Test func migrationWithoutLegacyCacheWritesNothing() {
-        cache.migrate(from: FakeKeyValueStore())
+    @MainActor
+    @Test func refreshKeepsLoadedIcons() throws {
+        let config = try makeConfigWithIcon()
+        try cache.save(EventStore(config))
+        let event = try #require(cache.load())
 
-        #expect(!FileManager.default.fileExists(atPath: cache.fileURL.path(percentEncoded: false)))
+        event.update(.mock())
+
+        #expect(!event.isStale)
+        #expect(event.config == config)
     }
 }

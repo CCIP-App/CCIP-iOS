@@ -41,6 +41,7 @@ struct ScheduleContainerView: View {
         .onAppear {
             guard !didAppear else { return }
             didAppear.toggle()
+            if event.schedule != nil { Task { try? await event.loadSchedule() } }
             guard autoSelectScheduleDay else { return }
             selectedDay = event.schedule?.sessions.firstIndex { $0.keys[0].isToday } ?? 0
         }

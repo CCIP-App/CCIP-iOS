@@ -28,14 +28,15 @@ class EventStore: ObservableObject, Codable, Identifiable {
     @AppStorage var userRole: String
     @AppStorage var likedSessions: [String]
 
-    private var eventAPITmpData: EventStore? = nil
+    /// Set when restored from the cache, until the config is refreshed from the API.
+    private(set) var isStale = false
+
     private var walletPasses: [String: PKPass] = [:]
     private let keychain = Keychain(service: "token.app.opass.ccip").synchronizable(true)
 
     init(
         _ config: EventConfig,
-        logoData: Data? = nil,
-        tmpData: EventStore? = nil
+        logoData: Data? = nil
     ) {
         id = config.id
         self.logoData = logoData
@@ -43,7 +44,6 @@ class EventStore: ObservableObject, Codable, Identifiable {
         _userId = AppStorage(wrappedValue: "nil", "userId", store: .init(suiteName: config.id))
         _userRole = AppStorage(wrappedValue: "nil", "userRole", store: .init(suiteName: config.id))
         _likedSessions = AppStorage(wrappedValue: [], "likedSessions", store: .init(suiteName: config.id))
-        eventAPITmpData = tmpData
     }
 
     enum Error: Swift.Error {
@@ -67,6 +67,7 @@ class EventStore: ObservableObject, Codable, Identifiable {
         _userId = AppStorage(wrappedValue: "nil", "userId", store: .init(suiteName: config.id))
         _userRole = AppStorage(wrappedValue: "nil", "userRole", store: .init(suiteName: config.id))
         _likedSessions = AppStorage(wrappedValue: [], "likedSessions", store: .init(suiteName: config.id))
+        isStale = true
     }
 
     func encode(to encoder: Encoder) throws {
@@ -128,7 +129,7 @@ extension EventStore {
         do {
             let eventScenarioUseStatus = try await APIManager.fetchAttendee(from: feature, token: token, scenario: scenario)
             self.attendee = eventScenarioUseStatus
-            Task{ await self.save() }
+            save()
             return true
         } catch APIManager.LoadError.forbidden {
             throw APIManager.LoadError.forbidden
@@ -163,44 +164,56 @@ extension EventStore {
             self.userId = attendee.userId ?? "nil"
             self.userRole = attendee.role
             updatePushTopic(with: attendee)
-            Task{ await self.save() }
+            save()
             return true
         } catch APIManager.LoadError.forbidden {
             throw APIManager.LoadError.forbidden
         } catch { return false }
     }
+    
+    @MainActor
+    func update(_ config: EventConfig) {
+        isStale = false
+        var config = config
+        for index in config.features.indices {
+            guard let icon = config.features[index].icon else { continue }
+            config.features[index].iconData = self.config.features.first { $0.icon == icon }?.iconData
+        }
+        guard config != self.config else { return }
+        self.config = config
+        save()
+    }
 
     @MainActor
     func loadLogos() async {
-        //Load Event Logo
-        let icons: [Int: Data] = await withTaskGroup(of: (Int, Data?).self) { group in
-            let logo_url = config.logoUrl
-            let webViewFeatureIndex = config.features.enumerated().filter({ $0.element.feature == .webview }).map { $0.offset }
-
-            group.addTask { (-1, try? await APIManager.fetchData(from: logo_url)) }
-            for index in webViewFeatureIndex {
-                if let iconUrl = config.features[index].icon{
-                    group.addTask { (index, try? await APIManager.fetchData(from: iconUrl)) }
-                }
+        /// Load Event Logo
+        let logoUrl = config.logoUrl
+        let iconUrls = Set(config.features.filter { $0.feature == .webview }.compactMap(\.icon))
+        async let logoData = try? APIManager.fetchData(from: logoUrl)
+        let icons: [String: Data] = await withTaskGroup(of: (String, Data?).self) { group in
+            for iconUrl in iconUrls {
+                group.addTask { (iconUrl, try? await APIManager.fetchData(from: iconUrl)) }
             }
 
-            var indexToIcon: [Int: Data] = [:]
-            for await (index, data) in group {
-                if data != nil {
-                    indexToIcon[index] = data
-                }
+            var urlToIcon: [String: Data] = [:]
+            for await (iconUrl, data) in group {
+                urlToIcon[iconUrl] = data
             }
-            return indexToIcon
+            return urlToIcon
         }
+        let logo = await logoData ?? self.logoData
 
-        for (index, data) in icons {
-            if index == -1 {
-                self.logoData = data
-            } else {
-                self.config.features[index].iconData = data
+        /// Matched by URL, as the config may have been refreshed meanwhile.
+        var config = self.config
+        for index in config.features.indices {
+            if let icon = config.features[index].icon, let data = icons[icon] {
+                config.features[index].iconData = data
             }
         }
-        Task{ await self.save() }
+        guard logo != self.logoData || config != self.config else { return }
+        self.logoData = logo
+        self.config = config
+        save()
     }
 
     @MainActor
@@ -219,11 +232,12 @@ extension EventStore {
             let attendee = try await APIManager.fetchAttendee(from: feature, token: token)
             // Ignore the response if the user signed out, signed in again, or got another token from iCloud meanwhile.
             guard self.token == token, loginVersion == version else { return }
-            self.attendee = attendee
             self.userId = attendee.userId ?? "nil"
             self.userRole = attendee.role
             updatePushTopic(with: attendee)
-            Task{ await self.save() }
+            guard attendee != self.attendee else { return }
+            self.attendee = attendee
+            save()
         } catch APIManager.LoadError.forbidden {
             throw APIManager.LoadError.forbidden
         } catch {
@@ -232,14 +246,8 @@ extension EventStore {
             if case APIManager.LoadError.invalidToken = error {
                 PushTopicManager.shared.setRole(nil, for: id)
             }
-            // Cached data is shown, but never counts as a verified login.
-            guard let data = self.eventAPITmpData, let attendee = data.attendee else {
-                throw error
-            }
-            self.eventAPITmpData?.attendee = nil
-            self.userId = attendee.userId ?? "nil"
-            self.userRole = attendee.role
-            self.attendee = attendee
+            // Cached data stays on screen, but never counts as a verified login.
+            guard self.attendee != nil else { throw error }
         }
     }
 
@@ -278,14 +286,11 @@ extension EventStore {
             let schedule = try await APIManager.fetchSchedule(
                 from: feature,
                 reload: reload)
+            guard schedule != self.schedule else { return }
             self.schedule = schedule
-            Task { await self.save() }
+            save()
         } catch {
-            guard let schedule = self.eventAPITmpData?.schedule else {
-                throw error
-            }
-            self.eventAPITmpData?.schedule = nil
-            self.schedule = schedule
+            guard self.schedule != nil else { throw error }
         }
     }
 
@@ -300,16 +305,13 @@ extension EventStore {
                 from: feature,
                 token: token,
                 reload: reload)
+            guard announcements != self.announcements else { return }
             self.announcements = announcements
-            Task{ await self.save() }
+            save()
         } catch  APIManager.LoadError.forbidden {
             throw APIManager.LoadError.forbidden
         } catch {
-            guard let announcements = self.eventAPITmpData?.announcements else {
-                throw error
-            }
-            self.eventAPITmpData?.announcements = nil
-            self.announcements = announcements
+            guard self.announcements != nil else { throw error }
         }
     }
 
@@ -350,6 +352,7 @@ extension EventStore {
             self.userRole = "nil"
         }
         self.token = nil
+        save()
     }
 
     /// Subscribes to the event's push topic with the role the event service just verified.
@@ -370,8 +373,9 @@ extension EventStore {
         get { Self.loginVersions[id, default: 0] }
         set { Self.loginVersions[id] = newValue }
     }
-
-    private func save() async {
+    
+    @MainActor
+    private func save() {
         do {
             try EventCache.shared.save(self)
             logger.info("Save scuess of id: \(self.id)")

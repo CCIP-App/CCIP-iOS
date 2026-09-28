@@ -14,8 +14,6 @@ private let logger = Logger(subsystem: "OPassData", category: "EventCache")
 struct EventCache {
     static let shared = EventCache(fileURL: .applicationSupportDirectory.appending(path: "EventStore.json"))
 
-    static let legacyKey = "EventStore"
-
     let fileURL: URL
 
     func load() -> EventStore? {
@@ -32,27 +30,8 @@ struct EventCache {
     }
 
     func save(_ event: EventStore) throws {
-        try write(JSONEncoder().encode(event))
-    }
-
-    /// Moves the cache of earlier versions out of iCloud key-value storage, freeing its quota.
-    func migrate(from keyStore: NSUbiquitousKeyValueStore) {
-        guard let data = keyStore.data(forKey: Self.legacyKey) else { return }
-        if !FileManager.default.fileExists(atPath: fileURL.path(percentEncoded: false)) {
-            do {
-                try write(data)
-            } catch {
-                logger.error("Failed to migrate cached event: \(error.localizedDescription)")
-                return // Retried on the next launch
-            }
-        }
-        keyStore.removeObject(forKey: Self.legacyKey)
-        logger.info("Migrated cached event out of iCloud key-value storage")
-    }
-
-    private func write(_ data: Data) throws {
         try FileManager.default.createDirectory(at: fileURL.deletingLastPathComponent(), withIntermediateDirectories: true)
-        try data.write(to: fileURL, options: .atomic)
+        try JSONEncoder().encode(event).write(to: fileURL, options: .atomic)
         var values = URLResourceValues()
         values.isExcludedFromBackup = true
         var url = fileURL

@@ -25,6 +25,7 @@ struct ContentView: View {
             case .ready(let event):
                 RootView()
                     .environmentObject(event)
+                    .task { await store.refreshEvent() } // The event may be restored from the cache
             case .loading:
                 ProgressView("Loading")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

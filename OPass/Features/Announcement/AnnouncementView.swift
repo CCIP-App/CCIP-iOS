@@ -30,6 +30,10 @@ struct AnnouncementView: View {
         .http403Alert(isPresented: $viewModel.isHttp403AlertPresented)
         .trackScreen("AnnouncementView")
         .task { await UNUserNotificationCenter.current().removeAnnouncementNotifications(of: event.id) }
+        .task {
+            guard event.announcements != nil else { return }
+            await viewModel.loadAnnouncements(event: event)
+        }
     }
 
     private func announcementListView(_ announcements: [Announcement]) -> some View {
@@ -202,7 +206,7 @@ extension AnnouncementView {
             do {
                 try await event.loadAnnouncements(reload: reload)
             } catch APIManager.LoadError.forbidden {
-                errorType = "http403"
+                if event.announcements == nil { errorType = "http403" } // Cached announcements stay on screen
                 isHttp403AlertPresented = true
             } catch { errorType = "unknown" }
 

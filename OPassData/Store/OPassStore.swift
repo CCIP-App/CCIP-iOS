@@ -13,65 +13,46 @@ private let logger = Logger(subsystem: "OPassData", category: "OPassStore")
 
 class OPassStore: ObservableObject {
     @Published var event: EventStore? {
-        // Only the ID goes to iCloud, so the user's other devices open the same event.
-        didSet { if let event { keyStore.set(event.id, forKey: "EventId") } }
+        didSet { if let event { UserDefaults.standard.set(event.id, forKey: "EventId") } }
     }
     @Published var eventId: String?
     @Published var eventLogo: Image?
 
-    private var eventTemporaryData: EventStore?
-    private var keyStore = NSUbiquitousKeyValueStore()
-
     init() {
-        keyStore.synchronize()
-        EventCache.shared.migrate(from: keyStore)
-        eventTemporaryData = EventCache.shared.load()
-        eventId = keyStore.string(forKey: "EventId") ?? eventTemporaryData?.id
+        let cachedEvent = EventCache.shared.load()
+        eventId = UserDefaults.standard.string(forKey: "EventId") ?? cachedEvent?.id
+        if let cachedEvent, cachedEvent.id == eventId { event = cachedEvent }
     }
 }
 
 extension OPassStore {
+    /// Loads the selected event from the API.
     @MainActor
     func loadEvent(reload: Bool = false) async throws {
-        if let eventId = eventId {
-            do {
-                let config = try await APIManager.fetchConfig(for: eventId, reload: reload)
-                if let eventAPIData = eventTemporaryData, eventId == eventAPIData.id { // Reload
-                    let event = EventStore(
-                        config,
-                        logoData: eventAPIData.logoData,
-                        tmpData: eventAPIData)
-                    logger.info("Reload event \(event.id)")
-                    if self.eventId == eventId { // Skip if another event was selected meanwhile
-                        self.event = event
-                        Task{ await event.loadLogos() }
-                        Task{ await event.verifyLogin() }
-                    }
-                } else {
-                    logger.info("Loading new event from \(self.event?.id ?? "none") to \(config.id)")
-                    if self.eventId == eventId { // Skip if another event was selected meanwhile
-                        let event = EventStore(config)
-                        self.event = event
-                        Task{ await event.loadLogos() }
-                        Task{ await event.verifyLogin() }
-                    }
-                }
-            } catch { // Use local data when it can't get data from API
-                logger.notice("Can't get data from API. Using local data")
-                if let eventAPIData = eventTemporaryData, eventAPIData.id == eventId {
-                    if self.eventId == eventId { // Skip if another event was selected meanwhile
-                        self.event = EventStore(
-                            eventAPIData.config,
-                            logoData: eventAPIData.logoData,
-                            tmpData: eventAPIData
-                        )
-                    }
-                } else {
-                    self.eventTemporaryData = nil
-                    throw error
-                }
-            }
-            self.eventTemporaryData = nil // Clear temporary data
+        guard let eventId else { return }
+        let config = try await APIManager.fetchConfig(for: eventId, reload: reload)
+        guard self.eventId == eventId else { return } // Skip if another event was selected meanwhile
+        let event: EventStore
+        if let current = self.event, current.id == eventId {
+            logger.info("Refresh event \(eventId)")
+            current.update(config)
+            event = current
+        } else {
+            logger.info("Loading new event from \(self.event?.id ?? "none") to \(config.id)")
+            event = EventStore(config)
+            self.event = event
+        }
+        Task{ await event.loadLogos() }
+        Task{ await event.verifyLogin() }
+    }
+
+    @MainActor
+    func refreshEvent() async {
+        guard let event, event.isStale else { return }
+        do {
+            try await loadEvent(reload: true)
+        } catch {
+            logger.notice("Can't refresh event from API, using cached data: \(error.localizedDescription)")
         }
     }
 
